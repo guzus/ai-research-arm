@@ -241,7 +241,8 @@ jobs:
           git push || echo "Nothing to push"
 
       - name: Send Telegram notification
-        if: success() && secrets.TELEGRAM_BOT_TOKEN != ''
+        if: success()
+        continue-on-error: true
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
