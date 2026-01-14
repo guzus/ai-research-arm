@@ -31,59 +31,34 @@ jobs:
         id: date
         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
-      - name: Create MCP Config with Exa Search
-        run: |
-          cat > /tmp/mcp-config.json << 'EOF'
-          {
-            "mcpServers": {
-              "exa": {
-                "command": "npx",
-                "args": ["-y", "exa-mcp-server"],
-                "env": {
-                  "EXA_API_KEY": "${{ secrets.EXA_API_KEY }}"
-                }
-              },
-              "tavily": {
-                "command": "npx",
-                "args": ["-y", "@tavily/mcp-server"],
-                "env": {
-                  "TAVILY_API_KEY": "${{ secrets.TAVILY_API_KEY }}"
-                }
-              }
-            }
-          }
-          EOF
-
       - name: Run AI News Research with Claude
         id: research
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
-            --mcp-config /tmp/mcp-config.json
-            --allowedTools "mcp__exa__web_search_exa,mcp__exa__deep_search_exa,mcp__tavily__search,Write,Read,Bash(git:*)"
           prompt: |
-            You are an AI research agent. Your task is to search for the latest AI news and developments.
+            You are an AI research agent. Your task is to search for the latest AI news and create a report.
 
             Topics to research: ${{ github.event.inputs.topics || 'AI agents, LLM breakthroughs, Claude AI, GPT updates, AI research papers, AI startups, AI regulation, AI safety' }}
 
-            Instructions:
-            1. Use the Exa MCP tools (web_search_exa or deep_search_exa) to search for recent AI news from the past 24-48 hours
-            2. Focus on:
-               - Major AI model releases and updates
-               - AI research breakthroughs and papers
-               - AI company news (OpenAI, Anthropic, Google DeepMind, etc.)
-               - AI regulation and policy updates
-               - Interesting AI applications and tools
-            3. For each finding, include:
-               - Title and brief summary
-               - Source URL
-               - Why it's significant
-            4. Create a markdown report file at: research/${{ steps.date.outputs.date }}-ai-news.md
-            5. The report should have clear sections and be well-organized
-            6. After creating the file, commit it with a descriptive message
+            IMPORTANT: You MUST complete these steps in order:
 
-            If Exa search is unavailable, fall back to Tavily search.
+            Step 1: Use WebSearch to find recent AI news (past 24-48 hours). Search for:
+            - "latest AI news January 2026"
+            - "AI model releases 2026"
+            - "OpenAI Anthropic Google DeepMind news"
+
+            Step 2: After gathering information, use the Write tool to create a markdown file at:
+            research/${{ steps.date.outputs.date }}-ai-news.md
+
+            The file MUST contain:
+            - A header with today's date
+            - Sections for different news categories
+            - For each news item: title, summary, source URL, significance
+
+            Step 3: After writing the file, verify it was created by reading it back.
+
+            DO NOT skip Step 2. You MUST write the file.
 
       - name: Push changes
         env:
