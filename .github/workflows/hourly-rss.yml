@@ -31,59 +31,59 @@ jobs:
         run: |
           mkdir -p /tmp/rss
 
-          # OpenAI Blog RSS
-          curl -s "https://openai.com/blog/rss.xml" \
-            -H "User-Agent: AIResearchBot/1.0" \
+          # OpenAI Blog RSS (news section)
+          curl -sL "https://openai.com/news/rss.xml" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/openai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/openai.xml
 
-          # Anthropic News RSS (if available, fallback to empty)
-          curl -s "https://www.anthropic.com/news/rss.xml" \
-            -H "User-Agent: AIResearchBot/1.0" \
+          # Anthropic News RSS (via OpenRSS since no official feed)
+          curl -sL "https://openrss.org/www.anthropic.com/news" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/anthropic.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/anthropic.xml
 
-          # Google AI Blog RSS
-          curl -s "https://blog.google/technology/ai/rss/" \
-            -H "User-Agent: AIResearchBot/1.0" \
+          # Google AI Blog RSS (Atom feed)
+          curl -sL "http://googleaiblog.blogspot.com/atom.xml" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/google_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/google_ai.xml
 
-          # DeepMind Blog RSS
-          curl -s "https://deepmind.google/blog/rss.xml" \
-            -H "User-Agent: AIResearchBot/1.0" \
+          # DeepMind Blog RSS (Google Research)
+          curl -sL "https://research.google/blog/rss/" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/deepmind.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/deepmind.xml
 
           # Meta AI Blog RSS
-          curl -s "https://ai.meta.com/blog/rss/" \
-            -H "User-Agent: AIResearchBot/1.0" \
+          curl -sL "https://ai.meta.com/blog/rss/" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/meta_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/meta_ai.xml
 
           # Hugging Face Blog RSS
-          curl -s "https://huggingface.co/blog/feed.xml" \
-            -H "User-Agent: AIResearchBot/1.0" \
+          curl -sL "https://huggingface.co/blog/feed.xml" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/huggingface.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/huggingface.xml
 
           # arXiv CS.AI RSS (recent submissions)
-          curl -s "https://rss.arxiv.org/rss/cs.AI" \
-            -H "User-Agent: AIResearchBot/1.0" \
+          curl -sL "https://export.arxiv.org/rss/cs.AI" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/arxiv_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arxiv_ai.xml
 
           # arXiv CS.LG RSS (Machine Learning)
-          curl -s "https://rss.arxiv.org/rss/cs.LG" \
-            -H "User-Agent: AIResearchBot/1.0" \
+          curl -sL "https://export.arxiv.org/rss/cs.LG" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/arxiv_lg.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arxiv_lg.xml
 
           # TechCrunch AI RSS
-          curl -s "https://techcrunch.com/category/artificial-intelligence/feed/" \
-            -H "User-Agent: AIResearchBot/1.0" \
+          curl -sL "https://techcrunch.com/category/artificial-intelligence/feed/" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/techcrunch_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/techcrunch_ai.xml
 
           # The Verge AI RSS
-          curl -s "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" \
-            -H "User-Agent: AIResearchBot/1.0" \
+          curl -sL "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/verge_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/verge_ai.xml
 
           # VentureBeat AI RSS
-          curl -s "https://venturebeat.com/category/ai/feed/" \
-            -H "User-Agent: AIResearchBot/1.0" \
+          curl -sL "https://venturebeat.com/category/ai/feed/" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
 
           echo "RSS feeds fetched successfully"

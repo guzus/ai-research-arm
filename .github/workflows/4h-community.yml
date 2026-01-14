@@ -31,20 +31,41 @@ jobs:
           mkdir -p /tmp/reddit
 
           # Fetch hot posts from AI subreddits (no auth needed, real-time data)
-          curl -s "https://www.reddit.com/r/MachineLearning/hot.json?limit=20" \
-            -H "User-Agent: AIResearchBot/1.0" > /tmp/reddit/ml.json
+          # Using browser-like User-Agent for better compatibility
+          UA="Mozilla/5.0 (compatible; AIResearchBot/1.0; +https://github.com)"
+
+          curl -sL "https://www.reddit.com/r/MachineLearning/hot.json?limit=25" \
+            -H "User-Agent: $UA" > /tmp/reddit/ml_raw.json
 
           sleep 2  # Rate limit friendly
 
-          curl -s "https://www.reddit.com/r/LocalLLaMA/hot.json?limit=20" \
-            -H "User-Agent: AIResearchBot/1.0" > /tmp/reddit/localllama.json
+          curl -sL "https://www.reddit.com/r/LocalLLaMA/hot.json?limit=25" \
+            -H "User-Agent: $UA" > /tmp/reddit/localllama_raw.json
 
           sleep 2
 
-          curl -s "https://www.reddit.com/r/artificial/hot.json?limit=15" \
-            -H "User-Agent: AIResearchBot/1.0" > /tmp/reddit/artificial.json
+          curl -sL "https://www.reddit.com/r/artificial/hot.json?limit=20" \
+            -H "User-Agent: $UA" > /tmp/reddit/artificial_raw.json
 
-          echo "Reddit JSON fetched successfully"
+          # Pre-process JSON with jq to extract only relevant fields
+          # This makes it much easier for Claude to parse
+          for sub in ml localllama artificial; do
+            jq -r '[.data.children[].data | {
+              title: .title,
+              score: .score,
+              comments: .num_comments,
+              url: ("https://reddit.com" + .permalink),
+              created: (.created_utc | todate),
+              flair: .link_flair_text
+            }] | sort_by(-.score)' /tmp/reddit/${sub}_raw.json > /tmp/reddit/${sub}.json 2>/dev/null || \
+            echo "[]" > /tmp/reddit/${sub}.json
+          done
+
+          echo "Reddit JSON fetched and processed successfully"
+          echo "--- ml.json preview ---"
+          head -50 /tmp/reddit/ml.json
+          echo "--- localllama.json preview ---"
+          head -50 /tmp/reddit/localllama.json
 
       - name: Create MCP Config
         run: |
@@ -81,18 +102,25 @@ jobs:
 
             ## TASK 2: Reddit (REAL-TIME JSON)
 
-            Read the pre-fetched Reddit JSON files:
+            Read the pre-processed Reddit JSON files:
             - /tmp/reddit/ml.json (r/MachineLearning hot posts)
             - /tmp/reddit/localllama.json (r/LocalLLaMA hot posts)
             - /tmp/reddit/artificial.json (r/artificial hot posts)
 
-            Parse each JSON file. The structure is:
-            - data.children[].data.title (post title)
-            - data.children[].data.score (upvotes)
-            - data.children[].data.num_comments (comment count)
-            - data.children[].data.permalink (link to post)
-            - data.children[].data.created_utc (timestamp)
-            - data.children[].data.selftext (post content preview)
+            The JSON is pre-processed and simplified. Each file contains an array of objects:
+            [
+              {
+                "title": "Post title",
+                "score": 123,
+                "comments": 45,
+                "url": "https://reddit.com/r/.../...",
+                "created": "2026-01-14T12:00:00Z",
+                "flair": "Research" or null
+              },
+              ...
+            ]
+
+            Posts are already sorted by score (highest first).
 
             Write to: research/community/${{ steps.datetime.outputs.date }}-reddit.md
 
