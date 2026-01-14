@@ -82,6 +82,16 @@ Yes, MCP servers work in GitHub Actions via `anthropics/claude-code-action`:
 
 - uses: anthropics/claude-code-action@v1
   with:
-    mcp_config: /tmp/mcp-config.json
-    allowed_tools: mcp__exa__web_search_exa
+    claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+    claude_args: |
+      --mcp-config /tmp/mcp-config.json
+      --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__web_search_exa"
+    prompt: |
+      Search for AI news and save a report to research/report.md
+      Then commit the changes.
 ```
+
+## Resources
+
+- [Claude Code Action Solutions](https://github.com/anthropics/claude-code-action/blob/main/docs/solutions.md) - Examples for scheduled workflows, file operations, and more
+- [Claude Code Action Configuration](https://github.com/anthropics/claude-code-action/blob/main/docs/configuration.md) - Full configuration reference

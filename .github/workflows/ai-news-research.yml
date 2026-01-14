@@ -24,8 +24,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-          persist-credentials: true
+          fetch-depth: 0
 
       - name: Get current date
         id: date
@@ -59,109 +58,66 @@ jobs:
 
       - name: Run AI News Research with Claude (with MCP)
         if: steps.check-keys.outputs.has_exa == 'true'
-        id: research-mcp
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
             --mcp-config /tmp/mcp-config.json
+            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__web_search_exa,mcp__exa__deep_search_exa"
           prompt: |
-            You are an AI research agent. Search for the latest AI news and create a comprehensive markdown report.
+            You are an AI research agent. Your task is to search for AI news and save a report.
+
+            REPO: ${{ github.repository }}
+            DATE: ${{ steps.date.outputs.date }}
 
             Topics: ${{ github.event.inputs.topics || 'AI agents, LLM breakthroughs, Claude AI, GPT updates, AI research papers, AI startups, AI regulation, AI safety' }}
 
-            Use the Exa MCP tools (mcp__exa__web_search_exa) to search for recent AI news.
+            INSTRUCTIONS:
+            1. Use the Exa MCP tools (mcp__exa__web_search_exa) to search for recent AI news
+            2. Use the Write tool to create a file at: research/${{ steps.date.outputs.date }}-ai-news.md
+            3. The file should contain:
+               - Header with date
+               - Executive Summary
+               - Sections: Model Updates, Research, Company News, Tools, Trends
+               - For each item: title, summary, source URL, significance
+            4. After writing, commit the changes using Bash with git commands:
+               git add research/
+               git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
 
-            OUTPUT FORMAT: Your response MUST be a complete markdown document starting with:
-            # AI News Report - ${{ steps.date.outputs.date }}
-
-            Include sections for:
-            - Executive Summary
-            - Major AI Model Updates
-            - AI Research Breakthroughs
-            - Company News (OpenAI, Anthropic, Google, etc.)
-            - AI Applications & Tools
-            - Industry Trends
-
-            For each item include: title, summary, source URL, significance.
-
-            IMPORTANT: Output ONLY the markdown content. No explanations or meta-commentary.
+            You MUST write the file and commit it. Do not skip these steps.
 
       - name: Run AI News Research with Claude (without MCP)
         if: steps.check-keys.outputs.has_exa != 'true'
-        id: research-websearch
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
           prompt: |
-            You are an AI research agent. Search for the latest AI news and create a comprehensive markdown report.
+            You are an AI research agent. Your task is to search for AI news and save a report.
+
+            REPO: ${{ github.repository }}
+            DATE: ${{ steps.date.outputs.date }}
 
             Topics: ${{ github.event.inputs.topics || 'AI agents, LLM breakthroughs, Claude AI, GPT updates, AI research papers, AI startups, AI regulation, AI safety' }}
 
-            Use WebSearch to find recent AI news from the past 24-48 hours. Search for:
-            - "latest AI news January 2026"
-            - "AI model releases 2026"
-            - "OpenAI Anthropic Google DeepMind news 2026"
+            INSTRUCTIONS:
+            1. Use WebSearch to find recent AI news from the past 24-48 hours. Search for:
+               - "latest AI news January 2026"
+               - "AI model releases 2026"
+               - "OpenAI Anthropic Google DeepMind news 2026"
+            2. Use the Write tool to create a file at: research/${{ steps.date.outputs.date }}-ai-news.md
+            3. The file should contain:
+               - Header with date
+               - Executive Summary
+               - Sections: Model Updates, Research, Company News, Tools, Trends
+               - For each item: title, summary, source URL, significance
+            4. After writing, commit the changes using Bash with git commands:
+               git add research/
+               git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
 
-            OUTPUT FORMAT: Your response MUST be a complete markdown document starting with:
-            # AI News Report - ${{ steps.date.outputs.date }}
-
-            Include sections for:
-            - Executive Summary
-            - Major AI Model Updates
-            - AI Research Breakthroughs
-            - Company News (OpenAI, Anthropic, Google, etc.)
-            - AI Applications & Tools
-            - Industry Trends
-
-            For each item include: title, summary, source URL, significance.
-
-            IMPORTANT: Output ONLY the markdown content. No explanations or meta-commentary.
-
-      - name: Extract and save report
-        run: |
-          # Get the job summary which contains Claude's output
-          # For now, create a placeholder that indicates the workflow ran
-          mkdir -p research
-
-          # Check if there's output from the action
-          if [ -f "$GITHUB_STEP_SUMMARY" ]; then
-            # Extract content after the report header
-            cat > research/${{ steps.date.outputs.date }}-ai-news.md << 'EOF'
-          # AI News Report - ${{ steps.date.outputs.date }}
-
-          This report was generated by the AI News Research Agent.
-
-          Check the workflow run summary for the full research report:
-          https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-
-          ---
-
-          ## How This Works
-
-          This workflow uses Claude Code Action to:
-          1. Search for recent AI news using WebSearch (or Exa MCP if API key is configured)
-          2. Compile findings into a structured report
-          3. The full report is available in the GitHub Actions job summary
-
-          ### To get full reports saved to this file:
-
-          Configure the `EXA_API_KEY` secret in your repository settings to enable
-          enhanced search capabilities via the Exa MCP server.
-          EOF
-          fi
+            You MUST write the file and commit it. Do not skip these steps.
 
       - name: Push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          git add research/
-          if ! git diff --staged --quiet; then
-            git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
-            git push
-          else
-            echo "No changes to commit"
-          fi
+          git push || echo "Nothing to push"
