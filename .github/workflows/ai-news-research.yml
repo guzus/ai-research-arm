@@ -48,17 +48,24 @@ jobs:
             - "AI model releases 2026"
             - "OpenAI Anthropic Google DeepMind news"
 
-            Step 2: After gathering information, use the Write tool to create a markdown file at:
-            research/${{ steps.date.outputs.date }}-ai-news.md
+            Step 2: After gathering information, use Bash with cat and heredoc to create the markdown file.
+            Example command (adapt the content based on your research):
+
+            cat > research/${{ steps.date.outputs.date }}-ai-news.md << 'ENDOFFILE'
+            # AI News Report - ${{ steps.date.outputs.date }}
+
+            [Your research content here with proper markdown formatting]
+
+            ENDOFFILE
 
             The file MUST contain:
             - A header with today's date
-            - Sections for different news categories
+            - Sections for different news categories (Model Updates, Research, Company News, etc.)
             - For each news item: title, summary, source URL, significance
 
-            Step 3: After writing the file, verify it was created by reading it back.
+            Step 3: After writing the file, run "ls -la research/" to verify the file was created.
 
-            DO NOT skip Step 2. You MUST write the file.
+            DO NOT skip Step 2. You MUST create the file using Bash.
 
       - name: Push changes
         env:
