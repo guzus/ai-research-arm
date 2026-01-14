@@ -25,6 +25,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+          persist-credentials: true
 
       - name: Get current date
         id: date
@@ -85,9 +86,16 @@ jobs:
             If Exa search is unavailable, fall back to Tavily search.
 
       - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git add research/
-          git diff --staged --quiet || git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
-          git push
+          if ! git diff --staged --quiet; then
+            git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
+            git push
+          else
+            echo "No changes to commit"
+          fi
