@@ -1,141 +1,139 @@
 # AI Research
 
-Automated multi-source AI news research agent powered by Claude and MCP (Model Context Protocol).
+Automated multi-source AI news research agent powered by Claude and MCP.
 
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                     AI Research Pipeline                         │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                   │
-│  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐     │
-│  │ Twitter  │   │ Hacker   │   │  Reddit  │   │  arXiv   │     │
-│  │ (hourly) │   │  News    │   │ (4 hrs)  │   │ (daily)  │     │
-│  └────┬─────┘   └────┬─────┘   └────┬─────┘   └────┬─────┘     │
-│       │              │              │              │             │
-│       ▼              ▼              ▼              ▼             │
-│  ┌─────────────────────────────────────────────────────────┐    │
-│  │              research/ directory                         │    │
-│  │  ├── twitter/YYYY-MM-DD.md                              │    │
-│  │  ├── community/YYYY-MM-DD-hn.md                         │    │
-│  │  ├── community/YYYY-MM-DD-reddit.md                     │    │
-│  │  ├── arxiv/YYYY-MM-DD-papers.md                         │    │
-│  │  └── digest/YYYY-MM-DD-digest.md                        │    │
-│  └─────────────────────────────────────────────────────────┘    │
-│                              │                                    │
-│                              ▼                                    │
-│                    ┌──────────────────┐                          │
-│                    │   Daily Digest   │                          │
-│                    │   (11 PM UTC)    │                          │
-│                    └──────────────────┘                          │
-│                                                                   │
-└─────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────────┐
+│                        AI Research Pipeline                             │
+├────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  REAL-TIME SOURCES                                                      │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐     │
+│  │   RSS    │ │ Bluesky  │ │  Reddit  │ │  Hacker  │ │  arXiv   │     │
+│  │ (hourly) │ │ (2 hrs)  │ │  JSON    │ │  News    │ │ (daily)  │     │
+│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬─────┘     │
+│       │            │            │            │            │            │
+│       ▼            ▼            └─────┬──────┘            ▼            │
+│  ┌─────────┐ ┌─────────┐       ┌─────┴─────┐       ┌─────────┐        │
+│  │research/│ │research/│       │ research/ │       │research/│        │
+│  │  rss/   │ │bluesky/ │       │community/ │       │ arxiv/  │        │
+│  └────┬────┘ └────┬────┘       └─────┬─────┘       └────┬────┘        │
+│       │           │                  │                  │              │
+│       └───────────┴────────┬─────────┴──────────────────┘              │
+│                            ▼                                           │
+│                   ┌────────────────┐                                   │
+│                   │  Daily Digest  │                                   │
+│                   │  (11 PM UTC)   │                                   │
+│                   └────────────────┘                                   │
+│                            │                                           │
+│                            ▼                                           │
+│                   research/digest/                                     │
+│                                                                        │
+└────────────────────────────────────────────────────────────────────────┘
 ```
+
+## Data Sources
+
+| Source | Method | Frequency | Real-time? |
+|--------|--------|-----------|------------|
+| **RSS Feeds** | Direct XML fetch | Hourly | ✅ Yes |
+| **Bluesky** | Public API | Every 2 hours | ✅ Yes |
+| **Reddit** | JSON endpoint | Every 4 hours | ✅ Yes |
+| **Hacker News** | MCP Server | Every 4 hours | ✅ Yes |
+| **arXiv** | MCP + RSS | Daily | ✅ Yes |
+| **Web Search** | Exa/WebSearch | Every 4 hours | Cached |
 
 ## Workflows
 
 | Workflow | Schedule | Source | Output |
 |----------|----------|--------|--------|
-| `hourly-twitter.yml` | Every hour | Twitter/X | `research/twitter/` |
-| `4h-community.yml` | Every 4 hours | Hacker News, Reddit | `research/community/` |
+| `hourly-rss.yml` | Every hour | Official blogs, TechCrunch, arXiv RSS | `research/rss/` |
+| `2h-bluesky.yml` | Every 2 hours | Bluesky AI posts | `research/bluesky/` |
+| `4h-community.yml` | Every 4 hours | Reddit JSON + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 6 AM UTC | arXiv papers | `research/arxiv/` |
 | `daily-digest.yml` | Daily 11 PM UTC | All sources | `research/digest/` |
-| `ai-news-research.yml` | Every 4 hours | Web search | `research/` |
+| `hourly-twitter.yml` | Every hour | Twitter/X (needs API key) | `research/twitter/` |
 
 ## Setup
 
 ### Required Secrets
 
-Add these secrets to your GitHub repository (Settings > Secrets and variables > Actions):
+| Secret | Required | Description |
+|--------|----------|-------------|
+| `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code auth |
 
-| Secret | Required | Description | Get it from |
-|--------|----------|-------------|-------------|
-| `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code authentication | `/install-github-app` |
-| `EXA_API_KEY` | No | Exa AI search (enhanced) | [dashboard.exa.ai](https://dashboard.exa.ai) |
-| `TWITTER_BEARER_TOKEN` | No | Twitter API access | [developer.twitter.com](https://developer.twitter.com) |
-| `REDDIT_CLIENT_ID` | No | Reddit API access | [reddit.com/prefs/apps](https://reddit.com/prefs/apps) |
-| `REDDIT_CLIENT_SECRET` | No | Reddit API secret | Same as above |
+### Optional API Keys (for enhanced features)
 
-### MCP Servers Used
-
-| Server | Purpose | NPM Package |
-|--------|---------|-------------|
-| [Exa](https://github.com/exa-labs/exa-mcp-server) | Web search | `exa-mcp-server` |
-| [Hacker News](https://github.com/paabloLC/mcp-hacker-news) | HN stories | `mcp-hackernews` |
-| [arXiv](https://github.com/blazickjp/arxiv-mcp-server) | Research papers | `arxiv-mcp-server` |
-| [Twitter](https://github.com/EnesCinr/twitter-mcp) | Twitter/X | `@mcp/twitter-server` |
+| Secret | Source | Benefit |
+|--------|--------|---------|
+| `EXA_API_KEY` | [dashboard.exa.ai](https://dashboard.exa.ai) | Better web search |
+| `TWITTER_BEARER_TOKEN` | [developer.twitter.com](https://developer.twitter.com) | Direct Twitter access |
 
 ## Output Structure
 
 ```
 research/
-├── twitter/
-│   └── 2026-01-14.md          # Hourly Twitter updates (appended)
+├── rss/
+│   └── 2026-01-14.md              # Official blog posts, tech news
+├── bluesky/
+│   └── 2026-01-14.md              # Bluesky AI researcher posts
 ├── community/
-│   ├── 2026-01-14-hn.md       # Hacker News digest
-│   └── 2026-01-14-reddit.md   # Reddit digest
+│   ├── 2026-01-14-hn.md           # Hacker News digest
+│   └── 2026-01-14-reddit.md       # Reddit real-time posts
 ├── arxiv/
-│   └── 2026-01-14-papers.md   # Daily arXiv papers
-├── digest/
-│   └── 2026-01-14-digest.md   # Synthesized daily digest
-└── 2026-01-14-ai-news.md      # General web search results
+│   └── 2026-01-14-papers.md       # Daily arXiv papers
+├── twitter/
+│   └── 2026-01-14.md              # Twitter updates (if API key set)
+└── digest/
+    └── 2026-01-14-digest.md       # Daily synthesized digest
 ```
 
-## Data Sources Strategy
+## Data Source Details
 
-### Tier 1: Real-time (Hourly)
-- **Twitter/X**: Breaking announcements from @OpenAI, @AnthropicAI, @GoogleDeepMind, key researchers
+### RSS Feeds (Hourly)
+Official announcements from:
+- OpenAI Blog
+- Anthropic News
+- Google AI Blog
+- DeepMind Blog
+- Meta AI Blog
+- Hugging Face Blog
+- TechCrunch AI
+- The Verge AI
+- VentureBeat AI
+- arXiv CS.AI & CS.LG
 
-### Tier 2: Community Signal (Every 4 hours)
-- **Hacker News**: Tech community curated, high signal-to-noise
-- **Reddit**: r/MachineLearning, r/LocalLLaMA for deeper technical discussions
+### Bluesky (Every 2 hours)
+Public API search for:
+- AI announcements
+- LLM releases
+- Model discussions
+- ML papers
+- Key researchers (Karpathy, etc.)
 
-### Tier 3: Research (Daily)
-- **arXiv**: New papers in cs.AI, cs.LG, cs.CL, cs.CV
+### Reddit (Every 4 hours)
+Direct JSON endpoint (no API key needed):
+- r/MachineLearning
+- r/LocalLLaMA
+- r/artificial
 
-### Tier 4: Synthesis (Daily)
-- **Daily Digest**: Combines all sources into executive summary
+### Hacker News (Every 4 hours)
+MCP Server for:
+- Top AI/ML stories
+- Trending discussions
 
 ## Manual Triggers
 
-All workflows support manual triggering via GitHub Actions UI:
+All workflows can be triggered manually:
 1. Go to Actions tab
-2. Select the workflow
+2. Select workflow
 3. Click "Run workflow"
-
-## Using MCP in GitHub Actions
-
-```yaml
-- name: Create MCP Config
-  run: |
-    cat > /tmp/mcp-config.json << 'EOF'
-    {
-      "mcpServers": {
-        "exa": {
-          "command": "npx",
-          "args": ["-y", "exa-mcp-server"],
-          "env": {
-            "EXA_API_KEY": "${{ secrets.EXA_API_KEY }}"
-          }
-        }
-      }
-    }
-    EOF
-
-- uses: anthropics/claude-code-action@v1
-  with:
-    claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-    claude_args: |
-      --mcp-config /tmp/mcp-config.json
-      --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__web_search_exa"
-    prompt: |
-      Search for AI news and save a report to research/report.md
-```
 
 ## Resources
 
-- [Claude Code Action Solutions](https://github.com/anthropics/claude-code-action/blob/main/docs/solutions.md)
-- [Claude Code Action Configuration](https://github.com/anthropics/claude-code-action/blob/main/docs/configuration.md)
+- [Claude Code Action](https://github.com/anthropics/claude-code-action)
 - [Model Context Protocol](https://modelcontextprotocol.io/)
-- [MCP Servers Directory](https://mcp.so/)
+- [Reddit JSON API](https://data365.co/blog/reddit-json-api)
+- [Bluesky API Docs](https://docs.bsky.app/)

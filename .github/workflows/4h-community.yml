@@ -25,6 +25,27 @@ jobs:
           echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
           echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
 
+      - name: Fetch Reddit JSON (real-time)
+        id: reddit
+        run: |
+          mkdir -p /tmp/reddit
+
+          # Fetch hot posts from AI subreddits (no auth needed, real-time data)
+          curl -s "https://www.reddit.com/r/MachineLearning/hot.json?limit=20" \
+            -H "User-Agent: AIResearchBot/1.0" > /tmp/reddit/ml.json
+
+          sleep 2  # Rate limit friendly
+
+          curl -s "https://www.reddit.com/r/LocalLLaMA/hot.json?limit=20" \
+            -H "User-Agent: AIResearchBot/1.0" > /tmp/reddit/localllama.json
+
+          sleep 2
+
+          curl -s "https://www.reddit.com/r/artificial/hot.json?limit=15" \
+            -H "User-Agent: AIResearchBot/1.0" > /tmp/reddit/artificial.json
+
+          echo "Reddit JSON fetched successfully"
+
       - name: Create MCP Config
         run: |
           cat > /tmp/mcp-config.json << 'EOF'
@@ -38,29 +59,47 @@ jobs:
           }
           EOF
 
-      - name: Fetch Community AI Discussions
+      - name: Process Community Data with Claude
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
             --mcp-config /tmp/mcp-config.json
-            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch,mcp__hackernews__*"
+            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__hackernews__*"
           prompt: |
-            You are a community AI news curator. Gather TOP AI discussions from Hacker News and Reddit.
+            You are a community AI news curator. Process REAL-TIME data from HN and Reddit.
 
             TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
             DATE: ${{ steps.datetime.outputs.date }}
 
             ## TASK 1: Hacker News
 
-            Use the Hacker News MCP tools AND WebSearch to find AI stories:
-            - Top stories filtered for AI/ML/LLM
-            - "site:news.ycombinator.com AI LLM" (recent)
-            - "site:news.ycombinator.com Claude GPT Gemini"
+            Use the Hacker News MCP tools to get current top/new stories.
+            Filter for AI/ML/LLM related content.
 
             Write to: research/community/${{ steps.datetime.outputs.date }}-hn.md
 
-            FORMAT:
+            ## TASK 2: Reddit (REAL-TIME JSON)
+
+            Read the pre-fetched Reddit JSON files:
+            - /tmp/reddit/ml.json (r/MachineLearning hot posts)
+            - /tmp/reddit/localllama.json (r/LocalLLaMA hot posts)
+            - /tmp/reddit/artificial.json (r/artificial hot posts)
+
+            Parse each JSON file. The structure is:
+            - data.children[].data.title (post title)
+            - data.children[].data.score (upvotes)
+            - data.children[].data.num_comments (comment count)
+            - data.children[].data.permalink (link to post)
+            - data.children[].data.created_utc (timestamp)
+            - data.children[].data.selftext (post content preview)
+
+            Write to: research/community/${{ steps.datetime.outputs.date }}-reddit.md
+
+            ## OUTPUT FORMAT
+
+            For HN (research/community/${{ steps.datetime.outputs.date }}-hn.md):
+            ```
             # Hacker News AI Digest - ${{ steps.datetime.outputs.date }}
 
             ## ${{ steps.datetime.outputs.timestamp }}
@@ -71,34 +110,31 @@ jobs:
 
             ### Notable Discussions
             - [Title]: Key insight - [link]
+            ```
 
-            ## TASK 2: Reddit
-
-            Use WebSearch to find Reddit AI discussions:
-            - "site:reddit.com/r/MachineLearning"
-            - "site:reddit.com/r/LocalLLaMA"
-            - "site:reddit.com/r/artificial"
-
-            Write to: research/community/${{ steps.datetime.outputs.date }}-reddit.md
-
-            FORMAT:
+            For Reddit (research/community/${{ steps.datetime.outputs.date }}-reddit.md):
+            ```
             # Reddit AI Digest - ${{ steps.datetime.outputs.date }}
 
             ## ${{ steps.datetime.outputs.timestamp }}
 
-            ### r/MachineLearning
-            - [Title] - [insight] - [link]
+            ### r/MachineLearning (Hot)
+            | Title | Score | Comments | Link |
+            |-------|-------|----------|------|
 
-            ### r/LocalLLaMA
-            - [Title] - [insight] - [link]
+            ### r/LocalLLaMA (Hot)
+            | Title | Score | Comments | Link |
+            |-------|-------|----------|------|
 
-            ### Other Notable
-            - [Title] from r/[subreddit] - [link]
+            ### r/artificial (Hot)
+            | Title | Score | Comments | Link |
+            |-------|-------|----------|------|
+            ```
 
             ## FILTERS
 
-            INCLUDE: Model releases, benchmarks, research papers, tools, funding, policy
-            SKIP: Memes, beginner questions, old reposts, low-engagement (<10 points)
+            INCLUDE: Model releases, benchmarks, research papers, tools, funding, technical discussions
+            SKIP: Memes, beginner questions, posts with <10 score
 
             ## COMMIT
 
