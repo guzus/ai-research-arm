@@ -65,26 +65,36 @@ jobs:
             --mcp-config /tmp/mcp-config.json
             --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__web_search_exa,mcp__exa__deep_search_exa"
           prompt: |
-            You are an AI research agent. Your task is to search for AI news and save a report.
+            You are an AI news research agent. Find BREAKING NEWS and RECENT ANNOUNCEMENTS only.
 
+            TODAY: ${{ steps.date.outputs.date }}
             REPO: ${{ github.repository }}
-            DATE: ${{ steps.date.outputs.date }}
 
-            Topics: ${{ github.event.inputs.topics || 'AI agents, LLM breakthroughs, Claude AI, GPT updates, AI research papers, AI startups, AI regulation, AI safety' }}
+            Use Exa MCP tools (mcp__exa__web_search_exa) to search for REAL NEWS from last 24-48 hours:
+            - OpenAI announcements
+            - Anthropic Claude releases
+            - Google Gemini updates
+            - AI startup funding rounds
+            - New AI model releases
+            - AI regulation news
 
-            INSTRUCTIONS:
-            1. Use the Exa MCP tools (mcp__exa__web_search_exa) to search for recent AI news
-            2. Use the Write tool to create a file at: research/${{ steps.date.outputs.date }}-ai-news.md
-            3. The file should contain:
-               - Header with date
-               - Executive Summary
-               - Sections: Model Updates, Research, Company News, Tools, Trends
-               - For each item: title, summary, source URL, significance
-            4. After writing, commit the changes using Bash with git commands:
-               git add research/
-               git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
+            QUALITY REQUIREMENTS - ONLY include news that:
+            - Has a SPECIFIC date (within last 48 hours)
+            - Is from a CREDIBLE source (TechCrunch, VentureBeat, The Verge, official company blogs, Reuters)
+            - Contains CONCRETE information (not speculation)
+            - Has REAL URLs
 
-            You MUST write the file and commit it. Do not skip these steps.
+            DO NOT include: generic AI explanations, old news, speculation without sources.
+
+            REPORT FORMAT - Use Write tool to create: research/${{ steps.date.outputs.date }}-ai-news.md
+
+            Sections: Breaking News, New Model Releases, Funding & Acquisitions, Research Papers, Industry Moves, Regulatory Updates
+
+            After writing, commit:
+            git add research/
+            git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
+
+            CRITICAL: Write REAL news with actual sources. No placeholder content.
 
       - name: Run AI News Research with Claude (without MCP)
         if: steps.check-keys.outputs.has_exa != 'true'
@@ -94,30 +104,68 @@ jobs:
           claude_args: |
             --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
           prompt: |
-            You are an AI research agent. Your task is to search for AI news and save a report.
+            You are an AI news research agent. Find BREAKING NEWS and RECENT ANNOUNCEMENTS only.
 
+            TODAY: ${{ steps.date.outputs.date }}
             REPO: ${{ github.repository }}
-            DATE: ${{ steps.date.outputs.date }}
 
-            Topics: ${{ github.event.inputs.topics || 'AI agents, LLM breakthroughs, Claude AI, GPT updates, AI research papers, AI startups, AI regulation, AI safety' }}
+            SEARCH REQUIREMENTS:
+            Do multiple specific searches to find REAL NEWS from the last 24-48 hours:
+            - "OpenAI announcement January 2026"
+            - "Anthropic Claude new release 2026"
+            - "Google Gemini update January 2026"
+            - "AI startup funding January 2026"
+            - "new AI model release this week"
+            - "AI regulation news January 2026"
 
-            INSTRUCTIONS:
-            1. Use WebSearch to find recent AI news from the past 24-48 hours. Search for:
-               - "latest AI news January 2026"
-               - "AI model releases 2026"
-               - "OpenAI Anthropic Google DeepMind news 2026"
-            2. Use the Write tool to create a file at: research/${{ steps.date.outputs.date }}-ai-news.md
-            3. The file should contain:
-               - Header with date
-               - Executive Summary
-               - Sections: Model Updates, Research, Company News, Tools, Trends
-               - For each item: title, summary, source URL, significance
-            4. After writing, commit the changes using Bash with git commands:
-               git add research/
-               git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
+            QUALITY REQUIREMENTS - ONLY include news that:
+            - Has a SPECIFIC date (within last 48 hours)
+            - Is from a CREDIBLE source (TechCrunch, VentureBeat, The Verge, official company blogs, Reuters, etc.)
+            - Contains CONCRETE information (not speculation or opinion)
+            - Has REAL URLs that can be verified
 
-            You MUST write the file and commit it. Do not skip these steps.
+            DO NOT include:
+            - Generic explanations of what AI is
+            - Old news or evergreen content
+            - Speculation without sources
+            - Information without specific dates
+
+            REPORT FORMAT - Use the Write tool to create: research/${{ steps.date.outputs.date }}-ai-news.md
+
+            ```markdown
+            # AI News Report - ${{ steps.date.outputs.date }}
+
+            ## Breaking News
+            [Most important announcements from last 24 hours]
+
+            ## New Model Releases
+            [Specific model launches with version numbers, capabilities, pricing]
+
+            ## Funding & Acquisitions
+            [Startup funding rounds, M&A activity with dollar amounts]
+
+            ## Research Papers
+            [Notable papers from arXiv, with specific findings]
+
+            ## Industry Moves
+            [Executive changes, partnerships, strategic announcements]
+
+            ## Regulatory Updates
+            [Policy changes, government actions]
+
+            ---
+            *Sources verified as of ${{ steps.date.outputs.date }}*
+            ```
+
+            After writing, commit:
+            git add research/
+            git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
+
+            CRITICAL: You MUST write a real file with actual news. Do not write placeholder content.
 
       - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git push || echo "Nothing to push"
