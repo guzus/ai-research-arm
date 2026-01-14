@@ -4,34 +4,55 @@ Automated multi-source AI news research agent powered by Claude and MCP.
 
 ## Architecture
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        AI Research Pipeline                             │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  REAL-TIME SOURCES                                                      │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐     │
-│  │   RSS    │ │ Bluesky  │ │  Reddit  │ │  Hacker  │ │  arXiv   │     │
-│  │ (hourly) │ │ (2 hrs)  │ │  JSON    │ │  News    │ │ (daily)  │     │
-│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬─────┘     │
-│       │            │            │            │            │            │
-│       ▼            ▼            └─────┬──────┘            ▼            │
-│  ┌─────────┐ ┌─────────┐       ┌─────┴─────┐       ┌─────────┐        │
-│  │research/│ │research/│       │ research/ │       │research/│        │
-│  │  rss/   │ │bluesky/ │       │community/ │       │ arxiv/  │        │
-│  └────┬────┘ └────┬────┘       └─────┬─────┘       └────┬────┘        │
-│       │           │                  │                  │              │
-│       └───────────┴────────┬─────────┴──────────────────┘              │
-│                            ▼                                           │
-│                   ┌────────────────┐                                   │
-│                   │  Daily Digest  │                                   │
-│                   │  (11 PM UTC)   │                                   │
-│                   └────────────────┘                                   │
-│                            │                                           │
-│                            ▼                                           │
-│                   research/digest/                                     │
-│                                                                        │
-└────────────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph sources["📡 Real-Time Sources"]
+        RSS["🔗 RSS Feeds<br/><i>Hourly</i>"]
+        Bluesky["🦋 Bluesky<br/><i>Every 2h</i>"]
+        Reddit["🔴 Reddit<br/><i>Every 4h</i>"]
+        HN["🟠 Hacker News<br/><i>Every 4h</i>"]
+        arXiv["📄 arXiv<br/><i>Daily</i>"]
+        Twitter["🐦 Twitter/X<br/><i>Hourly</i>"]
+    end
+
+    subgraph mcp["🔌 MCP Tools (Optional)"]
+        Exa["Exa Search"]
+        Perplexity["Perplexity"]
+    end
+
+    subgraph storage["📁 Research Storage"]
+        rss_out["research/rss/"]
+        bluesky_out["research/bluesky/"]
+        community_out["research/community/"]
+        arxiv_out["research/arxiv/"]
+        twitter_out["research/twitter/"]
+    end
+
+    RSS --> rss_out
+    Bluesky --> bluesky_out
+    Reddit --> community_out
+    HN --> community_out
+    arXiv --> arxiv_out
+    Twitter --> twitter_out
+
+    rss_out --> Digest
+    bluesky_out --> Digest
+    community_out --> Digest
+    arxiv_out --> Digest
+    twitter_out --> Digest
+
+    Exa -.-> Digest
+    Perplexity -.-> Digest
+
+    Digest["📊 Daily Digest<br/><i>11 PM UTC</i>"]
+    Digest --> digest_out["research/digest/"]
+
+    subgraph improve["🔄 Self-Improvement"]
+        Improve["daily-improve.yml<br/><i>Midnight UTC</i>"]
+    end
+
+    digest_out --> Improve
+    Improve -->|"Creates PRs"| sources
 ```
 
 ## Data Sources
@@ -47,6 +68,29 @@ Automated multi-source AI news research agent powered by Claude and MCP.
 
 ## Workflows
 
+```mermaid
+gantt
+    title Daily Workflow Schedule (UTC)
+    dateFormat HH:mm
+    axisFormat %H:%M
+
+    section Hourly
+    RSS Feeds           :crit, 00:00, 1h
+    Twitter/X           :00:00, 1h
+
+    section Every 2h
+    Bluesky             :active, 00:00, 2h
+
+    section Every 4h
+    Community (HN+Reddit) :00:00, 4h
+    AI News Research    :00:00, 4h
+
+    section Daily
+    arXiv Papers        :06:00, 1h
+    Daily Digest        :23:00, 1h
+    Self-Improve        :milestone, 00:00, 0h
+```
+
 | Workflow | Schedule | Source | Output |
 |----------|----------|--------|--------|
 | `hourly-rss.yml` | Every hour | Official blogs, TechCrunch, arXiv RSS | `research/rss/` |
@@ -55,6 +99,7 @@ Automated multi-source AI news research agent powered by Claude and MCP.
 | `daily-arxiv.yml` | Daily 6 AM UTC | arXiv papers | `research/arxiv/` |
 | `daily-digest.yml` | Daily 11 PM UTC | All sources + MCP search | `research/digest/` |
 | `hourly-twitter.yml` | Every hour | Twitter/X (needs API key) | `research/twitter/` |
+| `ai-news-research.yml` | Every 4 hours | Perplexity/Exa MCP | `research/` |
 | `daily-improve.yml` | Daily midnight | Self-improvement | PRs with improvements |
 
 ## Setup
