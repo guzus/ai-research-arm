@@ -55,6 +55,7 @@ Automated multi-source AI news research agent powered by Claude and MCP.
 | `daily-arxiv.yml` | Daily 6 AM UTC | arXiv papers | `research/arxiv/` |
 | `daily-digest.yml` | Daily 11 PM UTC | All sources | `research/digest/` |
 | `hourly-twitter.yml` | Every hour | Twitter/X (needs API key) | `research/twitter/` |
+| `daily-improve.yml` | Daily midnight | Self-improvement | PRs with improvements |
 
 ## Setup
 
@@ -130,6 +131,19 @@ All workflows can be triggered manually:
 1. Go to Actions tab
 2. Select workflow
 3. Click "Run workflow"
+
+## Self-Improvement System
+
+The pipeline includes a **self-improving meta-workflow** (`daily-improve.yml`) that:
+
+1. **Analyzes** yesterday's research output quality
+2. **Identifies** coverage gaps and data freshness issues
+3. **Searches** for new MCP servers, RSS feeds, and data sources
+4. **Creates PRs** with proposed improvements
+
+This creates a feedback loop where the system continuously improves its own methodology.
+
+See [IMPROVEMENTS_LOG.md](./IMPROVEMENTS_LOG.md) for improvement history and future ideas.
 
 ## Resources
 
