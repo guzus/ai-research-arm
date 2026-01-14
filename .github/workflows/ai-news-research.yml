@@ -1,0 +1,98 @@
+name: AI News Research Agent
+
+on:
+  schedule:
+    # Run every 4 hours
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+    inputs:
+      topics:
+        description: 'Specific AI topics to research (comma-separated)'
+        required: false
+        default: 'AI agents, LLM, Claude, GPT, AI research breakthroughs'
+
+jobs:
+  ai-news-research:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Create MCP Config with Exa Search
+        run: |
+          cat > /tmp/mcp-config.json << 'EOF'
+          {
+            "mcpServers": {
+              "exa": {
+                "command": "npx",
+                "args": ["-y", "exa-mcp-server"],
+                "env": {
+                  "EXA_API_KEY": "${{ secrets.EXA_API_KEY }}"
+                }
+              },
+              "tavily": {
+                "command": "npx",
+                "args": ["-y", "@tavily/mcp-server"],
+                "env": {
+                  "TAVILY_API_KEY": "${{ secrets.TAVILY_API_KEY }}"
+                }
+              }
+            }
+          }
+          EOF
+
+      - name: Run AI News Research with Claude
+        id: research
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          mcp_config: /tmp/mcp-config.json
+          allowed_tools: |
+            mcp__exa__web_search_exa
+            mcp__exa__deep_search_exa
+            mcp__tavily__search
+            Write
+            Read
+            Bash(git:*)
+          prompt: |
+            You are an AI research agent. Your task is to search for the latest AI news and developments.
+
+            Topics to research: ${{ github.event.inputs.topics || 'AI agents, LLM breakthroughs, Claude AI, GPT updates, AI research papers, AI startups, AI regulation, AI safety' }}
+
+            Instructions:
+            1. Use the Exa MCP tools (web_search_exa or deep_search_exa) to search for recent AI news from the past 24-48 hours
+            2. Focus on:
+               - Major AI model releases and updates
+               - AI research breakthroughs and papers
+               - AI company news (OpenAI, Anthropic, Google DeepMind, etc.)
+               - AI regulation and policy updates
+               - Interesting AI applications and tools
+            3. For each finding, include:
+               - Title and brief summary
+               - Source URL
+               - Why it's significant
+            4. Create a markdown report file at: research/${{ steps.date.outputs.date }}-ai-news.md
+            5. The report should have clear sections and be well-organized
+            6. After creating the file, commit it with a descriptive message
+
+            If Exa search is unavailable, fall back to Tavily search.
+
+      - name: Push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add research/
+          git diff --staged --quiet || git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
+          git push
