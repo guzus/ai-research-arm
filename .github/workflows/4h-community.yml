@@ -55,7 +55,7 @@ jobs:
               score: .score,
               comments: .num_comments,
               url: ("https://reddit.com" + .permalink),
-              created: (.created_utc | todate),
+              created_utc: .created_utc,
               flair: .link_flair_text
             }] | sort_by(-.score)' /tmp/reddit/${sub}_raw.json > /tmp/reddit/${sub}.json 2>/dev/null || \
             echo "[]" > /tmp/reddit/${sub}.json
@@ -114,13 +114,13 @@ jobs:
                 "score": 123,
                 "comments": 45,
                 "url": "https://reddit.com/r/.../...",
-                "created": "2026-01-14T12:00:00Z",
+                "created_utc": 1768373663,
                 "flair": "Research" or null
               },
               ...
             ]
 
-            Posts are already sorted by score (highest first).
+            Posts are already sorted by score (highest first). The created_utc is a Unix timestamp.
 
             Write to: research/community/${{ steps.datetime.outputs.date }}-reddit.md
 
