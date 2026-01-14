@@ -58,14 +58,9 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          mcp_config: /tmp/mcp-config.json
-          allowed_tools: |
-            mcp__exa__web_search_exa
-            mcp__exa__deep_search_exa
-            mcp__tavily__search
-            Write
-            Read
-            Bash(git:*)
+          claude_args: |
+            --mcp-config /tmp/mcp-config.json
+            --allowedTools "mcp__exa__web_search_exa,mcp__exa__deep_search_exa,mcp__tavily__search,Write,Read,Bash(git:*)"
           prompt: |
             You are an AI research agent. Your task is to search for the latest AI news and developments.
 
