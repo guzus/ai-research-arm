@@ -43,7 +43,7 @@ Automated multi-source AI news research agent powered by Claude and MCP.
 | **Reddit** | JSON endpoint | Every 4 hours | ✅ Yes |
 | **Hacker News** | MCP Server | Every 4 hours | ✅ Yes |
 | **arXiv** | MCP + RSS | Daily | ✅ Yes |
-| **Web Search** | Exa/WebSearch | Every 4 hours | Cached |
+| **Web Search** | Exa/Perplexity MCP | On-demand | ✅ Yes (via MCP) |
 
 ## Workflows
 
@@ -53,7 +53,7 @@ Automated multi-source AI news research agent powered by Claude and MCP.
 | `2h-bluesky.yml` | Every 2 hours | Bluesky AI posts | `research/bluesky/` |
 | `4h-community.yml` | Every 4 hours | Reddit JSON + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 6 AM UTC | arXiv papers | `research/arxiv/` |
-| `daily-digest.yml` | Daily 11 PM UTC | All sources | `research/digest/` |
+| `daily-digest.yml` | Daily 11 PM UTC | All sources + MCP search | `research/digest/` |
 | `hourly-twitter.yml` | Every hour | Twitter/X (needs API key) | `research/twitter/` |
 | `daily-improve.yml` | Daily midnight | Self-improvement | PRs with improvements |
 
@@ -69,8 +69,11 @@ Automated multi-source AI news research agent powered by Claude and MCP.
 
 | Secret | Source | Benefit |
 |--------|--------|---------|
-| `EXA_API_KEY` | [dashboard.exa.ai](https://dashboard.exa.ai) | Better web search |
+| `EXA_API_KEY` | [dashboard.exa.ai](https://dashboard.exa.ai) | Neural web search via MCP |
+| `PERPLEXITY_API_KEY` | [perplexity.ai/settings/api](https://www.perplexity.ai/settings/api) | Real-time web search with citations via MCP |
 | `TWITTER_BEARER_TOKEN` | [developer.twitter.com](https://developer.twitter.com) | Direct Twitter access |
+
+**Note:** Exa and Perplexity integrate as MCP (Model Context Protocol) tools, giving Claude enhanced web search capabilities during research workflows.
 
 ## Output Structure
 
@@ -88,7 +91,7 @@ research/
 ├── twitter/
 │   └── 2026-01-14.md              # Twitter updates (if API key set)
 └── digest/
-    └── 2026-01-14-digest.md       # Daily synthesized digest
+    └── 2026-01-14-digest.md       # Daily synthesized digest (enhanced with MCP tools)
 ```
 
 ## Data Source Details

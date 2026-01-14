@@ -26,7 +26,7 @@ jobs:
         id: date
         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
-      - name: Check for Exa API key
+      - name: Check for API keys
         id: check-keys
         run: |
           if [ -n "${{ secrets.EXA_API_KEY }}" ]; then
@@ -34,13 +34,23 @@ jobs:
           else
             echo "has_exa=false" >> $GITHUB_OUTPUT
           fi
+          if [ -n "${{ secrets.PERPLEXITY_API_KEY }}" ]; then
+            echo "has_perplexity=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_perplexity=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Create MCP Config
-        if: steps.check-keys.outputs.has_exa == 'true'
+        if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
         run: |
-          cat > /tmp/mcp-config.json << EOF
+          cat > /tmp/mcp-config.json << 'EOF'
           {
             "mcpServers": {
+          EOF
+          
+          # Add Exa if available
+          if [ "${{ steps.check-keys.outputs.has_exa }}" == "true" ]; then
+            cat >> /tmp/mcp-config.json << 'EOF'
               "exa": {
                 "command": "npx",
                 "args": ["-y", "exa-mcp-server"],
@@ -48,18 +58,41 @@ jobs:
                   "EXA_API_KEY": "${{ secrets.EXA_API_KEY }}"
                 }
               }
+          EOF
+            if [ "${{ steps.check-keys.outputs.has_perplexity }}" == "true" ]; then
+              echo "," >> /tmp/mcp-config.json
+            fi
+          fi
+          
+          # Add Perplexity if available
+          if [ "${{ steps.check-keys.outputs.has_perplexity }}" == "true" ]; then
+            cat >> /tmp/mcp-config.json << 'EOF'
+              "perplexity": {
+                "command": "npx",
+                "args": ["-y", "perplexity-mcp"],
+                "env": {
+                  "PERPLEXITY_API_KEY": "${{ secrets.PERPLEXITY_API_KEY }}"
+                }
+              }
+          EOF
+          fi
+          
+          cat >> /tmp/mcp-config.json << 'EOF'
             }
           }
           EOF
+          
+          echo "Generated MCP config:"
+          cat /tmp/mcp-config.json
 
-      - name: Synthesize Daily Digest (with Exa)
-        if: steps.check-keys.outputs.has_exa == 'true'
+      - name: Synthesize Daily Digest (with MCP tools)
+        if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
             --mcp-config /tmp/mcp-config.json
-            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__web_search_exa"
+            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__*,mcp__perplexity__*"
           prompt: |
             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
 
@@ -70,9 +103,12 @@ jobs:
             - research/community/${{ steps.date.outputs.date }}-hn.md (if exists)
             - research/community/${{ steps.date.outputs.date }}-reddit.md (if exists)
             - research/arxiv/${{ steps.date.outputs.date }}-papers.md (if exists)
+            - research/rss/${{ steps.date.outputs.date }}.md (if exists)
 
-            STEP 2: Use Exa search to fill gaps
-            Search for any major AI news we might have missed today.
+            STEP 2: Use MCP search tools to fill gaps
+            You have access to advanced search tools (Exa, Perplexity) via MCP.
+            Use them to search for any major AI news we might have missed today.
+            Perplexity tools provide real-time web search with citations.
 
             STEP 3: Write the digest
             OUTPUT: research/digest/${{ steps.date.outputs.date }}-digest.md
@@ -115,7 +151,8 @@ jobs:
             - Hacker News: [count] stories
             - Reddit: [count] posts
             - arXiv: [count] papers
-            - Web: [additional sources]
+            - RSS: [count] articles
+            - MCP Search: [results from Exa/Perplexity tools]
 
             *Generated at ${{ steps.date.outputs.date }} 23:00 UTC*
 
@@ -140,6 +177,8 @@ jobs:
             - research/community/${{ steps.date.outputs.date }}-hn.md (if exists)
             - research/community/${{ steps.date.outputs.date }}-reddit.md (if exists)
             - research/arxiv/${{ steps.date.outputs.date }}-papers.md (if exists)
+            - research/perplexity/${{ steps.date.outputs.date }}.md (if exists)
+            - research/rss/${{ steps.date.outputs.date }}.md (if exists)
 
             STEP 2: Use WebSearch to fill gaps
             Search for any major AI news from today we might have missed.
@@ -185,7 +224,8 @@ jobs:
             - Hacker News: [count] stories
             - Reddit: [count] posts
             - arXiv: [count] papers
-            - Web: [additional sources]
+            - RSS: [count] articles
+            - MCP Search: [results from Exa/Perplexity tools]
 
             *Generated at ${{ steps.date.outputs.date }} 23:00 UTC*
 

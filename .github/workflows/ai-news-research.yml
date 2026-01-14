@@ -38,13 +38,23 @@ jobs:
           else
             echo "has_exa=false" >> $GITHUB_OUTPUT
           fi
+          if [ -n "${{ secrets.PERPLEXITY_API_KEY }}" ]; then
+            echo "has_perplexity=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_perplexity=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Create MCP Config (if API keys available)
-        if: steps.check-keys.outputs.has_exa == 'true'
+        if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
         run: |
-          cat > /tmp/mcp-config.json << EOF
+          cat > /tmp/mcp-config.json << 'EOF'
           {
             "mcpServers": {
+          EOF
+          
+          # Add Exa if available
+          if [ "${{ steps.check-keys.outputs.has_exa }}" == "true" ]; then
+            cat >> /tmp/mcp-config.json << 'EOF'
               "exa": {
                 "command": "npx",
                 "args": ["-y", "exa-mcp-server"],
@@ -52,25 +62,50 @@ jobs:
                   "EXA_API_KEY": "${{ secrets.EXA_API_KEY }}"
                 }
               }
+          EOF
+            if [ "${{ steps.check-keys.outputs.has_perplexity }}" == "true" ]; then
+              echo "," >> /tmp/mcp-config.json
+            fi
+          fi
+          
+          # Add Perplexity if available
+          if [ "${{ steps.check-keys.outputs.has_perplexity }}" == "true" ]; then
+            cat >> /tmp/mcp-config.json << 'EOF'
+              "perplexity": {
+                "command": "npx",
+                "args": ["-y", "perplexity-mcp"],
+                "env": {
+                  "PERPLEXITY_API_KEY": "${{ secrets.PERPLEXITY_API_KEY }}"
+                }
+              }
+          EOF
+          fi
+          
+          cat >> /tmp/mcp-config.json << 'EOF'
             }
           }
           EOF
+          
+          echo "Generated MCP config:"
+          cat /tmp/mcp-config.json
 
       - name: Run AI News Research with Claude (with MCP)
-        if: steps.check-keys.outputs.has_exa == 'true'
+        if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
             --mcp-config /tmp/mcp-config.json
-            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__web_search_exa,mcp__exa__deep_search_exa"
+            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__*,mcp__perplexity__*"
           prompt: |
             You are an AI news research agent. Find BREAKING NEWS and RECENT ANNOUNCEMENTS only.
 
             TODAY: ${{ steps.date.outputs.date }}
             REPO: ${{ github.repository }}
 
-            Use Exa MCP tools (mcp__exa__web_search_exa) to search for REAL NEWS from last 24-48 hours:
+            Use MCP search tools (Exa, Perplexity) to search for REAL NEWS from last 24-48 hours:
+            - Perplexity provides real-time web search with citations
+            - Use whichever tools are available to find:
             - OpenAI announcements
             - Anthropic Claude releases
             - Google Gemini updates
