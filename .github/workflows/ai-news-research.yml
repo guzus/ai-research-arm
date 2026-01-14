@@ -204,3 +204,20 @@ jobs:
         run: |
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git push || echo "Nothing to push"
+
+      - name: Send Telegram notification
+        if: success() && secrets.TELEGRAM_BOT_TOKEN != ''
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: |
+            🔬 *AI News Research Complete*
+
+            📅 Date: ${{ steps.date.outputs.date }}
+            ✅ Status: Success
+
+            📄 Report: [View on GitHub](https://github.com/${{ github.repository }}/blob/main/research/${{ steps.date.outputs.date }}-ai-news.md)
+
+            🔗 [Workflow Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
