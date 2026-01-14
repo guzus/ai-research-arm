@@ -32,39 +32,57 @@ jobs:
 
           # Fetch hot posts from AI subreddits (no auth needed, real-time data)
           # Using browser-like User-Agent for better compatibility
-          UA="Mozilla/5.0 (compatible; AIResearchBot/1.0; +https://github.com)"
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
 
+          echo "Fetching r/MachineLearning..."
           curl -sL "https://www.reddit.com/r/MachineLearning/hot.json?limit=25" \
-            -H "User-Agent: $UA" > /tmp/reddit/ml_raw.json
+            -H "User-Agent: $UA" \
+            -H "Accept: application/json" > /tmp/reddit/ml_raw.json
+          echo "Raw response size: $(wc -c < /tmp/reddit/ml_raw.json) bytes"
+          echo "First 200 chars: $(head -c 200 /tmp/reddit/ml_raw.json)"
 
           sleep 2  # Rate limit friendly
 
+          echo "Fetching r/LocalLLaMA..."
           curl -sL "https://www.reddit.com/r/LocalLLaMA/hot.json?limit=25" \
-            -H "User-Agent: $UA" > /tmp/reddit/localllama_raw.json
+            -H "User-Agent: $UA" \
+            -H "Accept: application/json" > /tmp/reddit/localllama_raw.json
+          echo "Raw response size: $(wc -c < /tmp/reddit/localllama_raw.json) bytes"
 
           sleep 2
 
+          echo "Fetching r/artificial..."
           curl -sL "https://www.reddit.com/r/artificial/hot.json?limit=20" \
-            -H "User-Agent: $UA" > /tmp/reddit/artificial_raw.json
+            -H "User-Agent: $UA" \
+            -H "Accept: application/json" > /tmp/reddit/artificial_raw.json
+          echo "Raw response size: $(wc -c < /tmp/reddit/artificial_raw.json) bytes"
+
+          # Check jq version
+          echo "jq version: $(jq --version)"
 
           # Pre-process JSON with jq to extract only relevant fields
           # This makes it much easier for Claude to parse
           for sub in ml localllama artificial; do
-            jq -r '[.data.children[].data | {
-              title: .title,
-              score: .score,
-              comments: .num_comments,
-              url: ("https://reddit.com" + .permalink),
-              created_utc: .created_utc,
-              flair: .link_flair_text
-            }] | sort_by(-.score)' /tmp/reddit/${sub}_raw.json > /tmp/reddit/${sub}.json 2>/dev/null || \
-            echo "[]" > /tmp/reddit/${sub}.json
+            echo "Processing ${sub}..."
+            if jq -e '.data.children' /tmp/reddit/${sub}_raw.json > /dev/null 2>&1; then
+              jq '[.data.children[].data | {
+                title: .title,
+                score: .score,
+                comments: .num_comments,
+                url: ("https://reddit.com" + .permalink),
+                created_utc: .created_utc,
+                flair: .link_flair_text
+              }] | sort_by(-.score)' /tmp/reddit/${sub}_raw.json > /tmp/reddit/${sub}.json
+              echo "${sub} processed successfully"
+            else
+              echo "ERROR: Invalid JSON for ${sub}"
+              echo "[]" > /tmp/reddit/${sub}.json
+            fi
           done
 
-          echo "Reddit JSON fetched and processed successfully"
-          echo "--- ml.json preview ---"
+          echo "=== ml.json preview ==="
           head -50 /tmp/reddit/ml.json
-          echo "--- localllama.json preview ---"
+          echo "=== localllama.json preview ==="
           head -50 /tmp/reddit/localllama.json
 
       - name: Create MCP Config
