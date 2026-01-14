@@ -1,0 +1,154 @@
+name: Community AI Digest (HN + Reddit)
+
+on:
+  schedule:
+    # Run every 4 hours
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+jobs:
+  community-digest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get current datetime
+        id: datetime
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+
+      - name: Check for API keys
+        id: check-keys
+        run: |
+          HAS_HN=false
+          HAS_REDDIT=false
+          if [ -n "${{ secrets.REDDIT_CLIENT_ID }}" ]; then
+            HAS_REDDIT=true
+          fi
+          echo "has_reddit=$HAS_REDDIT" >> $GITHUB_OUTPUT
+
+      - name: Create MCP Config
+        run: |
+          cat > /tmp/mcp-config.json << 'EOF'
+          {
+            "mcpServers": {
+              "hackernews": {
+                "command": "npx",
+                "args": ["-y", "mcp-hackernews"]
+              }
+            }
+          }
+          EOF
+
+      - name: Fetch Hacker News AI Stories
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --mcp-config /tmp/mcp-config.json
+            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch,mcp__hackernews__*"
+          prompt: |
+            You are a Hacker News AI curator. Find the TOP AI-related stories from HN.
+
+            TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+            OUTPUT: research/community/${{ steps.datetime.outputs.date }}-hn.md
+
+            Use the Hacker News MCP tools to fetch:
+            1. Top stories - filter for AI/ML/LLM related
+            2. New stories with high engagement about AI
+
+            Also use WebSearch for:
+            - "site:news.ycombinator.com AI" (last 4 hours)
+            - "site:news.ycombinator.com LLM" (last 4 hours)
+            - "site:news.ycombinator.com GPT Claude Gemini"
+
+            FILTER FOR:
+            - AI model releases, benchmarks
+            - AI startups, funding
+            - AI research papers
+            - AI tools and frameworks
+            - AI policy and regulation
+
+            SKIP:
+            - Generic "AI will take jobs" posts
+            - Old reposts
+            - Low-engagement posts (<10 points)
+
+            FORMAT (append to file):
+
+            ---
+            ## ${{ steps.datetime.outputs.timestamp }}
+
+            ### Top Stories
+            | Title | Points | Comments | Link |
+            |-------|--------|----------|------|
+            | ... | ... | ... | ... |
+
+            ### Notable Discussions
+            - [Title]: Key insight from comments - [link]
+
+            After writing, commit:
+            git add research/community/
+            git commit -m "HN digest ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
+
+      - name: Fetch Reddit AI Discussions
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
+          prompt: |
+            You are a Reddit AI curator. Find TOP posts from AI subreddits.
+
+            TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+            OUTPUT: research/community/${{ steps.datetime.outputs.date }}-reddit.md
+
+            SEARCH (use WebSearch):
+            - "site:reddit.com/r/MachineLearning" (hot posts)
+            - "site:reddit.com/r/LocalLLaMA" (new releases, benchmarks)
+            - "site:reddit.com/r/artificial" (news)
+            - "site:reddit.com/r/singularity" (breaking AI news)
+
+            FOCUS ON:
+            - New model releases and benchmarks
+            - Research paper discussions
+            - Tool/framework announcements
+            - Industry news and analysis
+
+            SKIP:
+            - Memes, jokes
+            - Beginner questions
+            - Old news reposts
+
+            FORMAT (append to file):
+
+            ---
+            ## ${{ steps.datetime.outputs.timestamp }}
+
+            ### r/MachineLearning
+            - [Title] - [key insight] - [link]
+
+            ### r/LocalLLaMA
+            - [Title] - [key insight] - [link]
+
+            ### Other Notable
+            - [Title] from r/[subreddit] - [link]
+
+            After writing, commit:
+            git add research/community/
+            git commit -m "Reddit digest ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git push || echo "Nothing to push"

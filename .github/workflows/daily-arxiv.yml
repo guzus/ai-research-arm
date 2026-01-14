@@ -1,0 +1,121 @@
+name: Daily arXiv AI Research
+
+on:
+  schedule:
+    # Run daily at 6 AM UTC (after arXiv daily update)
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  arxiv-research:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get current date
+        id: date
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -v-1d +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Create MCP Config for arXiv
+        run: |
+          cat > /tmp/mcp-config.json << 'EOF'
+          {
+            "mcpServers": {
+              "arxiv": {
+                "command": "npx",
+                "args": ["-y", "arxiv-mcp-server"]
+              }
+            }
+          }
+          EOF
+
+      - name: Fetch arXiv AI Papers
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --mcp-config /tmp/mcp-config.json
+            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch,mcp__arxiv__*"
+          prompt: |
+            You are an AI research paper curator. Find the most important NEW papers from arXiv.
+
+            DATE: ${{ steps.date.outputs.date }}
+            OUTPUT: research/arxiv/${{ steps.date.outputs.date }}-papers.md
+
+            CATEGORIES TO SEARCH:
+            - cs.AI (Artificial Intelligence)
+            - cs.LG (Machine Learning)
+            - cs.CL (Computation and Language / NLP)
+            - cs.CV (Computer Vision)
+            - cs.NE (Neural and Evolutionary Computing)
+
+            Use arXiv MCP tools AND WebSearch:
+            - Search for papers submitted in last 24 hours
+            - "site:arxiv.org cs.AI" submitted today
+            - "site:arxiv.org LLM language model" new
+
+            PRIORITIZE papers about:
+            1. New model architectures
+            2. Scaling laws and efficiency
+            3. Reasoning and agents
+            4. Multimodal models
+            5. Safety and alignment
+            6. Benchmarks and evaluations
+
+            SKIP:
+            - Minor incremental improvements
+            - Application papers with no novel methods
+            - Papers from unknown authors with few citations
+
+            FORMAT:
+
+            # arXiv AI Research - ${{ steps.date.outputs.date }}
+
+            ## Highlights (Top 5 Must-Read)
+
+            ### 1. [Paper Title]
+            **Authors**: [names]
+            **arXiv**: [link]
+            **TL;DR**: [2-3 sentence summary of key contribution]
+            **Why it matters**: [1 sentence on significance]
+
+            ## By Category
+
+            ### Language Models & NLP
+            | Paper | Authors | Key Finding |
+            |-------|---------|-------------|
+
+            ### Computer Vision & Multimodal
+            | Paper | Authors | Key Finding |
+
+            ### Agents & Reasoning
+            | Paper | Authors | Key Finding |
+
+            ### Safety & Alignment
+            | Paper | Authors | Key Finding |
+
+            ### Other Notable
+            | Paper | Authors | Key Finding |
+
+            ---
+            *Curated from arXiv submissions on ${{ steps.date.outputs.date }}*
+
+            After writing, commit:
+            git add research/arxiv/
+            git commit -m "arXiv papers ${{ steps.date.outputs.date }}"
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git push || echo "Nothing to push"

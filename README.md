@@ -1,13 +1,47 @@
 # AI Research
 
-Automated AI news research agent powered by Claude and MCP (Model Context Protocol).
+Automated multi-source AI news research agent powered by Claude and MCP (Model Context Protocol).
 
-## Features
+## Architecture
 
-- Automated AI news research every 4 hours
-- Uses Exa and Tavily MCP servers for web search
-- Generates structured markdown reports
-- Tracks the latest developments in AI
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     AI Research Pipeline                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐     │
+│  │ Twitter  │   │ Hacker   │   │  Reddit  │   │  arXiv   │     │
+│  │ (hourly) │   │  News    │   │ (4 hrs)  │   │ (daily)  │     │
+│  └────┬─────┘   └────┬─────┘   └────┬─────┘   └────┬─────┘     │
+│       │              │              │              │             │
+│       ▼              ▼              ▼              ▼             │
+│  ┌─────────────────────────────────────────────────────────┐    │
+│  │              research/ directory                         │    │
+│  │  ├── twitter/YYYY-MM-DD.md                              │    │
+│  │  ├── community/YYYY-MM-DD-hn.md                         │    │
+│  │  ├── community/YYYY-MM-DD-reddit.md                     │    │
+│  │  ├── arxiv/YYYY-MM-DD-papers.md                         │    │
+│  │  └── digest/YYYY-MM-DD-digest.md                        │    │
+│  └─────────────────────────────────────────────────────────┘    │
+│                              │                                    │
+│                              ▼                                    │
+│                    ┌──────────────────┐                          │
+│                    │   Daily Digest   │                          │
+│                    │   (11 PM UTC)    │                          │
+│                    └──────────────────┘                          │
+│                                                                   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## Workflows
+
+| Workflow | Schedule | Source | Output |
+|----------|----------|--------|--------|
+| `hourly-twitter.yml` | Every hour | Twitter/X | `research/twitter/` |
+| `4h-community.yml` | Every 4 hours | Hacker News, Reddit | `research/community/` |
+| `daily-arxiv.yml` | Daily 6 AM UTC | arXiv papers | `research/arxiv/` |
+| `daily-digest.yml` | Daily 11 PM UTC | All sources | `research/digest/` |
+| `ai-news-research.yml` | Every 4 hours | Web search | `research/` |
 
 ## Setup
 
@@ -15,53 +49,62 @@ Automated AI news research agent powered by Claude and MCP (Model Context Protoc
 
 Add these secrets to your GitHub repository (Settings > Secrets and variables > Actions):
 
-| Secret | Description | Get it from |
-|--------|-------------|-------------|
-| `CLAUDE_CODE_OAUTH_TOKEN` | Claude Code authentication | Already set up via `/install-github-app` |
-| `EXA_API_KEY` | Exa AI search API key | [dashboard.exa.ai](https://dashboard.exa.ai) |
-| `TAVILY_API_KEY` | Tavily search API key (fallback) | [app.tavily.com](https://app.tavily.com) |
+| Secret | Required | Description | Get it from |
+|--------|----------|-------------|-------------|
+| `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code authentication | `/install-github-app` |
+| `EXA_API_KEY` | No | Exa AI search (enhanced) | [dashboard.exa.ai](https://dashboard.exa.ai) |
+| `TWITTER_BEARER_TOKEN` | No | Twitter API access | [developer.twitter.com](https://developer.twitter.com) |
+| `REDDIT_CLIENT_ID` | No | Reddit API access | [reddit.com/prefs/apps](https://reddit.com/prefs/apps) |
+| `REDDIT_CLIENT_SECRET` | No | Reddit API secret | Same as above |
 
 ### MCP Servers Used
 
-This project uses the following MCP servers in GitHub Actions:
+| Server | Purpose | NPM Package |
+|--------|---------|-------------|
+| [Exa](https://github.com/exa-labs/exa-mcp-server) | Web search | `exa-mcp-server` |
+| [Hacker News](https://github.com/paabloLC/mcp-hacker-news) | HN stories | `mcp-hackernews` |
+| [arXiv](https://github.com/blazickjp/arxiv-mcp-server) | Research papers | `arxiv-mcp-server` |
+| [Twitter](https://github.com/EnesCinr/twitter-mcp) | Twitter/X | `@mcp/twitter-server` |
 
-1. **[Exa MCP Server](https://github.com/exa-labs/exa-mcp-server)** - Primary search tool
-   - `web_search_exa`: Real-time web search
-   - `deep_search_exa`: Deep search with query expansion
+## Output Structure
 
-2. **[Tavily MCP Server](https://github.com/tavily-ai/tavily-mcp)** - Fallback search
-   - Controlled web search with filtering options
+```
+research/
+├── twitter/
+│   └── 2026-01-14.md          # Hourly Twitter updates (appended)
+├── community/
+│   ├── 2026-01-14-hn.md       # Hacker News digest
+│   └── 2026-01-14-reddit.md   # Reddit digest
+├── arxiv/
+│   └── 2026-01-14-papers.md   # Daily arXiv papers
+├── digest/
+│   └── 2026-01-14-digest.md   # Synthesized daily digest
+└── 2026-01-14-ai-news.md      # General web search results
+```
 
-### Other Recommended MCP Servers
+## Data Sources Strategy
 
-| MCP Server | Use Case | Link |
-|------------|----------|------|
-| Perplexity MCP | AI-powered search with reasoning | [docs.perplexity.ai](https://docs.perplexity.ai/guides/mcp-server) |
-| Brave Search MCP | Privacy-focused web search | [github.com/anthropics/brave-search-mcp](https://github.com/anthropics/brave-search-mcp) |
-| Google News MCP | News-specific searches | [mcp.so](https://mcp.so) |
-| MCP Omnisearch | Unified multi-provider search | [github.com/spences10/mcp-omnisearch](https://github.com/spences10/mcp-omnisearch) |
+### Tier 1: Real-time (Hourly)
+- **Twitter/X**: Breaking announcements from @OpenAI, @AnthropicAI, @GoogleDeepMind, key researchers
 
-## Workflows
+### Tier 2: Community Signal (Every 4 hours)
+- **Hacker News**: Tech community curated, high signal-to-noise
+- **Reddit**: r/MachineLearning, r/LocalLLaMA for deeper technical discussions
 
-### AI News Research (`ai-news-research.yml`)
+### Tier 3: Research (Daily)
+- **arXiv**: New papers in cs.AI, cs.LG, cs.CL, cs.CV
 
-- **Schedule**: Every 4 hours
-- **Output**: `research/YYYY-MM-DD-ai-news.md`
-- **Manual trigger**: Go to Actions > AI News Research Agent > Run workflow
+### Tier 4: Synthesis (Daily)
+- **Daily Digest**: Combines all sources into executive summary
 
-### Claude Code Review (`claude-code-review.yml`)
+## Manual Triggers
 
-- **Trigger**: On PR open/update
-- **Action**: Automated code review
-
-### Claude Code (`claude.yml`)
-
-- **Trigger**: Mention `@claude` in issues/PRs
-- **Action**: Interactive code assistance
+All workflows support manual triggering via GitHub Actions UI:
+1. Go to Actions tab
+2. Select the workflow
+3. Click "Run workflow"
 
 ## Using MCP in GitHub Actions
-
-Yes, MCP servers work in GitHub Actions via `anthropics/claude-code-action`:
 
 ```yaml
 - name: Create MCP Config
@@ -88,10 +131,11 @@ Yes, MCP servers work in GitHub Actions via `anthropics/claude-code-action`:
       --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__web_search_exa"
     prompt: |
       Search for AI news and save a report to research/report.md
-      Then commit the changes.
 ```
 
 ## Resources
 
-- [Claude Code Action Solutions](https://github.com/anthropics/claude-code-action/blob/main/docs/solutions.md) - Examples for scheduled workflows, file operations, and more
-- [Claude Code Action Configuration](https://github.com/anthropics/claude-code-action/blob/main/docs/configuration.md) - Full configuration reference
+- [Claude Code Action Solutions](https://github.com/anthropics/claude-code-action/blob/main/docs/solutions.md)
+- [Claude Code Action Configuration](https://github.com/anthropics/claude-code-action/blob/main/docs/configuration.md)
+- [Model Context Protocol](https://modelcontextprotocol.io/)
+- [MCP Servers Directory](https://mcp.so/)

@@ -1,0 +1,141 @@
+name: Hourly Twitter AI News
+
+on:
+  schedule:
+    # Run every hour
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  twitter-news:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get current datetime
+        id: datetime
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "hour=$(date +'%H')" >> $GITHUB_OUTPUT
+          echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+
+      - name: Check for Twitter API keys
+        id: check-keys
+        run: |
+          if [ -n "${{ secrets.TWITTER_BEARER_TOKEN }}" ]; then
+            echo "has_twitter=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_twitter=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create MCP Config for Twitter
+        if: steps.check-keys.outputs.has_twitter == 'true'
+        run: |
+          cat > /tmp/mcp-config.json << EOF
+          {
+            "mcpServers": {
+              "twitter": {
+                "command": "npx",
+                "args": ["-y", "@mcp/twitter-server"],
+                "env": {
+                  "TWITTER_BEARER_TOKEN": "${{ secrets.TWITTER_BEARER_TOKEN }}"
+                }
+              }
+            }
+          }
+          EOF
+
+      - name: Fetch Twitter AI News (with MCP)
+        if: steps.check-keys.outputs.has_twitter == 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --mcp-config /tmp/mcp-config.json
+            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__twitter__*"
+          prompt: |
+            You are a Twitter AI news monitor. Fetch the LATEST tweets from the last 1-2 hours.
+
+            TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+            OUTPUT: research/twitter/${{ steps.datetime.outputs.date }}.md
+
+            KEY ACCOUNTS TO MONITOR:
+            - @OpenAI, @sama (Sam Altman)
+            - @AnthropicAI, @daboris (Dario Amodei)
+            - @GoogleAI, @GoogleDeepMind
+            - @xaboris (Andrej Karpathy)
+            - @ylecun (Yann LeCun)
+            - @elaboris (Elon Musk / xAI)
+            - @MistralAI, @MetaAI
+
+            SEARCH TERMS:
+            - "AI announcement"
+            - "new model release"
+            - "GPT", "Claude", "Gemini"
+
+            FORMAT: Append to the daily file (create if doesn't exist):
+
+            ## ${{ steps.datetime.outputs.hour }}:00 UTC
+
+            ### Breaking
+            - [Tweet summary] - @handle - [link]
+
+            ### Announcements
+            - [Tweet summary] - @handle - [link]
+
+            Only include SIGNIFICANT tweets (announcements, releases, insights).
+            Skip: retweets of old news, casual tweets, promotional content.
+
+            After writing, commit:
+            git add research/twitter/
+            git commit -m "Twitter update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
+
+      - name: Fetch Twitter AI News (WebSearch fallback)
+        if: steps.check-keys.outputs.has_twitter != 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
+          prompt: |
+            You are a Twitter AI news monitor. Search for the LATEST AI tweets from the last 1-2 hours.
+
+            TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+            OUTPUT: research/twitter/${{ steps.datetime.outputs.date }}.md
+
+            SEARCH QUERIES:
+            - "OpenAI announcement site:twitter.com"
+            - "Anthropic Claude site:twitter.com"
+            - "AI model release site:twitter.com today"
+            - "Sam Altman AI site:twitter.com"
+
+            FORMAT: Append to the daily file (create if doesn't exist):
+
+            ## ${{ steps.datetime.outputs.hour }}:00 UTC
+
+            ### Breaking
+            - [Tweet summary] - @handle - [link if available]
+
+            ### Announcements
+            - [Tweet summary] - @handle - [link if available]
+
+            Only include SIGNIFICANT news. Skip old or irrelevant content.
+            If no significant news found, write "No significant updates this hour."
+
+            After writing, commit:
+            git add research/twitter/
+            git commit -m "Twitter update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git push || echo "Nothing to push"
