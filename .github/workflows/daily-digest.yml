@@ -115,38 +115,40 @@ jobs:
 
             FORMAT:
 
-            # AI Daily Digest - ${{ steps.date.outputs.date }}
+            # 🤖 AI Daily Digest - ${{ steps.date.outputs.date }}
 
-            ## Executive Summary
+            > **Reading Time:** [Estimate based on content length, e.g. "5 min read"]
+
+            ## 📊 Executive Summary
             [3-5 bullet points of the day's most important developments]
 
-            ## Breaking News
+            ## 🚨 Breaking News
             [Major announcements from companies]
 
-            ## Model Releases & Updates
+            ## 🧠 Model Releases & Updates
             [New models, versions, capabilities]
 
-            ## Research Highlights
+            ## 🔬 Research Highlights
             [Top papers from arXiv with brief summaries]
 
-            ## Community Buzz
+            ## 🗣️ Community Buzz
             [What HN and Reddit are discussing]
 
-            ## Funding & Business
+            ## 💰 Funding & Business
             [Investment rounds, acquisitions, partnerships]
 
-            ## Policy & Regulation
+            ## ⚖️ Policy & Regulation
             [Government actions, policy changes]
 
-            ## Tools & Resources
+            ## 🛠️ Tools & Resources
             [New tools, frameworks, tutorials worth noting]
 
-            ## Quote of the Day
+            ## 💭 Quote of the Day
             [Most insightful tweet or comment]
 
             ---
 
-            ### Sources
+            ## 📡 Sources & Methodology
             - Twitter: [count] updates
             - Hacker News: [count] stories
             - Reddit: [count] posts
@@ -188,38 +190,40 @@ jobs:
 
             FORMAT:
 
-            # AI Daily Digest - ${{ steps.date.outputs.date }}
+            # 🤖 AI Daily Digest - ${{ steps.date.outputs.date }}
 
-            ## Executive Summary
+            > **Reading Time:** [Estimate based on content length, e.g. "5 min read"]
+
+            ## 📊 Executive Summary
             [3-5 bullet points of the day's most important developments]
 
-            ## Breaking News
+            ## 🚨 Breaking News
             [Major announcements from companies]
 
-            ## Model Releases & Updates
+            ## 🧠 Model Releases & Updates
             [New models, versions, capabilities]
 
-            ## Research Highlights
+            ## 🔬 Research Highlights
             [Top papers from arXiv with brief summaries]
 
-            ## Community Buzz
+            ## 🗣️ Community Buzz
             [What HN and Reddit are discussing]
 
-            ## Funding & Business
+            ## 💰 Funding & Business
             [Investment rounds, acquisitions, partnerships]
 
-            ## Policy & Regulation
+            ## ⚖️ Policy & Regulation
             [Government actions, policy changes]
 
-            ## Tools & Resources
+            ## 🛠️ Tools & Resources
             [New tools, frameworks, tutorials worth noting]
 
-            ## Quote of the Day
+            ## 💭 Quote of the Day
             [Most insightful tweet or comment]
 
             ---
 
-            ### Sources
+            ## 📡 Sources & Methodology
             - Twitter: [count] updates
             - Hacker News: [count] stories
             - Reddit: [count] posts
