@@ -33,7 +33,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
+            --allowedTools "Glob,Read,Write,Edit,Bash(git:*),WebSearch"
           prompt: |
             You are an AI research methodology optimizer. Analyze yesterday's output quality and propose improvements.
 
@@ -43,20 +43,11 @@ jobs:
 
             ## STEP 1: Analyze Yesterday's Output
 
-            Read the research files from yesterday (if they exist):
-            - research/rss/${{ steps.dates.outputs.yesterday }}.md
-            - research/bluesky/${{ steps.dates.outputs.yesterday }}.md
-            - research/community/${{ steps.dates.outputs.yesterday }}-hn.md
-            - research/community/${{ steps.dates.outputs.yesterday }}-reddit.md
-            - research/arxiv/${{ steps.dates.outputs.yesterday }}-papers.md
-            - research/digest/${{ steps.dates.outputs.yesterday }}-digest.md
+            Look in the research/ directory for any reports from yesterday (${{ steps.dates.outputs.yesterday }}).
+            Check all subdirectories (twitter/, community/, arxiv/, rss/, bluesky/, digest/, etc.).
+            Read all relevant files you find.
 
-            Also read the current workflow files:
-            - .github/workflows/hourly-rss.yml
-            - .github/workflows/2h-bluesky.yml
-            - .github/workflows/4h-community.yml
-            - .github/workflows/daily-arxiv.yml
-            - .github/workflows/daily-digest.yml
+            Also look in .github/workflows/ and read the current workflow files to understand the methodology.
 
             ## STEP 2: Identify Issues
 

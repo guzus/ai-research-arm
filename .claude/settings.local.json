@@ -13,7 +13,16 @@
       "Bash(gh run view:*)",
       "Bash(gh run watch:*)",
       "Bash(git fetch:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(curl:*)",
+      "Bash(git rebase:*)",
+      "Bash(git stash:*)",
+      "Bash(git stash pop:*)",
+      "Bash(grep:*)",
+      "WebFetch(domain:desearch.ai)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(ls:*)"
     ]
   }
 }

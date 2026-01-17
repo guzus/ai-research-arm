@@ -92,18 +92,16 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
             --mcp-config /tmp/mcp-config.json
-            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__*,mcp__perplexity__*"
+            --allowedTools "Glob,Read,Write,Edit,Bash(git:*),mcp__exa__*,mcp__perplexity__*"
           prompt: |
             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
 
             DATE: ${{ steps.date.outputs.date }}
 
-            STEP 1: Read all today's source files
-            - research/twitter/${{ steps.date.outputs.date }}.md (if exists)
-            - research/community/${{ steps.date.outputs.date }}-hn.md (if exists)
-            - research/community/${{ steps.date.outputs.date }}-reddit.md (if exists)
-            - research/arxiv/${{ steps.date.outputs.date }}-papers.md (if exists)
-            - research/rss/${{ steps.date.outputs.date }}.md (if exists)
+            STEP 1: Find and read today's source files
+            Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
+            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, and any others.
+            Read all relevant files you find.
 
             STEP 2: Use MCP search tools to fill gaps
             You have access to advanced search tools (Exa, Perplexity) via MCP.
@@ -166,19 +164,16 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
+            --allowedTools "Glob,Read,Write,Edit,Bash(git:*),WebSearch"
           prompt: |
             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
 
             DATE: ${{ steps.date.outputs.date }}
 
-            STEP 1: Read all today's source files
-            - research/twitter/${{ steps.date.outputs.date }}.md (if exists)
-            - research/community/${{ steps.date.outputs.date }}-hn.md (if exists)
-            - research/community/${{ steps.date.outputs.date }}-reddit.md (if exists)
-            - research/arxiv/${{ steps.date.outputs.date }}-papers.md (if exists)
-            - research/perplexity/${{ steps.date.outputs.date }}.md (if exists)
-            - research/rss/${{ steps.date.outputs.date }}.md (if exists)
+            STEP 1: Find and read today's source files
+            Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
+            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, perplexity/, and any others.
+            Read all relevant files you find.
 
             STEP 2: Use WebSearch to fill gaps
             Search for any major AI news from today we might have missed.
