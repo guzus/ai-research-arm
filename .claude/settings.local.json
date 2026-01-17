@@ -22,7 +22,10 @@
       "WebFetch(domain:desearch.ai)",
       "WebFetch(domain:www.npmjs.com)",
       "WebFetch(domain:github.com)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(gh api:*)",
+      "Bash(python3:*)",
+      "Bash(npx:*)"
     ]
   }
 }
