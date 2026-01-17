@@ -28,7 +28,9 @@ jobs:
 
       - name: Get current date
         id: date
-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       - name: Check for MCP API keys
         id: check-keys
@@ -101,8 +103,17 @@ jobs:
             You are an AI news research agent. Find BREAKING NEWS and RECENT ANNOUNCEMENTS only.
 
             TODAY: ${{ steps.date.outputs.date }}
+            YESTERDAY: ${{ steps.date.outputs.yesterday }}
             REPO: ${{ github.repository }}
 
+            STEP 1 - DEDUPLICATION CHECK:
+            First, read the previous report(s) to avoid duplicating news:
+            - Read: research/${{ steps.date.outputs.yesterday }}-ai-news.md (if exists)
+            - Read: research/${{ steps.date.outputs.date }}-ai-news.md (if exists, to append new items)
+
+            Make a mental note of ALL stories already covered. DO NOT include any story that was already reported.
+
+            STEP 2 - SEARCH FOR NEW NEWS:
             Use MCP search tools (Exa, Perplexity) to search for REAL NEWS from last 24-48 hours:
             - Perplexity provides real-time web search with citations
             - Use whichever tools are available to find:
@@ -118,10 +129,14 @@ jobs:
             - Is from a CREDIBLE source (TechCrunch, VentureBeat, The Verge, official company blogs, Reuters)
             - Contains CONCRETE information (not speculation)
             - Has REAL URLs
+            - WAS NOT ALREADY COVERED in previous reports
 
-            DO NOT include: generic AI explanations, old news, speculation without sources.
+            DO NOT include: generic AI explanations, old news, speculation without sources, OR DUPLICATE STORIES from previous reports.
 
-            REPORT FORMAT - Use Write tool to create: research/${{ steps.date.outputs.date }}-ai-news.md
+            STEP 3 - WRITE REPORT:
+            Use Write tool to create: research/${{ steps.date.outputs.date }}-ai-news.md
+
+            Include at the top: "**Note:** For earlier news coverage, see previous reports in this directory."
 
             Sections: Breaking News, New Model Releases, Funding & Acquisitions, Research Papers, Industry Moves, Regulatory Updates
 
@@ -129,7 +144,7 @@ jobs:
             git add research/
             git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
 
-            CRITICAL: Write REAL news with actual sources. No placeholder content.
+            CRITICAL: Write REAL news with actual sources. No placeholder content. NO DUPLICATES from previous reports.
 
       - name: Run AI News Research with Claude (without MCP)
         if: steps.check-keys.outputs.has_exa != 'true' && steps.check-keys.outputs.has_perplexity != 'true'
@@ -142,9 +157,17 @@ jobs:
             You are an AI news research agent. Find BREAKING NEWS and RECENT ANNOUNCEMENTS only.
 
             TODAY: ${{ steps.date.outputs.date }}
+            YESTERDAY: ${{ steps.date.outputs.yesterday }}
             REPO: ${{ github.repository }}
 
-            SEARCH REQUIREMENTS:
+            STEP 1 - DEDUPLICATION CHECK:
+            First, read the previous report(s) to avoid duplicating news:
+            - Read: research/${{ steps.date.outputs.yesterday }}-ai-news.md (if exists)
+            - Read: research/${{ steps.date.outputs.date }}-ai-news.md (if exists, to append new items)
+
+            Make a mental note of ALL stories already covered. DO NOT include any story that was already reported.
+
+            STEP 2 - SEARCH FOR NEW NEWS:
             Do multiple specific searches to find REAL NEWS from the last 24-48 hours:
             - "OpenAI announcement January 2026"
             - "Anthropic Claude new release 2026"
@@ -158,20 +181,25 @@ jobs:
             - Is from a CREDIBLE source (TechCrunch, VentureBeat, The Verge, official company blogs, Reuters, etc.)
             - Contains CONCRETE information (not speculation or opinion)
             - Has REAL URLs that can be verified
+            - WAS NOT ALREADY COVERED in previous reports
 
             DO NOT include:
             - Generic explanations of what AI is
             - Old news or evergreen content
             - Speculation without sources
             - Information without specific dates
+            - DUPLICATE STORIES from previous reports
 
-            REPORT FORMAT - Use the Write tool to create: research/${{ steps.date.outputs.date }}-ai-news.md
+            STEP 3 - WRITE REPORT:
+            Use the Write tool to create: research/${{ steps.date.outputs.date }}-ai-news.md
 
             ```markdown
             # AI News Report - ${{ steps.date.outputs.date }}
 
+            **Note:** For earlier news coverage, see previous reports in this directory.
+
             ## Breaking News
-            [Most important announcements from last 24 hours]
+            [Most important NEW announcements from last 24 hours - not in previous reports]
 
             ## New Model Releases
             [Specific model launches with version numbers, capabilities, pricing]
@@ -196,7 +224,7 @@ jobs:
             git add research/
             git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
 
-            CRITICAL: You MUST write a real file with actual news. Do not write placeholder content.
+            CRITICAL: You MUST write a real file with actual news. Do not write placeholder content. NO DUPLICATES from previous reports.
 
       - name: Push changes
         env:
