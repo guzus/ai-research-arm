@@ -1,0 +1,332 @@
+name: Deep Research Agent
+
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  research:
+    # Trigger when issue has 'research' label
+    if: |
+      (github.event.action == 'labeled' && github.event.label.name == 'research') ||
+      (github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'research'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get current date
+        id: date
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "timestamp=$(date +'%Y-%m-%d-%H%M%S')" >> $GITHUB_OUTPUT
+
+      - name: Acknowledge research request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '🔬 **Research Agent Started**\n\nI\'m conducting deep research on your topic. This may take a few minutes...\n\n_Using web search, documentation lookups, and analysis tools._'
+            });
+
+      - name: Check for MCP API keys
+        id: check-keys
+        run: |
+          if [ -n "${{ secrets.EXA_API_KEY }}" ]; then
+            echo "has_exa=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_exa=false" >> $GITHUB_OUTPUT
+          fi
+          if [ -n "${{ secrets.PERPLEXITY_API_KEY }}" ]; then
+            echo "has_perplexity=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_perplexity=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create MCP Config (if API keys available)
+        if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
+        run: |
+          cat > /tmp/mcp-config.json << 'EOF'
+          {
+            "mcpServers": {
+          EOF
+
+          # Add Exa if available
+          if [ "${{ steps.check-keys.outputs.has_exa }}" == "true" ]; then
+            cat >> /tmp/mcp-config.json << 'EOF'
+              "exa": {
+                "command": "npx",
+                "args": ["-y", "exa-mcp-server"],
+                "env": {
+                  "EXA_API_KEY": "${{ secrets.EXA_API_KEY }}"
+                }
+              }
+          EOF
+            if [ "${{ steps.check-keys.outputs.has_perplexity }}" == "true" ]; then
+              echo "," >> /tmp/mcp-config.json
+            fi
+          fi
+
+          # Add Perplexity if available
+          if [ "${{ steps.check-keys.outputs.has_perplexity }}" == "true" ]; then
+            cat >> /tmp/mcp-config.json << 'EOF'
+              "perplexity": {
+                "command": "npx",
+                "args": ["-y", "perplexity-mcp"],
+                "env": {
+                  "PERPLEXITY_API_KEY": "${{ secrets.PERPLEXITY_API_KEY }}"
+                }
+              }
+          EOF
+          fi
+
+          cat >> /tmp/mcp-config.json << 'EOF'
+            }
+          }
+          EOF
+
+          echo "Generated MCP config:"
+          cat /tmp/mcp-config.json
+
+      - name: Run Deep Research (with MCP)
+        if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
+        id: research-mcp
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --mcp-config /tmp/mcp-config.json
+            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch,WebFetch,mcp__exa__*,mcp__perplexity__*"
+          prompt: |
+            You are a deep research agent. A user has requested research on the following topic:
+
+            **Issue Title:** ${{ github.event.issue.title }}
+
+            **Issue Body:**
+            ${{ github.event.issue.body }}
+
+            **Your Task:**
+            Conduct thorough, comprehensive research on this topic using ALL available tools:
+
+            1. **Web Search**: Use WebSearch and MCP tools (Exa, Perplexity) to find:
+               - Recent articles, tutorials, and documentation
+               - Official documentation and guides
+               - GitHub repositories and open-source solutions
+               - Stack Overflow discussions and solutions
+               - Blog posts from experts
+               - Video tutorials and courses (provide links)
+
+            2. **Deep Dive**: For each relevant finding:
+               - Use WebFetch to read and extract key information
+               - Summarize the main points
+               - Note pros, cons, and considerations
+
+            3. **Code Examples**: If applicable:
+               - Find working code examples
+               - Note which frameworks/libraries are commonly used
+               - Identify best practices
+
+            4. **Write Research Report**:
+               Create a comprehensive research report file:
+               research/issues/${{ github.event.issue.number }}-research.md
+
+               Structure:
+               ```markdown
+               # Research: [Topic]
+
+               **Issue:** #${{ github.event.issue.number }}
+               **Date:** ${{ steps.date.outputs.date }}
+
+               ## Executive Summary
+               [2-3 paragraph overview of findings]
+
+               ## Key Findings
+
+               ### 1. [Finding Category]
+               - Details with citations
+
+               ### 2. [Finding Category]
+               - Details with citations
+
+               ## Recommended Approaches
+               [Ranked list of approaches with pros/cons]
+
+               ## Tools & Libraries
+               | Tool | Purpose | Link |
+               |------|---------|------|
+
+               ## Code Examples
+               [Relevant code snippets with explanations]
+
+               ## Resources
+               - [Links to documentation, tutorials, repos]
+
+               ## Next Steps
+               [Actionable recommendations]
+
+               ---
+               *Research conducted by Claude on ${{ steps.date.outputs.date }}*
+               ```
+
+            5. **Commit the research file**:
+               git add research/issues/
+               git commit -m "Add research for issue #${{ github.event.issue.number }}"
+
+            Be thorough and practical. Focus on actionable insights that help solve the user's question.
+
+      - name: Run Deep Research (without MCP)
+        if: steps.check-keys.outputs.has_exa != 'true' && steps.check-keys.outputs.has_perplexity != 'true'
+        id: research-basic
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch,WebFetch"
+          prompt: |
+            You are a deep research agent. A user has requested research on the following topic:
+
+            **Issue Title:** ${{ github.event.issue.title }}
+
+            **Issue Body:**
+            ${{ github.event.issue.body }}
+
+            **Your Task:**
+            Conduct thorough, comprehensive research on this topic using ALL available tools:
+
+            1. **Web Search**: Use WebSearch to find:
+               - Recent articles, tutorials, and documentation
+               - Official documentation and guides
+               - GitHub repositories and open-source solutions
+               - Stack Overflow discussions and solutions
+               - Blog posts from experts
+               - Video tutorials and courses (provide links)
+
+            2. **Deep Dive**: For each relevant finding:
+               - Use WebFetch to read and extract key information
+               - Summarize the main points
+               - Note pros, cons, and considerations
+
+            3. **Code Examples**: If applicable:
+               - Find working code examples
+               - Note which frameworks/libraries are commonly used
+               - Identify best practices
+
+            4. **Write Research Report**:
+               Create a comprehensive research report file:
+               research/issues/${{ github.event.issue.number }}-research.md
+
+               Structure:
+               ```markdown
+               # Research: [Topic]
+
+               **Issue:** #${{ github.event.issue.number }}
+               **Date:** ${{ steps.date.outputs.date }}
+
+               ## Executive Summary
+               [2-3 paragraph overview of findings]
+
+               ## Key Findings
+
+               ### 1. [Finding Category]
+               - Details with citations
+
+               ### 2. [Finding Category]
+               - Details with citations
+
+               ## Recommended Approaches
+               [Ranked list of approaches with pros/cons]
+
+               ## Tools & Libraries
+               | Tool | Purpose | Link |
+               |------|---------|------|
+
+               ## Code Examples
+               [Relevant code snippets with explanations]
+
+               ## Resources
+               - [Links to documentation, tutorials, repos]
+
+               ## Next Steps
+               [Actionable recommendations]
+
+               ---
+               *Research conducted by Claude on ${{ steps.date.outputs.date }}*
+               ```
+
+            5. **Commit the research file**:
+               git add research/issues/
+               git commit -m "Add research for issue #${{ github.event.issue.number }}"
+
+            Be thorough and practical. Focus on actionable insights that help solve the user's question.
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git pull --rebase || true
+          git push || echo "Nothing to push"
+
+      - name: Read research report
+        id: report
+        run: |
+          REPORT_FILE="research/issues/${{ github.event.issue.number }}-research.md"
+          if [ -f "$REPORT_FILE" ]; then
+            # Read first 3000 chars for the comment (GitHub has limits)
+            PREVIEW=$(head -c 3000 "$REPORT_FILE")
+            echo "content<<EOF" >> $GITHUB_OUTPUT
+            echo "$PREVIEW" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+            echo "has_report=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_report=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post research results to issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const hasReport = '${{ steps.report.outputs.has_report }}' === 'true';
+            const issueNumber = ${{ github.event.issue.number }};
+            const reportUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/research/issues/${issueNumber}-research.md`;
+
+            let body;
+            if (hasReport) {
+              const preview = `${{ steps.report.outputs.content }}`;
+              body = `## 🔬 Research Complete!\n\n${preview}\n\n---\n\n📄 **[View Full Research Report](${reportUrl})**`;
+            } else {
+              body = `## 🔬 Research Complete!\n\nI've conducted research on your topic. Please check the [research report](${reportUrl}) for detailed findings.\n\n_If no report was generated, the research may have encountered issues. Check the workflow logs for details._`;
+            }
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: body
+            });
+
+      - name: Send Telegram notification
+        if: success()
+        continue-on-error: true
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: |
+            🔬 *Research Complete*
+
+            📋 Issue: #${{ github.event.issue.number }}
+            📝 Topic: ${{ github.event.issue.title }}
+
+            📄 [View Research Report](https://github.com/${{ github.repository }}/blob/main/research/issues/${{ github.event.issue.number }}-research.md)
