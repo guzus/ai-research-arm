@@ -2,14 +2,12 @@ name: Deep Research Agent
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [labeled]
 
 jobs:
   research:
-    # Trigger when issue has 'research' label
-    if: |
-      (github.event.action == 'labeled' && github.event.label.name == 'research') ||
-      (github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'research'))
+    # Trigger only when 'research' label is added
+    if: github.event.label.name == 'research'
     runs-on: ubuntu-latest
     permissions:
       contents: write
