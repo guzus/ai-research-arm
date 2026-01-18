@@ -141,7 +141,26 @@ jobs:
 
             Sections: Breaking News, New Model Releases, Funding & Acquisitions, Research Papers, Industry Moves, Regulatory Updates
 
-            After writing, commit:
+            STEP 4 - WRITE TELEGRAM SUMMARY:
+            After writing the full report, also write a SHORT summary for Telegram notification.
+            Use Write tool to create: research/summaries/${{ steps.date.outputs.date }}-summary.txt
+
+            Format (plain text, max 800 chars):
+            ```
+            AI News - ${{ steps.date.outputs.date }}
+
+            TOP STORIES:
+            • [Headline 1 - one line]
+            • [Headline 2 - one line]
+            • [Headline 3 - one line]
+
+            KEY NUMBERS:
+            • [Any funding amounts, user counts, or metrics]
+
+            Full report on GitHub.
+            ```
+
+            After writing both files, commit:
             git add research/
             git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
 
@@ -228,7 +247,26 @@ jobs:
             *Sources verified as of ${{ steps.date.outputs.date }}*
             ```
 
-            After writing, commit:
+            STEP 4 - WRITE TELEGRAM SUMMARY:
+            After writing the full report, also write a SHORT summary for Telegram notification.
+            Use Write tool to create: research/summaries/${{ steps.date.outputs.date }}-summary.txt
+
+            Format (plain text, max 800 chars):
+            ```
+            AI News - ${{ steps.date.outputs.date }}
+
+            TOP STORIES:
+            • [Headline 1 - one line]
+            • [Headline 2 - one line]
+            • [Headline 3 - one line]
+
+            KEY NUMBERS:
+            • [Any funding amounts, user counts, or metrics]
+
+            Full report on GitHub.
+            ```
+
+            After writing both files, commit:
             git add research/
             git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
 
@@ -242,6 +280,22 @@ jobs:
           git pull --rebase || true
           git push || echo "Nothing to push"
 
+      - name: Read summary for Telegram
+        id: summary
+        run: |
+          SUMMARY_FILE="research/summaries/${{ steps.date.outputs.date }}-summary.txt"
+          if [ -f "$SUMMARY_FILE" ]; then
+            # Read summary and escape special chars for GitHub output
+            SUMMARY=$(cat "$SUMMARY_FILE" | head -c 800)
+            echo "content<<EOF" >> $GITHUB_OUTPUT
+            echo "$SUMMARY" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+            echo "has_summary=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_summary=false" >> $GITHUB_OUTPUT
+            echo "content=No summary available" >> $GITHUB_OUTPUT
+          fi
+
       - name: Send Telegram notification
         if: success()
         continue-on-error: true
@@ -253,9 +307,6 @@ jobs:
           message: |
             🔬 *AI News Research Complete*
 
-            📅 Date: ${{ steps.date.outputs.date }}
-            ✅ Status: Success
+            ${{ steps.summary.outputs.content }}
 
-            📄 Report: [View on GitHub](https://github.com/${{ github.repository }}/blob/main/research/${{ steps.date.outputs.date }}-ai-news.md)
-
-            🔗 [Workflow Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            📄 [Full Report on GitHub](https://github.com/${{ github.repository }}/blob/main/research/${{ steps.date.outputs.date }}-ai-news.md)
