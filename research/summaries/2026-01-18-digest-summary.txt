@@ -1,0 +1,22 @@
+Daily AI Digest - 2026-01-18
+
+TOP STORIES:
+• Sequoia joins Anthropic's $25B raise at $350B valuation - nearly doubling from 4 months ago
+• OpenAI announces ads for ChatGPT free/Go tiers starting in weeks - reversal from "last resort" stance
+• Signal founder launches Confer - privacy-first AI chatbot with end-to-end encryption ($35/mo)
+• xAI faces multi-state legal action over Grok deepfakes - California AG issues 5-day cease-and-desist
+
+KEY NUMBERS:
+• Anthropic revenue: $9B annualized (2025) → $20-26B projected (2026)
+• Skild AI robotics: $1.4B raise at $14B valuation (3x in 7 months)
+• Merge Labs BCI: $250M seed at $850M (OpenAI's largest check)
+• Falcon-H1R 7B: 88.1% AIME-24, 68.6% LCB coding - matches 50B+ models
+
+MODEL RELEASES:
+• GPT-5.2 & GPT-5.2-Codex with enhanced artifacts, memory, real-time video
+• Google Veo 3.1 - only model with 4K output, native vertical video
+• DeepSeek R1 expanded paper - reveals training recipe, beats OpenAI-o1
+
+TRENDING: Claude Code doubled traffic in Dec; HN debates Cursor claims (707pts); Reddit builds local safety layers for "vibe coding"
+
+Full digest: github.com/[repo]/research/digest/2026-01-18-digest.md
