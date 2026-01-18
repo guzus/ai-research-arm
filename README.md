@@ -101,6 +101,50 @@ gantt
 | `hourly-twitter.yml` | Every hour | Twitter/X (needs API key) | `research/twitter/` |
 | `ai-news-research.yml` | Every 4 hours | Perplexity/Exa MCP | `research/` |
 | `daily-improve.yml` | Daily midnight | Self-improvement | PRs with improvements |
+| `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
+
+## On-Demand Research Agent
+
+Request deep research on any topic by creating a GitHub Issue with the `research` label.
+
+### How to Use
+
+1. **Create a new issue** with your research question as the title
+2. **Add the `research` label** to the issue
+3. **Claude will automatically:**
+   - Acknowledge the request with a comment
+   - Search the web using multiple tools (WebSearch, Exa, Perplexity)
+   - Fetch and analyze relevant documentation, articles, and code
+   - Create a comprehensive research report
+   - Post findings back to the issue
+
+### Example Research Requests
+
+| Issue Title | What Claude Researches |
+|-------------|------------------------|
+| "Research how to make AI UGC for my iOS app" | AI-powered user-generated content tools, SDKs, APIs for iOS |
+| "Best practices for LLM fine-tuning in 2026" | Latest fine-tuning techniques, tools, and frameworks |
+| "Compare vector databases for RAG applications" | Pinecone vs Weaviate vs Chroma vs Milvus comparison |
+| "How to implement voice cloning ethically" | Voice synthesis APIs, legal considerations, implementation guides |
+
+### Research Output
+
+Reports are saved to `research/issues/{issue-number}-research.md` with:
+
+- **Executive Summary** - Quick overview of findings
+- **Key Findings** - Detailed analysis by category
+- **Recommended Approaches** - Ranked options with pros/cons
+- **Tools & Libraries** - Relevant SDKs, APIs, frameworks
+- **Code Examples** - Working code snippets
+- **Resources** - Links to docs, tutorials, repos
+- **Next Steps** - Actionable recommendations
+
+### Trigger Methods
+
+| Method | When It Triggers |
+|--------|------------------|
+| Create issue with `research` label | Immediately on issue creation |
+| Add `research` label to existing issue | Immediately when label is added |
 
 ## Setup
 
@@ -135,6 +179,8 @@ research/
 │   └── 2026-01-14-papers.md       # Daily arXiv papers
 ├── twitter/
 │   └── 2026-01-14.md              # Twitter updates (if API key set)
+├── issues/
+│   └── 42-research.md             # On-demand research from GitHub Issues
 └── digest/
     └── 2026-01-14-digest.md       # Daily synthesized digest (enhanced with MCP tools)
 ```
