@@ -1,0 +1,18 @@
+AI News - 2026-01-18
+
+TOP STORIES:
+• OpenAI acquires Torch health startup for $60-100M to power ChatGPT Health
+• Anthropic raising $10B at $350B valuation, nearly doubling from 3 months ago
+• Merge Labs (Sam Altman's brain-computer interface) raises $250M seed at $850M valuation
+• Meta signs 6.6 GW nuclear energy deals to power AI infrastructure by 2035
+
+KEY FUNDING ROUNDS:
+• Proxima: $80M seed for AI drug discovery (one of largest biotech seeds)
+• WitnessAI: $58M for AI security platform (500% ARR growth)
+• Quadric: $30M Series C for on-device AI chips
+
+MODELS & TECH:
+• Falcon-H1R 7B beats models 7x its size on math/coding benchmarks
+• Google Veo 3.1 adds 4K upscaling & vertical video for YouTube Shorts
+
+Full report on GitHub: guzus/ai-research-arm
