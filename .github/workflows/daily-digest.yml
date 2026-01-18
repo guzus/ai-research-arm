@@ -154,8 +154,29 @@ jobs:
 
             *Generated at ${{ steps.date.outputs.date }} 23:00 UTC*
 
-            After writing, commit:
-            git add research/digest/
+            STEP 4 - WRITE TELEGRAM SUMMARY:
+            After writing the full digest, also write a SHORT summary for Telegram notification.
+            Use Write tool to create: research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
+
+            Format (plain text, max 800 chars):
+            ```
+            Daily AI Digest - ${{ steps.date.outputs.date }}
+
+            TOP STORIES:
+            • [Headline 1]
+            • [Headline 2]
+            • [Headline 3]
+
+            KEY NUMBERS:
+            • [Key metrics from today]
+
+            TRENDING: [Top community topic]
+
+            Full digest on GitHub.
+            ```
+
+            After writing both files, commit:
+            git add research/
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
       - name: Synthesize Daily Digest (WebSearch fallback)
@@ -224,8 +245,29 @@ jobs:
 
             *Generated at ${{ steps.date.outputs.date }} 23:00 UTC*
 
-            After writing, commit:
-            git add research/digest/
+            STEP 4 - WRITE TELEGRAM SUMMARY:
+            After writing the full digest, also write a SHORT summary for Telegram notification.
+            Use Write tool to create: research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
+
+            Format (plain text, max 800 chars):
+            ```
+            Daily AI Digest - ${{ steps.date.outputs.date }}
+
+            TOP STORIES:
+            • [Headline 1]
+            • [Headline 2]
+            • [Headline 3]
+
+            KEY NUMBERS:
+            • [Key metrics from today]
+
+            TRENDING: [Top community topic]
+
+            Full digest on GitHub.
+            ```
+
+            After writing both files, commit:
+            git add research/
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
       - name: Push changes
@@ -235,6 +277,19 @@ jobs:
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git pull --rebase || true
           git push || echo "Nothing to push"
+
+      - name: Read summary for Telegram
+        id: summary
+        run: |
+          SUMMARY_FILE="research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt"
+          if [ -f "$SUMMARY_FILE" ]; then
+            SUMMARY=$(cat "$SUMMARY_FILE" | head -c 800)
+            echo "content<<EOF" >> $GITHUB_OUTPUT
+            echo "$SUMMARY" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "content=No summary available" >> $GITHUB_OUTPUT
+          fi
 
       - name: Send Telegram notification
         if: success()
@@ -247,9 +302,6 @@ jobs:
           message: |
             📊 *Daily AI Digest Ready*
 
-            📅 Date: ${{ steps.date.outputs.date }}
-            ✅ Status: Success
+            ${{ steps.summary.outputs.content }}
 
-            📄 Digest: [View on GitHub](https://github.com/${{ github.repository }}/blob/main/research/digest/${{ steps.date.outputs.date }}-digest.md)
-
-            🔗 [Workflow Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            📄 [Full Digest on GitHub](https://github.com/${{ github.repository }}/blob/main/research/digest/${{ steps.date.outputs.date }}-digest.md)
