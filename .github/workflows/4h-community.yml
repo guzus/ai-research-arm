@@ -25,70 +25,45 @@ jobs:
           echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
           echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
 
-      - name: Fetch Reddit JSON (real-time)
+      - name: Fetch Reddit RSS feeds
         id: reddit
         run: |
           mkdir -p /tmp/reddit
 
-          # Fetch hot posts from AI subreddits (no auth needed, real-time data)
-          # Using browser-like User-Agent for better compatibility
-          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+          # Use Reddit RSS feeds - more reliable than JSON API from GitHub Actions
+          # RSS feeds don't require authentication and work better
 
-          echo "Fetching r/MachineLearning..."
-          curl -sL "https://www.reddit.com/r/MachineLearning/hot.json?limit=25" \
-            -H "User-Agent: $UA" \
-            -H "Accept: application/json" > /tmp/reddit/ml_raw.json
-          echo "Raw response size: $(wc -c < /tmp/reddit/ml_raw.json) bytes"
-          echo "First 200 chars: $(head -c 200 /tmp/reddit/ml_raw.json)"
-
-          sleep 2  # Rate limit friendly
-
-          echo "Fetching r/LocalLLaMA..."
-          curl -sL "https://www.reddit.com/r/LocalLLaMA/hot.json?limit=25" \
-            -H "User-Agent: $UA" \
-            -H "Accept: application/json" > /tmp/reddit/localllama_raw.json
-          echo "Raw response size: $(wc -c < /tmp/reddit/localllama_raw.json) bytes"
+          echo "Fetching r/MachineLearning RSS..."
+          curl -sL "https://www.reddit.com/r/MachineLearning/hot.rss?limit=25" \
+            -H "User-Agent: AIResearchBot/1.0" \
+            > /tmp/reddit/ml.rss
+          echo "ML RSS size: $(wc -c < /tmp/reddit/ml.rss) bytes"
 
           sleep 2
 
-          echo "Fetching r/artificial..."
-          curl -sL "https://www.reddit.com/r/artificial/hot.json?limit=20" \
-            -H "User-Agent: $UA" \
-            -H "Accept: application/json" > /tmp/reddit/artificial_raw.json
-          echo "Raw response size: $(wc -c < /tmp/reddit/artificial_raw.json) bytes"
+          echo "Fetching r/LocalLLaMA RSS..."
+          curl -sL "https://www.reddit.com/r/LocalLLaMA/hot.rss?limit=25" \
+            -H "User-Agent: AIResearchBot/1.0" \
+            > /tmp/reddit/localllama.rss
+          echo "LocalLLaMA RSS size: $(wc -c < /tmp/reddit/localllama.rss) bytes"
 
-          # Check jq version
-          echo "jq version: $(jq --version)"
+          sleep 2
 
-          # Pre-process JSON with jq to extract only relevant fields
-          # This makes it much easier for Claude to parse
-          for sub in ml localllama artificial; do
-            echo "Processing ${sub}..."
-            if jq -e '.data.children' /tmp/reddit/${sub}_raw.json > /dev/null 2>&1; then
-              jq '[.data.children[].data | {
-                title: .title,
-                score: .score,
-                comments: .num_comments,
-                url: ("https://reddit.com" + .permalink),
-                created_utc: .created_utc,
-                flair: .link_flair_text
-              }] | sort_by(-.score)' /tmp/reddit/${sub}_raw.json > /tmp/reddit/${sub}.json
-              echo "${sub} processed successfully"
-            else
-              echo "ERROR: Invalid JSON for ${sub}"
-              echo "[]" > /tmp/reddit/${sub}.json
-            fi
-          done
+          echo "Fetching r/artificial RSS..."
+          curl -sL "https://www.reddit.com/r/artificial/hot.rss?limit=20" \
+            -H "User-Agent: AIResearchBot/1.0" \
+            > /tmp/reddit/artificial.rss
+          echo "Artificial RSS size: $(wc -c < /tmp/reddit/artificial.rss) bytes"
 
-          echo "=== ml.json preview ==="
-          head -50 /tmp/reddit/ml.json
-          echo "=== localllama.json preview ==="
-          head -50 /tmp/reddit/localllama.json
+          # Check if we got valid RSS (not HTML error page)
+          echo "=== ml.rss first 300 chars ==="
+          head -c 300 /tmp/reddit/ml.rss
+          echo ""
 
       - name: Copy Reddit data to working directory
         run: |
           mkdir -p data/reddit
-          cp /tmp/reddit/*.json data/reddit/ || echo "No files to copy"
+          cp /tmp/reddit/*.rss data/reddit/ || echo "No files to copy"
           ls -la data/reddit/
 
       - name: Create MCP Config
@@ -124,27 +99,20 @@ jobs:
 
             Write to: research/community/${{ steps.datetime.outputs.date }}-hn.md
 
-            ## TASK 2: Reddit (REAL-TIME JSON)
+            ## TASK 2: Reddit (RSS Feeds)
 
-            Read the pre-processed Reddit JSON files from data/reddit/:
-            - data/reddit/ml.json (r/MachineLearning hot posts)
-            - data/reddit/localllama.json (r/LocalLLaMA hot posts)
-            - data/reddit/artificial.json (r/artificial hot posts)
+            Read the Reddit RSS feed files from data/reddit/:
+            - data/reddit/ml.rss (r/MachineLearning hot posts)
+            - data/reddit/localllama.rss (r/LocalLLaMA hot posts)
+            - data/reddit/artificial.rss (r/artificial hot posts)
 
-            The JSON is pre-processed and simplified. Each file contains an array of objects:
-            [
-              {
-                "title": "Post title",
-                "score": 123,
-                "comments": 45,
-                "url": "https://reddit.com/r/.../...",
-                "created_utc": 1768373663,
-                "flair": "Research" or null
-              },
-              ...
-            ]
+            These are standard RSS/Atom XML feeds. Each <entry> contains:
+            - <title> - post title
+            - <link href="..."> - URL to the post
+            - <updated> - timestamp
+            - <content> - post content/description
 
-            Posts are already sorted by score (highest first). The created_utc is a Unix timestamp.
+            Parse the XML to extract post information.
 
             Write to: research/community/${{ steps.datetime.outputs.date }}-reddit.md
 
