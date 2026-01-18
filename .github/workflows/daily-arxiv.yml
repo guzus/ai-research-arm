@@ -109,8 +109,27 @@ jobs:
             ---
             *Curated from arXiv submissions on ${{ steps.date.outputs.date }}*
 
-            After writing, commit:
-            git add research/arxiv/
+            ALSO WRITE A TELEGRAM SUMMARY:
+            Use Write tool to create: research/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt
+
+            Format (plain text, max 800 chars):
+            ```
+            arXiv Papers - ${{ steps.date.outputs.date }}
+
+            TOP 5 PAPERS:
+            • [Paper 1 title - one line TL;DR]
+            • [Paper 2 title - one line TL;DR]
+            • [Paper 3 title - one line TL;DR]
+            • [Paper 4 title - one line TL;DR]
+            • [Paper 5 title - one line TL;DR]
+
+            CATEGORIES: [counts by category]
+
+            Full report on GitHub.
+            ```
+
+            After writing both files, commit:
+            git add research/
             git commit -m "arXiv papers ${{ steps.date.outputs.date }}"
 
       - name: Push changes
@@ -120,3 +139,31 @@ jobs:
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git pull --rebase || true
           git push || echo "Nothing to push"
+
+      - name: Read summary for Telegram
+        id: summary
+        run: |
+          SUMMARY_FILE="research/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt"
+          if [ -f "$SUMMARY_FILE" ]; then
+            SUMMARY=$(cat "$SUMMARY_FILE" | head -c 800)
+            echo "content<<EOF" >> $GITHUB_OUTPUT
+            echo "$SUMMARY" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "content=No summary available" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Send Telegram notification
+        if: success()
+        continue-on-error: true
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: |
+            📄 *arXiv AI Papers*
+
+            ${{ steps.summary.outputs.content }}
+
+            📄 [Full Report on GitHub](https://github.com/${{ github.repository }}/blob/main/research/arxiv/${{ steps.date.outputs.date }}-papers.md)
