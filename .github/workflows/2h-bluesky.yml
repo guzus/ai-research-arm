@@ -60,6 +60,12 @@ jobs:
 
           echo "Bluesky data fetched successfully"
 
+      - name: Copy Bluesky data to working directory
+        run: |
+          mkdir -p data/bluesky
+          cp /tmp/bluesky/*.json data/bluesky/ || echo "No files to copy"
+          ls -la data/bluesky/
+
       - name: Process Bluesky Feed with Claude
         uses: anthropics/claude-code-action@v1
         with:
@@ -74,12 +80,12 @@ jobs:
 
             ## SOURCE FILES
 
-            Read these pre-fetched Bluesky JSON files:
-            - /tmp/bluesky/ai_announcements.json
-            - /tmp/bluesky/llm_releases.json
-            - /tmp/bluesky/model_discussions.json
-            - /tmp/bluesky/ml_papers.json
-            - /tmp/bluesky/karpathy.json
+            Read these pre-fetched Bluesky JSON files from data/bluesky/:
+            - data/bluesky/ai_announcements.json
+            - data/bluesky/llm_releases.json
+            - data/bluesky/model_discussions.json
+            - data/bluesky/ml_papers.json
+            - data/bluesky/karpathy.json
 
             The Bluesky JSON structure is:
             - posts[].author.handle (username like "user.bsky.social")
