@@ -124,14 +124,15 @@ jobs:
             - New AI model releases
             - AI regulation news
 
-            QUALITY REQUIREMENTS - ONLY include news that:
-            - Has a SPECIFIC date (within last 48 hours)
+            STRICT RECENCY FILTER - Today is ${{ steps.date.outputs.date }}. ONLY include news that:
+            - Was published on ${{ steps.date.outputs.date }} or ${{ steps.date.outputs.yesterday }} (LAST 24-48 HOURS ONLY)
+            - Has a SPECIFIC publication date that you can verify
             - Is from a CREDIBLE source (TechCrunch, VentureBeat, The Verge, official company blogs, Reuters)
             - Contains CONCRETE information (not speculation)
             - Has REAL URLs
             - WAS NOT ALREADY COVERED in previous reports
 
-            DO NOT include: generic AI explanations, old news, speculation without sources, OR DUPLICATE STORIES from previous reports.
+            ABSOLUTELY DO NOT include: ANY news older than 48 hours, generic AI explanations, evergreen content, speculation without sources, OR DUPLICATE STORIES from previous reports. If search returns old news, SKIP IT.
 
             STEP 3 - WRITE REPORT:
             Use Write tool to create: research/${{ steps.date.outputs.date }}-ai-news.md
@@ -168,27 +169,34 @@ jobs:
             Make a mental note of ALL stories already covered. DO NOT include any story that was already reported.
 
             STEP 2 - SEARCH FOR NEW NEWS:
-            Do multiple specific searches to find REAL NEWS from the last 24-48 hours:
-            - "OpenAI announcement January 2026"
-            - "Anthropic Claude new release 2026"
-            - "Google Gemini update January 2026"
-            - "AI startup funding January 2026"
-            - "new AI model release this week"
-            - "AI regulation news January 2026"
+            Do multiple specific searches to find REAL NEWS from TODAY (${{ steps.date.outputs.date }}) or YESTERDAY (${{ steps.date.outputs.yesterday }}):
+            - "OpenAI announcement ${{ steps.date.outputs.date }}"
+            - "Anthropic Claude news ${{ steps.date.outputs.date }}"
+            - "Google Gemini update ${{ steps.date.outputs.date }}"
+            - "AI startup funding ${{ steps.date.outputs.date }}"
+            - "AI model release today"
+            - "AI news today ${{ steps.date.outputs.date }}"
 
-            QUALITY REQUIREMENTS - ONLY include news that:
-            - Has a SPECIFIC date (within last 48 hours)
+            Also try yesterday's date if today has few results:
+            - "AI breaking news ${{ steps.date.outputs.yesterday }}"
+
+            STRICT RECENCY FILTER - Today is ${{ steps.date.outputs.date }}. ONLY include news that:
+            - Was published on ${{ steps.date.outputs.date }} or ${{ steps.date.outputs.yesterday }} (LAST 24-48 HOURS ONLY)
+            - Has a SPECIFIC publication date that you can verify
             - Is from a CREDIBLE source (TechCrunch, VentureBeat, The Verge, official company blogs, Reuters, etc.)
             - Contains CONCRETE information (not speculation or opinion)
             - Has REAL URLs that can be verified
             - WAS NOT ALREADY COVERED in previous reports
 
-            DO NOT include:
+            ABSOLUTELY DO NOT include:
+            - ANY news older than 48 hours (e.g., from January 7, 10, 12 when today is January 18)
             - Generic explanations of what AI is
-            - Old news or evergreen content
+            - Evergreen content or feature articles without a news hook
             - Speculation without sources
-            - Information without specific dates
+            - Information without specific, recent dates
             - DUPLICATE STORIES from previous reports
+
+            If a search returns old news, SKIP IT. Only report genuinely new stories from today or yesterday.
 
             STEP 3 - WRITE REPORT:
             Use the Write tool to create: research/${{ steps.date.outputs.date }}-ai-news.md
