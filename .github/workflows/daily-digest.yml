@@ -233,6 +233,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git pull --rebase || true
           git push || echo "Nothing to push"
 
       - name: Send Telegram notification
