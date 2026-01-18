@@ -85,6 +85,12 @@ jobs:
           echo "=== localllama.json preview ==="
           head -50 /tmp/reddit/localllama.json
 
+      - name: Copy Reddit data to working directory
+        run: |
+          mkdir -p data/reddit
+          cp /tmp/reddit/*.json data/reddit/ || echo "No files to copy"
+          ls -la data/reddit/
+
       - name: Create MCP Config
         run: |
           cat > /tmp/mcp-config.json << 'EOF'
@@ -120,10 +126,10 @@ jobs:
 
             ## TASK 2: Reddit (REAL-TIME JSON)
 
-            Read the pre-processed Reddit JSON files:
-            - /tmp/reddit/ml.json (r/MachineLearning hot posts)
-            - /tmp/reddit/localllama.json (r/LocalLLaMA hot posts)
-            - /tmp/reddit/artificial.json (r/artificial hot posts)
+            Read the pre-processed Reddit JSON files from data/reddit/:
+            - data/reddit/ml.json (r/MachineLearning hot posts)
+            - data/reddit/localllama.json (r/LocalLLaMA hot posts)
+            - data/reddit/artificial.json (r/artificial hot posts)
 
             The JSON is pre-processed and simplified. Each file contains an array of objects:
             [
