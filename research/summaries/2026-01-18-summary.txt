@@ -1,21 +1,23 @@
 AI News - 2026-01-18
 
 TOP STORIES:
-• Anthropic raising $10B at $350B valuation (nearly doubling from $183B 3 months ago)
-• Apple-Google partnership: Gemini to power next-gen Siri (~$1B deal)
-• OpenAI acquires Torch health startup for $60-100M to boost ChatGPT Health
-• Meta acquires Manus AI agent startup for $2B+ (China investigating)
-• Multi-state legal action against xAI Grok over deepfake images
+• CA AG cease-and-desist to xAI over Grok deepfakes (Jan 17, 5-day deadline)
+• Anthropic raising $10B at $350B valuation (nearly doubling from $183B)
+• Apple-Google: Gemini to power next-gen Siri (~$1B deal)
+• DeepSeek V4 launching mid-Feb, claims to beat Claude & GPT at coding
+• Boston Dynamics Atlas enters production for Hyundai factories
 
 KEY FUNDING:
-• Merge Labs: $250M seed for brain-computer interface ($850M valuation)
-• Proxima: $80M seed for AI drug discovery (one of largest biotech seeds)
-• WitnessAI: $58M for AI security (500% ARR growth)
-• depthfirst: $40M Series A (8x better vulnerability detection)
-• Equal1: $60M for quantum computing (Bell-1 server shipping)
+• Skild AI robotics: $1.4B at $14B valuation (SoftBank, NVIDIA, Bezos)
+• Cyera AI security: $400M at $9B (tripled in 1 year)
+• Merge Labs BCI: $250M seed at $850M (OpenAI largest check)
+• Proxima AI drug: $80M seed (one of largest biotech seeds)
+• Equal1 quantum: $60M (Bell-1 shipping to datacenters)
 
-INFRASTRUCTURE:
-• Meta: 6.6 GW nuclear energy deals by 2035 to power AI
+INFRASTRUCTURE & PRODUCTS:
+• Meta: 6.6 GW nuclear energy deals by 2035 (enough for 5M homes)
 • NVIDIA Rubin: 10x lower inference costs vs Blackwell (2H 2026)
+• Microsoft Copilot Checkout: AI-powered shopping (33% shorter journeys)
+• Google Veo 3.1: 4K upscaling, native vertical video for YouTube Shorts
 
 Full report: guzus/ai-research-arm/research
