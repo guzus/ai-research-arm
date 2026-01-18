@@ -1,17 +1,17 @@
 AI News - 2026-01-18
 
 TOP STORIES:
+• BREAKING: Sequoia joins Anthropic's $25B round at $350B valuation (Jan 18)
+• Signal founder launches Confer: Privacy-first AI chatbot with end-to-end encryption
 • CA AG cease-and-desist to xAI over Grok deepfakes (Jan 17, 5-day deadline)
-• Anthropic raising $10B at $350B valuation (nearly doubling from $183B)
 • Apple-Google: Gemini to power next-gen Siri (~$1B deal)
 • DeepSeek V4 launching mid-Feb, claims to beat Claude & GPT at coding
-• Boston Dynamics Atlas enters production for Hyundai factories
 
 KEY FUNDING:
-• Skild AI robotics: $1.4B at $14B valuation (SoftBank, NVIDIA, Bezos)
+• Anthropic: $25B at $350B valuation (GIC, Coatue, Sequoia)
+• Skild AI robotics: $1.4B at $14B (SoftBank, NVIDIA, Bezos)
 • Cyera AI security: $400M at $9B (tripled in 1 year)
 • Merge Labs BCI: $250M seed at $850M (OpenAI largest check)
-• Proxima AI drug: $80M seed (one of largest biotech seeds)
 • Equal1 quantum: $60M (Bell-1 shipping to datacenters)
 
 INFRASTRUCTURE & PRODUCTS:
@@ -19,5 +19,6 @@ INFRASTRUCTURE & PRODUCTS:
 • NVIDIA Rubin: 10x lower inference costs vs Blackwell (2H 2026)
 • Microsoft Copilot Checkout: AI-powered shopping (33% shorter journeys)
 • Google Veo 3.1: 4K upscaling, native vertical video for YouTube Shorts
+• Confer AI: $34.99/mo privacy-focused chatbot (Signal founder)
 
 Full report: guzus/ai-research-arm/research
