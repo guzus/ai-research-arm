@@ -2,8 +2,8 @@ name: AI News Research Agent
 
 on:
   schedule:
-    # Run every 4 hours
-    - cron: '0 */4 * * *'
+    # Run twice daily at 8 AM and 8 PM UTC
+    - cron: '0 8,20 * * *'
   workflow_dispatch:
     inputs:
       topics:
