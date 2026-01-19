@@ -3,20 +3,22 @@ AI News - 2026-01-19
 TOP STORIES:
 • Musk seeks up to $134B in damages from OpenAI/Microsoft over nonprofit-to-profit shift
 • OpenAI begins testing ads in ChatGPT for free/Go users (Plus/Pro remain ad-free)
-• IQuest-Coder-V1 open-source model matches Claude on coding (76.2% SWE-Bench)
+• Anthropic launches Claude Cowork for non-technical workflow automation
+• Google unveils Universal Commerce Protocol for AI shopping agents
 • California AG investigates xAI Grok over deepfake concerns
-• Kaggle launches Community Benchmarks for decentralized AI evaluation
 
 KEY NUMBERS:
-• $134B - Musk's damage claim against OpenAI/Microsoft
-• $10B+ - OpenAI-Cerebras compute deal (750MW through 2028)
-• 76.2% - IQuest-Coder SWE-Bench score (vs Claude 77.2%)
-• 10-12% - Grok 4.20 return in Alpha Arena stock trading contest
+• $20B - xAI Series E (valuation ~$230B, Grok 5 in training)
+• $150M - LMArena unicorn at $1.7B valuation
+• $130M - Deepgram unicorn at $1.3B valuation
+• $10B+ - OpenAI-Cerebras compute deal (750MW)
+• $134B - Musk's damage claim vs OpenAI/Microsoft
 
 LAUNCHES & UPDATES:
-• Kaggle Community Benchmarks (custom AI model evaluations)
-• Microsoft Community-First AI Infrastructure initiative
-• Ministral 3 technical paper (cascade distillation method)
-• DeepSeek V4 expected mid-February with enhanced coding
+• Claude Cowork (agentic desktop workflows)
+• Google UCP (commerce protocol with Shopify, Walmart, Target)
+• Kaggle Community Benchmarks
+• Boston Dynamics + Google DeepMind partnership (Atlas w/Gemini Robotics)
+• IQuest-Coder-V1 (76.2% SWE-Bench, rivals Claude)
 
 Full report on GitHub.
