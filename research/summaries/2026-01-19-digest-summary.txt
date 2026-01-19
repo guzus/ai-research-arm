@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-01-19
+
+TOP STORIES:
+• IBM launches Enterprise Advantage for agentic AI with Pearson as early adopter
+• NVIDIA + Eli Lilly $1B AI drug discovery lab in San Francisco
+• Anthropic raising $25B+ at $350B valuation, preparing for IPO
+• Test-time compute breakthrough: 3 major papers solve scaling challenges
+• OpenAI pivots to "practical adoption" focus for 2026
+
+KEY NUMBERS:
+• Anthropic $350B valuation (2x in 4 months)
+• OpenAI $2B→$20B revenue run rate
+• 55 US AI startups raised $100M+ in 2025
+• 37 new arXiv papers today
+
+TRENDING: Enterprise agentic AI goes mainstream - IBM, e& partnership at Davos signals shift from pilots to production deployment
+
+Full digest: github.com/your-repo/research/digest/2026-01-19-digest.md
