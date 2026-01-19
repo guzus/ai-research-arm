@@ -3,16 +3,24 @@ AI News - 2026-01-19
 TOP STORIES:
 • Musk seeks up to $134B in damages from OpenAI/Microsoft over nonprofit-to-profit shift
 • OpenAI begins testing ads in ChatGPT for free/Go users (Plus/Pro remain ad-free)
+• TSMC announces $52-56B capex for 2026, confirms "AI is real" megatrend
+• Google/Wiz $32B deal awaits EU approval (decision due Feb 10)
 • Anthropic launches Claude Cowork for non-technical workflow automation
-• Google unveils Universal Commerce Protocol for AI shopping agents
-• California AG investigates xAI Grok over deepfake concerns
 
 KEY NUMBERS:
+• $52-56B - TSMC 2026 capex (+37% YoY), AI chip revenue +50%/yr through 2029
+• $32B - Google acquiring Wiz (cleared DOJ, awaiting EU)
+• $25B - Palo Alto acquiring CyberArk (99.8% shareholder approval)
 • $20B - xAI Series E (valuation ~$230B, Grok 5 in training)
-• $150M - LMArena unicorn at $1.7B valuation
-• $130M - Deepgram unicorn at $1.3B valuation
 • $10B+ - OpenAI-Cerebras compute deal (750MW)
-• $134B - Musk's damage claim vs OpenAI/Microsoft
+• $1.4B - Skild AI raise, tripling to $14B valuation
+• $150M - LMArena at $1.7B valuation
+• $130M - Deepgram unicorn at $1.3B
+
+MAJOR M&A:
+• OpenAI acquires Convogo team (9th acquisition in 1 year)
+• Google/Wiz closing in 2026 (largest cybersecurity deal)
+• Palo Alto/CyberArk for agentic AI security
 
 LAUNCHES & UPDATES:
 • Claude Cowork (agentic desktop workflows)
@@ -21,4 +29,4 @@ LAUNCHES & UPDATES:
 • Boston Dynamics + Google DeepMind partnership (Atlas w/Gemini Robotics)
 • IQuest-Coder-V1 (76.2% SWE-Bench, rivals Claude)
 
-Full report on GitHub.
+Full report: github.com/guzus/ai-research-arm
