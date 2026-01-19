@@ -1,0 +1,12 @@
+arXiv Papers - 2026-01-19
+
+TOP 5 PAPERS:
+• PaCoRe: Parallel test-time reasoning that overcomes context limits via coordinated breadth
+• Min-Seek: Stabilizes sequential test-time scaling, solves accuracy degradation in long chains
+• FLOP-Efficient Training: Early stopping with TTC cuts training compute massively
+• Benchmark²: Meta-evaluation framework for assessing LLM benchmark reliability
+• Molecular Structure of Thought: Theory of effective reasoning via molecular-like interactions
+
+CATEGORIES: 6 LLMs/NLP, 4 Vision/Multimodal, 6 Agents/Reasoning, 5 Safety, 4 Scaling, 3 Architectures, 6 Benchmarks, 7 Other
+
+Full report: github.com/ai-research-arm
