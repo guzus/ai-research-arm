@@ -1,22 +1,22 @@
 AI News - 2026-01-19
 
 TOP STORIES:
-• Anthropic raises $25B at $350B valuation with Sequoia joining (breaking VC tradition)
-• OpenAI begins testing ads in ChatGPT free tier starting in coming weeks
-• Meta Llama 4 launches amid benchmark manipulation controversy, Yann LeCun departs
-• DeepSeek updates R1 paper (22→86 pages), V4 model expected mid-February
-• xAI Grok banned in Malaysia & Indonesia over deepfake concerns
+• Musk seeks up to $134B in damages from OpenAI/Microsoft over nonprofit-to-profit shift
+• OpenAI begins testing ads in ChatGPT for free/Go users (Plus/Pro remain ad-free)
+• IQuest-Coder-V1 open-source model matches Claude on coding (76.2% SWE-Bench)
+• California AG investigates xAI Grok over deepfake concerns
+• Kaggle launches Community Benchmarks for decentralized AI evaluation
 
 KEY NUMBERS:
-• $25B - Anthropic's expanded funding round
-• $350B - Anthropic's new valuation (doubled in 4 months)
-• 800M - ChatGPT monthly users (ads coming to free tier)
-• 6 trillion - Grok 5 parameters (largest model announced)
-• 86 pages - DeepSeek R1 expanded technical paper
+• $134B - Musk's damage claim against OpenAI/Microsoft
+• $10B+ - OpenAI-Cerebras compute deal (750MW through 2028)
+• 76.2% - IQuest-Coder SWE-Bench score (vs Claude 77.2%)
+• 10-12% - Grok 4.20 return in Alpha Arena stock trading contest
 
-LAUNCHES:
-• Google Gemini Personal Intelligence (beta, cross-app reasoning)
-• Microsoft Copilot voice notes & inbox-wide AI
-• NVIDIA Alpamayo 1 (autonomous vehicle reasoning AI)
+LAUNCHES & UPDATES:
+• Kaggle Community Benchmarks (custom AI model evaluations)
+• Microsoft Community-First AI Infrastructure initiative
+• Ministral 3 technical paper (cascade distillation method)
+• DeepSeek V4 expected mid-February with enhanced coding
 
 Full report on GitHub.
