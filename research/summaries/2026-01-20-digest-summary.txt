@@ -1,17 +1,18 @@
 Daily AI Digest - 2026-01-20
 
 TOP STORIES:
-• OpenAI announces major partnerships with ServiceNow & Cisco, integrating GPT-5.2 into enterprise workflows. First hardware device coming H2 2026.
-• Anthropic unveils Claude Cowork - "first truly autonomous digital colleague." Engineers report being "Claude-pilled" by Opus 4.5's shocking capabilities.
-• Humans& (founded by Anthropic/xAI/Google alums) raises $480M seed at $4.48B valuation. Emergent (India) raises $70M, triples to $300M valuation.
-• Microsoft releases Differential Transformer V2 with faster inference. Liquid AI launches best thinking model under 1GB.
+• OpenAI announces ServiceNow & Cisco partnerships integrating GPT-5.2 into enterprise workflows + confirmed first hardware device coming H2 2026
+• Anthropic's Claude Cowork unveiled as "first truly autonomous digital colleague" - engineers report being "Claude-pilled" by capabilities
+• Humans& raised $480M seed at $4.48B valuation (Anthropic/xAI/Google alums), Emergent raised $70M at $300M scaling to $50M ARR
 
 KEY NUMBERS:
 • GPT-5.2 Thinking: 70.9% expert-level on GDPval benchmark
-• OpenAI data centers: 1.9GW capacity (3x growth in 2025)
-• Anthropic Series F: $13B at $183B valuation
-• 44.4% gap: Best MLLM vs humans on BabyVision early-vision tasks
+• 4.6M API calls testing 56 jailbreak techniques in largest safety study (32 LLMs, 3B-235B params)
+• GLM-4.7-Flash: 4,398 tok/s on H200, outperforms models 7x its size
+• Agentic AI market: $5.2B (2024) → projected $200B by 2034
 
-TRENDING: "The coming industrialisation of exploit generation with LLMs" tops HN (236 pts). Community debates AI security research at scale.
+TRENDING: "The coming industrialisation of exploit generation with LLMs" (236 HN points), Claude Code safety practices (223 points), compact model revolution (GLM-4.7-Flash dominating r/LocalLLaMA)
 
-Full digest: github.com/ai-research-arm
+RESEARCH: Microsoft's Differential Transformer V2, AgeMem unified memory framework, BabyVision reveals 44.4% gap vs humans in basic visual tasks
+
+Full digest on GitHub.
