@@ -1,16 +1,15 @@
 AI News - 2026-01-20
 
 TOP STORIES:
-• Anthropic unveils Claude Cowork - first truly autonomous digital colleague, raising $10B
-• DeepSeek announces revolutionary mHC architecture & Engram technique, V4 model coming soon
-• Moonshot AI hits $4.8B valuation (up from $4.3B in Dec), backed by Alibaba
-• NVIDIA Rubin platform unveiled at CES - 6-chip AI supercomputer, shipping H2 2026
-• Google launches Gmail AI with Gemini 3, Universal Commerce Protocol for agentic shopping
+• xAI raises $20B Series E (Nvidia, Cisco backing) - one of largest AI rounds ever
+• Skild AI hits $14B valuation with $1.4B round led by SoftBank (robotics foundation model)
+• Anthropic unveils Claude Cowork - first truly autonomous digital colleague
+• Deepgram achieves unicorn: $130M at $1.3B valuation (voice AI platform)
+• Moonshot AI hits $4.8B valuation, DeepSeek announces revolutionary mHC architecture
 
 KEY NUMBERS:
-• $10B - Anthropic fundraising round
-• $4.8B - Moonshot AI valuation
-• $65B - NVIDIA Q4 revenue forecast
-• 230M - Weekly health questions on ChatGPT
+• $21.5B+ raised in major AI rounds (first 2 weeks of Jan)
+• $14B valuation for Skild AI (3x in 7 months, $0→$30M revenue in 2025)
+• 800M Samsung devices to get Galaxy AI in 2026 (double from 400M)
 
-Full report on GitHub: research/2026-01-20-ai-news.md
+Full report: github.com/guzus/ai-research-arm/research
