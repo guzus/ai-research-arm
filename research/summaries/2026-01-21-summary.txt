@@ -1,0 +1,22 @@
+AI News - 2026-01-21
+
+TOP STORIES:
+• Meta launches Llama 4 Scout & Maverick - first natively multimodal open-weight models with MoE architecture
+• Humans& raises $480M seed at $4.48B valuation (ex-OpenAI/DeepMind/Anthropic team)
+• Google releases Gemini 2.0 Flash Thinking with visible reasoning (Jan 21)
+• Applied Compute in talks for $1.3B valuation (2.6x in months)
+
+KEY NUMBERS:
+• Humans&: $480M seed, $4.48B valuation
+• Baseten: $300M for AI deployment infrastructure
+• Ivo: $55M Series B for legal AI
+• Legato: $7M seed for embedded AI builder
+• Agentic AI market: $5.2B (2024) → $200B projected (2034)
+
+TRENDS:
+• Physical AI acceleration: Boston Dynamics-Google partnership expanding
+• Healthcare AI: Anthropic Claude + OpenAI ChatGPT Health competing
+• Multimodal becoming standard: Llama 4, Gemini 3
+• Compact models competitive: Falcon-H1R 7B outperforms larger systems
+
+Full report on GitHub.
