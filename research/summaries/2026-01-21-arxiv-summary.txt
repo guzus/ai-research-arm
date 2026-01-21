@@ -1,0 +1,12 @@
+arXiv Papers - 2026-01-21
+
+TOP 5 PAPERS:
+• UltraLogic - Enhanced LLM reasoning via large-scale data synthesis with bipolar float reward mechanism
+• AI Agent Systems Survey - Comprehensive framework covering reasoning, planning, memory, and tool use in agents
+• MMedExpert-R1 - Domain-specific multimodal medical reasoning with clinical guideline reinforcement
+• X-MuTeST - Multilingual explainable hate speech detection benchmark (AAAI 2026)
+• TeleWorld - Dynamic multimodal synthesis with 4D world model for temporal-spatial coherence
+
+CATEGORIES: 8 LLMs/NLP, 6 Vision/Multimodal, 6 Agents/Reasoning, 3 Safety, 3 Architecture, 5 Other
+
+Full report: github.com/ai-research-arm/research/arxiv/2026-01-21-papers.md
