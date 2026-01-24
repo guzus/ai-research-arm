@@ -1,0 +1,13 @@
+arXiv Papers - 2026-01-24
+
+TOP 5 PAPERS:
+• O-Researcher - Multi-agent workflow for automatic deep research synthesis
+• Can We Trust AI Explanations? - Systematic underreporting in chain-of-thought reasoning
+• Agentic Confidence Calibration - Framework for safe autonomous agent deployment
+• Autonomous Agents on Blockchains - LLM architectures with adaptive planning
+• MiRAGE - Multi-agent RAG evaluation with >2.3 avg reasoning hops
+
+CATEGORIES: 35+ papers (cs.AI: 8, cs.LG: 7, cs.CL: 5, cs.CV: 7, Multimodal: 8)
+TRENDS: Multi-agent systems, safety/trust, federated learning, training-free methods
+
+Full report: github.com/[username]/ai-research-arm/research/arxiv/2026-01-24-papers.md
