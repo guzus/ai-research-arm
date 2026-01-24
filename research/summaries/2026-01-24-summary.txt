@@ -1,0 +1,17 @@
+AI News - 2026-01-24
+
+TOP STORIES:
+• DeepSeek quietly updates R1 paper from 22 to 86 pages, V4 launch expected mid-February
+• xAI raises $20B Series E at $230B valuation; Grok 5 (6T params) in training
+• Google-Apple partnership: Gemini to power next-gen Siri, targeting 800M Samsung devices
+• Trump exec order challenges state AI laws; federal task force to evaluate by March 11
+• Anthropic updates Claude Constitution, restructures leadership for Labs expansion
+
+KEY NUMBERS:
+• xAI: $20B raise at $230B valuation
+• LMArena: $150M Series A at $1.7B valuation
+• Agentic AI market: $5.2B (2024) → $200B (2034 projected)
+• Samsung: 800M Gemini-equipped devices target by end 2026
+• Falcon-H1R: 7B params outperforms 32B models on coding
+
+Full report on GitHub.
