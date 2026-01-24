@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-01-24
+
+TOP STORIES:
+• Claude Code goes VIRAL - traffic doubled since Dec, Jensen Huang calls it "incredible"
+• Anthropic raising $10B at $350B valuation, expands Claude to Excel Pro users
+• OpenAI launches GPT-5.2 (Instant/Thinking/Pro) with human-expert-level performance
+• Gmail rolls out Gemini 3 AI features to all US users
+
+KEY NUMBERS:
+• Gemini captures 20% AI traffic share (ChatGPT drops to <70%)
+• 35+ arXiv papers today on multi-agent systems & AI safety
+• ICML receives record 30k+ submissions
+• Railway raises $100M Series B for AI cloud infrastructure
+
+TRENDING: Claude Code adoption by non-developers for everyday tasks like filing taxes & booking tickets. Microsoft teams using it internally despite selling Copilot.
+
+Full digest on GitHub.
