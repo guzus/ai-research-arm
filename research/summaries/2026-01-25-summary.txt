@@ -1,21 +1,21 @@
-AI News - 2026-01-25
+AI News - 2026-01-25 (UPDATED)
 
-TOP STORIES:
-• Anthropic raising $10B at $350B valuation, nearly doubling value in 4 months
-• Humans& (3-mo-old startup) raises record $480M seed at $4.48B valuation
-• Claude Code goes viral - recreated "year's worth of work in an hour"
-• Meta Compute: Zuckerberg announces gigawatt-scale AI infrastructure plan
-• NVIDIA Rubin delivers 10x inference cost reduction vs Blackwell
+BREAKING NEWS (Jan 24-25):
+• IMF warns AI "tsunami" hitting 60% of jobs in advanced economies - entry-level workers most vulnerable
+• OpenAI confirms first consumer device H2 2026 - AI earbuds (codename "Sweetpea") to challenge AirPods
+• Chrome extensions stole 900K users' ChatGPT/DeepSeek conversations - Google "Featured" badge scandal
+• Mal raises record $230M seed for AI-native Islamic bank (largest MENA seed ever)
+• Stanford SleepFM predicts 130+ diseases from one night's sleep with 89% accuracy
 
 KEY NUMBERS:
-• $10B - Anthropic fundraise (Coatue, GIC leading)
-• $480M - Humans& seed round (Nvidia, Bezos, GV investing)
-• 10x - NVIDIA Rubin inference cost reduction
-• Hundreds of GW - Meta's long-term power consumption target
+• $230M - Mal's record MENA seed (Islamic digital bank, $7T market)
+• $55M - Ivo Series B (legal AI, 500% ARR growth, 75% time savings)
+• 900,000 - Users compromised by malicious Chrome extensions
+• 60% - Jobs affected by AI in advanced economies (IMF warning)
+• 89% - SleepFM accuracy predicting Parkinson's, cancers from sleep
 
-NEW LAUNCHES:
-• Claude Cowork - AI file management agent (built in 1.5 weeks by Claude Code)
-• OpenAI Grove Cohort 2 - 15 founders, $50K API credits each
-• DeepSeek V4 - Expected mid-Feb with 1M+ token context
+MAJOR UPDATES:
+• Google pushes Gemini-Assistant transition to March 2026
+• Davos 2026: AI shifts from hype to ROI pressure - "stop counting tokens, start counting dollars"
 
 Full report on GitHub.
