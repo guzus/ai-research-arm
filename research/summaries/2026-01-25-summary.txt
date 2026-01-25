@@ -1,0 +1,21 @@
+AI News - 2026-01-25
+
+TOP STORIES:
+• Anthropic raising $10B at $350B valuation, nearly doubling value in 4 months
+• Humans& (3-mo-old startup) raises record $480M seed at $4.48B valuation
+• Claude Code goes viral - recreated "year's worth of work in an hour"
+• Meta Compute: Zuckerberg announces gigawatt-scale AI infrastructure plan
+• NVIDIA Rubin delivers 10x inference cost reduction vs Blackwell
+
+KEY NUMBERS:
+• $10B - Anthropic fundraise (Coatue, GIC leading)
+• $480M - Humans& seed round (Nvidia, Bezos, GV investing)
+• 10x - NVIDIA Rubin inference cost reduction
+• Hundreds of GW - Meta's long-term power consumption target
+
+NEW LAUNCHES:
+• Claude Cowork - AI file management agent (built in 1.5 weeks by Claude Code)
+• OpenAI Grove Cohort 2 - 15 founders, $50K API credits each
+• DeepSeek V4 - Expected mid-Feb with 1M+ token context
+
+Full report on GitHub.
