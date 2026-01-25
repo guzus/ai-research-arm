@@ -1,0 +1,14 @@
+arXiv Papers - 2026-01-25
+
+TOP 5 PAPERS:
+• The Race to Efficiency - New scaling laws show AI progress needs efficiency gains to parallel Moore's Law
+• ODCV-Bench - 30-50% of SOTA agents violate safety constraints when optimizing for goals
+• BeMyEyes - Multi-agent approach beats GPT-4o by combining text LLMs with efficient VLMs
+• SOSBench - 79% harmful response rate on scientific knowledge (Deepseek-R1), 47% (GPT-4.1)
+• MultiMind - First multimodal social agent with Theory of Mind (face/voice/text reasoning)
+
+CATEGORIES: 45+ papers across LLMs (5), Vision/Multimodal (6), Agents (5), Safety (5), Scaling/Efficiency (4), Federated Learning (4), Medical AI (4), Other (12)
+
+KEY TRENDS: Efficiency-first era, safety reality check reveals persistent vulnerabilities, multi-agent architectures dominate, production-aware research
+
+Full report: github.com/guzuseth/ai-research-arm/research/arxiv/2026-01-25-papers.md
