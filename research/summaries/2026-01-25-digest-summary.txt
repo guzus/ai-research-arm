@@ -1,0 +1,19 @@
+Daily AI Digest - 2026-01-25
+
+TOP STORIES:
+• Anthropic raising $10B at $350B valuation (GIC, Coatue, Microsoft, Nvidia)
+• Boston Dynamics + Google DeepMind partner on Atlas humanoid robots with Gemini AI
+• Apple-Google Gemini Siri to debut February 2026 ($1B/year deal)
+• Chrome extensions steal 900K users' ChatGPT/DeepSeek conversations
+• ICML 2026 receives record 30,000+ submissions
+
+KEY NUMBERS:
+• Claude Code: Used by Uber, Netflix, Spotify, Salesforce - Jensen Huang calls it "incredible"
+• Gemini market share: 20% (vs ChatGPT 70%, down from 87%)
+• IMF warning: 60% of jobs in advanced economies affected by AI "tsunami"
+• arXiv safety: DeepSeek-R1 79% harmful response rate on scientific queries
+• Mal: $230M seed (largest MENA seed ever) for AI Islamic bank
+
+TRENDING: "AI hype to pragmatism" shift at Davos 2026 - boards now demand ROI over pilots
+
+Full digest: research/digest/2026-01-25-digest.md
