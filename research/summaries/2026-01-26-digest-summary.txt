@@ -1,0 +1,23 @@
+Daily AI Digest - 2026-01-26
+
+TOP STORIES:
+• NVIDIA invests $2B more in CoreWeave (now 2nd largest shareholder) to build 5GW AI data centers by 2030
+• Apple-Google Gemini Siri unveiling set for late Feb; Gemini hits 20% market share vs ChatGPT's <70%
+• Microsoft tests Claude Code internally vs GitHub Copilot across thousands of engineers
+• OpenAI-Gates Foundation launch $50M Horizon 1000 for AI healthcare in Africa
+• Synthesia hits $4B valuation ($200M Series E), up from $2.1B one year ago
+
+KEY NUMBERS:
+• Gemini: 20% global AI traffic (237% YoY growth)
+• Claude Code: $1B ARR, Anthropic seeking $10B at $350B valuation
+• Microsoft Maia 200: 100B+ transistors, 10 petaflops (4-bit)
+• OpenAI target: $30B revenue 2026 | Anthropic: $15B
+• Qwen3-Max-Thinking: 334 HN points, 287 comments (top story)
+
+TRENDING: Jensen Huang (NVIDIA CEO) at Davos endorses Claude as "incredible" for coding/reasoning; NVIDIA uses it company-wide
+
+RESEARCH: 10+ agent papers on arXiv (tool invocation, semantic caching, multi-turn reasoning); test-time scaling mixed results
+
+TOOLS: Anthropic launches interactive Claude apps (Slack, Figma, Canva integration via MCP); HuggingFace Transformers v5 final
+
+Full digest: github.com/ai-research-arm
