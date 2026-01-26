@@ -1,18 +1,20 @@
 AI News - 2026-01-26
 
-TOP STORIES:
-• Humans& raises record $480M seed at $4.48B valuation - founded by Anthropic/xAI/Google alums
-• NVIDIA releases physical AI models (Cosmos, GR00T, Alpamayo) - "ChatGPT moment for physical AI"
-• OpenAI launches ChatGPT for Healthcare with HIPAA compliance - rolling out to top medical institutions
-• DeepSeek unveils mHC training breakthrough - 6.27% overhead, analysts call it "striking breakthrough"
-• Claude Code goes viral beyond developers - non-coders using it for taxes, automation, daily tasks
+BREAKING TODAY:
+• NVIDIA invests $2B more in CoreWeave, targeting 5+ gigawatts AI capacity by 2030
+• Apple to unveil Gemini-powered Siri overhaul in February with iOS 26.4 beta
+• Skild AI raises $1.4B at $14B valuation (3x in 7 months) for universal robotics brain
+• IBM launches Enterprise Advantage service for scaling agentic AI in enterprises
+
+PREVIOUSLY REPORTED:
+• Humans& raises $480M seed at $4.48B (3-month-old, Anthropic/xAI/Google founders)
+• OpenAI ChatGPT Healthcare HIPAA-compliant, rolling to top hospitals
+• Claude Code viral moment - non-coders booking tickets, filing taxes
 
 KEY NUMBERS:
-• $480M seed round for 3-month-old startup Humans&
-• 230M users ask ChatGPT about health weekly
-• Anthropic seeking $10B raise at $350B valuation
-
-REGULATIONS:
-• Trump AI executive order challenges state laws - DOJ task force to review by March 11
+• NVIDIA now 2nd-largest CoreWeave shareholder after $2B at $87.20/share
+• Skild AI: $4.5B to $14B+ valuation in 7 months (SoftBank, NVIDIA, Bezos)
+• IBM agentic platform: 50% consultant productivity boost
+• Agentic AI market: $5.2B (2024) to $200B by 2034
 
 Full report on GitHub.
