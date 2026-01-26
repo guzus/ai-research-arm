@@ -1,0 +1,12 @@
+arXiv Papers - 2026-01-26
+
+TOP 5 PAPERS:
+• Omni-R1: Unified multimodal reasoning via generative intermediate representations (8-11% gains)
+• Inference-Time Scaling: Self-evolving agents through test-time verification improve without training
+• Neural Scaling Laws Origin: New theoretical foundations for efficient large model development
+• Safety Alignment Study: 32 LLMs tested with 4.6M API calls across 56 jailbreak techniques
+• Lazy Attention: 59.58% attention sparsity via positional discrimination and Elastic-Softmax
+
+CATEGORIES: 7 Language Models, 8 Computer Vision/Multimodal, 5 Agents/Reasoning, 4 Safety, 5 Architecture, 6 Other
+
+Full report: research/arxiv/2026-01-26-papers.md
