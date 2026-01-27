@@ -1,0 +1,19 @@
+AI News - 2026-01-27
+
+TOP STORIES:
+• Anthropic launches interactive tool integrations - Slack, Canva, Figma, Asana work directly in Claude
+• Ricursive Intelligence (ex-Google DeepMind founders) raises $300M Series A at $4B valuation for AI chip design
+• NVIDIA Vera Rubin platform announced at CES - 5x inference boost, 10x lower cost per token vs Blackwell
+
+KEY NUMBERS:
+• $300M - Ricursive Intelligence Series A (AI-designed chips)
+• $250M - Upwind Series B (cloud security)
+• $200M - Synthesia funding (AI video)
+• $110M - Neurophos Series A (photonic AI chips)
+• 5x performance, 10x cost reduction - NVIDIA Vera Rubin claims
+
+ALSO NOTABLE:
+• DeepSeek R1 surpassed ChatGPT as #1 free app on US iOS App Store, triggered 18% Nvidia stock drop
+• Microsoft CEO: 2026 is AI's "turning point" from instrument to partner
+
+Full report on GitHub.
