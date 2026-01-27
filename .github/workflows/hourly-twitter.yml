@@ -26,6 +26,11 @@ jobs:
           echo "hour=$(date +'%H')" >> $GITHUB_OUTPUT
           echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - name: Install bird CLI
         run: npm install -g @steipete/bird
 
