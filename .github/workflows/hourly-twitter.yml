@@ -26,119 +26,83 @@ jobs:
           echo "hour=$(date +'%H')" >> $GITHUB_OUTPUT
           echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
 
-      - name: Check for Twitter API keys
-        id: check-keys
-        run: |
-          if [ -n "${{ secrets.TWITTER_BEARER_TOKEN }}" ]; then
-            echo "has_twitter=true" >> $GITHUB_OUTPUT
-          else
-            echo "has_twitter=false" >> $GITHUB_OUTPUT
-          fi
+      - name: Install bird CLI
+        run: npm install -g @steipete/bird
 
-      - name: Create MCP Config for Twitter
-        if: steps.check-keys.outputs.has_twitter == 'true'
+      - name: Fetch tweets from monitored accounts
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
         run: |
-          cat > /tmp/mcp-config.json << EOF
-          {
-            "mcpServers": {
-              "twitter": {
-                "command": "npx",
-                "args": ["-y", "@mcp/twitter-server"],
-                "env": {
-                  "TWITTER_BEARER_TOKEN": "${{ secrets.TWITTER_BEARER_TOKEN }}"
-                }
-              }
-            }
-          }
-          EOF
+          mkdir -p /tmp/bird
 
-      - name: Fetch Twitter AI News (with MCP)
-        if: steps.check-keys.outputs.has_twitter == 'true'
+          accounts="OpenAI sama AnthropicAI daboris GoogleAI GoogleDeepMind kaboris ylecun elaboris MistralAI MetaAI"
+          for handle in $accounts; do
+            echo "Fetching @${handle}..."
+            bird user-tweets "@${handle}" -n 10 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+          done
+
+      - name: Search for AI news tweets
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          bird search "AI announcement OR new model release OR GPT OR Claude OR Gemini" -n 30 --json --plain > /tmp/bird/search-ai.json 2>/dev/null || echo "[]" > /tmp/bird/search-ai.json
+          bird search "AI breakthrough OR AI launch OR AI update" -n 20 --json --plain > /tmp/bird/search-extra.json 2>/dev/null || echo "[]" > /tmp/bird/search-extra.json
+
+      - name: Fetch AI trending news
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          bird news --ai-only -n 20 --json --plain > /tmp/bird/news.json 2>/dev/null || echo "[]" > /tmp/bird/news.json
+
+      - name: Process tweets with Claude
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           model: claude-opus-4-5-20251101
           claude_args: |
-            --mcp-config /tmp/mcp-config.json
-            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__twitter__*"
+            --allowedTools "Read,Write,Edit,Bash(git:*)"
           prompt: |
-            You are a Twitter AI news monitor. Fetch the LATEST tweets from the last 1-2 hours.
+            You are a Twitter AI news monitor. Process raw tweet data fetched by the bird CLI
+            and produce a concise hourly update.
 
             TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
             OUTPUT: research/twitter/${{ steps.datetime.outputs.date }}.md
 
-            KEY ACCOUNTS TO MONITOR:
-            - @OpenAI, @sama (Sam Altman)
-            - @AnthropicAI, @daboris (Dario Amodei)
-            - @GoogleAI, @GoogleDeepMind
-            - @xaboris (Andrej Karpathy)
-            - @ylecun (Yann LeCun)
-            - @elaboris (Elon Musk / xAI)
-            - @MistralAI, @MetaAI
+            RAW DATA LOCATIONS (JSON files):
+            - /tmp/bird/*.json — individual account tweets (OpenAI.json, sama.json, etc.)
+            - /tmp/bird/search-ai.json — AI keyword search results
+            - /tmp/bird/search-extra.json — additional AI search results
+            - /tmp/bird/news.json — AI trending news from Twitter
 
-            SEARCH TERMS:
-            - "AI announcement"
-            - "new model release"
-            - "GPT", "Claude", "Gemini"
+            INSTRUCTIONS:
+            1. Read all JSON files from /tmp/bird/
+            2. Filter for SIGNIFICANT tweets from the last ~2 hours:
+               - Product announcements, model releases, research papers
+               - Major partnerships, funding, policy changes
+               - Notable technical insights from key researchers
+            3. De-duplicate across sources (same tweet may appear in account feed + search)
+            4. Skip: retweets of old news, casual tweets, promotional content, engagement bait
 
-            FORMAT: Append to the daily file (create if doesn't exist):
+            FORMAT: Append to the daily file (create if doesn't exist).
+            If the file already exists, append the new section at the end.
 
             ## ${{ steps.datetime.outputs.hour }}:00 UTC
 
             ### Breaking
-            - [Tweet summary] - @handle - [link]
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
 
             ### Announcements
-            - [Tweet summary] - @handle - [link]
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
 
-            Only include SIGNIFICANT tweets (announcements, releases, insights).
-            Skip: retweets of old news, casual tweets, promotional content.
+            ### Trending AI News
+            - [Headline] — [description]
 
-            After writing, commit:
-            git add research/twitter/
-            git commit -m "Twitter update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
-
-      - name: Fetch Twitter AI News (WebSearch fallback)
-        if: steps.check-keys.outputs.has_twitter != 'true'
-        uses: anthropics/claude-code-action@v1
-        with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          model: claude-opus-4-5-20251101
-          claude_args: |
-            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
-          prompt: |
-            You are an AI news monitor. Search for BREAKING AI NEWS from the last few hours.
-
-            TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
-            OUTPUT: research/twitter/${{ steps.datetime.outputs.date }}.md
-
-            SEARCH FOR REAL-TIME AI NEWS:
-            1. Search "OpenAI announcement today" - look for any breaking news
-            2. Search "Anthropic Claude news today" - check for updates
-            3. Search "AI model release January 2026" - find new releases
-            4. Search "Google Gemini news today" - check for updates
-            5. Search "AI breaking news" - general AI news
-
-            Look for news articles that mention social media posts or announcements from:
-            - OpenAI / Sam Altman
-            - Anthropic / Dario Amodei
-            - Google DeepMind
-            - Meta AI / Yann LeCun
-            - xAI / Elon Musk
-            - Key AI researchers
-
-            FORMAT: Append to the daily file (create if doesn't exist):
-
+            If no significant updates found, write:
             ## ${{ steps.datetime.outputs.hour }}:00 UTC
-
-            ### Breaking News
-            - [News summary with source] - [link]
-
-            ### Social Media Highlights
-            - [Summary of any tweets/posts mentioned in news] - @handle if known
-
-            Only include SIGNIFICANT, VERIFIED news from the last 24 hours.
-            If no significant news found, write "No significant updates this hour."
+            No significant updates this hour.
 
             After writing, commit:
             git add research/twitter/
