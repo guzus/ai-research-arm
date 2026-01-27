@@ -1,0 +1,12 @@
+arXiv Papers - 2026-01-27
+
+TOP 5 PAPERS:
+• Geometric and Dynamic Scaling in Deep Transformers - MGT architecture breaks through 100+ layer scaling barriers
+• Model-First Reasoning LLM Agents - Reduces hallucinations via explicit problem modeling before solution generation
+• Benchmark²: Systematic LLM Benchmark Evaluation - Meta-evaluation framework across 15 benchmarks and 11 LLMs
+• MM-OOD: Multimodal Out-of-Distribution Detection - Enhanced safety through better OOD detection in MLLMs
+• M3Kang: Multilingual Multimodal Math Reasoning - First massively multilingual VLM math reasoning dataset
+
+CATEGORIES: 5 Language/NLP, 5 Vision/Multimodal, 5 Agents/Reasoning, 4 Architecture/Scaling, 5 Safety/Alignment, 5 Benchmarks, 5 Other
+
+Full report: github.com/[your-repo]/research/arxiv/2026-01-27-papers.md
