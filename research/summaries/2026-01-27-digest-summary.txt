@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-01-27
+
+TOP STORIES:
+• Moonshot AI releases Kimi K2.5: 1T-param open model with 100-agent swarm tech executing 1,500 parallel tool calls—4.5x faster workflows
+• OpenAI GPT-5.2 hits ChatGPT: 70.9% human expert-level on knowledge work, 100% on AIME math, first 90%+ ARC-AGI
+• NVIDIA Earth-2 launches: Open weather AI with 1,000x speedup, forecasts in seconds vs hours
+• Anthropic Claude gets interactive apps: Slack, Figma, Canva, Asana integration via MCP; fundraise reportedly $20B at $300B+ valuation
+
+KEY NUMBERS:
+• Big Tech AI capex: $470B projected for 2026 (up from $350B in 2025)
+• Ricursive raises $300M at $4B valuation (2 months old, AI chip design)
+• OpenAI API added $1B ARR in last month alone
+• DeepSeek selloff wiped $1T from tech stocks, $600B from Nvidia
+
+TRENDING: Agent swarms (Kimi's 100 parallel agents), earnings ROI pressure, Chinese open models vs US closed
+
+Full digest on GitHub.
