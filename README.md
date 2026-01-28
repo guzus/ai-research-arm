@@ -12,7 +12,7 @@ flowchart TB
         Reddit["🔴 Reddit<br/><i>Every 4h</i>"]
         HN["🟠 Hacker News<br/><i>Every 4h</i>"]
         arXiv["📄 arXiv<br/><i>Daily</i>"]
-        Twitter["🐦 Twitter/X<br/><i>Hourly</i>"]
+        Twitter["🐦 Twitter/X<br/><i>Every 2h</i>"]
     end
 
     subgraph mcp["🔌 MCP Tools (Optional)"]
@@ -59,6 +59,7 @@ flowchart TB
 
 | Source | Method | Frequency | Real-time? |
 |--------|--------|-----------|------------|
+| **Twitter/X** | bird CLI (33 accounts + 7 searches) | Every 2 hours | ✅ Yes |
 | **RSS Feeds** | Direct XML fetch | Hourly | ✅ Yes |
 | **Bluesky** | Public API | Every 2 hours | ✅ Yes |
 | **Reddit** | JSON endpoint | Every 4 hours | ✅ Yes |
@@ -76,9 +77,9 @@ gantt
 
     section Hourly
     RSS Feeds           :crit, 00:00, 1h
-    Twitter/X           :00:00, 1h
 
     section Every 2h
+    Twitter/X           :active, 00:00, 2h
     Bluesky             :active, 00:00, 2h
 
     section Every 4h
@@ -98,7 +99,7 @@ gantt
 | `4h-community.yml` | Every 4 hours | Reddit JSON + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 6 AM UTC | arXiv papers | `research/arxiv/` |
 | `daily-digest.yml` | Daily 11 PM UTC | All sources + MCP search | `research/digest/` |
-| `hourly-twitter.yml` | Every hour | Twitter/X (needs API key) | `research/twitter/` |
+| `hourly-twitter.yml` | Every 2 hours | Twitter/X via bird CLI (33 accounts, 7 search queries) | `research/twitter/` |
 | `ai-news-research.yml` | Every 4 hours | Perplexity/Exa MCP | `research/` |
 | `daily-improve.yml` | Daily midnight | Self-improvement | PRs with improvements |
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
@@ -153,6 +154,8 @@ Reports are saved to `research/issues/{issue-number}-research.md` with:
 | Secret | Required | Description |
 |--------|----------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code auth |
+| `BIRD_AUTH_TOKEN` | Yes | X/Twitter auth_token cookie for bird CLI |
+| `BIRD_CT0` | Yes | X/Twitter ct0 cookie for bird CLI |
 
 ### Optional API Keys (for enhanced features)
 
@@ -160,7 +163,6 @@ Reports are saved to `research/issues/{issue-number}-research.md` with:
 |--------|--------|---------|
 | `EXA_API_KEY` | [dashboard.exa.ai](https://dashboard.exa.ai) | Neural web search via MCP |
 | `PERPLEXITY_API_KEY` | [perplexity.ai/settings/api](https://www.perplexity.ai/settings/api) | Real-time web search with citations via MCP |
-| `TWITTER_BEARER_TOKEN` | [developer.twitter.com](https://developer.twitter.com) | Direct Twitter access |
 
 **Note:** Exa and Perplexity integrate as MCP (Model Context Protocol) tools, giving Claude enhanced web search capabilities during research workflows.
 
@@ -186,6 +188,20 @@ research/
 ```
 
 ## Data Source Details
+
+### Twitter/X (Every 2 hours)
+Via [bird CLI](https://github.com/steipete/bird) — 33 monitored accounts, 20 tweets each, 7 search queries.
+
+**AI Labs & Companies (11):**
+OpenAI, Anthropic, Google AI, DeepMind, Mistral, Meta AI, Cohere, AI21Labs, Stability AI, Hugging Face, NVIDIA AI Dev
+
+**Hyperscalers (7):**
+Elon Musk, Sam Altman, Demis Hassabis, Logan (Google AI), Alex Albert (Anthropic), Jim Fan (NVIDIA), Roon (OpenAI)
+
+**Researchers, Analysts & Media (15):**
+Karpathy, strawberry, Curran, fin (China AI), Jukan (semiconductors), Vitrupo, sankalp, JT, Semi Analysis, Ben Thompson, The Information, Gavin Baker, Mark, NIK, Chubby
+
+**Search queries:** AI models & products, breakthroughs, research papers, infrastructure & hardware, policy & safety, business & funding, open source & dev tools
 
 ### RSS Feeds (Hourly)
 Official announcements from:
