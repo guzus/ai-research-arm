@@ -1,0 +1,16 @@
+AI News - 2026-01-28
+
+TOP STORIES:
+* Chinese AI firms race to release models one year after DeepSeek shock - Alibaba, Moonshot intensify competition
+* Alibaba launches Qwen3-Max-Thinking (1T params), claims parity with GPT-5.2 on key benchmarks
+* Massive earnings day: Microsoft, Meta, Tesla, IBM, ServiceNow all report Q4 results today
+* Apple expected to announce M5 Pro/Max MacBook Pro with 3.5x AI performance boost
+* Tesla robotaxi fleet hits 240 vehicles after unsupervised Austin launch on Jan 22
+
+KEY NUMBERS:
+* $2.5T - projected global AI spending in 2026 (Gartner)
+* $470B+ - expected 2026 hyperscaler capex (up from $350B in 2025)
+* $7.75B - ServiceNow's Armis acquisition
+* 240 - Tesla's total tracked robotaxi fleet
+
+Full report on GitHub.
