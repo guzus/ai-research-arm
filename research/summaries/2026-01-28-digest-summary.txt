@@ -1,18 +1,18 @@
 Daily AI Digest - 2026-01-28
 
 TOP STORIES:
-- SoftBank in talks for $30B more in OpenAI, pushing valuation toward $830B in potential $100B round
-- Google DeepMind publishes AlphaGenome in Nature -- AI reads DNA at single-base resolution, weights open-sourced
-- Kimi K2.5 (1T open-source) benchmarks alongside GPT-5.2 & Opus 4.5 at 1/10th cost
-- Big Tech earnings beat: MSFT $81.3B rev, META shares jump, TSLA EPS $0.50, ServiceNow +21% YoY
-- ASML record orders $15.8B (2x consensus) -- AI chip boom accelerating
+• AlphaGenome in Nature -- DeepMind's DNA AI reads 1M base pairs, weights open-sourced to 3K+ researchers in 160 countries
+• Tesla invests $2B in xAI despite shareholder resistance, disclosed in Q4 earnings
+• Kimi K2.5 (1T open-source MoE) matches GPT-5.2 & Opus 4.5 at 1/10th cost -- dominates community
+• Google ships Gemini 3 across Chrome (agentic browsing), Search (AI Overviews default), and Flash (Agentic Vision)
+• Amazon cuts 16K jobs in 2nd round of layoffs while pushing AI
 
 KEY NUMBERS:
-- $37.5B: Microsoft capex in one quarter
-- $470B+: Expected hyperscaler capex in 2026
-- 16,000: Amazon job cuts (2nd round)
-- 3,000: Scientists using AlphaGenome across 160 countries
+• $2B: Tesla's xAI investment
+• $1B: Waabi autonomous driving raise
+• 28,194: AI agent attacks detected in one week
+• 860 pts: Karpathy's Claude coding notes on HN (#1 story)
 
-TRENDING: Kimi K2.5 dominates -- AMA on Reddit, Karpathy runs it locally, community declares open-source gap "officially closing"
+TRENDING: Chinese AI race -- Kimi K2.5, Qwen3-Max-Thinking, and H200 chip approvals signal intensifying competition ahead of Lunar New Year
 
 Full digest on GitHub.
