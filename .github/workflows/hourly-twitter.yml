@@ -172,8 +172,34 @@ jobs:
             ## ${{ steps.datetime.outputs.hour }}:00 UTC
             No significant updates this period.
 
-            After writing, commit:
-            git add research/twitter/
+            STEP 2 - WRITE TELEGRAM SUMMARY:
+            After writing the Twitter update, also write a SHORT summary for Telegram notification.
+            Use Write tool to create: research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-summary.txt
+
+            Format (plain text, max 800 chars):
+            ```
+            Twitter/X AI Pulse - ${{ steps.datetime.outputs.timestamp }}
+
+            WHAT'S BUZZING:
+            • [Top story 1]
+            • [Top story 2]
+            • [Top story 3]
+
+            NOTABLE:
+            • [Key insight or trend]
+
+            Full update on GitHub.
+            ```
+
+            If no significant updates were found, write:
+            ```
+            Twitter/X AI Pulse - ${{ steps.datetime.outputs.timestamp }}
+
+            Quiet period — no major AI updates on Twitter/X.
+            ```
+
+            After writing both files, commit:
+            git add research/twitter/ research/summaries/
             git commit -m "Twitter update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
 
       - name: Push changes
@@ -183,3 +209,31 @@ jobs:
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git pull --rebase || true
           git push || echo "Nothing to push"
+
+      - name: Read summary for Telegram
+        id: summary
+        run: |
+          SUMMARY_FILE="research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-summary.txt"
+          if [ -f "$SUMMARY_FILE" ]; then
+            SUMMARY=$(cat "$SUMMARY_FILE" | head -c 800)
+            echo "content<<EOF" >> $GITHUB_OUTPUT
+            echo "$SUMMARY" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "content=No Twitter summary available" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Send Telegram notification
+        if: success()
+        continue-on-error: true
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: |
+            🐦 *Twitter/X AI Pulse*
+
+            ${{ steps.summary.outputs.content }}
+
+            📄 [Full Update on GitHub](https://github.com/${{ github.repository }}/blob/main/research/twitter/${{ steps.datetime.outputs.date }}.md)
