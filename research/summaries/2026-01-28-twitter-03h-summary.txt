@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-01-28 03:17 UTC
+
+WHAT'S BUZZING:
+• Chinese AI race heats up: one year post-DeepSeek, Alibaba drops Qwen3-Max-Thinking reasoning model rivaling Claude 4.5 Opus, GPT 5.2 Pro, and Gemini 3 Pro
+• MIT discovers "shared physics" in AI — models trained on different data/architectures converge to same latent structure of physical reality
+• Alibaba's Tongyi Lab releases Z-Image, 6B-param open-source image gen model
+
+NOTABLE:
+• TRAE (ByteDance) IDE expands with GPT-5.2 Codex, MiniMax integrations and new markets
+• Kimi K2.5 buzz continues — 1T MoE model benchmarks closing gap between open-source and proprietary AI
+
+Full update on GitHub.
