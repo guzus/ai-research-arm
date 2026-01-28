@@ -96,9 +96,8 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          model: claude-opus-4-5-20251101
           claude_args: |
-            --mcp-config /tmp/mcp-config.json
+            --model opus --mcp-config /tmp/mcp-config.json
             --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__*,mcp__perplexity__*"
           prompt: |
             You are an AI news research agent. Find BREAKING NEWS and RECENT ANNOUNCEMENTS only.
@@ -172,9 +171,8 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          model: claude-opus-4-5-20251101
           claude_args: |
-            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
           prompt: |
             You are an AI news research agent. Find BREAKING NEWS and RECENT ANNOUNCEMENTS only.
 
