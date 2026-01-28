@@ -1,16 +1,17 @@
 AI News - 2026-01-28
 
 TOP STORIES:
-* Chinese AI firms race to release models one year after DeepSeek shock - Alibaba, Moonshot intensify competition
-* Alibaba launches Qwen3-Max-Thinking (1T params), claims parity with GPT-5.2 on key benchmarks
-* Massive earnings day: Microsoft, Meta, Tesla, IBM, ServiceNow all report Q4 results today
-* Apple expected to announce M5 Pro/Max MacBook Pro with 3.5x AI performance boost
-* Tesla robotaxi fleet hits 240 vehicles after unsupervised Austin launch on Jan 22
+• SoftBank in talks for $30B more in OpenAI, pushing valuation to $830B as part of $100B round
+• ASML posts record $11.5B profit and record $15.8B quarterly orders on AI chip boom; raises 2026 outlook
+• Alibaba launches Qwen3-Max-Thinking (1T params), claims parity with GPT-5.2
+• Fed holds rates at 3.5-3.75% in 10-2 split; Powell sees tariff inflation peaking mid-2026
+• Microsoft, Meta, Tesla report Q4 earnings today - pivotal AI spending ROI test
+• OpenAI warns of "capability overhang" - gap between AI ability and enterprise adoption
 
 KEY NUMBERS:
-* $2.5T - projected global AI spending in 2026 (Gartner)
-* $470B+ - expected 2026 hyperscaler capex (up from $350B in 2025)
-* $7.75B - ServiceNow's Armis acquisition
-* 240 - Tesla's total tracked robotaxi fleet
+• $830B - OpenAI's potential valuation after new round
+• $15.8B - ASML's record Q4 orders (2x analyst estimates)
+• $470B+ - Expected 2026 hyperscaler capex (up 34% YoY)
+• 3.5-3.75% - Fed funds rate held steady
 
 Full report on GitHub.
