@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-01-28 10:38 UTC
+
+WHAT'S BUZZING:
+• Google's Agentic Vision for Gemini 3 Flash surpasses 2,900 likes — new "Think, Act, Observe" loop for agentic image understanding with code execution
+• Alibaba-backed Moonshot AI releases upgraded flagship model ahead of expected DeepSeek rollout
+• New Self-Refining Video Sampling paper improves physical realism without external training
+
+NOTABLE:
+• Sam Bowman analyzes Dario Amodei's AI essay, arguing physical labor stays human-dominated even in AGI world
+• Memory chip makers prioritizing AI data centers over consumers at 3-5x margins
+
+Full update on GitHub.
