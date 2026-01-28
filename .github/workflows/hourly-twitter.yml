@@ -1,9 +1,9 @@
-name: Hourly Twitter AI News
+name: Twitter AI News (Every 2 Hours)
 
 on:
   schedule:
-    # Run every hour
-    - cron: '0 * * * *'
+    # Run every 2 hours
+    - cron: '0 */2 * * *'
   workflow_dispatch:
 
 jobs:
@@ -41,10 +41,28 @@ jobs:
         run: |
           mkdir -p /tmp/bird
 
-          accounts="OpenAI sama AnthropicAI daboris GoogleAI GoogleDeepMind kaboris ylecun elaboris MistralAI MetaAI"
-          for handle in $accounts; do
+          # AI Labs & Company accounts
+          labs="OpenAI AnthropicAI GoogleAI GoogleDeepMind MistralAI MetaAI CohereAI AI21Labs StabilityAI HuggingFace NVIDIAAIDev"
+
+          # Hyperscalers — top execs and key insiders
+          hyperscalers="elonmusk sama demishassabis OfficialLoganK alexalbert__ DrJimFan tszzl"
+
+          # Others — researchers, analysts, specialists, media
+          others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus"
+
+          for handle in $labs; do
             echo "Fetching @${handle}..."
-            bird user-tweets "@${handle}" -n 10 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+          done
+
+          for handle in $hyperscalers; do
+            echo "Fetching @${handle}..."
+            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+          done
+
+          for handle in $others; do
+            echo "Fetching @${handle}..."
+            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
           done
 
       - name: Search for AI news tweets
@@ -52,15 +70,33 @@ jobs:
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
-          bird search "AI announcement OR new model release OR GPT OR Claude OR Gemini" -n 30 --json --plain > /tmp/bird/search-ai.json 2>/dev/null || echo "[]" > /tmp/bird/search-ai.json
-          bird search "AI breakthrough OR AI launch OR AI update" -n 20 --json --plain > /tmp/bird/search-extra.json 2>/dev/null || echo "[]" > /tmp/bird/search-extra.json
+          # Core AI model & product announcements
+          bird search "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama" -n 50 --json --plain > /tmp/bird/search-ai.json 2>/dev/null || echo "[]" > /tmp/bird/search-ai.json
+
+          # Breakthroughs and launches
+          bird search "AI breakthrough OR AI launch OR AI update OR foundation model" -n 30 --json --plain > /tmp/bird/search-extra.json 2>/dev/null || echo "[]" > /tmp/bird/search-extra.json
+
+          # Research papers and benchmarks
+          bird search "AI paper OR machine learning research OR new benchmark OR state of the art SOTA" -n 30 --json --plain > /tmp/bird/search-research.json 2>/dev/null || echo "[]" > /tmp/bird/search-research.json
+
+          # AI infrastructure, chips, and hardware
+          bird search "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU" -n 20 --json --plain > /tmp/bird/search-infra.json 2>/dev/null || echo "[]" > /tmp/bird/search-infra.json
+
+          # AI policy, safety, and regulation
+          bird search "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment" -n 20 --json --plain > /tmp/bird/search-policy.json 2>/dev/null || echo "[]" > /tmp/bird/search-policy.json
+
+          # AI funding and business
+          bird search "AI startup funding OR AI acquisition OR AI valuation OR AI partnership" -n 20 --json --plain > /tmp/bird/search-business.json 2>/dev/null || echo "[]" > /tmp/bird/search-business.json
+
+          # Open source AI and tools
+          bird search "open source AI OR open weights OR AI API OR AI developer tools" -n 20 --json --plain > /tmp/bird/search-opensource.json 2>/dev/null || echo "[]" > /tmp/bird/search-opensource.json
 
       - name: Fetch AI trending news
         env:
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
-          bird news --ai-only -n 20 --json --plain > /tmp/bird/news.json 2>/dev/null || echo "[]" > /tmp/bird/news.json
+          bird news --ai-only -n 40 --json --plain > /tmp/bird/news.json 2>/dev/null || echo "[]" > /tmp/bird/news.json
 
       - name: Process tweets with Claude
         uses: anthropics/claude-code-action@v1
@@ -70,44 +106,72 @@ jobs:
           claude_args: |
             --allowedTools "Read,Write,Edit,Bash(git:*)"
           prompt: |
-            You are a Twitter AI news monitor. Process raw tweet data fetched by the bird CLI
-            and produce a concise hourly update.
+            You are a comprehensive Twitter/X AI news monitor. Process raw tweet data fetched by
+            the bird CLI and produce a detailed update covering the full AI landscape.
 
             TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
             OUTPUT: research/twitter/${{ steps.datetime.outputs.date }}.md
 
             RAW DATA LOCATIONS (JSON files):
             - /tmp/bird/*.json — individual account tweets (OpenAI.json, sama.json, etc.)
-            - /tmp/bird/search-ai.json — AI keyword search results
-            - /tmp/bird/search-extra.json — additional AI search results
+            - /tmp/bird/search-ai.json — core AI model & product search results
+            - /tmp/bird/search-extra.json — breakthroughs and launches
+            - /tmp/bird/search-research.json — research papers and benchmarks
+            - /tmp/bird/search-infra.json — AI infrastructure and hardware
+            - /tmp/bird/search-policy.json — AI safety, regulation, governance
+            - /tmp/bird/search-business.json — AI funding and business moves
+            - /tmp/bird/search-opensource.json — open source AI and developer tools
             - /tmp/bird/news.json — AI trending news from Twitter
 
             INSTRUCTIONS:
-            1. Read all JSON files from /tmp/bird/
-            2. Filter for SIGNIFICANT tweets from the last ~2 hours:
-               - Product announcements, model releases, research papers
-               - Major partnerships, funding, policy changes
-               - Notable technical insights from key researchers
+            1. Read ALL JSON files from /tmp/bird/
+            2. Filter for SIGNIFICANT tweets from the last ~3 hours:
+               - Product announcements, model releases, API changes
+               - Research papers, benchmarks, technical breakthroughs
+               - Major partnerships, funding rounds, acquisitions
+               - Policy changes, regulation, safety developments
+               - Infrastructure news (chips, compute, hardware)
+               - Open source releases, developer tools, frameworks
+               - Notable technical insights and opinions from key researchers
             3. De-duplicate across sources (same tweet may appear in account feed + search)
             4. Skip: retweets of old news, casual tweets, promotional content, engagement bait
+            5. Include engagement metrics when notably high (viral tweets)
 
             FORMAT: Append to the daily file (create if doesn't exist).
             If the file already exists, append the new section at the end.
 
             ## ${{ steps.datetime.outputs.hour }}:00 UTC
 
-            ### Breaking
+            ### Breaking News
             - [Tweet summary] — @handle — https://x.com/handle/status/ID
 
-            ### Announcements
+            ### Model Releases & Product Updates
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Research & Papers
+            - [Tweet summary with paper title if applicable] — @handle — https://x.com/handle/status/ID
+
+            ### Infrastructure & Hardware
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Business & Funding
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Policy, Safety & Regulation
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Open Source & Developer Tools
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Notable Opinions & Insights
             - [Tweet summary] — @handle — https://x.com/handle/status/ID
 
             ### Trending AI News
             - [Headline] — [description]
 
-            If no significant updates found, write:
+            Omit any section that has no items. If no significant updates found at all, write:
             ## ${{ steps.datetime.outputs.hour }}:00 UTC
-            No significant updates this hour.
+            No significant updates this period.
 
             After writing, commit:
             git add research/twitter/
