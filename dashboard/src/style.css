@@ -18,6 +18,7 @@
   --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
 }
 
@@ -253,11 +254,15 @@ body {
 
 /* ── Markdown Styles ───────────────────────────────── */
 .md-content {
-  font-size: 0.9rem;
-  line-height: 1.8;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.85;
+  letter-spacing: 0.005em;
+  color: var(--text);
 }
 
 .md-content h1 {
+  font-family: var(--font);
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -267,6 +272,7 @@ body {
 }
 
 .md-content h2 {
+  font-family: var(--font);
   font-size: 1.08rem;
   font-weight: 650;
   margin-top: 32px;
@@ -275,13 +281,15 @@ body {
 }
 
 .md-content h3 {
+  font-family: var(--font);
   font-size: 0.95rem;
   font-weight: 600;
-  margin-top: 22px;
-  margin-bottom: 8px;
+  margin-top: 24px;
+  margin-bottom: 10px;
 }
 
 .md-content h4 {
+  font-family: var(--font);
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-secondary);
@@ -289,15 +297,16 @@ body {
   margin-bottom: 6px;
 }
 
-.md-content p { margin-bottom: 12px; }
+.md-content p { margin-bottom: 14px; }
 
 .md-content ul, .md-content ol {
-  margin-bottom: 16px;
-  padding-left: 22px;
+  margin-bottom: 18px;
+  padding-left: 24px;
 }
 
 .md-content li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  padding-left: 4px;
 }
 
 .md-content li::marker { color: var(--text-tertiary); }
@@ -306,6 +315,8 @@ body {
   color: var(--blue);
   text-decoration: none;
   font-weight: 500;
+  font-family: var(--font);
+  font-size: 0.9rem;
 }
 
 .md-content a:hover { text-decoration: underline; }
