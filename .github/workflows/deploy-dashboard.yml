@@ -3,6 +3,9 @@ name: Deploy Dashboard to GitHub Pages
 on:
   push:
     branches: [main]
+    paths:
+      - 'dashboard/**'
+      - 'research/twitter/**'
   workflow_dispatch:
 
 permissions:
