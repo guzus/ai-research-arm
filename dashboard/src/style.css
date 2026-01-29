@@ -56,34 +56,11 @@ body {
   margin-bottom: 24px;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-icon {
-  width: 36px;
-  height: 36px;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
-.brand-text h1 {
-  font-size: 1.1rem;
+.brand-title {
+  font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-}
-
-.brand-text p {
-  font-size: 0.75rem;
-  color: var(--text-tertiary);
+  font-family: var(--font-mono);
 }
 
 .header-link {
@@ -232,7 +209,11 @@ body {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.content-card:first-child {
+  margin-top: 0;
 }
 
 .content-card-header {

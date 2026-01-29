@@ -99,29 +99,66 @@ function showEmpty(dateStr: string): void {
   );
 }
 
-function renderReport(md: string): void {
-  let html = marked.parse(md) as string;
+/** Split markdown by ## headings into separate sections */
+function splitSections(md: string): { title: string; body: string }[] {
+  const lines = md.split('\n');
+  const sections: { title: string; body: string }[] = [];
+  let currentTitle = '';
+  let currentLines: string[] = [];
 
-  if (searchTerm) {
-    const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const re = new RegExp('(' + escaped + ')', 'gi');
-    html = html.replace(re, '<mark>$1</mark>');
+  for (const line of lines) {
+    const h2Match = line.match(/^## (.+)/);
+    if (h2Match) {
+      if (currentTitle || currentLines.length) {
+        sections.push({ title: currentTitle, body: currentLines.join('\n').trim() });
+      }
+      currentTitle = h2Match[1];
+      currentLines = [];
+    } else {
+      currentLines.push(line);
+    }
+  }
+  if (currentTitle || currentLines.length) {
+    sections.push({ title: currentTitle, body: currentLines.join('\n').trim() });
+  }
+  return sections;
+}
+
+function renderReport(md: string): void {
+  const sections = splitSections(md);
+  const cards: string[] = [];
+
+  for (const section of sections) {
+    // Skip the top-level h1 title section if it has no body
+    if (!section.title && !section.body) continue;
+
+    let html = marked.parse(section.body) as string;
+
+    if (searchTerm) {
+      const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp('(' + escaped + ')', 'gi');
+      html = html.replace(re, '<mark>$1</mark>');
+    }
+
+    // Use the ## heading as the card title, or fall back to date
+    const title = section.title || escapeHtml(displayDate(currentDate));
+
+    cards.push(
+      [
+        '<div class="content-card">',
+        '  <div class="content-card-header">',
+        '    <div class="content-card-icon">' + TWITTER_ICON + '</div>',
+        '    <div class="content-card-title">' + escapeHtml(title) + '</div>',
+        '  </div>',
+        '  <div class="content-card-body">',
+        '    <div class="md-content">' + html + '</div>',
+        '  </div>',
+        '</div>',
+      ].join('\n'),
+    );
   }
 
-  const card = [
-    '<div class="content-card">',
-    '  <div class="content-card-header">',
-    '    <div class="content-card-icon">' + TWITTER_ICON + '</div>',
-    '    <div class="content-card-title">Twitter / X Report</div>',
-    '    <div class="content-card-meta">' + escapeHtml(displayDate(currentDate)) + '</div>',
-    '  </div>',
-    '  <div class="content-card-body">',
-    '    <div class="md-content">' + html + '</div>',
-    '  </div>',
-    '</div>',
-  ].join('\n');
-
-  setSafeContent(content, card);
+  setSafeContent(content, cards.join('\n'));
 }
 
 // ── Main load ─────────────────────────────────────────
