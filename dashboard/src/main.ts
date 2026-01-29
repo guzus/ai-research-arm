@@ -153,7 +153,6 @@ function renderReport(md: string): void {
       [
         '<div class="content-card">',
         '  <div class="content-card-header">',
-        '    <div class="content-card-icon">' + TWITTER_ICON + '</div>',
         '    <div class="content-card-title">' + escapeHtml(title) + '</div>',
         '  </div>',
         '  <div class="content-card-body">',
