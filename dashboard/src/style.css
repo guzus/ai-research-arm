@@ -513,7 +513,31 @@ mark {
   .content-card-header { padding: 12px 16px; }
   .md-content { font-size: 0.95rem; line-height: 1.75; }
   .md-content li { margin-bottom: 14px; }
-  .section-nav { right: 14px; bottom: 14px; }
-  .section-nav-btn { width: 36px; height: 36px; }
-  .section-nav-counter { width: 36px; font-size: 0.65rem; }
+  .section-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 8px 0;
+  }
+  .section-nav-btn {
+    width: 44px;
+    height: 36px;
+    border-radius: 8px;
+  }
+  .section-nav-btn:first-child { border-radius: 8px; }
+  .section-nav-btn:last-child { border-radius: 8px; }
+  .section-nav-counter {
+    width: auto;
+    padding: 0 12px;
+    border: none;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+  }
 }
