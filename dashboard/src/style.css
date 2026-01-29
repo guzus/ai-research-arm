@@ -2,16 +2,16 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #ffffff;
-  --bg-secondary: #f8f9fb;
-  --bg-hover: #f1f2f5;
-  --border: #e8eaed;
-  --border-light: #f0f1f3;
-  --text: #1a1a2e;
-  --text-secondary: #6b7280;
-  --text-tertiary: #9ca3af;
+  --bg: #fffef9;
+  --bg-secondary: #faf8f2;
+  --bg-hover: #f5f3eb;
+  --border: #e8e4d9;
+  --border-light: #f0ece3;
+  --text: #2c2a1e;
+  --text-secondary: #6b6752;
+  --text-tertiary: #9c977f;
   --accent: #111827;
-  --accent-light: #f3f4f6;
+  --accent-light: #f5f3eb;
   --blue: #2563eb;
   --radius: 12px;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
