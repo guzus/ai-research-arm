@@ -51,6 +51,34 @@ function parseUtcTime(title: string, dateStr: string): { utc: string; local: str
   return { utc: match[0], local: localStr, localHours: localH, localMinutes: localM };
 }
 
+// ── Tweet timestamp from Snowflake ID ─────────────────
+const TWITTER_EPOCH = 1288834974657;
+
+function snowflakeToDate(id: string): Date | null {
+  try {
+    const n = BigInt(id);
+    const ms = Number(n >> 22n) + TWITTER_EPOCH;
+    const d = new Date(ms);
+    if (isNaN(d.getTime())) return null;
+    return d;
+  } catch {
+    return null;
+  }
+}
+
+function timeAgo(date: Date): string {
+  const now = Date.now();
+  const diff = now - date.getTime();
+  if (diff < 0) return 'just now';
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return mins + 'm ago';
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return hours + 'h ago';
+  const days = Math.floor(hours / 24);
+  return days + 'd ago';
+}
+
 // ── State ─────────────────────────────────────────────
 let currentDate = new Date();
 let searchTerm = '';
@@ -171,6 +199,17 @@ function renderReport(md: string): void {
     if (!section.title && !section.body) continue;
 
     let html = marked.parse(section.body) as string;
+
+    // Add time-ago labels to tweet URLs (extract Snowflake ID from status URL)
+    html = html.replace(
+      /href="https?:\/\/(?:x|twitter)\.com\/\w+\/status\/(\d+)"[^>]*>([^<]+)<\/a>/g,
+      (match, tweetId: string) => {
+        const date = snowflakeToDate(tweetId);
+        if (!date) return match;
+        const ago = timeAgo(date);
+        return match + '<span class="tweet-ago">' + escapeHtml(ago) + '</span>';
+      },
+    );
 
     // Highlight @handles
     html = html.replace(

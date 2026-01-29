@@ -350,6 +350,17 @@ body {
   font-weight: 500;
 }
 
+.tweet-ago {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  background: var(--bg-secondary);
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
 .md-content strong { font-weight: 600; }
 
 .md-content em { color: var(--text-secondary); }
