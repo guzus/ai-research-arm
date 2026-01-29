@@ -1,12 +1,12 @@
-Twitter/X AI Pulse - 2026-01-29 16:25 UTC
+Twitter/X AI Pulse - 2026-01-29 16:54 UTC
 
 WHAT'S BUZZING:
 • UAE launches K2 Think V2 — first sovereign AI model (70B params, open, by G42/Cerebras/MBZUAI), signaling growing AI nationalism
 • DeepSeek V4 reportedly coming mid-February with strong coding and 1M+ token context
-• Moonshot's Kimi K2.5 open-source model + coding agent continues gaining traction, impressing in head-to-head dev tool tests
+• NY RAISE Act creates 72-hour AI safety incident reporting — clashing with California's 15-day rule
 
 NOTABLE:
-• Anthropic's constitutional AI research sparks debate — "alignment through understanding rather than constraint through obscurity"
-• TSMC CoWoS packaging capacity confirmed to exceed 140K wafers/month by end 2026, half for Nvidia
+• Kimi 2.5 coding agent found issues missed by Claude Code and OpenCode in reverse engineering tests
+• Gold crashes 7% erasing $3T; Grok Imagine still trending at 55K posts
 
 Full update on GitHub.
