@@ -134,6 +134,12 @@ function renderReport(md: string): void {
 
     let html = marked.parse(section.body) as string;
 
+    // Highlight @handles
+    html = html.replace(
+      /(?<!\w)(@\w+)/g,
+      '<span class="handle">$1</span>',
+    );
+
     if (searchTerm) {
       const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const re = new RegExp('(' + escaped + ')', 'gi');
