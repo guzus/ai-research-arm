@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-01-29 10:49 UTC
+
+WHAT'S BUZZING:
+• Former OpenAI VP Jerry Tworek launches Core Automation — $1B startup pursuing continual learning with post-transformer architectures (architect of o1/o3)
+• AlphaGenome published in Nature with open weights — DeepMind's genomics foundation model
+• Genie 3 incoming — next-gen world model from Google DeepMind teased
+
+NOTABLE:
+• Grok Imagine adds zero-prompt image understanding
+• Kimi-K2.5 agentic model live on Hugging Face
+• BofA publishes AI GPU lifespan estimates
+• Tesla Optimus 3 rollout nearing, factories repurposed
+
+Full update on GitHub.
