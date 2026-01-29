@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-01-29 02:43 UTC
+
+WHAT'S BUZZING:
+• Tesla investing $2B in xAI; ending Model S/X production to build Optimus robots
+• Qwen3-max-thinking (1T params) reportedly beats Opus 4.5, Gemini 3 Pro, GPT-5.2 across benchmarks
+• Google rolls out Gemini 3 in Chrome with agentic browsing + makes it default for AI Overviews globally
+
+NOTABLE:
+• Anthropic publishes research on AI "disempowerment" — users voluntarily ceding judgment to AI assistants
+• DeepMind's AlphaGenome model + weights released for genomics (published in Nature)
+• TSMC expanding CoWoS to 140K wafers/mo for AI chips; Nvidia H200 exports to China approved
+• Arcee AI (30 people) ships Trinity 400B open-source model rivaling Llama 4
+
+Full update on GitHub.
