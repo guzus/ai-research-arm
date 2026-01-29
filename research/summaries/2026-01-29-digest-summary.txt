@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-01-29
+
+TOP STORIES:
+• SpaceX & xAI in merger talks ahead of IPO -- orbital data centers as rationale; combined ~$1T valuation
+• Amazon in talks to invest up to $50B in OpenAI; broader round targets $100B at $830B valuation
+• Apple smashes records: $143.8B revenue (+16%), acquires silent-speech AI startup Q.ai for ~$2B
+• Google launches Project Genie (Genie 3 world model) and embeds Gemini 3 into Chrome with agentic browsing
+
+KEY NUMBERS:
+• Meta guides $115-135B 2026 capex for AI
+• Microsoft cloud tops $50B quarterly (first time)
+• IBM AI book of business doubles to $12B
+• 300+ arXiv AI papers published today
+
+TRENDING: Claude Code degradation benchmarking (392 pts on HN) -- developers demanding AI tool accountability
+
+Full digest on GitHub.
