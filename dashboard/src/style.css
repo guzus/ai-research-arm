@@ -255,7 +255,7 @@ body {
 /* ── Markdown Styles ───────────────────────────────── */
 .md-content {
   font-family: var(--font-serif);
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.85;
   letter-spacing: 0.005em;
   color: var(--text);
