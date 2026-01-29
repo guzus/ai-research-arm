@@ -50,6 +50,20 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
     </div>
+    <div class="shortcut-guide" id="shortcutGuide">
+      <button class="shortcut-toggle" id="shortcutToggle" title="Keyboard shortcuts (?)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg>
+      </button>
+      <div class="shortcut-panel" id="shortcutPanel">
+        <div class="shortcut-title">Keyboard Shortcuts</div>
+        <div class="shortcut-row"><kbd>↑</kbd><kbd>↓</kbd><span>Navigate sections</span></div>
+        <div class="shortcut-row"><kbd>[</kbd><kbd>]</kbd><span>Previous / next day</span></div>
+        <div class="shortcut-row"><kbd>T</kbd><span>Jump to today</span></div>
+        <div class="shortcut-row"><kbd>/</kbd><span>Focus search</span></div>
+        <div class="shortcut-row"><kbd>R</kbd><span>Refresh</span></div>
+        <div class="shortcut-row"><kbd>?</kbd><span>Toggle this guide</span></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

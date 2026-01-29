@@ -262,6 +262,12 @@ function scrollToSection(index: number): void {
 document.getElementById('navUp')!.addEventListener('click', () => scrollToSection(currentSection - 1));
 document.getElementById('navDown')!.addEventListener('click', () => scrollToSection(currentSection + 1));
 
+// ── Shortcut guide ────────────────────────────────────
+const shortcutPanel = document.getElementById('shortcutPanel')!;
+document.getElementById('shortcutToggle')!.addEventListener('click', () => {
+  shortcutPanel.classList.toggle('open');
+});
+
 // ── Events ────────────────────────────────────────────
 datePicker.value = fmtDate(currentDate);
 
@@ -321,6 +327,9 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
     case 'r':
     case 'R':
       load();
+      break;
+    case '?':
+      shortcutPanel.classList.toggle('open');
       break;
   }
 });

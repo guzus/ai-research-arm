@@ -479,11 +479,12 @@ mark {
   border-radius: 3px;
 }
 
-/* ── Section Nav ──────────────────────────────────── */
+/* ── Section Nav (centered vertically on right) ───── */
 .section-nav {
   position: fixed;
   right: 28px;
-  bottom: 28px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -532,6 +533,89 @@ mark {
   line-height: 1;
 }
 
+/* ── Shortcut Guide ───────────────────────────────── */
+.shortcut-guide {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 100;
+}
+
+.shortcut-toggle {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  transition: all 0.12s;
+}
+
+.shortcut-toggle:hover {
+  color: var(--text);
+  border-color: var(--text-tertiary);
+}
+
+.shortcut-panel {
+  display: none;
+  position: absolute;
+  bottom: 44px;
+  right: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: var(--shadow-lg);
+  min-width: 240px;
+}
+
+.shortcut-panel.open {
+  display: block;
+}
+
+.shortcut-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  margin-bottom: 12px;
+}
+
+.shortcut-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.shortcut-row span {
+  margin-left: auto;
+}
+
+.shortcut-row kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 22px;
+  padding: 0 6px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1;
+}
+
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 640px) {
   .app { padding: 20px 14px 60px; }
@@ -541,8 +625,11 @@ mark {
   .content-card-header { padding: 12px 16px; }
   .md-content { font-size: 0.95rem; line-height: 1.75; }
   .md-content li { margin-bottom: 14px; }
+  .shortcut-guide { display: none; }
   .section-nav {
     position: fixed;
+    top: auto;
+    transform: none;
     left: 0;
     right: 0;
     bottom: 0;
