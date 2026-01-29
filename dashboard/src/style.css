@@ -439,6 +439,59 @@ mark {
   border-radius: 3px;
 }
 
+/* ── Section Nav ──────────────────────────────────── */
+.section-nav {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  z-index: 100;
+}
+
+.section-nav-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.section-nav-btn:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+.section-nav-btn:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+.section-nav-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.section-nav-counter {
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  width: 40px;
+  text-align: center;
+  padding: 3px 0;
+  line-height: 1;
+}
+
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 640px) {
   .app { padding: 20px 14px 60px; }

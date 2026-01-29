@@ -171,7 +171,37 @@ async function load(): Promise<void> {
   } else {
     showEmpty(dateStr);
   }
+  currentSection = 0;
+  updateNavCounter();
 }
+
+// ── Section navigation ─────────────────────────────────
+let currentSection = 0;
+const navCounter = document.getElementById('navCounter')!;
+
+function getCards(): HTMLElement[] {
+  return Array.from(content.querySelectorAll('.content-card'));
+}
+
+function updateNavCounter(): void {
+  const cards = getCards();
+  if (cards.length > 0) {
+    navCounter.textContent = (currentSection + 1) + '/' + cards.length;
+  } else {
+    navCounter.textContent = '';
+  }
+}
+
+function scrollToSection(index: number): void {
+  const cards = getCards();
+  if (cards.length === 0) return;
+  currentSection = Math.max(0, Math.min(index, cards.length - 1));
+  cards[currentSection].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  updateNavCounter();
+}
+
+document.getElementById('navUp')!.addEventListener('click', () => scrollToSection(currentSection - 1));
+document.getElementById('navDown')!.addEventListener('click', () => scrollToSection(currentSection + 1));
 
 // ── Events ────────────────────────────────────────────
 datePicker.value = fmtDate(currentDate);
@@ -205,6 +235,14 @@ document.getElementById('refreshBtn')!.addEventListener('click', () => {
 document.addEventListener('keydown', (e: KeyboardEvent) => {
   if ((e.target as HTMLElement).tagName === 'INPUT') return;
   switch (e.key) {
+    case 'ArrowUp':
+      e.preventDefault();
+      scrollToSection(currentSection - 1);
+      break;
+    case 'ArrowDown':
+      e.preventDefault();
+      scrollToSection(currentSection + 1);
+      break;
     case '[':
       shiftDate(-1);
       break;
