@@ -1,0 +1,18 @@
+AI News - 2026-01-29
+
+TOP STORIES:
+• Meta crushes Q4 earnings, guides 2026 AI capex to $115-135B — nearly double 2025 spend
+• Microsoft beats estimates but Azure growth slows to 39%; stock drops 5% on capacity constraints
+• Tesla ends Model S/X production, converts Fremont to Optimus robot factory, invests $2B in xAI
+• IBM AI book of business doubles to $12B; stock surges 8%
+• ServiceNow partners with Anthropic — Claude becomes default model for Build Agent
+• Waabi raises $1B, partners with Uber for 25,000 robotaxis
+• Decagon triples valuation to $4.5B with $250M Series D for AI concierge
+
+KEY NUMBERS:
+• Meta 2026 capex: $115-135B (vs $72.2B in 2025)
+• Microsoft cloud RPO: $625B (doubled YoY, 45% from OpenAI)
+• Tesla: 1.1M FSD subscribers; $20B+ 2026 capex planned
+• Waabi: $1B raised — largest Canadian fundraise ever
+
+Full report on GitHub.
