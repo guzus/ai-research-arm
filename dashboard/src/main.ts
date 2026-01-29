@@ -125,7 +125,7 @@ function splitSections(md: string): { title: string; body: string }[] {
 }
 
 function renderReport(md: string): void {
-  const sections = splitSections(md);
+  const sections = splitSections(md).reverse();
   const cards: string[] = [];
 
   for (const section of sections) {
