@@ -48,7 +48,7 @@ jobs:
           hyperscalers="elonmusk sama demishassabis OfficialLoganK alexalbert__ DrJimFan tszzl"
 
           # Others — researchers, analysts, specialists, media
-          others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus"
+          others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh"
 
           for handle in $labs; do
             echo "Fetching @${handle}..."
@@ -203,12 +203,25 @@ jobs:
             git commit -m "Twitter update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
 
       - name: Push changes
+        id: push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git pull --rebase || true
-          git push || echo "Nothing to push"
+          if git push; then
+            echo "pushed=true" >> $GITHUB_OUTPUT
+          else
+            echo "pushed=false" >> $GITHUB_OUTPUT
+            echo "Nothing to push"
+          fi
+
+      # GITHUB_TOKEN pushes don't trigger other workflows, so explicitly trigger deploy
+      - name: Trigger dashboard deploy
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy-dashboard.yml
 
       - name: Read summary for Telegram
         id: summary
