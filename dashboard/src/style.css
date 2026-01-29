@@ -248,6 +248,18 @@ body {
   color: var(--text-tertiary);
 }
 
+.clock-icon {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.local-time {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  margin-left: 8px;
+}
+
 .content-card-body {
   padding: 16px 28px 28px;
 }

@@ -13,6 +13,44 @@ const DOC_ICON =
   '<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>' +
   '<path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>';
 
+// ── Clock icon ───────────────────────────────────────────
+/** Generate an SVG clock face with hands pointing to the given hour and minute */
+function clockIcon(hours: number, minutes: number): string {
+  const cx = 12, cy = 12, r = 9;
+  // Minute hand
+  const mAngle = (minutes / 60) * 360 - 90;
+  const mRad = (mAngle * Math.PI) / 180;
+  const mx = cx + Math.cos(mRad) * 6.5;
+  const my = cy + Math.sin(mRad) * 6.5;
+  // Hour hand
+  const hAngle = ((hours % 12) / 12) * 360 + (minutes / 60) * 30 - 90;
+  const hRad = (hAngle * Math.PI) / 180;
+  const hx = cx + Math.cos(hRad) * 4.5;
+  const hy = cy + Math.sin(hRad) * 4.5;
+
+  return (
+    '<svg class="clock-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">' +
+    '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '"/>' +
+    '<line x1="' + cx + '" y1="' + cy + '" x2="' + hx.toFixed(1) + '" y2="' + hy.toFixed(1) + '" stroke-width="2"/>' +
+    '<line x1="' + cx + '" y1="' + cy + '" x2="' + mx.toFixed(1) + '" y2="' + my.toFixed(1) + '" stroke-width="1.5"/>' +
+    '</svg>'
+  );
+}
+
+/** Parse "HH:MM UTC" from title and return local time info */
+function parseUtcTime(title: string, dateStr: string): { utc: string; local: string; localHours: number; localMinutes: number } | null {
+  const match = title.match(/^(\d{2}):(\d{2})\s*UTC$/);
+  if (!match) return null;
+  const utcH = parseInt(match[1], 10);
+  const utcM = parseInt(match[2], 10);
+  const parts = dateStr.split('-');
+  const d = new Date(Date.UTC(+parts[0], +parts[1] - 1, +parts[2], utcH, utcM));
+  const localH = d.getHours();
+  const localM = d.getMinutes();
+  const localStr = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+  return { utc: match[0], local: localStr, localHours: localH, localMinutes: localM };
+}
+
 // ── State ─────────────────────────────────────────────
 let currentDate = new Date();
 let searchTerm = '';
@@ -147,14 +185,30 @@ function renderReport(md: string): void {
     }
 
     // Use the ## heading as the card title, or fall back to date
-    const title = section.title || escapeHtml(displayDate(currentDate));
+    const title = section.title || displayDate(currentDate);
+    const dateStr = fmtDate(currentDate);
+    const timeInfo = parseUtcTime(section.title, dateStr);
+
+    let headerHtml: string;
+    if (timeInfo) {
+      headerHtml =
+        '  <div class="content-card-header">' +
+        '    ' + clockIcon(timeInfo.localHours, timeInfo.localMinutes) +
+        '    <div class="content-card-title">' + escapeHtml(timeInfo.utc) +
+        '      <span class="local-time">' + escapeHtml(timeInfo.local) + '</span>' +
+        '    </div>' +
+        '  </div>';
+    } else {
+      headerHtml =
+        '  <div class="content-card-header">' +
+        '    <div class="content-card-title">' + escapeHtml(title) + '</div>' +
+        '  </div>';
+    }
 
     cards.push(
       [
         '<div class="content-card">',
-        '  <div class="content-card-header">',
-        '    <div class="content-card-title">' + escapeHtml(title) + '</div>',
-        '  </div>',
+        headerHtml,
         '  <div class="content-card-body">',
         '    <div class="md-content">' + html + '</div>',
         '  </div>',
