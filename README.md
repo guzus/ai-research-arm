@@ -53,6 +53,12 @@ flowchart TB
 
     digest_out --> Improve
     Improve -->|"Creates PRs"| sources
+
+    subgraph dashboard["🖥️ Dashboard"]
+        Pages["GitHub Pages<br/><i>guzus.github.io/ai-research-arm</i>"]
+    end
+
+    twitter_out --> Pages
 ```
 
 ## Data Sources
@@ -103,6 +109,7 @@ gantt
 | `ai-news-research.yml` | Every 4 hours | Perplexity/Exa MCP | `research/` |
 | `daily-improve.yml` | Daily midnight | Self-improvement | PRs with improvements |
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
+| `deploy-dashboard.yml` | On push (dashboard/twitter changes) | Vite build + GitHub Pages deploy | GitHub Pages |
 
 ## On-Demand Research Agent
 
@@ -147,6 +154,22 @@ Reports are saved to `research/issues/{issue-number}-research.md` with:
 | Create issue with `research` label | Immediately on issue creation |
 | Add `research` label to existing issue | Immediately when label is added |
 
+## Dashboard
+
+Live at **[guzus.github.io/ai-research-arm](https://guzus.github.io/ai-research-arm/)**
+
+A single-page dashboard that displays Twitter/X research reports with:
+- Warm cream/parchment color palette for readability
+- Source Serif 4 body font with Inter UI headings
+- Each report time slot rendered as its own card (latest first)
+- Clock icon with accurate local time conversion next to UTC timestamps
+- @handle highlighting with distinct pill styling
+- Section navigation (up/down arrows, keyboard shortcuts)
+- Date picker, search, and refresh controls
+- Mobile responsive with bottom nav bar
+
+Built with **Vite + Bun + TypeScript**, deployed via GitHub Actions to GitHub Pages. The deploy workflow triggers only on changes to `dashboard/**` or `research/twitter/**`.
+
 ## Setup
 
 ### Required Secrets
@@ -180,11 +203,21 @@ research/
 ├── arxiv/
 │   └── 2026-01-14-papers.md       # Daily arXiv papers
 ├── twitter/
-│   └── 2026-01-14.md              # Twitter updates (if API key set)
+│   └── 2026-01-14.md              # Twitter updates (every 2h via bird CLI)
 ├── issues/
 │   └── 42-research.md             # On-demand research from GitHub Issues
-└── digest/
-    └── 2026-01-14-digest.md       # Daily synthesized digest (enhanced with MCP tools)
+├── digest/
+│   └── 2026-01-14-digest.md       # Daily synthesized digest (enhanced with MCP tools)
+└── summaries/
+    └── 2026-01-14-summary.txt     # Telegram digest summaries
+
+dashboard/                          # Vite + Bun + TypeScript SPA
+├── src/
+│   ├── main.ts                    # App logic, markdown rendering, clock icons
+│   └── style.css                  # Warm cream palette, responsive styles
+├── index.html                     # Entry point
+├── vite.config.js                 # Base path config for GitHub Pages
+└── package.json                   # Dependencies (vite, marked, dompurify)
 ```
 
 ## Data Source Details
