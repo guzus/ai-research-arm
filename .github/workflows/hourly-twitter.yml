@@ -11,6 +11,7 @@ jobs:
     runs-on: self-hosted
     permissions:
       contents: write
+      actions: write
       id-token: write
 
     steps:
