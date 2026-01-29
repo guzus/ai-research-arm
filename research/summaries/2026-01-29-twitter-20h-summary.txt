@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-01-29 20:40 UTC
+
+WHAT'S BUZZING:
+• OpenAI ships GPT-5 Thinking level controls to iOS/Android — Light, Standard, Extended, Heavy now on mobile
+• February model wave incoming: ByteDance (3 models), Alibaba (next-gen), and DeepSeek V4 all expected next month
+• UAE launches K2 Think V2 sovereign AI model — 70B reasoning system by G42/Cerebras, signaling growing AI nationalism
+
+NOTABLE:
+• Moonshot's Kimi K2.5 open-source model gaining steam as serious GPT-5.2/Opus 4.5 competitor
+• Cisco ships first open-weight security reasoning model (Foundation-sec-8B)
+• Developer consensus: Claude Code + Opus 4.5 is "genuinely very impressive" for real workflows
+
+Full update on GitHub.
