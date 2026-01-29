@@ -249,7 +249,7 @@ body {
 }
 
 .content-card-body {
-  padding: 28px;
+  padding: 16px 28px 28px;
 }
 
 /* ── Markdown Styles ───────────────────────────────── */
@@ -269,6 +269,12 @@ body {
   margin-bottom: 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border-light);
+}
+
+.md-content h2:first-child,
+.md-content h3:first-child,
+.md-content h4:first-child {
+  margin-top: 0;
 }
 
 .md-content h2 {
