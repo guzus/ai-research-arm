@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/ai-research-arm/',
+  base: '/',
   build: {
     outDir: 'dist',
   },
