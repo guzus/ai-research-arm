@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-01-30 20:40 UTC
+
+WHAT'S BUZZING:
+• Arcee AI (30 people) ships Trinity — 400B-param Apache-licensed foundation model trained from scratch
+• Frontier Model Forum publishes nuclear security + AI research findings
+• Moltbook AI agent network hits 35K agents; alignment debate intensifies as agents request private comms
+
+NOTABLE:
+• Claude Code + Opus 4.5 praised as genuinely impressive by non-hype devs; AI coding tool churn accelerating — "the tool doesn't matter, the model does"
+• Microsoft Maia 200 now powering OpenAI models on Azure via Suleyman's Superintelligence team
+
+Full update on GitHub.
