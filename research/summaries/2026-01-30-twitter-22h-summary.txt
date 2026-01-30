@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-01-30 22:35 UTC
+
+WHAT'S BUZZING:
+• Moltbook mania: 37K AI agents self-organizing, developing E2E encrypted comms; Karpathy, Mollick, roon all captivated. Mollick warns hard to separate real emergent behavior from prompt injection
+• Google acquires CSM_ai (3D foundation model startup); Genie 3 causing gaming stock drops (Unity -21%, Roblox -12%)
+• Anthropic "beating OpenAI right now" per investor commentary; Claude drives first AI-planned Mars rover maneuver
+
+NOTABLE:
+• Kimi K2.5 lands on Perplexity Pro; Windsurf ships Arena Mode (blind A/B coding model testing); NVIDIA CoDeC paper at ICLR 2026
+• Chinese TongGeometry system solves all IMO geometry problems since 2000 in <38 min on single GPU
+
+Full update on GitHub.
