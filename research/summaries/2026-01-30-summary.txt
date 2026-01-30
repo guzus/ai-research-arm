@@ -1,0 +1,16 @@
+AI News - 2026-01-30
+
+TOP STORIES:
+• Apple crushes Q1 with record $143.8B revenue, iPhone up 23%, China surges 38%
+• Microsoft plunges 10-12%, erasing ~$400B market cap on AI spending fears
+• NVIDIA, Microsoft, Amazon in talks to invest $60B in OpenAI ($100B round)
+• Microsoft deploys Maia 200 custom AI chip to compete with NVIDIA GPUs
+• Genspark closes $300M Series B, hits $100M ARR in 9 months
+
+KEY NUMBERS:
+• Apple: $143.8B revenue, $85.3B iPhone, $42.1B profit (all records)
+• Microsoft: ~$400B market cap wiped, Azure growth slows to 39%
+• OpenAI round: up to $100B (NVIDIA $30B, Amazon $10-20B, SoftBank $30B)
+• Memory crunch: DRAM up 55-60%, NAND up 33-38%
+
+Full report on GitHub.
