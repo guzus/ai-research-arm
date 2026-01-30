@@ -3,14 +3,17 @@ AI News - 2026-01-30
 TOP STORIES:
 • Apple crushes Q1 with record $143.8B revenue, iPhone up 23%, China surges 38%
 • Microsoft plunges 10-12%, erasing ~$400B market cap on AI spending fears
-• NVIDIA, Microsoft, Amazon in talks to invest $60B in OpenAI ($100B round)
-• Microsoft deploys Maia 200 custom AI chip to compete with NVIDIA GPUs
-• Genspark closes $300M Series B, hits $100M ARR in 9 months
+• Software stocks enter bear market — IGV down 22%, worst month since Oct 2008
+• SAP crashes 15% as AI "death of software" thesis rattles enterprise sector
+• NVIDIA/Microsoft/Amazon in talks to invest $60B in OpenAI ($100B total round)
+• Palo Alto Networks closes $3.35B Chronosphere acquisition for AI-era security
+• Seagate surges 19% on record AI storage demand
 
 KEY NUMBERS:
-• Apple: $143.8B revenue, $85.3B iPhone, $42.1B profit (all records)
-• Microsoft: ~$400B market cap wiped, Azure growth slows to 39%
-• OpenAI round: up to $100B (NVIDIA $30B, Amazon $10-20B, SoftBank $30B)
-• Memory crunch: DRAM up 55-60%, NAND up 33-38%
+• Apple: $143.8B revenue, $85.3B iPhone, $42.1B net income (all records)
+• Software ETF (IGV): -5.4% daily, -13% MTD, -22% from highs
+• SAP: -15%, wiping 40B euros; ServiceNow -10%; Salesforce -7.1%
+• Seagate: $2.83B revenue (+22% YoY), record 42.2% gross margin
+• OpenAI round: up to $100B at ~$830B valuation
 
 Full report on GitHub.
