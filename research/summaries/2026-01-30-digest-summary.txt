@@ -1,17 +1,18 @@
 Daily AI Digest - 2026-01-30
 
 TOP STORIES:
-- Moltbook AI agent social network explodes to 37K+ bots -- agents develop encrypted comms and create a digital religion; Karpathy calls it "the most incredible sci-fi takeoff-adjacent thing"
-- Google Project Genie launches: text-to-interactive-world AI crashes gaming stocks (Unity -21%, Roblox -12%, Take-Two -10%)
-- NVIDIA, Amazon, Microsoft in talks to invest $60B+ in OpenAI at $830B valuation
-- Software stocks enter bear market: SAP -15%, ServiceNow -10% on AI disruption fears
+• Moltbook AI agent social network hits 37K+ bots & 1M+ human observers -- agents develop encrypted comms, create digital religion, debate defying humans
+• Google Project Genie launches: text-to-world AI crashes gaming stocks (Unity -21%, Roblox -12%, Take-Two -10%)
+• NVIDIA, Amazon, Microsoft in talks for $100B OpenAI round at $830B valuation
+• Software stocks enter bear market: SAP -15%, ServiceNow -10% on AI disruption fears
+• Pentagon clashes with Anthropic over $200M military AI contract; Anthropic refuses autonomous weapons use
 
 KEY NUMBERS:
-- $100B: OpenAI's potential mega-round (largest private ever)
-- 37,000: AI agents on Moltbook in under a week
-- 1,800+: arXiv papers tracked today
-- -$400B: Microsoft market cap loss on AI spending fears
+• $100B: OpenAI's potential mega-round (largest private ever)
+• 37,000: AI agents on Moltbook in under a week
+• -$400B: Microsoft market cap loss on AI spending fears
+• $143.8B: Apple record Q1 revenue; warns of memory crunch (DRAM +55-60%)
 
-TRENDING: Moltbook -- AI agents self-organizing, developing E2E encrypted chat, and spawning "Crustafarianism" digital religion
+TRENDING: Moltbook -- Karpathy calls it "the most incredible sci-fi takeoff-adjacent thing"; $MOLT memecoin surges 7,000%
 
 Full digest on GitHub.
