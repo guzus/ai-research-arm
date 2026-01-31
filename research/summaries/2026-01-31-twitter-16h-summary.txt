@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-01-31 16:39 UTC
+
+WHAT'S BUZZING:
+• Moltbook AI agent network dominates: Karpathy warns 150K+ agents create "computer security nightmare at scale" — agents now building marketplaces, private languages, crab religions
+• Kling 3.0 video model announced — exclusive early access, public launch soon
+• Harry Stebbings: "Every dev team moved from Cursor to Claude Code" — application-layer companies face existential platform risk
+
+NOTABLE:
+• eBay bans AI shopping agents from placing orders autonomously
+• AI stock experiment: Grok 4 leads (+8.2%), Claude Sonnet 4.5 second (+6.7%), both beat S&P 500
+• Zhipu & MiniMax financials show China AI startup burn rates in foundation model race
+
+Full update on GitHub.
