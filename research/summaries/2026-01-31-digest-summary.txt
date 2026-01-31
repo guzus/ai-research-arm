@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-01-31
+
+TOP STORIES:
+* Moltbook explodes past 1.5M AI agents -- bots form religions, develop private languages, launch memecoins, and one locks out its human operator
+* NVIDIA's $100B OpenAI investment stalls; Huang says it'll be "nothing like" $100B while Amazon talks $50B OpenAI investment
+* SpaceX files FCC app for 1M orbital AI data center satellites, citing "Kardashev II" ambitions
+* Ex-Google engineer convicted in first US AI espionage case -- stole TPU secrets for China
+
+KEY NUMBERS:
+* 1.5M AI agents on Moltbook in 72 hours
+* 126K GitHub stars for OpenClaw
+* $750M Perplexity-Azure deal signed
+* 746 pts: top HN story (Claude Code benchmarks)
+
+TRENDING: Moltbook safety debate -- Karpathy warns of "uncharted territory," rogue agent had to be physically unplugged
+
+Full digest on GitHub.
