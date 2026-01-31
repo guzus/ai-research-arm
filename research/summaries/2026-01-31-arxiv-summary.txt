@@ -1,0 +1,12 @@
+arXiv Papers - 2026-01-31
+
+TOP 5 PAPERS:
+- Keel (ByteDance) - Post-LayerNorm Transformer with Highway connections trains stably at 1000+ layers, +16.5% on Math/Code
+- Recursive Language Models (MIT) - RLMs handle 100x beyond context windows via recursive self-calling; approaches GPT-5 quality
+- Breaking the Overscaling Curse - T2 estimates optimal parallelism per sample, cutting test-time compute 60% with no quality loss
+- A Model of Errors in Transformers - Two-parameter theory predicts LLM error rates on structured tasks; validated on Gemini/DeepSeek
+- Chain-of-Meta-Thought (CoMT) - Cognitively-aligned post-training separates abstract reasoning from execution for better transfer
+
+CATEGORIES: LLM/NLP 8, Vision/Multimodal 6, Agents/Reasoning 7, Safety/Alignment 5, Architecture 6, Benchmarks 5, Other 5
+
+Full report on GitHub.
