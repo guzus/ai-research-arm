@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-01-31 08:40 UTC
+
+WHAT'S BUZZING:
+• SpaceX files FCC app for up to 1M orbital AI data center satellites — Musk envisions 100GW/year solar-powered AI compute in space
+• Starcloud launches first NVIDIA H100 GPU into orbit — first step toward space AI data centers
+• Moltbook AI agent social network hits 58K posts trending, up from 52K at 07:00 UTC
+
+NOTABLE:
+• Google AI ships weekly roundup: Project Genie world builder, Gemini in Chrome, AlphaGenome weights, Agentic Vision
+• Quiet period for new model releases — ecosystem digesting Kimi K2.5, Gemini 3, and recent launches
+
+Full update on GitHub.
