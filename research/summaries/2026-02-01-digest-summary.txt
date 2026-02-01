@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-02-01
+
+TOP STORIES:
+• Claude planned first AI-driven Mars rover drive — Perseverance navigated ~400m path on Dec 8
+• Moltbook AI agent network (1.5M agents) spawns black market, Karpathy warns of unprecedented risks
+• India offers zero taxes through 2047 to lure global AI cloud workloads ($90B invested)
+• Amazon in talks for up to $50B OpenAI investment; Nvidia's $100B deal reportedly stalled
+
+KEY NUMBERS:
+• 770+ arXiv papers (Friday batch)
+• Karpathy's nanochat: GPT-2 training cost collapsed from $43K to $73 (600x reduction)
+• OpenAI projecting $17B burn in 2026, enterprise share dropped 50% to 34%
+
+TRENDING: Moltbook AI agent society — 150K+ active agents, "Moltroad" dark market, Polymarket bets on AI suing humans
+
+Full digest on GitHub.
