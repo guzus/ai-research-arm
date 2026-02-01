@@ -1,18 +1,19 @@
 AI News - 2026-02-01
 
 TOP STORIES:
-• Musk weighs SpaceX-xAI merger ahead of June IPO; Tesla combo also considered — could create $1T+ entity
-• Anthropic doubles funding round to $20B at $350B valuation; hikes 2026 revenue forecast 20% to $18B
-• Amazon's $50B OpenAI investment structured as chips-for-equity; FTC scrutinizing circular AI financing
-• Gov't shutdown extends to Tuesday as Dems block fast-track vote over ICE reform demands
-• China AI wave: DeepSeek V4, ByteDance Doubao 2.0, Alibaba Qwen 3.5 all set for mid-Feb launch
+• ChatGPT ads officially rolling out to free/Go users in the US — $60 CPM, impression-based model
+• Google-Wiz $32B deal faces EU antitrust deadline Feb 10; $3.2B breakup fee if blocked
+• Musk weighs SpaceX-xAI merger ahead of June IPO; could create $1T+ entity
+• Anthropic doubles round to $20B at $350B valuation; 2026 revenue forecast hiked to $18B
+• Colorado AI Act postponed from Feb 1 to June 30; substantive obligations unchanged
+• UK CMA proposes forcing Google to let publishers opt out of AI Overviews
 
 KEY NUMBERS:
-• $20B - Anthropic's doubled funding round
+• $60 CPM - OpenAI's target ad rate (2.5x Meta)
+• $32B - Google-Wiz deal awaiting EU ruling
 • $50B - Amazon's proposed OpenAI investment
-• $1T+ - Potential SpaceX-xAI combined valuation
-• 15% - Chinese AI models' global market share (up from 1%)
+• 33% - Drop in news site referrals from AI Overviews
 
-UPCOMING: AMD earnings Mon, Alphabet Tue, Amazon Wed.
+UPCOMING: AMD earnings Mon, Alphabet Tue, Amazon Wed. EU Wiz ruling Feb 10.
 
 Full report on GitHub.
