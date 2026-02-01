@@ -1,0 +1,12 @@
+arXiv Papers - 2026-02-01
+
+TOP 5 PAPERS:
+- CoScale-RL - Co-scales data & compute for RL post-training; 3.76x accuracy gain, breaks 0.5B model reasoning boundary
+- CADA - Case-augmented deliberative alignment brings OpenAI o-series safety approach to open-source LLMs
+- DeepLatent Reasoning - Shifts RL training to latent space for stable, efficient LLM reasoning
+- AgeMem - Unified memory framework lets LLM agents autonomously manage long/short-term memory as tool actions
+- RL Scaling Laws for LLMs - First 400K GPU-hour study establishing predictive scaling curves for RL post-training
+
+CATEGORIES: LLMs/NLP (9), Vision/Multimodal (8), Agents/Reasoning (7), Safety/Alignment (9), Other Notable (8)
+
+Full report on GitHub.
