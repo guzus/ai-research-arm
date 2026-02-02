@@ -1,0 +1,16 @@
+AI News - 2026-02-02
+
+TOP STORIES:
+• OpenAI retiring GPT-4o, GPT-4.1, o4-mini from ChatGPT on Feb 13 — consolidating around GPT-5.2
+• NASA's Perseverance rover completed first AI-planned Mars drive using Anthropic's Claude (~400m)
+• Amazon cuts 16,000 corporate jobs citing AI efficiency gains — 30,000 total since October
+• Yann LeCun leaves Meta, raises E500M at E3B valuation for world model startup AMI Labs
+• Gov shutdown expected to end Tuesday after House vote
+
+KEY NUMBERS:
+• 0.1% of ChatGPT users still choose GPT-4o daily (per OpenAI)
+• $125B Amazon 2026 capex target for AI/data centers
+• E3B valuation for LeCun's AMI Labs
+• $8M+ for 30-sec Super Bowl ad — OpenAI planning 60-sec spot Feb 8
+
+Full report on GitHub.
