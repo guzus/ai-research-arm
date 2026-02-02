@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-02-02 08:56 UTC
+
+WHAT'S BUZZING:
+• StepFun open-sources Step 3.5 Flash — agent-first model with 350 TPS inference and 256K context
+• MCP & A2A protocols donated to Linux Foundation, forming Agentic AI Foundation (OpenAI, Microsoft, Google, IBM)
+• GPT-4o deprecation backlash continues — users want its "emotional architecture" preserved in 5-series
+
+NOTABLE:
+• Relatively quiet period — most model release buzz (Kimi K2.5, Feb model tsunami) covered in earlier updates
+
+Full update on GitHub.
