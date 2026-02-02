@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-02 02:54 UTC
+
+WHAT'S BUZZING:
+• MCP (Model Context Protocol) donated to Linux Foundation — OpenAI, Microsoft, Google, IBM all joining as partners
+• TSMC 2nm capacity fully booked: Google TPU 8th-gen (2027), AWS Trainium 4 (2027), Nvidia Feynman (2028)
+• February model avalanche expected: DeepSeek V4, Claude 4.6, Gemini 3 GA, Qwen 3.5, possibly GPT-5.3
+
+NOTABLE:
+• Kimi K2.5 gaining momentum — price cuts make it 3.75x cheaper than Claude Sonnet
+• Elon Musk declares "We are in the beginning of the Singularity" (38K likes)
+• Anthropic rewrites Claude's guiding principles, acknowledges AI may have moral status
+
+Full update on GitHub.
