@@ -1,0 +1,12 @@
+arXiv Papers - 2026-02-02
+
+TOP 5 PAPERS:
+* Scaling Embeddings > Scaling Experts - Meituan's LongCat-Flash-Lite (68.5B) shows N-gram embeddings beat MoE, 54.4% SWE-Bench
+* HALO/HypeNet - Distills Qwen3 into RNN-attention hybrids with 2.3B tokens; enables 1M+ context where Transformers OOM
+* The Depth Delusion - Width should grow 2.8x faster than depth; 32-layer beats 64-layer at 7B scale
+* Self-Compression of CoT via MARL - Multi-agent RL compresses reasoning chains while preserving accuracy
+* Meta Context Engineering - Bi-level optimization evolves context skills; 5.6-53.8% over SOTA, beats domain-specific fine-tuning
+
+CATEGORIES: LLMs/NLP (10), Vision/Multimodal (7), Agents/Reasoning (7), Safety/Alignment (7), Other (6)
+
+Full report on GitHub.
