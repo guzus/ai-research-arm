@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-03 19:06 UTC
+
+WHAT'S BUZZING:
+• Qwen3-Coder-Next released — 80B MoE, 256K context, runs on 46GB RAM
+• Sam Altman: 200K+ Codex downloads in first day
+• Claude Sonnet 5 still MIA despite Feb 3 speculation
+
+NOTABLE:
+• Simon Willison: context lengths stuck at 200K-1M for 2 years (hardware bottleneck)
+• New research: SWE-Universe benchmark, Stanford SleepFM health model
+• ACE-Step 1.5 open-source music generator trending
+
+Full update on GitHub.
