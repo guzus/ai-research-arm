@@ -76,6 +76,37 @@ body {
 
 .header-link:hover { color: var(--text-secondary); }
 
+/* ── Tabs ─────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.tab {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tab:hover {
+  border-color: var(--text-tertiary);
+  color: var(--text);
+}
+
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
 /* ── Controls Bar ──────────────────────────────────── */
 .controls {
   display: flex;

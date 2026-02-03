@@ -1,0 +1,169 @@
+name: Hyperscaler Model Release Timeline (Every 12 Hours)
+
+on:
+  schedule:
+    # Run at 6 AM and 6 PM UTC
+    - cron: '0 6,18 * * *'
+  workflow_dispatch:
+
+jobs:
+  model-timeline:
+    runs-on: self-hosted
+    permissions:
+      contents: write
+      actions: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get current datetime
+        id: datetime
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install bird CLI
+        run: npm install -g @steipete/bird
+
+      - name: Fetch tweets from company accounts
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          mkdir -p /tmp/bird
+
+          # Company accounts
+          companies="OpenAI AnthropicAI GoogleDeepMind GoogleAI MistralAI MetaAI xaboratory NVIDIAAIDev awscloud Apple CohereAI Azure"
+
+          for handle in $companies; do
+            echo "Fetching @${handle}..."
+            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+          done
+
+      - name: Fetch tweets from key execs
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          # Key execs and insiders
+          execs="sama demishassabis sataboratory DrJimFan tszzl OfficialLoganK alexalbert__ mustafasuleyman"
+
+          for handle in $execs; do
+            echo "Fetching @${handle}..."
+            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+          done
+
+      - name: Search for model release tweets
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          # Model release announcements
+          bird search "new model release OR model launch OR new AI model OR foundation model release" -n 50 --json --plain > /tmp/bird/search-model-release.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-release.json
+
+          # Specific model names
+          bird search "GPT-5 OR GPT-4.5 OR Claude 4 OR Gemini 2.5 OR Llama 4 OR Grok 3" -n 40 --json --plain > /tmp/bird/search-model-names.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-names.json
+
+          # Roadmaps and timelines
+          bird search "model roadmap OR upcoming model OR model release date OR model announcement" -n 30 --json --plain > /tmp/bird/search-roadmap.json 2>/dev/null || echo "[]" > /tmp/bird/search-roadmap.json
+
+          # Benchmarks and SOTA
+          bird search "AI model benchmark OR SOTA OR state of the art new model" -n 20 --json --plain > /tmp/bird/search-benchmark.json 2>/dev/null || echo "[]" > /tmp/bird/search-benchmark.json
+
+      - name: Process with Claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
+          prompt: |
+            You are a hyperscaler model release tracker. Analyze raw tweet data and web intelligence
+            to produce a structured timeline of upcoming and recent AI model releases from major companies.
+
+            TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+            TODAY: ${{ steps.datetime.outputs.date }}
+            OUTPUT: research/models/${{ steps.datetime.outputs.date }}-timeline.md
+
+            COMPANIES TO TRACK:
+            OpenAI, Anthropic, Google/DeepMind, Meta, xAI, Mistral, Microsoft, Amazon/AWS, NVIDIA, Apple, Cohere
+
+            RAW DATA LOCATIONS (JSON files):
+            - /tmp/bird/*.json — individual account tweets and search results
+
+            INSTRUCTIONS:
+            1. Read ALL JSON files from /tmp/bird/
+            2. If research/models/${{ steps.datetime.outputs.date }}-timeline.md already exists, read it
+               and update/append — do not discard existing data
+            3. Check if yesterday's file exists for continuity (calculate yesterday's date)
+            4. Use WebSearch to supplement with the latest info on model release plans, announcements,
+               and roadmaps from each of the 11 companies listed above
+            5. Cross-reference tweets with web search to verify and enrich timeline entries
+            6. De-duplicate across sources
+
+            OUTPUT FORMAT (write to research/models/${{ steps.datetime.outputs.date }}-timeline.md):
+
+            ```markdown
+            # Hyperscaler Model Release Timeline — ${{ steps.datetime.outputs.date }}
+
+            *Last updated: ${{ steps.datetime.outputs.timestamp }}*
+
+            ## Upcoming & Rumored Releases
+
+            | Company | Model | Expected | Status | Details | Source |
+            |---------|-------|----------|--------|---------|--------|
+            | OpenAI | GPT-5 | Q2 2026 | Rumored | Multimodal, ... | @sama tweet |
+
+            ## Recently Released (Last 30 Days)
+
+            | Company | Model | Release Date | Key Features | Source |
+            |---------|-------|-------------|--------------|--------|
+            | ... | ... | ... | ... | ... |
+
+            ## Intelligence Notes
+            - Key signals and context about upcoming releases
+            - Notable shifts in release timelines
+            - Important exec statements or hints
+            ```
+
+            STATUS VALUES for Upcoming table: Confirmed, Rumored, In Testing, Announced, Speculated
+
+            GUIDELINES:
+            - Be precise with dates — use exact dates when known, quarters when estimated
+            - Always cite sources (tweet URLs, blog posts, press releases)
+            - Include confidence level in the Details column when appropriate
+            - Note any changes from previous day's timeline in Intelligence Notes
+            - Keep Intelligence Notes concise but informative
+
+            After writing the file, commit:
+            git add research/models/
+            git commit -m "Model timeline update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
+
+      - name: Push changes
+        id: push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git pull --rebase || true
+          if git push; then
+            echo "pushed=true" >> $GITHUB_OUTPUT
+          else
+            echo "pushed=false" >> $GITHUB_OUTPUT
+            echo "Nothing to push"
+          fi
+
+      # GITHUB_TOKEN pushes don't trigger other workflows, so explicitly trigger deploy
+      - name: Trigger dashboard deploy
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy-dashboard.yml

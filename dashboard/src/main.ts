@@ -82,6 +82,7 @@ function timeAgo(date: Date): string {
 // ── State ─────────────────────────────────────────────
 let currentDate = new Date();
 let searchTerm = '';
+let activeTab: 'twitter' | 'models' = 'twitter';
 
 // ── DOM refs ──────────────────────────────────────────
 const content = document.getElementById('content')!;
@@ -136,15 +137,27 @@ async function fetchTwitter(dateStr: string): Promise<string | null> {
   }
 }
 
+async function fetchModels(dateStr: string): Promise<string | null> {
+  const url = `${DATA_BASE}/models/${dateStr}-timeline.md`;
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) return null;
+    return await resp.text();
+  } catch {
+    return null;
+  }
+}
+
 // ── Rendering ─────────────────────────────────────────
 function showLoading(): void {
+  const label = activeTab === 'models' ? 'Loading model timeline\u2026' : 'Loading Twitter report\u2026';
   setSafeContent(
     content,
     [
       '<div class="content-card">',
       '  <div class="loading-indicator">',
       '    <div class="loading-bar"><div class="loading-bar-inner"></div></div>',
-      '    <div class="loading-text">Loading Twitter report\u2026</div>',
+      '    <div class="loading-text">' + label + '</div>',
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -152,13 +165,16 @@ function showLoading(): void {
 }
 
 function showEmpty(dateStr: string): void {
+  const label = activeTab === 'models'
+    ? 'No model timeline for ' + escapeHtml(dateStr)
+    : 'No Twitter report for ' + escapeHtml(dateStr);
   setSafeContent(
     content,
     [
       '<div class="content-card">',
       '  <div class="empty-state">',
       '    <div class="empty-state-icon">' + DOC_ICON + '</div>',
-      '    <div class="empty-state-text">No Twitter report for ' + escapeHtml(dateStr) + '</div>',
+      '    <div class="empty-state-text">' + label + '</div>',
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -259,16 +275,61 @@ function renderReport(md: string): void {
   setSafeContent(content, cards.join('\n'));
 }
 
+function renderModels(md: string): void {
+  const sections = splitSections(md);
+  const cards: string[] = [];
+
+  for (const section of sections) {
+    if (!section.title && !section.body) continue;
+
+    let html = marked.parse(section.body) as string;
+
+    if (searchTerm) {
+      const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp('(' + escaped + ')', 'gi');
+      html = html.replace(re, '<mark>$1</mark>');
+    }
+
+    const title = section.title || displayDate(currentDate);
+
+    cards.push(
+      [
+        '<div class="content-card">',
+        '  <div class="content-card-header">',
+        '    <div class="content-card-title">' + escapeHtml(title) + '</div>',
+        '  </div>',
+        '  <div class="content-card-body">',
+        '    <div class="md-content">' + html + '</div>',
+        '  </div>',
+        '</div>',
+      ].join('\n'),
+    );
+  }
+
+  setSafeContent(content, cards.join('\n'));
+}
+
 // ── Main load ─────────────────────────────────────────
 async function load(): Promise<void> {
   const dateStr = fmtDate(currentDate);
   showLoading();
-  const md = await fetchTwitter(dateStr);
-  if (md) {
-    renderReport(md);
+
+  if (activeTab === 'models') {
+    const md = await fetchModels(dateStr);
+    if (md) {
+      renderModels(md);
+    } else {
+      showEmpty(dateStr);
+    }
   } else {
-    showEmpty(dateStr);
+    const md = await fetchTwitter(dateStr);
+    if (md) {
+      renderReport(md);
+    } else {
+      showEmpty(dateStr);
+    }
   }
+
   currentSection = 0;
   updateNavCounter();
 }
@@ -371,6 +432,18 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
       shortcutPanel.classList.toggle('open');
       break;
   }
+});
+
+// ── Tab navigation ────────────────────────────────────
+document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab as 'twitter' | 'models';
+    if (tab === activeTab) return;
+    activeTab = tab;
+    document.querySelectorAll('.tab').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    load();
+  });
 });
 
 // ── Init ──────────────────────────────────────────────

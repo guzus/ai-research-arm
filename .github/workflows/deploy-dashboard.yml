@@ -6,6 +6,7 @@ on:
     paths:
       - 'dashboard/**'
       - 'research/twitter/**'
+      - 'research/models/**'
   workflow_dispatch:
 
 permissions:
@@ -34,12 +35,13 @@ jobs:
         working-directory: dashboard
         run: bun install --frozen-lockfile
 
-      # Copy only the twitter research data into the Vite public dir
+      # Copy research data into the Vite public dir
       # so it gets included in the build output as static assets
       - name: Copy research data into public dir
         run: |
           mkdir -p dashboard/public/research
           cp -r research/twitter dashboard/public/research/
+          cp -r research/models dashboard/public/research/
 
       - name: Build
         working-directory: dashboard
