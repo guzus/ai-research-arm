@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-03 07:05 UTC
+
+WHAT'S BUZZING:
+• SpaceX acquires xAI — Elon's "most ambitious vertically integrated innovation engine on (and off) Earth"
+• OpenAI launches Codex app for macOS — multi-agent parallelism, doubled rate limits for paid plans
+• Sam Altman: AI coders "don't run out of dopamine" — reflects on feeling "a little useless" when Codex suggested better features
+
+NOTABLE:
+• Claude Sonnet 5 rumors circulating (unverified Vertex AI leaks)
+• Anthropic research: AI misalignment may be more about reward hacking than goal pursuit
+
+Full update on GitHub.
