@@ -83,10 +83,12 @@ function timeAgo(date: Date): string {
 let currentDate = new Date();
 let searchTerm = '';
 let activeTab: 'twitter' | 'models' = 'twitter';
+let calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+const availabilityCache = new Map<string, Set<string>>();
 
 // ── DOM refs ──────────────────────────────────────────
 const content = document.getElementById('content')!;
-const datePicker = document.getElementById('datePicker') as HTMLInputElement;
+const calendarEl = document.getElementById('calendar')!;
 const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 
 // ── Hash routing ─────────────────────────────────────
@@ -109,8 +111,8 @@ function applyHash(): boolean {
     const parts = match[2].split('-');
     currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
   }
+  calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
   // Sync UI
-  datePicker.value = fmtDate(currentDate);
   document.querySelectorAll('.tab').forEach((b) => {
     b.classList.toggle('active', (b as HTMLElement).dataset.tab === activeTab);
   });
@@ -136,8 +138,158 @@ function displayDate(d: Date): string {
 
 function shiftDate(days: number): void {
   currentDate.setDate(currentDate.getDate() + days);
-  datePicker.value = fmtDate(currentDate);
+  const newMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+  if (newMonth.getTime() !== calendarMonth.getTime()) {
+    calendarMonth = newMonth;
+    probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+  }
   load();
+}
+
+// ── Calendar ──────────────────────────────────────────
+function dataUrlForDate(dateStr: string): string {
+  if (activeTab === 'models') {
+    return `${DATA_BASE}/models/${dateStr}-timeline.md`;
+  }
+  return `${DATA_BASE}/twitter/${dateStr}.md`;
+}
+
+function cacheKey(year: number, month: number): string {
+  return `${activeTab}-${year}-${String(month + 1).padStart(2, '0')}`;
+}
+
+function probeAvailability(year: number, month: number): void {
+  const key = cacheKey(year, month);
+  if (availabilityCache.has(key)) {
+    renderCalendar();
+    return;
+  }
+  const available = new Set<string>();
+  availabilityCache.set(key, available);
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const promises: Promise<void>[] = [];
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    const url = dataUrlForDate(dateStr);
+    promises.push(
+      fetch(url, { method: 'HEAD' }).then((resp) => {
+        if (resp.ok) available.add(dateStr);
+      }).catch(() => {})
+    );
+  }
+  Promise.all(promises).then(() => {
+    if (calendarMonth.getFullYear() === year && calendarMonth.getMonth() === month) {
+      renderCalendar();
+    }
+  });
+  renderCalendar();
+}
+
+function buildCalendarHtml(): string {
+  const year = calendarMonth.getFullYear();
+  const month = calendarMonth.getMonth();
+  const key = cacheKey(year, month);
+  const available = availabilityCache.get(key) || new Set<string>();
+  const today = new Date();
+  const todayStr = fmtDate(today);
+  const selectedStr = fmtDate(currentDate);
+
+  const monthLabel = calendarMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const prevMonthDays = new Date(year, month, 0).getDate();
+
+  const dows = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+  let html = '<div class="cal-header">';
+  html += '<span class="cal-header-label">' + monthLabel + '</span>';
+  html += '<div class="cal-header-nav">';
+  html += '<button class="cal-nav-btn" data-cal-nav="-1">&lsaquo;</button>';
+  html += '<button class="cal-today-btn" data-cal-today>Today</button>';
+  html += '<button class="cal-nav-btn" data-cal-nav="1">&rsaquo;</button>';
+  html += '</div></div>';
+
+  html += '<div class="cal-grid">';
+  for (const dow of dows) {
+    html += '<div class="cal-dow">' + dow + '</div>';
+  }
+
+  for (let i = firstDay - 1; i >= 0; i--) {
+    const d = prevMonthDays - i;
+    const pm = month === 0 ? 11 : month - 1;
+    const py = month === 0 ? year - 1 : year;
+    const dateStr = `${py}-${String(pm + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    html += '<div class="cal-day other-month" data-date="' + dateStr + '">' + d + '</div>';
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    let cls = 'cal-day';
+    if (dateStr === todayStr) cls += ' today';
+    if (dateStr === selectedStr) cls += ' selected';
+    if (available.has(dateStr)) cls += ' has-data';
+    html += '<div class="' + cls + '" data-date="' + dateStr + '">' + d + '</div>';
+  }
+
+  const totalCells = firstDay + daysInMonth;
+  const remaining = (7 - (totalCells % 7)) % 7;
+  for (let d = 1; d <= remaining; d++) {
+    const nm = month === 11 ? 0 : month + 1;
+    const ny = month === 11 ? year + 1 : year;
+    const dateStr = `${ny}-${String(nm + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    html += '<div class="cal-day other-month" data-date="' + dateStr + '">' + d + '</div>';
+  }
+
+  html += '</div>';
+  return html;
+}
+
+function renderCalendar(): void {
+  setSafeCalendar(calendarEl, buildCalendarHtml());
+}
+
+/** Safely set calendar content using DOMPurify */
+function setSafeCalendar(el: HTMLElement, rawHtml: string): void {
+  while (el.firstChild) el.removeChild(el.firstChild);
+  const clean = DOMPurify.sanitize(rawHtml, {
+    USE_PROFILES: { html: true },
+    ADD_ATTR: ['data-date', 'data-cal-nav', 'data-cal-today'],
+  });
+  el.insertAdjacentHTML('beforeend', clean);
+}
+
+function handleCalendarClick(e: Event): void {
+  const target = e.target as HTMLElement;
+
+  const navBtn = target.closest('[data-cal-nav]') as HTMLElement | null;
+  if (navBtn) {
+    const dir = parseInt(navBtn.dataset.calNav!, 10);
+    calendarMonth.setMonth(calendarMonth.getMonth() + dir);
+    probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+    return;
+  }
+
+  if (target.closest('[data-cal-today]')) {
+    const now = new Date();
+    currentDate = now;
+    calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+    load();
+    return;
+  }
+
+  const dayEl = target.closest('.cal-day') as HTMLElement | null;
+  if (dayEl && dayEl.dataset.date) {
+    const parts = dayEl.dataset.date.split('-');
+    currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+    const clickedMonth = new Date(+parts[0], +parts[1] - 1, 1);
+    if (clickedMonth.getTime() !== calendarMonth.getTime()) {
+      calendarMonth = clickedMonth;
+      probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+    }
+    load();
+  }
 }
 
 function escapeHtml(str: string): string {
@@ -362,6 +514,7 @@ async function load(): Promise<void> {
     }
   }
 
+  renderCalendar();
   currentSection = 0;
   updateNavCounter();
 }
@@ -401,21 +554,6 @@ document.getElementById('shortcutToggle')!.addEventListener('click', () => {
 });
 
 // ── Events ────────────────────────────────────────────
-datePicker.value = fmtDate(currentDate);
-
-document.getElementById('prevDay')!.addEventListener('click', () => shiftDate(-1));
-document.getElementById('nextDay')!.addEventListener('click', () => shiftDate(1));
-document.getElementById('todayBtn')!.addEventListener('click', () => {
-  currentDate = new Date();
-  datePicker.value = fmtDate(currentDate);
-  load();
-});
-
-datePicker.addEventListener('change', () => {
-  const parts = datePicker.value.split('-');
-  currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-  load();
-});
 
 searchInput.addEventListener('input', () => {
   searchTerm = searchInput.value.trim();
@@ -447,11 +585,14 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
       shiftDate(1);
       break;
     case 't':
-    case 'T':
-      currentDate = new Date();
-      datePicker.value = fmtDate(currentDate);
+    case 'T': {
+      const now = new Date();
+      currentDate = now;
+      calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+      probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
       load();
       break;
+    }
     case '/':
       e.preventDefault();
       searchInput.focus();
@@ -474,12 +615,16 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
     activeTab = tab;
     document.querySelectorAll('.tab').forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
+    // Re-probe availability for current month with new tab
+    probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     load();
   });
 });
 
 // ── Init ──────────────────────────────────────────────
+calendarEl.addEventListener('click', handleCalendarClick);
 applyHash();
+probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 load();
 
 window.addEventListener('hashchange', () => {
