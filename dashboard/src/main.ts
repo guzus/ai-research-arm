@@ -89,6 +89,34 @@ const content = document.getElementById('content')!;
 const datePicker = document.getElementById('datePicker') as HTMLInputElement;
 const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 
+// ── Hash routing ─────────────────────────────────────
+// Format: #tab/YYYY-MM-DD  e.g. #models/2026-02-03, #twitter/2026-01-29
+function updateHash(): void {
+  const hash = '#' + activeTab + '/' + fmtDate(currentDate);
+  if (location.hash !== hash) {
+    history.replaceState(null, '', hash);
+  }
+}
+
+function applyHash(): boolean {
+  const hash = location.hash.replace(/^#/, '');
+  if (!hash) return false;
+  const match = hash.match(/^(twitter|models)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
+  if (!match) return false;
+  const tab = match[1] as 'twitter' | 'models';
+  activeTab = tab;
+  if (match[2]) {
+    const parts = match[2].split('-');
+    currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+  }
+  // Sync UI
+  datePicker.value = fmtDate(currentDate);
+  document.querySelectorAll('.tab').forEach((b) => {
+    b.classList.toggle('active', (b as HTMLElement).dataset.tab === activeTab);
+  });
+  return true;
+}
+
 // ── Helpers ───────────────────────────────────────────
 function fmtDate(d: Date): string {
   return d.toISOString().slice(0, 10);
@@ -312,6 +340,7 @@ function renderModels(md: string): void {
 // ── Main load ─────────────────────────────────────────
 async function load(): Promise<void> {
   const dateStr = fmtDate(currentDate);
+  updateHash();
   showLoading();
 
   if (activeTab === 'models') {
@@ -447,4 +476,9 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
 });
 
 // ── Init ──────────────────────────────────────────────
+applyHash();
 load();
+
+window.addEventListener('hashchange', () => {
+  if (applyHash()) load();
+});
