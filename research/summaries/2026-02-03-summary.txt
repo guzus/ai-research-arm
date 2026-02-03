@@ -1,20 +1,17 @@
 AI News - 2026-02-03
 
 TOP STORIES:
-• SpaceX acquires xAI in $1.25T merger, IPO planned - Musk aims for space-based AI data centers
-• Waabi raises $750M, partners with Uber for 25,000 robotaxis (largest Canadian tech fundraise)
-• AMD beats Q4 earnings: $9.25B revenue, $1.20 EPS vs $1.17 expected
-• Government shutdown expected to end Tuesday after House conservatives back Trump
+• Claude Sonnet 5 "Fennec" leak spotted in Vertex AI logs - unverified but format matches Anthropic's naming
+• Anthropic partners with Williams F1 - Claude named "Official Thinking Partner" with branding on cars
+• Anthropic's legal plugin tanks legal tech stocks - RELX, Thomson Reuters, LegalZoom fall sharply
+• ServiceNow makes Claude default Build Agent model - 95% prep time reduction for 29K employees
 
 KEY NUMBERS:
-• $1.25T - SpaceX-xAI combined valuation
-• $750M - Waabi Series C (plus $250M from Uber)
-• $6B - Meta-Corning deal for AI hardware
-• 25,000 - Uber robotaxis planned with Waabi
+• Skild AI: $1.4B raised at $14B valuation (tripled in 7 months)
+• Lyte: $107M for robotics perception (ex-Apple Face ID team)
+• ServiceNow: 80B+ workflows/year now powered by Claude
 
-UPCOMING:
-• Feb 4: Alphabet Q4 earnings
-• Feb 5: Amazon Q4 earnings
-• Feb 8: Super Bowl - OpenAI 60-sec ad
+SECURITY:
+• Docker "DockerDash" AI vulnerability disclosed (patched Nov 2025)
 
 Full report on GitHub.
