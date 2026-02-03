@@ -215,7 +215,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.calendar.open .cal-header {
   margin-bottom: 12px;
+}
+
+.cal-grid {
+  display: none;
+}
+
+.calendar.open .cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal-chevron {
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  margin-left: 4px;
 }
 
 .cal-header-label {
@@ -226,9 +247,13 @@ body {
 }
 
 .cal-header-nav {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 4px;
+}
+
+.calendar.open .cal-header-nav {
+  display: flex;
 }
 
 .cal-nav-btn {
@@ -271,12 +296,6 @@ body {
   background: var(--accent);
   color: #fff;
   border-color: var(--accent);
-}
-
-.cal-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
 }
 
 .cal-dow {

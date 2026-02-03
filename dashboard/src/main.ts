@@ -202,8 +202,9 @@ function buildCalendarHtml(): string {
   const prevMonthDays = new Date(year, month, 0).getDate();
 
   const dows = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-  let html = '<div class="cal-header">';
-  html += '<span class="cal-header-label">' + monthLabel + '</span>';
+  const open = calendarEl.classList.contains('open');
+  let html = '<div class="cal-header" data-cal-toggle>';
+  html += '<span class="cal-header-label">' + monthLabel + ' <span class="cal-chevron">' + (open ? '&#9650;' : '&#9660;') + '</span></span>';
   html += '<div class="cal-header-nav">';
   html += '<button class="cal-nav-btn" data-cal-nav="-1">&lsaquo;</button>';
   html += '<button class="cal-today-btn" data-cal-today>Today</button>';
@@ -254,13 +255,21 @@ function setSafeCalendar(el: HTMLElement, rawHtml: string): void {
   while (el.firstChild) el.removeChild(el.firstChild);
   const clean = DOMPurify.sanitize(rawHtml, {
     USE_PROFILES: { html: true },
-    ADD_ATTR: ['data-date', 'data-cal-nav', 'data-cal-today'],
+    ADD_ATTR: ['data-date', 'data-cal-nav', 'data-cal-today', 'data-cal-toggle'],
   });
   el.insertAdjacentHTML('beforeend', clean);
 }
 
 function handleCalendarClick(e: Event): void {
   const target = e.target as HTMLElement;
+
+  // Toggle fold/unfold when clicking the header (but not nav buttons)
+  const toggleEl = target.closest('[data-cal-toggle]') as HTMLElement | null;
+  if (toggleEl && !target.closest('[data-cal-nav]') && !target.closest('[data-cal-today]')) {
+    calendarEl.classList.toggle('open');
+    renderCalendar();
+    return;
+  }
 
   const navBtn = target.closest('[data-cal-nav]') as HTMLElement | null;
   if (navBtn) {
