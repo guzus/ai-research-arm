@@ -1,18 +1,19 @@
-AI News - 2026-02-04
+AI News - 2026-02-04 (Updated)
 
 TOP STORIES:
-• Apple Xcode 26.3 adds Claude Agent + OpenAI Codex for agentic coding
-• "SaaSpocalypse" - Anthropic AI tools trigger $285B global stock rout
-• Nvidia nears $20B investment in OpenAI's funding round
+• Anthropic launches Super Bowl ad: "Ads are coming to AI. But not to Claude"
+• Waymo raises $16B at $126B valuation - Tokyo & London expansion planned
+• Palantir beats Q4, guides 61% revenue growth for 2026
+• Apple Xcode 26.3 adds Claude Agent + OpenAI Codex
 
 KEY NUMBERS:
-• $285B - Market cap erased in SaaS selloff
-• $20B - Nvidia's pending OpenAI investment
-• 20% - Thomson Reuters stock drop
-• $830B - OpenAI's target valuation
+• $16B - Waymo funding (valuation nearly 3x since Oct 2024)
+• $285B - Market cap erased in "SaaSpocalypse"
+• 61% - Palantir 2026 revenue growth guidance
+• $750M - Waabi Series C (+ $250M from Uber)
 
 EARNINGS TODAY:
 • Alphabet Q4 after close (expect $111.3B rev, $2.64 EPS)
-• Amazon Q4 tomorrow (expect $206-213B rev)
+• Amazon Q4 tomorrow
 
 Full report on GitHub.
