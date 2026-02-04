@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-04 02:44 UTC
+
+WHAT'S BUZZING:
+• Qwen3-Coder-Next drops: 80B MoE coding agent, 3B active params, open weights
+• Apple Xcode integrates Claude Agent SDK for iOS/Mac/Vision Pro development
+• OpenAI Codex app hits 200K+ downloads on launch day
+
+NOTABLE:
+• Karpathy pushes "time to GPT-2" to 2.91hrs with fp8 training (~$20 on spot)
+• New ARC-AGI SOTA: GPT-5.2 based model hits 72.9% on V2 benchmark
+• Sam Altman hires new Head of Preparedness: "powerful models coming soon"
+
+Full update on GitHub.
