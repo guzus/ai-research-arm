@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-02-04 05:12 UTC
+
+WHAT'S BUZZING:
+• Tesla AI VP reveals end-to-end driving neural net is actually a foundational robotics model for both cars and Optimus humanoid
+• Claude Sonnet 5 speculation continues amid Vertex AI log leaks (unconfirmed)
+• MIT's DiffSyn AI published in Nature: diffusion model predicts material synthesis paths from 23K recipes
+
+NOTABLE:
+• Quiet period for major releases; Claude Slack connector trending (164 posts)
+
+Full update on GitHub.
