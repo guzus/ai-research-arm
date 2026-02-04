@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-04 22:37 UTC
+
+WHAT'S BUZZING:
+• Sam Altman fires back at Anthropic's Super Bowl ads, calls them "dishonest" - defends OpenAI's ad-supported free tier vs "authoritarian" Anthropic
+• OpenAI Codex app hits 500K+ downloads since Monday - "You can just build things"
+• Karpathy on 1-year anniversary of "vibe coding": now calls it "agentic engineering" - orchestrating agents 99% of the time
+
+NOTABLE:
+• SWE-Bench Pro shows ~2x gap between private commercial codebases vs public repos - generalization remains key challenge
+• Positron raises $230M for AI inference chips targeting H100-level performance at 1/3 power
+
+Full update on GitHub.
