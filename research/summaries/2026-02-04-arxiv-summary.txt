@@ -1,0 +1,12 @@
+arXiv Papers - 2026-02-04
+
+TOP 5 PAPERS:
+* Character as Latent Variable - Character-level dispositions cause stronger misalignment than incorrect advice; key alignment risk
+* FourierSampler - First frequency-domain analysis of diffusion LLMs; enables structure-to-detail parallel generation
+* SimpleMem - 30x token reduction for agent memory; 1.5B model matches GPT-4o on memory tasks
+* Manifold-Geometric Transformer - Solves rank collapse in deep transformers via geometry; enables 100+ layer scaling
+* From Sight to Insight - RL unlocks visual reasoning in VLMs; perception is key bottleneck (26.7% gain)
+
+CATEGORIES: NLP/LLMs (6), Multimodal (5), Agents (6), Safety (6), Architecture (4)
+
+Full report on GitHub.
