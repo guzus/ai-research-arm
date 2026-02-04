@@ -1,0 +1,19 @@
+AI News 19:00 UTC
+
+GitHub Copilot integrates Claude Code + OpenAI Codex as agent modes for Pro+ users
+
+Mistral releases Voxtral Transcribe 2: speech-to-text in 115+ languages with diarization
+
+SWE-Bench Pro results: Codex 72.6%, Claude Code 70.7%, DeepSeek R2 61.7%
+
+Positron raises $230M for AI inference chips claiming 10x speed vs H100
+
+Bedrock Robotics raises $270M at $1.75B for humanoid robots
+
+Resolve AI raises $125M at $1B for incident response automation
+
+Intern-S1-Pro beats Opus 4.5 on GPQA Diamond (68.9%), SOTA on Science Agent Bench
+
+Waypoint-1.1 world model released with open weights for robotics
+
+Anthropic Super Bowl ads mocking ChatGPT continue to trend (11K+ likes)
