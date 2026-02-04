@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-04 13:18 UTC
+
+WHAT'S BUZZING:
+• Anthropic commits to ad-free Claude: "Advertising incompatible with genuine helpfulness" (trending 362 posts)
+• Apple Xcode 26.3 RC integrates Claude Agent + OpenAI Codex via MCP for autonomous app building
+• Indian IT sector crashed 5-7% (₹2L Cr wiped) on Claude Cowork automation fears
+
+NOTABLE:
+• Simon Willison: Qwen3-Coder-Next (46GB) may drive coding agents locally — "a really big deal"
+• OpenAI announces 40% model speed improvement without weight changes
+
+Full update on GitHub.
