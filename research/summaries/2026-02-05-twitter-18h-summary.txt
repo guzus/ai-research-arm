@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-05 18:59 UTC
+
+WHAT'S BUZZING:
+• Claude Opus 4.6 launched — 1M token context, agent teams, leads benchmarks by 144 Elo over GPT-5.2 (13.9K likes)
+• GPT-5.3-Codex released — first model to help build itself, 57% SWE-Bench Pro, rated "High" for cybersecurity (6K likes)
+• Perplexity launches Model Council — GPT-5.2, Opus 4.5, Gemini 3 Pro as async agent swarm (645 likes)
+
+NOTABLE:
+• Both Opus 4.6 and GPT-5.3-Codex converge on fully autonomous agentic coding — the arms race for sustained AI task execution is accelerating
+• Elon Musk 3-hour interview covers orbital data centers and space-based AI compute
+
+Full update on GitHub.
