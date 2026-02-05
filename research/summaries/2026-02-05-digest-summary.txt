@@ -1,9 +1,9 @@
 Daily AI Digest - 2026-02-05
 
 TOP STORIES:
-• Claude Opus 4.6 + GPT-5.3-Codex released 30 min apart — biggest same-day frontier model launch ever. Opus leads SWE-bench (80.8%), Codex leads Terminal-Bench (77.3%)
-• SaaSpocalypse hits $1T: software stocks crater as AI threatens SaaS. HubSpot -39%, Figma -40% YTD
-• Amazon Q4 beats: $213.4B revenue, AWS $35.6B (+24%). Announces $200B 2026 capex (Street expected $147B)
+• Claude Opus 4.6 + GPT-5.3-Codex released 20 min apart — biggest same-day frontier model drop ever. Opus leads SWE-bench (80.8%), Codex leads Terminal-Bench (77.3%)
+• SaaSpocalypse hits ~$1T: software stocks crater as AI threatens SaaS. HubSpot -39%, Figma -40% YTD
+• Amazon Q4 beats: $213.4B revenue, AWS $35.6B (+24%). Announces $200B capex — shares plunge 10% AH
 
 KEY NUMBERS:
 • Codex app: 1M+ users (doubled in 24h)
