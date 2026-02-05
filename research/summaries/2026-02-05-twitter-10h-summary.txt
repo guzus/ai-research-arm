@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-05 10:00 UTC
+
+WHAT'S BUZZING:
+• Kimi K2.5 scores 147 on Epoch Capabilities Index - on par with o3, Grok 4, Sonnet 4.5; Chinese open weights now at frontier level
+• Claude Cowork triggers $1T wipeout from software stocks; Amodei warns AI could displace half of entry-level white-collar jobs in 1-5 years
+• Google paper shows Gemini as "tireless, knowledgeable junior collaborator" for accelerating scientific research
+
+NOTABLE:
+• Mollick: "The next model looks like management - decisions flowing up from multiple projects, most handled semi-autonomously"
+• roon: "Humans are clearly the bottleneck to writing software. There will just be no centaurs soon"
+
+Full update on GitHub.
