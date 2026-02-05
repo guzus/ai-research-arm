@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-05 22:37 UTC
+
+WHAT'S BUZZING:
+• Opus 4.6 launch tweet hits 25K likes — Anthropic's smartest model with 1M context, agent teams, PowerPoint integration
+• GPT-5.3-Codex SOTA on coding benchmarks (57% SWE-Bench Pro, 76% TerminalBench) — first model to help build itself
+• Financial data stocks selloff: FactSet, S&P Global, Moody's decline on Opus 4.6 financial analysis capabilities
+
+NOTABLE:
+• Box CEO confirms Opus 4.6 delivers 10% jump on hardest enterprise knowledge work tasks
+• AI coding race shifts from model vs model to orchestration — VS Code, GitHub, and agent teams working in parallel
+• Amazon Bedrock hits multi-billion ARR with 60% QoQ growth
+
+Full update on GitHub.
