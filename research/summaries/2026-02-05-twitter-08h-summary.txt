@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-05 08:56 UTC
+
+WHAT'S BUZZING:
+* Google-Apple AI deal cemented as Alphabet reports $400B+ annual revenue with fastest Gemini 3 adoption ever
+* Kimi K2.5 claims Claude Sonnet 4.5-level performance at half the cost
+* Cerebras systems outperform NVIDIA B200 on inference benchmarks
+
+NOTABLE:
+* AI safety research shows "alignment faking" scales with model size
+* Robotics narrative accelerating: Virtuals, xMaquina, OpenMind all pushing hardware/AI integration
+
+Full update on GitHub.
