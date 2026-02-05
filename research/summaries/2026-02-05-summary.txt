@@ -1,19 +1,22 @@
 AI News - 2026-02-05
 
 TOP STORIES:
-• Alphabet Q4 beats: $113.8B revenue (+18%), announces $175-185B 2026 capex
-• ChatGPT & Claude both hit by major outages on Feb 4
-• Google Gemini crosses 750M monthly active users
-• Coalition demands federal Grok ban over safety concerns
+• Anthropic launches Claude Opus 4.6 with "agent teams" and 1M token context
+• Opus 4.6 finds 500+ zero-day vulnerabilities in open-source code
+• SaaSpocalypse deepens: ~$1T wiped from software stocks in 7 days
+• Alphabet Q4 beats estimates, announces $175-185B 2026 capex (2x 2025)
+• Amazon Q4 earnings today after market close
 
 KEY NUMBERS:
-• Alphabet 2026 capex: $175-185B (2x 2025 spend)
+• Opus 4.6: beats GPT-5.2 by 144 ELO on GDPval-AA
+• SaaS losses: ~$1T in 7 days; HubSpot -39%, Figma -40% YTD
+• Alphabet 2026 capex: $175-185B (vs $120B expected)
 • Gemini MAU: 750M users
-• ChatGPT outage peak: 15K+ DownDetector reports
-• DeepSeek V4: 1M+ token context window (coming mid-Feb)
+• Amazon expected: $211B revenue, $34.9B AWS
 
 UPCOMING:
-• Amazon Q4 earnings today (after market)
+• Amazon Q4 results today (5pm ET)
 • Super Bowl LX ads: OpenAI + Anthropic (Feb 8)
+• DeepSeek V4 launch (~Feb 17)
 
 Full report on GitHub.
