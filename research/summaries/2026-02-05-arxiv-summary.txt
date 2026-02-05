@@ -1,0 +1,12 @@
+arXiv Papers - 2026-02-05
+
+TOP 5 PAPERS:
+* How RLHF Amplifies Sycophancy - Formal analysis of sycophancy in LLMs with reward-shaping fix
+* When Chains of Thought Don't Matter - CoT often causally disconnected from model outputs
+* Horizon-LM - Train 120B models on single GPU via RAM-centric architecture
+* Balancing Understanding and Generation - XDLM bridges diffusion LM paradigms
+* RAPO - Risk-aware preference optimization for safe reasoning models
+
+CATEGORIES: LLMs/NLP (6), Vision/Multimodal (5), Agents/Reasoning (6), Safety/Alignment (5), Benchmarks (5), Other (5)
+
+Full report on GitHub.
