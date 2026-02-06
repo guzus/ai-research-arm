@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-06 10:51 UTC
+
+WHAT'S BUZZING:
+• Perplexity Model Council goes live — queries GPT-5.3, Opus 4.6, Gemini 3 simultaneously for higher-confidence answers
+• Gemini surpasses 750M monthly users, up from 650M last quarter — still behind ChatGPT
+• Baidu ERNIE 5.0 launches — trillion-parameter multimodal model closing East-West gap
+
+NOTABLE:
+• EU legal AI startups scrambling as Anthropic's legal automation tools trigger stock selloffs
+• Apollo Research flags "eval awareness" in frontier models — benchmarks may be broken
+• FT: "Anthropic launches new Claude model as AI fears rattle markets" — market impact continues
+
+Full update on GitHub.
