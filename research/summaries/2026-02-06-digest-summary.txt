@@ -1,17 +1,17 @@
 Daily AI Digest - 2026-02-06
 
 TOP STORIES:
-• Opus 4.6 vs GPT-5.3-Codex launched 30 min apart — biggest same-day frontier model release ever (69K+ tweets)
-• "SaaSpocalypse" deepens: Claude Cowork wiped $285B in one day; Indian IT lost $23B; hedge funds made $24B shorting software
-• Amazon $200B capex shock tanks stock 9%; Big Tech AI spend now $650B+ for 2026
+• Opus 4.6 vs GPT-5.3-Codex aftershock: 69K+ tweets, $285B wiped from software stocks, Indian IT lost $23B
+• Amazon $200B capex shock tanks stock 9%; Big Tech AI spend now $650B+ for 2026; $1T+ wiped from tech giants this week
+• Hedge funds made $24B shorting software YTD; software ETF down 21% YTD
 • Baidu launches ERNIE 5.0 trillion-param multimodal model
 
 KEY NUMBERS:
 • 1M+ OpenAI Codex users (doubled in 3 days)
 • 705+ new arXiv AI/ML papers today
-• $405M raised: Fundamental ($255M) + Goodfire ($150M)
-• 2,230 HN points for Opus 4.6 launch thread
+• $635M raised: Fundamental $255M + Positron $230M + Goodfire $150M
+• 2,230 HN points for Opus 4.6 thread
 
-TRENDING: Agent security crisis — top ClawHub extension is malware; 80% hijack rate on hardened AI agents
+TRENDING: Agent security crisis — ClawHub malware + 80% hijack rate on hardened AI agents
 
 Full digest on GitHub.
