@@ -1,0 +1,12 @@
+arXiv Papers - 2026-02-06
+
+TOP 5 PAPERS:
+- Learning to Reason in 13 Parameters - TinyLoRA achieves 91% GSM8K accuracy with just 13 trained params via RL
+- Effective Frontiers - Unifies Kaplan & Chinchilla scaling laws via Zipfian pattern coverage framework
+- WideSeek-R1 - MARL-trained 4B multi-agent system beats larger 8B systems on broad info seeking
+- DPPO - Fixes PPO's vocabulary mismatch for LLM RL with principled divergence constraints
+- CARE-RFT - Confidence-anchored RL finetuning balances reasoning gains with trustworthiness
+
+CATEGORIES: LLMs/NLP (7), Scaling/Efficiency (5), Vision/Multimodal (5), Agents/Reasoning (5), Safety/Alignment (4), Other (5)
+
+Full report on GitHub.
