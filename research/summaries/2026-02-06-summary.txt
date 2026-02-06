@@ -1,0 +1,17 @@
+AI News - 2026-02-06
+
+TOP STORIES:
+• Amazon Q4 beats on revenue ($213.4B) but stock plunges 10% on $200B 2026 capex shock
+• OpenAI launches GPT-5.3-Codex — first "self-developing" AI model, 25% faster, new SWE-Bench record
+• Claude Cowork plugins deepen SaaSpocalypse — $285B wiped in single day; Gartner -21%, S&P Global -11%
+• Mega-cap tech 2026 AI capex now totals $630B+ combined
+• Goodfire raises $150M Series B at $1.25B for AI interpretability
+• Claude Sonnet 5 "Fennec" leaked in Vertex AI logs — 82.1% SWE-Bench claimed
+
+KEY NUMBERS:
+• $200B — Amazon 2026 capex (vs $147B expected)
+• $630B+ — Combined Big Tech AI spending for 2026
+• 24% — AWS YoY growth, fastest in 13 quarters
+• $150M — Goodfire Series B at $1.25B valuation
+
+Full report on GitHub.
