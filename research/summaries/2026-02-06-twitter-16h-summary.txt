@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-06 16:57 UTC
+
+WHAT'S BUZZING:
+• Sam Altman: GPT-5.3 excitement "rivals original GPT-4 launch" — asks users how to price Codex
+• Google DeepMind x Waymo: Genie 3 world model generating photorealistic driving environments for AV training
+• vLLM v0.15.0 ships with DeepSeek-OCR 2, Kimi K2.5, Mixture-of-Models on AMD GPUs
+
+NOTABLE:
+• Anthropic's $285B SaaS market sell-off still reverberating — Polymarket puts Claude 5 at 68% by Valentine's Day
+• Elon Musk's "AI must pass the Galileo test" post hits 10K+ likes, sparks alignment debate
+• SpaceX sending NVIDIA H100 to space — "100x more powerful GPU than ever in orbit"
+
+Full update on GitHub.
