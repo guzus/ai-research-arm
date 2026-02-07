@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-07 13:07 UTC
+
+WHAT'S BUZZING:
+• OpenClaw v2026.2.6 ships with Opus 4.6 + GPT-5.3-Codex support, xAI Grok & Baidu Qianfan providers (2K likes)
+• UK AISI Red Team jailbroke GPT-5.3-Codex in 10 hours, audited Opus 4.6 alignment on release day (499 likes)
+• Waymo World Model trending on HN (959pts) — DeepMind's Genie 3 generates photorealistic driving scenarios
+
+NOTABLE:
+• Positron raised $230M for AI inference chips at 1/3 H100 power consumption
+• Starcloud launched first NVIDIA H100 to space, planning 88K satellite constellation for orbital AI compute
+• Opus 4.6 + GPT-5.3-Codex dual launch still dominating at 79K posts trending
+
+Full update on GitHub.
