@@ -1,17 +1,18 @@
 Daily AI Digest - 2026-02-07
 
 TOP STORIES:
-• Anthropic launches Opus 4.6 "fast mode" — 2.5x faster, full intelligence retained
-• Goldman Sachs deploys Claude agents for accounting & compliance automation
-• "Anthropic Effect" wipes $23B from Indian IT stocks — sharpest fall since March 2020
-• Super Bowl LX: Anthropic vs OpenAI ad war — "Ads are coming to AI. But not to Claude"
+• Anthropic $20B+ round closing next week at $350B valuation — doubled from $10B on excess demand
+• Dow crosses 50,000 for first time as Jensen Huang declares AI demand "sky high," capex sustainable for 7-8 years
+• Super Bowl LX becomes "AI Bowl" — Anthropic vs OpenAI ad war, 16+ tech companies, first AI-generated commercial
+• Opus 4.6 fast mode: 2.5x faster, full intelligence retained — #1 LMSys Arena, 80K+ posts Day 2
+• Goldman Sachs deploys Claude agents for trade accounting & compliance
 
 KEY NUMBERS:
-• $650B — Big Tech combined AI capex forecast for 2026
-• 80K+ posts — Opus 4.6 vs GPT-5.3-Codex launch discourse (Day 2)
-• 68% — Anthropic's Polymarket odds for best Feb model (Google fell from 91% to 22%)
-• $255M — Fundamental AI exits stealth at $1.2B valuation
+• $650B hyperscaler capex forecast for 2026
+• $23B wiped from Indian IT stocks ("Anthropic Effect")
+• 300M+ ChatGPT weekly active users
+• 867+ new arXiv papers today
 
-TRENDING: NY proposes 3-year data center moratorium (6th state); StrongDM's "no human code" Software Factory; ASTER 4B model hits 90% AIME 2025
+TRENDING: Opus 4.6 vs GPT-5.3-Codex dual launch dominates (80K+ posts), data center moratoriums spread to 6+ states
 
 Full digest on GitHub.
