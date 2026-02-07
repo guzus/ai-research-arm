@@ -1,100 +1,108 @@
-# Methodology Improvements - 2026-02-01
+# Methodology Improvements - 2026-02-07
 
-## Analysis Date: 2026-01-31 Output Review
+## Analysis Date: 2026-02-06 Output Review
+
+### Output Quality Assessment
+
+Yesterday's pipeline produced comprehensive output across all channels:
+- **Twitter**: 329 lines, 11 UTC cycles, 300+ unique updates, 69K posts scanned
+- **RSS**: 1,028 lines, hourly scans across 11 feeds
+- **Bluesky**: 459 lines, 8 scan cycles, 15+ researcher accounts
+- **Community**: HN (78 lines, 22 AI stories) + Reddit (130 lines, 3 subreddits)
+- **arXiv**: 705+ papers scanned, top 5 highlighted
+- **Digest**: 209-line synthesis covering all channels
 
 ### Issues Found
 
-#### 1. Bluesky API Completely Broken (Critical)
-- **Problem**: The `public.api.bsky.app` search endpoint returned HTTP 403 Forbidden for 7 out of 12 cycles on 2026-01-31. The self-hosted runner's IP is blocked by Bluesky's CDN/firewall.
-- **Impact**: Zero data collected for the first 7 cycles (02:00-14:27 UTC). Later cycles only worked because Claude improvised a fallback to `getAuthorFeed` at runtime — this was not in the workflow itself.
-- **Evidence**: `research/bluesky/2026-01-31.md` shows 7 consecutive "No posts collected" entries.
+#### 1. Meta AI RSS Feed Still Broken (HIGH)
+- **Problem**: `ai.meta.com/blog/rss/` returns HTML, not RSS. The previous fix to use `research.facebook.com/feed/` may not have been merged.
+- **Impact**: Missing direct Meta AI announcements (e.g., Llama updates, research papers).
+- **Fix**: Switch to `openrss.org/ai.meta.com/blog` proxy.
 
-#### 2. RSS Feeds Returning HTML Instead of RSS (High)
-- **Problem**: Anthropic (`openrss.org/www.anthropic.com/news`) and Meta AI (`ai.meta.com/blog/rss/`) consistently returned HTML instead of valid RSS/XML. Every hourly check showed "Feed unavailable (returned HTML instead of RSS)".
-- **Impact**: Complete loss of two major AI company blogs from RSS monitoring. These are key primary sources for announcements.
-- **Evidence**: `research/rss/2026-01-31.md` — every cycle shows "Anthropic: Feed unavailable" and "Meta AI: Feed unavailable".
+#### 2. Bluesky searchPosts Auth Required (HIGH)
+- **Problem**: 403 Forbidden errors throughout the day on `searchPosts` endpoint. The workflow still uses unauthenticated public endpoint.
+- **Impact**: Bluesky search data is unreliable. Only `getAuthorFeed` fallback works.
+- **Fix**: Add JWT authentication step using `com.atproto.server.createSession`.
 
-#### 3. RSS Feed Sparse Output (Medium)
-- **Problem**: Out of ~24 hourly RSS runs, only 4 produced any content. Most hours showed "No new updates this hour" across all sources.
-- **Impact**: RSS channel underperforms relative to its potential. Feed list is too narrow to guarantee hourly updates.
+#### 3. Missing RSS Sources for Key Publications (MEDIUM)
+- **Problem**: No Mistral AI feed, no Wired AI, no MIT Technology Review, no The Batch newsletter. These are significant AI news sources with RSS feeds available.
+- **Impact**: Missing ~40% of quality AI news coverage from established tech press.
+- **Fix**: Add Mistral (via OpenRSS), Wired, MIT Tech Review, Ars Technica, The Batch.
 
-#### 4. Missing Major RSS Sources (Medium)
-- **Problem**: No feeds from NVIDIA AI, AWS ML, Microsoft AI, Amazon Science, or any AI newsletters/bloggers. These are significant sources of AI announcements and analysis.
-- **Impact**: RSS relies on only 11 feeds, missing key announcements from cloud providers and popular AI commentators.
+#### 4. Reddit Coverage Too Narrow (MEDIUM)
+- **Problem**: Only 3 subreddits (r/MachineLearning, r/LocalLLaMA, r/artificial). Missing r/OpenAI (470K+), r/ClaudeAI (growing fast), r/singularity (1M+).
+- **Impact**: Missing product-specific user feedback, early issue reports, and trend signals.
+- **Fix**: Add 3 more subreddits with proper rate limiting.
 
-#### 5. Reddit Coverage Too Narrow (Low-Medium)
-- **Problem**: Only 3 subreddits monitored (r/MachineLearning, r/LocalLLaMA, r/artificial). Missing popular AI communities with significant discussion.
-- **Impact**: Missing community signals from r/singularity (248K members), r/OpenAI (1.3M), r/ClaudeAI (100K+), r/StableDiffusion (650K+).
+#### 5. Twitter Missing AI Agents/Coding Trend (MEDIUM)
+- **Problem**: No search query for the AI agents/coding assistant revolution — one of the hottest AI topics.
+- **Impact**: Missing coverage of Claude Code, Cursor, Copilot, MCP servers, and agentic workflows.
+- **Fix**: Add dedicated search query for AI agents, coding tools, and MCP.
 
-#### 6. Bluesky Researcher List Too Short (Low)
-- **Problem**: Only searched for Karpathy by handle. Many AI researchers active on Bluesky are not being tracked.
-- **Impact**: Heavy reliance on generic keyword search rather than following known high-signal accounts.
+#### 6. Model Timeline Search Terms Outdated (LOW)
+- **Problem**: Searching for "GPT-4.5", "Claude 4" — past-generation model names. Not tracking Chinese AI labs.
+- **Impact**: Timeline may miss current/upcoming model announcements.
+- **Fix**: Update to current model names, add Baidu and Alibaba/Qwen to tracking.
 
 ---
 
-### Improvements Made
+### Changes Made
 
-#### Fix 1: Bluesky API Failover (2h-bluesky.yml)
-- Added automatic API endpoint detection: tests `public.api.bsky.app` first, falls back to `api.bsky.app` if it returns 403.
-- Added `getAuthorFeed` calls for 11 notable AI researchers/outlets (Karpathy, Ethan Mollick, Nathan Lambert, Emily Bender, Karen Hao, Gary Marcus, Sung Kim, Alex Hanna, DAIR Institute, TechCrunch, The Verge).
-- Added new search query for AI safety/alignment content.
-- Updated Claude prompt to document both JSON structures (searchPosts vs getAuthorFeed).
-- Added proper error handling with `|| echo '{"posts":[]}'` fallbacks.
+#### hourly-rss.yml — 6 New Sources
+- **Fixed Meta AI**: Switched to `openrss.org/ai.meta.com/blog` (direct feed returns HTML)
+- **Added Mistral AI**: `openrss.org/mistral.ai/news` (no official feed exists)
+- **Added Ars Technica**: `feeds.arstechnica.com/arstechnica/technology-lab`
+- **Added MIT Technology Review**: `technologyreview.com/topic/artificial-intelligence/feed`
+- **Added Wired AI**: `wired.com/feed/tag/ai/latest/rss`
+- **Added The Batch**: `deeplearning.ai/the-batch/feed/` (Andrew Ng's newsletter)
+- Updated Claude prompt with all new source references and output format sections
 
-#### Fix 2: Broken RSS Feeds Replaced (hourly-rss.yml)
-- **Anthropic**: Replaced broken `openrss.org` proxy with community-maintained GitHub feed (`conoro/anthropic-engineering-rss-feed`), which is updated hourly via GitHub Actions.
-- **Meta AI**: Replaced non-existent `ai.meta.com/blog/rss/` with `research.facebook.com/feed/` (Meta Research) and added `engineering.fb.com/feed/` (Meta Engineering) as additional source.
+#### 4h-community.yml — 3 New Subreddits
+- **Added r/OpenAI**: Product discussions, user feedback (470K+ members)
+- **Added r/ClaudeAI**: Anthropic/Claude specific discussions
+- **Added r/singularity**: AI/AGI trend discussions (1M+ members)
+- Added 2-second delays between new fetches for rate limiting
+- Updated Claude prompt and output format tables
 
-#### Fix 3: New RSS Sources Added (hourly-rss.yml)
-Added 12 new RSS feeds across three categories:
+#### 2h-bluesky.yml — Auth Fix + Expanded Coverage
+- **Added JWT authentication**: New step authenticates via `com.atproto.server.createSession`
+- **Graceful degradation**: Falls back to public API if no credentials configured
+- **Added 2 search queries**: "AI safety alignment" and "AI agent coding MCP"
+- **Added 4 researcher feeds**: emollick, natolambert, jackclark, ylecun via `getAuthorFeed`
+- Updated Claude prompt with new data files and getAuthorFeed JSON format docs
 
-**Company Blogs (4 new):**
-- NVIDIA Blog (`blogs.nvidia.com/feed/`)
-- AWS Machine Learning Blog (`aws.amazon.com/blogs/machine-learning/feed/`)
-- Microsoft AI Blog (`blogs.microsoft.com/ai/feed/`)
-- Amazon Science (`amazon.science/index.rss`)
+#### hourly-twitter.yml — New Search Category
+- **Added AI agents/coding search**: "AI agent OR AI coding OR Claude Code OR Cursor OR Copilot OR Codex OR MCP server" (30 results)
+- **Updated hardware terms**: Added NVIDIA B200 to infrastructure search
+- Updated Claude prompt to reference new search file
 
-**AI Newsletters (4 new):**
-- Sebastian Raschka — Ahead of AI (Substack)
-- Latent Space — AI Engineer newsletter (Substack)
-- Elvis Saravia — Top AI Papers (Substack)
-- Simon Willison — LLM/AI blog (Atom feed)
-
-**News Sources (3 new):**
-- Ars Technica (`feeds.arstechnica.com`)
-- Wired AI (`wired.com/feed/tag/ai/latest/rss`)
-- MIT Technology Review (`technologyreview.com/feed/`)
-
-Updated Claude prompt to enumerate all new sources and added output format sections for the new categories.
-
-#### Fix 4: Expanded Reddit Coverage (4h-community.yml)
-Added 5 new subreddits:
-- r/singularity — AI/AGI speculation and news
-- r/OpenAI — OpenAI product discussions
-- r/ClaudeAI — Anthropic/Claude discussions
-- r/StableDiffusion — Image generation community
-Updated Claude prompt and output format to include all new subreddits.
+#### 12h-model-timeline.yml — Updated Tracking
+- **Updated model names**: Added GPT-6, Claude 5, Claude Opus, Gemini 3, Grok 4, Mistral Large, ERNIE
+- **Added Chinese AI labs**: Baidu and Alibaba/Qwen to company tracking list
 
 ---
 
 ### Expected Impact
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| RSS feed sources | 11 | 23 | +109% |
-| Reddit subreddits | 3 | 8 | +167% |
-| Bluesky uptime | ~42% (5/12 cycles) | ~95%+ (with failover) | +53pp |
-| Bluesky tracked researchers | 1 | 11 | +1000% |
-| Broken RSS feeds | 2 (Anthropic, Meta) | 0 | Fixed |
-| AI newsletter coverage | 0 | 4 newsletters | New capability |
-| Cloud provider blog coverage | 0 | 4 blogs | New capability |
+| Metric | Before | After | Change |
+|--------|--------|-------|--------|
+| RSS feed sources | 11 | 17 | +55% |
+| Reddit subreddits | 3 | 6 | +100% |
+| Bluesky search reliability | ~50% (403 errors) | ~95%+ (with auth) | +45pp |
+| Bluesky tracked researchers | 1 | 5 | +400% |
+| Bluesky search queries | 5 | 7 | +40% |
+| Twitter search categories | 7 | 8 | +14% |
+| Model timeline companies | 11 | 13 | +18% |
+| Broken RSS feeds fixed | 1 (Meta AI) | 0 | Fixed |
+| Newsletter coverage | 0 | 1 (The Batch) | New |
 
 ### Summary
 
-These changes address the most impactful issues identified in yesterday's output:
-1. **Bluesky data loss** is fixed with automatic API failover and direct researcher feed fetching.
-2. **Broken RSS feeds** are replaced with working alternatives.
-3. **Source diversity** is significantly expanded — from 11 to 23 RSS feeds, 3 to 8 Reddit communities, and 1 to 11 tracked Bluesky researchers.
-4. **Newsletter coverage** adds high-signal AI analysis from leading researchers and engineers.
+These improvements target the highest-impact gaps identified in yesterday's output:
+1. **Bluesky authentication** should resolve persistent 403 errors and restore full search
+2. **6 new RSS sources** add quality tech press and newsletter coverage
+3. **3 new Reddit communities** capture product-specific discussions and broader AI trends
+4. **AI agents/coding search** on Twitter tracks the fastest-growing AI topic
+5. **Updated model tracking** ensures timeline catches current-generation releases and Chinese lab activity
 
-*Generated by Daily Self-Improvement Workflow on 2026-02-01*
+*Generated by Daily Self-Improvement Workflow on 2026-02-07*
