@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-07 14:34 UTC
+
+WHAT'S BUZZING:
+• Elon Musk touts Grok 4.20 topping Alpha Arena leaderboard (+34.59% return, 21K likes) and says Grok has surpassed Claude/Perplexity/Meta in website traffic
+• SpaceX actively hiring for orbital data center engineers in Austin/Seattle — space-based AI compute moving from concept to recruitment
+• Polymarket odds shift: Anthropic's best-model-of-Feb odds up 55%, Google's down 70% after Opus 4.6 launch
+
+NOTABLE:
+• Cross-modality jailbreak transfer flagged as emerging safety risk — attacks transferring across text/image/audio in omni-models
+• Opus 4.6 vs GPT-5.3-Codex discourse hits 80K posts on day 2
+
+Full update on GitHub.
