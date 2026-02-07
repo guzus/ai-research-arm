@@ -1,16 +1,24 @@
-AI News - 2026-02-07
+AI News - 2026-02-07 (Evening Update)
 
 TOP STORIES:
-• Dow crosses 50,000 for first time ever, surging 1,206pts (+2.5%) as tech rebounds
-• Anthropic's $20B+ funding round to close next week at $350B valuation (Bloomberg)
-• OpenAI vs Anthropic Super Bowl ad war escalates - Altman calls Claude ads "dishonest"
-• Goldman Sachs building AI agents with Anthropic for trade accounting & compliance
-• Jensen Huang: AI demand "sky high," infrastructure buildout to last 7-8 years
+- Dow crosses 50,000 for first time after Jensen Huang calms AI spending fears
+- Anthropic $20B+ funding to close next week at $350B valuation
+- Super Bowl LX becomes "AI Bowl" - 16+ tech companies advertising, first AI-generated ad (Svedka)
+- Anthropic vs OpenAI Super Bowl ad war escalates ahead of Sunday
 
 KEY NUMBERS:
-• $700B - hyperscaler AI capex approaching for 2026
-• $350B - Anthropic's expected valuation after $20B+ round
-• 500K+ - OpenAI Codex app downloads since Feb 2 launch
-• 8% - Nvidia single-day surge on Huang's CNBC comments
+- $350B: Anthropic's expected post-funding valuation
+- $50B: Oracle capital raise for AI cloud infrastructure
+- 500K: OpenAI Codex app downloads since Feb 2
+- 70-80%: Broadcom's custom AI chip market share
+- $65.5B: Expected Nvidia Q4 revenue (Feb 25)
+
+DEALS:
+- Varonis acquires AllTrue.ai for $150M (AI security)
+- Goldman Sachs deploys Claude AI agents for banking
+
+REGULATION:
+- Oklahoma introduces 12+ AI bills
+- New York enacts synthetic performer disclosure law
 
 Full report on GitHub.
