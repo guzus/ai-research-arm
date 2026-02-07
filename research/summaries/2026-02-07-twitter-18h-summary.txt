@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-07 18:48 UTC
+
+WHAT'S BUZZING:
+• Perplexity launches Model Council — runs GPT 5.2, Opus 4.6 & Gemini 3 Pro simultaneously, synthesizes one verified answer ($20/mo Pro)
+• Polymarket reprices: Google drops from 91% to 22% for top Feb model; Anthropic leads at 68%
+• Yann LeCun pushes JEPA & EchoJEPA — world's best echo model trained on 18M heart ultrasound videos
+
+NOTABLE:
+• Elon Musk: "Once solar-robot-chip-AI loop closes, just wattage and tonnage will matter, not dollars"
+• VC take: "The model is becoming the commodity. Context engineering is the asset"
+• Jensen Huang calls "physical AI" the next frontier — systems that understand causality
+
+Full update on GitHub.
