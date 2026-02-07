@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-07 22:35 UTC
+
+WHAT'S BUZZING:
+• Anthropic's fast mode for Opus 4.6 (2.5x speed) trending at 5.3K posts — available in Claude Code and API
+• New Gemini "gemini-pro" checkpoint spotted with exceptional SVG/UI generation in AI Arena
+• Perplexity Model Council live for Pro users — runs GPT 5.2, Opus 4.6, Gemini 3 Pro simultaneously to reduce hallucinations
+
+NOTABLE:
+• Musk on post-scarcity: "Once the solar-robot-chip-AI loop closes, just wattage and tonnage will matter, not dollars" (43K likes)
+• NY lawmakers propose 3-year data center pause — "compute is the new oil"
+• EchoJEPA: world's best echo video model (18M videos, 300K patients) retweeted by LeCun
+
+Full update on GitHub.
