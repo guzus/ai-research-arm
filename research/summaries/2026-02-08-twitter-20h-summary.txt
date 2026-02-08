@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-08 20:38 UTC
+
+WHAT'S BUZZING:
+• Meta "Avocado" models gaining steam — Avocado Thinking spotted in testing with Manus browser agent, OpenClaw integration, Big Brain multi-model mode. Spring release expected.
+• Goodfire's $150M interpretability raise yields Alzheimer's biomarker discovery by reverse-engineering a foundation model — validated with Mayo Clinic. "First scientific discovery made by dissecting an AI."
+• GPT-5.3-Codex cybersecurity risks in spotlight — Fortune analysis on first model OpenAI classified "high" risk under Preparedness Framework.
+
+NOTABLE:
+• Foundation model consolidation narrative: "Apple paying Alphabet for AI, Meta drops $250M on one researcher. The future has landlords."
+• ByteDance Doubao upgrades from Seed 1.8 to Seed 2.0 — tech reports pending.
+
+Full update on GitHub.
