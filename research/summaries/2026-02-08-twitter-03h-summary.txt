@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-08 03:26 UTC
+
+WHAT'S BUZZING:
+• Perplexity launches "Model Council" — queries GPT-5.2, Claude Opus 4.6, and Gemini 3 Pro simultaneously to reduce hallucinations
+• New Gemini "gemini-pro" checkpoint spotted in AI Arena with impressive SVG/frontend dev capabilities
+• SpaceX hiring for orbital data centers; Musk envisions post-currency AI economy ("wattage and tonnage, not dollars")
+
+NOTABLE:
+• Polymarket: Anthropic leads AI model race at 68% after Opus 4.6; Google dropped from 91% to ~22%
+• NY lawmakers propose 3-year data center construction pause
+• Yann LeCun endorses EchoJEPA — JEPA-based cardiac video model trained on 18M echo videos
+
+Full update on GitHub.
