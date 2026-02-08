@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-08 14:42 UTC
+
+WHAT'S BUZZING:
+• DeepSeek launches V3.2 reasoning-first model for agents; mystery "Pony Alpha" model appears on OpenRouter (likely Zhipu GLM-5)
+• Grok passes DeepSeek in visits (314M vs 298M) — now #3 gen AI tool globally
+• HuggingPapers roundup: ERNIE 5.0, Kimi K2.5 Agent Swarm, Microsoft rStar2-Agent, FASA KV cache compression
+
+NOTABLE:
+• Ethan Mollick: agentic AI needs organizational theory — spans of control, boundary objects, and coupling concepts apply to agent swarms
+• EU AI Act delays enforcement timing on high-risk rules but regulation not abandoned
+• Alibaba Qwen hits 700M downloads; Amazon Bedrock ships guaranteed structured outputs
+
+Full update on GitHub.
