@@ -1,17 +1,17 @@
 Daily AI Digest - 2026-02-08
 
 TOP STORIES:
-• Super Bowl LX becomes "AI Bowl" — Anthropic, OpenAI, Google, Meta spending $8M/spot to reach 130M+ viewers; Anthropic mocks ChatGPT ads
-• Anthropic $20B+ round closing next week at $350B valuation — Nvidia + Microsoft committing up to $15B combined
-• Crypto.com buys AI.com for record $70M, launching AI agent platform at Super Bowl
-• Goodfire raises $150M at $1.25B — discovers Alzheimer's biomarkers by reverse-engineering AI models
+• Super Bowl LX "AI Bowl" — $8M/spot, 16+ tech cos, Anthropic mocks ChatGPT ads, Crypto.com buys AI.com for record $70M
+• Anthropic $20B+ round closing next week — $350B valuation, Nvidia+MSFT $15B combined
+• Goodfire raises $150M — discovers Alzheimer's biomarkers by reverse-engineering AI models
+• Pentagon deploys Grok ($200M xAI deal) amid UK safety investigation
 
 KEY NUMBERS:
-• 735 new arXiv papers today
-• Polymarket: Anthropic at 68% to lead AI race
-• Positron raises $230M for chips at 1/3 NVIDIA's power
-• Pentagon: $200M Grok deal for 3M federal workers
+• 735 new arXiv papers
+• Polymarket: Anthropic 68% to lead AI race
+• Positron: $230M for chips at 1/3 NVIDIA power
+• GPT-4o retirement: 8 lawsuits, 800K daily users affected
 
-TRENDING: AI fatigue + content slop anxiety dominate HN (3 of top 7 stories); Waymo world model at 1,134 points
+TRENDING: AI fatigue dominates HN — "AI fatigue is real" (355pts), "Slop Terrifies Me" (278pts); Waymo World Model tops at 1,134pts
 
 Full digest on GitHub.
