@@ -1,0 +1,14 @@
+arXiv Papers - 2026-02-08
+
+TOP 5 PAPERS:
+1. OmniMoE - Atomic expert decomposition for efficient MoE scaling
+2. RL World Model Learning - World models for sample-efficient LLM agents
+3. EuroLLM-22B - Open-weight 22B multilingual European LLM
+4. f-GRPO - Unifies GRPO/DPO under f-divergence framework
+5. Multi-Token Prediction via Self-Distillation - Faster inference without architecture changes
+
+KEY TRENDS: GRPO variants dominating LLM post-training (6+ papers), efficient inference via speculative decoding and sparse attention, agent reasoning with world models
+
+CATEGORIES: cs.LG (406), cs.CV (205), cs.CL (67), cs.AI (61)
+
+Full report on GitHub.
