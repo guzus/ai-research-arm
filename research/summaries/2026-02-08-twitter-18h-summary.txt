@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-08 18:50 UTC
+
+WHAT'S BUZZING:
+• Meta AI preparing "Avocado" models with Manus browser agent & OpenClaw integration — also testing Gemini 3 Pro, Claude Sonnet 4.5, GPT-5.2 internally
+• Goodfire raises $150M at $1.25B — first major scientific discovery via mechanistic interpretability (Alzheimer's biomarkers)
+• HuggingFace weekly roundup: ERNIE 5.0, Kimi K2.5 Agent Swarm (4.5x latency reduction), rStar2-Agent, FASA KV cache compression
+
+NOTABLE:
+• Qwen AI hits 700M downloads — open-source AI demand surging
+• Grokipedia organic traffic 3x in January; EU AI Act high-risk rules postponed not removed
+
+Full update on GitHub.
