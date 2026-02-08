@@ -1,100 +1,111 @@
-# Methodology Improvements - 2026-02-01
+# Methodology Improvements - 2026-02-08
 
-## Analysis Date: 2026-01-31 Output Review
+## Analysis Summary
 
-### Issues Found
+Analyzed 24 research files from 2026-02-07 across all sources (Twitter, RSS, Bluesky, arXiv, Reddit, HN, Model Timeline, Digest).
 
-#### 1. Bluesky API Completely Broken (Critical)
-- **Problem**: The `public.api.bsky.app` search endpoint returned HTTP 403 Forbidden for 7 out of 12 cycles on 2026-01-31. The self-hosted runner's IP is blocked by Bluesky's CDN/firewall.
-- **Impact**: Zero data collected for the first 7 cycles (02:00-14:27 UTC). Later cycles only worked because Claude improvised a fallback to `getAuthorFeed` at runtime — this was not in the workflow itself.
-- **Evidence**: `research/bluesky/2026-01-31.md` shows 7 consecutive "No posts collected" entries.
-
-#### 2. RSS Feeds Returning HTML Instead of RSS (High)
-- **Problem**: Anthropic (`openrss.org/www.anthropic.com/news`) and Meta AI (`ai.meta.com/blog/rss/`) consistently returned HTML instead of valid RSS/XML. Every hourly check showed "Feed unavailable (returned HTML instead of RSS)".
-- **Impact**: Complete loss of two major AI company blogs from RSS monitoring. These are key primary sources for announcements.
-- **Evidence**: `research/rss/2026-01-31.md` — every cycle shows "Anthropic: Feed unavailable" and "Meta AI: Feed unavailable".
-
-#### 3. RSS Feed Sparse Output (Medium)
-- **Problem**: Out of ~24 hourly RSS runs, only 4 produced any content. Most hours showed "No new updates this hour" across all sources.
-- **Impact**: RSS channel underperforms relative to its potential. Feed list is too narrow to guarantee hourly updates.
-
-#### 4. Missing Major RSS Sources (Medium)
-- **Problem**: No feeds from NVIDIA AI, AWS ML, Microsoft AI, Amazon Science, or any AI newsletters/bloggers. These are significant sources of AI announcements and analysis.
-- **Impact**: RSS relies on only 11 feeds, missing key announcements from cloud providers and popular AI commentators.
-
-#### 5. Reddit Coverage Too Narrow (Low-Medium)
-- **Problem**: Only 3 subreddits monitored (r/MachineLearning, r/LocalLLaMA, r/artificial). Missing popular AI communities with significant discussion.
-- **Impact**: Missing community signals from r/singularity (248K members), r/OpenAI (1.3M), r/ClaudeAI (100K+), r/StableDiffusion (650K+).
-
-#### 6. Bluesky Researcher List Too Short (Low)
-- **Problem**: Only searched for Karpathy by handle. Many AI researchers active on Bluesky are not being tracked.
-- **Impact**: Heavy reliance on generic keyword search rather than following known high-signal accounts.
+### Overall Quality: Strong
+- 502-line Twitter report with 12 hourly updates
+- 462-line RSS report across 10 hourly checks
+- 867+ arXiv papers processed
+- All major stories captured (Claude Opus 4.6, GPT-5.3-Codex, Anthropic funding)
 
 ---
 
-### Improvements Made
+## Issues Identified
 
-#### Fix 1: Bluesky API Failover (2h-bluesky.yml)
-- Added automatic API endpoint detection: tests `public.api.bsky.app` first, falls back to `api.bsky.app` if it returns 403.
-- Added `getAuthorFeed` calls for 11 notable AI researchers/outlets (Karpathy, Ethan Mollick, Nathan Lambert, Emily Bender, Karen Hao, Gary Marcus, Sung Kim, Alex Hanna, DAIR Institute, TechCrunch, The Verge).
-- Added new search query for AI safety/alignment content.
-- Updated Claude prompt to document both JSON structures (searchPosts vs getAuthorFeed).
-- Added proper error handling with `|| echo '{"posts":[]}'` fallbacks.
+### 1. Missing RSS Feeds for Key AI Players
+**Impact: Medium-High**
 
-#### Fix 2: Broken RSS Feeds Replaced (hourly-rss.yml)
-- **Anthropic**: Replaced broken `openrss.org` proxy with community-maintained GitHub feed (`conoro/anthropic-engineering-rss-feed`), which is updated hourly via GitHub Actions.
-- **Meta AI**: Replaced non-existent `ai.meta.com/blog/rss/` with `research.facebook.com/feed/` (Meta Research) and added `engineering.fb.com/feed/` (Meta Engineering) as additional source.
+- **xAI**: No RSS coverage despite being a major frontier lab (Grok 4.1, Imagine 1.0, $20B funding). xAI publishes news at x.ai/news but we don't monitor it.
+- **MIT News AI**: High-quality academic AI research coverage not monitored. Feed available at `news.mit.edu/rss/topic/artificial-intelligence2`.
+- **BAIR Blog (Berkeley AI Research)**: Premier AI research blog not monitored. Feed at `bair.berkeley.edu/blog/feed.xml`.
 
-#### Fix 3: New RSS Sources Added (hourly-rss.yml)
-Added 12 new RSS feeds across three categories:
+**Fix**: Add these 3 RSS feeds to `hourly-rss.yml`:
+```yaml
+# xAI News (via OpenRSS since no official feed)
+curl -sL "https://openrss.org/x.ai/news"   -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)"   > /tmp/rss/xai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/xai.xml
 
-**Company Blogs (4 new):**
-- NVIDIA Blog (`blogs.nvidia.com/feed/`)
-- AWS Machine Learning Blog (`aws.amazon.com/blogs/machine-learning/feed/`)
-- Microsoft AI Blog (`blogs.microsoft.com/ai/feed/`)
-- Amazon Science (`amazon.science/index.rss`)
+# MIT News AI RSS
+curl -sL "https://news.mit.edu/rss/topic/artificial-intelligence2"   -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)"   > /tmp/rss/mit_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/mit_ai.xml
 
-**AI Newsletters (4 new):**
-- Sebastian Raschka — Ahead of AI (Substack)
-- Latent Space — AI Engineer newsletter (Substack)
-- Elvis Saravia — Top AI Papers (Substack)
-- Simon Willison — LLM/AI blog (Atom feed)
+# BAIR Blog (Berkeley AI Research)
+curl -sL "https://bair.berkeley.edu/blog/feed.xml"   -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)"   > /tmp/rss/bair.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/bair.xml
+```
 
-**News Sources (3 new):**
-- Ars Technica (`feeds.arstechnica.com`)
-- Wired AI (`wired.com/feed/tag/ai/latest/rss`)
-- MIT Technology Review (`technologyreview.com/feed/`)
+Also add corresponding sections in the Claude prompt for xAI, MIT News AI, and BAIR Blog.
 
-Updated Claude prompt to enumerate all new sources and added output format sections for the new categories.
+### 2. Missing Reddit Subreddits
+**Impact: Medium**
 
-#### Fix 4: Expanded Reddit Coverage (4h-community.yml)
-Added 5 new subreddits:
-- r/singularity — AI/AGI speculation and news
-- r/OpenAI — OpenAI product discussions
-- r/ClaudeAI — Anthropic/Claude discussions
-- r/StableDiffusion — Image generation community
-Updated Claude prompt and output format to include all new subreddits.
+r/OpenAI (1M+ members) and r/ClaudeAI (100K+ members) are not monitored despite being high-value sources for product news, bug reports, and community sentiment about the two leading AI products.
+
+**Fix**: Add to `4h-community.yml`:
+```yaml
+# r/OpenAI
+curl -sL "https://www.reddit.com/r/OpenAI/hot.rss?limit=20"   -H "User-Agent: AIResearchBot/1.0"   > /tmp/reddit/openai.rss
+sleep 2
+
+# r/ClaudeAI
+curl -sL "https://www.reddit.com/r/ClaudeAI/hot.rss?limit=20"   -H "User-Agent: AIResearchBot/1.0"   > /tmp/reddit/claudeai.rss
+```
+
+Also update the Claude prompt to include these subreddits in the output format.
+
+### 3. Outdated Model Name Search Queries
+**Impact: Medium**
+
+The model timeline workflow (`12h-model-timeline.yml`) searches for outdated model names:
+- "GPT-5" (current: GPT-5.3)
+- "Claude 4" (current: Claude Opus 4.6)
+- "Gemini 2.5" (still current)
+- "Llama 4" (still current)
+- "Grok 3" (current: Grok 4.1)
+
+**Fix**: Update the search query in `12h-model-timeline.yml`:
+```yaml
+bird search "GPT-5.3 OR GPT-5 OR Claude Opus 4.6 OR Claude 4.5 OR Gemini 2.5 OR Llama 4 OR Grok 4" -n 40 --json --plain
+```
+
+### 4. Missing Key Executive on Twitter
+**Impact: Low-Medium**
+
+Dario Amodei (@DarioAmodei), CEO of Anthropic, is not in the tracked accounts list for either `hourly-twitter.yml` or `12h-model-timeline.yml`. His tweets often contain important signals about Anthropic strategy, safety research, and product direction.
+
+**Fix**: Add `DarioAmodei` to the hyperscalers/execs list in both:
+- `hourly-twitter.yml`: `hyperscalers="elonmusk sama DarioAmodei demishassabis ..."`
+- `12h-model-timeline.yml`: `execs="sama DarioAmodei demishassabis ..."`
 
 ---
 
-### Expected Impact
+## Expected Impact
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| RSS feed sources | 11 | 23 | +109% |
-| Reddit subreddits | 3 | 8 | +167% |
-| Bluesky uptime | ~42% (5/12 cycles) | ~95%+ (with failover) | +53pp |
-| Bluesky tracked researchers | 1 | 11 | +1000% |
-| Broken RSS feeds | 2 (Anthropic, Meta) | 0 | Fixed |
-| AI newsletter coverage | 0 | 4 newsletters | New capability |
-| Cloud provider blog coverage | 0 | 4 blogs | New capability |
+| Improvement | Coverage Gain | Effort |
+|------------|--------------|--------|
+| xAI RSS feed | Captures Grok releases, xAI research | Low |
+| MIT News AI RSS | Academic research coverage | Low |
+| BAIR Blog RSS | Top-tier AI research insights | Low |
+| r/OpenAI subreddit | OpenAI product community sentiment | Low |
+| r/ClaudeAI subreddit | Anthropic product community sentiment | Low |
+| Updated model names | More accurate model release tracking | Low |
+| DarioAmodei on Twitter | Anthropic CEO insights | Low |
 
-### Summary
+**Total: 7 improvements, all low-effort, meaningful coverage gains.**
 
-These changes address the most impactful issues identified in yesterday's output:
-1. **Bluesky data loss** is fixed with automatic API failover and direct researcher feed fetching.
-2. **Broken RSS feeds** are replaced with working alternatives.
-3. **Source diversity** is significantly expanded — from 11 to 23 RSS feeds, 3 to 8 Reddit communities, and 1 to 11 tracked Bluesky researchers.
-4. **Newsletter coverage** adds high-signal AI analysis from leading researchers and engineers.
+---
 
-*Generated by Daily Self-Improvement Workflow on 2026-02-01*
+## What Was NOT Changed (Working Well)
+
+- Twitter account list is comprehensive (50+ accounts)
+- arXiv categories are well-chosen (CS.AI, CS.LG, CS.CL, CS.CV, CS.NE)
+- Bluesky coverage is appropriate given API limitations
+- Digest synthesis format is effective
+- Telegram summary workflow is solid
+
+---
+
+## How to Apply
+
+Since GITHUB_TOKEN lacks the `workflows` scope, these changes to .github/workflows/ files must be applied manually or via a PAT with workflow permissions. The full updated workflow files are described above with exact code snippets ready to paste.
+
+*Generated by Daily Self-Improvement Workflow on 2026-02-08*
