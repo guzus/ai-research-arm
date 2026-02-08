@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-08 13:07 UTC
+
+WHAT'S BUZZING:
+• Claude Opus 4.6 now on Amazon Bedrock & Microsoft Foundry — enterprise rollout accelerating; benchmarks show +140 ELO in white-collar tasks but trails GPT-5.3-Codex in coding (65% vs 77%)
+• SemiAnalysis: "Claude Code is the Inflection Point" — detailed analysis of agentic coding reshaping dev workflows (961 likes)
+• Meta's $14.3B Scale AI investment; NVIDIA prioritizing memory for AI over gaming; xAI-SpaceX merger talks for orbital data centers
+
+NOTABLE:
+• Karpathy coins "agentic engineering" as successor to "vibe coding" — shift from 80% manual to 80% AI-driven development
+• Mollick argues agentic AI needs organizational theory — management science for agent teams
+
+Full update on GitHub.
