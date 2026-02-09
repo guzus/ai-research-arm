@@ -1,0 +1,12 @@
+arXiv Papers - 2026-02-09
+
+TOP 5 PAPERS:
+- SwimBird: MLLM that dynamically switches between text, vision, and interleaved reasoning modes - SOTA on multimodal benchmarks
+- Dr. Kernel: RL-trained LLM generates Triton GPU kernels beating Claude-4.5 and GPT-5 at kernel optimization
+- Accordion-Thinking: Self-regulated reasoning compression achieves 3x throughput while maintaining accuracy
+- f-GRPO: Unified f-divergence RL framework with theoretical guarantees for general LLM alignment
+- DeepControl: Formal information utility framework for adaptive retrieval in reasoning agents, 9.4% improvement over Search-R1
+
+CATEGORIES: LLMs/NLP (5), Vision/Multimodal (2), Agents/Reasoning (3), Efficiency/Architecture (4), Safety/Alignment (3), Benchmarks (2)
+
+Full report on GitHub.
