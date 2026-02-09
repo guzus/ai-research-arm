@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-09 11:02 UTC
+
+WHAT'S BUZZING:
+• Alibaba Qwen 3.5 imminent — code merged to HuggingFace, hybrid attention, vision support, 2B & 35B MoE models coming
+• Meta AI quietly deployed new LLM on user-facing interface — confirmed NOT Llama 4, possibly Avocado
+• OpenAI retiring GPT-4o on Feb 13 — backlash from non-technical users who prefer its creative style
+
+NOTABLE:
+• Positron AI chip gaining buzz: matches H100 at 1/3 power, $230M raised
+• Sam Altman on 5.3: "Not solved yet, but 5.3 will help build the thing that solves it"
+
+Full update on GitHub.
