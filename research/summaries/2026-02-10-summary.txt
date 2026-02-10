@@ -1,16 +1,16 @@
 AI News - 2026-02-10
 
 TOP STORIES:
-• Anthropic's $20B+ mega-round expected to close this week at $350B valuation — backed by Nvidia, Microsoft, Sequoia
-• Goldman Sachs deploys Claude Opus 4.6 AI agents for trade accounting and KYC — GS stock up 4.3%
-• Harvey AI raising $200M at $11B valuation (up from $8B) — 100K lawyers, $190M ARR
-• Claude Sonnet 5 "Fennec" leak spotted in Vertex AI logs — imminent release speculated
-• Apple's Gemini-powered Siri demo expected second half of February
+• OpenAI begins testing ads in ChatGPT for Free/Go users in U.S. — Anthropic and DeepMind criticize the move
+• Melius downgrades Microsoft to Hold: "AI is eating Microsoft" — Copilot strategy failing
+• GPT-5.3-Codex launched — first OpenAI model rated "High" cybersecurity risk, API access delayed
+• OpenAI launches Frontier enterprise AI agent platform (Uber, State Farm, Intuit as early customers)
+• Blackstone ($200M) and Abu Dhabi's MGX join Anthropic's $20B+ round nearing close
 
 KEY NUMBERS:
-• $20B+ — Anthropic funding round size (2x original target)
-• $350B — Anthropic's new valuation
-• 750M — Gemini app monthly active users (up from 650M)
-• $150M — Goodfire AI interpretability startup Series B at $1.25B valuation
+• $2T wiped from software stocks — largest non-recessionary drawdown in 30+ years (-34%)
+• JPMorgan says selloff overdone, recommends 10 stocks to buy
+• Corning (GLW) hits all-time high, up 50% YTD on AI data center fiber demand
+• Blackstone's total Anthropic stake now ~$1B at $350B valuation
 
 Full report on GitHub.
