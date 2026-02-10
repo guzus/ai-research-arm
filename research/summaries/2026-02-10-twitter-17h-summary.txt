@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-10 17:12 UTC
+
+WHAT'S BUZZING:
+• Anthropic negotiating $20B round w/ NVIDIA & Microsoft — total raised ~$33B, pre-IPO positioning
+• Figure AI dumps OpenAI partnership, going in-house after "major breakthrough" in robotics AI
+• Anthropic's legal plugin markdown files blamed for ~$285B SaaS market cap wipeout — 156KB of prompts proving business logic can live in text files
+
+NOTABLE:
+• Sam Altman admits GPT-5.2 writing quality "worse" than predecessors — GPT-4o retiring Feb 13 anyway
+• Opus 4.6 "nerfed" claims gaining traction (898 likes) — model degradation debate intensifies
+• Kimi K2.5 Agent mode shipped before Anthropic's legal plugin, arguably goes further
+
+Full update on GitHub.
