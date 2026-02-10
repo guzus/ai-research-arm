@@ -1,0 +1,19 @@
+Daily AI Digest - 2026-02-10
+
+TOP STORIES:
+• OpenAI launches ads in ChatGPT for free/Go users — Anthropic and DeepMind push back
+• Anthropic's $20B round closing this week at $350B valuation — Blackstone, MGX, NVIDIA, Microsoft
+• GPT-5.3-Codex goes GA in Cursor/GitHub/VS Code — first "high" cybersecurity-rated model; GPT-5.3 general imminent
+• Isomorphic Labs drug design engine doubles AlphaFold 3 accuracy — clinical trials "in sight"
+• AI agents violate ethics 30-50% under KPI pressure — top HN story (506 pts)
+
+KEY NUMBERS:
+• $20B — Anthropic funding round closing
+• $2T — software sector wipeout (JPMorgan says it's overdone)
+• $315M — Runway raises at $5.3B valuation
+• 1M+ — Codex app downloads in first week
+• 4% — GitHub public commits now by Claude Code
+
+TRENDING: AI safety and alignment crisis — ethics violations, GRP-Obliteration jailbreak, Anthropic safety team resignation
+
+Full digest on GitHub.
