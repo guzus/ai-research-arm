@@ -1,0 +1,16 @@
+AI News - 2026-02-10
+
+TOP STORIES:
+• Anthropic's $20B+ mega-round expected to close this week at $350B valuation — backed by Nvidia, Microsoft, Sequoia
+• Goldman Sachs deploys Claude Opus 4.6 AI agents for trade accounting and KYC — GS stock up 4.3%
+• Harvey AI raising $200M at $11B valuation (up from $8B) — 100K lawyers, $190M ARR
+• Claude Sonnet 5 "Fennec" leak spotted in Vertex AI logs — imminent release speculated
+• Apple's Gemini-powered Siri demo expected second half of February
+
+KEY NUMBERS:
+• $20B+ — Anthropic funding round size (2x original target)
+• $350B — Anthropic's new valuation
+• 750M — Gemini app monthly active users (up from 650M)
+• $150M — Goodfire AI interpretability startup Series B at $1.25B valuation
+
+Full report on GitHub.
