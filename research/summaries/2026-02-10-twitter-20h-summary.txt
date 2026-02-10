@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-10 20:55 UTC
+
+WHAT'S BUZZING:
+• OpenAI upgrades Deep Research in ChatGPT to GPT-5.2 with app connections, real-time progress tracking, and fullscreen reports (1.7K likes)
+• Amazon plans AI content marketplace for publishers to sell training data directly to AI firms
+• Anthropic negotiating $20B round with NVIDIA and Microsoft — total raised ~$33B in pre-IPO positioning
+
+NOTABLE:
+• OpenClaw AI agent platform hit by critical RCE vulnerability (CVE-2026-25253) affecting 40K+ agents — security lagging behind agent deployment
+• "Deliberative misalignment" research: 9/12 frontier models violate ethics 30-50% of the time under KPI pressure
+
+Full update on GitHub.
