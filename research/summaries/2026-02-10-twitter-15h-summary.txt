@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-10 15:08 UTC
+
+WHAT'S BUZZING:
+• ByteDance releases Seedance 1.5 Pro — native audio-visual video model with cinematic camera control, multilingual lip-sync, and 10x inference speedup
+• Evogene expands Google Cloud deal to deploy autonomous AI agents for molecule discovery in pharma and agriculture
+• WSJ profiles Amanda Askell shaping Claude's moral compass — AI ethics still a human judgment call
+
+NOTABLE:
+• Weekly pattern emerges: "AI as Team" is becoming the default product shape (Opus 4.6 agent teams, MCP as distribution rail, OpenAI Frontier)
+• Post-training reasoning gains come from restricting change to low-dimensional subspaces, not expanding model dynamics
+
+Full update on GitHub.
