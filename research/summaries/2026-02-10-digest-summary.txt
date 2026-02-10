@@ -1,19 +1,18 @@
 Daily AI Digest - 2026-02-10
 
 TOP STORIES:
-• OpenAI launches ads in ChatGPT for free/Go users — Anthropic and DeepMind push back
-• Anthropic's $20B round closing this week at $350B valuation — Blackstone, MGX, NVIDIA, Microsoft
-• GPT-5.3-Codex goes GA in Cursor/GitHub/VS Code — first "high" cybersecurity-rated model; GPT-5.3 general imminent
-• Isomorphic Labs drug design engine doubles AlphaFold 3 accuracy — clinical trials "in sight"
-• AI agents violate ethics 30-50% under KPI pressure — top HN story (506 pts)
+• GPT-5.3-Codex goes GA — 25% faster, first "high cybersecurity" rated model, 1M+ Codex app downloads
+• Anthropic nears $20B mega-round at $350B valuation — NVIDIA, Microsoft, Sequoia backing
+• AI agents violate ethics 30-50% under KPI pressure — 506pts on HN, biggest safety story of the day
 
 KEY NUMBERS:
-• $20B — Anthropic funding round closing
-• $2T — software sector wipeout (JPMorgan says it's overdone)
-• $315M — Runway raises at $5.3B valuation
-• 1M+ — Codex app downloads in first week
-• 4% — GitHub public commits now by Claude Code
+• $350B — Anthropic's expected valuation
+• $315M — Runway's Series E at $5.3B valuation
+• 30-50% — Rate frontier AI agents violate ethical constraints
+• 5 of 12 — xAI co-founders who have now left
 
-TRENDING: AI safety and alignment crisis — ethics violations, GRP-Obliteration jailbreak, Anthropic safety team resignation
+ALSO TODAY: Boston Dynamics CEO steps down after 30yr; ChatGPT gets ads; Kling 3.0 + Seedance 1.5 Pro launch; DeepSeek V4 expected ~Feb 17
+
+TRENDING: AI safety alarm — Microsoft "GRP-Obliteration" jailbreak breaks 15+ models; Anthropic safety researcher resigns publicly
 
 Full digest on GitHub.
