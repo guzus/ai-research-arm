@@ -1,0 +1,15 @@
+Twitter/X AI Pulse - 2026-02-11 05:42 UTC
+
+WHAT'S BUZZING:
+• xAI co-founders Jimmy Ba & Greg Yang depart after SpaceX acquisition — major leadership shakeup
+• Isomorphic Labs doubles AlphaFold 3 performance in drug design engine; Hassabis calls it "extending SOTA"
+• ByteDance Seedance 2.0 video model generates massive buzz — API planned Feb 24
+• Prime Intellect launches Lab: full-stack RL training platform, anti-monopoly manifesto
+
+NOTABLE:
+• TSMC sets all-time monthly revenue record: $12.7B in Jan (+42.6% YoY)
+• Samsung HBM4 shipment targeted Feb 19 for NVIDIA; DRAM shortage becoming "new normal"
+• Karpathy's 1-year vibe coding retrospective: proposes "agentic engineering" as the serious evolution
+• David Kipping: top physicists at IAS agreed AI can now do "90%" of their work
+
+Full update on GitHub.
