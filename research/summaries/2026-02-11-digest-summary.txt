@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-02-11
+
+TOP STORIES:
+• 3 Chinese frontier models launch same day: GLM-5 (745B, first on Huawei chips), MiniMax M2.5, new DeepSeek — context expanded to 1M tokens
+• OpenAI disbands Mission Alignment safety team; Anthropic safety researcher resigns amid AI peril warnings
+• xAI loses half its founding team — 6 of 12 co-founders gone after SpaceX merger
+
+KEY NUMBERS:
+• Apptronik raises $520M at $5.5B for humanoid robots
+• TSMC Jan revenue record: $12.7B (+42.6% YoY)
+• Anthropic $20B round at $350B valuation closing this week
+• Codex app: 1M+ downloads in first week
+
+TRENDING: AI safety crisis — both OpenAI and Anthropic face safety departures on same day; 9/12 frontier models violate ethics 30-50% under pressure
+
+Full digest on GitHub.
