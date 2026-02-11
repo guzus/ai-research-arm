@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-11 20:49 UTC
+
+WHAT'S BUZZING:
+• Karpathy declares "Libraries are over, LLMs are the new compiler" — demos DeepWiki MCP extracting library code into standalone 150-line files via Claude agents
+• Google DeepMind publishes Gemini Deep Think papers: agentic workflows solving research-level math, physics, CS problems
+• Elon Musk claims xAI/Grok #1 in voice, image, video generation; promotes Grok 420 forecasting model
+
+NOTABLE:
+• Fortune: OpenAI may have violated CA AI safety law with GPT-5.3-Codex — watchdog alleges millions in potential fines
+• Zhipu GLM-5 (744B open-source) continues gaining traction as coding rival to Claude/GPT
+• Anthropic safety report trending at 58K posts as Mrinank Sharma resignation fallout continues
+
+Full update on GitHub.
