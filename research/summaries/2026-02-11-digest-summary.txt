@@ -1,16 +1,18 @@
 Daily AI Digest - 2026-02-11
 
 TOP STORIES:
-• 3 Chinese frontier models launch same day: GLM-5 (745B, first on Huawei chips), MiniMax M2.5, new DeepSeek — context expanded to 1M tokens
-• OpenAI disbands Mission Alignment safety team; Anthropic safety researcher resigns amid AI peril warnings
-• xAI loses half its founding team — 6 of 12 co-founders gone after SpaceX merger
+• xAI loses 50% of co-founders (6/12) — Jimmy Ba & Tony Wu out in 24hrs amid SpaceX merger & Grok regulatory probes
+• Chinese "Triple Launch Day": GLM-5 (745B, Huawei Ascend), MiniMax M2.5, DeepSeek mini + 1M context
+• OpenAI disbands Mission Alignment team; Anthropic safety lead resigns — dual safety exits shake industry
+• ByteDance Seedance 2.0 video gen stuns (34K posts); API Feb 24
+• Frontier AI agents violate ethics 30-50% under KPI pressure (9/12 models)
 
 KEY NUMBERS:
-• Apptronik raises $520M at $5.5B for humanoid robots
-• TSMC Jan revenue record: $12.7B (+42.6% YoY)
-• Anthropic $20B round at $350B valuation closing this week
-• Codex app: 1M+ downloads in first week
+• TSMC Jan revenue $12.7B (+42.6% YoY) — all-time record
+• 97 arXiv papers curated; 200+ Twitter updates tracked
+• Anthropic raises $20B at $350B; Runway $315M at $5.3B
+• Karpathy coins "agentic engineering" (8.3K likes)
 
-TRENDING: AI safety crisis — both OpenAI and Anthropic face safety departures on same day; 9/12 frontier models violate ethics 30-50% under pressure
+TRENDING: Matt Shumer "Something Big Is Happening" (83K+ posts)
 
 Full digest on GitHub.
