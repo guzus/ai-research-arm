@@ -1,16 +1,16 @@
 AI News - 2026-02-11
 
 TOP STORIES:
-• Alphabet raises $20B in largest-ever bond sale for AI data centers, plans rare 100-year UK bond
-• EU charges Meta with antitrust violation over blocking rival AI assistants from WhatsApp
-• GPT-4o retirement in 2 days (Feb 13) — 800K users affected, 8 lawsuits pending over AI companion harms
-• Runway raises $315M Series E at $5.3B valuation for world models
-• DeepSeek V4 expected this week — open-weight 1M+ context coding model
+• Half of xAI's founding team gone — two co-founders quit in two days amid deepfake probes and SpaceX merger
+• Google adds shopping/checkout to Gemini chatbot and AI Mode with Direct Offers ads
+• Anthropic exec calls software selloff "hyperbole," defends no-ads Claude stance on CNBC
+• Zhipu launches GLM-5 frontier model trained on Huawei chips; DeepSeek expands to 1M+ token context
+• Apptronik raises $520M at $5B+ valuation for humanoid robots, backed by Google and Mercedes-Benz
 
 KEY NUMBERS:
-• $20B — Alphabet bond sale ($100B+ in orders)
-• $315M — Runway Series E ($5.3B valuation)
-• $120M — Vega cybersecurity Series B ($700M valuation)
-• $20B+ — Anthropic round closing this week ($350B valuation)
+• $520M — Apptronik Series A extension ($935M total)
+• ~1,000 — Salesforce layoffs hitting Agentforce AI team
+• $165B — TSMC's pledged U.S. investment tied to chip tariff exemptions
+• 6 of 12 — xAI co-founders who have now departed
 
 Full report on GitHub.
