@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-11 07:15 UTC
+
+WHAT'S BUZZING:
+• Sam Altman: GPT-5.2 instant model updated in ChatGPT — minor quality improvements rolling out now
+• Stripe launches Machine Payments for AI Agents — autonomous agents can now make/receive payments
+• DRAM supply shortage becoming "new normal" — capacity growing only 4.8%/yr through 2030, HBM bottleneck shifting to packaging
+
+NOTABLE:
+• ByteDance in talks to manufacture ASICs at Samsung Foundry
+• Datadog lands 8-figure deal with major AI foundation model company (likely Anthropic)
+• VC thesis: AI investment rotating from foundation models to infrastructure (evals, governance, reliability)
+
+Full update on GitHub.
