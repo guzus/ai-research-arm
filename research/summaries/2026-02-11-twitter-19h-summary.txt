@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-11 19:14 UTC
+
+WHAT'S BUZZING:
+• Zhipu's GLM-5 (744B open-source) drops alongside MiniMax 2.5 and DeepSeek update — triple Chinese model launch in one day
+• Google DeepMind publishes papers on Gemini Deep Think agentic workflows for research-level math/physics/CS problems
+• Altman bullish on Codex: "I always thought Codex would eventually win" (3.7K likes)
+
+NOTABLE:
+• Polymarket: Anthropic 76% to lead AI race through Feb, Google 15%, OpenAI 5%
+• Anthropic safety report engagement hits 4.9K likes as Mrinank Sharma resignation trends at 54K posts
+• Chrome DevTools MCP server released — AI agents can now control live browser sessions
+
+Full update on GitHub.
