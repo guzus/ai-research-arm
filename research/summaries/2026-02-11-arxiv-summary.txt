@@ -1,0 +1,12 @@
+arXiv Papers - 2026-02-11
+
+TOP 5 PAPERS:
+* Reinforcement Inference - Entropy-aware self-correction boosts MMLU-Pro accuracy from 60.7% to 84% with no retraining
+* Accordion-Thinking - RL-trained step summarization gives 3x throughput while preserving reasoning accuracy
+* Hourglass FFN Transformers - Wide-narrow-wide FFN design outperforms standard Transformer FFN up to 400M params
+* Parallel Track Transformers - 16x fewer GPU sync ops, 31.9% higher throughput via independent sub-transformer tracks
+* OmniFysics - Compact omni-modal model for image/audio/video/text with physics-grounded data engine
+
+CATEGORIES: LLMs/NLP (8), Vision/Multimodal (5), Agents/Reasoning (6), Safety (4), Benchmarks (4), Other (3)
+
+Full report on GitHub.
