@@ -1,100 +1,93 @@
-# Methodology Improvements - 2026-02-01
+# Methodology Improvements - 2026-02-11
 
-## Analysis Date: 2026-01-31 Output Review
+## Analysis Date: 2026-02-10 Output Review
+
+Analyzed 18 research files from 2026-02-10 (~3,000 lines) across all pipelines: Twitter, RSS, Bluesky, Community (HN + Reddit), arXiv, Model Timeline, and Daily Digest.
 
 ### Issues Found
 
-#### 1. Bluesky API Completely Broken (Critical)
-- **Problem**: The `public.api.bsky.app` search endpoint returned HTTP 403 Forbidden for 7 out of 12 cycles on 2026-01-31. The self-hosted runner's IP is blocked by Bluesky's CDN/firewall.
-- **Impact**: Zero data collected for the first 7 cycles (02:00-14:27 UTC). Later cycles only worked because Claude improvised a fallback to `getAuthorFeed` at runtime — this was not in the workflow itself.
-- **Evidence**: `research/bluesky/2026-01-31.md` shows 7 consecutive "No posts collected" entries.
+#### 1. Outdated Model Name Searches in Timeline Tracker (High)
+- **Problem**: Model timeline search queries still referenced previous-generation names (`GPT-4.5`, `Claude 4`, `Gemini 2.5`, `Llama 4`, `Grok 3`) despite current models being GPT-5.3, Claude Opus 4.6, Gemini 3, etc.
+- **Impact**: Search results returned stale or irrelevant tweets. Timeline was still accurate because web search compensated, but Twitter signal was diluted.
+- **Evidence**: `research/models/2026-02-10-timeline.md` tracked GPT-5.3-Codex, Claude Opus 4.6, Gemini 3 Flash, DeepSeek V4 — none of which matched the search queries.
 
-#### 2. RSS Feeds Returning HTML Instead of RSS (High)
-- **Problem**: Anthropic (`openrss.org/www.anthropic.com/news`) and Meta AI (`ai.meta.com/blog/rss/`) consistently returned HTML instead of valid RSS/XML. Every hourly check showed "Feed unavailable (returned HTML instead of RSS)".
-- **Impact**: Complete loss of two major AI company blogs from RSS monitoring. These are key primary sources for announcements.
-- **Evidence**: `research/rss/2026-01-31.md` — every cycle shows "Anthropic: Feed unavailable" and "Meta AI: Feed unavailable".
+#### 2. Chinese AI Labs Missing from Model Tracker (High)
+- **Problem**: Only 11 Western companies tracked. DeepSeek, Alibaba/Qwen, ByteDance, and Zhipu AI were absent from the official tracking list despite accounting for ~30% of model releases discussed across all sources on Feb 10.
+- **Impact**: DeepSeek V4 (expected Feb 17) was the #1 upcoming release across sources but wasn't systematically tracked. Qwen-Image-2.0 launched Feb 10 and was caught by other pipelines but not the model tracker.
+- **Evidence**: `2026-02-10-timeline.md` included Chinese models but only because the prompt allowed ad-hoc additions, not because they were systematically monitored.
 
-#### 3. RSS Feed Sparse Output (Medium)
-- **Problem**: Out of ~24 hourly RSS runs, only 4 produced any content. Most hours showed "No new updates this hour" across all sources.
-- **Impact**: RSS channel underperforms relative to its potential. Feed list is too narrow to guarantee hourly updates.
+#### 3. Missing RSS Sources (Medium)
+- **Problem**: Previous improvement cycle (Feb 1) added many new RSS feeds, but several high-quality outlets were still missing: MIT AI News, Ars Technica AI, Wired AI, NVIDIA AI Blog, and Mistral AI.
+- **Impact**: RSS digest was still heavily weighted toward TechCrunch (~40% of tech news articles).
 
-#### 4. Missing Major RSS Sources (Medium)
-- **Problem**: No feeds from NVIDIA AI, AWS ML, Microsoft AI, Amazon Science, or any AI newsletters/bloggers. These are significant sources of AI announcements and analysis.
-- **Impact**: RSS relies on only 11 feeds, missing key announcements from cloud providers and popular AI commentators.
+#### 4. Incomplete Reddit Coverage (Medium)
+- **Problem**: Previous cycle added r/singularity and r/OpenAI, but r/ClaudeAI was still missing. Also, the Feb 1 improvements may not have been merged.
+- **Impact**: Missing Anthropic-specific community feedback and product discussions.
 
-#### 5. Reddit Coverage Too Narrow (Low-Medium)
-- **Problem**: Only 3 subreddits monitored (r/MachineLearning, r/LocalLLaMA, r/artificial). Missing popular AI communities with significant discussion.
-- **Impact**: Missing community signals from r/singularity (248K members), r/OpenAI (1.3M), r/ClaudeAI (100K+), r/StableDiffusion (650K+).
-
-#### 6. Bluesky Researcher List Too Short (Low)
-- **Problem**: Only searched for Karpathy by handle. Many AI researchers active on Bluesky are not being tracked.
-- **Impact**: Heavy reliance on generic keyword search rather than following known high-signal accounts.
+#### 5. Missing Key Twitter Voices (Low-Medium)
+- **Problem**: Several influential AI researchers and companies not tracked: @GaryMarcus (AI critic), @EmilyMBender (ethics), @mmitchell_ai (ethics), @deepseek_ai (official), @QwenLM (official), @ClementDelworker (HuggingFace CTO).
+- **Impact**: Coverage skewed toward AI optimists. Emily Bender's commentary was cited in Bluesky analysis but wasn't being tracked on Twitter.
 
 ---
 
 ### Improvements Made
 
-#### Fix 1: Bluesky API Failover (2h-bluesky.yml)
-- Added automatic API endpoint detection: tests `public.api.bsky.app` first, falls back to `api.bsky.app` if it returns 403.
-- Added `getAuthorFeed` calls for 11 notable AI researchers/outlets (Karpathy, Ethan Mollick, Nathan Lambert, Emily Bender, Karen Hao, Gary Marcus, Sung Kim, Alex Hanna, DAIR Institute, TechCrunch, The Verge).
-- Added new search query for AI safety/alignment content.
-- Updated Claude prompt to document both JSON structures (searchPosts vs getAuthorFeed).
-- Added proper error handling with `|| echo '{"posts":[]}'` fallbacks.
+#### Fix 1: Updated Model Search Queries (12h-model-timeline.yml)
+- Replaced outdated model names (`GPT-4.5`, `Claude 4`, `Gemini 2.5`, `Llama 4`, `Grok 3`) with current generation (`GPT-5.3`, `GPT-6`, `Claude Opus`, `Claude Sonnet 5`, `Gemini 3`, `DeepSeek V4`, `Qwen 3`, `Mistral Large 3`)
+- Ensures search results match the models actually being discussed
 
-#### Fix 2: Broken RSS Feeds Replaced (hourly-rss.yml)
-- **Anthropic**: Replaced broken `openrss.org` proxy with community-maintained GitHub feed (`conoro/anthropic-engineering-rss-feed`), which is updated hourly via GitHub Actions.
-- **Meta AI**: Replaced non-existent `ai.meta.com/blog/rss/` with `research.facebook.com/feed/` (Meta Research) and added `engineering.fb.com/feed/` (Meta Engineering) as additional source.
+#### Fix 2: Added Chinese AI Labs to Model Tracker (12h-model-timeline.yml)
+- Added 4 companies to tracking list: DeepSeek, Alibaba/Qwen, ByteDance/Doubao, Zhipu AI (GLM)
+- Added @deepseek_ai and @QwenLM to company tweet monitoring
+- These labs now represent a significant share of frontier model releases
 
-#### Fix 3: New RSS Sources Added (hourly-rss.yml)
-Added 12 new RSS feeds across three categories:
+#### Fix 3: New RSS Feeds Added (hourly-rss.yml)
+Added 5 new RSS sources:
+- **MIT AI News** — Research-focused coverage from top institution
+- **Ars Technica AI** — Technical journalism with depth
+- **Wired AI** — Broader AI impact and policy coverage
+- **NVIDIA AI Blog** — Infrastructure/hardware announcements
+- **Mistral AI** (via OpenRSS) — European AI lab coverage
 
-**Company Blogs (4 new):**
-- NVIDIA Blog (`blogs.nvidia.com/feed/`)
-- AWS Machine Learning Blog (`aws.amazon.com/blogs/machine-learning/feed/`)
-- Microsoft AI Blog (`blogs.microsoft.com/ai/feed/`)
-- Amazon Science (`amazon.science/index.rss`)
-
-**AI Newsletters (4 new):**
-- Sebastian Raschka — Ahead of AI (Substack)
-- Latent Space — AI Engineer newsletter (Substack)
-- Elvis Saravia — Top AI Papers (Substack)
-- Simon Willison — LLM/AI blog (Atom feed)
-
-**News Sources (3 new):**
-- Ars Technica (`feeds.arstechnica.com`)
-- Wired AI (`wired.com/feed/tag/ai/latest/rss`)
-- MIT Technology Review (`technologyreview.com/feed/`)
-
-Updated Claude prompt to enumerate all new sources and added output format sections for the new categories.
+Updated prompt to include new sources and output format template with new sections.
 
 #### Fix 4: Expanded Reddit Coverage (4h-community.yml)
-Added 5 new subreddits:
-- r/singularity — AI/AGI speculation and news
-- r/OpenAI — OpenAI product discussions
-- r/ClaudeAI — Anthropic/Claude discussions
-- r/StableDiffusion — Image generation community
-Updated Claude prompt and output format to include all new subreddits.
+Added 3 new subreddits:
+- **r/OpenAI** (730K+ members) — Product updates, API changes, user reports
+- **r/singularity** — Forward-looking AI developments
+- **r/ClaudeAI** — Anthropic product feedback
+
+Added proper 2-second delays between fetches. Updated prompt and output format.
+
+#### Fix 5: New Twitter Accounts (hourly-twitter.yml)
+Added 7 accounts to monitoring:
+- @GaryMarcus — AI critic, provides counterpoint perspective
+- @bindureddy — AI infrastructure/startup voice
+- @EmilyMBender — AI ethics researcher
+- @mmitchell_ai — Google Ethical AI co-lead
+- @ClementDelworker — HuggingFace CTO
+- @deepseek_ai — Official DeepSeek account
+- @QwenLM — Official Qwen/Alibaba account
 
 ---
 
 ### Expected Impact
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| RSS feed sources | 11 | 23 | +109% |
-| Reddit subreddits | 3 | 8 | +167% |
-| Bluesky uptime | ~42% (5/12 cycles) | ~95%+ (with failover) | +53pp |
-| Bluesky tracked researchers | 1 | 11 | +1000% |
-| Broken RSS feeds | 2 (Anthropic, Meta) | 0 | Fixed |
-| AI newsletter coverage | 0 | 4 newsletters | New capability |
-| Cloud provider blog coverage | 0 | 4 blogs | New capability |
+| Metric | Before | After | Change |
+|--------|--------|-------|--------|
+| RSS feed sources | ~18 | 23 | +5 sources |
+| Reddit subreddits | 3 | 6 | +3 subreddits |
+| Model tracker companies | 11 | 15 | +4 Chinese labs |
+| Twitter monitored accounts | ~80 | ~87 | +7 accounts |
+| Search query accuracy | Outdated model names | Current generation | Eliminates stale results |
 
 ### Summary
 
-These changes address the most impactful issues identified in yesterday's output:
-1. **Bluesky data loss** is fixed with automatic API failover and direct researcher feed fetching.
-2. **Broken RSS feeds** are replaced with working alternatives.
-3. **Source diversity** is significantly expanded — from 11 to 23 RSS feeds, 3 to 8 Reddit communities, and 1 to 11 tracked Bluesky researchers.
-4. **Newsletter coverage** adds high-signal AI analysis from leading researchers and engineers.
+These changes address the most critical gaps found in yesterday's output:
+1. **Model search accuracy** — Updated queries now match the models actually being released and discussed.
+2. **Chinese lab tracking** — DeepSeek, Qwen, ByteDance, and Zhipu now systematically tracked (previously ad-hoc).
+3. **RSS diversity** — 5 new sources reduce TechCrunch dependency and add research/infrastructure coverage.
+4. **Reddit breadth** — 3 new subreddits add ~60 more posts per cycle from engaged communities.
+5. **Balanced perspectives** — AI critics and ethics researchers added to Twitter monitoring.
 
-*Generated by Daily Self-Improvement Workflow on 2026-02-01*
+*Generated by Daily Self-Improvement Workflow on 2026-02-11*
