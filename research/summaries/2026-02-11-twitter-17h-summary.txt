@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-11 17:12 UTC
+
+WHAT'S BUZZING:
+• Google DeepMind publishes Gemini Deep Think papers — agentic workflows solving research-level math, physics, CS problems
+• Sam Altman bullish on Codex, says "I always thought Codex would eventually win" (2.7K likes)
+• Triple Chinese model drop: GLM 5.0, MiniMax 2.5, and DeepSeek mini all released same day
+
+NOTABLE:
+• Microsoft discloses alignment fragility — single harmful prompt in fine-tuning erodes safety across unrelated categories
+• Anthropic sabotage risk report for Opus 4.6 hits 4.5K likes as safety researcher resignation trends at 47K posts
+• ChromeDevTools MCP server released — AI agents can now control live Chrome browser sessions
+
+Full update on GitHub.
