@@ -1,15 +1,18 @@
 AI News - 2026-02-12
 
 TOP STORIES:
-• Anthropic expands Claude free tier: file creation, Slack/Notion/Figma connectors, and skills now free — countering ChatGPT ads
-• Apple's Gemini-powered Siri delayed AGAIN — Bloomberg reports testing snags push features to iOS 26.5/27
-• Amazon restricts employees from using Claude Code in production despite being Anthropic's biggest investor
-• GPT-4o retires TOMORROW (Feb 13) — 800K users auto-migrated to GPT-5.2
-• ChatGPT ads now live for Free/Go users; Anthropic's Super Bowl ads mocking it ranked top 5
+• Anthropic donates $20M to pro-regulation PAC, countering $125M anti-regulation fund
+• Google upgrades Gemini 3 Deep Think — gold medals in math, physics, chemistry olympiads
+• Google reveals 100K+ prompt distillation attack attempting to clone Gemini's reasoning
+• MiniMax M2.5 launches — matches Claude Opus 4.6 on coding at $0.30/1M input tokens
+• Meta breaks ground on $10B data center in Indiana (1GW, 4M sq ft)
+• ByteDance Seedance 2.0 video model suspends voice feature over deepfake concerns
 
 KEY NUMBERS:
-• $20B+ Anthropic round expected to close this week at $350B valuation
-• 1,500 Amazon employees petitioned to approve Claude Code internally
-• 0.1% of ChatGPT users still on GPT-4o (~800K people)
+• $20M — Anthropic's donation to Public First Action for AI regulation candidates
+• 84.6% — Gemini Deep Think score on ARC-AGI-2 benchmark
+• 80.2% — MiniMax M2.5 on SWE-Bench (vs Claude Opus 4.6's 80.8%)
+• $10B+ — Meta's Indiana data center investment
+• $13M — Algorized Series A for industrial robot safety AI
 
 Full report on GitHub.
