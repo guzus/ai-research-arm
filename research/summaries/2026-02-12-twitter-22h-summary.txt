@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-12 22:40 UTC
+
+WHAT'S BUZZING:
+• Anthropic's $30B raise at $380B valuation now at 7.5K likes — largest AI funding round, $14B run-rate revenue
+• OpenAI's GPT-5.3-Codex-Spark hitting 4.9K likes — 1000+ tokens/sec on Cerebras chips
+• Microsoft signaling AI self-sufficiency — Suleyman building own foundation model, OpenAI license extended to 2032
+
+NOTABLE:
+• Today's model release pace stuns observers — Google Deep Think, MiniMax M2.5, GPT-5.3-Codex-Spark, and Seedance 2.0 all on same day
+• Peter Steinberger's "perception trap" thesis goes viral: the real AI moat isn't intelligence but persistent context/memory lock-in
+
+Full update on GitHub.
