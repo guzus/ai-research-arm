@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-02-12
+
+TOP STORIES:
+• Anthropic raises $30B at $380B valuation — 2nd-largest VC deal ever, $14B run-rate revenue
+• Triple release day: OpenAI Codex-Spark (1K tok/sec), Gemini 3 Deep Think (SOTA ARC-AGI-2 84.6%), MiniMax M2.5 (open-source, 80.2% SWE-bench)
+• OpenAI dissolves Mission Alignment team; Anthropic safety lead quits saying "world is in peril"
+• Spotify: top engineers haven't coded since Dec — Claude Code + "Honk" system replaced manual coding
+
+KEY NUMBERS:
+• $30B — Anthropic Series G
+• 84.6% — Gemini Deep Think on ARC-AGI-2 (vs GPT-5.2 Pro 54.2%)
+• 1,000+ tok/sec — GPT-5.3-Codex-Spark speed
+• $1T — market cap lost from global software sector since Feb 5
+• 6,267 likes — top anti-AI-hype Bluesky post today
+
+TRENDING: Chinese AI Lunar New Year sprint — GLM-5, MiniMax M2.5, Seedance 2.0 shipped; DeepSeek V4 expected ~Feb 17
+
+Full digest on GitHub.
