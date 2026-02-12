@@ -1,0 +1,15 @@
+AI News - 2026-02-12
+
+TOP STORIES:
+• Anthropic expands Claude free tier: file creation, Slack/Notion/Figma connectors, and skills now free — countering ChatGPT ads
+• Apple's Gemini-powered Siri delayed AGAIN — Bloomberg reports testing snags push features to iOS 26.5/27
+• Amazon restricts employees from using Claude Code in production despite being Anthropic's biggest investor
+• GPT-4o retires TOMORROW (Feb 13) — 800K users auto-migrated to GPT-5.2
+• ChatGPT ads now live for Free/Go users; Anthropic's Super Bowl ads mocking it ranked top 5
+
+KEY NUMBERS:
+• $20B+ Anthropic round expected to close this week at $350B valuation
+• 1,500 Amazon employees petitioned to approve Claude Code internally
+• 0.1% of ChatGPT users still on GPT-4o (~800K people)
+
+Full report on GitHub.
