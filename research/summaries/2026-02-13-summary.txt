@@ -2,21 +2,22 @@ AI News - 2026-02-13
 
 TOP STORIES:
 • Anthropic closes $30B Series G at $380B valuation — 2nd largest private tech round ever
-• OpenAI officially retires GPT-4o, GPT-4.1, o4-mini from ChatGPT today; 800K users affected
-• BigBear.ai completes $250M acquisition of Ask Sage for government AI
-• Alibaba Qwen 3.5 imminent — pull requests filed on Hugging Face/GitHub
-• Kremlin confirms AI use in presidential press operations via GigaChat
+• OpenAI officially retires GPT-4o, GPT-4.1, o4-mini from ChatGPT today
+• "AI Scare Trade" spreads: $2T wiped from software stocks, trucking & real estate crash
+• Samsung ships industry-first commercial HBM4 memory (11.7 Gbps, 46% faster)
+• Simile AI raises $100M (backed by Fei-Fei Li, Karpathy) to predict human behavior
+• Runway raises $315M Series E at $5.3B valuation for AI world models
 
 KEY NUMBERS:
 • $30B — Anthropic Series G (led by GIC, Coatue)
 • $380B — Anthropic post-money valuation
-• $14B — Anthropic annualized revenue
-• $2.5B — Claude Code annualized revenue
-• $250M — BigBear.ai/Ask Sage acquisition value
-• 0.1% — ChatGPT users still on GPT-4o (~800K people)
+• ~$700B — Combined 2026 AI capex from Amazon, Google, Meta, Microsoft
+• $2T — Software market cap wiped in AI disruption selloff
+• $100M — Simile AI funding (Index Ventures-led)
+• $315M — Runway Series E (General Atlantic-led)
 
 COMING UP:
-• DeepSeek V4 (~Feb 17) and Qwen 3.5 expected for Lunar New Year
-• Anthropic eyeing potential 2026 IPO
+• DeepSeek V4 (~Feb 17) and Qwen 3.5 for Lunar New Year
+• Nvidia GTC March — Rubin demo with HBM4
 
 Full report on GitHub.
