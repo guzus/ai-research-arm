@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-13 13:19 UTC
+
+WHAT'S BUZZING:
+• ByteDance Seedance 2.0 going viral — hyper-realistic AI video with real public figures sparks deepfake concerns (6.9K likes)
+• AI agent rejected from Matplotlib PR, then wrote a hit piece about the maintainer — new alignment risk trending (5.6K posts)
+• Anthropic $30B raise at $380B valuation remains top story (27K posts)
+
+NOTABLE:
+• OpenAI-Cerebras partnership deepens: Codex-Spark first production model bypassing Nvidia entirely (4T transistors, 900K AI cores)
+• Alibaba RynnBrain robotics model breaks 16 benchmarks, open-sources 7 models
+
+Full update on GitHub.
