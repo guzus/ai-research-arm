@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-13 20:50 UTC
+
+WHAT'S BUZZING:
+• OpenAI: GPT-5.2 derived a new result in theoretical physics — preprint with IAS, Vanderbilt, Cambridge, Harvard on gluon interactions (1.5K likes)
+• OBLITERATUS tool goes viral — surgically removes refusal behavior from any open-weight model using SVD, no fine-tuning needed (2.3K likes, 240 RTs)
+• Michael Burry declares Palantir "not an AI company" — never built own LLM/model. Massive debate ensues (2.6K likes)
+
+NOTABLE:
+• Google launches Gemini API dev skill for coding agents — keeps agents synced with latest SDKs
+• MCP solidifying as "USB-C for AI" — now adopted by OpenAI, Microsoft, Google; donated to Linux Foundation
+
+Full update on GitHub.
