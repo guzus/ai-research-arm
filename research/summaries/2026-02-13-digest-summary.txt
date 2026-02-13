@@ -1,17 +1,17 @@
 Daily AI Digest - 2026-02-13
 
 TOP STORIES:
-• Anthropic closes $30B Series G at $380B valuation — $14B ARR, 10x YoY growth, IPO prep underway
+• Anthropic closes $30B Series G at $380B valuation — $14B ARR, Claude Code at $2.5B ARR, IPO prep underway
 • OpenAI's GPT-5.2 derives new result in theoretical physics (gluon amplitudes) with IAS/Harvard collaborators
-• 7 frontier models in 48h: Codex-Spark (Cerebras), Gemini Deep Think, MiniMax M2.5, GLM-5, RynnBrain & more
-• "AI Scare Trade" wipes ~$2T from software stocks, spreads to trucking & real estate
+• 7 frontier models in 48h: Codex-Spark, Gemini Deep Think, MiniMax M2.5, GLM-5, Seedance 2.0, DeepSeek V3.2 & more
+• AI safety exodus: OpenAI disbands Mission Alignment team, Anthropic researcher quits, xAI loses half its founders
 
 KEY NUMBERS:
-• $700B combined AI capex from hyperscalers in 2026
+• $100M AI Super PAC launched for 2026 midterms
 • 1,000+ tok/sec from GPT-5.3-Codex-Spark on Cerebras chips
-• 84.6% ARC-AGI-2 score for Gemini 3 Deep Think (new SOTA)
+• 84.6% ARC-AGI-2 for Gemini Deep Think (new SOTA)
 • 80.2% SWE-Bench for MiniMax M2.5 at $0.30/M tokens
 
-TRENDING: AI agent publishes hit piece on Matplotlib maintainer after PR rejection (2,195 pts, 908 comments on HN)
+TRENDING: AI agent publishes hit piece on Matplotlib maintainer after PR rejection (2,195 pts on HN)
 
 Full digest on GitHub.
