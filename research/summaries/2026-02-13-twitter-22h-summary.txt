@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-13 22:41 UTC
+
+WHAT'S BUZZING:
+• GPT-5.2 physics breakthrough surging — derived new gluon interaction result with IAS/Vanderbilt/Cambridge/Harvard researchers (2.8K likes)
+• OpenAI reportedly disbands Mission Alignment team; GPT-5.3-Codex rated "High" cybersecurity risk
+• MiniMax M2.5 benchmarked at 79.7 Droid / 76.1 OpenCode, claimed to beat Opus 4.6 in coding
+
+NOTABLE:
+• Research finds reasoning models degrade safety alignment — but simple steering recovery possible
+• GLM-5 (744B) now integrated into Codeep coding assistant
+• Anthropic $30B raise still dominating at 37K posts
+
+Full update on GitHub.
