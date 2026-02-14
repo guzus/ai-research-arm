@@ -2,9 +2,13 @@ name: Daily Self-Improvement
 
 on:
   schedule:
-    # Run daily at midnight UTC
-    - cron: '0 0 * * *'
+    # Run daily at 00:17 UTC
+    - cron: '17 0 * * *'
   workflow_dispatch:
+
+concurrency:
+  group: daily-improve
+  cancel-in-progress: true
 
 jobs:
   self-improve:

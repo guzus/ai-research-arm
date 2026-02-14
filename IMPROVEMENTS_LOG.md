@@ -4,7 +4,7 @@ This file tracks improvements made to the AI research pipeline by the self-impro
 
 ## How It Works
 
-The `daily-improve.yml` workflow runs at midnight UTC and:
+The `daily-improve.yml` workflow runs daily at 00:17 UTC and:
 1. Analyzes yesterday's research output quality
 2. Identifies coverage gaps and issues
 3. Searches for new/better data sources
@@ -17,7 +17,7 @@ The `daily-improve.yml` workflow runs at midnight UTC and:
 **Sources Added:**
 - RSS feeds: OpenAI, Anthropic, Google AI, DeepMind, Meta AI, Hugging Face, TechCrunch, The Verge, VentureBeat, arXiv
 - Bluesky: Public API search for AI content
-- Reddit: Direct JSON endpoint (r/MachineLearning, r/LocalLLaMA, r/artificial)
+- Reddit: RSS feeds (r/MachineLearning, r/LocalLLaMA, r/artificial)
 - Hacker News: MCP server integration
 
 **Architecture:**

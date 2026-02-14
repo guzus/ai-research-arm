@@ -6,6 +6,10 @@ on:
     - cron: '30 * * * *'
   workflow_dispatch:
 
+concurrency:
+  group: hourly-rss
+  cancel-in-progress: true
+
 jobs:
   rss-feed:
     runs-on: self-hosted

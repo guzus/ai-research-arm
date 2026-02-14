@@ -48,7 +48,7 @@ flowchart TB
     Digest --> digest_out["research/digest/"]
 
     subgraph improve["🔄 Self-Improvement"]
-        Improve["daily-improve.yml<br/><i>Midnight UTC</i>"]
+        Improve["daily-improve.yml<br/><i>00:17 UTC</i>"]
     end
 
     digest_out --> Improve
@@ -68,7 +68,7 @@ flowchart TB
 | **Twitter/X** | bird CLI (33 accounts + 7 searches) | Every 3 hours | ✅ Yes |
 | **RSS Feeds** | Direct XML fetch | Hourly | ✅ Yes |
 | **Bluesky** | Public API | Every 2 hours | ✅ Yes |
-| **Reddit** | JSON endpoint | Every 4 hours | ✅ Yes |
+| **Reddit** | RSS feeds | Every 4 hours | ✅ Yes |
 | **Hacker News** | MCP Server | Every 4 hours | ✅ Yes |
 | **arXiv** | MCP + RSS | Daily | ✅ Yes |
 | **Web Search** | Exa/Perplexity MCP | On-demand | ✅ Yes (via MCP) |
@@ -85,33 +85,35 @@ gantt
     RSS Feeds           :crit, 00:00, 1h
 
     section Every 2h
-    Bluesky             :active, 00:00, 2h
+    Bluesky             :active, 00:11, 2h
 
     section Every 3h
-    Twitter/X           :active, 00:00, 3h
+    Twitter/X           :active, 00:07, 3h
 
     section Every 4h
-    Community (HN+Reddit) :00:00, 4h
-    AI News Research    :00:00, 4h
+    Community (HN+Reddit) :00:19, 4h
+
+    section Twice Daily
+    AI News Research    :08:23, 1h
 
     section Daily
-    arXiv Papers        :06:00, 1h
+    arXiv Papers        :06:13, 1h
     Daily Digest        :00:00, 1h
-    Self-Improve        :milestone, 00:00, 0h
+    Self-Improve        :milestone, 00:17, 0h
 ```
 
 | Workflow | Schedule | Source | Output |
 |----------|----------|--------|--------|
-| `hourly-rss.yml` | Every hour | Official blogs, TechCrunch, arXiv RSS | `research/rss/` |
+| `hourly-rss.yml` | Every hour (:30) | Official blogs, TechCrunch, arXiv RSS | `research/rss/` |
 | `2h-bluesky.yml` | Every 2 hours | Bluesky AI posts | `research/bluesky/` |
-| `4h-community.yml` | Every 4 hours | Reddit JSON + HN MCP | `research/community/` |
-| `daily-arxiv.yml` | Daily 6 AM UTC | arXiv papers | `research/arxiv/` |
+| `4h-community.yml` | Every 4 hours | Reddit RSS + HN MCP | `research/community/` |
+| `daily-arxiv.yml` | Daily 06:13 UTC | arXiv papers | `research/arxiv/` |
 | `daily-digest.yml` | Daily 00:00 UTC | All sources + MCP search | `research/digest/` |
 | `hourly-twitter.yml` | Every 3 hours | Twitter/X via bird CLI (33 accounts, 7 search queries) | `research/twitter/` |
-| `ai-news-research.yml` | Every 4 hours | Perplexity/Exa MCP | `research/` |
-| `daily-improve.yml` | Daily midnight | Self-improvement | PRs with improvements |
+| `ai-news-research.yml` | Twice daily (08:23, 20:23 UTC) | Perplexity/Exa MCP | `research/` |
+| `daily-improve.yml` | Daily 00:17 UTC | Self-improvement | PRs with improvements |
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
-| `deploy-dashboard.yml` | On push (dashboard/twitter changes) | Vite build + GitHub Pages deploy | GitHub Pages |
+| `deploy-dashboard.yml` | On push (dashboard/twitter/models changes) | Vite build + GitHub Pages deploy | GitHub Pages |
 
 ## On-Demand Research Agent
 
@@ -170,7 +172,7 @@ A single-page dashboard that displays Twitter/X research reports with:
 - Date picker, search, and refresh controls
 - Mobile responsive with bottom nav bar
 
-Built with **Vite + Bun + TypeScript**, deployed via GitHub Actions to GitHub Pages. The deploy workflow triggers only on changes to `dashboard/**` or `research/twitter/**`.
+Built with **Vite + Bun + TypeScript**, deployed via GitHub Actions to GitHub Pages. The deploy workflow triggers only on changes to `dashboard/**`, `research/twitter/**`, or `research/models/**`.
 
 ## Setup
 
@@ -260,7 +262,7 @@ Public API search for:
 - Key researchers (Karpathy, etc.)
 
 ### Reddit (Every 4 hours)
-Direct JSON endpoint (no API key needed):
+RSS feeds (no API key needed):
 - r/MachineLearning
 - r/LocalLLaMA
 - r/artificial
@@ -294,5 +296,5 @@ See [IMPROVEMENTS_LOG.md](./IMPROVEMENTS_LOG.md) for improvement history and fut
 
 - [Claude Code Action](https://github.com/anthropics/claude-code-action)
 - [Model Context Protocol](https://modelcontextprotocol.io/)
-- [Reddit JSON API](https://data365.co/blog/reddit-json-api)
+- [Reddit RSS Feeds](https://www.reddit.com/wiki/rss/)
 - [Bluesky API Docs](https://docs.bsky.app/)

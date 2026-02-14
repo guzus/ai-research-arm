@@ -2,9 +2,13 @@ name: Twitter AI News (Every 3 Hours)
 
 on:
   schedule:
-    # Run every 3 hours
-    - cron: '0 */3 * * *'
+    # Run every 3 hours at minute 7
+    - cron: '7 */3 * * *'
   workflow_dispatch:
+
+concurrency:
+  group: hourly-twitter
+  cancel-in-progress: true
 
 jobs:
   twitter-news:
@@ -240,7 +244,7 @@ jobs:
       - name: Send Telegram notification
         if: success()
         continue-on-error: true
-        uses: appleboy/telegram-action@master
+        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}

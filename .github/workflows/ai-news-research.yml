@@ -2,14 +2,18 @@ name: AI News Research Agent
 
 on:
   schedule:
-    # Run twice daily at 8 AM and 8 PM UTC
-    - cron: '0 8,20 * * *'
+    # Run twice daily at 08:23 and 20:23 UTC
+    - cron: '23 8,20 * * *'
   workflow_dispatch:
     inputs:
       topics:
         description: 'Specific AI topics to research (comma-separated)'
         required: false
         default: 'AI agents, LLM, Claude, GPT, AI research breakthroughs'
+
+concurrency:
+  group: ai-news-research
+  cancel-in-progress: true
 
 jobs:
   ai-news-research:
@@ -30,7 +34,7 @@ jobs:
         id: date
         run: |
           echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-          echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -v-1d +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       - name: Check for MCP API keys
         id: check-keys
@@ -299,7 +303,7 @@ jobs:
       - name: Send Telegram notification
         if: success() && github.event_name == 'workflow_dispatch'
         continue-on-error: true
-        uses: appleboy/telegram-action@master
+        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}

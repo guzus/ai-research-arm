@@ -4,10 +4,6 @@ import DOMPurify from 'dompurify';
 
 const DATA_BASE: string = import.meta.env.BASE_URL + 'research';
 
-const TWITTER_ICON =
-  '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">' +
-  '<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
-
 const DOC_ICON =
   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">' +
   '<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>' +
@@ -85,6 +81,9 @@ let searchTerm = '';
 let activeTab: 'twitter' | 'models' = 'twitter';
 let calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 const availabilityCache = new Map<string, Set<string>>();
+let loadRequestId = 0;
+let activeLoadController: AbortController | null = null;
+let searchDebounceId: number | null = null;
 
 // ── DOM refs ──────────────────────────────────────────
 const content = document.getElementById('content')!;
@@ -318,24 +317,26 @@ function setSafeContent(el: HTMLElement, rawHtml: string): void {
 }
 
 // ── Fetch ─────────────────────────────────────────────
-async function fetchTwitter(dateStr: string): Promise<string | null> {
+async function fetchTwitter(dateStr: string, signal: AbortSignal): Promise<string | null> {
   const url = `${DATA_BASE}/twitter/${dateStr}.md`;
   try {
-    const resp = await fetch(url);
+    const resp = await fetch(url, { signal });
     if (!resp.ok) return null;
     return await resp.text();
-  } catch {
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') return null;
     return null;
   }
 }
 
-async function fetchModels(dateStr: string): Promise<string | null> {
+async function fetchModels(dateStr: string, signal: AbortSignal): Promise<string | null> {
   const url = `${DATA_BASE}/models/${dateStr}-timeline.md`;
   try {
-    const resp = await fetch(url);
+    const resp = await fetch(url, { signal });
     if (!resp.ok) return null;
     return await resp.text();
-  } catch {
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') return null;
     return null;
   }
 }
@@ -504,28 +505,41 @@ function renderModels(md: string): void {
 // ── Main load ─────────────────────────────────────────
 async function load(): Promise<void> {
   const dateStr = fmtDate(currentDate);
+  const requestId = ++loadRequestId;
+  if (activeLoadController) activeLoadController.abort();
+  const controller = new AbortController();
+  activeLoadController = controller;
+
   updateHash();
   showLoading();
 
-  if (activeTab === 'models') {
-    const md = await fetchModels(dateStr);
-    if (md) {
-      renderModels(md);
+  try {
+    if (activeTab === 'models') {
+      const md = await fetchModels(dateStr, controller.signal);
+      if (controller.signal.aborted || requestId !== loadRequestId) return;
+      if (md) {
+        renderModels(md);
+      } else {
+        showEmpty(dateStr);
+      }
     } else {
-      showEmpty(dateStr);
+      const md = await fetchTwitter(dateStr, controller.signal);
+      if (controller.signal.aborted || requestId !== loadRequestId) return;
+      if (md) {
+        renderReport(md);
+      } else {
+        showEmpty(dateStr);
+      }
     }
-  } else {
-    const md = await fetchTwitter(dateStr);
-    if (md) {
-      renderReport(md);
-    } else {
-      showEmpty(dateStr);
+
+    renderCalendar();
+    currentSection = 0;
+    updateNavCounter();
+  } finally {
+    if (activeLoadController === controller) {
+      activeLoadController = null;
     }
   }
-
-  renderCalendar();
-  currentSection = 0;
-  updateNavCounter();
 }
 
 // ── Section navigation ─────────────────────────────────
@@ -565,8 +579,11 @@ document.getElementById('shortcutToggle')!.addEventListener('click', () => {
 // ── Events ────────────────────────────────────────────
 
 searchInput.addEventListener('input', () => {
-  searchTerm = searchInput.value.trim();
-  load();
+  if (searchDebounceId !== null) window.clearTimeout(searchDebounceId);
+  searchDebounceId = window.setTimeout(() => {
+    searchTerm = searchInput.value.trim();
+    load();
+  }, 180);
 });
 
 document.getElementById('refreshBtn')!.addEventListener('click', () => {

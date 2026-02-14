@@ -2,9 +2,13 @@ name: Community AI Digest (HN + Reddit)
 
 on:
   schedule:
-    # Run every 4 hours
-    - cron: '0 */4 * * *'
+    # Run every 4 hours at minute 19
+    - cron: '19 */4 * * *'
   workflow_dispatch:
+
+concurrency:
+  group: community-digest
+  cancel-in-progress: true
 
 jobs:
   community-digest:

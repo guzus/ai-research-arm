@@ -2,9 +2,13 @@ name: Daily arXiv AI Research
 
 on:
   schedule:
-    # Run daily at 6 AM UTC (after arXiv daily update)
-    - cron: '0 6 * * *'
+    # Run daily at 06:13 UTC (after arXiv daily update)
+    - cron: '13 6 * * *'
   workflow_dispatch:
+
+concurrency:
+  group: daily-arxiv
+  cancel-in-progress: true
 
 jobs:
   arxiv-research:
@@ -156,7 +160,7 @@ jobs:
       - name: Send Telegram notification
         if: success() && github.event_name == 'workflow_dispatch'
         continue-on-error: true
-        uses: appleboy/telegram-action@master
+        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}

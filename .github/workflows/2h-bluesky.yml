@@ -2,9 +2,13 @@ name: Bluesky AI Researcher Feed
 
 on:
   schedule:
-    # Run every 2 hours
-    - cron: '0 */2 * * *'
+    # Run every 2 hours at minute 11
+    - cron: '11 */2 * * *'
   workflow_dispatch:
+
+concurrency:
+  group: bluesky-feed
+  cancel-in-progress: true
 
 jobs:
   bluesky-feed:
