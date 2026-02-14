@@ -1,15 +1,16 @@
 AI News - 2026-02-14
 
 TOP STORIES:
-• Claude AI used in US military raid to capture Venezuela's Maduro — Pentagon now reevaluating $200M Anthropic contract
-• OpenAI launches GPT-5.3-Codex-Spark on Cerebras chips — 1,000 tokens/sec, first non-Nvidia production deployment
-• Musk's bankers restructuring $18B xAI debt ahead of SpaceX IPO targeting $1.5T valuation
-• Wall Street calls bottom on AI selloff — JPMorgan, Goldman say $2T software wipeout went too far
+• Anthropic CEO Amodei: "We don't know if Claude is conscious" — Opus 4.6 self-assigns 15-20% consciousness probability
+• Claude AI used in US military Maduro raid — Pentagon reevaluating $200M Anthropic contract
+• OpenAI launches ads in ChatGPT for Free/Go users, expands Go to 98 countries
+• Nvidia pauses ALL new gaming GPUs for 2026 — first time in 30 years, cuts production 30-40%
+• China AI model week: Alibaba RynnBrain (robotics), Kling 3.0 (video+audio), Seedance 2.0
 
 KEY NUMBERS:
-• $200M — Anthropic Pentagon contract at risk
-• 1,000 tok/s — Codex-Spark speed (15x faster than GPT-5.3-Codex)
+• 92% — Nvidia's share of AI data center market
+• 15-20% — Claude's self-assessed consciousness probability
+• 98 — countries where ChatGPT Go is now available
 • $1.5T — SpaceX-xAI target IPO valuation
-• $18B — Musk's total debt being restructured
 
 Full report on GitHub.
