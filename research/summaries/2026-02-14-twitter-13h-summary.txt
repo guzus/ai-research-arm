@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-14 13:07 UTC
+
+WHAT'S BUZZING:
+• ByteDance drops Seed 2.0 multimodal model family — Pro version tops image/video benchmarks while priced below Gemini Flash. Called "most mind-blowing Chinese LLM drop"
+• GPT-5.2 physics discovery still viral (7.8K likes) — AI derived new gluon scattering result, preprint with IAS/Harvard/Cambridge
+• Alibaba open-sources robot model, entering physical AI race
+
+NOTABLE:
+• AI chip power crisis deepening — 80% of TPU energy goes to data movement, not compute. NVIDIA B200 at 1,200W
+• Anthropic safety lead resignation continues to generate debate — "world in peril" warning amid $30B raise
+• MCP now Linux Foundation standard — "USB-C for AI" adopted by OpenAI, Microsoft
+
+Full update on GitHub.
