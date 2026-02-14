@@ -12,7 +12,7 @@ flowchart TB
         Reddit["🔴 Reddit<br/><i>Every 4h</i>"]
         HN["🟠 Hacker News<br/><i>Every 4h</i>"]
         arXiv["📄 arXiv<br/><i>Daily</i>"]
-        Twitter["🐦 Twitter/X<br/><i>Every 2h</i>"]
+        Twitter["🐦 Twitter/X<br/><i>Every 3h</i>"]
     end
 
     subgraph mcp["🔌 MCP Tools (Optional)"]
@@ -44,7 +44,7 @@ flowchart TB
     Exa -.-> Digest
     Perplexity -.-> Digest
 
-    Digest["📊 Daily Digest<br/><i>11 PM UTC</i>"]
+    Digest["📊 Daily Digest<br/><i>00:00 UTC</i>"]
     Digest --> digest_out["research/digest/"]
 
     subgraph improve["🔄 Self-Improvement"]
@@ -65,7 +65,7 @@ flowchart TB
 
 | Source | Method | Frequency | Real-time? |
 |--------|--------|-----------|------------|
-| **Twitter/X** | bird CLI (33 accounts + 7 searches) | Every 2 hours | ✅ Yes |
+| **Twitter/X** | bird CLI (33 accounts + 7 searches) | Every 3 hours | ✅ Yes |
 | **RSS Feeds** | Direct XML fetch | Hourly | ✅ Yes |
 | **Bluesky** | Public API | Every 2 hours | ✅ Yes |
 | **Reddit** | JSON endpoint | Every 4 hours | ✅ Yes |
@@ -85,8 +85,10 @@ gantt
     RSS Feeds           :crit, 00:00, 1h
 
     section Every 2h
-    Twitter/X           :active, 00:00, 2h
     Bluesky             :active, 00:00, 2h
+
+    section Every 3h
+    Twitter/X           :active, 00:00, 3h
 
     section Every 4h
     Community (HN+Reddit) :00:00, 4h
@@ -94,7 +96,7 @@ gantt
 
     section Daily
     arXiv Papers        :06:00, 1h
-    Daily Digest        :23:00, 1h
+    Daily Digest        :00:00, 1h
     Self-Improve        :milestone, 00:00, 0h
 ```
 
@@ -104,8 +106,8 @@ gantt
 | `2h-bluesky.yml` | Every 2 hours | Bluesky AI posts | `research/bluesky/` |
 | `4h-community.yml` | Every 4 hours | Reddit JSON + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 6 AM UTC | arXiv papers | `research/arxiv/` |
-| `daily-digest.yml` | Daily 11 PM UTC | All sources + MCP search | `research/digest/` |
-| `hourly-twitter.yml` | Every 2 hours | Twitter/X via bird CLI (33 accounts, 7 search queries) | `research/twitter/` |
+| `daily-digest.yml` | Daily 00:00 UTC | All sources + MCP search | `research/digest/` |
+| `hourly-twitter.yml` | Every 3 hours | Twitter/X via bird CLI (33 accounts, 7 search queries) | `research/twitter/` |
 | `ai-news-research.yml` | Every 4 hours | Perplexity/Exa MCP | `research/` |
 | `daily-improve.yml` | Daily midnight | Self-improvement | PRs with improvements |
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
@@ -203,7 +205,7 @@ research/
 ├── arxiv/
 │   └── 2026-01-14-papers.md       # Daily arXiv papers
 ├── twitter/
-│   └── 2026-01-14.md              # Twitter updates (every 2h via bird CLI)
+│   └── 2026-01-14.md              # Twitter updates (every 3h via bird CLI)
 ├── issues/
 │   └── 42-research.md             # On-demand research from GitHub Issues
 ├── digest/
@@ -222,7 +224,7 @@ dashboard/                          # Vite + Bun + TypeScript SPA
 
 ## Data Source Details
 
-### Twitter/X (Every 2 hours)
+### Twitter/X (Every 3 hours)
 Via [bird CLI](https://github.com/steipete/bird) — 33 monitored accounts, 20 tweets each, 7 search queries.
 
 **AI Labs & Companies (11):**

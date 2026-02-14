@@ -2,8 +2,8 @@ name: Daily AI Digest (All Sources)
 
 on:
   schedule:
-    # Run daily at 11 PM UTC (end of day synthesis)
-    - cron: '0 23 * * *'
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
@@ -152,7 +152,7 @@ jobs:
             - RSS: [count] articles
             - MCP Search: [results from Exa/Perplexity tools]
 
-            *Generated at ${{ steps.date.outputs.date }} 23:00 UTC*
+            *Generated at ${{ steps.date.outputs.date }} 00:00 UTC*
 
             STEP 4 - WRITE TELEGRAM SUMMARY:
             After writing the full digest, also write a SHORT summary for Telegram notification.
@@ -243,7 +243,7 @@ jobs:
             - RSS: [count] articles
             - MCP Search: [results from Exa/Perplexity tools]
 
-            *Generated at ${{ steps.date.outputs.date }} 23:00 UTC*
+            *Generated at ${{ steps.date.outputs.date }} 00:00 UTC*
 
             STEP 4 - WRITE TELEGRAM SUMMARY:
             After writing the full digest, also write a SHORT summary for Telegram notification.

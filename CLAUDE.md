@@ -38,7 +38,7 @@ claude_args: |
 
 ## Repository Structure
 
-- `research/twitter/` — Twitter/X updates (every 2 hours)
+- `research/twitter/` — Twitter/X updates (every 3 hours)
 - `research/rss/` — RSS feed articles (hourly)
 - `research/bluesky/` — Bluesky posts (every 2 hours)
 - `research/community/` — HN and Reddit discussions (every 4 hours)
