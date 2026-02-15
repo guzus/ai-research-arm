@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-02-15
+
+TOP STORIES:
+• GPT-5.2 derives novel gluon formula in physics — first AI to produce genuinely new scientific knowledge, verified by IAS/Harvard/Cambridge
+• Anthropic raises $30B at $380B valuation — $14B ARR, Claude Code at $2.5B ARR, IPO preparations underway
+• ByteDance launches Doubao 2.0 for "agent era" — matches GPT 5.2 at 10x lower cost
+• Seedance 2.0 triggers Hollywood war — Disney C&D, SAG-AFTRA condemns "blatant infringement"
+• Safety crisis: OpenAI kills 2nd safety team, xAI loses 50% co-founders, Anthropic safety lead warns world "in peril"
+
+KEY NUMBERS:
+• $30B — Anthropic Series G raise
+• 334 — new arXiv papers tracked
+• 84.6% — Gemini 3 Deep Think ARC-AGI-2 (SOTA)
+• 46K posts — Seedance 2.0 trending topic
+
+TRENDING: "Try Parsley" banner spotted in Claude — new Anthropic model imminent?
+
+Full digest on GitHub.
