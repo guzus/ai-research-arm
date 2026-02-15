@@ -1,0 +1,12 @@
+arXiv Papers - 2026-02-15
+
+TOP 5 PAPERS:
+* MiniCPM-SALA - Hybrid sparse+linear attention; 3.5x speedup, 1M token context on single GPU
+* iGRPO - Self-feedback GRPO for reasoning; new SOTA on AIME24 (85.6%) with 7B model
+* Multi-Head LatentMoE - O(1) communication MoE parallelism; 1.61x faster training
+* Tabula RASA - Relation-Aware Sparse Attention matches GPT-4 on multi-hop QA at lower cost
+* CARE-RFT - Balances reasoning performance and model trustworthiness in RL finetuning
+
+CATEGORIES: LLMs & NLP (9), Vision & Multimodal (5), Agents & Reasoning (6), Safety & Alignment (4), Training & Efficiency (5), Other (5)
+
+Full report on GitHub.
