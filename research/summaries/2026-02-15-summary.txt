@@ -1,16 +1,16 @@
 AI News - 2026-02-15
 
 TOP STORIES:
-• OpenAI retires GPT-4o from ChatGPT — backlash exposes dangerous AI companion dependencies, safety guardrails degraded over long relationships
-• China's $700M "Lunar New Year AI War" — Alibaba, ByteDance, Tencent, Baidu competing with cash giveaways; Beijing summons all to demand end to "involution"
-• Google upgrades Gemini 3 Deep Think — solves 18 unsolved research problems, 84.6% on ARC-AGI-2
-• Zhipu AI releases GLM-5 — 744B open-source model trained entirely on Huawei chips, MIT license
-• MiniMax M2.5 matches Claude Opus at 1/20th cost — open-source, 80.2% SWE-Bench
-• Microsoft GRP-Obliteration: single prompt breaks AI safety in 15 major models
+• India has 100M weekly active ChatGPT users — Altman reveals ahead of AI Impact Summit in Delhi (Feb 16-20)
+• "Is safety dead at xAI?" — ex-employee says Musk actively making Grok more unhinged; 11 engineers + 2 co-founders quit in one week
+• Paramount sends cease-and-desist to ByteDance over Seedance 2.0 AI video copyright infringement
+• CS enrollment drops 6% — first sustained decline since dot-com crash, students fear AI replacing jobs
+• Sarvam AI launches offline AI stack for 10 Indian languages
 
 KEY NUMBERS:
-• $700M in Chinese AI app giveaways for Lunar New Year
-• 30,700+ tech layoffs globally in first 6 weeks of 2026
-• 744B parameters in GLM-5, 0 Nvidia chips used
+• 100M — India's weekly active ChatGPT users
+• 750M — Gemini monthly users, closing gap with ChatGPT's 800M
+• 6% — US computer science enrollment decline in 2025
+• $400B — Alphabet annual revenue milestone
 
 Full report on GitHub.
