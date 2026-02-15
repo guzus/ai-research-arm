@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-15 03:19 UTC
+
+WHAT'S BUZZING:
+• ByteDance launches Doubao/Seed 2.0 model family — claims GPT-5.2 parity at 90% lower cost
+• "Try Parsley" banner spotted in Claude app — Anthropic likely preparing Sonnet 5 release
+• GPT-5.2 physics discovery (gluon interaction) still reverberating — 9K likes on OpenAI post
+
+NOTABLE:
+• AI coding wars intensify: Codex 1M downloads in a week, Claude Code at $1B ARR in 6 months
+• HBM memory sold out for all of 2026 — bottleneck cascading across entire AI chip industry
+• GLM-5 and MiniMax 2.5 launch from Chinese labs, trained without NVIDIA hardware
+
+Full update on GitHub.
