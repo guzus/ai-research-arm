@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-15 15:36 UTC
+
+WHAT'S BUZZING:
+• China's AI blitz: GLM-5, MiniMax M2.5, Doubao 2.0, Seedance 2.0 all shipped in one week — open-source models matching frontier performance at 10-20x less cost
+• Seed-2.0 Pro hits #1 on BabyVision Benchmark (60.6), overtaking Gemini-3 Pro
+• Elon Musk's "Galileo test" for AI truth-seeking goes viral (25K likes) — sparking alignment debate
+
+NOTABLE:
+• Sonnet 5 "Parsley" speculation intensifies as leak hits 808 likes
+• GPT-5.3-Codex-Spark reportedly running on Cerebras chips, signaling hardware diversification away from NVIDIA
+
+Full update on GitHub.
