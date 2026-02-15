@@ -1,0 +1,16 @@
+AI News - 2026-02-15
+
+TOP STORIES:
+• OpenAI retires GPT-4o from ChatGPT — backlash exposes dangerous AI companion dependencies, safety guardrails degraded over long relationships
+• China's $700M "Lunar New Year AI War" — Alibaba, ByteDance, Tencent, Baidu competing with cash giveaways; Beijing summons all to demand end to "involution"
+• Google upgrades Gemini 3 Deep Think — solves 18 unsolved research problems, 84.6% on ARC-AGI-2
+• Zhipu AI releases GLM-5 — 744B open-source model trained entirely on Huawei chips, MIT license
+• MiniMax M2.5 matches Claude Opus at 1/20th cost — open-source, 80.2% SWE-Bench
+• Microsoft GRP-Obliteration: single prompt breaks AI safety in 15 major models
+
+KEY NUMBERS:
+• $700M in Chinese AI app giveaways for Lunar New Year
+• 30,700+ tech layoffs globally in first 6 weeks of 2026
+• 744B parameters in GLM-5, 0 Nvidia chips used
+
+Full report on GitHub.
