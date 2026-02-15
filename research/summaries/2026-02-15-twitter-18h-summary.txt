@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-15 18:52 UTC
+
+WHAT'S BUZZING:
+• Pentagon reportedly considering cutting ties with Anthropic over refusal to allow Claude for mass surveillance and autonomous weapons
+• OpenAI dissolved its Mission Alignment team — leader given "chief futurologist" title with no team
+• JD.com released JoyAI-LLM open-source model (48B params) on HuggingFace — retailers now building foundation models
+
+NOTABLE:
+• Simon Willison coins "cognitive debt" — AI-generated code causing devs to lose mental models of their codebases (1.4K likes)
+• MiniMax M2.5 adoption accelerating: devs report 20x cost savings vs Claude with comparable quality
+
+Full update on GitHub.
