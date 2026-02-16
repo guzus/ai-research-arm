@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-16 03:16 UTC
+
+WHAT'S BUZZING:
+• OpenClaw creator Steinberger joins OpenAI; project goes open-source foundation. Altman: "future is extremely multi-agent" (27K likes)
+• Massive model week ahead: Grok 4.20, DeepSeek V4, Sonnet 5, Gemini 3.1 Pro all rumored/confirmed
+• DeepSeek V4 benchmark leak: 83.7% SWE-Bench Verified — would be best coding model. China outshipping on open-weights models
+
+NOTABLE:
+• MiniMax M2.5 gaining traction at 1/20th cost of Opus — devs switching en masse
+• Noam Brown proposes standardizing AI safety evals by inference compute, not model size
+• Kimi launches "Kimi Claw" with 5K+ OpenClaw skills natively in browser (8K likes)
+
+Full update on GitHub.
