@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-02-16
+
+TOP STORIES:
+• Pentagon threatens to cut off Anthropic over Claude military safeguards — mass surveillance and autonomous weapons remain off-limits
+• DeepSeek V4 expected imminently (~Feb 17) with 1M+ context, 80.9% SWE-bench, open weights on consumer GPUs
+• GPT-5.2 derives new gluon physics result with IAS/Harvard/Cambridge — 24K posts on X
+• OpenClaw creator Peter Steinberger joins OpenAI to build next-gen personal agents
+
+KEY NUMBERS:
+• Anthropic: $30B raised at $380B valuation, $14B ARR
+• MiniMax M2.5: 80.2% SWE-bench at 1/20th Opus cost
+• Chinese AI labs: 5 major releases in 72 hours, ~$500M marketing spend
+• Gemini 3 Deep Think: 84.6% ARC-AGI-2 SOTA
+
+TRENDING: Pentagon-Anthropic military AI dispute and DeepSeek V4 Lunar New Year countdown
+
+Full digest on GitHub.
