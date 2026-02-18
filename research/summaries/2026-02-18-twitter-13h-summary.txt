@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-18 13:38 UTC
+
+WHAT'S BUZZING:
+• Alibaba launches Qwen3.5 with multimodal + agent capabilities, racing ahead of expected DeepSeek V4
+• Sarvam AI unveils India's first 105B-param foundational model, beating ChatGPT/Gemini on Indic OCR (84% accuracy)
+• Anthropic's Sonnet 4.6 continues spooking markets — Bloomberg reports global software stock selloff on AI automation fears
+
+NOTABLE:
+• Meta's multibillion-dollar NVIDIA deal signals chip dominance as AMD falls and Google TPU stalls
+• MCP security alert: fake MCP servers deploying malware — verify your sources
+• GitHub Copilot SDK (Technical Preview) lets devs build custom AI agents in Python/TS/Go/.NET
+
+Full update on GitHub.
