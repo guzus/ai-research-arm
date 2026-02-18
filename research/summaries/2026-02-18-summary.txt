@@ -1,16 +1,17 @@
 AI News - 2026-02-18
 
 TOP STORIES:
-• Meta signs multi-year deal with Nvidia for millions of AI chips (Blackwell, Rubin GPUs + Grace CPUs) — tens of billions of dollars
-• India-France elevate to "Special Global Strategic Partnership" — launch Indo-French Centre for AI in Health at AIIMS Delhi
-• Google announces I/O 2026 for May 19-20, hints at Gemini-powered smart glasses
-• Mistral AI makes first acquisition — buys Paris cloud startup Koyeb for full-stack AI ambitions
-• OpenAI launches Lockdown Mode for ChatGPT to combat prompt injection attacks
+• Google unveils $15B India AI investment + "America-India Connect" subsea cables linking 4 continents
+• Fei-Fei Li's World Labs raises $1B ($200M from Autodesk) for spatial intelligence / 3D world models
+• Meta signs multi-year, multi-billion dollar Nvidia chip deal for millions of GPUs and CPUs
+• Global DRAM shortage: prices up 171% YoY as AI devours memory supply; Tesla to build own fab
+• Mistral AI makes first acquisition (Koyeb) to build full-stack European AI cloud
+• Google launches live speech-to-speech translation in 70+ languages
 
 KEY NUMBERS:
-• Meta's Nvidia deal: tens of billions of dollars for millions of chips
-• Runway: $315M Series E at $5.3B valuation
-• Mistral: $1.4B Sweden data center + Koyeb acquisition
-• India-France: 21 agreements signed across sectors
+• $15B - Google's 5-year India AI infrastructure commitment
+• $1B - World Labs funding (Fei-Fei Li spatial AI startup)
+• 171% - DRAM price increase year-over-year driven by AI demand
+• 70+ - Languages in Google's new real-time speech translation model
 
 Full report on GitHub.
