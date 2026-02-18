@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-18 16:03 UTC
+
+WHAT'S BUZZING:
+• Alibaba's Qwen3.5 397B MoE now live — multimodal, strong reasoning, community benchmarking underway
+• Sarvam AI launches 105B model trained from scratch — outperforms DeepSeek R1 & Gemini Flash on Indian language benchmarks, backed by 4,096 H100 GPUs from Indian govt
+• GLM-5 (744B params) can now run locally on 256GB Macs via 2-bit compression
+
+NOTABLE:
+• Growing consensus: AI bottleneck has shifted from model capability to orchestration — "directed execution > open-ended intelligence"
+• Phantom MCP Server bridges AI agents to blockchain across Solana/ETH/BTC/Polygon
+
+Full update on GitHub.
