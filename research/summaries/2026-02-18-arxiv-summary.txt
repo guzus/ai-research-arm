@@ -1,0 +1,12 @@
+arXiv Papers - 2026-02-18
+
+TOP 5 PAPERS:
+• Selective Synchronization Attention - Kuramoto oscillator-based attention replaces dot-product self-attention with natural sparsity and built-in positional encoding
+• Reinforcement Inference - Entropy-aware self-correction boosts MMLU-Pro from 60.7% to 84.0% with no retraining
+• CARE-RFT - Skew reverse KL regularization balances reasoning gains with calibration in RL finetuning
+• Elastic Memory - HiPPO-based recurrent memory beats Memorizing Transformer with 16x less memory on 32K+ tasks
+• MCP Agent Error Analysis - First martingale framework proves linear error growth with O(sqrt(T)) bounds in tool-using agents
+
+CATEGORIES: LLMs/NLP (6), Vision/Multimodal (4), Agents/Reasoning (4), Safety/Alignment (3), Other (4)
+
+Full report on GitHub.
