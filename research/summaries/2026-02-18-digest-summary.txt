@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-02-18
+
+TOP STORIES:
+• Biggest day in AI history: Sonnet 4.6, Grok 4.20, and Qwen 3.5 all launch on same day
+• Pentagon threatens to label Anthropic "supply chain risk" over Claude military restrictions — $200M contract at stake
+• India AI Impact Summit opens with Modi, Altman, Pichai; Adani pledges $100B for AI data centers
+
+KEY NUMBERS:
+• Sonnet 4.6: 79.6% SWE-bench at $3/M tokens (Opus-level, 1/5th cost)
+• Qwen 3.5: 397B params open-weight, 201 languages, 8x efficiency gain
+• Anthropic: $14B ARR, $380B valuation after $30B Series G
+• Thrive Capital closes $10B+ fund
+
+TRENDING: OpenClaw creator joins OpenAI (87K posts on X, 1,423 pts on HN) — DeepSeek V4 still MIA despite Lunar New Year window
+
+Full digest on GitHub.
