@@ -1,0 +1,16 @@
+AI News - 2026-02-18
+
+TOP STORIES:
+• Meta signs multi-year deal with Nvidia for millions of AI chips (Blackwell, Rubin GPUs + Grace CPUs) — tens of billions of dollars
+• India-France elevate to "Special Global Strategic Partnership" — launch Indo-French Centre for AI in Health at AIIMS Delhi
+• Google announces I/O 2026 for May 19-20, hints at Gemini-powered smart glasses
+• Mistral AI makes first acquisition — buys Paris cloud startup Koyeb for full-stack AI ambitions
+• OpenAI launches Lockdown Mode for ChatGPT to combat prompt injection attacks
+
+KEY NUMBERS:
+• Meta's Nvidia deal: tens of billions of dollars for millions of chips
+• Runway: $315M Series E at $5.3B valuation
+• Mistral: $1.4B Sweden data center + Koyeb acquisition
+• India-France: 21 agreements signed across sectors
+
+Full report on GitHub.
