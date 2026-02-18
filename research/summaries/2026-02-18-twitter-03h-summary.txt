@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-18 03:13 UTC
+
+WHAT'S BUZZING:
+• Anthropic launches Claude Sonnet 4.6 — most capable Sonnet yet with 1M token context, major coding/agent upgrades. 17K+ likes on announcement. Bloomberg reports software sector selloff on AI competition fears.
+• Microsoft adds Sonnet 4.6 to Copilot Studio; also live on Vertex AI, Bubble, and others same-day.
+• xAI Grok 4.2 public beta trending (12K posts).
+
+NOTABLE:
+• Anthropic MCP ("USB-C for AI agents") now adopted by OpenAI, Microsoft, Google — donated to Linux Foundation.
+• Anthropic signs first-of-its-kind Africa AI partnership with Rwanda.
+• New paper: deterministic context management beats Claude Code at all context lengths.
+
+Full update on GitHub.
