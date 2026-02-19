@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-02-19
+
+TOP STORIES:
+• Claude Sonnet 4.6 delivers Opus-level AI at 1/5th cost ($3/$15M tokens), 79.6% SWE-bench — triggers software stock selloff
+• Google launches Lyria 3 music generation in Gemini app — 30-sec tracks from text/image/video
+• World Labs (Fei-Fei Li) raises $1B with $200M from Autodesk for 3D world models
+• India AI Impact Summit opens with 20+ heads of state, PM Modi & Macron
+
+KEY NUMBERS:
+• 1,266 pts on HN for Claude Sonnet 4.6 (1,128 comments)
+• $30B Anthropic Series G at $380B valuation
+• 985+ arXiv papers in one day (CS.AI + CS.LG)
+• $135B Meta AI spend in 2026
+
+TRENDING: DeepSeek V4 still silent after 2 days — only major Chinese lab that didn't ship during Lunar New Year wave
+
+Full digest on GitHub.
