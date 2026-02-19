@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-02-19 10:01 UTC
+
+WHAT'S BUZZING:
+• Fractal Analytics launches Vaidya 2.0 — healthcare AI outperforming GPT-5 & Gemini Pro 3, first to score 50+ on HealthBench (Hard)
+• Gemini 3.1 hype builds — Logan Kilpatrick's teaser hits 3K+ likes, Bloomberg reports imminent release
+• Sam Altman & Dario Amodei refuse PM Modi handshake at India AI Summit — viral video (11K likes)
+
+NOTABLE:
+• NVIDIA/Nebius GPU fractionation benchmarks: 0.5 GPU slice delivers 86% capacity, multi-model co-location triples throughput
+• MCP now backed by OpenAI, Google, Microsoft, Linux Foundation — "USB-C of AI" in 14 months
+
+Full update on GitHub.
