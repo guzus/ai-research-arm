@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-02-19 13:39 UTC
+
+WHAT'S BUZZING:
+• Gemini 3.1 hype intensifies — Logan Kilpatrick teaser hits 3.5K likes, Bloomberg confirms new model imminent
+• X open-sources 3.5M pages of AI recommendation code after EU fine; 1,600 GitHub stars in 6 hours
+• India AI Impact Summit 2026 draws 20+ heads of state, 500+ AI leaders from 30 countries
+
+NOTABLE:
+• Chinese 196B open-source model hits 74% SWE-bench, runs on Mac Studio
+• Nebius deploys NVIDIA B200 clusters for Recraft V4 — Hopper-to-Blackwell transition in under a day
+• Apple OpenELM on-device LLM series rolls out for privacy-first local AI
+
+Full update on GitHub.
