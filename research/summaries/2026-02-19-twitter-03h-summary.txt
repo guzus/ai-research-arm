@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-02-19 03:12 UTC
+
+WHAT'S BUZZING:
+• Logan Kilpatrick teases "Gemini" — Gemini 3.1 release from Google DeepMind appears imminent (1,272 likes)
+• Google launches Lyria 3 music AI in Gemini — 30-sec tracks from text/images with vocals & lyrics (6.6K likes)
+• Sarvam AI drops 105B MoE model claiming to beat DeepSeek R1 & Gemini Flash, trained from scratch in India
+
+NOTABLE:
+• OpenAI/Paradigm launch EVMbench for AI smart contract security — GPT-5.3 Codex 2x better at exploits
+• DeepSeek-V4 rumored at $0.27/M tokens (50x cheaper than competitors)
+• MCP donated to Linux Foundation — becoming universal AI agent standard
+• Anthropic research: software engineering = 50% of all agentic API tool calls
+
+Full update on GitHub.
