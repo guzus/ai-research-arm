@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-03-03 21:45 UTC
+
+WHAT'S BUZZING:
+• Max Schwarzer leaves OpenAI (led post-training, shipped GPT-5 series) to join Anthropic for RL research — major talent move
+• Anduril raises $4B at $60B valuation from Thrive/a16z — defense AI biggest private round ever, same week Pentagon blacklisted Anthropic
+• Palantir-Anthropic ties at risk — Pentagon restriction on Anthropic could force split, 42% of Palantir revenue from US gov contracts
+
+NOTABLE:
+• GPT-5.4 leaking in Pro accounts; Intuit partners with Anthropic for AI agents; RadNet acquires Gleamer for €230M; Anthropic gives free Claude Max to top open-source devs
+• Junyang Lin (Qwen founder) departure sparks community outpouring — team members defend his leadership
+
+Full update on GitHub.
