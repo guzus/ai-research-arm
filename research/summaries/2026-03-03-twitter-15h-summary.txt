@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-03 15:56 UTC
+
+WHAT'S BUZZING:
+• Snowflake signs $200M partnership with OpenAI — GPT-5.2 embedded into Cortex AI for 12,600 enterprise customers
+• US Supreme Court declines AI art copyright review — no protection for purely AI-created works
+• Tech leaders send open letter defending Anthropic against Pentagon "supply chain risk" label
+
+NOTABLE:
+• Alibaba OpenSandbox (Apache 2.0) launches free sandbox for AI agents — supports Claude Code, Gemini CLI, Codex
+• dLLM diffusion language model framework named #1 Paper on Hugging Face
+• Apple hikes laptop prices amid AI chip shortage (Forbes)
+• 10 open-weight LLMs dropped in 2 months — open source AI accelerating fast
+
+Full update on GitHub.
