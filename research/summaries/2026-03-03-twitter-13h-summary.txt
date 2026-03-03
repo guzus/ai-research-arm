@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-03 13:02 UTC
+
+WHAT'S BUZZING:
+• Sam Altman amends OpenAI-DoW deal: bans domestic surveillance, excludes NSA; admits Friday rollout was rushed
+• Claude tops App Store as ChatGPT uninstalls surge 295% post-Pentagon deal
+• OpenClaw surpasses React on GitHub with 252K stars
+
+NOTABLE:
+• Apple's "Illusion of Thinking" paper argues LLMs imitate reasoning, don't actually think
+• Nebius+NVIDIA Blackwell cluster cuts data center power 40% in UK trial
+• xAI paying back $17.5B debt from $20B Series E — pre-IPO cleanup ahead of SpaceX listing
+• Qwen 3.5 runs fully on-device on iPhone via MLX optimization
+
+Full update on GitHub.
