@@ -55,16 +55,38 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
             --model opus
-            --allowedTools "Read,Write,Bash(git:*)"
+            --allowedTools "Read,Write,WebSearch,WebFetch,Bash(curl:*),Bash(base64:*),Bash(git:*)"
           prompt: |
             You are a newspaper layout designer. Read today's AI digest and create a visually stunning
-            newspaper-style HTML front page.
+            newspaper-style HTML front page WITH IMAGES.
 
             STEP 1: Read the digest
             Read: research/digest/${{ steps.date.outputs.date }}-digest.md
 
-            STEP 2: Write the HTML
+            STEP 2: Find relevant images
+            For each major story in the digest, use WebSearch to find a relevant image:
+            - Company logos (e.g., OpenAI, Google, Anthropic, Meta logos)
+            - Product screenshots or announcement images
+            - Research paper figures or diagrams
+            - Search for "[company/product name] logo png" or "[topic] image"
+
+            Download each image and convert to base64 data URI using Bash:
+            ```
+            curl -sL "IMAGE_URL" -o /tmp/img1.jpg
+            base64 -i /tmp/img1.jpg
+            ```
+            Then embed as: <img src="data:image/jpeg;base64,..." />
+
+            Aim for 2-4 images total:
+            - 1 large image for the lead story (scale to ~400px wide)
+            - 1-2 smaller images for secondary stories (~150-200px wide)
+            - Company logos or icons where relevant (~60-80px)
+
+            If an image download fails, skip it and continue — the page should still look good without it.
+
+            STEP 3: Write the HTML
             Write a COMPLETE, SELF-CONTAINED HTML file to /tmp/front-page.html
+            All images must be embedded as base64 data URIs — no external image URLs.
 
             NEWSPAPER LAYOUT SPECIFICATION:
 
@@ -80,12 +102,13 @@ jobs:
             LEAD STORY (~40% of page):
             - Pick the single biggest news item from the digest
             - Large headline in bold serif (28-36px)
-            - 2-3 paragraph summary
+            - 2-3 paragraph summary with image floated right or placed above
             - Styled like a broadsheet front page lead
 
             SECONDARY STORIES (3 columns below lead):
             - Pick 3 important stories from different sections
             - Each gets a headline (18-22px) and 1-2 paragraph summary
+            - Include small images or logos where available
             - Use CSS columns or flexbox for the 3-column layout
             - Add thin vertical rules between columns
 
@@ -110,15 +133,15 @@ jobs:
             - Text: dark charcoal (#1a1a1a), not pure black
             - Headlines: serif font (Georgia, "Times New Roman", serif)
             - Body: serif font for authentic newspaper feel
-            - Decorative elements: thin rules, ornamental dividers (CSS borders, not images)
-            - No external resources (fonts, images, CSS) — everything inline
+            - Images: styled with subtle borders or shadows, proper float/positioning
+            - Decorative elements: thin rules, ornamental dividers (CSS borders)
+            - All CSS inline in a <style> tag, all images as base64 data URIs
             - Professional newspaper typography: proper line-height (1.4-1.6), letter-spacing on masthead
             - Subtle drop caps on lead story first paragraph using CSS ::first-letter
             - Box shadows or borders for the Key Numbers section
             - All content must fit within 1200x1600px without scrolling
 
-            The HTML must be completely self-contained with all CSS in a <style> tag.
-            Do NOT use any external fonts, images, or resources.
+            The HTML must be completely self-contained — NO external URLs for fonts, images, or CSS.
 
       # Screenshot the HTML to PNG
       - name: Screenshot HTML to PNG
