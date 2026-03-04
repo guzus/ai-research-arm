@@ -42,10 +42,10 @@ jobs:
             echo "No digest found for ${{ steps.date.outputs.date }}, skipping."
           fi
 
-      # Install puppeteer-core in /tmp to avoid polluting the repo
-      - name: Install puppeteer-core
+      # Install puppeteer (includes bundled Chromium) in /tmp
+      - name: Install puppeteer
         if: steps.check.outputs.exists == 'true'
-        run: cd /tmp && npm install puppeteer-core
+        run: cd /tmp && npm install puppeteer
 
       # Claude reads digest and generates newspaper-style HTML
       - name: Generate front page HTML
@@ -149,10 +149,9 @@ jobs:
         run: |
           mkdir -p research/front-page
           node -e "
-          const puppeteer = require('/tmp/node_modules/puppeteer-core');
+          const puppeteer = require('/tmp/node_modules/puppeteer');
           (async () => {
             const browser = await puppeteer.launch({
-              executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
               headless: 'new',
               args: ['--no-sandbox', '--disable-setuid-sandbox']
             });
