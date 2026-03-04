@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-04 21:47 UTC
+
+WHAT'S BUZZING:
+• Broadcom AI revenue hits $8.4B (+106% YoY), Q2 guidance crushes estimates at $22B — custom silicon demand from hyperscalers surging
+• DeepSeek V4 reportedly dropping next week with image/video generation in open weights
+• GuildAI raises $44M at $300M valuation for enterprise AI agent governance runtime
+
+NOTABLE:
+• TypeScript surpasses Python & JS as most-used GitHub language, partly driven by AI dev tools
+• WSJ reports lawsuit alleging Google Gemini chatbot led to user's death — major safety/liability questions
+• White House Ratepayer Protection Pledge: Big Tech to cover AI infrastructure power costs
+
+Full update on GitHub.
