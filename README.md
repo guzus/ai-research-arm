@@ -2,13 +2,21 @@
 
 Automated multi-source AI news research agent powered by Claude and MCP.
 
+## Today's Front Page
+
+<!-- FRONT_PAGE_START -->
+![Today's Front Page](research/front-page/2026-03-04-front-page.png)
+<!-- FRONT_PAGE_END -->
+
+> *Generated daily at 00:30 UTC. See [`research/front-page/`](research/front-page/) for the archive.*
+
 ## Architecture
 
 ```mermaid
 flowchart TB
     subgraph sources["📡 Real-Time Sources"]
         RSS["🔗 RSS Feeds<br/><i>Hourly</i>"]
-        Bluesky["🦋 Bluesky<br/><i>Every 2h</i>"]
+        Bluesky["🦋 Bluesky<br/><i>Daily</i>"]
         Reddit["🔴 Reddit<br/><i>Every 4h</i>"]
         HN["🟠 Hacker News<br/><i>Every 4h</i>"]
         arXiv["📄 arXiv<br/><i>Daily</i>"]
@@ -67,7 +75,7 @@ flowchart TB
 |--------|--------|-----------|------------|
 | **Twitter/X** | bird CLI (33 accounts + 7 searches) | Every 3 hours | ✅ Yes |
 | **RSS Feeds** | Direct XML fetch | Hourly | ✅ Yes |
-| **Bluesky** | Public API | Every 2 hours | ✅ Yes |
+| **Bluesky** | Public API | Daily | ✅ Yes |
 | **Reddit** | RSS feeds | Every 4 hours | ✅ Yes |
 | **Hacker News** | MCP Server | Every 4 hours | ✅ Yes |
 | **arXiv** | MCP + RSS | Daily | ✅ Yes |
@@ -84,9 +92,6 @@ gantt
     section Hourly
     RSS Feeds           :crit, 00:00, 1h
 
-    section Every 2h
-    Bluesky             :active, 00:11, 2h
-
     section Every 3h
     Twitter/X           :active, 00:07, 3h
 
@@ -97,6 +102,7 @@ gantt
     AI News Research    :08:23, 1h
 
     section Daily
+    Bluesky             :00:11, 1h
     arXiv Papers        :06:13, 1h
     Daily Digest        :00:00, 1h
     Self-Improve        :milestone, 00:17, 0h
@@ -105,7 +111,7 @@ gantt
 | Workflow | Schedule | Source | Output |
 |----------|----------|--------|--------|
 | `hourly-rss.yml` | Every hour (:30) | Official blogs, TechCrunch, arXiv RSS | `research/rss/` |
-| `2h-bluesky.yml` | Every 2 hours | Bluesky AI posts | `research/bluesky/` |
+| `2h-bluesky.yml` | Daily 00:11 UTC | Bluesky AI posts | `research/bluesky/` |
 | `4h-community.yml` | Every 4 hours | Reddit RSS + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 06:13 UTC | arXiv papers | `research/arxiv/` |
 | `daily-digest.yml` | Daily 00:00 UTC | All sources + MCP search | `research/digest/` |
@@ -253,7 +259,7 @@ Official announcements from:
 - VentureBeat AI
 - arXiv CS.AI & CS.LG
 
-### Bluesky (Every 2 hours)
+### Bluesky (Daily)
 Public API search for:
 - AI announcements
 - LLM releases

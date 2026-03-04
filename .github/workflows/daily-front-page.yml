@@ -180,13 +180,21 @@ jobs:
           })();
           "
 
+      # Update README front page image link
+      - name: Update README with latest front page
+        if: steps.check.outputs.exists == 'true'
+        env:
+          TODAY: ${{ steps.date.outputs.date }}
+        run: |
+          sed -i "s|<!-- FRONT_PAGE_START -->.*<!-- FRONT_PAGE_END -->|<!-- FRONT_PAGE_START -->\n![Today's Front Page](research/front-page/${TODAY}-front-page.png)\n<!-- FRONT_PAGE_END -->|" README.md
+
       # Commit and push
       - name: Commit front page
         if: steps.check.outputs.exists == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git add research/front-page/
+          git add research/front-page/ README.md
           git commit -m "Front page ${{ steps.date.outputs.date }}" || echo "Nothing to commit"
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git pull --rebase || true
