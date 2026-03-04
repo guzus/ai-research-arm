@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-04 19:04 UTC
+
+WHAT'S BUZZING:
+• Evo 2 biological foundation model (Arc Institute/NVIDIA) published in Nature — open-source DNA model spanning tree of life
+• OpenAI Codex app launches on Windows; Apple M5 Fusion Architecture merges 2 dies into single SoC
+• Anthropic gave up $200M Pentagon contract but spent $20M on political PACs per OpenSecrets
+
+NOTABLE:
+• Decagon hits $4.5B valuation; Intel partners with SambaNova; Alibaba Qwen head steps down
+• Meta reportedly in multi-billion dollar TPU deal with Google — compute economics becoming key battleground
+• Stanford AIMI calls for restricting AI access to pathogen datasets in new Science paper
+
+Full update on GitHub.
