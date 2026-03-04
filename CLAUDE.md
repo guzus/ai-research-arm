@@ -40,11 +40,12 @@ claude_args: |
 
 - `research/twitter/` — Twitter/X updates (every 3 hours)
 - `research/rss/` — RSS feed articles (hourly)
-- `research/bluesky/` — Bluesky posts (every 2 hours)
+- `research/bluesky/` — Bluesky posts (daily)
 - `research/community/` — HN and Reddit discussions (every 4 hours)
 - `research/arxiv/` — arXiv papers (daily)
 - `research/digest/` — Daily synthesized digests
 - `research/summaries/` — Digest summaries for Telegram
+- `research/front-page/` — Daily newspaper-style PNG front pages
 - `.github/workflows/` — All automation workflows
 
 ## Code Style
