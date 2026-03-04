@@ -1,0 +1,15 @@
+AI News - 2026-03-04
+
+TOP STORIES:
+• ~900 tech workers sign "We Will Not Be Divided" letter demanding military AI limits amid Iran strikes
+• Apple launches MacBook Pro M5 Pro/Max with 4x AI performance, Studio Display XDR, iPhone 17e pre-orders open
+• Google in talks with Pentagon to deploy Gemini in classified environments
+• DeepSeek V4 (1T params) still unreleased despite "this week" timeline
+• FTC faces March 11 deadline on AI state law preemption policy
+
+KEY NUMBERS:
+• ~900 signatories on open letter (800 Google, 100 OpenAI)
+• MacBook Pro M5 Pro starts at $2,199
+• DeepSeek V4: ~1T total params, ~32B active per token
+
+Full report on GitHub.
