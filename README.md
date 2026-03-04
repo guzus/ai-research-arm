@@ -63,7 +63,7 @@ flowchart TB
     Improve -->|"Creates PRs"| sources
 
     subgraph dashboard["🖥️ Dashboard"]
-        Pages["GitHub Pages<br/><i>guzus.github.io/ai-research-arm</i>"]
+        Pages["GitHub Pages<br/><i>ara.guzus.xyz</i>"]
     end
 
     twitter_out --> Pages
@@ -166,7 +166,7 @@ Reports are saved to `research/issues/{issue-number}-research.md` with:
 
 ## Dashboard
 
-Live at **[guzus.github.io/ai-research-arm](https://guzus.github.io/ai-research-arm/)**
+Live at **[ara.guzus.xyz](https://ara.guzus.xyz/)**
 
 A single-page dashboard that displays Twitter/X research reports with:
 - Warm cream/parchment color palette for readability
@@ -178,7 +178,7 @@ A single-page dashboard that displays Twitter/X research reports with:
 - Date picker, search, and refresh controls
 - Mobile responsive with bottom nav bar
 
-Built with **Vite + Bun + TypeScript**, deployed via GitHub Actions to GitHub Pages. The deploy workflow triggers only on changes to `dashboard/**`, `research/twitter/**`, or `research/models/**`.
+Built with **Vite + Bun + TypeScript**, deployed via GitHub Actions to GitHub Pages. The deploy workflow triggers only on changes to `dashboard/**`, `research/twitter/**`, `research/models/**`, or `research/front-page/**`.
 
 ## Setup
 
