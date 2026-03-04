@@ -78,7 +78,7 @@ function timeAgo(date: Date): string {
 // ── State ─────────────────────────────────────────────
 let currentDate = new Date();
 let searchTerm = '';
-let activeTab: 'twitter' | 'models' = 'twitter';
+let activeTab: 'twitter' | 'models' | 'frontpage' = 'twitter';
 let calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 const availabilityCache = new Map<string, Set<string>>();
 let loadRequestId = 0;
@@ -102,9 +102,9 @@ function updateHash(): void {
 function applyHash(): boolean {
   const hash = location.hash.replace(/^#/, '');
   if (!hash) return false;
-  const match = hash.match(/^(twitter|models)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
+  const match = hash.match(/^(twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
   if (!match) return false;
-  const tab = match[1] as 'twitter' | 'models';
+  const tab = match[1] as 'twitter' | 'models' | 'frontpage';
   activeTab = tab;
   if (match[2]) {
     const parts = match[2].split('-');
@@ -149,6 +149,9 @@ function shiftDate(days: number): void {
 function dataUrlForDate(dateStr: string): string {
   if (activeTab === 'models') {
     return `${DATA_BASE}/models/${dateStr}-timeline.md`;
+  }
+  if (activeTab === 'frontpage') {
+    return `${DATA_BASE}/front-page/${dateStr}-front-page.png`;
   }
   return `${DATA_BASE}/twitter/${dateStr}.md`;
 }
@@ -329,6 +332,18 @@ async function fetchTwitter(dateStr: string, signal: AbortSignal): Promise<strin
   }
 }
 
+async function fetchFrontPage(dateStr: string, signal: AbortSignal): Promise<string | null> {
+  const url = `${DATA_BASE}/front-page/${dateStr}-front-page.png`;
+  try {
+    const resp = await fetch(url, { method: 'HEAD', signal });
+    if (!resp.ok) return null;
+    return url;
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') return null;
+    return null;
+  }
+}
+
 async function fetchModels(dateStr: string, signal: AbortSignal): Promise<string | null> {
   const url = `${DATA_BASE}/models/${dateStr}-timeline.md`;
   try {
@@ -343,7 +358,7 @@ async function fetchModels(dateStr: string, signal: AbortSignal): Promise<string
 
 // ── Rendering ─────────────────────────────────────────
 function showLoading(): void {
-  const label = activeTab === 'models' ? 'Loading model timeline\u2026' : 'Loading Twitter report\u2026';
+  const label = activeTab === 'frontpage' ? 'Loading front page\u2026' : activeTab === 'models' ? 'Loading model timeline\u2026' : 'Loading Twitter report\u2026';
   setSafeContent(
     content,
     [
@@ -358,7 +373,9 @@ function showLoading(): void {
 }
 
 function showEmpty(dateStr: string): void {
-  const label = activeTab === 'models'
+  const label = activeTab === 'frontpage'
+    ? 'No front page for ' + escapeHtml(dateStr)
+    : activeTab === 'models'
     ? 'No model timeline for ' + escapeHtml(dateStr)
     : 'No Twitter report for ' + escapeHtml(dateStr);
   setSafeContent(
@@ -502,6 +519,22 @@ function renderModels(md: string): void {
   setSafeContent(content, cards.join('\n'));
 }
 
+function renderFrontPage(imageUrl: string): void {
+  setSafeContent(
+    content,
+    [
+      '<div class="content-card frontpage-card">',
+      '  <div class="content-card-header">',
+      '    <div class="content-card-title">THE AI INTELLIGENCER — ' + escapeHtml(displayDate(currentDate)) + '</div>',
+      '  </div>',
+      '  <div class="content-card-body frontpage-body">',
+      '    <img class="frontpage-img" src="' + escapeHtml(imageUrl) + '" alt="Front Page" />',
+      '  </div>',
+      '</div>',
+    ].join('\n'),
+  );
+}
+
 // ── Main load ─────────────────────────────────────────
 async function load(): Promise<void> {
   const dateStr = fmtDate(currentDate);
@@ -514,7 +547,15 @@ async function load(): Promise<void> {
   showLoading();
 
   try {
-    if (activeTab === 'models') {
+    if (activeTab === 'frontpage') {
+      const url = await fetchFrontPage(dateStr, controller.signal);
+      if (controller.signal.aborted || requestId !== loadRequestId) return;
+      if (url) {
+        renderFrontPage(url);
+      } else {
+        showEmpty(dateStr);
+      }
+    } else if (activeTab === 'models') {
       const md = await fetchModels(dateStr, controller.signal);
       if (controller.signal.aborted || requestId !== loadRequestId) return;
       if (md) {
@@ -636,7 +677,7 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
 // ── Tab navigation ────────────────────────────────────
 document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
   btn.addEventListener('click', () => {
-    const tab = btn.dataset.tab as 'twitter' | 'models';
+    const tab = btn.dataset.tab as 'twitter' | 'models' | 'frontpage';
     if (tab === activeTab) return;
     activeTab = tab;
     document.querySelectorAll('.tab').forEach((b) => b.classList.remove('active'));

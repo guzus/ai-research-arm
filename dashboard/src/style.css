@@ -825,3 +825,22 @@ mark {
     align-items: center;
   }
 }
+
+/* ── Front Page ─────────────────────────────────────── */
+.frontpage-card {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.frontpage-body {
+  display: flex;
+  justify-content: center;
+  padding: 0 !important;
+}
+
+.frontpage-img {
+  width: 100%;
+  height: auto;
+  border-radius: 0 0 8px 8px;
+  display: block;
+}

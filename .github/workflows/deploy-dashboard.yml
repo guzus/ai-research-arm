@@ -7,6 +7,7 @@ on:
       - 'dashboard/**'
       - 'research/twitter/**'
       - 'research/models/**'
+      - 'research/front-page/**'
   workflow_dispatch:
 
 permissions:
@@ -42,6 +43,7 @@ jobs:
           mkdir -p dashboard/public/research
           cp -r research/twitter dashboard/public/research/
           cp -r research/models dashboard/public/research/
+          cp -r research/front-page dashboard/public/research/
 
       - name: Build
         working-directory: dashboard
