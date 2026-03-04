@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-04 02:48 UTC
+
+WHAT'S BUZZING:
+• OpenAI rolls out GPT-5.3 Instant ("less cringe, more accurate") and teases GPT-5.4 is coming soon (20K+ likes)
+• Google DeepMind launches Gemini 3.1 Flash-Lite — $0.25/1M input, 363 tok/sec, Elo 1432
+• Key Qwen AI leaders leave Alibaba days after model launch — major blow to open-source AI
+
+NOTABLE:
+• Leopold Aschenbrenner's AI infra fund grew from $224M to $5.5B in under 2 years
+• Sam Altman amends DoW deal with explicit anti-surveillance language
+• X announces 90-day monetization ban for undisclosed AI conflict videos
+
+Full update on GitHub.
