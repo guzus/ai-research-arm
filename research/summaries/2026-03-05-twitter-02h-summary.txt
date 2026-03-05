@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-05 02:50 UTC
+
+WHAT'S BUZZING:
+- Anthropic CEO Amodei resumes Pentagon AI talks after last week's collapse (FT)
+- Donald Knuth publishes "Claude's Cycles" paper -- Opus 4.6 solved decades-old graph problem; Knuth: "I'll have to revise my opinions about generative AI"
+- Codex 5.3 (xhigh) solves 6-month bug in 45min for $4.14 that stumped Opus 4.6 (@mitchellh)
+
+NOTABLE:
+- Big Tech signs White House "Ratepayer Protection Pledge" to self-power AI data centers
+- OBLITERATUS open-source toolkit for removing LLM guardrails gets 2K+ likes
+- Grok Imagine Video claims #1 on Arena Image-to-Video leaderboard
+
+Full update on GitHub.
