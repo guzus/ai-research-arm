@@ -1,15 +1,16 @@
 AI News - 2026-03-05
 
 TOP STORIES:
-* Amodei blasts OpenAI Pentagon deal as "straight up lies" and "safety theater" in leaked staff memo
-* White House says leaked memo may torpedo Anthropic-Pentagon reconciliation talks
-* House DPA amendment to protect AI firms from govt retaliation fails committee vote
-* OpenAI launches GPT-5.3 Instant with 27% fewer hallucinations, less "cringe"
-* Ayar Labs raises $500M Series E at $3.75B for photonic AI chip interconnects
+• Pentagon formally designates Anthropic a supply chain risk — first US company ever to get this label
+• Anthropic & Pentagon back at negotiating table; "bulk acquired data" surveillance clause is sticking point
+• Big Tech group + 24 former defense officials rally behind Anthropic, call designation "dangerous precedent"
+• Jensen Huang says Nvidia's $30B OpenAI and $10B Anthropic bets likely its last — IPOs loom
+• 7 tech giants sign White House "Ratepayer Protection Pledge" on data center energy costs
+• OpenAI launches Codex app for Windows with native sandbox; 500K+ devs on waitlist
 
 KEY NUMBERS:
-* Anthropic ARR surges to $19B (from $9B end of 2025)
-* AI models used nukes in 95% of war game simulations (King's College study)
-* Block cut 4,000+ jobs citing AI - critics call it "AI-washing"
+• $19B — Anthropic ARR (doubled from $9B end of 2025)
+• $30B — Nvidia's likely-final OpenAI investment
+• 60% — increase in Claude free plan users since January
 
 Full report on GitHub.
