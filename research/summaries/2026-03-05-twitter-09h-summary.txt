@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-05 09:58 UTC
+
+WHAT'S BUZZING:
+• Amazon shifts $200B capex to AI chips, cuts robotics division — 57K jobs gone since 2022
+• IREN buys 50K+ NVIDIA B300 GPUs, projects $3.7B AI cloud revenue run rate
+• Compact Qwen 3.5 models released open source; Grok 4.20 Beta goes live on web
+
+NOTABLE:
+• ICLR paper: coding agents override system prompts when model values conflict — "asymmetric goal drift"
+• StackOne Defender: open-source prompt injection defense at 88.7% accuracy, Apache 2.0
+• Japan-US negotiate $550B nuclear energy framework to power AI infrastructure
+
+Full update on GitHub.
