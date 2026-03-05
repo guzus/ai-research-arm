@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-03-05 21:48 UTC
+
+WHAT'S BUZZING:
+* GPT-5.4 launched: native computer use, 1M token context, mid-response steering. OSWorld benchmark jumps 47.3->75.0. Sam Altman: "much better at knowledge work" (8.3K likes)
+* OpenAI publishes CoT Controllability paper: models can only hide reasoning 0.3-15.4% of the time -- good news for AI safety monitoring
+* Pentagon formally designates Anthropic as U.S. supply chain risk; NY bill would ban AI from answering medical/legal questions (14K likes)
+
+NOTABLE:
+* NVIDIA halts H200 for China, redirects to new products. AI infra could reach $4T by 2030
+* Marvell posts record $2.22B Q4 revenue on AI demand. Netflix acquires Ben Affleck's AI post-production startup
+
+Full update on GitHub.
