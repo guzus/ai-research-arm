@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-05 04:53 UTC
+
+WHAT'S BUZZING:
+* China releases Five-Year Plan for AI covering regulation, safety, cybersecurity
+* Amodei calls OpenAI Pentagon deal "safety theatre" as Anthropic resumes its own DoW negotiations
+* Cline CLI hit by npm supply chain attack -- cline@2.3.0 installs OpenClaw on machines
+
+NOTABLE:
+* Helios: ByteDance/PKU open-source 14B video model runs at 19.5 FPS on single H100
+* Google Workspace CLI launched with 100+ agent skills and MCP server
+* Paperclip open-sourced for zero-human company orchestration (2.6K likes)
+* Flowise acquired by Workday at 50K+ GitHub stars
+
+Full update on GitHub.
