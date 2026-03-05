@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-03-05 19:24 UTC
+
+WHAT'S BUZZING:
+* OpenAI launches GPT-5.4 with native computer use, 1M context, mid-response steering. Available in ChatGPT, API, Codex. New /fast mode 1.5x faster. ChatGPT for Excel also ships.
+* Pentagon formally designates Anthropic as supply chain risk. Anthropic revenue still grew 3x faster than OpenAI ($19B vs $25B) despite blacklisting.
+* Perplexity adds GPT-5.4 same-day. Matt Shumer calls it "best model in the world by far" - says coding is "essentially solved."
+
+NOTABLE:
+* GPT-5.4 beats human professionals 82% of the time on GDPval (up from 70.9%). Netflix acquires Ben Affleck's AI filmmaking startup InterPositive.
+
+Full update on GitHub.
