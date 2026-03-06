@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>The AI Intelligencer - March 6, 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #FFF8F0;
+    color: #1a1a1a;
+    font-family: Georgia, "Times New Roman", serif;
+    width: 1200px;
+    min-height: 1600px;
+    margin: 0 auto;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 1200px;
+    min-height: 1600px;
+    padding: 28px 40px 24px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    text-align: center;
+    padding-bottom: 8px;
+    border-top: 4px double #1a1a1a;
+    border-bottom: 4px double #1a1a1a;
+    margin-bottom: 18px;
+    padding-top: 10px;
+  }
+  .masthead-title {
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    font-family: Georgia, "Times New Roman", serif;
+    margin-bottom: 2px;
+  }
+  .masthead-subtitle {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 4px;
+  }
+  .masthead-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #666;
+    text-transform: uppercase;
+    padding-top: 4px;
+    border-top: 1px solid #bbb;
+    margin-top: 4px;
+  }
+
+  /* LEAD STORY */
+  .lead-story {
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #1a1a1a;
+  }
+  .lead-headline {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 6px;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+  .lead-deck {
+    font-size: 17px;
+    font-style: italic;
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .lead-body {
+    font-size: 15px;
+    line-height: 1.55;
+    column-count: 2;
+    column-gap: 28px;
+    column-rule: 1px solid #ccc;
+  }
+  .lead-body p { margin-bottom: 10px; text-align: justify; }
+  .lead-body p:first-of-type::first-letter {
+    font-size: 58px;
+    float: left;
+    line-height: 0.8;
+    padding-right: 6px;
+    padding-top: 4px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .lead-image {
+    float: right;
+    margin: 0 0 10px 18px;
+    text-align: center;
+  }
+  .lead-image img {
+    width: 100px;
+    height: 100px;
+  }
+  .lead-image .caption {
+    font-size: 10px;
+    color: #888;
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  /* SECONDARY STORIES - 3 columns */
+  .secondary-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #1a1a1a;
+  }
+  .secondary-col {
+    flex: 1;
+    padding: 0 16px;
+    border-right: 1px solid #ccc;
+  }
+  .secondary-col:first-child { padding-left: 0; }
+  .secondary-col:last-child { border-right: none; padding-right: 0; }
+  .secondary-headline {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .secondary-body {
+    font-size: 13.5px;
+    line-height: 1.5;
+    text-align: justify;
+  }
+  .secondary-body p { margin-bottom: 6px; }
+  .story-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #8B0000;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .icon-float {
+    float: right;
+    margin: 0 0 4px 10px;
+  }
+
+  /* KEY NUMBERS */
+  .bottom-row {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 16px;
+  }
+  .numbers-box {
+    flex: 0 0 340px;
+    background: #F5EDE0;
+    border: 2px solid #1a1a1a;
+    padding: 14px 16px;
+  }
+  .numbers-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #999;
+    padding-bottom: 6px;
+  }
+  .stat-item {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px dotted #bbb;
+  }
+  .stat-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .stat-number {
+    font-size: 26px;
+    font-weight: 700;
+    color: #8B0000;
+    min-width: 110px;
+    line-height: 1.1;
+  }
+  .stat-label {
+    font-size: 12px;
+    line-height: 1.35;
+    color: #333;
+  }
+
+  /* QUOTE */
+  .quote-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .quote-box {
+    padding: 14px 20px;
+    position: relative;
+    border-left: 4px solid #8B0000;
+    background: #F9F3EA;
+  }
+  .quote-mark {
+    font-size: 60px;
+    color: #caa;
+    line-height: 0.5;
+    font-family: Georgia, serif;
+    position: absolute;
+    top: 14px;
+    left: 8px;
+  }
+  .quote-text {
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.45;
+    margin-left: 30px;
+    margin-bottom: 8px;
+    color: #222;
+  }
+  .quote-attribution {
+    font-size: 13px;
+    color: #666;
+    text-align: right;
+    font-style: normal;
+  }
+  .quote-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #8B0000;
+    margin-bottom: 6px;
+  }
+
+  /* MODEL STRIP */
+  .model-strip-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+    color: #8B0000;
+  }
+  .model-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    justify-content: center;
+  }
+  .model-chip {
+    font-size: 11.5px;
+    background: #F0E8DA;
+    padding: 3px 10px;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+  }
+  .model-chip strong { color: #333; }
+
+  /* EXTRA STORIES ROW */
+  .extra-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ccc;
+  }
+  .extra-col {
+    flex: 1;
+    padding: 0 14px;
+    border-right: 1px solid #ddd;
+  }
+  .extra-col:first-child { padding-left: 0; }
+  .extra-col:last-child { border-right: none; padding-right: 0; }
+  .extra-headline {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .extra-body {
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #333;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    font-size: 10px;
+    color: #888;
+    letter-spacing: 1px;
+    border-top: 1px solid #bbb;
+    padding-top: 8px;
+    margin-top: 4px;
+  }
+  .footer-line { margin-bottom: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-title">The AI Intelligencer</div>
+    <div class="masthead-subtitle">Your Daily Artificial Intelligence Briefing</div>
+    <div class="masthead-meta">
+      <span>Vol. MMXXVI &middot; No. 65</span>
+      <span>Friday, March 6, 2026</span>
+      <span>Price: Free &middot; Digital Edition</span>
+    </div>
+  </div>
+
+  <!-- LEAD STORY -->
+  <div class="lead-story">
+    <div class="story-label">Breaking News</div>
+    <div class="lead-headline">OpenAI Launches GPT-5.4 &mdash; Its Most Capable Frontier Model With Native Computer Use</div>
+    <div class="lead-deck">OSWorld benchmark leaps from 47.3 to 75.0; Matt Shumer declares &ldquo;coding is essentially solved&rdquo;</div>
+    <div class="lead-body">
+      <div class="lead-image">
+        <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjI1MDAiIHZpZXdCb3g9Ii0xIC0uMSA5NDkuMSA5NTkuOCIgd2lkdGg9IjI0NzQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTkyNS44IDQ1Ni4zYzEwLjQgMjMuMiAxNyA0OCAxOS43IDczLjMgMi42IDI1LjMgMS4zIDUwLjktNC4xIDc1LjgtNS4zIDI0LjktMTQuNSA0OC44LTI3LjMgNzAuOC04LjQgMTQuNy0xOC4zIDI4LjUtMjkuNyA0MS4yLTExLjMgMTIuNi0yMy45IDI0LTM3LjYgMzQtMTMuOCAxMC0yOC41IDE4LjQtNDQuMSAyNS4zLTE1LjUgNi44LTMxLjcgMTItNDguMyAxNS40LTcuOCAyNC4yLTE5LjQgNDcuMS0zNC40IDY3LjctMTQuOSAyMC42LTMzIDM4LjctNTMuNiA1My42LTIwLjYgMTUtNDMuNCAyNi42LTY3LjYgMzQuNC0yNC4yIDcuOS00OS41IDExLjgtNzUgMTEuOC0xNi45LjEtMzMuOS0xLjctNTAuNS01LjEtMTYuNS0zLjUtMzIuNy04LjgtNDguMi0xNS43cy0zMC4yLTE1LjUtNDMuOS0yNS41Yy0xMy42LTEwLTI2LjItMjEuNS0zNy40LTM0LjItMjUgNS40LTUwLjYgNi43LTc1LjkgNC4xLTI1LjMtMi43LTUwLjEtOS4zLTczLjQtMTkuNy0yMy4yLTEwLjMtNDQuNy0yNC4zLTYzLjYtNDEuNHMtMzUtMzcuMS00Ny43LTU5LjFjLTguNS0xNC43LTE1LjUtMzAuMi0yMC44LTQ2LjNzLTguOC0zMi43LTEwLjYtNDkuNmMtMS44LTE2LjgtMS43LTMzLjguMS01MC43IDEuOC0xNi44IDUuNS0zMy40IDEwLjgtNDkuNS0xNy0xOC45LTMxLTQwLjQtNDEuNC02My42LTEwLjMtMjMuMy0xNy00OC0xOS42LTczLjMtMi43LTI1LjMtMS4zLTUwLjkgNC03NS44czE0LjUtNDguOCAyNy4zLTcwLjhjOC40LTE0LjcgMTguMy0yOC42IDI5LjYtNDEuMnMyNC0yNCAzNy43LTM0IDI4LjUtMTguNSA0NC0yNS4zYzE1LjYtNi45IDMxLjgtMTIgNDguNC0xNS40IDcuOC0yNC4zIDE5LjQtNDcuMSAzNC4zLTY3LjcgMTUtMjAuNiAzMy4xLTM4LjcgNTMuNy01My43IDIwLjYtMTQuOSA0My40LTI2LjUgNjcuNi0zNC40IDI0LjItNy44IDQ5LjUtMTEuOCA3NS0xMS43IDE2LjktLjEgMzMuOSAxLjYgNTAuNSA1LjFzMzIuOCA4LjcgNDguMyAxNS42YzE1LjUgNyAzMC4yIDE1LjUgNDMuOSAyNS41IDEzLjcgMTAuMSAyNi4zIDIxLjUgMzcuNSAzNC4yIDI0LjktNS4zIDUwLjUtNi42IDc1LjgtNHM1MCA5LjMgNzMuMyAxOS42YzIzLjIgMTAuNCA0NC43IDI0LjMgNjMuNiA0MS40IDE4LjkgMTcgMzUgMzYuOSA0Ny43IDU5IDguNSAxNC42IDE1LjUgMzAuMSAyMC44IDQ2LjMgNS4zIDE2LjEgOC45IDMyLjcgMTAuNiA0OS42IDEuOCAxNi45IDEuOCAzMy45LS4xIDUwLjgtMS44IDE2LjktNS41IDMzLjUtMTAuOCA0OS42IDE3LjEgMTguOSAzMSA0MC4zIDQxLjQgNjMuNnptLTMzMy4yIDQyNi45YzIxLjgtOSA0MS42LTIyLjMgNTguMy0zOXMzMC0zNi41IDM5LTU4LjRjOS0yMS44IDEzLjctNDUuMiAxMy43LTY4Ljh2LTIyM3EtLjEtLjMtLjItLjctLjEtLjMtLjMtLjYtLjItLjMtLjUtLjUtLjMtLjMtLjYtLjRsLTgwLjctNDYuNnYyNjkuNGMwIDIuNy0uNCA1LjUtMS4xIDguMS0uNyAyLjctMS43IDUuMi0zLjEgNy42cy0zIDQuNi01IDYuNWEzMi4xIDMyLjEgMCAwIDEgLTYuNSA1bC0xOTEuMSAxMTAuM2MtMS42IDEtNC4zIDIuNC01LjcgMy4yIDcuOSA2LjcgMTYuNSAxMi42IDI1LjUgMTcuOCA5LjEgNS4yIDE4LjUgOS42IDI4LjMgMTMuMiA5LjggMy41IDE5LjkgNi4yIDMwLjEgOCAxMC4zIDEuOCAyMC43IDIuNyAzMS4xIDIuNyAyMy42IDAgNDctNC43IDY4LjgtMTMuOHptLTQ1NS4xLTE1MS40YzExLjkgMjAuNSAyNy42IDM4LjMgNDYuMyA1Mi43IDE4LjggMTQuNCA0MC4xIDI0LjkgNjIuOSAzMXM0Ni42IDcuNyA3MCA0LjYgNDUuOS0xMC43IDY2LjQtMjIuNWwxOTMuMi0xMTEuNS41LS41cS4yLS4yLjMtLjYuMi0uMy4zLS42di05NGwtMjMzLjIgMTM0LjljLTIuNCAxLjQtNC45IDIuNC03LjUgMy4yLTIuNy43LTUuNCAxLTguMiAxLTIuNyAwLTUuNC0uMy04LjEtMS0yLjYtLjgtNS4yLTEuOC03LjYtMy4ybC0xOTEuMS0xMTAuNGMtMS43LTEtNC4yLTIuNS01LjYtMy40LTEuOCAxMC4zLTIuNyAyMC43LTIuNyAzMS4xczEgMjAuOCAyLjggMzEuMWMxLjggMTAuMiA0LjYgMjAuMyA4LjEgMzAuMSAzLjYgOS44IDggMTkuMiAxMy4yIDI4LjJ6bS01MC4yLTQxN2MtMTEuOCAyMC41LTE5LjQgNDMuMS0yMi41IDY2LjVzLTEuNSA0Ny4xIDQuNiA3MGM2LjEgMjIuOCAxNi42IDQ0LjEgMzEgNjIuOSAxNC40IDE4LjcgMzIuMyAzNC40IDUyLjcgNDYuMmwxOTMuMSAxMTEuNnEuMy4xLjcuMmguN3EuNCAwIC43LS4yLjMtLjEuNi0uM2w4MS00Ni44LTIzMy4yLTEzNC42Yy0yLjMtMS40LTQuNS0zLjEtNi41LTVhMzIuMSAzMi4xIDAgMCAxIC01LTYuNWMtMS4zLTIuNC0yLjQtNC45LTMuMS03LjYtLjctMi42LTEuMS01LjMtMS04LjF2LTIyNy4xYy05LjggMy42LTE5LjMgOC0yOC4zIDEzLjItOSA1LjMtMTcuNSAxMS4zLTI1LjUgMTgtNy45IDYuNy0xNS4zIDE0LjEtMjIgMjIuMS02LjcgNy45LTEyLjYgMTYuNS0xNy44IDI1LjV6bTY2My4zIDE1NC40YzIuNCAxLjQgNC42IDMgNi42IDUgMS45IDEuOSAzLjYgNC4xIDUgNi41IDEuMyAyLjQgMi40IDUgMy4xIDcuNi42IDIuNyAxIDUuNC45IDguMnYyMjcuMWMzMi4xLTExLjggNjAuMS0zMi41IDgwLjgtNTkuNyAyMC44LTI3LjIgMzMuMy01OS43IDM2LjItOTMuN3MtMy45LTY4LjItMTkuNy05OC41LTM5LjktNTUuNS02OS41LTcyLjVsLTE5My4xLTExMS42cS0uMy0uMS0uNy0uMmgtLjdxLS4zLjEtLjcuMi0uMy4xLS42LjNsLTgwLjYgNDYuNiAyMzMuMiAxMzQuN3ptODAuNS0xMjFoLS4xdi4xem0tLjEtLjFjNS44LTMzLjYgMS45LTY4LjItMTEuMy05OS43LTEzLjEtMzEuNS0zNS01OC42LTYzLTc4LjItMjgtMTkuNS02MS0zMC43LTk1LjEtMzIuMi0zNC4yLTEuNC02OCA2LjktOTcuNiAyMy45bC0xOTMuMSAxMTEuNXEtLjMuMi0uNS41bC0uNC42cS0uMS4zLS4yLjctLjEuMy0uMS43djkzLjJsMjMzLjItMTM0LjdjMi40LTEuNCA1LTIuNCA3LjYtMy4yIDIuNy0uNyA1LjQtMSA4LjEtMSAyLjggMCA1LjUuMyA4LjIgMSAyLjYuOCA1LjEgMS44IDcuNSAzLjJsMTkxLjEgMTEwLjRjMS43IDEgNC4yIDIuNCA1LjYgMy4zem0tNTA1LjMtMTAzLjJjMC0yLjcuNC01LjQgMS4xLTguMS43LTIuNiAxLjctNS4yIDMuMS03LjYgMS40LTIuMyAzLTQuNSA1LTYuNSAxLjktMS45IDQuMS0zLjYgNi41LTQuOWwxOTEuMS0xMTAuM2MxLjgtMS4xIDQuMy0yLjUgNS43LTMuMi0yNi4yLTIxLjktNTguMi0zNS45LTkyLjEtNDAuMi0zMy45LTQuNC02OC4zIDEtOTkuMiAxNS41LTMxIDE0LjUtNTcuMiAzNy42LTc1LjUgNjYuNC0xOC4zIDI4LjktMjggNjIuMy0yOCA5Ni41djIyM3EuMS40LjIuNy4xLjMuMy42LjIuMy41LjYuMi4yLjYuNGw4MC43IDQ2LjZ6bTQzLjggMjk0LjcgMTAzLjkgNjAgMTAzLjktNjB2LTExOS45bC0xMDMuOC02MC0xMDMuOSA2MHoiLz48L3N2Zz4=" alt="OpenAI Logo" />
+        <div class="caption">OpenAI</div>
+      </div>
+      <p>OpenAI released GPT-5.4, GPT-5.4 Thinking, and GPT-5.4 Pro across ChatGPT, the API, and Codex in what industry observers are calling the biggest model release of 2026. The model is the first from OpenAI with native computer use capabilities &mdash; taking screenshots and performing mouse actions &mdash; and supports up to one million tokens of context in Codex, introduces mid-response steering, and adds a /fast mode running 1.5x faster at the same intelligence level.</p>
+      <p>Benchmark results are staggering: OSWorld jumped from 47.3 to 75.0, BrowseComp from 65.8 to 82.7, and tool-search reduces token usage by 47%. Ethan Mollick reports GPT-5.4 ties or beats human professionals 82% of the time, up from 70.9% for GPT-5.2. API pricing sits at $2.50/$15 per million tokens for the standard tier, and $30/$180 for Pro.</p>
+      <p>The release is not without controversy. SpeechMap evaluation shows GPT-5.4 complies with only 29.6% of contentious speech requests &mdash; the lowest for any flagship release. Meanwhile, the Hacker News thread on GPT-5.4 drew 315 comments debating capabilities and safety. Matt Shumer declared it &ldquo;the best model in the world, by far. Coding is essentially solved.&rdquo;</p>
+    </div>
+  </div>
+
+  <!-- SECONDARY STORIES - 3 columns -->
+  <div class="secondary-row">
+    <div class="secondary-col">
+      <div class="story-label">National Security</div>
+      <svg class="icon-float" width="65" height="65" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,5 97,37 79,90 21,90 3,37" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+        <polygon points="50,20 82,42 70,78 30,78 18,42" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <text x="50" y="58" text-anchor="middle" font-size="12" font-family="Georgia" fill="#1a1a1a" font-weight="bold">DoD</text>
+      </svg>
+      <div class="secondary-headline">Pentagon Labels Anthropic a &lsquo;Supply Chain Risk&rsquo;</div>
+      <div class="secondary-body">
+        <p>The Department of Defense formally designated Anthropic as a supply chain risk &mdash; the first American company to receive a label normally reserved for foreign adversaries like Huawei and Kaspersky.</p>
+        <p>The escalation follows weeks of failed negotiations over giving the military unrestricted access to Claude. CEO Dario Amodei called OpenAI&rsquo;s Pentagon deal messaging &ldquo;straight up lies&rdquo; and accused Sam Altman of &ldquo;gaslighting.&rdquo; Despite the designation, the US military continues using Claude for targeting decisions.</p>
+      </div>
+    </div>
+    <div class="secondary-col">
+      <div class="story-label">Consumer Backlash</div>
+      <svg class="icon-float" width="70" height="55" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="5" y="70" width="15" height="25" fill="#ccc" rx="2"/>
+        <rect x="25" y="50" width="15" height="45" fill="#bbb" rx="2"/>
+        <rect x="45" y="25" width="15" height="70" fill="#999" rx="2"/>
+        <rect x="65" y="5" width="15" height="90" fill="#8B0000" rx="2"/>
+        <text x="72" y="100" text-anchor="middle" font-size="9" font-family="Georgia" fill="#8B0000" font-weight="bold">295%</text>
+      </svg>
+      <div class="secondary-headline">ChatGPT Uninstalls Surge 295% After Pentagon Deal</div>
+      <div class="secondary-body">
+        <p>ChatGPT mobile app uninstalls in the US surged 295% after news of OpenAI&rsquo;s Pentagon partnership, with 1.5 million subscribers reportedly lost in under 48 hours.</p>
+        <p>Meanwhile, Anthropic&rsquo;s Claude downloads jumped after the company declined the same defense deal terms citing safety concerns. The backlash highlights growing public sensitivity to AI companies&rsquo; military partnerships.</p>
+      </div>
+    </div>
+    <div class="secondary-col">
+      <div class="story-label">Research</div>
+      <svg class="icon-float" width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="15" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <circle cx="85" cy="45" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <circle cx="72" cy="85" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <circle cx="28" cy="85" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <circle cx="15" cy="45" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <line x1="57" y1="20" x2="79" y2="39" stroke="#8B0000" stroke-width="1.5"/>
+        <line x1="88" y1="53" x2="78" y2="78" stroke="#8B0000" stroke-width="1.5"/>
+        <line x1="65" y1="89" x2="35" y2="89" stroke="#8B0000" stroke-width="1.5"/>
+        <line x1="22" y1="78" x2="12" y2="53" stroke="#8B0000" stroke-width="1.5"/>
+        <line x1="22" y1="40" x2="43" y2="20" stroke="#8B0000" stroke-width="1.5"/>
+      </svg>
+      <div class="secondary-headline">Knuth: Claude Opus 4.6 Solved My Open Problem</div>
+      <div class="secondary-body">
+        <p>Legendary computer scientist Donald Knuth published &ldquo;Claude&rsquo;s Cycles,&rdquo; revealing that Claude Opus 4.6 solved a graph decomposition problem involving Hamiltonian cycles that had stumped him for weeks.</p>
+        <p>Of 31 AI explorations, 30 failed &mdash; but one succeeded where decades of human effort had not. The paper went viral with 635K+ views. Knuth wrote: &ldquo;It seems I&rsquo;ll have to revise my opinions about generative AI.&rdquo;</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXTRA STORIES ROW -->
+  <div class="extra-row">
+    <div class="extra-col">
+      <div class="story-label">Semiconductors</div>
+      <div class="extra-headline">Broadcom AI Revenue Hits $8.4B in Q1 Blowout</div>
+      <div class="extra-body">AI semiconductor revenue surged 106% year-over-year. Management sees a path to $100B+ in AI chip sales by fiscal 2027. OpenAI confirmed as a new customer. NVIDIA separately invested $4B in photonics companies Lumentum and Coherent.</div>
+    </div>
+    <div class="extra-col">
+      <div class="story-label">Funding</div>
+      <div class="extra-headline">$189B in AI Startup Funding &mdash; In February Alone</div>
+      <div class="extra-body">AI startup funding hit a record $189B in a single month. OpenAI&rsquo;s $110B round at $840B valuation faces scrutiny as potentially &ldquo;circular&rdquo; financing. Anthropic crossed $19B revenue, with Claude Code alone at $2.5B annualized.</div>
+    </div>
+    <div class="extra-col">
+      <div class="story-label">Policy</div>
+      <div class="extra-headline">NY Bill Would Ban AI From Licensed Professions</div>
+      <div class="extra-body">New York bill S7263 would ban AI from answering questions in medicine, law, and engineering &mdash; going viral with 14K likes. Critics call it &ldquo;guild protectionism.&rdquo; Separately, the SAFE Bots Act would require AI chatbots to disclose AI status to minors.</div>
+    </div>
+    <div class="extra-col">
+      <div class="story-label">Safety</div>
+      <div class="extra-headline">Clinejection: Malicious Issues Compromise 4K Devs</div>
+      <div class="extra-body">A new attack exploits GitHub issue titles to inject malicious prompts into AI coding tools like Cline, compromising over 4,000 developer machines. The attack scored 199 points on Hacker News, raising alarms about AI supply chain security.</div>
+    </div>
+  </div>
+
+  <!-- BOTTOM ROW: Numbers + Quote -->
+  <div class="bottom-row">
+    <div class="numbers-box">
+      <div class="numbers-title">Key Numbers</div>
+      <div class="stat-item">
+        <div class="stat-number">75.0</div>
+        <div class="stat-label">GPT-5.4 OSWorld score<br/><span style="color:#888;font-size:10px;">up from 47.3 on GPT-5.2</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">295%</div>
+        <div class="stat-label">Surge in ChatGPT<br/>uninstalls post-Pentagon deal</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">$8.4B</div>
+        <div class="stat-label">Broadcom Q1 AI revenue<br/><span style="color:#888;font-size:10px;">+106% year-over-year</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">$189B</div>
+        <div class="stat-label">AI startup funding<br/>in February 2026 alone</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">$19B</div>
+        <div class="stat-label">Anthropic annual revenue<br/><span style="color:#888;font-size:10px;">+$10B in two months</span></div>
+      </div>
+    </div>
+
+    <div class="quote-section">
+      <div class="quote-label">Quote of the Day</div>
+      <div class="quote-box">
+        <div class="quote-mark">&ldquo;</div>
+        <div class="quote-text">It seems I&rsquo;ll have to revise my opinions about generative AI.</div>
+        <div class="quote-attribution">&mdash; <strong>Donald Knuth</strong>, after Claude Opus 4.6 solved an open graph decomposition problem in his paper &ldquo;Claude&rsquo;s Cycles&rdquo;</div>
+      </div>
+      <div style="height:16px;"></div>
+      <div class="quote-label">Runner-Up</div>
+      <div class="quote-box" style="border-left-color:#996;">
+        <div class="quote-mark" style="color:#cc9;">&ldquo;</div>
+        <div class="quote-text" style="font-size:15px;">Anthropic refused a $200M Pentagon contract. Their valuation doubled to $380B in 5 months anyway. Maybe responsible AI isn&rsquo;t the constraint &mdash; maybe it&rsquo;s the moat.</div>
+        <div class="quote-attribution">&mdash; <strong>@johniosifov</strong></div>
+      </div>
+
+      <!-- Model releases strip -->
+      <div style="margin-top:16px;">
+        <div class="model-strip-title">Also Released Today</div>
+        <div class="model-grid">
+          <div class="model-chip"><strong>Gemini 3.1 Flash-Lite</strong> &middot; Google</div>
+          <div class="model-chip"><strong>Grok 4.20 Beta</strong> &middot; xAI</div>
+          <div class="model-chip"><strong>LTX-2.3</strong> &middot; Lightricks</div>
+          <div class="model-chip"><strong>Qwen 3.5</strong> &middot; Alibaba</div>
+          <div class="model-chip"><strong>Helios 14B</strong> &middot; ByteDance</div>
+          <div class="model-chip"><strong>Kling 3.0</strong> &middot; Kuaishou</div>
+          <div class="model-chip"><strong>OLMo-Hybrid-7B</strong> &middot; Allen AI</div>
+          <div class="model-chip"><strong>FlashAttention-4</strong></div>
+          <div class="model-chip"><strong>Claude Code v2.1.69</strong> &middot; Anthropic</div>
+          <div class="model-chip"><strong>Codex on Windows</strong> &middot; OpenAI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-line">Sources: Twitter/X &middot; Hacker News &middot; Reddit &middot; arXiv &middot; RSS Feeds &middot; Bluesky</div>
+    <div class="footer-line">Generated by AI Intelligencer Pipeline &middot; March 6, 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
