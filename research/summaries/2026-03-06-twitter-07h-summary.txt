@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-03-06 07:04 UTC
+
+WHAT'S BUZZING:
+* GPT-5.4 rollout continues: computer use surpasses human benchmarks (75% vs 72.4%), tops FrontierMath over Opus 4.6 & Gemini 3 Pro, CoT controllability only 0.3%
+* Nvidia ends H200 chip output for China, pivots to Vera Rubin; US drafts global AI chip export gatekeeper rules
+* Saudi Arabia reportedly scraps "The Line", converting site to AI server farm (11K+ likes)
+
+NOTABLE:
+* The Economist warns Trump-Anthropic clash "foreshadows AI Chernobyl"; Andrew Yang predicts white-collar "jobpocalypse" in 12-18 months
+* LTX-2.3 launches with native 4K video + dialogue; Neura Robotics nears $1B valuation with Tether backing
+
+Full update on GitHub.
