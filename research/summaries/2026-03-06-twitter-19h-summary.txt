@@ -1,0 +1,13 @@
+AI News 19:00 UTC
+
+Claude Opus 4.6 found 22 Firefox vulns (14 high-severity) in 2 weeks via Mozilla partnership. OpenAI launches Codex Security agent in research preview. Claude Marketplace enters limited preview with enterprise billing for partner tools.
+
+Nvidia invests $2B in Coherent Corp for AI data center optics. Marvell beats earnings on AI demand. Science Corp raises $230M for brain-computer interfaces.
+
+NanoGPT Slowrun hits 7x data efficiency with U-Net skip connections. Karpathy shares nanochat agent progress.
+
+France CNIL launches AI healthcare consultation. Google and Microsoft maintain Anthropic integrations despite Pentagon ban.
+
+HF releases: huggingface_hub v1.5.0 (Buckets), Diffusers 0.37.0. Box tests GPT-5.4 at 78% extraction accuracy.
+
+Consciousness debate continues trending (36K+ likes on Polymarket post).
