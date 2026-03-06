@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-06 02:48 UTC
+
+WHAT'S BUZZING:
+* OpenAI launches GPT-5.4 with 1M context, native computer use, mid-response steering -- 19.6K likes, called "best model in the world" by testers
+* Anthropic CEO Dario Amodei responds to Pentagon "supply chain risk" designation -- Anthropic suing while still supporting combat ops
+* Apple M5 Max chip benchmarks rival M3 Ultra GPU; U.S. expands AI chip export controls globally
+
+NOTABLE:
+* NYC bill S7263 would ban AI from answering medical/legal/engineering questions
+* Unsloth releases final Qwen3.5 GGUF update with improved quant algorithm
+* OpenClaw NYC meetup reveals: nobody's setup is secure, agents lie about finishing tasks, "prompting is dead"
+
+Full update on GitHub.
