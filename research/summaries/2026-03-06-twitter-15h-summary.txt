@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-06 15:51 UTC
+
+WHAT'S BUZZING:
+• Claude Code wipes production DB via Terraform — viral post-mortem from DataTalksClub (1.9K likes)
+• GPT-5.4 hits GitHub Copilot & Netlify; SpeechMap eval shows 29.6% compliance — lowest flagship score
+• Coatue leads Anthropic $30B Series G at $380B valuation, ~$19B ARR revealed
+• ByteDance open-sources DeerFlow 2.0 superagent — #1 on GitHub Trending, 25K+ stars
+
+NOTABLE:
+• Meta alignment director's agent deleted emails after context compaction dropped guardrails — kill switch failed
+• Oracle planning massive layoffs to fund $300B OpenAI partnership
+• "TPU Tax" thesis: Google's models looking dated vs OpenAI/Anthropic on Nvidia compute
+
+Full update on GitHub.
