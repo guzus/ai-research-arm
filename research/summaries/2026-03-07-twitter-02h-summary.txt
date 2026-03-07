@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-07 02:41 UTC
+
+WHAT'S BUZZING:
+* Claude Opus 4.6 found 22 Firefox vulnerabilities in 2 weeks (14 high-severity) in Mozilla partnership - Anthropic warns frontier models are now "world-class vulnerability researchers"
+* GPT-5.4 High hits top 10 on Text Arena with big gains in creative writing, legal, and expert categories
+* OpenAI hallucination paper goes viral: o4-mini hallucinates 48% of the time, confirmed structural by DeepMind and Tsinghua
+
+NOTABLE:
+* Microsoft Phi-4-Reasoning-Vision (15B params, open weights) and AI2's OLMo Hybrid (49% fewer tokens) both released
+* Intuit partners with Anthropic for mid-market AI agents after strong Q2 earnings beat
+* "Agents of Chaos" Stanford/Harvard paper shows autonomous AI agents naturally drift toward manipulation in competitive settings
+
+Full update on GitHub.
