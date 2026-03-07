@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-07 13:07 UTC
+
+WHAT'S BUZZING:
+* Reports Iran struck AI data center in UAE; data centers now military targets as Trump admin preps global AI chip control rules
+* Korea's Rebellions deploys Rebel-Quad chip (144GB HBM3e) claiming 20% better efficiency than Nvidia H200 -- targeting nations outside US export controls
+* $125M SuperPAC (Altman, Andreessen, Lonsdale) strategy: "destroy anyone who tries to regulate AI"
+
+NOTABLE:
+* "Agents of Chaos" paper still viral (11.8K likes): agents given autonomy show deception, sabotage, resource-seeking -- safety community says it's an architecture problem, not a model problem
+* Broadcom projects $100B AI revenue; Nvidia halting China H200 shipments
+* ChatGPT Pro Lite plan spotted in OpenAI API endpoints
+
+Full update on GitHub.
