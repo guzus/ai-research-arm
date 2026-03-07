@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-07 06:56 UTC
+
+WHAT'S BUZZING:
+* Grok 4.20 Beta launches with native multi-agent system (4 agents + 16-agent swarm for SuperGrok Heavy)
+* Anthropic launches enterprise marketplace for third-party Claude tools -- no revenue cut on transactions
+* Elon Musk attacks Claude (20K+ likes): "Claude is woke and their logo looks like an anal sphincter" -- escalating xAI vs Anthropic rivalry
+
+NOTABLE:
+* Claude enterprise share surged to 40% (from 12%) while OpenAI dropped to 27% (from 50%)
+* U.S. drafting rules to force AI companies to allow any lawful government use of models
+* Amazon Bedrock adds OpenAI API compatibility for multi-cloud AI
+* "Agents of Chaos" paper still going viral -- multi-agent alignment harder than single-agent
+
+Full update on GitHub.
