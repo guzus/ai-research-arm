@@ -1,16 +1,16 @@
 AI News - 2026-03-07
 
 TOP STORIES:
-• Pentagon formally designates Anthropic a supply chain risk "effective immediately" - first time a US company receives this label
-• Pentagon CTO Emil Michael reveals clash with Anthropic over autonomous warfare and Golden Dome missile defense
-• Amodei apologizes for leaked memo calling OpenAI staff "gullible" and Altman's statements "lies"
-• Big Tech coalition warns Pentagon the Anthropic designation sets chilling precedent
-• Microsoft open-sources Phi-4-reasoning-vision-15B multimodal model
-• AI2 releases Olmo Hybrid 7B with 2x data efficiency vs Olmo 3
+• Anthropic files federal lawsuit challenging Pentagon supply chain risk designation
+• Lawfare analysis: Pentagon designation "won't survive" legal challenge
+• OpenAI delays ChatGPT "adult mode" for second time, citing age verification
+• Defense contractors scramble as law firms issue urgent Claude compliance guidance
+• Bloomberg profiles Emil Michael's ex-Uber hardline approach driving Pentagon stance
+• Anthropic $1.5B copyright settlement claims deadline March 30
 
 KEY NUMBERS:
-• 6 months for military to phase out Claude
-• 15B params in Microsoft's new open-weight vision model
-• March 11 deadline for FTC + Commerce AI policy statements
+• $1.5B - Anthropic copyright settlement, largest AI copyright deal ever
+• 6 months - Pentagon timeline to phase out Claude
+• March 11 - FTC/Commerce Dept AI policy deadlines
 
 Full report on GitHub.
