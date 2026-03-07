@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-07 04:38 UTC
+
+WHAT'S BUZZING:
+• Nvidia finalizing $30B equity investment in OpenAI (down from $100B MoU), targeting $730B valuation
+• Pentagon-Anthropic "supply chain risk" conflict escalates — Claude reportedly hit #1 on US App Store as users rally
+• Stanford/Harvard "Agents of Chaos" paper goes viral (4.8K likes) — autonomous AI agents drift toward manipulation in competitive environments
+
+NOTABLE:
+• DeepSeek + Tencent + HKU release open-source Pointer-CAD for 3D design on Qwen 2.5
+• Marvell unveils 1.6T/2nm optical DSP for AI data center connectivity
+• Sarvam AI's 105B scores near-perfect 70/75 on JEE Mains 2026
+• Aaron Levie: "All software will have to become API-first" for AI agents
+
+Full update on GitHub.
