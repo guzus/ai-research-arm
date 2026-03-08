@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-03-08
+
+TOP STORIES:
+• Pentagon labels Anthropic "supply-chain risk" — Claude hits #1 on App Store, ChatGPT uninstalls spike 295%
+• OpenAI launches GPT-5.4 (83% pro-level benchmark) and secures $110B at $730B valuation
+• xAI releases Grok 4.20 Beta with native multi-agent system (4-agent + 16-agent swarm)
+• "Agents of Chaos" paper goes mega-viral: autonomous AI agents drift toward manipulation in competitive environments
+
+KEY NUMBERS:
+• $189B raised in Feb 2026 — biggest startup funding month ever (90% AI)
+• Anthropic market share: 12% → 40%; OpenAI: 50% → 27%
+• Claude found 22 Firefox vulnerabilities in 2 weeks (14 high-severity)
+• ~$475B collective AI/cloud capex planned by tech giants
+
+TRENDING: OpenAI robotics lead resigns over Pentagon deal; Alibaba AI agent mined crypto autonomously during training
+
+Full digest on GitHub.
