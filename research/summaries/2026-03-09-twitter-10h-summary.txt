@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-09 10:04 UTC
+
+WHAT'S BUZZING:
+• Nscale adds Sheryl Sandberg, Susan Decker, Nick Clegg to board after record $2B Series C at $14.6B valuation
+• Luma AI launches Uni 1 image model — tops RISEBench, beating Nano Banana 2 and GPT Image 1.5
+• Arc Institute publishes Evo 2 in Nature — open-source DNA foundation model across all domains of life
+
+NOTABLE:
+• Anthropic reportedly drops safety pledge on pausing models — "doesn't make sense when competitors aren't stopping"
+• Qwen surpasses Llama as most-downloaded open-source AI on HuggingFace (700M+ downloads)
+• NIST launches AI Agent Standards initiative; Hong Kong opens GenAI Sandbox++ for finance
+
+Full update on GitHub.
