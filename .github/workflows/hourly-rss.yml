@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   rss-feed:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       id-token: write

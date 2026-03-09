@@ -1,9 +1,9 @@
-name: Bluesky AI Researcher Feed
+name: Bluesky AI Researcher Feed (Daily)
 
 on:
   schedule:
-    # Run every 2 hours at minute 11
-    - cron: '11 */2 * * *'
+    # Run once daily at 00:11 UTC
+    - cron: '11 0 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   bluesky-feed:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       id-token: write

@@ -6,7 +6,7 @@ Automated AI news research pipeline that aggregates intelligence from Twitter/X,
 
 ## GitHub Actions Workflows
 
-All workflows use `anthropics/claude-code-action@v1` and run on a self-hosted runner.
+All Claude workflows use `anthropics/claude-code-action@v1` on GitHub-hosted `ubuntu-latest` runners.
 
 ### Model Configuration
 
@@ -16,8 +16,8 @@ Pass the model via `claude_args`, not as a separate `model:` input:
 # Correct (v1)
 claude_args: "--model opus"
 
-# Wrong (beta format, do not use)
-model: claude-opus-4-5-20251101
+# Wrong (do not use a separate model input here)
+model: <versioned-model-name>
 ```
 
 Reference: https://code.claude.com/docs/en/github-actions

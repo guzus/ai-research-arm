@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   community-digest:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       id-token: write
@@ -28,6 +28,11 @@ jobs:
         run: |
           echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
           echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
       - name: Fetch Reddit RSS feeds
         id: reddit
