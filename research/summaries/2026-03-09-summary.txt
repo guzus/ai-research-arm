@@ -1,17 +1,17 @@
 AI News - 2026-03-09
 
 TOP STORIES:
-• Federal agencies (Treasury, State, HHS, GSA) dropping Anthropic contracts following Trump directive
-• Anthropic revenue surges to $19B run rate despite government ban, investors push to de-escalate
-• Pentagon-Anthropic clash scaring startups away from defense work (TechCrunch)
-• Benioff vs Dorsey debate: mass AI layoffs real or "AI-washing"?
-• Florida AI Bill of Rights passes Senate 35-2 but blocked in House
-• DeepSeek V4 misses fourth release window, still no launch date
+• OpenAI robotics chief Caitlin Kalinowski resigns over Pentagon deal, citing surveillance concerns
+• Nscale raises $2B Series C at $14.6B valuation - largest in European history
+• Anthropic revenue surges to $19B run rate despite government ban
+• Samsung signs LOI with OpenAI, expands multi-AI Galaxy ecosystem
+• Lyzr AI raises $14.5M at $250M valuation for enterprise AI agents
+• Federal agencies (Treasury, State, HHS) dropping Anthropic contracts
 
 KEY NUMBERS:
-• $19B - Anthropic's revenue run rate (up from $14B weeks ago)
-• -92,000 - February US jobs lost (3rd decline in 5 months)
-• 35-2 - Florida Senate vote on AI Bill of Rights
-• March 11 - FTC/Commerce AI policy deadline
+• $2B - Nscale Series C (largest European ever)
+• $19B - Anthropic revenue run rate
+• 295% - ChatGPT uninstall surge after Pentagon deal
+• 800M - Samsung's Galaxy AI device target for 2026
 
 Full report on GitHub.
