@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-03-09 16:09 UTC
+
+WHAT'S BUZZING:
+* Anthropic sues Pentagon over "supply chain risk" label - argues it punishes advocacy for AI safety guardrails
+* Perplexity integrates Claude Code as subagent inside Computer - autonomous repo forking, coding, and PR submission
+* Kling 3.0 launches with motion capture-grade precision; Gemma 4 leaked at 120B total / 15B active MoE
+
+NOTABLE:
+* OpenAI IPO faces skeptical investors; annualized revenue hits $25B while Anthropic pushes toward $19B
+* Race-to-the-bottom dynamics in AI safety flagged as key systemic risk after Pentagon-Anthropic standoff
+
+Full update on GitHub.
