@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-10 19:04 UTC
+
+WHAT'S BUZZING:
+• Google launches Gemini Embedding 2 (multimodal SOTA) + Gemini-powered Workspace updates for Docs/Sheets/Slides
+• Hume AI releases TADA open-source TTS model — zero hallucinations, 5x faster than LLM-based TTS
+• Legora raises $550M at $5.55B; Rhoda AI exits stealth with $450M for robotics
+
+NOTABLE:
+• AGI speculation heats up — Aidan Clark (DeepMind): "AGI Day will be in today's past"
+• Amazon mandates senior sign-off on AI-assisted code after high blast-radius incidents
+• HuggingFace ships Storage Buckets — first new Hub repo type in 4 years
+
+Full update on GitHub.
