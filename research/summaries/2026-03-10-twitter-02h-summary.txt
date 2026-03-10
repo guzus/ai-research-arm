@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-10 02:47 UTC
+
+WHAT'S BUZZING:
+* NVIDIA preparing NemoClaw, open-source AI agent platform for enterprises (partners: Salesforce, Google, Adobe, CrowdStrike)
+* Claude Code Review launched - dispatches agent teams to hunt bugs on PRs (36K+ likes)
+* Karpathy's autoresearch agent autonomously improved nanochat training by 11%, also released agenthub for AI agent collaboration
+
+NOTABLE:
+* Enterprise AI agent race heating up - NVIDIA, Microsoft, Anthropic, OpenAI all launching agent platforms within days of each other
+* OpenAI acquiring Promptfoo for agentic security testing
+* Lyzr AI hits $250M valuation for enterprise AI agents
+
+Full update on GitHub.
