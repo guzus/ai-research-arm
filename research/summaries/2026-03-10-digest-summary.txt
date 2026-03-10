@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-03-10
+
+TOP STORIES:
+• Anthropic sues Pentagon over "supply chain risk" label — OpenAI & Google employees (incl. Jeff Dean) file amicus brief in support
+• OpenAI acquires Promptfoo AI security platform — conflict-of-interest concerns raised immediately
+• Microsoft launches Copilot Cowork for M365 built with Claude (not OpenAI) — third major pivot in 12 months
+• Nscale raises $2B in largest European Series C ever at $14.6B valuation
+
+KEY NUMBERS:
+• Anthropic revenue surges to $19B run rate despite gov ban
+• ChatGPT hits 900M weekly active users
+• Claude Code Review: PRs with meaningful comments jumped 16% to 54%
+• DeepSeek V4 "highly likely this week"
+
+TRENDING: Agent safety failures dominate — Harvard/MIT study shows AI agents fail every safety test with real tools; Karpathy's Autoresearch hits 16K posts
+
+Full digest on GitHub.
