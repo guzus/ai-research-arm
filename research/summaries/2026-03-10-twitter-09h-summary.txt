@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-10 09:57 UTC
+
+WHAT'S BUZZING:
+• Nscale raises $2B Series C at $14.6B — largest European Series C ever, building UK's biggest AI supercomputer
+• AMI Labs (Yann LeCun) $1.03B seed continues to dominate discussion — world models as LLM alternative
+• Minnesota introduces bipartisan AI regulation bills; Anthropic-Pentagon standoff deepens
+
+NOTABLE:
+• Nature publishes Merlin bird ID paper — largest vision model for wildlife conservation
+• Apple M5 Max benchmarks leak: 36% faster than M4 Max in ML workloads
+• AI infra race intensifies: Nscale, NemoClaw, Oracle earnings all point to massive capital flowing into compute
+
+Full update on GitHub.
