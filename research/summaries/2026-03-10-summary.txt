@@ -1,0 +1,15 @@
+AI News - 2026-03-10
+
+TOP STORIES:
+• 30+ OpenAI & Google DeepMind employees file amicus brief defending Anthropic in DOD lawsuit; Jeff Dean among signatories
+• Microsoft launches Copilot Cowork powered by Anthropic's Claude — first non-OpenAI model in M365 core productivity tools
+• Anthropic ships Code Review in Claude Code — multi-agent system boosting substantive PR feedback from 16% to 54%
+• Yann LeCun's AMI Labs raises $1.03B at $3.5B valuation for world models — largest European seed round ever
+
+KEY NUMBERS:
+• Claude Code run-rate revenue: $2.5B+
+• Microsoft Copilot: 90% of Fortune 500 now using, 160% YoY seat growth
+• M365 E7 tier: $99/user/month
+• FTC & Commerce Dept AI policy deadline: tomorrow (March 11)
+
+Full report on GitHub.
