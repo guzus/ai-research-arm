@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-10 07:04 UTC
+
+WHAT'S BUZZING:
+* Yann LeCun's AMI Labs raises $1.03B seed at $3.5B valuation for "world models" AI - Europe's largest seed round ever, backed by NVIDIA, Toyota, Samsung
+* Gemma 4 spotted on GitHub via Google bot PR - imminent release expected
+* OpenClaw mania hits China: Tencent hosted free install event in Shenzhen drawing ~1,000 people
+
+NOTABLE:
+* NVIDIA NemoClaw analyzed as strategic moat shift - chip-agnostic agent platform moves lock-in from hardware (CUDA) to software orchestration layer
+* Anthropic faces $50M revenue cliff over Pentagon "supply chain risk" designation
+* Alibaba releases Z-Image: 6B open-source text-to-image model
+
+Full update on GitHub.
