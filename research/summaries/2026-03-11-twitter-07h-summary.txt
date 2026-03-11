@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-11 07:08 UTC
+
+WHAT'S BUZZING:
+• Fish Audio S2 launches — open-source TTS with sub-150ms latency and controllable emotion (1.3K likes)
+• Claude Code Auto Mode (research preview) starts tomorrow Mar 12 — AI self-determines which actions need approval
+• AI robotics startup Rhoda valued at $1.7B; Eridu raises $200M for AI data center infra
+
+NOTABLE:
+• New benchmark finds ALL LLMs fail at long-form story consistency (8K-10K words)
+• "Open weights isn't open training" debate picks up — weights compared to compiled binary, not source code
+• a16z's Andrew Chen: "The 10x engineer is now a 1000x engineer" — AI dev skill gap widening
+
+Full update on GitHub.
