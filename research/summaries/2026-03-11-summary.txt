@@ -1,0 +1,15 @@
+AI News - 2026-03-11
+
+TOP STORIES:
+• Microsoft files amicus brief urging court to block Pentagon's Anthropic ban, calls actions "drastic" and "unprecedented"
+• Google deploys Gemini-powered Agent Designer for Pentagon's 3M+ workforce on GenAI.mil portal
+• FTC AI policy statement & Commerce Dept state AI law review due today under Trump executive order
+• Apple M5 MacBooks and MacBook Neo ($599) ship today with up to 4x AI performance
+• OpenAI Codex Security reaches research preview — found 10K+ high-severity bugs in 1.2M commits
+
+KEY NUMBERS:
+• Anthropic: $5B+ total revenue, $10B+ spent, deeply unprofitable
+• Pentagon AI: 1.2M DOD employees using Google AI, 40M prompts run
+• Apple MacBook Neo starts at $599, M5 Pro MacBook at $2,199
+
+Full report on GitHub.
