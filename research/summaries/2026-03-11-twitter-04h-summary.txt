@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-11 04:51 UTC
+
+WHAT'S BUZZING:
+• OpenAI plans to integrate Sora into ChatGPT to push past 920M weekly users toward 1B target
+• Legora (AI legal tech) raises $550M Series D at $5.55B valuation — AI funding boom continues
+• Microsoft backs Anthropic with amicus brief in DoD "supply chain risk" lawsuit; Qwen leader Lin Junyang departs Alibaba
+
+NOTABLE:
+• Anthropic Fellows paper shows Gemma 27B emotionally breaks down under adversarial pressure (35% of runs) vs <1% for Claude — RLHF training identified as cause
+• Oracle reveals $553B in AI infrastructure obligations; NVIDIA partners with Mira Murati's Thinking Machines Lab for 1GW+ Vera Rubin deployment
+• a16z thesis: "context layer" becoming the key competitive moat as models commoditize
+
+Full update on GitHub.
