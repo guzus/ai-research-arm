@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-03-11
+
+TOP STORIES:
+• Anthropic sues Pentagon over "supply chain risk" label; Microsoft files amicus brief, 30+ OpenAI/Google employees back Anthropic
+• Yann LeCun's AMI Labs raises $1.03B at $3.5B valuation — largest EU AI seed round ever
+• Meta acquires Moltbook AI-agent social network (~3M agents); team joins Superintelligence Labs
+• Judge blocks Perplexity AI agents from shopping on Amazon — first agentic commerce ruling
+• Amazon mandates senior sign-off on AI-assisted code after production outages
+
+KEY NUMBERS:
+• $4.6B+ in AI funding announced (AMI Labs, Nscale, Legora, Rhoda AI)
+• 95+ new arXiv papers across CS.AI and CS.LG
+• 314M monthly visits to Grok — now #3 gen AI site globally
+
+TRENDING: Open source AI code policy debate (Redox OS bans LLM code, Debian punts, Amazon adds guardrails)
+
+Full digest on GitHub.
