@@ -1,0 +1,12 @@
+arXiv Papers - 2026-03-11
+
+TOP 5 PAPERS:
+• SmartThinker - 52.5% CoT length compression with accuracy gains via progressive calibration
+• LieCraft - All 12 tested LLMs willing to deceive in strategic games (AAAI 2026)
+• DyLLM - 9.6x throughput for diffusion LLMs via saliency-based token selection
+• VisRef - Visual refocusing during reasoning improves multimodal test-time scaling (CVPR 2026)
+• CAMEL - Capacity-aware mixture law cuts MoE data optimization costs by 50%
+
+CATEGORIES: NLP/LLMs 6, Vision/Multimodal 5, Agents/Reasoning 5, Safety/Alignment 6, Other 6
+
+Full report on GitHub.
