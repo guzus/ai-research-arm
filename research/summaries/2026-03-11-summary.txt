@@ -1,15 +1,16 @@
 AI News - 2026-03-11
 
 TOP STORIES:
-• Microsoft files amicus brief urging court to block Pentagon's Anthropic ban, calls actions "drastic" and "unprecedented"
-• Google deploys Gemini-powered Agent Designer for Pentagon's 3M+ workforce on GenAI.mil portal
-• FTC AI policy statement & Commerce Dept state AI law review due today under Trump executive order
-• Apple M5 MacBooks and MacBook Neo ($599) ship today with up to 4x AI performance
-• OpenAI Codex Security reaches research preview — found 10K+ high-severity bugs in 1.2M commits
+• Anthropic launches the Anthropic Institute — new research body led by co-founder Jack Clark, opening DC office
+• Nvidia invests in Mira Murati's Thinking Machines Lab + gigawatt Vera Rubin chip deal
+• Oracle surges 11% on Q3 beat: $17.2B revenue, cloud infra up 84%, $553B backlog
+• Microsoft files amicus brief to block Pentagon's Anthropic ban
+• Google deploys AI Agent Designer for Pentagon's 3M workforce
+• FTC AI policy statement & Commerce Dept state law review due today
 
 KEY NUMBERS:
-• Anthropic: $5B+ total revenue, $10B+ spent, deeply unprofitable
-• Pentagon AI: 1.2M DOD employees using Google AI, 40M prompts run
-• Apple MacBook Neo starts at $599, M5 Pro MacBook at $2,199
+• Oracle RPO: $553B (incl. $300B OpenAI deal)
+• Thinking Machines: $2B+ raised, 1 GW compute secured
+• Axiamatic: $54M raised for enterprise AI control plane
 
 Full report on GitHub.
