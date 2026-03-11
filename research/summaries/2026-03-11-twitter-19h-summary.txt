@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-11 19:06 UTC
+
+WHAT'S BUZZING:
+• Claude Excel+PowerPoint now sync with shared context across files (3.3K likes)
+• Replit raises $400M at $9B valuation, up 3x in 6 months — targeting $1B ARR
+• Karpathy coins "intelligence brownouts" after OAuth outage wipes his autoresearch labs
+
+NOTABLE:
+• Perplexity launches Model Council: GPT-5.4, Claude Opus 4.6, Gemini 3.1 Pro in parallel
+• AlphaEvolve breaks Ramsey graph records (R(3,18)>=100) via LLM-driven meta-algorithm
+• PostTrainBench v1.0 released to measure AI R&D automation progress
+• Nemotron 3 Super now live across open-source inference stack (Ollama, vLLM, etc.)
+
+Full update on GitHub.
