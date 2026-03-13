@@ -1,15 +1,17 @@
 AI News - 2026-03-13
 
 TOP STORIES:
-* Morgan Stanley warns "transformative AI breakthrough" imminent in H1 2026, cites 9-18GW U.S. power shortfall
-* Washington State passes 3 AI bills: chatbot child safety, AI disclosure, health insurance AI rules
-* Pew Research: 50% of Americans now more concerned than excited about AI, trust in AI companies at 22%
-* Federal AI preemption takes shape: Commerce flags CO/CA/NY laws, FTC claims bias rules are "deceptive"
+* Meta delays 'Avocado' AI model to May after failing to match rivals (NYT)
+* Morgan Stanley warns "transformative AI breakthrough" imminent in H1 2026
+* Washington State passes 3 AI bills on chatbot safety, AI disclosure, health insurance
+* Webflow acquires Vidoso.ai for agentic marketing platform
+* Salesforce prices $25B senior notes for largest-ever accelerated share repurchase
+* Nvidia GTC 2026 starts March 16 -- Vera Rubin, Feynman chips expected
 
 KEY NUMBERS:
-* 83% - GPT-5.4 score on GDPVal (human expert level)
-* $2.9T - Global data center construction through 2028
-* $21B - BEAD broadband funds conditioned on state AI law compliance
-* 55% - U.S. adults who used AI tools in the past year
+* $25B - Salesforce ASR, largest in company history
+* $421 - Micron stock (+5%), HBM4 supply sold out for 2026
+* 50% - Americans more concerned than excited about AI (Pew)
+* $115-135B - Meta's 2026 AI investment amid model delays
 
 Full report on GitHub.
