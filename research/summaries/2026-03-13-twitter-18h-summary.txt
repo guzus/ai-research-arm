@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-13 18:58 UTC
+
+WHAT'S BUZZING:
+• Claude 1M token context window now GA for Opus 4.6 & Sonnet 4.6 (9.1K likes) — Opus scores 76% vs GPT-5.4's 36.6% on MRCR 1M benchmark
+• Azure first to validate NVIDIA Vera Rubin NVL72 — 3.6 exaflops per rack, 5x prior gen
+• Adobe CEO Shantanu Narayen steps down after 18 years; AI-first ARR tripled YoY
+
+NOTABLE:
+• "Lost in Backpropagation" paper: standard LM head destroys 99% of gradient signal — scaling laws may be pessimistic artifacts
+• John Carmack: AI training on open source code "magnifies the value of the gift" (1.4K likes)
+• Cursor reportedly raising at $50B valuation; AI coding market now $5B+
+
+Full update on GitHub.
