@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-13 15:55 UTC
+
+WHAT'S BUZZING:
+• AWS deploys Cerebras Wafer-Scale Engine chips — multiyear deal, new NVIDIA competitor
+• NVIDIA GTC 2026 starts Monday — Jensen Huang keynote Mar 16 teasing "5th layer" of AI
+• Amazon sells $37B in bonds for AI infra ($200B capex plan for 2026)
+
+NOTABLE:
+• "Neural Thickets" paper: large models have dense solution neighborhoods — post-training may be far easier than assumed
+• Morgan Stanley warns massive AI capability jump coming H1 2026, infrastructure may be the bottleneck
+• Google completes $32B Wiz acquisition
+
+Full update on GitHub.
