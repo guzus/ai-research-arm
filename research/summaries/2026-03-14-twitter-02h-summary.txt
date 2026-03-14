@@ -1,0 +1,15 @@
+AI Twitter Update — 2026-03-14 02:00 UTC
+
+🔴 Meta planning 20%+ layoffs to fund AI capex (Reuters)
+🔴 Elon welcomes ex-Mistral researcher Devendra Chaplot to xAI; only 2/12 co-founders remain
+🔴 Travis Kalanick launches robotics startup "Atoms"
+
+🟢 Claude 1M context window GA — Opus 4.6 & Sonnet 4.6, no price increase, 600 image support
+🟢 Claude generative UI beta — interactive charts/diagrams in chat
+🟢 Nemotron 3 Super live on Perplexity & Together AI
+
+💰 Ex-Anthropic researchers raising $1B for new startup
+🔧 Nvidia Feynman GPU specs leaked: 1TB/1.3TB HBM5
+🔧 SemiAnalysis: AMD ROCm composability issues vs CUDA moat
+🏛 Sakana AI signs Japan defense contract
+📄 Acemoglu paper warns AI may deteriorate collective knowledge
