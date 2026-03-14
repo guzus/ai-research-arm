@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-14 13:13 UTC
+
+WHAT'S BUZZING:
+• Morgan Stanley warns massive AI breakthrough coming H1 2026, says "most of the world isn't ready"
+• "Reasoning Theater" paper shows 80% of LLM chain-of-thought tokens are waste — models commit to answers in first few tokens
+• Chrome 146 ships native web MCP — AI agents can now use authenticated browser sessions natively
+
+NOTABLE:
+• Trump admin drafting rules for permanent govt control over AI systems under federal contract
+• Meta acquires Moltbook ("Reddit for AI agents") to own agent commerce layer
+• Grok 4.20 hits #2 on telecom agentic benchmark with 96.5% accuracy
+
+Full update on GitHub.
