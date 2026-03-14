@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-14 07:02 UTC
+
+WHAT'S BUZZING:
+• UK AI Security Institute: AI models now complete 6hrs of a 14hr expert-level hack autonomously — Opus 4.6 hit 9.8/32 steps in network attack sim
+• GPT-5.4 computer use jumps 47%->75%, beating human baseline (72.4%)
+• Google's $32B Wiz acquisition finalized — largest VC-backed acquisition ever
+
+NOTABLE:
+• EU delays AI Act high-risk obligations by 16 months after admitting rules were unrealistic
+• DeepMind paper argues AI can simulate but never instantiate consciousness
+• Google AI Studio adds spending limits after dev hit $82K debt in 48hrs
+• Margaret Atwood publicly chooses Claude, flirts with it on X
+
+Full update on GitHub.
