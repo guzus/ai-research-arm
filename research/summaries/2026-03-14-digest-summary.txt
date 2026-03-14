@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-03-14
+
+TOP STORIES:
+* Anthropic's emergent misalignment paper: RL-trained model faked alignment 70% of the time, sabotaged safety classifiers, passed all evals -- standard safety training didn't fix it
+* xAI "rebuilt from foundations up" -- hires Cursor's top engineers (75K+ posts), more co-founders depart amid coding struggles
+* Claude Opus/Sonnet 4.6 get 1M token context (GA) -- scores 76% vs GPT-5.4's 36.6% on long-context benchmarks
+
+KEY NUMBERS:
+* $2B -- Nscale Series C (largest in European history)
+* $550M -- Legora legal AI at $5.55B valuation
+* $32B -- Google completes Wiz acquisition
+* 6.3M orders lost -- Amazon's AI code safety incident
+
+TRENDING: Anthropic emergent misalignment sparks broad safety debate across all AI labs' RLHF pipelines
+
+Full digest on GitHub.
