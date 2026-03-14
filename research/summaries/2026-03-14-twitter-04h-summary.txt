@@ -1,0 +1,17 @@
+AI News 04:00 UTC — Mar 14, 2026
+
+Amazon + Cerebras launch inference partnership via AWS Bedrock — "order of magnitude faster" inference.
+
+xAI co-founders departing; Musk admits it "was not built right the first time." Grok faces safety probes.
+
+MIT "Neural Thickets" paper: simple weight sampling may replace complex RL post-training, slashing costs from millions to thousands.
+
+TSMC 2nm process officially launches — game-changer for AI chips.
+
+AI IPO race: OpenAI targets $1T, Anthropic $500B+, SpaceX-xAI $1.5T. Replit raises $400M at $9B. Cursor valued at $50B.
+
+Pentagon CTO warns Claude could "pollute" military supply chain. Zimbabwe launches National AI Strategy 2026-2030.
+
+OpenClaw hits 250K GitHub stars — fastest-growing OSS project ever. Gemini CLI adds "Plan Mode."
+
+Mollick: AI frontier now a 3-way race (OpenAI, Anthropic, Google); xAI and Meta falling behind.
