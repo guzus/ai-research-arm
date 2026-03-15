@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-15 07:11 UTC
+
+WHAT'S BUZZING:
+• Claude surpasses ChatGPT as #1 app on US App Store; Anthropic's doubled usage limits still trending (13K posts)
+• Yann LeCun launches AMI Labs with $1B seed from NVIDIA & Bezos — building "World Models" for physical AI, not LLMs
+• GTC preview: Jensen Huang expected to unveil NemoClaw open-source agent platform, positioning NVIDIA as the OS for the agentic era
+
+NOTABLE:
+• Morgan Stanley: GPT-5.4 hits 83% on economically valuable tasks; bottleneck is now electricity (9-18GW shortfall), not intelligence
+• Memory chip prices spike 50% as AI giants hoard supply — India handset sales collapse 35%
+• Vermont signs first AI election disclosure law; Amazon now requires senior sign-off for AI-generated code
+
+Full update on GitHub.
