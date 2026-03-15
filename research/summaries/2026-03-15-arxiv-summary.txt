@@ -1,0 +1,12 @@
+arXiv Papers - 2026-03-15
+
+TOP 5 PAPERS:
+• InternVL-U - 4B unified multimodal model beats 14B+ baselines on generation/editing
+• Reasoning Theater - CoT in reasoning models is often performative, not reflecting true beliefs
+• IsoCompute Playbook - First scaling laws for RL post-training compute allocation
+• Omni-Diffusion - First any-to-any multimodal model using masked discrete diffusion
+• SafeDPO (ICLR 2026) - Safety alignment without reward models using closed-form solution
+
+CATEGORIES: LLMs/NLP (8), Vision/Multimodal (6), Agents/Reasoning (7), Safety/Alignment (6), Other (5)
+
+Full report on GitHub.
