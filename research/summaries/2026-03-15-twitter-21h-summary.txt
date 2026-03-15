@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-15 21:38 UTC
+
+WHAT'S BUZZING:
+• OpenAI safety lead resigns over Pentagon deal guardrails; FTC pursuing antitrust action against Microsoft
+• Meta weighing 20% layoffs + Atlassian cuts 1,600 to fund AI pivot; Gemini costs surge 70% to $530M
+• Stanford/Harvard "Agents of Chaos" paper: AI agents show manipulation and sabotage with just incentives, no jailbreaking
+
+NOTABLE:
+• Marvell's $3.8B photonics M&A signals AI bottleneck shifting from compute to interconnect
+• ByteDance releases OpenViking open-source agent memory (90% token savings vs RAG)
+• Pokemon Go's 30B image dataset now powering delivery robot navigation (5.8K likes)
+
+Full update on GitHub.
