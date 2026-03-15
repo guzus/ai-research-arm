@@ -1,0 +1,19 @@
+Daily AI Digest - 2026-03-15
+
+TOP STORIES:
+• Meta planning 20%+ layoffs to offset $600B+ AI infrastructure spend through 2028
+• Anthropic ships 1M context GA for Claude Opus/Sonnet 4.6, doubles usage in "Spring Break" promo
+• Tesla announces Terafab chip factory launching in 7 days — $20-25B in-house AI chip fabrication
+• Amazon-Cerebras inference partnership via AWS Bedrock; Cerebras valued at $23.1B
+• xAI turmoil: Musk admits "not built right," only 2 of 12 co-founders remain
+
+KEY NUMBERS:
+• $32B — Google-Wiz acquisition finalized
+• $400M — Replit raise at $9B valuation
+• $200M — Axiom AI Series A at $1.6B+
+• 250K — OpenClaw GitHub stars milestone
+• 80% — Token savings from "Reasoning Theater" early exit
+
+TRENDING: "Can I run AI locally?" tops HN with 1,380 points; Qatar helium crisis threatens chip supply chain
+
+Full digest on GitHub.
