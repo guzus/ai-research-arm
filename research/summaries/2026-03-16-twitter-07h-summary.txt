@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-03-16 07:45 UTC
+
+WHAT'S BUZZING:
+• Grok Imagine sweeps all 3 DesignArena Video leaderboard categories — xAI's video gen hitting stride
+• Nexthop AI raises $500M at $4.2B; Moonshot (Kimi) valued at $18B — massive AI infra & model funding rounds
+• NVIDIA GTC 2026 workshops underway — keynote and major announcements incoming
+
+NOTABLE:
+• Three solid research drops: LookaheadKV for efficient inference, LMEB memory benchmark, SOTA multimodal OCR
+• Micron acquires PSMC fab for $1.8B — expanding AI memory chip capacity
+
+Full update on GitHub.
