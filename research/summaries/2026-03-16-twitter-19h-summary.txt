@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-16 19:18 UTC
+
+WHAT'S BUZZING:
+• NVIDIA GTC 2026 keynote: DLSS 5 neural rendering unveiled, Jensen doubles infra forecast to $1T through 2027, Vera Rubin 3.3x faster than Blackwell
+• Mira Murati's Thinking Machines Lab secures gigawatt-scale NVIDIA Vera Rubin GPU deal
+• Sam Altman says OpenAI Codex usage "growing very fast" (2.8K likes)
+
+NOTABLE:
+• NVIDIA releases Nemotron 3 Super (120B params, 1M context, open weights)
+• Mistral drops Leanstral — AI proof agent for Lean 4 theorem prover
+• Moonshot AI Attention Residuals paper still trending (8,100+ posts)
+• Chamath's "Collapse of Terminal Value" essay argues AI is breaking VC valuation models
+
+Full update on GitHub.
