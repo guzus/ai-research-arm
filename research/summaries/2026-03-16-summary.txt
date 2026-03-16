@@ -1,0 +1,15 @@
+AI News - 2026-03-16
+
+TOP STORIES:
+• Nvidia GTC keynote: Vera Rubin GPU unveiled — 3.3x Blackwell inference, 336B transistors, HBM4 at 13 TB/s
+• NemoClaw launched: Nvidia's open-source AI agent platform runs on 8GB RAM devices
+• Nemotron 3 Super released: 120B-param open model for agentic AI (12B active via MoE)
+• OpenAI sunsets Sora 1, plans Sora 2 integration directly into ChatGPT
+• Federal AI preemption: DOJ/FTC meet March 11 deadlines to challenge state AI laws
+
+KEY NUMBERS:
+• Vera Rubin NVL576: 15 EFLOPS FP4, 365 TB memory (H2 2027)
+• Token costs drop to 1/10th of Blackwell on Vera Rubin
+• Nvidia market cap exceeds $3 trillion post-GTC
+
+Full report on GitHub.
