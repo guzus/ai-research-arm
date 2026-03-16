@@ -1,0 +1,12 @@
+arXiv Papers - 2026-03-16
+
+TOP 5 PAPERS:
+• ∇-Reasoner - gradient-based test-time reasoning optimization over token logits, outperforms discrete search
+• IsoCompute Playbook - compute-optimal scaling laws for on-policy RL post-training of LLMs
+• Synthetic Web - adversarial mini-internets reveal catastrophic epistemic failures in frontier LLM agents
+• GR-SAP - generative replay preserves safety alignment during fine-tuning without original data
+• General AgentBench - test-time scaling fails to improve general-purpose agent capabilities
+
+CATEGORIES: LLMs/NLP 8, Vision/Multimodal 6, Agents/Reasoning 8, Safety/Alignment 8, Other 6
+
+Full report on GitHub.
