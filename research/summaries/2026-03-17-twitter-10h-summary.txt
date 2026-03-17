@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-17 10:04 UTC
+
+WHAT'S BUZZING:
+• Claude experiencing elevated errors on Opus 4.6 & Sonnet 4.6 — fix being implemented
+• Rakuten launches "Rakuten AI 3.0" — Japan's largest open-source LLM based on DeepSeek V3
+• Jensen Huang: "OpenClaw is the new computer" — NVIDIA ships NemoClaw enterprise guardrails + OpenShell sandboxed runtime
+
+NOTABLE:
+• 5 major companies (NVIDIA, CrowdStrike, Cisco, Microsoft, GitHub) all shipped AI agent security products in 24 hours
+• UK scraps AI-friendly copyright opt-out policy, siding with creators
+• Wonderful AI hits $2B valuation in 13 months; Tata-OpenAI partnership for India
+• HorizonMath benchmark shows LLMs can generate valid proofs on genuinely unsolved math problems
+
+Full update on GitHub.
