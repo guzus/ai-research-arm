@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-17 19:17 UTC
+
+WHAT'S BUZZING:
+• OpenAI launches GPT-5.4 mini (2x faster) and GPT-5.4 nano in API — optimized for coding, computer use, and subagents (3.4K likes)
+• NVIDIA GTC Day 2: $1T AI chip demand by 2027, NemoClaw for OpenClaw, DLSS 5 mixed reactions, Dynamo 1.0 for distributed inference
+• Meta commits up to $27B to Nebius Group for AI infrastructure
+
+NOTABLE:
+• Mistral Small 4 live on NVIDIA AI Inference; Mistral+NVIDIA strategic partnership deepens
+• Anthropic + 6 major tech cos donate $12.5M to Linux Foundation for open source security
+• LangChain open-sources "Deep Agents" as Claude Code alternative — 9.9K GitHub stars in hours
+• European Council proposes ban on nudification tools in AI Act amendment
+
+Full update on GitHub.
