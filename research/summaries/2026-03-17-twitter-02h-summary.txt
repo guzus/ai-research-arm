@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-17 02:52 UTC
+
+WHAT'S BUZZING:
+• NVIDIA GTC 2026: DLSS 5 unveiled (294K posts), Mistral AI partnership for open-source frontier models, Newton 1.0 physics engine, robotaxi deal with Uber across 28 cities
+• GPT-5.4 hits 5T tokens/day in first week — $1B annualized new API revenue. Fastest OpenAI model ramp ever
+• Britannica + Merriam-Webster sue OpenAI over 100K "memorized" articles — biggest AI copyright case yet
+
+NOTABLE:
+• Meta 20% layoff rumors heating up to fund AI infra
+• 7B model beats GPT-4o on GUI tasks via better memory (HyMEM paper)
+• Musk: Tesla Terafab AI chip launches in 7 days; OpenAI lawsuit winnings go to charity
+• Mistral Small 4 released open-source (Apache 2.0)
+
+Full update on GitHub.
