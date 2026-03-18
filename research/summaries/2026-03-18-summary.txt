@@ -1,0 +1,15 @@
+AI News - 2026-03-18
+
+TOP STORIES:
+• NVIDIA unveils DLSS 5 at GTC — "GPT moment for graphics" using neural rendering, launching fall 2026 for RTX 50 Series
+• ACLU & CDT file amicus brief backing Anthropic's lawsuit against Pentagon supply-chain risk designation
+• EU Parliament committees vote today on AI Act Omnibus — delays high-risk compliance to Dec 2027, bans AI deepfakes
+• GTC Day 3: RTX PRO Blackwell workstations with Intel Xeon 600, NemoClaw AI agents demoed
+• Gamma launches AI image generation tool challenging Canva and Adobe, nearing 100M users
+
+KEY NUMBERS:
+• 100+ enterprise customers concerned by Anthropic's Pentagon designation
+• RTX PRO 6000: 4,000 TOPS compute, 96 GB GPU memory
+• Gamma: 100M users, $68M Series B
+
+Full report on GitHub.
