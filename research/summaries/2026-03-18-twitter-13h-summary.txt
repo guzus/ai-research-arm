@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-18 13:49 UTC
+
+WHAT'S BUZZING:
+• Microsoft weighs lawsuit over $50B Amazon-OpenAI cloud deal — Azure exclusivity at risk
+• XBOW raises $120M at $1B+ for AI autonomous pentesting; RunSybil gets $40M
+• SWE-CI benchmark: 75% of AI models break working code during maintenance — Claude Opus 4 leads with 0.76 zero-regression rate
+
+NOTABLE:
+• DOD blasts Anthropic's safety "red lines" as national security risk
+• Alibaba raises AI chip prices 5-34% — demand exploding
+• MiniMax M2.7 on OpenRouter, claims #1 Multi-SWE Bench
+• Tencent builds QClaw to integrate OpenClaw into messaging apps
+
+Full update on GitHub.
