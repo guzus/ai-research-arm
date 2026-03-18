@@ -1,0 +1,12 @@
+AI News Update — Mar 18, 21:00 UTC
+
+🔬 Anthropic publishes largest-ever qualitative AI study: 80,508 respondents across 159 countries
+⚖️ Microsoft reportedly weighing legal action against OpenAI & Amazon over $50B cloud deal
+🚀 Mistral launches Forge (enterprise AI training) + Mistral Small 4 (128 experts, 256k context)
+🖥️ Karpathy receives first DGX Station GB300 from Jensen Huang
+💰 Micron blowout Q2: $23.86B revenue (est $19.7B), HBM4 in high-volume production
+⚠️ Samsung workers vote 93% for strike — single point of failure for global DRAM/AI chips
+📊 Alibaba SWE-CI benchmark: only Claude Opus maintained >50% zero-regression rate across 100 codebases
+🏛️ Sen. Blackburn introduces federal AI bill with duty of care + creator protections
+💳 Stripe open-sources payments protocol for AI agents
+📦 IBM acquires Confluent for $11.4B for enterprise AI data streaming
