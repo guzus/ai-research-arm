@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-19 07:12 UTC
+
+WHAT'S BUZZING:
+* US reportedly ends AI chip war with China - approves H200 sales and Nvidia-Groq deal
+* InSpatio-World: first open-source real-time 4D world model released (video to navigable 3D worlds)
+* Copilot workplace retention at just 8% - ChatGPT dominates with 83% conversion rate
+
+NOTABLE:
+* OpenAI-Amazon $50B cloud deal sparks "AI infrastructure war" - Microsoft considering legal action
+* Fal raises $300M at $8B; Tempo launches Stripe-backed AI agent payments
+* Revolut deploys custom NVIDIA Nemotron model for fraud detection (+20%)
+
+Full update on GitHub.
