@@ -1,0 +1,12 @@
+arXiv Papers - 2026-03-19
+
+TOP 5 PAPERS:
+* Mamba-3 (ICLR 2026) - SSM-based model with complex-valued states beats sub-quadratic alternatives, challenges Transformer efficiency frontier
+* MoDA: Mixture-of-Depths Attention - Cross-layer attention primitive improves deep transformer performance with only 3.7% FLOPs overhead
+* MLRA: Multi-Head Low-Rank Attention - 2.8x decoding speedup over MLA with better perplexity via partitionable latent heads
+* Why Agents Compromise Safety Under Pressure - Stronger reasoning accelerates safety decline; introduces "Agentic Pressure" concept
+* SWE-ABS: Adversarial Benchmark Strengthening - Top SWE-Bench agent drops from 78.8% to 62.2% under stronger test suites
+
+CATEGORIES: LLMs/NLP (6), Vision/Multimodal (4), Agents/Reasoning (5), Safety/Alignment (4), Other (4)
+
+Full report on GitHub.
