@@ -1,0 +1,15 @@
+AI News - 2026-03-19
+
+TOP STORIES:
+• NVIDIA GTC wraps: Cosmos 3 world model, Feynman 2028 roadmap with Rosa CPU + Groq LP40 LPU, cuEST for 30x quantum speedup
+• NVIDIA receives H200 chip orders from Chinese customers, restarts manufacturing under export controls
+• DOJ files 40-page reply calling Anthropic's Pentagon lawsuit a "commercial dispute" — hearing March 24
+
+KEY NUMBERS:
+• $1T+ in AI computing orders confirmed by NVIDIA through 2027
+• 1M+ NVIDIA GPUs deployed globally via AWS
+• 75,000 H200 chips per-customer cap considered for China
+
+EU AI Act Omnibus committee vote completed March 18, results pending. Plenary vote possible March 26.
+
+Full report on GitHub.
