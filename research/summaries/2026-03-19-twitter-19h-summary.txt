@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-19 19:11 UTC
+
+WHAT'S BUZZING:
+• Cursor launches Composer 2 with first proprietary model trained on real user coding sessions — claims to beat Claude Opus on coding (5.3K likes)
+• Lovable expands from app builder to "general-purpose co-founder" — now does data science, decks, marketing (833 likes)
+• NVIDIA surpasses Google as biggest org on HuggingFace (3,881 members) — crowned "king of open-source AI"
+
+NOTABLE:
+• AI devtools arms race heats up: OpenAI acquired Astral (uv, Ruff) — 2nd OSS acquisition in 10 days. Anthropic bought Bun. Claude was #6 contributor to uv before OpenAI bought it.
+• Skild AI + ABB/UR/NVIDIA deploying neural-net robotics brains in real factories
+• DHL opening 10 warehouses (7M+ sqft) just for AI data center supply chain
+
+Full update on GitHub.
