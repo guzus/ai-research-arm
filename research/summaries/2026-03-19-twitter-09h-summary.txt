@@ -1,0 +1,12 @@
+AI News 09:00 UTC
+
+WHAT'S BUZZING
+- Mistral Small 4 drops: 128 experts, 119B params, matches GPT-4o on benchmarks while running on single GPU. Open-weight with NVIDIA partnership.
+- Samsung commits $73B to AI chip manufacturing through 2047, building mega-fab in Texas.
+- Meta signs $27B deal with Nebius for GPU cloud capacity, biggest single AI infra deal yet.
+- NVIDIA opens massive dataset: 10T text tokens, 500K robotics trajectories, 100TB vehicle data.
+
+NOTABLE
+- HuggingFace repos overwhelmed by AI-generated slop PRs — maintainers raising alarms about open-source sustainability.
+- UK updates AI copyright framework favoring training on public data with opt-out mechanism.
+- OpenAI IPO signals intensify as Sam Altman discusses public offering timeline.
