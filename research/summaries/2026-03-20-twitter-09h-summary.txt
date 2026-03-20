@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-20 09:55 UTC
+
+WHAT'S BUZZING:
+• Sen. Bernie Sanders' Claude privacy video goes viral (17.2K likes) — sparks calls for global AI regulation coalition
+• Meta confirms agent privilege-escalation breach exposing internal data, just hours after VentureBeat flagged governance gaps in NVIDIA's agentic AI stack
+• DOJ tensions with Anthropic over military AI — Claude blocked from autonomous weapons use, Pentagon seeking alternatives
+
+NOTABLE:
+• White House submitting AI framework Friday; Democrats making AI regulation central 2026 campaign issue
+• Amazon acquires RivR robotics for last-mile delivery; Zelostech raises $300M for autonomous logistics
+• Claude.ai gets 65% faster TTFB after Vite+TanStack migration; CrePal AI open-sources full-stack video agent
+
+Full update on GitHub.
