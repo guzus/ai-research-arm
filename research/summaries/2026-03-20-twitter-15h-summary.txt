@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-03-20 15:55 UTC
+
+WHAT'S BUZZING:
+• Cursor's Composer 2 exposed as fine-tuned Kimi K2.5 — model ID leaked in API headers; Cursor's $2B ARR is 8x the license disclosure threshold. "Most expensive model ID leak in AI licensing history"
+• White House drops National AI Policy Framework — proposes preempting all state AI regulation, no new federal AI regulator; 7 pillars covering child safety, IP, free speech, innovation
+• Samsung commits $73.24B to semiconductors in 2026 — largest single-year investment in its history, exceeds TSMC's spend; Jensen confirms Samsung 4nm for Nvidia
+
+NOTABLE:
+• Donald Knuth publishes "Claude's Cycles" — Opus 4.6 solved open graph theory problem in 1 hour
+• NVIDIA releases open-source toolkit for AI agents that build other AI agents
+• 61% of orgs rate non-human identity governance as weak per new RSAC report
+
+Full update on GitHub.
