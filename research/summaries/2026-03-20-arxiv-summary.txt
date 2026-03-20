@@ -1,0 +1,12 @@
+arXiv Papers - 2026-03-20
+
+TOP 5 PAPERS:
+* Attention Residuals (Kimi Team) - Replaces fixed residual connections with learned attention over prior layers; Block AttnRes scales practically
+* CARE: MLA Conversion (ICLR 2026) - Principled GQA-to-MLA conversion preserving activation fidelity for cheaper inference
+* CRAFT: Reasoning Safety Alignment - Exposes superficial safety in reasoning models; aligns full chain-of-thought with +4.7% accuracy
+* Hadamard Attention Projection - Parameter-free transform replaces dense output projection; 25% fewer attention params, no quality loss
+* BrainBench: Commonsense Gap - Best frontier LLM scores only 80.3% on questions any human answers instantly
+
+CATEGORIES: LLMs/NLP (9), Vision/Multimodal (7), Agents/Reasoning (7), Safety (3), Efficiency (7), Other (5)
+
+Full report on GitHub.
