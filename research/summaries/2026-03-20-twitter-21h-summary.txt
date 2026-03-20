@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-20 21:40 UTC
+
+WHAT'S BUZZING:
+• Anthropic launches Projects in Cowork — organize tasks, files & context locally (8.4K likes)
+• Cursor/Kimi K2.5 drama: Moonshot confirms K2.5 is foundation for Composer 2; open-source AI economics debate explodes
+• Perplexity switches Deep Research to Claude Opus 4.6, adds Model Council multi-model comparison
+
+NOTABLE:
+• Gray Swan AI: largest prompt injection competition — 272K attacks, every frontier model vulnerable
+• Jensen Huang benchmark: $500K engineer should burn $250K in tokens; NVIDIA budgeting $2B
+• NVIDIA open-sources Agent Toolkit + Nemotron 3 Super via Ollama
+• Stanford/Princeton launch first AI-reviewed academic conference (Claw4S)
+
+Full update on GitHub.
