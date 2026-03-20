@@ -1,0 +1,16 @@
+AI News - 2026-03-20
+
+TOP STORIES:
+• Sen. Blackburn releases TRUMP AMERICA AI Act draft - federal AI framework to preempt state laws, mandate bias audits, protect children/creators
+• Anthropic counter-response due today in Pentagon lawsuit - March 24 injunction hearing will decide if supply chain risk label is paused
+• Mistral launches Forge enterprise platform at GTC - lets companies train custom AI models on private data on-premises
+• Mistral Small 4 released: 119B MoE model unifying 4 model families under Apache 2.0
+• Hawaii SB 3001 AI Disclosure Act advances through legislature
+
+KEY NUMBERS:
+• $200M Pentagon contract at center of Anthropic dispute
+• $14B Mistral AI valuation
+• 119B params / 6B active in Mistral Small 4
+• 5x inference speedup claimed by AWS-Cerebras partnership
+
+Full report on GitHub.
