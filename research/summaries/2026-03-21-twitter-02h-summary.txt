@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-03-21 02:45 UTC
+
+WHAT'S BUZZING:
+* OpenAI drops GPT-5.4 suite (Thinking/Pro/mini/nano) - 2x faster, $1B run rate in first week
+* Cursor Composer 2 exposed as Kimi K2.5 + RL fine-tune - sparks open-source attribution debate (11K posts)
+* Super Micro execs charged for smuggling $2.5B in Nvidia AI servers to China (60K posts)
+* White House unveils "One Rulebook" national AI framework, urges Congress to preempt state laws
+
+NOTABLE:
+* Jensen Huang doubles chip forecast to $1T through 2027; 10GW data center announced at Ohio DOE site
+* Karpathy hasn't typed code since December - runs 10 Claude Code windows in parallel
+* Langflow CVE exploited within 20hrs - RCE hitting AI pipelines
+
+Full update on GitHub.
