@@ -6,7 +6,7 @@ Automated AI news research pipeline that aggregates intelligence from Twitter/X,
 
 ## GitHub Actions Workflows
 
-All Claude workflows use `anthropics/claude-code-action@v1` on GitHub-hosted `ubuntu-latest` runners.
+All Claude workflows use `anthropics/claude-code-action@v1` on self-hosted Linux runners via `runs-on: [self-hosted, Linux]`.
 
 ### Model Configuration
 

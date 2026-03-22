@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   ai-news-research:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     permissions:
       contents: write
       pull-requests: write
