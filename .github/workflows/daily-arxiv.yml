@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   arxiv-research:
-    runs-on: [self-hosted, Linux]
+    runs-on: [self-hosted, macOS, ARM64]
     permissions:
       contents: write
       id-token: write

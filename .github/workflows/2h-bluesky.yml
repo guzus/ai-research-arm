@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   bluesky-feed:
-    runs-on: [self-hosted, Linux]
+    runs-on: [self-hosted, macOS, ARM64]
     permissions:
       contents: write
       id-token: write
