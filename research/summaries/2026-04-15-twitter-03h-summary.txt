@@ -1,11 +1,11 @@
-Twitter/X AI Pulse - 2026-04-15 03:18 UTC
+Twitter/X AI Pulse - 2026-04-15 03:28 UTC
 
 WHAT'S BUZZING:
-• Meta/Broadcom MTIA partnership extended through 2029 with "industry-first" 2nm AI accelerator on TSMC
-• DRAM supercycle deepens: NVIDIA VR300 needs ~220TB SOCAMM per system, panic buying hits smartphone OEMs
-• Unconfirmed rumor: Anthropic Claude Opus 4.7 + AI design tool this week; Figma/Wix reportedly down ~6%
+• Anthropic rolls out "Routines" for Claude Code (research preview): scheduled/API/webhook agent workflows run on Anthropic's cloud
+• Claude Cowork goes enterprise — permissions, spend caps, analytics dashboards
+• Treasury Sec. Bessent calls Anthropic's Mythos a "breakthrough" in the US-China AI race (WSJ)
 
 NOTABLE:
-• Ethan Mollick: labs face a compute double bind — price/ration inference or stall next-gen training
+• Tsinghua's VoxCPM2 hits 85.4% vs ElevenLabs 61.3% on Minimax-MLS voice similarity; Meta's Wang-era first model ships, stock +9%; NVIDIA open-sources "Ising" quantum AI models.
 
 Full update on GitHub.
