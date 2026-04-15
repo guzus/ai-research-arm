@@ -1,11 +1,11 @@
-Twitter/X AI Pulse - 2026-04-15 03:28 UTC
+Twitter/X AI Pulse - 2026-04-15 03:48 UTC
 
 WHAT'S BUZZING:
-• Anthropic rolls out "Routines" for Claude Code (research preview): scheduled/API/webhook agent workflows run on Anthropic's cloud
-• Claude Cowork goes enterprise — permissions, spend caps, analytics dashboards
-• Treasury Sec. Bessent calls Anthropic's Mythos a "breakthrough" in the US-China AI race (WSJ)
+• Anthropic moving Enterprise plans to usage-based pricing (The Information) — flat-rate era ending
+• Viral example: one Claude Max subscriber racked up ~$5,600 in API cost on a $100 plan (56x subsidy)
+• Cost-arbitrage thread going viral: dev swaps Claude Max for a $599 Mac mini running 5 local 35B models, auto-failover when Claude rate-limits at 4am
 
 NOTABLE:
-• Tsinghua's VoxCPM2 hits 85.4% vs ElevenLabs 61.3% on Minimax-MLS voice similarity; Meta's Wang-era first model ships, stock +9%; NVIDIA open-sources "Ising" quantum AI models.
+• Slots into yesterday's "compute double bind" narrative — labs visibly pulling the raise-prices/ration-usage lever on inference. No fresh model or infra drops between 03:28 and 03:48 UTC.
 
 Full update on GitHub.
