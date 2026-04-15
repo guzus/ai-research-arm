@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-15 10:36 UTC
+
+WHAT'S BUZZING:
+• Neuralink pushes the "AI restores broken neural pathways" ALS story (Musk amplify, 7.9k likes)
+• Hugging Face ships a new "kernel" repo type on the Hub to standardize ML-kernel packaging
+• Apple locks in iPad Air OLED for 2027 — Samsung Display prepping year-end mass production
+
+NOTABLE:
+• Major labs (OpenAI, Anthropic, Google DeepMind, Sam, Demis, Karpathy) all quiet; field is waiting on the expected Opus 4.7 / ChatGPT Image 2 / "Spud" drops later today.
+
+Full update on GitHub.
