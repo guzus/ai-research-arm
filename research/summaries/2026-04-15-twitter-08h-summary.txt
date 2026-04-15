@@ -1,0 +1,12 @@
+Twitter/X AI pulse — 2026-04-15 08:00 UTC
+
+WHAT'S BUZZING
+- Tesla AI5 chip taped out at TSMC + Samsung; Musk predicts "one of the most produced AI chips ever" (AI6 and Dojo3 also in the works).
+- GPT-5.4 Pro one-shots a 60-year-old Erdős conjecture (#1196, Erdős–Sárközy–Szemerédi) in ~80 min, rejecting the standard analytic-to-probabilistic gambit. Jared Lichtman + Terry Tao both flag it as a genuinely new proof technique.
+- ASML: customers "sold out for 2026," supply gap into 2027–2028; SK Hynix signs record $8B EUV order. Daishin: 2Q26 mobile DRAM +80% QoQ, HBM4E trade ratio jumps 3:1 → 5:1. Dell/HP raising PC prices.
+
+NOTABLE
+- Thursday launch window hardening: Claude Opus 4.7 vs OpenAI Image v2 / Codex "super app"; DeepSeek queued end-April.
+- Fluidstack in talks at $18B (up from $7.5B) on a ~$50B Anthropic buildout.
+- Mercor cyberattack traced to compromised LiteLLM — first real AI supply-chain shot.
+- Field chatter: Claude Code's new Opus/Sonnet routing feels degraded, fueling 4.7 anticipation.
