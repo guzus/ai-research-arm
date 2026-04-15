@@ -416,6 +416,14 @@ function splitSections(md: string): { title: string; body: string }[] {
   return sections;
 }
 
+/** Wrap rendered tables in a horizontally scrollable container so wide tables
+ * (many columns or long cell content) don't overflow the card. */
+function wrapTables(html: string): string {
+  return html
+    .replace(/<table(\s[^>]*)?>/g, '<div class="md-table-wrap"><table$1>')
+    .replace(/<\/table>/g, '</table></div>');
+}
+
 function renderReport(md: string): void {
   const sections = splitSections(md).reverse();
   const cards: string[] = [];
@@ -425,6 +433,7 @@ function renderReport(md: string): void {
     if (!section.title && !section.body) continue;
 
     let html = marked.parse(section.body) as string;
+    html = wrapTables(html);
 
     // Add time-ago labels to tweet URLs (extract Snowflake ID from status URL)
     html = html.replace(
@@ -493,6 +502,7 @@ function renderModels(md: string): void {
     if (!section.title && !section.body) continue;
 
     let html = marked.parse(section.body) as string;
+    html = wrapTables(html);
 
     if (searchTerm) {
       const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
