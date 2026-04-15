@@ -8,7 +8,7 @@ jobs:
   research:
     # Trigger only when 'research' label is added
     if: github.event.label.name == 'research'
-    runs-on: [self-hosted, macOS, ARM64]
+    runs-on: [self-hosted, Linux]
     permissions:
       contents: write
       issues: write
