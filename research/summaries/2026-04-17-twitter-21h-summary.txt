@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-17 21:56 UTC
+
+WHAT'S BUZZING:
+• OpenAI brain drain: Kevin Weil (OpenAI for Science) and Bill Peebles (Sora co-creator) both announce departures the same night, 11 days before the NYT trial. OpenAI folds Prism into Codex.
+• FAA picks Palantir, Thales, and Air Space Intelligence to build an AI air traffic control tool (Bloomberg). Viral.
+• Cursor reportedly raising ~$2B at $50B+ valuation, a16z leading, Nvidia participating.
+
+NOTABLE:
+• The Information: crypto firms (Coinbase, Binance) are quietly seeking access to Anthropic's Mythos for vuln research; OpenAI is building a ChatGPT ads stack to compete with Google and Meta.
+
+Full update on GitHub.
