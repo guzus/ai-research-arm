@@ -1,0 +1,13 @@
+Twitter/X AI — 2026-04-17 17:00 UTC
+
+🚨 Anthropic launches Claude Design (Opus 4.7 vision): convo → prototypes/slides/PDFs, exports to Canva/PPTX, hand-off to Claude Code. 35K+ likes in 2h. Figma stock -6-7% intraday ("the Claude effect").
+
+💰 DeepSeek raising first round: $300M at $10B (~3% dilution). Factory AI closes $150M Series C.
+
+🛠️ Grok 4.3 beta visible on web; Grok Build/Computer leaked as macOS+Windows desktop. Mozilla ships Thunderbolt (open self-hosted AI client). Salesforce Headless 360 for agents.
+
+🔬 Tencent open-sources HY-World 2.0 (3D world model). Google DeepMind MedGemma 1.5 (4B medical, +47% F1 on pathology).
+
+🏛️ Dario Amodei meets WH Chief of Staff. UK launches £675M sovereign AI fund. Stanford 2026 AI Index: Foundation Model Transparency 58→40. Active exploitation of CVE-2026-39987 (Marimo pre-auth RCE) hitting HF infra.
+
+🗣️ Curran: Opus 4.7 reception "mirrors GPT-5 — extreme love/hate, super-Sonnet not new Opus." Mollick credits Anthropic for fast Adaptive Thinking fixes.
