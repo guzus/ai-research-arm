@@ -1,0 +1,15 @@
+AI News - 2026-04-18
+
+TOP STORIES:
+• OpenAI exits: Kevin Weil (OpenAI for Science) and Bill Peebles (Sora) depart as company sheds "side quests" for enterprise + agents
+• OpenAI CRO memo: "staggering" enterprise demand via AWS Bedrock; Microsoft deal said to have "limited" enterprise reach
+• Factory raises $150M Series C at $1.5B (Khosla-led) for enterprise AI coding agents; Keith Rabois joins board
+
+KEY NUMBERS:
+• Factory: $150M / $1.5B; revenue doubled monthly for 6 months
+• Amazon-OpenAI: $50B investment + $100B/8yr cloud + 2 GW Trainium
+• AMZN +5.3% week, +20.5% MTD
+• $70B+ committed to AI data centers in April
+• Sora web/app ends Apr 26; API ends Sep 24
+
+Full report on GitHub.
