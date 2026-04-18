@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-04-18 15:50 UTC
+
+WHAT'S BUZZING:
+• Anthropic Labs launches Claude Design (Opus 4.7 vision) - prototypes, slides, one-pagers; Figma stock reportedly dropped ~20min after
+• Meta confirms ~8,000 layoffs (10% of workforce) starting May 20 to fund AI infra
+• The Information: OpenAI to spend >$20B on Cerebras chips with potential equity stake
+
+NOTABLE:
+• Dario Amodei (FT): expects open-source/Chinese devs to replicate Mythos within 6-12 months
+• Cloudflare "Unweight" - lossless inference-time compression, ~22% LLM memory cut
+• Cursor $50B at >$6B ARR run-rate; DeepSeek $10B+ raise corroborated by Chinese PE
+
+Full update on GitHub.
