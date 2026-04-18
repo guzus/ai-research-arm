@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-04-18
+
+TOP STORIES:
+• OpenAI double-exit: Kevin Weil (head of Science) and Bill Peebles (Sora co-creator) both quit; Prism folded into Codex, 11 days before NYT trial
+• Claude Design drops Figma ~6-7%; Opus 4.7 costs 20-30% more per session due to new tokenizer
+• Cursor raising ~$2B at $50B+ (a16z + Nvidia); DeepSeek first round $300M at $10B+; OpenAI commits >$20B to Cerebras
+
+KEY NUMBERS:
+• Opus 4.7 HN thread: 1,927 points / 1,411 comments (largest today)
+• Uber: ~11% of backend code updates now written by Claude-Code agents
+• Stanford AI Index Transparency score: 58 -> 40 in two years
+
+TRENDING: Qwen3.6-35B-A3B dominates r/LocalLLaMA - "first local model worth the effort," beats Gemma 4 26B
+
+Full digest on GitHub.
