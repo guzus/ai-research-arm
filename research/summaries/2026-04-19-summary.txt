@@ -4,10 +4,11 @@ TOP STORIES:
 • Cerebras Systems files public S-1 for Nasdaq IPO under ticker CBRS, targeting $22-25B valuation
 • Tinder rolls out Sam Altman's World ID globally (incl. US) for anti-bot/age verification
 • UK launches £500M ($675M) Sovereign AI fund; first cheques to Callosum, Prima Mente, Cosine + 4 more
+• Beijing Humanoid Half Marathon: HONOR's Robotics D1 runs 21km in 50:26 autonomously, beating human world record
 
 KEY NUMBERS:
 • Cerebras: ~$2B IPO raise target, >$10B OpenAI compute deal, ~$510-600M 2025 revenue
 • UK Sovereign AI: 1M GPU-hours/startup, 1-day visa fast-track, £282M parallel R&D call
-• IndiaAI Cohort II: 10 startups heading to Station F Paris for 3-month residency
+• Beijing marathon: 102 teams, ~300 robots, 45% finish rate; top-3 all fully autonomous; 3x YoY speed-up
 
 Full report on GitHub.
