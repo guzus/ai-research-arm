@@ -1,0 +1,12 @@
+arXiv Papers - 2026-04-19
+
+TOP 5 PAPERS:
+• Scaling Laws for MoE Transformers - separates active capacity from routing combinatorics
+• LASA - cross-lingual safety alignment, jailbreak ASR 24.7% to 2.8% on LLaMA-3.1-8B
+• INCRT - Transformer that grows/prunes its own attention heads during training
+• MERRIN - benchmark for multimodal evidence retrieval and reasoning on noisy web
+• Filtered Reasoning Score - evaluates reasoning trace quality, not just final accuracy
+
+CATEGORIES: LMs/NLP 4, Vision/Multimodal 5, Agents/Reasoning 4, Safety/Alignment 5, Other 4
+
+Full report on GitHub.
