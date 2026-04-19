@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-04-19 15:50 UTC
+
+WHAT'S BUZZING:
+• OpenAI agrees to spend >$20B on Cerebras chips (with potential equity stake) — hours after Cerebras filed for Nasdaq IPO
+• Google in talks with Marvell for two custom AI chips: a memory processing unit + next-gen TPU, planning ~2M MPUs to diversify off Broadcom
+• Apple readying a new Siri but is "sending part of its team back to school" to catch up on AI
+
+NOTABLE:
+• SiFive raises $400M at $3.65B; RISC-V pushing into data-center CPUs
+• Max Levchin: "Software engineers are becoming software sculptors" — LLMs write code, humans bring taste
+
+Full update on GitHub.
