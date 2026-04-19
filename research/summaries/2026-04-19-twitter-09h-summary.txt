@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-19 09:57 UTC
+
+WHAT'S BUZZING:
+• Cursor (Anysphere) in talks for ~$50B valuation on $2B+ round led by a16z/Thrive — AI coding IDEs now enterprise-standard in 18 months
+• kimmonismus: GPT-5.5 appears to be stealth-rolling-out; early testers say it outperforms Opus 4.7
+• First real Grok 4.3 hands-on (ns123abc): 13-min reasoning, 8,365-word multi-file research output, one-shot PPT export
+
+NOTABLE:
+• LeCun vs. Dario labor thread at 13.7K likes — economists-vs-CEOs debate intensifies. Simon Willison's Opus 4.6→4.7 system-prompt diff remains the most-cited deep read on what actually changed.
+
+Full update on GitHub.
