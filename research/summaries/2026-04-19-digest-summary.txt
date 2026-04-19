@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-04-19
+
+Quiet Sunday — no new lab posts. Weekend discourse still anchored to Saturday's news cycle.
+
+TOP STORIES:
+• Cerebras files for Nasdaq IPO (CBRS) with $24.6B backlog incl. $20B+ OpenAI deal
+• Claude Design + Opus 4.7 still top HN front page 48h after launch; Figma hit ~6-7%
+• LeCun directly rebukes Amodei's 50%-white-collar-jobs claim: "You are wrong"
+
+KEY NUMBERS:
+• Cursor: $2B round at $50B (>$6B ARR target)
+• Tesla x Samsung: $15.6B AI6 chip deal on 2nm through 2033
+• Uber: ~11% of backend code updates now written by Claude Code agents
+• DeepSeek: $300M+ first outside round at >$10B
+
+TRENDING: Qwen 3.6-35B-A3B still dominates r/LocalLLaMA; Kimi K2.6 teased
+
+Full digest on GitHub.
