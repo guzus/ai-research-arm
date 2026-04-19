@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-19 03:46 UTC
+
+WHAT'S BUZZING:
+• Recursive Superintelligence (ex-DeepMind/OpenAI founders) raises $500M at $4B valuation from Google's VC arm + Nvidia — FT scoop.
+• Simon Willison publishes annotated diff of Claude Opus 4.6 vs 4.7 system prompts.
+• Meta confirms ~8,000 layoffs (10% of staff) starting May 20, redirecting spend to AI chips/datacenters.
+
+NOTABLE:
+• Dario Amodei (FT): expects China and open source to match Claude Mythos capabilities within 6–12 months. Microsoft unveils MAI Image 2 Efficient.
+
+Full update on GitHub.
