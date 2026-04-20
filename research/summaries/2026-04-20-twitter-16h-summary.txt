@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-20 16:19 UTC
+
+WHAT'S BUZZING:
+• Moonshot releases Kimi K2.6 open-source: SOTA on HLE-tools (54.0), SWE-Bench Pro (58.6), SWE-bench Multilingual (76.7); weights on HF, plus Instant/Thinking/Agent/Swarm variants
+• Google DeepMind stands up a "strike team" (reportedly led by Sergey Brin + DeepMind CTO) to close the coding-models gap on Anthropic and push recursive self-improvement
+• Polymarket in talks to raise at ~$15B valuation (The Information scoop)
+
+NOTABLE:
+• OpenAI prepping a new image model; Grok Imagine adds custom templates; SemiAnalysis drops big GPU-cluster TCO / ClusterMAX 2.1 update; steipete warns AI coding subs are subsidized to harvest training data
+
+Full update on GitHub.
