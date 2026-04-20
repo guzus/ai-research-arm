@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-04-20 08:24 UTC
+
+WHAT'S BUZZING:
+• Cursor reportedly raising $2B+ at a $50B valuation; DeepSeek raising $300M+ at $10B+; Cerebras files IPO at $22-25B
+• Google in talks with Marvell to co-build two new AI chips (MPU + new TPU) to cut Gemini-scale inference cost
+• Grok 4.3 adds native LaTeX compilation; viral demo one-shots a 5-page general-relativity paper
+• OpenAI officially shuts down Prism, its 3-month-old AI workspace for scientists
+
+NOTABLE:
+• Jukan05 calls next bottleneck: CPU shortages will strand GPUs by 2028 - Rubin Ultra already >1 GPU per 2 CPUs
+• Vercel says weekend breach was "significantly accelerated by AI"
+
+Full update on GitHub.
