@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-04-20 21:58 UTC
+
+WHAT'S BUZZING:
+• Anthropic–Amazon: up to 5 GW of AWS compute for Claude, +$5B invest now (up to $20B more), $100B+ 10-yr AWS commit
+• Anthropic run-rate revenue disclosed at >$30B, up from ~$9B at end of 2025
+• Tim Cook stepping down as Apple CEO; John Ternus named successor
+
+NOTABLE:
+• Google AI Studio now included in AI Pro/Ultra subs (higher limits, Nano Banana Pro, Gemini Pro, no API key)
+• Kimi K2.6 open weights set SOTA on SWE-Bench Pro (58.6%); @skirano ships Kimi 2.6 Code CLI (Claude-Code-style); NVIDIA GR00T N1.7 open VLA in early access
+• Sam Altman: Chronicle's internal name was "telepathy"
+
+Full update on GitHub.
