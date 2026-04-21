@@ -1,0 +1,13 @@
+AI News - 2026-04-21
+
+TOP STORIES:
+• Amazon pledges up to $25B more into Anthropic ($5B now + $20B milestone-tied); Anthropic to spend $100B+ on AWS over 10 yrs; full Claude Platform lands natively in AWS
+• Recursive Superintelligence (Socher, Rocktäschel, ex-OpenAI team) raises $500M+ at $4B, led by GV with Nvidia — 4-mo-old lab automating the frontier AI research loop
+• X Square Robot closes ~$276M Series B (Xiaomi + Sequoia China) — backed by all 4 Chinese internet giants
+
+KEY NUMBERS:
+• Anthropic val: $380B; 5 GW Trainium, ~1 GW online by YE26
+• Recursive: $4B val, ~20 staff, mid-May launch
+• Tesla Q1 Apr 22: ~$21.4–22.1B rev, adj EPS ~$0.33–0.35
+
+Full report on GitHub.
