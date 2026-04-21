@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-21 08:06 UTC
+
+WHAT'S BUZZING:
+• Microsoft ships third-party AI agent support in Windows 11 (Release Preview) — Taskbar/Search integration via new Tasks API + MCP
+• Google reportedly in design talks with Marvell for new MPU + inference-optimized TPU — 3rd silicon partner after Broadcom
+• Samsung planning massive new Onyang HBM back-end fab (~4 soccer fields); NVIDIA Blackwell Ultra (GB200 NVL72) enters mass production
+
+NOTABLE:
+• The Information flags new Apple CEO John Ternus as "risk-averse" — potential weakness as Apple needs bold AI moves; Kimi K2.6 now live on HuggingChat; iruletheworldmo doubling down: "this is the week AGI comes online"
+
+Full update on GitHub.
