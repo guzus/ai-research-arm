@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-21 19:24 UTC
+
+WHAT'S BUZZING:
+• OpenAI officially launches ChatGPT Images 2.0 (gpt-image-2) — thinking-level intelligence, up to 2K, live in ChatGPT/Codex/API
+• Google ships Deep Research + Deep Research Max via Gemini API — Gemini 3.1 Pro, MCP, native charts, planning mode
+• The Information: Anthropic shifting from flat subscriptions to consumption-based billing as growth strains economics
+
+NOTABLE:
+• Google + Marvell confirmed on new AI inference chip class; Microsoft/NVIDIA Fairwater AI factories spinning up with hundreds of thousands of GB200 NVL72 systems; SpaceX IPO draft pegs Musk pay to 100 TW/yr of AI compute
+
+Full update on GitHub.
