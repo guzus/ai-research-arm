@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-21 10:40 UTC
+
+WHAT'S BUZZING:
+• GPT-Image-2 rolling out to ChatGPT today — text rendering strong, but 1K resolution draws flak vs Nano Banana 2
+• Anthropic "Conway" surfaces: always-on Claude agent with shareable custom UI tabs (hidden iOS settings spotted)
+• Claude Code ships 1-hour prompt caching (ENABLE_PROMPT_CACHING_1H=1) on API/Bedrock/Vertex
+
+NOTABLE:
+• Samsung Electro-Mechanics lands Broadcom as new FC-BGA AI-substrate customer (H2 2026); UK FCA adds Barclays, UBS, Lloyds to live AI testing; iruletheworldmo doubles down on imminent "godlike model" tease.
+
+Full update on GitHub.
