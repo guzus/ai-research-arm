@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-04-22 22:00 UTC
+
+WHAT'S BUZZING:
+• OpenAI ships Workspace Agents (Codex-powered, 24/7) to ChatGPT Business/Enterprise/Edu — dubbed "OpenAI Cloud Next"
+• DeepSeek in talks with Alibaba + Tencent, chasing $20B+ valuation (The Information)
+• SemiAnalysis: compute market "tightest in decades" — 100 GW contracted, only 10 GW left through 2030
+
+NOTABLE:
+• Google Jules v2 early access opens; Atomic Mail becomes first email app using on-device Chrome Gemini Nano; Google Cloud Spend Caps enter Private Preview to cap Gemini/Vertex bills.
+• iruletheworldmo teases OpenAI's Thursday announcement — GPT-5.5 / "Spud" hype still climbing.
+
+Full update on GitHub.
