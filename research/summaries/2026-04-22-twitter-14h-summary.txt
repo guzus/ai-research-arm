@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-22 14:04 UTC
+
+WHAT'S BUZZING:
+• Google Cloud Next '26: Pichai says 75% of new code at Google is AI-generated (up from 50% last fall); Gemini Enterprise Agent Platform + Gen 8 TPUs unveiled
+• DeepSeek in talks to raise at $20B+ valuation; Tencent and Alibaba reportedly joining — V4 delayed, researchers being poached, still training on smuggled Nvidia Blackwell GPUs
+• Morgan Stanley sharply hikes SK hynix and Samsung profit forecasts on AI memory demand (SK hynix 2027 now ~$276B)
+
+NOTABLE:
+• AI21 Maestro hits #1 on Hugging Face BrowseComp-Plus at 92.53% accuracy
+
+Full update on GitHub.
