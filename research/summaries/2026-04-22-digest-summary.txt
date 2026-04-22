@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-04-22
+
+TOP STORIES:
+• OpenAI ships ChatGPT Images 2.0 (gpt-image-2): thinking-level self-critique, web retrieval, #1 Arena by 242 Elo
+• SpaceX discloses $60B option on Cursor (or $10B break-up fee); Cursor raising at $50B
+• Anthropic Mythos hit by reported unauthorized access; Altman calls it "fear-based marketing"; Trump replaces Anthropic at DoD
+
+KEY NUMBERS:
+• Codex: 4M users (from 3M two weeks ago)
+• Anthropic run-rate: ~$30B
+• Project Prometheus: $10B at $38B valuation
+• Pentagon DAWG FY27 ask: $54.6B (~240x)
+
+TRENDING: Kimi K2.6 overtakes Claude Opus 4.6 on Artificial Analysis Index; r/LocalLLaMA calls it legit Opus 4.7 replacement.
+
+Full digest on GitHub.
