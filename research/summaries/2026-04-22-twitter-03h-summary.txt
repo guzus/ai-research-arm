@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-22 03:36 UTC
+
+WHAT'S BUZZING:
+- Anthropic quietly dropped Claude Code from $20 Pro plan, then partially reversed within hours after backlash — no official statement yet (per Simon Willison)
+- OpenAI Codex stays in BOTH Free and Plus tiers; Sam Altman: "We want you to have a lot of AI!" — direct shot at Anthropic's pricing move
+- SpaceX/xAI + Cursor deep partnership: $60B acquisition option (or $10B for the joint work) to combine Cursor's IDE with Colossus's million-H100 compute (22.9k likes)
+
+NOTABLE:
+- GitHub Copilot pausing new sign-ups amid major pricing changes; ChatGPT Images 2.0 (gpt-image-2) leads Arena leaderboard by 242 pts; Google DeepMind ships Deep Research Max on Gemini 3.1 Pro with MCP support.
+
+Full update on GitHub.
