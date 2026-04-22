@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-04-22 10:40 UTC
+
+WHAT'S BUZZING:
+• GPT-5.5 looks imminent — TestingCatalog lists the OpenAI codenames surfaced in the Codex leak (oai-2.1, arcanine, glacier-alpha, glacier-alpha-block-cy4/cy3) alongside gpt-5.5
+• "Collab" mode briefly spotted on ChatGPT mobile — hints at a new multi-user/shared workspace feature
+• Meta commits $1B to a new Oklahoma AI data center and signs Noon Energy for up to 1 GW / 100 GWh of ultra-long-duration storage
+
+NOTABLE:
+• Chubby's morning take (730 likes): Anthropic is fumbling (Mythos leak, Plus-tier throttle, 4.7 vibe) while OpenAI rides Image Gen 2 + 4M Codex WAUs — "Anthropic's mistakes are OpenAI's success"
+• Infosys + OpenAI announce enterprise deal integrating Codex into Infosys Topaz Fabric
+• Claude Code 2.1.117 ships; Gemini Enterprise opens preview for A2UI / A2A agent comms
+
+Full update on GitHub.
