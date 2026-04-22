@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-22 16:17 UTC
+
+WHAT'S BUZZING:
+• Google unveils TPU v8 at Cloud Next '26 — split into TPU 8t "Sunfish" (training, Broadcom) and TPU 8i "Zebrafish" (inference, MediaTek), 2nm TSMC, 3x Ironwood perf, 288GB HBM on 8i
+• Anthropic signs up as anchor customer for up to 1M TPUs and 3.5 GW of compute on the new line
+• Alibaba ships Qwen3.6-27B dense open-source model — runs on 18GB RAM locally, reportedly beats 397B MoE sibling
+
+NOTABLE:
+• Gemini Enterprise Agent Platform replaces Vertex AI with 200+ models, Agent Marketplace, 40% QoQ paid-MAU growth; GPT-5.5/"Spud" hype cresting ahead of expected Thursday launch.
+
+Full update on GitHub.
