@@ -1,0 +1,17 @@
+AI News - 2026-04-22
+
+TOP STORIES:
+• OpenAI launches ChatGPT Images 2.0 + gpt-image-2 — native reasoning, 2K res, strong dense text
+• Google DeepMind ships Deep Research + Max on Gemini 3.1 Pro — MCP-native, fuses web + private data
+• OpenAI Codex Labs live with Accenture, Capgemini, Cognizant, Infosys, PwC, TCS
+• Connecticut SB 5 passes 32–4 — frontier-model rules, AI sandbox, chatbot safety
+• Tesla Q1 2026 earnings tonight — 50K inventory build; Cybercab/Optimus in focus
+
+KEY NUMBERS:
+• Reliable Robotics: $160M at ~$1B (Boeing, RTX, Sumitomo)
+• AcuityMD: $80M Series C at $955M
+• EU Commission: €63.2M for AI health/safety
+• Codex weekly devs: 3M → 4M in 2 weeks
+• Tesla consensus: ~$21.9B rev, ~$0.36 EPS
+
+Full report on GitHub.
