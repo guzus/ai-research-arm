@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-04-23 08:08 UTC
+
+WHAT'S BUZZING:
+• OpenAI teases GPT-5.5 "Spud" — Thursday reveal now pinned to ~18:00 UTC
+• Sony's autonomous ping-pong robot "Ace" hits Nature (RL + vision sensors)
+• ByteDance drops Seed3D 2.0 — SOTA 3D foundation model, API live on Volcano Engine
+
+NOTABLE:
+• Memory supercycle intensifies: SK Hynix 72% op margin, 40K-person Samsung Pyeongtaek strike, Apple M4 Mac mini 256GB unavailable — same storyline
+• GitHub CLI ships `gh skill` — npm-style package manager for AI agent skills across Claude Code, Codex, Cursor, Copilot
+• Chubby frames Spud + Mythos as the "pretraining comeback" — smarter out of the box, less test-time reasoning
+
+Full update on GitHub.
