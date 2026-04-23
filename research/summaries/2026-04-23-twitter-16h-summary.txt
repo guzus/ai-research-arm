@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-23 16:50 UTC
+
+WHAT'S BUZZING:
+• OpenAI Devs posts "NS41" (Base64 for "5.5") — most overt GPT-5.5 / Spud launch tease yet
+• White House accuses China of "industrial-scale" AI theft via model distillation; crackdown prepped ahead of Trump-Xi meeting
+• Google DeepMind unveils Decoupled DiLoCo — trains a 12B Gemma across 4 US regions on low-bandwidth networks, mixes TPU generations
+
+NOTABLE:
+• Liquid AI × Mercedes-Benz multi-year MBUX partnership; Microsoft commits $18B to Australia AI infra; Boyuan Chen: coding agents now hit "product limits before model limits."
+
+Full update on GitHub.
