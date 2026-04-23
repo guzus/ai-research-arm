@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-23 14:07 UTC
+
+WHAT'S BUZZING:
+• UAE decree: 50% of government sectors to run on Agentic AI within 2 years — first national-scale autonomous-government commitment (Sheikh Mohammed, 1.9k likes)
+• Spud / GPT-5.5 countdown: "Live from OpenAI HQ, incoming" + iruletheworldmo "less than 4 hours from the most important day in the universe"
+• DeepSeek targeting $20B+ valuation on Tencent/Alibaba talks (The Information exclusive)
+
+NOTABLE:
+• Simon Willison on UAE: "Within two years you'll be able to prompt inject an entire country." First GPT-Image-2 quality backlash (noise artifacts). Factory enterprise AI coding raises $150M at $1.5B on a multi-model-router pitch.
+
+Full update on GitHub.
