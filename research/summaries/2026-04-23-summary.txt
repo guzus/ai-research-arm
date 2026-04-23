@@ -1,0 +1,13 @@
+AI News - 2026-04-23
+
+TOP STORIES:
+• Anthropic investigates unauthorized access to Claude Mythos via Discord + third-party vendor API keys — first confirmed Project Glasswing-tier breach
+• OpenAI launches Workspace Agents in ChatGPT (Codex-powered, replaces GPTs); free through May 6
+• Google Cloud Next 26: Gemini Enterprise Agent Platform replaces Vertex AI; $750M partner fund
+• Blue Energy raises $380M for shipyard-built SMR nuclear — 1.5 GW Texas site for AI data centers
+• Musk v. Altman $134B trial jury selection begins April 27
+
+KEY NUMBERS:
+• $380M Blue Energy; ~$205M EVAS (RISC-V); $750M Google partner fund; 75% of new Google code AI-generated; ICLR 2026 opens in Rio, 19,797 papers (+70% YoY)
+
+Full report on GitHub.
