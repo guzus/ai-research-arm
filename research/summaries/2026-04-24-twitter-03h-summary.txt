@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-24 03:45 UTC
+
+WHAT'S BUZZING:
+• DeepSeek-V4 drops on HuggingFace — 671B/37B MoE + Pro variant (1.6T/49B), 1M context, rivals GPT-5.4 xhigh & Opus 4.6 Max
+• Elon: Grok Voice is powering Starlink CS; Sakana AI launches Fugu multi-agent orchestrator beta
+• Anthropic internally admits "we really did make [Claude] dumber"; SK Hynix target +92% on surging DRAM/NAND
+
+NOTABLE:
+• Kimmonismus calls DeepSeek a deliberate counter-launch to OpenAI's GPT-5.5 released hours earlier; Google I/O May 18 expected to respond
+
+Full update on GitHub.
