@@ -1,0 +1,14 @@
+AI News - 2026-04-24
+
+TOP STORIES:
+• DeepSeek V4 ships — 1.6T-param open-weight model beats Claude Opus 4.6 on Terminal-Bench 2.0 (67.9% vs 65.4%) at ~1/7 the price
+• Microsoft integrates Anthropic's Claude Mythos into its Security Development Lifecycle — first non-OpenAI model in Microsoft SDL
+• OpenAI briefs US federal agencies and Five Eyes on GPT-5.4-Cyber via Trusted Access program
+
+KEY NUMBERS:
+• DeepSeek V4-Pro: 1.6T params / 49B active, 1M context, $3.48/M output tokens (vs Claude's $25)
+• Omni: $120M Series C at $1.5B valuation (ICONIQ-led, 2.3x March 2025)
+• Cloudsmith: $72M Series C (TCV + Insight, AI-code supply-chain)
+• DeepSeek: >$20B valuation talks w/ Tencent + Alibaba
+
+Full report on GitHub.
