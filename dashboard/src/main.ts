@@ -76,19 +76,26 @@ function timeAgo(date: Date): string {
 }
 
 // ── State ─────────────────────────────────────────────
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage';
+type Manifest = { today: string[]; twitter: string[]; models: string[]; frontpage: string[] };
+
 let currentDate = new Date();
 let searchTerm = '';
-let activeTab: 'twitter' | 'models' | 'frontpage' = 'twitter';
+let activeTab: Tab = 'today';
 let calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 const availabilityCache = new Map<string, Set<string>>();
 let loadRequestId = 0;
 let activeLoadController: AbortController | null = null;
 let searchDebounceId: number | null = null;
+let manifest: Manifest | null = null;
+let manifestPromise: Promise<Manifest | null> | null = null;
+const LOAD_TIMEOUT_MS = 12000;
 
 // ── DOM refs ──────────────────────────────────────────
 const content = document.getElementById('content')!;
 const calendarEl = document.getElementById('calendar')!;
 const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+const searchCountEl = document.getElementById('searchCount')!;
 
 // ── Hash routing ─────────────────────────────────────
 // Format: #tab/YYYY-MM-DD  e.g. #models/2026-02-03, #twitter/2026-01-29
@@ -102,10 +109,9 @@ function updateHash(): void {
 function applyHash(): boolean {
   const hash = location.hash.replace(/^#/, '');
   if (!hash) return false;
-  const match = hash.match(/^(twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
+  const match = hash.match(/^(today|twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
   if (!match) return false;
-  const tab = match[1] as 'twitter' | 'models' | 'frontpage';
-  activeTab = tab;
+  activeTab = match[1] as Tab;
   if (match[2]) {
     const parts = match[2].split('-');
     currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
@@ -145,8 +151,60 @@ function shiftDate(days: number): void {
   load();
 }
 
+// ── Manifest ──────────────────────────────────────────
+async function loadManifest(): Promise<Manifest | null> {
+  if (manifest) return manifest;
+  if (manifestPromise) return manifestPromise;
+  manifestPromise = (async () => {
+    try {
+      const resp = await fetch(`${DATA_BASE}/manifest.json`, { cache: 'no-cache' });
+      if (!resp.ok) return null;
+      const m = (await resp.json()) as Partial<Manifest>;
+      // Normalize: ensure all sources have an array
+      const normalized: Manifest = {
+        today: Array.isArray(m.today) ? m.today : (Array.isArray((m as any).digest) ? (m as any).digest : []),
+        twitter: Array.isArray(m.twitter) ? m.twitter : [],
+        models: Array.isArray(m.models) ? m.models : [],
+        frontpage: Array.isArray(m.frontpage) ? m.frontpage : [],
+      };
+      manifest = normalized;
+      // Pre-populate availability cache from manifest
+      hydrateAvailabilityFromManifest(normalized);
+      return normalized;
+    } catch {
+      return null;
+    }
+  })();
+  return manifestPromise;
+}
+
+function hydrateAvailabilityFromManifest(m: Manifest): void {
+  const tabs: Tab[] = ['today', 'twitter', 'models', 'frontpage'];
+  for (const tab of tabs) {
+    const dates = m[tab];
+    // Group by year-month, populate cache
+    for (const dateStr of dates) {
+      const [y, mo] = dateStr.split('-');
+      const key = `${tab}-${y}-${mo}`;
+      let set = availabilityCache.get(key);
+      if (!set) {
+        set = new Set<string>();
+        availabilityCache.set(key, set);
+      }
+      set.add(dateStr);
+    }
+  }
+}
+
+function manifestDates(tab: Tab): string[] | null {
+  return manifest ? manifest[tab] : null;
+}
+
 // ── Calendar ──────────────────────────────────────────
 function dataUrlForDate(dateStr: string): string {
+  if (activeTab === 'today') {
+    return `${DATA_BASE}/digest/${dateStr}-digest.md`;
+  }
   if (activeTab === 'models') {
     return `${DATA_BASE}/models/${dateStr}-timeline.md`;
   }
@@ -166,26 +224,47 @@ function probeAvailability(year: number, month: number): void {
     renderCalendar();
     return;
   }
+
+  // If manifest is loaded, hydrate already populated this; ensure empty set exists.
+  if (manifest) {
+    if (!availabilityCache.has(key)) {
+      availabilityCache.set(key, new Set<string>());
+    }
+    renderCalendar();
+    return;
+  }
+
+  // No manifest yet — wait for it, then render. Avoids the 404 storm entirely.
   const available = new Set<string>();
   availabilityCache.set(key, available);
-
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const promises: Promise<void>[] = [];
-  for (let d = 1; d <= daysInMonth; d++) {
-    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    const url = dataUrlForDate(dateStr);
-    promises.push(
-      fetch(url, { method: 'HEAD' }).then((resp) => {
-        if (resp.ok) available.add(dateStr);
-      }).catch(() => {})
-    );
-  }
-  Promise.all(promises).then(() => {
-    if (calendarMonth.getFullYear() === year && calendarMonth.getMonth() === month) {
-      renderCalendar();
-    }
-  });
   renderCalendar();
+
+  loadManifest().then((m) => {
+    if (m) {
+      // Hydrate already filled the cache; just re-render if still relevant.
+      if (calendarMonth.getFullYear() === year && calendarMonth.getMonth() === month) {
+        renderCalendar();
+      }
+      return;
+    }
+    // Fallback: manifest unavailable (older deploy). HEAD-probe this month only.
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const promises: Promise<void>[] = [];
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+      const url = dataUrlForDate(dateStr);
+      promises.push(
+        fetch(url, { method: 'HEAD' }).then((resp) => {
+          if (resp.ok) available.add(dateStr);
+        }).catch(() => {}),
+      );
+    }
+    Promise.all(promises).then(() => {
+      if (calendarMonth.getFullYear() === year && calendarMonth.getMonth() === month) {
+        renderCalendar();
+      }
+    });
+  });
 }
 
 function buildCalendarHtml(): string {
@@ -205,8 +284,10 @@ function buildCalendarHtml(): string {
 
   const dows = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   const open = calendarEl.classList.contains('open');
+  const coverage = available.size;
+  const coverageHint = coverage > 0 ? ' · ' + coverage + (coverage === 1 ? ' day' : ' days') : '';
   let html = '<div class="cal-header" data-cal-toggle>';
-  html += '<span class="cal-header-label">' + monthLabel + ' <span class="cal-chevron">' + (open ? '&#9650;' : '&#9660;') + '</span></span>';
+  html += '<span class="cal-header-label">' + monthLabel + '<span class="cal-coverage">' + coverageHint + '</span> <span class="cal-chevron">' + (open ? '&#9650;' : '&#9660;') + '</span></span>';
   html += '<div class="cal-header-nav">';
   html += '<button class="cal-nav-btn" data-cal-nav="-1">&lsaquo;</button>';
   html += '<button class="cal-today-btn" data-cal-today>Today</button>';
@@ -356,6 +437,48 @@ async function fetchModels(dateStr: string, signal: AbortSignal): Promise<string
   }
 }
 
+async function fetchDigest(dateStr: string, signal: AbortSignal): Promise<string | null> {
+  const url = `${DATA_BASE}/digest/${dateStr}-digest.md`;
+  try {
+    const resp = await fetch(url, { signal });
+    if (!resp.ok) return null;
+    return await resp.text();
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') return null;
+    return null;
+  }
+}
+
+/** Find the most recent date <= target that has data in the manifest for this tab. */
+function findMostRecentAvailable(tab: Tab, targetDateStr: string): string | null {
+  const dates = manifestDates(tab);
+  if (!dates || dates.length === 0) return null;
+  // dates is sorted ascending; find largest <= target
+  let best: string | null = null;
+  for (const d of dates) {
+    if (d <= targetDateStr) best = d;
+    else break;
+  }
+  return best;
+}
+
+/** Race a promise against a timeout. Returns 'timeout' if exceeded. */
+function withTimeout<T>(p: Promise<T>, ms: number, controller: AbortController): Promise<T | 'timeout'> {
+  return new Promise((resolve) => {
+    const t = window.setTimeout(() => {
+      controller.abort();
+      resolve('timeout');
+    }, ms);
+    p.then((v) => {
+      window.clearTimeout(t);
+      resolve(v);
+    }).catch(() => {
+      window.clearTimeout(t);
+      resolve('timeout');
+    });
+  });
+}
+
 // ── Rendering ─────────────────────────────────────────
 function showLoading(): void {
   const label = activeTab === 'frontpage' ? 'Loading front page\u2026' : activeTab === 'models' ? 'Loading model timeline\u2026' : 'Loading Twitter report\u2026';
@@ -373,7 +496,9 @@ function showLoading(): void {
 }
 
 function showEmpty(dateStr: string): void {
-  const label = activeTab === 'frontpage'
+  const label = activeTab === 'today'
+    ? 'No digest yet for ' + escapeHtml(dateStr)
+    : activeTab === 'frontpage'
     ? 'No front page for ' + escapeHtml(dateStr)
     : activeTab === 'models'
     ? 'No model timeline for ' + escapeHtml(dateStr)
@@ -385,6 +510,21 @@ function showEmpty(dateStr: string): void {
       '  <div class="empty-state">',
       '    <div class="empty-state-icon">' + DOC_ICON + '</div>',
       '    <div class="empty-state-text">' + label + '</div>',
+      '  </div>',
+      '</div>',
+    ].join('\n'),
+  );
+}
+
+function showError(message: string, hint?: string): void {
+  setSafeContent(
+    content,
+    [
+      '<div class="content-card">',
+      '  <div class="error-state">',
+      '    <div class="error-state-text">' + escapeHtml(message) + '</div>',
+      hint ? '    <div class="error-state-hint">' + escapeHtml(hint) + '</div>' : '',
+      '    <button class="retry-btn" data-retry>Retry</button>',
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -529,7 +669,10 @@ function renderModels(md: string): void {
   setSafeContent(content, cards.join('\n'));
 }
 
-function renderFrontPage(imageUrl: string): void {
+function renderFrontPage(imageUrl: string, fallbackDate: string | null): void {
+  const noteHtml = fallbackDate
+    ? '  <div class="frontpage-fallback-note">Today’s front page auto-generates at 00:30 UTC. Showing ' + escapeHtml(fallbackDate) + ' instead.</div>'
+    : '';
   setSafeContent(
     content,
     [
@@ -537,12 +680,74 @@ function renderFrontPage(imageUrl: string): void {
       '  <div class="content-card-header">',
       '    <div class="content-card-title">THE AI INTELLIGENCER — ' + escapeHtml(displayDate(currentDate)) + '</div>',
       '  </div>',
+      noteHtml,
       '  <div class="content-card-body frontpage-body">',
       '    <img class="frontpage-img" src="' + escapeHtml(imageUrl) + '" alt="Front Page" />',
       '  </div>',
       '</div>',
     ].join('\n'),
   );
+}
+
+/** Render the daily digest. Treats Executive Summary specially as a TL;DR block. */
+function renderToday(md: string): void {
+  const sections = splitSections(md);
+  const cards: string[] = [];
+
+  for (const section of sections) {
+    if (!section.title && !section.body) continue;
+
+    const isSummary = /^(executive summary|tl;dr|tldr|summary)$/i.test(section.title.trim());
+    let html = marked.parse(section.body) as string;
+    html = wrapTables(html);
+
+    html = html.replace(
+      /(?<!\w)(@\w+)/g,
+      '<span class="handle">$1</span>',
+    );
+
+    if (searchTerm) {
+      const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp('(' + escaped + ')', 'gi');
+      html = html.replace(re, '<mark>$1</mark>');
+    }
+
+    const title = section.title || displayDate(currentDate);
+
+    if (isSummary) {
+      // Render as TL;DR block (lead card)
+      cards.push(
+        [
+          '<div class="content-card today-card">',
+          '  <div class="content-card-header">',
+          '    <div class="content-card-title">' + escapeHtml(displayDate(currentDate)) + '</div>',
+          '  </div>',
+          '  <div class="content-card-body">',
+          '    <div class="today-tldr">',
+          '      <span class="today-tldr-label">TL;DR</span>',
+          '      <div class="md-content">' + html + '</div>',
+          '    </div>',
+          '  </div>',
+          '</div>',
+        ].join('\n'),
+      );
+    } else {
+      cards.push(
+        [
+          '<div class="content-card">',
+          '  <div class="content-card-header">',
+          '    <div class="content-card-title">' + escapeHtml(title) + '</div>',
+          '  </div>',
+          '  <div class="content-card-body">',
+          '    <div class="md-content">' + html + '</div>',
+          '  </div>',
+          '</div>',
+        ].join('\n'),
+      );
+    }
+  }
+
+  setSafeContent(content, cards.join('\n'));
 }
 
 // ── Main load ─────────────────────────────────────────
@@ -558,26 +763,65 @@ async function load(): Promise<void> {
 
   try {
     if (activeTab === 'frontpage') {
-      const url = await fetchFrontPage(dateStr, controller.signal);
-      if (controller.signal.aborted || requestId !== loadRequestId) return;
-      if (url) {
-        renderFrontPage(url);
+      const result = await withTimeout(fetchFrontPage(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
+      if (requestId !== loadRequestId) return;
+      if (result === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (result) {
+        renderFrontPage(result, null);
       } else {
-        showEmpty(dateStr);
+        // Front page missing for today — fall back to the most recent available
+        const fallback = findMostRecentAvailable('frontpage', dateStr);
+        if (fallback && fallback !== dateStr) {
+          const fallbackUrl = `${DATA_BASE}/front-page/${fallback}-front-page.png`;
+          renderFrontPage(fallbackUrl, fallback);
+        } else {
+          showEmpty(dateStr);
+        }
       }
     } else if (activeTab === 'models') {
-      const md = await fetchModels(dateStr, controller.signal);
-      if (controller.signal.aborted || requestId !== loadRequestId) return;
-      if (md) {
-        renderModels(md);
+      const result = await withTimeout(fetchModels(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
+      if (requestId !== loadRequestId) return;
+      if (result === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (result) {
+        renderModels(result);
       } else {
         showEmpty(dateStr);
       }
+    } else if (activeTab === 'today') {
+      const result = await withTimeout(fetchDigest(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
+      if (requestId !== loadRequestId) return;
+      if (result === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (result) {
+        renderToday(result);
+      } else {
+        // Digest missing — fall back to most recent
+        const fallback = findMostRecentAvailable('today', dateStr);
+        if (fallback && fallback !== dateStr) {
+          const fallbackMd = await fetchDigest(fallback, controller.signal);
+          if (fallbackMd) {
+            renderToday(fallbackMd);
+            // Tweak the lead card with a fallback note
+            const lead = content.querySelector('.today-card .content-card-title');
+            if (lead) {
+              lead.textContent = displayDate(currentDate) + ' · digest from ' + fallback;
+            }
+          } else {
+            showEmpty(dateStr);
+          }
+        } else {
+          showEmpty(dateStr);
+        }
+      }
     } else {
-      const md = await fetchTwitter(dateStr, controller.signal);
-      if (controller.signal.aborted || requestId !== loadRequestId) return;
-      if (md) {
-        renderReport(md);
+      const result = await withTimeout(fetchTwitter(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
+      if (requestId !== loadRequestId) return;
+      if (result === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (result) {
+        renderReport(result);
       } else {
         showEmpty(dateStr);
       }
@@ -586,6 +830,7 @@ async function load(): Promise<void> {
     renderCalendar();
     currentSection = 0;
     updateNavCounter();
+    updateSearchCount();
   } finally {
     if (activeLoadController === controller) {
       activeLoadController = null;
@@ -603,11 +848,32 @@ function getCards(): HTMLElement[] {
 
 function updateNavCounter(): void {
   const cards = getCards();
-  if (cards.length > 0) {
-    navCounter.textContent = (currentSection + 1) + '/' + cards.length;
-  } else {
-    navCounter.textContent = '';
+  while (navCounter.firstChild) navCounter.removeChild(navCounter.firstChild);
+  if (cards.length === 0) return;
+  const card = cards[currentSection];
+  const titleEl = card?.querySelector('.content-card-title');
+  const titleText = (titleEl?.textContent || '').trim();
+  const shortTitle = titleText.length > 18 ? titleText.slice(0, 16) + '…' : titleText;
+  if (shortTitle) {
+    const labelSpan = document.createElement('span');
+    labelSpan.className = 'section-nav-counter-label';
+    labelSpan.textContent = shortTitle;
+    navCounter.appendChild(labelSpan);
   }
+  const numSpan = document.createElement('span');
+  numSpan.className = 'section-nav-counter-num';
+  numSpan.textContent = (currentSection + 1) + '/' + cards.length;
+  navCounter.appendChild(numSpan);
+}
+
+function updateSearchCount(): void {
+  if (!searchTerm) {
+    searchCountEl.textContent = '';
+    return;
+  }
+  const matches = content.querySelectorAll('mark').length;
+  const cards = getCards().length;
+  searchCountEl.textContent = matches === 0 ? '0 matches' : matches + ' in ' + cards;
 }
 
 function scrollToSection(index: number): void {
@@ -635,6 +901,14 @@ searchInput.addEventListener('input', () => {
     searchTerm = searchInput.value.trim();
     load();
   }, 180);
+});
+
+// Retry button (event delegation on content)
+content.addEventListener('click', (e) => {
+  const target = e.target as HTMLElement;
+  if (target.closest('[data-retry]')) {
+    load();
+  }
 });
 
 document.getElementById('refreshBtn')!.addEventListener('click', () => {
@@ -700,6 +974,8 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
 
 // ── Init ──────────────────────────────────────────────
 calendarEl.addEventListener('click', handleCalendarClick);
+// Kick off manifest fetch early so calendar + fallback logic have data ASAP.
+loadManifest();
 applyHash();
 probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 load();

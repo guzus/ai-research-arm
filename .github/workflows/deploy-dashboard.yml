@@ -8,6 +8,7 @@ on:
       - 'research/twitter/**'
       - 'research/models/**'
       - 'research/front-page/**'
+      - 'research/digest/**'
   workflow_dispatch:
 
 permissions:
@@ -44,6 +45,36 @@ jobs:
           cp -r research/twitter dashboard/public/research/
           cp -r research/models dashboard/public/research/
           cp -r research/front-page dashboard/public/research/
+          [ -d research/digest ] && cp -r research/digest dashboard/public/research/ || true
+
+      # Build a manifest of available dates per source so the dashboard can avoid
+      # the HEAD-probe storm against missing daily files.
+      - name: Generate manifest.json
+        run: |
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+
+          base = Path('dashboard/public/research')
+          patterns = {
+            'twitter':   (base / 'twitter',    re.compile(r'^(\d{4}-\d{2}-\d{2})\.md$')),
+            'models':    (base / 'models',     re.compile(r'^(\d{4}-\d{2}-\d{2})-timeline\.md$')),
+            'frontpage': (base / 'front-page', re.compile(r'^(\d{4}-\d{2}-\d{2})-front-page\.png$')),
+            'today':     (base / 'digest',     re.compile(r'^(\d{4}-\d{2}-\d{2})-digest\.md$')),
+          }
+          manifest = {}
+          for key, (dir_, pat) in patterns.items():
+              dates = []
+              if dir_.exists():
+                  for f in dir_.iterdir():
+                      m = pat.match(f.name)
+                      if m:
+                          dates.append(m.group(1))
+              manifest[key] = sorted(set(dates))
+          (base / 'manifest.json').write_text(json.dumps(manifest, separators=(',', ':')))
+          counts = {k: len(v) for k, v in manifest.items()}
+          print(f'manifest.json: {counts}')
+          PY
 
       - name: Build
         working-directory: dashboard
