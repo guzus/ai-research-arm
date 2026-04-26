@@ -1,0 +1,16 @@
+AI News - 2026-04-26
+
+TOP STORIES:
+• Cohere acquires Germany's Aleph Alpha at ~$20B; Schwarz Group €500M anchor — first transatlantic sovereign-AI play
+• Musk drops fraud claims vs OpenAI; only 2 of 26 claims survive. Jury selection Monday April 27 in Oakland
+• Sora consumer app shuts down today; ~$1M/day compute burn; $1B Disney deal collapses. API sunsets Sept 24
+• Anthropic publishes Project Deal: 186 agent-on-agent trades, $4K+ in real goods; Opus beats Haiku in negotiations
+• Trump AI exec order misses 3 federal deadlines (FTC, Commerce) per Axios
+
+KEY NUMBERS:
+• Cohere/Aleph Alpha: $20B, 90/10 split
+• Musk-Altman: 26 → 2 claims
+• Apr 1-25: 1,314 deals, 764 AI
+• EU AI Act: T-99 days
+
+Full report on GitHub.
