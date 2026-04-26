@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-04-26 15:53 UTC
+
+WHAT'S BUZZING:
+• Sam Altman: GPT-5.5 in Codex so good he's joking about polyphasic sleep; calls for "a protocol equally usable by people and agents" — rethinking OS/UI/internet
+• Hyundai Motor Securities: NVIDIA Rubin Ultra likely slips to 1H 2028; Google TPU shipments 2.8M → 3.6M → 4.0M units (2025–2027)
+• South Africa withdraws National AI Policy after doc found to contain AI-hallucinated citations
+
+NOTABLE:
+• Bubeck (OpenAI), RT'd by sama: GPT-5.5 in Codex "compresses 2 weeks of our previous jobs to 1 day"
+• rasbt: April LLM Architecture Gallery adds Gemma 4, GLM-5.1, Qwen3.6, Kimi K2.6, DeepSeek V4
+
+Full update on GitHub.
