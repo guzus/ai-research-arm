@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-26 19:10 UTC
+
+WHAT'S BUZZING:
+• Unauthorized access to Anthropic's gated Claude Mythos model + a brief OpenAI leak — @theinformation calls it the canonical "AI escape" warning of the week
+• DeepSeek permanently cuts cached input prices 10× across the API — now 139× cheaper than GPT-5.5, 83× cheaper than Claude Sonnet 4.6
+• Sam Altman's "rethink OS/UI for agents" post now at 6.5K likes — calling for a protocol "equally usable by people and agents"
+
+NOTABLE:
+• WWDC 2026 anticipation hardening: Gemini-in-iOS + new Apple CEO are the dominant expectations; Anthropic compute-shortage narrative now widely seen as solved by Friday's $40B Google deal
+
+Full update on GitHub.
