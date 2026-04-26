@@ -227,15 +227,16 @@ jobs:
           git pull --rebase || true
           git push || echo "Nothing to push"
 
-      # Send front page image to Telegram
-      - name: Send front page to Telegram
+      # Publish front page image via hooker (routes to Telegram thread)
+      - name: Publish front page via hooker
         if: steps.check.outputs.exists == 'true' && success()
         continue-on-error: true
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
           REPO: ${{ github.repository }}
           TODAY: ${{ steps.date.outputs.date }}
+          RUN_ID: ${{ github.run_id }}
         run: |
           PNG="research/front-page/${TODAY}-front-page.png"
           DIGEST_URL="https://github.com/${REPO}/blob/main/research/digest/${TODAY}-digest.md"
@@ -245,8 +246,10 @@ jobs:
 
           📄 Full digest: ${DIGEST_URL}"
 
-          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto" \
-            -F "chat_id=${TELEGRAM_CHAT_ID}" \
+          curl -sS -X POST "${HOOKER_URL}/publish/front-page/photo" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -H "Idempotency-Key: front-page-${TODAY}-${RUN_ID}" \
             -F "photo=@${PNG}" \
             -F "caption=${CAPTION}" \
-            -F "parse_mode=Markdown"
+            -F "title=AI Intelligencer ${TODAY}" \
+            -F "tags=front-page,daily"
