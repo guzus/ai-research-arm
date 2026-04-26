@@ -246,10 +246,11 @@ jobs:
 
           📄 Full digest: ${DIGEST_URL}"
 
-          curl -sS -X POST "${HOOKER_URL}/publish/front-page/photo" \
+          # Send as document (not photo) so Telegram doesn't downscale to ~1280px
+          curl -sS -X POST "${HOOKER_URL}/publish/front-page/document" \
             -H "Authorization: Bearer ${HOOKER_TOKEN}" \
             -H "Idempotency-Key: front-page-${TODAY}-${RUN_ID}" \
-            -F "photo=@${PNG}" \
+            -F "document=@${PNG}" \
             -F "caption=${CAPTION}" \
             -F "title=AI Intelligencer ${TODAY}" \
             -F "tags=front-page,daily"
