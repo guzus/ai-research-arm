@@ -288,63 +288,74 @@ jobs:
           claude_args: |
             --model sonnet --allowedTools "Read,Write,Edit,Bash(git:*)"
           prompt: |
-            You are writing the daily ARA broadcast — a hosted, conversational AI-news
-            briefing. ARA stands for AI Research Arm. Read the digest summary, rewrite it
-            as a SPOKEN briefing of about 60 to 90 seconds, and write the result to disk.
-            Go straight to the news; no warm-up, no welcome speech, no host introduction.
+            You are writing the daily ARA broadcast — a TWO-HOST AI-news podcast
+            with banter between Speaker 1 (anchor, deep voice) and Speaker 2
+            (co-host, energetic voice). ARA stands for AI Research Arm. Read the
+            digest summary, rewrite it as a TWO-HOST SPOKEN briefing of about 60
+            to 90 seconds, and write the result to disk. Go straight to the news;
+            no warm-up, no host introductions, no "welcome to" preamble.
 
             INPUT: research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             OUTPUT: research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
 
             STEP 1 — Read the input file. If it doesn't exist or is empty, exit cleanly.
 
-            STEP 2 — Compose the spoken briefing under these rules:
-            - Open with JUST the date spelled out naturally (e.g., "Monday, April twenty
-              seventh, twenty twenty six.") — no greeting, no "welcome to" preamble, no
-              "I'm your host", no "this is the ARA broadcast". The date stands alone as
-              the opening line.
-            - Sentence two lands directly on the lead story (e.g., "Anthropic's Mythos
-              model has been breached..." or "Big news at the top: ..."). Substance immediately.
-            - NEVER read a date digit-by-digit ("two zero two six dash zero four dash two
-              seven" is forbidden).
-            - Connect items with light conversational glue ("Big news at the top...",
-              "Some quick numbers...", "Trending today...", "Market snapshot..."). Keep tight.
-            - Brand: NEVER mention TBPN, NPR, CNN, or any other publication's name. Do not
-              invent a host name. The "ARA" brand only surfaces in the brief sign-off.
-            - Spell out ALL numbers, currency, units, and model versions in spoken form:
+            STEP 2 — Compose the two-host briefing under these rules:
+
+            FORMAT (mandatory):
+            - EVERY line begins with `Speaker 1:` or `Speaker 2:` followed by their
+              dialogue. No exceptions, no narrator lines, no parentheticals.
+            - Open with `Speaker 1:` saying ONLY the date naturally (e.g.,
+              "Speaker 1: Monday, April twenty-eighth, twenty twenty-six.").
+            - `Speaker 2:` picks up the lead story immediately — no "welcome",
+              no host introductions.
+            - Alternate speakers naturally as if they're handing off — Speaker 1
+              anchors transitions ("Some quick numbers...", "On the policy front..."),
+              Speaker 2 brings energy on big stories and reactions ("That's the
+              first time we've seen...", "Worth noting that...").
+            - Aim for 8 to 14 total lines across both speakers. Tight banter beats
+              long monologues. Each line is a complete sentence or two — not just
+              acknowledgement noises.
+            - End with `Speaker 1:` (or `Speaker 2:`) delivering one short sign-off
+              line: "That is your ARA broadcast — full digest on GitHub." or
+              similar single sentence. No long outro.
+
+            CONTENT RULES (apply to whichever speaker's line):
+            - NEVER read a date digit-by-digit ("two zero two six dash zero four
+              dash two seven" is forbidden).
+            - Brand: NEVER mention TBPN, NPR, CNN, or any other publication. Do
+              not invent host names — speakers stay anonymous. "ARA" only surfaces
+              in the brief sign-off.
+            - Spell out ALL numbers, currency, units, model versions in spoken form:
               "$10B" -> "ten billion dollars", "5GW" -> "five gigawatts", "400K" ->
-              "four hundred thousand", "10x" -> "ten times", "GPT-5.5" -> "GPT five point
-              five", "Sonnet 4.5" -> "Sonnet four point five".
+              "four hundred thousand", "10x" -> "ten times", "GPT-5.5" -> "GPT five
+              point five", "Sonnet 4.5" -> "Sonnet four point five".
             - Replace symbols inline: × -> "times", & -> "and", em-dash -> comma.
             - Drop bullets and markdown — pure prose, complete sentences only.
-            - Pronounce proper nouns naturally; leave names like Hunyuan, Bubeck, DeepSeek
-              as written. Use IPA-style hints only if a name is widely mispronounced.
-            - End with one short sign-off line: "That is your ARA broadcast — full digest
-              on GitHub." or similar single sentence. No long outro.
+            - Pronounce proper nouns naturally; leave names like Hunyuan, Bubeck,
+              DeepSeek as written.
 
             STEP 2b — INLINE AUDIO TAGS for podcast-style prosody. The TTS engine
-            downstream is Gemini 3.1 Flash TTS, which honors these tags inline. Use
-            them SPARINGLY (3 to 6 total per briefing) for maximum impact — overuse
-            flattens the effect:
-            - `[high_energy]` once at the very start of the briefing OR right before
-              the lead story for impact. Use at most twice total.
-            - `[emphasis]TEXT[/emphasis]` around the most important data points
-              (large dollar amounts, percentages, multi-X comparisons). Examples:
-              "[emphasis]two billion dollars[/emphasis]", "[emphasis]ten times[/emphasis]
-              cheaper", "[emphasis]four hundred thousand jobs[/emphasis]". Pick the
-              top 2 to 3 numbers in the whole briefing — not every number.
-            - `[dramatic_pause]` 0 to 1 times before a punchline or shocking reveal.
-            Do NOT tag every number. Do NOT wrap the entire briefing. Tags should feel
-            like a senior podcast host emphasizing the moments that matter.
+            downstream is Gemini 3.1 Flash TTS, which honors these inline. Use
+            them SPARINGLY (3 to 6 total per briefing) on the highest-impact moments:
+            - `[high_energy]` once or twice — usually on Speaker 2's lead-story
+              line or a major reveal.
+            - `[emphasis]TEXT[/emphasis]` around the top 2 to 3 numbers/dollars
+              of the whole briefing. Example: "[emphasis] one hundred fifty
+              billion dollars [/emphasis]".
+            - `[dramatic_pause]` 0 to 1 times before a punchline.
+            Tags go INSIDE a Speaker line, not on their own line. Do NOT tag every
+            number. Tags should feel like the host emphasizing the moments that matter.
 
-            STEP 3 — Use the Write tool to save the spoken script (and ONLY the script
-            text, no preamble, no markdown fences, no quotation marks wrapping the whole
-            thing) to:
+            STEP 3 — Use the Write tool to save the spoken script. The file must
+            contain ONLY `Speaker N:` prefixed lines (and audio tags inline). No
+            preamble, no markdown fences, no quotation marks wrapping anything,
+            no narrator lines. Save to:
             research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
 
             STEP 4 — Commit:
             git add research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
-            git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA, Claude Sonnet rewrite)" || echo "No changes"
+            git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA two-host, Claude Sonnet rewrite)" || echo "No changes"
 
       - name: Generate audio digest with Gemini 3.1 Flash TTS
         if: success()
@@ -415,13 +426,21 @@ jobs:
             s/\xE2\x80\x9D/"/g
           ' "$INPUT_FILE")
 
+          # Two-host config: Speaker 1 = Charon (deep, informative anchor),
+          # Speaker 2 = Puck (energetic, conversational co-host). The Sonnet
+          # rewrite step labels every line "Speaker 1:" / "Speaker 2:" so Gemini
+          # routes each line to the right voice. Audio tags work in either
+          # single- or multi-speaker mode.
           BODY=$(jq -n --arg text "$NORMALIZED" '{
             contents: [{parts: [{text: $text}]}],
             generationConfig: {
               responseModalities: ["AUDIO"],
               speechConfig: {
-                voiceConfig: {
-                  prebuiltVoiceConfig: {voiceName: "Kore"}
+                multiSpeakerVoiceConfig: {
+                  speakerVoiceConfigs: [
+                    {speaker: "Speaker 1", voiceConfig: {prebuiltVoiceConfig: {voiceName: "Charon"}}},
+                    {speaker: "Speaker 2", voiceConfig: {prebuiltVoiceConfig: {voiceName: "Puck"}}}
+                  ]
                 }
               }
             }
@@ -468,7 +487,7 @@ jobs:
           echo "Generated $AUDIO_FILE — ${SIZE} bytes (~${DURATION_S}s of audio)"
 
           git add "$AUDIO_FILE"
-          git commit -m "Audio digest ${DATE} (Gemini 3.1 Flash TTS, voice=Kore, 48kbps mono mp3, ${SIZE}b)" || echo "No audio changes to commit"
+          git commit -m "Audio digest ${DATE} (Gemini 3.1 TTS two-host: Charon+Puck, mp3 ${SIZE}b)" || echo "No audio changes to commit"
 
       - name: Push changes
         env:
