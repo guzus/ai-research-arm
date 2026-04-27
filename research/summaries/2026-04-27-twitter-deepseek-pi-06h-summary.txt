@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (pi + DeepSeek) - 2026-04-27 06:25 UTC
+
+CYCLE: Pre-dawn lull — GPT-5.5 afterglow + Anthropic compute war chest + DeepSeek price cuts. No breaking news. Big Tech earnings (Apr 29-30) are the next catalyst.
+
+TOP STORIES:
+• GPT-5.5 + Workspace Agents rollout matures; Altman signals OS-level ambition (rethink UI/OS) [✓]
+• Anthropic locks $5B from Amazon + 5GW compute; launches Project Glasswing (Claude Mythos for vuln discovery) [✓]
+• DeepSeek V4 permanently cuts cache prices 10x; Ollama Cloud adds V4 Pro — price war escalates [✓]
+• Mistral launches Voxtral TTS (open-weight ElevenLabs alternative) + Forge (enterprise model builder) [✓]
+
+WATCH: Big Tech earnings (Google Apr 29, Amazon/Meta/Microsoft Apr 30) — AI capex under the microscope.
+
+Full brief on GitHub.
