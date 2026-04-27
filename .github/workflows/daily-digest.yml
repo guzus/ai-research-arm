@@ -456,7 +456,7 @@ jobs:
             "$DATE" "$SUMMARY_BODY" "$DIGEST_URL")
 
           if [ -f "$AUDIO_FILE" ]; then
-            echo "Sending sendAudio with $AUDIO_FILE ($(wc -c < "$AUDIO_FILE") bytes)..."
+            echo "Sending sendAudio to Telegram bot (CHAT_ID redacted) with $AUDIO_FILE ($(wc -c < "$AUDIO_FILE") bytes)..."
             HTTP=$(curl -sS -w "%{http_code}" -o /tmp/tg-resp.json \
               -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendAudio" \
               -F "chat_id=${TELEGRAM_CHAT_ID}" \
@@ -466,18 +466,28 @@ jobs:
               -F "parse_mode=Markdown" \
               -F "caption=${CAPTION}")
 
-            if [ "$HTTP" != "200" ]; then
-              echo "Telegram sendAudio returned HTTP $HTTP — body:"
-              cat /tmp/tg-resp.json
-              echo ""
-              echo "Falling back to text-only sendMessage..."
+            # Log the full response body always — Telegram can return HTTP 200
+            # with `{"ok":false}` for things like markdown parse errors or chat
+            # permission issues, which previously failed silently.
+            echo "Telegram sendAudio response (HTTP $HTTP):"
+            cat /tmp/tg-resp.json
+            echo ""
+
+            OK=$(jq -r '.ok // false' /tmp/tg-resp.json 2>/dev/null || echo false)
+            if [ "$HTTP" != "200" ] || [ "$OK" != "true" ]; then
+              echo "sendAudio failed — falling back to text-only sendMessage..."
               curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
                 --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
                 --data-urlencode "text=${CAPTION}" \
                 -d "parse_mode=Markdown" \
                 -d "disable_web_page_preview=true" >/dev/null
             else
-              echo "Telegram sendAudio OK"
+              # Confirm what chat the message landed in (helps diagnose
+              # "audio went somewhere I'm not watching" failures).
+              CHAT_TYPE=$(jq -r '.result.chat.type // "?"' /tmp/tg-resp.json)
+              CHAT_TITLE=$(jq -r '.result.chat.title // .result.chat.first_name // "?"' /tmp/tg-resp.json)
+              MSG_ID=$(jq -r '.result.message_id // "?"' /tmp/tg-resp.json)
+              echo "Telegram sendAudio OK — message_id=$MSG_ID, chat type=$CHAT_TYPE, title=\"$CHAT_TITLE\""
             fi
           else
             echo "No audio file at $AUDIO_FILE — sending text-only sendMessage"
@@ -487,3 +497,56 @@ jobs:
               -d "parse_mode=Markdown" \
               -d "disable_web_page_preview=true" >/dev/null
           fi
+
+      - name: Send audio to Hooker (parallel delivery channel)
+        if: success()
+        continue-on-error: true
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          DATE: ${{ steps.date.outputs.date }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Parallel delivery: post the ARA broadcast MP3 to hooker.guzus.xyz,
+          # which forwards it to whatever Telegram channel hooker is configured
+          # for. The user watches the hooker channel; the direct Telegram bot
+          # above goes to a different chat. Same audio reaches both.
+
+          AUDIO_FILE="research/audio/${DATE}-digest.mp3"
+          SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
+          DIGEST_URL="https://github.com/${REPO}/blob/main/research/digest/${DATE}-digest.md"
+
+          if [ -z "$HOOKER_URL" ] || [ -z "$HOOKER_TOKEN" ]; then
+            echo "Hooker credentials missing — skipping hooker delivery"
+            exit 0
+          fi
+
+          if [ ! -f "$AUDIO_FILE" ]; then
+            echo "No audio file — skipping hooker delivery"
+            exit 0
+          fi
+
+          if [ -f "$SUMMARY_FILE" ]; then
+            SUMMARY_BODY=$(head -c 700 "$SUMMARY_FILE")
+          else
+            SUMMARY_BODY=""
+          fi
+
+          # Hooker caption max is 1000 chars by default (Telegram document caption ≤1024).
+          CAPTION=$(printf '🎙️ ARA broadcast — %s\n\n%s\n\n📄 Full digest: %s' \
+            "$DATE" "$SUMMARY_BODY" "$DIGEST_URL")
+
+          echo "Sending audio to Hooker (topic=ai-research)..."
+          HTTP=$(curl -sS -w "%{http_code}" -o /tmp/hooker-resp.json \
+            -X POST "${HOOKER_URL}/publish/ai-research/document" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -F "document=@${AUDIO_FILE}" \
+            -F "caption=${CAPTION}" \
+            -F "title=ARA broadcast ${DATE}" \
+            -F "priority=3" \
+            -F "tags=ai-research,audio,daily-digest" \
+            -F "parse_mode=Markdown")
+
+          echo "Hooker response (HTTP $HTTP):"
+          cat /tmp/hooker-resp.json
+          echo ""
