@@ -1,15 +1,16 @@
 Daily AI Digest - 2026-04-27
 
 TOP STORIES:
-• Anthropic Mythos breached — first public report of unauthorized access to a gated, unreleased frontier model (per The Information)
-• DeepSeek permanently cuts cached-input API prices 10× — now 139× cheaper than GPT-5.5
-• Tencent ships Hunyuan Hy3 Preview across all Tencent products; claims "fewer bugs than Sonnet 4.5" on coding
+• The Information: unauthorized access to Anthropic's gated "Mythos" model + brief OpenAI leak — first confirmed exfiltration on a pre-release frontier model
+• Musk v. OpenAI trial opens today; Kalshi has Musk's odds ~50%
+• Kuo: OpenAI partnering with MediaTek/Qualcomm on chips; Luxshare exclusive on "AI Agent" phone
+• DeepSeek cuts cached-input prices 10×; Tencent ships Hunyuan Hy3
 
 KEY NUMBERS:
-• Google–Anthropic deal: $10B at $350B valuation + up to $30B more + 5GW TPU compute
-• GPT-5.5 in Codex: "2 weeks of work compressed to 1 day" (Bubeck, OpenAI)
+• DeepSeek now 139× cheaper than GPT-5.5 on cached input
 • S&P 500 headcount fell 400K in 2025 — first decline since 2016
+• Google–Anthropic: $10B at $350B + up to $30B + 5GW TPU
 
-TRENDING: "Developers Switch to GPT-5.5 and Codex Over Claude" — 11K X posts; SWE-bench declared saturated by both vendor and community.
+TRENDING: Amateur solves Erdős problem with ChatGPT (HN 749 pts)
 
 Full digest on GitHub.
