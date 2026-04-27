@@ -1,17 +1,16 @@
 Daily AI Digest - 2026-04-27
 
 TOP STORIES:
-• China NDRC blocks Meta's $2B Manus deal; founders barred from leaving since March
-• The Information: unauthorized access to Anthropic's pre-release Mythos + brief OpenAI leak
-• DeepSeek cuts cached input prices 10x — 139x cheaper than GPT-5.5, 83x cheaper than Sonnet 4.6
-• Musk v. OpenAI trial opens today; Kalshi pegs Musk's odds ~50%
-• Kuo: OpenAI co-designing AI-Agent phone with MediaTek/Qualcomm; Luxshare exclusive
+• Musk v. Altman trial opens in Oakland — Brockman's unsealed diary becomes plaintiff's smoking gun; ~$150B at stake
+• Altman apologizes to Tumbler Ridge, BC — OpenAI staff recommended reporting shooter's ChatGPT account in June 2025; leadership overruled them
+• US State Dept global cable names DeepSeek, Moonshot, MiniMax for distillation/IP-theft outreach
+• China blocks Meta–Manus $2B deal; bars US capital in Chinese AI startups
+• DeepSeek V4 cached input prices cut 10x — 139x cheaper than GPT-5.5
 
 KEY NUMBERS:
-• DeepSeek V4: 1.6T / 49B active / 1M ctx — now on HF, Ollama, Alibaba Cloud
-• Google–Anthropic: $10B at $350B + up to $30B + 5GW TPU
+• Google–Anthropic: $10B at $350B + $30B contingent + 5GW TPU; Anthropic ARR $30B
 • HN: DeepSeek v4 2,062 pts; GPT-5.5 1,566 pts
 
-TRENDING: Cursor/Claude agent deletes prod DB in 9 seconds — agent ops-trust hardens
+TRENDING: AI agent deletes prod DB — 720-comment HN debate on agent blast radius.
 
 Full digest on GitHub.
