@@ -1,0 +1,18 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-04-27 05:16 UTC
+
+CYCLE: Pre-dawn lull. Ollama Cloud adds DeepSeek V4 Pro; Cohere-Aleph Alpha merger reverberates.
+
+TOP STORIES:
+• Ollama Cloud adds DeepSeek V4 Pro enabling Claude Code, Hermes, Codex integration via one-command launch — bringing MIT-licensed frontier model to hybrid local/cloud workflows [✓]
+• Cohere + Aleph Alpha merge at ~EUR 6.8B backed by Schwarz Group, targeting $20B sovereign AI valuation — Canada-Germany transatlantic alternative to US hyperscalers [⚠]
+
+QUICK HITS:
+• AI models (GPT-5.4, Opus 4.6) fail junior IB tasks — zero AI outputs rated client-ready
+• OpenAI + MediaTek/Qualcomm signal AI-first phone ambitions
+• Trump fired all 24 National Science Board members by email — NSF AI research pipeline at risk
+
+🚩 23-year-old Erdos problem solved with ChatGPT claim — zero corroboration, no preprint
+
+WATCH: Cohere/Aleph Alpha official press release; Big Tech earnings (Apr 29-30); NSF response to board firings
+
+Full brief on GitHub.
