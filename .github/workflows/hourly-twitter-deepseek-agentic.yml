@@ -210,6 +210,62 @@ jobs:
           echo ""
           echo "Pre-filter summary: $total_before → $total_after tweets (-${pct}%)"
 
+      - name: Start birdy daemon (warm bird API for agent follow-ups)
+        env:
+          BIRDY_ACCOUNTS: '[{"name":"ci","auth_token":"${{ secrets.BIRD_AUTH_TOKEN }}","ct0":"${{ secrets.BIRD_CT0 }}"}]'
+        run: |
+          # Start the birdy daemon (v0.10.0) on localhost:8080. The agentic
+          # browsing pass below issues 3-10 follow-up bird queries during the
+          # LLM step — each one would normally pay ~1.5s of bird-CLI startup.
+          # The daemon holds warm auth + account-rotation, so each follow-up
+          # is ~300ms (network only). Translates to ~10-15s saved on busy cycles.
+          nohup birdy daemon --addr 127.0.0.1:8080 --concurrency 8 --cache-ttl 60s \
+            > /tmp/birdy-daemon.log 2>&1 &
+          echo $! > /tmp/birdy-daemon.pid
+
+          # Wait up to 10s for /health to return ok:true
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            sleep 1
+            if curl -fsS http://127.0.0.1:8080/health 2>/dev/null | grep -q '"ok":true'; then
+              echo "✓ birdy daemon up: $(curl -sS http://127.0.0.1:8080/health)"
+              exit 0
+            fi
+          done
+          echo "✗ birdy daemon did not become healthy in 10s — daemon log:"
+          cat /tmp/birdy-daemon.log
+          exit 1
+
+      - name: Install bird-fast wrapper (calls daemon)
+        run: |
+          # bird-fast: a drop-in shim that takes the same args as `bird` but
+          # forwards them to the local daemon's POST /run endpoint. Same JSON
+          # output on stdout. Lets the LLM keep its existing mental model
+          # ("bird search ...") while paying daemon-speed latency.
+          sudo tee /usr/local/bin/bird-fast > /dev/null <<'WRAPPER'
+          #!/bin/bash
+          set -e
+          DAEMON_URL="${BIRDY_DAEMON_URL:-http://127.0.0.1:8080}"
+          # Build {"args": [...]} from $@ via jq — handles quoting/escaping correctly.
+          PAYLOAD=$(printf '%s\n' "$@" | jq -Rs '{args: split("\n") | map(select(length > 0))}')
+          RESP=$(curl -sS -X POST "${DAEMON_URL}/run" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD")
+          OK=$(echo "$RESP" | jq -r '.ok // false')
+          if [ "$OK" = "true" ]; then
+            EXIT=$(echo "$RESP" | jq -r '.exit_code // 0')
+            echo "$RESP" | jq -r '.stdout // ""'
+            STDERR=$(echo "$RESP" | jq -r '.stderr // ""')
+            [ -n "$STDERR" ] && printf '%s' "$STDERR" >&2
+            exit "$EXIT"
+          else
+            echo "$RESP" | jq -r '.error // "unknown daemon error"' >&2
+            exit 1
+          fi
+          WRAPPER
+          sudo chmod +x /usr/local/bin/bird-fast
+          # Sanity check: should round-trip through the daemon
+          bird-fast whoami 2>&1 | head -3 || echo "(bird-fast wrapper installed)"
+
       - name: Process tweets with DeepSeek v4 Pro
         uses: anthropics/claude-code-action@v1
         env:
@@ -234,7 +290,7 @@ jobs:
           # is set, so the OAuth token is effectively ignored.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*),Bash(curl:*),Bash(jq:*)"
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*),Bash(bird-fast:*),Bash(curl:*),Bash(jq:*)"
           prompt: |
             You are a senior AI research analyst running on DeepSeek v4 Pro.
 
@@ -260,11 +316,20 @@ jobs:
             - news.json — trending AI news
 
             TOOLS YOU CAN USE (already in your allowed list):
-            - `bird search "query" -n 30 --json --plain` — search live for a story keyword
-            - `bird user-tweets "@handle" -n 20 --json --plain` — read a specific account
-            - `bird tweet <tweet_id> --json --plain` — fetch one tweet
-            - `bird thread <tweet_id> --json --plain` — fetch a full thread
-            - `curl -sSL <url>` — fetch a primary source (paper abstract, blog post, official statement)
+            - **PREFER `bird-fast`** for ALL follow-up X/Twitter queries. It's a
+              drop-in shim for `bird` that routes through a local daemon
+              (sub-second response vs `bird` cold-start ~1.5s). Same args:
+                `bird-fast search "query" -n 30 --json --plain`
+                `bird-fast user-tweets "@handle" -n 20 --json --plain`
+                `bird-fast tweet <tweet_id> --json --plain`
+                `bird-fast thread <tweet_id> --json --plain`
+              Because `bird-fast` is cheap, don't ration calls — verify whenever
+              you're uncertain. Don't over-think individual calls; issue them
+              fluidly the way a junior researcher would. The synthesis is
+              what should be deep, not the data fetching.
+            - `bird ...` (slower fallback if daemon is down — same args)
+            - `curl -sSL <url>` — fetch a primary source (paper abstract, blog
+              post, official statement)
             - `jq '.[] | select(...)'` — filter the JSON files efficiently
             HARD CAPS: 30 bird follow-up calls + 5 curl fetches per run. Generous budget
             — use it. Expected breakdown on a busy cycle: 5–10 calls on adversarial pass
@@ -397,6 +462,29 @@ jobs:
             After writing both files, commit:
             git add research/twitter-deepseek/ research/summaries/
             git commit -m "Twitter (DeepSeek) update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
+
+      - name: Stop birdy daemon
+        if: always()
+        run: |
+          if [ -f /tmp/birdy-daemon.pid ]; then
+            PID=$(cat /tmp/birdy-daemon.pid)
+            if kill -0 "$PID" 2>/dev/null; then
+              echo "Stopping daemon PID $PID..."
+              kill -TERM "$PID" 2>/dev/null || true
+              # Give it 2s to drain gracefully, then SIGKILL if still alive
+              for i in 1 2; do
+                sleep 1
+                kill -0 "$PID" 2>/dev/null || break
+              done
+              kill -KILL "$PID" 2>/dev/null || true
+            fi
+            rm -f /tmp/birdy-daemon.pid
+          fi
+          # Daemon log tail for diagnostics
+          if [ -f /tmp/birdy-daemon.log ]; then
+            echo "--- daemon log (last 20 lines) ---"
+            tail -20 /tmp/birdy-daemon.log
+          fi
 
       - name: Push changes
         id: push
