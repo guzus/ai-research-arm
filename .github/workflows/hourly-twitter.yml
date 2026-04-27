@@ -107,27 +107,31 @@ jobs:
           # Others — researchers, analysts, specialists, media
           others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh"
 
-          # Build the manifest: 50+ user-tweets ops + 7 keyword searches + news.
-          # All ops run in parallel inside one Go process — replaces the
-          # previous 3 separate steps (xargs loop + 7-way bg searches + news).
-          jq -n --arg handles "$labs $hyperscalers $others" '
-            {
-              operations:
-                ($handles | split(" ") | map(select(length > 0)) | map(
-                  {id: ., args: ["user-tweets", "@" + ., "-n", "20", "--json", "--plain"]}
-                )) + [
-                  {id: "search-ai",         args: ["search", "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama", "-n", "50", "--json", "--plain"]},
-                  {id: "search-extra",      args: ["search", "AI breakthrough OR AI launch OR AI update OR foundation model", "-n", "30", "--json", "--plain"]},
-                  {id: "search-research",   args: ["search", "AI paper OR machine learning research OR new benchmark OR state of the art SOTA", "-n", "30", "--json", "--plain"]},
-                  {id: "search-infra",      args: ["search", "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU", "-n", "20", "--json", "--plain"]},
-                  {id: "search-policy",     args: ["search", "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment", "-n", "20", "--json", "--plain"]},
-                  {id: "search-business",   args: ["search", "AI startup funding OR AI acquisition OR AI valuation OR AI partnership", "-n", "20", "--json", "--plain"]},
-                  {id: "search-opensource", args: ["search", "open source AI OR open weights OR AI API OR AI developer tools", "-n", "20", "--json", "--plain"]},
-                  {id: "news",              args: ["news", "--ai-only", "-n", "40", "--json", "--plain"]}
-                ],
-              concurrency: 8
-            }
-          ' > /tmp/manifest.json
+          # Build the manifest via Python (avoids jq's multi-line quoting
+          # issues inside YAML literal blocks): 50+ user-tweets ops + 7
+          # keyword searches + news. All ops run in parallel inside one Go
+          # process via birdy multi-fetch.
+          export HANDLES="$labs $hyperscalers $others"
+          python3 -c '
+          import json, os
+          handles = os.environ["HANDLES"].split()
+          ops = [
+              {"id": h, "args": ["user-tweets", "@" + h, "-n", "20", "--json", "--plain"]}
+              for h in handles if h
+          ] + [
+              {"id": "search-ai",         "args": ["search", "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama", "-n", "50", "--json", "--plain"]},
+              {"id": "search-extra",      "args": ["search", "AI breakthrough OR AI launch OR AI update OR foundation model", "-n", "30", "--json", "--plain"]},
+              {"id": "search-research",   "args": ["search", "AI paper OR machine learning research OR new benchmark OR state of the art SOTA", "-n", "30", "--json", "--plain"]},
+              {"id": "search-infra",      "args": ["search", "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU", "-n", "20", "--json", "--plain"]},
+              {"id": "search-policy",     "args": ["search", "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment", "-n", "20", "--json", "--plain"]},
+              {"id": "search-business",   "args": ["search", "AI startup funding OR AI acquisition OR AI valuation OR AI partnership", "-n", "20", "--json", "--plain"]},
+              {"id": "search-opensource", "args": ["search", "open source AI OR open weights OR AI API OR AI developer tools", "-n", "20", "--json", "--plain"]},
+              {"id": "news",              "args": ["news", "--ai-only", "-n", "40", "--json", "--plain"]},
+          ]
+          with open("/tmp/manifest.json", "w") as f:
+              json.dump({"operations": ops, "concurrency": 8}, f)
+          print(f"Built manifest: {len(ops)} ops")
+          '
 
           echo "Manifest: $(jq '.operations | length' /tmp/manifest.json) ops, concurrency=$(jq '.concurrency' /tmp/manifest.json)"
 
