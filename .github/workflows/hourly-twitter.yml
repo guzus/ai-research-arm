@@ -55,46 +55,38 @@ jobs:
           # Others — researchers, analysts, specialists, media
           others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh"
 
-          for handle in $labs; do
-            echo "Fetching @${handle}..."
-            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
-          done
-
-          for handle in $hyperscalers; do
-            echo "Fetching @${handle}..."
-            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
-          done
-
-          for handle in $others; do
-            echo "Fetching @${handle}..."
-            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
-          done
+          # Parallel fetch — 6-way concurrency. Each call writes a per-handle
+          # file (no shared-state race). Cuts wall time from ~75s sequential
+          # to ~25s without hitting bird's rate limit. Same pattern proven
+          # on hourly-twitter-deepseek-agentic.yml.
+          printf '%s\n' $labs $hyperscalers $others | \
+            xargs -n 1 -P 6 -I {} bash -c '
+              h="$1"
+              if bird user-tweets "@${h}" -n 20 --json --plain > "/tmp/bird/${h}.json" 2>/dev/null; then
+                echo "✓ @${h}"
+              else
+                echo "[]" > "/tmp/bird/${h}.json"
+                echo "✗ @${h} (used empty fallback)"
+              fi
+            ' _ {}
 
       - name: Search for AI news tweets
         env:
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
-          # Core AI model & product announcements
-          bird search "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama" -n 50 --json --plain > /tmp/bird/search-ai.json 2>/dev/null || echo "[]" > /tmp/bird/search-ai.json
+          # All 7 searches in parallel via background jobs + wait. Cuts wall
+          # time from ~13s sequential to ~3s.
 
-          # Breakthroughs and launches
-          bird search "AI breakthrough OR AI launch OR AI update OR foundation model" -n 30 --json --plain > /tmp/bird/search-extra.json 2>/dev/null || echo "[]" > /tmp/bird/search-extra.json
-
-          # Research papers and benchmarks
-          bird search "AI paper OR machine learning research OR new benchmark OR state of the art SOTA" -n 30 --json --plain > /tmp/bird/search-research.json 2>/dev/null || echo "[]" > /tmp/bird/search-research.json
-
-          # AI infrastructure, chips, and hardware
-          bird search "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU" -n 20 --json --plain > /tmp/bird/search-infra.json 2>/dev/null || echo "[]" > /tmp/bird/search-infra.json
-
-          # AI policy, safety, and regulation
-          bird search "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment" -n 20 --json --plain > /tmp/bird/search-policy.json 2>/dev/null || echo "[]" > /tmp/bird/search-policy.json
-
-          # AI funding and business
-          bird search "AI startup funding OR AI acquisition OR AI valuation OR AI partnership" -n 20 --json --plain > /tmp/bird/search-business.json 2>/dev/null || echo "[]" > /tmp/bird/search-business.json
-
-          # Open source AI and tools
-          bird search "open source AI OR open weights OR AI API OR AI developer tools" -n 20 --json --plain > /tmp/bird/search-opensource.json 2>/dev/null || echo "[]" > /tmp/bird/search-opensource.json
+          { bird search "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama" -n 50 --json --plain > /tmp/bird/search-ai.json 2>/dev/null || echo "[]" > /tmp/bird/search-ai.json; } &
+          { bird search "AI breakthrough OR AI launch OR AI update OR foundation model" -n 30 --json --plain > /tmp/bird/search-extra.json 2>/dev/null || echo "[]" > /tmp/bird/search-extra.json; } &
+          { bird search "AI paper OR machine learning research OR new benchmark OR state of the art SOTA" -n 30 --json --plain > /tmp/bird/search-research.json 2>/dev/null || echo "[]" > /tmp/bird/search-research.json; } &
+          { bird search "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU" -n 20 --json --plain > /tmp/bird/search-infra.json 2>/dev/null || echo "[]" > /tmp/bird/search-infra.json; } &
+          { bird search "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment" -n 20 --json --plain > /tmp/bird/search-policy.json 2>/dev/null || echo "[]" > /tmp/bird/search-policy.json; } &
+          { bird search "AI startup funding OR AI acquisition OR AI valuation OR AI partnership" -n 20 --json --plain > /tmp/bird/search-business.json 2>/dev/null || echo "[]" > /tmp/bird/search-business.json; } &
+          { bird search "open source AI OR open weights OR AI API OR AI developer tools" -n 20 --json --plain > /tmp/bird/search-opensource.json 2>/dev/null || echo "[]" > /tmp/bird/search-opensource.json; } &
+          wait
+          echo "All searches complete."
 
       - name: Fetch AI trending news
         env:
@@ -203,7 +195,48 @@ jobs:
             Quiet period — no major AI updates on Twitter/X.
             ```
 
-            After writing both files, commit:
+            STEP 3 — WRITE STRUCTURED HEADLINE ALERTS:
+            Use the Write tool to also create:
+            research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines.json
+
+            This file is a JSON array of the TOP 3-7 alert-worthy stories from this cycle —
+            the items most worth pushing to Telegram as Bloomberg-style "Market News Feed"
+            alerts. Each entry is one punchy headline + source + URL.
+
+            Schema (write nothing else, just the JSON array):
+            ```
+            [
+              {
+                "headline": "ANTHROPIC MYTHOS BREACHED — FIRST CONFIRMED EXFILTRATION OF GATED FRONTIER MODEL",
+                "source": "@TheInformation",
+                "url": "https://x.com/the_information/status/2048...",
+                "category": "breaking"
+              },
+              {
+                "headline": "DEEPSEEK V4 NOW 139× CHEAPER THAN GPT-5.5 ON CACHED INPUT",
+                "source": "@DeepSeek",
+                "url": "https://x.com/...",
+                "category": "model"
+              }
+            ]
+            ```
+
+            Headline rules:
+            - ALL CAPS, terminal-newsfeed voice, like Bloomberg/Punchbowl alerts
+            - Maximum 140 characters per headline
+            - One punchy fact per headline — no commentary, no engagement metrics
+            - Spell out acronyms only when ambiguous; OK to keep "GPT-5.5", "TPU", "API"
+            - Source = the @handle of the most authoritative tweet
+            - URL = the actual tweet URL
+            - category ∈ {breaking, model, research, infra, business, policy, opensource}
+
+            Quantity rules:
+            - 3 to 7 headlines per cycle. Tight cycles get 3-4, busy ones up to 7.
+            - If fewer than 3 truly significant stories exist, write `[]` (empty array) —
+              do NOT pad with low-value items just to hit the floor.
+            - Skip recycled news, opinion-only takes, casual chatter.
+
+            STEP 4 — Commit all output files:
             git add research/twitter/ research/summaries/
             git commit -m "Twitter update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
 
@@ -235,30 +268,95 @@ jobs:
             "https://api.github.com/repos/${{ github.repository }}/actions/workflows/deploy-dashboard.yml/dispatches" \
             -d '{"ref":"main"}'
 
-      - name: Read summary for Telegram
-        id: summary
-        run: |
-          SUMMARY_FILE="research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-summary.txt"
-          if [ -f "$SUMMARY_FILE" ]; then
-            SUMMARY=$(cat "$SUMMARY_FILE" | head -c 800)
-            echo "content<<EOF" >> $GITHUB_OUTPUT
-            echo "$SUMMARY" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
-          else
-            echo "content=No Twitter summary available" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Send Telegram notification
+      - name: Send headline alerts (Telegram + Hooker, one per headline)
         if: success()
         continue-on-error: true
-        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: markdown
-          message: |
-            🐦 *Twitter/X AI Pulse*
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+        run: |
+          # Bloomberg-style "Market News Feed" cadence — each headline gets its
+          # own message. Replaces the previous single-rollup notification.
+          # Sleeps 1.2s between sends to stay under Telegram's same-chat
+          # rate limit (~1 msg/sec for bot accounts).
 
-            ${{ steps.summary.outputs.content }}
+          HEADLINES_FILE="research/summaries/${DATE}-twitter-${HOUR}h-headlines.json"
 
-            📄 [Full Update on GitHub](https://github.com/${{ github.repository }}/blob/main/research/twitter/${{ steps.datetime.outputs.date }}.md)
+          if [ ! -f "$HEADLINES_FILE" ]; then
+            echo "No headlines file at $HEADLINES_FILE — skipping alerts"
+            exit 0
+          fi
+
+          COUNT=$(jq 'length' "$HEADLINES_FILE" 2>/dev/null || echo 0)
+          if [ "$COUNT" -lt 1 ]; then
+            echo "Headlines array is empty — skipping alerts (quiet cycle)"
+            exit 0
+          fi
+
+          echo "Sending $COUNT headline alerts..."
+          SENT=0
+
+          while IFS= read -r ITEM; do
+            HEADLINE=$(echo "$ITEM" | jq -r '.headline // ""')
+            SOURCE=$(echo "$ITEM" | jq -r '.source // ""')
+            URL=$(echo "$ITEM" | jq -r '.url // ""')
+            CAT=$(echo "$ITEM" | jq -r '.category // "news"')
+
+            # Skip if missing core fields
+            if [ -z "$HEADLINE" ] || [ -z "$URL" ]; then
+              continue
+            fi
+
+            # Per-category emoji for visual scannability
+            case "$CAT" in
+              breaking)   EMOJI="🚨" ;;
+              model)      EMOJI="🤖" ;;
+              research)   EMOJI="📄" ;;
+              infra)      EMOJI="⚡" ;;
+              business)   EMOJI="💰" ;;
+              policy)     EMOJI="⚖️"  ;;
+              opensource) EMOJI="🔓" ;;
+              *)          EMOJI="🐦" ;;
+            esac
+
+            # Telegram body — bold "ARA Pulse" header, headline, attribution + link
+            TG_TEXT=$(printf '*%s ARA Pulse*\n%s\n\n%s · %s' \
+              "$EMOJI" "$HEADLINE" "$SOURCE" "$URL")
+
+            # Send to Telegram via direct bot
+            if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+              curl -sS -o /dev/null \
+                -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+                --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+                --data-urlencode "text=${TG_TEXT}" \
+                -d "parse_mode=Markdown" \
+                -d "disable_web_page_preview=false"
+            fi
+
+            # Send to Hooker (separate Telegram channel via hooker.guzus.xyz)
+            if [ -n "$HOOKER_URL" ] && [ -n "$HOOKER_TOKEN" ]; then
+              HK_TEXT=$(printf '%s\n%s · %s' "$HEADLINE" "$SOURCE" "$URL")
+              HOOKER_BODY=$(jq -n \
+                --arg title "$EMOJI ARA Pulse" \
+                --arg text "$HK_TEXT" \
+                --arg cat "$CAT" \
+                '{title: $title, text: $text, priority: 3, tags: ["ai-research", "alert", $cat]}')
+              curl -sS -o /dev/null \
+                -X POST "${HOOKER_URL}/publish/ai-research" \
+                -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+                -H "Content-Type: application/json" \
+                -d "$HOOKER_BODY"
+            fi
+
+            SENT=$((SENT + 1))
+            echo "  [$SENT/$COUNT] $EMOJI $HEADLINE"
+
+            # Rate-limit guard: max ~1 msg/sec to same Telegram chat
+            sleep 1.2
+          done < <(jq -c '.[]' "$HEADLINES_FILE")
+
+          echo "Sent $SENT headline alerts."
