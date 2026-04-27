@@ -1,0 +1,12 @@
+arXiv Papers - 2026-04-27
+
+TOP 5 PAPERS:
+• Hyperloop Transformers (2604.21254) - looped layers as a parameter-efficient core primitive for LLMs
+• LLM Reasoning Is Latent, Not the Chain of Thought (2604.15726) - reframes reasoning as latent trajectories, not surface CoT
+• Coding Agents are Effective Long-Context Processors (2603.20432) - filesystem-using agents beat SOTA by 17.3% on long-context tasks
+• AutoRule (2506.15651) - auto-extracts CoT rules into rule-based rewards; +28.6% AlpacaEval2 on Llama-3-8B
+• R2IF (2604.20316) - composite rewards align reasoning with tool-call decisions for interpretable function calling
+
+CATEGORIES: NLP/LLMs 5 | Vision/Multimodal 4 | Agents/Reasoning 7 | Safety/Alignment 4 | Other 5
+
+Full report on GitHub.
