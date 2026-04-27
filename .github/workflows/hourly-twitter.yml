@@ -36,25 +36,59 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Free disk space on runner
+        run: |
+          # The self-hosted runner can fill up if old workflow workdirs / apt
+          # caches accumulate. Previous run failed with "No space left on
+          # device" while writing logs. Cheap, safe cleanup before the rest
+          # of the steps download anything.
+          echo "Disk before:"
+          df -h / 2>&1 | tail -2
+          sudo apt-get clean -y >/dev/null 2>&1 || true
+          sudo rm -rf /var/log/journal/* 2>/dev/null || true
+          sudo find /tmp -mindepth 1 -maxdepth 1 -mtime +1 -exec rm -rf {} + 2>/dev/null || true
+          # Old runner _diag logs (this is what crashed last time)
+          sudo find /opt/actions-runner -name "_diag" -type d -exec sh -c 'find "$1" -name "*.log" -mtime +1 -delete' _ {} \; 2>/dev/null || true
+          echo "Disk after:"
+          df -h / 2>&1 | tail -2
+
       - name: Install bird CLI
         run: npm install -g @steipete/bird
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.25'
-
-      - name: Install birdy
+      - name: Install birdy from GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # birdy = multi-account proxy for bird with rotation + parallel
-          # batch fetch (https://github.com/guzus/birdy). We pin to main to
-          # pick up the latest multi-fetch primitive; tag a release later
-          # if we want reproducibility.
-          go install github.com/guzus/birdy@main
-          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
-          # Sanity check; the new $GITHUB_PATH only takes effect in
-          # subsequent steps, so reach the binary directly here.
-          "$(go env GOPATH)/bin/birdy" version 2>&1 | head -3 || echo "(birdy installed)"
+          # Download pre-built birdy binary from the latest release —
+          # avoids needing Go toolchain (~150MB) on the self-hosted runner.
+          # The v0.9.0+ release includes the `multi-fetch` command.
+          set -e
+
+          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+          ARCH=$(uname -m)
+          case "$ARCH" in
+            x86_64|amd64) ARCH=amd64 ;;
+            arm64|aarch64) ARCH=arm64 ;;
+          esac
+          ASSET="birdy_${OS}_${ARCH}.tar.gz"
+
+          TMPDIR=$(mktemp -d)
+          trap 'rm -rf "$TMPDIR"' EXIT
+
+          # Public repo, no auth needed — but use gh if available for redirect handling
+          curl -fsSL "https://github.com/guzus/birdy/releases/latest/download/${ASSET}" -o "$TMPDIR/$ASSET"
+          tar -xzf "$TMPDIR/$ASSET" -C "$TMPDIR"
+
+          BIN="$TMPDIR/birdy"
+          [ -f "$BIN" ] || BIN="$TMPDIR/birdy_${OS}_${ARCH}"
+          if [ ! -f "$BIN" ]; then
+            echo "Could not find birdy binary in release tarball"
+            ls "$TMPDIR" >&2
+            exit 1
+          fi
+
+          sudo install -m 755 "$BIN" /usr/local/bin/birdy
+          birdy version 2>&1 | head -3 || echo "(birdy installed)"
 
       - name: Fetch tweets, searches, and news via birdy multi-fetch
         env:
