@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-04-27 09:56 UTC
+
+WHAT'S BUZZING:
+• China's NDRC officially blocks Meta's $2B acquisition of agentic-AI startup Manus; founders barred from leaving country
+• DeepSeek V4 launches a Chinese AI price war (Reuters/Bloomberg) — V4 also adapted for Huawei Ascend, on Hugging Face
+• MediaTek-designed Google TPU completes redesign with 160K-wafer CoWoS allocation (~3.2M chips); MTK +50% since Mar 25
+
+NOTABLE:
+• @kimmonismus: 23-year-old reportedly cracks 60-year-old Erdős problem with ChatGPT 5.4 Pro in 1h 20min, single pass
+• @mark_k: Google Gemini coding comeback teased by Logan Kilpatrick ahead of Google I/O (May 19–20)
+• OpenAI smartphone confirmed: MediaTek + Qualcomm + Luxshare partnership targeting 2028 launch
+
+Full update on GitHub.
