@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-04-27 04:31 UTC
+
+CYCLE: Hardware-control — Tesla's 10-Q reveals $2B AI chip acquisition; benchmark sovereignty emerges as Google doctrine
+
+TOP STORIES:
+• Tesla Q1 10-Q discloses $2B acquisition of unnamed AI hardware co, ~$1.8B contingent on milestones; Atomic Semi (Jim Keller) is leading speculation. ⚠
+• Logan Kilpatrick (Google): "Every company building on AI should make their own benchmarks" — proprietary evals as competitive moat. ✓
+• Chrome Prompt API brings on-device LLM inference to the browser, cutting server costs and privacy risk. ⚠
+
+WATCH: Tesla 8-K naming the acquisition target; Big Tech earnings this week (Google Tue, Meta/Amazon/MS Wed)
+
+Full brief on GitHub.
