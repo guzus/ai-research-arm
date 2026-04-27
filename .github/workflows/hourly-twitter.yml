@@ -106,7 +106,16 @@ jobs:
             the bird CLI and produce a detailed update covering the full AI landscape.
 
             TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
-            OUTPUT: research/twitter/${{ steps.datetime.outputs.date }}.md
+
+            YOU WILL WRITE THREE OUTPUT FILES (all three are mandatory — do NOT skip the third):
+            1. research/twitter/${{ steps.datetime.outputs.date }}.md (daily markdown digest, append section)
+            2. research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-summary.txt (Telegram-friendly text rollup)
+            3. research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines.json (structured headline alerts — REQUIRED for downstream Telegram blast)
+
+            All three exist in every cycle, including quiet ones. For a quiet cycle the
+            JSON file is `[]` (empty array) but the file is still created.
+
+            OUTPUT (markdown digest): research/twitter/${{ steps.datetime.outputs.date }}.md
 
             RAW DATA LOCATIONS (JSON files):
             - /tmp/bird/*.json — individual account tweets (OpenAI.json, sama.json, etc.)
@@ -236,9 +245,13 @@ jobs:
               do NOT pad with low-value items just to hit the floor.
             - Skip recycled news, opinion-only takes, casual chatter.
 
-            STEP 4 — Commit all output files:
+            STEP 4 — Verify ALL THREE files exist before committing. If headlines.json
+            is missing, go back and create it (even if just `[]`). Then commit:
             git add research/twitter/ research/summaries/
             git commit -m "Twitter update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
+
+            CRITICAL: A run without headlines.json blocks the downstream Telegram alert
+            blast. ALWAYS write the JSON file, even if it's `[]`.
 
       - name: Push changes
         id: push
