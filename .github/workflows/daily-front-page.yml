@@ -254,3 +254,42 @@ jobs:
             -F "caption=${CAPTION}" \
             -F "title=AI Intelligencer ${TODAY}" \
             -F "tags=front-page,daily"
+
+      # Convert daily digest MP3 to OGG/Opus and publish as Telegram voice
+      # message. Skips cleanly if the audio digest doesn't exist for today
+      # (the digest workflow has continue-on-error on its TTS step).
+      - name: Publish digest audio via hooker
+        if: steps.check.outputs.exists == 'true' && success()
+        continue-on-error: true
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          REPO: ${{ github.repository }}
+          TODAY: ${{ steps.date.outputs.date }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          MP3="research/audio/${TODAY}-digest.mp3"
+          if [ ! -f "$MP3" ]; then
+            echo "No audio digest at ${MP3}; skipping voice publish."
+            exit 0
+          fi
+
+          OGG="/tmp/${TODAY}-digest.ogg"
+          # Telegram sendVoice wants OGG/Opus. 24 kbps mono at 48 kHz keeps
+          # the file tiny while staying intelligible for speech.
+          ffmpeg -y -loglevel error -i "$MP3" \
+            -c:a libopus -b:a 24k -ar 48000 -ac 1 \
+            "$OGG"
+
+          DIGEST_URL="https://github.com/${REPO}/blob/main/research/digest/${TODAY}-digest.md"
+          VOICE_CAPTION="🎙 AI Intelligencer audio — ${TODAY}
+
+          📄 Full digest: ${DIGEST_URL}"
+
+          curl -sS -X POST "${HOOKER_URL}/publish/front-page/voice" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -H "Idempotency-Key: front-page-voice-${TODAY}-${RUN_ID}" \
+            -F "voice=@${OGG}" \
+            -F "caption=${VOICE_CAPTION}" \
+            -F "title=AI Intelligencer audio ${TODAY}" \
+            -F "tags=front-page,daily,audio"
