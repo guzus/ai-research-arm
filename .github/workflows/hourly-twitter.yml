@@ -311,21 +311,10 @@ jobs:
               continue
             fi
 
-            # Per-category emoji for visual scannability
-            case "$CAT" in
-              breaking)   EMOJI="🚨" ;;
-              model)      EMOJI="🤖" ;;
-              research)   EMOJI="📄" ;;
-              infra)      EMOJI="⚡" ;;
-              business)   EMOJI="💰" ;;
-              policy)     EMOJI="⚖️"  ;;
-              opensource) EMOJI="🔓" ;;
-              *)          EMOJI="🐦" ;;
-            esac
-
-            # Telegram body — bold "ARA Pulse" header, headline, attribution + link
-            TG_TEXT=$(printf '*%s ARA Pulse*\n%s\n\n%s · %s' \
-              "$EMOJI" "$HEADLINE" "$SOURCE" "$URL")
+            # Bloomberg-style alert: headline only, source + url on the next line.
+            # No emoji, no bold header, no "ARA Pulse" prefix — keeps it minimal
+            # so the headline reads first.
+            TG_TEXT=$(printf '%s\n%s · %s' "$HEADLINE" "$SOURCE" "$URL")
 
             # Send to Telegram via direct bot
             if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
@@ -341,7 +330,7 @@ jobs:
             if [ -n "$HOOKER_URL" ] && [ -n "$HOOKER_TOKEN" ]; then
               HK_TEXT=$(printf '%s\n%s · %s' "$HEADLINE" "$SOURCE" "$URL")
               HOOKER_BODY=$(jq -n \
-                --arg title "$EMOJI ARA Pulse" \
+                --arg title "ARA Pulse" \
                 --arg text "$HK_TEXT" \
                 --arg cat "$CAT" \
                 '{title: $title, text: $text, priority: 3, tags: ["ai-research", "alert", $cat]}')
@@ -353,7 +342,7 @@ jobs:
             fi
 
             SENT=$((SENT + 1))
-            echo "  [$SENT/$COUNT] $EMOJI $HEADLINE"
+            echo "  [$SENT/$COUNT] $HEADLINE"
 
             # Rate-limit guard: max ~1 msg/sec to same Telegram chat
             sleep 1.2
