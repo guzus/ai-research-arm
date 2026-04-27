@@ -1,13 +1,15 @@
-AI News - 2026-04-27
+AI News - 2026-04-27 (PM update)
 
 TOP STORIES:
-• Musk v. Altman jury selection BEGINS TODAY in Oakland; opening statements Tuesday — Brockman's unsealed diary entries call OpenAI's nonprofit pledge "a lie"
-• Altman publicly apologizes to Tumbler Ridge, B.C. — OpenAI staff flagged shooter's account in June 2025; leadership overruled those who urged reporting
-• US State Dept cable (Apr 24) orders embassies worldwide to warn allies about DeepSeek/Moonshot/MiniMax distillation
+• Microsoft–OpenAI partnership restructured: revenue share CAPPED, cloud exclusivity ENDED, IP license extended to 2032 but no longer exclusive — clears path to OpenAI IPO
+• China's NDRC BLOCKS Meta's $2B Manus AI acquisition; orders unwind of an already-integrated deal — first formal Chinese veto of a US AI takeover
+• OpenAI custom smartphone chip co-developed with Qualcomm + MediaTek (Luxshare manufacturing) — 2028 production, 300–400M/yr target; QCOM +11%
+• Musk v. Altman jury selection underway in Oakland (Altman in court, Musk absent); trial to wrap by May 21
+• Altman apologizes to Tumbler Ridge: OpenAI staff flagged shooter June 2025; leadership overruled reporting
 
 KEY NUMBERS:
-• ~$150B damages sought; 9 jurors no alternates; 4-week trial; 2 claims survive
-• 6 children killed Feb 10 at Tumbler Ridge Secondary; ~12 OpenAI staff reviewed account
-• EU AI Act T-98 days; Sora consumer app shut down yesterday
+• OpenAI–MSFT 20% rev share capped; license through 2032; ~$150B Musk damages
+• Meta–Manus $2B blocked; QCOM +11% premarket
+• 9 jurors, 0 alternates; trial verdict by May 21
 
 Full report on GitHub.
