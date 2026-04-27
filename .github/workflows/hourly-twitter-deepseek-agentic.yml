@@ -128,23 +128,22 @@ jobs:
           # Once we see the actual keys, the filter will be reinstated with the
           # correct field paths. Per-account JSON files pass through raw either way.
 
-          for f in /tmp/bird/news.json /tmp/bird/search-ai.json /tmp/bird/search-business.json; do
+          for f in /tmp/bird/search-ai.json /tmp/bird/search-business.json /tmp/bird/news.json; do
             [ -f "$f" ] || continue
             count=$(jq 'length' "$f" 2>/dev/null || echo 0)
             if [ "$count" -gt 0 ]; then
               echo "============================================================"
               echo "Sample from $(basename "$f") — length=$count"
               echo "============================================================"
-              echo "Top-level keys (one tweet):"
+              echo "Top-level keys (one item):"
               jq -r '.[0] | keys[]' "$f" 2>/dev/null
               echo ""
-              echo "Recursively-flattened paths to leaf values (depth 2):"
-              jq -r '.[0] | paths(scalars) | join(".")' "$f" 2>/dev/null | sort -u | head -40
+              echo "Recursively-flattened paths to leaf values:"
+              jq -r '.[0] | paths(scalars) | join(".")' "$f" 2>/dev/null | sort -u
               echo ""
-              echo "First tweet pretty-printed (head 60 lines):"
-              jq '.[0]' "$f" 2>/dev/null | head -60
+              echo "First item pretty-printed (head 80 lines):"
+              jq '.[0]' "$f" 2>/dev/null | head -80
               echo ""
-              break
             fi
           done
 
