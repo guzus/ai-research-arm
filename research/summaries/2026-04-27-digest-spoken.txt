@@ -1,9 +1,15 @@
-Monday, April twenty seventh, twenty twenty six.
+Monday, April twenty-seventh, twenty twenty-six.
 
-Unauthorized access to Anthropic's pre-release Mythos model and a brief OpenAI leak have been reported — the first confirmed exfiltration on a frontier model. In other big news, China's National Development and Reform Commission blocked Meta's two billion dollar acquisition of Manus, and the founders have been barred from leaving the country since March. The Musk versus OpenAI trial opens today, with prediction market Kalshi placing Musk's odds at about fifty percent. And analyst Ming-Chi Kuo reports OpenAI is partnering with MediaTek and Qualcomm, with Luxshare getting exclusive production on what's being called the AI Agent phone.
+China's National Development and Reform Commission has blocked Meta's two billion dollar acquisition of Manus, with the startup's founders barred from leaving the country since March. On top of that, The Information is reporting unauthorized access to Anthropic's pre-release Mythos model, plus a brief leak at OpenAI — a rough week for AI security.
 
-Some key numbers: DeepSeek is now one hundred thirty nine times cheaper than GPT five point five on cached input, and its V4 model is live on Hugging Face and Huawei Ascend. S and P five hundred headcount fell four hundred thousand in twenty twenty five, the first decline since twenty sixteen. Google's investment in Anthropic is now ten billion dollars at a valuation of three hundred fifty billion, with potential for up to thirty billion more plus five gigawatts of TPU compute.
+Some quick numbers: DeepSeek has slashed its cached input prices ten times, landing one hundred thirty-nine times cheaper than GPT five point five and eighty-three times cheaper than Sonnet four point six. DeepSeek V four ships with one point six trillion total parameters, forty-nine billion active, and a one million token context window, now available on Hugging Face, Ollama, and Alibaba Cloud. On Hacker News, DeepSeek V four hit two thousand sixty-two points, GPT five point five came in at one thousand five hundred sixty-six.
 
-Trending today: an amateur mathematician solved an Erdős problem in one hour and twenty minutes using ChatGPT five point four Pro, racking up seven hundred forty nine points on Hacker News.
+The Musk versus OpenAI trial opens today, with prediction market Kalshi putting the odds at roughly fifty-fifty.
+
+On the device front, analyst Ming-Chi Kuo reports OpenAI is co-designing an AI agent phone with MediaTek and Qualcomm, with Luxshare as the exclusive manufacturer.
+
+Also worth noting: Google has committed ten billion dollars to Anthropic at a three hundred fifty billion dollar valuation, with up to an additional thirty billion and five gigawatts of TPU capacity on the table.
+
+Trending today: a Cursor and Claude agent deleted a production database in nine seconds, sharpening the conversation around trust levels in autonomous agent operations.
 
 That is your ARA broadcast — full digest on GitHub.
