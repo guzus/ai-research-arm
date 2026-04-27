@@ -118,19 +118,21 @@ jobs:
         run: |
           bird news --ai-only -n 40 --json --plain > /tmp/bird/news.json 2>/dev/null || echo "[]" > /tmp/bird/news.json
 
-      - name: Pre-filter search JSON to drop obvious spam
+      - name: Pre-filter search JSON to drop low-signal tweets
         run: |
-          # Drop tweets that have ALL of: zero engagement (likes + RT + replies = 0)
-          # AND text matches a crypto/airdrop/spam keyword. Conservative: keeps any
-          # tweet with engagement, keeps any tweet that doesn't match spam patterns.
-          # Targets only search-*.json and news.json — per-account files are curated
-          # by handle and pass through unfiltered.
+          # v2 engagement-floor filter: drop a search/news tweet only when ALL of:
+          #   - 0 likes, 0 retweets, 0 replies
+          #   - Posted >30min ago (or has unparseable / missing timestamp)
+          # Recency grace keeps fresh tweets that haven't had time to accumulate.
+          # Targets only search-*.json and news.json — per-account JSON files
+          # (curated handles) pass through raw.
           #
-          # Model self-reported ~70% spam in the snapshot during the prior cycle.
-          # This step dual-purposes as latency reduction (fewer input tokens) and
-          # signal-quality improvement (less attention wasted on crypto promos).
+          # The v1 keyword-based filter dropped 1/325 tweets (-0%) because the
+          # actual "noise" the model rejects is generic low-engagement chatter,
+          # not crypto-keyword spam. Engagement floor catches the real pattern.
 
-          SPAM_REGEX='(?i)\b(airdrop|presale|wts|wtb|mint live|pump\.fun|100x gem|degen plays|jeet|rugpull|shitcoin|memecoin|alpha call|copy trading|signal group|listing soon|getting listed|moonbag|aped in|to the moon)\b'
+          # 30 minutes ago, UTC epoch seconds
+          CUTOFF_EPOCH=$(date -u -d '30 minutes ago' +%s)
 
           total_before=0
           total_after=0
@@ -143,14 +145,20 @@ jobs:
 
             tmp="${f}.filtered"
 
-            if jq --arg spam "$SPAM_REGEX" '
+            if jq --argjson cutoff "$CUTOFF_EPOCH" '
               [
                 .[] | select(
                   (
                     ((.likes // .favorite_count // 0) == 0)
                     and ((.retweet_count // 0) == 0)
                     and ((.reply_count // 0) == 0)
-                    and ((.text // "") | test($spam))
+                    and (
+                      (.created_at // "" |
+                        if . == "" then 0
+                        else (try fromdateiso8601 catch 0)
+                        end
+                      ) < $cutoff
+                    )
                   ) | not
                 )
               ]
