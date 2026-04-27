@@ -1,16 +1,16 @@
 Daily AI Digest - 2026-04-27
 
 TOP STORIES:
-• The Information: unauthorized access to Anthropic's gated "Mythos" model + brief OpenAI leak — first confirmed exfiltration on a pre-release frontier model
+• China's NDRC blocks Meta's $2B Manus acquisition; founders barred from leaving since March
+• The Information: unauthorized access to Anthropic's pre-release Mythos model + brief OpenAI leak — first confirmed exfiltration on a frontier model
 • Musk v. OpenAI trial opens today; Kalshi has Musk's odds ~50%
-• Kuo: OpenAI partnering with MediaTek/Qualcomm on chips; Luxshare exclusive on "AI Agent" phone
-• DeepSeek cuts cached-input prices 10×; Tencent ships Hunyuan Hy3
+• Kuo: OpenAI partnering with MediaTek/Qualcomm; Luxshare exclusive on "AI Agent" phone
 
 KEY NUMBERS:
-• DeepSeek now 139× cheaper than GPT-5.5 on cached input
+• DeepSeek now 139× cheaper than GPT-5.5 on cached input; V4 live on HF + Huawei Ascend
 • S&P 500 headcount fell 400K in 2025 — first decline since 2016
 • Google–Anthropic: $10B at $350B + up to $30B + 5GW TPU
 
-TRENDING: Amateur solves Erdős problem with ChatGPT (HN 749 pts)
+TRENDING: Amateur solves Erdős problem in 1h 20min with ChatGPT 5.4 Pro (HN 749 pts)
 
 Full digest on GitHub.
