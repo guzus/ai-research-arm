@@ -322,6 +322,21 @@ jobs:
             - End with one short sign-off line: "That is your ARA broadcast — full digest
               on GitHub." or similar single sentence. No long outro.
 
+            STEP 2b — INLINE AUDIO TAGS for podcast-style prosody. The TTS engine
+            downstream is Gemini 3.1 Flash TTS, which honors these tags inline. Use
+            them SPARINGLY (3 to 6 total per briefing) for maximum impact — overuse
+            flattens the effect:
+            - `[high_energy]` once at the very start of the briefing OR right before
+              the lead story for impact. Use at most twice total.
+            - `[emphasis]TEXT[/emphasis]` around the most important data points
+              (large dollar amounts, percentages, multi-X comparisons). Examples:
+              "[emphasis]two billion dollars[/emphasis]", "[emphasis]ten times[/emphasis]
+              cheaper", "[emphasis]four hundred thousand jobs[/emphasis]". Pick the
+              top 2 to 3 numbers in the whole briefing — not every number.
+            - `[dramatic_pause]` 0 to 1 times before a punchline or shocking reveal.
+            Do NOT tag every number. Do NOT wrap the entire briefing. Tags should feel
+            like a senior podcast host emphasizing the moments that matter.
+
             STEP 3 — Use the Write tool to save the spoken script (and ONLY the script
             text, no preamble, no markdown fences, no quotation marks wrapping the whole
             thing) to:
@@ -331,42 +346,52 @@ jobs:
             git add research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
             git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA, Claude Sonnet rewrite)" || echo "No changes"
 
-      - name: Generate audio digest with Deepgram
+      - name: Generate audio digest with Gemini 3.1 Flash TTS
         if: success()
         continue-on-error: true
         env:
-          DEEPGRAM_API_KEY: ${{ secrets.DEEPGRAM_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DATE: ${{ steps.date.outputs.date }}
         run: |
-          # Convert the spoken script (or fall back to raw summary) into MP3 via
-          # Deepgram Aura-2 TTS. Voice: aura-2-asteria-en (American Female,
-          # news-anchor energy). Encoding: 48 kbps mono MP3 at 24 kHz — the
-          # highest bit_rate Deepgram permits for MP3 output (per their docs:
-          # 8000, 16000, 24000, 32000, 40000, or 48000). Cost is per-character
-          # so file size doesn't affect the bill.
+          # Replaces Deepgram Aura-2 with Gemini 3.1 Flash TTS Preview. Why:
+          # Gemini honors inline audio tags ([high_energy], [emphasis]X[/emphasis],
+          # [dramatic_pause]) that the Sonnet rewrite step now emits — true
+          # podcast-style prosody control vs Deepgram's fixed-personality voices.
           #
-          # Regex normalization runs before TTS as a safety net: strips smart
-          # quotes / non-breaking hyphens / em-dashes / × / & / bullets that
-          # the LLM rewrite step might have left in. Date/currency/unit
-          # expansion is the LLM's job — this regex only handles the mechanical
-          # symbol-stripping the LLM can't produce naturally in plain text.
+          # Voice: Kore (firm, female, podcast-fit). Other tested options:
+          #   Charon (deep, informative, masculine), Puck (energetic, masculine).
+          # Returns base64 PCM (audio/l16; rate=24000; channels=1) — convert via
+          # ffmpeg to 48 kbps mono MP3 to match the rest of the pipeline.
+          #
+          # Symbol normalization still runs as a safety net for anything the LLM
+          # might have left in (× & smart quotes etc.) — but NOT touching the
+          # square-bracket audio tags, which Gemini needs intact.
 
           SPOKEN_FILE="research/summaries/${DATE}-digest-spoken.txt"
           SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
           AUDIO_DIR="research/audio"
           AUDIO_FILE="${AUDIO_DIR}/${DATE}-digest.mp3"
+          PCM_FILE="/tmp/gemini-${DATE}.pcm"
 
-          if [ -z "${DEEPGRAM_API_KEY}" ]; then
-            echo "DEEPGRAM_API_KEY not configured — skipping audio generation"
+          if [ -z "${GEMINI_API_KEY}" ]; then
+            echo "GEMINI_API_KEY not configured — skipping audio generation"
             exit 0
+          fi
+
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            echo "ffmpeg not found on runner — attempting install..."
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg || {
+              echo "Could not install ffmpeg — skipping audio generation"
+              exit 0
+            }
           fi
 
           if [ -f "$SPOKEN_FILE" ]; then
             INPUT_FILE="$SPOKEN_FILE"
-            echo "Using TBPN spoken script as TTS input"
+            echo "Using ARA spoken script (with inline Gemini audio tags) as TTS input"
           elif [ -f "$SUMMARY_FILE" ]; then
             INPUT_FILE="$SUMMARY_FILE"
-            echo "Spoken script missing — falling back to raw summary"
+            echo "Spoken script missing — falling back to raw summary (no audio tags)"
           else
             echo "No input text available — skipping audio generation"
             exit 0
@@ -374,8 +399,8 @@ jobs:
 
           mkdir -p "$AUDIO_DIR"
 
-          # Safety-net normalization (handles whatever the LLM didn't, plus
-          # symbols the LLM can't fix in plain text).
+          # Safety-net normalization. Same as before but PRESERVES square-bracket
+          # audio tags ([high_energy], [emphasis], [/emphasis], [dramatic_pause]).
           NORMALIZED=$(sed -E '
             s/×/ times /g
             s/&/ and /g
@@ -390,17 +415,50 @@ jobs:
             s/\xE2\x80\x9D/"/g
           ' "$INPUT_FILE")
 
-          BODY=$(jq -n --arg text "$NORMALIZED" '{text: $text}')
+          BODY=$(jq -n --arg text "$NORMALIZED" '{
+            contents: [{parts: [{text: $text}]}],
+            generationConfig: {
+              responseModalities: ["AUDIO"],
+              speechConfig: {
+                voiceConfig: {
+                  prebuiltVoiceConfig: {voiceName: "Kore"}
+                }
+              }
+            }
+          }')
 
-          HTTP=$(curl -sS -w "%{http_code}" -o "$AUDIO_FILE" \
-            -X POST "https://api.deepgram.com/v1/speak?model=aura-2-asteria-en&encoding=mp3&bit_rate=48000" \
-            -H "Authorization: Token ${DEEPGRAM_API_KEY}" \
+          HTTP=$(curl -sS -w "%{http_code}" -o /tmp/gemini-resp.json \
+            -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-tts-preview:generateContent?key=${GEMINI_API_KEY}" \
             -H "Content-Type: application/json" \
             -d "$BODY")
 
           if [ "$HTTP" != "200" ]; then
-            echo "Deepgram returned HTTP $HTTP — error body:"
-            cat "$AUDIO_FILE" || true
+            echo "Gemini TTS returned HTTP $HTTP — error body:"
+            cat /tmp/gemini-resp.json | head -50
+            exit 0
+          fi
+
+          # Extract base64 PCM payload
+          B64=$(jq -r '.candidates[0].content.parts[0].inlineData.data // ""' /tmp/gemini-resp.json)
+          if [ -z "$B64" ]; then
+            echo "Gemini returned no audio data — response:"
+            jq 'del(.candidates[0].content.parts[0].inlineData.data)' /tmp/gemini-resp.json | head -40
+            exit 0
+          fi
+
+          echo "$B64" | base64 --decode > "$PCM_FILE"
+          PCM_SIZE=$(wc -c < "$PCM_FILE")
+          echo "Decoded ${PCM_SIZE} bytes of PCM (24kHz mono 16-bit)"
+
+          # PCM (s16le, 24kHz, mono) → MP3 48kbps mono
+          ffmpeg -hide_banner -loglevel error -y \
+            -f s16le -ar 24000 -ac 1 -i "$PCM_FILE" \
+            -codec:a libmp3lame -b:a 48k -ac 1 \
+            "$AUDIO_FILE"
+          rm -f "$PCM_FILE"
+
+          if [ ! -s "$AUDIO_FILE" ]; then
+            echo "ffmpeg produced empty mp3 — bailing"
             rm -f "$AUDIO_FILE"
             exit 0
           fi
@@ -410,7 +468,7 @@ jobs:
           echo "Generated $AUDIO_FILE — ${SIZE} bytes (~${DURATION_S}s of audio)"
 
           git add "$AUDIO_FILE"
-          git commit -m "Audio digest ${DATE} (Deepgram aura-2-asteria, 48kbps mono mp3, ${SIZE}b)" || echo "No audio changes to commit"
+          git commit -m "Audio digest ${DATE} (Gemini 3.1 Flash TTS, voice=Kore, 48kbps mono mp3, ${SIZE}b)" || echo "No audio changes to commit"
 
       - name: Push changes
         env:
