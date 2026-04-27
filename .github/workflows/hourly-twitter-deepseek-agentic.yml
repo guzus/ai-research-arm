@@ -1,10 +1,12 @@
-name: Twitter AI News — DeepSeek v4 Pro (Every 3 Hours)
+name: Twitter AI News — DeepSeek v4 Pro Agentic (Every 3 Hours)
 
-# Parallel Twitter digestion that uses DeepSeek v4 Pro instead of Claude.
-# Reuses anthropics/claude-code-action@v1 because DeepSeek exposes an
-# Anthropic-compatible endpoint at https://api.deepseek.com/anthropic — we
-# override ANTHROPIC_BASE_URL / ANTHROPIC_AUTH_TOKEN at the step level to
-# redirect Claude Code CLI to DeepSeek.
+# Parallel Twitter digestion that uses DeepSeek v4 Pro instead of Claude,
+# with agentic browsing — the model is allowed to issue follow-up bird CLI
+# queries (capped at 5/run) when a story looks thin in the pre-fetched
+# snapshot. Reuses anthropics/claude-code-action@v1 because DeepSeek
+# exposes an Anthropic-compatible endpoint at https://api.deepseek.com/anthropic
+# — we override ANTHROPIC_BASE_URL / ANTHROPIC_AUTH_TOKEN at the step level
+# to redirect Claude Code CLI to DeepSeek.
 #
 # Required secret: DEEPSEEK_API_KEY (from https://platform.deepseek.com/api_keys)
 # Reuses existing secrets: BIRD_AUTH_TOKEN, BIRD_CT0, TELEGRAM_*
@@ -286,7 +288,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
           message: |
-            🐦🦌 *Twitter/X AI Pulse — DeepSeek v4 Pro*
+            🐦🦌 *Twitter/X AI Pulse — DeepSeek v4 Pro Agentic*
 
             ${{ steps.summary.outputs.content }}
 
