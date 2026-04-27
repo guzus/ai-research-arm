@@ -1,15 +1,9 @@
-Sunday, April twenty seventh, twenty twenty six.
+Monday, April twenty seventh, twenty twenty six.
 
-Big news at the top: unauthorized access to Anthropic's pre-release Mythos model has been reported, marking the first confirmed exfiltration on a frontier model. A brief OpenAI leak also occurred in a separate incident.
+Unauthorized access to Anthropic's pre-release Mythos model and a brief OpenAI leak have been reported — the first confirmed exfiltration on a frontier model. In other big news, China's National Development and Reform Commission blocked Meta's two billion dollar acquisition of Manus, and the founders have been barred from leaving the country since March. The Musk versus OpenAI trial opens today, with prediction market Kalshi placing Musk's odds at about fifty percent. And analyst Ming-Chi Kuo reports OpenAI is partnering with MediaTek and Qualcomm, with Luxshare getting exclusive production on what's being called the AI Agent phone.
 
-Meanwhile, China's National Development and Reform Commission has blocked Meta's two billion dollar acquisition of Manus; the founders have been barred from leaving the country since March.
+Some key numbers: DeepSeek is now one hundred thirty nine times cheaper than GPT five point five on cached input, and its V4 model is live on Hugging Face and Huawei Ascend. S and P five hundred headcount fell four hundred thousand in twenty twenty five, the first decline since twenty sixteen. Google's investment in Anthropic is now ten billion dollars at a valuation of three hundred fifty billion, with potential for up to thirty billion more plus five gigawatts of TPU compute.
 
-In legal news, the Musk versus OpenAI trial opens today. Prediction market Kalshi puts Musk's odds at roughly fifty percent.
-
-Analyst Kuo reports OpenAI is partnering with MediaTek and Qualcomm, with Luxshare as the exclusive manufacturer for a new AI Agent phone.
-
-Some key numbers: DeepSeek is now one hundred thirty nine times cheaper than GPT five point five on cached input, and V four is live on Hugging Face and Huawei Ascend. The S&P five hundred headcount fell four hundred thousand in twenty twenty five, its first decline since twenty sixteen. Google and Anthropic have a ten billion dollar deal at a three hundred fifty billion valuation, with potential upsides up to thirty billion and five gigawatts of TPU capacity.
-
-Trending today: an amateur solved an Erdős problem in one hour and twenty minutes using ChatGPT five point four Pro; the story hit seven hundred forty nine points on Hacker News.
+Trending today: an amateur mathematician solved an Erdős problem in one hour and twenty minutes using ChatGPT five point four Pro, racking up seven hundred forty nine points on Hacker News.
 
 That is your ARA broadcast — full digest on GitHub.
