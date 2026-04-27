@@ -286,16 +286,17 @@ jobs:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           DATE: ${{ steps.date.outputs.date }}
           SYSTEM_PROMPT: |
-            You are writing a tech-news briefing in the style of TBPN (Technology Business Programming Network) — hosted, conversational, energetic, like a podcast intro. Rewrite the user-supplied daily AI digest as a SPOKEN briefing of about 60 to 90 seconds.
+            You are writing the daily ARA broadcast — a hosted, conversational, energetic AI-news briefing in the spirit of a tech-news podcast. ARA stands for AI Research Arm. Rewrite the user-supplied daily AI digest as a SPOKEN briefing of about 60 to 90 seconds.
 
             Rules:
-            - Open with a quick greeting plus the date spelled out naturally (e.g., "Monday, April twenty seventh, twenty twenty six"). NEVER read a date digit-by-digit.
-            - Connect items with conversational glue ("Big news at the top...", "Some quick numbers...", "Trending today...").
+            - Brand: this show is the ARA broadcast (or just "ARA"). NEVER mention TBPN, NPR, CNN, or any other publication's name. The host is generic — do not invent a host name.
+            - Open with a quick greeting plus the date spelled out naturally (e.g., "Welcome to the ARA broadcast — Monday, April twenty seventh, twenty twenty six"). NEVER read a date digit-by-digit.
+            - Connect items with conversational glue ("Big news at the top...", "Some quick numbers...", "Trending today...", "Market snapshot...").
             - Spell out ALL numbers, currency, units, and model versions in spoken form: "$10B" -> "ten billion dollars", "5GW" -> "five gigawatts", "400K" -> "four hundred thousand", "10x" -> "ten times", "GPT-5.5" -> "GPT five point five", "Sonnet 4.5" -> "Sonnet four point five".
             - Replace symbols inline: × -> "times", & -> "and", em-dash -> comma.
             - Drop bullets and markdown — pure prose, complete sentences only.
             - Pronounce proper nouns naturally; leave names like Hunyuan, Bubeck, DeepSeek as written.
-            - End with a brief sign-off (e.g., "That is your brief — full digest on GitHub.").
+            - End with a brief sign-off (e.g., "That is your ARA broadcast — full digest on GitHub.").
             - Output ONLY the spoken script. No preamble, no markdown, no quotation marks wrapping the whole thing.
         run: |
           # The raw summary file uses bullet points, dashes, and shorthand
@@ -366,8 +367,10 @@ jobs:
         run: |
           # Convert the spoken script (or fall back to raw summary) into MP3 via
           # Deepgram Aura-2 TTS. Voice: aura-2-asteria-en (American Female,
-          # news-anchor energy). Encoding: 32kbps mono MP3 — Deepgram's smallest
-          # option, optimal for speech.
+          # news-anchor energy). Encoding: 48 kbps mono MP3 at 24 kHz — the
+          # highest bit_rate Deepgram permits for MP3 output (per their docs:
+          # 8000, 16000, 24000, 32000, 40000, or 48000). Cost is per-character
+          # so file size doesn't affect the bill.
           #
           # Regex normalization runs before TTS as a safety net: strips smart
           # quotes / non-breaking hyphens / em-dashes / × / & / bullets that
@@ -417,7 +420,7 @@ jobs:
           BODY=$(jq -n --arg text "$NORMALIZED" '{text: $text}')
 
           HTTP=$(curl -sS -w "%{http_code}" -o "$AUDIO_FILE" \
-            -X POST "https://api.deepgram.com/v1/speak?model=aura-2-asteria-en&encoding=mp3&bit_rate=32000" \
+            -X POST "https://api.deepgram.com/v1/speak?model=aura-2-asteria-en&encoding=mp3&bit_rate=48000" \
             -H "Authorization: Token ${DEEPGRAM_API_KEY}" \
             -H "Content-Type: application/json" \
             -d "$BODY")
@@ -430,11 +433,11 @@ jobs:
           fi
 
           SIZE=$(wc -c < "$AUDIO_FILE")
-          DURATION_S=$((SIZE / 4000))   # 32kbps = 4000 bytes/sec
+          DURATION_S=$((SIZE / 6000))   # 48kbps = 6000 bytes/sec
           echo "Generated $AUDIO_FILE — ${SIZE} bytes (~${DURATION_S}s of audio)"
 
           git add "$AUDIO_FILE"
-          git commit -m "Audio digest ${DATE} (Deepgram aura-2-asteria, 32kbps mono mp3, ${SIZE}b)" || echo "No audio changes to commit"
+          git commit -m "Audio digest ${DATE} (Deepgram aura-2-asteria, 48kbps mono mp3, ${SIZE}b)" || echo "No audio changes to commit"
 
       - name: Push changes
         env:
