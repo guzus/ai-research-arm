@@ -1,11 +1,11 @@
-Monday, April twenty-seventh, twenty twenty-six.
-
-[high_energy]The Musk versus Altman trial opens in Oakland today, with Greg Brockman's unsealed diary already serving as the plaintiff's smoking gun and [emphasis]roughly one hundred fifty billion dollars[/emphasis] on the line. Sam Altman has also issued an apology to Tumbler Ridge, British Columbia — it emerged that OpenAI staff recommended reporting a shooter's ChatGPT account in June twenty twenty-five, and leadership overruled them.
-
-Geopolitically, the US State Department named DeepSeek, Moonshot, and MiniMax in a global cable over distillation and IP-theft concerns. China blocked a two-billion-dollar Meta and Manus deal and is now barring US capital from Chinese AI startups.
-
-Some quick numbers: DeepSeek V four has slashed cached input prices [emphasis]ten times[/emphasis], making it one hundred thirty-nine times cheaper than GPT five point five. Google is backing Anthropic with ten billion dollars against a three hundred fifty billion dollar valuation, plus thirty billion contingent and five gigawatts of TPU access, as Anthropic reports thirty billion in annual recurring revenue.
-
-[dramatic_pause]Trending today — an AI agent deleted a production database, sparking a seven-hundred-twenty-comment Hacker News debate on how much autonomy agents should have.
-
-That is your ARA broadcast — full digest on GitHub.
+Speaker 1: Sunday, April twenty-seventh, twenty twenty-six.
+Speaker 2: [high_energy] The OpenAI and Microsoft partnership just got restructured — Azure exclusivity is gone, Microsoft keeps the IP through twenty thirty-two, and markets responded with Microsoft dropping four percent while Qualcomm jumped twelve.
+Speaker 1: And the legal drama is escalating — the Musk versus Altman trial opened in Oakland today with Greg Brockman's unsealed diary entering as what many are calling the smoking gun.
+Speaker 2: [emphasis] One hundred fifty billion dollars [/emphasis] in potential liability makes this one of the biggest tech trials in years. Hard to overstate what's at stake.
+Speaker 1: Meanwhile, Sam Altman issued a public apology to Tumbler Ridge, British Columbia — staff had flagged a shooter's account back in June twenty twenty-five, but leadership overruled them.
+Speaker 2: That is a serious accountability moment. Now over to Google Cloud Next — they announced the TPU eight split into an eight-T training chip and eight-I inference chip, and Vertex AI is being rebranded as the Gemini Enterprise Agent Platform.
+Speaker 1: Some quick numbers: Google's Anthropic investment now totals [emphasis] ten billion dollars [/emphasis] at a three hundred fifty billion dollar valuation, with thirty billion more contingent, plus five gigawatts of TPU capacity. Anthropic's annualized revenue is at thirty billion.
+Speaker 2: DeepSeek also made a quiet but massive move — V four cached input pricing is cut ten times, making it [dramatic_pause] one hundred thirty-nine times cheaper than GPT five point five.
+Speaker 1: And on the community side, an AI agent deleted a production database, touching off a seven hundred twenty comment Hacker News thread on how much autonomy agents should have.
+Speaker 2: That debate is not going away anytime soon.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
