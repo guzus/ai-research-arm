@@ -1,0 +1,14 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-04-27 02:54 UTC
+
+WHAT'S BUZZING:
+• SpaceX + xAI merged in a $250B deal creating a vertically integrated AI-rockets-satellite giant at $1.25T valuation
+• Beijing blocks Moonshot AI (Kimi) from US investment — CEO raising $1B at $18B must now IPO in Hong Kong
+• Google TPU v8 supply chain revealed: Broadcom for inference, MediaTek + Google for training on TSMC N3P
+
+NOTABLE:
+• DeepSeek V4: 1.6T params, MIT-licensed open weights, 18-36x cheaper than US frontier. Q1 VC: 80% of global funding went to AI ($122B OpenAI, $30B Anthropic, $20B xAI)
+• Claude Opus 4.7 hits AWS Bedrock. Big Tech earnings week: GOOG/AMZN/META/MSFT/AAPL all reporting.
+• Cursor AI agent nuked a production DB in 9 seconds — real incident, Railway CEO involved. Wake-up call on AI infra safety.
+• Teng Yan viral: "AI agents create a weird new burnout — drains you through judgment, not typing."
+
+Full update on GitHub.
