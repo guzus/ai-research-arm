@@ -279,86 +279,57 @@ jobs:
             git add research/
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
-      - name: Rewrite summary as TBPN-style spoken script (DeepSeek)
+      - name: Rewrite summary as ARA spoken script (Claude Sonnet)
         if: success()
         continue-on-error: true
-        env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          DATE: ${{ steps.date.outputs.date }}
-          SYSTEM_PROMPT: |
-            You are writing the daily ARA broadcast — a hosted, conversational AI-news briefing. ARA stands for AI Research Arm. Rewrite the user-supplied daily AI digest as a SPOKEN briefing of about 60 to 90 seconds. Go straight to the news; no warm-up, no welcome speech, no host introduction.
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --model sonnet --allowedTools "Read,Write,Edit,Bash(git:*)"
+          prompt: |
+            You are writing the daily ARA broadcast — a hosted, conversational AI-news
+            briefing. ARA stands for AI Research Arm. Read the digest summary, rewrite it
+            as a SPOKEN briefing of about 60 to 90 seconds, and write the result to disk.
+            Go straight to the news; no warm-up, no welcome speech, no host introduction.
 
-            Rules:
-            - Open with JUST the date spelled out naturally (e.g., "Monday, April twenty seventh, twenty twenty six.") — no greeting, no "welcome to" preamble, no "I'm your host", no "this is the ARA broadcast" preamble. The date stands alone as the opening line.
-            - Sentence two should land directly on the lead story (e.g., "Anthropic's Mythos model has been breached..." or "Big news at the top: ..."). Get to the substance immediately.
-            - NEVER read a date digit-by-digit (no "two zero two six dash zero four dash two seven").
-            - Connect items with light conversational glue ("Big news at the top...", "Some quick numbers...", "Trending today...", "Market snapshot..."). Don't overuse — keep it tight.
-            - Brand: NEVER mention TBPN, NPR, CNN, or any other publication's name. Do not invent a host name. The "ARA" brand only surfaces in the brief sign-off.
-            - Spell out ALL numbers, currency, units, and model versions in spoken form: "$10B" -> "ten billion dollars", "5GW" -> "five gigawatts", "400K" -> "four hundred thousand", "10x" -> "ten times", "GPT-5.5" -> "GPT five point five", "Sonnet 4.5" -> "Sonnet four point five".
+            INPUT: research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
+            OUTPUT: research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
+
+            STEP 1 — Read the input file. If it doesn't exist or is empty, exit cleanly.
+
+            STEP 2 — Compose the spoken briefing under these rules:
+            - Open with JUST the date spelled out naturally (e.g., "Monday, April twenty
+              seventh, twenty twenty six.") — no greeting, no "welcome to" preamble, no
+              "I'm your host", no "this is the ARA broadcast". The date stands alone as
+              the opening line.
+            - Sentence two lands directly on the lead story (e.g., "Anthropic's Mythos
+              model has been breached..." or "Big news at the top: ..."). Substance immediately.
+            - NEVER read a date digit-by-digit ("two zero two six dash zero four dash two
+              seven" is forbidden).
+            - Connect items with light conversational glue ("Big news at the top...",
+              "Some quick numbers...", "Trending today...", "Market snapshot..."). Keep tight.
+            - Brand: NEVER mention TBPN, NPR, CNN, or any other publication's name. Do not
+              invent a host name. The "ARA" brand only surfaces in the brief sign-off.
+            - Spell out ALL numbers, currency, units, and model versions in spoken form:
+              "$10B" -> "ten billion dollars", "5GW" -> "five gigawatts", "400K" ->
+              "four hundred thousand", "10x" -> "ten times", "GPT-5.5" -> "GPT five point
+              five", "Sonnet 4.5" -> "Sonnet four point five".
             - Replace symbols inline: × -> "times", & -> "and", em-dash -> comma.
             - Drop bullets and markdown — pure prose, complete sentences only.
-            - Pronounce proper nouns naturally; leave names like Hunyuan, Bubeck, DeepSeek as written.
-            - End with one short sign-off line: "That is your ARA broadcast — full digest on GitHub." Or similar single sentence. No long outro.
-            - Output ONLY the spoken script. No preamble, no markdown, no quotation marks wrapping the whole thing.
-        run: |
-          # The raw summary file uses bullet points, dashes, and shorthand
-          # ("$10B", "5GW", "400K", "GPT-5.5", "2026-04-27") that TTS engines
-          # mispronounce — observed: "2026-04-27" read as "two zero two six dash
-          # zero four dash two seven", "10×" as "tense", "Hunyuan Hy3" as "Inuin
-          # GP", "GPT-5.5" as "TT and C". This step asks DeepSeek v4 Flash to
-          # rewrite the digest as a hosted, conversational spoken briefing —
-          # numbers/dates/units/model names spelled out for natural prosody.
-          #
-          # Output: research/summaries/<date>-digest-spoken.txt
-          # Audio step prefers this file over the raw summary if it exists.
+            - Pronounce proper nouns naturally; leave names like Hunyuan, Bubeck, DeepSeek
+              as written. Use IPA-style hints only if a name is widely mispronounced.
+            - End with one short sign-off line: "That is your ARA broadcast — full digest
+              on GitHub." or similar single sentence. No long outro.
 
-          SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
-          SPOKEN_FILE="research/summaries/${DATE}-digest-spoken.txt"
+            STEP 3 — Use the Write tool to save the spoken script (and ONLY the script
+            text, no preamble, no markdown fences, no quotation marks wrapping the whole
+            thing) to:
+            research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
 
-          if [ -z "${DEEPSEEK_API_KEY}" ] || [ ! -f "$SUMMARY_FILE" ]; then
-            echo "Skipping spoken-script generation (missing key or summary)"
-            exit 0
-          fi
-
-          BODY=$(jq -n \
-            --arg system "$SYSTEM_PROMPT" \
-            --rawfile summary "$SUMMARY_FILE" \
-            '{
-              model: "deepseek-v4-flash",
-              max_tokens: 4000,
-              system: $system,
-              messages: [{role: "user", content: $summary}]
-            }')
-
-          curl -sS -X POST "https://api.deepseek.com/anthropic/v1/messages" \
-            -H "Authorization: Bearer ${DEEPSEEK_API_KEY}" \
-            -H "anthropic-version: 2023-06-01" \
-            -H "Content-Type: application/json" \
-            -d "$BODY" -o /tmp/dg-rewrite-resp.json
-
-          # DeepSeek's Anthropic-compat responses sometimes contain raw control
-          # chars in thinking blocks that break strict JSON parsers (jq). Use
-          # Python with strict=False to be tolerant.
-          python3 -c '
-          import json, sys
-          with open("/tmp/dg-rewrite-resp.json", "rb") as f:
-              data = json.loads(f.read(), strict=False)
-          for item in data.get("content", []):
-              if item.get("type") == "text":
-                  sys.stdout.write(item.get("text", "").strip())
-                  break
-          ' > "$SPOKEN_FILE"
-
-          if [ ! -s "$SPOKEN_FILE" ]; then
-            echo "Empty spoken script — DeepSeek may have hit max_tokens with thinking only"
-            head -c 400 /tmp/dg-rewrite-resp.json
-            rm -f "$SPOKEN_FILE"
-            exit 0
-          fi
-
-          echo "Wrote $SPOKEN_FILE ($(wc -c < "$SPOKEN_FILE") bytes)"
-          git add "$SPOKEN_FILE"
-          git commit -m "Spoken script ${DATE} (TBPN-style rewrite, DeepSeek v4 Flash)" || echo "No spoken changes"
+            STEP 4 — Commit:
+            git add research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
+            git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA, Claude Sonnet rewrite)" || echo "No changes"
 
       - name: Generate audio digest with Deepgram
         if: success()
