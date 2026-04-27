@@ -118,6 +118,62 @@ jobs:
         run: |
           bird news --ai-only -n 40 --json --plain > /tmp/bird/news.json 2>/dev/null || echo "[]" > /tmp/bird/news.json
 
+      - name: Pre-filter search JSON to drop obvious spam
+        run: |
+          # Drop tweets that have ALL of: zero engagement (likes + RT + replies = 0)
+          # AND text matches a crypto/airdrop/spam keyword. Conservative: keeps any
+          # tweet with engagement, keeps any tweet that doesn't match spam patterns.
+          # Targets only search-*.json and news.json — per-account files are curated
+          # by handle and pass through unfiltered.
+          #
+          # Model self-reported ~70% spam in the snapshot during the prior cycle.
+          # This step dual-purposes as latency reduction (fewer input tokens) and
+          # signal-quality improvement (less attention wasted on crypto promos).
+
+          SPAM_REGEX='(?i)\b(airdrop|presale|wts|wtb|mint live|pump\.fun|100x gem|degen plays|jeet|rugpull|shitcoin|memecoin|alpha call|copy trading|signal group|listing soon|getting listed|moonbag|aped in|to the moon)\b'
+
+          total_before=0
+          total_after=0
+
+          for f in /tmp/bird/search-*.json /tmp/bird/news.json; do
+            [ -f "$f" ] || continue
+
+            before=$(jq 'length' "$f" 2>/dev/null || echo 0)
+            total_before=$((total_before + before))
+
+            tmp="${f}.filtered"
+
+            if jq --arg spam "$SPAM_REGEX" '
+              [
+                .[] | select(
+                  (
+                    ((.likes // .favorite_count // 0) == 0)
+                    and ((.retweet_count // 0) == 0)
+                    and ((.reply_count // 0) == 0)
+                    and ((.text // "") | test($spam))
+                  ) | not
+                )
+              ]
+            ' "$f" > "$tmp" 2>/dev/null && [ -s "$tmp" ]; then
+              after=$(jq 'length' "$tmp")
+              total_after=$((total_after + after))
+              mv "$tmp" "$f"
+              printf "  %-30s %3d → %3d  (-%d)\n" "$(basename "$f")" "$before" "$after" "$((before - after))"
+            else
+              rm -f "$tmp"
+              printf "  %-30s filter failed, kept original (%d)\n" "$(basename "$f")" "$before"
+              total_after=$((total_after + before))
+            fi
+          done
+
+          if [ "$total_before" -gt 0 ]; then
+            pct=$(( (total_before - total_after) * 100 / total_before ))
+          else
+            pct=0
+          fi
+          echo ""
+          echo "Pre-filter summary: $total_before → $total_after tweets (-${pct}%)"
+
       - name: Process tweets with DeepSeek v4 Pro
         uses: anthropics/claude-code-action@v1
         env:
