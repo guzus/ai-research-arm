@@ -1,44 +1,44 @@
 [
   {
-    "headline": "MICROSOFT–OPENAI PARTNERSHIP RESTRUCTURED THROUGH 2032 — OPENAI CLEARED FOR ANY CLOUD, MSFT STAYS MAIN PARTNER",
-    "source": "@theinformation",
-    "url": "https://x.com/theinformation/status/2048798108323049787",
-    "category": "breaking"
-  },
-  {
-    "headline": "CHINA FORMALLY ORDERS META TO UNWIND $2B MANUS ACQUISITION — AI AGENTS CLASSIFIED AS STRATEGIC INFRASTRUCTURE",
-    "source": "@OgezAjokuEsq",
-    "url": "https://x.com/OgezAjokuEsq/status/2048798194255970345",
-    "category": "policy"
-  },
-  {
-    "headline": "GOOGLE + ADANI UNVEIL $15B, 1GW HYPERSCALE AI DATA CENTER CAMPUS IN VISAKHAPATNAM — LARGEST GOOGLE INDIA INVESTMENT",
-    "source": "@GlobalDeskIndia",
-    "url": "https://x.com/GlobalDeskIndia/status/2048798567503200430",
-    "category": "infra"
-  },
-  {
-    "headline": "QUALCOMM +7% ON CONFIRMED OPENAI PARTNERSHIP FOR AI SMARTPHONE CHIPS",
-    "source": "@jimkaskade",
-    "url": "https://x.com/jimkaskade/status/2048797765891760222",
-    "category": "infra"
-  },
-  {
-    "headline": "ANTHROPIC HITS $1T VALUATION — PREDICTION MARKETS PRICE 60% ODDS OF IPO THIS YEAR",
-    "source": "@motyar",
-    "url": "https://x.com/motyar/status/2048797942254027174",
+    "headline": "DAVID SILVER'S INEFFABLE INTELLIGENCE RAISES $1.1B SEED AT $5.1B — LARGEST EUROPEAN SEED EVER, AIMS FOR 'SUPERINTELLIGENCE FIRST CONTACT'",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2048790475197600198",
     "category": "business"
   },
   {
-    "headline": "GPT-5.4 AND CLAUDE OPUS 4.6 FAIL EVERY JUNIOR INVESTMENT-BANKING TASK IN NEW BENCHMARK — ZERO CLIENT-READY OUTPUTS",
-    "source": "@gokhangokova",
-    "url": "https://x.com/gokhangokova/status/2048794301455274054",
+    "headline": "SAM ALTMAN CONFIRMS MICROSOFT PARTNERSHIP UPDATE — OPENAI CLEARED FOR ALL CLOUDS THROUGH 2032, REVENUE SHARE THROUGH 2030",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2048755148361707946",
+    "category": "breaking"
+  },
+  {
+    "headline": "MICROSOFT LICENSE TO OPENAI IP NOW NON-EXCLUSIVE — MSFT STOCK DROPS 5% AFTER PARTNERSHIP RESTRUCTURE BLOG",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2048759615500804395",
+    "category": "business"
+  },
+  {
+    "headline": "PERPLEXITY QUIETLY SHIPS SONAR 2 ON WEB — IN-HOUSE WEB-GROUNDED LLM, BASE MODEL UNDISCLOSED",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2048796690627403837",
+    "category": "model"
+  },
+  {
+    "headline": "GPT-5.5 HIGH DEBUTS AT #9 ON CODE ARENA WITH 1,500 SCORE — TRAILS CLAUDE OPUS 4.X FAMILY",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2048802257957728424",
+    "category": "model"
+  },
+  {
+    "headline": "SAKANA AI 'CONDUCTOR' AT ICLR 2026 — RL-TRAINED MODEL LEARNS TO ORCHESTRATE FRONTIER LLMS IN NATURAL LANGUAGE",
+    "source": "@hardmaru",
+    "url": "https://x.com/hardmaru/status/2048778095935795338",
     "category": "research"
   },
   {
-    "headline": "GITHUB COPILOT PRO/PRO+ MOVES TO TOKEN-BASED BILLING — $10/$39 MONTHLY CREDITS, NO FALLBACK ONCE DEPLETED",
-    "source": "@ibytenote",
-    "url": "https://x.com/ibytenote/status/2048797743314006300",
-    "category": "opensource"
+    "headline": "CHINA NDRC FORMALLY ORDERS META AND MANUS TO UNWIND $2B DEAL — FOUNDERS REPORTEDLY UNDER EXIT BANS",
+    "source": "@theaibenchai",
+    "url": "https://x.com/theaibenchai/status/2048802603459641784",
+    "category": "policy"
   }
 ]
