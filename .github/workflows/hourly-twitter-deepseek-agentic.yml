@@ -193,9 +193,20 @@ jobs:
                - Identify contradicting takes, missing context, or red flags
                - If continuing thread: add a Previously line with prior cycle reference
                - Decide verification status: ✓ multi-source / ⚠ single-source / 🚩 unverified
-            5. Bucket every other notable item into "Quick hits" — flat, one line each.
-            6. Flag anything that's loud-but-shaky in "Skeptic's corner".
-            7. End with a "Watch" list — concrete, dated signals to monitor next cycle.
+            5. HIGH-STAKES TRIAGE — before any item goes to Quick hits, check it:
+               if it is BOTH (a) single-source in the snapshot AND (b) ≥500 RT or ≥5K likes
+               AND (c) makes a high-stakes claim (regulatory action, M&A, named-entity
+               allegation, firing/resignation, criminal/legal claim, specific dollar amounts,
+               executive statement on policy), it MUST land in either:
+               - Top Stories — if you can corroborate (use a bird/curl call), OR
+               - Skeptic's corner — with the verification attempt described and what you found.
+               It MUST NOT land in Quick hits with a passive "if confirmed" hedge. Spend one
+               of your bird/curl budget calls to attempt corroboration. The whole point of
+               this brief is that big claims get treated as big — not buried in a one-liner.
+            6. Bucket every OTHER notable item (non-high-stakes, multi-source, or low-engagement)
+               into "Quick hits" — flat, one line each.
+            7. Flag anything that's loud-but-shaky in "Skeptic's corner".
+            8. End with a "Watch" list — concrete, dated signals to monitor next cycle.
 
             OUTPUT FORMAT — append to the daily file. If it doesn't exist, start with:
             `# Twitter/X AI Pulse (DeepSeek v4 Pro) — ${{ steps.datetime.outputs.date }}`
