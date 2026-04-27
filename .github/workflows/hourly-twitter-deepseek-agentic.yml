@@ -118,43 +118,84 @@ jobs:
         run: |
           bird news --ai-only -n 40 --json --plain > /tmp/bird/news.json 2>/dev/null || echo "[]" > /tmp/bird/news.json
 
-      - name: Diagnose bird tweet JSON shape (no filtering this run)
+      - name: Pre-filter search JSON to drop low-signal tweets
         run: |
-          # The v2 engagement-floor filter dropped 100% of tweets last run because
-          # my assumed field names (likes/favorite_count/created_at/retweet_count/
-          # reply_count) don't match bird CLI's actual output shape. Reverting to
-          # a NO-OP and dumping the real structure so v3 can use correct fields.
+          # v3 engagement-floor filter with the CORRECT bird CLI field names
+          # (verified via diagnostic dump in run 24981373124):
+          #   likeCount, retweetCount, replyCount  (camelCase, not snake_case)
+          #   createdAt format: "Mon Apr 27 07:09:16 +0000 2026" (legacy Twitter,
+          #     NOT ISO 8601 — needs strptime "%a %b %d %H:%M:%S %z %Y")
           #
-          # Once we see the actual keys, the filter will be reinstated with the
-          # correct field paths. Per-account JSON files pass through raw either way.
+          # TZ=UTC is required: jq's mktime treats broken-down time as local-time
+          # by default, which produced a +9h skew on KST runners and would silently
+          # misclassify recency on any non-UTC runner.
+          #
+          # Filter rule: drop a search-*.json tweet only when ALL of:
+          #   - likeCount = 0, retweetCount = 0, replyCount = 0
+          #   - createdAt parses to a time at least 30 minutes ago
+          #     (or createdAt is missing/unparseable — treat as old)
+          # Recency grace keeps fresh tweets that haven't accumulated engagement.
+          # news.json is left alone — it's trending topics, schema differs.
+          # Per-account JSON files (curated handles) also pass through raw.
 
-          for f in /tmp/bird/search-ai.json /tmp/bird/search-business.json /tmp/bird/news.json; do
+          export TZ=UTC
+          CUTOFF_EPOCH=$(date -u -d '30 minutes ago' +%s)
+
+          # One-line schema sanity check (protects against future bird upgrades
+          # that rename fields again).
+          first_search=$(ls /tmp/bird/search-*.json 2>/dev/null | head -1)
+          if [ -n "$first_search" ]; then
+            sample_keys=$(jq -r '.[0] // {} | keys | join(",")' "$first_search" 2>/dev/null)
+            echo "Schema check ($first_search): $sample_keys"
+          fi
+
+          total_before=0
+          total_after=0
+
+          for f in /tmp/bird/search-*.json; do
             [ -f "$f" ] || continue
-            count=$(jq 'length' "$f" 2>/dev/null || echo 0)
-            if [ "$count" -gt 0 ]; then
-              echo "============================================================"
-              echo "Sample from $(basename "$f") — length=$count"
-              echo "============================================================"
-              echo "Top-level keys (one item):"
-              jq -r '.[0] | keys[]' "$f" 2>/dev/null
-              echo ""
-              echo "Recursively-flattened paths to leaf values:"
-              jq -r '.[0] | paths(scalars) | join(".")' "$f" 2>/dev/null | sort -u
-              echo ""
-              echo "First item pretty-printed (head 80 lines):"
-              jq '.[0]' "$f" 2>/dev/null | head -80
-              echo ""
+
+            before=$(jq 'length' "$f" 2>/dev/null || echo 0)
+            total_before=$((total_before + before))
+
+            tmp="${f}.filtered"
+
+            if jq --argjson cutoff "$CUTOFF_EPOCH" '
+              [
+                .[] | select(
+                  (
+                    ((.likeCount // 0) == 0)
+                    and ((.retweetCount // 0) == 0)
+                    and ((.replyCount // 0) == 0)
+                    and (
+                      (.createdAt // "" |
+                        if . == "" then 0
+                        else (try (strptime("%a %b %d %H:%M:%S %z %Y") | mktime) catch 0)
+                        end
+                      ) < $cutoff
+                    )
+                  ) | not
+                )
+              ]
+            ' "$f" > "$tmp" 2>/dev/null && [ -s "$tmp" ]; then
+              after=$(jq 'length' "$tmp")
+              total_after=$((total_after + after))
+              mv "$tmp" "$f"
+              printf "  %-30s %3d → %3d  (-%d)\n" "$(basename "$f")" "$before" "$after" "$((before - after))"
+            else
+              rm -f "$tmp"
+              printf "  %-30s filter failed, kept original (%d)\n" "$(basename "$f")" "$before"
+              total_after=$((total_after + before))
             fi
           done
 
-          # No-op: counts only, no drops
-          total=0
-          for f in /tmp/bird/search-*.json /tmp/bird/news.json; do
-            [ -f "$f" ] || continue
-            n=$(jq 'length' "$f" 2>/dev/null || echo 0)
-            total=$((total + n))
-          done
-          echo "Pre-filter NO-OP this run. Search+news total: $total tweets passed through."
+          if [ "$total_before" -gt 0 ]; then
+            pct=$(( (total_before - total_after) * 100 / total_before ))
+          else
+            pct=0
+          fi
+          echo ""
+          echo "Pre-filter summary: $total_before → $total_after tweets (-${pct}%)"
 
       - name: Process tweets with DeepSeek v4 Pro
         uses: anthropics/claude-code-action@v1
