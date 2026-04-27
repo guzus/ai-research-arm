@@ -1,9 +1,9 @@
-name: Hyperscaler Model Release Timeline (Every 12 Hours)
+name: Hyperscaler Model Release Timeline (Every 24 Hours)
 
 on:
   schedule:
-    # Run at 06:29 and 18:29 UTC
-    - cron: '29 6,18 * * *'
+    # Run at 06:29 UTC daily
+    - cron: '29 6 * * *'
   workflow_dispatch:
 
 concurrency:
