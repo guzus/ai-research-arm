@@ -279,6 +279,59 @@ jobs:
             git add research/
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
+      - name: Generate audio digest with Deepgram
+        if: success()
+        continue-on-error: true
+        env:
+          DEEPGRAM_API_KEY: ${{ secrets.DEEPGRAM_API_KEY }}
+          DATE: ${{ steps.date.outputs.date }}
+        run: |
+          # Convert today's digest summary into an MP3 via Deepgram Aura-2 TTS.
+          # Voice: aura-2-asteria-en (American Female, news-anchor energy).
+          # Encoding: 32kbps mono MP3 — Deepgram's smallest option, optimal for
+          # speech (going lower hurts intelligibility; higher just bloats files).
+          # Failure-tolerant via continue-on-error so digest commits regardless.
+
+          SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
+          AUDIO_DIR="research/audio"
+          AUDIO_FILE="${AUDIO_DIR}/${DATE}-digest.mp3"
+
+          if [ -z "${DEEPGRAM_API_KEY}" ]; then
+            echo "DEEPGRAM_API_KEY not configured — skipping audio generation"
+            exit 0
+          fi
+
+          if [ ! -f "$SUMMARY_FILE" ]; then
+            echo "Summary file not found at $SUMMARY_FILE — skipping audio generation"
+            exit 0
+          fi
+
+          mkdir -p "$AUDIO_DIR"
+
+          # Build JSON body via jq so newlines / quotes / markdown chars in the
+          # summary are escaped correctly.
+          BODY=$(jq -n --rawfile text "$SUMMARY_FILE" '{text: $text}')
+
+          HTTP=$(curl -sS -w "%{http_code}" -o "$AUDIO_FILE" \
+            -X POST "https://api.deepgram.com/v1/speak?model=aura-2-asteria-en&encoding=mp3&bit_rate=32000" \
+            -H "Authorization: Token ${DEEPGRAM_API_KEY}" \
+            -H "Content-Type: application/json" \
+            -d "$BODY")
+
+          if [ "$HTTP" != "200" ]; then
+            echo "Deepgram returned HTTP $HTTP — error body:"
+            cat "$AUDIO_FILE" || true
+            rm -f "$AUDIO_FILE"
+            exit 0
+          fi
+
+          SIZE=$(wc -c < "$AUDIO_FILE")
+          DURATION_S=$((SIZE / 4000))   # 32kbps = 4000 bytes/sec
+          echo "Generated $AUDIO_FILE — ${SIZE} bytes (~${DURATION_S}s of audio)"
+
+          git add "$AUDIO_FILE"
+          git commit -m "Audio digest ${DATE} (Deepgram aura-2-asteria, 32kbps mono mp3, ${SIZE}b)" || echo "No audio changes to commit"
+
       - name: Push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

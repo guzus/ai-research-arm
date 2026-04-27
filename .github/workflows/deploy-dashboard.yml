@@ -9,6 +9,7 @@ on:
       - 'research/models/**'
       - 'research/front-page/**'
       - 'research/digest/**'
+      - 'research/audio/**'
   workflow_dispatch:
 
 permissions:
@@ -46,6 +47,7 @@ jobs:
           cp -r research/models dashboard/public/research/
           cp -r research/front-page dashboard/public/research/
           [ -d research/digest ] && cp -r research/digest dashboard/public/research/ || true
+          [ -d research/audio ]  && cp -r research/audio  dashboard/public/research/ || true
 
       # Build a manifest of available dates per source so the dashboard can avoid
       # the HEAD-probe storm against missing daily files.
@@ -61,6 +63,7 @@ jobs:
             'models':    (base / 'models',     re.compile(r'^(\d{4}-\d{2}-\d{2})-timeline\.md$')),
             'frontpage': (base / 'front-page', re.compile(r'^(\d{4}-\d{2}-\d{2})-front-page\.png$')),
             'today':     (base / 'digest',     re.compile(r'^(\d{4}-\d{2}-\d{2})-digest\.md$')),
+            'audio':     (base / 'audio',      re.compile(r'^(\d{4}-\d{2}-\d{2})-digest\.mp3$')),
           }
           manifest = {}
           for key, (dir_, pat) in patterns.items():

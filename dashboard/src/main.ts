@@ -77,7 +77,7 @@ function timeAgo(date: Date): string {
 
 // ── State ─────────────────────────────────────────────
 type Tab = 'today' | 'twitter' | 'models' | 'frontpage';
-type Manifest = { today: string[]; twitter: string[]; models: string[]; frontpage: string[] };
+type Manifest = { today: string[]; twitter: string[]; models: string[]; frontpage: string[]; audio: string[] };
 
 let currentDate = new Date();
 let searchTerm = '';
@@ -166,6 +166,7 @@ async function loadManifest(): Promise<Manifest | null> {
         twitter: Array.isArray(m.twitter) ? m.twitter : [],
         models: Array.isArray(m.models) ? m.models : [],
         frontpage: Array.isArray(m.frontpage) ? m.frontpage : [],
+        audio: Array.isArray((m as any).audio) ? (m as any).audio : [],
       };
       manifest = normalized;
       // Pre-populate availability cache from manifest
@@ -693,6 +694,27 @@ function renderFrontPage(imageUrl: string, fallbackDate: string | null): void {
 function renderToday(md: string): void {
   const sections = splitSections(md);
   const cards: string[] = [];
+
+  // Prepend an audio player if a Deepgram-generated digest MP3 exists for
+  // this date. Manifest is populated by deploy-dashboard.yml's manifest step.
+  const dateStr = fmtDate(currentDate);
+  if (manifest?.audio?.includes(dateStr)) {
+    const audioUrl = `${DATA_BASE}/audio/${dateStr}-digest.mp3`;
+    cards.push(
+      [
+        '<div class="content-card today-audio-card">',
+        '  <div class="content-card-header">',
+        '    <div class="content-card-title">🎧 Audio digest</div>',
+        '  </div>',
+        '  <div class="content-card-body">',
+        '    <audio controls preload="metadata" style="width:100%;" src="' + audioUrl + '">',
+        '      Your browser does not support the audio element.',
+        '    </audio>',
+        '  </div>',
+        '</div>',
+      ].join('\n'),
+    );
+  }
 
   for (const section of sections) {
     if (!section.title && !section.body) continue;
