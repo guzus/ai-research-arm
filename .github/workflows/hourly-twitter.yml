@@ -428,53 +428,60 @@ jobs:
             exit 0
           fi
 
-          echo "Sending $COUNT headline alerts to chat=$HOOKER_CHAT_ID thread=$HOOKER_THREAD_ID..."
+          echo "Sending $COUNT headline alerts to chat=$HOOKER_CHAT_ID thread=$HOOKER_THREAD_ID via /send-batch..."
 
-          # Build all payloads first, then dispatch in parallel via &.
           # Format goal (per user): no title, no tags, no @source line, no
-          # raw URL — just the headline text + a clickable "link" to the
-          # tweet. Hooker server emits HTML, so use parse_mode=HTML and
-          # embed the URL as <a href="...">link</a>.
-          while IFS= read -r ITEM; do
-            HEADLINE=$(echo "$ITEM" | jq -r '.headline // ""')
-            URL=$(echo "$ITEM" | jq -r '.url // ""')
+          # raw URL — just the headline + a clickable "link" to the tweet.
+          # Hooker server renders HTML, so parse_mode=HTML and the URL is
+          # embedded as <a href="...">link</a>.
+          #
+          # Single batch POST (hooker v0.2.0 /send-batch). Server fans out
+          # to N messages with a per-chat-id mutex so Telegram's 1-msg/sec
+          # same-chat limit is honored automatically. Replaces the previous
+          # N parallel /send POSTs.
+          BATCH_PAYLOAD=$(jq \
+            --arg chat_id "$HOOKER_CHAT_ID" \
+            --arg thread_id "$HOOKER_THREAD_ID" \
+            '{
+              messages: [
+                .[] | select((.headline // "") != "" and (.url // "") != "") |
+                {
+                  chat_id: $chat_id,
+                  message_thread_id: $thread_id,
+                  title: "",
+                  text: (.headline + " <a href=\"" + .url + "\">link</a>"),
+                  priority: 3,
+                  tags: [],
+                  parse_mode: "HTML"
+                }
+              ]
+            }' "$HEADLINES_FILE")
 
-            if [ -z "$HEADLINE" ] || [ -z "$URL" ]; then
-              continue
-            fi
+          BATCH_SIZE=$(echo "$BATCH_PAYLOAD" | jq '.messages | length')
+          echo "Batch size: $BATCH_SIZE messages"
 
-            # Inline HTML hyperlink — keeps the URL clickable but visually
-            # hidden behind the word "link" so the headline carries the row.
-            BODY=$(jq -n \
-              --arg headline "$HEADLINE" \
-              --arg url "$URL" \
-              '$headline + " <a href=\"" + $url + "\">link</a>"' \
-              | jq -r '.')
+          RESP=$(curl -sS -w "\nHTTP_STATUS:%{http_code}" \
+            -X POST "${HOOKER_URL}/send-batch" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "$BATCH_PAYLOAD")
 
-            PAYLOAD=$(jq -n \
-              --arg chat_id "$HOOKER_CHAT_ID" \
-              --arg thread_id "$HOOKER_THREAD_ID" \
-              --arg text "$BODY" \
-              '{
-                chat_id: $chat_id,
-                message_thread_id: $thread_id,
-                title: "",
-                text: $text,
-                priority: 3,
-                tags: [],
-                parse_mode: "HTML"
-              }')
+          HTTP=$(echo "$RESP" | grep -oE 'HTTP_STATUS:[0-9]+' | tail -1 | cut -d: -f2)
+          BODY=$(echo "$RESP" | sed 's/HTTP_STATUS:[0-9]*$//')
 
-            (
-              curl -sS -o /dev/null \
-                -X POST "${HOOKER_URL}/send" \
-                -H "Authorization: Bearer ${HOOKER_TOKEN}" \
-                -H "Content-Type: application/json" \
-                -d "$PAYLOAD"
-            ) &
+          echo "Hooker /send-batch HTTP $HTTP"
+          echo "$BODY" | jq -c '{delivered, failed, results_count: (.results | length)}' 2>/dev/null || echo "$BODY" | head -3
 
-            echo "  → ${HEADLINE:0:80}"
-          done < <(jq -c '.[]' "$HEADLINES_FILE")
+          if [ "$HTTP" != "200" ]; then
+            echo "Batch request failed — body:"
+            echo "$BODY" | head -20
+            exit 0
+          fi
 
-          wait
-          echo "All $COUNT alerts dispatched in parallel."
+          # Per-message error breakdown if any failed
+          FAILED=$(echo "$BODY" | jq -r '.failed // 0')
+          if [ "$FAILED" -gt 0 ]; then
+            echo "--- Failed messages ---"
+            echo "$BODY" | jq -r '.results[] | select(.ok == false) | "  ✗ index=\(.index) error=\(.error // "unknown")"' | head -10
+          fi
+          echo "Done — batch delivered."
