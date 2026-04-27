@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-04-27 12:48 UTC
+
+WHAT'S BUZZING:
+• Google Cloud Next 2026: 8th-gen TPUs split into TPU 8t (training, 3x faster) + TPU 8i (inference); Vertex AI rebranded as Gemini Enterprise Agent Platform
+• Google's Anthropic deal detailed: $10B at $350B valuation + up to $30B milestones, 5GW TPU compute over 5 years; Anthropic run-rate hits $30B
+• Musk v. Altman trial opens today — $150B and OpenAI's IPO on the line
+
+NOTABLE:
+• China expands rules: bans American investment in domestic AI startups without approval, blocks Meta-Manus $2B; Qualcomm +12% on OpenAI chip partnership report
+
+Full update on GitHub.
