@@ -279,6 +279,84 @@ jobs:
             git add research/
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
+      - name: Rewrite summary as TBPN-style spoken script (DeepSeek)
+        if: success()
+        continue-on-error: true
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DATE: ${{ steps.date.outputs.date }}
+          SYSTEM_PROMPT: |
+            You are writing a tech-news briefing in the style of TBPN (Technology Business Programming Network) — hosted, conversational, energetic, like a podcast intro. Rewrite the user-supplied daily AI digest as a SPOKEN briefing of about 60 to 90 seconds.
+
+            Rules:
+            - Open with a quick greeting plus the date spelled out naturally (e.g., "Monday, April twenty seventh, twenty twenty six"). NEVER read a date digit-by-digit.
+            - Connect items with conversational glue ("Big news at the top...", "Some quick numbers...", "Trending today...").
+            - Spell out ALL numbers, currency, units, and model versions in spoken form: "$10B" -> "ten billion dollars", "5GW" -> "five gigawatts", "400K" -> "four hundred thousand", "10x" -> "ten times", "GPT-5.5" -> "GPT five point five", "Sonnet 4.5" -> "Sonnet four point five".
+            - Replace symbols inline: × -> "times", & -> "and", em-dash -> comma.
+            - Drop bullets and markdown — pure prose, complete sentences only.
+            - Pronounce proper nouns naturally; leave names like Hunyuan, Bubeck, DeepSeek as written.
+            - End with a brief sign-off (e.g., "That is your brief — full digest on GitHub.").
+            - Output ONLY the spoken script. No preamble, no markdown, no quotation marks wrapping the whole thing.
+        run: |
+          # The raw summary file uses bullet points, dashes, and shorthand
+          # ("$10B", "5GW", "400K", "GPT-5.5", "2026-04-27") that TTS engines
+          # mispronounce — observed: "2026-04-27" read as "two zero two six dash
+          # zero four dash two seven", "10×" as "tense", "Hunyuan Hy3" as "Inuin
+          # GP", "GPT-5.5" as "TT and C". This step asks DeepSeek v4 Flash to
+          # rewrite the digest as a hosted, conversational spoken briefing —
+          # numbers/dates/units/model names spelled out for natural prosody.
+          #
+          # Output: research/summaries/<date>-digest-spoken.txt
+          # Audio step prefers this file over the raw summary if it exists.
+
+          SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
+          SPOKEN_FILE="research/summaries/${DATE}-digest-spoken.txt"
+
+          if [ -z "${DEEPSEEK_API_KEY}" ] || [ ! -f "$SUMMARY_FILE" ]; then
+            echo "Skipping spoken-script generation (missing key or summary)"
+            exit 0
+          fi
+
+          BODY=$(jq -n \
+            --arg system "$SYSTEM_PROMPT" \
+            --rawfile summary "$SUMMARY_FILE" \
+            '{
+              model: "deepseek-v4-flash",
+              max_tokens: 4000,
+              system: $system,
+              messages: [{role: "user", content: $summary}]
+            }')
+
+          curl -sS -X POST "https://api.deepseek.com/anthropic/v1/messages" \
+            -H "Authorization: Bearer ${DEEPSEEK_API_KEY}" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "Content-Type: application/json" \
+            -d "$BODY" -o /tmp/dg-rewrite-resp.json
+
+          # DeepSeek's Anthropic-compat responses sometimes contain raw control
+          # chars in thinking blocks that break strict JSON parsers (jq). Use
+          # Python with strict=False to be tolerant.
+          python3 -c '
+          import json, sys
+          with open("/tmp/dg-rewrite-resp.json", "rb") as f:
+              data = json.loads(f.read(), strict=False)
+          for item in data.get("content", []):
+              if item.get("type") == "text":
+                  sys.stdout.write(item.get("text", "").strip())
+                  break
+          ' > "$SPOKEN_FILE"
+
+          if [ ! -s "$SPOKEN_FILE" ]; then
+            echo "Empty spoken script — DeepSeek may have hit max_tokens with thinking only"
+            head -c 400 /tmp/dg-rewrite-resp.json
+            rm -f "$SPOKEN_FILE"
+            exit 0
+          fi
+
+          echo "Wrote $SPOKEN_FILE ($(wc -c < "$SPOKEN_FILE") bytes)"
+          git add "$SPOKEN_FILE"
+          git commit -m "Spoken script ${DATE} (TBPN-style rewrite, DeepSeek v4 Flash)" || echo "No spoken changes"
+
       - name: Generate audio digest with Deepgram
         if: success()
         continue-on-error: true
@@ -286,12 +364,18 @@ jobs:
           DEEPGRAM_API_KEY: ${{ secrets.DEEPGRAM_API_KEY }}
           DATE: ${{ steps.date.outputs.date }}
         run: |
-          # Convert today's digest summary into an MP3 via Deepgram Aura-2 TTS.
-          # Voice: aura-2-asteria-en (American Female, news-anchor energy).
-          # Encoding: 32kbps mono MP3 — Deepgram's smallest option, optimal for
-          # speech (going lower hurts intelligibility; higher just bloats files).
-          # Failure-tolerant via continue-on-error so digest commits regardless.
+          # Convert the spoken script (or fall back to raw summary) into MP3 via
+          # Deepgram Aura-2 TTS. Voice: aura-2-asteria-en (American Female,
+          # news-anchor energy). Encoding: 32kbps mono MP3 — Deepgram's smallest
+          # option, optimal for speech.
+          #
+          # Regex normalization runs before TTS as a safety net: strips smart
+          # quotes / non-breaking hyphens / em-dashes / × / & / bullets that
+          # the LLM rewrite step might have left in. Date/currency/unit
+          # expansion is the LLM's job — this regex only handles the mechanical
+          # symbol-stripping the LLM can't produce naturally in plain text.
 
+          SPOKEN_FILE="research/summaries/${DATE}-digest-spoken.txt"
           SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
           AUDIO_DIR="research/audio"
           AUDIO_FILE="${AUDIO_DIR}/${DATE}-digest.mp3"
@@ -301,16 +385,36 @@ jobs:
             exit 0
           fi
 
-          if [ ! -f "$SUMMARY_FILE" ]; then
-            echo "Summary file not found at $SUMMARY_FILE — skipping audio generation"
+          if [ -f "$SPOKEN_FILE" ]; then
+            INPUT_FILE="$SPOKEN_FILE"
+            echo "Using TBPN spoken script as TTS input"
+          elif [ -f "$SUMMARY_FILE" ]; then
+            INPUT_FILE="$SUMMARY_FILE"
+            echo "Spoken script missing — falling back to raw summary"
+          else
+            echo "No input text available — skipping audio generation"
             exit 0
           fi
 
           mkdir -p "$AUDIO_DIR"
 
-          # Build JSON body via jq so newlines / quotes / markdown chars in the
-          # summary are escaped correctly.
-          BODY=$(jq -n --rawfile text "$SUMMARY_FILE" '{text: $text}')
+          # Safety-net normalization (handles whatever the LLM didn't, plus
+          # symbols the LLM can't fix in plain text).
+          NORMALIZED=$(sed -E '
+            s/×/ times /g
+            s/&/ and /g
+            s/—/, /g
+            s/–/, /g
+            s/‐/-/g
+            s/‑/-/g
+            s/•/ /g
+            s/\xE2\x80\x99/'"'"'/g
+            s/\xE2\x80\x98/'"'"'/g
+            s/\xE2\x80\x9C/"/g
+            s/\xE2\x80\x9D/"/g
+          ' "$INPUT_FILE")
+
+          BODY=$(jq -n --arg text "$NORMALIZED" '{text: $text}')
 
           HTTP=$(curl -sS -w "%{http_code}" -o "$AUDIO_FILE" \
             -X POST "https://api.deepgram.com/v1/speak?model=aura-2-asteria-en&encoding=mp3&bit_rate=32000" \
