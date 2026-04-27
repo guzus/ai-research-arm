@@ -1,15 +1,14 @@
 Daily AI Digest - 2026-04-27
 
 TOP STORIES:
-• Musk v. Altman trial opens in Oakland — Brockman's unsealed diary becomes plaintiff's smoking gun; ~$150B at stake
-• Altman apologizes to Tumbler Ridge, BC — OpenAI staff recommended reporting shooter's ChatGPT account in June 2025; leadership overruled them
-• US State Dept global cable names DeepSeek, Moonshot, MiniMax for distillation/IP-theft outreach
-• China blocks Meta–Manus $2B deal; bars US capital in Chinese AI startups
-• DeepSeek V4 cached input prices cut 10x — 139x cheaper than GPT-5.5
+• OpenAI–Microsoft partnership restructured — Azure exclusivity ends, MS keeps IP through 2032; MSFT -4%, QCOM +12%
+• Musk v. Altman trial opens in Oakland — Brockman's unsealed diary is the smoking gun; ~$150B at stake
+• Altman apologizes to Tumbler Ridge BC — staff flagged shooter's account in June 2025; leadership overruled
+• Google Cloud Next: TPU 8t/8i split, Vertex AI → Gemini Enterprise Agent Platform
+• DeepSeek V4 cached input cut 10x — 139x cheaper than GPT-5.5
 
 KEY NUMBERS:
-• Google–Anthropic: $10B at $350B + $30B contingent + 5GW TPU; Anthropic ARR $30B
-• HN: DeepSeek v4 2,062 pts; GPT-5.5 1,566 pts
+• Google–Anthropic: $10B at $350B + $30B contingent + 5GW TPU; ARR $30B
 
 TRENDING: AI agent deletes prod DB — 720-comment HN debate on agent blast radius.
 
