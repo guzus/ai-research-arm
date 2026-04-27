@@ -449,30 +449,70 @@ jobs:
           git pull --rebase || true
           git push || echo "Nothing to push"
 
-      - name: Read summary for Telegram
-        id: summary
-        run: |
-          SUMMARY_FILE="research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt"
-          if [ -f "$SUMMARY_FILE" ]; then
-            SUMMARY=$(cat "$SUMMARY_FILE" | head -c 800)
-            echo "content<<EOF" >> $GITHUB_OUTPUT
-            echo "$SUMMARY" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
-          else
-            echo "content=No summary available" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Send Telegram notification
+      - name: Send Telegram notification (audio + caption)
         if: success()
         continue-on-error: true
-        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: markdown
-          message: |
-            📊 *Daily AI Digest Ready*
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DATE: ${{ steps.date.outputs.date }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Send the ARA broadcast MP3 to Telegram via sendAudio so it appears
+          # as a music/audio bubble with a play button. Caption carries the
+          # text summary + GitHub link, all in one message. Falls back to
+          # sendMessage (text only) if audio is missing.
+          # Replaces the previous appleboy/telegram-action text-only step.
 
-            ${{ steps.summary.outputs.content }}
+          AUDIO_FILE="research/audio/${DATE}-digest.mp3"
+          SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
+          DIGEST_URL="https://github.com/${REPO}/blob/main/research/digest/${DATE}-digest.md"
 
-            📄 [Full Digest on GitHub](https://github.com/${{ github.repository }}/blob/main/research/digest/${{ steps.date.outputs.date }}-digest.md)
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "Telegram credentials missing — skipping notification"
+            exit 0
+          fi
+
+          # Telegram caption max is 1024 chars (with parse_mode). Reserve ~120
+          # for the title + footer link, leaving ~700 for the summary body.
+          if [ -f "$SUMMARY_FILE" ]; then
+            SUMMARY_BODY=$(head -c 700 "$SUMMARY_FILE")
+          else
+            SUMMARY_BODY="No summary available."
+          fi
+
+          CAPTION=$(printf '🎙️ *ARA broadcast — %s*\n\n%s\n\n📄 [Full digest](%s)' \
+            "$DATE" "$SUMMARY_BODY" "$DIGEST_URL")
+
+          if [ -f "$AUDIO_FILE" ]; then
+            echo "Sending sendAudio with $AUDIO_FILE ($(wc -c < "$AUDIO_FILE") bytes)..."
+            HTTP=$(curl -sS -w "%{http_code}" -o /tmp/tg-resp.json \
+              -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendAudio" \
+              -F "chat_id=${TELEGRAM_CHAT_ID}" \
+              -F "audio=@${AUDIO_FILE}" \
+              -F "title=ARA broadcast ${DATE}" \
+              -F "performer=AI Research Arm" \
+              -F "parse_mode=Markdown" \
+              -F "caption=${CAPTION}")
+
+            if [ "$HTTP" != "200" ]; then
+              echo "Telegram sendAudio returned HTTP $HTTP — body:"
+              cat /tmp/tg-resp.json
+              echo ""
+              echo "Falling back to text-only sendMessage..."
+              curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+                --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+                --data-urlencode "text=${CAPTION}" \
+                -d "parse_mode=Markdown" \
+                -d "disable_web_page_preview=true" >/dev/null
+            else
+              echo "Telegram sendAudio OK"
+            fi
+          else
+            echo "No audio file at $AUDIO_FILE — sending text-only sendMessage"
+            curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+              --data-urlencode "text=${CAPTION}" \
+              -d "parse_mode=Markdown" \
+              -d "disable_web_page_preview=true" >/dev/null
+          fi
