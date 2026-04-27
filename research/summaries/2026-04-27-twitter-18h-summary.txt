@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-04-27 18:40 UTC
+
+WHAT'S BUZZING:
+• Musk v. Altman trial opens in Oakland — Musk live-tweeting "Scam Altman owned the OpenAI Startup Fund," alleges perjury in Congress
+• Simon Willison flags the buried clause in today's MSFT/OpenAI restructure: revenue share runs through 2030 "independent of OpenAI's technology progress" — the AGI trigger appears dead
+• David Silver's new venture Ineffable Intelligence raises $1.1B seed — RL-from-experience thesis, one of the largest seeds ever
+
+NOTABLE:
+• Google = ~25% of global AI compute (3.8M TPUs + 1.3M GPUs), per stat re-circulating in researcher feeds
+• GPT-5.5 High debuts on LMArena Code Arena at #9 (1500) — solid but not dominant
+• SemiAnalysis corrects Google's TPU 8t spec: HBM3E is 12-hi, not 8-hi
+
+Full update on GitHub.
