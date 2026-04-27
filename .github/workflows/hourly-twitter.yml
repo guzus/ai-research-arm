@@ -39,10 +39,28 @@ jobs:
       - name: Install bird CLI
         run: npm install -g @steipete/bird
 
-      - name: Fetch tweets from monitored accounts
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+
+      - name: Install birdy
+        run: |
+          # birdy = multi-account proxy for bird with rotation + parallel
+          # batch fetch (https://github.com/guzus/birdy). We pin to main to
+          # pick up the latest multi-fetch primitive; tag a release later
+          # if we want reproducibility.
+          go install github.com/guzus/birdy@main
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+          # Sanity check; the new $GITHUB_PATH only takes effect in
+          # subsequent steps, so reach the binary directly here.
+          "$(go env GOPATH)/bin/birdy" version 2>&1 | head -3 || echo "(birdy installed)"
+
+      - name: Fetch tweets, searches, and news via birdy multi-fetch
         env:
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
+          # birdy's stateless account injection — no ~/.config/birdy file
+          # needed in CI. The store auto-loads BIRDY_ACCOUNTS on Open().
+          BIRDY_ACCOUNTS: '[{"name":"ci","auth_token":"${{ secrets.BIRD_AUTH_TOKEN }}","ct0":"${{ secrets.BIRD_CT0 }}"}]'
         run: |
           mkdir -p /tmp/bird
 
@@ -55,45 +73,34 @@ jobs:
           # Others — researchers, analysts, specialists, media
           others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh"
 
-          # Parallel fetch — 6-way concurrency. Each call writes a per-handle
-          # file (no shared-state race). Cuts wall time from ~75s sequential
-          # to ~25s without hitting bird's rate limit. Same pattern proven
-          # on hourly-twitter-deepseek-agentic.yml.
-          printf '%s\n' $labs $hyperscalers $others | \
-            xargs -n 1 -P 6 -I {} bash -c '
-              h="$1"
-              if bird user-tweets "@${h}" -n 20 --json --plain > "/tmp/bird/${h}.json" 2>/dev/null; then
-                echo "✓ @${h}"
-              else
-                echo "[]" > "/tmp/bird/${h}.json"
-                echo "✗ @${h} (used empty fallback)"
-              fi
-            ' _ {}
+          # Build the manifest: 50+ user-tweets ops + 7 keyword searches + news.
+          # All ops run in parallel inside one Go process — replaces the
+          # previous 3 separate steps (xargs loop + 7-way bg searches + news).
+          jq -n --arg handles "$labs $hyperscalers $others" '
+            {
+              operations:
+                ($handles | split(" ") | map(select(length > 0)) | map(
+                  {id: ., args: ["user-tweets", "@" + ., "-n", "20", "--json", "--plain"]}
+                )) + [
+                  {id: "search-ai",         args: ["search", "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama", "-n", "50", "--json", "--plain"]},
+                  {id: "search-extra",      args: ["search", "AI breakthrough OR AI launch OR AI update OR foundation model", "-n", "30", "--json", "--plain"]},
+                  {id: "search-research",   args: ["search", "AI paper OR machine learning research OR new benchmark OR state of the art SOTA", "-n", "30", "--json", "--plain"]},
+                  {id: "search-infra",      args: ["search", "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU", "-n", "20", "--json", "--plain"]},
+                  {id: "search-policy",     args: ["search", "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment", "-n", "20", "--json", "--plain"]},
+                  {id: "search-business",   args: ["search", "AI startup funding OR AI acquisition OR AI valuation OR AI partnership", "-n", "20", "--json", "--plain"]},
+                  {id: "search-opensource", args: ["search", "open source AI OR open weights OR AI API OR AI developer tools", "-n", "20", "--json", "--plain"]},
+                  {id: "news",              args: ["news", "--ai-only", "-n", "40", "--json", "--plain"]}
+                ],
+              concurrency: 8
+            }
+          ' > /tmp/manifest.json
 
-      - name: Search for AI news tweets
-        env:
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
-        run: |
-          # All 7 searches in parallel via background jobs + wait. Cuts wall
-          # time from ~13s sequential to ~3s.
+          echo "Manifest: $(jq '.operations | length' /tmp/manifest.json) ops, concurrency=$(jq '.concurrency' /tmp/manifest.json)"
 
-          { bird search "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama" -n 50 --json --plain > /tmp/bird/search-ai.json 2>/dev/null || echo "[]" > /tmp/bird/search-ai.json; } &
-          { bird search "AI breakthrough OR AI launch OR AI update OR foundation model" -n 30 --json --plain > /tmp/bird/search-extra.json 2>/dev/null || echo "[]" > /tmp/bird/search-extra.json; } &
-          { bird search "AI paper OR machine learning research OR new benchmark OR state of the art SOTA" -n 30 --json --plain > /tmp/bird/search-research.json 2>/dev/null || echo "[]" > /tmp/bird/search-research.json; } &
-          { bird search "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU" -n 20 --json --plain > /tmp/bird/search-infra.json 2>/dev/null || echo "[]" > /tmp/bird/search-infra.json; } &
-          { bird search "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment" -n 20 --json --plain > /tmp/bird/search-policy.json 2>/dev/null || echo "[]" > /tmp/bird/search-policy.json; } &
-          { bird search "AI startup funding OR AI acquisition OR AI valuation OR AI partnership" -n 20 --json --plain > /tmp/bird/search-business.json 2>/dev/null || echo "[]" > /tmp/bird/search-business.json; } &
-          { bird search "open source AI OR open weights OR AI API OR AI developer tools" -n 20 --json --plain > /tmp/bird/search-opensource.json 2>/dev/null || echo "[]" > /tmp/bird/search-opensource.json; } &
-          wait
-          echo "All searches complete."
-
-      - name: Fetch AI trending news
-        env:
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
-        run: |
-          bird news --ai-only -n 40 --json --plain > /tmp/bird/news.json 2>/dev/null || echo "[]" > /tmp/bird/news.json
+          # Single CLI invocation, parallel internally. birdy writes
+          # /tmp/bird/<id>.json for each op (and '[]' on op-level failure
+          # so downstream LLMs that read empty arrays still work).
+          birdy multi-fetch --manifest /tmp/manifest.json --output-dir /tmp/bird
 
       - name: Process tweets with Claude
         uses: anthropics/claude-code-action@v1
