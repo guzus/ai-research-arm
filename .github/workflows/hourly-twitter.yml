@@ -140,6 +140,72 @@ jobs:
           # so downstream LLMs that read empty arrays still work).
           birdy multi-fetch --manifest /tmp/manifest.json --output-dir /tmp/bird
 
+      - name: Aggregate bird JSONs into a single file (cuts Claude read overhead)
+        run: |
+          # Claude was doing 70 sequential Read tool calls (one per /tmp/bird/*.json),
+          # each turn paying ~300ms round-trip. Consolidating into one structured
+          # file with provenance reduces reads to 1, saving ~15-20s per run plus
+          # cutting the total turn count.
+          #
+          # Output schema:
+          #   {
+          #     "accounts":  {"OpenAI": [...], "sama": [...], ...},
+          #     "searches":  {"ai": [...], "extra": [...], "news": [...], ...},
+          #     "news":      [...],
+          #     "meta":      {"total_tweets": N, "non_empty_accounts": M, "generated_at": "..."}
+          #   }
+          python3 -c '
+          import json
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          bird = Path("/tmp/bird")
+          accounts, searches, news = {}, {}, []
+          total = 0
+          non_empty_accounts = 0
+
+          for f in sorted(bird.glob("*.json")):
+              if f.name in ("all.json", "manifest.json"):
+                  continue
+              try:
+                  data = json.loads(f.read_text() or "[]")
+              except Exception:
+                  continue
+              name = f.stem
+              if name == "news":
+                  news = data if isinstance(data, list) else []
+                  total += len(news)
+              elif name.startswith("search-"):
+                  key = name.removeprefix("search-")
+                  searches[key] = data if isinstance(data, list) else []
+                  total += len(searches[key])
+              else:
+                  arr = data if isinstance(data, list) else []
+                  accounts[name] = arr
+                  total += len(arr)
+                  if arr:
+                      non_empty_accounts += 1
+
+          out = {
+              "accounts": accounts,
+              "searches": searches,
+              "news": news,
+              "meta": {
+                  "total_tweets": total,
+                  "non_empty_accounts": non_empty_accounts,
+                  "monitored_accounts": len(accounts),
+                  "search_categories": len(searches),
+                  "trending_news_items": len(news),
+                  "generated_at": datetime.now(timezone.utc).isoformat(),
+              },
+          }
+          (bird / "all.json").write_text(json.dumps(out, separators=(",", ":")))
+          print(f"Aggregated: {len(accounts)} accounts ({non_empty_accounts} non-empty), "
+                f"{len(searches)} searches, {len(news)} news items, "
+                f"{total} tweets total")
+          '
+          echo "all.json size: $(wc -c < /tmp/bird/all.json) bytes"
+
       - name: Process tweets with Claude
         uses: anthropics/claude-code-action@v1
         with:
@@ -162,19 +228,20 @@ jobs:
 
             OUTPUT (markdown digest): research/twitter/${{ steps.datetime.outputs.date }}.md
 
-            RAW DATA LOCATIONS (JSON files):
-            - /tmp/bird/*.json — individual account tweets (OpenAI.json, sama.json, etc.)
-            - /tmp/bird/search-ai.json — core AI model & product search results
-            - /tmp/bird/search-extra.json — breakthroughs and launches
-            - /tmp/bird/search-research.json — research papers and benchmarks
-            - /tmp/bird/search-infra.json — AI infrastructure and hardware
-            - /tmp/bird/search-policy.json — AI safety, regulation, governance
-            - /tmp/bird/search-business.json — AI funding and business moves
-            - /tmp/bird/search-opensource.json — open source AI and developer tools
-            - /tmp/bird/news.json — AI trending news from Twitter
+            RAW DATA: a SINGLE consolidated file at `/tmp/bird/all.json` with this shape:
+            {
+              "accounts":  { "OpenAI": [...tweets], "sama": [...], ... },   // ~50 monitored handles
+              "searches":  { "ai": [...], "extra": [...], "research": [...], "infra": [...], "policy": [...], "business": [...], "opensource": [...] },
+              "news":      [...trending AI news headlines],
+              "meta":      { "total_tweets": N, "non_empty_accounts": M, ... }
+            }
+
+            (Per-handle and per-search files also exist at /tmp/bird/<id>.json
+            for backwards compat, but DO NOT read them individually — read
+            `all.json` once. This is much faster than 70 sequential Read calls.)
 
             INSTRUCTIONS:
-            1. Read ALL JSON files from /tmp/bird/
+            1. Read `/tmp/bird/all.json` ONCE — that contains everything.
             2. Filter for SIGNIFICANT tweets from the last ~3 hours:
                - Product announcements, model releases, API changes
                - Research papers, benchmarks, technical breakthroughs
