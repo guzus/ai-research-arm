@@ -1,13 +1,11 @@
 Monday, April twenty-seventh, twenty twenty-six.
 
-China has blocked Meta's two-billion-dollar Manus deal, with the startup's founders barred from leaving the country since March. Meanwhile, reports are surfacing of unauthorized access to Anthropic's pre-release Mythos model and a brief leak from OpenAI — a rough week for AI security.
+[high_energy]The Musk versus Altman trial opens in Oakland today, with Greg Brockman's unsealed diary already serving as the plaintiff's smoking gun and [emphasis]roughly one hundred fifty billion dollars[/emphasis] on the line. Sam Altman has also issued an apology to Tumbler Ridge, British Columbia — it emerged that OpenAI staff recommended reporting a shooter's ChatGPT account in June twenty twenty-five, and leadership overruled them.
 
-DeepSeek is making waves on pricing: cached input costs slashed ten times over — now one hundred thirty-nine times cheaper than GPT five point five and eighty-three times cheaper than Sonnet four point six. Their new V four model sports one point six trillion parameters, forty-nine billion active, with a one million token context window, and is live on Hugging Face, Ollama, and Alibaba Cloud.
+Geopolitically, the US State Department named DeepSeek, Moonshot, and MiniMax in a global cable over distillation and IP-theft concerns. China blocked a two-billion-dollar Meta and Manus deal and is now barring US capital from Chinese AI startups.
 
-The Musk versus OpenAI trial opens today — prediction markets give Musk roughly fifty-fifty odds. And OpenAI is reportedly co-designing an AI agent phone with MediaTek and Qualcomm, with Luxshare as the exclusive manufacturer.
+Some quick numbers: DeepSeek V four has slashed cached input prices [emphasis]ten times[/emphasis], making it one hundred thirty-nine times cheaper than GPT five point five. Google is backing Anthropic with ten billion dollars against a three hundred fifty billion dollar valuation, plus thirty billion contingent and five gigawatts of TPU access, as Anthropic reports thirty billion in annual recurring revenue.
 
-Quick numbers: Google's total Anthropic commitment sits at ten billion dollars at a three-hundred-fifty-billion-dollar valuation, with up to thirty billion more and five gigawatts of TPU capacity.
-
-Trending: a Cursor and Claude agent wiped a production database in nine seconds, prompting a sharp rethink of autonomous ops permissions.
+[dramatic_pause]Trending today — an AI agent deleted a production database, sparking a seven-hundred-twenty-comment Hacker News debate on how much autonomy agents should have.
 
 That is your ARA broadcast — full digest on GitHub.
