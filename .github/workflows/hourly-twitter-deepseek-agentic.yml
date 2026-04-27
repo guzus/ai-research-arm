@@ -118,69 +118,44 @@ jobs:
         run: |
           bird news --ai-only -n 40 --json --plain > /tmp/bird/news.json 2>/dev/null || echo "[]" > /tmp/bird/news.json
 
-      - name: Pre-filter search JSON to drop low-signal tweets
+      - name: Diagnose bird tweet JSON shape (no filtering this run)
         run: |
-          # v2 engagement-floor filter: drop a search/news tweet only when ALL of:
-          #   - 0 likes, 0 retweets, 0 replies
-          #   - Posted >30min ago (or has unparseable / missing timestamp)
-          # Recency grace keeps fresh tweets that haven't had time to accumulate.
-          # Targets only search-*.json and news.json — per-account JSON files
-          # (curated handles) pass through raw.
+          # The v2 engagement-floor filter dropped 100% of tweets last run because
+          # my assumed field names (likes/favorite_count/created_at/retweet_count/
+          # reply_count) don't match bird CLI's actual output shape. Reverting to
+          # a NO-OP and dumping the real structure so v3 can use correct fields.
           #
-          # The v1 keyword-based filter dropped 1/325 tweets (-0%) because the
-          # actual "noise" the model rejects is generic low-engagement chatter,
-          # not crypto-keyword spam. Engagement floor catches the real pattern.
+          # Once we see the actual keys, the filter will be reinstated with the
+          # correct field paths. Per-account JSON files pass through raw either way.
 
-          # 30 minutes ago, UTC epoch seconds
-          CUTOFF_EPOCH=$(date -u -d '30 minutes ago' +%s)
-
-          total_before=0
-          total_after=0
-
-          for f in /tmp/bird/search-*.json /tmp/bird/news.json; do
+          for f in /tmp/bird/news.json /tmp/bird/search-ai.json /tmp/bird/search-business.json; do
             [ -f "$f" ] || continue
-
-            before=$(jq 'length' "$f" 2>/dev/null || echo 0)
-            total_before=$((total_before + before))
-
-            tmp="${f}.filtered"
-
-            if jq --argjson cutoff "$CUTOFF_EPOCH" '
-              [
-                .[] | select(
-                  (
-                    ((.likes // .favorite_count // 0) == 0)
-                    and ((.retweet_count // 0) == 0)
-                    and ((.reply_count // 0) == 0)
-                    and (
-                      (.created_at // "" |
-                        if . == "" then 0
-                        else (try fromdateiso8601 catch 0)
-                        end
-                      ) < $cutoff
-                    )
-                  ) | not
-                )
-              ]
-            ' "$f" > "$tmp" 2>/dev/null && [ -s "$tmp" ]; then
-              after=$(jq 'length' "$tmp")
-              total_after=$((total_after + after))
-              mv "$tmp" "$f"
-              printf "  %-30s %3d → %3d  (-%d)\n" "$(basename "$f")" "$before" "$after" "$((before - after))"
-            else
-              rm -f "$tmp"
-              printf "  %-30s filter failed, kept original (%d)\n" "$(basename "$f")" "$before"
-              total_after=$((total_after + before))
+            count=$(jq 'length' "$f" 2>/dev/null || echo 0)
+            if [ "$count" -gt 0 ]; then
+              echo "============================================================"
+              echo "Sample from $(basename "$f") — length=$count"
+              echo "============================================================"
+              echo "Top-level keys (one tweet):"
+              jq -r '.[0] | keys[]' "$f" 2>/dev/null
+              echo ""
+              echo "Recursively-flattened paths to leaf values (depth 2):"
+              jq -r '.[0] | paths(scalars) | join(".")' "$f" 2>/dev/null | sort -u | head -40
+              echo ""
+              echo "First tweet pretty-printed (head 60 lines):"
+              jq '.[0]' "$f" 2>/dev/null | head -60
+              echo ""
+              break
             fi
           done
 
-          if [ "$total_before" -gt 0 ]; then
-            pct=$(( (total_before - total_after) * 100 / total_before ))
-          else
-            pct=0
-          fi
-          echo ""
-          echo "Pre-filter summary: $total_before → $total_after tweets (-${pct}%)"
+          # No-op: counts only, no drops
+          total=0
+          for f in /tmp/bird/search-*.json /tmp/bird/news.json; do
+            [ -f "$f" ] || continue
+            n=$(jq 'length' "$f" 2>/dev/null || echo 0)
+            total=$((total + n))
+          done
+          echo "Pre-filter NO-OP this run. Search+news total: $total tweets passed through."
 
       - name: Process tweets with DeepSeek v4 Pro
         uses: anthropics/claude-code-action@v1
