@@ -1,0 +1,277 @@
+name: Twitter AI News — DeepSeek v4 Pro (Every 3 Hours)
+
+# Parallel Twitter digestion that uses DeepSeek v4 Pro instead of Claude.
+# Reuses anthropics/claude-code-action@v1 because DeepSeek exposes an
+# Anthropic-compatible endpoint at https://api.deepseek.com/anthropic — we
+# override ANTHROPIC_BASE_URL / ANTHROPIC_AUTH_TOKEN at the step level to
+# redirect Claude Code CLI to DeepSeek.
+#
+# Required secret: DEEPSEEK_API_KEY (from https://platform.deepseek.com/api_keys)
+# Reuses existing secrets: BIRD_AUTH_TOKEN, BIRD_CT0, TELEGRAM_*
+
+on:
+  schedule:
+    # Run every 3 hours at minute 37 — offset 30min from the Claude version
+    # (which runs at minute 7) so we get a clean side-by-side comparison
+    # without both jobs hammering the bird CLI at the same time.
+    - cron: '37 */3 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: hourly-twitter-deepseek
+  cancel-in-progress: true
+
+jobs:
+  twitter-news-deepseek:
+    runs-on: [self-hosted, Linux]
+    permissions:
+      contents: write
+      actions: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get current datetime
+        id: datetime
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "hour=$(date +'%H')" >> $GITHUB_OUTPUT
+          echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install bird CLI
+        run: npm install -g @steipete/bird
+
+      - name: Fetch tweets from monitored accounts
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          mkdir -p /tmp/bird
+
+          # AI Labs & Company accounts
+          labs="OpenAI AnthropicAI GoogleAI GoogleDeepMind MistralAI MetaAI CohereAI AI21Labs StabilityAI HuggingFace NVIDIAAIDev"
+
+          # Hyperscalers — top execs and key insiders
+          hyperscalers="elonmusk sama demishassabis OfficialLoganK alexalbert__ DrJimFan tszzl"
+
+          # Others — researchers, analysts, specialists, media
+          others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh"
+
+          for handle in $labs; do
+            echo "Fetching @${handle}..."
+            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+          done
+
+          for handle in $hyperscalers; do
+            echo "Fetching @${handle}..."
+            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+          done
+
+          for handle in $others; do
+            echo "Fetching @${handle}..."
+            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+          done
+
+      - name: Search for AI news tweets
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          # Core AI model & product announcements
+          bird search "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama" -n 50 --json --plain > /tmp/bird/search-ai.json 2>/dev/null || echo "[]" > /tmp/bird/search-ai.json
+
+          # Breakthroughs and launches
+          bird search "AI breakthrough OR AI launch OR AI update OR foundation model" -n 30 --json --plain > /tmp/bird/search-extra.json 2>/dev/null || echo "[]" > /tmp/bird/search-extra.json
+
+          # Research papers and benchmarks
+          bird search "AI paper OR machine learning research OR new benchmark OR state of the art SOTA" -n 30 --json --plain > /tmp/bird/search-research.json 2>/dev/null || echo "[]" > /tmp/bird/search-research.json
+
+          # AI infrastructure, chips, and hardware
+          bird search "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU" -n 20 --json --plain > /tmp/bird/search-infra.json 2>/dev/null || echo "[]" > /tmp/bird/search-infra.json
+
+          # AI policy, safety, and regulation
+          bird search "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment" -n 20 --json --plain > /tmp/bird/search-policy.json 2>/dev/null || echo "[]" > /tmp/bird/search-policy.json
+
+          # AI funding and business
+          bird search "AI startup funding OR AI acquisition OR AI valuation OR AI partnership" -n 20 --json --plain > /tmp/bird/search-business.json 2>/dev/null || echo "[]" > /tmp/bird/search-business.json
+
+          # Open source AI and tools
+          bird search "open source AI OR open weights OR AI API OR AI developer tools" -n 20 --json --plain > /tmp/bird/search-opensource.json 2>/dev/null || echo "[]" > /tmp/bird/search-opensource.json
+
+      - name: Fetch AI trending news
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          bird news --ai-only -n 40 --json --plain > /tmp/bird/news.json 2>/dev/null || echo "[]" > /tmp/bird/news.json
+
+      - name: Process tweets with DeepSeek v4 Pro
+        uses: anthropics/claude-code-action@v1
+        env:
+          # Redirect Claude Code CLI to DeepSeek's Anthropic-compatible endpoint.
+          # See https://api-docs.deepseek.com/guides/coding_agents
+          ANTHROPIC_BASE_URL: https://api.deepseek.com/anthropic
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.DEEPSEEK_API_KEY }}
+          ANTHROPIC_MODEL: deepseek-v4-pro
+          ANTHROPIC_DEFAULT_OPUS_MODEL: deepseek-v4-pro
+          ANTHROPIC_DEFAULT_SONNET_MODEL: deepseek-v4-pro
+          ANTHROPIC_DEFAULT_HAIKU_MODEL: deepseek-v4-flash
+          CLAUDE_CODE_SUBAGENT_MODEL: deepseek-v4-flash
+          CLAUDE_CODE_EFFORT_LEVEL: max
+        with:
+          # The action input is required, but ANTHROPIC_AUTH_TOKEN above
+          # takes precedence inside Claude Code CLI when ANTHROPIC_BASE_URL
+          # is set, so the OAuth token is effectively ignored.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*)"
+          prompt: |
+            You are a comprehensive Twitter/X AI news monitor running on DeepSeek v4 Pro.
+            Process raw tweet data fetched by the bird CLI and produce a detailed update
+            covering the full AI landscape.
+
+            TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+            OUTPUT: research/twitter-deepseek/${{ steps.datetime.outputs.date }}.md
+
+            RAW DATA LOCATIONS (JSON files):
+            - /tmp/bird/*.json — individual account tweets (OpenAI.json, sama.json, etc.)
+            - /tmp/bird/search-ai.json — core AI model & product search results
+            - /tmp/bird/search-extra.json — breakthroughs and launches
+            - /tmp/bird/search-research.json — research papers and benchmarks
+            - /tmp/bird/search-infra.json — AI infrastructure and hardware
+            - /tmp/bird/search-policy.json — AI safety, regulation, governance
+            - /tmp/bird/search-business.json — AI funding and business moves
+            - /tmp/bird/search-opensource.json — open source AI and developer tools
+            - /tmp/bird/news.json — AI trending news from Twitter
+
+            INSTRUCTIONS:
+            1. Read ALL JSON files from /tmp/bird/
+            2. Filter for SIGNIFICANT tweets from the last ~3 hours:
+               - Product announcements, model releases, API changes
+               - Research papers, benchmarks, technical breakthroughs
+               - Major partnerships, funding rounds, acquisitions
+               - Policy changes, regulation, safety developments
+               - Infrastructure news (chips, compute, hardware)
+               - Open source releases, developer tools, frameworks
+               - Notable technical insights and opinions from key researchers
+            3. De-duplicate across sources (same tweet may appear in account feed + search)
+            4. Skip: retweets of old news, casual tweets, promotional content, engagement bait
+            5. Include engagement metrics when notably high (viral tweets)
+
+            FORMAT: Append to the daily file (create if doesn't exist).
+            If the file already exists, append the new section at the end.
+            If the file does not exist, start it with: `# Twitter/X AI Pulse (DeepSeek v4 Pro) — ${{ steps.datetime.outputs.date }}`
+
+            ## ${{ steps.datetime.outputs.hour }}:00 UTC
+
+            ### Breaking News
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Model Releases & Product Updates
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Research & Papers
+            - [Tweet summary with paper title if applicable] — @handle — https://x.com/handle/status/ID
+
+            ### Infrastructure & Hardware
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Business & Funding
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Policy, Safety & Regulation
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Open Source & Developer Tools
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Notable Opinions & Insights
+            - [Tweet summary] — @handle — https://x.com/handle/status/ID
+
+            ### Trending AI News
+            - [Headline] — [description]
+
+            Omit any section that has no items. If no significant updates found at all, write:
+            ## ${{ steps.datetime.outputs.hour }}:00 UTC
+            No significant updates this period.
+
+            STEP 2 - WRITE TELEGRAM SUMMARY:
+            After writing the Twitter update, also write a SHORT summary for Telegram notification.
+            Use Write tool to create: research/summaries/${{ steps.datetime.outputs.date }}-twitter-deepseek-${{ steps.datetime.outputs.hour }}h-summary.txt
+
+            Format (plain text, max 800 chars):
+            ```
+            Twitter/X AI Pulse (DeepSeek v4 Pro) - ${{ steps.datetime.outputs.timestamp }}
+
+            WHAT'S BUZZING:
+            • [Top story 1]
+            • [Top story 2]
+            • [Top story 3]
+
+            NOTABLE:
+            • [Key insight or trend]
+
+            Full update on GitHub.
+            ```
+
+            If no significant updates were found, write:
+            ```
+            Twitter/X AI Pulse (DeepSeek v4 Pro) - ${{ steps.datetime.outputs.timestamp }}
+
+            Quiet period — no major AI updates on Twitter/X.
+            ```
+
+            After writing both files, commit:
+            git add research/twitter-deepseek/ research/summaries/
+            git commit -m "Twitter (DeepSeek) update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
+
+      - name: Push changes
+        id: push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git pull --rebase || true
+          if git push; then
+            echo "pushed=true" >> $GITHUB_OUTPUT
+          else
+            echo "pushed=false" >> $GITHUB_OUTPUT
+            echo "Nothing to push"
+          fi
+
+      - name: Read summary for Telegram
+        id: summary
+        run: |
+          SUMMARY_FILE="research/summaries/${{ steps.datetime.outputs.date }}-twitter-deepseek-${{ steps.datetime.outputs.hour }}h-summary.txt"
+          if [ -f "$SUMMARY_FILE" ]; then
+            SUMMARY=$(cat "$SUMMARY_FILE" | head -c 800)
+            echo "content<<EOF" >> $GITHUB_OUTPUT
+            echo "$SUMMARY" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "content=No Twitter (DeepSeek) summary available" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Send Telegram notification
+        if: success()
+        continue-on-error: true
+        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: |
+            🐦🦌 *Twitter/X AI Pulse — DeepSeek v4 Pro*
+
+            ${{ steps.summary.outputs.content }}
+
+            📄 [Full Update on GitHub](https://github.com/${{ github.repository }}/blob/main/research/twitter-deepseek/${{ steps.datetime.outputs.date }}.md)
