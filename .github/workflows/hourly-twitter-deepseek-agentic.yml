@@ -1,4 +1,4 @@
-name: Twitter AI News — DeepSeek v4 Pro Agentic (Every 3 Hours)
+name: Twitter AI News — DeepSeek v4 Pro Agentic (Every 6 Hours)
 
 # Parallel Twitter digestion that uses DeepSeek v4 Pro instead of Claude,
 # with agentic browsing — the model is allowed to issue follow-up bird CLI
@@ -13,10 +13,10 @@ name: Twitter AI News — DeepSeek v4 Pro Agentic (Every 3 Hours)
 
 on:
   schedule:
-    # Run every 3 hours at minute 37 — offset 30min from the Claude version
-    # (which runs at minute 7) so we get a clean side-by-side comparison
-    # without both jobs hammering the bird CLI at the same time.
-    - cron: '37 */3 * * *'
+    # Run every 6 hours at minute 37 — offset 30min from the nearest Claude
+    # run (Claude fires at minute 7 every 3 hours), so neither hits bird
+    # CLI at the same time. Slots are 00:37, 06:37, 12:37, 18:37 UTC.
+    - cron: '37 */6 * * *'
   workflow_dispatch:
 
 concurrency:
