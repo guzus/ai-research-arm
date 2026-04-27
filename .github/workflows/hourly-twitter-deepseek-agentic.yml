@@ -70,20 +70,20 @@ jobs:
           # Others — researchers, analysts, specialists, media
           others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh"
 
-          for handle in $labs; do
-            echo "Fetching @${handle}..."
-            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
-          done
-
-          for handle in $hyperscalers; do
-            echo "Fetching @${handle}..."
-            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
-          done
-
-          for handle in $others; do
-            echo "Fetching @${handle}..."
-            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
-          done
+          # Parallel fetch — 6-way concurrency. Each call writes its own per-handle
+          # file (no shared-state race). Stays under bird's rate limits while cutting
+          # wall time from ~70s sequential to ~12s. AUTH_TOKEN/CT0 are inherited by
+          # the subshell from the step env; bird CLI reads them per-process.
+          printf '%s\n' $labs $hyperscalers $others | \
+            xargs -n 1 -P 6 -I {} bash -c '
+              h="$1"
+              if bird user-tweets "@${h}" -n 20 --json --plain > "/tmp/bird/${h}.json" 2>/dev/null; then
+                echo "✓ @${h}"
+              else
+                echo "[]" > "/tmp/bird/${h}.json"
+                echo "✗ @${h} (used empty fallback)"
+              fi
+            ' _ {}
 
       - name: Search for AI news tweets
         env:
@@ -174,9 +174,11 @@ jobs:
             - `bird thread <tweet_id> --json --plain` — fetch a full thread
             - `curl -sSL <url>` — fetch a primary source (paper abstract, blog post, official statement)
             - `jq '.[] | select(...)'` — filter the JSON files efficiently
-            HARD CAPS: 12 bird follow-up calls + 5 curl fetches per run. The adversarial pass
-            (step 5 below) is expected to use 3–5 of those calls on a busy cycle. Use them on
-            the BIG stories, not on every item. Quiet cycles can come in well under the cap.
+            HARD CAPS: 30 bird follow-up calls + 5 curl fetches per run. Generous budget
+            — use it. Expected breakdown on a busy cycle: 5–10 calls on adversarial pass
+            (one falsification attempt per Top Story, sometimes two), 5–10 on corroboration
+            for main stories, 3–5 on Skeptic's corner verification. Quiet cycles can come
+            in well under the cap. Don't ration when the budget allows real work.
 
             PROCESS:
             1. Read PRIOR CONTEXT first. Note continuing narratives — stories with sections
