@@ -326,21 +326,22 @@ jobs:
             "https://api.github.com/repos/${{ github.repository }}/actions/workflows/deploy-dashboard.yml/dispatches" \
             -d '{"ref":"main"}'
 
-      - name: Send headline alerts (Telegram + Hooker, one per headline)
+      - name: Send headline alerts to Hooker (parallel, supergroup thread)
         if: success()
         continue-on-error: true
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          HOOKER_CHAT_ID: "-1003805075491"
+          HOOKER_THREAD_ID: "5771"
           DATE: ${{ steps.datetime.outputs.date }}
           HOUR: ${{ steps.datetime.outputs.hour }}
         run: |
-          # Bloomberg-style "Market News Feed" cadence — each headline gets its
-          # own message. Replaces the previous single-rollup notification.
-          # Sleeps 1.2s between sends to stay under Telegram's same-chat
-          # rate limit (~1 msg/sec for bot accounts).
+          # Bloomberg-style "Market News Feed" cadence: each headline gets its
+          # own hooker /send. Targets the "hooker" supergroup, forum thread 5771.
+          # All alerts fire in parallel via background jobs + wait — no per-msg
+          # sleep. (Direct Telegram sendMessage is removed; hooker is the
+          # delivery channel.)
 
           HEADLINES_FILE="research/summaries/${DATE}-twitter-${HOUR}h-headlines.json"
 
@@ -355,55 +356,58 @@ jobs:
             exit 0
           fi
 
-          echo "Sending $COUNT headline alerts..."
-          SENT=0
+          if [ -z "$HOOKER_URL" ] || [ -z "$HOOKER_TOKEN" ]; then
+            echo "Hooker credentials missing — skipping"
+            exit 0
+          fi
 
+          echo "Sending $COUNT headline alerts to chat=$HOOKER_CHAT_ID thread=$HOOKER_THREAD_ID..."
+
+          # Build all payloads first, then dispatch in parallel via &.
+          # Format goal (per user): no title, no tags, no @source line, no
+          # raw URL — just the headline text + a clickable "link" to the
+          # tweet. Hooker server emits HTML, so use parse_mode=HTML and
+          # embed the URL as <a href="...">link</a>.
           while IFS= read -r ITEM; do
             HEADLINE=$(echo "$ITEM" | jq -r '.headline // ""')
-            SOURCE=$(echo "$ITEM" | jq -r '.source // ""')
             URL=$(echo "$ITEM" | jq -r '.url // ""')
-            CAT=$(echo "$ITEM" | jq -r '.category // "news"')
 
-            # Skip if missing core fields
             if [ -z "$HEADLINE" ] || [ -z "$URL" ]; then
               continue
             fi
 
-            # Bloomberg-style alert: headline only, source + url on the next line.
-            # No emoji, no bold header, no "ARA Pulse" prefix — keeps it minimal
-            # so the headline reads first.
-            TG_TEXT=$(printf '%s\n%s · %s' "$HEADLINE" "$SOURCE" "$URL")
+            # Inline HTML hyperlink — keeps the URL clickable but visually
+            # hidden behind the word "link" so the headline carries the row.
+            BODY=$(jq -n \
+              --arg headline "$HEADLINE" \
+              --arg url "$URL" \
+              '$headline + " <a href=\"" + $url + "\">link</a>"' \
+              | jq -r '.')
 
-            # Send to Telegram via direct bot
-            if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
-              curl -sS -o /dev/null \
-                -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-                --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
-                --data-urlencode "text=${TG_TEXT}" \
-                -d "parse_mode=Markdown" \
-                -d "disable_web_page_preview=false"
-            fi
+            PAYLOAD=$(jq -n \
+              --arg chat_id "$HOOKER_CHAT_ID" \
+              --arg thread_id "$HOOKER_THREAD_ID" \
+              --arg text "$BODY" \
+              '{
+                chat_id: $chat_id,
+                message_thread_id: $thread_id,
+                title: "",
+                text: $text,
+                priority: 3,
+                tags: [],
+                parse_mode: "HTML"
+              }')
 
-            # Send to Hooker (separate Telegram channel via hooker.guzus.xyz)
-            if [ -n "$HOOKER_URL" ] && [ -n "$HOOKER_TOKEN" ]; then
-              HK_TEXT=$(printf '%s\n%s · %s' "$HEADLINE" "$SOURCE" "$URL")
-              HOOKER_BODY=$(jq -n \
-                --arg title "ARA Pulse" \
-                --arg text "$HK_TEXT" \
-                --arg cat "$CAT" \
-                '{title: $title, text: $text, priority: 3, tags: ["ai-research", "alert", $cat]}')
+            (
               curl -sS -o /dev/null \
-                -X POST "${HOOKER_URL}/publish/ai-research" \
+                -X POST "${HOOKER_URL}/send" \
                 -H "Authorization: Bearer ${HOOKER_TOKEN}" \
                 -H "Content-Type: application/json" \
-                -d "$HOOKER_BODY"
-            fi
+                -d "$PAYLOAD"
+            ) &
 
-            SENT=$((SENT + 1))
-            echo "  [$SENT/$COUNT] $HEADLINE"
-
-            # Rate-limit guard: max ~1 msg/sec to same Telegram chat
-            sleep 1.2
+            echo "  → ${HEADLINE:0:80}"
           done < <(jq -c '.[]' "$HEADLINES_FILE")
 
-          echo "Sent $SENT headline alerts."
+          wait
+          echo "All $COUNT alerts dispatched in parallel."

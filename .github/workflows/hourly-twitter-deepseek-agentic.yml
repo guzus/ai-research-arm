@@ -51,13 +51,46 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Free disk space on runner
+        run: |
+          # Same cleanup pattern as hourly-twitter.yml — keeps the self-hosted
+          # runner from filling up between runs. Best-effort, never fails the job.
+          df -h / 2>&1 | tail -2
+          sudo apt-get clean -y >/dev/null 2>&1 || true
+          sudo find /tmp -mindepth 1 -maxdepth 1 -mtime +1 -exec sudo rm -rf {} + 2>/dev/null || true
+          sudo journalctl --vacuum-time=2d >/dev/null 2>&1 || true
+
       - name: Install bird CLI
         run: npm install -g @steipete/bird
 
-      - name: Fetch tweets from monitored accounts
+      - name: Install birdy from GitHub release
         env:
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Same install path as hourly-twitter.yml — pre-built v0.9.0+
+          # binary. Avoids the Go toolchain on the runner.
+          set -e
+
+          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+          ARCH=$(uname -m)
+          case "$ARCH" in
+            x86_64|amd64) ARCH=amd64 ;;
+            arm64|aarch64) ARCH=arm64 ;;
+          esac
+          ASSET="birdy_${OS}_${ARCH}.tar.gz"
+          TMPDIR=$(mktemp -d)
+          trap 'rm -rf "$TMPDIR"' EXIT
+
+          curl -fsSL "https://github.com/guzus/birdy/releases/latest/download/${ASSET}" -o "$TMPDIR/$ASSET"
+          tar -xzf "$TMPDIR/$ASSET" -C "$TMPDIR"
+          BIN="$TMPDIR/birdy"
+          [ -f "$BIN" ] || BIN="$TMPDIR/birdy_${OS}_${ARCH}"
+          sudo install -m 755 "$BIN" /usr/local/bin/birdy
+          birdy version 2>&1 | head -3 || echo "(birdy installed)"
+
+      - name: Fetch tweets, searches, and news via birdy multi-fetch
+        env:
+          BIRDY_ACCOUNTS: '[{"name":"ci","auth_token":"${{ secrets.BIRD_AUTH_TOKEN }}","ct0":"${{ secrets.BIRD_CT0 }}"}]'
         run: |
           mkdir -p /tmp/bird
 
@@ -70,53 +103,33 @@ jobs:
           # Others — researchers, analysts, specialists, media
           others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh"
 
-          # Parallel fetch — 6-way concurrency. Each call writes its own per-handle
-          # file (no shared-state race). Stays under bird's rate limits while cutting
-          # wall time from ~70s sequential to ~12s. AUTH_TOKEN/CT0 are inherited by
-          # the subshell from the step env; bird CLI reads them per-process.
-          printf '%s\n' $labs $hyperscalers $others | \
-            xargs -n 1 -P 6 -I {} bash -c '
-              h="$1"
-              if bird user-tweets "@${h}" -n 20 --json --plain > "/tmp/bird/${h}.json" 2>/dev/null; then
-                echo "✓ @${h}"
-              else
-                echo "[]" > "/tmp/bird/${h}.json"
-                echo "✗ @${h} (used empty fallback)"
-              fi
-            ' _ {}
+          # Build manifest via Python — same pattern as hourly-twitter.yml.
+          # 50+ user-tweets ops + 7 keyword searches + news, all parallel
+          # inside one Go process. Concurrency 6 to stay safely under bird's
+          # rate limit when running against a single auth.
+          export HANDLES="$labs $hyperscalers $others"
+          python3 -c '
+          import json, os
+          handles = os.environ["HANDLES"].split()
+          ops = [
+              {"id": h, "args": ["user-tweets", "@" + h, "-n", "20", "--json", "--plain"]}
+              for h in handles if h
+          ] + [
+              {"id": "search-ai",         "args": ["search", "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama", "-n", "50", "--json", "--plain"]},
+              {"id": "search-extra",      "args": ["search", "AI breakthrough OR AI launch OR AI update OR foundation model", "-n", "30", "--json", "--plain"]},
+              {"id": "search-research",   "args": ["search", "AI paper OR machine learning research OR new benchmark OR state of the art SOTA", "-n", "30", "--json", "--plain"]},
+              {"id": "search-infra",      "args": ["search", "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU", "-n", "20", "--json", "--plain"]},
+              {"id": "search-policy",     "args": ["search", "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment", "-n", "20", "--json", "--plain"]},
+              {"id": "search-business",   "args": ["search", "AI startup funding OR AI acquisition OR AI valuation OR AI partnership", "-n", "20", "--json", "--plain"]},
+              {"id": "search-opensource", "args": ["search", "open source AI OR open weights OR AI API OR AI developer tools", "-n", "20", "--json", "--plain"]},
+              {"id": "news",              "args": ["news", "--ai-only", "-n", "40", "--json", "--plain"]},
+          ]
+          with open("/tmp/manifest.json", "w") as f:
+              json.dump({"operations": ops, "concurrency": 6}, f)
+          print(f"Built manifest: {len(ops)} ops")
+          '
 
-      - name: Search for AI news tweets
-        env:
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
-        run: |
-          # Core AI model & product announcements
-          bird search "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama" -n 50 --json --plain > /tmp/bird/search-ai.json 2>/dev/null || echo "[]" > /tmp/bird/search-ai.json
-
-          # Breakthroughs and launches
-          bird search "AI breakthrough OR AI launch OR AI update OR foundation model" -n 30 --json --plain > /tmp/bird/search-extra.json 2>/dev/null || echo "[]" > /tmp/bird/search-extra.json
-
-          # Research papers and benchmarks
-          bird search "AI paper OR machine learning research OR new benchmark OR state of the art SOTA" -n 30 --json --plain > /tmp/bird/search-research.json 2>/dev/null || echo "[]" > /tmp/bird/search-research.json
-
-          # AI infrastructure, chips, and hardware
-          bird search "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU" -n 20 --json --plain > /tmp/bird/search-infra.json 2>/dev/null || echo "[]" > /tmp/bird/search-infra.json
-
-          # AI policy, safety, and regulation
-          bird search "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment" -n 20 --json --plain > /tmp/bird/search-policy.json 2>/dev/null || echo "[]" > /tmp/bird/search-policy.json
-
-          # AI funding and business
-          bird search "AI startup funding OR AI acquisition OR AI valuation OR AI partnership" -n 20 --json --plain > /tmp/bird/search-business.json 2>/dev/null || echo "[]" > /tmp/bird/search-business.json
-
-          # Open source AI and tools
-          bird search "open source AI OR open weights OR AI API OR AI developer tools" -n 20 --json --plain > /tmp/bird/search-opensource.json 2>/dev/null || echo "[]" > /tmp/bird/search-opensource.json
-
-      - name: Fetch AI trending news
-        env:
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
-        run: |
-          bird news --ai-only -n 40 --json --plain > /tmp/bird/news.json 2>/dev/null || echo "[]" > /tmp/bird/news.json
+          birdy multi-fetch --manifest /tmp/manifest.json --output-dir /tmp/bird
 
       - name: Pre-filter search JSON to drop low-signal tweets
         run: |
