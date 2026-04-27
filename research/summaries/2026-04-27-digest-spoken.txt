@@ -1,15 +1,13 @@
 Monday, April twenty-seventh, twenty twenty-six.
 
-China's National Development and Reform Commission has blocked Meta's two billion dollar acquisition of Manus, with the startup's founders barred from leaving the country since March. On top of that, The Information is reporting unauthorized access to Anthropic's pre-release Mythos model, plus a brief leak at OpenAI — a rough week for AI security.
+China has blocked Meta's two-billion-dollar Manus deal, with the startup's founders barred from leaving the country since March. Meanwhile, reports are surfacing of unauthorized access to Anthropic's pre-release Mythos model and a brief leak from OpenAI — a rough week for AI security.
 
-Some quick numbers: DeepSeek has slashed its cached input prices ten times, landing one hundred thirty-nine times cheaper than GPT five point five and eighty-three times cheaper than Sonnet four point six. DeepSeek V four ships with one point six trillion total parameters, forty-nine billion active, and a one million token context window, now available on Hugging Face, Ollama, and Alibaba Cloud. On Hacker News, DeepSeek V four hit two thousand sixty-two points, GPT five point five came in at one thousand five hundred sixty-six.
+DeepSeek is making waves on pricing: cached input costs slashed ten times over — now one hundred thirty-nine times cheaper than GPT five point five and eighty-three times cheaper than Sonnet four point six. Their new V four model sports one point six trillion parameters, forty-nine billion active, with a one million token context window, and is live on Hugging Face, Ollama, and Alibaba Cloud.
 
-The Musk versus OpenAI trial opens today, with prediction market Kalshi putting the odds at roughly fifty-fifty.
+The Musk versus OpenAI trial opens today — prediction markets give Musk roughly fifty-fifty odds. And OpenAI is reportedly co-designing an AI agent phone with MediaTek and Qualcomm, with Luxshare as the exclusive manufacturer.
 
-On the device front, analyst Ming-Chi Kuo reports OpenAI is co-designing an AI agent phone with MediaTek and Qualcomm, with Luxshare as the exclusive manufacturer.
+Quick numbers: Google's total Anthropic commitment sits at ten billion dollars at a three-hundred-fifty-billion-dollar valuation, with up to thirty billion more and five gigawatts of TPU capacity.
 
-Also worth noting: Google has committed ten billion dollars to Anthropic at a three hundred fifty billion dollar valuation, with up to an additional thirty billion and five gigawatts of TPU capacity on the table.
-
-Trending today: a Cursor and Claude agent deleted a production database in nine seconds, sharpening the conversation around trust levels in autonomous agent operations.
+Trending: a Cursor and Claude agent wiped a production database in nine seconds, prompting a sharp rethink of autonomous ops permissions.
 
 That is your ARA broadcast — full digest on GitHub.
