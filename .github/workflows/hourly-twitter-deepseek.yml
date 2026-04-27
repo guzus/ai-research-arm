@@ -127,13 +127,18 @@ jobs:
           ANTHROPIC_DEFAULT_HAIKU_MODEL: deepseek-v4-flash
           CLAUDE_CODE_SUBAGENT_MODEL: deepseek-v4-flash
           CLAUDE_CODE_EFFORT_LEVEL: max
+          # bird CLI auth — needed because the model can now invoke bird
+          # via Bash(bird:*) for follow-up queries on stories that look thin
+          # in the pre-fetched snapshot.
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
         with:
           # The action input is required, but ANTHROPIC_AUTH_TOKEN above
           # takes precedence inside Claude Code CLI when ANTHROPIC_BASE_URL
           # is set, so the OAuth token is effectively ignored.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*)"
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*)"
           prompt: |
             You are a comprehensive Twitter/X AI news monitor running on DeepSeek v4 Pro.
             Process raw tweet data fetched by the bird CLI and produce a detailed update
@@ -152,6 +157,17 @@ jobs:
             - /tmp/bird/search-business.json — AI funding and business moves
             - /tmp/bird/search-opensource.json — open source AI and developer tools
             - /tmp/bird/news.json — AI trending news from Twitter
+
+            AGENTIC BROWSING (bird CLI is available via Bash):
+            You may issue follow-up bird queries when the pre-fetched snapshot looks
+            thin on a story that clearly deserves more depth (major model release,
+            big M&A, breaking incident). Useful commands:
+            - `bird user-tweets "@handle" -n 20 --json --plain` — fetch a specific account
+            - `bird search "query" -n 30 --json --plain` — keyword search
+            - `bird tweet <tweet_id> --json --plain` — fetch one tweet by ID
+            - `bird thread <tweet_id> --json --plain` — fetch a full thread
+            Always use `--json --plain`. Hard cap: at most 5 follow-up bird calls per run.
+            Skip follow-ups for routine days — the snapshot is usually enough.
 
             INSTRUCTIONS:
             1. Read ALL JSON files from /tmp/bird/
