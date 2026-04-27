@@ -174,8 +174,9 @@ jobs:
             - `bird thread <tweet_id> --json --plain` — fetch a full thread
             - `curl -sSL <url>` — fetch a primary source (paper abstract, blog post, official statement)
             - `jq '.[] | select(...)'` — filter the JSON files efficiently
-            HARD CAPS: 5 bird follow-up calls + 3 curl fetches per run. Use them on the BIG stories,
-            not on every item. Most cycles need 0–2 calls; busy ones up to the cap.
+            HARD CAPS: 12 bird follow-up calls + 5 curl fetches per run. The adversarial pass
+            (step 5 below) is expected to use 3–5 of those calls on a busy cycle. Use them on
+            the BIG stories, not on every item. Quiet cycles can come in well under the cap.
 
             PROCESS:
             1. Read PRIOR CONTEXT first. Note continuing narratives — stories with sections
@@ -192,8 +193,21 @@ jobs:
                - Use bird/curl to corroborate or fetch primary sources WHEN IT MATTERS
                - Identify contradicting takes, missing context, or red flags
                - If continuing thread: add a Previously line with prior cycle reference
-               - Decide verification status: ✓ multi-source / ⚠ single-source / 🚩 unverified
-            5. HIGH-STAKES TRIAGE — before any item goes to Quick hits, check it:
+               - Decide a PROVISIONAL verification status: ✓ multi-source / ⚠ single-source / 🚩 unverified
+            5. ADVERSARIAL PASS — for each Top Story you've drafted, run a falsification attempt:
+               - State the strongest single counter-hypothesis (what would the most rigorous
+                 skeptic argue? Who profits from this story being repeated? What would the
+                 announcement look like if it were misleading or misframed?)
+               - Use a bird/curl call to TRY TO FALSIFY the thesis — search for contradicting
+                 evidence, the original primary document, official denials, or earlier
+                 reporting that frames the story differently
+               - If counter-evidence is strong: revise the thesis or downgrade verification.
+               - If counter-evidence is weak/absent after a real attempt: that's the strongest
+                 "this story holds" signal — say so explicitly.
+               - Document the attempt in the Counter / contradicting field of the story.
+               This is mandatory for every Top Story. Lock-in the verification status only
+               AFTER the adversarial pass — not before.
+            6. HIGH-STAKES TRIAGE — before any item goes to Quick hits, check it:
                if it is BOTH (a) single-source in the snapshot AND (b) ≥500 RT or ≥5K likes
                AND (c) makes a high-stakes claim (regulatory action, M&A, named-entity
                allegation, firing/resignation, criminal/legal claim, specific dollar amounts,
@@ -203,10 +217,10 @@ jobs:
                It MUST NOT land in Quick hits with a passive "if confirmed" hedge. Spend one
                of your bird/curl budget calls to attempt corroboration. The whole point of
                this brief is that big claims get treated as big — not buried in a one-liner.
-            6. Bucket every OTHER notable item (non-high-stakes, multi-source, or low-engagement)
+            7. Bucket every OTHER notable item (non-high-stakes, multi-source, or low-engagement)
                into "Quick hits" — flat, one line each.
-            7. Flag anything that's loud-but-shaky in "Skeptic's corner".
-            8. End with a "Watch" list — concrete, dated signals to monitor next cycle.
+            8. Flag anything that's loud-but-shaky in "Skeptic's corner".
+            9. End with a "Watch" list — concrete, dated signals to monitor next cycle.
 
             OUTPUT FORMAT — append to the daily file. If it doesn't exist, start with:
             `# Twitter/X AI Pulse (DeepSeek v4 Pro) — ${{ steps.datetime.outputs.date }}`
@@ -224,7 +238,7 @@ jobs:
             **Evidence**: [Tight synthesis of the 2–3 strongest sources. Cite numbers, dates, names. Not a list of tweet summaries — a paragraph.]
             - @primary_handle: [specific claim/quote/datum] — https://x.com/handle/status/ID — [N likes / RT if notable]
             - @corroborating_handle: [what they add] — URL
-            **Counter / contradicting**: [Pushback, alternative interpretation, missing data. Or "None visible" if genuinely unanimous.]
+            **Counter / contradicting**: [State the strongest counter-hypothesis you stress-tested AND what your falsification attempt found. If you ran a bird/curl call to disprove the thesis and found nothing, say so explicitly — e.g. "Counter-hypothesis: deal price is inflated marketing. Tested via bird search 'cohere aleph alpha actual valuation' — no disconfirming reporting found, so the figure holds." If counter-evidence is strong, revise the thesis upstream.]
             **Verification**: ✓ multi-source confirmed / ⚠ single-source / 🚩 unverified — [one-line reason]
             **Watch**: [Concrete signal that would change the picture in next 24h]
 
