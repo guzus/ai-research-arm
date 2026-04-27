@@ -248,18 +248,18 @@ jobs:
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
-          # Mirrors the model used by hourly-twitter-deepseek-agentic.yml's
-          # claude-code-action (ANTHROPIC_MODEL: deepseek-v4-pro), with the
-          # explicit [1m] suffix to pin DeepSeek's 1M-context variant — the
-          # 50-handle JSON snapshot fits comfortably at 1M.
-          # Brackets are quoted so bash doesn't try to glob them.
+          # Mirrors the model used by hourly-twitter-deepseek-agentic.yml.
+          # Note: the [1m] suffix used in the Anthropic-shim path is *not*
+          # accepted on DeepSeek's OpenAI-compatible endpoint (returns
+          # `400 Model Not Exist`). 1M context is the default for v4-pro
+          # there, so plain `deepseek-v4-pro` already gets the 1M variant.
           # Bash allowlist: pi's --tools is coarse (bash on/off). For this
           # experiment we accept full bash on the trusted self-hosted runner.
           pi -p "$(cat /tmp/pi/prompt.txt)" \
             --no-session \
             --thinking high \
             --tools read,write,edit,bash,grep,find,ls \
-            --model 'deepseek/deepseek-v4-pro[1m]'
+            --model deepseek/deepseek-v4-pro
 
       - name: Push changes
         id: push
