@@ -1,44 +1,44 @@
 [
   {
-    "headline": "DAVID SILVER'S INEFFABLE INTELLIGENCE RAISES $1.1B SEED AT $5.1B — LARGEST EUROPEAN SEED EVER, AIMS FOR 'SUPERINTELLIGENCE FIRST CONTACT'",
-    "source": "@AndrewCurran_",
-    "url": "https://x.com/AndrewCurran_/status/2048790475197600198",
-    "category": "business"
-  },
-  {
-    "headline": "SAM ALTMAN CONFIRMS MICROSOFT PARTNERSHIP UPDATE — OPENAI CLEARED FOR ALL CLOUDS THROUGH 2032, REVENUE SHARE THROUGH 2030",
-    "source": "@sama",
-    "url": "https://x.com/sama/status/2048755148361707946",
-    "category": "breaking"
-  },
-  {
-    "headline": "MICROSOFT LICENSE TO OPENAI IP NOW NON-EXCLUSIVE — MSFT STOCK DROPS 5% AFTER PARTNERSHIP RESTRUCTURE BLOG",
-    "source": "@kimmonismus",
-    "url": "https://x.com/kimmonismus/status/2048759615500804395",
-    "category": "business"
-  },
-  {
-    "headline": "PERPLEXITY QUIETLY SHIPS SONAR 2 ON WEB — IN-HOUSE WEB-GROUNDED LLM, BASE MODEL UNDISCLOSED",
-    "source": "@testingcatalog",
-    "url": "https://x.com/testingcatalog/status/2048796690627403837",
+    "headline": "GPT-5.5 GOES GA IN MICROSOFT FOUNDRY — LONGER CONTEXT, SMARTER AGENTS, LOWER COST",
+    "source": "@Azure",
+    "url": "https://x.com/Azure/status/2048803892960694724",
     "category": "model"
   },
   {
-    "headline": "GPT-5.5 HIGH DEBUTS AT #9 ON CODE ARENA WITH 1,500 SCORE — TRAILS CLAUDE OPUS 4.X FAMILY",
-    "source": "@mark_k",
-    "url": "https://x.com/mark_k/status/2048802257957728424",
+    "headline": "CLAUDE OPUS 4.7 NOW LIVE IN MICROSOFT FOUNDRY — FIRST ANTHROPIC FRONTIER MODEL ON ENTERPRISE STACK",
+    "source": "@Azure",
+    "url": "https://x.com/Azure/status/2048804250101231839",
     "category": "model"
   },
   {
-    "headline": "SAKANA AI 'CONDUCTOR' AT ICLR 2026 — RL-TRAINED MODEL LEARNS TO ORCHESTRATE FRONTIER LLMS IN NATURAL LANGUAGE",
-    "source": "@hardmaru",
-    "url": "https://x.com/hardmaru/status/2048778095935795338",
+    "headline": "MICROSOFT AI SHIPS MAI-IMAGE-2-EFFICIENT — 22% FASTER, 4X MORE EFFICIENT, 41% LOWER PRICED THAN MAI-IMAGE-2",
+    "source": "@mustafasuleyman",
+    "url": "https://x.com/mustafasuleyman/status/2048801300976750891",
+    "category": "model"
+  },
+  {
+    "headline": "BING'S HARRIER OPEN-SOURCE EMBEDDING MODEL TAKES #1 ON MTEB-V2 MULTILINGUAL — 100+ LANGUAGES",
+    "source": "@mustafasuleyman",
+    "url": "https://x.com/mustafasuleyman/status/2048800842535890948",
+    "category": "opensource"
+  },
+  {
+    "headline": "SULEYMAN: 1,000X MORE EFFECTIVE COMPUTE BY 2028 — 'WE'RE NOT HITTING AN AI CEILING'",
+    "source": "@mustafasuleyman",
+    "url": "https://x.com/mustafasuleyman/status/2048801126510346434",
     "category": "research"
   },
   {
-    "headline": "CHINA NDRC FORMALLY ORDERS META AND MANUS TO UNWIND $2B DEAL — FOUNDERS REPORTEDLY UNDER EXIT BANS",
-    "source": "@theaibenchai",
-    "url": "https://x.com/theaibenchai/status/2048802603459641784",
-    "category": "policy"
+    "headline": "MICROSOFT FAIRWATER WISCONSIN AI DATACENTER GOES LIVE AHEAD OF SCHEDULE — PITCHED AS WORLD'S MOST POWERFUL",
+    "source": "@mustafasuleyman",
+    "url": "https://x.com/mustafasuleyman/status/2048801014849351954",
+    "category": "infra"
+  },
+  {
+    "headline": "MICROSOFT FOUNDRY AGENTS PREVIEW OPENS — HOSTED AGENTS GET DEDICATED ENTERPRISE COMPUTERS",
+    "source": "@Azure",
+    "url": "https://x.com/Azure/status/2048804186398314721",
+    "category": "model"
   }
 ]
