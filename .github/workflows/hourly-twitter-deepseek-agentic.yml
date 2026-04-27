@@ -43,6 +43,8 @@ jobs:
           echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
           echo "hour=$(date +'%H')" >> $GITHUB_OUTPUT
           echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+          # Yesterday in UTC — used by the model for cross-day continuity
+          echo "yesterday=$(date -u -d 'yesterday' +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -153,6 +155,12 @@ jobs:
             TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
             OUTPUT: research/twitter-deepseek/${{ steps.datetime.outputs.date }}.md
 
+            PRIOR CONTEXT (read these BEFORE writing — multi-day arcs are first-class):
+            - Today's file so far: research/twitter-deepseek/${{ steps.datetime.outputs.date }}.md
+              (may already contain earlier cycles from today; you append a new section at the end)
+            - Yesterday's full digest: research/twitter-deepseek/${{ steps.datetime.outputs.yesterday }}.md
+              (may not exist on the first day; if Read fails, just skip)
+
             INPUT — pre-fetched JSON in /tmp/bird/:
             - Individual account feeds (OpenAI.json, sama.json, ~50 handles)
             - search-ai.json, search-extra.json, search-research.json, search-infra.json,
@@ -170,19 +178,24 @@ jobs:
             not on every item. Most cycles need 0–2 calls; busy ones up to the cap.
 
             PROCESS:
-            1. Skim the JSON. Most tweets are noise — skip them.
-            2. Identify 3–5 MAIN STORIES from this 6-hour window. A main story is something that:
+            1. Read PRIOR CONTEXT first. Note continuing narratives — stories with sections
+               from prior cycles. A "continuing thread" is a story you should NOT re-report
+               from scratch; instead, identify the new development and reference prior coverage.
+            2. Skim the JSON. Most tweets are noise — skip them.
+            3. Identify 3–5 MAIN STORIES from this 6-hour window. A main story is something that:
                - Materially changes the AI landscape (model release, big M&A, regulatory action,
-                 infrastructure milestone, breaking incident)
+                 infrastructure milestone, breaking incident), OR
+               - Is a meaningful new development in a continuing thread (with concrete new data)
                - Has a credible primary source OR multiple independent corroborations
                - Is NEW signal, not recycled commentary on a stale event
-            3. For each main story:
+            4. For each main story:
                - Use bird/curl to corroborate or fetch primary sources WHEN IT MATTERS
                - Identify contradicting takes, missing context, or red flags
+               - If continuing thread: add a Previously line with prior cycle reference
                - Decide verification status: ✓ multi-source / ⚠ single-source / 🚩 unverified
-            4. Bucket every other notable item into "Quick hits" — flat, one line each.
-            5. Flag anything that's loud-but-shaky in "Skeptic's corner".
-            6. End with a "Watch" list — concrete, dated signals to monitor next cycle.
+            5. Bucket every other notable item into "Quick hits" — flat, one line each.
+            6. Flag anything that's loud-but-shaky in "Skeptic's corner".
+            7. End with a "Watch" list — concrete, dated signals to monitor next cycle.
 
             OUTPUT FORMAT — append to the daily file. If it doesn't exist, start with:
             `# Twitter/X AI Pulse (DeepSeek v4 Pro) — ${{ steps.datetime.outputs.date }}`
@@ -194,6 +207,9 @@ jobs:
             ### Top stories
 
             #### 1. [One-line thesis — what actually happened and why it matters]
+            **Previously** (only if continuing thread): [1-line summary of where this story stood
+            in prior cycle(s), with a link or reference like "see 2026-04-26 18:00 UTC". Omit this
+            line entirely if the story is new.]
             **Evidence**: [Tight synthesis of the 2–3 strongest sources. Cite numbers, dates, names. Not a list of tweet summaries — a paragraph.]
             - @primary_handle: [specific claim/quote/datum] — https://x.com/handle/status/ID — [N likes / RT if notable]
             - @corroborating_handle: [what they add] — URL
