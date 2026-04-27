@@ -1,0 +1,308 @@
+name: Twitter AI News — pi + DeepSeek (Experimental, Manual)
+
+# Sister workflow to hourly-twitter-deepseek-agentic.yml.
+# Same bird CLI fetch steps; replaces the claude-code-action+Anthropic-shim
+# step with the pi coding agent (badlogic/pi-mono) calling DeepSeek natively.
+#
+# Goal: A/B test pi-as-harness against the existing Claude-Code-action setup
+# on the same input window. Output lands in research/twitter-deepseek-pi/
+# (separate dir) so the daily files don't collide.
+#
+# Manual dispatch only — no cron — until we've seen a few clean runs.
+#
+# Required secrets:
+#   DEEPSEEK_API_KEY    — DeepSeek native key (no Anthropic shim)
+#   BIRD_AUTH_TOKEN, BIRD_CT0
+#   TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: hourly-twitter-deepseek-pi
+  cancel-in-progress: true
+
+jobs:
+  twitter-news-deepseek-pi:
+    runs-on: [self-hosted, Linux]
+    permissions:
+      contents: write
+      actions: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get current datetime
+        id: datetime
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "hour=$(date +'%H')" >> $GITHUB_OUTPUT
+          echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+          echo "yesterday=$(date -u -d 'yesterday' +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install bird CLI
+        run: npm install -g @steipete/bird
+
+      - name: Install pi coding agent
+        run: npm install -g @mariozechner/pi-coding-agent
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch tweets from monitored accounts
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          mkdir -p /tmp/bird
+
+          labs="OpenAI AnthropicAI GoogleAI GoogleDeepMind MistralAI MetaAI CohereAI AI21Labs StabilityAI HuggingFace NVIDIAAIDev"
+          hyperscalers="elonmusk sama demishassabis OfficialLoganK alexalbert__ DrJimFan tszzl"
+          others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh"
+
+          for handle in $labs $hyperscalers $others; do
+            echo "Fetching @${handle}..."
+            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+          done
+
+      - name: Search for AI news tweets
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          bird search "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama" -n 50 --json --plain > /tmp/bird/search-ai.json 2>/dev/null || echo "[]" > /tmp/bird/search-ai.json
+          bird search "AI breakthrough OR AI launch OR AI update OR foundation model" -n 30 --json --plain > /tmp/bird/search-extra.json 2>/dev/null || echo "[]" > /tmp/bird/search-extra.json
+          bird search "AI paper OR machine learning research OR new benchmark OR state of the art SOTA" -n 30 --json --plain > /tmp/bird/search-research.json 2>/dev/null || echo "[]" > /tmp/bird/search-research.json
+          bird search "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU" -n 20 --json --plain > /tmp/bird/search-infra.json 2>/dev/null || echo "[]" > /tmp/bird/search-infra.json
+          bird search "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment" -n 20 --json --plain > /tmp/bird/search-policy.json 2>/dev/null || echo "[]" > /tmp/bird/search-policy.json
+          bird search "AI startup funding OR AI acquisition OR AI valuation OR AI partnership" -n 20 --json --plain > /tmp/bird/search-business.json 2>/dev/null || echo "[]" > /tmp/bird/search-business.json
+          bird search "open source AI OR open weights OR AI API OR AI developer tools" -n 20 --json --plain > /tmp/bird/search-opensource.json 2>/dev/null || echo "[]" > /tmp/bird/search-opensource.json
+
+      - name: Fetch AI trending news
+        env:
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          bird news --ai-only -n 40 --json --plain > /tmp/bird/news.json 2>/dev/null || echo "[]" > /tmp/bird/news.json
+
+      - name: Render pi prompt
+        env:
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+          YESTERDAY: ${{ steps.datetime.outputs.yesterday }}
+        run: |
+          mkdir -p /tmp/pi
+          # Single-quoted heredoc — bash does NOT expand $VAR or backticks.
+          # Placeholders __DATE__/__HOUR__/__TIMESTAMP__/__YESTERDAY__ are
+          # substituted via sed using env-vars set above (which come from a
+          # trusted local `date` invocation).
+          cat > /tmp/pi/prompt.tmpl <<'PROMPT'
+          You are a senior AI research analyst running on DeepSeek v4 Pro under the pi coding agent harness.
+
+          Your job is NOT to summarize tweets one-by-one. It is to identify the small
+          number of stories that actually matter from this 6-hour window, develop them
+          with corroboration and skepticism, and produce an analyst-grade brief.
+          Be sharp, specific, and willing to flag uncertainty. Reason from first
+          principles — challenge the premise of viral claims before repeating them.
+
+          TIMESTAMP: __TIMESTAMP__
+          OUTPUT: research/twitter-deepseek-pi/__DATE__.md
+
+          PRIOR CONTEXT (read these BEFORE writing — multi-day arcs are first-class):
+          - Today's file so far: research/twitter-deepseek-pi/__DATE__.md
+            (may already contain earlier cycles from today; you append a new section at the end)
+          - Yesterday's full digest: research/twitter-deepseek-pi/__YESTERDAY__.md
+            (may not exist on the first day; if Read fails, just skip)
+          - For cross-harness reference you MAY peek at the Claude-side digest:
+            research/twitter-deepseek/__DATE__.md — read once at the start
+            ONLY to learn what's continuing; do not just paraphrase it.
+
+          INPUT — pre-fetched JSON in /tmp/bird/:
+          - Individual account feeds (OpenAI.json, sama.json, ~50 handles)
+          - search-ai.json, search-extra.json, search-research.json, search-infra.json,
+            search-policy.json, search-business.json, search-opensource.json
+          - news.json — trending AI news
+
+          TOOLS YOU CAN USE:
+          - `bird search "query" -n 30 --json --plain` — search live for a story keyword
+          - `bird user-tweets "@handle" -n 20 --json --plain` — read a specific account
+          - `bird tweet <tweet_id> --json --plain` — fetch one tweet
+          - `bird thread <tweet_id> --json --plain` — fetch a full thread
+          - `curl -sSL <url>` — fetch a primary source (paper abstract, blog post, official statement)
+          - `jq '.[] | select(...)'` — filter the JSON files efficiently
+          HARD CAPS: 5 bird follow-up calls + 3 curl fetches per run. Use them on the BIG stories,
+          not on every item. Most cycles need 0–2 calls; busy ones up to the cap.
+
+          PROCESS:
+          1. Read PRIOR CONTEXT first. Note continuing narratives.
+          2. Skim the JSON. Most tweets are noise — skip them.
+          3. Identify 3–5 MAIN STORIES from this 6-hour window.
+          4. For each main story: corroborate with bird/curl WHEN IT MATTERS, identify
+             contradicting takes, decide verification status: ✓ multi-source / ⚠ single-source / 🚩 unverified.
+          5. HIGH-STAKES TRIAGE — if an item is BOTH (a) single-source in the snapshot AND
+             (b) ≥500 RT or ≥5K likes AND (c) makes a high-stakes claim (regulatory action,
+             M&A, named-entity allegation, firing/resignation, criminal/legal claim, specific
+             dollar amounts, executive policy statement), it MUST land in either Top Stories
+             (corroborated) or Skeptic's corner (verification attempt described). NOT in Quick hits.
+          6. Bucket every other notable item into Quick hits — flat, one line each.
+          7. Flag anything loud-but-shaky in Skeptic's corner.
+          8. End with a Watch list — concrete, dated signals to monitor next cycle.
+
+          OUTPUT FORMAT — append to the daily file. If it doesn't exist, start with:
+          # Twitter/X AI Pulse (pi + DeepSeek) — __DATE__
+
+          ## __HOUR__:00 UTC
+
+          **Cycle summary**: [1–2 sentences. If quiet, say so.]
+
+          ### Top stories
+
+          #### 1. [One-line thesis]
+          **Previously** (only if continuing): [1 line + reference like "see 2026-04-26 18:00 UTC"]
+          **Evidence**: [Tight synthesis of 2–3 strongest sources. Numbers, dates, names. Paragraph, not list.]
+          - @primary_handle: [specific claim] — https://x.com/handle/status/ID — [N likes / RT if notable]
+          - @corroborating_handle: [what they add] — URL
+          **Counter / contradicting**: [Pushback or "None visible"]
+          **Verification**: ✓ / ⚠ / 🚩 — [one-line reason]
+          **Watch**: [Concrete signal that would change the picture in next 24h]
+
+          #### 2. [Next story — same structure]
+
+          ### Quick hits
+          - [Concrete item with @handle + URL. Specific.]
+
+          ### 🚩 Skeptic's corner
+          - [Loud claim that didn't corroborate, with reason. URL.]
+          - [Or "None this cycle"]
+
+          ### Watch list (next 24h)
+          - [Dated, concrete signal]
+
+          ### Research notes
+          - bird/curl calls issued this cycle: [list each briefly]
+          - [Or "No follow-ups needed"]
+
+          If genuinely quiet:
+          ## __HOUR__:00 UTC
+          **Cycle summary**: Quiet period — no main stories this window.
+          ### Quick hits
+          - [Whatever notable items did appear]
+
+          CONSTRAINTS:
+          - Be specific. "Big funding round" → "$200M Series C, $2B post-money, led by X."
+          - Don't recycle hype phrasing. Synthesize.
+          - Engagement counts as one input among many — high likes ≠ true.
+          - Link primary sources. Give paper titles when fetched.
+          - A short honest brief beats a padded one.
+
+          STEP 2 — WRITE TELEGRAM SUMMARY:
+          Write tool to: research/summaries/__DATE__-twitter-deepseek-pi-__HOUR__h-summary.txt
+
+          Format (plain text, max 800 chars):
+          Twitter/X AI Pulse (pi + DeepSeek) - __TIMESTAMP__
+
+          CYCLE: [1-line theme]
+
+          TOP STORIES:
+          • [Story 1 thesis] [✓/⚠/🚩]
+          • [Story 2 thesis] [✓/⚠/🚩]
+          • [Story 3 thesis] [✓/⚠/🚩]
+
+          WATCH: [1 concrete signal for next 24h]
+
+          Full brief on GitHub.
+
+          If no main stories:
+          Twitter/X AI Pulse (pi + DeepSeek) - __TIMESTAMP__
+
+          Quiet cycle — no main stories. See full brief on GitHub for quick hits.
+
+          After writing both files, commit:
+          git add research/twitter-deepseek-pi/ research/summaries/
+          git commit -m "Twitter (pi+DeepSeek) update __TIMESTAMP__" || echo "No changes"
+          PROMPT
+
+          sed -e "s|__DATE__|${DATE}|g" \
+              -e "s|__HOUR__|${HOUR}|g" \
+              -e "s|__TIMESTAMP__|${TIMESTAMP}|g" \
+              -e "s|__YESTERDAY__|${YESTERDAY}|g" \
+              /tmp/pi/prompt.tmpl > /tmp/pi/prompt.txt
+
+          echo "Prompt rendered to /tmp/pi/prompt.txt ($(wc -c < /tmp/pi/prompt.txt) bytes)"
+
+      - name: Process tweets with pi + DeepSeek
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          # NOTE on first-run verification:
+          #   Model id format: pi recognizes "deepseek/*" patterns when
+          #   DEEPSEEK_API_KEY is set. If "deepseek/deepseek-reasoner" 404s, try
+          #   "deepseek/deepseek-chat" or register a custom model in
+          #   ~/.pi/agent/models.json pointing at https://api.deepseek.com/v1.
+          #   Bash allowlist: pi's --tools is coarse (bash on/off). For this
+          #   experiment we accept full bash on the trusted self-hosted runner.
+          pi -p "$(cat /tmp/pi/prompt.txt)" \
+            --no-session \
+            --thinking high \
+            --tools read,write,edit,bash,grep,find,ls \
+            --model deepseek/deepseek-reasoner
+
+      - name: Push changes
+        id: push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git"
+          git pull --rebase || true
+          if git push; then
+            echo "pushed=true" >> $GITHUB_OUTPUT
+          else
+            echo "pushed=false" >> $GITHUB_OUTPUT
+            echo "Nothing to push"
+          fi
+
+      - name: Read summary for Telegram
+        id: summary
+        env:
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+        run: |
+          SUMMARY_FILE="research/summaries/${DATE}-twitter-deepseek-pi-${HOUR}h-summary.txt"
+          if [ -f "$SUMMARY_FILE" ]; then
+            SUMMARY=$(cat "$SUMMARY_FILE" | head -c 800)
+            echo "content<<EOF" >> $GITHUB_OUTPUT
+            echo "$SUMMARY" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "content=No Twitter (pi+DeepSeek) summary available" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Send Telegram notification
+        if: success()
+        continue-on-error: true
+        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: |
+            🐦🥧 *Twitter/X AI Pulse — pi + DeepSeek (Experimental)*
+
+            ${{ steps.summary.outputs.content }}
+
+            📄 [Full Update on GitHub](https://github.com/${{ github.repository }}/blob/main/research/twitter-deepseek-pi/${{ steps.datetime.outputs.date }}.md)
