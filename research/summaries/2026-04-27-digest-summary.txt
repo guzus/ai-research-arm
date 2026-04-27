@@ -1,16 +1,17 @@
 Daily AI Digest - 2026-04-27
 
 TOP STORIES:
-• China's NDRC blocks Meta's $2B Manus acquisition; founders barred from leaving since March
-• The Information: unauthorized access to Anthropic's pre-release Mythos model + brief OpenAI leak — first confirmed exfiltration on a frontier model
-• Musk v. OpenAI trial opens today; Kalshi has Musk's odds ~50%
-• Kuo: OpenAI partnering with MediaTek/Qualcomm; Luxshare exclusive on "AI Agent" phone
+• China NDRC blocks Meta's $2B Manus deal; founders barred from leaving since March
+• The Information: unauthorized access to Anthropic's pre-release Mythos + brief OpenAI leak
+• DeepSeek cuts cached input prices 10x — 139x cheaper than GPT-5.5, 83x cheaper than Sonnet 4.6
+• Musk v. OpenAI trial opens today; Kalshi pegs Musk's odds ~50%
+• Kuo: OpenAI co-designing AI-Agent phone with MediaTek/Qualcomm; Luxshare exclusive
 
 KEY NUMBERS:
-• DeepSeek now 139× cheaper than GPT-5.5 on cached input; V4 live on HF + Huawei Ascend
-• S&P 500 headcount fell 400K in 2025 — first decline since 2016
+• DeepSeek V4: 1.6T / 49B active / 1M ctx — now on HF, Ollama, Alibaba Cloud
 • Google–Anthropic: $10B at $350B + up to $30B + 5GW TPU
+• HN: DeepSeek v4 2,062 pts; GPT-5.5 1,566 pts
 
-TRENDING: Amateur solves Erdős problem in 1h 20min with ChatGPT 5.4 Pro (HN 749 pts)
+TRENDING: Cursor/Claude agent deletes prod DB in 9 seconds — agent ops-trust hardens
 
 Full digest on GitHub.
