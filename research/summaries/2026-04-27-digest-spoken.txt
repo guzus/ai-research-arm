@@ -1,11 +1,11 @@
-Good morning and happy Monday — April twenty seventh, twenty twenty six. I’m your host on TBPN, and this is your daily AI digest.
+Welcome to the ARA broadcast — Monday, April twenty seventh, twenty twenty six.
 
-Big news at the top: for the first time ever, someone has gotten unauthorized access to Anthropic's gated "Mythos" model — and there was also a brief OpenAI leak. This is the first confirmed exfiltration on a pre-release frontier model. Meanwhile, the Musk versus OpenAI trial opens today, and prediction market Kalshi puts Musk's odds right around fifty percent.
+Big news at the top: there's been unauthorized access to Anthropic's gated Mythos model, alongside a brief OpenAI leak — marking the first confirmed exfiltration on a pre-release frontier model. Also, the Musk versus OpenAI trial opens today, with Kalshi putting Musk's odds around fifty percent.
 
-Some quick numbers: Analyst Ming-Chi Kuo reports OpenAI is partnering with MediaTek and Qualcomm on chips, and Luxshare is getting exclusive rights to an "AI Agent" phone. Over at DeepSeek, they just cut cached-input prices by ten times — making them now one hundred thirty nine times cheaper than GPT five point five on cached input. And Tencent shipped its Hunyuan Hy3 model.
+In other developments, analyst Kuo reports that OpenAI is partnering with MediaTek and Qualcomm on chips, while Luxshare has an exclusive on the so-called AI Agent phone. And DeepSeek has cut its cached-input prices by ten times, while Tencent is shipping the Hunyuan Hy3 model.
 
-Trending today on Hacker News: an amateur mathematician solved an Erdős problem using ChatGPT, racking up seven hundred forty nine points.
+Some quick numbers: DeepSeek is now one hundred thirty nine times cheaper than GPT five point five on cached input. The S&P five hundred headcount fell four hundred thousand in twenty twenty five — the first decline since twenty sixteen. And the Google–Anthropic deal stands at ten billion dollars at a three hundred fifty billion dollar valuation, with potential for up to thirty billion plus five gigawatts of TPU capacity.
 
-Market snapshot: The S&P five hundred workforce actually shrank by four hundred thousand jobs in twenty twenty five — the first decline since twenty sixteen. In the Google–Anthropic deal, we’re seeing ten billion dollars at a valuation of three hundred fifty billion, with potential to go up to thirty billion plus five gigawatts of TPU compute.
+Trending today: an amateur mathematician solved an Erdős problem using ChatGPT — that post hit seven hundred forty nine points on Hacker News.
 
-That is your brief — full digest on GitHub.
+That is your ARA broadcast — full digest on GitHub.
