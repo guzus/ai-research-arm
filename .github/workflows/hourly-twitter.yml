@@ -365,6 +365,87 @@ jobs:
             CRITICAL: A run without headlines.json blocks the downstream Telegram alert
             blast. ALWAYS write the JSON file, even if it's `[]`.
 
+      - name: De-duplicate previously announced headline alerts
+        env:
+          HEADLINES_FILE: research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines.json
+          FILTERED_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines-to-send.json
+          HISTORY_FILE: research/summaries/twitter-announced-history.json
+          ANNOUNCED_AT: ${{ steps.datetime.outputs.timestamp }}
+        run: |
+          set -euo pipefail
+
+          mkdir -p research/summaries
+
+          [ -f "$HEADLINES_FILE" ] || echo '[]' > "$HEADLINES_FILE"
+          [ -f "$HISTORY_FILE" ] || echo '[]' > "$HISTORY_FILE"
+
+          python3 - <<'PY'
+          import json
+          import os
+          import re
+          from pathlib import Path
+
+          headlines_path = Path(os.environ["HEADLINES_FILE"])
+          filtered_path = Path(os.environ["FILTERED_FILE"])
+          history_path = Path(os.environ["HISTORY_FILE"])
+          announced_at = os.environ["ANNOUNCED_AT"]
+
+          def load_json(path: Path):
+              try:
+                  data = json.loads(path.read_text() or "[]")
+              except Exception:
+                  return []
+              return data if isinstance(data, list) else []
+
+          def normalize_url(url: str) -> str:
+              url = (url or "").strip()
+              url = re.sub(r"\?.*$", "", url)
+              url = url.rstrip("/")
+              url = url.replace("https://twitter.com/", "https://x.com/")
+              return url.lower()
+
+          def normalize_headline(text: str) -> str:
+              text = (text or "").upper()
+              text = re.sub(r"\s+", " ", text)
+              text = re.sub(r"[^A-Z0-9 ]+", "", text)
+              return text.strip()
+
+          history = load_json(history_path)
+          seen_urls = {normalize_url(item.get("url", "")) for item in history if isinstance(item, dict)}
+          seen_headlines = {normalize_headline(item.get("headline", "")) for item in history if isinstance(item, dict)}
+
+          incoming = load_json(headlines_path)
+          filtered = []
+          added = []
+
+          for item in incoming:
+              if not isinstance(item, dict):
+                  continue
+              url = normalize_url(item.get("url", ""))
+              headline = normalize_headline(item.get("headline", ""))
+              if not url or not headline:
+                  continue
+              if url in seen_urls or headline in seen_headlines:
+                  continue
+              filtered.append(item)
+              record = dict(item)
+              record["announced_at"] = announced_at
+              added.append(record)
+              seen_urls.add(url)
+              seen_headlines.add(headline)
+
+          updated_history = (history + added)[-1000:]
+          filtered_path.write_text(json.dumps(filtered, indent=2) + "\n")
+          history_path.write_text(json.dumps(updated_history, indent=2) + "\n")
+
+          print(f"Incoming headlines: {len(incoming)}")
+          print(f"New headlines to send: {len(filtered)}")
+          print(f"Suppressed as previously announced: {len(incoming) - len(filtered)}")
+          PY
+
+          git add "$HISTORY_FILE"
+          git commit -m "Track announced Twitter headlines ${{ steps.datetime.outputs.timestamp }}" || echo "No dedupe changes"
+
       - name: Push changes
         id: push
         env:
@@ -410,7 +491,7 @@ jobs:
           # sleep. (Direct Telegram sendMessage is removed; hooker is the
           # delivery channel.)
 
-          HEADLINES_FILE="research/summaries/${DATE}-twitter-${HOUR}h-headlines.json"
+          HEADLINES_FILE="/tmp/${DATE}-twitter-${HOUR}h-headlines-to-send.json"
 
           if [ ! -f "$HEADLINES_FILE" ]; then
             echo "No headlines file at $HEADLINES_FILE — skipping alerts"
@@ -419,7 +500,7 @@ jobs:
 
           COUNT=$(jq 'length' "$HEADLINES_FILE" 2>/dev/null || echo 0)
           if [ "$COUNT" -lt 1 ]; then
-            echo "Headlines array is empty — skipping alerts (quiet cycle)"
+            echo "No new headline alerts after dedupe — skipping alerts"
             exit 0
           fi
 
