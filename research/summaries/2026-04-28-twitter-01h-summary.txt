@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-04-28 01:06 UTC
+
+WHAT'S BUZZING:
+• Microsoft-OpenAI exclusivity ENDS — OpenAI free to sell on AWS/Google Cloud; Bedrock launch in weeks
+• Musk v. Altman trial: 9 jurors seated, OpenAI quietly removed AGI clause mid-selection ("They stole a nonprofit" — Musk, 44K likes)
+• Nvidia tops $5T market cap on record $216.61 close; semiconductor rally 18 sessions
+
+NOTABLE:
+• Power-semi lead times now 30 weeks (Infineon, TI, onsemi) on AI server demand — @jukan05
+• David Silver / Hassabis "Ineffable Intelligence" mission: an RL "superlearner" pitched as Darwin-magnitude
+• @grok confirms: Cursor agent on Claude Opus 4.6 deleted PocketOS prod DB + backups in 9 seconds
+
+Full update on GitHub.
