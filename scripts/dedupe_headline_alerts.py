@@ -181,42 +181,43 @@ def item_keys(item: dict[str, Any]) -> Keys:
 
 
 def make_record(item: dict[str, Any], delivered_at: str, *, source_file: str = "") -> dict[str, Any]:
-    keys = item_keys(item)
     record = {
         "headline": item.get("headline", ""),
         "source": item.get("source", ""),
         "url": item.get("url", ""),
         "category": item.get("category", ""),
         "delivered_at": delivered_at,
-        "headline_key": keys.headline_key,
-        "url_key": keys.url_key,
-        "external_key": keys.external_key,
     }
-    if keys.story_key:
-        record["story_key"] = keys.story_key
+    if item.get("story_key"):
+        record["story_key"] = item["story_key"]
     if source_file:
         record["source_file"] = source_file
         record["backfilled"] = True
     return record
 
 
-def duplicate_reason(item: dict[str, Any], history: list[dict[str, Any]]) -> str:
+def duplicate_reason(
+    item: dict[str, Any],
+    history: list[dict[str, Any]],
+    history_keys: list[Keys] | None = None,
+) -> str:
     keys = item_keys(item)
     if not keys.headline_key:
         return "invalid_headline"
     if not keys.url_key:
         return "invalid_url"
 
+    if history_keys is None:
+        history_keys = [item_keys(record) for record in history]
+
     headline = str(item.get("headline") or "")
-    for record in history:
+    for record, record_keys in zip(history, history_keys):
         record_headline = str(record.get("headline") or "")
-        if keys.story_key and keys.story_key == record.get("story_key"):
+        if keys.story_key and keys.story_key == record_keys.story_key:
             return "duplicate_story_key"
-        if keys.headline_key == record.get("headline_key"):
+        if keys.headline_key == record_keys.headline_key:
             return "duplicate_headline"
-        same_external = keys.external_key and keys.external_key == record.get("external_key")
-        same_url = keys.url_key and keys.url_key == record.get("url_key")
-        if same_external or same_url:
+        if keys.url_key and keys.url_key == record_keys.url_key:
             similarity = headline_similarity(headline, record_headline)
             if similarity >= URL_SIMILARITY_THRESHOLD:
                 return "duplicate_source_similar_headline"
@@ -227,6 +228,7 @@ def filter_headlines(args: argparse.Namespace) -> int:
     incoming_raw = load_json_list(Path(args.headlines_file), missing_ok=True)
     history_raw = load_json_list(Path(args.history_file), missing_ok=True)
     history = [item for item in history_raw if isinstance(item, dict)]
+    history_keys = [item_keys(record) for record in history]
     accepted: list[dict[str, Any]] = []
     counts: Counter[str] = Counter()
 
@@ -234,12 +236,14 @@ def filter_headlines(args: argparse.Namespace) -> int:
         if not isinstance(item, dict):
             counts["invalid_item"] += 1
             continue
-        reason = duplicate_reason(item, history)
+        reason = duplicate_reason(item, history, history_keys)
         if reason:
             counts[reason] += 1
             continue
         accepted.append(item)
-        history.append(make_record(item, args.timestamp))
+        new_record = make_record(item, args.timestamp)
+        history.append(new_record)
+        history_keys.append(item_keys(new_record))
         counts["new"] += 1
 
     write_json(Path(args.filtered_file), accepted)

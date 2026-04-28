@@ -169,7 +169,31 @@ class DedupeHeadlineAlertsTest(unittest.TestCase):
             history = json.loads(history_file.read_text())
             self.assertEqual(len(history), 1)
             self.assertEqual(history[0]["headline"], "NEW ALERT")
-            self.assertEqual(history[0]["external_key"], "x:status:123")
+            # Derived keys are recomputed from headline/url at read time, so
+            # they should NOT be persisted on disk.
+            self.assertNotIn("headline_key", history[0])
+            self.assertNotIn("url_key", history[0])
+            self.assertNotIn("external_key", history[0])
+            # The recomputed key still resolves correctly.
+            self.assertEqual(dedupe.item_keys(history[0]).external_key, "x:status:123")
+
+    def test_legacy_history_with_stored_keys_still_dedupes(self):
+        # Old-format records (with stored *_key fields) and new-format records
+        # (without) must both dedupe correctly, since item_keys() recomputes.
+        legacy = {
+            "headline": "OPENAI MODELS COMING TO AWS BEDROCK",
+            "url": "https://x.com/testingcatalog/status/2048913264013197748",
+            "headline_key": "STALE_VALUE_THAT_SHOULD_BE_IGNORED",
+            "url_key": "stale://value",
+            "external_key": "x:status:WRONG",
+        }
+        item = {
+            "headline": "OpenAI models coming to AWS Bedrock",
+            "url": "https://twitter.com/testingcatalog/status/2048913264013197748?s=20",
+        }
+        # Without precomputed keys, duplicate_reason recomputes for the legacy
+        # record and detects the duplicate via headline_key.
+        self.assertEqual(dedupe.duplicate_reason(item, [legacy]), "duplicate_headline")
 
 
 if __name__ == "__main__":

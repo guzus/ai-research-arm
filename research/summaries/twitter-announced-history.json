@@ -3,648 +3,486 @@
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-27 16:00 UTC",
-    "external_key": "x:status:2048803892960694724",
     "headline": "GPT-5.5 GOES GA IN MICROSOFT FOUNDRY \u2014 LONGER CONTEXT, SMARTER AGENTS, LOWER COST",
-    "headline_key": "GPT 5.5 GOES GA IN MICROSOFT FOUNDRY LONGER CONTEXT SMARTER AGENTS LOWER COST",
     "source": "@Azure",
     "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/Azure/status/2048803892960694724",
-    "url_key": "https://x.com/Azure/status/2048803892960694724"
+    "url": "https://x.com/Azure/status/2048803892960694724"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-27 16:00 UTC",
-    "external_key": "x:status:2048804250101231839",
     "headline": "CLAUDE OPUS 4.7 NOW LIVE IN MICROSOFT FOUNDRY \u2014 FIRST ANTHROPIC FRONTIER MODEL ON ENTERPRISE STACK",
-    "headline_key": "CLAUDE OPUS 4.7 NOW LIVE IN MICROSOFT FOUNDRY FIRST ANTHROPIC FRONTIER MODEL ON ENTERPRISE STACK",
     "source": "@Azure",
     "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/Azure/status/2048804250101231839",
-    "url_key": "https://x.com/Azure/status/2048804250101231839"
+    "url": "https://x.com/Azure/status/2048804250101231839"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-27 16:00 UTC",
-    "external_key": "x:status:2048801300976750891",
     "headline": "MICROSOFT AI SHIPS MAI-IMAGE-2-EFFICIENT \u2014 22% FASTER, 4X MORE EFFICIENT, 41% LOWER PRICED THAN MAI-IMAGE-2",
-    "headline_key": "MICROSOFT AI SHIPS MAI IMAGE 2 EFFICIENT 22 FASTER 4X MORE EFFICIENT 41 LOWER PRICED THAN MAI IMAGE 2",
     "source": "@mustafasuleyman",
     "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/mustafasuleyman/status/2048801300976750891",
-    "url_key": "https://x.com/mustafasuleyman/status/2048801300976750891"
+    "url": "https://x.com/mustafasuleyman/status/2048801300976750891"
   },
   {
     "backfilled": true,
     "category": "opensource",
     "delivered_at": "2026-04-27 16:00 UTC",
-    "external_key": "x:status:2048800842535890948",
     "headline": "BING'S HARRIER OPEN-SOURCE EMBEDDING MODEL TAKES #1 ON MTEB-V2 MULTILINGUAL \u2014 100+ LANGUAGES",
-    "headline_key": "BING S HARRIER OPEN SOURCE EMBEDDING MODEL TAKES 1 ON MTEB V2 MULTILINGUAL 100 LANGUAGES",
     "source": "@mustafasuleyman",
     "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/mustafasuleyman/status/2048800842535890948",
-    "url_key": "https://x.com/mustafasuleyman/status/2048800842535890948"
+    "url": "https://x.com/mustafasuleyman/status/2048800842535890948"
   },
   {
     "backfilled": true,
     "category": "research",
     "delivered_at": "2026-04-27 16:00 UTC",
-    "external_key": "x:status:2048801126510346434",
     "headline": "SULEYMAN: 1,000X MORE EFFECTIVE COMPUTE BY 2028 \u2014 'WE'RE NOT HITTING AN AI CEILING'",
-    "headline_key": "SULEYMAN 1 000X MORE EFFECTIVE COMPUTE BY 2028 WE RE NOT HITTING AN AI CEILING",
     "source": "@mustafasuleyman",
     "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/mustafasuleyman/status/2048801126510346434",
-    "url_key": "https://x.com/mustafasuleyman/status/2048801126510346434"
+    "url": "https://x.com/mustafasuleyman/status/2048801126510346434"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-27 16:00 UTC",
-    "external_key": "x:status:2048801014849351954",
     "headline": "MICROSOFT FAIRWATER WISCONSIN AI DATACENTER GOES LIVE AHEAD OF SCHEDULE \u2014 PITCHED AS WORLD'S MOST POWERFUL",
-    "headline_key": "MICROSOFT FAIRWATER WISCONSIN AI DATACENTER GOES LIVE AHEAD OF SCHEDULE PITCHED AS WORLD S MOST POWERFUL",
     "source": "@mustafasuleyman",
     "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/mustafasuleyman/status/2048801014849351954",
-    "url_key": "https://x.com/mustafasuleyman/status/2048801014849351954"
+    "url": "https://x.com/mustafasuleyman/status/2048801014849351954"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-27 16:00 UTC",
-    "external_key": "x:status:2048804186398314721",
     "headline": "MICROSOFT FOUNDRY AGENTS PREVIEW OPENS \u2014 HOSTED AGENTS GET DEDICATED ENTERPRISE COMPUTERS",
-    "headline_key": "MICROSOFT FOUNDRY AGENTS PREVIEW OPENS HOSTED AGENTS GET DEDICATED ENTERPRISE COMPUTERS",
     "source": "@Azure",
     "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/Azure/status/2048804186398314721",
-    "url_key": "https://x.com/Azure/status/2048804186398314721"
+    "url": "https://x.com/Azure/status/2048804186398314721"
   },
   {
     "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-04-27 17:00 UTC",
-    "external_key": "x:status:2048813359168946264",
     "headline": "CHINA ORDERS META TO UNWIND $2B MANUS AI DEAL \u2014 ~100 STAFF ALREADY INSIDE META SINGAPORE",
-    "headline_key": "CHINA ORDERS META TO UNWIND $2B MANUS AI DEAL 100 STAFF ALREADY INSIDE META SINGAPORE",
     "source": "@Stock_Opine",
     "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/Stock_Opine/status/2048813359168946264",
-    "url_key": "https://x.com/Stock_Opine/status/2048813359168946264"
+    "url": "https://x.com/Stock_Opine/status/2048813359168946264"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-27 17:00 UTC",
-    "external_key": "x:status:2048813465431588945",
     "headline": "AWS TO ADD OPENAI MODELS TO BEDROCK 'IN COMING WEEKS' \u2014 JASSY UNVEILS NEW STATEFUL RUNTIME FOR AGENTIC AI",
-    "headline_key": "AWS TO ADD OPENAI MODELS TO BEDROCK IN COMING WEEKS JASSY UNVEILS NEW STATEFUL RUNTIME FOR AGENTIC AI",
     "source": "@enes1050392",
     "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/enes1050392/status/2048813465431588945",
-    "url_key": "https://x.com/enes1050392/status/2048813465431588945"
+    "url": "https://x.com/enes1050392/status/2048813465431588945"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-27 17:00 UTC",
-    "external_key": "x:status:2048681120116433145",
     "headline": "REUTERS: DEEPSEEK 'AGGRESSIVELY PITCHING LOW-PRICED PLANS' FOR V4 \u2014 CHINESE AI PRICE WAR GOES MAINSTREAM",
-    "headline_key": "REUTERS DEEPSEEK AGGRESSIVELY PITCHING LOW PRICED PLANS FOR V4 CHINESE AI PRICE WAR GOES MAINSTREAM",
     "source": "@Reuters",
     "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/Reuters/status/2048681120116433145",
-    "url_key": "https://x.com/Reuters/status/2048681120116433145"
+    "url": "https://x.com/Reuters/status/2048681120116433145"
   },
   {
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-27 17:00 UTC",
-    "external_key": "x:status:2048811660651954360",
     "headline": "COHERE TO ACQUIRE GERMANY'S ALEPH ALPHA \u2014 FRAMED AS PIVOTAL 'SOVEREIGN AI' MOMENT",
-    "headline_key": "COHERE TO ACQUIRE GERMANY S ALEPH ALPHA FRAMED AS PIVOTAL SOVEREIGN AI MOMENT",
     "source": "@HRD_Canada",
     "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/HRD_Canada/status/2048811660651954360",
-    "url_key": "https://x.com/HRD_Canada/status/2048811660651954360"
+    "url": "https://x.com/HRD_Canada/status/2048811660651954360"
   },
   {
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-27 17:00 UTC",
-    "external_key": "x:status:2048811084497187240",
     "headline": "COMFYUI RAISES $30M AT $500M VALUATION LED BY CRAFT VENTURES \u2014 NETFLIX, APPLE, UBISOFT NAMED USERS",
-    "headline_key": "COMFYUI RAISES $30M AT $500M VALUATION LED BY CRAFT VENTURES NETFLIX APPLE UBISOFT NAMED USERS",
     "source": "@Nestedbiz",
     "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/Nestedbiz/status/2048811084497187240",
-    "url_key": "https://x.com/Nestedbiz/status/2048811084497187240"
+    "url": "https://x.com/Nestedbiz/status/2048811084497187240"
   },
   {
     "backfilled": true,
     "category": "opensource",
     "delivered_at": "2026-04-27 17:00 UTC",
-    "external_key": "x:status:2048812450024435780",
     "headline": "CHROME PROMPT API ROLLS OUT \u2014 ANY WEB PAGE CAN CALL ON-DEVICE MODEL, NO API KEY, NO BACKEND",
-    "headline_key": "CHROME PROMPT API ROLLS OUT ANY WEB PAGE CAN CALL ON DEVICE MODEL NO API KEY NO BACKEND",
     "source": "@lbki34064963",
     "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/lbki34064963/status/2048812450024435780",
-    "url_key": "https://x.com/lbki34064963/status/2048812450024435780"
+    "url": "https://x.com/lbki34064963/status/2048812450024435780"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-27 17:00 UTC",
-    "external_key": "x:status:2048675280235999494",
     "headline": "KINETIX AI TEASES KAI HUMANOID ROBOT \u2014 36 DEGREES OF FREEDOM, 18,000 SENSORS, HYBRID DEXTEROUS HAND",
-    "headline_key": "KINETIX AI TEASES KAI HUMANOID ROBOT 36 DEGREES OF FREEDOM 18 000 SENSORS HYBRID DEXTEROUS HAND",
     "source": "@kimmonismus",
     "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2048675280235999494",
-    "url_key": "https://x.com/kimmonismus/status/2048675280235999494"
+    "url": "https://x.com/kimmonismus/status/2048675280235999494"
   },
   {
     "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-04-27 18:00 UTC",
-    "external_key": "x:status:2048840488244437001",
     "headline": "MUSK V. ALTMAN TRIAL OPENS IN OAKLAND \u2014 MUSK ALLEGES ALTMAN PERJURED CONGRESS OVER OPENAI STARTUP FUND OWNERSHIP",
-    "headline_key": "MUSK V ALTMAN TRIAL OPENS IN OAKLAND MUSK ALLEGES ALTMAN PERJURED CONGRESS OVER OPENAI STARTUP FUND OWNERSHIP",
     "source": "@elonmusk",
     "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2048840488244437001",
-    "url_key": "https://x.com/elonmusk/status/2048840488244437001"
+    "url": "https://x.com/elonmusk/status/2048840488244437001"
   },
   {
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-27 18:00 UTC",
-    "external_key": "x:status:2048840776665399429",
     "headline": "MSFT\u2013OPENAI REVENUE SHARE NOW LOCKED THROUGH 2030 \"INDEPENDENT OF TECHNOLOGY PROGRESS\" \u2014 AGI CLAUSE APPEARS DEAD",
-    "headline_key": "MSFT OPENAI REVENUE SHARE NOW LOCKED THROUGH 2030 INDEPENDENT OF TECHNOLOGY PROGRESS AGI CLAUSE APPEARS DEAD",
     "source": "@simonw",
     "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/simonw/status/2048840776665399429",
-    "url_key": "https://x.com/simonw/status/2048840776665399429"
+    "url": "https://x.com/simonw/status/2048840776665399429"
   },
   {
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-27 18:00 UTC",
-    "external_key": "x:status:2048837894669332938",
     "headline": "INEFFABLE INTELLIGENCE \u2014 DAVID SILVER'S NEW LAB \u2014 CLOSES $1.1B SEED ROUND ON RL-FROM-EXPERIENCE THESIS",
-    "headline_key": "INEFFABLE INTELLIGENCE DAVID SILVER S NEW LAB CLOSES $1.1B SEED ROUND ON RL FROM EXPERIENCE THESIS",
     "source": "@vitrupo",
     "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/vitrupo/status/2048837894669332938",
-    "url_key": "https://x.com/vitrupo/status/2048837894669332938"
+    "url": "https://x.com/vitrupo/status/2048837894669332938"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-27 18:00 UTC",
-    "external_key": "x:status:2048816421434228946",
     "headline": "GOOGLE NOW CONTROLS ~25% OF GLOBAL AI COMPUTE \u2014 3.8M TPUS, 1.3M GPUS",
-    "headline_key": "GOOGLE NOW CONTROLS 25 OF GLOBAL AI COMPUTE 3.8M TPUS 1.3M GPUS",
     "source": "@tszzl",
     "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/tszzl/status/2048816421434228946",
-    "url_key": "https://x.com/tszzl/status/2048816421434228946"
+    "url": "https://x.com/tszzl/status/2048816421434228946"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-27 18:00 UTC",
-    "external_key": "x:status:2048816876860457453",
     "headline": "GPT-5.5 HIGH DEBUTS AT #9 ON LMARENA CODE ARENA WITH SCORE 1500 \u2014 SOLID BUT NOT DOMINANT",
-    "headline_key": "GPT 5.5 HIGH DEBUTS AT 9 ON LMARENA CODE ARENA WITH SCORE 1500 SOLID BUT NOT DOMINANT",
     "source": "@mark_k",
     "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/mark_k/status/2048816876860457453",
-    "url_key": "https://x.com/mark_k/status/2048816876860457453"
+    "url": "https://x.com/mark_k/status/2048816876860457453"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-27 18:00 UTC",
-    "external_key": "x:status:2048817567783030796",
     "headline": "SEMIANALYSIS CORRECTS GOOGLE TPU 8T SPEC \u2014 HBM3E IS 12-HI NOT 8-HI; 6 STACKS NEEDED FOR 216GB",
-    "headline_key": "SEMIANALYSIS CORRECTS GOOGLE TPU 8T SPEC HBM3E IS 12 HI NOT 8 HI 6 STACKS NEEDED FOR 216GB",
     "source": "@SemiAnalysis_",
     "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048817567783030796",
-    "url_key": "https://x.com/SemiAnalysis_/status/2048817567783030796"
+    "url": "https://x.com/SemiAnalysis_/status/2048817567783030796"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-27 18:00 UTC",
-    "external_key": "x:status:2048768824345510259",
     "headline": "INFERENCEX SHIPS DEEPSEEK-V4 MTP ON SGLANG/B300 \u2014 7X THROUGHPUT AT ISO-INTERACTIVITY ON BLACKWELL",
-    "headline_key": "INFERENCEX SHIPS DEEPSEEK V4 MTP ON SGLANG B300 7X THROUGHPUT AT ISO INTERACTIVITY ON BLACKWELL",
     "source": "@SemiAnalysis_",
     "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048768824345510259",
-    "url_key": "https://x.com/SemiAnalysis_/status/2048768824345510259"
+    "url": "https://x.com/SemiAnalysis_/status/2048768824345510259"
   },
   {
     "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-04-27 21:00 UTC",
-    "external_key": "x:status:2048860619693084727",
     "headline": "OPENAI'S 2019 MISSION GUARDRAILS ALL GONE \u2014 100X CAP, AGI CLAUSE, MS EXCLUSIVITY REMOVED ON DAY ONE OF MUSK TRIAL",
-    "headline_key": "OPENAI S 2019 MISSION GUARDRAILS ALL GONE 100X CAP AGI CLAUSE MS EXCLUSIVITY REMOVED ON DAY ONE OF MUSK TRIAL",
     "source": "@ns123abc",
     "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2048860619693084727",
-    "url_key": "https://x.com/ns123abc/status/2048860619693084727"
+    "url": "https://x.com/ns123abc/status/2048860619693084727"
   },
   {
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-27 21:00 UTC",
-    "external_key": "x:search:95d3edb6f9478d50",
     "headline": "COGNITION RAISING AT $25B \u2014 UP FROM $10.2B IN SEPT, $4B LAST MARCH",
-    "headline_key": "COGNITION RAISING AT $25B UP FROM $10.2B IN SEPT $4B LAST MARCH",
     "source": "search:business",
     "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/search?q=Cognition%20%2425B",
-    "url_key": "https://x.com/search?q=Cognition+%2425B"
+    "url": "https://x.com/search?q=Cognition%20%2425B"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-27 21:00 UTC",
-    "external_key": "x:status:2048862265017815180",
     "headline": "AI STARTUPS HIT WITH HIGHER PRICES, MONTHS-LONG NVIDIA GPU WAIT TIMES AS CLOUDS RESERVE SUPPLY FOR OPENAI, ANTHROPIC",
-    "headline_key": "AI STARTUPS HIT WITH HIGHER PRICES MONTHS LONG NVIDIA GPU WAIT TIMES AS CLOUDS RESERVE SUPPLY FOR OPENAI ANTHROPIC",
     "source": "@theinformation",
     "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048862265017815180",
-    "url_key": "https://x.com/theinformation/status/2048862265017815180"
+    "url": "https://x.com/theinformation/status/2048862265017815180"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-27 21:00 UTC",
-    "external_key": "x:status:2048861462991360155",
     "headline": "XIAOMI MIMO-V2.5 LANDS ON HUGGING FACE",
-    "headline_key": "XIAOMI MIMO V2.5 LANDS ON HUGGING FACE",
     "source": "@_akhaliq",
     "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/_akhaliq/status/2048861462991360155",
-    "url_key": "https://x.com/_akhaliq/status/2048861462991360155"
+    "url": "https://x.com/_akhaliq/status/2048861462991360155"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-27 21:00 UTC",
-    "external_key": "x:status:2048870022685081886",
     "headline": "INTEL ISSCC 2026 \u2014 UCIE-S OVER 22NM ORGANIC SUBSTRATE HITS 48 GB/S/LANE AT 30MM, BEATS 3NM EMIB BY 3X DATA RATE",
-    "headline_key": "INTEL ISSCC 2026 UCIE S OVER 22NM ORGANIC SUBSTRATE HITS 48 GB S LANE AT 30MM BEATS 3NM EMIB BY 3X DATA RATE",
     "source": "@SemiAnalysis_",
     "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048870022685081886",
-    "url_key": "https://x.com/SemiAnalysis_/status/2048870022685081886"
+    "url": "https://x.com/SemiAnalysis_/status/2048870022685081886"
   },
   {
     "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-04-27 21:00 UTC",
-    "external_key": "x:status:2048833679791641057",
     "headline": "MUSK LIVE-TWEETS PERJURY CLAIM FROM COURTHOUSE \u2014 SAYS ALTMAN HID OWNERSHIP OF OPENAI STARTUP FUND IN CONGRESSIONAL TESTIMONY",
-    "headline_key": "MUSK LIVE TWEETS PERJURY CLAIM FROM COURTHOUSE SAYS ALTMAN HID OWNERSHIP OF OPENAI STARTUP FUND IN CONGRESSIONAL TESTIMONY",
     "source": "@elonmusk",
     "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2048833679791641057",
-    "url_key": "https://x.com/elonmusk/status/2048833679791641057"
+    "url": "https://x.com/elonmusk/status/2048833679791641057"
   },
   {
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-27 21:00 UTC",
-    "external_key": "x:status:2048875869997760764",
     "headline": "SILVER LAKE'S HUTCHINS \u2014 AI IS A TSUNAMI, LEVERAGED SOFTWARE COMPANIES ARE MELTING ICE CUBES",
-    "headline_key": "SILVER LAKE S HUTCHINS AI IS A TSUNAMI LEVERAGED SOFTWARE COMPANIES ARE MELTING ICE CUBES",
     "source": "@theinformation",
     "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048875869997760764",
-    "url_key": "https://x.com/theinformation/status/2048875869997760764"
+    "url": "https://x.com/theinformation/status/2048875869997760764"
   },
   {
     "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-04-28 01:00 UTC",
-    "external_key": "x:trend:2048754063697744070",
     "headline": "MICROSOFT-OPENAI EXCLUSIVITY ENDS \u2014 OPENAI CLEARED TO SELL ON AWS AND GOOGLE CLOUD",
-    "headline_key": "MICROSOFT OPENAI EXCLUSIVITY ENDS OPENAI CLEARED TO SELL ON AWS AND GOOGLE CLOUD",
     "source": "Trending on X",
     "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://twitter.com/i/trending/2048754063697744070",
-    "url_key": "https://x.com/i/trending/2048754063697744070"
+    "url": "https://twitter.com/i/trending/2048754063697744070"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-28 01:00 UTC",
-    "external_key": "x:status:2048913264013197748",
     "headline": "OPENAI MODELS ARRIVING ON AWS BEDROCK IN COMING WEEKS \u2014 AMAZON HOSTING APRIL 28 LIVESTREAM WITH GARMAN AND OPENAI LEADS",
-    "headline_key": "OPENAI MODELS ARRIVING ON AWS BEDROCK IN COMING WEEKS AMAZON HOSTING APRIL 28 LIVESTREAM WITH GARMAN AND OPENAI LEADS",
     "source": "@testingcatalog",
     "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2048913264013197748",
-    "url_key": "https://x.com/testingcatalog/status/2048913264013197748"
+    "url": "https://x.com/testingcatalog/status/2048913264013197748"
   },
   {
     "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-04-28 01:00 UTC",
-    "external_key": "x:status:2048886982449733974",
     "headline": "MUSK V. ALTMAN TRIAL: 9 JURORS SEATED, VERDICT ADVISORY ONLY \u2014 JUDGE GONZALEZ ROGERS DECIDES",
-    "headline_key": "MUSK V ALTMAN TRIAL 9 JURORS SEATED VERDICT ADVISORY ONLY JUDGE GONZALEZ ROGERS DECIDES",
     "source": "@ns123abc",
     "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2048886982449733974",
-    "url_key": "https://x.com/ns123abc/status/2048886982449733974"
+    "url": "https://x.com/ns123abc/status/2048886982449733974"
   },
   {
     "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-04-28 01:00 UTC",
-    "external_key": "x:status:2048894730340384830",
     "headline": "OPENAI QUIETLY REMOVED AGI CLAUSE FROM CHARTER MID-JURY-SELECTION \u2014 MUSK: 'THEY STOLE A NONPROFIT'",
-    "headline_key": "OPENAI QUIETLY REMOVED AGI CLAUSE FROM CHARTER MID JURY SELECTION MUSK THEY STOLE A NONPROFIT",
     "source": "@elonmusk",
     "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2048894730340384830",
-    "url_key": "https://x.com/elonmusk/status/2048894730340384830"
+    "url": "https://x.com/elonmusk/status/2048894730340384830"
   },
   {
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-28 01:00 UTC",
-    "external_key": "x:trend:2048811178273710563",
     "headline": "NVIDIA TOPS $5 TRILLION MARKET CAP ON RECORD $216.61 CLOSE \u2014 SEMICONDUCTOR RALLY HITS 18 STRAIGHT SESSIONS",
-    "headline_key": "NVIDIA TOPS $5 TRILLION MARKET CAP ON RECORD $216.61 CLOSE SEMICONDUCTOR RALLY HITS 18 STRAIGHT SESSIONS",
     "source": "Trending on X",
     "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://twitter.com/i/trending/2048811178273710563",
-    "url_key": "https://x.com/i/trending/2048811178273710563"
+    "url": "https://twitter.com/i/trending/2048811178273710563"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-28 01:00 UTC",
-    "external_key": "x:status:2048911765279584366",
     "headline": "POWER-SEMI LEAD TIMES STRETCH TO 30 WEEKS ON AI SERVER DEMAND \u2014 INFINEON, TI, ONSEMI HIT FIRST",
-    "headline_key": "POWER SEMI LEAD TIMES STRETCH TO 30 WEEKS ON AI SERVER DEMAND INFINEON TI ONSEMI HIT FIRST",
     "source": "@jukan05",
     "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2048911765279584366",
-    "url_key": "https://x.com/jukan05/status/2048911765279584366"
+    "url": "https://x.com/jukan05/status/2048911765279584366"
   },
   {
     "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-04-28 01:00 UTC",
-    "external_key": "x:status:2048930431756636403",
     "headline": "GROK CONFIRMS: CURSOR AGENT ON CLAUDE OPUS 4.6 WIPED POCKETOS PROD DB AND BACKUPS IN 9 SECONDS",
-    "headline_key": "GROK CONFIRMS CURSOR AGENT ON CLAUDE OPUS 4.6 WIPED POCKETOS PROD DB AND BACKUPS IN 9 SECONDS",
     "source": "@grok",
     "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/grok/status/2048930431756636403",
-    "url_key": "https://x.com/grok/status/2048930431756636403"
+    "url": "https://x.com/grok/status/2048930431756636403"
   },
   {
     "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-04-28 04:00 UTC",
-    "external_key": "x:status:2048834476323823983",
     "headline": "OPENAI STRIPS AGI CLAUSE FROM MICROSOFT DEAL DURING MUSK V. ALTMAN JURY SELECTION \u2014 REV-SHARE NOW RUNS THROUGH 2030 INDEPENDENT OF AGI",
-    "headline_key": "OPENAI STRIPS AGI CLAUSE FROM MICROSOFT DEAL DURING MUSK V ALTMAN JURY SELECTION REV SHARE NOW RUNS THROUGH 2030 INDEPENDENT OF AGI",
     "source": "@simonw",
     "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/simonw/status/2048834476323823983",
-    "url_key": "https://x.com/simonw/status/2048834476323823983"
+    "url": "https://x.com/simonw/status/2048834476323823983"
   },
   {
     "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-04-28 04:00 UTC",
-    "external_key": "x:status:2048886982449733974",
     "headline": "MUSK V. ALTMAN: 9 JURORS SEATED \u2014 VERDICT WILL BE ADVISORY ONLY, JUDGE GONZALEZ ROGERS DECIDES THE CASE",
-    "headline_key": "MUSK V ALTMAN 9 JURORS SEATED VERDICT WILL BE ADVISORY ONLY JUDGE GONZALEZ ROGERS DECIDES THE CASE",
     "source": "@ns123abc",
     "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2048886982449733974",
-    "url_key": "https://x.com/ns123abc/status/2048886982449733974"
+    "url": "https://x.com/ns123abc/status/2048886982449733974"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-28 04:00 UTC",
-    "external_key": "x:status:2048861462991360155",
     "headline": "XIAOMI OPEN-SOURCES MIMO-V2.5 ON HUGGING FACE UNDER MIT LICENSE \u2014 COMMERCIAL DEPLOYMENT, FINE-TUNING PERMITTED",
-    "headline_key": "XIAOMI OPEN SOURCES MIMO V2.5 ON HUGGING FACE UNDER MIT LICENSE COMMERCIAL DEPLOYMENT FINE TUNING PERMITTED",
     "source": "@_akhaliq",
     "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/_akhaliq/status/2048861462991360155",
-    "url_key": "https://x.com/_akhaliq/status/2048861462991360155"
+    "url": "https://x.com/_akhaliq/status/2048861462991360155"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-28 04:00 UTC",
-    "external_key": "x:status:2048954720761635041",
     "headline": "SAKANA AI LAUNCHES FUGU BETA \u2014 MULTI-AGENT ORCHESTRATION SYSTEM WITH RL-TRAINED 'CONDUCTOR' PAPER",
-    "headline_key": "SAKANA AI LAUNCHES FUGU BETA MULTI AGENT ORCHESTRATION SYSTEM WITH RL TRAINED CONDUCTOR PAPER",
     "source": "@hardmaru",
     "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/hardmaru/status/2048954720761635041",
-    "url_key": "https://x.com/hardmaru/status/2048954720761635041"
+    "url": "https://x.com/hardmaru/status/2048954720761635041"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-28 04:00 UTC",
-    "external_key": "x:status:2048957715955765284",
     "headline": "SEMIANALYSIS: INFERENCEX SHIPS DEEPSEEK V4 PRO ON VLLM \u2014 B300 UP TO 8X FASTER THAN H200 IN DISAGGREGATED INFERENCE",
-    "headline_key": "SEMIANALYSIS INFERENCEX SHIPS DEEPSEEK V4 PRO ON VLLM B300 UP TO 8X FASTER THAN H200 IN DISAGGREGATED INFERENCE",
     "source": "@SemiAnalysis_",
     "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048957715955765284",
-    "url_key": "https://x.com/SemiAnalysis_/status/2048957715955765284"
+    "url": "https://x.com/SemiAnalysis_/status/2048957715955765284"
   },
   {
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-28 04:00 UTC",
-    "external_key": "x:status:2048913264013197748",
     "headline": "OPENAI MODELS COMING TO AWS BEDROCK \u2014 AMAZON HOSTS APRIL 28 LIVESTREAM WITH MATT GARMAN AND OPENAI LEADERS",
-    "headline_key": "OPENAI MODELS COMING TO AWS BEDROCK AMAZON HOSTS APRIL 28 LIVESTREAM WITH MATT GARMAN AND OPENAI LEADERS",
     "source": "@testingcatalog",
     "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2048913264013197748",
-    "url_key": "https://x.com/testingcatalog/status/2048913264013197748"
+    "url": "https://x.com/testingcatalog/status/2048913264013197748"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-28 04:00 UTC",
-    "external_key": "x:status:2048862265017815180",
     "headline": "THE INFORMATION: AI STARTUPS HIT MONTHS-LONG NVIDIA GPU WAITS AS CLOUDS RESERVE SUPPLY FOR OPENAI, ANTHROPIC AND INTERNAL USE",
-    "headline_key": "THE INFORMATION AI STARTUPS HIT MONTHS LONG NVIDIA GPU WAITS AS CLOUDS RESERVE SUPPLY FOR OPENAI ANTHROPIC AND INTERNAL USE",
     "source": "@theinformation",
     "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048862265017815180",
-    "url_key": "https://x.com/theinformation/status/2048862265017815180"
+    "url": "https://x.com/theinformation/status/2048862265017815180"
   },
   {
     "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-04-28 07:00 UTC",
-    "external_key": "x:status:2048809612304949303",
     "headline": "CHINA NDRC ORDERS META TO UNWIND $2B MANUS ACQUISITION \u2014 FIRST FORCED UNWINDING OF A FOREIGN AI DEAL",
-    "headline_key": "CHINA NDRC ORDERS META TO UNWIND $2B MANUS ACQUISITION FIRST FORCED UNWINDING OF A FOREIGN AI DEAL",
     "source": "@theinformation",
     "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048809612304949303",
-    "url_key": "https://x.com/theinformation/status/2048809612304949303"
+    "url": "https://x.com/theinformation/status/2048809612304949303"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-28 07:00 UTC",
-    "external_key": "x:status:2048992506851868780",
     "headline": "RUMOR: GOOGLE TPU V9 SHIFTS TO DIRECT-TO-TSMC WAFER ORDERS, AWS-ANNAPURNA-STYLE \u2014 BROADCOM, MEDIATEK DOWNGRADED",
-    "headline_key": "RUMOR GOOGLE TPU V9 SHIFTS TO DIRECT TO TSMC WAFER ORDERS AWS ANNAPURNA STYLE BROADCOM MEDIATEK DOWNGRADED",
     "source": "@jukan05",
     "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/jukan05/status/2048992506851868780",
-    "url_key": "https://x.com/jukan05/status/2048992506851868780"
+    "url": "https://x.com/jukan05/status/2048992506851868780"
   },
   {
     "backfilled": true,
     "category": "opensource",
     "delivered_at": "2026-04-28 07:00 UTC",
-    "external_key": "x:status:2049012392869138842",
     "headline": "OPENCLAW PERF RELEASE \u2014 FIRST-OUTPUT LATENCY 1S \u2192 43MS, PLUGIN BOOTSTRAP 265MS \u2192 8MS",
-    "headline_key": "OPENCLAW PERF RELEASE FIRST OUTPUT LATENCY 1S 43MS PLUGIN BOOTSTRAP 265MS 8MS",
     "source": "@steipete",
     "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/steipete/status/2049012392869138842",
-    "url_key": "https://x.com/steipete/status/2049012392869138842"
+    "url": "https://x.com/steipete/status/2049012392869138842"
   },
   {
     "backfilled": true,
     "category": "opensource",
     "delivered_at": "2026-04-28 07:00 UTC",
-    "external_key": "x:status:2049015421236384185",
     "headline": "OPENCLAW CONFIRMED IN 300-USER ENTERPRISE DEPLOYMENT ON GCP/GKE BEHIND GVISOR SANDBOX",
-    "headline_key": "OPENCLAW CONFIRMED IN 300 USER ENTERPRISE DEPLOYMENT ON GCP GKE BEHIND GVISOR SANDBOX",
     "source": "@steipete",
     "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/steipete/status/2049015421236384185",
-    "url_key": "https://x.com/steipete/status/2049015421236384185"
+    "url": "https://x.com/steipete/status/2049015421236384185"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-28 07:00 UTC",
-    "external_key": "x:status:2048976454654820789",
     "headline": "MOLLICK: MICROSOFT'S OUTLOOK AGENT MODE A 'WASTED OPPORTUNITY' \u2014 SILENTLY COMMITS USERS TO OBLIGATIONS",
-    "headline_key": "MOLLICK MICROSOFT S OUTLOOK AGENT MODE A WASTED OPPORTUNITY SILENTLY COMMITS USERS TO OBLIGATIONS",
     "source": "@emollick",
     "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/emollick/status/2048976454654820789",
-    "url_key": "https://x.com/emollick/status/2048976454654820789"
+    "url": "https://x.com/emollick/status/2048976454654820789"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-28 09:00 UTC",
-    "external_key": "x:status:2049035044702843053",
     "headline": "OPENAI CODEX GOES FULL COMPUTER-USE \u2014 OPENS BROWSER, CLICKS THROUGH GITHUB AND CLOSES ISSUE WHEN RATE-LIMITED",
-    "headline_key": "OPENAI CODEX GOES FULL COMPUTER USE OPENS BROWSER CLICKS THROUGH GITHUB AND CLOSES ISSUE WHEN RATE LIMITED",
     "source": "@steipete",
     "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/steipete/status/2049035044702843053",
-    "url_key": "https://x.com/steipete/status/2049035044702843053"
+    "url": "https://x.com/steipete/status/2049035044702843053"
   },
   {
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-28 09:00 UTC",
-    "external_key": "x:status:2049031119006216661",
     "headline": "WSJ \u2014 OPENAI MISSED 1B WEEKLY-ACTIVE-USER TARGET; $1.5B OF CAPACITY SITTING UNUSED",
-    "headline_key": "WSJ OPENAI MISSED 1B WEEKLY ACTIVE USER TARGET $1.5B OF CAPACITY SITTING UNUSED",
     "source": "@kimmonismus",
     "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2049031119006216661",
-    "url_key": "https://x.com/kimmonismus/status/2049031119006216661"
+    "url": "https://x.com/kimmonismus/status/2049031119006216661"
   },
   {
     "backfilled": true,
     "category": "opensource",
     "delivered_at": "2026-04-28 09:00 UTC",
-    "external_key": "x:status:2049065198649253960",
     "headline": "OPENAI OPEN-SOURCES SYMPHONY \u2014 EVERY GITHUB ISSUE GETS ITS OWN CODEX AGENT",
-    "headline_key": "OPENAI OPEN SOURCES SYMPHONY EVERY GITHUB ISSUE GETS ITS OWN CODEX AGENT",
     "source": "@maocaohu",
     "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/maocaohu/status/2049065198649253960",
-    "url_key": "https://x.com/maocaohu/status/2049065198649253960"
+    "url": "https://x.com/maocaohu/status/2049065198649253960"
   },
   {
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-28 09:00 UTC",
-    "external_key": "x:status:2049065198649253960",
     "headline": "DEEPSEEK CUTS API CACHE PRICING TO 1/10 ACROSS THE BOARD; V4-PRO STAYS 75% OFF",
-    "headline_key": "DEEPSEEK CUTS API CACHE PRICING TO 1 10 ACROSS THE BOARD V4 PRO STAYS 75 OFF",
     "source": "@maocaohu",
     "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/maocaohu/status/2049065198649253960",
-    "url_key": "https://x.com/maocaohu/status/2049065198649253960"
+    "url": "https://x.com/maocaohu/status/2049065198649253960"
   },
   {
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-28 09:00 UTC",
-    "external_key": "x:status:2049027230215594275",
     "headline": "SK HYNIX \u2014 HYBRID-BONDING HBM YIELD MATERIALLY IMPROVED VS TWO YEARS AGO",
-    "headline_key": "SK HYNIX HYBRID BONDING HBM YIELD MATERIALLY IMPROVED VS TWO YEARS AGO",
     "source": "@jukan05",
     "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/jukan05/status/2049027230215594275",
-    "url_key": "https://x.com/jukan05/status/2049027230215594275"
+    "url": "https://x.com/jukan05/status/2049027230215594275"
   },
   {
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-28 09:00 UTC",
-    "external_key": "x:status:2049062100572758515",
     "headline": "EX-DEEPMIND RESEARCHER'S SUPERINTELLIGENCE STARTUP RAISES RECORD $1.1B SEED ROUND",
-    "headline_key": "EX DEEPMIND RESEARCHER S SUPERINTELLIGENCE STARTUP RAISES RECORD $1.1B SEED ROUND",
     "source": "@shehzadyounis",
     "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/shehzadyounis/status/2049062100572758515",
-    "url_key": "https://x.com/shehzadyounis/status/2049062100572758515"
+    "url": "https://x.com/shehzadyounis/status/2049062100572758515"
   },
   {
     "backfilled": true,
     "category": "research",
     "delivered_at": "2026-04-28 09:00 UTC",
-    "external_key": "x:status:2049022908853637321",
     "headline": "SAFETY STUDY \u2014 CLAUDE OPUS 4.5 AND GPT-5.2 RANK SAFEST ON DELUSION/PARANOIA TESTS; GROK 4.1 FLAGGED FOR REINFORCING HARM",
-    "headline_key": "SAFETY STUDY CLAUDE OPUS 4.5 AND GPT 5.2 RANK SAFEST ON DELUSION PARANOIA TESTS GROK 4.1 FLAGGED FOR REINFORCING HARM",
     "source": "@Hodl_fm",
     "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/Hodl_fm/status/2049022908853637321",
-    "url_key": "https://x.com/Hodl_fm/status/2049022908853637321"
+    "url": "https://x.com/Hodl_fm/status/2049022908853637321"
   }
 ]
