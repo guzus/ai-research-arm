@@ -522,12 +522,25 @@ jobs:
           # to N messages with a per-chat-id mutex so Telegram's 1-msg/sec
           # same-chat limit is honored automatically. Replaces the previous
           # N parallel /send POSTs.
+          # Materialize the valid-message subset BEFORE building the batch
+          # so result indices map 1:1 back to headline records when we
+          # need to record only the delivered subset.
+          VALID_FILE="/tmp/${DATE}-twitter-${HOUR}h-headlines-valid.json"
+          jq '[ .[] | select((.headline // "") != "" and (.url // "") != "") ]' \
+            "$HEADLINES_FILE" > "$VALID_FILE"
+
+          BATCH_SIZE=$(jq 'length' "$VALID_FILE")
+          if [ "$BATCH_SIZE" -lt 1 ]; then
+            echo "No valid messages to send — skipping"
+            exit 0
+          fi
+
           BATCH_PAYLOAD=$(jq \
             --arg chat_id "$HOOKER_CHAT_ID" \
             --arg thread_id "$HOOKER_THREAD_ID" \
             '{
               messages: [
-                .[] | select((.headline // "") != "" and (.url // "") != "") |
+                .[] |
                 {
                   chat_id: $chat_id,
                   message_thread_id: $thread_id,
@@ -538,9 +551,8 @@ jobs:
                   parse_mode: "HTML"
                 }
               ]
-            }' "$HEADLINES_FILE")
+            }' "$VALID_FILE")
 
-          BATCH_SIZE=$(echo "$BATCH_PAYLOAD" | jq '.messages | length')
           echo "Batch size: $BATCH_SIZE messages"
 
           RESP=$(curl -sS -w "\nHTTP_STATUS:%{http_code}" \
@@ -561,22 +573,52 @@ jobs:
             exit 1
           fi
 
-          # Per-message error breakdown if any failed
+          # Record only the successfully delivered subset so partial
+          # failures don't suppress failed messages on the next run AND
+          # don't re-deliver the successful ones.
+          DELIVERED_FILE="/tmp/${DATE}-twitter-${HOUR}h-headlines-delivered.json"
+          echo "$BODY" | jq --slurpfile h "$VALID_FILE" '
+            ($h[0]) as $headlines |
+            [ .results[] | select(.ok == true) | $headlines[.index] ]
+          ' > "$DELIVERED_FILE"
+
+          DELIVERED_COUNT=$(jq 'length' "$DELIVERED_FILE")
           FAILED=$(echo "$BODY" | jq -r '.failed // 0')
+
+          if [ "$DELIVERED_COUNT" -gt 0 ]; then
+            python3 scripts/dedupe_headline_alerts.py record-delivered \
+              --delivered-file "$DELIVERED_FILE" \
+              --history-file "$HISTORY_FILE" \
+              --timestamp "$ANNOUNCED_AT"
+
+            git add "$HISTORY_FILE"
+            if git commit -m "Track delivered Twitter headline alerts ${ANNOUNCED_AT}"; then
+              # Retry push in case another workflow committed concurrently.
+              PUSHED=false
+              for attempt in 1 2 3; do
+                if git push; then
+                  PUSHED=true
+                  break
+                fi
+                echo "History push attempt $attempt failed; rebasing"
+                if ! git pull --rebase; then
+                  git rebase --abort 2>/dev/null || true
+                  break
+                fi
+              done
+              if [ "$PUSHED" != "true" ]; then
+                echo "Failed to push delivered-alert history after retries"
+                exit 1
+              fi
+            else
+              echo "No delivered alert history changes"
+            fi
+          fi
+
           if [ "$FAILED" -gt 0 ]; then
             echo "--- Failed messages ---"
             echo "$BODY" | jq -r '.results[] | select(.ok == false) | "  ✗ index=\(.index) error=\(.error // "unknown")"' | head -10
             exit 1
           fi
 
-          python3 scripts/dedupe_headline_alerts.py record-delivered \
-            --delivered-file "$HEADLINES_FILE" \
-            --history-file "$HISTORY_FILE" \
-            --timestamp "$ANNOUNCED_AT"
-
-          git add "$HISTORY_FILE"
-          git commit -m "Track delivered Twitter headline alerts ${ANNOUNCED_AT}" || echo "No delivered alert history changes"
-          git pull --rebase
-          git push
-
-          echo "Done — batch delivered."
+          echo "Done — batch delivered (delivered=$DELIVERED_COUNT, failed=$FAILED)."
