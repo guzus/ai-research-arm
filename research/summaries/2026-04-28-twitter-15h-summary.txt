@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-04-28 15:57 UTC
+
+WHAT'S BUZZING:
+• Google signs Pentagon DoD deal — Google AI now cleared for classified military work, despite 600+ employees urging Pichai to refuse
+• Anthropic Mythos breached + brief OpenAI leak — The Information warns frontier-model exfiltration is becoming an attacker reality
+• Poolside open-sources Laguna XS.2 — 33B/3B-active MoE, agentic harness shipped alongside
+
+NOTABLE:
+• GPT-5.6 spotted in the wild; xAI ships Grok Imagine templates; Claude×Blender connector live
+• Magnetar's Prusko: AI capex is ~$3T through '29 vs. ~$1.5T hyperscaler cash flow — a $1.5T funding gap
+• Altman: "AI is autonomously contributing to the sum total of human knowledge"
+
+Full update on GitHub.
