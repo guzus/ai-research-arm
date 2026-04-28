@@ -5,9 +5,15 @@ on:
     # Run every 3 hours at minute 7
     - cron: '7 */3 * * *'
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run without pushing, deploying, or sending Hooker alerts'
+        required: false
+        default: false
+        type: boolean
 
 concurrency:
-  group: hourly-twitter
+  group: hourly-twitter-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -207,6 +213,7 @@ jobs:
           echo "all.json size: $(wc -c < /tmp/bird/all.json) bytes"
 
       - name: Process tweets with Claude
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.dry_run != true }}
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -365,12 +372,52 @@ jobs:
             CRITICAL: A run without headlines.json blocks the downstream Telegram alert
             blast. ALWAYS write the JSON file, even if it's `[]`.
 
-      - name: De-duplicate previously announced headline alerts
+      - name: Create dry-run headline fixture
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
+        env:
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+        run: |
+          set -euo pipefail
+          mkdir -p research/twitter research/summaries
+
+          cat >> "research/twitter/${DATE}.md" <<EOF
+          ## ${HOUR}:00 UTC
+
+          Dry-run fixture for headline alert dedupe.
+          EOF
+
+          cat > "research/summaries/${DATE}-twitter-${HOUR}h-summary.txt" <<EOF
+          Twitter/X AI Pulse - ${TIMESTAMP}
+
+          Dry-run fixture.
+          EOF
+
+          cat > "research/summaries/${DATE}-twitter-${HOUR}h-headlines.json" <<'EOF'
+          [
+            {
+              "headline": "OPENAI CODEX GOES FULL COMPUTER-USE — OPENS BROWSER, CLICKS THROUGH GITHUB AND CLOSES ISSUE WHEN RATE-LIMITED",
+              "source": "@steipete",
+              "url": "https://x.com/steipete/status/2049035044702843053",
+              "category": "model"
+            },
+            {
+              "headline": "DRY RUN ONLY — NEW SYNTHETIC ALERT SHOULD SURVIVE DEDUPE",
+              "source": "@dryrun",
+              "url": "https://x.com/dryrun/status/999999999999999999",
+              "category": "opensource"
+            }
+          ]
+          EOF
+
+      - name: Prepare headline alerts for delivery
         env:
           HEADLINES_FILE: research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines.json
           FILTERED_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines-to-send.json
           HISTORY_FILE: research/summaries/twitter-announced-history.json
-          ANNOUNCED_AT: ${{ steps.datetime.outputs.timestamp }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
         run: |
           set -euo pipefail
 
@@ -379,90 +426,31 @@ jobs:
           [ -f "$HEADLINES_FILE" ] || echo '[]' > "$HEADLINES_FILE"
           [ -f "$HISTORY_FILE" ] || echo '[]' > "$HISTORY_FILE"
 
-          python3 - <<'PY'
-          import json
-          import os
-          import re
-          from pathlib import Path
+          # Rebase before filtering so the delivered-alert ledger is current.
+          # Dry-run fixtures are intentionally uncommitted, so skip rebase there.
+          if [ "$DRY_RUN" != "true" ]; then
+            git pull --rebase
+          fi
 
-          headlines_path = Path(os.environ["HEADLINES_FILE"])
-          filtered_path = Path(os.environ["FILTERED_FILE"])
-          history_path = Path(os.environ["HISTORY_FILE"])
-          announced_at = os.environ["ANNOUNCED_AT"]
-
-          def load_json(path: Path):
-              try:
-                  data = json.loads(path.read_text() or "[]")
-              except Exception:
-                  return []
-              return data if isinstance(data, list) else []
-
-          def normalize_url(url: str) -> str:
-              url = (url or "").strip()
-              url = re.sub(r"\?.*$", "", url)
-              url = url.rstrip("/")
-              url = url.replace("https://twitter.com/", "https://x.com/")
-              return url.lower()
-
-          def normalize_headline(text: str) -> str:
-              text = (text or "").upper()
-              text = re.sub(r"\s+", " ", text)
-              text = re.sub(r"[^A-Z0-9 ]+", "", text)
-              return text.strip()
-
-          history = load_json(history_path)
-          seen_urls = {normalize_url(item.get("url", "")) for item in history if isinstance(item, dict)}
-          seen_headlines = {normalize_headline(item.get("headline", "")) for item in history if isinstance(item, dict)}
-
-          incoming = load_json(headlines_path)
-          filtered = []
-          added = []
-
-          for item in incoming:
-              if not isinstance(item, dict):
-                  continue
-              url = normalize_url(item.get("url", ""))
-              headline = normalize_headline(item.get("headline", ""))
-              if not url or not headline:
-                  continue
-              if url in seen_urls or headline in seen_headlines:
-                  continue
-              filtered.append(item)
-              record = dict(item)
-              record["announced_at"] = announced_at
-              added.append(record)
-              seen_urls.add(url)
-              seen_headlines.add(headline)
-
-          updated_history = (history + added)[-1000:]
-          filtered_path.write_text(json.dumps(filtered, indent=2) + "\n")
-          history_path.write_text(json.dumps(updated_history, indent=2) + "\n")
-
-          print(f"Incoming headlines: {len(incoming)}")
-          print(f"New headlines to send: {len(filtered)}")
-          print(f"Suppressed as previously announced: {len(incoming) - len(filtered)}")
-          PY
-
-          git add "$HISTORY_FILE"
-          git commit -m "Track announced Twitter headlines ${{ steps.datetime.outputs.timestamp }}" || echo "No dedupe changes"
+          python3 scripts/dedupe_headline_alerts.py filter \
+            --headlines-file "$HEADLINES_FILE" \
+            --history-file "$HISTORY_FILE" \
+            --filtered-file "$FILTERED_FILE" \
+            --timestamp "$TIMESTAMP"
 
       - name: Push changes
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.dry_run != true }}
         id: push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          git pull --rebase || true
-          if git push; then
-            echo "pushed=true" >> $GITHUB_OUTPUT
-          else
-            echo "pushed=false" >> $GITHUB_OUTPUT
-            echo "Nothing to push"
-          fi
+          git push
+          echo "pushed=true" >> $GITHUB_OUTPUT
 
       # GITHUB_TOKEN pushes don't trigger other workflows, so explicitly trigger deploy
       - name: Trigger dashboard deploy
-        if: steps.push.outputs.pushed == 'true'
+        if: ${{ steps.push.outputs.pushed == 'true' && (github.event_name != 'workflow_dispatch' || inputs.dry_run != true) }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -474,16 +462,30 @@ jobs:
             "https://api.github.com/repos/${{ github.repository }}/actions/workflows/deploy-dashboard.yml/dispatches" \
             -d '{"ref":"main"}'
 
-      - name: Send headline alerts to Hooker (parallel, supergroup thread)
-        if: success()
-        continue-on-error: true
+      - name: Dry-run alert summary
+        if: ${{ success() && github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
         env:
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+        run: |
+          set -euo pipefail
+          HEADLINES_FILE="/tmp/${DATE}-twitter-${HOUR}h-headlines-to-send.json"
+          COUNT=$(jq 'length' "$HEADLINES_FILE" 2>/dev/null || echo 0)
+          echo "Dry run: $COUNT headline alerts would be sent after dedupe."
+          jq -r '.[]? | "- " + (.headline // "") + " [" + (.url // "") + "]"' "$HEADLINES_FILE" 2>/dev/null || true
+
+      - name: Send headline alerts to Hooker (parallel, supergroup thread)
+        if: ${{ success() && (github.event_name != 'workflow_dispatch' || inputs.dry_run != true) }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
           HOOKER_CHAT_ID: "-1003805075491"
           HOOKER_THREAD_ID: "5771"
           DATE: ${{ steps.datetime.outputs.date }}
           HOUR: ${{ steps.datetime.outputs.hour }}
+          HISTORY_FILE: research/summaries/twitter-announced-history.json
+          ANNOUNCED_AT: ${{ steps.datetime.outputs.timestamp }}
         run: |
           # Bloomberg-style "Market News Feed" cadence: each headline gets its
           # own hooker /send. Targets the "hooker" supergroup, forum thread 5771.
@@ -556,7 +558,7 @@ jobs:
           if [ "$HTTP" != "200" ]; then
             echo "Batch request failed — body:"
             echo "$BODY" | head -20
-            exit 0
+            exit 1
           fi
 
           # Per-message error breakdown if any failed
@@ -564,5 +566,17 @@ jobs:
           if [ "$FAILED" -gt 0 ]; then
             echo "--- Failed messages ---"
             echo "$BODY" | jq -r '.results[] | select(.ok == false) | "  ✗ index=\(.index) error=\(.error // "unknown")"' | head -10
+            exit 1
           fi
+
+          python3 scripts/dedupe_headline_alerts.py record-delivered \
+            --delivered-file "$HEADLINES_FILE" \
+            --history-file "$HISTORY_FILE" \
+            --timestamp "$ANNOUNCED_AT"
+
+          git add "$HISTORY_FILE"
+          git commit -m "Track delivered Twitter headline alerts ${ANNOUNCED_AT}" || echo "No delivered alert history changes"
+          git pull --rebase
+          git push
+
           echo "Done — batch delivered."
