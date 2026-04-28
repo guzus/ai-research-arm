@@ -5,9 +5,15 @@ on:
     # Run every 3 hours at minute 7
     - cron: '7 */3 * * *'
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run without pushing, deploying, or sending Hooker alerts'
+        required: false
+        default: false
+        type: boolean
 
 concurrency:
-  group: hourly-twitter
+  group: hourly-twitter-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -207,6 +213,7 @@ jobs:
           echo "all.json size: $(wc -c < /tmp/bird/all.json) bytes"
 
       - name: Process tweets with Claude
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.dry_run != true }}
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -365,23 +372,85 @@ jobs:
             CRITICAL: A run without headlines.json blocks the downstream Telegram alert
             blast. ALWAYS write the JSON file, even if it's `[]`.
 
+      - name: Create dry-run headline fixture
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
+        env:
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+        run: |
+          set -euo pipefail
+          mkdir -p research/twitter research/summaries
+
+          cat >> "research/twitter/${DATE}.md" <<EOF
+          ## ${HOUR}:00 UTC
+
+          Dry-run fixture for headline alert dedupe.
+          EOF
+
+          cat > "research/summaries/${DATE}-twitter-${HOUR}h-summary.txt" <<EOF
+          Twitter/X AI Pulse - ${TIMESTAMP}
+
+          Dry-run fixture.
+          EOF
+
+          cat > "research/summaries/${DATE}-twitter-${HOUR}h-headlines.json" <<'EOF'
+          [
+            {
+              "headline": "OPENAI CODEX GOES FULL COMPUTER-USE — OPENS BROWSER, CLICKS THROUGH GITHUB AND CLOSES ISSUE WHEN RATE-LIMITED",
+              "source": "@steipete",
+              "url": "https://x.com/steipete/status/2049035044702843053",
+              "category": "model"
+            },
+            {
+              "headline": "DRY RUN ONLY — NEW SYNTHETIC ALERT SHOULD SURVIVE DEDUPE",
+              "source": "@dryrun",
+              "url": "https://x.com/dryrun/status/999999999999999999",
+              "category": "opensource"
+            }
+          ]
+          EOF
+
+      - name: Prepare headline alerts for delivery
+        env:
+          HEADLINES_FILE: research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines.json
+          FILTERED_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines-to-send.json
+          HISTORY_FILE: research/summaries/twitter-announced-history.json
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
+        run: |
+          set -euo pipefail
+
+          mkdir -p research/summaries
+
+          [ -f "$HEADLINES_FILE" ] || echo '[]' > "$HEADLINES_FILE"
+          [ -f "$HISTORY_FILE" ] || echo '[]' > "$HISTORY_FILE"
+
+          # Rebase before filtering so the delivered-alert ledger is current.
+          # Dry-run fixtures are intentionally uncommitted, so skip rebase there.
+          if [ "$DRY_RUN" != "true" ]; then
+            git pull --rebase
+          fi
+
+          python3 scripts/dedupe_headline_alerts.py filter \
+            --headlines-file "$HEADLINES_FILE" \
+            --history-file "$HISTORY_FILE" \
+            --filtered-file "$FILTERED_FILE" \
+            --timestamp "$TIMESTAMP"
+
       - name: Push changes
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.dry_run != true }}
         id: push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          git pull --rebase || true
-          if git push; then
-            echo "pushed=true" >> $GITHUB_OUTPUT
-          else
-            echo "pushed=false" >> $GITHUB_OUTPUT
-            echo "Nothing to push"
-          fi
+          git push
+          echo "pushed=true" >> $GITHUB_OUTPUT
 
       # GITHUB_TOKEN pushes don't trigger other workflows, so explicitly trigger deploy
       - name: Trigger dashboard deploy
-        if: steps.push.outputs.pushed == 'true'
+        if: ${{ steps.push.outputs.pushed == 'true' && (github.event_name != 'workflow_dispatch' || inputs.dry_run != true) }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -393,16 +462,30 @@ jobs:
             "https://api.github.com/repos/${{ github.repository }}/actions/workflows/deploy-dashboard.yml/dispatches" \
             -d '{"ref":"main"}'
 
-      - name: Send headline alerts to Hooker (parallel, supergroup thread)
-        if: success()
-        continue-on-error: true
+      - name: Dry-run alert summary
+        if: ${{ success() && github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
         env:
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+        run: |
+          set -euo pipefail
+          HEADLINES_FILE="/tmp/${DATE}-twitter-${HOUR}h-headlines-to-send.json"
+          COUNT=$(jq 'length' "$HEADLINES_FILE" 2>/dev/null || echo 0)
+          echo "Dry run: $COUNT headline alerts would be sent after dedupe."
+          jq -r '.[]? | "- " + (.headline // "") + " [" + (.url // "") + "]"' "$HEADLINES_FILE" 2>/dev/null || true
+
+      - name: Send headline alerts to Hooker (parallel, supergroup thread)
+        if: ${{ success() && (github.event_name != 'workflow_dispatch' || inputs.dry_run != true) }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
           HOOKER_CHAT_ID: "-1003805075491"
           HOOKER_THREAD_ID: "5771"
           DATE: ${{ steps.datetime.outputs.date }}
           HOUR: ${{ steps.datetime.outputs.hour }}
+          HISTORY_FILE: research/summaries/twitter-announced-history.json
+          ANNOUNCED_AT: ${{ steps.datetime.outputs.timestamp }}
         run: |
           # Bloomberg-style "Market News Feed" cadence: each headline gets its
           # own hooker /send. Targets the "hooker" supergroup, forum thread 5771.
@@ -410,7 +493,7 @@ jobs:
           # sleep. (Direct Telegram sendMessage is removed; hooker is the
           # delivery channel.)
 
-          HEADLINES_FILE="research/summaries/${DATE}-twitter-${HOUR}h-headlines.json"
+          HEADLINES_FILE="/tmp/${DATE}-twitter-${HOUR}h-headlines-to-send.json"
 
           if [ ! -f "$HEADLINES_FILE" ]; then
             echo "No headlines file at $HEADLINES_FILE — skipping alerts"
@@ -419,7 +502,7 @@ jobs:
 
           COUNT=$(jq 'length' "$HEADLINES_FILE" 2>/dev/null || echo 0)
           if [ "$COUNT" -lt 1 ]; then
-            echo "Headlines array is empty — skipping alerts (quiet cycle)"
+            echo "No new headline alerts after dedupe — skipping alerts"
             exit 0
           fi
 
@@ -439,12 +522,25 @@ jobs:
           # to N messages with a per-chat-id mutex so Telegram's 1-msg/sec
           # same-chat limit is honored automatically. Replaces the previous
           # N parallel /send POSTs.
+          # Materialize the valid-message subset BEFORE building the batch
+          # so result indices map 1:1 back to headline records when we
+          # need to record only the delivered subset.
+          VALID_FILE="/tmp/${DATE}-twitter-${HOUR}h-headlines-valid.json"
+          jq '[ .[] | select((.headline // "") != "" and (.url // "") != "") ]' \
+            "$HEADLINES_FILE" > "$VALID_FILE"
+
+          BATCH_SIZE=$(jq 'length' "$VALID_FILE")
+          if [ "$BATCH_SIZE" -lt 1 ]; then
+            echo "No valid messages to send — skipping"
+            exit 0
+          fi
+
           BATCH_PAYLOAD=$(jq \
             --arg chat_id "$HOOKER_CHAT_ID" \
             --arg thread_id "$HOOKER_THREAD_ID" \
             '{
               messages: [
-                .[] | select((.headline // "") != "" and (.url // "") != "") |
+                .[] |
                 {
                   chat_id: $chat_id,
                   message_thread_id: $thread_id,
@@ -455,9 +551,8 @@ jobs:
                   parse_mode: "HTML"
                 }
               ]
-            }' "$HEADLINES_FILE")
+            }' "$VALID_FILE")
 
-          BATCH_SIZE=$(echo "$BATCH_PAYLOAD" | jq '.messages | length')
           echo "Batch size: $BATCH_SIZE messages"
 
           RESP=$(curl -sS -w "\nHTTP_STATUS:%{http_code}" \
@@ -475,13 +570,55 @@ jobs:
           if [ "$HTTP" != "200" ]; then
             echo "Batch request failed — body:"
             echo "$BODY" | head -20
-            exit 0
+            exit 1
           fi
 
-          # Per-message error breakdown if any failed
+          # Record only the successfully delivered subset so partial
+          # failures don't suppress failed messages on the next run AND
+          # don't re-deliver the successful ones.
+          DELIVERED_FILE="/tmp/${DATE}-twitter-${HOUR}h-headlines-delivered.json"
+          echo "$BODY" | jq --slurpfile h "$VALID_FILE" '
+            ($h[0]) as $headlines |
+            [ .results[] | select(.ok == true) | $headlines[.index] ]
+          ' > "$DELIVERED_FILE"
+
+          DELIVERED_COUNT=$(jq 'length' "$DELIVERED_FILE")
           FAILED=$(echo "$BODY" | jq -r '.failed // 0')
+
+          if [ "$DELIVERED_COUNT" -gt 0 ]; then
+            python3 scripts/dedupe_headline_alerts.py record-delivered \
+              --delivered-file "$DELIVERED_FILE" \
+              --history-file "$HISTORY_FILE" \
+              --timestamp "$ANNOUNCED_AT"
+
+            git add "$HISTORY_FILE"
+            if git commit -m "Track delivered Twitter headline alerts ${ANNOUNCED_AT}"; then
+              # Retry push in case another workflow committed concurrently.
+              PUSHED=false
+              for attempt in 1 2 3; do
+                if git push; then
+                  PUSHED=true
+                  break
+                fi
+                echo "History push attempt $attempt failed; rebasing"
+                if ! git pull --rebase; then
+                  git rebase --abort 2>/dev/null || true
+                  break
+                fi
+              done
+              if [ "$PUSHED" != "true" ]; then
+                echo "Failed to push delivered-alert history after retries"
+                exit 1
+              fi
+            else
+              echo "No delivered alert history changes"
+            fi
+          fi
+
           if [ "$FAILED" -gt 0 ]; then
             echo "--- Failed messages ---"
             echo "$BODY" | jq -r '.results[] | select(.ok == false) | "  ✗ index=\(.index) error=\(.error // "unknown")"' | head -10
+            exit 1
           fi
-          echo "Done — batch delivered."
+
+          echo "Done — batch delivered (delivered=$DELIVERED_COUNT, failed=$FAILED)."

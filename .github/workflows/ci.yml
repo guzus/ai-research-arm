@@ -6,10 +6,12 @@ on:
     paths:
       - '.github/workflows/**'
       - 'dashboard/**'
+      - 'scripts/**'
   pull_request:
     paths:
       - '.github/workflows/**'
       - 'dashboard/**'
+      - 'scripts/**'
   workflow_dispatch:
 
 concurrency:
@@ -49,3 +51,12 @@ jobs:
 
       - name: Build
         run: bun run build
+
+  python-scripts:
+    runs-on: [self-hosted, Linux]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Test Python scripts
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
