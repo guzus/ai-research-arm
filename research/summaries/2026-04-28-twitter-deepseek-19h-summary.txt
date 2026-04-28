@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-04-28 19:09 UTC
+
+CYCLE: Earnings-week holding pattern — Musk trial opens, OpenAI growth concerns become market reality ahead of Big Tech earnings
+
+TOP STORIES:
+• Musk vs OpenAI trial Day 1: Musk's lawyer accuses OpenAI of "stealing a charity." Only 2 of 26 original claims remain. 9-person jury seated. ~3 weeks of evidence ahead. [✓]
+• Ling-2.6-Flash open-sourced by Ant Group: 104B/7.4B active MoE, MIT license, 215 tok/s, 3-6x more token-efficient than frontier models. Day-0 vLLM/Modular/Novita support. [⚠]
+• OpenAI growth miss confirmed by WSJ: Nasdaq -1%, chip stocks -3%+. Polymarket: 15% chance of OpenAI IPO before 2027. The narrative is now priced in ahead of Big Tech earnings. [⚠]
+
+WATCH: Google earnings Apr 29 — AI cloud revenue growth, any DeepSeek pricing mention. Microsoft Apr 30 — Azure guidance without exclusivity.
+
+Full brief on GitHub.
