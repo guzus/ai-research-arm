@@ -1,0 +1,12 @@
+arXiv Papers - 2026-04-28
+
+TOP 5 PAPERS:
+• Universal YOCO - efficient depth scaling for transformers without KV-cache blow-up
+• Abstract Chain-of-Thought - latent reasoning with reserved tokens, no verbal CoT
+• Expert Upcycling - turn dense checkpoints into stronger MoEs, shifts compute frontier
+• Cyber Defense Benchmark - frontier LLM agents flag only 3.8% of SOC threats (Claude Opus 4.6 best)
+• Involuntary In-Context Learning - few-shot patterns bypass GPT-5.4 safety alignment
+
+CATEGORIES: NLP/LMs (4), Vision/Multimodal (5), Agents/Reasoning (6), Safety/Alignment (6), Other (6)
+
+Full report on GitHub.
