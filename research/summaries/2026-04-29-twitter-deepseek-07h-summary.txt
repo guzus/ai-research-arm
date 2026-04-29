@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-04-29 07:36 UTC
+
+CYCLE: Overnight quiet — Reuters exclusive on Chinese firms scrambling for Huawei chips after DeepSeek V4. Musk trial + Google earnings converge this afternoon.
+
+TOP STORIES:
+• Chinese tech firms scramble for Huawei Ascend chips after DeepSeek V4 launch — Reuters exclusive, supply-chain contagion from open-source model validating domestic silicon [⚠]
+• Musk trial Day 2 — testimony resumes today; "AI could kill us all" framing from Tuesday; Google earnings provide parallel AI scrutiny [✓]
+• OpenAI on AWS Bedrock officially confirmed by @OpenAINewsroom — "limited preview" of models, Codex, and Managed Agents; verification upgraded from ⚠ to ✓ [✓]
+
+WATCH: Google earnings after close (AI cloud revenue, Pentagon deal disclosure). Musk resumes testimony ~15:00 UTC. Microsoft/Meta/Amazon earnings tomorrow.
+
+Full brief on GitHub.
