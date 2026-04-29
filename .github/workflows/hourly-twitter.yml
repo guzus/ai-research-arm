@@ -417,7 +417,6 @@ jobs:
           FILTERED_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines-to-send.json
           HISTORY_FILE: research/summaries/twitter-announced-history.json
           TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
-          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
         run: |
           set -euo pipefail
 
@@ -426,11 +425,15 @@ jobs:
           [ -f "$HEADLINES_FILE" ] || echo '[]' > "$HEADLINES_FILE"
           [ -f "$HISTORY_FILE" ] || echo '[]' > "$HISTORY_FILE"
 
-          # Rebase before filtering so the delivered-alert ledger is current.
-          # Dry-run fixtures are intentionally uncommitted, so skip rebase there.
-          if [ "$DRY_RUN" != "true" ]; then
-            git pull --rebase
-          fi
+          # No `git pull --rebase` here: the only writer for
+          # twitter-announced-history.json is this workflow's own
+          # hooker-send step (later in this same job), and concurrency
+          # cancel-in-progress guarantees no parallel instance. The
+          # checked-out tree is already authoritative for our dedupe
+          # input. Doing a pull here would also fail on the self-hosted
+          # runner because this step has no GITHUB_TOKEN in env and
+          # the actions/checkout extraheader doesn't reliably survive
+          # mid-job.
 
           python3 scripts/dedupe_headline_alerts.py filter \
             --headlines-file "$HEADLINES_FILE" \
@@ -445,6 +448,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          # Other workflows commit to main on different paths between
+          # our checkout and now; rebase so this push is fast-forward.
+          # Token is already on the remote URL above so auth works.
+          git pull --rebase || { git rebase --abort 2>/dev/null || true; exit 1; }
           git push
           echo "pushed=true" >> $GITHUB_OUTPUT
 
