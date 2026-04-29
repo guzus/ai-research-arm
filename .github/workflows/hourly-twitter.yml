@@ -480,18 +480,28 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
-          HOOKER_CHAT_ID: "-1003805075491"
-          HOOKER_THREAD_ID: "5771"
+          # JSON array of {chat_id, thread_id?} routes. Each headline is
+          # fanned out to every route in a single /send-batch call. A
+          # headline counts as "delivered" (and gets recorded in the
+          # dedupe ledger) if AT LEAST ONE route accepted it, so a
+          # transient failure on one chat doesn't keep re-spamming the
+          # working chat forever.
+          HOOKER_ROUTES: |
+            [
+              {"chat_id": "-1003805075491", "thread_id": "5771"},
+              {"chat_id": "-1003988951534"}
+            ]
           DATE: ${{ steps.datetime.outputs.date }}
           HOUR: ${{ steps.datetime.outputs.hour }}
           HISTORY_FILE: research/summaries/twitter-announced-history.json
           ANNOUNCED_AT: ${{ steps.datetime.outputs.timestamp }}
         run: |
-          # Bloomberg-style "Market News Feed" cadence: each headline gets its
-          # own hooker /send. Targets the "hooker" supergroup, forum thread 5771.
-          # All alerts fire in parallel via background jobs + wait — no per-msg
-          # sleep. (Direct Telegram sendMessage is removed; hooker is the
-          # delivery channel.)
+          # Bloomberg-style "Market News Feed" cadence: each headline is
+          # fanned out to every chat in HOOKER_ROUTES via a single
+          # /send-batch call. Hooker v0.2.0 enforces a per-chat-id mutex
+          # so Telegram's 1-msg/sec same-chat limit is honored
+          # automatically across the fan-out. Replaces the previous
+          # N parallel /send POSTs.
 
           HEADLINES_FILE="/tmp/${DATE}-twitter-${HOUR}h-headlines-to-send.json"
 
@@ -511,17 +521,19 @@ jobs:
             exit 0
           fi
 
-          echo "Sending $COUNT headline alerts to chat=$HOOKER_CHAT_ID thread=$HOOKER_THREAD_ID via /send-batch..."
+          NUM_ROUTES=$(echo "$HOOKER_ROUTES" | jq 'length')
+          if [ "$NUM_ROUTES" -lt 1 ]; then
+            echo "HOOKER_ROUTES is empty — skipping"
+            exit 0
+          fi
+
+          echo "Sending $COUNT headline alerts × $NUM_ROUTES routes via /send-batch..."
 
           # Format goal (per user): no title, no tags, no @source line, no
           # raw URL — just the headline + a clickable "link" to the tweet.
           # Hooker server renders HTML, so parse_mode=HTML and the URL is
           # embedded as <a href="...">link</a>.
           #
-          # Single batch POST (hooker v0.2.0 /send-batch). Server fans out
-          # to N messages with a per-chat-id mutex so Telegram's 1-msg/sec
-          # same-chat limit is honored automatically. Replaces the previous
-          # N parallel /send POSTs.
           # Materialize the valid-message subset BEFORE building the batch
           # so result indices map 1:1 back to headline records when we
           # need to record only the delivered subset.
@@ -529,31 +541,36 @@ jobs:
           jq '[ .[] | select((.headline // "") != "" and (.url // "") != "") ]' \
             "$HEADLINES_FILE" > "$VALID_FILE"
 
-          BATCH_SIZE=$(jq 'length' "$VALID_FILE")
-          if [ "$BATCH_SIZE" -lt 1 ]; then
+          VALID_COUNT=$(jq 'length' "$VALID_FILE")
+          if [ "$VALID_COUNT" -lt 1 ]; then
             echo "No valid messages to send — skipping"
             exit 0
           fi
 
+          # Cartesian product: each headline × each route. Result index i
+          # maps back to headline (i / NUM_ROUTES | floor) and route
+          # (i % NUM_ROUTES). message_thread_id is omitted entirely when a
+          # route has no thread, since Telegram rejects empty/zero threads
+          # on chats without forum topics.
           BATCH_PAYLOAD=$(jq \
-            --arg chat_id "$HOOKER_CHAT_ID" \
-            --arg thread_id "$HOOKER_THREAD_ID" \
+            --argjson routes "$HOOKER_ROUTES" \
             '{
               messages: [
-                .[] |
-                {
-                  chat_id: $chat_id,
-                  message_thread_id: $thread_id,
+                .[] as $h |
+                $routes[] as $r |
+                ({
+                  chat_id: $r.chat_id,
                   title: "",
-                  text: (.headline + " <a href=\"" + .url + "\">link</a>"),
+                  text: ($h.headline + " <a href=\"" + $h.url + "\">link</a>"),
                   priority: 3,
                   tags: [],
                   parse_mode: "HTML"
-                }
+                } | if ($r.thread_id // "") != "" then . + {message_thread_id: $r.thread_id} else . end)
               ]
             }' "$VALID_FILE")
 
-          echo "Batch size: $BATCH_SIZE messages"
+          BATCH_SIZE=$(echo "$BATCH_PAYLOAD" | jq '.messages | length')
+          echo "Batch size: $BATCH_SIZE messages ($VALID_COUNT headlines × $NUM_ROUTES routes)"
 
           RESP=$(curl -sS -w "\nHTTP_STATUS:%{http_code}" \
             -X POST "${HOOKER_URL}/send-batch" \
@@ -573,14 +590,21 @@ jobs:
             exit 1
           fi
 
-          # Record only the successfully delivered subset so partial
-          # failures don't suppress failed messages on the next run AND
-          # don't re-deliver the successful ones.
+          # Record headlines where AT LEAST ONE route accepted delivery.
+          # Group results by headline (index / NUM_ROUTES | floor); a
+          # headline's chunk has NUM_ROUTES entries and we want any of
+          # them to be ok. This avoids re-spamming working routes when
+          # one chat has a transient issue, while still retrying truly
+          # un-delivered headlines on the next cycle.
           DELIVERED_FILE="/tmp/${DATE}-twitter-${HOUR}h-headlines-delivered.json"
-          echo "$BODY" | jq --slurpfile h "$VALID_FILE" '
-            ($h[0]) as $headlines |
-            [ .results[] | select(.ok == true) | $headlines[.index] ]
-          ' > "$DELIVERED_FILE"
+          echo "$BODY" | jq \
+            --slurpfile h "$VALID_FILE" \
+            --argjson num_routes "$NUM_ROUTES" \
+            '
+              ($h[0]) as $headlines |
+              ([.results[] | select(.ok == true) | (.index / $num_routes | floor)] | unique) as $delivered_idx |
+              [ $delivered_idx[] | $headlines[.] ]
+            ' > "$DELIVERED_FILE"
 
           DELIVERED_COUNT=$(jq 'length' "$DELIVERED_FILE")
           FAILED=$(echo "$BODY" | jq -r '.failed // 0')
