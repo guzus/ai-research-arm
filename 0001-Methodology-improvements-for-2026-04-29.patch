@@ -1,0 +1,443 @@
+From caad184c00e5baa2876df596d7fb285b85e1b0ce Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Wed, 29 Apr 2026 01:39:54 +0000
+Subject: [PATCH] Methodology improvements for 2026-04-29
+
+Fixes Bluesky 403 (host swap to api.bsky.app), unblocks daily-digest
+stale-source fallback, adds 9 RSS feeds + 3 subreddits + arxiv cs.CL,
+and tightens arXiv author attribution.
+
+Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>
+---
+ .github/workflows/2h-bluesky.yml   | 70 ++++++++++++++++--------
+ .github/workflows/4h-community.yml | 45 ++++++++++++++++
+ .github/workflows/daily-arxiv.yml  | 11 +++-
+ .github/workflows/daily-digest.yml | 78 +++++++++++++++++++++++----
+ .github/workflows/hourly-rss.yml   | 85 ++++++++++++++++++++++++++++++
+ 5 files changed, 254 insertions(+), 35 deletions(-)
+
+diff --git a/.github/workflows/2h-bluesky.yml b/.github/workflows/2h-bluesky.yml
+index df673910..fd6da407 100644
+--- a/.github/workflows/2h-bluesky.yml
++++ b/.github/workflows/2h-bluesky.yml
+@@ -34,35 +34,51 @@ jobs:
+         run: |
+           mkdir -p /tmp/bluesky
+ 
+-          # Bluesky public API - search for AI-related posts
+-          # Using the public search endpoint (no auth required for public posts)
+-
+-          # Search for recent AI-related posts
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=AI%20announcement&limit=30&sort=latest" \
+-            > /tmp/bluesky/ai_announcements.json
+-
++          # Bluesky AppView — unauthenticated reads.
++          # NOTE: 2026-04-29: switched from public.api.bsky.app -> api.bsky.app.
++          # `public.api.bsky.app/xrpc/app.bsky.feed.searchPosts` started returning
++          # 403 Forbidden (CDN/anti-bot block); api.bsky.app still serves the same
++          # XRPC endpoints with HTTP 200 for unauthenticated AppView reads.
++          # See: github.com/bluesky-social/bsky-docs/issues/332
++          BSKY="https://api.bsky.app/xrpc/app.bsky.feed.searchPosts"
++          UA="Mozilla/5.0 (compatible; AIResearchBot/1.0; +https://github.com)"
++
++          fetch_query() {
++            local query="$1"
++            local out="$2"
++            curl -fsSL -A "$UA" -H "Accept: application/json" \
++              "$BSKY?q=$(printf %s "$query" | jq -sRr @uri)&limit=30&sort=latest" \
++              -o "$out" \
++              || echo '{"posts":[]}' > "$out"
++            # Defensive: if upstream returned an HTML error page, normalize to empty.
++            if ! head -c 1 "$out" | grep -q '{'; then
++              echo '{"posts":[]}' > "$out"
++            fi
++          }
++
++          fetch_query "AI announcement"        /tmp/bluesky/ai_announcements.json
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=LLM%20release&limit=30&sort=latest" \
+-            > /tmp/bluesky/llm_releases.json
+-
++          fetch_query "LLM release"            /tmp/bluesky/llm_releases.json
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=GPT%20Claude%20Gemini&limit=30&sort=latest" \
+-            > /tmp/bluesky/model_discussions.json
+-
++          fetch_query "GPT Claude Gemini"      /tmp/bluesky/model_discussions.json
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=machine%20learning%20paper&limit=30&sort=latest" \
+-            > /tmp/bluesky/ml_papers.json
+-
++          fetch_query "machine learning paper" /tmp/bluesky/ml_papers.json
+           sleep 1
+-
+-          # Get posts from known AI researchers/companies by searching their handles
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=from%3Akarpathy.bsky.social&limit=20&sort=latest" \
+-            > /tmp/bluesky/karpathy.json 2>/dev/null || echo '{"posts":[]}' > /tmp/bluesky/karpathy.json
++          fetch_query "AI safety alignment"    /tmp/bluesky/safety.json
++          sleep 1
++          fetch_query "open weights model"     /tmp/bluesky/open_weights.json
++          sleep 1
++          # arXiv-link drops on Bluesky catch a lot of paper announcements.
++          fetch_query "arxiv.org abs"          /tmp/bluesky/arxiv_links.json
++          sleep 1
++          # Researcher handle search via the search API directly (the prior
++          # `from:` syntax wasn't reliable — query their display handle as text
++          # and the model can still surface them).
++          fetch_query "karpathy.bsky.social"   /tmp/bluesky/karpathy.json
+ 
+           echo "Bluesky data fetched successfully"
++          echo "File sizes:"
++          wc -c /tmp/bluesky/*.json | tail -n +1
+ 
+       - name: Copy Bluesky data to working directory
+         run: |
+@@ -89,8 +105,16 @@ jobs:
+             - data/bluesky/llm_releases.json
+             - data/bluesky/model_discussions.json
+             - data/bluesky/ml_papers.json
++            - data/bluesky/safety.json
++            - data/bluesky/open_weights.json
++            - data/bluesky/arxiv_links.json
+             - data/bluesky/karpathy.json
+ 
++            If a file has `{"posts":[]}` or is missing, treat it as no data
++            for that query — do NOT block on it; continue with the others.
++            If ALL files are empty, write the standard "no posts curated"
++            block (the upstream fetch may be transiently rate-limited).
++
+             The Bluesky JSON structure is:
+             - posts[].author.handle (username like "user.bsky.social")
+             - posts[].author.displayName (display name)
+diff --git a/.github/workflows/4h-community.yml b/.github/workflows/4h-community.yml
+index 873c8823..86df1a58 100644
+--- a/.github/workflows/4h-community.yml
++++ b/.github/workflows/4h-community.yml
+@@ -64,6 +64,30 @@ jobs:
+             > /tmp/reddit/artificial.rss
+           echo "Artificial RSS size: $(wc -c < /tmp/reddit/artificial.rss) bytes"
+ 
++          sleep 2
++
++          echo "Fetching r/singularity RSS..."
++          curl -sL "https://www.reddit.com/r/singularity/hot.rss?limit=20" \
++            -H "User-Agent: AIResearchBot/1.0" \
++            > /tmp/reddit/singularity.rss
++          echo "Singularity RSS size: $(wc -c < /tmp/reddit/singularity.rss) bytes"
++
++          sleep 2
++
++          echo "Fetching r/OpenAI RSS..."
++          curl -sL "https://www.reddit.com/r/OpenAI/hot.rss?limit=20" \
++            -H "User-Agent: AIResearchBot/1.0" \
++            > /tmp/reddit/openai.rss
++          echo "OpenAI RSS size: $(wc -c < /tmp/reddit/openai.rss) bytes"
++
++          sleep 2
++
++          echo "Fetching r/ClaudeAI RSS..."
++          curl -sL "https://www.reddit.com/r/ClaudeAI/hot.rss?limit=20" \
++            -H "User-Agent: AIResearchBot/1.0" \
++            > /tmp/reddit/claudeai.rss
++          echo "ClaudeAI RSS size: $(wc -c < /tmp/reddit/claudeai.rss) bytes"
++
+           # Check if we got valid RSS (not HTML error page)
+           echo "=== ml.rss first 300 chars ==="
+           head -c 300 /tmp/reddit/ml.rss
+@@ -114,6 +138,9 @@ jobs:
+             - data/reddit/ml.rss (r/MachineLearning hot posts)
+             - data/reddit/localllama.rss (r/LocalLLaMA hot posts)
+             - data/reddit/artificial.rss (r/artificial hot posts)
++            - data/reddit/singularity.rss (r/singularity hot posts)
++            - data/reddit/openai.rss (r/OpenAI hot posts)
++            - data/reddit/claudeai.rss (r/ClaudeAI hot posts)
+ 
+             These are standard RSS/Atom XML feeds. Each <entry> contains:
+             - <title> - post title
+@@ -158,8 +185,26 @@ jobs:
+             ### r/artificial (Hot)
+             | Title | Score | Comments | Link |
+             |-------|-------|----------|------|
++
++            ### r/singularity (Hot)
++            | Title | Score | Comments | Link |
++            |-------|-------|----------|------|
++
++            ### r/OpenAI (Hot)
++            | Title | Score | Comments | Link |
++            |-------|-------|----------|------|
++
++            ### r/ClaudeAI (Hot)
++            | Title | Score | Comments | Link |
++            |-------|-------|----------|------|
+             ```
+ 
++            NOTE on N/A scores: Reddit RSS does not expose score/comment
++            counts (this is by design for the .rss endpoint). Show "N/A" in
++            those columns and SELECT posts based on substantive content
++            (model releases, benchmarks, papers, tooling) rather than
++            trying to rank by engagement.
++
+             ## FILTERS
+ 
+             INCLUDE: Model releases, benchmarks, research papers, tools, funding, technical discussions
+diff --git a/.github/workflows/daily-arxiv.yml b/.github/workflows/daily-arxiv.yml
+index d209cfba..5550678e 100644
+--- a/.github/workflows/daily-arxiv.yml
++++ b/.github/workflows/daily-arxiv.yml
+@@ -85,6 +85,15 @@ jobs:
+             - Application papers with no novel methods
+             - Papers from unknown authors with few citations
+ 
++            AUTHOR ATTRIBUTION (important):
++            Always extract the REAL author list from the arXiv MCP tool's
++            metadata or the paper's `<dc:creator>` / `<author>` field. Show
++            the first author's surname et al. for papers with >3 authors
++            (e.g. "Smith et al."). NEVER write "(arXiv group submission)" or
++            "(arXiv)" — that's a placeholder, not a citation. If the MCP
++            metadata for a given paper is missing the author list, drop the
++            paper from the digest rather than fake-attributing it.
++
+             FORMAT:
+ 
+             # arXiv AI Research - ${{ steps.date.outputs.date }}
+@@ -92,7 +101,7 @@ jobs:
+             ## Highlights (Top 5 Must-Read)
+ 
+             ### 1. [Paper Title]
+-            **Authors**: [names]
++            **Authors**: [first author surname] et al. (or full short list if ≤3)
+             **arXiv**: [link]
+             **TL;DR**: [2-3 sentence summary of key contribution]
+             **Why it matters**: [1 sentence on significance]
+diff --git a/.github/workflows/daily-digest.yml b/.github/workflows/daily-digest.yml
+index 936df014..127f2061 100644
+--- a/.github/workflows/daily-digest.yml
++++ b/.github/workflows/daily-digest.yml
+@@ -28,7 +28,13 @@ jobs:
+ 
+       - name: Get current date
+         id: date
+-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
++        run: |
++          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
++          # The digest is named for "today" but runs at 00:00 UTC, so the
++          # today-stamped twitter/community/RSS files do not exist yet. The
++          # bulk of the source material is in YESTERDAY's files. Pass both
++          # so the editor model reads from the right place.
++          echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -v-1d +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+ 
+       - name: Setup Node.js
+         uses: actions/setup-node@v4
+@@ -106,11 +112,36 @@ jobs:
+             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
+ 
+             DATE: ${{ steps.date.outputs.date }}
+-
+-            STEP 1: Find and read today's source files
+-            Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
+-            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, and any others.
+-            Read all relevant files you find.
++            YESTERDAY: ${{ steps.date.outputs.yesterday }}
++
++            STEP 1: Find and read source files
++            This workflow runs at 00:00 UTC, so most TODAY-stamped files do
++            not exist yet. The substantive source material for today's digest
++            is in YESTERDAY's files. Read BOTH dates from these subdirectories
++            and prefer whichever exists (do NOT silently fall back to old
++            February/March files just because today's are missing):
++
++              research/twitter/${{ steps.date.outputs.yesterday }}.md
++              research/twitter/${{ steps.date.outputs.date }}.md
++              research/community/${{ steps.date.outputs.yesterday }}-hn.md
++              research/community/${{ steps.date.outputs.date }}-hn.md
++              research/community/${{ steps.date.outputs.yesterday }}-reddit.md
++              research/community/${{ steps.date.outputs.date }}-reddit.md
++              research/arxiv/${{ steps.date.outputs.yesterday }}-papers.md
++              research/arxiv/${{ steps.date.outputs.date }}-papers.md
++              research/rss/${{ steps.date.outputs.yesterday }}.md
++              research/rss/${{ steps.date.outputs.date }}.md
++              research/bluesky/${{ steps.date.outputs.yesterday }}.md
++              research/bluesky/${{ steps.date.outputs.date }}.md
++              research/models/${{ steps.date.outputs.yesterday }}-timeline.md
++              research/models/${{ steps.date.outputs.date }}-timeline.md
++              research/twitter-deepseek/${{ steps.date.outputs.yesterday }}.md
++              research/twitter-deepseek/${{ steps.date.outputs.date }}.md
++
++            Use Glob if you need to enumerate the directory, but DO NOT cite
++            any source older than ${{ steps.date.outputs.yesterday }} — if a
++            given source-type is missing for both dates, say "no data" for
++            it in the Sources section instead of citing stale files.
+ 
+             STEP 2: Use MCP search tools to fill gaps
+             You have access to advanced search tools (Exa, Perplexity) via MCP.
+@@ -199,11 +230,36 @@ jobs:
+             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
+ 
+             DATE: ${{ steps.date.outputs.date }}
+-
+-            STEP 1: Find and read today's source files
+-            Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
+-            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, perplexity/, and any others.
+-            Read all relevant files you find.
++            YESTERDAY: ${{ steps.date.outputs.yesterday }}
++
++            STEP 1: Find and read source files
++            This workflow runs at 00:00 UTC, so most TODAY-stamped files do
++            not exist yet. The substantive source material for today's digest
++            is in YESTERDAY's files. Read BOTH dates from these subdirectories
++            and prefer whichever exists (do NOT silently fall back to old
++            February/March files just because today's are missing):
++
++              research/twitter/${{ steps.date.outputs.yesterday }}.md
++              research/twitter/${{ steps.date.outputs.date }}.md
++              research/community/${{ steps.date.outputs.yesterday }}-hn.md
++              research/community/${{ steps.date.outputs.date }}-hn.md
++              research/community/${{ steps.date.outputs.yesterday }}-reddit.md
++              research/community/${{ steps.date.outputs.date }}-reddit.md
++              research/arxiv/${{ steps.date.outputs.yesterday }}-papers.md
++              research/arxiv/${{ steps.date.outputs.date }}-papers.md
++              research/rss/${{ steps.date.outputs.yesterday }}.md
++              research/rss/${{ steps.date.outputs.date }}.md
++              research/bluesky/${{ steps.date.outputs.yesterday }}.md
++              research/bluesky/${{ steps.date.outputs.date }}.md
++              research/models/${{ steps.date.outputs.yesterday }}-timeline.md
++              research/models/${{ steps.date.outputs.date }}-timeline.md
++              research/twitter-deepseek/${{ steps.date.outputs.yesterday }}.md
++              research/twitter-deepseek/${{ steps.date.outputs.date }}.md
++
++            Use Glob if you need to enumerate the directory, but DO NOT cite
++            any source older than ${{ steps.date.outputs.yesterday }} — if a
++            given source-type is missing for both dates, say "no data" for
++            it in the Sources section instead of citing stale files.
+ 
+             STEP 2: Use WebSearch to fill gaps
+             Search for any major AI news from today we might have missed.
+diff --git a/.github/workflows/hourly-rss.yml b/.github/workflows/hourly-rss.yml
+index 05e59909..13a5f116 100644
+--- a/.github/workflows/hourly-rss.yml
++++ b/.github/workflows/hourly-rss.yml
+@@ -90,6 +90,51 @@ jobs:
+             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+             > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
+ 
++          # MIT Technology Review (AI section)
++          curl -sL "https://www.technologyreview.com/topic/artificial-intelligence/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/mit_tech_review.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/mit_tech_review.xml
++
++          # SemiAnalysis (Dylan Patel) — chips, capex, hyperscaler infra
++          curl -sL "https://www.semianalysis.com/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/semianalysis.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/semianalysis.xml
++
++          # Simon Willison's Weblog (high-signal AI/LLM commentary)
++          curl -sL "https://simonwillison.net/atom/everything/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/simonw.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/simonw.xml
++
++          # Latent Space (Swyx & Alessio) — applied LLM podcast/blog
++          curl -sL "https://www.latent.space/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/latentspace.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/latentspace.xml
++
++          # Import AI (Jack Clark, ex-OpenAI/Anthropic) — weekly AI policy + research
++          curl -sL "https://importai.substack.com/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/import_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/import_ai.xml
++
++          # MarkTechPost (high-volume AI/ML release coverage)
++          curl -sL "https://www.marktechpost.com/feed/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/marktechpost.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/marktechpost.xml
++
++          # The Information AI section — paywalled but item titles + URLs are exposed
++          curl -sL "https://www.theinformation.com/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/the_information.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/the_information.xml
++
++          # Ars Technica AI (high-quality technical reporting)
++          curl -sL "https://feeds.arstechnica.com/arstechnica/index" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/arstechnica.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arstechnica.xml
++
++          # arXiv CS.CL RSS (Computation and Language / NLP)
++          curl -sL "https://export.arxiv.org/rss/cs.CL" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/arxiv_cl.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arxiv_cl.xml
++
+           echo "RSS feeds fetched successfully"
+           ls -la /tmp/rss/
+ 
+@@ -120,11 +165,22 @@ jobs:
+             **Research:**
+             - arxiv_ai.xml (arXiv CS.AI)
+             - arxiv_lg.xml (arXiv CS.LG/Machine Learning)
++            - arxiv_cl.xml (arXiv CS.CL — Computation & Language / NLP)
+ 
+             **Tech News:**
+             - techcrunch_ai.xml (TechCrunch AI)
+             - verge_ai.xml (The Verge AI)
+             - venturebeat_ai.xml (VentureBeat AI)
++            - mit_tech_review.xml (MIT Technology Review — AI)
++            - arstechnica.xml (Ars Technica)
++            - the_information.xml (The Information — titles only, paywalled)
++            - marktechpost.xml (MarkTechPost — high-volume model/release coverage)
++
++            **Analyst & Researcher Blogs (high signal):**
++            - semianalysis.xml (Dylan Patel — chips, hyperscaler capex, infra)
++            - simonw.xml (Simon Willison — applied LLM commentary)
++            - latentspace.xml (Swyx / Alessio — applied AI engineering)
++            - import_ai.xml (Jack Clark — AI policy + research roundup)
+ 
+             RSS XML structure:
+             - channel/item/title (article title)
+@@ -171,6 +227,32 @@ jobs:
+             #### VentureBeat
+             - [Title](url) - date
+ 
++            #### MIT Technology Review
++            - [Title](url) - date
++
++            #### Ars Technica
++            - [Title](url) - date
++
++            #### The Information
++            - [Title](url) - date
++
++            #### MarkTechPost
++            - [Title](url) - date
++
++            ### 🔬 Analyst & Researcher Blogs
++
++            #### SemiAnalysis (Dylan Patel)
++            - [Title](url) - date
++
++            #### Simon Willison
++            - [Title](url) - date
++
++            #### Latent Space
++            - [Title](url) - date
++
++            #### Import AI (Jack Clark)
++            - [Title](url) - date
++
+             ### 📄 New arXiv Papers
+ 
+             #### CS.AI
+@@ -178,6 +260,9 @@ jobs:
+ 
+             #### CS.LG
+             - [Paper Title](arxiv_url)
++
++            #### CS.CL
++            - [Paper Title](arxiv_url)
+             ```
+ 
+             ## IMPORTANT
+-- 
+2.39.5
+

@@ -1,100 +1,158 @@
-# Methodology Improvements - 2026-02-01
+# Methodology Improvements — 2026-04-29
 
-## Analysis Date: 2026-01-31 Output Review
+Auto-generated review of 2026-04-28 research output, with concrete fixes
+proposed for the workflow files. Scope: data freshness, source coverage,
+output quality.
 
-### Issues Found
+> **Delivery note.** The bot's GitHub App does not have the `workflows`
+> permission, so it cannot push edits to files under `.github/workflows/`
+> directly (`refusing to allow a GitHub App to create or update workflow ...
+> without 'workflows' permission`). All five workflow edits are bundled
+> as a Git patch — `0001-Methodology-improvements-for-2026-04-29.patch`
+> in the repo root — that a maintainer can apply with:
+>
+> ```
+> git am 0001-Methodology-improvements-for-2026-04-29.patch
+> ```
+>
+> Same workaround used by the prior `improve/2026-04-28` branch.
 
-#### 1. Bluesky API Completely Broken (Critical)
-- **Problem**: The `public.api.bsky.app` search endpoint returned HTTP 403 Forbidden for 7 out of 12 cycles on 2026-01-31. The self-hosted runner's IP is blocked by Bluesky's CDN/firewall.
-- **Impact**: Zero data collected for the first 7 cycles (02:00-14:27 UTC). Later cycles only worked because Claude improvised a fallback to `getAuthorFeed` at runtime — this was not in the workflow itself.
-- **Evidence**: `research/bluesky/2026-01-31.md` shows 7 consecutive "No posts collected" entries.
+## Issues Found in 2026-04-28 Output
 
-#### 2. RSS Feeds Returning HTML Instead of RSS (High)
-- **Problem**: Anthropic (`openrss.org/www.anthropic.com/news`) and Meta AI (`ai.meta.com/blog/rss/`) consistently returned HTML instead of valid RSS/XML. Every hourly check showed "Feed unavailable (returned HTML instead of RSS)".
-- **Impact**: Complete loss of two major AI company blogs from RSS monitoring. These are key primary sources for announcements.
-- **Evidence**: `research/rss/2026-01-31.md` — every cycle shows "Anthropic: Feed unavailable" and "Meta AI: Feed unavailable".
+### 1. Bluesky workflow silently broken (`research/bluesky/2026-04-28.md`)
 
-#### 3. RSS Feed Sparse Output (Medium)
-- **Problem**: Out of ~24 hourly RSS runs, only 4 produced any content. Most hours showed "No new updates this hour" across all sources.
-- **Impact**: RSS channel underperforms relative to its potential. Feed list is too narrow to guarantee hourly updates.
+The 2026-04-28 Bluesky run produced an empty digest:
 
-#### 4. Missing Major RSS Sources (Medium)
-- **Problem**: No feeds from NVIDIA AI, AWS ML, Microsoft AI, Amazon Science, or any AI newsletters/bloggers. These are significant sources of AI announcements and analysis.
-- **Impact**: RSS relies on only 11 feeds, missing key announcements from cloud providers and popular AI commentators.
+> _No posts curated this run: all five pre-fetched source files in
+> `data/bluesky/` returned `403 Forbidden` HTML instead of JSON, so no
+> post data was available to filter._
 
-#### 5. Reddit Coverage Too Narrow (Low-Medium)
-- **Problem**: Only 3 subreddits monitored (r/MachineLearning, r/LocalLLaMA, r/artificial). Missing popular AI communities with significant discussion.
-- **Impact**: Missing community signals from r/singularity (248K members), r/OpenAI (1.3M), r/ClaudeAI (100K+), r/StableDiffusion (650K+).
+Root cause: Bluesky's `public.api.bsky.app` host now returns HTTP 403 for
+unauthenticated `searchPosts` queries (CDN/anti-bot block). Confirmed by
+direct curl (HTTP 403, ~2KB HTML error page) and by an upstream bsky-docs
+issue (`bluesky-social/bsky-docs#332`).
 
-#### 6. Bluesky Researcher List Too Short (Low)
-- **Problem**: Only searched for Karpathy by handle. Many AI researchers active on Bluesky are not being tracked.
-- **Impact**: Heavy reliance on generic keyword search rather than following known high-signal accounts.
+Bluesky has effectively been a no-op data source since this regression.
 
----
+### 2. Daily digest cited stale community sources
 
-### Improvements Made
+The 2026-04-28 daily digest (`research/digest/2026-04-28-digest.md`) listed:
 
-#### Fix 1: Bluesky API Failover (2h-bluesky.yml)
-- Added automatic API endpoint detection: tests `public.api.bsky.app` first, falls back to `api.bsky.app` if it returns 403.
-- Added `getAuthorFeed` calls for 11 notable AI researchers/outlets (Karpathy, Ethan Mollick, Nathan Lambert, Emily Bender, Karen Hao, Gary Marcus, Sung Kim, Alex Hanna, DAIR Institute, TechCrunch, The Verge).
-- Added new search query for AI safety/alignment content.
-- Updated Claude prompt to document both JSON structures (searchPosts vs getAuthorFeed).
-- Added proper error handling with `|| echo '{"posts":[]}'` fallbacks.
+> - Hacker News: latest available **2026-02-06**-hn.md (newer files not yet collected)
+> - Reddit: latest available **2026-02-06**-reddit.md (newer files not yet collected)
 
-#### Fix 2: Broken RSS Feeds Replaced (hourly-rss.yml)
-- **Anthropic**: Replaced broken `openrss.org` proxy with community-maintained GitHub feed (`conoro/anthropic-engineering-rss-feed`), which is updated hourly via GitHub Actions.
-- **Meta AI**: Replaced non-existent `ai.meta.com/blog/rss/` with `research.facebook.com/feed/` (Meta Research) and added `engineering.fb.com/feed/` (Meta Engineering) as additional source.
+But `research/community/2026-04-27-hn.md`, `2026-04-27-reddit.md`,
+`2026-04-28-hn.md`, and `2026-04-28-reddit.md` all exist. The model fell
+through to a 2-month-old file because it searched only for files matching
+the `today's date` string and the digest is generated at 00:00 UTC — before
+that day's community/twitter runs have produced output. The fallback should
+be **yesterday**, not the entire archive.
 
-#### Fix 3: New RSS Sources Added (hourly-rss.yml)
-Added 12 new RSS feeds across three categories:
+### 3. RSS workflow appears stalled
 
-**Company Blogs (4 new):**
-- NVIDIA Blog (`blogs.nvidia.com/feed/`)
-- AWS Machine Learning Blog (`aws.amazon.com/blogs/machine-learning/feed/`)
-- Microsoft AI Blog (`blogs.microsoft.com/ai/feed/`)
-- Amazon Science (`amazon.science/index.rss`)
+Most recent RSS commit: `2026-04-27 09:18 UTC`. No `research/rss/2026-04-28.md`
+file exists, even though the workflow runs hourly. The empty digest format
+("No new updates this hour" repeated for every section) also makes it hard
+to tell from the output whether the workflow ran or just found nothing.
 
-**AI Newsletters (4 new):**
-- Sebastian Raschka — Ahead of AI (Substack)
-- Latent Space — AI Engineer newsletter (Substack)
-- Elvis Saravia — Top AI Papers (Substack)
-- Simon Willison — LLM/AI blog (Atom feed)
+(This change set adds new sources rather than diagnosing the runner gap;
+the additional feeds give the workflow more material to write about and
+make it easier to spot empty runs vs. actual outages.)
 
-**News Sources (3 new):**
-- Ars Technica (`feeds.arstechnica.com`)
-- Wired AI (`wired.com/feed/tag/ai/latest/rss`)
-- MIT Technology Review (`technologyreview.com/feed/`)
+### 4. arXiv author placeholders
 
-Updated Claude prompt to enumerate all new sources and added output format sections for the new categories.
+Every paper in `research/arxiv/2026-04-28-papers.md` is attributed to
+"(arXiv group submission)" or "(arXiv)". This is a placeholder string the
+model emits when it doesn't pull real metadata from the arXiv MCP tool.
+Without real author surnames, paper provenance is opaque and the digest
+loses citation quality.
 
-#### Fix 4: Expanded Reddit Coverage (4h-community.yml)
-Added 5 new subreddits:
-- r/singularity — AI/AGI speculation and news
-- r/OpenAI — OpenAI product discussions
-- r/ClaudeAI — Anthropic/Claude discussions
-- r/StableDiffusion — Image generation community
-Updated Claude prompt and output format to include all new subreddits.
+### 5. Limited Reddit subreddit coverage
 
----
+The community workflow polls only `r/MachineLearning`, `r/LocalLLaMA`, and
+`r/artificial`. Major AI conversation centers — `r/singularity`,
+`r/OpenAI`, `r/ClaudeAI` — were not being captured.
 
-### Expected Impact
+## Changes Applied
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| RSS feed sources | 11 | 23 | +109% |
-| Reddit subreddits | 3 | 8 | +167% |
-| Bluesky uptime | ~42% (5/12 cycles) | ~95%+ (with failover) | +53pp |
-| Bluesky tracked researchers | 1 | 11 | +1000% |
-| Broken RSS feeds | 2 (Anthropic, Meta) | 0 | Fixed |
-| AI newsletter coverage | 0 | 4 newsletters | New capability |
-| Cloud provider blog coverage | 0 | 4 blogs | New capability |
+### `.github/workflows/2h-bluesky.yml`
 
-### Summary
+- **Fix:** Switch from `public.api.bsky.app` → `api.bsky.app` for the
+  XRPC `searchPosts` calls. Verified HTTP 200 + JSON payload from the
+  research runner.
+- **Hardening:** Added a defensive HTML-vs-JSON sniff (`head -c 1`) so if
+  the AppView ever returns an error page again, we normalize to
+  `{"posts":[]}` instead of failing the downstream parse silently.
+- **Coverage:** Added 3 new search queries — `AI safety alignment`,
+  `open weights model`, `arxiv.org abs` (catches paper-link drops).
+- **Cleanup:** Replaced the unreliable `from:karpathy.bsky.social` query
+  syntax with a plain handle keyword search.
 
-These changes address the most impactful issues identified in yesterday's output:
-1. **Bluesky data loss** is fixed with automatic API failover and direct researcher feed fetching.
-2. **Broken RSS feeds** are replaced with working alternatives.
-3. **Source diversity** is significantly expanded — from 11 to 23 RSS feeds, 3 to 8 Reddit communities, and 1 to 11 tracked Bluesky researchers.
-4. **Newsletter coverage** adds high-signal AI analysis from leading researchers and engineers.
+### `.github/workflows/daily-digest.yml`
 
-*Generated by Daily Self-Improvement Workflow on 2026-02-01*
+- Pass `yesterday` as a second template variable.
+- Rewrite the source-file step to enumerate **specific yesterday + today
+  paths** for twitter, community, arxiv, rss, bluesky, models, and
+  twitter-deepseek.
+- Add an explicit guard: "do NOT cite any source older than yesterday —
+  if a source-type is missing for both dates, say 'no data' instead of
+  citing stale files." Prevents the 2026-02-06 fallback we observed.
+- Same rewrite applied to both the MCP-enabled branch and the
+  WebSearch fallback branch.
+
+### `.github/workflows/hourly-rss.yml`
+
+Added 9 new high-signal feeds covering the gaps the 04-28 digest hit:
+
+- **Tech press:** MIT Technology Review (AI), Ars Technica, The Information
+  (titles only — paywalled), MarkTechPost (high-volume model coverage).
+- **Analyst & researcher blogs:** SemiAnalysis (Dylan Patel — chips/capex),
+  Simon Willison (applied LLM commentary), Latent Space (Swyx/Alessio),
+  Import AI (Jack Clark — policy + research roundup).
+- **Research:** arXiv `cs.CL` (Computation & Language / NLP) — was missing
+  alongside the existing `cs.AI` and `cs.LG`.
+
+Updated the prompt's source list and output format to include these.
+
+### `.github/workflows/daily-arxiv.yml`
+
+- New "AUTHOR ATTRIBUTION" instruction: extract real first-author surnames
+  from the MCP / `<dc:creator>` metadata, format as "Smith et al." for
+  papers with >3 authors, and **never** emit "(arXiv group submission)".
+- If author metadata is missing for a paper, drop it from the digest
+  rather than fake-attributing it.
+
+### `.github/workflows/4h-community.yml`
+
+- Add 3 new subreddits: `r/singularity`, `r/OpenAI`, `r/ClaudeAI`.
+- Update the RSS file list and output format to include them.
+- Add explicit guidance that Reddit RSS does not expose score/comment
+  counts and that "N/A" is the correct value (instead of the model
+  trying to invent or omit those columns).
+
+## Expected Impact
+
+- **Bluesky digest goes from 0 → tens of curated posts/day** once the
+  endpoint switch lands. Direct restoration of a dead source.
+- **Daily digest stops citing 2-month-old files.** Yesterday's twitter,
+  HN, reddit, and arXiv data should now consistently feed the 00:00 UTC
+  digest run.
+- **+9 RSS sources** broadens coverage into chip/infra analysis
+  (SemiAnalysis), policy commentary (Import AI), and applied LLM voices
+  (Simon Willison, Latent Space) that the 04-28 digest had to source via
+  WebSearch instead.
+- **arXiv author quality** improves from generic "(arXiv)" placeholders
+  to real first-author citations, restoring proper attribution.
+- **+3 subreddits** captures Claude/OpenAI/singularity discourse that
+  was previously invisible to the community digest.
+
+## What Was Not Changed
+
+- The `hourly-rss.yml` runner-side hang (no commits since 04-27 09:18 UTC)
+  was not investigated as part of this PR — needs a runner-log dive
+  rather than a workflow edit. If the new feeds also fail to write
+  tomorrow, that's the signal to look at the runner.
+- Reddit score/comment data: the `.rss` endpoint genuinely doesn't
+  expose those fields. A switch to authenticated Reddit OAuth would
+  restore them but would require new secrets — out of scope for an
+  unattended self-improvement PR.
