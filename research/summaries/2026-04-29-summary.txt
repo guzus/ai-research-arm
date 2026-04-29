@@ -1,16 +1,16 @@
 AI News - 2026-04-29
 
 TOP STORIES:
-• Mag-7 Earnings Superweek peak — MSFT/GOOGL/META/AMZN print Q1 2026 after-close tonight; AAPL Thurs
-• Musk v. Altman Day 3 — cross-exam of Musk; $130B damages sought; "AGI smarter than any human as soon as next year"
-• EU AI Omnibus trilogue (Apr 28) — Annex III deadline now set to slip from Aug 2, 2026 → Dec 2, 2027
-• Gen × xAI — Norton Neo Browser + Assistant powered by Grok announced Apr 28
-• Snabbit (India) — $56M Series D at ~$350M; vertical-AI services on both sides of Pacific
+• Mag-4 Q1 2026 prints — Meta RAISES capex to $125–145B; AWS AI run-rate $15B; Alphabet Cloud +63%; MSFT AI $37B run-rate +123%
+• Amazon discloses OpenAI 2 GW Trainium commit (2027) + Anthropic up to 5 GW Trainium + Meta tens of millions of Graviton cores
+• Musk v. Altman Day 3 — cross-exam exposes Musk's own for-profit cap-table plans; "$10B Microsoft was tipping point"
+• EU AI Omnibus trilogue — Annex III deadline slipping Aug 2, 2026 → Dec 2, 2027
+• Gen × xAI — Norton Neo Browser + Assistant powered by Grok (Apr 28)
 
 KEY NUMBERS:
-• Mag-4 hyperscaler 2026 AI capex: ~$650–700B
-• Meta capex $115–135B; Alphabet $175–185B; Amazon ~$200B
-• Musk damages: $130B
-• 2026 YTD VC into post-2025 AI labs: $18.8B (CNBC)
+• Meta capex raised $115–135B → $125–145B; FCF stress visible at AMZN ($1.2B TTM vs $25.9B)
+• AWS Q1 +28% (fastest in 15 quarters); Alphabet Cloud backlog ~$460B
+• MSFT EPS GAAP $3.72 (+13%) / non-GAAP $4.13 (+23%); Azure +40%
+• Musk damages sought: $130B
 
 Full report on GitHub.
