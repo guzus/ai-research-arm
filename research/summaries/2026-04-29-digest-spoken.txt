@@ -1,0 +1,11 @@
+Speaker 1: Tuesday, April twenty-ninth, twenty twenty-six.
+Speaker 2: [high_energy] It is earnings week for the hyperscalers — Microsoft, Google, and Meta all report after close today, and every number will be read as a referendum on AI spending.
+Speaker 1: The headline figure to watch: the industry is tracking somewhere between [emphasis]six hundred sixty and seven hundred billion dollars[/emphasis] in AI capital expenditure for twenty twenty-six across the big four cloud players.
+Speaker 2: Amazon alone accounts for around two hundred billion of that. Google is guiding one hundred seventy-five to one hundred eighty-five billion, and Meta one hundred fifteen to one hundred thirty-five billion.
+Speaker 1: Microsoft's last quarter came in at nearly thirty billion dollars in capex, up eighty-nine percent year over year, making today the first real quantitative test of the Microsoft-OpenAI restructuring.
+Speaker 2: Meanwhile, the Musk versus Altman trial in Oakland hits day three, with Musk under cross-examination and Satya Nadella, Sam Altman, and Greg Brockman all queued up in the witness pipeline. Phase one closes May twenty-first.
+Speaker 1: Musk is seeking [emphasis]one hundred thirty-four billion dollars[/emphasis] plus the removal of both Altman and Brockman.
+Speaker 2: [high_energy] And inside OpenAI, CFO Sarah Friar is reportedly at odds with Altman over missed revenue targets as data-center spending continues to balloon, so the pressure there is coming from multiple directions at once.
+Speaker 1: On the model front, Mistral Medium three point five, reportedly around one hundred twenty-eight billion parameters, has a "Vibe" release said to be imminent.
+Speaker 2: [dramatic_pause] And a thirteen-billion-parameter vintage language model called Talkie topped Hacker News today with six hundred fifteen points, proving compact models still command serious attention.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
