@@ -1,0 +1,12 @@
+arXiv Papers - 2026-04-29
+
+TOP 5 PAPERS:
+- TEMPO (2604.19295): Test-time training that actually scales — OLMO3-7B 33→51% on AIME 2024, Qwen3-14B 42→66%.
+- Hyperloop Transformers (2604.21254): Looped layer reuse beats depth-matched Transformers with ~50% fewer params.
+- Parcae (2604.12946): Scaling laws for stable looped LMs; -6.3% perplexity vs prior looped models.
+- Procedural Knowledge at Scale (2604.01348): 32M-entry RAG over reasoning trajectories — cross-problem transfer.
+- Reward Models Are Value Functions (2604.22981): Temporally Coherent Reward Modeling fixes inconsistent process rewards.
+
+CATEGORIES: LM/NLP 5, CV/Multimodal 2, Agents/Reasoning 9, Safety/Alignment 5, Other 3.
+
+Full report on GitHub.
