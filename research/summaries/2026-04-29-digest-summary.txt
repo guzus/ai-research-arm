@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-04-29
+
+TOP STORIES:
+• Mag-7 earnings superweek: MSFT/GOOGL/META print after-close — first quantitative test of Microsoft-OpenAI restructuring + AWS-Bedrock launch
+• Musk v. Altman Day 3: cross-examination of Musk in Oakland; Nadella, Altman, Brockman in witness pipeline; Phase 1 closes May 21
+• OpenAI CFO Sarah Friar reportedly at odds with Altman over missed revenue target as data-center spend balloons
+
+KEY NUMBERS:
+• 2026 hyperscaler AI capex: ~$660B-$700B (GOOGL $175-185B, META $115-135B, AMZN ~$200B)
+• MSFT last-Q capex: $29.88B (+89% YoY)
+• Musk seeking $134B + Altman/Brockman ouster
+
+TRENDING: Mistral Medium 3.5 (~128B) "Vibe" drop imminent; Talkie 13B vintage LM tops HN (615 points)
+
+Full digest on GitHub.
