@@ -1,0 +1,9 @@
+Speaker 1: Wednesday, April thirtieth, twenty twenty-six.
+Speaker 2: [high_energy] The Mag-4 earnings are in and capex is not cooling off — Meta raised its full-year forecast to [emphasis]one hundred twenty-five to one hundred forty-five billion dollars[/emphasis], AWS is running AI infrastructure at over fifteen billion dollars annualized, and Alphabet Cloud jumped sixty-three percent.
+Speaker 1: Put it all together and the Mag-4 capital spending envelope for twenty twenty-six is now somewhere between six hundred eighty and seven hundred ten billion dollars.
+Speaker 2: Amazon also disclosed some eye-opening compute commitments inside those results — OpenAI has signed on for two gigawatts of Trainium capacity, and Anthropic is committed to up to five gigawatts.
+Speaker 1: Tonight Apple closes out big tech earnings week, and it is Tim Cook's final earnings call as CEO.
+Speaker 2: On the model side, Mistral launched Medium three point five — one hundred twenty-eight billion parameters, open weights, with Vibe agents built in, scoring seventy-seven point six percent on SWE-Bench.
+Speaker 1: Some quick numbers — Microsoft's AI business is now running at thirty-seven billion dollars annualized, up one hundred twenty-three percent year over year, and AI startup venture inflows hit eighteen point eight billion dollars year-to-date in twenty twenty-six.
+Speaker 2: Worth flagging on the security front — indirect prompt injection is going mainstream. The Copy Fail CVE, the Ramp Sheets data exfiltration, and the HERMES.md billing incident are all circulating this week.
+Speaker 1: [dramatic_pause] That is your ARA broadcast — full digest on GitHub.
