@@ -1,0 +1,363 @@
+From db520e88f4fdee3ae6db5f57d978de8b30c0b0e8 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Thu, 30 Apr 2026 01:37:50 +0000
+Subject: [PATCH] Methodology improvements for 2026-04-30 (workflow patch)
+
+---
+ .github/workflows/daily-arxiv.yml  |  31 ++++++-
+ .github/workflows/daily-digest.yml | 132 +++++++++++++++++++++++++----
+ .github/workflows/hourly-rss.yml   |  62 ++++++++++++++
+ 3 files changed, 207 insertions(+), 18 deletions(-)
+
+diff --git a/.github/workflows/daily-arxiv.yml b/.github/workflows/daily-arxiv.yml
+index d209cfba..05faf263 100644
+--- a/.github/workflows/daily-arxiv.yml
++++ b/.github/workflows/daily-arxiv.yml
+@@ -85,6 +85,33 @@ jobs:
+             - Application papers with no novel methods
+             - Papers from unknown authors with few citations
+ 
++            ## CITATION INTEGRITY (HARD REQUIREMENTS)
++
++            The 2026-04-29 run shipped fabricated arXiv IDs (e.g.
++            `2604.21254`, `2604.22981`) and "(multi-author submission)" /
++            "(anonymous arXiv preprint)" attribution. That is unacceptable
++            and must not happen again.
++
++            FOR EVERY paper you cite, you MUST:
++
++            1. **Verify the arXiv ID resolves.** Use the arXiv MCP tool to
++               fetch the paper by ID, OR WebSearch for the exact arXiv URL
++               and confirm it returns the same title. If you cannot
++               verify, DROP THE PAPER from the digest. Never cite an
++               unverified ID.
++            2. **Use real first-author surnames.** Format: "Smith et al."
++               for >3 authors, "Smith, Jones, Lee" for ≤3. Pull from MCP
++               metadata or the paper's arXiv abs page. If you cannot find
++               author names, DROP THE PAPER. Never emit
++               "(multi-author submission)", "(anonymous)", "(arXiv group)",
++               or any placeholder string.
++            3. **arXiv ID format check.** A 2026-04 paper has ID
++               `2604.NNNNN` where NNNNN is 5 digits. IDs with month=00 or
++               month >12, or any 6-digit suffix, are invalid — drop them.
++            4. **Better fewer real papers than many fake ones.** If you
++               only verify 2 papers today, ship 2. The Top-5 slot count is
++               a target, not a quota.
++
+             FORMAT:
+ 
+             # arXiv AI Research - ${{ steps.date.outputs.date }}
+@@ -92,8 +119,8 @@ jobs:
+             ## Highlights (Top 5 Must-Read)
+ 
+             ### 1. [Paper Title]
+-            **Authors**: [names]
+-            **arXiv**: [link]
++            **Authors**: [Surname et al. — real names only]
++            **arXiv**: [link to https://arxiv.org/abs/YYMM.NNNNN]
+             **TL;DR**: [2-3 sentence summary of key contribution]
+             **Why it matters**: [1 sentence on significance]
+ 
+diff --git a/.github/workflows/daily-digest.yml b/.github/workflows/daily-digest.yml
+index 936df014..2e6186db 100644
+--- a/.github/workflows/daily-digest.yml
++++ b/.github/workflows/daily-digest.yml
+@@ -2,8 +2,11 @@ name: Daily AI Digest (All Sources)
+ 
+ on:
+   schedule:
+-    # Run daily at 00:00 UTC
+-    - cron: '0 0 * * *'
++    # Run daily at 23:30 UTC — late enough to capture the day's earnings
++    # calls, US business-day announcements, and after-close news. Previously
++    # ran at 00:00 UTC, which produced a "today" digest before any of today's
++    # data had landed (e.g. the 2026-04-29 digest documented 04-28 events).
++    - cron: '30 23 * * *'
+   workflow_dispatch:
+ 
+ concurrency:
+@@ -30,6 +33,51 @@ jobs:
+         id: date
+         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+ 
++      - name: Detect stale pipelines
++        id: stale
++        run: |
++          # Flag any per-source directory whose newest dated file is more
++          # than 36h old (relative to today). Catches silent outages like
++          # the hourly-twitter and hourly-rss runners that went dark for
++          # 2+ days through April 27-29 with no alert.
++          TODAY="${{ steps.date.outputs.date }}"
++          TODAY_EPOCH=$(date -d "$TODAY" +%s)
++          STALE_REPORT="/tmp/stale-pipelines.txt"
++          : > "$STALE_REPORT"
++
++          for dir in twitter rss bluesky community arxiv twitter-deepseek models; do
++            d="research/$dir"
++            [ -d "$d" ] || continue
++            # Newest YYYY-MM-DD-prefixed file in dir
++            NEWEST=$(ls "$d" 2>/dev/null \
++              | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}' \
++              | sort -r | head -n 1)
++            if [ -z "$NEWEST" ]; then
++              echo "STALE: research/$dir — no dated files at all" >> "$STALE_REPORT"
++              continue
++            fi
++            NEWEST_DATE=$(echo "$NEWEST" | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}')
++            NEWEST_EPOCH=$(date -d "$NEWEST_DATE" +%s)
++            AGE_HOURS=$(( (TODAY_EPOCH - NEWEST_EPOCH) / 3600 ))
++            if [ "$AGE_HOURS" -gt 36 ]; then
++              echo "STALE: research/$dir — newest=$NEWEST (~${AGE_HOURS}h old)" >> "$STALE_REPORT"
++            fi
++          done
++
++          if [ -s "$STALE_REPORT" ]; then
++            echo "=== Stale pipelines detected ==="
++            cat "$STALE_REPORT"
++            STALE_BODY=$(cat "$STALE_REPORT")
++            {
++              echo 'report<<EOF'
++              echo "$STALE_BODY"
++              echo 'EOF'
++            } >> $GITHUB_OUTPUT
++          else
++            echo "All pipelines fresh."
++            echo 'report=' >> $GITHUB_OUTPUT
++          fi
++
+       - name: Setup Node.js
+         uses: actions/setup-node@v4
+         with:
+@@ -107,10 +155,27 @@ jobs:
+ 
+             DATE: ${{ steps.date.outputs.date }}
+ 
+-            STEP 1: Find and read today's source files
+-            Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
+-            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, and any others.
+-            Read all relevant files you find.
++            STEP 1: Find and read source files for today AND yesterday
++            The digest now runs at 23:30 UTC, so today's files SHOULD exist.
++            But sources land asynchronously, so always read both today and
++            yesterday from these subdirectories:
++              - research/twitter/      (hourly-twitter)
++              - research/twitter-deepseek/ (deepseek twitter)
++              - research/community/    (HN + Reddit)
++              - research/arxiv/        (daily papers)
++              - research/rss/          (official blogs + tech press)
++              - research/bluesky/      (researcher feed)
++              - research/models/       (model timeline)
++
++            DO NOT cite sources older than yesterday. If a source-type has
++            nothing for today/yesterday, write "no fresh data" — never fall
++            through to a 2-month-old file.
++
++            STAGNANT-PIPELINE REPORT (auto-generated; pass through verbatim):
++            ${{ steps.stale.outputs.report }}
++
++            If the report is non-empty, add a "Pipeline Health" note in the
++            Sources section listing which sources are stale.
+ 
+             STEP 2: Use MCP search tools to fill gaps
+             You have access to advanced search tools (Exa, Perplexity) via MCP.
+@@ -131,14 +196,21 @@ jobs:
+             [Major announcements from companies]
+ 
+             ## Model Releases & Updates
+-            [New models, versions, capabilities]
++            [New models, versions, capabilities — prioritize HuggingFace/GitHub
++            drops landed today, not just "imminent" rumors]
+ 
+             ## Research Highlights
+-            [Top papers from arXiv with brief summaries]
++            [Top papers from arXiv with brief summaries — verify arXiv IDs
++            resolve before citing]
+ 
+             ## Community Buzz
+             [What HN and Reddit are discussing]
+ 
++            ## AI Security & Incidents
++            [CVEs, prompt-injection write-ups, billing/auth bugs, model
++            misuse incidents, jailbreaks. Include severity (CVE / write-up /
++            disclosure) and impact. Skip if nothing reportable today.]
++
+             ## Funding & Business
+             [Investment rounds, acquisitions, partnerships]
+ 
+@@ -160,8 +232,10 @@ jobs:
+             - arXiv: [count] papers
+             - RSS: [count] articles
+             - MCP Search: [results from Exa/Perplexity tools]
++            - Pipeline Health: [list any stale sources from STAGNANT-PIPELINE
++              REPORT above, or "all sources fresh"]
+ 
+-            *Generated at ${{ steps.date.outputs.date }} 00:00 UTC*
++            *Generated at ${{ steps.date.outputs.date }} 23:30 UTC*
+ 
+             STEP 4 - WRITE TELEGRAM SUMMARY:
+             After writing the full digest, also write a SHORT summary for Telegram notification.
+@@ -200,10 +274,27 @@ jobs:
+ 
+             DATE: ${{ steps.date.outputs.date }}
+ 
+-            STEP 1: Find and read today's source files
+-            Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
+-            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, perplexity/, and any others.
+-            Read all relevant files you find.
++            STEP 1: Find and read source files for today AND yesterday
++            The digest now runs at 23:30 UTC, so today's files SHOULD exist.
++            But sources land asynchronously, so always read both today and
++            yesterday from these subdirectories:
++              - research/twitter/      (hourly-twitter)
++              - research/twitter-deepseek/ (deepseek twitter)
++              - research/community/    (HN + Reddit)
++              - research/arxiv/        (daily papers)
++              - research/rss/          (official blogs + tech press)
++              - research/bluesky/      (researcher feed)
++              - research/models/       (model timeline)
++
++            DO NOT cite sources older than yesterday. If a source-type has
++            nothing for today/yesterday, write "no fresh data" — never fall
++            through to a 2-month-old file.
++
++            STAGNANT-PIPELINE REPORT (auto-generated; pass through verbatim):
++            ${{ steps.stale.outputs.report }}
++
++            If the report is non-empty, add a "Pipeline Health" note in the
++            Sources section listing which sources are stale.
+ 
+             STEP 2: Use WebSearch to fill gaps
+             Search for any major AI news from today we might have missed.
+@@ -222,14 +313,21 @@ jobs:
+             [Major announcements from companies]
+ 
+             ## Model Releases & Updates
+-            [New models, versions, capabilities]
++            [New models, versions, capabilities — prioritize HuggingFace/GitHub
++            drops landed today, not just "imminent" rumors]
+ 
+             ## Research Highlights
+-            [Top papers from arXiv with brief summaries]
++            [Top papers from arXiv with brief summaries — verify arXiv IDs
++            resolve before citing]
+ 
+             ## Community Buzz
+             [What HN and Reddit are discussing]
+ 
++            ## AI Security & Incidents
++            [CVEs, prompt-injection write-ups, billing/auth bugs, model
++            misuse incidents, jailbreaks. Include severity (CVE / write-up /
++            disclosure) and impact. Skip if nothing reportable today.]
++
+             ## Funding & Business
+             [Investment rounds, acquisitions, partnerships]
+ 
+@@ -251,8 +349,10 @@ jobs:
+             - arXiv: [count] papers
+             - RSS: [count] articles
+             - MCP Search: [results from Exa/Perplexity tools]
++            - Pipeline Health: [list any stale sources from STAGNANT-PIPELINE
++              REPORT above, or "all sources fresh"]
+ 
+-            *Generated at ${{ steps.date.outputs.date }} 00:00 UTC*
++            *Generated at ${{ steps.date.outputs.date }} 23:30 UTC*
+ 
+             STEP 4 - WRITE TELEGRAM SUMMARY:
+             After writing the full digest, also write a SHORT summary for Telegram notification.
+diff --git a/.github/workflows/hourly-rss.yml b/.github/workflows/hourly-rss.yml
+index 05e59909..41eefa55 100644
+--- a/.github/workflows/hourly-rss.yml
++++ b/.github/workflows/hourly-rss.yml
+@@ -90,6 +90,37 @@ jobs:
+             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+             > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
+ 
++          # HuggingFace daily-papers and trending models — JSON, not RSS.
++          # Stored as .json so the prompt can branch parsing logic.
++          # Why: 2026-04-29 missed Mistral Medium 3.5, IBM Granite 4.1, and
++          # Ling-2.6-1T as model releases — they only surfaced via Reddit
++          # chatter. Polling HF directly catches the drop the moment the
++          # weights/cards go public.
++          curl -sL "https://huggingface.co/api/daily_papers" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            -H "Accept: application/json" \
++            > /tmp/rss/hf_daily_papers.json 2>/dev/null || echo "[]" > /tmp/rss/hf_daily_papers.json
++
++          curl -sL "https://huggingface.co/api/models?sort=trendingScore&direction=-1&limit=30&full=false" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            -H "Accept: application/json" \
++            > /tmp/rss/hf_trending_models.json 2>/dev/null || echo "[]" > /tmp/rss/hf_trending_models.json
++
++          # GitHub trending Python/AI repos (no official API for trending; use
++          # github.com/trending HTML scrape proxy via "ossinsight" lite endpoint
++          # which exposes trending as JSON. Fallback: empty.)
++          # Why: Zed 1.0 was the #1 HN story on 2026-04-29 (1204 points) and
++          # we had no first-class source for major AI/dev OSS releases.
++          curl -sL "https://api.ossinsight.io/v1/trends/repos/?period=past_24_hours&language=Python" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            -H "Accept: application/json" \
++            > /tmp/rss/gh_trending_python.json 2>/dev/null || echo "{}" > /tmp/rss/gh_trending_python.json
++
++          curl -sL "https://api.ossinsight.io/v1/trends/repos/?period=past_24_hours&language=TypeScript" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            -H "Accept: application/json" \
++            > /tmp/rss/gh_trending_typescript.json 2>/dev/null || echo "{}" > /tmp/rss/gh_trending_typescript.json
++
+           echo "RSS feeds fetched successfully"
+           ls -la /tmp/rss/
+ 
+@@ -126,6 +157,15 @@ jobs:
+             - verge_ai.xml (The Verge AI)
+             - venturebeat_ai.xml (VentureBeat AI)
+ 
++            **Live model & repo drops (JSON, not RSS):**
++            - hf_daily_papers.json (HuggingFace Daily Papers — array of
++              {paper: {id, title, summary, authors[], publishedAt}, upvotes})
++            - hf_trending_models.json (HF trending models — array of
++              {id, downloads, likes, lastModified, pipeline_tag})
++            - gh_trending_python.json (GitHub trending Python repos via
++              ossinsight; structure: {data: {rows: [{repo_name, stars, ...}]}})
++            - gh_trending_typescript.json (same shape, TypeScript)
++
+             RSS XML structure:
+             - channel/item/title (article title)
+             - channel/item/link (article URL)
+@@ -178,6 +218,21 @@ jobs:
+ 
+             #### CS.LG
+             - [Paper Title](arxiv_url)
++
++            ### 🤗 HuggingFace Drops
++
++            #### Daily Papers (top 5 by upvotes)
++            - **[Paper Title](https://huggingface.co/papers/{id})** — upvotes
++              > 1-line TL;DR
++
++            #### Trending Models (new this run, sorted by recency)
++            - **[org/model](https://huggingface.co/{id})** — pipeline_tag,
++              {downloads} downloads, {likes} likes — added/updated {date}
++
++            ### 🐙 GitHub Trending (AI/dev tools)
++
++            - **[org/repo](https://github.com/{repo})** — {stars}⭐ this run
++              > 1-line description (skip non-AI/non-dev repos like wallpaper packs)
+             ```
+ 
+             ## IMPORTANT
+@@ -187,6 +242,13 @@ jobs:
+             3. If file already exists, READ IT FIRST and only add NEW entries
+             4. Don't duplicate existing entries
+             5. If no new content, write "No new updates this hour"
++            6. For HuggingFace: only surface a model the FIRST time it appears
++               in trending — track which HF model IDs are already in today's
++               file before appending. Use `lastModified` < 24h as the freshness
++               filter, not just trending position.
++            7. For GitHub trending: filter aggressively for AI/dev relevance
++               (LLMs, agents, ML frameworks, devtools). Skip generic Python
++               libraries, scrapers, dotfiles, awesome-lists, and meme repos.
+ 
+             ## COMMIT
+ 
+-- 
+2.39.5
+
