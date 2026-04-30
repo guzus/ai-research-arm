@@ -1,0 +1,12 @@
+arXiv Papers - 2026-04-30
+
+TOP 5 PAPERS:
+• Tuna-2: pixel-patch embeddings match/beat CLIP vision encoders in VLMs - two-tower design on borrowed time.
+• AgentV-RL: agentic verifier (tools + critique) scales reward modeling past where static PRMs saturate.
+• Reasoning Structure Matters: AltTrain (1K SFT) fixes safety in reasoning models by rewiring trace structure.
+• PASS@(k,T): new 2D metric shows agentic-RL gains are largely efficiency, not capability expansion.
+• BenchGuard: first automated auditor for agent benchmarks; finds silent failures inflating leaderboard scores.
+
+CATEGORIES: NLP 5 | Multimodal 5 | Agents/Reasoning 6 | Safety 6 | Benchmarks 6
+
+Full report on GitHub.
