@@ -1,14 +1,16 @@
 AI News - 2026-04-30
 
 TOP STORIES:
-• Anthropic in talks to raise ~$50B at $850-900B+ valuation, could top OpenAI as world's most valuable AI startup (Bloomberg)
-• Microsoft 2026 capex RAISED to $190B (+61% YoY), $25B from HBM inflation; Alphabet capex $180-190B; Pichai: "compute constrained"
+• Anthropic in talks to raise ~$50B at $850-900B+ valuation, topping OpenAI as world's most valuable AI startup (Bloomberg)
+• Microsoft 2026 capex RAISED to $190B (+61% YoY), $25B from HBM inflation; Pichai: Alphabet "compute constrained"
 • EU AI Act Omnibus trilogue COLLAPSED April 28; Aug 2 high-risk deadline back in force; next trilogue May 13
-• Apple Q2 FY26 earnings tonight (Cook's last full quarter); Musk v. Altman Day 4 — Brockman on 48-hr notice
+• Apple Q2 BEAT: Revenue $111.18B, EPS $2.01, Services $30.98B; iPhone misses for 2nd time in 3 quarters
+• Musk v. Altman Day 4: Birchall on stand; OpenAI probes Musk donor-advised-fund theory
 • Rogo $160M Series D (Kleiner) for IB agents; Okta for AI Agents GA today
 
 KEY NUMBERS:
 • Anthropic ARR $30B (vs $9B end-2025); Microsoft Copilot 20M+ paid seats
-• Mag-4 2026 capex envelope: ~$725B (up from $650-700B)
+• Mag-4 2026 capex envelope: ~$725B (up from $650-700B pre-print)
+• Apple-Google: ~$1B/yr for custom 1.2T-param Gemini variant powering Siri
 
 Full report on GitHub.
