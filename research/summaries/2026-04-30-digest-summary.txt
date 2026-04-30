@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-04-30
+
+TOP STORIES:
+• Mag-4 Q1 prints: capex ACCELERATING — Meta raised to $125-145B; AWS AI run-rate $15B+; Alphabet Cloud +63%
+• Amazon disclosed: OpenAI committed to 2 GW Trainium, Anthropic up to 5 GW
+• Apple closes Mag-7 Superweek tonight — Tim Cook's last call as CEO
+• Mistral Medium 3.5 (128B open) launches with Vibe agents — 77.6% SWE-Bench
+
+KEY NUMBERS:
+• Mag-4 2026 capex envelope: ~$680-710B
+• Microsoft AI run-rate: $37B (+123% YoY)
+• AI startup VC inflows: $18.8B YTD 2026
+
+TRENDING: Indirect prompt injection goes mainstream — Copy Fail CVE, Ramp Sheets exfiltration, HERMES.md billing incident
+
+Full digest on GitHub.
