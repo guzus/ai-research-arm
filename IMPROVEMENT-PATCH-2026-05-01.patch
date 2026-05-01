@@ -1,0 +1,183 @@
+diff --git a/.github/workflows/daily-improve.yml b/.github/workflows/daily-improve.yml
+index a7180ad1..3769d501 100644
+--- a/.github/workflows/daily-improve.yml
++++ b/.github/workflows/daily-improve.yml
+@@ -31,6 +31,74 @@ jobs:
+           echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -v-1d +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+           echo "branch=improve/$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
++      - name: Pipeline freshness audit
++        id: freshness
++        run: |
++          # Deterministic check of whether each upstream pipeline produced
++          # a file recently. The 2026-04-30 digest silently noted Twitter
++          # was 2 days stale and RSS 4 days stale; surfacing this here
++          # gives the next improve cycle a hard signal it can act on.
++          echo "## Pipeline Freshness Audit" | tee -a $GITHUB_STEP_SUMMARY
++          echo "" | tee -a $GITHUB_STEP_SUMMARY
++          echo "| Pipeline | Latest file | Age (h) | Status |" | tee -a $GITHUB_STEP_SUMMARY
++          echo "|----------|-------------|---------|--------|" | tee -a $GITHUB_STEP_SUMMARY
++
++          : > /tmp/pipeline-freshness.txt
++          NOW_TS=$(date +%s)
++          STALE_PIPES=""
++
++          # subdir : warn-after-hours threshold (cron cadence x 6 + slack)
++          while IFS=':' read -r dir threshold; do
++            [ -z "$dir" ] && continue
++            latest=""
++            mtime=0
++            if [ -d "research/$dir" ]; then
++              # newest regular file in the directory (any extension)
++              latest=$(find "research/$dir" -maxdepth 1 -type f -printf '%T@ %p\n' 2>/dev/null \
++                       | sort -nr | head -1 | awk '{print $2}')
++              if [ -n "$latest" ]; then
++                mtime=$(stat -c %Y "$latest" 2>/dev/null || stat -f %m "$latest" 2>/dev/null || echo 0)
++              fi
++            fi
++            if [ -z "$latest" ]; then
++              status="NO FILES"
++              age_h="-"
++              STALE_PIPES="$STALE_PIPES $dir"
++            else
++              age_s=$(( NOW_TS - mtime ))
++              age_h=$(( age_s / 3600 ))
++              if [ "$age_h" -gt "$threshold" ]; then
++                status="STALE (>${threshold}h)"
++                STALE_PIPES="$STALE_PIPES $dir"
++              else
++                status="OK"
++              fi
++            fi
++            echo "| $dir | ${latest##*/} | ${age_h} | ${status} |" | tee -a $GITHUB_STEP_SUMMARY
++            echo "$dir|$latest|$age_h|$status" >> /tmp/pipeline-freshness.txt
++          done <<EOF
++          twitter:6
++          twitter-deepseek:9
++          rss:3
++          community:6
++          arxiv:30
++          bluesky:30
++          digest:30
++          models:30
++          front-page:30
++          summaries:6
++          audio:30
++          EOF
++
++          STALE_PIPES=$(echo "$STALE_PIPES" | xargs)
++          echo "" | tee -a $GITHUB_STEP_SUMMARY
++          if [ -n "$STALE_PIPES" ]; then
++            echo "Stale pipelines detected: \`$STALE_PIPES\`" | tee -a $GITHUB_STEP_SUMMARY
++          else
++            echo "All pipelines fresh." | tee -a $GITHUB_STEP_SUMMARY
++          fi
++          echo "stale_pipelines=$STALE_PIPES" >> $GITHUB_OUTPUT
++
+       - name: Analyze and Improve Methodology
+         uses: anthropics/claude-code-action@v1
+         with:
+@@ -43,6 +111,18 @@ jobs:
+             TODAY: ${{ steps.dates.outputs.today }}
+             YESTERDAY: ${{ steps.dates.outputs.yesterday }}
+             BRANCH: ${{ steps.dates.outputs.branch }}
++            STALE_PIPELINES: "${{ steps.freshness.outputs.stale_pipelines }}"
++
++            ## STEP 0: Read pipeline freshness audit
++
++            Read `/tmp/pipeline-freshness.txt` (one line per pipeline:
++            `name|latest_path|age_hours|status`). Any pipeline listed in
++            STALE_PIPELINES above has not produced a file within its
++            expected cadence — investigate the workflow file for that
++            pipeline, look for silent-failure modes (commit step skipped,
++            "No changes" branch, failing API call), and if you find a
++            concrete fix, include it in the PR. Treat stale pipelines as
++            HIGHER PRIORITY than coverage additions.
+
+             ## STEP 1: Analyze Yesterday's Output
+
+diff --git a/.github/workflows/hourly-rss.yml b/.github/workflows/hourly-rss.yml
+index 05e59909..01f26560 100644
+--- a/.github/workflows/hourly-rss.yml
++++ b/.github/workflows/hourly-rss.yml
+@@ -90,6 +90,38 @@ jobs:
+             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+             > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
+
++          # --- High-signal AI commentary / newsletters (added 2026-05-01) ---
++
++          # Simon Willison's blog -- daily LLM/AI/web-engineering commentary
++          curl -sL "https://simonwillison.net/atom.xml" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/simonwillison.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/simonwillison.xml
++
++          # Latent Space (Swyx/Alessio) -- AI Engineer newsletter + podcast notes
++          curl -sL "https://www.latent.space/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/latent_space.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/latent_space.xml
++
++          # Import AI by Jack Clark (Anthropic) -- weekly AI policy + research roundup
++          curl -sL "https://jack-clark.net/feed/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/import_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/import_ai.xml
++
++          # The Batch (DeepLearning.AI / Andrew Ng) -- weekly ML newsletter
++          curl -sL "https://www.deeplearning.ai/the-batch/feed/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/the_batch.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/the_batch.xml
++
++          # SemiAnalysis substack -- AI/HBM/datacenter capex deep dives
++          curl -sL "https://semianalysis.com/feed/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/semianalysis.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/semianalysis.xml
++
++          # HuggingFace Daily Papers (community-curated trending papers, complements arXiv firehose)
++          curl -sL "https://papers.takara.ai/api/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/hf_daily_papers.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/hf_daily_papers.xml
++
+           echo "RSS feeds fetched successfully"
+           ls -la /tmp/rss/
+
+@@ -126,6 +158,14 @@ jobs:
+             - verge_ai.xml (The Verge AI)
+             - venturebeat_ai.xml (VentureBeat AI)
+
++            **Independent AI Commentary & Newsletters:**
++            - simonwillison.xml (Simon Willison's blog -- LLM/AI/web-eng commentary)
++            - latent_space.xml (Latent Space -- AI Engineer newsletter)
++            - import_ai.xml (Import AI by Jack Clark -- policy + research roundup)
++            - the_batch.xml (The Batch -- DeepLearning.AI weekly)
++            - semianalysis.xml (SemiAnalysis -- AI infra/HBM/datacenter analysis)
++            - hf_daily_papers.xml (HuggingFace Daily Papers -- community-curated trending)
++
+             RSS XML structure:
+             - channel/item/title (article title)
+             - channel/item/link (article URL)
+@@ -178,6 +218,26 @@ jobs:
+
+             #### CS.LG
+             - [Paper Title](arxiv_url)
++
++            #### HuggingFace Daily Papers (community trending)
++            - [Paper Title](url)
++
++            ### Independent Commentary & Newsletters
++
++            #### Simon Willison
++            - [Title](url) - date
++
++            #### Latent Space
++            - [Title](url) - date
++
++            #### Import AI (Jack Clark)
++            - [Title](url) - date
++
++            #### The Batch (DeepLearning.AI)
++            - [Title](url) - date
++
++            #### SemiAnalysis
++            - [Title](url) - date
+             ```
+
+             ## IMPORTANT
