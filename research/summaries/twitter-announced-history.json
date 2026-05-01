@@ -771,5 +771,54 @@
     "headline": "MANUS ACQUISITION FALLOUT FORCING CHINESE AI STARTUPS TO RETHINK CAPITAL-RAISE PLAYBOOK",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2050266539018825783"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 21:26 UTC",
+    "headline": "OPENAI SHIPS CLAUDE CODE \u2192 CODEX AUTO-MIGRATION 64 MIN AFTER ALTMAN'S 'USE CODEX OR CLAUDE CODE' CLIMBDOWN \u2014 'YOUR MOVE'",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2050290618187055175"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-01 21:26 UTC",
+    "headline": "PENTAGON CTO CONFIRMS DOW DEAL IS 8 LABS, NOT 7 \u2014 ORACLE ADDED, ANTHROPIC STILL EXCLUDED FROM CLASSIFIED-NETWORK ROLLOUT",
+    "source": "@USWREMichael",
+    "url": "https://x.com/USWREMichael/status/2050325961212649627"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 21:26 UTC",
+    "headline": "META ACQUIRES ASSURED ROBOT INTELLIGENCE FOR 'METABOT' HUMANOID PUSH \u2014 REALITY LABS BETS ANDROID-STYLE LICENSING",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2050305805455700378"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-01 21:26 UTC",
+    "headline": "OPENAI CLAIMS GPT-5.5 API REVENUE GROWING 2X FASTER THAN ANY PRIOR LAUNCH; CODEX REVENUE DOUBLED IN UNDER 7 DAYS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2050250926888468929"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 21:26 UTC",
+    "headline": "LEGORA HITS $5.6B VALUATION ON $50M EXTENSION LED BY NVIDIA NVENTURES \u2014 FIRST LEGAL-TECH BET; HARVEY AT $11B",
+    "source": "@credx_club",
+    "url": "https://x.com/credx_club/status/2050182697159622980"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-01 21:26 UTC",
+    "headline": "MICROSOFT Q1: AI USAGE DRAGGING DOWN AZURE CLOUD MARGINS \u2014 COMPANY EFFECTIVELY BOOSTING PRICES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2050304304599191601"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-01 21:26 UTC",
+    "headline": "HANGZHOU COURT RULES AI-ONLY FIRINGS ILLEGAL \u2014 SET AS GUIDING PRECEDENT; FIRMS MUST REASSIGN, RETRAIN, OR FOLLOW FORMAL REDUNDANCY",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2050250164645007770"
   }
 ]
