@@ -582,5 +582,54 @@
     "headline": "STRIPE LINK WALLET NOW LETS USERS AUTHORIZE AUTONOMOUS AI AGENTS TO SPEND VIA APPROVAL FLOWS",
     "source": "@DeepThoughtAR",
     "url": "https://x.com/DeepThoughtAR/status/2050108081451979023"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-01 09:43 UTC",
+    "headline": "APPLE SHIPS INTERNAL CLAUDE.MD FILES TO PRODUCTION IN APPLE SUPPORT APP V5.13 \u2014 CONFIRMS CLAUDE CODE USE FOR IOS APP DEV",
+    "source": "@aaronp613",
+    "url": "https://x.com/aaronp613/status/2049986504617820551"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-01 09:43 UTC",
+    "headline": "CLAUDE SECURITY ENTERS PUBLIC BETA \u2014 AUTONOMOUS CODEBASE VULN SCANNER FOR EVERY CLAUDE ENTERPRISE CUSTOMER",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2049898739783897537"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-01 09:43 UTC",
+    "headline": "CURSOR LAUNCHES SECURITY REVIEW FOR TEAMS/ENTERPRISE \u2014 TWO ALWAYS-ON AGENTS BLOCK PRS AND POST FINDINGS TO SLACK",
+    "source": "@cursor_ai",
+    "url": "https://x.com/cursor_ai/status/2049926283061035254"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 09:43 UTC",
+    "headline": "MICROSOFT LAUNCHES WORD LEGAL AGENT INSIDE $30 COPILOT BUNDLE \u2014 UNDERCUTS HARVEY'S $11B LEGAL-AI MOAT BY ~40X",
+    "source": "@BradSmi",
+    "url": "https://x.com/BradSmi/status/2049993319800066119"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-01 09:43 UTC",
+    "headline": "FORMER TSMC PACKAGING VP DOUGLAS YU JOINS MEDIATEK \u2014 INDUSTRY SOURCE: 'TSMC ASSUMED CUSTOMERS WOULD NOT LEAVE BUT THEY DID'",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2050136199621456079"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 09:43 UTC",
+    "headline": "GOOGLE CLOUD GROWS 70% IN Q1 VS AZURE 40% / AWS 28% \u2014 Q1 CLOUD BACKLOG +400% YOY, ADDED $219B SEQUENTIALLY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2049938192455889380"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-01 09:43 UTC",
+    "headline": "ANTHROPIC USED 1M-CONVERSATION SYCOPHANCY STUDY TO RETRAIN OPUS 4.7 AND MYTHOS PREVIEW",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2049927618397614466"
   }
 ]
