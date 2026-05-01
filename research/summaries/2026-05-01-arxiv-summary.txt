@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-01
+
+TOP 5 PAPERS:
+• Agentic World Modeling (2604.22748) - 42-author taxonomy + scaling laws for world-model agents
+• LLaDA2.0-Uni (2604.20796) - Diffusion LLM unifying multimodal understanding + generation
+• GLM-5V-Turbo (2604.26752) - Z.ai's native multimodal foundation model for agents
+• Tuna-2 (2604.24763) - Pixel embeddings beat CLIP-style vision encoders in unified models
+• World-R1 (2604.24764) - Microsoft RL recipe enforcing 3D consistency in text-to-video
+
+CATEGORIES: NLP/LLMs (4), Vision/Multimodal (5), Agents/Reasoning (6), Safety (5), Other (4)
+
+Full report on GitHub.
