@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-05-01 07:08 UTC
+
+WHAT'S BUZZING:
+• Grok 4.3 hits the xAI API — ~500M params, 53 on Intelligence Index, +321 Elo on agentic tasks at 40-60% lower pricing than 4.20
+• Google Cloud launches the Gemini Enterprise Agent Platform — Cryptographic Agent IDs, Agent Registry, zero-trust verification: pivot from selling models to selling agent infra
+• Anthropic publishes "Labor Market Impacts of AI" — programmers #1 at 74.5% of work touching Claude; CS reps ~70%; theoretical-vs-practical exposure gap is the real story
+
+NOTABLE:
+• White House blocks Anthropic's Mythos expansion as Anthropic talks $900B+ round; Reliance×Meta India JV names CEO; Legora legal-AI hits $5.6B; first randomized Google AI Overviews trial: 38% fewer organic clicks
+
+Full update on GitHub.
