@@ -533,5 +533,54 @@
     "headline": "MISTRAL AI NAMED TO TIME100 MOST INFLUENTIAL COMPANIES 2026 AND TOP 10 FOR AI",
     "source": "@MistralAI",
     "url": "https://x.com/MistralAI/status/2049988769928056852"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-01 07:08 UTC",
+    "headline": "GROK 4.3 GOES LIVE ON XAI API \u2014 ~500M PARAMS, 40-60% CHEAPER THAN 4.20, +321 ELO ON AGENTIC TASKS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2050107378863886441"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-01 07:08 UTC",
+    "headline": "GOOGLE CLOUD LAUNCHES GEMINI ENTERPRISE AGENT PLATFORM \u2014 CRYPTOGRAPHIC AGENT IDS, REGISTRY, ZERO-TRUST",
+    "source": "@Geekissimo",
+    "url": "https://x.com/Geekissimo/status/2050107956927078900"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-01 07:08 UTC",
+    "headline": "ANTHROPIC PUBLISHES LABOR-IMPACT DATA \u2014 PROGRAMMERS #1 AT 74.5% OF WORK NOW TOUCHING CLAUDE",
+    "source": "@launchreadiness",
+    "url": "https://x.com/launchreadiness/status/2050103924414206431"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 07:08 UTC",
+    "headline": "ANTHROPIC EYEING $900B+ FUNDING ROUND AS WHITE HOUSE BLOCKS MYTHOS PROGRAM EXPANSION",
+    "source": "@revolterab",
+    "url": "https://x.com/revolterab/status/2050103638488469618"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 07:08 UTC",
+    "headline": "RELIANCE \u00d7 META APPOINT FOUNDING CEO FOR INDIA AI JOINT VENTURE",
+    "source": "@arora_deva5228",
+    "url": "https://x.com/arora_deva5228/status/2050103206907379764"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-01 07:08 UTC",
+    "headline": "FIRST RANDOMIZED TRIAL ON GOOGLE AI OVERVIEWS \u2014 38% FEWER ORGANIC CLICKS, ZERO-CLICK RATE 54% \u2192 72%",
+    "source": "@searchless_ai",
+    "url": "https://x.com/searchless_ai/status/2050108465977114894"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-01 07:08 UTC",
+    "headline": "STRIPE LINK WALLET NOW LETS USERS AUTHORIZE AUTONOMOUS AI AGENTS TO SPEND VIA APPROVAL FLOWS",
+    "source": "@DeepThoughtAR",
+    "url": "https://x.com/DeepThoughtAR/status/2050108081451979023"
   }
 ]
