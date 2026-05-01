@@ -105,13 +105,21 @@ jobs:
           mkdir -p /tmp/bird
 
           # AI Labs & Company accounts
-          labs="OpenAI AnthropicAI GoogleAI GoogleDeepMind MistralAI MetaAI CohereAI AI21Labs StabilityAI HuggingFace NVIDIAAIDev"
+          # Added 2026-05-01: AIatMeta (real Meta AI account; @MetaAI is largely
+          # inactive), ClaudeDevs (official Anthropic developer announcements).
+          labs="OpenAI AnthropicAI GoogleAI GoogleDeepMind MistralAI MetaAI AIatMeta CohereAI AI21Labs StabilityAI HuggingFace NVIDIAAIDev ClaudeDevs"
 
           # Hyperscalers — top execs and key insiders
-          hyperscalers="elonmusk sama demishassabis OfficialLoganK alexalbert__ DrJimFan tszzl"
+          # Added 2026-05-01: ilyasut (SSI/OpenAI cofounder), alexandr_wang
+          # (Meta CAIO ex-Scale), OriolVinyalsML (Gemini co-lead),
+          # woj_zaremba (OpenAI cofounder, AI resilience).
+          hyperscalers="elonmusk sama demishassabis OfficialLoganK alexalbert__ DrJimFan tszzl ilyasut alexandr_wang OriolVinyalsML woj_zaremba"
 
           # Others — researchers, analysts, specialists, media
-          others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh"
+          # Added 2026-05-01 from anchor-following discovery (≥3 anchors):
+          # jeremyphoward, soumithchintala, giffmana, arankomatsuzaki,
+          # percyliang, JonathanRoss321, hendrycks.
+          others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh jeremyphoward soumithchintala giffmana arankomatsuzaki percyliang JonathanRoss321 hendrycks"
 
           # Build the manifest via Python (avoids jq's multi-line quoting
           # issues inside YAML literal blocks): 50+ user-tweets ops + 7
