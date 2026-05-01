@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-05-01 04:31 UTC
+
+WHAT'S BUZZING:
+• OpenAI Codex update adds "/side" side-chat command; GPT-5.5 reportedly keeps Codex running for days to build OS kernels
+• SemiAnalysis: wafer-maker ASPs turning — leading-edge logic (7nm-) demand inflects 2027; 2028+ Epi deals locking ~20% higher
+• Apple earnings (jukan05): TSMC SoC capacity, not memory, is the binding constraint; "significantly higher" memory costs guided into June Q
+
+NOTABLE:
+• Vals AI CorpFin v2 ranks Grok 4.3 #1 on Wall Street financial reasoning, ahead of GPT-5.5 and Claude
+• Korea April: DRAM +83% QoQ, SSD +181% QoQ; Huawei AI-chip revenue +60% to ~$12B on Ascend 950PR
+• swyx: "coding agents breaking containment" is the year's breakout theme
+
+Full update on GitHub.
