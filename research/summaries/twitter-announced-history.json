@@ -680,5 +680,54 @@
     "headline": "GROK 4.3 LIVE ON XAI API WITH 1M-TOKEN CONTEXT; HITS #7 ON ARTIFICIAL ANALYSIS INDEX, EDGES META MUSE SPARK",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2050119051892986164"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-01 15:30 UTC",
+    "headline": "PENTAGON SIGNS CLASSIFIED-NETWORK AI DEALS WITH 7 LABS \u2014 SPACEX, OPENAI, GOOGLE, NVIDIA, REFLECTION, MICROSOFT, AWS \u2014 ANTHROPIC EXCLUDED",
+    "source": "@JerryDunleavy",
+    "url": "https://x.com/JerryDunleavy/status/2050204126437404896"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 15:30 UTC",
+    "headline": "ALTMAN: 'WE WANT TO BUILD TOOLS TO AUGMENT AND ELEVATE PEOPLE, NOT ENTITIES TO REPLACE THEM' \u2014 READ AS DIRECT SHOT AT DARIO/MYTHOS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2050229058425045178"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 15:30 UTC",
+    "headline": "MICROSOFT\u2013OPENAI PARTNERSHIP REWRITE \u2014 NADELLA AND ALTMAN TRADE EXCLUSIVITY FOR LOCKED-IN REVENUE SHARE; OPENAI CAN NOW SHIP ON AWS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2050221224156901847"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-01 15:30 UTC",
+    "headline": "NEBIUS CRO: 'DEMAND FAR EXCEEDS OUR SUPPLY' \u2014 CAPITAL, NOT CHIP SUPPLY, IS NOW THE BIGGEST AI INFRASTRUCTURE BOTTLENECK",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2050228889817911595"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-01 15:30 UTC",
+    "headline": "ALIBABA QWEN INKS STRATEGIC PARTNERSHIP WITH FIREWORKS AI FOR PRODUCTION DEPLOYMENT OF CLOSED-WEIGHTS QWEN MODELS",
+    "source": "@Alibaba_Qwen",
+    "url": "https://x.com/Alibaba_Qwen/status/2050232280082522505"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 15:30 UTC",
+    "headline": "OPENAI MISSED INTERNAL Q1 REVENUE TARGET; ADVERTISING GROWTH NOW PARAMOUNT AS CONSUMER DEPENDENCE DEEPENS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2050206131570491875"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-01 15:30 UTC",
+    "headline": "EX-WAYMO LEAD SHIMON WHITESON LEAVES AFTER 6 YEARS TO RUN NEW MULTI-AGENT LEARNING TEAM AT GOOGLE DEEPMIND",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2050226734109471047"
   }
 ]
