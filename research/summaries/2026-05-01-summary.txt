@@ -1,16 +1,17 @@
 AI News - 2026-05-01
 
 TOP STORIES:
-• White House publicly OPPOSES Anthropic's plan to widen Mythos AI access to ~70 orgs — first Trump admin intervention in a frontier lab
-• Apple ends net-cash-neutral capital policy; record $11.4B R&D (+33% YoY) tied to AI; iPhone misses 2nd time in 3 quarters
-• SoftBank plans $100B U.S. IPO for "Roze" — robots-build-data-centers spinout (FT)
-• Mistral Medium 3.5: 128B dense, 256k ctx, open-weights, 4-GPU self-hostable
-• Musk v. Altman Day 4: Musk done; Birchall on stand; trial recess until Mon May 5
+• Pentagon inks classified-AI deals with 8 firms (AWS, Google, MSFT, Nvidia, OpenAI, Oracle, Reflection, SpaceX) — Anthropic EXCLUDED as supply-chain risk
+• White House OPPOSES Anthropic Mythos expansion — 1st Trump frontier-lab intervention
+• Anthropic $900B round: 48-hr allocation window; closes ~May 14
+• Apple ends net-cash-neutral policy; $11.4B R&D (+33%) tied to AI
+• SoftBank plans $100B IPO for "Roze" — robots-build-datacenters
+• Mistral Medium 3.5: 128B dense, open-weights, 4-GPU self-hostable
 
 KEY NUMBERS:
-• Apple Q2 R&D: $11.42B (+33% YoY)
-• Roze IPO target: $100B
-• Netomi $110M Series C; Legora $50M ext at $5.5B+ val
-• Anthropic Mythos: ~70 orgs blocked
+• Alphabet Q1: $28.7B of $62.6B profit from Anthropic mark-to-market
+• Amazon Q1: $16.8B pre-tax gain from Anthropic
+• Mag-4 2026 capex: $725B
+• Meta: ~8K layoffs effective May 20
 
 Full report on GitHub.
