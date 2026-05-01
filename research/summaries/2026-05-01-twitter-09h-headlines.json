@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "APPLE SHIPS INTERNAL CLAUDE.MD FILES TO PRODUCTION IN APPLE SUPPORT APP V5.13 — CONFIRMS CLAUDE CODE USE FOR IOS APP DEV",
+    "source": "@aaronp613",
+    "url": "https://x.com/aaronp613/status/2049986504617820551",
+    "category": "breaking"
+  },
+  {
+    "headline": "CLAUDE SECURITY ENTERS PUBLIC BETA — AUTONOMOUS CODEBASE VULN SCANNER FOR EVERY CLAUDE ENTERPRISE CUSTOMER",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2049898739783897537",
+    "category": "model"
+  },
+  {
+    "headline": "CURSOR LAUNCHES SECURITY REVIEW FOR TEAMS/ENTERPRISE — TWO ALWAYS-ON AGENTS BLOCK PRS AND POST FINDINGS TO SLACK",
+    "source": "@cursor_ai",
+    "url": "https://x.com/cursor_ai/status/2049926283061035254",
+    "category": "infra"
+  },
+  {
+    "headline": "MICROSOFT LAUNCHES WORD LEGAL AGENT INSIDE $30 COPILOT BUNDLE — UNDERCUTS HARVEY'S $11B LEGAL-AI MOAT BY ~40X",
+    "source": "@BradSmi",
+    "url": "https://x.com/BradSmi/status/2049993319800066119",
+    "category": "business"
+  },
+  {
+    "headline": "FORMER TSMC PACKAGING VP DOUGLAS YU JOINS MEDIATEK — INDUSTRY SOURCE: 'TSMC ASSUMED CUSTOMERS WOULD NOT LEAVE BUT THEY DID'",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2050136199621456079",
+    "category": "infra"
+  },
+  {
+    "headline": "GOOGLE CLOUD GROWS 70% IN Q1 VS AZURE 40% / AWS 28% — Q1 CLOUD BACKLOG +400% YOY, ADDED $219B SEQUENTIALLY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2049938192455889380",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC USED 1M-CONVERSATION SYCOPHANCY STUDY TO RETRAIN OPUS 4.7 AND MYTHOS PREVIEW",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2049927618397614466",
+    "category": "research"
+  }
+]

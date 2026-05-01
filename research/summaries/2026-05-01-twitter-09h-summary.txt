@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-05-01 09:43 UTC
+
+CYCLE: AI cybersecurity becomes a product category overnight; Apple accidentally confirms it builds iOS apps with Claude Code.
+
+TOP STORIES:
+• Apple Support app v5.13 ships internal CLAUDE.md files to ~100K iOS users — confirms Apple uses Anthropic's Claude Code internally; exposes "Juno AI" chat backend [✓]
+• Claude Security goes public beta (17.3K likes, 1.5K RT) + Cursor Security Review GA — autonomous PR-blocking security agents land across the coding stack same day [✓]
+• Microsoft launches Word Legal Agent inside $30 Copilot bundle; previously announced Harvey-Word integration is conspicuously absent — implicit shot at Harvey's $11B valuation [✓]
+• TSMC ex-packaging-VP Douglas Yu joins MediaTek; Jukan reports "TSMC unlikely to reclaim TPU v9 packaging order" — Intel EMIB-T thread looks structural [⚠]
+
+WATCH: Apple PR response and any silent hot-fix to Apple Support app within 24h.
+
+Full update on GitHub.
