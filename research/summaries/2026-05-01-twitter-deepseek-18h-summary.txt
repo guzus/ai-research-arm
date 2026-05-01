@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-05-01 18:56 UTC
+
+CYCLE: Three-front CEO assault on Anthropic intensifies; GPT-5.5 breaks first revenue data.
+
+TOP STORIES:
+• Jensen Huang joins Altman's campaign against Anthropic — calls Amodei's AI jobs warnings a "god complex" in Dwarkesh Patel interview, making it a three-front assault (alignment, benchmarks, messaging) with zero Anthropic response in 48h+ [✓]
+• OpenAI reveals GPT-5.5 commercial metrics: API revenue 2x faster growth than any prior launch, Codex doubled revenue in 7 days — first concrete data after a week of narrative-only coverage [⚠ selective metrics, no absolute numbers]
+• Meta acquires Assured Robot Intelligence — first dedicated robotics AI acquisition, founders joining Meta Superintelligence Labs, signals "VR-first" era over [✓ multi-source, no deal terms disclosed]
+
+WATCH: Anthropic response to cumulative CEO assault (48h+ silence); GPT-5.5 party May 5 at 5:55pm may be product launch vehicle; Cerebras IPO mid-May.
+
+Full brief on GitHub.
