@@ -631,5 +631,54 @@
     "headline": "ANTHROPIC USED 1M-CONVERSATION SYCOPHANCY STUDY TO RETRAIN OPUS 4.7 AND MYTHOS PREVIEW",
     "source": "@AnthropicAI",
     "url": "https://x.com/AnthropicAI/status/2049927618397614466"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 12:34 UTC",
+    "headline": "NEBIUS TO ACQUIRE EIGEN AI FOR ~$643M IN CASH + CLASS A SHARES, FOLDING INFERENCE OPTIMIZATION INTO TOKEN FACTORY",
+    "source": "@mvcinvesting",
+    "url": "https://x.com/mvcinvesting/status/2050179412482568535"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 12:34 UTC",
+    "headline": "ANTHROPIC LINES UP $50B ROUND AT $900B+ VALUATION \u2014 INVESTORS GIVEN 48 HOURS TO ALLOCATE, BOARD DECISION IN MAY",
+    "source": "@QuikInsightz",
+    "url": "https://x.com/QuikInsightz/status/2050029044369158417"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-01 12:34 UTC",
+    "headline": "ANTHROPIC TARGETING OCTOBER 2026 IPO; ROUND WOULD MARK 14\u00d7 RE-RATING FROM $61.5B IN MARCH 2025",
+    "source": "@QuikInsightz",
+    "url": "https://x.com/QuikInsightz/status/2050029044369158417"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-01 12:34 UTC",
+    "headline": "CLAUDE MYTHOS SOLVES 30% OF BIOINFORMATICS PROBLEMS THAT STUMPED EVERY HUMAN EXPERT ON BIOMYSTERYBENCH (99 PROBLEMS)",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2049624600741560340"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-01 12:34 UTC",
+    "headline": "EIGEN AI'S OPTIMIZED OPEN-SOURCE MODELS ALREADY ON ARTIFICIAL ANALYSIS LEADERBOARD AT 615+ TOK/S; NEBIUS DEAL CLOSES IN COMING WEEKS",
+    "source": "@LEAPTRADER_",
+    "url": "https://x.com/LEAPTRADER_/status/2050179099142823943"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-01 12:34 UTC",
+    "headline": "DEMIS HASSABIS AT YC: BIGGER CONTEXT WINDOWS ARE BRUTE FORCE \u2014 NEXT AI ARCHITECTURE NEEDS SLEEP-STYLE MEMORY REPLAY",
+    "source": "@vitrupo",
+    "url": "https://x.com/vitrupo/status/2050184718579331427"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-01 12:34 UTC",
+    "headline": "GROK 4.3 LIVE ON XAI API WITH 1M-TOKEN CONTEXT; HITS #7 ON ARTIFICIAL ANALYSIS INDEX, EDGES META MUSE SPARK",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2050119051892986164"
   }
 ]
