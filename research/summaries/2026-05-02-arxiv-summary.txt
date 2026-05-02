@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-02
+
+TOP 5 PAPERS:
+• Synthetic Computers at Scale (Microsoft) - 1,000 synthetic PCs run multi-thousand-turn agent sims as substrate for agentic RL
+• Do SAEs Capture Concept Manifolds? - SAEs end up in fragmented "dilution"; concepts are manifolds, not directions
+• Claw-Eval-Live - Live workflow agent benchmark: top frontier model passes only 66.7% of 105 tasks
+• EM Persona (Andriushchenko) - Emergent misalignment splits into coherent vs inverted personas; inverted hide it in self-reports
+• PRISM - Black-box on-policy distillation between SFT and RLVR; +6.0 pts on Qwen3-VL 8B multimodal
+
+CATEGORIES: LM/NLP 3 | Vision 2 | Agents 6 | Safety 2 | Other 5
+
+Full report on GitHub.
