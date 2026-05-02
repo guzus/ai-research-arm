@@ -1,0 +1,142 @@
+diff --git a/.github/workflows/2h-bluesky.yml b/.github/workflows/2h-bluesky.yml
+index df673910..9e9600d9 100644
+--- a/.github/workflows/2h-bluesky.yml
++++ b/.github/workflows/2h-bluesky.yml
+@@ -34,35 +34,75 @@ jobs:
+         run: |
+           mkdir -p /tmp/bluesky
+
+-          # Bluesky public API - search for AI-related posts
+-          # Using the public search endpoint (no auth required for public posts)
+-
+-          # Search for recent AI-related posts
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=AI%20announcement&limit=30&sort=latest" \
+-            > /tmp/bluesky/ai_announcements.json
+-
++          # Bluesky public XRPC endpoint. NOTE: public.api.bsky.app started
++          # returning HTTP 403 with an HTML error page for unauthenticated
++          # XRPC calls around 2026-04-27 (CDN/anti-bot block on datacenter
++          # IP ranges — confirmed in the 04-28..05-01 bluesky digests, which
++          # all logged "HTTP 403 Forbidden for all source files"). The
++          # alternate host api.bsky.app — same XRPC surface, different
++          # CDN — still returns valid JSON.
++          BSKY_HOST="https://api.bsky.app"
++          UA="Mozilla/5.0 (compatible; AIResearchBot/1.0; +https://github.com/${{ github.repository }})"
++
++          # Topic-based searchPosts. {"posts":[...]} envelope.
++          fetch_search() {
++            local out="$1" query="$2"
++            curl -sSL --retry 3 --retry-delay 2 \
++              -H "User-Agent: $UA" \
++              "$BSKY_HOST/xrpc/app.bsky.feed.searchPosts?q=${query}&limit=30&sort=latest" \
++              -o "$out" || echo '{"posts":[]}' > "$out"
++            # Normalize HTML error pages (response starts with "<") to a
++            # valid empty-results JSON envelope so the Claude step doesn't
++            # crash on HTML-as-JSON.
++            if [ "$(head -c 1 "$out" 2>/dev/null)" = "<" ]; then
++              echo "WARN: $out returned HTML — normalizing to {\"posts\":[]}"
++              echo '{"posts":[]}' > "$out"
++            fi
++          }
++
++          # Per-author timeline. {"feed":[{"post":{...}}, ...]} envelope.
++          fetch_author() {
++            local out="$1" actor="$2"
++            curl -sSL --retry 3 --retry-delay 2 \
++              -H "User-Agent: $UA" \
++              "$BSKY_HOST/xrpc/app.bsky.feed.getAuthorFeed?actor=${actor}&limit=20" \
++              -o "$out" || echo '{"feed":[]}' > "$out"
++            if [ "$(head -c 1 "$out" 2>/dev/null)" = "<" ]; then
++              echo "WARN: $out returned HTML — normalizing to {\"feed\":[]}"
++              echo '{"feed":[]}' > "$out"
++            fi
++          }
++
++          fetch_search /tmp/bluesky/ai_announcements.json   "AI%20announcement"
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=LLM%20release&limit=30&sort=latest" \
+-            > /tmp/bluesky/llm_releases.json
+-
++          fetch_search /tmp/bluesky/llm_releases.json       "LLM%20release"
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=GPT%20Claude%20Gemini&limit=30&sort=latest" \
+-            > /tmp/bluesky/model_discussions.json
+-
++          fetch_search /tmp/bluesky/model_discussions.json  "GPT%20Claude%20Gemini"
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=machine%20learning%20paper&limit=30&sort=latest" \
+-            > /tmp/bluesky/ml_papers.json
+-
++          fetch_search /tmp/bluesky/ml_papers.json          "machine%20learning%20paper"
+           sleep 1
+
+-          # Get posts from known AI researchers/companies by searching their handles
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=from%3Akarpathy.bsky.social&limit=20&sort=latest" \
+-            > /tmp/bluesky/karpathy.json 2>/dev/null || echo '{"posts":[]}' > /tmp/bluesky/karpathy.json
++          # Author feeds for high-signal AI researchers. The previous
++          # `searchPosts?q=from:user.bsky.social` form silently returned
++          # zero results — Bluesky search does not implement a `from:`
++          # operator. getAuthorFeed returns the actual author timeline.
++          fetch_author /tmp/bluesky/karpathy.json        "karpathy.bsky.social"
++          sleep 1
++          fetch_author /tmp/bluesky/rasbt.json           "rasbt.bsky.social"
++          sleep 1
++          fetch_author /tmp/bluesky/simonwillison.json   "simonwillison.net"
++          sleep 1
++          fetch_author /tmp/bluesky/emollick.json        "emollick.bsky.social"
++          sleep 1
++          fetch_author /tmp/bluesky/sama.json            "sama.bsky.social"
+
+-          echo "Bluesky data fetched successfully"
++          echo "Bluesky data fetched. Sizes:"
++          ls -la /tmp/bluesky/
++          echo ""
++          echo "First-byte audit (should be { for valid JSON, < means HTML):"
++          for f in /tmp/bluesky/*.json; do
++            printf "  %s -> %s\n" "$f" "$(head -c 1 "$f")"
++          done
+
+       - name: Copy Bluesky data to working directory
+         run: |
+@@ -84,14 +124,25 @@ jobs:
+
+             ## SOURCE FILES
+
+-            Read these pre-fetched Bluesky JSON files from data/bluesky/:
++            Two distinct response shapes — handle both. If a file is
++            missing, empty, or contains zero posts, just skip it; do
++            NOT fail the run.
++
++            **searchPosts shape** (4 files, top-level `{"posts":[...]}`):
+             - data/bluesky/ai_announcements.json
+             - data/bluesky/llm_releases.json
+             - data/bluesky/model_discussions.json
+             - data/bluesky/ml_papers.json
+-            - data/bluesky/karpathy.json
+
+-            The Bluesky JSON structure is:
++            **getAuthorFeed shape** (5 files — high-signal AI researcher
++            timelines, top-level `{"feed":[{"post":{...}}, ...]}`):
++            - data/bluesky/karpathy.json     (Andrej Karpathy)
++            - data/bluesky/rasbt.json        (Sebastian Raschka)
++            - data/bluesky/simonwillison.json (Simon Willison)
++            - data/bluesky/emollick.json     (Ethan Mollick)
++            - data/bluesky/sama.json         (Sam Altman)
++
++            For searchPosts files the post fields live at:
+             - posts[].author.handle (username like "user.bsky.social")
+             - posts[].author.displayName (display name)
+             - posts[].record.text (post content)
+@@ -100,6 +151,10 @@ jobs:
+             - posts[].repostCount (reposts)
+             - posts[].uri (post URI for linking)
+
++            For getAuthorFeed files the same fields live one level
++            deeper, under `feed[].post.*` — e.g.
++            `feed[].post.author.handle`, `feed[].post.record.text`.
++
+             To create a link: https://bsky.app/profile/{handle}/post/{post_id}
+             Where post_id is the last segment of the uri (after "app.bsky.feed.post/")
