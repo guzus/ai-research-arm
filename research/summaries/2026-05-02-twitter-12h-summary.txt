@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-02 12:30 UTC
+
+CYCLE: Quiet Saturday-mid-morning — 14 in-window primary-account tweets, no lab/funding/leaderboard primary moves, no Musk or Altman AI tweets.
+
+TOP STORIES:
+• mark_k claims an "engineer of Codex at OpenAI" confirmed a ChatGPT-into-Codex super-app merger (246 likes); zero primary OpenAI-employee corroboration; direction-of-travel matches Codex shipping cadence but merger-as-plan is hearsay [⚠]
+• Demis Hassabis logged a Sequoia AI Ascent fireside-chat appearance with Konstantine Buhler (182 likes) — covered DeepMind / AGI / AlphaFold; no concrete news, podcast drop on watch list [⚠]
+• Microsoft released DELULU, a fill-in-the-middle code-completion benchmark on Hugging Face; new eval surface, no leaderboard reads yet [✓]
+
+WATCH: A primary @OpenAI / @sama tweet explicitly framing Codex as the unified ChatGPT-+-Codex app (would convert mark_k's hearsay claim to ✓ or refute it).
+
+Full update on GitHub.
