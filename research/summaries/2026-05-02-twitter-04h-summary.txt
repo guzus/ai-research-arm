@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-02 04:14 UTC
+
+CYCLE: AI-hardware financial news dominates a quiet overnight window — Cerebras IPO upsized hard; DRAM/AI-memory crunch deepens.
+
+TOP STORIES:
+• Cerebras upsizes IPO to ~$40B target / ~$4B raise (Bloomberg) — Monday roadshow start; ~60-80% above Apr 26 $22-25B private mark; $510M 2025 rev (+76%), $24.6B RPO, OpenAI ~$10B contract anchor [✓]
+• AI-memory crunch deepens: Korean industry sources cite 300-400GB DRAM-per-AI-CPU targets (4× normal); Apple Mac mini base SKU rationed $599→$799; FormFactor 1Q26 +5pp QoQ GM beat [⚠ on the 300-400GB figure, ✓ on the broader thesis]
+• OpenAI Codex Pets feature live (/hatch-pet, Clippy reanimation); GPT-5.5 May 5 launch party over-subscribed; @sama back posting after hiatus [✓ — but vanity/marketing not a model release]
+
+WATCH: Bloomberg/Reuters bylined Cerebras orderbook follow-on Mon-Tue with actual price range; named NVIDIA/Intel/AMD/Apple SKU for the 300-400GB DRAM target.
+
+Full update on GitHub.
