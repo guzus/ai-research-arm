@@ -1016,5 +1016,40 @@
     "headline": "STANDARD INTELLIGENCE RAISES $75M FROM SEQUOIA + SPARK; KARPATHY ANGEL \u2014 VIDEO-TRAINED FDM-1 MODEL",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2050591205633745241"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-02 18:29 UTC",
+    "headline": "THE INFORMATION: XAI'S GPU FLEET RUNNING AT ~11% UTILIZATION \u2014 3-6X BELOW PRIOR PUBLIC MFU BASELINES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2050606311440531809"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-02 18:29 UTC",
+    "headline": "BEDROCK-OPENAI LAUNCHES BUT AWS CUSTOMERS TELL THE INFORMATION: \"CLAUDE IS BETTER FOR CODING\"",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2050621385467113870"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-02 18:29 UTC",
+    "headline": "STARCLOUD IN TALKS TO RAISE $200M ONE MONTH AFTER $170M SERIES A \u2014 POTENTIAL SUB-30-DAY DOUBLE-UP",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2050636485938778120"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-02 18:29 UTC",
+    "headline": "MUSK VS OPENAI: CROSS-EXAMINATION RAISES DOUBTS ABOUT MUSK NARRATIVE PER THE INFORMATION POST-TRIAL WRAP",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2050598702964695448"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-02 18:29 UTC",
+    "headline": "ALLEN AI RELEASES OLMPOOL: 26 7B-PARAM CHECKPOINTS WITH VARYING ARCHITECTURES TO STUDY LONG-CONTEXT EXTENSION",
+    "source": "@_akhaliq",
+    "url": "https://x.com/_akhaliq/status/2050624406063800381"
   }
 ]
