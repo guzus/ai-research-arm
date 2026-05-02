@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-02 09:34 UTC
+
+CYCLE: Quiet Saturday-morning UTC; xAI Console Voice Cloning pricing disruption is the operative story.
+
+TOP STORIES:
+• xAI Voice Cloning ships at $4.20/1M chars TTS (~$0.06-0.08 per 20-min script vs ElevenLabs ~$6); 89 voices, 28 langs, US-only API; Musk: Grok Voice already runs Starlink [✓ launch / ⚠ Starlink line]
+• Google I/O 2026 (May 19-20) ramp: Demis RT'd I/O countdown, kimmonismus reads "new models soon"; ties to Gemini 3.1 Flash Lite GA leak [✓]
+• "Agents of Chaos" paper viral again — but recycled from Feb 2026 (arXiv 2602.20021), in circulation since March [🚩]
+
+WATCH: ElevenLabs counter-pricing response 14d; Cerebras IPO orderbook Mon-Tue.
+
+Full update on GitHub.
