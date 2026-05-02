@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-02 18:29 UTC
+
+CYCLE: Quiet Saturday window (24 in-window primary tweets); two single-source @theinformation infrastructure prints carry the signal, loudest tweet is a recycled GPT-5.4 Erdős reframing.
+
+TOP STORIES:
+• @theinformation: xAI's GPU fleet running at ~11% utilization — 3-6x lower than prior MFU baselines (30-60%); contradicts compute-shortage framing [⚠]
+• @theinformation: Bedrock-OpenAI launches but customers tell article "Claude is better for coding" — same-day Anthropic-vs-OpenAI customer-revealed-preference [⚠]
+• GPT-5.4 Pro Erdős "kicked open the door" reframing recycles April 15-17 news (kimmonismus 153L, loudest in-window primary) [🚩 Skeptic]
+
+WATCH: Whether @SemiAnalysis_ or @elonmusk corroborates/refutes the 11% xAI utilization figure inside 7 days.
+
+Full update on GitHub.
