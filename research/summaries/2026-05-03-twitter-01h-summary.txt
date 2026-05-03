@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-03 01:10 UTC
+
+CYCLE: Quiet late-Saturday window — single fresh primary signal is a Google Gemini "Powered by Omni" video-gen UI leak.
+
+TOP STORIES:
+• @testingcatalog screenshots "Powered by Omni" string in Gemini video-generation tab — first pre-I/O hint of a unified omni model with native video output, adjacent to existing "Toucan"/Veo-3.1 stack ⚠ single-source
+
+WATCH: Whether Demis/Sundar/JeffDean tease a Gemini Omni model before May 19 I/O, or whether silence holds and the leak resolves as a UI placeholder.
+
+Carry-overs unresolved: Cerebras IPO Monday roadshow (May 4), GPT-5.5 launch party (May 5), Anthropic $44B ARR primary disclosure, Microsoft Q1 cloud-margin pricing pivot follow-on.
+
+Full update on GitHub.
