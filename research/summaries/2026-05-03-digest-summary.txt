@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-05-03
+
+TOP STORIES:
+• Cerebras IPO roadshow opens Monday: $40B valuation / $4B raise / $10B+ indicated interest (CBRS)
+• Anthropic $50B round at $850-900B+ enters close week (~May 14); 48-hr allocation window
+• OpenAI GPT-5.5 launch event Mon May 5, 5:55 PM PT; Musk v. Altman trial resumes Mon
+
+KEY NUMBERS:
+• Cerebras 75% above Feb private mark; $1.8B run-rate, $24.6B RPO
+• Anthropic MTM: ~$45.5B of Mag-4 Q1 profit ($28.7B GOOG + $16.8B AMZN)
+• Pentagon cleared 8 AI vendors for classified nets — Anthropic excluded
+• AMI Labs (LeCun JEPA): $1.03B seed — largest AI seed ever
+
+TRENDING: Gemini 3.1 Flash Lite GA imminent (Vertex leak); IBM Granite 4.1 8B matches 32B MoE
+
+Full digest on GitHub.
