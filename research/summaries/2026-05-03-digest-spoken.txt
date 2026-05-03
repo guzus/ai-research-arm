@@ -1,0 +1,11 @@
+Speaker 1: Sunday, May third, twenty twenty-six.
+Speaker 2: [high_energy] The Cerebras IPO roadshow opens tomorrow — they're targeting a forty billion dollar valuation with a four billion dollar raise, and indicated interest has already blown past ten billion dollars.
+Speaker 1: That is a seventy-five percent premium over their February private mark. They're showing one point eight billion in run-rate revenue and [emphasis] twenty-four point six billion dollars [/emphasis] in remaining performance obligations.
+Speaker 2: Meanwhile Anthropic is closing what could be the biggest round in AI history — a fifty billion dollar raise at a valuation somewhere above eight hundred fifty billion dollars. Allocation windows are reportedly just forty-eight hours and close week is around May fourteenth.
+Speaker 1: Worth putting that in perspective — Anthropic's monthly burn is being benchmarked against roughly forty-five billion dollars of combined first-quarter profit from Google and Amazon. That is the scale of capital flowing through this sector right now.
+Speaker 2: [dramatic_pause] OpenAI drops GPT five point five on Monday at five fifty-five in the evening Pacific — and the Musk versus Altman trial resumes the same day.
+Speaker 1: On the funding front, AMI Labs — that is Yann LeCun's JEPA lab — just closed [emphasis] one point zero three billion dollars [/emphasis] in seed funding, the largest AI seed round ever recorded.
+Speaker 2: The Pentagon also cleared eight AI vendors for classified networks this week. Anthropic was not on the list.
+Speaker 1: On the model side, Gemini three point one Flash Lite looks like it's about to go generally available — there was a Vertex leak — and IBM's Granite four point one eight-B is reportedly matching the performance of a thirty-two-billion-parameter mixture-of-experts model.
+Speaker 2: Efficient models punching way above their weight class — that trend is not slowing down.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
