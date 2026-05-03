@@ -1,0 +1,16 @@
+AI News - 2026-05-03
+
+TOP STORIES:
+• Microsoft Agent 365 hits GA — first cross-cloud AI-agent control plane (AWS Bedrock + GCP agents inventoried)
+• Meta acquires Assured Robot Intelligence; Pinto/Wang team joins Meta Superintelligence Labs for humanoids
+• MoonPay launches MoonAgents Card — first Mastercard debit card AI agents can spend stablecoins on
+• ClawBank's Manfred AI: first agent to autonomously incorporate a US company + IRS EIN + FDIC account
+• Replit 10th anniversary: free Replit Agent May 2 + $100K Buildathon
+
+KEY NUMBERS:
+• Agent 365: $15/user/month or in M365 E7
+• Anthropic ~$900B round: target close May 14
+• T-2 days to OpenAI "GPT-5.5 on 5/5" event (Tue May 5, 5:55pm PDT SF)
+• T-3 days to Anthropic Code with Claude SF (May 6)
+
+Full report on GitHub.
