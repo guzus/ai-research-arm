@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-03 04:27 UTC
+
+CYCLE: Quiet Sunday-pre-dawn UTC; sell-side chip-stack handle @jukan05 carries the cycle with two Korea-sourced datapoints; @SemiAnalysis_ posts an off-tone "Jane Street grift" tweet that may indicate a recurrence of its Jan 4 2026 account compromise.
+
+TOP STORIES:
+• NVIDIA-Groq deal strategic split: Groq talent → Rubin software optimization (2H'26 launch); Groq SRAM data-flow IP → Rubin Ultra chip design (reportedly 512MB SRAM, ~4× B200) — sell-side via @jukan05 [⚠]
+• Samsung Foundry 4nm "fully booked" through 2027 — HBM4 base die is core driver; NVIDIA + AMD + Google on the customer roster; H2'26 swing-to-profit signal — extends Samsung Q4'25 earnings disclosure [⚠]
+• 🚩 @SemiAnalysis_ posts wildly out-of-character "$220K-$600K Jane Street junior agentic AI" hustle-bro grift; bird-fast confirms handle was hacked Jan 4 2026 (no 2FA) — likely compromise recurrence, do not treat as authoritative
+
+WATCH: Cerebras IPO Mon May 4 roadshow start with bylined orderbook; whether @SemiAnalysis_ posts a disowning/correction tweet inside 24h.
+
+Full update on GitHub.
