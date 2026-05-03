@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-05-03 21:24 UTC
+
+CYCLE: Dev sentiment swings to OpenAI Codex/GPT-5.5; Anthropic editorially silent ~74h.
+
+TOP STORIES:
+• Trending #1 "Devs switch to Codex over Claude limits" (4.4K posts); The Information bylines Bedrock customer "Claude is better" for coding ✓
+• Jensen Huang: Nvidia China AI-chip share 95% → 0%, US export policy "largely backfired" ✓
+• Pre-I/O Google ramp: new Gemini iOS design (testingcatalog 1.7K likes) + AI Studio Build Figma/GitHub imports + Omni/Flash 3.2-3.5 rumors ⚠
+
+CAVEATS: arankomatsuzaki 1.7B-vs-80M token ratio is apples-to-oranges. SemiAnalysis Jane Street grift post still undisowned.
+
+WATCH: Anthropic silence; Cerebras IPO May 4; GPT-5.5 launch party May 5.
+
+Full update on GitHub.
