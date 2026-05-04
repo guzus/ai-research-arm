@@ -1401,5 +1401,54 @@
     "headline": "CURSOR REFUSES TO INTEGRATE GROK EVEN AS SPACEX EYES $60B ACQUISITION OPTION \u2014 FIRST PUBLIC FRICTION ON THE DEAL",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2051353692146704735"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-04 21:32 UTC",
+    "headline": "ANTHROPIC SHIPS KEYLESS AUTH FOR CLAUDE PLATFORM \u2014 BROWSER CLI + AWS/GCP/AZURE/OIDC WORKLOADS, 12H BEFORE CODE WITH CLAUDE OPENS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2051393709619732758"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-04 21:32 UTC",
+    "headline": "@ANTHROPICAI PRIMARY FEED ON DAY 5 OF SILENCE THROUGH $1.5B PE JV \u2014 LAST POST APR 30 SYCOPHANCY PAPER",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2049927618397614466"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-04 21:32 UTC",
+    "headline": "SEMIANALYSIS: GB300 NVL72 ALREADY 2.7\u00d7 FASTER THAN GB200 ON vLLM \u2014 DESPITE PAPER SPEC ONLY 1.5\u00d7 FLOPS / 1.5\u00d7 HBM CAP / SAME HBM BW",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2051406756429943109"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-04 21:32 UTC",
+    "headline": "MERCEDES CUT SAP INSTANCES 40% (1,000\u2192600) USING OWN AI + CHATGPT + CLAUDE TO CLEAN DATA \u2014 SAP NOW BLOCKING UNAUTHORIZED AGENTS",
+    "source": "@amir",
+    "url": "https://x.com/amir/status/2051323029511352518"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-04 21:32 UTC",
+    "headline": "VERCEL OPEN-SOURCES `npx deepsec` \u2014 CODING-AGENT ORCHESTRATOR FOR DEEP SECURITY REVIEWS, FINDS CRITICAL VULNS IN MINUTES",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2051386798899888539"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-04 21:32 UTC",
+    "headline": "BROCKMAN TESTIFIES OPENAI STAKE WORTH ~$30B; ADMITS UNDER OATH HE INVESTED $0 TO ACQUIRE CAP-PROFIT INTEREST",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2051399216572874797"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-04 21:32 UTC",
+    "headline": "FUTURUM/NVIDIA: TOP 5 US HYPERSCALERS ON TRACK FOR UP TO $690B INFRA SPEND IN 2026 \u2014 NEARLY 2\u00d7 2025; ENERGY/COOLING NOW PRIMARY BOTTLENECK",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2051393312683376696"
   }
 ]
