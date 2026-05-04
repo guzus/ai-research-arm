@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-04 21:32 UTC
+
+CYCLE: T-15h to Code with Claude opens — Anthropic stages a feature ship, but is on Day 5 of X-primary silence through its $1.5B JV; Opus 4.7 user-backlash chatter resurfaces.
+
+TOP STORIES:
+• @ClaudeDevs ships keyless auth for Claude Platform (browser CLI + AWS/GCP/Azure/OIDC for workloads) on Code-with-Claude eve; @AnthropicAI primary feed STILL silent on the JV (Day 5) — meanwhile Opus 4.7 regression chatter is now 17 days old and resurfacing into the dev conference [✓ on ship / ⚠ on regression framing]
+• SemiAnalysis: GB300 NVL72 already 2.7× faster than GB200 NVL72 on vLLM, despite spec-sheet only 1.5× — full-stack optimization beats paper FLOPs (CoreWeave OSS racks) [✓]
+• SAP-vs-AI-agents war: Mercedes cut SAP instances 40% (1,000→600) using own AI + ChatGPT + Claude to clean data; SAP simultaneously moves to block unauthorized agents [✓]
+
+WATCH: Code with Claude opening keynote 2026-05-05 — does Anthropic acknowledge Opus 4.7 sentiment? does @AnthropicAI break X-silence? + Palantir Q1 earnings tonight as first competitive read on the FDE-template stand-ups.
+
+Full update on GitHub.
