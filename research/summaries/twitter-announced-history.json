@@ -1240,5 +1240,47 @@
     "headline": "MICROSOFT Q1 \u2014 AI USAGE DRAGGED CLOUD MARGINS, COMPANY EFFECTIVELY BOOSTED PRICES IN RESPONSE",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2051029049078608051"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-04 04:27 UTC",
+    "headline": "ANTHROPIC FINALIZING $1.5B JV WITH BLACKSTONE, HELLMAN & FRIEDMAN, GOLDMAN SACHS \u2014 CLAUDE INTO PE PORTFOLIO COMPANIES",
+    "source": "@berber_jin1",
+    "url": "https://x.com/berber_jin1/status/2051128918154051863"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-04 04:27 UTC",
+    "headline": "ANTHROPIC PUTTING $300M OF ITS OWN BALANCE SHEET INTO PE JV \u2014 ANNOUNCEMENT EXPECTED MONDAY MORNING",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2051151418602774836"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-04 04:27 UTC",
+    "headline": "SK HYNIX MARKET CAP CROSSES KRW 1,000 TRILLION \u2014 KOREAN MEMORY MAKER NOW ~$680B COMPANY",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2051124404629975307"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-04 04:27 UTC",
+    "headline": "SK HYNIX HBM4-TO-NVIDIA SHIPMENT CUT 20-30% AS VERA RUBIN RAMP SLIPS \u2014 M15X FAB PIVOTS TO 1c DRAM FOR HBM4E AND SOCAMM2",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2051128451231514744"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-04 04:27 UTC",
+    "headline": "H100 NEOCLOUD SPOT NOW $2.75/HR \u2014 UP 60% VS 2023 A16Z OXYGEN PROGRAM RATES",
+    "source": "@AnjneyMidha",
+    "url": "https://x.com/AnjneyMidha/status/2051063658663563773"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-04 04:27 UTC",
+    "headline": "xAI GPU FLEET RUNNING AT ~11% UTILIZATION \u2014 THE INFORMATION",
+    "source": "@AnjneyMidha",
+    "url": "https://x.com/AnjneyMidha/status/2051093414893216096"
   }
 ]
