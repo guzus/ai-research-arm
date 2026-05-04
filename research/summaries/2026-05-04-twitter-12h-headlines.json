@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI CLOSES $10B 'DEPLOYCO' JV — $4B+ RAISED, 19 INVESTORS LED BY TPG, BROOKFIELD, ADVENT, BAIN; OPENAI RETAINS CONTROL",
+    "source": "@i (Bloomberg/Fiegerman wire)",
+    "url": "https://x.com/i/web/status/2051282006013509942",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI BEATS ANTHROPIC TO THE WIRE — DEPLOYCO ANNOUNCES BEFORE ANTHROPIC'S WSJ-LEAKED $1.5B BLACKSTONE/H&F/GOLDMAN JV LANDS",
+    "source": "@AnthropicAI (silent since Apr 30)",
+    "url": "https://x.com/AnthropicAI/status/2049602979079336364",
+    "category": "business"
+  },
+  {
+    "headline": "BESI: SAMSUNG HYBRID-BONDING ADOPTION DECISION 'MID-YEAR'; HBM MASS PRODUCTION TARGETED FOR 2027 ON IMPLIED-NVIDIA REQUEST",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2051205348854542495",
+    "category": "infra"
+  },
+  {
+    "headline": "DDR6 SUBSTRATE JOINT DEVELOPMENT KICKS OFF AT SAMSUNG / SK HYNIX / MICRON — JEDEC SPEC STILL UNFINALIZED, 2028-29 MASS PROD",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2051260085142479289",
+    "category": "infra"
+  },
+  {
+    "headline": "XAI ROLLING OUT GROK CONNECTORS FOR GITHUB / NOTION / LINEAR / GOOGLE / MICROSOFT + CUSTOM MCP — NO PRIMARY @XAI POST YET",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2051228210172497978",
+    "category": "model"
+  },
+  {
+    "headline": "GOOGLE AI STUDIO A/B SURFACES VECTOR-SVG GENERATION 'LIKELY FROM NEW FLASH/PRO MODEL' — PRE-I/O LEAK CADENCE ACCELERATING",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2051215328105922757",
+    "category": "model"
+  },
+  {
+    "headline": "BLENDER FOUNDATION DOWNGRADES ANTHROPIC OPEN-SOURCE SPONSORSHIP TO ONE-OFF DONATION AFTER ANTI-AI PRESSURE CAMPAIGN",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2051216185425887730",
+    "category": "policy"
+  }
+]
