@@ -1,0 +1,321 @@
+diff --git a/.github/workflows/2h-bluesky.yml b/.github/workflows/2h-bluesky.yml
+index df673910..aec7ad66 100644
+--- a/.github/workflows/2h-bluesky.yml
++++ b/.github/workflows/2h-bluesky.yml
+@@ -34,35 +34,74 @@ jobs:
+         run: |
+           mkdir -p /tmp/bluesky
+
+-          # Bluesky public API - search for AI-related posts
+-          # Using the public search endpoint (no auth required for public posts)
+-
+-          # Search for recent AI-related posts
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=AI%20announcement&limit=30&sort=latest" \
+-            > /tmp/bluesky/ai_announcements.json
+-
++          # public.api.bsky.app started returning HTTP 403 (BunnyCDN
++          # anti-bot block on this datacenter IP) around 2026-04-27 —
++          # confirmed by repeated "_No posts processed: upstream Bluesky
++          # fetch returned HTTP 403 Forbidden_" entries in
++          # research/bluesky/2026-04-28..2026-05-03. The alternate host
++          # api.bsky.app exposes the same XRPC surface on a different CDN
++          # and continues to return valid JSON.
++          BSKY_HOST="https://api.bsky.app"
++          UA="Mozilla/5.0 (compatible; AIResearchBot/1.0; +https://github.com/${{ github.repository }})"
++
++          # Topic-based searchPosts. {"posts":[...]} envelope.
++          fetch_search() {
++            local out="$1" query="$2"
++            curl -sSL --retry 3 --retry-delay 2 \
++              -H "User-Agent: $UA" \
++              "$BSKY_HOST/xrpc/app.bsky.feed.searchPosts?q=${query}&limit=30&sort=latest" \
++              -o "$out" || echo '{"posts":[]}' > "$out"
++            # Normalize HTML error pages (response starts with "<") to a
++            # valid empty-results JSON envelope so the Claude step doesn't
++            # crash on HTML-as-JSON.
++            if [ "$(head -c 1 "$out" 2>/dev/null)" = "<" ]; then
++              echo "WARN: $out returned HTML — normalizing to {\"posts\":[]}"
++              echo '{"posts":[]}' > "$out"
++            fi
++          }
++
++          # Per-author timeline. {"feed":[{"post":{...}}, ...]} envelope.
++          # Bluesky search has no `from:` operator — getAuthorFeed is the
++          # correct primitive for "posts by user X".
++          fetch_author() {
++            local out="$1" actor="$2"
++            curl -sSL --retry 3 --retry-delay 2 \
++              -H "User-Agent: $UA" \
++              "$BSKY_HOST/xrpc/app.bsky.feed.getAuthorFeed?actor=${actor}&limit=20" \
++              -o "$out" || echo '{"feed":[]}' > "$out"
++            if [ "$(head -c 1 "$out" 2>/dev/null)" = "<" ]; then
++              echo "WARN: $out returned HTML — normalizing to {\"feed\":[]}"
++              echo '{"feed":[]}' > "$out"
++            fi
++          }
++
++          fetch_search /tmp/bluesky/ai_announcements.json   "AI%20announcement"
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=LLM%20release&limit=30&sort=latest" \
+-            > /tmp/bluesky/llm_releases.json
+-
++          fetch_search /tmp/bluesky/llm_releases.json       "LLM%20release"
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=GPT%20Claude%20Gemini&limit=30&sort=latest" \
+-            > /tmp/bluesky/model_discussions.json
+-
++          fetch_search /tmp/bluesky/model_discussions.json  "GPT%20Claude%20Gemini"
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=machine%20learning%20paper&limit=30&sort=latest" \
+-            > /tmp/bluesky/ml_papers.json
+-
++          fetch_search /tmp/bluesky/ml_papers.json          "machine%20learning%20paper"
+           sleep 1
+
+-          # Get posts from known AI researchers/companies by searching their handles
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=from%3Akarpathy.bsky.social&limit=20&sort=latest" \
+-            > /tmp/bluesky/karpathy.json 2>/dev/null || echo '{"posts":[]}' > /tmp/bluesky/karpathy.json
++          # High-signal AI researcher author feeds.
++          fetch_author /tmp/bluesky/karpathy.json        "karpathy.bsky.social"
++          sleep 1
++          fetch_author /tmp/bluesky/rasbt.json           "rasbt.bsky.social"
++          sleep 1
++          fetch_author /tmp/bluesky/simonwillison.json   "simonwillison.net"
++          sleep 1
++          fetch_author /tmp/bluesky/emollick.json        "emollick.bsky.social"
++          sleep 1
++          fetch_author /tmp/bluesky/sama.json            "sama.bsky.social"
+
+-          echo "Bluesky data fetched successfully"
++          echo "Bluesky data fetched. Sizes:"
++          ls -la /tmp/bluesky/
++          echo ""
++          echo "First-byte audit (should be { for valid JSON, < means HTML):"
++          for f in /tmp/bluesky/*.json; do
++            printf "  %s -> %s\n" "$f" "$(head -c 1 "$f")"
++          done
+
+       - name: Copy Bluesky data to working directory
+         run: |
+@@ -84,21 +123,31 @@ jobs:
+
+             ## SOURCE FILES
+
+-            Read these pre-fetched Bluesky JSON files from data/bluesky/:
++            Two distinct response shapes — handle both. If a file is missing,
++            empty, or contains zero posts, just skip it; do NOT fail the run.
++
++            **searchPosts shape** (4 files, top-level `{"posts": [...]}`):
+             - data/bluesky/ai_announcements.json
+             - data/bluesky/llm_releases.json
+             - data/bluesky/model_discussions.json
+             - data/bluesky/ml_papers.json
+-            - data/bluesky/karpathy.json
+-
+-            The Bluesky JSON structure is:
+-            - posts[].author.handle (username like "user.bsky.social")
+-            - posts[].author.displayName (display name)
+-            - posts[].record.text (post content)
+-            - posts[].record.createdAt (ISO timestamp)
+-            - posts[].likeCount (likes)
+-            - posts[].repostCount (reposts)
+-            - posts[].uri (post URI for linking)
++
++            **getAuthorFeed shape** (5 files, top-level `{"feed": [{"post": {...}}, ...]}`):
++            - data/bluesky/karpathy.json        (Andrej Karpathy)
++            - data/bluesky/rasbt.json           (Sebastian Raschka)
++            - data/bluesky/simonwillison.json   (Simon Willison)
++            - data/bluesky/emollick.json        (Ethan Mollick)
++            - data/bluesky/sama.json            (Sam Altman)
++
++            For searchPosts, iterate `posts[]`. For getAuthorFeed, iterate
++            `feed[].post` to get the same shape. Each `post` object has:
++            - author.handle (username like "user.bsky.social")
++            - author.displayName (display name)
++            - record.text (post content)
++            - record.createdAt (ISO timestamp)
++            - likeCount (likes)
++            - repostCount (reposts)
++            - uri (post URI for linking)
+
+             To create a link: https://bsky.app/profile/{handle}/post/{post_id}
+             Where post_id is the last segment of the uri (after "app.bsky.feed.post/")
+diff --git a/.github/workflows/daily-improve.yml b/.github/workflows/daily-improve.yml
+index a7180ad1..31655da6 100644
+--- a/.github/workflows/daily-improve.yml
++++ b/.github/workflows/daily-improve.yml
+@@ -32,11 +32,17 @@ jobs:
+           echo "branch=improve/$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+       - name: Analyze and Improve Methodology
++        env:
++          # gh CLI uses GH_TOKEN for `gh pr create`. Without this the
++          # `gh pr create` step at the end of the prompt fails silently —
++          # which is why every prior improve/<date> branch (2026-04-28 to
++          # 2026-05-02) has a commit but no PR.
++          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         uses: anthropics/claude-code-action@v1
+         with:
+           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+           claude_args: |
+-            --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*),WebSearch"
++            --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*),Bash(gh:*),Bash(curl:*),Bash(ls:*),Bash(wc:*),Bash(head:*),Bash(tail:*),Bash(grep:*),WebSearch"
+           prompt: |
+             You are an AI research methodology optimizer. Analyze yesterday's output quality and propose improvements.
+
+@@ -135,9 +141,27 @@ jobs:
+       - name: Push changes if on branch
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
++          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         run: |
+           CURRENT_BRANCH=$(git branch --show-current)
+           if [ "$CURRENT_BRANCH" != "main" ]; then
+             git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+             git push -u origin $CURRENT_BRANCH || echo "Already pushed or no changes"
++
++            # Backstop PR creation: if Claude could not create the PR
++            # itself (e.g. allowedTools regression, gh-cli missing) but
++            # left commits on an improve/<date> branch, open a PR here so
++            # the work doesn't sit invisible. Idempotent — gh exits 0 if
++            # the PR already exists for this branch.
++            if command -v gh >/dev/null 2>&1; then
++              EXISTING_PR=$(gh pr list --head "$CURRENT_BRANCH" --json number --jq '.[0].number' 2>/dev/null || echo "")
++              if [ -z "$EXISTING_PR" ]; then
++                gh pr create \
++                  --title "🔄 Daily Methodology Improvement - $(echo $CURRENT_BRANCH | sed 's|improve/||')" \
++                  --body "Auto-generated improvement PR from daily-improve workflow. Branch contains methodology changes proposed by analyzing yesterday's research output. Review the diff for details." \
++                  --base main --head "$CURRENT_BRANCH" || echo "gh pr create failed (non-fatal)"
++              else
++                echo "PR #$EXISTING_PR already exists for $CURRENT_BRANCH — skipping create."
++              fi
++            fi
+           fi
+diff --git a/.github/workflows/hourly-rss.yml b/.github/workflows/hourly-rss.yml
+index 05e59909..d4502728 100644
+--- a/.github/workflows/hourly-rss.yml
++++ b/.github/workflows/hourly-rss.yml
+@@ -90,8 +90,70 @@ jobs:
+             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+             > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
+
++          # --- High-signal AI commentary / analysis feeds ---
++          # These bridge the gap between corporate blogs (slow, sparse) and
++          # the firehose of HN/Twitter. Each author has been independently
++          # cited multiple times in our digests as a primary read-through.
++
++          # Simon Willison's blog — daily AI commentary; lab-release reactions
++          curl -sL "https://simonwillison.net/atom/everything/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/simonwillison.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/simonwillison.xml
++
++          # Latent Space (swyx + Smol AI) — AI engineering newsletter + podcast
++          curl -sL "https://www.latent.space/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/latent_space.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/latent_space.xml
++
++          # Smol AI News — high-volume daily roundup of AI Discords + papers
++          curl -sL "https://news.smol.ai/rss.xml" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/smol_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/smol_ai.xml
++
++          # Import AI (Jack Clark, ex-OpenAI policy lead) — weekly research roundup
++          curl -sL "https://importai.substack.com/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/import_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/import_ai.xml
++
++          # Interconnects (Nathan Lambert, AI2) — post-training + open-models analysis
++          curl -sL "https://www.interconnects.ai/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/interconnects.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/interconnects.xml
++
++          # Don't Worry About the Vase (Zvi Mowshowitz) — heavy weekly AI analysis
++          curl -sL "https://thezvi.substack.com/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/thezvi.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/thezvi.xml
++
++          # One Useful Thing (Ethan Mollick, Wharton) — applied AI / agents
++          curl -sL "https://www.oneusefulthing.org/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/oneusefulthing.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/oneusefulthing.xml
++
++          # Lilian Weng — long-form ML research surveys
++          curl -sL "https://lilianweng.github.io/index.xml" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/lilianweng.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/lilianweng.xml
++
++          # Sebastian Raschka magazine — practical LLM training/inference
++          curl -sL "https://magazine.sebastianraschka.com/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/raschka.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/raschka.xml
++
++          # AI Snake Oil (Narayanan + Kapoor, Princeton) — critical evaluations
++          curl -sL "https://www.aisnakeoil.com/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/aisnakeoil.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/aisnakeoil.xml
++
+           echo "RSS feeds fetched successfully"
+           ls -la /tmp/rss/
++          echo ""
++          echo "Per-feed first-byte audit (< means HTML error page, < means rss/atom):"
++          for f in /tmp/rss/*.xml; do
++            FIRST=$(head -c 1 "$f" 2>/dev/null)
++            SIZE=$(wc -c < "$f")
++            printf "  %-30s %6s bytes  first=%s\n" "$(basename "$f")" "$SIZE" "$FIRST"
++          done
+
+       - name: Process RSS Feeds with Claude
+         uses: anthropics/claude-code-action@v1
+@@ -126,11 +188,23 @@ jobs:
+             - verge_ai.xml (The Verge AI)
+             - venturebeat_ai.xml (VentureBeat AI)
+
+-            RSS XML structure:
+-            - channel/item/title (article title)
+-            - channel/item/link (article URL)
+-            - channel/item/pubDate (publication date)
+-            - channel/item/description (summary)
++            **Independent Commentary / Analysis:**
++            - simonwillison.xml (Simon Willison's blog — daily AI commentary)
++            - latent_space.xml (Latent Space / swyx — AI engineering)
++            - smol_ai.xml (Smol AI News — daily Discord + paper roundup)
++            - import_ai.xml (Import AI / Jack Clark — weekly research)
++            - interconnects.xml (Interconnects / Nathan Lambert — post-training)
++            - thezvi.xml (Don't Worry About The Vase / Zvi — weekly analysis)
++            - oneusefulthing.xml (One Useful Thing / Ethan Mollick — applied AI)
++            - lilianweng.xml (Lilian Weng — ML research surveys)
++            - raschka.xml (Sebastian Raschka magazine — LLM training/inference)
++            - aisnakeoil.xml (AI Snake Oil / Narayanan + Kapoor — critical evals)
++
++            RSS XML structure (works for both RSS 2.0 and Atom):
++            - channel/item/title  OR  feed/entry/title
++            - channel/item/link   OR  feed/entry/link[@href]
++            - channel/item/pubDate  OR  feed/entry/published / feed/entry/updated
++            - channel/item/description  OR  feed/entry/summary / feed/entry/content
+
+             ## OUTPUT
+
+@@ -178,6 +252,20 @@ jobs:
+
+             #### CS.LG
+             - [Paper Title](arxiv_url)
++
++            ### 🧠 Independent Commentary
++
++            #### Simon Willison
++            - [Title](url) - date
++
++            #### Latent Space / Smol AI
++            - [Title](url) - date
++
++            #### Import AI / Interconnects / TheZvi
++            - [Title](url) - date
++
++            #### Mollick / Weng / Raschka / AI Snake Oil
++            - [Title](url) - date
+             ```
+
+             ## IMPORTANT
