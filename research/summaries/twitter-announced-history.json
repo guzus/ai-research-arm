@@ -1450,5 +1450,54 @@
     "headline": "FUTURUM/NVIDIA: TOP 5 US HYPERSCALERS ON TRACK FOR UP TO $690B INFRA SPEND IN 2026 \u2014 NEARLY 2\u00d7 2025; ENERGY/COOLING NOW PRIMARY BOTTLENECK",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2051393312683376696"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-05 01:04 UTC",
+    "headline": "NYT: TRUMP WHITE HOUSE BRIEFS ANTHROPIC, GOOGLE, OPENAI ON PRE-RELEASE AI SAFETY REVIEW PROPOSAL \u2014 MYTHOS CITED AS TRIGGER",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2051426944106049851"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-05 01:04 UTC",
+    "headline": "SIERRA RAISES $950M SERIES E AT $15B+ VALUATION, TIGER GLOBAL + GV LED \u2014 ARR $100M (NOV) TO $150M (FEB)",
+    "source": "@SierraPlatform",
+    "url": "https://x.com/SierraPlatform/status/2051314764798943456"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-05 01:04 UTC",
+    "headline": "OPENAI 10X CODEX RATE LIMITS UNTIL JUNE 5 FOR GPT-5.5 PARTY APPLICANTS WHO DIDN'T GET IN \u2014 CONCESSION ON 4-DAY REVOLT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2051462208748675541"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-05 01:04 UTC",
+    "headline": "ANTHROPIC ORBIT LEAK: PROACTIVE ASSISTANT FOR CLAUDE COWORK PULLING FROM GMAIL, SLACK, GITHUB, CALENDAR, DRIVE, FIGMA",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2051450201668256051"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-05 01:04 UTC",
+    "headline": "CEREBRAS S-1 AMENDMENT SETS IPO RANGE $115-$125, ~$25.5B VALUATION MIDPOINT, $3.24-3.73B RAISE \u2014 TARGET MAY 13 ON NASDAQ",
+    "source": "@YeboahWalee",
+    "url": "https://x.com/YeboahWalee/status/2051300983855345807"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-05 01:04 UTC",
+    "headline": "BROCKMAN UNDER OATH: ALTMAN PAID HIM $10M IN OFF-BOOKS EQUITY FROM PERSONAL FAMILY OFFICE IN 2017, HIDDEN FROM MUSK",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2051431726287900816"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-05 01:04 UTC",
+    "headline": "GEMINI API SHIPS WEBHOOKS \u2014 UNLOCKS LONG-RUNNING TASK DEVX FOR BATCH, AGENTS, GENMEDIA",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2051434527931953490"
   }
 ]
