@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-05 04:14 UTC
+
+CYCLE: Quiet overnight window — continuing narratives, not new prints. Brockman testimony / Codex npm-share / RSI forecast all hardening into Code with Claude T-6h.
+
+TOP STORIES:
+• Brockman testimony Day 2 closes — "I've never been certain what I'm being sued for"; $30B-stake-for-$0-cash + Cerebras self-dealing now confirmed by Cointelegraph, NBC Bay Area, ReardonTrades [✓]
+• TickerTrends: Codex passes Claude Code in npm weekly downloads on Apr 30 — 46M vs 491K (~93x); kimmonismus surfaces it 04:13 UTC, ~6h before Code with Claude opens [⚠ on magnitude — npm pulls != active users]
+• Jack Clark (Anthropic policy lead): "60% probability of recursive self-improvement by end of 2028" — RT'd in-window by tszzl (OpenAI) at 03:46 UTC, propagating to OpenAI side of Twitter [⚠ single-source forecast]
+
+WATCH: Code with Claude opening keynote (May 5 morning ET) — does Anthropic acknowledge the npm crossover, RSI thesis, or Trump-WH safety-review story? @AnthropicAI now Day 6 silent.
+
+Full update on GitHub.
