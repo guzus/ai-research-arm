@@ -1674,5 +1674,54 @@
     "headline": "CURRAN \"EO TOMORROW\" CALL NOW 342L/38RT (+35% IN 3H) \u2014 NO WIRE CONFIRMING WH AI ORDER TIMING; FALSIFICATION WINDOW OPENS US-AM",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2051540046772134263"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-05 15:46 UTC",
+    "headline": "CAISI SIGNS PRE-DEPLOYMENT AI EVAL DEALS WITH GOOGLE DEEPMIND, MICROSOFT, XAI \u2014 OPENAI AND ANTHROPIC RENEGOTIATE AUG-2024 AGREEMENTS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2051659525166444589"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-05 15:46 UTC",
+    "headline": "NIST: CAISI HAS COMPLETED >40 FRONTIER MODEL EVALUATIONS, INCLUDING ON STATE-OF-THE-ART MODELS THAT REMAIN UNRELEASED",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2051659525166444589"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-05 15:46 UTC",
+    "headline": "ANTHROPIC SHIPS 10 READY-TO-RUN CLAUDE FINANCE AGENTS \u2014 PITCHBOOKS, CREDIT MEMOS, KYC, MONTH-END CLOSE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2051680299474686304"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-05 15:46 UTC",
+    "headline": "CLAUDE NOW WORKS IN MICROSOFT EXCEL, POWERPOINT, WORD, OUTLOOK VIA M365 ADD-INS \u2014 PLUS FACTSET, S&P GLOBAL, MORNINGSTAR CONNECTORS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2051681279582540114"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-05 15:46 UTC",
+    "headline": "GEMINI 3.2 FLASH FLASHES ON GEMINI APP \u2014 VERTEX AI POSTS GEMINI 2 FLASH DEPRECATION NOTICE; LM ARENA SHOWS UPDATED 3 FLASH",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2051683664753209793"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-05 15:46 UTC",
+    "headline": "MARK_K: GEMINI 3.5 PRO COMING AT GOOGLE I/O \u2014 WILL BE MEGA GOOD",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2051655683548848626"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-05 15:46 UTC",
+    "headline": "SWE-BENCH CREATORS DROP PROGRAMBENCH \u2014 RECREATE FFMPEG/SQLITE/RIPGREP FROM SCRATCH WITH NO INTERNET; EVERY LLM SCORES 0%",
+    "source": "@deedydas",
+    "url": "https://x.com/deedydas/status/2051684179084284409"
   }
 ]
