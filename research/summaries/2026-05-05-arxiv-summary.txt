@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-05
+
+TOP 5 PAPERS:
+• SST V2 (2605.00206) - parallel-trainable nonlinear recurrence for continuous latent-space reasoning
+• Uniform-Correct Policy Optimization (2605.00365) - fixes RLVR diversity collapse, restores Pass@K
+• ResRL (2605.00380) - neg-sample projection residuals; +9.4% Avg@16 on math, wins 12 benchmarks
+• AEM (2605.00425) - supervision-free entropy modulation for multi-turn agent RL
+• Borrowed Geometry (2605.00333) - frozen text-pretrained weights transfer cross-modality via thin adapters
+
+CATEGORIES: 4 LM/NLP, 1 multimodal, 6 agents/reasoning, 1 safety, 4 other
+
+Full report on GitHub.
