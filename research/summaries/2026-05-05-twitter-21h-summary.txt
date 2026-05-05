@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-05 21:30 UTC
+
+CYCLE: Anthropic doubles down on alignment-research posture; Mythos productization confirmed; BlackRock predicts compute futures market.
+
+TOP STORIES:
+• Anthropic ships SECOND alignment paper in 2.7h (Model Spec Midtraining); two-paper cadence on Day-7-silence-break the same day as CAISI renegotiation [✓]
+• Boris Cherny confirms Anthropic uses Mythos internally (paired with Opus 4.7) and "toned-down version coming for release" — first explicit Mythos productization commitment [⚠]
+• BlackRock CEO Larry Fink: compute will be a new asset class with futures market — "we just don't have enough compute power right now" [✓]
+
+WATCH: 2026-05-06 Code with Claude opening keynote — does Anthropic name Mythos with a release timeline, and does the alignment-research wave anchor the on-stage CAISI framing.
+
+Full update on GitHub.
