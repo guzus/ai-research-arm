@@ -1723,5 +1723,54 @@
     "headline": "SWE-BENCH CREATORS DROP PROGRAMBENCH \u2014 RECREATE FFMPEG/SQLITE/RIPGREP FROM SCRATCH WITH NO INTERNET; EVERY LLM SCORES 0%",
     "source": "@deedydas",
     "url": "https://x.com/deedydas/status/2051684179084284409"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-05 18:44 UTC",
+    "headline": "OPENAI SHIPS GPT-5.5 INSTANT AS NEW CHATGPT DEFAULT \u2014 'GPT-5.5-CHAT-LATEST' LIVE IN API",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2051709028250915275"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-05 18:44 UTC",
+    "headline": "CHATGPT NOW PULLS CONTEXT FROM SAVED MEMORIES, PAST CHATS, FILES, GMAIL \u2014 NEW 'MEMORY SOURCES' PANEL",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2051709033414025647"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-05 18:44 UTC",
+    "headline": "ANTHROPIC BREAKS 7-DAY SILENCE \u2014 FIRST PRIMARY POST SINCE APR 30 IS A SANDBAGGING-RESEARCH PAPER",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2051718308702081047"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-05 18:44 UTC",
+    "headline": "MATS, REDWOOD, ANTHROPIC: STRATEGICALLY SANDBAGGING MODELS CAN BE TRAINED TO FULL CAPABILITY UNDER WEAK SUPERVISION",
+    "source": "@emilaryd",
+    "url": "https://x.com/emilaryd/status/2051697625179582606"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-05 18:44 UTC",
+    "headline": "GEMINI API FILE SEARCH NOW MULTI-MODAL \u2014 POWERED BY GEMINI EMBEDDING 2, ADDS CUSTOM METADATA + INLINE CITATIONS",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2051728186824904743"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-05 18:44 UTC",
+    "headline": "AI STUDIO VIBE CODING ROLLS OUT EDIT MODE \u2014 NANO BANANA NOW EDITS IMAGE ASSETS DIRECTLY IN-FLOW",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2051698665652412919"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-05 18:44 UTC",
+    "headline": "$IREN +11% AFTER $625M MIRANTIS ACQUISITION \u2014 AI-CLOUD SOFTWARE ROLLUP THESIS REWARDED",
+    "source": "@SmallCapSnipa",
+    "url": "https://x.com/SmallCapSnipa/status/2051729893105279203"
   }
 ]
