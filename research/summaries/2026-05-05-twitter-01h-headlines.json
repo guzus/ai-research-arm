@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "NYT: TRUMP WHITE HOUSE BRIEFS ANTHROPIC, GOOGLE, OPENAI ON PRE-RELEASE AI SAFETY REVIEW PROPOSAL — MYTHOS CITED AS TRIGGER",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2051426944106049851",
+    "category": "policy"
+  },
+  {
+    "headline": "SIERRA RAISES $950M SERIES E AT $15B+ VALUATION, TIGER GLOBAL + GV LED — ARR $100M (NOV) TO $150M (FEB)",
+    "source": "@SierraPlatform",
+    "url": "https://x.com/SierraPlatform/status/2051314764798943456",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI 10X CODEX RATE LIMITS UNTIL JUNE 5 FOR GPT-5.5 PARTY APPLICANTS WHO DIDN'T GET IN — CONCESSION ON 4-DAY REVOLT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2051462208748675541",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC ORBIT LEAK: PROACTIVE ASSISTANT FOR CLAUDE COWORK PULLING FROM GMAIL, SLACK, GITHUB, CALENDAR, DRIVE, FIGMA",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2051450201668256051",
+    "category": "model"
+  },
+  {
+    "headline": "CEREBRAS S-1 AMENDMENT SETS IPO RANGE $115-$125, ~$25.5B VALUATION MIDPOINT, $3.24-3.73B RAISE — TARGET MAY 13 ON NASDAQ",
+    "source": "@YeboahWalee",
+    "url": "https://x.com/YeboahWalee/status/2051300983855345807",
+    "category": "business"
+  },
+  {
+    "headline": "BROCKMAN UNDER OATH: ALTMAN PAID HIM $10M IN OFF-BOOKS EQUITY FROM PERSONAL FAMILY OFFICE IN 2017, HIDDEN FROM MUSK",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2051431726287900816",
+    "category": "breaking"
+  },
+  {
+    "headline": "GEMINI API SHIPS WEBHOOKS — UNLOCKS LONG-RUNNING TASK DEVX FOR BATCH, AGENTS, GENMEDIA",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2051434527931953490",
+    "category": "infra"
+  }
+]
