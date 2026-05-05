@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI SHIPS GPT-5.5 INSTANT AS NEW CHATGPT DEFAULT — 'GPT-5.5-CHAT-LATEST' LIVE IN API",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2051709028250915275",
+    "category": "model"
+  },
+  {
+    "headline": "CHATGPT NOW PULLS CONTEXT FROM SAVED MEMORIES, PAST CHATS, FILES, GMAIL — NEW 'MEMORY SOURCES' PANEL",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2051709033414025647",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC BREAKS 7-DAY SILENCE — FIRST PRIMARY POST SINCE APR 30 IS A SANDBAGGING-RESEARCH PAPER",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2051718308702081047",
+    "category": "research"
+  },
+  {
+    "headline": "MATS, REDWOOD, ANTHROPIC: STRATEGICALLY SANDBAGGING MODELS CAN BE TRAINED TO FULL CAPABILITY UNDER WEAK SUPERVISION",
+    "source": "@emilaryd",
+    "url": "https://x.com/emilaryd/status/2051697625179582606",
+    "category": "research"
+  },
+  {
+    "headline": "GEMINI API FILE SEARCH NOW MULTI-MODAL — POWERED BY GEMINI EMBEDDING 2, ADDS CUSTOM METADATA + INLINE CITATIONS",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2051728186824904743",
+    "category": "infra"
+  },
+  {
+    "headline": "AI STUDIO VIBE CODING ROLLS OUT EDIT MODE — NANO BANANA NOW EDITS IMAGE ASSETS DIRECTLY IN-FLOW",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2051698665652412919",
+    "category": "model"
+  },
+  {
+    "headline": "$IREN +11% AFTER $625M MIRANTIS ACQUISITION — AI-CLOUD SOFTWARE ROLLUP THESIS REWARDED",
+    "source": "@SmallCapSnipa",
+    "url": "https://x.com/SmallCapSnipa/status/2051729893105279203",
+    "category": "business"
+  }
+]

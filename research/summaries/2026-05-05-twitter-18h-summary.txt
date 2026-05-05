@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-05 18:44 UTC
+
+CYCLE: Two big primary launches + one structural break.
+
+TOP STORIES:
+• OpenAI ships GPT-5.5 Instant as new ChatGPT default + 'gpt-5.5-chat-latest' in API; rebuilt memory/personalization with 'Memory sources' UI [✓]
+• @AnthropicAI breaks Day 7+ silence at 17:38 UTC with MATS+Redwood+Anthropic Fellows sandbagging paper — first primary post since Apr 30 [✓]
+• Google ships AI Studio Vibe Coding edit-mode (with Nano Banana) + Gemini API File Search now multi-modal via Gemini Embedding 2 [✓]
+
+WATCH: GPT-5.5 launch celebration in SF tonight (full-duplex voice mode); AMD Q1 earnings after-market; Code with Claude keynote tomorrow May 6 (corrected from earlier-cycle May 5 framing).
+
+Full update on GitHub.
