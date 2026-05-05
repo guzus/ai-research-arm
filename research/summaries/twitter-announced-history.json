@@ -1499,5 +1499,54 @@
     "headline": "GEMINI API SHIPS WEBHOOKS \u2014 UNLOCKS LONG-RUNNING TASK DEVX FOR BATCH, AGENTS, GENMEDIA",
     "source": "@OfficialLoganK",
     "url": "https://x.com/OfficialLoganK/status/2051434527931953490"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-05 04:14 UTC",
+    "headline": "BROCKMAN UNDER OATH: 'I'VE NEVER BEEN CERTAIN WHAT I'M BEING SUED FOR' \u2014 $30B OPENAI STAKE FOR $0 CASH CONFIRMED BY MULTIPLE WIRES",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2051501311175065944"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-05 04:14 UTC",
+    "headline": "COINTELEGRAPH CONFIRMS BROCKMAN $30B OPENAI STAKE DISCLOSURE IN MUSK V. ALTMAN TRIAL",
+    "source": "@Cointelegraph",
+    "url": "https://x.com/Cointelegraph/status/2051507411844731139"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-05 04:14 UTC",
+    "headline": "TICKERTRENDS: CODEX OVERTAKES CLAUDE CODE IN NPM WEEKLY DOWNLOADS \u2014 46M VS 491K, GAP WIDENING SINCE APRIL 30",
+    "source": "@tickerplus",
+    "url": "https://x.com/tickerplus/status/2051126808037257704"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-05 04:14 UTC",
+    "headline": "JACK CLARK: 60% CHANCE OF RECURSIVE SELF-IMPROVEMENT BY END OF 2028 \u2014 ANTHROPIC POLICY LEAD GOES ON RECORD",
+    "source": "@jackclarkSF",
+    "url": "https://x.com/jackclarkSF/status/2051312759594471886"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-05 04:14 UTC",
+    "headline": "REUTERS: CEREBRAS TARGETS $26.6B VALUATION IN US IPO AS AI CHIP DEMAND SURGES",
+    "source": "@Reuters",
+    "url": "https://x.com/Reuters/status/2051507186526724180"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-05 04:14 UTC",
+    "headline": "OPENAI 10X CODEX RATE-LIMIT BUMP NOW EXTENDS TO ALL GPT-5.5 PARTY APPLICANTS, NOT JUST NON-ATTENDEES",
+    "source": "@jxnlco",
+    "url": "https://x.com/jxnlco/status/2051468129101099038"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-05 04:14 UTC",
+    "headline": "SIMONW: BUN APPEARS TO BE EXPLORING A PORT FROM ZIG TO RUST PER LEAKED PORTING.MD GUIDE FOR CODING AGENTS",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2051476878712840407"
   }
 ]
