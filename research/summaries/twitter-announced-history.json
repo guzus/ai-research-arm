@@ -1772,5 +1772,54 @@
     "headline": "$IREN +11% AFTER $625M MIRANTIS ACQUISITION \u2014 AI-CLOUD SOFTWARE ROLLUP THESIS REWARDED",
     "source": "@SmallCapSnipa",
     "url": "https://x.com/SmallCapSnipa/status/2051729893105279203"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-05 21:30 UTC",
+    "headline": "ANTHROPIC SHIPS SECOND ALIGNMENT PAPER IN 2.7 HOURS \u2014 MODEL SPEC MIDTRAINING DROPS HOURS AFTER SANDBAGGING RESEARCH",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2051758528562364902"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-05 21:30 UTC",
+    "headline": "ANTHROPIC USES CLAUDE MYTHOS INTERNALLY ALONGSIDE OPUS 4.7 \u2014 TONED-DOWN MYTHOS HEADED FOR PUBLIC RELEASE, CHERNY CONFIRMS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2051735777105846632"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-05 21:30 UTC",
+    "headline": "BLACKROCK CEO LARRY FINK: COMPUTE WILL BE A NEW ASSET CLASS WITH ITS OWN FUTURES MARKET",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2051740930663944659"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-05 21:30 UTC",
+    "headline": "META BUILDS AGENTIC ASSISTANT FOR 3 BILLION USERS POWERED BY NEW MUSE SPARK MODEL \u2014 FT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2051748884662407211"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-05 21:30 UTC",
+    "headline": "GOOGLE SHIPS GEMMA 4 MULTI-TOKEN PREDICTION DRAFTERS \u2014 3X INFERENCE SPEEDUP AT ZERO QUALITY LOSS",
+    "source": "@googlegemma",
+    "url": "https://x.com/testingcatalog/status/2051746452234285160"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-05 21:30 UTC",
+    "headline": "BRAZIL AI LEGAL STARTUP ENTER RAISES $100M AT $1.2B \u2014 FOUNDERS FUND LEADS, SEQUOIA + RIBBIT JOIN, VALUATION TRIPLES IN 8 MONTHS",
+    "source": "@BSCNews",
+    "url": "https://x.com/BSCNews/status/2051780033128825240"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-05 21:30 UTC",
+    "headline": "OPENAI AGENTS SDK NOW IN TYPESCRIPT WITH SANDBOX AGENTS AND OPEN-SOURCE HARNESS BUILT IN",
+    "source": "@OpenAIDevs",
+    "url": "https://x.com/OpenAIDevs/status/2051725072873001338"
   }
 ]
