@@ -1,15 +1,18 @@
 AI News - 2026-05-05
 
 TOP STORIES:
-• Sierra (Bret Taylor) closes $950M Series E at $15.8B post-money — Tiger Global + Google's GV lead; $150M ARR in 8 quarters
-• Brockman testifies $30B OpenAI stake & confirms IPO exploration on the record for first time; Altman family-office ties disclosed
-• OpenAI "GPT-5.5 on 5/5" invite-only launch tonight in SF — Codex-engineered event, GPT-5.6 development now publicly confirmed
-• Google Pentagon Gemini deal triggers ~600-employee letter to Pichai; leadership refuses to withdraw — biggest backlash since 2018 Maven
+• Anthropic ships massive Wall Street launch — 10 financial-services AI agents, full Microsoft 365 integration (Excel/PowerPoint/Word GA, Outlook beta), Moody's native Claude app, FIS Financial Crimes agent. Amodei + Dimon on stage in NYC.
+• OpenAI rolls out GPT-5.5 Instant as new default ChatGPT model — 52.5% fewer hallucinations, persistent memory from past chats/files/Gmail, "no gratuitous emojis."
+• Sierra (Bret Taylor) closes $950M Series E at $15.8B post-money — Tiger Global + Google's GV lead; $150M ARR in 8 quarters.
+• Brockman testifies $30B OpenAI stake & confirms IPO exploration on the record for first time; Altman family-office ties disclosed.
+• OpenAI "GPT-5.5 on 5/5" invite-only launch tonight in SF.
 
 KEY NUMBERS:
 • Sierra: $950M raised, $15.8B post (+58% in 7mo), $150M ARR
+• GPT-5.5 Instant: 52.5% fewer hallucinations on high-stakes prompts
+• FIS stock: +7.3% after-hours on Anthropic partnership
+• Moody's coverage in Claude: 600M entities, 2B ownership links
+• Profluent-Lilly: $2.25B AI gene-editing pact
 • Brockman OpenAI stake: ~$30B
-• Google employee letter: ~600 signatures (some report ~1,000)
-• Mandiant: 28.3% of CVEs exploited within 24h of disclosure
 
 Full report on GitHub.
