@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-06
+
+TOP 5 PAPERS:
+- MultiBreak: 10,389 multi-turn jailbreak prompts spanning 2,665 harmful intents — most diverse multi-turn safety benchmark yet.
+- ContextualJailbreak: evolutionary red-teaming via simulated priming hits 100% ASR on open models, 90% on gpt-oss:120B.
+- Search-Driven RL Reward Optimization: LM proposes rewards, short GRPO runs screen them; full pipeline in ~40h on one GPU.
+- LEAP: pretraining objective that finally reconciles layer-aligned distillation with early-exit inference.
+- SpecKV: adaptive per-step gamma for speculative decoding, compression-aware — free latency wins on existing stacks.
+
+CATEGORIES: LM/NLP 6, Vision/Multimodal 6, Agents/Reasoning 5, Safety/Alignment 7, Other 5
+
+Full report on GitHub.
