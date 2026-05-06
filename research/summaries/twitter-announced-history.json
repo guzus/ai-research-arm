@@ -1870,5 +1870,54 @@
     "headline": "OPENAI ACCELERATES AI-AGENT PHONE TO H1 2027 MASS PRODUCTION \u2014 KOREAN SUPPLY-CHAIN LEAK",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2051799863965454773"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-06 04:24 UTC",
+    "headline": "ANTHROPIC COMMITS ~$200B TO GOOGLE CLOUD + TPUS OVER 5 YEARS, BEGINS 2027 \u2014 LARGEST KNOWN SINGLE-CUSTOMER COMPUTE DEAL ON RECORD",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2051846970978062669"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-06 04:24 UTC",
+    "headline": "ANTHROPIC, BLACKSTONE, GOLDMAN SACHS, HELLMAN & FRIEDMAN LAUNCH $1.5B ENTERPRISE AI SERVICES VENTURE",
+    "source": "@Mingtiandi",
+    "url": "https://x.com/Mingtiandi/status/2051872736562360759"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-06 04:24 UTC",
+    "headline": "DARIO AMODEI: OTHER MAJOR US AI LABS ~1-3 MONTHS BEHIND ANTHROPIC; NO ISSUE PUTTING MORE COMPUTE INTO MYTHOS; REVENUE GREW 80X SINCE 2024",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2051847480254570998"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-06 04:24 UTC",
+    "headline": "SIERRA RAISES $950M AT $15.8B POST-MONEY VALUATION \u2014 BRET TAYLOR'S AGENTIC CUSTOMER-EXPERIENCE STARTUP, TIGER GLOBAL + GV LED",
+    "source": "@pulse2news",
+    "url": "https://x.com/pulse2news/status/2051879961225732464"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-06 04:24 UTC",
+    "headline": "AMD AFTER-HOURS RALLY EXTENDS TO +21% / ~$580B MARKET CAP POST-Q1 BLOWOUT \u2014 AI INFRA REPRICING CONTINUES",
+    "source": "@VietnamPenguin",
+    "url": "https://x.com/VietnamPenguin/status/2051880578199466492"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-06 04:24 UTC",
+    "headline": "MORGAN STANLEY RAISES HYPERSCALER CAPEX FORECAST: $805B IN 2026, $1.1T BY 2027 ACROSS AMZN/GOOG/META/MSFT/ORCL",
+    "source": "@sinclairdta",
+    "url": "https://x.com/sinclairdta/status/2051880137583378579"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-06 04:24 UTC",
+    "headline": "NVIDIA OPEN-SOURCES 20+ CUDNN MOE KERNELS + NSA SPARSE ATTENTION KERNELS, ENDING 12-YEAR CLOSED-SOURCE ERA",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2051874751455408284"
   }
 ]
