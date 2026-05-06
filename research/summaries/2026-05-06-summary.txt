@@ -4,12 +4,20 @@ TOP STORIES:
 • CAISI signs pre-release MOUs with Microsoft, Google, xAI; OpenAI/Anthropic renegotiated — Mythos cited as trigger
 • Anthropic reportedly commits ~$200B to Google Cloud + TPUs over 5 years (The Information)
 • AMD Q1 blowout: $10.25B rev (+38%), DC $5.8B (+57%), Q2 guide $11.2B; stock +15% ATH
-• DeepSeek nears ~$45B valuation, China's "Big Fund" leading + Tencent/Alibaba (FT)
+• Samsung crosses $1T market cap; Kospi above 7,000 first time ever
+• Code with Claude SF: Claude Code Auto Mode, Claude Design, Memory for Managed Agents, Code Review GA — no Claude 5 reveal
+• DeepSeek funding nears ~$45B led by China's "Big Fund" (FT scoop)
+• SAP to acquire German tabular-AI lab Prior Labs (~$1.16B); >€1B over 4yr
+• Brockman trial: OpenAI to spend ~$50B on compute in 2026
 
 KEY NUMBERS:
-• Samsung crosses $1T market cap (2nd Asian after TSMC); +15%, Kospi >7,000
-• Cerebras IPO ~3x oversubscribed at $26.6B; pricing May 13
-• Gemma 4 MTP drafters: up to 3x speedup, Apache 2.0
-• Chrome silently installed 4GB Gemini Nano on 1B+ devices
+• Anthropic-Google: $200B / 5yr
+• AMD Q1 DC: +57% YoY
+• Samsung: $1T market cap
+• DeepSeek: $45B valuation
+• OpenAI 2026 compute: $50B
+• SAP-Prior Labs: ~$1.16B
+• Cerebras IPO: ~3x oversubscribed at $26.6B
+• Chrome: 4GB Gemini Nano on 1B+ devices
 
-Code with Claude SF today. Full report on GitHub.
+Full report on GitHub.
