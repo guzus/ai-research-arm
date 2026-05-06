@@ -2073,5 +2073,54 @@
     "headline": "ANTHROPIC CODE WITH CLAUDE 2026 KEYNOTE OPENS 15:00 UTC SF \u2014 NO MODEL DROPS YET",
     "source": "@claudeai",
     "url": "https://x.com/claudeai/status/2050252933866930339"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-06 18:46 UTC",
+    "headline": "ANTHROPIC TAKES ALL OF SPACEX/XAI COLOSSUS 1 \u2014 300+ MW, 220K+ GPUS, DEPLOYABLE WITHIN THE MONTH",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2052060694699237558"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-06 18:46 UTC",
+    "headline": "ANTHROPIC DOUBLES CLAUDE CODE 5-HOUR LIMITS ON PRO/MAX/TEAM/ENTERPRISE; OPUS API RATES SUBSTANTIALLY RAISED",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2052064938840228237"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-06 18:46 UTC",
+    "headline": "MUSK ON RECORD: SPACEXAI MOVED TRAINING TO COLOSSUS 2, LEASING COLOSSUS 1 TO ANTHROPIC",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2052073708127133958"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-06 18:46 UTC",
+    "headline": "CODE WITH CLAUDE KEYNOTE: NO NEW MODEL \u2014 MANAGED AGENTS SHIPS DREAMS, MULTIAGENT, OUTCOMES, WEBHOOKS",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2052067399088664981"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-06 18:46 UTC",
+    "headline": "BROCKMAN CROSS-EXAM: 77,727 CEREBRAS SHARES (MAR 2017) + DEC 2025 OPENAI 750 MW DEAL \u2192 CEREBRAS TRIPLED TO $23B+",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2052064407195115566"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-06 18:46 UTC",
+    "headline": "LECUN: ANTHROPIC-COLOSSUS DEAL IS A BLOW TO THE IDEA THAT GROK WILL REMAIN A FRONTIER MODEL",
+    "source": "@ylecun",
+    "url": "https://x.com/ylecun/status/2052068290311139769"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-06 18:46 UTC",
+    "headline": "ANTHROPIC + SPACEX EXPLORING MULTI-GIGAWATT ORBITAL AI COMPUTE PARTNERSHIP",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2052062825598644398"
   }
 ]
