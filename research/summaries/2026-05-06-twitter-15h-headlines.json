@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI RELEASES MRC NETWORKING PROTOCOL WITH AMD, BROADCOM, INTEL, MICROSOFT, NVIDIA — DEPLOYED AT FAIRWATER + ABILENE GB200 SITES",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2052025532485902368",
+    "category": "infra"
+  },
+  {
+    "headline": "MRC PUBLISHED THROUGH OPEN COMPUTE PROJECT — SRv6 SOURCE ROUTING REPLACES BGP, MICROSECOND FAILURE RECOVERY VS SECONDS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2052025533937103102",
+    "category": "opensource"
+  },
+  {
+    "headline": "GPT-5.5 INSTANT NOW DEFAULT MODEL FOR ALL CHATGPT USERS — API ALIAS gpt-5.5-chat-latest LIVE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2051709028250915275",
+    "category": "model"
+  },
+  {
+    "headline": "ALTMAN: 'CHATGPT FEELS VERY SWITCHED ON NOW' — SOLICITS LUDICROUS-TOKEN-BUDGET 5.5 USE CASES",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2051724685231214650",
+    "category": "model"
+  },
+  {
+    "headline": "GOOGLE DEEPMIND PARTNERS WITH EVE ONLINE FOR AGENT RESEARCH — MEMORY, CONTINUAL LEARNING, LONG-HORIZON PLANNING",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2052011542707630461",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC CODE WITH CLAUDE 2026 KEYNOTE OPENS 15:00 UTC SF — NO MODEL DROPS YET",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2050252933866930339",
+    "category": "business"
+  }
+]
