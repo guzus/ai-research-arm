@@ -1,0 +1,15 @@
+AI News - 2026-05-06
+
+TOP STORIES:
+• CAISI signs pre-release MOUs with Microsoft, Google, xAI; OpenAI/Anthropic renegotiated — Mythos cited as trigger
+• Anthropic reportedly commits ~$200B to Google Cloud + TPUs over 5 years (The Information)
+• AMD Q1 blowout: $10.25B rev (+38%), DC $5.8B (+57%), Q2 guide $11.2B; stock +15% ATH
+• DeepSeek nears ~$45B valuation, China's "Big Fund" leading + Tencent/Alibaba (FT)
+
+KEY NUMBERS:
+• Samsung crosses $1T market cap (2nd Asian after TSMC); +15%, Kospi >7,000
+• Cerebras IPO ~3x oversubscribed at $26.6B; pricing May 13
+• Gemma 4 MTP drafters: up to 3x speedup, Apache 2.0
+• Chrome silently installed 4GB Gemini Nano on 1B+ devices
+
+Code with Claude SF today. Full report on GitHub.
