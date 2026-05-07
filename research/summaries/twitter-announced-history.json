@@ -2297,5 +2297,54 @@
     "headline": "DARIO AMODEI ON MYTHOS ROLLOUT: TOO FEW ACTORS DEFENDERS STAY WEAK, TOO MANY MISUSE SCALES; TOO SLOW CHINA CATCHES UP",
     "source": "@vitrupo",
     "url": "https://x.com/vitrupo/status/2052359534103114177"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-07 15:54 UTC",
+    "headline": "ANTHROPIC LAUNCHES THE ANTHROPIC INSTITUTE (TAI) \u2014 4-PILLAR RESEARCH AGENDA, ENDORSES 60% RSI-BY-2028 THESIS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2052385812881228218"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-07 15:54 UTC",
+    "headline": "ANTHROPIC ON-RECORD: CLAUDE MYTHOS PREVIEW IS OUR MOST POWERFUL CODING MODEL \u2014 FIRST OFFICIAL CHANNEL CONFIRMATION",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2052385817100763581"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-07 15:54 UTC",
+    "headline": "META 'HATCH' AGENT TARGETS END-JUNE INTERNAL TESTING \u2014 ANTHROPIC CLAUDE OPUS 4.6 REPORTEDLY AS TRANSITIONAL INFERENCE LAYER",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2052398131048800585"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-07 15:54 UTC",
+    "headline": "META BUILDING HATCH AGENT + INSTAGRAM SHOPPING TOOL \u2014 ZUCKERBERG PUSHING AGENTIC AI TO REVENUE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2052388072638017928"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-07 15:54 UTC",
+    "headline": "TRENDFORCE: APRIL DRAM CONTRACT PRICES +57% VS Q1 2026 \u2014 MOBILE DRAM +80%, NAND +65-70%, eMMC/UFS +75-80%",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2052403514425667720"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-07 15:54 UTC",
+    "headline": "SERVICENOW BUILDING 'ACTION FABRIC' TOLLGATE \u2014 WILL METER AND CHARGE WHEN OUTSIDE AI AGENTS ACCESS DATA",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2052410381771874595"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-07 15:54 UTC",
+    "headline": "GOOGLE PREPARING AGENT MODE FOR FLOW \u2014 END-TO-END VIDEO PRODUCTION AUTOMATION FROM CHAT SURFACE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2052393224795251147"
   }
 ]
