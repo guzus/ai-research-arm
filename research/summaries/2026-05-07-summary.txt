@@ -1,16 +1,18 @@
 AI News - 2026-05-07
 
 TOP STORIES:
-• NVIDIA inks $3.2B Corning deal for 3 new US optical-fiber plants — co-packaged optics for Vera Rubin / Rubin Ultra; 10x US capacity, 3,000+ jobs
-• Apple to open Apple Intelligence to third-party AI in iOS 27 / macOS 27 — "Extensions" lets users pick Claude, Gemini, ChatGPT for Siri, Writing Tools, Image Playground
-• ElevenLabs crosses $500M ARR in 4 months — adds BlackRock, Wellington, Nvidia, Salesforce Ventures, Jamie Foxx, Hwang Dong-hyuk to Series D
-• Google AI Search adds "Expert Advice" — Reddit, Quora, forum quotes inline in AI Overviews + AI Mode
+• Anthropic leases ALL of SpaceX Colossus 1 (Memphis); doubles Claude Code limits
+• Moonshot (Kimi) raises ~$2B at $20B, Meituan-led — biggest Chinese LLM round
+• OpenAI launches "Trusted Contact" ChatGPT self-harm safeguard
+• Google renames Fitbit to "Google Health," $9.99/mo Gemini Health Coach May 19
+• Foxconn Q1 +29.7%: AI servers (40%) > iPhones (38%) first time ever
+• Apple iOS 27 to open Apple Intelligence to Claude/Gemini/ChatGPT
+• NVIDIA-Corning $3.2B optical-fiber deal, 3 new US plants
 
 KEY NUMBERS:
-• Nvidia-Corning: $3.2B warrants, 15M shares at $180 strike, 10x US optical capacity
-• ElevenLabs: $350M ARR (Dec 2025) -> $500M ARR (Apr 2026) in 16 weeks; $11B Feb valuation
-• Corning +12%, Nvidia +5.8% on the day
-• Apple devices: ~2.35B active = largest AI distribution channel ever opened
-• T-6 days: Cerebras IPO pricing + EU AI Omnibus trilogue (both May 13)
+• SpaceX deal: 300+ MW, 220K+ GPUs
+• Moonshot: $2B@$20B, $200M ARR
+• Coinbase: -14% (~700) AI-native cuts
+• Blitzy: $200M@$1.4B, 66.5% SWE-Bench Pro
 
 Full report on GitHub.
