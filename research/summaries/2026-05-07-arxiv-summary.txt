@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-07
+
+TOP 5 PAPERS:
+• Why LLMs Struggle in Strategic Play (2605.00226) - Internal beliefs are accurate but brittle; steering hidden states barely changes actions
+• GR-Ben (2605.01203) - First cross-domain PRM benchmark; current PRMs only generalize on math, miss knowledge errors
+• ROME + ARISE (2605.03242) - Rewrites unsafe trajectories into deceptive variants; hidden-risk cases collapse frontier safety judgment
+• RSAT (2605.00199) - SFT+GRPO trains 1-8B models to cite table cells; 3.7x faithfulness gain, post-hoc attribution fails
+• CgRAG (2605.03790) - Chain-of-Question guided RAG for multimodal LLMs; gains on E-VQA, InfoSeek, OKVQA
+
+CATEGORIES: NLP/LLM 5, Vision/Multimodal 3, Agents/Reasoning 5, Safety 2, Other 1
+
+Full report on GitHub.
