@@ -1,0 +1,11 @@
+Speaker 1: Thursday, May seventh, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic just locked in the largest enterprise AI compute deal ever recorded — roughly two hundred billion dollars committed to Google Cloud and TPUs over five years.
+Speaker 1: That news broke alongside the Code with Claude event in San Francisco — and while there was no Claude five or Jupiter model reveal, what they did announce was substantial.
+Speaker 2: Auto Mode, Claude Design, Memory for Agents, Code Review going generally available, and multi-agent fleets — a full product wave, even without the flagship model drop.
+Speaker 1: On the chip side, AMD reported a blowout quarter — [emphasis]ten point two five billion dollars in revenue[/emphasis], up thirty-eight percent year over year, with the Data Center segment up fifty-seven percent. Stock jumped fifteen percent after hours to an all-time high.
+Speaker 2: And Meta is already deploying AMD MI four-fifty chips — their first one gigawatt of a planned six gigawatt rollout. That is a serious hardware commitment.
+Speaker 1: Some quick numbers making headlines: Samsung crossed a [emphasis]one trillion dollar market cap[/emphasis] this week, pushing the KOSPI index past seven thousand.
+Speaker 2: Worth noting that OpenAI's Greg Brockman testified under oath that the company plans to spend around fifty billion dollars on compute in twenty twenty-six alone. Meanwhile DeepSeek is reportedly closing in on a forty-five billion dollar raise led by China's Big Fund.
+Speaker 1: On the policy front, the CAISI signed memoranda of understanding with Microsoft, Google DeepMind, and xAI.
+Speaker 2: [dramatic_pause] And the story blowing up on Hacker News — Chrome is quietly installing a four gigabyte Gemini Nano model on user devices without asking. That thread hit a thousand points.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
