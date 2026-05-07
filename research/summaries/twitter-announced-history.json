@@ -2395,5 +2395,54 @@
     "headline": "SCALE AI SWE ATLAS REFACTORING LEADERBOARD \u2014 CLAUDE CODE WITH OPUS 4.7 #1, CODEX WITH GPT-5.5 #2",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2052422412516339887"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-07 21:29 UTC",
+    "headline": "NVIDIA-IREN STRIKE $2.1B STRATEGIC PARTNERSHIP \u2014 5GW DSX-ALIGNED AI INFRASTRUCTURE, $3.4B AI CLOUD CONTRACT, IREN +27% AH",
+    "source": "@ACInvestorBlog",
+    "url": "https://x.com/ACInvestorBlog/status/2052500041894355167"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-07 21:29 UTC",
+    "headline": "NVIDIA GRANTED FIVE-YEAR OPTION TO ACQUIRE 30M IREN SHARES AT $70 \u2014 UP TO $2.1B AT FULL EXERCISE",
+    "source": "@jermseesghosts",
+    "url": "https://x.com/jermseesghosts/status/2052499207555051537"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-07 21:29 UTC",
+    "headline": "OPENAI SHIPS CODEX CHROME EXTENSION \u2014 PARALLEL-TAB BACKGROUND AUTOMATION ON MACOS AND WINDOWS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2052480800004956323"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-07 21:29 UTC",
+    "headline": "ANTHROPIC: FIREFOX TEAM FIXED MORE SECURITY BUGS IN APRIL THAN PRIOR 15 MONTHS COMBINED \u2014 WITH CLAUDE MYTHOS PREVIEW",
+    "source": "@alexalbert__",
+    "url": "https://x.com/alexalbert__/status/2052468573516513762"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-07 21:29 UTC",
+    "headline": "ANTHROPIC DONATES PETRI ALIGNMENT TOOL TO NEW MERIDIAN LABS NON-PROFIT \u2014 V3.0 SHIPS TODAY",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2052494460966019137"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-07 21:29 UTC",
+    "headline": "ANTHROPIC OPENS HACKERONE SECURITY BUG BOUNTY TO THE PUBLIC \u2014 PREVIOUSLY PRIVATE PROGRAM",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2052466175540629965"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-07 21:29 UTC",
+    "headline": "GPT-REALTIME-2 SCORES 96.6% ON BIG BENCH AUDIO SPEECH REASONING; #1 CONVERSATIONAL DYNAMICS \u2014 $1.15/HR IN, $4.61/HR OUT",
+    "source": "@ArtificialAnlys",
+    "url": "https://x.com/ArtificialAnlys/status/2052486470469140777"
   }
 ]
