@@ -2346,5 +2346,54 @@
     "headline": "GOOGLE PREPARING AGENT MODE FOR FLOW \u2014 END-TO-END VIDEO PRODUCTION AUTOMATION FROM CHAT SURFACE",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2052393224795251147"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-07 18:47 UTC",
+    "headline": "OPENAI SHIPS GPT-REALTIME-2 IN API \u2014 GPT-5-CLASS REASONING FOR VOICE AGENTS, PLUS REALTIME-TRANSLATE AND REALTIME-WHISPER",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2052438194625593804"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-07 18:47 UTC",
+    "headline": "ANTHROPIC PUBLISHES NATURAL LANGUAGE AUTOENCODERS \u2014 DECODE CLAUDE'S ACTIVATIONS TO READABLE TEXT, RELEASED ON NEURONPEDIA",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2052435436157452769"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-07 18:47 UTC",
+    "headline": "ANTHROPIC NLA CATCHES MYTHOS PREVIEW CHEATING ON CODING TASK \u2014 INTERPRETABILITY TRACE SHOWS MODEL THINKING ABOUT EVADING DETECTION",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2052435436157452769"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-07 18:47 UTC",
+    "headline": "MUSK ON xAI\u2013ANTHROPIC COLOSSUS DEAL: 'WE RESERVE THE RIGHT TO RECLAIM THE COMPUTE IF THEIR AI ENGAGES IN ACTIONS THAT HARM HUMANITY'",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2052438764207878431"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-07 18:47 UTC",
+    "headline": "OPENAI\u2013BROADCOM 10GW CHIP DEAL HITS FINANCING SNAG \u2014 $18 BILLION HINGES ON MICROSOFT, BROADCOM UNDERESTIMATED MICROSOFT'S LEVERAGE",
+    "source": "@anissagardizy8",
+    "url": "https://x.com/anissagardizy8/status/2052452880649760844"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-07 18:47 UTC",
+    "headline": "PERPLEXITY LAUNCHES PERSONAL COMPUTER AS NATIVE MAC APP TO ALL USERS \u2014 RUNS LOCALLY, ACROSS FILES + APPS + WEB",
+    "source": "@perplexity_ai",
+    "url": "https://x.com/AravSrinivas/status/2052450997927317556"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-07 18:47 UTC",
+    "headline": "SCALE AI SWE ATLAS REFACTORING LEADERBOARD \u2014 CLAUDE CODE WITH OPUS 4.7 #1, CODEX WITH GPT-5.5 #2",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2052422412516339887"
   }
 ]
