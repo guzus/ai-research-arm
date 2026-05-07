@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-07 09:58 UTC
+
+CYCLE: Genuinely quiet US-overnight / EU-morning window — only 19 monitored-account tweets across 10 handles. Most "AI news" surfacing in search is recycled (FIS-Anthropic from May 5, Grok 4.3 IFBench from May 1, Fractile-Anthropic from May 4).
+
+TOP STORIES:
+• Samsung fast-tracks P5 Fab 2 (P6) groundbreaking 6 months to July — final Pyeongtaek-campus line, target 2029 start with 200-300K wafers/mo (largest single fab globally), AI/HBM/DRAM-driven [✓ on decision, ⚠ on near-term impact]
+• mark_k restates Musk's "Grok continues to make progress" as multi-Grok-model training on Colossus 2 + "Grok Build" as xAI's Codex/Claude-Code answer — product-name attribution paraphrase-only [⚠ single-source]
+• No model releases, no funding rounds, no Day 5 / Altman testimony, no Mythos GA, no BlackRock-hyperscaler deal landing despite "later this week" framing
+
+WATCH: Day 5/6 OpenAI v. Musk witness sequence (Altman live testimony pending); BlackRock-hyperscaler announcement; xAI corp-record naming "Grok Build"
+
+Full update on GitHub.
