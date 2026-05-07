@@ -1,100 +1,99 @@
-# Methodology Improvements - 2026-02-01
+# Methodology Improvements — 2026-05-07
 
-## Analysis Date: 2026-01-31 Output Review
+Analysis of the 2026-05-06 research output surfaced two silently-broken
+ingestion pipelines and several low-cost coverage upgrades.
 
-### Issues Found
+> **Apply note:** the GitHub App that runs `daily-improve.yml` does not
+> hold the `workflows` permission, so its installation token cannot push
+> changes to `.github/workflows/*.yml`. The workflow patches are therefore
+> attached as a unified diff in `improvements/2026-05-07-workflow-fixes.patch`.
+> A maintainer can apply the changes from the repo root with:
+>
+> ```bash
+> git checkout main
+> git apply improvements/2026-05-07-workflow-fixes.patch
+> git commit -am "Methodology improvements 2026-05-07: RSS + Bluesky pipeline fixes"
+> git push
+> ```
 
-#### 1. Bluesky API Completely Broken (Critical)
-- **Problem**: The `public.api.bsky.app` search endpoint returned HTTP 403 Forbidden for 7 out of 12 cycles on 2026-01-31. The self-hosted runner's IP is blocked by Bluesky's CDN/firewall.
-- **Impact**: Zero data collected for the first 7 cycles (02:00-14:27 UTC). Later cycles only worked because Claude improvised a fallback to `getAuthorFeed` at runtime — this was not in the workflow itself.
-- **Evidence**: `research/bluesky/2026-01-31.md` shows 7 consecutive "No posts collected" entries.
+## Issues Found
 
-#### 2. RSS Feeds Returning HTML Instead of RSS (High)
-- **Problem**: Anthropic (`openrss.org/www.anthropic.com/news`) and Meta AI (`ai.meta.com/blog/rss/`) consistently returned HTML instead of valid RSS/XML. Every hourly check showed "Feed unavailable (returned HTML instead of RSS)".
-- **Impact**: Complete loss of two major AI company blogs from RSS monitoring. These are key primary sources for announcements.
-- **Evidence**: `research/rss/2026-01-31.md` — every cycle shows "Anthropic: Feed unavailable" and "Meta AI: Feed unavailable".
+### 1. RSS pipeline silent outage (10 days)
+- **Last successful run:** `2026-04-27 09:18 UTC` (commit `90f15f30`).
+- **Effect:** `research/rss/2026-05-0*.md` does not exist; the daily digest's
+  "Official Announcements" section has been falling back entirely to
+  Twitter/community signal for the last 10 days.
+- **Root cause:** `https://openrss.org/www.anthropic.com/news` started
+  returning HTTP 000 (DNS / connection-level failure). The `curl` invocation
+  in `hourly-rss.yml` had **no `--max-time`**, so the step hung until the
+  GitHub-hosted runner killed the job — and the next hour's run cancelled
+  the previous via `concurrency: cancel-in-progress`. The pipeline never
+  produced a commit, so the failure was invisible.
+- **Bonus regressions confirmed during triage:**
+  - `https://ai.meta.com/blog/rss/` → 404 (Meta retired the public RSS).
+  - `https://www.anthropic.com/news/rss.xml` → 404 (no official feed exists).
 
-#### 3. RSS Feed Sparse Output (Medium)
-- **Problem**: Out of ~24 hourly RSS runs, only 4 produced any content. Most hours showed "No new updates this hour" across all sources.
-- **Impact**: RSS channel underperforms relative to its potential. Feed list is too narrow to guarantee hourly updates.
+### 2. Bluesky pipeline returning empty payloads (≥ 6 days)
+- `research/bluesky/2026-05-0*.md` files are 5 lines each, all containing
+  `"upstream Bluesky fetch returned HTTP 403 Forbidden for all five source
+  feeds"`.
+- **Root cause:** `public.api.bsky.app/xrpc/app.bsky.feed.searchPosts` now
+  returns `403 Request forbidden by administrative rules` for unauthenticated
+  callers (see `bluesky-social/bsky-docs#332`). The sibling host
+  `api.bsky.app` still accepts the same call without auth; `getAuthorFeed`
+  also continues to work on the public host.
 
-#### 4. Missing Major RSS Sources (Medium)
-- **Problem**: No feeds from NVIDIA AI, AWS ML, Microsoft AI, Amazon Science, or any AI newsletters/bloggers. These are significant sources of AI announcements and analysis.
-- **Impact**: RSS relies on only 11 feeds, missing key announcements from cloud providers and popular AI commentators.
+### 3. Coverage gaps
+The 2026-05-06 digest cited Simon Willison, Jack Clark (Import AI), Zvi
+Mowshowitz, and SemiAnalysis as primary sources, but none of those are in
+the RSS workflow. The pipeline was only collecting four official-vendor
+blogs and three press outlets.
 
-#### 5. Reddit Coverage Too Narrow (Low-Medium)
-- **Problem**: Only 3 subreddits monitored (r/MachineLearning, r/LocalLLaMA, r/artificial). Missing popular AI communities with significant discussion.
-- **Impact**: Missing community signals from r/singularity (248K members), r/OpenAI (1.3M), r/ClaudeAI (100K+), r/StableDiffusion (650K+).
+## Changes Made
 
-#### 6. Bluesky Researcher List Too Short (Low)
-- **Problem**: Only searched for Karpathy by handle. Many AI researchers active on Bluesky are not being tracked.
-- **Impact**: Heavy reliance on generic keyword search rather than following known high-signal accounts.
+### `.github/workflows/hourly-rss.yml`
+- Wrapped every fetch in a `fetch()` helper with `curl --max-time 15`, so a
+  hung endpoint can no longer freeze the step. Empty / zero-byte responses
+  are normalized to `<rss></rss>` so the parser never sees a missing file.
+- Replaced `openrss.org/www.anthropic.com/news` with the community-maintained
+  feed `taobojlen/anthropic-rss-feed` (verified 200 / fresh as of
+  2026-05-06, tracks `anthropic.com/news`).
+- Removed the dead `ai.meta.com/blog/rss/` source. Meta AI announcements
+  are already covered by the Twitter and Bluesky pipelines.
+- **Added eight new sources** (all verified 200 from the runner):
+  - Microsoft AI Blog (`blogs.microsoft.com/ai`)
+  - AWS Machine Learning Blog
+  - Cloudflare AI tag
+  - Together AI Blog
+  - Ars Technica AI
+  - arXiv `cs.CL` (NLP-specific, complements `cs.AI` / `cs.LG`)
+  - Simon Willison (`simonwillison.net/atom/everything/`)
+  - Jack Clark — Import AI (`importai.substack.com/feed`)
+  - Zvi Mowshowitz (`thezvi.substack.com/feed`)
+  - SemiAnalysis (`semianalysis.com/feed`)
+- Updated the Claude prompt's source-file list and output template so the
+  new categories actually surface in the daily file.
 
----
+### `.github/workflows/2h-bluesky.yml`
+- `searchPosts` now tries `api.bsky.app` first and falls back to
+  `public.api.bsky.app`; both are wrapped with `--max-time 15`.
+- Replaced the `from:karpathy.bsky.social` searchPosts hack (which stopped
+  returning results) with **`getAuthorFeed`** calls for five high-signal
+  accounts: Karpathy, LeCun, Emily M. Bender, Simon Willison, and Hugging
+  Face. `getAuthorFeed` still works without auth on the public host.
+- Updated the prompt to document the dual JSON shapes (`posts[]` for
+  searches, `feed[].post` for author feeds) and to skip empty payloads
+  silently rather than emitting `"(no data)"` placeholders.
 
-### Improvements Made
-
-#### Fix 1: Bluesky API Failover (2h-bluesky.yml)
-- Added automatic API endpoint detection: tests `public.api.bsky.app` first, falls back to `api.bsky.app` if it returns 403.
-- Added `getAuthorFeed` calls for 11 notable AI researchers/outlets (Karpathy, Ethan Mollick, Nathan Lambert, Emily Bender, Karen Hao, Gary Marcus, Sung Kim, Alex Hanna, DAIR Institute, TechCrunch, The Verge).
-- Added new search query for AI safety/alignment content.
-- Updated Claude prompt to document both JSON structures (searchPosts vs getAuthorFeed).
-- Added proper error handling with `|| echo '{"posts":[]}'` fallbacks.
-
-#### Fix 2: Broken RSS Feeds Replaced (hourly-rss.yml)
-- **Anthropic**: Replaced broken `openrss.org` proxy with community-maintained GitHub feed (`conoro/anthropic-engineering-rss-feed`), which is updated hourly via GitHub Actions.
-- **Meta AI**: Replaced non-existent `ai.meta.com/blog/rss/` with `research.facebook.com/feed/` (Meta Research) and added `engineering.fb.com/feed/` (Meta Engineering) as additional source.
-
-#### Fix 3: New RSS Sources Added (hourly-rss.yml)
-Added 12 new RSS feeds across three categories:
-
-**Company Blogs (4 new):**
-- NVIDIA Blog (`blogs.nvidia.com/feed/`)
-- AWS Machine Learning Blog (`aws.amazon.com/blogs/machine-learning/feed/`)
-- Microsoft AI Blog (`blogs.microsoft.com/ai/feed/`)
-- Amazon Science (`amazon.science/index.rss`)
-
-**AI Newsletters (4 new):**
-- Sebastian Raschka — Ahead of AI (Substack)
-- Latent Space — AI Engineer newsletter (Substack)
-- Elvis Saravia — Top AI Papers (Substack)
-- Simon Willison — LLM/AI blog (Atom feed)
-
-**News Sources (3 new):**
-- Ars Technica (`feeds.arstechnica.com`)
-- Wired AI (`wired.com/feed/tag/ai/latest/rss`)
-- MIT Technology Review (`technologyreview.com/feed/`)
-
-Updated Claude prompt to enumerate all new sources and added output format sections for the new categories.
-
-#### Fix 4: Expanded Reddit Coverage (4h-community.yml)
-Added 5 new subreddits:
-- r/singularity — AI/AGI speculation and news
-- r/OpenAI — OpenAI product discussions
-- r/ClaudeAI — Anthropic/Claude discussions
-- r/StableDiffusion — Image generation community
-Updated Claude prompt and output format to include all new subreddits.
-
----
-
-### Expected Impact
-
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| RSS feed sources | 11 | 23 | +109% |
-| Reddit subreddits | 3 | 8 | +167% |
-| Bluesky uptime | ~42% (5/12 cycles) | ~95%+ (with failover) | +53pp |
-| Bluesky tracked researchers | 1 | 11 | +1000% |
-| Broken RSS feeds | 2 (Anthropic, Meta) | 0 | Fixed |
-| AI newsletter coverage | 0 | 4 newsletters | New capability |
-| Cloud provider blog coverage | 0 | 4 blogs | New capability |
-
-### Summary
-
-These changes address the most impactful issues identified in yesterday's output:
-1. **Bluesky data loss** is fixed with automatic API failover and direct researcher feed fetching.
-2. **Broken RSS feeds** are replaced with working alternatives.
-3. **Source diversity** is significantly expanded — from 11 to 23 RSS feeds, 3 to 8 Reddit communities, and 1 to 11 tracked Bluesky researchers.
-4. **Newsletter coverage** adds high-signal AI analysis from leading researchers and engineers.
-
-*Generated by Daily Self-Improvement Workflow on 2026-02-01*
+## Expected Impact
+- **RSS pipeline restored:** `research/rss/2026-05-07.md` should be created
+  on the next hourly run (`30 * * * *`). Hourly file growth should match
+  the 2026-04-22…2026-04-24 baseline (~30–35 KB / day).
+- **Bluesky pipeline restored:** the next 00:11 UTC run should produce a
+  populated `research/bluesky/2026-05-08.md` instead of the 5-line 403
+  stub.
+- **Better signal in the daily digest:** the four independent analysts now
+  feeding RSS were already cited by name in yesterday's digest — they will
+  no longer require Perplexity/Exa MCP backfill to surface.
+- **Resilience:** hardcoded timeouts mean a single dead endpoint can never
+  again take down the entire RSS step silently.
