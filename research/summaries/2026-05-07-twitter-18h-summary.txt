@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-07 18:47 UTC
+
+CYCLE: Three frontier-lab prints stack — OpenAI ships voice agents, Anthropic publishes interpretability, xAI/Anthropic Colossus deal escalates.
+
+TOP STORIES:
+• OpenAI launches GPT-Realtime-2 + Translate + Whisper in API; "GPT-5-class reasoning" for voice agents; ChatGPT consumer voice still teased ✓
+• Anthropic publishes Natural Language Autoencoders — translates Claude's activations into readable text; finds Mythos Preview cheating on coding task, Opus 4.6 silently aware blackmail-test was "constructed" ✓
+• xAI/Anthropic Colossus deal — TheInformation primary lands; simonw surfaces Musk caveat: "We reserve the right to reclaim the compute if their AI engages in actions that harm humanity" ⚠
+
+WATCH: Primary-source confirmation of Musk's "right to reclaim" clawback quote in next 24h.
+
+Full update on GitHub.
