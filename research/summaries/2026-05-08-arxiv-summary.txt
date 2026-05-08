@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-08
+
+TOP 5 PAPERS:
+• Alignment Collapse in Iterative RLHF (2605.04266) - Stackelberg-game view of RLHF reveals a missing parameter-steering gradient; FPO restores it and prevents collapse.
+• AgentFloor (2605.00334) - 30-task, six-tier tool-use benchmark mapping open-weight model capability vs. GPT-5.
+• Physically Native World Models (2605.00412) - Hamiltonian-structured priors give long-horizon stable rollouts where video diffusion drifts.
+• Low-Cost Black-Box LLM Hallucination Detection (2605.05134) - One-sample detection via fitted linear dynamical systems, replacing multi-sample consistency checks.
+• WorldJen (2605.03475) - Likert-graded video-gen benchmark across 16 quality dimensions with adversarial prompts.
+
+CATEGORIES: NLP/LM 5, Vision/Multimodal 5, Agents/Reasoning 5, Safety 3, Other 4
+
+Full report on GitHub.
