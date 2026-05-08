@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-05-08 18:42 UTC
+
+CYCLE: Frontier-lab competitive cadence — Anthropic ships alignment research, OpenAI ships Claude-Code-poaching landing page within 33 minutes.
+
+TOP STORIES:
+• Anthropic "Teaching Claude why" alignment thread — Claude 4 blackmail behavior reduced >3x via constitution-docs + fictional-aligned-AI stories; survives RL [✓ on result, ⚠ on "completely eliminated" framing]
+• OpenAI ships explicit "Switch to Codex" Claude-Code-poaching landing page (chatgpt.com/codex/switch-to-codex/) + Codex imports ChatGPT sessions/Projects → super-app trajectory [✓]
+• OpenAI-Broadcom Nexus chip deal: $180B production cost + first phase $18B financing snag, needs Microsoft 40% pre-commitment [✓ via Information primary]
+• AISI: GPT-5.5 Cyber slightly ahead of Mythos on pass rate, materially cheaper per token; Mozilla/Firefox proof remains Mythos-only [⚠ single-source ecosystem restate]
+
+WATCH: Anthropic counter-response to Switch-to-Codex campaign within 24-72h; Mythos GA timing as alignment-research-runway compounds.
+
+Full update on GitHub.
