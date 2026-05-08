@@ -2493,5 +2493,47 @@
     "headline": "WHITE HOUSE OFFICIAL VIA POLITICO \u2014 AI-REGULATION HAWKS 'A MINORITY OF THE BUNCH'; ADMINISTRATION PURSUING PARTNERSHIP NOT REGULATION",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2052541921185485214"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-08 04:13 UTC",
+    "headline": "SAM ALTMAN ENDORSES GPT-5.5-CYBER ROLLOUT \u2014 \"IMPORTANT TO START WORK ON THIS QUICKLY,\" 9 DAYS POST \"FEAR MARKETING\" CRITIQUE OF ANTHROPIC MYTHOS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2052558319940944256"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-08 04:13 UTC",
+    "headline": "WIRED REVEALS GOOGLE EMAIL CHAIN UNCOVERED IN MUSK V. ALTMAN TRIAL \u2014 GOOGLE WAS \"SKEPTICAL OF OPENAI BUT FEARED PUSHING IT TOWARD AMAZON\"",
+    "source": "@WIRED",
+    "url": "https://x.com/WIRED/status/2052565165703360887"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-08 04:13 UTC",
+    "headline": "GOOGLE GEMINI 3.1 FLASH-LITE GA \u2014 $0.25 INPUT / $1.50 OUTPUT PER MILLION TOKENS, HALF GEMINI 3 FLASH PRICING, 1M CONTEXT, MULTIMODAL",
+    "source": "@GoogleAIStudio",
+    "url": "https://x.com/GoogleAIStudio/status/2052453828272812310"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-08 04:13 UTC",
+    "headline": "XAI SHIPS GROK VOICE THINK FAST 1.0 FOR CUSTOMER SUPPORT \u2014 VOICE AGENT FOR MULTI-STEP TROUBLESHOOTING + HIGH-VOLUME TOOL CALLS",
+    "source": "@xai",
+    "url": "https://x.com/xai/status/2052529102280880234"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-08 04:13 UTC",
+    "headline": "EMOLLICK: PROFESSIONS WITH GUILDS (AMA, BAR) WILL GET PROTECTIVE AI POLICY; CODERS AND CONSULTANTS HAVE NO EQUIVALENT \u2014 WHITE-COLLAR PUSHBACK COMING",
+    "source": "@emollick",
+    "url": "https://x.com/emollick/status/2052600102724751399"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-08 04:13 UTC",
+    "headline": "VLLM MAINTAINERS SHIP DEEPSEEK V4 DAY-0 SUPPORT PR OVER WEEKEND \u2014 SEMIANALYSIS: \"SPEED IS THE MOAT\"",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2052584396494958860"
   }
 ]
