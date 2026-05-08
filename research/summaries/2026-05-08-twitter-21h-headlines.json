@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "JAN LEIKE STEPS AWAY FROM RUNNING ALIGNMENT AT ANTHROPIC — ETHAN PEREZ + SAM PRICE TAKE OVER, LEIKE STARTS NEW RESEARCH PROJECT",
+    "source": "@janleike",
+    "url": "https://x.com/janleike/status/2052807760291733505",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI ADMITS ACCIDENTAL COT GRADING AFFECTED GPT-5.4 THINKING, GPT-5.1-5.4 INSTANT, GPT-5.3/5.4 MINI; GPT-5.5 UNAFFECTED",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2052845764507062349",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI CITES REDWOOD, APOLLO, METR ON COT GRADING DISCLOSURE — REDWOOD POST CONFIRMS PRE-PUBLICATION REVIEW, NOT INDEPENDENT AUDIT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2052845768567066907",
+    "category": "research"
+  },
+  {
+    "headline": "DEEPMIND AI CO-MATHEMATICIAN HITS 48% ON FRONTIERMATH TIER 4 — GEMINI 3.1 PRO BASE SCORES 19% ALONE, ENTIRE JUMP FROM AGENTIC SCAFFOLD",
+    "source": "@pushmeet",
+    "url": "https://x.com/pushmeet/status/2052812585804685322",
+    "category": "research"
+  },
+  {
+    "headline": "ISOMORPHIC LABS RAISING $2B+; THRIVE CAPITAL LEADS, ALPHABET PARTICIPATING — DEEPMIND DRUG-DISCOVERY SPINOUT",
+    "source": "@theinformation",
+    "url": "https://x.com/RebeccaTorrenc5/status/2052822964266041656",
+    "category": "business"
+  },
+  {
+    "headline": "BLOOMBERG: TRUMP AI EXECUTIVE ORDER WILL NOT REQUIRE GOVERNMENT APPROVAL FOR FRONTIER MODEL RELEASES",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2052850430217277812",
+    "category": "policy"
+  },
+  {
+    "headline": "GROK ADDS CONNECTORS FOR EMAIL, CALENDAR, SLIDES, NOTION ACROSS ALL TIERS — MUSK QT 'GROK UPGRADES' AT 4,983L/704RT",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2052856431611941200",
+    "category": "model"
+  }
+]

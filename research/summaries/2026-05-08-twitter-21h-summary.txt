@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-08 21:31 UTC
+
+CYCLE: Alignment-leadership realignment day across both labs.
+
+TOP STORIES:
+• Jan Leike steps away from running alignment at Anthropic; Ethan Perez + Sam Price take over — handoff lands 4 minutes before AnthropicAI's "Teaching Claude why" research thread ✓
+• OpenAI corp-channel admits accidental CoT grading affected GPT-5.4 Thinking + GPT-5.1-5.4 Instant + GPT-5.3/5.4 mini during RL; GPT-5.5 unaffected; Redwood/Apollo/METR pre-publication reviews ⚠
+• Google DeepMind ships AI co-mathematician scoring 48% on FrontierMath Tier 4 — agentic scaffold around Gemini 3.1 Pro, but bypassed standard eval harness with 48h/problem, no token limits ⚠
+
+WATCH: @janleike "more on this soon" disclosure of his new Anthropic research project + AnthropicAI corp-channel formal post on the alignment-org transition within 24-72h.
+
+Full update on GitHub.
