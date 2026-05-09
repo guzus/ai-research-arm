@@ -1,15 +1,17 @@
 AI News - 2026-05-09
 
 TOP STORIES:
-• Cerebras upsizes IPO range to $125-$135 from $115-$125; book reportedly oversubscribed >20x; pricing Tue May 13
-• Cloudflare cuts 1,100 jobs (~20% of workforce) on AI-driven restructuring; NET stock -24% Friday despite Q1 beat
-• Musk v. Altman wraps trial week 2 with damaging testimony from former safety researcher Rosie Campbell + nonprofit-governance expert; Altman testimony expected May 11-15
-• OpenAI ships ChatGPT Trusted Contact self-harm alert system globally; one-hour-review SLA, 260+ physician network input
-• Wedbush hikes Apple PT to $400 (highest ever) on $15B/year AI-services TAM ahead of WWDC 2026
+• Cerebras upsizes IPO range to $125-$135; book >20x oversubscribed; pricing Tue May 13
+• NVIDIA equity bets cross $40B YTD; Wedbush flags "circular investment" critique
+• Wall St "changing of the guard" — Intel/AMD +25%, Micron +37% wk; NVDA lags
+• AI-layoffs cluster: Cloudflare 1,100, Upwork 145, BILL ~30%, Freshworks 500
+• OpenAI ships ChatGPT Trusted Contact self-harm alert globally
+• Wedbush hikes Apple PT to $400 (highest ever) on $15B/yr AI-services TAM
+• Musk v. Altman week 2 wraps; Altman testimony May 11-15
 
 KEY NUMBERS:
-• Cerebras top-of-range mkt cap ~$28.7B (vs $26.6B prior); raise ~$3.78B
-• Cloudflare $140-150M restructuring charge; AI internal use surged 600% in 3 months
-• Apple Wedbush PT +$50 to $400; Ives projects ~20% of world population using Apple-AI
+• NVDA $40B+ committed (incl $30B OpenAI); $97B FCF
+• Cerebras top mkt cap ~$28.7B; ~$3.78B raise
+• Tech layoffs YTD ~85,411 (+33% YoY)
 
 Full report on GitHub.
