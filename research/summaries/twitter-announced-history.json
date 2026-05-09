@@ -2815,5 +2815,54 @@
     "headline": "CODEX HOOKS EXTENSIBILITY FRAMEWORK COMING TO CODEX APP \u2014 INJECT CUSTOM SCRIPTS INTO AGENTIC LOOP",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2052882191940534531"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-09 04:16 UTC",
+    "headline": "DEEPMIND AI CO-MATHEMATICIAN HITS RECORD 48% ON FRONTIERMATH TIER 4 \u2014 BUT EVAL BYPASSED STANDARD HARNESS WITH 48H/PROBLEM",
+    "source": "@pushmeet",
+    "url": "https://x.com/pushmeet/status/2052812585804685322"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-09 04:16 UTC",
+    "headline": "BASE GEMINI 3.1 PRO ALONE SCORES 19% ON SAME SUITE \u2014 ENTIRE 29-POINT JUMP COMES FROM MULTI-AGENT SCAFFOLDING, NOT MODEL CAPABILITY",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2052849472586264997"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-09 04:16 UTC",
+    "headline": "DEMIS HASSABIS PERSONALLY AMPLIFIES AI CO-MATHEMATICIAN LAUNCH 7H AFTER PUSHMEET PRIMARY",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2052921911726747768"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-09 04:16 UTC",
+    "headline": "MIRAE ASSET: XAI COLOSSUS 1 RAN AT JUST 11% MFU VS META/GOOGLE 40%+ \u2014 HETEROGENEOUS H100/H200/GB200 STRAGGLER EFFECT FORCED LEASE TO ANTHROPIC",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2052957921563316619"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-09 04:16 UTC",
+    "headline": "MIRAE: ANTHROPIC LEASE GENERATES $5-6B/YR FOR XAI AT $2.60/GPU-HOUR \u2014 ALMOST PERFECTLY HEDGES $6B ANNUALIZED LOSS AHEAD OF $1.75T SPACEXAI IPO IN JUNE",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2052953133262000238"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-09 04:16 UTC",
+    "headline": "MIRAE: ANTHROPIC CONVERTS $5B COMPUTE SPEND INTO EXPECTED $15B INFERENCE-DRIVEN ARR; CUMULATIVE COMMITTED CAPACITY NOW 14.8GW VS OPENAI'S 30GW 2030 TARGET",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2052953133262000238"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-09 04:16 UTC",
+    "headline": "SGLANG + RADIXARK SHIP 4X ISO-INTERACTIVITY THROUGHPUT IMPROVEMENT FOR DEEPSEEK V4 INFERENCE ON GB300",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2052916556972065271"
   }
 ]
