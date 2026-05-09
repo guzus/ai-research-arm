@@ -2983,5 +2983,54 @@
     "headline": "ANTHROPICAI CORP-CHANNEL ~19H DARK \u2014 NO ACK OF METR MYTHOS, AKAMAI $1.8B, 80X GROWTH, OR ERNIE 5.1 / GROK BUILD CLI",
     "source": "@AnthropicAI",
     "url": "https://x.com/AnthropicAI/status/2052808787514228772"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-09 15:28 UTC",
+    "headline": "THE INFORMATION: XAI'S COLOSSUS 1 LEASE TO ANTHROPIC RAISES QUESTION OF WHETHER GROK CAN STILL COMPETE AT FRONTIER",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2053120312196108796"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-09 15:28 UTC",
+    "headline": "OPENAI-BROADCOM $18B CHIP DEAL HITS FINANCING SNAG \u2014 MEMO: 'CAN'T REQUIRE MICROSOFT TO BUY 40% OF CHIPS'",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2053112980254937494"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-09 15:28 UTC",
+    "headline": "DEEPSEEK SEEKING UP TO $7.35B \u2014 LARGEST EVER CHINESE AI ROUND, SHIFTING FROM PURE RESEARCH TO COMMERCIALIZATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2053097732793884992"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-09 15:28 UTC",
+    "headline": "ANTHROPIC TAKES 220,000 GPUS / 300 MW AT XAI'S COLOSSUS 1; PREVIOUS UTILIZATION 11% VS META/GOOGLE 40%+",
+    "source": "@aneesmerchant",
+    "url": "https://x.com/xai/status/2052060350770515978"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-09 15:28 UTC",
+    "headline": "STEIPETE SHIPS PEEKABOO 3.0 \u2014 ACTION-FIRST MACOS COMPUTER USE WITH UNIFIED SCREENSHOT + UI DETECTION",
+    "source": "@steipete",
+    "url": "https://x.com/steipete/status/2053114837698249190"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-09 15:28 UTC",
+    "headline": "MICROSOFT RELEASES PHI-GROUND-ANY ON HUGGING FACE \u2014 4B VISION MODEL HITS SOTA ON SCREENSPOT-PRO AND UI-VISION",
+    "source": "@HuggingPapers",
+    "url": "https://x.com/HuggingPapers/status/2052997156810670301"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-09 15:28 UTC",
+    "headline": "CORE AUTOMATION (FOUNDED BY EX-OPENAI'S JERRY TWOREK) TARGETS $4B VALUATION 6 WEEKS AFTER $100M AT $1B SEED",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2053127857556140067"
   }
 ]
