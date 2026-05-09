@@ -2864,5 +2864,54 @@
     "headline": "SGLANG + RADIXARK SHIP 4X ISO-INTERACTIVITY THROUGHPUT IMPROVEMENT FOR DEEPSEEK V4 INFERENCE ON GB300",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2052916556972065271"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-09 06:56 UTC",
+    "headline": "ANTHROPIC SIGNS $1.8B SEVEN-YEAR CLOUD DEAL WITH AKAMAI \u2014 AKAMAI'S LARGEST EVER; $AKAM +20%",
+    "source": "@faststocknewss",
+    "url": "https://x.com/faststocknewss/status/2052812182270951679"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-09 06:56 UTC",
+    "headline": "DARIO AMODEI: ANTHROPIC HIT 80X Q1 2026 ANNUALIZED REVENUE GROWTH VS INTERNAL 10X PLAN",
+    "source": "@battista212",
+    "url": "https://x.com/faststocknewss/status/2052812182270951679"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-09 06:56 UTC",
+    "headline": "DEEPSEEK RAISING $7B AT $50B VALUATION \u2014 CHINA'S LARGEST-EVER AI FUNDING ROUND",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2052901878728659037"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-09 06:56 UTC",
+    "headline": "DEEPSEEK FOUNDER LIANG WENFENG PERSONALLY INVESTS $3B / 40% OF ROUND, RETAINS 90% OWNERSHIP",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2052901878728659037"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-09 06:56 UTC",
+    "headline": "LITELLM CVE-2026-42208 HITS CISA KEV \u2014 PRE-AUTH SQLI LEAKS STORED OPENAI/ANTHROPIC API KEYS",
+    "source": "@ThreatLevelAI",
+    "url": "https://x.com/ThreatLevelAI/status/2053000454640902371"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-09 06:56 UTC",
+    "headline": "ANTHROPIC COMPUTE STACK NOW 5 PROVIDERS \u2014 GOOGLE $200B, SPACEXAI COLOSSUS, AWS TRAINIUM 2, COREWEAVE, AKAMAI EDGE",
+    "source": "@deepanshusharmx",
+    "url": "https://x.com/deepanshusharmx/status/2052974238777348320"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-09 06:56 UTC",
+    "headline": "TENCENT OPEN-SOURCES CUBE SANDBOX \u2014 MICROVM RUNTIME FOR AI AGENTS, 60MS COLD START, 25-50X FASTER",
+    "source": "@kiruwaaaaaa",
+    "url": "https://x.com/kiruwaaaaaa/status/2053002455965655282"
   }
 ]
