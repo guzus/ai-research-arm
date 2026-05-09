@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "METR: ANTHROPIC MYTHOS HITS UPPER LIMIT OF MEASUREMENT — 50%-TIME-HORIZON ≥16 HOURS, >2X NEXT-BEST ON 80% BENCHMARK",
+    "source": "@METR_Evals",
+    "url": "https://x.com/METR_Evals/status/2052896621760004602",
+    "category": "research"
+  },
+  {
+    "headline": "METR DISSENTS ON ANTHROPIC FEB-2026 RISK REPORT — \"WITHOUT EXTERNAL EVIDENCE WE'D LIKELY DISAGREE\" ON VERY-LOW-RISK CONCLUSION",
+    "source": "@METR_Evals",
+    "url": "https://x.com/METR_Evals/status/2052912201657418023",
+    "category": "research"
+  },
+  {
+    "headline": "WSJ: APPLE-INTEL REACH PRELIMINARY CHIP-MANUFACTURING DEAL AFTER 1+ YEAR OF TALKS — TRUMP ADMINISTRATION PUSHED FOR PARTNERSHIP",
+    "source": "@BagEndMarket",
+    "url": "https://x.com/BagEndMarket/status/2052798754936225868",
+    "category": "infra"
+  },
+  {
+    "headline": "MUSK VISITS INTEL FAB IN OREGON — \"LOOKING FORWARD TO A GREAT PARTNERSHIP WITH SPACEX & TESLA\"",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2052864667836649722",
+    "category": "infra"
+  },
+  {
+    "headline": "ELON AMPLIFIES ALL-IN POD ON XAI-ANTHROPIC COLOSSUS 1 LEASE — PODCAST COINS \"ELON WEB SERVICES\" AS FOURTH HYPERSCALER",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2052890115421417647",
+    "category": "infra"
+  },
+  {
+    "headline": "PALO ALTO NETWORKS ON MYTHOS: 3 WEEKS OF MODEL-ASSISTED ANALYSIS = 1 YEAR OF MANUAL PEN TESTING WITH BROADER COVERAGE",
+    "source": "@peterwildeford",
+    "url": "https://x.com/peterwildeford/status/2052826481772855509",
+    "category": "model"
+  },
+  {
+    "headline": "CODEX HOOKS EXTENSIBILITY FRAMEWORK COMING TO CODEX APP — INJECT CUSTOM SCRIPTS INTO AGENTIC LOOP",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2052882191940534531",
+    "category": "model"
+  }
+]
