@@ -1,0 +1,15 @@
+AI News - 2026-05-09
+
+TOP STORIES:
+• Cerebras upsizes IPO range to $125-$135 from $115-$125; book reportedly oversubscribed >20x; pricing Tue May 13
+• Cloudflare cuts 1,100 jobs (~20% of workforce) on AI-driven restructuring; NET stock -24% Friday despite Q1 beat
+• Musk v. Altman wraps trial week 2 with damaging testimony from former safety researcher Rosie Campbell + nonprofit-governance expert; Altman testimony expected May 11-15
+• OpenAI ships ChatGPT Trusted Contact self-harm alert system globally; one-hour-review SLA, 260+ physician network input
+• Wedbush hikes Apple PT to $400 (highest ever) on $15B/year AI-services TAM ahead of WWDC 2026
+
+KEY NUMBERS:
+• Cerebras top-of-range mkt cap ~$28.7B (vs $26.6B prior); raise ~$3.78B
+• Cloudflare $140-150M restructuring charge; AI internal use surged 600% in 3 months
+• Apple Wedbush PT +$50 to $400; Ives projects ~20% of world population using Apple-AI
+
+Full report on GitHub.
