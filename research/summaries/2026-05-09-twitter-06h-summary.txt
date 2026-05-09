@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-09 06:56 UTC
+
+CYCLE: Quiet weekend pre-dawn — but three substantive items the prior cycles missed.
+
+TOP STORIES:
+• Anthropic signs $1.8B 7-year cloud deal with Akamai (Akamai's largest-ever; $AKAM +20%); Dario tells CNBC Q1 2026 hit "80x growth" vs 10x plan; compute stack now 5 providers (Google $200B/5yr, SpaceXAI Colossus, AWS Trainium 2, CoreWeave, Akamai edge) ✓
+• DeepSeek raising $7B at $50B valuation per The Information — China's largest-ever AI raise; Liang Wenfeng personally puts in ~$3B (40% of round, retains 90%); funds compute for V4.1 (June) + enterprise products ✓
+• LiteLLM CVE-2026-42208 hits CISA KEV — pre-auth SQL injection (CVSS 9.3) leaks stored OpenAI/Anthropic API keys; 26–36h disclosure-to-exploit; patch 1.83.7 ✓
+
+WATCH: AnthropicAI corp-channel ~13h dark on Akamai + 80x; OpenAI ~10.5h dark; deepseek_ai corp-channel funding-round confirmation overdue.
+
+Full update on GitHub.
