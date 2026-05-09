@@ -2766,5 +2766,54 @@
     "headline": "GROK ADDS CONNECTORS FOR EMAIL, CALENDAR, SLIDES, NOTION ACROSS ALL TIERS \u2014 MUSK QT 'GROK UPGRADES' AT 4,983L/704RT",
     "source": "@elonmusk",
     "url": "https://x.com/elonmusk/status/2052856431611941200"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-09 01:05 UTC",
+    "headline": "METR: ANTHROPIC MYTHOS HITS UPPER LIMIT OF MEASUREMENT \u2014 50%-TIME-HORIZON \u226516 HOURS, >2X NEXT-BEST ON 80% BENCHMARK",
+    "source": "@METR_Evals",
+    "url": "https://x.com/METR_Evals/status/2052896621760004602"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-09 01:05 UTC",
+    "headline": "METR DISSENTS ON ANTHROPIC FEB-2026 RISK REPORT \u2014 \"WITHOUT EXTERNAL EVIDENCE WE'D LIKELY DISAGREE\" ON VERY-LOW-RISK CONCLUSION",
+    "source": "@METR_Evals",
+    "url": "https://x.com/METR_Evals/status/2052912201657418023"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-09 01:05 UTC",
+    "headline": "WSJ: APPLE-INTEL REACH PRELIMINARY CHIP-MANUFACTURING DEAL AFTER 1+ YEAR OF TALKS \u2014 TRUMP ADMINISTRATION PUSHED FOR PARTNERSHIP",
+    "source": "@BagEndMarket",
+    "url": "https://x.com/BagEndMarket/status/2052798754936225868"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-09 01:05 UTC",
+    "headline": "MUSK VISITS INTEL FAB IN OREGON \u2014 \"LOOKING FORWARD TO A GREAT PARTNERSHIP WITH SPACEX & TESLA\"",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2052864667836649722"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-09 01:05 UTC",
+    "headline": "ELON AMPLIFIES ALL-IN POD ON XAI-ANTHROPIC COLOSSUS 1 LEASE \u2014 PODCAST COINS \"ELON WEB SERVICES\" AS FOURTH HYPERSCALER",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2052890115421417647"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-09 01:05 UTC",
+    "headline": "PALO ALTO NETWORKS ON MYTHOS: 3 WEEKS OF MODEL-ASSISTED ANALYSIS = 1 YEAR OF MANUAL PEN TESTING WITH BROADER COVERAGE",
+    "source": "@peterwildeford",
+    "url": "https://x.com/peterwildeford/status/2052826481772855509"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-09 01:05 UTC",
+    "headline": "CODEX HOOKS EXTENSIBILITY FRAMEWORK COMING TO CODEX APP \u2014 INJECT CUSTOM SCRIPTS INTO AGENTIC LOOP",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2052882191940534531"
   }
 ]
