@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-05-09
+
+TOP STORIES:
+• Anthropic-Akamai $1.8B / 7-yr cloud deal confirmed; AKAM +27% Friday (largest rally in 22+ years). Anthropic compute stack now 5-deep.
+• EU AI Omnibus closed early May 7: Annex III pushed to Dec 2 2027; new Article 5 ban on AI-generated CSAM/NCII; watermarking holds Aug 2 2026.
+• Cerebras IPO range raised to $125-$135 on >20x oversubscription; pricing Tue May 13; ~$28.7B FDV.
+
+KEY NUMBERS:
+• Anthropic ARR: $14B Feb -> $19B Mar -> $30B Apr (80x Q1 growth)
+• OpenAI-Broadcom $18B chip deal stalled; AVGO -4%, MSFT +1.67%
+• NVIDIA-IREN: 5 GW + $2.1B warrant + $3.4B managed cloud
+
+TRENDING: "Capacity unlocked" theme replaces "capacity pinch" - AKAM + IREN + SpaceX Colossus dominate weekend AI threads.
+
+Full digest on GitHub.
