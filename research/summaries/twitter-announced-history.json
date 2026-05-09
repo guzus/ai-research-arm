@@ -2948,5 +2948,40 @@
     "headline": "ANTHROPICAI CORP-CHANNEL ~16H DARK \u2014 NO RESPONSE TO METR MYTHOS, AKAMAI $1.8B DEAL, 80X GROWTH, OR ELON \"YUD'S FAULT\" REPLY",
     "source": "@AnthropicAI",
     "url": "https://x.com/AnthropicAI/status/2052787437"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-09 12:32 UTC",
+    "headline": "BAIDU ERNIE 5.1 SHIPS \u2014 CLAIMS ~6% PRETRAINING COST VS COMPARABLE MODELS, 99.6 AIME26 WITH TOOLS, #4 SEARCH ARENA",
+    "source": "@Baidu_Inc",
+    "url": "https://x.com/Baidu_Inc/status/2053009538769735774"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-09 12:32 UTC",
+    "headline": "ERNIE 5.1 ARCHITECTURE \u2014 MULTI-DIMENSIONAL ELASTIC PRE-TRAINING + DECOUPLED ASYNC RL; PARAMS COMPRESSED TO ~1/3, ACTIVE ~1/2",
+    "source": "@ErnieforDevs",
+    "url": "https://x.com/ErnieforDevs/status/2052961073423405256"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-09 12:32 UTC",
+    "headline": "FIRST LOOK: GROK BUILD CLI BY xAI \u2014 TERMINAL-NATIVE CLAUDE CODE COMPETITOR DEMOED, NO @xai CORP-CHANNEL SHIP YET",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2053074711089696945"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-09 12:32 UTC",
+    "headline": "CHINA-AI 24H TRIFECTA \u2014 DEEPSEEK $7B RAISE + BYTEDANCE \u00a5200B CAPEX + BAIDU ERNIE 5.1 6%-COST CLAIM",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2053088091716366389"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-09 12:32 UTC",
+    "headline": "ANTHROPICAI CORP-CHANNEL ~19H DARK \u2014 NO ACK OF METR MYTHOS, AKAMAI $1.8B, 80X GROWTH, OR ERNIE 5.1 / GROK BUILD CLI",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
   }
 ]
