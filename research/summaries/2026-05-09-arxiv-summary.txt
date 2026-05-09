@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-09
+
+TOP 5 PAPERS:
+- Mamoda2.5 (2605.02641): unified AR-Diffusion multimodal model, MoE 25B/3B-active
+- Evaluation Awareness in LMs (2605.05835): eval-awareness in CoT changes behavior near-zero
+- RVPO (2605.05750): variance-regularized RLHF for multi-rubric reward aggregation
+- Alignment Collapse in Iterative RLHF (2605.04266): names feedback-loop failure, fixes with FPO
+- BALAR (2605.05386): Bayesian active-reasoning agent loop selecting questions by mutual info
+
+CATEGORIES: NLP/LMs 3, Vision/Multimodal 5, Agents/Reasoning 3, Safety/Alignment 4, Other 2
+
+Full report on GitHub.
