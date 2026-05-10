@@ -1,0 +1,423 @@
+diff --git a/.github/workflows/2h-bluesky.yml b/.github/workflows/2h-bluesky.yml
+index df673910..395c32c0 100644
+--- a/.github/workflows/2h-bluesky.yml
++++ b/.github/workflows/2h-bluesky.yml
+@@ -34,35 +34,52 @@ jobs:
+         run: |
+           mkdir -p /tmp/bluesky
+
+-          # Bluesky public API - search for AI-related posts
+-          # Using the public search endpoint (no auth required for public posts)
+-
+-          # Search for recent AI-related posts
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=AI%20announcement&limit=30&sort=latest" \
++          # Bluesky public API host. The previously-used public.api.bsky.app
++          # endpoint started returning HTTP 403 for searchPosts in early May
++          # 2026 (re-verified 2026-05-10 00:25 UTC: HTTP 403 / 2334-byte HTML
++          # stub). api.bsky.app (without the "public." prefix) still serves
++          # these endpoints unauthenticated (HTTP 200, valid JSON).
++          BSKY_HOST="https://api.bsky.app"
++          UA="Mozilla/5.0 (compatible; AIResearchBot/1.0)"
++
++          # Topic searches
++          curl -s -H "User-Agent: $UA" \
++            "$BSKY_HOST/xrpc/app.bsky.feed.searchPosts?q=AI%20announcement&limit=30&sort=latest" \
+             > /tmp/bluesky/ai_announcements.json
+-
+           sleep 1
+
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=LLM%20release&limit=30&sort=latest" \
++          curl -s -H "User-Agent: $UA" \
++            "$BSKY_HOST/xrpc/app.bsky.feed.searchPosts?q=LLM%20release&limit=30&sort=latest" \
+             > /tmp/bluesky/llm_releases.json
+-
+           sleep 1
+
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=GPT%20Claude%20Gemini&limit=30&sort=latest" \
++          curl -s -H "User-Agent: $UA" \
++            "$BSKY_HOST/xrpc/app.bsky.feed.searchPosts?q=GPT%20Claude%20Gemini&limit=30&sort=latest" \
+             > /tmp/bluesky/model_discussions.json
+-
+           sleep 1
+
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=machine%20learning%20paper&limit=30&sort=latest" \
++          curl -s -H "User-Agent: $UA" \
++            "$BSKY_HOST/xrpc/app.bsky.feed.searchPosts?q=machine%20learning%20paper&limit=30&sort=latest" \
+             > /tmp/bluesky/ml_papers.json
+-
+           sleep 1
+
+-          # Get posts from known AI researchers/companies by searching their handles
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=from%3Akarpathy.bsky.social&limit=20&sort=latest" \
+-            > /tmp/bluesky/karpathy.json 2>/dev/null || echo '{"posts":[]}' > /tmp/bluesky/karpathy.json
++          # AI researcher / lab author feeds. getAuthorFeed is a more reliable
++          # path than searchPosts(from:handle) — it always returns the actual
++          # last-N posts from the handle.
++          for handle in karpathy.bsky.social simonwillison.net \
++                        ylecun.bsky.social goodfellow.bsky.social \
++                        soumith.bsky.social anthropic.com openai.com \
++                        deepmind.google huggingface.bsky.social; do
++            slug=$(echo "$handle" | tr '.' '_')
++            curl -s -H "User-Agent: $UA" \
++              "$BSKY_HOST/xrpc/app.bsky.feed.getAuthorFeed?actor=${handle}&limit=20" \
++              > "/tmp/bluesky/author_${slug}.json" 2>/dev/null \
++              || echo '{"feed":[]}' > "/tmp/bluesky/author_${slug}.json"
++            sleep 1
++          done
+
+           echo "Bluesky data fetched successfully"
++          ls -la /tmp/bluesky/
+
+       - name: Copy Bluesky data to working directory
+         run: |
+@@ -84,21 +101,25 @@ jobs:
+
+             ## SOURCE FILES
+
+-            Read these pre-fetched Bluesky JSON files from data/bluesky/:
+-            - data/bluesky/ai_announcements.json
+-            - data/bluesky/llm_releases.json
+-            - data/bluesky/model_discussions.json
+-            - data/bluesky/ml_papers.json
+-            - data/bluesky/karpathy.json
+-
+-            The Bluesky JSON structure is:
+-            - posts[].author.handle (username like "user.bsky.social")
+-            - posts[].author.displayName (display name)
+-            - posts[].record.text (post content)
+-            - posts[].record.createdAt (ISO timestamp)
+-            - posts[].likeCount (likes)
+-            - posts[].repostCount (reposts)
+-            - posts[].uri (post URI for linking)
++            Read every JSON file under data/bluesky/. Two shapes appear:
++
++            1. searchPosts results (`ai_announcements.json`, `llm_releases.json`,
++               `model_discussions.json`, `ml_papers.json`):
++               - posts[].author.handle / displayName
++               - posts[].record.text / createdAt
++               - posts[].likeCount / repostCount / replyCount
++               - posts[].uri
++
++            2. getAuthorFeed results (`author_*.json` — one per researcher/lab):
++               - feed[].post.author.handle / displayName
++               - feed[].post.record.text / createdAt
++               - feed[].post.likeCount / repostCount / replyCount
++               - feed[].post.uri
++               - Skip items where feed[].reason is set (those are reposts).
++
++            If a JSON file is empty, malformed, or contains an `error` key
++            (e.g. upstream rate-limit / outage), skip it silently and note
++            the gap at the bottom of the digest under "Source Notes".
+
+             To create a link: https://bsky.app/profile/{handle}/post/{post_id}
+             Where post_id is the last segment of the uri (after "app.bsky.feed.post/")
+diff --git a/.github/workflows/4h-community.yml b/.github/workflows/4h-community.yml
+index 873c8823..1514ae8d 100644
+--- a/.github/workflows/4h-community.yml
++++ b/.github/workflows/4h-community.yml
+@@ -118,8 +118,14 @@ jobs:
+             These are standard RSS/Atom XML feeds. Each <entry> contains:
+             - <title> - post title
+             - <link href="..."> - URL to the post
+-            - <updated> - timestamp
+-            - <content> - post content/description
++            - <author><name> - poster's reddit username (e.g. /u/handle)
++            - <published> - original post timestamp (UTC, ISO 8601)
++            - <updated> - latest activity timestamp
++            - <content> - post HTML content
++
++            NOTE: Reddit Atom feeds do NOT expose score or comment counts.
++            Do not invent metrics. Use the columns specified in OUTPUT FORMAT
++            below (Posted / Author), and rank by feed "hot" order.
+
+             Parse the XML to extract post information.
+
+@@ -147,23 +153,30 @@ jobs:
+
+             ## ${{ steps.datetime.outputs.timestamp }}
+
++            > Note: Reddit Atom feeds do not expose score / comment counts.
++            > Rank reflects feed "hot" order; Posted is the entry's
++            > <published> timestamp (UTC), Author is /u/...
++
+             ### r/MachineLearning (Hot)
+-            | Title | Score | Comments | Link |
+-            |-------|-------|----------|------|
++            | Title | Posted (UTC) | Author | Link |
++            |-------|--------------|--------|------|
+
+             ### r/LocalLLaMA (Hot)
+-            | Title | Score | Comments | Link |
+-            |-------|-------|----------|------|
++            | Title | Posted (UTC) | Author | Link |
++            |-------|--------------|--------|------|
+
+             ### r/artificial (Hot)
+-            | Title | Score | Comments | Link |
+-            |-------|-------|----------|------|
++            | Title | Posted (UTC) | Author | Link |
++            |-------|--------------|--------|------|
+             ```
+
+             ## FILTERS
+
+             INCLUDE: Model releases, benchmarks, research papers, tools, funding, technical discussions
+-            SKIP: Memes, beginner questions, posts with <10 score
++            SKIP: Memes, beginner help questions, AutoModerator / sticky posts,
++            recurring "Self-Promotion Thread" / "Job Postings" / "[Conference]
++            Decisions" threads. Score-based filters are not feasible (Reddit
++            RSS does not expose scores) — filter on title content instead.
+
+             ## COMMIT
+
+diff --git a/.github/workflows/daily-arxiv.yml b/.github/workflows/daily-arxiv.yml
+index d209cfba..f13e322f 100644
+--- a/.github/workflows/daily-arxiv.yml
++++ b/.github/workflows/daily-arxiv.yml
+@@ -92,7 +92,8 @@ jobs:
+             ## Highlights (Top 5 Must-Read)
+
+             ### 1. [Paper Title]
+-            **Authors**: [names]
++            **Authors**: [first 3 author surnames + "et al." if more — e.g.
++            "Chen, Patel, Yamamoto et al."; never write "(multiple)" or "(see paper)"]
+             **arXiv**: [link]
+             **TL;DR**: [2-3 sentence summary of key contribution]
+             **Why it matters**: [1 sentence on significance]
+@@ -100,20 +101,32 @@ jobs:
+             ## By Category
+
+             ### Language Models & NLP
+-            | Paper | Authors | Key Finding |
+-            |-------|---------|-------------|
++            | Paper | First Author | Key Finding |
++            |-------|--------------|-------------|
+
+             ### Computer Vision & Multimodal
+-            | Paper | Authors | Key Finding |
++            | Paper | First Author | Key Finding |
++            |-------|--------------|-------------|
+
+             ### Agents & Reasoning
+-            | Paper | Authors | Key Finding |
++            | Paper | First Author | Key Finding |
++            |-------|--------------|-------------|
+
+             ### Safety & Alignment
+-            | Paper | Authors | Key Finding |
++            | Paper | First Author | Key Finding |
++            |-------|--------------|-------------|
+
+             ### Other Notable
+-            | Paper | Authors | Key Finding |
++            | Paper | First Author | Key Finding |
++            |-------|--------------|-------------|
++
++            AUTHOR EXTRACTION: arxiv-mcp-server returns the full author list
++            in the `authors` field of each result — extract the surname(s)
++            and use the format above. Yesterday's run wrote "(multiple)" or
++            "(multiple, see paper)" in 17 / 17 paper rows because the prompt
++            did not specify how to format the author field; that field is
++            now load-bearing for de-duping arXiv carry-overs across days
++            and must contain real surnames.
+
+             ---
+             *Curated from arXiv submissions on ${{ steps.date.outputs.date }}*
+diff --git a/.github/workflows/hourly-rss.yml b/.github/workflows/hourly-rss.yml
+index 05e59909..512a2beb 100644
+--- a/.github/workflows/hourly-rss.yml
++++ b/.github/workflows/hourly-rss.yml
+@@ -34,61 +34,60 @@ jobs:
+         id: rss
+         run: |
+           mkdir -p /tmp/rss
+-
+-          # OpenAI Blog RSS (news section)
+-          curl -sL "https://openai.com/news/rss.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/openai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/openai.xml
+-
+-          # Anthropic News RSS (via OpenRSS since no official feed)
+-          curl -sL "https://openrss.org/www.anthropic.com/news" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/anthropic.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/anthropic.xml
+-
+-          # Google AI Blog RSS (Atom feed)
+-          curl -sL "http://googleaiblog.blogspot.com/atom.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/google_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/google_ai.xml
+-
+-          # DeepMind Blog RSS (Google Research)
+-          curl -sL "https://research.google/blog/rss/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/deepmind.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/deepmind.xml
+-
+-          # Meta AI Blog RSS
+-          curl -sL "https://ai.meta.com/blog/rss/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/meta_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/meta_ai.xml
+-
+-          # Hugging Face Blog RSS
+-          curl -sL "https://huggingface.co/blog/feed.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/huggingface.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/huggingface.xml
+-
+-          # arXiv CS.AI RSS (recent submissions)
+-          curl -sL "https://export.arxiv.org/rss/cs.AI" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/arxiv_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arxiv_ai.xml
+-
+-          # arXiv CS.LG RSS (Machine Learning)
+-          curl -sL "https://export.arxiv.org/rss/cs.LG" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/arxiv_lg.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arxiv_lg.xml
+-
+-          # TechCrunch AI RSS
+-          curl -sL "https://techcrunch.com/category/artificial-intelligence/feed/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/techcrunch_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/techcrunch_ai.xml
+-
+-          # The Verge AI RSS
+-          curl -sL "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/verge_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/verge_ai.xml
+-
+-          # VentureBeat AI RSS
+-          curl -sL "https://venturebeat.com/category/ai/feed/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
++          UA="Mozilla/5.0 (compatible; AIResearchBot/1.0)"
++
++          fetch() {
++            # $1 = output filename, $2 = URL
++            # --max-time 15 prevents a single slow upstream from hanging the
++            # entire job. The hourly-rss workflow has been silently producing
++            # zero RSS commits since 2026-04-27 because the openrss.org proxy
++            # started timing out without --max-time, and the next hourly run
++            # cancels the previous one (concurrency.cancel-in-progress: true).
++            curl -sL --max-time 15 -H "User-Agent: $UA" "$2" \
++              > "/tmp/rss/$1" 2>/dev/null \
++              || echo "<rss></rss>" > "/tmp/rss/$1"
++          }
++
++          # ── Official Lab Blogs ────────────────────────────────────────────
++          fetch openai.xml          "https://openai.com/news/rss.xml"
++          fetch anthropic.xml       "https://openrss.org/www.anthropic.com/news"
++          fetch google_research.xml "https://research.google/blog/rss/"
++          # Google AI / Keyword AI vertical (Blogspot atom is the legacy mirror)
++          fetch google_ai.xml       "http://googleaiblog.blogspot.com/atom.xml"
++          # DeepMind has its own feed — previously this slot was wrongly
++          # aliased to research.google. Restoring the real DeepMind feed
++          # surfaces drops like AlphaEvolve / Gemini Deep Research that were
++          # being missed.
++          fetch deepmind.xml        "https://deepmind.com/blog/feed/basic"
++          # ai.meta.com/blog/rss/ began returning 404 in 2026; use the
++          # Engineering at Meta WordPress feed instead — covers FAIR,
++          # PyTorch, Llama infra, etc.
++          fetch meta_ai.xml         "https://engineering.fb.com/feed/"
++          fetch huggingface.xml     "https://huggingface.co/blog/feed.xml"
++
++          # ── Research Paper Feeds ──────────────────────────────────────────
++          fetch arxiv_ai.xml        "https://export.arxiv.org/rss/cs.AI"
++          fetch arxiv_lg.xml        "https://export.arxiv.org/rss/cs.LG"
++          # Hugging Face Daily Papers — community-maintained RSS of the
++          # human-curated daily-papers list (huggingface.co/papers).
++          fetch hf_papers.xml       "https://papers.takara.ai/api/feed"
++
++          # ── Tech News ─────────────────────────────────────────────────────
++          fetch techcrunch_ai.xml   "https://techcrunch.com/category/artificial-intelligence/feed/"
++          fetch verge_ai.xml        "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
++          fetch venturebeat_ai.xml  "https://venturebeat.com/category/ai/feed/"
++          fetch marktechpost.xml    "https://www.marktechpost.com/feed/"
++
++          # ── High-Signal Newsletters & Analysis ────────────────────────────
++          # These were repeatedly cited in our own digests as primary sources
++          # (Simon Willison live blogs, smol-ai/AINews, Interconnects). Pulling
++          # them direct lets us catch the hot-take cycle within the same hour.
++          fetch simonw.xml          "https://simonwillison.net/atom/everything/"
++          fetch import_ai.xml       "https://importai.substack.com/feed"
++          fetch ainews.xml          "https://buttondown.com/ainews/rss"
++          fetch interconnects.xml   "https://www.interconnects.ai/feed"
++          fetch last_week_ai.xml    "https://lastweekin.ai/feed"
++          fetch one_useful.xml      "https://www.oneusefulthing.org/feed"
+
+           echo "RSS feeds fetched successfully"
+           ls -la /tmp/rss/
+@@ -112,19 +111,30 @@ jobs:
+             **Official Company Blogs:**
+             - openai.xml (OpenAI Blog)
+             - anthropic.xml (Anthropic News)
+-            - google_ai.xml (Google AI Blog)
+-            - deepmind.xml (DeepMind Blog)
+-            - meta_ai.xml (Meta AI Blog)
++            - google_ai.xml (Google AI / Keyword vertical, Blogspot mirror)
++            - google_research.xml (Google Research blog)
++            - deepmind.xml (Google DeepMind blog)
++            - meta_ai.xml (Engineering at Meta — FAIR / PyTorch / Llama infra)
+             - huggingface.xml (Hugging Face Blog)
+
+             **Research:**
+             - arxiv_ai.xml (arXiv CS.AI)
+             - arxiv_lg.xml (arXiv CS.LG/Machine Learning)
++            - hf_papers.xml (Hugging Face Daily Papers — curated)
+
+             **Tech News:**
+             - techcrunch_ai.xml (TechCrunch AI)
+             - verge_ai.xml (The Verge AI)
+             - venturebeat_ai.xml (VentureBeat AI)
++            - marktechpost.xml (MarkTechPost — model/research news)
++
++            **Newsletters & Analysis (high signal — surface these prominently):**
++            - simonw.xml (Simon Willison — frequent live blogs of major events)
++            - import_ai.xml (Jack Clark's Import AI)
++            - ainews.xml (smol-ai / AINews — most-read AI daily)
++            - interconnects.xml (Nathan Lambert — RLHF/post-training)
++            - last_week_ai.xml (Last Week in AI)
++            - one_useful.xml (Ethan Mollick — One Useful Thing)
+
+             RSS XML structure:
+             - channel/item/title (article title)
+@@ -151,10 +161,13 @@ jobs:
+             #### Anthropic
+             - [Title](url) - date
+
+-            #### Google/DeepMind
++            #### Google AI / Research
++            - [Title](url) - date
++
++            #### Google DeepMind
+             - [Title](url) - date
+
+-            #### Meta AI
++            #### Meta (FAIR / Engineering)
+             - [Title](url) - date
+
+             #### Hugging Face
+@@ -171,6 +184,9 @@ jobs:
+             #### VentureBeat
+             - [Title](url) - date
+
++            #### MarkTechPost
++            - [Title](url) - date
++
+             ### 📄 New arXiv Papers
+
+             #### CS.AI
+@@ -178,6 +194,17 @@ jobs:
+
+             #### CS.LG
+             - [Paper Title](arxiv_url)
++
++            #### HF Daily Papers
++            - [Paper Title](paper_url)
++
++            ### 📝 Newsletters & Analysis
++
++            #### Simon Willison
++            - [Title](url) - date
++
++            #### Import AI / smol-ai / Interconnects / Last Week in AI / One Useful Thing
++            - **[source]** [Title](url) - date
+             ```
+
+             ## IMPORTANT
