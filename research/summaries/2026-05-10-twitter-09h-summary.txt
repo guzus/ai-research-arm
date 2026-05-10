@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-05-10 09:42 UTC
+
+CYCLE: Quiet Sunday-pre-US-morning; one Yann-amplified signal in an otherwise empty window.
+
+TOP STORIES:
+• @ylecun 08:15 UTC RT amplifies AMI Labs / LeWorldModel thread (150 in-window RTs): $3.5B-pre-money seed Mar 10 (Bezos/Nvidia/Samsung/Toyota); NYU+Mila+SAIL+Brown paper 3 days later, 15M params, single GPU, 48x faster planning. "Meta still has the GPUs. The architecture left." ✓
+• Frontier-lab + TI silence extends: AnthropicAI 39h50m / OpenAI 37h23m / sama 14h24m / TI 12h42m at 09:42 UTC — 5th cycle of escalating dark-hours, still pre-US-morning. ⚠
+
+WATCH: Sun 13:00–18:00 UTC US-morning silence-break test.
+
+Full update on GitHub.
