@@ -3277,5 +3277,40 @@
     "headline": "CEREBRAS WAFER-SCALE CHIP 58X LARGER THAN NVIDIA B200, 2,625X MORE MEMORY BANDWIDTH \u2014 REVENUE +76% YOY TO $510M AHEAD OF IPO",
     "source": "@TradeLogic",
     "url": "https://x.com/TradeLogic/status/2053471379228598467"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-10 18:30 UTC",
+    "headline": "SEMIANALYSIS: AMD ROCm 75X FASTER ON DEEPSEEK V4 IN 14 DAYS \u2014 NEEDS ONLY 5X MORE TO CATCH SINGLE-NODE B200",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2053520440589451720"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-10 18:30 UTC",
+    "headline": "FRONTIER-LAB SILENCE GRADUATES: ANTHROPIC 48H DARK / OPENAI 46H / SAMA 23H \u2014 NO RESPONSE TO METR, COLOSSUS, OR AMD CATCH-UP",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2052522497485570560"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-10 18:30 UTC",
+    "headline": "ANDREW CURRAN ON MYTHOS: CYBER CAPABILITIES WERE NEVER TRAINED \u2014 \"COMPLETELY EMERGENT\" \u2014 LANDS ABOVE AI 2027 TRENDLINE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2053520532549808390"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-10 18:30 UTC",
+    "headline": "THE INFORMATION: PE FIRMS PITCH AI AS NEXT OFFSHORING \u2014 MILKEN EXECS COMPARE OPENAI/ANTHROPIC TO 2000s OUTSOURCING BOOM",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2053512903374811372"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-10 18:30 UTC",
+    "headline": "SEMIANALYSIS NAMES AMD ENGINEERS HAISHAW, THOMAS, ROANER, ANUSHELANGOVAN FOR ROCm KERNEL-FUSION 75X SPRINT",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2053520440589451720"
   }
 ]
