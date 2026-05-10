@@ -3207,5 +3207,33 @@
     "headline": "OPENAI CORP CHANNEL DARK 34.8H \u2014 LAST PRIMARY WAS COT-GRADING SAFETY THREAD FROM FRIDAY",
     "source": "@OpenAI",
     "url": "https://x.com/OpenAI/status/2052845764507062349"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-10 09:42 UTC",
+    "headline": "YANN LECUN AMPLIFIES AMI LABS LEWORLDMODEL THESIS \u2014 JEPA-FROM-PIXELS AT 15M PARAMS, SINGLE GPU, 48X FASTER PLANNING",
+    "source": "@ylecun",
+    "url": "https://x.com/ylecun/status/2053388440759144718"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-10 09:42 UTC",
+    "headline": "AMI LABS CLOSED $3.5B PRE-MONEY EUROPEAN SEED ON MAR 10 \u2014 BEZOS, NVIDIA, SAMSUNG, TOYOTA ALL IN; NYU PAPER DROPPED 3 DAYS LATER",
+    "source": "@aakashgupta",
+    "url": "https://x.com/aakashgupta/status/2052977133073690820"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-10 09:42 UTC",
+    "headline": "ANTHROPIC CORP CHANNEL DARK 39H 50M, OPENAI 37H 23M, SAMA 14H 24M \u2014 5TH CONSECUTIVE CYCLE OF ESCALATING SILENCE",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-10 09:42 UTC",
+    "headline": "STEIPETE TEACHES CODEX TO LOOK FOR SOCIAL SIGNALS WHEN REVIEWING PRS \u2014 DEV-EXPERIENCE PRIMARY ON AGENTIC PR REVIEW",
+    "source": "@steipete",
+    "url": "https://x.com/steipete/status/2053374981824798751"
   }
 ]
