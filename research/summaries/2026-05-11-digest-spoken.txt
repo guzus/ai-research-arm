@@ -1,0 +1,11 @@
+Speaker 1: Monday, May eleventh, twenty twenty-six.
+Speaker 2: [high_energy] Big day in Oakland — Sam Altman takes the stand today in Musk versus Altman, with the liability phase running through May twenty-first.
+Speaker 1: Meanwhile Anthropic just lapped OpenAI on the capital markets — the Financial Times confirmed a fifty billion dollar round at a valuation approaching one trillion dollars, with revenue now running at [emphasis]forty-five billion dollars annualized[/emphasis].
+Speaker 2: That's the first time we've seen Anthropic valued above OpenAI's last round. The AI funding leaderboard just reshuffled.
+Speaker 1: And Cerebras prices its IPO tomorrow — one twenty-five to one thirty-five per share, top-of-range valuation of twenty-eight point seven billion dollars, with the book [emphasis]more than twenty times oversubscribed[/emphasis].
+Speaker 2: Worth noting the chip rotation this week — Intel and AMD each up twenty-five percent, Micron up thirty-seven, while Nvidia added just eight.
+Speaker 1: AMD got a lift from SemiAnalysis reporting their ROCm stack is now seventy-five times faster on DeepSeek V four — achieved in just fourteen days.
+Speaker 2: In equities, hedge fund TCI offloaded an eight billion dollar Microsoft stake and rotated into Alphabet. SoftBank also quietly trimmed its OpenAI margin loan target forty percent, down to six billion dollars.
+Speaker 1: [dramatic_pause] On the community front, Hacker News is still skeptical — Tim Gowers's failure-mode catalog for ChatGPT five point five Pro in math topped the front page with six hundred seventy-nine points.
+Speaker 2: The crowd that builds these models and the crowd grading them are clearly not seeing eye to eye.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
