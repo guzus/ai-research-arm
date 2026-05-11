@@ -1,13 +1,15 @@
 AI News - 2026-05-11
 
 TOP STORIES:
-• Cerebras IPO upsized 2nd time: $150-$160/share (from $115-$125), 30M shares, ~$4.8B raise, >20× oversubscribed; prices Tuesday May 13
-• Alphabet plans first-ever yen-bond sale; 2026 capex bumped to $190B (from $185B); rare 100-year pound century-bond also under review
-• Musk v. Altman Day 10: ex-OpenAI safety researcher Rosie Campbell testifies AGI Readiness + Superalignment Teams dissolved end-2024; Altman stand TODAY
+• OpenAI launches "OpenAI Deployment Company" — $4B capital, $10B valuation, 19 investors led by TPG/Advent/Bain/Brookfield; acquires Tomoro (~150 engineers)
+• Nadella testifies in Musk v. Altman trial; says Musk never raised concerns on MSFT's OpenAI investment; Bloomberg: MSFT targeted ~$92B return
+• Cerebras IPO 2nd upsize: $150-$160/share, ~$4.8B raise, >20× oversubscribed, ~$48.8B FD valuation; prices Tue May 13
+• Alphabet plans first yen-bond + 100-yr pound century-bond; 2026 capex bumped to $190B
 
 KEY NUMBERS:
-• Cerebras: $4.8B top-of-range / ~$33B valuation
-• Alphabet: $190B 2026 capex / ~$32B debt program
-• ~50% of Campbell's safety team quit rather than internal-transfer
+• OpenAI Deployment Co: $4B / $10B val
+• Cerebras: $4.8B raise / ~$48.8B FD
+• MSFT OpenAI return target: ~$92B
+• GOOGL 2026 capex: $190B
 
 Full report on GitHub.
