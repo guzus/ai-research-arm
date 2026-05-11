@@ -3606,5 +3606,40 @@
     "headline": "MICRON MARKET CAP CROSSES $900B \u2014 JOINS SK HYNIX IN MEMORY SUPER-CYCLE MEGA-CAP CLUB",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2053834879800926496"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-11 18:49 UTC",
+    "headline": "ANTHROPIC LAUNCHES CLAUDE PLATFORM ON AWS GA \u2014 NATIVE PARITY INSIDE AWS IAM, BILLING, MANAGED AGENTS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2053892878167072914"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-11 18:49 UTC",
+    "headline": "MUSK TO FOLD XAI INTO 'SPACEXAI' AS COMPANY CUTS STAFF AND WEIGHS $60B CURSOR ACQUISITION \u2014 TI",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2053897998581567502"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-11 18:49 UTC",
+    "headline": "OPENAI HIRES GIMLET LABS TO OPTIMIZE MODELS FOR CEREBRAS CHIPS \u2014 'BROADER PUSH TO REDUCE RELIANCE ON NVIDIA' \u2014 TI",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2053890399039586597"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-11 18:49 UTC",
+    "headline": "ANTHROPIC BREAKS 71-HOUR CORP SILENCE \u2014 CLAUDE CONSTITUTION SHIPS AS AUDIOBOOK 56 MINUTES BEFORE 72H WATCH THRESHOLD",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2053881827396653207"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-11 18:49 UTC",
+    "headline": "CEREBRAS IPO RAISE LIFTED TO $4.8B AT $40B VALUATION \u2014 PRICING TUE MAY 13, TRADING WED MAY 14 AS $CBRS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2053871531697013086"
   }
 ]
