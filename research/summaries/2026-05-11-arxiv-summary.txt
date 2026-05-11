@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-11
+
+TOP 5 PAPERS:
+- ZAYA1-8B (Zyphra): 8B-total/700M-active MoE trained on full-stack AMD; matches DeepSeek-R1 on math/code with Markovian RSA TTC.
+- Omnilingual MT (Meta FAIR): translation system covering 1,600 languages, ~10x prior coverage.
+- ViTok-v2: 5B-param image autoencoder, DINOv3 perceptual loss replaces GAN/LPIPS for stable scaling.
+- EMO: pretraining objective producing emergent modularity in MoE experts.
+- Rethinking RL for LLM Reasoning: argues RL gains are sparse policy selection, reproducible without RL.
+
+CATEGORIES: LMs/NLP 8, Vision/Multimodal 6, Agents/Reasoning 7, Safety/Alignment 5, Other 7.
+
+Full report on GitHub.
