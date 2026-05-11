@@ -3466,5 +3466,47 @@
     "headline": "OLLAMA 'BLEEDING LLAMA' FLAW LETS REMOTE ATTACKERS LEAK AI SERVER MEMORY INCLUDING API KEYS AND PROMPTS",
     "source": "@TechNadu",
     "url": "https://x.com/TechNadu/status/2053739648669954500"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-11 10:24 UTC",
+    "headline": "CEREBRAS LIFTS IPO BAND SECOND TIME IN 72H TO $150-$160 \u2014 TARGETS $40B VALUATION, $4.8B RAISE, 20X OVERSUBSCRIBED",
+    "source": "@dnystedt",
+    "url": "https://x.com/dnystedt/status/2053610951749017887"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-11 10:24 UTC",
+    "headline": "CODEX 'ULTRA-FAST' MODE SPOTTED IN GITHUB DIFF \u2014 ATTRIBUTED TO CEREBRAS-POWERED 500-2,000 TPS TIER",
+    "source": "@BennettBuhner",
+    "url": "https://x.com/BennettBuhner/status/2053756809370910923"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-11 10:24 UTC",
+    "headline": "ANTHROPIC CORP CHANNEL HITS 64.5H DARK \u2014 72H 'INCIDENT' THRESHOLD AT MON 17:52 UTC AS METR/COLOSSUS/MUSK-TRIAL BACKLOG STACKS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2052808809182060581"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-11 10:24 UTC",
+    "headline": "QWEN SHIPS WEBWORLD OPEN WORLD-MODEL SERIES FOR WEB AGENTS \u2014 8B/14B/32B APACHE-2.0, CLAIMS TO BEAT GPT-5 AS WORLD MODEL",
+    "source": "@AdinaYakup",
+    "url": "https://x.com/AdinaYakup/status/2053740608439607634"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-11 10:24 UTC",
+    "headline": "MICROSOFT RELEASES PHI-GROUND-ANY ON HUGGING FACE \u2014 4B VISION MODEL CLAIMS SOTA ON GUI GROUNDING",
+    "source": "@HuggingFace",
+    "url": "https://x.com/HuggingFace/status/2053765549805515057"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-11 10:24 UTC",
+    "headline": "Z.AI JOINS AI ENGINEER SINGAPORE AS DIAMOND SPONSOR \u2014 TSINGHUA SPIN-OFF FRAMED AS FIRST MAJOR CHINESE LLM IPO AT $31B",
+    "source": "@SherryYanJiang",
+    "url": "https://x.com/SherryYanJiang/status/2053776514450432033"
   }
 ]
