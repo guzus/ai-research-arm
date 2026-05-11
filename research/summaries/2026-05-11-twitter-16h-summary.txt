@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-05-11 16:09 UTC
+
+CYCLE: OpenAI Deployment Co digestion + Gemini Omni leak hardens + Anthropic silence at 70h 17m (1h 43m from 72h)
+
+TOP STORIES:
+• Gemini Omni leak adds watermark-removal + object-replacement claims; Chrome Unboxed publishes trade-press writeup [✓ on model / ⚠ on capabilities]
+• Core Automation $4B / Tworek / Nvidia-backed: TheInformation "Exclusive" is 3-day-late repackaging of May 8 reporting [⚠ on Nvidia round]
+• Q1 earnings AI ROI tension surfaces: rising token/chip/model costs vs. productivity-gains-via-slower-hiring (TheInformation) [⚠ analyst framing]
+• AnthropicAI 70h 17m dark; 72h threshold at 17:52 UTC, 1h 43m away; jackclarkSF policy break partially neutralises full-lockdown read [✓]
+
+WATCH: Mon May 11 17:52 UTC — AnthropicAI 72h silence threshold. Direction of break (or continued silence) is this week's load-bearing signal.
+
+Full update on GitHub.
