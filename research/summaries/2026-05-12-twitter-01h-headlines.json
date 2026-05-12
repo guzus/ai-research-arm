@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "MINI SHAI-HULUD WORM HITS TANSTACK NPM — 42 PACKAGES, 84 MALICIOUS VERSIONS IN 6 MINUTES, 12M+ WEEKLY DOWNLOADS EXPOSED",
+    "source": "@IntCyberDigest",
+    "url": "https://x.com/IntCyberDigest/status/2053983157628596484",
+    "category": "breaking"
+  },
+  {
+    "headline": "MISTRAL AI NPM PACKAGES CONFIRMED COMPROMISED IN MINI SHAI-HULUD CAMPAIGN — SOCKET SECURITY",
+    "source": "@SocketSecurity",
+    "url": "https://x.com/SocketSecurity/status/2053973242545668373",
+    "category": "breaking"
+  },
+  {
+    "headline": "NPM ATTACK ABUSES GITHUB ACTIONS OIDC TO REPUBLISH MALICIOUS PACKAGES UNDER LEGITIMATE MAINTAINER IDENTITIES — NOVEL VECTOR",
+    "source": "@AikidoSecurity",
+    "url": "https://x.com/AikidoSecurity/status/2053974705795989906",
+    "category": "breaking"
+  },
+  {
+    "headline": "ALTMAN SOFT-CONFIRMS OPENAI SUPERAPP: 'WOULD YOU CALL IT A SUPERAPP?' AND 'NEW CHATGPT MODEL, PERSONALITY, PERSONALIZATION FEELS LIKE A NEW THING'",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2053971387308745046",
+    "category": "model"
+  },
+  {
+    "headline": "SWYX ON THINKING MACHINES: 'BRUTALLY FRAMEMOGGED GDM AND OAI — EVERYONE'S DEFINITION OF REALTIME JUST GOT A MASSIVE UPGRADE'",
+    "source": "@swyx",
+    "url": "https://x.com/swyx/status/2053960011748098462",
+    "category": "model"
+  },
+  {
+    "headline": "SK GROUP CHAIRMAN: 'IF WE DON'T INCREASE MEMORY SUPPLY, CUSTOMERS WILL FIND WAYS TO USE LESS MEMORY' — JUKAN05 CALLS 80% HBM MARGINS UNSUSTAINABLE",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2053962711206449539",
+    "category": "infra"
+  },
+  {
+    "headline": "ANTHROPIC PREPARING CLAUDE MOBILE APP FOR LONG-HORIZON AGENT GOALS — PARALLEL-AGENT VIEW SHIPS IN CLAUDE CODE CLI",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2053989783211270621",
+    "category": "model"
+  }
+]
