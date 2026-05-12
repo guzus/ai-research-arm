@@ -1,0 +1,11 @@
+Speaker 1: Tuesday, May twelfth, twenty twenty-six.
+Speaker 2: [high_energy] Google just confirmed the first AI-generated zero-day caught in the wild — an LLM-built two-factor authentication bypass that disrupted a cybercrime group's planned mass exploitation event before it could launch.
+Speaker 1: That is a milestone nobody wanted to see arrive this early. Meanwhile, Cerebras is pricing its IPO today between one hundred fifty and one hundred sixty dollars a share, targeting a raise of [emphasis]four point eight billion dollars[/emphasis] on a valuation of roughly forty-eight point eight billion.
+Speaker 2: It is more than twenty times oversubscribed, with OpenAI anchoring more than twenty billion dollars in compute commitments. The market is sending a very loud signal.
+Speaker 1: On the legal front, day eleven of Musk versus Altman. Sam Altman is expected on the stand today, after Satya Nadella revealed Microsoft had targeted a ninety-two billion dollar return on its thirteen billion dollar investment in OpenAI.
+Speaker 2: [dramatic_pause] Ninety-two on thirteen. That testimony is going to echo through this trial.
+Speaker 1: OpenAI also launched its Deployment Company at [emphasis]ten billion dollars[/emphasis], backed by TPG, Advent, Bain, and Brookfield, with more than four billion coming in at close.
+Speaker 2: And Alphabet bumped its twenty twenty-six capital expenditure all the way to one hundred ninety billion dollars, also announcing its first yen-denominated bond.
+Speaker 1: One more — both the Anthropic and OpenAI corporate channels have been silent for more than seventy-two hours. The community is already calling it an incident.
+Speaker 2: When the labs go dark, people notice fast.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
