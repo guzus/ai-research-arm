@@ -3781,5 +3781,54 @@
     "headline": "EMOLLICK: AI LABS BELIEVE IN ASI ONLY WHEN THEY DISBAND THEIR FORWARD-DEPLOYED-ENGINEERING CONSULTING ARMS \u2014 UNTIL THEN, JOBS SAFE",
     "source": "@emollick",
     "url": "https://x.com/emollick/status/2054036929461526984"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-12 07:14 UTC",
+    "headline": "MINI SHAI-HULUD WORM JUMPS NPM TO PYPI \u2014 MISTRALAI 2.4.6 + GUARDRAILS-AI 0.10.1 CONFIRMED COMPROMISED BY TEAMPCP",
+    "source": "@SocketSecurity",
+    "url": "https://x.com/SocketSecurity/status/2054048025081737446"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-12 07:14 UTC",
+    "headline": "DFIR WRITEUP CONFIRMS NPM WORM'S DEAD-MAN'S SWITCH \u2014 GH-TOKEN-MONITOR DAEMON TRIGGERS RM -RF ~/ ON TOKEN REVOKE",
+    "source": "@DFIR_Radar",
+    "url": "https://x.com/DFIR_Radar/status/2054095098208739469"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-12 07:14 UTC",
+    "headline": "TEAMPCP WORM PLANTS PERSISTENCE HOOKS IN .CLAUDE/SETTINGS.JSON AND .VSCODE/TASKS.JSON \u2014 AI CODING AGENTS NOW WEAPONIZED SURFACE",
+    "source": "@ThatbV",
+    "url": "https://x.com/ThatbV/status/2054077830590267732"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-12 07:14 UTC",
+    "headline": "OPENAI CODEX LEAD SOTTIAUX MAKES \"SUPER APP\" FRAMING OFFICIAL \u2014 OPENAI FORUM TALK SCHEDULED WED MAY 13",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2054013690786230510"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-12 07:14 UTC",
+    "headline": "CLAUDE CODE 2.1.139 SHIPS /GOAL COMMAND \u2014 OPENAI CODEX LEAD TAUNTS \"CLAUDE IS NOW COPYING CODEX\"",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2054082531432210765"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-12 07:14 UTC",
+    "headline": "NADELLA CALLS OPENAI BOARD'S 2023 ATTEMPT TO OUST ALTMAN \"AMATEUR CITY\" IN MUSK V OPENAI TRIAL TESTIMONY",
+    "source": "@evanepstein",
+    "url": "https://x.com/evanepstein/status/2054038788096319804"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-12 07:14 UTC",
+    "headline": "NADELLA PRODUCES 2016 EMAIL OF MUSK PERSONALLY THANKING MICROSOFT FOR OPENAI SUPPORT \u2014 STATUTE-OF-LIMITATIONS DEFENSE EVIDENCE",
+    "source": "@namd1nh",
+    "url": "https://x.com/namd1nh/status/2054037139424518484"
   }
 ]
