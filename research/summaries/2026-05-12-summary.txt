@@ -1,15 +1,16 @@
 AI News - 2026-05-12
 
-TOP STORIES:
-• Sutskever testifies he spent a year compiling a 52-page document on Altman's "pattern of lying"; discloses ~$7B OpenAI stake
-• Google GTIG: first confirmed real-world AI-developed zero-day — 2FA bypass via "OpenClaw" for planned mass-exploitation
-• Jensen Huang excluded from Trump's Beijing delegation; Cook & Musk invited; Trump-Xi summit Thu-Fri with AI export controls on agenda
-• OpenAI Chair Bret Taylor defends Altman; Altman expected to take the stand Tuesday
-• Trump admin "knife fight" — NSC pushes ODNI-led mandatory AI model evaluation
+TOP STORIES (AM + PM):
+• Sam Altman takes the stand: "morale boost" when Musk left; recounts Musk's "hair-raising" remark that OpenAI control would pass to his children if he died; "I don't think Mr. Musk understood how to run a good research lab"
+• Sutskever: spent a year compiling 52-page document on Altman's "pattern of lying"; ~$7B OpenAI stake disclosed
+• Google GTIG: first confirmed AI-developed zero-day — 2FA bypass via "OpenClaw" for planned mass-exploitation
+• Jensen Huang excluded from Trump's Beijing delegation; Cook & Musk invited
+• Wispr AI in talks at ~$2B valuation; Robinhood files for RVII (2nd retail venture fund) after RVI doubled since March
 
 KEY NUMBERS:
 • Sutskever stake: ~$7B (was ~$5B Nov 2025)
 • MSFT internal OpenAI return target: ~$92B
 • Cerebras IPO prices tomorrow: $150-$160, ~$4.8B, $48.8B FD, >20x oversubscribed
+• Wispr AI funding talks: ~$2B valuation (>2x prior)
 
 Full report on GitHub.
