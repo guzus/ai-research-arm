@@ -1,0 +1,243 @@
+diff --git a/.github/workflows/2h-bluesky.yml b/.github/workflows/2h-bluesky.yml
+index df673910..946ef900 100644
+--- a/.github/workflows/2h-bluesky.yml
++++ b/.github/workflows/2h-bluesky.yml
+@@ -34,35 +34,38 @@ jobs:
+         run: |
+           mkdir -p /tmp/bluesky
+
+-          # Bluesky public API - search for AI-related posts
+-          # Using the public search endpoint (no auth required for public posts)
+-
+-          # Search for recent AI-related posts
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=AI%20announcement&limit=30&sort=latest" \
+-            > /tmp/bluesky/ai_announcements.json
+-
++          # Bluesky AppView search endpoint.
++          # NOTE: public.api.bsky.app/xrpc/app.bsky.feed.searchPosts began returning
++          # 403 Forbidden in 2026 (Bluesky restricted access on that subdomain).
++          # api.bsky.app responds without auth for the same endpoint, so we use that.
++          BSKY_BASE="https://api.bsky.app/xrpc/app.bsky.feed.searchPosts"
++          UA="Mozilla/5.0 (compatible; AIResearchBot/1.0)"
++
++          fetch_bsky() {
++            local query="$1"
++            local outfile="$2"
++            local http_code
++            http_code=$(curl -sS -o "$outfile" -w "%{http_code}" \
++              -H "User-Agent: $UA" \
++              "${BSKY_BASE}?q=${query}&limit=30&sort=latest" || echo "000")
++            if [ "$http_code" != "200" ]; then
++              echo "WARN: Bluesky search for '$query' returned HTTP $http_code — substituting empty result" >&2
++              echo '{"posts":[]}' > "$outfile"
++            fi
++          }
++
++          fetch_bsky "AI%20announcement"        /tmp/bluesky/ai_announcements.json
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=LLM%20release&limit=30&sort=latest" \
+-            > /tmp/bluesky/llm_releases.json
+-
++          fetch_bsky "LLM%20release"            /tmp/bluesky/llm_releases.json
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=GPT%20Claude%20Gemini&limit=30&sort=latest" \
+-            > /tmp/bluesky/model_discussions.json
+-
++          fetch_bsky "GPT%20Claude%20Gemini"    /tmp/bluesky/model_discussions.json
+           sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=machine%20learning%20paper&limit=30&sort=latest" \
+-            > /tmp/bluesky/ml_papers.json
+-
++          fetch_bsky "machine%20learning%20paper" /tmp/bluesky/ml_papers.json
+           sleep 1
++          fetch_bsky "from%3Akarpathy.bsky.social" /tmp/bluesky/karpathy.json
+
+-          # Get posts from known AI researchers/companies by searching their handles
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=from%3Akarpathy.bsky.social&limit=20&sort=latest" \
+-            > /tmp/bluesky/karpathy.json 2>/dev/null || echo '{"posts":[]}' > /tmp/bluesky/karpathy.json
+-
+-          echo "Bluesky data fetched successfully"
++          echo "Bluesky data fetched. File sizes:"
++          wc -c /tmp/bluesky/*.json
+
+       - name: Copy Bluesky data to working directory
+         run: |
+diff --git a/.github/workflows/hourly-rss.yml b/.github/workflows/hourly-rss.yml
+index 05e59909..ab937a51 100644
+--- a/.github/workflows/hourly-rss.yml
++++ b/.github/workflows/hourly-rss.yml
+@@ -34,63 +34,57 @@ jobs:
+         id: rss
+         run: |
+           mkdir -p /tmp/rss
+-
+-          # OpenAI Blog RSS (news section)
+-          curl -sL "https://openai.com/news/rss.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/openai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/openai.xml
+-
+-          # Anthropic News RSS (via OpenRSS since no official feed)
+-          curl -sL "https://openrss.org/www.anthropic.com/news" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/anthropic.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/anthropic.xml
+-
+-          # Google AI Blog RSS (Atom feed)
+-          curl -sL "http://googleaiblog.blogspot.com/atom.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/google_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/google_ai.xml
+-
+-          # DeepMind Blog RSS (Google Research)
+-          curl -sL "https://research.google/blog/rss/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/deepmind.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/deepmind.xml
+-
+-          # Meta AI Blog RSS
+-          curl -sL "https://ai.meta.com/blog/rss/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/meta_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/meta_ai.xml
+-
+-          # Hugging Face Blog RSS
+-          curl -sL "https://huggingface.co/blog/feed.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/huggingface.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/huggingface.xml
+-
+-          # arXiv CS.AI RSS (recent submissions)
+-          curl -sL "https://export.arxiv.org/rss/cs.AI" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/arxiv_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arxiv_ai.xml
+-
+-          # arXiv CS.LG RSS (Machine Learning)
+-          curl -sL "https://export.arxiv.org/rss/cs.LG" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/arxiv_lg.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arxiv_lg.xml
+-
+-          # TechCrunch AI RSS
+-          curl -sL "https://techcrunch.com/category/artificial-intelligence/feed/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/techcrunch_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/techcrunch_ai.xml
+-
+-          # The Verge AI RSS
+-          curl -sL "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/verge_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/verge_ai.xml
+-
+-          # VentureBeat AI RSS
+-          curl -sL "https://venturebeat.com/category/ai/feed/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
+-
+-          echo "RSS feeds fetched successfully"
++          UA="Mozilla/5.0 (compatible; AIResearchBot/1.0)"
++
++          # fetch_feed <url> <outfile> — record HTTP status, fall back to empty <rss/>
++          # if the feed is non-200 or empty. Without this, dead feeds went undetected
++          # for ~15 days (last successful RSS run was 2026-04-27).
++          fetch_feed() {
++            local url="$1"
++            local outfile="$2"
++            local http_code
++            http_code=$(curl -sSL -o "$outfile" -w "%{http_code}" \
++              -H "User-Agent: $UA" --max-time 20 "$url" || echo "000")
++            local size
++            size=$(wc -c < "$outfile" 2>/dev/null || echo 0)
++            if [ "$http_code" != "200" ] || [ "$size" -lt 100 ]; then
++              echo "WARN: $url returned HTTP $http_code, size=$size bytes — substituting empty feed" >&2
++              echo "<rss><channel></channel></rss>" > "$outfile"
++            else
++              echo "OK: $url -> $outfile ($size bytes)"
++            fi
++          }
++
++          # --- Official Company Blogs ---
++          fetch_feed "https://openai.com/news/rss.xml"                /tmp/rss/openai.xml
++          fetch_feed "https://openrss.org/www.anthropic.com/news"     /tmp/rss/anthropic.xml
++          fetch_feed "https://research.google/blog/rss/"              /tmp/rss/google_ai.xml
++          # NOTE: ai.meta.com/blog/rss/ has been 404 since at least May 2026; using
++          # openrss bridge against the blog index instead.
++          fetch_feed "https://openrss.org/ai.meta.com/blog"           /tmp/rss/meta_ai.xml
++          fetch_feed "https://huggingface.co/blog/feed.xml"           /tmp/rss/huggingface.xml
++          fetch_feed "https://openrss.org/mistral.ai/news"            /tmp/rss/mistral.xml
++          fetch_feed "https://cohere.com/blog/rss.xml"                /tmp/rss/cohere.xml
++
++          # --- Research ---
++          fetch_feed "https://export.arxiv.org/rss/cs.AI"             /tmp/rss/arxiv_ai.xml
++          fetch_feed "https://export.arxiv.org/rss/cs.LG"             /tmp/rss/arxiv_lg.xml
++
++          # --- Tech News ---
++          fetch_feed "https://techcrunch.com/category/artificial-intelligence/feed/" /tmp/rss/techcrunch_ai.xml
++          fetch_feed "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" /tmp/rss/verge_ai.xml
++          fetch_feed "https://venturebeat.com/category/ai/feed/"      /tmp/rss/venturebeat_ai.xml
++          fetch_feed "https://arstechnica.com/ai/feed/"               /tmp/rss/arstechnica_ai.xml
++          fetch_feed "https://www.technologyreview.com/topic/artificial-intelligence/feed/" /tmp/rss/mit_techreview_ai.xml
++
++          # --- Practitioner / Researcher Commentary (new in 2026-05-12 improvement) ---
++          # High-signal individual voices that historically break or first-analyze
++          # frontier-model news ahead of mainstream press.
++          fetch_feed "https://simonwillison.net/atom/everything/"     /tmp/rss/simon_willison.xml
++          fetch_feed "https://www.latent.space/feed"                  /tmp/rss/latent_space.xml
++          fetch_feed "https://jack-clark.net/feed/"                   /tmp/rss/import_ai.xml
++
++          echo "RSS feeds fetched. Summary:"
+           ls -la /tmp/rss/
+
+       - name: Process RSS Feeds with Claude
+@@ -112,10 +106,11 @@ jobs:
+             **Official Company Blogs:**
+             - openai.xml (OpenAI Blog)
+             - anthropic.xml (Anthropic News)
+-            - google_ai.xml (Google AI Blog)
+-            - deepmind.xml (DeepMind Blog)
+-            - meta_ai.xml (Meta AI Blog)
++            - google_ai.xml (Google Research Blog — covers DeepMind too)
++            - meta_ai.xml (Meta AI Blog via openrss bridge)
+             - huggingface.xml (Hugging Face Blog)
++            - mistral.xml (Mistral AI News)
++            - cohere.xml (Cohere Blog)
+
+             **Research:**
+             - arxiv_ai.xml (arXiv CS.AI)
+@@ -125,6 +120,13 @@ jobs:
+             - techcrunch_ai.xml (TechCrunch AI)
+             - verge_ai.xml (The Verge AI)
+             - venturebeat_ai.xml (VentureBeat AI)
++            - arstechnica_ai.xml (Ars Technica AI)
++            - mit_techreview_ai.xml (MIT Technology Review AI)
++
++            **Practitioner / Researcher Commentary:**
++            - simon_willison.xml (Simon Willison — hands-on LLM experiments)
++            - latent_space.xml (Latent Space podcast/newsletter)
++            - import_ai.xml (Jack Clark — Import AI weekly)
+
+             RSS XML structure:
+             - channel/item/title (article title)
+@@ -160,6 +162,9 @@ jobs:
+             #### Hugging Face
+             - [Title](url) - date
+
++            #### Mistral / Cohere / Other Labs
++            - [Title](url) - date
++
+             ### 📰 Tech News
+
+             #### TechCrunch
+@@ -171,6 +176,17 @@ jobs:
+             #### VentureBeat
+             - [Title](url) - date
+
++            #### Ars Technica
++            - [Title](url) - date
++
++            #### MIT Technology Review
++            - [Title](url) - date
++
++            ### ✍️ Practitioner Commentary
++            - **Simon Willison**: [Title](url) - date
++            - **Latent Space**: [Title](url) - date
++            - **Import AI (Jack Clark)**: [Title](url) - date
++
+             ### 📄 New arXiv Papers
+
+             #### CS.AI
