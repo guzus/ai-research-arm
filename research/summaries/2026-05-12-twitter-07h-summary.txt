@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-12 07:14 UTC
+
+CYCLE: Mini Shai-Hulud crosses npm→PyPI hitting Mistral + AI guardrails; OpenAI Codex lead makes "super app" official; Nadella trial testimony graduates.
+
+TOP STORIES:
+• mistralai 2.4.6 + guardrails-ai 0.10.1 PyPI compromise (16-min live window); DFIR confirms dead-man's-switch + worm + Claude/.vscode persistence hooks ✓
+• OpenAI Codex lead @thsottiaux uses "super app" framing officially, taunts Claude over /goal parity; OpenAI Forum talk Wed 5/13 ✓
+• Nadella calls OpenAI 2023 Altman-firing attempt "amateur city"; produces 2016 Musk-thanks-Microsoft email as statute-of-limitations evidence ✓
+
+WATCH: Wed May 13 @thsottiaux OpenAI Forum Codex talk + @MistralAI corp response to dual-registry compromise.
+
+Full update on GitHub.
