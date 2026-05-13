@@ -4159,5 +4159,54 @@
     "headline": "ROON (OPENAI): \"MODELS ARE INTELLIGENT ENOUGH AND NOBODY CAN NOTICE IMPROVEMENTS\" \u2014 A TAKE THAT AGES BADLY",
     "source": "@tszzl",
     "url": "https://x.com/tszzl/status/2054354571733205305"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-13 07:19 UTC",
+    "headline": "OFFICIAL MISTRAL AI SDK COMPROMISED IN MINI SHAI-HULUD WORM \u2014 170+ NPM/PYPI PACKAGES HIT, CVE-2026-45321 ASSIGNED",
+    "source": "@ChainPatrol",
+    "url": "https://x.com/ChainPatrol/status/2054287615583559951"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-13 07:19 UTC",
+    "headline": "MINI SHAI-HULUD WORM PERSISTS VIA .CLAUDE/SETTINGS.JSON \u2014 NPM UNINSTALL DOES NOT CLEAN; SLSA L3 SIGNED PACKAGES POISONED",
+    "source": "@rsensui",
+    "url": "https://x.com/rsensui/status/2054346772152226105"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-13 07:19 UTC",
+    "headline": "TANSTACK 42 PACKAGES / 84 VERSIONS / 3M WEEKLY DOWNLOADS COMPROMISED \u2014 UIPATH, OPENSEARCH, GUARDRAILS AI ALSO HIT",
+    "source": "@TitanSecAI",
+    "url": "https://x.com/TitanSecAI/status/2054305010452926641"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-13 07:19 UTC",
+    "headline": "MISTRALAI CORP-CHANNEL SILENT 13 DAYS THROUGH OWN OFFICIAL SDK COMPROMISE \u2014 NO SECURITY ADVISORY POST",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-13 07:19 UTC",
+    "headline": "TRUMP AF1 LANDS BEIJING \u2014 JENSEN HUANG ALASKA-BOARDING CONFIRMED; ~16 CEOS INCLUDING MUSK + COOK + FINK",
+    "source": "@NeelMacro",
+    "url": "https://x.com/NeelMacro/status/2054441442261745885"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-13 07:19 UTC",
+    "headline": "NVDA UP +1.7% PRE-MARKET ON TRUMP-JENSEN BEIJING DELEGATION REPORTS \u2014 FIRST MARKETS DATUM ON SUMMIT",
+    "source": "@QuantData",
+    "url": "https://x.com/QuantData/status/2054456460222894099"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-13 07:19 UTC",
+    "headline": "ANTHROPIC CORP-CHANNEL SILENT ~62 HOURS \u2014 LONGEST 2026 SILENCE THROUGH TRIAL, COLOSSUS 1, HELION, AF1, NPM PERSISTENCE VECTORS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI"
   }
 ]
