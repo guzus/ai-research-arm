@@ -4348,5 +4348,47 @@
     "headline": "INFORMATION: OPENAI-MICROSOFT REV-SHARE CAP AT $38B THROUGH 2030 \u2014 SAVES OPENAI ~$97B IF GROWTH TARGETS HIT",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2054554784389022173"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-13 18:50 UTC",
+    "headline": "ANTHROPIC SPLITS CLAUDE CODE PROGRAMMATIC USAGE INTO SEPARATE MONTHLY CREDIT \u2014 AGENT SDK, CLAUDE -P, GITHUB ACTIONS, CONDUCTOR ALL MOVE JUNE 15",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2054610152817619388"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-13 18:50 UTC",
+    "headline": "ALTMAN BREAKS 91-HOUR SILENCE: 2 MONTHS OF FREE CODEX FOR ANY COMPANY SWITCHING IN NEXT 30 DAYS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2054626219858293128"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-13 18:50 UTC",
+    "headline": "OPENAI TAUNTS ANTHROPIC 41 MINUTES AFTER CLAUDE CODE PRICING CHANGE: 'ANOTHER REASON TO SWITCH TO CODEX'",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2054620621255192719"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-13 18:50 UTC",
+    "headline": "ANDURIL CLOSES $5B AT $61B VALUATION \u2014 DOUBLES IN ~9 MONTHS; THRIVE + A16Z LEAD; IPO 'IN THE NEXT YEAR' FLOATED",
+    "source": "@etnshow",
+    "url": "https://x.com/etnshow/status/2054515028410028361"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-13 18:50 UTC",
+    "headline": "QWEN EX-LEAD JUNYANG LIN RAISING SEVERAL HUNDRED MILLION AT $2B PRE-PRODUCT \u2014 UNPRECEDENTED CHINA AI-LAB MARK",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2054615187957666218"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-13 18:50 UTC",
+    "headline": "DDR4 PRICES IN CHINA'S HUAQIANGBEI JUMP 20% AHEAD OF SAMSUNG MAY-21 STRIKE \u2014 DOWNSTREAM TIGHTNESS NOW VISIBLE",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2054623591749099947"
   }
 ]
