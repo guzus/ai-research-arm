@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-13 21:41 UTC
+
+CYCLE: Cerebras prices IPO at $185 (60% above original range, 20-25x oversubscribed, ~$49-56B FDV); Anthropic counter-strikes OpenAI Codex bounty with +50% Claude Code weekly limits through July 13.
+
+TOP STORIES:
+• Cerebras prices IPO $185/sh, $5.55B raised on 30mm shares, ~$49-56B FDV, 20-25x oversubscribed, Bullpen pre-mkt ~$295, trades May 14 [✓]
+• Claude Code weekly limits +50% through July 13 — 54min after sama's Codex bounty; Anthropic crosses OpenAI in Ramp 34.4 vs 32.3 [✓]
+• Vercel AI Gateway production telemetry: Google king of scale, Anthropic dominates coding/spend, OpenAI growing since 5.4, OSS gaining [⚠]
+
+WATCH: Cerebras $CBRS first-day open May 14 mid-day vs Bullpen-implied $295.
+
+Full update on GitHub.
