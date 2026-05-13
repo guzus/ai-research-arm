@@ -1,0 +1,11 @@
+Speaker 1: Wednesday, May thirteenth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic is in talks to raise thirty billion dollars at a valuation north of nine hundred billion — with Bloomberg reporting an IPO could come as early as October. That is a two point four times markup from just February.
+Speaker 1: And if Anthropic is the biggest story, Cerebras is right behind it. The AI chip company is pricing its IPO today at one hundred fifty to one hundred sixty dollars a share, implying roughly a fifty billion dollar valuation — and the offering came in [emphasis] twenty times oversubscribed [/emphasis].
+Speaker 2: OpenAI holds an eleven percent stake in Cerebras, so that translates to a five billion dollar-plus windfall for them. Not a bad Tuesday.
+Speaker 1: Meanwhile, Sam Altman is back on the stand. Prosecutors put a seven-witness quote lying stack in front of him, pressing him on testimony he gave to the Senate in May twenty twenty-three where he said he held no equity — against his known stakes in Y Combinator and Sequoia.
+Speaker 2: Closing arguments in that trial are set for Thursday. Eyes on that.
+Speaker 1: Some quick numbers from the week. Claude Opus four point seven Fast Mode is out — two point five times faster at six times lower cost. OpenAI and Microsoft have capped their revenue share at [emphasis] thirty-eight billion dollars [/emphasis], saving Microsoft roughly ninety-seven billion over the life of the deal.
+Speaker 2: And Isomorphic Labs, the DeepMind spinout doing AI drug discovery, just closed two point one billion dollars led by Thrive Capital and the UK Sovereign Wealth Fund. That is a serious round.
+Speaker 1: On the consumer side, Google launched its Gemini Intelligence show inside Android — the company's latest push to get generative AI in front of everyday users.
+Speaker 2: [dramatic_pause] Big funding, a chip IPO, and a CEO on the witness stand — quite a Wednesday.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
