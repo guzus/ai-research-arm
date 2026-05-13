@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OFFICIAL MISTRAL AI SDK COMPROMISED IN MINI SHAI-HULUD WORM — 170+ NPM/PYPI PACKAGES HIT, CVE-2026-45321 ASSIGNED",
+    "source": "@ChainPatrol",
+    "url": "https://x.com/ChainPatrol/status/2054287615583559951",
+    "category": "breaking"
+  },
+  {
+    "headline": "MINI SHAI-HULUD WORM PERSISTS VIA .CLAUDE/SETTINGS.JSON — NPM UNINSTALL DOES NOT CLEAN; SLSA L3 SIGNED PACKAGES POISONED",
+    "source": "@rsensui",
+    "url": "https://x.com/rsensui/status/2054346772152226105",
+    "category": "breaking"
+  },
+  {
+    "headline": "TANSTACK 42 PACKAGES / 84 VERSIONS / 3M WEEKLY DOWNLOADS COMPROMISED — UIPATH, OPENSEARCH, GUARDRAILS AI ALSO HIT",
+    "source": "@TitanSecAI",
+    "url": "https://x.com/TitanSecAI/status/2054305010452926641",
+    "category": "opensource"
+  },
+  {
+    "headline": "MISTRALAI CORP-CHANNEL SILENT 13 DAYS THROUGH OWN OFFICIAL SDK COMPROMISE — NO SECURITY ADVISORY POST",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI",
+    "category": "business"
+  },
+  {
+    "headline": "TRUMP AF1 LANDS BEIJING — JENSEN HUANG ALASKA-BOARDING CONFIRMED; ~16 CEOS INCLUDING MUSK + COOK + FINK",
+    "source": "@NeelMacro",
+    "url": "https://x.com/NeelMacro/status/2054441442261745885",
+    "category": "policy"
+  },
+  {
+    "headline": "NVDA UP +1.7% PRE-MARKET ON TRUMP-JENSEN BEIJING DELEGATION REPORTS — FIRST MARKETS DATUM ON SUMMIT",
+    "source": "@QuantData",
+    "url": "https://x.com/QuantData/status/2054456460222894099",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC CORP-CHANNEL SILENT ~62 HOURS — LONGEST 2026 SILENCE THROUGH TRIAL, COLOSSUS 1, HELION, AF1, NPM PERSISTENCE VECTORS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI",
+    "category": "business"
+  }
+]

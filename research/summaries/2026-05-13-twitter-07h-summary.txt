@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-05-13 07:19 UTC
+
+CYCLE: Mini Shai-Hulud npm worm penetrates AI dev stack; Trump AF1 arrives Beijing with Jensen onboard.
+
+TOP STORIES:
+• Mini Shai-Hulud worm (CVE-2026-45321) compromises 170+ packages incl. official Mistral AI SDK, TanStack (42 pkgs/3M weekly DLs), UiPath, OpenSearch, Guardrails AI — SLSA L3 signed; persists via .claude/settings.json so npm uninstall doesn't clean. MistralAI silent 13 days through own SDK compromise [⚠ AI-IDE persistence vector pending Anthropic confirm]
+• Trump AF1 lands Beijing — Jensen Huang's Alaska boarding multi-source confirmed; $NVDA +1.7% pre-market; ~16 CEOs incl. Musk + Cook + Fink; AI chip exports + Iran-Hormuz dual agenda [✓ delegation / ⚠ Trump-personal-call origin]
+
+WATCH: @MistralAI break-of-silence + npm/GitHub Security Advisory for CVE-2026-45321; NVDA Wed open + Thu-Fri summit deliverables.
+
+Full update on GitHub.
