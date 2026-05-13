@@ -4110,5 +4110,54 @@
     "headline": "SEMIANALYSIS FLAGS NAPHTHA AS QUIET AI-CHIP SUPPLY CONSTRAINT AS IRAN CONFLICT PERSISTS",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2054321011110101192"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-13 04:28 UTC",
+    "headline": "TRUMP CONFIRMS JENSEN HUANG, TIM COOK, MUSK, FINK, SCHWARZMAN, SOLOMON ON AIR FORCE ONE TO BEIJING SUMMIT",
+    "source": "@KobeissiLetter",
+    "url": "https://x.com/KobeissiLetter/status/2054400014684655638"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-13 04:28 UTC",
+    "headline": "JENSEN HUANG BOARDED AIR FORCE ONE IN ALASKA AFTER LAST-MINUTE PERSONAL CALL FROM TRUMP \u2014 NEXT STOP BEIJING",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2054384285914697989"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-13 04:28 UTC",
+    "headline": "TRUMP-XI SUMMIT MAY 14-15 AGENDA: AI CHIP EXPORT CONTROLS, H20/H200/BLACKWELL CARVE-OUT, RARE EARTHS, TAIWAN",
+    "source": "@FangChenAI",
+    "url": "https://x.com/FangChenAI/status/2054355190531367150"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-13 04:28 UTC",
+    "headline": "SEMIANALYSIS: POSITIVE AMD ROCM FLYWHEEL ALERT \u2014 $3.6M MI355X DEV CLUSTERS OPENED TO vLLM AND SGLANG MAINTAINERS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2054376780232814849"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-13 04:28 UTC",
+    "headline": "ANDREW CURRAN TEASES \"THE RETURN OF PROJECT TIGRIS\" \u2014 OPENAI'S $18B BROADCOM CUSTOM-CHIP PLAN POTENTIALLY RESTARTED",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2054398911255847019"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-13 04:28 UTC",
+    "headline": "OPENAI CODEX IN-APP BROWSER NOW CONTROLS DEVICE TOOLBAR FOR VIEWPORT-SIZE RESPONSIVE TESTING",
+    "source": "@jxnlco",
+    "url": "https://x.com/jxnlco/status/2054396228780363853"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-13 04:28 UTC",
+    "headline": "ROON (OPENAI): \"MODELS ARE INTELLIGENT ENOUGH AND NOBODY CAN NOTICE IMPROVEMENTS\" \u2014 A TAKE THAT AGES BADLY",
+    "source": "@tszzl",
+    "url": "https://x.com/tszzl/status/2054354571733205305"
   }
 ]
