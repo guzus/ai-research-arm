@@ -4068,5 +4068,47 @@
     "headline": "MOLO CONSOLIDATES 7-WITNESS 'HISTORY OF LYING' STACK AGAINST ALTMAN \u2014 SUTSKEVER, MURATI, BOTH AMODEIS, YOON, TONER, MCCAULEY",
     "source": "@ns123abc",
     "url": "https://x.com/ns123abc/status/2054295002046709859"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-13 01:10 UTC",
+    "headline": "ANTHROPIC LEASES SPACEX COLOSSUS 1 \u2014 220K GPUS, 300 MW, $3-4B/YR TO SPACEX AHEAD OF IPO",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2054260384127693178"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-13 01:10 UTC",
+    "headline": "ALTMAN HELION STAKE WORTH ~$1.65B PER PERJURY FILING \u2014 ORIGINAL BOARD REJECTED DEAL, NEW BOARD APPROVED",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2054368416413196369"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-13 01:10 UTC",
+    "headline": "GOOGLE UNVEILS GOOGLEBOOK \u2014 FIRST LAPTOP DESIGNED FOR GEMINI INTELLIGENCE; MAGIC POINTER PUTS AI IN THE CURSOR",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2054357865284907517"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-13 01:10 UTC",
+    "headline": "SAMSUNG LABOR TALKS COLLAPSE 3AM KOREA \u2014 50K WORKERS PREPARE 18-DAY STRIKE FROM MAY 21; SAMSUNG -5% PRE-MARKET",
+    "source": "@NeelMacro",
+    "url": "https://x.com/NeelMacro/status/2054334509345308729"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-13 01:10 UTC",
+    "headline": "CLAUDE CODE SHIPS /GOAL + AUTO MODE + STOP HOOK FOR LONG-RUNNING AGENTS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2054351031279186040"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-13 01:10 UTC",
+    "headline": "SEMIANALYSIS FLAGS NAPHTHA AS QUIET AI-CHIP SUPPLY CONSTRAINT AS IRAN CONFLICT PERSISTS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2054321011110101192"
   }
 ]
