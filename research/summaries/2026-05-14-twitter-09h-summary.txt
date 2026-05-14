@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-14 09:56 UTC
+
+CYCLE: Quiet window — one fresh story, the rest recycled or low-credibility.
+
+TOP STORY:
+• Google I/O leak: "Gemini Spark," an always-on personal agent with deep account + browser-session access (Gmail, Calendar, location, logged-in sessions, even stored login details + RCE data), surfaces 5 days before the May 19 keynote via @testingcatalog [single-origin, multi-account corroborated]
+
+ALSO: H200 China clearance unchanged from 07h cycle; Anthropic corp-channel silence now ~94h. Triaged and dropped: a stale DeepSeek $45B FT report, an "OpenAI suicide lawsuit" that is a memecoin scam, an unanchored "NVDA +$150B overnight" claim.
+
+WATCH: May 19 Google I/O — does "Gemini Spark" ship by that name and with that access model.
+
+Full update on GitHub.
