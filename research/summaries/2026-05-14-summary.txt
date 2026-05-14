@@ -1,15 +1,13 @@
-AI News - 2026-05-14
+AI News - 2026-05-14 (PM Update)
 
 TOP STORIES:
-• Cerebras prices IPO at $185/share (above range), raises $5.55B, trades today on Nasdaq under CBRS
-• Jensen Huang ADDED to Trump-Xi Beijing delegation; summit opens today with H200 export licensing on the agenda
-• Musk v. Altman closing arguments today; Altman says nonprofit was "left for dead" by Musk
-• Anduril raises $5B Series H at $61B valuation, led by Thrive Capital and a16z
-• Anthropic now has more business customers than OpenAI (34.4% vs 32.3%, Ramp AI Index)
+• Cerebras (CBRS) soars on Nasdaq debut: opens $350, closes +68% at $311.07, implied valuation ~$95B
+• Trump-Xi summit Day 1: US clears NVIDIA H200 sales to ~10 Chinese tech firms (Alibaba, Tencent, ByteDance, JD.com)
+• Musk v. Altman closing arguments delivered; Musk's lawyer apologizes for his absence (he's in Beijing); verdict possible next week
+• Earlier today: Anduril $5B at $61B; Anthropic passes OpenAI on business customers
 
 KEY NUMBERS:
-• Cerebras: $185/share, $5.55B raised, $56B+ market cap
-• Anduril: $5B round, $61B valuation (doubled in under a year), $2.2B 2025 revenue
-• Fractile (UK inference chips): $220M Series B; Exaforce: $125M Series B
+• Cerebras: $185 IPO price -> $311.07 close (+68%), ~$95B valuation, $5.55B raised
+• H200 clearance to ~10 Chinese firms; US-China "strategic stability" 3-year framework
 
 Full report on GitHub.
