@@ -1,0 +1,11 @@
+Speaker 1: Thursday, May fourteenth, twenty twenty-six.
+Speaker 2: [high_energy] Cerebras just opened on the Nasdaq — ticker CBRS — priced at one hundred eighty-five dollars per share, thirty million shares, raising five point five five billion dollars and landing at a [emphasis]fifty-six billion dollar[/emphasis] fully diluted valuation.
+Speaker 1: Worth noting that OpenAI holds roughly eleven percent of Cerebras, which puts their stake north of five billion dollars on the first day of trading.
+Speaker 2: Meanwhile in the courtroom, Musk versus Altman closing arguments wrapped today, and jury deliberations kick off Monday the eighteenth.
+Speaker 1: The headline out of that trial: Microsoft testified it has spent [emphasis]more than one hundred billion dollars[/emphasis] on the OpenAI partnership.
+Speaker 2: That is a staggering number, and it completely reframes how people are reading the economics of that deal.
+Speaker 1: On the funding front, Anthropic's latest round has expanded to somewhere between thirty and fifty billion dollars, at a valuation of [dramatic_pause] nine hundred fifty billion dollars, with an October IPO target.
+Speaker 2: That puts Anthropic within striking distance of a trillion before it ever hits the public markets — hard to overstate how fast that number has moved.
+Speaker 1: And on the tools side, Claude Opus four point seven Fast Mode is now the default in Claude Code — two point five times faster at six times the cost.
+Speaker 2: First time a speed mode has been flipped on by default, so if you are running heavy workloads, it is worth checking your billing settings today.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
