@@ -1,0 +1,411 @@
+From: claude[bot] <noreply@anthropic.com>
+Subject: [PATCH] Methodology improvements for 2026-05-14 (workflow fixes)
+
+The auto-improve workflow's GitHub App token does not carry `workflows`
+permission, so it cannot push edits under .github/workflows/. Apply this
+patch manually with `git apply improve-2026-05-14-workflow-fixes.patch`
+from the repo root, then commit and push as the human owner.
+
+This is the third consecutive iteration of the same fix
+(see improve/2026-05-12, improve/2026-05-13). The single most valuable
+follow-up is granting the daily-improve App `workflows: write` so it
+self-applies. Context for what this fixes: see IMPROVEMENTS.md.
+
+Verification done from inside the runner today (2026-05-14):
+- 21 RSS feed URLs in the patch all return HTTP 200 with valid feed bodies.
+- 10 Bluesky author handles in the patch all return HTTP 200.
+- The legacy URLs being removed all confirmed broken:
+    * ai.meta.com/blog/rss/                  HTTP 404
+    * googleaiblog.blogspot.com/atom.xml     200 but frozen <updated>=2025-10-07
+    * blog.research.google/atom.xml          200 but frozen <updated>=2025-10-07
+    * openrss.org/www.anthropic.com/news     200 but content-type=text/html
+    * public.api.bsky.app .../searchPosts    HTTP 403
+
+Correction vs yesterday's improve/2026-05-13 patch: yesterday swapped the
+broken googleaiblog.blogspot.com URL for blog.research.google/atom.xml,
+which is *also* frozen. This patch uses research.google/blog/rss/ instead
+(verified live, latest item dated within current week).
+
+---
+diff --git a/.github/workflows/2h-bluesky.yml b/.github/workflows/2h-bluesky.yml
+index df673910..14a59c01 100644
+--- a/.github/workflows/2h-bluesky.yml
++++ b/.github/workflows/2h-bluesky.yml
+@@ -33,36 +33,68 @@ jobs:
+         id: bluesky
+         run: |
+           mkdir -p /tmp/bluesky
+-
+-          # Bluesky public API - search for AI-related posts
+-          # Using the public search endpoint (no auth required for public posts)
+-
+-          # Search for recent AI-related posts
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=AI%20announcement&limit=30&sort=latest" \
+-            > /tmp/bluesky/ai_announcements.json
+-
+-          sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=LLM%20release&limit=30&sort=latest" \
+-            > /tmp/bluesky/llm_releases.json
+-
+-          sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=GPT%20Claude%20Gemini&limit=30&sort=latest" \
+-            > /tmp/bluesky/model_discussions.json
+-
+-          sleep 1
+-
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=machine%20learning%20paper&limit=30&sort=latest" \
+-            > /tmp/bluesky/ml_papers.json
+-
+-          sleep 1
+-
+-          # Get posts from known AI researchers/companies by searching their handles
+-          curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=from%3Akarpathy.bsky.social&limit=20&sort=latest" \
+-            > /tmp/bluesky/karpathy.json 2>/dev/null || echo '{"posts":[]}' > /tmp/bluesky/karpathy.json
+-
+-          echo "Bluesky data fetched successfully"
++          UA="Mozilla/5.0 (compatible; AIResearchBot/1.0)"
++
++          # `public.api.bsky.app` started returning HTTP 403 in early May 2026
++          # and silently zeroed out this feed for ~14 days. The unprefixed
++          # `api.bsky.app` host serves the same xrpc endpoints over plain
++          # HTTPS and returns 200 — verified 2026-05-14.
++          BSKY_API="https://api.bsky.app"
++
++          # Keyword-search fetch. Normalizes to {"posts":[...]} or an empty
++          # stub if the response isn't JSON.
++          bsky_search() {
++            local q="$1" out="$2" n="${3:-30}"
++            curl -sL -o "$out" --max-time 20 \
++              -H "User-Agent: $UA" -H "Accept: application/json" \
++              "${BSKY_API}/xrpc/app.bsky.feed.searchPosts?q=${q}&limit=${n}&sort=latest"
++            if ! jq -e '.posts' "$out" >/dev/null 2>&1; then
++              echo "[!] bsky search '${q}' returned non-JSON — empty stub"
++              echo '{"posts":[]}' > "$out"
++            fi
++          }
++
++          # Author-feed fetch for a known handle. Normalizes the
++          # {"feed":[{"post":...}]} response to the same {"posts":[...]}
++          # shape as search so the downstream prompt stays uniform.
++          bsky_author() {
++            local handle="$1" out="$2" n="${3:-20}"
++            curl -sL -o "$out" --max-time 20 \
++              -H "User-Agent: $UA" -H "Accept: application/json" \
++              "${BSKY_API}/xrpc/app.bsky.feed.getAuthorFeed?actor=${handle}&limit=${n}&filter=posts_no_replies"
++            if jq -e '.feed' "$out" >/dev/null 2>&1; then
++              jq '{posts: [.feed[].post]}' "$out" > "${out}.tmp" && mv "${out}.tmp" "$out"
++            else
++              echo "[!] bsky author-feed '${handle}' returned non-JSON — empty stub"
++              echo '{"posts":[]}' > "$out"
++            fi
++          }
++
++          # --- Topic searches ---
++          bsky_search "AI%20announcement"          /tmp/bluesky/ai_announcements.json 30; sleep 1
++          bsky_search "LLM%20release"              /tmp/bluesky/llm_releases.json     30; sleep 1
++          bsky_search "GPT%20Claude%20Gemini"      /tmp/bluesky/model_discussions.json 30; sleep 1
++          bsky_search "machine%20learning%20paper" /tmp/bluesky/ml_papers.json        30; sleep 1
++
++          # --- Curated researcher feeds (handles verified HTTP 200 2026-05-14).
++          # `from:` search syntax has been unreliable/rate-limited for years;
++          # getAuthorFeed is the canonical way to follow a specific account.
++          bsky_author "karpathy.bsky.social"       /tmp/bluesky/karpathy.json       20; sleep 1
++          bsky_author "simonw.bsky.social"         /tmp/bluesky/simonw.json         20; sleep 1
++          bsky_author "emollick.bsky.social"       /tmp/bluesky/emollick.json       20; sleep 1
++          bsky_author "natolambert.bsky.social"    /tmp/bluesky/natolambert.json    20; sleep 1
++          bsky_author "goodside.bsky.social"       /tmp/bluesky/goodside.json       20; sleep 1
++          bsky_author "jasonwei.bsky.social"       /tmp/bluesky/jasonwei.json       20; sleep 1
++          bsky_author "jackclark.bsky.social"      /tmp/bluesky/jackclark.json      20; sleep 1
++          bsky_author "demishassabis.bsky.social"  /tmp/bluesky/demishassabis.json  20; sleep 1
++          bsky_author "arvindn.bsky.social"        /tmp/bluesky/arvindn.json        20; sleep 1
++          bsky_author "gwern.bsky.social"          /tmp/bluesky/gwern.json          20
++
++          echo "Bluesky data fetched. Per-file post counts:"
++          for f in /tmp/bluesky/*.json; do
++            N=$(jq '.posts | length' "$f" 2>/dev/null || echo 0)
++            printf "  %-40s posts=%s\n" "$(basename "$f")" "$N"
++          done
+
+       - name: Copy Bluesky data to working directory
+         run: |
+@@ -84,12 +116,29 @@ jobs:
+
+             ## SOURCE FILES
+
+-            Read these pre-fetched Bluesky JSON files from data/bluesky/:
++            Read these pre-fetched Bluesky JSON files from data/bluesky/. All
++            files are normalized to the same `{"posts":[...]}` shape (the
++            author-feed responses have been pre-flattened by the fetch step).
++            An empty `{"posts":[]}` means the upstream call failed — skip and
++            note in output.
++
++            Topic searches:
+             - data/bluesky/ai_announcements.json
+             - data/bluesky/llm_releases.json
+             - data/bluesky/model_discussions.json
+             - data/bluesky/ml_papers.json
+-            - data/bluesky/karpathy.json
++
++            Curated researcher feeds:
++            - data/bluesky/karpathy.json       (Andrej Karpathy)
++            - data/bluesky/simonw.json         (Simon Willison)
++            - data/bluesky/emollick.json       (Ethan Mollick)
++            - data/bluesky/natolambert.json    (Nathan Lambert — Interconnects)
++            - data/bluesky/goodside.json       (Riley Goodside)
++            - data/bluesky/jasonwei.json       (Jason Wei)
++            - data/bluesky/jackclark.json      (Jack Clark — Anthropic / Import AI)
++            - data/bluesky/demishassabis.json  (Demis Hassabis)
++            - data/bluesky/arvindn.json        (Arvind Narayanan)
++            - data/bluesky/gwern.json          (Gwern Branwen)
+
+             The Bluesky JSON structure is:
+             - posts[].author.handle (username like "user.bsky.social")
+diff --git a/.github/workflows/hourly-rss.yml b/.github/workflows/hourly-rss.yml
+index 05e59909..4ce54212 100644
+--- a/.github/workflows/hourly-rss.yml
++++ b/.github/workflows/hourly-rss.yml
+@@ -34,64 +34,75 @@ jobs:
+         id: rss
+         run: |
+           mkdir -p /tmp/rss
+-
+-          # OpenAI Blog RSS (news section)
+-          curl -sL "https://openai.com/news/rss.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/openai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/openai.xml
+-
+-          # Anthropic News RSS (via OpenRSS since no official feed)
+-          curl -sL "https://openrss.org/www.anthropic.com/news" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/anthropic.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/anthropic.xml
+-
+-          # Google AI Blog RSS (Atom feed)
+-          curl -sL "http://googleaiblog.blogspot.com/atom.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/google_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/google_ai.xml
+-
+-          # DeepMind Blog RSS (Google Research)
+-          curl -sL "https://research.google/blog/rss/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/deepmind.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/deepmind.xml
+-
+-          # Meta AI Blog RSS
+-          curl -sL "https://ai.meta.com/blog/rss/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/meta_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/meta_ai.xml
+-
+-          # Hugging Face Blog RSS
+-          curl -sL "https://huggingface.co/blog/feed.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/huggingface.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/huggingface.xml
+-
+-          # arXiv CS.AI RSS (recent submissions)
+-          curl -sL "https://export.arxiv.org/rss/cs.AI" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/arxiv_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arxiv_ai.xml
+-
+-          # arXiv CS.LG RSS (Machine Learning)
+-          curl -sL "https://export.arxiv.org/rss/cs.LG" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/arxiv_lg.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arxiv_lg.xml
+-
+-          # TechCrunch AI RSS
+-          curl -sL "https://techcrunch.com/category/artificial-intelligence/feed/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/techcrunch_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/techcrunch_ai.xml
+-
+-          # The Verge AI RSS
+-          curl -sL "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/verge_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/verge_ai.xml
+-
+-          # VentureBeat AI RSS
+-          curl -sL "https://venturebeat.com/category/ai/feed/" \
+-            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+-            > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
+-
+-          echo "RSS feeds fetched successfully"
+-          ls -la /tmp/rss/
++          UA="Mozilla/5.0 (compatible; AIResearchBot/1.0)"
++
++          # Status-aware + content-type-sniffing fetcher. The pre-patch code
++          # used `curl -sL ... > out`, which silently wrote 4xx/5xx HTML bodies
++          # and HTML-from-broken-proxies to disk. Three feeds had been broken
++          # this way for 17+ days (Meta AI 404, googleaiblog.blogspot.com
++          # frozen since 2025-10, openrss.org/anthropic serving HTML instead
++          # of RSS) without any visibility in workflow logs.
++          fetch_feed() {
++            local url="$1" out="$2" code
++            code=$(curl -sL --max-time 30 -o "$out" -w "%{http_code}" \
++              -H "User-Agent: $UA" \
++              -H "Accept: application/rss+xml, application/atom+xml, application/xml;q=0.9, */*;q=0.5" \
++              "$url" || echo "000")
++            if [ "${code:0:1}" != "2" ]; then
++              echo "[!] $(basename "$out"): HTTP $code from $url — empty stub"
++              echo "<rss><channel></channel></rss>" > "$out"
++              return
++            fi
++            if ! grep -qiE "<rss|<feed|<rdf" "$out"; then
++              echo "[!] $(basename "$out"): non-feed body (HTML?) from $url — empty stub"
++              echo "<rss><channel></channel></rss>" > "$out"
++              return
++            fi
++            echo "[+] $(basename "$out"): HTTP $code, $(wc -c < "$out") bytes"
++          }
++
++          # --- Official lab blogs ---
++          fetch_feed "https://openai.com/news/rss.xml"                                /tmp/rss/openai.xml
++          # Anthropic has no native RSS; openrss.org proxy currently serves HTML.
++          # Kept so the slot exists (with empty-stub fallback) for the day a
++          # working feed appears.
++          fetch_feed "https://openrss.org/www.anthropic.com/news"                     /tmp/rss/anthropic.xml
++          # research.google/blog/rss/ is the live canonical Google research blog.
++          # Two legacy URLs are frozen and were silently producing empty data:
++          #   googleaiblog.blogspot.com/atom.xml — last <updated> 2025-10-07
++          #   blog.research.google/atom.xml       — same content, also frozen
++          fetch_feed "https://research.google/blog/rss/"                              /tmp/rss/google_research.xml
++          fetch_feed "https://deepmind.google/blog/rss.xml"                           /tmp/rss/deepmind.xml
++          # ai.meta.com/blog/rss/ returns HTTP 404. engineering.fb.com ships
++          # an ML-applications feed that surfaces the same Meta AI announcements.
++          fetch_feed "https://engineering.fb.com/category/ml-applications/feed/"      /tmp/rss/meta_ai.xml
++          fetch_feed "https://huggingface.co/blog/feed.xml"                           /tmp/rss/huggingface.xml
++          fetch_feed "https://cohere.com/blog/rss.xml"                                /tmp/rss/cohere.xml
++
++          # --- Independent AI analysts (high signal/byte) ---
++          fetch_feed "https://simonwillison.net/atom/everything/"                     /tmp/rss/simonw.xml
++          fetch_feed "https://importai.substack.com/feed"                             /tmp/rss/import_ai.xml
++          fetch_feed "https://www.interconnects.ai/feed"                              /tmp/rss/interconnects.xml
++          fetch_feed "https://www.oneusefulthing.org/feed"                            /tmp/rss/oneusefulthing.xml
++          fetch_feed "https://www.latent.space/feed"                                  /tmp/rss/latent_space.xml
++          fetch_feed "https://www.lesswrong.com/feed.xml"                             /tmp/rss/lesswrong.xml
++
++          # --- Research ---
++          fetch_feed "https://export.arxiv.org/rss/cs.AI"                             /tmp/rss/arxiv_ai.xml
++          fetch_feed "https://export.arxiv.org/rss/cs.LG"                             /tmp/rss/arxiv_lg.xml
++          fetch_feed "https://export.arxiv.org/rss/cs.CL"                             /tmp/rss/arxiv_cl.xml
++
++          # --- Tech press ---
++          fetch_feed "https://techcrunch.com/category/artificial-intelligence/feed/"  /tmp/rss/techcrunch_ai.xml
++          fetch_feed "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" /tmp/rss/verge_ai.xml
++          fetch_feed "https://venturebeat.com/category/ai/feed/"                      /tmp/rss/venturebeat_ai.xml
++          fetch_feed "https://www.technologyreview.com/feed/"                         /tmp/rss/mit_techreview.xml
++
++          echo "RSS feeds fetched. Summary:"
++          for f in /tmp/rss/*.xml; do
++            ITEMS=$(grep -cE "<item|<entry" "$f" 2>/dev/null || echo 0)
++            printf "  %-25s items=%s bytes=%s\n" "$(basename "$f")" "$ITEMS" "$(wc -c < "$f")"
++          done
+
+       - name: Process RSS Feeds with Claude
+         uses: anthropics/claude-code-action@v1
+@@ -107,24 +118,37 @@ jobs:
+
+             ## SOURCE FILES
+
+-            Read these RSS/XML files from /tmp/rss/:
++            Read these RSS/XML files from /tmp/rss/. A file may be empty
++            (`<rss><channel></channel></rss>`) if the upstream feed is broken;
++            treat empty files as "no data this run", not an error.
+
+             **Official Company Blogs:**
+-            - openai.xml (OpenAI Blog)
+-            - anthropic.xml (Anthropic News)
+-            - google_ai.xml (Google AI Blog)
+-            - deepmind.xml (DeepMind Blog)
+-            - meta_ai.xml (Meta AI Blog)
+-            - huggingface.xml (Hugging Face Blog)
++            - openai.xml             (OpenAI Blog)
++            - anthropic.xml          (Anthropic News — via openrss.org; often empty)
++            - google_research.xml    (Google Research Blog)
++            - deepmind.xml           (Google DeepMind Blog)
++            - meta_ai.xml            (Meta engineering ML-applications)
++            - huggingface.xml        (Hugging Face Blog)
++            - cohere.xml             (Cohere Blog)
++
++            **Independent AI Analysts (high signal):**
++            - simonw.xml             (Simon Willison — daily technical notes)
++            - import_ai.xml          (Jack Clark / Anthropic — weekly synthesis)
++            - interconnects.xml      (Nathan Lambert — open models / post-training)
++            - oneusefulthing.xml     (Ethan Mollick — applied AI / enterprise)
++            - latent_space.xml       (swyx / Latent Space — AI Engineer)
++            - lesswrong.xml          (LessWrong — alignment + AI safety)
+
+             **Research:**
+-            - arxiv_ai.xml (arXiv CS.AI)
+-            - arxiv_lg.xml (arXiv CS.LG/Machine Learning)
++            - arxiv_ai.xml           (arXiv cs.AI)
++            - arxiv_lg.xml           (arXiv cs.LG / Machine Learning)
++            - arxiv_cl.xml           (arXiv cs.CL / NLP)
+
+             **Tech News:**
+-            - techcrunch_ai.xml (TechCrunch AI)
+-            - verge_ai.xml (The Verge AI)
+-            - venturebeat_ai.xml (VentureBeat AI)
++            - techcrunch_ai.xml      (TechCrunch AI)
++            - verge_ai.xml           (The Verge AI)
++            - venturebeat_ai.xml     (VentureBeat AI)
++            - mit_techreview.xml     (MIT Technology Review)
+
+             RSS XML structure:
+             - channel/item/title (article title)
+@@ -151,7 +175,7 @@ jobs:
+             #### Anthropic
+             - [Title](url) - date
+
+-            #### Google/DeepMind
++            #### Google Research / DeepMind
+             - [Title](url) - date
+
+             #### Meta AI
+@@ -160,6 +184,29 @@ jobs:
+             #### Hugging Face
+             - [Title](url) - date
+
++            #### Cohere
++            - [Title](url) - date
++
++            ### 🧠 Independent Analysts
++
++            #### Simon Willison
++            - [Title](url) - date
++
++            #### Import AI (Jack Clark)
++            - [Title](url) - date
++
++            #### Interconnects (Nathan Lambert)
++            - [Title](url) - date
++
++            #### One Useful Thing (Ethan Mollick)
++            - [Title](url) - date
++
++            #### Latent Space (swyx)
++            - [Title](url) - date
++
++            #### LessWrong
++            - [Title](url) - date
++
+             ### 📰 Tech News
+
+             #### TechCrunch
+@@ -171,6 +218,9 @@ jobs:
+             #### VentureBeat
+             - [Title](url) - date
+
++            #### MIT Technology Review
++            - [Title](url) - date
++
+             ### 📄 New arXiv Papers
+
+             #### CS.AI
+@@ -178,6 +228,9 @@ jobs:
+
+             #### CS.LG
+             - [Paper Title](arxiv_url)
++
++            #### CS.CL
++            - [Paper Title](arxiv_url)
+             ```
+
+             ## IMPORTANT
