@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-14
+
+TOP 5 PAPERS:
+• Rethinking RL for LLM Reasoning - RL is sparse policy selection, not capability learning
+• Does RL Expand the Capability Boundary? - tool-use RL genuinely enlarges agent ability (PASS@(k,T))
+• Workspace-Bench 1.0 - realistic multi-file agent benchmark; SOTA agents only 47.4% pass rate
+• RL for Multi-Agent Systems via Orchestration Traces - first RL method for the agent stopping decision
+• Hardware Co-Design Scaling Laws - roofline-based law cuts on-device perplexity 19.42% at equal latency
+
+CATEGORIES: LM & NLP 5, CV & Multimodal 2, Agents & Reasoning 5, Safety & Alignment 4, Other 3
+
+Full report on GitHub.
