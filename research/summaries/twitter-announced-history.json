@@ -4439,5 +4439,54 @@
     "headline": "ANTHROPIC ARR REACHES $44B \u2014 SURPASSING OPENAI PER AGGREGATOR ESTIMATES (\u26a0 SINGLE-SOURCE)",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2054634191455408173"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-14 01:11 UTC",
+    "headline": "THEO ESCALATES \u2014 CLAUDE CODE SDK RATE-LIMIT CUT NOW '40X', CALLS ANTHROPIC STATEMENTS 'A LIE ON A TIMER'",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2054731856248283318"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-14 01:11 UTC",
+    "headline": "CONDUCTOR DISCLOSES ANTHROPIC PROGRAMMATIC CREDIT CAP \u2014 $200/MO ON MAX SUBSCRIPTION, THEN API COSTS",
+    "source": "@charlieholtz",
+    "url": "https://x.com/charlieholtz/status/2054695769916264638"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-14 01:11 UTC",
+    "headline": "APPLE INTERNAL TEAM REDESIGNING APP STORE AS 'AGENT STORE' WHILE BLOCKING REPLIT / ANYTHING VIBE-CODING APPS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2054690367983722562"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-14 01:11 UTC",
+    "headline": "ANTHROPIC GLASSWING LEAD: 'COMPUTE HAS NEVER BEEN A LIMITER' \u2014 DIRECTLY CONTRADICTS COLOSSUS 1 SUPPLY-SIDE FRAMING",
+    "source": "@logangraham",
+    "url": "https://x.com/logangraham/status/2054613618168082935"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-14 01:11 UTC",
+    "headline": "UK AISI: CLAUDE MYTHOS PREVIEW FIRST MODEL TO SOLVE 'COOLING TOWER' END-TO-END CYBER RANGE",
+    "source": "@bcherny",
+    "url": "https://x.com/bcherny/status/2054617810253615147"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-14 01:11 UTC",
+    "headline": "SEMIANALYSIS DEFENDS OPUS 4.7 FAST MODE PRICING AS PARETO-FRONTIER-CORRECT \u2014 '2.5X SPEED AT 6X COST' IS NOT ARBITRARY",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2054713648489132310"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-14 01:11 UTC",
+    "headline": "FTV CAPITAL'S BERNSTEIN: AI BOOM MAY BE 'FALSE POSITIVE' \u2014 SUBSIDIZED EARLY-ADOPTION DEMAND COULD GO AWAY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2054713485599121552"
   }
 ]
