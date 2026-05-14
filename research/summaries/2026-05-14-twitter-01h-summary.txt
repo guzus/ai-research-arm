@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-14 01:11 UTC
+
+CYCLE: Anthropic developer-trust crisis deepens; Apple "agent store" play.
+
+TOP STORIES:
+• @theo escalates Claude Code SDK rate-limit-cut framing from "25x" to "40x", calls Anthropic statements "a lie on a timer"; Conductor confirms $200/mo cap; @AnthropicAI silent ~84h+ [⚠]
+• @theinformation: Apple internal team redesigning App Store as "agent store" while cracking down on Replit / Anything vibe-coding apps over Guideline 2.5.2 [⚠]
+• SemiAnalysis defends Opus 4.7 Fast Mode pricing math (Pareto-frontier) but Logan Graham contradicts Colossus 1 supply-side framing — "compute has never been a limiter" [✓]
+
+WATCH: Cerebras $CBRS first-day open Thursday mid-day; Trump-Xi summit Day 1; Anthropic corp-channel break-of-silence on dev-tools backlash.
+
+Full update on GitHub.
