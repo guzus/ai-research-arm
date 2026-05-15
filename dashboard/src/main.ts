@@ -988,6 +988,7 @@ let tocScrollHandler: ((e: Event) => void) | null = null;
 function hideResearchTOC(): void {
   const toc = document.getElementById('researchToc');
   if (toc) toc.hidden = true;
+  document.body.classList.remove('has-toc');
   if (tocScrollHandler) {
     window.removeEventListener('scroll', tocScrollHandler);
     tocScrollHandler = null;
@@ -1052,6 +1053,7 @@ function renderResearchTOC(article: HTMLElement): void {
     links.push(a);
   }
   toc.hidden = false;
+  document.body.classList.add('has-toc');
 
   // Scroll-spy: the last heading whose top is above an offset is "current".
   if (tocScrollHandler) window.removeEventListener('scroll', tocScrollHandler);

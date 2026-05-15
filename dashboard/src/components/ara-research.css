@@ -25,11 +25,50 @@
  */
 
 /* ── Doc root ─────────────────────────────────────── */
+/* No outer max-width — children pick their own measure (reading vs.
+ * wide). MoMA-style editorial pattern: title block and prose stay
+ * narrow, data viz breathes wider. */
 .ara-doc {
   font-family: var(--font);
   color: var(--text);
   line-height: 1.5;
   letter-spacing: -0.005em;
+}
+
+/* Reading column — prose elements get a comfortable measure. */
+.ara-doc > .ara-eyebrow,
+.ara-doc > .ara-display,
+.ara-doc > .ara-deck,
+.ara-doc > .ara-lede,
+.ara-doc > p,
+.ara-doc > ul,
+.ara-doc > ol,
+.ara-doc > dl,
+.ara-doc > blockquote,
+.ara-doc > pre,
+.ara-doc > .ara-h2,
+.ara-doc > .ara-h3,
+.ara-doc > .ara-h4,
+.ara-doc > .ara-callout,
+.ara-doc > .ara-divider,
+.ara-doc > .ara-section,
+.ara-doc > .ara-quote {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Wider column — data viz can breathe. */
+.ara-doc > .ara-stats,
+.ara-doc > .ara-table,
+.ara-doc > .ara-bars,
+.ara-doc > .ara-stack-bar,
+.ara-doc > .ara-stack-legend,
+.ara-doc > .ara-timeline,
+.ara-doc > .ara-figure {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ara-doc p {
@@ -70,43 +109,43 @@
 
 .ara-display {
   font-family: var(--font);
-  font-size: 1.95rem;
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
   font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
   color: var(--text);
-  margin: 0 0 14px;
+  margin: 0 0 18px;
 }
 
 .ara-deck {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: clamp(1.15rem, 1.4vw, 1.4rem);
   font-style: italic;
   color: var(--text-secondary);
-  line-height: 1.45;
-  margin: 0 0 28px;
+  line-height: 1.4;
+  margin: 0 0 32px;
   letter-spacing: -0.005em;
 }
 
 .ara-lede {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: clamp(1.1rem, 1.2vw, 1.25rem);
   line-height: 1.55;
   color: var(--text);
-  margin: 0 0 22px;
+  margin: 0 0 24px;
   letter-spacing: -0.005em;
 }
 
 .ara-h2 {
   font-family: var(--font);
-  font-size: 1.32rem;
+  font-size: clamp(1.4rem, 1.6vw, 1.65rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--text);
-  line-height: 1.25;
-  margin: 40px 0 14px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border-light);
+  line-height: 1.2;
+  margin: 56px 0 16px;
+  padding-top: 28px;
+  border-top: 1px solid var(--text);
 }
 
 .ara-h2:first-child { padding-top: 0; border-top: none; margin-top: 0; }
@@ -138,8 +177,8 @@
 
 .ara-divider {
   border: none;
-  border-top: 1px solid var(--border);
-  margin: 32px 0;
+  border-top: 1px solid var(--text);
+  margin: 48px 0 32px;
 }
 
 /* Optional grouping wrapper. Keeps a logical section visually separated. */

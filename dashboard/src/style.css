@@ -75,10 +75,28 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
 /* ── Layout ────────────────────────────────────────── */
+/* No outer max-width — the app spans the viewport edge to edge.
+ * Inside, .md-content and .ara-doc impose their own reading measure
+ * (~760px) so prose stays legible on ultrawide displays while title
+ * blocks, tables, and stats can breathe wider. */
 .app {
-  max-width: 1032px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
+  max-width: none;
+  margin: 0;
+  padding: 40px clamp(24px, 5vw, 96px) 80px;
+}
+
+/* When the floating TOC is visible (set by JS in renderResearchTOC),
+ * push the app contents right so they don't sit under the TOC. */
+@media (min-width: 1400px) {
+  body.has-toc .app { padding-left: 280px; }
+}
+
+/* The article body and markdown bodies need a reading measure.
+ * The .ara-doc rule lives in components/ara-research.css. */
+.md-content {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ── Header ────────────────────────────────────────── */
