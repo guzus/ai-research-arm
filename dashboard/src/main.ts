@@ -101,7 +101,7 @@ type Manifest = {
 
 let currentDate = new Date();
 let searchTerm = '';
-let activeTab: Tab = 'today';
+let activeTab: Tab = 'frontpage';
 let selectedSlug: string | null = null;
 let calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 const availabilityCache = new Map<string, Set<string>>();
