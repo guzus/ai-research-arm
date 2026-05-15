@@ -771,7 +771,7 @@ function renderToday(md: string): void {
   const cards: string[] = [];
 
   // Prepend an audio player if a Deepgram-generated digest MP3 exists for
-  // this date. Manifest is populated by deploy-dashboard.yml's manifest step.
+  // this date. Manifest is populated by dashboard/scripts/prebuild.mjs.
   const dateStr = fmtDate(currentDate);
   if (manifest?.audio?.includes(dateStr)) {
     const audioUrl = `${DATA_BASE}/audio/${dateStr}-digest.mp3`;

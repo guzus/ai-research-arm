@@ -63,10 +63,10 @@ flowchart TB
     Improve -->|"Creates PRs"| sources
 
     subgraph dashboard["🖥️ Dashboard"]
-        Pages["GitHub Pages<br/><i>ara.guzus.xyz</i>"]
+        Vercel["Vercel<br/><i>ara.guzus.xyz</i>"]
     end
 
-    twitter_out --> Pages
+    twitter_out --> Vercel
 ```
 
 ## Data Sources
@@ -119,7 +119,9 @@ gantt
 | `ai-news-research.yml` | Twice daily (08:23, 20:23 UTC) | Perplexity/Exa MCP | `research/` |
 | `daily-improve.yml` | Daily 00:17 UTC | Self-improvement | PRs with improvements |
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
-| `deploy-dashboard.yml` | On push (dashboard/twitter/models changes) | Vite build + GitHub Pages deploy | GitHub Pages |
+| `generative-research.yml` | On `gen-research` issue label or `workflow_dispatch` | Claude or DeepSeek writes an HTML article | `research/generative/` |
+
+Dashboard deploys are handled by **Vercel's git integration**, not a workflow file — every push to `main` triggers a build automatically.
 
 ## On-Demand Research Agent
 
@@ -178,7 +180,7 @@ A single-page dashboard that displays Twitter/X research reports with:
 - Date picker, search, and refresh controls
 - Mobile responsive with bottom nav bar
 
-Built with **Vite + Bun + TypeScript**, deployed via GitHub Actions to GitHub Pages. The deploy workflow triggers only on changes to `dashboard/**`, `research/twitter/**`, `research/models/**`, or `research/front-page/**`.
+Built with **Vite + Bun + TypeScript**, deployed to Vercel via the git integration (root directory: `dashboard/`). Every push to `main` triggers a Vercel build; the `prebuild` hook in `dashboard/scripts/prebuild.mjs` copies `research/<source>/` into `public/research/` and emits `manifest.json` before Vite runs.
 
 ## Setup
 
@@ -226,7 +228,9 @@ dashboard/                          # Vite + Bun + TypeScript SPA
 │   ├── main.ts                    # App logic, markdown rendering, clock icons
 │   └── style.css                  # Warm cream palette, responsive styles
 ├── index.html                     # Entry point
-├── vite.config.js                 # Base path config for GitHub Pages
+├── scripts/prebuild.mjs           # Copies research/ into public/, builds manifest.json
+├── vercel.json                    # Vercel build settings (framework, install, build)
+├── vite.config.js                 # Vite config
 └── package.json                   # Dependencies (vite, marked, dompurify)
 ```
 
