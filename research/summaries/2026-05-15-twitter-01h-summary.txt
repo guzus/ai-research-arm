@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-05-15 01:09 UTC
+
+CYCLE: Anthropic on three fronts — live outage, a US-China policy paper, and the ongoing dev-tools-trust thread.
+
+TOP STORIES:
+• Claude API + Claude Code partial outage — status page confirms "elevated error rates" at 01:06 UTC after in-window dev reports [✓]
+• Anthropic publishes US-China AI-competition policy paper during the Trump-Xi summit, breaking ~48h of @AnthropicAI corp-channel silence [✓]
+• OpenAI weighing a legal challenge against Apple over an underperforming partnership, per The Information — "considering," not filed [⚠]
+
+ALSO: Codex now in the ChatGPT mobile app; Cerebras IPO opens ~89-90% up; xAI co-founder Babuschkin raising up to $1B for a new lab.
+
+WATCH: Anthropic status-page resolution + whether the corp channel finally addresses the dev-tools backlash.
+
+Full update on GitHub.

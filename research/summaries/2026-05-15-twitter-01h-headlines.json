@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "ANTHROPIC STATUS PAGE CONFIRMS CLAUDE API + CLAUDE CODE PARTIAL OUTAGE — ELEVATED ERROR RATES AT 01:06 UTC",
+    "source": "status.anthropic.com",
+    "url": "https://status.anthropic.com",
+    "category": "infra"
+  },
+  {
+    "headline": "ANTHROPIC PUBLISHES US-CHINA AI-COMPETITION POLICY PAPER DURING TRUMP-XI SUMMIT, BREAKING ~48H CORP-CHANNEL SILENCE",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2054987444664377374",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI WEIGHING LEGAL CHALLENGE AGAINST APPLE OVER UNDERPERFORMING PARTNERSHIP — THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2055023348489289978",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI SHIPS CODEX IN THE CHATGPT MOBILE APP — PREVIEW ON IOS AND ANDROID, ALL REGIONS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2055016850849993072",
+    "category": "model"
+  },
+  {
+    "headline": "XAI CO-FOUNDER IGOR BABUSCHKIN IN TALKS TO RAISE UP TO $1B AT $5B VALUATION FOR NEW AI RESEARCH STARTUP — FORBES",
+    "source": "@Techmeme",
+    "url": "https://x.com/Techmeme/status/2055089731520847885",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC COMMITS $200M IN GRANTS, CLAUDE CREDITS AND SUPPORT TO GATES FOUNDATION GLOBAL-DEVELOPMENT PROGRAMS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2054941901900611787",
+    "category": "business"
+  }
+]
