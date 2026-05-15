@@ -879,18 +879,26 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     }
     const created = new Date(row.created_at);
     const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
+    // Surface first three tags inline; the chip on the right indicates fragment vs standalone.
     const tagHtml = (row.tags || [])
+      .slice(0, 3)
       .map((t) => '<span class="gen-research-tag">' + escapeHtml(t) + '</span>')
       .join('');
+    const isStandalone = row.kind === 'standalone';
+    const kindLabel = isStandalone ? 'Standalone' : 'Article';
+    const kindClass = isStandalone ? 'gen-research-kind--standalone' : 'gen-research-kind--article';
     items.push(
       [
         '<li class="gen-research-item" data-slug="' + escapeHtml(row.slug) + '" tabindex="0">',
-        '  <div class="gen-research-item-title">' + title + '</div>',
-        '  <div class="gen-research-item-meta">',
-        '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
-        rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
-        tagHtml ? '    <span class="gen-research-tags">' + tagHtml + '</span>' : '',
+        '  <div class="gen-research-item-main">',
+        '    <div class="gen-research-item-title">' + title + '</div>',
+        '    <div class="gen-research-item-meta">',
+        '      <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
+        rel ? '      <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
+        tagHtml ? '      <span class="gen-research-tags">' + tagHtml + '</span>' : '',
+        '    </div>',
         '  </div>',
+        '  <span class="gen-research-kind ' + kindClass + '">' + kindLabel + '</span>',
         '</li>',
       ].join('\n'),
     );

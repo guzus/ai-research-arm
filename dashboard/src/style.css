@@ -52,7 +52,7 @@
   }
 }
 
-html { font-size: 15px; scroll-behavior: smooth; }
+html { font-size: 16px; scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
@@ -70,7 +70,7 @@ body {
 
 /* ── Layout ────────────────────────────────────────── */
 .app {
-  max-width: 1032px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 40px 24px 80px;
 }
@@ -87,17 +87,32 @@ body {
   margin-bottom: 24px;
 }
 
-.brand-title {
-  font-size: 1.15rem;
-  font-weight: 700;
+.brand-mark {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 0.95;
   letter-spacing: -0.02em;
-  font-family: var(--font-mono);
+  color: var(--text);
 }
 
-.brand-subtitle {
-  font-size: 0.78rem;
+.brand-name {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-top: 6px;
+}
+
+.brand-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.86rem;
   color: var(--text-secondary);
-  margin-top: 4px;
+  margin-top: 8px;
   font-weight: 400;
   line-height: 1.45;
   max-width: 580px;
@@ -117,42 +132,43 @@ body {
 .header-link:hover { color: var(--text-secondary); }
 .header-link-label { display: inline; }
 
-/* ── Tabs ─────────────────────────────────────────── */
+/* ── Tabs (publication masthead style) ─────────────── */
 .tabs {
   display: flex;
-  gap: 6px;
+  gap: 22px;
   margin-bottom: 16px;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .tabs::-webkit-scrollbar { display: none; }
 
-.tab { flex-shrink: 0; }
-
 .tab {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-family: var(--font);
-  font-size: 0.82rem;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-tertiary);
+  padding: 8px 0 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -1px;
 }
 
 .tab:hover {
-  border-color: var(--text-tertiary);
-  color: var(--text);
+  color: var(--text-secondary);
 }
 
 .tab.active {
-  background: var(--accent);
-  color: var(--on-accent);
-  border-color: var(--accent);
+  color: var(--text);
+  border-bottom-color: var(--accent-warm);
 }
 
 /* ── Controls Bar ──────────────────────────────────── */
@@ -247,7 +263,7 @@ body {
 .calendar {
   background: var(--bg);
   border: 1px solid var(--border-light);
-  border-radius: 16px;
+  border-radius: 12px;
   box-shadow: var(--shadow-sm);
   padding: 16px;
   margin-bottom: 12px;
@@ -411,7 +427,7 @@ body {
 .content-card {
   background: var(--bg);
   border: 1px solid var(--border-light);
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   margin-bottom: 16px;
@@ -425,7 +441,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 18px 28px;
+  padding: 14px 24px;
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -442,13 +458,20 @@ body {
 }
 
 .content-card-title {
+  font-family: var(--font-serif);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
   flex: 1;
+  line-height: 1.2;
 }
 
 .content-card-meta {
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--text-tertiary);
 }
 
@@ -458,30 +481,32 @@ body {
 }
 
 .local-time {
-  font-size: 0.78rem;
-  font-weight: 400;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   color: var(--text-tertiary);
   margin-left: 8px;
 }
 
 .content-card-body {
-  padding: 16px 28px 28px;
+  padding: 20px 24px 28px;
 }
 
 /* ── Markdown Styles ───────────────────────────────── */
 .md-content {
   font-family: var(--font-serif);
   font-size: 1.1rem;
-  line-height: 1.85;
+  line-height: 1.75;
   letter-spacing: 0.005em;
   color: var(--text);
 }
 
 .md-content h1 {
-  font-family: var(--font);
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   margin-bottom: 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border-light);
@@ -494,9 +519,10 @@ body {
 }
 
 .md-content h2 {
-  font-family: var(--font);
-  font-size: 1.08rem;
-  font-weight: 650;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   margin-top: 32px;
   margin-bottom: 12px;
   color: var(--text);
@@ -512,8 +538,10 @@ body {
 
 .md-content h4 {
   font-family: var(--font);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--text-secondary);
   margin-top: 16px;
   margin-bottom: 6px;
@@ -610,8 +638,8 @@ body {
 .md-table-wrap {
   overflow-x: auto;
   max-width: 100%;
-  margin: 16px -28px;
-  padding: 0 28px;
+  margin: 16px -24px;
+  padding: 0 24px;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -946,7 +974,7 @@ mark {
   background: var(--accent-warm-bg);
   padding: 8px 14px;
   border-radius: 8px;
-  margin: 12px 28px 0;
+  margin: 12px 24px 0;
   text-align: center;
 }
 
@@ -955,13 +983,17 @@ mark {
   .app { padding: 20px 14px 60px; }
   .header-top { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 8px; }
   .brand { flex: 1; min-width: 0; }
-  .brand-subtitle { display: none; }
+  .brand-mark { font-size: 1.9rem; }
+  .brand-tagline { display: none; }
   .header-link-label { display: none; }
   .controls { gap: 6px; }
   .content-card-body { padding: 16px; }
   .content-card-header { padding: 12px 16px; }
-  .md-content { font-size: 0.95rem; line-height: 1.75; }
+  .content-card-title { font-size: 1.15rem; }
+  .md-content { font-size: 0.95rem; line-height: 1.7; }
   .md-content li { margin-bottom: 14px; }
+  .md-content h1 { font-size: 1.25rem; }
+  .md-content h2 { font-size: 1.05rem; }
   .md-table-wrap { margin: 16px -16px; padding: 0 16px; }
   .calendar { padding: 12px; }
   .cal-day { padding: 5px 0; font-size: 0.74rem; }
@@ -1032,13 +1064,14 @@ body.tab-research #calendar {
 }
 
 .gen-research-item {
-  padding: 14px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 24px;
   border-bottom: 1px solid var(--border-light);
   cursor: pointer;
   transition: background 0.1s;
-  margin: 0 -28px;
-  padding-left: 28px;
-  padding-right: 28px;
+  margin: 0 -24px;
 }
 
 .gen-research-item:last-child {
@@ -1055,13 +1088,45 @@ body.tab-research #calendar {
   background: var(--bg-hover);
 }
 
+.gen-research-item-main {
+  flex: 1;
+  min-width: 0;
+}
+
 .gen-research-item-title {
-  font-family: var(--font);
-  font-size: 1.02rem;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
   font-weight: 600;
+  letter-spacing: -0.005em;
   color: var(--text);
   line-height: 1.35;
   margin-bottom: 6px;
+}
+
+.gen-research-kind {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  line-height: 1;
+  white-space: nowrap;
+  margin-top: 4px;
+}
+
+.gen-research-kind--standalone {
+  background: var(--accent-warm);
+  color: var(--on-accent);
+  border: 1px solid var(--accent-warm);
+}
+
+.gen-research-kind--article {
+  background: transparent;
+  color: var(--text-tertiary);
+  border: 1px solid var(--border);
 }
 
 .gen-research-item-meta {
@@ -1115,7 +1180,7 @@ body.tab-research #calendar {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 10px 28px 0;
+  padding: 10px 24px;
   font-size: 0.78rem;
   color: var(--text-tertiary);
 }
@@ -1144,16 +1209,16 @@ body.tab-research #calendar {
 .gen-research-doc article {
   font-family: var(--font-serif);
   font-size: 1.1rem;
-  line-height: 1.85;
+  line-height: 1.75;
   letter-spacing: 0.005em;
   color: var(--text);
 }
 
 .gen-research-doc article h2 {
-  font-family: var(--font);
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   margin-bottom: 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border-light);
@@ -1166,9 +1231,10 @@ body.tab-research #calendar {
 }
 
 .gen-research-doc article h3 {
-  font-family: var(--font);
-  font-size: 1.08rem;
-  font-weight: 650;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   margin-top: 32px;
   margin-bottom: 12px;
   color: var(--text);
@@ -1308,28 +1374,39 @@ body.tab-research #calendar {
 
 /* Standalone research docs render as a sandboxed iframe (their own styling). */
 .gen-research-standalone .content-card-body { display: none; }
+.gen-research-standalone .content-card-header {
+  padding: 12px 24px;
+}
+.gen-research-standalone .content-card-title {
+  font-size: 1.15rem;
+}
 .gen-research-iframe {
   width: 100%;
-  min-height: 85vh;
+  min-height: 92vh;
   border: 0;
   background: var(--background, #fafbfc);
   display: block;
+  border-radius: 0 0 11px 11px;
 }
 .gen-research-fullscreen {
   margin-left: auto;
-  font-size: 0.82rem;
-  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-accent);
+  background: var(--accent-warm);
   text-decoration: none;
-  border: 1px solid var(--border-light);
-  padding: 3px 10px;
-  border-radius: 12px;
-  transition: color 0.15s, border-color 0.15s;
+  border: 1px solid var(--accent-warm);
+  padding: 5px 14px;
+  border-radius: 999px;
+  transition: opacity 0.15s;
 }
 .gen-research-fullscreen:hover {
-  color: var(--text-primary);
-  border-color: var(--border-strong, var(--border-light));
+  opacity: 0.88;
 }
 @media (max-width: 640px) {
-  .gen-research-iframe { min-height: 75vh; }
+  .gen-research-iframe { min-height: 82vh; }
   .gen-research-fullscreen { margin-left: 0; }
 }
