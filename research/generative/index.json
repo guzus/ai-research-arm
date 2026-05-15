@@ -14,38 +14,6 @@
     ]
   },
   {
-    "slug": "xmaquina-deus-intelligence-report",
-    "file": "2026-05-15T064824--xmaquina-deus-intelligence-report.html",
-    "kind": "standalone",
-    "title": "XMAQUINA / $DEUS — Master Intelligence Report",
-    "model": "multi-agent",
-    "created_at": "2026-05-15T06:48:24Z",
-    "source": "import",
-    "prompt": "XMAQUINA / $DEUS — Master Intelligence Report",
-    "tags": [
-      "crypto",
-      "intelligence-report",
-      "xmaquina",
-      "deus"
-    ]
-  },
-  {
-    "slug": "akamai-strategic-brief-2026-05",
-    "file": "2026-05-15T064826--akamai-strategic-brief-2026-05.html",
-    "kind": "standalone",
-    "title": "Akamai Technologies — Strategic Brief, May 2026",
-    "model": "multi-agent",
-    "created_at": "2026-05-15T06:48:26Z",
-    "source": "import",
-    "prompt": "Akamai Technologies — Strategic Brief, May 2026",
-    "tags": [
-      "akamai",
-      "cdn",
-      "security",
-      "strategic-brief"
-    ]
-  },
-  {
     "slug": "components",
     "file": "2026-05-15T072758--components.html",
     "kind": "fragment",
@@ -58,6 +26,38 @@
       "reference",
       "components",
       "system"
+    ]
+  },
+  {
+    "slug": "xmaquina-deus-intelligence-report",
+    "file": "2026-05-15T080814--xmaquina-deus-intelligence-report.html",
+    "kind": "fragment",
+    "title": "XMAQUINA / $DEUS — Master Intelligence Report",
+    "model": "multi-agent",
+    "created_at": "2026-05-15T08:08:14Z",
+    "source": "migration",
+    "prompt": "XMAQUINA / $DEUS — Master Intelligence Report",
+    "tags": [
+      "crypto",
+      "intelligence-report",
+      "xmaquina",
+      "deus"
+    ]
+  },
+  {
+    "slug": "akamai-strategic-brief-2026-05",
+    "file": "2026-05-15T080814--akamai-strategic-brief-2026-05.html",
+    "kind": "fragment",
+    "title": "Akamai Technologies — Strategic Brief, May 2026",
+    "model": "multi-agent",
+    "created_at": "2026-05-15T08:08:14Z",
+    "source": "migration",
+    "prompt": "Akamai Technologies — Strategic Brief, May 2026",
+    "tags": [
+      "akamai",
+      "cdn",
+      "security",
+      "strategic-brief"
     ]
   }
 ]
