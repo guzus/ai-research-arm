@@ -1,16 +1,16 @@
 AI News - 2026-05-15
 
 TOP STORIES:
-• Trump-Xi summit ends: "strategic-stability" frame, 200 Boeing jets, US oil — no new AI-chip breakthroughs beyond Day-1 H200 clearance
-• Anthropic lands 2 majors May 14: $200M Gates Foundation partnership + PwC alliance (Claude Code, 30K staff certified)
-• OpenAI ships Codex to ChatGPT mobile (iOS/Android, free tier); proposes US-led global AI governance body w/ China
-• Cerebras (CBRS) Day-2 holds ~$311 / ~$95B after +68% debut
-• Cisco: $5.3B AI hyperscaler orders YTD ($9B FY26 run rate); cuts ~4,000 jobs
+• Trump-Xi summit ends: stability frame, 200 Boeing jets; Trump on AF1 confirms US/China discussed AI guardrails
+• OpenAI launches ChatGPT Personal Finance (Pro/US) via Plaid — 12K+ banks, read-only dashboard
+• OpenAI reorg: Brockman takes product, folds ChatGPT+Codex+API into one team
+• Info exclusive: 50+ xAI staff gone since SpaceX merger; all co-founders ex-Musk out (Meta +11, TML +7)
+• Info exclusive: OpenAI booking $B by converting supplier commitments into equity (Cerebras $20B→11%)
+• Cerebras (CBRS) Day-2 holds ~$311 / ~$95B
 
 KEY NUMBERS:
-• Anthropic+Gates: $200M / 4 yrs
-• PwC: 30,000 Claude certifications
-• Cisco AI: $5.3B YTD → $9B FY26
-• NVDA May 20: $78.8B / $1.77 EPS consensus, ~90% beat odds
+• OpenAI-Cerebras: $20B → ~11% stake (~$10B mark)
+• OpenAI compute commitments: $500B+ disclosed
+• NVDA May 20: $78.8B / $1.77 EPS, ~90% beat odds
 
 Full report on GitHub.
