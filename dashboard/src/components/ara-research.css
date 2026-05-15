@@ -663,14 +663,16 @@
   margin: 0;
 }
 
-/* ── Floating TOC for research docs ──────────────── */
+/* ── TOC for research docs ────────────────────────── */
+/* Absolute-positioned so the TOC scrolls with the page (instead of staying
+ * pinned to the viewport). When the reader scrolls past the article, the
+ * TOC scrolls off too — which is what we want, since it's only useful
+ * while you're inside the article. */
 .ara-toc {
-  position: fixed;
+  position: absolute;
   left: 24px;
   top: 140px;
   width: 200px;
-  max-height: calc(100vh - 180px);
-  overflow-y: auto;
   font-family: var(--font);
   z-index: 50;
 }
