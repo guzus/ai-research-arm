@@ -588,6 +588,22 @@ jobs:
           git push
           echo "pushed=true" >> "$GITHUB_OUTPUT"
 
+      # Vercel's GitHub App webhook should fire on bot pushes too (no
+      # cascade-trigger restriction at the webhook layer), but if the
+      # VERCEL_DEPLOY_HOOK secret is present we belt-and-suspenders it.
+      # Set the secret to a Vercel Project → Settings → Git → Deploy Hooks
+      # URL scoped to the `main` branch.
+      - name: Trigger Vercel deploy
+        if: steps.push.outputs.pushed == 'true' && (github.event_name != 'workflow_dispatch' || inputs.dry_run != true)
+        env:
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -n "$VERCEL_DEPLOY_HOOK" ]; then
+            curl -fsSL -X POST "$VERCEL_DEPLOY_HOOK" && echo "Vercel deploy hook fired"
+          else
+            echo "VERCEL_DEPLOY_HOOK not set; relying on Vercel's GitHub auto-deploy"
+          fi
+
 
       - name: Dry-run alert summary
         if: ${{ success() && github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
