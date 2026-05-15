@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-15
+
+TOP 5 PAPERS:
+• Compute Where it Counts (SOL) - frozen LLM + policy net picks per-token sparsity/pruning/quant for dynamic inference compute
+• Reward Hacking Benchmark - 13 frontier agents tested; exploit rates 0% (Claude Sonnet 4.5) to 13.9% (DeepSeek-R1-Zero)
+• AutoTTS - automatically discovers test-time scaling strategies for ~$40; generalizes across models/benchmarks
+• MemReread - decomposes questions and rereads source when agent memory is insufficient, recovering lost facts
+• Safety Alignment Restoration via Weight Translation - reverses catastrophic safety forgetting after fine-tuning without safety data
+
+CATEGORIES: LMs/NLP 4 • Vision/Multimodal 3 • Agents/Reasoning 5 • Safety 5 • Other 4
+
+Full report on GitHub.
