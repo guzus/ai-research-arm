@@ -76,12 +76,31 @@ function timeAgo(date: Date): string {
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage';
-type Manifest = { today: string[]; twitter: string[]; models: string[]; frontpage: string[]; audio: string[] };
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research';
+type DateTab = Exclude<Tab, 'research'>;
+type GenResearchRow = {
+  slug: string;
+  file: string;
+  title: string;
+  model: string;
+  created_at: string;
+  source: string;
+  prompt: string;
+  tags: string[];
+};
+type Manifest = {
+  today: string[];
+  twitter: string[];
+  models: string[];
+  frontpage: string[];
+  audio: string[];
+  generative: GenResearchRow[];
+};
 
 let currentDate = new Date();
 let searchTerm = '';
 let activeTab: Tab = 'today';
+let selectedSlug: string | null = null;
 let calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 const availabilityCache = new Map<string, Set<string>>();
 let loadRequestId = 0;
@@ -89,6 +108,8 @@ let activeLoadController: AbortController | null = null;
 let searchDebounceId: number | null = null;
 let manifest: Manifest | null = null;
 let manifestPromise: Promise<Manifest | null> | null = null;
+// Cache the last-fetched research doc body so search-as-you-type doesn't refetch.
+let researchDocCache: { slug: string; body: string } | null = null;
 const LOAD_TIMEOUT_MS = 12000;
 
 // ── DOM refs ──────────────────────────────────────────
@@ -98,9 +119,17 @@ const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 const searchCountEl = document.getElementById('searchCount')!;
 
 // ── Hash routing ─────────────────────────────────────
-// Format: #tab/YYYY-MM-DD  e.g. #models/2026-02-03, #twitter/2026-01-29
+// Format:
+//   date tabs:  #tab/YYYY-MM-DD  e.g. #models/2026-02-03, #twitter/2026-01-29
+//   research:   #research        (index list)
+//               #research/<slug> (single doc)
 function updateHash(): void {
-  const hash = '#' + activeTab + '/' + fmtDate(currentDate);
+  let hash: string;
+  if (activeTab === 'research') {
+    hash = selectedSlug ? '#research/' + selectedSlug : '#research';
+  } else {
+    hash = '#' + activeTab + '/' + fmtDate(currentDate);
+  }
   if (location.hash !== hash) {
     history.replaceState(null, '', hash);
   }
@@ -109,19 +138,33 @@ function updateHash(): void {
 function applyHash(): boolean {
   const hash = location.hash.replace(/^#/, '');
   if (!hash) return false;
-  const match = hash.match(/^(today|twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
-  if (!match) return false;
-  activeTab = match[1] as Tab;
-  if (match[2]) {
-    const parts = match[2].split('-');
-    currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+  const dateMatch = hash.match(/^(today|twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
+  if (dateMatch) {
+    activeTab = dateMatch[1] as Tab;
+    selectedSlug = null;
+    if (dateMatch[2]) {
+      const parts = dateMatch[2].split('-');
+      currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+    }
+    calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    syncTabUi();
+    return true;
   }
-  calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-  // Sync UI
+  const researchMatch = hash.match(/^research(?:\/([A-Za-z0-9._-]+))?$/);
+  if (researchMatch) {
+    activeTab = 'research';
+    selectedSlug = researchMatch[1] || null;
+    syncTabUi();
+    return true;
+  }
+  return false;
+}
+
+function syncTabUi(): void {
   document.querySelectorAll('.tab').forEach((b) => {
     b.classList.toggle('active', (b as HTMLElement).dataset.tab === activeTab);
   });
-  return true;
+  document.body.classList.toggle('tab-research', activeTab === 'research');
 }
 
 // ── Helpers ───────────────────────────────────────────
@@ -167,6 +210,7 @@ async function loadManifest(): Promise<Manifest | null> {
         models: Array.isArray(m.models) ? m.models : [],
         frontpage: Array.isArray(m.frontpage) ? m.frontpage : [],
         audio: Array.isArray((m as any).audio) ? (m as any).audio : [],
+        generative: Array.isArray((m as any).generative) ? (m as any).generative as GenResearchRow[] : [],
       };
       manifest = normalized;
       // Pre-populate availability cache from manifest
@@ -180,7 +224,9 @@ async function loadManifest(): Promise<Manifest | null> {
 }
 
 function hydrateAvailabilityFromManifest(m: Manifest): void {
-  const tabs: Tab[] = ['today', 'twitter', 'models', 'frontpage'];
+  // Calendar/availability is date-keyed; the research tab is slug-keyed and
+  // skipped on purpose.
+  const tabs: DateTab[] = ['today', 'twitter', 'models', 'frontpage'];
   for (const tab of tabs) {
     const dates = m[tab];
     // Group by year-month, populate cache
@@ -197,8 +243,16 @@ function hydrateAvailabilityFromManifest(m: Manifest): void {
   }
 }
 
-function manifestDates(tab: Tab): string[] | null {
+function manifestDates(tab: DateTab): string[] | null {
   return manifest ? manifest[tab] : null;
+}
+
+function findResearchRow(slug: string): GenResearchRow | null {
+  if (!manifest) return null;
+  for (const row of manifest.generative) {
+    if (row.slug === slug) return row;
+  }
+  return null;
 }
 
 // ── Calendar ──────────────────────────────────────────
@@ -388,7 +442,7 @@ function handleCalendarClick(e: Event): void {
 function escapeHtml(str: string): string {
   const div = document.createElement('div');
   div.textContent = str;
-  return div.textContent ?? '';
+  return div.innerHTML;
 }
 
 /** Safely set element content using DOMPurify + insertAdjacentHTML */
@@ -396,7 +450,8 @@ function setSafeContent(el: HTMLElement, rawHtml: string): void {
   while (el.firstChild) el.removeChild(el.firstChild);
   const clean = DOMPurify.sanitize(rawHtml, {
     USE_PROFILES: { html: true, svg: true, svgFilters: true },
-    ADD_TAGS: ['mark'],
+    ADD_TAGS: ['mark', 'article', 'figure', 'figcaption'],
+    ADD_ATTR: ['data-slug'],
   });
   el.insertAdjacentHTML('beforeend', clean);
 }
@@ -450,8 +505,20 @@ async function fetchDigest(dateStr: string, signal: AbortSignal): Promise<string
   }
 }
 
+async function fetchResearchDoc(row: GenResearchRow, signal: AbortSignal): Promise<string | null> {
+  const url = `${DATA_BASE}/generative/${row.file}`;
+  try {
+    const resp = await fetch(url, { signal });
+    if (!resp.ok) return null;
+    return await resp.text();
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') return null;
+    return null;
+  }
+}
+
 /** Find the most recent date <= target that has data in the manifest for this tab. */
-function findMostRecentAvailable(tab: Tab, targetDateStr: string): string | null {
+function findMostRecentAvailable(tab: DateTab, targetDateStr: string): string | null {
   const dates = manifestDates(tab);
   if (!dates || dates.length === 0) return null;
   // dates is sorted ascending; find largest <= target
@@ -482,7 +549,13 @@ function withTimeout<T>(p: Promise<T>, ms: number, controller: AbortController):
 
 // ── Rendering ─────────────────────────────────────────
 function showLoading(): void {
-  const label = activeTab === 'frontpage' ? 'Loading front page\u2026' : activeTab === 'models' ? 'Loading model timeline\u2026' : 'Loading Twitter report\u2026';
+  const label = activeTab === 'frontpage'
+    ? 'Loading front page\u2026'
+    : activeTab === 'models'
+    ? 'Loading model timeline\u2026'
+    : activeTab === 'research'
+    ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
+    : 'Loading Twitter report\u2026';
   setSafeContent(
     content,
     [
@@ -503,6 +576,8 @@ function showEmpty(dateStr: string): void {
     ? 'No front page for ' + escapeHtml(dateStr)
     : activeTab === 'models'
     ? 'No model timeline for ' + escapeHtml(dateStr)
+    : activeTab === 'research'
+    ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
     : 'No Twitter report for ' + escapeHtml(dateStr);
   setSafeContent(
     content,
@@ -772,6 +847,104 @@ function renderToday(md: string): void {
   setSafeContent(content, cards.join('\n'));
 }
 
+// ── Generative research ───────────────────────────────
+function renderResearchIndex(rows: GenResearchRow[]): void {
+  if (rows.length === 0) {
+    showEmpty(fmtDate(currentDate));
+    return;
+  }
+  const term = searchTerm.toLowerCase();
+  // Newest first. The writer appends ascending, so reverse.
+  const reversed = rows.slice().reverse();
+  const visible = term
+    ? reversed.filter((r) => {
+        const hay = (r.title + ' ' + r.prompt + ' ' + (r.tags || []).join(' ')).toLowerCase();
+        return hay.indexOf(term) !== -1;
+      })
+    : reversed;
+
+  const items: string[] = [];
+  for (const row of visible) {
+    let title = escapeHtml(row.title);
+    if (searchTerm) {
+      const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp('(' + escaped + ')', 'gi');
+      title = title.replace(re, '<mark>$1</mark>');
+    }
+    const created = new Date(row.created_at);
+    const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
+    const tagHtml = (row.tags || [])
+      .map((t) => '<span class="gen-research-tag">' + escapeHtml(t) + '</span>')
+      .join('');
+    items.push(
+      [
+        '<li class="gen-research-item" data-slug="' + escapeHtml(row.slug) + '" tabindex="0">',
+        '  <div class="gen-research-item-title">' + title + '</div>',
+        '  <div class="gen-research-item-meta">',
+        '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
+        rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
+        tagHtml ? '    <span class="gen-research-tags">' + tagHtml + '</span>' : '',
+        '  </div>',
+        '</li>',
+      ].join('\n'),
+    );
+  }
+
+  const empty = visible.length === 0
+    ? '<div class="empty-state-text gen-research-empty">No articles match the search.</div>'
+    : '';
+
+  setSafeContent(
+    content,
+    [
+      '<div class="content-card">',
+      '  <div class="content-card-header">',
+      '    <div class="content-card-title">Generative research</div>',
+      '  </div>',
+      '  <div class="content-card-body">',
+      '    <ul class="gen-research-index">',
+      items.join('\n'),
+      '    </ul>',
+      empty,
+      '  </div>',
+      '</div>',
+    ].join('\n'),
+  );
+}
+
+function renderResearchDoc(row: GenResearchRow, body: string): void {
+  let docHtml = body;
+  if (searchTerm) {
+    const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp('(' + escaped + ')', 'gi');
+    // Apply mark only to text outside tags. Simple split-by-tag pass.
+    docHtml = docHtml.replace(/>([^<]+)</g, (_m, text: string) => {
+      return '>' + text.replace(re, '<mark>$1</mark>') + '<';
+    });
+  }
+  const created = new Date(row.created_at);
+  const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
+
+  setSafeContent(
+    content,
+    [
+      '<div class="content-card gen-research-doc">',
+      '  <div class="content-card-header">',
+      '    <div class="content-card-title">' + escapeHtml(row.title) + '</div>',
+      '  </div>',
+      '  <div class="gen-research-doc-meta">',
+      '    <button class="gen-research-back" data-research-back>&lsaquo; All articles</button>',
+      '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
+      rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
+      '  </div>',
+      '  <div class="content-card-body">',
+      docHtml,
+      '  </div>',
+      '</div>',
+    ].join('\n'),
+  );
+}
+
 // ── Main load ─────────────────────────────────────────
 async function load(): Promise<void> {
   const dateStr = fmtDate(currentDate);
@@ -784,7 +957,34 @@ async function load(): Promise<void> {
   showLoading();
 
   try {
-    if (activeTab === 'frontpage') {
+    if (activeTab === 'research') {
+      // Make sure the manifest (and therefore the generative index) is loaded.
+      const m = manifest || await loadManifest();
+      if (requestId !== loadRequestId) return;
+      const rows = m?.generative ?? [];
+      if (!selectedSlug) {
+        researchDocCache = null;
+        renderResearchIndex(rows);
+      } else {
+        const row = findResearchRow(selectedSlug);
+        if (!row) {
+          showEmpty(dateStr);
+        } else if (researchDocCache && researchDocCache.slug === selectedSlug) {
+          renderResearchDoc(row, researchDocCache.body);
+        } else {
+          const result = await withTimeout(fetchResearchDoc(row, controller.signal), LOAD_TIMEOUT_MS, controller);
+          if (requestId !== loadRequestId) return;
+          if (result === 'timeout') {
+            showError('Loading timed out', 'Network may be slow. Click to retry.');
+          } else if (result) {
+            researchDocCache = { slug: selectedSlug, body: result };
+            renderResearchDoc(row, result);
+          } else {
+            showEmpty(dateStr);
+          }
+        }
+      }
+    } else if (activeTab === 'frontpage') {
       const result = await withTimeout(fetchFrontPage(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
       if (requestId !== loadRequestId) return;
       if (result === 'timeout') {
@@ -925,11 +1125,40 @@ searchInput.addEventListener('input', () => {
   }, 180);
 });
 
-// Retry button (event delegation on content)
+// Retry button + research index navigation (event delegation on content)
 content.addEventListener('click', (e) => {
   const target = e.target as HTMLElement;
   if (target.closest('[data-retry]')) {
     load();
+    return;
+  }
+  const back = target.closest('[data-research-back]') as HTMLElement | null;
+  if (back) {
+    selectedSlug = null;
+    load();
+    return;
+  }
+  const row = target.closest('[data-slug]') as HTMLElement | null;
+  if (row && activeTab === 'research') {
+    const slug = row.dataset.slug;
+    if (slug) {
+      selectedSlug = slug;
+      load();
+    }
+  }
+});
+
+content.addEventListener('keydown', (e: KeyboardEvent) => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const target = e.target as HTMLElement;
+  const row = target.closest('[data-slug]') as HTMLElement | null;
+  if (row && activeTab === 'research') {
+    e.preventDefault();
+    const slug = row.dataset.slug;
+    if (slug) {
+      selectedSlug = slug;
+      load();
+    }
   }
 });
 
@@ -983,13 +1212,17 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
 // ── Tab navigation ────────────────────────────────────
 document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
   btn.addEventListener('click', () => {
-    const tab = btn.dataset.tab as 'twitter' | 'models' | 'frontpage';
+    const tab = btn.dataset.tab as Tab;
     if (tab === activeTab) return;
     activeTab = tab;
+    selectedSlug = null;
     document.querySelectorAll('.tab').forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
-    // Re-probe availability for current month with new tab
-    probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+    document.body.classList.toggle('tab-research', activeTab === 'research');
+    // Re-probe availability for current month with new tab (date tabs only).
+    if (activeTab !== 'research') {
+      probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+    }
     load();
   });
 });
@@ -999,7 +1232,13 @@ calendarEl.addEventListener('click', handleCalendarClick);
 // Kick off manifest fetch early so calendar + fallback logic have data ASAP.
 loadManifest();
 applyHash();
-probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+// applyHash() may have mutated activeTab to anything in Tab; TS won't see
+// that across the function boundary, so we widen the read explicitly.
+const currentTab: Tab = activeTab as Tab;
+document.body.classList.toggle('tab-research', currentTab === 'research');
+if (currentTab !== 'research') {
+  probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+}
 load();
 
 window.addEventListener('hashchange', () => {

@@ -10,6 +10,7 @@ on:
       - 'research/front-page/**'
       - 'research/digest/**'
       - 'research/audio/**'
+      - 'research/generative/**'
   workflow_dispatch:
 
 permissions:
@@ -46,8 +47,9 @@ jobs:
           cp -r research/twitter dashboard/public/research/
           cp -r research/models dashboard/public/research/
           cp -r research/front-page dashboard/public/research/
-          [ -d research/digest ] && cp -r research/digest dashboard/public/research/ || true
-          [ -d research/audio ]  && cp -r research/audio  dashboard/public/research/ || true
+          [ -d research/digest ]     && cp -r research/digest     dashboard/public/research/ || true
+          [ -d research/audio ]      && cp -r research/audio      dashboard/public/research/ || true
+          [ -d research/generative ] && cp -r research/generative dashboard/public/research/ || true
 
       # Build a manifest of available dates per source so the dashboard can avoid
       # the HEAD-probe storm against missing daily files.
@@ -74,8 +76,24 @@ jobs:
                       if m:
                           dates.append(m.group(1))
               manifest[key] = sorted(set(dates))
+
+          # Generative research is slug-keyed, not date-keyed. The canonical
+          # list is research/generative/index.json (written by
+          # scripts/write_generative_research.py). Emit it verbatim under the
+          # 'generative' key so the dashboard can read row metadata directly.
+          gen_index = base / 'generative' / 'index.json'
+          gen_rows = []
+          if gen_index.exists():
+              try:
+                  raw = json.loads(gen_index.read_text())
+                  if isinstance(raw, list):
+                      gen_rows = raw
+              except (ValueError, OSError) as e:
+                  print(f'warning: failed to read {gen_index}: {e}')
+          manifest['generative'] = gen_rows
+
           (base / 'manifest.json').write_text(json.dumps(manifest, separators=(',', ':')))
-          counts = {k: len(v) for k, v in manifest.items()}
+          counts = {k: (len(v) if isinstance(v, list) else 0) for k, v in manifest.items()}
           print(f'manifest.json: {counts}')
           PY
 
