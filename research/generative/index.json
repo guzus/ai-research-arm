@@ -44,5 +44,20 @@
       "security",
       "strategic-brief"
     ]
+  },
+  {
+    "slug": "components",
+    "file": "2026-05-15T072758--components.html",
+    "kind": "fragment",
+    "title": "ARA Research Component Reference",
+    "model": "reference",
+    "created_at": "2026-05-15T07:27:58Z",
+    "source": "seed",
+    "prompt": "ARA Research Component Reference",
+    "tags": [
+      "reference",
+      "components",
+      "system"
+    ]
   }
 ]

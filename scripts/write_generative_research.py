@@ -16,6 +16,7 @@ list newest-first.
 from __future__ import annotations
 
 import argparse
+import html.parser
 import json
 import os
 import re
@@ -32,13 +33,24 @@ KIND_FRAGMENT = "fragment"
 KIND_STANDALONE = "standalone"
 KINDS = (KIND_FRAGMENT, KIND_STANDALONE)
 DISALLOWED_PATTERNS = [
-    re.compile(r"<script\b", re.IGNORECASE),
-    re.compile(r"<style\b", re.IGNORECASE),
-    re.compile(r"<iframe\b", re.IGNORECASE),
     re.compile(r"\sstyle\s*=", re.IGNORECASE),
     re.compile(r"\son\w+\s*=", re.IGNORECASE),  # onclick=, onload=, etc.
     re.compile(r"javascript:", re.IGNORECASE),
 ]
+# Fragment articles must compose from this fixed tag set + the ara-* class
+# vocabulary defined in dashboard/src/components/ara-research.css. See
+# COMPONENTS.md for the human-readable reference.
+FRAGMENT_ALLOWED_TAGS = frozenset([
+    "article", "section", "div", "header", "footer",
+    "h2", "h3", "h4",
+    "p", "span", "em", "strong", "code", "mark", "sup", "sub", "abbr", "time",
+    "ul", "ol", "li", "dl", "dt", "dd",
+    "a", "img", "figure", "figcaption",
+    "table", "thead", "tbody", "tr", "th", "td",
+    "blockquote", "pre",
+    "br", "hr",
+])
+FRAGMENT_CLASS_PREFIX = "ara-"
 ARTICLE_OPEN = re.compile(r"<article\b[^>]*>", re.IGNORECASE)
 ARTICLE_CLOSE = re.compile(r"</article\s*>", re.IGNORECASE)
 H2_TEXT = re.compile(r"<h2\b[^>]*>(.*?)</h2>", re.IGNORECASE | re.DOTALL)
@@ -62,6 +74,33 @@ def read_body(source: str) -> str:
     return Path(source).read_text(encoding="utf-8")
 
 
+class _FragmentValidator(html.parser.HTMLParser):
+    """Parse-aware check: every tag must be in FRAGMENT_ALLOWED_TAGS,
+    every class= token must start with FRAGMENT_CLASS_PREFIX."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.bad_tags: list[str] = []
+        self.bad_classes: list[tuple[str, str]] = []
+
+    def _check(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() not in FRAGMENT_ALLOWED_TAGS:
+            self.bad_tags.append(tag.lower())
+            return
+        for name, value in attrs:
+            if name.lower() != "class" or not value:
+                continue
+            for tok in value.split():
+                if not tok.startswith(FRAGMENT_CLASS_PREFIX):
+                    self.bad_classes.append((tag.lower(), tok))
+
+    def handle_starttag(self, tag, attrs):
+        self._check(tag, attrs)
+
+    def handle_startendtag(self, tag, attrs):
+        self._check(tag, attrs)
+
+
 def validate_body(body: str, kind: str) -> None:
     if kind == KIND_FRAGMENT:
         if len(body.encode("utf-8")) > MAX_BODY_BYTES:
@@ -74,6 +113,21 @@ def validate_body(body: str, kind: str) -> None:
             m = pat.search(body)
             if m:
                 raise ValueError(f"fragment body contains disallowed pattern: {m.group(0)!r}")
+        parser = _FragmentValidator()
+        parser.feed(body)
+        if parser.bad_tags:
+            uniq = sorted(set(parser.bad_tags))
+            raise ValueError(
+                f"fragment uses disallowed tags: {uniq}. "
+                f"Allowed: {sorted(FRAGMENT_ALLOWED_TAGS)}. See COMPONENTS.md."
+            )
+        if parser.bad_classes:
+            preview = ", ".join(f"<{t}> class={c!r}" for t, c in parser.bad_classes[:5])
+            raise ValueError(
+                f"fragment uses non-{FRAGMENT_CLASS_PREFIX}* classes: {preview}. "
+                f"All class tokens must start with {FRAGMENT_CLASS_PREFIX!r}. "
+                f"See COMPONENTS.md for the vocabulary."
+            )
     elif kind == KIND_STANDALONE:
         # Standalone docs are full HTML pages rendered inside a sandboxed
         # iframe. The sandbox is the security boundary, not regex on the body.

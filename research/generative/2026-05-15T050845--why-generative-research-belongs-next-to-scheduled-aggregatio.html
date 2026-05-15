@@ -1,11 +1,12 @@
-<article class="gen-research">
-  <h2>Why a generative-research lane belongs next to scheduled aggregation</h2>
+<article class="ara-doc">
+  <span class="ara-eyebrow">Architecture · Meta</span>
+  <h2 class="ara-display">Why a generative-research lane belongs next to scheduled aggregation</h2>
 
-  <p>
+  <p class="ara-lede">
     This dashboard already aggregates AI news on a clock — Twitter every three hours,
     RSS every hour, arXiv and digests daily. That cadence is great at <em>not missing</em>
-    things, but it's incurious by construction: it can't ask <em>why</em> a story
-    matters or what the second-order implications are.
+    things, but it's incurious by construction: it can't ask <em>why</em> a story matters
+    or what the second-order implications are.
   </p>
 
   <p>
@@ -14,7 +15,7 @@
     feeds. Same dashboard, same calendar conventions, different shape.
   </p>
 
-  <h3>Three properties worth defending</h3>
+  <h3 class="ara-h2"><span class="ara-h2-num">01</span>Three properties worth defending</h3>
 
   <ul>
     <li>
@@ -23,10 +24,9 @@
       better.
     </li>
     <li>
-      <strong>Semantic HTML, not freeform pages.</strong> The model emits
-      <code>&lt;article&gt;</code> with standard headings, paragraphs, tables, and
-      figures. The dashboard CSS owns the look. This keeps the corpus searchable and
-      the surface attackable in only one place.
+      <strong>Composable components, not freeform pages.</strong> Articles use a small
+      <code>ara-*</code> vocabulary. The dashboard CSS owns the look. Edit one file,
+      restyle every article in place.
     </li>
     <li>
       <strong>One writer, three triggers.</strong> Local slash command, GitHub issue
@@ -36,22 +36,27 @@
     </li>
   </ul>
 
-  <h3>What this fixture proves</h3>
+  <h3 class="ara-h2"><span class="ara-h2-num">02</span>What this fixture proves</h3>
 
   <p>
     If you're reading this on the dashboard, the chain is working end-to-end: the
-    writer accepted the body, validated it against the &lt;article&gt; contract,
+    writer accepted the body, validated it against the <code>ara-doc</code> contract
+    (every class begins with <code>ara-</code>, every tag is in the allowlist),
     appended a row to <code>index.json</code>, and the deploy pipeline copied the
     file into <code>dashboard/public/research/generative/</code> so the SPA could
-    fetch it. The Research tab is now a first-class citizen.
+    fetch it.
   </p>
 
-  <h3>Next obvious moves</h3>
+  <h3 class="ara-h2"><span class="ara-h2-num">03</span>Next obvious moves</h3>
 
   <ol>
-    <li>Wire up the DeepSeek backend in the workflow — same action, different env vars.</li>
-    <li>Add an <code>issues: [labeled]</code> trigger so requests work like the existing free-form research flow.</li>
-    <li>Decide whether to expose the prompt itself on each rendered doc, or keep it in the index only.</li>
+    <li>Extend the vocabulary as articles need new shapes — but slowly, since every
+      new component is a maintenance liability.</li>
+    <li>Decide whether to expose the prompt itself on each rendered doc, or keep it
+      in the index only.</li>
+    <li>Consider whether the existing standalone reports (XMAQUINA, Akamai) should
+      migrate into the vocabulary, or remain as legacy iframes that don't restyle
+      when the dashboard does.</li>
   </ol>
 
   <p>

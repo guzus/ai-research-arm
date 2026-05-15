@@ -1,3 +1,9 @@
+/* ── Component library ─────────────────────────────
+ * The ara-* primitives that all fragment-kind research articles must
+ * use. Edit dashboard/src/components/ara-research.css to restyle every
+ * existing article in place. */
+@import './components/ara-research.css';
+
 /* ── Reset ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1172,156 +1178,10 @@ body.tab-research #calendar {
   background: var(--bg-hover);
 }
 
-/* Doc typography mirrors .md-content so the look stays consistent. */
-.gen-research-doc article {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  line-height: 1.85;
-  letter-spacing: 0.005em;
-  color: var(--text);
-}
-
-.gen-research-doc article h2 {
-  font-family: var(--font);
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.gen-research-doc article h2:first-child,
-.gen-research-doc article h3:first-child,
-.gen-research-doc article h4:first-child {
-  margin-top: 0;
-}
-
-.gen-research-doc article h3 {
-  font-family: var(--font);
-  font-size: 1.08rem;
-  font-weight: 650;
-  margin-top: 32px;
-  margin-bottom: 12px;
-  color: var(--text);
-}
-
-.gen-research-doc article h4 {
-  font-family: var(--font);
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-top: 24px;
-  margin-bottom: 10px;
-}
-
-.gen-research-doc article p {
-  margin-bottom: 14px;
-}
-
-.gen-research-doc article ul,
-.gen-research-doc article ol {
-  margin-bottom: 18px;
-  padding-left: 24px;
-}
-
-.gen-research-doc article li {
-  margin-bottom: 10px;
-  padding-left: 4px;
-}
-
-.gen-research-doc article li::marker {
-  color: var(--text-tertiary);
-}
-
-.gen-research-doc article a {
-  color: var(--accent-warm);
-  text-decoration: none;
-  font-weight: 500;
-  font-family: var(--font);
-  font-size: 0.95rem;
-  word-break: break-all;
-}
-
-.gen-research-doc article a:hover {
-  text-decoration: underline;
-}
-
-.gen-research-doc article strong {
-  font-weight: 600;
-}
-
-.gen-research-doc article em {
-  color: var(--text-secondary);
-}
-
-.gen-research-doc article code {
-  background: var(--bg-secondary);
-  padding: 2px 6px;
-  border-radius: 5px;
-  font-family: var(--font-mono);
-  font-size: 0.84rem;
-}
-
-.gen-research-doc article pre {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  border-radius: 10px;
-  padding: 16px;
-  overflow-x: auto;
-  margin-bottom: 16px;
-}
-
-.gen-research-doc article pre code {
-  background: none;
-  padding: 0;
-}
-
-.gen-research-doc article blockquote {
-  border-left: 3px solid var(--accent-warm);
-  padding-left: 16px;
-  color: var(--text-secondary);
-  margin: 16px 0;
-}
-
-.gen-research-doc article hr {
-  border: none;
-  border-top: 1px solid var(--border-light);
-  margin: 24px 0;
-}
-
-.gen-research-doc article table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 16px 0;
-  font-size: 0.86rem;
-}
-
-.gen-research-doc article th {
-  background: var(--bg-secondary);
-  padding: 10px 14px;
-  text-align: left;
-  font-weight: 600;
-  border-bottom: 2px solid var(--border);
-  vertical-align: top;
-}
-
-.gen-research-doc article td {
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--border-light);
-  vertical-align: top;
-  overflow-wrap: break-word;
-}
-
-.gen-research-doc article figure {
-  margin: 18px 0;
-}
-
-.gen-research-doc article figcaption {
-  font-size: 0.82rem;
-  color: var(--text-tertiary);
-  margin-top: 6px;
-  text-align: center;
-}
+/* Article body styling lives in dashboard/src/components/ara-research.css
+ * (imported at the top of this file). Fragment articles must use the
+ * .ara-doc root and the ara-* class vocabulary — enforced at write time
+ * by scripts/write_generative_research.py. */
 
 @media (max-width: 640px) {
   .gen-research-item {
@@ -1331,10 +1191,6 @@ body.tab-research #calendar {
   }
   .gen-research-doc-meta {
     padding: 10px 16px 0;
-  }
-  .gen-research-doc article {
-    font-size: 0.95rem;
-    line-height: 1.75;
   }
 }
 

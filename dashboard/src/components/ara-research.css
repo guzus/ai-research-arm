@@ -1,0 +1,449 @@
+/* ARA Research Components
+ *
+ * Composable primitives for fragment-kind research articles. Articles
+ * reference these classes by name; the writer's validator rejects any
+ * class outside the `ara-*` allowlist (see scripts/write_generative_research.py).
+ *
+ * Edit this file to restyle every existing article in place.
+ *
+ * Vocabulary (kept small intentionally):
+ *   Structure: ara-doc, ara-section
+ *   Headings:  ara-eyebrow, ara-display, ara-deck, ara-lede,
+ *              ara-h2 (+ ara-h2-num), ara-h3, ara-h4, ara-divider
+ *   Blocks:    ara-callout (+ --info|success|warn|danger),
+ *              ara-callout-label, ara-quote, ara-quote-attr,
+ *              ara-figure, ara-caption, ara-code
+ *   Data:      ara-kv (with dt/dd inside), ara-stats, ara-stat,
+ *              ara-stat-label, ara-stat-value, ara-stat-note,
+ *              ara-table
+ *   Inline:    ara-tag, ara-cite, ara-mark, ara-flag (+ --green|yellow|red)
+ *
+ * Token sources: --bg, --bg-secondary, --border, --border-light,
+ * --text, --text-secondary, --text-tertiary, --accent-warm,
+ * --accent-warm-bg, --font, --font-serif, --font-mono.
+ * Dark-mode comes free via existing variables.
+ */
+
+/* ── Doc root ─────────────────────────────────────── */
+.ara-doc {
+  font-family: var(--font);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.ara-doc p {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0 0 14px;
+  color: var(--text);
+}
+
+.ara-doc p:last-child { margin-bottom: 0; }
+
+.ara-doc a {
+  color: var(--accent-warm);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.ara-doc a:hover { text-decoration: underline; }
+
+.ara-doc strong { font-weight: 600; }
+.ara-doc em { color: var(--text-secondary); }
+
+/* ── Headings + meta ─────────────────────────────── */
+.ara-eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 10px;
+}
+
+.ara-display {
+  font-family: var(--font);
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+
+.ara-deck {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+
+.ara-lede {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0 0 20px;
+}
+
+.ara-h2 {
+  font-family: var(--font);
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 32px 0 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.ara-h2:first-child { padding-top: 0; border-top: none; margin-top: 0; }
+
+.ara-h2-num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  margin-right: 10px;
+}
+
+.ara-h3 {
+  font-family: var(--font);
+  font-size: 0.98rem;
+  font-weight: 650;
+  color: var(--text);
+  margin: 22px 0 8px;
+}
+
+.ara-h4 {
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 16px 0 6px;
+}
+
+.ara-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+
+/* Optional grouping wrapper. Keeps a logical section visually separated. */
+.ara-section {
+  margin: 24px 0;
+}
+
+/* ── Lists ───────────────────────────────────────── */
+.ara-doc ul,
+.ara-doc ol {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  padding-left: 24px;
+  margin: 0 0 18px;
+}
+
+.ara-doc li {
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+.ara-doc li::marker { color: var(--text-tertiary); }
+
+/* ── Callouts ────────────────────────────────────── */
+.ara-callout {
+  font-family: var(--font);
+  border-left: 3px solid var(--text-tertiary);
+  background: var(--bg-secondary);
+  padding: 14px 16px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.ara-callout p {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+.ara-callout p + p { margin-top: 8px; }
+
+.ara-callout--info    { border-left-color: var(--accent-warm); background: var(--accent-warm-bg); }
+.ara-callout--success { border-left-color: #1b6d3a; background: rgba(27, 109, 58, 0.07); }
+.ara-callout--warn    { border-left-color: #b07020; background: rgba(176, 112, 32, 0.07); }
+.ara-callout--danger  { border-left-color: #b3251f; background: rgba(179, 37, 31, 0.07); }
+
+@media (prefers-color-scheme: dark) {
+  .ara-callout--success { background: rgba(111, 204, 146, 0.08); border-left-color: #6fcc92; }
+  .ara-callout--warn    { background: rgba(212, 166, 114, 0.08); border-left-color: #d4a672; }
+  .ara-callout--danger  { background: rgba(238, 122, 115, 0.08); border-left-color: #ee7a73; }
+}
+
+.ara-callout-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: inherit;
+  margin-bottom: 6px;
+  opacity: 0.8;
+}
+
+/* ── Pull quote ──────────────────────────────────── */
+.ara-quote {
+  border-left: 3px solid var(--accent-warm);
+  padding: 4px 0 4px 18px;
+  margin: 24px 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.ara-quote-attr {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font);
+  font-style: normal;
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+}
+
+.ara-quote-attr::before { content: "— "; }
+
+/* ── Key/value (definition list) ─────────────────── */
+.ara-kv {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 20px;
+  margin: 20px 0;
+  font-family: var(--font);
+}
+
+.ara-kv dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  padding-top: 3px;
+}
+
+.ara-kv dd {
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0;
+}
+
+@media (max-width: 520px) {
+  .ara-kv { grid-template-columns: 1fr; gap: 2px 0; }
+  .ara-kv dd { margin-bottom: 8px; }
+}
+
+/* ── Stat grid ───────────────────────────────────── */
+.ara-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin: 22px 0;
+  padding: 18px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+}
+
+.ara-stat { text-align: left; }
+
+.ara-stat-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 5px;
+}
+
+.ara-stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.ara-stat-note {
+  font-family: var(--font);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ── Tables ──────────────────────────────────────── */
+.ara-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: var(--font);
+  font-size: 0.88rem;
+}
+
+.ara-table thead th {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  text-align: left;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.ara-table tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+  color: var(--text);
+}
+
+.ara-table tbody tr:last-child td { border-bottom: none; }
+.ara-table tbody tr:hover td { background: var(--bg-secondary); }
+
+/* ── Figures / images ────────────────────────────── */
+.ara-figure {
+  margin: 24px 0;
+}
+
+.ara-figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+}
+
+.ara-caption {
+  font-family: var(--font);
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  margin-top: 8px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* ── Code ────────────────────────────────────────── */
+.ara-doc code,
+.ara-code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--bg-secondary);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.ara-doc pre {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  margin: 18px 0;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.ara-doc pre code,
+.ara-doc pre .ara-code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* ── Inline chips / cites / flags ────────────────── */
+.ara-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  padding: 1px 8px;
+  border-radius: 12px;
+  margin: 0 2px;
+  white-space: nowrap;
+}
+
+.ara-cite {
+  font-family: var(--font);
+  font-size: 0.7rem;
+  color: var(--accent-warm);
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 1px;
+  text-decoration: none;
+}
+
+.ara-cite::before { content: "["; }
+.ara-cite::after { content: "]"; }
+.ara-cite:hover { text-decoration: underline; }
+
+.ara-mark {
+  background: var(--mark-bg);
+  color: var(--mark-fg);
+  padding: 1px 3px;
+  border-radius: 3px;
+}
+
+.ara-flag {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+  background: var(--text-tertiary);
+}
+
+.ara-flag--green  { background: #1b6d3a; }
+.ara-flag--yellow { background: #b07020; }
+.ara-flag--red    { background: #b3251f; }
+
+@media (prefers-color-scheme: dark) {
+  .ara-flag--green  { background: #6fcc92; }
+  .ara-flag--yellow { background: #d4a672; }
+  .ara-flag--red    { background: #ee7a73; }
+}
+
+/* ── Mobile tightening ───────────────────────────── */
+@media (max-width: 640px) {
+  .ara-display { font-size: 1.4rem; }
+  .ara-deck { font-size: 1rem; }
+  .ara-lede { font-size: 1.05rem; }
+  .ara-doc p,
+  .ara-doc ul,
+  .ara-doc ol { font-size: 1rem; line-height: 1.7; }
+  .ara-h2 { font-size: 1.08rem; padding-top: 14px; margin: 26px 0 10px; }
+  .ara-stats { padding: 14px; gap: 12px; }
+  .ara-stat-value { font-size: 1.35rem; }
+}

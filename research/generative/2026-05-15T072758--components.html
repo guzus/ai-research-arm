@@ -1,0 +1,199 @@
+<article class="ara-doc">
+  <span class="ara-eyebrow">Reference · System</span>
+  <h2 class="ara-display">ARA Research Component Reference</h2>
+  <p class="ara-deck">Every primitive available to a research article, used at least once. If you're reading this, the design system works end-to-end.</p>
+
+  <p class="ara-lede">
+    Articles in the Research tab compose from a fixed vocabulary of <code>ara-*</code>
+    classes. The writer parses every fragment at commit time and rejects any class
+    outside the allowlist or any HTML tag outside the semantic whitelist. The
+    dashboard ships the matching CSS; edit one file to restyle every article.
+  </p>
+
+  <p>
+    This document is its own integration test. It exercises every primitive at least
+    once. If a primitive renders wrong here, it renders wrong everywhere.
+  </p>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">01</span>Headings and structure</h3>
+
+  <p>Use <code>ara-display</code> for the article title (one per doc). Use <code>ara-h2</code> for sections (with an optional <code>ara-h2-num</code> chip for numbered sections). <code>ara-h3</code> and <code>ara-h4</code> step down from there.</p>
+
+  <h4 class="ara-h3">An <code>ara-h3</code> subsection</h4>
+
+  <p>Subsections sit beneath h2-level sections. Lighter weight, smaller size.</p>
+
+  <h4 class="ara-h4">An <code>ara-h4</code> minor head</h4>
+
+  <p>Minor heads are for tight subdivisions inside a subsection. Same family, smaller and muted.</p>
+
+  <hr class="ara-divider">
+
+  <h3 class="ara-h2"><span class="ara-h2-num">02</span>Callouts</h3>
+
+  <p>Four variants. Use sparingly — every callout costs reader attention.</p>
+
+  <div class="ara-callout ara-callout--info">
+    <span class="ara-callout-label">Note</span>
+    <p>Informational callouts use the warm accent color. Good for footnotes, asides, methodology disclosures.</p>
+  </div>
+
+  <div class="ara-callout ara-callout--success">
+    <span class="ara-callout-label">Confirmed</span>
+    <p>Green for verified facts, completed actions, positive signals. Use when something is genuinely settled, not just nice.</p>
+  </div>
+
+  <div class="ara-callout ara-callout--warn">
+    <span class="ara-callout-label">Caveat</span>
+    <p>Yellow for partial confidence, unverified claims, things to watch. Most analytical hedges land here.</p>
+  </div>
+
+  <div class="ara-callout ara-callout--danger">
+    <span class="ara-callout-label">Risk</span>
+    <p>Red for red flags. Don't dilute by using it for mere uncertainty — that's what warn is for.</p>
+  </div>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">03</span>Pull quote</h3>
+
+  <p>For a single sentence worth slowing down for. Don't use for normal citations — that's what links are for.</p>
+
+  <blockquote class="ara-quote">
+    The bottleneck is no longer compute. It's the human attention required to know what to compute on.
+    <span class="ara-quote-attr">Composite take, AI research bench, mid-2026</span>
+  </blockquote>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">04</span>Key/value pairs</h3>
+
+  <p>Definition lists with <code>ara-kv</code>. Good for "at a glance" metadata — company facts, paper details, contract terms.</p>
+
+  <dl class="ara-kv">
+    <dt>Founded</dt>
+    <dd>1998</dd>
+    <dt>HQ</dt>
+    <dd>Cambridge, MA</dd>
+    <dt>Employees</dt>
+    <dd>~10,400</dd>
+    <dt>Public ticker</dt>
+    <dd>AKAM (Nasdaq)</dd>
+  </dl>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">05</span>Stat grid</h3>
+
+  <p>Headline numbers. Tabular-figure mono ensures decimals line up. Auto-fits 140px+ columns.</p>
+
+  <div class="ara-stats">
+    <div class="ara-stat">
+      <span class="ara-stat-label">Revenue (FY25)</span>
+      <div class="ara-stat-value">$4.0B</div>
+      <div class="ara-stat-note">+4.7% YoY</div>
+    </div>
+    <div class="ara-stat">
+      <span class="ara-stat-label">Gross margin</span>
+      <div class="ara-stat-value">59.3%</div>
+      <div class="ara-stat-note">stable</div>
+    </div>
+    <div class="ara-stat">
+      <span class="ara-stat-label">FCF</span>
+      <div class="ara-stat-value">$1.1B</div>
+      <div class="ara-stat-note">guidance lifted</div>
+    </div>
+    <div class="ara-stat">
+      <span class="ara-stat-label">Net cash</span>
+      <div class="ara-stat-value">$2.3B</div>
+    </div>
+  </div>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">06</span>Tables</h3>
+
+  <p>Comparisons, financial breakdowns, ranked lists.</p>
+
+  <table class="ara-table">
+    <thead>
+      <tr>
+        <th>Segment</th>
+        <th>Q4 revenue</th>
+        <th>YoY growth</th>
+        <th>Margin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Security</td>
+        <td>$520M</td>
+        <td>+14%</td>
+        <td>62%</td>
+      </tr>
+      <tr>
+        <td>Delivery</td>
+        <td>$380M</td>
+        <td>-3%</td>
+        <td>54%</td>
+      </tr>
+      <tr>
+        <td>Compute</td>
+        <td>$180M</td>
+        <td>+39%</td>
+        <td>41%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">07</span>Lists, links, inline elements</h3>
+
+  <p>Standard unordered list:</p>
+
+  <ul>
+    <li>A claim with an <a href="https://example.com/source">inline source</a>.</li>
+    <li>Another claim with <em>emphasis</em>, <strong>strong emphasis</strong>, and <code>inline code</code>.</li>
+    <li>A statement followed by a numbered citation<sup><a class="ara-cite" href="#ref-1">1</a></sup>.</li>
+  </ul>
+
+  <p>Ordered list:</p>
+
+  <ol>
+    <li>First step in a sequence.</li>
+    <li>Second step.</li>
+    <li>Third step.</li>
+  </ol>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">08</span>Tags, flags, highlights</h3>
+
+  <p>
+    Inline tags: <span class="ara-tag">cdn</span> <span class="ara-tag">security</span> <span class="ara-tag">edge-compute</span>
+  </p>
+
+  <p>
+    Status flags inline: <span class="ara-flag ara-flag--green"></span>solid; <span class="ara-flag ara-flag--yellow"></span>watch; <span class="ara-flag ara-flag--red"></span>concerning.
+  </p>
+
+  <p>
+    Highlighted text: <mark class="ara-mark">key insight</mark> draws the eye.
+  </p>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">09</span>Code blocks</h3>
+
+  <p>Inline <code>code</code> and fenced blocks:</p>
+
+  <pre><code>def compose(article: str) -&gt; bool:
+    # Every class must start with ara-
+    return all(c.startswith("ara-") for c in classes_in(article))</code></pre>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">10</span>What's NOT here</h3>
+
+  <p>Components that don't exist by design:</p>
+
+  <ul>
+    <li><strong>No layout primitives.</strong> No <code>ara-grid</code>, <code>ara-row</code>, <code>ara-col</code>. Articles flow top-to-bottom; if you need a grid, it's probably <code>ara-stats</code> or a table.</li>
+    <li><strong>No color utilities.</strong> No <code>ara-text-red</code>. Use a callout or a flag for semantic color.</li>
+    <li><strong>No spacing utilities.</strong> Margins are baked into each component. If two components feel cramped, the component's own margins should be edited.</li>
+    <li><strong>No theming knobs.</strong> Light/dark come from the dashboard's CSS variables. Articles never pick colors directly.</li>
+  </ul>
+
+  <hr class="ara-divider">
+
+  <p><strong>Sources</strong></p>
+
+  <ol>
+    <li id="ref-1"><a href="https://example.com/example-source">Example Source (2026)</a></li>
+  </ol>
+</article>

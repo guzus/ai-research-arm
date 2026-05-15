@@ -228,17 +228,33 @@ jobs:
             PROCESS:
             1. Use WebSearch and WebFetch liberally. Verify claims against
                primary sources where possible. Note dates and provenance.
-            2. Draft a single <article> HTML fragment. Strict rules:
-                  - One outer <article>...</article>. No <head>, <body>,
-                    <script>, or <style>. No `style="..."` attributes. No
-                    `onclick=`/`onload=`/etc. No `javascript:` URLs.
-                  - Allowed inner tags: h2, h3, h4, p, ul, ol, li, em, strong,
-                    code, pre, blockquote, table/thead/tbody/tr/th/td, figure,
-                    figcaption, a, img, hr, br.
-                  - Open with an <h2> containing the human title.
+            2. Draft a single <article class="ara-doc"> HTML fragment using
+               the ARA component vocabulary. READ `COMPONENTS.md` at the
+               repo root before writing — it lists every allowed class.
+               Strict rules (the writer rejects violations):
+                  - Root must be <article class="ara-doc">.
+                  - Every `class=` token must start with `ara-`.
+                  - Allowed tags only: article, section, div, header, footer,
+                    h2, h3, h4, p, span, em, strong, code, mark, sup, sub,
+                    abbr, time, ul, ol, li, dl, dt, dd, a, img, figure,
+                    figcaption, table, thead, tbody, tr, th, td, blockquote,
+                    pre, br, hr.
+                  - No <h1>, <style>, <script>, <iframe>, <head>, <body>. No
+                    inline `style="..."`. No `onclick=`/`onload=`/etc. No
+                    `javascript:` URLs.
+                  - Open with <span class="ara-eyebrow"> + <h2 class="ara-display">
+                    containing the human title, then a <p class="ara-deck">
+                    one-line dek (optional) and a <p class="ara-lede"> opening
+                    paragraph.
+                  - Use <h3 class="ara-h2"> for sections (with optional
+                    <span class="ara-h2-num">01</span> chip).
+                  - For data: ara-stats / ara-kv / ara-table. For asides:
+                    ara-callout (variants --info | --success | --warn |
+                    --danger). For status: ara-flag (--green|yellow|red).
+                  - Cite with <a href="..."> in prose. Use <sup><a class="ara-cite">N</a></sup>
+                    for numbered footnotes if you keep a references list.
                   - Aim for analytical depth: lede, key claims with evidence,
                     counter-takes, what to watch next, a links/sources block.
-                  - Use anchor tags with absolute URLs for citations.
             3. Use the Write tool to save the fragment to:
                   /tmp/gen-research-body.html
             4. Invoke the writer (Bash) to commit it into the repo. Pass the
@@ -315,17 +331,33 @@ jobs:
             PROCESS:
             1. Use WebSearch and WebFetch liberally. Verify claims against
                primary sources where possible. Note dates and provenance.
-            2. Draft a single <article> HTML fragment. Strict rules:
-                  - One outer <article>...</article>. No <head>, <body>,
-                    <script>, or <style>. No `style="..."` attributes. No
-                    `onclick=`/`onload=`/etc. No `javascript:` URLs.
-                  - Allowed inner tags: h2, h3, h4, p, ul, ol, li, em, strong,
-                    code, pre, blockquote, table/thead/tbody/tr/th/td, figure,
-                    figcaption, a, img, hr, br.
-                  - Open with an <h2> containing the human title.
+            2. Draft a single <article class="ara-doc"> HTML fragment using
+               the ARA component vocabulary. READ `COMPONENTS.md` at the
+               repo root before writing — it lists every allowed class.
+               Strict rules (the writer rejects violations):
+                  - Root must be <article class="ara-doc">.
+                  - Every `class=` token must start with `ara-`.
+                  - Allowed tags only: article, section, div, header, footer,
+                    h2, h3, h4, p, span, em, strong, code, mark, sup, sub,
+                    abbr, time, ul, ol, li, dl, dt, dd, a, img, figure,
+                    figcaption, table, thead, tbody, tr, th, td, blockquote,
+                    pre, br, hr.
+                  - No <h1>, <style>, <script>, <iframe>, <head>, <body>. No
+                    inline `style="..."`. No `onclick=`/`onload=`/etc. No
+                    `javascript:` URLs.
+                  - Open with <span class="ara-eyebrow"> + <h2 class="ara-display">
+                    containing the human title, then a <p class="ara-deck">
+                    one-line dek (optional) and a <p class="ara-lede"> opening
+                    paragraph.
+                  - Use <h3 class="ara-h2"> for sections (with optional
+                    <span class="ara-h2-num">01</span> chip).
+                  - For data: ara-stats / ara-kv / ara-table. For asides:
+                    ara-callout (variants --info | --success | --warn |
+                    --danger). For status: ara-flag (--green|yellow|red).
+                  - Cite with <a href="..."> in prose. Use <sup><a class="ara-cite">N</a></sup>
+                    for numbered footnotes if you keep a references list.
                   - Aim for analytical depth: lede, key claims with evidence,
                     counter-takes, what to watch next, a links/sources block.
-                  - Use anchor tags with absolute URLs for citations.
             3. Use the Write tool to save the fragment to:
                   /tmp/gen-research-body.html
             4. Invoke the writer (Bash) to commit it into the repo. Pass the
