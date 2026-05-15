@@ -772,6 +772,10 @@ mark {
   z-index: 100;
 }
 
+/* Floating TOC already shows section position on research articles.
+ * Hide the redundant right-edge nav, which also overlaps wide tables. */
+body.has-toc .section-nav { display: none; }
+
 .section-nav-btn {
   width: 40px;
   height: 40px;

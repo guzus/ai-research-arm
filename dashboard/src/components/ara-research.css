@@ -35,7 +35,8 @@
   letter-spacing: -0.005em;
 }
 
-/* Reading column — prose elements get a comfortable measure. */
+/* Reading column — prose flows in a 760px measure. Left-aligned so it
+ * shares a hard edge with the wide column below; no auto-margin stagger. */
 .ara-doc > .ara-eyebrow,
 .ara-doc > .ara-display,
 .ara-doc > .ara-deck,
@@ -46,19 +47,20 @@
 .ara-doc > dl,
 .ara-doc > blockquote,
 .ara-doc > pre,
-.ara-doc > .ara-h2,
 .ara-doc > .ara-h3,
 .ara-doc > .ara-h4,
 .ara-doc > .ara-callout,
-.ara-doc > .ara-divider,
 .ara-doc > .ara-section,
 .ara-doc > .ara-quote {
   max-width: 760px;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: auto;
 }
 
-/* Wider column — data viz can breathe. */
+/* Wide column — section breaks and data viz share the full content width
+ * so h2 rules visually span the section they separate. */
+.ara-doc > .ara-h2,
+.ara-doc > .ara-divider,
 .ara-doc > .ara-stats,
 .ara-doc > .ara-table,
 .ara-doc > .ara-bars,
@@ -67,7 +69,7 @@
 .ara-doc > .ara-timeline,
 .ara-doc > .ara-figure {
   max-width: 1120px;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: auto;
 }
 
