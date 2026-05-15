@@ -457,7 +457,7 @@ function setSafeContent(el: HTMLElement, rawHtml: string): void {
   const clean = DOMPurify.sanitize(rawHtml, {
     USE_PROFILES: { html: true, svg: true, svgFilters: true },
     ADD_TAGS: ['mark', 'article', 'figure', 'figcaption', 'iframe'],
-    ADD_ATTR: ['data-slug', 'sandbox', 'loading', 'allow'],
+    ADD_ATTR: ['data-slug', 'data-pct', 'sandbox', 'loading', 'allow'],
   });
   el.insertAdjacentHTML('beforeend', clean);
 }
@@ -957,6 +957,118 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
       '</div>',
     ].join('\n'),
   );
+
+  // After DOM is in place, apply data-pct viz fills and build the floating TOC.
+  const article = content.querySelector('article.ara-doc') as HTMLElement | null;
+  if (article) {
+    applyBarFills(article);
+    renderResearchTOC(article);
+  } else {
+    hideResearchTOC();
+  }
+}
+
+/** Read every `data-pct` and stamp `--ara-bar-pct: <n>%` on the element so
+ * the bar / stacked-segment CSS picks up the value. Avoids inline style=
+ * in authored articles. */
+function applyBarFills(root: HTMLElement): void {
+  const els = root.querySelectorAll<HTMLElement>('[data-pct]');
+  for (const el of els) {
+    const raw = el.dataset.pct;
+    if (!raw) continue;
+    const n = Number(raw);
+    if (!Number.isFinite(n)) continue;
+    const clamped = Math.max(0, Math.min(100, n));
+    el.style.setProperty('--ara-bar-pct', clamped + '%');
+  }
+}
+
+let tocScrollHandler: ((e: Event) => void) | null = null;
+
+function hideResearchTOC(): void {
+  const toc = document.getElementById('researchToc');
+  if (toc) toc.hidden = true;
+  if (tocScrollHandler) {
+    window.removeEventListener('scroll', tocScrollHandler);
+    tocScrollHandler = null;
+  }
+}
+
+function tocSlug(text: string): string {
+  return text.toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 48) || 'section';
+}
+
+/** Walk the article for `<h3 class="ara-h2">` (section heads) and
+ * `<h4 class="ara-h3">` (subsections), assign IDs if missing, and build
+ * a floating TOC in #researchToc. Sets up a passive scroll listener for
+ * active-section highlighting. Hides if fewer than three sections. */
+function renderResearchTOC(article: HTMLElement): void {
+  const toc = document.getElementById('researchToc');
+  const list = document.getElementById('researchTocList');
+  if (!toc || !list) return;
+
+  while (list.firstChild) list.removeChild(list.firstChild);
+
+  const heads = Array.from(
+    article.querySelectorAll<HTMLElement>(
+      'h2.ara-h2, h3.ara-h2, h4.ara-h2, h2.ara-h3, h3.ara-h3, h4.ara-h3',
+    ),
+  );
+  // Skip the article's display title — only section heads.
+  if (heads.length < 3) {
+    hideResearchTOC();
+    return;
+  }
+
+  const links: HTMLAnchorElement[] = [];
+  for (const h of heads) {
+    if (!h.id) {
+      const num = h.querySelector('.ara-h2-num');
+      const rawText = (h.textContent || '').replace(num?.textContent || '', '').trim();
+      h.id = tocSlug(rawText);
+    }
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.className = 'ara-toc-link';
+    a.href = '#' + h.id;
+    if (h.classList.contains('ara-h3')) li.style.paddingLeft = '14px';
+    const num = h.querySelector('.ara-h2-num');
+    const restText = (h.textContent || '').replace(num?.textContent || '', '').trim();
+    a.textContent = restText;
+    a.dataset.target = h.id;
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const t = document.getElementById(a.dataset.target!);
+      if (t) {
+        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', '#' + activeTab + '/' + (selectedSlug || ''));
+      }
+    });
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  }
+  toc.hidden = false;
+
+  // Scroll-spy: the last heading whose top is above an offset is "current".
+  if (tocScrollHandler) window.removeEventListener('scroll', tocScrollHandler);
+  const OFFSET = 120;
+  const onScroll = () => {
+    let activeIndex = 0;
+    for (let i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top - OFFSET < 0) activeIndex = i;
+      else break;
+    }
+    for (let i = 0; i < links.length; i++) {
+      links[i].classList.toggle('active', i === activeIndex);
+    }
+  };
+  tocScrollHandler = onScroll;
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 }
 
 function renderResearchStandalone(row: GenResearchRow): void {
@@ -992,6 +1104,10 @@ async function load(): Promise<void> {
   if (activeLoadController) activeLoadController.abort();
   const controller = new AbortController();
   activeLoadController = controller;
+
+  // Hide the floating TOC unconditionally; renderResearchDoc shows it
+  // again when it has enough sections to be useful.
+  hideResearchTOC();
 
   updateHash();
   showLoading();

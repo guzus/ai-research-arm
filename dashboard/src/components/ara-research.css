@@ -28,26 +28,30 @@
 .ara-doc {
   font-family: var(--font);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
 }
 
 .ara-doc p {
   font-family: var(--font-serif);
   font-size: 1.05rem;
-  line-height: 1.75;
-  margin: 0 0 14px;
+  line-height: 1.55;
+  margin: 0 0 18px;
   color: var(--text);
+  letter-spacing: -0.003em;
 }
 
 .ara-doc p:last-child { margin-bottom: 0; }
 
 .ara-doc a {
   color: var(--accent-warm);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
   font-weight: 500;
 }
 
-.ara-doc a:hover { text-decoration: underline; }
+.ara-doc a:hover { text-decoration-thickness: 2px; }
 
 .ara-doc strong { font-weight: 600; }
 .ara-doc em { color: var(--text-secondary); }
@@ -61,44 +65,47 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-tertiary);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .ara-display {
   font-family: var(--font);
-  font-size: 1.65rem;
+  font-size: 1.95rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
   color: var(--text);
-  margin: 0 0 10px;
+  margin: 0 0 14px;
 }
 
 .ara-deck {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-style: italic;
   color: var(--text-secondary);
-  line-height: 1.5;
-  margin: 0 0 24px;
+  line-height: 1.45;
+  margin: 0 0 28px;
+  letter-spacing: -0.005em;
 }
 
 .ara-lede {
   font-family: var(--font-serif);
   font-size: 1.15rem;
-  line-height: 1.7;
+  line-height: 1.55;
   color: var(--text);
-  margin: 0 0 20px;
+  margin: 0 0 22px;
+  letter-spacing: -0.005em;
 }
 
 .ara-h2 {
   font-family: var(--font);
-  font-size: 1.18rem;
+  font-size: 1.32rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--text);
-  margin: 32px 0 12px;
-  padding-top: 16px;
+  line-height: 1.25;
+  margin: 40px 0 14px;
+  padding-top: 20px;
   border-top: 1px solid var(--border-light);
 }
 
@@ -106,18 +113,19 @@
 
 .ara-h2-num {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--text-tertiary);
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
 .ara-h3 {
   font-family: var(--font);
-  font-size: 0.98rem;
-  font-weight: 650;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text);
-  margin: 22px 0 8px;
+  margin: 26px 0 8px;
 }
 
 .ara-h4 {
@@ -144,13 +152,14 @@
 .ara-doc ol {
   font-family: var(--font-serif);
   font-size: 1.05rem;
-  line-height: 1.75;
+  line-height: 1.55;
   padding-left: 24px;
   margin: 0 0 18px;
+  letter-spacing: -0.003em;
 }
 
 .ara-doc li {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   padding-left: 4px;
 }
 
@@ -446,4 +455,228 @@
   .ara-h2 { font-size: 1.08rem; padding-top: 14px; margin: 26px 0 10px; }
   .ara-stats { padding: 14px; gap: 12px; }
   .ara-stat-value { font-size: 1.35rem; }
+}
+
+/* ── Bars (single value with proportional fill) ──── */
+/* Value comes from data-pct on the .ara-bar; the dashboard JS reads it
+ * and sets --ara-bar-pct as a CSS var. Authors don't write inline style. */
+.ara-bar {
+  position: relative;
+  font-family: var(--font);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0 8px;
+  margin: 6px 0;
+  gap: 16px;
+}
+
+.ara-bar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--bg-secondary);
+  border-radius: 2px;
+}
+
+.ara-bar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--accent-warm);
+  width: var(--ara-bar-pct, 0%);
+  border-radius: 2px;
+  transition: width 0.5s ease-out;
+}
+
+.ara-bar-label {
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.ara-bar-value {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ara-bars {
+  margin: 18px 0;
+}
+
+/* ── Stacked bar (segmented proportional bar) ────── */
+.ara-stack-bar {
+  display: flex;
+  height: 22px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 14px 0 8px;
+  background: var(--bg-secondary);
+}
+
+.ara-stack-seg {
+  display: block;
+  height: 100%;
+  width: var(--ara-bar-pct, 0%);
+  transition: width 0.5s ease-out;
+}
+
+.ara-stack-seg--1 { background: var(--text); }
+.ara-stack-seg--2 { background: var(--text-secondary); }
+.ara-stack-seg--3 { background: var(--text-tertiary); }
+.ara-stack-seg--4 { background: var(--border); }
+
+.ara-stack-legend {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 18px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-family: var(--font);
+  font-size: 0.82rem;
+}
+
+.ara-stack-legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.ara-stack-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+.ara-stack-dot--1 { background: var(--text); }
+.ara-stack-dot--2 { background: var(--text-secondary); }
+.ara-stack-dot--3 { background: var(--text-tertiary); }
+.ara-stack-dot--4 { background: var(--border); }
+
+/* ── Timeline (vertical events) ──────────────────── */
+.ara-timeline {
+  list-style: none;
+  padding: 0 0 0 24px;
+  margin: 24px 0 24px 8px;
+  border-left: 2px solid var(--border-light);
+}
+
+.ara-timeline-item {
+  position: relative;
+  margin: 0 0 24px;
+  padding-left: 0;
+}
+
+.ara-timeline-item:last-child { margin-bottom: 0; }
+
+.ara-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -33px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  background: var(--text);
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+}
+
+.ara-timeline-date {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 4px;
+}
+
+.ara-timeline-event strong {
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.ara-timeline-event p {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ── Floating TOC for research docs ──────────────── */
+.ara-toc {
+  position: fixed;
+  left: 24px;
+  top: 140px;
+  width: 200px;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  font-family: var(--font);
+  z-index: 50;
+}
+
+.ara-toc-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin: 0 0 12px;
+}
+
+.ara-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid var(--border-light);
+}
+
+.ara-toc-list li { margin: 0; }
+
+.ara-toc-link {
+  display: block;
+  padding: 5px 0 5px 14px;
+  margin-left: -2px;
+  border-left: 2px solid transparent;
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  line-height: 1.35;
+  transition: color 0.15s, border-color 0.15s;
+  cursor: pointer;
+}
+
+.ara-toc-link:hover {
+  color: var(--text-secondary);
+}
+
+.ara-toc-link.active {
+  color: var(--text);
+  border-left-color: var(--accent-warm);
+  font-weight: 500;
+}
+
+/* Hide TOC on viewports without room for it next to the 1120px content */
+@media (max-width: 1400px) {
+  .ara-toc { display: none; }
 }

@@ -70,6 +70,27 @@ Anything else is rejected. No `<style>`, `<script>`, `<iframe>`, `<h1>` (the das
 | `ara-stat-note` | `<div class="ara-stat-note">` | Optional small caption (e.g. "+4.7% YoY"). |
 | `ara-table` | `<table class="ara-table">` | Comparison or ranked data. Use `<thead>` + `<tbody>`. |
 
+## Visualization
+
+Proportional fills are declared with `data-pct="N"` (integer 0–100). The dashboard reads the attribute at render time and stamps `--ara-bar-pct: N%` on the element so authors never write inline `style=`.
+
+| Class | Tag | When |
+|---|---|---|
+| `ara-bars` | `<div class="ara-bars">` wrapping multiple `ara-bar` | Group of comparable bars. Just provides spacing. |
+| `ara-bar` | `<div class="ara-bar" data-pct="62">` containing label + value | Single labeled bar with proportional fill. |
+| `ara-bar-label` | `<span class="ara-bar-label">` inside `ara-bar` | The category name. |
+| `ara-bar-value` | `<span class="ara-bar-value">` inside `ara-bar` | The raw number, mono tabular figures. |
+| `ara-stack-bar` | `<div class="ara-stack-bar">` containing `ara-stack-seg` spans | One horizontal bar split into categorical segments. |
+| `ara-stack-seg` | `<span class="ara-stack-seg ara-stack-seg--1" data-pct="40">` | One segment. Variants `--1` through `--4` give four neutral shades. |
+| `ara-stack-legend` | `<ul class="ara-stack-legend">` | Legend list below the stack-bar. |
+| `ara-stack-dot` | `<span class="ara-stack-dot ara-stack-dot--1">` inside legend `<li>` | Color swatch keyed to the matching segment. |
+| `ara-timeline` | `<ol class="ara-timeline">` containing `ara-timeline-item` | Vertical chronological log. |
+| `ara-timeline-item` | `<li class="ara-timeline-item">` | One event. |
+| `ara-timeline-date` | `<time class="ara-timeline-date">2024-01</time>` | Date or period label. |
+| `ara-timeline-event` | `<div class="ara-timeline-event">` containing `<strong>` headline + `<p>` body | Event content. |
+
+**Why no inline charts?** Arbitrary x/y line charts and donut charts would require either SVG (more attack surface) or an external library (more deps). When you genuinely need a chart, file an issue with a sample and we add a primitive.
+
 ## Inline
 
 | Class | Tag | When |

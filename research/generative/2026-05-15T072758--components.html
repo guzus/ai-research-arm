@@ -170,7 +170,71 @@
     Highlighted text: <mark class="ara-mark">key insight</mark> draws the eye.
   </p>
 
-  <h3 class="ara-h2"><span class="ara-h2-num">09</span>Code blocks</h3>
+  <h3 class="ara-h2"><span class="ara-h2-num">09</span>Bars — single-value comparison</h3>
+
+  <p>For when "<code>$520M</code>" in a stat block isn't enough — you want the reader to <em>see</em> the proportion. Each <code>ara-bar</code> declares its fill via <code>data-pct</code>; the dashboard sets the CSS variable at render time so authors don't touch inline style.</p>
+
+  <div class="ara-bars">
+    <div class="ara-bar" data-pct="62">
+      <span class="ara-bar-label">Security</span>
+      <span class="ara-bar-value">$520M · 62%</span>
+    </div>
+    <div class="ara-bar" data-pct="45">
+      <span class="ara-bar-label">Delivery</span>
+      <span class="ara-bar-value">$380M · 45%</span>
+    </div>
+    <div class="ara-bar" data-pct="22">
+      <span class="ara-bar-label">Compute</span>
+      <span class="ara-bar-value">$180M · 22%</span>
+    </div>
+  </div>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">10</span>Stacked bar — segmented proportions</h3>
+
+  <p>One horizontal bar split by category, with a legend underneath. Four neutral fill shades (<code>ara-stack-seg--1</code> through <code>--4</code>) keep it monochromatic.</p>
+
+  <div class="ara-stack-bar">
+    <span class="ara-stack-seg ara-stack-seg--1" data-pct="42"></span>
+    <span class="ara-stack-seg ara-stack-seg--2" data-pct="28"></span>
+    <span class="ara-stack-seg ara-stack-seg--3" data-pct="18"></span>
+    <span class="ara-stack-seg ara-stack-seg--4" data-pct="12"></span>
+  </div>
+  <ul class="ara-stack-legend">
+    <li><span class="ara-stack-dot ara-stack-dot--1"></span>Security 42%</li>
+    <li><span class="ara-stack-dot ara-stack-dot--2"></span>Delivery 28%</li>
+    <li><span class="ara-stack-dot ara-stack-dot--3"></span>Compute 18%</li>
+    <li><span class="ara-stack-dot ara-stack-dot--4"></span>Other 12%</li>
+  </ul>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">11</span>Timeline — vertical event log</h3>
+
+  <p>For chronological lists where dates carry semantic weight. Use it for funding rounds, product launches, incident timelines, governance events.</p>
+
+  <ol class="ara-timeline">
+    <li class="ara-timeline-item">
+      <time class="ara-timeline-date">2024-01</time>
+      <div class="ara-timeline-event">
+        <strong>Series B raised</strong>
+        <p>$150M at a $1.2B valuation, led by Lightspeed.</p>
+      </div>
+    </li>
+    <li class="ara-timeline-item">
+      <time class="ara-timeline-date">2024-06</time>
+      <div class="ara-timeline-event">
+        <strong>Product launch</strong>
+        <p>Enterprise tier opened to design partners.</p>
+      </div>
+    </li>
+    <li class="ara-timeline-item">
+      <time class="ara-timeline-date">2025-02</time>
+      <div class="ara-timeline-event">
+        <strong>First major outage</strong>
+        <p>Three-hour edge-cache invalidation hit ~30% of customers.</p>
+      </div>
+    </li>
+  </ol>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">12</span>Code blocks</h3>
 
   <p>Inline <code>code</code> and fenced blocks:</p>
 
@@ -178,7 +242,7 @@
     # Every class must start with ara-
     return all(c.startswith("ara-") for c in classes_in(article))</code></pre>
 
-  <h3 class="ara-h2"><span class="ara-h2-num">10</span>What's NOT here</h3>
+  <h3 class="ara-h2"><span class="ara-h2-num">13</span>What's NOT here</h3>
 
   <p>Components that don't exist by design:</p>
 
