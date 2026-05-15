@@ -109,12 +109,12 @@
 
 .ara-display {
   font-family: var(--font);
-  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  font-size: clamp(1.95rem, 3vw, 2.7rem);
   font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
   color: var(--text);
-  margin: 0 0 18px;
+  margin: 0 0 16px;
 }
 
 .ara-deck {
@@ -138,14 +138,14 @@
 
 .ara-h2 {
   font-family: var(--font);
-  font-size: clamp(1.4rem, 1.6vw, 1.65rem);
+  font-size: clamp(1.32rem, 1.5vw, 1.55rem);
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.022em;
   color: var(--text);
   line-height: 1.2;
-  margin: 56px 0 16px;
-  padding-top: 28px;
-  border-top: 1px solid var(--text);
+  margin: 44px 0 14px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
 }
 
 .ara-h2:first-child { padding-top: 0; border-top: none; margin-top: 0; }
@@ -715,7 +715,9 @@
   font-weight: 500;
 }
 
-/* Hide TOC on viewports without room for it next to the 1120px content */
-@media (max-width: 1400px) {
+/* Hide TOC on viewports without room. style.css adds 280px of left
+ * padding to .app when body.has-toc, so 1280px is the minimum that
+ * still leaves real content width after the shift. */
+@media (max-width: 1279px) {
   .ara-toc { display: none; }
 }

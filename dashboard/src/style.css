@@ -76,18 +76,34 @@ body {
 
 /* ── Layout ────────────────────────────────────────── */
 /* No outer max-width — the app spans the viewport edge to edge.
- * Inside, .md-content and .ara-doc impose their own reading measure
- * (~760px) so prose stays legible on ultrawide displays while title
- * blocks, tables, and stats can breathe wider. */
+ * Header and content-cards have their own (wider) bounds so they
+ * don't sprawl across 4K displays; prose inside gets its own
+ * reading measure via .md-content and .ara-doc. */
 .app {
   max-width: none;
   margin: 0;
   padding: 40px clamp(24px, 5vw, 96px) 80px;
 }
 
+/* Keep the masthead from spreading on wide displays — brand and
+ * GitHub link should sit close enough to feel like one block. */
+.header {
+  max-width: 1280px;
+  margin: 0 auto 32px;
+}
+
+/* Card chrome doesn't follow the viewport on ultra-wide displays.
+ * Without this cap the card border encloses huge empty halls
+ * around the prose that's pinned at 760px. */
+.content-card {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* When the floating TOC is visible (set by JS in renderResearchTOC),
  * push the app contents right so they don't sit under the TOC. */
-@media (min-width: 1400px) {
+@media (min-width: 1280px) {
   body.has-toc .app { padding-left: 280px; }
 }
 
@@ -97,6 +113,13 @@ body {
   max-width: 760px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Hide the duplicate card-header title for research docs — the
+ * article body's own .ara-display now serves as the canonical
+ * title. The meta strip (back button, model, time) stays. */
+.gen-research-doc > .content-card-header {
+  display: none;
 }
 
 /* ── Header ────────────────────────────────────────── */
