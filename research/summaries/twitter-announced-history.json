@@ -4698,5 +4698,40 @@
     "headline": "CEREBRAS CLOSES NASDAQ DEBUT UP ~68% AT A ~$95-100B VALUATION \u2014 TWO CO-FOUNDERS NOW BILLIONAIRES",
     "source": "@ainews_24_7",
     "url": "https://x.com/ainews_24_7/status/2055036491907108937"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-15 01:09 UTC",
+    "headline": "ANTHROPIC STATUS PAGE CONFIRMS CLAUDE API + CLAUDE CODE PARTIAL OUTAGE \u2014 ELEVATED ERROR RATES AT 01:06 UTC",
+    "source": "status.anthropic.com",
+    "url": "https://status.anthropic.com"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-15 01:09 UTC",
+    "headline": "ANTHROPIC PUBLISHES US-CHINA AI-COMPETITION POLICY PAPER DURING TRUMP-XI SUMMIT, BREAKING ~48H CORP-CHANNEL SILENCE",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-15 01:09 UTC",
+    "headline": "OPENAI WEIGHING LEGAL CHALLENGE AGAINST APPLE OVER UNDERPERFORMING PARTNERSHIP \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2055023348489289978"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-15 01:09 UTC",
+    "headline": "OPENAI SHIPS CODEX IN THE CHATGPT MOBILE APP \u2014 PREVIEW ON IOS AND ANDROID, ALL REGIONS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2055016850849993072"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-15 01:09 UTC",
+    "headline": "XAI CO-FOUNDER IGOR BABUSCHKIN IN TALKS TO RAISE UP TO $1B AT $5B VALUATION FOR NEW AI RESEARCH STARTUP \u2014 FORBES",
+    "source": "@Techmeme",
+    "url": "https://x.com/Techmeme/status/2055089731520847885"
   }
 ]
