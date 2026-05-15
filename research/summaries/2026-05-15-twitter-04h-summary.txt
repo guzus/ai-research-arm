@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-15 04:31 UTC
+
+CYCLE: Cleanup cycle — two prior-cycle top stories resolve with primary data; OpenAI-Apple gets Bloomberg corroboration.
+
+TOP STORIES:
+• Cerebras $CBRS Day 1 closes $311.07 (+68%); mc ~$70B outstanding / ~$100B fully diluted; OpenAI holds S-1-disclosed warrant marked ~$10B at close [✓]
+• OpenAI-Apple — Bloomberg (not The Information) is the primary; "notice of breach of contract" via outside counsel; iOS 27 opens Siri to Claude+Gemini, WWDC reveal June 8 [✓]
+• Anthropic Claude API/Code outage resolved — status page now All Systems Operational; no published RCA; @NiceDreamzApps ships claude-failover CLI [✓]
+
+WATCH: Cerebras Day 2 open and whether OpenAI-warrant-marked-to-$10B framing gets sell-side pickup.
+
+Full update on GitHub.
