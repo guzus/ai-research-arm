@@ -9,22 +9,22 @@
 
 :root {
   color-scheme: light dark;
-  --bg: #fffef9;
-  --bg-secondary: #faf8f2;
-  --bg-hover: #f5f3eb;
-  --border: #e8e4d9;
-  --border-light: #f0ece3;
-  --text: #2c2a1e;
-  --text-secondary: #6b6752;
-  --text-tertiary: #9c977f;
-  --accent: #111827;
+  --bg: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-hover: #ededed;
+  --border: #e5e5e5;
+  --border-light: #ededed;
+  --text: #171717;
+  --text-secondary: #525252;
+  --text-tertiary: #a3a3a3;
+  --accent: #171717;
   --on-accent: #ffffff;
-  --accent-light: #f5f3eb;
-  --accent-warm: #996633;
-  --accent-warm-bg: rgba(153,102,51,0.10);
-  --accent-warm-shadow: rgba(153,102,51,0.18);
-  --mark-bg: #f5e6c8;
-  --mark-fg: inherit;
+  --accent-light: #ededed;
+  --accent-warm: #1f2937;
+  --accent-warm-bg: rgba(31,41,55,0.06);
+  --accent-warm-shadow: rgba(31,41,55,0.14);
+  --mark-bg: #fde68a;
+  --mark-fg: #171717;
   --radius: 12px;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
   --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
@@ -36,22 +36,22 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1a1814;
-    --bg-secondary: #14120e;
-    --bg-hover: #25221c;
-    --border: #2e2a23;
-    --border-light: #252118;
-    --text: #ece8db;
-    --text-secondary: #b8b39a;
-    --text-tertiary: #6b6752;
-    --accent: #f0ece0;
-    --on-accent: #14120e;
-    --accent-light: #25221c;
-    --accent-warm: #d4a672;
-    --accent-warm-bg: rgba(212,166,114,0.14);
-    --accent-warm-shadow: rgba(212,166,114,0.22);
-    --mark-bg: #c4a060;
-    --mark-fg: #14120e;
+    --bg: #0a0a0a;
+    --bg-secondary: #171717;
+    --bg-hover: #262626;
+    --border: #404040;
+    --border-light: #2e2e2e;
+    --text: #fafafa;
+    --text-secondary: #a3a3a3;
+    --text-tertiary: #737373;
+    --accent: #fafafa;
+    --on-accent: #0a0a0a;
+    --accent-light: #262626;
+    --accent-warm: #cbd5e1;
+    --accent-warm-bg: rgba(203,213,225,0.10);
+    --accent-warm-shadow: rgba(203,213,225,0.18);
+    --mark-bg: #facc15;
+    --mark-fg: #0a0a0a;
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
     --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
     --shadow-lg: 0 8px 30px rgba(0,0,0,0.6);
