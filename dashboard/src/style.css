@@ -1305,3 +1305,31 @@ body.tab-research #calendar {
     line-height: 1.75;
   }
 }
+
+/* Standalone research docs render as a sandboxed iframe (their own styling). */
+.gen-research-standalone .content-card-body { display: none; }
+.gen-research-iframe {
+  width: 100%;
+  min-height: 85vh;
+  border: 0;
+  background: var(--background, #fafbfc);
+  display: block;
+}
+.gen-research-fullscreen {
+  margin-left: auto;
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  border: 1px solid var(--border-light);
+  padding: 3px 10px;
+  border-radius: 12px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.gen-research-fullscreen:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong, var(--border-light));
+}
+@media (max-width: 640px) {
+  .gen-research-iframe { min-height: 75vh; }
+  .gen-research-fullscreen { margin-left: 0; }
+}

@@ -26,10 +26,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 MAX_BODY_BYTES = 200_000
+MAX_STANDALONE_BYTES = 2_000_000
 SLUG_MAX = 60
+KIND_FRAGMENT = "fragment"
+KIND_STANDALONE = "standalone"
+KINDS = (KIND_FRAGMENT, KIND_STANDALONE)
 DISALLOWED_PATTERNS = [
     re.compile(r"<script\b", re.IGNORECASE),
     re.compile(r"<style\b", re.IGNORECASE),
+    re.compile(r"<iframe\b", re.IGNORECASE),
     re.compile(r"\sstyle\s*=", re.IGNORECASE),
     re.compile(r"\son\w+\s*=", re.IGNORECASE),  # onclick=, onload=, etc.
     re.compile(r"javascript:", re.IGNORECASE),
@@ -37,6 +42,8 @@ DISALLOWED_PATTERNS = [
 ARTICLE_OPEN = re.compile(r"<article\b[^>]*>", re.IGNORECASE)
 ARTICLE_CLOSE = re.compile(r"</article\s*>", re.IGNORECASE)
 H2_TEXT = re.compile(r"<h2\b[^>]*>(.*?)</h2>", re.IGNORECASE | re.DOTALL)
+HTML_TITLE = re.compile(r"<title\b[^>]*>(.*?)</title>", re.IGNORECASE | re.DOTALL)
+H1_TEXT = re.compile(r"<h1\b[^>]*>(.*?)</h1>", re.IGNORECASE | re.DOTALL)
 TAG_STRIP = re.compile(r"<[^>]+>")
 
 
@@ -55,25 +62,43 @@ def read_body(source: str) -> str:
     return Path(source).read_text(encoding="utf-8")
 
 
-def validate_body(body: str) -> None:
-    if len(body.encode("utf-8")) > MAX_BODY_BYTES:
-        raise ValueError(f"body exceeds {MAX_BODY_BYTES} bytes")
-    if not ARTICLE_OPEN.search(body):
-        raise ValueError("body must contain an opening <article> tag")
-    if not ARTICLE_CLOSE.search(body):
-        raise ValueError("body must contain a closing </article> tag")
-    for pat in DISALLOWED_PATTERNS:
-        m = pat.search(body)
+def validate_body(body: str, kind: str) -> None:
+    if kind == KIND_FRAGMENT:
+        if len(body.encode("utf-8")) > MAX_BODY_BYTES:
+            raise ValueError(f"fragment body exceeds {MAX_BODY_BYTES} bytes")
+        if not ARTICLE_OPEN.search(body):
+            raise ValueError("fragment body must contain an opening <article> tag")
+        if not ARTICLE_CLOSE.search(body):
+            raise ValueError("fragment body must contain a closing </article> tag")
+        for pat in DISALLOWED_PATTERNS:
+            m = pat.search(body)
+            if m:
+                raise ValueError(f"fragment body contains disallowed pattern: {m.group(0)!r}")
+    elif kind == KIND_STANDALONE:
+        # Standalone docs are full HTML pages rendered inside a sandboxed
+        # iframe. The sandbox is the security boundary, not regex on the body.
+        if len(body.encode("utf-8")) > MAX_STANDALONE_BYTES:
+            raise ValueError(f"standalone body exceeds {MAX_STANDALONE_BYTES} bytes")
+        if "<html" not in body.lower() and "<!doctype" not in body.lower():
+            raise ValueError("standalone body should start with <!doctype html> or <html>")
+    else:
+        raise ValueError(f"unknown kind: {kind!r}")
+
+
+def derive_title(body: str, kind: str, fallback: str) -> str:
+    if kind == KIND_STANDALONE:
+        for pat in (HTML_TITLE, H1_TEXT, H2_TEXT):
+            m = pat.search(body)
+            if m:
+                text = TAG_STRIP.sub("", m.group(1)).strip()
+                if text:
+                    return text
+    else:
+        m = H2_TEXT.search(body)
         if m:
-            raise ValueError(f"body contains disallowed pattern: {m.group(0)!r}")
-
-
-def derive_title(body: str, fallback: str) -> str:
-    m = H2_TEXT.search(body)
-    if m:
-        text = TAG_STRIP.sub("", m.group(1)).strip()
-        if text:
-            return text
+            text = TAG_STRIP.sub("", m.group(1)).strip()
+            if text:
+                return text
     return fallback.strip() or "Untitled"
 
 
@@ -128,7 +153,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--slug", default=None, help="url slug; falls back to slugify(topic)")
     p.add_argument("--prompt", default=None, help="original user prompt (stored in index)")
     p.add_argument("--tags", default="", help="comma-separated tags")
-    p.add_argument("--source", default="local", help="trigger source: local, workflow_dispatch, issue")
+    p.add_argument("--source", default="local", help="trigger source: local, workflow_dispatch, issue, import")
+    p.add_argument(
+        "--kind",
+        default=KIND_FRAGMENT,
+        choices=KINDS,
+        help=(
+            "fragment (default) = single <article> rendered with dashboard styles; "
+            "standalone = full HTML page rendered inside a sandboxed iframe"
+        ),
+    )
     p.add_argument("--no-commit", action="store_true", help="skip git commit")
     p.add_argument(
         "--repo-root",
@@ -143,11 +177,11 @@ def main(argv: list[str] | None = None) -> int:
         raise SystemExit(f"missing dir: {gen_dir}")
 
     body = read_body(args.html_body)
-    validate_body(body)
+    validate_body(body, args.kind)
     if not body.endswith("\n"):
         body += "\n"
 
-    title = (args.title or derive_title(body, args.topic)).strip()
+    title = (args.title or derive_title(body, args.kind, args.topic)).strip()
     base_slug = (args.slug or slugify(args.topic)).strip("-") or "untitled"
     tags = [t.strip() for t in args.tags.split(",") if t.strip()]
     now = datetime.now(timezone.utc).replace(microsecond=0)
@@ -173,6 +207,7 @@ def main(argv: list[str] | None = None) -> int:
     row = {
         "slug": slug,
         "file": filename,
+        "kind": args.kind,
         "title": title,
         "model": args.model,
         "created_at": iso,

@@ -78,9 +78,11 @@ function timeAgo(date: Date): string {
 // ── State ─────────────────────────────────────────────
 type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research';
 type DateTab = Exclude<Tab, 'research'>;
+type GenResearchKind = 'fragment' | 'standalone';
 type GenResearchRow = {
   slug: string;
   file: string;
+  kind?: GenResearchKind;  // optional for back-compat; undefined = fragment
   title: string;
   model: string;
   created_at: string;
@@ -445,13 +447,17 @@ function escapeHtml(str: string): string {
   return div.innerHTML;
 }
 
-/** Safely set element content using DOMPurify + insertAdjacentHTML */
+/** Safely set element content using DOMPurify + insertAdjacentHTML.
+ * `iframe` is allowed only with sandbox/src/loading/title attributes; we
+ * use it for standalone research docs whose styling/scripts are isolated
+ * inside a sandboxed iframe. Fragments cannot embed iframes — the writer's
+ * deny list rejects <iframe in fragment bodies before they reach here. */
 function setSafeContent(el: HTMLElement, rawHtml: string): void {
   while (el.firstChild) el.removeChild(el.firstChild);
   const clean = DOMPurify.sanitize(rawHtml, {
     USE_PROFILES: { html: true, svg: true, svgFilters: true },
-    ADD_TAGS: ['mark', 'article', 'figure', 'figcaption'],
-    ADD_ATTR: ['data-slug'],
+    ADD_TAGS: ['mark', 'article', 'figure', 'figcaption', 'iframe'],
+    ADD_ATTR: ['data-slug', 'sandbox', 'loading', 'allow'],
   });
   el.insertAdjacentHTML('beforeend', clean);
 }
@@ -945,6 +951,32 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
   );
 }
 
+function renderResearchStandalone(row: GenResearchRow): void {
+  const created = new Date(row.created_at);
+  const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
+  const src = `${DATA_BASE}/generative/${row.file}`;
+  // Iframe sandbox: `allow-scripts` lets the report's own TOC/scroll-spy
+  // run, but WITHOUT `allow-same-origin` the script runs in a null origin
+  // and cannot read parent state, cookies, or make same-origin requests.
+  setSafeContent(
+    content,
+    [
+      '<div class="content-card gen-research-doc gen-research-standalone">',
+      '  <div class="content-card-header">',
+      '    <div class="content-card-title">' + escapeHtml(row.title) + '</div>',
+      '  </div>',
+      '  <div class="gen-research-doc-meta">',
+      '    <button class="gen-research-back" data-research-back>&lsaquo; All articles</button>',
+      '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
+      rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
+      '    <a class="gen-research-fullscreen" href="' + escapeHtml(src) + '" target="_blank" rel="noopener noreferrer">Open full ↗</a>',
+      '  </div>',
+      '  <iframe class="gen-research-iframe" src="' + escapeHtml(src) + '" sandbox="allow-scripts" loading="lazy" title="' + escapeHtml(row.title) + '"></iframe>',
+      '</div>',
+    ].join('\n'),
+  );
+}
+
 // ── Main load ─────────────────────────────────────────
 async function load(): Promise<void> {
   const dateStr = fmtDate(currentDate);
@@ -969,6 +1001,10 @@ async function load(): Promise<void> {
         const row = findResearchRow(selectedSlug);
         if (!row) {
           showEmpty(dateStr);
+        } else if (row.kind === 'standalone') {
+          // Standalone docs render as an iframe; no body fetch needed.
+          researchDocCache = null;
+          renderResearchStandalone(row);
         } else if (researchDocCache && researchDocCache.slug === selectedSlug) {
           renderResearchDoc(row, researchDocCache.body);
         } else {
