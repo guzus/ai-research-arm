@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-16 15:31 UTC
+
+CYCLE: Malta-OpenAI deal upgraded to Reuters-confirmed; GPT-5.6-next-week rumor lands ahead of Google I/O; Apple-OpenAI feud frame solidifies via The Information.
+
+TOP STORIES:
+• Reuters confirms OpenAI-Malta national ChatGPT Plus deal at 14:45 UTC — prior cycle's aggregator-only story converts to tier-1 wire primary; @OpenAI / @sama STILL silent ~50min post-wire [✓]
+• @iruletheworldmo: "hearing 5.6 drops next week and is a huge leap" — single-source GPT-5.6 rumor from known-correct AI leaker (Mythos-Preview access verified), lands into Google I/O week [⚠]
+• @theinformation Saturday slate aligns Apple-vs-OpenAI frame: Apple weighing agents in iWork (Exclusive), Cerebras richer-than-NVDA on sales-multiple, Matt Rogers on OpenAI-must-build-the-phone, "OpenAI feuding with Apple" lede [✓]
+
+WATCH: First @OpenAI / @sama / @AbelaRobert post on Malta deal; whether OpenAI ships a 5.6 release Monday May 18-Wed May 20 confirming the iruletheworldmo rumor.
+
+Full update on GitHub.
