@@ -5041,5 +5041,47 @@
     "headline": "THE INFORMATION VIDEO: SPACEXAI EXODUS 50+ \u2014 'ELON IS DOING A VERSION OF DOGE TO HIS OWN COMPANY'",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2055383136561697200"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-16 01:04 UTC",
+    "headline": "OPENAI CODEX TECH LEAD: \"FOUND AND FIXED TWO ISSUES\" BEHIND ~48H GPT-5.5 DEGRADATION; USAGE LIMITS RESET TONIGHT",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2055446089957036402"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-16 01:04 UTC",
+    "headline": "ALTMAN'S \"USER GOT USED TO THE MAGIC\" GPT-5.5 FRAMING SUPERSEDED 6H LATER BY CODEX TEAM'S SERVER-SIDE FIX",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2055356452286640630"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-16 01:04 UTC",
+    "headline": "NVIDIA CONFIRMS NEMOTRON 3 ULTRA (~500B) PRETRAINED NATIVELY IN NVFP4 4-BIT; SUPER 120B/25T TOKENS ALSO NVFP4",
+    "source": "@ctnzr",
+    "url": "https://x.com/ctnzr/status/2055393135971492034"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-16 01:04 UTC",
+    "headline": "CLAUDEDEVS \"HAPPY FRIDAY\" RATE-LIMIT RESET CROSSES 20K LIKES / 1K RT \u2014 ANTHROPIC'S MOST-ENGAGED POST OF THE WEEK",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2055347539923308703"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-16 01:04 UTC",
+    "headline": "SEMIANALYSIS PUBLISHES DEEP-DIVE ON DEEPSEEK V4 MEGAMOE \u2014 1,400-LINE FUSED CUDA KERNEL FOR ENTIRE MoE FORWARD PASS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2055423177841353184"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-16 01:04 UTC",
+    "headline": "TESTINGCATALOG: OPENAI WORKING ON \"LOCKED USE\" SETTING FOR CODEX \u2014 LET CODEX RUN ON YOUR MAC WHILE IT IS LOCKED",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2055438359594447330"
   }
 ]
