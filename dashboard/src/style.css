@@ -1071,6 +1071,50 @@ body.has-toc .section-nav { display: none; }
   display: block;
 }
 
+/* ── Today layout (digest + front page side-by-side) ───
+ * The front page sits in the left column on desktop and
+ * stays sticky so it remains in view while the reader
+ * scrolls the digest cards on the right. Under 900px the
+ * grid collapses to a single column with the front page
+ * on top (visual lead) followed by the digest. */
+.today-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.today-layout-frontpage {
+  position: sticky;
+  top: 16px;
+}
+
+.today-layout-frontpage .frontpage-card {
+  max-width: none;
+  margin: 0;
+}
+
+.today-layout-digest {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.today-layout-digest > .content-card {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .today-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .today-layout-frontpage {
+    position: static;
+  }
+}
+
 /* ── Generative Research ────────────────────────────── */
 body.tab-research #calendar {
   display: none;

@@ -834,8 +834,10 @@ function renderFrontPage(imageUrl: string, fallbackDate: string | null): void {
   );
 }
 
-/** Render the daily digest. Treats Executive Summary specially as a TL;DR block. */
-function renderToday(md: string): void {
+/** Render the daily digest. Treats Executive Summary specially as a TL;DR block.
+ * When `frontPage` is supplied the layout splits into two desktop columns: front
+ * page on the left, digest cards on the right. Stacks under ~900px. */
+function renderToday(md: string, frontPage: { url: string; fallback: string | null } | null = null): void {
   const sections = splitSections(md);
 
   // Digest files often start with `# AI Daily Digest - <date>` before the
@@ -923,7 +925,34 @@ function renderToday(md: string): void {
     }
   }
 
-  setSafeContent(content, cards.join('\n'));
+  const todayCards = cards.join('\n');
+  if (frontPage) {
+    const noteHtml = frontPage.fallback
+      ? '  <div class="frontpage-fallback-note">Today’s front page auto-generates at 00:30 UTC. Showing ' + escapeHtml(frontPage.fallback) + ' instead.</div>'
+      : '';
+    const fpCard = [
+      '<div class="content-card frontpage-card today-frontpage-card">',
+      '  <div class="content-card-header">',
+      '    <div class="content-card-title">THE AI INTELLIGENCER — ' + escapeHtml(displayDate(currentDate)) + '</div>',
+      '  </div>',
+      noteHtml,
+      '  <div class="content-card-body frontpage-body">',
+      '    <img class="frontpage-img" src="' + escapeHtml(frontPage.url) + '" alt="Front Page" />',
+      '  </div>',
+      '</div>',
+    ].join('\n');
+    setSafeContent(
+      content,
+      [
+        '<div class="today-layout">',
+        '  <div class="today-layout-frontpage">' + fpCard + '</div>',
+        '  <div class="today-layout-digest">' + todayCards + '</div>',
+        '</div>',
+      ].join('\n'),
+    );
+    return;
+  }
+  setSafeContent(content, todayCards);
 }
 
 // ── Generative research ───────────────────────────────
@@ -1712,19 +1741,37 @@ async function load(): Promise<void> {
         showEmpty(dateStr);
       }
     } else if (activeTab === 'today') {
-      const result = await withTimeout(fetchDigest(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
+      // Fetch digest + front page in parallel — the front page goes
+      // into the left column of the two-column today layout on desktop.
+      const [digestResult, fpResult] = await Promise.all([
+        withTimeout(fetchDigest(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller),
+        fetchFrontPage(dateStr, controller.signal),
+      ]);
       if (requestId !== loadRequestId) return;
-      if (result === 'timeout') {
+      // Resolve which front-page URL to pass (today's, or the most-recent fallback).
+      let frontPage: { url: string; fallback: string | null } | null = null;
+      if (fpResult) {
+        frontPage = { url: fpResult, fallback: null };
+      } else {
+        const fp = findMostRecentAvailable('frontpage', dateStr);
+        if (fp && fp !== dateStr) {
+          frontPage = {
+            url: `${DATA_BASE}/front-page/${fp}-front-page.png`,
+            fallback: fp,
+          };
+        }
+      }
+      if (digestResult === 'timeout') {
         showError('Loading timed out', 'Network may be slow. Click to retry.');
-      } else if (result) {
-        renderToday(result);
+      } else if (digestResult) {
+        renderToday(digestResult, frontPage);
       } else {
         // Digest missing — fall back to most recent
         const fallback = findMostRecentAvailable('today', dateStr);
         if (fallback && fallback !== dateStr) {
           const fallbackMd = await fetchDigest(fallback, controller.signal);
           if (fallbackMd) {
-            renderToday(fallbackMd);
+            renderToday(fallbackMd, frontPage);
             // Tweak the lead card with a fallback note
             const lead = content.querySelector('.today-card .content-card-title');
             if (lead) {
