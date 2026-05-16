@@ -59,5 +59,16 @@
       "security",
       "strategic-brief"
     ]
+  },
+  {
+    "slug": "research-situational-awareness-lp",
+    "file": "2026-05-16T022449--research-situational-awareness-lp.html",
+    "kind": "fragment",
+    "title": "Situational Awareness LP: when the AGI manifesto came with a brokerage account",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T02:24:49Z",
+    "source": "issue",
+    "prompt": "[Research] Situational Awareness LP",
+    "tags": []
   }
 ]
