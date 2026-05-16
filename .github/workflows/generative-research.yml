@@ -47,13 +47,21 @@ on:
         required: false
         type: string
 
-# Serialise runs. index.json is a shared mutable JSON array, so two concurrent
-# runs would both append, race on push, and likely lose one article. We
-# explicitly DO NOT cancel in-progress runs — each one is user-requested work
-# that must not be silently dropped (unlike the scheduled writers, which can
-# safely cancel because they re-run on their cron tick).
+# Per-topic concurrency. Each unique topic gets its own group so a new
+# dispatch for a DIFFERENT topic does not cancel a pending run for some
+# other topic. GitHub Actions only keeps ONE pending run per concurrency
+# group — using a global `generative-research` group would mean every
+# new dispatch silently bumps the queue and erases ~30 min of work.
+#
+# Re-dispatching the SAME topic still collapses to one pending run
+# (intentional dedup — usually a duplicate click).
+#
+# Concurrent in-progress runs are now safe at the data layer: the Push
+# step does a union-by-slug merge on research/generative/index.json
+# inside a 5-attempt retry loop, so two writers landing simultaneously
+# no longer race on the shared JSON array.
 concurrency:
-  group: generative-research
+  group: generative-research-${{ github.event.inputs.topic || github.event.issue.number || github.run_id }}
   cancel-in-progress: false
 
 jobs:
