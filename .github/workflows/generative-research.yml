@@ -236,6 +236,17 @@ jobs:
               || echo "WARN: pip install yfinance failed; stock_prices.py will fall back to urllib/stooq" >&2
           fi
           python3 -c "import yfinance; print('yfinance:', yfinance.__version__)" 2>&1 || true
+          # PyYAML for scripts/compile_ara.py (the .ara.md frontmatter +
+          # block-body parser). Without it the compiler can't run and the
+          # writer falls back to its raw-HTML path, which means
+          # section-writer agents must hand-write HTML — the whole point
+          # of the DSL is undone. Hard-fail if install fails.
+          if ! python3 -c "import yaml" 2>/dev/null; then
+            echo "Installing PyYAML"
+            python3 -m pip install --quiet --user --upgrade pyyaml \
+              || { echo "ERROR: pip install pyyaml failed; compile_ara cannot run"; exit 1; }
+          fi
+          python3 -c "import yaml; print('yaml:', yaml.__version__)" 2>&1 || true
 
       # Snapshot HEAD before the model runs so we can later identify the file
       # THIS run produced (rather than guessing by `ls -t`, which would point
@@ -329,28 +340,29 @@ jobs:
                 announcements, IR posts cross-posted to X, etc.).
               - `python3 scripts/stock_prices.py <ticker[,ticker...]>
                 --range 1y --interval 1mo --format kv` — fetches
-                close-price time series from Yahoo Finance (no key,
-                public endpoint). Output is plain text designed to be
-                pasted DIRECTLY into `ara-line-chart` data attributes
-                (or use `--format html` to get a ready-made
-                `<div class="ara-line-chart" ...>` element). Use for
-                any equity-bearing topic (company profile, IPO
-                follow-up, basket comparison). Ranges: 1d 5d 1mo
-                3mo 6mo 1y 2y 5y 10y ytd max. Intervals: 1d 1wk 1mo etc.
-                Up to 4 tickers per chart. Falls back gracefully:
-                exit 1 prints the error to stderr, your section keeps
-                going without the chart.
+                close-price time series from Yahoo Finance (yfinance
+                handles auth; no API key). Output is plain text
+                designed to paste DIRECTLY into a :::line-chart
+                directive: copy the `ticker_X:` rows into the body of
+                a `:::line-chart(title=..., y-unit=$)` block (the
+                tool's stdout shows the exact format). Ranges:
+                1d 5d 1mo 3mo 6mo 1y 2y 5y 10y ytd max. Intervals:
+                1d 1wk 1mo etc. Up to 4 tickers per chart. Falls back
+                gracefully: exit 1 prints the error to stderr, your
+                section keeps going without the chart.
               - `python3 scripts/check_generative_research.py
-                /tmp/gen-research-body.html` — COMPILE-CHECK the
-                article body before commit. Runs the same validation
-                rules the writer enforces (tag allowlist, ara-* class
-                exact-match against COMPONENTS.md, size cap, etc.) and
-                exits 0 (valid) or 1 (with helpful errors like "did
-                you mean: …"). Use this as a tight loop: write body,
-                check, fix anything it reports, re-check, only then
-                commit via the writer. Deterministic — you don't have
-                to self-validate; the compiler tells you exactly
-                what's wrong.
+                /tmp/gen-research.ara.md` — COMPILE-CHECK the article.
+                Accepts `.ara.md` (compiles DSL, then validates the
+                resulting HTML) or `.html` (validates directly). Runs
+                the same rules the writer enforces at commit time:
+                DSL grammar, tag allowlist, ara-* class exact-match
+                against COMPONENTS.md, size cap. Exit 0 = valid; exit
+                1 = errors printed to stderr with suggestions (e.g.
+                "unknown directive :::sources at line 42" or "did you
+                mean ara-stat-value"). Use as a tight loop: write,
+                check, fix, re-check, only then commit. Deterministic
+                — the compiler/validator tells you exactly what's
+                wrong instead of you having to remember the spec.
 
             PROCESS — non-negotiable, in order:
 
@@ -358,13 +370,16 @@ jobs:
                   a. Run `python3 scripts/prior_context.py "$GEN_TOPIC"`
                      and Read any high-overlap article files it returns.
                      Note what's already covered so you don't duplicate.
-                  b. Read `COMPONENTS.md` at repo root for the canonical
-                     ara-* class vocabulary. The writer ENFORCES an
-                     exact-match allowlist parsed from COMPONENTS.md —
-                     invented classes (ara-references, ara-stat-num,
-                     ara-link, etc.) are REJECTED with suggestions.
-                     Also Read the visual reference article (slug:
-                     `components`) to see every primitive in use.
+                  b. Read `ARA_DSL.md` at repo root (the source
+                     language you'll be writing) AND `COMPONENTS.md`
+                     (the visual primitives the DSL compiles to).
+                     The compiler/writer ENFORCE an exact-match
+                     ara-* allowlist parsed from COMPONENTS.md plus
+                     a fixed set of `:::directive` names parsed from
+                     the compiler — anything outside both vocabularies
+                     is REJECTED with suggestions. Also Read the visual
+                     reference article (slug: `components`) to see
+                     every primitive rendered.
                   c. Write a short internal plan (just hold it in
                      context, do not save to disk):
                        - 10–18 specific answerable questions
@@ -445,51 +460,62 @@ jobs:
                     subset of ledger packets
                   - the per-section contract (below)
                   - a 600–1100-word target for THIS section
-                  - the strict tag/class validation rules (below)
-                  - the COMPONENT VOCABULARY block (below) AND an
-                    instruction to `Read COMPONENTS.md` at the repo
-                    root first
+                  - an instruction to `Read ARA_DSL.md` (the source
+                    language) and `COMPONENTS.md` (the visual
+                    primitives) at the repo root first
+                  - the COMPONENT VOCABULARY block (below)
                   - the DATA SHAPE of the relevant ledger packets (time
                     series / distribution / ranking / comparison / ratio
                     / chronology) and an EXPLICIT instruction to use the
-                    matching ara-* visualization primitive — NOT default
-                    to ara-table or prose. A ranking ⇒ ara-rank-list, a
-                    percentage breakdown ⇒ ara-donut or ara-stack-bar, a
-                    time series ⇒ ara-line-chart or ara-sparkline, a
-                    before/after delta ⇒ ara-slope, a chronology ⇒
-                    ara-timeline, a key/value list ⇒ ara-kv.
+                    matching `:::directive` — NOT default to a markdown
+                    table or prose. A ranking ⇒ `:::rank-list`, a
+                    percentage breakdown ⇒ `:::donut` or `:::stack-bar`,
+                    a time series ⇒ `:::line-chart` (or inline
+                    `{sparkline:...}`), a before/after delta ⇒
+                    `:::slope`, a chronology ⇒ `:::timeline`, a
+                    key/value list ⇒ `:::kv`.
                   - an EXPLICIT note that they CAN fetch live stock-
                     price series via:
                       `python3 scripts/stock_prices.py <ticker[,ticker...]> \
-                        --range 1y --interval 1mo --format html`
-                    (Yahoo Finance, no API key, up to 4 tickers per
-                    chart). Output is a ready-to-paste
-                    `<div class="ara-line-chart" ...>` element. Use for
-                    any equity-bearing section. If Yahoo errors, the
-                    script exits 1 — fall back to prose with no chart.
-                Each writer returns ONLY the HTML for their section
-                (an <h3 class="ara-h2"> + section body, no <article>
-                wrapper, no references list). You stitch.
+                        --range 1y --interval 1mo --format kv`
+                    (Yahoo Finance via yfinance, no API key, up to 4
+                    tickers per chart). The stdout shows the x: and
+                    ticker_X: rows ready to paste into a
+                    `:::line-chart(title=..., y-unit=$)` block body.
+                    If Yahoo errors, the script exits 1 — fall back to
+                    prose with no chart.
+                Each writer returns ONLY their section as DSL — start
+                with `## N. Section title` and emit paragraphs,
+                `:::directives`, blockquotes, etc. as documented in
+                ARA_DSL.md. NO frontmatter, NO `:::references` block,
+                NO raw HTML. You stitch.
 
-            5. STITCH. Compose the final ONE
-               <article class="ara-doc"> HTML fragment: header block
-               (eyebrow + display + deck + lede + ara-stats) → assembled
-               section writers' output (in order) → "what could break the
-               thesis" / counter-arguments section (you write this
-               yourself from the ledger) → references list. Normalize
-               voice in a quick pass. Every substantive factual claim
-               MUST be followed by a numbered
-               <sup><a class="ara-cite" href="#ref-N">N</a></sup>
-               pointing to the packet's source_url, with
-               <li id="ref-N">…</li> in the references list at the
-               bottom.
+            5. STITCH. Compose the final `.ara.md` source:
+                  - YAML frontmatter (`eyebrow`, `title`, `deck`,
+                    `lede`, and optional `stats:` grid) wrapped in
+                    `---` fences
+                  - section writers' DSL output, concatenated in order
+                  - a final "what could break the thesis" /
+                    counter-arguments `## ` section (you write this
+                    yourself from the ledger)
+                  - a `:::references` block at the very bottom listing
+                    every cited source as `{id: N, title: ..., url: ...,
+                    source: ..., date: ...}`
+               Normalize voice in a quick pass. Every substantive
+               factual claim MUST be followed by a `[^N]` (or
+               `[^1,2,3]` for multi-cite) where N matches the matching
+               `id:` in the `:::references` block. The compiler
+               renders `[^N]` as the visual ara-cite superscript — do
+               NOT write raw `<sup><a class="ara-cite">` HTML.
 
             6. VERIFIER PASS. Use the Task tool to dispatch ONE more
-               sub-agent. Pass it the draft article body. Instruct it to:
-                  - read every numbered ara-cite in the draft
+               sub-agent. Pass it the draft `.ara.md` body AND the
+               `:::references` block. Instruct it to:
+                  - read every `[^N]` in the draft and pair it with
+                    the matching `:::references` entry
                   - fetch each cited URL (WebFetch or curl+pdftotext)
-                  - emit a STRUCTURED findings table only (not a rewritten
-                    article):
+                  - emit a STRUCTURED findings table only (not a
+                    rewritten article):
 
                       claim_id | section | support_status (supported |
                         weak | unsupported) | cited_source | problem |
@@ -499,10 +525,10 @@ jobs:
 
             7. BOUNDED REVISION. Address ONLY the verifier's findings.
                Each unsupported claim must be either: (a) replaced with
-               a supported variant from the ledger, (b) demoted to
-               <mark class="ara-mark">unverified: …</mark>, or
-               (c) deleted. Do NOT generically expand or pad. ONE
-               revision pass maximum.
+               a supported variant from the ledger, (b) demoted by
+               wrapping in `==unverified: ...==` (which compiles to
+               `<mark class="ara-mark">`), or (c) deleted. Do NOT
+               generically expand or pad. ONE revision pass maximum.
 
             QUALITY TARGETS — these, not word count, are the bar:
                - Research questions answered: ≥ 85% of your plan
@@ -526,105 +552,112 @@ jobs:
                  the design system as designed.)
                - Word count: 4500–7000 as a GUARDRAIL only
 
-            COMPONENT VOCABULARY (the writer enforces an exact-match
-            ara-* allowlist parsed from COMPONENTS.md; invented classes
-            are rejected with suggestions — read COMPONENTS.md if
-            unsure):
+            COMPONENT VOCABULARY (the compiler dispatches `:::directive`
+            names against a fixed table; the writer also enforces an
+            exact-match ara-* allowlist parsed from COMPONENTS.md for
+            the `:::raw` escape hatch — invented classes there are
+            rejected with suggestions; read ARA_DSL.md for syntax and
+            COMPONENTS.md for what each primitive looks like):
 
-               Visualization primitives — pick BY DATA SHAPE:
-                 Time series           → ara-line-chart (full SVG, up
-                                         to 4 series), ara-sparkline
+               Visualization directives — pick BY DATA SHAPE:
+                 Time series           → :::line-chart (full SVG, up
+                                         to 4 series), {sparkline:...}
                                          (inline mini-trend)
-                 Distribution          → ara-donut, ara-stack-bar
-                                         (+ ara-stack-legend),
-                                         ara-stack-rows (multi-row
+                 Distribution          → :::donut, :::stack-bar
+                                         (+ legend=true),
+                                         :::stack-rows (multi-row
                                          Bloomberg-style)
-                 Ranking               → ara-rank-list (proportional
+                 Ranking               → :::rank-list (proportional
                                          fills built-in)
-                 Position in range     → ara-compare (three cards:
+                 Position in range     → :::compare (three cards:
                                          lowest / highest / subject)
-                 Ratios                → ara-iso (pictogram count
-                                         like "1950: 🚶×17"),
-                                         ara-stat + ara-stat-unit
-                 Before / after delta  → ara-slope (two-period)
-                 Chronology            → ara-timeline
-                 Key/value facts       → ara-kv
-                 Bars                  → ara-bars / ara-bar
-                                         (single proportional bar)
+                 Ratios                → :::iso (pictogram count
+                                         like "1950: 🚶×17");
+                                         use `unit:` on a :::stats
+                                         item for big-number suffix
+                 Before / after delta  → :::slope (two-period)
+                 Chronology            → :::timeline
+                 Key/value facts       → :::kv
+                 Bars                  → :::bars (one row per labeled
+                                         proportional bar)
 
-               Content blocks: ara-callout (--info / --success /
-                 --warn / --danger), ara-quote (+ ara-quote-attr),
-                 ara-figure (+ ara-caption), ara-table (+ optional
-                 ara-row-highlight for the subject row).
-               Headings: ara-h2 (numbered section, use ara-h2-num
-                 chip for the number), ara-h3, ara-h4, ara-divider.
-               Title block: ara-eyebrow, ara-display, ara-deck,
-                 ara-lede.
-               Inline: ara-cite (footnote ref), ara-mark, ara-accent,
-                 ara-tag, ara-flag (--green / --yellow / --red),
-                 ara-stat-unit (small suffix on a big number).
+               Content blocks: :::callout(kind=info|success|warn|danger,
+                 label=...), :::quote(attr=...), :::figure(src, alt,
+                 caption), and markdown tables (`| a | b |`) — prefix
+                 a row's first cell with `*` to mark it as the subject
+                 (ara-row-highlight).
+               Headings: `## N. Title` (numbered section with ara-h2-num
+                 chip auto-extracted from the `N.`/`N -`/`N —` prefix),
+                 `### subhead`, `#### minor`, `---` for ara-divider.
+               Title block (frontmatter): eyebrow, title, deck, lede,
+                 and optional stats grid.
+               Inline: `[^N]` for ara-cite, `==text==` for ara-mark,
+                 `{accent}text{/}` for ara-accent, `{tag}cdn{/}` for
+                 ara-tag, `{flag:green|yellow|red}` for ara-flag,
+                 `{sparkline:1,2,3}` for inline trend.
 
                Anti-patterns — REJECT in your own draft:
-                 - "the top 5 are…" as a <ul>          → use ara-rank-list
-                 - "the breakdown is X%/Y%/Z%" prose   → use ara-donut
-                                                         or ara-stack-bar
-                 - a time series described in prose    → embed
-                                                         ara-sparkline
-                                                         or use
-                                                         ara-line-chart
-                 - before/after numbers in prose       → use ara-slope
-                 - key facts as a <ul>                 → use ara-kv
+                 - "the top 5 are…" as a markdown list  → use :::rank-list
+                 - "the breakdown is X%/Y%/Z%" in prose → use :::donut
+                                                          or :::stack-bar
+                 - a time series described in prose     → embed
+                                                          {sparkline:...}
+                                                          or :::line-chart
+                 - before/after numbers in prose        → use :::slope
+                 - key facts as a markdown list         → use :::kv
 
             PER-SECTION CONTRACT (replaces mechanical density rules):
-            each H3 numbered section must contain:
+            each `## ` numbered section must contain:
                - 1 section-thesis sentence
-               - 3–6 sourced factual claims (each with numbered cite)
+               - 3–6 sourced factual claims (each with `[^N]` cite)
                - ≥ 1 quantitative datapoint where one exists
                - ≥ 1 counterpoint or "what would weaken this" line
                - 1 sentence on why this matters
                If the section's data shape calls for a visualization
                (time series / distribution / ranking / comparison /
-               ratio / chronology), USE the matching ara-* primitive
+               ratio / chronology), USE the matching `:::directive`
                from the COMPONENT VOCABULARY block above. Do NOT
-               default to ara-table or prose for visualizable data.
-               Use ara-callout sparingly: thesis break, risk flag, or
-               source caveat only — not for cosmetic density.
+               default to a markdown table or prose for visualizable
+               data. Use `:::callout` sparingly: thesis break, risk
+               flag, or source caveat only — not for cosmetic density.
 
-            VALIDATION (the compiler is the source of truth — see
-            step 7.5 below for the loop). The writer enforces:
-               - Root <article class="ara-doc">.
-               - Every `class=` token is an EXACT-MATCH ara-* class
-                 documented in COMPONENTS.md (or a modifier of a
-                 documented base, like ara-callout--info).
-               - Allowed tags only: article, section, div, header,
-                 footer, h2, h3, h4, p, span, em, strong, code, mark,
-                 sup, sub, abbr, time, ul, ol, li, dl, dt, dd, a, img,
-                 figure, figcaption, table, thead, tbody, tr, th, td,
-                 blockquote, pre, br, hr.
-               - No <h1>, <style>, <script>, <iframe>, <head>, <body>.
-               - No inline `style=`, no `on*=` handlers, no `javascript:`.
-               - Body under 200 KB.
+            VALIDATION (the compiler + writer are the source of truth
+            — see step 7.5 below for the loop). The compile pipeline
+            enforces:
+               - Source is a valid `.ara.md`: YAML frontmatter with
+                 at least `title:`, then markdown body with `## `
+                 headings and `:::directives` from the fixed grammar
+                 in ARA_DSL.md.
+               - The compiler dispatches `:::name(...)` against its
+                 fixed table; unknown names error with a list of
+                 valid directives.
+               - After compile, the writer runs validate_body: every
+                 `class=` must be an exact-match ara-* class in
+                 COMPONENTS.md (only relevant if you used `:::raw`),
+                 allowed tags only, no `style=`/`on*=`/`javascript:`,
+                 body under 200 KB.
                You do NOT need to mentally validate against this list.
                Write the body using the COMPONENT VOCABULARY guidance,
                then run the compile-check (step 7.5). If it fails, the
                error tells you exactly what to fix.
 
             7.5. COMPILE CHECK (deterministic; before commit).
-                 a. Write the draft body to /tmp/gen-research-body.html.
+                 a. Write the draft `.ara.md` to /tmp/gen-research.ara.md.
                  b. Run:
                       python3 scripts/check_generative_research.py \
-                        /tmp/gen-research-body.html
+                        /tmp/gen-research.ara.md
                  c. Exit 0 → proceed to step 8.
-                    Exit 1 → the stderr lists every invalid class /
-                    tag / structural issue with suggestions. Fix the
-                    body in-place and re-run the check. Iterate until
-                    clean. Do NOT proceed to commit until exit 0.
+                    Exit 1 → the stderr lists every DSL grammar error
+                    or invalid class/tag/structural issue with
+                    suggestions. Fix the body in-place and re-run.
+                    Iterate until clean. Do NOT proceed to commit
+                    until exit 0.
                  d. This loop is cheap — token cost is just reading
                     short error messages. Lean on it instead of
                     self-validating against the rule list in prose.
 
-            8. SAVE. Write the final (already-clean) fragment to:
-                  /tmp/gen-research-body.html
+            8. SAVE. Write the final (already-clean) `.ara.md` to:
+                  /tmp/gen-research.ara.md
 
             9. COMMIT via the writer (Bash). Pass originating values via
                the pre-set env vars:
@@ -636,7 +669,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model claude-opus-4-7 \
-                    --html-body /tmp/gen-research-body.html
+                    --html-body /tmp/gen-research.ara.md
 
                If $GEN_SLUG is empty, OMIT the --slug flag entirely (do
                NOT pass --slug ""):
@@ -646,7 +679,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model claude-opus-4-7 \
-                    --html-body /tmp/gen-research-body.html
+                    --html-body /tmp/gen-research.ara.md
 
             CONSTRAINTS:
             - The writer COMMITS internally. Do NOT run `git commit`.
@@ -735,28 +768,29 @@ jobs:
                 announcements, IR posts cross-posted to X, etc.).
               - `python3 scripts/stock_prices.py <ticker[,ticker...]>
                 --range 1y --interval 1mo --format kv` — fetches
-                close-price time series from Yahoo Finance (no key,
-                public endpoint). Output is plain text designed to be
-                pasted DIRECTLY into `ara-line-chart` data attributes
-                (or use `--format html` to get a ready-made
-                `<div class="ara-line-chart" ...>` element). Use for
-                any equity-bearing topic (company profile, IPO
-                follow-up, basket comparison). Ranges: 1d 5d 1mo
-                3mo 6mo 1y 2y 5y 10y ytd max. Intervals: 1d 1wk 1mo etc.
-                Up to 4 tickers per chart. Falls back gracefully:
-                exit 1 prints the error to stderr, your section keeps
-                going without the chart.
+                close-price time series from Yahoo Finance (yfinance
+                handles auth; no API key). Output is plain text
+                designed to paste DIRECTLY into a :::line-chart
+                directive: copy the `ticker_X:` rows into the body of
+                a `:::line-chart(title=..., y-unit=$)` block (the
+                tool's stdout shows the exact format). Ranges:
+                1d 5d 1mo 3mo 6mo 1y 2y 5y 10y ytd max. Intervals:
+                1d 1wk 1mo etc. Up to 4 tickers per chart. Falls back
+                gracefully: exit 1 prints the error to stderr, your
+                section keeps going without the chart.
               - `python3 scripts/check_generative_research.py
-                /tmp/gen-research-body.html` — COMPILE-CHECK the
-                article body before commit. Runs the same validation
-                rules the writer enforces (tag allowlist, ara-* class
-                exact-match against COMPONENTS.md, size cap, etc.) and
-                exits 0 (valid) or 1 (with helpful errors like "did
-                you mean: …"). Use this as a tight loop: write body,
-                check, fix anything it reports, re-check, only then
-                commit via the writer. Deterministic — you don't have
-                to self-validate; the compiler tells you exactly
-                what's wrong.
+                /tmp/gen-research.ara.md` — COMPILE-CHECK the article.
+                Accepts `.ara.md` (compiles DSL, then validates the
+                resulting HTML) or `.html` (validates directly). Runs
+                the same rules the writer enforces at commit time:
+                DSL grammar, tag allowlist, ara-* class exact-match
+                against COMPONENTS.md, size cap. Exit 0 = valid; exit
+                1 = errors printed to stderr with suggestions (e.g.
+                "unknown directive :::sources at line 42" or "did you
+                mean ara-stat-value"). Use as a tight loop: write,
+                check, fix, re-check, only then commit. Deterministic
+                — the compiler/validator tells you exactly what's
+                wrong instead of you having to remember the spec.
 
             PROCESS — non-negotiable, in order:
 
@@ -764,13 +798,16 @@ jobs:
                   a. Run `python3 scripts/prior_context.py "$GEN_TOPIC"`
                      and Read any high-overlap article files it returns.
                      Note what's already covered so you don't duplicate.
-                  b. Read `COMPONENTS.md` at repo root for the canonical
-                     ara-* class vocabulary. The writer ENFORCES an
-                     exact-match allowlist parsed from COMPONENTS.md —
-                     invented classes (ara-references, ara-stat-num,
-                     ara-link, etc.) are REJECTED with suggestions.
-                     Also Read the visual reference article (slug:
-                     `components`) to see every primitive in use.
+                  b. Read `ARA_DSL.md` at repo root (the source
+                     language you'll be writing) AND `COMPONENTS.md`
+                     (the visual primitives the DSL compiles to).
+                     The compiler/writer ENFORCE an exact-match
+                     ara-* allowlist parsed from COMPONENTS.md plus
+                     a fixed set of `:::directive` names parsed from
+                     the compiler — anything outside both vocabularies
+                     is REJECTED with suggestions. Also Read the visual
+                     reference article (slug: `components`) to see
+                     every primitive rendered.
                   c. Write a short internal plan (just hold it in
                      context, do not save to disk):
                        - 10–18 specific answerable questions
@@ -851,51 +888,62 @@ jobs:
                     subset of ledger packets
                   - the per-section contract (below)
                   - a 600–1100-word target for THIS section
-                  - the strict tag/class validation rules (below)
-                  - the COMPONENT VOCABULARY block (below) AND an
-                    instruction to `Read COMPONENTS.md` at the repo
-                    root first
+                  - an instruction to `Read ARA_DSL.md` (the source
+                    language) and `COMPONENTS.md` (the visual
+                    primitives) at the repo root first
+                  - the COMPONENT VOCABULARY block (below)
                   - the DATA SHAPE of the relevant ledger packets (time
                     series / distribution / ranking / comparison / ratio
                     / chronology) and an EXPLICIT instruction to use the
-                    matching ara-* visualization primitive — NOT default
-                    to ara-table or prose. A ranking ⇒ ara-rank-list, a
-                    percentage breakdown ⇒ ara-donut or ara-stack-bar, a
-                    time series ⇒ ara-line-chart or ara-sparkline, a
-                    before/after delta ⇒ ara-slope, a chronology ⇒
-                    ara-timeline, a key/value list ⇒ ara-kv.
+                    matching `:::directive` — NOT default to a markdown
+                    table or prose. A ranking ⇒ `:::rank-list`, a
+                    percentage breakdown ⇒ `:::donut` or `:::stack-bar`,
+                    a time series ⇒ `:::line-chart` (or inline
+                    `{sparkline:...}`), a before/after delta ⇒
+                    `:::slope`, a chronology ⇒ `:::timeline`, a
+                    key/value list ⇒ `:::kv`.
                   - an EXPLICIT note that they CAN fetch live stock-
                     price series via:
                       `python3 scripts/stock_prices.py <ticker[,ticker...]> \
-                        --range 1y --interval 1mo --format html`
-                    (Yahoo Finance, no API key, up to 4 tickers per
-                    chart). Output is a ready-to-paste
-                    `<div class="ara-line-chart" ...>` element. Use for
-                    any equity-bearing section. If Yahoo errors, the
-                    script exits 1 — fall back to prose with no chart.
-                Each writer returns ONLY the HTML for their section
-                (an <h3 class="ara-h2"> + section body, no <article>
-                wrapper, no references list). You stitch.
+                        --range 1y --interval 1mo --format kv`
+                    (Yahoo Finance via yfinance, no API key, up to 4
+                    tickers per chart). The stdout shows the x: and
+                    ticker_X: rows ready to paste into a
+                    `:::line-chart(title=..., y-unit=$)` block body.
+                    If Yahoo errors, the script exits 1 — fall back to
+                    prose with no chart.
+                Each writer returns ONLY their section as DSL — start
+                with `## N. Section title` and emit paragraphs,
+                `:::directives`, blockquotes, etc. as documented in
+                ARA_DSL.md. NO frontmatter, NO `:::references` block,
+                NO raw HTML. You stitch.
 
-            5. STITCH. Compose the final ONE
-               <article class="ara-doc"> HTML fragment: header block
-               (eyebrow + display + deck + lede + ara-stats) → assembled
-               section writers' output (in order) → "what could break the
-               thesis" / counter-arguments section (you write this
-               yourself from the ledger) → references list. Normalize
-               voice in a quick pass. Every substantive factual claim
-               MUST be followed by a numbered
-               <sup><a class="ara-cite" href="#ref-N">N</a></sup>
-               pointing to the packet's source_url, with
-               <li id="ref-N">…</li> in the references list at the
-               bottom.
+            5. STITCH. Compose the final `.ara.md` source:
+                  - YAML frontmatter (`eyebrow`, `title`, `deck`,
+                    `lede`, and optional `stats:` grid) wrapped in
+                    `---` fences
+                  - section writers' DSL output, concatenated in order
+                  - a final "what could break the thesis" /
+                    counter-arguments `## ` section (you write this
+                    yourself from the ledger)
+                  - a `:::references` block at the very bottom listing
+                    every cited source as `{id: N, title: ..., url: ...,
+                    source: ..., date: ...}`
+               Normalize voice in a quick pass. Every substantive
+               factual claim MUST be followed by a `[^N]` (or
+               `[^1,2,3]` for multi-cite) where N matches the matching
+               `id:` in the `:::references` block. The compiler
+               renders `[^N]` as the visual ara-cite superscript — do
+               NOT write raw `<sup><a class="ara-cite">` HTML.
 
             6. VERIFIER PASS. Use the Task tool to dispatch ONE more
-               sub-agent. Pass it the draft article body. Instruct it to:
-                  - read every numbered ara-cite in the draft
+               sub-agent. Pass it the draft `.ara.md` body AND the
+               `:::references` block. Instruct it to:
+                  - read every `[^N]` in the draft and pair it with
+                    the matching `:::references` entry
                   - fetch each cited URL (WebFetch or curl+pdftotext)
-                  - emit a STRUCTURED findings table only (not a rewritten
-                    article):
+                  - emit a STRUCTURED findings table only (not a
+                    rewritten article):
 
                       claim_id | section | support_status (supported |
                         weak | unsupported) | cited_source | problem |
@@ -905,10 +953,10 @@ jobs:
 
             7. BOUNDED REVISION. Address ONLY the verifier's findings.
                Each unsupported claim must be either: (a) replaced with
-               a supported variant from the ledger, (b) demoted to
-               <mark class="ara-mark">unverified: …</mark>, or
-               (c) deleted. Do NOT generically expand or pad. ONE
-               revision pass maximum.
+               a supported variant from the ledger, (b) demoted by
+               wrapping in `==unverified: ...==` (which compiles to
+               `<mark class="ara-mark">`), or (c) deleted. Do NOT
+               generically expand or pad. ONE revision pass maximum.
 
             QUALITY TARGETS — these, not word count, are the bar:
                - Research questions answered: ≥ 85% of your plan
@@ -932,105 +980,112 @@ jobs:
                  the design system as designed.)
                - Word count: 4500–7000 as a GUARDRAIL only
 
-            COMPONENT VOCABULARY (the writer enforces an exact-match
-            ara-* allowlist parsed from COMPONENTS.md; invented classes
-            are rejected with suggestions — read COMPONENTS.md if
-            unsure):
+            COMPONENT VOCABULARY (the compiler dispatches `:::directive`
+            names against a fixed table; the writer also enforces an
+            exact-match ara-* allowlist parsed from COMPONENTS.md for
+            the `:::raw` escape hatch — invented classes there are
+            rejected with suggestions; read ARA_DSL.md for syntax and
+            COMPONENTS.md for what each primitive looks like):
 
-               Visualization primitives — pick BY DATA SHAPE:
-                 Time series           → ara-line-chart (full SVG, up
-                                         to 4 series), ara-sparkline
+               Visualization directives — pick BY DATA SHAPE:
+                 Time series           → :::line-chart (full SVG, up
+                                         to 4 series), {sparkline:...}
                                          (inline mini-trend)
-                 Distribution          → ara-donut, ara-stack-bar
-                                         (+ ara-stack-legend),
-                                         ara-stack-rows (multi-row
+                 Distribution          → :::donut, :::stack-bar
+                                         (+ legend=true),
+                                         :::stack-rows (multi-row
                                          Bloomberg-style)
-                 Ranking               → ara-rank-list (proportional
+                 Ranking               → :::rank-list (proportional
                                          fills built-in)
-                 Position in range     → ara-compare (three cards:
+                 Position in range     → :::compare (three cards:
                                          lowest / highest / subject)
-                 Ratios                → ara-iso (pictogram count
-                                         like "1950: 🚶×17"),
-                                         ara-stat + ara-stat-unit
-                 Before / after delta  → ara-slope (two-period)
-                 Chronology            → ara-timeline
-                 Key/value facts       → ara-kv
-                 Bars                  → ara-bars / ara-bar
-                                         (single proportional bar)
+                 Ratios                → :::iso (pictogram count
+                                         like "1950: 🚶×17");
+                                         use `unit:` on a :::stats
+                                         item for big-number suffix
+                 Before / after delta  → :::slope (two-period)
+                 Chronology            → :::timeline
+                 Key/value facts       → :::kv
+                 Bars                  → :::bars (one row per labeled
+                                         proportional bar)
 
-               Content blocks: ara-callout (--info / --success /
-                 --warn / --danger), ara-quote (+ ara-quote-attr),
-                 ara-figure (+ ara-caption), ara-table (+ optional
-                 ara-row-highlight for the subject row).
-               Headings: ara-h2 (numbered section, use ara-h2-num
-                 chip for the number), ara-h3, ara-h4, ara-divider.
-               Title block: ara-eyebrow, ara-display, ara-deck,
-                 ara-lede.
-               Inline: ara-cite (footnote ref), ara-mark, ara-accent,
-                 ara-tag, ara-flag (--green / --yellow / --red),
-                 ara-stat-unit (small suffix on a big number).
+               Content blocks: :::callout(kind=info|success|warn|danger,
+                 label=...), :::quote(attr=...), :::figure(src, alt,
+                 caption), and markdown tables (`| a | b |`) — prefix
+                 a row's first cell with `*` to mark it as the subject
+                 (ara-row-highlight).
+               Headings: `## N. Title` (numbered section with ara-h2-num
+                 chip auto-extracted from the `N.`/`N -`/`N —` prefix),
+                 `### subhead`, `#### minor`, `---` for ara-divider.
+               Title block (frontmatter): eyebrow, title, deck, lede,
+                 and optional stats grid.
+               Inline: `[^N]` for ara-cite, `==text==` for ara-mark,
+                 `{accent}text{/}` for ara-accent, `{tag}cdn{/}` for
+                 ara-tag, `{flag:green|yellow|red}` for ara-flag,
+                 `{sparkline:1,2,3}` for inline trend.
 
                Anti-patterns — REJECT in your own draft:
-                 - "the top 5 are…" as a <ul>          → use ara-rank-list
-                 - "the breakdown is X%/Y%/Z%" prose   → use ara-donut
-                                                         or ara-stack-bar
-                 - a time series described in prose    → embed
-                                                         ara-sparkline
-                                                         or use
-                                                         ara-line-chart
-                 - before/after numbers in prose       → use ara-slope
-                 - key facts as a <ul>                 → use ara-kv
+                 - "the top 5 are…" as a markdown list  → use :::rank-list
+                 - "the breakdown is X%/Y%/Z%" in prose → use :::donut
+                                                          or :::stack-bar
+                 - a time series described in prose     → embed
+                                                          {sparkline:...}
+                                                          or :::line-chart
+                 - before/after numbers in prose        → use :::slope
+                 - key facts as a markdown list         → use :::kv
 
             PER-SECTION CONTRACT (replaces mechanical density rules):
-            each H3 numbered section must contain:
+            each `## ` numbered section must contain:
                - 1 section-thesis sentence
-               - 3–6 sourced factual claims (each with numbered cite)
+               - 3–6 sourced factual claims (each with `[^N]` cite)
                - ≥ 1 quantitative datapoint where one exists
                - ≥ 1 counterpoint or "what would weaken this" line
                - 1 sentence on why this matters
                If the section's data shape calls for a visualization
                (time series / distribution / ranking / comparison /
-               ratio / chronology), USE the matching ara-* primitive
+               ratio / chronology), USE the matching `:::directive`
                from the COMPONENT VOCABULARY block above. Do NOT
-               default to ara-table or prose for visualizable data.
-               Use ara-callout sparingly: thesis break, risk flag, or
-               source caveat only — not for cosmetic density.
+               default to a markdown table or prose for visualizable
+               data. Use `:::callout` sparingly: thesis break, risk
+               flag, or source caveat only — not for cosmetic density.
 
-            VALIDATION (the compiler is the source of truth — see
-            step 7.5 below for the loop). The writer enforces:
-               - Root <article class="ara-doc">.
-               - Every `class=` token is an EXACT-MATCH ara-* class
-                 documented in COMPONENTS.md (or a modifier of a
-                 documented base, like ara-callout--info).
-               - Allowed tags only: article, section, div, header,
-                 footer, h2, h3, h4, p, span, em, strong, code, mark,
-                 sup, sub, abbr, time, ul, ol, li, dl, dt, dd, a, img,
-                 figure, figcaption, table, thead, tbody, tr, th, td,
-                 blockquote, pre, br, hr.
-               - No <h1>, <style>, <script>, <iframe>, <head>, <body>.
-               - No inline `style=`, no `on*=` handlers, no `javascript:`.
-               - Body under 200 KB.
+            VALIDATION (the compiler + writer are the source of truth
+            — see step 7.5 below for the loop). The compile pipeline
+            enforces:
+               - Source is a valid `.ara.md`: YAML frontmatter with
+                 at least `title:`, then markdown body with `## `
+                 headings and `:::directives` from the fixed grammar
+                 in ARA_DSL.md.
+               - The compiler dispatches `:::name(...)` against its
+                 fixed table; unknown names error with a list of
+                 valid directives.
+               - After compile, the writer runs validate_body: every
+                 `class=` must be an exact-match ara-* class in
+                 COMPONENTS.md (only relevant if you used `:::raw`),
+                 allowed tags only, no `style=`/`on*=`/`javascript:`,
+                 body under 200 KB.
                You do NOT need to mentally validate against this list.
                Write the body using the COMPONENT VOCABULARY guidance,
                then run the compile-check (step 7.5). If it fails, the
                error tells you exactly what to fix.
 
             7.5. COMPILE CHECK (deterministic; before commit).
-                 a. Write the draft body to /tmp/gen-research-body.html.
+                 a. Write the draft `.ara.md` to /tmp/gen-research.ara.md.
                  b. Run:
                       python3 scripts/check_generative_research.py \
-                        /tmp/gen-research-body.html
+                        /tmp/gen-research.ara.md
                  c. Exit 0 → proceed to step 8.
-                    Exit 1 → the stderr lists every invalid class /
-                    tag / structural issue with suggestions. Fix the
-                    body in-place and re-run the check. Iterate until
-                    clean. Do NOT proceed to commit until exit 0.
+                    Exit 1 → the stderr lists every DSL grammar error
+                    or invalid class/tag/structural issue with
+                    suggestions. Fix the body in-place and re-run.
+                    Iterate until clean. Do NOT proceed to commit
+                    until exit 0.
                  d. This loop is cheap — token cost is just reading
                     short error messages. Lean on it instead of
                     self-validating against the rule list in prose.
 
-            8. SAVE. Write the final (already-clean) fragment to:
-                  /tmp/gen-research-body.html
+            8. SAVE. Write the final (already-clean) `.ara.md` to:
+                  /tmp/gen-research.ara.md
 
             9. COMMIT via the writer (Bash). Pass originating values via
                the pre-set env vars:
@@ -1042,7 +1097,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model deepseek-v4-pro \
-                    --html-body /tmp/gen-research-body.html
+                    --html-body /tmp/gen-research.ara.md
 
                If $GEN_SLUG is empty, OMIT the --slug flag entirely (do
                NOT pass --slug ""):
@@ -1052,7 +1107,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model deepseek-v4-pro \
-                    --html-body /tmp/gen-research-body.html
+                    --html-body /tmp/gen-research.ara.md
 
             CONSTRAINTS:
             - The writer COMMITS internally. Do NOT run `git commit`.

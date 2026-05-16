@@ -83,10 +83,12 @@ than the workflow (fewer sub-agents per wave, smaller word
 target) because the chat session shares your local resources and
 your time.
 
-Read `COMPONENTS.md` at the repo root before writing. The writer
-parses the body at commit time and rejects unknown classes or
-tags. The visual reference article (slug: `components`) in the
-Research tab exercises every primitive.
+Read `ARA_DSL.md` at the repo root (the source language you'll
+write) AND `COMPONENTS.md` (the visual primitives the DSL compiles
+to). The compiler + writer reject unknown directives, unknown
+classes, and unknown tags at commit time. The visual reference
+article (slug: `components`) in the Research tab exercises every
+primitive.
 
 ### Toolbelt
 
@@ -102,17 +104,21 @@ Beyond `Read` / `Write` / `WebSearch` / `WebFetch`, you have:
 - `curl -sL <url> -o /tmp/x.pdf && pdftotext /tmp/x.pdf - | head -c 60000`
   — read PDFs (10-Ks, S-1s, papers, whitepapers).
 - `python3 scripts/stock_prices.py <ticker[,ticker...]> --range 1y --interval 1mo --format kv`
-  — fetches close-price time series from Yahoo Finance (no API
-  key). Output is plain text designed to paste directly into
-  `ara-line-chart` data attributes, or use `--format html` to get
-  a ready-made `<div class="ara-line-chart" ...>` element. Use
-  for any equity-bearing topic. Up to 4 tickers per chart.
-- `python3 scripts/check_generative_research.py /tmp/gen-research-body.html`
-  — COMPILE-CHECK the article body. Runs the same validation rules
-  the writer enforces (tag allowlist, ara-* class exact-match
-  against COMPONENTS.md, size cap, etc.). Exit 0 = valid; exit 1 =
-  errors printed to stderr with suggestions. Use this loop after
-  writing the body and before committing — see step 7.5.
+  — fetches close-price time series from Yahoo Finance (yfinance
+  handles auth; no API key). Stdout shows `x:` and `ticker_X:`
+  rows ready to paste into the body of a
+  `:::line-chart(title=..., y-unit=$)` block. Up to 4 tickers per
+  chart.
+- `python3 scripts/compile_ara.py path.ara.md --out /tmp/x.html`
+  — compile DSL source to the HTML fragment. Run this if you want
+  to inspect the rendered HTML, but normally the check script
+  below does it for you.
+- `python3 scripts/check_generative_research.py /tmp/gen-research.ara.md`
+  — COMPILE-CHECK the article. Accepts `.ara.md` (compiles, then
+  validates the resulting HTML) or `.html` (validates directly).
+  Catches DSL grammar errors AND any ara-* class invented inside
+  a `:::raw` block. Exit 0 = valid; exit 1 = errors with
+  suggestions. Use this in a tight loop — see step 7.5.
 
 ### Process — non-negotiable, in order
 
@@ -121,12 +127,13 @@ Beyond `Read` / `Write` / `WebSearch` / `WebFetch`, you have:
 - Run `python3 scripts/prior_context.py "<topic>"` and `Read` any
   high-overlap article files it returns. Note what's already
   covered so you don't duplicate.
-- **Read `COMPONENTS.md` at repo root** for the canonical ara-*
-  class vocabulary. The writer ENFORCES an exact-match allowlist
-  parsed from COMPONENTS.md — invented classes (ara-references,
-  ara-stat-num, ara-link, ara-ref-link, etc.) are REJECTED with
-  suggestions. Also Read the visual reference article (slug:
-  `components`) to see every primitive in use.
+- **Read `ARA_DSL.md` and `COMPONENTS.md` at repo root.** The
+  compiler dispatches `:::directive` names against a fixed table
+  (DSL grammar), and the writer ENFORCES an exact-match ara-*
+  allowlist (for any HTML that ends up in a `:::raw` block).
+  Invented directives or classes are REJECTED with suggestions.
+  Also Read the visual reference article (slug: `components`) to
+  see every primitive rendered.
 - Internally draft (hold in context, don't save):
   - 8–14 specific answerable questions
   - For each question: what counts as PRIMARY evidence (paper,
@@ -197,46 +204,48 @@ prompt MUST include:
   ledger packets
 - the per-section contract (below)
 - a 500–900-word target for THIS section
-- the strict tag/class validation rules (below)
 - the Component vocabulary block (below) AND an instruction to
-  `Read COMPONENTS.md` first
+  `Read ARA_DSL.md` and `COMPONENTS.md` first
 - the DATA SHAPE of the packets (time series / distribution /
   ranking / comparison / ratio / chronology) plus an EXPLICIT
-  instruction to use the matching ara-* visualization primitive,
-  NOT default to ara-table or prose. Ranking → ara-rank-list,
-  % breakdown → ara-donut / ara-stack-bar, time series →
-  ara-line-chart / ara-sparkline, before/after → ara-slope,
-  chronology → ara-timeline, key facts → ara-kv.
+  instruction to use the matching `:::directive`, NOT default to
+  a markdown table or prose. Ranking → `:::rank-list`, %
+  breakdown → `:::donut` / `:::stack-bar`, time series →
+  `:::line-chart` (or inline `{sparkline:...}`), before/after →
+  `:::slope`, chronology → `:::timeline`, key facts → `:::kv`.
 - an EXPLICIT note that they CAN fetch live stock-price series
   via `python3 scripts/stock_prices.py <ticker[s]> --range 1y
-  --interval 1mo --format html` (Yahoo Finance, no API key, up
-  to 4 tickers per chart). Output is a ready-to-paste
-  `<div class="ara-line-chart" ...>` element.
+  --interval 1mo --format kv` (Yahoo Finance via yfinance, no
+  API key, up to 4 tickers per chart). Stdout is ready to paste
+  into the body of a `:::line-chart(title=..., y-unit=$)` block.
 
-Each writer returns ONLY the HTML for their section (an
-`<h3 class="ara-h2">` + section body, no `<article>` wrapper, no
-references list). You stitch.
+Each writer returns ONLY their section as DSL — start with
+`## N. Section title` and emit paragraphs, `:::directives`,
+blockquotes, etc. as documented in ARA_DSL.md. NO frontmatter,
+NO `:::references` block, NO raw HTML. You stitch.
 
-**5. STITCH.** Compose the final ONE `<article class="ara-doc">`
-HTML fragment:
+**5. STITCH.** Compose the final `.ara.md` source:
 
-- header block: `ara-eyebrow` + `ara-display` + `ara-deck` +
-  `ara-lede` + `ara-stats`
-- assembled section writers' output (in order)
-- a "what could break the thesis" / counter-arguments section
-  (you write this yourself from the ledger)
-- a references list at the bottom
+- YAML frontmatter (`eyebrow`, `title`, `deck`, `lede`, optional
+  `stats:` grid) wrapped in `---` fences
+- assembled section writers' DSL output (in order)
+- a "what could break the thesis" / counter-arguments `## `
+  section (you write this yourself from the ledger)
+- a final `:::references` block listing every cited source as
+  `{id: N, title: ..., url: ..., source: ..., date: ...}`
 
 Normalize voice in a quick pass. Every substantive factual claim
-MUST be followed by a numbered
-`<sup><a class="ara-cite" href="#ref-N">N</a></sup>` pointing to
-the packet's `source_url`, with `<li id="ref-N">…</li>` in the
-references list.
+MUST be followed by a `[^N]` (or `[^1,2,3]` for multi-cite) where
+N matches a matching `id:` in the `:::references` block. The
+compiler renders `[^N]` as the ara-cite superscript — do NOT
+write raw `<sup><a class="ara-cite">` HTML.
 
 **6. VERIFIER PASS.** Use the `Task` tool to dispatch ONE more
-sub-agent. Pass it the draft article body. Instruct it to:
+sub-agent. Pass it the draft `.ara.md` body AND the
+`:::references` block. Instruct it to:
 
-- read every numbered `ara-cite` in the draft
+- read every `[^N]` in the draft and pair it with the matching
+  `:::references` entry
 - fetch each cited URL (WebFetch or curl+pdftotext)
 - emit a STRUCTURED findings table only (NOT a rewritten article):
 
@@ -251,7 +260,8 @@ sub-agent. Pass it the draft article body. Instruct it to:
 Each unsupported claim must be either:
 
 - (a) replaced with a supported variant from the ledger,
-- (b) demoted to `<mark class="ara-mark">unverified: …</mark>`, or
+- (b) demoted by wrapping in `==unverified: ...==` (compiles to
+  `<mark class="ara-mark">`), or
 - (c) deleted.
 
 Do NOT generically expand or pad. ONE revision pass maximum.
@@ -281,54 +291,54 @@ Do NOT generically expand or pad. ONE revision pass maximum.
 
 | Data shape | Use |
 |---|---|
-| Time series | `ara-line-chart` (full SVG, up to 4 series) or `ara-sparkline` (inline) |
-| Distribution / breakdown | `ara-donut`, `ara-stack-bar` (+ `ara-stack-legend`), or `ara-stack-rows` |
-| Ranking | `ara-rank-list` (proportional fills built-in) |
-| "Where X sits in the range" | `ara-compare` (lowest / highest / subject cards) |
-| Ratios | `ara-iso` (pictogram), `ara-stat` + `ara-stat-unit` |
-| Before / after delta | `ara-slope` (two-period) |
-| Chronology | `ara-timeline` |
-| Key/value facts | `ara-kv` |
-| Single bars | `ara-bars` / `ara-bar` |
+| Time series | `:::line-chart` (full SVG, up to 4 series) or inline `{sparkline:1,2,3}` |
+| Distribution / breakdown | `:::donut`, `:::stack-bar(legend=true)`, or `:::stack-rows` |
+| Ranking | `:::rank-list` (proportional fills built-in) |
+| "Where X sits in the range" | `:::compare` (lowest / highest / subject cards) |
+| Ratios | `:::iso` (pictogram), or `:::stats` with `unit:` on a big number |
+| Before / after delta | `:::slope` (two-period) |
+| Chronology | `:::timeline` |
+| Key/value facts | `:::kv` |
+| Single bars | `:::bars` |
 
 Anti-patterns — REJECT in your own draft:
 
-- "the top 5 are…" as `<ul>` → use `ara-rank-list`
-- "the breakdown is X%/Y%/Z%" in prose → `ara-donut` or `ara-stack-bar`
-- time series described in prose → embed `ara-sparkline` or use `ara-line-chart`
-- before/after numbers in prose → `ara-slope`
-- key facts as `<ul>` → `ara-kv`
+- "the top 5 are…" as a markdown list → use `:::rank-list`
+- "the breakdown is X%/Y%/Z%" in prose → `:::donut` or `:::stack-bar`
+- time series described in prose → embed `{sparkline:...}` or `:::line-chart`
+- before/after numbers in prose → `:::slope`
+- key facts as a markdown list → `:::kv`
 
 ### Per-section contract (replaces mechanical density rules)
 
-Each H3 numbered section must contain:
+Each `## ` numbered section must contain:
 
 - 1 section-thesis sentence
-- 3–5 sourced factual claims (each with numbered cite)
+- 3–5 sourced factual claims (each with `[^N]` cite)
 - ≥ 1 quantitative datapoint where one exists
 - ≥ 1 counterpoint or "what would weaken this" line
 - 1 sentence on why this matters
 
 If the data shape calls for a visualization (per the table above),
-USE the matching ara-* primitive. Do NOT default to `ara-table` or
-prose for visualizable data. Use `ara-callout` sparingly: thesis
-break, risk flag, or source caveat only.
+USE the matching `:::directive`. Do NOT default to a markdown
+table or prose for visualizable data. Use `:::callout` sparingly:
+thesis break, risk flag, or source caveat only.
 
 ### Validation (the compiler is the source of truth)
 
-The writer enforces:
+The compile pipeline enforces:
 
-- Root `<article class="ara-doc">`.
-- Every `class=` token is an exact-match ara-* class documented
-  in `COMPONENTS.md` (or a modifier like `ara-callout--info` of a
-  documented base).
-- Allowed tags: `article, section, div, header, footer, h2, h3,
-  h4, p, span, em, strong, code, mark, sup, sub, abbr, time, ul,
-  ol, li, dl, dt, dd, a, img, figure, figcaption, table, thead,
-  tbody, tr, th, td, blockquote, pre, br, hr`.
-- No `<h1>`, `<style>`, `<script>`, `<iframe>`, `<head>`, `<body>`.
-- No inline `style=`, no `on*=` handlers, no `javascript:`.
-- Body under 200 KB.
+- Source is a valid `.ara.md`: YAML frontmatter with at least
+  `title:`, then markdown body with `## ` headings and
+  `:::directives` from the fixed grammar in `ARA_DSL.md`.
+- The compiler dispatches `:::name(...)` against its fixed
+  directive table; unknown names error with a list of valid
+  directives.
+- After compile, the writer's `validate_body` is the backstop:
+  every `class=` token is an exact-match ara-* class documented
+  in `COMPONENTS.md` (only relevant if you used `:::raw`),
+  allowed tags only, no `style=` / `on*=` / `javascript:`, body
+  under 200 KB.
 
 You don't have to mentally validate the body. Write it, then run
 the compile check below — it'll list every problem with a
@@ -339,17 +349,19 @@ suggested fix.
 **7.5. Compile-check the body, fix, re-check, loop until clean.**
 
 ```bash
-# Write the body to /tmp/gen-research-body.html via the Write tool,
+# Write the body to /tmp/gen-research.ara.md via the Write tool,
 # then compile-check it:
-python3 scripts/check_generative_research.py /tmp/gen-research-body.html
+python3 scripts/check_generative_research.py /tmp/gen-research.ara.md
 # Exit 0 → safe to commit (proceed below).
-# Exit 1 → stderr lists every invalid class/tag with suggestions.
-#          Fix the body in place and re-run the check. Iterate.
+# Exit 1 → stderr lists every DSL grammar error or invalid
+#          class/tag with suggestions. Fix the body in place and
+#          re-run the check. Iterate.
 ```
 
-**8. Commit** via the writer (which re-runs the same validation as
-defense in depth, then writes the file + updates the index + makes
-a local commit):
+**8. Commit** via the writer (which re-compiles + re-validates as
+defense in depth, then writes both the `.ara.md` source and the
+compiled `.html` artifact + updates the index + makes a local
+commit):
 
 ```bash
 python3 scripts/write_generative_research.py \
@@ -357,16 +369,20 @@ python3 scripts/write_generative_research.py \
   --model "claude-opus-4-7" \
   --source "local" \
   --kind fragment \
-  --html-body /tmp/gen-research-body.html
+  --html-body /tmp/gen-research.ara.md
 ```
 
-If the writer prints a validation error (`disallowed tag`,
-`non-ara-* classes`), fix the body and re-run. Do **not** strip
-the validation — the design system is the point.
+(The `--html-body` flag accepts either an `.ara.md` source or a
+raw `.html` body — it auto-detects by extension. The writer will
+compile and store both files when given DSL.)
 
-The writer prints the relative path of the new file and the index
-size on stdout, then commits locally. **Do not push** — leave the
-commit for the user to review.
+If the writer prints a validation error (`unknown directive`,
+`disallowed tag`, `non-ara-* classes`), fix the body and re-run.
+Do **not** strip the validation — the design system is the point.
+
+The writer prints the relative paths of the new files and the
+index size on stdout, then commits locally. **Do not push** —
+leave the commit for the user to review.
 
 ### Report back to the user (PATH B)
 

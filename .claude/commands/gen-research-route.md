@@ -73,7 +73,8 @@ A short message containing:
 - The run URL (clickable in the terminal).
 - The command to watch live progress: `gh run watch <id>`.
 - Expected runtime (~20–45 min) and where the article will land
-  (`research/generative/<timestamp>--<slug>.html`).
+  (`research/generative/<timestamp>--<slug>.ara.md` for the DSL
+  source plus the compiled `.html` artifact beside it).
 - A reminder that the runner will push the commit automatically.
 
 Do NOT write the article locally in this session — the workflow

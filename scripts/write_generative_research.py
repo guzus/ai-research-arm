@@ -27,6 +27,10 @@ import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
+# Local import — the compiler lives next door in scripts/.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from compile_ara import AraSyntaxError, compile_source  # noqa: E402
+
 MAX_BODY_BYTES = 200_000
 MAX_STANDALONE_BYTES = 2_000_000
 SLUG_MAX = 60
@@ -121,6 +125,19 @@ def read_body(source: str) -> str:
     if source == "-":
         return sys.stdin.read()
     return Path(source).read_text(encoding="utf-8")
+
+
+def detect_dsl(path_or_stdin: str, body: str) -> bool:
+    """`.ara.md` extension is the canonical signal. If reading from stdin
+    we sniff for `---\n` frontmatter — but only count it as DSL if we
+    also see a known marker like `:::` or `## ` near the top, so a stray
+    HTML comment doesn't trigger compile."""
+    if path_or_stdin != "-" and path_or_stdin.endswith(".ara.md"):
+        return True
+    head = body[:4096]
+    if head.startswith("---\n") and ("\n:::" in head or "\n## " in head or "\n# " in head):
+        return True
+    return False
 
 
 class _FragmentValidator(html.parser.HTMLParser):
@@ -307,7 +324,15 @@ def main(argv: list[str] | None = None) -> int:
     if not gen_dir.exists():
         raise SystemExit(f"missing dir: {gen_dir}")
 
-    body = read_body(args.html_body)
+    raw = read_body(args.html_body)
+    is_dsl = detect_dsl(args.html_body, raw)
+    if is_dsl:
+        try:
+            body = compile_source(raw)
+        except AraSyntaxError as e:
+            raise SystemExit(f"write_generative_research: DSL compile failed: {e}")
+    else:
+        body = raw
     validate_body(body, args.kind)
     if not body.endswith("\n"):
         body += "\n"
@@ -354,10 +379,20 @@ def main(argv: list[str] | None = None) -> int:
     print(f"wrote {html_path.relative_to(repo)}")
     print(f"updated {index_path.relative_to(repo)} ({len(index)} entries)")
 
+    files_to_commit = [html_path, index_path]
+    if is_dsl:
+        # Store the source next to the artifact so future edits and
+        # backfills don't have to re-derive the DSL from the compiled
+        # HTML. Filename: <stamp>--<slug>.ara.md.
+        source_path = gen_dir / f"{stamp}--{slug}.ara.md"
+        source_path.write_text(raw if raw.endswith("\n") else raw + "\n", encoding="utf-8")
+        print(f"wrote {source_path.relative_to(repo)} (DSL source)")
+        files_to_commit.insert(1, source_path)
+
     if not args.no_commit:
         git_commit(
             repo,
-            [html_path, index_path],
+            files_to_commit,
             f"Generative research: {title}",
         )
 

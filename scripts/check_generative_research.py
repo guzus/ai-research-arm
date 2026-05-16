@@ -35,9 +35,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from write_generative_research import (  # noqa: E402
     KIND_FRAGMENT,
     KINDS,
+    detect_dsl,
     read_body,
     validate_body,
 )
+from compile_ara import AraSyntaxError, compile_source  # noqa: E402
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -59,10 +61,20 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     try:
-        body = read_body(args.body_path)
+        raw = read_body(args.body_path)
     except OSError as e:
         print(f"check: read failed: {e}", file=sys.stderr)
         return 2
+
+    is_dsl = detect_dsl(args.body_path, raw)
+    if is_dsl:
+        try:
+            body = compile_source(raw)
+        except AraSyntaxError as e:
+            print(f"check: DSL compile failed: {e}", file=sys.stderr)
+            return 1
+    else:
+        body = raw
 
     try:
         validate_body(body, args.kind)
@@ -71,8 +83,9 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     size = len(body.encode("utf-8"))
+    src = "compiled from DSL" if is_dsl else "raw HTML"
     print(
-        f"check: OK ({size:,} bytes, kind={args.kind}). Safe to commit.",
+        f"check: OK ({size:,} bytes, kind={args.kind}, {src}). Safe to commit.",
         file=sys.stderr,
     )
     return 0
