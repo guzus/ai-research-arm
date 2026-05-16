@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-16
+
+TOP 5 PAPERS:
+- HiDream-O1-Image: pixel-level unified diffusion transformer for generation + editing, no VAE
+- Fast Byte Latent Transformer: closes the autoregressive speed gap for byte-level LMs
+- Federation of Experts: communication-efficient distributed MoE inference across nodes
+- Workspace-Bench 1.0: frontier agents hit just 68.7% vs 80.7% human on dependency-rich workspace tasks
+- Large VLMs Get Lost in Attention: attention allocation collapses as visual context grows
+
+CATEGORIES: LM/NLP 4, Vision/Multimodal 4, Agents/Reasoning 4, Safety/Alignment 3, Other 2
+
+Full report on GitHub.
