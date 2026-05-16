@@ -1,13 +1,14 @@
 AI News - 2026-05-16
 
 TOP STORIES:
+• Anthropic agrees terms on $30B raise at $900B pre-money — Sequoia/Dragoneer/Greenoaks/Altimeter co-lead; surpasses OpenAI's $852B; Oct 2026 IPO eyed
 • OpenAI preparing legal action vs Apple over Siri ChatGPT integration; outside firm engaged; breach-of-contract notice among options (Bloomberg/Fortune)
-• xAI launches Grok Build agentic coding CLI (beta) - Grok 4.3, Skills/MCP-compatible with Claude Code; SuperGrok Heavy $300/mo
-• Cerebras (CBRS) reverses Day-2: closes -10% at $279.72 after +68% debut Thursday; ~$85B implied valuation
+• xAI launches Grok Build agentic coding CLI — Grok 4.3, MCP-compatible with Claude Code; $300/mo
+• Cerebras (CBRS) -10% Day-2 to $279.72; ~$85B implied valuation
 
 KEY NUMBERS:
-• CBRS Day-2: -10% to $279.72; ~$85B implied valuation (down from ~$95B Thursday close)
-• GridCARE $64M Series A led by Sutter Hill + John Doerr - "Power Acceleration for AI"
-• Cloudflare cuts ~1,100 (~20% of workforce); Coinbase cuts ~700 (~14%); 92,000 tech layoffs YTD 2026
+• Anthropic: $30B round / $900B pre-money / >$45B ARR / Claude Code >$2.5B ARR
+• GridCARE $64M Series A (Sutter Hill + John Doerr)
+• Cloudflare -1,100 (~20%), Coinbase -700; 92K tech layoffs YTD 2026
 
 Full report on GitHub.
