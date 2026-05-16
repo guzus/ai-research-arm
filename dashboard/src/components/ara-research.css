@@ -67,6 +67,10 @@
 .ara-doc > .ara-bars,
 .ara-doc > .ara-stack-bar,
 .ara-doc > .ara-stack-legend,
+.ara-doc > .ara-stack-rows,
+.ara-doc > .ara-line-chart,
+.ara-doc > .ara-donut,
+.ara-doc > .ara-slope,
 .ara-doc > .ara-compare,
 .ara-doc > .ara-rank-list,
 .ara-doc > .ara-iso,
@@ -641,10 +645,16 @@
   padding: 0 6px;
 }
 
+/* Six-step neutral palette — neutral so categorical data doesn't impose
+ * meaning the article isn't claiming (red ≠ bad, green ≠ good unless the
+ * author wants it). For categorical color where the chart legend carries
+ * the meaning (e.g., country breakdowns), use these in order. */
 .ara-stack-seg--1 { background: var(--text); }
-.ara-stack-seg--2 { background: var(--text-secondary); }
-.ara-stack-seg--3 { background: var(--text-tertiary); }
-.ara-stack-seg--4 { background: var(--border); }
+.ara-stack-seg--2 { background: var(--accent-warm); }
+.ara-stack-seg--3 { background: var(--text-secondary); }
+.ara-stack-seg--4 { background: var(--text-tertiary); }
+.ara-stack-seg--5 { background: #94a3b8; }
+.ara-stack-seg--6 { background: var(--border); }
 
 .ara-stack-legend {
   list-style: none;
@@ -674,9 +684,356 @@
 }
 
 .ara-stack-dot--1 { background: var(--text); }
-.ara-stack-dot--2 { background: var(--text-secondary); }
-.ara-stack-dot--3 { background: var(--text-tertiary); }
-.ara-stack-dot--4 { background: var(--border); }
+.ara-stack-dot--2 { background: var(--accent-warm); }
+.ara-stack-dot--3 { background: var(--text-secondary); }
+.ara-stack-dot--4 { background: var(--text-tertiary); }
+.ara-stack-dot--5 { background: #94a3b8; }
+.ara-stack-dot--6 { background: var(--border); }
+
+/* ── Stack-rows: multi-row stacked bar with shared legend ─── */
+/* Bloomberg "Luxury Companies' Sales Exposure to Consumer Clusters" pattern:
+ * many labeled rows of categorical stack-bars sharing one color legend.
+ * Each row is a normal ara-stack-bar — the only new structure here is the
+ * row label column on the left and an optional bottom axis ruler. */
+.ara-stack-rows {
+  margin: 22px 0;
+  font-family: var(--font);
+}
+
+.ara-stack-rows-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.ara-stack-rows-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ara-stack-rows-cat::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+.ara-stack-rows-cat--1 { color: var(--text); }
+.ara-stack-rows-cat--2 { color: var(--accent-warm); }
+.ara-stack-rows-cat--3 { color: var(--text-secondary); }
+.ara-stack-rows-cat--4 { color: var(--text-tertiary); }
+.ara-stack-rows-cat--5 { color: #94a3b8; }
+.ara-stack-rows-cat--6 { color: var(--border); }
+/* Repeat in --color rule for the swatch — the label text color is the
+ * surrounding text-secondary, so override here. */
+.ara-stack-rows-cat--1,
+.ara-stack-rows-cat--2,
+.ara-stack-rows-cat--3,
+.ara-stack-rows-cat--4,
+.ara-stack-rows-cat--5,
+.ara-stack-rows-cat--6 {
+  color: var(--text-secondary);
+}
+.ara-stack-rows-cat--1::before { background: var(--text); }
+.ara-stack-rows-cat--2::before { background: var(--accent-warm); }
+.ara-stack-rows-cat--3::before { background: var(--text-secondary); }
+.ara-stack-rows-cat--4::before { background: var(--text-tertiary); }
+.ara-stack-rows-cat--5::before { background: #94a3b8; }
+.ara-stack-rows-cat--6::before { background: var(--border); }
+
+.ara-stack-rows-grid {
+  display: grid;
+  grid-template-columns: minmax(120px, max-content) 1fr;
+  column-gap: 14px;
+  row-gap: 8px;
+  align-items: center;
+}
+
+.ara-stack-rows-row {
+  display: contents;
+}
+
+.ara-stack-rows-label {
+  font-size: 0.9rem;
+  color: var(--text);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ara-stack-rows-row .ara-stack-bar {
+  margin: 0;
+  height: 18px;
+  border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .ara-stack-rows-grid {
+    grid-template-columns: minmax(80px, max-content) 1fr;
+    column-gap: 8px;
+  }
+  .ara-stack-rows-label {
+    font-size: 0.78rem;
+  }
+  .ara-stack-rows-row .ara-stack-bar {
+    height: 14px;
+  }
+}
+
+/* ── Sparkline (inline mini trend) ───────────────── */
+/* Glanceable trend shape inside prose. Authored as
+ * <span class="ara-sparkline" data-points="5.2,5.4,5.5,...">
+ * — main.ts injects the SVG path at render time. ~80x20px default. */
+.ara-sparkline {
+  display: inline-block;
+  width: 80px;
+  height: 22px;
+  vertical-align: -5px;
+  color: var(--accent-warm);
+}
+
+.ara-sparkline svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ara-sparkline .ara-sparkline-path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.ara-sparkline .ara-sparkline-end {
+  fill: currentColor;
+}
+
+/* ── Line chart (full SVG with axes + multiple series) ─── */
+/* Authored as <div class="ara-line-chart" data-series-1="..." data-y-unit="$">
+ * — main.ts injects an axis-bearing SVG at render time. Up to 4 series. */
+.ara-line-chart {
+  margin: 22px 0;
+  padding: 14px 8px 4px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background: var(--bg);
+  font-family: var(--font);
+}
+
+.ara-line-chart-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 4px;
+  padding-left: 8px;
+}
+
+.ara-line-chart-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin: 0 0 10px;
+  padding-left: 8px;
+}
+
+.ara-line-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ara-line-chart .ara-chart-grid {
+  stroke: var(--border-light);
+  stroke-width: 0.5;
+}
+
+.ara-line-chart .ara-chart-axis-label,
+.ara-line-chart .ara-chart-tick-label {
+  fill: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.ara-line-chart .ara-chart-series-1 { stroke: var(--text); }
+.ara-line-chart .ara-chart-series-2 { stroke: var(--accent-warm); }
+.ara-line-chart .ara-chart-series-3 { stroke: var(--text-secondary); }
+.ara-line-chart .ara-chart-series-4 { stroke: var(--text-tertiary); }
+
+.ara-line-chart .ara-chart-series {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.ara-line-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+  padding-left: 8px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.ara-line-chart-legend .ara-chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ara-line-chart-legend .ara-chart-legend-item::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 2px;
+  background: currentColor;
+}
+
+.ara-line-chart-legend .ara-chart-legend-item--1 { color: var(--text); }
+.ara-line-chart-legend .ara-chart-legend-item--2 { color: var(--accent-warm); }
+.ara-line-chart-legend .ara-chart-legend-item--3 { color: var(--text-secondary); }
+.ara-line-chart-legend .ara-chart-legend-item--4 { color: var(--text-tertiary); }
+
+/* ── Donut (proportional ring) ───────────────────── */
+/* Authored as <div class="ara-donut" data-labels="..." data-values="...">
+ * — main.ts injects SVG arcs at render time. 3-7 segments work best. */
+.ara-donut {
+  margin: 22px 0;
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) 1fr;
+  gap: 22px;
+  align-items: center;
+  font-family: var(--font);
+}
+
+.ara-donut svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ara-donut .ara-donut-slice {
+  stroke: var(--bg);
+  stroke-width: 1.5;
+}
+
+.ara-donut .ara-donut-center-label {
+  fill: var(--text);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.ara-donut .ara-donut-slice--1 { fill: var(--text); }
+.ara-donut .ara-donut-slice--2 { fill: var(--accent-warm); }
+.ara-donut .ara-donut-slice--3 { fill: var(--text-secondary); }
+.ara-donut .ara-donut-slice--4 { fill: var(--text-tertiary); }
+.ara-donut .ara-donut-slice--5 { fill: #94a3b8; }
+.ara-donut .ara-donut-slice--6 { fill: var(--border); }
+
+.ara-donut-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.88rem;
+}
+
+.ara-donut-legend li {
+  display: grid;
+  grid-template-columns: 16px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text);
+  margin: 0;
+}
+
+.ara-donut-legend li:last-child { border-bottom: none; }
+
+.ara-donut-legend-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.ara-donut-legend-swatch--1 { background: var(--text); }
+.ara-donut-legend-swatch--2 { background: var(--accent-warm); }
+.ara-donut-legend-swatch--3 { background: var(--text-secondary); }
+.ara-donut-legend-swatch--4 { background: var(--text-tertiary); }
+.ara-donut-legend-swatch--5 { background: #94a3b8; }
+.ara-donut-legend-swatch--6 { background: var(--border); }
+
+.ara-donut-legend-value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 640px) {
+  .ara-donut {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* ── Slopegraph (two-period change) ──────────────── */
+/* "2020 vs. 2026" pattern: two labeled columns of values connected by
+ * sloped lines. Best when ≤8 items and lines don't cross too much.
+ * Authored as <div class="ara-slope" data-items="..." data-left-values="..."
+ *   data-right-values="..." data-left-label="2020" data-right-label="2026">
+ * — main.ts injects SVG at render time. */
+.ara-slope {
+  margin: 22px 0;
+  font-family: var(--font);
+}
+
+.ara-slope svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ara-slope .ara-slope-line {
+  fill: none;
+  stroke: var(--text-tertiary);
+  stroke-width: 1.5;
+}
+
+.ara-slope .ara-slope-line--up { stroke: #1b6d3a; }
+.ara-slope .ara-slope-line--down { stroke: #b3251f; }
+
+.ara-slope .ara-slope-dot {
+  fill: var(--text);
+  r: 3;
+}
+
+.ara-slope .ara-slope-label,
+.ara-slope .ara-slope-value {
+  fill: var(--text);
+  font-size: 12px;
+}
+
+.ara-slope .ara-slope-header {
+  fill: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
 
 /* ── Compare trio (min / max / subject) ──────────── */
 /* Three-card horizontal block for "where does the subject sit on the

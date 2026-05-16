@@ -94,9 +94,19 @@ Proportional fills are declared with `data-pct="N"` (integer 0–100). The dashb
 | `ara-bar-label` | `<span class="ara-bar-label">` inside `ara-bar` | The category name. |
 | `ara-bar-value` | `<span class="ara-bar-value">` inside `ara-bar` | The raw number, mono tabular figures. |
 | `ara-stack-bar` | `<div class="ara-stack-bar">` containing `ara-stack-seg` spans | One horizontal bar split into categorical segments. |
-| `ara-stack-seg` | `<span class="ara-stack-seg ara-stack-seg--1" data-pct="40">` | One segment. Variants `--1` through `--4` give four neutral shades. |
-| `ara-stack-legend` | `<ul class="ara-stack-legend">` | Legend list below the stack-bar. |
+| `ara-stack-seg` | `<span class="ara-stack-seg ara-stack-seg--1" data-pct="40">` | One segment. Variants `--1` through `--6` (six neutral shades). |
+| `ara-stack-legend` | `<ul class="ara-stack-legend">` | Legend list below a single stack-bar. |
 | `ara-stack-dot` | `<span class="ara-stack-dot ara-stack-dot--1">` inside legend `<li>` | Color swatch keyed to the matching segment. |
+| `ara-stack-rows` | `<div class="ara-stack-rows">` wrapping `ara-stack-rows-legend` + `ara-stack-rows-grid` | Many labeled rows of `ara-stack-bar` sharing one legend. Bloomberg's "Luxury Companies' Sales Exposure" pattern. |
+| `ara-stack-rows-legend` | `<div class="ara-stack-rows-legend">` containing `ara-stack-rows-cat` spans | Shared color legend rendered above the grid. |
+| `ara-stack-rows-cat` | `<span class="ara-stack-rows-cat ara-stack-rows-cat--1">China</span>` | One legend entry. Variants `--1` through `--6` align with `ara-stack-seg--N`. |
+| `ara-stack-rows-grid` | `<div class="ara-stack-rows-grid">` containing `ara-stack-rows-row` | The data area: row label + stack-bar per row. |
+| `ara-stack-rows-row` | `<div class="ara-stack-rows-row">` containing `ara-stack-rows-label` + `ara-stack-bar` | One labeled row. Uses `display: contents` so its children align in the parent grid. |
+| `ara-stack-rows-label` | `<span class="ara-stack-rows-label">Moncler</span>` | Right-aligned row label. |
+| `ara-sparkline` | `<span class="ara-sparkline" data-points="5.2,5.4,5.5,6.1,6.8,7.0"></span>` (self-closing — dashboard fills) | Inline mini-trend SVG. Dashboard injects path at render time. ~80×22 px, sits in prose. |
+| `ara-line-chart` | `<div class="ara-line-chart" data-series-1="..." data-series-1-label="..." data-x-labels="..." data-y-unit="$" data-title="..." data-subtitle="..."></div>` | Full SVG line chart with axes + gridlines. Up to 4 series via `data-series-1`..`data-series-4`. Dashboard injects SVG at render time. |
+| `ara-donut` | `<div class="ara-donut" data-labels="China,US,Europe,Other" data-values="40.6,25,20,14.4" data-center-label="100%"></div>` | Proportional ring with side legend. Dashboard injects SVG + legend at render time. 3–7 segments work best. |
+| `ara-slope` | `<div class="ara-slope" data-items="Apple,Microsoft,Google" data-left-values="3.2,1.6,1.2" data-right-values="4.1,3.0,2.0" data-left-label="2020" data-right-label="2026" data-unit="$"></div>` | Two-period slopegraph. Each line is auto-colored green (up) or red (down). Best when ≤8 items. |
 | `ara-timeline` | `<ol class="ara-timeline">` containing `ara-timeline-item` | Vertical chronological log. |
 | `ara-timeline-item` | `<li class="ara-timeline-item">` | One event. |
 | `ara-timeline-date` | `<time class="ara-timeline-date">2024-01</time>` | Date or period label. |
@@ -106,7 +116,7 @@ Proportional fills are declared with `data-pct="N"` (integer 0–100). The dashb
 | `ara-iso-glyphs` | `<span class="ara-iso-glyphs" data-glyph="🚶" data-count="17"></span>` (self-closing — dashboard fills) | The dashboard expands `data-count` copies of `data-glyph` into child spans at render time. Hard cap 200 to prevent runaway DOM. Pick any single glyph: emoji, unicode symbol, or short text. |
 | `ara-iso-total` | `<span class="ara-iso-total">17</span>` | The raw count, mono tabular, after the glyphs for fast scanning. |
 
-**Why no inline charts?** Arbitrary x/y line charts and donut charts would require either SVG (more attack surface) or an external library (more deps). When you genuinely need a chart, file an issue with a sample and we add a primitive.
+**How the SVG primitives stay safe.** Authors only write `<div data-*>` / `<span data-*>` — `<svg>` is NOT on the allowed-tags list. `main.ts` reads `data-*` attributes at render time, parses every numeric value (dropping anything non-finite), clamps array lengths to a hard cap, and synthesises the SVG inside the dashboard. No author HTML ever touches the SVG element directly.
 
 ## Inline
 

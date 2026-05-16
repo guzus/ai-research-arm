@@ -980,13 +980,17 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
   );
 
   // After DOM is in place, apply data-pct viz fills, wrap tables in a
-  // horizontal-scroll container, expand pictogram counts, and build the
-  // floating TOC.
+  // horizontal-scroll container, expand pictogram counts, inject SVG
+  // charts, and build the floating TOC.
   const article = content.querySelector('article.ara-doc') as HTMLElement | null;
   if (article) {
     applyBarFills(article);
     wrapAraTables(article);
     applyIsotypes(article);
+    renderSparklines(article);
+    renderLineCharts(article);
+    renderDonuts(article);
+    renderSlopes(article);
     renderResearchTOC(article);
   } else {
     hideResearchTOC();
@@ -1012,6 +1016,327 @@ function applyIsotypes(root: HTMLElement): void {
       g.appendChild(s);
     }
     g.dataset.expanded = '1';
+  }
+}
+
+// ── SVG chart injection ──────────────────────────────────────────────
+//
+// Authored markup uses <div data-*> only — the writer's tag allowlist
+// rejects <svg> in fragments, so we generate SVG at render time and
+// inject it here. Same security model as applyBarFills / applyIsotypes:
+// values come from data-* attrs (validator strips on*= and inline style),
+// and we never `innerHTML` raw author strings — every numeric attr is
+// parsed and clamped before being templated into the SVG.
+
+const SVG_NS = 'http://www.w3.org/2000/svg';
+
+function svgEl<T extends SVGElement>(tag: string, attrs: Record<string, string | number>): T {
+  const el = document.createElementNS(SVG_NS, tag) as T;
+  for (const [k, v] of Object.entries(attrs)) {
+    el.setAttribute(k, String(v));
+  }
+  return el;
+}
+
+/** Parse a comma-separated number list from a data attribute. Drops
+ * anything non-finite. Caps length so a typo can't blow up render. */
+function parseSeries(raw: string | undefined, cap = 1000): number[] {
+  if (!raw) return [];
+  return raw
+    .split(',')
+    .map((s) => Number(s.trim()))
+    .filter((n) => Number.isFinite(n))
+    .slice(0, cap);
+}
+
+function parseLabels(raw: string | undefined, cap = 200): string[] {
+  if (!raw) return [];
+  return raw.split(',').map((s) => s.trim()).slice(0, cap);
+}
+
+/** Build a polyline d-attribute from (x,y) pairs. */
+function pathFromPoints(points: Array<[number, number]>): string {
+  if (!points.length) return '';
+  return points
+    .map(([x, y], i) => (i === 0 ? `M${x.toFixed(2)},${y.toFixed(2)}` : `L${x.toFixed(2)},${y.toFixed(2)}`))
+    .join(' ');
+}
+
+/** Sparkline — small inline trend, no axes. */
+function renderSparklines(root: HTMLElement): void {
+  const els = root.querySelectorAll<HTMLElement>('.ara-sparkline');
+  for (const el of els) {
+    if (el.dataset.rendered === '1') continue;
+    const values = parseSeries(el.dataset.points, 500);
+    if (values.length < 2) continue;
+    const w = 80;
+    const h = 22;
+    const pad = 2;
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    const range = max - min || 1;
+    const points: Array<[number, number]> = values.map((v, i) => [
+      pad + (i / (values.length - 1)) * (w - pad * 2),
+      h - pad - ((v - min) / range) * (h - pad * 2),
+    ]);
+    const svg = svgEl<SVGSVGElement>('svg', { viewBox: `0 0 ${w} ${h}`, preserveAspectRatio: 'none' });
+    const path = svgEl<SVGPathElement>('path', { class: 'ara-sparkline-path', d: pathFromPoints(points) });
+    svg.appendChild(path);
+    const last = points[points.length - 1];
+    const dot = svgEl<SVGCircleElement>('circle', { class: 'ara-sparkline-end', cx: last[0], cy: last[1], r: 1.6 });
+    svg.appendChild(dot);
+    el.textContent = '';
+    el.appendChild(svg);
+    el.dataset.rendered = '1';
+  }
+}
+
+/** Full line chart with axes. Supports up to 4 series via data-series-{1..4}.
+ * Optional data-series-{N}-label, data-x-labels, data-y-unit, data-title,
+ * data-subtitle. */
+function renderLineCharts(root: HTMLElement): void {
+  const els = root.querySelectorAll<HTMLElement>('.ara-line-chart');
+  for (const el of els) {
+    if (el.dataset.rendered === '1') continue;
+    const seriesList: Array<{ values: number[]; label: string }> = [];
+    for (let i = 1; i <= 4; i++) {
+      const v = parseSeries(el.dataset[`series${i}`], 1000);
+      if (!v.length) continue;
+      seriesList.push({ values: v, label: el.dataset[`series${i}Label`] || `Series ${i}` });
+    }
+    if (!seriesList.length) continue;
+    const xLabels = parseLabels(el.dataset.xLabels, 20);
+    const yUnit = el.dataset.yUnit || '';
+    const title = el.dataset.title || '';
+    const subtitle = el.dataset.subtitle || '';
+
+    const W = 640;
+    const H = 220;
+    const ML = 44;
+    const MR = 12;
+    const MT = 10;
+    const MB = 26;
+    const innerW = W - ML - MR;
+    const innerH = H - MT - MB;
+
+    const allValues = seriesList.flatMap((s) => s.values);
+    const min = Math.min(...allValues);
+    const max = Math.max(...allValues);
+    const pad = (max - min) * 0.08 || 1;
+    const yMin = min - pad;
+    const yMax = max + pad;
+    const yRange = yMax - yMin || 1;
+    const longest = Math.max(...seriesList.map((s) => s.values.length));
+
+    const xFor = (i: number, total: number) => ML + (i / Math.max(1, total - 1)) * innerW;
+    const yFor = (v: number) => MT + innerH - ((v - yMin) / yRange) * innerH;
+
+    el.textContent = '';
+    if (title) {
+      const t = document.createElement('p');
+      t.className = 'ara-line-chart-title';
+      t.textContent = title;
+      el.appendChild(t);
+    }
+    if (subtitle) {
+      const s = document.createElement('p');
+      s.className = 'ara-line-chart-subtitle';
+      s.textContent = subtitle;
+      el.appendChild(s);
+    }
+    const svg = svgEl<SVGSVGElement>('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'xMidYMid meet' });
+
+    // 5 horizontal gridlines + y-axis tick labels
+    const Y_TICKS = 5;
+    for (let i = 0; i <= Y_TICKS; i++) {
+      const y = MT + (i / Y_TICKS) * innerH;
+      const v = yMax - (i / Y_TICKS) * yRange;
+      svg.appendChild(svgEl('line', { class: 'ara-chart-grid', x1: ML, y1: y, x2: W - MR, y2: y }));
+      const lab = svgEl<SVGTextElement>('text', { class: 'ara-chart-tick-label', x: ML - 6, y: y + 3, 'text-anchor': 'end' });
+      lab.textContent = `${yUnit}${v.toFixed(yRange < 5 ? 2 : 1)}`;
+      svg.appendChild(lab);
+    }
+
+    // X-axis labels — sparse to avoid clutter
+    if (xLabels.length) {
+      const stepRender = Math.max(1, Math.ceil(xLabels.length / 8));
+      for (let i = 0; i < xLabels.length; i += stepRender) {
+        const x = xFor(i, xLabels.length);
+        const lab = svgEl<SVGTextElement>('text', { class: 'ara-chart-tick-label', x, y: H - 8, 'text-anchor': 'middle' });
+        lab.textContent = xLabels[i];
+        svg.appendChild(lab);
+      }
+    }
+
+    // Series paths
+    seriesList.forEach((s, idx) => {
+      const points: Array<[number, number]> = s.values.map((v, i) => [
+        xFor(i, s.values.length === 1 ? 2 : s.values.length),
+        yFor(v),
+      ]);
+      svg.appendChild(svgEl('path', { class: `ara-chart-series ara-chart-series-${idx + 1}`, d: pathFromPoints(points) }));
+    });
+
+    el.appendChild(svg);
+    longest; // (silence unused — could be used for x-tick stride)
+
+    // Legend
+    if (seriesList.length > 1) {
+      const legend = document.createElement('div');
+      legend.className = 'ara-line-chart-legend';
+      seriesList.forEach((s, idx) => {
+        const item = document.createElement('span');
+        item.className = `ara-chart-legend-item ara-chart-legend-item--${idx + 1}`;
+        item.textContent = s.label;
+        legend.appendChild(item);
+      });
+      el.appendChild(legend);
+    }
+    el.dataset.rendered = '1';
+  }
+}
+
+/** Donut chart with side legend. Author writes data-labels + data-values. */
+function renderDonuts(root: HTMLElement): void {
+  const els = root.querySelectorAll<HTMLElement>('.ara-donut');
+  for (const el of els) {
+    if (el.dataset.rendered === '1') continue;
+    const labels = parseLabels(el.dataset.labels, 8);
+    const values = parseSeries(el.dataset.values, 8);
+    if (!values.length || labels.length !== values.length) continue;
+    const total = values.reduce((a, b) => a + b, 0);
+    if (total <= 0) continue;
+
+    const size = 200;
+    const cx = size / 2;
+    const cy = size / 2;
+    const ro = 88;
+    const ri = 56;
+    const centerLabel = el.dataset.centerLabel || '';
+
+    el.textContent = '';
+    const svgWrap = document.createElement('div');
+    const svg = svgEl<SVGSVGElement>('svg', { viewBox: `0 0 ${size} ${size}` });
+
+    let acc = 0;
+    values.forEach((v, idx) => {
+      const start = (acc / total) * Math.PI * 2 - Math.PI / 2;
+      acc += v;
+      const end = (acc / total) * Math.PI * 2 - Math.PI / 2;
+      const largeArc = end - start > Math.PI ? 1 : 0;
+      const sx = cx + ro * Math.cos(start);
+      const sy = cy + ro * Math.sin(start);
+      const ex = cx + ro * Math.cos(end);
+      const ey = cy + ro * Math.sin(end);
+      const sxi = cx + ri * Math.cos(end);
+      const syi = cy + ri * Math.sin(end);
+      const exi = cx + ri * Math.cos(start);
+      const eyi = cy + ri * Math.sin(start);
+      const d =
+        `M${sx.toFixed(2)},${sy.toFixed(2)}` +
+        ` A${ro},${ro} 0 ${largeArc},1 ${ex.toFixed(2)},${ey.toFixed(2)}` +
+        ` L${sxi.toFixed(2)},${syi.toFixed(2)}` +
+        ` A${ri},${ri} 0 ${largeArc},0 ${exi.toFixed(2)},${eyi.toFixed(2)}` +
+        ' Z';
+      svg.appendChild(svgEl('path', { class: `ara-donut-slice ara-donut-slice--${(idx % 6) + 1}`, d }));
+    });
+
+    if (centerLabel) {
+      const text = svgEl<SVGTextElement>('text', { class: 'ara-donut-center-label', x: cx, y: cy + 1, 'font-size': '18' });
+      text.textContent = centerLabel;
+      svg.appendChild(text);
+    }
+    svgWrap.appendChild(svg);
+    el.appendChild(svgWrap);
+
+    const legend = document.createElement('ul');
+    legend.className = 'ara-donut-legend';
+    labels.forEach((label, idx) => {
+      const li = document.createElement('li');
+      const swatch = document.createElement('span');
+      swatch.className = `ara-donut-legend-swatch ara-donut-legend-swatch--${(idx % 6) + 1}`;
+      const name = document.createElement('span');
+      name.textContent = label;
+      const value = document.createElement('span');
+      value.className = 'ara-donut-legend-value';
+      const pct = (values[idx] / total) * 100;
+      value.textContent = `${pct.toFixed(1)}%`;
+      li.appendChild(swatch);
+      li.appendChild(name);
+      li.appendChild(value);
+      legend.appendChild(li);
+    });
+    el.appendChild(legend);
+    el.dataset.rendered = '1';
+  }
+}
+
+/** Two-period slopegraph. data-items, data-left-values, data-right-values,
+ * data-left-label, data-right-label. Lines colored green/red by direction. */
+function renderSlopes(root: HTMLElement): void {
+  const els = root.querySelectorAll<HTMLElement>('.ara-slope');
+  for (const el of els) {
+    if (el.dataset.rendered === '1') continue;
+    const items = parseLabels(el.dataset.items, 12);
+    const leftValues = parseSeries(el.dataset.leftValues, 12);
+    const rightValues = parseSeries(el.dataset.rightValues, 12);
+    if (!items.length || items.length !== leftValues.length || items.length !== rightValues.length) continue;
+    const leftLabel = el.dataset.leftLabel || 'Left';
+    const rightLabel = el.dataset.rightLabel || 'Right';
+    const unit = el.dataset.unit || '';
+
+    const W = 640;
+    const rowH = 26;
+    const headerH = 30;
+    const H = headerH + items.length * rowH + 20;
+    const colL = 220;
+    const colR = W - 220;
+
+    const all = [...leftValues, ...rightValues];
+    const min = Math.min(...all);
+    const max = Math.max(...all);
+    const range = max - min || 1;
+    const yTop = headerH + 10;
+    const yBot = H - 14;
+    const yFor = (v: number) => yBot - ((v - min) / range) * (yBot - yTop);
+
+    el.textContent = '';
+    const svg = svgEl<SVGSVGElement>('svg', { viewBox: `0 0 ${W} ${H}` });
+
+    // Headers
+    const lh = svgEl<SVGTextElement>('text', { class: 'ara-slope-header', x: colL, y: 18, 'text-anchor': 'end' });
+    lh.textContent = leftLabel;
+    svg.appendChild(lh);
+    const rh = svgEl<SVGTextElement>('text', { class: 'ara-slope-header', x: colR, y: 18, 'text-anchor': 'start' });
+    rh.textContent = rightLabel;
+    svg.appendChild(rh);
+
+    items.forEach((name, i) => {
+      const lv = leftValues[i];
+      const rv = rightValues[i];
+      const ly = yFor(lv);
+      const ry = yFor(rv);
+      const direction = rv > lv ? 'up' : rv < lv ? 'down' : 'flat';
+      const line = svgEl<SVGLineElement>('line', {
+        class: `ara-slope-line ${direction !== 'flat' ? `ara-slope-line--${direction}` : ''}`.trim(),
+        x1: colL + 6,
+        y1: ly,
+        x2: colR - 6,
+        y2: ry,
+      });
+      svg.appendChild(line);
+      svg.appendChild(svgEl('circle', { class: 'ara-slope-dot', cx: colL + 6, cy: ly, r: 3 }));
+      svg.appendChild(svgEl('circle', { class: 'ara-slope-dot', cx: colR - 6, cy: ry, r: 3 }));
+      const lLabel = svgEl<SVGTextElement>('text', { class: 'ara-slope-label', x: colL - 8, y: ly + 4, 'text-anchor': 'end' });
+      lLabel.textContent = `${name} ${unit}${lv}`;
+      svg.appendChild(lLabel);
+      const rLabel = svgEl<SVGTextElement>('text', { class: 'ara-slope-label', x: colR + 8, y: ry + 4, 'text-anchor': 'start' });
+      rLabel.textContent = `${unit}${rv} ${name}`;
+      svg.appendChild(rLabel);
+    });
+
+    el.appendChild(svg);
+    el.dataset.rendered = '1';
   }
 }
 
