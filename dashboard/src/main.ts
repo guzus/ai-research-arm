@@ -1098,11 +1098,15 @@ function renderLineCharts(root: HTMLElement): void {
   const els = root.querySelectorAll<HTMLElement>('.ara-line-chart');
   for (const el of els) {
     if (el.dataset.rendered === '1') continue;
+    // data-series-N attrs use digit suffixes — DOMStringMap leaves the
+    // hyphen in (data-series-1 does NOT map to dataset.series1), so read
+    // them with getAttribute to sidestep the gotcha.
     const seriesList: Array<{ values: number[]; label: string }> = [];
     for (let i = 1; i <= 4; i++) {
-      const v = parseSeries(el.dataset[`series${i}`], 1000);
+      const v = parseSeries(el.getAttribute(`data-series-${i}`) || undefined, 1000);
       if (!v.length) continue;
-      seriesList.push({ values: v, label: el.dataset[`series${i}Label`] || `Series ${i}` });
+      const label = el.getAttribute(`data-series-${i}-label`) || `Series ${i}`;
+      seriesList.push({ values: v, label });
     }
     if (!seriesList.length) continue;
     const xLabels = parseLabels(el.dataset.xLabels, 20);
