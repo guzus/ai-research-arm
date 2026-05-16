@@ -27,12 +27,26 @@
 /* ── Doc root ─────────────────────────────────────── */
 /* No outer max-width — children pick their own measure (reading vs.
  * wide). MoMA-style editorial pattern: title block and prose stay
- * narrow, data viz breathes wider. */
+ * narrow, data viz breathes wider.
+ *
+ * House style: hard edges, high-contrast borders, no rgba washes.
+ * The two overrides below shadow the dashboard's softer global
+ * tokens inside `.ara-doc` only — the rest of the chrome keeps its
+ * native palette. */
 .ara-doc {
+  --border: #1a1a1a;
+  --border-light: #1a1a1a;
   font-family: var(--font);
   color: var(--text);
   line-height: 1.5;
   letter-spacing: -0.005em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ara-doc {
+    --border: #e0e0e0;
+    --border-light: #e0e0e0;
+  }
 }
 
 /* Reading column — prose flows in a 760px measure. Left-aligned so it
@@ -155,7 +169,7 @@
   line-height: 1.2;
   margin: 44px 0 14px;
   padding-top: 22px;
-  border-top: 1px solid var(--border);
+  border-top: 1.5px solid var(--border);
 }
 
 .ara-h2:first-child { padding-top: 0; border-top: none; margin-top: 0; }
@@ -265,13 +279,18 @@
 .ara-doc li::marker { color: var(--text-tertiary); }
 
 /* ── Callouts ────────────────────────────────────── */
+/* Hard rectangular box, neutral border, 4px colored left edge as the
+ * variant accent. No tinted background — the color discipline lives on
+ * the left edge and the label chip. */
 .ara-callout {
   font-family: var(--font);
-  border-left: 3px solid var(--text-tertiary);
-  background: var(--bg-secondary);
+  border: 1.5px solid var(--border);
+  border-left-width: 4px;
+  border-left-color: var(--text-tertiary);
+  background: transparent;
   padding: 14px 16px;
   margin: 20px 0;
-  border-radius: 0 8px 8px 0;
+  border-radius: 0;
   font-size: 0.95rem;
   line-height: 1.65;
   color: var(--text);
@@ -286,15 +305,15 @@
 
 .ara-callout p + p { margin-top: 8px; }
 
-.ara-callout--info    { border-left-color: var(--accent-warm); background: var(--accent-warm-bg); }
-.ara-callout--success { border-left-color: #1b6d3a; background: rgba(27, 109, 58, 0.07); }
-.ara-callout--warn    { border-left-color: #b07020; background: rgba(176, 112, 32, 0.07); }
-.ara-callout--danger  { border-left-color: #b3251f; background: rgba(179, 37, 31, 0.07); }
+.ara-callout--info    { border-left-color: var(--accent-warm); }
+.ara-callout--success { border-left-color: #1b6d3a; }
+.ara-callout--warn    { border-left-color: #b07020; }
+.ara-callout--danger  { border-left-color: #b3251f; }
 
 @media (prefers-color-scheme: dark) {
-  .ara-callout--success { background: rgba(111, 204, 146, 0.08); border-left-color: #6fcc92; }
-  .ara-callout--warn    { background: rgba(212, 166, 114, 0.08); border-left-color: #d4a672; }
-  .ara-callout--danger  { background: rgba(238, 122, 115, 0.08); border-left-color: #ee7a73; }
+  .ara-callout--success { border-left-color: #6fcc92; }
+  .ara-callout--warn    { border-left-color: #d4a672; }
+  .ara-callout--danger  { border-left-color: #ee7a73; }
 }
 
 .ara-callout-label {
@@ -304,14 +323,27 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: inherit;
+  color: var(--text-tertiary);
   margin-bottom: 6px;
-  opacity: 0.8;
+  opacity: 1;
+}
+
+/* Label chip color mirrors the variant edge — same color in two places,
+ * so the eye reads the kind of callout without a fill. */
+.ara-callout--info    .ara-callout-label { color: var(--accent-warm); }
+.ara-callout--success .ara-callout-label { color: #1b6d3a; }
+.ara-callout--warn    .ara-callout-label { color: #b07020; }
+.ara-callout--danger  .ara-callout-label { color: #b3251f; }
+
+@media (prefers-color-scheme: dark) {
+  .ara-callout--success .ara-callout-label { color: #6fcc92; }
+  .ara-callout--warn    .ara-callout-label { color: #d4a672; }
+  .ara-callout--danger  .ara-callout-label { color: #ee7a73; }
 }
 
 /* ── Pull quote ──────────────────────────────────── */
 .ara-quote {
-  border-left: 3px solid var(--accent-warm);
+  border-left: 4px solid var(--accent-warm);
   padding: 4px 0 4px 18px;
   margin: 24px 0;
   font-family: var(--font-serif);
@@ -364,18 +396,25 @@
 }
 
 /* ── Stat grid ───────────────────────────────────── */
+/* Internal lines via grid `gap` colored by the parent's background.
+ * This is the only CSS pattern that produces correct internal-only
+ * separators in an auto-fit grid (the last row's items can't be
+ * known in pure CSS, so we can't safely use per-cell borders). */
 .ara-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 16px;
+  gap: 1.5px;
   margin: 22px 0;
-  padding: 18px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  border-radius: 10px;
+  background: var(--border);
+  border: 1.5px solid var(--border);
+  border-radius: 0;
 }
 
-.ara-stat { text-align: left; }
+.ara-stat {
+  background: var(--bg);
+  padding: 14px 16px;
+  text-align: left;
+}
 
 .ara-stat-label {
   display: block;
@@ -445,23 +484,24 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-tertiary);
+  color: var(--text);
   text-align: left;
   padding: 9px 12px;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-secondary);
+  border-top: 1.5px solid var(--border);
+  border-bottom: 1.5px solid var(--border);
+  background: transparent;
   white-space: nowrap;
 }
 
 .ara-table tbody td {
   padding: 10px 12px;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border);
   vertical-align: top;
   color: var(--text);
 }
 
-.ara-table tbody tr:last-child td { border-bottom: none; }
-.ara-table tbody tr:hover td { background: var(--bg-secondary); }
+.ara-table tbody tr:last-child td { border-bottom: 1.5px solid var(--border); }
+.ara-table tbody tr:hover td { background: transparent; }
 
 @media (max-width: 640px) {
   .ara-table { font-size: 0.78rem; }
@@ -479,7 +519,7 @@
   max-width: 100%;
   height: auto;
   border-radius: 6px;
-  border: 1px solid var(--border-light);
+  border: 1.5px solid var(--border);
 }
 
 .ara-caption {
@@ -503,7 +543,7 @@
 
 .ara-doc pre {
   background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
+  border: 1.5px solid var(--border);
   border-radius: 8px;
   padding: 14px 16px;
   overflow-x: auto;
@@ -528,7 +568,7 @@
   font-weight: 500;
   color: var(--text-secondary);
   background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
+  border: 1.5px solid var(--border);
   padding: 1px 8px;
   border-radius: 12px;
   margin: 0 2px;
@@ -874,8 +914,8 @@
 .ara-line-chart {
   margin: 22px 0;
   padding: 14px 8px 4px;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 0;
   background: var(--bg);
   font-family: var(--font);
 }
@@ -1005,7 +1045,7 @@
   gap: 8px;
   align-items: center;
   padding: 4px 0;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1.5px solid var(--border);
   color: var(--text);
   margin: 0;
 }
@@ -1101,8 +1141,8 @@
   display: grid;
   gap: 4px;
   padding: 14px 16px;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 0;
   background: var(--bg);
 }
 
@@ -1174,7 +1214,7 @@
   align-items: center;
   gap: 10px;
   padding: 6px 8px;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1.5px solid var(--border);
 }
 
 .ara-rank-item:last-child { border-bottom: none; }
