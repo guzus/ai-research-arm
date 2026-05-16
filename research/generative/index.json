@@ -227,5 +227,21 @@
     "source": "workflow_dispatch",
     "prompt": "iren company",
     "tags": []
+  },
+  {
+    "slug": "natera-inc",
+    "file": "2026-05-16T182300--natera-inc.html",
+    "kind": "fragment",
+    "title": "Natera: the cfDNA platform story is moving from volume growth to clinical operating leverage",
+    "model": "gpt-5-codex",
+    "created_at": "2026-05-16T18:23:00Z",
+    "source": "local",
+    "prompt": "Natera Inc",
+    "tags": [
+      "company",
+      "healthcare",
+      "diagnostics",
+      "oncology"
+    ]
   }
 ]
