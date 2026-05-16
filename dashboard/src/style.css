@@ -141,15 +141,6 @@ body {
   font-family: var(--font-mono);
 }
 
-.brand-subtitle {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  margin-top: 4px;
-  font-weight: 400;
-  line-height: 1.45;
-  max-width: 580px;
-}
-
 .header-link {
   font-size: 0.78rem;
   color: var(--text-tertiary);
@@ -1016,7 +1007,6 @@ body.has-toc .section-nav { display: none; }
   .app { padding: 20px 14px 60px; }
   .header-top { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 8px; }
   .brand { flex: 1; min-width: 0; }
-  .brand-subtitle { display: none; }
   .header-link-label { display: none; }
   .controls { gap: 6px; }
   .content-card-body { padding: 16px; }

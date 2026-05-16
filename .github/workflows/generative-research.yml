@@ -228,11 +228,13 @@ jobs:
           # yfinance for scripts/stock_prices.py. Yahoo's chart API blocks
           # bare-urllib clients; yfinance handles the crumb-cookie dance and
           # retries, which is the difference between working and 429ing from
-          # the runner. --user keeps the install out of system site-packages;
-          # idempotent (no-op if already at the latest).
+          # the runner. --break-system-packages is required because the
+          # runner's Python ships with PEP-668 enabled — even --user installs
+          # are blocked otherwise. Safe here because this runner is dedicated
+          # to this workflow; we're not contending with a host package manager.
           if ! python3 -c "import yfinance" 2>/dev/null; then
             echo "Installing yfinance"
-            python3 -m pip install --quiet --user --upgrade yfinance \
+            python3 -m pip install --quiet --user --upgrade --break-system-packages yfinance \
               || echo "WARN: pip install yfinance failed; stock_prices.py will fall back to urllib/stooq" >&2
           fi
           python3 -c "import yfinance; print('yfinance:', yfinance.__version__)" 2>&1 || true
@@ -243,7 +245,7 @@ jobs:
           # of the DSL is undone. Hard-fail if install fails.
           if ! python3 -c "import yaml" 2>/dev/null; then
             echo "Installing PyYAML"
-            python3 -m pip install --quiet --user --upgrade pyyaml \
+            python3 -m pip install --quiet --user --upgrade --break-system-packages pyyaml \
               || { echo "ERROR: pip install pyyaml failed; compile_ara cannot run"; exit 1; }
           fi
           python3 -c "import yaml; print('yaml:', yaml.__version__)" 2>&1 || true
@@ -1291,6 +1293,66 @@ jobs:
           echo "file=$FILENAME" >> "$GITHUB_OUTPUT"
           echo "has_file=true" >> "$GITHUB_OUTPUT"
           echo "Generated: research/generative/$FILENAME"
+
+      # Per-run quality report — corpus-audit metrics on the article
+      # this run produced. We can't see the agent's compile-check
+      # iteration count from outside the Claude action, so this step
+      # gives us the FINAL-STATE evidence: how many distinct viz
+      # primitives, how many callouts, percentages-in-prose, cite
+      # density, refs count. Lets us tell at a glance whether the
+      # design gate produced the desired behavior or whether the
+      # agent squeaked past with the bare minimum.
+      - name: Article quality report
+        if: steps.outfile.outputs.has_file == 'true'
+        env:
+          FILE: ${{ steps.outfile.outputs.file }}
+        run: |
+          set -euo pipefail
+          path="research/generative/$FILE"
+          echo "=== Quality report for $path ==="
+          python3 - "$path" <<'PY'
+          import re, sys
+          from collections import Counter
+          from pathlib import Path
+          p = Path(sys.argv[1])
+          html = p.read_text()
+          classes = re.findall(r'class="(ara-[a-z0-9-]+(?:--[a-z0-9-]+)?)', html)
+          c = Counter(classes)
+          VIZ = {"ara-line-chart","ara-donut","ara-slope","ara-stack-bar",
+                 "ara-stack-rows","ara-bars","ara-rank-list","ara-compare",
+                 "ara-iso","ara-sparkline","ara-timeline","ara-kv"}
+          FALL = {"ara-table","ara-callout","ara-quote"}
+          viz_used = sorted(k for k in c if k in VIZ)
+          words = len(re.sub(r"<[^>]+>", " ", html).split())
+          stripped = re.sub(
+              r'<(span|div)[^>]*class="ara-(bar-value|stat-value|rank-value|compare-value)"[^>]*>.*?</\1>',
+              " ", html, flags=re.DOTALL,
+          )
+          stripped = re.sub(r"<[^>]+>", " ", stripped)
+          pct = len(re.findall(r"\b\d+(?:\.\d+)?\s?%", stripped))
+          refs = len(re.findall(r'id="ref-\d+"', html))
+          cites = c.get("ara-cite", 0)
+          callouts = c.get("ara-callout", 0)
+          fallback = sum(c.get(k, 0) for k in FALL)
+          print(f"  bytes:                 {len(html):>7,}")
+          print(f"  words (approx):        {words:>7,}")
+          print(f"  distinct viz types:    {len(viz_used):>7}  ({', '.join(viz_used) or 'NONE'})")
+          print(f"  viz total occurrences: {sum(c[k] for k in viz_used):>7}")
+          print(f"  callouts:              {callouts:>7}")
+          print(f"  fallback (table+call+quote): {fallback:>5}")
+          print(f"  cites:                 {cites:>7}")
+          print(f"  references:            {refs:>7}")
+          print(f"  standalone % in prose: {pct:>7}")
+          print()
+          print("  gate eval at --diversity-min 3 --callout-max 5:")
+          gd = "PASS" if len(viz_used) >= 3 else f"FAIL (need 3, have {len(viz_used)})"
+          gc = "PASS" if callouts <= 5 else f"FAIL (max 5, have {callouts})"
+          print(f"    diversity: {gd}")
+          print(f"    callout:   {gc}")
+          if pct >= 5 and not any(c.get(k, 0) for k in
+              ("ara-donut","ara-stack-bar","ara-bars","ara-rank-list")):
+              print(f"    WARN: {pct} % in prose but no distribution viz used.")
+          PY
 
       # The writer commits inside the action sandbox. Publishing is a
       # separate step so we keep push perms in this workflow and don't
