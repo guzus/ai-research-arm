@@ -172,5 +172,16 @@
     "source": "workflow_dispatch",
     "prompt": "about the crypto project XMAQUINA ($DEUS)",
     "tags": []
+  },
+  {
+    "slug": "creating-datacenter-from-scratch-what-s-needed",
+    "file": "2026-05-16T131402--creating-datacenter-from-scratch-what-s-needed.html",
+    "kind": "fragment",
+    "title": "Creating a datacenter from scratch: what's needed",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T13:14:02Z",
+    "source": "workflow_dispatch",
+    "prompt": "Creating datacenter from scratch: what's needed",
+    "tags": []
   }
 ]
