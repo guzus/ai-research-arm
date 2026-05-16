@@ -302,11 +302,15 @@ jobs:
                        - 3–5 disconfirming questions ("what would falsify
                          the popular narrative")
 
-            1. PARALLEL EVIDENCE COLLECTION. Use the Task tool to dispatch
-               15–40 sub-agents (subagent_type: general-purpose), one per
-               entity / theme / question cluster. Send all dispatches in
-               a single message so they run concurrently. More sub-agents
-               is generally better — the user wants maximum depth.
+            1. EVIDENCE COLLECTION IN WAVES. Use the Task tool to
+               dispatch sub-agents (subagent_type: general-purpose) IN
+               WAVES OF NO MORE THAN 8 AT A TIME. After each wave
+               completes, dispatch the next wave. Total target: 16–32
+               sub-agents across 2–4 waves. The self-hosted runner OOMs
+               above ~10 concurrent Task tool calls — strict cap.
+               Send each wave's dispatches in a single message so its
+               sub-agents run concurrently, then await results before
+               the next wave.
 
                Each sub-agent prompt MUST: (a) name a domain-expert
                framing (e.g. "you are a senior equity analyst",
@@ -349,10 +353,11 @@ jobs:
                with a one-line thesis per section. Map ledger packets to
                sections (each packet routes to ≥1 section).
 
-            4.5. PARALLEL SECTION WRITERS. Use the Task tool to dispatch
-                ONE writer sub-agent per H3 section (so 5–10 writers, in
-                parallel in a single message). Each writer prompt MUST
-                include:
+            4.5. SECTION WRITERS IN WAVES. Use the Task tool to dispatch
+                ONE writer sub-agent per H3 section, IN WAVES OF NO MORE
+                THAN 4 AT A TIME (so 5–10 writers across 2–3 waves).
+                Same OOM cap as step 1 — strict. Each writer prompt
+                MUST include:
                   - the full outline (so each writer knows what the OTHER
                     sections are covering and avoids duplication)
                   - this section's number, thesis, and the relevant
@@ -543,11 +548,15 @@ jobs:
                        - 3–5 disconfirming questions ("what would falsify
                          the popular narrative")
 
-            1. PARALLEL EVIDENCE COLLECTION. Use the Task tool to dispatch
-               15–40 sub-agents (subagent_type: general-purpose), one per
-               entity / theme / question cluster. Send all dispatches in
-               a single message so they run concurrently. More sub-agents
-               is generally better — the user wants maximum depth.
+            1. EVIDENCE COLLECTION IN WAVES. Use the Task tool to
+               dispatch sub-agents (subagent_type: general-purpose) IN
+               WAVES OF NO MORE THAN 8 AT A TIME. After each wave
+               completes, dispatch the next wave. Total target: 16–32
+               sub-agents across 2–4 waves. The self-hosted runner OOMs
+               above ~10 concurrent Task tool calls — strict cap.
+               Send each wave's dispatches in a single message so its
+               sub-agents run concurrently, then await results before
+               the next wave.
 
                Each sub-agent prompt MUST: (a) name a domain-expert
                framing (e.g. "you are a senior equity analyst",
@@ -590,10 +599,11 @@ jobs:
                with a one-line thesis per section. Map ledger packets to
                sections (each packet routes to ≥1 section).
 
-            4.5. PARALLEL SECTION WRITERS. Use the Task tool to dispatch
-                ONE writer sub-agent per H3 section (so 5–10 writers, in
-                parallel in a single message). Each writer prompt MUST
-                include:
+            4.5. SECTION WRITERS IN WAVES. Use the Task tool to dispatch
+                ONE writer sub-agent per H3 section, IN WAVES OF NO MORE
+                THAN 4 AT A TIME (so 5–10 writers across 2–3 waves).
+                Same OOM cap as step 1 — strict. Each writer prompt
+                MUST include:
                   - the full outline (so each writer knows what the OTHER
                     sections are covering and avoids duplication)
                   - this section's number, thesis, and the relevant
