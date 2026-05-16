@@ -245,9 +245,14 @@ jobs:
       # OAuth-authenticated against native Anthropic. The writer records
       # --model claude-opus-4-7 (the actual served model), not the CLI's
       # --model opus alias.
+      # Hard wall-clock cap on the model step. The runner already lost
+      # comms once when the action ran ~19m on the un-capped concurrent
+      # fan-out version of the prompt; pacing fixed that, but a stuck
+      # runner is much worse than a missed article, so hard-cap here.
       - name: Run Generative Research (Claude)
         if: steps.params.outputs.backend == 'claude'
         id: gen-claude
+        timeout-minutes: 45
         uses: anthropics/claude-code-action@v1
         env:
           GEN_TOPIC: ${{ steps.params.outputs.topic }}
@@ -481,6 +486,7 @@ jobs:
       - name: Run Generative Research (DeepSeek)
         if: steps.params.outputs.backend == 'deepseek'
         id: gen-deepseek
+        timeout-minutes: 45
         uses: anthropics/claude-code-action@v1
         env:
           # Redirect Claude Code CLI to DeepSeek's Anthropic-compatible endpoint.
