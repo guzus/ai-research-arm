@@ -116,9 +116,12 @@ jobs:
             BACKEND="deepseek"
             TAGS=""
             SOURCE="issue"
+            # Default PROMPT to the title; if the body has substantive content
+            # (anything beyond the optional `backend:` directive), use the body
+            # as the deep research brief. Previously the body was thrown away —
+            # users would write a paragraph of context and it was silently
+            # ignored.
             PROMPT="$TOPIC"
-            # If the issue body contains a line like `backend: claude`, respect it.
-            # Match case-insensitively, tolerate leading whitespace, take first hit.
             if [ -n "${ISSUE_BODY:-}" ]; then
               CANDIDATE=$(printf '%s\n' "$ISSUE_BODY" \
                 | grep -iE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|deepseek)[[:space:]]*$' \
@@ -128,6 +131,15 @@ jobs:
                 | tr '[:upper:]' '[:lower:]' || true)
               if [ "$CANDIDATE" = "claude" ] || [ "$CANDIDATE" = "deepseek" ]; then
                 BACKEND="$CANDIDATE"
+              fi
+              # Strip the backend: directive line out, keep the rest as the brief.
+              CLEAN_BODY=$(printf '%s\n' "$ISSUE_BODY" \
+                | grep -ivE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|deepseek)[[:space:]]*$' \
+                | sed -E 's/[[:space:]]+$//' \
+                || true)
+              # Substantive = any non-whitespace remains after the strip.
+              if printf '%s' "$CLEAN_BODY" | grep -q '[^[:space:]]'; then
+                PROMPT="$CLEAN_BODY"
               fi
             fi
           fi
@@ -214,85 +226,139 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),WebSearch,WebFetch,Task,TodoWrite"
+            --model opus --max-turns 180 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
             You are a deep-research analyst writing a COMPREHENSIVE,
             analyst-grade HTML article on the topic supplied by the user.
-            Reason from first principles — challenge weak claims rather than
-            echo them. Match the depth of a strong analyst note, not a blog
-            post. Short, vague articles are the single biggest complaint
-            about this workflow — DO NOT under-deliver on length or depth.
+            Reason from first principles — challenge weak claims rather
+            than echo them. Depth is measured by GROUNDED CLAIMS, not by
+            word count.
 
-            The topic and originating prompt are available to your Bash tool
-            as the environment variables $GEN_TOPIC and $GEN_PROMPT. Read
-            them with `printenv GEN_TOPIC` / `printenv GEN_PROMPT` before
-            researching, so you have the exact wording.
+            The topic and originating prompt are available as the
+            environment variables $GEN_TOPIC and $GEN_PROMPT. Read them
+            with `printenv GEN_TOPIC` / `printenv GEN_PROMPT` first. If
+            $GEN_PROMPT is substantially longer than $GEN_TOPIC, treat the
+            prompt as the user's detailed brief (questions, sources to
+            prefer, framing) and let it shape your research plan.
 
-            PROCESS — non-negotiable:
+            PROCESS — non-negotiable, in order:
 
-            1. MULTI-AGENT DISPATCH (mandatory). Use the Task tool to
-               dispatch 10–30 parallel research sub-agents
-               (subagent_type: general-purpose) covering the topic's
-               distinct facets. Send them all in a single message
-               (multiple tool calls in parallel) so they run concurrently.
-               For most topics this means:
-                  - One sub-agent per discrete entity (company, paper,
-                    model, event, person, holding, etc.)
-                  - 3–5 thematic sub-agents covering cross-cutting
-                    questions, history, counter-takes, regulatory/legal
-                    angle, market context.
-               Each sub-agent prompt MUST instruct it to reason from first
-               principles, use WebSearch + WebFetch on PRIMARY sources,
-               and return structured findings under ~350 words each with
-               cited URLs. NEVER skip this step. A single-agent article
-               is a failure.
+            0. RESEARCH PLAN. Before any search, write a short internal
+               plan (just hold it in context, do not save to disk):
+                  - 8–15 specific answerable questions
+                  - For each question, what counts as PRIMARY evidence
+                  - 2–3 disconfirming questions ("what would falsify the
+                    popular narrative")
 
-            2. SPOT-CHECK. Use WebFetch yourself on the most load-bearing
-               primary sources to independently verify headline numbers.
+            1. PARALLEL EVIDENCE COLLECTION. Use the Task tool to dispatch
+               10–30 sub-agents (subagent_type: general-purpose), one per
+               entity / theme / question cluster. Send all dispatches in a
+               single message so they run concurrently.
 
-            3. SYNTHESIZE into a single <article class="ara-doc"> HTML
-               fragment using the ARA component vocabulary. READ
-               `COMPONENTS.md` at the repo root before writing — it lists
-               every allowed class.
+               Each sub-agent prompt MUST: (a) name a domain-expert
+               framing (e.g. "you are a senior equity analyst", "chip
+               architect", "monetary economist"), (b) instruct
+               first-principles reasoning, (c) require WebSearch + WebFetch
+               on PRIMARY sources, (d) cap output at ~10 evidence packets.
 
-            QUALITY TARGETS — the article must hit ALL of these:
-               - Length: 4500–7000 rendered words. Lean toward the upper
-                 end. If your draft is under 4000 words after structure
-                 fixes, EXPAND before saving — do not ship a short article.
-               - Citations: at least 20 distinct primary-source URLs in a
-                 numbered Sources/References section at the bottom. Use
-                 <ol> with <li id="ref-N">...</li>, and in prose cite with
-                 <sup><a class="ara-cite" href="#ref-N">N</a></sup>.
-               - Structure: ara-eyebrow + ara-display + ara-deck + ara-lede
-                 → ara-stats block of headline numbers → 5–8 numbered
-                 sections (<h3 class="ara-h2"> with ara-h2-num chip) →
-                 explicit "what could break the thesis" / counter-takes
-                 section → sources list.
-               - Data display: include at least ONE ara-table (multi-row,
-                 multi-column) for quantitative content, and at least ONE
-                 ara-callout (--info, --warn, or --danger variant) for an
-                 aside or risk flag.
-               - Honesty: flag unverified claims INLINE with
-                 <mark class="ara-mark">…</mark>, not silently.
+               Sub-agents MUST return STRUCTURED EVIDENCE PACKETS, not
+               prose summaries. Each packet:
 
-            STRICT VALIDATION RULES (the writer rejects violations):
-               - Root must be <article class="ara-doc">.
-               - Every `class=` token must start with `ara-`.
-               - Allowed tags only: article, section, div, header, footer,
+                 - claim: <the factual assertion in one sentence>
+                 - source_url: <URL the agent actually fetched>
+                 - source_type: primary | secondary | commentary
+                   (primary = company IR / SEC filing / academic paper /
+                    spec / first-party docs;
+                    secondary = mainstream press citing primaries;
+                    commentary = blogs, opinion, sell-side notes)
+                 - date: <YYYY-MM-DD when published or claim was made>
+                 - figure: <the exact number, name, or date the claim
+                   turns on>
+                 - excerpt: <verbatim quote, <40 words>
+                 - confidence: 1 (rumour) … 5 (multiple primary sources)
+                 - caveat: <what would weaken or contradict the claim>
+
+            2. BUILD A LEDGER in your context. Dedupe by source_url. Drop
+               packets with confidence < 2 unless they're the only signal
+               on a non-trivial question. Group packets by which planning
+               question they answer.
+
+            3. SPOT-CHECK. WebFetch yourself on the 3–5 most load-bearing
+               primary sources to confirm the headline numbers exist on
+               the pages agents cited.
+
+            4. WRITE FROM THE LEDGER. Compose ONE
+               <article class="ara-doc"> HTML fragment using the ARA
+               component vocabulary. READ COMPONENTS.md at the repo root
+               before writing. Every substantive factual claim MUST be
+               followed by a numbered <sup><a class="ara-cite"
+               href="#ref-N">N</a></sup> pointing to the packet's
+               source_url, with <li id="ref-N">…</li> in the references
+               list at the bottom.
+
+            5. VERIFIER PASS. Use the Task tool to dispatch ONE more
+               sub-agent. Pass it the draft article body. Instruct it to:
+                  - read every numbered ara-cite in the draft
+                  - fetch each cited URL with WebFetch
+                  - emit a STRUCTURED findings table only (not a rewritten
+                    article):
+
+                      claim_id | section | support_status (supported |
+                        weak | unsupported) | cited_source | problem |
+                        required_fix
+
+                  - additionally flag any factual claim WITHOUT a cite
+
+            6. BOUNDED REVISION. Address ONLY the verifier's findings.
+               Each unsupported claim must be either: (a) replaced with
+               a supported variant from the ledger, (b) demoted to
+               <mark class="ara-mark">unverified: …</mark>, or
+               (c) deleted. Do NOT generically expand or pad. ONE
+               revision pass maximum.
+
+            QUALITY TARGETS — these, not word count, are the bar:
+               - Research questions answered: ≥ 85% of your plan
+               - Substantive factual claims with cite: ≥ 90%
+               - Primary-source share among cited sources: ≥ 50%
+                 (when primary sources exist for the topic)
+               - Evidence density: ≥ 12 cited claims per 1,000 words
+               - Quantitative density: ≥ 2 concrete numbers/dates/named
+                 entities per H3 numbered section
+               - Counter-argument: ≥ 1 serious counterclaim or "what
+                 would falsify this" per major thesis
+               - References: ≥ 20 distinct source URLs in the numbered
+                 references list
+               - Word count: 4500–7000 as a GUARDRAIL only
+
+            PER-SECTION CONTRACT (replaces mechanical density rules):
+            each H3 numbered section must contain:
+               - 1 section-thesis sentence
+               - 3–6 sourced factual claims (each with numbered cite)
+               - ≥ 1 quantitative datapoint where one exists
+               - ≥ 1 counterpoint or "what would weaken this" line
+               - 1 sentence on why this matters
+               Use ara-table when the section presents a comparison,
+               timeline, ranked set, or financial series. Use ara-callout
+               sparingly: thesis break, risk flag, or source caveat only.
+               Do NOT add tables or callouts for cosmetic density.
+
+            STRICT VALIDATION RULES (writer rejects violations):
+               - Root <article class="ara-doc">.
+               - Every `class=` token starts with `ara-`.
+               - Allowed tags: article, section, div, header, footer,
                  h2, h3, h4, p, span, em, strong, code, mark, sup, sub,
                  abbr, time, ul, ol, li, dl, dt, dd, a, img, figure,
                  figcaption, table, thead, tbody, tr, th, td, blockquote,
                  pre, br, hr.
                - No <h1>, <style>, <script>, <iframe>, <head>, <body>.
-               - No inline `style="..."`, no `onclick=`/`onload=`/etc.,
-                 no `javascript:` URLs.
+               - No inline `style=`, no `on*=` handlers, no `javascript:`.
                - Body under 200 KB.
 
-            4. Use the Write tool to save the fragment to:
+            7. SAVE. Write the final fragment to:
                   /tmp/gen-research-body.html
 
-            5. Invoke the writer (Bash) to commit it into the repo. Pass
-               the originating values via the pre-set environment vars:
+            8. COMMIT via the writer (Bash). Pass originating values via
+               the pre-set env vars:
 
                   python3 scripts/write_generative_research.py \
                     --topic "$GEN_TOPIC" \
@@ -314,11 +380,11 @@ jobs:
                     --html-body /tmp/gen-research-body.html
 
             CONSTRAINTS:
-            - The writer COMMITS internally. Do NOT run `git commit` yourself.
-            - Do NOT run `git push`. A later workflow step handles publishing.
-            - Do not modify any file outside /tmp and what the writer touches.
-            - If validation fails (writer rejects the body), fix the HTML and
-              retry the same Bash invocation; do not work around the validator.
+            - The writer COMMITS internally. Do NOT run `git commit`.
+            - Do NOT run `git push`. A later workflow step publishes.
+            - Do not modify files outside /tmp and what the writer touches.
+            - If validation fails, fix the HTML and retry the same Bash
+              invocation; do not work around the validator.
 
       # ---- DeepSeek backend -------------------------------------------------
       # claude-code-action redirected to DeepSeek's Anthropic-compatible
@@ -351,86 +417,139 @@ jobs:
           # ANTHROPIC_AUTH_TOKEN because ANTHROPIC_BASE_URL is set.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),WebSearch,WebFetch,Task,TodoWrite"
+            --model opus --max-turns 180 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
             You are a deep-research analyst running on DeepSeek v4 Pro,
             writing a COMPREHENSIVE, analyst-grade HTML article on the
             topic supplied by the user. Reason from first principles —
-            challenge weak claims rather than echo them. Match the depth
-            of a strong analyst note, not a blog post. Short, vague
-            articles are the single biggest complaint about this workflow
-            — DO NOT under-deliver on length or depth.
+            challenge weak claims rather than echo them. Depth is measured
+            by GROUNDED CLAIMS, not by word count.
 
-            The topic and originating prompt are available to your Bash tool
-            as the environment variables $GEN_TOPIC and $GEN_PROMPT. Read
-            them with `printenv GEN_TOPIC` / `printenv GEN_PROMPT` before
-            researching, so you have the exact wording.
+            The topic and originating prompt are available as the
+            environment variables $GEN_TOPIC and $GEN_PROMPT. Read them
+            with `printenv GEN_TOPIC` / `printenv GEN_PROMPT` first. If
+            $GEN_PROMPT is substantially longer than $GEN_TOPIC, treat the
+            prompt as the user's detailed brief (questions, sources to
+            prefer, framing) and let it shape your research plan.
 
-            PROCESS — non-negotiable:
+            PROCESS — non-negotiable, in order:
 
-            1. MULTI-AGENT DISPATCH (mandatory). Use the Task tool to
-               dispatch 10–30 parallel research sub-agents
-               (subagent_type: general-purpose) covering the topic's
-               distinct facets. Send them all in a single message
-               (multiple tool calls in parallel) so they run concurrently.
-               For most topics this means:
-                  - One sub-agent per discrete entity (company, paper,
-                    model, event, person, holding, etc.)
-                  - 3–5 thematic sub-agents covering cross-cutting
-                    questions, history, counter-takes, regulatory/legal
-                    angle, market context.
-               Each sub-agent prompt MUST instruct it to reason from first
-               principles, use WebSearch + WebFetch on PRIMARY sources,
-               and return structured findings under ~350 words each with
-               cited URLs. NEVER skip this step. A single-agent article
-               is a failure.
+            0. RESEARCH PLAN. Before any search, write a short internal
+               plan (just hold it in context, do not save to disk):
+                  - 8–15 specific answerable questions
+                  - For each question, what counts as PRIMARY evidence
+                  - 2–3 disconfirming questions ("what would falsify the
+                    popular narrative")
 
-            2. SPOT-CHECK. Use WebFetch yourself on the most load-bearing
-               primary sources to independently verify headline numbers.
+            1. PARALLEL EVIDENCE COLLECTION. Use the Task tool to dispatch
+               10–30 sub-agents (subagent_type: general-purpose), one per
+               entity / theme / question cluster. Send all dispatches in a
+               single message so they run concurrently.
 
-            3. SYNTHESIZE into a single <article class="ara-doc"> HTML
-               fragment using the ARA component vocabulary. READ
-               `COMPONENTS.md` at the repo root before writing — it lists
-               every allowed class.
+               Each sub-agent prompt MUST: (a) name a domain-expert
+               framing (e.g. "you are a senior equity analyst", "chip
+               architect", "monetary economist"), (b) instruct
+               first-principles reasoning, (c) require WebSearch + WebFetch
+               on PRIMARY sources, (d) cap output at ~10 evidence packets.
 
-            QUALITY TARGETS — the article must hit ALL of these:
-               - Length: 4500–7000 rendered words. Lean toward the upper
-                 end. If your draft is under 4000 words after structure
-                 fixes, EXPAND before saving — do not ship a short article.
-               - Citations: at least 20 distinct primary-source URLs in a
-                 numbered Sources/References section at the bottom. Use
-                 <ol> with <li id="ref-N">...</li>, and in prose cite with
-                 <sup><a class="ara-cite" href="#ref-N">N</a></sup>.
-               - Structure: ara-eyebrow + ara-display + ara-deck + ara-lede
-                 → ara-stats block of headline numbers → 5–8 numbered
-                 sections (<h3 class="ara-h2"> with ara-h2-num chip) →
-                 explicit "what could break the thesis" / counter-takes
-                 section → sources list.
-               - Data display: include at least ONE ara-table (multi-row,
-                 multi-column) for quantitative content, and at least ONE
-                 ara-callout (--info, --warn, or --danger variant) for an
-                 aside or risk flag.
-               - Honesty: flag unverified claims INLINE with
-                 <mark class="ara-mark">…</mark>, not silently.
+               Sub-agents MUST return STRUCTURED EVIDENCE PACKETS, not
+               prose summaries. Each packet:
 
-            STRICT VALIDATION RULES (the writer rejects violations):
-               - Root must be <article class="ara-doc">.
-               - Every `class=` token must start with `ara-`.
-               - Allowed tags only: article, section, div, header, footer,
+                 - claim: <the factual assertion in one sentence>
+                 - source_url: <URL the agent actually fetched>
+                 - source_type: primary | secondary | commentary
+                   (primary = company IR / SEC filing / academic paper /
+                    spec / first-party docs;
+                    secondary = mainstream press citing primaries;
+                    commentary = blogs, opinion, sell-side notes)
+                 - date: <YYYY-MM-DD when published or claim was made>
+                 - figure: <the exact number, name, or date the claim
+                   turns on>
+                 - excerpt: <verbatim quote, <40 words>
+                 - confidence: 1 (rumour) … 5 (multiple primary sources)
+                 - caveat: <what would weaken or contradict the claim>
+
+            2. BUILD A LEDGER in your context. Dedupe by source_url. Drop
+               packets with confidence < 2 unless they're the only signal
+               on a non-trivial question. Group packets by which planning
+               question they answer.
+
+            3. SPOT-CHECK. WebFetch yourself on the 3–5 most load-bearing
+               primary sources to confirm the headline numbers exist on
+               the pages agents cited.
+
+            4. WRITE FROM THE LEDGER. Compose ONE
+               <article class="ara-doc"> HTML fragment using the ARA
+               component vocabulary. READ COMPONENTS.md at the repo root
+               before writing. Every substantive factual claim MUST be
+               followed by a numbered <sup><a class="ara-cite"
+               href="#ref-N">N</a></sup> pointing to the packet's
+               source_url, with <li id="ref-N">…</li> in the references
+               list at the bottom.
+
+            5. VERIFIER PASS. Use the Task tool to dispatch ONE more
+               sub-agent. Pass it the draft article body. Instruct it to:
+                  - read every numbered ara-cite in the draft
+                  - fetch each cited URL with WebFetch
+                  - emit a STRUCTURED findings table only (not a rewritten
+                    article):
+
+                      claim_id | section | support_status (supported |
+                        weak | unsupported) | cited_source | problem |
+                        required_fix
+
+                  - additionally flag any factual claim WITHOUT a cite
+
+            6. BOUNDED REVISION. Address ONLY the verifier's findings.
+               Each unsupported claim must be either: (a) replaced with
+               a supported variant from the ledger, (b) demoted to
+               <mark class="ara-mark">unverified: …</mark>, or
+               (c) deleted. Do NOT generically expand or pad. ONE
+               revision pass maximum.
+
+            QUALITY TARGETS — these, not word count, are the bar:
+               - Research questions answered: ≥ 85% of your plan
+               - Substantive factual claims with cite: ≥ 90%
+               - Primary-source share among cited sources: ≥ 50%
+                 (when primary sources exist for the topic)
+               - Evidence density: ≥ 12 cited claims per 1,000 words
+               - Quantitative density: ≥ 2 concrete numbers/dates/named
+                 entities per H3 numbered section
+               - Counter-argument: ≥ 1 serious counterclaim or "what
+                 would falsify this" per major thesis
+               - References: ≥ 20 distinct source URLs in the numbered
+                 references list
+               - Word count: 4500–7000 as a GUARDRAIL only
+
+            PER-SECTION CONTRACT (replaces mechanical density rules):
+            each H3 numbered section must contain:
+               - 1 section-thesis sentence
+               - 3–6 sourced factual claims (each with numbered cite)
+               - ≥ 1 quantitative datapoint where one exists
+               - ≥ 1 counterpoint or "what would weaken this" line
+               - 1 sentence on why this matters
+               Use ara-table when the section presents a comparison,
+               timeline, ranked set, or financial series. Use ara-callout
+               sparingly: thesis break, risk flag, or source caveat only.
+               Do NOT add tables or callouts for cosmetic density.
+
+            STRICT VALIDATION RULES (writer rejects violations):
+               - Root <article class="ara-doc">.
+               - Every `class=` token starts with `ara-`.
+               - Allowed tags: article, section, div, header, footer,
                  h2, h3, h4, p, span, em, strong, code, mark, sup, sub,
                  abbr, time, ul, ol, li, dl, dt, dd, a, img, figure,
                  figcaption, table, thead, tbody, tr, th, td, blockquote,
                  pre, br, hr.
                - No <h1>, <style>, <script>, <iframe>, <head>, <body>.
-               - No inline `style="..."`, no `onclick=`/`onload=`/etc.,
-                 no `javascript:` URLs.
+               - No inline `style=`, no `on*=` handlers, no `javascript:`.
                - Body under 200 KB.
 
-            4. Use the Write tool to save the fragment to:
+            7. SAVE. Write the final fragment to:
                   /tmp/gen-research-body.html
 
-            5. Invoke the writer (Bash) to commit it into the repo. Pass
-               the originating values via the pre-set environment vars:
+            8. COMMIT via the writer (Bash). Pass originating values via
+               the pre-set env vars:
 
                   python3 scripts/write_generative_research.py \
                     --topic "$GEN_TOPIC" \
@@ -452,11 +571,11 @@ jobs:
                     --html-body /tmp/gen-research-body.html
 
             CONSTRAINTS:
-            - The writer COMMITS internally. Do NOT run `git commit` yourself.
-            - Do NOT run `git push`. A later workflow step handles publishing.
-            - Do not modify any file outside /tmp and what the writer touches.
-            - If validation fails (writer rejects the body), fix the HTML and
-              retry the same Bash invocation; do not work around the validator.
+            - The writer COMMITS internally. Do NOT run `git commit`.
+            - Do NOT run `git push`. A later workflow step publishes.
+            - Do not modify files outside /tmp and what the writer touches.
+            - If validation fails, fix the HTML and retry the same Bash
+              invocation; do not work around the validator.
 
       # Identify the file THIS run produced by diffing HEAD against the
       # snapshot we took before the action. This rejects the "newest file in
