@@ -168,6 +168,56 @@
   margin-right: 12px;
 }
 
+/* Per-section share link, injected by addSectionAnchors() in main.ts on
+ * every section heading. Hidden by default; reveals on heading hover or
+ * keyboard focus. Click copies the deep-link URL to the clipboard and
+ * the URL bar updates so users can also copy it from there. */
+.ara-h2,
+.ara-h3 { position: relative; }
+
+.ara-anchor {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 4px;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.7em;
+  line-height: 1;
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ara-h2:hover .ara-anchor,
+.ara-h3:hover .ara-anchor,
+.ara-anchor:focus {
+  opacity: 1;
+}
+
+.ara-anchor:hover { color: var(--accent-warm); }
+
+/* Brief "Copied!" tag that appears next to the # after a successful copy.
+ * Cleared by main.ts after ~1.4s. */
+.ara-anchor--copied::after {
+  content: 'copied';
+  margin-left: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  color: var(--accent-warm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+/* The anchor is a screen-only affordance — no URL bar in print. */
+@media print {
+  .ara-anchor { display: none !important; }
+}
+
 .ara-h3 {
   font-family: var(--font);
   font-size: 1.05rem;

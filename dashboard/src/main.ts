@@ -1020,6 +1020,8 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     renderDonuts(article);
     renderSlopes(article);
     renderResearchTOC(article);
+    addSectionAnchors(article);
+    scrollToHashIfPresent();
   } else {
     hideResearchTOC();
   }
@@ -1467,9 +1469,10 @@ function renderResearchTOC(article: HTMLElement): void {
       e.preventDefault();
       const t = document.getElementById(a.dataset.target!);
       if (t) {
+        // Push the fragment into the URL so users can copy/share the
+        // section-level deep link directly from the address bar.
+        history.pushState(null, '', '#' + a.dataset.target);
         t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // Drop the in-page #heading-id fragment so the URL stays canonical.
-        history.replaceState(null, '', routeFromState());
       }
     });
     li.appendChild(a);
@@ -1495,6 +1498,80 @@ function renderResearchTOC(article: HTMLElement): void {
   tocScrollHandler = onScroll;
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+}
+
+/** Attach a small `#` anchor button to every section / subsection heading
+ * that already has an id (renderResearchTOC assigns them). Clicking it
+ * copies the deep link to the clipboard and updates the address bar so the
+ * user can paste the URL anywhere. Cmd/Ctrl-click opens in a new tab via
+ * the browser's default anchor behavior. */
+function addSectionAnchors(article: HTMLElement): void {
+  const heads = article.querySelectorAll<HTMLElement>(
+    'h2.ara-h2, h3.ara-h2, h4.ara-h2, h2.ara-h3, h3.ara-h3, h4.ara-h3',
+  );
+  for (const h of heads) {
+    if (!h.id || h.querySelector('.ara-anchor')) continue;
+    const a = document.createElement('a');
+    a.className = 'ara-anchor';
+    a.href = '#' + h.id;
+    a.title = 'Copy link to this section';
+    a.setAttribute('aria-label', 'Copy link to this section');
+    a.textContent = '#';
+    h.appendChild(a);
+    a.addEventListener('click', (e) => {
+      // Honor open-in-new-tab modifiers — let the browser handle them.
+      if (e.metaKey || e.ctrlKey || e.shiftKey || (e as MouseEvent).button === 1) return;
+      e.preventDefault();
+      history.pushState(null, '', '#' + h.id);
+      h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const url = location.origin + location.pathname + '#' + h.id;
+      copyTextToClipboard(url).then(() => {
+        a.classList.add('ara-anchor--copied');
+        window.setTimeout(() => a.classList.remove('ara-anchor--copied'), 1400);
+      }).catch(() => {
+        // Silent — the URL is still in the address bar, user can copy from there.
+      });
+    });
+  }
+}
+
+/** Clipboard write with a non-secure-context fallback so this works on
+ * localhost over plain HTTP and other edge environments. */
+function copyTextToClipboard(text: string): Promise<void> {
+  if (navigator.clipboard?.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+  return new Promise((resolve, reject) => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      resolve();
+    } catch (err) {
+      reject(err);
+    } finally {
+      ta.remove();
+    }
+  });
+}
+
+/** After the article renders, if the URL has a fragment, scroll to the
+ * matching element. Runs in rAF so layout (chart sizing, isotype expansion,
+ * table wrapping) has settled before we measure scroll positions. */
+function scrollToHashIfPresent(): void {
+  if (!location.hash) return;
+  const id = decodeURIComponent(location.hash.slice(1));
+  if (!id) return;
+  const t = document.getElementById(id);
+  if (!t) return;
+  requestAnimationFrame(() => {
+    t.scrollIntoView({ behavior: 'auto', block: 'start' });
+  });
 }
 
 function renderResearchStandalone(row: GenResearchRow): void {
@@ -1834,6 +1911,17 @@ if (currentTab !== 'research') {
 load();
 
 // Back/forward button — pathname-based router uses popstate, not hashchange.
+// Track the last applied pathname so we can distinguish a real route change
+// from a hash-only navigation (e.g. anchor click between sections within
+// the same article). Hash-only changes just scroll; no expensive re-fetch.
+let lastAppliedPathname = location.pathname;
 window.addEventListener('popstate', () => {
+  const newPathname = location.pathname;
+  if (newPathname === lastAppliedPathname) {
+    // Same article, different anchor — just scroll to the new fragment.
+    scrollToHashIfPresent();
+    return;
+  }
+  lastAppliedPathname = newPathname;
   if (applyRoute()) load();
 });
