@@ -120,27 +120,35 @@ const calendarEl = document.getElementById('calendar')!;
 const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 const searchCountEl = document.getElementById('searchCount')!;
 
-// ── Hash routing ─────────────────────────────────────
-// Format:
-//   date tabs:  #tab/YYYY-MM-DD  e.g. #models/2026-02-03, #twitter/2026-01-29
-//   research:   #research        (index list)
-//               #research/<slug> (single doc)
-function updateHash(): void {
-  let hash: string;
+// ── Path routing ─────────────────────────────────────
+// Format (history API, no hash):
+//   date tabs:  /tab/YYYY-MM-DD  e.g. /models/2026-02-03, /twitter/2026-01-29
+//   research:   /research        (index list)
+//               /research/<slug> (single doc)
+// Static fetches under /research/... (manifest.json, generative/*.html, etc.)
+// are disambiguated from routes by the file extension; Vercel rewrites only
+// extensionless paths to /index.html.
+function routeFromState(): string {
   if (activeTab === 'research') {
-    hash = selectedSlug ? '#research/' + selectedSlug : '#research';
-  } else {
-    hash = '#' + activeTab + '/' + fmtDate(currentDate);
+    return selectedSlug ? '/research/' + selectedSlug : '/research';
   }
-  if (location.hash !== hash) {
-    history.replaceState(null, '', hash);
+  return '/' + activeTab + '/' + fmtDate(currentDate);
+}
+
+function updateRoute(): void {
+  const target = routeFromState();
+  const current = location.pathname + location.search;
+  if (current !== target) {
+    history.replaceState(null, '', target);
   }
 }
 
-function applyHash(): boolean {
-  const hash = location.hash.replace(/^#/, '');
-  if (!hash) return false;
-  const dateMatch = hash.match(/^(today|twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
+function parseRoute(path: string): boolean {
+  // Strip the trailing slash but keep the leading one
+  const clean = path.replace(/\/+$/, '') || '/';
+  if (clean === '/') return false;
+  const trimmed = clean.replace(/^\/+/, '');
+  const dateMatch = trimmed.match(/^(today|twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
   if (dateMatch) {
     activeTab = dateMatch[1] as Tab;
     selectedSlug = null;
@@ -152,7 +160,7 @@ function applyHash(): boolean {
     syncTabUi();
     return true;
   }
-  const researchMatch = hash.match(/^research(?:\/([A-Za-z0-9._-]+))?$/);
+  const researchMatch = trimmed.match(/^research(?:\/([A-Za-z0-9._-]+))?$/);
   if (researchMatch) {
     activeTab = 'research';
     selectedSlug = researchMatch[1] || null;
@@ -160,6 +168,19 @@ function applyHash(): boolean {
     return true;
   }
   return false;
+}
+
+function applyRoute(): boolean {
+  // Migrate legacy hash URLs (#research/<slug>, #twitter/<date>) to clean paths
+  // so existing bookmarks keep working without an explicit redirect.
+  if (location.hash) {
+    const legacy = location.hash.replace(/^#/, '');
+    if (legacy && parseRoute('/' + legacy)) {
+      history.replaceState(null, '', routeFromState());
+      return true;
+    }
+  }
+  return parseRoute(location.pathname);
 }
 
 function syncTabUi(): void {
@@ -1045,7 +1066,8 @@ function renderResearchTOC(article: HTMLElement): void {
       const t = document.getElementById(a.dataset.target!);
       if (t) {
         t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        history.replaceState(null, '', '#' + activeTab + '/' + (selectedSlug || ''));
+        // Drop the in-page #heading-id fragment so the URL stays canonical.
+        history.replaceState(null, '', routeFromState());
       }
     });
     li.appendChild(a);
@@ -1111,7 +1133,7 @@ async function load(): Promise<void> {
   // again when it has enough sections to be useful.
   hideResearchTOC();
 
-  updateHash();
+  updateRoute();
   showLoading();
 
   try {
@@ -1393,8 +1415,8 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
 calendarEl.addEventListener('click', handleCalendarClick);
 // Kick off manifest fetch early so calendar + fallback logic have data ASAP.
 loadManifest();
-applyHash();
-// applyHash() may have mutated activeTab to anything in Tab; TS won't see
+applyRoute();
+// applyRoute() may have mutated activeTab to anything in Tab; TS won't see
 // that across the function boundary, so we widen the read explicitly.
 const currentTab: Tab = activeTab as Tab;
 document.body.classList.toggle('tab-research', currentTab === 'research');
@@ -1403,6 +1425,7 @@ if (currentTab !== 'research') {
 }
 load();
 
-window.addEventListener('hashchange', () => {
-  if (applyHash()) load();
+// Back/forward button — pathname-based router uses popstate, not hashchange.
+window.addEventListener('popstate', () => {
+  if (applyRoute()) load();
 });
