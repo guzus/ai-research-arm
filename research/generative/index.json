@@ -117,5 +117,22 @@
       "AI infrastructure",
       "multi-agent"
     ]
+  },
+  {
+    "slug": "cerebras-wse-3-vs-nvidia-gb200-cost-per-token-economics",
+    "file": "2026-05-16T085517--cerebras-wse-3-vs-nvidia-gb200-cost-per-token-economics.html",
+    "kind": "fragment",
+    "title": "Wafer or Rack: the real cost-per-token economics of Cerebras WSE-3 versus Nvidia GB200",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T08:55:17Z",
+    "source": "workflow_dispatch",
+    "prompt": "Cerebras WSE-3 vs Nvidia GB200 cost-per-token economics",
+    "tags": [
+      "cerebras",
+      "wse-3",
+      "nvidia",
+      "gb200",
+      "ai-hardware"
+    ]
   }
 ]

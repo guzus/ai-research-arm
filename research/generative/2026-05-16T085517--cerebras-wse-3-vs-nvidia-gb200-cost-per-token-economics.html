@@ -1,0 +1,315 @@
+<article class="ara-doc">
+  <span class="ara-eyebrow">Compute Economics · Inference Silicon</span>
+  <h2 class="ara-display">Wafer or Rack: the real cost-per-token economics of Cerebras WSE-3 versus Nvidia GB200</h2>
+  <p class="ara-deck">Cerebras sells the fastest single-stream tokens money can buy. Nvidia sells the cheapest tokens per dollar of capex at scale. They are not the same product — and the prices reflect it.</p>
+
+  <p class="ara-lede">A wafer-scale chip with 44&nbsp;GB of on-die SRAM<sup><a class="ara-cite" href="#ref-1">1</a></sup> and a 72-GPU liquid-cooled rack with 13.4&nbsp;TB of HBM3e<sup><a class="ara-cite" href="#ref-12">12</a></sup> are now the two ends of the merchant-inference spectrum. Cerebras priced its May&nbsp;2026 IPO at $185 a share and raised $5.55&nbsp;billion<sup><a class="ara-cite" href="#ref-45">45</a></sup> on a story that wafer-scale memory bandwidth bends the cost-per-token curve. Nvidia's data-center segment did $62.3&nbsp;billion in Q4 of FY26 alone at 75.0% GAAP gross margin<sup><a class="ara-cite" href="#ref-47">47</a></sup>. Both numbers can be true. They describe different workloads.</p>
+
+  <div class="ara-stats">
+    <div class="ara-stat">
+      <span class="ara-stat-label">WSE-3 SRAM</span>
+      <div class="ara-stat-value">44 GB</div>
+      <div class="ara-stat-note">21 PB/s on-die BW<sup><a class="ara-cite" href="#ref-2">2</a></sup></div>
+    </div>
+    <div class="ara-stat">
+      <span class="ara-stat-label">NVL72 HBM</span>
+      <div class="ara-stat-value">13.4 TB</div>
+      <div class="ara-stat-note">576 TB/s aggregate<sup><a class="ara-cite" href="#ref-12">12</a></sup></div>
+    </div>
+    <div class="ara-stat">
+      <span class="ara-stat-label">405B speed (Cerebras)</span>
+      <div class="ara-stat-value">969 tok/s</div>
+      <div class="ara-stat-note">at $6 in / $12 out per Mtok<sup><a class="ara-cite" href="#ref-6">6</a></sup></div>
+    </div>
+    <div class="ara-stat">
+      <span class="ara-stat-label">405B per-GPU (MLPerf v5.1)</span>
+      <div class="ara-stat-value">170 tok/s</div>
+      <div class="ara-stat-note">GB200 server scenario<sup><a class="ara-cite" href="#ref-20">20</a></sup></div>
+    </div>
+    <div class="ara-stat">
+      <span class="ara-stat-label">NVL72 rack power</span>
+      <div class="ara-stat-value">~120 kW</div>
+      <div class="ara-stat-note">Nvidia spec, liquid cooling<sup><a class="ara-cite" href="#ref-36">36</a></sup></div>
+    </div>
+    <div class="ara-stat">
+      <span class="ara-stat-label">CS-3 power</span>
+      <div class="ara-stat-value">23 kW</div>
+      <div class="ara-stat-note">per 15-16U system<sup><a class="ara-cite" href="#ref-4">4</a></sup></div>
+    </div>
+  </div>
+
+  <p>This essay does the comparison from first principles. It distinguishes the unit economics of a single CS-3 system from the unit economics of a GB200 NVL72 rack; it pulls the per-GPU MLPerf v5.1 numbers Nvidia itself publishes<sup><a class="ara-cite" href="#ref-20">20</a></sup>; it traces market prices on Cerebras, Groq, Together, Fireworks, DeepInfra and Replicate<sup><a class="ara-cite" href="#ref-24">24</a></sup><sup><a class="ara-cite" href="#ref-25">25</a></sup><sup><a class="ara-cite" href="#ref-26">26</a></sup><sup><a class="ara-cite" href="#ref-27">27</a></sup><sup><a class="ara-cite" href="#ref-28">28</a></sup>; and it asks what would have to break for either thesis to fail. The short version: <strong>Cerebras owns latency-bounded, decode-dominated, small-batch workloads where the model fits on a wafer. Nvidia owns everything else, which today is almost everything.</strong></p>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">01</span>Two products, one taxonomy</h3>
+
+  <p>Both companies sell &quot;an AI accelerator,&quot; but the architectural choice points in opposite directions. The WSE-3 puts all of its memory on the silicon die — 44&nbsp;GB of SRAM, 900,000 cores, 46,225&nbsp;mm² of substrate, all on a single TSMC 5nm wafer<sup><a class="ara-cite" href="#ref-1">1</a></sup><sup><a class="ara-cite" href="#ref-2">2</a></sup>. Aggregate on-die bandwidth is 21&nbsp;PB/s<sup><a class="ara-cite" href="#ref-3">3</a></sup>. Off-package I/O is only ~150&nbsp;GB/s<sup><a class="ara-cite" href="#ref-55">55</a></sup>. The B200 die in the GB200 superchip, by contrast, ships with 192&nbsp;GB of HBM3e at ~8&nbsp;TB/s per GPU<sup><a class="ara-cite" href="#ref-12">12</a></sup>, and an NVL72 rack stitches 72 of them together with fifth-generation NVLink — 130&nbsp;TB/s of switch-domain bandwidth and 13.4&nbsp;TB of pooled HBM<sup><a class="ara-cite" href="#ref-12">12</a></sup>.</p>
+
+  <p>The two memory hierarchies invert each other. Cerebras has roughly 2,600× the per-chip memory bandwidth of one B200 — but ~300× less capacity than one NVL72 rack. The choice cascades into every other design decision: cooling (closed-loop water for one CS-3<sup><a class="ara-cite" href="#ref-3">3</a></sup> vs. rack-level direct-to-chip liquid plus air for NVL72<sup><a class="ara-cite" href="#ref-36">36</a></sup>); software (Cerebras's compile-time mapping vs. Nvidia's CUDA/TensorRT-LLM/Dynamo runtime<sup><a class="ara-cite" href="#ref-51">51</a></sup>); and what a buyer actually pays per workload class.</p>
+
+  <table class="ara-table">
+    <thead>
+      <tr><th>Metric</th><th>Cerebras CS-3</th><th>Nvidia GB200 NVL72</th><th>Ratio</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Process node</td><td>TSMC 5nm<sup><a class="ara-cite" href="#ref-1">1</a></sup></td><td>TSMC 4NP (Blackwell)<sup><a class="ara-cite" href="#ref-11">11</a></sup></td><td>—</td></tr>
+      <tr><td>Transistors</td><td>4 trillion (one die)<sup><a class="ara-cite" href="#ref-1">1</a></sup></td><td>208B × 72 dies ≈ ~15 T<sup><a class="ara-cite" href="#ref-11">11</a></sup></td><td>~4×</td></tr>
+      <tr><td>Compute cores</td><td>900,000<sup><a class="ara-cite" href="#ref-1">1</a></sup></td><td>72 Blackwell GPUs<sup><a class="ara-cite" href="#ref-12">12</a></sup></td><td>—</td></tr>
+      <tr><td>Fast memory</td><td>44 GB SRAM<sup><a class="ara-cite" href="#ref-1">1</a></sup></td><td>13.4 TB HBM3e<sup><a class="ara-cite" href="#ref-12">12</a></sup></td><td>304× (Nvidia)</td></tr>
+      <tr><td>Memory bandwidth</td><td>21 PB/s on-die<sup><a class="ara-cite" href="#ref-3">3</a></sup></td><td>576 TB/s aggregate<sup><a class="ara-cite" href="#ref-12">12</a></sup></td><td>36× (Cerebras)</td></tr>
+      <tr><td>Off-package I/O</td><td>~150 GB/s<sup><a class="ara-cite" href="#ref-55">55</a></sup></td><td>1.8 TB/s NVLink per GPU<sup><a class="ara-cite" href="#ref-13">13</a></sup></td><td>~860× (Nvidia)</td></tr>
+      <tr><td>Power</td><td>~23 kW<sup><a class="ara-cite" href="#ref-4">4</a></sup></td><td>~120 kW<sup><a class="ara-cite" href="#ref-36">36</a></sup></td><td>~5×</td></tr>
+      <tr><td>Form factor</td><td>16RU per system<sup><a class="ara-cite" href="#ref-3">3</a></sup></td><td>One 42–48U rack<sup><a class="ara-cite" href="#ref-12">12</a></sup></td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <p>The honest framing isn't &quot;which is better.&quot; It's: <em>where on the roofline does your workload sit?</em></p>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">02</span>Roofline: why decode is bandwidth-bound and prefill is compute-bound</h3>
+
+  <p>An LLM inference request has two phases. Prefill ingests the prompt as one big matrix-matrix multiply against the weights — it saturates compute<sup><a class="ara-cite" href="#ref-51">51</a></sup>. Decode is the autoregressive loop that emits one output token at a time. Each decode step is a matrix-vector multiply against the same weights, and at low batch size it spends most of its wall-clock moving model parameters from memory into the multiply-accumulate units<sup><a class="ara-cite" href="#ref-30">30</a></sup>.</p>
+
+  <p>The published arithmetic-intensity figures make the regime concrete. A roofline analysis of Llama-2-7B decode layers measures ~1.0 FLOP/byte for the q/k/v/o projections and MLPs<sup><a class="ara-cite" href="#ref-30">30</a></sup>. The hardware ridge point — the FLOPs-per-byte at which compute and memory become equally constrained — sits near 300 FLOPs/byte for an H100<sup><a class="ara-cite" href="#ref-31">31</a></sup>. In other words, batch-1 decode runs two orders of magnitude inside the memory-bound corner of the roofline. Bandwidth dominates wall time; FLOPs sit idle.</p>
+
+  <p>This is the regime where Cerebras's design choice pays off. With 21&nbsp;PB/s of on-wafer bandwidth feeding a model whose weights live in SRAM, the per-stream decode rate is unconstrained by any HBM-stack-count physics. The fielded result is the 969 tokens/sec on Llama&nbsp;3.1 405B that Cerebras advertises<sup><a class="ara-cite" href="#ref-6">6</a></sup> and the 2,100+ tok/s number on Llama&nbsp;3.1 70B<sup><a class="ara-cite" href="#ref-50">50</a></sup>. Artificial Analysis independently measured Cerebras at ~2,360 tok/s on Llama 3.1 8B and over 2,600 tok/s on Llama 4 Scout — &quot;the highest measured across all providers&quot;<sup><a class="ara-cite" href="#ref-22">22</a></sup>.</p>
+
+  <p>The counterpoint, as ML systems researcher Tim Dettmers framed it in a widely-quoted November 2024 post, is that those wins are batch-1 wins: <mark class="ara-mark">paraphrasing</mark> &quot;Cerebras is fast at batch size 1 and slow at batch size n; GPUs are the inverse&quot;<sup><a class="ara-cite" href="#ref-63">63</a></sup>. Decode arithmetic intensity rises roughly linearly with batch size<sup><a class="ara-cite" href="#ref-31">31</a></sup>; modern continuous batching frameworks like vLLM lift GPU decode throughput 2–4× over the prior state of the art at the same latency<sup><a class="ara-cite" href="#ref-52">52</a></sup>, and Anyscale measured ~23× for vLLM (continuous batching combined with PagedAttention) over a naive static baseline<sup><a class="ara-cite" href="#ref-53">53</a></sup>. By a batch of 32 or more, a GPU has crossed out of the memory-bound regime; its per-stream tokens-per-second drops, but per-GPU throughput climbs sharply. Nvidia's own MLPerf v5.0 reporting showed the same shape one generation earlier — B200 hitting ~98,400 tok/s on Llama 2 70B server scenario across an 8-GPU node, roughly 3× H200<sup><a class="ara-cite" href="#ref-16">16</a></sup>.</p>
+
+  <p>Why this matters: if your product is a chat interface where one user is waiting for one stream, the Cerebras curve looks decisive. If your product is millions of concurrent requests behind a load balancer, the same workload converts to a GPU continuous-batching problem where Nvidia's HBM capacity earns its keep.</p>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">03</span>MLPerf v5.1: the only apples-to-apples table in town</h3>
+
+  <p>Cerebras has never submitted to MLPerf Inference. Neither has Groq, nor SambaNova. The v5.1 results announcement from September 2025 listed 27 submitters — Nvidia, AMD, Intel, Google, and others — without any of the SRAM-architecture vendors<sup><a class="ara-cite" href="#ref-19">19</a></sup>. The most charitable read is that MLPerf takes engineering effort and brings in no revenue when chips are sold out. The skeptical read is that MLPerf's server and interactive scenarios — Poisson arrivals with TTFT and per-token latency caps<sup><a class="ara-cite" href="#ref-21">21</a></sup> — would expose how the batch-1 marketing numbers degrade under realistic load.</p>
+
+  <p>Nvidia's submitted v5.1 per-GPU numbers, audited by MLCommons, are the closest thing to an apples-to-apples reference:</p>
+
+  <table class="ara-table">
+    <thead>
+      <tr><th>Workload</th><th>Offline (tok/s/GPU)</th><th>Server (tok/s/GPU)</th><th>Interactive (tok/s/GPU)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Llama 2 70B (99.9%)</td><td>12,934<sup><a class="ara-cite" href="#ref-20">20</a></sup></td><td>12,701<sup><a class="ara-cite" href="#ref-20">20</a></sup></td><td>7,856<sup><a class="ara-cite" href="#ref-20">20</a></sup></td></tr>
+      <tr><td>Llama 3.1 405B</td><td>224<sup><a class="ara-cite" href="#ref-20">20</a></sup></td><td>170<sup><a class="ara-cite" href="#ref-20">20</a></sup></td><td>138<sup><a class="ara-cite" href="#ref-20">20</a></sup></td></tr>
+      <tr><td>Mixtral 8×7B</td><td>16,099<sup><a class="ara-cite" href="#ref-20">20</a></sup></td><td>16,131<sup><a class="ara-cite" href="#ref-20">20</a></sup></td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <p>Two things jump off the page. First, the 405B interactive number (138 tok/s/GPU) is ~38% below the offline figure — that's the price the GB200 NVL72 pays for honoring chat-style latency budgets at 12.5 tokens/sec/user and a 4.5-second TTFT cap<sup><a class="ara-cite" href="#ref-20">20</a></sup>. That gap is exactly where Cerebras's per-stream lead would manifest in an MLPerf-style comparison, if they submitted. Second, on Llama 2 70B the per-GPU throughput is so high — 12,701 tok/s/GPU server — that multiplying across a 72-GPU rack approximates Microsoft Azure's published &quot;over 860,000 tok/s on Llama 70B&quot; for the same rack<sup><a class="ara-cite" href="#ref-15">15</a></sup><sup><a class="ara-cite" href="#ref-14">14</a></sup>. The two figures triangulate.</p>
+
+  <p>The counterclaim is that MLPerf's offline mode is a throughput contest with no user-perceived latency anchor, and that its server mode uses Poisson arrivals that don't model agent loops or RAG pipelines. That's fair — but it remains the only third-party-audited number anyone can cite, and Cerebras's absence is informative.</p>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">04</span>List prices: what customers actually pay per million tokens</h3>
+
+  <p>Headline architecture stories collapse into pricing on the public API pages. Here is the merchant inference market at list, as of early 2026:</p>
+
+  <table class="ara-table">
+    <thead>
+      <tr><th>Model</th><th>Cerebras</th><th>Groq</th><th>DeepInfra</th><th>Together</th><th>Fireworks</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Llama 3.1 / 3.3 8B (in / out, $/Mtok)</td><td>0.10 / 0.10<sup><a class="ara-cite" href="#ref-5">5</a></sup></td><td>0.05 / 0.08<sup><a class="ara-cite" href="#ref-24">24</a></sup></td><td>0.02 / 0.05<sup><a class="ara-cite" href="#ref-27">27</a></sup></td><td>~0.10 flat<sup><a class="ara-cite" href="#ref-25">25</a></sup></td><td>tiered<sup><a class="ara-cite" href="#ref-26">26</a></sup></td></tr>
+      <tr><td>Llama 3.3 70B</td><td>0.85 / 1.20<sup><a class="ara-cite" href="#ref-22">22</a></sup><sup><a class="ara-cite" href="#ref-23">23</a></sup></td><td>0.59 / 0.79<sup><a class="ara-cite" href="#ref-24">24</a></sup></td><td>0.10 / 0.32<sup><a class="ara-cite" href="#ref-27">27</a></sup></td><td>~0.88 flat<sup><a class="ara-cite" href="#ref-25">25</a></sup></td><td>0.90 (16B+ tier)<sup><a class="ara-cite" href="#ref-26">26</a></sup></td></tr>
+      <tr><td>Llama 3.1 405B</td><td>6.00 / 12.00<sup><a class="ara-cite" href="#ref-6">6</a></sup></td><td>not offered<sup><a class="ara-cite" href="#ref-24">24</a></sup></td><td>not offered<sup><a class="ara-cite" href="#ref-27">27</a></sup></td><td><mark class="ara-mark">3.50 / 3.50 (historical; may have been delisted)</mark><sup><a class="ara-cite" href="#ref-25">25</a></sup></td><td>3.00 / 3.00<sup><a class="ara-cite" href="#ref-26">26</a></sup></td></tr>
+      <tr><td>DeepSeek-R1 (reasoning)</td><td>—</td><td>—</td><td>0.50 / 2.15<sup><a class="ara-cite" href="#ref-27">27</a></sup></td><td>—</td><td>0.55 / 2.19<sup><a class="ara-cite" href="#ref-26">26</a></sup></td></tr>
+    </tbody>
+  </table>
+
+  <p>Three findings worth pulling out. First, Cerebras's structural premium widens with model size. At 8B they match Groq and sit 2–5× DeepInfra. At 70B they are several multiples of DeepInfra's $0.10/$0.32 floor<sup><a class="ara-cite" href="#ref-27">27</a></sup> and ~1.5× Groq. At 405B they are 3.4× Fireworks's price for the output token — and Groq doesn't compete at 405B at all because their LPU's 230&nbsp;MB of SRAM<sup><a class="ara-cite" href="#ref-56">56</a></sup> won't host the model economically. Cerebras is selling speed, and the speed premium is real but explicit.</p>
+
+  <p>Second, output tokens cost much more than input for reasoning models — DeepSeek-R1 at DeepInfra is 4.3× more expensive to emit than to ingest<sup><a class="ara-cite" href="#ref-27">27</a></sup>; at Fireworks the multiplier is 4.0×<sup><a class="ara-cite" href="#ref-26">26</a></sup>. That's the cost of hidden chain-of-thought generation, and it's the workload class that most plays to bandwidth-rich architectures because the wall time really is decode-dominated.</p>
+
+  <p>Third, DeepInfra is the price floor — and they don't host 405B. The lowest-cost serious provider has voted with their menu that 405B isn't economic at scale; only the speed-tier specialists (Cerebras at $12 out) and the throughput shops with idle Blackwell capacity (Together, Fireworks at $3.00–3.50) keep it lit. The market is signaling that 405B is a niche.</p>
+
+  <div class="ara-callout ara-callout--info">
+    <span class="ara-callout-label">Methodology</span>
+    <p>All prices above are list rates fetched from each provider's pricing page in early 2026. Enterprise rates and committed-spend discounts are not disclosed publicly. Fireworks publishes 50% batch and cached-input discounts; DeepInfra offers ~30% on cached input<sup><a class="ara-cite" href="#ref-26">26</a></sup><sup><a class="ara-cite" href="#ref-27">27</a></sup>. Replicate, the most expensive provider on a token basis, prices most non-LLM models per GPU-second rather than per token<sup><a class="ara-cite" href="#ref-28">28</a></sup>.</p>
+  </div>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">05</span>The capex denominator: hardware unit costs</h3>
+
+  <p>Neither vendor publishes a list price. The best public proxy for the GB200 NVL72 rack is an HSBC analyst estimate of ~$3M per fully equipped rack, with per-GPU Blackwell pricing reported by trade press in the $30–70K range<sup><a class="ara-cite" href="#ref-18">18</a></sup>. SemiAnalysis, drawing on supply-chain primaries (paywalled), reports ~$3.9M per NVL72 rack with 1,200&nbsp;W per chip versus 700&nbsp;W for an H100, and calculates TCO/GPU at roughly 1.6× the H100 — with throughput uplifts that net to a lower cost per token at modern utilization<sup><a class="ara-cite" href="#ref-39">39</a></sup>. <mark class="ara-mark">SemiAnalysis figures cited from publicly visible newsletter previews; the underlying spreadsheet sits behind a subscriber paywall.</mark></p>
+
+  <p>For Cerebras, secondary estimates of the CS-3 system price cluster around $2–3M, but Cerebras does not publish it and the S-1 does not break out per-system economics. What it does disclose is that 64 CS-3 systems make up Condor Galaxy 3<sup><a class="ara-cite" href="#ref-10">10</a></sup>; <mark class="ara-mark">unverified: third-party reporting of $300–400M for that build implies $2–4M per system but is not a Cerebras-published number</mark>. A serving cluster of 20 CS-3 systems — what a third-party arithmetic from The Next Platform argues you need to hold Llama 405B in SRAM<sup><a class="ara-cite" href="#ref-35">35</a></sup> — therefore sits in the tens of millions of dollars before networking and the data-center shell. Twenty B200s — enough to serve the same model with HBM headroom to spare — list at well under $1M of silicon by Huang's own number<sup><a class="ara-cite" href="#ref-18">18</a></sup>.</p>
+
+  <p>This is the core of the skeptical TCO critique on Hacker News: that the 2.5× single-stream speed Cerebras buys on Llama 4 Maverick comes — by one Hacker News commenter's arithmetic — at as much as ~80× in capex per equivalent serving slot<sup><a class="ara-cite" href="#ref-65">65</a></sup>. The counterclaim is that the right denominator isn't capex per serving slot but capex amortized over the speed premium a buyer can charge — i.e. Cerebras's $12-per-Mtok output token at 969 tok/s is selling something Together's $3.50-per-Mtok 50-tok/s endpoint can't sell at any price. Both can be true at once.</p>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">06</span>Power, cooling, and tokens-per-kWh</h3>
+
+  <p>An NVL72 rack draws ~120 kW according to Nvidia's own DGX user guide<sup><a class="ara-cite" href="#ref-36">36</a></sup>, with the compute trays cooled by direct-to-chip liquid and networking/storage cooled by air. Meta's ORv3 rack design supports up to 140&nbsp;kW liquid-cooled, the highest publicly disclosed AI-rack envelope<sup><a class="ara-cite" href="#ref-37">37</a></sup>. A CS-3 system is rated at 23&nbsp;kW for 16U<sup><a class="ara-cite" href="#ref-4">4</a></sup>, with a proprietary closed water loop<sup><a class="ara-cite" href="#ref-3">3</a></sup>. By rack density, a fully populated 48U cabinet of CS-3 systems (three units) approaches ~70&nbsp;kW; an NVL72 rack delivers more compute and more memory in a single chassis but at nearly 2× the power.</p>
+
+  <p>Industrial electricity in the major US AI corridors as of February 2026 ran 7.07¢ (Arizona) to 9.98¢ (Virginia) per kWh<sup><a class="ara-cite" href="#ref-38">38</a></sup>; hyperscalers negotiate sub-average PPA rates closer to 4–6¢. <mark class="ara-mark">No primary-source tokens-per-kWh benchmark across CS-3, GB200 and H100 at matched batch sizes and model sizes has been published as of mid-2026.</mark> An H100-only measurement in the TokenPowerBench paper found ~0.39 J per total token at vLLM batch 128 with FP8 — roughly 108 Wh per million tokens<sup><a class="ara-cite" href="#ref-40">40</a></sup>. Cerebras's own marketing positions CS-3 at &quot;1/3 lower cost&quot; and &quot;21× faster&quot; than a DGX B200 on selected gpt-oss workloads<sup><a class="ara-cite" href="#ref-41">41</a></sup>, but the numbers are single-user comparisons that the company chose; no independent reproduction yet exists.</p>
+
+  <div class="ara-callout ara-callout--warn">
+    <span class="ara-callout-label">What would falsify this</span>
+    <p>If MLCommons publishes a v6.0 round in which Cerebras submits an audited Llama 3.1 405B server result that exceeds 200 tok/s/system at MLPerf's latency cap, the &quot;batch-1 only&quot; critique collapses for that model. Conversely, if a third party publishes a tokens-per-kWh comparison showing CS-3 within 50% of GB200 NVL72 at production batch sizes, the speed-premium pricing becomes much harder for Cerebras to defend.</p>
+  </div>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">07</span>The memory ceiling: what fits, and what doesn't</h3>
+
+  <p>SRAM has roughly three orders of magnitude more bandwidth per byte than HBM, and roughly three orders of magnitude less capacity per dollar. That tradeoff has hard consequences for which models can run economically on a wafer.</p>
+
+  <p>The arithmetic, per third-party reporting, is that one CS-3 holds 44&nbsp;GB; Llama 3.1 70B in FP16 needs ~140&nbsp;GB just for weights — roughly four CS-3 systems just to fit the parameters<sup><a class="ara-cite" href="#ref-35">35</a></sup>. Llama 3.1 405B needs ~18–20 systems; DeepSeek-V3 671B would need 30+, before any KV cache<sup><a class="ara-cite" href="#ref-35">35</a></sup>. The KV cache for a single Llama-3-70B request at 128k tokens — with GQA — runs ~40&nbsp;GB in BF16<sup><a class="ara-cite" href="#ref-32">32</a></sup>, almost exactly the WSE-3 SRAM budget for one concurrent user.</p>
+
+  <p>Two observations follow. First, the inflection between &quot;Cerebras wins&quot; and &quot;Cerebras struggles&quot; sits at the boundary where the model+KV exceeds on-wafer SRAM and the workload spills to off-package storage at 150&nbsp;GB/s<sup><a class="ara-cite" href="#ref-55">55</a></sup>. SemiAnalysis has argued that KV-cache transfer takes &quot;several milliseconds&quot; in that regime — enough to materially hurt TTFT and crush batching<sup><a class="ara-cite" href="#ref-55">55</a></sup>. Second, SRAM scaling has essentially flatlined past 5nm: WSE-3 added only ~10% SRAM over WSE-2 while logic scaled ~50% on the same TSMC node change<sup><a class="ara-cite" href="#ref-55">55</a></sup>. The capacity gap with HBM is not a transient — it's structural for the next several process generations.</p>
+
+  <p>HBM pricing is the other lever. TrendForce reports HBM3e at ~$300 per 36&nbsp;GB stack pre-2026, with Samsung and SK hynix raising prices ~20% for 2026<sup><a class="ara-cite" href="#ref-33">33</a></sup>. A B200's 192&nbsp;GB (eight 24-GB stacks) carries on the order of $1,600–2,000 in HBM at that rate. A TSMC N5 wafer carries ~$17–18.5k per 300&nbsp;mm wafer<sup><a class="ara-cite" href="#ref-34">34</a></sup>, of which Cerebras enables ~93% via per-core redundancy<sup><a class="ara-cite" href="#ref-29">29</a></sup>. The wafer-scale design is BoM-efficient at silicon; the HBM-attached design is capacity-efficient at memory.</p>
+
+  <p>What it means for the buyer: if your serving target is a frontier-class model (≥400B dense, ≥600B MoE), the per-token economics on Cerebras involve a multi-system pipeline that, per SemiAnalysis, &quot;goes against the entire ethos of the wafer&quot;<sup><a class="ara-cite" href="#ref-55">55</a></sup>. Notably, Cerebras's own production cloud catalog tops out at gpt-oss 120B, and the original Llama 3.1 70B and 405B endpoints were deprecated<sup><a class="ara-cite" href="#ref-55">55</a></sup> — the menu is the tell.</p>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">08</span>Workload shape determines the winner</h3>
+
+  <p>From the roofline plus the capacity ceiling, the workload taxonomy is straightforward.</p>
+
+  <ul>
+    <li><strong>Long-prompt RAG, short-output classification.</strong> Prefill-dominated. The matrix-matrix multiply against a long sequence is FLOPs-bound. Nvidia's compute density per dollar wins.</li>
+    <li><strong>High-concurrency batch inference behind a load balancer.</strong> Continuous batching lifts GPU decode throughput 2–4× vs. prior baselines<sup><a class="ara-cite" href="#ref-52">52</a></sup>; per-GPU tokens-per-second on Llama 2 70B sit at ~12,700 in MLPerf server mode<sup><a class="ara-cite" href="#ref-20">20</a></sup>. Nvidia wins on cost-per-token at scale.</li>
+    <li><strong>Single-stream interactive chat at low latency.</strong> Decode-dominated, batch-1. Cerebras's 21&nbsp;PB/s on-wafer bandwidth is structurally hard to beat. The 1,200 tok/s Perplexity Sonar build<sup><a class="ara-cite" href="#ref-8">8</a></sup> and 1,100+ tok/s Mistral Le Chat Flash Answers<sup><a class="ara-cite" href="#ref-7">7</a></sup> are the proof points.</li>
+    <li><strong>Reasoning models with long hidden chains of thought.</strong> Decode explodes 5–20× per visible answer. The output-token premium across providers — 4× on R1<sup><a class="ara-cite" href="#ref-27">27</a></sup><sup><a class="ara-cite" href="#ref-26">26</a></sup> — captures this. In principle, this is the regime where Cerebras's per-stream speed is most economically valuable; in practice, Cerebras has not yet productized DeepSeek-V3 or Kimi K2 on its public cloud<sup><a class="ara-cite" href="#ref-55">55</a></sup>.</li>
+    <li><strong>Agentic loops with many sequential turns.</strong> Each turn's wall time is dominated by decode tokens. Cerebras claims a 10-step agent chain drops from 30+s on GPU at 50 tok/s to under 3s at 1,200 tok/s<sup><a class="ara-cite" href="#ref-54">54</a></sup> — the architectural point is right, the magnitude is vendor-flavored.</li>
+    <li><strong>Long-context (128k+).</strong> KV-cache memory dominates. The 40&nbsp;GB-per-user KV figure for Llama 3 70B<sup><a class="ara-cite" href="#ref-32">32</a></sup> is benign on a 13.4&nbsp;TB NVL72 rack and adversarial on a 44&nbsp;GB WSE-3. Nvidia wins.</li>
+  </ul>
+
+  <p>The honest statement of Cerebras's wedge is that it's narrow but real: <em>latency-bounded, decode-dominated, low-concurrency workloads on models small enough to fit on the wafer.</em> Chat UIs for premium products fit that description. Backend RAG at scale does not.</p>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">09</span>Customer base: where the revenue actually comes from</h3>
+
+  <p>The marketing momentum and the financial reality diverge. Cerebras's S-1 amendment for the April 2026 refile shows 2025 revenue of ~$510M, of which roughly 24% came from G42 and 62% from Mohamed bin Zayed University of Artificial Intelligence (MBZUAI), a G42-related party — combined ~86% UAE concentration<sup><a class="ara-cite" href="#ref-46">46</a></sup>. The headline 2025 GAAP net income of $237.8M is dominated by a $363.3M one-time non-cash gain from extinguishing a G42 forward-contract liability; on a non-GAAP basis, Cerebras lost $75.7M in 2025, a 247% deterioration from 2024<sup><a class="ara-cite" href="#ref-46">46</a></sup>. GAAP operating loss was $145.9M<sup><a class="ara-cite" href="#ref-46">46</a></sup>. The original September 2024 S-1 had disclosed 2023 revenue of $78.7M and net loss of $127.2M, with G42 at 83% of revenue and rising to 87% in H1 2024<sup><a class="ara-cite" href="#ref-43">43</a></sup><sup><a class="ara-cite" href="#ref-42">42</a></sup>.</p>
+
+  <p>The named Western customer wins are real but small. Mistral runs Le Chat Flash Answers on CS-3 for 1,100+ tok/s on Mistral Large 2<sup><a class="ara-cite" href="#ref-7">7</a></sup>; Perplexity Sonar runs on CS-3 for 1,200 tok/s on a Llama 3.3 70B fine-tune<sup><a class="ara-cite" href="#ref-8">8</a></sup>; Meta's Llama API offers Cerebras as one of several inference back-ends for Llama 4 Scout<sup><a class="ara-cite" href="#ref-9">9</a></sup>. None of these arrangements has had its dollar value disclosed. The disclosed $20B+ multi-year OpenAI master agreement is forward-commit only, with deployment through 2028<sup><a class="ara-cite" href="#ref-46">46</a></sup>.</p>
+
+  <p>Cerebras announced six new datacenters across North America and Europe in March 2025, including ~300 CS-3 systems in Oklahoma City and a Cerebras-owned Montreal site<sup><a class="ara-cite" href="#ref-61">61</a></sup>; G42 and India's C-DAC formalized a framework in May 2026 for a 64-system Condor Galaxy India build<sup><a class="ara-cite" href="#ref-62">62</a></sup>. The IPO on May 14, 2026 priced at $185 — well above the $150–160 marketed range — for ~30M shares and $5.55B raised, with first-day close of $311.07 (+68%) and intraday peak of $385 (+108%)<sup><a class="ara-cite" href="#ref-45">45</a></sup>.</p>
+
+  <p>On the Nvidia side, the contrast is roughly two orders of magnitude. Q4 FY26 data-center revenue was $62.3B (+75% YoY), with full-year FY26 DC at $193.7B; Q4 GAAP gross margin was 75.0%; Q1 FY27 revenue guidance was $78B<sup><a class="ara-cite" href="#ref-47">47</a></sup>. By the Q3 FY26 call (November 2025), GB300 shipments had crossed GB200 and accounted for roughly two-thirds of Blackwell revenue, with Hopper down to ~$2B per quarter<sup><a class="ara-cite" href="#ref-48">48</a></sup>. Nvidia's 10-K for FY26 disclosed that two direct customers accounted for 36% of revenue and the top four for 61%; the top five end-customer hyperscalers were ~50%+ of revenue<sup><a class="ara-cite" href="#ref-49">49</a></sup>. CoWoS packaging capacity at TSMC is the binding supply constraint into 2026, with Nvidia booking the majority of available slots — a consensus view across supply-chain reporting and Nvidia partner-cloud announcements<sup><a class="ara-cite" href="#ref-17">17</a></sup>.</p>
+
+  <table class="ara-table">
+    <thead>
+      <tr><th>Quantity</th><th>Cerebras (2025, S-1)</th><th>Nvidia DC (Q4 FY26)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Revenue</td><td>$510M (full year)<sup><a class="ara-cite" href="#ref-46">46</a></sup></td><td>$62.3B (one quarter)<sup><a class="ara-cite" href="#ref-47">47</a></sup></td></tr>
+      <tr><td>GAAP gross margin</td><td>thin / improving (~40% hardware)<sup><a class="ara-cite" href="#ref-43">43</a></sup></td><td>75.0%<sup><a class="ara-cite" href="#ref-47">47</a></sup></td></tr>
+      <tr><td>Customer concentration</td><td>86% UAE-related<sup><a class="ara-cite" href="#ref-46">46</a></sup></td><td>~50% to top 5 hyperscalers<sup><a class="ara-cite" href="#ref-49">49</a></sup></td></tr>
+      <tr><td>GAAP net income</td><td>$237.8M (incl. $363.3M one-time gain)<sup><a class="ara-cite" href="#ref-46">46</a></sup></td><td>Full FY26 total revenue $130.5B prior year reference point<sup><a class="ara-cite" href="#ref-47">47</a></sup></td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">10</span>The other non-Nvidia options</h3>
+
+  <p>Cerebras isn't the only or even the largest non-Nvidia inference fleet. Two captive fleets dwarf every merchant alternative: Google's TPU (Trillium v6e for Gemini 2.0 serving, &quot;nearly 2×&quot; per-chip inference throughput on Llama 2 70B vs. v5e per Google's own numbers<sup><a class="ara-cite" href="#ref-59">59</a></sup>) and AWS Trainium2 under Project Rainier (~500K chips deployed by November 2025, targeting >1M for Anthropic by year-end)<sup><a class="ara-cite" href="#ref-60">60</a></sup>. These together likely serve more daily inference tokens than every merchant non-Nvidia accelerator combined.</p>
+
+  <p>Among speed specialists, Groq is Cerebras's most direct competitor — SRAM-only LPU, ~230&nbsp;MB on-chip <mark class="ara-mark">(vendor architecture summary; not on the cited blog directly)</mark>, 276 tok/s baseline on Llama 3.3 70B<sup><a class="ara-cite" href="#ref-56">56</a></sup>, priced at $0.59 in / $0.79 out per Mtok<sup><a class="ara-cite" href="#ref-24">24</a></sup>. Cerebras's own competitive piece argues 2,500 tok/s vs. Groq's ~403 tok/s on Llama 3.3 70B at &quot;similar or up to ~50% higher&quot; pricing<sup><a class="ara-cite" href="#ref-22">22</a></sup>. SambaNova's SN40L combines a tiered memory hierarchy (HBM3 + DDR5 + on-package SRAM) aimed at serving the largest models, with vendor-reported 457 tok/s on Llama 3.1 70B and 129 tok/s on 405B<sup><a class="ara-cite" href="#ref-57">57</a></sup>.</p>
+
+  <p>The most consequential merchant competitor remains AMD. The MI355X, per AMD's own MLPerf Inference 6.0 submission, claims parity with B200 in offline, 97% in server, and 119% in interactive on Llama 2 70B<sup><a class="ara-cite" href="#ref-58">58</a></sup>. That is the first time merchant silicon has reached parity with Nvidia on the standard MLPerf benchmark. AMD's pricing has historically been ~30% below Nvidia at like-for-like; if the parity holds at GA volume, AMD becomes the natural pressure point on Nvidia's gross margin, not Cerebras.</p>
+
+  <p>A short interpretive note: Cerebras is competing with Groq for the speed-bracket niche, not with Nvidia for the throughput market. The right competitive comparison is &quot;Cerebras vs. Groq vs. SambaNova,&quot; and on the financial scoreboard Cerebras's $66B post-IPO market cap<sup><a class="ara-cite" href="#ref-45">45</a></sup> is <mark class="ara-mark">unverified-precision: roughly an order of magnitude above widely-reported private valuations for Groq (~$6.9B) and SambaNova (~$2.2B, down from a $5.1B peak); specific multiples depend on the round cited.</mark> The divergence reflects revenue traction the others don't have publicly — but also a market betting that Cerebras has uniquely cracked something Groq and SambaNova haven't, which is a thesis the underlying customer-concentration disclosures don't yet support.</p>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">11</span>Three serious counter-arguments to the Cerebras thesis</h3>
+
+  <p>I've sprinkled counterpoints through the sections. Here are the three that, if they prove out, are most likely to compress the bull case.</p>
+
+  <p><strong>(a) Nvidia's software stack closes the gap.</strong> Speculative decoding, multi-token prediction, and disaggregated prefill-vs-decode serving via Dynamo and TensorRT-LLM are systematically eating into the per-stream latency where Cerebras leads. Nvidia's published Blackwell Ultra (B300) writeup advertises generational gains of &quot;up to 50× higher AI factory output&quot; on reasoning-model workloads at low-latency targets versus Hopper<sup><a class="ara-cite" href="#ref-64">64</a></sup>. The Cerebras lead at batch 1 is more defensible architecturally than the lead at batch 8 or 16.</p>
+
+  <p><strong>(b) The wedge workload doesn't generalize.</strong> Cerebras has not productized DeepSeek-V3, Kimi K2, or any frontier-class MoE model on its public cloud<sup><a class="ara-cite" href="#ref-55">55</a></sup>. The deprecation of Llama 3.1 70B and 405B from the active catalog<sup><a class="ara-cite" href="#ref-55">55</a></sup> suggests that, at production utilization, those endpoints did not earn their wafer count. If the frontier keeps moving toward sparse MoE models with high-capacity expert pools and long context, the on-wafer-only architecture becomes a worse fit, not a better one.</p>
+
+  <p><strong>(c) Revenue concentration is structural, not transitional.</strong> The CFIUS-driven restructuring of G42's stake to non-voting<sup><a class="ara-cite" href="#ref-44">44</a></sup> removed the regulatory blocker on the IPO, but the underlying customer concentration just reshuffled inside the same group of UAE-related entities — 24% G42 + 62% MBZUAI in 2025<sup><a class="ara-cite" href="#ref-46">46</a></sup>. Western customers like Mistral and Perplexity are marketing wins; the dollar volume isn't visible in revenue mix. If the OpenAI master-agreement deployment slips, or if a future US administration revisits UAE export-control posture, the demand side becomes thin.</p>
+
+  <div class="ara-callout ara-callout--danger">
+    <span class="ara-callout-label">Risk</span>
+    <p>The thinnest part of the bull case isn't the chip — it's that 86% of revenue ties to two UAE-related entities with overlapping ownership<sup><a class="ara-cite" href="#ref-46">46</a></sup>, and that the headline 2025 GAAP profit is a one-time accounting gain<sup><a class="ara-cite" href="#ref-46">46</a></sup>. The wafer is interesting; the customer book is fragile.</p>
+  </div>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">12</span>What this means for buyers and operators</h3>
+
+  <p>The practical framing for an inference buyer in mid-2026 is a decision tree, not a vendor preference.</p>
+
+  <ul>
+    <li><strong>If you're serving frontier-class models (≥400B dense, ≥600B MoE) at any meaningful concurrency:</strong> GB200 NVL72 or its successor (GB300/Rubin) is the default. The HBM capacity per rack is the dominant constraint.</li>
+    <li><strong>If you're serving chat/agent products where end-to-end latency is the differentiator and the model is in the 8–120B range:</strong> Cerebras or Groq is plausible, with Groq cheaper at the low end and Cerebras faster at the top end. Validate the production batch-size assumption — many &quot;single-stream&quot; products actually have meaningful concurrent demand and convert to a GPU-batching problem on closer inspection.</li>
+    <li><strong>If your workload is RAG-heavy, long-context, or prefill-dominated:</strong> Nvidia. The arithmetic intensity of prefill rewards FLOPs density.</li>
+    <li><strong>If you care most about cost per output token at large batch:</strong> DeepInfra-class providers on cheaper Nvidia capacity (H100/H200) often beat the bleeding-edge B200/GB200 deployments because the buyer is paying for amortized older capex.</li>
+    <li><strong>If you're a hyperscaler with sovereign-AI customers and an Arabic-Gulf relationship:</strong> Cerebras is a credible vendor today partly <em>because</em> G42 and MBZUAI underwrote it through three years of revenue.</li>
+  </ul>
+
+  <p>The cost-per-token contest as a generic horse race obscures more than it reveals. The numbers that decide it are workload-specific: what's the model size, what's the prompt-to-completion ratio, what's the concurrency, what's the latency budget, what's the context length. Cerebras has built the best chip in the world for one quadrant of that space. Nvidia has built the most economically dominant rack in the history of computing for the other quadrants.</p>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">13</span>Bottom line</h3>
+
+  <p>Two true sentences, neither of which contradicts the other.</p>
+
+  <p>One: at batch 1, on a 70B-class model that fits on a wafer, Cerebras delivers throughput per stream that Nvidia cannot match at any price, and the Mistral, Perplexity, and Meta Llama API integrations are real evidence that there is a paying market for that capability<sup><a class="ara-cite" href="#ref-7">7</a></sup><sup><a class="ara-cite" href="#ref-8">8</a></sup><sup><a class="ara-cite" href="#ref-9">9</a></sup>.</p>
+
+  <p>Two: at the throughput / concurrency / capacity scale where the inference market actually sells most of its tokens, GB200 NVL72 — and increasingly GB300 — delivers per-GPU MLPerf results that no merchant competitor has yet matched on an audited basis<sup><a class="ara-cite" href="#ref-20">20</a></sup>, sustains ~75% gross margins on $62.3B of quarterly data-center revenue<sup><a class="ara-cite" href="#ref-47">47</a></sup>, and faces real but bounded competition from AMD's MI355X<sup><a class="ara-cite" href="#ref-58">58</a></sup>, AWS Trainium2<sup><a class="ara-cite" href="#ref-60">60</a></sup>, and Google's TPU<sup><a class="ara-cite" href="#ref-59">59</a></sup> — none of which is Cerebras.</p>
+
+  <p>The right framing for the next 18 months isn't &quot;Cerebras vs. Nvidia.&quot; It's: <em>which workloads, at which latencies, on which model classes, defect from the Nvidia stack to one of the speed specialists</em> — and how fast does Nvidia's own software stack (Dynamo, MTP, disaggregated serving<sup><a class="ara-cite" href="#ref-64">64</a></sup>) close that defection window. The answer determines whether Cerebras's $66B post-IPO valuation is a generational pricing of a wafer-scale inflection, or a richly-funded niche player whose moat is the diameter of one TSMC reticle.</p>
+
+  <hr class="ara-divider">
+
+  <h3 class="ara-h2"><span class="ara-h2-num">14</span>References</h3>
+
+  <ol>
+    <li id="ref-1">Cerebras Systems, &quot;Cerebras Announces Third Generation Wafer-Scale Engine,&quot; press release, March 13, 2024. <a href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine">cerebras.ai</a></li>
+    <li id="ref-2">Samuel K. Moore, &quot;Cerebras Introduces Its 2.6-Trillion Transistor AI Chip,&quot; IEEE Spectrum, March 13, 2024. <a href="https://spectrum.ieee.org/cerebras-chip-cs3">spectrum.ieee.org</a></li>
+    <li id="ref-3">Cerebras Systems, &quot;Cerebras CS-3 System,&quot; product page. <a href="https://www.cerebras.ai/system">cerebras.ai/system</a></li>
+    <li id="ref-4">Cerebras Systems, &quot;Introducing the Cerebras CS-3,&quot; blog post, March 12, 2024. <a href="https://www.cerebras.ai/blog/cerebras-cs3">cerebras.ai/blog/cerebras-cs3</a></li>
+    <li id="ref-5">Cerebras Systems, &quot;Cerebras Launches the World's Fastest AI Inference,&quot; press release, August 27, 2024. <a href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference">cerebras.ai</a></li>
+    <li id="ref-6">Cerebras Systems, &quot;Cerebras Inference Now Generates 969 Tokens/s on Llama 3.1-405B,&quot; press release, November 18, 2024. <a href="https://www.cerebras.ai/press-release/cerebras-inference-llama-405b">cerebras.ai</a></li>
+    <li id="ref-7">Cerebras Systems, &quot;Mistral Le Chat: Now with Cerebras Inference,&quot; blog, February 6, 2025. <a href="https://www.cerebras.ai/blog/mistral-le-chat">cerebras.ai/blog/mistral-le-chat</a></li>
+    <li id="ref-8">Cerebras Systems, &quot;Cerebras Powers Perplexity Sonar with Industry's Fastest AI Inference,&quot; press release, February 11, 2025. <a href="https://www.cerebras.ai/press-release/cerebras-powers-perplexity-sonar-with-industrys-fastest-ai-inference">cerebras.ai</a></li>
+    <li id="ref-9">Cerebras Systems, &quot;Meta Unleashes Llama API,&quot; news post, April 29, 2025. <a href="https://www.cerebras.ai/news/meta-unleashes-llama-api-running-18x-faster-than-openai-cerebras-partnership-delivers-2-600">cerebras.ai</a></li>
+    <li id="ref-10">Cerebras Systems &amp; G42, &quot;Cerebras &amp; G42 Announce Condor Galaxy 3,&quot; press release, March 13, 2024. <a href="https://www.cerebras.ai/press-release/cerebras-g42-announce-condor-galaxy-3">cerebras.ai</a></li>
+    <li id="ref-11">NVIDIA, &quot;NVIDIA Blackwell Platform Arrives to Power a New Era of Computing,&quot; press release, March 18, 2024. <a href="https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing">nvidianews.nvidia.com</a></li>
+    <li id="ref-12">NVIDIA, &quot;GB200 NVL72,&quot; product page (specs table). <a href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/">nvidia.com</a></li>
+    <li id="ref-13">NVIDIA Developer Blog, &quot;NVIDIA GB200 NVL72 Delivers Trillion-Parameter LLM Training and Real-Time Inference,&quot; 2024. <a href="https://developer.nvidia.com/blog/nvidia-gb200-nvl72-delivers-trillion-parameter-llm-training-and-real-time-inference/">developer.nvidia.com</a></li>
+    <li id="ref-14">Microsoft Azure Docs, &quot;ND GB200 v6-series virtual machines,&quot; updated April 2, 2026. <a href="https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nd-gb200-v6-series">learn.microsoft.com</a></li>
+    <li id="ref-15">Microsoft Azure HPC Blog, &quot;Accelerating the Intelligence Age with Azure AI Infrastructure and the GA of ND GB200 v6,&quot; 2025. <a href="https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/accelerating-the-intelligence-age-with-azure-ai-infrastructure-and-the-ga-of-nd-/4394575">techcommunity.microsoft.com</a></li>
+    <li id="ref-16">NVIDIA Developer Blog, &quot;Blackwell Delivers Massive Performance Leaps in MLPerf Inference v5.0,&quot; April 2, 2025. <a href="https://developer.nvidia.com/blog/nvidia-blackwell-delivers-massive-performance-leaps-in-mlperf-inference-v5-0/">developer.nvidia.com</a></li>
+    <li id="ref-17">NVIDIA Blog, &quot;CoreWeave Brings Grace Blackwell GB200 NVL72 to GA,&quot; April 15, 2025. <a href="https://blogs.nvidia.com/blog/coreweave-grace-blackwell-gb200-nvl72/">blogs.nvidia.com</a></li>
+    <li id="ref-18">Anton Shilov, &quot;Nvidia's Blackwell AI GPUs to Cost Up to $70,000; Fully Equipped Servers Range Up to $3,000,000: Report,&quot; Tom's Hardware, March 2024. <a href="https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-blackwell-ai-gpus-to-cost-up-to-dollar70000-fully-equipped-servers-range-up-to-dollar3000000-report">tomshardware.com</a></li>
+    <li id="ref-19">MLCommons, &quot;MLPerf Inference v5.1 Results,&quot; September 9, 2025. <a href="https://mlcommons.org/2025/09/mlperf-inference-v5-1-results/">mlcommons.org</a></li>
+    <li id="ref-20">NVIDIA Developer Blog, &quot;Blackwell Ultra Sets New Inference Records in MLPerf Debut,&quot; September 9, 2025. <a href="https://developer.nvidia.com/blog/nvidia-blackwell-ultra-sets-new-inference-records-in-mlperf-debut/">developer.nvidia.com</a></li>
+    <li id="ref-21">MLCommons, &quot;MLPerf Inference Rules,&quot; ongoing GitHub policy doc. <a href="https://github.com/mlcommons/inference_policies/blob/master/inference_rules.adoc">github.com/mlcommons</a></li>
+    <li id="ref-22">Artificial Analysis, &quot;Cerebras: Provider Performance,&quot; live benchmark page. <a href="https://artificialanalysis.ai/providers/cerebras">artificialanalysis.ai</a></li>
+    <li id="ref-23">Artificial Analysis, &quot;Llama 3.3 Instruct 70B: Providers,&quot; live benchmark page. <a href="https://artificialanalysis.ai/models/llama-3-3-instruct-70b/providers">artificialanalysis.ai</a></li>
+    <li id="ref-24">Groq, &quot;Pricing,&quot; vendor page (May 2026). <a href="https://groq.com/pricing/">groq.com/pricing</a></li>
+    <li id="ref-25">Together AI, &quot;Pricing,&quot; vendor page. <a href="https://www.together.ai/pricing">together.ai/pricing</a></li>
+    <li id="ref-26">Fireworks AI, &quot;Pricing,&quot; vendor page. <a href="https://fireworks.ai/pricing">fireworks.ai/pricing</a></li>
+    <li id="ref-27">DeepInfra, &quot;Pricing,&quot; vendor page. <a href="https://deepinfra.com/pricing">deepinfra.com/pricing</a></li>
+    <li id="ref-28">Replicate, &quot;Pricing,&quot; vendor page. <a href="https://replicate.com/pricing">replicate.com/pricing</a></li>
+    <li id="ref-29">Cerebras Systems, &quot;100x Defect Tolerance: How Cerebras Solved the Yield Problem,&quot; blog. <a href="https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem">cerebras.ai</a></li>
+    <li id="ref-30">Zhihang Yuan et al., &quot;LLM Inference Unveiled: Survey and Roofline Model Insights,&quot; arXiv 2402.16363v4, 2024. <a href="https://arxiv.org/html/2402.16363v4">arxiv.org</a></li>
+    <li id="ref-31">Pierre Lienhart, &quot;LLM Inference Series 5: Dissecting Model Performance,&quot; Medium, 2024. <a href="https://medium.com/@plienhar/llm-inference-series-5-dissecting-model-performance-6144aa93168f">medium.com</a></li>
+    <li id="ref-32">LMCache, &quot;KV Cache Calculator,&quot; tool. <a href="https://lmcache.ai/kv_cache_calculator.html">lmcache.ai</a></li>
+    <li id="ref-33">TrendForce, &quot;Samsung &amp; SK hynix Reportedly Plan 20% HBM3e Price Hike for 2026,&quot; December 24, 2025. <a href="https://www.trendforce.com/news/2025/12/24/news-samsung-sk-hynix-reportedly-plan-20-hbm3e-price-hike-for-2026-as-nvidia-h200-asic-demand-rises/">trendforce.com</a></li>
+    <li id="ref-34">Anton Shilov, &quot;TSMC's Wafer Prices Revealed: 300mm Wafer at 5nm Is Nearly $17,000,&quot; Tom's Hardware. <a href="https://www.tomshardware.com/news/tsmcs-wafer-prices-revealed-300mm-wafer-at-5nm-is-nearly-dollar17000">tomshardware.com</a></li>
+    <li id="ref-35">Timothy Prickett Morgan, &quot;Cerebras Trains Llama Models To Leap Over GPUs,&quot; The Next Platform, October 25, 2024. <a href="https://www.nextplatform.com/2024/10/25/cerebras-trains-llama-models-to-leap-over-gpus/">nextplatform.com</a></li>
+    <li id="ref-36">NVIDIA, &quot;DGX GB200 User Guide: Hardware Overview,&quot; current docs. <a href="https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html">docs.nvidia.com</a></li>
+    <li id="ref-37">Matt Vincent, &quot;OCP 2024: Meta Shows Off 140-kW Liquid-Cooled AI Rack,&quot; Data Center Frontier, October 2024. <a href="https://www.datacenterfrontier.com/hyperscale/article/55238148/ocp-2024-spotlight-meta-shows-off-140-kw-liquid-cooled-ai-rack">datacenterfrontier.com</a></li>
+    <li id="ref-38">U.S. Energy Information Administration, &quot;Electric Power Monthly Table 5.6.A: Average Retail Price of Electricity,&quot; February 2026. <a href="https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a">eia.gov</a></li>
+    <li id="ref-39">SemiAnalysis, &quot;H100 vs GB200 NVL72 Training Benchmarks,&quot; 2024–2025. <a href="https://newsletter.semianalysis.com/p/h100-vs-gb200-nvl72-training-benchmarks">newsletter.semianalysis.com</a></li>
+    <li id="ref-40">&quot;TokenPowerBench: Energy Consumption Benchmarks for LLM Inference,&quot; arXiv 2512.03024v1, December 2025. <a href="https://arxiv.org/html/2512.03024v1">arxiv.org</a></li>
+    <li id="ref-41">Cerebras Systems, &quot;Cerebras CS-3 vs NVIDIA DGX B200 (Blackwell),&quot; vendor blog. <a href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-dgx-b200-blackwell">cerebras.ai</a></li>
+    <li id="ref-42">Cerebras Systems, Form S-1, filed September 30, 2024 (original). <a href="https://www.sec.gov/Archives/edgar/data/2021728/000162828024041596/cerebras-sx1.htm">sec.gov</a></li>
+    <li id="ref-43">Tanay Jaipuria, &quot;Cerebras S-1 Breakdown,&quot; analysis, October 2024. <a href="https://www.tanayj.com/p/cerebras-s-1-breakdown">tanayj.com</a></li>
+    <li id="ref-44">Reuters / US News, &quot;Cerebras Likely to Postpone IPO Due to CFIUS Review Delay on G42 Deal,&quot; October 8, 2024. <a href="https://www.usnews.com/news/technology/articles/2024-10-08/exclusive-cerebras-likely-to-postpone-ipo-due-to-cfius-review-delay-on-g42-deal-sources-say">usnews.com</a></li>
+    <li id="ref-45">TechCrunch, &quot;Cerebras Raises $5.5B, Kicking Off 2026's IPO Season with a Bang,&quot; May 14, 2026. <a href="https://techcrunch.com/2026/05/14/cerebras-raises-5-5b-kicking-off-2026s-ipo-season-with-a-bang/">techcrunch.com</a></li>
+    <li id="ref-46">TechTimes, &quot;Cerebras Raises $5.55B AI Chip IPO; 86% Revenue Dependence on UAE Entities Unresolved,&quot; May 15, 2026 (citing S-1/A). <a href="https://www.techtimes.com/articles/316698/20260515/cerebras-raises-555-billion-ai-chip-ipo-86-revenue-dependence-uae-entities-unresolved.htm">techtimes.com</a></li>
+    <li id="ref-47">NVIDIA, &quot;NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2026,&quot; press release, February 25, 2026. <a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026">nvidianews.nvidia.com</a></li>
+    <li id="ref-48">NVIDIA, &quot;Q3 FY26 Earnings Call Transcript,&quot; November 19, 2025. <a href="https://s201.q4cdn.com/141608511/files/doc_financials/2026/q3/NVDA-Q3-2026-Earnings-Call-19-November-2025-5_00-PM-ET.pdf">s201.q4cdn.com</a></li>
+    <li id="ref-49">NVIDIA, Form 10-K for fiscal year ended January 25, 2026. <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm">sec.gov</a></li>
+    <li id="ref-50">Cerebras Systems, &quot;Cerebras Inference: 3x Faster,&quot; blog, October 24, 2024. <a href="https://www.cerebras.ai/blog/cerebras-inference-3x-faster">cerebras.ai</a></li>
+    <li id="ref-51">NVIDIA Developer Blog, &quot;Mastering LLM Techniques: Inference Optimization,&quot; ongoing. <a href="https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/">developer.nvidia.com</a></li>
+    <li id="ref-52">Woosuk Kwon et al., &quot;Efficient Memory Management for Large Language Model Serving with PagedAttention,&quot; SOSP 2023, arXiv 2309.06180. <a href="https://arxiv.org/abs/2309.06180">arxiv.org</a></li>
+    <li id="ref-53">Anyscale, &quot;How Continuous Batching Enables 23x Throughput in LLM Inference,&quot; engineering blog, 2023. <a href="https://www.anyscale.com/blog/continuous-batching-llm-inference">anyscale.com</a></li>
+    <li id="ref-54">Cerebras Systems, &quot;Disaggregated Inference,&quot; blog. <a href="https://www.cerebras.ai/blog/disaggregated-inference">cerebras.ai</a></li>
+    <li id="ref-55">SemiAnalysis, &quot;Cerebras: Faster Tokens, Please,&quot; subscriber newsletter, 2025. <a href="https://newsletter.semianalysis.com/p/cerebras-faster-tokens-please">newsletter.semianalysis.com</a></li>
+    <li id="ref-56">Groq, &quot;New AI Inference Speed Benchmark for Llama 3.3 70B Powered by Groq,&quot; blog. <a href="https://groq.com/blog/new-ai-inference-speed-benchmark-for-llama-3-3-70b-powered-by-groq">groq.com</a></li>
+    <li id="ref-57">SambaNova, &quot;SN40L: The Best Inference Solution,&quot; blog. <a href="https://sambanova.ai/blog/sn40l-chip-best-inference-solution">sambanova.ai</a></li>
+    <li id="ref-58">AMD, &quot;AMD Delivers Breakthrough MLPerf Inference 6.0 Results,&quot; blog, 2026. <a href="https://www.amd.com/en/blogs/2026/amd-delivers-breakthrough-mlperf-inference-6-0-results.html">amd.com</a></li>
+    <li id="ref-59">Google Cloud Blog, &quot;Trillium TPU is GA,&quot; 2024. <a href="https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga">cloud.google.com</a></li>
+    <li id="ref-60">Amazon, &quot;AWS Project Rainier: AI Trainium Chips Compute Cluster,&quot; November 2025. <a href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster">aboutamazon.com</a></li>
+    <li id="ref-61">Cerebras Systems, &quot;Cerebras Announces Six New AI Datacenters Across North America and Europe,&quot; press release, March 2025. <a href="https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s">cerebras.ai</a></li>
+    <li id="ref-62">G42, &quot;G42 and Government of India Formalize Commercial Framework for Condor Galaxy India,&quot; press release, May 15, 2026. <a href="https://www.g42.ai/resources/news/g42-and-government-india-formalize-commercial-framework-condor-galaxy-india-ai-supercomputer">g42.ai</a></li>
+    <li id="ref-63">Tim Dettmers, post on X, November 19, 2024. <a href="https://x.com/Tim_Dettmers/status/1858977311569440955">x.com</a></li>
+    <li id="ref-64">NVIDIA Developer Blog, &quot;Inside NVIDIA Blackwell Ultra,&quot; April 2026. <a href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era/">developer.nvidia.com</a></li>
+    <li id="ref-65">Hacker News discussion #44141728, May 28, 2025. <a href="https://news.ycombinator.com/item?id=44141728">news.ycombinator.com</a></li>
+  </ol>
+</article>
