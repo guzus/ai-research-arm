@@ -174,17 +174,49 @@ jobs:
       # Verify the writer's required output directory exists. The writer
       # raises SystemExit if research/generative/ is missing, so failing
       # fast here gives a clearer error than a generic action failure.
+      # Also verify the depth-tooling helper scripts are present.
       - name: Verify writer prerequisites
         run: |
           if [ ! -d research/generative ]; then
             echo "research/generative/ is missing — writer will refuse to run" >&2
             exit 1
           fi
-          if [ ! -f scripts/write_generative_research.py ]; then
-            echo "scripts/write_generative_research.py not found" >&2
-            exit 1
-          fi
+          for s in scripts/write_generative_research.py scripts/research_search.py scripts/prior_context.py; do
+            if [ ! -f "$s" ]; then
+              echo "$s not found" >&2
+              exit 1
+            fi
+          done
           echo "Writer prerequisites OK."
+
+      # Ensure depth tooling is on the runner. The agent uses pdftotext to
+      # ingest PDFs (10-Ks, S-1s, papers) and curl to fetch them; both are
+      # standard, but the self-hosted runner image isn't guaranteed to have
+      # poppler-utils. This step is idempotent — installs only if missing.
+      - name: Ensure depth tooling
+        run: |
+          set -euo pipefail
+          MISSING=""
+          command -v curl >/dev/null 2>&1 || MISSING="$MISSING curl"
+          command -v pdftotext >/dev/null 2>&1 || MISSING="$MISSING poppler-utils"
+          if [ -n "$MISSING" ]; then
+            echo "Installing:$MISSING"
+            if command -v apt-get >/dev/null 2>&1; then
+              sudo apt-get update -qq
+              # Map our names to apt packages
+              for pkg in $MISSING; do
+                case "$pkg" in
+                  poppler-utils) sudo apt-get install -y -qq poppler-utils ;;
+                  curl) sudo apt-get install -y -qq curl ;;
+                esac
+              done
+            else
+              echo "WARN: apt-get not available; cannot auto-install$MISSING" >&2
+              # Don't hard-fail — the agent can still produce output, just without PDFs
+            fi
+          fi
+          echo "curl:      $(command -v curl || echo MISSING) $(curl --version 2>/dev/null | head -1)"
+          echo "pdftotext: $(command -v pdftotext || echo MISSING) $(pdftotext -v 2>&1 | head -1)"
 
       # Snapshot HEAD before the model runs so we can later identify the file
       # THIS run produced (rather than guessing by `ls -t`, which would point
@@ -226,13 +258,15 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --max-turns 180 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),WebSearch,WebFetch,Task,TodoWrite"
+            --model opus --max-turns 240 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),Bash(curl:*),Bash(pdftotext:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
             You are a deep-research analyst writing a COMPREHENSIVE,
             analyst-grade HTML article on the topic supplied by the user.
             Reason from first principles — challenge weak claims rather
             than echo them. Depth is measured by GROUNDED CLAIMS, not by
-            word count.
+            word count. Lean toward maximum depth: more primary sources,
+            more cited quantitative claims, more independent counter-
+            arguments. The user has explicitly opted into long runs.
 
             The topic and originating prompt are available as the
             environment variables $GEN_TOPIC and $GEN_PROMPT. Read them
@@ -241,25 +275,49 @@ jobs:
             prompt as the user's detailed brief (questions, sources to
             prefer, framing) and let it shape your research plan.
 
+            TOOLBELT — beyond Read/Write/WebSearch/WebFetch, you have:
+              - `python3 scripts/prior_context.py "$GEN_TOPIC"` — lists
+                related past articles already in this repo (slugs, titles,
+                file paths). Run this FIRST so you don't redo their work.
+              - `python3 scripts/research_search.py SOURCE "query"` —
+                primary-source search. SOURCE = arxiv | edgar | crossref
+                | semanticscholar | github. Returns structured plain text
+                you can read directly. Use this BEFORE WebSearch when the
+                topic clearly has academic / SEC / GitHub footprints.
+              - `curl -sL <url> -o /tmp/x.pdf && pdftotext /tmp/x.pdf -
+                | head -c 60000` — read PDFs (10-Ks, S-1s, papers,
+                whitepapers). The pdftotext binary is pre-installed.
+
             PROCESS — non-negotiable, in order:
 
-            0. RESEARCH PLAN. Before any search, write a short internal
-               plan (just hold it in context, do not save to disk):
-                  - 8–15 specific answerable questions
-                  - For each question, what counts as PRIMARY evidence
-                  - 2–3 disconfirming questions ("what would falsify the
-                    popular narrative")
+            0. RESEARCH PLAN + PRIOR-COVERAGE CHECK.
+                  a. Run `python3 scripts/prior_context.py "$GEN_TOPIC"`
+                     and Read any high-overlap article files it returns.
+                     Note what's already covered so you don't duplicate.
+                  b. Write a short internal plan (just hold it in
+                     context, do not save to disk):
+                       - 10–18 specific answerable questions
+                       - For each question, what counts as PRIMARY evidence
+                         (paper, filing, IR page, spec, first-party blog)
+                       - 3–5 disconfirming questions ("what would falsify
+                         the popular narrative")
 
             1. PARALLEL EVIDENCE COLLECTION. Use the Task tool to dispatch
-               10–30 sub-agents (subagent_type: general-purpose), one per
-               entity / theme / question cluster. Send all dispatches in a
-               single message so they run concurrently.
+               15–40 sub-agents (subagent_type: general-purpose), one per
+               entity / theme / question cluster. Send all dispatches in
+               a single message so they run concurrently. More sub-agents
+               is generally better — the user wants maximum depth.
 
                Each sub-agent prompt MUST: (a) name a domain-expert
-               framing (e.g. "you are a senior equity analyst", "chip
-               architect", "monetary economist"), (b) instruct
+               framing (e.g. "you are a senior equity analyst",
+               "chip architect", "monetary economist"), (b) instruct
                first-principles reasoning, (c) require WebSearch + WebFetch
-               on PRIMARY sources, (d) cap output at ~10 evidence packets.
+               on PRIMARY sources AND tell them to use
+               `python3 scripts/research_search.py SOURCE "query"` for
+               arxiv/edgar/crossref/semanticscholar/github when relevant,
+               AND tell them they CAN use
+               `curl + pdftotext` for PDF sources, (d) cap output at ~10
+               evidence packets.
 
                Sub-agents MUST return STRUCTURED EVIDENCE PACKETS, not
                prose summaries. Each packet:
@@ -267,8 +325,8 @@ jobs:
                  - claim: <the factual assertion in one sentence>
                  - source_url: <URL the agent actually fetched>
                  - source_type: primary | secondary | commentary
-                   (primary = company IR / SEC filing / academic paper /
-                    spec / first-party docs;
+                   (primary = SEC filing / company IR / academic paper /
+                    spec sheet / first-party docs;
                     secondary = mainstream press citing primaries;
                     commentary = blogs, opinion, sell-side notes)
                  - date: <YYYY-MM-DD when published or claim was made>
@@ -283,23 +341,46 @@ jobs:
                on a non-trivial question. Group packets by which planning
                question they answer.
 
-            3. SPOT-CHECK. WebFetch yourself on the 3–5 most load-bearing
-               primary sources to confirm the headline numbers exist on
-               the pages agents cited.
+            3. SPOT-CHECK. WebFetch or `curl+pdftotext` yourself on the
+               5–8 most load-bearing primary sources to confirm the
+               headline numbers exist on the pages agents cited.
 
-            4. WRITE FROM THE LEDGER. Compose ONE
-               <article class="ara-doc"> HTML fragment using the ARA
-               component vocabulary. READ COMPONENTS.md at the repo root
-               before writing. Every substantive factual claim MUST be
-               followed by a numbered <sup><a class="ara-cite"
-               href="#ref-N">N</a></sup> pointing to the packet's
-               source_url, with <li id="ref-N">…</li> in the references
-               list at the bottom.
+            4. OUTLINE. Decide the article's 5–10 numbered H3 sections
+               with a one-line thesis per section. Map ledger packets to
+               sections (each packet routes to ≥1 section).
 
-            5. VERIFIER PASS. Use the Task tool to dispatch ONE more
+            4.5. PARALLEL SECTION WRITERS. Use the Task tool to dispatch
+                ONE writer sub-agent per H3 section (so 5–10 writers, in
+                parallel in a single message). Each writer prompt MUST
+                include:
+                  - the full outline (so each writer knows what the OTHER
+                    sections are covering and avoids duplication)
+                  - this section's number, thesis, and the relevant
+                    subset of ledger packets
+                  - the per-section contract (below)
+                  - a 600–1100-word target for THIS section
+                  - the strict tag/class validation rules (below)
+                Each writer returns ONLY the HTML for their section
+                (an <h3 class="ara-h2"> + section body, no <article>
+                wrapper, no references list). You stitch.
+
+            5. STITCH. Compose the final ONE
+               <article class="ara-doc"> HTML fragment: header block
+               (eyebrow + display + deck + lede + ara-stats) → assembled
+               section writers' output (in order) → "what could break the
+               thesis" / counter-arguments section (you write this
+               yourself from the ledger) → references list. Normalize
+               voice in a quick pass. Every substantive factual claim
+               MUST be followed by a numbered
+               <sup><a class="ara-cite" href="#ref-N">N</a></sup>
+               pointing to the packet's source_url, with
+               <li id="ref-N">…</li> in the references list at the
+               bottom.
+
+            6. VERIFIER PASS. Use the Task tool to dispatch ONE more
                sub-agent. Pass it the draft article body. Instruct it to:
                   - read every numbered ara-cite in the draft
-                  - fetch each cited URL with WebFetch
+                  - fetch each cited URL (WebFetch or curl+pdftotext)
                   - emit a STRUCTURED findings table only (not a rewritten
                     article):
 
@@ -309,7 +390,7 @@ jobs:
 
                   - additionally flag any factual claim WITHOUT a cite
 
-            6. BOUNDED REVISION. Address ONLY the verifier's findings.
+            7. BOUNDED REVISION. Address ONLY the verifier's findings.
                Each unsupported claim must be either: (a) replaced with
                a supported variant from the ledger, (b) demoted to
                <mark class="ara-mark">unverified: …</mark>, or
@@ -354,10 +435,10 @@ jobs:
                - No inline `style=`, no `on*=` handlers, no `javascript:`.
                - Body under 200 KB.
 
-            7. SAVE. Write the final fragment to:
+            8. SAVE. Write the final fragment to:
                   /tmp/gen-research-body.html
 
-            8. COMMIT via the writer (Bash). Pass originating values via
+            9. COMMIT via the writer (Bash). Pass originating values via
                the pre-set env vars:
 
                   python3 scripts/write_generative_research.py \
@@ -417,13 +498,16 @@ jobs:
           # ANTHROPIC_AUTH_TOKEN because ANTHROPIC_BASE_URL is set.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --max-turns 180 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),WebSearch,WebFetch,Task,TodoWrite"
+            --model opus --max-turns 240 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),Bash(curl:*),Bash(pdftotext:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
             You are a deep-research analyst running on DeepSeek v4 Pro,
             writing a COMPREHENSIVE, analyst-grade HTML article on the
             topic supplied by the user. Reason from first principles —
             challenge weak claims rather than echo them. Depth is measured
-            by GROUNDED CLAIMS, not by word count.
+            by GROUNDED CLAIMS, not by word count. Lean toward maximum
+            depth: more primary sources, more cited quantitative claims,
+            more independent counter-arguments. The user has explicitly
+            opted into long runs.
 
             The topic and originating prompt are available as the
             environment variables $GEN_TOPIC and $GEN_PROMPT. Read them
@@ -432,25 +516,49 @@ jobs:
             prompt as the user's detailed brief (questions, sources to
             prefer, framing) and let it shape your research plan.
 
+            TOOLBELT — beyond Read/Write/WebSearch/WebFetch, you have:
+              - `python3 scripts/prior_context.py "$GEN_TOPIC"` — lists
+                related past articles already in this repo (slugs, titles,
+                file paths). Run this FIRST so you don't redo their work.
+              - `python3 scripts/research_search.py SOURCE "query"` —
+                primary-source search. SOURCE = arxiv | edgar | crossref
+                | semanticscholar | github. Returns structured plain text
+                you can read directly. Use this BEFORE WebSearch when the
+                topic clearly has academic / SEC / GitHub footprints.
+              - `curl -sL <url> -o /tmp/x.pdf && pdftotext /tmp/x.pdf -
+                | head -c 60000` — read PDFs (10-Ks, S-1s, papers,
+                whitepapers). The pdftotext binary is pre-installed.
+
             PROCESS — non-negotiable, in order:
 
-            0. RESEARCH PLAN. Before any search, write a short internal
-               plan (just hold it in context, do not save to disk):
-                  - 8–15 specific answerable questions
-                  - For each question, what counts as PRIMARY evidence
-                  - 2–3 disconfirming questions ("what would falsify the
-                    popular narrative")
+            0. RESEARCH PLAN + PRIOR-COVERAGE CHECK.
+                  a. Run `python3 scripts/prior_context.py "$GEN_TOPIC"`
+                     and Read any high-overlap article files it returns.
+                     Note what's already covered so you don't duplicate.
+                  b. Write a short internal plan (just hold it in
+                     context, do not save to disk):
+                       - 10–18 specific answerable questions
+                       - For each question, what counts as PRIMARY evidence
+                         (paper, filing, IR page, spec, first-party blog)
+                       - 3–5 disconfirming questions ("what would falsify
+                         the popular narrative")
 
             1. PARALLEL EVIDENCE COLLECTION. Use the Task tool to dispatch
-               10–30 sub-agents (subagent_type: general-purpose), one per
-               entity / theme / question cluster. Send all dispatches in a
-               single message so they run concurrently.
+               15–40 sub-agents (subagent_type: general-purpose), one per
+               entity / theme / question cluster. Send all dispatches in
+               a single message so they run concurrently. More sub-agents
+               is generally better — the user wants maximum depth.
 
                Each sub-agent prompt MUST: (a) name a domain-expert
-               framing (e.g. "you are a senior equity analyst", "chip
-               architect", "monetary economist"), (b) instruct
+               framing (e.g. "you are a senior equity analyst",
+               "chip architect", "monetary economist"), (b) instruct
                first-principles reasoning, (c) require WebSearch + WebFetch
-               on PRIMARY sources, (d) cap output at ~10 evidence packets.
+               on PRIMARY sources AND tell them to use
+               `python3 scripts/research_search.py SOURCE "query"` for
+               arxiv/edgar/crossref/semanticscholar/github when relevant,
+               AND tell them they CAN use
+               `curl + pdftotext` for PDF sources, (d) cap output at ~10
+               evidence packets.
 
                Sub-agents MUST return STRUCTURED EVIDENCE PACKETS, not
                prose summaries. Each packet:
@@ -458,8 +566,8 @@ jobs:
                  - claim: <the factual assertion in one sentence>
                  - source_url: <URL the agent actually fetched>
                  - source_type: primary | secondary | commentary
-                   (primary = company IR / SEC filing / academic paper /
-                    spec / first-party docs;
+                   (primary = SEC filing / company IR / academic paper /
+                    spec sheet / first-party docs;
                     secondary = mainstream press citing primaries;
                     commentary = blogs, opinion, sell-side notes)
                  - date: <YYYY-MM-DD when published or claim was made>
@@ -474,23 +582,46 @@ jobs:
                on a non-trivial question. Group packets by which planning
                question they answer.
 
-            3. SPOT-CHECK. WebFetch yourself on the 3–5 most load-bearing
-               primary sources to confirm the headline numbers exist on
-               the pages agents cited.
+            3. SPOT-CHECK. WebFetch or `curl+pdftotext` yourself on the
+               5–8 most load-bearing primary sources to confirm the
+               headline numbers exist on the pages agents cited.
 
-            4. WRITE FROM THE LEDGER. Compose ONE
-               <article class="ara-doc"> HTML fragment using the ARA
-               component vocabulary. READ COMPONENTS.md at the repo root
-               before writing. Every substantive factual claim MUST be
-               followed by a numbered <sup><a class="ara-cite"
-               href="#ref-N">N</a></sup> pointing to the packet's
-               source_url, with <li id="ref-N">…</li> in the references
-               list at the bottom.
+            4. OUTLINE. Decide the article's 5–10 numbered H3 sections
+               with a one-line thesis per section. Map ledger packets to
+               sections (each packet routes to ≥1 section).
 
-            5. VERIFIER PASS. Use the Task tool to dispatch ONE more
+            4.5. PARALLEL SECTION WRITERS. Use the Task tool to dispatch
+                ONE writer sub-agent per H3 section (so 5–10 writers, in
+                parallel in a single message). Each writer prompt MUST
+                include:
+                  - the full outline (so each writer knows what the OTHER
+                    sections are covering and avoids duplication)
+                  - this section's number, thesis, and the relevant
+                    subset of ledger packets
+                  - the per-section contract (below)
+                  - a 600–1100-word target for THIS section
+                  - the strict tag/class validation rules (below)
+                Each writer returns ONLY the HTML for their section
+                (an <h3 class="ara-h2"> + section body, no <article>
+                wrapper, no references list). You stitch.
+
+            5. STITCH. Compose the final ONE
+               <article class="ara-doc"> HTML fragment: header block
+               (eyebrow + display + deck + lede + ara-stats) → assembled
+               section writers' output (in order) → "what could break the
+               thesis" / counter-arguments section (you write this
+               yourself from the ledger) → references list. Normalize
+               voice in a quick pass. Every substantive factual claim
+               MUST be followed by a numbered
+               <sup><a class="ara-cite" href="#ref-N">N</a></sup>
+               pointing to the packet's source_url, with
+               <li id="ref-N">…</li> in the references list at the
+               bottom.
+
+            6. VERIFIER PASS. Use the Task tool to dispatch ONE more
                sub-agent. Pass it the draft article body. Instruct it to:
                   - read every numbered ara-cite in the draft
-                  - fetch each cited URL with WebFetch
+                  - fetch each cited URL (WebFetch or curl+pdftotext)
                   - emit a STRUCTURED findings table only (not a rewritten
                     article):
 
@@ -500,7 +631,7 @@ jobs:
 
                   - additionally flag any factual claim WITHOUT a cite
 
-            6. BOUNDED REVISION. Address ONLY the verifier's findings.
+            7. BOUNDED REVISION. Address ONLY the verifier's findings.
                Each unsupported claim must be either: (a) replaced with
                a supported variant from the ledger, (b) demoted to
                <mark class="ara-mark">unverified: …</mark>, or
@@ -545,10 +676,10 @@ jobs:
                - No inline `style=`, no `on*=` handlers, no `javascript:`.
                - Body under 200 KB.
 
-            7. SAVE. Write the final fragment to:
+            8. SAVE. Write the final fragment to:
                   /tmp/gen-research-body.html
 
-            8. COMMIT via the writer (Bash). Pass originating values via
+            9. COMMIT via the writer (Bash). Pass originating values via
                the pre-set env vars:
 
                   python3 scripts/write_generative_research.py \
