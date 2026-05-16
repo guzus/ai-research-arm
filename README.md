@@ -5,7 +5,7 @@ Automated multi-source AI news research agent powered by Claude and MCP.
 ## Today's Front Page
 
 <!-- FRONT_PAGE_START -->
-![Today's Front Page](research/front-page/2026-05-14-front-page.png)
+![Today's Front Page](research/front-page/2026-05-16-front-page.png)
 <!-- FRONT_PAGE_END -->
 
 > *Generated daily at 00:30 UTC. See [`research/front-page/`](research/front-page/) for the archive.*
