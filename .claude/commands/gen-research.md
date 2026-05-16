@@ -179,6 +179,13 @@ summaries. Each packet:
 - `excerpt`: verbatim quote, <40 words
 - `confidence`: 1 (rumour) … 5 (multiple primary sources)
 - `caveat`: what would weaken or contradict the claim
+- `shape`: one of `single-fact`, `time-series`, `ranking`,
+  `breakdown`, `paired-delta`, `cross-entity-categorical`,
+  `pictogram`, `key-value`, `chronology`, `quote`. Tag the SHAPE
+  OF THE DATA THIS CLAIM CAN COMPOSE INTO when combined with
+  sibling packets — not the topic. The stitcher uses this in
+  step 4 to route packets to the right viz directive instead of
+  leaving every writer to recognize the shape from prose.
 
 **2. BUILD A LEDGER** in your context. Dedupe by `source_url`.
 Drop packets with `confidence < 2` unless they're the only signal
@@ -189,9 +196,41 @@ question they answer.
 5–8 most load-bearing primary sources to confirm the headline
 numbers exist on the pages agents cited.
 
-**4. OUTLINE.** Decide the article's 5–8 numbered H3 sections
-with a one-line thesis per section. Map ledger packets to
-sections (each packet routes to ≥1 section).
+**4. OUTLINE + BUCKET BY SHAPE.** Decide the article's 5–8
+numbered `## ` sections with a one-line thesis per section. Map
+ledger packets to sections (each packet routes to ≥1 section).
+THEN, for each section, walk its packets and identify SHAPE
+BUNDLES — groups of 2+ packets that share a `shape` and could
+compose into one viz directive:
+
+- 3+ `breakdown` packets summing to ~one whole → `:::donut`
+- 3+ `ranking` packets, same metric → `:::rank-list`
+- 3+ `time-series` points on same metric (or `stock_prices.py`
+  output) → `:::line-chart`
+- 5+ `time-series` points inline in prose → `{sparkline:...}`
+- 1 `paired-delta` packet → `:::compare`
+- 3+ `paired-delta` packets, same dimension → `:::slope`
+- 2+ `cross-entity-categorical` packets with matching axes
+  → `:::stack-rows`
+- 3+ `key-value` packets, single subject → `:::kv`
+- 1+ `chronology` packets, dated → `:::timeline`
+- 1 `pictogram` packet (count of N identical units) → `:::iso`
+- standalone `quote` packet → `:::quote`
+- 4–8 `single-fact` packets that share a frame (e.g. headline
+  KPIs for one company) → `:::stats`
+
+Write this as a SECTION ROUTING TABLE before dispatching writers:
+
+```
+Section 02 (Speed as the moat):
+  - :::stats     packets [4, 8, 11]   (headline KPIs)
+  - :::line-chart packets [12, 14]    (BE close TTM)
+  - :::compare   packets [9, 10]      (BE vs PJM lead time)
+  - prose body   packets [5, 6, 7, 13, 15]
+```
+
+The point is to remove ALL viz-shape-recognition work from the
+section writers — they get told what to emit for each bundle.
 
 **4.5. SECTION WRITERS IN WAVES.** Use the `Task` tool to
 dispatch ONE writer sub-agent per H3 section, IN WAVES OF NO MORE
@@ -202,17 +241,13 @@ prompt MUST include:
   cover and avoids duplication)
 - this section's number, thesis, and the relevant subset of
   ledger packets
+- **this section's SECTION ROUTING TABLE** — EXPLICIT
+  instructions for what to emit. The writer FILLS IN the
+  blocks; they do NOT decide which directive to use.
 - the per-section contract (below)
 - a 500–900-word target for THIS section
 - the Component vocabulary block (below) AND an instruction to
   `Read ARA_DSL.md` and `COMPONENTS.md` first
-- the DATA SHAPE of the packets (time series / distribution /
-  ranking / comparison / ratio / chronology) plus an EXPLICIT
-  instruction to use the matching `:::directive`, NOT default to
-  a markdown table or prose. Ranking → `:::rank-list`, %
-  breakdown → `:::donut` / `:::stack-bar`, time series →
-  `:::line-chart` (or inline `{sparkline:...}`), before/after →
-  `:::slope`, chronology → `:::timeline`, key facts → `:::kv`.
 - an EXPLICIT note that they CAN fetch live stock-price series
   via `python3 scripts/stock_prices.py <ticker[s]> --range 1y
   --interval 1mo --format kv` (Yahoo Finance via yfinance, no
@@ -220,9 +255,10 @@ prompt MUST include:
   into the body of a `:::line-chart(title=..., y-unit=$)` block.
 
 Each writer returns ONLY their section as DSL — start with
-`## N. Section title` and emit paragraphs, `:::directives`,
-blockquotes, etc. as documented in ARA_DSL.md. NO frontmatter,
-NO `:::references` block, NO raw HTML. You stitch.
+`## N. Section title` and emit paragraphs, `:::directives` (from
+the routing table), blockquotes, etc. as documented in
+ARA_DSL.md. NO frontmatter, NO `:::references` block, NO raw
+HTML. You stitch.
 
 **5. STITCH.** Compose the final `.ara.md` source:
 
@@ -350,13 +386,24 @@ suggested fix.
 
 ```bash
 # Write the body to /tmp/gen-research.ara.md via the Write tool,
-# then compile-check it:
-python3 scripts/check_generative_research.py /tmp/gen-research.ara.md
-# Exit 0 → safe to commit (proceed below).
-# Exit 1 → stderr lists every DSL grammar error or invalid
-#          class/tag with suggestions. Fix the body in place and
-#          re-run the check. Iterate.
+# then compile-check it WITH design gates:
+python3 scripts/check_generative_research.py /tmp/gen-research.ara.md \
+  --diversity-min 3 --callout-max 5 --strict-shape
+# Exit 0 → safe to commit (proceed below). Soft warnings on
+#          stderr are advisory.
+# Exit 1 → stderr lists every DSL grammar error, invalid
+#          class/tag, OR design-gate violation (fewer than 3
+#          distinct viz primitives, more than 5 callouts).
+#          Fix the body in place and re-run. Iterate.
 ```
+
+Common design fixes when diversity gate fails:
+- 4+ percentage shares of one whole in prose → `:::donut`
+- "the top N are…" list → `:::rank-list`
+- Paired before/after numbers → `:::compare` (one pair) or
+  `:::slope` (3+ pairs)
+- Chronology of dated events → `:::timeline`
+- 4+ headline KPIs as separate sentences → `:::stats` grid
 
 **8. Commit** via the writer (which re-compiles + re-validates as
 defense in depth, then writes both the `.ara.md` source and the
