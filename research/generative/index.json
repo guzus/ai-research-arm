@@ -216,5 +216,16 @@
     "source": "workflow_dispatch",
     "prompt": "lumentum company",
     "tags": []
+  },
+  {
+    "slug": "iren-company",
+    "file": "2026-05-16T165740--iren-company.html",
+    "kind": "fragment",
+    "title": "IREN — the bitcoin miner that became NVIDIA's preferred partner",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T16:57:40Z",
+    "source": "workflow_dispatch",
+    "prompt": "iren company",
+    "tags": []
   }
 ]
