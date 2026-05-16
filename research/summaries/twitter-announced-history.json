@@ -5153,5 +5153,40 @@
     "headline": "ELON MUSK ENDORSES GROK CLI x VERCEL PLUGIN \u2014 RT OF RAUCHG \"GROK CLOUD DEPLOYMENT SUPERPOWERS\"",
     "source": "@elonmusk",
     "url": "https://x.com/elonmusk/status/2055530618759573769"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-16 10:15 UTC",
+    "headline": "OPENAI CODEX TECH LEAD PERSONALLY ENDORSES ZED INTEGRATION \u2014 \"CODEX\ud83e\udef8\ud83e\udef7ZED\" QUOTE-TWEETS THE POST CONTRASTING ANTHROPIC METERED PIVOT",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2055545756069802151"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-16 10:15 UTC",
+    "headline": "CODEX GPT-5.5 FIX CONFIRMED STABLE \u2014 @THSOTTIAUX FOLLOW-UP GROWS 65L\u2192447L IN 3.25H; @SAMA STILL SILENT 15H40M ON SUPERSEDED FRAMING",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2055540700092211404"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-16 10:15 UTC",
+    "headline": "CLAUDE MYTHOS / APPLE M5 EXPLOIT STORY UPGRADED \u2014 @KIMMONISMUS POSTS 219L IN-WINDOW SUMMARY OF CALIF/DECRYPT KERNEL EXPLOIT CLAIM",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2055571960260645125"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-16 10:15 UTC",
+    "headline": "OPENCLAW BEATS HERMES AGENT 2.75\u00d7 ON M5 MAX + QWEN 35B \u2014 @STEIPETE CELEBRATES 12M01S VS 33M01S RUNTIME ON GITHUB STARS BENCHMARK",
+    "source": "@steipete",
+    "url": "https://x.com/steipete/status/2055570810513850777"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-16 10:15 UTC",
+    "headline": "ANTHROPIC CORP SILENT ~40H6M / DARIO ~38D 16H \u2014 APPROACHING MONDAY US-AM CONVERGE-OR-DECAY DECISION POINT ON SILENCE-AS-STANCE READ",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
   }
 ]
