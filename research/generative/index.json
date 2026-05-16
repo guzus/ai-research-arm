@@ -243,5 +243,20 @@
       "diagnostics",
       "oncology"
     ]
+  },
+  {
+    "slug": "compare-claude-power-bottlenecks",
+    "file": "2026-05-16T195111--compare-claude-power-bottlenecks.html",
+    "kind": "fragment",
+    "title": "The megawatt is the model",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T19:51:11Z",
+    "source": "workflow_dispatch",
+    "prompt": "AI infrastructure power bottlenecks in 2026: grid constraints, data center demand, and mitigation strategies",
+    "tags": [
+      "comparison",
+      "claude",
+      "qa"
+    ]
   }
 ]
