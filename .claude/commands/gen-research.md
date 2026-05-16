@@ -207,6 +207,11 @@ prompt MUST include:
   % breakdown → ara-donut / ara-stack-bar, time series →
   ara-line-chart / ara-sparkline, before/after → ara-slope,
   chronology → ara-timeline, key facts → ara-kv.
+- an EXPLICIT note that they CAN fetch live stock-price series
+  via `python3 scripts/stock_prices.py <ticker[s]> --range 1y
+  --interval 1mo --format html` (Yahoo Finance, no API key, up
+  to 4 tickers per chart). Output is a ready-to-paste
+  `<div class="ara-line-chart" ...>` element.
 
 Each writer returns ONLY the HTML for their section (an
 `<h3 class="ara-h2">` + section body, no `<article>` wrapper, no

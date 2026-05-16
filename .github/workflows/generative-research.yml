@@ -447,6 +447,15 @@ jobs:
                     time series ⇒ ara-line-chart or ara-sparkline, a
                     before/after delta ⇒ ara-slope, a chronology ⇒
                     ara-timeline, a key/value list ⇒ ara-kv.
+                  - an EXPLICIT note that they CAN fetch live stock-
+                    price series via:
+                      `python3 scripts/stock_prices.py <ticker[,ticker...]> \
+                        --range 1y --interval 1mo --format html`
+                    (Yahoo Finance, no API key, up to 4 tickers per
+                    chart). Output is a ready-to-paste
+                    `<div class="ara-line-chart" ...>` element. Use for
+                    any equity-bearing section. If Yahoo errors, the
+                    script exits 1 — fall back to prose with no chart.
                 Each writer returns ONLY the HTML for their section
                 (an <h3 class="ara-h2"> + section body, no <article>
                 wrapper, no references list). You stitch.
@@ -844,6 +853,15 @@ jobs:
                     time series ⇒ ara-line-chart or ara-sparkline, a
                     before/after delta ⇒ ara-slope, a chronology ⇒
                     ara-timeline, a key/value list ⇒ ara-kv.
+                  - an EXPLICIT note that they CAN fetch live stock-
+                    price series via:
+                      `python3 scripts/stock_prices.py <ticker[,ticker...]> \
+                        --range 1y --interval 1mo --format html`
+                    (Yahoo Finance, no API key, up to 4 tickers per
+                    chart). Output is a ready-to-paste
+                    `<div class="ara-line-chart" ...>` element. Use for
+                    any equity-bearing section. If Yahoo errors, the
+                    script exits 1 — fall back to prose with no chart.
                 Each writer returns ONLY the HTML for their section
                 (an <h3 class="ara-h2"> + section body, no <article>
                 wrapper, no references list). You stitch.
