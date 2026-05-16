@@ -39,14 +39,20 @@ Valid intervals: 1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo
 from __future__ import annotations
 
 import argparse
+import csv
+import io
 import json
 import ssl
 import sys
 import urllib.error
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 YAHOO_CHART = "https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
+# Stooq is the fallback when Yahoo rate-limits (which happens from residential
+# / non-datacenter IPs more or less constantly). No API key, no rate-limit
+# headaches, returns CSV with same daily/weekly/monthly granularity.
+STOOQ_CSV = "https://stooq.com/q/d/l/"
 
 # Yahoo blocks the python-urllib UA. Pretend to be a browser.
 DEFAULT_HEADERS = {
@@ -79,6 +85,31 @@ def _ssl_context() -> ssl.SSLContext:
     return ctx
 
 
+def fetch_chart_yfinance(ticker: str, range_: str, interval: str) -> tuple[list[float], list[str]]:
+    """Primary backend when yfinance is installed. Handles Yahoo's crumb-
+    cookie dance and retries internally, so it works from residential
+    IPs and self-hosted CI runners where the bare urllib path 429s."""
+    import yfinance as yf  # local import — optional dependency
+
+    t = yf.Ticker(ticker)
+    hist = t.history(period=range_, interval=interval, auto_adjust=False)
+    if hist.empty:
+        raise ValueError(f"yfinance returned empty history for {ticker}")
+    closes = [float(c) for c in hist["Close"] if c == c]  # drop NaN
+    if not closes:
+        raise ValueError(f"yfinance returned no usable closes for {ticker}")
+    # Match the label format used by the urllib path so output is consistent.
+    if interval.endswith("mo") or interval == "1wk":
+        labels = [str(d.date())[:7] for d in hist.index]
+    elif interval in ("1d", "5d"):
+        labels = [str(d.date()) for d in hist.index]
+    else:
+        labels = [d.strftime("%Y-%m-%d %H:%M") for d in hist.index]
+    # Trim to the same length as `closes` after NaN filtering.
+    labels = labels[: len(closes)]
+    return closes, labels
+
+
 def fetch_chart(ticker: str, range_: str, interval: str) -> dict:
     """Hit Yahoo's chart endpoint and return the parsed payload.
     Raises urllib.error.URLError or ValueError on any failure."""
@@ -94,6 +125,82 @@ def fetch_chart(ticker: str, range_: str, interval: str) -> dict:
     if not results:
         raise ValueError(f"Yahoo returned no results for {ticker}")
     return results[0]
+
+
+# Map our Yahoo-style range/interval to stooq's CSV params.
+# Stooq wants explicit d1/d2 dates and a single-letter interval (d/w/m).
+_INTERVAL_TO_STOOQ = {
+    "1d": "d", "5d": "d",
+    "1wk": "w",
+    "1mo": "m", "3mo": "m",
+}
+_RANGE_TO_DAYS = {
+    "1d": 1, "5d": 5,
+    "1mo": 31, "3mo": 92, "6mo": 184,
+    "1y": 366, "2y": 731, "5y": 1827, "10y": 3653,
+    "ytd": -1,  # special: compute from Jan 1
+    "max": 365 * 30,  # cap stooq pulls at 30y
+}
+
+
+def fetch_chart_stooq(ticker: str, range_: str, interval: str) -> tuple[list[float], list[str]]:
+    """Fallback: pull daily/weekly/monthly close-only series from stooq's CSV.
+    Returns (closes, x_labels) directly — no Yahoo-shaped envelope to unpack.
+
+    Stooq tickers: US equities take a `.us` suffix and are lowercased.
+    A bare ticker (no exchange suffix) is interpreted as a US equity here;
+    callers passing non-US tickers should pass them already-suffixed.
+    """
+    interval_stooq = _INTERVAL_TO_STOOQ.get(interval)
+    if interval_stooq is None:
+        raise ValueError(
+            f"stooq fallback doesn't support interval={interval} "
+            f"(supported: {sorted(_INTERVAL_TO_STOOQ)})"
+        )
+    if "." not in ticker:
+        stooq_symbol = f"{ticker.lower()}.us"
+    else:
+        stooq_symbol = ticker.lower()
+
+    today = datetime.now(timezone.utc).date()
+    if range_ == "ytd":
+        d1 = today.replace(month=1, day=1)
+    else:
+        days = _RANGE_TO_DAYS.get(range_)
+        if days is None:
+            raise ValueError(
+                f"stooq fallback doesn't support range={range_} "
+                f"(supported: {sorted(_RANGE_TO_DAYS)})"
+            )
+        d1 = today - timedelta(days=days)
+    url = (
+        f"{STOOQ_CSV}?s={stooq_symbol}"
+        f"&d1={d1.strftime('%Y%m%d')}"
+        f"&d2={today.strftime('%Y%m%d')}"
+        f"&i={interval_stooq}"
+    )
+    req = urllib.request.Request(url, headers=DEFAULT_HEADERS)
+    with urllib.request.urlopen(req, timeout=15, context=_ssl_context()) as resp:
+        text = resp.read().decode("utf-8", errors="replace")
+    if "<html" in text.lower() or "no data" in text.lower():
+        raise ValueError(f"stooq returned no data for {stooq_symbol}")
+    reader = csv.DictReader(io.StringIO(text))
+    closes: list[float] = []
+    labels: list[str] = []
+    for row in reader:
+        try:
+            closes.append(float(row["Close"]))
+        except (KeyError, ValueError):
+            continue
+        date_str = row.get("Date") or ""
+        # Reformat to match Yahoo-style labels for monthly/weekly.
+        if interval in ("1mo", "3mo") and len(date_str) >= 7:
+            labels.append(date_str[:7])
+        else:
+            labels.append(date_str)
+    if not closes:
+        raise ValueError(f"stooq returned 0 usable rows for {stooq_symbol}")
+    return closes, labels
 
 
 def extract_series(result: dict, interval: str) -> tuple[list[float], list[str]]:
@@ -211,14 +318,44 @@ def main(argv: list[str] | None = None) -> int:
     errors: list[str] = []
 
     for ticker in tickers:
+        closes: list[float] = []
+        ts_labels: list[str] = []
+        source = None
+        last_err: Exception | None = None
+
+        # Backend chain: yfinance (handles Yahoo auth) → bare urllib Yahoo
+        # → stooq CSV. Each backend's failure cascades to the next so the
+        # script succeeds whenever ANY backend can reach a price source.
+        backends: list[tuple[str, callable]] = []
         try:
-            result = fetch_chart(ticker, args.range_, args.interval)
-            closes, ts_labels = extract_series(result, args.interval)
-        except (urllib.error.URLError, ValueError, json.JSONDecodeError) as e:
-            msg = f"{ticker}: {e}"
+            import yfinance  # noqa: F401
+            backends.append(("yfinance", lambda: fetch_chart_yfinance(ticker, args.range_, args.interval)))
+        except ImportError:
+            pass
+        backends.append(
+            ("yahoo-urllib", lambda: extract_series(fetch_chart(ticker, args.range_, args.interval), args.interval)),
+        )
+        backends.append(
+            ("stooq", lambda: fetch_chart_stooq(ticker, args.range_, args.interval)),
+        )
+
+        for name, call in backends:
+            try:
+                closes, ts_labels = call()
+                source = name
+                break
+            except (urllib.error.URLError, ValueError, json.JSONDecodeError) as e:
+                last_err = e
+                print(f"stock_prices: {ticker}: {name} failed ({e})", file=sys.stderr)
+                continue
+
+        if source is None:
+            msg = f"{ticker}: all backends failed (last: {last_err})"
             errors.append(msg)
             print(f"stock_prices: {msg}", file=sys.stderr)
             continue
+
+        print(f"stock_prices: {ticker}: ok ({source}, {len(closes)} points)", file=sys.stderr)
         series[ticker] = round_series(closes)
         # Use the longest label set as the chart's x-axis. Cheap heuristic;
         # for multi-series this picks the densest ticker which is usually

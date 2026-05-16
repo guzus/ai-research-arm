@@ -225,6 +225,17 @@ jobs:
           fi
           echo "curl:      $(command -v curl || echo MISSING) $(curl --version 2>/dev/null | head -1)"
           echo "pdftotext: $(command -v pdftotext || echo MISSING) $(pdftotext -v 2>&1 | head -1)"
+          # yfinance for scripts/stock_prices.py. Yahoo's chart API blocks
+          # bare-urllib clients; yfinance handles the crumb-cookie dance and
+          # retries, which is the difference between working and 429ing from
+          # the runner. --user keeps the install out of system site-packages;
+          # idempotent (no-op if already at the latest).
+          if ! python3 -c "import yfinance" 2>/dev/null; then
+            echo "Installing yfinance"
+            python3 -m pip install --quiet --user --upgrade yfinance \
+              || echo "WARN: pip install yfinance failed; stock_prices.py will fall back to urllib/stooq" >&2
+          fi
+          python3 -c "import yfinance; print('yfinance:', yfinance.__version__)" 2>&1 || true
 
       # Snapshot HEAD before the model runs so we can later identify the file
       # THIS run produced (rather than guessing by `ls -t`, which would point
