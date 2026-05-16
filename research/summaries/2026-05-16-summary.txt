@@ -1,0 +1,13 @@
+AI News - 2026-05-16
+
+TOP STORIES:
+• OpenAI preparing legal action vs Apple over Siri ChatGPT integration; outside firm engaged; breach-of-contract notice among options (Bloomberg/Fortune)
+• xAI launches Grok Build agentic coding CLI (beta) - Grok 4.3, Skills/MCP-compatible with Claude Code; SuperGrok Heavy $300/mo
+• Cerebras (CBRS) reverses Day-2: closes -10% at $279.72 after +68% debut Thursday; ~$85B implied valuation
+
+KEY NUMBERS:
+• CBRS Day-2: -10% to $279.72; ~$85B implied valuation (down from ~$95B Thursday close)
+• GridCARE $64M Series A led by Sutter Hill + John Doerr - "Power Acceleration for AI"
+• Cloudflare cuts ~1,100 (~20% of workforce); Coinbase cuts ~700 (~14%); 92,000 tech layoffs YTD 2026
+
+Full report on GitHub.
