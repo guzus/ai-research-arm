@@ -178,6 +178,16 @@ body {
 
 .tab { flex-shrink: 0; }
 
+/* Fade the right edge on narrow viewports so users can tell the tab strip
+ * scrolls horizontally — without a scrollbar (hidden above) there's no
+ * other affordance and the rightmost tab (Research) was getting cut off. */
+@media (max-width: 640px) {
+  .tabs {
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+    mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+  }
+}
+
 .tab {
   background: var(--bg);
   border: 1px solid var(--border);

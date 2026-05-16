@@ -347,6 +347,20 @@
 }
 
 /* ── Tables ──────────────────────────────────────── */
+/* Horizontal-scroll wrapper auto-inserted by renderResearchDoc() in main.ts
+ * so wide tables (7+ columns, dense numerics) don't push the page wider than
+ * the viewport on narrow screens. Inserted in JS rather than required of
+ * article authors, so existing fragments don't need to be rewritten. */
+.ara-table-wrap {
+  margin: 20px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ara-table-wrap > .ara-table {
+  margin: 0;
+}
+
 .ara-table {
   width: 100%;
   border-collapse: collapse;
@@ -366,6 +380,7 @@
   padding: 9px 12px;
   border-bottom: 1px solid var(--border);
   background: var(--bg-secondary);
+  white-space: nowrap;
 }
 
 .ara-table tbody td {
@@ -377,6 +392,12 @@
 
 .ara-table tbody tr:last-child td { border-bottom: none; }
 .ara-table tbody tr:hover td { background: var(--bg-secondary); }
+
+@media (max-width: 640px) {
+  .ara-table { font-size: 0.78rem; }
+  .ara-table thead th { padding: 8px 10px; }
+  .ara-table tbody td { padding: 8px 10px; }
+}
 
 /* ── Figures / images ────────────────────────────── */
 .ara-figure {
@@ -445,18 +466,30 @@
 }
 
 .ara-cite {
+  display: inline-block;
   font-family: var(--font);
   font-size: 0.7rem;
   color: var(--accent-warm);
   vertical-align: super;
-  line-height: 0;
+  line-height: 1;
   margin-left: 1px;
   text-decoration: none;
+  /* Expand the touch target to ~28x24px without inflating visual size.
+   * The negative margin neutralises the padding for surrounding text so
+   * line height stays unchanged; the visible label is still the same. */
+  padding: 6px 4px;
+  margin-top: -6px;
+  margin-bottom: -6px;
+  border-radius: 4px;
 }
 
 .ara-cite::before { content: "["; }
 .ara-cite::after { content: "]"; }
-.ara-cite:hover { text-decoration: underline; }
+.ara-cite:hover { text-decoration: underline; background: var(--bg-secondary); }
+.ara-cite:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 1px;
+}
 
 .ara-mark {
   background: var(--mark-bg);
@@ -564,10 +597,23 @@
 }
 
 .ara-stack-seg {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   width: var(--ara-bar-pct, 0%);
   transition: width 0.5s ease-out;
+  /* Clip the label cleanly when the segment is too narrow to show it
+   * (single-digit-% segments collapse to <12px wide). The legend below
+   * carries the canonical label/value pairing, so visually losing the
+   * inline label on tiny segments doesn't lose information. */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+  min-width: 0;
+  font-size: 0.72rem;
+  color: var(--bg);
+  padding: 0 6px;
 }
 
 .ara-stack-seg--1 { background: var(--text); }
@@ -671,7 +717,7 @@
   position: fixed;
   left: 24px;
   top: 140px;
-  width: 200px;
+  width: 240px;
   max-height: calc(100vh - 180px);
   overflow-y: auto;
   font-family: var(--font);
@@ -708,6 +754,12 @@
   line-height: 1.35;
   transition: color 0.15s, border-color 0.15s;
   cursor: pointer;
+  /* Long subheading titles like "Bloom Energy (BE) — 16.5% combined, the
+   * keystone" would otherwise wrap to 3 lines and dominate the rail. Clip
+   * with ellipsis; full text is restored via the title= tooltip set in JS. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .ara-toc-link:hover {

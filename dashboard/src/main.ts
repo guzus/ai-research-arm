@@ -979,13 +979,32 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     ].join('\n'),
   );
 
-  // After DOM is in place, apply data-pct viz fills and build the floating TOC.
+  // After DOM is in place, apply data-pct viz fills, wrap tables in a
+  // horizontal-scroll container, and build the floating TOC.
   const article = content.querySelector('article.ara-doc') as HTMLElement | null;
   if (article) {
     applyBarFills(article);
+    wrapAraTables(article);
     renderResearchTOC(article);
   } else {
     hideResearchTOC();
+  }
+}
+
+/** Wrap each bare `.ara-table` in a `.ara-table-wrap` div so wide tables
+ * scroll horizontally on narrow viewports instead of pushing the page
+ * wider than the viewport. Done in JS (not in the article's HTML) so
+ * existing fragments don't need to be rewritten. Counterpart to wrapTables()
+ * above, which handles markdown-rendered tables for non-research tabs. */
+function wrapAraTables(root: HTMLElement): void {
+  const tables = root.querySelectorAll<HTMLTableElement>('.ara-table');
+  for (const t of tables) {
+    const parent = t.parentElement;
+    if (!parent || parent.classList.contains('ara-table-wrap')) continue;
+    const wrap = document.createElement('div');
+    wrap.className = 'ara-table-wrap';
+    parent.insertBefore(wrap, t);
+    wrap.appendChild(t);
   }
 }
 
@@ -1060,6 +1079,8 @@ function renderResearchTOC(article: HTMLElement): void {
     const num = h.querySelector('.ara-h2-num');
     const restText = (h.textContent || '').replace(num?.textContent || '', '').trim();
     a.textContent = restText;
+    // CSS clips overflow with ellipsis; surface the full title on hover.
+    a.title = restText;
     a.dataset.target = h.id;
     a.addEventListener('click', (e) => {
       e.preventDefault();
