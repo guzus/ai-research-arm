@@ -5083,5 +5083,40 @@
     "headline": "TESTINGCATALOG: OPENAI WORKING ON \"LOCKED USE\" SETTING FOR CODEX \u2014 LET CODEX RUN ON YOUR MAC WHILE IT IS LOCKED",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2055438359594447330"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-16 04:20 UTC",
+    "headline": "CODEX GPT-5.5 FIX POST TRIPLES TO 4,022 LIKES IN 3 HOURS \u2014 SAMA STILL SILENT 10 HOURS AFTER 'USER GOT USED TO MAGIC' FRAMING DEBUNKED",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2055446089957036402"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-16 04:20 UTC",
+    "headline": "SINGAPORE FOREIGN MINISTER VIVIAN BALAKRISHNAN OPENS AI ENGINEER SG AS NANOCLAW PRACTITIONER \u2014 'YOU CANNOT GOVERN A TECHNOLOGY YOU HAVE ONLY BEEN BRIEFED ON'",
+    "source": "@xiao_zcloak",
+    "url": "https://x.com/xiao_zcloak/status/2055461165921427496"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-16 04:20 UTC",
+    "headline": "OPENAI CODEX ENG LEAD THSOTTIAUX DROPS ROADMAP HINTS IN SINGAPORE KEYNOTE ALONGSIDE GAVRIEL COHEN \u2014 SAME STAGE AS SINGAPORE FM",
+    "source": "@swyx",
+    "url": "https://x.com/swyx/status/2055467498888118647"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-16 04:20 UTC",
+    "headline": "SINGAPORE HEAD OF AI GOVTECH ESTIMATES 1.3 BILLION AGENTS IN COUNTRY IN 2 YEARS, BUILDING NATIONAL MCP GATEWAY",
+    "source": "@swyx",
+    "url": "https://x.com/swyx/status/2055470634331750588"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-16 04:20 UTC",
+    "headline": "VERCEL CEO RAUCHG CONFIRMS GROK CLI PLUGINS/SKILLS NOW INTEROPERATE WITH VERCEL DEPLOY",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2055491454307582454"
   }
 ]
