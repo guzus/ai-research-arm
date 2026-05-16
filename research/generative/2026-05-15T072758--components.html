@@ -234,7 +234,125 @@
     </li>
   </ol>
 
-  <h3 class="ara-h2"><span class="ara-h2-num">12</span>Code blocks</h3>
+  <h3 class="ara-h2"><span class="ara-h2-num">12</span>Compare trio — min, max, subject</h3>
+
+  <p>Bloomberg-style three-card block for "where does the subject sit on the distribution." Use for any "lowest / highest / you" comparison. Mark the subject's card with <code>ara-compare-card--subject</code> to tint it.</p>
+
+  <div class="ara-compare">
+    <div class="ara-compare-card">
+      <span class="ara-compare-role">Lowest</span>
+      <span class="ara-compare-name">Italy</span>
+      <div class="ara-compare-value">4<span class="ara-stat-unit">%</span></div>
+    </div>
+    <div class="ara-compare-card">
+      <span class="ara-compare-role">Highest</span>
+      <span class="ara-compare-name">South Korea</span>
+      <div class="ara-compare-value">27<span class="ara-stat-unit">%</span></div>
+    </div>
+    <div class="ara-compare-card ara-compare-card--subject">
+      <span class="ara-compare-role">United States</span>
+      <span class="ara-compare-name">2026 cohort</span>
+      <div class="ara-compare-value">25<span class="ara-stat-unit">%</span></div>
+    </div>
+  </div>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">13</span>Ranked list with inline bars + row highlight</h3>
+
+  <p>Denser than <code>ara-table</code> when you have a long ranked listing — rank, label, value, bar in one row. Add <code>ara-row-highlight</code> to a single item to mark "you are here."</p>
+
+  <ol class="ara-rank-list">
+    <li class="ara-rank-item">
+      <span class="ara-rank-num">1</span>
+      <span class="ara-rank-label">Korea</span>
+      <span class="ara-rank-value">36.2%</span>
+      <span class="ara-rank-fill" data-pct="100"></span>
+    </li>
+    <li class="ara-rank-item">
+      <span class="ara-rank-num">2</span>
+      <span class="ara-rank-label">Mexico</span>
+      <span class="ara-rank-value">25.5%</span>
+      <span class="ara-rank-fill" data-pct="71"></span>
+    </li>
+    <li class="ara-rank-item">
+      <span class="ara-rank-num">3</span>
+      <span class="ara-rank-label">China</span>
+      <span class="ara-rank-value">25.0%</span>
+      <span class="ara-rank-fill" data-pct="69"></span>
+    </li>
+    <li class="ara-rank-item">
+      <span class="ara-rank-num">4</span>
+      <span class="ara-rank-label">Spain</span>
+      <span class="ara-rank-value">22.6%</span>
+      <span class="ara-rank-fill" data-pct="62"></span>
+    </li>
+    <li class="ara-rank-item ara-row-highlight">
+      <span class="ara-rank-num">5</span>
+      <span class="ara-rank-label">United States</span>
+      <span class="ara-rank-value">22.4%</span>
+      <span class="ara-rank-fill" data-pct="62"></span>
+    </li>
+    <li class="ara-rank-item">
+      <span class="ara-rank-num">6</span>
+      <span class="ara-rank-label">Japan</span>
+      <span class="ara-rank-value">22.0%</span>
+      <span class="ara-rank-fill" data-pct="61"></span>
+    </li>
+  </ol>
+
+  <p>The same <code>ara-row-highlight</code> class works on a single <code>&lt;tr&gt;</code> inside <code>ara-table</code> too:</p>
+
+  <table class="ara-table">
+    <thead>
+      <tr><th>Rank</th><th>Country</th><th>% elderly in poverty</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Korea</td><td>36.2%</td></tr>
+      <tr><td>2</td><td>Mexico</td><td>25.5%</td></tr>
+      <tr class="ara-row-highlight"><td>5</td><td>United States</td><td>22.4%</td></tr>
+      <tr><td>6</td><td>Japan</td><td>22.0%</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">14</span>Pictogram count — isotype-style ratio</h3>
+
+  <p>For ratio-at-a-glance comparisons: pick a glyph, set <code>data-count</code>, and the dashboard expands it into repeated child spans at render time. Cap is 200. Pair two rows for "then vs. now."</p>
+
+  <div class="ara-iso">
+    <span class="ara-iso-label">1950</span>
+    <span class="ara-iso-glyphs" data-glyph="🚶" data-count="17"></span>
+    <span class="ara-iso-total">17 workers / 1 beneficiary</span>
+  </div>
+  <div class="ara-iso">
+    <span class="ara-iso-label">2010</span>
+    <span class="ara-iso-glyphs" data-glyph="🚶" data-count="3"></span>
+    <span class="ara-iso-total">3 workers / 1 beneficiary</span>
+  </div>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">15</span>Inline accent + unit suffix</h3>
+
+  <p>Use <code>ara-accent</code> to anchor the eye on "the subject" across a global comparison — distinct from <code>&lt;em&gt;</code> (italic) and <code>ara-mark</code> (background tint). Use <code>ara-stat-unit</code> for tiny unit suffixes that hang off big figures like <code>87 yrs.</code> or <code>$39.6T</code>.</p>
+
+  <p>Italy contributes 45.30% of wages to mandatory social-security programs; <strong class="ara-accent">the United States</strong> contributes 16.90% — the 17th-highest rate of the 20 countries surveyed.</p>
+
+  <div class="ara-stats">
+    <div class="ara-stat">
+      <span class="ara-stat-label">Life expectancy at 60</span>
+      <div class="ara-stat-value">87<span class="ara-stat-unit">yrs.</span></div>
+      <div class="ara-stat-note">U.S. women cohort</div>
+    </div>
+    <div class="ara-stat">
+      <span class="ara-stat-label">Medicare shortfall</span>
+      <div class="ara-stat-value">$39.6<span class="ara-stat-unit">T</span></div>
+      <div class="ara-stat-note">through 2087</div>
+    </div>
+    <div class="ara-stat">
+      <span class="ara-stat-label">Stargate site</span>
+      <div class="ara-stat-value">1.2<span class="ara-stat-unit">GW</span></div>
+      <div class="ara-stat-note">Abilene, TX</div>
+    </div>
+  </div>
+
+  <h3 class="ara-h2"><span class="ara-h2-num">16</span>Code blocks</h3>
 
   <p>Inline <code>code</code> and fenced blocks:</p>
 
@@ -242,7 +360,7 @@
     # Every class must start with ara-
     return all(c.startswith("ara-") for c in classes_in(article))</code></pre>
 
-  <h3 class="ara-h2"><span class="ara-h2-num">13</span>What's NOT here</h3>
+  <h3 class="ara-h2"><span class="ara-h2-num">17</span>What's NOT here</h3>
 
   <p>Components that don't exist by design:</p>
 

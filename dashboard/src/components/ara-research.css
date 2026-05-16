@@ -63,9 +63,13 @@
 .ara-doc > .ara-divider,
 .ara-doc > .ara-stats,
 .ara-doc > .ara-table,
+.ara-doc > .ara-table-wrap,
 .ara-doc > .ara-bars,
 .ara-doc > .ara-stack-bar,
 .ara-doc > .ara-stack-legend,
+.ara-doc > .ara-compare,
+.ara-doc > .ara-rank-list,
+.ara-doc > .ara-iso,
 .ara-doc > .ara-timeline,
 .ara-doc > .ara-figure {
   max-width: 1120px;
@@ -339,6 +343,18 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Tiny unit suffix on big-figure values — "87 yrs.", "$39.6T", "5.2GW".
+ * Same primitive works inside .ara-stat-value and .ara-compare-value. */
+.ara-stat-unit,
+.ara-compare-value .ara-stat-unit {
+  font-family: var(--font);
+  font-size: 0.52em;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-left: 4px;
+  letter-spacing: 0;
+}
+
 .ara-stat-note {
   font-family: var(--font);
   font-size: 0.78rem;
@@ -498,6 +514,15 @@
   border-radius: 3px;
 }
 
+/* Inline accent color for "the subject" — used to keep the eye anchored
+ * to one entity (e.g., "United States") through a Bloomberg-style global
+ * comparison. Stays visually distinct from <em> (italic) and ara-mark
+ * (background highlight). Strong-weight + accent color. */
+.ara-accent {
+  color: var(--accent-warm);
+  font-weight: 600;
+}
+
 .ara-flag {
   display: inline-block;
   width: 8px;
@@ -652,6 +677,218 @@
 .ara-stack-dot--2 { background: var(--text-secondary); }
 .ara-stack-dot--3 { background: var(--text-tertiary); }
 .ara-stack-dot--4 { background: var(--border); }
+
+/* ── Compare trio (min / max / subject) ──────────── */
+/* Three-card horizontal block for "where does the subject sit on the
+ * distribution". Bloomberg uses this for "Lowest: Italy 4% · Highest:
+ * S.Korea 27% · United States 25%". The --subject variant tints the
+ * card to draw the eye to the user's point of interest. */
+.ara-compare {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 22px 0;
+}
+
+.ara-compare-card {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.ara-compare-card--subject {
+  border-color: var(--accent-warm);
+  background: var(--accent-warm-bg);
+}
+
+.ara-compare-role {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.ara-compare-card--subject .ara-compare-role {
+  color: var(--accent-warm);
+}
+
+.ara-compare-name {
+  font-family: var(--font);
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.ara-compare-value {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+.ara-compare-card--subject .ara-compare-value {
+  color: var(--accent-warm);
+}
+
+@media (max-width: 640px) {
+  .ara-compare {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .ara-compare-value { font-size: 1.6rem; }
+}
+
+/* ── Ranked list with inline bars + row highlight ─── */
+/* Dense Bloomberg-style ranked listing: rank, label, value, proportional
+ * bar — all in a single row, scannable top-to-bottom. One row can be
+ * marked .ara-row-highlight to draw the eye to "you are here".
+ *
+ * The data-pct attribute on .ara-rank-fill is stamped to a CSS var by
+ * the dashboard's existing applyBarFills() pass (the same mechanism
+ * already used by .ara-bar and .ara-stack-seg). */
+.ara-rank-list {
+  list-style: none;
+  margin: 22px 0;
+  padding: 0;
+  font-family: var(--font);
+}
+
+.ara-rank-item {
+  display: grid;
+  grid-template-columns: 32px 1fr auto 38%;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.ara-rank-item:last-child { border-bottom: none; }
+
+.ara-rank-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  text-align: right;
+}
+
+.ara-rank-label {
+  font-size: 0.92rem;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ara-rank-value {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  text-align: right;
+  padding-right: 8px;
+}
+
+.ara-rank-fill {
+  display: block;
+  height: 8px;
+  width: 100%;
+  background: var(--bg-secondary);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ara-rank-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: var(--ara-bar-pct, 0%);
+  background: var(--text);
+  transition: width 0.5s ease-out;
+}
+
+.ara-rank-item.ara-row-highlight {
+  background: var(--accent-warm-bg);
+  border-radius: 4px;
+}
+
+.ara-rank-item.ara-row-highlight .ara-rank-num,
+.ara-rank-item.ara-row-highlight .ara-rank-label,
+.ara-rank-item.ara-row-highlight .ara-rank-value {
+  color: var(--accent-warm);
+  font-weight: 600;
+}
+
+.ara-rank-item.ara-row-highlight .ara-rank-fill::after {
+  background: var(--accent-warm);
+}
+
+@media (max-width: 640px) {
+  .ara-rank-item {
+    grid-template-columns: 22px 1fr auto;
+  }
+  /* On mobile, drop the inline bar to keep the row readable. */
+  .ara-rank-item .ara-rank-fill { display: none; }
+}
+
+/* ── Pictogram count (isotype-style ratio) ────────── */
+/* "1950: 🚶×17 workers per beneficiary; 2010: 🚶×3." Glanceable count
+ * comparison. Author writes data-glyph and data-count on .ara-iso-glyphs;
+ * the dashboard expands at render time (applyIsotypes in main.ts). */
+.ara-iso {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 14px 0;
+  font-family: var(--font);
+  flex-wrap: wrap;
+}
+
+.ara-iso-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  min-width: 72px;
+}
+
+.ara-iso-glyphs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 1px 2px;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--accent-warm);
+}
+
+.ara-iso-glyphs .ara-iso-glyph {
+  display: inline-block;
+}
+
+.ara-iso-total {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ── Table single-row highlight ──────────────────── */
+.ara-table tr.ara-row-highlight td {
+  background: var(--accent-warm-bg);
+  color: var(--accent-warm);
+  font-weight: 600;
+}
 
 /* ── Timeline (vertical events) ──────────────────── */
 .ara-timeline {

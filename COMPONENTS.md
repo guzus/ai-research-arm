@@ -67,8 +67,21 @@ Anything else is rejected. No `<style>`, `<script>`, `<iframe>`, `<h1>` (the das
 | `ara-stat` | `<div class="ara-stat">` inside `ara-stats` | One stat. |
 | `ara-stat-label` | `<span class="ara-stat-label">` | Mono uppercase tracked label. |
 | `ara-stat-value` | `<div class="ara-stat-value">` | The big mono number. Tabular figures. |
+| `ara-stat-unit` | `<span class="ara-stat-unit">yrs.</span>` inside any big-figure value | Tiny unit suffix attached to a big number — `87 yrs.`, `$39.6T`, `5.2 GW`. Works inside `ara-stat-value` or `ara-compare-value`. |
 | `ara-stat-note` | `<div class="ara-stat-note">` | Optional small caption (e.g. "+4.7% YoY"). |
 | `ara-table` | `<table class="ara-table">` | Comparison or ranked data. Use `<thead>` + `<tbody>`. |
+| `ara-row-highlight` | `<tr class="ara-row-highlight">` inside `ara-table`, or `<li class="ara-rank-item ara-row-highlight">` inside `ara-rank-list` | Single-row emphasis. Use for "the subject" row in a ranked list (e.g., your country in a global comparison). At most one per table. |
+| `ara-compare` | `<div class="ara-compare">` containing three `ara-compare-card` blocks | Three-card horizontal block for "where the subject sits on the distribution" — e.g. `Lowest · Highest · Subject`. Mark the subject card with `ara-compare-card--subject`. |
+| `ara-compare-card` | `<div class="ara-compare-card">` | One card. Contains `ara-compare-role` + `ara-compare-name` + `ara-compare-value`. |
+| `ara-compare-role` | `<span class="ara-compare-role">` | Mono uppercase tag — `LOWEST`, `HIGHEST`, the subject's name. |
+| `ara-compare-name` | `<span class="ara-compare-name">` | The entity name (country, company, period). |
+| `ara-compare-value` | `<div class="ara-compare-value">` | The big mono figure. Can contain a nested `ara-stat-unit`. |
+| `ara-rank-list` | `<ol class="ara-rank-list">` containing `ara-rank-item` | Dense ranked listing: rank, label, value, proportional bar. Bloomberg-style. |
+| `ara-rank-item` | `<li class="ara-rank-item">` containing `ara-rank-num` + `ara-rank-label` + `ara-rank-value` + `ara-rank-fill` | One row. Add `ara-row-highlight` for the subject row. |
+| `ara-rank-num` | `<span class="ara-rank-num">1</span>` | Mono rank index. |
+| `ara-rank-label` | `<span class="ara-rank-label">Korea</span>` | Entity name. Truncates with ellipsis. |
+| `ara-rank-value` | `<span class="ara-rank-value">36.2%</span>` | Mono tabular figure. |
+| `ara-rank-fill` | `<span class="ara-rank-fill" data-pct="36"></span>` | Proportional bar fill. Reads `data-pct` like `ara-bar`. |
 
 ## Visualization
 
@@ -88,6 +101,10 @@ Proportional fills are declared with `data-pct="N"` (integer 0–100). The dashb
 | `ara-timeline-item` | `<li class="ara-timeline-item">` | One event. |
 | `ara-timeline-date` | `<time class="ara-timeline-date">2024-01</time>` | Date or period label. |
 | `ara-timeline-event` | `<div class="ara-timeline-event">` containing `<strong>` headline + `<p>` body | Event content. |
+| `ara-iso` | `<div class="ara-iso">` containing `ara-iso-label` + `ara-iso-glyphs` + `ara-iso-total` | Pictogram count — repeated glyph for ratio at a glance. "1950: 🚶×17 workers per beneficiary." |
+| `ara-iso-label` | `<span class="ara-iso-label">1950</span>` | Mono uppercase row label (period, group). |
+| `ara-iso-glyphs` | `<span class="ara-iso-glyphs" data-glyph="🚶" data-count="17"></span>` (self-closing — dashboard fills) | The dashboard expands `data-count` copies of `data-glyph` into child spans at render time. Hard cap 200 to prevent runaway DOM. Pick any single glyph: emoji, unicode symbol, or short text. |
+| `ara-iso-total` | `<span class="ara-iso-total">17</span>` | The raw count, mono tabular, after the glyphs for fast scanning. |
 
 **Why no inline charts?** Arbitrary x/y line charts and donut charts would require either SVG (more attack surface) or an external library (more deps). When you genuinely need a chart, file an issue with a sample and we add a primitive.
 
@@ -98,6 +115,7 @@ Proportional fills are declared with `data-pct="N"` (integer 0–100). The dashb
 | `ara-tag` | `<span class="ara-tag">cdn</span>` | Topic chip. Use for inline labels, not navigation. |
 | `ara-cite` | `<a class="ara-cite" href="#ref-1">1</a>` (typically wrapped in `<sup>`) | Footnote reference. Renders as `[1]`. |
 | `ara-mark` | `<mark class="ara-mark">` | Highlight a phrase. Distinct from search highlight (raw `<mark>`). |
+| `ara-accent` | `<strong class="ara-accent">United States</strong>` (or `<span>`) | Inline accent color + semi-bold. Use to anchor the eye on "the subject" across a global comparison. Distinct from `<em>` (italic) and `ara-mark` (background highlight). |
 | `ara-flag` | `<span class="ara-flag ara-flag--green"></span>` | Status dot. Variants: `--green`, `--yellow`, `--red`. |
 
 ## Code

@@ -980,14 +980,38 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
   );
 
   // After DOM is in place, apply data-pct viz fills, wrap tables in a
-  // horizontal-scroll container, and build the floating TOC.
+  // horizontal-scroll container, expand pictogram counts, and build the
+  // floating TOC.
   const article = content.querySelector('article.ara-doc') as HTMLElement | null;
   if (article) {
     applyBarFills(article);
     wrapAraTables(article);
+    applyIsotypes(article);
     renderResearchTOC(article);
   } else {
     hideResearchTOC();
+  }
+}
+
+/** Expand `<span class="ara-iso-glyphs" data-count="17" data-glyph="🚶">`
+ * into N repeated child glyph spans. Done in JS (not in the article HTML)
+ * so authors don't have to paste long strings of identical glyphs and so
+ * the count is machine-readable. Hard cap at 200 to keep a typo from
+ * rendering a million emoji into the DOM. */
+function applyIsotypes(root: HTMLElement): void {
+  const groups = root.querySelectorAll<HTMLElement>('.ara-iso-glyphs');
+  for (const g of groups) {
+    if (g.dataset.expanded === '1') continue;
+    const count = Math.max(0, Math.min(200, Number(g.dataset.count) || 0));
+    const glyph = g.dataset.glyph || '•';
+    g.textContent = '';
+    for (let i = 0; i < count; i++) {
+      const s = document.createElement('span');
+      s.className = 'ara-iso-glyph';
+      s.textContent = glyph;
+      g.appendChild(s);
+    }
+    g.dataset.expanded = '1';
   }
 }
 
