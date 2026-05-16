@@ -135,12 +135,24 @@ function routeFromState(): string {
   return '/' + activeTab + '/' + fmtDate(currentDate);
 }
 
+// Tracks whether the SPA has rendered at least once. The first call
+// to updateRoute() comes from the initial load() and must not add a
+// history entry (the user's just-landed URL already lives at the top
+// of the stack). Every subsequent call is a user navigation and gets
+// pushState so browser back/forward walks through the visited views.
+let routeInitialized = false;
+
 function updateRoute(): void {
   const target = routeFromState();
   const current = location.pathname + location.search;
   if (current !== target) {
-    history.replaceState(null, '', target);
+    if (routeInitialized) {
+      history.pushState(null, '', target);
+    } else {
+      history.replaceState(null, '', target);
+    }
   }
+  routeInitialized = true;
 }
 
 function parseRoute(path: string): boolean {
