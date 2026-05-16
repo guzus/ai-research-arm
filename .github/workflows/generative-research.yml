@@ -787,7 +787,7 @@ jobs:
       - name: Run Generative Research (DeepSeek V4 Pro)
         if: steps.params.outputs.backend == 'deepseek-v4-pro'
         id: gen-deepseek
-        timeout-minutes: 45
+        timeout-minutes: 90
         uses: anthropics/claude-code-action@v1
         env:
           # Redirect Claude Code CLI to DeepSeek's Anthropic-compatible endpoint.

@@ -46,7 +46,9 @@ design gates, quality report, commit writer, and push/rebase logic.
 The expected difference is the model backend:
 
 - DeepSeek: Anthropic-compatible DeepSeek endpoint, `deepseek-v4-pro`
-  metadata in `research/generative/index.json`.
+  metadata in `research/generative/index.json`. This path has a longer
+  action timeout because the Anthropic shim plus large sub-agent waves can
+  run slower than the native Claude path.
 - Claude: native Anthropic endpoint, `claude-opus-4-7` metadata in
   `research/generative/index.json`.
 
