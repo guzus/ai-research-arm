@@ -766,10 +766,77 @@ jobs:
         run: |
           set -euo pipefail
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
-          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+          # Concurrent gen-research / twitter / other writers can land on
+          # main while this job runs. Retry the fetch+rebase+push loop a
+          # few times; each iteration auto-merges the JSON-array index
+          # files (research/generative/index.json and any other research
+          # */*.json catalogs) by union-on-slug, since two parallel runs
+          # always append different entries to the same array.
+          #
+          # Only research/generative/index.json is recognised for auto-
+          # merge — any other conflicted path aborts with a clear error.
+
+          merge_index_json() {
+            local path="$1"
+            echo "Auto-merging $path (union by slug)"
+            local ours theirs
+            ours=$(mktemp); theirs=$(mktemp)
+            git show ":2:$path" > "$ours"
+            git show ":3:$path" > "$theirs"
+            jq -s '
+              (.[0] + .[1])
+              | unique_by(.slug)
+              | sort_by(.created_at)
+            ' "$ours" "$theirs" > "$path"
+            rm -f "$ours" "$theirs"
+            git add "$path"
+          }
+
+          ATTEMPTS=0
+          MAX_ATTEMPTS=5
+          while [ "$ATTEMPTS" -lt "$MAX_ATTEMPTS" ]; do
+            ATTEMPTS=$((ATTEMPTS + 1))
+            echo "::group::push attempt $ATTEMPTS / $MAX_ATTEMPTS"
+
+            git fetch origin main
+
+            if git rebase origin/main; then
+              :
+            else
+              # rebase paused on conflicts. The only path we know how to
+              # safely auto-resolve is research/generative/index.json.
+              CONFLICTED=$(git diff --name-only --diff-filter=U | sort -u)
+              echo "Conflicted paths:"
+              echo "$CONFLICTED"
+              if [ "$CONFLICTED" = "research/generative/index.json" ]; then
+                merge_index_json "research/generative/index.json"
+                if ! git -c core.editor=true rebase --continue; then
+                  echo "::error::rebase --continue failed even after JSON merge"
+                  git rebase --abort 2>/dev/null || true
+                  exit 1
+                fi
+              else
+                echo "::error::Unhandleable conflict on path(s) above"
+                git rebase --abort 2>/dev/null || true
+                exit 1
+              fi
+            fi
+
+            if git push origin HEAD:main; then
+              echo "::endgroup::"
+              echo "Pushed successfully on attempt $ATTEMPTS"
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            echo "::endgroup::"
+            echo "Push rejected (main moved during attempt $ATTEMPTS); retrying"
+            sleep $((2 * ATTEMPTS))
+          done
+
+          echo "::error::Failed to push after $MAX_ATTEMPTS attempts"
+          exit 1
 
       - name: Post results to issue
         if: always() && github.event_name == 'issues'
