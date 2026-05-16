@@ -161,5 +161,16 @@
     "source": "local",
     "prompt": "the crypto project XMAQUINA ($DEUS)",
     "tags": []
+  },
+  {
+    "slug": "about-the-crypto-project-xmaquina-deus",
+    "file": "2026-05-16T115547--about-the-crypto-project-xmaquina-deus.html",
+    "kind": "fragment",
+    "title": "Inside the DEUS basket: what XMAQUINA holders actually own, 11 days before TGE",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T11:55:47Z",
+    "source": "workflow_dispatch",
+    "prompt": "about the crypto project XMAQUINA ($DEUS)",
+    "tags": []
   }
 ]
