@@ -807,6 +807,16 @@ function renderFrontPage(imageUrl: string, fallbackDate: string | null): void {
 /** Render the daily digest. Treats Executive Summary specially as a TL;DR block. */
 function renderToday(md: string): void {
   const sections = splitSections(md);
+
+  // Digest files often start with `# AI Daily Digest - <date>` before the
+  // first `## Section`, which duplicates the date already shown in the
+  // card header. Strip the leading h1 from the pre-`##` body; if nothing
+  // else remains, drop the section so we don't render a blank card.
+  if (sections.length > 0 && !sections[0].title) {
+    sections[0].body = sections[0].body.replace(/^\s*#\s+[^\n]+\n*/, '').trim();
+    if (!sections[0].body) sections.shift();
+  }
+
   const cards: string[] = [];
 
   // Prepend an audio player if a Deepgram-generated digest MP3 exists for

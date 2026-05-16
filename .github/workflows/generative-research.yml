@@ -268,10 +268,15 @@ jobs:
           GEN_TAGS: ${{ steps.params.outputs.tags }}
           GEN_SOURCE: ${{ steps.params.outputs.source }}
           GEN_PROMPT: ${{ steps.params.outputs.prompt }}
+          # birdy auth — bird and bird-fast read these cookies to call
+          # X/Twitter as a primary source. Same secrets used by the
+          # hourly-twitter workflow.
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --max-turns 240 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),Bash(curl:*),Bash(pdftotext:*),WebSearch,WebFetch,Task,TodoWrite"
+            --model opus --max-turns 240 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
             You are a deep-research analyst writing a COMPREHENSIVE,
             analyst-grade HTML article on the topic supplied by the user.
@@ -300,6 +305,17 @@ jobs:
               - `curl -sL <url> -o /tmp/x.pdf && pdftotext /tmp/x.pdf -
                 | head -c 60000` — read PDFs (10-Ks, S-1s, papers,
                 whitepapers). The pdftotext binary is pre-installed.
+              - `bird search "<query>" --json --plain | jq ...` and
+                `bird user-tweets <handle> --json --plain | jq ...` —
+                X/Twitter as a primary source via the bird CLI. A tweet
+                from a NAMED PRINCIPAL (founder, official corporate
+                account, lead engineer of the named project) counts as
+                PRIMARY in the evidence packet schema. The runner is
+                already authenticated via AUTH_TOKEN / CT0 cookies set in
+                this step's env. Always fall back gracefully:
+                `... || echo "[]"`. Use for breaking-news topics where
+                X is the first-party channel (model launches, TGE
+                announcements, IR posts cross-posted to X, etc.).
 
             PROCESS — non-negotiable, in order:
 
@@ -333,8 +349,12 @@ jobs:
                `python3 scripts/research_search.py SOURCE "query"` for
                arxiv/edgar/crossref/semanticscholar/github when relevant,
                AND tell them they CAN use
-               `curl + pdftotext` for PDF sources, (d) cap output at ~10
-               evidence packets.
+               `curl + pdftotext` for PDF sources,
+               AND tell them they CAN use `bird search "<query>" --json --plain`
+               or `bird user-tweets <handle> --json --plain` to pull
+               X/Twitter primary sources (a tweet from a named principal
+               counts as PRIMARY; AUTH_TOKEN / CT0 cookies are already in
+               env), (d) cap output at ~10 evidence packets.
 
                Sub-agents MUST return STRUCTURED EVIDENCE PACKETS, not
                prose summaries. Each packet:
@@ -512,12 +532,17 @@ jobs:
           GEN_TAGS: ${{ steps.params.outputs.tags }}
           GEN_SOURCE: ${{ steps.params.outputs.source }}
           GEN_PROMPT: ${{ steps.params.outputs.prompt }}
+          # birdy auth — bird and bird-fast read these cookies to call
+          # X/Twitter as a primary source. Same secrets used by the
+          # hourly-twitter workflow.
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
         with:
           # Required by the action input schema; superseded at runtime by
           # ANTHROPIC_AUTH_TOKEN because ANTHROPIC_BASE_URL is set.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --max-turns 240 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),Bash(curl:*),Bash(pdftotext:*),WebSearch,WebFetch,Task,TodoWrite"
+            --model opus --max-turns 240 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
             You are a deep-research analyst running on DeepSeek v4 Pro,
             writing a COMPREHENSIVE, analyst-grade HTML article on the
@@ -547,6 +572,17 @@ jobs:
               - `curl -sL <url> -o /tmp/x.pdf && pdftotext /tmp/x.pdf -
                 | head -c 60000` — read PDFs (10-Ks, S-1s, papers,
                 whitepapers). The pdftotext binary is pre-installed.
+              - `bird search "<query>" --json --plain | jq ...` and
+                `bird user-tweets <handle> --json --plain | jq ...` —
+                X/Twitter as a primary source via the bird CLI. A tweet
+                from a NAMED PRINCIPAL (founder, official corporate
+                account, lead engineer of the named project) counts as
+                PRIMARY in the evidence packet schema. The runner is
+                already authenticated via AUTH_TOKEN / CT0 cookies set in
+                this step's env. Always fall back gracefully:
+                `... || echo "[]"`. Use for breaking-news topics where
+                X is the first-party channel (model launches, TGE
+                announcements, IR posts cross-posted to X, etc.).
 
             PROCESS — non-negotiable, in order:
 
@@ -580,8 +616,12 @@ jobs:
                `python3 scripts/research_search.py SOURCE "query"` for
                arxiv/edgar/crossref/semanticscholar/github when relevant,
                AND tell them they CAN use
-               `curl + pdftotext` for PDF sources, (d) cap output at ~10
-               evidence packets.
+               `curl + pdftotext` for PDF sources,
+               AND tell them they CAN use `bird search "<query>" --json --plain`
+               or `bird user-tweets <handle> --json --plain` to pull
+               X/Twitter primary sources (a tweet from a named principal
+               counts as PRIMARY; AUTH_TOKEN / CT0 cookies are already in
+               env), (d) cap output at ~10 evidence packets.
 
                Sub-agents MUST return STRUCTURED EVIDENCE PACKETS, not
                prose summaries. Each packet:
