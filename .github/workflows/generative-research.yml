@@ -323,13 +323,26 @@ jobs:
                   a. Run `python3 scripts/prior_context.py "$GEN_TOPIC"`
                      and Read any high-overlap article files it returns.
                      Note what's already covered so you don't duplicate.
-                  b. Write a short internal plan (just hold it in
+                  b. Read `COMPONENTS.md` at repo root for the canonical
+                     ara-* class vocabulary. The writer ENFORCES an
+                     exact-match allowlist parsed from COMPONENTS.md —
+                     invented classes (ara-references, ara-stat-num,
+                     ara-link, etc.) are REJECTED with suggestions.
+                     Also Read the visual reference article (slug:
+                     `components`) to see every primitive in use.
+                  c. Write a short internal plan (just hold it in
                      context, do not save to disk):
                        - 10–18 specific answerable questions
                        - For each question, what counts as PRIMARY evidence
                          (paper, filing, IR page, spec, first-party blog)
                        - 3–5 disconfirming questions ("what would falsify
                          the popular narrative")
+                       - For each question, the likely DATA SHAPE
+                         (time series / distribution / ranking /
+                         comparison / ratio / chronology) so the
+                         section writer can pick the right ara-*
+                         visualization primitive instead of defaulting
+                         to ara-table or prose.
 
             1. EVIDENCE COLLECTION IN WAVES. Use the Task tool to
                dispatch sub-agents (subagent_type: general-purpose) IN
@@ -398,6 +411,18 @@ jobs:
                   - the per-section contract (below)
                   - a 600–1100-word target for THIS section
                   - the strict tag/class validation rules (below)
+                  - the COMPONENT VOCABULARY block (below) AND an
+                    instruction to `Read COMPONENTS.md` at the repo
+                    root first
+                  - the DATA SHAPE of the relevant ledger packets (time
+                    series / distribution / ranking / comparison / ratio
+                    / chronology) and an EXPLICIT instruction to use the
+                    matching ara-* visualization primitive — NOT default
+                    to ara-table or prose. A ranking ⇒ ara-rank-list, a
+                    percentage breakdown ⇒ ara-donut or ara-stack-bar, a
+                    time series ⇒ ara-line-chart or ara-sparkline, a
+                    before/after delta ⇒ ara-slope, a chronology ⇒
+                    ara-timeline, a key/value list ⇒ ara-kv.
                 Each writer returns ONLY the HTML for their section
                 (an <h3 class="ara-h2"> + section body, no <article>
                 wrapper, no references list). You stitch.
@@ -447,7 +472,64 @@ jobs:
                  would falsify this" per major thesis
                - References: ≥ 20 distinct source URLs in the numbered
                  references list
+               - Visualization diversity: ≥ 3 distinct visualization
+                 primitives across the article — pick from ara-bars,
+                 ara-stack-bar, ara-stack-rows, ara-sparkline,
+                 ara-line-chart, ara-donut, ara-slope, ara-compare,
+                 ara-rank-list, ara-iso, ara-timeline, ara-kv. (ara-table
+                 and ara-callout do NOT count toward this target —
+                 they're the safe defaults; the bar is whether you used
+                 the design system as designed.)
                - Word count: 4500–7000 as a GUARDRAIL only
+
+            COMPONENT VOCABULARY (the writer enforces an exact-match
+            ara-* allowlist parsed from COMPONENTS.md; invented classes
+            are rejected with suggestions — read COMPONENTS.md if
+            unsure):
+
+               Visualization primitives — pick BY DATA SHAPE:
+                 Time series           → ara-line-chart (full SVG, up
+                                         to 4 series), ara-sparkline
+                                         (inline mini-trend)
+                 Distribution          → ara-donut, ara-stack-bar
+                                         (+ ara-stack-legend),
+                                         ara-stack-rows (multi-row
+                                         Bloomberg-style)
+                 Ranking               → ara-rank-list (proportional
+                                         fills built-in)
+                 Position in range     → ara-compare (three cards:
+                                         lowest / highest / subject)
+                 Ratios                → ara-iso (pictogram count
+                                         like "1950: 🚶×17"),
+                                         ara-stat + ara-stat-unit
+                 Before / after delta  → ara-slope (two-period)
+                 Chronology            → ara-timeline
+                 Key/value facts       → ara-kv
+                 Bars                  → ara-bars / ara-bar
+                                         (single proportional bar)
+
+               Content blocks: ara-callout (--info / --success /
+                 --warn / --danger), ara-quote (+ ara-quote-attr),
+                 ara-figure (+ ara-caption), ara-table (+ optional
+                 ara-row-highlight for the subject row).
+               Headings: ara-h2 (numbered section, use ara-h2-num
+                 chip for the number), ara-h3, ara-h4, ara-divider.
+               Title block: ara-eyebrow, ara-display, ara-deck,
+                 ara-lede.
+               Inline: ara-cite (footnote ref), ara-mark, ara-accent,
+                 ara-tag, ara-flag (--green / --yellow / --red),
+                 ara-stat-unit (small suffix on a big number).
+
+               Anti-patterns — REJECT in your own draft:
+                 - "the top 5 are…" as a <ul>          → use ara-rank-list
+                 - "the breakdown is X%/Y%/Z%" prose   → use ara-donut
+                                                         or ara-stack-bar
+                 - a time series described in prose    → embed
+                                                         ara-sparkline
+                                                         or use
+                                                         ara-line-chart
+                 - before/after numbers in prose       → use ara-slope
+                 - key facts as a <ul>                 → use ara-kv
 
             PER-SECTION CONTRACT (replaces mechanical density rules):
             each H3 numbered section must contain:
@@ -456,14 +538,25 @@ jobs:
                - ≥ 1 quantitative datapoint where one exists
                - ≥ 1 counterpoint or "what would weaken this" line
                - 1 sentence on why this matters
-               Use ara-table when the section presents a comparison,
-               timeline, ranked set, or financial series. Use ara-callout
-               sparingly: thesis break, risk flag, or source caveat only.
-               Do NOT add tables or callouts for cosmetic density.
+               If the section's data shape calls for a visualization
+               (time series / distribution / ranking / comparison /
+               ratio / chronology), USE the matching ara-* primitive
+               from the COMPONENT VOCABULARY block above. Do NOT
+               default to ara-table or prose for visualizable data.
+               Use ara-callout sparingly: thesis break, risk flag, or
+               source caveat only — not for cosmetic density.
 
             STRICT VALIDATION RULES (writer rejects violations):
                - Root <article class="ara-doc">.
-               - Every `class=` token starts with `ara-`.
+               - Every `class=` token must be an EXACT-MATCH ara-*
+                 class documented in COMPONENTS.md (or a modifier
+                 like ara-callout--info of a documented base). The
+                 writer parses COMPONENTS.md at commit time and
+                 rejects undocumented classes with suggested
+                 replacements. Common mistakes that WILL be rejected:
+                 ara-references, ara-stat-num, ara-link, ara-ref-link,
+                 ara-reflist, ara-refs, ara-sources, ara-li, ara-ol,
+                 ara-p, ara-header, ara-date, ara-figcaption.
                - Allowed tags: article, section, div, header, footer,
                  h2, h3, h4, p, span, em, strong, code, mark, sup, sub,
                  abbr, time, ul, ol, li, dl, dt, dd, a, img, figure,
@@ -590,13 +683,26 @@ jobs:
                   a. Run `python3 scripts/prior_context.py "$GEN_TOPIC"`
                      and Read any high-overlap article files it returns.
                      Note what's already covered so you don't duplicate.
-                  b. Write a short internal plan (just hold it in
+                  b. Read `COMPONENTS.md` at repo root for the canonical
+                     ara-* class vocabulary. The writer ENFORCES an
+                     exact-match allowlist parsed from COMPONENTS.md —
+                     invented classes (ara-references, ara-stat-num,
+                     ara-link, etc.) are REJECTED with suggestions.
+                     Also Read the visual reference article (slug:
+                     `components`) to see every primitive in use.
+                  c. Write a short internal plan (just hold it in
                      context, do not save to disk):
                        - 10–18 specific answerable questions
                        - For each question, what counts as PRIMARY evidence
                          (paper, filing, IR page, spec, first-party blog)
                        - 3–5 disconfirming questions ("what would falsify
                          the popular narrative")
+                       - For each question, the likely DATA SHAPE
+                         (time series / distribution / ranking /
+                         comparison / ratio / chronology) so the
+                         section writer can pick the right ara-*
+                         visualization primitive instead of defaulting
+                         to ara-table or prose.
 
             1. EVIDENCE COLLECTION IN WAVES. Use the Task tool to
                dispatch sub-agents (subagent_type: general-purpose) IN
@@ -665,6 +771,18 @@ jobs:
                   - the per-section contract (below)
                   - a 600–1100-word target for THIS section
                   - the strict tag/class validation rules (below)
+                  - the COMPONENT VOCABULARY block (below) AND an
+                    instruction to `Read COMPONENTS.md` at the repo
+                    root first
+                  - the DATA SHAPE of the relevant ledger packets (time
+                    series / distribution / ranking / comparison / ratio
+                    / chronology) and an EXPLICIT instruction to use the
+                    matching ara-* visualization primitive — NOT default
+                    to ara-table or prose. A ranking ⇒ ara-rank-list, a
+                    percentage breakdown ⇒ ara-donut or ara-stack-bar, a
+                    time series ⇒ ara-line-chart or ara-sparkline, a
+                    before/after delta ⇒ ara-slope, a chronology ⇒
+                    ara-timeline, a key/value list ⇒ ara-kv.
                 Each writer returns ONLY the HTML for their section
                 (an <h3 class="ara-h2"> + section body, no <article>
                 wrapper, no references list). You stitch.
@@ -714,7 +832,64 @@ jobs:
                  would falsify this" per major thesis
                - References: ≥ 20 distinct source URLs in the numbered
                  references list
+               - Visualization diversity: ≥ 3 distinct visualization
+                 primitives across the article — pick from ara-bars,
+                 ara-stack-bar, ara-stack-rows, ara-sparkline,
+                 ara-line-chart, ara-donut, ara-slope, ara-compare,
+                 ara-rank-list, ara-iso, ara-timeline, ara-kv. (ara-table
+                 and ara-callout do NOT count toward this target —
+                 they're the safe defaults; the bar is whether you used
+                 the design system as designed.)
                - Word count: 4500–7000 as a GUARDRAIL only
+
+            COMPONENT VOCABULARY (the writer enforces an exact-match
+            ara-* allowlist parsed from COMPONENTS.md; invented classes
+            are rejected with suggestions — read COMPONENTS.md if
+            unsure):
+
+               Visualization primitives — pick BY DATA SHAPE:
+                 Time series           → ara-line-chart (full SVG, up
+                                         to 4 series), ara-sparkline
+                                         (inline mini-trend)
+                 Distribution          → ara-donut, ara-stack-bar
+                                         (+ ara-stack-legend),
+                                         ara-stack-rows (multi-row
+                                         Bloomberg-style)
+                 Ranking               → ara-rank-list (proportional
+                                         fills built-in)
+                 Position in range     → ara-compare (three cards:
+                                         lowest / highest / subject)
+                 Ratios                → ara-iso (pictogram count
+                                         like "1950: 🚶×17"),
+                                         ara-stat + ara-stat-unit
+                 Before / after delta  → ara-slope (two-period)
+                 Chronology            → ara-timeline
+                 Key/value facts       → ara-kv
+                 Bars                  → ara-bars / ara-bar
+                                         (single proportional bar)
+
+               Content blocks: ara-callout (--info / --success /
+                 --warn / --danger), ara-quote (+ ara-quote-attr),
+                 ara-figure (+ ara-caption), ara-table (+ optional
+                 ara-row-highlight for the subject row).
+               Headings: ara-h2 (numbered section, use ara-h2-num
+                 chip for the number), ara-h3, ara-h4, ara-divider.
+               Title block: ara-eyebrow, ara-display, ara-deck,
+                 ara-lede.
+               Inline: ara-cite (footnote ref), ara-mark, ara-accent,
+                 ara-tag, ara-flag (--green / --yellow / --red),
+                 ara-stat-unit (small suffix on a big number).
+
+               Anti-patterns — REJECT in your own draft:
+                 - "the top 5 are…" as a <ul>          → use ara-rank-list
+                 - "the breakdown is X%/Y%/Z%" prose   → use ara-donut
+                                                         or ara-stack-bar
+                 - a time series described in prose    → embed
+                                                         ara-sparkline
+                                                         or use
+                                                         ara-line-chart
+                 - before/after numbers in prose       → use ara-slope
+                 - key facts as a <ul>                 → use ara-kv
 
             PER-SECTION CONTRACT (replaces mechanical density rules):
             each H3 numbered section must contain:
@@ -723,14 +898,25 @@ jobs:
                - ≥ 1 quantitative datapoint where one exists
                - ≥ 1 counterpoint or "what would weaken this" line
                - 1 sentence on why this matters
-               Use ara-table when the section presents a comparison,
-               timeline, ranked set, or financial series. Use ara-callout
-               sparingly: thesis break, risk flag, or source caveat only.
-               Do NOT add tables or callouts for cosmetic density.
+               If the section's data shape calls for a visualization
+               (time series / distribution / ranking / comparison /
+               ratio / chronology), USE the matching ara-* primitive
+               from the COMPONENT VOCABULARY block above. Do NOT
+               default to ara-table or prose for visualizable data.
+               Use ara-callout sparingly: thesis break, risk flag, or
+               source caveat only — not for cosmetic density.
 
             STRICT VALIDATION RULES (writer rejects violations):
                - Root <article class="ara-doc">.
-               - Every `class=` token starts with `ara-`.
+               - Every `class=` token must be an EXACT-MATCH ara-*
+                 class documented in COMPONENTS.md (or a modifier
+                 like ara-callout--info of a documented base). The
+                 writer parses COMPONENTS.md at commit time and
+                 rejects undocumented classes with suggested
+                 replacements. Common mistakes that WILL be rejected:
+                 ara-references, ara-stat-num, ara-link, ara-ref-link,
+                 ara-reflist, ara-refs, ara-sources, ara-li, ara-ol,
+                 ara-p, ara-header, ara-date, ara-figcaption.
                - Allowed tags: article, section, div, header, footer,
                  h2, h3, h4, p, span, em, strong, code, mark, sup, sub,
                  abbr, time, ul, ol, li, dl, dt, dd, a, img, figure,

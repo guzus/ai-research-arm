@@ -16,6 +16,7 @@ list newest-first.
 from __future__ import annotations
 
 import argparse
+import difflib
 import html.parser
 import json
 import os
@@ -51,6 +52,54 @@ FRAGMENT_ALLOWED_TAGS = frozenset([
     "br", "hr",
 ])
 FRAGMENT_CLASS_PREFIX = "ara-"
+# Canonical class vocabulary lives in COMPONENTS.md at repo root. Loaded
+# lazily on first validation so the test/CI paths can override the path.
+_VALID_CLASSES_CACHE: set[str] | None = None
+_COMPONENTS_MD_PATH: Path | None = None
+
+
+def _components_md_path() -> Path:
+    if _COMPONENTS_MD_PATH is not None:
+        return _COMPONENTS_MD_PATH
+    # The writer lives at scripts/write_generative_research.py — COMPONENTS.md
+    # sits at the repo root one level up.
+    return Path(__file__).resolve().parent.parent / "COMPONENTS.md"
+
+
+def load_valid_classes() -> set[str]:
+    """Parse COMPONENTS.md for every documented ara-* class (including
+    modifier forms like ara-callout--info). Cached after first call so
+    we don't re-read the file for every validated article in a batch."""
+    global _VALID_CLASSES_CACHE
+    if _VALID_CLASSES_CACHE is not None:
+        return _VALID_CLASSES_CACHE
+    md_path = _components_md_path()
+    text = md_path.read_text(encoding="utf-8") if md_path.exists() else ""
+    # Every class name in the doc appears either as backtick-wrapped inline
+    # code (`ara-foo`) or inside a class="..." example. Capture both.
+    found = set(re.findall(r"`(ara-[a-z0-9-]+)`", text))
+    found.update(re.findall(r'class="(ara-[a-z0-9-]+)"', text))
+    # Also pick up multi-class spec like class="ara-callout ara-callout--info"
+    found.update(re.findall(r"\b(ara-[a-z0-9-]+)\b", text))
+    _VALID_CLASSES_CACHE = found
+    return found
+
+
+def is_valid_ara_class(token: str, valid: set[str]) -> bool:
+    """A class is valid if it's documented, OR it's a modifier of a
+    documented base (e.g. `ara-callout--info` when `ara-callout` is
+    documented)."""
+    if not token.startswith(FRAGMENT_CLASS_PREFIX):
+        return False
+    if token in valid:
+        return True
+    if "--" in token:
+        base = token.split("--", 1)[0]
+        if base in valid:
+            return True
+    return False
+
+
 ARTICLE_OPEN = re.compile(r"<article\b[^>]*>", re.IGNORECASE)
 ARTICLE_CLOSE = re.compile(r"</article\s*>", re.IGNORECASE)
 H2_TEXT = re.compile(r"<h2\b[^>]*>(.*?)</h2>", re.IGNORECASE | re.DOTALL)
@@ -76,12 +125,15 @@ def read_body(source: str) -> str:
 
 class _FragmentValidator(html.parser.HTMLParser):
     """Parse-aware check: every tag must be in FRAGMENT_ALLOWED_TAGS,
-    every class= token must start with FRAGMENT_CLASS_PREFIX."""
+    every class= token must be a documented ara-* class (or a modifier
+    of one)."""
 
-    def __init__(self):
+    def __init__(self, valid_classes: set[str]):
         super().__init__(convert_charrefs=True)
+        self.valid_classes = valid_classes
         self.bad_tags: list[str] = []
-        self.bad_classes: list[tuple[str, str]] = []
+        self.bad_classes: list[tuple[str, str]] = []  # (tag, non-ara token)
+        self.unknown_ara: list[tuple[str, str]] = []  # (tag, ara-* token not in vocab)
 
     def _check(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if tag.lower() not in FRAGMENT_ALLOWED_TAGS:
@@ -93,6 +145,8 @@ class _FragmentValidator(html.parser.HTMLParser):
             for tok in value.split():
                 if not tok.startswith(FRAGMENT_CLASS_PREFIX):
                     self.bad_classes.append((tag.lower(), tok))
+                elif not is_valid_ara_class(tok, self.valid_classes):
+                    self.unknown_ara.append((tag.lower(), tok))
 
     def handle_starttag(self, tag, attrs):
         self._check(tag, attrs)
@@ -113,7 +167,8 @@ def validate_body(body: str, kind: str) -> None:
             m = pat.search(body)
             if m:
                 raise ValueError(f"fragment body contains disallowed pattern: {m.group(0)!r}")
-        parser = _FragmentValidator()
+        valid_classes = load_valid_classes()
+        parser = _FragmentValidator(valid_classes)
         parser.feed(body)
         if parser.bad_tags:
             uniq = sorted(set(parser.bad_tags))
@@ -128,6 +183,28 @@ def validate_body(body: str, kind: str) -> None:
                 f"All class tokens must start with {FRAGMENT_CLASS_PREFIX!r}. "
                 f"See COMPONENTS.md for the vocabulary."
             )
+        if parser.unknown_ara:
+            # Group by class so a single repeated mistake doesn't spam.
+            uniq = sorted(set(c for _, c in parser.unknown_ara))
+            sample = sorted(valid_classes)
+            lines = [
+                f"fragment uses {len(uniq)} undocumented ara-* class"
+                f"{'es' if len(uniq) != 1 else ''} (these have no CSS so "
+                f"they render with NO STYLING — silent design-system "
+                f"failure):",
+                "",
+            ]
+            for tok in uniq:
+                suggestions = difflib.get_close_matches(tok, sample, n=3, cutoff=0.5)
+                hint = f"  → did you mean: {', '.join(suggestions)}" if suggestions else ""
+                lines.append(f"  - {tok}{hint}")
+            lines.extend([
+                "",
+                "Every ara-* class must be documented in COMPONENTS.md (or be "
+                "a modifier like ara-callout--info of a documented base).",
+                "Fix the body and re-run.",
+            ])
+            raise ValueError("\n".join(lines))
     elif kind == KIND_STANDALONE:
         # Standalone docs are full HTML pages rendered inside a sandboxed
         # iframe. The sandbox is the security boundary, not regex on the body.
