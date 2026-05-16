@@ -968,9 +968,6 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     content,
     [
       '<div class="content-card">',
-      '  <div class="content-card-header">',
-      '    <div class="content-card-title">Generative research</div>',
-      '  </div>',
       '  <div class="content-card-body">',
       '    <ul class="gen-research-index">',
       items.join('\n'),
