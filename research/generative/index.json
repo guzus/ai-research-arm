@@ -194,5 +194,16 @@
     "source": "workflow_dispatch",
     "prompt": "about the crypto project USDai",
     "tags": []
+  },
+  {
+    "slug": "bloom-energy-company",
+    "file": "2026-05-16T140131--bloom-energy-company.html",
+    "kind": "fragment",
+    "title": "Bloom Energy: the time arbitrage",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T14:01:31Z",
+    "source": "workflow_dispatch",
+    "prompt": "bloom energy company",
+    "tags": []
   }
 ]
