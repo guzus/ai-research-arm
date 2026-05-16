@@ -85,5 +85,20 @@
       "ipo",
       "markets"
     ]
+  },
+  {
+    "slug": "cerebras",
+    "file": "2026-05-16T023711--cerebras.html",
+    "kind": "fragment",
+    "title": "Cerebras goes public on a dinner-plate chip and a UAE customer book",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T02:37:11Z",
+    "source": "workflow_dispatch",
+    "prompt": "Cerebras",
+    "tags": [
+      "cerebras",
+      "ai-hardware",
+      "semiconductors"
+    ]
   }
 ]
