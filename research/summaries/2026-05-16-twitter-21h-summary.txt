@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-05-16 21:26 UTC
+
+CYCLE: Malta deal confirmed but OpenAI Twitter still silent ~7h+; Codex-vs-Claude-Code mindshare hardens.
+
+TOP STORIES:
+- Malta CONFIRMED via openai.com/index/malta-chatgpt-plus-partnership blog + multilingual press; @OpenAI/@sama silent [✓/🚩]
+- Codex-vs-Claude-Code: @kimmonismus "control plane for personal compute fleet" (288L); @steipete "deslop your Claude code, switch to Codex" (157L) [✓]
+- @theinformation 3rd Anthropic-critical piece in 26h: "Claude doesn't provide telemetry many vendors offer by default" [✓]
+
+SILENCES: @sama 27h | @AnthropicAI 51h | @DarioAmodei 39d | @OpenAI 49h
+
+WATCH: First @sama / @OpenAI Malta tweet would resolve corp-silence anomaly.
+
+Full update on GitHub.
