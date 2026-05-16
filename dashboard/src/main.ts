@@ -142,17 +142,47 @@ function routeFromState(): string {
 // pushState so browser back/forward walks through the visited views.
 let routeInitialized = false;
 
+// Tracks the last pathname we routed to. Lets popstate distinguish a
+// real route change from a hash-only navigation (anchor click between
+// sections in the same article). Maintained from both updateRoute and
+// the popstate handler.
+let lastAppliedPathname = location.pathname;
+
+// gtag is loaded by the <script> in index.html. Type as optional so the
+// dashboard still works when GA is blocked (adblockers, privacy modes).
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+/** Fire a SPA page_view to GA. The `gtag('config')` in index.html only
+ * fires automatically on the initial document load; in-app pushState /
+ * popstate navigation has to be tracked manually. page_title may lag
+ * by one nav (set in render functions that run after this) — page_path
+ * is always accurate, which is what GA reports key on. */
+function trackPageView(): void {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', 'page_view', {
+    page_path: location.pathname + location.search,
+    page_title: document.title,
+    page_location: location.href,
+  });
+}
+
 function updateRoute(): void {
   const target = routeFromState();
   const current = location.pathname + location.search;
   if (current !== target) {
     if (routeInitialized) {
       history.pushState(null, '', target);
+      trackPageView();
     } else {
       history.replaceState(null, '', target);
     }
   }
   routeInitialized = true;
+  lastAppliedPathname = location.pathname;
 }
 
 function parseRoute(path: string): boolean {
@@ -1918,10 +1948,8 @@ if (currentTab !== 'research') {
 load();
 
 // Back/forward button — pathname-based router uses popstate, not hashchange.
-// Track the last applied pathname so we can distinguish a real route change
-// from a hash-only navigation (e.g. anchor click between sections within
-// the same article). Hash-only changes just scroll; no expensive re-fetch.
-let lastAppliedPathname = location.pathname;
+// Hash-only changes (anchor click within an article) just scroll; route
+// changes re-fetch via load() and fire a SPA page_view to GA.
 window.addEventListener('popstate', () => {
   const newPathname = location.pathname;
   if (newPathname === lastAppliedPathname) {
@@ -1930,5 +1958,8 @@ window.addEventListener('popstate', () => {
     return;
   }
   lastAppliedPathname = newPathname;
-  if (applyRoute()) load();
+  if (applyRoute()) {
+    load();
+    trackPageView();
+  }
 });
