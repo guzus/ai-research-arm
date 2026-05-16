@@ -100,5 +100,22 @@
       "ai-hardware",
       "semiconductors"
     ]
+  },
+  {
+    "slug": "aschenbrenner-13f-name-by-name",
+    "file": "2026-05-16T081304--aschenbrenner-13f-name-by-name.html",
+    "kind": "fragment",
+    "title": "The Aschenbrenner book, name by name",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T08:13:04Z",
+    "source": "local",
+    "prompt": "for every portfolio companies in https://13f.guzus.xyz/13f/000204572426000002-situational-awareness-lp-q4-2025. Use 30 multi agents to efficiently and thoroughly investigate",
+    "tags": [
+      "13F",
+      "Situational Awareness LP",
+      "Aschenbrenner",
+      "AI infrastructure",
+      "multi-agent"
+    ]
   }
 ]
