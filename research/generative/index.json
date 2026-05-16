@@ -29,22 +29,6 @@
     ]
   },
   {
-    "slug": "xmaquina-deus-intelligence-report",
-    "file": "2026-05-15T080814--xmaquina-deus-intelligence-report.html",
-    "kind": "fragment",
-    "title": "XMAQUINA / $DEUS — Master Intelligence Report",
-    "model": "multi-agent",
-    "created_at": "2026-05-15T08:08:14Z",
-    "source": "migration",
-    "prompt": "XMAQUINA / $DEUS — Master Intelligence Report",
-    "tags": [
-      "crypto",
-      "intelligence-report",
-      "xmaquina",
-      "deus"
-    ]
-  },
-  {
     "slug": "akamai-strategic-brief-2026-05",
     "file": "2026-05-15T080814--akamai-strategic-brief-2026-05.html",
     "kind": "fragment",
@@ -58,6 +42,22 @@
       "cdn",
       "security",
       "strategic-brief"
+    ]
+  },
+  {
+    "slug": "xmaquina-deus-intelligence-report",
+    "file": "2026-05-15T080814--xmaquina-deus-intelligence-report.html",
+    "kind": "fragment",
+    "title": "XMAQUINA / $DEUS — Master Intelligence Report",
+    "model": "multi-agent",
+    "created_at": "2026-05-15T08:08:14Z",
+    "source": "migration",
+    "prompt": "XMAQUINA / $DEUS — Master Intelligence Report",
+    "tags": [
+      "crypto",
+      "intelligence-report",
+      "xmaquina",
+      "deus"
     ]
   },
   {
@@ -182,6 +182,17 @@
     "created_at": "2026-05-16T13:14:02Z",
     "source": "workflow_dispatch",
     "prompt": "Creating datacenter from scratch: what's needed",
+    "tags": []
+  },
+  {
+    "slug": "about-the-crypto-project-usdai",
+    "file": "2026-05-16T133906--about-the-crypto-project-usdai.html",
+    "kind": "fragment",
+    "title": "USDai: a GPU-collateralized stablecoin that is, today, mostly Treasury bills",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T13:39:06Z",
+    "source": "workflow_dispatch",
+    "prompt": "about the crypto project USDai",
     "tags": []
   }
 ]
