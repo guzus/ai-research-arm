@@ -1233,6 +1233,25 @@ body.tab-research #calendar {
   background: var(--bg-hover);
 }
 
+.gen-research-pdf {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.gen-research-pdf:hover {
+  border-color: var(--text-tertiary);
+  color: var(--text);
+  background: var(--bg-hover);
+}
+
 /* Article body styling lives in dashboard/src/components/ara-research.css
  * (imported at the top of this file). Fragment articles must use the
  * .ara-doc root and the ara-* class vocabulary — enforced at write time
@@ -1275,4 +1294,111 @@ body.tab-research #calendar {
 @media (max-width: 640px) {
   .gen-research-iframe { min-height: 75vh; }
   .gen-research-fullscreen { margin-left: 0; }
+}
+
+/* ── Print / Save as PDF ───────────────────────────────
+ * Strips the dashboard chrome (header, tabs, sidebar TOC, nav widgets,
+ * shortcut guide) so the printed/PDF output is just the article body
+ * with an ara.guzus.xyz watermark in the bottom-right of every page. */
+@media print {
+  /* Per-page margins must live in @page (body padding only applies
+   * once across the whole document, not per page). The @bottom-right
+   * margin box is the proper print primitive for a repeating page
+   * footer — it lives inside the bottom margin area, paints on every
+   * page, and never collides with body content. */
+  @page {
+    size: A4;
+    margin: 0.6in 0.6in 0.7in 0.6in;
+    @bottom-right {
+      content: "ara.guzus.xyz";
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 8.5pt;
+      color: #888;
+      letter-spacing: 0.06em;
+      padding: 0.18in 0 0 0;
+      vertical-align: top;
+    }
+  }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide all app chrome */
+  .header,
+  .tabs,
+  .calendar,
+  .controls,
+  .ara-toc,
+  .section-nav,
+  .shortcut-guide,
+  .gen-research-doc-meta,
+  .gen-research-back,
+  .gen-research-pdf,
+  .gen-research-fullscreen,
+  .gen-research-model,
+  .gen-research-time,
+  #researchToc {
+    display: none !important;
+  }
+
+  .app {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .content-card,
+  .gen-research-doc {
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    background: #fff !important;
+  }
+
+  .content-card-body {
+    padding: 0 !important;
+  }
+
+  /* Workaround: Chromium's print/Skia path clips the left stroke of the
+   * very first glyph at the page's top-left content origin (so
+   * "PORTFOLIO" can render as "/ORTFOLIO"). Pre-pending a transparent
+   * decoy character absorbs the clip; small text-indent ensures the
+   * page's first real glyph also isn't on the exact origin pixel. */
+  .ara-doc > .ara-eyebrow::before {
+    content: "·";
+    color: transparent;
+    margin-right: -0.4em;
+  }
+  .ara-doc > .ara-eyebrow {
+    text-indent: 1pt;
+  }
+
+  /* Show the resolved URL after every external link so the PDF reader
+   * can follow citations even after the link is no longer clickable. */
+  .ara-doc a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.78em;
+    color: #555;
+    word-break: break-all;
+  }
+
+  /* Strip color backgrounds on callouts but keep the left rule so the
+   * semantic flavor (info/warn/danger) still reads. */
+  .ara-callout {
+    background: #fafafa !important;
+  }
+
+  /* Force chart text to dark so printed SVGs stay legible regardless
+   * of the on-screen theme. */
+  .ara-line-chart text,
+  .ara-donut text,
+  .ara-slope text,
+  .ara-sparkline text {
+    fill: #222 !important;
+  }
 }

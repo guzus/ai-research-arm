@@ -875,7 +875,20 @@ function renderToday(md: string): void {
 }
 
 // ── Generative research ───────────────────────────────
+
+// Default <title> from index.html, used to reset when leaving an article.
+const DEFAULT_DOC_TITLE = document.title;
+
+/** Update the browser title so the print dialog suggests a useful PDF
+ * filename (browsers default to <title>). Reset on back-to-index. */
+function setDocTitle(articleTitle: string | null): void {
+  document.title = articleTitle
+    ? `${articleTitle} — ara`
+    : DEFAULT_DOC_TITLE;
+}
+
 function renderResearchIndex(rows: GenResearchRow[]): void {
+  setDocTitle(null);
   if (rows.length === 0) {
     showEmpty(fmtDate(currentDate));
     return;
@@ -971,6 +984,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
       '    <button class="gen-research-back" data-research-back>&lsaquo; All articles</button>',
       '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
       rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
+      '    <button class="gen-research-pdf" data-research-pdf title="Save this article as a PDF">Save as PDF</button>',
       '  </div>',
       '  <div class="content-card-body">',
       docHtml,
@@ -978,6 +992,8 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
       '</div>',
     ].join('\n'),
   );
+
+  setDocTitle(row.title);
 
   // After DOM is in place, apply data-pct viz fills, wrap tables in a
   // horizontal-scroll container, expand pictogram counts, inject SVG
@@ -1694,6 +1710,12 @@ content.addEventListener('click', (e) => {
   if (back) {
     selectedSlug = null;
     load();
+    return;
+  }
+  if (target.closest('[data-research-pdf]')) {
+    // Browser handles the rest: print stylesheet hides chrome,
+    // user picks "Save as PDF" in the system dialog.
+    window.print();
     return;
   }
   const row = target.closest('[data-slug]') as HTMLElement | null;

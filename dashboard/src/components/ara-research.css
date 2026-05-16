@@ -1372,3 +1372,46 @@
 @media (max-width: 1279px) {
   .ara-toc { display: none; }
 }
+
+/* Print page-break controls for Save as PDF. Avoid splitting visual
+ * units across pages and keep section heads with the next paragraph. */
+@media print {
+  .ara-doc {
+    max-width: none !important;
+    font-size: 11pt;
+  }
+
+  .ara-callout,
+  .ara-card,
+  .ara-quote,
+  .ara-stat,
+  .ara-stat-unit,
+  .ara-stack-rows,
+  .ara-sparkline,
+  .ara-line-chart,
+  .ara-donut,
+  .ara-slope,
+  .ara-compare,
+  .ara-rank-list,
+  .ara-iso,
+  .ara-table-wrap,
+  .ara-table,
+  figure {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .ara-display,
+  .ara-h2,
+  .ara-h3,
+  .ara-eyebrow {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Table-wrap is an overflow-scroll container on screen; in print
+   * it should just lay the table flat. */
+  .ara-table-wrap {
+    overflow: visible !important;
+  }
+}
