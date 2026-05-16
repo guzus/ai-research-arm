@@ -8,6 +8,7 @@
     "prebuild": "node scripts/prebuild.mjs",
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "node scripts/postbuild-seo.mjs",
     "preview": "vite preview"
   },
   "devDependencies": {
