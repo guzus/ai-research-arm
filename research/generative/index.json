@@ -134,5 +134,21 @@
       "gb200",
       "ai-hardware"
     ]
+  },
+  {
+    "slug": "coreweave-gpu-as-a-service-unit-economics-and-customer-conce",
+    "file": "2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html",
+    "kind": "fragment",
+    "title": "Renting the AI Stack: CoreWeave's $99B Backlog, $25B Debt, and the Customer-Concentration Question",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T10:37:12Z",
+    "source": "workflow_dispatch",
+    "prompt": "CoreWeave: GPU-as-a-service unit economics and customer concentration",
+    "tags": [
+      "coreweave",
+      "ai-infrastructure",
+      "gpu-cloud",
+      "unit-economics"
+    ]
   }
 ]
