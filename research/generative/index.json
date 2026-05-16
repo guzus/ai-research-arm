@@ -205,5 +205,16 @@
     "source": "workflow_dispatch",
     "prompt": "bloom energy company",
     "tags": []
+  },
+  {
+    "slug": "lumentum-company",
+    "file": "2026-05-16T145446--lumentum-company.html",
+    "kind": "fragment",
+    "title": "Lumentum: the EML chokepoint inside NVIDIA's photonics build-out",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-16T14:54:46Z",
+    "source": "workflow_dispatch",
+    "prompt": "lumentum company",
+    "tags": []
   }
 ]
