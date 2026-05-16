@@ -5328,5 +5328,54 @@
     "headline": "IRULETHEWORLDMO WIDENS RUMOR: ANTHROPIC, GOOGLE, OPENAI ALL SET TO RELEASE NEW FRONTIER MODELS THIS WEEK",
     "source": "@iruletheworldmo",
     "url": "https://x.com/iruletheworldmo/status/2055696260829495446"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-16 21:26 UTC",
+    "headline": "OPENAI MALTA DEAL CONFIRMED \u2014 BLOGPOST LIVE AT OPENAI.COM, BUT @OPENAI / @SAMA CORP TWITTER SILENT 7H+ ON FIRST SOVEREIGN CHATGPT PLUS DEAL",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2055718739581305021"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-16 21:26 UTC",
+    "headline": "@KIMMONISMUS: OPENAI TURNING CODEX INTO 'CONTROL PLANE FOR ENTIRE PERSONAL COMPUTE FLEET' \u2014 EVERY MAC MINI, DESKTOP, BROWSER SESSION AN AGENT ENDPOINT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2055737374278054166"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-16 21:26 UTC",
+    "headline": "@STEIPETE: 'DESLOP YOUR CLAUDE CODE IF YOU HAVEN'T YET SWITCHED TO CODEX' \u2014 DEV-TOOLS PRINCIPAL FLIPS OPENLY ANTI-CLAUDE-CODE",
+    "source": "@steipete",
+    "url": "https://x.com/steipete/status/2055747016727167035"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-16 21:26 UTC",
+    "headline": "THE INFORMATION: 'CLAUDE DOESN'T PROVIDE TELEMETRY DATA MANY SOFTWARE VENDORS OFFER BY DEFAULT' \u2014 THIRD ANTHROPIC-CRITICAL PIECE IN 26H",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2055732524026822773"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-16 21:26 UTC",
+    "headline": "SEMIANALYSIS: AMD UPSTREAM CONTRIBUTION ACCEPTED INTO NVIDIA DYNAMO AIPERF \u2014 ONE OF FIRST AMD COMMITS INTO NVIDIA REPO, RARE GPU-VENDOR COOPERATION",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2055746972523336120"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-16 21:26 UTC",
+    "headline": "ANTHROPIC CORP SILENCE EXTENDS TO 51H+ THROUGH 3 INFORMATION CRITIQUES, SEMIANALYSIS CLI ATTACK, CODEX MINDSHARE SHIFT; DARIO X-SILENT 39 DAYS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-16 21:26 UTC",
+    "headline": "TESTINGCATALOG: HERMES AGENT NOW USES X PREMIUM+ FOR GROK + X SEARCH TOOL \u2014 'OPENAI VS XAI ONCE AGAIN' IN AGENT-FRAMEWORK BATTLE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2055755847448297495"
   }
 ]
