@@ -101,6 +101,18 @@ Beyond `Read` / `Write` / `WebSearch` / `WebFetch`, you have:
   the topic clearly has academic / SEC / GitHub footprints.
 - `curl -sL <url> -o /tmp/x.pdf && pdftotext /tmp/x.pdf - | head -c 60000`
   — read PDFs (10-Ks, S-1s, papers, whitepapers).
+- `python3 scripts/stock_prices.py <ticker[,ticker...]> --range 1y --interval 1mo --format kv`
+  — fetches close-price time series from Yahoo Finance (no API
+  key). Output is plain text designed to paste directly into
+  `ara-line-chart` data attributes, or use `--format html` to get
+  a ready-made `<div class="ara-line-chart" ...>` element. Use
+  for any equity-bearing topic. Up to 4 tickers per chart.
+- `python3 scripts/check_generative_research.py /tmp/gen-research-body.html`
+  — COMPILE-CHECK the article body. Runs the same validation rules
+  the writer enforces (tag allowlist, ara-* class exact-match
+  against COMPONENTS.md, size cap, etc.). Exit 0 = valid; exit 1 =
+  errors printed to stderr with suggestions. Use this loop after
+  writing the body and before committing — see step 7.5.
 
 ### Process — non-negotiable, in order
 
@@ -297,18 +309,14 @@ USE the matching ara-* primitive. Do NOT default to `ara-table` or
 prose for visualizable data. Use `ara-callout` sparingly: thesis
 break, risk flag, or source caveat only.
 
-### Strict validation rules (writer rejects violations)
+### Validation (the compiler is the source of truth)
+
+The writer enforces:
 
 - Root `<article class="ara-doc">`.
-- Every `class=` token must be an EXACT-MATCH ara-* class
-  documented in `COMPONENTS.md` (or a modifier like
-  `ara-callout--info` of a documented base). The writer parses
-  COMPONENTS.md at commit time and rejects undocumented classes
-  with suggested replacements. Common mistakes that WILL be
-  rejected: `ara-references`, `ara-stat-num`, `ara-link`,
-  `ara-ref-link`, `ara-reflist`, `ara-refs`, `ara-sources`,
-  `ara-li`, `ara-ol`, `ara-p`, `ara-header`, `ara-date`,
-  `ara-figcaption`.
+- Every `class=` token is an exact-match ara-* class documented
+  in `COMPONENTS.md` (or a modifier like `ara-callout--info` of a
+  documented base).
 - Allowed tags: `article, section, div, header, footer, h2, h3,
   h4, p, span, em, strong, code, mark, sup, sub, abbr, time, ul,
   ol, li, dl, dt, dd, a, img, figure, figcaption, table, thead,
@@ -317,10 +325,26 @@ break, risk flag, or source caveat only.
 - No inline `style=`, no `on*=` handlers, no `javascript:`.
 - Body under 200 KB.
 
+You don't have to mentally validate the body. Write it, then run
+the compile check below — it'll list every problem with a
+suggested fix.
+
 ### Save and commit via the writer
 
-Write the final fragment to `/tmp/gen-research-body.html` (use the
-`Write` tool, not heredocs in bash). Then:
+**7.5. Compile-check the body, fix, re-check, loop until clean.**
+
+```bash
+# Write the body to /tmp/gen-research-body.html via the Write tool,
+# then compile-check it:
+python3 scripts/check_generative_research.py /tmp/gen-research-body.html
+# Exit 0 → safe to commit (proceed below).
+# Exit 1 → stderr lists every invalid class/tag with suggestions.
+#          Fix the body in place and re-run the check. Iterate.
+```
+
+**8. Commit** via the writer (which re-runs the same validation as
+defense in depth, then writes the file + updates the index + makes
+a local commit):
 
 ```bash
 python3 scripts/write_generative_research.py \
