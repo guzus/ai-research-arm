@@ -82,7 +82,7 @@ body {
 .app {
   max-width: none;
   margin: 0;
-  padding: 40px clamp(24px, 5vw, 96px) 80px;
+  padding: 16px clamp(24px, 5vw, 96px) 80px;
 }
 
 /* Keep the masthead from spreading on wide displays — brand and
