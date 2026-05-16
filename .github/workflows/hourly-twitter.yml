@@ -789,3 +789,129 @@ jobs:
           fi
 
           echo "Done — batch delivered (delivered=$DELIVERED_COUNT, failed=$FAILED)."
+
+      # ── Auto-trigger deep research ──────────────────────────────
+      # Picks ONE high-signal topic from today's twitter pulse and
+      # dispatches generative-research.yml on the self-hosted runner.
+      # Throttled to ≤2 dispatches per rolling 24h AND ≥10h between
+      # dispatches so this never runs away. Counts every workflow_dispatch
+      # event against the budget — manual dispatches reduce the auto budget.
+      # All three steps are best-effort: continue-on-error so a selector
+      # failure can never break the twitter pipeline.
+
+      - name: Auto-research throttle check
+        id: autoresearch_throttle
+        if: ${{ steps.push.outputs.pushed == 'true' && (github.event_name != 'workflow_dispatch' || inputs.dry_run != true) }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          # Count workflow_dispatch runs of generative-research in last 24h.
+          SINCE=$(date -u -d '24 hours ago' '+%Y-%m-%dT%H:%M:%SZ')
+          RECENT=$(gh run list --workflow=generative-research.yml \
+            --created ">${SINCE}" --limit 20 \
+            --json event --jq '[.[] | select(.event == "workflow_dispatch")] | length' \
+            2>/dev/null || echo 0)
+          # Find the most recent workflow_dispatch.
+          LAST_ISO=$(gh run list --workflow=generative-research.yml --limit 20 \
+            --json createdAt,event \
+            --jq '[.[] | select(.event == "workflow_dispatch")][0].createdAt // empty' \
+            2>/dev/null || true)
+          [ -z "$LAST_ISO" ] && LAST_ISO="1970-01-01T00:00:00Z"
+          LAST_EPOCH=$(date -u -d "$LAST_ISO" +%s 2>/dev/null || echo 0)
+          NOW_EPOCH=$(date -u +%s)
+          HOURS_SINCE=$(( (NOW_EPOCH - LAST_EPOCH) / 3600 ))
+          echo "Recent 24h dispatches: $RECENT (cap 2)"
+          echo "Hours since last dispatch: $HOURS_SINCE (min 10)"
+          if [ "$RECENT" -ge 2 ] || [ "$HOURS_SINCE" -lt 10 ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Auto-research throttled (recent=$RECENT, hours_since=$HOURS_SINCE)."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "Auto-research budget available — proceeding to topic selection."
+          fi
+
+      - name: Auto-research topic selection
+        id: autoresearch_select
+        if: ${{ steps.autoresearch_throttle.outputs.skip == 'false' }}
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        env:
+          GEN_TOPIC_DATE: ${{ steps.datetime.outputs.date }}
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --model opus --max-turns 10 --allowedTools "Read,Bash(ls:*),Bash(cat:*),Bash(jq:*),Bash(date:*),Bash(printenv:*),Write"
+          prompt: |
+            You select AT MOST ONE topic from today's Twitter AI Pulse to
+            dispatch to the generative-research deep pipeline (4500–7000
+            word analyst-grade article). Reason from first principles —
+            challenge weak claims rather than rubber-stamp them. Be
+            conservative: skipping is the default, not the exception. If
+            nothing meets the bar, output NO_TOPIC and stop. Better to
+            skip than to dispatch a weak topic.
+
+            Step 1 — read today's twitter file. Get the date from env:
+              DATE=$(printenv GEN_TOPIC_DATE)
+              cat "research/twitter/${DATE}.md"
+            If that path doesn't exist, fall back to the most recent file:
+              ls -t research/twitter/*.md | head -1
+            Read it.
+
+            Step 2 — read the generative research index to dedupe:
+              cat research/generative/index.json | jq '.[-30:]'
+            (last 30 entries — covers ~3 weeks of past research)
+
+            Step 3 — pick ONE topic OR reject all. Hard bar for selection:
+              - Concrete: named entity (person, model, company, paper) +
+                specific verifiable claim + dated primary source
+              - Primary-sourced inside the twitter file (the "Evidence"
+                bullets cite a primary like an IR page, paper, official
+                tweet from a named principal — not commentary)
+              - Has a "Watch" list under the story (signals ongoing
+                developments worth tracking)
+              - Does NOT overlap with anything in the recent index
+                (compare by topic / tags / title — be strict)
+              - Substantive enough for a 4500–7000 word analyst piece
+                (a one-tweet rumour does not qualify, even if dramatic)
+
+            Step 4 — output. Use the Write tool to create
+            /tmp/auto-topic.txt.
+              - If a topic qualifies: write ONE LINE, ≤140 chars, no
+                quotes, no markdown, no leading/trailing whitespace.
+                Phrasing should be a researchable, specific topic, e.g.:
+                  Nemotron 3 Ultra: NVIDIA's first ~500B model pretrained natively in NVFP4
+                  Anthropic's $30B / $900B FT round: what the cap-table now signals about Series F dynamics
+              - If NOTHING qualifies: write the literal string NO_TOPIC
+                (uppercase, no punctuation, on a single line).
+
+            That is the only output file. Do not commit, do not write
+            anything else. The next workflow step parses
+            /tmp/auto-topic.txt and dispatches.
+
+      - name: Auto-research dispatch
+        if: ${{ steps.autoresearch_throttle.outputs.skip == 'false' }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ ! -f /tmp/auto-topic.txt ]; then
+            echo "::warning::Selector did not write /tmp/auto-topic.txt — skipping dispatch."
+            exit 0
+          fi
+          # Defensive parse: strip CR/LF/quotes, cap length to 200 chars.
+          TOPIC=$(head -c 400 /tmp/auto-topic.txt \
+            | tr -d '\r\n' \
+            | sed -E 's/^["[:space:]]+//; s/["[:space:]]+$//')
+          TOPIC=${TOPIC:0:200}
+          if [ -z "$TOPIC" ] || [ "$TOPIC" = "NO_TOPIC" ]; then
+            echo "Selector returned NO_TOPIC — nothing to dispatch."
+            exit 0
+          fi
+          echo "Dispatching generative-research for: $TOPIC"
+          gh workflow run generative-research.yml \
+            -f topic="$TOPIC" \
+            -f backend=claude
+          echo "::notice::Auto-dispatched generative-research: ${TOPIC}"
