@@ -306,7 +306,7 @@ subject row), `rank` (optional, overrides the auto 1-based index).
 Three-card distribution display. Cards with `role: SUBJECT` (or
 explicit `subject: true`) get the highlight treatment.
 
-#### `:::references` (body: YAML list, required)
+#### `:::references` (body: YAML list, required when citations are used)
 
 ```
 :::references
@@ -319,8 +319,8 @@ Fields per item: `id` (required, the number used in `[^N]` cites),
 `title` (required), `url`, `source`, `date` (all optional).
 
 Place this block last. The compiler renders it as a `References`
-section. The validator does not enforce that every cited `[^N]` has a
-matching `id` — agents are responsible for that link.
+section and enforces that every cited `[^N]` has a matching `id`.
+Articles without citations may omit the block.
 
 ## The `:::raw` escape hatch
 

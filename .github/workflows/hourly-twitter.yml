@@ -913,5 +913,5 @@ jobs:
           echo "Dispatching generative-research for: $TOPIC"
           gh workflow run generative-research.yml \
             -f topic="$TOPIC" \
-            -f backend=claude
+            -f backend=deepseek-v4-pro
           echo "::notice::Auto-dispatched generative-research: ${TOPIC}"

@@ -35,13 +35,14 @@ on:
         required: false
         type: string
       backend:
-        description: 'Which model backend to run'
+        description: 'Which model/backend to run'
         required: false
-        default: deepseek
+        default: deepseek-v4-pro
         type: choice
         options:
-          - deepseek
+          - deepseek-v4-pro
           - claude
+          - deepseek
       tags:
         description: 'Comma-separated tags (optional)'
         required: false
@@ -86,8 +87,8 @@ jobs:
       - name: Get current date
         id: date
         run: |
-          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-          echo "timestamp=$(date +'%Y-%m-%d-%H%M%S')" >> $GITHUB_OUTPUT
+          echo "date=$(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+          echo "timestamp=$(date +'%Y-%m-%d-%H%M%S')" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -114,14 +115,14 @@ jobs:
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             TOPIC="$INPUT_TOPIC"
             SLUG="$INPUT_SLUG"
-            BACKEND="${INPUT_BACKEND:-deepseek}"
+            BACKEND="${INPUT_BACKEND:-deepseek-v4-pro}"
             TAGS="$INPUT_TAGS"
             SOURCE="workflow_dispatch"
             PROMPT="$TOPIC"
           else
             TOPIC="$ISSUE_TITLE"
             SLUG=""
-            BACKEND="deepseek"
+            BACKEND="deepseek-v4-pro"
             TAGS=""
             SOURCE="issue"
             # Default PROMPT to the title; if the body has substantive content
@@ -132,17 +133,21 @@ jobs:
             PROMPT="$TOPIC"
             if [ -n "${ISSUE_BODY:-}" ]; then
               CANDIDATE=$(printf '%s\n' "$ISSUE_BODY" \
-                | grep -iE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|deepseek)[[:space:]]*$' \
+                | grep -iE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-7|deepseek|deepseek-v4-pro)[[:space:]]*$' \
                 | head -n1 \
                 | sed -E 's/^[[:space:]]*[Bb][Aa][Cc][Kk][Ee][Nn][Dd][[:space:]]*:[[:space:]]*//' \
                 | tr -d '[:space:]' \
                 | tr '[:upper:]' '[:lower:]' || true)
-              if [ "$CANDIDATE" = "claude" ] || [ "$CANDIDATE" = "deepseek" ]; then
+              case "$CANDIDATE" in
+                claude-opus-4-7) CANDIDATE="claude" ;;
+                deepseek) CANDIDATE="deepseek-v4-pro" ;;
+              esac
+              if [ "$CANDIDATE" = "claude" ] || [ "$CANDIDATE" = "deepseek-v4-pro" ]; then
                 BACKEND="$CANDIDATE"
               fi
               # Strip the backend: directive line out, keep the rest as the brief.
               CLEAN_BODY=$(printf '%s\n' "$ISSUE_BODY" \
-                | grep -ivE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|deepseek)[[:space:]]*$' \
+                | grep -ivE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-7|deepseek|deepseek-v4-pro)[[:space:]]*$' \
                 | sed -E 's/[[:space:]]+$//' \
                 || true)
               # Substantive = any non-whitespace remains after the strip.
@@ -154,6 +159,15 @@ jobs:
 
           if [ -z "${TOPIC:-}" ]; then
             echo "missing required topic" >&2
+            exit 1
+          fi
+
+          case "$BACKEND" in
+            deepseek) BACKEND="deepseek-v4-pro" ;;
+            claude-opus-4-7) BACKEND="claude" ;;
+          esac
+          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "deepseek-v4-pro" ]; then
+            echo "unsupported backend/model: $BACKEND" >&2
             exit 1
           fi
 
@@ -770,8 +784,8 @@ jobs:
       # hourly-twitter-deepseek-agentic.yml. The OAuth input is required by
       # the action schema but ignored by the CLI when ANTHROPIC_BASE_URL is set.
       # The writer records --model deepseek-v4-pro (the served model).
-      - name: Run Generative Research (DeepSeek)
-        if: steps.params.outputs.backend == 'deepseek'
+      - name: Run Generative Research (DeepSeek V4 Pro)
+        if: steps.params.outputs.backend == 'deepseek-v4-pro'
         id: gen-deepseek
         timeout-minutes: 45
         uses: anthropics/claude-code-action@v1

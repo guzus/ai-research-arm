@@ -19,6 +19,7 @@ import argparse
 import difflib
 import html.parser
 import json
+import math
 import os
 import re
 import subprocess
@@ -79,12 +80,14 @@ def load_valid_classes() -> set[str]:
         return _VALID_CLASSES_CACHE
     md_path = _components_md_path()
     text = md_path.read_text(encoding="utf-8") if md_path.exists() else ""
-    # Every class name in the doc appears either as backtick-wrapped inline
-    # code (`ara-foo`) or inside a class="..." example. Capture both.
-    found = set(re.findall(r"`(ara-[a-z0-9-]+)`", text))
-    found.update(re.findall(r'class="(ara-[a-z0-9-]+)"', text))
-    # Also pick up multi-class spec like class="ara-callout ara-callout--info"
-    found.update(re.findall(r"\b(ara-[a-z0-9-]+)\b", text))
+    # Only the component vocabulary table is authoritative. COMPONENTS.md
+    # also contains explicit anti-examples like `ara-grid`; scraping every
+    # backticked ara-* token would incorrectly make those valid classes.
+    found = set()
+    for line in text.splitlines():
+        m = re.match(r"\|\s*`(ara-[a-z0-9-]+)`\s*\|", line)
+        if m:
+            found.add(m.group(1))
     _VALID_CLASSES_CACHE = found
     return found
 
@@ -102,6 +105,40 @@ def is_valid_ara_class(token: str, valid: set[str]) -> bool:
         if base in valid:
             return True
     return False
+
+
+def _valid_number(value: str, lo: float | None = None, hi: float | None = None) -> bool:
+    try:
+        n = float(value.strip())
+    except ValueError:
+        return False
+    if not math.isfinite(n):
+        return False
+    if lo is not None and n < lo:
+        return False
+    if hi is not None and n > hi:
+        return False
+    return True
+
+
+def _valid_int(value: str, lo: int | None = None, hi: int | None = None) -> bool:
+    try:
+        n = float(value.strip())
+    except ValueError:
+        return False
+    if not math.isfinite(n) or not n.is_integer():
+        return False
+    i = int(n)
+    if lo is not None and i < lo:
+        return False
+    if hi is not None and i > hi:
+        return False
+    return True
+
+
+def _valid_number_list(value: str) -> bool:
+    parts = [p.strip() for p in value.split(",") if p.strip()]
+    return bool(parts) and all(_valid_number(p) for p in parts)
 
 
 ARTICLE_OPEN = re.compile(r"<article\b[^>]*>", re.IGNORECASE)
@@ -151,19 +188,77 @@ class _FragmentValidator(html.parser.HTMLParser):
         self.bad_tags: list[str] = []
         self.bad_classes: list[tuple[str, str]] = []  # (tag, non-ara token)
         self.unknown_ara: list[tuple[str, str]] = []  # (tag, ara-* token not in vocab)
+        self.bad_attrs: list[tuple[str, str, str | None]] = []
 
     def _check(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if tag.lower() not in FRAGMENT_ALLOWED_TAGS:
             self.bad_tags.append(tag.lower())
             return
         for name, value in attrs:
-            if name.lower() != "class" or not value:
+            attr = name.lower()
+            if attr == "class":
+                if not value:
+                    continue
+                for tok in value.split():
+                    if not tok.startswith(FRAGMENT_CLASS_PREFIX):
+                        self.bad_classes.append((tag.lower(), tok))
+                    elif not is_valid_ara_class(tok, self.valid_classes):
+                        self.unknown_ara.append((tag.lower(), tok))
                 continue
-            for tok in value.split():
-                if not tok.startswith(FRAGMENT_CLASS_PREFIX):
-                    self.bad_classes.append((tag.lower(), tok))
-                elif not is_valid_ara_class(tok, self.valid_classes):
-                    self.unknown_ara.append((tag.lower(), tok))
+            if not self._attr_allowed(tag.lower(), attr, value):
+                self.bad_attrs.append((tag.lower(), attr, value))
+
+    def _attr_allowed(self, tag: str, attr: str, value: str | None) -> bool:
+        if attr.startswith("data-"):
+            return bool(re.match(r"^data-[a-z0-9-]+$", attr)) and self._data_attr_allowed(attr, value)
+        if attr == "id":
+            return tag == "li" and bool(value and re.match(r"^ref-[0-9]+$", value))
+        if attr == "href":
+            return tag == "a" and bool(value and re.match(r"^(https?://|/|#ref-[0-9]+$)", value))
+        if attr == "src":
+            return tag == "img" and bool(value and re.match(r"^(https?://|/)", value))
+        if attr == "alt":
+            return tag == "img"
+        return False
+
+    def _data_attr_allowed(self, attr: str, value: str | None) -> bool:
+        if value is None:
+            return False
+        free_text = {
+            "data-x-labels",
+            "data-title",
+            "data-subtitle",
+            "data-y-unit",
+            "data-series-1-label",
+            "data-series-2-label",
+            "data-series-3-label",
+            "data-series-4-label",
+            "data-labels",
+            "data-center-label",
+            "data-items",
+            "data-left-label",
+            "data-right-label",
+            "data-unit",
+            "data-glyph",
+        }
+        if attr in free_text:
+            return True
+        if attr == "data-pct":
+            return _valid_number(value, lo=0, hi=100)
+        if attr == "data-count":
+            return _valid_int(value, lo=0, hi=200)
+        if attr in {
+            "data-points",
+            "data-values",
+            "data-left-values",
+            "data-right-values",
+            "data-series-1",
+            "data-series-2",
+            "data-series-3",
+            "data-series-4",
+        }:
+            return _valid_number_list(value)
+        return False
 
     def handle_starttag(self, tag, attrs):
         self._check(tag, attrs)
@@ -222,6 +317,15 @@ def validate_body(body: str, kind: str) -> None:
                 "Fix the body and re-run.",
             ])
             raise ValueError("\n".join(lines))
+        if parser.bad_attrs:
+            preview = ", ".join(
+                f"<{t}> {a}={v!r}" if v is not None else f"<{t}> {a}"
+                for t, a, v in parser.bad_attrs[:5]
+            )
+            raise ValueError(
+                f"fragment uses disallowed attributes: {preview}. "
+                "Allowed attributes are class, data-*, reference ids, safe href/src, and img alt."
+            )
     elif kind == KIND_STANDALONE:
         # Standalone docs are full HTML pages rendered inside a sandboxed
         # iframe. The sandbox is the security boundary, not regex on the body.

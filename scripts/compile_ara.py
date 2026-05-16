@@ -41,8 +41,10 @@ Run standalone:
 from __future__ import annotations
 
 import argparse
+import ast
 import html
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -131,7 +133,10 @@ def parse_attrs(text: str) -> dict[str, Any]:
         if raw_val is None:
             attrs[key] = True
         elif raw_val.startswith('"') or raw_val.startswith("'"):
-            attrs[key] = bytes(raw_val[1:-1], "utf-8").decode("unicode_escape")
+            try:
+                attrs[key] = ast.literal_eval(raw_val)
+            except (SyntaxError, ValueError) as e:
+                raise AraSyntaxError(f"can't parse quoted attribute {key!r}") from e
         elif raw_val.startswith("["):
             inner = raw_val[1:-1].strip()
             if not inner:
@@ -214,7 +219,7 @@ def parse_inline(text: str) -> str:
     def _on_self(m):
         kind, payload = m.group(1), m.group(2).strip()
         if kind == "sparkline":
-            pts = ",".join(p.strip() for p in payload.split(","))
+            pts = ",".join(_csv_numbers(payload, "sparkline", None))
             return _mask(f'<span class="ara-sparkline" data-points="{html.escape(pts, quote=True)}"></span>')
         if kind == "flag":
             variant = payload.strip().lower()
@@ -226,7 +231,9 @@ def parse_inline(text: str) -> str:
         raise AraSyntaxError(f"unknown inline directive {kind!r}")
 
     def _on_wrap(m):
-        kind, body = m.group(1), parse_inline(m.group(2))
+        kind = m.group(1)
+        raw_body = m.group(2)
+        body = raw_body if "\x00" in raw_body else parse_inline(raw_body)
         if kind == "accent":
             return _mask(f'<strong class="ara-accent">{body}</strong>')
         if kind == "tag":
@@ -389,6 +396,10 @@ def split_blocks(body: str) -> list[tuple[int, str, list[str]]]:
                 )
             blocks.append((start_line, "directive", buf))
             continue
+        if line.startswith(":::"):
+            if DIRECTIVE_CLOSE_RE.match(line):
+                raise AraSyntaxError("stray directive close without matching opener", line=i + 1)
+            raise AraSyntaxError(f"invalid directive opener: {line!r}", line=i + 1)
         # Heading
         if HEADING_RE.match(line):
             blocks.append((i + 1, "heading", [line]))
@@ -621,6 +632,49 @@ def _req(d: dict, key: str, ctx: str, line_no: int):
     return d[key]
 
 
+def _as_finite_number(value: Any, ctx: str, line_no: int | None) -> float:
+    try:
+        n = float(str(value).strip())
+    except (TypeError, ValueError) as e:
+        raise AraSyntaxError(f"{ctx}: expected a number, got {value!r}", line=line_no) from e
+    if not math.isfinite(n):
+        raise AraSyntaxError(f"{ctx}: expected a finite number, got {value!r}", line=line_no)
+    return n
+
+
+def _format_number(n: float) -> str:
+    return str(int(n)) if n.is_integer() else f"{n:g}"
+
+
+def _number_text(value: Any, ctx: str, line_no: int | None) -> str:
+    return _format_number(_as_finite_number(value, ctx, line_no))
+
+
+def _pct_text(value: Any, ctx: str, line_no: int | None) -> str:
+    n = _as_finite_number(value, ctx, line_no)
+    if n < 0 or n > 100:
+        raise AraSyntaxError(f"{ctx}: pct must be between 0 and 100, got {value!r}", line=line_no)
+    return _format_number(n)
+
+
+def _int_range_text(value: Any, ctx: str, line_no: int | None, lo: int, hi: int) -> str:
+    n = _as_finite_number(value, ctx, line_no)
+    if not n.is_integer() or n < lo or n > hi:
+        raise AraSyntaxError(f"{ctx}: expected an integer from {lo} to {hi}, got {value!r}", line=line_no)
+    return str(int(n))
+
+
+def _csv_values(text: str) -> list[str]:
+    return [part.strip() for part in text.split(",") if part.strip()]
+
+
+def _csv_numbers(text: str, ctx: str, line_no: int | None) -> list[str]:
+    vals = _csv_values(text)
+    if not vals:
+        raise AraSyntaxError(f"{ctx}: needs at least one number", line=line_no)
+    return [_number_text(v, ctx, line_no) for v in vals]
+
+
 def _attr(name: str, value: Any) -> str:
     if value is True:
         return f' {name}'
@@ -716,8 +770,8 @@ def emit_line_chart(attrs: dict, body: str, line_no: int) -> str:
         BE: 23.92,37.39,...
         NVDA: 100,105,110,...
     First non-`x:` row becomes series-1, second becomes series-2, etc."""
-    x_labels = None
-    series: list[tuple[str, str]] = []
+    x_labels: list[str] | None = None
+    series: list[tuple[str, list[str]]] = []
     for raw_line in body.splitlines():
         line = raw_line.strip()
         if not line:
@@ -729,22 +783,29 @@ def emit_line_chart(attrs: dict, body: str, line_no: int) -> str:
             )
         label, vals = line.split(":", 1)
         label = label.strip()
-        vals = vals.strip()
         if label.lower() == "x":
-            x_labels = vals
+            x_labels = _csv_values(vals)
         else:
-            series.append((label, vals))
+            series.append((label, _csv_numbers(vals, f"line-chart series {label!r}", line_no)))
     if x_labels is None:
         raise AraSyntaxError(":::line-chart body needs an `x:` row of labels", line=line_no)
+    if not x_labels:
+        raise AraSyntaxError(":::line-chart `x:` row needs at least one label", line=line_no)
     if not series or len(series) > 4:
         raise AraSyntaxError(
             f":::line-chart needs 1-4 data series, got {len(series)}",
             line=line_no,
         )
+    for label, vals in series:
+        if len(vals) != len(x_labels):
+            raise AraSyntaxError(
+                f"line-chart series {label!r} has {len(vals)} values but x has {len(x_labels)} labels",
+                line=line_no,
+            )
     parts = ['<div class="ara-line-chart"']
-    parts.append(_attr("data-x-labels", x_labels))
+    parts.append(_attr("data-x-labels", ",".join(x_labels)))
     for idx, (label, vals) in enumerate(series, start=1):
-        parts.append(_attr(f"data-series-{idx}", vals))
+        parts.append(_attr(f"data-series-{idx}", ",".join(vals)))
         parts.append(_attr(f"data-series-{idx}-label", label))
     for key in ("title", "subtitle", "y-unit"):
         if attrs.get(key) is not None:
@@ -757,7 +818,7 @@ def emit_donut(attrs: dict, body: Any, line_no: int) -> str:
     if not isinstance(body, list):
         raise AraSyntaxError(":::donut body must be a YAML list of {label, value}", line=line_no)
     labels = ",".join(str(_req(i, "label", "donut", line_no)) for i in body)
-    values = ",".join(str(_req(i, "value", "donut", line_no)) for i in body)
+    values = ",".join(_number_text(_req(i, "value", "donut", line_no), "donut value", line_no) for i in body)
     parts = ['<div class="ara-donut"']
     parts.append(_attr("data-labels", labels))
     parts.append(_attr("data-values", values))
@@ -773,10 +834,12 @@ def emit_slope(attrs: dict, body: str, line_no: int) -> str:
     if len(table_lines) < 3:
         raise AraSyntaxError(":::slope body needs a markdown table (3+ rows)", line=line_no)
     rows = [_split_row(l) for l in table_lines]
+    if not all(len(r) >= 3 for r in rows):
+        raise AraSyntaxError(":::slope table rows must have item, left value, and right value columns", line=line_no)
     rows = [rows[0]] + rows[2:]  # drop divider
     items = [r[0] for r in rows[1:]]
-    left = [r[1] for r in rows[1:]]
-    right = [r[2] for r in rows[1:]]
+    left = [_number_text(r[1], "slope left value", line_no) for r in rows[1:]]
+    right = [_number_text(r[2], "slope right value", line_no) for r in rows[1:]]
     parts = ['<div class="ara-slope"']
     parts.append(_attr("data-items", ",".join(items)))
     parts.append(_attr("data-left-values", ",".join(left)))
@@ -817,7 +880,7 @@ def emit_iso(attrs: dict, body: Any, line_no: int) -> str:
     for item in body:
         label = _req(item, "label", "iso", line_no)
         glyph = _req(item, "glyph", "iso", line_no)
-        count = _req(item, "count", "iso", line_no)
+        count = _int_range_text(_req(item, "count", "iso", line_no), "iso count", line_no, 0, 200)
         out.append('<div class="ara-iso">')
         out.append(f'<span class="ara-iso-label">{parse_inline(str(label))}</span>')
         out.append(
@@ -837,7 +900,7 @@ def emit_bars(attrs: dict, body: Any, line_no: int) -> str:
     for item in body:
         label = _req(item, "label", "bars", line_no)
         value = _req(item, "value", "bars", line_no)
-        pct = _req(item, "pct", "bars", line_no)
+        pct = _pct_text(_req(item, "pct", "bars", line_no), "bars pct", line_no)
         out.append(f'<div class="ara-bar"{_attr("data-pct", pct)}>')
         out.append(f'<span class="ara-bar-label">{parse_inline(str(label))}</span>')
         out.append(f'<span class="ara-bar-value">{parse_inline(str(value))}</span>')
@@ -854,7 +917,7 @@ def emit_stack_bar(attrs: dict, body: Any, line_no: int) -> str:
     for idx, item in enumerate(body, start=1):
         if idx > 6:
             raise AraSyntaxError(":::stack-bar supports max 6 segments (variants --1..--6)", line=line_no)
-        pct = _req(item, "pct", "stack-bar", line_no)
+        pct = _pct_text(_req(item, "pct", "stack-bar", line_no), "stack-bar pct", line_no)
         out.append(
             f'<span class="ara-stack-seg ara-stack-seg--{idx}"{_attr("data-pct", pct)}></span>'
         )
@@ -902,6 +965,7 @@ def emit_stack_rows(attrs: dict, body: Any, line_no: int) -> str:
                 f":::stack-rows row {label!r} must have {len(cats)} values to match categories",
                 line=line_no,
             )
+        values = [_pct_text(v, "stack-rows value", line_no) for v in values]
         out.append('<div class="ara-stack-rows-row">')
         out.append(f'<span class="ara-stack-rows-label">{parse_inline(str(label))}</span>')
         out.append('<div class="ara-stack-bar">')
@@ -921,7 +985,7 @@ def emit_rank_list(attrs: dict, body: Any, line_no: int) -> str:
     for idx, item in enumerate(body, start=1):
         label = _req(item, "label", "rank-list", line_no)
         value = _req(item, "value", "rank-list", line_no)
-        pct = _opt(item, "pct", 0)
+        pct = _pct_text(_opt(item, "pct", 0), "rank-list pct", line_no)
         highlight = " ara-row-highlight" if _opt(item, "highlight") else ""
         rank = _opt(item, "rank", idx)
         out.append(f'<li class="ara-rank-item{highlight}">')
@@ -956,12 +1020,14 @@ def emit_compare(attrs: dict, body: Any, line_no: int) -> str:
 def emit_references(attrs: dict, body: Any, line_no: int) -> str:
     if not isinstance(body, list):
         raise AraSyntaxError(":::references body must be a YAML list", line=line_no)
+    if not body:
+        raise AraSyntaxError(":::references needs at least one reference", line=line_no)
     out = [
         '<h3 class="ara-h2"><span class="ara-h2-num">R</span>References</h3>',
         '<ol>',
     ]
     for item in body:
-        rid = _req(item, "id", "references", line_no)
+        rid = _int_range_text(_req(item, "id", "references", line_no), "reference id", line_no, 1, 9999)
         title = _req(item, "title", "references", line_no)
         url = _opt(item, "url")
         source = _opt(item, "source")
@@ -1072,7 +1138,7 @@ def compile_blocks(blocks: list[tuple[int, str, list[str]]]) -> str:
 
 def emit_header(meta: dict) -> str:
     if not meta:
-        return ""
+        raise AraSyntaxError("frontmatter must include `title:`")
     parts = ["<header>"]
     if meta.get("eyebrow"):
         parts.append(f'<div class="ara-eyebrow">{parse_inline(str(meta["eyebrow"]))}</div>')
@@ -1087,6 +1153,49 @@ def emit_header(meta: dict) -> str:
         parts.append(emit_stats({}, meta["stats"], line_no=0))
     parts.append("</header>")
     return "".join(parts)
+
+
+# ----------------------------------------------------------------------
+# Article-level contract checks
+# ----------------------------------------------------------------------
+
+
+HTML_CITE_RE = re.compile(r'href="#ref-([0-9]+)"')
+HTML_REF_RE = re.compile(r'id="ref-([0-9]+)"')
+
+
+def validate_block_contract(blocks: list[tuple[int, str, list[str]]]) -> None:
+    reference_blocks: list[int] = []
+    for idx, (line_no, kind, buf) in enumerate(blocks):
+        if kind != "directive":
+            continue
+        parsed = parse_directive_open(buf[0])
+        if parsed and parsed[0] == "references":
+            reference_blocks.append(idx)
+            if idx != len(blocks) - 1:
+                raise AraSyntaxError(":::references must be the final block in the article", line=line_no)
+    if len(reference_blocks) > 1:
+        first = blocks[reference_blocks[1]][0]
+        raise AraSyntaxError("article can only contain one :::references block", line=first)
+
+
+def validate_article_contract(article_html: str) -> None:
+    """Enforce article-level invariants that span multiple blocks."""
+    cited = HTML_CITE_RE.findall(article_html)
+    refs = HTML_REF_RE.findall(article_html)
+    if not refs:
+        if cited:
+            raise AraSyntaxError("cited articles must include a final :::references block")
+        return
+
+    ref_ids = set(refs)
+    duplicate_refs = sorted({rid for rid in refs if refs.count(rid) > 1}, key=int)
+    if duplicate_refs:
+        raise AraSyntaxError(f"duplicate reference id(s): {', '.join(duplicate_refs)}")
+
+    missing = sorted(set(cited) - ref_ids, key=int)
+    if missing:
+        raise AraSyntaxError(f"citation id(s) missing from :::references: {', '.join(missing)}")
 
 
 # ----------------------------------------------------------------------
@@ -1127,6 +1236,7 @@ def compile_source(source: str) -> str:
     meta, body = parse_frontmatter(source)
     header = emit_header(meta)
     blocks = split_blocks(body)
+    validate_block_contract(blocks)
     body_html = compile_blocks(blocks)
     wrapped = wrap_in_sections(body_html)
     parts = ['<article class="ara-doc">']
@@ -1134,7 +1244,14 @@ def compile_source(source: str) -> str:
         parts.append(header)
     parts.append(wrapped)
     parts.append('</article>\n')
-    return "\n".join(parts)
+    article = "\n".join(parts)
+    validate_article_contract(article)
+    try:
+        from write_generative_research import KIND_FRAGMENT, validate_body
+        validate_body(article, KIND_FRAGMENT)
+    except ValueError as e:
+        raise AraSyntaxError(f"HTML validation failed: {e}") from e
+    return article
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -1157,6 +1274,13 @@ def main(argv: list[str] | None = None) -> int:
         html_out = compile_source(source)
     except AraSyntaxError as e:
         print(f"compile_ara: {e}", file=sys.stderr)
+        return 1
+
+    try:
+        from write_generative_research import validate_body, KIND_FRAGMENT
+        validate_body(html_out, KIND_FRAGMENT)
+    except ValueError as e:
+        print(f"compile_ara: validation failed: {e}", file=sys.stderr)
         return 1
 
     if args.out == "-":

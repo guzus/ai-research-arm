@@ -133,7 +133,8 @@ The headline "trillion-dollar humanoid" forecasts that DEUS marketing leans on a
 
 The first thing to do with a trillion-dollar TAM number is to ask what year it terminates in and what adoption curve it requires. When that arithmetic is unpacked, the four major sell-side forecasts split cleanly into two camps: one near-term and industrial, three long-dated and consumer-dependent.
 
-:::figure(src="", alt="", caption="Major sell-side humanoid forecasts ranked by terminal year. The only forecast inside a normal corporate-planning horizon is Goldman's.")
+:::callout(kind=info, label="Forecast map")
+Major sell-side humanoid forecasts sort by terminal year: the only one inside a normal corporate-planning horizon is Goldman's.
 :::
 
 ### The grounded number is smaller than people think

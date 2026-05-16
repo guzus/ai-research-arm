@@ -123,6 +123,12 @@ gantt
 
 Dashboard deploys are handled by **Vercel's git integration**, not a workflow file — every push to `main` triggers a build automatically.
 
+`generative-research.yml` defaults to **DeepSeek V4 Pro** for new manual,
+issue-triggered, and auto-dispatched runs. Use `backend=claude` for the
+Claude Opus 4.7 baseline, or `backend=deepseek-v4-pro` for the explicit
+DeepSeek path. See [Generative Research Backends](docs/generative-research-backends.md)
+for the exact env mapping and comparison commands.
+
 ## On-Demand Research Agent
 
 Request deep research on any topic by creating a GitHub Issue with the `research` label.
@@ -189,6 +195,7 @@ Built with **Vite + Bun + TypeScript**, deployed to Vercel via the git integrati
 | Secret | Required | Description |
 |--------|----------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code auth |
+| `DEEPSEEK_API_KEY` | Yes for DeepSeek V4 Pro generative research and DeepSeek Twitter workflows | DeepSeek API key used through the Anthropic-compatible endpoint |
 | `BIRD_AUTH_TOKEN` | Yes | X/Twitter auth_token cookie for bird CLI |
 | `BIRD_CT0` | Yes | X/Twitter ct0 cookie for bird CLI |
 

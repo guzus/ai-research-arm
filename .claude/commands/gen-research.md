@@ -25,7 +25,7 @@ options:
   immediately.
 - **Route to GitHub workflow** — ~20–45 min on the self-hosted
   runner. Dispatches `generative-research.yml` with
-  `backend=claude`. Your chat is freed instantly. The runner
+  `backend=deepseek-v4-pro` by default. Your chat is freed instantly. The runner
   produces a longer article (4500–7000 words target, ≥20 cited
   references) and pushes the commit directly to `main`.
   Recommended for substantive topics where you want maximum depth
@@ -40,14 +40,13 @@ After the user picks:
 
 ## PATH A — Route to the GitHub workflow
 
-Dispatch the workflow with the user's topic. Use `claude` as the
-backend unless the user explicitly asked for `deepseek` in their
-brief.
+Dispatch the workflow with the user's topic. Use `deepseek-v4-pro` as
+the backend unless the user explicitly asked for Claude in their brief.
 
 ```bash
 gh workflow run generative-research.yml \
   -f topic="<the exact topic the user gave>" \
-  -f backend=claude
+  -f backend=deepseek-v4-pro
 ```
 
 Then wait briefly for the run to register and surface its URL:
