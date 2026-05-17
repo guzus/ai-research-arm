@@ -1163,12 +1163,18 @@ function formatUnitValue(value: number, unit: string, digits?: number): string {
   const n = formatNumber(value, digits);
   const u = unit.trim();
   if (!u) return n;
+  // Currency prefix with trailing context, e.g. "$/kW" → "$5/kW".
   const currency = u.match(/^([$€£¥₩])(.+)$/);
   if (currency) return `${currency[1]}${n}${currency[2]}`;
+  // Bare currency symbol prefixes the number with no space, e.g. "$" → "$5".
   if (/^[$€£¥₩]$/.test(u)) return `${u}${n}`;
+  // Percent and percent-prefixed phrases bind tight to the number ("17%", "17% bit share").
   if (u === '%') return `${n}%`;
-  if (/^[A-Za-z][A-Za-z0-9/%.-]*$/.test(u)) return `${n} ${u}`;
-  return `${u}${n}`;
+  if (u.startsWith('%')) return `${n}${u}`;
+  // Everything else (alphabetic units like "GB/s", non-ASCII like "μm",
+  // multi-word phrases like "k wpm" / "RMB B", or units with punctuation
+  // like "index (2019=100)") renders as "<value> <unit>" with a single space.
+  return `${n} ${u}`;
 }
 
 function fitSvgText(text: string, maxPx: number, fontPx: number, mono = false): string {
@@ -1453,6 +1459,27 @@ function renderDonuts(root: HTMLElement): void {
   }
 }
 
+/** In-place anti-overlap: sort by current Y, walk top-down, push each label
+ * down by `lineHeight` when it would collide with the one above. Mutates the
+ * input array. Stable: items that don't actually overlap keep their original
+ * positions, so slope charts whose data is comfortably spaced render
+ * pixel-identically to before.
+ *
+ * Note: this only de-collides downward (positions can grow but never shrink),
+ * which is sufficient for SVG text where the visual cost of being a few
+ * pixels low is much smaller than overshooting upward off the baseline grid. */
+function antiOverlap(positions: number[], lineHeight: number): void {
+  if (positions.length < 2) return;
+  const order = positions.map((_, i) => i).sort((a, b) => positions[a] - positions[b]);
+  for (let j = 1; j < order.length; j++) {
+    const prev = positions[order[j - 1]];
+    const cur = positions[order[j]];
+    if (cur - prev < lineHeight) {
+      positions[order[j]] = prev + lineHeight;
+    }
+  }
+}
+
 /** Two-period slopegraph. data-items, data-left-values, data-right-values,
  * data-left-label, data-right-label. Lines colored green/red by direction. */
 function renderSlopes(root: HTMLElement): void {
@@ -1501,11 +1528,24 @@ function renderSlopes(root: HTMLElement): void {
     rh.textContent = rightLabel;
     svg.appendChild(rh);
 
+    // Pass 1: compute dot Y for each item and the desired label Y (baseline + 4
+    // so the text visually centers on the dot for 12px font).
+    const lys = items.map((_, i) => yFor(leftValues[i]));
+    const rys = items.map((_, i) => yFor(rightValues[i]));
+    const labelLY = lys.map((y) => y + 4);
+    const labelRY = rys.map((y) => y + 4);
+
+    // Pass 2: anti-overlap each side independently. Dots stay at lys/rys; only
+    // label Y positions get nudged when two values would collide.
+    const lineHeight = 14; // 12px font + ~2px breathing room.
+    antiOverlap(labelLY, lineHeight);
+    antiOverlap(labelRY, lineHeight);
+
     items.forEach((_, i) => {
       const lv = leftValues[i];
       const rv = rightValues[i];
-      const ly = yFor(lv);
-      const ry = yFor(rv);
+      const ly = lys[i];
+      const ry = rys[i];
       const direction = rv > lv ? 'up' : rv < lv ? 'down' : 'flat';
       const line = svgEl<SVGLineElement>('line', {
         class: `ara-slope-line ${direction !== 'flat' ? `ara-slope-line--${direction}` : ''}`.trim(),
@@ -1518,12 +1558,12 @@ function renderSlopes(root: HTMLElement): void {
       svg.appendChild(svgEl('circle', { class: 'ara-slope-dot', cx: colL + 6, cy: ly, r: 3 }));
       svg.appendChild(svgEl('circle', { class: 'ara-slope-dot', cx: colR - 6, cy: ry, r: 3 }));
       const lRaw = leftTexts[i];
-      const lLabel = svgEl<SVGTextElement>('text', { class: 'ara-slope-label', x: colL - 8, y: ly + 4, 'text-anchor': 'end' });
+      const lLabel = svgEl<SVGTextElement>('text', { class: 'ara-slope-label', x: colL - 8, y: labelLY[i], 'text-anchor': 'end' });
       lLabel.textContent = fitSvgText(lRaw, colL - 8, 12);
       if (lLabel.textContent !== lRaw) setSvgFullLabel(lLabel, lRaw);
       svg.appendChild(lLabel);
       const rRaw = rightTexts[i];
-      const rLabel = svgEl<SVGTextElement>('text', { class: 'ara-slope-label', x: colR + 8, y: ry + 4, 'text-anchor': 'start' });
+      const rLabel = svgEl<SVGTextElement>('text', { class: 'ara-slope-label', x: colR + 8, y: labelRY[i], 'text-anchor': 'start' });
       rLabel.textContent = fitSvgText(rRaw, W - colR - 8, 12);
       if (rLabel.textContent !== rRaw) setSvgFullLabel(rLabel, rRaw);
       svg.appendChild(rLabel);
