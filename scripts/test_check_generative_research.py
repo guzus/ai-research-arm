@@ -42,7 +42,13 @@ def _ns(**overrides):
 
 def _article(refs_count=0, cites_count=0, body_words=100, primary_hosts=None):
     """Build a minimal synthetic article body. By default zero refs
-    and zero cites; pass counts to populate."""
+    and zero cites; pass counts to populate.
+
+    Each ref gets a DISTINCT URL path so count_references()'s distinct-
+    URL counting works as the test expects. To inject duplicates,
+    pass primary_hosts with repeated entries (the path-suffix is what
+    makes them distinct, so passing the same host N times still yields
+    N distinct URLs in the synthetic article)."""
     body_text = " ".join(["Lorem"] * body_words)
     sup_block = "".join(
         f'<sup><a class="ara-cite" href="#ref-{i + 1}">{i + 1}</a></sup>'
@@ -50,8 +56,11 @@ def _article(refs_count=0, cites_count=0, body_words=100, primary_hosts=None):
     )
     if primary_hosts is None:
         primary_hosts = ["example.com"] * refs_count
+    # Add /{i} to each URL so the helper yields refs_count distinct URLs
+    # by default; tests that want to verify duplicate-handling should
+    # construct their own bodies inline.
     refs_lis = "".join(
-        f'<li id="ref-{i + 1}"><a href="https://{primary_hosts[i]}/x">src</a></li>'
+        f'<li id="ref-{i + 1}"><a href="https://{primary_hosts[i]}/x/{i + 1}">src</a></li>'
         for i in range(refs_count)
     )
     refs_block = (
@@ -282,12 +291,45 @@ class ReferenceHrefCollectorTest(unittest.TestCase):
             f'<ol class="ara-refs">{title_only}</ol>'
             '</article>'
         )
-        # Old behavior: count_references returns 20 (would pass refs-min 20).
-        # New behavior: returns 0 (no URL-bearing entries).
         self.assertEqual(chk.count_references(body), 0)
         errs = chk.enforce_quality(body, _ns(refs_min=20))
         self.assertEqual(len(errs), 1)
         self.assertIn("reference entries", errs[0])
+
+    def test_count_references_counts_distinct_urls(self):
+        """20 refs all pointing to the same URL must NOT pass --refs-min 20.
+        Workflow target is '20 DISTINCT source URLs', so duplicates can't
+        satisfy the gate."""
+        same_url = "".join(
+            f'<li id="ref-{i + 1}"><a href="https://arxiv.org/abs/2401.00001">paper</a></li>'
+            for i in range(20)
+        )
+        body = (
+            '<article class="ara-doc"><p>Body.</p>'
+            f'<ol class="ara-refs">{same_url}</ol>'
+            '</article>'
+        )
+        # All 20 li elements have URLs but only 1 distinct URL → count = 1.
+        self.assertEqual(chk.count_references(body), 1)
+        errs = chk.enforce_quality(body, _ns(refs_min=20))
+        self.assertEqual(len(errs), 1, "duplicate URL spam must fail refs-min")
+
+    def test_url_normalization_for_distinct_counting(self):
+        """www prefix, trailing slash, default port, case → normalized.
+        Scheme (http vs https) is intentionally kept distinct."""
+        self.assertEqual(
+            chk._normalize_url("https://www.example.com/x"),
+            chk._normalize_url("https://EXAMPLE.com/x/"),
+        )
+        self.assertEqual(
+            chk._normalize_url("https://example.com:443/x"),
+            chk._normalize_url("https://example.com/x"),
+        )
+        # Different paths remain distinct
+        self.assertNotEqual(
+            chk._normalize_url("https://example.com/a"),
+            chk._normalize_url("https://example.com/b"),
+        )
 
 
 class EnforceQualityCompositionTest(unittest.TestCase):
@@ -454,6 +496,60 @@ class VerifierFindingsAuditTest(unittest.TestCase):
                 "FAIL the audit. Without P2 fix, this returns surviving=[] "
                 "(false pass).",
             )
+
+    def test_duplicate_occurrences_partial_demotion_fails(self):
+        """When the same unsupported claim appears N times and only 1
+        copy is wrapped in <mark>, the OTHER copies still survive
+        outside a mark region — audit must fail. The pre-fix
+        `probe in mark_norm` test would pass because the probe exists
+        somewhere in the mark blob."""
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            # First occurrence wrapped in mark (demoted)
+            '<p><mark class="ara-mark">Nvidia hit 75 percent margin in Q4 2026.</mark></p>'
+            # Second occurrence unwrapped (still surviving — should fail)
+            '<p>Nvidia hit 75 percent margin in Q4 2026.</p>'
+            '</article>'
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c1",
+                "text": "Nvidia hit 75 percent margin in Q4 2026.",
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(
+                len(surviving), 1,
+                "When 2 occurrences exist and only 1 is demoted, the "
+                "other survives — audit must fail. Without the count-"
+                "based fix, the old `probe in mark_norm` returned True "
+                "and the audit would falsely pass.",
+            )
+            self.assertEqual(surviving[0]['body_occurrences'], 2)
+            self.assertEqual(surviving[0]['mark_occurrences'], 1)
+
+    def test_duplicate_occurrences_all_demoted_passes(self):
+        """When the same claim appears N times and ALL N are demoted,
+        the audit correctly passes."""
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            '<p><mark class="ara-mark">Nvidia hit 75 percent margin in Q4 2026.</mark></p>'
+            '<p><mark class="ara-mark">Nvidia hit 75 percent margin in Q4 2026.</mark></p>'
+            '</article>'
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c1",
+                "text": "Nvidia hit 75 percent margin in Q4 2026.",
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(surviving, [])
 
     def test_demoted_claim_with_inline_markup_passes(self):
         """When the demoted sentence contains inline markup like <em>,

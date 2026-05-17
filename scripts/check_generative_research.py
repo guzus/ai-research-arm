@@ -229,21 +229,43 @@ def count_cite_markers(body_html: str) -> int:
 
 
 def count_references(body_html: str) -> int:
-    """How many references list entries carry at least one http(s) URL.
+    """How many DISTINCT http(s) source URLs appear in the references list.
 
-    Previously counted every `<li id="ref-N">` regardless of whether
-    the entry actually had a source URL. An article with 20 title-only
-    or duplicate-href references could pass `--refs-min 20` with zero
-    real sources — defeating the gate's intent. We now count distinct
-    ref-li elements that produced at least one `<a href="http(s)://…">`
-    inside them. Mixed lists (some entries with URLs, some without)
-    still count the URL-bearing entries — tolerant of legitimate
-    no-URL entries like personal-communication citations, strict
-    against pure-title attack patterns.
+    Two layers of strictness, both responses to codex review feedback:
+      1. Only counts URLs inside `<li id="ref-N">` items, not in-body
+         hyperlinks.
+      2. Counts the number of DISTINCT URLs after normalization (lower-
+         case host, trailing-slash-stripped). An article with 20 ref-li
+         entries that all point to the same URL counts as 1, not 20 —
+         the workflow's "20 distinct source URLs" target wouldn't be met
+         by a single URL repeated 20 times.
+
+    A ref-li with no URL (title-only / personal-communication) does not
+    contribute. A ref-li with multiple URLs contributes each distinct
+    URL it carries.
     """
     collector = _ReferenceHrefCollector()
     collector.feed(body_html)
-    return collector.refs_with_urls
+    return len({_normalize_url(u) for u in collector.ref_urls})
+
+
+def _normalize_url(url: str) -> str:
+    """Normalize a URL for distinct-counting. Lowercase scheme+host,
+    strip trailing slash, drop default ports. Path/query are kept as-is
+    (so /a vs /b are distinct, but http://X/ and https://X are not)."""
+    m = re.match(r"^(https?)://([^/]+)(/.*)?$", url.strip())
+    if not m:
+        return url.strip().lower()
+    scheme, host, path = m.group(1).lower(), m.group(2).lower(), m.group(3) or ""
+    if host.startswith("www."):
+        host = host[4:]
+    # Drop default ports
+    if scheme == "http" and host.endswith(":80"):
+        host = host[:-3]
+    elif scheme == "https" and host.endswith(":443"):
+        host = host[:-4]
+    path = path.rstrip("/")
+    return f"{scheme}://{host}{path}"
 
 
 def primary_share(body_html: str) -> tuple[float, int, int]:
@@ -521,12 +543,23 @@ def audit_verifier_findings(
         probe = _norm(_strip_cite_markers(text))[:80]
         if not probe:
             continue
-        if probe in body_norm and probe not in mark_norm:
+        # Count distinct occurrences instead of using `probe in mark`:
+        # if the claim appears N times in the body and only K < N are
+        # wrapped in <mark>, the prior `probe not in mark_norm` test
+        # would falsely treat the claim as demoted because the probe
+        # exists somewhere in the mark blob. Strict version: an
+        # unmarked occurrence survives if total body occurrences
+        # exceeds the mark-region occurrences.
+        body_occurrences = body_norm.count(probe)
+        mark_occurrences = mark_norm.count(probe)
+        if body_occurrences > mark_occurrences:
             surviving.append(
                 {
                     "id": claim.get("id"),
                     "probe": probe,
                     "citation": claim.get("citation"),
+                    "body_occurrences": body_occurrences,
+                    "mark_occurrences": mark_occurrences,
                 }
             )
 
