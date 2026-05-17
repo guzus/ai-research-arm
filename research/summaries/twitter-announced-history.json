@@ -5468,5 +5468,54 @@
     "headline": "JENSEN AT STANFORD CS153: 'I WOULD LIKE TO BE AT LOW MFU ALL THE TIME' \u2014 OVERPROVISION FLOPS, NETWORKING, MEMORY",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2055835722783830311"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-17 09:43 UTC",
+    "headline": "MUSK CONFIRMS GROK V9 \u2014 1.5T PARAMS, 3X CURRENT GROK, CURSOR CODING DATA IN MID-TRAINING, 3-4 WEEKS TO RELEASE",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2055914584373141906"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-17 09:43 UTC",
+    "headline": "XAI POSITIONS GROK V9 AS CLAUDE CODE / CODEX RIVAL \u2014 BLACKWELL-CLASS BASE MODEL, SFT AND RL STILL PENDING BEFORE SHIP",
+    "source": "@techedgedaily",
+    "url": "https://x.com/techedgedaily/status/2055916204024635652"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-17 09:43 UTC",
+    "headline": "XAI / NOUS RESEARCH \u2014 HERMES AGENT NOW ACCEPTS X PREMIUM SUBSCRIPTIONS, GETS X POST SEARCH; ELON AMPLIFIES",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2055909693768515828"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-17 09:43 UTC",
+    "headline": "ANTHROPIC CORP SILENCE EXTENDS TO ~63.5 HOURS THROUGH US-CHINA PAPER PROPAGATION, MYTHOS CURL BUG, GROK V9 COMPETITIVE EVENT",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-17 09:43 UTC",
+    "headline": "OPENAI MALTA CHATGPT PLUS PARTNERSHIP BLOG ~17.5H UNACKNOWLEDGED ON CORP SOCIAL \u2014 MONDAY US CASH OPEN REMAINS LIKELY ROLLOUT WINDOW",
+    "source": "@iruletheworldmo",
+    "url": "https://x.com/iruletheworldmo/status/2055807812389462282"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-17 09:43 UTC",
+    "headline": "JUKAN05 \u2014 SAMSUNG DEVELOPING MOBILE HBM PACKAGING (EXTREME-AR CU PILLARS + FOWLP); ON-DEVICE AGENTIC PHONES NEED MOBILE HBM",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2055940737091665928"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-17 09:43 UTC",
+    "headline": "SEMIANALYSIS PREVIEWS MLSYS 2026 (MAY 18-22) \u2014 CORE ATTENTION DISAGGREGATION, MOE EXPERT BALANCING AS CONFERENCE HIGH-SIGNAL OUTPUTS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2055845794020757678"
   }
 ]
