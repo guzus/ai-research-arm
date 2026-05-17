@@ -67,7 +67,8 @@ jobs:
 
       - name: Install puppeteer
         if: steps.check.outputs.exists == 'true'
-        run: cd /tmp && npm install puppeteer
+        # pinned 2026-05-17; bump manually (Dependabot can't track inline npm installs)
+        run: cd /tmp && npm install puppeteer@25.0.2
 
       # Claude reads digest and generates newspaper-style HTML
       - name: Generate front page HTML

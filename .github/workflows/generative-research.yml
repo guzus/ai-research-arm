@@ -248,30 +248,34 @@ jobs:
           fi
           echo "curl:      $(command -v curl || echo MISSING) $(curl --version 2>/dev/null | head -1)"
           echo "pdftotext: $(command -v pdftotext || echo MISSING) $(pdftotext -v 2>&1 | head -1)"
-          # yfinance for scripts/stock_prices.py. Yahoo's chart API blocks
-          # bare-urllib clients; yfinance handles the crumb-cookie dance and
-          # retries, which is the difference between working and 429ing from
-          # the runner. --break-system-packages is required because the
-          # runner's Python ships with PEP-668 enabled — even --user installs
-          # are blocked otherwise. Safe here because this runner is dedicated
-          # to this workflow; we're not contending with a host package manager.
-          if ! python3 -c "import yfinance" 2>/dev/null; then
-            echo "Installing yfinance"
-            python3 -m pip install --quiet --user --upgrade --break-system-packages yfinance \
-              || echo "WARN: pip install yfinance failed; stock_prices.py will fall back to urllib/stooq" >&2
+          # yfinance + PyYAML: Python deps for this workflow. Versions live in
+          # requirements.txt at the repo root so Dependabot's pip ecosystem can
+          # propose bumps via PR (see .github/dependabot.yml). yfinance handles
+          # Yahoo's chart-API crumb-cookie dance for scripts/stock_prices.py;
+          # PyYAML drives the .ara.md compiler in scripts/compile_ara.py.
+          # --break-system-packages is required because the runner's Python
+          # ships with PEP-668 enabled — even --user installs are blocked
+          # otherwise. Safe here because this runner is dedicated to this
+          # workflow; we're not contending with a host package manager.
+          # Skip the install if both are already importable to keep warm runs
+          # fast; if either is missing, install the full pinned set so
+          # versions stay consistent.
+          if ! python3 -c "import yfinance, yaml" 2>/dev/null; then
+            echo "Installing pinned Python deps from requirements.txt"
+            # Soft-tolerate install failures here — per-package fail modes
+            # are enforced by the verification steps below (yfinance soft,
+            # pyyaml hard). A bulk hard-fail would regress today's behavior
+            # where a flaky yfinance install drops back to stooq/urllib.
+            python3 -m pip install --quiet --user --break-system-packages \
+              -r requirements.txt \
+              || echo "WARN: pip install -r requirements.txt failed; verifying per-package fallbacks below" >&2
           fi
-          python3 -c "import yfinance; print('yfinance:', yfinance.__version__)" 2>&1 || true
-          # PyYAML for scripts/compile_ara.py (the .ara.md frontmatter +
-          # block-body parser). Without it the compiler can't run and the
-          # writer falls back to its raw-HTML path, which means
-          # section-writer agents must hand-write HTML — the whole point
-          # of the DSL is undone. Hard-fail if install fails.
-          if ! python3 -c "import yaml" 2>/dev/null; then
-            echo "Installing PyYAML"
-            python3 -m pip install --quiet --user --upgrade --break-system-packages pyyaml \
-              || { echo "ERROR: pip install pyyaml failed; compile_ara cannot run"; exit 1; }
-          fi
-          python3 -c "import yaml; print('yaml:', yaml.__version__)" 2>&1 || true
+          # yfinance is best-effort — stock_prices.py falls back to urllib/stooq.
+          python3 -c "import yfinance; print('yfinance:', yfinance.__version__)" 2>&1 \
+            || echo "WARN: yfinance unavailable; stock_prices.py will fall back to urllib/stooq" >&2
+          # PyYAML is load-bearing — compile_ara cannot run without it.
+          python3 -c "import yaml; print('yaml:', yaml.__version__)" 2>&1 \
+            || { echo "ERROR: pyyaml unavailable; compile_ara cannot run"; exit 1; }
 
       # Snapshot HEAD before the model runs so we can later identify the file
       # THIS run produced (rather than guessing by `ls -t`, which would point

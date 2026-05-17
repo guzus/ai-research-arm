@@ -1,0 +1,12 @@
+# Python dependencies for ai-research-arm workflows.
+# Single source of truth — Dependabot pip ecosystem watches this file.
+# Installed in .github/workflows/generative-research.yml via:
+#   python3 -m pip install --user --break-system-packages -r requirements.txt
+#
+# yfinance: Yahoo's chart API blocks bare-urllib clients; yfinance handles
+# the crumb-cookie dance and retries. Used by scripts/stock_prices.py.
+yfinance==1.3.0
+# PyYAML: scripts/compile_ara.py parses .ara.md frontmatter + block bodies.
+# Hard dependency for the .ara.md compiler; without it the writer falls back
+# to its raw-HTML path and the DSL benefits are undone.
+pyyaml==6.0.3
