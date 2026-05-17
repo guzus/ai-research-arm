@@ -42,3 +42,12 @@ dashboard/public/research/
 
 # --- Logs ---
 *.log
+
+# --- Workflow-staged untrusted inputs (never check in) ---
+# Created by research-issue.yml and generative-research.yml to hold
+# attacker-controlled issue title/body so the Claude/DeepSeek action
+# steps can Read them as data without needing env vars or printenv.
+# Per-step writers explicitly `git add` only their output directory,
+# but this is belt-and-suspenders against an accidental `git add -A`.
+.issue-input/
+.gen-input/
