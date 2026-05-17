@@ -1,0 +1,4 @@
+# Lock file created by scripts/write_generative_research.py to serialize
+# concurrent index.json mutations under fcntl.flock. Never committed —
+# it's a per-host runtime artifact, not project state.
+index.json.lock
