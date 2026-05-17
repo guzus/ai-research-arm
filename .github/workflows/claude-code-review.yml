@@ -14,8 +14,11 @@ jobs:
   claude-review:
     # Security: gate on author_association. PR bodies/titles/diffs are
     # attacker-controlled text and flow into Claude's prompt context. Only
-    # trusted associations can trigger reviews; PRs from outside contributors
-    # require a maintainer to manually trigger via workflow_dispatch.
+    # trusted associations get auto-review; PRs from outside contributors
+    # are skipped entirely. There is no manual override here yet — a
+    # maintainer who wants to review an external PR should fetch it
+    # locally and use `claude` directly (or add a workflow_dispatch
+    # trigger with a `pr_number` input in a follow-up).
     if: contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.pull_request.author_association)
 
     runs-on: [self-hosted, Linux]
