@@ -25,7 +25,7 @@ jobs:
     runs-on: [self-hosted, Linux]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Lint GitHub Actions workflows
         uses: raven-actions/actionlint@v2
@@ -56,7 +56,7 @@ jobs:
           git lfs version
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # lfs: true is REQUIRED because dashboard/scripts/prebuild.mjs runs
           # cpSync over research/front-page/*.png and research/audio/*.mp3
@@ -81,7 +81,7 @@ jobs:
     runs-on: [self-hosted, Linux]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Test Python scripts
         run: python3 -m unittest discover -s scripts -p 'test_*.py'
@@ -92,7 +92,7 @@ jobs:
     runs-on: [self-hosted, Linux]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Derive CI status
         id: ci-status
