@@ -1188,6 +1188,85 @@ function appendSvgTitle(el: SVGElement, text: string): void {
   el.appendChild(title);
 }
 
+/** Distribute words across `lineCount` lines, minimizing the longest line
+ * (in characters, including the inter-word space). Greedy enumeration of
+ * split points; O(W^(lineCount-1)) so we cap lineCount at 3 and words at ≤8
+ * for the donut center-label case. Returns null if lineCount > words.length. */
+function splitWordsIntoLines(words: string[], lineCount: number): string[] | null {
+  if (lineCount < 1 || lineCount > words.length) return null;
+  if (lineCount === 1) return [words.join(' ')];
+
+  const widthOf = (line: string) => line.length; // monospace: width ≈ chars
+  let best: { lines: string[]; widest: number } | null = null;
+
+  // Enumerate all ways to choose (lineCount-1) split positions from
+  // (words.length-1) gaps. Recursive walk for arbitrary lineCount.
+  const walk = (startWord: number, linesLeft: number, acc: string[]) => {
+    if (linesLeft === 1) {
+      const tail = words.slice(startWord).join(' ');
+      const candidate = [...acc, tail];
+      const widest = Math.max(...candidate.map(widthOf));
+      if (!best || widest < best.widest) best = { lines: candidate, widest };
+      return;
+    }
+    // Leave at least (linesLeft - 1) words for the remaining lines.
+    const maxEnd = words.length - (linesLeft - 1);
+    for (let end = startWord + 1; end <= maxEnd; end++) {
+      const line = words.slice(startWord, end).join(' ');
+      walk(end, linesLeft - 1, [...acc, line]);
+    }
+  };
+  walk(0, lineCount, []);
+  return best ? (best as { lines: string[]; widest: number }).lines : null;
+}
+
+/** Wrap a donut center-label into up to `maxLines` lines and pick a font
+ * size that fits the widest line within `usableWidth` SVG units. Prefers
+ * fewer lines at larger fonts. Falls back to clamped `minFontSize` for a
+ * single ultra-long unhyphenated word (it will visually overflow, which
+ * is better than dropping the label). */
+function wrapDonutCenterLabel(
+  label: string,
+  maxFontSize: number,
+  minFontSize: number,
+  usableWidth: number,
+  maxLines = 3,
+): { lines: string[]; fontSize: number } {
+  const clean = label.trim();
+  if (!clean) return { lines: [], fontSize: maxFontSize };
+
+  const words = clean.split(/\s+/);
+  const lineCap = Math.min(maxLines, words.length);
+
+  // 1-line path first: if the whole string fits at max font, use it.
+  // This preserves the exact pre-change rendering for short labels.
+  // Uses approxSvgTextWidth with mono=true (0.62 ratio) to stay consistent
+  // with the rest of the SVG-text helpers in this file.
+  if (approxSvgTextWidth(clean, maxFontSize, true) <= usableWidth) {
+    return { lines: [clean], fontSize: maxFontSize };
+  }
+
+  // Try N = 1..lineCap. For each N, find the split that minimizes the
+  // widest line, then compute the largest font that fits that line.
+  // Prefer fewer lines if they can still hit the max font.
+  let best: { lines: string[]; fontSize: number } | null = null;
+  for (let n = 1; n <= lineCap; n++) {
+    const lines = splitWordsIntoLines(words, n);
+    if (!lines) continue;
+    const widestChars = Math.max(...lines.map((l) => l.length));
+    // font ≤ usableWidth / (widestChars * 0.62)
+    const ideal = usableWidth / Math.max(1, widestChars * 0.62);
+    const fontSize = Math.max(minFontSize, Math.min(maxFontSize, ideal));
+    if (!best || fontSize > best.fontSize) {
+      best = { lines, fontSize };
+    }
+    // If this N hits the cap, no point trying more lines (more lines
+    // can't beat a max-font fit at fewer lines).
+    if (fontSize >= maxFontSize) break;
+  }
+  return best ?? { lines: [clean], fontSize: minFontSize };
+}
+
 /** Build a polyline d-attribute from (x,y) pairs. */
 function pathFromPoints(points: Array<[number, number]>): string {
   if (!points.length) return '';
@@ -1422,10 +1501,45 @@ function renderDonuts(root: HTMLElement): void {
       svg.appendChild(slice);
     });
 
-    if (centerLabel) {
-      const text = svgEl<SVGTextElement>('text', { class: 'ara-donut-center-label', x: cx, y: cy + 1, 'font-size': '18' });
-      text.textContent = centerLabel;
-      svg.appendChild(text);
+    if (centerLabel.trim()) {
+      // Conservative usable width: 85% of the donut hole diameter to leave
+      // breathing room from the slices. ri = 56 → hole = 112 → usable = ~95.
+      const usableWidth = ri * 2 * 0.85;
+      const wrapped = wrapDonutCenterLabel(centerLabel, 18, 9, usableWidth, 3);
+      if (wrapped.lines.length === 1) {
+        // Preserve the original 1-line rendering bit-for-bit (font-size 18,
+        // y = cy + 1) so short labels like "2024" do not visually shift.
+        const text = svgEl<SVGTextElement>('text', {
+          class: 'ara-donut-center-label',
+          x: cx,
+          y: cy + 1,
+          'font-size': '18',
+        });
+        text.textContent = wrapped.lines[0];
+        svg.appendChild(text);
+      } else if (wrapped.lines.length > 1) {
+        // Multi-line: center the block vertically around cy. With
+        // dominant-baseline: middle (from CSS), each tspan's y is its
+        // vertical center. Stack lines with lineHeight = fontSize * 1.1.
+        const fs = wrapped.fontSize;
+        const lineHeight = fs * 1.1;
+        const firstY = cy - ((wrapped.lines.length - 1) * lineHeight) / 2;
+        const text = svgEl<SVGTextElement>('text', {
+          class: 'ara-donut-center-label',
+          x: cx,
+          y: firstY,
+          'font-size': String(fs.toFixed(2)),
+        });
+        wrapped.lines.forEach((line, i) => {
+          const tspan = svgEl<SVGTSpanElement>('tspan', {
+            x: cx,
+            y: (firstY + i * lineHeight).toFixed(2),
+          });
+          tspan.textContent = line;
+          text.appendChild(tspan);
+        });
+        svg.appendChild(text);
+      }
     }
     svgWrap.appendChild(svg);
     el.appendChild(svgWrap);
