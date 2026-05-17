@@ -330,5 +330,16 @@
     "source": "workflow_dispatch",
     "prompt": "CXMT Corporation",
     "tags": []
+  },
+  {
+    "slug": "how-the-hbm-is-made",
+    "file": "2026-05-17T120250--how-the-hbm-is-made.html",
+    "kind": "fragment",
+    "title": "How HBM is made",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-17T12:02:50Z",
+    "source": "workflow_dispatch",
+    "prompt": "how the HBM is made",
+    "tags": []
   }
 ]
