@@ -5419,5 +5419,54 @@
     "headline": "SEMIANALYSIS PUBLISHES TECHNICAL BREAKDOWN OF GPT 4.6 \u2192 4.7 TOKENIZER IMPROVEMENTS",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2055815691211608442"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-17 04:53 UTC",
+    "headline": "CYBER SECURITY NEWS: MYTHOS PREVIEW USED TO CRACK APPLE M5 MEMORY INTEGRITY ENFORCEMENT \u2014 UNPRIVILEGED-TO-ROOT IN FIVE DAYS",
+    "source": "@The_Cyber_News",
+    "url": "https://x.com/The_Cyber_News/status/2055844038801338855"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-17 04:53 UTC",
+    "headline": "CARNEGIE MELLON V8 BENCHMARK: CLAUDE MYTHOS HITS FULL CODE-EXEC ON 21/41 V8 BUGS AT $36K \u2014 ~10-12X GPT-5.5 COST",
+    "source": "@codervibe__",
+    "url": "https://x.com/codervibe__/status/2055857797758124083"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-17 04:53 UTC",
+    "headline": "DEMIS HASSABIS RTs LOGAN KILPATRICK: ANTIGRAVITY TEAM HAS BEEN COOKING \u2014 FIRST DEEPMIND-PRINCIPAL TEASE 52H BEFORE I/O",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2055841459526307961"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-17 04:53 UTC",
+    "headline": "ANTHROPIC CORP ACCOUNT NOW ~58.5H SILENT THROUGH MYTHOS GCP LEAK, M5/V8 CAPABILITY CYCLE, AND CYBER-SECURITY-NEWS PICKUP",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-17 04:53 UTC",
+    "headline": "OPENAI CORP STILL SILENT ON MALTA SOVEREIGN DEAL ~12H AFTER BLOG \u2014 TECHMEME AND 10+ AGGREGATORS RUN STORY WITHOUT CORP ACK",
+    "source": "@Techmeme",
+    "url": "https://x.com/Techmeme/status/2055852380445712567"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-17 04:53 UTC",
+    "headline": "CODEX TEAM SOLICITS PUBLIC FRUSTRATIONS PRE-NEXT-MODEL \u2014 JASON LIU: 'HELP US IMPROVE THE NEXT MODEL' (267L/9RT)",
+    "source": "@jxnlco",
+    "url": "https://x.com/jxnlco/status/2055839784711446551"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-17 04:53 UTC",
+    "headline": "JENSEN AT STANFORD CS153: 'I WOULD LIKE TO BE AT LOW MFU ALL THE TIME' \u2014 OVERPROVISION FLOPS, NETWORKING, MEMORY",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2055835722783830311"
   }
 ]
