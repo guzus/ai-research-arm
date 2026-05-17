@@ -56,10 +56,26 @@ and opens a PR with methodology fixes.
 
 ## GitHub Actions Workflows
 
-All workflows use `runs-on: [self-hosted, Linux]`. There is no
-GitHub-hosted fallback. Claude workflows use
-`anthropics/claude-code-action@v1` with the model passed via
-`claude_args: "--model opus"` (never as a separate `model:` input).
+Workflows split between two runners:
+
+- **`runs-on: ubuntu-latest`** — stateless workflows (no bird-CLI state,
+  no LFS hydration, no Puppeteer/Chrome, no warm caches). These run on
+  GitHub-hosted runners so they don't queue behind the single self-hosted
+  job slot. Currently: `hourly-rss.yml`, `daily-arxiv.yml`,
+  `2h-bluesky.yml`, `daily-improve.yml`, `claude-code-review.yml`,
+  `claude.yml`, `liveness-check.yml`.
+- **`runs-on: [self-hosted, Linux]`** — workflows that genuinely need
+  the self-hosted runner's persistent state (bird CLI + birdy daemon,
+  LFS-hydrated `research/` checkout, Puppeteer/Chrome, large agent
+  pipelines). Currently: `hourly-twitter.yml`,
+  `hourly-twitter-deepseek-*.yml`, `daily-digest.yml`,
+  `daily-front-page.yml`, `generative-research.yml`,
+  `24h-model-timeline.yml`, `ai-news-research.yml`, `ci.yml`,
+  `research-issue.yml`, `4h-community.yml`.
+
+Claude workflows use `anthropics/claude-code-action@v1` with the model
+passed via `claude_args: "--model opus"` (never as a separate `model:`
+input).
 
 ### Aggregation (raw signal → `research/<source>/`)
 
@@ -183,10 +199,21 @@ output or break the pipeline. Read them before editing.
    `continue-on-error: true` style. Don't add hard dependencies on
    telemetry success.
 
-5. **Self-hosted runner is the only target.** All workflows pin
-   `runs-on: [self-hosted, Linux]`. Don't switch to
-   `ubuntu-latest`; the runner has bird CLI, yfinance, pnpm/Oracle,
-   and the right cookies/secrets baked in.
+5. **Runner choice is load-bearing — pick by state dependency.** Two
+   runners, two rules:
+   - **Self-hosted** for workflows that depend on baked-in state: bird
+     CLI + warm birdy daemon (`hourly-twitter*`, `24h-model-timeline`),
+     LFS-hydrated `research/` for prior-output context
+     (`daily-digest`, `daily-front-page`, `ci.yml` dashboard job),
+     Puppeteer/Chrome (`daily-front-page`), or pre-installed
+     pnpm/Oracle/yfinance.
+   - **`ubuntu-latest`** for stateless workflows. The self-hosted runner
+     processes one job at a time; stateless work on `ubuntu-latest`
+     frees that queue. See the "GitHub Actions Workflows" section for
+     the current split. Before flipping a workflow from self-hosted to
+     `ubuntu-latest`, verify it doesn't read pre-populated dirs, depend
+     on warm caches, or need bird/birdy state — the cost of getting
+     this wrong is a silently-broken pipeline.
 
 6. **bird CLI calls must be graceful.** Always pass `--json --plain`
    and pipe to a fallback (`|| echo "[]"`). The Twitter cookies expire;

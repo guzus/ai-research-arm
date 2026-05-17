@@ -12,7 +12,8 @@ concurrency:
 
 jobs:
   self-improve:
-    runs-on: [self-hosted, Linux]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
       pull-requests: write
