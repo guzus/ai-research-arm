@@ -69,3 +69,13 @@ python3 scripts/check_generative_research.py research/generative/<claude>.ara.md
 Then inspect the workflow "Article quality report" sections for words,
 distinct visualization types, callouts, citations, references, and
 standalone percentages in prose.
+
+## Hooker Telemetry
+
+Every generative-research run publishes a non-blocking summary to Hooker topic
+`ara-generative-telemetry` through `https://hooker.guzus.xyz` when
+`HOOKER_TOKEN` is configured in GitHub Actions. The message includes run status,
+backend, slug, output file, dashboard/GitHub links, model attempt outcomes, and
+the same final article quality metrics printed in the workflow log. Hooker stores
+the full structured telemetry object in the raw message payload so the topic can
+be streamed or queried while iterating on model prompts and workflow behavior.

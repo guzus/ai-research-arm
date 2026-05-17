@@ -1614,6 +1614,189 @@ jobs:
               body: body
             });
 
+      - name: Publish Hooker telemetry
+        if: always()
+        continue-on-error: true
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          HOOKER_TOPIC: ara-generative-telemetry
+          HAS_FILE: ${{ steps.outfile.outputs.has_file }}
+          FILE_NAME: ${{ steps.outfile.outputs.file }}
+          PUSHED: ${{ steps.push.outputs.pushed }}
+          BACKEND: ${{ steps.params.outputs.backend }}
+          GEN_TOPIC: ${{ steps.params.outputs.topic }}
+          GEN_SLUG: ${{ steps.params.outputs.slug }}
+          GEN_TAGS: ${{ steps.params.outputs.tags }}
+          GEN_SOURCE: ${{ steps.params.outputs.source }}
+          PRE_SHA: ${{ steps.pre.outputs.sha }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          EVENT_NAME: ${{ github.event_name }}
+          CLAUDE_OUTCOME: ${{ steps.gen-claude.outcome }}
+          DEEPSEEK_ATTEMPT_1_OUTCOME: ${{ steps.gen-deepseek.outcome }}
+          DEEPSEEK_RETRY_1_OUTCOME: ${{ steps.gen-deepseek-retry.outcome }}
+          DEEPSEEK_RETRY_2_OUTCOME: ${{ steps.gen-deepseek-retry-2.outcome }}
+        run: |
+          set -euo pipefail
+          token="${HOOKER_TOKEN:-${HOOKER_API_KEY:-}}"
+          if [ -z "$token" ]; then
+            echo "Hooker telemetry skipped: HOOKER_TOKEN/HOOKER_API_KEY is not configured"
+            exit 0
+          fi
+          hooker_url="${HOOKER_URL:-https://hooker.guzus.xyz}"
+          hooker_topic="${HOOKER_TOPIC:-ara-generative-telemetry}"
+          payload_dir="${RUNNER_TEMP:-${TMPDIR:-/tmp}}"
+          export HOOKER_PAYLOAD_PATH="$payload_dir/hooker-telemetry.json"
+          export HOOKER_IDEMPOTENCY_PATH="$payload_dir/hooker-telemetry.idempotency"
+          python3 - <<'PY'
+          import json
+          import os
+          import re
+          from collections import Counter
+          from pathlib import Path
+
+          def env(name: str, default: str = "") -> str:
+              return os.environ.get(name, default).strip()
+
+          has_file = env("HAS_FILE") == "true"
+          pushed = env("PUSHED") == "true"
+          file_name = env("FILE_NAME")
+          status = "published" if has_file and pushed else ("drafted_not_pushed" if has_file else "no_article")
+          priority = 4 if status == "published" else 5
+          tags = ["ara", "generative-research", env("BACKEND"), status]
+          tags.extend(t.strip() for t in env("GEN_TAGS").split(",") if t.strip())
+
+          metrics = {}
+          index_row = {}
+          article_url = ""
+          dashboard_url = ""
+          if has_file and file_name:
+              path = Path("research/generative") / file_name
+              if path.exists():
+                  html = path.read_text()
+                  classes = re.findall(r'class="(ara-[a-z0-9-]+(?:--[a-z0-9-]+)?)', html)
+                  counts = Counter(classes)
+                  viz = {
+                      "ara-line-chart", "ara-donut", "ara-slope", "ara-stack-bar",
+                      "ara-stack-rows", "ara-bars", "ara-rank-list", "ara-compare",
+                      "ara-iso", "ara-sparkline", "ara-timeline", "ara-kv",
+                  }
+                  fallback = {"ara-table", "ara-callout", "ara-quote"}
+                  viz_used = sorted(k for k in counts if k in viz)
+                  stripped = re.sub(
+                      r'<(span|div)[^>]*class="ara-(bar-value|stat-value|rank-value|compare-value)"[^>]*>.*?</\1>',
+                      " ",
+                      html,
+                      flags=re.DOTALL,
+                  )
+                  stripped = re.sub(r"<[^>]+>", " ", stripped)
+                  metrics = {
+                      "bytes": len(html),
+                      "words_approx": len(stripped.split()),
+                      "distinct_viz_types": len(viz_used),
+                      "viz_types": viz_used,
+                      "viz_total_occurrences": sum(counts[k] for k in viz_used),
+                      "callouts": counts.get("ara-callout", 0),
+                      "fallback_table_callout_quote": sum(counts.get(k, 0) for k in fallback),
+                      "cites": counts.get("ara-cite", 0),
+                      "references": len(re.findall(r'id="ref-\d+"', html)),
+                      "standalone_percentages_in_prose": len(re.findall(r"\b\d+(?:\.\d+)?\s?%", stripped)),
+                  }
+              index_path = Path("research/generative/index.json")
+              if index_path.exists():
+                  rows = json.loads(index_path.read_text())
+                  index_row = next((r for r in rows if r.get("file") == file_name), {})
+              repo = env("REPO")
+              article_url = f"https://github.com/{repo}/blob/main/research/generative/{file_name}"
+              slug = index_row.get("slug") or env("GEN_SLUG")
+              if slug:
+                  dashboard_url = f"https://ara.guzus.xyz/research/{slug}"
+
+          outcomes = {
+              k: v for k, v in {
+                  "claude": env("CLAUDE_OUTCOME"),
+                  "deepseek_attempt_1": env("DEEPSEEK_ATTEMPT_1_OUTCOME"),
+                  "deepseek_retry_1": env("DEEPSEEK_RETRY_1_OUTCOME"),
+                  "deepseek_retry_2": env("DEEPSEEK_RETRY_2_OUTCOME"),
+              }.items() if v
+          }
+          payload = {
+              "status": status,
+              "backend": env("BACKEND"),
+              "topic": env("GEN_TOPIC"),
+              "slug": index_row.get("slug") or env("GEN_SLUG"),
+              "tags": tags,
+              "source": env("GEN_SOURCE"),
+              "file": file_name,
+              "pushed": pushed,
+              "run_url": env("RUN_URL"),
+              "run_id": env("RUN_ID"),
+              "run_attempt": env("RUN_ATTEMPT"),
+              "event": env("EVENT_NAME"),
+              "pre_sha": env("PRE_SHA"),
+              "article_url": article_url,
+              "dashboard_url": dashboard_url,
+              "article": index_row,
+              "quality": metrics,
+              "model_step_outcomes": outcomes,
+          }
+
+          lines = [
+              f"Status: {status}",
+              f"Backend: {payload['backend']}",
+              f"Topic: {payload['topic']}",
+              f"Slug: {payload['slug'] or '(generated)'}",
+              f"File: {file_name or '(none)'}",
+              f"Pushed: {str(pushed).lower()}",
+              f"Run: {payload['run_url']}",
+          ]
+          if dashboard_url:
+              lines.append(f"Dashboard: {dashboard_url}")
+          if article_url:
+              lines.append(f"GitHub: {article_url}")
+          if metrics:
+              lines.extend([
+                  "",
+                  "Quality",
+                  f"- words approx: {metrics['words_approx']}",
+                  f"- distinct viz types: {metrics['distinct_viz_types']} ({', '.join(metrics['viz_types']) or 'none'})",
+                  f"- callouts: {metrics['callouts']}",
+                  f"- cites: {metrics['cites']}",
+                  f"- references: {metrics['references']}",
+                  f"- standalone % in prose: {metrics['standalone_percentages_in_prose']}",
+              ])
+          if outcomes:
+              lines.append("")
+              lines.append("Model outcomes")
+              lines.extend(f"- {k}: {v}" for k, v in outcomes.items())
+
+          body = {
+              "title": f"ARA generative research: {status}",
+              "text": "\n".join(lines),
+              "priority": priority,
+              "tags": sorted(set(t for t in tags if t)),
+              "parse_mode": "HTML",
+              "payload": payload,
+              "reply_markup": {
+                  "inline_keyboard": [[
+                      {"text": "GitHub run", "url": payload["run_url"]},
+                      *([{"text": "Dashboard", "url": dashboard_url}] if dashboard_url else []),
+                  ]]
+              },
+          }
+          idempotency = f"ara-generative-telemetry-{payload['run_id']}-{payload['run_attempt']}-{status}"
+          Path(env("HOOKER_PAYLOAD_PATH")).write_text(json.dumps(body))
+          Path(env("HOOKER_IDEMPOTENCY_PATH")).write_text(idempotency)
+          PY
+          curl -sS --fail-with-body -X POST "${hooker_url%/}/publish/$hooker_topic" \
+            -H "Authorization: Bearer $token" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: $(cat "$HOOKER_IDEMPOTENCY_PATH")" \
+            --data-binary "@$HOOKER_PAYLOAD_PATH"
+
       - name: Fail DeepSeek run without article
         if: always() && steps.params.outputs.backend == 'deepseek-v4-pro' && steps.outfile.outputs.has_file != 'true'
         run: |
