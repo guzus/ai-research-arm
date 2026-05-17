@@ -284,5 +284,22 @@
     "source": "workflow_dispatch",
     "prompt": "$BOT by andrew kang",
     "tags": []
+  },
+  {
+    "slug": "home-inference-rack",
+    "file": "2026-05-17T080250--home-inference-rack.html",
+    "kind": "fragment",
+    "title": "The Home Inference Rack",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-17T08:02:50Z",
+    "source": "workflow_dispatch",
+    "prompt": "The Home Inference Rack: can a Mac mini plus consumer GPU fleet beat cloud APIs?",
+    "tags": [
+      "local-ai",
+      "home-inference",
+      "hardware",
+      "mac-mini",
+      "gpu-fleet"
+    ]
   }
 ]
