@@ -307,7 +307,7 @@ The pipeline includes a **self-improving meta-workflow** (`daily-improve.yml`) t
 
 This creates a feedback loop where the system continuously improves its own methodology.
 
-See [IMPROVEMENTS_LOG.md](./IMPROVEMENTS_LOG.md) for improvement history and future ideas.
+See [docs/archive/](./docs/archive/) for improvement history and prior ideas.
 
 ## Resources
 
