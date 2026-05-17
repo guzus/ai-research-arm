@@ -12,11 +12,14 @@ on:
 
 jobs:
   claude-review:
-    # Optional: Filter by PR author
-    # if: |
-    #   github.event.pull_request.user.login == 'external-contributor' ||
-    #   github.event.pull_request.user.login == 'new-developer' ||
-    #   github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
+    # Security: gate on author_association. PR bodies/titles/diffs are
+    # attacker-controlled text and flow into Claude's prompt context. Only
+    # trusted associations get auto-review; PRs from outside contributors
+    # are skipped entirely. There is no manual override here yet — a
+    # maintainer who wants to review an external PR should fetch it
+    # locally and use `claude` directly (or add a workflow_dispatch
+    # trigger with a `pr_number` input in a follow-up).
+    if: contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.pull_request.author_association)
 
     runs-on: [self-hosted, Linux]
     permissions:
