@@ -273,5 +273,16 @@
       "deepseek",
       "qa"
     ]
+  },
+  {
+    "slug": "bot-by-andrew-kang",
+    "file": "2026-05-17T045233--bot-by-andrew-kang.html",
+    "kind": "fragment",
+    "title": "$BOT by Andrew Kang",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-17T04:52:33Z",
+    "source": "workflow_dispatch",
+    "prompt": "$BOT by andrew kang",
+    "tags": []
   }
 ]
