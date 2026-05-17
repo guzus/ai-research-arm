@@ -341,5 +341,16 @@
     "source": "workflow_dispatch",
     "prompt": "how the HBM is made",
     "tags": []
+  },
+  {
+    "slug": "sive-company",
+    "file": "2026-05-17T174142--sive-company.html",
+    "kind": "fragment",
+    "title": "Sivers Semiconductors: an 18× repricing, a Glasgow InP fab, and the credible squeeze in the External Light Source slot",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-17T17:41:42Z",
+    "source": "claude",
+    "prompt": "SIVE company",
+    "tags": []
   }
 ]
