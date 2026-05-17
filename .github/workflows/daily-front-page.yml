@@ -1,9 +1,17 @@
 name: Daily Front Page
 
+# Triggered when the Daily AI Digest workflow finishes successfully on main.
+# Previously this ran on a 30-minute-delayed cron (`30 0 * * *`), which
+# silently no-op'd whenever the Opus-driven digest run exceeded 30 min on
+# the self-hosted runner (it gates on the digest file existing — see
+# `Check digest exists` below). The workflow_run trigger removes the
+# clock-based race entirely. `workflow_dispatch` is retained as a manual
+# fallback for backfills.
 on:
-  schedule:
-    # Run at 00:30 UTC, 30 minutes after digest
-    - cron: '30 0 * * *'
+  workflow_run:
+    workflows: ["Daily AI Digest (All Sources)"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 concurrency:
@@ -13,6 +21,10 @@ concurrency:
 jobs:
   front-page:
     runs-on: [self-hosted, Linux]
+    # Only run when the digest succeeded, OR when a human dispatched us.
+    # `workflow_run.conclusion` is empty on workflow_dispatch, so we must
+    # explicitly allow that event or the manual fallback silently no-ops.
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     permissions:
       contents: write
       id-token: write

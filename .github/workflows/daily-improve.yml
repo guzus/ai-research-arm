@@ -31,12 +31,26 @@ jobs:
           echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -v-1d +'%Y-%m-%d')" >> $GITHUB_OUTPUT
           echo "branch=improve/$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
+      # Set authenticated remote URL so Claude's `git push` (inside the
+      # sandboxed Bash(git:*) tool) can reach the origin without re-running
+      # `git remote set-url` from inside the agent prompt.
+      - name: Configure authenticated git remote
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+
       - name: Analyze and Improve Methodology
         uses: anthropics/claude-code-action@v1
+        env:
+          # `gh pr create` invoked from the agent prompt needs GH_TOKEN.
+          # Without this the agent silently fails at the PR-create step
+          # even when Bash(gh:*) is in the allowlist.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*),WebSearch"
+            --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*),Bash(gh:*),WebSearch"
           prompt: |
             You are an AI research methodology optimizer. Analyze yesterday's output quality and propose improvements.
 
