@@ -87,10 +87,15 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # The `schedule:` keys are matched against github.event.schedule
-          # by the `if:` filter below. `event:` restricts each entry to a
-          # single trigger type so cron-driven runs don't activate the
-          # dispatch entry, and vice versa.
+          # Trigger-vs-entry filtering happens INSIDE the first step
+          # (the `Resolve backend` step's `skip` output) — `matrix.*`
+          # is NOT available in `jobs.<job_id>.if` per
+          # https://docs.github.com/en/actions/reference/contexts-reference
+          # (only github/needs/vars/inputs are evaluated before the
+          # matrix is expanded), so the filtering must run from inside a
+          # step where steps.if can read matrix.event / matrix.schedule.
+          # Wasted-job cost: each cron trigger creates 3 jobs and 2 of
+          # them exit at step 1.
           - backend: claude
             event: schedule
             schedule: '7 */3 * * *'
@@ -100,22 +105,40 @@ jobs:
           # workflow_dispatch path — single entry, runtime-resolved.
           - backend: dispatch
             event: workflow_dispatch
-    if: >-
-      (github.event_name == 'schedule' && matrix.event == 'schedule' && matrix.schedule == github.event.schedule)
-      || (github.event_name == 'workflow_dispatch' && matrix.event == 'workflow_dispatch')
 
     steps:
-      # ── Resolve backend for this run ───────────────────────────────
-      # When matrix.backend == 'dispatch' we read inputs.backend; otherwise
-      # we use matrix.backend directly. Every later step reads
-      # steps.backend.outputs.name instead of matrix.backend.
+      # ── Resolve backend for this run + trigger gate ────────────────
+      # 1. Decide whether this matrix entry matches the current trigger.
+      #    If not, set skip=true and short-circuit every later step.
+      # 2. If matched: when matrix.backend == 'dispatch' read inputs.backend;
+      #    otherwise use matrix.backend directly. All later steps read
+      #    steps.backend.outputs.name instead of matrix.backend.
       - name: Resolve backend
         id: backend
         env:
+          EVENT_NAME: ${{ github.event_name }}
+          MATRIX_EVENT: ${{ matrix.event }}
+          MATRIX_SCHEDULE: ${{ matrix.schedule }}
+          ACTUAL_SCHEDULE: ${{ github.event.schedule }}
           MATRIX_BACKEND: ${{ matrix.backend }}
           INPUT_BACKEND: ${{ inputs.backend }}
         run: |
           set -euo pipefail
+
+          # Match this matrix entry against the current trigger.
+          MATCH=false
+          if [ "$EVENT_NAME" = "schedule" ] && [ "$MATRIX_EVENT" = "schedule" ] && [ "$MATRIX_SCHEDULE" = "$ACTUAL_SCHEDULE" ]; then
+            MATCH=true
+          elif [ "$EVENT_NAME" = "workflow_dispatch" ] && [ "$MATRIX_EVENT" = "workflow_dispatch" ]; then
+            MATCH=true
+          fi
+
+          if [ "$MATCH" != "true" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Matrix entry skipped: event=$EVENT_NAME matrix.event=$MATRIX_EVENT matrix.schedule='${MATRIX_SCHEDULE}' actual.schedule='${ACTUAL_SCHEDULE}'"
+            exit 0
+          fi
+
           if [ "$MATRIX_BACKEND" = "dispatch" ]; then
             BACKEND="${INPUT_BACKEND:-claude}"
           else
@@ -125,15 +148,20 @@ jobs:
             claude|deepseek-agentic|deepseek-pi) ;;
             *) echo "::error::Unknown backend '$BACKEND'"; exit 1 ;;
           esac
-          echo "name=${BACKEND}" >> "$GITHUB_OUTPUT"
+          {
+            echo "skip=false"
+            echo "name=${BACKEND}"
+          } >> "$GITHUB_OUTPUT"
           echo "Resolved backend: ${BACKEND}"
 
       - name: Checkout repository
+        if: steps.backend.outputs.skip != 'true'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Get current datetime
+        if: steps.backend.outputs.skip != 'true'
         id: datetime
         run: |
           {
@@ -144,6 +172,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
+        if: steps.backend.outputs.skip != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -170,6 +199,7 @@ jobs:
       # Note: bird CLI + birdy install moved into the twitter-fetch composite
       # action (used below). Pin lives there.
       - name: Compute backend constants
+        if: steps.backend.outputs.skip != 'true'
         id: const
         env:
           BACKEND: ${{ steps.backend.outputs.name }}
@@ -246,6 +276,7 @@ jobs:
 
       # ── Shared fetch (bird + birdy multi-fetch + optional helpers) ─
       - name: Fetch twitter snapshot
+        if: steps.backend.outputs.skip != 'true'
         uses: ./.github/actions/twitter-fetch
         with:
           bird_auth_token: ${{ secrets.BIRD_AUTH_TOKEN }}
@@ -284,6 +315,7 @@ jobs:
       # `prompt` (full multi-line string, for claude-code-action which has
       # no `prompt_file:` input).
       - name: Render twitter-analyst prompt
+        if: steps.backend.outputs.skip != 'true'
         id: render
         uses: ./.github/actions/render-twitter-prompt
         with:
@@ -460,24 +492,44 @@ jobs:
             --timestamp "$TIMESTAMP"
 
       # ── Push the markdown digest + summary (all tiers, not on dry-run) ──
+      # Note on push semantics (codex [P2] fix): a `git push` exit-non-zero
+      # is treated as a HARD FAILURE here. Previously this step swallowed
+      # push errors (auth, non-fast-forward, network) and let downstream
+      # Hooker/Telegram steps notify users about content that never
+      # actually landed on main. `git push` exits 0 when there's nothing
+      # to push, so the no-op case still leaves `pushed=false` without
+      # erroring. Real push errors now propagate.
       - name: Push changes
         if: >-
-          !(github.event_name == 'workflow_dispatch' && steps.backend.outputs.name == 'claude' && inputs.dry_run == true)
+          steps.backend.outputs.skip != 'true'
+          && !(github.event_name == 'workflow_dispatch' && steps.backend.outputs.name == 'claude' && inputs.dry_run == true)
         id: push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -euo pipefail
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
+
           # Other workflows commit to main on different paths between
           # our checkout and now; rebase so this push is fast-forward.
           # Token is already on the remote URL above so auth works.
           git pull --rebase || { git rebase --abort 2>/dev/null || true; exit 1; }
-          if git push; then
-            echo "pushed=true" >> "$GITHUB_OUTPUT"
-          else
+
+          # Capture HEAD before push so we can tell "no commits to push"
+          # (model wrote nothing this cycle, pushed=false, step still
+          # succeeds) from "push failed" (pushed=false, step errors).
+          PRE_HEAD=$(git rev-parse HEAD)
+          UPSTREAM_HEAD=$(git rev-parse '@{u}' 2>/dev/null || echo "")
+
+          if [ "$PRE_HEAD" = "$UPSTREAM_HEAD" ]; then
             echo "pushed=false" >> "$GITHUB_OUTPUT"
-            echo "Nothing to push"
+            echo "Nothing to push — HEAD matches upstream"
+            exit 0
           fi
+
+          # Real push — failure is fatal (no false-positive notifications).
+          git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
 
       # ── Vercel deploy hook (claude tier only) ──────────────────────
       # Vercel's GitHub App webhook should fire on bot pushes too, but
@@ -872,8 +924,12 @@ jobs:
           echo "::notice::Auto-dispatched generative-research: ${TOPIC}"
 
       # ── Hooker telemetry (all tiers, always) ───────────────────────
+      # Telemetry runs on success/failure of the real-work jobs only —
+      # skipped matrix entries (those that didn't match the trigger)
+      # would otherwise produce noisy "ok"/"unknown" telemetry every
+      # cycle. always() still fires for the genuine job's failure mode.
       - name: Publish Hooker workflow telemetry
-        if: always()
+        if: always() && steps.backend.outputs.skip != 'true'
         uses: ./.github/actions/hooker-telemetry
         with:
           status: ${{ job.status }}
