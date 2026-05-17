@@ -77,7 +77,7 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
             --model opus
-            --allowedTools "Read,Write,WebSearch,WebFetch,Bash"
+            --allowedTools "Read,Write,WebSearch,WebFetch,Bash(curl:*),Bash(base64:*),Bash(ls:*),Bash(cat:*)"
           prompt: |
             You are a newspaper layout designer. Read today's AI digest and create a visually stunning
             newspaper-style HTML front page WITH IMAGES.
