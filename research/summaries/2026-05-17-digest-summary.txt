@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-05-17
+
+TOP STORIES:
+• Musk v. Altman jury begins deliberations Monday — advisory verdict on charitable-trust breach; Judge "very likely to follow"
+• Anthropic $30B / $900B pre-money firms up — Sequoia, Dragoneer, Greenoaks, Altimeter co-lead; Oct 2026 IPO target
+• Codex GPT-5.5 ~48h regression confirmed and fixed — Sottiaux's "two issues" supersedes Altman's "got used to the magic" framing
+
+KEY NUMBERS:
+• Anthropic ARR ~$45B (Claude Code alone >$2.5B); valuation ~$48B above OpenAI's $852B
+• NVIDIA Nemotron 3 Ultra ~500B pretrained natively in NVFP4 (4-bit)
+• Cerebras (CBRS) Day-2 close $279.72, down 10%, ~$85B implied
+• Cloudflare cuts ~1,100 (~20%); 92K+ tech layoffs YTD
+
+TRENDING: "Entire companies under AI psychosis" (Mitchell Hashimoto) — 1,770 pts on HN
+
+Full digest on GitHub.
