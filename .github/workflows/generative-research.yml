@@ -315,7 +315,7 @@ jobs:
       # The workflow_dispatch path has no comment surface; skip.
       - name: Acknowledge research request
         if: github.event_name == 'issues'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             await github.rest.issues.createComment({
@@ -1852,7 +1852,7 @@ jobs:
 
       - name: Post results to issue
         if: always() && github.event_name == 'issues'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           HAS_FILE: ${{ steps.outfile.outputs.has_file }}
           FILE_NAME: ${{ steps.outfile.outputs.file }}
