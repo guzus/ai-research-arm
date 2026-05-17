@@ -319,5 +319,16 @@
       "llama-cpp",
       "qwen"
     ]
+  },
+  {
+    "slug": "cxmt-corporation",
+    "file": "2026-05-17T105414--cxmt-corporation.html",
+    "kind": "fragment",
+    "title": "CXMT comes into focus: a Hefei-financed fourth player rewrites the global DRAM map",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-17T10:54:14Z",
+    "source": "workflow_dispatch",
+    "prompt": "CXMT Corporation",
+    "tags": []
   }
 ]
