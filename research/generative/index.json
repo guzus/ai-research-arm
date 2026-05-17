@@ -301,5 +301,23 @@
       "mac-mini",
       "gpu-fleet"
     ]
+  },
+  {
+    "slug": "mtp-speculative-decoding-home-inference",
+    "file": "2026-05-17T081341--mtp-speculative-decoding-home-inference.html",
+    "kind": "fragment",
+    "title": "The home inference math just changed: MTP and speculative decoding break the batch-1 ceiling",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-17T08:13:41Z",
+    "source": "workflow_dispatch",
+    "prompt": "MTP and speculative decoding change the home inference math",
+    "tags": [
+      "local-ai",
+      "inference",
+      "mtp",
+      "speculative-decoding",
+      "llama-cpp",
+      "qwen"
+    ]
   }
 ]
