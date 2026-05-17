@@ -13,11 +13,11 @@ and stop until they answer.
 ## What this does
 
 Dispatches the `generative-research.yml` GitHub Actions workflow
-with `backend=deepseek-v4-pro` by default (DeepSeek V4 Pro via
-DeepSeek's Anthropic-compatible endpoint). Use `backend=claude` for the
-Claude Opus 4.7 comparison baseline. The workflow
-runs on the self-hosted Linux runner and executes the full deep
-pipeline documented in the workflow file:
+with `backend=claude` by default (Claude Opus 4.7 via
+anthropics/claude-code-action@v1). Use `backend=deepseek-v4-pro` for
+the DeepSeek V4 Pro comparison baseline (DeepSeek's Anthropic-compatible
+endpoint). The workflow runs on the self-hosted Linux runner and
+executes the full deep pipeline documented in the workflow file:
 
 - 16–32 evidence-collection sub-agents (waves of ≤8)
 - 5–10 section-writer sub-agents (waves of ≤4)
@@ -46,12 +46,13 @@ Runtime is typically 20–45 min depending on topic complexity.
    ```bash
    gh workflow run generative-research.yml \
      -f topic="$ARGUMENTS" \
-     -f backend=deepseek-v4-pro
+     -f backend=claude
    ```
 
    If the user passed a brief in their topic that mentions
-   `backend: claude`, honor it by switching `-f backend=claude`
-   instead. Otherwise default to `deepseek-v4-pro`.
+   `backend: deepseek-v4-pro` (or `backend: deepseek`), honor it by
+   switching `-f backend=deepseek-v4-pro` instead. Otherwise default
+   to `claude`.
 
 3. **Wait a few seconds for the run to register, then look it up.**
    GitHub takes a moment to enqueue dispatched runs:
