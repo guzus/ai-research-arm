@@ -4,7 +4,7 @@ name: Generative Research
 # scripts/write_generative_research.py for the dashboard's "research" tab.
 #
 # Two entry points:
-#   1. Issue labeled `gen-research` — title is the topic, body is the prompt.
+#   1. Issue created with or labeled `gen-research` — title is the topic, body is the prompt.
 #   2. workflow_dispatch — topic/slug/backend/tags are explicit inputs.
 #
 # Two backends, mutually exclusive at runtime:
@@ -23,7 +23,7 @@ name: Generative Research
 
 on:
   issues:
-    types: [labeled]
+    types: [opened, labeled]
   workflow_dispatch:
     inputs:
       topic:
@@ -37,7 +37,7 @@ on:
       backend:
         description: 'Which model/backend to run'
         required: false
-        default: deepseek-v4-pro
+        default: claude
         type: choice
         options:
           - deepseek-v4-pro
@@ -67,11 +67,20 @@ concurrency:
 
 jobs:
   generative-research:
-    # Run on workflow_dispatch unconditionally; on issues only when the
-    # `gen-research` label is added. Without this guard, every label event
-    # would queue a job. Mirrors research-issue.yml's pattern, but extended
-    # to cover the workflow_dispatch path (where github.event.label is null).
-    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'issues' && github.event.label.name == 'gen-research')
+    # Run on workflow_dispatch unconditionally; on issues when either:
+    # - an issue is opened with the `gen-research` label already attached
+    #   (the dashboard request button pre-fills labels in the new-issue URL)
+    # - the `gen-research` label is added later.
+    # The opened guard keeps ordinary issues from queueing research jobs.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event_name == 'issues' &&
+        (
+          (github.event.action == 'labeled' && github.event.label.name == 'gen-research') ||
+          (github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'gen-research'))
+        )
+      )
     runs-on: [self-hosted, Linux]
     permissions:
       contents: write
@@ -115,14 +124,14 @@ jobs:
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             TOPIC="$INPUT_TOPIC"
             SLUG="$INPUT_SLUG"
-            BACKEND="${INPUT_BACKEND:-deepseek-v4-pro}"
+            BACKEND="${INPUT_BACKEND:-claude}"
             TAGS="$INPUT_TAGS"
             SOURCE="workflow_dispatch"
             PROMPT="$TOPIC"
           else
             TOPIC="$ISSUE_TITLE"
             SLUG=""
-            BACKEND="deepseek-v4-pro"
+            BACKEND="claude"
             TAGS=""
             SOURCE="issue"
             # Default PROMPT to the title; if the body has substantive content
