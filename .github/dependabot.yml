@@ -3,7 +3,10 @@
 # Scope notes:
 # - github-actions: scans .github/workflows/*.yml for `uses:` action refs.
 #   Bumps things like actions/checkout@v4, anthropics/claude-code-action@v1.
-# - pip: scans requirements.txt at repo root. Bumps yfinance, pyyaml.
+# - pip: scans requirements*.txt at repo root. Bumps pyyaml
+#   (requirements.txt, hard-required) and yfinance (requirements-optional.txt,
+#   best-effort). Split so a flaky optional install can't take down the
+#   hard-required path.
 # - npm (/dashboard): scans dashboard/package.json. Bumps dompurify, marked,
 #   typescript, vite. The dashboard has its own lockfile lifecycle separate
 #   from workflow deps.
