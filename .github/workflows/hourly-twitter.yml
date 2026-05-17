@@ -1,30 +1,133 @@
-name: Twitter AI News (Every 3 Hours)
+name: Twitter AI News (matrix — claude / deepseek-agentic / deepseek-pi)
+
+# Unified Twitter/X pipeline that fans out across three backend tiers:
+#   - claude            (cron '7 */3 * * *', model: opus,             output → research/twitter/)
+#   - deepseek-agentic  (cron '37 */6 * * *', model: deepseek-v4-pro,  output → research/twitter-deepseek/)
+#   - deepseek-pi       (manual only,        model: deepseek-v4-pro via pi harness,
+#                        output → research/twitter-deepseek-pi/)
+#
+# Routing rules:
+#   - schedule trigger → backend resolved from github.event.schedule by the
+#     matrix `include` list. Each cron only activates the matrix entry
+#     whose `schedule` field matches, so the active matrix size is 1.
+#   - workflow_dispatch → backend resolved from inputs.backend (default: claude).
+#
+# The three backends share:
+#   - .github/actions/twitter-fetch          (bird + birdy multi-fetch + optional pre-filter + optional aggregate)
+#   - .github/actions/birdy-daemon           (warm daemon + bird-fast wrapper, used by claude + deepseek-agentic)
+#   - .github/actions/render-twitter-prompt  (substitute {{placeholders}} in prompts/twitter-analyst.md)
+#   - prompts/twitter-analyst.md             (one prompt body with {{placeholders}} for tier-specific values)
+#
+# History (collapsed from three workflows in #PR-twitter-matrix):
+#   - hourly-twitter.yml                       (Claude tier)
+#   - hourly-twitter-deepseek-agentic.yml      (DeepSeek-via-Anthropic-shim tier)
+#   - hourly-twitter-deepseek-pi.yml           (DeepSeek-via-pi-harness tier)
+#
+# Required secrets:
+#   CLAUDE_CODE_OAUTH_TOKEN              — claude tier (also passed to deepseek-agentic but unused there)
+#   DEEPSEEK_API_KEY                     — both deepseek tiers
+#   BIRD_AUTH_TOKEN, BIRD_CT0            — all tiers
+#   HOOKER_URL, HOOKER_TOKEN             — claude tier (headline-alert blast + telemetry)
+#   TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID — deepseek tiers (per-cycle Telegram message)
+#   VERCEL_DEPLOY_HOOK                   — optional, claude tier only
 
 on:
   schedule:
-    # Run every 3 hours at minute 7
+    # claude tier: every 3 hours at minute 7.
     - cron: '7 */3 * * *'
+    # deepseek-agentic tier: every 6 hours at minute 37. Offset 30min from
+    # the nearest claude run so neither hits bird CLI at the same time.
+    # Slots are 00:37, 06:37, 12:37, 18:37 UTC.
+    - cron: '37 */6 * * *'
   workflow_dispatch:
     inputs:
+      backend:
+        description: Which backend tier to run.
+        required: false
+        default: claude
+        type: choice
+        options:
+          - claude
+          - deepseek-agentic
+          - deepseek-pi
       dry_run:
-        description: 'Run without pushing, deploying, or sending Hooker alerts'
+        description: Claude tier only — render fixture, skip push/deploy/alerts.
         required: false
         default: false
         type: boolean
 
+# Per-backend concurrency groups: each tier serializes against itself
+# (cron-driven and manually-dispatched runs of the same backend land
+# in the same group, so they queue/cancel against each other) but the
+# three tiers can run in parallel when their schedules collide.
+#
+# For workflow_dispatch we read inputs.backend. For schedule we map
+# the cron expression to a backend label inline — keeping the
+# expression in one place so the dispatch-vs-cron mapping is obvious.
+# `cancel-in-progress: false`: a running brief is preserved if a new
+# cron fires (the writer would otherwise be killed mid-Hooker-batch).
 concurrency:
-  group: hourly-twitter-${{ github.ref }}
-  cancel-in-progress: true
+  # Guard inputs.backend with an event-name check: in recent GHA,
+  # inputs.* is populated with `default:` values across all event types,
+  # so on a cron trigger `inputs.backend` would silently resolve to
+  # 'claude' and collapse both cron tiers into the same concurrency
+  # group. Reading inputs.backend ONLY when we're actually on a dispatch
+  # trigger keeps the cron→backend mapping intact.
+  group: hourly-twitter-${{ (github.event_name == 'workflow_dispatch' && inputs.backend) || (github.event.schedule == '7 */3 * * *' && 'claude') || (github.event.schedule == '37 */6 * * *' && 'deepseek-agentic') || 'unknown' }}
+  cancel-in-progress: false
 
 jobs:
-  twitter-news:
+  twitter:
     runs-on: [self-hosted, Linux]
     permissions:
       contents: write
       actions: write
       id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # The `schedule:` keys are matched against github.event.schedule
+          # by the `if:` filter below. `event:` restricts each entry to a
+          # single trigger type so cron-driven runs don't activate the
+          # dispatch entry, and vice versa.
+          - backend: claude
+            event: schedule
+            schedule: '7 */3 * * *'
+          - backend: deepseek-agentic
+            event: schedule
+            schedule: '37 */6 * * *'
+          # workflow_dispatch path — single entry, runtime-resolved.
+          - backend: dispatch
+            event: workflow_dispatch
+    if: >-
+      (github.event_name == 'schedule' && matrix.event == 'schedule' && matrix.schedule == github.event.schedule)
+      || (github.event_name == 'workflow_dispatch' && matrix.event == 'workflow_dispatch')
 
     steps:
+      # ── Resolve backend for this run ───────────────────────────────
+      # When matrix.backend == 'dispatch' we read inputs.backend; otherwise
+      # we use matrix.backend directly. Every later step reads
+      # steps.backend.outputs.name instead of matrix.backend.
+      - name: Resolve backend
+        id: backend
+        env:
+          MATRIX_BACKEND: ${{ matrix.backend }}
+          INPUT_BACKEND: ${{ inputs.backend }}
+        run: |
+          set -euo pipefail
+          if [ "$MATRIX_BACKEND" = "dispatch" ]; then
+            BACKEND="${INPUT_BACKEND:-claude}"
+          else
+            BACKEND="$MATRIX_BACKEND"
+          fi
+          case "$BACKEND" in
+            claude|deepseek-agentic|deepseek-pi) ;;
+            *) echo "::error::Unknown backend '$BACKEND'"; exit 1 ;;
+          esac
+          echo "name=${BACKEND}" >> "$GITHUB_OUTPUT"
+          echo "Resolved backend: ${BACKEND}"
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -61,218 +164,150 @@ jobs:
           echo "Disk after:"
           df -h / 2>&1 | tail -2
 
-      - name: Install bird CLI
-        # pinned 2026-05-17; bump manually (Dependabot can't track inline npm -g installs)
-        run: npm install -g @steipete/bird@0.8.0
-
-      - name: Install birdy from GitHub release
+      # ── Per-backend constants ──────────────────────────────────────
+      # Centralized routing table so downstream steps don't need case
+      # statements. One write here = many reads later.
+      # Note: bird CLI + birdy install moved into the twitter-fetch composite
+      # action (used below). Pin lives there.
+      - name: Compute backend constants
+        id: const
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BACKEND: ${{ steps.backend.outputs.name }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
         run: |
-          # Download pre-built birdy binary from the latest release —
-          # avoids needing Go toolchain (~150MB) on the self-hosted runner.
-          # The v0.9.0+ release includes the `multi-fetch` command.
-          set -e
-
-          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
-          ARCH=$(uname -m)
-          case "$ARCH" in
-            x86_64|amd64) ARCH=amd64 ;;
-            arm64|aarch64) ARCH=arm64 ;;
+          set -euo pipefail
+          case "$BACKEND" in
+            claude)
+              OUTPUT_DIR="research/twitter"
+              SUMMARY_SLUG="twitter"
+              TITLE_SUFFIX=""
+              CYCLE_HOURS=3
+              COMMIT_PREFIX="Twitter update"
+              FETCH_CONCURRENCY=8
+              PRE_FILTER=false
+              AGGREGATE=true
+              ENABLE_DAEMON=true
+              BIRD_BUDGET=20
+              CURL_BUDGET=4
+              HARNESS_LABEL="the production Claude Twitter/X AI monitor"
+              FEATURES="headlines,hooker-batch,auto-research,dry-run"
+              ;;
+            deepseek-agentic)
+              OUTPUT_DIR="research/twitter-deepseek"
+              SUMMARY_SLUG="twitter-deepseek"
+              TITLE_SUFFIX=" (DeepSeek v4 Pro)"
+              CYCLE_HOURS=6
+              COMMIT_PREFIX="Twitter (DeepSeek) update"
+              FETCH_CONCURRENCY=6
+              PRE_FILTER=true
+              AGGREGATE=false
+              ENABLE_DAEMON=true
+              BIRD_BUDGET=30
+              CURL_BUDGET=5
+              HARNESS_LABEL="on DeepSeek v4 Pro"
+              FEATURES="telegram"
+              ;;
+            deepseek-pi)
+              OUTPUT_DIR="research/twitter-deepseek-pi"
+              SUMMARY_SLUG="twitter-deepseek-pi"
+              TITLE_SUFFIX=" (pi + DeepSeek)"
+              CYCLE_HOURS=6
+              COMMIT_PREFIX="Twitter (pi+DeepSeek) update"
+              FETCH_CONCURRENCY=6
+              PRE_FILTER=false
+              AGGREGATE=false
+              ENABLE_DAEMON=false
+              BIRD_BUDGET=5
+              CURL_BUDGET=3
+              HARNESS_LABEL="on DeepSeek v4 Pro under the pi coding agent harness"
+              FEATURES="telegram"
+              ;;
           esac
-          ASSET="birdy_${OS}_${ARCH}.tar.gz"
+          {
+            echo "output_dir=${OUTPUT_DIR}"
+            echo "summary_slug=${SUMMARY_SLUG}"
+            echo "title_suffix=${TITLE_SUFFIX}"
+            echo "cycle_hours=${CYCLE_HOURS}"
+            echo "commit_prefix=${COMMIT_PREFIX}"
+            echo "fetch_concurrency=${FETCH_CONCURRENCY}"
+            echo "pre_filter=${PRE_FILTER}"
+            echo "aggregate=${AGGREGATE}"
+            echo "enable_daemon=${ENABLE_DAEMON}"
+            echo "bird_budget=${BIRD_BUDGET}"
+            echo "curl_budget=${CURL_BUDGET}"
+            echo "harness_label=${HARNESS_LABEL}"
+            echo "features=${FEATURES}"
+            echo "headlines_file=research/summaries/${DATE}-${SUMMARY_SLUG}-${HOUR}h-headlines.json"
+            echo "summary_file=research/summaries/${DATE}-${SUMMARY_SLUG}-${HOUR}h-summary.txt"
+          } >> "$GITHUB_OUTPUT"
+          echo "Backend constants for ${BACKEND}:"
+          grep -E '^[a-z_]+=' "$GITHUB_OUTPUT" | sed 's/^/  /'
 
-          TMPDIR=$(mktemp -d)
-          trap 'rm -rf "$TMPDIR"' EXIT
+      # ── Shared fetch (bird + birdy multi-fetch + optional helpers) ─
+      - name: Fetch twitter snapshot
+        uses: ./.github/actions/twitter-fetch
+        with:
+          bird_auth_token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird_ct0: ${{ secrets.BIRD_CT0 }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          concurrency: ${{ steps.const.outputs.fetch_concurrency }}
+          pre_filter: ${{ steps.const.outputs.pre_filter }}
+          aggregate: ${{ steps.const.outputs.aggregate }}
+          free_disk: 'true'
 
-          # Public repo, no auth needed — but use gh if available for redirect handling
-          curl -fsSL "https://github.com/guzus/birdy/releases/latest/download/${ASSET}" -o "$TMPDIR/$ASSET"
-          tar -xzf "$TMPDIR/$ASSET" -C "$TMPDIR"
+      # ── Start birdy daemon (claude + deepseek-agentic) ─────────────
+      # pi tier skips this — its harness uses plain `bird` only.
+      # claude tier also skips on dry_run.
+      - name: Start birdy daemon
+        if: >-
+          steps.const.outputs.enable_daemon == 'true'
+          && !(github.event_name == 'workflow_dispatch' && steps.backend.outputs.name == 'claude' && inputs.dry_run == true)
+        uses: ./.github/actions/birdy-daemon
+        with:
+          bird_auth_token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird_ct0: ${{ secrets.BIRD_CT0 }}
 
-          BIN="$TMPDIR/birdy"
-          [ -f "$BIN" ] || BIN="$TMPDIR/birdy_${OS}_${ARCH}"
-          if [ ! -f "$BIN" ]; then
-            echo "Could not find birdy binary in release tarball"
-            ls "$TMPDIR" >&2
-            exit 1
-          fi
+      # ── Install pi-coding-agent (deepseek-pi only) ─────────────────
+      - name: Install pi coding agent
+        if: steps.backend.outputs.name == 'deepseek-pi'
+        run: npm install -g @mariozechner/pi-coding-agent
 
-          sudo install -m 755 "$BIN" /usr/local/bin/birdy
-          birdy version 2>&1 | head -3 || echo "(birdy installed)"
-
-      - name: Fetch tweets, searches, and news via birdy multi-fetch
-        env:
-          # birdy's stateless account injection — no ~/.config/birdy file
-          # needed in CI. The store auto-loads BIRDY_ACCOUNTS on Open().
-          BIRDY_ACCOUNTS: '[{"name":"ci","auth_token":"${{ secrets.BIRD_AUTH_TOKEN }}","ct0":"${{ secrets.BIRD_CT0 }}"}]'
+      - name: Configure git identity (pi tier — no claude-code-action to do it)
+        if: steps.backend.outputs.name == 'deepseek-pi'
         run: |
-          mkdir -p /tmp/bird
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # AI Labs & Company accounts
-          # Added 2026-05-01: AIatMeta (real Meta AI account; @MetaAI is largely
-          # inactive), ClaudeDevs (official Anthropic developer announcements).
-          labs="OpenAI AnthropicAI GoogleAI GoogleDeepMind MistralAI MetaAI AIatMeta CohereAI AI21Labs StabilityAI HuggingFace NVIDIAAIDev ClaudeDevs"
+      # ── Render the shared prompt with backend-specific placeholders ─
+      # Emits two outputs: `rendered_path` (file path on disk, for pi) and
+      # `prompt` (full multi-line string, for claude-code-action which has
+      # no `prompt_file:` input).
+      - name: Render twitter-analyst prompt
+        id: render
+        uses: ./.github/actions/render-twitter-prompt
+        with:
+          backend: ${{ steps.backend.outputs.name }}
+          output_dir: ${{ steps.const.outputs.output_dir }}
+          summary_slug: ${{ steps.const.outputs.summary_slug }}
+          title_suffix: ${{ steps.const.outputs.title_suffix }}
+          cycle_hours: ${{ steps.const.outputs.cycle_hours }}
+          commit_prefix: ${{ steps.const.outputs.commit_prefix }}
+          bird_budget: ${{ steps.const.outputs.bird_budget }}
+          curl_budget: ${{ steps.const.outputs.curl_budget }}
+          harness_label: ${{ steps.const.outputs.harness_label }}
+          features: ${{ steps.const.outputs.features }}
+          date: ${{ steps.datetime.outputs.date }}
+          hour: ${{ steps.datetime.outputs.hour }}
+          timestamp: ${{ steps.datetime.outputs.timestamp }}
+          yesterday: ${{ steps.datetime.outputs.yesterday }}
 
-          # Hyperscalers — top execs and key insiders
-          # Added 2026-05-01: ilyasut (SSI/OpenAI cofounder), alexandr_wang
-          # (Meta CAIO ex-Scale), OriolVinyalsML (Gemini co-lead),
-          # woj_zaremba (OpenAI cofounder, AI resilience).
-          hyperscalers="elonmusk sama demishassabis OfficialLoganK alexalbert__ DrJimFan tszzl ilyasut alexandr_wang OriolVinyalsML woj_zaremba"
+      # ── LLM step (one per backend) ─────────────────────────────────
 
-          # Others — researchers, analysts, specialists, media
-          # Added 2026-05-01 from anchor-following discovery (≥3 anchors):
-          # jeremyphoward, soumithchintala, giffmana, arankomatsuzaki,
-          # percyliang, JonathanRoss321, hendrycks.
-          others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh jeremyphoward soumithchintala giffmana arankomatsuzaki percyliang JonathanRoss321 hendrycks"
-
-          # Build the manifest via Python (avoids jq's multi-line quoting
-          # issues inside YAML literal blocks): 50+ user-tweets ops + 7
-          # keyword searches + news. All ops run in parallel inside one Go
-          # process via birdy multi-fetch.
-          export HANDLES="$labs $hyperscalers $others"
-          python3 -c '
-          import json, os
-          handles = os.environ["HANDLES"].split()
-          ops = [
-              {"id": h, "args": ["user-tweets", "@" + h, "-n", "20", "--json", "--plain"]}
-              for h in handles if h
-          ] + [
-              {"id": "search-ai",         "args": ["search", "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama", "-n", "50", "--json", "--plain"]},
-              {"id": "search-extra",      "args": ["search", "AI breakthrough OR AI launch OR AI update OR foundation model", "-n", "30", "--json", "--plain"]},
-              {"id": "search-research",   "args": ["search", "AI paper OR machine learning research OR new benchmark OR state of the art SOTA", "-n", "30", "--json", "--plain"]},
-              {"id": "search-infra",      "args": ["search", "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU", "-n", "20", "--json", "--plain"]},
-              {"id": "search-policy",     "args": ["search", "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment", "-n", "20", "--json", "--plain"]},
-              {"id": "search-business",   "args": ["search", "AI startup funding OR AI acquisition OR AI valuation OR AI partnership", "-n", "20", "--json", "--plain"]},
-              {"id": "search-opensource", "args": ["search", "open source AI OR open weights OR AI API OR AI developer tools", "-n", "20", "--json", "--plain"]},
-              {"id": "news",              "args": ["news", "--ai-only", "-n", "40", "--json", "--plain"]},
-          ]
-          with open("/tmp/manifest.json", "w") as f:
-              json.dump({"operations": ops, "concurrency": 8}, f)
-          print(f"Built manifest: {len(ops)} ops")
-          '
-
-          echo "Manifest: $(jq '.operations | length' /tmp/manifest.json) ops, concurrency=$(jq '.concurrency' /tmp/manifest.json)"
-
-          # Single CLI invocation, parallel internally. birdy writes
-          # /tmp/bird/<id>.json for each op (and '[]' on op-level failure
-          # so downstream LLMs that read empty arrays still work).
-          birdy multi-fetch --manifest /tmp/manifest.json --output-dir /tmp/bird
-
-      - name: Aggregate bird JSONs into a single file (cuts Claude read overhead)
-        run: |
-          # Claude was doing 70 sequential Read tool calls (one per /tmp/bird/*.json),
-          # each turn paying ~300ms round-trip. Consolidating into one structured
-          # file with provenance reduces reads to 1, saving ~15-20s per run plus
-          # cutting the total turn count.
-          #
-          # Output schema:
-          #   {
-          #     "accounts":  {"OpenAI": [...], "sama": [...], ...},
-          #     "searches":  {"ai": [...], "extra": [...], "news": [...], ...},
-          #     "news":      [...],
-          #     "meta":      {"total_tweets": N, "non_empty_accounts": M, "generated_at": "..."}
-          #   }
-          python3 -c '
-          import json
-          from pathlib import Path
-          from datetime import datetime, timezone
-
-          bird = Path("/tmp/bird")
-          accounts, searches, news = {}, {}, []
-          total = 0
-          non_empty_accounts = 0
-
-          for f in sorted(bird.glob("*.json")):
-              if f.name in ("all.json", "manifest.json"):
-                  continue
-              try:
-                  data = json.loads(f.read_text() or "[]")
-              except Exception:
-                  continue
-              name = f.stem
-              if name == "news":
-                  news = data if isinstance(data, list) else []
-                  total += len(news)
-              elif name.startswith("search-"):
-                  key = name.removeprefix("search-")
-                  searches[key] = data if isinstance(data, list) else []
-                  total += len(searches[key])
-              else:
-                  arr = data if isinstance(data, list) else []
-                  accounts[name] = arr
-                  total += len(arr)
-                  if arr:
-                      non_empty_accounts += 1
-
-          out = {
-              "accounts": accounts,
-              "searches": searches,
-              "news": news,
-              "meta": {
-                  "total_tweets": total,
-                  "non_empty_accounts": non_empty_accounts,
-                  "monitored_accounts": len(accounts),
-                  "search_categories": len(searches),
-                  "trending_news_items": len(news),
-                  "generated_at": datetime.now(timezone.utc).isoformat(),
-              },
-          }
-          (bird / "all.json").write_text(json.dumps(out, separators=(",", ":")))
-          print(f"Aggregated: {len(accounts)} accounts ({non_empty_accounts} non-empty), "
-                f"{len(searches)} searches, {len(news)} news items, "
-                f"{total} tweets total")
-          '
-          echo "all.json size: $(wc -c < /tmp/bird/all.json) bytes"
-
-      - name: Start birdy daemon (warm bird API for Claude follow-ups)
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.dry_run != true }}
-        env:
-          BIRDY_ACCOUNTS: '[{"name":"ci","auth_token":"${{ secrets.BIRD_AUTH_TOKEN }}","ct0":"${{ secrets.BIRD_CT0 }}"}]'
-        run: |
-          nohup birdy daemon --addr 127.0.0.1:8080 --concurrency 8 --cache-ttl 60s \
-            > /tmp/birdy-daemon.log 2>&1 &
-          echo $! > /tmp/birdy-daemon.pid
-
-          for attempt in 1 2 3 4 5 6 7 8 9 10; do
-            sleep 1
-            if curl -fsS http://127.0.0.1:8080/health 2>/dev/null | grep -q '"ok":true'; then
-              echo "birdy daemon up: $(curl -sS http://127.0.0.1:8080/health)"
-              exit 0
-            fi
-            echo "Waiting for birdy daemon, attempt ${attempt}/10"
-          done
-          echo "birdy daemon did not become healthy in 10s:"
-          cat /tmp/birdy-daemon.log
-          exit 1
-
-      - name: Install bird-fast wrapper (calls daemon)
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.dry_run != true }}
-        run: |
-          sudo tee /usr/local/bin/bird-fast > /dev/null <<'WRAPPER'
-          #!/bin/bash
-          set -e
-          DAEMON_URL="${BIRDY_DAEMON_URL:-http://127.0.0.1:8080}"
-          PAYLOAD=$(printf '%s\n' "$@" | jq -Rs '{args: split("\n") | map(select(length > 0))}')
-          RESP=$(curl -sS -X POST "${DAEMON_URL}/run" \
-            -H "Content-Type: application/json" \
-            -d "$PAYLOAD")
-          OK=$(echo "$RESP" | jq -r '.ok // false')
-          if [ "$OK" = "true" ]; then
-            EXIT=$(echo "$RESP" | jq -r '.exit_code // 0')
-            echo "$RESP" | jq -r '.stdout // ""'
-            STDERR=$(echo "$RESP" | jq -r '.stderr // ""')
-            [ -n "$STDERR" ] && printf '%s' "$STDERR" >&2
-            exit "$EXIT"
-          else
-            echo "$RESP" | jq -r '.error // "unknown daemon error"' >&2
-            exit 1
-          fi
-          WRAPPER
-          sudo chmod +x /usr/local/bin/bird-fast
-          bird-fast whoami 2>&1 | head -3 || echo "(bird-fast wrapper installed)"
-
-      - name: Process tweets with Claude
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.dry_run != true }}
+      - name: Process tweets with Claude (claude tier)
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: anthropics/claude-code-action@v1
         env:
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
@@ -281,211 +316,54 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*),Bash(bird-fast:*),Bash(curl:*),Bash(jq:*)"
-          prompt: |
-            You are a senior AI research analyst running the production Claude Twitter/X AI monitor.
+          prompt: ${{ steps.render.outputs.prompt }}
 
-            Your job is NOT to summarize tweets one-by-one. Identify the small number
-            of stories that actually matter from this ~3-hour window, develop them
-            with corroboration and skepticism, and produce an analyst-grade brief.
-            Be sharp, specific, and willing to flag uncertainty. Challenge viral claims
-            before repeating them.
+      - name: Process tweets with DeepSeek v4 Pro (deepseek-agentic tier)
+        if: steps.backend.outputs.name == 'deepseek-agentic'
+        uses: anthropics/claude-code-action@v1
+        env:
+          # Redirect Claude Code CLI to DeepSeek's Anthropic-compatible endpoint.
+          # See https://api-docs.deepseek.com/guides/coding_agents
+          ANTHROPIC_BASE_URL: https://api.deepseek.com/anthropic
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.DEEPSEEK_API_KEY }}
+          ANTHROPIC_MODEL: deepseek-v4-pro
+          ANTHROPIC_DEFAULT_OPUS_MODEL: deepseek-v4-pro
+          ANTHROPIC_DEFAULT_SONNET_MODEL: deepseek-v4-pro
+          ANTHROPIC_DEFAULT_HAIKU_MODEL: deepseek-v4-flash
+          CLAUDE_CODE_SUBAGENT_MODEL: deepseek-v4-flash
+          CLAUDE_CODE_EFFORT_LEVEL: max
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        with:
+          # Required by the action but ignored when ANTHROPIC_AUTH_TOKEN is set.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*),Bash(bird-fast:*),Bash(curl:*),Bash(jq:*)"
+          prompt: ${{ steps.render.outputs.prompt }}
 
-            TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+      - name: Process tweets with pi + DeepSeek (deepseek-pi tier)
+        if: steps.backend.outputs.name == 'deepseek-pi'
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          # Mirrors the model used by the agentic tier.
+          # Note: the [1m] suffix used in the Anthropic-shim path is NOT
+          # accepted on DeepSeek's OpenAI-compatible endpoint (returns
+          # `400 Model Not Exist`). 1M context is the default for v4-pro
+          # there, so plain `deepseek-v4-pro` already gets the 1M variant.
+          # Bash allowlist: pi's --tools is coarse (bash on/off). For this
+          # experiment we accept full bash on the trusted self-hosted runner.
+          pi -p "$(cat /tmp/prompt-rendered.md)" \
+            --no-session \
+            --thinking high \
+            --tools read,write,edit,bash,grep,find,ls \
+            --model deepseek/deepseek-v4-pro
 
-            YOU WILL WRITE THREE OUTPUT FILES (all three are mandatory — do NOT skip the third):
-            1. research/twitter/${{ steps.datetime.outputs.date }}.md (daily markdown digest, append section)
-            2. research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-summary.txt (Telegram-friendly text rollup)
-            3. research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines.json (structured headline alerts — REQUIRED for downstream Telegram blast)
-
-            All three exist in every cycle, including quiet ones. For a quiet cycle the
-            JSON file is `[]` (empty array) but the file is still created.
-
-            OUTPUT (markdown digest): research/twitter/${{ steps.datetime.outputs.date }}.md
-
-            PRIOR CONTEXT (read these BEFORE writing — multi-day arcs are first-class):
-            - Today's file so far: research/twitter/${{ steps.datetime.outputs.date }}.md
-              (may already contain earlier cycles from today; append a new section at the end)
-            - Yesterday's full digest: research/twitter/${{ steps.datetime.outputs.yesterday }}.md
-              (may not exist on the first day; if Read fails, skip)
-
-            RAW DATA: a SINGLE consolidated file at `/tmp/bird/all.json` with this shape:
-            {
-              "accounts":  { "OpenAI": [...tweets], "sama": [...], ... },   // ~50 monitored handles
-              "searches":  { "ai": [...], "extra": [...], "research": [...], "infra": [...], "policy": [...], "business": [...], "opensource": [...] },
-              "news":      [...trending AI news headlines],
-              "meta":      { "total_tweets": N, "non_empty_accounts": M, ... }
-            }
-
-            (Per-handle and per-search files also exist at /tmp/bird/<id>.json
-            for follow-up inspection when useful. Read `/tmp/bird/all.json` first.)
-
-            TOOLS YOU CAN USE:
-            - PREFER `bird-fast` for follow-up X/Twitter queries. It is a drop-in
-              shim for `bird` via a local daemon:
-                `bird-fast search "query" -n 30 --json --plain`
-                `bird-fast user-tweets "@handle" -n 20 --json --plain`
-                `bird-fast tweet <tweet_id> --json --plain`
-                `bird-fast thread <tweet_id> --json --plain`
-            - `bird ...` is the slower fallback.
-            - `curl -sSL <url>` can fetch primary sources, official statements,
-              blog posts, or paper abstracts.
-            - `jq` can filter JSON efficiently.
-            HARD CAPS: 20 bird/bird-fast follow-up calls + 4 curl fetches per run.
-            Use them when verification matters; quiet cycles should use fewer.
-
-            INSTRUCTIONS:
-            1. Read PRIOR CONTEXT first. Note continuing narratives. A continuing
-               thread should not be re-reported from scratch; identify what changed.
-            2. Read `/tmp/bird/all.json` and skim for signal. Most tweets are noise.
-            3. Identify 2-4 MAIN STORIES from this ~3-hour window. A main story:
-               - materially changes the AI landscape, OR
-               - adds concrete new data to a continuing thread, AND
-               - has a credible primary source or multiple independent corroborations.
-            4. For each main story, corroborate when it matters; identify missing
-               context or red flags; decide verification status only after checking:
-               ✓ multi-source confirmed / ⚠ single-source / 🚩 unverified.
-            5. ADVERSARIAL PASS — for each Top Story, state the strongest
-               counter-hypothesis and make one real falsification attempt with
-               bird-fast/bird/curl when possible. If the story survives, say why.
-               If counter-evidence is strong, revise or downgrade the thesis.
-            6. HIGH-STAKES TRIAGE — before any item goes to Quick hits, check it:
-               if it is BOTH (a) single-source in the snapshot AND (b) ≥500 RT or
-               ≥5K likes AND (c) makes a high-stakes claim (regulatory action, M&A,
-               named-entity allegation, firing/resignation, criminal/legal claim,
-               specific dollar amounts, executive policy statement), it MUST land in
-               Top Stories or Skeptic's corner with a verification attempt. Do not
-               bury it in Quick hits with an "if confirmed" hedge.
-            7. Put every other notable item into Quick hits, one line each.
-            8. Flag loud-but-shaky claims in Skeptic's corner.
-            9. End with a concrete Watch list and Research notes.
-
-            FORMAT: Append to the daily file (create if doesn't exist).
-            If the file already exists, append the new section at the end.
-            If it doesn't exist, start with:
-            `# Twitter/X AI Pulse — ${{ steps.datetime.outputs.date }}`
-
-            ## ${{ steps.datetime.outputs.hour }}:00 UTC
-
-            **Cycle summary**: [1-2 sentences naming the dominant theme. If quiet, say so.]
-
-            ### Top stories
-
-            #### 1. [One-line thesis — what happened and why it matters]
-            **Previously** (only for continuing threads): [1 line with prior cycle reference]
-            **Evidence**: [Tight synthesis of 2-3 strongest sources. Include names, dates, numbers.]
-            - @primary_handle: [specific claim/datum] — https://x.com/handle/status/ID — [engagement if notable]
-            - @corroborating_handle: [what they add] — URL
-            **Counter / contradicting**: [Strongest counter-hypothesis + what the falsification attempt found]
-            **Verification**: ✓ multi-source confirmed / ⚠ single-source / 🚩 unverified — [one-line reason]
-            **Watch**: [Concrete signal that would change the picture in next 24h]
-
-            #### 2. [Next story — same structure]
-
-            ### Quick hits
-            - [Concrete item with @handle + URL. Specific numbers, names, dates.]
-
-            ### 🚩 Skeptic's corner
-            - [Loud claim that did not corroborate, with reason and URL.]
-            - [Or "None this cycle"]
-
-            ### Watch list (next 24h)
-            - [Dated, concrete signal]
-
-            ### Research notes
-            - bird/curl calls issued this cycle: [list each briefly]
-            - [If none: "No follow-ups needed — pre-fetched snapshot was sufficient"]
-
-            If no main stories exist, write:
-            ## ${{ steps.datetime.outputs.hour }}:00 UTC
-            **Cycle summary**: Quiet period — no main stories this window.
-            ### Quick hits
-            - [Whatever notable items did appear, even if minor]
-
-            CONSTRAINTS:
-            - Be specific. "Big funding round" → "$200M Series C, $2B post-money, led by X."
-            - Do not recycle hype phrasing. Synthesize.
-            - High engagement is not proof.
-            - Link primary sources when cited.
-            - A short honest brief beats a padded one.
-
-            STEP 2 - WRITE TELEGRAM SUMMARY:
-            After writing the Twitter update, also write a SHORT summary for Telegram notification.
-            Use Write tool to create: research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-summary.txt
-
-            Format (plain text, max 800 chars):
-            ```
-            Twitter/X AI Pulse - ${{ steps.datetime.outputs.timestamp }}
-
-            CYCLE: [1-line theme]
-
-            TOP STORIES:
-            • [Story 1 thesis] [✓/⚠/🚩]
-            • [Story 2 thesis] [✓/⚠/🚩]
-            • [Story 3 thesis] [✓/⚠/🚩]
-
-            WATCH: [1 concrete signal for next 24h]
-
-            Full update on GitHub.
-            ```
-
-            If no significant updates were found, write:
-            ```
-            Twitter/X AI Pulse - ${{ steps.datetime.outputs.timestamp }}
-
-            Quiet period — no major AI updates on Twitter/X.
-            ```
-
-            STEP 3 — WRITE STRUCTURED HEADLINE ALERTS:
-            Use the Write tool to also create:
-            research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines.json
-
-            This file is a JSON array of the TOP 3-7 alert-worthy stories from this cycle —
-            the items most worth pushing to Telegram as Bloomberg-style "Market News Feed"
-            alerts. Each entry is one punchy headline + source + URL.
-
-            Schema (write nothing else, just the JSON array):
-            ```
-            [
-              {
-                "headline": "ANTHROPIC MYTHOS BREACHED — FIRST CONFIRMED EXFILTRATION OF GATED FRONTIER MODEL",
-                "source": "@TheInformation",
-                "url": "https://x.com/the_information/status/2048...",
-                "category": "breaking"
-              },
-              {
-                "headline": "DEEPSEEK V4 NOW 139× CHEAPER THAN GPT-5.5 ON CACHED INPUT",
-                "source": "@DeepSeek",
-                "url": "https://x.com/...",
-                "category": "model"
-              }
-            ]
-            ```
-
-            Headline rules:
-            - ALL CAPS, terminal-newsfeed voice, like Bloomberg/Punchbowl alerts
-            - Maximum 140 characters per headline
-            - One punchy fact per headline — no commentary, no engagement metrics
-            - Spell out acronyms only when ambiguous; OK to keep "GPT-5.5", "TPU", "API"
-            - Source = the @handle of the most authoritative tweet
-            - URL = the actual tweet URL
-            - category ∈ {breaking, model, research, infra, business, policy, opensource}
-
-            Quantity rules:
-            - 3 to 7 headlines per cycle. Tight cycles get 3-4, busy ones up to 7.
-            - If fewer than 3 truly significant stories exist, write `[]` (empty array) —
-              do NOT pad with low-value items just to hit the floor.
-            - Skip recycled news, opinion-only takes, casual chatter.
-
-            STEP 4 — Verify ALL THREE files exist before committing. If headlines.json
-            is missing, go back and create it (even if just `[]`). Then commit:
-            git add research/twitter/ research/summaries/
-            git commit -m "Twitter update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
-
-            CRITICAL: A run without headlines.json blocks the downstream Telegram alert
-            blast. ALWAYS write the JSON file, even if it's `[]`.
-
+      # ── Stop birdy daemon (always, if started) ─────────────────────
       - name: Stop birdy daemon
-        if: always()
+        if: always() && steps.const.outputs.enable_daemon == 'true'
         run: |
           if [ -f /tmp/birdy-daemon.pid ]; then
             PID=$(cat /tmp/birdy-daemon.pid)
@@ -506,8 +384,12 @@ jobs:
             tail -20 /tmp/birdy-daemon.log
           fi
 
-      - name: Create dry-run headline fixture
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
+      # ── claude-tier dry-run fixture (skips push) ───────────────────
+      - name: Create dry-run headline fixture (claude tier only)
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && github.event_name == 'workflow_dispatch'
+          && inputs.dry_run == true
         env:
           DATE: ${{ steps.datetime.outputs.date }}
           HOUR: ${{ steps.datetime.outputs.hour }}
@@ -545,9 +427,11 @@ jobs:
           ]
           EOF
 
-      - name: Prepare headline alerts for delivery
+      # ── claude-tier headline alert prep ────────────────────────────
+      - name: Prepare headline alerts for delivery (claude tier)
+        if: steps.backend.outputs.name == 'claude'
         env:
-          HEADLINES_FILE: research/summaries/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines.json
+          HEADLINES_FILE: ${{ steps.const.outputs.headlines_file }}
           FILTERED_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines-to-send.json
           HISTORY_FILE: research/summaries/twitter-announced-history.json
           TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
@@ -561,13 +445,13 @@ jobs:
 
           # No `git pull --rebase` here: the only writer for
           # twitter-announced-history.json is this workflow's own
-          # hooker-send step (later in this same job), and concurrency
-          # cancel-in-progress guarantees no parallel instance. The
-          # checked-out tree is already authoritative for our dedupe
-          # input. Doing a pull here would also fail on the self-hosted
-          # runner because this step has no GITHUB_TOKEN in env and
-          # the actions/checkout extraheader doesn't reliably survive
-          # mid-job.
+          # hooker-send step (later in this same job), and the per-backend
+          # concurrency group guarantees no parallel instance for the
+          # claude tier. The checked-out tree is already authoritative
+          # for our dedupe input. Doing a pull here would also fail on
+          # the self-hosted runner because this step has no GITHUB_TOKEN
+          # in env and the actions/checkout extraheader doesn't reliably
+          # survive mid-job.
 
           python3 scripts/dedupe_headline_alerts.py filter \
             --headlines-file "$HEADLINES_FILE" \
@@ -575,8 +459,10 @@ jobs:
             --filtered-file "$FILTERED_FILE" \
             --timestamp "$TIMESTAMP"
 
+      # ── Push the markdown digest + summary (all tiers, not on dry-run) ──
       - name: Push changes
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.dry_run != true }}
+        if: >-
+          !(github.event_name == 'workflow_dispatch' && steps.backend.outputs.name == 'claude' && inputs.dry_run == true)
         id: push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -586,16 +472,21 @@ jobs:
           # our checkout and now; rebase so this push is fast-forward.
           # Token is already on the remote URL above so auth works.
           git pull --rebase || { git rebase --abort 2>/dev/null || true; exit 1; }
-          git push
-          echo "pushed=true" >> "$GITHUB_OUTPUT"
+          if git push; then
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            echo "Nothing to push"
+          fi
 
-      # Vercel's GitHub App webhook should fire on bot pushes too (no
-      # cascade-trigger restriction at the webhook layer), but if the
-      # VERCEL_DEPLOY_HOOK secret is present we belt-and-suspenders it.
-      # Set the secret to a Vercel Project → Settings → Git → Deploy Hooks
-      # URL scoped to the `main` branch.
-      - name: Trigger Vercel deploy
-        if: steps.push.outputs.pushed == 'true' && (github.event_name != 'workflow_dispatch' || inputs.dry_run != true)
+      # ── Vercel deploy hook (claude tier only) ──────────────────────
+      # Vercel's GitHub App webhook should fire on bot pushes too, but
+      # if VERCEL_DEPLOY_HOOK is present we belt-and-suspenders it.
+      - name: Trigger Vercel deploy (claude tier)
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && steps.push.outputs.pushed == 'true'
+          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         env:
           VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
         run: |
@@ -605,9 +496,13 @@ jobs:
             echo "VERCEL_DEPLOY_HOOK not set; relying on Vercel's GitHub auto-deploy"
           fi
 
-
-      - name: Dry-run alert summary
-        if: ${{ success() && github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
+      # ── claude-tier dry-run summary (instead of real alerts) ───────
+      - name: Dry-run alert summary (claude tier)
+        if: >-
+          success()
+          && steps.backend.outputs.name == 'claude'
+          && github.event_name == 'workflow_dispatch'
+          && inputs.dry_run == true
         env:
           DATE: ${{ steps.datetime.outputs.date }}
           HOUR: ${{ steps.datetime.outputs.hour }}
@@ -618,8 +513,12 @@ jobs:
           echo "Dry run: $COUNT headline alerts would be sent after dedupe."
           jq -r '.[]? | "- " + (.headline // "") + " [" + (.url // "") + "]"' "$HEADLINES_FILE" 2>/dev/null || true
 
-      - name: Send headline alerts to Hooker (parallel, supergroup thread)
-        if: ${{ success() && (github.event_name != 'workflow_dispatch' || inputs.dry_run != true) }}
+      # ── claude-tier Hooker headline blast ──────────────────────────
+      - name: Send headline alerts to Hooker (claude tier)
+        if: >-
+          success()
+          && steps.backend.outputs.name == 'claude'
+          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -791,7 +690,55 @@ jobs:
 
           echo "Done — batch delivered (delivered=$DELIVERED_COUNT, failed=$FAILED)."
 
-      # ── Auto-trigger deep research ──────────────────────────────
+      # ── DeepSeek-tier Telegram notification ────────────────────────
+      - name: Read summary for Telegram (deepseek tiers)
+        id: summary
+        if: contains(fromJSON('["deepseek-agentic","deepseek-pi"]'), steps.backend.outputs.name)
+        env:
+          SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
+        run: |
+          if [ -f "$SUMMARY_FILE" ]; then
+            SUMMARY=$(head -c 800 "$SUMMARY_FILE")
+            {
+              echo "content<<EOF"
+              echo "$SUMMARY"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          else
+            echo "content=No Twitter summary available" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send Telegram notification (deepseek-agentic)
+        if: success() && steps.backend.outputs.name == 'deepseek-agentic'
+        continue-on-error: true
+        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: |
+            🐦🦌 *Twitter/X AI Pulse — DeepSeek v4 Pro Agentic*
+
+            ${{ steps.summary.outputs.content }}
+
+            📄 [Full Update on GitHub](https://github.com/${{ github.repository }}/blob/main/research/twitter-deepseek/${{ steps.datetime.outputs.date }}.md)
+
+      - name: Send Telegram notification (deepseek-pi)
+        if: success() && steps.backend.outputs.name == 'deepseek-pi'
+        continue-on-error: true
+        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: |
+            🐦🥧 *Twitter/X AI Pulse — pi + DeepSeek (Experimental)*
+
+            ${{ steps.summary.outputs.content }}
+
+            📄 [Full Update on GitHub](https://github.com/${{ github.repository }}/blob/main/research/twitter-deepseek-pi/${{ steps.datetime.outputs.date }}.md)
+
+      # ── claude-tier auto-research throttle + topic select + dispatch ─
       # Picks ONE high-signal topic from today's twitter pulse and
       # dispatches generative-research.yml on the self-hosted runner.
       # Throttled to ≤2 dispatches per rolling 24h AND ≥10h between
@@ -800,9 +747,12 @@ jobs:
       # All three steps are best-effort: continue-on-error so a selector
       # failure can never break the twitter pipeline.
 
-      - name: Auto-research throttle check
+      - name: Auto-research throttle check (claude tier)
         id: autoresearch_throttle
-        if: ${{ steps.push.outputs.pushed == 'true' && (github.event_name != 'workflow_dispatch' || inputs.dry_run != true) }}
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && steps.push.outputs.pushed == 'true'
+          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -833,9 +783,11 @@ jobs:
             echo "Auto-research budget available — proceeding to topic selection."
           fi
 
-      - name: Auto-research topic selection
+      - name: Auto-research topic selection (claude tier)
         id: autoresearch_select
-        if: ${{ steps.autoresearch_throttle.outputs.skip == 'false' }}
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && steps.autoresearch_throttle.outputs.skip == 'false'
         continue-on-error: true
         uses: anthropics/claude-code-action@v1
         env:
@@ -891,8 +843,10 @@ jobs:
             anything else. The next workflow step parses
             /tmp/auto-topic.txt and dispatches.
 
-      - name: Auto-research dispatch
-        if: ${{ steps.autoresearch_throttle.outputs.skip == 'false' }}
+      - name: Auto-research dispatch (claude tier)
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && steps.autoresearch_throttle.outputs.skip == 'false'
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -917,6 +871,7 @@ jobs:
             -f backend=deepseek-v4-pro
           echo "::notice::Auto-dispatched generative-research: ${TOPIC}"
 
+      # ── Hooker telemetry (all tiers, always) ───────────────────────
       - name: Publish Hooker workflow telemetry
         if: always()
         uses: ./.github/actions/hooker-telemetry

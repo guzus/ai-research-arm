@@ -115,7 +115,7 @@ gantt
 | `4h-community.yml` | Every 4 hours | Reddit RSS + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 06:13 UTC | arXiv papers | `research/arxiv/` |
 | `daily-digest.yml` | Daily 00:00 UTC | All sources + MCP search | `research/digest/` |
-| `hourly-twitter.yml` | Every 3 hours | Twitter/X via bird CLI (33 accounts, 7 search queries) | `research/twitter/` |
+| `hourly-twitter.yml` (matrix) | claude tier every 3h (`:07`), deepseek-agentic tier every 6h (`:37`), deepseek-pi tier manual | Twitter/X via bird CLI (50+ accounts, 7 search queries) | `research/twitter/` (claude) + `research/twitter-deepseek/` (agentic) + `research/twitter-deepseek-pi/` (pi) |
 | `ai-news-research.yml` | Twice daily (08:23, 20:23 UTC) | Perplexity/Exa MCP | `research/` |
 | `daily-improve.yml` | Daily 00:17 UTC | Self-improvement | PRs with improvements |
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |

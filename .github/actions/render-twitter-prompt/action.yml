@@ -1,0 +1,315 @@
+name: Render twitter-analyst prompt
+description: >
+  Substitute `{{placeholder}}` values in prompts/twitter-analyst.md for a
+  given backend tier. Writes the rendered prompt to a path (for the pi
+  harness, which reads via `pi -p "$(cat <path>)"`) AND emits it as a
+  step output (for anthropics/claude-code-action, which has only a
+  `prompt:` input, not `prompt_file:`). Decoupled from the matrix
+  workflow so the YAML stays free of embedded Python heredoc
+  indentation problems.
+
+inputs:
+  backend:
+    description: claude | deepseek-agentic | deepseek-pi
+    required: true
+  template_path:
+    description: Path to the prompt template (with `{{placeholders}}`).
+    required: false
+    default: prompts/twitter-analyst.md
+  output_path:
+    description: Where to write the rendered prompt.
+    required: false
+    default: /tmp/prompt-rendered.md
+  output_dir:
+    description: Markdown digest directory (e.g. research/twitter).
+    required: true
+  summary_slug:
+    description: Filename slug for summary/headlines files (e.g. twitter).
+    required: true
+  title_suffix:
+    description: Title suffix shown in the digest H1 / Telegram header. Empty for claude.
+    required: true
+  cycle_hours:
+    description: Reporting window length in hours (3 for claude, 6 for deepseek tiers).
+    required: true
+  bird_budget:
+    description: HARD CAP on follow-up bird/bird-fast calls per run.
+    required: true
+  curl_budget:
+    description: HARD CAP on curl fetches per run.
+    required: true
+  harness_label:
+    description: Free-form intro string identifying the harness (e.g. "the production Claude Twitter/X AI monitor").
+    required: true
+  features:
+    description: Comma-separated feature flags (recognized — `headlines` for claude only).
+    required: true
+  date:
+    description: YYYY-MM-DD for today.
+    required: true
+  hour:
+    description: HH for the current cycle.
+    required: true
+  timestamp:
+    description: Full timestamp string for the digest header.
+    required: true
+  yesterday:
+    description: YYYY-MM-DD for yesterday (used for prior-context Read).
+    required: true
+  commit_prefix:
+    description: Commit message prefix the LLM should use when committing the digest.
+    required: true
+
+outputs:
+  rendered_path:
+    description: Filesystem path of the rendered prompt.
+    value: ${{ inputs.output_path }}
+  prompt:
+    description: >
+      Rendered prompt as a multi-line string. Use this to feed
+      anthropics/claude-code-action's `prompt:` input (which does not
+      have a `prompt_file` variant). For the pi harness, read from
+      `rendered_path` via `pi -p "$(cat <path>)"` to avoid GHA's
+      step-output size accounting.
+    value: ${{ steps.render.outputs.prompt }}
+
+runs:
+  using: composite
+  steps:
+    - name: Render prompt
+      id: render
+      shell: bash
+      env:
+        BACKEND: ${{ inputs.backend }}
+        TEMPLATE_PATH: ${{ inputs.template_path }}
+        OUTPUT_PATH: ${{ inputs.output_path }}
+        OUTPUT_DIR: ${{ inputs.output_dir }}
+        SUMMARY_SLUG: ${{ inputs.summary_slug }}
+        TITLE_SUFFIX: ${{ inputs.title_suffix }}
+        CYCLE_HOURS: ${{ inputs.cycle_hours }}
+        BIRD_BUDGET: ${{ inputs.bird_budget }}
+        CURL_BUDGET: ${{ inputs.curl_budget }}
+        HARNESS_LABEL: ${{ inputs.harness_label }}
+        FEATURES: ${{ inputs.features }}
+        DATE: ${{ inputs.date }}
+        HOUR: ${{ inputs.hour }}
+        TIMESTAMP: ${{ inputs.timestamp }}
+        YESTERDAY: ${{ inputs.yesterday }}
+        COMMIT_PREFIX: ${{ inputs.commit_prefix }}
+      run: |
+        set -euo pipefail
+        python3 <<'PY'
+        import os
+        from pathlib import Path
+
+        backend = os.environ["BACKEND"]
+        features = set(f.strip() for f in os.environ["FEATURES"].split(",") if f.strip())
+        cycle_hours = int(os.environ["CYCLE_HOURS"])
+        output_dir = os.environ["OUTPUT_DIR"]
+        summary_slug = os.environ["SUMMARY_SLUG"]
+        title_suffix = os.environ["TITLE_SUFFIX"]
+        harness_label = os.environ["HARNESS_LABEL"]
+        bird_budget = os.environ["BIRD_BUDGET"]
+        curl_budget = os.environ["CURL_BUDGET"]
+        commit_prefix = os.environ["COMMIT_PREFIX"]
+        date = os.environ["DATE"]
+        hour = os.environ["HOUR"]
+        ts = os.environ["TIMESTAMP"]
+        yesterday = os.environ["YESTERDAY"]
+        template_path = os.environ["TEMPLATE_PATH"]
+        output_path = os.environ["OUTPUT_PATH"]
+
+        # cycle window phrase: "~3-hour" for claude, "6-hour" for the others.
+        cycle_window = "~3-hour" if cycle_hours == 3 else f"{cycle_hours}-hour"
+
+        # outputs_overview — claude writes three files (markdown + summary +
+        # headlines.json); other tiers write two (markdown + summary).
+        if "headlines" in features:
+            outputs_overview = (
+                "YOU WILL WRITE THREE OUTPUT FILES (all three are mandatory — do NOT skip the third):\n"
+                f"1. {output_dir}/{date}.md (daily markdown digest, append section)\n"
+                f"2. research/summaries/{date}-{summary_slug}-{hour}h-summary.txt (Telegram-friendly text rollup)\n"
+                f"3. research/summaries/{date}-{summary_slug}-{hour}h-headlines.json (structured headline alerts — REQUIRED for downstream Telegram blast)\n"
+                "\n"
+                "All three exist in every cycle, including quiet ones. For a quiet cycle the\n"
+                "JSON file is `[]` (empty array) but the file is still created.\n"
+                "\n"
+                f"OUTPUT (markdown digest): {output_dir}/{date}.md"
+            )
+        else:
+            outputs_overview = f"OUTPUT (markdown digest): {output_dir}/{date}.md"
+
+        # cross_harness_note — only the pi tier peeks at the agentic digest.
+        if backend == "deepseek-pi":
+            cross_harness_note = (
+                "- For cross-harness reference you MAY peek at the agentic-side digest:\n"
+                f"  research/twitter-deepseek/{date}.md — read once at the start ONLY\n"
+                "  to learn what's continuing; do not just paraphrase it."
+            )
+        else:
+            cross_harness_note = ""
+
+        # input_section — claude reads /tmp/bird/all.json first; others use per-file listing.
+        if backend == "claude":
+            input_section = (
+                "RAW DATA: a SINGLE consolidated file at `/tmp/bird/all.json` with this shape:\n"
+                "{\n"
+                '  "accounts":  { "OpenAI": [...tweets], "sama": [...], ... },   // ~50 monitored handles\n'
+                '  "searches":  { "ai": [...], "extra": [...], "research": [...], "infra": [...], "policy": [...], "business": [...], "opensource": [...] },\n'
+                '  "news":      [...trending AI news headlines],\n'
+                '  "meta":      { "total_tweets": N, "non_empty_accounts": M, ... }\n'
+                "}\n"
+                "\n"
+                "(Per-handle and per-search files also exist at /tmp/bird/<id>.json\n"
+                "for follow-up inspection when useful. Read `/tmp/bird/all.json` first.)"
+            )
+        else:
+            input_section = (
+                "INPUT — pre-fetched JSON in /tmp/bird/:\n"
+                "- Individual account feeds (OpenAI.json, sama.json, ~50 handles)\n"
+                "- search-ai.json, search-extra.json, search-research.json, search-infra.json,\n"
+                "  search-policy.json, search-business.json, search-opensource.json\n"
+                "- news.json — trending AI news"
+            )
+
+        # tools_section — claude/agentic mention bird-fast; pi only has plain bird.
+        if backend == "deepseek-pi":
+            tools_section = (
+                '- `bird search "query" -n 30 --json --plain` — search live for a story keyword\n'
+                '- `bird user-tweets "@handle" -n 20 --json --plain` — read a specific account\n'
+                "- `bird tweet <tweet_id> --json --plain` — fetch one tweet\n"
+                "- `bird thread <tweet_id> --json --plain` — fetch a full thread\n"
+                "- `curl -sSL <url>` can fetch primary sources, official statements,\n"
+                "  blog posts, or paper abstracts.\n"
+                "- `jq` can filter JSON efficiently."
+            )
+            follow_up_tools = "bird/curl"
+        else:
+            tools_section = (
+                "- PREFER `bird-fast` for follow-up X/Twitter queries. It is a drop-in\n"
+                "  shim for `bird` via a local daemon:\n"
+                '    `bird-fast search "query" -n 30 --json --plain`\n'
+                '    `bird-fast user-tweets "@handle" -n 20 --json --plain`\n'
+                "    `bird-fast tweet <tweet_id> --json --plain`\n"
+                "    `bird-fast thread <tweet_id> --json --plain`\n"
+                "- `bird ...` is the slower fallback.\n"
+                "- `curl -sSL <url>` can fetch primary sources, official statements,\n"
+                "  blog posts, or paper abstracts.\n"
+                "- `jq` can filter JSON efficiently."
+            )
+            follow_up_tools = "bird-fast/bird/curl"
+
+        # headlines_section — claude only.
+        if "headlines" in features:
+            headlines_section = (
+                "STEP 3 — WRITE STRUCTURED HEADLINE ALERTS:\n"
+                "Use the Write tool to also create:\n"
+                f"research/summaries/{date}-{summary_slug}-{hour}h-headlines.json\n"
+                "\n"
+                "This file is a JSON array of the TOP 3-7 alert-worthy stories from this cycle —\n"
+                "the items most worth pushing to Telegram as Bloomberg-style \"Market News Feed\"\n"
+                "alerts. Each entry is one punchy headline + source + URL.\n"
+                "\n"
+                "Schema (write nothing else, just the JSON array):\n"
+                "```\n"
+                "[\n"
+                "  {\n"
+                "    \"headline\": \"ANTHROPIC MYTHOS BREACHED — FIRST CONFIRMED EXFILTRATION OF GATED FRONTIER MODEL\",\n"
+                "    \"source\": \"@TheInformation\",\n"
+                "    \"url\": \"https://x.com/the_information/status/2048...\",\n"
+                "    \"category\": \"breaking\"\n"
+                "  },\n"
+                "  {\n"
+                "    \"headline\": \"DEEPSEEK V4 NOW 139× CHEAPER THAN GPT-5.5 ON CACHED INPUT\",\n"
+                "    \"source\": \"@DeepSeek\",\n"
+                "    \"url\": \"https://x.com/...\",\n"
+                "    \"category\": \"model\"\n"
+                "  }\n"
+                "]\n"
+                "```\n"
+                "\n"
+                "Headline rules:\n"
+                "- ALL CAPS, terminal-newsfeed voice, like Bloomberg/Punchbowl alerts\n"
+                "- Maximum 140 characters per headline\n"
+                "- One punchy fact per headline — no commentary, no engagement metrics\n"
+                "- Spell out acronyms only when ambiguous; OK to keep \"GPT-5.5\", \"TPU\", \"API\"\n"
+                "- Source = the @handle of the most authoritative tweet\n"
+                "- URL = the actual tweet URL\n"
+                "- category in {breaking, model, research, infra, business, policy, opensource}\n"
+                "\n"
+                "Quantity rules:\n"
+                "- 3 to 7 headlines per cycle. Tight cycles get 3-4, busy ones up to 7.\n"
+                "- If fewer than 3 truly significant stories exist, write `[]` (empty array) —\n"
+                "  do NOT pad with low-value items just to hit the floor.\n"
+                "- Skip recycled news, opinion-only takes, casual chatter."
+            )
+        else:
+            headlines_section = ""
+
+        # final_step — what to verify and how to commit.
+        if "headlines" in features:
+            final_step = (
+                "STEP 4 — Verify ALL THREE files exist before committing. If headlines.json\n"
+                "is missing, go back and create it (even if just `[]`). Then commit:\n"
+                f"git add {output_dir}/ research/summaries/\n"
+                f"git commit -m \"{commit_prefix} {ts}\" || echo \"No changes\"\n"
+                "\n"
+                "CRITICAL: A run without headlines.json blocks the downstream Telegram alert\n"
+                "blast. ALWAYS write the JSON file, even if it's `[]`."
+            )
+        else:
+            final_step = (
+                "After writing both files, commit:\n"
+                f"git add {output_dir}/ research/summaries/\n"
+                f"git commit -m \"{commit_prefix} {ts}\" || echo \"No changes\""
+            )
+
+        template = Path(template_path).read_text()
+        replacements = {
+            "{{harness_label}}":     harness_label,
+            "{{cycle_window}}":      cycle_window,
+            "{{timestamp}}":         ts,
+            "{{outputs_overview}}":  outputs_overview,
+            "{{output_dir}}":        output_dir,
+            "{{date}}":              date,
+            "{{yesterday}}":         yesterday,
+            "{{cross_harness_note}}": cross_harness_note,
+            "{{input_section}}":     input_section,
+            "{{tools_section}}":     tools_section,
+            "{{follow_up_tools}}":   follow_up_tools,
+            "{{bird_budget}}":       bird_budget,
+            "{{curl_budget}}":       curl_budget,
+            "{{title_suffix}}":      title_suffix,
+            "{{hour}}":              hour,
+            "{{summary_slug}}":      summary_slug,
+            "{{headlines_section}}": headlines_section,
+            "{{final_step}}":        final_step,
+        }
+        rendered = template
+        for k, v in replacements.items():
+            rendered = rendered.replace(k, v)
+
+        leftover = [ln for ln in rendered.splitlines() if "{{" in ln and "}}" in ln]
+        if leftover:
+            print(f"::notice::{len(leftover)} lines still contain `{{...}}` (may be intentional inside JSON example blocks)")
+
+        Path(output_path).write_text(rendered)
+        size = Path(output_path).stat().st_size
+        print(f"Rendered prompt -> {output_path} ({size} bytes, backend={backend})")
+
+        # Emit the rendered prompt as a step output for callers that need
+        # to feed it via a `prompt:` input (e.g. anthropics/claude-code-action
+        # which has no `prompt_file:` variant). Heredoc delimiter is a UUID
+        # so it can't collide with anything inside the prompt body.
+        import uuid
+        github_output = os.environ.get("GITHUB_OUTPUT")
+        if github_output:
+            delim = f"PROMPT_EOF_{uuid.uuid4().hex}"
+            with open(github_output, "a") as f:
+                f.write(f"prompt<<{delim}\n")
+                f.write(rendered)
+                if not rendered.endswith("\n"):
+                    f.write("\n")
+                f.write(f"{delim}\n")
+            print(f"Emitted prompt output ({size} bytes, delim={delim[:30]}...)")
+        PY
