@@ -285,6 +285,13 @@ jobs:
       # Keep model recovery drafts scoped to this workflow run. Self-hosted
       # runners can retain /tmp between jobs, so a fixed draft path can cause
       # a retry to publish a stale article from a different backend/run.
+      # Also remove any stale verifier-findings JSON from a previous run.
+      # The audit step trusts whatever JSON file exists, so a stale one
+      # left behind by an earlier failed attempt would be applied to this
+      # run's (different) article body — wrong claims audited against the
+      # wrong text. Idempotent rm at job start guarantees this run's
+      # audit either sees this run's verifier output or no file at all
+      # (in which case the audit takes its documented soft-skip path).
       - name: Prepare run-scoped draft path
         id: draft
         run: |
@@ -293,6 +300,11 @@ jobs:
           path="${base}/gen-research-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.ara.md"
           rm -f "$path"
           echo "path=$path" >> "$GITHUB_OUTPUT"
+          # Delete stale verifier findings from a prior workflow attempt
+          # on this self-hosted runner. The Claude / DeepSeek retry loops
+          # already reset research/generative; this is the matching
+          # cleanup for the verifier artifact.
+          rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
 
       # Acknowledge the user on the issue path so they know the job started.
       # The workflow_dispatch path has no comment surface; skip.
@@ -1454,6 +1466,9 @@ jobs:
             echo "Cleaning tracked and untracked repository artifacts from the failed attempt before retry."
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative
+            # Drop stale verifier-findings JSON so the retry's audit
+            # can't compare new article body against old verifier claims.
+            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
           elif [ "$OUTCOME" = "failure" ]; then
             echo "::warning::DeepSeek attempt 1 reported failure, but an article commit exists; continuing to publish that output."
           else
@@ -1499,6 +1514,10 @@ jobs:
             echo "Cleaning tracked and untracked repository artifacts from the failed retry before the final retry."
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative
+            # Drop stale verifier-findings JSON so the final retry's
+            # audit can't compare new article body against old verifier
+            # claims.
+            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
           elif [ "$OUTCOME" = "failure" ]; then
             echo "::warning::DeepSeek retry 1 reported failure, but an article commit exists; continuing to publish that output."
           else
@@ -1581,6 +1600,8 @@ jobs:
             # could leak into a subsequent run's `git diff` window.
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative || true
+            # Same verifier-findings cleanup as the retry paths above.
+            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
             exit 1
           fi
 
@@ -1627,6 +1648,8 @@ jobs:
             echo "::error::Verifier-findings audit FAILED for $article"
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative || true
+            # Same verifier-findings cleanup as the retry paths above.
+            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
             exit 1
           fi
 

@@ -245,9 +245,49 @@ class ReferenceHrefCollectorTest(unittest.TestCase):
         c = chk._ReferenceHrefCollector()
         c.feed(body)
         self.assertEqual(len(c.ref_urls), 2)
+        self.assertEqual(c.refs_with_urls, 2)
         self.assertIn("https://arxiv.org/abs/123", c.ref_urls)
         self.assertIn("https://sec.gov/edgar/x", c.ref_urls)
         self.assertNotIn("https://techcrunch.com/article", c.ref_urls)
+
+    def test_refs_with_urls_excludes_title_only_entries(self):
+        """Title-only refs (no <a>) must not count toward refs_with_urls.
+        Stops the '20 title-only refs' attack on refs-min gate."""
+        body = (
+            '<article>'
+            '<ol class="ara-refs">'
+            '<li id="ref-1"><a href="https://arxiv.org/abs/1">paper 1</a></li>'
+            # title-only entry
+            '<li id="ref-2">Personal communication, Smith 2024</li>'
+            # entry with non-http anchor (e.g. internal hash) — also excluded
+            '<li id="ref-3"><a href="#footnote">footnote</a></li>'
+            '<li id="ref-4"><a href="https://sec.gov/x">filing</a></li>'
+            '</ol>'
+            '</article>'
+        )
+        c = chk._ReferenceHrefCollector()
+        c.feed(body)
+        # 2 URL-bearing refs, 4 total ref-li elements
+        self.assertEqual(c.refs_with_urls, 2)
+        self.assertEqual(len(c.ref_urls), 2)
+
+    def test_count_references_uses_url_bearing_count(self):
+        """20 title-only refs must NOT pass --refs-min 20."""
+        title_only = "".join(
+            f'<li id="ref-{i + 1}">Just a title, no link.</li>'
+            for i in range(20)
+        )
+        body = (
+            '<article class="ara-doc"><p>Body.</p>'
+            f'<ol class="ara-refs">{title_only}</ol>'
+            '</article>'
+        )
+        # Old behavior: count_references returns 20 (would pass refs-min 20).
+        # New behavior: returns 0 (no URL-bearing entries).
+        self.assertEqual(chk.count_references(body), 0)
+        errs = chk.enforce_quality(body, _ns(refs_min=20))
+        self.assertEqual(len(errs), 1)
+        self.assertIn("reference entries", errs[0])
 
 
 class EnforceQualityCompositionTest(unittest.TestCase):
@@ -413,6 +453,33 @@ class VerifierFindingsAuditTest(unittest.TestCase):
                 "Cite-stripped probe should match cite-stripped body and "
                 "FAIL the audit. Without P2 fix, this returns surviving=[] "
                 "(false pass).",
+            )
+
+    def test_demoted_claim_with_inline_markup_passes(self):
+        """When the demoted sentence contains inline markup like <em>,
+        <strong>, <a>, the mark blob carries those tags but the
+        tag-stripped body does not. Without symmetric tag-stripping
+        on mark regions, a valid demotion fails the audit."""
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            '<p><mark class="ara-mark">OpenAI raised <strong>$40 billion</strong> in <em>2026</em>.</mark></p>'
+            '</article>'
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c1",
+                "text": "OpenAI raised $40 billion in 2026.",
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(
+                len(surviving), 0,
+                "demoted claim with inline markup must be detected as "
+                "demoted (was falsely flagged surviving without the "
+                "mark-region tag-strip fix)",
             )
 
     def test_probe_matches_through_multi_cite_marker(self):

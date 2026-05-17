@@ -172,17 +172,27 @@ def is_primary_source(host: str | None) -> bool:
 class _ReferenceHrefCollector(HTMLParser):
     """Walks the HTML and collects URLs found INSIDE `<li id="ref-N">`
     items — i.e. the references list. Plain in-body links don't count
-    (they're often footnote anchors like #ref-5, not source URLs)."""
+    (they're often footnote anchors like #ref-5, not source URLs).
+
+    Tracks two metrics:
+      * `ref_urls`: every http(s) URL found inside a ref-li (one entry
+                    may have multiple — used by primary_share).
+      * `refs_with_urls`: count of distinct ref-li entries that
+                    contained at least one URL (used by count_references
+                    to gate against "20 title-only refs" attack)."""
 
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self._depth_in_ref_li = 0
+        self._current_ref_has_url = False
         self.ref_urls: list[str] = []
+        self.refs_with_urls: int = 0
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
         if tag == "li" and a.get("id", "").startswith("ref-"):
             self._depth_in_ref_li = 1
+            self._current_ref_has_url = False
             return
         if self._depth_in_ref_li > 0:
             if tag == "li":  # nested li, unusual but possible
@@ -191,10 +201,17 @@ class _ReferenceHrefCollector(HTMLParser):
                 href = a.get("href", "")
                 if href.startswith(("http://", "https://")):
                     self.ref_urls.append(href)
+                    self._current_ref_has_url = True
 
     def handle_endtag(self, tag):
         if tag == "li" and self._depth_in_ref_li > 0:
             self._depth_in_ref_li -= 1
+            if self._depth_in_ref_li == 0:
+                # We just closed the outermost ref-li; commit its
+                # has-url flag to the counter.
+                if self._current_ref_has_url:
+                    self.refs_with_urls += 1
+                self._current_ref_has_url = False
 
 
 def _word_count(body_html: str) -> int:
@@ -212,8 +229,21 @@ def count_cite_markers(body_html: str) -> int:
 
 
 def count_references(body_html: str) -> int:
-    """How many entries in the references list."""
-    return len(re.findall(r'id="ref-\d+"', body_html))
+    """How many references list entries carry at least one http(s) URL.
+
+    Previously counted every `<li id="ref-N">` regardless of whether
+    the entry actually had a source URL. An article with 20 title-only
+    or duplicate-href references could pass `--refs-min 20` with zero
+    real sources — defeating the gate's intent. We now count distinct
+    ref-li elements that produced at least one `<a href="http(s)://…">`
+    inside them. Mixed lists (some entries with URLs, some without)
+    still count the URL-bearing entries — tolerant of legitimate
+    no-URL entries like personal-communication citations, strict
+    against pure-title attack patterns.
+    """
+    collector = _ReferenceHrefCollector()
+    collector.feed(body_html)
+    return collector.refs_with_urls
 
 
 def primary_share(body_html: str) -> tuple[float, int, int]:
@@ -451,8 +481,16 @@ def audit_verifier_findings(
     )
     # Same cite-stripping inside the mark regions — claim text inside
     # a <mark> wrapper can also carry a `<sup>…</sup>` cite, and we
-    # want it to match a DSL-shaped probe.
-    mark_blob = " ".join(_strip_cite_markers(m) for m in mark_regions)
+    # want it to match a DSL-shaped probe. ALSO strip remaining HTML
+    # tags from inside the mark; demoted sentences may contain inline
+    # markup (`<em>`, `<strong>`, `<a>`, `<code>`) that would
+    # otherwise leave the mark blob in a different shape from the
+    # tag-stripped body, causing valid demotions to fail the audit.
+    mark_blob = re.sub(
+        r"<[^>]+>",
+        " ",
+        " ".join(_strip_cite_markers(m) for m in mark_regions),
+    )
 
     def _norm(s: str) -> str:
         return re.sub(r"\s+", " ", s).strip().lower()
