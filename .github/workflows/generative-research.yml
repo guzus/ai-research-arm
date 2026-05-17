@@ -834,9 +834,9 @@ jobs:
             prompt as the user's detailed brief (questions, sources to
             prefer, framing) and let it shape your research plan.
 
-            RECOVERY MODE. This workflow may retry DeepSeek once if the
-            Anthropic-compatible socket drops before the writer commits an
-            article. At the start, check whether /tmp/gen-research.ara.md
+            RECOVERY MODE. This workflow may retry DeepSeek up to two times
+            if the Anthropic-compatible socket drops before the writer commits
+            an article. At the start, check whether /tmp/gen-research.ara.md
             already exists from a prior failed attempt. If it exists, read it,
             run the compile check from step 7.5, repair only validator or
             obvious completion gaps, then proceed directly to the writer
@@ -1310,7 +1310,7 @@ jobs:
           RETRY=false
           if [ "$OUTCOME" = "failure" ] && [ "$HAS_FILE" != "true" ]; then
             RETRY=true
-            echo "::warning::DeepSeek attempt 1 failed before producing an article; retrying once. This covers transient Anthropic-compatible API/socket drops."
+            echo "::warning::DeepSeek attempt 1 failed before producing an article; retrying (1/2). This covers transient Anthropic-compatible API/socket drops."
             echo "Cleaning tracked and untracked repository artifacts from the failed attempt before retry."
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative
@@ -1326,9 +1326,54 @@ jobs:
             echo "retry=$RETRY"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Run Generative Research (DeepSeek V4 Pro, retry)
+      - name: Run Generative Research (DeepSeek V4 Pro, retry 1)
         if: steps.deepseek-attempt-1.outputs.retry == 'true'
         id: gen-deepseek-retry
+        continue-on-error: true
+        timeout-minutes: 90
+        uses: anthropics/claude-code-action@v1
+        env: *deepseek_v4_pro_env
+        with: *deepseek_v4_pro_with
+
+      - name: Inspect DeepSeek retry 1
+        if: steps.deepseek-attempt-1.outputs.retry == 'true'
+        id: deepseek-retry-1
+        env:
+          PRE_SHA: ${{ steps.pre.outputs.sha }}
+          OUTCOME: ${{ steps.gen-deepseek-retry.outcome }}
+        run: |
+          set -euo pipefail
+          HEAD_SHA=$(git rev-parse HEAD)
+          HAS_FILE=false
+          if [ "$HEAD_SHA" != "$PRE_SHA" ]; then
+            NEW_FILES=$(git diff --name-only --diff-filter=A "$PRE_SHA..HEAD" -- 'research/generative/*.html' || true)
+            if [ -n "$NEW_FILES" ]; then
+              HAS_FILE=true
+            fi
+          fi
+
+          RETRY=false
+          if [ "$OUTCOME" = "failure" ] && [ "$HAS_FILE" != "true" ]; then
+            RETRY=true
+            echo "::warning::DeepSeek retry 1 failed before producing an article; retrying (2/2)."
+            echo "Cleaning tracked and untracked repository artifacts from the failed retry before the final retry."
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative
+          elif [ "$OUTCOME" = "failure" ]; then
+            echo "::warning::DeepSeek retry 1 reported failure, but an article commit exists; continuing to publish that output."
+          else
+            echo "DeepSeek retry 1 outcome: $OUTCOME"
+          fi
+
+          {
+            echo "outcome=$OUTCOME"
+            echo "has_file=$HAS_FILE"
+            echo "retry=$RETRY"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Run Generative Research (DeepSeek V4 Pro, retry 2)
+        if: steps.deepseek-retry-1.outputs.retry == 'true'
+        id: gen-deepseek-retry-2
         continue-on-error: true
         timeout-minutes: 90
         uses: anthropics/claude-code-action@v1
@@ -1553,9 +1598,10 @@ jobs:
       - name: Fail DeepSeek run without article
         if: always() && steps.params.outputs.backend == 'deepseek-v4-pro' && steps.outfile.outputs.has_file != 'true'
         run: |
-          echo "::error::DeepSeek did not produce an article after the retry policy."
+          echo "::error::DeepSeek did not produce an article after the two-retry policy."
           echo "Attempt 1 outcome: ${{ steps.gen-deepseek.outcome }}"
-          echo "Retry outcome: ${{ steps.gen-deepseek-retry.outcome }}"
+          echo "Retry 1 outcome: ${{ steps.gen-deepseek-retry.outcome }}"
+          echo "Retry 2 outcome: ${{ steps.gen-deepseek-retry-2.outcome }}"
           exit 1
 
       - name: Send Telegram notification
