@@ -18,10 +18,36 @@ jobs:
       id-token: write
 
     steps:
+      # Provision git-lfs on the runner BEFORE checkout — `actions/checkout@v4`
+      # with `lfs: true` shells out to `git lfs` during the checkout phase
+      # and fails if it's missing. apt-get install needs no repo content.
+      - name: Ensure git-lfs is installed
+        run: |
+          if ! command -v git-lfs >/dev/null 2>&1; then
+            echo "git-lfs not found on runner — installing..."
+            sudo apt-get update -qq && sudo apt-get install -y -qq git-lfs
+          fi
+          git lfs version
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # lfs: true REQUIRED for safe re-runs. The TTS step has
+          # `continue-on-error: true` and `exit 0`s without writing a fresh
+          # MP3 if GEMINI_API_KEY is missing or the API fails. The downstream
+          # Telegram + Hooker steps then test `[ -f $AUDIO_FILE ]` — a
+          # 135-byte LFS pointer passes that check and gets uploaded as
+          # "audio". Hydrating on checkout means the on-disk file is always
+          # a real MP3 (either the previously-committed one, or the fresh
+          # one written by ffmpeg this run).
+          lfs: true
+
+      # Wire git-lfs smudge/clean filters into THIS worktree's git config so
+      # the MP3 produced by the TTS step below routes through LFS on commit
+      # (matches `*.mp3` in .gitattributes). `git lfs install` is idempotent.
+      - name: Install git-lfs hooks
+        run: git lfs install --local
 
       - name: Pull latest changes
         run: git pull origin main || true
@@ -184,8 +210,11 @@ jobs:
             Full digest on GitHub.
             ```
 
-            After writing both files, commit:
-            git add research/
+            After writing both files, commit (ONLY today's two files — do
+            NOT `git add research/`, because the LFS clean filter would
+            silently convert all existing historical PNGs/MP3s to LFS
+            pointers in one commit):
+            git add research/digest/${{ steps.date.outputs.date }}-digest.md research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
       - name: Synthesize Daily Digest (WebSearch fallback)
@@ -275,8 +304,11 @@ jobs:
             Full digest on GitHub.
             ```
 
-            After writing both files, commit:
-            git add research/
+            After writing both files, commit (ONLY today's two files — do
+            NOT `git add research/`, because the LFS clean filter would
+            silently convert all existing historical PNGs/MP3s to LFS
+            pointers in one commit):
+            git add research/digest/${{ steps.date.outputs.date }}-digest.md research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
       - name: Rewrite summary as ARA spoken script (Claude Sonnet)

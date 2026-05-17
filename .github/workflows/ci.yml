@@ -39,8 +39,31 @@ jobs:
       run:
         working-directory: dashboard
     steps:
+      # Provision git-lfs BEFORE checkout — `actions/checkout@v4` with
+      # `lfs: true` shells out to `git lfs` during the checkout phase, so
+      # if the runner image doesn't already have it the checkout fails
+      # before any later install step gets to run. apt-get install needs
+      # no repo content, so it's safe to run pre-checkout. Job-level
+      # `defaults.run.working-directory: dashboard` doesn't exist yet (no
+      # checkout), so override with `working-directory: .`.
+      - name: Ensure git-lfs is installed
+        working-directory: .
+        run: |
+          if ! command -v git-lfs >/dev/null 2>&1; then
+            echo "git-lfs not found on runner — installing..."
+            sudo apt-get update -qq && sudo apt-get install -y -qq git-lfs
+          fi
+          git lfs version
+
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # lfs: true is REQUIRED because dashboard/scripts/prebuild.mjs runs
+          # cpSync over research/front-page/*.png and research/audio/*.mp3
+          # into public/research/. Without LFS hydration, those would be
+          # 135-byte pointer files — the build wouldn't fail but the deployed
+          # dashboard would serve pointer text instead of images/audio.
+          lfs: true
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2

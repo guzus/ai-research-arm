@@ -30,12 +30,41 @@ jobs:
       id-token: write
 
     steps:
+      # Provision git-lfs on the runner BEFORE checkout. `actions/checkout@v4`
+      # with `lfs: true` shells out to `git lfs` during the checkout phase,
+      # so if git-lfs isn't already on PATH the checkout itself fails before
+      # any later install step can run. apt-get install doesn't need repo
+      # content, so this is safe to run pre-checkout.
+      - name: Ensure git-lfs is installed
+        run: |
+          if ! command -v git-lfs >/dev/null 2>&1; then
+            echo "git-lfs not found on runner — installing..."
+            sudo apt-get update -qq && sudo apt-get install -y -qq git-lfs
+          fi
+          git lfs version
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # lfs: true is REQUIRED here because this workflow runs 30 min after
+          # daily-digest.yml, which commits today's MP3 through git-lfs. The
+          # "Publish digest audio via hooker" step below reads that MP3 and
+          # feeds it to ffmpeg — without lfs: true, checkout would hand it a
+          # 135-byte pointer file that `[ -f ]` passes but ffmpeg can't decode.
+          lfs: true
+
+      # Wire git-lfs smudge/clean filters into THIS worktree's git config so
+      # the PNG produced below routes through LFS on commit. `git lfs install`
+      # is idempotent; safe to run on every workflow invocation.
+      - name: Install git-lfs hooks
+        run: git lfs install --local
 
       - name: Pull latest changes
+        # `git pull` after merge will fetch LFS objects automatically because
+        # `git lfs install --local` wired the smudge filter. The earlier
+        # `lfs: true` on checkout is what guarantees the initial checkout
+        # state already has the MP3 hydrated for the publish step below.
         run: git pull origin main || true
 
       - name: Get current date
@@ -233,10 +262,18 @@ jobs:
         if: steps.check.outputs.exists == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TODAY: ${{ steps.date.outputs.date }}
         run: |
-          git add research/front-page/ README.md
-          git commit -m "Front page ${{ steps.date.outputs.date }}" || echo "Nothing to commit"
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          # Stage ONLY today's PNG, not the entire research/front-page/ dir.
+          # If we staged the whole dir, the LFS clean filter could detect
+          # "modifications" on historical PNGs (regular git blobs that now
+          # match the *.png filter=lfs rule) and silently convert all 32
+          # existing PNGs into LFS pointers in one commit — exactly the
+          # "Phase 1 only" violation this PR promises to defer to a manual
+          # `git lfs migrate import` runbook.
+          git add "research/front-page/${TODAY}-front-page.png" README.md
+          git commit -m "Front page ${TODAY}" || echo "Nothing to commit"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
           git pull --rebase || true
           git push || echo "Nothing to push"
 
