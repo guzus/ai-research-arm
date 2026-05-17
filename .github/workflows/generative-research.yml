@@ -1620,7 +1620,7 @@ jobs:
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
-          HOOKER_TOPIC: ara-generative-telemetry
+          HOOKER_TOPIC: ara-telemetry
           HAS_FILE: ${{ steps.outfile.outputs.has_file }}
           FILE_NAME: ${{ steps.outfile.outputs.file }}
           PUSHED: ${{ steps.push.outputs.pushed }}
@@ -1647,7 +1647,7 @@ jobs:
             exit 0
           fi
           hooker_url="${HOOKER_URL:-https://hooker.guzus.xyz}"
-          hooker_topic="${HOOKER_TOPIC:-ara-generative-telemetry}"
+          hooker_topic="${HOOKER_TOPIC:-ara-telemetry}"
           payload_dir="${RUNNER_TEMP:-${TMPDIR:-/tmp}}"
           export HOOKER_PAYLOAD_PATH="$payload_dir/hooker-telemetry.json"
           export HOOKER_IDEMPOTENCY_PATH="$payload_dir/hooker-telemetry.idempotency"
@@ -1787,7 +1787,7 @@ jobs:
                   ]]
               },
           }
-          idempotency = f"ara-generative-telemetry-{payload['run_id']}-{payload['run_attempt']}-{status}"
+          idempotency = f"ara-generative-{payload['run_id']}-{payload['run_attempt']}-{status}"
           Path(env("HOOKER_PAYLOAD_PATH")).write_text(json.dumps(body))
           Path(env("HOOKER_IDEMPOTENCY_PATH")).write_text(idempotency)
           PY
@@ -1821,3 +1821,12 @@ jobs:
             🤖 Backend: ${{ steps.params.outputs.backend }}
 
             📄 [View on GitHub](https://github.com/${{ github.repository }}/blob/main/research/generative/${{ steps.outfile.outputs.file }})
+
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

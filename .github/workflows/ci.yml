@@ -5,11 +5,13 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/**'
+      - '.github/actions/**'
       - 'dashboard/**'
       - 'scripts/**'
   pull_request:
     paths:
       - '.github/workflows/**'
+      - '.github/actions/**'
       - 'dashboard/**'
       - 'scripts/**'
   workflow_dispatch:
@@ -60,3 +62,42 @@ jobs:
 
       - name: Test Python scripts
         run: python3 -m unittest discover -s scripts -p 'test_*.py'
+
+  hooker-telemetry:
+    needs: [actionlint, dashboard, python-scripts]
+    if: always()
+    runs-on: [self-hosted, Linux]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Derive CI status
+        id: ci-status
+        env:
+          ACTIONLINT: ${{ needs.actionlint.result }}
+          DASHBOARD: ${{ needs.dashboard.result }}
+          PYTHON_SCRIPTS: ${{ needs.python-scripts.result }}
+        run: |
+          if [ "$ACTIONLINT" = "success" ] && [ "$DASHBOARD" = "success" ] && [ "$PYTHON_SCRIPTS" = "success" ]; then
+            echo "status=success" >> "$GITHUB_OUTPUT"
+          else
+            echo "status=failure" >> "$GITHUB_OUTPUT"
+          fi
+          {
+            echo "summary<<EOF"
+            echo "actionlint: $ACTIONLINT"
+            echo "dashboard: $DASHBOARD"
+            echo "python-scripts: $PYTHON_SCRIPTS"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ steps.ci-status.outputs.status }}
+          text: ${{ steps.ci-status.outputs.summary }}
+          tags: ci
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

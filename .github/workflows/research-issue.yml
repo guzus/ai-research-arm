@@ -333,3 +333,12 @@ jobs:
             📝 Topic: ${{ github.event.issue.title }}
 
             📄 [View Research Report](https://github.com/${{ github.repository }}/blob/main/research/issues/${{ github.event.issue.number }}-research.md)
+
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

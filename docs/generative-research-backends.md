@@ -73,7 +73,7 @@ standalone percentages in prose.
 ## Hooker Telemetry
 
 Every generative-research run publishes a non-blocking summary to Hooker topic
-`ara-generative-telemetry` through `https://hooker.guzus.xyz` when
+`ara-telemetry` through `https://hooker.guzus.xyz` when
 `HOOKER_TOKEN` is configured in GitHub Actions. The message includes run status,
 backend, slug, output file, dashboard/GitHub links, model attempt outcomes, and
 the same final article quality metrics printed in the workflow log. Hooker stores
