@@ -18,6 +18,19 @@ jobs:
       id-token: write
 
     steps:
+      # Provision git-lfs on the runner BEFORE checkout. `actions/checkout@v4`
+      # with `lfs: true` shells out to `git lfs` during the checkout phase,
+      # so if git-lfs isn't already on PATH the checkout itself fails before
+      # any later install step can run. apt-get install doesn't need repo
+      # content, so this is safe to run pre-checkout.
+      - name: Ensure git-lfs is installed
+        run: |
+          if ! command -v git-lfs >/dev/null 2>&1; then
+            echo "git-lfs not found on runner — installing..."
+            sudo apt-get update -qq && sudo apt-get install -y -qq git-lfs
+          fi
+          git lfs version
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -29,17 +42,11 @@ jobs:
           # 135-byte pointer file that `[ -f ]` passes but ffmpeg can't decode.
           lfs: true
 
-      # Ensure git-lfs filter hooks are wired in. Self-hosted runner may
-      # already have it installed; `git lfs install` is idempotent. The PNG
-      # produced below matches `*.png` in .gitattributes, so this step is
-      # what routes the commit through LFS instead of fat-storing the blob.
+      # Wire git-lfs smudge/clean filters into THIS worktree's git config so
+      # the PNG produced below routes through LFS on commit. `git lfs install`
+      # is idempotent; safe to run on every workflow invocation.
       - name: Install git-lfs hooks
-        run: |
-          if ! command -v git-lfs >/dev/null 2>&1; then
-            echo "git-lfs not found on runner — attempting install..."
-            sudo apt-get update -qq && sudo apt-get install -y -qq git-lfs
-          fi
-          git lfs install --local
+        run: git lfs install --local
 
       - name: Pull latest changes
         # `git pull` after merge will fetch LFS objects automatically because

@@ -18,23 +18,30 @@ jobs:
       id-token: write
 
     steps:
+      # Provision git-lfs on the runner BEFORE checkout in case the runner
+      # image doesn't ship with it. This workflow doesn't use `lfs: true` on
+      # checkout (it only writes its own fresh MP3 — no existing LFS objects
+      # to hydrate), but downstream `git pull --rebase` may pull LFS-routed
+      # commits from other workflows, so the smudge filter needs git-lfs
+      # available. apt-get install needs no repo content; safe pre-checkout.
+      - name: Ensure git-lfs is installed
+        run: |
+          if ! command -v git-lfs >/dev/null 2>&1; then
+            echo "git-lfs not found on runner — installing..."
+            sudo apt-get update -qq && sudo apt-get install -y -qq git-lfs
+          fi
+          git lfs version
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # Ensure git-lfs filter hooks are wired in. Self-hosted runner may
-      # already have it installed; `git lfs install` is idempotent. The MP3
-      # produced by the TTS step below matches `*.mp3` in .gitattributes, so
-      # this step is what routes the commit through LFS instead of fat-storing
-      # the blob in git history.
+      # Wire git-lfs smudge/clean filters into THIS worktree's git config so
+      # the MP3 produced by the TTS step below routes through LFS on commit
+      # (matches `*.mp3` in .gitattributes). `git lfs install` is idempotent.
       - name: Install git-lfs hooks
-        run: |
-          if ! command -v git-lfs >/dev/null 2>&1; then
-            echo "git-lfs not found on runner — attempting install..."
-            sudo apt-get update -qq && sudo apt-get install -y -qq git-lfs
-          fi
-          git lfs install --local
+        run: git lfs install --local
 
       - name: Pull latest changes
         run: git pull origin main || true
