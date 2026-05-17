@@ -1,55 +1,237 @@
 # CLAUDE.md
 
+Operating guide for AI agents working in this repo. Read this before
+touching workflows, research output, or the dashboard.
+
 ## Project Overview
 
-Automated AI news research pipeline that aggregates intelligence from Twitter/X, RSS feeds, Bluesky, Hacker News, Reddit, and arXiv. Produces daily digests with breaking news, model releases, research highlights, and industry trends.
+`ai-research-arm` (ARA) is an automated AI-news intelligence pipeline.
+GitHub Actions on a self-hosted Linux runner aggregate signal from
+Twitter/X, RSS, Bluesky, Hacker News, Reddit, and arXiv; synthesize it
+into daily digests, model-release timelines, and long-form generative
+articles; and publish everything to a Vite/TS SPA at
+**[ara.guzus.xyz](https://ara.guzus.xyz)**.
+
+## Core Pipeline Architecture
+
+```
+sources (Twitter/RSS/Bluesky/HN/Reddit/arXiv)
+    → aggregator workflows (hourly/4h/daily) write into research/<source>/
+    → synthesis workflows (digest, news research, model timeline) read research/
+    → output workflows (front-page, generative-research) produce shareable artifacts
+    → dashboard prebuild copies research/* into dashboard/public/research/
+    → Vercel git integration auto-builds and deploys on every push to main
+```
+
+Daily-improve runs at the tail of the cycle, reads yesterday's output,
+and opens a PR with methodology fixes.
+
+## Key Components
+
+| Path | What it is |
+|---|---|
+| [`ARA_DSL.md`](ARA_DSL.md) | Source format for generative-research articles. The compiler at `scripts/compile_ara.py` turns `.ara.md` into a validated `<article>` fragment. |
+| [`COMPONENTS.md`](COMPONENTS.md) | Reference for the `ara-*` component vocabulary the validator enforces. The CSS at `dashboard/src/components/ara-research.css` is the live source of truth — currently ~113 classes vs ~81 documented (see "Known drift" below). |
+| [`docs/generative-research-backends.md`](docs/generative-research-backends.md) | Backend matrix for the generative-research lane (Claude vs DeepSeek vs local Oracle), env mapping, comparison commands. |
+| [`docs/hooker-telemetry.md`](docs/hooker-telemetry.md) | Non-blocking telemetry route via `https://hooker.guzus.xyz` topic `ara-telemetry`. |
+| [`docs/archive/`](docs/archive/) | Historical improvement logs and superseded docs. |
+| `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`; Vercel auto-deploys on every push to `main`. |
+| `data/` | Static lookup data used by aggregation scripts. |
+| `research/` | All generated artifacts. Subdir map in "Output Locations" below. |
+
+### Scripts (`scripts/`)
+
+| Script | Purpose |
+|---|---|
+| `compile_ara.py` | `.ara.md` → validated HTML fragment. |
+| `decompile_ara.py` | HTML fragment → `.ara.md` source (round-trip). |
+| `check_generative_research.py` | Pre-commit validator. Tag/class allowlist + optional `--diversity-min`, `--callout-max`, `--strict-shape` design gates. Exit 0 = safe to commit. |
+| `write_generative_research.py` | Single publisher for `research/generative/`. Validates body, writes HTML + DSL source, updates `index.json`, commits. |
+| `run_generative_research_oracle.py` | Local runner: bundles ARA docs + recent research, calls `../oracle` (GPT-5.5 Pro), extracts `.ara.md`, runs the validator with `--diversity-min 3 --callout-max 5 --strict-shape`, then hands to the writer. |
+| `prior_context.py` | Find prior generative-research articles related to a new topic. |
+| `research_search.py` | Specialized search wrappers for primary-source research. |
+| `stock_prices.py` | Yahoo Finance time series → copy-paste lines for `:::line-chart`. |
+| `dedupe_headline_alerts.py` | Filter + record delivered Twitter headline alerts (used by `hourly-twitter.yml`). |
+| `test_ara_dsl.py`, `test_dedupe_headline_alerts.py` | Pytest-style tests run in CI. |
 
 ## GitHub Actions Workflows
 
-All Claude workflows use `anthropics/claude-code-action@v1` on self-hosted Linux runners via `runs-on: [self-hosted, Linux]`.
+All workflows use `runs-on: [self-hosted, Linux]`. There is no
+GitHub-hosted fallback. Claude workflows use
+`anthropics/claude-code-action@v1` with the model passed via
+`claude_args: "--model opus"` (never as a separate `model:` input).
 
-### Model Configuration
+### Aggregation (raw signal → `research/<source>/`)
 
-Pass the model via `claude_args`, not as a separate `model:` input:
+| Workflow | Schedule | Output |
+|---|---|---|
+| `hourly-rss.yml` | `:30` every hour | `research/rss/` |
+| `hourly-twitter.yml` | every 3h `:07` | `research/twitter/` + `research/summaries/` + Telegram headline alerts |
+| `hourly-twitter-deepseek-agentic.yml` | every 6h `:37` | `research/twitter-deepseek/` (DeepSeek V4 Pro via Anthropic shim, capped at 5 follow-up bird calls) |
+| `hourly-twitter-deepseek-pi.yml` | manual only | `research/twitter-deepseek-pi/` (A/B test using `pi-mono` harness) |
+| `2h-bluesky.yml` | daily `00:11` | `research/bluesky/` |
+| `4h-community.yml` | every 4h `:19` | `research/community/*-hn.md`, `*-reddit.md` |
+| `daily-arxiv.yml` | daily `06:13` | `research/arxiv/` |
 
-```yaml
-# Correct (v1)
-claude_args: "--model opus"
+### Synthesis (digests + analysis from aggregated data)
 
-# Wrong (do not use a separate model input here)
-model: <versioned-model-name>
+| Workflow | Schedule | Output |
+|---|---|---|
+| `daily-digest.yml` | daily `00:00` | `research/digest/` |
+| `ai-news-research.yml` | twice daily `08:23`, `20:23` | `research/` (broad topic sweep via Perplexity/Exa MCP) |
+| `24h-model-timeline.yml` | daily `06:29` | `research/models/*-timeline.md` (hyperscaler model release timeline) |
+
+### Output (shareable artifacts)
+
+| Workflow | Trigger | Output |
+|---|---|---|
+| `daily-front-page.yml` | daily `00:30` (after digest) | `research/front-page/YYYY-MM-DD-front-page.png` |
+| `generative-research.yml` | `gen-research` issue label or `workflow_dispatch` | `research/generative/*.{html,ara.md}` + `index.json` |
+| `research-issue.yml` | issue labeled `research` | `research/issues/{issue-number}-research.md` |
+
+### Meta (CI, code-review, self-improvement)
+
+| Workflow | Trigger | Purpose |
+|---|---|---|
+| `daily-improve.yml` | daily `00:17` | Opens improve/YYYY-MM-DD PR with workflow fixes. See "Load-bearing rules" for where the IMPROVEMENTS file belongs. |
+| `ci.yml` | push/PR on workflows/dashboard/scripts | actionlint + dashboard build + Python tests |
+| `claude.yml` | `@claude` mention in issue/PR/review | Interactive Claude-Code agent |
+| `claude-code-review.yml` | PR opened/synced | Automated Claude code review |
+
+Model convention: most Claude workflows pin `--model opus`. Cost-driven
+moves to Sonnet/Haiku for specific steps are made on a per-PR basis;
+defer to whatever the workflow file actually says rather than assuming
+opus everywhere.
+
+## Backends
+
+| Backend | When | Auth | Notes |
+|---|---|---|---|
+| **Claude (default)** | All Claude workflows; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic. `claude-opus-4-7` for generative-research. |
+| **DeepSeek V4 Pro (shim)** | `generative-research backend=deepseek-v4-pro`; the two `hourly-twitter-deepseek-*` workflows | `DEEPSEEK_API_KEY` | Uses Anthropic-compatible endpoint at `https://api.deepseek.com/anthropic`. Overrides `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`/`ANTHROPIC_MODEL` so the Claude Code action transparently calls DeepSeek. Subagents use `deepseek-v4-flash`. Generative-research retries up to 2x on socket drops before commit. |
+| **Local Oracle (GPT-5.5 Pro)** | `scripts/run_generative_research_oracle.py` | Local `../oracle` checkout (browser engine by default) | Runs entirely on the developer machine; outputs go through the same `check_generative_research.py` → `write_generative_research.py` contract. Source metadata: `local-oracle`. |
+
+Backend selection details, env-var mapping, and comparison commands:
+`docs/generative-research-backends.md`.
+
+## Output Locations
+
+```
+research/
+├── arxiv/                     # daily-arxiv.yml
+├── audio/                     # ad-hoc audio artifacts
+├── bluesky/                   # 2h-bluesky.yml
+├── community/                 # 4h-community.yml (-hn.md, -reddit.md)
+├── digest/                    # daily-digest.yml
+├── front-page/                # daily-front-page.yml (PNG)
+├── generative/                # generative-research.yml + Oracle runner (HTML + .ara.md + index.json)
+├── issues/                    # research-issue.yml
+├── models/                    # 24h-model-timeline.yml
+├── rss/                       # hourly-rss.yml
+├── summaries/                 # hourly-twitter.yml (Telegram digest + headline-alert state)
+├── twitter/                   # hourly-twitter.yml
+├── twitter-deepseek/          # hourly-twitter-deepseek-agentic.yml
+└── twitter-deepseek-pi/       # hourly-twitter-deepseek-pi.yml
 ```
 
-Reference: https://code.claude.com/docs/en/github-actions
+## Authentication
 
-### Common claude_args patterns
+Secrets are configured in GitHub Actions. None are committed.
 
-```yaml
-claude_args: |
-  --model opus --allowedTools "Read,Write,Edit,Bash(git:*)"
-  --max-turns 10
-```
+| Secret | Used by | Notes |
+|---|---|---|
+| `CLAUDE_CODE_OAUTH_TOKEN` | All Claude workflows | Required. |
+| `DEEPSEEK_API_KEY` | `generative-research backend=deepseek-v4-pro`, `hourly-twitter-deepseek-*` | Required when running the DeepSeek lane. |
+| `BIRD_AUTH_TOKEN`, `BIRD_CT0` | All bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies. |
+| `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional; enhance MCP search. |
+| `HOOKER_TOKEN` | Telemetry composite action | Optional; without it, telemetry steps no-op. |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `hourly-twitter*` | For headline alert delivery. |
+| `GITHUB_TOKEN` | All workflows | Auto-provided. |
 
-### Authentication
+## Load-bearing Rules
 
-- `CLAUDE_CODE_OAUTH_TOKEN` — Claude Code OAuth token
-- `BIRD_AUTH_TOKEN` / `BIRD_CT0` — X/Twitter cookies for bird CLI
-- `GITHUB_TOKEN` — auto-provided for git push
+These are the conventions that, if broken, will silently corrupt
+output or break the pipeline. Read them before editing.
 
-## Repository Structure
+1. **ARA DSL round-trip is mandatory.** Every commit to
+   `research/generative/` must go through
+   `scripts/compile_ara.py` (`.ara.md` → HTML) and pass
+   `scripts/check_generative_research.py` (tag/class allowlist plus
+   optional `--diversity-min`, `--callout-max`, `--strict-shape`
+   design gates). `scripts/write_generative_research.py` is the
+   **only** committer for that directory — it re-validates at write
+   time. Workflows that bypass the writer will fail review.
 
-- `research/twitter/` — Twitter/X updates (every 3 hours)
-- `research/rss/` — RSS feed articles (hourly)
-- `research/bluesky/` — Bluesky posts (daily)
-- `research/community/` — HN and Reddit discussions (every 4 hours)
-- `research/arxiv/` — arXiv papers (daily)
-- `research/digest/` — Daily synthesized digests
-- `research/summaries/` — Digest summaries for Telegram
-- `research/front-page/` — Daily newspaper-style PNG front pages
-- `.github/workflows/` — All automation workflows
+2. **The validator is exact-match.** Class tokens must start with
+   `ara-` *and* be documented in `COMPONENTS.md` (or be a valid
+   `--variant` suffix of a documented class). Tags outside the
+   allowlist (`<style>`, `<script>`, `<iframe>`, `<h1>`, inline
+   `style=`, `on*=`, `javascript:` URLs) are rejected. Reach for
+   `:::raw` only when the DSL genuinely can't express the shape;
+   invented classes still fail.
+
+3. **Dashboard deploys are git-push driven.** Vercel watches `main`
+   and rebuilds on every push (root `dashboard/`). There is no
+   workflow file for deploys. `dashboard/scripts/prebuild.mjs` copies
+   `research/<source>/` into `public/research/` and emits
+   `manifest.json` before Vite runs. Touching it changes what the
+   dashboard sees.
+
+4. **Hooker telemetry is non-blocking.** Every workflow's final step
+   posts to `https://hooker.guzus.xyz` via the local composite at
+   `.github/actions/hooker-telemetry`. It must never fail a job —
+   `continue-on-error: true` style. Don't add hard dependencies on
+   telemetry success.
+
+5. **Self-hosted runner is the only target.** All workflows pin
+   `runs-on: [self-hosted, Linux]`. Don't switch to
+   `ubuntu-latest`; the runner has bird CLI, yfinance, pnpm/Oracle,
+   and the right cookies/secrets baked in.
+
+6. **bird CLI calls must be graceful.** Always pass `--json --plain`
+   and pipe to a fallback (`|| echo "[]"`). The Twitter cookies expire;
+   workflows must continue (with empty data) rather than crash the run.
+
+7. **Improvement logs belong in `docs/archive/`.** When
+   `daily-improve.yml` (or any agent) generates a new improvements
+   file, write it to `docs/archive/YYYY-MM-DD-improvements.md`, not
+   to repo root. The workflow prompt still says "Create an
+   IMPROVEMENTS.md" — that text predates this rule. Follow this rule,
+   not the older prompt.
+
+8. **Atomic file writes.** Long-running aggregation scripts that
+   write into `research/` should write to a temp file in the same
+   directory and `os.replace()` into place, so a half-finished file
+   never reaches Vercel's prebuild.
 
 ## Code Style
 
-- Workflow files: YAML with comments for each logical section
-- Commit messages: descriptive, e.g. "Twitter update 2026-01-27 15:36 UTC"
-- Bird CLI: always use `--json --plain` flags and graceful fallback (`|| echo "[]"`)
+- **Workflow YAML:** comment each logical section; group secrets near
+  the step that consumes them.
+- **Commit messages:** descriptive, dated. Examples:
+  - `Twitter update 2026-05-17 09:43 UTC`
+  - `Methodology improvements for 2026-02-01`
+  - `Add AI news research for 2026-05-17`
+- **Python:** stdlib-first; only pull in deps the runner already has
+  (yfinance, requests). Error-handle at boundaries (network, subprocess,
+  file IO); inner logic should fail fast.
+- **bird CLI invocations:** `--json --plain` + `|| echo "[]"` fallback.
+- **Claude prompts in workflows:** quote multi-line prompts with `|`
+  block scalars; pass user-controlled values (issue title/body) through
+  `env:` rather than direct `${{ }}` interpolation in `run:` blocks
+  to avoid script-injection.
+
+## Known Drift
+
+- `dashboard/src/components/ara-research.css` defines ~113 `ara-*`
+  classes; `COMPONENTS.md` documents ~81. If you encounter an
+  undocumented `ara-*` class in a real article, grep the CSS (it's the
+  live source of truth) and add the missing primitive to
+  `COMPONENTS.md` in the same PR. The validator's allowlist comes from
+  `COMPONENTS.md`, so an undocumented class will be rejected at commit
+  time regardless of whether the CSS supports it.
+
+## Historical Docs
+
+Pre-2026-Q2 improvement logs live in [`docs/archive/`](docs/archive/).
+They're kept for context but no longer load-bearing.
