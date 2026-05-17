@@ -46,7 +46,7 @@ jobs:
           mkdir -p /tmp/bird
 
           # Company accounts
-          companies="OpenAI AnthropicAI GoogleDeepMind GoogleAI MistralAI MetaAI xaboratory NVIDIAAIDev awscloud Apple CohereAI Azure"
+          companies="OpenAI AnthropicAI GoogleDeepMind GoogleAI MistralAI MetaAI xai NVIDIAAIDev awscloud Apple CohereAI Azure"
 
           for handle in $companies; do
             echo "Fetching @${handle}..."
@@ -59,7 +59,7 @@ jobs:
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
           # Key execs and insiders
-          execs="sama demishassabis sataboratory DrJimFan tszzl OfficialLoganK alexalbert__ mustafasuleyman"
+          execs="sama demishassabis satyanadella DrJimFan tszzl OfficialLoganK alexalbert__ mustafasuleyman"
 
           for handle in $execs; do
             echo "Fetching @${handle}..."
