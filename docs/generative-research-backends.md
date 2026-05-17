@@ -5,8 +5,54 @@ research pipeline:
 
 | Dispatch value | Served model | Auth path | Notes |
 |---|---|---|---|
-| `deepseek-v4-pro` | `deepseek-v4-pro` | `DEEPSEEK_API_KEY` via DeepSeek's Anthropic-compatible endpoint | Default for manual and issue-triggered generative research. The workflow still passes `--model opus` to Claude Code because the endpoint remaps the Opus request to DeepSeek V4 Pro through env vars. Subagents use `deepseek-v4-flash`. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
-| `claude` | `claude-opus-4-7` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic Claude Code path. Kept as the comparison baseline. |
+| `claude` | `claude-opus-4-7` | `CLAUDE_CODE_OAUTH_TOKEN` | Default for manual and issue-triggered generative research. Native Anthropic Claude Code path. |
+| `deepseek-v4-pro` | `deepseek-v4-pro` | `DEEPSEEK_API_KEY` via DeepSeek's Anthropic-compatible endpoint | Optional comparison backend. The workflow still passes `--model opus` to Claude Code because the endpoint remaps the Opus request to DeepSeek V4 Pro through env vars. Subagents use `deepseek-v4-flash`. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
+
+## Local Oracle / GPT-5.5 Pro
+
+Use the local Oracle checkout when you want the generative-research lane to run
+from this machine instead of GitHub Actions:
+
+```bash
+python3 scripts/run_generative_research_oracle.py \
+  "The Home Inference Rack: can a Mac mini plus consumer GPU fleet beat cloud APIs?" \
+  --slug home-inference-rack \
+  --tags "local-ai,home-inference,hardware,mac-mini,gpu-fleet"
+```
+
+Defaults:
+
+- Oracle checkout: `../oracle`
+- Model: `gpt-5.5-pro`
+- Engine: `browser`
+- Thinking: `heavy`
+- Source metadata: `local-oracle`
+
+The script bundles ARA DSL docs, the rendered component reference, prior local
+generative-research context, and the latest digest/model/arXiv/community/Twitter
+research files. Oracle writes a draft `.ara.md`; the script extracts the marked
+article source, runs:
+
+```bash
+python3 scripts/check_generative_research.py "$DRAFT" \
+  --diversity-min 3 --callout-max 5 --strict-shape
+```
+
+Then it publishes through `scripts/write_generative_research.py`, so the
+dashboard artifact, `research/generative/index.json`, DSL source file, and git
+commit follow the same contract as GitHub Actions.
+
+If the local Oracle checkout is not installed yet:
+
+```bash
+pnpm -C ../oracle install
+```
+
+Preview the bundle without sending it to a model:
+
+```bash
+python3 scripts/run_generative_research_oracle.py "Topic" --oracle-dry-run
+```
 
 The DeepSeek path mirrors `.github/workflows/hourly-twitter-deepseek-agentic.yml`:
 
