@@ -1,0 +1,91 @@
+name: Birdy daemon + bird-fast wrapper
+description: >
+  Start a birdy daemon on 127.0.0.1:8080 (warm bird API for LLM follow-up
+  queries) and install /usr/local/bin/bird-fast — a drop-in shim that
+  routes the same `bird ...` args through the daemon's POST /run endpoint
+  for sub-second latency. The companion stop step lives inline in each
+  workflow (kept as a separate step so it can use `if: always()`).
+
+inputs:
+  bird_auth_token:
+    description: BIRD_AUTH_TOKEN secret value.
+    required: true
+  bird_ct0:
+    description: BIRD_CT0 secret value.
+    required: true
+  port:
+    description: Daemon listen port (still on 127.0.0.1 only).
+    required: false
+    default: '8080'
+  concurrency:
+    description: Internal request concurrency.
+    required: false
+    default: '8'
+  cache_ttl:
+    description: Birdy daemon cache TTL.
+    required: false
+    default: '60s'
+
+runs:
+  using: composite
+  steps:
+    - name: Start birdy daemon
+      shell: bash
+      env:
+        BIRDY_ACCOUNTS: '[{"name":"ci","auth_token":"${{ inputs.bird_auth_token }}","ct0":"${{ inputs.bird_ct0 }}"}]'
+        DAEMON_PORT: ${{ inputs.port }}
+        DAEMON_CONC: ${{ inputs.concurrency }}
+        DAEMON_TTL: ${{ inputs.cache_ttl }}
+      run: |
+        # Start the birdy daemon on localhost. The LLM step may issue 3-30
+        # follow-up bird queries — each one would normally pay ~1.5s of
+        # bird-CLI startup. The daemon holds warm auth + account-rotation,
+        # so each follow-up is ~300ms (network only). Translates to
+        # ~10-15s saved on busy cycles.
+        nohup birdy daemon --addr "127.0.0.1:${DAEMON_PORT}" --concurrency "${DAEMON_CONC}" --cache-ttl "${DAEMON_TTL}" \
+          > /tmp/birdy-daemon.log 2>&1 &
+        echo $! > /tmp/birdy-daemon.pid
+
+        for attempt in 1 2 3 4 5 6 7 8 9 10; do
+          sleep 1
+          if curl -fsS "http://127.0.0.1:${DAEMON_PORT}/health" 2>/dev/null | grep -q '"ok":true'; then
+            echo "birdy daemon up: $(curl -sS http://127.0.0.1:${DAEMON_PORT}/health)"
+            exit 0
+          fi
+          echo "Waiting for birdy daemon, attempt ${attempt}/10"
+        done
+        echo "birdy daemon did not become healthy in 10s:"
+        cat /tmp/birdy-daemon.log
+        exit 1
+
+    - name: Install bird-fast wrapper (calls daemon)
+      shell: bash
+      env:
+        DAEMON_PORT: ${{ inputs.port }}
+      run: |
+        # bird-fast: a drop-in shim that takes the same args as `bird` but
+        # forwards them to the local daemon's POST /run endpoint. Same JSON
+        # output on stdout. Lets the LLM keep its existing mental model
+        # ("bird search ...") while paying daemon-speed latency.
+        sudo tee /usr/local/bin/bird-fast > /dev/null <<WRAPPER
+        #!/bin/bash
+        set -e
+        DAEMON_URL="\${BIRDY_DAEMON_URL:-http://127.0.0.1:${DAEMON_PORT}}"
+        PAYLOAD=\$(printf '%s\n' "\$@" | jq -Rs '{args: split("\n") | map(select(length > 0))}')
+        RESP=\$(curl -sS -X POST "\${DAEMON_URL}/run" \\
+          -H "Content-Type: application/json" \\
+          -d "\$PAYLOAD")
+        OK=\$(echo "\$RESP" | jq -r '.ok // false')
+        if [ "\$OK" = "true" ]; then
+          EXIT=\$(echo "\$RESP" | jq -r '.exit_code // 0')
+          echo "\$RESP" | jq -r '.stdout // ""'
+          STDERR=\$(echo "\$RESP" | jq -r '.stderr // ""')
+          [ -n "\$STDERR" ] && printf '%s' "\$STDERR" >&2
+          exit "\$EXIT"
+        else
+          echo "\$RESP" | jq -r '.error // "unknown daemon error"' >&2
+          exit 1
+        fi
+        WRAPPER
+        sudo chmod +x /usr/local/bin/bird-fast
+        bird-fast whoami 2>&1 | head -3 || echo "(bird-fast wrapper installed)"
