@@ -51,10 +51,10 @@ The expected difference is the model backend:
   run slower than the native Claude path. The workflow makes the first
   DeepSeek attempt recoverable: if Claude Code returns a transient API/socket
   error before the writer commits a generated HTML file, the job cleans any
-  partial repository artifacts and retries up to two times. If
-  `/tmp/gen-research.ara.md` survived from the failed attempt, the retry
-  prompt tells the model to validate and finish that draft instead of
-  restarting research.
+  partial repository artifacts and retries up to two times. Draft recovery is
+  limited to the workflow's run-scoped `$GEN_DRAFT` path, so a self-hosted
+  runner cannot reuse stale `/tmp/gen-research*.ara.md` content from another
+  backend or run.
 - Claude: native Anthropic endpoint, `claude-opus-4-7` metadata in
   `research/generative/index.json`.
 

@@ -273,6 +273,18 @@ jobs:
         run: |
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
+      # Keep model recovery drafts scoped to this workflow run. Self-hosted
+      # runners can retain /tmp between jobs, so a fixed draft path can cause
+      # a retry to publish a stale article from a different backend/run.
+      - name: Prepare run-scoped draft path
+        id: draft
+        run: |
+          set -euo pipefail
+          base="${RUNNER_TEMP:-/tmp}"
+          path="${base}/gen-research-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.ara.md"
+          rm -f "$path"
+          echo "path=$path" >> "$GITHUB_OUTPUT"
+
       # Acknowledge the user on the issue path so they know the job started.
       # The workflow_dispatch path has no comment surface; skip.
       - name: Acknowledge research request
@@ -306,6 +318,7 @@ jobs:
           GEN_TAGS: ${{ steps.params.outputs.tags }}
           GEN_SOURCE: ${{ steps.params.outputs.source }}
           GEN_PROMPT: ${{ steps.params.outputs.prompt }}
+          GEN_DRAFT: ${{ steps.draft.outputs.path }}
           # birdy auth — bird and bird-fast read these cookies to call
           # X/Twitter as a primary source. Same secrets used by the
           # hourly-twitter workflow.
@@ -330,6 +343,8 @@ jobs:
             $GEN_PROMPT is substantially longer than $GEN_TOPIC, treat the
             prompt as the user's detailed brief (questions, sources to
             prefer, framing) and let it shape your research plan.
+            The run-scoped article draft path is available as $GEN_DRAFT.
+            Use only $GEN_DRAFT for compile checks and writer input.
 
             TOOLBELT — beyond Read/Write/WebSearch/WebFetch, you have:
               - `python3 scripts/prior_context.py "$GEN_TOPIC"` — lists
@@ -367,7 +382,7 @@ jobs:
                 gracefully: exit 1 prints the error to stderr, your
                 section keeps going without the chart.
               - `python3 scripts/check_generative_research.py
-                /tmp/gen-research.ara.md` — COMPILE-CHECK the article.
+                "$GEN_DRAFT"` — COMPILE-CHECK the article.
                 Accepts `.ara.md` (compiles DSL, then validates the
                 resulting HTML) or `.html` (validates directly). Runs
                 the same rules the writer enforces at commit time:
@@ -711,14 +726,14 @@ jobs:
                error tells you exactly what to fix.
 
             7.5. COMPILE CHECK (deterministic; before commit).
-                 a. Write the draft `.ara.md` to /tmp/gen-research.ara.md.
+                 a. Write the draft `.ara.md` to $GEN_DRAFT.
                  b. Run with design gates active (corpus audit shows
                     real articles emit 0–3 viz primitives and 5–10
                     callouts; we hold this run to ≥ 3 viz + ≤ 5
                     callouts and warn on percentages-without-viz):
 
                       python3 scripts/check_generative_research.py \
-                        /tmp/gen-research.ara.md \
+                        "$GEN_DRAFT" \
                         --diversity-min 3 --callout-max 5 \
                         --strict-shape
 
@@ -747,7 +762,7 @@ jobs:
                     self-validating against the rule list in prose.
 
             8. SAVE. Write the final (already-clean) `.ara.md` to:
-                  /tmp/gen-research.ara.md
+                  $GEN_DRAFT
 
             9. COMMIT via the writer (Bash). Pass originating values via
                the pre-set env vars:
@@ -759,7 +774,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model claude-opus-4-7 \
-                    --html-body /tmp/gen-research.ara.md
+                    --html-body "$GEN_DRAFT"
 
                If $GEN_SLUG is empty, OMIT the --slug flag entirely (do
                NOT pass --slug ""):
@@ -769,7 +784,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model claude-opus-4-7 \
-                    --html-body /tmp/gen-research.ara.md
+                    --html-body "$GEN_DRAFT"
 
             CONSTRAINTS:
             - The writer COMMITS internally. Do NOT run `git commit`.
@@ -806,6 +821,7 @@ jobs:
           GEN_TAGS: ${{ steps.params.outputs.tags }}
           GEN_SOURCE: ${{ steps.params.outputs.source }}
           GEN_PROMPT: ${{ steps.params.outputs.prompt }}
+          GEN_DRAFT: ${{ steps.draft.outputs.path }}
           # birdy auth — bird and bird-fast read these cookies to call
           # X/Twitter as a primary source. Same secrets used by the
           # hourly-twitter workflow.
@@ -833,15 +849,18 @@ jobs:
             $GEN_PROMPT is substantially longer than $GEN_TOPIC, treat the
             prompt as the user's detailed brief (questions, sources to
             prefer, framing) and let it shape your research plan.
+            The run-scoped article draft path is available as $GEN_DRAFT.
+            Use only $GEN_DRAFT for compile checks and writer input.
 
             RECOVERY MODE. This workflow may retry DeepSeek up to two times
             if the Anthropic-compatible socket drops before the writer commits
-            an article. At the start, check whether /tmp/gen-research.ara.md
-            already exists from a prior failed attempt. If it exists, read it,
-            run the compile check from step 7.5, repair only validator or
-            obvious completion gaps, then proceed directly to the writer
-            commit step. Do not restart research from scratch when a valid or
-            nearly-valid draft is already present.
+            an article. At the start, check whether $GEN_DRAFT already exists
+            from an earlier attempt in this same workflow run. If it exists,
+            read it, run the compile check from step 7.5, repair only
+            validator or obvious completion gaps, then proceed directly to the
+            writer commit step. Do not restart research from scratch when a
+            valid or nearly-valid draft is already present. Do not read or
+            recover from any other /tmp/gen-research*.ara.md file.
 
             TOOLBELT — beyond Read/Write/WebSearch/WebFetch, you have:
               - `python3 scripts/prior_context.py "$GEN_TOPIC"` — lists
@@ -879,7 +898,7 @@ jobs:
                 gracefully: exit 1 prints the error to stderr, your
                 section keeps going without the chart.
               - `python3 scripts/check_generative_research.py
-                /tmp/gen-research.ara.md` — COMPILE-CHECK the article.
+                "$GEN_DRAFT"` — COMPILE-CHECK the article.
                 Accepts `.ara.md` (compiles DSL, then validates the
                 resulting HTML) or `.html` (validates directly). Runs
                 the same rules the writer enforces at commit time:
@@ -1223,14 +1242,14 @@ jobs:
                error tells you exactly what to fix.
 
             7.5. COMPILE CHECK (deterministic; before commit).
-                 a. Write the draft `.ara.md` to /tmp/gen-research.ara.md.
+                 a. Write the draft `.ara.md` to $GEN_DRAFT.
                  b. Run with design gates active (corpus audit shows
                     real articles emit 0–3 viz primitives and 5–10
                     callouts; we hold this run to ≥ 3 viz + ≤ 5
                     callouts and warn on percentages-without-viz):
 
                       python3 scripts/check_generative_research.py \
-                        /tmp/gen-research.ara.md \
+                        "$GEN_DRAFT" \
                         --diversity-min 3 --callout-max 5 \
                         --strict-shape
 
@@ -1259,7 +1278,7 @@ jobs:
                     self-validating against the rule list in prose.
 
             8. SAVE. Write the final (already-clean) `.ara.md` to:
-                  /tmp/gen-research.ara.md
+                  $GEN_DRAFT
 
             9. COMMIT via the writer (Bash). Pass originating values via
                the pre-set env vars:
@@ -1271,7 +1290,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model deepseek-v4-pro \
-                    --html-body /tmp/gen-research.ara.md
+                    --html-body "$GEN_DRAFT"
 
                If $GEN_SLUG is empty, OMIT the --slug flag entirely (do
                NOT pass --slug ""):
@@ -1281,7 +1300,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model deepseek-v4-pro \
-                    --html-body /tmp/gen-research.ara.md
+                    --html-body "$GEN_DRAFT"
 
             CONSTRAINTS:
             - The writer COMMITS internally. Do NOT run `git commit`.
