@@ -386,18 +386,31 @@ jobs:
             echo "has_report=false" >> $GITHUB_OUTPUT
           fi
 
+      # Security: ALL untrusted/LLM-generated fields flow through `env:` and
+      # are read with `process.env.X`. Directly interpolating
+      # `${{ steps.report.outputs.content }}` into a JS template literal is a
+      # script-injection vector: the LLM-written report can contain a literal
+      # backtick (closing the template) or `${expr}` (a JS expression that
+      # then evaluates inside the action's runtime, which holds repo write
+      # creds + the GITHUB_TOKEN). Same defense as PR #42 used for issue
+      # title/body, applied to the LLM's own output. The `issueNumber` env is
+      # parsed via `parseInt` so a malformed number can't be smuggled in.
       - name: Post research results to issue
         uses: actions/github-script@v9
+        env:
+          REPORT_CONTENT: ${{ steps.report.outputs.content }}
+          HAS_REPORT: ${{ steps.report.outputs.has_report }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         with:
           script: |
-            const hasReport = '${{ steps.report.outputs.has_report }}' === 'true';
-            const issueNumber = ${{ github.event.issue.number }};
+            const hasReport = process.env.HAS_REPORT === 'true';
+            const issueNumber = parseInt(process.env.ISSUE_NUMBER, 10);
+            const reportContent = process.env.REPORT_CONTENT || '';
             const reportUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/research/issues/${issueNumber}-research.md`;
 
             let body;
             if (hasReport) {
-              const preview = `${{ steps.report.outputs.content }}`;
-              body = `## 🔬 Research Complete!\n\n${preview}\n\n---\n\n📄 **[View Full Research Report](${reportUrl})**`;
+              body = `## 🔬 Research Complete!\n\n${reportContent}\n\n---\n\n📄 **[View Full Research Report](${reportUrl})**`;
             } else {
               body = `## 🔬 Research Complete!\n\nI've conducted research on your topic. Please check the [research report](${reportUrl}) for detailed findings.\n\n_If no report was generated, the research may have encountered issues. Check the workflow logs for details._`;
             }
@@ -409,6 +422,35 @@ jobs:
               body: body
             });
 
+      # Security: switch the Telegram notification from `format: markdown` to
+      # `format: html` and HTML-escape the issue title before embedding it.
+      # The previous version dropped raw `${{ github.event.issue.title }}` —
+      # an attacker-controlled string — into a Telegram MarkdownV2 payload.
+      # A title like `*Bold* [legit](http://evil.com)` would (a) break parsing
+      # or (b) inject formatting / a clickable link the user didn't author.
+      # HTML escaping is simpler (only &, <, > to handle) than MarkdownV2's
+      # 16-character escape set, and Telegram supports a small allowlist of
+      # safe HTML tags (b, i, a, code, pre). All other tags render as text.
+      - name: Prepare Telegram payload
+        if: success()
+        id: tg-prep
+        env:
+          RAW_TITLE: ${{ github.event.issue.title }}
+        run: |
+          set -euo pipefail
+          # HTML-escape the issue title (untrusted). Order matters: escape `&`
+          # first so we don't double-escape the entities we introduce next.
+          # printf '%s' preserves bytes faithfully; sed handles the three
+          # required substitutions. Issue titles can't contain newlines so
+          # multiline handling is not a concern.
+          ESCAPED=$(printf '%s' "$RAW_TITLE" \
+            | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
+          {
+            echo "safe_title<<__END_TITLE__"
+            printf '%s\n' "$ESCAPED"
+            echo "__END_TITLE__"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Send Telegram notification
         if: success()
         continue-on-error: true
@@ -416,14 +458,14 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: markdown
+          format: html
           message: |
-            🔬 *Research Complete*
+            🔬 <b>Research Complete</b>
 
             📋 Issue: #${{ github.event.issue.number }}
-            📝 Topic: ${{ github.event.issue.title }}
+            📝 Topic: ${{ steps.tg-prep.outputs.safe_title }}
 
-            📄 [View Research Report](https://github.com/${{ github.repository }}/blob/main/research/issues/${{ github.event.issue.number }}-research.md)
+            📄 <a href="https://github.com/${{ github.repository }}/blob/main/research/issues/${{ github.event.issue.number }}-research.md">View Research Report</a>
 
       - name: Publish Hooker workflow telemetry
         if: always()
