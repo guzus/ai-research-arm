@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "CYBER SECURITY NEWS: MYTHOS PREVIEW USED TO CRACK APPLE M5 MEMORY INTEGRITY ENFORCEMENT — UNPRIVILEGED-TO-ROOT IN FIVE DAYS",
+    "source": "@The_Cyber_News",
+    "url": "https://x.com/The_Cyber_News/status/2055844038801338855",
+    "category": "breaking"
+  },
+  {
+    "headline": "CARNEGIE MELLON V8 BENCHMARK: CLAUDE MYTHOS HITS FULL CODE-EXEC ON 21/41 V8 BUGS AT $36K — ~10-12X GPT-5.5 COST",
+    "source": "@codervibe__",
+    "url": "https://x.com/codervibe__/status/2055857797758124083",
+    "category": "research"
+  },
+  {
+    "headline": "DEMIS HASSABIS RTs LOGAN KILPATRICK: ANTIGRAVITY TEAM HAS BEEN COOKING — FIRST DEEPMIND-PRINCIPAL TEASE 52H BEFORE I/O",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2055841459526307961",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC CORP ACCOUNT NOW ~58.5H SILENT THROUGH MYTHOS GCP LEAK, M5/V8 CAPABILITY CYCLE, AND CYBER-SECURITY-NEWS PICKUP",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI CORP STILL SILENT ON MALTA SOVEREIGN DEAL ~12H AFTER BLOG — TECHMEME AND 10+ AGGREGATORS RUN STORY WITHOUT CORP ACK",
+    "source": "@Techmeme",
+    "url": "https://x.com/Techmeme/status/2055852380445712567",
+    "category": "business"
+  },
+  {
+    "headline": "CODEX TEAM SOLICITS PUBLIC FRUSTRATIONS PRE-NEXT-MODEL — JASON LIU: 'HELP US IMPROVE THE NEXT MODEL' (267L/9RT)",
+    "source": "@jxnlco",
+    "url": "https://x.com/jxnlco/status/2055839784711446551",
+    "category": "model"
+  },
+  {
+    "headline": "JENSEN AT STANFORD CS153: 'I WOULD LIKE TO BE AT LOW MFU ALL THE TIME' — OVERPROVISION FLOPS, NETWORKING, MEMORY",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2055835722783830311",
+    "category": "infra"
+  }
+]
