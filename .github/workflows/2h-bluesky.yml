@@ -152,9 +152,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Retry loop: parallel ubuntu-latest writers can race on `main`.
+          # The self-hosted runner serialized everything so this never
+          # collided; ubuntu-latest does not. Without the retry, a
+          # non-fast-forward push would be silently swallowed by `|| echo`,
+          # losing the just-written research artifact. If Claude didn't
+          # commit anything (no new content), HEAD == origin/main after
+          # the rebase and `git push` is a no-op.
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          git pull --rebase || true
-          git push || echo "Nothing to push"
+          for i in 1 2 3 4 5; do
+            git fetch origin main \
+              && git pull --rebase origin main \
+              && git push origin HEAD:main \
+              && exit 0
+            echo "Push attempt $i failed (likely race with another writer), retrying..."
+            sleep $(( i * 5 + RANDOM % 5 ))
+          done
+          echo "Push failed after 5 retries" >&2
+          exit 1
 
       - name: Publish Hooker workflow telemetry
         if: always()
