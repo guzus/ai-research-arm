@@ -23,6 +23,19 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Ensure git-lfs filter hooks are wired in. Self-hosted runner may
+      # already have it installed; `git lfs install` is idempotent. The MP3
+      # produced by the TTS step below matches `*.mp3` in .gitattributes, so
+      # this step is what routes the commit through LFS instead of fat-storing
+      # the blob in git history.
+      - name: Install git-lfs hooks
+        run: |
+          if ! command -v git-lfs >/dev/null 2>&1; then
+            echo "git-lfs not found on runner — attempting install..."
+            sudo apt-get update -qq && sudo apt-get install -y -qq git-lfs
+          fi
+          git lfs install --local
+
       - name: Pull latest changes
         run: git pull origin main || true
 
