@@ -36,7 +36,8 @@ jobs:
           node-version: '22'
 
       - name: Install bird CLI
-        run: npm install -g @steipete/bird
+        # pinned 2026-05-17; bump manually (Dependabot can't track inline npm -g installs)
+        run: npm install -g @steipete/bird@0.8.0
 
       - name: Fetch tweets from company accounts
         env:

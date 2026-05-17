@@ -1,0 +1,8 @@
+# Required Python deps for ai-research-arm workflows. Hard-fail if install
+# breaks — these are load-bearing for generative-research.yml.
+# Dependabot's pip ecosystem watches this file (see .github/dependabot.yml).
+#
+# PyYAML: scripts/compile_ara.py parses .ara.md frontmatter + block bodies.
+# Without it the compiler can't run and the writer falls back to raw HTML,
+# defeating the .ara.md DSL.
+pyyaml==6.0.3

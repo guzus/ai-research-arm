@@ -248,30 +248,35 @@ jobs:
           fi
           echo "curl:      $(command -v curl || echo MISSING) $(curl --version 2>/dev/null | head -1)"
           echo "pdftotext: $(command -v pdftotext || echo MISSING) $(pdftotext -v 2>&1 | head -1)"
-          # yfinance for scripts/stock_prices.py. Yahoo's chart API blocks
-          # bare-urllib clients; yfinance handles the crumb-cookie dance and
-          # retries, which is the difference between working and 429ing from
-          # the runner. --break-system-packages is required because the
-          # runner's Python ships with PEP-668 enabled — even --user installs
-          # are blocked otherwise. Safe here because this runner is dedicated
-          # to this workflow; we're not contending with a host package manager.
-          if ! python3 -c "import yfinance" 2>/dev/null; then
-            echo "Installing yfinance"
-            python3 -m pip install --quiet --user --upgrade --break-system-packages yfinance \
-              || echo "WARN: pip install yfinance failed; stock_prices.py will fall back to urllib/stooq" >&2
-          fi
-          python3 -c "import yfinance; print('yfinance:', yfinance.__version__)" 2>&1 || true
-          # PyYAML for scripts/compile_ara.py (the .ara.md frontmatter +
-          # block-body parser). Without it the compiler can't run and the
-          # writer falls back to its raw-HTML path, which means
-          # section-writer agents must hand-write HTML — the whole point
-          # of the DSL is undone. Hard-fail if install fails.
+          # Python deps split into two manifests so failure modes stay
+          # per-package (Dependabot's pip ecosystem watches both via the
+          # `requirements*.txt` glob — see .github/dependabot.yml):
+          #   requirements.txt          — required, hard-fail (pyyaml)
+          #   requirements-optional.txt — best-effort, soft-fail (yfinance)
+          # --break-system-packages is required because the runner's Python
+          # ships with PEP-668 enabled — even --user installs are blocked
+          # otherwise. Safe here because this runner is dedicated to this
+          # workflow; we're not contending with a host package manager.
+          # PyYAML: drives .ara.md compiler in scripts/compile_ara.py.
           if ! python3 -c "import yaml" 2>/dev/null; then
-            echo "Installing PyYAML"
-            python3 -m pip install --quiet --user --upgrade --break-system-packages pyyaml \
-              || { echo "ERROR: pip install pyyaml failed; compile_ara cannot run"; exit 1; }
+            echo "Installing required Python deps from requirements.txt"
+            python3 -m pip install --quiet --user --break-system-packages \
+              -r requirements.txt \
+              || { echo "ERROR: required pip install failed; compile_ara cannot run"; exit 1; }
           fi
-          python3 -c "import yaml; print('yaml:', yaml.__version__)" 2>&1 || true
+          python3 -c "import yaml; print('yaml:', yaml.__version__)" 2>&1 \
+            || { echo "ERROR: pyyaml unavailable; compile_ara cannot run"; exit 1; }
+          # yfinance: best-effort; stock_prices.py falls back to urllib/stooq.
+          # Installed separately so a yfinance install/network flake never
+          # blocks the workflow.
+          if ! python3 -c "import yfinance" 2>/dev/null; then
+            echo "Installing optional Python deps from requirements-optional.txt"
+            python3 -m pip install --quiet --user --break-system-packages \
+              -r requirements-optional.txt \
+              || echo "WARN: optional pip install failed; stock_prices.py will fall back to urllib/stooq" >&2
+          fi
+          python3 -c "import yfinance; print('yfinance:', yfinance.__version__)" 2>&1 \
+            || echo "WARN: yfinance unavailable; stock_prices.py will fall back to urllib/stooq" >&2
 
       # Snapshot HEAD before the model runs so we can later identify the file
       # THIS run produced (rather than guessing by `ls -t`, which would point
