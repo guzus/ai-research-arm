@@ -258,5 +258,20 @@
       "claude",
       "qa"
     ]
+  },
+  {
+    "slug": "compare-deepseek-v4-pro-power-bottlenecks",
+    "file": "2026-05-17T043443--compare-deepseek-v4-pro-power-bottlenecks.html",
+    "kind": "fragment",
+    "title": "The chokepoints inside the chokepoint",
+    "model": "deepseek-v4-pro",
+    "created_at": "2026-05-17T04:34:43Z",
+    "source": "workflow_dispatch",
+    "prompt": "AI infrastructure power bottlenecks in 2026: grid constraints, data center demand, and mitigation strategies",
+    "tags": [
+      "comparison",
+      "deepseek",
+      "qa"
+    ]
   }
 ]
