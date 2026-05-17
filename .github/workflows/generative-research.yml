@@ -784,12 +784,13 @@ jobs:
       # hourly-twitter-deepseek-agentic.yml. The OAuth input is required by
       # the action schema but ignored by the CLI when ANTHROPIC_BASE_URL is set.
       # The writer records --model deepseek-v4-pro (the served model).
-      - name: Run Generative Research (DeepSeek V4 Pro)
+      - name: Run Generative Research (DeepSeek V4 Pro, attempt 1)
         if: steps.params.outputs.backend == 'deepseek-v4-pro'
         id: gen-deepseek
+        continue-on-error: true
         timeout-minutes: 90
         uses: anthropics/claude-code-action@v1
-        env:
+        env: &deepseek_v4_pro_env
           # Redirect Claude Code CLI to DeepSeek's Anthropic-compatible endpoint.
           # See https://api-docs.deepseek.com/guides/coding_agents
           ANTHROPIC_BASE_URL: https://api.deepseek.com/anthropic
@@ -810,7 +811,7 @@ jobs:
           # hourly-twitter workflow.
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
-        with:
+        with: &deepseek_v4_pro_with
           # Required by the action input schema; superseded at runtime by
           # ANTHROPIC_AUTH_TOKEN because ANTHROPIC_BASE_URL is set.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -832,6 +833,15 @@ jobs:
             $GEN_PROMPT is substantially longer than $GEN_TOPIC, treat the
             prompt as the user's detailed brief (questions, sources to
             prefer, framing) and let it shape your research plan.
+
+            RECOVERY MODE. This workflow may retry DeepSeek once if the
+            Anthropic-compatible socket drops before the writer commits an
+            article. At the start, check whether /tmp/gen-research.ara.md
+            already exists from a prior failed attempt. If it exists, read it,
+            run the compile check from step 7.5, repair only validator or
+            obvious completion gaps, then proceed directly to the writer
+            commit step. Do not restart research from scratch when a valid or
+            nearly-valid draft is already present.
 
             TOOLBELT — beyond Read/Write/WebSearch/WebFetch, you have:
               - `python3 scripts/prior_context.py "$GEN_TOPIC"` — lists
@@ -1280,6 +1290,51 @@ jobs:
             - If validation fails, fix the HTML and retry the same Bash
               invocation; do not work around the validator.
 
+      - name: Inspect DeepSeek attempt 1
+        if: steps.params.outputs.backend == 'deepseek-v4-pro'
+        id: deepseek-attempt-1
+        env:
+          PRE_SHA: ${{ steps.pre.outputs.sha }}
+          OUTCOME: ${{ steps.gen-deepseek.outcome }}
+        run: |
+          set -euo pipefail
+          HEAD_SHA=$(git rev-parse HEAD)
+          HAS_FILE=false
+          if [ "$HEAD_SHA" != "$PRE_SHA" ]; then
+            NEW_FILES=$(git diff --name-only --diff-filter=A "$PRE_SHA..HEAD" -- 'research/generative/*.html' || true)
+            if [ -n "$NEW_FILES" ]; then
+              HAS_FILE=true
+            fi
+          fi
+
+          RETRY=false
+          if [ "$OUTCOME" = "failure" ] && [ "$HAS_FILE" != "true" ]; then
+            RETRY=true
+            echo "::warning::DeepSeek attempt 1 failed before producing an article; retrying once. This covers transient Anthropic-compatible API/socket drops."
+            echo "Cleaning tracked and untracked repository artifacts from the failed attempt before retry."
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative
+          elif [ "$OUTCOME" = "failure" ]; then
+            echo "::warning::DeepSeek attempt 1 reported failure, but an article commit exists; continuing to publish that output."
+          else
+            echo "DeepSeek attempt 1 outcome: $OUTCOME"
+          fi
+
+          {
+            echo "outcome=$OUTCOME"
+            echo "has_file=$HAS_FILE"
+            echo "retry=$RETRY"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Run Generative Research (DeepSeek V4 Pro, retry)
+        if: steps.deepseek-attempt-1.outputs.retry == 'true'
+        id: gen-deepseek-retry
+        continue-on-error: true
+        timeout-minutes: 90
+        uses: anthropics/claude-code-action@v1
+        env: *deepseek_v4_pro_env
+        with: *deepseek_v4_pro_with
+
       # Identify the file THIS run produced by diffing HEAD against the
       # snapshot we took before the action. This rejects the "newest file in
       # the directory" heuristic, which would silently attribute the fixture
@@ -1317,7 +1372,7 @@ jobs:
       # design gate produced the desired behavior or whether the
       # agent squeaked past with the bare minimum.
       - name: Article quality report
-        if: steps.outfile.outputs.has_file == 'true'
+        if: always() && steps.outfile.outputs.has_file == 'true'
         env:
           FILE: ${{ steps.outfile.outputs.file }}
         run: |
@@ -1376,7 +1431,7 @@ jobs:
       # rejections (auth / non-fast-forward).
       - name: Push changes
         id: push
-        if: steps.outfile.outputs.has_file == 'true'
+        if: always() && steps.outfile.outputs.has_file == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -1494,6 +1549,14 @@ jobs:
               issue_number: issueNumber,
               body: body
             });
+
+      - name: Fail DeepSeek run without article
+        if: always() && steps.params.outputs.backend == 'deepseek-v4-pro' && steps.outfile.outputs.has_file != 'true'
+        run: |
+          echo "::error::DeepSeek did not produce an article after the retry policy."
+          echo "Attempt 1 outcome: ${{ steps.gen-deepseek.outcome }}"
+          echo "Retry outcome: ${{ steps.gen-deepseek-retry.outcome }}"
+          exit 1
 
       - name: Send Telegram notification
         if: success() && steps.outfile.outputs.has_file == 'true' && steps.push.outputs.pushed == 'true'
