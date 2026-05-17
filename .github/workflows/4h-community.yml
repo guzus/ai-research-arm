@@ -93,7 +93,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --mcp-config /tmp/mcp-config.json
+            --model sonnet --mcp-config /tmp/mcp-config.json
             --allowedTools "Read,Write,Edit,Bash(git:*),mcp__hackernews__*"
           prompt: |
             You are a community AI news curator. Process REAL-TIME data from HN and Reddit.

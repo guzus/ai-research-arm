@@ -336,7 +336,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --max-turns 240 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
+            --model opus --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
             You are a deep-research analyst writing a COMPREHENSIVE,
             analyst-grade HTML article on the topic supplied by the user.
@@ -853,7 +853,7 @@ jobs:
           # ANTHROPIC_AUTH_TOKEN because ANTHROPIC_BASE_URL is set.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --max-turns 240 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
+            --model opus --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(python3:*),Bash(cat:*),Bash(ls:*),Bash(printenv:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
             You are a deep-research analyst running on DeepSeek v4 Pro,
             writing a COMPREHENSIVE, analyst-grade HTML article on the
