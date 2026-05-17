@@ -70,6 +70,28 @@ def score_row(row: dict, topic_tokens: set[str]) -> tuple[int, dict]:
     }
 
 
+# Defense-in-depth: a prior LLM could legitimately have written the literal
+# strings "<<<UNTRUSTED_PRIOR_ARTICLE" or "END_UNTRUSTED_PRIOR_ARTICLE>>>"
+# in a title / prompt / excerpt (e.g., an article about prompt-injection
+# defenses), which would prematurely close the fence and let following
+# text appear OUTSIDE the untrusted region. Scrub every field that flows
+# between the markers before emitting it.
+FENCE_OPEN = "<<<UNTRUSTED_PRIOR_ARTICLE"
+FENCE_CLOSE = "END_UNTRUSTED_PRIOR_ARTICLE>>>"
+FENCE_REDACTION = "[redacted-fence-marker]"
+
+
+def scrub_fence_markers(text: str) -> str:
+    """Replace the fence delimiter tokens with a clearly tampered marker.
+
+    Visually distinct so a reviewer (human or model) can see the
+    replacement happened rather than getting a silent edit.
+    """
+    if not text:
+        return text
+    return text.replace(FENCE_OPEN, FENCE_REDACTION).replace(FENCE_CLOSE, FENCE_REDACTION)
+
+
 def extract_excerpt(file_path: Path) -> str:
     if not file_path.exists():
         return ""
@@ -99,9 +121,9 @@ def extract_excerpt(file_path: Path) -> str:
         return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", s)).strip()
     parts = []
     if m_title:
-        parts.append("TITLE: " + strip(m_title.group(1)))
+        parts.append("TITLE: " + scrub_fence_markers(strip(m_title.group(1))))
     if m_lede:
-        lede = strip(m_lede.group(1))
+        lede = scrub_fence_markers(strip(m_lede.group(1)))
         parts.append("LEDE: " + (lede[:400] + "…" if len(lede) > 400 else lede))
     return "\n".join(parts)
 
@@ -176,18 +198,25 @@ def main(argv: list[str] | None = None) -> int:
     )
     for score, hits, row in scored:
         file_rel = f"research/generative/{row.get('file','')}"
-        print("<<<UNTRUSTED_PRIOR_ARTICLE")
+        # Scrub every field that flows between the fences. score/hits/date are
+        # numeric/structured and safe; the free-text fields are not.
+        slug = scrub_fence_markers(str(row.get('slug', '')))
+        title = scrub_fence_markers(str(row.get('title', '')))
+        model = scrub_fence_markers(str(row.get('model', '')))
+        prompt_txt = scrub_fence_markers(str(row.get('prompt', '')))
+        file_rel_safe = scrub_fence_markers(file_rel)
+        print(FENCE_OPEN)
         print(f"--- score={score}  hits={hits} ---")
-        print(f"slug:    {row.get('slug','')}")
-        print(f"title:   {row.get('title','')}")
-        print(f"model:   {row.get('model','')}")
+        print(f"slug:    {slug}")
+        print(f"title:   {title}")
+        print(f"model:   {model}")
         print(f"date:    {row.get('created_at','')}")
-        print(f"prompt:  {row.get('prompt','')}")
-        print(f"file:    {file_rel}")
+        print(f"prompt:  {prompt_txt}")
+        print(f"file:    {file_rel_safe}")
         excerpt = extract_excerpt(repo / file_rel)
         if excerpt:
             print(excerpt)
-        print("END_UNTRUSTED_PRIOR_ARTICLE>>>")
+        print(FENCE_CLOSE)
         print()
     return 0
 
