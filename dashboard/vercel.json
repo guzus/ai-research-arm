@@ -4,7 +4,7 @@
   "installCommand": "bun install --frozen-lockfile",
   "buildCommand": "bun run build",
   "outputDirectory": "dist",
-  "ignoreCommand": "git rev-parse HEAD^ >/dev/null 2>&1 || exit 1; git diff --quiet HEAD^ HEAD -- ./ ../research/twitter/ ../research/models/ ../research/front-page/ ../research/digest/ ../research/audio/ ../research/generative/",
+  "ignoreCommand": "if [ -z \"$VERCEL_GIT_PREVIOUS_SHA\" ]; then exit 1; fi; git diff --quiet \"$VERCEL_GIT_PREVIOUS_SHA\" HEAD -- ./ ../research/twitter/ ../research/models/ ../research/front-page/ ../research/digest/ ../research/audio/ ../research/generative/ || exit 1; exit 0",
   "rewrites": [
     {
       "source": "/((?!research/.+|.*\\.[a-zA-Z0-9]+$).*)",
