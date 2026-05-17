@@ -5377,5 +5377,47 @@
     "headline": "TESTINGCATALOG: HERMES AGENT NOW USES X PREMIUM+ FOR GROK + X SEARCH TOOL \u2014 'OPENAI VS XAI ONCE AGAIN' IN AGENT-FRAMEWORK BATTLE",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2055755847448297495"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-17 01:13 UTC",
+    "headline": "ANTHROPIC'S \"TOO DANGEROUS\" CLAUDE MYTHOS APPEARS AS `-CLAUDE-MYTHOS` FILTER TAG IN GOOGLE CLOUD CONSOLE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2055765220123939272"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-17 01:13 UTC",
+    "headline": "KIMMONISMUS: \"I CANNOT THINK OF ANY SCENARIO ANTHROPIC RELEASES MYTHOS\" \u2014 TIES GCP LEAK TO M5-BREAK CAPABILITY CYCLE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2055767238636933494"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-17 01:13 UTC",
+    "headline": "GEMINI 3.2 FLASH-LITE-LIVE TRACES SPOTTED IN GCP CONSOLE ~52 HOURS BEFORE GOOGLE I/O 2026-05-19",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2055794741782929617"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-17 01:13 UTC",
+    "headline": "KEN GRIFFIN: AI TOOLKIT \"PROFOUNDLY MORE POWERFUL THAN NINE MONTHS AGO\" \u2014 PHD-FINANCE WORK NOW DONE IN HOURS AT CITADEL",
+    "source": "@FundamentEdge",
+    "url": "https://x.com/FundamentEdge/status/2055675389767516544"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-17 01:13 UTC",
+    "headline": "ANTHROPIC CORP X-SILENCE EXTENDS TO ~55 HOURS THROUGH MYTHOS GCP LEAK + M5-BREAK MULTILINGUAL CYCLE",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-17 01:13 UTC",
+    "headline": "SEMIANALYSIS PUBLISHES TECHNICAL BREAKDOWN OF GPT 4.6 \u2192 4.7 TOKENIZER IMPROVEMENTS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2055815691211608442"
   }
 ]
