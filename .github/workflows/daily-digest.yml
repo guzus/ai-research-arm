@@ -18,12 +18,9 @@ jobs:
       id-token: write
 
     steps:
-      # Provision git-lfs on the runner BEFORE checkout in case the runner
-      # image doesn't ship with it. This workflow doesn't use `lfs: true` on
-      # checkout (it only writes its own fresh MP3 — no existing LFS objects
-      # to hydrate), but downstream `git pull --rebase` may pull LFS-routed
-      # commits from other workflows, so the smudge filter needs git-lfs
-      # available. apt-get install needs no repo content; safe pre-checkout.
+      # Provision git-lfs on the runner BEFORE checkout — `actions/checkout@v4`
+      # with `lfs: true` shells out to `git lfs` during the checkout phase
+      # and fails if it's missing. apt-get install needs no repo content.
       - name: Ensure git-lfs is installed
         run: |
           if ! command -v git-lfs >/dev/null 2>&1; then
@@ -36,6 +33,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # lfs: true REQUIRED for safe re-runs. The TTS step has
+          # `continue-on-error: true` and `exit 0`s without writing a fresh
+          # MP3 if GEMINI_API_KEY is missing or the API fails. The downstream
+          # Telegram + Hooker steps then test `[ -f $AUDIO_FILE ]` — a
+          # 135-byte LFS pointer passes that check and gets uploaded as
+          # "audio". Hydrating on checkout means the on-disk file is always
+          # a real MP3 (either the previously-committed one, or the fresh
+          # one written by ffmpeg this run).
+          lfs: true
 
       # Wire git-lfs smudge/clean filters into THIS worktree's git config so
       # the MP3 produced by the TTS step below routes through LFS on commit
