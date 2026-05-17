@@ -65,6 +65,15 @@ jobs:
           # dashboard would serve pointer text instead of images/audio.
           lfs: true
 
+      # Vite 8 requires Node.js >= 20.19. The self-hosted runner ships Node 18,
+      # and `bun run build` shells out to `vite build` which uses the system
+      # node shebang. Provision Node 22 explicitly so Vite has the runtime it
+      # needs. Keep ahead of Vite's minimum to leave headroom.
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
 
