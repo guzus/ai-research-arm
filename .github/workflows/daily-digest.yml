@@ -30,7 +30,7 @@ jobs:
           git lfs version
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           # lfs: true REQUIRED for safe re-runs. The TTS step has
