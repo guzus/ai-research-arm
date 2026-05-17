@@ -290,6 +290,13 @@ jobs:
       # Keep model recovery drafts scoped to this workflow run. Self-hosted
       # runners can retain /tmp between jobs, so a fixed draft path can cause
       # a retry to publish a stale article from a different backend/run.
+      # Also remove any stale verifier-findings JSON from a previous run.
+      # The audit step trusts whatever JSON file exists, so a stale one
+      # left behind by an earlier failed attempt would be applied to this
+      # run's (different) article body — wrong claims audited against the
+      # wrong text. Idempotent rm at job start guarantees this run's
+      # audit either sees this run's verifier output or no file at all
+      # (in which case the audit takes its documented soft-skip path).
       - name: Prepare run-scoped draft path
         id: draft
         run: |
@@ -298,6 +305,11 @@ jobs:
           path="${base}/gen-research-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.ara.md"
           rm -f "$path"
           echo "path=$path" >> "$GITHUB_OUTPUT"
+          # Delete stale verifier findings from a prior workflow attempt
+          # on this self-hosted runner. The Claude / DeepSeek retry loops
+          # already reset research/generative; this is the matching
+          # cleanup for the verifier artifact.
+          rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
 
       # Acknowledge the user on the issue path so they know the job started.
       # The workflow_dispatch path has no comment surface; skip.
@@ -633,6 +645,35 @@ jobs:
 
                   - additionally flag any factual claim WITHOUT a cite
 
+               THEN the verifier MUST ALSO write a structured JSON
+               artifact to:
+
+                      $GITHUB_WORKSPACE/.gen-verifier-findings.json
+
+               The JSON's shape MUST be:
+
+                      {
+                        "claims": [
+                          {
+                            "id": "c1",
+                            "text": "<verbatim claim sentence from the body — full sentence or first 80+ chars>",
+                            "verdict": "supported" | "weak" | "unsupported",
+                            "citation": "<url or null>"
+                          },
+                          ...
+                        ]
+                      }
+
+               Every claim_id in the findings table MUST have a
+               matching entry in `claims[]`. The `text` field is the
+               sentence text as it appears in the .ara.md body — used
+               by the post-revision audit step to verify which
+               unsupported claims were actually addressed. A
+               deterministic workflow step reads this file after
+               bounded revision and FAILS the build if any
+               `unsupported` claim survives in the body without being
+               demoted (`==…==` / `<mark>`) or removed.
+
             7. BOUNDED REVISION. Address ONLY the verifier's findings.
                Each unsupported claim must be either: (a) replaced with
                a supported variant from the ledger, (b) demoted by
@@ -640,7 +681,15 @@ jobs:
                `<mark class="ara-mark">`), or (c) deleted. Do NOT
                generically expand or pad. ONE revision pass maximum.
 
-            QUALITY TARGETS — these, not word count, are the bar:
+               After revising, you do NOT need to re-run the verifier
+               or regenerate the JSON — the post-revision audit step
+               re-reads `.gen-verifier-findings.json` and checks each
+               `unsupported` claim against the FINAL committed body.
+
+            QUALITY TARGETS — these, not word count, are the bar
+               (cite-density and refs are now ENFORCED in step 7.5;
+               primary-share and cited-claim-share are tracked as
+               metrics but not yet hard-gated):
                - Research questions answered: ≥ 85% of your plan
                - Substantive factual claims with cite: ≥ 90%
                - Primary-source share among cited sources: ≥ 50%
@@ -753,14 +802,20 @@ jobs:
 
             7.5. COMPILE CHECK (deterministic; before commit).
                  a. Write the draft `.ara.md` to $GEN_DRAFT.
-                 b. Run with design gates active (corpus audit shows
-                    real articles emit 0–3 viz primitives and 5–10
-                    callouts; we hold this run to ≥ 3 viz + ≤ 5
-                    callouts and warn on percentages-without-viz):
+                 b. Run with design AND research-quality gates active.
+                    Corpus audit shows real articles emit 0–3 viz
+                    primitives and 5–10 callouts; we hold this run
+                    to ≥ 3 viz + ≤ 5 callouts. cite-density-min and
+                    refs-min encode the QUALITY TARGETS as build gates
+                    (previously prose-only; corpus audit found 4
+                    historical articles shipped with zero citations).
+                    --strict-shape adds soft warnings on percentages-
+                    without-viz (advisory, doesn't block):
 
                       python3 scripts/check_generative_research.py \
                         "$GEN_DRAFT" \
                         --diversity-min 3 --callout-max 5 \
+                        --cite-density-min 10 --refs-min 20 \
                         --strict-shape
 
                  c. Exit 0 → proceed to step 8. Soft warnings printed
@@ -768,11 +823,11 @@ jobs:
                     whether the flagged section would read better
                     with a viz, but they don't block.
                     Exit 1 → the stderr lists every DSL grammar
-                    error, invalid class/tag, OR design-gate
-                    violation. Fix the body in-place and re-run.
-                    Iterate until clean. Do NOT proceed to commit
-                    until exit 0. Common design fixes when the gate
-                    fails on diversity:
+                    error, invalid class/tag, design-gate violation,
+                    OR research-quality gate violation. Fix the body
+                    in-place and re-run. Iterate until clean. Do NOT
+                    proceed to commit until exit 0. Common design
+                    fixes when the gate fails on diversity:
                       - 4+ percentage shares of one whole in prose
                         → `:::donut` with `{label, value}` items
                       - "the top N are…" list in prose
@@ -783,6 +838,14 @@ jobs:
                         → `:::timeline` with `{date, headline, body}`
                       - 4+ headline KPIs presented as separate
                         sentences → `:::stats` grid
+                    Common quality fixes:
+                      - cite density too low → every substantive
+                        factual claim needs a [^N] marker; if you
+                        wrote a number without a source, find one
+                        or remove the claim
+                      - refs too few → run more research waves; you
+                        need at least 20 distinct source URLs in
+                        the :::references block
                  d. This loop is cheap — token cost is just reading
                     short error messages. Lean on it instead of
                     self-validating against the rule list in prose.
@@ -790,8 +853,11 @@ jobs:
             8. SAVE. Write the final (already-clean) `.ara.md` to:
                   $GEN_DRAFT
 
-            9. COMMIT via the writer (Bash). Pass originating values via
-               the pre-set env vars:
+            9. COMMIT via the writer (Bash). The writer RE-RUNS the
+               same quality gates at commit time so local and CI
+               validation cannot drift. Pass originating values via
+               the pre-set env vars and the same gate thresholds the
+               compile-check used in step 7.5:
 
                   python3 scripts/write_generative_research.py \
                     --topic "$GEN_TOPIC" \
@@ -800,6 +866,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model claude-opus-4-7 \
+                    --cite-density-min 10 --refs-min 20 \
                     --html-body "$GEN_DRAFT"
 
                If $GEN_SLUG is empty, OMIT the --slug flag entirely (do
@@ -810,6 +877,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model claude-opus-4-7 \
+                    --cite-density-min 10 --refs-min 20 \
                     --html-body "$GEN_DRAFT"
 
             CONSTRAINTS:
@@ -1161,6 +1229,35 @@ jobs:
 
                   - additionally flag any factual claim WITHOUT a cite
 
+               THEN the verifier MUST ALSO write a structured JSON
+               artifact to:
+
+                      $GITHUB_WORKSPACE/.gen-verifier-findings.json
+
+               The JSON's shape MUST be:
+
+                      {
+                        "claims": [
+                          {
+                            "id": "c1",
+                            "text": "<verbatim claim sentence from the body — full sentence or first 80+ chars>",
+                            "verdict": "supported" | "weak" | "unsupported",
+                            "citation": "<url or null>"
+                          },
+                          ...
+                        ]
+                      }
+
+               Every claim_id in the findings table MUST have a
+               matching entry in `claims[]`. The `text` field is the
+               sentence text as it appears in the .ara.md body — used
+               by the post-revision audit step to verify which
+               unsupported claims were actually addressed. A
+               deterministic workflow step reads this file after
+               bounded revision and FAILS the build if any
+               `unsupported` claim survives in the body without being
+               demoted (`==…==` / `<mark>`) or removed.
+
             7. BOUNDED REVISION. Address ONLY the verifier's findings.
                Each unsupported claim must be either: (a) replaced with
                a supported variant from the ledger, (b) demoted by
@@ -1168,7 +1265,15 @@ jobs:
                `<mark class="ara-mark">`), or (c) deleted. Do NOT
                generically expand or pad. ONE revision pass maximum.
 
-            QUALITY TARGETS — these, not word count, are the bar:
+               After revising, you do NOT need to re-run the verifier
+               or regenerate the JSON — the post-revision audit step
+               re-reads `.gen-verifier-findings.json` and checks each
+               `unsupported` claim against the FINAL committed body.
+
+            QUALITY TARGETS — these, not word count, are the bar
+               (cite-density and refs are now ENFORCED in step 7.5;
+               primary-share and cited-claim-share are tracked as
+               metrics but not yet hard-gated):
                - Research questions answered: ≥ 85% of your plan
                - Substantive factual claims with cite: ≥ 90%
                - Primary-source share among cited sources: ≥ 50%
@@ -1281,14 +1386,20 @@ jobs:
 
             7.5. COMPILE CHECK (deterministic; before commit).
                  a. Write the draft `.ara.md` to $GEN_DRAFT.
-                 b. Run with design gates active (corpus audit shows
-                    real articles emit 0–3 viz primitives and 5–10
-                    callouts; we hold this run to ≥ 3 viz + ≤ 5
-                    callouts and warn on percentages-without-viz):
+                 b. Run with design AND research-quality gates active.
+                    Corpus audit shows real articles emit 0–3 viz
+                    primitives and 5–10 callouts; we hold this run
+                    to ≥ 3 viz + ≤ 5 callouts. cite-density-min and
+                    refs-min encode the QUALITY TARGETS as build gates
+                    (previously prose-only; corpus audit found 4
+                    historical articles shipped with zero citations).
+                    --strict-shape adds soft warnings on percentages-
+                    without-viz (advisory, doesn't block):
 
                       python3 scripts/check_generative_research.py \
                         "$GEN_DRAFT" \
                         --diversity-min 3 --callout-max 5 \
+                        --cite-density-min 10 --refs-min 20 \
                         --strict-shape
 
                  c. Exit 0 → proceed to step 8. Soft warnings printed
@@ -1296,11 +1407,11 @@ jobs:
                     whether the flagged section would read better
                     with a viz, but they don't block.
                     Exit 1 → the stderr lists every DSL grammar
-                    error, invalid class/tag, OR design-gate
-                    violation. Fix the body in-place and re-run.
-                    Iterate until clean. Do NOT proceed to commit
-                    until exit 0. Common design fixes when the gate
-                    fails on diversity:
+                    error, invalid class/tag, design-gate violation,
+                    OR research-quality gate violation. Fix the body
+                    in-place and re-run. Iterate until clean. Do NOT
+                    proceed to commit until exit 0. Common design
+                    fixes when the gate fails on diversity:
                       - 4+ percentage shares of one whole in prose
                         → `:::donut` with `{label, value}` items
                       - "the top N are…" list in prose
@@ -1311,6 +1422,14 @@ jobs:
                         → `:::timeline` with `{date, headline, body}`
                       - 4+ headline KPIs presented as separate
                         sentences → `:::stats` grid
+                    Common quality fixes:
+                      - cite density too low → every substantive
+                        factual claim needs a [^N] marker; if you
+                        wrote a number without a source, find one
+                        or remove the claim
+                      - refs too few → run more research waves; you
+                        need at least 20 distinct source URLs in
+                        the :::references block
                  d. This loop is cheap — token cost is just reading
                     short error messages. Lean on it instead of
                     self-validating against the rule list in prose.
@@ -1318,8 +1437,11 @@ jobs:
             8. SAVE. Write the final (already-clean) `.ara.md` to:
                   $GEN_DRAFT
 
-            9. COMMIT via the writer (Bash). Pass originating values via
-               the pre-set env vars:
+            9. COMMIT via the writer (Bash). The writer RE-RUNS the
+               same quality gates at commit time so local and CI
+               validation cannot drift. Pass originating values via
+               the pre-set env vars and the same gate thresholds the
+               compile-check used in step 7.5:
 
                   python3 scripts/write_generative_research.py \
                     --topic "$GEN_TOPIC" \
@@ -1328,6 +1450,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model deepseek-v4-pro \
+                    --cite-density-min 10 --refs-min 20 \
                     --html-body "$GEN_DRAFT"
 
                If $GEN_SLUG is empty, OMIT the --slug flag entirely (do
@@ -1338,6 +1461,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model deepseek-v4-pro \
+                    --cite-density-min 10 --refs-min 20 \
                     --html-body "$GEN_DRAFT"
 
             CONSTRAINTS:
@@ -1371,6 +1495,9 @@ jobs:
             echo "Cleaning tracked and untracked repository artifacts from the failed attempt before retry."
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative
+            # Drop stale verifier-findings JSON so the retry's audit
+            # can't compare new article body against old verifier claims.
+            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
           elif [ "$OUTCOME" = "failure" ]; then
             echo "::warning::DeepSeek attempt 1 reported failure, but an article commit exists; continuing to publish that output."
           else
@@ -1416,6 +1543,10 @@ jobs:
             echo "Cleaning tracked and untracked repository artifacts from the failed retry before the final retry."
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative
+            # Drop stale verifier-findings JSON so the final retry's
+            # audit can't compare new article body against old verifier
+            # claims.
+            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
           elif [ "$OUTCOME" = "failure" ]; then
             echo "::warning::DeepSeek retry 1 reported failure, but an article commit exists; continuing to publish that output."
           else
@@ -1464,6 +1595,92 @@ jobs:
           echo "file=$FILENAME" >> "$GITHUB_OUTPUT"
           echo "has_file=true" >> "$GITHUB_OUTPUT"
           echo "Generated: research/generative/$FILENAME"
+
+      # Deterministic post-write quality gate. The agent runs the same
+      # gate during its compile-check loop, and the writer re-runs it
+      # at commit time — this third pass is the workflow-level seatbelt
+      # that survives agent flag-drift. If the committed article fails
+      # the gate, the build fails (and the file is reverted from main
+      # via the rollback step below). Workflow uses cite-density-min 10
+      # + refs-min 20 (corpus-validated against research/generative/*;
+      # discriminates 0-cite articles from the 100+ cite recent corpus).
+      # Skip the meta/fixture seeds — they're not subject to the gate.
+      - name: Post-write quality gate
+        id: quality
+        if: steps.outfile.outputs.has_file == 'true'
+        env:
+          FILE: ${{ steps.outfile.outputs.file }}
+          PRE_SHA: ${{ steps.pre.outputs.sha }}
+        run: |
+          set -euo pipefail
+          path="research/generative/$FILE"
+          if python3 scripts/check_generative_research.py "$path" \
+                --cite-density-min 10 --refs-min 20; then
+            echo "Post-write quality gate PASSED for $path"
+            echo "passed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Post-write quality gate FAILED for $path"
+            echo "passed=false" >> "$GITHUB_OUTPUT"
+            # Reset the locally-committed bad article so the runner tree
+            # is clean for the next run. The Push step is gated on
+            # steps.quality.outputs.passed == 'true' (so the bad article
+            # never reaches main), but on self-hosted runners that retain
+            # workspace state between jobs, a left-behind orphan commit
+            # could leak into a subsequent run's `git diff` window.
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative || true
+            # Same verifier-findings cleanup as the retry paths above.
+            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+            exit 1
+          fi
+
+      # Deterministic verifier-findings audit. The verifier sub-agent
+      # (step 6 of the model prompt) writes a structured JSON list of
+      # every claim it inspected, including its verdict. The agent's
+      # "bounded revision" (step 7) addresses unsupported claims inline.
+      # Previously that pass was faith-based — no audit. Now we read
+      # the JSON back here and FAIL the build if any `unsupported`
+      # claim survives in the final committed body without being
+      # demoted (`<mark>` / `==…==`) or removed.
+      #
+      # Logic lives in scripts/check_generative_research.py under
+      # --audit-verifier-findings so it's unit-tested. See
+      # audit_verifier_findings() for the matching heuristic.
+      #
+      # Soft-fail mode: if the verifier didn't write the JSON file at
+      # all (older runs, model-side failure), we WARN but do not block.
+      # Once the verifier consistently emits JSON, tighten to hard-fail
+      # by removing the `if [ ! -f "$findings" ]` early-return.
+      - name: Verifier-findings audit
+        id: verifier-audit
+        if: steps.outfile.outputs.has_file == 'true' && steps.quality.outputs.passed == 'true'
+        env:
+          FILE: ${{ steps.outfile.outputs.file }}
+          PRE_SHA: ${{ steps.pre.outputs.sha }}
+        run: |
+          set -euo pipefail
+          findings="$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+          article="research/generative/$FILE"
+          if [ ! -f "$findings" ]; then
+            echo "::warning::No verifier findings JSON at $findings — the model verifier sub-agent did not write one. The bounded-revision audit cannot run. Build continues; tighten to hard-fail once the verifier consistently emits."
+            echo "skipped=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if python3 scripts/check_generative_research.py \
+              "$article" --audit-verifier-findings "$findings"; then
+            echo "skipped=false" >> "$GITHUB_OUTPUT"
+          else
+            # Same reset-on-failure pattern as the quality gate above.
+            # Push step is also gated on this audit's outcome so the
+            # bad article never reaches main, but the local commit on
+            # the runner must go away to keep subsequent jobs clean.
+            echo "::error::Verifier-findings audit FAILED for $article"
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative || true
+            # Same verifier-findings cleanup as the retry paths above.
+            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+            exit 1
+          fi
 
       # Per-run quality report — corpus-audit metrics on the article
       # this run produced. We can't see the agent's compile-check
@@ -1531,9 +1748,31 @@ jobs:
       # (which can happen even with concurrency:false if a label event and
       # a workflow_dispatch race across the queue boundary) and on push
       # rejections (auth / non-fast-forward).
+      #
+      # Gating: `always() && steps.outfile.outputs.has_file == 'true'`
+      # used to be enough — it published any committed article even if
+      # the model step's outcome was "failure" (e.g. timeout cap hit
+      # after a valid commit). After Post-write quality gate +
+      # Verifier-findings audit were added, that gating became unsafe:
+      # those steps exit non-zero on failure but `always()` ignored
+      # them and pushed the bad article anyway. The push step now
+      # requires:
+      #   - an article was committed (has_file)
+      #   - the post-write quality gate passed
+      #   - the verifier-findings audit either passed or was skipped
+      #     (skipped = verifier didn't emit JSON, treated as soft-fail
+      #     per that step's documented policy)
+      # We keep `always()` so a model-step "failure" outcome on a job
+      # that produced a valid article still publishes — the model
+      # outcome is independent of article validity.
       - name: Push changes
         id: push
-        if: always() && steps.outfile.outputs.has_file == 'true'
+        if: >-
+          always()
+          && steps.outfile.outputs.has_file == 'true'
+          && steps.quality.outputs.passed == 'true'
+          && (steps.verifier-audit.outputs.skipped == 'true'
+              || steps.verifier-audit.outcome == 'success')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

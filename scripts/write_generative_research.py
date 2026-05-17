@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import difflib
+import fcntl
 import html.parser
 import json
 import math
@@ -74,12 +75,25 @@ def _components_md_path() -> Path:
 def load_valid_classes() -> set[str]:
     """Parse COMPONENTS.md for every documented ara-* class (including
     modifier forms like ara-callout--info). Cached after first call so
-    we don't re-read the file for every validated article in a batch."""
+    we don't re-read the file for every validated article in a batch.
+
+    Raises loudly if the file is missing or no classes can be parsed.
+    Previously this returned an empty set, which caused the validator
+    to silently reject EVERY article with "undocumented class" — a
+    silent system failure when COMPONENTS.md was renamed/moved/corrupted.
+    """
     global _VALID_CLASSES_CACHE
     if _VALID_CLASSES_CACHE is not None:
         return _VALID_CLASSES_CACHE
     md_path = _components_md_path()
-    text = md_path.read_text(encoding="utf-8") if md_path.exists() else ""
+    if not md_path.exists():
+        raise RuntimeError(
+            f"COMPONENTS.md not found at {md_path}. The fragment validator "
+            f"parses the ara-* class vocabulary from this file; without it "
+            f"every article would be rejected as 'undocumented class'. "
+            f"Restore the file or set _COMPONENTS_MD_PATH for tests."
+        )
+    text = md_path.read_text(encoding="utf-8")
     # Only the component vocabulary table is authoritative. COMPONENTS.md
     # also contains explicit anti-examples like `ara-grid`; scraping every
     # backticked ara-* token would incorrectly make those valid classes.
@@ -88,6 +102,13 @@ def load_valid_classes() -> set[str]:
         m = re.match(r"\|\s*`(ara-[a-z0-9-]+)`\s*\|", line)
         if m:
             found.add(m.group(1))
+    if not found:
+        raise RuntimeError(
+            f"COMPONENTS.md at {md_path} parsed to ZERO ara-* classes. "
+            f"The vocabulary table format may have changed (expected lines "
+            f"like '| `ara-foo` | ...'). Without classes loaded, every "
+            f"article would be silently rejected."
+        )
     _VALID_CLASSES_CACHE = found
     return found
 
@@ -360,6 +381,8 @@ def atomic_write_json(path: Path, data) -> None:
         with os.fdopen(fd, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
             f.write("\n")
+            f.flush()
+            os.fsync(f.fileno())
         os.replace(tmp, path)
     except Exception:
         try:
@@ -379,6 +402,84 @@ def load_index(path: Path) -> list:
     if not isinstance(data, list):
         raise ValueError(f"{path} is not a JSON array")
     return data
+
+
+def _parse_index_text(text: str, path: Path) -> list:
+    """Parse JSON-array index text. Empty/whitespace-only treated as []."""
+    text = text.strip()
+    if not text:
+        return []
+    data = json.loads(text)
+    if not isinstance(data, list):
+        raise ValueError(f"{path} is not a JSON array")
+    return data
+
+
+def append_index_atomically(index_path: Path, base_slug: str, row_builder) -> tuple[str, list]:
+    """Read-modify-write `index.json` under an exclusive file lock.
+
+    Two concurrent invocations of write_generative_research.py on the same
+    machine used to race here: each read a snapshot, derived a unique slug
+    against that snapshot, and both wrote back the full array. The second
+    writer's write-back wiped the first writer's appended row. The workflow's
+    post-push union-by-slug merge only repairs damage that survives to the
+    push step.
+
+    Locking strategy:
+      * fcntl.flock(LOCK_EX) on a SEPARATE lockfile next to index.json.
+        Locking on index.json itself would not work: os.replace() rotates
+        the file to a fresh inode, so subsequent writers would open the
+        new inode (no lock) and miss the critical section. The lockfile
+        is created once and never renamed.
+      * Inside the locked region we re-read index.json — any earlier
+        in-memory snapshot is stale by definition.
+      * Slug uniqueness is decided against the LIVE on-disk index, then
+        the row is appended and the file is rewritten via
+        atomic_write_json (os.replace).
+
+    Args:
+      index_path: research/generative/index.json
+      base_slug:  slug stem; we append `-2`, `-3`, ... if the locked snapshot
+                  already contains it.
+      row_builder: callable(final_slug: str) -> dict — builds the index row
+                   once we've allocated a unique slug under the lock. Any
+                   side effects (writing the HTML/DSL files) should happen
+                   INSIDE the builder so they are also serialized.
+
+    Returns: (final_slug, updated_index)
+    """
+    index_path.parent.mkdir(parents=True, exist_ok=True)
+    if not index_path.exists():
+        index_path.write_text("[]\n", encoding="utf-8")
+    lock_path = index_path.with_suffix(index_path.suffix + ".lock")
+    # Open the lockfile with O_CREAT — multiple processes share the same
+    # underlying inode. flock is advisory and POSIX-only (Linux runner +
+    # macOS dev). Windows would need msvcrt.locking; not supported here.
+    lock_fd = os.open(str(lock_path), os.O_RDWR | os.O_CREAT, 0o644)
+    try:
+        fcntl.flock(lock_fd, fcntl.LOCK_EX)
+        # Re-read inside the lock — sibling writers may have appended
+        # since the caller looked at the file.
+        current = _parse_index_text(
+            index_path.read_text(encoding="utf-8"), index_path
+        )
+        existing_slugs = {
+            row.get("slug") for row in current if isinstance(row, dict)
+        }
+        slug = base_slug
+        n = 2
+        while slug in existing_slugs:
+            slug = f"{base_slug}-{n}"
+            n += 1
+        row = row_builder(slug)
+        current.append(row)
+        atomic_write_json(index_path, current)
+    finally:
+        try:
+            fcntl.flock(lock_fd, fcntl.LOCK_UN)
+        finally:
+            os.close(lock_fd)
+    return slug, current
 
 
 def git_commit(repo: Path, files: list[Path], message: str) -> None:
@@ -421,6 +522,40 @@ def main(argv: list[str] | None = None) -> int:
         default=str(Path(__file__).resolve().parent.parent),
         help="repo root (default: parent of scripts/)",
     )
+    # Research-quality gates — same flags as scripts/check_generative_research.py.
+    # When set, the writer re-validates the compiled body AFTER validate_body()
+    # and BEFORE allocating the slug + writing files. A failure here aborts
+    # before any disk state changes so retries start clean. The workflow passes
+    # the same flags to both check_generative_research and write_generative_research
+    # to guarantee local-vs-CI behavior matches.
+    p.add_argument(
+        "--cite-density-min",
+        type=float,
+        default=None,
+        metavar="FLOAT",
+        help="fail commit if cite density < N citations per 1,000 words",
+    )
+    p.add_argument(
+        "--refs-min",
+        type=int,
+        default=None,
+        metavar="INT",
+        help="fail commit if references list has < N entries",
+    )
+    p.add_argument(
+        "--primary-share-min",
+        type=float,
+        default=None,
+        metavar="FLOAT",
+        help="fail commit if < FLOAT (0-1) of references are primary sources",
+    )
+    p.add_argument(
+        "--cited-claims-min",
+        type=float,
+        default=None,
+        metavar="FLOAT",
+        help="fail commit if < FLOAT (0-1) of substantive sentences carry a cite",
+    )
     args = p.parse_args(argv)
 
     repo = Path(args.repo_root).resolve()
@@ -438,6 +573,34 @@ def main(argv: list[str] | None = None) -> int:
     else:
         body = raw
     validate_body(body, args.kind)
+
+    # Research-quality gates (mirror check_generative_research.py flags).
+    # Only fires when at least one threshold is explicitly set. The check
+    # script is the source of truth for the heuristics; we import it here
+    # rather than reimplement so behavior cannot drift between local-check
+    # and commit-time enforcement.
+    if args.kind == KIND_FRAGMENT and any(
+        v is not None for v in (
+            args.cite_density_min,
+            args.refs_min,
+            args.primary_share_min,
+            args.cited_claims_min,
+        )
+    ):
+        # Defer import so the writer has no hard dependency on the check
+        # module unless quality gates are requested.
+        from check_generative_research import enforce_quality  # noqa: E402
+        errs = enforce_quality(body, args)
+        if errs:
+            print(
+                "write_generative_research: quality gate(s) failed; "
+                "REFUSING to commit. Fix the article and retry.",
+                file=sys.stderr,
+            )
+            for line in errs:
+                print(f"  - {line}", file=sys.stderr)
+            raise SystemExit(1)
+
     if not body.endswith("\n"):
         body += "\n"
 
@@ -449,49 +612,83 @@ def main(argv: list[str] | None = None) -> int:
     iso = now.isoformat().replace("+00:00", "Z")
 
     index_path = gen_dir / "index.json"
-    index = load_index(index_path)
 
-    # Slug is the dashboard's hash route key, so it must be unique across the index.
-    existing_slugs = {row.get("slug") for row in index if isinstance(row, dict)}
-    slug = base_slug
-    n = 2
-    while slug in existing_slugs:
-        slug = f"{base_slug}-{n}"
-        n += 1
+    # Slug uniqueness + index-array mutation happen under fcntl.LOCK_EX so
+    # two concurrent writers cannot both observe slug `foo`, write `foo.html`,
+    # and clobber each other's index entry. The lock-and-mutate helper also
+    # picks the final slug (appending `-2`, `-3`, ... if taken) inside the
+    # critical section, so the slug is guaranteed unique against the file's
+    # state at write time. See append_index_atomically().
+    #
+    # Track the actual paths we wrote (with the FINAL allocated slug, which
+    # may be base_slug-2 / -3 / ...). If the index rewrite fails after the
+    # HTML/DSL files were written, the except branch removes the orphans —
+    # so the cleanup must reference the real paths, not derive them from
+    # base_slug (which would miss `foo-2.html`).
+    written_html_path: Path | None = None
+    written_source_path: Path | None = None
+    try:
+        def _build_row(final_slug: str) -> dict:
+            nonlocal written_html_path, written_source_path
+            filename = f"{stamp}--{final_slug}.html"
+            html_path = gen_dir / filename
+            if html_path.exists():
+                # Extremely unlikely now that slug uniqueness is locked,
+                # but stamp+slug collision is still theoretically possible
+                # if two runs in the same second pick the same slug. Bail.
+                raise SystemExit(
+                    f"refusing to overwrite existing file: {html_path}"
+                )
+            html_path.write_text(body, encoding="utf-8")
+            written_html_path = html_path
+            if is_dsl:
+                source_path = gen_dir / f"{stamp}--{final_slug}.ara.md"
+                source_path.write_text(
+                    raw if raw.endswith("\n") else raw + "\n",
+                    encoding="utf-8",
+                )
+                written_source_path = source_path
+            return {
+                "slug": final_slug,
+                "file": filename,
+                "kind": args.kind,
+                "title": title,
+                "model": args.model,
+                "created_at": iso,
+                "source": args.source,
+                "prompt": args.prompt or args.topic,
+                "tags": tags,
+            }
+
+        slug, index = append_index_atomically(index_path, base_slug, _build_row)
+    except BaseException:
+        # If the locked append failed AFTER we wrote the HTML / DSL source,
+        # remove the orphans so a retry starts clean. We use the ACTUAL
+        # written paths captured by _build_row, not paths derived from
+        # base_slug — the allocated slug may be `base_slug-2`/`-3`/... so
+        # deriving from base_slug would miss the real orphan and leave it
+        # in the worktree forever.
+        if written_html_path is not None:
+            try:
+                written_html_path.unlink(missing_ok=True)
+            except OSError:
+                pass
+        if written_source_path is not None:
+            try:
+                written_source_path.unlink(missing_ok=True)
+            except OSError:
+                pass
+        raise
 
     filename = f"{stamp}--{slug}.html"
     html_path = gen_dir / filename
-    if html_path.exists():
-        raise SystemExit(f"refusing to overwrite existing file: {html_path}")
-
-    row = {
-        "slug": slug,
-        "file": filename,
-        "kind": args.kind,
-        "title": title,
-        "model": args.model,
-        "created_at": iso,
-        "source": args.source,
-        "prompt": args.prompt or args.topic,
-        "tags": tags,
-    }
-    index.append(row)
-
-    html_path.write_text(body, encoding="utf-8")
-    atomic_write_json(index_path, index)
-
     print(f"wrote {html_path.relative_to(repo)}")
     print(f"updated {index_path.relative_to(repo)} ({len(index)} entries)")
 
     files_to_commit = [html_path, index_path]
-    if is_dsl:
-        # Store the source next to the artifact so future edits and
-        # backfills don't have to re-derive the DSL from the compiled
-        # HTML. Filename: <stamp>--<slug>.ara.md.
-        source_path = gen_dir / f"{stamp}--{slug}.ara.md"
-        source_path.write_text(raw if raw.endswith("\n") else raw + "\n", encoding="utf-8")
-        print(f"wrote {source_path.relative_to(repo)} (DSL source)")
-        files_to_commit.insert(1, source_path)
+    if written_source_path is not None:
+        print(f"wrote {written_source_path.relative_to(repo)} (DSL source)")
+        files_to_commit.insert(1, written_source_path)
 
     if not args.no_commit:
         git_commit(
