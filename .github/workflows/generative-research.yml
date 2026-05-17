@@ -1747,35 +1747,24 @@ jobs:
           lines = [
               f"Status: {status}",
               f"Backend: {payload['backend']}",
-              f"Topic: {payload['topic']}",
               f"Slug: {payload['slug'] or '(generated)'}",
-              f"File: {file_name or '(none)'}",
-              f"Pushed: {str(pushed).lower()}",
               f"Run: {payload['run_url']}",
           ]
           if dashboard_url:
               lines.append(f"Dashboard: {dashboard_url}")
-          if article_url:
-              lines.append(f"GitHub: {article_url}")
           if metrics:
-              lines.extend([
-                  "",
-                  "Quality",
-                  f"- words approx: {metrics['words_approx']}",
-                  f"- distinct viz types: {metrics['distinct_viz_types']} ({', '.join(metrics['viz_types']) or 'none'})",
-                  f"- callouts: {metrics['callouts']}",
-                  f"- cites: {metrics['cites']}",
-                  f"- references: {metrics['references']}",
-                  f"- standalone % in prose: {metrics['standalone_percentages_in_prose']}",
-              ])
-          if outcomes:
-              lines.append("")
-              lines.append("Model outcomes")
-              lines.extend(f"- {k}: {v}" for k, v in outcomes.items())
+              lines.append(
+                  "Quality: "
+                  f"{metrics['words_approx']} words, "
+                  f"{metrics['distinct_viz_types']} viz types, "
+                  f"{metrics['cites']} cites, "
+                  f"{metrics['references']} refs"
+              )
+          payload["summary_text"] = "\n".join(lines)
 
           body = {
               "title": f"ARA generative research: {status}",
-              "text": "\n".join(lines),
+              "text": payload["summary_text"],
               "priority": priority,
               "tags": sorted(set(t for t in tags if t)),
               "parse_mode": "HTML",

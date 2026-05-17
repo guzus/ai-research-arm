@@ -81,10 +81,6 @@ runs:
             f"Status: {status}",
             f"Workflow: {workflow}",
             f"Job: {job or '(single job)'}",
-            f"Event: {env('GITHUB_EVENT_NAME')}",
-            f"Ref: {env('GITHUB_REF_NAME') or env('GITHUB_REF')}",
-            f"SHA: {env('GITHUB_SHA')}",
-            f"Actor: {env('GITHUB_ACTOR')}",
             f"Run: {run_url}",
         ]
         extra_text = env("TELEMETRY_TEXT")
@@ -105,6 +101,7 @@ runs:
             "run_attempt": run_attempt,
             "run_url": run_url,
             "topic": env("HOOKER_TOPIC", "ara-telemetry"),
+            "summary_text": "\n".join(text_lines),
         }
         body = {
             "title": title,
