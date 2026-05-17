@@ -267,6 +267,142 @@ class EnforceQualityCompositionTest(unittest.TestCase):
         self.assertTrue(any("primary-source share" in e for e in errs))
 
 
+class VerifierFindingsAuditTest(unittest.TestCase):
+    """The audit makes bounded-revision (step 7 of the agent prompt)
+    deterministically observable. Without it, "the verifier said X
+    was unsupported and we addressed it" was faith-based."""
+
+    def _write_findings(self, tmpdir: Path, claims: list[dict]) -> Path:
+        import json
+        path = tmpdir / "findings.json"
+        path.write_text(json.dumps({"claims": claims}), encoding="utf-8")
+        return path
+
+    def test_unsupported_claim_left_in_body_fails(self):
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            '<p>Nvidia hit 75 percent margin in Q4 2026 due to GPU demand.</p>'
+            '</article>'
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            tmpdir = Path(tmp)
+            findings = self._write_findings(tmpdir, [{
+                "id": "c1",
+                "text": "Nvidia hit 75 percent margin in Q4 2026 due to GPU demand.",
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(len(surviving), 1)
+            self.assertEqual(surviving[0]["id"], "c1")
+
+    def test_unsupported_claim_demoted_inside_mark_passes(self):
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            '<p><mark class="ara-mark">Nvidia hit 75 percent margin in Q4 2026 due to GPU demand.</mark></p>'
+            '</article>'
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c1",
+                "text": "Nvidia hit 75 percent margin in Q4 2026 due to GPU demand.",
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(surviving, [])
+
+    def test_unsupported_claim_removed_passes(self):
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            '<p>Different, supported claim about Nvidia revenue.</p>'
+            '</article>'
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c1",
+                "text": "Nvidia hit 75 percent margin in Q4 2026 due to GPU demand.",
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(surviving, [])
+
+    def test_supported_claims_ignored(self):
+        import tempfile
+        body = '<article><p>This claim is fine.</p></article>'
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [
+                {"id": "c1", "text": "This claim is fine.", "verdict": "supported", "citation": "https://x.gov/y"},
+                {"id": "c2", "text": "Something else.", "verdict": "weak", "citation": None},
+            ])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            # 0 unsupported → audit passes vacuously
+            self.assertEqual(total, 0)
+            self.assertEqual(surviving, [])
+
+    def test_whitespace_and_case_tolerant(self):
+        import tempfile
+        body = (
+            '<article><p>nvidia hit 75 PERCENT margin in q4 2026 due to gpu demand.</p></article>'
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c1",
+                "text": "Nvidia hit 75 percent margin in Q4 2026 due to GPU demand.",
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            # case-insensitive match → claim still present, must FAIL
+            self.assertEqual(len(surviving), 1)
+
+    def test_malformed_json_raises(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bad.json"
+            path.write_text("{not json")
+            with self.assertRaises(ValueError):
+                chk.audit_verifier_findings(path, "<article></article>")
+
+    def test_top_level_not_object_raises(self):
+        import tempfile, json
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bad.json"
+            path.write_text(json.dumps([1, 2, 3]))
+            with self.assertRaises(ValueError):
+                chk.audit_verifier_findings(path, "<article></article>")
+
+    def test_missing_claims_key_raises(self):
+        import tempfile, json
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bad.json"
+            path.write_text(json.dumps({"findings": []}))
+            with self.assertRaises(ValueError):
+                chk.audit_verifier_findings(path, "<article></article>")
+
+    def test_empty_text_skipped_not_failed(self):
+        import tempfile
+        body = '<article><p>Something here.</p></article>'
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c1",
+                "text": "",
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            # Empty text → can't audit → not added to surviving
+            self.assertEqual(total, 1)
+            self.assertEqual(surviving, [])
+
+
 class SanityAgainstKnownGoodArticleTest(unittest.TestCase):
     """The task explicitly named this file as a high-quality article
     that the gates must accept. If we ever ratchet defaults up and

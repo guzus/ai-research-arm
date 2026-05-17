@@ -616,6 +616,35 @@ jobs:
 
                   - additionally flag any factual claim WITHOUT a cite
 
+               THEN the verifier MUST ALSO write a structured JSON
+               artifact to:
+
+                      $GITHUB_WORKSPACE/.gen-verifier-findings.json
+
+               The JSON's shape MUST be:
+
+                      {
+                        "claims": [
+                          {
+                            "id": "c1",
+                            "text": "<verbatim claim sentence from the body — full sentence or first 80+ chars>",
+                            "verdict": "supported" | "weak" | "unsupported",
+                            "citation": "<url or null>"
+                          },
+                          ...
+                        ]
+                      }
+
+               Every claim_id in the findings table MUST have a
+               matching entry in `claims[]`. The `text` field is the
+               sentence text as it appears in the .ara.md body — used
+               by the post-revision audit step to verify which
+               unsupported claims were actually addressed. A
+               deterministic workflow step reads this file after
+               bounded revision and FAILS the build if any
+               `unsupported` claim survives in the body without being
+               demoted (`==…==` / `<mark>`) or removed.
+
             7. BOUNDED REVISION. Address ONLY the verifier's findings.
                Each unsupported claim must be either: (a) replaced with
                a supported variant from the ledger, (b) demoted by
@@ -623,7 +652,15 @@ jobs:
                `<mark class="ara-mark">`), or (c) deleted. Do NOT
                generically expand or pad. ONE revision pass maximum.
 
-            QUALITY TARGETS — these, not word count, are the bar:
+               After revising, you do NOT need to re-run the verifier
+               or regenerate the JSON — the post-revision audit step
+               re-reads `.gen-verifier-findings.json` and checks each
+               `unsupported` claim against the FINAL committed body.
+
+            QUALITY TARGETS — these, not word count, are the bar
+               (cite-density and refs are now ENFORCED in step 7.5;
+               primary-share and cited-claim-share are tracked as
+               metrics but not yet hard-gated):
                - Research questions answered: ≥ 85% of your plan
                - Substantive factual claims with cite: ≥ 90%
                - Primary-source share among cited sources: ≥ 50%
@@ -1151,6 +1188,35 @@ jobs:
 
                   - additionally flag any factual claim WITHOUT a cite
 
+               THEN the verifier MUST ALSO write a structured JSON
+               artifact to:
+
+                      $GITHUB_WORKSPACE/.gen-verifier-findings.json
+
+               The JSON's shape MUST be:
+
+                      {
+                        "claims": [
+                          {
+                            "id": "c1",
+                            "text": "<verbatim claim sentence from the body — full sentence or first 80+ chars>",
+                            "verdict": "supported" | "weak" | "unsupported",
+                            "citation": "<url or null>"
+                          },
+                          ...
+                        ]
+                      }
+
+               Every claim_id in the findings table MUST have a
+               matching entry in `claims[]`. The `text` field is the
+               sentence text as it appears in the .ara.md body — used
+               by the post-revision audit step to verify which
+               unsupported claims were actually addressed. A
+               deterministic workflow step reads this file after
+               bounded revision and FAILS the build if any
+               `unsupported` claim survives in the body without being
+               demoted (`==…==` / `<mark>`) or removed.
+
             7. BOUNDED REVISION. Address ONLY the verifier's findings.
                Each unsupported claim must be either: (a) replaced with
                a supported variant from the ledger, (b) demoted by
@@ -1158,7 +1224,15 @@ jobs:
                `<mark class="ara-mark">`), or (c) deleted. Do NOT
                generically expand or pad. ONE revision pass maximum.
 
-            QUALITY TARGETS — these, not word count, are the bar:
+               After revising, you do NOT need to re-run the verifier
+               or regenerate the JSON — the post-revision audit step
+               re-reads `.gen-verifier-findings.json` and checks each
+               `unsupported` claim against the FINAL committed body.
+
+            QUALITY TARGETS — these, not word count, are the bar
+               (cite-density and refs are now ENFORCED in step 7.5;
+               primary-share and cited-claim-share are tracked as
+               metrics but not yet hard-gated):
                - Research questions answered: ≥ 85% of your plan
                - Substantive factual claims with cite: ≥ 90%
                - Primary-source share among cited sources: ≥ 50%
@@ -1500,6 +1574,42 @@ jobs:
             echo "passed=false" >> "$GITHUB_OUTPUT"
             exit 1
           fi
+
+      # Deterministic verifier-findings audit. The verifier sub-agent
+      # (step 6 of the model prompt) writes a structured JSON list of
+      # every claim it inspected, including its verdict. The agent's
+      # "bounded revision" (step 7) addresses unsupported claims inline.
+      # Previously that pass was faith-based — no audit. Now we read
+      # the JSON back here and FAIL the build if any `unsupported`
+      # claim survives in the final committed body without being
+      # demoted (`<mark>` / `==…==`) or removed.
+      #
+      # Logic lives in scripts/check_generative_research.py under
+      # --audit-verifier-findings so it's unit-tested. See
+      # audit_verifier_findings() for the matching heuristic.
+      #
+      # Soft-fail mode: if the verifier didn't write the JSON file at
+      # all (older runs, model-side failure), we WARN but do not block.
+      # Once the verifier consistently emits JSON, tighten to hard-fail
+      # by removing the `if [ ! -f "$findings" ]` early-return.
+      - name: Verifier-findings audit
+        id: verifier-audit
+        if: steps.outfile.outputs.has_file == 'true'
+        env:
+          FILE: ${{ steps.outfile.outputs.file }}
+        run: |
+          set -euo pipefail
+          findings="$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+          article="research/generative/$FILE"
+          if [ ! -f "$findings" ]; then
+            echo "::warning::No verifier findings JSON at $findings — the model verifier sub-agent did not write one. The bounded-revision audit cannot run. Build continues; tighten to hard-fail once the verifier consistently emits."
+            echo "skipped=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          python3 scripts/check_generative_research.py \
+            "$article" \
+            --audit-verifier-findings "$findings"
+          echo "skipped=false" >> "$GITHUB_OUTPUT"
 
       # Per-run quality report — corpus-audit metrics on the article
       # this run produced. We can't see the agent's compile-check

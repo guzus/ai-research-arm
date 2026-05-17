@@ -359,6 +359,102 @@ def enforce_quality(body_html: str, args: argparse.Namespace) -> list[str]:
     return errors
 
 
+def audit_verifier_findings(
+    findings_path: Path, body_html: str
+) -> tuple[int, list[dict]]:
+    """Check that every `unsupported` claim flagged by the verifier
+    sub-agent was either demoted (wrapped in `<mark>` / `==…==`) or
+    removed during bounded revision.
+
+    The verifier writes a structured findings JSON at the path passed
+    to this function:
+
+        {"claims": [
+            {"id": "c1", "text": "<verbatim claim text>",
+             "verdict": "supported|weak|unsupported",
+             "citation": "<url or null>"},
+            ...
+        ]}
+
+    Heuristic: the first ~80 chars of `text` (lowercased, whitespace-
+    collapsed) is the probe. If the probe appears in the article body
+    text AND is not inside a `<mark>…</mark>` region, the claim
+    survived without being demoted → fail.
+
+    Limitations (call out in PR + reviewer-facing docs):
+      * Whole-claim-demotion semantics: if the agent demotes only the
+        load-bearing number inside a longer claim sentence, the probe
+        may match in body-text but NOT inside the mark region → false
+        fail. Acceptable — pushes the agent toward marking the whole
+        sentence.
+      * Paraphrase-on-revision: if the agent rewrites the claim text
+        on revision, the probe won't match anywhere → treated as
+        "removed" → pass. Acceptable — paraphrase to a supported
+        variant is a valid bounded-revision outcome.
+
+    Returns (unsupported_total, surviving) where `surviving` is a list
+    of dicts {id, probe, citation} for every unsupported claim that
+    failed the audit. Empty `surviving` = pass.
+
+    Raises ValueError if the findings JSON is malformed.
+    """
+    import json as _json
+
+    try:
+        data = _json.loads(findings_path.read_text(encoding="utf-8"))
+    except (_json.JSONDecodeError, OSError) as e:
+        raise ValueError(f"could not parse verifier findings JSON: {e}") from e
+
+    claims = data.get("claims") if isinstance(data, dict) else None
+    if not isinstance(claims, list):
+        raise ValueError(
+            "verifier findings JSON missing top-level 'claims' array; "
+            f"got: {type(data).__name__}"
+        )
+
+    text_no_tags = re.sub(r"<[^>]+>", " ", body_html)
+    mark_regions: list[str] = re.findall(
+        r"<mark[^>]*>(.*?)</mark>", body_html, flags=re.DOTALL | re.IGNORECASE
+    )
+    mark_blob = " ".join(mark_regions)
+
+    def _norm(s: str) -> str:
+        return re.sub(r"\s+", " ", s).strip().lower()
+
+    body_norm = _norm(text_no_tags)
+    mark_norm = _norm(mark_blob)
+
+    surviving: list[dict] = []
+    unsupported_total = 0
+    for claim in claims:
+        if not isinstance(claim, dict):
+            continue
+        verdict = str(claim.get("verdict", "")).lower()
+        if verdict != "unsupported":
+            continue
+        unsupported_total += 1
+        text = str(claim.get("text", "")).strip()
+        if not text:
+            # Verifier flagged a claim but gave no body text — we
+            # can't audit. Treat as "needs manual review" by skipping
+            # rather than failing (the verifier itself flagged the
+            # missing data; rerun policy is upstream).
+            continue
+        probe = _norm(text)[:80]
+        if not probe:
+            continue
+        if probe in body_norm and probe not in mark_norm:
+            surviving.append(
+                {
+                    "id": claim.get("id"),
+                    "probe": probe,
+                    "citation": claim.get("citation"),
+                }
+            )
+
+    return unsupported_total, surviving
+
+
 def count_classes(body_html: str) -> dict[str, int]:
     """Return a {class_name: count} map of every ara-* class in the
     article's HTML output, after compile."""
@@ -506,6 +602,25 @@ def main(argv: list[str] | None = None) -> int:
             "into the build gate."
         ),
     )
+    # Verifier-findings audit mode. When this flag is set we skip
+    # validate_body / design / quality gates and instead audit the
+    # body against the verifier sub-agent's JSON artifact. The
+    # workflow's "bounded revision" step (step 7 of the agent prompt)
+    # is otherwise unobservable from the build — this gate makes it
+    # auditable.
+    p.add_argument(
+        "--audit-verifier-findings",
+        type=str,
+        default=None,
+        metavar="PATH",
+        help=(
+            "path to .gen-verifier-findings.json written by the "
+            "verifier sub-agent. When set, the script switches to "
+            "audit mode: validates the JSON and fails if any "
+            "unsupported claim survived in the body without being "
+            "demoted (<mark>) or removed."
+        ),
+    )
     args = p.parse_args(argv)
 
     if args.body_path != "-" and not Path(args.body_path).exists():
@@ -527,6 +642,48 @@ def main(argv: list[str] | None = None) -> int:
             return 1
     else:
         body = raw
+
+    # Verifier-findings audit mode. Runs ONLY when --audit-verifier-findings
+    # is set. Bypasses validate_body / design / quality so the audit can run
+    # against a fully-committed (already-validated) article without redoing
+    # those checks.
+    if args.audit_verifier_findings:
+        findings_path = Path(args.audit_verifier_findings)
+        if not findings_path.exists():
+            print(
+                f"check: verifier findings file not found: {findings_path}",
+                file=sys.stderr,
+            )
+            return 2
+        try:
+            total, surviving = audit_verifier_findings(findings_path, body)
+        except ValueError as e:
+            print(f"check: {e}", file=sys.stderr)
+            return 1
+        print(
+            f"verifier-findings audit: {total} unsupported claim(s) "
+            f"flagged; {len(surviving)} still present in the body outside "
+            f"a <mark> region.",
+            file=sys.stderr,
+        )
+        if surviving:
+            print(
+                "Bounded revision failed: the following unsupported "
+                "claims were not demoted or removed:",
+                file=sys.stderr,
+            )
+            for c in surviving[:10]:
+                print(
+                    f"  - id={c['id']}: {c['probe']!r}",
+                    file=sys.stderr,
+                )
+            if len(surviving) > 10:
+                print(
+                    f"  ... and {len(surviving) - 10} more",
+                    file=sys.stderr,
+                )
+            return 1
+        return 0
 
     try:
         validate_body(body, args.kind)
