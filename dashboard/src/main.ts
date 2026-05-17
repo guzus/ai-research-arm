@@ -1235,20 +1235,35 @@ function wrapDonutCenterLabel(
   const clean = label.trim();
   if (!clean) return { lines: [], fontSize: maxFontSize };
 
-  const words = clean.split(/\s+/);
-  const lineCap = Math.min(maxLines, words.length);
-
-  // 1-line path first: if the whole string fits at max font, use it.
-  // This preserves the exact pre-change rendering for short labels.
-  // Uses approxSvgTextWidth with mono=true (0.62 ratio) to stay consistent
+  // 1-line fast path: if the whole string fits at max font, use it.
+  // Preserves the exact pre-change rendering for short labels.
+  // Uses approxSvgTextWidth with mono=true (0.62 ratio) for consistency
   // with the rest of the SVG-text helpers in this file.
   if (approxSvgTextWidth(clean, maxFontSize, true) <= usableWidth) {
     return { lines: [clean], fontSize: maxFontSize };
   }
 
-  // Try N = 1..lineCap. For each N, find the split that minimizes the
+  const words = clean.split(/\s+/);
+
+  // Guard against pathological input. splitWordsIntoLines is recursive and
+  // enumerates O(W^(maxLines-1)) split positions; with maxLines=3 that's
+  // O(W^2). Realistic donut center-labels are 1-4 words (the longest in
+  // the corpus is "The three-leg bottleneck" at 3 words). If a malformed
+  // ara source ever stuffs a paragraph into center-label, bypass the wrap
+  // enumeration entirely and render the whole label on a single shrunk
+  // line — better than hanging the page or silently dropping words.
+  const WORD_ENUM_CAP = 12;
+  if (words.length > WORD_ENUM_CAP) {
+    const ideal = usableWidth / Math.max(1, clean.length * 0.62);
+    const fontSize = Math.max(minFontSize, Math.min(maxFontSize, ideal));
+    return { lines: [clean], fontSize };
+  }
+
+  // Try N = 1..maxLines. For each N, find the split that minimizes the
   // widest line, then compute the largest font that fits that line.
-  // Prefer fewer lines if they can still hit the max font.
+  // Prefer the largest font (which tends to be the highest N that still
+  // fits comfortably). Short-circuit once we hit the max font.
+  const lineCap = Math.min(maxLines, words.length);
   let best: { lines: string[]; fontSize: number } | null = null;
   for (let n = 1; n <= lineCap; n++) {
     const lines = splitWordsIntoLines(words, n);
@@ -1507,13 +1522,20 @@ function renderDonuts(root: HTMLElement): void {
       const usableWidth = ri * 2 * 0.85;
       const wrapped = wrapDonutCenterLabel(centerLabel, 18, 9, usableWidth, 3);
       if (wrapped.lines.length === 1) {
-        // Preserve the original 1-line rendering bit-for-bit (font-size 18,
-        // y = cy + 1) so short labels like "2024" do not visually shift.
+        // 1-line. Two sub-cases:
+        //   - At max font (18): use the original y = cy + 1 nudge to keep
+        //     short labels like "2024" bit-identical to the pre-fix output.
+        //   - Below max font (single oversize token, e.g. "Verylongunhyphenatedword"):
+        //     respect the shrunk font and center at cy. Without this branch
+        //     the shrink fallback would be silently discarded and the label
+        //     would still overflow the donut hole.
+        const fs = wrapped.fontSize;
+        const atMax = fs >= 18;
         const text = svgEl<SVGTextElement>('text', {
           class: 'ara-donut-center-label',
           x: cx,
-          y: cy + 1,
-          'font-size': '18',
+          y: atMax ? cy + 1 : cy,
+          'font-size': atMax ? '18' : fs.toFixed(2),
         });
         text.textContent = wrapped.lines[0];
         svg.appendChild(text);
