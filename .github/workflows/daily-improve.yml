@@ -105,10 +105,11 @@ jobs:
                - Add new data sources
                - Fix any bugs found
 
-            3. Create an IMPROVEMENTS.md file documenting:
+            3. Create a dated improvement note at docs/archive/${{ steps.dates.outputs.today }}-improvements.md documenting:
                - What issues were found
                - What improvements were made
                - Expected impact
+               (Do NOT write to repo-root IMPROVEMENTS.md — that path is archived. See CLAUDE.md load-bearing rule #7.)
 
             4. Commit changes:
                git add -A
