@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-17
+
+TOP 5 PAPERS:
+• FeF-DLLM: factorization-error-free discrete diffusion LM, +5.04pp avg and 3.86x speedup on GSM8K/MATH/HumanEval/MBPP
+• Hierarchical LM with predictable scaling laws and a proof that reasoning steps improve sample efficiency
+• Gecko: efficient non-quadratic backbone that extrapolates cleanly to arbitrary-length sequences
+• VLM modality credit assignment via RL — separate rewards for perception vs reasoning, cuts hallucinated grounding
+• "You Snooze, You Lose": neural weight translation that restores safety alignment lost during downstream fine-tuning
+
+CATEGORIES: LM/NLP 5 • Vision/Multimodal 3 • Agents/Reasoning 4 • Safety/Alignment 4 • Other 3
+
+Full report on GitHub.
