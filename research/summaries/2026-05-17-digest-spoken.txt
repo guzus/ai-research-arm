@@ -1,0 +1,11 @@
+Speaker 1: Sunday, May seventeenth, twenty twenty-six.
+Speaker 2: [high_energy] The Musk versus Altman jury hits deliberations today on the charitable-trust breach case — the judge says an advisory verdict is very likely to follow.
+Speaker 1: Anthropic's thirty-billion-dollar round firms up, with Sequoia, Dragoneer, Greenoaks, and Altimeter co-leading. Pre-money valuation at nine hundred billion dollars, with an IPO window targeted for October twenty twenty-six.
+Speaker 2: And Anthropic's revenue numbers are striking — annual recurring revenue around [emphasis]forty-five billion dollars[/emphasis], with Claude Code alone topping two point five billion.
+Speaker 1: That nine hundred billion dollar valuation puts Anthropic about forty-eight billion above OpenAI's eight hundred fifty-two billion.
+Speaker 2: On the model side, Codex running GPT five point five hit a forty-eight-hour regression. It has been diagnosed and fixed — which does poke a hole in Altman's "you just got used to the magic" explanation.
+Speaker 1: NVIDIA's Nemotron three Ultra is out — around five hundred billion parameters, trained natively in four-bit precision.
+Speaker 2: [dramatic_pause] Cerebras closed down ten percent at two hundred seventy-nine dollars and seventy-two cents, implying a market cap around eighty-five billion dollars.
+Speaker 1: On the labor front — Cloudflare cutting around eleven hundred roles, roughly twenty percent of its workforce. Tech-sector layoffs now top ninety-two thousand year to date.
+Speaker 2: [high_energy] And the Hacker News front page today: "Entire companies under AI psychosis" — seventeen hundred and seventy points. Clearly struck a nerve.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
