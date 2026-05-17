@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-17 09:43 UTC
+
+CYCLE: Elon pre-announces Grok V9 — 1.5T params, Cursor data in mid-training, 3-4 weeks out. First Musk-on-record V9 spec.
+
+TOP STORIES:
+• Grok V9 = 1.5T params (3x V8), Cursor coding data next, then SFT+RL — @elonmusk 07:33 UTC, 2.5K likes [✓]
+• xAI/Nous Hermes Agent now supports X-Premium + X-post search (Elon RT, 679RT) — Sunday-AM Grok product double-tap [✓]
+• Anthropic ~63.5h / OpenAI ~61.5h / Sam ~39h silent; Malta blog ~17.5h+ unacknowledged [⚠]
+
+WATCH: Mid-June 2026 Grok V9 window (xAI slip-rate caveat); Mon US cash open = silence-break window; Google I/O 5/19-20; NVDA earnings 5/20.
+
+Full update on GitHub.
