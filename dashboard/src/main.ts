@@ -1459,23 +1459,45 @@ function renderDonuts(root: HTMLElement): void {
   }
 }
 
-/** In-place anti-overlap: sort by current Y, walk top-down, push each label
- * down by `lineHeight` when it would collide with the one above. Mutates the
- * input array. Stable: items that don't actually overlap keep their original
- * positions, so slope charts whose data is comfortably spaced render
- * pixel-identically to before.
+/** In-place bounded anti-overlap. Sort items by current Y, walk top-down to
+ * push colliders down by `lineHeight`, then if the bottommost item exceeds
+ * `maxY` clamp it and walk back up pushing earlier items higher to make room.
+ * Mutates the input array.
  *
- * Note: this only de-collides downward (positions can grow but never shrink),
- * which is sufficient for SVG text where the visual cost of being a few
- * pixels low is much smaller than overshooting upward off the baseline grid. */
-function antiOverlap(positions: number[], lineHeight: number): void {
+ * Properties:
+ * - Stable: items that don't overlap keep their original positions, so
+ *   comfortable slope charts render pixel-identically to before this pass.
+ * - Bounded: no item ends up below `maxY`, so labels can't get clipped by
+ *   the SVG viewBox even when many values cluster at the bottom of the chart.
+ *   (Bottom-bound only; the symmetric top-clip case would need yTop and
+ *   doesn't trigger for any real data we render today.) */
+function antiOverlap(positions: number[], lineHeight: number, maxY: number): void {
   if (positions.length < 2) return;
   const order = positions.map((_, i) => i).sort((a, b) => positions[a] - positions[b]);
+  // Forward sweep: push each colliding label down by lineHeight.
   for (let j = 1; j < order.length; j++) {
     const prev = positions[order[j - 1]];
     const cur = positions[order[j]];
     if (cur - prev < lineHeight) {
       positions[order[j]] = prev + lineHeight;
+    }
+  }
+  // Backward sweep: if the bottommost label overflows the viewport, clamp it
+  // and push preceding labels up only as far as needed to keep `lineHeight`
+  // between them. The clamp shrinks the gap from `lineHeight` toward zero
+  // (labels can still overlap if too many cluster at the very bottom) but
+  // keeps every label inside the SVG so nothing disappears.
+  const last = order.length - 1;
+  if (positions[order[last]] > maxY) {
+    positions[order[last]] = maxY;
+    for (let j = last - 1; j >= 0; j--) {
+      const below = positions[order[j + 1]];
+      if (positions[order[j]] > below - lineHeight) {
+        positions[order[j]] = below - lineHeight;
+      } else {
+        // No more pressure to push; everything above is already clear.
+        break;
+      }
     }
   }
 }
@@ -1536,10 +1558,13 @@ function renderSlopes(root: HTMLElement): void {
     const labelRY = rys.map((y) => y + 4);
 
     // Pass 2: anti-overlap each side independently. Dots stay at lys/rys; only
-    // label Y positions get nudged when two values would collide.
+    // label Y positions get nudged when two values would collide. `maxLabelY`
+    // keeps the descender of a 12px label inside the SVG viewBox so the pass
+    // never clips a label off the bottom.
     const lineHeight = 14; // 12px font + ~2px breathing room.
-    antiOverlap(labelLY, lineHeight);
-    antiOverlap(labelRY, lineHeight);
+    const maxLabelY = H - 4; // ~3px below the baseline is where the descender ends.
+    antiOverlap(labelLY, lineHeight, maxLabelY);
+    antiOverlap(labelRY, lineHeight, maxLabelY);
 
     items.forEach((_, i) => {
       const lv = leftValues[i];
