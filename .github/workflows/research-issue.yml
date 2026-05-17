@@ -32,7 +32,7 @@ jobs:
           node-version: '22'
 
       - name: Acknowledge research request
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             await github.rest.issues.createComment({
@@ -387,7 +387,7 @@ jobs:
           fi
 
       - name: Post research results to issue
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const hasReport = '${{ steps.report.outputs.has_report }}' === 'true';
