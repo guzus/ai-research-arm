@@ -736,14 +736,20 @@ jobs:
 
             7.5. COMPILE CHECK (deterministic; before commit).
                  a. Write the draft `.ara.md` to $GEN_DRAFT.
-                 b. Run with design gates active (corpus audit shows
-                    real articles emit 0–3 viz primitives and 5–10
-                    callouts; we hold this run to ≥ 3 viz + ≤ 5
-                    callouts and warn on percentages-without-viz):
+                 b. Run with design AND research-quality gates active.
+                    Corpus audit shows real articles emit 0–3 viz
+                    primitives and 5–10 callouts; we hold this run
+                    to ≥ 3 viz + ≤ 5 callouts. cite-density-min and
+                    refs-min encode the QUALITY TARGETS as build gates
+                    (previously prose-only; corpus audit found 4
+                    historical articles shipped with zero citations).
+                    --strict-shape adds soft warnings on percentages-
+                    without-viz (advisory, doesn't block):
 
                       python3 scripts/check_generative_research.py \
                         "$GEN_DRAFT" \
                         --diversity-min 3 --callout-max 5 \
+                        --cite-density-min 10 --refs-min 20 \
                         --strict-shape
 
                  c. Exit 0 → proceed to step 8. Soft warnings printed
@@ -751,11 +757,11 @@ jobs:
                     whether the flagged section would read better
                     with a viz, but they don't block.
                     Exit 1 → the stderr lists every DSL grammar
-                    error, invalid class/tag, OR design-gate
-                    violation. Fix the body in-place and re-run.
-                    Iterate until clean. Do NOT proceed to commit
-                    until exit 0. Common design fixes when the gate
-                    fails on diversity:
+                    error, invalid class/tag, design-gate violation,
+                    OR research-quality gate violation. Fix the body
+                    in-place and re-run. Iterate until clean. Do NOT
+                    proceed to commit until exit 0. Common design
+                    fixes when the gate fails on diversity:
                       - 4+ percentage shares of one whole in prose
                         → `:::donut` with `{label, value}` items
                       - "the top N are…" list in prose
@@ -766,6 +772,14 @@ jobs:
                         → `:::timeline` with `{date, headline, body}`
                       - 4+ headline KPIs presented as separate
                         sentences → `:::stats` grid
+                    Common quality fixes:
+                      - cite density too low → every substantive
+                        factual claim needs a [^N] marker; if you
+                        wrote a number without a source, find one
+                        or remove the claim
+                      - refs too few → run more research waves; you
+                        need at least 20 distinct source URLs in
+                        the :::references block
                  d. This loop is cheap — token cost is just reading
                     short error messages. Lean on it instead of
                     self-validating against the rule list in prose.
@@ -773,8 +787,11 @@ jobs:
             8. SAVE. Write the final (already-clean) `.ara.md` to:
                   $GEN_DRAFT
 
-            9. COMMIT via the writer (Bash). Pass originating values via
-               the pre-set env vars:
+            9. COMMIT via the writer (Bash). The writer RE-RUNS the
+               same quality gates at commit time so local and CI
+               validation cannot drift. Pass originating values via
+               the pre-set env vars and the same gate thresholds the
+               compile-check used in step 7.5:
 
                   python3 scripts/write_generative_research.py \
                     --topic "$GEN_TOPIC" \
@@ -783,6 +800,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model claude-opus-4-7 \
+                    --cite-density-min 10 --refs-min 20 \
                     --html-body "$GEN_DRAFT"
 
                If $GEN_SLUG is empty, OMIT the --slug flag entirely (do
@@ -793,6 +811,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model claude-opus-4-7 \
+                    --cite-density-min 10 --refs-min 20 \
                     --html-body "$GEN_DRAFT"
 
             CONSTRAINTS:
@@ -1252,14 +1271,20 @@ jobs:
 
             7.5. COMPILE CHECK (deterministic; before commit).
                  a. Write the draft `.ara.md` to $GEN_DRAFT.
-                 b. Run with design gates active (corpus audit shows
-                    real articles emit 0–3 viz primitives and 5–10
-                    callouts; we hold this run to ≥ 3 viz + ≤ 5
-                    callouts and warn on percentages-without-viz):
+                 b. Run with design AND research-quality gates active.
+                    Corpus audit shows real articles emit 0–3 viz
+                    primitives and 5–10 callouts; we hold this run
+                    to ≥ 3 viz + ≤ 5 callouts. cite-density-min and
+                    refs-min encode the QUALITY TARGETS as build gates
+                    (previously prose-only; corpus audit found 4
+                    historical articles shipped with zero citations).
+                    --strict-shape adds soft warnings on percentages-
+                    without-viz (advisory, doesn't block):
 
                       python3 scripts/check_generative_research.py \
                         "$GEN_DRAFT" \
                         --diversity-min 3 --callout-max 5 \
+                        --cite-density-min 10 --refs-min 20 \
                         --strict-shape
 
                  c. Exit 0 → proceed to step 8. Soft warnings printed
@@ -1267,11 +1292,11 @@ jobs:
                     whether the flagged section would read better
                     with a viz, but they don't block.
                     Exit 1 → the stderr lists every DSL grammar
-                    error, invalid class/tag, OR design-gate
-                    violation. Fix the body in-place and re-run.
-                    Iterate until clean. Do NOT proceed to commit
-                    until exit 0. Common design fixes when the gate
-                    fails on diversity:
+                    error, invalid class/tag, design-gate violation,
+                    OR research-quality gate violation. Fix the body
+                    in-place and re-run. Iterate until clean. Do NOT
+                    proceed to commit until exit 0. Common design
+                    fixes when the gate fails on diversity:
                       - 4+ percentage shares of one whole in prose
                         → `:::donut` with `{label, value}` items
                       - "the top N are…" list in prose
@@ -1282,6 +1307,14 @@ jobs:
                         → `:::timeline` with `{date, headline, body}`
                       - 4+ headline KPIs presented as separate
                         sentences → `:::stats` grid
+                    Common quality fixes:
+                      - cite density too low → every substantive
+                        factual claim needs a [^N] marker; if you
+                        wrote a number without a source, find one
+                        or remove the claim
+                      - refs too few → run more research waves; you
+                        need at least 20 distinct source URLs in
+                        the :::references block
                  d. This loop is cheap — token cost is just reading
                     short error messages. Lean on it instead of
                     self-validating against the rule list in prose.
@@ -1289,8 +1322,11 @@ jobs:
             8. SAVE. Write the final (already-clean) `.ara.md` to:
                   $GEN_DRAFT
 
-            9. COMMIT via the writer (Bash). Pass originating values via
-               the pre-set env vars:
+            9. COMMIT via the writer (Bash). The writer RE-RUNS the
+               same quality gates at commit time so local and CI
+               validation cannot drift. Pass originating values via
+               the pre-set env vars and the same gate thresholds the
+               compile-check used in step 7.5:
 
                   python3 scripts/write_generative_research.py \
                     --topic "$GEN_TOPIC" \
@@ -1299,6 +1335,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model deepseek-v4-pro \
+                    --cite-density-min 10 --refs-min 20 \
                     --html-body "$GEN_DRAFT"
 
                If $GEN_SLUG is empty, OMIT the --slug flag entirely (do
@@ -1309,6 +1346,7 @@ jobs:
                     --source "$GEN_SOURCE" \
                     --prompt "$GEN_PROMPT" \
                     --model deepseek-v4-pro \
+                    --cite-density-min 10 --refs-min 20 \
                     --html-body "$GEN_DRAFT"
 
             CONSTRAINTS:
@@ -1435,6 +1473,33 @@ jobs:
           echo "file=$FILENAME" >> "$GITHUB_OUTPUT"
           echo "has_file=true" >> "$GITHUB_OUTPUT"
           echo "Generated: research/generative/$FILENAME"
+
+      # Deterministic post-write quality gate. The agent runs the same
+      # gate during its compile-check loop, and the writer re-runs it
+      # at commit time — this third pass is the workflow-level seatbelt
+      # that survives agent flag-drift. If the committed article fails
+      # the gate, the build fails (and the file is reverted from main
+      # via the rollback step below). Workflow uses cite-density-min 10
+      # + refs-min 20 (corpus-validated against research/generative/*;
+      # discriminates 0-cite articles from the 100+ cite recent corpus).
+      # Skip the meta/fixture seeds — they're not subject to the gate.
+      - name: Post-write quality gate
+        id: quality
+        if: steps.outfile.outputs.has_file == 'true'
+        env:
+          FILE: ${{ steps.outfile.outputs.file }}
+        run: |
+          set -euo pipefail
+          path="research/generative/$FILE"
+          if python3 scripts/check_generative_research.py "$path" \
+                --cite-density-min 10 --refs-min 20; then
+            echo "Post-write quality gate PASSED for $path"
+            echo "passed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Post-write quality gate FAILED for $path"
+            echo "passed=false" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
 
       # Per-run quality report — corpus-audit metrics on the article
       # this run produced. We can't see the agent's compile-check

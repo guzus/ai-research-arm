@@ -522,6 +522,40 @@ def main(argv: list[str] | None = None) -> int:
         default=str(Path(__file__).resolve().parent.parent),
         help="repo root (default: parent of scripts/)",
     )
+    # Research-quality gates — same flags as scripts/check_generative_research.py.
+    # When set, the writer re-validates the compiled body AFTER validate_body()
+    # and BEFORE allocating the slug + writing files. A failure here aborts
+    # before any disk state changes so retries start clean. The workflow passes
+    # the same flags to both check_generative_research and write_generative_research
+    # to guarantee local-vs-CI behavior matches.
+    p.add_argument(
+        "--cite-density-min",
+        type=float,
+        default=None,
+        metavar="FLOAT",
+        help="fail commit if cite density < N citations per 1,000 words",
+    )
+    p.add_argument(
+        "--refs-min",
+        type=int,
+        default=None,
+        metavar="INT",
+        help="fail commit if references list has < N entries",
+    )
+    p.add_argument(
+        "--primary-share-min",
+        type=float,
+        default=None,
+        metavar="FLOAT",
+        help="fail commit if < FLOAT (0-1) of references are primary sources",
+    )
+    p.add_argument(
+        "--cited-claims-min",
+        type=float,
+        default=None,
+        metavar="FLOAT",
+        help="fail commit if < FLOAT (0-1) of substantive sentences carry a cite",
+    )
     args = p.parse_args(argv)
 
     repo = Path(args.repo_root).resolve()
@@ -539,6 +573,34 @@ def main(argv: list[str] | None = None) -> int:
     else:
         body = raw
     validate_body(body, args.kind)
+
+    # Research-quality gates (mirror check_generative_research.py flags).
+    # Only fires when at least one threshold is explicitly set. The check
+    # script is the source of truth for the heuristics; we import it here
+    # rather than reimplement so behavior cannot drift between local-check
+    # and commit-time enforcement.
+    if args.kind == KIND_FRAGMENT and any(
+        v is not None for v in (
+            args.cite_density_min,
+            args.refs_min,
+            args.primary_share_min,
+            args.cited_claims_min,
+        )
+    ):
+        # Defer import so the writer has no hard dependency on the check
+        # module unless quality gates are requested.
+        from check_generative_research import enforce_quality  # noqa: E402
+        errs = enforce_quality(body, args)
+        if errs:
+            print(
+                "write_generative_research: quality gate(s) failed; "
+                "REFUSING to commit. Fix the article and retry.",
+                file=sys.stderr,
+            )
+            for line in errs:
+                print(f"  - {line}", file=sys.stderr)
+            raise SystemExit(1)
+
     if not body.endswith("\n"):
         body += "\n"
 
