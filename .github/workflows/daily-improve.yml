@@ -96,8 +96,13 @@ jobs:
                - What improvements were made
                - Expected impact
 
-            4. Commit changes:
-               git add -A
+            4. Commit changes (DO NOT use `git add -A`. The repo uses git-lfs
+               for *.png and *.mp3 — `git add -A` would also stage all
+               existing historical binaries as LFS pointers, contradicting
+               the deferred history-migration plan. Stage only the workflow
+               and doc files you actually changed, e.g.:
+                 git add .github/workflows/*.yml IMPROVEMENTS.md
+               Or: `git add` with explicit paths for each modified file.):
                git commit -m "Methodology improvements for ${{ steps.dates.outputs.today }}"
 
             5. Push and create PR:

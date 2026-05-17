@@ -249,10 +249,18 @@ jobs:
         if: steps.check.outputs.exists == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TODAY: ${{ steps.date.outputs.date }}
         run: |
-          git add research/front-page/ README.md
-          git commit -m "Front page ${{ steps.date.outputs.date }}" || echo "Nothing to commit"
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          # Stage ONLY today's PNG, not the entire research/front-page/ dir.
+          # If we staged the whole dir, the LFS clean filter could detect
+          # "modifications" on historical PNGs (regular git blobs that now
+          # match the *.png filter=lfs rule) and silently convert all 32
+          # existing PNGs into LFS pointers in one commit — exactly the
+          # "Phase 1 only" violation this PR promises to defer to a manual
+          # `git lfs migrate import` runbook.
+          git add "research/front-page/${TODAY}-front-page.png" README.md
+          git commit -m "Front page ${TODAY}" || echo "Nothing to commit"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
           git pull --rebase || true
           git push || echo "Nothing to push"
 

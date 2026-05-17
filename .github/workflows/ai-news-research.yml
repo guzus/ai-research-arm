@@ -169,8 +169,10 @@ jobs:
             Full report on GitHub.
             ```
 
-            After writing both files, commit:
-            git add research/
+            After writing both files, commit (stage ONLY today's two files;
+            do NOT `git add research/`, the LFS clean filter would convert
+            historical PNGs/MP3s to LFS pointers in one commit):
+            git add research/${{ steps.date.outputs.date }}-ai-news.md research/summaries/${{ steps.date.outputs.date }}-summary.txt
             git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
 
             CRITICAL: Write REAL news with actual sources. No placeholder content. NO DUPLICATES from previous reports.
@@ -275,8 +277,10 @@ jobs:
             Full report on GitHub.
             ```
 
-            After writing both files, commit:
-            git add research/
+            After writing both files, commit (stage ONLY today's two files;
+            do NOT `git add research/`, the LFS clean filter would convert
+            historical PNGs/MP3s to LFS pointers in one commit):
+            git add research/${{ steps.date.outputs.date }}-ai-news.md research/summaries/${{ steps.date.outputs.date }}-summary.txt
             git commit -m "Add AI news research for ${{ steps.date.outputs.date }}"
 
             CRITICAL: You MUST write a real file with actual news. Do not write placeholder content. NO DUPLICATES from previous reports.

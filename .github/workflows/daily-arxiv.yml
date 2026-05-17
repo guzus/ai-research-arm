@@ -137,8 +137,10 @@ jobs:
             Full report on GitHub.
             ```
 
-            After writing both files, commit:
-            git add research/
+            After writing both files, commit (stage ONLY today's two files;
+            do NOT `git add research/`, the LFS clean filter would convert
+            historical PNGs/MP3s to LFS pointers in one commit):
+            git add research/arxiv/${{ steps.date.outputs.date }}-papers.md research/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt
             git commit -m "arXiv papers ${{ steps.date.outputs.date }}"
 
       - name: Push changes

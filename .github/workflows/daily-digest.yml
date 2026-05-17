@@ -210,8 +210,11 @@ jobs:
             Full digest on GitHub.
             ```
 
-            After writing both files, commit:
-            git add research/
+            After writing both files, commit (ONLY today's two files — do
+            NOT `git add research/`, because the LFS clean filter would
+            silently convert all existing historical PNGs/MP3s to LFS
+            pointers in one commit):
+            git add research/digest/${{ steps.date.outputs.date }}-digest.md research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
       - name: Synthesize Daily Digest (WebSearch fallback)
@@ -301,8 +304,11 @@ jobs:
             Full digest on GitHub.
             ```
 
-            After writing both files, commit:
-            git add research/
+            After writing both files, commit (ONLY today's two files — do
+            NOT `git add research/`, because the LFS clean filter would
+            silently convert all existing historical PNGs/MP3s to LFS
+            pointers in one commit):
+            git add research/digest/${{ steps.date.outputs.date }}-digest.md research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
       - name: Rewrite summary as ARA spoken script (Claude Sonnet)
