@@ -1150,6 +1150,38 @@ function parseLabels(raw: string | undefined, cap = 200): string[] {
   return raw.split(',').map((s) => s.trim()).slice(0, cap);
 }
 
+function approxSvgTextWidth(text: string, fontPx: number, mono = false): number {
+  return text.length * fontPx * (mono ? 0.62 : 0.56);
+}
+
+function formatNumber(value: number, digits?: number): string {
+  if (digits !== undefined) return value.toFixed(digits);
+  return Number.isInteger(value) ? String(value) : String(value);
+}
+
+function formatUnitValue(value: number, unit: string, digits?: number): string {
+  const n = formatNumber(value, digits);
+  const u = unit.trim();
+  if (!u) return n;
+  const currency = u.match(/^([$€£¥₩])(.+)$/);
+  if (currency) return `${currency[1]}${n}${currency[2]}`;
+  if (/^[$€£¥₩]$/.test(u)) return `${u}${n}`;
+  if (u === '%') return `${n}%`;
+  if (/^[A-Za-z][A-Za-z0-9/%.-]*$/.test(u)) return `${n} ${u}`;
+  return `${u}${n}`;
+}
+
+function fitSvgText(text: string, maxPx: number, fontPx: number, mono = false): string {
+  if (approxSvgTextWidth(text, fontPx, mono) <= maxPx) return text;
+  const charPx = fontPx * (mono ? 0.62 : 0.56);
+  const maxChars = Math.max(6, Math.floor(maxPx / charPx) - 1);
+  return `${text.slice(0, maxChars)}…`;
+}
+
+function setSvgFullLabel(el: SVGElement, text: string): void {
+  el.setAttribute('aria-label', text);
+}
+
 /** Build a polyline d-attribute from (x,y) pairs. */
 function pathFromPoints(points: Array<[number, number]>): string {
   if (!points.length) return '';
@@ -1212,12 +1244,8 @@ function renderLineCharts(root: HTMLElement): void {
 
     const W = 640;
     const H = 220;
-    const ML = 44;
-    const MR = 12;
     const MT = 10;
     const MB = 26;
-    const innerW = W - ML - MR;
-    const innerH = H - MT - MB;
 
     const allValues = seriesList.flatMap((s) => s.values);
     const min = Math.min(...allValues);
@@ -1227,6 +1255,16 @@ function renderLineCharts(root: HTMLElement): void {
     const yMax = max + pad;
     const yRange = yMax - yMin || 1;
     const longest = Math.max(...seriesList.map((s) => s.values.length));
+    const Y_TICKS = 5;
+    const yTickLabels = Array.from({ length: Y_TICKS + 1 }, (_, i) => {
+      const v = yMax - (i / Y_TICKS) * yRange;
+      return formatUnitValue(v, yUnit, yRange < 5 ? 2 : 1);
+    });
+    const maxYLabelW = Math.max(...yTickLabels.map((label) => approxSvgTextWidth(label, 10, true)));
+    const ML = Math.min(118, Math.max(44, Math.ceil(maxYLabelW) + 10));
+    const MR = 16;
+    const innerW = W - ML - MR;
+    const innerH = H - MT - MB;
 
     const xFor = (i: number, total: number) => ML + (i / Math.max(1, total - 1)) * innerW;
     const yFor = (v: number) => MT + innerH - ((v - yMin) / yRange) * innerH;
@@ -1247,13 +1285,11 @@ function renderLineCharts(root: HTMLElement): void {
     const svg = svgEl<SVGSVGElement>('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'xMidYMid meet' });
 
     // 5 horizontal gridlines + y-axis tick labels
-    const Y_TICKS = 5;
     for (let i = 0; i <= Y_TICKS; i++) {
       const y = MT + (i / Y_TICKS) * innerH;
-      const v = yMax - (i / Y_TICKS) * yRange;
       svg.appendChild(svgEl('line', { class: 'ara-chart-grid', x1: ML, y1: y, x2: W - MR, y2: y }));
       const lab = svgEl<SVGTextElement>('text', { class: 'ara-chart-tick-label', x: ML - 6, y: y + 3, 'text-anchor': 'end' });
-      lab.textContent = `${yUnit}${v.toFixed(yRange < 5 ? 2 : 1)}`;
+      lab.textContent = yTickLabels[i];
       svg.appendChild(lab);
     }
 
@@ -1262,7 +1298,8 @@ function renderLineCharts(root: HTMLElement): void {
       const stepRender = Math.max(1, Math.ceil(xLabels.length / 8));
       for (let i = 0; i < xLabels.length; i += stepRender) {
         const x = xFor(i, xLabels.length);
-        const lab = svgEl<SVGTextElement>('text', { class: 'ara-chart-tick-label', x, y: H - 8, 'text-anchor': 'middle' });
+        const anchor = i === 0 ? 'start' : i + stepRender >= xLabels.length ? 'end' : 'middle';
+        const lab = svgEl<SVGTextElement>('text', { class: 'ara-chart-tick-label', x, y: H - 8, 'text-anchor': anchor });
         lab.textContent = xLabels[i];
         svg.appendChild(lab);
       }
@@ -1385,12 +1422,20 @@ function renderSlopes(root: HTMLElement): void {
     const rightLabel = el.dataset.rightLabel || 'Right';
     const unit = el.dataset.unit || '';
 
-    const W = 640;
+    const W = 960;
     const rowH = 26;
     const headerH = 30;
     const H = headerH + items.length * rowH + 20;
-    const colL = 220;
-    const colR = W - 220;
+    const leftTexts = items.map((name, i) => `${name} ${formatUnitValue(leftValues[i], unit)}`);
+    const rightTexts = items.map((name, i) => `${formatUnitValue(rightValues[i], unit)} ${name}`);
+    const maxLeftW = Math.max(...leftTexts.map((text) => approxSvgTextWidth(text, 12)));
+    const maxRightW = Math.max(...rightTexts.map((text) => approxSvgTextWidth(text, 12)));
+    const minPlotW = 180;
+    const maxSideW = Math.floor((W - minPlotW) / 2) - 18;
+    const leftW = Math.min(maxSideW, Math.max(130, Math.ceil(maxLeftW)));
+    const rightW = Math.min(maxSideW, Math.max(130, Math.ceil(maxRightW)));
+    const colL = leftW + 14;
+    const colR = W - rightW - 14;
 
     const all = [...leftValues, ...rightValues];
     const min = Math.min(...all);
@@ -1427,11 +1472,15 @@ function renderSlopes(root: HTMLElement): void {
       svg.appendChild(line);
       svg.appendChild(svgEl('circle', { class: 'ara-slope-dot', cx: colL + 6, cy: ly, r: 3 }));
       svg.appendChild(svgEl('circle', { class: 'ara-slope-dot', cx: colR - 6, cy: ry, r: 3 }));
+      const lRaw = leftTexts[i];
       const lLabel = svgEl<SVGTextElement>('text', { class: 'ara-slope-label', x: colL - 8, y: ly + 4, 'text-anchor': 'end' });
-      lLabel.textContent = `${name} ${unit}${lv}`;
+      lLabel.textContent = fitSvgText(lRaw, colL - 8, 12);
+      if (lLabel.textContent !== lRaw) setSvgFullLabel(lLabel, lRaw);
       svg.appendChild(lLabel);
+      const rRaw = rightTexts[i];
       const rLabel = svgEl<SVGTextElement>('text', { class: 'ara-slope-label', x: colR + 8, y: ry + 4, 'text-anchor': 'start' });
-      rLabel.textContent = `${unit}${rv} ${name}`;
+      rLabel.textContent = fitSvgText(rRaw, W - colR - 8, 12);
+      if (rLabel.textContent !== rRaw) setSvgFullLabel(rLabel, rRaw);
       svg.appendChild(rLabel);
     });
 
