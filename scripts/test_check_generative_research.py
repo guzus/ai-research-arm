@@ -387,6 +387,75 @@ class VerifierFindingsAuditTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 chk.audit_verifier_findings(path, "<article></article>")
 
+    def test_probe_matches_through_dsl_cite_marker(self):
+        """Verifier text uses [^N] (DSL form), body has rendered cite.
+        Without stripping, probe never matches → false pass.
+        With stripping, probe matches → correctly FAIL."""
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            '<p>Nvidia hit 75 percent margin in Q4 2026'
+            '<sup><a class="ara-cite" href="#ref-12">12</a></sup>.</p>'
+            '</article>'
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c1",
+                # DSL-shape: how the verifier reads it from .ara.md
+                "text": "Nvidia hit 75 percent margin in Q4 2026[^12].",
+                "verdict": "unsupported",
+                "citation": "https://...",
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(
+                len(surviving), 1,
+                "Cite-stripped probe should match cite-stripped body and "
+                "FAIL the audit. Without P2 fix, this returns surviving=[] "
+                "(false pass).",
+            )
+
+    def test_probe_matches_through_multi_cite_marker(self):
+        """Multi-cite `[^1,2,3]` form must also strip cleanly."""
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            '<p>OpenAI raised $40 billion in 2026'
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>'
+            '<sup><a class="ara-cite" href="#ref-2">2</a></sup>.</p>'
+            '</article>'
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c2",
+                "text": "OpenAI raised $40 billion in 2026[^1,2].",
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(len(surviving), 1, "multi-cite must strip too")
+
+    def test_strip_cite_markers_helper(self):
+        import re as _re
+        def collapse(s): return _re.sub(r"\s+", " ", s).strip()
+        # DSL form
+        self.assertEqual(
+            collapse(chk._strip_cite_markers("Claim with [^1] cite.")),
+            "Claim with cite.",
+        )
+        # Multi-cite
+        self.assertEqual(
+            collapse(chk._strip_cite_markers("Claim [^1,2,3] here.")),
+            "Claim here.",
+        )
+        # Rendered form
+        self.assertEqual(
+            collapse(chk._strip_cite_markers(
+                'Claim<sup><a class="ara-cite" href="#ref-9">9</a></sup> end.'
+            )),
+            "Claim end.",
+        )
+
     def test_empty_text_skipped_not_failed(self):
         import tempfile
         body = '<article><p>Something here.</p></article>'

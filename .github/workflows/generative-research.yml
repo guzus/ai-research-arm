@@ -1562,6 +1562,7 @@ jobs:
         if: steps.outfile.outputs.has_file == 'true'
         env:
           FILE: ${{ steps.outfile.outputs.file }}
+          PRE_SHA: ${{ steps.pre.outputs.sha }}
         run: |
           set -euo pipefail
           path="research/generative/$FILE"
@@ -1572,6 +1573,14 @@ jobs:
           else
             echo "::error::Post-write quality gate FAILED for $path"
             echo "passed=false" >> "$GITHUB_OUTPUT"
+            # Reset the locally-committed bad article so the runner tree
+            # is clean for the next run. The Push step is gated on
+            # steps.quality.outputs.passed == 'true' (so the bad article
+            # never reaches main), but on self-hosted runners that retain
+            # workspace state between jobs, a left-behind orphan commit
+            # could leak into a subsequent run's `git diff` window.
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative || true
             exit 1
           fi
 
@@ -1594,9 +1603,10 @@ jobs:
       # by removing the `if [ ! -f "$findings" ]` early-return.
       - name: Verifier-findings audit
         id: verifier-audit
-        if: steps.outfile.outputs.has_file == 'true'
+        if: steps.outfile.outputs.has_file == 'true' && steps.quality.outputs.passed == 'true'
         env:
           FILE: ${{ steps.outfile.outputs.file }}
+          PRE_SHA: ${{ steps.pre.outputs.sha }}
         run: |
           set -euo pipefail
           findings="$GITHUB_WORKSPACE/.gen-verifier-findings.json"
@@ -1606,10 +1616,19 @@ jobs:
             echo "skipped=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          python3 scripts/check_generative_research.py \
-            "$article" \
-            --audit-verifier-findings "$findings"
-          echo "skipped=false" >> "$GITHUB_OUTPUT"
+          if python3 scripts/check_generative_research.py \
+              "$article" --audit-verifier-findings "$findings"; then
+            echo "skipped=false" >> "$GITHUB_OUTPUT"
+          else
+            # Same reset-on-failure pattern as the quality gate above.
+            # Push step is also gated on this audit's outcome so the
+            # bad article never reaches main, but the local commit on
+            # the runner must go away to keep subsequent jobs clean.
+            echo "::error::Verifier-findings audit FAILED for $article"
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative || true
+            exit 1
+          fi
 
       # Per-run quality report — corpus-audit metrics on the article
       # this run produced. We can't see the agent's compile-check
@@ -1677,9 +1696,31 @@ jobs:
       # (which can happen even with concurrency:false if a label event and
       # a workflow_dispatch race across the queue boundary) and on push
       # rejections (auth / non-fast-forward).
+      #
+      # Gating: `always() && steps.outfile.outputs.has_file == 'true'`
+      # used to be enough — it published any committed article even if
+      # the model step's outcome was "failure" (e.g. timeout cap hit
+      # after a valid commit). After Post-write quality gate +
+      # Verifier-findings audit were added, that gating became unsafe:
+      # those steps exit non-zero on failure but `always()` ignored
+      # them and pushed the bad article anyway. The push step now
+      # requires:
+      #   - an article was committed (has_file)
+      #   - the post-write quality gate passed
+      #   - the verifier-findings audit either passed or was skipped
+      #     (skipped = verifier didn't emit JSON, treated as soft-fail
+      #     per that step's documented policy)
+      # We keep `always()` so a model-step "failure" outcome on a job
+      # that produced a valid article still publishes — the model
+      # outcome is independent of article validity.
       - name: Push changes
         id: push
-        if: always() && steps.outfile.outputs.has_file == 'true'
+        if: >-
+          always()
+          && steps.outfile.outputs.has_file == 'true'
+          && steps.quality.outputs.passed == 'true'
+          && (steps.verifier-audit.outputs.skipped == 'true'
+              || steps.verifier-audit.outcome == 'success')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

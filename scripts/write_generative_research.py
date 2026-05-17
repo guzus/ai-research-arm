@@ -619,11 +619,17 @@ def main(argv: list[str] | None = None) -> int:
     # picks the final slug (appending `-2`, `-3`, ... if taken) inside the
     # critical section, so the slug is guaranteed unique against the file's
     # state at write time. See append_index_atomically().
-    written_html = False
-    written_source: Path | None = None
+    #
+    # Track the actual paths we wrote (with the FINAL allocated slug, which
+    # may be base_slug-2 / -3 / ...). If the index rewrite fails after the
+    # HTML/DSL files were written, the except branch removes the orphans —
+    # so the cleanup must reference the real paths, not derive them from
+    # base_slug (which would miss `foo-2.html`).
+    written_html_path: Path | None = None
+    written_source_path: Path | None = None
     try:
         def _build_row(final_slug: str) -> dict:
-            nonlocal written_html, written_source
+            nonlocal written_html_path, written_source_path
             filename = f"{stamp}--{final_slug}.html"
             html_path = gen_dir / filename
             if html_path.exists():
@@ -634,14 +640,14 @@ def main(argv: list[str] | None = None) -> int:
                     f"refusing to overwrite existing file: {html_path}"
                 )
             html_path.write_text(body, encoding="utf-8")
-            written_html = True
+            written_html_path = html_path
             if is_dsl:
                 source_path = gen_dir / f"{stamp}--{final_slug}.ara.md"
                 source_path.write_text(
                     raw if raw.endswith("\n") else raw + "\n",
                     encoding="utf-8",
                 )
-                written_source = source_path
+                written_source_path = source_path
             return {
                 "slug": final_slug,
                 "file": filename,
@@ -657,17 +663,19 @@ def main(argv: list[str] | None = None) -> int:
         slug, index = append_index_atomically(index_path, base_slug, _build_row)
     except BaseException:
         # If the locked append failed AFTER we wrote the HTML / DSL source,
-        # remove the orphans so a retry starts clean. (The index either
-        # never appended, or atomic_write_json's tmp file was cleaned up by
-        # its own except branch — both safe to redo.)
-        if written_html:
+        # remove the orphans so a retry starts clean. We use the ACTUAL
+        # written paths captured by _build_row, not paths derived from
+        # base_slug — the allocated slug may be `base_slug-2`/`-3`/... so
+        # deriving from base_slug would miss the real orphan and leave it
+        # in the worktree forever.
+        if written_html_path is not None:
             try:
-                (gen_dir / f"{stamp}--{base_slug}.html").unlink(missing_ok=True)
+                written_html_path.unlink(missing_ok=True)
             except OSError:
                 pass
-        if written_source is not None:
+        if written_source_path is not None:
             try:
-                written_source.unlink(missing_ok=True)
+                written_source_path.unlink(missing_ok=True)
             except OSError:
                 pass
         raise
@@ -678,9 +686,9 @@ def main(argv: list[str] | None = None) -> int:
     print(f"updated {index_path.relative_to(repo)} ({len(index)} entries)")
 
     files_to_commit = [html_path, index_path]
-    if written_source is not None:
-        print(f"wrote {written_source.relative_to(repo)} (DSL source)")
-        files_to_commit.insert(1, written_source)
+    if written_source_path is not None:
+        print(f"wrote {written_source_path.relative_to(repo)} (DSL source)")
+        files_to_commit.insert(1, written_source_path)
 
     if not args.no_commit:
         git_commit(

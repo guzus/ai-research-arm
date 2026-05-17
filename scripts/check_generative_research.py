@@ -359,6 +359,29 @@ def enforce_quality(body_html: str, args: argparse.Namespace) -> list[str]:
     return errors
 
 
+# Citation marker patterns we strip before matching verifier-findings
+# probes against the body. The verifier reads the .ara.md DSL (which
+# uses `[^N]` / `[^1,2,3]`) but the body we compare against is the
+# compiled HTML (which renders `[^N]` as `<sup><a class="ara-cite">N</a></sup>`).
+# Without normalization, a probe containing `[^12]` will never match a
+# body containing `<sup>...12...</sup>` → surviving unsupported claim
+# is treated as "removed" → false pass.
+_DSL_CITE_MARKER_RE = re.compile(r"\[\^[0-9,\s]+\]")
+_RENDERED_CITE_RE = re.compile(
+    r'<sup[^>]*>\s*<a[^>]*class="ara-cite"[^>]*>[^<]*</a>\s*</sup>',
+    flags=re.IGNORECASE,
+)
+
+
+def _strip_cite_markers(s: str) -> str:
+    """Remove both DSL `[^N]` and rendered `<sup><a class="ara-cite">…</a></sup>`
+    citation markers so verifier-findings text (DSL-shape) and HTML
+    body text (rendered-shape) match each other after normalization."""
+    s = _RENDERED_CITE_RE.sub(" ", s)
+    s = _DSL_CITE_MARKER_RE.sub(" ", s)
+    return s
+
+
 def audit_verifier_findings(
     findings_path: Path, body_html: str
 ) -> tuple[int, list[dict]]:
@@ -376,10 +399,15 @@ def audit_verifier_findings(
             ...
         ]}
 
-    Heuristic: the first ~80 chars of `text` (lowercased, whitespace-
-    collapsed) is the probe. If the probe appears in the article body
-    text AND is not inside a `<mark>…</mark>` region, the claim
-    survived without being demoted → fail.
+    Heuristic: strip citation markers (both DSL `[^N]` and the rendered
+    `<sup><a class="ara-cite">N</a></sup>` form) from BOTH the claim
+    text and the body before normalizing. The verifier reads DSL; the
+    compiled HTML we audit uses the rendered form. Without stripping
+    on both sides, any cited claim looks "removed" because the marker
+    shapes never match. The first ~80 chars of the normalized text is
+    the probe. If the probe appears in the body text AND is not inside
+    a `<mark>…</mark>` region, the claim survived without being
+    demoted → fail.
 
     Limitations (call out in PR + reviewer-facing docs):
       * Whole-claim-demotion semantics: if the agent demotes only the
@@ -412,11 +440,19 @@ def audit_verifier_findings(
             f"got: {type(data).__name__}"
         )
 
-    text_no_tags = re.sub(r"<[^>]+>", " ", body_html)
+    # Strip cite markers on the HTML side BEFORE tag-stripping so the
+    # rendered <sup>…</sup> wrapper disappears cleanly. Then strip
+    # remaining HTML tags. Both DSL and rendered citation forms are
+    # gone, so the probe and body live on equal footing.
+    body_decited = _strip_cite_markers(body_html)
+    text_no_tags = re.sub(r"<[^>]+>", " ", body_decited)
     mark_regions: list[str] = re.findall(
         r"<mark[^>]*>(.*?)</mark>", body_html, flags=re.DOTALL | re.IGNORECASE
     )
-    mark_blob = " ".join(mark_regions)
+    # Same cite-stripping inside the mark regions — claim text inside
+    # a <mark> wrapper can also carry a `<sup>…</sup>` cite, and we
+    # want it to match a DSL-shaped probe.
+    mark_blob = " ".join(_strip_cite_markers(m) for m in mark_regions)
 
     def _norm(s: str) -> str:
         return re.sub(r"\s+", " ", s).strip().lower()
@@ -440,7 +476,11 @@ def audit_verifier_findings(
             # rather than failing (the verifier itself flagged the
             # missing data; rerun policy is upstream).
             continue
-        probe = _norm(text)[:80]
+        # Strip cites from the probe text too, so a DSL-shaped probe
+        # like "Nvidia hit 75% margin [^12]" doesn't fail to match a
+        # body whose corresponding sentence has already had the cite
+        # stripped from the HTML side.
+        probe = _norm(_strip_cite_markers(text))[:80]
         if not probe:
             continue
         if probe in body_norm and probe not in mark_norm:
