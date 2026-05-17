@@ -45,7 +45,11 @@ jobs:
           # measuring pipeline output freshness.
 
           today_epoch=$(date -u +%s)
-          max_age_days=2
+          # Threshold in seconds, not days, to avoid the truncation bug where
+          # `(now - newest) / 86400` reports `2` for anything in the 48h..72h
+          # window — which would silently let a 60h-stale subdir pass an
+          # "alert above 48h" check until it crossed 72h.
+          max_age_seconds=$(( 48 * 3600 ))
           fail=0
           report=""
 
@@ -83,13 +87,14 @@ jobs:
               continue
             fi
 
-            age_days=$(( (today_epoch - newest_epoch) / 86400 ))
+            age_seconds=$(( today_epoch - newest_epoch ))
+            age_hours=$(( age_seconds / 3600 ))
 
-            if [ "$age_days" -gt "$max_age_days" ]; then
-              report="${report}STALE: $dir -- newest file dated $newest_date (${age_days}d old, max ${max_age_days}d)\n"
+            if [ "$age_seconds" -gt "$max_age_seconds" ]; then
+              report="${report}STALE: $dir -- newest file dated $newest_date (${age_hours}h old, max 48h)\n"
               fail=1
             else
-              echo "OK: $dir -- newest $newest_date (${age_days}d old)"
+              echo "OK: $dir -- newest $newest_date (${age_hours}h old)"
             fi
           done
 
