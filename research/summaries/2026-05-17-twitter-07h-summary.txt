@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-17 07:11 UTC
+
+CYCLE: Quiet US-overnight Sunday. Anthropic ~61h corp silence is the day-high anomaly; Mythos narrative gains its first "attack surface" wrinkle.
+
+TOP STORIES:
+- Cyber Post/Hacker News "ThreatsDay Bulletin" (Thu 5/14) names a "Mythos cURL bug" as parsing-layer vuln, inverting the M5/V8 capability framing [⚠]
+- @AnthropicAI ~61h silent through Mythos GCP + M5/V8 + Cyber News + cURL-bug bulletin (5-event silence streak) [✓]
+- OpenAI Malta blog ~15h+ unacknowledged on corp accounts; @sama ~36.5h silent [✓]
+
+WATCH: First MITRE CVE or Anthropic Trust Center disclosure naming Mythos; Mon US-AM OpenAI Malta corp-social rollout window.
+
+Full update on GitHub.
