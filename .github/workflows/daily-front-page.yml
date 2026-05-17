@@ -22,6 +22,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # lfs: true is REQUIRED here because this workflow runs 30 min after
+          # daily-digest.yml, which commits today's MP3 through git-lfs. The
+          # "Publish digest audio via hooker" step below reads that MP3 and
+          # feeds it to ffmpeg — without lfs: true, checkout would hand it a
+          # 135-byte pointer file that `[ -f ]` passes but ffmpeg can't decode.
+          lfs: true
 
       # Ensure git-lfs filter hooks are wired in. Self-hosted runner may
       # already have it installed; `git lfs install` is idempotent. The PNG
@@ -36,6 +42,10 @@ jobs:
           git lfs install --local
 
       - name: Pull latest changes
+        # `git pull` after merge will fetch LFS objects automatically because
+        # `git lfs install --local` wired the smudge filter. The earlier
+        # `lfs: true` on checkout is what guarantees the initial checkout
+        # state already has the MP3 hydrated for the publish step below.
         run: git pull origin main || true
 
       - name: Get current date

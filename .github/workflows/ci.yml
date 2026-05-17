@@ -41,6 +41,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # lfs: true is REQUIRED because dashboard/scripts/prebuild.mjs runs
+          # cpSync over research/front-page/*.png and research/audio/*.mp3
+          # into public/research/. Without LFS hydration, those would be
+          # 135-byte pointer files — the build wouldn't fail but the deployed
+          # dashboard would serve pointer text instead of images/audio.
+          lfs: true
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
