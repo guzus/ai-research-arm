@@ -1182,6 +1182,12 @@ function setSvgFullLabel(el: SVGElement, text: string): void {
   el.setAttribute('aria-label', text);
 }
 
+function appendSvgTitle(el: SVGElement, text: string): void {
+  const title = svgEl<SVGTitleElement>('title', {});
+  title.textContent = text;
+  el.appendChild(title);
+}
+
 /** Build a polyline d-attribute from (x,y) pairs. */
 function pathFromPoints(points: Array<[number, number]>): string {
   if (!points.length) return '';
@@ -1311,7 +1317,37 @@ function renderLineCharts(root: HTMLElement): void {
         xFor(i, s.values.length === 1 ? 2 : s.values.length),
         yFor(v),
       ]);
-      svg.appendChild(svgEl('path', { class: `ara-chart-series ara-chart-series-${idx + 1}`, d: pathFromPoints(points) }));
+      const latestLabel = xLabels[s.values.length - 1] || `point ${s.values.length}`;
+      const latestValue = formatUnitValue(s.values[s.values.length - 1], yUnit);
+      const path = svgEl<SVGPathElement>('path', {
+        class: `ara-chart-series ara-chart-series-${idx + 1}`,
+        d: pathFromPoints(points),
+        tabindex: '0',
+      });
+      appendSvgTitle(path, `${s.label}: latest ${latestValue} (${latestLabel})`);
+      svg.appendChild(path);
+
+      if (points.length <= 24) {
+        points.forEach(([x, y], pointIdx) => {
+          const label = xLabels[pointIdx] || `point ${pointIdx + 1}`;
+          const value = formatUnitValue(s.values[pointIdx], yUnit);
+          const visible = svgEl<SVGCircleElement>('circle', {
+            class: `ara-chart-point ara-chart-point--${idx + 1}`,
+            cx: x,
+            cy: y,
+            r: 2.2,
+          });
+          svg.appendChild(visible);
+          const hit = svgEl<SVGCircleElement>('circle', {
+            class: 'ara-chart-hit',
+            cx: x,
+            cy: y,
+            r: 7,
+          });
+          appendSvgTitle(hit, `${s.label} · ${label}: ${value}`);
+          svg.appendChild(hit);
+        });
+      }
     });
 
     el.appendChild(svg);
@@ -1325,6 +1361,8 @@ function renderLineCharts(root: HTMLElement): void {
         const item = document.createElement('span');
         item.className = `ara-chart-legend-item ara-chart-legend-item--${idx + 1}`;
         item.textContent = s.label;
+        const latestLabel = xLabels[s.values.length - 1] || `point ${s.values.length}`;
+        item.title = `${s.label}: latest ${formatUnitValue(s.values[s.values.length - 1], yUnit)} (${latestLabel})`;
         legend.appendChild(item);
       });
       el.appendChild(legend);
@@ -1375,7 +1413,13 @@ function renderDonuts(root: HTMLElement): void {
         ` L${sxi.toFixed(2)},${syi.toFixed(2)}` +
         ` A${ri},${ri} 0 ${largeArc},0 ${exi.toFixed(2)},${eyi.toFixed(2)}` +
         ' Z';
-      svg.appendChild(svgEl('path', { class: `ara-donut-slice ara-donut-slice--${(idx % 6) + 1}`, d }));
+      const slice = svgEl<SVGPathElement>('path', {
+        class: `ara-donut-slice ara-donut-slice--${(idx % 6) + 1}`,
+        d,
+        tabindex: '0',
+      });
+      appendSvgTitle(slice, `${labels[idx]}: ${values[idx]} (${((values[idx] / total) * 100).toFixed(1)}%)`);
+      svg.appendChild(slice);
     });
 
     if (centerLabel) {
@@ -1398,6 +1442,7 @@ function renderDonuts(root: HTMLElement): void {
       value.className = 'ara-donut-legend-value';
       const pct = (values[idx] / total) * 100;
       value.textContent = `${pct.toFixed(1)}%`;
+      li.title = `${label}: ${values[idx]} (${pct.toFixed(1)}%)`;
       li.appendChild(swatch);
       li.appendChild(name);
       li.appendChild(value);

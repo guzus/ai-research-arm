@@ -36,6 +36,12 @@
 .ara-doc {
   --border: #1a1a1a;
   --border-light: #1a1a1a;
+  --ara-viz-1: #0072b2;
+  --ara-viz-2: #d55e00;
+  --ara-viz-3: #009e73;
+  --ara-viz-4: #cc79a7;
+  --ara-viz-5: #e69f00;
+  --ara-viz-6: #56b4e9;
   font-family: var(--font);
   color: var(--text);
   line-height: 1.5;
@@ -46,6 +52,12 @@
   .ara-doc {
     --border: #e0e0e0;
     --border-light: #e0e0e0;
+    --ara-viz-1: #56b4e9;
+    --ara-viz-2: #ff8a4c;
+    --ara-viz-3: #35d0a0;
+    --ara-viz-4: #f0a6d8;
+    --ara-viz-5: #f6c35b;
+    --ara-viz-6: #8bd3ff;
   }
 }
 
@@ -953,16 +965,38 @@
   font-size: 10px;
 }
 
-.ara-line-chart .ara-chart-series-1 { stroke: var(--text); }
-.ara-line-chart .ara-chart-series-2 { stroke: var(--accent-warm); }
-.ara-line-chart .ara-chart-series-3 { stroke: var(--text-secondary); }
-.ara-line-chart .ara-chart-series-4 { stroke: var(--text-tertiary); }
+.ara-line-chart .ara-chart-series-1 { stroke: var(--ara-viz-1); }
+.ara-line-chart .ara-chart-series-2 { stroke: var(--ara-viz-2); }
+.ara-line-chart .ara-chart-series-3 { stroke: var(--ara-viz-3); }
+.ara-line-chart .ara-chart-series-4 { stroke: var(--ara-viz-4); }
 
 .ara-line-chart .ara-chart-series {
   fill: none;
-  stroke-width: 1.5;
+  stroke-width: 2;
   stroke-linejoin: round;
   stroke-linecap: round;
+  pointer-events: stroke;
+}
+
+.ara-line-chart .ara-chart-series:hover,
+.ara-line-chart .ara-chart-series:focus {
+  stroke-width: 3;
+}
+
+.ara-line-chart .ara-chart-point {
+  stroke: var(--bg);
+  stroke-width: 1.5;
+  cursor: help;
+}
+
+.ara-line-chart .ara-chart-point--1 { fill: var(--ara-viz-1); }
+.ara-line-chart .ara-chart-point--2 { fill: var(--ara-viz-2); }
+.ara-line-chart .ara-chart-point--3 { fill: var(--ara-viz-3); }
+.ara-line-chart .ara-chart-point--4 { fill: var(--ara-viz-4); }
+
+.ara-line-chart .ara-chart-hit {
+  fill: transparent;
+  cursor: help;
 }
 
 .ara-line-chart-legend {
@@ -989,10 +1023,10 @@
   background: currentColor;
 }
 
-.ara-line-chart-legend .ara-chart-legend-item--1 { color: var(--text); }
-.ara-line-chart-legend .ara-chart-legend-item--2 { color: var(--accent-warm); }
-.ara-line-chart-legend .ara-chart-legend-item--3 { color: var(--text-secondary); }
-.ara-line-chart-legend .ara-chart-legend-item--4 { color: var(--text-tertiary); }
+.ara-line-chart-legend .ara-chart-legend-item--1 { color: var(--ara-viz-1); }
+.ara-line-chart-legend .ara-chart-legend-item--2 { color: var(--ara-viz-2); }
+.ara-line-chart-legend .ara-chart-legend-item--3 { color: var(--ara-viz-3); }
+.ara-line-chart-legend .ara-chart-legend-item--4 { color: var(--ara-viz-4); }
 
 /* ── Donut (proportional ring) ───────────────────── */
 /* Authored as <div class="ara-donut" data-labels="..." data-values="...">
@@ -1014,7 +1048,14 @@
 
 .ara-donut .ara-donut-slice {
   stroke: var(--bg);
-  stroke-width: 1.5;
+  stroke-width: 2;
+  cursor: help;
+}
+
+.ara-donut .ara-donut-slice:hover,
+.ara-donut .ara-donut-slice:focus {
+  filter: brightness(1.08);
+  stroke-width: 3;
 }
 
 .ara-donut .ara-donut-center-label {
@@ -1025,12 +1066,12 @@
   dominant-baseline: middle;
 }
 
-.ara-donut .ara-donut-slice--1 { fill: var(--text); }
-.ara-donut .ara-donut-slice--2 { fill: var(--accent-warm); }
-.ara-donut .ara-donut-slice--3 { fill: var(--text-secondary); }
-.ara-donut .ara-donut-slice--4 { fill: var(--text-tertiary); }
-.ara-donut .ara-donut-slice--5 { fill: #94a3b8; }
-.ara-donut .ara-donut-slice--6 { fill: var(--border); }
+.ara-donut .ara-donut-slice--1 { fill: var(--ara-viz-1); }
+.ara-donut .ara-donut-slice--2 { fill: var(--ara-viz-2); }
+.ara-donut .ara-donut-slice--3 { fill: var(--ara-viz-3); }
+.ara-donut .ara-donut-slice--4 { fill: var(--ara-viz-4); }
+.ara-donut .ara-donut-slice--5 { fill: var(--ara-viz-5); }
+.ara-donut .ara-donut-slice--6 { fill: var(--ara-viz-6); }
 
 .ara-donut-legend {
   list-style: none;
@@ -1059,12 +1100,12 @@
   border-radius: 2px;
 }
 
-.ara-donut-legend-swatch--1 { background: var(--text); }
-.ara-donut-legend-swatch--2 { background: var(--accent-warm); }
-.ara-donut-legend-swatch--3 { background: var(--text-secondary); }
-.ara-donut-legend-swatch--4 { background: var(--text-tertiary); }
-.ara-donut-legend-swatch--5 { background: #94a3b8; }
-.ara-donut-legend-swatch--6 { background: var(--border); }
+.ara-donut-legend-swatch--1 { background: var(--ara-viz-1); }
+.ara-donut-legend-swatch--2 { background: var(--ara-viz-2); }
+.ara-donut-legend-swatch--3 { background: var(--ara-viz-3); }
+.ara-donut-legend-swatch--4 { background: var(--ara-viz-4); }
+.ara-donut-legend-swatch--5 { background: var(--ara-viz-5); }
+.ara-donut-legend-swatch--6 { background: var(--ara-viz-6); }
 
 .ara-donut-legend-value {
   font-family: var(--font-mono);
