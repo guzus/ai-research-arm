@@ -1501,7 +1501,7 @@ function renderSlopes(root: HTMLElement): void {
     rh.textContent = rightLabel;
     svg.appendChild(rh);
 
-    items.forEach((name, i) => {
+    items.forEach((_, i) => {
       const lv = leftValues[i];
       const rv = rightValues[i];
       const ly = yFor(lv);
