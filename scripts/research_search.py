@@ -565,7 +565,15 @@ def search_uspto(query: str, limit: int, **_kw) -> Iterable[str]:
 WP_API = "https://en.wikipedia.org/w/api.php"
 BING_RSS = "https://www.bing.com/search"
 JEDEC_HOST_RE = re.compile(r"(?:^|//)(?:www\.)?(jedec\.org)\b", re.IGNORECASE)
-JESD_TITLE_RE = re.compile(r"\bJESD[\-\d]+\b|\bJEP\d+\b", re.IGNORECASE)
+# JEDEC standard identifiers include revision suffixes like `JESD235C`,
+# `JESD209-5B`, and `JEP95A`. Letters after the number are common, so the
+# pattern accepts a digit-hyphen body followed by an optional trailing
+# letter group. `\bJESD[\d\-]+[A-Z]?\b` would over-eagerly grab letters;
+# we anchor on word boundaries and allow up to two trailing letters which
+# covers every published revision suffix as of 2025.
+JESD_TITLE_RE = re.compile(
+    r"\bJESD\d[\d\-]*[A-Z]{0,2}\b|\bJEP\d+[A-Z]{0,2}\b", re.IGNORECASE
+)
 
 
 def _bing_rss(query: str, *, n: int = 15) -> list[dict]:

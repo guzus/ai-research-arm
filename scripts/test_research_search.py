@@ -25,12 +25,20 @@ sys.path.insert(0, os.path.dirname(__file__))
 import research_search  # noqa: E402
 
 
-# Probe the network once at module load. We pick Wikidata because all
-# code paths use HTTPS through stdlib and Wikidata is the most uptime-
-# guaranteed of the new endpoints. A failure here means we should skip
-# all network tests rather than report false failures. Use the same
-# project UA the live functions use — Wikidata 403s requests without one.
+# Live smoke tests run only when the developer explicitly opts in via
+# RESEARCH_SEARCH_LIVE_TESTS=1. Default to skip so CI doesn't fail when
+# Wikidata, Google Patents, Bing, Polymarket, or GDELT have a transient
+# outage (any one of those services going down would otherwise break
+# unrelated PRs). Local probe also happens — even with the env-var set,
+# we skip cleanly if the network is unreachable.
+LIVE_TESTS_ENABLED = os.environ.get("RESEARCH_SEARCH_LIVE_TESTS", "").lower() in (
+    "1", "true", "yes", "on"
+)
+
+
 def _probe_network() -> bool:
+    """Probe Wikidata with the project UA so the probe matches live usage.
+    Wikidata 403s requests without a UA — using urlopen() bare would lie."""
     req = urllib.request.Request(
         "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=test&format=json&language=en",
         headers={"User-Agent": research_search.USER_AGENT, "Accept": "application/json"},
@@ -42,7 +50,13 @@ def _probe_network() -> bool:
         return False
 
 
-NETWORK_OK = _probe_network()
+# Only probe the network when live tests are explicitly enabled. Saves
+# the test-suite startup latency for the default offline path.
+NETWORK_OK = _probe_network() if LIVE_TESTS_ENABLED else False
+SKIP_REASON = (
+    "network required" if LIVE_TESTS_ENABLED
+    else "live smoke tests disabled; set RESEARCH_SEARCH_LIVE_TESTS=1 to enable"
+)
 
 
 def _collect(gen) -> str:
@@ -158,7 +172,10 @@ class ArgparseDispatchTest(unittest.TestCase):
 
 
 # ── Smoke tests — happy-path with real network calls ──────────────
-@unittest.skipUnless(NETWORK_OK, "network required")
+# Opt-in via RESEARCH_SEARCH_LIVE_TESTS=1 to keep CI green when third-
+# party services have transient outages. Run locally with:
+#   RESEARCH_SEARCH_LIVE_TESTS=1 python3 -m unittest discover -s scripts
+@unittest.skipUnless(NETWORK_OK, SKIP_REASON)
 class SmokeTest(unittest.TestCase):
     """Live calls. Each test verifies (a) non-empty output, (b) no Python
     traceback leaked, and (c) recognizable structure."""
