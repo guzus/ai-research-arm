@@ -214,6 +214,79 @@ class _ReferenceHrefCollector(HTMLParser):
                 self._current_ref_has_url = False
 
 
+class _RefHostMapCollector(HTMLParser):
+    """Walks the HTML and builds {ref_num: host} for every
+    `<li id="ref-N">`'s first http(s) URL.
+
+    Used by the corroboration gate: each cite `[^N]` in the body
+    rendered to `<sup><a class="ara-cite" href="#ref-N">N</a></sup>`
+    must be resolvable to a SOURCE HOST so the gate can count
+    distinct hosts per claim.
+
+    Storage choice: only the FIRST http(s) URL inside each ref-li
+    is captured. A ref-li with multiple URLs usually has the
+    primary source first (publisher / DOI / arxiv) and supplementary
+    secondary URLs after. Counting all of them per ref-li would
+    artificially inflate host diversity — a single ref entry should
+    represent a single source. Single-source-per-entry matches the
+    bibliographic convention used in the corpus.
+
+    Hosts are normalized via _normalize_host (lowercase, strip www.).
+    """
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self._depth_in_ref_li = 0
+        self._current_ref_num: int | None = None
+        self._current_ref_host: str | None = None  # locked once first URL seen
+        self.ref_hosts: dict[int, str] = {}
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag == "li":
+            ref_id = a.get("id", "")
+            if ref_id.startswith("ref-"):
+                try:
+                    n = int(ref_id[4:])
+                except ValueError:
+                    n = None
+                if n is not None:
+                    self._depth_in_ref_li = 1
+                    self._current_ref_num = n
+                    self._current_ref_host = None
+                    return
+            if self._depth_in_ref_li > 0:
+                self._depth_in_ref_li += 1
+        if self._depth_in_ref_li > 0 and tag == "a":
+            href = a.get("href", "")
+            if (
+                href.startswith(("http://", "https://"))
+                and self._current_ref_host is None
+            ):
+                m = re.match(r"^https?://([^/]+)", href)
+                if m:
+                    self._current_ref_host = _normalize_host(m.group(1))
+
+    def handle_endtag(self, tag):
+        if tag == "li" and self._depth_in_ref_li > 0:
+            self._depth_in_ref_li -= 1
+            if self._depth_in_ref_li == 0:
+                if self._current_ref_num is not None and self._current_ref_host:
+                    self.ref_hosts[self._current_ref_num] = self._current_ref_host
+                self._current_ref_num = None
+                self._current_ref_host = None
+
+
+def build_ref_host_map(body_html: str) -> dict[int, str]:
+    """Return {ref_num: normalized_host} for every URL-bearing ref-li in
+    the article. Ref entries without an http(s) URL (title-only refs)
+    are omitted. This map is the lookup table for the corroboration
+    gate: each cite marker `[^N]` resolves to a host via this map."""
+    c = _RefHostMapCollector()
+    c.feed(body_html)
+    return c.ref_hosts
+
+
 def _word_count(body_html: str) -> int:
     text = re.sub(r"<[^>]+>", " ", body_html)
     return len(text.split())
@@ -342,6 +415,446 @@ def cite_density(body_html: str) -> tuple[float, int, int]:
     return (cites / words) * 1000.0, cites, words
 
 
+# ---------------------------------------------------------------------------
+# Corroboration gate (--min-corroborating-sources).
+# ---------------------------------------------------------------------------
+#
+# A claim "cited at all" passes the existing cited-claims gate even when
+# its only source is wrong (the NBIS failure pattern: adjacent-but-wrong
+# numeric cite). The corroboration gate adds a SECOND-INDEPENDENT-SOURCE
+# requirement for substantive factual claims. Single-source claims must
+# be explicitly acknowledged via `==single-source: ...==` wrapping.
+#
+# Heuristics here are intentionally conservative:
+#   * "Substantive claim" = sentence with cite marker AND (digit OR
+#     percent OR dollar OR named-entity proxy). Same shape as
+#     cited_claim_share() — reuses the same sensitivity.
+#   * "Distinct sources" = distinct normalized hosts of the cited refs.
+#     A claim cited 3 times to the same host counts as 1 host.
+#   * "Single-source exemption" = the claim sentence is fully contained
+#     inside a `<mark class="ara-mark">…</mark>` region whose inner text
+#     begins with "single-source:" (case/whitespace tolerant). The agent
+#     opts in by wrapping the claim in `==single-source: claim text==`
+#     in the DSL.
+#
+# Sentence boundaries are approximate (regex split on .!?). Cite markers
+# at the END of a sentence belong to that sentence. A multi-cite cluster
+# `[^1][^2][^3]` at sentence end contributes refs 1, 2, 3 to that
+# sentence's host count.
+
+# Regex matches the rendered cite sup wrapper, capturing the ref number
+# so we can map back to its host. Multi-cite `[^1,2]` compiles to
+# adjacent <sup> elements so this finditer naturally yields each.
+_RENDERED_CITE_WITH_NUM_RE = re.compile(
+    r'<sup[^>]*>\s*<a[^>]*class="ara-cite"[^>]*href="#ref-([0-9]+)"[^>]*>'
+    r'[^<]*</a>\s*</sup>',
+    flags=re.IGNORECASE,
+)
+# Match <mark class="ara-mark">…</mark> regions; we don't depend on the
+# class because validate_body already restricts <mark> use to ara-mark.
+_MARK_REGION_RE = re.compile(
+    r"<mark[^>]*>(.*?)</mark>", flags=re.DOTALL | re.IGNORECASE
+)
+# Headings often look "substantive" after tag-strip ("Cerebras WSE-3
+# Pricing") because they're multi-word capitalized — but they rarely
+# carry citations, and when they do, the cite is for the section
+# topic, not a factual claim. Skip headings before sentence segmentation
+# so they can't contribute false-positive substantive sentences.
+_HEADING_STRIP_RE = re.compile(
+    r"<h[1-6][^>]*>.*?</h[1-6]>", flags=re.DOTALL | re.IGNORECASE
+)
+
+
+def _extract_mark_inner_texts(body_html: str) -> list[str]:
+    """Return the inner text of every `<mark>` region in the body,
+    with cite markers and HTML tags stripped and whitespace normalized.
+
+    Used to detect `==single-source: ...==` opt-out wrapping. The mark
+    region INCLUDES the prefix `single-source:` followed by the claim
+    text — both come from the same DSL `==…==` invocation that compiled
+    to one <mark> region.
+
+    Cite markers are stripped (rendered `<sup>…</sup>` -> nothing)
+    so the inner text matches the claim sentence extracted from the
+    body, which is also cite-stripped in _norm_for_match."""
+    out: list[str] = []
+    for m in _MARK_REGION_RE.finditer(body_html):
+        inner_raw = m.group(1)
+        # Strip cite-marker WRAPPERS first (while we still have full
+        # HTML) so the digit text inside `<sup><a>N</a></sup>` doesn't
+        # survive the tag strip.
+        inner_decited = _strip_cite_markers(inner_raw)
+        inner = re.sub(r"<[^>]+>", " ", inner_decited)
+        inner = re.sub(r"\s+", " ", inner).strip()
+        if inner:
+            out.append(inner)
+    return out
+
+
+_SINGLE_SOURCE_PREFIX = "single-source:"
+
+
+def _strip_single_source_prefix(s: str) -> str:
+    """Remove a leading `single-source:` (case-insensitive) from a
+    normalized text. Returns the original if no prefix present."""
+    if s.lower().startswith(_SINGLE_SOURCE_PREFIX):
+        return s[len(_SINGLE_SOURCE_PREFIX):].lstrip(" :;,-")
+    return s
+
+
+def _is_single_source_exempt(sentence_text: str, mark_inners: list[str]) -> bool:
+    """A sentence is exempt from corroboration when the agent explicitly
+    flagged it as single-sourced via `==single-source: ...==`.
+
+    The compiled HTML for that DSL form is
+        <mark class="ara-mark">single-source: <sentence body></mark>
+    The `single-source:` literal text appears in BOTH the mark inner
+    AND the sentence text extracted from the body (because tag-stripping
+    leaves the literal prose intact). So we strip the prefix from BOTH
+    sides before matching probe -> mark.
+
+    Match policy: case-insensitive prefix on "single-source:", and the
+    sentence's first ~60 substantive chars (after prefix strip) must
+    appear inside the mark region's content (after prefix strip).
+    Lenient enough to survive whitespace / cite-marker drift between
+    probe and rendered mark."""
+    if not mark_inners:
+        return False
+    probe = _norm_for_match(sentence_text)
+    probe = _strip_single_source_prefix(probe)
+    if not probe:
+        return False
+    probe_head = probe[:60]
+    for inner in mark_inners:
+        inner_l = inner.lower().strip()
+        if not inner_l.startswith(_SINGLE_SOURCE_PREFIX):
+            continue
+        # Strip the prefix and any leading punctuation from the mark
+        # body, then normalize for matching.
+        body_after_prefix = inner_l[len(_SINGLE_SOURCE_PREFIX):].lstrip(" :;,-")
+        body_after_prefix = _norm_for_match(body_after_prefix)
+        if probe_head and probe_head in body_after_prefix:
+            return True
+    return False
+
+
+def _norm_for_match(s: str) -> str:
+    """Normalize text for case/whitespace-tolerant probe matching.
+    Also strips citation markers (DSL `[^N]` and rendered `<sup>…</sup>`
+    forms) so a probe extracted from one form matches text from the
+    other. Returns lowercase, whitespace-collapsed, no cite-markers."""
+    s = _strip_cite_markers(s)
+    s = re.sub(r"<[^>]+>", " ", s)
+    s = re.sub(r"\s+", " ", s).strip().lower()
+    return s
+
+
+def _claim_sentences_with_refs(
+    body_html: str,
+) -> list[tuple[str, list[int]]]:
+    """Walk the article body, return [(sentence_text, [ref_nums...]), ...]
+    for every substantive sentence that carries at least one cite marker.
+
+    Algorithm:
+      1. Strip <h1..h6> regions — headings rarely carry meaningful
+         claims and their multi-word capitalized form would inflate
+         the substantive-sentence rate.
+      2. Replace each rendered cite sup with a sentinel that carries
+         the ref number so sentence segmentation preserves the
+         ref-to-sentence association.
+      3. Strip remaining HTML tags. Split on .!? boundaries.
+      4. For each sentence with a sentinel, check if it's substantive
+         (digit/percent/dollar/multi-word capitalized). Yield (text,
+         [ref nums extracted from sentinels]).
+    """
+    body = _HEADING_STRIP_RE.sub(" ", body_html)
+    # Sentinel: \x00C<num>\x00 — distinct from existing _CITE_MARKER
+    # and survives tag-strip + sentence-split intact.
+    def _cite_sub(m: re.Match) -> str:
+        return f" \x00C{m.group(1)}\x00 "
+    marked = _RENDERED_CITE_WITH_NUM_RE.sub(_cite_sub, body)
+    text = re.sub(r"<[^>]+>", " ", marked)
+    sentinel_re = re.compile(r"\x00C([0-9]+)\x00")
+    sents = _SENT_SPLIT.split(text)
+    out: list[tuple[str, list[int]]] = []
+    for s in sents:
+        if not s.strip():
+            continue
+        nums = [int(n) for n in sentinel_re.findall(s)]
+        if not nums:
+            continue
+        # Strip sentinels before substantive-check so the cite digits
+        # don't make every cited sentence look "substantive."
+        clean = sentinel_re.sub(" ", s)
+        is_subs = (
+            any(c.isdigit() for c in clean)
+            or "%" in clean
+            or "$" in clean
+            or bool(_SUBSTANTIVE_NE.search(clean))
+        )
+        if is_subs:
+            out.append((clean.strip(), nums))
+    return out
+
+
+def corroboration_audit(
+    body_html: str, min_hosts: int
+) -> tuple[list[dict], int]:
+    """Return (failing_claims, total_claims).
+
+    Each failing_claims entry: {"text": str, "ref_nums": [int],
+                                "hosts": [str], "distinct_hosts": int}
+    Total_claims = number of substantive cited sentences considered
+    (NOT count of failures). Useful for the "X of Y claims pass" report."""
+    if min_hosts < 1:
+        raise ValueError(f"min_hosts must be >= 1, got {min_hosts}")
+    ref_hosts = build_ref_host_map(body_html)
+    mark_inners = _extract_mark_inner_texts(body_html)
+    claims = _claim_sentences_with_refs(body_html)
+    failing: list[dict] = []
+    for text, nums in claims:
+        hosts: list[str] = []
+        for n in nums:
+            h = ref_hosts.get(n)
+            if h:
+                hosts.append(h)
+        distinct = sorted(set(hosts))
+        if len(distinct) >= min_hosts:
+            continue
+        # Below threshold — check single-source exemption.
+        if _is_single_source_exempt(text, mark_inners):
+            continue
+        failing.append({
+            "text": text,
+            "ref_nums": nums,
+            "hosts": distinct,
+            "distinct_hosts": len(distinct),
+        })
+    return failing, len(claims)
+
+
+# ---------------------------------------------------------------------------
+# Quantitative sanity (--qsanity) — heuristic numeric implausibility scan.
+# ---------------------------------------------------------------------------
+#
+# v1 is intentionally NARROW and WARN-ONLY. Each pattern targets a
+# common implausibility shape that's caused real article rework:
+#   1. :::donut percentages summing > 105% (compiled to ara-donut-*)
+#   2. Single-entity market share > 100%
+#   3. YoY growth claims > 1000%
+#   4. Future dates more than 10 years out (warn — forecasts are legitimate
+#      but typo'd years are common; warning encourages a sanity look)
+#
+# Patterns NOT shipped in v1 (high false-positive risk per spec):
+#   - Revenue-per-employee ratio (requires proximity pairing; FP risk on
+#     early-stage SaaS with intentionally lean teams)
+#   - P/S valuation/revenue ratio (same problem)
+#   - Compute-claim plausibility tables (needs per-accelerator domain
+#     encoding the spec admits is hard)
+#
+# All hits are stderr warnings — exit status unchanged. Once we have
+# precision data from a few hundred runs, individual patterns may be
+# promoted to hard-fail. Documented as such in CLI help.
+
+_QSANITY_FUTURE_YEAR_HORIZON = 10  # years past current — beyond this is flagged
+_QSANITY_DONUT_SUM_LIMIT = 105.0   # percent; rounding tolerance
+_QSANITY_MARKET_SHARE_LIMIT = 100.0
+_QSANITY_YOY_LIMIT = 1000.0
+
+
+def _qsanity_donut_sums(body_html: str) -> list[str]:
+    """For each `<div class="ara-donut">` block (or legacy `<ul>` form),
+    sum the slice values and flag if the sum exceeds 105% (rounding
+    tolerance).
+
+    Compiler emits donuts as `<div class="ara-donut" data-labels="A,B,C"
+    data-values="80,50,45"></div>` — see emit_donut() in compile_ara.py.
+    Earlier draft of this helper matched `<ul>` with `<li data-pct>`,
+    which never fires in production (caught by codex review). Both
+    shapes are supported here so hand-authored `:::raw` donut markup
+    (if anyone ever writes it) is also scanned.
+
+    A sum of 175 is the textbook implausibility — either the agent
+    listed overlapping categories or hallucinated values that don't
+    share a denominator.
+
+    Known false-positive class: donuts used for COMPARATIVE MAGNITUDE
+    rather than percentage share. Example surfaced by corpus scan:
+    home-inference-rack article uses a donut to compare $/M-tokens
+    pricing across models ($180, $30, $25, $18) — the sum (253) has
+    no meaning. v1 ships warn-only specifically so authors can ignore
+    these legitimate non-share donuts. If a future iteration wants to
+    hard-fail on donut sum, also require `data-pct` semantics in the
+    DSL (e.g., introduce a `:::pct-donut` directive) so the gate has
+    explicit consent to treat slices as shares."""
+    warns: list[str] = []
+    donut_index = 0
+
+    # Primary shape: <div class="ara-donut" data-values="80,50,45"></div>
+    # Self-closing divs would be unusual but the compiler emits them with
+    # an explicit closing tag, so this regex matches either form.
+    for m in re.finditer(
+        r'<div[^>]*class="ara-donut[^"]*"([^>]*)>(?:.*?</div>)?',
+        body_html, flags=re.DOTALL | re.IGNORECASE,
+    ):
+        donut_index += 1
+        attrs = m.group(1)
+        values_match = re.search(
+            r'data-values="([0-9.,\s-]+)"', attrs
+        )
+        if not values_match:
+            continue
+        raw_values = values_match.group(1)
+        nums: list[float] = []
+        for part in raw_values.split(","):
+            part = part.strip()
+            if not part:
+                continue
+            try:
+                nums.append(float(part))
+            except ValueError:
+                # Non-numeric token — skip the donut rather than warn
+                # on parse error. validate_body would have already
+                # rejected an article with truly malformed data-values.
+                nums = []
+                break
+        if not nums:
+            continue
+        total = sum(nums)
+        if total > _QSANITY_DONUT_SUM_LIMIT:
+            warns.append(
+                f"qsanity: :::donut #{donut_index} values sum to {total:.1f}% "
+                f"({len(nums)} slices) — exceeds {_QSANITY_DONUT_SUM_LIMIT:.0f}% "
+                f"tolerance. Donuts represent slices of one whole; "
+                f"if the categories overlap, use :::bars or :::rank-list "
+                f"instead. Recheck the values for hallucinated digits."
+            )
+
+    # Legacy / hand-authored shape: <ul class="ara-donut">
+    # <li data-pct="N">label</li>... </ul>. Kept for compatibility
+    # with any article authored via :::raw that hand-rolls a donut.
+    for block in re.findall(
+        r'<ul[^>]*class="ara-donut[^"]*"[^>]*>(.*?)</ul>',
+        body_html, flags=re.DOTALL | re.IGNORECASE,
+    ):
+        pcts = re.findall(r'data-pct="([0-9]+(?:\.[0-9]+)?)"', block)
+        if not pcts:
+            continue
+        donut_index += 1
+        total = sum(float(p) for p in pcts)
+        if total > _QSANITY_DONUT_SUM_LIMIT:
+            warns.append(
+                f"qsanity: :::donut #{donut_index} percentages sum to {total:.1f}% "
+                f"({len(pcts)} slices) — exceeds {_QSANITY_DONUT_SUM_LIMIT:.0f}% "
+                f"tolerance. Donuts represent slices of one whole; "
+                f"if the categories overlap, use :::bars or :::rank-list "
+                f"instead. Recheck the values for hallucinated digits."
+            )
+    return warns
+
+
+def _qsanity_text_only(body_html: str) -> str:
+    """Return body text with HTML stripped. Helper for prose-pattern
+    scans that don't depend on HTML structure."""
+    # Strip cite markers first so "[citing 12.5%]" type artifacts don't
+    # confuse the number extractors.
+    s = re.sub(r"<[^>]+>", " ", body_html)
+    return re.sub(r"\s+", " ", s)
+
+
+def _qsanity_market_share_over_100(body_html: str) -> list[str]:
+    """Flag any prose mention of "N% market share" / "N% of the market"
+    where N > 100. Single-entity market share > 100% is impossible; a
+    hit is almost certainly a digit-transposition (75% → 175%) or a
+    units error (basis points / total addressable confusion)."""
+    warns: list[str] = []
+    text = _qsanity_text_only(body_html)
+    # Capture the immediate context (up to 80 chars) for the warning.
+    pattern = re.compile(
+        r'\b(\d{2,3}(?:\.\d+)?)\s*%\s*(?:market\s+share|of\s+the\s+market)',
+        flags=re.IGNORECASE,
+    )
+    for m in pattern.finditer(text):
+        val = float(m.group(1))
+        if val > _QSANITY_MARKET_SHARE_LIMIT:
+            # Snip a small window around the match for context
+            start = max(0, m.start() - 30)
+            end = min(len(text), m.end() + 30)
+            context = text[start:end].strip()
+            warns.append(
+                f"qsanity: market share {val:.1f}% > "
+                f"{_QSANITY_MARKET_SHARE_LIMIT:.0f}% (impossible) "
+                f"near: …{context}…"
+            )
+    return warns
+
+
+def _qsanity_yoy_growth(body_html: str) -> list[str]:
+    """Flag YoY growth claims > _QSANITY_YOY_LIMIT (default 1000%).
+    Hit shape: `\\d+%\\s+(YoY|year-over-year|year over year)`.
+
+    Genuine 1000%+ YoY growth exists (low base effects in startups)
+    but is rare enough to deserve a sanity check. Pattern is permissive
+    on YoY phrasing variants but conservative on the number itself
+    (only 4+ digit percentages flagged)."""
+    warns: list[str] = []
+    text = _qsanity_text_only(body_html)
+    pattern = re.compile(
+        r'\b(\d{4,}(?:\.\d+)?)\s*%\s*(?:YoY|year[-\s]over[-\s]year)',
+        flags=re.IGNORECASE,
+    )
+    for m in pattern.finditer(text):
+        val = float(m.group(1))
+        if val > _QSANITY_YOY_LIMIT:
+            start = max(0, m.start() - 30)
+            end = min(len(text), m.end() + 30)
+            context = text[start:end].strip()
+            warns.append(
+                f"qsanity: YoY growth {val:.0f}% > "
+                f"{_QSANITY_YOY_LIMIT:.0f}% (extreme — verify it's not a "
+                f"digit-shift error) near: …{context}…"
+            )
+    return warns
+
+
+def _qsanity_future_dates(body_html: str, current_year: int) -> list[str]:
+    """Flag any 4-digit year > current_year + horizon. Forecasts and
+    long-horizon timelines are legitimate; the warning's job is to
+    surface them for sanity check, not to block. Excludes years
+    inside well-known patent / patent-app number contexts (rare)."""
+    warns: list[str] = []
+    text = _qsanity_text_only(body_html)
+    # Find 4-digit numbers in 19XX-21XX range — covers all plausible
+    # year mentions without flagging stray 4-digit identifiers.
+    pattern = re.compile(r'\b(19\d{2}|20\d{2}|21\d{2})\b')
+    horizon = current_year + _QSANITY_FUTURE_YEAR_HORIZON
+    flagged_years: set[int] = set()
+    for m in pattern.finditer(text):
+        y = int(m.group(1))
+        if y > horizon and y not in flagged_years:
+            flagged_years.add(y)
+            warns.append(
+                f"qsanity: year {y} appears in body — more than "
+                f"{_QSANITY_FUTURE_YEAR_HORIZON} years past current "
+                f"({current_year}). Forecast / timeline context is "
+                f"fine; verify it's not a typo."
+            )
+    return warns
+
+
+def qsanity_scan(body_html: str, current_year: int) -> list[str]:
+    """Run all qsanity patterns. Returns the combined warning list.
+
+    Each pattern is independent — adding a new one means writing
+    another `_qsanity_*` function and appending its return value."""
+    warns: list[str] = []
+    warns.extend(_qsanity_donut_sums(body_html))
+    warns.extend(_qsanity_market_share_over_100(body_html))
+    warns.extend(_qsanity_yoy_growth(body_html))
+    warns.extend(_qsanity_future_dates(body_html, current_year))
+    return warns
+
+
 def enforce_quality(body_html: str, args: argparse.Namespace) -> list[str]:
     """Return a list of quality-gate failure messages. Empty = pass.
     Only the flags that were explicitly set are checked."""
@@ -407,6 +920,32 @@ def enforce_quality(body_html: str, args: argparse.Namespace) -> list[str]:
                 f"may inflate the denominator; consider raising the "
                 f"threshold once measured."
             )
+
+    if getattr(args, "min_corroborating_sources", None) is not None:
+        n = args.min_corroborating_sources
+        failing, total = corroboration_audit(body_html, n)
+        if failing:
+            lines = [
+                f"quality: {len(failing)} of {total} substantive cited "
+                f"claim(s) lack {n} distinct source host(s). Each claim "
+                f"below needs an additional source from a different "
+                f"publisher, or wrap the sentence in "
+                f"`==single-source: claim text==` to acknowledge the "
+                f"single-source citation (which compiles to <mark>):",
+            ]
+            for f in failing[:8]:
+                preview = f["text"][:120]
+                if len(f["text"]) > 120:
+                    preview += "…"
+                hosts_str = ", ".join(f["hosts"]) if f["hosts"] else "(no resolvable host)"
+                lines.append(
+                    f"  - cites=[{','.join(str(r) for r in f['ref_nums'])}] "
+                    f"hosts={hosts_str} "
+                    f"distinct_hosts={f['distinct_hosts']}: {preview!r}"
+                )
+            if len(failing) > 8:
+                lines.append(f"  ... and {len(failing) - 8} more failing claim(s)")
+            errors.append("\n".join(lines))
 
     return errors
 
@@ -713,6 +1252,39 @@ def main(argv: list[str] | None = None) -> int:
             "into the build gate."
         ),
     )
+    p.add_argument(
+        "--min-corroborating-sources",
+        type=int,
+        default=None,
+        metavar="INT",
+        help=(
+            "fail if any substantive cited claim is supported by fewer "
+            "than INT DISTINCT source HOSTS. A claim sentence is "
+            "'substantive' if it carries a cite marker AND contains "
+            "a digit / percent / dollar / multi-word capitalized phrase. "
+            "Hosts are extracted from the first URL in each `<li id=\"ref-N\">` "
+            "entry. To explicitly acknowledge a single-source claim, "
+            "wrap the sentence as `==single-source: claim text==` in the "
+            "DSL (compiles to <mark class=\"ara-mark\">), and the gate "
+            "exempts it. Default off (opt-in); recommended workflow "
+            "value once calibrated: 2. Heuristic — see "
+            "corroboration_audit() docstring for caveats."
+        ),
+    )
+    p.add_argument(
+        "--qsanity",
+        action="store_true",
+        help=(
+            "scan the article for implausible numeric patterns and "
+            "print warnings to stderr. WARN-ONLY (does not fail the "
+            "build) in v1 — heuristics are conservative but can have "
+            "false positives. Patterns checked: :::donut percentage "
+            "sums above 105, single-entity market share above 100, "
+            "YoY growth above 1000, dates more than 10 years past "
+            "current. Documented patterns may be promoted to hard-fail "
+            "in future revisions once precision is established."
+        ),
+    )
     # Verifier-findings audit mode. When this flag is set we skip
     # validate_body / design / quality gates and instead audit the
     # body against the verifier sub-agent's JSON artifact. The
@@ -826,6 +1398,7 @@ def main(argv: list[str] | None = None) -> int:
             args.refs_min,
             args.primary_share_min,
             args.cited_claims_min,
+            args.min_corroborating_sources,
         )
     ):
         errors = enforce_quality(body, args)
@@ -847,6 +1420,25 @@ def main(argv: list[str] | None = None) -> int:
     if args.kind == KIND_FRAGMENT and args.strict_shape:
         for line in soft_warnings(body):
             print(line, file=sys.stderr)
+
+    # Quantitative-sanity scan (--qsanity). Warn-only in v1: each
+    # heuristic prints to stderr but exit status is unchanged. See
+    # qsanity_scan() and the _qsanity_* helpers for the pattern set
+    # and the rationale for each. Promotion to hard-fail is deferred
+    # until per-pattern precision is established by running the scan
+    # against the historical corpus and inspecting false positives.
+    if args.kind == KIND_FRAGMENT and args.qsanity:
+        from datetime import datetime, timezone
+        cy = datetime.now(timezone.utc).year
+        qwarns = qsanity_scan(body, cy)
+        for line in qwarns:
+            print(line, file=sys.stderr)
+        if qwarns:
+            print(
+                f"qsanity: {len(qwarns)} warning(s) — review each; not "
+                "blocking the build.",
+                file=sys.stderr,
+            )
 
     size = len(body.encode("utf-8"))
     src = "compiled from DSL" if is_dsl else "raw HTML"

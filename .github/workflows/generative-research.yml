@@ -1308,18 +1308,28 @@ jobs:
                     (previously prose-only; corpus audit found 4
                     historical articles shipped with zero citations).
                     --strict-shape adds soft warnings on percentages-
-                    without-viz (advisory, doesn't block):
+                    without-viz (advisory, doesn't block).
+                    --qsanity scans for numeric implausibility shapes
+                    (donut sums > 105%, market share > 100%, YoY > 1000%,
+                    far-future date typos) — warn-only in v1, never
+                    blocks. Useful for catching NBIS-class numeric
+                    hallucinations the citation gates don't see:
 
                       python3 scripts/check_generative_research.py \
                         "$GEN_DRAFT" \
                         --diversity-min 3 --callout-max 5 \
                         --cite-density-min 10 --refs-min 20 \
+                        --qsanity \
                         --strict-shape
 
                  c. Exit 0 → proceed to step 8. Soft warnings printed
                     on stderr are advisory — read them and consider
                     whether the flagged section would read better
-                    with a viz, but they don't block.
+                    with a viz, but they don't block. qsanity warnings
+                    are similarly advisory — verify each one is
+                    correct before ignoring (a single typo'd year /
+                    digit-shifted percentage is the kind of failure
+                    the verifier can miss).
                     Exit 1 → the stderr lists every DSL grammar
                     error, invalid class/tag, design-gate violation,
                     OR research-quality gate violation. Fix the body
@@ -1367,6 +1377,7 @@ jobs:
                     --prompt "$(cat .gen-input/prompt.txt)" \
                     --model claude-opus-4-7 \
                     --cite-density-min 10 --refs-min 20 \
+                    --qsanity \
                     --html-body "$GEN_DRAFT"
 
                If $GEN_SLUG is empty, OMIT the --slug flag entirely (do
@@ -1378,6 +1389,7 @@ jobs:
                     --prompt "$(cat .gen-input/prompt.txt)" \
                     --model claude-opus-4-7 \
                     --cite-density-min 10 --refs-min 20 \
+                    --qsanity \
                     --html-body "$GEN_DRAFT"
 
             CONSTRAINTS:
@@ -2329,18 +2341,28 @@ jobs:
                     (previously prose-only; corpus audit found 4
                     historical articles shipped with zero citations).
                     --strict-shape adds soft warnings on percentages-
-                    without-viz (advisory, doesn't block):
+                    without-viz (advisory, doesn't block).
+                    --qsanity scans for numeric implausibility shapes
+                    (donut sums > 105%, market share > 100%, YoY > 1000%,
+                    far-future date typos) — warn-only in v1, never
+                    blocks. Useful for catching NBIS-class numeric
+                    hallucinations the citation gates don't see:
 
                       python3 scripts/check_generative_research.py \
                         "$GEN_DRAFT" \
                         --diversity-min 3 --callout-max 5 \
                         --cite-density-min 10 --refs-min 20 \
+                        --qsanity \
                         --strict-shape
 
                  c. Exit 0 → proceed to step 8. Soft warnings printed
                     on stderr are advisory — read them and consider
                     whether the flagged section would read better
-                    with a viz, but they don't block.
+                    with a viz, but they don't block. qsanity warnings
+                    are similarly advisory — verify each one is
+                    correct before ignoring (a single typo'd year /
+                    digit-shifted percentage is the kind of failure
+                    the verifier can miss).
                     Exit 1 → the stderr lists every DSL grammar
                     error, invalid class/tag, design-gate violation,
                     OR research-quality gate violation. Fix the body
@@ -2388,6 +2410,7 @@ jobs:
                     --prompt "$(cat .gen-input/prompt.txt)" \
                     --model deepseek-v4-pro \
                     --cite-density-min 10 --refs-min 20 \
+                    --qsanity \
                     --html-body "$GEN_DRAFT"
 
                If $GEN_SLUG is empty, OMIT the --slug flag entirely (do
@@ -2399,6 +2422,7 @@ jobs:
                     --prompt "$(cat .gen-input/prompt.txt)" \
                     --model deepseek-v4-pro \
                     --cite-density-min 10 --refs-min 20 \
+                    --qsanity \
                     --html-body "$GEN_DRAFT"
 
             CONSTRAINTS:

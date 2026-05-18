@@ -629,6 +629,35 @@ def main(argv: list[str] | None = None) -> int:
         metavar="FLOAT",
         help="fail commit if < FLOAT (0-1) of substantive sentences carry a cite",
     )
+    # Corroboration gate (--min-corroborating-sources). Mirrors the same flag
+    # in scripts/check_generative_research.py. Opt-in only — corpus calibration
+    # showed default N=2 would block legitimate articles, so workflow default
+    # does NOT pass this flag. Provided here so local invocations / future
+    # workflow tightening can use it.
+    p.add_argument(
+        "--min-corroborating-sources",
+        type=int,
+        default=None,
+        metavar="INT",
+        help=(
+            "fail commit if any substantive cited claim is supported by "
+            "fewer than INT distinct source hosts. Single-source claims "
+            "may opt out via `==single-source: claim text==` wrapping "
+            "in the DSL. Opt-in only — not yet on by default."
+        ),
+    )
+    # qsanity scan (--qsanity). Mirrors the same flag in
+    # scripts/check_generative_research.py. Warn-only in v1; passes through
+    # to the check at validation time so the commit reflects the same
+    # warnings the agent would have seen.
+    p.add_argument(
+        "--qsanity",
+        action="store_true",
+        help=(
+            "warn-only quantitative-sanity scan; prints to stderr "
+            "without failing the commit. See scripts/check_generative_research.py."
+        ),
+    )
     args = p.parse_args(argv)
 
     repo = Path(args.repo_root).resolve()
@@ -658,6 +687,7 @@ def main(argv: list[str] | None = None) -> int:
             args.refs_min,
             args.primary_share_min,
             args.cited_claims_min,
+            args.min_corroborating_sources,
         )
     ):
         # Defer import so the writer has no hard dependency on the check
@@ -673,6 +703,16 @@ def main(argv: list[str] | None = None) -> int:
             for line in errs:
                 print(f"  - {line}", file=sys.stderr)
             raise SystemExit(1)
+
+    # qsanity warn-only scan. Same opt-in flag as check_generative_research.
+    # Printed at commit time so authors see exactly the warnings the
+    # check would have emitted, even if the agent skipped the local
+    # compile-check step. Never fails the commit in v1.
+    if args.kind == KIND_FRAGMENT and args.qsanity:
+        from check_generative_research import qsanity_scan  # noqa: E402
+        cy = datetime.now(timezone.utc).year
+        for line in qsanity_scan(body, cy):
+            print(f"  - {line}", file=sys.stderr)
 
     if not body.endswith("\n"):
         body += "\n"
