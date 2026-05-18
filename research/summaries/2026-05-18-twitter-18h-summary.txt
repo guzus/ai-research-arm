@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-18 18:48 UTC
+
+CYCLE: Musk loses OpenAI lawsuit; Anthropic buys Stainless; Cursor ships Composer 2.5 + SpaceXAI Colossus 2 partnership.
+
+TOP STORIES:
+• Musk v. OpenAI VERDICT — Oakland jury unanimously dismisses all 3 counts as time-barred in ~2h; appeal preserved; sama breaks 71h silence 8min later with ChatGPT post, NOT verdict [✓]
+• @AnthropicAI confirms Stainless acquisition (~$300M); first corp post in ~95h; owns SDK+MCP tooling used by OpenAI, Google AND Anthropic [✓]
+• Cursor Composer 2.5 ships (Kimi K2.5 base, claims Opus-4.7-tier @ 10x cost efficiency); SpaceXAI next-gen 10x more compute on Colossus 2; Elon RT'd [⚠ bench]
+
+WATCH: Google I/O keynote ~18h; NVIDIA Q1 earnings Wed AM.
+
+Full update on GitHub.
