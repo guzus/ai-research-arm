@@ -496,40 +496,18 @@ jobs:
       # is treated as a HARD FAILURE here. Previously this step swallowed
       # push errors (auth, non-fast-forward, network) and let downstream
       # Hooker/Telegram steps notify users about content that never
-      # actually landed on main. `git push` exits 0 when there's nothing
-      # to push, so the no-op case still leaves `pushed=false` without
-      # erroring. Real push errors now propagate.
+      # actually landed on main. The shared safe-push action handles
+      # concurrent main writers with the same rebase/retry behavior used by
+      # the other scheduled publishers.
       - name: Push changes
         if: >-
           steps.backend.outputs.skip != 'true'
           && !(github.event_name == 'workflow_dispatch' && steps.backend.outputs.name == 'claude' && inputs.dry_run == true)
         id: push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
-
-          # Other workflows commit to main on different paths between
-          # our checkout and now; rebase so this push is fast-forward.
-          # Token is already on the remote URL above so auth works.
-          git pull --rebase || { git rebase --abort 2>/dev/null || true; exit 1; }
-
-          # Capture HEAD before push so we can tell "no commits to push"
-          # (model wrote nothing this cycle, pushed=false, step still
-          # succeeds) from "push failed" (pushed=false, step errors).
-          PRE_HEAD=$(git rev-parse HEAD)
-          UPSTREAM_HEAD=$(git rev-parse '@{u}' 2>/dev/null || echo "")
-
-          if [ "$PRE_HEAD" = "$UPSTREAM_HEAD" ]; then
-            echo "pushed=false" >> "$GITHUB_OUTPUT"
-            echo "Nothing to push — HEAD matches upstream"
-            exit 0
-          fi
-
-          # Real push — failure is fatal (no false-positive notifications).
-          git push
-          echo "pushed=true" >> "$GITHUB_OUTPUT"
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          noop-pushed: 'false'
 
       # ── Vercel deploy hook (claude tier only) ──────────────────────
       # Vercel's GitHub App webhook should fire on bot pushes too, but
