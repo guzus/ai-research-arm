@@ -363,13 +363,16 @@ jobs:
 
             Be thorough and practical. Focus on actionable insights that help solve the user's question.
 
+      # Use the shared safe-push composite action (post-PR-#58 algorithm):
+      # stash any leftover working-tree state before rebasing, so the
+      # rebase cannot fail to start with "cannot rebase: You have unstaged
+      # changes". Push failures now propagate (previously silently swallowed
+      # by `git push || echo "Nothing to push"`).
+      # See .github/actions/safe-push/action.yml.
       - name: Push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          git pull --rebase || true
-          git push || echo "Nothing to push"
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Read research report
         id: report

@@ -1,0 +1,256 @@
+name: Safe push
+description: >
+  Safely push the current branch's commits to a remote target branch, with
+  per-attempt stash + rebase + push retry loop. Stashes any leftover
+  working-tree state (tracked OR untracked) BEFORE rebasing so the rebase
+  cannot fail to start with "cannot rebase: You have unstaged changes".
+  Distinguishes "rebase paused on conflicts" from "rebase failed to start"
+  so operators get an honest diagnostic instead of a false-positive
+  "Unhandleable conflict" message.
+
+  Faithful port of the post-PR-#58 push step from
+  .github/workflows/generative-research.yml. The algorithm, helpers, and
+  diagnostics are the same; only the JSON-merge auto-resolution path is
+  gated behind an opt-in input because non-generative writers do not write
+  to research/generative/index.json.
+
+  Outputs `pushed=true` on a successful push attempt (no-op pushes — where
+  HEAD already matches the remote — also count as success and emit
+  `pushed=true`, matching the prior behavior of consumers that gated
+  downstream notifications on this output).
+
+inputs:
+  branch:
+    description: Target branch to push to. Defaults to main.
+    required: false
+    default: 'main'
+  max-attempts:
+    description: Maximum number of fetch+rebase+push attempts before giving up.
+    required: false
+    default: '5'
+  index-merge:
+    description: >
+      If 'true', attempt union-by-slug JSON merge on conflicts limited to
+      research/generative/index.json. Any other conflicted path still hard-
+      fails. Defaults to 'false' — only generative-research.yml should
+      enable this.
+    required: false
+    default: 'false'
+  allow-divergent-ref:
+    description: >
+      If 'true', skip the safety check that the workflow's trigger ref
+      (github.ref_name) matches the target branch. Default 'false' refuses
+      to push when the workflow was launched (typically via workflow_dispatch)
+      from a non-default branch, because pushing HEAD:<branch> would land
+      that feature branch's commits onto <branch>. Opt in only for
+      workflows that genuinely need to publish from a non-default ref.
+    required: false
+    default: 'false'
+  github-token:
+    description: GITHUB_TOKEN used to set the authenticated origin URL.
+    required: true
+
+outputs:
+  pushed:
+    description: 'true if the push succeeded (including no-op pushes); empty otherwise.'
+    value: ${{ steps.do-push.outputs.pushed }}
+
+runs:
+  using: composite
+  steps:
+    - name: Safe push (stash + rebase + retry)
+      id: do-push
+      shell: bash
+      env:
+        SAFE_PUSH_GITHUB_TOKEN: ${{ inputs.github-token }}
+        SAFE_PUSH_BRANCH: ${{ inputs.branch }}
+        SAFE_PUSH_MAX_ATTEMPTS: ${{ inputs.max-attempts }}
+        SAFE_PUSH_INDEX_MERGE: ${{ inputs.index-merge }}
+        SAFE_PUSH_REPOSITORY: ${{ github.repository }}
+        SAFE_PUSH_REF_NAME: ${{ github.ref_name }}
+        SAFE_PUSH_ALLOW_DIVERGENT_REF: ${{ inputs.allow-divergent-ref }}
+      run: |
+        set -euo pipefail
+
+        BRANCH="${SAFE_PUSH_BRANCH}"
+        MAX_ATTEMPTS="${SAFE_PUSH_MAX_ATTEMPTS}"
+        INDEX_MERGE="${SAFE_PUSH_INDEX_MERGE}"
+
+        # Safety: refuse to push if the workflow's trigger ref doesn't match
+        # the target branch. Without this check, a workflow_dispatch run
+        # launched from a feature branch — actions/checkout defaults to
+        # github.ref, so the checked-out HEAD is the feature branch — would
+        # rebase that feature branch onto $BRANCH and push it as HEAD:$BRANCH,
+        # silently landing unreviewed commits on the default branch.
+        # Cron triggers always run against the repo's default branch, so this
+        # check is a no-op for the common (scheduled-publisher) case.
+        if [ "${SAFE_PUSH_REF_NAME}" != "${BRANCH}" ] \
+            && [ "${SAFE_PUSH_ALLOW_DIVERGENT_REF}" != "true" ]; then
+          echo "::error::Refusing to push from ref '${SAFE_PUSH_REF_NAME}' to '${BRANCH}'. Likely a workflow_dispatch run launched from a non-default ref — pushing now would land that ref's commits onto ${BRANCH}. If this is intentional (e.g. a release workflow that publishes from a non-default ref), set 'allow-divergent-ref: true' on the safe-push action call."
+          exit 1
+        fi
+
+        git remote set-url origin "https://x-access-token:${SAFE_PUSH_GITHUB_TOKEN}@github.com/${SAFE_PUSH_REPOSITORY}.git"
+
+        # Concurrent writers can land on $BRANCH while this job runs. Retry
+        # the fetch+rebase+push loop a few times; each iteration stashes
+        # leftover working-tree state so the rebase can always start.
+        #
+        # JSON-array index auto-merge (research/generative/index.json) is
+        # gated by INDEX_MERGE. When disabled, any conflicted path — even
+        # research/generative/index.json — hard-fails. Only the generative-
+        # research workflow opts in.
+
+        merge_index_json() {
+          local path="$1"
+          echo "Auto-merging $path (union by slug)"
+          local ours theirs
+          ours=$(mktemp); theirs=$(mktemp)
+          git show ":2:$path" > "$ours"
+          git show ":3:$path" > "$theirs"
+          jq -s '
+            (.[0] + .[1])
+            | unique_by(.slug)
+            | sort_by(.created_at)
+          ' "$ours" "$theirs" > "$path"
+          rm -f "$ours" "$theirs"
+          git add "$path"
+        }
+
+        ATTEMPTS=0
+        while [ "$ATTEMPTS" -lt "$MAX_ATTEMPTS" ]; do
+          ATTEMPTS=$((ATTEMPTS + 1))
+          echo "::group::push attempt $ATTEMPTS / $MAX_ATTEMPTS"
+
+          git fetch origin "$BRANCH"
+
+          # Stash any leftover working-tree state (tracked modifications
+          # OR untracked artifacts) that would otherwise make `git rebase`
+          # refuse to start with "cannot rebase: You have unstaged
+          # changes". We don't try to trace the source — anything dirty
+          # here is incidental to the writer's commit and unrelated to
+          # publishing it.
+          #
+          # Per-attempt stash: if push fails and we loop, the next
+          # iteration's pre-check will re-stash whatever the pop
+          # reintroduced. The stash message includes the attempt number
+          # so a dangling stash (max-attempts exhaustion) is debuggable.
+          STASHED=false
+          if ! git diff --quiet \
+              || ! git diff --cached --quiet \
+              || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+            if git stash push --include-untracked --quiet \
+                -m "push-retry-stash-attempt-$ATTEMPTS"; then
+              STASHED=true
+            else
+              # Defensive: pre-check said dirty but stash push failed
+              # (unusual repo state). Don't crash the loop under
+              # `set -e`; rebase will fail loudly below with the
+              # actual problem.
+              echo "::warning::pre-rebase stash push failed; proceeding without stash"
+            fi
+          fi
+
+          # Stash cleanup helpers, used on both happy and unhappy paths.
+          # Pop must succeed before we push: a popped-but-conflicted
+          # stash leaves unmerged markers in the working tree and a
+          # silent push of the writer's commit would drop whatever
+          # tracked state was in the stash. Drop is for hard-fail
+          # exits where we'd otherwise leak a named stash onto the
+          # self-hosted runner (stash content is incidental artifacts;
+          # we log it before dropping for operator visibility).
+          pop_stash_or_fail() {
+            if [ "$STASHED" != "true" ]; then return 0; fi
+            if git stash pop --quiet; then
+              STASHED=false
+              return 0
+            fi
+            echo "::error::stash pop conflicted after rebase; refusing to push (working tree has unmerged content)"
+            git status --short || true
+            echo "Stash entries left on runner:"
+            git stash list | head -3 || true
+            exit 1
+          }
+          drop_stash_if_any() {
+            if [ "$STASHED" != "true" ]; then return 0; fi
+            echo "Dropping stashed pre-rebase state (hard-fail path):"
+            git stash list | head -3 || true
+            git stash drop --quiet || true
+            STASHED=false
+          }
+
+          if git -c core.editor=true rebase "origin/$BRANCH"; then
+            # Rebase clean. Restore the pre-rebase state before push so
+            # the working tree matches what the writer intended. If
+            # pop conflicts we hard-fail rather than push a commit
+            # that excludes potentially-meaningful stashed state.
+            pop_stash_or_fail
+          elif [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+            # Rebase actually started and paused on conflicts. The only
+            # path we know how to safely auto-resolve is the JSON-array
+            # index file research/generative/index.json, and only when
+            # INDEX_MERGE is opted in.
+            CONFLICTED=$(git diff --name-only --diff-filter=U | sort -u)
+            echo "Conflicted paths:"
+            echo "$CONFLICTED"
+            if [ -z "$CONFLICTED" ]; then
+              # Shouldn't happen: rebase dir exists but no conflicts.
+              # Bail safely and let the retry loop try again rather
+              # than hard-fail on a transient state. Pop best-effort
+              # here — we're going to re-stash on the next iteration's
+              # pre-check anyway.
+              echo "::warning::rebase in progress but no conflicts detected; aborting and retrying"
+              git rebase --abort 2>/dev/null || true
+              if [ "$STASHED" = "true" ]; then
+                git stash pop --quiet || \
+                  echo "::warning::stash pop conflicted in retry path; stash left in place"
+                STASHED=false
+              fi
+              echo "::endgroup::"
+              sleep $((2 * ATTEMPTS))
+              continue
+            fi
+            if [ "$INDEX_MERGE" = "true" ] \
+                && [ "$CONFLICTED" = "research/generative/index.json" ]; then
+              merge_index_json "research/generative/index.json"
+              if ! git -c core.editor=true rebase --continue; then
+                echo "::error::rebase --continue failed even after JSON merge"
+                git rebase --abort 2>/dev/null || true
+                drop_stash_if_any
+                exit 1
+              fi
+              pop_stash_or_fail
+            else
+              echo "::error::Unhandleable conflict on path(s) above"
+              git rebase --abort 2>/dev/null || true
+              drop_stash_if_any
+              exit 1
+            fi
+          else
+            # Rebase failed before it ever started — no rebase-merge /
+            # rebase-apply directory exists. The classic cause is a
+            # dirty working tree the stash above didn't capture
+            # (e.g. permissions issue, submodule state, weird repo
+            # layout). This is NOT a merge conflict; emit a real
+            # diagnostic so operators stop chasing the
+            # "Unhandleable conflict on path(s) above" red herring.
+            echo "::error::git rebase failed to start (no rebase-merge/rebase-apply directory). Likely cause: dirty working tree that wasn't stashed. Check upstream steps for files written after the writer's commit, and inspect the runner's git status output below."
+            git status --short || true
+            drop_stash_if_any
+            exit 1
+          fi
+
+          if git push origin "HEAD:$BRANCH"; then
+            echo "::endgroup::"
+            echo "Pushed successfully on attempt $ATTEMPTS"
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "::endgroup::"
+          echo "Push rejected ($BRANCH moved during attempt $ATTEMPTS); retrying"
+          sleep $((2 * ATTEMPTS))
+        done
+
+        echo "::error::Failed to push after $MAX_ATTEMPTS attempts"
+        exit 1

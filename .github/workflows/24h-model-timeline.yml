@@ -152,19 +152,19 @@ jobs:
             git add research/models/
             git commit -m "Model timeline update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
 
+      # Use the shared safe-push composite action (post-PR-#58 algorithm):
+      # stash any leftover working-tree state before rebasing, so the
+      # rebase cannot fail to start with "cannot rebase: You have unstaged
+      # changes". The action exposes `outputs.pushed`, consumed by the
+      # Vercel deploy step below. Push failures now propagate as a real
+      # job failure (previously the no-retry inline step quietly set
+      # pushed=false on real errors).
+      # See .github/actions/safe-push/action.yml.
       - name: Push changes
         id: push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          git pull --rebase || true
-          if git push; then
-            echo "pushed=true" >> $GITHUB_OUTPUT
-          else
-            echo "pushed=false" >> $GITHUB_OUTPUT
-            echo "Nothing to push"
-          fi
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       # Vercel's GitHub App webhook should fire on bot pushes too (no
       # cascade-trigger restriction at the webhook layer), but if the

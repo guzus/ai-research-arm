@@ -163,35 +163,19 @@ jobs:
             git add research/bluesky/
             git commit -m "Bluesky feed ${{ steps.datetime.outputs.timestamp }}"
 
+      # Use the shared safe-push composite action (post-PR-#58 algorithm).
+      #
+      # NOTE: a previous `rm -rf data/bluesky` pre-step is no longer
+      # needed here — the composite action stashes untracked files
+      # (including data/bluesky) before rebasing via
+      # `git stash push --include-untracked`, so they no longer block
+      # the rebase from starting. The stash is popped after a clean
+      # rebase, restoring data/bluesky into the working tree if anything
+      # downstream needs it.
       - name: Push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          # Retry loop: parallel ubuntu-latest writers can race on `main`.
-          # The self-hosted runner serialized everything so this never
-          # collided; ubuntu-latest does not. Without the retry, a
-          # non-fast-forward push would be silently swallowed by `|| echo`,
-          # losing the just-written research artifact. If Claude didn't
-          # commit anything (no new content), HEAD == origin/main after
-          # the rebase and `git push` is a no-op.
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          for i in 1 2 3 4 5; do
-            git fetch origin main
-
-            # The fetched Bluesky JSON is workspace-local input for Claude, not
-            # a publish artifact. Remove it before rebasing so untracked
-            # data/bluesky files cannot make `git pull --rebase` refuse to start.
-            rm -rf data/bluesky
-
-            if git pull --rebase origin main && git push origin HEAD:main; then
-              exit 0
-            fi
-            echo "Push attempt $i failed (likely race with another writer), retrying..."
-            sleep $(( i * 5 + RANDOM % 5 ))
-          done
-          echo "Push failed after 5 retries" >&2
-          exit 1
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish Hooker workflow telemetry
         if: always()
