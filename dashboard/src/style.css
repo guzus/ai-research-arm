@@ -132,6 +132,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
+  gap: 16px;
 }
 
 .brand-title {
@@ -139,6 +140,61 @@ body {
   font-weight: 700;
   letter-spacing: -0.02em;
   font-family: var(--font-mono);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 0;
+}
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.language-btn {
+  min-width: 34px;
+  height: 26px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 650;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, opacity 0.12s;
+}
+
+.language-btn:hover {
+  color: var(--text);
+  background: var(--bg-hover);
+}
+
+.language-btn.active {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.language-btn.unavailable:not(.active) {
+  opacity: 0.42;
+}
+
+.language-btn:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 2px;
 }
 
 .header-link {
@@ -173,6 +229,18 @@ body {
  * scrolls horizontally — without a scrollbar (hidden above) there's no
  * other affordance and the rightmost tab (Research) was getting cut off. */
 @media (max-width: 640px) {
+  .header-top {
+    align-items: flex-start;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+  }
+
+  .header-link-label {
+    display: none;
+  }
+
   .tabs {
     -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
     mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
@@ -230,6 +298,46 @@ body {
   border-color: var(--text-tertiary);
   color: var(--text);
   background: var(--bg);
+}
+
+.request-btn {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 9px;
+  color: var(--on-accent);
+  padding: 0 13px;
+  font-family: var(--font);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.12s;
+  flex-shrink: 0;
+}
+
+.request-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+.request-btn:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 2px;
+}
+
+.request-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.request-btn svg {
+  flex-shrink: 0;
 }
 
 .search-box {
@@ -1009,6 +1117,7 @@ body.has-toc .section-nav { display: none; }
   .brand { flex: 1; min-width: 0; }
   .header-link-label { display: none; }
   .controls { gap: 6px; }
+  .search-box { flex-basis: 100%; }
   .content-card-body { padding: 16px; }
   .content-card-header { padding: 12px 16px; }
   .md-content { font-size: 0.95rem; line-height: 1.75; }
@@ -1245,6 +1354,12 @@ body.tab-research #calendar {
   padding: 10px 28px 0;
   font-size: 0.78rem;
   color: var(--text-tertiary);
+}
+
+.gen-research-language-note {
+  width: 100%;
+  color: var(--text-tertiary);
+  font-size: 0.76rem;
 }
 
 .gen-research-back {

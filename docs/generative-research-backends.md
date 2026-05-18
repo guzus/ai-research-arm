@@ -42,6 +42,27 @@ Then it publishes through `scripts/write_generative_research.py`, so the
 dashboard artifact, `research/generative/index.json`, DSL source file, and git
 commit follow the same contract as GitHub Actions.
 
+## Korean Backfills
+
+Korean generative-research articles are stored as translations of an existing
+English article row, not as separate research-index entries. Generate or edit
+the Korean `.ara.md`, run the normal checker, then publish it against the
+existing slug:
+
+```bash
+python3 scripts/write_generative_research.py \
+  --topic "Korean translation of <title>" \
+  --translation-of "<existing-slug>" \
+  --language ko \
+  --model "<model>" \
+  --html-body "$KOREAN_DRAFT"
+```
+
+The writer emits `research/generative/<timestamp>--<slug>.ko.html` and stores
+it under `translations.ko` in `research/generative/index.json`. The dashboard
+language switch will show Korean only after that file and index update have
+been pushed and deployed.
+
 If the local Oracle checkout is not installed yet:
 
 ```bash

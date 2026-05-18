@@ -39,6 +39,9 @@ SLUG_MAX = 60
 KIND_FRAGMENT = "fragment"
 KIND_STANDALONE = "standalone"
 KINDS = (KIND_FRAGMENT, KIND_STANDALONE)
+DEFAULT_LANGUAGE = "en"
+SUPPORTED_TRANSLATION_LANGUAGES = ("ko",)
+LANGUAGES = (DEFAULT_LANGUAGE, *SUPPORTED_TRANSLATION_LANGUAGES)
 DISALLOWED_PATTERNS = [
     re.compile(r"\sstyle\s*=", re.IGNORECASE),
     re.compile(r"\son\w+\s*=", re.IGNORECASE),  # onclick=, onload=, etc.
@@ -482,6 +485,50 @@ def append_index_atomically(index_path: Path, base_slug: str, row_builder) -> tu
     return slug, current
 
 
+def update_translation_atomically(
+    index_path: Path,
+    target_slug: str,
+    language: str,
+    row_builder,
+) -> tuple[str, list]:
+    """Attach a translated artifact to an existing generative article row.
+
+    The dashboard cannot discover pushed files by directory listing, so a
+    backfilled translation must be represented in index.json. This mutates the
+    existing row instead of appending a new article, keeping `/research/<slug>`
+    as the canonical article URL while allowing the UI to fetch a language
+    variant when present.
+    """
+    index_path.parent.mkdir(parents=True, exist_ok=True)
+    if not index_path.exists():
+        raise ValueError(f"{index_path} does not exist; cannot backfill translation")
+    lock_path = index_path.with_suffix(index_path.suffix + ".lock")
+    lock_fd = os.open(str(lock_path), os.O_RDWR | os.O_CREAT, 0o644)
+    try:
+        fcntl.flock(lock_fd, fcntl.LOCK_EX)
+        current = _parse_index_text(
+            index_path.read_text(encoding="utf-8"), index_path
+        )
+        for row in current:
+            if not isinstance(row, dict) or row.get("slug") != target_slug:
+                continue
+            translations = row.get("translations")
+            if not isinstance(translations, dict):
+                translations = {}
+                row["translations"] = translations
+            translations[language] = row_builder(target_slug)
+            atomic_write_json(index_path, current)
+            return target_slug, current
+        raise ValueError(
+            f"translation target slug {target_slug!r} not found in {index_path}"
+        )
+    finally:
+        try:
+            fcntl.flock(lock_fd, fcntl.LOCK_UN)
+        finally:
+            os.close(lock_fd)
+
+
 def git_commit(repo: Path, files: list[Path], message: str) -> None:
     rels = [str(p.relative_to(repo)) for p in files]
     subprocess.run(["git", "-C", str(repo), "add", "--", *rels], check=True)
@@ -507,6 +554,17 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--prompt", default=None, help="original user prompt (stored in index)")
     p.add_argument("--tags", default="", help="comma-separated tags")
     p.add_argument("--source", default="local", help="trigger source: local, workflow_dispatch, issue, import")
+    p.add_argument(
+        "--language",
+        default=DEFAULT_LANGUAGE,
+        choices=LANGUAGES,
+        help="article language; non-English values backfill an existing row",
+    )
+    p.add_argument(
+        "--translation-of",
+        default=None,
+        help="existing article slug to attach this translated artifact to",
+    )
     p.add_argument(
         "--kind",
         default=KIND_FRAGMENT,
@@ -606,6 +664,16 @@ def main(argv: list[str] | None = None) -> int:
 
     title = (args.title or derive_title(body, args.kind, args.topic)).strip()
     base_slug = (args.slug or slugify(args.topic)).strip("-") or "untitled"
+    language = args.language
+    translation_target = (args.translation_of or "").strip()
+    if language != DEFAULT_LANGUAGE and not translation_target:
+        translation_target = (args.slug or "").strip()
+    if language != DEFAULT_LANGUAGE and not translation_target:
+        raise SystemExit(
+            "write_generative_research: --language "
+            f"{language!r} requires --translation-of <existing-slug> "
+            "(or --slug set to that existing slug)"
+        )
     tags = [t.strip() for t in args.tags.split(",") if t.strip()]
     now = datetime.now(timezone.utc).replace(microsecond=0)
     stamp = now.strftime("%Y-%m-%dT%H%M%S")
@@ -628,9 +696,10 @@ def main(argv: list[str] | None = None) -> int:
     written_html_path: Path | None = None
     written_source_path: Path | None = None
     try:
-        def _build_row(final_slug: str) -> dict:
+        def _write_artifacts(final_slug: str, lang: str) -> tuple[str, Path, Path | None]:
             nonlocal written_html_path, written_source_path
-            filename = f"{stamp}--{final_slug}.html"
+            suffix = "" if lang == DEFAULT_LANGUAGE else f".{lang}"
+            filename = f"{stamp}--{final_slug}{suffix}.html"
             html_path = gen_dir / filename
             if html_path.exists():
                 # Extremely unlikely now that slug uniqueness is locked,
@@ -642,16 +711,21 @@ def main(argv: list[str] | None = None) -> int:
             html_path.write_text(body, encoding="utf-8")
             written_html_path = html_path
             if is_dsl:
-                source_path = gen_dir / f"{stamp}--{final_slug}.ara.md"
+                source_path = gen_dir / f"{stamp}--{final_slug}{suffix}.ara.md"
                 source_path.write_text(
                     raw if raw.endswith("\n") else raw + "\n",
                     encoding="utf-8",
                 )
                 written_source_path = source_path
+            return filename, html_path, written_source_path
+
+        def _build_row(final_slug: str) -> dict:
+            filename, _, _ = _write_artifacts(final_slug, DEFAULT_LANGUAGE)
             return {
                 "slug": final_slug,
                 "file": filename,
                 "kind": args.kind,
+                "language": DEFAULT_LANGUAGE,
                 "title": title,
                 "model": args.model,
                 "created_at": iso,
@@ -660,7 +734,29 @@ def main(argv: list[str] | None = None) -> int:
                 "tags": tags,
             }
 
-        slug, index = append_index_atomically(index_path, base_slug, _build_row)
+        def _build_translation(final_slug: str) -> dict:
+            filename, _, _ = _write_artifacts(final_slug, language)
+            return {
+                "file": filename,
+                "kind": args.kind,
+                "language": language,
+                "title": title,
+                "model": args.model,
+                "created_at": iso,
+                "source": args.source,
+                "prompt": args.prompt or args.topic,
+                "tags": tags,
+            }
+
+        if language == DEFAULT_LANGUAGE:
+            slug, index = append_index_atomically(index_path, base_slug, _build_row)
+        else:
+            slug, index = update_translation_atomically(
+                index_path,
+                translation_target,
+                language,
+                _build_translation,
+            )
     except BaseException:
         # If the locked append failed AFTER we wrote the HTML / DSL source,
         # remove the orphans so a retry starts clean. We use the ACTUAL
@@ -680,8 +776,7 @@ def main(argv: list[str] | None = None) -> int:
                 pass
         raise
 
-    filename = f"{stamp}--{slug}.html"
-    html_path = gen_dir / filename
+    html_path = written_html_path or gen_dir / f"{stamp}--{slug}.html"
     print(f"wrote {html_path.relative_to(repo)}")
     print(f"updated {index_path.relative_to(repo)} ({len(index)} entries)")
 
@@ -694,7 +789,11 @@ def main(argv: list[str] | None = None) -> int:
         git_commit(
             repo,
             files_to_commit,
-            f"Generative research: {title}",
+            (
+                f"Generative research translation ({language}): {title}"
+                if language != DEFAULT_LANGUAGE
+                else f"Generative research: {title}"
+            ),
         )
 
     return 0

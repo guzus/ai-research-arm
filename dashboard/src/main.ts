@@ -79,10 +79,24 @@ function timeAgo(date: Date): string {
 type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research';
 type DateTab = Exclude<Tab, 'research'>;
 type GenResearchKind = 'fragment' | 'standalone';
+type ResearchLanguage = 'en' | 'ko';
+type GenResearchTranslation = {
+  file: string;
+  kind?: GenResearchKind;
+  language?: ResearchLanguage | string;
+  title?: string;
+  model?: string;
+  created_at?: string;
+  source?: string;
+  prompt?: string;
+  tags?: string[];
+};
 type GenResearchRow = {
   slug: string;
   file: string;
   kind?: GenResearchKind;  // optional for back-compat; undefined = fragment
+  language?: ResearchLanguage | string;
+  translations?: Record<string, GenResearchTranslation>;
   title: string;
   model: string;
   created_at: string;
@@ -103,6 +117,7 @@ let currentDate = new Date();
 let searchTerm = '';
 let activeTab: Tab = 'today';
 let selectedSlug: string | null = null;
+let activeLanguage: ResearchLanguage = loadStoredLanguage();
 let calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 const availabilityCache = new Map<string, Set<string>>();
 let loadRequestId = 0;
@@ -111,7 +126,7 @@ let searchDebounceId: number | null = null;
 let manifest: Manifest | null = null;
 let manifestPromise: Promise<Manifest | null> | null = null;
 // Cache the last-fetched research doc body so search-as-you-type doesn't refetch.
-let researchDocCache: { slug: string; body: string } | null = null;
+let researchDocCache: { slug: string; language: ResearchLanguage; body: string } | null = null;
 const LOAD_TIMEOUT_MS = 12000;
 
 // ── DOM refs ──────────────────────────────────────────
@@ -119,6 +134,7 @@ const content = document.getElementById('content')!;
 const calendarEl = document.getElementById('calendar')!;
 const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 const searchCountEl = document.getElementById('searchCount')!;
+const languageSwitch = document.getElementById('languageSwitch')!;
 
 // ── Path routing ─────────────────────────────────────
 // Format (history API, no hash):
@@ -233,6 +249,66 @@ function syncTabUi(): void {
 }
 
 // ── Helpers ───────────────────────────────────────────
+function loadStoredLanguage(): ResearchLanguage {
+  try {
+    return localStorage.getItem('ara-language') === 'ko' ? 'ko' : 'en';
+  } catch {
+    return 'en';
+  }
+}
+
+function storeLanguage(language: ResearchLanguage): void {
+  try {
+    localStorage.setItem('ara-language', language);
+  } catch {
+    // Ignore storage failures in private mode or locked-down browsers.
+  }
+}
+
+function researchVariant(row: GenResearchRow, language: ResearchLanguage): GenResearchRow {
+  if (language === 'en') return row;
+  const translation = row.translations?.[language];
+  if (!translation?.file) return row;
+  return {
+    ...row,
+    ...translation,
+    slug: row.slug,
+    file: translation.file,
+    kind: translation.kind || row.kind,
+    language,
+    title: translation.title || row.title,
+    model: translation.model || row.model,
+    created_at: translation.created_at || row.created_at,
+    source: translation.source || row.source,
+    prompt: translation.prompt || row.prompt,
+    tags: translation.tags || row.tags,
+    translations: row.translations,
+  };
+}
+
+function hasResearchLanguage(row: GenResearchRow | null, language: ResearchLanguage): boolean {
+  if (language === 'en') return true;
+  return Boolean(row?.translations?.[language]?.file);
+}
+
+function syncLanguageUi(row: GenResearchRow | null = null): void {
+  languageSwitch.querySelectorAll<HTMLButtonElement>('[data-language]').forEach((btn) => {
+    const language = btn.dataset.language as ResearchLanguage;
+    const available = !row || hasResearchLanguage(row, language);
+    btn.classList.toggle('active', language === activeLanguage);
+    btn.classList.toggle('unavailable', !available);
+    btn.setAttribute('aria-pressed', String(language === activeLanguage));
+    btn.title = available
+      ? (language === 'ko' ? 'Show Korean' : 'Show English')
+      : 'Korean version has not been published for this article';
+  });
+}
+
+function languageFallbackNote(row: GenResearchRow): string {
+  if (activeLanguage !== 'ko' || hasResearchLanguage(row, 'ko')) return '';
+  return '<div class="gen-research-language-note">Korean version has not been published for this article yet.</div>';
+}
+
 function fmtDate(d: Date): string {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, '0');
@@ -1002,6 +1078,9 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     const isStandalone = row.kind === 'standalone';
     const kindLabel = isStandalone ? 'Standalone' : 'Article';
     const kindClass = isStandalone ? 'gen-research-kind--standalone' : 'gen-research-kind--article';
+    const languageHtml = hasResearchLanguage(row, 'ko')
+      ? '      <span class="gen-research-tag" lang="ko">한국어</span>'
+      : '';
     items.push(
       [
         '<li class="gen-research-item" data-slug="' + escapeHtml(row.slug) + '" tabindex="0">',
@@ -1011,6 +1090,7 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
         '      <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
         rel ? '      <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
         tagHtml ? '      <span class="gen-research-tags">' + tagHtml + '</span>' : '',
+        languageHtml,
         '    </div>',
         '  </div>',
         '  <span class="gen-research-kind ' + kindClass + '">' + kindLabel + '</span>',
@@ -1062,6 +1142,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
       '    <button class="gen-research-back" data-research-back>&lsaquo; All articles</button>',
       '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
       rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
+      languageFallbackNote(row),
       '    <button class="gen-research-pdf" data-research-pdf title="Save this article as a PDF">Save as PDF</button>',
       '  </div>',
       '  <div class="content-card-body">',
@@ -1078,6 +1159,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
   // charts, and build the floating TOC.
   const article = content.querySelector('article.ara-doc') as HTMLElement | null;
   if (article) {
+    article.lang = row.language === 'ko' ? 'ko' : 'en';
     applyBarFills(article);
     wrapAraTables(article);
     applyIsotypes(article);
@@ -2369,6 +2451,7 @@ function renderResearchStandalone(row: GenResearchRow): void {
       '    <button class="gen-research-back" data-research-back>&lsaquo; All articles</button>',
       '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
       rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
+      languageFallbackNote(row),
       '    <a class="gen-research-fullscreen" href="' + escapeHtml(src) + '" target="_blank" rel="noopener noreferrer">Open full ↗</a>',
       '  </div>',
       '  <iframe class="gen-research-iframe" src="' + escapeHtml(src) + '" sandbox="allow-scripts" loading="lazy" title="' + escapeHtml(row.title) + '"></iframe>',
@@ -2400,27 +2483,37 @@ async function load(): Promise<void> {
       const rows = m?.generative ?? [];
       if (!selectedSlug) {
         researchDocCache = null;
+        syncLanguageUi(null);
         renderResearchIndex(rows);
       } else {
         const row = findResearchRow(selectedSlug);
         if (!row) {
+          syncLanguageUi(null);
           showEmpty(dateStr);
-        } else if (row.kind === 'standalone') {
-          // Standalone docs render as an iframe; no body fetch needed.
-          researchDocCache = null;
-          renderResearchStandalone(row);
-        } else if (researchDocCache && researchDocCache.slug === selectedSlug) {
-          renderResearchDoc(row, researchDocCache.body);
         } else {
-          const result = await withTimeout(fetchResearchDoc(row, controller.signal), LOAD_TIMEOUT_MS, controller);
-          if (requestId !== loadRequestId) return;
-          if (result === 'timeout') {
-            showError('Loading timed out', 'Network may be slow. Click to retry.');
-          } else if (result) {
-            researchDocCache = { slug: selectedSlug, body: result };
-            renderResearchDoc(row, result);
+          syncLanguageUi(row);
+          const variant = researchVariant(row, activeLanguage);
+          if (variant.kind === 'standalone') {
+            // Standalone docs render as an iframe; no body fetch needed.
+            researchDocCache = null;
+            renderResearchStandalone(variant);
+          } else if (
+            researchDocCache &&
+            researchDocCache.slug === selectedSlug &&
+            researchDocCache.language === activeLanguage
+          ) {
+            renderResearchDoc(variant, researchDocCache.body);
           } else {
-            showEmpty(dateStr);
+            const result = await withTimeout(fetchResearchDoc(variant, controller.signal), LOAD_TIMEOUT_MS, controller);
+            if (requestId !== loadRequestId) return;
+            if (result === 'timeout') {
+              showError('Loading timed out', 'Network may be slow. Click to retry.');
+            } else if (result) {
+              researchDocCache = { slug: selectedSlug, language: activeLanguage, body: result };
+              renderResearchDoc(variant, result);
+            } else {
+              showEmpty(dateStr);
+            }
           }
         }
       }
@@ -2583,6 +2676,18 @@ searchInput.addEventListener('input', () => {
   }, 180);
 });
 
+languageSwitch.addEventListener('click', (e) => {
+  const btn = (e.target as HTMLElement).closest('[data-language]') as HTMLButtonElement | null;
+  if (!btn) return;
+  const language = btn.dataset.language === 'ko' ? 'ko' : 'en';
+  if (language === activeLanguage) return;
+  activeLanguage = language;
+  storeLanguage(activeLanguage);
+  researchDocCache = null;
+  syncLanguageUi(selectedSlug ? findResearchRow(selectedSlug) : null);
+  load();
+});
+
 // Retry button + research index navigation (event delegation on content)
 content.addEventListener('click', (e) => {
   const target = e.target as HTMLElement;
@@ -2693,6 +2798,7 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
 
 // ── Init ──────────────────────────────────────────────
 calendarEl.addEventListener('click', handleCalendarClick);
+syncLanguageUi(null);
 // Kick off manifest fetch early so calendar + fallback logic have data ASAP.
 loadManifest();
 applyRoute();

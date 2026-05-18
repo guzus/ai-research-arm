@@ -2,6 +2,7 @@
 
 import tempfile
 import unittest
+import json
 from contextlib import redirect_stderr, redirect_stdout
 from io import StringIO
 from pathlib import Path
@@ -220,6 +221,65 @@ Claim [^1] {sparkline:1,nope,3}.
 :::
 """
             )
+
+    def test_korean_translation_backfills_existing_index_row(self):
+        with tempfile.TemporaryDirectory() as td:
+            repo = Path(td)
+            gen_dir = repo / "research" / "generative"
+            gen_dir.mkdir(parents=True)
+            index_path = gen_dir / "index.json"
+            index_path.write_text(
+                json.dumps(
+                    [
+                        {
+                            "slug": "alpha",
+                            "file": "2026-01-01T000000--alpha.html",
+                            "kind": "fragment",
+                            "language": "en",
+                            "title": "Alpha",
+                            "model": "seed",
+                            "created_at": "2026-01-01T00:00:00Z",
+                            "source": "seed",
+                            "prompt": "Alpha",
+                            "tags": [],
+                        }
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            body_path = repo / "ko.html"
+            body_path.write_text(
+                '<article class="ara-doc"><h2 class="ara-display">알파</h2><p>한국어 본문입니다.</p></article>',
+                encoding="utf-8",
+            )
+
+            rc = writer.main(
+                [
+                    "--topic",
+                    "Alpha Korean",
+                    "--html-body",
+                    str(body_path),
+                    "--model",
+                    "test-model",
+                    "--language",
+                    "ko",
+                    "--translation-of",
+                    "alpha",
+                    "--repo-root",
+                    str(repo),
+                    "--no-commit",
+                ]
+            )
+
+            self.assertEqual(rc, 0)
+            data = json.loads(index_path.read_text(encoding="utf-8"))
+            self.assertEqual(len(data), 1)
+            ko = data[0]["translations"]["ko"]
+            self.assertEqual(ko["language"], "ko")
+            self.assertEqual(ko["title"], "알파")
+            self.assertTrue(ko["file"].endswith("--alpha.ko.html"))
+            self.assertTrue((gen_dir / ko["file"]).exists())
 
     def test_non_ascii_quoted_attributes_survive(self):
         html = compile_ok(
