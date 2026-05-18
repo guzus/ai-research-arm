@@ -785,9 +785,18 @@ function wrapTables(html: string): string {
     .replace(/<\/table>/g, '</table></div>');
 }
 
-function renderReport(md: string): void {
+function renderReport(md: string, fallbackDate: string | null = null): void {
   const sections = splitSections(md).reverse();
   const cards: string[] = [];
+  if (fallbackDate) {
+    cards.push(
+      '<div class="frontpage-fallback-note">No Twitter report for ' +
+        escapeHtml(fmtDate(currentDate)) +
+        '. Showing ' +
+        escapeHtml(fallbackDate) +
+        ' instead.</div>',
+    );
+  }
 
   for (const section of sections) {
     // Skip the top-level h1 title section if it has no body
@@ -855,9 +864,18 @@ function renderReport(md: string): void {
   setSafeContent(content, cards.join('\n'));
 }
 
-function renderModels(md: string): void {
+function renderModels(md: string, fallbackDate: string | null = null): void {
   const sections = splitSections(md);
   const cards: string[] = [];
+  if (fallbackDate) {
+    cards.push(
+      '<div class="frontpage-fallback-note">No model timeline for ' +
+        escapeHtml(fmtDate(currentDate)) +
+        '. Showing ' +
+        escapeHtml(fallbackDate) +
+        ' instead.</div>',
+    );
+  }
 
   for (const section of sections) {
     if (!section.title && !section.body) continue;
@@ -899,7 +917,7 @@ function renderFrontPage(imageUrl: string, fallbackDate: string | null): void {
     [
       '<div class="content-card frontpage-card">',
       '  <div class="content-card-header">',
-      '    <div class="content-card-title">THE AI INTELLIGENCER — ' + escapeHtml(displayDate(currentDate)) + '</div>',
+      '    <div class="content-card-title">THE AGI AWARENESS POST — ' + escapeHtml(displayDate(currentDate)) + '</div>',
       '  </div>',
       noteHtml,
       '  <div class="content-card-body frontpage-body">',
@@ -1009,7 +1027,7 @@ function renderToday(md: string, frontPage: { url: string; fallback: string | nu
     const fpCard = [
       '<div class="content-card frontpage-card today-frontpage-card">',
       '  <div class="content-card-header">',
-      '    <div class="content-card-title">THE AI INTELLIGENCER — ' + escapeHtml(displayDate(currentDate)) + '</div>',
+      '    <div class="content-card-title">THE AGI AWARENESS POST — ' + escapeHtml(displayDate(currentDate)) + '</div>',
       '  </div>',
       noteHtml,
       '  <div class="content-card-body frontpage-body">',
@@ -2549,7 +2567,18 @@ async function load(): Promise<void> {
       } else if (result) {
         renderModels(result);
       } else {
-        showEmpty(dateStr);
+        const fallback = findMostRecentAvailable('models', dateStr);
+        if (fallback && fallback !== dateStr) {
+          const fallbackMd = await fetchModels(fallback, controller.signal);
+          if (requestId !== loadRequestId) return;
+          if (fallbackMd) {
+            renderModels(fallbackMd, fallback);
+          } else {
+            showEmpty(dateStr);
+          }
+        } else {
+          showEmpty(dateStr);
+        }
       }
     } else if (activeTab === 'today') {
       // Fetch digest + front page in parallel — the front page goes
@@ -2603,7 +2632,18 @@ async function load(): Promise<void> {
       } else if (result) {
         renderReport(result);
       } else {
-        showEmpty(dateStr);
+        const fallback = findMostRecentAvailable('twitter', dateStr);
+        if (fallback && fallback !== dateStr) {
+          const fallbackMd = await fetchTwitter(fallback, controller.signal);
+          if (requestId !== loadRequestId) return;
+          if (fallbackMd) {
+            renderReport(fallbackMd, fallback);
+          } else {
+            showEmpty(dateStr);
+          }
+        } else {
+          showEmpty(dateStr);
+        }
       }
     }
 
