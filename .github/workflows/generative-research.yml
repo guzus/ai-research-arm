@@ -463,10 +463,34 @@ jobs:
                 titles, file paths). Run this FIRST so you don't redo
                 their work.
               - `python3 scripts/research_search.py SOURCE "query"` —
-                primary-source search. SOURCE = arxiv | edgar | crossref
-                | semanticscholar | github. Returns structured plain text
-                you can read directly. Use this BEFORE WebSearch when the
-                topic clearly has academic / SEC / GitHub footprints.
+                primary-source search. SOURCE =
+                  arxiv | edgar | crossref | semanticscholar | github
+                  | wikidata | uspto | jedec | predictionmarket
+                  | gdelt | nonenglish
+                Returns structured plain text you can read directly. Use
+                this BEFORE WebSearch when the topic clearly has academic
+                / SEC / GitHub footprints. One-line guidance per source:
+                  arxiv            ML / physics / cs preprints
+                  edgar            SEC filings (10-K, 8-K, S-1, etc.)
+                  crossref         peer-reviewed DOIs, any discipline
+                  semanticscholar  paper search + abstracts (rate-limited)
+                  github           OSS repos by stars
+                  wikidata         structured facts (company founded date,
+                                   CEO, HQ, parent org, employees, etc.)
+                  uspto            US patents via Google Patents JSON
+                                   (the PatentsView API was retired)
+                  jedec            JEDEC standards via Wikipedia + Bing —
+                                   best-effort, lower precision
+                  predictionmarket Polymarket implied probabilities for
+                                   policy / event / model-launch questions
+                  gdelt            global news + sentiment, multilingual,
+                                   excellent for non-US coverage
+                  nonenglish       non-English primary sources via GDELT
+                                   sourcelang filter; pass --lang ja|zh|ko
+                                   |de|fr|es|ar|ru|pt|it to scope to one
+                                   language; downstream agent uses
+                                   WebFetch + translation prompt to read
+                                   the body
               - `curl -sL <url> -o /tmp/x.pdf && pdftotext /tmp/x.pdf -
                 | head -c 60000` — read PDFs (10-Ks, S-1s, papers,
                 whitepapers). The pdftotext binary is pre-installed.
@@ -697,7 +721,13 @@ jobs:
                first-principles reasoning, (c) require WebSearch + WebFetch
                on PRIMARY sources AND tell them to use
                `python3 scripts/research_search.py SOURCE "query"` for
-               arxiv/edgar/crossref/semanticscholar/github when relevant,
+               arxiv / edgar / crossref / semanticscholar / github /
+               wikidata / uspto / jedec / predictionmarket / gdelt /
+               nonenglish when relevant — pick the source whose domain
+               fits the question (wikidata for "what is X / who runs X",
+               uspto for IP claims, predictionmarket for forecast
+               consensus, gdelt for non-US coverage, nonenglish --lang
+               for foreign-language primary sources),
                BIASED BY DOMAIN — pass the sub-agent an explicit source
                priority list driven by the domain classification:
                    semiconductor → JEDEC specs, IEEE papers, TSMC IR,
@@ -1405,10 +1435,34 @@ jobs:
                 titles, file paths). Run this FIRST so you don't redo
                 their work.
               - `python3 scripts/research_search.py SOURCE "query"` —
-                primary-source search. SOURCE = arxiv | edgar | crossref
-                | semanticscholar | github. Returns structured plain text
-                you can read directly. Use this BEFORE WebSearch when the
-                topic clearly has academic / SEC / GitHub footprints.
+                primary-source search. SOURCE =
+                  arxiv | edgar | crossref | semanticscholar | github
+                  | wikidata | uspto | jedec | predictionmarket
+                  | gdelt | nonenglish
+                Returns structured plain text you can read directly. Use
+                this BEFORE WebSearch when the topic clearly has academic
+                / SEC / GitHub footprints. One-line guidance per source:
+                  arxiv            ML / physics / cs preprints
+                  edgar            SEC filings (10-K, 8-K, S-1, etc.)
+                  crossref         peer-reviewed DOIs, any discipline
+                  semanticscholar  paper search + abstracts (rate-limited)
+                  github           OSS repos by stars
+                  wikidata         structured facts (company founded date,
+                                   CEO, HQ, parent org, employees, etc.)
+                  uspto            US patents via Google Patents JSON
+                                   (the PatentsView API was retired)
+                  jedec            JEDEC standards via Wikipedia + Bing —
+                                   best-effort, lower precision
+                  predictionmarket Polymarket implied probabilities for
+                                   policy / event / model-launch questions
+                  gdelt            global news + sentiment, multilingual,
+                                   excellent for non-US coverage
+                  nonenglish       non-English primary sources via GDELT
+                                   sourcelang filter; pass --lang ja|zh|ko
+                                   |de|fr|es|ar|ru|pt|it to scope to one
+                                   language; downstream agent uses
+                                   WebFetch + translation prompt to read
+                                   the body
               - `curl -sL <url> -o /tmp/x.pdf && pdftotext /tmp/x.pdf -
                 | head -c 60000` — read PDFs (10-Ks, S-1s, papers,
                 whitepapers). The pdftotext binary is pre-installed.
@@ -1639,7 +1693,13 @@ jobs:
                first-principles reasoning, (c) require WebSearch + WebFetch
                on PRIMARY sources AND tell them to use
                `python3 scripts/research_search.py SOURCE "query"` for
-               arxiv/edgar/crossref/semanticscholar/github when relevant,
+               arxiv / edgar / crossref / semanticscholar / github /
+               wikidata / uspto / jedec / predictionmarket / gdelt /
+               nonenglish when relevant — pick the source whose domain
+               fits the question (wikidata for "what is X / who runs X",
+               uspto for IP claims, predictionmarket for forecast
+               consensus, gdelt for non-US coverage, nonenglish --lang
+               for foreign-language primary sources),
                BIASED BY DOMAIN — pass the sub-agent an explicit source
                priority list driven by the domain classification:
                    semiconductor → JEDEC specs, IEEE papers, TSMC IR,
