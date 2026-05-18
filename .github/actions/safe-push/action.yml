@@ -36,6 +36,16 @@ inputs:
       enable this.
     required: false
     default: 'false'
+  allow-divergent-ref:
+    description: >
+      If 'true', skip the safety check that the workflow's trigger ref
+      (github.ref_name) matches the target branch. Default 'false' refuses
+      to push when the workflow was launched (typically via workflow_dispatch)
+      from a non-default branch, because pushing HEAD:<branch> would land
+      that feature branch's commits onto <branch>. Opt in only for
+      workflows that genuinely need to publish from a non-default ref.
+    required: false
+    default: 'false'
   github-token:
     description: GITHUB_TOKEN used to set the authenticated origin URL.
     required: true
@@ -57,13 +67,30 @@ runs:
         SAFE_PUSH_MAX_ATTEMPTS: ${{ inputs.max-attempts }}
         SAFE_PUSH_INDEX_MERGE: ${{ inputs.index-merge }}
         SAFE_PUSH_REPOSITORY: ${{ github.repository }}
+        SAFE_PUSH_REF_NAME: ${{ github.ref_name }}
+        SAFE_PUSH_ALLOW_DIVERGENT_REF: ${{ inputs.allow-divergent-ref }}
       run: |
         set -euo pipefail
-        git remote set-url origin "https://x-access-token:${SAFE_PUSH_GITHUB_TOKEN}@github.com/${SAFE_PUSH_REPOSITORY}.git"
 
         BRANCH="${SAFE_PUSH_BRANCH}"
         MAX_ATTEMPTS="${SAFE_PUSH_MAX_ATTEMPTS}"
         INDEX_MERGE="${SAFE_PUSH_INDEX_MERGE}"
+
+        # Safety: refuse to push if the workflow's trigger ref doesn't match
+        # the target branch. Without this check, a workflow_dispatch run
+        # launched from a feature branch — actions/checkout defaults to
+        # github.ref, so the checked-out HEAD is the feature branch — would
+        # rebase that feature branch onto $BRANCH and push it as HEAD:$BRANCH,
+        # silently landing unreviewed commits on the default branch.
+        # Cron triggers always run against the repo's default branch, so this
+        # check is a no-op for the common (scheduled-publisher) case.
+        if [ "${SAFE_PUSH_REF_NAME}" != "${BRANCH}" ] \
+            && [ "${SAFE_PUSH_ALLOW_DIVERGENT_REF}" != "true" ]; then
+          echo "::error::Refusing to push from ref '${SAFE_PUSH_REF_NAME}' to '${BRANCH}'. Likely a workflow_dispatch run launched from a non-default ref — pushing now would land that ref's commits onto ${BRANCH}. If this is intentional (e.g. a release workflow that publishes from a non-default ref), set 'allow-divergent-ref: true' on the safe-push action call."
+          exit 1
+        fi
+
+        git remote set-url origin "https://x-access-token:${SAFE_PUSH_GITHUB_TOKEN}@github.com/${SAFE_PUSH_REPOSITORY}.git"
 
         # Concurrent writers can land on $BRANCH while this job runs. Retry
         # the fetch+rebase+push loop a few times; each iteration stashes
