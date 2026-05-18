@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-18 21:36 UTC
+
+CYCLE: Musk breaks post-verdict silence with hostile thread + concrete Ninth Circuit appeal; @sama still product-pivot silent; Anthropic answers Cursor Composer 2.5 with price-up speed-up Fast-mode default, NOT a price cut; SemiAnalysis pre-NVIDIA-earnings $21-per-20h-task ROI thread.
+
+TOP STORIES:
+- Elon 20:39 UTC commits to Ninth Circuit appeal, "stealing a charity" framing, 30,828L; @sama / @OpenAI corp 98h silent on verdict + Malta [multi-source]
+- @ClaudeDevs 19:18 UTC defaults Fast mode to Opus 4.7 at higher per-token rate, repositions latency-not-cost vs Cursor Composer 2.5 [single-source]
+- @SemiAnalysis_ 21:00 UTC: $21 token spend replaces 20-hour analyst task, 60-90x ROI on 9 internal workflows pre-NVIDIA Q1 FY27 [single-source]
+
+WATCH: Google I/O keynote Tue ~13h; NVIDIA Q1 FY27 earnings Wed after-close; first @sama / @OpenAI corp verdict acknowledgment.
+
+Full update on GitHub.
