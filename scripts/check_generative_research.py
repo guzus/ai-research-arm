@@ -663,31 +663,88 @@ _QSANITY_YOY_LIMIT = 1000.0
 
 
 def _qsanity_donut_sums(body_html: str) -> list[str]:
-    """For each `<ul class="ara-donut">` block, sum the `data-pct`
-    values of its immediate `<li>` items. Flag if the sum exceeds
-    the soft limit (allows 5% rounding tolerance).
+    """For each `<div class="ara-donut">` block (or legacy `<ul>` form),
+    sum the slice values and flag if the sum exceeds 105% (rounding
+    tolerance).
 
-    Why ul-scope: the compiler renders donut items as
-        <ul class="ara-donut" data-...><li data-pct="N">label</li>...</ul>
-    so the sum of data-pct over each ul should equal 100. A sum of
-    175 is the textbook implausibility — either the agent listed
-    overlapping categories or hallucinated values that don't share
-    a denominator."""
+    Compiler emits donuts as `<div class="ara-donut" data-labels="A,B,C"
+    data-values="80,50,45"></div>` — see emit_donut() in compile_ara.py.
+    Earlier draft of this helper matched `<ul>` with `<li data-pct>`,
+    which never fires in production (caught by codex review). Both
+    shapes are supported here so hand-authored `:::raw` donut markup
+    (if anyone ever writes it) is also scanned.
+
+    A sum of 175 is the textbook implausibility — either the agent
+    listed overlapping categories or hallucinated values that don't
+    share a denominator.
+
+    Known false-positive class: donuts used for COMPARATIVE MAGNITUDE
+    rather than percentage share. Example surfaced by corpus scan:
+    home-inference-rack article uses a donut to compare $/M-tokens
+    pricing across models ($180, $30, $25, $18) — the sum (253) has
+    no meaning. v1 ships warn-only specifically so authors can ignore
+    these legitimate non-share donuts. If a future iteration wants to
+    hard-fail on donut sum, also require `data-pct` semantics in the
+    DSL (e.g., introduce a `:::pct-donut` directive) so the gate has
+    explicit consent to treat slices as shares."""
     warns: list[str] = []
-    # Match each <ul class="ara-donut"...>...</ul> block. Greedy across
-    # other elements is fine because donut bodies are tiny.
-    donut_blocks = re.findall(
+    donut_index = 0
+
+    # Primary shape: <div class="ara-donut" data-values="80,50,45"></div>
+    # Self-closing divs would be unusual but the compiler emits them with
+    # an explicit closing tag, so this regex matches either form.
+    for m in re.finditer(
+        r'<div[^>]*class="ara-donut[^"]*"([^>]*)>(?:.*?</div>)?',
+        body_html, flags=re.DOTALL | re.IGNORECASE,
+    ):
+        donut_index += 1
+        attrs = m.group(1)
+        values_match = re.search(
+            r'data-values="([0-9.,\s-]+)"', attrs
+        )
+        if not values_match:
+            continue
+        raw_values = values_match.group(1)
+        nums: list[float] = []
+        for part in raw_values.split(","):
+            part = part.strip()
+            if not part:
+                continue
+            try:
+                nums.append(float(part))
+            except ValueError:
+                # Non-numeric token — skip the donut rather than warn
+                # on parse error. validate_body would have already
+                # rejected an article with truly malformed data-values.
+                nums = []
+                break
+        if not nums:
+            continue
+        total = sum(nums)
+        if total > _QSANITY_DONUT_SUM_LIMIT:
+            warns.append(
+                f"qsanity: :::donut #{donut_index} values sum to {total:.1f}% "
+                f"({len(nums)} slices) — exceeds {_QSANITY_DONUT_SUM_LIMIT:.0f}% "
+                f"tolerance. Donuts represent slices of one whole; "
+                f"if the categories overlap, use :::bars or :::rank-list "
+                f"instead. Recheck the values for hallucinated digits."
+            )
+
+    # Legacy / hand-authored shape: <ul class="ara-donut">
+    # <li data-pct="N">label</li>... </ul>. Kept for compatibility
+    # with any article authored via :::raw that hand-rolls a donut.
+    for block in re.findall(
         r'<ul[^>]*class="ara-donut[^"]*"[^>]*>(.*?)</ul>',
         body_html, flags=re.DOTALL | re.IGNORECASE,
-    )
-    for i, block in enumerate(donut_blocks):
+    ):
         pcts = re.findall(r'data-pct="([0-9]+(?:\.[0-9]+)?)"', block)
         if not pcts:
             continue
+        donut_index += 1
         total = sum(float(p) for p in pcts)
         if total > _QSANITY_DONUT_SUM_LIMIT:
             warns.append(
-                f"qsanity: :::donut #{i + 1} percentages sum to {total:.1f}% "
+                f"qsanity: :::donut #{donut_index} percentages sum to {total:.1f}% "
                 f"({len(pcts)} slices) — exceeds {_QSANITY_DONUT_SUM_LIMIT:.0f}% "
                 f"tolerance. Donuts represent slices of one whole; "
                 f"if the categories overlap, use :::bars or :::rank-list "

@@ -864,10 +864,76 @@ class QSanityGateTest(unittest.TestCase):
     list of warning lines; the CLI prints to stderr but doesn't fail
     the build. Tests assert pattern correctness."""
 
-    def test_donut_summing_over_100_warns(self):
-        """A :::donut block with data-pct values summing > 105% is flagged.
-        Per the qsanity rationale: donut slices are slices of one
-        whole — if they overlap, the chart is wrong."""
+    def test_donut_summing_over_100_warns_compiled_shape(self):
+        """The actual compiler output for :::donut is
+            <div class="ara-donut" data-labels="A,B,C" data-values="80,50,45">
+        not a <ul>/<li> shape. Codex review caught the original
+        implementation matching only the wrong shape — now we test
+        against what the compiler actually emits, by compiling DSL
+        through the real compiler instead of hand-rolling HTML."""
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from compile_ara import compile_source
+        src = (
+            "---\n"
+            "title: T\n"
+            "---\n"
+            "\n"
+            "## 1. Test\n"
+            "\n"
+            ":::donut\n"
+            "- label: A\n"
+            "  value: 80\n"
+            "- label: B\n"
+            "  value: 50\n"
+            "- label: C\n"
+            "  value: 45\n"
+            ":::\n"
+        )
+        body = compile_source(src)
+        # Confirm compiler shape — div with data-values, not ul/li
+        self.assertIn('<div class="ara-donut"', body)
+        self.assertIn('data-values="80,50,45"', body)
+        # And the qsanity scan flags the over-100 sum
+        warns = chk.qsanity_scan(body, 2026)
+        donut_warns = [w for w in warns if "donut" in w.lower()]
+        self.assertEqual(len(donut_warns), 1, f"got: {donut_warns}")
+        self.assertIn("175", donut_warns[0])
+
+    def test_donut_summing_under_limit_silent_compiled_shape(self):
+        """Compiled donut summing to 100% is silent."""
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from compile_ara import compile_source
+        src = (
+            "---\ntitle: T\n---\n\n## 1. Test\n\n"
+            ":::donut\n"
+            "- label: A\n  value: 40\n"
+            "- label: B\n  value: 35\n"
+            "- label: C\n  value: 25\n"
+            ":::\n"
+        )
+        body = compile_source(src)
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertEqual([w for w in warns if "donut" in w.lower()], [])
+
+    def test_donut_rounding_tolerance_compiled_shape(self):
+        """Sum of 103% is within the 105% tolerance."""
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from compile_ara import compile_source
+        src = (
+            "---\ntitle: T\n---\n\n## 1. Test\n\n"
+            ":::donut\n"
+            "- label: A\n  value: 34\n"
+            "- label: B\n  value: 35\n"
+            "- label: C\n  value: 34\n"
+            ":::\n"
+        )
+        body = compile_source(src)
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertEqual([w for w in warns if "donut" in w.lower()], [])
+
+    def test_donut_legacy_ul_shape_still_supported(self):
+        """The pre-fix <ul>/<li data-pct> shape is also matched, in
+        case anyone hand-rolled a donut via :::raw."""
         body = (
             '<article class="ara-doc">'
             '<ul class="ara-donut" data-title="x">'
@@ -877,31 +943,17 @@ class QSanityGateTest(unittest.TestCase):
             '</ul></article>'
         )
         warns = chk.qsanity_scan(body, 2026)
-        self.assertEqual(len(warns), 1)
-        self.assertIn("175", warns[0])  # the sum
-        self.assertIn("donut", warns[0].lower())
+        donut_warns = [w for w in warns if "donut" in w.lower()]
+        self.assertEqual(len(donut_warns), 1)
+        self.assertIn("175", donut_warns[0])
 
-    def test_donut_summing_under_limit_silent(self):
-        """Donut summing to 100% (or 105% with rounding tolerance) is silent."""
+    def test_donut_legacy_ul_under_limit_silent(self):
         body = (
             '<article class="ara-doc">'
             '<ul class="ara-donut" data-title="x">'
             '<li data-pct="40">A</li>'
             '<li data-pct="35">B</li>'
             '<li data-pct="25">C</li>'
-            '</ul></article>'
-        )
-        warns = chk.qsanity_scan(body, 2026)
-        self.assertEqual([w for w in warns if "donut" in w.lower()], [])
-
-    def test_donut_rounding_tolerance(self):
-        """Sum of 103% is within the 105% tolerance — should NOT warn."""
-        body = (
-            '<article class="ara-doc">'
-            '<ul class="ara-donut" data-title="x">'
-            '<li data-pct="34">A</li>'
-            '<li data-pct="35">B</li>'
-            '<li data-pct="34">C</li>'
             '</ul></article>'
         )
         warns = chk.qsanity_scan(body, 2026)
