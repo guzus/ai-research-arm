@@ -352,5 +352,16 @@
     "source": "claude",
     "prompt": "SIVE company",
     "tags": []
+  },
+  {
+    "slug": "photonics-supply-chain",
+    "file": "2026-05-18T032522--photonics-supply-chain.html",
+    "kind": "fragment",
+    "title": "The photonics supply chain: how AI's optical bill of materials concentrates onto a few dozen companies",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-18T03:25:22Z",
+    "source": "workflow_dispatch",
+    "prompt": "photonics supply chain",
+    "tags": []
   }
 ]
