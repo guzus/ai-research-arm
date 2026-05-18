@@ -507,6 +507,7 @@ jobs:
         uses: ./.github/actions/safe-push
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          noop-pushed: 'false'
 
       # ── Vercel deploy hook (claude tier only) ──────────────────────
       # Vercel's GitHub App webhook should fire on bot pushes too, but
