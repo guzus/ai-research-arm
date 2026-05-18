@@ -257,11 +257,11 @@ jobs:
           path.write_text(before + replacement + after)
           PY
 
-      # Commit and push
+      # Commit and push (split into two steps so we can reuse the shared
+      # safe-push composite action for the publish half).
       - name: Commit front page
         if: steps.check.outputs.exists == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TODAY: ${{ steps.date.outputs.date }}
         run: |
           # Stage ONLY today's PNG, not the entire research/front-page/ dir.
@@ -273,9 +273,18 @@ jobs:
           # `git lfs migrate import` runbook.
           git add "research/front-page/${TODAY}-front-page.png" README.md
           git commit -m "Front page ${TODAY}" || echo "Nothing to commit"
-          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
-          git pull --rebase || true
-          git push || echo "Nothing to push"
+
+      # Use the shared safe-push composite action (post-PR-#58 algorithm):
+      # stash any leftover working-tree state before rebasing, so the
+      # rebase cannot fail to start with "cannot rebase: You have unstaged
+      # changes". Push failures now propagate (previously silently swallowed
+      # by `git push || echo "Nothing to push"`).
+      # See .github/actions/safe-push/action.yml.
+      - name: Push front page
+        if: steps.check.outputs.exists == 'true'
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       # Publish front page image via hooker (routes to Telegram thread)
       - name: Publish front page via hooker

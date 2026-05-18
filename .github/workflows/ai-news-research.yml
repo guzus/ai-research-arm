@@ -285,13 +285,16 @@ jobs:
 
             CRITICAL: You MUST write a real file with actual news. Do not write placeholder content. NO DUPLICATES from previous reports.
 
+      # Use the shared safe-push composite action (post-PR-#58 algorithm):
+      # stash any leftover working-tree state before rebasing, so the
+      # rebase cannot fail to start with "cannot rebase: You have unstaged
+      # changes". Push failures now propagate (previously silently swallowed
+      # by `git push || echo "Nothing to push"`).
+      # See .github/actions/safe-push/action.yml.
       - name: Push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          git pull --rebase || true
-          git push || echo "Nothing to push"
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Read summary for Telegram
         id: summary
