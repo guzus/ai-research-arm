@@ -35,6 +35,7 @@ def _ns(**overrides):
         refs_min=None,
         primary_share_min=None,
         cited_claims_min=None,
+        min_corroborating_sources=None,
     )
     defaults.update(overrides)
     return argparse.Namespace(**defaults)
@@ -633,6 +634,384 @@ class VerifierFindingsAuditTest(unittest.TestCase):
             # Empty text → can't audit → not added to surviving
             self.assertEqual(total, 1)
             self.assertEqual(surviving, [])
+
+
+class CorroborationGateTest(unittest.TestCase):
+    """Gate 1: --min-corroborating-sources. Each substantive cited claim
+    needs N distinct source hosts unless explicitly wrapped in
+    `==single-source: ...==`.
+
+    The corpus calibration (PR body) shows N=2 default would fail 84%
+    of historical claims, so the gate ships opt-in only. Tests assert
+    correctness, not the default-on policy."""
+
+    def _article_with_refs(self, body_inner: str, refs: list[tuple[int, str]]) -> str:
+        """Build an article with explicit (ref_num, host) ref entries.
+        Each ref gets a distinct URL path so URL-normalization can't
+        collapse them."""
+        ref_lis = "".join(
+            f'<li id="ref-{n}"><a href="https://{host}/path/{n}">src</a></li>'
+            for n, host in refs
+        )
+        return (
+            '<article class="ara-doc">'
+            f"<p>{body_inner}</p>"
+            f'<ol class="ara-refs">{ref_lis}</ol>'
+            "</article>"
+        )
+
+    def test_claim_with_two_distinct_hosts_passes(self):
+        body = self._article_with_refs(
+            'OpenAI raised $40 billion in 2026'
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>'
+            '<sup><a class="ara-cite" href="#ref-2">2</a></sup>.',
+            [(1, "anthropic.com"), (2, "openai.com")],
+        )
+        failing, total = chk.corroboration_audit(body, 2)
+        self.assertEqual(total, 1)
+        self.assertEqual(failing, [])
+
+    def test_claim_with_two_cites_same_host_fails(self):
+        """Two cites both to the same host (different URLs on same
+        host) count as 1 distinct host — claim fails @ N=2."""
+        body = self._article_with_refs(
+            'Cerebras shipped 142x speedup'
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>'
+            '<sup><a class="ara-cite" href="#ref-2">2</a></sup>.',
+            [(1, "cerebras.ai"), (2, "cerebras.ai")],
+        )
+        failing, total = chk.corroboration_audit(body, 2)
+        self.assertEqual(total, 1)
+        self.assertEqual(len(failing), 1)
+        self.assertEqual(failing[0]["distinct_hosts"], 1)
+        self.assertEqual(failing[0]["hosts"], ["cerebras.ai"])
+
+    def test_single_source_wrapping_exempts_claim(self):
+        """A failing-by-host-count claim wrapped in <mark> whose inner
+        text begins with `single-source:` is exempt — that's the
+        agent's explicit acknowledgment."""
+        body = self._article_with_refs(
+            '<mark class="ara-mark">single-source: Cerebras posted '
+            '21 PB/s aggregate bandwidth'
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>.</mark>',
+            [(1, "cerebras.ai")],
+        )
+        failing, total = chk.corroboration_audit(body, 2)
+        self.assertEqual(total, 1)
+        self.assertEqual(failing, [],
+                         "single-source: wrapping must exempt the claim")
+
+    def test_single_source_exemption_via_dsl_compile(self):
+        """Wraps the claim via DSL `==single-source: ...==` (the
+        intended author-facing syntax) and confirms the compiled
+        HTML survives the corroboration audit. Guards against the
+        compile output shape changing under us."""
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from compile_ara import parse_inline
+        sentence = (
+            '==single-source: Cerebras posted 21 PB/s bandwidth[^1].=='
+        )
+        compiled = parse_inline(sentence)
+        body = (
+            '<article class="ara-doc">'
+            f'<p>{compiled}</p>'
+            '<ol class="ara-refs">'
+            '<li id="ref-1"><a href="https://cerebras.ai/x">src</a></li>'
+            '</ol></article>'
+        )
+        failing, total = chk.corroboration_audit(body, 2)
+        self.assertEqual(failing, [],
+                         "DSL-compiled single-source wrap must exempt")
+
+    def test_no_cited_claims_passes_trivially(self):
+        """An article with no cited substantive sentences (e.g. a
+        methodology piece) passes the gate vacuously."""
+        body = (
+            '<article class="ara-doc">'
+            '<p>This is a methodology piece with no factual claims.</p>'
+            '<p>It explains an approach without numbers or attributions.</p>'
+            '</article>'
+        )
+        failing, total = chk.corroboration_audit(body, 2)
+        self.assertEqual(total, 0)
+        self.assertEqual(failing, [])
+
+    def test_non_substantive_cited_sentence_ignored(self):
+        """A cited sentence with no number/percent/dollar/name-entity
+        proxy isn't a 'substantive claim' — gate ignores it."""
+        body = self._article_with_refs(
+            'see this related work'
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>.',
+            [(1, "arxiv.org")],
+        )
+        # No digits, no $, no %, no multi-word capitalized phrase →
+        # not substantive, not counted.
+        failing, total = chk.corroboration_audit(body, 2)
+        self.assertEqual(total, 0)
+
+    def test_headings_excluded_from_substantive_count(self):
+        """Headings often look substantive (multi-word capitalized)
+        but rarely carry meaningful claims. The pre-strip step removes
+        them so they can't contribute false positives."""
+        body = (
+            '<article class="ara-doc">'
+            '<h2>Cerebras WSE-3 Architecture'
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup></h2>'
+            '<p>A non-substantive cited sentence is here too.</p>'
+            '<ol class="ara-refs">'
+            '<li id="ref-1"><a href="https://cerebras.ai/x">src</a></li>'
+            '</ol></article>'
+        )
+        failing, total = chk.corroboration_audit(body, 2)
+        # Heading-cited claim is stripped; body claim has no cite → 0 total
+        self.assertEqual(total, 0)
+
+    def test_multi_cite_one_resolvable_one_orphan(self):
+        """A cite to a ref-num that doesn't exist in the references
+        list (orphan citation) doesn't contribute a host. If the only
+        OTHER cite is a duplicate host, claim fails."""
+        body = self._article_with_refs(
+            'Nvidia hit $62B revenue'
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>'
+            '<sup><a class="ara-cite" href="#ref-99">99</a></sup>.',
+            [(1, "nvidia.com")],  # ref-99 is orphan
+        )
+        failing, total = chk.corroboration_audit(body, 2)
+        self.assertEqual(total, 1)
+        self.assertEqual(len(failing), 1)
+        self.assertEqual(failing[0]["distinct_hosts"], 1)
+        self.assertEqual(failing[0]["hosts"], ["nvidia.com"])
+
+    def test_enforce_quality_threading(self):
+        """Gate 1 plumbs through enforce_quality()."""
+        body = self._article_with_refs(
+            'Nvidia hit $62B in Q4 2026'
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>.',
+            [(1, "nvidia.com")],
+        )
+        errs = chk.enforce_quality(body, _ns(min_corroborating_sources=2))
+        self.assertEqual(len(errs), 1)
+        self.assertIn("distinct source host", errs[0])
+        self.assertIn("single-source", errs[0])
+
+    def test_enforce_quality_threshold_one_passes(self):
+        """At N=1 the gate degenerates to 'every cited claim has a
+        resolvable host' which is the existing cited-claims-min gate.
+        Still useful as a smoke test."""
+        body = self._article_with_refs(
+            'Nvidia hit $62B revenue'
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>.',
+            [(1, "nvidia.com")],
+        )
+        errs = chk.enforce_quality(body, _ns(min_corroborating_sources=1))
+        self.assertEqual(errs, [])
+
+    def test_ref_host_map_skips_title_only_refs(self):
+        """Refs without an http(s) URL don't get added to the host map
+        — a cite pointing at them resolves to no host (treated as not
+        contributing to the distinct-host count)."""
+        body = (
+            '<article class="ara-doc"><p>Claim with cite.</p>'
+            '<ol class="ara-refs">'
+            '<li id="ref-1">Personal communication.</li>'
+            '<li id="ref-2"><a href="https://arxiv.org/x">paper</a></li>'
+            '</ol></article>'
+        )
+        m = chk.build_ref_host_map(body)
+        self.assertNotIn(1, m)
+        self.assertEqual(m.get(2), "arxiv.org")
+
+    def test_www_prefix_normalized_in_host_map(self):
+        """Hosts in the map are normalized (lowercase, www stripped)
+        so duplicate-host detection treats www.example.com and
+        example.com as the same source."""
+        body = (
+            '<article class="ara-doc"><p>x</p>'
+            '<ol class="ara-refs">'
+            '<li id="ref-1"><a href="https://www.Cerebras.ai/x">a</a></li>'
+            '<li id="ref-2"><a href="https://CEREBRAS.AI/y">b</a></li>'
+            '</ol></article>'
+        )
+        m = chk.build_ref_host_map(body)
+        self.assertEqual(m.get(1), "cerebras.ai")
+        self.assertEqual(m.get(2), "cerebras.ai")
+
+    def test_first_url_per_ref_li_is_canonical(self):
+        """A ref entry with multiple URLs uses ONLY the first http URL
+        for host classification — bibliographic convention is primary
+        source first."""
+        body = (
+            '<article class="ara-doc"><p>x</p>'
+            '<ol class="ara-refs">'
+            '<li id="ref-1">'
+            '<a href="https://arxiv.org/abs/2024.001">paper</a>'
+            ' (also at <a href="https://medium.com/repost">medium</a>)'
+            '</li></ol></article>'
+        )
+        m = chk.build_ref_host_map(body)
+        # First URL is arxiv; medium does NOT register as the ref host
+        self.assertEqual(m.get(1), "arxiv.org")
+
+    def test_corroboration_invalid_min(self):
+        """N must be >= 1."""
+        body = '<article><p>x</p></article>'
+        with self.assertRaises(ValueError):
+            chk.corroboration_audit(body, 0)
+
+
+class QSanityGateTest(unittest.TestCase):
+    """Gate 2: --qsanity. Warn-only in v1 — qsanity_scan returns the
+    list of warning lines; the CLI prints to stderr but doesn't fail
+    the build. Tests assert pattern correctness."""
+
+    def test_donut_summing_over_100_warns(self):
+        """A :::donut block with data-pct values summing > 105% is flagged.
+        Per the qsanity rationale: donut slices are slices of one
+        whole — if they overlap, the chart is wrong."""
+        body = (
+            '<article class="ara-doc">'
+            '<ul class="ara-donut" data-title="x">'
+            '<li data-pct="80">A</li>'
+            '<li data-pct="50">B</li>'
+            '<li data-pct="45">C</li>'
+            '</ul></article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertEqual(len(warns), 1)
+        self.assertIn("175", warns[0])  # the sum
+        self.assertIn("donut", warns[0].lower())
+
+    def test_donut_summing_under_limit_silent(self):
+        """Donut summing to 100% (or 105% with rounding tolerance) is silent."""
+        body = (
+            '<article class="ara-doc">'
+            '<ul class="ara-donut" data-title="x">'
+            '<li data-pct="40">A</li>'
+            '<li data-pct="35">B</li>'
+            '<li data-pct="25">C</li>'
+            '</ul></article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertEqual([w for w in warns if "donut" in w.lower()], [])
+
+    def test_donut_rounding_tolerance(self):
+        """Sum of 103% is within the 105% tolerance — should NOT warn."""
+        body = (
+            '<article class="ara-doc">'
+            '<ul class="ara-donut" data-title="x">'
+            '<li data-pct="34">A</li>'
+            '<li data-pct="35">B</li>'
+            '<li data-pct="34">C</li>'
+            '</ul></article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertEqual([w for w in warns if "donut" in w.lower()], [])
+
+    def test_market_share_over_100_warns(self):
+        body = (
+            '<article class="ara-doc">'
+            '<p>Cerebras commands a 175% market share in wafer-scale chips.</p>'
+            '</article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertTrue(any("175" in w and "market share" in w for w in warns))
+
+    def test_market_share_at_99_silent(self):
+        body = (
+            '<article class="ara-doc">'
+            '<p>Cerebras commands a 99% market share in wafer-scale chips.</p>'
+            '</article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertEqual([w for w in warns if "market share" in w], [])
+
+    def test_yoy_growth_over_1000_warns(self):
+        body = (
+            '<article class="ara-doc">'
+            '<p>Revenue grew 2500% YoY in Q4 2026.</p>'
+            '</article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertTrue(any("2500" in w and "YoY" in w for w in warns))
+
+    def test_yoy_growth_at_500_silent(self):
+        body = (
+            '<article class="ara-doc">'
+            '<p>Revenue grew 500% YoY in Q4 2026.</p>'
+            '</article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertEqual([w for w in warns if "YoY" in w], [])
+
+    def test_future_date_over_horizon_warns(self):
+        body = (
+            '<article class="ara-doc">'
+            '<p>The forecast projects a peak in 2055 based on current rates.</p>'
+            '</article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        # 2055 > 2026+10 → warn
+        self.assertTrue(any("2055" in w for w in warns))
+
+    def test_future_date_in_horizon_silent(self):
+        """2032 is within 10y horizon of 2026 — silent."""
+        body = (
+            '<article class="ara-doc">'
+            '<p>By 2032 the market is expected to mature.</p>'
+            '</article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertEqual([w for w in warns if "2032" in w], [])
+
+    def test_past_year_silent(self):
+        """Historical references aren't flagged."""
+        body = (
+            '<article class="ara-doc">'
+            '<p>The IPO was filed in 2024 and priced in 2026.</p>'
+            '</article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertEqual(warns, [])
+
+    def test_future_date_deduped(self):
+        """The same year mentioned twice should only warn once."""
+        body = (
+            '<article class="ara-doc">'
+            '<p>The 2055 forecast vs the 2055 actual is informative.</p>'
+            '</article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertEqual(len([w for w in warns if "2055" in w]), 1)
+
+    def test_clean_article_no_warnings(self):
+        body = (
+            '<article class="ara-doc">'
+            '<p>Revenue was $5.55 billion in Q4 2026, with 75% gross margin.</p>'
+            '</article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        self.assertEqual(warns, [])
+
+    def test_nbis_class_pattern_revenue_per_employee(self):
+        """Documents that the original NBIS-class failure (e.g.
+        '1000 employees, $5T revenue' = $5B per employee, implausible)
+        is NOT caught by v1's pattern set. This is intentional — the
+        revenue/employee pairing pattern requires reliable proximity
+        matching which has high false-positive rates on early-stage
+        SaaS. Documented in PR body and the --qsanity CLI help.
+
+        If a future iteration wants to add this pattern, build it
+        with a tight (<80 char) proximity window and start warn-only.
+        """
+        body = (
+            '<article class="ara-doc">'
+            '<p>NBIS had $5T revenue with 1000 employees.</p>'
+            '</article>'
+        )
+        warns = chk.qsanity_scan(body, 2026)
+        # This pattern is documented as out-of-scope for v1.
+        # When/if added, update this test.
+        self.assertEqual(warns, [])
 
 
 class SanityAgainstKnownGoodArticleTest(unittest.TestCase):
