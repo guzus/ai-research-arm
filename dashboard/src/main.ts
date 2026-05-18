@@ -1415,10 +1415,17 @@ function bindAraTooltip(target: Element): void {
   ensureAraTooltipDelegates();
   if (target.getAttribute(ARA_TOOLTIP_BOUND_ATTR) === '1') return;
   target.setAttribute(ARA_TOOLTIP_BOUND_ATTR, '1');
-  const showFromMouse = (event: MouseEvent): void => {
+  // Typed as EventListener (not MouseEvent) because addEventListener on the
+  // base Element interface uses ElementEventMap, which does not include
+  // pointer/mouse events — TS6 routes through the string-based overload that
+  // requires Event. PointerEvent extends MouseEvent at runtime, so the
+  // instanceof narrowing covers both pointer* and mouse* listeners below.
+  const showFromMouse: EventListener = (event) => {
+    if (!(event instanceof MouseEvent)) return;
     showAraTooltip(target, event.clientX, event.clientY);
   };
-  const moveFromMouse = (event: MouseEvent): void => {
+  const moveFromMouse: EventListener = (event) => {
+    if (!(event instanceof MouseEvent)) return;
     const tooltip = document.getElementById('araTooltip') as HTMLDivElement | null;
     if (!tooltip || tooltip.hidden) return;
     placeAraTooltip(tooltip, event.clientX, event.clientY);
@@ -1460,7 +1467,7 @@ function stackSegmentCategory(seg: HTMLElement): string {
     ? stack.nextElementSibling
     : stack?.parentElement?.querySelector('.ara-stack-legend');
   const legendItem = legend?.querySelector(`.ara-stack-dot--${idx}`)?.closest('li');
-  return compactText(legendItem) || `Segment ${idx}`;
+  return compactText(legendItem ?? null) || `Segment ${idx}`;
 }
 
 function decorateDataTooltips(root: HTMLElement): void {
