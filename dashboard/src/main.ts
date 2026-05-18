@@ -1085,6 +1085,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     renderLineCharts(article);
     renderDonuts(article);
     renderSlopes(article);
+    applyAraTooltips(article);
     renderResearchTOC(article);
     addSectionAnchors(article);
     scrollToHashIfPresent();
@@ -1194,6 +1195,229 @@ function appendSvgTitle(el: SVGElement, text: string): void {
   el.appendChild(title);
 }
 
+const ARA_TOOLTIP_TITLE_ATTR = 'data-ara-tooltip-title';
+const ARA_TOOLTIP_BODY_ATTR = 'data-ara-tooltip-body';
+const ARA_TOOLTIP_BOUND_ATTR = 'data-ara-tooltip-bound';
+let araTooltipDelegatesBound = false;
+
+function compactText(el: Element | null): string {
+  return (el?.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+function formatSignedNumber(value: number, digits?: number): string {
+  if (value === 0) return formatNumber(0, digits);
+  const sign = value > 0 ? '+' : '-';
+  return sign + formatNumber(Math.abs(value), digits);
+}
+
+function deltaDigits(value: number): number {
+  const abs = Math.abs(value);
+  if (abs === 0) return 0;
+  if (abs < 1) return 2;
+  if (abs < 10) return 2;
+  return 1;
+}
+
+function formatSignedUnitValue(value: number, unit: string): string {
+  if (value === 0) return formatUnitValue(0, unit);
+  const sign = value > 0 ? '+' : '-';
+  return sign + formatUnitValue(Math.abs(value), unit, deltaDigits(value));
+}
+
+function pctLabel(raw: string | undefined): string | null {
+  if (!raw) return null;
+  const n = Number(raw);
+  if (!Number.isFinite(n)) return null;
+  return `${Math.max(0, Math.min(100, n))}%`;
+}
+
+function setAraTooltip(target: Element, title: string, body = ''): void {
+  const cleanTitle = title.replace(/\s+/g, ' ').trim();
+  const cleanBody = body.replace(/\s+/g, ' ').trim();
+  if (!cleanTitle) return;
+  target.setAttribute(ARA_TOOLTIP_TITLE_ATTR, cleanTitle);
+  if (cleanBody) target.setAttribute(ARA_TOOLTIP_BODY_ATTR, cleanBody);
+  else target.removeAttribute(ARA_TOOLTIP_BODY_ATTR);
+  target.setAttribute('aria-label', cleanBody ? `${cleanTitle}: ${cleanBody}` : cleanTitle);
+  if ((target instanceof HTMLElement || target instanceof SVGElement) && !target.hasAttribute('tabindex')) {
+    target.setAttribute('tabindex', '0');
+  }
+}
+
+function ensureAraTooltip(): HTMLDivElement {
+  let tooltip = document.getElementById('araTooltip') as HTMLDivElement | null;
+  if (tooltip) return tooltip;
+  tooltip = document.createElement('div');
+  tooltip.id = 'araTooltip';
+  tooltip.className = 'ara-tooltip';
+  tooltip.setAttribute('role', 'tooltip');
+  tooltip.hidden = true;
+  document.body.appendChild(tooltip);
+  return tooltip;
+}
+
+function placeAraTooltip(tooltip: HTMLElement, clientX: number, clientY: number): void {
+  const gap = 12;
+  const edge = 8;
+  const rect = tooltip.getBoundingClientRect();
+  let x = clientX + gap;
+  if (x + rect.width > window.innerWidth - edge) x = clientX - rect.width - gap;
+  x = Math.max(edge, Math.min(window.innerWidth - rect.width - edge, x));
+  let y = clientY - rect.height - gap;
+  if (y < edge) y = clientY + gap;
+  y = Math.max(edge, Math.min(window.innerHeight - rect.height - edge, y));
+  tooltip.style.left = `${x}px`;
+  tooltip.style.top = `${y}px`;
+}
+
+function showAraTooltip(target: Element, clientX: number, clientY: number): void {
+  const title = target.getAttribute(ARA_TOOLTIP_TITLE_ATTR);
+  if (!title) return;
+  const body = target.getAttribute(ARA_TOOLTIP_BODY_ATTR) || '';
+  const tooltip = ensureAraTooltip();
+  tooltip.textContent = '';
+  const titleEl = document.createElement('div');
+  titleEl.className = 'ara-tooltip-title';
+  titleEl.textContent = title;
+  tooltip.appendChild(titleEl);
+  if (body) {
+    const bodyEl = document.createElement('div');
+    bodyEl.className = 'ara-tooltip-body';
+    bodyEl.textContent = body;
+    tooltip.appendChild(bodyEl);
+  }
+  tooltip.hidden = false;
+  tooltip.classList.add('is-visible');
+  placeAraTooltip(tooltip, clientX, clientY);
+}
+
+function hideAraTooltip(): void {
+  const tooltip = document.getElementById('araTooltip') as HTMLDivElement | null;
+  if (!tooltip) return;
+  tooltip.classList.remove('is-visible');
+  tooltip.hidden = true;
+}
+
+function closestAraTooltipTarget(start: Element | null): Element | null {
+  let el: Element | null = start;
+  while (el && el !== document.documentElement) {
+    if (el.hasAttribute(ARA_TOOLTIP_TITLE_ATTR)) return el;
+    el = el.parentElement;
+  }
+  return null;
+}
+
+function ensureAraTooltipDelegates(): void {
+  if (araTooltipDelegatesBound) return;
+  araTooltipDelegatesBound = true;
+
+  const handleMove = (event: MouseEvent): void => {
+    const target = closestAraTooltipTarget(document.elementFromPoint(event.clientX, event.clientY));
+    if (target) showAraTooltip(target, event.clientX, event.clientY);
+    else hideAraTooltip();
+  };
+
+  document.addEventListener('mousemove', handleMove, true);
+  document.addEventListener('pointermove', handleMove, true);
+  document.addEventListener('mouseleave', hideAraTooltip, true);
+  document.addEventListener('focusin', (event) => {
+    const target = closestAraTooltipTarget(event.target instanceof Element ? event.target : null);
+    if (!target) return;
+    const rect = target.getBoundingClientRect();
+    showAraTooltip(target, rect.left + rect.width / 2, rect.top + rect.height / 2);
+  }, true);
+  document.addEventListener('focusout', hideAraTooltip, true);
+}
+
+function bindAraTooltip(target: Element): void {
+  ensureAraTooltipDelegates();
+  if (target.getAttribute(ARA_TOOLTIP_BOUND_ATTR) === '1') return;
+  target.setAttribute(ARA_TOOLTIP_BOUND_ATTR, '1');
+  const showFromMouse = (event: MouseEvent): void => {
+    showAraTooltip(target, event.clientX, event.clientY);
+  };
+  const moveFromMouse = (event: MouseEvent): void => {
+    const tooltip = document.getElementById('araTooltip') as HTMLDivElement | null;
+    if (!tooltip || tooltip.hidden) return;
+    placeAraTooltip(tooltip, event.clientX, event.clientY);
+  };
+  target.addEventListener('pointerenter', showFromMouse);
+  target.addEventListener('pointermove', moveFromMouse);
+  target.addEventListener('pointerleave', hideAraTooltip);
+  target.addEventListener('mouseenter', showFromMouse);
+  target.addEventListener('mousemove', moveFromMouse);
+  target.addEventListener('mouseleave', hideAraTooltip);
+  const showFromFocus = () => {
+    const rect = target.getBoundingClientRect();
+    showAraTooltip(target, rect.left + rect.width / 2, rect.top + rect.height / 2);
+  };
+  target.addEventListener('focus', showFromFocus);
+  target.addEventListener('focusin', showFromFocus);
+  target.addEventListener('blur', hideAraTooltip);
+  target.addEventListener('focusout', hideAraTooltip);
+}
+
+function numberedVariant(el: Element, prefix: string): string | null {
+  for (const className of Array.from(el.classList)) {
+    const match = new RegExp(`^${prefix}--(\\d+)$`).exec(className);
+    if (match) return match[1];
+  }
+  return null;
+}
+
+function stackSegmentCategory(seg: HTMLElement): string {
+  const ownText = compactText(seg);
+  if (ownText) return ownText;
+  const idx = numberedVariant(seg, 'ara-stack-seg');
+  if (!idx) return 'Segment';
+  const rows = seg.closest('.ara-stack-rows');
+  const rowCat = rows?.querySelector(`.ara-stack-rows-cat--${idx}`);
+  if (rowCat) return compactText(rowCat);
+  const stack = seg.closest('.ara-stack-bar');
+  const legend = stack?.nextElementSibling?.classList.contains('ara-stack-legend')
+    ? stack.nextElementSibling
+    : stack?.parentElement?.querySelector('.ara-stack-legend');
+  const legendItem = legend?.querySelector(`.ara-stack-dot--${idx}`)?.closest('li');
+  return compactText(legendItem) || `Segment ${idx}`;
+}
+
+function decorateDataTooltips(root: HTMLElement): void {
+  for (const bar of root.querySelectorAll<HTMLElement>('.ara-bar[data-pct]')) {
+    const pct = pctLabel(bar.dataset.pct);
+    if (!pct) continue;
+    const label = compactText(bar.querySelector('.ara-bar-label')) || 'Bar';
+    const value = compactText(bar.querySelector('.ara-bar-value'));
+    setAraTooltip(bar, label, value ? `${value} · ${pct} of scale` : `${pct} of scale`);
+  }
+
+  for (const item of root.querySelectorAll<HTMLElement>('.ara-rank-item')) {
+    const fill = item.querySelector<HTMLElement>('.ara-rank-fill[data-pct]');
+    const pct = pctLabel(fill?.dataset.pct);
+    if (!fill || !pct) continue;
+    const rank = compactText(item.querySelector('.ara-rank-num'));
+    const label = compactText(item.querySelector('.ara-rank-label')) || 'Ranked item';
+    const value = compactText(item.querySelector('.ara-rank-value'));
+    const prefix = rank ? `#${rank} · ` : '';
+    setAraTooltip(item, `${prefix}${label}`, value ? `${value} · ${pct} of max` : `${pct} of max`);
+  }
+
+  for (const seg of root.querySelectorAll<HTMLElement>('.ara-stack-seg[data-pct]')) {
+    const pct = pctLabel(seg.dataset.pct);
+    if (!pct) continue;
+    const row = seg.closest('.ara-stack-rows-row');
+    const rowLabel = compactText(row?.querySelector('.ara-stack-rows-label') || null);
+    const category = stackSegmentCategory(seg);
+    setAraTooltip(seg, rowLabel ? `${rowLabel} · ${category}` : category, pct);
+  }
+}
+
+function applyAraTooltips(root: HTMLElement): void {
+  decorateDataTooltips(root);
+  for (const target of root.querySelectorAll<Element>(`[${ARA_TOOLTIP_TITLE_ATTR}]`)) {
+    bindAraTooltip(target);
+  }
+}
+
 /** Distribute words across `lineCount` lines, minimizing the longest line
  * (in characters, including the inter-word space). Greedy enumeration of
  * split points; O(W^(lineCount-1)) so we cap lineCount at 3 and words at ≤8
@@ -1296,6 +1520,16 @@ function pathFromPoints(points: Array<[number, number]>): string {
     .join(' ');
 }
 
+type LineChartPoint = {
+  x: number;
+  y: number;
+  xLabel: string;
+  valueLabel: string;
+  seriesLabel: string;
+  seriesIndex: number;
+  pointIndex: number;
+};
+
 /** Sparkline — small inline trend, no axes. */
 function renderSparklines(root: HTMLElement): void {
   const els = root.querySelectorAll<HTMLElement>('.ara-sparkline');
@@ -1319,6 +1553,15 @@ function renderSparklines(root: HTMLElement): void {
     const last = points[points.length - 1];
     const dot = svgEl<SVGCircleElement>('circle', { class: 'ara-sparkline-end', cx: last[0], cy: last[1], r: 1.6 });
     svg.appendChild(dot);
+    const firstValue = values[0];
+    const lastValue = values[values.length - 1];
+    const delta = lastValue - firstValue;
+    const pct = firstValue !== 0 ? ` (${formatSignedNumber((delta / Math.abs(firstValue)) * 100, 1)}%)` : '';
+    setAraTooltip(
+      el,
+      `Sparkline ${formatNumber(firstValue)} -> ${formatNumber(lastValue)}`,
+      `change ${formatSignedNumber(delta, deltaDigits(delta))}${pct}`,
+    );
     el.textContent = '';
     el.appendChild(svg);
     el.dataset.rendered = '1';
@@ -1343,7 +1586,7 @@ function renderLineCharts(root: HTMLElement): void {
       seriesList.push({ values: v, label });
     }
     if (!seriesList.length) continue;
-    const xLabels = parseLabels(el.dataset.xLabels, 20);
+    const xLabels = parseLabels(el.dataset.xLabels, 1000);
     const yUnit = el.dataset.yUnit || '';
     const title = el.dataset.title || '';
     const subtitle = el.dataset.subtitle || '';
@@ -1411,6 +1654,8 @@ function renderLineCharts(root: HTMLElement): void {
       }
     }
 
+    const chartPoints: LineChartPoint[] = [];
+
     // Series paths
     seriesList.forEach((s, idx) => {
       const points: Array<[number, number]> = s.values.map((v, i) => [
@@ -1448,7 +1693,155 @@ function renderLineCharts(root: HTMLElement): void {
           svg.appendChild(hit);
         });
       }
+
+      points.forEach(([x, y], pointIdx) => {
+        chartPoints.push({
+          x,
+          y,
+          xLabel: xLabels[pointIdx] || `point ${pointIdx + 1}`,
+          valueLabel: formatUnitValue(s.values[pointIdx], yUnit),
+          seriesLabel: s.label,
+          seriesIndex: idx,
+          pointIndex: pointIdx,
+        });
+      });
     });
+
+    if (chartPoints.length) {
+      const hoverZone = svgEl<SVGRectElement>('rect', {
+        class: 'ara-chart-hover-zone',
+        x: ML,
+        y: MT,
+        width: innerW,
+        height: innerH,
+        tabindex: '0',
+        role: 'img',
+        'aria-label': `${title || 'Line chart'}: hover or focus to inspect point values`,
+      });
+      const tooltip = svgEl<SVGGElement>('g', { class: 'ara-chart-tooltip', 'aria-hidden': 'true' });
+      const guide = svgEl<SVGLineElement>('line', {
+        class: 'ara-chart-tooltip-guide',
+        x1: ML,
+        y1: MT,
+        x2: ML,
+        y2: H - MB,
+      });
+      const marker = svgEl<SVGCircleElement>('circle', {
+        class: 'ara-chart-tooltip-marker ara-chart-point--1',
+        cx: ML,
+        cy: MT,
+        r: 4,
+      });
+      const box = svgEl<SVGRectElement>('rect', {
+        class: 'ara-chart-tooltip-box',
+        x: 0,
+        y: 0,
+        width: 80,
+        height: 36,
+        rx: 0,
+      });
+      const labelText = svgEl<SVGTextElement>('text', {
+        class: 'ara-chart-tooltip-label',
+        x: 8,
+        y: 14,
+      });
+      const valueText = svgEl<SVGTextElement>('text', {
+        class: 'ara-chart-tooltip-value',
+        x: 8,
+        y: 29,
+      });
+
+      tooltip.appendChild(guide);
+      tooltip.appendChild(marker);
+      tooltip.appendChild(box);
+      tooltip.appendChild(labelText);
+      tooltip.appendChild(valueText);
+      svg.appendChild(hoverZone);
+      svg.appendChild(tooltip);
+
+      const keyboardPoints = [...chartPoints].sort((a, b) => a.pointIndex - b.pointIndex || a.seriesIndex - b.seriesIndex);
+      let keyboardIndex = keyboardPoints.length - 1;
+
+      const nearestPoint = (svgX: number, svgY: number): LineChartPoint => {
+        let best = chartPoints[0];
+        let bestScore = Number.POSITIVE_INFINITY;
+        for (const point of chartPoints) {
+          const dx = point.x - svgX;
+          const dy = point.y - svgY;
+          const score = dx * dx + dy * dy;
+          if (score < bestScore) {
+            best = point;
+            bestScore = score;
+          }
+        }
+        return best;
+      };
+
+      const showTooltip = (point: LineChartPoint): void => {
+        const labelLine = seriesList.length > 1 ? `${point.xLabel} · ${point.seriesLabel}` : point.xLabel;
+        const valueLine = point.valueLabel;
+        const maxTextW = 150;
+        const fittedLabel = fitSvgText(labelLine, maxTextW, 10);
+        const fittedValue = fitSvgText(valueLine, maxTextW, 11, true);
+        const boxW = Math.ceil(Math.max(76, Math.max(approxSvgTextWidth(fittedLabel, 10), approxSvgTextWidth(fittedValue, 11, true)) + 16));
+        const boxH = 36;
+        let boxX = point.x + 10;
+        if (boxX + boxW > W - 4) boxX = point.x - boxW - 10;
+        boxX = Math.max(4, Math.min(W - boxW - 4, boxX));
+        let boxY = point.y - boxH - 10;
+        if (boxY < 4) boxY = point.y + 10;
+        boxY = Math.max(4, Math.min(H - boxH - 4, boxY));
+
+        guide.setAttribute('x1', point.x.toFixed(2));
+        guide.setAttribute('x2', point.x.toFixed(2));
+        marker.setAttribute('cx', point.x.toFixed(2));
+        marker.setAttribute('cy', point.y.toFixed(2));
+        marker.setAttribute('class', `ara-chart-tooltip-marker ara-chart-point--${point.seriesIndex + 1}`);
+        box.setAttribute('x', boxX.toFixed(2));
+        box.setAttribute('y', boxY.toFixed(2));
+        box.setAttribute('width', String(boxW));
+        box.setAttribute('height', String(boxH));
+        labelText.setAttribute('x', (boxX + 8).toFixed(2));
+        labelText.setAttribute('y', (boxY + 14).toFixed(2));
+        labelText.textContent = fittedLabel;
+        valueText.setAttribute('x', (boxX + 8).toFixed(2));
+        valueText.setAttribute('y', (boxY + 29).toFixed(2));
+        valueText.textContent = fittedValue;
+        tooltip.classList.add('is-visible');
+        tooltip.setAttribute('aria-hidden', 'false');
+        hoverZone.setAttribute('aria-label', `${point.seriesLabel} · ${point.xLabel}: ${point.valueLabel}`);
+      };
+
+      const hideTooltip = (): void => {
+        tooltip.classList.remove('is-visible');
+        tooltip.setAttribute('aria-hidden', 'true');
+      };
+
+      const pointerToSvg = (event: PointerEvent): [number, number] => {
+        const rect = svg.getBoundingClientRect();
+        const svgX = ((event.clientX - rect.left) / Math.max(1, rect.width)) * W;
+        const svgY = ((event.clientY - rect.top) / Math.max(1, rect.height)) * H;
+        return [svgX, svgY];
+      };
+
+      hoverZone.addEventListener('pointermove', (event) => {
+        const [svgX, svgY] = pointerToSvg(event);
+        showTooltip(nearestPoint(svgX, svgY));
+      });
+      hoverZone.addEventListener('pointerleave', hideTooltip);
+      hoverZone.addEventListener('focus', () => {
+        keyboardIndex = keyboardPoints.length - 1;
+        showTooltip(keyboardPoints[keyboardIndex]);
+      });
+      hoverZone.addEventListener('blur', hideTooltip);
+      hoverZone.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        const step = event.key === 'ArrowRight' ? 1 : -1;
+        keyboardIndex = Math.max(0, Math.min(keyboardPoints.length - 1, keyboardIndex + step));
+        showTooltip(keyboardPoints[keyboardIndex]);
+      });
+    }
 
     el.appendChild(svg);
     longest; // (silence unused — could be used for x-tick stride)
@@ -1518,7 +1911,9 @@ function renderDonuts(root: HTMLElement): void {
         d,
         tabindex: '0',
       });
-      appendSvgTitle(slice, `${labels[idx]}: ${values[idx]} (${((values[idx] / total) * 100).toFixed(1)}%)`);
+      const pct = `${((values[idx] / total) * 100).toFixed(1)}%`;
+      appendSvgTitle(slice, `${labels[idx]}: ${values[idx]} (${pct})`);
+      setAraTooltip(slice, labels[idx], `${values[idx]} (${pct})`);
       svg.appendChild(slice);
     });
 
@@ -1585,6 +1980,7 @@ function renderDonuts(root: HTMLElement): void {
       const pct = (values[idx] / total) * 100;
       value.textContent = `${pct.toFixed(1)}%`;
       li.title = `${label}: ${values[idx]} (${pct.toFixed(1)}%)`;
+      setAraTooltip(li, label, `${values[idx]} (${pct.toFixed(1)}%)`);
       li.appendChild(swatch);
       li.appendChild(name);
       li.appendChild(value);
@@ -1708,6 +2104,11 @@ function renderSlopes(root: HTMLElement): void {
       const ly = lys[i];
       const ry = rys[i];
       const direction = rv > lv ? 'up' : rv < lv ? 'down' : 'flat';
+      const delta = rv - lv;
+      const pctChange = lv !== 0 ? ` · ${formatSignedNumber((delta / Math.abs(lv)) * 100, 1)}%` : '';
+      const tooltipBody =
+        `${leftLabel}: ${formatUnitValue(lv, unit)} -> ${rightLabel}: ${formatUnitValue(rv, unit)}` +
+        ` · change ${formatSignedUnitValue(delta, unit)}${pctChange}`;
       const line = svgEl<SVGLineElement>('line', {
         class: `ara-slope-line ${direction !== 'flat' ? `ara-slope-line--${direction}` : ''}`.trim(),
         x1: colL + 6,
@@ -1716,17 +2117,32 @@ function renderSlopes(root: HTMLElement): void {
         y2: ry,
       });
       svg.appendChild(line);
-      svg.appendChild(svgEl('circle', { class: 'ara-slope-dot', cx: colL + 6, cy: ly, r: 3 }));
-      svg.appendChild(svgEl('circle', { class: 'ara-slope-dot', cx: colR - 6, cy: ry, r: 3 }));
+      const hit = svgEl<SVGLineElement>('line', {
+        class: 'ara-slope-hit',
+        x1: colL + 6,
+        y1: ly,
+        x2: colR - 6,
+        y2: ry,
+      });
+      setAraTooltip(hit, items[i], tooltipBody);
+      svg.appendChild(hit);
+      const leftDot = svgEl('circle', { class: 'ara-slope-dot', cx: colL + 6, cy: ly, r: 3 });
+      setAraTooltip(leftDot, items[i], `${leftLabel}: ${formatUnitValue(lv, unit)}`);
+      svg.appendChild(leftDot);
+      const rightDot = svgEl('circle', { class: 'ara-slope-dot', cx: colR - 6, cy: ry, r: 3 });
+      setAraTooltip(rightDot, items[i], `${rightLabel}: ${formatUnitValue(rv, unit)}`);
+      svg.appendChild(rightDot);
       const lRaw = leftTexts[i];
       const lLabel = svgEl<SVGTextElement>('text', { class: 'ara-slope-label', x: colL - 8, y: labelLY[i], 'text-anchor': 'end' });
       lLabel.textContent = fitSvgText(lRaw, colL - 8, 12);
       if (lLabel.textContent !== lRaw) setSvgFullLabel(lLabel, lRaw);
+      setAraTooltip(lLabel, items[i], `${leftLabel}: ${formatUnitValue(lv, unit)}`);
       svg.appendChild(lLabel);
       const rRaw = rightTexts[i];
       const rLabel = svgEl<SVGTextElement>('text', { class: 'ara-slope-label', x: colR + 8, y: labelRY[i], 'text-anchor': 'start' });
       rLabel.textContent = fitSvgText(rRaw, W - colR - 8, 12);
       if (rLabel.textContent !== rRaw) setSvgFullLabel(rLabel, rRaw);
+      setAraTooltip(rLabel, items[i], `${rightLabel}: ${formatUnitValue(rv, unit)}`);
       svg.appendChild(rLabel);
     });
 

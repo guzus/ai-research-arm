@@ -186,6 +186,13 @@ The `x:` row is the shared x-axis labels. Every other `LABEL: nums`
 row defines one of up to 4 data series. The first non-`x:` row becomes
 `data-series-1` with label = the row's `LABEL`.
 
+Rendered `ara-line-chart` charts show the nearest point's x-label and value
+on hover or keyboard focus.
+
+Other dense visual primitives (`sparkline`, `bar`, `rank-fill`,
+`stack-seg`, `donut`, and `slope`) also expose hover/focus tooltips when
+their encoded value is not already fully legible in the mark.
+
 For real stock data, use `scripts/stock_prices.py` (the runner has
 `yfinance` installed; output is copy-pasteable into this format):
 

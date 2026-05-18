@@ -643,6 +643,42 @@
 .ara-flag--yellow { background: #b07020; }
 .ara-flag--red    { background: #b3251f; }
 
+.ara-tooltip {
+  position: fixed;
+  z-index: 1000;
+  max-width: 320px;
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  font-family: var(--font);
+  font-size: 0.76rem;
+  line-height: 1.25;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.08s ease;
+}
+
+.ara-tooltip.is-visible {
+  opacity: 1;
+}
+
+.ara-tooltip-title {
+  font-weight: 600;
+}
+
+.ara-tooltip-body {
+  margin-top: 2px;
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+}
+
+.ara-doc [data-ara-tooltip-title] {
+  cursor: help;
+}
+
 @media (prefers-color-scheme: dark) {
   .ara-flag--green  { background: #6fcc92; }
   .ara-flag--yellow { background: #d4a672; }
@@ -996,7 +1032,58 @@
 
 .ara-line-chart .ara-chart-hit {
   fill: transparent;
+  pointer-events: all;
   cursor: help;
+}
+
+.ara-line-chart .ara-chart-hover-zone {
+  fill: transparent;
+  pointer-events: all;
+  cursor: crosshair;
+}
+
+.ara-line-chart .ara-chart-hover-zone:focus {
+  outline: none;
+}
+
+.ara-line-chart .ara-chart-tooltip {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.08s ease;
+}
+
+.ara-line-chart .ara-chart-tooltip.is-visible {
+  opacity: 1;
+}
+
+.ara-line-chart .ara-chart-tooltip-guide {
+  stroke: var(--border);
+  stroke-width: 0.75;
+  stroke-dasharray: 2 3;
+}
+
+.ara-line-chart .ara-chart-tooltip-marker {
+  stroke: var(--bg);
+  stroke-width: 1.5;
+}
+
+.ara-line-chart .ara-chart-tooltip-box {
+  fill: var(--bg);
+  stroke: var(--border);
+  stroke-width: 0.75;
+}
+
+.ara-line-chart .ara-chart-tooltip-label {
+  fill: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 10px;
+}
+
+.ara-line-chart .ara-chart-tooltip-value {
+  fill: var(--text);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .ara-line-chart-legend {
@@ -1141,6 +1228,13 @@
   fill: none;
   stroke: var(--text-tertiary);
   stroke-width: 1.5;
+}
+
+.ara-slope .ara-slope-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 14;
+  pointer-events: stroke;
 }
 
 .ara-slope .ara-slope-line--up { stroke: #1b6d3a; }
