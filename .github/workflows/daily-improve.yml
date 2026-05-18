@@ -18,6 +18,9 @@ jobs:
       contents: write
       pull-requests: write
       id-token: write
+      # Updating workflow files also requires the claude[bot] GitHub App
+      # installation to have Workflows: read/write. That App-level permission
+      # cannot be granted from this workflow's permissions block.
 
     steps:
       - name: Checkout repository
@@ -117,7 +120,7 @@ jobs:
                existing historical binaries as LFS pointers, contradicting
                the deferred history-migration plan. Stage only the workflow
                and doc files you actually changed, e.g.:
-                 git add .github/workflows/*.yml IMPROVEMENTS.md
+                 git add .github/workflows/*.yml docs/archive/${{ steps.dates.outputs.today }}-improvements.md
                Or: `git add` with explicit paths for each modified file.):
                git commit -m "Methodology improvements for ${{ steps.dates.outputs.today }}"
 
@@ -160,7 +163,7 @@ jobs:
           CURRENT_BRANCH=$(git branch --show-current)
           if [ "$CURRENT_BRANCH" != "main" ]; then
             git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-            git push -u origin $CURRENT_BRANCH || echo "Already pushed or no changes"
+            git push -u origin "$CURRENT_BRANCH"
           fi
 
       - name: Publish Hooker workflow telemetry
