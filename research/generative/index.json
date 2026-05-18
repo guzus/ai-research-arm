@@ -376,5 +376,17 @@
     "source": "workflow_dispatch",
     "prompt": "photonics supply chain",
     "tags": []
+  },
+  {
+    "slug": "abf-substrates",
+    "file": "2026-05-18T103540--abf-substrates.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "ABF substrates: the $300 chokepoint inside every AI accelerator",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-18T10:35:40Z",
+    "source": "claude-code",
+    "prompt": "ABF substrates",
+    "tags": []
   }
 ]
