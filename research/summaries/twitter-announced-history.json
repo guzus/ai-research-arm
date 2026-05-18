@@ -5797,5 +5797,54 @@
     "headline": "CLAUDEDEVS BREAKS 70H SILENCE WITH CLAUDE-CODE-AT-SCALE BLOG; ANTHROPIC CORP HOLDS 94H SILENCE",
     "source": "@ClaudeDevs",
     "url": "https://x.com/ClaudeDevs/status/2056403446056784288"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-18 18:48 UTC",
+    "headline": "MUSK v. OPENAI \u2014 JURY DISMISSES ALL THREE CORE CLAIMS AS TIME-BARRED IN ~2H; ALTMAN, BROCKMAN, MICROSOFT CLEARED; APPEAL PRESERVED",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2056436278682669112"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-18 18:48 UTC",
+    "headline": "SAMA BREAKS 71-HOUR SILENCE 8 MINUTES POST-VERDICT \u2014 POSTS ABOUT CHATGPT UPDATE, NOT THE TRIAL",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2056435834333934051"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-18 18:48 UTC",
+    "headline": "ANTHROPIC CONFIRMS STAINLESS ACQUISITION \u2014 NOW OWNS SDK AND MCP TOOLING USED BY OPENAI, GOOGLE AND ANTHROPIC",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2056419620643541012"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-18 18:48 UTC",
+    "headline": "CURSOR LAUNCHES COMPOSER 2.5 \u2014 BUILT ON KIMI K2.5, CLAIMS ON-PAR WITH OPUS 4.7 AT 10X COST EFFICIENCY",
+    "source": "@cursor_ai",
+    "url": "https://x.com/cursor_ai/status/2056415413077233983"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-18 18:48 UTC",
+    "headline": "CURSOR + SPACEXAI CO-TRAINING NEXT-GEN MODEL WITH 10X MORE COMPUTE ON COLOSSUS 2'S MILLION H100-EQUIVALENTS",
+    "source": "@cursor_ai",
+    "url": "https://x.com/cursor_ai/status/2056415419536461836"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-18 18:48 UTC",
+    "headline": "POPE LEO XIV FIRST ENCYCLICAL 'MAGNIFICA HUMANITAS' LAUNCHES MAY 25 WITH ANTHROPIC CO-FOUNDER CHRIS OLAH AT THE VATICAN",
+    "source": "@Stocktwits",
+    "url": "https://x.com/Stocktwits/status/2056391719726326239"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-18 18:48 UTC",
+    "headline": "THE INFORMATION \u2014 ANTHROPIC AND OPENAI NOW GENERATE 89% OF REVENUE AMONG 34 LEADING AI STARTUPS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2056427118632812577"
   }
 ]
