@@ -31,7 +31,7 @@ from pathlib import Path
 
 # Local import — the compiler lives next door in scripts/.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from compile_ara import AraSyntaxError, compile_source  # noqa: E402
+from compile_ara import AraSyntaxError, compile_source, is_safe_image_src  # noqa: E402
 
 MAX_BODY_BYTES = 200_000
 MAX_STANDALONE_BYTES = 2_000_000
@@ -240,9 +240,24 @@ class _FragmentValidator(html.parser.HTMLParser):
         if attr == "href":
             return tag == "a" and bool(value and re.match(r"^(https?://|/|#ref-[0-9]+$)", value))
         if attr == "src":
-            return tag == "img" and bool(value and re.match(r"^(https?://|/)", value))
+            return tag == "img" and bool(value and is_safe_image_src(value))
         if attr == "alt":
             return tag == "img"
+        if attr == "loading":
+            return tag == "img" and value in {"lazy", "eager"}
+        if attr == "decoding":
+            return tag == "img" and value in {"async", "sync", "auto"}
+        if attr == "referrerpolicy":
+            return tag == "img" and value in {
+                "no-referrer",
+                "no-referrer-when-downgrade",
+                "origin",
+                "origin-when-cross-origin",
+                "same-origin",
+                "strict-origin",
+                "strict-origin-when-cross-origin",
+                "unsafe-url",
+            }
         return False
 
     def _data_attr_allowed(self, attr: str, value: str | None) -> bool:
@@ -348,7 +363,7 @@ def validate_body(body: str, kind: str) -> None:
             )
             raise ValueError(
                 f"fragment uses disallowed attributes: {preview}. "
-                "Allowed attributes are class, data-*, reference ids, safe href/src, and img alt."
+                "Allowed attributes are class, data-*, reference ids, safe href/src, and safe img metadata."
             )
     elif kind == KIND_STANDALONE:
         # Standalone docs are full HTML pages rendered inside a sandboxed

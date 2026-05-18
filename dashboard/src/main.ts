@@ -596,7 +596,7 @@ function setSafeContent(el: HTMLElement, rawHtml: string): void {
   const clean = DOMPurify.sanitize(rawHtml, {
     USE_PROFILES: { html: true, svg: true, svgFilters: true },
     ADD_TAGS: ['mark', 'article', 'figure', 'figcaption', 'iframe'],
-    ADD_ATTR: ['data-slug', 'data-pct', 'sandbox', 'loading', 'allow'],
+    ADD_ATTR: ['data-slug', 'data-pct', 'sandbox', 'loading', 'allow', 'decoding', 'referrerpolicy'],
   });
   el.insertAdjacentHTML('beforeend', clean);
 }

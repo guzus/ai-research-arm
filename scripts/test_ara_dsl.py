@@ -302,6 +302,43 @@ Claim [^1].
         self.assertIn('alt="서울"', html)
         self.assertIn("café", html)
 
+    def test_web_figure_emits_safe_image_with_credit(self):
+        html = compile_ok(
+            """---
+title: Web figure
+---
+
+## 01. Figure
+
+:::figure(src="https://images.example.com/chart.webp", alt="Chart", caption="Observed trend.", credit="Example Images", source-url="https://example.com/chart", variant=inline)
+:::
+"""
+        )
+        self.assertIn('<figure class="ara-figure ara-figure--inline">', html)
+        self.assertIn('src="https://images.example.com/chart.webp"', html)
+        self.assertIn('loading="lazy" decoding="async" referrerpolicy="no-referrer"', html)
+        self.assertIn('<span class="ara-caption-text">Observed trend.</span>', html)
+        self.assertIn('<span class="ara-credit">Source: <a href="https://example.com/chart">Example Images</a></span>', html)
+
+    def test_web_figure_rejects_remote_svg(self):
+        with self.assertRaisesRegex(compile_ara.AraSyntaxError, "remote SVG"):
+            compile_ok(
+                """---
+title: Bad figure
+---
+
+## 01. Figure
+
+:::figure(src="https://images.example.com/chart.svg", alt="Chart")
+:::
+"""
+            )
+
+    def test_validator_rejects_raw_remote_svg_img(self):
+        body = '<article class="ara-doc"><figure class="ara-figure"><img src="https://example.com/x.svg" alt="x"></figure></article>'
+        with self.assertRaisesRegex(ValueError, "disallowed attributes"):
+            writer.validate_body(body, writer.KIND_FRAGMENT)
+
     def test_inline_wrapper_can_contain_link(self):
         html = compile_ok(
             """---

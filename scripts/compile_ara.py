@@ -49,6 +49,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any, Callable
+from urllib.parse import urlparse
 
 import yaml
 
@@ -632,6 +633,57 @@ def _req(d: dict, key: str, ctx: str, line_no: int):
     return d[key]
 
 
+REMOTE_SVG_RE = re.compile(r"\.svgz?$", re.IGNORECASE)
+
+
+def _has_unsafe_url_chars(value: str) -> bool:
+    return any(ord(ch) < 32 for ch in value) or any(ch in value for ch in "<>\\")
+
+
+def is_safe_http_url(value: str) -> bool:
+    raw = value.strip()
+    if not raw or _has_unsafe_url_chars(raw):
+        return False
+    parsed = urlparse(raw)
+    return (
+        parsed.scheme in ("http", "https")
+        and bool(parsed.netloc)
+        and not parsed.username
+        and not parsed.password
+    )
+
+
+def is_safe_image_src(value: str) -> bool:
+    raw = value.strip()
+    if not raw or _has_unsafe_url_chars(raw):
+        return False
+    if raw.startswith("/") and not raw.startswith("//"):
+        return True
+    if not is_safe_http_url(raw):
+        return False
+    parsed = urlparse(raw)
+    return not REMOTE_SVG_RE.search(parsed.path)
+
+
+def require_safe_image_src(value: Any, ctx: str, line_no: int) -> str:
+    src = str(value).strip()
+    if not is_safe_image_src(src):
+        raise AraSyntaxError(
+            f"{ctx}: src must be an http(s) image URL or absolute local path; remote SVG is not allowed",
+            line=line_no,
+        )
+    return src
+
+
+def optional_safe_source_url(value: Any, ctx: str, line_no: int) -> str | None:
+    if value is None:
+        return None
+    url = str(value).strip()
+    if not is_safe_http_url(url):
+        raise AraSyntaxError(f"{ctx}: source-url must be an http(s) URL", line=line_no)
+    return url
+
+
 def _as_finite_number(value: Any, ctx: str, line_no: int | None) -> float:
     try:
         n = float(str(value).strip())
@@ -751,15 +803,43 @@ def emit_quote(attrs: dict, body: str, line_no: int) -> str:
 
 
 def emit_figure(attrs: dict, body: str, line_no: int) -> str:
-    src = _req(attrs, "src", "figure", line_no)
+    src = require_safe_image_src(_req(attrs, "src", "figure", line_no), "figure", line_no)
     alt = _opt(attrs, "alt", "")
     caption = _opt(attrs, "caption")
+    credit = _opt(attrs, "credit") or _opt(attrs, "source")
+    source_url = optional_safe_source_url(
+        _opt(attrs, "source-url", _opt(attrs, "source_url")),
+        "figure",
+        line_no,
+    )
+    variant = _opt(attrs, "variant")
+    classes = ["ara-figure"]
+    if variant:
+        variant = str(variant).strip()
+        if variant not in ("wide", "inline", "bleed"):
+            raise AraSyntaxError(
+                f"figure: variant must be wide|inline|bleed, got {variant!r}",
+                line=line_no,
+            )
+        classes.append(f"ara-figure--{variant}")
     out = [
-        '<figure class="ara-figure">',
-        f'<img src="{html.escape(str(src), quote=True)}" alt="{html.escape(str(alt), quote=True)}">',
+        f'<figure class="{" ".join(classes)}">',
+        (
+            f'<img src="{html.escape(src, quote=True)}" '
+            f'alt="{html.escape(str(alt), quote=True)}" '
+            'loading="lazy" decoding="async" referrerpolicy="no-referrer">'
+        ),
     ]
-    if caption:
-        out.append(f'<figcaption class="ara-caption">{parse_inline(str(caption))}</figcaption>')
+    if caption or credit or source_url:
+        out.append('<figcaption class="ara-caption">')
+        if caption:
+            out.append(f'<span class="ara-caption-text">{parse_inline(str(caption))}</span>')
+        if credit or source_url:
+            label = parse_inline(str(credit)) if credit else "Source"
+            if source_url:
+                label = f'<a href="{html.escape(source_url, quote=True)}">{label}</a>'
+            out.append(f'<span class="ara-credit">Source: {label}</span>')
+        out.append("</figcaption>")
     out.append("</figure>")
     return "".join(out)
 

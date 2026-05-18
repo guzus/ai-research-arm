@@ -166,12 +166,19 @@ the price.
 Use for pull quotes (one striking sentence). For inline quotation
 in prose, use a regular markdown `> ...` blockquote.
 
-#### `:::figure(src=..., alt=..., caption=...)` (body: empty)
+#### `:::figure(src=..., alt=..., caption=..., credit=..., source-url=...)` (body: empty)
 
 ```
-:::figure(src="/img/diagram.png", alt="Component flow", caption="The compiler pipeline.")
+:::figure(src="https://example.com/chart.jpg", alt="Component flow diagram", caption="The compiler pipeline.", credit="Example Research", source-url="https://example.com/original-chart", variant=wide)
 :::
 ```
+
+`src` must be either an `http(s)` image URL or an absolute local path such as
+`/img/diagram.png`. Remote SVG is rejected; cache trusted SVGs locally if you
+need them. `alt` is required in practice even when the compiler allows an empty
+string. Use `credit` and `source-url` for web images so attribution survives in
+the rendered article. `variant` is optional: `wide` (default article width),
+`inline` (narrow centered image), or `bleed` (larger editorial image).
 
 #### `:::line-chart(title=..., subtitle=..., y-unit=$)` (body: lines)
 

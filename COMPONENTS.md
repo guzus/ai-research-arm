@@ -55,8 +55,10 @@ Anything else is rejected. No `<style>`, `<script>`, `<iframe>`, `<h1>` (the das
 | `ara-callout-label` | `<span class="ara-callout-label">` inside the callout | Small uppercase chip (e.g. "Note", "Risk"). |
 | `ara-quote` | `<blockquote class="ara-quote">` | Pull quote. One sentence worth slowing down for. |
 | `ara-quote-attr` | `<span class="ara-quote-attr">` inside the quote | Attribution; prefixed with em-dash automatically. |
-| `ara-figure` | `<figure class="ara-figure">` containing `<img>` + `<figcaption>` | Image with caption. |
-| `ara-caption` | `<figcaption class="ara-caption">` | The caption itself. Italic, centered, muted. |
+| `ara-figure` | `<figure class="ara-figure">` containing `<img>` + `<figcaption>` | Image with caption. Use `ara-figure--inline`, `--wide`, or `--bleed` for sizing variants. |
+| `ara-caption` | `<figcaption class="ara-caption">` | Caption wrapper. Italic, centered, muted. |
+| `ara-caption-text` | `<span class="ara-caption-text">` inside `ara-caption` | Human-readable image caption. |
+| `ara-credit` | `<span class="ara-credit">` inside `ara-caption` | Source/credit line, optionally linking to the source URL. |
 
 ## Data display
 

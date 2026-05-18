@@ -526,12 +526,30 @@
   margin: 24px 0;
 }
 
+.ara-figure--inline {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ara-figure--wide {
+  width: 100%;
+}
+
+.ara-figure--bleed {
+  width: min(100%, 860px);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
 .ara-figure img {
   display: block;
+  width: 100%;
   max-width: 100%;
   height: auto;
   border-radius: 6px;
   border: 1.5px solid var(--border);
+  background: var(--bg-secondary);
 }
 
 .ara-caption {
@@ -541,6 +559,17 @@
   margin-top: 8px;
   font-style: italic;
   text-align: center;
+}
+
+.ara-caption-text,
+.ara-credit {
+  display: block;
+}
+
+.ara-credit {
+  margin-top: 4px;
+  font-style: normal;
+  color: var(--text-tertiary);
 }
 
 /* ── Code ────────────────────────────────────────── */
