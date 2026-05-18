@@ -1923,26 +1923,118 @@ jobs:
 
             git fetch origin main
 
-            if git rebase origin/main; then
-              :
-            else
-              # rebase paused on conflicts. The only path we know how to
-              # safely auto-resolve is research/generative/index.json.
+            # Stash any leftover working-tree state (tracked modifications
+            # OR untracked artifacts like .gen-verifier-findings.json) that
+            # would otherwise make `git rebase` refuse to start with
+            # "cannot rebase: You have unstaged changes". We don't try to
+            # trace the source — anything dirty here is incidental to the
+            # writer's commit and unrelated to publishing it.
+            #
+            # Per-attempt stash: if push fails and we loop, the next
+            # iteration's pre-check will re-stash whatever the pop
+            # reintroduced. The stash message includes the attempt number
+            # so a dangling stash (max-attempts exhaustion) is debuggable.
+            STASHED=false
+            if ! git diff --quiet \
+                || ! git diff --cached --quiet \
+                || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+              if git stash push --include-untracked --quiet \
+                  -m "push-retry-stash-attempt-$ATTEMPTS"; then
+                STASHED=true
+              else
+                # Defensive: pre-check said dirty but stash push failed
+                # (unusual repo state). Don't crash the loop under
+                # `set -e`; rebase will fail loudly below with the
+                # actual problem.
+                echo "::warning::pre-rebase stash push failed; proceeding without stash"
+              fi
+            fi
+
+            # Stash cleanup helpers, used on both happy and unhappy paths.
+            # Pop must succeed before we push: a popped-but-conflicted
+            # stash leaves unmerged markers in the working tree and a
+            # silent push of the writer's commit would drop whatever
+            # tracked state was in the stash. Drop is for hard-fail
+            # exits where we'd otherwise leak a named stash onto the
+            # self-hosted runner (stash content is incidental artifacts;
+            # we log it before dropping for operator visibility).
+            pop_stash_or_fail() {
+              if [ "$STASHED" != "true" ]; then return 0; fi
+              if git stash pop --quiet; then
+                STASHED=false
+                return 0
+              fi
+              echo "::error::stash pop conflicted after rebase; refusing to push (working tree has unmerged content)"
+              git status --short || true
+              echo "Stash entries left on runner:"
+              git stash list | head -3 || true
+              exit 1
+            }
+            drop_stash_if_any() {
+              if [ "$STASHED" != "true" ]; then return 0; fi
+              echo "Dropping stashed pre-rebase state (hard-fail path):"
+              git stash list | head -3 || true
+              git stash drop --quiet || true
+              STASHED=false
+            }
+
+            if git -c core.editor=true rebase origin/main; then
+              # Rebase clean. Restore the pre-rebase state before push so
+              # the working tree matches what the writer intended. If
+              # pop conflicts we hard-fail rather than push a commit
+              # that excludes potentially-meaningful stashed state.
+              pop_stash_or_fail
+            elif [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+              # Rebase actually started and paused on conflicts. The only
+              # path we know how to safely auto-resolve is the JSON-array
+              # index file research/generative/index.json.
               CONFLICTED=$(git diff --name-only --diff-filter=U | sort -u)
               echo "Conflicted paths:"
               echo "$CONFLICTED"
+              if [ -z "$CONFLICTED" ]; then
+                # Shouldn't happen: rebase dir exists but no conflicts.
+                # Bail safely and let the retry loop try again rather
+                # than hard-fail on a transient state. Pop best-effort
+                # here — we're going to re-stash on the next iteration's
+                # pre-check anyway.
+                echo "::warning::rebase in progress but no conflicts detected; aborting and retrying"
+                git rebase --abort 2>/dev/null || true
+                if [ "$STASHED" = "true" ]; then
+                  git stash pop --quiet || \
+                    echo "::warning::stash pop conflicted in retry path; stash left in place"
+                  STASHED=false
+                fi
+                echo "::endgroup::"
+                sleep $((2 * ATTEMPTS))
+                continue
+              fi
               if [ "$CONFLICTED" = "research/generative/index.json" ]; then
                 merge_index_json "research/generative/index.json"
                 if ! git -c core.editor=true rebase --continue; then
                   echo "::error::rebase --continue failed even after JSON merge"
                   git rebase --abort 2>/dev/null || true
+                  drop_stash_if_any
                   exit 1
                 fi
+                pop_stash_or_fail
               else
                 echo "::error::Unhandleable conflict on path(s) above"
                 git rebase --abort 2>/dev/null || true
+                drop_stash_if_any
                 exit 1
               fi
+            else
+              # Rebase failed before it ever started — no rebase-merge /
+              # rebase-apply directory exists. The classic cause is a
+              # dirty working tree the stash above didn't capture
+              # (e.g. permissions issue, submodule state, weird repo
+              # layout). This is NOT a merge conflict; emit a real
+              # diagnostic so operators stop chasing the
+              # "Unhandleable conflict on path(s) above" red herring.
+              echo "::error::git rebase failed to start (no rebase-merge/rebase-apply directory). Likely cause: dirty working tree that wasn't stashed. Check upstream steps for files written after the writer's commit, and inspect the runner's git status output below."
+              git status --short || true
+              drop_stash_if_any
+              exit 1
             fi
 
             if git push origin HEAD:main; then
