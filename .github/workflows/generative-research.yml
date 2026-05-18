@@ -494,6 +494,19 @@ jobs:
               - `curl -sL <url> -o /tmp/x.pdf && pdftotext /tmp/x.pdf -
                 | head -c 60000` — read PDFs (10-Ks, S-1s, papers,
                 whitepapers). The pdftotext binary is pre-installed.
+              - `python3 scripts/source_cache.py get <url>` — fetch a
+                URL through the persistent cache (data/source-cache/).
+                Use this INSTEAD of raw `curl`/`WebFetch` for primary-
+                source fetches you might reuse across sections (S-1
+                PDFs, IR pages, papers, transcripts). Bypasses re-
+                download cost + survives transient host outages.
+                Canonicalizes URLs (strips utm_*/fbclid, sorts query
+                params) so cosmetic variants hit the same cache entry.
+                PDFs are also cached as `.txt` alongside the body for
+                fast re-read. Default TTL 30d; pass `--force-refresh`
+                to bypass on a known-stale URL. `info <url>` prints
+                cached metadata; `stats` shows hit rate, size, top
+                domains.
               - `bird search "<query>" --json --plain | jq ...` and
                 `bird user-tweets <handle> --json --plain | jq ...` —
                 X/Twitter as a primary source via the bird CLI. A tweet
@@ -759,7 +772,33 @@ jobs:
                or `bird user-tweets <handle> --json --plain` to pull
                X/Twitter primary sources (a tweet from a named principal
                counts as PRIMARY; AUTH_TOKEN / CT0 cookies are already in
-               env), (d) cap output at ~10 evidence packets.
+               env),
+               AND tell them that EARNINGS-CALL QUOTES ARE PRIMARY
+               EVIDENCE: when researching a public company, search for
+               `"<TICKER> earnings call" "<quarter>" transcript`.
+               Verbatim CEO/CFO quotes from such transcripts are
+               PRIMARY (first-party voice of the company, regardless
+               of where the transcript is hosted) and count toward the
+               ≥50% primary-share target. Free transcript sources
+               include the company's own IR site (most authoritative;
+               always prefer when available), Motley Fool
+               (`fool.com/earnings/call-transcripts/`), and Seeking
+               Alpha snippets (some paywalled). Sub-agents MUST still
+               return these as STRUCTURED EVIDENCE PACKETS (per the
+               schema below) with `source_type: primary`,
+               `shape: quote`, the transcript URL in `source_url`,
+               and the verbatim quote (<40 words) in `excerpt`. The
+               step-4.5 writer then materializes `shape: quote`
+               packets into
+               `:::quote(attr="<Name>, <Title>, <Company>, <Quarter> earnings call")`
+               DSL blocks — DO NOT emit DSL directly from the
+               sub-agent,
+               AND tell them they CAN use
+               `python3 scripts/source_cache.py get <url>` to fetch
+               primary sources through the persistent cache (other
+               sub-agents in the same run benefit from the cached
+               body without re-downloading),
+               (d) cap output at ~10 evidence packets.
 
                Sub-agents MUST return STRUCTURED EVIDENCE PACKETS, not
                prose summaries. Each packet:
@@ -879,6 +918,16 @@ jobs:
                     `:::line-chart(title=..., y-unit=$)` block body.
                     If Yahoo errors, the script exits 1 — fall back to
                     prose with no chart.
+                  - an EXPLICIT note that they SHOULD use
+                    `python3 scripts/source_cache.py get <url>`
+                    INSTEAD of raw `curl`/`WebFetch` when re-reading
+                    primary sources cited in the packets (S-1 PDFs,
+                    IR pages, earnings-call transcripts, papers).
+                    Other writer sub-agents in this same run will
+                    likely cite the same primary sources — caching
+                    avoids repeat downloads. PDFs are also cached as
+                    `.txt` for instant re-read; the meta path printed
+                    by `info <url>` tells you where the `.txt` lives.
                 Each writer returns ONLY their section as DSL — start
                 with `## N. Section title` and emit paragraphs,
                 `:::directives` (from the routing table), blockquotes,
@@ -1466,6 +1515,19 @@ jobs:
               - `curl -sL <url> -o /tmp/x.pdf && pdftotext /tmp/x.pdf -
                 | head -c 60000` — read PDFs (10-Ks, S-1s, papers,
                 whitepapers). The pdftotext binary is pre-installed.
+              - `python3 scripts/source_cache.py get <url>` — fetch a
+                URL through the persistent cache (data/source-cache/).
+                Use this INSTEAD of raw `curl`/`WebFetch` for primary-
+                source fetches you might reuse across sections (S-1
+                PDFs, IR pages, papers, transcripts). Bypasses re-
+                download cost + survives transient host outages.
+                Canonicalizes URLs (strips utm_*/fbclid, sorts query
+                params) so cosmetic variants hit the same cache entry.
+                PDFs are also cached as `.txt` alongside the body for
+                fast re-read. Default TTL 30d; pass `--force-refresh`
+                to bypass on a known-stale URL. `info <url>` prints
+                cached metadata; `stats` shows hit rate, size, top
+                domains.
               - `bird search "<query>" --json --plain | jq ...` and
                 `bird user-tweets <handle> --json --plain | jq ...` —
                 X/Twitter as a primary source via the bird CLI. A tweet
@@ -1731,7 +1793,33 @@ jobs:
                or `bird user-tweets <handle> --json --plain` to pull
                X/Twitter primary sources (a tweet from a named principal
                counts as PRIMARY; AUTH_TOKEN / CT0 cookies are already in
-               env), (d) cap output at ~10 evidence packets.
+               env),
+               AND tell them that EARNINGS-CALL QUOTES ARE PRIMARY
+               EVIDENCE: when researching a public company, search for
+               `"<TICKER> earnings call" "<quarter>" transcript`.
+               Verbatim CEO/CFO quotes from such transcripts are
+               PRIMARY (first-party voice of the company, regardless
+               of where the transcript is hosted) and count toward the
+               ≥50% primary-share target. Free transcript sources
+               include the company's own IR site (most authoritative;
+               always prefer when available), Motley Fool
+               (`fool.com/earnings/call-transcripts/`), and Seeking
+               Alpha snippets (some paywalled). Sub-agents MUST still
+               return these as STRUCTURED EVIDENCE PACKETS (per the
+               schema below) with `source_type: primary`,
+               `shape: quote`, the transcript URL in `source_url`,
+               and the verbatim quote (<40 words) in `excerpt`. The
+               step-4.5 writer then materializes `shape: quote`
+               packets into
+               `:::quote(attr="<Name>, <Title>, <Company>, <Quarter> earnings call")`
+               DSL blocks — DO NOT emit DSL directly from the
+               sub-agent,
+               AND tell them they CAN use
+               `python3 scripts/source_cache.py get <url>` to fetch
+               primary sources through the persistent cache (other
+               sub-agents in the same run benefit from the cached
+               body without re-downloading),
+               (d) cap output at ~10 evidence packets.
 
                Sub-agents MUST return STRUCTURED EVIDENCE PACKETS, not
                prose summaries. Each packet:
@@ -1851,6 +1939,16 @@ jobs:
                     `:::line-chart(title=..., y-unit=$)` block body.
                     If Yahoo errors, the script exits 1 — fall back to
                     prose with no chart.
+                  - an EXPLICIT note that they SHOULD use
+                    `python3 scripts/source_cache.py get <url>`
+                    INSTEAD of raw `curl`/`WebFetch` when re-reading
+                    primary sources cited in the packets (S-1 PDFs,
+                    IR pages, earnings-call transcripts, papers).
+                    Other writer sub-agents in this same run will
+                    likely cite the same primary sources — caching
+                    avoids repeat downloads. PDFs are also cached as
+                    `.txt` for instant re-read; the meta path printed
+                    by `info <url>` tells you where the `.txt` lives.
                 Each writer returns ONLY their section as DSL — start
                 with `## N. Section title` and emit paragraphs,
                 `:::directives` (from the routing table), blockquotes,

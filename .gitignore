@@ -51,3 +51,10 @@ dashboard/public/research/
 # but this is belt-and-suspenders against an accidental `git add -A`.
 .issue-input/
 .gen-input/
+
+# --- Source cache (populated at runtime by scripts/source_cache.py) ---
+# Cached primary-source fetches under data/source-cache/YYYY-MM/<hh>/.
+# Keep the parent dir tracked (via .gitkeep) so the path exists on a
+# fresh clone, but never commit cached bytes or per-run config overrides.
+data/source-cache/[0-9]*/
+data/source-cache-config.json
