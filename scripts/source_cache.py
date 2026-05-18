@@ -100,9 +100,21 @@ USER_AGENT = "ai-research-arm/source-cache 1.0 (github.com/guzus/ai-research-arm
 DEFAULT_TIMEOUT = 30
 DEFAULT_TTL_DAYS = 30
 DEFAULT_MAX_BYTES = 100 * 1024 * 1024  # 100 MB per response
+# Total cache-on-disk cap. When a fresh write would push us above this,
+# we LRU-evict oldest entries (by fetched_at) until there's room. The
+# default of 10 GB gives ~100 max-size entries; in practice the cache
+# holds thousands of small HTML/JSON entries plus a handful of PDFs.
+# Override via env var SOURCE_CACHE_MAX_TOTAL_BYTES.
+DEFAULT_MAX_TOTAL_BYTES = 10 * 1024 * 1024 * 1024  # 10 GB
 
 # Query params we always discard during canonicalization — they don't
-# affect WHICH document is served, only attribution/tracking.
+# affect WHICH document is served. We deliberately keep this list TIGHT:
+# every entry below is unambiguously a tracker/attribution param. Generic
+# short names like `s`, `t`, `ref`, `trk`, `source` are NOT stripped
+# globally because legitimate sites use them for content selection (e.g.
+# `?source=owner` on github.com, `?ref=…` for branch on the GitHub API,
+# `?t=` for paragraph offset on some news sites). Per-host stripping for
+# narrower cases lives in TRACKING_PARAM_HOST_RULES below.
 TRACKING_PARAM_PATTERNS = (
     re.compile(r"^utm_"),
     re.compile(r"^_hs(enc|mi)$"),
@@ -115,21 +127,29 @@ TRACKING_PARAM_PATTERNS = (
     re.compile(r"^msclkid$"),
     re.compile(r"^yclid$"),
     re.compile(r"^igshid$"),
-    re.compile(r"^ref$"),
-    re.compile(r"^ref_$"),
-    re.compile(r"^trk$"),
-    # Twitter / X "share" suffixes — common on x.com / twitter.com
-    # status URLs (`?s=20&t=…`). NOT stripped: bare `source` (legitimate
-    # on github.com `?source=owner`); add domain-aware stripping later
-    # if a real collision shows up.
-    re.compile(r"^s$"),
-    re.compile(r"^t$"),
 )
 
+# Per-host tracking-param rules. The KEY is the bare hostname; the VALUE
+# is a tuple of compiled regexes that match params we strip on THAT host.
+# Used for cases where a short param name is a tracker on one site but
+# content-bearing on another (Twitter's `?s=20&t=…` share suffix is the
+# canonical example).
+TRACKING_PARAM_HOST_RULES: dict[str, tuple[re.Pattern, ...]] = {
+    "x.com": (re.compile(r"^s$"), re.compile(r"^t$")),
+    "twitter.com": (re.compile(r"^s$"), re.compile(r"^t$")),
+    "www.twitter.com": (re.compile(r"^s$"), re.compile(r"^t$")),
+    "mobile.twitter.com": (re.compile(r"^s$"), re.compile(r"^t$")),
+}
 
-def _is_tracking_param(name: str) -> bool:
+
+def _is_tracking_param(name: str, host: str = "") -> bool:
     name = name.lower()
-    return any(p.match(name) for p in TRACKING_PARAM_PATTERNS)
+    if any(p.match(name) for p in TRACKING_PARAM_PATTERNS):
+        return True
+    host_rules = TRACKING_PARAM_HOST_RULES.get(host.lower())
+    if host_rules and any(p.match(name) for p in host_rules):
+        return True
+    return False
 
 
 # ---------------------------------------------------------------------
@@ -198,10 +218,20 @@ def canonicalize_url(url: str) -> str:
     if len(path) > 1 and path.endswith("/"):
         path = path.rstrip("/") or "/"
 
+    # For tracking-param stripping we use the BARE host (no port, no
+    # userinfo) so per-host rules match consistently.
+    bare_host = netloc.split("@", 1)[-1]
+    if bare_host.startswith("["):
+        end = bare_host.find("]")
+        if end >= 0:
+            bare_host = bare_host[: end + 1]
+    elif ":" in bare_host:
+        bare_host = bare_host.rsplit(":", 1)[0]
+
     # parse_qsl with keep_blank_values=True so "?foo=" survives if upstream
     # cares; we still drop tracking blanks.
     qs = urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
-    qs = [(k, v) for (k, v) in qs if not _is_tracking_param(k)]
+    qs = [(k, v) for (k, v) in qs if not _is_tracking_param(k, bare_host)]
     qs.sort(key=lambda kv: (kv[0], kv[1]))
     query = urllib.parse.urlencode(qs)
 
@@ -222,6 +252,7 @@ class CacheConfig:
     default_ttl_days: int = DEFAULT_TTL_DAYS
     domain_ttl_days: dict[str, int] = field(default_factory=dict)
     max_bytes: int = DEFAULT_MAX_BYTES
+    max_total_bytes: int = DEFAULT_MAX_TOTAL_BYTES
     timeout: int = DEFAULT_TIMEOUT
 
     @classmethod
@@ -248,12 +279,15 @@ class CacheConfig:
                     file=sys.stderr,
                 )
         max_bytes = int(os.environ.get("SOURCE_CACHE_MAX_BYTES", DEFAULT_MAX_BYTES))
+        max_total_bytes = int(os.environ.get(
+            "SOURCE_CACHE_MAX_TOTAL_BYTES", DEFAULT_MAX_TOTAL_BYTES))
         timeout = int(os.environ.get("SOURCE_CACHE_TIMEOUT", DEFAULT_TIMEOUT))
         return cls(
             root=root,
             default_ttl_days=default_ttl,
             domain_ttl_days=domain_ttl,
             max_bytes=max_bytes,
+            max_total_bytes=max_total_bytes,
             timeout=timeout,
         )
 
@@ -346,6 +380,77 @@ def _exclusive_lock(lock_path: Path):
             fcntl.flock(fp.fileno(), fcntl.LOCK_UN)
 
 
+def _enumerate_entries(root: Path) -> list[tuple[float, int, Path, str]]:
+    """List every cache entry as (fetched_at_epoch, size, meta_path, hash).
+
+    Used by the LRU evictor. Cheap walk: one stat per meta + body file.
+    Entries we can't parse are returned at epoch 0 so they evict first.
+    """
+    rows: list[tuple[float, int, Path, str]] = []
+    if not root.exists():
+        return rows
+    for meta_path in root.glob("*/*/*.meta.json"):
+        h = meta_path.name[: -len(".meta.json")]
+        bucket = meta_path.parent
+        size = 0
+        for suffix in (".meta.json", ".body", ".txt"):
+            f = bucket / f"{h}{suffix}"
+            try:
+                size += f.stat().st_size
+            except OSError:
+                pass
+        ts = 0.0
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            fetched_at = datetime.fromisoformat(meta["fetched_at"])
+            if fetched_at.tzinfo is None:
+                fetched_at = fetched_at.replace(tzinfo=timezone.utc)
+            ts = fetched_at.timestamp()
+        except Exception:  # noqa: BLE001
+            pass
+        rows.append((ts, size, meta_path, h))
+    return rows
+
+
+def _evict_to_fit(needed_bytes: int, cfg: CacheConfig,
+                  protect_hash: str | None = None) -> int:
+    """LRU-evict oldest entries until `needed_bytes` fits under the quota.
+
+    Returns the number of bytes freed. Never evicts the entry whose hash
+    matches `protect_hash` (the one we're currently writing). Honors the
+    same atomic-delete pattern as `purge()` so a crash mid-eviction
+    leaves valid entries intact.
+    """
+    if cfg.max_total_bytes <= 0:
+        return 0
+    entries = _enumerate_entries(cfg.root)
+    if not entries:
+        return 0
+    current_total = sum(sz for _, sz, _, _ in entries)
+    if current_total + needed_bytes <= cfg.max_total_bytes:
+        return 0
+    # Sort oldest-first (lowest fetched_at first).
+    entries.sort(key=lambda r: r[0])
+    freed = 0
+    for ts, size, meta_path, h in entries:
+        if current_total + needed_bytes - freed <= cfg.max_total_bytes:
+            break
+        if protect_hash is not None and h == protect_hash:
+            continue
+        bucket = meta_path.parent
+        for suffix in (".meta.json", ".body", ".txt", ".lock"):
+            f = bucket / f"{h}{suffix}"
+            if not f.is_file():
+                continue
+            try:
+                fsize = f.stat().st_size
+                f.unlink()
+                freed += fsize
+            except OSError:
+                pass
+    return freed
+
+
 def _atomic_write_bytes(target: Path, data: bytes) -> None:
     target.parent.mkdir(parents=True, exist_ok=True)
     # Use string-append rather than Path.with_suffix because on older
@@ -379,6 +484,15 @@ def _http_get(url: str, *, timeout: int, max_bytes: int) -> tuple[bytes, dict]:
 
     Returns (body_bytes, response_metadata_dict). Raises CacheError on
     any failure (network, HTTP >= 400, oversized body).
+
+    `response_metadata_dict` includes the final URL (`url_final`) and
+    `host_final` after any redirects so callers can store a forensic
+    trail. urllib.request follows redirects by default; if the final
+    URL differs from the input URL, the difference is recorded but the
+    fetch is not rejected — primary sources legitimately redirect (IR
+    pages → /investors, SEC archives → versioned URLs, etc.). Operators
+    inspecting a poisoning incident can compare `url_canonical` vs
+    `url_final` to detect a hostile rewrite.
     """
     req = urllib.request.Request(url, headers={
         "User-Agent": USER_AGENT,
@@ -390,6 +504,7 @@ def _http_get(url: str, *, timeout: int, max_bytes: int) -> tuple[bytes, dict]:
         with urllib.request.urlopen(req, timeout=timeout, context=SSL_CTX) as resp:
             status = resp.status
             content_type = resp.headers.get("Content-Type", "")
+            final_url = resp.geturl()
             # Read up to max_bytes + 1 so we can detect the overflow.
             buf = resp.read(max_bytes + 1)
     except urllib.error.HTTPError as e:
@@ -403,10 +518,16 @@ def _http_get(url: str, *, timeout: int, max_bytes: int) -> tuple[bytes, dict]:
             f"response body exceeds size cap ({max_bytes} bytes) for {url}; "
             "raise SOURCE_CACHE_MAX_BYTES to allow this URL"
         )
+    try:
+        host_final = urllib.parse.urlsplit(final_url).netloc or ""
+    except Exception:  # noqa: BLE001
+        host_final = ""
     return buf, {
         "status": status,
         "content_type": content_type,
         "content_length": len(buf),
+        "url_final": final_url,
+        "host_final": host_final,
     }
 
 
@@ -523,10 +644,41 @@ def fetch(url: str, *, force_refresh: bool = False, max_age_days: int | None = N
                 except Exception:  # noqa: BLE001
                     pass
 
+        # Total-cache quota: LRU-evict oldest entries until the new body
+        # + meta + optional pdf-text fits under cfg.max_total_bytes. We
+        # protect THIS entry's hash so a refresh of an oversized URL
+        # doesn't evict itself. If the single new body exceeds the
+        # quota outright, we still write — the alternative is dropping
+        # the fetch we already paid for, which is worse than briefly
+        # over-quota until the next eviction.
+        projected = len(body) + (len(pdf_text) if pdf_text else 0) + 1024  # 1KB meta budget
+        _evict_to_fit(projected, cfg, protect_hash=new_paths["hash"])
+
+        # Detect post-fetch redirect: if the upstream redirected to a
+        # different host, record it in meta so an operator inspecting
+        # a poisoning incident sees the discrepancy. Compare BARE hosts
+        # (no port, no userinfo) since e.g. an HTTP→HTTPS upgrade
+        # legitimately changes the netloc-with-port but not the host.
+        def _bare(netloc: str) -> str:
+            n = netloc.split("@", 1)[-1]
+            if n.startswith("["):
+                end = n.find("]")
+                if end >= 0:
+                    return n[: end + 1].lower()
+            if ":" in n:
+                return n.rsplit(":", 1)[0].lower()
+            return n.lower()
+        canon_host_bare = _bare(host)
+        final_host_bare = _bare(resp_meta.get("host_final") or "")
+        redirect_host_mismatch = bool(final_host_bare and final_host_bare != canon_host_bare)
+
         meta_doc = {
             "url_original": url,
             "url_canonical": canonical,
+            "url_final": resp_meta.get("url_final") or canonical,
             "host": host,
+            "host_final": resp_meta.get("host_final") or host,
+            "redirect_host_mismatch": redirect_host_mismatch,
             "hash": new_paths["hash"],
             "fetched_at": now.isoformat(),
             "status": resp_meta["status"],
@@ -543,6 +695,15 @@ def fetch(url: str, *, force_refresh: bool = False, max_age_days: int | None = N
         _atomic_write_bytes(new_paths["body"], body)
         if pdf_text is not None:
             _atomic_write_bytes(new_paths["text"], pdf_text)
+        else:
+            # Refresh case: if a previous (PDF) fetch left a stale
+            # <hash>.txt in this bucket and the new content isn't PDF,
+            # the stale text would otherwise be re-served by info() —
+            # which would mismatch the cached body. Unlink it now.
+            try:
+                new_paths["text"].unlink(missing_ok=True)
+            except Exception:  # noqa: BLE001
+                pass
         _atomic_write_json(new_paths["meta"], meta_doc)
 
     return body
@@ -682,6 +843,11 @@ def stats(config: CacheConfig | None = None) -> dict:
         "default_ttl_days": cfg.default_ttl_days,
         "domain_ttl_days": cfg.domain_ttl_days,
         "max_bytes": cfg.max_bytes,
+        "max_total_bytes": cfg.max_total_bytes,
+        "utilization_pct": (
+            round(100 * total_bytes / cfg.max_total_bytes, 2)
+            if cfg.max_total_bytes else 0.0
+        ),
     }
 
 

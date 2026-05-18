@@ -773,17 +773,26 @@ jobs:
                X/Twitter primary sources (a tweet from a named principal
                counts as PRIMARY; AUTH_TOKEN / CT0 cookies are already in
                env),
-               AND tell them that EARNINGS-CALL QUOTES ARE PRIMARY:
-               when researching a public company, search for
-               `"<TICKER> earnings call" "<quarter>" transcript` and
-               treat verbatim CEO/CFO quotes from these as PRIMARY
-               sources (counts toward the ≥50% primary-share target).
-               Free transcript sources include Motley Fool
-               (`fool.com/earnings/call-transcripts/`) and Seeking
-               Alpha snippets (some paywalled). Cite the transcript
-               URL and quote verbatim in
+               AND tell them that EARNINGS-CALL QUOTES ARE PRIMARY
+               EVIDENCE: when researching a public company, search for
+               `"<TICKER> earnings call" "<quarter>" transcript`.
+               Verbatim CEO/CFO quotes from such transcripts are
+               PRIMARY (first-party voice of the company, regardless
+               of where the transcript is hosted) and count toward the
+               ≥50% primary-share target. Free transcript sources
+               include the company's own IR site (most authoritative;
+               always prefer when available), Motley Fool
+               (`fool.com/earnings/call-transcripts/`), and Seeking
+               Alpha snippets (some paywalled). Sub-agents MUST still
+               return these as STRUCTURED EVIDENCE PACKETS (per the
+               schema below) with `source_type: primary`,
+               `shape: quote`, the transcript URL in `source_url`,
+               and the verbatim quote (<40 words) in `excerpt`. The
+               step-4.5 writer then materializes `shape: quote`
+               packets into
                `:::quote(attr="<Name>, <Title>, <Company>, <Quarter> earnings call")`
-               blocks,
+               DSL blocks — DO NOT emit DSL directly from the
+               sub-agent,
                AND tell them they CAN use
                `python3 scripts/source_cache.py get <url>` to fetch
                primary sources through the persistent cache (other
@@ -1785,17 +1794,26 @@ jobs:
                X/Twitter primary sources (a tweet from a named principal
                counts as PRIMARY; AUTH_TOKEN / CT0 cookies are already in
                env),
-               AND tell them that EARNINGS-CALL QUOTES ARE PRIMARY:
-               when researching a public company, search for
-               `"<TICKER> earnings call" "<quarter>" transcript` and
-               treat verbatim CEO/CFO quotes from these as PRIMARY
-               sources (counts toward the ≥50% primary-share target).
-               Free transcript sources include Motley Fool
-               (`fool.com/earnings/call-transcripts/`) and Seeking
-               Alpha snippets (some paywalled). Cite the transcript
-               URL and quote verbatim in
+               AND tell them that EARNINGS-CALL QUOTES ARE PRIMARY
+               EVIDENCE: when researching a public company, search for
+               `"<TICKER> earnings call" "<quarter>" transcript`.
+               Verbatim CEO/CFO quotes from such transcripts are
+               PRIMARY (first-party voice of the company, regardless
+               of where the transcript is hosted) and count toward the
+               ≥50% primary-share target. Free transcript sources
+               include the company's own IR site (most authoritative;
+               always prefer when available), Motley Fool
+               (`fool.com/earnings/call-transcripts/`), and Seeking
+               Alpha snippets (some paywalled). Sub-agents MUST still
+               return these as STRUCTURED EVIDENCE PACKETS (per the
+               schema below) with `source_type: primary`,
+               `shape: quote`, the transcript URL in `source_url`,
+               and the verbatim quote (<40 words) in `excerpt`. The
+               step-4.5 writer then materializes `shape: quote`
+               packets into
                `:::quote(attr="<Name>, <Title>, <Company>, <Quarter> earnings call")`
-               blocks,
+               DSL blocks — DO NOT emit DSL directly from the
+               sub-agent,
                AND tell them they CAN use
                `python3 scripts/source_cache.py get <url>` to fetch
                primary sources through the persistent cache (other
