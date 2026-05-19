@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-05-19 19:18 UTC
+
+CYCLE: Google I/O delivers agentic platform play (3.5 Flash, not 4.0); Karpathy joins Anthropic's pre-training team
+
+TOP STORIES:
+• Andrej Karpathy joins Anthropic to lead pre-training research — most significant AI talent move of 2026 [✓]
+• Google I/O 2026: Gemini 3.5 Flash ships (not 4.0) alongside Spark 24/7 agent, Omni video, Antigravity 2.0, and Android XR glasses launching fall [✓]
+• Cerebras runs trillion-parameter Kimi K2.6 at ~1,000 tok/s — fastest frontier inference ever measured [⚠]
+
+WATCH: Independent Gemini 3.5 Flash benchmarks (LMSYS, Artificial Analysis); Microsoft Build response to Google's agentic push; Meta layoffs begin May 20 4am local
+
+Full update on GitHub.
