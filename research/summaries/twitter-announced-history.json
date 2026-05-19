@@ -6042,5 +6042,54 @@
     "headline": "MISTRAL ACQUIRES VIENNA-BASED EMMI AI FOR UNDISCLOSED SUM TO BOOST INDUSTRIAL AI OFFERINGS IN EUROPE \u2014 REUTERS",
     "source": "@Techmeme",
     "url": "https://x.com/Techmeme/status/2056643706644791745"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 10:25 UTC",
+    "headline": "ANTHROPIC SHIPS SELF-HOSTED SANDBOXES (BETA) + MCP TUNNELS (PREVIEW) FROM CODE WITH CLAUDE LONDON \u2014 9H BEFORE GOOGLE I/O KEYNOTE",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2056645485696315581"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-19 10:25 UTC",
+    "headline": "AGENTS NOW RUN INSIDE ENTERPRISE VPC \u2014 CLOUDFLARE / DAYTONA / MODAL / VERCEL CONFIRMED AS ANTHROPIC MANAGED-SANDBOX PARTNERS",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2056645491207655584"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 10:25 UTC",
+    "headline": "GOOGLE AI STUDIO MOBILE APP APPEARS ON GOOGLE PLAY STORE FOR PRE-REGISTRATION HOURS BEFORE I/O KEYNOTE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2056655400796434841"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 10:25 UTC",
+    "headline": "GEMINI ROLLING OUT NEW UI WITH THINKING-EFFORT SELECTOR + USAGE LIMITS TAB AHEAD OF I/O 2026",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2056653546918117464"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 10:25 UTC",
+    "headline": "ANTHROPIC DOUBLES CLAUDE DESIGN TOKEN LIMITS ACROSS EVERY PLAN \u2014 15,866 LIKES IN 14H",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2056460045756309820"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-19 10:25 UTC",
+    "headline": "DEMIS HASSABIS 7-DAY SUBSTANTIVE SILENT THROUGH FT ANTHROPIC-ANGEL-INVESTOR DISCLOSURE \u2014 6.5H BEFORE GOOGLE I/O KEYNOTE SLOT",
+    "source": "@FT",
+    "url": "https://x.com/FT/status/2056595792450683328"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-19 10:25 UTC",
+    "headline": "OPENAI CORP ~110H SILENT \u2014 NO VERDICT / VERA-CPU / FT-HASSABIS / ANTHROPIC-LONDON ACKNOWLEDGMENT AS GOOGLE I/O OPENS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2055016850849993072"
   }
 ]
