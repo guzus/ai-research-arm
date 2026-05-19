@@ -6175,5 +6175,54 @@
     "headline": "CLOUDFLARE TESTS ANTHROPIC MYTHOS PREVIEW ON 50+ INTERNAL REPOS \u2014 CHAINS LOW-SEVERITY BUGS INTO WORKING EXPLOITS",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2056713453956682229"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 18:50 UTC",
+    "headline": "GEMINI 3.5 FLASH LIVE GLOBALLY \u2014 INTELLIGENCE INDEX 55 BEATS CLAUDE SONNET 4.6 AND GROK 4.3, TOPS MMMU-PRO AT 84%",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2056787987774816525"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 18:50 UTC",
+    "headline": "GOOGLE TRIPLES FLASH PRICING \u2014 GEMINI 3.5 FLASH AT $1.50/$9 PER 1M TOKENS, 5.5\u00d7 MORE EXPENSIVE TO RUN THAN GEMINI 3 FLASH",
+    "source": "@ArtificialAnlys",
+    "url": "https://x.com/ArtificialAnlys/status/2056795055512596817"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 18:50 UTC",
+    "headline": "GEMINI OMNI LAUNCHES \u2014 GOOGLE'S FIRST MULTIMODAL-IN / VIDEO-OUT WORLD MODEL SHIPS TO GEMINI APP, FLOW, YOUTUBE SHORTS",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2056786446636212467"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 18:50 UTC",
+    "headline": "GEMINI SPARK \u2014 GOOGLE'S DEDICATED-VM PERSONAL AGENT CONNECTS TO USER'S FULL GOOGLE DATA, TRUSTED TESTERS THIS WEEK",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2056791703349277101"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-19 18:50 UTC",
+    "headline": "GOOGLE AI ULTRA PRICING RESET \u2014 NEW $100/MONTH TIER LANDS, TOP TIER CUT FROM $250 TO $200",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2056792916526547215"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-19 18:50 UTC",
+    "headline": "GOOGLE SEARCH BOX REIMAGINED \u2014 GEMINI 3.5 FLASH NOW DEFAULT FOR AI MODE GLOBALLY, BIGGEST SEARCH UPGRADE IN 25 YEARS",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2056802276124328352"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-19 18:50 UTC",
+    "headline": "AMD MI355 NOW 40% CHEAPER THAN NVIDIA B200 ON GLM5 ARCHITECTURE FOR SINGLE-NODE FP8 SERVING",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2056782305440452635"
   }
 ]
