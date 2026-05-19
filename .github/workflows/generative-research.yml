@@ -391,12 +391,13 @@ jobs:
       # comms once when the action ran ~19m on the un-capped concurrent
       # fan-out version of the prompt; pacing fixed that, but a stuck
       # runner is much worse than a missed article, so hard-cap here.
-      - name: Run Generative Research (Claude)
+      - name: Run Generative Research (Claude, attempt 1)
         if: steps.params.outputs.backend == 'claude'
         id: gen-claude
-        timeout-minutes: 45
+        continue-on-error: true
+        timeout-minutes: 90
         uses: anthropics/claude-code-action@v1
-        env:
+        env: &claude_env
           # Security: GEN_TOPIC / GEN_PROMPT / GEN_TAGS are NOT in this env
           # block. The agent reads them from $GITHUB_WORKSPACE/.gen-input/
           # via the already-allowlisted `Read` and `Bash(cat:*)` tools.
@@ -412,7 +413,7 @@ jobs:
           # hourly-twitter workflow.
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
-        with:
+        with: &claude_with
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # Security: `Bash(printenv:*)` removed from this allowlist. The
           # wildcard is over variable NAMES, so it lets a jailbroken model
@@ -456,6 +457,16 @@ jobs:
             run-scoped article draft path is still available as $GEN_DRAFT
             (workflow-controlled, not user input); use only $GEN_DRAFT for
             compile checks and writer input.
+
+            RECOVERY MODE. This workflow may retry Claude once if the action
+            wall-clock cap fires before the writer commits an article. At
+            the start, check whether $GEN_DRAFT already exists from an
+            earlier attempt in this same workflow run. If it exists, read
+            it, run the compile check from step 7.5, repair only validator
+            or obvious completion gaps, then proceed directly to the writer
+            commit step. Do not restart research from scratch when a valid
+            or nearly-valid draft is already present. Do not read or
+            recover from any other /tmp/gen-research*.ara.md file.
 
             TOOLBELT — beyond Read/Write/WebSearch/WebFetch, you have:
               - `python3 scripts/prior_context.py "$(cat .gen-input/topic.txt)"`
@@ -1398,6 +1409,62 @@ jobs:
             - Do not modify files outside /tmp and what the writer touches.
             - If validation fails, fix the HTML and retry the same Bash
               invocation; do not work around the validator.
+
+      # Inspect Claude attempt 1 — decide whether to retry. If the action
+      # failed (most commonly the 90-minute wall-clock cap) AND no article
+      # was committed yet, run one more attempt under RECOVERY MODE. The
+      # second attempt sees the partial $GEN_DRAFT on disk (the runner's
+      # _work/_temp survives across steps within the same job) and
+      # finishes the draft instead of restarting research from scratch.
+      - name: Inspect Claude attempt 1
+        if: steps.params.outputs.backend == 'claude'
+        id: claude-attempt-1
+        env:
+          PRE_SHA: ${{ steps.pre.outputs.sha }}
+          OUTCOME: ${{ steps.gen-claude.outcome }}
+        run: |
+          set -euo pipefail
+          HEAD_SHA=$(git rev-parse HEAD)
+          HAS_FILE=false
+          if [ "$HEAD_SHA" != "$PRE_SHA" ]; then
+            NEW_FILES=$(git diff --name-only --diff-filter=A "$PRE_SHA..HEAD" -- 'research/generative/*.html' || true)
+            if [ -n "$NEW_FILES" ]; then
+              HAS_FILE=true
+            fi
+          fi
+
+          RETRY=false
+          if [ "$OUTCOME" = "failure" ] && [ "$HAS_FILE" != "true" ]; then
+            RETRY=true
+            echo "::warning::Claude attempt 1 failed before producing an article; retrying once. This covers the wall-clock cap and transient OAuth/socket drops."
+            echo "Cleaning tracked and untracked repository artifacts from the failed attempt before retry."
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative
+            # Drop stale verifier- and red-team-findings JSON so the
+            # retry's audit can't compare new article body against old
+            # claims (verifier) or old contradictions (red-team).
+            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+            rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+          elif [ "$OUTCOME" = "failure" ]; then
+            echo "::warning::Claude attempt 1 reported failure, but an article commit exists; continuing to publish that output."
+          else
+            echo "Claude attempt 1 outcome: $OUTCOME"
+          fi
+
+          {
+            echo "outcome=$OUTCOME"
+            echo "has_file=$HAS_FILE"
+            echo "retry=$RETRY"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Run Generative Research (Claude, retry 1)
+        if: steps.claude-attempt-1.outputs.retry == 'true'
+        id: gen-claude-retry
+        continue-on-error: true
+        timeout-minutes: 90
+        uses: anthropics/claude-code-action@v1
+        env: *claude_env
+        with: *claude_with
 
       # ---- DeepSeek backend -------------------------------------------------
       # claude-code-action redirected to DeepSeek's Anthropic-compatible
@@ -2973,6 +3040,7 @@ jobs:
           RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           EVENT_NAME: ${{ github.event_name }}
           CLAUDE_OUTCOME: ${{ steps.gen-claude.outcome }}
+          CLAUDE_RETRY_1_OUTCOME: ${{ steps.gen-claude-retry.outcome }}
           DEEPSEEK_ATTEMPT_1_OUTCOME: ${{ steps.gen-deepseek.outcome }}
           DEEPSEEK_RETRY_1_OUTCOME: ${{ steps.gen-deepseek-retry.outcome }}
           DEEPSEEK_RETRY_2_OUTCOME: ${{ steps.gen-deepseek-retry-2.outcome }}
@@ -3055,6 +3123,7 @@ jobs:
           outcomes = {
               k: v for k, v in {
                   "claude": env("CLAUDE_OUTCOME"),
+                  "claude_retry_1": env("CLAUDE_RETRY_1_OUTCOME"),
                   "deepseek_attempt_1": env("DEEPSEEK_ATTEMPT_1_OUTCOME"),
                   "deepseek_retry_1": env("DEEPSEEK_RETRY_1_OUTCOME"),
                   "deepseek_retry_2": env("DEEPSEEK_RETRY_2_OUTCOME"),
