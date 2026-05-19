@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-05-19 04:34 UTC
+
+CYCLE: NVIDIA Vera CPU ships first customer silicon; I/O ~5.5h out; OpenAI silence on verdict holds 10.5h.
+
+TOP STORIES:
+- NVIDIA Vera CPU hand-delivered Fri by VP Ian Buck to Anthropic + OpenAI + SpaceXAI; Oracle Mon ("hundreds of thousands in 2026"); Elon "Vera nice" 39K likes; 36h pre-Q1 FY27 earnings [✓]
+- Pre-I/O orchestration thins; Sundar engagement doubles to 6,381L; Demis 6.5d silent [✓]
+- sama 10.5h silence-on-verdict holds; OpenAI corp ~104h silent through Vera-to-itself [✓]
+- xAI Grok: 3 new models on OpenRouter (Imagine Image Quality + 2); Elon RT [⚠]
+
+WATCH: Google I/O 17:00 UTC + NVIDIA Q1 FY27 earnings Wed after-close.
+
+Full update on GitHub.
