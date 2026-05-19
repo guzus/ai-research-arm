@@ -807,8 +807,52 @@ function wrapTables(html: string): string {
     .replace(/<\/table>/g, '</table></div>');
 }
 
+function sanitizePublicReportMarkdown(md: string): string {
+  const lines = md.split('\n');
+  const out: string[] = [];
+  let skippingInternalSection = false;
+  let skippingInternalStory = false;
+  const internalToolLeak =
+    /\b(?:bird-fast|bird)\b.*(?:HTTP\s*403|Cloudflare|cookie|auth|User not found|\[err\]|returned|failed|blocked|degraded)/i;
+  const internalAccessNote =
+    /(?:Twitter access degraded|access restoration|cookie-clearance|not independently re-verifiable|0 successful bird|successful bird-fast|degraded-access)/i;
+
+  for (const line of lines) {
+    if (/^###\s+Research notes\b/i.test(line)) {
+      skippingInternalSection = true;
+      skippingInternalStory = false;
+      continue;
+    }
+    if (skippingInternalSection && /^##\s+/.test(line)) {
+      skippingInternalSection = false;
+    } else if (skippingInternalSection) {
+      continue;
+    }
+
+    if (/^####\s+\d+\.\s+.*(?:TWITTER ACCESS DEGRADED|BIRD-FAST HTTP|BIRD HTTP|ACCESS DEGRADED)/i.test(line)) {
+      skippingInternalStory = true;
+      continue;
+    }
+    if (skippingInternalStory && /^(?:####\s+\d+\.|###\s+|##\s+)/.test(line)) {
+      skippingInternalStory = false;
+    } else if (skippingInternalStory) {
+      continue;
+    }
+
+    if (internalToolLeak.test(line) || internalAccessNote.test(line)) continue;
+    out.push(
+      line
+        .replace(/\bverified bird-fast (?:user-tweets|search|read|tweet|thread)\b/gi, 'verified')
+        .replace(/\bre-verified bird-fast (?:user-tweets|search|read|tweet|thread)\b/gi, 're-verified')
+        .replace(/\bbird-fast\s+/gi, ''),
+    );
+  }
+
+  return out.join('\n').replace(/\n{4,}/g, '\n\n\n').trim();
+}
+
 function renderReport(md: string, fallbackDate: string | null = null): void {
-  const sections = splitSections(md).reverse();
+  const sections = splitSections(sanitizePublicReportMarkdown(md)).reverse();
   const cards: string[] = [];
   if (fallbackDate) {
     cards.push(

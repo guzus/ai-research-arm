@@ -49,6 +49,13 @@ INSTRUCTIONS:
 7. Put every other notable item into Quick hits, one line each.
 8. Flag loud-but-shaky claims in Skeptic's corner.
 9. End with a concrete Watch list and Research notes.
+10. Public-output hygiene: never make internal collection failures,
+   auth/cookie problems, `bird`/`bird-fast` errors, HTTP 403s, Cloudflare
+   challenge pages, stack traces, or raw tool stderr/stdout into a Top Story,
+   Quick hit, Skeptic's corner item, Watch item, or public Research note.
+   Treat those as private pipeline diagnostics. If a source cannot be
+   re-verified, simply downgrade or omit the affected claim; do not expose
+   the tooling failure or command output to readers.
 
 FORMAT: Append to the daily file (create if doesn't exist).
 If the file already exists, append the new section at the end.
@@ -83,7 +90,8 @@ If it doesn't exist, start with:
 - [Dated, concrete signal]
 
 ### Research notes
-- bird/curl calls issued this cycle: [list each briefly]
+- Source checks issued this cycle: [list source names / URLs briefly; do not
+  include raw tool names, auth failures, HTTP errors, stderr, or command output]
 - [If none: "No follow-ups needed — pre-fetched snapshot was sufficient"]
 
 If no main stories exist, write:
