@@ -1102,8 +1102,8 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
   }
 
   for (const section of sections) {
-    // Skip the top-level h1 title section if it has no body
-    if (!section.title && !section.body) continue;
+    // Skip the document-level H1 that appears before the first cycle heading.
+    if (!section.title && (!section.body || /^#\s+.+$/.test(section.body.trim()))) continue;
 
     const title = section.title || displayDate(currentDate);
     const dateStr = fmtDate(currentDate);
