@@ -1225,7 +1225,8 @@ body.has-toc .section-nav { display: none; }
 }
 
 /* ── Generative Research ────────────────────────────── */
-body.tab-research #calendar {
+body.tab-research #calendar,
+body.tab-models #calendar {
   display: none;
 }
 

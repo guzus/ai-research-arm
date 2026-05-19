@@ -93,8 +93,20 @@ jobs:
       # validator re-runs at commit time so a malformed ticket
       # never lands. See docs/model-tickets.md for the full schema
       # and dedup protocol.
+      # timeout-minutes mirrors the bump made on generative-research.yml
+      # after the 2026-05-19 cluster of 45-min wall-clock failures. The
+      # CRUD agent does ~20 ticket reads + WebSearch corroborations +
+      # validate-loop, which can stretch on heavy news days. 90 min is
+      # well clear of observed runs (~10-25 min) without leaving a
+      # quietly-hung job to chew runner time forever.
+      #
+      # continue-on-error keeps job-level failure ownership on the
+      # safe-push step rather than this Claude step, so a single hung
+      # agent run doesn't poison the workflow status — telemetry still
+      # surfaces the underlying outcome via job.status.
       - name: CRUD model tickets via Claude
-        timeout-minutes: 60
+        timeout-minutes: 90
+        continue-on-error: true
         uses: anthropics/claude-code-action@v1
         env:
           DATE_TODAY: ${{ steps.datetime.outputs.date }}

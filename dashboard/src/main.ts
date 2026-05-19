@@ -277,6 +277,9 @@ function syncTabUi(): void {
     b.classList.toggle('active', (b as HTMLElement).dataset.tab === activeTab);
   });
   document.body.classList.toggle('tab-research', activeTab === 'research');
+  // Models tab shows the ticket grid (no date routing); the calendar
+  // would just be dead UI on this tab. Same toggle pattern as research.
+  document.body.classList.toggle('tab-models', activeTab === 'models');
 }
 
 // ── Helpers ───────────────────────────────────────────
@@ -3031,8 +3034,11 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
     document.querySelectorAll('.tab').forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
     document.body.classList.toggle('tab-research', activeTab === 'research');
+    document.body.classList.toggle('tab-models', activeTab === 'models');
     // Re-probe availability for current month with new tab (date tabs only).
-    if (activeTab !== 'research') {
+    // The models tab doesn't use date routing, so skip probing there too —
+    // it'd just paint dots on a calendar that's hidden anyway.
+    if (activeTab !== 'research' && activeTab !== 'models') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -3049,7 +3055,8 @@ applyRoute();
 // that across the function boundary, so we widen the read explicitly.
 const currentTab: Tab = activeTab as Tab;
 document.body.classList.toggle('tab-research', currentTab === 'research');
-if (currentTab !== 'research') {
+document.body.classList.toggle('tab-models', currentTab === 'models');
+if (currentTab !== 'research' && currentTab !== 'models') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();
