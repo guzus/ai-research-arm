@@ -1,0 +1,14 @@
+Daily AI Digest - 2026-05-19
+
+TOP STORIES:
+• Musk v. Altman dismissed in under 2h on statute of limitations; Musk filing Ninth Circuit appeal. OpenAI IPO overhang cleared
+• Anthropic acquires Stainless (SDK used by OpenAI/Google/Cloudflare, ~$300M+) + briefs FSB on Mythos
+• Cursor Composer 2.5 claims on-par-Opus-4.7 at 10x cheaper; ClaudeDevs defaults Fast mode (2.5x speed, higher per-token)
+
+KEY NUMBERS:
+• OpenAI ~98h corp-silent through verdict+Malta+appeal
+• SemiAnalysis: $21 in tokens replaces 20h task, 60-90x ROI
+
+TRENDING: Google I/O keynote 10am PT today (Gemini 4.0/Omni, XR glasses, Aluminium OS). Pope Leo XIV "Magnifica humanitas" encyclical 5/25 with Chris Olah.
+
+Full digest on GitHub.
