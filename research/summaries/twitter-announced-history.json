@@ -6224,5 +6224,40 @@
     "headline": "AMD MI355 NOW 40% CHEAPER THAN NVIDIA B200 ON GLM5 ARCHITECTURE FOR SINGLE-NODE FP8 SERVING",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2056782305440452635"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-19 21:40 UTC",
+    "headline": "OPENAI LAUNCHES GUARANTEED CAPACITY \u2014 COMPUTE FUTURES WITH 1-3 YEAR COMMITS FOR DISCOUNTED TOKENS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2056823271774101907"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-19 21:40 UTC",
+    "headline": "ALTMAN: WORLD WILL BE CAPACITY-CONSTRAINED 'FOR SOME TIME' \u2014 PROGRAM RUNS UNTIL ALLOCATION SELLS OUT",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2056827105401614656"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 21:40 UTC",
+    "headline": "GOOGLE I/O DEV KEYNOTE: GEMINI 3.5 FLASH IN API, MANAGED AGENTS VIA ANTIGRAVITY, NATIVE ANDROID APPS IN AI STUDIO",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2056840620610830638"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 21:40 UTC",
+    "headline": "CURSOR CEO: COMPOSER 2.5 NOW 'MOST-CHOSEN MODEL IN CURSOR' \u2014 MUSK AMPLIFIES TO 10K+ LIKES (VENDOR CLAIM)",
+    "source": "@mntruell",
+    "url": "https://x.com/mntruell/status/2056780569380626686"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-19 21:40 UTC",
+    "headline": "PNAS: HUMAN PERSUASION TACTICS RAISE LLM COMPLIANCE WITH OBJECTIONABLE REQUESTS FROM 35% TO 51%",
+    "source": "@emollick",
+    "url": "https://x.com/emollick/status/2056843673145401722"
   }
 ]
