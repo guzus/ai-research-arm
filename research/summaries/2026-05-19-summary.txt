@@ -1,14 +1,16 @@
 AI News - 2026-05-19
 
 TOP STORIES:
-• Google I/O 2026 keynote underway (10am PT) — Gemini upgrade + Android XR glasses + Aluminium OS + Gemini Omni video stack
-• Anthropic officially acquires Stainless for $300M+ — winding down SDK tools used by OpenAI/Google/Cloudflare
-• Tenstorrent (Jim Keller) draws takeover interest from Intel and Qualcomm at $5B+ per Bloomberg
+• Google I/O DELIVERED — Gemini 3.5 Flash GA'd (beats 3.1 Pro on coding/agentic, 4x faster); Gemini Omni unified video model live; Spark 24/7 agent to Ultra next week
+• Antigravity 2.0 launches as standalone agent platform (CLI/SDK/Managed Agents API); AI Ultra cut $250→$200, new $100 tier
+• Anthropic officially closes Stainless acquisition for $300M+
+• Decart (Israeli world-models infra) raises $300M at $4B — Radical led; NVIDIA, Amazon, Sequoia, Karpathy in
+• Samsung Galaxy XR glasses (Warby Parker/Gentle Monster) — Fall 2026 US
 
 KEY NUMBERS:
-• Stainless: >$300M; Tenstorrent: $5B+
-• Dust Series B: $40M (Abstract/Sequoia); 3K+ customers, 70% WAU, zero churn
-• Searchable: $14M at $85M val; $2M ARR in 4.5mo
-• NVDA Q1 print T-1; consensus $78.8B/$1.77
+• Gemini 3.5 Flash: $1.50/$9 per 1M, 1M ctx, 76.2% Terminal-Bench 2.1
+• Decart: $300M/$4B val
+• Search AI Mode: 1B+ MAU
+• NVDA Q1 T-1; cons $78.8B/$1.77
 
 Full report on GitHub.
