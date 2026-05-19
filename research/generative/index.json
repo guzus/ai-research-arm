@@ -424,5 +424,17 @@
     "source": "workflow_dispatch",
     "prompt": "$peng stock",
     "tags": []
+  },
+  {
+    "slug": "sndk-stock",
+    "file": "2026-05-19T100257--sndk-stock.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "SanDisk: anatomy of a 28-fold tape and a $209B post-spin",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-19T10:02:57Z",
+    "source": "workflow_dispatch",
+    "prompt": "$SNDK stock",
+    "tags": []
   }
 ]
