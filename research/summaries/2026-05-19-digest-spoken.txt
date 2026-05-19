@@ -1,0 +1,9 @@
+Speaker 1: Tuesday, May nineteenth, twenty twenty-six.
+Speaker 2: [high_energy] The Musk versus Altman lawsuit is dead — dismissed in under two hours on statute of limitations grounds, with Musk already filing a Ninth Circuit appeal. That clears a major overhang on the OpenAI IPO path.
+Speaker 1: And while that was playing out, Anthropic made a significant move — acquiring Stainless, the SDK tooling used by OpenAI, Google, and Cloudflare, in a deal reportedly north of [emphasis]three hundred million dollars[/emphasis].
+Speaker 2: They also briefed the Financial Stability Board on something called Mythos, which signals AI companies are now entering the financial regulatory conversation directly.
+Speaker 1: On the developer tools front, Cursor Composer two point five is claiming performance on par with Opus four point seven at [emphasis]ten times lower cost[/emphasis], and ClaudeDevs is defaulting to Fast mode — two point five times the speed at higher per-token pricing.
+Speaker 2: Worth noting the SemiAnalysis figure there — twenty-one dollars in tokens replacing a twenty-hour task. That works out to [emphasis]sixty to ninety times return on investment[/emphasis].
+Speaker 1: OpenAI itself stayed corporate-silent for roughly ninety-eight hours straight, through the verdict, the Malta conference, and the appeal filing.
+Speaker 2: [dramatic_pause] All eyes on Google today — the I/O keynote starts at ten a.m. Pacific with Gemini four point zero, new XR glasses, and Aluminium OS all on the agenda.
+Speaker 1: And flag Sunday, May twenty-fifth — Pope Leo the Fourteenth's encyclical on AI drops, co-authored with Chris Olah. That is your ARA broadcast — full digest on GitHub.
