@@ -112,6 +112,13 @@ type Manifest = {
   audio: string[];
   generative: GenResearchRow[];
 };
+type TwitterStory = {
+  rank: string;
+  title: string;
+  body: string;
+  links: string[];
+  handles: string[];
+};
 
 // Model-release ticket — see docs/model-tickets.md for the contract.
 type TicketStatus = 'rumored' | 'in-testing' | 'confirmed' | 'released' | 'closed';
@@ -636,16 +643,29 @@ function setSafeContent(el: HTMLElement, rawHtml: string): void {
 }
 
 // ── Fetch ─────────────────────────────────────────────
-async function fetchTwitter(dateStr: string, signal: AbortSignal): Promise<string | null> {
-  const url = `${DATA_BASE}/twitter/${dateStr}.md`;
+function isViteAppShell(text: string): boolean {
+  const head = text.slice(0, 1000).trim().toLowerCase();
+  return (
+    head.startsWith('<!doctype html') &&
+    (head.includes('script type="module" src="/@vite/client"') || head.includes('<title>ai research'))
+  );
+}
+
+async function fetchMarkdownReport(url: string, signal: AbortSignal): Promise<string | null> {
   try {
-    const resp = await fetch(url, { signal });
+    const resp = await fetch(url, { signal, cache: 'no-cache' });
     if (!resp.ok) return null;
-    return await resp.text();
+    const text = await resp.text();
+    return isViteAppShell(text) ? null : text;
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') return null;
     return null;
   }
+}
+
+async function fetchTwitter(dateStr: string, signal: AbortSignal): Promise<string | null> {
+  const url = `${DATA_BASE}/twitter/${dateStr}.md`;
+  return fetchMarkdownReport(url, signal);
 }
 
 async function fetchFrontPage(dateStr: string, signal: AbortSignal): Promise<string | null> {
@@ -662,14 +682,7 @@ async function fetchFrontPage(dateStr: string, signal: AbortSignal): Promise<str
 
 async function fetchDigest(dateStr: string, signal: AbortSignal): Promise<string | null> {
   const url = `${DATA_BASE}/digest/${dateStr}-digest.md`;
-  try {
-    const resp = await fetch(url, { signal });
-    if (!resp.ok) return null;
-    return await resp.text();
-  } catch (error) {
-    if (error instanceof DOMException && error.name === 'AbortError') return null;
-    return null;
-  }
+  return fetchMarkdownReport(url, signal);
 }
 
 async function fetchResearchDoc(row: GenResearchRow, signal: AbortSignal): Promise<string | null> {
@@ -807,6 +820,230 @@ function wrapTables(html: string): string {
     .replace(/<\/table>/g, '</table></div>');
 }
 
+function stripMarkdown(md: string): string {
+  return md
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/!\[[^\]]*]\([^)]+\)/g, ' ')
+    .replace(/\[([^\]]+)]\([^)]+\)/g, '$1')
+    .replace(/https?:\/\/\S+/g, ' ')
+    .replace(/[#>*_`~|]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function truncateText(text: string, max = 360): string {
+  if (text.length <= max) return text;
+  const sliced = text.slice(0, max).replace(/\s+\S*$/, '').trim();
+  return sliced + '...';
+}
+
+function cleanPublicLeadText(text: string): string {
+  return text
+    .replace(/\([^)]*\b(?:verified|curl|re-verified|source checks?|multi-source primary-source confirmed)[^)]*\)/gi, '')
+    .replace(/\b(?:verified|re-verified|confirmed)\s+(?:via|by)\s+(?:curl|source checks?|snapshot)[^.;—]*[.;—]?\s*/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function isSourceMethodLead(text: string): boolean {
+  return /\b(?:verified|curl|source checks?|originating .*source|confirmed via|post body|press-release teaser|raw URL|snapshot)\b/i.test(text);
+}
+
+function highlightPlainText(text: string): string {
+  const escapedText = escapeHtml(text);
+  if (!searchTerm) return escapedText;
+  const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp('(' + escaped + ')', 'gi');
+  return escapedText.replace(re, '<mark>$1</mark>');
+}
+
+function extractUrls(md: string): string[] {
+  const urls = new Set<string>();
+  const re = /https?:\/\/[^\s)>\]]+/g;
+  let match: RegExpExecArray | null;
+  while ((match = re.exec(md))) {
+    urls.add(match[0].replace(/[.,;:]+$/, ''));
+  }
+  return Array.from(urls);
+}
+
+function extractHandles(md: string, limit = 12): string[] {
+  const handles = new Set<string>();
+  const re = /(?<!\w)@([A-Za-z0-9_]{2,20})/g;
+  let match: RegExpExecArray | null;
+  while ((match = re.exec(md)) && handles.size < limit) {
+    handles.add('@' + match[1]);
+  }
+  return Array.from(handles);
+}
+
+function hostnameOf(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return url;
+  }
+}
+
+function renderTweetAgoFromUrl(url: string): string {
+  const match = url.match(/(?:x|twitter)\.com\/[^/]+\/status\/(\d+)/);
+  if (!match) return '';
+  const date = snowflakeToDate(match[1]);
+  return date ? '<span class="tweet-ago">' + escapeHtml(timeAgo(date)) + '</span>' : '';
+}
+
+function sourceLabel(url: string): string {
+  try {
+    const u = new URL(url);
+    const host = u.hostname.replace(/^www\./, '');
+    const pathParts = u.pathname.split('/').filter(Boolean);
+    if ((host === 'x.com' || host.endsWith('.twitter.com') || host === 'twitter.com') && pathParts[0]) {
+      return '@' + pathParts[0];
+    }
+    return host;
+  } catch {
+    return url;
+  }
+}
+
+function renderSourceChips(urls: string[], limit = 8): string {
+  const html = urls.slice(0, limit).map((url) => {
+    return (
+      '<a class="twitter-source-chip" href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' +
+        escapeHtml(sourceLabel(url)) +
+        renderTweetAgoFromUrl(url) +
+      '</a>'
+    );
+  }).join('');
+  const extra = urls.length > limit ? '<span class="twitter-source-more">+' + (urls.length - limit) + '</span>' : '';
+  return html + extra;
+}
+
+function renderHandleChips(handles: string[], limit = 10): string {
+  return handles.slice(0, limit).map((handle) => {
+    return '<span class="twitter-handle-chip">' + escapeHtml(handle) + '</span>';
+  }).join('');
+}
+
+function twitterMarkdownToHtml(md: string): string {
+  let html = marked.parse(md) as string;
+  html = wrapTables(html);
+  html = html.replace(
+    /href="https?:\/\/(?:x|twitter)\.com\/\w+\/status\/(\d+)"[^>]*>([^<]+)<\/a>/g,
+    (match, tweetId: string) => {
+      const date = snowflakeToDate(tweetId);
+      if (!date) return match;
+      return match + '<span class="tweet-ago">' + escapeHtml(timeAgo(date)) + '</span>';
+    },
+  );
+  html = html.replace(/(?<!\w)(@\w+)/g, '<span class="handle">$1</span>');
+  return html;
+}
+
+function extractCycleSummary(body: string): string {
+  const match = body.match(/\*\*Cycle summary\*\*:\s*([\s\S]*?)(?=\n###|\n####|\n\*\*(?:Evidence|Previously|Counter|Verification|Watch)\*\*:|$)/i);
+  return match ? match[1].trim() : '';
+}
+
+function extractSectionText(body: string, label: string): string {
+  const re = new RegExp('\\*\\*' + label + '\\*\\*:\\s*([\\s\\S]*?)(?=\\n\\*\\*(?:Previously|Evidence|Counter / contradicting|Verification|Watch)\\*\\*:|\\n####\\s+\\d+\\.|$)', 'i');
+  const match = body.match(re);
+  return match ? match[1].trim() : '';
+}
+
+function cleanEvidenceLead(text: string): string {
+  return text
+    .split('\n')
+    .map((line) => line
+      .replace(/\*\*/g, '')
+      .replace(/^[-*]\s+/, '')
+      .replace(/^https?:\/\/\S+\s*(?:—|-|:)\s*/i, '')
+      .replace(/^[\w.-]+\.[a-z]{2,}(?:\/\S*)?\s*(?:\([^)]*\))?\s*(?:—|-|:)+\s*/i, '')
+      .replace(/^@[\w_]+:\s*/i, '')
+      .replace(/^@[\w_]+\s+[^—\n]{0,140}\s+—\s*/i, '')
+      .replace(/^["“]?[^"”]{0,160}["”]?\s+—\s+https?:\/\/\S+\s*(?:—\s*)?/i, '')
+      .replace(/^\s*(?:—|-)+\s*/, '')
+      .replace(/^the originating\b/i, 'Originating')
+      .trim())
+    .filter(Boolean)
+    .join(' ');
+}
+
+function storyCurrentLead(body: string): string {
+  const evidence = extractSectionText(body, 'Evidence');
+  if (evidence) return cleanEvidenceLead(evidence);
+  return body
+    .replace(/\*\*Previously\*\*:?[\s\S]*?(?=\n\*\*(?:Evidence|Counter \/ contradicting|Verification|Watch)\*\*:|$)/i, '')
+    .trim();
+}
+
+function parseTwitterStories(body: string): TwitterStory[] {
+  const storyRe = /^####\s+(\d+)\.\s+(.+)$/gm;
+  const matches = Array.from(body.matchAll(storyRe));
+  return matches.map((match, idx) => {
+    const start = (match.index || 0) + match[0].length;
+    const nextStory = idx + 1 < matches.length ? matches[idx + 1].index || body.length : body.length;
+    const nextSection = body.slice(start).search(/\n###\s+/);
+    const sectionEnd = nextSection >= 0 ? start + nextSection : body.length;
+    const end = Math.min(nextStory, sectionEnd);
+    const storyBody = body.slice(start, end).trim();
+    return {
+      rank: match[1],
+      title: match[2].trim(),
+      body: storyBody,
+      links: extractUrls(storyBody),
+      handles: extractHandles(match[2] + '\n' + storyBody),
+    };
+  });
+}
+
+function firstText(root: ParentNode, selector: string): string {
+  return root.querySelector(selector)?.textContent?.replace(/\s+/g, ' ').trim() || '';
+}
+
+function firstHtml(root: ParentNode, selector: string): string {
+  return (root.querySelector(selector) as HTMLElement | null)?.innerHTML?.trim() || '';
+}
+
+function renderStructuredTwitterStories(body: string): string {
+  if (!/\btwitter-story\b/.test(body)) return '';
+  const doc = new DOMParser().parseFromString('<div>' + body + '</div>', 'text/html');
+  const stories = Array.from(doc.querySelectorAll('article.twitter-story'));
+  if (stories.length === 0) return '';
+
+  return stories.map((story, idx) => {
+    const rank = story.getAttribute('data-rank') || String(idx + 1);
+    const title = firstText(story, '.twitter-story-title, h3');
+    const lead = firstText(story, '.twitter-story-lead');
+    const sources = firstHtml(story, '.twitter-story-sources');
+    const signals = firstHtml(story, '.twitter-story-signals');
+    const bodyHtml = firstHtml(story, '.twitter-story-body') || firstHtml(story, '.twitter-story-details');
+    const detailsBits = [
+      sources ? '<div class="twitter-story-chips">' + sources + '</div>' : '',
+      signals ? '<div class="twitter-story-signals">' + signals + '</div>' : '',
+      bodyHtml ? '<div class="md-content twitter-story-body">' + bodyHtml + '</div>' : '',
+    ].filter(Boolean).join('\n');
+
+    return [
+      '<article class="twitter-story-card">',
+      '  <div class="twitter-story-rank">' + escapeHtml(rank) + '</div>',
+      '  <div class="twitter-story-main">',
+      title ? '    <h3 class="twitter-story-title">' + highlightPlainText(title) + '</h3>' : '',
+      lead ? '    <p class="twitter-story-summary">' + highlightPlainText(truncateText(cleanPublicLeadText(lead), 360)) + '</p>' : '',
+      detailsBits
+        ? [
+            '    <details class="twitter-story-details">',
+            '      <summary>Full analysis</summary>',
+            detailsBits,
+            '    </details>',
+          ].join('\n')
+        : '',
+      '  </div>',
+      '</article>',
+    ].filter(Boolean).join('\n');
+  }).join('\n');
+}
+
 function sanitizePublicReportMarkdown(md: string): string {
   const lines = md.split('\n');
   const out: string[] = [];
@@ -851,7 +1088,7 @@ function sanitizePublicReportMarkdown(md: string): string {
   return out.join('\n').replace(/\n{4,}/g, '\n\n\n').trim();
 }
 
-function renderReport(md: string, fallbackDate: string | null = null): void {
+function renderTwitterReport(md: string, fallbackDate: string | null = null): void {
   const sections = splitSections(sanitizePublicReportMarkdown(md)).reverse();
   const cards: string[] = [];
   if (fallbackDate) {
@@ -868,66 +1105,73 @@ function renderReport(md: string, fallbackDate: string | null = null): void {
     // Skip the top-level h1 title section if it has no body
     if (!section.title && !section.body) continue;
 
-    let html = marked.parse(section.body) as string;
-    html = wrapTables(html);
-
-    // Add time-ago labels to tweet URLs (extract Snowflake ID from status URL)
-    html = html.replace(
-      /href="https?:\/\/(?:x|twitter)\.com\/\w+\/status\/(\d+)"[^>]*>([^<]+)<\/a>/g,
-      (match, tweetId: string) => {
-        const date = snowflakeToDate(tweetId);
-        if (!date) return match;
-        const ago = timeAgo(date);
-        return match + '<span class="tweet-ago">' + escapeHtml(ago) + '</span>';
-      },
-    );
-
-    // Highlight @handles
-    html = html.replace(
-      /(?<!\w)(@\w+)/g,
-      '<span class="handle">$1</span>',
-    );
-
-    if (searchTerm) {
-      const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const re = new RegExp('(' + escaped + ')', 'gi');
-      html = html.replace(re, '<mark>$1</mark>');
-    }
-
-    // Use the ## heading as the card title, or fall back to date
     const title = section.title || displayDate(currentDate);
     const dateStr = fmtDate(currentDate);
     const timeInfo = parseUtcTime(section.title, dateStr);
-
-    let headerHtml: string;
-    if (timeInfo) {
-      headerHtml =
-        '  <div class="content-card-header">' +
-        '    ' + clockIcon(timeInfo.localHours, timeInfo.localMinutes) +
-        '    <div class="content-card-title">' + escapeHtml(timeInfo.utc) +
-        '      <span class="local-time">' + escapeHtml(timeInfo.local) + '</span>' +
-        '    </div>' +
-        '  </div>';
-    } else {
-      headerHtml =
-        '  <div class="content-card-header">' +
-        '    <div class="content-card-title">' + escapeHtml(title) + '</div>' +
-        '  </div>';
-    }
+    const cycleSummary = extractCycleSummary(section.body);
+    const stories = parseTwitterStories(section.body);
+    const displayTime = timeInfo
+      ? '<span class="twitter-cycle-time">' + escapeHtml(timeInfo.utc) + '</span><span class="local-time">' + escapeHtml(timeInfo.local) + '</span>'
+      : '<span class="twitter-cycle-time">' + escapeHtml(title) + '</span>';
+    const leadText = cycleSummary
+      ? truncateText(cleanPublicLeadText(stripMarkdown(cycleSummary)), 620)
+      : truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 620);
+    const leadHtml = twitterMarkdownToHtml(section.body);
+    const structuredStoryCards = renderStructuredTwitterStories(section.body);
+    const storyCards = structuredStoryCards || stories.map((story) => {
+      const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
+      const watch = truncateText(stripMarkdown(extractSectionText(story.body, 'Watch')), 210);
+      const storyIntro = stripMarkdown(storyCurrentLead(story.body))
+        .replace(/^[\s\-—–]+/, '')
+        .replace(/^the originating\b/i, 'Originating');
+      const storySummary = isSourceMethodLead(storyIntro) ? '' : truncateText(cleanPublicLeadText(storyIntro), 360);
+      const storyLinks = renderSourceChips(story.links, 6);
+      const storyHandles = renderHandleChips(story.handles, 8);
+      return [
+        '<article class="twitter-story-card">',
+        '  <div class="twitter-story-rank">' + escapeHtml(story.rank) + '</div>',
+        '  <div class="twitter-story-main">',
+        '    <h3 class="twitter-story-title">' + highlightPlainText(story.title) + '</h3>',
+        storySummary ? '    <p class="twitter-story-summary">' + highlightPlainText(storySummary) + '</p>' : '',
+        '    <details class="twitter-story-details">',
+        '      <summary>Full analysis</summary>',
+        storyLinks || storyHandles ? '      <div class="twitter-story-chips">' + storyLinks + storyHandles + '</div>' : '',
+        verification || watch
+          ? '      <div class="twitter-story-signals">' +
+              (verification ? '<div><span>Verify</span>' + highlightPlainText(verification) + '</div>' : '') +
+              (watch ? '<div><span>Watch</span>' + highlightPlainText(watch) + '</div>' : '') +
+            '</div>'
+          : '',
+        '      <div class="md-content twitter-story-body">' + twitterMarkdownToHtml(story.body) + '</div>',
+        '    </details>',
+        '  </div>',
+        '</article>',
+      ].filter(Boolean).join('\n');
+    }).join('\n');
 
     cards.push(
       [
-        '<div class="content-card">',
-        headerHtml,
-        '  <div class="content-card-body">',
-        '    <div class="md-content">' + html + '</div>',
+        '<section class="content-card twitter-cycle-card">',
+        '  <div class="twitter-cycle-header">',
+        '    <div class="twitter-cycle-kicker">' + (timeInfo ? clockIcon(timeInfo.localHours, timeInfo.localMinutes) : '') + displayTime + '</div>',
         '  </div>',
-        '</div>',
+        '  <div class="twitter-wire-brief">',
+        '    <div>',
+        '      <div class="twitter-brief-label">Signal Brief</div>',
+        '      <p class="twitter-brief-text">' + highlightPlainText(leadText) + '</p>',
+        '    </div>',
+        '  </div>',
+        '  <details class="twitter-cycle-summary">',
+        '    <summary>Full cycle text</summary>',
+        '    <div class="md-content twitter-summary-body">' + leadHtml + '</div>',
+        '  </details>',
+        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : '  <div class="md-content twitter-story-body">' + twitterMarkdownToHtml(section.body) + '</div>',
+        '</section>',
       ].join('\n'),
     );
   }
 
-  setSafeContent(content, cards.join('\n'));
+  setSafeContent(content, '<div class="twitter-report">' + cards.join('\n') + '</div>');
 }
 
 function loadTickets(): Promise<Ticket[] | null> {
@@ -1032,14 +1276,6 @@ function ticketExpandedPanel(ticket: Ticket | null): string {
       </div>
     </div>
   </section>`;
-}
-
-function hostnameOf(url: string): string {
-  try {
-    return new URL(url).hostname.replace(/^www\./, '');
-  } catch {
-    return url;
-  }
 }
 
 function ticketSortKey(t: Ticket): [number, string] {
@@ -2882,14 +3118,14 @@ async function load(): Promise<void> {
       if (result === 'timeout') {
         showError('Loading timed out', 'Network may be slow. Click to retry.');
       } else if (result) {
-        renderReport(result);
+        renderTwitterReport(result);
       } else {
         const fallback = findMostRecentAvailable('twitter', dateStr);
         if (fallback && fallback !== dateStr) {
           const fallbackMd = await fetchTwitter(fallback, controller.signal);
           if (requestId !== loadRequestId) return;
           if (fallbackMd) {
-            renderReport(fallbackMd, fallback);
+            renderTwitterReport(fallbackMd, fallback);
           } else {
             showEmpty(dateStr);
           }

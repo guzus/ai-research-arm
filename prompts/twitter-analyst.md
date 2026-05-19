@@ -27,6 +27,9 @@ Use them when verification matters; quiet cycles should use fewer.
 INSTRUCTIONS:
 1. Read PRIOR CONTEXT first. Note continuing narratives. A continuing
    thread should not be re-reported from scratch; identify what changed.
+   Top Stories must lead with what happened in the current cycle, not with
+   prior-cycle recap. If prior context matters, fold it into the Evidence,
+   Counter, or Watch text after the current-cycle news is stated.
 2. Read the raw input data and skim for signal. Most tweets are noise.
 3. Identify 2-5 MAIN STORIES from this {{cycle_window}} window. A main story:
    - Materially changes the AI landscape, OR
@@ -68,16 +71,36 @@ If it doesn't exist, start with:
 
 ### Top stories
 
-#### 1. [One-line thesis — what happened and why it matters]
-**Previously** (only for continuing threads): [1 line with prior cycle reference]
-**Evidence**: [Tight synthesis of 2-3 strongest sources. Include names, dates, numbers.]
-- @primary_handle: [specific claim/datum] — https://x.com/handle/status/ID — [engagement if notable]
-- @corroborating_handle: [what they add] — URL
-**Counter / contradicting**: [Strongest counter-hypothesis + what the falsification attempt found]
-**Verification**: ✓ multi-source confirmed / ⚠ single-source / 🚩 unverified — [one-line reason]
-**Watch**: [Concrete signal that would change the picture in next 24h]
+Use this Twitter component shape for every Top Story. The folded card is
+only `twitter-story-title` + `twitter-story-lead`, so those two fields must
+read like current news. Do NOT put source-method prose ("verified by curl",
+"multi-source confirmed", raw URLs, engagement audit detail, or prior-cycle
+recap) in `twitter-story-lead`; put that inside the details fields.
+This contract is documented in `TWITTER_COMPONENTS.md`.
 
-#### 2. [Next story — same structure]
+<article class="twitter-story" data-rank="1">
+  <h3 class="twitter-story-title">[One-line thesis — what happened and why it matters]</h3>
+  <p class="twitter-story-lead">[1-2 sentences on the new development from this cycle. Start with the news, not prior context or verification method.]</p>
+  <details class="twitter-story-details">
+    <summary>Full analysis</summary>
+    <div class="twitter-story-sources">
+      <a class="twitter-source-chip" href="https://x.com/handle/status/ID">@primary_handle</a>
+      <a class="twitter-source-chip" href="https://example.com/source">source</a>
+    </div>
+    <div class="twitter-story-signals">
+      <div><span>Verify</span>✓ multi-source confirmed / ⚠ single-source / 🚩 unverified — [one-line reason]</div>
+      <div><span>Watch</span>[Concrete signal that would change the picture in next 24h]</div>
+    </div>
+    <div class="twitter-story-body">
+      <p><strong>Evidence:</strong> [Tight synthesis of 2-3 strongest sources. Include names, dates, numbers, and links.]</p>
+      <p><strong>Counter / contradicting:</strong> [Strongest counter-hypothesis + what the falsification attempt found]</p>
+      <p><strong>Context:</strong> [Optional continuing-thread context after the current-cycle news, never before it.]</p>
+    </div>
+  </details>
+</article>
+
+Then repeat the same `<article class="twitter-story" data-rank="2">…</article>`
+shape for the next story.
 
 ### Quick hits
 - [Concrete item with @handle + URL. Specific numbers, names, dates.]
