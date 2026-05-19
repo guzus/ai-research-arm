@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-19 18:50 UTC
+
+CYCLE: Google I/O 2026 — Gemini 3.5 family launches, agent stack reshuffles, pricing reset.
+
+TOP STORIES:
+• Gemini 3.5 Flash live globally: Intelligence Index 55 beats Sonnet 4.6 max + Grok 4.3 high; MMMU-Pro 84% (highest ever); but 3x per-token hike to $1.50/$9 — Flash is no longer the cheap tier [✓]
+• Gemini Omni "world model" launches — multimodal-in / video-out, in Gemini App, Flow, YouTube Shorts; API in weeks [✓]
+• Gemini Spark agent + Antigravity 2.0 (mission control + CLI + SDK) + AI Ultra reset to new $100/m tier, top tier cut $250→$200 [✓]
+
+WATCH: Google I/O developer keynote 20:30 UTC — API pricing + SDK terms + Android XR / Google Glass detail.
+
+Full update on GitHub.
