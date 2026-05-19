@@ -412,5 +412,17 @@
     "source": "local-oracle",
     "prompt": "$DXYZ",
     "tags": []
+  },
+  {
+    "slug": "peng-stock",
+    "file": "2026-05-19T090953--peng-stock.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "$PENG at $46: a memory cycle dressed as an AI-infrastructure rerating",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-19T09:09:53Z",
+    "source": "workflow_dispatch",
+    "prompt": "$peng stock",
+    "tags": []
   }
 ]
