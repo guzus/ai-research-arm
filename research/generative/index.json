@@ -436,5 +436,17 @@
     "source": "workflow_dispatch",
     "prompt": "$SNDK stock",
     "tags": []
+  },
+  {
+    "slug": "ai-projects-on-base-chain",
+    "file": "2026-05-19T164217--ai-projects-on-base-chain.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "AI projects on Base chain: how an L2 became the financial layer for AI agents — and the ugly drawdown that followed",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-19T16:42:17Z",
+    "source": "claude",
+    "prompt": "AI Projects on Base Chain",
+    "tags": []
   }
 ]
