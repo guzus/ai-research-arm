@@ -78,7 +78,8 @@ concurrency:
 
 jobs:
   twitter:
-    runs-on: [self-hosted, Linux]
+    # Temporary: use GitHub-hosted runner while the self-hosted runner queue is blocked.
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       actions: write
