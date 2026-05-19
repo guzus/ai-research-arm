@@ -961,27 +961,33 @@ function ticketCard(ticket: Ticket): string {
     `<div class="ticket-footer"><span>updated ${escapeHtml(ticket.updated_at)}</span><span>slug: ${escapeHtml(ticket.slug)}</span></div>`,
   ].filter(Boolean).join('\n');
 
-  const bodyHtml = expanded
-    ? `<div class="ticket-expanded">
-         <div class="ticket-body md-content">${DOMPurify.sanitize(marked.parse(ticket.body) as string)}</div>
-         <div class="ticket-history">
-           <h4 class="ticket-history-title">History</h4>
-           <ol class="ticket-history-list">${ticket.history.map((h) => `<li><span class="ticket-history-ts">${escapeHtml(h.ts)}</span><span class="ticket-history-change">${escapeHtml(h.change)}</span></li>`).join('')}</ol>
-         </div>
-         <div class="ticket-all-sources">
-           <h4 class="ticket-history-title">All sources (${ticket.sources.length})</h4>
-           <ul class="ticket-source-list">${ticket.sources.map((s) => s.startsWith('@')
-             ? `<li><span class="ticket-source-handle">${escapeHtml(s)}</span></li>`
-             : `<li><a href="${escapeHtml(s)}" target="_blank" rel="noopener">${escapeHtml(s)}</a></li>`).join('')}</ul>
-         </div>
-       </div>`
-    : '';
-
   return `<article class="ticket-card ticket-card-${ticket.status}${expanded ? ' ticket-card-expanded' : ''}" data-slug="${escapeHtml(ticket.slug)}">
     ${headerHtml}
     <div class="ticket-meta">${metaHtml}</div>
-    ${bodyHtml}
   </article>`;
+}
+
+function ticketExpandedPanel(ticket: Ticket | null): string {
+  if (!ticket) return '';
+  return `<section class="ticket-detail-panel" aria-label="${escapeHtml(ticket.title)} details">
+    <div class="ticket-detail-header">
+      ${ticketStatusPill(ticket.status)}
+      <h3>${escapeHtml(ticket.title)}</h3>
+    </div>
+    <div class="ticket-expanded">
+      <div class="ticket-body md-content">${DOMPurify.sanitize(marked.parse(ticket.body) as string)}</div>
+      <div class="ticket-history">
+        <h4 class="ticket-history-title">History</h4>
+        <ol class="ticket-history-list">${ticket.history.map((h) => `<li><span class="ticket-history-ts">${escapeHtml(h.ts)}</span><span class="ticket-history-change">${escapeHtml(h.change)}</span></li>`).join('')}</ol>
+      </div>
+      <div class="ticket-all-sources">
+        <h4 class="ticket-history-title">All sources (${ticket.sources.length})</h4>
+        <ul class="ticket-source-list">${ticket.sources.map((s) => s.startsWith('@')
+          ? `<li><span class="ticket-source-handle">${escapeHtml(s)}</span></li>`
+          : `<li><a href="${escapeHtml(s)}" target="_blank" rel="noopener">${escapeHtml(s)}</a></li>`).join('')}</ul>
+      </div>
+    </div>
+  </section>`;
 }
 
 function hostnameOf(url: string): string {
@@ -1065,23 +1071,55 @@ function renderTickets(tickets: Ticket[] | null): void {
   const companyOptions = ['all', ...companyKeys].map((k) =>
     `<option value="${escapeHtml(k)}"${ticketFilters.company === k ? ' selected' : ''}>${escapeHtml(k === 'all' ? 'All companies' : companyLabels[k] || k)}</option>`).join('');
 
-  const grid = filtered.map(ticketCard).join('\n');
+  const visibleStatuses = ticketFilters.status === 'all'
+    ? statusOptions
+    : statusOptions.filter((s) => s === ticketFilters.status);
+  const statusLabels: Record<TicketStatus, string> = {
+    'rumored': 'Rumored',
+    'in-testing': 'In testing',
+    'confirmed': 'Confirmed',
+    'released': 'Released',
+    'closed': 'Closed',
+  };
+  const board = visibleStatuses.map((status) => {
+    const cards = filtered.filter((ticket) => ticket.status === status);
+    const cardHtml = cards.length
+      ? cards.map(ticketCard).join('\n')
+      : '<div class="ticket-column-empty">No tickets</div>';
+    return [
+      `<section class="ticket-column ticket-column-${status}" aria-label="${escapeHtml(statusLabels[status])} tickets">`,
+      `  <div class="ticket-column-header"><span>${escapeHtml(statusLabels[status])}</span><span class="ticket-column-count">${cards.length}</span></div>`,
+      `  <div class="ticket-column-cards">${cardHtml}</div>`,
+      `</section>`,
+    ].join('\n');
+  }).join('\n');
 
   const emptyNote = filtered.length === 0
-    ? `<div class="content-card"><div class="content-card-body"><p>No tickets match the current filters.</p></div></div>`
+    ? `<div class="ticket-board-empty">No tickets match the current filters.</div>`
     : '';
+  const detailPanel = ticketExpandedPanel(
+    expandedTicketSlug ? filtered.find((ticket) => ticket.slug === expandedTicketSlug) || null : null,
+  );
 
   setSafeContent(
     content,
     `<div class="tickets-view">
+      <div class="tickets-heading">
+        <h2>Board</h2>
+        <div class="tickets-actions">
+          <button class="ticket-action-btn" type="button" disabled>Release</button>
+          <button class="ticket-more-btn" type="button" disabled aria-label="More options">•••</button>
+        </div>
+      </div>
       <div class="tickets-controls">
         <div class="ticket-filters">${statusBar}</div>
         <select class="ticket-company-select" data-filter-company>${companyOptions}</select>
         <div class="ticket-summary">${filtered.length} of ${tickets.length} tickets</div>
       </div>
-      <div class="tickets-grid">
-        ${grid}
+      <div class="tickets-board">
+        ${board}
       </div>
+      ${detailPanel}
       ${emptyNote}
     </div>`,
   );
@@ -3031,8 +3069,7 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
     if (tab === activeTab) return;
     activeTab = tab;
     selectedSlug = null;
-    document.querySelectorAll('.tab').forEach((b) => b.classList.remove('active'));
-    btn.classList.add('active');
+    syncTabUi();
     document.body.classList.toggle('tab-research', activeTab === 'research');
     document.body.classList.toggle('tab-models', activeTab === 'models');
     // Re-probe availability for current month with new tab (date tabs only).
