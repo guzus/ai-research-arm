@@ -6091,5 +6091,40 @@
     "headline": "OPENAI CORP ~110H SILENT \u2014 NO VERDICT / VERA-CPU / FT-HASSABIS / ANTHROPIC-LONDON ACKNOWLEDGMENT AS GOOGLE I/O OPENS",
     "source": "@OpenAI",
     "url": "https://x.com/OpenAI/status/2055016850849993072"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-19 13:25 UTC",
+    "headline": "ANTHROPIC-KPMG GLOBAL ALLIANCE \u2014 CLAUDE INSIDE DIGITAL GATEWAY FOR 276,000+ EMPLOYEES ACROSS 138 COUNTRIES; KPMG NAMED PE-PREFERRED PARTNER",
+    "source": "@AnthropicAI",
+    "url": "https://www.anthropic.com/news/anthropic-kpmg"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-19 13:25 UTC",
+    "headline": "ANTHROPIC SHIPS SECOND BIG-4 STRATEGIC ALLIANCE IN 5 DAYS \u2014 PwC (MAY 14) \u2192 KPMG (MAY 19) \u2014 DAY-OF GOOGLE I/O 2026 KEYNOTE",
+    "source": "@AnthropicAI",
+    "url": "https://www.anthropic.com/news"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-19 13:25 UTC",
+    "headline": "KPMG DIGITAL GATEWAY POWERED BY CLAUDE \u2014 COWORK + MANAGED AGENTS + CLAUDE CODE (KPMG BLAZE) ON AZURE; TAX/LEGAL CLIENT WORKFLOWS FIRST",
+    "source": "KPMG.com",
+    "url": "https://kpmg.com/xx/en/media/press-releases/2026/05/kpmg-and-anthropic-sign-global-alliance-and-launch-digital-gateway-powered-by-claude.html"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-19 13:25 UTC",
+    "headline": "ANTHROPIC NEWSROOM CADENCE \u2014 10 POSTS IN 22 DAYS (APR 27 \u2192 MAY 19): DISTRIBUTION + INFRA + PRODUCT CAMPAIGN THROUGH GOOGLE I/O WEEK",
+    "source": "@AnthropicAI",
+    "url": "https://www.anthropic.com/news"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 13:25 UTC",
+    "headline": "GOOGLE I/O 2026 KEYNOTE T-3.5H \u2014 SUNDAR 17:00 UTC OPEN; DEMIS SLOT W/ FT-HASSABIS-DISCLOSURE OVERLAY; GEMINI 3.X / VEO 4 / OMNI",
+    "source": "@GoogleDeepMind",
+    "url": "https://blog.google/"
   }
 ]
