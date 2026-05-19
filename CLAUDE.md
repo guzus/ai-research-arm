@@ -33,6 +33,7 @@ and opens a PR with methodology fixes.
 | [`ARA_DSL.md`](ARA_DSL.md) | Source format for generative-research articles. The compiler at `scripts/compile_ara.py` turns `.ara.md` into a validated `<article>` fragment. |
 | [`COMPONENTS.md`](COMPONENTS.md) | Reference for the `ara-*` component vocabulary the validator enforces. The CSS at `dashboard/src/components/ara-research.css` is the live source of truth — currently ~113 classes vs ~81 documented (see "Known drift" below). |
 | [`docs/generative-research-backends.md`](docs/generative-research-backends.md) | Backend matrix for the generative-research lane (Claude vs DeepSeek vs local Oracle), env mapping, comparison commands. |
+| [`docs/model-tickets.md`](docs/model-tickets.md) | Schema + lifecycle + dedup protocol for `research/models/tickets/*.md`. Read by the CRUD agent in `24h-model-timeline.yml` and enforced by `scripts/check_model_tickets.py`. |
 | [`docs/hooker-telemetry.md`](docs/hooker-telemetry.md) | Non-blocking telemetry route via `https://hooker.guzus.xyz` topic `ara-telemetry`. |
 | [`docs/archive/`](docs/archive/) | Historical improvement logs and superseded docs. |
 | `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`; Vercel auto-deploys on every push to `main`. |
@@ -52,6 +53,7 @@ and opens a PR with methodology fixes.
 | `research_search.py` | Specialized search wrappers for primary-source research. |
 | `stock_prices.py` | Yahoo Finance time series → copy-paste lines for `:::line-chart`. |
 | `dedupe_headline_alerts.py` | Filter + record delivered Twitter headline alerts (used by `hourly-twitter.yml`). |
+| `check_model_tickets.py` | Validator for `research/models/tickets/*.md` against the schema in `docs/model-tickets.md`. The CRUD agent in `24h-model-timeline.yml` runs it after every pass; CI runs it on every PR. |
 | `test_ara_dsl.py`, `test_dedupe_headline_alerts.py` | Pytest-style tests run in CI. |
 
 ## GitHub Actions Workflows
@@ -95,7 +97,7 @@ input).
 |---|---|---|
 | `daily-digest.yml` | daily `00:00` | `research/digest/` |
 | `ai-news-research.yml` | twice daily `08:23`, `20:23` | `research/` (broad topic sweep via Perplexity/Exa MCP) |
-| `24h-model-timeline.yml` | daily `06:29` | `research/models/*-timeline.md` (hyperscaler model release timeline) |
+| `24h-model-timeline.yml` | daily `06:29` | `research/models/tickets/<slug>.md` (CRUD'd per release/event) + `research/models/<date>-timeline.md` (derived daily-diff) |
 
 ### Output (shareable artifacts)
 
@@ -143,6 +145,8 @@ research/
 ├── generative/                # generative-research.yml + Oracle runner (HTML + .ara.md + index.json)
 ├── issues/                    # research-issue.yml
 ├── models/                    # 24h-model-timeline.yml
+│   ├── tickets/                # persistent set, one .md per shipping artifact
+│   └── <date>-timeline.md      # derived daily diff (created/updated/closed counts)
 ├── rss/                       # hourly-rss.yml
 ├── summaries/                 # hourly-twitter.yml (Telegram digest + headline-alert state)
 ├── twitter/                   # hourly-twitter.yml
@@ -230,6 +234,20 @@ output or break the pipeline. Read them before editing.
    write into `research/` should write to a temp file in the same
    directory and `os.replace()` into place, so a half-finished file
    never reaches Vercel's prebuild.
+
+9. **Model tickets are CRUD'd, not regenerated.**
+   `research/models/tickets/<slug>.md` is the persistent store for the
+   model-release timeline — one ticket per shipping artifact (release,
+   partnership, funding round, legal action). The `24h-model-timeline.yml`
+   CRUD agent reads the existing tickets + last 24h of signal and
+   chooses create/update/close per the protocol in
+   `docs/model-tickets.md`. Never regenerate the table by deleting and
+   re-writing tickets. Slugs are immutable; `history` is append-only;
+   closure preserves history. `scripts/check_model_tickets.py` enforces
+   the schema (5 canonical states: rumored → in-testing → confirmed →
+   released → closed). The legacy `<date>-timeline.md` files (frozen
+   format) remain on disk; new dates produce a *derived diff* summarizing
+   what the agent did.
 
 ## Code Style
 

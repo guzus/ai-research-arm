@@ -12,12 +12,15 @@
 import { existsSync, readdirSync, mkdirSync, readFileSync, writeFileSync, cpSync, statSync, openSync, readSync, closeSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import yaml from 'js-yaml';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const dashboardDir = dirname(here);
 const repoRoot = dirname(dashboardDir);
 const researchSrc = join(repoRoot, 'research');
 const publicResearch = join(dashboardDir, 'public', 'research');
+const ticketsSrc = join(researchSrc, 'models', 'tickets');
+const ticketsDest = join(publicResearch, 'models', 'tickets');
 
 // Subdirs to mirror into public/research/. Keys match how the dashboard
 // fetches them; the manifest builder below uses the same set.
@@ -116,6 +119,63 @@ function collectDates(dir, re) {
   return Array.from(dates).sort();
 }
 
+function buildTicketsIndex() {
+  // Parse every research/models/tickets/<slug>.md, split frontmatter
+  // and body, and emit a single tickets/index.json that the dashboard
+  // fetches in one shot to render the cards. The index is consumed by
+  // the `models` tab. If the tickets dir is empty (pre-migration), we
+  // skip — the dashboard handles a missing index gracefully.
+  if (!existsSync(ticketsSrc)) return;
+  const files = readdirSync(ticketsSrc).filter((n) => n.endsWith('.md')).sort();
+  if (files.length === 0) return;
+
+  const tickets = [];
+  for (const name of files) {
+    const path = join(ticketsSrc, name);
+    const text = readFileSync(path, 'utf8');
+    if (!text.startsWith('---\n')) {
+      console.error(`prebuild: tickets/${name}: missing leading '---'`);
+      process.exit(1);
+    }
+    const end = text.indexOf('\n---\n', 4);
+    if (end < 0) {
+      console.error(`prebuild: tickets/${name}: missing closing '---'`);
+      process.exit(1);
+    }
+    const header = text.slice(4, end);
+    const body = text.slice(end + 5).replace(/^\n+/, '');
+    let fm;
+    try {
+      fm = yaml.load(header);
+    } catch (e) {
+      console.error(`prebuild: tickets/${name}: YAML parse error: ${e.message}`);
+      process.exit(1);
+    }
+    if (!fm || typeof fm !== 'object') {
+      console.error(`prebuild: tickets/${name}: frontmatter is not a mapping`);
+      process.exit(1);
+    }
+    // Normalize date fields to ISO strings so JSON round-trips cleanly.
+    const isoDate = (v) => (v instanceof Date ? v.toISOString().slice(0, 10) : v);
+    fm.created_at = isoDate(fm.created_at);
+    fm.updated_at = isoDate(fm.updated_at);
+    fm.closed_at = isoDate(fm.closed_at);
+    if (Array.isArray(fm.history)) {
+      fm.history = fm.history.map((h) => ({ ...h, ts: isoDate(h.ts) }));
+    }
+    tickets.push({ ...fm, body });
+  }
+
+  mkdirSync(ticketsDest, { recursive: true });
+  const indexPath = join(ticketsDest, 'index.json');
+  writeFileSync(indexPath, JSON.stringify({ tickets }));
+  const byStatus = tickets.reduce((acc, t) => {
+    acc[t.status] = (acc[t.status] || 0) + 1;
+    return acc;
+  }, {});
+  console.log(`prebuild: tickets/index.json (${tickets.length} tickets)`, byStatus);
+}
+
 function buildManifest() {
   const manifest = {};
   for (const [key, { dir, re }] of Object.entries(DATE_PATTERNS)) {
@@ -138,4 +198,5 @@ function buildManifest() {
 }
 
 copyData();
+buildTicketsIndex();
 buildManifest();

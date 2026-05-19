@@ -113,6 +113,30 @@ type Manifest = {
   generative: GenResearchRow[];
 };
 
+// Model-release ticket — see docs/model-tickets.md for the contract.
+type TicketStatus = 'rumored' | 'in-testing' | 'confirmed' | 'released' | 'closed';
+type TicketVerification = 'confirmed' | 'partial' | 'unverified';
+type TicketHistoryEntry = { ts: string; change: string };
+type Ticket = {
+  slug: string;
+  title: string;
+  company: string;
+  model: string | null;
+  status: TicketStatus;
+  status_note: string | null;
+  expected: string | null;
+  labels: string[];
+  verification: TicketVerification;
+  sources: string[];
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  closed_reason: string | null;
+  history: TicketHistoryEntry[];
+  body: string;
+};
+type TicketIndex = { tickets: Ticket[] };
+
 let currentDate = new Date();
 let searchTerm = '';
 let activeTab: Tab = 'today';
@@ -127,6 +151,13 @@ let manifest: Manifest | null = null;
 let manifestPromise: Promise<Manifest | null> | null = null;
 // Cache the last-fetched research doc body so search-as-you-type doesn't refetch.
 let researchDocCache: { slug: string; language: ResearchLanguage; body: string } | null = null;
+// Cache the tickets index — fetched once per session on first models-tab visit.
+let ticketsCache: Ticket[] | null = null;
+let ticketsPromise: Promise<Ticket[] | null> | null = null;
+// Which ticket is expanded (showing body + history). Null = grid view.
+let expandedTicketSlug: string | null = null;
+// Filter state for the tickets grid.
+const ticketFilters = { status: 'all', company: 'all' };
 const LOAD_TIMEOUT_MS = 12000;
 
 // ── DOM refs ──────────────────────────────────────────
@@ -596,7 +627,7 @@ function setSafeContent(el: HTMLElement, rawHtml: string): void {
   const clean = DOMPurify.sanitize(rawHtml, {
     USE_PROFILES: { html: true, svg: true, svgFilters: true },
     ADD_TAGS: ['mark', 'article', 'figure', 'figcaption', 'iframe'],
-    ADD_ATTR: ['data-slug', 'data-pct', 'sandbox', 'loading', 'allow', 'decoding', 'referrerpolicy'],
+    ADD_ATTR: ['data-slug', 'data-pct', 'data-filter-status', 'data-filter-company', 'sandbox', 'loading', 'allow', 'decoding', 'referrerpolicy'],
   });
   el.insertAdjacentHTML('beforeend', clean);
 }
@@ -620,18 +651,6 @@ async function fetchFrontPage(dateStr: string, signal: AbortSignal): Promise<str
     const resp = await fetch(url, { method: 'HEAD', signal });
     if (!resp.ok) return null;
     return url;
-  } catch (error) {
-    if (error instanceof DOMException && error.name === 'AbortError') return null;
-    return null;
-  }
-}
-
-async function fetchModels(dateStr: string, signal: AbortSignal): Promise<string | null> {
-  const url = `${DATA_BASE}/models/${dateStr}-timeline.md`;
-  try {
-    const resp = await fetch(url, { signal });
-    if (!resp.ok) return null;
-    return await resp.text();
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') return null;
     return null;
@@ -864,48 +883,205 @@ function renderReport(md: string, fallbackDate: string | null = null): void {
   setSafeContent(content, cards.join('\n'));
 }
 
-function renderModels(md: string, fallbackDate: string | null = null): void {
-  const sections = splitSections(md);
-  const cards: string[] = [];
-  if (fallbackDate) {
-    cards.push(
-      '<div class="frontpage-fallback-note">No model timeline for ' +
-        escapeHtml(fmtDate(currentDate)) +
-        '. Showing ' +
-        escapeHtml(fallbackDate) +
-        ' instead.</div>',
-    );
-  }
-
-  for (const section of sections) {
-    if (!section.title && !section.body) continue;
-
-    let html = marked.parse(section.body) as string;
-    html = wrapTables(html);
-
-    if (searchTerm) {
-      const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const re = new RegExp('(' + escaped + ')', 'gi');
-      html = html.replace(re, '<mark>$1</mark>');
+function loadTickets(): Promise<Ticket[] | null> {
+  if (ticketsCache) return Promise.resolve(ticketsCache);
+  if (ticketsPromise) return ticketsPromise;
+  ticketsPromise = (async () => {
+    try {
+      const resp = await fetch(`${DATA_BASE}/models/tickets/index.json`, { cache: 'no-cache' });
+      if (!resp.ok) return null;
+      const data = (await resp.json()) as TicketIndex;
+      if (!data || !Array.isArray(data.tickets)) return null;
+      ticketsCache = data.tickets;
+      return ticketsCache;
+    } catch {
+      return null;
     }
+  })();
+  return ticketsPromise;
+}
 
-    const title = section.title || displayDate(currentDate);
+function ticketStatusPill(status: TicketStatus): string {
+  // Color via class so dark/light mode and contrast stay consistent.
+  const labels: Record<TicketStatus, string> = {
+    'rumored': 'Rumored',
+    'in-testing': 'In Testing',
+    'confirmed': 'Confirmed',
+    'released': 'Released',
+    'closed': 'Closed',
+  };
+  return `<span class="ticket-pill ticket-pill-${status}">${escapeHtml(labels[status])}</span>`;
+}
 
-    cards.push(
-      [
-        '<div class="content-card">',
-        '  <div class="content-card-header">',
-        '    <div class="content-card-title">' + escapeHtml(title) + '</div>',
-        '  </div>',
-        '  <div class="content-card-body">',
-        '    <div class="md-content">' + html + '</div>',
-        '  </div>',
-        '</div>',
-      ].join('\n'),
+function ticketVerificationBadge(verification: TicketVerification): string {
+  if (verification === 'confirmed') return '';
+  const label = verification === 'partial' ? '◐ partial corroboration' : '⚠ unverified';
+  return `<span class="ticket-verification ticket-verification-${verification}">${escapeHtml(label)}</span>`;
+}
+
+function ticketCard(ticket: Ticket): string {
+  const expanded = ticket.slug === expandedTicketSlug;
+  const sourcesPreview = ticket.sources.slice(0, 3).map((s) => {
+    if (s.startsWith('@')) return `<span class="ticket-source-handle">${escapeHtml(s)}</span>`;
+    return `<a class="ticket-source-link" href="${escapeHtml(s)}" target="_blank" rel="noopener">${escapeHtml(hostnameOf(s))}</a>`;
+  }).join('');
+  const extraSources = ticket.sources.length > 3 ? `<span class="ticket-source-more">+${ticket.sources.length - 3}</span>` : '';
+  const labelsHtml = (ticket.labels || []).map((l) => `<span class="ticket-label">${escapeHtml(l)}</span>`).join('');
+  const expectedRow = ticket.expected
+    ? `<div class="ticket-row"><span class="ticket-row-key">Expected</span><span class="ticket-row-val">${escapeHtml(ticket.expected)}</span></div>`
+    : '';
+  const noteRow = ticket.status_note
+    ? `<div class="ticket-row ticket-row-note">${escapeHtml(ticket.status_note)}</div>`
+    : '';
+  const closedRow = ticket.status === 'closed' && ticket.closed_reason
+    ? `<div class="ticket-row ticket-row-closed"><span class="ticket-row-key">Closed</span><span class="ticket-row-val">${escapeHtml(ticket.closed_at || '')} — ${escapeHtml(ticket.closed_reason)}</span></div>`
+    : '';
+
+  const headerHtml = [
+    `<div class="ticket-header">`,
+    `  <div class="ticket-header-top">`,
+    `    ${ticketStatusPill(ticket.status)}`,
+    `    <span class="ticket-company">${escapeHtml(ticket.company)}</span>`,
+    `    ${ticketVerificationBadge(ticket.verification)}`,
+    `  </div>`,
+    `  <h3 class="ticket-title">${escapeHtml(ticket.title)}</h3>`,
+    ticket.model ? `  <div class="ticket-model">${escapeHtml(ticket.model)}</div>` : '',
+    `</div>`,
+  ].filter(Boolean).join('\n');
+
+  const metaHtml = [
+    expectedRow,
+    noteRow,
+    closedRow,
+    labelsHtml ? `<div class="ticket-labels">${labelsHtml}</div>` : '',
+    `<div class="ticket-sources">${sourcesPreview}${extraSources}</div>`,
+    `<div class="ticket-footer"><span>updated ${escapeHtml(ticket.updated_at)}</span><span>slug: ${escapeHtml(ticket.slug)}</span></div>`,
+  ].filter(Boolean).join('\n');
+
+  const bodyHtml = expanded
+    ? `<div class="ticket-expanded">
+         <div class="ticket-body md-content">${DOMPurify.sanitize(marked.parse(ticket.body) as string)}</div>
+         <div class="ticket-history">
+           <h4 class="ticket-history-title">History</h4>
+           <ol class="ticket-history-list">${ticket.history.map((h) => `<li><span class="ticket-history-ts">${escapeHtml(h.ts)}</span><span class="ticket-history-change">${escapeHtml(h.change)}</span></li>`).join('')}</ol>
+         </div>
+         <div class="ticket-all-sources">
+           <h4 class="ticket-history-title">All sources (${ticket.sources.length})</h4>
+           <ul class="ticket-source-list">${ticket.sources.map((s) => s.startsWith('@')
+             ? `<li><span class="ticket-source-handle">${escapeHtml(s)}</span></li>`
+             : `<li><a href="${escapeHtml(s)}" target="_blank" rel="noopener">${escapeHtml(s)}</a></li>`).join('')}</ul>
+         </div>
+       </div>`
+    : '';
+
+  return `<article class="ticket-card ticket-card-${ticket.status}${expanded ? ' ticket-card-expanded' : ''}" data-slug="${escapeHtml(ticket.slug)}">
+    ${headerHtml}
+    <div class="ticket-meta">${metaHtml}</div>
+    ${bodyHtml}
+  </article>`;
+}
+
+function hostnameOf(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return url;
+  }
+}
+
+function ticketSortKey(t: Ticket): [number, string] {
+  // Active tickets first (sorted by updated_at desc), closed at the bottom.
+  const isClosed = t.status === 'closed' ? 1 : 0;
+  // Negate the date string so newer sorts before older after we lexsort.
+  // Easier: prefix '~' for "high priority" sentinels and use string comparison.
+  return [isClosed, t.updated_at];
+}
+
+function applyTicketFilters(tickets: Ticket[]): Ticket[] {
+  let out = tickets;
+  if (ticketFilters.status !== 'all') {
+    out = out.filter((t) => t.status === ticketFilters.status);
+  }
+  if (ticketFilters.company !== 'all') {
+    out = out.filter((t) => companyKey(t.company) === ticketFilters.company);
+  }
+  if (searchTerm) {
+    const needle = searchTerm.toLowerCase();
+    out = out.filter((t) =>
+      t.title.toLowerCase().includes(needle) ||
+      (t.model || '').toLowerCase().includes(needle) ||
+      t.body.toLowerCase().includes(needle) ||
+      (t.status_note || '').toLowerCase().includes(needle) ||
+      t.company.toLowerCase().includes(needle) ||
+      (t.labels || []).some((l) => l.toLowerCase().includes(needle)),
     );
   }
+  // Sort: active first (by updated_at desc), then closed.
+  out = [...out].sort((a, b) => {
+    const [aClosed, aUpd] = ticketSortKey(a);
+    const [bClosed, bUpd] = ticketSortKey(b);
+    if (aClosed !== bClosed) return aClosed - bClosed;
+    return aUpd < bUpd ? 1 : aUpd > bUpd ? -1 : 0;
+  });
+  return out;
+}
 
-  setSafeContent(content, cards.join('\n'));
+function companyKey(company: string): string {
+  // Normalize "Google / DeepMind" → "google", "OpenAI / Codex" → "openai".
+  return company.toLowerCase().split('/')[0].trim();
+}
+
+function renderTickets(tickets: Ticket[] | null): void {
+  if (!tickets || tickets.length === 0) {
+    setSafeContent(
+      content,
+      `<div class="content-card"><div class="content-card-body">
+        <p>No model tickets yet. The daily CRUD agent will seed this list on the next run, or run <code>workflow_dispatch</code> on
+        <a href="https://github.com/guzus/ai-research-arm/actions/workflows/24h-model-timeline.yml" target="_blank" rel="noopener">24h-model-timeline</a>.</p>
+      </div></div>`,
+    );
+    return;
+  }
+  const filtered = applyTicketFilters(tickets);
+
+  const statusOptions: TicketStatus[] = ['rumored', 'in-testing', 'confirmed', 'released', 'closed'];
+  const companyKeys = Array.from(new Set(tickets.map((t) => companyKey(t.company)))).sort();
+  const companyLabels: Record<string, string> = {};
+  for (const t of tickets) {
+    const key = companyKey(t.company);
+    if (!companyLabels[key]) companyLabels[key] = t.company.split('/')[0].trim();
+  }
+  const statusCounts: Record<string, number> = { all: tickets.length };
+  for (const s of statusOptions) statusCounts[s] = tickets.filter((t) => t.status === s).length;
+
+  const statusBar = [
+    `<button class="ticket-filter-pill${ticketFilters.status === 'all' ? ' active' : ''}" data-filter-status="all">All <span class="ticket-filter-count">${statusCounts.all}</span></button>`,
+    ...statusOptions.map((s) => `<button class="ticket-filter-pill ticket-filter-pill-${s}${ticketFilters.status === s ? ' active' : ''}" data-filter-status="${s}">${escapeHtml(s)} <span class="ticket-filter-count">${statusCounts[s]}</span></button>`),
+  ].join('');
+
+  const companyOptions = ['all', ...companyKeys].map((k) =>
+    `<option value="${escapeHtml(k)}"${ticketFilters.company === k ? ' selected' : ''}>${escapeHtml(k === 'all' ? 'All companies' : companyLabels[k] || k)}</option>`).join('');
+
+  const grid = filtered.map(ticketCard).join('\n');
+
+  const emptyNote = filtered.length === 0
+    ? `<div class="content-card"><div class="content-card-body"><p>No tickets match the current filters.</p></div></div>`
+    : '';
+
+  setSafeContent(
+    content,
+    `<div class="tickets-view">
+      <div class="tickets-controls">
+        <div class="ticket-filters">${statusBar}</div>
+        <select class="ticket-company-select" data-filter-company>${companyOptions}</select>
+        <div class="ticket-summary">${filtered.length} of ${tickets.length} tickets</div>
+      </div>
+      <div class="tickets-grid">
+        ${grid}
+      </div>
+      ${emptyNote}
+    </div>`,
+  );
 }
 
 function renderFrontPage(imageUrl: string, fallbackDate: string | null): void {
@@ -2560,25 +2736,16 @@ async function load(): Promise<void> {
         }
       }
     } else if (activeTab === 'models') {
-      const result = await withTimeout(fetchModels(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
+      // Model timeline is now a ticket grid (one card per release/event).
+      // The legacy <date>-timeline.md files still exist on disk for
+      // back-compat; once the CRUD agent runs we'll surface daily diffs
+      // by date here too. For now, models tab always shows tickets.
+      const ticketsResult = await withTimeout(loadTickets(), LOAD_TIMEOUT_MS, controller);
       if (requestId !== loadRequestId) return;
-      if (result === 'timeout') {
+      if (ticketsResult === 'timeout') {
         showError('Loading timed out', 'Network may be slow. Click to retry.');
-      } else if (result) {
-        renderModels(result);
       } else {
-        const fallback = findMostRecentAvailable('models', dateStr);
-        if (fallback && fallback !== dateStr) {
-          const fallbackMd = await fetchModels(fallback, controller.signal);
-          if (requestId !== loadRequestId) return;
-          if (fallbackMd) {
-            renderModels(fallbackMd, fallback);
-          } else {
-            showEmpty(dateStr);
-          }
-        } else {
-          showEmpty(dateStr);
-        }
+        renderTickets(ticketsResult);
       }
     } else if (activeTab === 'today') {
       // Fetch digest + front page in parallel — the front page goes
@@ -2754,6 +2921,15 @@ content.addEventListener('click', (e) => {
     window.print();
     return;
   }
+  // Ticket status filter pills (only meaningful on the models tab).
+  if (activeTab === 'models') {
+    const statusPill = target.closest('[data-filter-status]') as HTMLElement | null;
+    if (statusPill) {
+      ticketFilters.status = statusPill.dataset.filterStatus || 'all';
+      load();
+      return;
+    }
+  }
   const row = target.closest('[data-slug]') as HTMLElement | null;
   if (row && activeTab === 'research') {
     const slug = row.dataset.slug;
@@ -2761,7 +2937,27 @@ content.addEventListener('click', (e) => {
       selectedSlug = slug;
       load();
     }
+    return;
   }
+  if (row && activeTab === 'models') {
+    // Don't toggle on link clicks inside the card — let them open.
+    if (target.closest('a, button')) return;
+    const slug = row.dataset.slug;
+    if (slug) {
+      expandedTicketSlug = expandedTicketSlug === slug ? null : slug;
+      if (ticketsCache) renderTickets(ticketsCache);
+    }
+  }
+});
+
+// Company-filter <select> on the tickets view.
+content.addEventListener('change', (e) => {
+  const target = e.target as HTMLElement;
+  if (activeTab !== 'models') return;
+  const sel = target.closest('[data-filter-company]') as HTMLSelectElement | null;
+  if (!sel) return;
+  ticketFilters.company = sel.value;
+  load();
 });
 
 content.addEventListener('keydown', (e: KeyboardEvent) => {

@@ -29,6 +29,7 @@ jobs:
         run: |
           echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
           echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+          echo "yesterday=$(date -u -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -u -v-1d +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -84,73 +85,152 @@ jobs:
           # Benchmarks and SOTA
           bird search "AI model benchmark OR SOTA OR state of the art new model" -n 20 --json --plain > /tmp/bird/search-benchmark.json 2>/dev/null || echo "[]" > /tmp/bird/search-benchmark.json
 
-      - name: Process with Claude
+      # CRUD agent — maintains the persistent set of tickets at
+      # research/models/tickets/<slug>.md instead of regenerating a
+      # daily table. The agent reads the schema doc, the existing
+      # ticket dir, and the 24h of fresh signal, then decides
+      # create / update / close for each candidate event. The
+      # validator re-runs at commit time so a malformed ticket
+      # never lands. See docs/model-tickets.md for the full schema
+      # and dedup protocol.
+      - name: CRUD model tickets via Claude
+        timeout-minutes: 60
         uses: anthropics/claude-code-action@v1
+        env:
+          DATE_TODAY: ${{ steps.datetime.outputs.date }}
+          DATE_YESTERDAY: ${{ steps.datetime.outputs.yesterday }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
+            --model opus --max-turns 60 --allowedTools "Read,Write,Edit,Bash(python3:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),WebSearch,Task,TodoWrite"
           prompt: |
-            You are a hyperscaler model release tracker. Analyze raw tweet data and web intelligence
-            to produce a structured timeline of upcoming and recent AI model releases from major companies.
+            You maintain a persistent set of model-release tickets. Each
+            ticket tracks one shipping artifact (a model release, a
+            partnership, a funding round, a legal action). Your job each
+            day: read the existing tickets + the last 24h of signal,
+            then CRUD — create, update, or close — as needed.
 
-            TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
-            TODAY: ${{ steps.datetime.outputs.date }}
-            OUTPUT: research/models/${{ steps.datetime.outputs.date }}-timeline.md
+            DO NOT regenerate or rewrite a daily timeline table. The
+            old format is gone. Tickets are the source of truth; a
+            *derived* daily-diff is the only `<date>-timeline.md` you
+            emit.
 
-            COMPANIES TO TRACK:
-            OpenAI, Anthropic, Google/DeepMind, Meta, xAI, Mistral, Microsoft, Amazon/AWS, NVIDIA, Apple, Cohere
+            CONTEXT
+              TODAY:           $DATE_TODAY
+              YESTERDAY:       $DATE_YESTERDAY
+              TIMESTAMP:       $TIMESTAMP
+              SCHEMA / CONTRACT:  docs/model-tickets.md
+              TICKETS DIR:        research/models/tickets/
+              RAW SIGNAL:         /tmp/bird/*.json
+              VALIDATOR:          scripts/check_model_tickets.py
+              DAILY-DIFF TARGET:  research/models/$DATE_TODAY-timeline.md
 
-            RAW DATA LOCATIONS (JSON files):
-            - /tmp/bird/*.json — individual account tweets and search results
+            STEP 0 — READ THE CONTRACT FIRST.
+              `Read docs/model-tickets.md` in full. Internalize the 5-state
+              lifecycle (`rumored → in-testing → confirmed → released →
+              closed`), the verification field, the slug conventions,
+              and especially the CRUD DEDUP PROTOCOL section. The rest
+              of this prompt assumes you know it.
 
-            INSTRUCTIONS:
-            1. Read ALL JSON files from /tmp/bird/
-            2. If research/models/${{ steps.datetime.outputs.date }}-timeline.md already exists, read it
-               and update/append — do not discard existing data
-            3. Check if yesterday's file exists for continuity (calculate yesterday's date)
-            4. Use WebSearch to supplement with the latest info on model release plans, announcements,
-               and roadmaps from each of the 11 companies listed above
-            5. Cross-reference tweets with web search to verify and enrich timeline entries
-            6. De-duplicate across sources
+            STEP 1 — INVENTORY EXISTING TICKETS.
+              `ls research/models/tickets/` to enumerate. For each ticket,
+              read its frontmatter (you do NOT need the body for dedup —
+              just slug + title + company + model + status + updated_at).
+              Build a mental map of `{company, model} -> slug`. Tickets
+              whose `status == closed` are read-only — do not modify them.
 
-            OUTPUT FORMAT (write to research/models/${{ steps.datetime.outputs.date }}-timeline.md):
+            STEP 2 — INGEST RAW SIGNAL.
+              The bird CLI dropped JSON files at /tmp/bird/*.json. Read
+              them. The data is messy and partly redundant; that's
+              expected. Use WebSearch sparingly to corroborate or
+              clarify a specific claim — not as a general research
+              pass. Watch for:
+                - Model leaks (GCP / AWS / iOS app / docs URL artifacts)
+                - Official announcements (company handles, blogs)
+                - Pricing / context / tier reveals
+                - Partnership / acquisition / funding news
+                - Legal actions and exec moves that affect roadmaps
 
-            ```markdown
-            # Hyperscaler Model Release Timeline — ${{ steps.datetime.outputs.date }}
+            STEP 3 — FOR EACH CANDIDATE EVENT, DECIDE.
+              Per the CRUD DEDUP PROTOCOL in the contract:
+                a) Match against existing tickets by company + artifact.
+                b) MATCHED + not closed → UPDATE: append a history entry,
+                   bump updated_at, advance status if the lifecycle
+                   moved, refresh status_note / expected / sources.
+                   Never rewrite older history entries or change slug.
+                c) MATCHED + closed → leave alone. If contradiction:
+                   create a successor ticket whose body links to the
+                   closed one.
+                d) NO MATCH → CREATE: pick a slug per conventions, set
+                   created_at = updated_at = $DATE_TODAY, status per
+                   the strongest evidence, verification honestly,
+                   seed history with one entry "Created — <summary>".
 
-            *Last updated: ${{ steps.datetime.outputs.timestamp }}*
+            STEP 4 — CLOSURE SWEEP.
+              For every non-closed ticket, check the close triggers:
+                - released ≥4 weeks ago → `closed_reason: released-and-aged`
+                - `unverified` with no fresh corroboration in ≥15 cycles
+                  (no history entry in 15+ days) → `closed_reason: stale-rumor-unverified`
+                - contradicted by today's signal AND a successor exists
+                  → `closed_reason: superseded-by:<slug>`
+              When closing: set status=closed, closed_at=$DATE_TODAY,
+              closed_reason=<...>, bump updated_at, append a final
+              history entry describing the closure.
 
-            ## Upcoming & Rumored Releases
+            STEP 5 — VALIDATE.
+              Run `python3 scripts/check_model_tickets.py`. If it exits
+              non-zero, the stderr lists every failure with field and
+              reason. Fix in-place and re-run. Iterate until exit 0.
+              Do NOT proceed past this step with a failing validator.
 
-            | Company | Model | Expected | Status | Details | Source |
-            |---------|-------|----------|--------|---------|--------|
-            | OpenAI | GPT-5 | Q2 2026 | Rumored | Multimodal, ... | @sama tweet |
+            STEP 6 — EMIT THE DAILY-DIFF.
+              Write `research/models/$DATE_TODAY-timeline.md` summarizing
+              what you just did. Format:
 
-            ## Recently Released (Last 30 Days)
+                # Model Timeline — Diff for $DATE_TODAY
+                *Generated $TIMESTAMP*
 
-            | Company | Model | Release Date | Key Features | Source |
-            |---------|-------|-------------|--------------|--------|
-            | ... | ... | ... | ... | ... |
+                ## 🆕 Created (<N>)
+                - `<slug>` — <company> — <status> — <one-line summary>
+                  ([ticket](tickets/<slug>.md))
 
-            ## Intelligence Notes
-            - Key signals and context about upcoming releases
-            - Notable shifts in release timelines
-            - Important exec statements or hints
-            ```
+                ## 🔄 Updated (<N>)
+                - `<slug>` — status: <new-status> (<old-status if changed>)
+                  - <new history-entry summary>
+                  ([ticket](tickets/<slug>.md))
 
-            STATUS VALUES for Upcoming table: Confirmed, Rumored, In Testing, Announced, Speculated
+                ## ✅ Closed (<N>)
+                - `<slug>` — <closed_reason>
 
-            GUIDELINES:
-            - Be precise with dates — use exact dates when known, quarters when estimated
-            - Always cite sources (tweet URLs, blog posts, press releases)
-            - Include confidence level in the Details column when appropriate
-            - Note any changes from previous day's timeline in Intelligence Notes
-            - Keep Intelligence Notes concise but informative
+                ## 🌐 No change today (<N>)
+                _<count> tickets unchanged_
 
-            After writing the file, commit:
-            git add research/models/
-            git commit -m "Model timeline update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
+              If a section has 0 items, omit it entirely (don't write an
+              empty "Created (0)"). Order each section alphabetically by
+              slug.
+
+            STEP 7 — COMMIT (Bash).
+              git add research/models/tickets/ "research/models/$DATE_TODAY-timeline.md"
+              git commit -m "Model tickets update $TIMESTAMP" || echo "No changes"
+
+              Do NOT run `git push`. A later workflow step publishes.
+
+            CONSTRAINTS
+              - The validator is exact-match on the schema in docs/model-tickets.md.
+                Invented fields or out-of-range states get rejected.
+              - Slugs are immutable. Renames don't exist. If a title
+                changes, update title and add a history entry, keep the
+                slug.
+              - Never delete a ticket. Closure preserves history.
+              - History is append-only. Do not modify earlier entries
+                even if they look wrong — fix the title / status_note
+                / current state instead.
+              - The body is markdown narrative; keep it concise (the
+                history field is the audit trail). 3–10 short paragraphs
+                is typical.
+              - Do not write outside research/models/tickets/ and the
+                single daily-diff file in research/models/.
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the

@@ -95,6 +95,9 @@ jobs:
       - name: Test Python scripts
         run: python3 -m unittest discover -s scripts -p 'test_*.py'
 
+      - name: Validate model-release tickets
+        run: python3 scripts/check_model_tickets.py
+
   hooker-telemetry:
     needs: [actionlint, dashboard, python-scripts]
     if: always()
