@@ -400,5 +400,17 @@
     "source": "workflow_dispatch",
     "prompt": "POET stock",
     "tags": []
+  },
+  {
+    "slug": "dxyz",
+    "file": "2026-05-19T065433--dxyz.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "$DXYZ: anatomy of a 2,069% premium and the $1B ATM that ate it",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-19T06:54:33Z",
+    "source": "local-oracle",
+    "prompt": "$DXYZ",
+    "tags": []
   }
 ]
