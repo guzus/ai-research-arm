@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ANDREJ KARPATHY JOINS ANTHROPIC — OPENAI CO-FOUNDER / EX-TESLA AI DIRECTOR RETURNS TO FRONTIER R&D",
+    "source": "@karpathy",
+    "url": "https://x.com/karpathy/status/2056753169888334312",
+    "category": "breaking"
+  },
+  {
+    "headline": "ANTHROPIC CONFIRMS KARPATHY HIRE IN 23 SECONDS — @CLAUDEDEVS: \"WELCOME TO THE TEAM, ANDREJ!\"",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2056753265346564259",
+    "category": "breaking"
+  },
+  {
+    "headline": "GOOGLE I/O 2026 KEYNOTE OPENS 17:00 UTC — 10AM PT CONSUMER + 1:30PM PT DEVELOPER SPLIT FORMAT CONFIRMED",
+    "source": "@GoogleAI",
+    "url": "https://x.com/GoogleAI/status/2056767575397462426",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI WINS JURY VERDICT VS MUSK IN 2 HOURS — \"REMOVES ONE CLOUD OVER RESTRUCTURING AND POSSIBLE IPO\"",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2056744210313752766",
+    "category": "business"
+  },
+  {
+    "headline": "NYSE ADDING COMPUTE FUTURES MARKET — TRADEABLE GPU/TPU-HOUR INSTRUMENT INCOMING",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2056764541070098449",
+    "category": "infra"
+  },
+  {
+    "headline": "ANALOG DEVICES IN ADVANCED TALKS TO BUY EMPOWER SEMICONDUCTOR FOR ~$1.5B — AI POWER-CHIP M&A",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2056767102510420009",
+    "category": "business"
+  },
+  {
+    "headline": "CLOUDFLARE TESTS ANTHROPIC MYTHOS PREVIEW ON 50+ INTERNAL REPOS — CHAINS LOW-SEVERITY BUGS INTO WORKING EXPLOITS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2056713453956682229",
+    "category": "research"
+  }
+]
