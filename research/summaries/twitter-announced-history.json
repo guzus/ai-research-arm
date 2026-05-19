@@ -5895,5 +5895,54 @@
     "headline": "THE INFORMATION: SPACEX EYES $75B IPO, BLACKROCK CONSIDERING $10B STAKE \u2014 'BIGGEST IPO IN HISTORY BY AT LEAST A FACTOR OF TWO'",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2056484580819914990"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-19 01:15 UTC",
+    "headline": "WSJ: GOOGLE + BLACKSTONE FORM AI NEOCLOUD JV \u2014 $5B BLACKSTONE EQUITY, 500 MW TPU CAPACITY ONLINE 2027",
+    "source": "@marketsday",
+    "url": "https://x.com/marketsday/status/2056544144712143028"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-19 01:15 UTC",
+    "headline": "BLACKSTONE PRESS-RELEASE FRAMING: $5B INITIAL EQUITY COMMITMENT, 500 MW IN 2027, PLANS TO SCALE SIGNIFICANTLY",
+    "source": "@MarcJacksonLA",
+    "url": "https://x.com/MarcJacksonLA"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-19 01:15 UTC",
+    "headline": "MUSK'S ATTORNEY MARC TOBEROFF ON OPENAI VERDICT: 'I HAVE A ONE-WORD REACTION \u2014 APPEAL'",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2056504285572092153"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-19 01:15 UTC",
+    "headline": "GEORGETOWN LAW'S CHANDER: MUSK OPENAI APPEAL WILL BE TOUGH \u2014 'FIRM STATUTE OF LIMITATIONS'",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 01:15 UTC",
+    "headline": "XAI RELEASES SKILLS BLOG + GROK BUILD COMMAND PALETTE Ctrl+P \u2014 DIRECT FEATURE-MATCH WITH ANTHROPIC SKILLS",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2056489484477145142"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 01:15 UTC",
+    "headline": "GEMINI OMNI PRE-LEAK: 8s HD VIDEO SAMPLES + LIKENESS AVATAR PRIMITIVE AHEAD OF GOOGLE I/O 10AM PT",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2056533362160095668"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-19 01:15 UTC",
+    "headline": "SUNDAR PICHAI BREAKS 6-DAY SILENCE: 'ON OUR WAY TO I/O 2026' \u2014 KEYNOTE STAGING ~10H OUT",
+    "source": "@sundarpichai",
+    "url": "https://x.com/sundarpichai/status/2056524502746747048"
   }
 ]
