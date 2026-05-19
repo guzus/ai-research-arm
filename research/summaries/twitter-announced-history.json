@@ -6126,5 +6126,54 @@
     "headline": "GOOGLE I/O 2026 KEYNOTE T-3.5H \u2014 SUNDAR 17:00 UTC OPEN; DEMIS SLOT W/ FT-HASSABIS-DISCLOSURE OVERLAY; GEMINI 3.X / VEO 4 / OMNI",
     "source": "@GoogleDeepMind",
     "url": "https://blog.google/"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-19 16:30 UTC",
+    "headline": "ANDREJ KARPATHY JOINS ANTHROPIC \u2014 OPENAI CO-FOUNDER / EX-TESLA AI DIRECTOR RETURNS TO FRONTIER R&D",
+    "source": "@karpathy",
+    "url": "https://x.com/karpathy/status/2056753169888334312"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-19 16:30 UTC",
+    "headline": "ANTHROPIC CONFIRMS KARPATHY HIRE IN 23 SECONDS \u2014 @CLAUDEDEVS: \"WELCOME TO THE TEAM, ANDREJ!\"",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2056753265346564259"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-19 16:30 UTC",
+    "headline": "GOOGLE I/O 2026 KEYNOTE OPENS 17:00 UTC \u2014 10AM PT CONSUMER + 1:30PM PT DEVELOPER SPLIT FORMAT CONFIRMED",
+    "source": "@GoogleAI",
+    "url": "https://x.com/GoogleAI/status/2056767575397462426"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-19 16:30 UTC",
+    "headline": "OPENAI WINS JURY VERDICT VS MUSK IN 2 HOURS \u2014 \"REMOVES ONE CLOUD OVER RESTRUCTURING AND POSSIBLE IPO\"",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2056744210313752766"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-19 16:30 UTC",
+    "headline": "NYSE ADDING COMPUTE FUTURES MARKET \u2014 TRADEABLE GPU/TPU-HOUR INSTRUMENT INCOMING",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2056764541070098449"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-19 16:30 UTC",
+    "headline": "ANALOG DEVICES IN ADVANCED TALKS TO BUY EMPOWER SEMICONDUCTOR FOR ~$1.5B \u2014 AI POWER-CHIP M&A",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2056767102510420009"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-19 16:30 UTC",
+    "headline": "CLOUDFLARE TESTS ANTHROPIC MYTHOS PREVIEW ON 50+ INTERNAL REPOS \u2014 CHAINS LOW-SEVERITY BUGS INTO WORKING EXPLOITS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2056713453956682229"
   }
 ]
