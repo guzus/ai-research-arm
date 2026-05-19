@@ -100,11 +100,13 @@ jobs:
       # well clear of observed runs (~10-25 min) without leaving a
       # quietly-hung job to chew runner time forever.
       #
-      # continue-on-error keeps job-level failure ownership on the
-      # safe-push step rather than this Claude step, so a single hung
-      # agent run doesn't poison the workflow status — telemetry still
-      # surfaces the underlying outcome via job.status.
+      # continue-on-error keeps the runner alive past a Claude failure
+      # so the "Inspect Claude outcome" step below can decide what to
+      # surface to job.status (and so hooker-telemetry's `if: always()`
+      # step still fires). Without the inspect step, this flag would
+      # silently mask timeouts as success — see the inspect step.
       - name: CRUD model tickets via Claude
+        id: crud
         timeout-minutes: 90
         continue-on-error: true
         uses: anthropics/claude-code-action@v1
@@ -243,6 +245,23 @@ jobs:
                 is typical.
               - Do not write outside research/models/tickets/ and the
                 single daily-diff file in research/models/.
+
+      # Propagate the Claude step's outcome to job.status. With
+      # continue-on-error: true on the Claude step, a timeout/error
+      # would otherwise resolve to step.conclusion=success and
+      # hooker-telemetry would report a green run. exit 1 here lets
+      # later `if: always()` steps (telemetry) still fire while flipping
+      # job.status to failure when it should be.
+      - name: Inspect Claude outcome
+        if: always()
+        env:
+          OUTCOME: ${{ steps.crud.outcome }}
+        run: |
+          if [ "$OUTCOME" = "failure" ]; then
+            echo "::error::Claude CRUD step failed (timeout or error); failing the job so telemetry reports honestly."
+            exit 1
+          fi
+          echo "Claude CRUD step succeeded."
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the
