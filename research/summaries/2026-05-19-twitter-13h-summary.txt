@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-19 13:25 UTC
+
+CYCLE: Anthropic ships SECOND Big-4 alliance in 5 days (KPMG, 276K+ employees) ~3.5h before Google I/O keynote; Twitter access degraded.
+
+TOP STORIES:
+- Anthropic-KPMG global alliance: Claude inside KPMG Digital Gateway for 276K+ employees, 138 countries; KPMG named PE-preferred-partner; 5-day delta from PwC [✓]
+- Anthropic 22-day cadence: 10 newsroom posts Apr 27 → May 19 (PwC + KPMG + Gates + Stainless + London) [✓]
+- Twitter access degraded: 0 in-window pre-fetched + bird HTTP 403; silence-streaks carry-forward only [⚠]
+
+WATCH: Google I/O keynote 17:00 UTC (~3.5h); NYSE open 13:30 UTC.
+
+Full update on GitHub.
