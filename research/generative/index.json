@@ -388,5 +388,17 @@
     "source": "claude-code",
     "prompt": "ABF substrates",
     "tags": []
+  },
+  {
+    "slug": "poet-stock",
+    "file": "2026-05-19T054242--poet-stock.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "POET Technologies — what a $2 billion market cap on $0.5M of quarterly revenue is paying for in May 2026",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-19T05:42:42Z",
+    "source": "workflow_dispatch",
+    "prompt": "POET stock",
+    "tags": []
   }
 ]
