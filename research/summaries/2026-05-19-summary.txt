@@ -1,0 +1,14 @@
+AI News - 2026-05-19
+
+TOP STORIES:
+• Google I/O 2026 keynote underway (10am PT) — Gemini upgrade + Android XR glasses + Aluminium OS + Gemini Omni video stack
+• Anthropic officially acquires Stainless for $300M+ — winding down SDK tools used by OpenAI/Google/Cloudflare
+• Tenstorrent (Jim Keller) draws takeover interest from Intel and Qualcomm at $5B+ per Bloomberg
+
+KEY NUMBERS:
+• Stainless: >$300M; Tenstorrent: $5B+
+• Dust Series B: $40M (Abstract/Sequoia); 3K+ customers, 70% WAU, zero churn
+• Searchable: $14M at $85M val; $2M ARR in 4.5mo
+• NVDA Q1 print T-1; consensus $78.8B/$1.77
+
+Full report on GitHub.
