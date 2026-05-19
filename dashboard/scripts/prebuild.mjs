@@ -9,6 +9,7 @@
 // the GH Pages workflow can call this same script too if you simplify it
 // later.
 
+import { spawnSync } from 'node:child_process';
 import { existsSync, readdirSync, mkdirSync, readFileSync, writeFileSync, cpSync, statSync, openSync, readSync, closeSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -76,6 +77,32 @@ function findLfsPointers(dir) {
   return pointers;
 }
 
+function findAllLfsPointers() {
+  const pointers = [];
+  for (const sub of COPY_DIRS) {
+    pointers.push(...findLfsPointers(join(researchSrc, sub)));
+  }
+  return pointers;
+}
+
+function tryHydrateLfsObjects() {
+  const result = spawnSync('git', ['lfs', 'pull'], {
+    cwd: repoRoot,
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  if (result.status === 0) {
+    console.warn('prebuild: hydrated git-lfs objects with `git lfs pull`; continuing build.');
+    return true;
+  }
+  const stderr = (result.stderr || result.stdout || '').trim();
+  console.warn(
+    'prebuild: attempted `git lfs pull` after finding pointer files, but it failed' +
+    (stderr ? `:\n${stderr}` : '.'),
+  );
+  return false;
+}
+
 function copyData() {
   mkdirSync(publicResearch, { recursive: true });
 
@@ -84,9 +111,9 @@ function copyData() {
   // because Vercel's "Git LFS" toggle is OFF in project settings, or a
   // GitHub Actions checkout is missing `lfs: true`. Fail loudly here instead
   // of silently shipping pointer text to production.
-  const allPointers = [];
-  for (const sub of COPY_DIRS) {
-    allPointers.push(...findLfsPointers(join(researchSrc, sub)));
+  let allPointers = findAllLfsPointers();
+  if (allPointers.length > 0 && tryHydrateLfsObjects()) {
+    allPointers = findAllLfsPointers();
   }
   if (allPointers.length > 0) {
     console.error(
