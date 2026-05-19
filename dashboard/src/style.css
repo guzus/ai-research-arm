@@ -101,6 +101,25 @@ body {
   margin-right: auto;
 }
 
+.site-footer {
+  max-width: 1280px;
+  margin: 36px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-light);
+  color: var(--text-tertiary);
+  font-size: 0.78rem;
+}
+
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-link:hover {
+  color: var(--text-secondary);
+}
+
 /* When the floating TOC is visible (set by JS in renderResearchTOC),
  * push the app contents right so they don't sit under the TOC. */
 @media (min-width: 1280px) {
