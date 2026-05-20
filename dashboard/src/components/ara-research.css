@@ -1289,6 +1289,41 @@
   text-transform: uppercase;
 }
 
+/* ── Source watermark on data-viz blocks ─────────── */
+/* Bottom-right "ara.guzus.xyz" credit so a screenshot of a chart carries
+ * attribution back to the site. Scoped to block-level visualizations with
+ * room for it: the inline sparkline and the 22px standalone stack-bar
+ * sliver are deliberately excluded (no vertical space, overflow:hidden).
+ * The reserved padding-bottom keeps the mark clear of legends and axis
+ * labels no matter how wide they wrap. pointer-events:none so it never
+ * intercepts a tooltip hover. */
+.ara-line-chart,
+.ara-donut,
+.ara-slope,
+.ara-bars,
+.ara-stack-rows {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.ara-line-chart::after,
+.ara-donut::after,
+.ara-slope::after,
+.ara-bars::after,
+.ara-stack-rows::after {
+  content: "ara.guzus.xyz";
+  position: absolute;
+  right: 10px;
+  bottom: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.03em;
+  color: var(--text-tertiary);
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
+}
+
 /* ── Compare trio (min / max / subject) ──────────── */
 /* Three-card horizontal block for "where does the subject sit on the
  * distribution". Bloomberg uses this for "Lowest: Italy 4% · Highest:
