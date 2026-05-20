@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-05-20 01:26 UTC
+
+CYCLE: Post-I/O digestion window. OpenAI launches Guaranteed Capacity for 1-3 year compute commitments; Sam Altman warns world will be "capacity-constrained for some time." Cisco +13% on $5.3B AI infrastructure orders.
+
+TOP STORIES:
+• OpenAI Guaranteed Capacity signals compute scarcity as a priced product with discounted 1-3yr token commits [✓]
+• Cisco +13% on $5.3B AI infrastructure orders — AI capex flowing beyond chips into networking hardware [⚠]
+• Google GTIG documents first AI-discovered zero-day used in real cybercrime (2FA bypass in open-source tool) [⚠]
+• Meta layoffs begin today (May 20, 4am local) — 8,000 affected in 3 batches; employee reaction expected [✓]
+
+WATCH: Nvidia earnings May 20 — the single most important data point for AI infrastructure thesis. Also: Microsoft Build begins, any Anthropic statement on Karpathy's specific role, Meta layoff employee reaction on Blind/LinkedIn.
+
+Full update on GitHub.
