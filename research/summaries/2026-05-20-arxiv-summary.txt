@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-20
+
+TOP 5 PAPERS:
+• Code as Agent Harness - survey: code as the operational substrate for agent reasoning, action & execution-based verification
+• Practical Scaling Laws - Chinchilla extension for data-constrained, multi-epoch training (undercapacity/undertraining/overfitting)
+• Unlearnability in RLVR - some hard examples stay unlearnable under RL due to representation, not reward, issues
+• HEED - distilling a VLM into a 3:1 Mamba-2/attention hybrid: near-teacher on reasoning, big OCR gap
+• Why Aligned LLMs Stay Jailbreakable - Refusal-Escape Directions flip refusal to compliance
+
+CATEGORIES: LM/NLP 3 | Vision/Multimodal 3 | Agents/Reasoning 5 | Safety 2 | Other 1
+
+Full report on GitHub.
