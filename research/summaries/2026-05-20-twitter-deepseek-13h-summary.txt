@@ -1,0 +1,11 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-05-20 13:30 UTC
+
+CYCLE: Supply-chain security breach meets Nvidia earnings eve — dev-tool trust model under fire as AI infra thesis faces its biggest test
+
+TOP STORIES:
+• GitHub confirms TeamPCP breached 3,800 internal repos via poisoned VS Code extension — part of a months-long campaign that also hit Cisco, TanStack, npm/PyPI, and Nx Console (2.2M installs, targeted Claude Code configs). @github statements, 36K trending posts. [✓]
+• Nvidia Q1 FY2027 reports tonight — ~$78B guided revenue into 5.19% Treasury yields (highest since 2007) and Japan AI selloff. Single most important AI data point this week. [✓]
+
+WATCH: Nvidia earnings after close (revenue vs $78B guide, Q2 outlook, Blackwell/HBM4 language); GitHub breach — will stolen 3,800-repo code leak or additional companies disclose compromise?
+
+Full update on GitHub.
