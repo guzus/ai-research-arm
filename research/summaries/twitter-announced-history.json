@@ -6294,5 +6294,26 @@
     "headline": "OPENAI OFFERS $2M IN TOKENS TO EVERY STARTUP IN CURRENT YC BATCH",
     "source": "@sama",
     "url": "https://x.com/sama/status/2056933166875857290"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-20 07:30 UTC",
+    "headline": "GITHUB CONFIRMS BREACH VECTOR \u2014 POISONED VS CODE EXTENSION EXFILTRATED ~3,800 INTERNAL REPOS, SECRETS ROTATED",
+    "source": "@github",
+    "url": "https://x.com/github/status/2056949168208552080"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-20 07:30 UTC",
+    "headline": "WHITE HOUSE AI SAFETY & CYBERSECURITY EXECUTIVE ORDER COULD DROP THIS WEEK, SEEKING EARLY ACCESS TO FRONTIER MODELS \u2014 AXIOS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2056962188083122377"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-20 07:30 UTC",
+    "headline": "FRANCO-GERMAN NONPROFIT KESAI LABS LAUNCHES FULLY OPEN SELF-DRIVING STACK \u2014 OPEN WEIGHTS, DATA, CODE",
+    "source": "@ngranati",
+    "url": "https://x.com/ngranati/status/2056999295614591146"
   }
 ]
