@@ -460,5 +460,17 @@
     "source": "workflow_dispatch",
     "prompt": "SpaceX supply chain",
     "tags": []
+  },
+  {
+    "slug": "vvv-venice-crypto-project",
+    "file": "2026-05-20T084040--vvv-venice-crypto-project.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Venice ($VVV): a real AI business wired to a reflexive token machine",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-20T08:40:40Z",
+    "source": "workflow_dispatch",
+    "prompt": "$VVV Venice Crypto Project",
+    "tags": []
   }
 ]
