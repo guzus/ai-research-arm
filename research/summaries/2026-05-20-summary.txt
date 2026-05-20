@@ -1,0 +1,14 @@
+AI News - 2026-05-20
+
+TOP STORIES:
+• Andrej Karpathy joins Anthropic's pre-training team to build a Claude-trains-Claude group; Eureka Labs paused
+• Meta executes its 8,000-job layoff today (~10% of staff) + cancels ~6,000 open roles, framed as AI efficiency
+• NVIDIA reports Q1 FY27 after the close today (actuals pending); OpenAI ships C2PA + SynthID provenance stack with public "Verify" tool
+
+KEY NUMBERS:
+• NVIDIA consensus ~$78.8B rev / ~$1.77 EPS (~77-78% Y/Y), Data Center ~$72.8B
+• Meta: 8,000 cut + ~6,000 roles closed; 2026 capex guide $115-135B
+• Armada raises $230M Series B at $2B pre-money (BlackRock new) for modular AI data centers
+• OpenAI Codex now >4M weekly devs (Dell on-prem partnership)
+
+Full report on GitHub.
