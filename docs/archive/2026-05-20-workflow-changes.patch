@@ -1,0 +1,133 @@
+diff --git a/.github/workflows/2h-bluesky.yml b/.github/workflows/2h-bluesky.yml
+index 61776eb8..803a0591 100644
+--- a/.github/workflows/2h-bluesky.yml
++++ b/.github/workflows/2h-bluesky.yml
+@@ -38,12 +38,18 @@ jobs:
+
+           # Public keyword search now returns HTTP 403 without an authenticated
+           # session. Author feeds remain public, so use a curated AI-source list.
++          # Curated AI-source handles. Audited 2026-05-20 via getAuthorFeed
++          # (?filter=posts_no_replies): dropped "huggingface.bsky.social" and
++          # "deeplearning.bsky.social" — both returned empty feeds (the real org
++          # accounts, hf.co / deeplearningai.bsky.social, are dormant on Bluesky
++          # since late 2025), so they only added latency. Added four handles each
++          # verified posting on 2026-05-20: natolambert (post-training / open
++          # model releases), emollick (applied-AI), alexhanna (AI policy/ethics),
++          # minimaxir (ML engineering).
+           handles=(
+             "karpathy.bsky.social"
+             "emilymbender.bsky.social"
+             "mmitchell.bsky.social"
+-            "huggingface.bsky.social"
+-            "deeplearning.bsky.social"
+             "rasbt.bsky.social"
+             "jeremyhoward.bsky.social"
+             "yoavgo.bsky.social"
+@@ -53,6 +59,10 @@ jobs:
+             "moyix.bsky.social"
+             "arankomatsuzaki.bsky.social"
+             "schmidhuber.bsky.social"
++            "natolambert.bsky.social"
++            "emollick.bsky.social"
++            "alexhanna.bsky.social"
++            "minimaxir.bsky.social"
+           )
+
+           for handle in "${handles[@]}"; do
+@@ -90,15 +100,17 @@ jobs:
+             ## SOURCE FILES
+
+             Read these pre-fetched Bluesky JSON files from data/bluesky/:
++            - data/bluesky/alexhanna.json
+             - data/bluesky/arankomatsuzaki.json
+-            - data/bluesky/deeplearning.json
+             - data/bluesky/emilymbender.json
++            - data/bluesky/emollick.json
+             - data/bluesky/hardmaru.json
+-            - data/bluesky/huggingface.json
+             - data/bluesky/jeremyhoward.json
+             - data/bluesky/karpathy.json
++            - data/bluesky/minimaxir.json
+             - data/bluesky/mmitchell.json
+             - data/bluesky/moyix.json
++            - data/bluesky/natolambert.json
+             - data/bluesky/rasbt.json
+             - data/bluesky/schmidhuber.json
+             - data/bluesky/simonw.json
+diff --git a/.github/workflows/hourly-rss.yml b/.github/workflows/hourly-rss.yml
+index f11c7ce2..e6002a5f 100644
+--- a/.github/workflows/hourly-rss.yml
++++ b/.github/workflows/hourly-rss.yml
+@@ -90,6 +90,28 @@ jobs:
+             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+             > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
+
++          # Ars Technica AI RSS (added 2026-05-20; probed HTTP 200)
++          curl -sL "https://arstechnica.com/ai/feed/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/arstechnica_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arstechnica_ai.xml
++
++          # MIT Technology Review AI RSS (added 2026-05-20; probed HTTP 200)
++          curl -sL "https://www.technologyreview.com/topic/artificial-intelligence/feed/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/mit_tech_review_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/mit_tech_review_ai.xml
++
++          # The Decoder RSS — AI-only news outlet (added 2026-05-20; probed HTTP 200)
++          curl -sL "https://the-decoder.com/feed/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/the_decoder.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/the_decoder.xml
++
++          # Simon Willison's Weblog (Atom) — high-signal independent LLM analyst.
++          # Added 2026-05-20 after the pipeline missed his "last six months in
++          # LLMs" recap (HN #2 story, 629 pts, on 2026-05-19). Probed HTTP 200.
++          curl -sL "https://simonwillison.net/atom/everything/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/simonwillison.xml 2>/dev/null || echo "<feed></feed>" > /tmp/rss/simonwillison.xml
++
+           echo "RSS feeds fetched successfully"
+           ls -la /tmp/rss/
+
+@@ -124,12 +146,22 @@ jobs:
+             - techcrunch_ai.xml (TechCrunch AI)
+             - verge_ai.xml (The Verge AI)
+             - venturebeat_ai.xml (VentureBeat AI)
++            - arstechnica_ai.xml (Ars Technica AI)
++            - mit_tech_review_ai.xml (MIT Technology Review AI)
++            - the_decoder.xml (The Decoder — AI-only outlet)
++
++            **Independent Analysis:**
++            - simonwillison.xml (Simon Willison's Weblog — Atom feed; high-signal
++              LLM/AI analysis. Atom uses entry/title/link/published instead of
++              item/title/link/pubDate. Include only AI/LLM-relevant entries.)
+
+             RSS XML structure:
+             - channel/item/title (article title)
+             - channel/item/link (article URL)
+             - channel/item/pubDate (publication date)
+             - channel/item/description (summary)
++            Atom (simonwillison.xml) structure:
++            - feed/entry/title, feed/entry/link[@href], feed/entry/published
+
+             ## OUTPUT
+
+@@ -167,6 +199,20 @@ jobs:
+             #### VentureBeat
+             - [Title](url) - date
+
++            #### Ars Technica
++            - [Title](url) - date
++
++            #### MIT Technology Review
++            - [Title](url) - date
++
++            #### The Decoder
++            - [Title](url) - date
++
++            ### ✍️ Independent Analysis
++
++            #### Simon Willison
++            - [Title](url) - date
++
+             ### 📄 New arXiv Papers
+
+             #### CS.AI
