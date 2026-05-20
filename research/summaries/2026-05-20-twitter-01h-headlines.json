@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "GITHUB INVESTIGATING UNAUTHORIZED ACCESS TO ITS INTERNAL REPOSITORIES — SAYS NO EVIDENCE OF CUSTOMER-DATA IMPACT SO FAR",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2056906113610858712",
+    "category": "breaking"
+  },
+  {
+    "headline": "GOOGLE ROLLS OUT GEMINI 3.5 FLASH GLOBALLY — ~800 TOKENS/SEC, BEATS 3.1 PRO ON CODING PER GOOGLE",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2056787987774816525",
+    "category": "model"
+  },
+  {
+    "headline": "GEMINI 3.5 FLASH COSTS ~3X GEMINI 3 FLASH, AND IS 'NOT AS POWERFUL AS A FULL FRONTIER MODEL' — EARLY USERS",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2056867815605625172",
+    "category": "model"
+  },
+  {
+    "headline": "GOOGLE CALLS IT BIGGEST SEARCH-BOX UPGRADE IN 25 YEARS — GEMINI 3.5 FLASH NOW DEFAULT IN AI MODE, PLUS NEW 'SPARK' AGENT",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2056802276124328352",
+    "category": "business"
+  },
+  {
+    "headline": "GOOGLE SHIPS GEMINI OMNI — 'CREATE ANYTHING FROM ANY INPUT' MODEL STARTING WITH VIDEO, LIVE FOR AI PLUS/PRO/ULTRA",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2056787874260164628",
+    "category": "model"
+  },
+  {
+    "headline": "INTEL AND QUALCOMM REPORTEDLY BOTH EYEING TENSTORRENT RISC-V AI CHIPS IN POTENTIAL $5B+ DEAL",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2056905041660031048",
+    "category": "business"
+  }
+]
