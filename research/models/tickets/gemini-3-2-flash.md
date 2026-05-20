@@ -1,31 +1,39 @@
 ---
 slug: gemini-3-2-flash
-title: Gemini 3.2 Flash — Google I/O 2026 reveal
+title: Gemini 3.5 Flash — Google I/O 2026 release
 company: Google / DeepMind
-model: Gemini 3.2 Flash
-status: in-testing
+model: Gemini 3.5 Flash
+status: released
 status_note: |
-  GCP Cloud Console artifact (Gemini 3.2 Flash-lite-live, 2026-05-16) — strong
-  signal that the I/O reveal will be the 3.2 series rather than the previously
-  rumored 3.5. iOS app + AI Studio leak May 5 already showed Gemini 3.2 Flash
-  priced $0.25 / $2.00 per MTok with "Liquid Glass" iOS redesign + Agents (Beta).
-expected: 2026-05-19 / 2026-05-20 (Google I/O keynote, 10am PT)
+  Revealed and shipped GA at Google I/O 2026 (2026-05-19) as **Gemini 3.5
+  Flash** — not the leaked "3.2 Flash". The pre-I/O GCP console artifact
+  ("Gemini 3.2 Flash-lite-live") was an internal codename; Google branded
+  the public release 3.5. Live everywhere now: Gemini app, AI Mode in
+  Search (new default), Antigravity, Gemini API, and AI Studio. Reported
+  pricing $1.50 / $9.00 per MTok (secondary); ~4x faster than comparable
+  frontier models (12x / ~800 tok/s inside Antigravity) and beats Gemini
+  3.1 Pro on coding + agentic tasks. Gemini 3.5 Pro confirmed for next
+  month — see gemini-3-5-pro.
+expected: null
 labels:
   - google-io
   - flash-tier
-  - leaked-pricing
-verification: partial
+  - released
+  - frontier-model
+verification: confirmed
 sources:
   - https://byteiota.com/gemini-3-2-flash-leaked-what-developers-need-to-know-before-i-o/
   - https://pasqualepillitteri.it/en/news/2013/gemini-3-2-flash-leak-ios-ai-studio-2026-en
   - https://www.androidauthority.com/what-to-expect-from-google-io-2026-3664979/
+  - "@GoogleDeepMind"
+  - "@OfficialLoganK"
+  - "@demishassabis"
   - "@AiBattle_"
   - "@testingcatalog"
   - "@mark_k"
-  - "@deployedmind"
   - "@kimmonismus"
 created_at: 2026-05-05
-updated_at: 2026-05-16
+updated_at: 2026-05-20
 closed_at: null
 closed_reason: null
 history:
@@ -39,36 +47,46 @@ history:
     change: GCP Cloud Console find (AiBattle_, testingcatalog) — "Gemini 3.2 Flash-lite-live" listed alongside the existing 3.2 Flash leak; reframes I/O reveal as the 3.2 series rather than 3.5
   - ts: 2026-05-16
     change: "Material framing: if Google ships 3.2 (not 3.5/4) at I/O, the gap-vs-GPT-5.5/Mythos narrative widens"
+  - ts: 2026-05-19
+    change: "Google I/O reveal — shipped as **Gemini 3.5 Flash** (not the leaked 3.2), GA the same day across the Gemini app, AI Mode in Search, Antigravity, and the Gemini API (official @GoogleDeepMind)"
+  - ts: 2026-05-20
+    change: "status → released. Demis Hassabis: 4x faster than comparable frontier models (12x / ~800 tok/s in Antigravity), beats Gemini 3.1 Pro on coding + agentic; reported pricing $1.50 / $9.00 per MTok (secondary). Gemini 3.5 Pro confirmed for next month (new ticket gemini-3-5-pro)"
 ---
 
-Three days before Google I/O 2026, the leak picture is now consistent:
-Google is shipping the **Gemini 3.2 series**, not the previously rumored
-3.5. Evidence:
+Google I/O 2026 (2026-05-19) resolved this ticket: the Flash-tier reveal
+shipped publicly as **Gemini 3.5 Flash**, not the "Gemini 3.2 Flash" that
+the iOS/AI-Studio and GCP-console leaks had pointed to. The slug stays
+`gemini-3-2-flash` (slugs are immutable) even though the title now tracks
+the 3.5 branding — this is the version-number drift the ticket schema
+anticipates.
 
-- **iOS + AI Studio (May 5)**: Gemini 3.2 Flash with concrete pricing
-  ($0.25 / $2.00 per MTok), outperforming 3.1 Pro on creative coding
-  (ASCII animation benchmark), shipped with "Liquid Glass" iOS redesign
-  and an Agents (Beta) tab.
-- **GCP Cloud Console (May 16)**: Gemini 3.2 Flash-lite-live traces
-  appear in the Cloud Console — same path Opus 4.7 took before its
-  public release. AiBattle_ flagged this first; testingcatalog
-  corroborated 18 minutes later.
+**What shipped (official @GoogleDeepMind, @OfficialLoganK, @demishassabis):**
 
-Alex Heath's framing — Mythos has reset what "leading" means, and the
-Google reveal "lands in the class of GPT-5.5, well short of Mythos" —
-is the controlling narrative. A 3.2 ship (rather than 3.5) widens the
-perceived gap to Mythos and re-frames the Gemini roadmap as iterative
-rather than leapfrogging.
+- **Gemini 3.5 Flash**, the first release of the new Gemini 3.5 family
+  ("frontier intelligence + real-world action"). Generally available the
+  same day across the Gemini app, AI Mode in Google Search (new global
+  default model), Antigravity, the Gemini API, and AI Studio.
+- Demis Hassabis: better than Gemini 3.1 Pro on coding and agentic tasks,
+  4x faster than comparable frontier models (12x and ~800 tok/s inside
+  Antigravity), "often at less than half the cost."
+- Reported pricing **$1.50 / $9.00 per MTok** (secondary report, not the
+  official blog) — materially higher than the $0.25 / $2.00 the earlier
+  "3.2 Flash" leak quoted, so the "cheap Flash" framing no longer holds.
 
-**Why this ticket exists separately from a "Gemini 3.5" ticket:** the
-3.5 expectation was an unresolved rumor that the May 16 GCP find now
-disproves. If a `gemini-3-5-pro` ticket existed earlier, it should
-close with `closed_reason: superseded-by:gemini-3-2-flash`.
+**Why the leak was off on the version:** the GCP console artifact
+("3.2 Flash-lite-live") and the iOS leak both used a "3.2" label that
+turned out to be an internal codename. Google's public branding is 3.5,
+which also re-validates the earlier "Gemini 3.5" rumors that the May 16
+GCP find had appeared to disprove.
+
+**Related tickets:**
+- [gemini-3-5-pro](./gemini-3-5-pro.md) — the Pro tier of the 3.5 family,
+  officially confirmed at I/O for "next month."
+- [gemini-omni](./gemini-omni.md) — the multimodal video model launched
+  alongside Flash.
+- The "GCP-console-before-release" detection pattern is documented on
+  [opus-4-7](./opus-4-7.md) and [mythos](./mythos-public-release.md).
 
 **Transition triggers:**
-- I/O reveal happens (May 19-20) → `status: confirmed` with the official
-  spec, plus history entry capturing what shipped vs. what leaked.
-- Public rollout (Vertex AI GA, Gemini app, AI Studio default) →
-  `status: released`.
-- ≥4 weeks past public release → `status: closed` with
-  `closed_reason: released-and-aged`.
+- ≥4 weeks past public release (after ~2026-06-16) → `status: closed`
+  with `closed_reason: released-and-aged`.

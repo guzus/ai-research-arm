@@ -24,7 +24,7 @@ sources:
   - "@AiBattle_"
   - "@testingcatalog"
 created_at: 2026-04-12
-updated_at: 2026-05-16
+updated_at: 2026-05-20
 closed_at: null
 closed_reason: null
 history:
@@ -40,6 +40,8 @@ history:
     change: GCP Vertex AI Private Preview confirmed via Google Cloud blog — Mythos appears in GCP console without a preview label
   - ts: 2026-05-16
     change: kimmonismus argues a public release is structurally implausible despite GCP artifact
+  - ts: 2026-05-20
+    change: "Secondary report: Anthropic is reportedly letting Glasswing partners share cybersecurity findings surfaced by Mythos with other organizations — a governance change for the gated preview (not yet confirmed on Anthropic's own channels)"
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a
