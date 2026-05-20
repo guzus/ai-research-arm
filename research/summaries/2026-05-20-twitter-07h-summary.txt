@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-05-20 07:30 UTC
+
+CYCLE: Quieter policy + security window — GitHub officially confirms its breach; Axios flags a White House AI executive order this week.
+
+TOP STORIES:
+• GitHub confirms breach vector — poisoned VS Code extension on an employee device, ~3,800 internal repos "directionally consistent," secrets rotated, no customer data [✓]
+• White House AI-safety/cybersecurity executive order reportedly coming "as soon as this week," seeking early government access to frontier models (Axios) [⚠]
+
+WATCH: GitHub's fuller post-incident report (will it name the extension?) and whether the AI EO actually drops this week.
+
+Full update on GitHub.
