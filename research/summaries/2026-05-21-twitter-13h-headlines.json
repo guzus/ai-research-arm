@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ALIBABA QWEN 3.7 MAX HITS TOP-5 ON ARTIFICIAL ANALYSIS INDEX (56.6) — ~3.6 POINTS BEHIND GPT-5.5",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2057420016543215779",
+    "category": "model"
+  },
+  {
+    "headline": "QWEN 3.7 MAX BEATS GEMINI 3.5 FLASH AND KIMI K2.6 — NEW TOP CHINESE MODEL, PROPRIETARY NOT OPEN",
+    "source": "@aladagberk",
+    "url": "https://x.com/aladagberk/status/2057422568924004651",
+    "category": "model"
+  },
+  {
+    "headline": "WHITE HOUSE TO AWARD $2B IN QUANTUM GRANTS — $1B DIRECTLY TO IBM, EQUITY STAKES IN NINE COMPANIES",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2057421528829186077",
+    "category": "policy"
+  },
+  {
+    "headline": "QUANTUM INDUSTRY EXECUTIVE ORDER BEING DRAFTED; IBM UP ~7% PRE-MARKET ON GRANT REPORT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2057424085697613847",
+    "category": "policy"
+  },
+  {
+    "headline": "STABILITY AI SHIPS STABLE AUDIO 3 WITH THREE OPEN-SOURCE VARIANTS, INCLUDING MEDIUM (2B)",
+    "source": "@HuggingFace",
+    "url": "https://x.com/HuggingFace/status/2057428192021938242",
+    "category": "opensource"
+  }
+]
