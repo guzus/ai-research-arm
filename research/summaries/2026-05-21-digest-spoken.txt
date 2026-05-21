@@ -1,0 +1,9 @@
+Speaker 1: Thursday, May twenty-first, twenty twenty-six.
+Speaker 2: [high_energy] NVIDIA just posted its biggest quarter yet — [emphasis] eighty-one point six billion dollars [/emphasis] in revenue, up eighty-five percent year over year, with Data Center alone hitting seventy-five point two billion. Jensen Huang says agentic AI has arrived, and he's guiding ninety-one billion for next quarter.
+Speaker 1: The stock still slid about three percent on the day, which tells you expectations were even higher. They also announced an eighty billion dollar buyback.
+Speaker 2: Meanwhile OpenAI is claiming a first — an autonomous AI system that reportedly disproves an eighty-year-old Erdos conjecture in mathematics. Mathematicians Timothy Gowers and Noga Alon are vouching for the result.
+Speaker 1: [dramatic_pause] That's the kind of story that either rewrites the research roadmap or gets walked back quietly in six months. We'll watch it.
+Speaker 2: On the talent front, Andrej Karpathy is joining Anthropic's pre-training team. That is the top story right now across Hacker News, Reddit, and X simultaneously.
+Speaker 1: Some quick numbers on the funding side — search infrastructure startup Exa raised [emphasis] two hundred fifty million dollars [/emphasis] at a two point two billion valuation, led by a16z. And Meta cut eight thousand jobs this week.
+Speaker 2: Google I/O is driving a lot of the product chatter — WebMCP and the Antigravity CLI are getting traction in the agentic tooling conversation, while the AI-backlash thread on the artificial subreddit is one of the most active discussions we've tracked.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
