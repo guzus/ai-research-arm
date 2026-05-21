@@ -13,7 +13,9 @@ status_note: |
   pricing $1.50 / $9.00 per MTok (secondary); ~4x faster than comparable
   frontier models (12x / ~800 tok/s inside Antigravity) and beats Gemini
   3.1 Pro on coding + agentic tasks. Gemini 3.5 Pro confirmed for next
-  month — see gemini-3-5-pro.
+  month — see gemini-3-5-pro. Post-launch (2026-05-21): Antigravity 3x'd
+  Gemini rate limits across all paid tiers and reset weekly quotas after
+  users hit limits fast; 3.5 Flash ranks #1 on Zapier's Automation Bench.
 expected: null
 labels:
   - google-io
@@ -32,8 +34,9 @@ sources:
   - "@testingcatalog"
   - "@mark_k"
   - "@kimmonismus"
+  - "@_mohansolo"
 created_at: 2026-05-05
-updated_at: 2026-05-20
+updated_at: 2026-05-21
 closed_at: null
 closed_reason: null
 history:
@@ -51,6 +54,8 @@ history:
     change: "Google I/O reveal — shipped as **Gemini 3.5 Flash** (not the leaked 3.2), GA the same day across the Gemini app, AI Mode in Search, Antigravity, and the Gemini API (official @GoogleDeepMind)"
   - ts: 2026-05-20
     change: "status → released. Demis Hassabis: 4x faster than comparable frontier models (12x / ~800 tok/s in Antigravity), beats Gemini 3.1 Pro on coding + agentic; reported pricing $1.50 / $9.00 per MTok (secondary). Gemini 3.5 Pro confirmed for next month (new ticket gemini-3-5-pro)"
+  - ts: 2026-05-21
+    change: "Post-launch momentum: Antigravity 3x'd Gemini rate limits across all paid tiers + reset weekly quotas after users hit limits fast (@_mohansolo / @OfficialLoganK); 3.5 Flash ranks #1 on Zapier's Automation Bench, beating other frontier models at lower cost; \"Gemini 3.5 Flash has landed\" (official @GoogleDeepMind)"
 ---
 
 Google I/O 2026 (2026-05-19) resolved this ticket: the Flash-tier reveal
