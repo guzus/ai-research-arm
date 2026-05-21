@@ -322,6 +322,7 @@ jobs:
           # article body's audit and cause false build failures.
           rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
           rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+          rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
 
       # Security: stage attacker/user-controlled inputs to plain files so the
       # Claude/DeepSeek action steps do NOT need any env vars holding the
@@ -850,6 +851,43 @@ jobs:
                on a non-trivial question. Group packets by which planning
                question they answer.
 
+            2.5. WRITE THE CLAIM LEDGER ARTIFACT before prose. Convert
+               the load-bearing ledger packets into machine-readable
+               claims and Write this exact JSON shape to:
+
+                     $GITHUB_WORKSPACE/.gen-claims-ledger.json
+
+               Required shape:
+
+                     {
+                       "claims": [
+                         {
+                           "id": "c1",
+                           "claim": "<one factual claim or metric>",
+                           "type": "metric" | "event" | "quote" |
+                             "definition" | "comparison" | "causal" |
+                             "forecast" | "regulatory" |
+                             "market-structure" | "technical" |
+                             "other",
+                           "source_urls": ["https://..."],
+                           "source_tiers": ["primary" | "secondary" |
+                             "market-data" | "opinion" | "academic" |
+                             "legal" | "unknown"],
+                           "as_of": "YYYY-MM-DD or empty only for stable claims",
+                           "confidence": "high" | "medium" | "low",
+                           "risk": "stable" | "volatile" | "contested" |
+                             "single-source"
+                         }
+                       ]
+                     }
+
+               `source_tiers` is parallel to `source_urls` and must use
+               the same order. Any claim with type `metric`, `forecast`,
+               or `comparison`, or risk `volatile` / `contested`, MUST
+               include an `as_of` date. Do not put every sentence in the
+               ledger; include the claims the thesis would rely on if a
+               reviewer challenged the article.
+
             3. SPOT-CHECK. WebFetch or `curl+pdftotext` yourself on the
                5–8 most load-bearing primary sources to confirm the
                headline numbers exist on the pages agents cited.
@@ -950,6 +988,9 @@ jobs:
                     `lede`, and optional `stats:` grid) wrapped in
                     `---` fences
                   - section writers' DSL output, concatenated in order
+                  - near the top, a compact direct-answer `:::callout`
+                    or `:::kv` block that answers the user's literal
+                    question in 3–5 bullets before the long analysis
                   - a final "what could break the thesis" /
                     counter-arguments `## ` section (you write this
                     yourself from the ledger)
@@ -1206,6 +1247,10 @@ jobs:
                - Evidence density: ≥ 12 cited claims per 1,000 words
                - Quantitative density: ≥ 2 concrete numbers/dates/named
                  entities per H3 numbered section
+               - Volatile metrics (TVL, OI, daily volume, market share,
+                 ranking, token price, yield, live market count) carry
+                 an explicit "as of YYYY-MM-DD" in prose, table caption,
+                 or visual label
                - Counter-argument: ≥ 1 serious counterclaim or "what
                  would falsify this" per major thesis
                - References: ≥ 20 distinct source URLs in the numbered
@@ -1330,6 +1375,8 @@ jobs:
                         "$GEN_DRAFT" \
                         --diversity-min 3 --callout-max 5 \
                         --cite-density-min 10 --refs-min 20 \
+                        --claims-ledger "$GITHUB_WORKSPACE/.gen-claims-ledger.json" \
+                        --redteam-findings "$GITHUB_WORKSPACE/.gen-redteam-findings.json" \
                         --qsanity \
                         --strict-shape
 
@@ -1445,6 +1492,7 @@ jobs:
             # claims (verifier) or old contradictions (red-team).
             rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
             rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+            rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
           elif [ "$OUTCOME" = "failure" ]; then
             echo "::warning::Claude attempt 1 reported failure, but an article commit exists; continuing to publish that output."
           else
@@ -1939,6 +1987,43 @@ jobs:
                on a non-trivial question. Group packets by which planning
                question they answer.
 
+            2.5. WRITE THE CLAIM LEDGER ARTIFACT before prose. Convert
+               the load-bearing ledger packets into machine-readable
+               claims and Write this exact JSON shape to:
+
+                     $GITHUB_WORKSPACE/.gen-claims-ledger.json
+
+               Required shape:
+
+                     {
+                       "claims": [
+                         {
+                           "id": "c1",
+                           "claim": "<one factual claim or metric>",
+                           "type": "metric" | "event" | "quote" |
+                             "definition" | "comparison" | "causal" |
+                             "forecast" | "regulatory" |
+                             "market-structure" | "technical" |
+                             "other",
+                           "source_urls": ["https://..."],
+                           "source_tiers": ["primary" | "secondary" |
+                             "market-data" | "opinion" | "academic" |
+                             "legal" | "unknown"],
+                           "as_of": "YYYY-MM-DD or empty only for stable claims",
+                           "confidence": "high" | "medium" | "low",
+                           "risk": "stable" | "volatile" | "contested" |
+                             "single-source"
+                         }
+                       ]
+                     }
+
+               `source_tiers` is parallel to `source_urls` and must use
+               the same order. Any claim with type `metric`, `forecast`,
+               or `comparison`, or risk `volatile` / `contested`, MUST
+               include an `as_of` date. Do not put every sentence in the
+               ledger; include the claims the thesis would rely on if a
+               reviewer challenged the article.
+
             3. SPOT-CHECK. WebFetch or `curl+pdftotext` yourself on the
                5–8 most load-bearing primary sources to confirm the
                headline numbers exist on the pages agents cited.
@@ -2039,6 +2124,9 @@ jobs:
                     `lede`, and optional `stats:` grid) wrapped in
                     `---` fences
                   - section writers' DSL output, concatenated in order
+                  - near the top, a compact direct-answer `:::callout`
+                    or `:::kv` block that answers the user's literal
+                    question in 3–5 bullets before the long analysis
                   - a final "what could break the thesis" /
                     counter-arguments `## ` section (you write this
                     yourself from the ledger)
@@ -2295,6 +2383,10 @@ jobs:
                - Evidence density: ≥ 12 cited claims per 1,000 words
                - Quantitative density: ≥ 2 concrete numbers/dates/named
                  entities per H3 numbered section
+               - Volatile metrics (TVL, OI, daily volume, market share,
+                 ranking, token price, yield, live market count) carry
+                 an explicit "as of YYYY-MM-DD" in prose, table caption,
+                 or visual label
                - Counter-argument: ≥ 1 serious counterclaim or "what
                  would falsify this" per major thesis
                - References: ≥ 20 distinct source URLs in the numbered
@@ -2419,6 +2511,8 @@ jobs:
                         "$GEN_DRAFT" \
                         --diversity-min 3 --callout-max 5 \
                         --cite-density-min 10 --refs-min 20 \
+                        --claims-ledger "$GITHUB_WORKSPACE/.gen-claims-ledger.json" \
+                        --redteam-findings "$GITHUB_WORKSPACE/.gen-redteam-findings.json" \
                         --qsanity \
                         --strict-shape
 
@@ -2528,6 +2622,7 @@ jobs:
             # claims (verifier) or old contradictions (red-team).
             rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
             rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+            rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
           elif [ "$OUTCOME" = "failure" ]; then
             echo "::warning::DeepSeek attempt 1 reported failure, but an article commit exists; continuing to publish that output."
           else
@@ -2578,6 +2673,7 @@ jobs:
             # against old claims or old contradictions.
             rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
             rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+            rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
           elif [ "$OUTCOME" = "failure" ]; then
             echo "::warning::DeepSeek retry 1 reported failure, but an article commit exists; continuing to publish that output."
           else
@@ -2664,6 +2760,7 @@ jobs:
             # retry paths above.
             rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
             rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+            rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
             exit 1
           fi
 
@@ -2680,10 +2777,9 @@ jobs:
       # --audit-verifier-findings so it's unit-tested. See
       # audit_verifier_findings() for the matching heuristic.
       #
-      # Soft-fail mode: if the verifier didn't write the JSON file at
-      # all (older runs, model-side failure), we WARN but do not block.
-      # Once the verifier consistently emits JSON, tighten to hard-fail
-      # by removing the `if [ ! -f "$findings" ]` early-return.
+      # Missing verifier JSON is now a hard failure. A green build should
+      # mean the article had a claim-level support check, not merely enough
+      # citations to satisfy structural gates.
       - name: Verifier-findings audit
         id: verifier-audit
         if: steps.outfile.outputs.has_file == 'true' && steps.quality.outputs.passed == 'true'
@@ -2695,13 +2791,18 @@ jobs:
           findings="$GITHUB_WORKSPACE/.gen-verifier-findings.json"
           article="research/generative/$FILE"
           if [ ! -f "$findings" ]; then
-            echo "::warning::No verifier findings JSON at $findings — the model verifier sub-agent did not write one. The bounded-revision audit cannot run. Build continues; tighten to hard-fail once the verifier consistently emits."
-            echo "skipped=true" >> "$GITHUB_OUTPUT"
-            exit 0
+            echo "::error::No verifier findings JSON at $findings — refusing to publish without a claim-level verifier pass."
+            echo "passed=false" >> "$GITHUB_OUTPUT"
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative || true
+            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+            rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+            rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
+            exit 1
           fi
           if python3 scripts/check_generative_research.py \
               "$article" --audit-verifier-findings "$findings"; then
-            echo "skipped=false" >> "$GITHUB_OUTPUT"
+            echo "passed=true" >> "$GITHUB_OUTPUT"
           else
             # Same reset-on-failure pattern as the quality gate above.
             # Push step is also gated on this audit's outcome so the
@@ -2714,8 +2815,54 @@ jobs:
             # retry paths above.
             rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
             rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+            rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
             exit 1
           fi
+
+      - name: Methodology artifact gate
+        id: methodology
+        if: steps.outfile.outputs.has_file == 'true' && steps.quality.outputs.passed == 'true' && steps.verifier-audit.outputs.passed == 'true'
+        env:
+          FILE: ${{ steps.outfile.outputs.file }}
+          PRE_SHA: ${{ steps.pre.outputs.sha }}
+        run: |
+          set -euo pipefail
+          article="research/generative/$FILE"
+          stem="${FILE%.html}"
+          claims="$GITHUB_WORKSPACE/.gen-claims-ledger.json"
+          verifier="$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+          redteam="$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+          for artifact in "$claims" "$verifier" "$redteam"; do
+            if [ ! -f "$artifact" ]; then
+              echo "::error::Required methodology artifact missing: $artifact"
+              echo "passed=false" >> "$GITHUB_OUTPUT"
+              git reset --hard "$PRE_SHA"
+              git clean -fd -- research/generative || true
+              exit 1
+            fi
+          done
+
+          if ! python3 scripts/check_generative_research.py "$article" \
+                --claims-ledger "$claims" \
+                --redteam-findings "$redteam"; then
+            echo "::error::Methodology artifact validation failed for $article"
+            echo "passed=false" >> "$GITHUB_OUTPUT"
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative || true
+            exit 1
+          fi
+
+          cp "$claims"   "research/generative/${stem}.claims.json"
+          cp "$verifier" "research/generative/${stem}.verification.json"
+          cp "$redteam"  "research/generative/${stem}.redteam.json"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            "research/generative/${stem}.claims.json" \
+            "research/generative/${stem}.verification.json" \
+            "research/generative/${stem}.redteam.json"
+          git commit --amend --no-edit
+          echo "passed=true" >> "$GITHUB_OUTPUT"
 
       # Per-run quality report — corpus-audit metrics on the article
       # this run produced. We can't see the agent's compile-check
@@ -2726,7 +2873,7 @@ jobs:
       # design gate produced the desired behavior or whether the
       # agent squeaked past with the bare minimum.
       - name: Article quality report
-        if: always() && steps.outfile.outputs.has_file == 'true'
+        if: always() && steps.outfile.outputs.has_file == 'true' && steps.quality.outputs.passed == 'true' && steps.methodology.outputs.passed == 'true'
         env:
           FILE: ${{ steps.outfile.outputs.file }}
         run: |
@@ -2794,9 +2941,8 @@ jobs:
       # requires:
       #   - an article was committed (has_file)
       #   - the post-write quality gate passed
-      #   - the verifier-findings audit either passed or was skipped
-      #     (skipped = verifier didn't emit JSON, treated as soft-fail
-      #     per that step's documented policy)
+      #   - the verifier-findings audit passed
+      #   - methodology artifacts were validated and amended into the commit
       # We keep `always()` so a model-step "failure" outcome on a job
       # that produced a valid article still publishes — the model
       # outcome is independent of article validity.
@@ -2806,8 +2952,8 @@ jobs:
           always()
           && steps.outfile.outputs.has_file == 'true'
           && steps.quality.outputs.passed == 'true'
-          && (steps.verifier-audit.outputs.skipped == 'true'
-              || steps.verifier-audit.outcome == 'success')
+          && steps.verifier-audit.outputs.passed == 'true'
+          && steps.methodology.outputs.passed == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

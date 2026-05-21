@@ -10,7 +10,9 @@ check against a known-good article in research/generative/."""
 from __future__ import annotations
 
 import argparse
+import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -1083,6 +1085,91 @@ class SanityAgainstKnownGoodArticleTest(unittest.TestCase):
             "cerebras-wse-3 article must pass the workflow gates "
             "(--cite-density-min 10 --refs-min 20). Errors: " + "; ".join(errs),
         )
+
+
+class MethodologyArtifactValidationTest(unittest.TestCase):
+    def _write_json(self, payload):
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+        with tmp:
+            json.dump(payload, tmp)
+        return Path(tmp.name)
+
+    def tearDown(self):
+        for attr in ("path",):
+            p = getattr(self, attr, None)
+            if p and p.exists():
+                p.unlink()
+
+    def test_valid_claim_ledger_passes(self):
+        self.path = self._write_json({
+            "claims": [{
+                "id": "c1",
+                "claim": "Omni listed 450 live perpetual markets as of the review date.",
+                "type": "metric",
+                "source_urls": ["https://docs.example.com/markets"],
+                "source_tiers": ["primary"],
+                "as_of": "2026-05-21",
+                "confidence": "high",
+                "risk": "volatile",
+            }]
+        })
+        self.assertEqual(chk.validate_claim_ledger(self.path), [])
+
+    def test_metric_claim_requires_as_of(self):
+        self.path = self._write_json({
+            "claims": [{
+                "id": "c1",
+                "claim": "Omni listed 450 live perpetual markets.",
+                "type": "metric",
+                "source_urls": ["https://docs.example.com/markets"],
+                "source_tiers": ["primary"],
+                "as_of": "",
+                "confidence": "high",
+                "risk": "volatile",
+            }]
+        })
+        errs = chk.validate_claim_ledger(self.path)
+        self.assertTrue(any("as_of" in e for e in errs))
+
+    def test_redteam_placeholder_fails(self):
+        self.path = self._write_json({
+            "findings": [
+                {
+                    "claim_id": "c1",
+                    "claim_text": "This placeholder indicates the red-team pass failed.",
+                    "contradicting_url": None,
+                    "contradicting_quote": None,
+                    "severity": None,
+                    "no_contradiction_found": False,
+                    "redteam_failed": True,
+                },
+                {
+                    "claim_id": "c2",
+                    "claim_text": "This placeholder indicates the red-team pass failed.",
+                    "contradicting_url": None,
+                    "contradicting_quote": None,
+                    "severity": None,
+                    "no_contradiction_found": False,
+                    "redteam_failed": True,
+                },
+                {
+                    "claim_id": "c3",
+                    "claim_text": "This placeholder indicates the red-team pass failed.",
+                    "contradicting_url": None,
+                    "contradicting_quote": None,
+                    "severity": None,
+                    "no_contradiction_found": False,
+                    "redteam_failed": True,
+                },
+            ]
+        })
+        errs = chk.validate_redteam_artifact(self.path)
+        self.assertTrue(any("redteam_failed=true" in e for e in errs))
+
+    def test_empty_verifier_claims_fail(self):
+        self.path = self._write_json({"claims": []})
+        errs = chk.validate_verifier_artifact(self.path)
+        self.assertTrue(any("non-empty claims" in e for e in errs))
 
 
 if __name__ == "__main__":
