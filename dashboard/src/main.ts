@@ -1682,6 +1682,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     renderLineCharts(article);
     renderDonuts(article);
     renderSlopes(article);
+    renderTradingView(article);
     applyAraTooltips(article);
     renderResearchTOC(article);
     addSectionAnchors(article);
@@ -2133,6 +2134,84 @@ type LineChartPoint = {
   seriesIndex: number;
   pointIndex: number;
 };
+
+// ── TradingView live embed ────────────────────────────
+// The article fragment carries only a script-free placeholder
+// `<div class="ara-tradingview" data-symbol="NASDAQ:NOW">` plus a fallback
+// link — the writer's validator rejects <script>/<iframe> in fragments. Here,
+// in trusted dashboard code, we inject the real TradingView Advanced Chart
+// widget, lazily via IntersectionObserver so s3.tradingview.com is only hit
+// when a chart scrolls into view. The symbol is re-validated (defense in
+// depth) before it reaches the third-party widget config.
+const TV_SYMBOL_RE = /^[A-Za-z0-9:._-]{1,32}$/;
+const TV_TOKEN_RE = /^[A-Za-z0-9]{1,5}$/;
+const TV_EMBED_SRC = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+
+function mountTradingView(el: HTMLElement): void {
+  if (el.dataset.tvMounted === '1') return;
+  const symbol = el.getAttribute('data-symbol') || '';
+  if (!TV_SYMBOL_RE.test(symbol)) return; // bad symbol → leave the fallback link in place
+  el.dataset.tvMounted = '1';
+
+  const interval = el.getAttribute('data-interval') || 'D';
+  const range = el.getAttribute('data-range') || '';
+  const theme = el.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+
+  const config: Record<string, unknown> = {
+    autosize: true,
+    symbol,
+    theme,
+    style: '1',
+    locale: 'en',
+    allow_symbol_change: false,
+    hide_side_toolbar: true,
+    support_host: 'https://www.tradingview.com',
+  };
+  if (TV_TOKEN_RE.test(interval)) config.interval = interval;
+  if (range && TV_TOKEN_RE.test(range)) config.range = range;
+
+  const container = document.createElement('div');
+  container.className = 'tradingview-widget-container';
+  const widget = document.createElement('div');
+  widget.className = 'tradingview-widget-container__widget';
+  container.appendChild(widget);
+
+  // The embed script reads its JSON config from its own text content. We set
+  // it via textContent (never innerHTML) before appending, so there is no HTML
+  // parsing surface; the symbol is regex-validated above.
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = TV_EMBED_SRC;
+  script.async = true;
+  script.textContent = JSON.stringify(config);
+  container.appendChild(script);
+
+  el.appendChild(container);
+  el.classList.add('is-loaded'); // CSS hides .ara-tradingview-fallback
+}
+
+/** Inject live TradingView widgets into `<div class="ara-tradingview" data-symbol>`
+ * placeholders, lazily as they scroll into view. */
+function renderTradingView(root: HTMLElement): void {
+  const els = root.querySelectorAll<HTMLElement>('.ara-tradingview[data-symbol]');
+  if (!els.length) return;
+  if (typeof IntersectionObserver === 'undefined') {
+    els.forEach(mountTradingView);
+    return;
+  }
+  const io = new IntersectionObserver(
+    (entries, obs) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          mountTradingView(entry.target as HTMLElement);
+          obs.unobserve(entry.target);
+        }
+      }
+    },
+    { rootMargin: '200px' },
+  );
+  els.forEach((el) => io.observe(el));
+}
 
 /** Sparkline — small inline trend, no axes. */
 function renderSparklines(root: HTMLElement): void {

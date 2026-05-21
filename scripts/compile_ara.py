@@ -894,6 +894,76 @@ def emit_line_chart(attrs: dict, body: str, line_no: int) -> str:
     return "".join(parts)
 
 
+# TradingView symbols are EXCHANGE:TICKER (e.g. NASDAQ:NOW, NYSE:BE,
+# BINANCE:BTCUSDT, FX:EURUSD). The strict charset keeps the value safe to
+# interpolate into both the dashboard widget config and the fallback URL.
+# \Z (not $) so a trailing newline can't sneak past — keeps this gate
+# byte-identical to the writer's mirror in write_generative_research.py.
+_TV_SYMBOL_RE = re.compile(r"^[A-Za-z0-9:._-]{1,32}\Z")
+# interval/range are passed through to the third-party widget. We charset-gate
+# them (rather than enumerate accepted values) so a genuinely valid TradingView
+# value is never rejected — the widget ignores anything it doesn't recognise,
+# and the fallback link works regardless.
+_TV_INTERVAL_RE = re.compile(r"^[A-Za-z0-9]{1,5}\Z")
+_TV_RANGE_RE = re.compile(r"^[A-Za-z0-9]{1,4}\Z")
+
+
+def emit_tradingview(attrs: dict, body: str, line_no: int) -> str:
+    """`:::tradingview(symbol="NASDAQ:NOW", interval=D, theme=dark, range=12M)`
+
+    Emits a script-free placeholder div carrying the config in data-* attrs.
+    The validator can't allow <script>/<iframe>, so the dashboard's
+    renderTradingView enhancer injects the real TradingView Advanced Chart
+    widget at view time. Outside the dashboard (the static .html artifact, a
+    PDF) only the fallback <a> renders. `symbol` is required; the rest fall
+    back to renderer defaults when omitted."""
+    symbol = str(_req(attrs, "symbol", "tradingview", line_no)).strip()
+    if not _TV_SYMBOL_RE.match(symbol):
+        raise AraSyntaxError(
+            "tradingview: symbol must be EXCHANGE:TICKER using [A-Za-z0-9:._-] "
+            f"(e.g. NASDAQ:NOW), got {symbol!r}",
+            line=line_no,
+        )
+    interval = _opt(attrs, "interval")
+    if interval is not None:
+        interval = str(interval).strip()
+        if not _TV_INTERVAL_RE.match(interval):
+            raise AraSyntaxError(
+                f"tradingview: interval must be alphanumeric (e.g. D, W, M, 60), got {interval!r}",
+                line=line_no,
+            )
+    rng = _opt(attrs, "range")
+    if rng is not None:
+        rng = str(rng).strip()
+        if not _TV_RANGE_RE.match(rng):
+            raise AraSyntaxError(
+                f"tradingview: range must be alphanumeric (e.g. 12M, YTD, 5Y), got {rng!r}",
+                line=line_no,
+            )
+    theme = _opt(attrs, "theme")
+    if theme is not None:
+        theme = str(theme).strip()
+        if theme not in ("dark", "light"):
+            raise AraSyntaxError(
+                f"tradingview: theme must be dark|light, got {theme!r}",
+                line=line_no,
+            )
+    # TradingView symbol pages live at /symbols/EXCHANGE-TICKER/.
+    href = f"https://www.tradingview.com/symbols/{symbol.replace(':', '-')}/"
+    parts = ['<div class="ara-tradingview"']
+    parts.append(_attr("data-symbol", symbol))
+    parts.append(_attr("data-interval", interval))
+    parts.append(_attr("data-theme", theme))
+    parts.append(_attr("data-range", rng))
+    parts.append(">")
+    parts.append(
+        f'<a class="ara-tradingview-fallback" href="{html.escape(href, quote=True)}">'
+        f"View {html.escape(symbol)} on TradingView ↗</a>"
+    )
+    parts.append("</div>")
+    return "".join(parts)
+
+
 def emit_donut(attrs: dict, body: Any, line_no: int) -> str:
     if not isinstance(body, list):
         raise AraSyntaxError(":::donut body must be a YAML list of {label, value}", line=line_no)
@@ -1143,6 +1213,7 @@ DIRECTIVES: dict[str, tuple[Callable, str]] = {
     "quote":       (emit_quote,       "markdown"),
     "figure":      (emit_figure,      "markdown"),
     "line-chart":  (emit_line_chart,  "lines"),
+    "tradingview": (emit_tradingview, "markdown"),
     "donut":       (emit_donut,       "yaml"),
     "slope":       (emit_slope,       "lines"),
     "timeline":    (emit_timeline,    "yaml"),

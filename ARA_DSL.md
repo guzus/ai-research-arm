@@ -207,6 +207,31 @@ For real stock data, use `scripts/stock_prices.py` (the runner has
 python3 scripts/stock_prices.py BE NVDA --range 1y --interval 1mo
 ```
 
+#### `:::tradingview(symbol="NASDAQ:NOW", interval=D, theme=dark, range=12M)` (body: empty)
+
+```
+:::tradingview(symbol="NASDAQ:NOW")
+:::
+```
+
+A **live** TradingView Advanced Chart. `symbol` is required and uses
+TradingView's `EXCHANGE:TICKER` form (e.g. `NASDAQ:NOW`, `NYSE:BE`,
+`BINANCE:BTCUSDT`). Optional: `interval` (default `D`; also `W`, `M`,
+`60`, …), `theme` (`dark` default, or `light`), and `range` (e.g. `12M`,
+`YTD`, `5Y`).
+
+Unlike `:::line-chart` — frozen, self-contained data baked from
+`stock_prices.py` — this embeds the real third-party widget and always
+shows **live** data. The compiler emits only a script-free placeholder
+`<div class="ara-tradingview" data-symbol=…>` plus a fallback link; the
+dashboard injects the actual TradingView widget at view time (the
+validator can't allow `<script>`/`<iframe>` in a fragment). Consequence:
+it renders **only inside the dashboard**. In the static `.html` artifact
+or a PDF, readers see the fallback link to TradingView, not the chart.
+Reach for `:::line-chart` when you need an as-of-date, reproducible,
+*cited* figure; reach for `:::tradingview` for a live interactive chart
+on the dashboard.
+
 #### `:::donut(center-label="100%")` (body: YAML list)
 
 ```

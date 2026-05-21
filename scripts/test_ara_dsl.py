@@ -302,6 +302,92 @@ Claim [^1].
         self.assertIn('alt="서울"', html)
         self.assertIn("café", html)
 
+    def test_tradingview_emits_safe_placeholder(self):
+        html = compile_ok(
+            """---
+title: TradingView
+---
+
+## 01. Chart
+
+:::tradingview(symbol="NASDAQ:NOW", interval=D, theme=dark, range=12M)
+:::
+"""
+        )
+        self.assertIn('<div class="ara-tradingview"', html)
+        self.assertIn('data-symbol="NASDAQ:NOW"', html)
+        self.assertIn('data-interval="D"', html)
+        self.assertIn('data-theme="dark"', html)
+        self.assertIn('data-range="12M"', html)
+        self.assertIn(
+            '<a class="ara-tradingview-fallback" '
+            'href="https://www.tradingview.com/symbols/NASDAQ-NOW/">',
+            html,
+        )
+        # The fragment must stay script-free — the dashboard injects the widget.
+        self.assertNotIn("<script", html)
+        self.assertNotIn("<iframe", html)
+
+    def test_tradingview_symbol_only_omits_optional_attrs(self):
+        html = compile_ok(
+            """---
+title: TradingView
+---
+
+## 01. Chart
+
+:::tradingview(symbol="NYSE:BE")
+:::
+"""
+        )
+        self.assertIn('data-symbol="NYSE:BE"', html)
+        self.assertNotIn("data-interval", html)
+        self.assertNotIn("data-theme", html)
+        self.assertNotIn("data-range", html)
+
+    def test_tradingview_passes_fragment_validator(self):
+        html = compile_ok(
+            """---
+title: TradingView
+---
+
+## 01. Chart
+
+:::tradingview(symbol="NASDAQ:NOW", interval=W, theme=light, range=5Y)
+:::
+"""
+        )
+        # Must survive the writer's fragment validator (allowlisted data-* +
+        # the ara-tradingview class). validate_body raises on any violation.
+        writer.validate_body(html, writer.KIND_FRAGMENT)
+
+    def test_tradingview_rejects_unsafe_symbol(self):
+        with self.assertRaisesRegex(compile_ara.AraSyntaxError, "symbol"):
+            compile_ok(
+                """---
+title: TradingView
+---
+
+## 01. Chart
+
+:::tradingview(symbol="bad symbol!")
+:::
+"""
+            )
+
+    def test_validator_rejects_trailing_newline_data_symbol(self):
+        # Hand-crafted fragment fed straight to validate_body (bypassing the
+        # compiler's .strip()). The gate uses \Z, not $ — Python's $ matches
+        # before a trailing newline, which would let data-symbol="X\n" slip past
+        # and diverge from the compiler's _TV_SYMBOL_RE. This locks in the mirror.
+        frag = (
+            '<article class="ara-doc"><h2 class="ara-display">T</h2>'
+            '<div class="ara-tradingview" data-symbol="NASDAQ:NOW\n"></div>'
+            "</article>"
+        )
+        with self.assertRaises(ValueError):
+            writer.validate_body(frag, writer.KIND_FRAGMENT)
+
     def test_web_figure_emits_safe_image_with_credit(self):
         html = compile_ok(
             """---

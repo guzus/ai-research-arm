@@ -297,6 +297,20 @@ class _FragmentValidator(html.parser.HTMLParser):
             "data-series-4",
         }:
             return _valid_number_list(value)
+        # ara-tradingview: config for the dashboard-injected widget. Strict
+        # charset on the symbol (it reaches a third-party widget + a URL);
+        # interval/range are charset-gated, theme is an enum.
+        # \Z (not $): Python's $ matches before a trailing newline, which would
+        # let data-symbol="X\n" slip the gate. \Z anchors the true end and keeps
+        # this mirror byte-identical to the compiler's _TV_*_RE patterns.
+        if attr == "data-symbol":
+            return bool(re.match(r"^[A-Za-z0-9:._-]{1,32}\Z", value))
+        if attr == "data-interval":
+            return bool(re.match(r"^[A-Za-z0-9]{1,5}\Z", value))
+        if attr == "data-range":
+            return bool(re.match(r"^[A-Za-z0-9]{1,4}\Z", value))
+        if attr == "data-theme":
+            return value in {"dark", "light"}
         return False
 
     def handle_starttag(self, tag, attrs):

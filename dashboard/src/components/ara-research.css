@@ -97,6 +97,7 @@
 .ara-doc > .ara-line-chart,
 .ara-doc > .ara-donut,
 .ara-doc > .ara-slope,
+.ara-doc > .ara-tradingview,
 .ara-doc > .ara-compare,
 .ara-doc > .ara-rank-list,
 .ara-doc > .ara-iso,
@@ -986,6 +987,56 @@
 }
 
 /* ── Line chart (full SVG with axes + multiple series) ─── */
+/* TradingView live embed. Authored as
+ * <div class="ara-tradingview" data-symbol="NASDAQ:NOW"> with an inner
+ * fallback link. main.ts injects the third-party widget at view time; the
+ * widget autosizes to fill this block. Sized like the other chart blocks. */
+.ara-tradingview {
+  position: relative;
+  margin: 22px 0;
+  height: 480px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  font-family: var(--font);
+  overflow: hidden;
+}
+
+.ara-tradingview .tradingview-widget-container,
+.ara-tradingview .tradingview-widget-container__widget {
+  width: 100%;
+  height: 100%;
+}
+
+.ara-tradingview-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.ara-tradingview-fallback:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+/* Once main.ts mounts the widget it sets .is-loaded and the fallback hides.
+ * If the widget never mounts (script blocked, error) the link stays visible. */
+.ara-tradingview.is-loaded .ara-tradingview-fallback {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .ara-tradingview {
+    height: 360px;
+  }
+}
+
 /* Authored as <div class="ara-line-chart" data-series-1="..." data-y-unit="$">
  * — main.ts injects an axis-bearing SVG at render time. Up to 4 series. */
 .ara-line-chart {
