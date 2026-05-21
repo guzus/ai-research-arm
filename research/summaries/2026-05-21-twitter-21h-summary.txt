@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-05-21 21:41 UTC
+
+CYCLE: Quieter, OpenAI-tilted window after the day's mega-arcs matured.
+
+TOP STORIES:
+• The Information: OpenAI Q1 revenue ~$5.7B, ~$1B ahead of Anthropic (~$4.7B); the two labs now ~89% of revenue across 34 tracked AI startups [✓]
+• Altman: "new Codex ships today" — macOS Appshots, browser annotation editor, /goal default, shareable Plugins (feature drop, not a confirmed new model) [✓]
+
+ALSO: Analog Devices in talks to buy power-chip startup Empower Semi (~$1.5B); GPT-5.2 hits expert-level peer review (study); Karpathy→Anthropic + Cohere Command A+ recirculated but broke earlier. No frontier model shipped.
+
+WATCH: Whether OpenAI's confidential S-1 files Friday (May 22); any OpenAI/Anthropic response to the revenue numbers.
+
+Full update on GitHub.
