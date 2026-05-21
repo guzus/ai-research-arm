@@ -1,0 +1,59 @@
+diff --git a/.github/workflows/hourly-rss.yml b/.github/workflows/hourly-rss.yml
+index f11c7ce2..c52d89e3 100644
+--- a/.github/workflows/hourly-rss.yml
++++ b/.github/workflows/hourly-rss.yml
+@@ -90,6 +90,23 @@ jobs:
+             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+             > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
+
++          # Ars Technica AI RSS (section feed)
++          curl -sL "https://arstechnica.com/ai/feed/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/arstechnica_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arstechnica_ai.xml
++
++          # Simon Willison's Weblog (Atom) — high-signal independent LLM
++          # observer; his write-ups are frequently the day's best single read.
++          curl -sL "https://simonwillison.net/atom/everything/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/simonwillison.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/simonwillison.xml
++
++          # MarkTechPost — high-volume AI research/news aggregator that
++          # surfaces new papers, model releases, and open-source drops daily.
++          curl -sL "https://www.marktechpost.com/feed/" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/marktechpost.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/marktechpost.xml
++
+           echo "RSS feeds fetched successfully"
+           ls -la /tmp/rss/
+
+@@ -124,6 +141,11 @@ jobs:
+             - techcrunch_ai.xml (TechCrunch AI)
+             - verge_ai.xml (The Verge AI)
+             - venturebeat_ai.xml (VentureBeat AI)
++            - arstechnica_ai.xml (Ars Technica AI)
++
++            **Independent & Analysis:**
++            - simonwillison.xml (Simon Willison's Weblog — Atom)
++            - marktechpost.xml (MarkTechPost — AI research/news aggregator)
+
+             RSS XML structure:
+             - channel/item/title (article title)
+@@ -167,6 +189,18 @@ jobs:
+             #### VentureBeat
+             - [Title](url) - date
+
++            #### Ars Technica
++            - [Title](url) - date
++
++            ### 🔬 Independent & Analysis
++
++            #### Simon Willison
++            - [Title](url) - date
++              > Brief summary
++
++            #### MarkTechPost
++            - [Title](url) - date
++
+             ### 📄 New arXiv Papers
+
+             #### CS.AI
