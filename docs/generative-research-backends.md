@@ -14,7 +14,7 @@ Use the local Oracle checkout when you want the generative-research lane to run
 from this machine instead of GitHub Actions:
 
 ```bash
-python3 scripts/run_generative_research_oracle.py \
+uv run python scripts/run_generative_research_oracle.py \
   "The Home Inference Rack: can a Mac mini plus consumer GPU fleet beat cloud APIs?" \
   --slug home-inference-rack \
   --tags "local-ai,home-inference,hardware,mac-mini,gpu-fleet"
@@ -34,7 +34,7 @@ research files. Oracle writes a draft `.ara.md`; the script extracts the marked
 article source, runs:
 
 ```bash
-python3 scripts/check_generative_research.py "$DRAFT" \
+uv run python scripts/check_generative_research.py "$DRAFT" \
   --diversity-min 3 --callout-max 5 --strict-shape
 ```
 
@@ -50,7 +50,7 @@ the Korean `.ara.md`, run the normal checker, then publish it against the
 existing slug:
 
 ```bash
-python3 scripts/write_generative_research.py \
+uv run python scripts/write_generative_research.py \
   --topic "Korean translation of <title>" \
   --translation-of "<existing-slug>" \
   --language ko \
@@ -72,7 +72,7 @@ pnpm -C ../oracle install
 Preview the bundle without sending it to a model:
 
 ```bash
-python3 scripts/run_generative_research_oracle.py "Topic" --oracle-dry-run
+uv run python scripts/run_generative_research_oracle.py "Topic" --oracle-dry-run
 ```
 
 The DeepSeek path mirrors `.github/workflows/hourly-twitter-deepseek-agentic.yml`:
@@ -129,8 +129,8 @@ After both runs finish, compare:
 
 ```bash
 gh run list --workflow=generative-research.yml --limit 10
-python3 scripts/check_generative_research.py research/generative/<deepseek>.ara.md
-python3 scripts/check_generative_research.py research/generative/<claude>.ara.md
+uv run python scripts/check_generative_research.py research/generative/<deepseek>.ara.md
+uv run python scripts/check_generative_research.py research/generative/<claude>.ara.md
 ```
 
 Then inspect the workflow "Article quality report" sections for words,

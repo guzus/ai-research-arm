@@ -93,26 +93,26 @@ primitive.
 
 Beyond `Read` / `Write` / `WebSearch` / `WebFetch`, you have:
 
-- `python3 scripts/prior_context.py "<topic>"` — lists related
+- `uv run python scripts/prior_context.py "<topic>"` — lists related
   past articles already in this repo (slug, title, file path).
   Run this FIRST so you don't redo their work.
-- `python3 scripts/research_search.py SOURCE "query"` —
+- `uv run python scripts/research_search.py SOURCE "query"` —
   primary-source search. `SOURCE` = `arxiv` | `edgar` | `crossref`
   | `semanticscholar` | `github`. Use this BEFORE `WebSearch` when
   the topic clearly has academic / SEC / GitHub footprints.
 - `curl -sL <url> -o /tmp/x.pdf && pdftotext /tmp/x.pdf - | head -c 60000`
   — read PDFs (10-Ks, S-1s, papers, whitepapers).
-- `python3 scripts/stock_prices.py <ticker[,ticker...]> --range 1y --interval 1mo --format kv`
+- `uv run python scripts/stock_prices.py <ticker[,ticker...]> --range 1y --interval 1mo --format kv`
   — fetches close-price time series from Yahoo Finance (yfinance
   handles auth; no API key). Stdout shows `x:` and `ticker_X:`
   rows ready to paste into the body of a
   `:::line-chart(title=..., y-unit=$)` block. Up to 4 tickers per
   chart.
-- `python3 scripts/compile_ara.py path.ara.md --out /tmp/x.html`
+- `uv run python scripts/compile_ara.py path.ara.md --out /tmp/x.html`
   — compile DSL source to the HTML fragment. Run this if you want
   to inspect the rendered HTML, but normally the check script
   below does it for you.
-- `python3 scripts/check_generative_research.py /tmp/gen-research.ara.md`
+- `uv run python scripts/check_generative_research.py /tmp/gen-research.ara.md`
   — COMPILE-CHECK the article. Accepts `.ara.md` (compiles, then
   validates the resulting HTML) or `.html` (validates directly).
   Catches DSL grammar errors AND any ara-* class invented inside
@@ -123,7 +123,7 @@ Beyond `Read` / `Write` / `WebSearch` / `WebFetch`, you have:
 
 **0. PLAN + PRIOR-COVERAGE CHECK.**
 
-- Run `python3 scripts/prior_context.py "<topic>"` and `Read` any
+- Run `uv run python scripts/prior_context.py "<topic>"` and `Read` any
   high-overlap article files it returns. Note what's already
   covered so you don't duplicate.
 - **Read `ARA_DSL.md` and `COMPONENTS.md` at repo root.** The
@@ -158,7 +158,7 @@ Each sub-agent prompt MUST:
   analyst", "chip architect", "monetary economist")
 - instruct first-principles reasoning
 - require WebSearch + WebFetch on PRIMARY sources
-- tell the agent it CAN use `python3 scripts/research_search.py
+- tell the agent it CAN use `uv run python scripts/research_search.py
   SOURCE "query"` for arxiv/edgar/crossref/semanticscholar/github
 - tell the agent it CAN use `curl + pdftotext` for PDF sources
 - cap output at ~10 evidence packets
@@ -248,7 +248,7 @@ prompt MUST include:
 - the Component vocabulary block (below) AND an instruction to
   `Read ARA_DSL.md` and `COMPONENTS.md` first
 - an EXPLICIT note that they CAN fetch live stock-price series
-  via `python3 scripts/stock_prices.py <ticker[s]> --range 1y
+  via `uv run python scripts/stock_prices.py <ticker[s]> --range 1y
   --interval 1mo --format kv` (Yahoo Finance via yfinance, no
   API key, up to 4 tickers per chart). Stdout is ready to paste
   into the body of a `:::line-chart(title=..., y-unit=$)` block.
@@ -386,7 +386,7 @@ suggested fix.
 ```bash
 # Write the body to /tmp/gen-research.ara.md via the Write tool,
 # then compile-check it WITH design gates:
-python3 scripts/check_generative_research.py /tmp/gen-research.ara.md \
+uv run python scripts/check_generative_research.py /tmp/gen-research.ara.md \
   --diversity-min 3 --callout-max 5 --strict-shape
 # Exit 0 → safe to commit (proceed below). Soft warnings on
 #          stderr are advisory.
@@ -410,7 +410,7 @@ compiled `.html` artifact + updates the index + makes a local
 commit):
 
 ```bash
-python3 scripts/write_generative_research.py \
+uv run python scripts/write_generative_research.py \
   --topic "<the exact topic the user gave>" \
   --model "claude-opus-4-7" \
   --source "local" \

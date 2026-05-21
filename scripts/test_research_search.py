@@ -5,7 +5,7 @@ Network-dependent tests skip cleanly when offline. The argparse dispatch
 test runs always (no network).
 
 Run via:
-  python3 -m unittest discover -s scripts -p 'test_*.py'
+  uv run python -m unittest discover -s scripts -p 'test_*.py'
 """
 
 from __future__ import annotations
@@ -174,7 +174,7 @@ class ArgparseDispatchTest(unittest.TestCase):
 # ── Smoke tests — happy-path with real network calls ──────────────
 # Opt-in via RESEARCH_SEARCH_LIVE_TESTS=1 to keep CI green when third-
 # party services have transient outages. Run locally with:
-#   RESEARCH_SEARCH_LIVE_TESTS=1 python3 -m unittest discover -s scripts
+#   RESEARCH_SEARCH_LIVE_TESTS=1 uv run python -m unittest discover -s scripts
 @unittest.skipUnless(NETWORK_OK, SKIP_REASON)
 class SmokeTest(unittest.TestCase):
     """Live calls. Each test verifies (a) non-empty output, (b) no Python

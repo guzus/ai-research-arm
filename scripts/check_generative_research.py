@@ -57,11 +57,11 @@ Exit status:
   2  — argv error / file missing
 
 Usage:
-  python3 scripts/check_generative_research.py /tmp/gen-research-body.html
-  python3 scripts/check_generative_research.py - < body.html     # stdin
-  python3 scripts/check_generative_research.py path --kind standalone
-  python3 scripts/check_generative_research.py path --diversity-min 3 --callout-max 5
-  python3 scripts/check_generative_research.py path --cite-density-min 10 --refs-min 20
+  uv run python scripts/check_generative_research.py /tmp/gen-research-body.html
+  uv run python scripts/check_generative_research.py - < body.html     # stdin
+  uv run python scripts/check_generative_research.py path --kind standalone
+  uv run python scripts/check_generative_research.py path --diversity-min 3 --callout-max 5
+  uv run python scripts/check_generative_research.py path --cite-density-min 10 --refs-min 20
 
 The agent loop in the workflow / local skill: write the body, run this
 check, fix anything it reports, re-check, and only then call the real

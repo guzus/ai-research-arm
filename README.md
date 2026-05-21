@@ -190,6 +190,16 @@ Built with **Vite + Bun + TypeScript**, deployed to Vercel via the git integrati
 
 ## Setup
 
+### Local Python Tooling
+
+Python dependencies are managed with **uv**:
+
+```bash
+uv sync --all-extras
+uv run python -m unittest discover -s scripts -p 'test_*.py'
+uv run python scripts/check_model_tickets.py
+```
+
 ### Required Secrets
 
 | Secret | Required | Description |

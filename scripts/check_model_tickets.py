@@ -2,8 +2,8 @@
 """Validate model-release tickets against the schema in docs/model-tickets.md.
 
 Usage:
-    python3 scripts/check_model_tickets.py
-    python3 scripts/check_model_tickets.py path/to/ticket.md ...
+    uv run python scripts/check_model_tickets.py
+    uv run python scripts/check_model_tickets.py path/to/ticket.md ...
 
 Exit 0 when every ticket is valid. Exit 1 with a list of failures.
 

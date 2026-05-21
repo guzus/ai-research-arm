@@ -44,7 +44,7 @@ Design (first-principles):
     pathological URL from filling disk. Configurable via env var
     SOURCE_CACHE_MAX_BYTES. There is intentionally NO total-cache
     size cap; the operator is expected to run
-    `python3 scripts/source_cache.py purge --older-than 30d` on a
+    `uv run python scripts/source_cache.py purge --older-than 30d` on a
     schedule (or in a workflow's housekeeping step) when the cache
     grows beyond what's wanted. `stats` reports the current total.
 
@@ -59,10 +59,10 @@ Design (first-principles):
 
 CLI:
 
-  python3 scripts/source_cache.py get   <url> [--force-refresh] [--max-age N]
-  python3 scripts/source_cache.py info  <url>
-  python3 scripts/source_cache.py purge --older-than 30d
-  python3 scripts/source_cache.py stats
+  uv run python scripts/source_cache.py get   <url> [--force-refresh] [--max-age N]
+  uv run python scripts/source_cache.py info  <url>
+  uv run python scripts/source_cache.py purge --older-than 30d
+  uv run python scripts/source_cache.py stats
 
 PROGRAMMATIC:
 

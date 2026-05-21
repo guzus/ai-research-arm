@@ -204,7 +204,7 @@ For real stock data, use `scripts/stock_prices.py` (the runner has
 `yfinance` installed; output is copy-pasteable into this format):
 
 ```
-python3 scripts/stock_prices.py BE NVDA --range 1y --interval 1mo
+uv run python scripts/stock_prices.py BE NVDA --range 1y --interval 1mo
 ```
 
 #### `:::tradingview(symbol="NASDAQ:NOW", interval=D, theme=dark, range=12M)` (body: empty)
@@ -412,8 +412,8 @@ hint at commit time.
 ## Compiling locally
 
 ```
-python3 scripts/compile_ara.py path/to/draft.ara.md --out /tmp/draft.html
-python3 scripts/check_generative_research.py path/to/draft.ara.md
+uv run python scripts/compile_ara.py path/to/draft.ara.md --out /tmp/draft.html
+uv run python scripts/check_generative_research.py path/to/draft.ara.md
 ```
 
 The check accepts `.ara.md` (compiles then validates) or `.html`

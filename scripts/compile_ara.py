@@ -34,8 +34,8 @@ The grammar:
 
 Run standalone:
 
-    python3 scripts/compile_ara.py path/to/source.ara.md
-    python3 scripts/compile_ara.py - < source.ara.md
+    uv run python scripts/compile_ara.py path/to/source.ara.md
+    uv run python scripts/compile_ara.py - < source.ara.md
 """
 
 from __future__ import annotations

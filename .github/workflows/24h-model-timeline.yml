@@ -36,6 +36,14 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install Python dependencies
+        run: uv sync --frozen
+
       - name: Install bird CLI
         # pinned 2026-05-17; bump manually (Dependabot can't track inline npm -g installs)
         run: npm install -g @steipete/bird@0.8.0
@@ -117,7 +125,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --max-turns 60 --allowedTools "Read,Write,Edit,Bash(python3:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),WebSearch,Task,TodoWrite"
+            --model opus --max-turns 60 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),WebSearch,Task,TodoWrite"
           prompt: |
             You maintain a persistent set of model-release tickets. Each
             ticket tracks one shipping artifact (a model release, a
@@ -193,7 +201,7 @@ jobs:
               history entry describing the closure.
 
             STEP 5 — VALIDATE.
-              Run `python3 scripts/check_model_tickets.py`. If it exits
+              Run `uv run python scripts/check_model_tickets.py`. If it exits
               non-zero, the stderr lists every failure with field and
               reason. Fix in-place and re-run. Iterate until exit 0.
               Do NOT proceed past this step with a failing validator.

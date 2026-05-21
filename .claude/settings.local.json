@@ -24,7 +24,7 @@
       "WebFetch(domain:github.com)",
       "Bash(ls:*)",
       "Bash(gh api:*)",
-      "Bash(python3:*)",
+      "Bash(uv:*)",
       "Bash(npx:*)"
     ]
   }

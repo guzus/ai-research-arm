@@ -125,7 +125,7 @@ Tags: {tags or "(none)"}
 Use the attached ARA_DSL.md and COMPONENTS.md exactly. Output must be valid
 .ara.md source, not raw HTML. The local checker will run:
 
-python3 scripts/check_generative_research.py "$DRAFT" --diversity-min 3 --callout-max 5 --strict-shape
+uv run python scripts/check_generative_research.py "$DRAFT" --diversity-min 3 --callout-max 5 --strict-shape
 
 Hard output contract:
 - Return ONLY the article source between these exact markers:

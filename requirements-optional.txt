@@ -1,8 +1,0 @@
-# Optional Python deps for ai-research-arm workflows. Soft-fail tolerated —
-# downstream scripts have urllib/stooq fallbacks when these are missing.
-# Dependabot's pip ecosystem watches this file (see .github/dependabot.yml).
-#
-# yfinance: Yahoo's chart API blocks bare-urllib clients; yfinance handles
-# the crumb-cookie dance and retries. Used by scripts/stock_prices.py.
-# Falls back to urllib/stooq when missing.
-yfinance==1.3.0

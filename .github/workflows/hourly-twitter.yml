@@ -178,6 +178,16 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Setup uv
+        if: steps.backend.outputs.skip != 'true'
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install Python dependencies
+        if: steps.backend.outputs.skip != 'true'
+        run: uv sync --frozen
+
       - name: Free disk space on runner
         run: |
           # The self-hosted runner can fill up if old workflow workdirs / apt
@@ -486,7 +496,7 @@ jobs:
           # in env and the actions/checkout extraheader doesn't reliably
           # survive mid-job.
 
-          python3 scripts/dedupe_headline_alerts.py filter \
+          uv run python scripts/dedupe_headline_alerts.py filter \
             --headlines-file "$HEADLINES_FILE" \
             --history-file "$HISTORY_FILE" \
             --filtered-file "$FILTERED_FILE" \
@@ -684,7 +694,7 @@ jobs:
           FAILED=$(echo "$BODY" | jq -r '.failed // 0')
 
           if [ "$DELIVERED_COUNT" -gt 0 ]; then
-            python3 scripts/dedupe_headline_alerts.py record-delivered \
+            uv run python scripts/dedupe_headline_alerts.py record-delivered \
               --delivered-file "$DELIVERED_FILE" \
               --history-file "$HISTORY_FILE" \
               --timestamp "$ANNOUNCED_AT"

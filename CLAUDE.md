@@ -210,7 +210,7 @@ output or break the pipeline. Read them before editing.
      LFS-hydrated `research/` for prior-output context
      (`daily-digest`, `daily-front-page`, `ci.yml` dashboard job),
      Puppeteer/Chrome (`daily-front-page`), or pre-installed
-     pnpm/Oracle/yfinance.
+     pnpm/Oracle tooling.
    - **`ubuntu-latest`** for stateless workflows. The self-hosted runner
      processes one job at a time; stateless work on `ubuntu-latest`
      frees that queue. See the "GitHub Actions Workflows" section for
@@ -257,9 +257,9 @@ output or break the pipeline. Read them before editing.
   - `Twitter update 2026-05-17 09:43 UTC`
   - `Methodology improvements for 2026-02-01`
   - `Add AI news research for 2026-05-17`
-- **Python:** stdlib-first; only pull in deps the runner already has
-  (yfinance, requests). Error-handle at boundaries (network, subprocess,
-  file IO); inner logic should fail fast.
+- **Python:** stdlib-first; manage dependencies with `uv` in
+  `pyproject.toml`/`uv.lock`. Error-handle at boundaries (network,
+  subprocess, file IO); inner logic should fail fast.
 - **bird CLI invocations:** `--json --plain` + `|| echo "[]"` fallback.
 - **Claude prompts in workflows:** quote multi-line prompts with `|`
   block scalars; pass user-controlled values (issue title/body) through

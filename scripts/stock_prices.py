@@ -8,10 +8,10 @@ data-* attributes of an `ara-line-chart` or `ara-sparkline` element —
 no parsing, no jq, no fragile shell pipelines.
 
 Usage:
-  python3 scripts/stock_prices.py AAPL
-  python3 scripts/stock_prices.py AAPL --range 6mo --interval 1d
-  python3 scripts/stock_prices.py AAPL,MSFT --range 2y --interval 1mo
-  python3 scripts/stock_prices.py BE --range 1y --interval 1wk --format html
+  uv run python scripts/stock_prices.py AAPL
+  uv run python scripts/stock_prices.py AAPL --range 6mo --interval 1d
+  uv run python scripts/stock_prices.py AAPL,MSFT --range 2y --interval 1mo
+  uv run python scripts/stock_prices.py BE --range 1y --interval 1wk --format html
 
 Output formats:
   --format kv (default) — key:value lines, easy to copy into data-*:
