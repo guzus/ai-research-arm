@@ -1683,6 +1683,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     renderDonuts(article);
     renderSlopes(article);
     renderTradingView(article);
+    renderBarCharts(article);
     applyAraTooltips(article);
     renderResearchTOC(article);
     addSectionAnchors(article);
@@ -2830,6 +2831,389 @@ function renderSlopes(root: HTMLElement): void {
     });
 
     el.appendChild(svg);
+    el.dataset.rendered = '1';
+  }
+}
+
+/** Nice-number rounded tick marks across [min, max].
+ *
+ * Returns an evenly-spaced ascending list of "round" values (steps of
+ * 1/2/5 × 10^k) that bracket the domain — niceTicks[0] <= min and the
+ * last entry >= max. Because the chart always passes a domain that
+ * includes 0 (bars originate from a zero baseline), and 0 is a multiple
+ * of every step, the returned ticks always include 0 when the domain
+ * spans it. Used for both the value axis labels and gridline positions. */
+function niceTicks(min: number, max: number, maxTicks = 6): number[] {
+  if (!Number.isFinite(min) || !Number.isFinite(max)) return [0, 1];
+  if (min === max) {
+    // Degenerate domain (e.g. all-zero series). Give a tiny symmetric range.
+    if (min === 0) return [0, 1];
+    min = Math.min(0, min);
+    max = Math.max(0, max);
+    if (min === max) return [min, min + 1];
+  }
+  const range = max - min;
+  const rawStep = range / Math.max(1, maxTicks - 1);
+  const mag = Math.pow(10, Math.floor(Math.log10(rawStep)));
+  const norm = rawStep / mag;
+  let niceNorm: number;
+  if (norm < 1.5) niceNorm = 1;
+  else if (norm < 3) niceNorm = 2;
+  else if (norm < 7) niceNorm = 5;
+  else niceNorm = 10;
+  const step = niceNorm * mag;
+  const niceMin = Math.floor(min / step) * step;
+  const niceMax = Math.ceil(max / step) * step;
+  const ticks: number[] = [];
+  // Build with integer arithmetic on step counts to dodge float drift
+  // (e.g. 0.1 + 0.2 != 0.3); the last push guards against the loop
+  // missing niceMax by an epsilon.
+  const count = Math.round((niceMax - niceMin) / step);
+  for (let i = 0; i <= count; i++) {
+    ticks.push(niceMin + i * step);
+  }
+  return ticks;
+}
+
+/** Bar / column chart with a real numeric value axis. Authored markup is
+ * one empty <div class="ara-bar-chart" data-*> (the writer's tag allowlist
+ * rejects <svg> in fragments) — we inject the SVG here. Supports:
+ *   - vertical stacked / grouped columns
+ *   - horizontal diverging bars (signed values around a zero baseline)
+ *   - plain horizontal/vertical single-series bars
+ * data-series-N use digit suffixes, so they are read with getAttribute
+ * (data-series-1 does NOT map to dataset.series1). */
+function renderBarCharts(root: HTMLElement): void {
+  const els = root.querySelectorAll<HTMLElement>('.ara-bar-chart');
+  for (const el of els) {
+    if (el.dataset.rendered === '1') continue;
+
+    const seriesList: Array<{ values: number[]; label: string }> = [];
+    for (let i = 1; i <= 6; i++) {
+      const v = parseSeries(el.getAttribute(`data-series-${i}`) || undefined, 200);
+      if (!v.length) continue;
+      const label = el.getAttribute(`data-series-${i}-label`) || `Series ${i}`;
+      seriesList.push({ values: v, label });
+    }
+    if (!seriesList.length) continue;
+
+    const categories = parseLabels(el.dataset.categories, 200);
+    if (!categories.length) continue;
+    const N = categories.length;
+    // Clamp every series to the category count so a mismatched author
+    // attr can't read past the slot array (compiler already enforces
+    // equality, but the renderer must not trust that).
+    for (const s of seriesList) {
+      if (s.values.length < N) {
+        while (s.values.length < N) s.values.push(0);
+      } else if (s.values.length > N) {
+        s.values = s.values.slice(0, N);
+      }
+    }
+
+    const orientation = el.dataset.orientation === 'horizontal' ? 'horizontal' : 'vertical';
+    const mode = el.dataset.mode || (seriesList.length > 1 ? 'grouped' : 'simple');
+    const prefix = el.dataset.unit || '';
+    const suffix = el.dataset.valueSuffix || '';
+    const title = el.dataset.title || '';
+    const subtitle = el.dataset.subtitle || '';
+    const isStacked = mode === 'stacked' && seriesList.length > 1;
+    const isGrouped = mode === 'grouped' && seriesList.length > 1;
+
+    // Value formatter: signed prefix + abs value (grouped thousands) + suffix.
+    // e.g. -8000 with prefix "$" suffix "M" → "-$8,000M".
+    const fmt = (v: number): string => {
+      const sign = v < 0 ? '-' : '';
+      return sign + prefix + Math.abs(v).toLocaleString('en-US', { maximumFractionDigits: 2 }) + suffix;
+    };
+
+    // ── Value-axis domain ────────────────────────────────────────────
+    // stacked: per-category total (all >=0 by validation) → [0, maxTotal].
+    // grouped/simple: every individual value, ALWAYS including zero so bars
+    // originate from a zero baseline.
+    let domainMin: number;
+    let domainMax: number;
+    if (isStacked) {
+      const totals = categories.map((_, ci) =>
+        seriesList.reduce((acc, s) => acc + s.values[ci], 0),
+      );
+      domainMin = 0;
+      domainMax = Math.max(0, ...totals);
+    } else {
+      const allValues = seriesList.flatMap((s) => s.values);
+      domainMin = Math.min(0, ...allValues);
+      domainMax = Math.max(0, ...allValues);
+    }
+    const ticks = niceTicks(domainMin, domainMax, 6);
+    const niceMin = ticks[0];
+    const niceMax = ticks[ticks.length - 1];
+    const valRange = niceMax - niceMin || 1;
+
+    el.textContent = '';
+    if (title) {
+      const t = document.createElement('p');
+      t.className = 'ara-bar-chart-title';
+      t.textContent = title;
+      el.appendChild(t);
+    }
+    if (subtitle) {
+      const s = document.createElement('p');
+      s.className = 'ara-bar-chart-subtitle';
+      s.textContent = subtitle;
+      el.appendChild(s);
+    }
+
+    const colorClass = (catIdx: number, seriesIdx: number): string => {
+      // multi-series → color by series; single → color by category.
+      const n = seriesList.length > 1 ? seriesIdx + 1 : (catIdx % 6) + 1;
+      return `ara-bar-chart-bar ara-bar-chart-bar--${n}`;
+    };
+
+    let svg: SVGSVGElement;
+
+    if (orientation === 'vertical') {
+      // Columns: value axis on Y (left), categories along X (bottom).
+      const W = 640;
+      const H = 300;
+      const MT = 12;
+      const MB = 34;
+      const MR = 16;
+      const tickLabels = ticks.map((t) => fmt(t));
+      const maxTickW = Math.max(...tickLabels.map((t) => approxSvgTextWidth(t, 10, true)));
+      const ML = Math.min(140, Math.max(44, Math.ceil(maxTickW) + 10));
+      const innerW = W - ML - MR;
+      const innerH = H - MT - MB;
+      const yFor = (v: number) => MT + innerH - ((v - niceMin) / valRange) * innerH;
+      const slotW = innerW / N;
+
+      svg = svgEl<SVGSVGElement>('svg', {
+        viewBox: `0 0 ${W} ${H}`,
+        preserveAspectRatio: 'xMidYMid meet',
+        role: 'img',
+        'aria-label': `${title || 'Bar chart'}: hover bars for values`,
+      });
+
+      // Gridlines + value tick labels.
+      for (let i = 0; i < ticks.length; i++) {
+        const y = yFor(ticks[i]);
+        svg.appendChild(svgEl('line', { class: 'ara-chart-grid', x1: ML, y1: y, x2: W - MR, y2: y }));
+        const lab = svgEl<SVGTextElement>('text', { class: 'ara-chart-tick-label', x: ML - 6, y: y + 3, 'text-anchor': 'end' });
+        lab.textContent = tickLabels[i];
+        svg.appendChild(lab);
+      }
+      // Emphasized zero baseline (coincides with axis edge when all-positive).
+      const yZero = yFor(0);
+      svg.appendChild(svgEl('line', { class: 'ara-bar-chart-baseline', x1: ML, y1: yZero, x2: W - MR, y2: yZero }));
+
+      // Sparse category labels if crowded.
+      const labelStep = N > 8 ? Math.ceil(N / 8) : 1;
+
+      categories.forEach((cat, ci) => {
+        const slotX = ML + ci * slotW;
+        if (isStacked) {
+          // Accumulate segments upward from baseline (all values >= 0).
+          let posTop = 0; // running total above baseline
+          const barW = slotW * 0.6;
+          const barX = slotX + (slotW - barW) / 2;
+          seriesList.forEach((s, si) => {
+            const v = s.values[ci];
+            const segTopVal = posTop + v;
+            const yTop = yFor(segTopVal);
+            const yBot = yFor(posTop);
+            const h = Math.abs(yBot - yTop);
+            const rect = svgEl<SVGRectElement>('rect', {
+              class: colorClass(ci, si),
+              x: barX,
+              y: Math.min(yTop, yBot),
+              width: barW,
+              height: h,
+            });
+            appendSvgTitle(rect, `${s.label} · ${cat}: ${fmt(v)}`);
+            svg.appendChild(rect);
+            posTop = segTopVal;
+          });
+        } else if (isGrouped) {
+          // N series bars side-by-side within the slot.
+          const groupPad = slotW * 0.12;
+          const bandW = slotW - groupPad * 2;
+          const barW = bandW / seriesList.length;
+          seriesList.forEach((s, si) => {
+            const v = s.values[ci];
+            const barX = slotX + groupPad + si * barW;
+            const yVal = yFor(v);
+            const yTop = Math.min(yVal, yZero);
+            const h = Math.abs(yZero - yVal);
+            const rect = svgEl<SVGRectElement>('rect', {
+              class: colorClass(ci, si),
+              x: barX + 0.5,
+              y: yTop,
+              width: Math.max(0, barW - 1),
+              height: h,
+            });
+            appendSvgTitle(rect, `${s.label} · ${cat}: ${fmt(v)}`);
+            svg.appendChild(rect);
+          });
+        } else {
+          // simple: one bar per slot, centered.
+          const v = seriesList[0].values[ci];
+          const barW = slotW * 0.6;
+          const barX = slotX + (slotW - barW) / 2;
+          const yVal = yFor(v);
+          const yTop = Math.min(yVal, yZero);
+          const h = Math.abs(yZero - yVal);
+          const rect = svgEl<SVGRectElement>('rect', {
+            class: colorClass(ci, 0),
+            x: barX,
+            y: yTop,
+            width: barW,
+            height: h,
+          });
+          appendSvgTitle(rect, `${cat}: ${fmt(v)}`);
+          svg.appendChild(rect);
+        }
+
+        // Category label under the slot (centered), sparse if crowded.
+        if (ci % labelStep === 0) {
+          const raw = cat;
+          const fitted = fitSvgText(raw, slotW * (labelStep > 1 ? labelStep : 1) - 4, 10);
+          const lab = svgEl<SVGTextElement>('text', {
+            class: 'ara-chart-tick-label',
+            x: slotX + slotW / 2,
+            y: H - 12,
+            'text-anchor': 'middle',
+          });
+          lab.textContent = fitted;
+          if (fitted !== raw) setSvgFullLabel(lab, raw);
+          svg.appendChild(lab);
+        }
+      });
+
+      el.appendChild(svg);
+    } else {
+      // Horizontal bars: value axis along X (bottom), categories as Y rows.
+      const W = 640;
+      const rowH = 40;
+      const MT = 12;
+      const MB = 30;
+      const MR = 18;
+      const tickLabels = ticks.map((t) => fmt(t));
+      const maxCatW = Math.max(...categories.map((c) => approxSvgTextWidth(c, 12)));
+      const ML = Math.min(220, Math.max(60, Math.ceil(maxCatW) + 14));
+      const H = MT + N * rowH + MB;
+      const innerW = W - ML - MR;
+      const innerH = N * rowH;
+      const xFor = (v: number) => ML + ((v - niceMin) / valRange) * innerW;
+
+      svg = svgEl<SVGSVGElement>('svg', {
+        viewBox: `0 0 ${W} ${H}`,
+        preserveAspectRatio: 'xMidYMid meet',
+        role: 'img',
+        'aria-label': `${title || 'Bar chart'}: hover bars for values`,
+      });
+
+      // Vertical gridlines + value tick labels along the bottom.
+      for (let i = 0; i < ticks.length; i++) {
+        const x = xFor(ticks[i]);
+        svg.appendChild(svgEl('line', { class: 'ara-chart-grid', x1: x, y1: MT, x2: x, y2: MT + innerH }));
+        const lab = svgEl<SVGTextElement>('text', { class: 'ara-chart-tick-label', x, y: H - 12, 'text-anchor': 'middle' });
+        lab.textContent = tickLabels[i];
+        svg.appendChild(lab);
+      }
+      // Emphasized zero baseline (vertical).
+      const xZero = xFor(0);
+      svg.appendChild(svgEl('line', { class: 'ara-bar-chart-baseline', x1: xZero, y1: MT, x2: xZero, y2: MT + innerH }));
+
+      categories.forEach((cat, ci) => {
+        const rowY = MT + ci * rowH;
+        if (isStacked) {
+          let posRight = 0; // running total (all >= 0)
+          const barH = rowH * 0.6;
+          const barY = rowY + (rowH - barH) / 2;
+          seriesList.forEach((s, si) => {
+            const v = s.values[ci];
+            const xStart = xFor(posRight);
+            const xEnd = xFor(posRight + v);
+            const w = Math.abs(xEnd - xStart);
+            const rect = svgEl<SVGRectElement>('rect', {
+              class: colorClass(ci, si),
+              x: Math.min(xStart, xEnd),
+              y: barY,
+              width: w,
+              height: barH,
+            });
+            appendSvgTitle(rect, `${s.label} · ${cat}: ${fmt(v)}`);
+            svg.appendChild(rect);
+            posRight += v;
+          });
+        } else if (isGrouped) {
+          const groupPad = rowH * 0.12;
+          const bandH = rowH - groupPad * 2;
+          const barH = bandH / seriesList.length;
+          seriesList.forEach((s, si) => {
+            const v = s.values[ci];
+            const barY = rowY + groupPad + si * barH;
+            const xVal = xFor(v);
+            const xStart = Math.min(xVal, xZero);
+            const w = Math.abs(xVal - xZero);
+            const rect = svgEl<SVGRectElement>('rect', {
+              class: colorClass(ci, si),
+              x: xStart,
+              y: barY + 0.5,
+              width: w,
+              height: Math.max(0, barH - 1),
+            });
+            appendSvgTitle(rect, `${s.label} · ${cat}: ${fmt(v)}`);
+            svg.appendChild(rect);
+          });
+        } else {
+          const v = seriesList[0].values[ci];
+          const barH = rowH * 0.6;
+          const barY = rowY + (rowH - barH) / 2;
+          const xVal = xFor(v);
+          const xStart = Math.min(xVal, xZero);
+          const w = Math.abs(xVal - xZero);
+          const rect = svgEl<SVGRectElement>('rect', {
+            class: colorClass(ci, 0),
+            x: xStart,
+            y: barY,
+            width: w,
+            height: barH,
+          });
+          appendSvgTitle(rect, `${cat}: ${fmt(v)}`);
+          svg.appendChild(rect);
+        }
+
+        // Right-aligned category label in the left margin, vertically centered.
+        const raw = cat;
+        const fitted = fitSvgText(raw, ML - 10, 12);
+        const lab = svgEl<SVGTextElement>('text', {
+          class: 'ara-chart-tick-label',
+          x: ML - 8,
+          y: rowY + rowH / 2 + 4,
+          'text-anchor': 'end',
+        });
+        lab.textContent = fitted;
+        if (fitted !== raw) setSvgFullLabel(lab, raw);
+        svg.appendChild(lab);
+      });
+
+      el.appendChild(svg);
+    }
+
+    // Legend (only for multi-series). Reuses the line-chart legend item
+    // swatch pattern; scoped CSS gives the bar-chart its own block fill.
+    if (seriesList.length > 1) {
+      const legend = document.createElement('div');
+      legend.className = 'ara-bar-chart-legend';
+      seriesList.forEach((s, idx) => {
+        const item = document.createElement('span');
+        item.className = `ara-chart-legend-item ara-chart-legend-item--${idx + 1}`;
+        item.textContent = s.label;
+        legend.appendChild(item);
+      });
+      el.appendChild(legend);
+    }
+
     el.dataset.rendered = '1';
   }
 }

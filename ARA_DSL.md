@@ -232,6 +232,42 @@ Reach for `:::line-chart` when you need an as-of-date, reproducible,
 *cited* figure; reach for `:::tradingview` for a live interactive chart
 on the dashboard.
 
+#### `:::bar-chart(title=..., subtitle=..., orientation=vertical|horizontal, mode=grouped|stacked, value-unit=$, value-suffix=B)` (body: lines)
+
+```
+:::bar-chart(title="Revenue by segment", orientation=vertical, mode=stacked, value-unit=$, value-suffix=B)
+categories: FY 2023, FY 2024, FY 2025, Q1 2026
+Connectivity (Starlink): 0, 0, 11.5, 3.2
+Space: 0, 0, 3.0, 0.6
+AI (xAI): 0, 0, 3.5, 0.7
+:::
+```
+
+The `categories:` row (case-insensitive label) is the shared category
+axis. Every other `LABEL: nums` row defines one of up to 6 data series.
+The values are **raw signed numbers** (e.g. `-6800`), not percentages —
+the dashboard builds a real numeric value axis with nice-number ticks and
+a zero baseline.
+
+- `orientation` defaults to `vertical` (columns); `horizontal` draws rows.
+- `mode` is optional: `grouped` puts each series' bars side-by-side,
+  `stacked` accumulates them. A single series renders as a plain bar set.
+  `stacked` rejects negative values (mixed-sign stacks are undefined).
+- Signed values render a **diverging** chart: positive bars extend from
+  the zero baseline one way, negative bars the other. Horizontal diverging
+  is the classic "operating margin by year" shape:
+
+```
+:::bar-chart(title="Operating margin", orientation=horizontal, value-unit=$, value-suffix=M)
+categories: FY 2023, FY 2024, FY 2025
+Operating income: -6800, -1200, 3400
+:::
+```
+
+- `value-unit` is a value PREFIX (e.g. `$`); `value-suffix` is appended
+  (e.g. `B`, `M`, `%`). So `-8000` with `value-unit=$ value-suffix=M`
+  renders as `-$8,000M` on ticks and hover tooltips.
+
 #### `:::donut(center-label="100%")` (body: YAML list)
 
 ```

@@ -10,10 +10,11 @@ Optional design-system enforcement flags (off by default so check
 stays additive):
   --diversity-min N   fail if fewer than N distinct visualization
                       primitives are used. Counts ara-line-chart,
-                      ara-donut, ara-slope, ara-stack-bar,
-                      ara-stack-rows, ara-bars, ara-rank-list,
-                      ara-compare, ara-iso, ara-sparkline,
-                      ara-timeline, ara-kv. ara-table and ara-callout
+                      ara-bar-chart, ara-donut, ara-slope,
+                      ara-stack-bar, ara-stack-rows, ara-bars,
+                      ara-rank-list, ara-compare, ara-iso,
+                      ara-sparkline, ara-timeline, ara-kv. ara-table
+                      and ara-callout
                       are NOT counted — they're the safe defaults.
   --callout-max M     fail if more than M ara-callout blocks. Use to
                       stop agents from reaching for callouts as
@@ -91,13 +92,13 @@ from compile_ara import AraSyntaxError, compile_source  # noqa: E402
 
 # Component classification, keep in lockstep with ARA_DSL.md / COMPONENTS.md.
 VIZ_PRIMITIVES = frozenset([
-    "ara-line-chart", "ara-donut", "ara-slope",
+    "ara-line-chart", "ara-bar-chart", "ara-donut", "ara-slope",
     "ara-stack-bar", "ara-stack-rows",
     "ara-bars", "ara-rank-list", "ara-compare",
     "ara-iso", "ara-sparkline", "ara-timeline", "ara-kv",
 ])
 DISTRIBUTION_VIZ = frozenset([
-    "ara-donut", "ara-stack-bar", "ara-stack-rows",
+    "ara-donut", "ara-bar-chart", "ara-stack-bar", "ara-stack-rows",
     "ara-bars", "ara-rank-list",
 ])
 FALLBACK_PRIMITIVES = frozenset(["ara-table", "ara-callout", "ara-quote"])

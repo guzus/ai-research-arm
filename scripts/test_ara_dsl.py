@@ -184,6 +184,153 @@ A: nope,2
 """
             )
 
+    def test_bar_chart_vertical_stacked_emits_data_attrs(self):
+        html = compile_ok(
+            """---
+title: Bar chart stacked
+---
+
+## 01. Revenue
+
+Claim [^1].
+
+:::bar-chart(title="Revenue by segment", orientation=vertical, mode=stacked, value-unit=$, value-suffix=B)
+categories: FY 2023, FY 2024, FY 2025, Q1 2026
+Connectivity (Starlink): 0, 0, 11.5, 3.2
+Space: 0, 0, 3.0, 0.6
+:::
+
+:::references
+- {id: 1, title: Source}
+:::
+"""
+        )
+        self.assertIn('class="ara-bar-chart"', html)
+        self.assertIn('data-orientation="vertical"', html)
+        self.assertIn('data-mode="stacked"', html)
+        self.assertIn('data-categories="FY 2023,FY 2024,FY 2025,Q1 2026"', html)
+        self.assertIn('data-series-1="0,0,11.5,3.2"', html)
+        self.assertIn('data-series-1-label="Connectivity (Starlink)"', html)
+        self.assertIn('data-series-2="0,0,3,0.6"', html)
+        self.assertIn('data-unit="$"', html)
+        self.assertIn('data-value-suffix="B"', html)
+
+    def test_bar_chart_horizontal_diverging_keeps_negative(self):
+        html = compile_ok(
+            """---
+title: Bar chart diverging
+---
+
+## 01. Margin
+
+Claim [^1].
+
+:::bar-chart(orientation=horizontal, value-unit=$, value-suffix=M)
+categories: FY 2023, FY 2024, FY 2025
+Operating income: -6800, -1200, 3400
+:::
+
+:::references
+- {id: 1, title: Source}
+:::
+"""
+        )
+        self.assertIn('data-orientation="horizontal"', html)
+        self.assertIn('data-series-1="-6800,-1200,3400"', html)
+        # No mode attr emitted when mode is omitted.
+        self.assertNotIn('data-mode=', html)
+
+    def test_bar_chart_defaults_orientation_vertical(self):
+        html = compile_ok(
+            """---
+title: Bar chart default
+---
+
+## 01. Capex
+
+:::bar-chart(value-suffix=B)
+categories: 2024, 2025
+Capex: 1.2, 3.4
+:::
+"""
+        )
+        self.assertIn('data-orientation="vertical"', html)
+
+    def test_bar_chart_series_length_mismatch_raises(self):
+        with self.assertRaisesRegex(
+            compile_ara.AraSyntaxError,
+            "has 3 values but categories has 2 labels",
+        ):
+            compile_ok(
+                """---
+title: Bad bar chart
+---
+
+## 01. Bad bar chart
+
+Claim [^1].
+
+:::bar-chart
+categories: 2024, 2025
+A: 1, 2, 3
+:::
+
+:::references
+- {id: 1, title: Source}
+:::
+"""
+            )
+
+    def test_bar_chart_stacked_rejects_negative(self):
+        with self.assertRaisesRegex(
+            compile_ara.AraSyntaxError,
+            "stacked bar-chart cannot have negative values",
+        ):
+            compile_ok(
+                """---
+title: Bad stacked
+---
+
+## 01. Bad stacked
+
+Claim [^1].
+
+:::bar-chart(mode=stacked)
+categories: 2024, 2025
+A: 1, -2
+:::
+
+:::references
+- {id: 1, title: Source}
+:::
+"""
+            )
+
+    def test_bar_chart_bad_orientation_raises(self):
+        with self.assertRaisesRegex(
+            compile_ara.AraSyntaxError,
+            "orientation must be vertical",
+        ):
+            compile_ok(
+                """---
+title: Bad orientation
+---
+
+## 01. Bad orientation
+
+Claim [^1].
+
+:::bar-chart(orientation=diagonal)
+categories: 2024, 2025
+A: 1, 2
+:::
+
+:::references
+- {id: 1, title: Source}
+:::
+"""
+            )
+
     def test_percentages_must_be_0_to_100(self):
         with self.assertRaisesRegex(compile_ara.AraSyntaxError, "pct must be between 0 and 100"):
             compile_ok(

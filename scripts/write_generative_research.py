@@ -272,6 +272,8 @@ class _FragmentValidator(html.parser.HTMLParser):
             "data-series-2-label",
             "data-series-3-label",
             "data-series-4-label",
+            "data-series-5-label",
+            "data-series-6-label",
             "data-labels",
             "data-center-label",
             "data-items",
@@ -279,6 +281,11 @@ class _FragmentValidator(html.parser.HTMLParser):
             "data-right-label",
             "data-unit",
             "data-glyph",
+            # bar-chart
+            "data-categories",
+            "data-orientation",
+            "data-mode",
+            "data-value-suffix",
         }
         if attr in free_text:
             return True
@@ -295,6 +302,8 @@ class _FragmentValidator(html.parser.HTMLParser):
             "data-series-2",
             "data-series-3",
             "data-series-4",
+            "data-series-5",
+            "data-series-6",
         }:
             return _valid_number_list(value)
         # ara-tradingview: config for the dashboard-injected widget. Strict

@@ -95,6 +95,7 @@
 .ara-doc > .ara-stack-legend,
 .ara-doc > .ara-stack-rows,
 .ara-doc > .ara-line-chart,
+.ara-doc > .ara-bar-chart,
 .ara-doc > .ara-donut,
 .ara-doc > .ara-slope,
 .ara-doc > .ara-tradingview,
@@ -1048,7 +1049,8 @@
   font-family: var(--font);
 }
 
-.ara-line-chart-title {
+.ara-line-chart-title,
+.ara-bar-chart-title {
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--text);
@@ -1056,7 +1058,8 @@
   padding-left: 8px;
 }
 
-.ara-line-chart-subtitle {
+.ara-line-chart-subtitle,
+.ara-bar-chart-subtitle {
   font-size: 0.78rem;
   color: var(--text-secondary);
   margin: 0 0 10px;
@@ -1069,13 +1072,15 @@
   height: auto;
 }
 
-.ara-line-chart .ara-chart-grid {
+.ara-line-chart .ara-chart-grid,
+.ara-bar-chart .ara-chart-grid {
   stroke: var(--border-light);
   stroke-width: 0.5;
 }
 
 .ara-line-chart .ara-chart-axis-label,
-.ara-line-chart .ara-chart-tick-label {
+.ara-line-chart .ara-chart-tick-label,
+.ara-bar-chart .ara-chart-tick-label {
   fill: var(--text-tertiary);
   font-family: var(--font-mono);
   font-size: 10px;
@@ -1194,6 +1199,87 @@
 .ara-line-chart-legend .ara-chart-legend-item--2 { color: var(--ara-viz-2); }
 .ara-line-chart-legend .ara-chart-legend-item--3 { color: var(--ara-viz-3); }
 .ara-line-chart-legend .ara-chart-legend-item--4 { color: var(--ara-viz-4); }
+
+/* ── Bar / column chart (real numeric value axis) ──── */
+/* Authored as <div class="ara-bar-chart" data-categories="..."
+ * data-series-1="..." data-orientation="vertical|horizontal"
+ * data-mode="grouped|stacked"> — main.ts injects an axis-bearing SVG at
+ * render time. Up to 6 series. Signed values render a diverging baseline. */
+.ara-bar-chart {
+  margin: 22px 0;
+  padding: 14px 8px 4px;
+  border: 1.5px solid var(--border);
+  border-radius: 0;
+  background: var(--bg);
+  font-family: var(--font);
+}
+
+.ara-bar-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ara-bar-chart-bar {
+  /* Thin stroke matching the card bg separates adjacent segments. */
+  stroke: var(--bg);
+  stroke-width: 0.75;
+}
+
+.ara-bar-chart-bar--1 { fill: var(--ara-viz-1); }
+.ara-bar-chart-bar--2 { fill: var(--ara-viz-2); }
+.ara-bar-chart-bar--3 { fill: var(--ara-viz-3); }
+.ara-bar-chart-bar--4 { fill: var(--ara-viz-4); }
+.ara-bar-chart-bar--5 { fill: var(--ara-viz-5); }
+.ara-bar-chart-bar--6 { fill: var(--ara-viz-6); }
+
+/* Zero baseline — stronger than the 0.5 gridlines so the origin reads
+ * clearly on diverging (signed) charts. */
+.ara-bar-chart-baseline {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.ara-bar-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+  padding-left: 8px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.ara-bar-chart-legend .ara-chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+}
+
+.ara-bar-chart-legend .ara-chart-legend-item::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 0;
+  background: var(--swatch, currentColor);
+}
+
+.ara-bar-chart-legend .ara-chart-legend-item--1 { --swatch: var(--ara-viz-1); }
+.ara-bar-chart-legend .ara-chart-legend-item--2 { --swatch: var(--ara-viz-2); }
+.ara-bar-chart-legend .ara-chart-legend-item--3 { --swatch: var(--ara-viz-3); }
+.ara-bar-chart-legend .ara-chart-legend-item--4 { --swatch: var(--ara-viz-4); }
+.ara-bar-chart-legend .ara-chart-legend-item--5 { --swatch: var(--ara-viz-5); }
+.ara-bar-chart-legend .ara-chart-legend-item--6 { --swatch: var(--ara-viz-6); }
+
+/* The SVG already scales via viewBox; on narrow viewports just shrink the
+ * axis/category tick font a touch so dense vertical columns stay legible. */
+@media (max-width: 640px) {
+  .ara-bar-chart .ara-chart-tick-label {
+    font-size: 9px;
+  }
+}
 
 /* ── Donut (proportional ring) ───────────────────── */
 /* Authored as <div class="ara-donut" data-labels="..." data-values="...">
@@ -1729,6 +1815,7 @@
   .ara-stack-rows,
   .ara-sparkline,
   .ara-line-chart,
+  .ara-bar-chart,
   .ara-donut,
   .ara-slope,
   .ara-compare,

@@ -964,6 +964,93 @@ def emit_tradingview(attrs: dict, body: str, line_no: int) -> str:
     return "".join(parts)
 
 
+def emit_bar_chart(attrs: dict, body: str, line_no: int) -> str:
+    """Body lines (mirrors :::line-chart body-mode 'lines'):
+        categories: FY 2023, FY 2024, FY 2025, Q1 2026
+        Connectivity: 0, 0, 11.5, 3.2
+        Space: 0, 0, 3.0, 0.6
+    The `categories` row (case-insensitive label) is the shared category
+    axis. Every other `LABEL: nums` row is one data series of RAW SIGNED
+    numbers. Up to 6 series, each as long as the category list.
+
+    orientation=vertical (default) | horizontal.
+    mode=grouped | stacked (optional). Stacked rejects negative values —
+    a stacked column with mixed signs is genuinely undefined geometry, so
+    we fail at compile time rather than render garbage."""
+    categories: list[str] | None = None
+    series: list[tuple[str, list[str]]] = []
+    for raw_line in body.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if ":" not in line:
+            raise AraSyntaxError(
+                f":::bar-chart body line must be `LABEL: comma,nums`: {line!r}",
+                line=line_no,
+            )
+        label, vals = line.split(":", 1)
+        label = label.strip()
+        if label.lower() == "categories":
+            categories = _csv_values(vals)
+        else:
+            series.append((label, _csv_numbers(vals, f"bar-chart series {label!r}", line_no)))
+    if categories is None:
+        raise AraSyntaxError(":::bar-chart body needs a `categories:` row", line=line_no)
+    if not categories:
+        raise AraSyntaxError(":::bar-chart `categories:` row needs at least one label", line=line_no)
+    if not series or len(series) > 6:
+        raise AraSyntaxError(
+            f":::bar-chart needs 1-6 data series, got {len(series)}",
+            line=line_no,
+        )
+    for label, vals in series:
+        if len(vals) != len(categories):
+            raise AraSyntaxError(
+                f"bar-chart series {label!r} has {len(vals)} values but categories has {len(categories)} labels",
+                line=line_no,
+            )
+
+    orientation = attrs.get("orientation", "vertical")
+    if orientation not in ("vertical", "horizontal"):
+        raise AraSyntaxError(
+            f":::bar-chart orientation must be vertical|horizontal, got {orientation!r}",
+            line=line_no,
+        )
+    mode = attrs.get("mode")
+    if mode is not None and mode not in ("grouped", "stacked"):
+        raise AraSyntaxError(
+            f":::bar-chart mode must be grouped|stacked, got {mode!r}",
+            line=line_no,
+        )
+    if mode == "stacked":
+        for label, vals in series:
+            if any(float(v) < 0 for v in vals):
+                raise AraSyntaxError(
+                    f"stacked bar-chart cannot have negative values "
+                    f"(series {label!r} has one)",
+                    line=line_no,
+                )
+
+    parts = ['<div class="ara-bar-chart"']
+    parts.append(_attr("data-categories", ",".join(categories)))
+    for idx, (label, vals) in enumerate(series, start=1):
+        parts.append(_attr(f"data-series-{idx}", ",".join(vals)))
+        parts.append(_attr(f"data-series-{idx}-label", label))
+    parts.append(_attr("data-orientation", orientation))
+    if mode is not None:
+        parts.append(_attr("data-mode", mode))
+    if attrs.get("title") is not None:
+        parts.append(_attr("data-title", attrs["title"]))
+    if attrs.get("subtitle") is not None:
+        parts.append(_attr("data-subtitle", attrs["subtitle"]))
+    if attrs.get("value-unit") is not None:
+        parts.append(_attr("data-unit", attrs["value-unit"]))
+    if attrs.get("value-suffix") is not None:
+        parts.append(_attr("data-value-suffix", attrs["value-suffix"]))
+    parts.append("></div>")
+    return "".join(parts)
+
+
 def emit_donut(attrs: dict, body: Any, line_no: int) -> str:
     if not isinstance(body, list):
         raise AraSyntaxError(":::donut body must be a YAML list of {label, value}", line=line_no)
@@ -1214,6 +1301,7 @@ DIRECTIVES: dict[str, tuple[Callable, str]] = {
     "figure":      (emit_figure,      "markdown"),
     "line-chart":  (emit_line_chart,  "lines"),
     "tradingview": (emit_tradingview, "markdown"),
+    "bar-chart":   (emit_bar_chart,   "lines"),
     "donut":       (emit_donut,       "yaml"),
     "slope":       (emit_slope,       "lines"),
     "timeline":    (emit_timeline,    "yaml"),
