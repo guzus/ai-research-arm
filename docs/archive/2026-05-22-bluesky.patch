@@ -1,0 +1,24 @@
+diff --git a/.github/workflows/2h-bluesky.yml b/.github/workflows/2h-bluesky.yml
+index 61776eb8..eb4b4189 100644
+--- a/.github/workflows/2h-bluesky.yml
++++ b/.github/workflows/2h-bluesky.yml
+@@ -4,4 +4,7 @@ on:
+   schedule:
+-    # Run once daily at 00:11 UTC
+-    - cron: '11 0 * * *'
++    # Run twice daily (00:11 and 12:11 UTC). A single daily snapshot of
++    # 14 sporadically-posting researchers repeatedly yielded <3 posts
++    # (the digest flagged "Bluesky: 1 feed snapshot" as the lane's weak
++    # point); a second pass roughly doubles candidate posts per day.
++    - cron: '11 0,12 * * *'
+   workflow_dispatch:
+@@ -146,3 +149,3 @@ jobs:
+             INCLUDE:
+-            - Posts from last 24 hours
++            - Posts from last 48 hours
+             - Announcements about AI models, releases
+@@ -155,3 +158,3 @@ jobs:
+             - Spam or promotional content
+-            - Posts older than 24 hours
++            - Posts older than 48 hours
+             - Low engagement posts
