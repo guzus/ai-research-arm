@@ -6763,5 +6763,47 @@
     "headline": "MICROSOFT PUSHING TO MAKE ANTHROPIC A MARQUEE CUSTOMER FOR ITS MAIA AI CHIPS",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2057846479734124754"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-22 18:48 UTC",
+    "headline": "DEEPSEEK MAKES 75% V4-PRO PRICE CUT PERMANENT \u2014 ~$0.44 INPUT / $0.88 OUTPUT PER 1M TOKENS, CACHE NEARLY FREE",
+    "source": "@deepseek_ai",
+    "url": "https://x.com/deepseek_ai/status/2057854261699195173"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-22 18:48 UTC",
+    "headline": "DEEPSEEK V4-PRO OUTPUT UNDERCUTS EVERY MAJOR CHINESE MODEL \u2014 VS KIMI K2.6 $4, QWEN 3.7 MAX $7.50",
+    "source": "@thehypedotnews",
+    "url": "https://x.com/thehypedotnews/status/2057857344449495302"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-22 18:48 UTC",
+    "headline": "THE INFORMATION: CURSOR BUILDING SOFTWARE TO REPLACE CORE PARTS OF GITHUB \u2014 REPOS, SECURITY, AUTOMATED TESTING",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2057854144719806749"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-22 18:48 UTC",
+    "headline": "POLITICO PUBLISHES FULL LEAKED DRAFT OF AI EXECUTIVE ORDER TRUMP PULLED BEFORE SIGNING",
+    "source": "@SophiaCai99",
+    "url": "https://x.com/SophiaCai99/status/2057844511699570951"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-22 18:48 UTC",
+    "headline": "SEMIANALYSIS: MEDIAN CODING-AGENT REQUEST IS 96K INPUT TOKENS, ~50% EXCEED 128K \u2014 INFERENCE COST NOW SET BY CONTEXT",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2057869518295249373"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-22 18:48 UTC",
+    "headline": "GOOGLE SAYS GEMINI 3.5 FLASH COULD SAVE LARGE CLOUD CUSTOMERS OVER $1 BILLION A YEAR VS RIVAL FRONTIER MODELS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2057884262087405707"
   }
 ]
