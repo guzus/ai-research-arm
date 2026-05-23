@@ -169,6 +169,7 @@ let expandedTicketSlug: string | null = null;
 const ticketFilters = { status: 'all', company: 'all' };
 const LOAD_TIMEOUT_MS = 12000;
 const SPEECH_CHUNK_MAX_CHARS = 2600;
+const RESEARCH_AUDIO_PLAYBACK_ENABLED = false;
 
 type ResearchAudioStatus = 'idle' | 'loading' | 'playing' | 'paused';
 type ResearchAudioState = {
@@ -676,6 +677,7 @@ function researchAudioUrl(row: GenResearchRow): string | null {
 }
 
 function researchAudioControlsHtml(row: GenResearchRow): string {
+  if (!RESEARCH_AUDIO_PLAYBACK_ENABLED) return '';
   const unsupported = !isSpeechSupported();
   const fileUrl = researchAudioUrl(row);
   if (fileUrl) {
