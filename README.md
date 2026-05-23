@@ -129,6 +129,9 @@ Claude Opus 4.7 baseline, or `backend=deepseek-v4-pro` for the explicit
 DeepSeek path. See [Generative Research Backends](docs/generative-research-backends.md)
 for the exact env mapping and comparison commands.
 
+For a concise framework on which AI industry areas matter most, see
+[AI Industry Map](docs/ai-industry-map.md).
+
 ## On-Demand Research Agent
 
 Request deep research on any topic by creating a GitHub Issue with the `research` label.

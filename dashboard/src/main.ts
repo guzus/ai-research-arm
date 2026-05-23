@@ -82,6 +82,7 @@ type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
   file: string;
+  audio_file?: string;
   kind?: GenResearchKind;
   language?: ResearchLanguage | string;
   title?: string;
@@ -94,6 +95,7 @@ type GenResearchTranslation = {
 type GenResearchRow = {
   slug: string;
   file: string;
+  audio_file?: string;
   kind?: GenResearchKind;  // optional for back-compat; undefined = fragment
   language?: ResearchLanguage | string;
   translations?: Record<string, GenResearchTranslation>;
@@ -166,6 +168,24 @@ let expandedTicketSlug: string | null = null;
 // Filter state for the tickets grid.
 const ticketFilters = { status: 'all', company: 'all' };
 const LOAD_TIMEOUT_MS = 12000;
+const SPEECH_CHUNK_MAX_CHARS = 2600;
+
+type ResearchAudioStatus = 'idle' | 'loading' | 'playing' | 'paused';
+type ResearchAudioState = {
+  key: string | null;
+  status: ResearchAudioStatus;
+  chunks: string[];
+  index: number;
+  utterance: SpeechSynthesisUtterance | null;
+};
+
+const researchAudioState: ResearchAudioState = {
+  key: null,
+  status: 'idle',
+  chunks: [],
+  index: 0,
+  utterance: null,
+};
 
 // ── DOM refs ──────────────────────────────────────────
 const content = document.getElementById('content')!;
@@ -636,10 +656,233 @@ function setSafeContent(el: HTMLElement, rawHtml: string): void {
   while (el.firstChild) el.removeChild(el.firstChild);
   const clean = DOMPurify.sanitize(rawHtml, {
     USE_PROFILES: { html: true, svg: true, svgFilters: true },
-    ADD_TAGS: ['mark', 'article', 'figure', 'figcaption', 'iframe'],
-    ADD_ATTR: ['data-slug', 'data-pct', 'data-filter-status', 'data-filter-company', 'sandbox', 'loading', 'allow', 'decoding', 'referrerpolicy'],
+    ADD_TAGS: ['mark', 'article', 'figure', 'figcaption', 'iframe', 'audio'],
+    ADD_ATTR: ['data-slug', 'data-pct', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'sandbox', 'loading', 'allow', 'decoding', 'referrerpolicy', 'controls', 'preload', 'src'],
   });
   el.insertAdjacentHTML('beforeend', clean);
+}
+
+// ── Research audio playback ───────────────────────────
+function isSpeechSupported(): boolean {
+  return 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+}
+
+function currentResearchAudioKey(): string {
+  return `${selectedSlug || ''}:${activeLanguage}`;
+}
+
+function researchAudioUrl(row: GenResearchRow): string | null {
+  return row.audio_file ? `${DATA_BASE}/${row.audio_file}` : null;
+}
+
+function researchAudioControlsHtml(row: GenResearchRow): string {
+  const unsupported = !isSpeechSupported();
+  const fileUrl = researchAudioUrl(row);
+  return [
+    '<span class="gen-research-audio-controls" aria-label="Article audio controls">',
+    fileUrl
+      ? '  <audio class="gen-research-audio-file" controls preload="metadata" src="' + escapeHtml(fileUrl) + '">Your browser does not support the audio element.</audio>'
+      : '',
+    '  <button class="gen-research-audio" data-research-audio-toggle data-has-audio-file="' + (fileUrl ? 'true' : 'false') + '" aria-pressed="false"' +
+      (unsupported ? ' disabled title="Read-aloud fallback is not supported in this browser"' : ' title="' + (fileUrl ? 'Use browser read-aloud instead' : 'Play this article as audio') + '"') +
+      '>',
+    '    <span class="gen-research-audio-icon" aria-hidden="true"></span>',
+    '    <span data-research-audio-label>' + (unsupported ? (fileUrl ? 'Read aloud unavailable' : 'Audio unavailable') : (fileUrl ? 'Read aloud' : 'Listen')) + '</span>',
+    '  </button>',
+    '  <button class="gen-research-audio-stop" data-research-audio-stop hidden title="Stop article audio">Stop</button>',
+    '</span>',
+  ].join('\n');
+}
+
+function updateResearchAudioUi(): void {
+  const key = currentResearchAudioKey();
+  const toggle = content.querySelector<HTMLButtonElement>('[data-research-audio-toggle]');
+  const stop = content.querySelector<HTMLButtonElement>('[data-research-audio-stop]');
+  const label = content.querySelector<HTMLElement>('[data-research-audio-label]');
+  if (!toggle || !label) return;
+  const hasAudioFile = toggle.dataset.hasAudioFile === 'true';
+
+  if (!isSpeechSupported()) {
+    toggle.disabled = true;
+    toggle.classList.remove('is-playing', 'is-paused', 'is-loading');
+    toggle.setAttribute('aria-pressed', 'false');
+    label.textContent = hasAudioFile ? 'Read aloud unavailable' : 'Audio unavailable';
+    if (stop) stop.hidden = true;
+    return;
+  }
+
+  const isCurrent = researchAudioState.key === key;
+  const status: ResearchAudioStatus = isCurrent ? researchAudioState.status : 'idle';
+  toggle.disabled = status === 'loading';
+  toggle.classList.toggle('is-loading', status === 'loading');
+  toggle.classList.toggle('is-playing', status === 'playing');
+  toggle.classList.toggle('is-paused', status === 'paused');
+  toggle.setAttribute('aria-pressed', String(status === 'playing'));
+  label.textContent =
+    status === 'loading' ? 'Preparing' :
+    status === 'playing' ? 'Pause' :
+    status === 'paused' ? 'Resume' :
+    hasAudioFile ? 'Read aloud' : 'Listen';
+  if (stop) stop.hidden = !(status === 'playing' || status === 'paused' || status === 'loading');
+}
+
+function stopResearchAudio(): void {
+  if (isSpeechSupported()) {
+    window.speechSynthesis.cancel();
+  }
+  researchAudioState.key = null;
+  researchAudioState.status = 'idle';
+  researchAudioState.chunks = [];
+  researchAudioState.index = 0;
+  researchAudioState.utterance = null;
+  updateResearchAudioUi();
+}
+
+function normalizeSpeechText(text: string): string {
+  return text
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([,.;:!?])/g, '$1')
+    .trim();
+}
+
+function readableTextFromElement(root: Element, title: string): string {
+  const clone = root.cloneNode(true) as HTMLElement;
+  clone
+    .querySelectorAll('script, style, noscript, svg, iframe, button, nav, .ara-toc, .gen-research-doc-meta')
+    .forEach((el) => el.remove());
+  const bodyText = normalizeSpeechText(clone.textContent || '');
+  if (!bodyText) return normalizeSpeechText(title);
+  if (bodyText.toLowerCase().startsWith(title.toLowerCase())) return bodyText;
+  return normalizeSpeechText(`${title}. ${bodyText}`);
+}
+
+function readableTextFromHtml(html: string, title: string): string {
+  const parsed = new DOMParser().parseFromString(html, 'text/html');
+  const article = parsed.querySelector('article.ara-doc') || parsed.querySelector('article') || parsed.body;
+  return readableTextFromElement(article, title);
+}
+
+function splitSpeechText(text: string): string[] {
+  const normalized = normalizeSpeechText(text);
+  if (!normalized) return [];
+  const sentences = normalized.match(/[^.!?]+[.!?]+["')\]]*|[^.!?]+$/g) || [normalized];
+  const chunks: string[] = [];
+  let current = '';
+
+  const pushCurrent = () => {
+    const trimmed = current.trim();
+    if (trimmed) chunks.push(trimmed);
+    current = '';
+  };
+
+  for (const sentence of sentences) {
+    const next = sentence.trim();
+    if (!next) continue;
+    if (next.length > SPEECH_CHUNK_MAX_CHARS) {
+      pushCurrent();
+      const words = next.split(/\s+/);
+      let longChunk = '';
+      for (const word of words) {
+        if ((longChunk + ' ' + word).trim().length > SPEECH_CHUNK_MAX_CHARS) {
+          if (longChunk.trim()) chunks.push(longChunk.trim());
+          longChunk = word;
+        } else {
+          longChunk = `${longChunk} ${word}`.trim();
+        }
+      }
+      if (longChunk.trim()) chunks.push(longChunk.trim());
+      continue;
+    }
+    if ((current + ' ' + next).trim().length > SPEECH_CHUNK_MAX_CHARS) {
+      pushCurrent();
+    }
+    current = `${current} ${next}`.trim();
+  }
+  pushCurrent();
+  return chunks;
+}
+
+async function resolveCurrentResearchAudioText(): Promise<string | null> {
+  if (!selectedSlug) return null;
+  const row = findResearchRow(selectedSlug);
+  if (!row) return null;
+  const variant = researchVariant(row, activeLanguage);
+  const title = variant.title || row.title;
+  const renderedArticle = content.querySelector('article.ara-doc');
+  if (renderedArticle) {
+    return readableTextFromElement(renderedArticle, title);
+  }
+
+  const controller = new AbortController();
+  const html = await withTimeout(fetchResearchDoc(variant, controller.signal), LOAD_TIMEOUT_MS, controller);
+  return html && html !== 'timeout' ? readableTextFromHtml(html, title) : null;
+}
+
+function speakCurrentResearchChunk(): void {
+  if (!isSpeechSupported()) return;
+  const key = researchAudioState.key;
+  if (!key || researchAudioState.index >= researchAudioState.chunks.length) {
+    stopResearchAudio();
+    return;
+  }
+
+  const utterance = new SpeechSynthesisUtterance(researchAudioState.chunks[researchAudioState.index]);
+  utterance.lang = activeLanguage === 'ko' ? 'ko-KR' : 'en-US';
+  researchAudioState.utterance = utterance;
+  researchAudioState.status = 'playing';
+  updateResearchAudioUi();
+
+  utterance.onend = () => {
+    if (
+      researchAudioState.key !== key ||
+      researchAudioState.utterance !== utterance ||
+      researchAudioState.status !== 'playing'
+    ) {
+      return;
+    }
+    researchAudioState.index += 1;
+    speakCurrentResearchChunk();
+  };
+  utterance.onerror = () => {
+    if (researchAudioState.key === key && researchAudioState.utterance === utterance) {
+      stopResearchAudio();
+    }
+  };
+  window.speechSynthesis.speak(utterance);
+}
+
+async function toggleResearchAudio(): Promise<void> {
+  if (!isSpeechSupported() || !selectedSlug) return;
+  const key = currentResearchAudioKey();
+  if (researchAudioState.key === key && researchAudioState.status === 'playing') {
+    window.speechSynthesis.pause();
+    researchAudioState.status = 'paused';
+    updateResearchAudioUi();
+    return;
+  }
+  if (researchAudioState.key === key && researchAudioState.status === 'paused') {
+    window.speechSynthesis.resume();
+    researchAudioState.status = 'playing';
+    updateResearchAudioUi();
+    return;
+  }
+  if (researchAudioState.key === key && researchAudioState.status === 'loading') return;
+
+  stopResearchAudio();
+  researchAudioState.key = key;
+  researchAudioState.status = 'loading';
+  updateResearchAudioUi();
+
+  const text = await resolveCurrentResearchAudioText();
+  if (researchAudioState.key !== key || researchAudioState.status !== 'loading') return;
+  const chunks = splitSpeechText(text || '');
+  if (chunks.length === 0) {
+    stopResearchAudio();
+    return;
+  }
+  researchAudioState.chunks = chunks;
+  researchAudioState.index = 0;
+  speakCurrentResearchChunk();
 }
 
 // ── Fetch ─────────────────────────────────────────────
@@ -1658,6 +1901,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
       '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
       rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
       languageFallbackNote(row),
+      researchAudioControlsHtml(row),
       '    <button class="gen-research-pdf" data-research-pdf title="Save this article as a PDF">Save as PDF</button>',
       '  </div>',
       '  <div class="content-card-body">',
@@ -1668,6 +1912,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
   );
 
   setDocTitle(row.title);
+  updateResearchAudioUi();
 
   // After DOM is in place, apply data-pct viz fills, wrap tables in a
   // horizontal-scroll container, expand pictogram counts, inject SVG
@@ -3437,12 +3682,15 @@ function renderResearchStandalone(row: GenResearchRow): void {
       '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
       rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
       languageFallbackNote(row),
+      researchAudioControlsHtml(row),
       '    <a class="gen-research-fullscreen" href="' + escapeHtml(src) + '" target="_blank" rel="noopener noreferrer">Open full ↗</a>',
       '  </div>',
       '  <iframe class="gen-research-iframe" src="' + escapeHtml(src) + '" sandbox="allow-scripts" loading="lazy" title="' + escapeHtml(row.title) + '"></iframe>',
       '</div>',
     ].join('\n'),
   );
+  setDocTitle(row.title);
+  updateResearchAudioUi();
 }
 
 // ── Main load ─────────────────────────────────────────
@@ -3452,6 +3700,7 @@ async function load(): Promise<void> {
   if (activeLoadController) activeLoadController.abort();
   const controller = new AbortController();
   activeLoadController = controller;
+  stopResearchAudio();
 
   // Hide the floating TOC unconditionally; renderResearchDoc shows it
   // again when it has enough sections to be useful.
@@ -3657,6 +3906,7 @@ function scrollToSection(index: number): void {
 
 document.getElementById('navUp')!.addEventListener('click', () => scrollToSection(currentSection - 1));
 document.getElementById('navDown')!.addEventListener('click', () => scrollToSection(currentSection + 1));
+window.addEventListener('beforeunload', () => stopResearchAudio());
 
 // ── Shortcut guide ────────────────────────────────────
 const shortcutPanel = document.getElementById('shortcutPanel')!;
@@ -3697,6 +3947,14 @@ content.addEventListener('click', (e) => {
   if (back) {
     selectedSlug = null;
     load();
+    return;
+  }
+  if (target.closest('[data-research-audio-toggle]')) {
+    void toggleResearchAudio();
+    return;
+  }
+  if (target.closest('[data-research-audio-stop]')) {
+    stopResearchAudio();
     return;
   }
   if (target.closest('[data-research-pdf]')) {
