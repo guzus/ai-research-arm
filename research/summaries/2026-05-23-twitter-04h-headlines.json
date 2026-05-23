@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC CONFIRMS PROJECT GLASSWING — ~50 PARTNERS USED GATED 'CLAUDE MYTHOS PREVIEW' TO FIND 10,000+ CRITICAL VULNS IN A MONTH",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2057909102542549503",
+    "category": "research"
+  },
+  {
+    "headline": "GLASSWING'S REAL BOTTLENECK IS PATCHING — ONLY ~530 HIGH/CRITICAL BUGS DISCLOSED, MAINTAINERS ASK ANTHROPIC TO SLOW DOWN",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2057909104090169464",
+    "category": "research"
+  },
+  {
+    "headline": "MYTHOS PREVIEW: CLOUDFLARE FINDS 2,000 BUGS, MOZILLA FIXES 271 IN FIREFOX (10x), FIRST MODEL TO SOLVE BOTH UK AISI CYBER RANGES",
+    "source": "@AnthropicAI",
+    "url": "https://www.anthropic.com/research/glasswing-initial-update",
+    "category": "research"
+  },
+  {
+    "headline": "STARSHIP V3 FLIES FOR THE FIRST TIME — MAIDEN FLIGHT 12 SEMI-SUCCESSFUL, BOOSTER ANOMALY ON BOOSTBACK BUT SHIP SPLASHDOWN COMPLETE",
+    "source": "@SpaceX",
+    "url": "https://x.com/SpaceX/status/2058005949466501590",
+    "category": "infra"
+  },
+  {
+    "headline": "ANALOG DEVICES IN ADVANCED TALKS TO BUY AI POWER-CHIP STARTUP EMPOWER SEMICONDUCTOR FOR ~$1.5B",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2057906865711792262",
+    "category": "business"
+  }
+]
