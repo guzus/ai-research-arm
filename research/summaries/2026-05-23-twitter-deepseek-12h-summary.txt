@@ -1,0 +1,11 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-05-23 12:58 UTC
+
+CYCLE: DeepSeek makes V4 Pro 75% discount permanent — output $0.87/M tokens, ~85x cheaper than Claude Opus. AI pricing commoditization is now official policy.
+
+TOP STORIES:
+• DeepSeek V4 Pro permanent 75% discount: output $0.87/M, input (cache hit) $0.003625/M, ~85x cheaper than Claude Opus. 12K+ posts trending. The price war is structural, not promotional. [✓]
+• Microsoft in talks to supply Maia 200 AI chips to Anthropic (CNBC). Would add 5th compute provider to Anthropic's supply chain. 30% better tokens/dollar than prior silicon. [⚠]
+
+WATCH: Whether OpenAI/Anthropic respond to DeepSeek's permanent price cut with their own pricing adjustments. Anthropic's likely response is infrastructure-cost reduction (Maia chips) rather than price competition. Pope AI encyclical May 25.
+
+Full update on GitHub.
