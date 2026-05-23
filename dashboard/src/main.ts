@@ -678,35 +678,85 @@ function researchAudioUrl(row: GenResearchRow): string | null {
 function researchAudioControlsHtml(row: GenResearchRow): string {
   const unsupported = !isSpeechSupported();
   const fileUrl = researchAudioUrl(row);
+  if (fileUrl) {
+    return [
+      '<span class="gen-research-audio-controls has-file" aria-label="Article audio controls">',
+      '  <audio class="gen-research-audio-file" preload="metadata" src="' + escapeHtml(fileUrl) + '">Your browser does not support the audio element.</audio>',
+      '  <button class="gen-research-file-audio" data-research-file-audio-toggle aria-pressed="false" title="Play article audio">',
+      '    <span class="gen-research-file-audio-icon" aria-hidden="true"></span>',
+      '    <span class="gen-research-file-audio-label" data-research-file-audio-label>Listen</span>',
+      '    <span class="gen-research-file-audio-progress" data-research-file-audio-progress aria-hidden="true"></span>',
+      '    <span class="gen-research-file-audio-time" data-research-file-audio-time>--:--</span>',
+      '  </button>',
+      '</span>',
+    ].join('\n');
+  }
   return [
-    '<span class="gen-research-audio-controls" aria-label="Article audio controls">',
-    fileUrl
-      ? '  <audio class="gen-research-audio-file" controls preload="metadata" src="' + escapeHtml(fileUrl) + '">Your browser does not support the audio element.</audio>'
-      : '',
+    '<span class="gen-research-audio-controls" aria-label="Article read-aloud controls">',
     '  <button class="gen-research-audio" data-research-audio-toggle data-has-audio-file="' + (fileUrl ? 'true' : 'false') + '" aria-pressed="false"' +
-      (unsupported ? ' disabled title="Read-aloud fallback is not supported in this browser"' : ' title="' + (fileUrl ? 'Use browser read-aloud instead' : 'Play this article as audio') + '"') +
+      (unsupported ? ' disabled title="Read-aloud is not supported in this browser"' : ' title="Play this article with browser read-aloud"') +
       '>',
     '    <span class="gen-research-audio-icon" aria-hidden="true"></span>',
-    '    <span data-research-audio-label>' + (unsupported ? (fileUrl ? 'Read aloud unavailable' : 'Audio unavailable') : (fileUrl ? 'Read aloud' : 'Listen')) + '</span>',
+    '    <span data-research-audio-label>' + (unsupported ? 'Audio unavailable' : 'Listen') + '</span>',
     '  </button>',
     '  <button class="gen-research-audio-stop" data-research-audio-stop hidden title="Stop article audio">Stop</button>',
     '</span>',
   ].join('\n');
 }
 
+function formatAudioTime(seconds: number): string {
+  if (!Number.isFinite(seconds) || seconds < 0) return '--:--';
+  const whole = Math.floor(seconds);
+  const minutes = Math.floor(whole / 60);
+  const secs = whole % 60;
+  return `${minutes}:${String(secs).padStart(2, '0')}`;
+}
+
+function updateResearchFileAudioUi(): void {
+  const audio = content.querySelector<HTMLAudioElement>('.gen-research-audio-file');
+  const toggle = content.querySelector<HTMLButtonElement>('[data-research-file-audio-toggle]');
+  if (!audio || !toggle) return;
+  const label = content.querySelector<HTMLElement>('[data-research-file-audio-label]');
+  const time = content.querySelector<HTMLElement>('[data-research-file-audio-time]');
+  const progress = content.querySelector<HTMLElement>('[data-research-file-audio-progress]');
+  const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+  const pct = duration > 0 ? Math.min(100, Math.max(0, (audio.currentTime / duration) * 100)) : 0;
+  toggle.classList.toggle('is-playing', !audio.paused && !audio.ended);
+  toggle.setAttribute('aria-pressed', String(!audio.paused && !audio.ended));
+  if (label) label.textContent = audio.paused || audio.ended ? 'Listen' : 'Pause';
+  if (time) time.textContent = duration > 0 ? `${formatAudioTime(audio.currentTime)} / ${formatAudioTime(duration)}` : '--:--';
+  if (progress) progress.style.setProperty('--audio-progress', `${pct}%`);
+}
+
+function bindResearchFileAudioUi(): void {
+  const audio = content.querySelector<HTMLAudioElement>('.gen-research-audio-file');
+  if (!audio || audio.dataset.bound === 'true') return;
+  audio.dataset.bound = 'true';
+  audio.addEventListener('loadedmetadata', updateResearchFileAudioUi);
+  audio.addEventListener('timeupdate', updateResearchFileAudioUi);
+  audio.addEventListener('play', updateResearchFileAudioUi);
+  audio.addEventListener('pause', updateResearchFileAudioUi);
+  audio.addEventListener('ended', updateResearchFileAudioUi);
+  audio.addEventListener('error', () => {
+    const label = content.querySelector<HTMLElement>('[data-research-file-audio-label]');
+    if (label) label.textContent = 'Unavailable';
+  });
+  updateResearchFileAudioUi();
+}
+
 function updateResearchAudioUi(): void {
+  bindResearchFileAudioUi();
   const key = currentResearchAudioKey();
   const toggle = content.querySelector<HTMLButtonElement>('[data-research-audio-toggle]');
   const stop = content.querySelector<HTMLButtonElement>('[data-research-audio-stop]');
   const label = content.querySelector<HTMLElement>('[data-research-audio-label]');
   if (!toggle || !label) return;
-  const hasAudioFile = toggle.dataset.hasAudioFile === 'true';
 
   if (!isSpeechSupported()) {
     toggle.disabled = true;
     toggle.classList.remove('is-playing', 'is-paused', 'is-loading');
     toggle.setAttribute('aria-pressed', 'false');
-    label.textContent = hasAudioFile ? 'Read aloud unavailable' : 'Audio unavailable';
+    label.textContent = 'Audio unavailable';
     if (stop) stop.hidden = true;
     return;
   }
@@ -722,8 +772,25 @@ function updateResearchAudioUi(): void {
     status === 'loading' ? 'Preparing' :
     status === 'playing' ? 'Pause' :
     status === 'paused' ? 'Resume' :
-    hasAudioFile ? 'Read aloud' : 'Listen';
+    'Listen';
   if (stop) stop.hidden = !(status === 'playing' || status === 'paused' || status === 'loading');
+}
+
+async function toggleResearchFileAudio(): Promise<void> {
+  const audio = content.querySelector<HTMLAudioElement>('.gen-research-audio-file');
+  if (!audio) return;
+  if (audio.paused || audio.ended) {
+    stopResearchAudio();
+    try {
+      await audio.play();
+    } catch {
+      const label = content.querySelector<HTMLElement>('[data-research-file-audio-label]');
+      if (label) label.textContent = 'Unavailable';
+    }
+  } else {
+    audio.pause();
+  }
+  updateResearchFileAudioUi();
 }
 
 function stopResearchAudio(): void {
@@ -3947,6 +4014,10 @@ content.addEventListener('click', (e) => {
   if (back) {
     selectedSlug = null;
     load();
+    return;
+  }
+  if (target.closest('[data-research-file-audio-toggle]')) {
+    void toggleResearchFileAudio();
     return;
   }
   if (target.closest('[data-research-audio-toggle]')) {
