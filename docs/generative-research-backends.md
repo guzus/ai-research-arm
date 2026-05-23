@@ -63,6 +63,55 @@ it under `translations.ko` in `research/generative/index.json`. The dashboard
 language switch will show Korean only after that file and index update have
 been pushed and deployed.
 
+## Article Audio
+
+Generative-research articles can carry an `audio_file` field in
+`research/generative/index.json`. The dashboard renders that file as the
+article's native audio player and keeps browser read-aloud as a fallback.
+
+Generate audio for the latest article locally:
+
+```bash
+GEMINI_API_KEY=... python3 scripts/generate_generative_article_audio.py --force
+```
+
+Generate audio for a specific article:
+
+```bash
+GEMINI_API_KEY=... python3 scripts/generate_generative_article_audio.py \
+  --slug servicenow-stock \
+  --force
+```
+
+The default is `gemini-2.5-flash-preview-tts` with the `Charon` voice and
+64 kbps mono MP3 output. That model is the default because Google's pricing
+page positions it as the price-performant TTS model: paid tier input is
+$0.50 per 1M text tokens and output is $10.00 per 1M audio tokens. The
+script allows `--model` and `--voice` overrides for deliberate higher-cost
+experiments, but the default should be the production path unless an article
+needs special treatment.
+
+Local generation can also use Vertex AI through the active `gcloud` account:
+
+```bash
+python3 scripts/generate_generative_article_audio.py \
+  --api vertex \
+  --vertex-project <project-id> \
+  --slug servicenow-stock \
+  --force
+```
+
+The Vertex path defaults to the stable `gemini-2.5-flash-tts` model name and
+uses `gcloud auth print-access-token`. The Developer API path keeps the
+preview model name because that is the public Gemini API model code.
+
+The `generative-research.yml` workflow runs the same script after article
+quality gates pass when `GEMINI_API_KEY` is configured. The script extracts
+readable article text, skips tables/references, chunks long reports for TTS
+reliability, concatenates Gemini's 24 kHz mono PCM, writes
+`research/audio/<article-stem>.mp3`, and updates the article row's
+`audio_file`.
+
 If the local Oracle checkout is not installed yet:
 
 ```bash

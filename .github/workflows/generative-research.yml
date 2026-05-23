@@ -2911,6 +2911,46 @@ jobs:
               print(f"    WARN: {pct} % in prose but no distribution viz used.")
           PY
 
+      - name: Generate article audio with Gemini Flash TTS
+        if: always() && steps.outfile.outputs.has_file == 'true' && steps.quality.outputs.passed == 'true' && steps.methodology.outputs.passed == 'true'
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FILE: ${{ steps.outfile.outputs.file }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${GEMINI_API_KEY:-}" ]; then
+            echo "GEMINI_API_KEY not configured — skipping article audio generation"
+            exit 0
+          fi
+
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            echo "ffmpeg not found on runner — attempting install..."
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg || {
+              echo "Could not install ffmpeg — skipping article audio generation"
+              exit 0
+            }
+          fi
+
+          SLUG=$(jq -r --arg file "$FILE" '.[] | select(.file == $file) | .slug' research/generative/index.json | tail -1)
+          if [ -z "$SLUG" ] || [ "$SLUG" = "null" ]; then
+            echo "Could not resolve generated article slug for $FILE — skipping audio"
+            exit 0
+          fi
+
+          # Default is Gemini 2.5 Flash Preview TTS: the price-performant
+          # controllable speech model. Override GEMINI_TTS_MODEL only when
+          # deliberately spending more for a specific model/voice experiment.
+          python3 scripts/generate_generative_article_audio.py \
+            --slug "$SLUG" \
+            --force
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/generative/index.json research/audio
+          git commit --amend --no-edit
+
       # The writer commits inside the action sandbox. Publishing is a
       # separate step so we keep push perms in this workflow and don't
       # depend on the action's git wiring. Fail loudly on rebase conflicts

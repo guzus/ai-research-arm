@@ -211,6 +211,7 @@ uv run python scripts/check_model_tickets.py
 | `DEEPSEEK_API_KEY` | Yes for DeepSeek V4 Pro generative research and DeepSeek Twitter workflows | DeepSeek API key used through the Anthropic-compatible endpoint |
 | `BIRD_AUTH_TOKEN` | Yes | X/Twitter auth_token cookie for bird CLI |
 | `BIRD_CT0` | Yes | X/Twitter ct0 cookie for bird CLI |
+| `GEMINI_API_KEY` | Yes for article/digest audio | Gemini API key used for price-performant TTS audio generation |
 
 ### Optional API Keys (for enhanced features)
 
