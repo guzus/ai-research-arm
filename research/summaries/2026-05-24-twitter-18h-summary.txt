@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-24 18:33 UTC
+
+CYCLE: Quiet window, but one real research break + an Anthropic product datamine; primary labs silent, no frontier ship.
+
+TOP STORIES:
+• DeepMind "AlphaProof Nexus" solved 9 of 353 open Erdős problems + 44/492 OEIS conjectures, all Lean-verified, ~few hundred $ each (arXiv 2605.22763 + DeepMind GitHub) [✓]
+• Datamine: Claude getting file-based "Memory Files" option, seen as prep for a persistent "Conway" background agent [⚠]
+• The Information: businesses now adding opt-out clauses if AI tools underdeliver — enterprise cost-scrutiny sharpens [⚠]
+
+WATCH: May 25 Vatican encyclical "Magnifica Humanitas" (Chris Olah) drops in hours; whether Tao/math community vet the AlphaProof Nexus proofs.
+
+Full update on GitHub.
