@@ -1,0 +1,336 @@
+{
+  "generated_at": "2026-05-24T14:08:57.887094+00:00",
+  "metric": "bookmarks",
+  "params": {
+    "per_author": 100,
+    "window_days": 30,
+    "min_tweets": 8,
+    "floor": 2.0,
+    "overperform_ratio": 3.0
+  },
+  "n_authors": 53,
+  "n_tweets": 3644,
+  "n_overperformers": 663,
+  "n_dual_authors": 46,
+  "n_with_views": 3644,
+  "authors": {
+    "0xCan24": {
+      "median_bookmarks": 0.0,
+      "n_tweets": 90,
+      "max_bookmarks": 12,
+      "median_likes": 202.5
+    },
+    "0xSero": {
+      "median_bookmarks": 6.5,
+      "n_tweets": 88,
+      "max_bookmarks": 1755,
+      "median_likes": 75.0
+    },
+    "0xZane_": {
+      "median_bookmarks": 0.0,
+      "n_tweets": 98,
+      "max_bookmarks": 3,
+      "median_likes": 68.0
+    },
+    "0x_Punisher": {
+      "median_bookmarks": 0,
+      "n_tweets": 91,
+      "max_bookmarks": 459,
+      "median_likes": 39
+    },
+    "0xiChl": {
+      "median_bookmarks": 0,
+      "n_tweets": 17,
+      "max_bookmarks": 0,
+      "median_likes": 2
+    },
+    "AJENews": {
+      "median_bookmarks": 7,
+      "n_tweets": 99,
+      "max_bookmarks": 62,
+      "median_likes": 177
+    },
+    "Adams_Tech_AI": {
+      "median_bookmarks": 1.0,
+      "n_tweets": 96,
+      "max_bookmarks": 370,
+      "median_likes": 49.5
+    },
+    "AesirMalos": {
+      "median_bookmarks": 0,
+      "n_tweets": 25,
+      "max_bookmarks": 55,
+      "median_likes": 153
+    },
+    "AiWithIqra": {
+      "median_bookmarks": 3.0,
+      "n_tweets": 46,
+      "max_bookmarks": 7271,
+      "median_likes": 3.5
+    },
+    "Ai_Tech_tool": {
+      "median_bookmarks": 421,
+      "n_tweets": 45,
+      "max_bookmarks": 10069,
+      "median_likes": 227
+    },
+    "Aicoder786": {
+      "median_bookmarks": 0,
+      "n_tweets": 35,
+      "max_bookmarks": 12185,
+      "median_likes": 15
+    },
+    "Akasheth_": {
+      "median_bookmarks": 0.0,
+      "n_tweets": 96,
+      "max_bookmarks": 387,
+      "median_likes": 101.0
+    },
+    "AnjneyMidha": {
+      "median_bookmarks": 0,
+      "n_tweets": 73,
+      "max_bookmarks": 2945,
+      "median_likes": 179
+    },
+    "AsiaEnhypen": {
+      "median_bookmarks": 2.0,
+      "n_tweets": 88,
+      "max_bookmarks": 95,
+      "median_likes": 67.0
+    },
+    "BarkJack_": {
+      "median_bookmarks": 1.0,
+      "n_tweets": 78,
+      "max_bookmarks": 18,
+      "median_likes": 53.0
+    },
+    "BbusyBytes": {
+      "median_bookmarks": 0,
+      "n_tweets": 71,
+      "max_bookmarks": 15,
+      "median_likes": 24
+    },
+    "ChaseTheGem": {
+      "median_bookmarks": 0,
+      "n_tweets": 51,
+      "max_bookmarks": 3,
+      "median_likes": 1
+    },
+    "CoinDesk": {
+      "median_bookmarks": 6.0,
+      "n_tweets": 88,
+      "max_bookmarks": 146,
+      "median_likes": 141.0
+    },
+    "Cointelegraph": {
+      "median_bookmarks": 10,
+      "n_tweets": 99,
+      "max_bookmarks": 289,
+      "median_likes": 242
+    },
+    "CryptoTony__": {
+      "median_bookmarks": 1.0,
+      "n_tweets": 100,
+      "max_bookmarks": 36,
+      "median_likes": 89.0
+    },
+    "Dipanshu_AI": {
+      "median_bookmarks": 1.5,
+      "n_tweets": 64,
+      "max_bookmarks": 31,
+      "median_likes": 2.5
+    },
+    "FirstSquawk": {
+      "median_bookmarks": 1,
+      "n_tweets": 81,
+      "max_bookmarks": 36,
+      "median_likes": 18
+    },
+    "GPrime85": {
+      "median_bookmarks": 0,
+      "n_tweets": 85,
+      "max_bookmarks": 3624,
+      "median_likes": 1187
+    },
+    "GlobalMktObserv": {
+      "median_bookmarks": 7,
+      "n_tweets": 63,
+      "max_bookmarks": 122,
+      "median_likes": 57
+    },
+    "HeyRohhit": {
+      "median_bookmarks": 0.0,
+      "n_tweets": 28,
+      "max_bookmarks": 1328,
+      "median_likes": 51.0
+    },
+    "Inshrah_ali_": {
+      "median_bookmarks": 0.0,
+      "n_tweets": 70,
+      "max_bookmarks": 17,
+      "median_likes": 103.5
+    },
+    "JapanGov": {
+      "median_bookmarks": 0,
+      "n_tweets": 37,
+      "max_bookmarks": 10,
+      "median_likes": 97
+    },
+    "Jxam3_": {
+      "median_bookmarks": 0,
+      "n_tweets": 13,
+      "max_bookmarks": 2,
+      "median_likes": 60
+    },
+    "KIT_Game0verse": {
+      "median_bookmarks": 2,
+      "n_tweets": 75,
+      "max_bookmarks": 46,
+      "median_likes": 28
+    },
+    "Kadimu174Ai": {
+      "median_bookmarks": 0,
+      "n_tweets": 57,
+      "max_bookmarks": 97,
+      "median_likes": 108
+    },
+    "Kappaemme1926": {
+      "median_bookmarks": 0,
+      "n_tweets": 95,
+      "max_bookmarks": 4555,
+      "median_likes": 34
+    },
+    "KeorUnreal": {
+      "median_bookmarks": 212,
+      "n_tweets": 87,
+      "max_bookmarks": 4594,
+      "median_likes": 315
+    },
+    "KongBTC": {
+      "median_bookmarks": 0.0,
+      "n_tweets": 88,
+      "max_bookmarks": 28,
+      "median_likes": 120.5
+    },
+    "MATHEW_KINZY": {
+      "median_bookmarks": 0,
+      "n_tweets": 51,
+      "max_bookmarks": 1,
+      "median_likes": 84
+    },
+    "MMatters22596": {
+      "median_bookmarks": 70.5,
+      "n_tweets": 64,
+      "max_bookmarks": 890,
+      "median_likes": 228.0
+    },
+    "ManningOfficial": {
+      "median_bookmarks": 0.0,
+      "n_tweets": 30,
+      "max_bookmarks": 5,
+      "median_likes": 193.0
+    },
+    "MaxBlumenthal": {
+      "median_bookmarks": 56.5,
+      "n_tweets": 48,
+      "max_bookmarks": 2988,
+      "median_likes": 2822.0
+    },
+    "Mayz1169": {
+      "median_bookmarks": 0,
+      "n_tweets": 95,
+      "max_bookmarks": 428,
+      "median_likes": 45
+    },
+    "MenchOsint": {
+      "median_bookmarks": 19.0,
+      "n_tweets": 82,
+      "max_bookmarks": 700,
+      "median_likes": 359.5
+    },
+    "Microinteracti1": {
+      "median_bookmarks": 11,
+      "n_tweets": 67,
+      "max_bookmarks": 1517,
+      "median_likes": 364
+    },
+    "Mind_Boticni": {
+      "median_bookmarks": 0.5,
+      "n_tweets": 90,
+      "max_bookmarks": 847,
+      "median_likes": 81.0
+    },
+    "MisterSpread": {
+      "median_bookmarks": 0.0,
+      "n_tweets": 56,
+      "max_bookmarks": 122,
+      "median_likes": 63.5
+    },
+    "Nithya_Shrii": {
+      "median_bookmarks": 26.0,
+      "n_tweets": 100,
+      "max_bookmarks": 4423,
+      "median_likes": 504.5
+    },
+    "PaulDennett_": {
+      "median_bookmarks": 0.0,
+      "n_tweets": 10,
+      "max_bookmarks": 1,
+      "median_likes": 4.5
+    },
+    "PeterDiamandis": {
+      "median_bookmarks": 0.0,
+      "n_tweets": 76,
+      "max_bookmarks": 466,
+      "median_likes": 439.5
+    },
+    "PhysInHistory": {
+      "median_bookmarks": 38,
+      "n_tweets": 89,
+      "max_bookmarks": 628,
+      "median_likes": 303
+    },
+    "Physicla_": {
+      "median_bookmarks": 0.0,
+      "n_tweets": 8,
+      "max_bookmarks": 64,
+      "median_likes": 40.5
+    },
+    "Pirat_Nation": {
+      "median_bookmarks": 143.5,
+      "n_tweets": 100,
+      "max_bookmarks": 10319,
+      "median_likes": 1432.5
+    },
+    "QueenMab87": {
+      "median_bookmarks": 0,
+      "n_tweets": 73,
+      "max_bookmarks": 509,
+      "median_likes": 42
+    },
+    "REDBOXINDIA": {
+      "median_bookmarks": 6,
+      "n_tweets": 99,
+      "max_bookmarks": 244,
+      "median_likes": 173
+    },
+    "Rainmaker1973": {
+      "median_bookmarks": 17.5,
+      "n_tweets": 54,
+      "max_bookmarks": 268,
+      "median_likes": 122.0
+    },
+    "RamSingh_369": {
+      "median_bookmarks": 0,
+      "n_tweets": 47,
+      "max_bookmarks": 127,
+      "median_likes": 88
+    },
+    "RichardHanania": {
+      "median_bookmarks": 15.5,
+      "n_tweets": 88,
+      "max_bookmarks": 431,
+      "median_likes": 148.0
+    }
+  }
+}

@@ -274,3 +274,142 @@ $ python3 -m pytest scripts/ -q
 form, honest disclaimers, CI-safe, 24/24 + 192/6). The analysis's negative
 headline holds. Fix the three "medium" wording/number over-claims and the stale
 docstring before treating any positive lever (esp. `is_stance`) as established.
+
+---
+
+# Bookmarks — independent validation of the "saves are text-predictable" finding
+
+*Fresh-eyes review of `BOOKMARKS.md` / `bookmark_analysis.md` /
+`bookmark_experiment_cv.md`. Every number recomputed from
+`bookmark_tweets.jsonl` (3644 tweets, 53 authors, 46 dual) and
+`overperformance_tweets.jsonl` (likes, 3924/57/51) with my own AUC
+(Mann-Whitney rank, ties=0.5) and **two independent classifiers** — a numpy
+logistic regression (standardize-on-train + ridge, LOO by author) and a
+sign-corrected z-score composite (signs learned LOO, no magnitude fitting, a
+different inductive bias). Extraction cross-checked live via `birdy`. Verdict:
+**SHIP** — the finding is real but modest, and `BOOKMARKS.md` already frames it
+that way.*
+
+## B1. LOO within-author AUC — claims vs recompute (the headline)
+
+| metric | claim | my logreg | my z-composite |
+|---|--:|--:|--:|
+| **bookmarks form** | 0.616 | **0.6161** | 0.6171 |
+| bookmarks content | 0.546 | 0.5458 | 0.5375 |
+| bookmarks all | 0.608 | 0.6078 | 0.6096 |
+| **likes form** | 0.553 | 0.5529 | 0.5490 |
+| likes content | 0.534 | 0.5340 | 0.5665 |
+| likes all | 0.595 | 0.5952 | 0.5981 |
+
+Both classifiers reproduce every claimed bookmark/likes number (logreg to ±0.0002).
+The three load-bearing sub-claims all **hold**:
+
+- **(a) Form holds out-of-sample for bookmarks, didn't collapse like likes.**
+  Bookmarks form **0.616** vs likes form **0.553** — a clear, replicated gap
+  across both methods. ✅
+- **(b) Form ≥ all for bookmarks** (content is noise for saves): 0.616 ≥ 0.608
+  (logreg), 0.617 ≥ 0.610 (z-comp). ✅ (Margin is small — ~0.008 — so "form ≥
+  all" is true but barely; honest to call them ~tied with form nosing ahead.)
+- **(c) Within-author > global for bookmarks** (genuine content, not account
+  identity): within **0.616** > global **0.589** (logreg). And likes are the
+  **opposite** — likes global 0.581(form)/0.648(all) ≥ within 0.553/0.595, i.e.
+  likes signal is between-author (reach), bookmarks signal is within-author. ✅
+
+*Note on doc hygiene:* `experiment_cv.md` (likes) and `bookmark_experiment_cv.md`
+(bookmarks) are **distinct and correct** — likes file = 3924/571/57 with form
+0.553; bookmark file = 3644/663/53 with form 0.616. (An early file-cache read
+made them look identical; they are not. No action needed.)
+
+## B2. Robust-feature count — 5 (bookmarks) vs 0 (likes): confirmed
+
+Recomputed the paired within-author robustness gate (|r|≥0.08, ≥8 dual authors,
+sign agreement ≥60%) independently:
+
+- **Bookmarks → exactly 5 robust**, all positive (over-performers have *more*):
+  `char_len` (r+0.085, 83% agree), `has_numbers` (+0.106, 76%), `has_media`
+  (+0.085, 76%), `has_allcaps` (+0.108, 70%), `allcaps_words` (+0.087, 63%).
+- **Likes → 0 robust.** Matches the claim exactly.
+
+Within-author direction (46 dual authors, # where over-performers score higher):
+char_len 38/46 (83%), has_numbers 35/46 (76%), has_media 35/46 (76%),
+has_allcaps 32/46 (70%), allcaps_words 29/46 (63%). All point the claimed way.
+Auxiliary rates in `BOOKMARKS.md` also check out exactly: char_len 502 vs 359,
+has_numbers 61%/47%, has_media 71%/60%, has_allcaps 64%/50%, allcaps_words
+3.8/2.4; corpus median 1 bookmark vs 108 likes. ✅
+
+## B3. `bookmark_count` extraction — verified live (this is the load-bearing one)
+
+Fetched 5 tweets fresh with `birdy read <id> --json-full --plain` and compared
+the persisted value to the **top-level** tweet's `_raw.legacy.bookmark_count`
+and `_raw.views.count`:
+
+| tweet | persisted bm | fresh `legacy.bookmark_count` | persisted views | fresh `views.count` |
+|---|--:|--:|--:|--:|
+| 2057449557773201543 | 12185 | 12185 | 640602 | 640710 |
+| 2058156237737295928 | 10319 | 10349 | 6790866 | 6818268 |
+| 2055680685164429491 | 10069 | 10069 | 728849 | 728871 |
+| 2057998449539502322 | 7271 | 7271 | 685353 | 685653 |
+| 2056059489590104380 | 4594 | 4598 | 2605927 | 2606587 |
+
+Exact-or-monotone-up: every fresh value equals or slightly exceeds the persisted
+one (counts only grow over time; collection predates this check by ~1 day). In
+**all 5**, the tree contained a single `bookmark_count` at depth 1 (the top-level
+tweet) — **no quoted/retweet contamination**, and `views_count` tracks
+`_raw.views.count`. `_bookmark_from_raw` / `_views_from_raw` are correct. The
+result is **not** an extraction artifact. ✅
+
+## B4. Are the 5 features real signal or artifacts?
+
+- **`char_len`, `has_numbers`, `has_media` — clean.** Distributed across 46
+  authors (top author = only 6% of over-performers; no single-author capture),
+  positive direction in 76-83% of authors. Robust to de-duplication (see below).
+- **`has_allcaps` / `allcaps_words` — real but conflated; partially mis-labeled
+  in the writeup.** Spot-checking the top bookmark over-performers, the ALL-CAPS
+  tokens split into **two** mechanisms: (1) genuine acronyms/tickers — AI, LLM,
+  RLHF, ISO, HDR, RAW, PC, JDM, MVP, CODEX — which *are* info-density; and (2)
+  all-caps **hype/clickbait openers** that are *not* acronyms: "INSTEAD OF
+  WATCHING NETFLIX TONIGHT", "ANDREJ KARPATHY COULD HAVE CHARGED $2,000",
+  "BRUTALLY TEST ANY STARTUP IDEA", "BREAKING". So `BOOKMARKS.md`'s gloss
+  "acronyms/tickers (API, LLM, GPU, $NVDA)" is only *half* the story — the
+  feature also rewards SHOUTING. `BOOKMARKS.md` does caveat that has_allcaps is
+  "partly topical" and names length/numbers/media as the cleaner levers, which
+  is the right call; the only fix is to stop implying the caps signal is *purely*
+  acronyms. **Minor.**
+- **Copypasta does not drive the result.** 30/663 over-performers (4.5%) share a
+  text prefix (a "watch this Stanford lecture instead of Netflix" template ×12,
+  etc.). Removing all 95 duplicate-prefix tweets corpus-wide leaves form LOO
+  within-author at **0.619** (vs 0.617 full), within > global (0.588). The
+  finding survives. ✅
+
+## B5. Fact-check of `BOOKMARKS.md` claims
+
+| claim | verdict |
+|---|---|
+| "LOO within form: likes 0.55, bookmarks 0.62" | ✅ exact (0.553 / 0.616) |
+| "robust features: likes 0, bookmarks 5" | ✅ exact |
+| "form holds out-of-sample (didn't collapse like likes)" | ✅ |
+| "form ≥ all (content is noise for saves)" | ✅ but margin ~0.008 — barely; "≈ tied, form slightly ahead" is the honest phrasing |
+| "within-author (0.62) > global (0.59)" | ✅ (and likes are the opposite) |
+| "real but modest (~0.62, not 0.9)" | ✅ — exactly the right framing |
+| "has_allcaps partly topical / acronyms-tickers" | ⚠️ true but understated: also catches all-caps hype openers, not just acronyms |
+| aux numbers (502/359 chars, 61/47%, 71/60%, 64/50%, 3.8/2.4, median 1 vs 108) | ✅ all exact |
+
+## B6. Findings by severity
+
+- **No high-severity issues.** Extraction is correct, both classifiers reproduce
+  the claimed AUCs, the 5/0 robust split replicates, and the result survives
+  de-duplication. The finding is genuine.
+- **Low — `has_allcaps` label.** Frame it as "all-caps emphasis (acronyms/tickers
+  *and* shouty openers)" rather than pure information-density; length/numbers/media
+  are the defensible info-density levers. `BOOKMARKS.md` half-covers this already.
+- **Low — "form ≥ all".** True but the gap is ~0.008; don't oversell content as
+  "noise" — it's closer to "content adds nothing *on top of* form here."
+- **Nit — magnitude humility.** 0.616 is "shifts the odds," not "predicts saves";
+  `BOOKMARKS.md` already says exactly this ("real but modest … not 0.9").
+
+**VERDICT: SHIP.** The first positive result in this otherwise-null study holds
+up under independent recomputation (two classifiers), live extraction
+cross-check, and a de-dup sensitivity test. The honest framing — *bookmarks are
+modestly text-predictable (~0.62 within-author) via information density
+(length/numbers/media), where likes are not (~0.55)* — is supported by the
+numbers. Only soften the `has_allcaps`="acronyms" and "form ≥ all" phrasings.

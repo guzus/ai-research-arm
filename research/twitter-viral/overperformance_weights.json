@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T13:27:43.371555+00:00",
+  "generated_at": "2026-05-24T14:10:40.675972+00:00",
   "n_total": 3924,
   "n_over": 571,
   "n_norm": 3353,
@@ -587,5 +587,6 @@
       "paired_agreement": 0.51,
       "robust": false
     }
-  }
+  },
+  "label": "overperformer"
 }

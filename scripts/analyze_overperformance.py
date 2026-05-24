@@ -104,9 +104,9 @@ def within_author_auc(rows, score_of):
     return num / den if den else 0.5
 
 
-def load_rows():
+def load_rows(data_path=DATA, label_field="overperformer"):
     rows = []
-    with open(DATA, encoding="utf-8") as fh:
+    with open(data_path, encoding="utf-8") as fh:
         for line in fh:
             line = line.strip()
             if not line:
@@ -116,7 +116,7 @@ def load_rows():
                                      is_quote=r.get("is_quote", False))
             feats.update(extract_content_features(r.get("text", "")))
             r["_feats"] = feats
-            r["_y"] = 1 if r.get("overperformer") else 0
+            r["_y"] = 1 if r.get(label_field) else 0
             rows.append(r)
     return rows
 
@@ -214,7 +214,7 @@ def _fmt(v):
     return f"{v:+.3f}"
 
 
-def write_md(rep):
+def write_md(rep, out_md=OUT_MD, source_name="overperformance_tweets.jsonl"):
     feats = rep["features"]
     ranked = sorted(feats.items(), key=lambda kv: -kv[1]["auc"])
     robust = [(f, i) for f, i in ranked if i["robust"]]
@@ -223,7 +223,7 @@ def write_md(rep):
     L = []
     L.append("# Does content beat form? (over-performance analysis)")
     L.append("")
-    L.append(f"*Generated {rep['generated_at']} from `overperformance_tweets.jsonl`.*")
+    L.append(f"*Generated {rep['generated_at']} from `{source_name}`.*")
     L.append("")
     L.append(f"- **{rep['n_total']}** timeline tweets: **{rep['n_over']}** over-performers "
              f"(>=3x the author's median) / **{rep['n_norm']}** normal, across "
@@ -239,9 +239,17 @@ def write_md(rep):
         L.append(f"| {name} | {comp[name]['auc_global']:.3f} | {comp[name]['auc_within_author']:.3f} |")
     L.append("")
     best = max(("form", "content"), key=lambda k: comp[k]["auc_within_author"])
-    L.append(f"**Within-author, the {best} composite separates over-performers better.** "
-             "Both are weak — over-performance is mostly not explained by these features, "
-             "consistent with round 1 (engagement is dominated by reach + luck + timing).")
+    best_auc = comp[best]["auc_within_author"]
+    n_robust = sum(1 for _, i in feats.items() if i["robust"])
+    if best_auc >= 0.62 or n_robust >= 1:
+        L.append(f"**Within-author, the {best} composite separates over-performers at AUC "
+                 f"{best_auc:.2f}, with {n_robust} feature(s) surviving the paired check** — a "
+                 "real, if modest, content signal. Confirm out-of-sample with the companion "
+                 "leave-one-author-out experiment.")
+    else:
+        L.append(f"**Within-author, the {best} composite separates over-performers better "
+                 f"({best_auc:.2f}), but both are weak** — mostly not explained by these "
+                 "features; reach, timing and luck dominate.")
     L.append("")
     L.append("## Robust features (survived the within-author paired check)")
     L.append("")
@@ -285,29 +293,37 @@ def write_md(rep):
     L.append("4. **Over-performance ≠ likes.** A small account's over-performer may have few "
              "absolute likes. This measures relative pop, which is the writer-actionable part.")
     L.append("5. **Composite AUCs are in-sample.** Each composite takes its feature signs from "
-             "the global r on the *same* rows it scores, so the content/combined numbers are "
-             "optimistic. On a held-out 50/50 split the content composite within-author is "
-             "~0.53 (not ~0.60); form stays sub-chance (~0.41). The direction (content > form) "
-             "survives ~18/20 splits, but the *gap* is widest exactly at the 3x cutoff.")
-    L.append("6. **No single feature is a reliable lever.** Even `is_stance` (best by pooled "
-             "lift, ~1.9x) is ~chance within author (AUC ~0.51). Read this analysis for the "
-             "**negative** result — the text barely predicts over-performance — not for a lever.")
-    OUT_MD.write_text("\n".join(L), encoding="utf-8")
+             "the global r on the *same* rows it scores, so they are optimistic. Trust the "
+             "companion leave-one-author-out experiment for the honest out-of-sample number.")
+    L.append("6. **A high single-feature AUC is not a reliable lever** until it also survives "
+             "the within-author paired check across many authors. Read this for the **negative** "
+             "result too — whether the text predicts the metric at all.")
+    out_md.write_text("\n".join(L), encoding="utf-8")
 
 
 def main():
-    rows = load_rows()
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--data", default=str(DATA), help="JSONL dataset to analyze")
+    ap.add_argument("--label", default="overperformer", help="boolean field naming the positive class")
+    ap.add_argument("--out-md", default=str(OUT_MD))
+    ap.add_argument("--out-weights", default=str(OUT_WEIGHTS))
+    args = ap.parse_args()
+    out_md, out_weights = Path(args.out_md).resolve(), Path(args.out_weights).resolve()
+
+    rows = load_rows(args.data, args.label)
     rep = analyze(rows)
-    OUT_WEIGHTS.write_text(json.dumps(rep, indent=2), encoding="utf-8")
-    write_md(rep)
+    rep["label"] = args.label
+    out_weights.write_text(json.dumps(rep, indent=2), encoding="utf-8")
+    write_md(rep, out_md, source_name=Path(args.data).name)
     c = rep["composites"]
-    print(f"{rep['n_total']} tweets ({rep['n_over']} over / {rep['n_norm']} normal), "
+    print(f"[{args.label}] {rep['n_total']} tweets ({rep['n_over']} pos / {rep['n_norm']} neg), "
           f"{rep['n_dual_authors']} dual authors")
     print(f"within-author AUC  form={c['form']['auc_within_author']}  "
           f"content={c['content']['auc_within_author']}  combined={c['combined']['auc_within_author']}")
     robust = [f for f, i in rep["features"].items() if i["robust"]]
     print(f"robust features ({len(robust)}): {', '.join(robust) or '(none)'}")
-    print(f"wrote {OUT_MD.relative_to(REPO_ROOT)} and {OUT_WEIGHTS.name}")
+    print(f"wrote {out_md.relative_to(REPO_ROOT)} and {out_weights.name}")
 
 
 if __name__ == "__main__":

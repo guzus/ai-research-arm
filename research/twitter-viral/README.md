@@ -4,7 +4,9 @@ A one-off study (not part of the auto-pipeline) of what drives tweet engagement,
 plus a verifier that scores a draft. **Start with [`SYNTHESIS.md`](SYNTHESIS.md)** —
 it ties the two research rounds together and states the honest conclusion (round 2
 overturned round 1: raw likes are mostly reach; surface form does *not* help a
-tweet beat its own author's baseline).
+tweet beat its own author's baseline). For the **bookmarks** follow-up — the one
+place the text *does* predict engagement (info-dense posts get saved) — see
+[`BOOKMARKS.md`](BOOKMARKS.md).
 
 > **Not deployed to the dashboard.** `dashboard/scripts/prebuild.mjs` only
 > copies `twitter/`, `models/`, `front-page/`, `digest/`, `audio/`,
@@ -26,6 +28,11 @@ tweet beat its own author's baseline).
 | `overperformance_analysis.md` / `overperformance_weights.json` | 2 | Form-vs-content comparison vs over-performance (the reach-controlled question). |
 | `overperformance_qualitative.md` | 2 | Qualitative read of the actual top/bottom over-performer texts + codeable detectors. |
 | `experiment_cv.md` | 2 | Leave-one-author-out CV — the honest out-of-sample ceiling (form *anti*-generalizes; text barely predicts). |
+| `BOOKMARKS.md` | bk | **Bookmarks follow-up entry point** — the one positive result (text predicts *saves* via info density). |
+| `bookmark_tweets.jsonl` | bk | 3644 tweets / 53 authors w/ `bookmark_count` + `views_count` + `save_rate`; labeled `bookmark_overperformer`. |
+| `bookmark_baselines.json` | bk | Per-author median bookmarks (the reach control). |
+| `bookmark_analysis.md` / `bookmark_weights.json` | bk | Form-vs-content vs bookmark over-performance (5 robust form features). |
+| `bookmark_experiment_cv.md` | bk | Leave-one-author-out CV: form carries real within-author signal (~0.62). |
 
 ## The headline result
 

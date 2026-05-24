@@ -1,6 +1,6 @@
 # Does content beat form? (over-performance analysis)
 
-*Generated 2026-05-24T13:27:43.371555+00:00 from `overperformance_tweets.jsonl`.*
+*Generated 2026-05-24T14:10:40.675972+00:00 from `overperformance_tweets.jsonl`.*
 
 - **3924** timeline tweets: **571** over-performers (>=3x the author's median) / **3353** normal, across **51** authors with both classes.
 - Label is per-author, so the pooled comparison is already largely reach-controlled. AUC = P(rank an over-performer above a normal tweet).
@@ -13,7 +13,7 @@
 | content | 0.589 | 0.584 |
 | combined | 0.651 | 0.624 |
 
-**Within-author, the content composite separates over-performers better.** Both are weak — over-performance is mostly not explained by these features, consistent with round 1 (engagement is dominated by reach + luck + timing).
+**Within-author, the content composite separates over-performers better (0.58), but both are weak** — mostly not explained by these features; reach, timing and luck dominate.
 
 ## Robust features (survived the within-author paired check)
 
@@ -73,5 +73,5 @@
 2. **Heuristic content detectors.** Keyword/structure based — they under-detect (see `overperformance_qualitative.md` for what they miss).
 3. **Population is not pure AI.** Authors span markets/crypto/astrology/news; conclusions are about *this mix*, not AI Twitter specifically.
 4. **Over-performance ≠ likes.** A small account's over-performer may have few absolute likes. This measures relative pop, which is the writer-actionable part.
-5. **Composite AUCs are in-sample.** Each composite takes its feature signs from the global r on the *same* rows it scores, so the content/combined numbers are optimistic. On a held-out 50/50 split the content composite within-author is ~0.53 (not ~0.60); form stays sub-chance (~0.41). The direction (content > form) survives ~18/20 splits, but the *gap* is widest exactly at the 3x cutoff.
-6. **No single feature is a reliable lever.** Even `is_stance` (best by pooled lift, ~1.9x) is ~chance within author (AUC ~0.51). Read this analysis for the **negative** result — the text barely predicts over-performance — not for a lever.
+5. **Composite AUCs are in-sample.** Each composite takes its feature signs from the global r on the *same* rows it scores, so they are optimistic. Trust the companion leave-one-author-out experiment for the honest out-of-sample number.
+6. **A high single-feature AUC is not a reliable lever** until it also survives the within-author paired check across many authors. Read this for the **negative** result too — whether the text predicts the metric at all.

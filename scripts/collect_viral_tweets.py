@@ -81,13 +81,15 @@ def _extract_json(stdout: str):
     return None
 
 
-def run_bird(args: list[str], timeout: int = 90) -> list[dict]:
-    """Call ``bird <args> --json --plain`` and return a list of tweet dicts.
+def run_bird(args: list[str], timeout: int = 90, full: bool = False) -> list[dict]:
+    """Call ``bird <args> --json[-full] --plain`` and return a list of tweet dicts.
 
-    Returns ``[]`` on any failure (missing binary, non-zero exit, bad JSON,
-    expired cookies) so the caller can keep going with partial data.
+    ``full=True`` uses ``--json-full`` so each tweet carries a ``_raw`` field with
+    the full GraphQL node — needed for ``bookmark_count`` / ``views`` which the
+    flattened ``--json`` output omits. Returns ``[]`` on any failure (missing
+    binary, non-zero exit, bad JSON, expired cookies) so callers degrade safely.
     """
-    cmd = [BIRD_CMD, *args, "--json", "--plain"]
+    cmd = [BIRD_CMD, *args, "--json-full" if full else "--json", "--plain"]
     try:
         proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
     except (subprocess.TimeoutExpired, FileNotFoundError) as exc:
@@ -115,8 +117,60 @@ def parse_created_at(value: str):
         return None
 
 
+def _bookmark_from_raw(raw) -> "int | None":
+    """Top-level tweet's bookmark_count from a --json-full ``_raw`` blob.
+
+    The tweet's own count is at ``_raw.legacy.bookmark_count``; quoted/retweeted
+    tweets nest theirs deeper, so prefer ``legacy`` then fall back to the
+    shallowest ``bookmark_count`` found anywhere.
+    """
+    if not isinstance(raw, dict):
+        return None
+    leg = raw.get("legacy")
+    if isinstance(leg, dict) and leg.get("bookmark_count") is not None:
+        try:
+            return int(leg["bookmark_count"])
+        except (TypeError, ValueError):
+            pass
+    best = None  # (depth, value)
+    stack = [(raw, 0)]
+    while stack:
+        obj, depth = stack.pop()
+        if isinstance(obj, dict):
+            bc = obj.get("bookmark_count")
+            if bc is not None and (best is None or depth < best[0]):
+                try:
+                    best = (depth, int(bc))
+                except (TypeError, ValueError):
+                    pass
+            for v in obj.values():
+                stack.append((v, depth + 1))
+        elif isinstance(obj, list):
+            for v in obj:
+                stack.append((v, depth + 1))
+    return best[1] if best else None
+
+
+def _views_from_raw(raw) -> "int | None":
+    """Impression count from ``_raw.views.count`` (string -> int), if present."""
+    if not isinstance(raw, dict):
+        return None
+    views = raw.get("views")
+    if isinstance(views, dict):
+        try:
+            return int(views.get("count"))
+        except (TypeError, ValueError):
+            return None
+    return None
+
+
 def flatten(tweet: dict, label: str | None = None) -> dict | None:
-    """Project a bird tweet object onto the flat record we persist."""
+    """Project a bird tweet object onto the flat record we persist.
+
+    When the tweet came from ``--json-full`` (carries ``_raw``), also captures
+    ``bookmark_count`` and ``views_count``; both are ``None`` for plain ``--json``.
+    The bulky ``_raw`` itself is never persisted.
+    """
     tid = str(tweet.get("id") or "")
     text = tweet.get("text") or ""
     if not tid or not text:
@@ -144,6 +198,8 @@ def flatten(tweet: dict, label: str | None = None) -> dict | None:
         "has_media": bool(media),
         "media_types": sorted({m.get("type") for m in media if m.get("type")}),
         "is_quote": bool(tweet.get("quotedTweet")),
+        "bookmark_count": _bookmark_from_raw(tweet.get("_raw")),
+        "views_count": _views_from_raw(tweet.get("_raw")),
         "label": label if label is not None else ("high" if like >= HIGH_LIKE_THRESHOLD else "low"),
     }
 

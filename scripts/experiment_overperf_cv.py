@@ -119,9 +119,9 @@ def within_author_auc(preds: list[float], labels: list[float], authors: list[str
     return num / den if den else 0.5
 
 
-def load():
+def load(data_path=DATA, label_field="overperformer"):
     rows = []
-    with open(DATA, encoding="utf-8") as fh:
+    with open(data_path, encoding="utf-8") as fh:
         for line in fh:
             line = line.strip()
             if not line:
@@ -132,7 +132,7 @@ def load():
             feats.update(extract_content_features(r.get("text", "")))
             rows.append({
                 "feats": feats,
-                "y": 1.0 if r.get("overperformer") else 0.0,
+                "y": 1.0 if r.get(label_field) else 0.0,
                 "author": r.get("author_username") or "?",
             })
     return rows
@@ -173,7 +173,15 @@ def evaluate(rows, feat_names):
 
 
 def main():
-    rows = load()
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--data", default=str(DATA), help="JSONL dataset")
+    ap.add_argument("--label", default="overperformer", help="boolean field for the positive class")
+    ap.add_argument("--out-md", default=str(OUT_MD))
+    args = ap.parse_args()
+    out_md = Path(args.out_md).resolve()
+
+    rows = load(args.data, args.label)
     n_over = sum(1 for r in rows if r["y"] == 1)
     authors = {r["author"] for r in rows}
     results = {name: evaluate(rows, feats) for name, feats in SETS.items()}
@@ -203,39 +211,42 @@ def main():
     lines.append("## Verdict")
     lines.append("")
     allr, formr, contentr = results["all"], results["form"], results["content"]
-    above = "above chance" if allr["loo_global_auc"] > 0.55 else "near chance"
+    aw = allr["loo_within_author_auc"]
+    strength = ("a real (if modest) signal" if aw >= 0.58
+                else "above chance" if allr["loo_global_auc"] > 0.55 else "near chance")
     lines.append(f"- The full feature model, scored honestly out-of-sample, reaches **LOO global "
-                 f"AUC {allr['loo_global_auc']:.3f}**, within-author **{allr['loo_within_author_auc']:.3f}** "
-                 f"— weak, but {above}. (Within-author is the honest number for a writer; the "
-                 "higher global AUC is partly between-author — predicting *which accounts* pop more.)")
-    if formr["loo_within_author_auc"] < 0.48:
-        lines.append(f"- **Form features *anti*-generalize** (LOO within-author "
-                     f"{formr['loo_within_author_auc']:.3f} < 0.5): trained on other authors they "
-                     "rank a held-out author's hits *below* their flops — between-author artifacts "
-                     "that reverse within author. (NB: in small samples this can be noise.)")
-    else:
+                 f"AUC {allr['loo_global_auc']:.3f}**, within-author **{aw:.3f}** — {strength}. "
+                 "(Within-author is the honest number for a writer; global mixes in between-author "
+                 "effects — predicting *which accounts* pop more.)")
+    fw = formr["loo_within_author_auc"]
+    if fw < 0.48:
+        lines.append(f"- **Form features *anti*-generalize** (LOO within-author {fw:.3f} < 0.5): "
+                     "trained on other authors they rank a held-out author's hits *below* their "
+                     "flops — between-author artifacts that reverse within author. (NB: in small "
+                     "samples this can be noise.)")
+    elif fw < 0.57:
         lines.append(f"- **Form has ~no within-author signal** out-of-sample (LOO within-author "
-                     f"{formr['loo_within_author_auc']:.3f} ≈ chance); its higher global AUC "
-                     f"({formr['loo_global_auc']:.3f}) is between-author — it tracks which account "
-                     "tweeted, not which tweet pops.")
-    lines.append(f"- Content within-author out-of-sample: {contentr['loo_within_author_auc']:.3f} "
-                 "(weak).")
+                     f"{fw:.3f} ≈ chance); its global AUC ({formr['loo_global_auc']:.3f}) is "
+                     "between-author — it tracks which account tweeted, not which tweet pops.")
+    else:
+        lines.append(f"- **Form carries real within-author signal** (LOO within-author {fw:.3f}) — "
+                     "surface features (length / media / numbers / …) predict this metric *within* "
+                     "an author, not just across accounts. This is the actionable part.")
+    lines.append(f"- Content within-author out-of-sample: {contentr['loo_within_author_auc']:.3f}.")
     lines.append(f"- The in-sample→LOO drop (all: {allr['in_sample_auc']:.3f} → "
                  f"{allr['loo_global_auc']:.3f} global) is how much the naive fit was memorizing "
                  "*which author* tweeted rather than what makes a tweet pop.")
-    lines.append("- Empirical ceiling for *text-only* over-performance prediction on this corpus: "
-                 "a weak but real out-of-sample signal (within-author ~"
-                 f"{allr['loo_within_author_auc']:.2f}); reach, timing and luck still dominate. "
-                 "No single feature clears the robustness bar; the most consistent (but small) "
-                 "tendency in the companion analysis is attaching **media**.")
-    OUT_MD.write_text("\n".join(lines), encoding="utf-8")
+    lines.append(f"- Out-of-sample ceiling for *text-only* prediction on this corpus: within-author "
+                 f"~{aw:.2f}. See the companion analysis for which features (if any) survive the "
+                 "within-author check; reach, timing and luck carry the rest.")
+    out_md.write_text("\n".join(lines), encoding="utf-8")
 
     print(f"LOO-CV over {len(rows)} tweets / {len(authors)} authors:")
     for name in ("form", "content", "all"):
         r = results[name]
         print(f"  {name:<8} in-sample={r['in_sample_auc']:.3f}  "
               f"LOO_global={r['loo_global_auc']:.3f}  LOO_within={r['loo_within_author_auc']:.3f}")
-    print(f"wrote {OUT_MD.relative_to(REPO_ROOT)}")
+    print(f"wrote {out_md.relative_to(REPO_ROOT)}")
 
 
 if __name__ == "__main__":
