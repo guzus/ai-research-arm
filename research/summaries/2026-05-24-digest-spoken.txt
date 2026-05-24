@@ -1,0 +1,11 @@
+Speaker 1: Sunday, May twenty-fourth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic's next model has a name, and it leaked — strings for claude-mythos-one-preview surfaced in the UI, scoped specifically to Claude Code and Claude Security. This is not a launch, just a very public slip.
+Speaker 1: Pope Leo the Fourteenth's AI encyclical "Magnifica Humanitas" drops tomorrow, and Anthropic's Chris Olah is on the Vatican panel that shaped it.
+Speaker 2: That is not a sentence I expected to say in twenty twenty-six, but here we are.
+Speaker 1: On the macro front, SemiAnalysis flags that US consumer sentiment has hit its worst reading since nineteen fifty-two, and AI job fear is now a [emphasis] measurable macro signal [/emphasis] showing up in the hard data.
+Speaker 2: OpenAI filed a confidential S-1 on Friday, valuing the company somewhere between [emphasis] eight hundred fifty-two billion and one trillion dollars [/emphasis], with a negative one hundred twenty-two percent operating margin in Q1.
+Speaker 1: To be clear, that means they are spending more than twice what they are taking in.
+Speaker 2: [dramatic_pause] One trillion dollar valuation, two-to-one burn rate.
+Speaker 1: Claude Opus four point seven also topped the new WildClawBench at sixty-two point two percent — a quiet win on an otherwise quiet Sunday, no frontier model shipped and all labs dark.
+Speaker 2: [high_energy] And the weekend's viral moment — a meme telling people to write a ten-page paper without ChatGPT hit one hundred sixty thousand likes.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
