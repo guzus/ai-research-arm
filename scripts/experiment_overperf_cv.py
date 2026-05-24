@@ -32,8 +32,9 @@ FORM = [f for f in FEATURE_NAMES if f != "word_count"]  # drop the length duplic
 CONTENT = list(CONTENT_FEATURE_NAMES)
 SETS = {"form": FORM, "content": CONTENT, "all": FORM + CONTENT}
 
-LR = 0.3          # learning rate
-ITERS = 800       # gradient-descent steps
+LR = 0.4          # learning rate
+ITERS = 300       # gradient-descent steps (AUC ranking is stable well before 800;
+                  # trimmed so leave-one-author-out stays tractable as authors grow)
 L2 = 1.0          # ridge penalty (helps with collinear binary features)
 
 
@@ -225,8 +226,8 @@ def main():
     lines.append("- Empirical ceiling for *text-only* over-performance prediction on this corpus: "
                  "a weak but real out-of-sample signal (within-author ~"
                  f"{allr['loo_within_author_auc']:.2f}); reach, timing and luck still dominate. "
-                 "The one within-author-robust feature in the companion analysis is attaching "
-                 "**media**.")
+                 "No single feature clears the robustness bar; the most consistent (but small) "
+                 "tendency in the companion analysis is attaching **media**.")
     OUT_MD.write_text("\n".join(lines), encoding="utf-8")
 
     print(f"LOO-CV over {len(rows)} tweets / {len(authors)} authors:")

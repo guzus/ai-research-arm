@@ -14,10 +14,10 @@ Two questions, two functions:
   account."
 - ``assess_overperformance`` (round 2) — the *better* question: what (weakly)
   helps a tweet beat its OWN author's median? On the larger AI-focused corpus
-  (1831 tweets, 28 authors), the one within-author-robust lever is **attaching
-  media** (over-performers 73% vs 60%; 22/24 authors). Text form (length/caps)
-  and content moves (stance/question) are ~chance within author. Out-of-sample
-  the whole model is weak (LOO within-author ~0.54); reach, timing and luck
+  (3924 tweets, 57 authors) NO single feature is robust; attaching **media** is
+  the most *consistent* (but small) edge (over-performers 72% vs 65%; ~74% of
+  authors). Text form and content moves are ~chance within author. Out-of-sample
+  the whole model is weak (LOO within-author ~0.60); reach, timing and luck
   dominate. See research/twitter-viral/SYNTHESIS.md.
 
 Grounding: built from `research/twitter-viral/viral_tweets.jsonl` (677 tweets,
@@ -243,11 +243,12 @@ def score_tweet(text: str, *, has_media: bool = False, is_quote: bool = False) -
 # ---------------------------------------------------------------------------
 # Round 2: over-performance guidance (what helps a tweet beat its OWN baseline)
 # ---------------------------------------------------------------------------
-# The one within-author-robust lever on the larger AI-focused corpus is attaching
-# MEDIA (over-performers 73% vs 60% of an author's normal tweets; 22/24 authors
-# agree; lift 1.21). Everything below is ~chance within author — reported for
-# transparency, never pushed. (Stance, round 2's earlier "best content lever," did
-# not survive the bigger sample: lift ~1.5x pooled, AUC ~0.51 within author.)
+# On the larger AI-focused corpus (3924 tweets, 51 dual authors) NO feature is
+# robust. Attaching MEDIA is the most *consistent* direction (over-performers 72%
+# vs 65% of an author's normal tweets; ~74% of authors lean positive) but the
+# effect is small (lift 1.11) and shrank as the sample grew. Everything below is
+# ~chance within author. We still surface media as the least-bad nudge, labeled
+# honestly. (Stance, an earlier "best content lever," did not survive: AUC ~0.50.)
 _WEAK_CONTENT = [
     ("is_stance", "stance",
      "First-person stance / correction — the qualitative read liked it, but ~chance "
@@ -263,10 +264,10 @@ def assess_overperformance(text: str, *, has_media: bool = False, is_quote: bool
     """Round-2 guidance: what (weakly) helps a tweet beat its AUTHOR'S baseline.
 
     Unlike ``score_tweet`` (raw-likes conformance), this reflects the
-    reach-controlled analysis on the larger AI-focused corpus. The one
-    within-author-robust lever is **attaching media** (image/chart/video);
-    surface text form (length/caps) is ~chance within author, and the content
-    moves (stance/question/news) did not survive the bigger sample. Returns
+    reach-controlled analysis on the larger AI-focused corpus. No feature is
+    robust; the most *consistent* (but small) edge is **attaching media**
+    (image/chart/video); surface text form (length/caps) is ~chance within
+    author, and content moves (stance/question/news) did not survive. Returns
     levers present, a suggestion if media is missing, the features that do NOT
     help (anti-levers), and an honest note. A nudge, never a prediction.
     """
@@ -274,18 +275,19 @@ def assess_overperformance(text: str, *, has_media: bool = False, is_quote: bool
     levers_present: list[dict[str, Any]] = []
     suggestions: list[str] = []
 
-    # PRIMARY (and only robust-ish) lever: attaching media.
+    # The most consistent (but small, non-robust) direction: attaching media.
     if has_media:
         levers_present.append({
-            "name": "media", "strength": "robust(modest)",
-            "note": ("Has media (image/chart/video) — the one within-author-robust lever "
-                     "(73% of over-performers vs 60% of normal; 22/24 authors agree; lift 1.21)."),
+            "name": "media", "strength": "weak(consistent)",
+            "note": ("Has media (image/chart/video) — the most consistent direction "
+                     "(72% of over-performers vs 65% of normal; ~74% of authors lean positive), "
+                     "but small (lift 1.11) and not robust."),
         })
     else:
         suggestions.append(
-            "Attach a visual — chart, screenshot, or short demo clip. Media is the only "
-            "within-author-robust lever found (over-performers 73% vs 60%; holds for 22/24 "
-            "authors), though still modest (lift ~1.2x)."
+            "Attach a visual — chart, screenshot, or short demo clip. It's the most consistent "
+            "(if small) edge: present in 72% of over-performers vs 65% of normal, leaning "
+            "positive for ~74% of authors (lift ~1.1x). Nothing here is a strong lever."
         )
 
     # Weak/unproven content tendencies — reported if present, never pushed.
@@ -303,10 +305,10 @@ def assess_overperformance(text: str, *, has_media: bool = False, is_quote: bool
         ),
         "note": (
             "Reach-controlled view: text predicts over-performance only weakly. Out-of-sample "
-            "(leave-one-author-out) AUC ~0.54 within-author / ~0.63 global (much of the global "
-            "is between-author). Attaching media is the one within-author-robust lever; "
-            "everything else — length, caps, stance, questions — is ~chance within author. "
-            "Reach, timing and luck dominate. A nudge, NOT a prediction."
+            "(leave-one-author-out, 51 authors) AUC ~0.60 within-author / ~0.65 global (the "
+            "global is partly between-author). No single feature is robust; attaching media is "
+            "the most consistent (but small) edge, and length/caps/stance/questions are ~chance "
+            "within author. Reach, timing and luck dominate. A nudge, NOT a prediction."
         ),
         "has_media": bool(has_media),
         "is_quote": bool(is_quote),

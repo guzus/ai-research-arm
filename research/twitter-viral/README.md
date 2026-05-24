@@ -21,7 +21,7 @@ tweet beat its own author's baseline).
 | `analysis.md` / `feature_weights.json` | 1 | High-vs-low form-feature comparison (global r + within-author paired Δ). |
 | `analyst_review.md` | 1 | Independent stress-test — overturns the naive "ALL-CAPS" conclusion. |
 | `verifier_validation.md` | 1 | Independent AUC check of the verifier. |
-| `overperformance_tweets.jsonl` | 2 | 1831 timeline tweets (28 AI-focused authors, pulled via birdy) labeled by `overperformance_ratio` (likes ÷ author median) + `overperformer`. |
+| `overperformance_tweets.jsonl` | 2 | 3924 timeline tweets (57 AI-focused authors, pulled via birdy) labeled by `overperformance_ratio` (likes ÷ author median) + `overperformer`. |
 | `author_baselines.json` | 2 | Per-author median likes + counts (the reach control). |
 | `overperformance_analysis.md` / `overperformance_weights.json` | 2 | Form-vs-content comparison vs over-performance (the reach-controlled question). |
 | `overperformance_qualitative.md` | 2 | Qualitative read of the actual top/bottom over-performer texts + codeable detectors. |
@@ -35,12 +35,14 @@ Short version (full story in `SYNTHESIS.md`):
   AUC ~0.82; the whole text tops out far lower.
 - **Round 1's text levers were artifacts.** "Longer + an ALL-CAPS word" didn't
   survive controlling for the author (ALL-CAPS was ~97% tickers/acronyms).
-- **The one lever that holds up is attaching MEDIA** (round 2, 1831 tweets,
-  reach-controlled): over-performers carry media **73% vs 60%**, for **22/24
-  authors** — modest (lift ~1.2×) but the only feature that clears the bar.
-- **Wording barely matters.** Out-of-sample (leave-one-author-out) a full text
-  model predicts over-performance at only **~0.54** within-author. Length, caps,
-  stance, questions: ~chance. Reach, timing and luck dominate.
+- **The most consistent edge is attaching MEDIA** (round 2, 3924 tweets,
+  reach-controlled): over-performers carry media **72% vs 65%**, leaning positive
+  for **~74% of authors** — but small (lift ~1.1×), and no feature clears the
+  robustness bar.
+- **Wording barely matters.** Out-of-sample (leave-one-author-out, 51 authors) a
+  full text model predicts over-performance at only **~0.60** within-author.
+  Length, caps, stance, questions: ~chance individually. Reach, timing and luck
+  dominate.
 
 ## Reproduce / refresh
 

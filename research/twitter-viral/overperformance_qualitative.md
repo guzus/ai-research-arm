@@ -1,9 +1,10 @@
 # Over-performance: qualitative read of what actually pops
 
 > **Historical note:** this read analyzed the original 562-tweet cut. The corpus
-> later grew ~3× (1831 tweets, AI-focused, via birdy). The quantitative winner on
-> the bigger data is **attaching media**; the rhetorical patterns below remain
-> useful color but are weak/topic-shaped quantitatively. See `SYNTHESIS.md`.
+> later grew to 3924 tweets / 57 authors (AI-focused, via birdy). On the bigger
+> data **no feature is robust**; attaching media is the most *consistent* (but
+> small) signal. The rhetorical patterns below remain useful color but are
+> weak/topic-shaped quantitatively. See `SYNTHESIS.md`.
 
 **Method.** Reframed "viral" as `overperformance_ratio = likes ÷ author_median_likes`
 to strip the follower confound. Read the *verbatim text* of the top ~40 over-performers
