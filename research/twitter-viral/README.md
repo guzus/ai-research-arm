@@ -25,6 +25,7 @@ tweet beat its own author's baseline).
 | `author_baselines.json` | 2 | Per-author median likes + counts (the reach control). |
 | `overperformance_analysis.md` / `overperformance_weights.json` | 2 | Form-vs-content comparison vs over-performance (the reach-controlled question). |
 | `overperformance_qualitative.md` | 2 | Qualitative read of the actual top/bottom over-performer texts + codeable detectors. |
+| `experiment_cv.md` | 2 | Leave-one-author-out CV — the honest out-of-sample ceiling (form *anti*-generalizes; text barely predicts). |
 
 ## The headline result
 
@@ -50,6 +51,7 @@ python3 scripts/analyze_viral_tweets.py        # -> analysis.md + feature_weight
 # Round 2 — reach-controlled over-performance study
 python3 scripts/enrich_overperformance.py      # -> overperformance_tweets.jsonl (reuses round-1 timelines; --refresh to re-pull)
 python3 scripts/analyze_overperformance.py     # -> overperformance_analysis.md (offline; form vs content)
+python3 scripts/experiment_overperf_cv.py      # -> experiment_cv.md (leave-one-author-out CV; honest ceiling)
 
 # Score / assess a draft (pure, offline)
 python3 scripts/tweet_virality_verifier.py "your draft" [--media] [--quote]   # raw-likes conformance

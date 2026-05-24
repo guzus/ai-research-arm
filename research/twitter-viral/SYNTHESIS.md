@@ -40,6 +40,27 @@ the author's own baseline.** That removes the follower confound *by construction
 (every comparison is within one person) and, by using only timeline tweets, also
 kills the "Top"-search selection bias that inflated round 1.
 
+## The honest ceiling (leave-one-author-out CV)
+
+To kill any in-sample optimism, a logistic regression was cross-validated
+**leave-one-author-out** — every tweet scored by a model that never saw its
+author (`experiment_cv.md`). Out-of-sample:
+
+| feature set | in-sample AUC | LOO global | LOO within-author |
+|---|--:|--:|--:|
+| form | 0.64 | 0.36 | **0.31** |
+| content | 0.62 | 0.41 | **0.54** |
+| all | 0.70 | 0.36 | 0.38 |
+
+The in-sample 0.70 was almost entirely the model memorizing *which account*
+tweeted — it collapses to ~chance out-of-sample. **Form features actively
+*anti*-generalize** (within-author 0.31 < 0.5): a model trained on other authors
+ranks a new author's hits *below* their flops, because the pooled length/caps
+correlations are between-author artifacts that reverse within author. Content is
+the only set that generalizes at all, and barely (0.54). The empirical ceiling:
+**text alone barely predicts over-performance, and surface form is a confound,
+not a lever.**
+
 ## What over-performs (reach-controlled, all weak — see `overperformance_analysis.md`)
 
 Directional levers (none robust; treat as faint nudges):
