@@ -1,0 +1,16 @@
+AI News - 2026-05-24
+
+(Quiet weekend; fills the missed May 22-23 gap.)
+
+TOP STORIES:
+• OpenAI reasoning model disproved the 80-yr-old Erdős unit-distance conjecture — Gowers: "a milestone in AI mathematics"
+• Anthropic's ~$1.25B/mo (~$15B/yr) Colossus compute deal with xAI/SpaceX surfaced in SpaceX's IPO filing (to 2029)
+• White House pulled Trump's AI executive order hours before signing after CEO lobbying
+• Anthropic tracking to first profitable quarter; >$30B round at >$900B closing next week (would top OpenAI)
+
+KEY NUMBERS:
+• Anthropic Q2 rev ~$10.9B (2x Q1's $4.8B), ~$559M op profit
+• Round: >$30B at >$900B (Sequoia/Dragoneer/Altimeter/Greenoaks)
+• Socket $60M Series C at $1B; ElevenLabs licenses ~200K audiobooks ($11/mo vs Audible)
+
+Full report on GitHub.
