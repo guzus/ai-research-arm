@@ -3398,21 +3398,49 @@ jobs:
             echo "__END_TOPIC__"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Send Telegram notification
+      - name: Send notification via hooker
         if: success() && steps.outfile.outputs.has_file == 'true' && steps.push.outputs.pushed == 'true'
         continue-on-error: true
-        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: html
-          message: |
-            🧪 <b>Generative Research Published</b>
-
-            📝 Topic: ${{ steps.tg-prep.outputs.safe_topic }}
-            🤖 Backend: ${{ steps.params.outputs.backend }}
-
-            📄 <a href="https://github.com/${{ github.repository }}/blob/main/research/generative/${{ steps.outfile.outputs.file }}">View on GitHub</a>
+        # Publish the notification to hooker (hooker.guzus.xyz relays it to Telegram),
+        # so this workflow needs no Telegram bot token and no Docker — same
+        # POST /publish/<topic> contract as the hooker-telemetry step below. Values
+        # go via env (never inlined as ${{ }} in run:) to avoid shell injection; the
+        # topic is already HTML-escaped by tg-prep; jq builds the JSON so every value
+        # is safely escaped.
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          TG_TOPIC: ${{ steps.tg-prep.outputs.safe_topic }}
+          TG_BACKEND: ${{ steps.params.outputs.backend }}
+          TG_FILE: ${{ steps.outfile.outputs.file }}
+          TG_REPO: ${{ github.repository }}
+          GH_RUN_ID: ${{ github.run_id }}
+          GH_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+            echo "Hooker credentials missing — skipping notification"
+            exit 0
+          fi
+          ARTICLE_URL="https://github.com/${TG_REPO}/blob/main/research/generative/${TG_FILE}"
+          BODY=$(printf '📝 Topic: %s\n🤖 Backend: %s' "${TG_TOPIC}" "${TG_BACKEND}")
+          PAYLOAD=$(jq -n \
+            --arg title "🧪 Generative Research Published" \
+            --arg text "$BODY" \
+            --arg url "$ARTICLE_URL" \
+            '{
+              title: $title,
+              text: $text,
+              priority: 3,
+              tags: ["ara", "generative-research"],
+              parse_mode: "HTML",
+              reply_markup: { inline_keyboard: [[{ text: "View on GitHub", url: $url }]] }
+            }')
+          curl -fsS --max-time 30 -X POST "${HOOKER_URL%/}/publish/ara-research" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: generative-research-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
+            --data-binary "$PAYLOAD" >/dev/null
 
       # Cleanup the staged untrusted inputs at the end of the job. Runs on
       # success and failure (if: always()) so a failed run doesn't leave the
