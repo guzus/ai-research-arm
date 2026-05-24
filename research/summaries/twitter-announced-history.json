@@ -6952,5 +6952,26 @@
     "headline": "SECOND ANTHROPIC LEAK: \"CLAUDE-OPUS-4.8\" SPOTTED ON GOOGLE VERTEX \u2014 UNCONFIRMED, NEXT WAVE APPEARS TO BE QUEUING",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2058226072596971694"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-24 12:36 UTC",
+    "headline": "XAI OPENS GROK BUILD CODING CLI TO ALL SUPERGROK AND X PREMIUM USERS \u2014 ONE-COMMAND INSTALL, NOW DOUBLES AS READ-ONLY X CLIENT",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2058513422694670684"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-24 12:36 UTC",
+    "headline": "AMD COMMITS OVER $10B TO TAIWAN AI INFRASTRUCTURE \u2014 LISA SU TARGETS ADVANCED PACKAGING, SUBSTRATES TO SECURE SUPPLY THROUGH 2029",
+    "source": "@dnystedt",
+    "url": "https://x.com/dnystedt/status/2058090523626537276"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-24 12:36 UTC",
+    "headline": "KLING AI VIDEO HITS INDUSTRIAL FILM PRODUCTION \u2014 'HOUSE OF DAVID' CITED AS FIRST HOLLYWOOD SHOW TO OPENLY USE IT AT SCALE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2058490137139413436"
   }
 ]
