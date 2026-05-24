@@ -166,20 +166,50 @@ jobs:
             echo "content=No summary available" >> $GITHUB_OUTPUT
           fi
 
-      - name: Send Telegram notification
+      # Notify via hooker (relays to Telegram). Replaces the Docker-based
+      # appleboy/telegram-action, which fails on the Cloud Run runner.
+      # hooker handles the bot token, so this job no longer needs
+      # TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID.
+      - name: Send notification via hooker
         if: success() && github.event_name == 'workflow_dispatch'
         continue-on-error: true
-        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: markdown
-          message: |
-            📄 *arXiv AI Papers*
-
-            ${{ steps.summary.outputs.content }}
-
-            📄 [Full Report on GitHub](https://github.com/${{ github.repository }}/blob/main/research/arxiv/${{ steps.date.outputs.date }}-papers.md)
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          SUMMARY: ${{ steps.summary.outputs.content }}
+          REPO: ${{ github.repository }}
+          DATE: ${{ steps.date.outputs.date }}
+          GH_RUN_ID: ${{ github.run_id }}
+          GH_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+            echo "Hooker credentials missing — skipping notification"
+            exit 0
+          fi
+          # HTML-escape the untrusted summary before it goes into a
+          # parse_mode:"HTML" body. Order matters: escape & first.
+          SAFE=$(printf '%s' "$SUMMARY" \
+            | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
+          REPORT_URL="https://github.com/${REPO}/blob/main/research/arxiv/${DATE}-papers.md"
+          jq -n \
+            --arg title "📄 arXiv AI Papers" \
+            --arg text "$SAFE" \
+            --arg btn "Full Report on GitHub" \
+            --arg url "$REPORT_URL" \
+            '{
+              title: $title,
+              text: $text,
+              priority: 3,
+              tags: ["ara", "arxiv"],
+              parse_mode: "HTML",
+              reply_markup: { inline_keyboard: [[{ text: $btn, url: $url }]] }
+            }' > /tmp/hooker-arxiv.json
+          curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/ara-research" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: arxiv-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
+            --data-binary "@/tmp/hooker-arxiv.json"
 
       - name: Publish Hooker workflow telemetry
         if: always()
