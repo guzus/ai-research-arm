@@ -67,11 +67,11 @@ _NEGATION = re.compile(
     r"\b(no|not|never|stop|fail\w*|wrong|worst|scam|hate|broke\w*|dead|kill\w*|"
     r"don'?t|can'?t|won'?t|nobody|nothing|isn'?t|aren'?t)\b",
     re.IGNORECASE)
-# is_stance: a first-person claim or a correction of someone's take. The best
-# content lever by pooled lift (~1.9x), but barely real: after removing a regex
-# artifact (a bare "actually" intensifier had inflated it ~27%), it is ~chance
-# WITHIN author (AUC ~0.51, paired sign even leans negative). The defensible
-# round-2 finding is negative — see overperformance_analysis.md.
+# is_stance: a first-person claim or a correction of someone's take. The
+# qualitative read liked it, but quantitatively it is ~chance WITHIN author on
+# the larger sample (lift ~1.5x pooled, AUC ~0.51), after removing a bare
+# "actually" regex artifact. Not a reliable lever; the one that holds up is
+# attaching media. See overperformance_analysis.md.
 # Correction phrases below are kept deliberately specific to avoid firing on
 # "actually" / "not a ..." used as ordinary intensifiers/negations.
 _STANCE_FIRST_PERSON = re.compile(

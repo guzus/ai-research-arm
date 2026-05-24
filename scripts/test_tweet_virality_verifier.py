@@ -190,17 +190,27 @@ def test_overperformance_detects_stance():
     assert not any("stance" in s.lower() for s in res["suggestions"])  # present -> not suggested
 
 
-def test_overperformance_suggests_stance_when_missing():
-    res = v.assess_overperformance(PLAIN_DRAFT)
-    assert "stance" not in {lv["name"] for lv in res["levers_present"]}
-    assert any("stance" in s.lower() for s in res["suggestions"])
+def test_overperformance_suggests_media_when_missing():
+    res = v.assess_overperformance(PLAIN_DRAFT, has_media=False)
+    assert "media" not in {lv["name"] for lv in res["levers_present"]}
+    assert any(("media" in s.lower() or "visual" in s.lower()) for s in res["suggestions"])
 
 
-def test_overperformance_does_not_reward_form():
-    """Length/caps are anti-levers here — a long shouty tweet earns no levers."""
-    res = v.assess_overperformance("THIS IS HUGE " * 30)
+def test_overperformance_media_is_primary_lever():
+    """Bigger AI corpus: attaching media is the one within-author-robust lever."""
+    with_media = v.assess_overperformance(PLAIN_DRAFT, has_media=True)
+    assert "media" in {lv["name"] for lv in with_media["levers_present"]}
+    # media must NOT be advertised as something to add when it's already there
+    assert not any("media" in s.lower() or "visual" in s.lower() for s in with_media["suggestions"])
+    # ...and media is no longer an anti-lever (round-1 said it was; bigger data flipped it)
+    assert "media" not in with_media["anti_levers"]
+
+
+def test_overperformance_does_not_reward_text_form():
+    """Length/caps are anti-levers here — a long shouty text-only tweet earns no levers."""
+    res = v.assess_overperformance("THIS IS HUGE " * 30, has_media=False)
     names = {lv["name"] for lv in res["levers_present"]}
-    assert "length" not in names and "stance" not in names
+    assert "length" not in names and "media" not in names
     assert "length" in res["anti_levers"] and "ALL-CAPS" in res["anti_levers"]
 
 

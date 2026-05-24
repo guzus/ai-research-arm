@@ -32,11 +32,34 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from statistics import median
 
-from collect_viral_tweets import OUT_DIR, REPO_ROOT, flatten, run_bird
+from collect_viral_tweets import BIRD_CMD, OUT_DIR, REPO_ROOT, flatten, run_bird
 
 SRC = OUT_DIR / "viral_tweets.jsonl"
 OUT_TWEETS = OUT_DIR / "overperformance_tweets.jsonl"
 OUT_BASE = OUT_DIR / "author_baselines.json"
+
+# AI-focused author discovery (deliberately NO "Gemini" -> avoids the zodiac
+# trap that polluted round 1). min_faves keeps it to real, active accounts; we
+# then judge each author by their OWN timeline distribution, not these hits.
+DISCOVERY_QUERIES = [
+    '(AI OR LLM OR AGI OR "AI agent") min_faves:30 since:{since} -filter:replies lang:en',
+    '(OpenAI OR Anthropic OR Claude OR GPT OR Llama OR "open source AI") '
+    'min_faves:30 since:{since} -filter:replies lang:en',
+    '("machine learning" OR "deep learning" OR "neural network" OR "AI model" OR robotics) '
+    'min_faves:30 since:{since} -filter:replies lang:en',
+]
+
+
+def discover_authors(since: str, max_pages: int) -> set[str]:
+    """Find candidate AI/tech authors via search (uses birdy's rotation)."""
+    found: set[str] = set()
+    for q in DISCOVERY_QUERIES:
+        for t in run_bird(["search", q.format(since=since), "--all", "--max-pages", str(max_pages)],
+                          timeout=180):
+            user = (t.get("author") or {}).get("username")
+            if user:
+                found.add(user)
+    return found
 
 
 def load_existing_timeline() -> dict[str, list[dict]]:
@@ -98,7 +121,11 @@ def _write_json(path: Path, obj) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--refresh", action="store_true",
-                    help="pull fresh timelines via bird instead of reusing persisted data")
+                    help="pull fresh timelines via birdy/bird instead of reusing persisted data")
+    ap.add_argument("--discover", action="store_true",
+                    help="(--refresh) also discover new AI/tech authors via search")
+    ap.add_argument("--discover-pages", type=int, default=3,
+                    help="(--discover) search pages per discovery query")
     ap.add_argument("--per-author", type=int, default=80, help="(--refresh) tweets per timeline")
     ap.add_argument("--window-days", type=int, default=30, help="(--refresh) recency window")
     ap.add_argument("--min-tweets", type=int, default=8,
@@ -112,8 +139,14 @@ def main() -> None:
     args = ap.parse_args()
 
     if args.refresh:
-        authors = sorted(load_existing_timeline().keys())[: args.max_authors]
-        print(f"[+] refreshing {len(authors)} authors via bird")
+        authors = set(load_existing_timeline().keys())
+        if args.discover:
+            since = (datetime.now(timezone.utc) - timedelta(days=7)).strftime("%Y-%m-%d")
+            found = discover_authors(since, args.discover_pages)
+            print(f"[+] discovered {len(found)} authors via search ({len(found - authors)} new)")
+            authors |= found
+        authors = sorted(authors)[: args.max_authors]
+        print(f"[+] refreshing {len(authors)} authors via {BIRD_CMD}")
         by_author = fetch_timelines(authors, args.per_author, args.window_days, args.sleep)
     else:
         by_author = load_existing_timeline()

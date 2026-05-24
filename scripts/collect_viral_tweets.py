@@ -15,11 +15,12 @@ isolates *content/form* effects -- the part a writer can actually act on.
 
 Network boundary
 ----------------
-This is the only networked script in the set: it shells out to the ``bird``
-CLI (X/Twitter). All bird calls degrade gracefully to empty results, per repo
-convention (``--json`` + fallback). Pure, offline analysis lives in
-``analyze_viral_tweets.py``; the verifier (``tweet_virality_verifier.py``) is
-pure and never touches the network.
+This is the only networked script in the set: it shells out to ``birdy`` when
+present (a multi-account proxy that rotates X accounts to cut rate-limit risk),
+else plain ``bird`` (override via ``ARA_BIRD_CMD``). All calls degrade gracefully
+to empty results, per repo convention (``--json`` + fallback). Offline analysis
+lives in ``analyze_viral_tweets.py``; the verifier (``tweet_virality_verifier.py``)
+is pure and never touches the network.
 
 Usage
 -----
@@ -31,6 +32,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
 import time
@@ -39,6 +41,10 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = REPO_ROOT / "research" / "twitter-viral"
+
+# Prefer birdy (rotates across multiple X accounts -> ~Nx the rate-limit
+# headroom) when it's on PATH; fall back to plain bird. Override with ARA_BIRD_CMD.
+BIRD_CMD = os.environ.get("ARA_BIRD_CMD") or ("birdy" if shutil.which("birdy") else "bird")
 
 # AI/tech topic queries. Deliberately broad: we want variance in *how* viral
 # AI-adjacent tweets are written, not a narrow keyword slice. Each is formatted
@@ -81,11 +87,11 @@ def run_bird(args: list[str], timeout: int = 90) -> list[dict]:
     Returns ``[]`` on any failure (missing binary, non-zero exit, bad JSON,
     expired cookies) so the caller can keep going with partial data.
     """
-    cmd = ["bird", *args, "--json", "--plain"]
+    cmd = [BIRD_CMD, *args, "--json", "--plain"]
     try:
         proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
     except (subprocess.TimeoutExpired, FileNotFoundError) as exc:
-        print(f"  ! bird error: {exc}", file=sys.stderr)
+        print(f"  ! {BIRD_CMD} error: {exc}", file=sys.stderr)
         return []
     if proc.returncode != 0:
         print(f"  ! bird rc={proc.returncode}: {proc.stderr.strip()[:200]}", file=sys.stderr)

@@ -1,142 +1,184 @@
 {
-  "generated_at": "2026-05-24T09:37:13.990156+00:00",
-  "source": "persisted-timeline",
+  "generated_at": "2026-05-24T12:38:16.315694+00:00",
+  "source": "bird-refresh",
   "params": {
     "min_tweets": 8,
     "floor": 5.0,
     "overperform_ratio": 3.0,
-    "window_days": 7
+    "window_days": 30
   },
-  "n_authors": 21,
-  "n_tweets": 562,
-  "n_overperformers": 81,
-  "n_dual_authors": 18,
+  "n_authors": 28,
+  "n_tweets": 1831,
+  "n_overperformers": 332,
+  "n_dual_authors": 24,
   "authors": {
-    "shawtyastrology": {
-      "median_likes": 365.5,
-      "n_tweets": 36,
-      "max_likes": 1516,
-      "min_likes": 36
+    "0xCan24": {
+      "median_likes": 201.5,
+      "n_tweets": 90,
+      "max_likes": 502,
+      "min_likes": 2
     },
-    "yacineMTB": {
-      "median_likes": 145.5,
-      "n_tweets": 22,
-      "max_likes": 5167,
-      "min_likes": 14
-    },
-    "WhaleFactor": {
-      "median_likes": 156.0,
-      "n_tweets": 38,
-      "max_likes": 235,
-      "min_likes": 25
-    },
-    "Cointelegraph": {
-      "median_likes": 255,
-      "n_tweets": 37,
-      "max_likes": 1240,
+    "0xZane_": {
+      "median_likes": 68.0,
+      "n_tweets": 98,
+      "max_likes": 129,
       "min_likes": 1
     },
-    "jane_tarot": {
-      "median_likes": 7,
-      "n_tweets": 29,
-      "max_likes": 128,
-      "min_likes": 0
-    },
-    "RoundtableSpace": {
-      "median_likes": 79,
-      "n_tweets": 37,
-      "max_likes": 238,
-      "min_likes": 41
-    },
-    "StockSavvyShay": {
-      "median_likes": 455,
-      "n_tweets": 27,
-      "max_likes": 2079,
-      "min_likes": 19
-    },
-    "cremieuxrecueil": {
-      "median_likes": 69.0,
-      "n_tweets": 28,
-      "max_likes": 1524,
-      "min_likes": 4
-    },
-    "MaxBlumenthal": {
-      "median_likes": 2580,
-      "n_tweets": 17,
-      "max_likes": 7194,
-      "min_likes": 357
-    },
-    "sniffalt": {
-      "median_likes": 305,
-      "n_tweets": 15,
-      "max_likes": 1055,
-      "min_likes": 73
-    },
-    "GPrime85": {
-      "median_likes": 1517,
-      "n_tweets": 21,
-      "max_likes": 48110,
-      "min_likes": 113
-    },
-    "REDBOXINDIA": {
-      "median_likes": 119.5,
-      "n_tweets": 38,
-      "max_likes": 670,
-      "min_likes": 25
-    },
-    "FirstSquawk": {
-      "median_likes": 100,
-      "n_tweets": 39,
-      "max_likes": 2798,
-      "min_likes": 32
-    },
-    "KIT_Game0verse": {
-      "median_likes": 15.5,
-      "n_tweets": 28,
-      "max_likes": 225,
+    "AILeaksAndNews": {
+      "median_likes": 13,
+      "n_tweets": 41,
+      "max_likes": 200,
       "min_likes": 3
     },
-    "stocktalkweekly": {
-      "median_likes": 306.5,
-      "n_tweets": 22,
-      "max_likes": 697,
-      "min_likes": 125
+    "ANI": {
+      "median_likes": 14,
+      "n_tweets": 85,
+      "max_likes": 1364,
+      "min_likes": 0
     },
-    "garrytan": {
-      "median_likes": 291.0,
-      "n_tweets": 18,
-      "max_likes": 2314,
-      "min_likes": 17
+    "APBear76": {
+      "median_likes": 6,
+      "n_tweets": 49,
+      "max_likes": 39,
+      "min_likes": 0
     },
-    "stallseok": {
-      "median_likes": 252,
-      "n_tweets": 13,
-      "max_likes": 1108,
-      "min_likes": 1
+    "ARafayGadit": {
+      "median_likes": 129.5,
+      "n_tweets": 48,
+      "max_likes": 360,
+      "min_likes": 19
     },
-    "QueenMab87": {
-      "median_likes": 69.5,
-      "n_tweets": 28,
-      "max_likes": 18721,
-      "min_likes": 11
+    "Adams_Tech_AI": {
+      "median_likes": 44.0,
+      "n_tweets": 96,
+      "max_likes": 7606,
+      "min_likes": 0
     },
-    "darvasboxtrader": {
-      "median_likes": 297.0,
-      "n_tweets": 36,
-      "max_likes": 2002,
-      "min_likes": 81
+    "AesirMalos": {
+      "median_likes": 153,
+      "n_tweets": 25,
+      "max_likes": 875,
+      "min_likes": 38
     },
-    "TomFitton": {
-      "median_likes": 603.5,
+    "AiTraceRoot_Ai": {
+      "median_likes": 9.5,
       "n_tweets": 20,
-      "max_likes": 5009,
-      "min_likes": 75
+      "max_likes": 145,
+      "min_likes": 0
     },
-    "Kadimu174Ai": {
-      "median_likes": 312,
-      "n_tweets": 13,
-      "max_likes": 1203,
-      "min_likes": 48
+    "Av1dlive": {
+      "median_likes": 36.5,
+      "n_tweets": 68,
+      "max_likes": 3617,
+      "min_likes": 0
+    },
+    "BossMon_02": {
+      "median_likes": 130.0,
+      "n_tweets": 100,
+      "max_likes": 257,
+      "min_likes": 22
+    },
+    "BreannaMorello": {
+      "median_likes": 435,
+      "n_tweets": 71,
+      "max_likes": 21448,
+      "min_likes": 38
+    },
+    "Cointelegraph": {
+      "median_likes": 242,
+      "n_tweets": 99,
+      "max_likes": 2154,
+      "min_likes": 5
+    },
+    "DamiDefi": {
+      "median_likes": 126,
+      "n_tweets": 85,
+      "max_likes": 1568,
+      "min_likes": 2
+    },
+    "DeRonin_": {
+      "median_likes": 105.5,
+      "n_tweets": 90,
+      "max_likes": 6413,
+      "min_likes": 3
+    },
+    "Dipanshu_AI": {
+      "median_likes": 2.5,
+      "n_tweets": 64,
+      "max_likes": 85,
+      "min_likes": 0
+    },
+    "DrSJaishankar": {
+      "median_likes": 1120.0,
+      "n_tweets": 20,
+      "max_likes": 3735,
+      "min_likes": 555
+    },
+    "ElsaSofia__AI": {
+      "median_likes": 3,
+      "n_tweets": 41,
+      "max_likes": 559,
+      "min_likes": 0
+    },
+    "Esau_Matsiko": {
+      "median_likes": 321,
+      "n_tweets": 29,
+      "max_likes": 3997,
+      "min_likes": 20
+    },
+    "FirstSquawk": {
+      "median_likes": 29,
+      "n_tweets": 99,
+      "max_likes": 846,
+      "min_likes": 0
+    },
+    "FoxNews": {
+      "median_likes": 1210,
+      "n_tweets": 95,
+      "max_likes": 57519,
+      "min_likes": 66
+    },
+    "GPrime85": {
+      "median_likes": 1187,
+      "n_tweets": 85,
+      "max_likes": 48123,
+      "min_likes": 46
+    },
+    "GaryMarcus": {
+      "median_likes": 42.0,
+      "n_tweets": 62,
+      "max_likes": 778,
+      "min_likes": 2
+    },
+    "GoshawkTrades": {
+      "median_likes": 50.5,
+      "n_tweets": 94,
+      "max_likes": 8202,
+      "min_likes": 0
+    },
+    "HedgieMarkets": {
+      "median_likes": 137,
+      "n_tweets": 95,
+      "max_likes": 19486,
+      "min_likes": 28
+    },
+    "HeyRohhit": {
+      "median_likes": 51.0,
+      "n_tweets": 28,
+      "max_likes": 1130,
+      "min_likes": 0
+    },
+    "JapanGov": {
+      "median_likes": 95,
+      "n_tweets": 39,
+      "max_likes": 334,
+      "min_likes": 5
+    },
+    "JimBeattie18": {
+      "median_likes": 166,
+      "n_tweets": 15,
+      "max_likes": 1129,
+      "min_likes": 9
     }
   }
 }

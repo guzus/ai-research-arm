@@ -202,22 +202,31 @@ def main():
     lines.append("## Verdict")
     lines.append("")
     allr, formr, contentr = results["all"], results["form"], results["content"]
-    lines.append(f"- A model with **every** form+content feature, scored honestly out-of-sample, "
-                 f"reaches **LOO global AUC {allr['loo_global_auc']:.3f}**, within-author "
-                 f"**{allr['loo_within_author_auc']:.3f}** — barely distinguishable from a coin flip.")
-    lines.append(f"- **Form features *anti*-generalize** (LOO within-author "
-                 f"**{formr['loo_within_author_auc']:.3f} < 0.5**): a model trained on other "
-                 "authors ranks a held-out author's hits *below* their flops. Their pooled "
-                 "correlations are between-author artifacts that reverse within author — decisive "
-                 "evidence that length/caps are confounds, not levers.")
-    lines.append(f"- **Content is the only set that generalizes at all** (LOO within-author "
-                 f"{contentr['loo_within_author_auc']:.3f}), and only barely above chance.")
-    lines.append(f"- The in-sample→LOO collapse (all: {allr['in_sample_auc']:.3f} → "
-                 f"{allr['loo_global_auc']:.3f}) shows the naive fit was ~entirely memorizing "
-                 "*which author* tweeted, not what makes a tweet pop.")
+    above = "above chance" if allr["loo_global_auc"] > 0.55 else "near chance"
+    lines.append(f"- The full feature model, scored honestly out-of-sample, reaches **LOO global "
+                 f"AUC {allr['loo_global_auc']:.3f}**, within-author **{allr['loo_within_author_auc']:.3f}** "
+                 f"— weak, but {above}. (Within-author is the honest number for a writer; the "
+                 "higher global AUC is partly between-author — predicting *which accounts* pop more.)")
+    if formr["loo_within_author_auc"] < 0.48:
+        lines.append(f"- **Form features *anti*-generalize** (LOO within-author "
+                     f"{formr['loo_within_author_auc']:.3f} < 0.5): trained on other authors they "
+                     "rank a held-out author's hits *below* their flops — between-author artifacts "
+                     "that reverse within author. (NB: in small samples this can be noise.)")
+    else:
+        lines.append(f"- **Form has ~no within-author signal** out-of-sample (LOO within-author "
+                     f"{formr['loo_within_author_auc']:.3f} ≈ chance); its higher global AUC "
+                     f"({formr['loo_global_auc']:.3f}) is between-author — it tracks which account "
+                     "tweeted, not which tweet pops.")
+    lines.append(f"- Content within-author out-of-sample: {contentr['loo_within_author_auc']:.3f} "
+                 "(weak).")
+    lines.append(f"- The in-sample→LOO drop (all: {allr['in_sample_auc']:.3f} → "
+                 f"{allr['loo_global_auc']:.3f} global) is how much the naive fit was memorizing "
+                 "*which author* tweeted rather than what makes a tweet pop.")
     lines.append("- Empirical ceiling for *text-only* over-performance prediction on this corpus: "
-                 "a faint within-author content signal (~0.54) and nothing more. Reach, timing "
-                 "and luck dominate.")
+                 "a weak but real out-of-sample signal (within-author ~"
+                 f"{allr['loo_within_author_auc']:.2f}); reach, timing and luck still dominate. "
+                 "The one within-author-robust feature in the companion analysis is attaching "
+                 "**media**.")
     OUT_MD.write_text("\n".join(lines), encoding="utf-8")
 
     print(f"LOO-CV over {len(rows)} tweets / {len(authors)} authors:")

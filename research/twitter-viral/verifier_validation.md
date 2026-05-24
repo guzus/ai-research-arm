@@ -1,5 +1,10 @@
 # Independent validation of `tweet_virality_verifier.py` (rewrite)
 
+> **Historical note:** validations below were run against the round-1 (677) and
+> the original 562-tweet round-2 cuts. Round 2 later grew to 1831 tweets (via
+> birdy), which corrected some numbers (e.g. form does not anti-generalize; media
+> is the one robust lever). `SYNTHESIS.md` is the current source of truth.
+
 *Fresh-eyes review. Every number below was recomputed from
 `research/twitter-viral/viral_tweets.jsonl` by importing the FINAL
 `score_tweet` and implementing AUC as the Mann-Whitney rank statistic

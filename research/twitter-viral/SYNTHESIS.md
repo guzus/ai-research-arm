@@ -1,117 +1,108 @@
-# What actually makes a tweet pop — two rounds, one honest answer
+# What actually makes a tweet pop — the honest answer
 
-This is the capstone for the `twitter-viral` study. Read this first.
+Capstone for the `twitter-viral` study. Read this first.
 
 ## TL;DR
 
-We asked "what's the secret ingredient of a >100-like tweet?" twice, and the
-second, more rigorous pass **overturned the first**.
+We asked "what's the secret ingredient of a tweet that pops?" across two rounds
+and a cross-validated experiment. The honest answer:
 
-1. **Raw likes are mostly reach.** Who tweets predicts high/low at **AUC ~0.82**;
-   the entire text (form *and* content) tops out around **0.67**. The biggest
-   "secret ingredient" is having followers.
-2. **Form is a mirage.** Round 1 said "longer tweets with an ALL-CAPS word."
-   Controlling for the author kills it: form has **no within-author signal**
-   (composite AUC ~0.45 — its global correlation is a between-author artifact).
-   Pooled, over-performers are even *shorter* (178 vs 206 chars) and use *less*
-   ALL-CAPS (46% vs 57%); within author it's just noise. ALL-CAPS was ~97%
-   tickers/acronyms (AI, BTC, NVDA), not emphasis.
-3. **Content beats form, but only as a weak composite.** Within an author's own
-   feed, content separates hits from normal tweets at **~0.53 held-out** (0.60
-   in-sample) vs **~0.45 for form**. But **no single feature is a reliable
-   lever**: even taking a first-person stance — the best by pooled lift (~1.9×)
-   and the recurring move in the qualitative read — is ~chance *within* author.
-4. **Mostly it isn't the text.** Reach, timing, and luck dominate. The single
-   biggest over-performer in the data was a news headline that popped for two
-   unrelated accounts at once — the news cycle, not the phrasing.
+1. **Raw likes are mostly reach.** Who tweets predicts a >=100-like tweet at
+   **AUC ~0.82**; the entire text tops out far lower. The biggest "ingredient"
+   is having followers.
+2. **Round 1's text levers were artifacts.** "Longer + an ALL-CAPS word" did not
+   survive controlling for the author — ALL-CAPS was ~97% tickers/acronyms (AI,
+   BTC, NVDA), not emphasis, and length tracked *which account* tweeted.
+3. **The one lever that holds up is attaching MEDIA.** On a larger, AI-focused,
+   reach-controlled corpus (1831 tweets, 28 authors), tweets with an
+   image/chart/video beat the author's own median far more often: **73% of
+   over-performers carry media vs 60% of normal tweets, and this holds for 22 of
+   24 authors.** Modest (lift ~1.2×) but the only feature that clears the bar.
+4. **Wording barely matters; reach + timing + luck dominate.** Out-of-sample
+   (leave-one-author-out) a full text model predicts over-performance at only
+   ~0.54 within-author. Stance, questions, length, caps — all ~chance.
 
-So the honest "secret ingredient" is: **say something only you would say, take a
-side, and have an audience.** Everything else is rounding error.
+So the actionable "secret ingredient" is small but real: **post a visual, and
+have an audience.** The exact words are mostly noise.
 
 ## How we got here
 
-| Round | Question | Method | Result |
+| Round | Question | Data | Result |
 |---|---|---|---|
-| **1** | What separates a >=100-**raw-like** tweet from a flop? | 677 tweets (search + author timelines); global correlation + within-author paired check | Length looked like the one semi-stable lever; ALL-CAPS topped raw correlation but was a topic artifact. Verifier AUC ~0.67 — but raw likes ≈ reach. |
-| **2** | What makes a tweet beat its **own author's median** (reach removed)? | 562 timeline tweets (uniform source), 18 authors with both classes; form **+ content/rhetorical** features; AUC + paired check + a qualitative read of the actual texts | Form within-author AUC **0.45** (no signal); content **~0.53 held-out**; **no single feature beats chance within author**. It's mostly not the text. |
+| **1** | What separates a >=100-**raw-like** tweet from a flop? | 677 tweets (search + timelines), mixed topics | Length/ALL-CAPS look like levers but are author/topic artifacts; identity dominates (AUC ~0.82). `score_tweet` validated at AUC ~0.67 for the raw-likes question. |
+| **2** | What makes a tweet beat its **own author's median** (reach removed)? | 1831 timeline tweets, 28 AI-focused authors (24 with both classes), pulled via **birdy** account rotation | Within author, **`has_media` is the one robust lever** (73% vs 60%, 22/24 authors). Text form/content otherwise ~chance. |
+| **exp** | Honest ceiling on text-only prediction? | same, leave-one-author-out CV | Full model LOO within-author **~0.54** (weak but real); in-sample 0.75 was mostly memorizing the author. |
 
-The key methodological move in round 2: **reframe "viral" as over-performance vs
-the author's own baseline.** That removes the follower confound *by construction*
-(every comparison is within one person) and, by using only timeline tweets, also
-kills the "Top"-search selection bias that inflated round 1.
+The key move in round 2: **reframe "viral" as over-performance vs the author's
+own baseline** — every comparison within one person, so follower count cancels
+out — and pull timelines via **birdy** (rotates 3 X accounts), which beat the
+rate-limiting that had truncated the first attempt and let the corpus grow ~3×.
+
+> **A note on sample size.** An earlier 562-tweet cut of round 2 suggested form
+> features *anti*-generalized (LOO within-author 0.31) and that "nothing in the
+> text works." Tripling the data with birdy showed that was small-sample noise:
+> form is simply ~chance within author (0.51), and `has_media` emerges as a real,
+> if modest, lever. More data corrected an over-dramatic conclusion — the reason
+> it was worth re-pulling.
 
 ## The honest ceiling (leave-one-author-out CV)
 
-To kill any in-sample optimism, a logistic regression was cross-validated
-**leave-one-author-out** — every tweet scored by a model that never saw its
-author (`experiment_cv.md`). Out-of-sample:
+A logistic regression cross-validated leave-one-author-out — every tweet scored
+by a model that never saw its author (`experiment_cv.md`). Out-of-sample:
 
 | feature set | in-sample AUC | LOO global | LOO within-author |
 |---|--:|--:|--:|
-| form | 0.64 | 0.36 | **0.31** |
-| content | 0.62 | 0.41 | **0.54** |
-| all | 0.70 | 0.36 | 0.38 |
+| form | 0.71 | 0.58 | 0.51 |
+| content | 0.62 | 0.52 | 0.55 |
+| all | 0.75 | 0.63 | **0.54** |
 
-The in-sample 0.70 was almost entirely the model memorizing *which account*
-tweeted — it collapses to ~chance out-of-sample. **Form features actively
-*anti*-generalize** (within-author 0.31 < 0.5): a model trained on other authors
-ranks a new author's hits *below* their flops, because the pooled length/caps
-correlations are between-author artifacts that reverse within author. Content is
-the only set that generalizes at all, and barely (0.54). The empirical ceiling:
-**text alone barely predicts over-performance, and surface form is a confound,
-not a lever.**
+The in-sample 0.75 collapses to ~chance within-author out-of-sample — it was
+mostly memorizing *which account* tweeted. The honest within-author ceiling for
+text is **~0.54**: weak but real, and much of it is the media signal.
 
-## What over-performs (reach-controlled, all weak — see `overperformance_analysis.md`)
+## What over-performs (reach-controlled, `overperformance_analysis.md`)
 
-Directional levers (none robust; treat as faint nudges):
+- **Attach media — the one robust lever.** `has_media`: 73% of over-performers
+  vs 60% of normal tweets, agrees for 22/24 authors, lift 1.21. A chart,
+  screenshot, or short demo clip is the most reliable (still modest) move.
+- Everything else is ~chance within author: length, ALL-CAPS, questions, lists,
+  news framing, and **stance** (round 2's earlier "best content lever" — lift
+  ~1.5× pooled but AUC ~0.51 within author; it did not survive the bigger sample).
 
-1. **First-person stance / correcting a take** — `is_stance`, the best content
-   tendency by pooled lift (~1.9×) and the recurring qualitative move, but
-   **~chance within author** (AUC ~0.51 after removing a regex artifact). *"I
-   think the AI-detection panic is wrong — the real reason students get flagged
-   is broken tools"* beat its author's diary tweets by 269×.
-2. Question hook, news-break framing, curiosity gap, self-contained list/data —
-   weaker and **topic-shaped** (markets / news / astrology), unlikely to transfer.
-
-Anti-levers (do **not** help you beat your own baseline; they mark big or topical
-accounts): **length, ALL-CAPS, media, emoji, $/%, hashtags.** These have no
-within-author signal — their global correlation is a between-author artifact.
-
-The qualitative read (`overperformance_qualitative.md`) adds color: the moves that
-pop are *stake-planting opinion in your own voice*, *flattering identity call-outs*
-(astrology-only), and *underdog-beats-the-giant* framing — but it stresses the
-corpus is **not** AI Twitter (only ~15-20% of over-performers are AI-native) and
-that one viral thread inflates a cluster of replies.
+The qualitative read (`overperformance_qualitative.md`) still describes the
+recurring *flavor* of hits — stake-planting opinion, identity call-outs,
+underdog-beats-giant — but those are weak/topic-shaped quantitatively; media is
+the only one that holds up.
 
 ## The verifier (`scripts/tweet_virality_verifier.py`)
 
-Two functions for the two questions, both honest about being faint:
-
-- `score_tweet(text, ...)` — **raw-likes conformance** (round 1), validated
-  AUC ~0.67. A high score mostly means "you write like a high-follower account."
-- `assess_overperformance(text, ...)` — **round-2 guidance**: surfaces the stance
-  lever, refuses to reward length/caps, and states plainly that the text explains
-  little.
+- `score_tweet(text, ...)` — **raw-likes conformance** (round 1), AUC ~0.67. A
+  high score mostly means "you write like a high-follower account."
+- `assess_overperformance(text, has_media=..., ...)` — **round-2 guidance**: leads
+  with the media lever, refuses to credit length/caps/stance, and states the
+  ceiling honestly.
 
 ```bash
-python3 scripts/tweet_virality_verifier.py "draft" --overperformance   # round-2 guidance
-python3 scripts/tweet_virality_verifier.py "draft"                      # raw-likes score
+python3 scripts/tweet_virality_verifier.py "draft" --overperformance --media
+python3 scripts/tweet_virality_verifier.py "draft"            # raw-likes score
 ```
 
 ## What this is NOT
 
-- **Not an AI-virality study.** The corpus drifted into astrology, crypto/markets,
-  politics, and news-wires; conclusions describe opinion/commentary Twitter, not
-  AI content specifically.
-- **Not causal, and not reach-aware.** Only `like_count` is used (no impressions,
-  bookmarks, reposts). Timing and news cycles are uncontrolled.
-- **Small N / nothing robust.** 18 dual authors, 81 over-performers; every lever
-  is a hypothesis, not a law. The most defensible finding is the *negative* one:
-  surface form does not make your tweet beat your baseline.
+- **Not an impressions/reach model** — only `like_count` is used; bookmarks,
+  reposts, and quote-driven exposure are invisible (so the media effect on
+  bookmark-heavy "data drop" tweets is probably *under*-counted).
+- **Not causal, and not timing-aware** — news cycles and "tweeted into a hot
+  thread" are uncontrolled. The biggest single over-performer was a news headline
+  that popped for two accounts at once.
+- **Still small-N** — 24 authors with both classes; treat the media lift (1.21)
+  as directional. The most robust finding remains the *negative* one: wording
+  barely predicts whether a tweet beats its own author's baseline.
 
 ## Files
 
-`viral_tweets.jsonl` · `analysis.md` · `analyst_review.md` · `verifier_validation.md`
-(round 1) — `overperformance_tweets.jsonl` · `author_baselines.json` ·
-`overperformance_analysis.md` · `overperformance_qualitative.md` ·
-`overperformance_weights.json` (round 2). Pipeline + reproduce steps in `README.md`.
+Round 1: `viral_tweets.jsonl` · `analysis.md` · `analyst_review.md` ·
+`verifier_validation.md`. Round 2: `overperformance_tweets.jsonl` ·
+`author_baselines.json` · `overperformance_analysis.md` ·
+`overperformance_qualitative.md` · `overperformance_weights.json` ·
+`experiment_cv.md`. Pipeline + reproduce in `README.md`.

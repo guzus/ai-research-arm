@@ -13,12 +13,12 @@ Two questions, two functions:
   track follower count, so a high score largely means "you write like a big
   account."
 - ``assess_overperformance`` (round 2) — the *better* question: what (weakly)
-  helps a tweet beat its OWN author's median? A reach-controlled re-analysis
-  found surface FORM has no within-author signal (its global correlation is a
-  between-author artifact); content edges form only as a weak composite
-  (~0.53 held-out). No single feature is a reliable lever — even a first-person
-  STANCE is ~chance within author. The text explains little; reach, timing and
-  luck dominate. See research/twitter-viral/SYNTHESIS.md.
+  helps a tweet beat its OWN author's median? On the larger AI-focused corpus
+  (1831 tweets, 28 authors), the one within-author-robust lever is **attaching
+  media** (over-performers 73% vs 60%; 22/24 authors). Text form (length/caps)
+  and content moves (stance/question) are ~chance within author. Out-of-sample
+  the whole model is weak (LOO within-author ~0.54); reach, timing and luck
+  dominate. See research/twitter-viral/SYNTHESIS.md.
 
 Grounding: built from `research/twitter-viral/viral_tweets.jsonl` (677 tweets,
 484 high / 193 low) and stress-tested in `research/twitter-viral/analysis.md`
@@ -243,69 +243,72 @@ def score_tweet(text: str, *, has_media: bool = False, is_quote: bool = False) -
 # ---------------------------------------------------------------------------
 # Round 2: over-performance guidance (what helps a tweet beat its OWN baseline)
 # ---------------------------------------------------------------------------
-# Directional content levers, ranked by the reach-controlled analysis
-# (overperformance_analysis.md). NONE are "robust" — these are faint nudges.
-#   is_stance       best single lever, cross-author, not topic-confounded
-#                   (r=+0.10, lift 2.0x, within-author content composite ~0.60)
-#   is_question_hook / is_news_break / is_curiosity_gap / is_list — weaker and
-#                   topic-shaped; reported if present, not strongly recommended.
-_OVERPERF_LEVERS = [
+# The one within-author-robust lever on the larger AI-focused corpus is attaching
+# MEDIA (over-performers 73% vs 60% of an author's normal tweets; 22/24 authors
+# agree; lift 1.21). Everything below is ~chance within author — reported for
+# transparency, never pushed. (Stance, round 2's earlier "best content lever," did
+# not survive the bigger sample: lift ~1.5x pooled, AUC ~0.51 within author.)
+_WEAK_CONTENT = [
     ("is_stance", "stance",
-     "Takes a clear first-person stance / corrects a take — best content tendency by "
-     "pooled lift (~1.9x) and the recurring move in the qualitative read, but ~chance "
-     "within author. Weak.",
-     "If anything, take a clear first-person stance or correct a take — the most "
-     "qualitatively-supported tendency (pooled lift ~1.9x), though ~chance within "
-     "author. Mostly, the text won't decide this."),
-    ("is_question_hook", "question_hook",
-     "Opens with a question (weak; ~chance within-author).", None),
-    ("is_news_break", "news_break",
-     "News-break framing (weak; mostly news-cycle timing, not phrasing).", None),
-    ("is_curiosity_gap", "curiosity_gap",
-     "Curiosity gap, e.g. 'here's why…' (weak; topic-shaped).", None),
-    ("is_list", "standalone_list",
-     "Self-contained list / data-drop (weak; likes under-count saves).", None),
+     "First-person stance / correction — the qualitative read liked it, but ~chance "
+     "within author on the bigger sample. Unproven."),
+    ("is_question_hook", "question_hook", "Question hook — weak/unproven."),
+    ("is_news_break", "news_break", "News-break framing — weak; mostly news-cycle timing."),
+    ("is_curiosity_gap", "curiosity_gap", "Curiosity gap ('here's why…') — weak; topic-shaped."),
+    ("is_list", "standalone_list", "Self-contained list / data-drop — weak; likes under-count saves."),
 ]
 
 
-def assess_overperformance(text: str, *, is_quote: bool = False) -> dict[str, Any]:
+def assess_overperformance(text: str, *, has_media: bool = False, is_quote: bool = False) -> dict[str, Any]:
     """Round-2 guidance: what (weakly) helps a tweet beat its AUTHOR'S baseline.
 
     Unlike ``score_tweet`` (raw-likes conformance), this reflects the
-    reach-controlled analysis: within an author's own feed, surface FORM has
-    essentially no signal — so this does NOT reward length/caps/media — and the
-    only directional, non-topic content lever is taking a first-person STANCE.
-    Returns levers present, suggestions for the ones missing, the form features
-    that explicitly do NOT help (anti-levers), and an honest note. This is a
-    faint nudge, never a prediction.
+    reach-controlled analysis on the larger AI-focused corpus. The one
+    within-author-robust lever is **attaching media** (image/chart/video);
+    surface text form (length/caps) is ~chance within author, and the content
+    moves (stance/question/news) did not survive the bigger sample. Returns
+    levers present, a suggestion if media is missing, the features that do NOT
+    help (anti-levers), and an honest note. A nudge, never a prediction.
     """
     cf = extract_content_features(text)
     levers_present: list[dict[str, Any]] = []
     suggestions: list[str] = []
-    for key, name, present_note, missing_suggestion in _OVERPERF_LEVERS:
+
+    # PRIMARY (and only robust-ish) lever: attaching media.
+    if has_media:
+        levers_present.append({
+            "name": "media", "strength": "robust(modest)",
+            "note": ("Has media (image/chart/video) — the one within-author-robust lever "
+                     "(73% of over-performers vs 60% of normal; 22/24 authors agree; lift 1.21)."),
+        })
+    else:
+        suggestions.append(
+            "Attach a visual — chart, screenshot, or short demo clip. Media is the only "
+            "within-author-robust lever found (over-performers 73% vs 60%; holds for 22/24 "
+            "authors), though still modest (lift ~1.2x)."
+        )
+
+    # Weak/unproven content tendencies — reported if present, never pushed.
+    for key, name, note in _WEAK_CONTENT:
         if cf.get(key, 0.0) >= 1.0:
-            strength = "directional" if key == "is_stance" else "weak"
-            levers_present.append({"name": name, "strength": strength, "note": present_note})
-        elif missing_suggestion:  # only nudge for the lever worth nudging (stance)
-            suggestions.append(missing_suggestion)
+            levers_present.append({"name": name, "strength": "weak/unproven", "note": note})
+
     return {
         "levers_present": levers_present,
         "suggestions": suggestions,
-        "anti_levers": [
-            "length", "ALL-CAPS", "media", "emoji", "$/%", "hashtags",
-        ],
+        "anti_levers": ["length", "ALL-CAPS", "emoji", "$/%", "hashtags", "stance/question hooks"],
         "anti_levers_note": (
-            "These do NOT help a tweet beat its own author's baseline — they have "
-            "no within-author signal; their global correlation is a between-author "
+            "No reliable within-author signal — their global correlation is a between-author "
             "artifact (they mark high-follower or topical accounts)."
         ),
         "note": (
-            "Reach-controlled view: the text explains very little. Content edges "
-            "form only as a weak composite (~0.53 held-out within-author; form has "
-            "no within-author signal); NO single feature — stance included — beats "
-            "chance within author. Reach, timing and luck dominate. A faint nudge, "
-            "NOT a prediction; nothing here is robust."
+            "Reach-controlled view: text predicts over-performance only weakly. Out-of-sample "
+            "(leave-one-author-out) AUC ~0.54 within-author / ~0.63 global (much of the global "
+            "is between-author). Attaching media is the one within-author-robust lever; "
+            "everything else — length, caps, stance, questions — is ~chance within author. "
+            "Reach, timing and luck dominate. A nudge, NOT a prediction."
         ),
+        "has_media": bool(has_media),
         "is_quote": bool(is_quote),
     }
 
@@ -374,7 +377,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.overperformance:
-        result = assess_overperformance(args.text, is_quote=args.quote)
+        result = assess_overperformance(args.text, has_media=args.media, is_quote=args.quote)
         print(json.dumps(result, indent=2) if args.json else _format_overperformance(result))
     else:
         result = score_tweet(args.text, has_media=args.media, is_quote=args.quote)
