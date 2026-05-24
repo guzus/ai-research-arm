@@ -454,21 +454,49 @@ jobs:
             echo "__END_TITLE__"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Send Telegram notification
+      # Notify via hooker (relays to Telegram). Replaces the Docker-based
+      # appleboy/telegram-action, which fails on the Cloud Run runner.
+      # SAFE_TITLE is already HTML-escaped by the tg-prep step above, so it
+      # is used as-is (NOT re-escaped). hooker handles the bot token, so this
+      # job no longer needs TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID.
+      - name: Send notification via hooker
         if: success()
         continue-on-error: true
-        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: html
-          message: |
-            🔬 <b>Research Complete</b>
-
-            📋 Issue: #${{ github.event.issue.number }}
-            📝 Topic: ${{ steps.tg-prep.outputs.safe_title }}
-
-            📄 <a href="https://github.com/${{ github.repository }}/blob/main/research/issues/${{ github.event.issue.number }}-research.md">View Research Report</a>
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          ISSUE_NUM: ${{ github.event.issue.number }}
+          SAFE_TITLE: ${{ steps.tg-prep.outputs.safe_title }}
+          REPO: ${{ github.repository }}
+          GH_RUN_ID: ${{ github.run_id }}
+          GH_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+            echo "Hooker credentials missing — skipping notification"
+            exit 0
+          fi
+          # SAFE_TITLE is already HTML-escaped upstream — do NOT re-escape.
+          TEXT=$(printf '📋 Issue: #%s\n📝 Topic: %s' "$ISSUE_NUM" "$SAFE_TITLE")
+          REPORT_URL="https://github.com/${REPO}/blob/main/research/issues/${ISSUE_NUM}-research.md"
+          jq -n \
+            --arg title "🔬 Research Complete" \
+            --arg text "$TEXT" \
+            --arg btn "View Research Report" \
+            --arg url "$REPORT_URL" \
+            '{
+              title: $title,
+              text: $text,
+              priority: 3,
+              tags: ["ara", "research-issue"],
+              parse_mode: "HTML",
+              reply_markup: { inline_keyboard: [[{ text: $btn, url: $url }]] }
+            }' > /tmp/hooker-research-issue.json
+          curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/ara-research" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: research-issue-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
+            --data-binary "@/tmp/hooker-research-issue.json"
 
       - name: Publish Hooker workflow telemetry
         if: always()
