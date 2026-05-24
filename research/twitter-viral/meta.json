@@ -1,0 +1,20 @@
+{
+  "collected_at": "2026-05-24T04:08:34.336173+00:00",
+  "min_faves": 100,
+  "since": "2026-05-17",
+  "neg_window_days": 7,
+  "high_like_threshold": 100,
+  "queries": [
+    "(AI OR LLM OR \"language model\" OR AGI) min_faves:100 since:2026-05-17 -filter:replies lang:en",
+    "(GPT OR Claude OR OpenAI OR Anthropic OR Gemini OR DeepSeek) min_faves:100 since:2026-05-17 -filter:replies lang:en",
+    "(\"machine learning\" OR \"deep learning\" OR \"AI agent\" OR robotics OR \"neural network\") min_faves:100 since:2026-05-17 -filter:replies lang:en"
+  ],
+  "counts": {
+    "total": 677,
+    "high": 484,
+    "low": 193,
+    "from_search": 108,
+    "from_user_tweets": 569,
+    "unique_authors": 98
+  }
+}

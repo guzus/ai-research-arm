@@ -1,0 +1,142 @@
+{
+  "generated_at": "2026-05-24T09:37:13.990156+00:00",
+  "source": "persisted-timeline",
+  "params": {
+    "min_tweets": 8,
+    "floor": 5.0,
+    "overperform_ratio": 3.0,
+    "window_days": 7
+  },
+  "n_authors": 21,
+  "n_tweets": 562,
+  "n_overperformers": 81,
+  "n_dual_authors": 18,
+  "authors": {
+    "shawtyastrology": {
+      "median_likes": 365.5,
+      "n_tweets": 36,
+      "max_likes": 1516,
+      "min_likes": 36
+    },
+    "yacineMTB": {
+      "median_likes": 145.5,
+      "n_tweets": 22,
+      "max_likes": 5167,
+      "min_likes": 14
+    },
+    "WhaleFactor": {
+      "median_likes": 156.0,
+      "n_tweets": 38,
+      "max_likes": 235,
+      "min_likes": 25
+    },
+    "Cointelegraph": {
+      "median_likes": 255,
+      "n_tweets": 37,
+      "max_likes": 1240,
+      "min_likes": 1
+    },
+    "jane_tarot": {
+      "median_likes": 7,
+      "n_tweets": 29,
+      "max_likes": 128,
+      "min_likes": 0
+    },
+    "RoundtableSpace": {
+      "median_likes": 79,
+      "n_tweets": 37,
+      "max_likes": 238,
+      "min_likes": 41
+    },
+    "StockSavvyShay": {
+      "median_likes": 455,
+      "n_tweets": 27,
+      "max_likes": 2079,
+      "min_likes": 19
+    },
+    "cremieuxrecueil": {
+      "median_likes": 69.0,
+      "n_tweets": 28,
+      "max_likes": 1524,
+      "min_likes": 4
+    },
+    "MaxBlumenthal": {
+      "median_likes": 2580,
+      "n_tweets": 17,
+      "max_likes": 7194,
+      "min_likes": 357
+    },
+    "sniffalt": {
+      "median_likes": 305,
+      "n_tweets": 15,
+      "max_likes": 1055,
+      "min_likes": 73
+    },
+    "GPrime85": {
+      "median_likes": 1517,
+      "n_tweets": 21,
+      "max_likes": 48110,
+      "min_likes": 113
+    },
+    "REDBOXINDIA": {
+      "median_likes": 119.5,
+      "n_tweets": 38,
+      "max_likes": 670,
+      "min_likes": 25
+    },
+    "FirstSquawk": {
+      "median_likes": 100,
+      "n_tweets": 39,
+      "max_likes": 2798,
+      "min_likes": 32
+    },
+    "KIT_Game0verse": {
+      "median_likes": 15.5,
+      "n_tweets": 28,
+      "max_likes": 225,
+      "min_likes": 3
+    },
+    "stocktalkweekly": {
+      "median_likes": 306.5,
+      "n_tweets": 22,
+      "max_likes": 697,
+      "min_likes": 125
+    },
+    "garrytan": {
+      "median_likes": 291.0,
+      "n_tweets": 18,
+      "max_likes": 2314,
+      "min_likes": 17
+    },
+    "stallseok": {
+      "median_likes": 252,
+      "n_tweets": 13,
+      "max_likes": 1108,
+      "min_likes": 1
+    },
+    "QueenMab87": {
+      "median_likes": 69.5,
+      "n_tweets": 28,
+      "max_likes": 18721,
+      "min_likes": 11
+    },
+    "darvasboxtrader": {
+      "median_likes": 297.0,
+      "n_tweets": 36,
+      "max_likes": 2002,
+      "min_likes": 81
+    },
+    "TomFitton": {
+      "median_likes": 603.5,
+      "n_tweets": 20,
+      "max_likes": 5009,
+      "min_likes": 75
+    },
+    "Kadimu174Ai": {
+      "median_likes": 312,
+      "n_tweets": 13,
+      "max_likes": 1203,
+      "min_likes": 48
+    }
+  }
+}
