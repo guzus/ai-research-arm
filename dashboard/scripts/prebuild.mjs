@@ -25,7 +25,10 @@ const ticketsDest = join(publicResearch, 'models', 'tickets');
 
 // Subdirs to mirror into public/research/. Keys match how the dashboard
 // fetches them; the manifest builder below uses the same set.
-const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative'];
+// `wiki` carries research/wiki/ (committed index.json + entities/concepts/themes
+// markdown). The index is built in Python (scripts/build_wiki_index.py) and
+// committed — we only copy it here; we never rebuild it in JS.
+const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki'];
 
 // Regex patterns for the date-keyed sources. The `generative` key is
 // special-cased below: it reads research/generative/index.json directly.

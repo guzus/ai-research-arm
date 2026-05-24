@@ -34,6 +34,7 @@ and opens a PR with methodology fixes.
 | [`COMPONENTS.md`](COMPONENTS.md) | Reference for the `ara-*` component vocabulary the validator enforces. The CSS at `dashboard/src/components/ara-research.css` is the live source of truth — currently ~113 classes vs ~81 documented (see "Known drift" below). |
 | [`docs/generative-research-backends.md`](docs/generative-research-backends.md) | Backend matrix for the generative-research lane (Claude vs DeepSeek vs local Oracle), env mapping, comparison commands. |
 | [`docs/model-tickets.md`](docs/model-tickets.md) | Schema + lifecycle + dedup protocol for `research/models/tickets/*.md`. Read by the CRUD agent in `24h-model-timeline.yml` and enforced by `scripts/check_model_tickets.py`. |
+| [`docs/wiki-schema.md`](docs/wiki-schema.md) | Canonical schema + page conventions for the LLM Wiki (`research/wiki/`). Read at runtime by the ingest agent in `wiki-ingest.yml` and enforced by `scripts/check_wiki.py`. |
 | [`docs/hooker-telemetry.md`](docs/hooker-telemetry.md) | Non-blocking telemetry route via `https://hooker.guzus.xyz` topic `ara-telemetry`. |
 | [`docs/archive/`](docs/archive/) | Historical improvement logs and superseded docs. |
 | `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`; Vercel auto-deploys on every push to `main`. |
@@ -54,6 +55,8 @@ and opens a PR with methodology fixes.
 | `stock_prices.py` | Yahoo Finance time series → copy-paste lines for `:::line-chart`. |
 | `dedupe_headline_alerts.py` | Filter + record delivered Twitter headline alerts (used by `hourly-twitter.yml`). |
 | `check_model_tickets.py` | Validator for `research/models/tickets/*.md` against the schema in `docs/model-tickets.md`. The CRUD agent in `24h-model-timeline.yml` runs it after every pass; CI runs it on every PR. |
+| `check_wiki.py` | Validator for `research/wiki/` pages against the schema in `docs/wiki-schema.md`. `uv run python scripts/check_wiki.py` (exit 0 = safe); `--lint` adds advisory checks. The ingest agent in `wiki-ingest.yml` runs it until exit 0; CI runs it on every PR. |
+| `wiki_search.py` | Search wrapper over `research/wiki/` (`uv run python scripts/wiki_search.py "<query>"`). The ingest agent runs it before writing any page so it UPDATEs an existing page instead of duplicating. |
 | `test_ara_dsl.py`, `test_dedupe_headline_alerts.py` | Pytest-style tests run in CI. |
 
 ## GitHub Actions Workflows
@@ -73,7 +76,7 @@ Workflows split between two runners:
   `hourly-twitter-deepseek-*.yml`, `daily-digest.yml`,
   `daily-front-page.yml`, `generative-research.yml`,
   `24h-model-timeline.yml`, `ai-news-research.yml`, `ci.yml`,
-  `research-issue.yml`, `4h-community.yml`.
+  `research-issue.yml`, `4h-community.yml`, `wiki-ingest.yml`.
 
 Claude workflows use `anthropics/claude-code-action@v1` with the model
 passed via `claude_args: "--model opus"` (never as a separate `model:`
@@ -98,6 +101,7 @@ input).
 | `daily-digest.yml` | daily `00:00` | `research/digest/` |
 | `ai-news-research.yml` | twice daily `08:23`, `20:23` | `research/` (broad topic sweep via Perplexity/Exa MCP) |
 | `24h-model-timeline.yml` | daily `06:29` | `research/models/tickets/<slug>.md` (CRUD'd per release/event) + `research/models/<date>-timeline.md` (derived daily-diff) |
+| `wiki-ingest.yml` | after the digest (via `workflow_run` on `Daily AI Digest (All Sources)`; `workflow_dispatch` fallback) | `research/wiki/` (CRUD'd pages — one per entity/concept/theme — from the curated digest + model tickets) |
 
 ### Output (shareable artifacts)
 
@@ -151,7 +155,13 @@ research/
 ├── summaries/                 # hourly-twitter.yml (Telegram digest + headline-alert state)
 ├── twitter/                   # hourly-twitter.yml
 ├── twitter-deepseek/          # hourly-twitter-deepseek-agentic.yml
-└── twitter-deepseek-pi/       # hourly-twitter-deepseek-pi.yml
+├── twitter-deepseek-pi/       # hourly-twitter-deepseek-pi.yml
+└── wiki/                      # wiki-ingest.yml (compounding LLM knowledge base)
+    ├── index.md                # entry point / page directory
+    ├── log.md                  # append-only ingest log (one entry per run)
+    ├── entities/               # companies, models, people, products
+    ├── concepts/               # techniques, architectures, benchmarks, ideas
+    └── themes/                 # ongoing storylines / trends
 ```
 
 ## Authentication
@@ -248,6 +258,27 @@ output or break the pipeline. Read them before editing.
    released → closed). The legacy `<date>-timeline.md` files (frozen
    format) remain on disk; new dates produce a *derived diff* summarizing
    what the agent did.
+
+10. **Wiki pages are CRUD'd, not regenerated.** `research/wiki/` is a
+    compounding knowledge base — one markdown page per entity, concept,
+    or theme, plus `index.md` (the page directory) and an append-only
+    `log.md` (one `## [YYYY-MM-DD] ingest | <summary>` entry per run).
+    The `wiki-ingest.yml` agent runs daily *after the digest*
+    (`workflow_run`), reads the schema doc, and for each subject runs
+    `scripts/wiki_search.py` to find an existing page and UPDATE it
+    (bump `updated_at`, refine `[[links]]`/`aliases`) rather than
+    duplicating — it creates a new page only when none exists. Update is
+    the default; creation is the exception. **Slugs are immutable** (a
+    rename updates the title + aliases, never the filename); pages are
+    never deleted; `log.md` is append-only. **The ingest reads the
+    CURATED synthesis — the daily digest + model tickets — NOT the raw
+    per-source firehose** (`twitter/`, `rss/`, `community/`, `arxiv/`);
+    re-reading the raw sources defeats the curation the digest performs.
+    `docs/wiki-schema.md` and `scripts/check_wiki.py` are the contract
+    and **must stay in lockstep** — a schema change unreflected in the
+    validator (or vice versa) silently corrupts the lane. The agent
+    iterates `check_wiki.py` until exit 0 before committing; CI runs it
+    on every PR.
 
 ## Code Style
 

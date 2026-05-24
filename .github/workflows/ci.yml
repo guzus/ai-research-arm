@@ -106,6 +106,16 @@ jobs:
       - name: Validate model-release tickets
         run: uv run python scripts/check_model_tickets.py
 
+      - name: Validate wiki pages
+        run: uv run python scripts/check_wiki.py
+
+      # research/wiki/index.json is a generated, committed artifact (the
+      # dashboard reads it; prebuild only copies it). This gate fails if it
+      # has drifted from the pages — i.e. a page was edited without rerunning
+      # build_wiki_index.py. The ingest workflow regenerates it every run.
+      - name: Check wiki index is in sync
+        run: uv run python scripts/build_wiki_index.py --check
+
   hooker-telemetry:
     needs: [actionlint, dashboard, python-scripts]
     if: always()

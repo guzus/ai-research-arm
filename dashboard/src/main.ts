@@ -1,5 +1,6 @@
 import './style.css';
-import { marked } from 'marked';
+import { marked, Marked } from 'marked';
+import type { Tokens, TokenizerThis } from 'marked';
 import DOMPurify from 'dompurify';
 
 const DATA_BASE: string = import.meta.env.BASE_URL + 'research';
@@ -76,8 +77,10 @@ function timeAgo(date: Date): string {
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research';
-type DateTab = Exclude<Tab, 'research'>;
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki';
+// Tabs that route by date (calendar-driven). research + wiki are slug-driven
+// (or index views) and are excluded — mirror the research precedent.
+type DateTab = Exclude<Tab, 'research' | 'wiki'>;
 type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
@@ -207,6 +210,9 @@ function routeFromState(): string {
   if (activeTab === 'research') {
     return selectedSlug ? '/research/' + selectedSlug : '/research';
   }
+  if (activeTab === 'wiki') {
+    return selectedSlug ? '/wiki/' + selectedSlug : '/wiki';
+  }
   return '/' + activeTab + '/' + fmtDate(currentDate);
 }
 
@@ -284,6 +290,16 @@ function parseRoute(path: string): boolean {
     syncTabUi();
     return true;
   }
+  // Wiki slugs are tighter than research's: ^[a-z0-9]+(-[a-z0-9]+)*$ per the
+  // index contract. Gate at the route level so a crafted /wiki/FOO.evil never
+  // reaches the resolver lookup.
+  const wikiMatch = trimmed.match(/^wiki(?:\/([a-z0-9-]+))?$/);
+  if (wikiMatch) {
+    activeTab = 'wiki';
+    selectedSlug = wikiMatch[1] || null;
+    syncTabUi();
+    return true;
+  }
   return false;
 }
 
@@ -308,6 +324,9 @@ function syncTabUi(): void {
   // Models tab shows the ticket grid (no date routing); the calendar
   // would just be dead UI on this tab. Same toggle pattern as research.
   document.body.classList.toggle('tab-models', activeTab === 'models');
+  // Wiki is slug/index-driven, not date-driven — same calendar-hiding
+  // toggle as research/models.
+  document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
 }
 
 // ── Helpers ───────────────────────────────────────────
@@ -1047,6 +1066,8 @@ function showLoading(): void {
     ? 'Loading model timeline\u2026'
     : activeTab === 'research'
     ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
+    : activeTab === 'wiki'
+    ? (selectedSlug ? 'Loading wiki page\u2026' : 'Loading wiki\u2026')
     : 'Loading Twitter report\u2026';
   setSafeContent(
     content,
@@ -1250,6 +1271,409 @@ function twitterMarkdownToHtml(md: string): string {
   );
   html = html.replace(/(?<!\w)(@\w+)/g, '<span class="handle">$1</span>');
   return html;
+}
+
+// ── Wiki (LLM Wiki) ───────────────────────────────────
+//
+// The wiki is a compounding knowledge base under research/wiki/. The Python
+// side (scripts/build_wiki_index.py) emits a committed research/wiki/index.json
+// — the pinned contract. We CONSUME it: never re-parse pages for the graph,
+// never reimplement wikilink parsing. The only JS-side parsing is (1) stripping
+// YAML frontmatter off a page body and (2) the marked inline extension that
+// turns `[[target]]` into a link, resolving via the index `resolver`.
+
+type WikiType = 'entity' | 'concept' | 'theme';
+
+type WikiPage = {
+  slug: string;
+  title: string;
+  type: WikiType | string;
+  tags: string[];
+  summary: string;
+  created_at: string;
+  updated_at: string;
+  file: string;            // relative to research/wiki/, e.g. "entities/nebius.md"
+  aliases: string[];
+  outbound: string[];      // slugs
+  inbound: string[];       // slugs
+};
+
+type WikiLogEntry = { date: string; op: string; summary: string };
+
+type WikiIndex = {
+  pages: WikiPage[];
+  resolver: Record<string, string>;  // lowercased slug-or-alias → canonical slug
+  recent_log: WikiLogEntry[];        // newest first
+};
+
+// One-time fetch cache for the index, plus a derived slug→page Map so backlink
+// rendering is O(n) not O(n^2) (advisor note 5).
+let wikiIndexCache: WikiIndex | null = null;
+let wikiPageMap: Map<string, WikiPage> = new Map();
+// Body cache keyed by slug so re-visiting a page doesn't refetch.
+const wikiBodyCache = new Map<string, string>();
+
+async function loadWikiIndex(signal: AbortSignal): Promise<WikiIndex | null> {
+  if (wikiIndexCache) return wikiIndexCache;
+  try {
+    const resp = await fetch(`${DATA_BASE}/wiki/index.json`, { signal });
+    if (!resp.ok) return null;
+    const raw = (await resp.json()) as Partial<WikiIndex>;
+    const idx: WikiIndex = {
+      pages: Array.isArray(raw.pages) ? (raw.pages as WikiPage[]) : [],
+      resolver: raw.resolver && typeof raw.resolver === 'object' ? raw.resolver : {},
+      recent_log: Array.isArray(raw.recent_log) ? (raw.recent_log as WikiLogEntry[]) : [],
+    };
+    wikiIndexCache = idx;
+    wikiPageMap = new Map(idx.pages.map((p) => [p.slug, p]));
+    return idx;
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') return null;
+    return null;
+  }
+}
+
+/** Strip leading YAML frontmatter, matching the validator/prebuild semantics
+ * EXACTLY: if the text starts with `---\n`, drop everything through the FIRST
+ * `\n---\n`, then trim leading newlines. Otherwise use as-is. Deliberately not
+ * a greedy regex — a casual /^---[\s\S]*?---/ would mis-handle a body that
+ * happens to contain a `---` horizontal rule. */
+function stripWikiFrontmatter(text: string): string {
+  if (!text.startsWith('---\n')) return text;
+  const end = text.indexOf('\n---\n', 4);
+  if (end < 0) return text; // no closing fence — treat whole thing as body
+  return text.slice(end + 5).replace(/^\n+/, '');
+}
+
+/** Resolve a raw wikilink target against the current index resolver.
+ * Returns the canonical slug, or null if unresolved (→ broken link). */
+function resolveWikiTarget(target: string): string | null {
+  const resolver = wikiIndexCache?.resolver;
+  if (!resolver) return null;
+  const slug = resolver[target.trim().toLowerCase()];
+  return slug || null;
+}
+
+// Scoped marked instance for wiki pages. We do NOT touch the global `marked`
+// (used by twitter/research/tickets) — the inline extension is registered only
+// here, so `[[...]]` is wiki-only behavior.
+//
+// Why an inline tokenizer guarantees fenced-code safety (stress-test #1):
+// marked block-lexes first (fenced/indented code -> `code` tokens whose text is
+// emitted as escaped literal text, never re-fed to inline tokenizers) and
+// inline-lexes the rest (backtick spans -> `codespan` tokens, also not
+// re-tokenized). An inline extension only ever sees inline-walkable text, so a
+// `[[x]]` inside a fenced block or a code span is left literal by construction
+// — it is never a regex pass over the produced HTML.
+const WIKILINK_RE = /^\[\[([^\]|\n]+?)(?:\|([^\]\n]+?))?\]\]/;
+const wikiMarked = new Marked({
+  gfm: true,
+  breaks: false,
+  extensions: [
+    {
+      name: 'wikilink',
+      level: 'inline',
+      // Jump straight to the next `[[` (perf + idiom); without this marked
+      // walks every character looking for a custom-token start.
+      start(this: TokenizerThis, src: string) {
+        return src.indexOf('[[');
+      },
+      // `src` is already sliced to the current match position, so anchor with ^.
+      // Capture: [[target]] or [[target|Label]]. Disallow ] | and newline in
+      // target; disallow ] and newline in label.
+      tokenizer(this: TokenizerThis, src: string) {
+        const m = src.match(WIKILINK_RE);
+        if (!m) return undefined;
+        return {
+          type: 'wikilink',
+          raw: m[0],
+          target: m[1].trim(),
+          label: (m[2] || '').trim(),
+        } as Tokens.Generic;
+      },
+      renderer(token: Tokens.Generic) {
+        const target = String(token.target ?? '');
+        const label = String(token.label ?? '');
+        const slug = resolveWikiTarget(target);
+        if (slug) {
+          const page = wikiPageMap.get(slug);
+          const text = label || page?.title || slug;
+          return (
+            '<a href="/wiki/' + escapeHtml(slug) + '" class="wikilink" ' +
+            'data-wiki-slug="' + escapeHtml(slug) + '">' + escapeHtml(text) + '</a>'
+          );
+        }
+        // Unresolved -> render visibly broken (NOT a dead <a> to an empty page).
+        const text = label || target;
+        return (
+          '<span class="wikilink-broken" title="unresolved: ' +
+          escapeHtml(target) + '">' + escapeHtml(text) + '</span>'
+        );
+      },
+    },
+  ],
+});
+
+/** Render a wiki page body (frontmatter already stripped) to HTML via the
+ * scoped wiki marked instance (so [[wikilinks]] resolve through the index). */
+function wikiMarkdownToHtml(md: string): string {
+  return wikiMarked.parse(md) as string;
+}
+
+/** Stricter sanitizer for LLM-authored (semi-trusted) wiki pages. Unlike the
+ * global setSafeContent — which deliberately WIDENS the default allowlist to
+ * permit iframe/SVG for sandboxed standalone docs — this LOCKS DOWN: forbids
+ * iframe/script/style/svg/math/form/input/button and inline style=, while
+ * keeping data-wiki-slug (+ href/class/title) on anchors/spans for click-routing
+ * and broken-link tooltips. */
+function setSafeWikiContent(el: HTMLElement, rawHtml: string): void {
+  while (el.firstChild) el.removeChild(el.firstChild);
+  const clean = DOMPurify.sanitize(rawHtml, {
+    USE_PROFILES: { html: true },
+    ADD_ATTR: ['data-wiki-slug'],
+    FORBID_TAGS: ['style', 'iframe', 'script', 'svg', 'math', 'form', 'input', 'button'],
+    FORBID_ATTR: ['style'],
+  });
+  el.insertAdjacentHTML('beforeend', clean);
+}
+
+const WIKI_TYPE_ORDER: WikiType[] = ['entity', 'concept', 'theme'];
+const WIKI_TYPE_LABEL: Record<string, string> = {
+  entity: 'Entities',
+  concept: 'Concepts',
+  theme: 'Themes',
+};
+
+function wikiTagsHtml(tags: string[] | undefined): string {
+  if (!tags || tags.length === 0) return '';
+  return (
+    '<span class="wiki-tags">' +
+    tags.map((t) => '<span class="wiki-tag">' + escapeHtml(t) + '</span>').join('') +
+    '</span>'
+  );
+}
+
+/** Internal link to another wiki page (used in lists/backlinks). Always an
+ * <a data-wiki-slug> so the content click handler intercepts it for SPA nav. */
+function wikiInternalLink(slug: string, text?: string): string {
+  const label = text || wikiPageMap.get(slug)?.title || slug;
+  return (
+    '<a href="/wiki/' + escapeHtml(slug) + '" class="wikilink" ' +
+    'data-wiki-slug="' + escapeHtml(slug) + '">' + escapeHtml(label) + '</a>'
+  );
+}
+
+// LIST view: catalog grouped by type + a recent-changes panel + a count.
+function renderWikiIndex(index: WikiIndex): void {
+  setDocTitle('Wiki');
+  const pages = index.pages.slice();
+  if (pages.length === 0) {
+    setSafeWikiContent(
+      content,
+      [
+        '<div class="content-card">',
+        '  <div class="empty-state">',
+        '    <div class="empty-state-icon">' + DOC_ICON + '</div>',
+        '    <div class="empty-state-text">No wiki pages yet</div>',
+        '  </div>',
+        '</div>',
+      ].join('\n'),
+    );
+    return;
+  }
+
+  // Optional search filter over title/summary/tags/aliases.
+  const term = searchTerm.toLowerCase();
+  const visible = term
+    ? pages.filter((p) => {
+        const hay = (
+          p.title + ' ' + (p.summary || '') + ' ' +
+          (p.tags || []).join(' ') + ' ' + (p.aliases || []).join(' ')
+        ).toLowerCase();
+        return hay.indexOf(term) !== -1;
+      })
+    : pages;
+
+  // Group by type, with the known types first then any unknown types.
+  const groups = new Map<string, WikiPage[]>();
+  for (const p of visible) {
+    const key = String(p.type || 'other');
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(p);
+  }
+  const orderedKeys = [
+    ...WIKI_TYPE_ORDER.filter((k) => groups.has(k)),
+    ...Array.from(groups.keys()).filter((k) => !WIKI_TYPE_ORDER.includes(k as WikiType)),
+  ];
+
+  const sections: string[] = [];
+  for (const key of orderedKeys) {
+    const rows = groups.get(key)!.slice().sort((a, b) => a.title.localeCompare(b.title));
+    const label = WIKI_TYPE_LABEL[key] || (key.charAt(0).toUpperCase() + key.slice(1));
+    const items = rows
+      .map((p) =>
+        [
+          '<li class="wiki-item">',
+          '  <div class="wiki-item-head">',
+          '    ' + wikiInternalLink(p.slug, p.title),
+          '    <span class="wiki-type-chip wiki-type-' + escapeHtml(String(p.type)) + '">' +
+            escapeHtml(String(p.type)) + '</span>',
+          '  </div>',
+          p.summary ? '  <div class="wiki-item-summary">' + escapeHtml(p.summary) + '</div>' : '',
+          wikiTagsHtml(p.tags),
+          '</li>',
+        ].join('\n'),
+      )
+      .join('\n');
+    sections.push(
+      [
+        '<section class="wiki-group">',
+        '  <h2 class="wiki-group-title">' + escapeHtml(label) +
+          ' <span class="wiki-group-count">' + rows.length + '</span></h2>',
+        '  <ul class="wiki-list">',
+        items,
+        '  </ul>',
+        '</section>',
+      ].join('\n'),
+    );
+  }
+
+  // Recent-changes panel (newest first, already ordered in the index).
+  const log = (index.recent_log || []).slice(0, 12);
+  const logHtml = log.length
+    ? [
+        '<aside class="wiki-recent">',
+        '  <h2 class="wiki-recent-title">Recent changes</h2>',
+        '  <ul class="wiki-recent-list">',
+        log
+          .map((e) =>
+            [
+              '<li class="wiki-recent-item">',
+              '  <span class="wiki-recent-date">' + escapeHtml(e.date || '') + '</span>',
+              '  <span class="wiki-recent-op wiki-op-' + escapeHtml(e.op || '') + '">' +
+                escapeHtml(e.op || '') + '</span>',
+              '  <span class="wiki-recent-summary">' + escapeHtml(e.summary || '') + '</span>',
+              '</li>',
+            ].join('\n'),
+          )
+          .join('\n'),
+        '  </ul>',
+        '</aside>',
+      ].join('\n')
+    : '';
+
+  const emptyNote =
+    visible.length === 0
+      ? '<div class="empty-state-text wiki-empty">No wiki pages match the search.</div>'
+      : '';
+
+  setSafeWikiContent(
+    content,
+    [
+      '<div class="content-card wiki-index-card">',
+      '  <div class="wiki-index-header">',
+      '    <h1 class="wiki-index-title">LLM Wiki</h1>',
+      '    <span class="wiki-index-count">' + pages.length + ' pages</span>',
+      '  </div>',
+      '  <div class="wiki-index-layout">',
+      '    <div class="wiki-index-main">',
+      emptyNote,
+      sections.join('\n'),
+      '    </div>',
+      logHtml,
+      '  </div>',
+      '</div>',
+    ].join('\n'),
+  );
+}
+
+// PAGE view: title + type chip + tags + rendered body + backlinks + related.
+function renderWikiPage(page: WikiPage, body: string): void {
+  setDocTitle(page.title);
+  const bodyHtml = wikiMarkdownToHtml(stripWikiFrontmatter(body));
+
+  // Backlinks from page.inbound (slug list). Titles come from the index map.
+  const inbound = (page.inbound || []).filter((s) => s !== page.slug);
+  const backlinksHtml = inbound.length
+    ? [
+        '<section class="wiki-backlinks">',
+        '  <h2 class="wiki-section-title">Backlinks</h2>',
+        '  <ul class="wiki-link-list">',
+        inbound
+          .map((s) => '<li class="wiki-link-item">' + wikiInternalLink(s) + '</li>')
+          .join('\n'),
+        '  </ul>',
+        '</section>',
+      ].join('\n')
+    : '';
+
+  // Related = outbound links not already shown as backlinks (avoid duplication).
+  const inboundSet = new Set(inbound);
+  const related = (page.outbound || []).filter((s) => s !== page.slug && !inboundSet.has(s));
+  const relatedHtml = related.length
+    ? [
+        '<section class="wiki-related">',
+        '  <h2 class="wiki-section-title">Related</h2>',
+        '  <ul class="wiki-link-list">',
+        related
+          .map((s) => '<li class="wiki-link-item">' + wikiInternalLink(s) + '</li>')
+          .join('\n'),
+        '  </ul>',
+        '</section>',
+      ].join('\n')
+    : '';
+
+  // Two-pass render. The scaffold (back BUTTON, header, meta, backlinks,
+  // related) is dashboard-authored, trusted chrome — render it with the
+  // standard setSafeContent so the <button data-wiki-back> survives (the
+  // strict wiki sanitizer FORBIDs <button> and would strip it, killing the
+  // back-nav handler). The page BODY is the only semi-trusted LLM-authored
+  // part — inject it separately through setSafeWikiContent. The body slot is
+  // left empty in the scaffold and filled in the second pass.
+  setSafeContent(
+    content,
+    [
+      '<div class="content-card wiki-page-card">',
+      '  <div class="wiki-page-meta">',
+      '    <button class="gen-research-back" data-wiki-back>&lsaquo; All pages</button>',
+      '    <span class="wiki-type-chip wiki-type-' + escapeHtml(String(page.type)) + '">' +
+        escapeHtml(String(page.type)) + '</span>',
+      '  </div>',
+      '  <div class="wiki-page-header">',
+      '    <h1 class="wiki-page-title">' + escapeHtml(page.title) + '</h1>',
+      page.summary ? '    <p class="wiki-page-summary">' + escapeHtml(page.summary) + '</p>' : '',
+      wikiTagsHtml(page.tags),
+      '  </div>',
+      '  <div class="wiki-page-body md-content"></div>',
+      backlinksHtml,
+      relatedHtml,
+      '</div>',
+    ].join('\n'),
+  );
+
+  // Second pass: the LLM-authored markdown body goes through the stricter
+  // sanitizer (forbids iframe/script/style/svg/math/form/input/button + inline
+  // style), keeping only data-wiki-slug anchors/spans for click-routing.
+  const bodyEl = content.querySelector('.wiki-page-body') as HTMLElement | null;
+  if (bodyEl) setSafeWikiContent(bodyEl, bodyHtml);
+}
+
+function renderWikiNotFound(slug: string): void {
+  setDocTitle('Wiki');
+  // All trusted dashboard chrome (including the back <button>) — use the
+  // standard sanitizer so the button + data-wiki-back survive. No LLM body here.
+  setSafeContent(
+    content,
+    [
+      '<div class="content-card">',
+      '  <div class="empty-state">',
+      '    <div class="empty-state-icon">' + DOC_ICON + '</div>',
+      '    <div class="empty-state-text">Wiki page not found: ' + escapeHtml(slug) + '</div>',
+      '    <button class="gen-research-back" data-wiki-back>&lsaquo; Back to wiki</button>',
+      '  </div>',
+      '</div>',
+    ].join('\n'),
+  );
 }
 
 function extractCycleSummary(body: string): string {
@@ -3779,7 +4203,44 @@ async function load(): Promise<void> {
   showLoading();
 
   try {
-    if (activeTab === 'research') {
+    if (activeTab === 'wiki') {
+      // Fetch + cache the committed index.json once; everything (catalog,
+      // backlinks, resolver) is derived from it. No JS-side graph building.
+      const idx = await withTimeout(loadWikiIndex(controller.signal), LOAD_TIMEOUT_MS, controller);
+      if (requestId !== loadRequestId) return;
+      if (idx === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (!idx) {
+        showError('Wiki unavailable', 'Could not load the wiki index. Click to retry.');
+      } else if (!selectedSlug) {
+        renderWikiIndex(idx);
+      } else {
+        const page = wikiPageMap.get(selectedSlug);
+        if (!page) {
+          renderWikiNotFound(selectedSlug);
+        } else {
+          const cached = wikiBodyCache.get(selectedSlug);
+          if (cached !== undefined) {
+            renderWikiPage(page, cached);
+          } else {
+            const body = await withTimeout(
+              fetchMarkdownReport(`${DATA_BASE}/wiki/${page.file}`, controller.signal),
+              LOAD_TIMEOUT_MS,
+              controller,
+            );
+            if (requestId !== loadRequestId) return;
+            if (body === 'timeout') {
+              showError('Loading timed out', 'Network may be slow. Click to retry.');
+            } else if (body) {
+              wikiBodyCache.set(selectedSlug, body);
+              renderWikiPage(page, body);
+            } else {
+              renderWikiNotFound(selectedSlug);
+            }
+          }
+        }
+      }
+    } else if (activeTab === 'research') {
       // Make sure the manifest (and therefore the generative index) is loaded.
       const m = manifest || await loadManifest();
       if (requestId !== loadRequestId) return;
@@ -4030,6 +4491,13 @@ content.addEventListener('click', (e) => {
     stopResearchAudio();
     return;
   }
+  // Wiki "back to all pages" / "back to wiki" buttons.
+  const wikiBack = target.closest('[data-wiki-back]') as HTMLElement | null;
+  if (wikiBack) {
+    selectedSlug = null;
+    load();
+    return;
+  }
   if (target.closest('[data-research-pdf]')) {
     // Browser handles the rest: print stylesheet hides chrome,
     // user picks "Save as PDF" in the system dialog.
@@ -4044,6 +4512,22 @@ content.addEventListener('click', (e) => {
       load();
       return;
     }
+  }
+  // Wiki internal links ([[wikilinks]] rendered as <a data-wiki-slug>) — intercept
+  // for instant SPA nav so a click never triggers a full page reload. Mirror the
+  // research [data-slug] branch. Placed before the [data-slug] lookup; they use
+  // distinct attributes so there's no collision, but ordering keeps intent clear.
+  const wikiAnchor = target.closest('[data-wiki-slug]') as HTMLElement | null;
+  if (wikiAnchor && activeTab === 'wiki') {
+    const slug = wikiAnchor.dataset.wikiSlug;
+    if (slug) {
+      e.preventDefault();
+      selectedSlug = slug;
+      // load() calls updateRoute() first thing, which pushState's /wiki/<slug>;
+      // no full reload. Mirrors the research [data-slug] branch.
+      load();
+    }
+    return;
   }
   const row = target.closest('[data-slug]') as HTMLElement | null;
   if (row && activeTab === 'research') {
@@ -4146,10 +4630,11 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
     syncTabUi();
     document.body.classList.toggle('tab-research', activeTab === 'research');
     document.body.classList.toggle('tab-models', activeTab === 'models');
+    document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
     // Re-probe availability for current month with new tab (date tabs only).
-    // The models tab doesn't use date routing, so skip probing there too —
+    // The models/wiki tabs don't use date routing, so skip probing there too —
     // it'd just paint dots on a calendar that's hidden anyway.
-    if (activeTab !== 'research' && activeTab !== 'models') {
+    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -4167,7 +4652,8 @@ applyRoute();
 const currentTab: Tab = activeTab as Tab;
 document.body.classList.toggle('tab-research', currentTab === 'research');
 document.body.classList.toggle('tab-models', currentTab === 'models');
-if (currentTab !== 'research' && currentTab !== 'models') {
+document.body.classList.toggle('tab-wiki', currentTab === 'wiki');
+if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();
