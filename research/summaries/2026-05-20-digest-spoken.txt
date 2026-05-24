@@ -1,9 +1,0 @@
-Speaker 1: Wednesday, May twentieth, twenty twenty-six.
-Speaker 2: [high_energy] Google I/O is the lead today — Gemini three point five Flash is shipping now, the Spark always-on agent is live, there's a new Omni world model, and Android XR glasses just got announced. Three point five Pro, though, is pushed to June.
-Speaker 1: Big news behind the scenes as well — Andrej Karpathy is joining Anthropic's pre-training team. That is the year's most significant talent move by a wide margin.
-Speaker 2: Hard to argue with that. On the legal front, Elon Musk lost his OpenAI lawsuit — the court ruled he simply filed too late. He's vowing a Ninth Circuit appeal.
-Speaker 1: Some quick numbers — Google and Blackstone are committing [emphasis]five billion dollars[/emphasis] to a TPU neocloud targeting five hundred megawatts of capacity by twenty twenty-seven.
-Speaker 2: And a startup called Recursive Superintelligence raised [emphasis]six hundred fifty million dollars[/emphasis] at a four point six five billion dollar valuation. The name alone tells you something about the moment we're in.
-Speaker 1: Meanwhile, Meta is cutting roughly ten percent of its workforce — around seven thousand roles — starting today.
-Speaker 2: [dramatic_pause] Seven thousand. On the open-source front, Qwen three point seven paired with llama dot cpp's multi-token prediction is running two point four times faster, and community models GLM and Mimo are now outscoring Gemini three point five Flash on the arena leaderboard.
-Speaker 1: That is your ARA broadcast — full digest on GitHub.

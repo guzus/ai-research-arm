@@ -1,9 +1,0 @@
-Speaker 1: Tuesday, May fifth, twenty twenty-six.
-Speaker 2: [high_energy] OpenAI is throwing a launch party tonight in San Francisco — GPT five point five goes live, and the kicker is that GPT five point five itself proposed the event date.
-Speaker 1: Agents SDK two point zero and a Codex drop are also expected at that event, so it's a big night for the OpenAI ecosystem.
-Speaker 2: And the Cerebras IPO is [emphasis]three times oversubscribed[/emphasis] — ten billion dollars in orders chasing three point five billion in shares priced at one hundred fifteen to one hundred twenty-five each, putting the valuation at twenty-six point six billion dollars.
-Speaker 1: That's a strong signal for AI hardware appetite. Some quick numbers on the investment side: Anthropic's joint venture with Blackstone, H and F, and Goldman closed at one point five billion, and OpenAI's so-called Deployment Co has raised over four billion toward a ten billion dollar target.
-Speaker 2: Big tech AI capital spending for twenty twenty-six is tracking above [emphasis]seven hundred billion dollars[/emphasis] in aggregate, and that number keeps climbing.
-Speaker 1: On the model front, Anthropic's San Francisco developer event is tomorrow — they're red-teaming a model called Jupiter v one-p, described as the first Claude five-class base family.
-Speaker 2: [dramatic_pause] Worth noting the White House is also drafting a federal AI-vetting executive order, and open-source communities are actively debating what open-weights models mean for the broader landscape.
-Speaker 1: That is your ARA broadcast — full digest on GitHub.

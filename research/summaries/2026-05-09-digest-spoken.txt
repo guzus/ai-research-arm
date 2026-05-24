@@ -1,9 +1,0 @@
-Speaker 1: Saturday, May ninth, twenty twenty-six.
-Speaker 2: [high_energy] Anthropic and Akamai just locked in a one point eight billion dollar, seven-year cloud deal, and the market went wild — Akamai up [emphasis]twenty-seven percent[/emphasis] on Friday, its largest single-day rally in over twenty-two years.
-Speaker 1: That deal puts Anthropic five compute partners deep — they are stacking infrastructure fast.
-Speaker 2: And their revenue is moving just as fast — ARR climbed from fourteen billion in February to nineteen billion in March, then [emphasis]thirty billion dollars in April[/emphasis], which works out to eighty times growth in a single quarter.
-Speaker 1: On the IPO front, Cerebras raised its price range to one hundred twenty-five to one hundred thirty-five dollars per share after more than twenty times oversubscription. Pricing is set for Tuesday, May thirteenth, with a fully diluted valuation near twenty-eight point seven billion dollars.
-Speaker 2: One deal that is not moving — OpenAI and Broadcom's eighteen billion dollar chip agreement has stalled. Broadcom fell four percent on the news, while Microsoft edged up a little over one and a half percent.
-Speaker 1: Europe closed its AI Omnibus process, pushing high-risk AI categories to December second, twenty twenty-seven. Watermarking requirements hold August second, twenty twenty-six, and there is a new Article Five ban on AI-generated child sexual abuse material.
-Speaker 2: [dramatic_pause] The weekend's defining theme online was capacity unlocked — Akamai, IREN's five-gigawatt partnership with NVIDIA valued at over five billion dollars, and SpaceX's Colossus data center all dominating the AI conversation at once.
-Speaker 1: That is your ARA broadcast — full digest on GitHub.

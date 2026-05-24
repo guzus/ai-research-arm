@@ -3401,18 +3401,30 @@ jobs:
       - name: Send Telegram notification
         if: success() && steps.outfile.outputs.has_file == 'true' && steps.push.outputs.pushed == 'true'
         continue-on-error: true
-        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: html
-          message: |
-            🧪 <b>Generative Research Published</b>
-
-            📝 Topic: ${{ steps.tg-prep.outputs.safe_topic }}
-            🤖 Backend: ${{ steps.params.outputs.backend }}
-
-            📄 <a href="https://github.com/${{ github.repository }}/blob/main/research/generative/${{ steps.outfile.outputs.file }}">View on GitHub</a>
+        # Plain curl to the Telegram Bot API. Was appleboy/telegram-action, a
+        # Docker-based action — Cloud Run self-hosted runners have no Docker daemon,
+        # so its `docker build` failed and broke the whole job. Interpolated values
+        # are passed via env (NOT inlined as ${{ }} in the script) to prevent shell
+        # injection; the topic is already HTML-escaped by the tg-prep step above.
+        env:
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TG_TOPIC: ${{ steps.tg-prep.outputs.safe_topic }}
+          TG_BACKEND: ${{ steps.params.outputs.backend }}
+          TG_FILE: ${{ steps.outfile.outputs.file }}
+          TG_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          TEXT=$(printf '%s\n\n%s\n%s\n\n%s' \
+            "🧪 <b>Generative Research Published</b>" \
+            "📝 Topic: ${TG_TOPIC}" \
+            "🤖 Backend: ${TG_BACKEND}" \
+            "📄 <a href=\"https://github.com/${TG_REPO}/blob/main/research/generative/${TG_FILE}\">View on GitHub</a>")
+          curl -fsS --max-time 30 -X POST \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${TEXT}" \
+            --data-urlencode "parse_mode=HTML" >/dev/null
 
       # Cleanup the staged untrusted inputs at the end of the job. Runs on
       # success and failure (if: always()) so a failed run doesn't leave the

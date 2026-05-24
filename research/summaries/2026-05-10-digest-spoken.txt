@@ -1,9 +1,0 @@
-Speaker 1: Sunday, May tenth, twenty twenty-six.
-Speaker 2: [high_energy] Cerebras is going public Tuesday — the IPO book is more than twenty times oversubscribed, priced at one hundred twenty-five to one hundred thirty-five dollars a share, putting the top-of-range valuation at nearly [emphasis]twenty-eight point seven billion dollars[/emphasis].
-Speaker 1: The raise itself is roughly three point eight billion dollars — a significant moment for AI chip hardware.
-Speaker 2: Meanwhile, Sam Altman testifies this week in the Musk versus Altman trial, after Friday was described as the most damaging day yet for OpenAI heading into week three.
-Speaker 1: On the market side, chips had a standout week. Intel and AMD each up twenty-five percent, Micron up thirty-seven percent, and Nvidia up eight percent ahead of Q1 earnings on May twentieth.
-Speaker 2: NVIDIA's twenty twenty-six equity bets have crossed [emphasis]forty billion dollars[/emphasis], and a five-billion-dollar Intel stake is now reportedly worth more than twenty-five billion.
-Speaker 1: On layoffs — tech cuts year-to-date sit around eighty-five thousand, up thirty-three percent year over year. This week's cluster: Cloudflare eleven hundred, Coinbase seven hundred, Upwork one hundred forty-five.
-Speaker 2: [dramatic_pause] And Hacker News is going LLM-skeptic. Tim Gowers dropped a catalog of GPT five point five Pro math failures — five hundred fifty points on the front page.
-Speaker 1: That is your ARA broadcast — full digest on GitHub.

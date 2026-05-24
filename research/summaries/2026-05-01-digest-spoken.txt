@@ -1,9 +1,0 @@
-Speaker 1: Friday, May first, twenty twenty-six.
-Speaker 2: [high_energy] Anthropic is reportedly in talks to raise at a valuation between [emphasis] eight hundred fifty and nine hundred billion dollars [/emphasis], which would make it the world's most valuable AI startup, surpassing OpenAI.
-Speaker 1: The round is pegged at fifty billion dollars, and the company's annual recurring revenue has already crossed [emphasis] thirty billion dollars [/emphasis], growing more than three times year over year.
-Speaker 2: That context makes the valuation make sense. Separately, Apple crushed its second quarter — one hundred eleven point two billion in revenue, iPhone sales up twenty-two percent, and Tim Cook confirmed the Google Gemini and Siri integration is going well.
-Speaker 1: Apple also announced a one hundred billion dollar share buyback. On the broader AI spending picture, the Magnificent Seven are on pace to deploy roughly seven hundred twenty-five billion dollars in AI infrastructure this year.
-Speaker 2: Amazon leads at two hundred billion. Microsoft and Google are each in the one hundred eighty to one hundred ninety billion range. Meta is somewhere between one hundred twenty-five and one hundred forty-five billion, though JPMorgan just downgraded Meta to Neutral.
-Speaker 1: Alphabet, for its part, was up thirty-four percent in April. On the legal front, day four of the Musk versus Altman trial ended with OpenAI probing a donor-advised-funds theory, and proceedings resume Monday, May fourth.
-Speaker 2: [dramatic_pause] And the top story on Hacker News right now is the Claude Code "OpenClaw" controversy, sitting at seven hundred eight points. That debate is worth a read.
-Speaker 1: EU AI Act deadline sits at ninety-three days out. That is your ARA broadcast, full digest on GitHub.

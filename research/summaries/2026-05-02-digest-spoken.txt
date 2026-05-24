@@ -1,9 +1,0 @@
-Speaker 1: Saturday, May second, twenty twenty-six.
-Speaker 2: [high_energy] Anthropic is racing a forty-eight-hour clock to close a nine-hundred-billion-dollar valuation round, targeting around May fourteenth — but a Pentagon exclusion is deepening their federal problem.
-Speaker 1: On the defense front, Reflection AI emerged as the structural winner of a Pentagon sweep covering eight vendors: AWS, Google, Microsoft, NVIDIA, OpenAI, Reflection, SpaceX, and Oracle. The White House is now reportedly drafting an executive order to bring Anthropic back into the fold.
-Speaker 2: Huge funding news — Yann LeCun's new venture AMI Labs raised [emphasis]one point zero three billion dollars[/emphasis] at a three point five billion pre-money valuation in seed. That is the largest AI seed round ever, and it is a direct bet on his JEPA architecture over the large language model paradigm.
-Speaker 1: Some quick numbers. Anthropic's valuation to market is now roughly forty-five point five billion dollars — that's approximately equal to combined first-quarter profits from Google's twenty-eight point seven billion and Amazon's sixteen point eight billion.
-Speaker 2: [dramatic_pause] Shield AI closed a one point five billion dollar Series G at [emphasis]twelve point seven billion dollars[/emphasis] — up one hundred forty percent year over year.
-Speaker 1: And Replit landed four hundred million in a Series D, pushing their valuation to nine billion — three times where they were just six months ago.
-Speaker 2: Eyes on Monday. GPT five point five is set to launch at five fifty-five in the evening Eastern time, and the Musk versus Altman trial resumes the same day.
-Speaker 1: That is your ARA broadcast — full digest on GitHub.
