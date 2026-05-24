@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-05-24
+
+TOP STORIES:
+• Anthropic's gated "Mythos" model leaks in the UI — claude-mythos-1-preview strings scoped to Claude Code + Claude Security (leak, not a launch)
+• Pope Leo XIV's AI encyclical "Magnifica Humanitas" drops tomorrow (May 25), with Anthropic's Chris Olah on the Vatican panel
+• SemiAnalysis: US consumer sentiment worst since 1952 — AI job fear now a "measurable macro signal"
+
+KEY NUMBERS:
+• OpenAI: confidential S-1 filed Fri (~$852B–$1T), −122% Q1 margin
+• Claude Opus 4.7 tops new WildClawBench at 62.2%
+
+TRENDING: "Write a 10-page paper without ChatGPT" meme (~160K likes)
+
+Quiet Sunday: no frontier model shipped; all labs silent.
+
+Full digest on GitHub.
