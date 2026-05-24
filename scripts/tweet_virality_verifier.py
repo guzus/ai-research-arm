@@ -6,8 +6,12 @@ It answers one narrow question — "does this draft have the *form* properties
 that co-occur with >=100-like tweets in our sample?" — and surfaces the one or
 two levers the data actually supports.
 
-Two questions, two functions:
+Three functions, three questions:
 
+- ``assess_saveability`` (bookmarks) — **the one metric the text genuinely
+  predicts.** Scores bookmark-worthiness via INFORMATION DENSITY (length,
+  numbers, media). Backed by a real out-of-sample signal (within-author
+  AUC ~0.62, vs ~0.55 for likes). Real but modest. See BOOKMARKS.md.
 - ``score_tweet`` (round 1) — RAW-LIKES conformance: does this resemble tweets
   that pulled >=100 absolute likes? Validated AUC ~0.67 — but raw likes mostly
   track follower count, so a high score largely means "you write like a big
@@ -316,8 +320,127 @@ def assess_overperformance(text: str, *, has_media: bool = False, is_quote: bool
 
 
 # ---------------------------------------------------------------------------
+# Bookmarks: what gets SAVED (the one metric where text genuinely predicts).
+# ---------------------------------------------------------------------------
+# From the reach-controlled bookmark study (BOOKMARKS.md): out-of-sample form
+# carries real within-author signal (LOO ~0.62, vs ~0.55 for likes), driven by
+# INFORMATION DENSITY. Five features survived the within-author paired check
+# across 46 authors; weights track that evidence, with the CLEAN, recommendable
+# levers dominating:
+#   length   (char_len)  paired agree 83% — strongest, cleanest. over avg ~502
+#                        chars vs ~359 normal -> anchor the 0..1 length fraction.
+#   numbers  (has_numbers) 76%, lift 1.29 — concrete data/stats.
+#   media    (has_media)   76%, lift 1.18 — chart/screenshot/clip.
+#   caps     (has_allcaps) 70%, lift 1.28 — LEAST clean: part acronyms/tickers
+#                        (legit), part all-caps hype/shouting. Scored, never advised.
+_SAVE_LEN_LOW, _SAVE_LEN_HIGH = 359.0, 502.0
+_SAVE_WEIGHTS = {"length": 35.0, "has_numbers": 25.0, "has_media": 25.0, "has_allcaps": 15.0}
+_SAVE_PROMISING_MIN, _SAVE_STRONG_MIN = 30.0, 65.0
+
+
+def assess_saveability(text: str, *, has_media: bool = False) -> dict[str, Any]:
+    """Score how *bookmark-worthy* (saveable) a draft is, 0-100.
+
+    This is the verifier for the one engagement metric the text genuinely
+    predicts: bookmarks reward **information density**, so this rewards length,
+    concrete numbers/data, and media — and (unlike a like predictor) it's backed
+    by a real out-of-sample signal (within-author AUC ~0.62). It deliberately
+    does NOT advise adding ALL-CAPS (that feature is part hype/shouting); caps are
+    scored but never recommended. Modest, not magic: it shifts the odds a draft
+    gets saved; reach and timing still matter.
+    """
+    feats = extract_features(text, has_media=has_media)
+    factors: list[dict[str, Any]] = []
+    suggestions: list[str] = []
+    score = 0.0
+
+    # CLEAN lever 1: length / substance.
+    char_len = feats["char_len"]
+    frac = max(0.0, min(1.0, (char_len - _SAVE_LEN_LOW) / (_SAVE_LEN_HIGH - _SAVE_LEN_LOW)))
+    contrib = _SAVE_WEIGHTS["length"] * frac
+    score += contrib
+    factors.append({"name": "length", "value": {"chars": int(char_len)}, "strength_frac": round(frac, 3),
+                    "weight": _SAVE_WEIGHTS["length"], "contribution": round(contrib, 2), "strength": "clean",
+                    "note": "Substantive length — saved tweets avg ~502 chars vs ~359 (strongest, "
+                            "cleanest lever; 83% of authors)."})
+    if frac < 0.5:
+        suggestions.append("Make it more substantive (saved tweets average ~500 chars vs ~360) — "
+                           "explain, don't just gesture. The strongest, cleanest save lever.")
+
+    # CLEAN lever 2: concrete numbers / data.
+    has_numbers = feats["has_numbers"] >= 1.0
+    contrib = _SAVE_WEIGHTS["has_numbers"] if has_numbers else 0.0
+    score += contrib
+    factors.append({"name": "has_numbers", "present": has_numbers, "weight": _SAVE_WEIGHTS["has_numbers"],
+                    "contribution": round(contrib, 2), "strength": "clean",
+                    "note": "Concrete numbers/data — in 61% of saved vs 47% of normal (lift 1.29, 76%)."})
+    if not has_numbers:
+        suggestions.append("Add a concrete number or data point — saves reward specifics "
+                           "(61% of saved tweets have one vs 47%).")
+
+    # CLEAN lever 3: media.
+    contrib = _SAVE_WEIGHTS["has_media"] if has_media else 0.0
+    score += contrib
+    factors.append({"name": "has_media", "present": bool(has_media), "weight": _SAVE_WEIGHTS["has_media"],
+                    "contribution": round(contrib, 2), "strength": "clean",
+                    "note": "A visual (chart/screenshot/clip) — in 71% of saved vs 60% (lift 1.18, 76%)."})
+    if not has_media:
+        suggestions.append("Attach a visual — chart, screenshot, or diagram (in 71% of saved tweets vs 60%).")
+
+    # SCORED but NOT advised: ALL-CAPS (part info-density, part hype — cargo-cult risk).
+    has_allcaps = feats["has_allcaps"] >= 1.0
+    contrib = _SAVE_WEIGHTS["has_allcaps"] if has_allcaps else 0.0
+    score += contrib
+    factors.append({"name": "has_allcaps", "present": has_allcaps, "weight": _SAVE_WEIGHTS["has_allcaps"],
+                    "contribution": round(contrib, 2), "strength": "weak/hype",
+                    "note": "ALL-CAPS token(s) present. Correlates with saves but is part "
+                            "acronyms/tickers, part hype/shouting — scored, NOT recommended."})
+    # Intentionally no suggestion to add caps.
+
+    score = max(0.0, min(100.0, score))
+    verdict = ("strong" if score >= _SAVE_STRONG_MIN
+               else "promising" if score >= _SAVE_PROMISING_MIN else "weak")
+    return {
+        "score": round(score, 1),
+        "verdict": verdict,
+        "factors": factors,
+        "suggestions": suggestions,
+        "disclaimer": (
+            "Saveability = info-density resemblance to tweets that over-perform on BOOKMARKS — "
+            "the one metric the text genuinely predicts (out-of-sample within-author AUC ~0.62, "
+            "vs ~0.55 for likes). Real but modest: it shifts the odds of a save, not a guarantee; "
+            "reach and timing still matter. Clean levers are length, numbers, media — caps are "
+            "scored but not advised."
+        ),
+        "has_media": bool(has_media),
+    }
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
+def _format_saveability(result: dict[str, Any]) -> str:
+    lines = [f"Saveability (bookmark-worthiness): {result['score']}/100  ->  {result['verdict'].upper()}", ""]
+    lines.append("Factors:")
+    for f in result["factors"]:
+        if f["name"] == "length":
+            state = f"{f['value']['chars']} chars (frac {f['strength_frac']})"
+        else:
+            state = "yes" if f.get("present") else "no"
+        lines.append(f"  [{f['strength']:<9}] {f['name']:<13} {state:<28} "
+                     f"+{f['contribution']:.1f} / {f['weight']:.0f} pts")
+    lines.append("")
+    if result["suggestions"]:
+        lines.append("Suggestions (clean levers you're missing):")
+        for s in result["suggestions"]:
+            lines.append(f"  - {s}")
+    else:
+        lines.append("Suggestions: none — already info-dense.")
+    lines.append("")
+    lines.append(f"Note: {result['disclaimer']}")
+    return "\n".join(lines)
+
+
 def _format_overperformance(result: dict[str, Any]) -> str:
     lines = ["Over-performance guidance (beat your OWN baseline) — faint nudges only", ""]
     if result["levers_present"]:
@@ -373,12 +496,17 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--media", action="store_true", help="Mark the draft as carrying media.")
     parser.add_argument("--quote", action="store_true", help="Mark the draft as a quote tweet.")
     parser.add_argument("--overperformance", action="store_true",
-                        help="Show round-2 over-performance guidance (beat your OWN baseline) "
-                             "instead of the raw-likes conformance score.")
+                        help="Over-performance guidance for LIKES (beat your OWN baseline) — faint nudges.")
+    parser.add_argument("--saveability", action="store_true",
+                        help="Score BOOKMARK-worthiness (info density) — the one metric the text "
+                             "genuinely predicts.")
     parser.add_argument("--json", action="store_true", help="Emit raw JSON instead of pretty text.")
     args = parser.parse_args(argv)
 
-    if args.overperformance:
+    if args.saveability:
+        result = assess_saveability(args.text, has_media=args.media)
+        print(json.dumps(result, indent=2) if args.json else _format_saveability(result))
+    elif args.overperformance:
         result = assess_overperformance(args.text, has_media=args.media, is_quote=args.quote)
         print(json.dumps(result, indent=2) if args.json else _format_overperformance(result))
     else:

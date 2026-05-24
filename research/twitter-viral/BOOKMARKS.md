@@ -61,6 +61,11 @@ Saves are about substance, not hooks.
 - The bookmark lever is **real but modest** (AUC ~0.62, not 0.9) — it shifts the
   odds, it doesn't guarantee a save. Reach and timing still matter.
 
+**Score a draft:** `python3 scripts/tweet_virality_verifier.py "your draft" --saveability [--media]`
+— the `assess_saveability()` verifier scores info density (length / numbers / media;
+caps are scored but never advised), and empirically separates bookmark over-performers
+at AUC ~0.60 on this corpus. Unlike the likes scorers, it's backed by a real signal.
+
 ## Honest caveats
 
 - **`has_allcaps` is the least-clean of the five.** The ALL-CAPS tokens are a

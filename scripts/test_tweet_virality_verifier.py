@@ -233,6 +233,81 @@ def test_cli_overperformance_json_smoke():
     assert "levers_present" in payload and "note" in payload
 
 
+# --- bookmarks: assess_saveability -----------------------------------------
+SAVE_DENSE = (
+    "Here is the full breakdown of how we cut inference latency by 42% and cost by "
+    "roughly 3x over 6 weeks. We moved off the managed API to a self-hosted cluster, "
+    "tuned batch sizes from 8 to 32, switched to fp8, and pre-warmed 4 replicas. p50 "
+    "dropped from 900ms to 520ms, p99 from 3.1s to 1.4s, and monthly spend fell from "
+    "$48k to about $17k. Full numbers, configs, and the 3 gotchas that cost us a week."
+)
+PLAIN_SHORT = "shipped a small update"
+
+
+def test_saveability_keys():
+    res = v.assess_saveability(PLAIN_SHORT)
+    assert set(res) >= {"score", "verdict", "factors", "suggestions", "disclaimer"}
+
+
+def test_saveability_in_range():
+    for text in ["", " ", PLAIN_SHORT, SAVE_DENSE, "WOW " * 4000, "42% $1B 2030"]:
+        for media in (False, True):
+            res = v.assess_saveability(text, has_media=media)
+            assert 0.0 <= res["score"] <= 100.0, (text[:20], res["score"])
+            assert res["verdict"] in {"weak", "promising", "strong"}
+
+
+def test_saveability_rewards_info_density():
+    dense = v.assess_saveability(SAVE_DENSE, has_media=True)["score"]
+    plain = v.assess_saveability(PLAIN_SHORT)["score"]
+    assert dense > plain and dense - plain > 30
+
+
+def test_saveability_media_and_numbers_each_raise_score():
+    base = v.assess_saveability("a quiet lowercase thought about models")["score"]
+    assert v.assess_saveability("a quiet lowercase thought about models", has_media=True)["score"] > base
+    assert v.assess_saveability("a quiet lowercase thought about 3 models")["score"] > base
+
+
+def test_saveability_never_advises_caps():
+    for text in ["", PLAIN_SHORT, "a quiet lowercase note", SAVE_DENSE]:
+        assert not _mentions_caps_advice(v.assess_saveability(text)["suggestions"]), text[:20]
+
+
+def test_saveability_suggests_clean_levers_when_missing():
+    blob = " ".join(v.assess_saveability(PLAIN_SHORT)["suggestions"]).lower()
+    assert "substantive" in blob and "number" in blob and "visual" in blob
+
+
+def test_saveability_clean_levers_dominate():
+    weights = {f["name"]: f["weight"] for f in v.assess_saveability("x")["factors"]}
+    assert weights["has_allcaps"] < min(weights["length"], weights["has_numbers"], weights["has_media"])
+    clean = weights["length"] + weights["has_numbers"] + weights["has_media"]
+    assert clean >= 0.8 * sum(weights.values())
+
+
+def test_saveability_factor_labels():
+    by_name = {f["name"]: f for f in v.assess_saveability(SAVE_DENSE)["factors"]}
+    assert {"length", "has_numbers", "has_media", "has_allcaps"} <= set(by_name)
+    assert by_name["has_allcaps"]["strength"] == "weak/hype"
+    assert by_name["length"]["strength"] == "clean"
+
+
+def test_saveability_determinism():
+    assert v.assess_saveability(SAVE_DENSE, has_media=True) == v.assess_saveability(SAVE_DENSE, has_media=True)
+
+
+def test_cli_saveability_json_smoke():
+    proc = subprocess.run(
+        [sys.executable, str(SCRIPT), SAVE_DENSE, "--saveability", "--media", "--json"],
+        capture_output=True, text=True, cwd=str(SCRIPT.parent),
+    )
+    assert proc.returncode == 0, proc.stderr
+    payload = json.loads(proc.stdout)
+    assert set(payload) >= {"score", "verdict", "factors", "suggestions"}
+    assert 0.0 <= payload["score"] <= 100.0
+
+
 def _mentions_caps_advice(suggestions: list[str]) -> bool:
     """True if any suggestion tells the user to add caps/ALL-CAPS."""
     blob = " ".join(suggestions).lower()
