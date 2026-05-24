@@ -1523,6 +1523,12 @@ body.tab-wiki #calendar {
   display: none;
 }
 
+/* The floating section-nav (prev/next ## section, "1/1") is meaningless on the
+   wiki catalog and short wiki pages — hide it on the wiki tab. */
+body.tab-wiki .section-nav {
+  display: none;
+}
+
 .gen-research-index {
   list-style: none;
   padding: 0;
@@ -2008,21 +2014,36 @@ body.tab-wiki #calendar {
   margin: 0;
 }
 .wiki-item {
-  padding: 12px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--border-light);
 }
 .wiki-item:last-child { border-bottom: none; }
 .wiki-item-head {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 10px;
   flex-wrap: wrap;
 }
+/* The catalog page title reads as a heading-link, not a body wikilink:
+   larger, bold, normal text color, no underline (the generic .wikilink is
+   accent-colored + underlined, which made the list look like a link dump). */
+.wiki-item-head .wikilink {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: none;
+  line-height: 1.3;
+}
+.wiki-item-head .wikilink:hover {
+  color: var(--accent-warm);
+  border-bottom: none;
+}
 .wiki-item-summary {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
-  line-height: 1.5;
-  margin-top: 4px;
+  line-height: 1.55;
+  margin-top: 6px;
+  max-width: 70ch;
 }
 
 /* Type chips (entity / concept / theme). */
