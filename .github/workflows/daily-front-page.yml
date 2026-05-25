@@ -52,6 +52,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          persist-credentials: false
           # Front-page generation only needs markdown inputs. Do not hydrate
           # repo-wide LFS media here: LFS quota or smudge failures should not
           # block creating the dashboard-served PNG.
