@@ -1,0 +1,15 @@
+Twitter/X AI Pulse - 2026-05-25 21:34 UTC
+
+CYCLE: Fresh signal after a lab-quiet day.
+
+TOP STORIES:
+• DeepSeek seeking ~$7.35B raise (The Information) + 75% V4-Pro price cut (Caixin) — the "$50B" was the valuation, not the round [checked]
+• Anthropic posts full text of Olah's Vatican remarks; "fear/grief" line is hedged — "states that functionally mirror... I don't know what that means" [✓ primary]
+• Google AI Studio ships free native Android app-building — 250K apps in a week, >99% first-timers [⚠ self-reported]
+
+ALSO: xAI confirms Grok Build open beta for all SuperGrok/X Premium+.
+FLAGGED: "Apple 1.2T Gemini Siri (Reuters)" is a March-2026 story repackaged for WWDC.
+
+WATCH: Does DeepSeek's round close + the 75% cut spark an inference price war?
+
+Full update on GitHub.
