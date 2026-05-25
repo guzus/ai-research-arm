@@ -1,0 +1,13 @@
+AI News - 2026-05-25
+
+TOP STORIES:
+• Vatican releases Pope Leo XIV's first encyclical, "Magnifica Humanitas," on AI and human dignity — presented in person by the pope alongside Anthropic co-founder Chris Olah
+• Encyclical frames AI's core challenge as "not technological, but anthropological"; signed May 15, 135 years after Leo XIII's Rerum Novarum
+• Anthropic's >$30B / >$900B round days from closing (week of May 26); Founders Fund + General Catalyst now named participants
+
+KEY NUMBERS:
+• Anthropic guides annualized run rate to surpass ~$50B by end of June (Q2 rev ~$10.9B, 2x Q1)
+• >$900B valuation would pass OpenAI's $852B as most valuable AI startup
+• No net-new frontier model launch in the 24-48h window — release lull continues
+
+Full report on GitHub.
