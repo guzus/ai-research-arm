@@ -962,17 +962,23 @@
  * — main.ts injects the SVG path at render time. ~80x20px default. */
 .ara-sparkline {
   display: inline-block;
-  width: 80px;
-  height: 22px;
-  vertical-align: -5px;
+  width: 76px;
+  height: 20px;
+  margin: 0 0.12em;
+  padding: 2px 3px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  background: var(--bg-secondary);
+  vertical-align: -4px;
   color: var(--accent-warm);
+  overflow: hidden;
 }
 
 .ara-sparkline svg {
   display: block;
   width: 100%;
   height: 100%;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .ara-sparkline .ara-sparkline-path {

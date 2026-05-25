@@ -2979,11 +2979,11 @@ function renderSparklines(root: HTMLElement): void {
     const lastValue = values[values.length - 1];
     const delta = lastValue - firstValue;
     const pct = firstValue !== 0 ? ` (${formatSignedNumber((delta / Math.abs(firstValue)) * 100, 1)}%)` : '';
-    setAraTooltip(
-      el,
-      `Sparkline ${formatNumber(firstValue)} -> ${formatNumber(lastValue)}`,
-      `change ${formatSignedNumber(delta, deltaDigits(delta))}${pct}`,
+    el.setAttribute(
+      'aria-label',
+      `Sparkline ${formatNumber(firstValue)} to ${formatNumber(lastValue)}; change ${formatSignedNumber(delta, deltaDigits(delta))}${pct}`,
     );
+    el.setAttribute('role', 'img');
     el.textContent = '';
     el.appendChild(svg);
     el.dataset.rendered = '1';
