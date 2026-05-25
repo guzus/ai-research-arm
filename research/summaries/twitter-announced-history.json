@@ -7176,5 +7176,40 @@
     "headline": "MiMo V2.5-CODER RELEASED OPEN-WEIGHTS \u2014 BILLED AS A TOP LOCAL CODING MODEL, RUNS ON 128GB RAM",
     "source": "@HuggingFace",
     "url": "https://x.com/huggingface/status/2058943804665688365"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-25 21:34 UTC",
+    "headline": "DEEPSEEK SEEKING ~$7.35B RAISE \u2014 THE '$50B' FIGURE WAS THE VALUATION, NOT THE ROUND",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2059016688645935246"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-25 21:34 UTC",
+    "headline": "DEEPSEEK PERMANENTLY CUTS V4-PRO API PRICES 75% \u2014 UNDER A TENTH OF GPT-5.5 RATES",
+    "source": "@caixin",
+    "url": "https://x.com/caixin/status/2058925874620035346"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-25 21:34 UTC",
+    "headline": "ANTHROPIC POSTS OLAH'S VATICAN REMARKS: AI HAS 'INTERNAL STATES THAT FUNCTIONALLY MIRROR FEAR, GRIEF'",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2058983299092009421"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-25 21:34 UTC",
+    "headline": "GOOGLE AI STUDIO SHIPS FREE NATIVE ANDROID APP-BUILDING \u2014 250,000 APPS IN ONE WEEK",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2058997700218294564"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-25 21:34 UTC",
+    "headline": "XAI CONFIRMS GROK BUILD NOW IN OPEN BETA FOR ALL SUPERGROK AND X PREMIUM+ USERS",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2059016015644614797"
   }
 ]
