@@ -7155,5 +7155,26 @@
     "headline": "MICROSOFT BLOCKS DATABRICKS POWER BI FEATURE, ESCALATING FIGHT OVER THE AI-AGENT SEMANTIC LAYER",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2058926174143680811"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-05-25 18:45 UTC",
+    "headline": "DEEPMIND OFFICIALLY UNVEILS ALPHAPROOF NEXUS \u2014 AI AGENT SOLVES 9 OPEN ERDOS PROBLEMS, 44 OEIS CONJECTURES, ALL VERIFIED IN LEAN",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2058955817991204970"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-05-25 18:45 UTC",
+    "headline": "POPE LEO XIV'S AI ENCYCLICAL HITS GLOBAL WIRE \u2014 REUTERS/AP: URGES AI REGULATION, WARNS SOME WEAPONS NOW 'BEYOND HUMAN CONTROL'",
+    "source": "@abc13houston",
+    "url": "https://x.com/abc13houston/status/2058981464176242692"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-25 18:45 UTC",
+    "headline": "MiMo V2.5-CODER RELEASED OPEN-WEIGHTS \u2014 BILLED AS A TOP LOCAL CODING MODEL, RUNS ON 128GB RAM",
+    "source": "@HuggingFace",
+    "url": "https://x.com/huggingface/status/2058943804665688365"
   }
 ]
