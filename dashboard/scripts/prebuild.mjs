@@ -22,6 +22,7 @@ const researchSrc = join(repoRoot, 'research');
 const publicResearch = join(dashboardDir, 'public', 'research');
 const ticketsSrc = join(researchSrc, 'models', 'tickets');
 const ticketsDest = join(publicResearch, 'models', 'tickets');
+const skipLfsPointers = process.env.SKIP_LFS_POINTERS === '1';
 
 // Subdirs to mirror into public/research/. Keys match how the dashboard
 // fetches them; the manifest builder below uses the same set.
@@ -106,6 +107,16 @@ function tryHydrateLfsObjects() {
   return false;
 }
 
+function copyResearchDir(src, dest) {
+  cpSync(src, dest, {
+    recursive: true,
+    filter: (source) => {
+      if (!skipLfsPointers || !LFS_EXT_RE.test(source)) return true;
+      return !isLfsPointer(source);
+    },
+  });
+}
+
 function copyData() {
   mkdirSync(publicResearch, { recursive: true });
 
@@ -118,7 +129,15 @@ function copyData() {
   if (allPointers.length > 0 && tryHydrateLfsObjects()) {
     allPointers = findAllLfsPointers();
   }
-  if (allPointers.length > 0) {
+  if (allPointers.length > 0 && skipLfsPointers) {
+    console.warn(
+      `prebuild: WARNING — skipping ${allPointers.length} git-lfs pointer file(s) ` +
+      'because SKIP_LFS_POINTERS=1. Media assets backed by those pointers ' +
+      'will be absent from this build, but dashboard code/type/build checks can continue.\n' +
+      'Sample skipped pointer files:\n' +
+      allPointers.slice(0, 5).map((p) => `  - ${p}`).join('\n'),
+    );
+  } else if (allPointers.length > 0) {
     console.error(
       `prebuild: ERROR — found ${allPointers.length} git-lfs pointer file(s) ` +
       'in the source tree. The build environment did not hydrate LFS objects. ' +
@@ -135,7 +154,7 @@ function copyData() {
     const src = join(researchSrc, sub);
     if (!existsSync(src)) continue;
     const dest = join(publicResearch, sub);
-    cpSync(src, dest, { recursive: true });
+    copyResearchDir(src, dest);
   }
 }
 

@@ -7,8 +7,7 @@ RUN cd dashboard && npm ci
 
 COPY . .
 
-ENV SKIP_LFS_POINTERS=1
-RUN cd dashboard && npm run build
+RUN cd dashboard && SKIP_LFS_POINTERS=1 npm run build
 
 FROM caddy:2-alpine
 
