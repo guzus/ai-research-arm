@@ -1002,13 +1002,30 @@ async function fetchTwitter(dateStr: string, signal: AbortSignal): Promise<strin
 async function fetchFrontPage(dateStr: string, signal: AbortSignal): Promise<string | null> {
   const url = `${DATA_BASE}/front-page/${dateStr}-front-page.png`;
   try {
-    const resp = await fetch(url, { method: 'HEAD', signal });
+    const resp = await fetch(url, { method: 'HEAD', signal, cache: 'no-cache' });
     if (!resp.ok) return null;
+    const contentType = (resp.headers.get('content-type') || '').toLowerCase();
+    if (!contentType.startsWith('image/')) return null;
     return url;
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') return null;
     return null;
   }
+}
+
+async function findFrontPageAtOrBefore(
+  targetDateStr: string,
+  signal: AbortSignal,
+): Promise<{ url: string; date: string } | null> {
+  const candidates = manifestDates('frontpage')
+    .filter((date) => date <= targetDateStr)
+    .sort()
+    .reverse();
+  for (const date of candidates) {
+    const url = await fetchFrontPage(date, signal);
+    if (url) return { url, date };
+  }
+  return null;
 }
 
 async function fetchDigest(dateStr: string, signal: AbortSignal): Promise<string | null> {
@@ -4290,10 +4307,9 @@ async function load(): Promise<void> {
         renderFrontPage(result, null);
       } else {
         // Front page missing for today — fall back to the most recent available
-        const fallback = findMostRecentAvailable('frontpage', dateStr);
-        if (fallback && fallback !== dateStr) {
-          const fallbackUrl = `${DATA_BASE}/front-page/${fallback}-front-page.png`;
-          renderFrontPage(fallbackUrl, fallback);
+        const fallback = await findFrontPageAtOrBefore(dateStr, controller.signal);
+        if (fallback && fallback.date !== dateStr) {
+          renderFrontPage(fallback.url, fallback.date);
         } else {
           showEmpty(dateStr);
         }
@@ -4323,11 +4339,12 @@ async function load(): Promise<void> {
       if (fpResult) {
         frontPage = { url: fpResult, fallback: null };
       } else {
-        const fp = findMostRecentAvailable('frontpage', dateStr);
-        if (fp && fp !== dateStr) {
+        const fp = await findFrontPageAtOrBefore(dateStr, controller.signal);
+        if (requestId !== loadRequestId) return;
+        if (fp && fp.date !== dateStr) {
           frontPage = {
-            url: `${DATA_BASE}/front-page/${fp}-front-page.png`,
-            fallback: fp,
+            url: fp.url,
+            fallback: fp.date,
           };
         }
       }
