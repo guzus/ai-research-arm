@@ -1,0 +1,184 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "The capitalized cost to develop one approved new drug is about $2.6 billion (2013 dollars), per the DiMasi/Tufts CSDD estimate.",
+      "type": "metric",
+      "source_urls": ["https://doi.org/10.1016/j.jhealeco.2016.01.012"],
+      "source_tiers": ["academic"],
+      "as_of": "2016-05-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "New drugs approved per inflation-adjusted billion dollars of R&D halved roughly every nine years from 1950, an ~80-fold decline dubbed Eroom's Law.",
+      "type": "metric",
+      "source_urls": ["https://doi.org/10.1038/nrd3681"],
+      "source_tiers": ["academic"],
+      "as_of": "2012-03-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Across drug programs entering Phase 1, only about 13.8% eventually reach approval, with Phase 2 the lowest-success transition.",
+      "type": "metric",
+      "source_urls": ["https://doi.org/10.1093/biostatistics/kxx069", "https://doi.org/10.1038/nbt.2786"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2019-04-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "The Recursion-Roche/Genentech collaboration was announced at up to $12 billion but has paid Recursion only $213 million in upfront and milestone payments to date.",
+      "type": "comparison",
+      "source_urls": ["https://www.globenewswire.com/news-release/2025/11/05/3181232/0/en/Recursion-Reports-Third-Quarter-2025-Financial-Results-and-Provides-Business-Update.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-11-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Isomorphic Labs' 2024 Eli Lilly collaboration carried a $45 million upfront payment against up to $1.7 billion in milestones.",
+      "type": "metric",
+      "source_urls": ["https://www.prnewswire.com/news-releases/isomorphic-labs-announces-strategic-multi-target-research-collaboration-with-lilly-302027392.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-01-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Insilico Medicine's rentosertib, a generative-AI-discovered TNIK inhibitor, improved FVC by +98.4 mL in the 60 mg arm versus -20.3 mL on placebo over 12 weeks in a randomized Phase 2a IPF trial.",
+      "type": "metric",
+      "source_urls": ["https://www.nature.com/articles/s41591-025-03743-2", "https://clinicaltrials.gov/study/NCT05938920"],
+      "source_tiers": ["academic", "primary"],
+      "as_of": "2025-06-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "AI-discovered molecules show roughly 80-90% Phase 1 success but about 40% Phase 2 success, in line with historic industry averages.",
+      "type": "comparison",
+      "source_urls": ["https://doi.org/10.1016/j.drudis.2024.104009"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-06-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c8",
+      "claim": "The AlphaFold Protein Structure Database holds over 200 million predicted structures and the AlphaFold2 paper is among the most-cited papers in modern science.",
+      "type": "metric",
+      "source_urls": ["https://alphafold.ebi.ac.uk/", "https://www.nature.com/articles/s41586-021-03819-2"],
+      "source_tiers": ["primary", "academic"],
+      "as_of": "2025-05-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Baker-lab RFdiffusion raised experimental binder-design success rates by about two orders of magnitude, but an independent crowdsourced EGFR competition found only a 14% wet-lab hit rate.",
+      "type": "comparison",
+      "source_urls": ["https://www.nature.com/articles/s41586-023-06415-8", "https://adaptyvbio.substack.com/p/protein-design-competition-results"],
+      "source_tiers": ["academic", "secondary"],
+      "as_of": "2024-12-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c10",
+      "claim": "Eli Lilly deployed a wholly-owned NVIDIA DGX SuperPOD with 1,016 Blackwell Ultra GPUs as a pharma AI factory.",
+      "type": "metric",
+      "source_urls": ["https://blogs.nvidia.com/blog/lilly-ai-factory-nvidia-blackwell-dgx-superpod/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-10-28",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c11",
+      "claim": "Moderna deployed ChatGPT Enterprise to roughly 3,000 employees who built more than 750 custom GPTs across legal, research, manufacturing and commercial functions.",
+      "type": "metric",
+      "source_urls": ["https://openai.com/index/moderna/"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-04-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c12",
+      "claim": "A Merck and McKinsey generative-AI tool cut clinical study report first-draft time from about 180 hours to 80 hours and reduced errors by 50%.",
+      "type": "metric",
+      "source_urls": ["https://www.merck.com/news/merck-expands-innovative-internal-generative-ai-solutions-helping-to-deliver-medicines-to-patients-faster/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-06-25",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c13",
+      "claim": "The FDA's January 2025 draft guidance on AI in drug development cited agency experience with more than 500 drug and biological product submissions containing AI components since 2016.",
+      "type": "regulatory",
+      "source_urls": ["https://www.fda.gov/news-events/press-announcements/fda-proposes-framework-advance-credibility-ai-models-used-drug-and-biological-product-submissions"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-01-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "The FDA's AI-enabled medical device list exceeds 1,000 marketing authorizations, of which roughly 76% are radiology devices, yet only about 30% of US radiologists report using AI clinically.",
+      "type": "metric",
+      "source_urls": ["https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices", "https://pmc.ncbi.nlm.nih.gov/articles/PMC12595527/", "https://www.jacr.org/article/S1546-1440(21)00293-3/pdf"],
+      "source_tiers": ["primary", "academic", "academic"],
+      "as_of": "2025-12-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Tempus AI grew revenue to about $1.3 billion in FY2025, up 83.4% year over year, while remaining net-loss-making.",
+      "type": "metric",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/1717115/000119312526066931/tem-ex99_1.htm"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-02-24",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c16",
+      "claim": "Recursion acquired Exscientia in an all-stock merger (closed November 2024) leaving Recursion holders ~74% and Exscientia holders ~26% of the combined company.",
+      "type": "market-structure",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/1601830/000119312524196505/d856792dex991.htm"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-11-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "A RAND controlled red-team study found no statistically significant uplift from current LLMs for biological-attack planning.",
+      "type": "causal",
+      "source_urls": ["https://www.rand.org/news/press/2024/01/25.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-01-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Chinese biopharma out-licensing reached a record of roughly $135.7 billion across 157 deals in 2025, about 2.6x the 2024 total, though most assets are conventional chemistry rather than AI-discovered.",
+      "type": "metric",
+      "source_urls": ["https://www.scmp.com/business/china-business/article/3339011/chinese-drug-makers-strike-record-us136-billion-out-licensing-deals-2025"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-12-01",
+      "confidence": "medium",
+      "risk": "volatile"
+    }
+  ]
+}

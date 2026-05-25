@@ -1,0 +1,94 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The capitalized cost to bring a single new drug to approval is about $2.6 billion in 2013 dollars, of which roughly $1.4B is out-of-pocket cash.",
+      "verdict": "supported",
+      "citation": "https://doi.org/10.1016/j.jhealeco.2016.01.012"
+    },
+    {
+      "id": "c2",
+      "text": "New drugs approved per inflation-adjusted billion dollars of R&D halved roughly every nine years from 1950, an ~80-fold collapse dubbed Eroom's Law.",
+      "verdict": "supported",
+      "citation": "https://doi.org/10.1038/nrd3681"
+    },
+    {
+      "id": "c3",
+      "text": "Of every drug program entering Phase 1, only about 13.8% ever reaches approval, with Phase 2 the lowest-success transition at about 32%.",
+      "verdict": "supported",
+      "citation": "https://doi.org/10.1093/biostatistics/kxx069"
+    },
+    {
+      "id": "c4",
+      "text": "Recursion's Roche/Genentech deal was announced at up to $12 billion but had paid Recursion exactly $213 million as of November 2025.",
+      "verdict": "supported",
+      "citation": "https://www.globenewswire.com/news-release/2025/11/05/3181232/0/en/Recursion-Reports-Third-Quarter-2025-Financial-Results-and-Provides-Business-Update.html"
+    },
+    {
+      "id": "c5",
+      "text": "Isomorphic Labs' 2024 Eli Lilly collaboration was announced at up to $1.7 billion but the upfront cash was $45 million.",
+      "verdict": "supported",
+      "citation": "https://www.prnewswire.com/news-releases/isomorphic-labs-announces-strategic-multi-target-research-collaboration-with-lilly-302027392.html"
+    },
+    {
+      "id": "c6",
+      "text": "Rentosertib improved forced vital capacity by +98.4 mL versus a -20.3 mL decline on placebo over 12 weeks in the randomized Phase 2a GENESIS-IPF trial.",
+      "verdict": "supported",
+      "citation": "https://www.nature.com/articles/s41591-025-03743-2"
+    },
+    {
+      "id": "c7",
+      "text": "AI-discovered molecules show an ~80-90% Phase 1 success rate but revert to ~40% in Phase 2, comparable to historic industry averages.",
+      "verdict": "weak",
+      "citation": "https://doi.org/10.1016/j.drudis.2024.104009"
+    },
+    {
+      "id": "c8",
+      "text": "The AlphaFold Protein Structure Database holds over 200 million predicted structures and has been used by over 3 million researchers.",
+      "verdict": "supported",
+      "citation": "https://alphafold.ebi.ac.uk/"
+    },
+    {
+      "id": "c9",
+      "text": "In Adaptyv Bio's open EGFR-binder competition only 53 of 378 expressed designs bound the target, a 14% wet-lab hit rate.",
+      "verdict": "supported",
+      "citation": "https://adaptyvbio.substack.com/p/protein-design-competition-results"
+    },
+    {
+      "id": "c10",
+      "text": "Eli Lilly deployed a wholly-owned NVIDIA DGX SuperPOD with 1,016 Blackwell Ultra GPUs as a pharma AI factory.",
+      "verdict": "supported",
+      "citation": "https://blogs.nvidia.com/blog/lilly-ai-factory-nvidia-blackwell-dgx-superpod/"
+    },
+    {
+      "id": "c11",
+      "text": "The FDA's list of AI/ML-enabled medical devices has surpassed 1,000 marketing authorizations, of which roughly 76% are radiology.",
+      "verdict": "supported",
+      "citation": "https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices"
+    },
+    {
+      "id": "c12",
+      "text": "DeepMind's AlphaMissense classified 89% of all 71 million possible human missense variants against a prior baseline where only about 0.1% had expert classification.",
+      "verdict": "supported",
+      "citation": "https://deepmind.google/discover/blog/a-catalogue-of-genetic-mutations-to-help-pinpoint-the-cause-of-diseases/"
+    },
+    {
+      "id": "c13",
+      "text": "Tempus AI's precision-oncology data business reached about $1.3 billion in FY2025 revenue, up 83%, while still net-loss-making.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1717115/000119312526066931/tem-ex99_1.htm"
+    },
+    {
+      "id": "c14",
+      "text": "A RAND controlled red-team study found no statistically significant uplift from current LLMs for biological-attack planning.",
+      "verdict": "supported",
+      "citation": "https://www.rand.org/news/press/2024/01/25.html"
+    },
+    {
+      "id": "c15",
+      "text": "Chinese biopharma out-licensing hit a record of about $135.7 billion across 157 deals in 2025, roughly 2.6x the 2024 total.",
+      "verdict": "weak",
+      "citation": "https://www.scmp.com/business/china-business/article/3339011/chinese-drug-makers-strike-record-us136-billion-out-licensing-deals-2025"
+    }
+  ]
+}

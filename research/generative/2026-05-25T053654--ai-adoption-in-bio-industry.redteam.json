@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Bringing a new drug to approval costs about $2.6B (DiMasi 2016) and pharma R&D efficiency fell ~80-fold since 1950 (Eroom's Law), so the economic problem AI targets is real and severe.",
+      "contradicting_url": "https://pubmed.ncbi.nlm.nih.gov/32125404/",
+      "contradicting_quote": "the estimated median capitalized research and development cost per product was $985 million... and the mean was $1.3 billion",
+      "severity": "medium",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Headline AI-pharma deal values are ~95-98% contingent biobucks: Recursion's Roche/Genentech deal was announced at up to $12B but had paid only $213M as of November 2025.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "AI-discovered molecules show ~80-90% Phase 1 success but revert to ~40% in Phase 2, comparable to historic industry averages, i.e. no demonstrated efficacy advantage.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
