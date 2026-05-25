@@ -1,0 +1,12 @@
+arXiv Papers - 2026-05-25
+
+TOP 5 PAPERS:
+- Practical Scaling Laws: data-constrained Chinchilla extension splitting loss into undercapacity/undertraining/overfitting.
+- Cola DLM: hierarchical latent diffusion language model (Text VAE + block-causal DiT) as a non-autoregressive text generator.
+- SCRL: curriculum RL deriving verifiable subproblems for fine-grained reasoning credit assignment.
+- Refusal-Escape Directions: mechanistic geometry of why aligned LLMs stay jailbreakable.
+- MemLens: multimodal long-term memory benchmark; 27 LVLMs degrade as context grows.
+
+CATEGORIES: LMs/NLP 6, CV/Multimodal 5, Agents/Reasoning 6, Safety 4, Other 3
+
+Full report on GitHub.
