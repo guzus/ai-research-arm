@@ -1,0 +1,14 @@
+.git
+.github
+.codex
+.claude
+
+dashboard/node_modules
+dashboard/dist
+dashboard/.vite
+dashboard/.vercel
+
+node_modules
+__pycache__
+*.pyc
+.pytest_cache
