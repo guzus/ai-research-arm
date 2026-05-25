@@ -161,6 +161,9 @@ jobs:
         env:
           TODAY: ${{ steps.date.outputs.date }}
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           # Stage ONLY today's PNG, not the entire research/front-page/ dir.
           # If we staged the whole dir, the LFS clean filter could detect
           # "modifications" on historical PNGs (regular git blobs that now
@@ -169,7 +172,11 @@ jobs:
           # "Phase 1 only" violation this PR promises to defer to a manual
           # `git lfs migrate import` runbook.
           git add "research/front-page/${TODAY}-front-page.png" README.md
-          git commit -m "Front page ${TODAY}" || echo "Nothing to commit"
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+          else
+            git commit -m "Front page ${TODAY}"
+          fi
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the
