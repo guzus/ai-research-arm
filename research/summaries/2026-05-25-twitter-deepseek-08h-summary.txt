@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-05-25 08:07 UTC
+
+CYCLE: Papal encyclical Magnifica Humanitas published — first encyclical on AI, condemns AI warfare as "spiral of annihilation," Anthropic sole industry partner on stage. Mythos 1 benchmarks surface (Firefox, Palo Alto Networks, METR, NSA contract). TrapDoor supply chain attack targets AI coding assistants.
+
+TOP STORIES:
+• Pope Leo XIV publishes Magnifica Humanitas — condemns AI warfare, rejects transhumanism, Chris Olah (Anthropic) sole industry rep on stage [✓]
+• Mythos 1 benchmarks leak: Firefox fixed more bugs in April 2026 than prior 15 months, Palo Alto: 3 weeks = 1 year manual pentesting, METR 16h horizon at 50% [⚠ single-source benchmarks]
+• TrapDoor malware deploys 34 packages to hijack Claude/Cursor, steal wallets/SSH keys/API credentials — first documented supply chain attack targeting AI developer toolchain [✓]
+• Nikkei 225 hits all-time high above 65,000 as AI rally extends [⚠ trending but search returned empty]
+
+WATCH: Whether Mozilla/Palo Alto Networks confirm Mythos benchmarks; whether TrapDoor gets full SocketSecurity technical writeup; US markets reopen Tuesday after Memorial Day.
+
+Full update on GitHub.
