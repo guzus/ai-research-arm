@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-05-25 18:45 UTC
+
+CYCLE: Quiet on product (all primary labs silent since May 22); DeepMind makes its Erdős math result official.
+
+TOP STORIES:
+• Google DeepMind officially unveils AlphaProof Nexus — the Erdős/OEIS-solving math agent now has its primary post (resolves the week's open watch item) [✓]
+• "Magnifica Humanitas" AI encyclical hits the Reuters/AP wire — urges regulation, warns weapons "beyond human control"; "Vatican–Anthropic" + Olah-emotion framings overshoot [✓ doc / ⚠ glosses]
+• Open-weights wave: MiMo V2.5-Coder (best local 128GB model) + MiniCPM5-1B fully open [✓]
+
+WATCH: Whether Terence Tao / the math community vet which Erdős + OEIS problems were genuinely novel now that DeepMind has posted officially.
+
+Note: viral "Cerebras just IPO'd" is retrospective — Nasdaq debut was ~May 14 (+68%, ~$95B).
+
+Full update on GitHub.
