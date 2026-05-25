@@ -21,6 +21,7 @@ flowchart TB
         HN["🟠 Hacker News<br/><i>Every 4h</i>"]
         arXiv["📄 arXiv<br/><i>Daily</i>"]
         Twitter["🐦 Twitter/X<br/><i>Every 3h</i>"]
+        Blogs["✍️ Expert Blogs<br/><i>Every 6h</i>"]
     end
 
     subgraph mcp["🔌 MCP Tools (Optional)"]
@@ -34,6 +35,7 @@ flowchart TB
         community_out["research/community/"]
         arxiv_out["research/arxiv/"]
         twitter_out["research/twitter/"]
+        blogs_out["research/blogs/"]
     end
 
     RSS --> rss_out
@@ -42,12 +44,14 @@ flowchart TB
     HN --> community_out
     arXiv --> arxiv_out
     Twitter --> twitter_out
+    Blogs --> blogs_out
 
     rss_out --> Digest
     bluesky_out --> Digest
     community_out --> Digest
     arxiv_out --> Digest
     twitter_out --> Digest
+    blogs_out --> Digest
 
     Exa -.-> Digest
     Perplexity -.-> Digest
@@ -79,6 +83,7 @@ flowchart TB
 | **Reddit** | RSS feeds | Every 4 hours | ✅ Yes |
 | **Hacker News** | MCP Server | Every 4 hours | ✅ Yes |
 | **arXiv** | MCP + RSS | Daily | ✅ Yes |
+| **Expert Blogs** | Curated RSS/Atom registry | Every 6 hours | ✅ Yes |
 | **Web Search** | Exa/Perplexity MCP | On-demand | ✅ Yes (via MCP) |
 
 ## Workflows
@@ -98,6 +103,9 @@ gantt
     section Every 4h
     Community (HN+Reddit) :00:19, 4h
 
+    section Every 6h
+    Expert Blogs        :00:13, 6h
+
     section Twice Daily
     AI News Research    :08:23, 1h
 
@@ -111,6 +119,7 @@ gantt
 | Workflow | Schedule | Source | Output |
 |----------|----------|--------|--------|
 | `hourly-rss.yml` | Every hour (:30) | Official blogs, TechCrunch, arXiv RSS | `research/rss/` |
+| `daily-ai-blogs.yml` | Every 6 hours (:13) | Curated KOL Substacks, expert blogs, research/operator blogs | `research/blogs/` |
 | `2h-bluesky.yml` | Daily 00:11 UTC | Bluesky AI posts | `research/bluesky/` |
 | `4h-community.yml` | Every 4 hours | Reddit RSS + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 06:13 UTC | arXiv papers | `research/arxiv/` |

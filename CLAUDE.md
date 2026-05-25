@@ -87,6 +87,7 @@ input).
 | Workflow | Schedule | Output |
 |---|---|---|
 | `hourly-rss.yml` | `:30` every hour | `research/rss/` |
+| `daily-ai-blogs.yml` | `:13` every 6h | `research/blogs/` |
 | `hourly-twitter.yml` | every 3h `:07` | `research/twitter/` + `research/summaries/` + Telegram headline alerts |
 | `hourly-twitter-deepseek-agentic.yml` | every 6h `:37` | `research/twitter-deepseek/` (DeepSeek V4 Pro via Anthropic shim, capped at 5 follow-up bird calls) |
 | `hourly-twitter-deepseek-pi.yml` | manual only | `research/twitter-deepseek-pi/` (A/B test using `pi-mono` harness) |
@@ -152,6 +153,7 @@ research/
 │   ├── tickets/                # persistent set, one .md per shipping artifact
 │   └── <date>-timeline.md      # derived daily diff (created/updated/closed counts)
 ├── rss/                       # hourly-rss.yml
+├── blogs/                     # daily-ai-blogs.yml
 ├── summaries/                 # hourly-twitter.yml (Telegram digest + headline-alert state)
 ├── twitter/                   # hourly-twitter.yml
 ├── twitter-deepseek/          # hourly-twitter-deepseek-agentic.yml
@@ -272,7 +274,7 @@ output or break the pipeline. Read them before editing.
     rename updates the title + aliases, never the filename); pages are
     never deleted; `log.md` is append-only. **The ingest reads the
     CURATED synthesis — the daily digest + model tickets — NOT the raw
-    per-source firehose** (`twitter/`, `rss/`, `community/`, `arxiv/`);
+    per-source firehose** (`twitter/`, `rss/`, `blogs/`, `community/`, `arxiv/`);
     re-reading the raw sources defeats the curation the digest performs.
     `docs/wiki-schema.md` and `scripts/check_wiki.py` are the contract
     and **must stay in lockstep** — a schema change unreflected in the

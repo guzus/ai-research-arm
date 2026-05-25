@@ -53,7 +53,7 @@ jobs:
           fail=0
           report=""
 
-          subdirs="rss twitter bluesky community arxiv digest"
+          subdirs="rss blogs twitter bluesky community arxiv digest"
 
           for sub in $subdirs; do
             dir="research/$sub"
@@ -67,7 +67,7 @@ jobs:
             # `grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}'` skips files that
             # don't start with a date (subdirs, READMEs, etc.).
             newest_date=$(
-              ls -1 "$dir" 2>/dev/null \
+              find "$dir" -maxdepth 1 -type f -printf '%f\n' 2>/dev/null \
                 | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}' \
                 | sort -u \
                 | tail -1
