@@ -13,6 +13,11 @@ on:
     types: [completed]
     branches: [main]
   workflow_dispatch:
+    inputs:
+      date:
+        description: "Digest date to render, YYYY-MM-DD. Defaults to today's date."
+        required: false
+        type: string
 
 concurrency:
   group: daily-front-page
@@ -47,29 +52,30 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          # lfs: true is REQUIRED here because this workflow runs 30 min after
-          # daily-digest.yml, which commits today's MP3 through git-lfs. The
-          # "Publish digest audio via hooker" step below reads that MP3 and
-          # feeds it to ffmpeg — without lfs: true, checkout would hand it a
-          # 135-byte pointer file that `[ -f ]` passes but ffmpeg can't decode.
-          lfs: true
-
-      # Wire git-lfs smudge/clean filters into THIS worktree's git config so
-      # the PNG produced below routes through LFS on commit. `git lfs install`
-      # is idempotent; safe to run on every workflow invocation.
-      - name: Install git-lfs hooks
-        run: git lfs install --local
+          # Front-page generation only needs markdown inputs. Do not hydrate
+          # repo-wide LFS media here: LFS quota or smudge failures should not
+          # block creating the dashboard-served PNG.
+          lfs: false
 
       - name: Pull latest changes
-        # `git pull` after merge will fetch LFS objects automatically because
-        # `git lfs install --local` wired the smudge filter. The earlier
-        # `lfs: true` on checkout is what guarantees the initial checkout
-        # state already has the MP3 hydrated for the publish step below.
+        env:
+          GIT_LFS_SKIP_SMUDGE: "1"
         run: git pull origin main || true
 
       - name: Get current date
         id: date
-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+        env:
+          INPUT_DATE: ${{ github.event.inputs.date || '' }}
+        run: |
+          if [ -n "$INPUT_DATE" ]; then
+            if ! printf '%s' "$INPUT_DATE" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; then
+              echo "::error::date input must be YYYY-MM-DD, got '$INPUT_DATE'"
+              exit 1
+            fi
+            echo "date=$INPUT_DATE" >> $GITHUB_OUTPUT
+          else
+            echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          fi
 
       # Skip if today's digest doesn't exist yet
       - name: Check digest exists
@@ -316,7 +322,7 @@ jobs:
 
       # Convert daily digest MP3 to OGG/Opus and publish as Telegram voice
       # message. Skips cleanly if the audio digest doesn't exist for today
-      # (the digest workflow has continue-on-error on its TTS step).
+      # or if the LFS object cannot be hydrated.
       - name: Publish digest audio via hooker
         if: steps.check.outputs.exists == 'true' && success()
         continue-on-error: true
@@ -330,6 +336,16 @@ jobs:
           MP3="research/audio/${TODAY}-digest.mp3"
           if [ ! -f "$MP3" ]; then
             echo "No audio digest at ${MP3}; skipping voice publish."
+            exit 0
+          fi
+
+          if head -c 128 "$MP3" | grep -q 'version https://git-lfs.github.com/spec/v1'; then
+            echo "Audio digest is an LFS pointer; attempting targeted hydration."
+            git lfs pull --include="$MP3" --exclude="" || true
+          fi
+
+          if head -c 128 "$MP3" | grep -q 'version https://git-lfs.github.com/spec/v1'; then
+            echo "Audio digest LFS object is unavailable; skipping voice publish."
             exit 0
           fi
 
