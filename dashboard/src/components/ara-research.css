@@ -554,6 +554,20 @@
   background: var(--bg-secondary);
 }
 
+.ara-figure img[data-ara-figure-lightbox="1"] {
+  cursor: zoom-in;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+
+.ara-figure img[data-ara-figure-lightbox="1"]:hover {
+  filter: contrast(1.03);
+}
+
+.ara-figure img[data-ara-figure-lightbox="1"]:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 3px;
+}
+
 .ara-caption {
   font-family: var(--font);
   font-size: 0.82rem;
@@ -561,6 +575,104 @@
   margin-top: 8px;
   font-style: italic;
   text-align: center;
+}
+
+.ara-figure-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+}
+
+.ara-figure-modal[hidden] {
+  display: none;
+}
+
+.ara-figure-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.78);
+  cursor: zoom-out;
+}
+
+.ara-figure-modal-panel {
+  position: relative;
+  z-index: 1;
+  max-width: min(1120px, calc(100vw - 56px));
+  max-height: calc(100vh - 56px);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.ara-figure-modal-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 126px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: var(--bg);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
+}
+
+.ara-figure-modal-caption {
+  max-width: 820px;
+  color: #f5f5f5;
+  font-family: var(--font);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  text-align: center;
+  justify-self: center;
+}
+
+.ara-figure-modal-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ara-figure-modal-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+body.ara-figure-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .ara-figure-modal {
+    padding: 14px;
+  }
+
+  .ara-figure-modal-panel {
+    max-width: calc(100vw - 28px);
+    max-height: calc(100vh - 28px);
+  }
+
+  .ara-figure-modal-img {
+    max-height: calc(100vh - 96px);
+  }
+
+  .ara-figure-modal-close {
+    top: 8px;
+    right: 8px;
+  }
 }
 
 .ara-caption-text,

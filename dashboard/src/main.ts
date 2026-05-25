@@ -2432,6 +2432,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     article.lang = row.language === 'ko' ? 'ko' : 'en';
     applyBarFills(article);
     wrapAraTables(article);
+    prepareAraFigures(article);
     applyIsotypes(article);
     renderSparklines(article);
     renderLineCharts(article);
@@ -2553,6 +2554,7 @@ const ARA_TOOLTIP_TITLE_ATTR = 'data-ara-tooltip-title';
 const ARA_TOOLTIP_BODY_ATTR = 'data-ara-tooltip-body';
 const ARA_TOOLTIP_BOUND_ATTR = 'data-ara-tooltip-bound';
 let araTooltipDelegatesBound = false;
+let araFigureModalLastFocus: HTMLElement | null = null;
 
 function compactText(el: Element | null): string {
   return (el?.textContent || '').replace(/\s+/g, ' ').trim();
@@ -2716,6 +2718,104 @@ function bindAraTooltip(target: Element): void {
   target.addEventListener('focusin', showFromFocus);
   target.addEventListener('blur', hideAraTooltip);
   target.addEventListener('focusout', hideAraTooltip);
+}
+
+function figureModalCaptionForImage(img: HTMLImageElement): string {
+  const figure = img.closest('.ara-figure');
+  const caption = figure?.querySelector('.ara-caption, figcaption');
+  return (caption?.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+function prepareAraFigures(root: HTMLElement): void {
+  const imgs = root.querySelectorAll<HTMLImageElement>('.ara-figure img');
+  for (const img of imgs) {
+    img.dataset.araFigureLightbox = '1';
+    if (!img.hasAttribute('tabindex')) img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    const label = figureModalCaptionForImage(img) || img.alt || 'figure';
+    img.setAttribute('aria-label', `Open figure: ${label}`);
+  }
+}
+
+function ensureAraFigureModal(): HTMLDivElement {
+  let modal = document.getElementById('araFigureModal') as HTMLDivElement | null;
+  if (modal) return modal;
+
+  modal = document.createElement('div');
+  modal.id = 'araFigureModal';
+  modal.className = 'ara-figure-modal';
+  modal.hidden = true;
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-label', 'Expanded figure');
+
+  const backdrop = document.createElement('button');
+  backdrop.className = 'ara-figure-modal-backdrop';
+  backdrop.type = 'button';
+  backdrop.dataset.araFigureClose = '1';
+  backdrop.setAttribute('aria-label', 'Close expanded figure');
+
+  const panel = document.createElement('div');
+  panel.className = 'ara-figure-modal-panel';
+  panel.setAttribute('role', 'document');
+
+  const close = document.createElement('button');
+  close.className = 'ara-figure-modal-close';
+  close.type = 'button';
+  close.dataset.araFigureClose = '1';
+  close.setAttribute('aria-label', 'Close expanded figure');
+  close.textContent = '×';
+
+  const image = document.createElement('img');
+  image.className = 'ara-figure-modal-img';
+  image.alt = '';
+
+  const caption = document.createElement('div');
+  caption.className = 'ara-figure-modal-caption';
+
+  panel.appendChild(close);
+  panel.appendChild(image);
+  panel.appendChild(caption);
+  modal.appendChild(backdrop);
+  modal.appendChild(panel);
+  modal.addEventListener('click', (event) => {
+    if (event.target instanceof Element && event.target.closest('[data-ara-figure-close]')) {
+      closeAraFigureModal();
+    }
+  });
+  document.body.appendChild(modal);
+  return modal;
+}
+
+function openAraFigureModal(img: HTMLImageElement): void {
+  const src = img.currentSrc || img.src;
+  if (!src) return;
+  const modal = ensureAraFigureModal();
+  const modalImg = modal.querySelector<HTMLImageElement>('.ara-figure-modal-img');
+  const caption = modal.querySelector<HTMLElement>('.ara-figure-modal-caption');
+  const close = modal.querySelector<HTMLButtonElement>('.ara-figure-modal-close');
+  if (!modalImg || !caption || !close) return;
+
+  araFigureModalLastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  modalImg.src = src;
+  modalImg.alt = img.alt || '';
+  const captionText = figureModalCaptionForImage(img);
+  caption.textContent = captionText;
+  caption.hidden = !captionText;
+  modal.hidden = false;
+  document.body.classList.add('ara-figure-modal-open');
+  close.focus();
+}
+
+function closeAraFigureModal(): void {
+  const modal = document.getElementById('araFigureModal') as HTMLDivElement | null;
+  if (!modal || modal.hidden) return;
+  const modalImg = modal.querySelector<HTMLImageElement>('.ara-figure-modal-img');
+  modal.hidden = true;
+  if (modalImg) modalImg.removeAttribute('src');
+  document.body.classList.remove('ara-figure-modal-open');
+  araFigureModalLastFocus?.focus();
+  araFigureModalLastFocus = null;
 }
 
 function numberedVariant(el: Element, prefix: string): string | null {
@@ -4486,6 +4586,16 @@ languageSwitch.addEventListener('click', (e) => {
 // Retry button + research index navigation (event delegation on content)
 content.addEventListener('click', (e) => {
   const target = e.target as HTMLElement;
+  if (target.closest('[data-ara-figure-close]')) {
+    closeAraFigureModal();
+    return;
+  }
+  const figureImg = target.closest('.ara-doc .ara-figure img') as HTMLImageElement | null;
+  if (figureImg) {
+    e.preventDefault();
+    openAraFigureModal(figureImg);
+    return;
+  }
   if (target.closest('[data-retry]')) {
     load();
     return;
@@ -4579,6 +4689,12 @@ content.addEventListener('change', (e) => {
 content.addEventListener('keydown', (e: KeyboardEvent) => {
   if (e.key !== 'Enter' && e.key !== ' ') return;
   const target = e.target as HTMLElement;
+  const figureImg = target.closest('.ara-doc .ara-figure img') as HTMLImageElement | null;
+  if (figureImg) {
+    e.preventDefault();
+    openAraFigureModal(figureImg);
+    return;
+  }
   const row = target.closest('[data-slug]') as HTMLElement | null;
   if (row && activeTab === 'research') {
     e.preventDefault();
@@ -4598,6 +4714,10 @@ document.getElementById('refreshBtn')!.addEventListener('click', () => {
 
 // Keyboard shortcuts
 document.addEventListener('keydown', (e: KeyboardEvent) => {
+  if (e.key === 'Escape') {
+    closeAraFigureModal();
+    return;
+  }
   if ((e.target as HTMLElement).tagName === 'INPUT') return;
   switch (e.key) {
     case 'ArrowUp':
