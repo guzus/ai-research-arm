@@ -116,42 +116,18 @@ jobs:
             echo "Skipping Linux-only Chromium dependencies on ${{ runner.os }}"
           fi
 
-      - name: Install puppeteer
+      - name: Install PNG renderer
         if: steps.check.outputs.exists == 'true'
-        # pinned 2026-05-17; bump manually (Dependabot can't track inline npm installs)
-        run: cd /tmp && npm install puppeteer@25.0.2
+        run: cd /tmp && npm install @resvg/resvg-js@2.6.2
 
-      # Render deterministic newspaper-style HTML from the digest. This keeps
+      # Render deterministic newspaper-style PNG from the digest. This keeps
       # front-page generation independent of external model latency and makes
       # backfills reliable.
-      - name: Generate front page HTML
-        if: steps.check.outputs.exists == 'true'
-        run: node scripts/render_front_page.mjs "${{ steps.date.outputs.date }}" /tmp/front-page.html
-
-      # Screenshot the HTML to PNG
-      - name: Screenshot HTML to PNG
+      - name: Generate front page PNG
         if: steps.check.outputs.exists == 'true'
         run: |
           mkdir -p research/front-page
-          node -e "
-          const puppeteer = require('/tmp/node_modules/puppeteer');
-          (async () => {
-            const browser = await puppeteer.launch({
-              headless: 'new',
-              args: ['--no-sandbox', '--disable-setuid-sandbox']
-            });
-            const page = await browser.newPage();
-            await page.setViewport({ width: 1200, height: 1600, deviceScaleFactor: 2 });
-            await page.goto('file:///tmp/front-page.html', { waitUntil: 'networkidle0' });
-            await page.screenshot({
-              path: 'research/front-page/${{ steps.date.outputs.date }}-front-page.png',
-              fullPage: false,
-              clip: { x: 0, y: 0, width: 1200, height: 1600 }
-            });
-            await browser.close();
-            console.log('Screenshot saved successfully');
-          })();
-          "
+          node scripts/render_front_page.mjs "${{ steps.date.outputs.date }}" "research/front-page/${{ steps.date.outputs.date }}-front-page.png"
 
       # Update README front page image link
       - name: Update README with latest front page

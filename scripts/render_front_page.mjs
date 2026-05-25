@@ -33,6 +33,8 @@ function stripMarkdown(value) {
     .replace(/\*\*([^*]+)\*\*/g, "$1")
     .replace(/\*([^*]+)\*/g, "$1")
     .replace(/`([^`]+)`/g, "$1")
+    .replace(/\*\*/g, "")
+    .replace(/[*_[\]]/g, "")
     .replace(/^[-*]\s+/, "")
     .replace(/^\d+\.\s+/, "")
     .replace(/\s+/g, " ")
@@ -81,6 +83,143 @@ function storyList(items) {
 
 function smallList(items) {
   return items.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n");
+}
+
+function wrapText(text, maxChars, maxLines = 99) {
+  const words = text.split(/\s+/).filter(Boolean);
+  const lines = [];
+  let line = "";
+  for (const word of words) {
+    const next = line ? `${line} ${word}` : word;
+    if (next.length > maxChars && line) {
+      lines.push(line);
+      line = word;
+      if (lines.length >= maxLines) break;
+    } else {
+      line = next;
+    }
+  }
+  if (line && lines.length < maxLines) lines.push(line);
+  return lines;
+}
+
+function svgText(x, y, lines, options = {}) {
+  const {
+    size = 24,
+    weight = "400",
+    family = "Georgia, Times New Roman, serif",
+    lineHeight = Math.round(size * 1.25),
+    anchor = "start",
+    italic = false,
+  } = options;
+  const style = `font-family:${family};font-size:${size}px;font-weight:${weight};font-style:${italic ? "italic" : "normal"};fill:#191713`;
+  const tspans = lines
+    .map((line, index) => `<tspan x="${x}" dy="${index === 0 ? 0 : lineHeight}">${escapeHtml(line)}</tspan>`)
+    .join("");
+  return `<text y="${y}" text-anchor="${anchor}" style="${style}">${tspans}</text>`;
+}
+
+function renderSvg() {
+  const parts = [];
+  parts.push(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">`);
+  parts.push(`<rect width="1200" height="1600" fill="#fff8ed"/>`);
+  parts.push(`<rect x="32" y="32" width="1136" height="1536" fill="none" stroke="#1f1a14" stroke-width="2"/>`);
+  parts.push(`<line x1="62" x2="1138" y1="54" y2="54" stroke="#1f1a14" stroke-width="3"/>`);
+  parts.push(`<line x1="62" x2="1138" y1="60" y2="60" stroke="#1f1a14" stroke-width="1"/>`);
+  parts.push(svgText(600, 95, ["Your Daily Artificial Intelligence Briefing"], {
+    size: 17,
+    weight: "700",
+    family: "Arial, sans-serif",
+    anchor: "middle",
+  }));
+  parts.push(svgText(600, 170, ["THE AGI AWARENESS POST"], {
+    size: 66,
+    weight: "700",
+    anchor: "middle",
+  }));
+  parts.push(svgText(62, 218, [`Vol. 2026, No. ${issue}`], { size: 18, weight: "700", family: "Arial, sans-serif" }));
+  parts.push(svgText(600, 218, [monthDay], { size: 18, weight: "700", family: "Arial, sans-serif", anchor: "middle" }));
+  parts.push(svgText(1138, 218, ["All Sources Edition"], { size: 18, weight: "700", family: "Arial, sans-serif", anchor: "end" }));
+  parts.push(`<line x1="62" x2="1138" y1="242" y2="242" stroke="#1f1a14" stroke-width="3"/>`);
+  parts.push(`<line x1="62" x2="1138" y1="248" y2="248" stroke="#1f1a14" stroke-width="1"/>`);
+
+  let y = 305;
+  const headlineLines = wrapText(lead, 25, 5);
+  parts.push(svgText(62, y, headlineLines, { size: 44, weight: "700", lineHeight: 48 }));
+  y += headlineLines.length * 48 + 24;
+  for (const item of leadDeck) {
+    const lines = wrapText(item, 56, 4);
+    parts.push(svgText(62, y, lines, { size: 22, lineHeight: 29 }));
+    y += lines.length * 29 + 14;
+  }
+
+  parts.push(`<line x1="760" x2="760" y1="282" y2="900" stroke="#2b251d" stroke-width="2"/>`);
+  let sideY = 305;
+  for (const [label, items] of [["Breaking", breaking], ["Policy Watch", policy]]) {
+    parts.push(`<line x1="790" x2="1138" y1="${sideY - 22}" y2="${sideY - 22}" stroke="#1f1a14" stroke-width="7"/>`);
+    parts.push(svgText(790, sideY, [label.toUpperCase()], { size: 16, weight: "800", family: "Arial, sans-serif" }));
+    sideY += 31;
+    for (const item of items.slice(0, 3)) {
+      const lines = wrapText(item, 38, 4);
+      parts.push(svgText(790, sideY, lines, { size: 17, lineHeight: 22 }));
+      sideY += lines.length * 22 + 14;
+    }
+    sideY += 14;
+  }
+
+  parts.push(`<line x1="62" x2="1138" y1="930" y2="930" stroke="#2b251d" stroke-width="2"/>`);
+  const columns = [
+    ["Models & Systems", models],
+    ["Research Ledger", research],
+    ["Capital & Compute", business],
+  ];
+  for (let i = 0; i < columns.length; i += 1) {
+    const x = 62 + i * 365;
+    if (i > 0) parts.push(`<line x1="${x - 22}" x2="${x - 22}" y1="958" y2="1360" stroke="#7d725f" stroke-width="1"/>`);
+    parts.push(svgText(x, 982, [columns[i][0]], { size: 26, weight: "700" }));
+    let columnY = 1022;
+    for (const item of columns[i][1].slice(0, i === 1 ? 4 : 3)) {
+      const lines = wrapText(`• ${item}`, 35, 4);
+      parts.push(svgText(x, columnY, lines, { size: 17, lineHeight: 22 }));
+      columnY += lines.length * 22 + 12;
+    }
+  }
+
+  parts.push(`<rect x="62" y="1390" width="1076" height="106" fill="#fffaf2" stroke="#2b251d" stroke-width="2"/>`);
+  parts.push(svgText(84, 1426, wrapText(quote || "No quote of the day was available in the digest.", 100, 3), {
+    size: 18,
+    lineHeight: 25,
+    italic: true,
+  }));
+  parts.push(`<line x1="62" x2="1138" y1="1528" y2="1528" stroke="#2b251d" stroke-width="1"/>`);
+  parts.push(svgText(62, 1554, ["Sources: Twitter/X, Hacker News, Reddit, arXiv, RSS, Bluesky"], {
+    size: 13,
+    weight: "700",
+    family: "Arial, sans-serif",
+  }));
+  parts.push(svgText(1138, 1554, ["Generated by AGI Awareness Post Pipeline"], {
+    size: 13,
+    weight: "700",
+    family: "Arial, sans-serif",
+    anchor: "end",
+  }));
+  parts.push(`</svg>`);
+  return parts.join("\n");
+}
+
+if (output.endsWith(".png")) {
+  const { Resvg } = await import("/tmp/node_modules/@resvg/resvg-js/index.js");
+  const png = new Resvg(renderSvg(), {
+    fitTo: { mode: "width", value: 2400 },
+    font: {
+      fontFiles: [],
+      loadSystemFonts: true,
+      defaultFontFamily: "Georgia",
+    },
+  }).render().asPng();
+  await writeFile(output, png);
+  console.log(`Wrote ${output}`);
+  process.exit(0);
 }
 
 const html = `<!doctype html>
