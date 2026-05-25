@@ -276,3 +276,9 @@ jobs:
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+
+      - name: Restore unauthenticated git origin
+        if: always()
+        env:
+          REPO: ${{ github.repository }}
+        run: git remote set-url origin "https://github.com/${REPO}.git"
