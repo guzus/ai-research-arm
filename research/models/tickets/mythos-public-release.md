@@ -23,8 +23,9 @@ sources:
   - "@AndrewCurran_"
   - "@AiBattle_"
   - "@testingcatalog"
+  - "@techcrunch"
 created_at: 2026-04-12
-updated_at: 2026-05-20
+updated_at: 2026-05-25
 closed_at: null
 closed_reason: null
 history:
@@ -42,6 +43,8 @@ history:
     change: kimmonismus argues a public release is structurally implausible despite GCP artifact
   - ts: 2026-05-20
     change: "Secondary report: Anthropic is reportedly letting Glasswing partners share cybersecurity findings surfaced by Mythos with other organizations — a governance change for the gated preview (not yet confirmed on Anthropic's own channels)"
+  - ts: 2026-05-25
+    change: "TechCrunch coverage — \"Anthropic debuts preview of Mythos in a new cybersecurity initiative,\" putting the gated cyber angle in primary tech press and corroborating the 2026-05-20 Glasswing cyber-findings-sharing report"
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a
