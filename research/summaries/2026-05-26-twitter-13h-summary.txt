@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-26 13:19 UTC
+
+CYCLE: First frontier-lab primary in 16h — GDM formalizes cross-lab SynthID coalition; LeCun breaks encyclical silence with open-source framing.
+
+TOP STORIES:
+• GoogleDeepMind: 100B+ SynthID watermarks, 50M+ Gemini checks, OpenAI/ElevenLabs/Kakao join NVIDIA; rollout to Search/Chrome + Pixel video provenance [✓]
+• LeCun (Meta FAIR) RTs open-source reading of Pope's encyclical — first lab-principal engagement; @sama, @sundarpichai, @DarioAmodei silent at 42+ hours [✓]
+• @jukan05 mocks sell-side CY27 datacenter-spending-decline note — implicit AI-infra bull case [⚠]
+
+WATCH: Whether OpenAI/ElevenLabs confirm SynthID with own posts; whether watermark-stripping robustness gets a rebuttal.
+
+Full update on GitHub.
