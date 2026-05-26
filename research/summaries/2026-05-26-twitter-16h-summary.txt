@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-26 16:27 UTC
+
+CYCLE: Mythos arc finally produces substance — a Harvard mathematician claims it solved an Erdős problem, security press consolidates the 10K-vuln Glasswing wave, and a new Claude Opus 4.7 / Sonnet 4.6 computer-use SOTA lands.
+
+TOP STORIES:
+• Harvard's @__alpoge__: still-unreleased Mythos solved Erdős unit-distance problem (#90) ⚠
+• @nealchopra new OSWorld SOTA: 83.6% Claude Opus 4.7, 81.5% Sonnet 4.6 vs 72.4% human ✓
+• @theinformation: SpaceX $1.75T valuation = $700B real + $1T "tech that doesn't yet exist" + $1.25B/mo Anthropic Colossus deal ✓
+
+WATCH: Whether Alpoge posts a Mythos/Erdős-#90 write-up or another mathematician (Tao, Zeilberger) reproduces.
+
+Full update on GitHub.
