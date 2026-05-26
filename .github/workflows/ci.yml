@@ -58,12 +58,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          # lfs: true is REQUIRED because dashboard/scripts/prebuild.mjs runs
-          # cpSync over research/front-page/*.png and research/audio/*.mp3
-          # into public/research/. Without LFS hydration, those would be
-          # 135-byte pointer files — the build wouldn't fail but the deployed
-          # dashboard would serve pointer text instead of images/audio.
-          lfs: true
+          # lfs: false because the LFS bandwidth budget is exhausted (audio
+          # moved to S3 in May 2026 but historical LFS objects still consume
+          # bandwidth on every hydration). prebuild.mjs has a
+          # SKIP_LFS_POINTERS=1 escape hatch that warns + skips pointers
+          # instead of failing — set on the Build step below. Type/build
+          # checks don't need image content; the Vercel deploy is a separate
+          # path with its own LFS toggle.
+          lfs: false
 
       # Vite 8 requires Node.js >= 20.19. The self-hosted runner ships Node 18,
       # and `bun run build` shells out to `vite build` which uses the system
@@ -84,6 +86,8 @@ jobs:
         run: bunx tsc --noEmit -p tsconfig.json
 
       - name: Build
+        env:
+          SKIP_LFS_POINTERS: '1'
         run: bun run build
 
   python-scripts:

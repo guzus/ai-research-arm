@@ -33,15 +33,14 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          # lfs: true REQUIRED for safe re-runs. The TTS step has
-          # `continue-on-error: true` and `exit 0`s without writing a fresh
-          # MP3 if GEMINI_API_KEY is missing or the API fails. The downstream
-          # Telegram + Hooker steps then test `[ -f $AUDIO_FILE ]` — a
-          # 135-byte LFS pointer passes that check and gets uploaded as
-          # "audio". Hydrating on checkout means the on-disk file is always
-          # a real MP3 (either the previously-committed one, or the fresh
-          # one written by ffmpeg this run).
-          lfs: true
+          # lfs: false because mp3s no longer live in LFS (moved to S3 in
+          # May 2026; *.mp3 dropped from LFS in .gitattributes). The mp3 in
+          # the working tree at checkout is a 0-byte stub from the previous
+          # commit. The TTS step overwrites it with real audio; Telegram +
+          # Hooker steps below test `[ -s ]` (non-empty) instead of `[ -f ]`,
+          # so a 0-byte stub correctly falls back to text-only send. Then
+          # the Truncate step zeroes the file again for the next stub commit.
+          lfs: false
 
       # Wire git-lfs smudge/clean filters into THIS worktree's git config so
       # the MP3 produced by the TTS step below routes through LFS on commit
@@ -593,7 +592,7 @@ jobs:
           CAPTION=$(printf '🎙️ *ARA broadcast — %s*\n\n%s\n\n📄 [Full digest](%s)' \
             "$DATE" "$SUMMARY_BODY" "$DIGEST_URL")
 
-          if [ -f "$AUDIO_FILE" ]; then
+          if [ -s "$AUDIO_FILE" ]; then
             echo "Sending sendAudio to Telegram bot (CHAT_ID redacted) with $AUDIO_FILE ($(wc -c < "$AUDIO_FILE") bytes)..."
             HTTP=$(curl -sS -w "%{http_code}" -o /tmp/tg-resp.json \
               -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendAudio" \
@@ -659,8 +658,8 @@ jobs:
             exit 0
           fi
 
-          if [ ! -f "$AUDIO_FILE" ]; then
-            echo "No audio file — skipping hooker delivery"
+          if [ ! -s "$AUDIO_FILE" ]; then
+            echo "No audio file (or 0-byte stub) — skipping hooker delivery"
             exit 0
           fi
 

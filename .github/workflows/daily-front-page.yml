@@ -233,19 +233,17 @@ jobs:
           RUN_ID: ${{ github.run_id }}
         run: |
           MP3="research/audio/${TODAY}-digest.mp3"
-          if [ ! -f "$MP3" ]; then
-            echo "No audio digest at ${MP3}; skipping voice publish."
-            exit 0
-          fi
-
-          if head -c 128 "$MP3" | grep -q 'version https://git-lfs.github.com/spec/v1'; then
-            echo "Audio digest is an LFS pointer; attempting targeted hydration."
-            git lfs pull --include="$MP3" --exclude="" || true
-          fi
-
-          if head -c 128 "$MP3" | grep -q 'version https://git-lfs.github.com/spec/v1'; then
-            echo "Audio digest LFS object is unavailable; skipping voice publish."
-            exit 0
+          # mp3s live on S3 since May 2026; the file in the working tree is
+          # a 0-byte stub. Pull today's audio from S3 if the local stub is empty.
+          if [ ! -s "$MP3" ]; then
+            S3_URL="https://s3.guzus.xyz/obj-ai-research-arm/audio/${TODAY}-digest.mp3"
+            echo "Local mp3 missing or 0-byte stub; trying S3: ${S3_URL}"
+            if ! curl -sSf -o "$MP3" "$S3_URL"; then
+              echo "No audio digest available locally or on S3; skipping voice publish."
+              rm -f "$MP3"
+              exit 0
+            fi
+            echo "Hydrated $MP3 from S3 ($(wc -c < "$MP3") bytes)"
           fi
 
           OGG="/tmp/${TODAY}-digest.ogg"
