@@ -1,0 +1,13 @@
+AI News - 2026-05-26
+
+TOP STORIES:
+• OpenAI confidentially filed IPO S-1 with SEC on May 22 — Q4 2026 target, Goldman/Morgan Stanley leading; largest tech IPO in history
+• Anthropic in early talks with Microsoft to run Claude inference on custom Maia 200 chips via Azure (no signed deal yet)
+• Full Magnifica Humanitas text lands: "just war is outdated," AI in warfare needs "rigorous ethical constraints," "control of AI must not remain in the hands of a few"
+
+KEY NUMBERS:
+• OpenAI IPO valuation: $852B–$1T target; ~$2B/mo revenue; ~$25B run rate; 50M consumer + 9M business users
+• Maia 200: 216GB HBM3e, "30%+ better tokens/dollar"
+• Anthropic >$900B round still closing this week
+
+Full report on GitHub.
