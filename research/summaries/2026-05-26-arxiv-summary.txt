@@ -1,0 +1,14 @@
+arXiv Papers - 2026-05-26
+
+TOP 5 PAPERS:
+• LLaVA-OneVision-2 - codec-stream video tokenization; 8B beats Qwen3-VL-8B on JumpScore 74.9 vs 30.1
+• Language Models Need Sleep - offline sleep passes write context into SSM fast weights; deep reasoning gains
+• Model Scaling -> System Scaling - the agent harness (memory, routing, governance) is the next scaling axis
+• Looped Diffusion LMs - selective layer looping; 3.3x fewer training FLOPs, +8.5 pts GSM8K
+• MobileGym - JSON-state mobile sim with deterministic judging; +12.8pp GRPO, 95% sim-to-real
+
+ALSO: ABA audit finds critical issues in 25.7% of 168 benchmarks; AI Control shows resampling beats retrying.
+
+CATEGORIES: cs.AI/CL/LG ~40 each, cs.CV ~35, cs.NE ~2
+
+Full report on GitHub.
