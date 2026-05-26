@@ -518,8 +518,34 @@ jobs:
           DURATION_S=$((SIZE / 6000))   # 48kbps = 6000 bytes/sec
           echo "Generated $AUDIO_FILE — ${SIZE} bytes (~${DURATION_S}s of audio)"
 
-          git add "$AUDIO_FILE"
-          git commit -m "Audio digest ${DATE} (Gemini 3.1 TTS two-host: Charon+Puck, mp3 ${SIZE}b)" || echo "No audio changes to commit"
+          # mp3 stays on disk for Telegram+Hooker delivery below. S3 upload
+          # + truncate to 0-byte stub + commit happen in later steps.
+
+      - name: Upload audio digest to S3
+        if: success()
+        continue-on-error: true
+        env:
+          DATE: ${{ steps.date.outputs.date }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
+          S3_ENDPOINT_URL: ${{ secrets.S3_ENDPOINT_URL }}
+          S3_BUCKET: ${{ secrets.S3_BUCKET }}
+        run: |
+          AUDIO_FILE="research/audio/${DATE}-digest.mp3"
+          if [ ! -s "$AUDIO_FILE" ]; then
+            echo "No audio file at $AUDIO_FILE — skipping S3"
+            exit 0
+          fi
+          if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$S3_ENDPOINT_URL" ] || [ -z "$S3_BUCKET" ]; then
+            echo "S3 credentials missing — skipping S3 upload"
+            exit 0
+          fi
+          aws s3 cp "$AUDIO_FILE" "s3://${S3_BUCKET}/audio/${DATE}-digest.mp3" \
+            --endpoint-url "$S3_ENDPOINT_URL" \
+            --content-type audio/mpeg \
+            --no-progress
+          echo "Uploaded $AUDIO_FILE -> s3://${S3_BUCKET}/audio/${DATE}-digest.mp3"
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the
@@ -662,6 +688,28 @@ jobs:
           echo "Hooker response (HTTP $HTTP):"
           cat /tmp/hooker-resp.json
           echo ""
+
+      - name: Truncate audio mp3 to 0-byte stub + commit
+        if: success()
+        continue-on-error: true
+        env:
+          DATE: ${{ steps.date.outputs.date }}
+        run: |
+          # Audio lives on S3 now. The mp3 in git is a 0-byte stub so the
+          # dashboard's prebuild manifest pipeline (which scans research/audio/
+          # for date-matching files) keeps surfacing this date in the manifest.
+          AUDIO_FILE="research/audio/${DATE}-digest.mp3"
+          if [ -f "$AUDIO_FILE" ]; then
+            : > "$AUDIO_FILE"
+            git add "$AUDIO_FILE"
+            git commit -m "Audio digest ${DATE} stub (mp3 lives on S3)" || echo "No changes"
+          fi
+
+      - name: Push audio stub
+        if: success()
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish Hooker workflow telemetry
         if: always()

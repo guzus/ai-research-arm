@@ -466,10 +466,54 @@ def main() -> int:
 
     if not mp3_path.exists() or mp3_path.stat().st_size == 0:
         raise SystemExit("ffmpeg produced no MP3")
-    update_index(root, slug, audio_rel)
     print(f"Generated {mp3_path} ({mp3_path.stat().st_size} bytes)", file=sys.stderr)
+    upload_to_s3(mp3_path, f"audio/{mp3_path.name}")
+    update_index(root, slug, audio_rel)
     print(f"Updated research/generative/index.json audio_file={audio_rel}", file=sys.stderr)
     return 0
+
+
+def upload_to_s3(local_path: Path, key: str) -> None:
+    """Upload the generated mp3 to S3 and truncate the local file to a 0-byte
+    stub. mp3s no longer ride in git/LFS — the dashboard fetches from S3 via
+    AUDIO_BASE. Reads creds from env (S3_ENDPOINT_URL, S3_BUCKET,
+    S3_ACCESS_KEY_ID / AWS_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY /
+    AWS_SECRET_ACCESS_KEY). Fails loudly if creds are missing — we don't want
+    to silently leave huge mp3s in the working tree.
+    """
+    endpoint = os.getenv("S3_ENDPOINT_URL")
+    bucket = os.getenv("S3_BUCKET")
+    access_key = os.getenv("S3_ACCESS_KEY_ID") or os.getenv("AWS_ACCESS_KEY_ID")
+    secret_key = os.getenv("S3_SECRET_ACCESS_KEY") or os.getenv("AWS_SECRET_ACCESS_KEY")
+    if not (endpoint and bucket and access_key and secret_key):
+        raise SystemExit(
+            "S3 credentials missing — set S3_ENDPOINT_URL, S3_BUCKET, "
+            "S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY (or AWS_* aliases). "
+            "See .env in repo root."
+        )
+    env = {
+        **os.environ,
+        "AWS_ACCESS_KEY_ID": access_key,
+        "AWS_SECRET_ACCESS_KEY": secret_key,
+        "AWS_REGION": os.getenv("S3_REGION") or os.getenv("AWS_REGION") or "us-east-1",
+    }
+    subprocess.run(
+        [
+            "aws", "s3", "cp", str(local_path), f"s3://{bucket}/{key}",
+            "--endpoint-url", endpoint,
+            "--content-type", "audio/mpeg",
+            "--no-progress",
+        ],
+        check=True,
+        env=env,
+    )
+    print(f"Uploaded {local_path} -> s3://{bucket}/{key}", file=sys.stderr)
+    # Truncate local file to a 0-byte stub. Dashboard reads audio_file from
+    # research/generative/index.json and prepends AUDIO_BASE; the local file
+    # only exists so future prebuild scans don't misclassify the absence as a
+    # missing LFS pointer.
+    local_path.write_bytes(b"")
+    print(f"Truncated {local_path} to 0 bytes (mp3 now lives on S3)", file=sys.stderr)
 
 
 if __name__ == "__main__":

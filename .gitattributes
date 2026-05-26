@@ -26,8 +26,12 @@
 # front pages as regular git blobs so deploys do not depend on LFS hydration.
 research/front-page/*.png -filter -diff -merge -text
 
-# Audio (daily digest MP3s today; OGG/WAV plausibly if TTS pipeline changes)
-*.mp3 filter=lfs diff=lfs merge=lfs -text
+# Audio: mp3s live on S3 (s3.guzus.xyz), not in git. The files at
+# research/audio/*.mp3 are 0-byte stubs so dashboard/scripts/prebuild.mjs
+# keeps surfacing the date in the audio manifest. See AUDIO_BASE in
+# dashboard/src/main.ts and the "Upload audio digest to S3" step in
+# .github/workflows/daily-digest.yml. wav/ogg LFS rules kept for any
+# hypothetical future non-S3 path.
 *.wav filter=lfs diff=lfs merge=lfs -text
 *.ogg filter=lfs diff=lfs merge=lfs -text
 

@@ -5,6 +5,12 @@ import DOMPurify from 'dompurify';
 
 const DATA_BASE: string = import.meta.env.BASE_URL + 'research';
 
+// Audio files live in S3 (s3.guzus.xyz), not in research/audio/. The mp3s in
+// the repo are 0-byte stubs that exist so prebuild.mjs's manifest pipeline
+// keeps surfacing which dates have audio. Override via VITE_AUDIO_BASE_URL.
+const AUDIO_BASE: string =
+  import.meta.env.VITE_AUDIO_BASE_URL || 'https://s3.guzus.xyz/obj-ai-research-arm';
+
 const DOC_ICON =
   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">' +
   '<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>' +
@@ -692,7 +698,7 @@ function currentResearchAudioKey(): string {
 }
 
 function researchAudioUrl(row: GenResearchRow): string | null {
-  return row.audio_file ? `${DATA_BASE}/${row.audio_file}` : null;
+  return row.audio_file ? `${AUDIO_BASE}/${row.audio_file}` : null;
 }
 
 function researchAudioControlsHtml(row: GenResearchRow): string {
@@ -2199,7 +2205,7 @@ function renderToday(md: string, frontPage: { url: string; fallback: string | nu
   // this date. Manifest is populated by dashboard/scripts/prebuild.mjs.
   const dateStr = fmtDate(currentDate);
   if (manifest?.audio?.includes(dateStr)) {
-    const audioUrl = `${DATA_BASE}/audio/${dateStr}-digest.mp3`;
+    const audioUrl = `${AUDIO_BASE}/audio/${dateStr}-digest.mp3`;
     cards.push(
       [
         '<div class="content-card today-audio-card">',
