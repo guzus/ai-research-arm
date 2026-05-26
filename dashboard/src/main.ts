@@ -1023,7 +1023,7 @@ async function findFrontPageAtOrBefore(
   targetDateStr: string,
   signal: AbortSignal,
 ): Promise<{ url: string; date: string } | null> {
-  const candidates = manifestDates('frontpage')
+  const candidates = (manifestDates('frontpage') ?? [])
     .filter((date) => date <= targetDateStr)
     .sort()
     .reverse();
