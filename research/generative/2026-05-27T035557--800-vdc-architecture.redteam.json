@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Production deployment is targeted for the Rubin Ultra \"Kyber\" rack in 2027, with 100 kW–1 MW per rack as the design envelope.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "NVIDIA claims ~5% better end-to-end efficiency, ~45% less rack copper, and ~30% lower TCO versus the 54 V baseline.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The OCP Diablo 400 specification (codename \"Mt. Diablo\"), authored by named engineers from Meta and Google, defines a three-wire bus: +400 V, −400 V, and a common/midpoint return — a bipolar topology that yields 800 V differential between the rails. The spec also documents a two-wire 800 V monopolar design option at the rectifier output.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

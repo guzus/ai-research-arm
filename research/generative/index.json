@@ -509,5 +509,17 @@
     "source": "workflow_dispatch",
     "prompt": "AI adoption in bio industry",
     "tags": []
+  },
+  {
+    "slug": "800-vdc-architecture",
+    "file": "2026-05-27T035557--800-vdc-architecture.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "800 VDC: the rack that broke the 54-volt bus, and the supply chain it inherited from Porsche",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-05-27T03:55:57Z",
+    "source": "claude",
+    "prompt": "800 VDC Architecture",
+    "tags": []
   }
 ]

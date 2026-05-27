@@ -1,0 +1,376 @@
+{
+  "claims": [
+    {
+      "id": "c1_callout",
+      "text": "NVIDIA claims ~5% better end-to-end efficiency, ~45% less rack copper, and ~30% lower TCO versus the 54 V baseline",
+      "verdict": "supported",
+      "citation": "https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories/"
+    },
+    {
+      "id": "c1_envelope",
+      "text": "Production deployment is targeted for the Rubin Ultra Kyber rack in 2027, with 100 kW-1 MW per rack as the design envelope",
+      "verdict": "supported",
+      "citation": "https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories/"
+    },
+    {
+      "id": "c9_diablo",
+      "text": "The standardization vehicle is the OCP Diablo 400 specification (codename Mt. Diablo), co-authored by Google, Meta, and Microsoft",
+      "verdict": "supported",
+      "citation": "https://www.opencompute.org/documents/ocp-specification-diablo-400-v0p5p2-2025-05-30-pdf"
+    },
+    {
+      "id": "c16_sst",
+      "text": "Perimeter solid-state transformer (SST) that converts 13.8 kV AC straight to 800 VDC, with TI quote",
+      "verdict": "supported",
+      "citation": "https://www.ti.com/about-ti/newsroom/news-releases/2026/2026-03-16-ti-unveils-complete-800-vdc-power-architecture-for-future-generation-ai-data-centers-with-nvidia.html"
+    },
+    {
+      "id": "c21_taycan",
+      "text": "1200 V SiC MOSFETs and the surrounding isolation, fuses, and contactors have been in production since 2019 (Porsche Taycan)",
+      "verdict": "supported",
+      "citation": "https://newsroom.porsche.com/en/products/taycan/battery-18557.html"
+    },
+    {
+      "id": "c22_egmp",
+      "text": "Hyundai's E-GMP platform brought 800 V architecture into 40-55k crossover segment",
+      "verdict": "weak",
+      "citation": "https://www.hyundai.com/worldwide/en/brand-journal/ioniq/e-gmp-revolution"
+    },
+    {
+      "id": "c7_current",
+      "text": "A 1 MW rack at 54 VDC needs about 18,500 A of bus current. At 800 VDC, the same rack draws 1,250 A - a 14.8x reduction",
+      "verdict": "weak",
+      "citation": "https://newsletter.semianalysis.com/p/inside-the-800vdc-revolution-part"
+    },
+    {
+      "id": "c8_loss",
+      "text": "14.8x current drop is roughly a 219x drop in resistive loss",
+      "verdict": "supported",
+      "citation": "https://newsletter.semianalysis.com/p/inside-the-800vdc-revolution-part"
+    },
+    {
+      "id": "c6_64u",
+      "text": "Up to 64 U of rack space just for power shelves at 54V/MW scale",
+      "verdict": "supported",
+      "citation": "https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories/"
+    },
+    {
+      "id": "c1_kyber600",
+      "text": "Rubin Ultra Kyber NVL576 rack 576 GPU dies, ~600 kW per rack in 2027",
+      "verdict": "supported",
+      "citation": "https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories/"
+    },
+    {
+      "id": "c39_catalina",
+      "text": "Meta's Catalina built on Open Rack v3 tops out at 140 kW and runs on 48 VDC distribution",
+      "verdict": "weak",
+      "citation": "https://engineering.fb.com/2024/10/15/data-infrastructure/metas-open-ai-hardware-vision/"
+    },
+    {
+      "id": "c48_ironwood",
+      "text": "Google's deployed TPU v7 Ironwood rack sits at about 90 kW",
+      "verdict": "weak",
+      "citation": "https://cloud.google.com/blog/topics/systems/enabling-1-mw-it-racks-and-liquid-cooling-at-ocp-emea-summit"
+    },
+    {
+      "id": "c1_200t",
+      "text": "On-rack savings roughly 200 tonnes of copper per gigawatt of capacity",
+      "verdict": "supported",
+      "citation": "https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories/"
+    },
+    {
+      "id": "c43_utility",
+      "text": "Utility side needs 25,000-40,000 tonnes per gigawatt for new substations and transmission",
+      "verdict": "weak",
+      "citation": "https://www.bloomberg.com/news/articles/2025-08-12/data-center-demand-to-exacerbate-copper-shortage-bnef-says"
+    },
+    {
+      "id": "c37_5stages",
+      "text": "Legacy AC pathway runs five conversion stages from MV AC to server PSU",
+      "verdict": "weak",
+      "citation": "https://cmte.ieee.org/pes-essb/wp-content/uploads/sites/43/2017/07/2017-WM-DC-Arc-Flash-Analysis-Fundamental-Concepts-and-Standards-R-Veeraraghavan.pdf"
+    },
+    {
+      "id": "c4_busconv",
+      "text": "Inside the rack, a single bus converter drops 800 V to about 6 V",
+      "verdict": "supported",
+      "citation": "https://blogs.nvidia.com/blog/gigawatt-ai-factories-ocp-vera-rubin/"
+    },
+    {
+      "id": "c9_topology",
+      "text": "Diablo 400 defines a three-wire bus: +400 V, -400 V, common/midpoint return; also documents 800 V monopolar option",
+      "verdict": "supported",
+      "citation": "https://www.opencompute.org/documents/ocp-specification-diablo-400-v0p5p2-2025-05-30-pdf"
+    },
+    {
+      "id": "c10_supply",
+      "text": "Google's blog explicitly states 400 V nominal is to leverage EV supply chain",
+      "verdict": "supported",
+      "citation": "https://cloud.google.com/blog/topics/systems/enabling-1-mw-it-racks-and-liquid-cooling-at-ocp-emea-summit"
+    },
+    {
+      "id": "c14_abb",
+      "text": "ABB invested in DG Matrix (minority stake), 98% efficiency, 5x smaller",
+      "verdict": "supported",
+      "citation": "https://new.abb.com/news/detail/124139/abb-invests-in-dg-matrix-to-advance-ai-data-center-power-optimization"
+    },
+    {
+      "id": "c47_partners",
+      "text": "October 2025 OCP Summit post named 20+ partners including ABB, Eaton, GE Vernova, Heron Power, Hitachi Energy, Mitsubishi Electric, Schneider Electric, Siemens, Vertiv",
+      "verdict": "supported",
+      "citation": "https://blogs.nvidia.com/blog/gigawatt-ai-factories-ocp-vera-rubin/"
+    },
+    {
+      "id": "c17_vicor",
+      "text": "Vicor publicly rejects 800-to-6 V direct conversion topology",
+      "verdict": "supported",
+      "citation": "https://www.fool.com/earnings/call-transcripts/2026/05/03/vicor-vicr-q1-2026-earnings-transcript/"
+    },
+    {
+      "id": "c24_wolfspeed",
+      "text": "Wolfspeed still digesting emergence from Chapter 11",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0000895419/000089541924000034/ex9913qfy2024.htm"
+    },
+    {
+      "id": "c11_vertiv",
+      "text": "Vertiv 800 V DC portfolio for release in 2026, $9.5B backlog up 30% YoY, Q3 orders +60% YoY",
+      "verdict": "supported",
+      "citation": "https://www.fool.com/earnings/call-transcripts/2025/10/22/vertiv-vrt-q3-2025-earnings-call-transcript/"
+    },
+    {
+      "id": "c12_schneider",
+      "text": "Schneider 800 VDC Sidecar 1.2 MW/rack rating, modular conversion shelves, Live Swap",
+      "verdict": "supported",
+      "citation": "https://www.prnewswire.com/news-releases/schneider-electric-highlights-innovation-in-800-vdc-power-systems-in-support-of-nvidias-next-generation-gpus-302583389.html"
+    },
+    {
+      "id": "c13_eaton",
+      "text": "Eaton 800 VDC reference architecture with supercap ride-through, ORv3 busbar, hot-aisle containment",
+      "verdict": "supported",
+      "citation": "https://www.datacenterfrontier.com/energy/article/55323139/preparing-for-800-vdc-data-centers-abb-eaton-support-nvidias-ai-infrastructure-evolution"
+    },
+    {
+      "id": "c15_delta",
+      "text": "Delta 1U 72 kW AC-DC shelf at 98%, 1U 90 kW DC-DC shelf at 98.5%, 1.1 MW In-Row at 92% end-to-end",
+      "verdict": "weak",
+      "citation": "https://www.delta-americas.com/en-us/news/deltas-groundbreaking-800-vdc-power-solutions-showcased-at-ocp-global-summit-2025-to-enable-sustainable-ai-factories"
+    },
+    {
+      "id": "c16_ti",
+      "text": "TI March 16 2026 complete 800 VDC architecture co-developed with NVIDIA, 97.6% peak bus converter, 30 kW PSU",
+      "verdict": "supported",
+      "citation": "https://www.ti.com/about-ti/newsroom/news-releases/2026/2026-03-16-ti-unveils-complete-800-vdc-power-architecture-for-future-generation-ai-data-centers-with-nvidia.html"
+    },
+    {
+      "id": "c18_vrt",
+      "text": "Vertiv +152% 12-month return ($128.41 to $323.91), +28% step-change October 2025",
+      "verdict": "supported",
+      "citation": "https://finance.yahoo.com/quote/VRT/history"
+    },
+    {
+      "id": "c19_vicr",
+      "text": "Vicor +634% 12-month return",
+      "verdict": "supported",
+      "citation": "https://finance.yahoo.com/quote/VICR/history"
+    },
+    {
+      "id": "c24_navitas_wolf",
+      "text": "Navitas +385%, Wolfspeed +179% (8 mo post-emergence)",
+      "verdict": "weak",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0000895419/000089541924000034/ex9913qfy2024.htm"
+    },
+    {
+      "id": "c20_vrt_pe",
+      "text": "Vertiv trades at ~48x forward earnings vs Eaton ~32x and Schneider ~24x; Vertiv 2026 organic sales growth 27-29%",
+      "verdict": "supported",
+      "citation": "https://stockanalysis.com/stocks/vrt/statistics/"
+    },
+    {
+      "id": "c27_msft_capex",
+      "text": "Microsoft alone guides FY26 capex to roughly $190 billion - about a 61% YoY step-up; Big Four toward ~$630 billion in 2026",
+      "verdict": "weak",
+      "citation": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q1"
+    },
+    {
+      "id": "c17_quote",
+      "text": "Vinciarelli quote: We believe the initiative to go directly from 800 volts to 6 volts is ill-conceived and internally inconsistent (April 21, 2026)",
+      "verdict": "supported",
+      "citation": "https://www.fool.com/earnings/call-transcripts/2026/05/03/vicor-vicr-q1-2026-earnings-transcript/"
+    },
+    {
+      "id": "c48_google_phrasing",
+      "text": "Google blog used phrasing +/-400 VDC power delivery that can support up to 1 MW per rack",
+      "verdict": "supported",
+      "citation": "https://cloud.google.com/blog/topics/systems/enabling-1-mw-it-racks-and-liquid-cooling-at-ocp-emea-summit"
+    },
+    {
+      "id": "c9_authors",
+      "text": "Six Meta engineers, ten Google engineers on v0.5.2 document, Microsoft sponsor",
+      "verdict": "weak",
+      "citation": "https://www.opencompute.org/documents/ocp-specification-diablo-400-v0p5p2-2025-05-30-pdf"
+    },
+    {
+      "id": "c25_nadella",
+      "text": "Nadella quote: biggest issue is power, warm shells to plug into, bunch of chips sitting in inventory I can't plug in",
+      "verdict": "weak",
+      "citation": "https://finance.yahoo.com/news/microsoft-ceo-satya-nadella-admits-143026640.html"
+    },
+    {
+      "id": "c26_jassy",
+      "text": "Andy Jassy: power is AWS' single biggest constraint, several quarters before resolution (Q2 2025 call)",
+      "verdict": "supported",
+      "citation": "https://www.latitudemedia.com/news/power-is-aws-single-biggest-constraint/"
+    },
+    {
+      "id": "c27_hood",
+      "text": "Amy Hood: Microsoft will be capacity-constrained through at least the end of the fiscal year",
+      "verdict": "supported",
+      "citation": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q1"
+    },
+    {
+      "id": "c21_taycan_date",
+      "text": "Porsche Taycan world-premiered September 4, 2019; Zuffenhausen production six days later",
+      "verdict": "supported",
+      "citation": "https://newsroom.porsche.com/en/products/taycan/battery-18557.html"
+    },
+    {
+      "id": "c22_egmp_models",
+      "text": "E-GMP underpins Ioniq 5, Kia EV6, Genesis GV60; debuted early 2021; 350 kW DC charging",
+      "verdict": "weak",
+      "citation": "https://www.hyundai.com/worldwide/en/brand-journal/ioniq/e-gmp-revolution"
+    },
+    {
+      "id": "c23_china_800v",
+      "text": "Chinese 800 V passenger-car sales reached 840,000 units (6.9% penetration) in 2024; 9.5% projected for 2025; 70+ distinct models",
+      "verdict": "supported",
+      "citation": "https://www.businesswire.com/news/home/20251021314198/en/"
+    },
+    {
+      "id": "c24_wolfspeed_designs",
+      "text": "Wolfspeed FY2024 design-ins ~75% automotive with ~70% tied to 800 V platforms",
+      "verdict": "weak",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0000895419/000089541924000034/ex9913qfy2024.htm"
+    },
+    {
+      "id": "c38_iso6469",
+      "text": "ISO 6469-3 Voltage Class B (DC voltages above 60 V) mandates isolation-resistance monitoring, HV interlock loops, automatic discharge to <60 V within 5 seconds",
+      "verdict": "weak",
+      "citation": "https://blog.ansi.org/ansi/iso-6469-3-2021-safety-for-electric-road-vehicles/"
+    },
+    {
+      "id": "c28_stargate",
+      "text": "OpenAI-Oracle-Crusoe Stargate Abilene project is 1.2 GW across eight AI factory halls running ~500,000 NVIDIA GPUs; first node in 7 GW Stargate footprint with $400B+ over 3 years",
+      "verdict": "weak",
+      "citation": "https://openai.com/index/five-new-stargate-sites/"
+    },
+    {
+      "id": "c29_pjm",
+      "text": "PJM AI infrastructure projects in 2025 took average of more than seven years to reach operational status",
+      "verdict": "supported",
+      "citation": "https://www.datacenterknowledge.com/energy-power-supply/why-ai-data-center-projects-face-years-of-delays-after-approval"
+    },
+    {
+      "id": "c30_ercot",
+      "text": "ERCOT large-load queue ~226 GW in November 2025, nearly 4x the 63 GW at end-2024, ~77% from datacenters targeting 2030",
+      "verdict": "supported",
+      "citation": "https://www.latitudemedia.com/news/ercots-large-load-queue-has-nearly-quadrupled-in-a-single-year/"
+    },
+    {
+      "id": "c31_dominion",
+      "text": "Dominion ~40 GW of datacenter capacity in various stages of contracting as of December 2024, up from ~21 GW in July 2024",
+      "verdict": "supported",
+      "citation": "https://www.datacenterdynamics.com/en/news/dominion-energy-nearly-doubles-data-center-capacity-under-contract-to-40gw/"
+    },
+    {
+      "id": "c46_transformer",
+      "text": "Conventional power transformer lead times stretched to roughly four years, prices up about 80% in five years",
+      "verdict": "supported",
+      "citation": "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
+    },
+    {
+      "id": "c32_tmi",
+      "text": "Microsoft signed a 20-year, 835 MW PPA with Constellation in September 2024 to restart Three Mile Island Unit 1 by 2028, backed by $1B DOE loan",
+      "verdict": "weak",
+      "citation": "https://www.utilitydive.com/news/constellation-three-mile-island-nuclear-power-plant-microsoft-data-center-ppa/727652/"
+    },
+    {
+      "id": "c33_talen",
+      "text": "Amazon 17-year, $18 billion, 1,920 MW front-of-meter PPA in June 2025 after FERC rejected behind-the-meter arrangement at Talen Susquehanna in November 2024",
+      "verdict": "supported",
+      "citation": "https://www.powermag.com/talen-amazon-launch-18b-nuclear-ppa-a-grid-connected-ipp-model-for-the-data-center-era/"
+    },
+    {
+      "id": "c50_brookfield",
+      "text": "Brookfield $5 billion to deploy up to 1 GW of Bloom Energy fuel cells behind-the-meter at AI datacenters in October 2025, first 55 MW project online Q4 2025",
+      "verdict": "weak",
+      "citation": "https://www.cnbc.com/2025/10/13/bloom-energy-shares-soar-after-striking-deal-with-brookfield-to-provide-fuel-cells-to-ai-data-centers.html"
+    },
+    {
+      "id": "c34_gevernova",
+      "text": "GE Vernova gas-turbine slot-reservation backlog ~80 GW by end-2025; CEO expects sold out through 2030 by end-2026",
+      "verdict": "supported",
+      "citation": "https://www.utilitydive.com/news/ge-vernova-gas-turbine-investor/807662/"
+    },
+    {
+      "id": "c46_caterpillar",
+      "text": "Caterpillar order backlog grew from $30.0B (end-2024) to $51.2B (end-2025), Power & Energy largest contributor",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0000018230/000130817926000360/cat015318-ars.pdf"
+    },
+    {
+      "id": "c43_bnef",
+      "text": "BNEF projects AI datacenter copper demand will average ~400,000 t/yr, peaking at 572,000 t in 2028, locking 4.3 Mt cumulatively by 2035",
+      "verdict": "supported",
+      "citation": "https://www.bloomberg.com/news/articles/2025-08-12/data-center-demand-to-exacerbate-copper-shortage-bnef-says"
+    },
+    {
+      "id": "c44_copper",
+      "text": "COMEX copper traded near $6.47/lb in May 2026, up roughly 49% from $4.33/lb the prior July",
+      "verdict": "supported",
+      "citation": "https://finance.yahoo.com/quote/HG=F/history"
+    },
+    {
+      "id": "c36_iec",
+      "text": "IEC 61140 + IEC 60038 LV band caps at ≤1000 V AC or ≤1500 V DC; NEC 2026 reorganizes via new Article 270",
+      "verdict": "supported",
+      "citation": "https://iaeimagazine.org/electrical-fundamentals/modern-data-centers-electrical-trends-risks-and-nec-2026-implications/"
+    },
+    {
+      "id": "c35_osha",
+      "text": "OSHA fixes energized threshold at 50 V AC or DC; NFPA 70E specifies DC approach boundaries 100 V to 800 kV",
+      "verdict": "weak",
+      "citation": "https://www.ecmweb.com/safety/article/20897929/nfpa-70es-approach-to-considering-dc-hazards"
+    },
+    {
+      "id": "c37_dcarc",
+      "text": "Vacuum interrupter DC rating typically only 15-30% of AC rating; Max Power Method capped at 1000 V DC, validated to ~350 V",
+      "verdict": "weak",
+      "citation": "https://cmte.ieee.org/pes-essb/wp-content/uploads/sites/43/2017/07/2017-WM-DC-Arc-Flash-Analysis-Fundamental-Concepts-and-Standards-R-Veeraraghavan.pdf"
+    },
+    {
+      "id": "c49_incidents",
+      "text": "Three workers burned in 2022 arc-flash at Google Council Bluffs; electrocution at QTS Fayetteville 2025",
+      "verdict": "supported",
+      "citation": "https://www.broadbandnation.org/network-technology/higher-voltage-higher-risk-safety-ai-data-center-boom"
+    },
+    {
+      "id": "c45_enphase",
+      "text": "Enphase's IQ SST roadmap: late 2026 demo, 2027 pilot, 2028 volume",
+      "verdict": "weak",
+      "citation": "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
+    },
+    {
+      "id": "c24_wolf10kv",
+      "text": "Wolfspeed shipped first commercial 10 kV SiC MOSFET in calendar Q1 2026",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0000895419/000089541924000034/ex9913qfy2024.htm"
+    },
+    {
+      "id": "c45_tco",
+      "text": "Independent analyses put OpEx win in 7-20% range; SST capex of $1.0-1.5 M/MW",
+      "verdict": "weak",
+      "citation": "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
+    }
+  ]
+}
