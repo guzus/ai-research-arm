@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-05-27
+
+TOP STORIES:
+• Harvard mathematician says Anthropic's unreleased Mythos solved Erdős #90 (single-source, no proof artifact)
+• Huawei Tau "1.4nm-equivalent" walked back by named Chinese chip architect as "more than Moore rebranded"
+• New OSWorld SOTA: 83.6% Opus 4.7 / 81.5% Sonnet 4.6 vs 72.4% human (Chopra harness)
+• SynthID cross-lab coalition formalized: OpenAI/ElevenLabs/Kakao/NVIDIA; 100B+ pieces watermarked
+• LeCun breaks 42h lab-principal encyclical silence with open-source framing
+
+KEY NUMBERS:
+• Mythos: 10K+ critical vulns; OpenRouter ~1.5 quadrillion tokens/yr; Micron crosses $1T
+
+TRENDING: Magnifica Humanitas (1,490 HN pts) and "AI to write better code more slowly" (1,012 pts)
+
+Full digest on GitHub.
