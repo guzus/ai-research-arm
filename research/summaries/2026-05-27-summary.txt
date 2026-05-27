@@ -1,14 +1,15 @@
 AI News - 2026-05-27
 
 TOP STORIES:
-• Fireworks AI in talks for new round at ~$15B valuation (~4x its Oct '25 $4B mark) — Index Ventures co-leading (Bloomberg)
-• Anthropic Project Glasswing first update: Claude Mythos found 10,000+ high/critical bugs in 1 month (incl. 27-yr-old OpenBSD bug); Claude Security goes public beta
-• Sam Altman in Sydney: "I'm delighted to be wrong" — walks back white-collar jobs-apocalypse forecast, 5 days after OpenAI S-1
-• FT: "Heretic" tool strips guardrails from Meta Llama 3.3 + Google Gemma 3 in <10 min; 3,500+ decensored variants, ~13M downloads
+• Cognition AI (Devin) closes $1B+ at $26B — 2.55x its Sep '25 mark; Lux/General Catalyst/8VC co-lead; $492M ARR (~13x YoY)
+• Fireworks AI in talks at ~$15B valuation (~4x Oct '25 $4B mark) — Index Ventures co-leading (Bloomberg)
+• Anthropic Glasswing update: Claude Mythos found 10,000+ high/critical bugs in 1 month (incl. 27-yr-old OpenBSD)
+• Sam Altman in Sydney: "I'm delighted to be wrong" — walks back white-collar jobs-apocalypse forecast
+• FT: "Heretic" tool strips guardrails from Llama 3.3 + Gemma 3 in <10 min; ~13M downloads
 
 KEY NUMBERS:
-• Fireworks: $15B (vs $4B Oct '25)
-• Glasswing: 10,000+ vulns; Cloudflare alone 2,000 (400 high/crit)
-• Claude Security: 2,100+ vulns patched in 3 wks
+• Cognition: $26B post, $492M ARR, 89% of own code by Devin
+• Fireworks: $15B vs $4B Oct '25
+• Glasswing: 10,000+ vulns; Claude Security 2,100+ patches in 3 wks
 
 Full report on GitHub.
