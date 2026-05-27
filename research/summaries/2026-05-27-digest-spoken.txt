@@ -1,0 +1,11 @@
+Speaker 1: Wednesday, May twenty-seventh, twenty twenty-six.
+Speaker 2: [high_energy] A Harvard mathematician claims Anthropic's unreleased Mythos model solved Erdős problem ninety, a decades-old open question in combinatorics — though this is a single-source report with no proof artifact yet.
+Speaker 1: Worth treating that one carefully, but if it holds, it would be a landmark moment for AI and formal mathematics.
+Speaker 2: On the chip front, Huawei's Tau processor and its one point four nanometer equivalent claim has been publicly walked back by a named Chinese chip architect as, quote, more than Moore rebranded.
+Speaker 1: Benchmark news: Opus four point seven hit [emphasis]eighty-three point six percent[/emphasis] on OSWorld, and Sonnet four point six hit eighty-one point five — both clearing the human baseline of seventy-two point four percent under the Chopra harness.
+Speaker 2: That is the first time we have seen two models from the same lab simultaneously beat human-level on that benchmark.
+Speaker 1: On watermarking, the SynthID coalition is now formalized — OpenAI, ElevenLabs, Kakao, and NVIDIA — with [emphasis]over one hundred billion[/emphasis] pieces of content already tagged.
+Speaker 2: [dramatic_pause] And Yann LeCun ended a forty-two-hour silence from lab principals with an open-source framing — make of that what you will.
+Speaker 1: Some quick numbers: Mythos flagged over ten thousand critical vulnerabilities, OpenRouter is tracking roughly one point five quadrillion tokens per year, and Micron has crossed [emphasis]one trillion dollars[/emphasis] in market cap.
+Speaker 2: Trending on Hacker News today — Magnifica Humanitas with nearly fifteen hundred points, and a thread arguing AI will write better code, just more slowly.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
