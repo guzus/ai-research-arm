@@ -1,0 +1,11 @@
+Speaker 1: Thursday, May twenty-eighth, twenty twenty-six.
+Speaker 2: [high_energy] Cognition AI just closed a one billion dollar round at a [emphasis]twenty-six billion dollar[/emphasis] valuation — that is two and a half times their September twenty twenty-five mark, on four hundred ninety-two million in annual recurring revenue, up thirteen times year over year.
+Speaker 1: And the number inside the number — eighty-nine percent of Cognition's own codebase is now written by Devin, their coding agent.
+Speaker 2: That is the clearest proof-of-dogfooding any AI company has put on paper.
+Speaker 1: On the security front, Anthropic's Glasswing update is out. Their Claude Mythos model surfaced over ten thousand high and critical vulnerabilities in a single month — including a twenty-seven-year-old bug in OpenBSD.
+Speaker 2: Mythos stays gated, not a public release, but finding a bug that old is [dramatic_pause] a statement.
+Speaker 1: Meanwhile, Sam Altman walked back his white-collar jobs apocalypse comments. His words: "I'm delighted to be wrong." Cleanest CEO reversal we have seen in some time.
+Speaker 2: [high_energy] A quick look at the money: Fireworks AI is in acquisition talks at roughly [emphasis]fifteen billion dollars[/emphasis] — about three and three-quarter times its October twenty twenty-five valuation, with Index co-leading.
+Speaker 1: Also worth flagging — a tool called Heretic can strip guardrails from Llama three point three and Gemma three in under ten minutes, and it has pulled roughly thirteen million downloads.
+Speaker 2: And the highest-voted story on Hacker News today had nothing to do with funding rounds — it was titled "I'm Tired of Talking to AI," sitting at sixteen hundred twenty-eight points. AI content fatigue is topping the charts.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
