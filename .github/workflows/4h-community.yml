@@ -75,6 +75,39 @@ jobs:
           cp /tmp/reddit/*.rss data/reddit/ || echo "No files to copy"
           ls -la data/reddit/
 
+      # Deterministic HN pre-fetch (mirrors the Reddit RSS approach above).
+      # The mcp-hackernews MCP server has failed intermittently inside the
+      # agent ("HN live data unavailable — network access restricted"),
+      # leaving the HN section empty while Reddit (pre-fetched) stayed fine.
+      # The Algolia HN Search API is the public, no-auth JSON backend that
+      # powers HN's own search, so fetching it here in a shell step gives the
+      # agent a guaranteed HN source. Graceful fallback to an empty result set
+      # on failure, honoring CLAUDE.md rule #6 (fetch gracefully, never crash).
+      - name: Fetch Hacker News front page (Algolia)
+        id: hackernews
+        run: |
+          mkdir -p /tmp/hn
+
+          echo "Fetching HN front page (Algolia)..."
+          curl -sL -m 30 \
+            "https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=50" \
+            -H "User-Agent: AIResearchBot/1.0" \
+            > /tmp/hn/frontpage.json || printf '{"hits":[]}\n' > /tmp/hn/frontpage.json
+
+          # Guard against HTML error pages / truncated bodies: if the file
+          # doesn't look like the expected JSON, replace with an empty set.
+          if ! grep -q '"hits"' /tmp/hn/frontpage.json; then
+            echo "Algolia response missing hits[] — writing empty set"
+            printf '{"hits":[]}\n' > /tmp/hn/frontpage.json
+          fi
+          echo "HN frontpage.json size: $(wc -c < /tmp/hn/frontpage.json) bytes"
+
+      - name: Copy HN data to working directory
+        run: |
+          mkdir -p data/hn
+          cp /tmp/hn/*.json data/hn/ || echo "No files to copy"
+          ls -la data/hn/
+
       - name: Create MCP Config
         run: |
           cat > /tmp/mcp-config.json << 'EOF'
@@ -103,8 +136,26 @@ jobs:
 
             ## TASK 1: Hacker News
 
-            Use the Hacker News MCP tools to get current top/new stories.
-            Filter for AI/ML/LLM related content.
+            PRIMARY SOURCE (always available): read the pre-fetched front page
+            from data/hn/frontpage.json. This is the Algolia HN Search API
+            response; each item in hits[] has:
+            - title          (story title)
+            - url            (external link; may be null for Ask/Show HN)
+            - points         (score)
+            - num_comments   (comment count)
+            - objectID       (HN story id)
+
+            Build the HN discussion link as:
+              https://news.ycombinator.com/item?id={objectID}
+
+            Filter hits[] for AI/ML/LLM-related content and rank by points.
+
+            SUPPLEMENT (best-effort): if the Hacker News MCP tools respond, use
+            them to refine scores/comment counts or pull "new" stories not yet
+            on the front page. If the MCP tools error or return nothing, DO NOT
+            leave the HN section empty — data/hn/frontpage.json is sufficient on
+            its own. Never emit an "HN data unavailable" placeholder while
+            frontpage.json has hits.
 
             Write to: research/community/${{ steps.datetime.outputs.date }}-hn.md
 

@@ -2,8 +2,11 @@ name: Bluesky AI Researcher Feed (Daily)
 
 on:
   schedule:
-    # Run once daily at 00:11 UTC
-    - cron: '11 0 * * *'
+    # Run twice daily (00:11 and 12:11 UTC). A single daily snapshot of a
+    # small set of sporadically-posting researchers repeatedly yielded <3
+    # posts (the digest flagged "Bluesky: 1 feed snapshot" as the lane's weak
+    # point); a second pass roughly doubles candidate posts per day.
+    - cron: '11 0,12 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -38,21 +41,39 @@ jobs:
 
           # Public keyword search now returns HTTP 403 without an authenticated
           # session. Author feeds remain public, so use a curated AI-source list.
+          #
+          # Handle hygiene — every handle below was re-verified live via
+          # getAuthorFeed on 2026-05-29 (displayName + most-recent post date).
+          # Each entry is a real, currently-active AI voice. Handles that
+          # resolved to the WRONG person, to an EMPTY feed, or to a long-dormant
+          # account were removed (Bluesky reassigns/aliases handles, so an old
+          # entry can silently start surfacing a stranger's posts — exactly the
+          # "ingesting the wrong Simon Willison" bug this list previously had):
+          #   - simonw.bsky.social      -> "Simon Wigzell" (Swedish comics blog),
+          #                                NOT Simon Willison. Corrected to the
+          #                                custom-domain handle simonwillison.net.
+          #   - emilymbender.bsky.social -> now "Sam Cole" (samleecole), wrong person
+          #   - mmitchell.bsky.social    -> now "Larry Hunter" (proflhunter), wrong person
+          #   - rasbt.bsky.social        -> now "fry69", not Sebastian Raschka
+          #   - karpathy.bsky.social     -> last post 2023-05-27 (dormant)
+          #   - arankomatsuzaki...       -> last post 2024-12-17 (dormant)
+          #   - huggingface / deeplearning / jeremyhoward / swyx / moyix /
+          #     schmidhuber .bsky.social -> empty feeds (no posts returned)
+          # Re-add any of these only after API-verifying a correct active handle.
+          # Added 2026-05-29 (each verified posting within ~3 days): natolambert
+          # (post-training/open models), emollick (applied AI), alexhanna
+          # (AI policy/ethics), minimaxir (ML engineering).
+          # Custom-domain handles (no .bsky.social suffix, e.g. simonwillison.net)
+          # are fine: getAuthorFeed resolves the handle to a DID either way, and
+          # the slug logic below keeps the full handle string as the filename.
           handles=(
-            "karpathy.bsky.social"
-            "emilymbender.bsky.social"
-            "mmitchell.bsky.social"
-            "huggingface.bsky.social"
-            "deeplearning.bsky.social"
-            "rasbt.bsky.social"
-            "jeremyhoward.bsky.social"
             "yoavgo.bsky.social"
-            "swyx.bsky.social"
-            "simonw.bsky.social"
             "hardmaru.bsky.social"
-            "moyix.bsky.social"
-            "arankomatsuzaki.bsky.social"
-            "schmidhuber.bsky.social"
+            "simonwillison.net"
+            "natolambert.bsky.social"
+            "emollick.bsky.social"
+            "alexhanna.bsky.social"
+            "minimaxir.bsky.social"
           )
 
           for handle in "${handles[@]}"; do
@@ -80,7 +101,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model sonnet --allowedTools "Read,Write,Edit,Bash(git:*)"
+            --model sonnet --allowedTools "Read,Write,Edit,Bash(ls:*),Bash(git:*)"
           prompt: |
             You are a Bluesky AI feed curator. Process REAL-TIME posts from Bluesky.
 
@@ -89,21 +110,11 @@ jobs:
 
             ## SOURCE FILES
 
-            Read these pre-fetched Bluesky JSON files from data/bluesky/:
-            - data/bluesky/arankomatsuzaki.json
-            - data/bluesky/deeplearning.json
-            - data/bluesky/emilymbender.json
-            - data/bluesky/hardmaru.json
-            - data/bluesky/huggingface.json
-            - data/bluesky/jeremyhoward.json
-            - data/bluesky/karpathy.json
-            - data/bluesky/mmitchell.json
-            - data/bluesky/moyix.json
-            - data/bluesky/rasbt.json
-            - data/bluesky/schmidhuber.json
-            - data/bluesky/simonw.json
-            - data/bluesky/swyx.json
-            - data/bluesky/yoavgo.json
+            Read EVERY `*.json` file in `data/bluesky/` (one per tracked
+            account; run `ls data/bluesky/` first to enumerate them). Do NOT
+            rely on a hardcoded filename list — the curated handle set changes
+            over time (handles get fixed, added, or dropped), so always process
+            whatever files are actually present.
 
             The Bluesky JSON structure is:
             - feed[].post.author.handle (username like "user.bsky.social")
@@ -144,7 +155,7 @@ jobs:
             ## FILTERS
 
             INCLUDE:
-            - Posts from last 24 hours
+            - Posts from last 48 hours
             - Announcements about AI models, releases
             - Technical discussions
             - Links to papers or blog posts
@@ -153,7 +164,7 @@ jobs:
             SKIP:
             - Generic "AI is amazing" posts
             - Spam or promotional content
-            - Posts older than 24 hours
+            - Posts older than 48 hours
             - Low engagement posts
             - Pure reposts where feed[].reason is a repost reason
 

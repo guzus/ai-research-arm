@@ -90,6 +90,58 @@ jobs:
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
 
+          # Ars Technica AI RSS (section feed; probed HTTP 200, fresh items)
+          curl -sL "https://arstechnica.com/ai/feed/" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+            > /tmp/rss/arstechnica_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arstechnica_ai.xml
+
+          # MIT Technology Review — AI section. Long-form AI journalism the
+          # daily-digest synthesizer cites; probed HTTP 200 with fresh items.
+          curl -sL "https://www.technologyreview.com/topic/artificial-intelligence/feed/" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+            > /tmp/rss/mit_tech_review_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/mit_tech_review_ai.xml
+
+          # The Decoder — AI-only news outlet (probed HTTP 200, fresh items)
+          curl -sL "https://the-decoder.com/feed/" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+            > /tmp/rss/the_decoder.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/the_decoder.xml
+
+          # MarkTechPost — high-volume AI research/news aggregator surfacing new
+          # papers, model releases, and open-source drops (probed HTTP 200).
+          curl -sL "https://www.marktechpost.com/feed/" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+            > /tmp/rss/marktechpost.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/marktechpost.xml
+
+          # --- Expert / independent commentary (promoted from second-hand
+          # Twitter/HN pickup to first-class RSS input). All probed HTTP 200
+          # with entries dated within the last few days. NOTE: SemiAnalysis's
+          # public feed (semianalysis.com/feed/) was deliberately NOT added —
+          # it returns HTTP 200 but its newest item is from 2025-09-16 (the
+          # public RSS is frozen behind their paywall), so the 24h freshness
+          # filter would drop everything and only add a dead section.
+
+          # Simon Willison's Weblog (Atom) — high-signal hands-on LLM coverage.
+          # Atom uses entry/title/link[@href]/published, not item/.../pubDate.
+          curl -sL "https://simonwillison.net/atom/everything/" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+            > /tmp/rss/simonwillison.xml 2>/dev/null || echo "<feed></feed>" > /tmp/rss/simonwillison.xml
+
+          # Interconnects (Nathan Lambert) — open-model / post-training analysis.
+          curl -sL "https://www.interconnects.ai/feed" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+            > /tmp/rss/interconnects.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/interconnects.xml
+
+          # Import AI (Jack Clark, Anthropic co-founder) — frontier-lab essays;
+          # pairs with anthropic.xml for "what Anthropic is thinking" coverage.
+          curl -sL "https://jack-clark.net/feed/" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+            > /tmp/rss/import_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/import_ai.xml
+
+          # One Useful Thing (Ethan Mollick, Wharton) — applied-AI essays.
+          curl -sL "https://www.oneusefulthing.org/feed" \
+            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+            > /tmp/rss/one_useful_thing.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/one_useful_thing.xml
+
           echo "RSS feeds fetched successfully"
           ls -la /tmp/rss/
 
@@ -124,12 +176,26 @@ jobs:
             - techcrunch_ai.xml (TechCrunch AI)
             - verge_ai.xml (The Verge AI)
             - venturebeat_ai.xml (VentureBeat AI)
+            - arstechnica_ai.xml (Ars Technica AI)
+            - mit_tech_review_ai.xml (MIT Technology Review — AI)
+            - the_decoder.xml (The Decoder — AI-only outlet)
+            - marktechpost.xml (MarkTechPost — AI research/news aggregator)
+
+            **Expert / Independent Commentary:**
+            - simonwillison.xml (Simon Willison's Weblog — Atom feed;
+              hands-on LLM coverage. Atom uses entry/title/link[@href]/published
+              instead of item/title/link/pubDate. Include only AI/LLM entries.)
+            - interconnects.xml (Nathan Lambert — open-model / post-training)
+            - import_ai.xml (Jack Clark / Anthropic — frontier-lab essays)
+            - one_useful_thing.xml (Ethan Mollick — applied-AI essays)
 
             RSS XML structure:
             - channel/item/title (article title)
             - channel/item/link (article URL)
             - channel/item/pubDate (publication date)
             - channel/item/description (summary)
+            Atom (simonwillison.xml) structure:
+            - feed/entry/title, feed/entry/link[@href], feed/entry/published
 
             ## OUTPUT
 
@@ -165,6 +231,33 @@ jobs:
             - [Title](url) - date
 
             #### VentureBeat
+            - [Title](url) - date
+
+            #### Ars Technica
+            - [Title](url) - date
+
+            #### MIT Technology Review
+            - [Title](url) - date
+
+            #### The Decoder
+            - [Title](url) - date
+
+            #### MarkTechPost
+            - [Title](url) - date
+
+            ### 🧠 Expert Commentary
+
+            #### Simon Willison
+            - [Title](url) - date
+              > Brief summary
+
+            #### Interconnects (Nathan Lambert)
+            - [Title](url) - date
+
+            #### Import AI (Jack Clark)
+            - [Title](url) - date
+
+            #### One Useful Thing (Ethan Mollick)
             - [Title](url) - date
 
             ### 📄 New arXiv Papers
