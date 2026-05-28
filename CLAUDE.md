@@ -97,7 +97,7 @@ input).
 | `hourly-twitter.yml` | every 3h `:07` | `research/twitter/` + `research/summaries/` + Telegram headline alerts |
 | `hourly-twitter-deepseek-agentic.yml` | every 6h `:37` | `research/twitter-deepseek/` (DeepSeek V4 Pro via Anthropic shim, capped at 5 follow-up bird calls) |
 | `hourly-twitter-deepseek-pi.yml` | manual only | `research/twitter-deepseek-pi/` (A/B test using `pi-mono` harness) |
-| `2h-bluesky.yml` | daily `00:11` | `research/bluesky/` |
+| `2h-bluesky.yml` | twice daily `00:11`,`12:11` | `research/bluesky/` |
 | `4h-community.yml` | every 4h `:19` | `research/community/*-hn.md`, `*-reddit.md` |
 | `daily-arxiv.yml` | daily `06:13` | `research/arxiv/` |
 

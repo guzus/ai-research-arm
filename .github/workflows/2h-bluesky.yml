@@ -1,4 +1,4 @@
-name: Bluesky AI Researcher Feed (Daily)
+name: Bluesky AI Researcher Feed (Twice Daily)
 
 on:
   schedule:
