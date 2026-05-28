@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "name": "ARA Research Component Catalog",
+  "class_prefix": "ara-",
+  "allowed_tags": [
+    "article", "section", "div", "header", "footer",
+    "h2", "h3", "h4",
+    "p", "span", "em", "strong", "code", "mark", "sup", "sub", "abbr", "time",
+    "ul", "ol", "li", "dl", "dt", "dd",
+    "a", "img", "figure", "figcaption",
+    "table", "thead", "tbody", "tr", "th", "td",
+    "blockquote", "pre",
+    "br", "hr"
+  ],
+  "generation_contract": [
+    "Agents emit ARA DSL or structured intent that maps to this catalog; they must not invent raw HTML classes.",
+    "The compiler and writer validate the rendered fragment against this catalog before publishing.",
+    "Dashboard JavaScript may progressively enhance catalog primitives, but author HTML never includes script, style, iframe, svg, event handlers, or inline style."
+  ],
+  "components": [
+    {
+      "id": "document",
+      "category": "structure",
+      "intent": "Article root and logical section grouping.",
+      "classes": ["ara-doc", "ara-section"],
+      "default_when": "Every fragment article starts with ara-doc; use ara-section for grouped article sections.",
+      "example": "<article class=\"ara-doc\"><section class=\"ara-section\">...</section></article>"
+    },
+    {
+      "id": "title-block",
+      "category": "title",
+      "intent": "Article identity and opening framing.",
+      "classes": ["ara-eyebrow", "ara-display", "ara-deck", "ara-lede"],
+      "default_when": "Use display for the article title, deck for a concise thesis, and lede for the opening paragraph.",
+      "example": "frontmatter: title, deck, lede, eyebrow"
+    },
+    {
+      "id": "headings",
+      "category": "heading",
+      "intent": "Scannable hierarchy and deep-link anchors.",
+      "classes": ["ara-h2", "ara-h2-num", "ara-h3", "ara-h4", "ara-divider"],
+      "default_when": "Use numbered ara-h2 sections for the main argument, ara-h3/ara-h4 for subdivisions, and divider for strong breaks.",
+      "example": "## 01. Supply chain bottleneck"
+    },
+    {
+      "id": "callout",
+      "category": "content",
+      "intent": "Boxed aside for risk, confirmation, caveat, or methodology.",
+      "classes": ["ara-callout", "ara-callout-label"],
+      "variants": ["ara-callout--info", "ara-callout--success", "ara-callout--warn", "ara-callout--danger"],
+      "default_when": "Use sparingly for information that changes confidence or interpretation.",
+      "example": ":::callout(kind=warn, label=Risk)"
+    },
+    {
+      "id": "quote",
+      "category": "content",
+      "intent": "Pull quote with optional attribution.",
+      "classes": ["ara-quote", "ara-quote-attr"],
+      "default_when": "Use for one sentence worth slowing down for.",
+      "example": ":::quote(attr=\"Source\")"
+    },
+    {
+      "id": "figure",
+      "category": "media",
+      "intent": "Image, caption, and source credit.",
+      "classes": ["ara-figure", "ara-caption", "ara-caption-text", "ara-credit"],
+      "variants": ["ara-figure--inline", "ara-figure--wide", "ara-figure--bleed"],
+      "required_attrs": ["src", "alt"],
+      "default_when": "Use for cited visuals that help inspect the subject, not decoration.",
+      "example": ":::figure(src=\"https://example.com/chart.png\", alt=\"...\", caption=\"...\", credit=\"...\")"
+    },
+    {
+      "id": "key-value",
+      "category": "data",
+      "intent": "Compact facts and metadata.",
+      "classes": ["ara-kv"],
+      "default_when": "Use for company facts, paper metadata, or at-a-glance attributes.",
+      "example": ":::kv"
+    },
+    {
+      "id": "stats",
+      "category": "data",
+      "intent": "Headline numeric grid.",
+      "classes": ["ara-stats", "ara-stat", "ara-stat-label", "ara-stat-value", "ara-stat-unit", "ara-stat-note"],
+      "default_when": "Use for the 2-4 numbers the reader must remember.",
+      "example": "frontmatter stats: [{label, value, unit, note}]"
+    },
+    {
+      "id": "table",
+      "category": "data",
+      "intent": "Comparison or ranked tabular data.",
+      "classes": ["ara-table", "ara-row-highlight"],
+      "default_when": "Use when exact row/column comparison matters more than visual proportion.",
+      "example": "| Rank | Company | Share |"
+    },
+    {
+      "id": "compare",
+      "category": "data",
+      "intent": "Three-card min/max/subject comparison.",
+      "classes": ["ara-compare", "ara-compare-card", "ara-compare-role", "ara-compare-name", "ara-compare-value", "ara-stat-unit"],
+      "variants": ["ara-compare-card--subject"],
+      "default_when": "Use to show where the subject sits within a distribution.",
+      "example": ":::compare"
+    },
+    {
+      "id": "rank-list",
+      "category": "data",
+      "intent": "Dense ranked rows with proportional bars.",
+      "classes": ["ara-rank-list", "ara-rank-item", "ara-rank-num", "ara-rank-label", "ara-rank-value", "ara-rank-fill", "ara-row-highlight"],
+      "data_attrs": {"data-pct": "number 0..100"},
+      "default_when": "Use instead of a table for long ranked comparisons.",
+      "example": ":::rank-list"
+    },
+    {
+      "id": "bars",
+      "category": "visualization",
+      "intent": "Single-value proportional bars.",
+      "classes": ["ara-bars", "ara-bar", "ara-bar-label", "ara-bar-value"],
+      "data_attrs": {"data-pct": "number 0..100"},
+      "default_when": "Use for a short set of comparable percentages or normalized magnitudes.",
+      "example": ":::bars"
+    },
+    {
+      "id": "stack-bar",
+      "category": "visualization",
+      "intent": "One segmented proportional bar with legend.",
+      "classes": ["ara-stack-bar", "ara-stack-seg", "ara-stack-legend", "ara-stack-dot"],
+      "variants": ["ara-stack-seg--1", "ara-stack-seg--2", "ara-stack-seg--3", "ara-stack-seg--4", "ara-stack-seg--5", "ara-stack-seg--6", "ara-stack-dot--1", "ara-stack-dot--2", "ara-stack-dot--3", "ara-stack-dot--4", "ara-stack-dot--5", "ara-stack-dot--6"],
+      "data_attrs": {"data-pct": "number 0..100"},
+      "default_when": "Use for a single composition that sums to roughly 100.",
+      "example": ":::stack-bar"
+    },
+    {
+      "id": "stack-rows",
+      "category": "visualization",
+      "intent": "Many labeled segmented bars sharing one legend.",
+      "classes": ["ara-stack-rows", "ara-stack-rows-legend", "ara-stack-rows-cat", "ara-stack-rows-grid", "ara-stack-rows-row", "ara-stack-rows-label", "ara-stack-bar", "ara-stack-seg"],
+      "variants": ["ara-stack-rows-cat--1", "ara-stack-rows-cat--2", "ara-stack-rows-cat--3", "ara-stack-rows-cat--4", "ara-stack-rows-cat--5", "ara-stack-rows-cat--6"],
+      "default_when": "Use for categorical breakdowns across several entities.",
+      "example": ":::stack-rows"
+    },
+    {
+      "id": "sparkline",
+      "category": "visualization",
+      "intent": "Inline mini trend with tooltip.",
+      "classes": ["ara-sparkline"],
+      "data_attrs": {"data-points": "comma-separated numbers"},
+      "default_when": "Use inside prose for small directional trend context.",
+      "example": "{sparkline:5.2,5.4,5.5,6.1}"
+    },
+    {
+      "id": "line-chart",
+      "category": "visualization",
+      "intent": "Full SVG line chart generated by the dashboard runtime.",
+      "classes": ["ara-line-chart"],
+      "data_attrs": {
+        "data-series-1..6": "comma-separated numbers",
+        "data-series-1-label..6-label": "text",
+        "data-x-labels": "comma-separated labels",
+        "data-y-unit": "text",
+        "data-title": "text",
+        "data-subtitle": "text"
+      },
+      "default_when": "Use for time series or ordered numeric series.",
+      "example": ":::line-chart"
+    },
+    {
+      "id": "bar-chart",
+      "category": "visualization",
+      "intent": "Axis-bearing vertical or horizontal bar chart generated by the dashboard runtime.",
+      "classes": ["ara-bar-chart"],
+      "data_attrs": {
+        "data-categories": "comma-separated labels",
+        "data-series-1..6": "comma-separated numbers",
+        "data-orientation": "vertical|horizontal",
+        "data-mode": "grouped|stacked",
+        "data-unit": "text",
+        "data-value-suffix": "text"
+      },
+      "default_when": "Use when values need a real numeric axis rather than normalized data-pct bars.",
+      "example": ":::bar-chart"
+    },
+    {
+      "id": "donut",
+      "category": "visualization",
+      "intent": "Proportional ring with legend and segment tooltips.",
+      "classes": ["ara-donut"],
+      "data_attrs": {"data-labels": "comma-separated labels", "data-values": "comma-separated numbers", "data-center-label": "text"},
+      "default_when": "Use for part-of-whole composition with 3-7 segments.",
+      "example": ":::donut"
+    },
+    {
+      "id": "slope",
+      "category": "visualization",
+      "intent": "Two-period slopegraph with change tooltips.",
+      "classes": ["ara-slope"],
+      "data_attrs": {"data-items": "comma-separated labels", "data-left-values": "numbers", "data-right-values": "numbers"},
+      "default_when": "Use for before/after change across several entities.",
+      "example": ":::slope"
+    },
+    {
+      "id": "tradingview",
+      "category": "visualization",
+      "intent": "Live TradingView chart placeholder enhanced by the dashboard runtime.",
+      "classes": ["ara-tradingview", "ara-tradingview-fallback"],
+      "data_attrs": {"data-symbol": "EXCHANGE:TICKER", "data-interval": "token", "data-theme": "dark|light", "data-range": "token"},
+      "default_when": "Use only when live market data is more important than reproducible as-of-date data.",
+      "example": ":::tradingview(symbol=\"NASDAQ:NOW\")"
+    },
+    {
+      "id": "timeline",
+      "category": "data",
+      "intent": "Vertical chronological log.",
+      "classes": ["ara-timeline", "ara-timeline-item", "ara-timeline-date", "ara-timeline-event"],
+      "default_when": "Use when date order carries semantic weight.",
+      "example": ":::timeline"
+    },
+    {
+      "id": "isotype",
+      "category": "visualization",
+      "intent": "Repeated glyph count for ratio-at-a-glance comparison.",
+      "classes": ["ara-iso", "ara-iso-label", "ara-iso-glyphs", "ara-iso-total"],
+      "data_attrs": {"data-glyph": "single glyph or short text", "data-count": "integer 0..200"},
+      "default_when": "Use for small-count ratios where repeated marks are easier than charts.",
+      "example": ":::isotype"
+    },
+    {
+      "id": "inline",
+      "category": "inline",
+      "intent": "Inline emphasis, citations, chips, highlights, and status dots.",
+      "classes": ["ara-tag", "ara-cite", "ara-mark", "ara-accent", "ara-flag"],
+      "variants": ["ara-flag--green", "ara-flag--yellow", "ara-flag--red"],
+      "default_when": "Use to anchor entities, cite claims, flag state, or label topics inside prose.",
+      "example": "{accent}United States{/} [^1] {tag}cdn{/} {flag:green}"
+    }
+  ]
+}

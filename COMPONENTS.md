@@ -2,7 +2,7 @@
 
 Composable primitives for `kind: fragment` research articles in the Research tab.
 
-**Rule:** every class in an article must start with `ara-`. Every HTML tag must be in the allowlist. The writer (`scripts/write_generative_research.py`) parses the body at commit time and rejects violations. The dashboard ships the matching CSS at `dashboard/src/components/ara-research.css`.
+**Rule:** every class in an article must start with `ara-`. Every HTML tag must be in the allowlist. The writer (`scripts/write_generative_research.py`) parses the body at commit time and rejects violations. The machine-readable contract lives in [`ARA_CATALOG.json`](ARA_CATALOG.json); this document is the human reference. The dashboard ships the matching CSS at `dashboard/src/components/ara-research.css`.
 
 **Single source of truth (visual):** the "ARA Research Component Reference" article in the Research tab. It exercises every primitive. If a primitive renders wrong there, it renders wrong everywhere.
 
@@ -171,8 +171,10 @@ Inline `<code>` and `<pre><code>` need no class — they're styled automatically
 If a real article needs a shape no primitive covers, add a new `ara-*` class:
 
 1. Edit `dashboard/src/components/ara-research.css`.
-2. Document the new primitive in this file under the right section.
-3. Add an example usage to the Component Reference article (slug: `components`) so it's part of the visual regression.
-4. Push. Vercel rebuilds. The new primitive is available everywhere.
+2. Add the primitive to `ARA_CATALOG.json`.
+3. Document the new primitive in this file under the right section.
+4. Add an example usage to the Component Reference article (slug: `components`) so it's part of the visual regression.
+5. Run `uv run python scripts/ara_catalog.py`.
+6. Push. Vercel rebuilds. The new primitive is available everywhere.
 
 Each new primitive is a maintenance liability. Reach for an existing one before adding a new one.

@@ -57,6 +57,7 @@ def existing(path: str) -> Path | None:
 def collect_context_files(extra: list[str]) -> list[Path]:
     candidates: list[Path | None] = [
         existing("ARA_DSL.md"),
+        existing("ARA_CATALOG.json"),
         existing("COMPONENTS.md"),
         existing("docs/generative-research-backends.md"),
         existing("research/generative/index.json"),
@@ -122,8 +123,11 @@ Topic: {topic}
 Slug: {slug}
 Tags: {tags or "(none)"}
 
-Use the attached ARA_DSL.md and COMPONENTS.md exactly. Output must be valid
-.ara.md source, not raw HTML. The local checker will run:
+Use the attached ARA_DSL.md, ARA_CATALOG.json, and COMPONENTS.md exactly.
+Treat ARA_CATALOG.json as the machine-readable component contract: choose
+catalog primitives by intent, do not invent classes, and emit only ARA DSL
+that compiles to cataloged components. Output must be valid .ara.md source,
+not raw HTML. The local checker will run:
 
 uv run python scripts/check_generative_research.py "$DRAFT" --diversity-min 3 --callout-max 5 --strict-shape
 

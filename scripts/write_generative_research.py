@@ -31,6 +31,7 @@ from pathlib import Path
 
 # Local import — the compiler lives next door in scripts/.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from ara_catalog import catalog_classes, load_catalog  # noqa: E402
 from compile_ara import AraSyntaxError, compile_source, is_safe_image_src  # noqa: E402
 
 MAX_BODY_BYTES = 200_000
@@ -48,8 +49,8 @@ DISALLOWED_PATTERNS = [
     re.compile(r"javascript:", re.IGNORECASE),
 ]
 # Fragment articles must compose from this fixed tag set + the ara-* class
-# vocabulary defined in dashboard/src/components/ara-research.css. See
-# COMPONENTS.md for the human-readable reference.
+# vocabulary defined in ARA_CATALOG.json. See COMPONENTS.md for the
+# human-readable reference.
 FRAGMENT_ALLOWED_TAGS = frozenset([
     "article", "section", "div", "header", "footer",
     "h2", "h3", "h4",
@@ -61,9 +62,10 @@ FRAGMENT_ALLOWED_TAGS = frozenset([
     "br", "hr",
 ])
 FRAGMENT_CLASS_PREFIX = "ara-"
-# Canonical class vocabulary lives in COMPONENTS.md at repo root. Loaded
+# Canonical class vocabulary lives in ARA_CATALOG.json at repo root. Loaded
 # lazily on first validation so the test/CI paths can override the path.
 _VALID_CLASSES_CACHE: set[str] | None = None
+_ARA_CATALOG_PATH: Path | None = None
 _COMPONENTS_MD_PATH: Path | None = None
 
 
@@ -75,26 +77,36 @@ def _components_md_path() -> Path:
     return Path(__file__).resolve().parent.parent / "COMPONENTS.md"
 
 
+def _ara_catalog_path() -> Path:
+    if _ARA_CATALOG_PATH is not None:
+        return _ARA_CATALOG_PATH
+    return Path(__file__).resolve().parent.parent / "ARA_CATALOG.json"
+
+
 def load_valid_classes() -> set[str]:
-    """Parse COMPONENTS.md for every documented ara-* class (including
-    modifier forms like ara-callout--info). Cached after first call so
+    """Load every cataloged ara-* base class. Cached after first call so
     we don't re-read the file for every validated article in a batch.
 
     Raises loudly if the file is missing or no classes can be parsed.
-    Previously this returned an empty set, which caused the validator
-    to silently reject EVERY article with "undocumented class" — a
-    silent system failure when COMPONENTS.md was renamed/moved/corrupted.
+    COMPONENTS.md remains a fallback because some tests may override that
+    path directly, but the normal source of truth is ARA_CATALOG.json.
     """
     global _VALID_CLASSES_CACHE
     if _VALID_CLASSES_CACHE is not None:
         return _VALID_CLASSES_CACHE
+    catalog_path = _ara_catalog_path()
+    if catalog_path.exists():
+        _VALID_CLASSES_CACHE = catalog_classes(load_catalog(catalog_path))
+        return _VALID_CLASSES_CACHE
+
     md_path = _components_md_path()
     if not md_path.exists():
         raise RuntimeError(
-            f"COMPONENTS.md not found at {md_path}. The fragment validator "
-            f"parses the ara-* class vocabulary from this file; without it "
+            f"ARA_CATALOG.json not found at {catalog_path} and COMPONENTS.md "
+            f"not found at {md_path}. The fragment validator needs the ara-* "
+            f"class vocabulary; without it "
             f"every article would be rejected as 'undocumented class'. "
-            f"Restore the file or set _COMPONENTS_MD_PATH for tests."
+            f"Restore the catalog/reference or set _ARA_CATALOG_PATH/_COMPONENTS_MD_PATH for tests."
         )
     text = md_path.read_text(encoding="utf-8")
     # Only the component vocabulary table is authoritative. COMPONENTS.md
@@ -348,14 +360,14 @@ def validate_body(body: str, kind: str) -> None:
             uniq = sorted(set(parser.bad_tags))
             raise ValueError(
                 f"fragment uses disallowed tags: {uniq}. "
-                f"Allowed: {sorted(FRAGMENT_ALLOWED_TAGS)}. See COMPONENTS.md."
+                f"Allowed: {sorted(FRAGMENT_ALLOWED_TAGS)}. See ARA_CATALOG.json and COMPONENTS.md."
             )
         if parser.bad_classes:
             preview = ", ".join(f"<{t}> class={c!r}" for t, c in parser.bad_classes[:5])
             raise ValueError(
                 f"fragment uses non-{FRAGMENT_CLASS_PREFIX}* classes: {preview}. "
                 f"All class tokens must start with {FRAGMENT_CLASS_PREFIX!r}. "
-                f"See COMPONENTS.md for the vocabulary."
+                f"See ARA_CATALOG.json for the vocabulary."
             )
         if parser.unknown_ara:
             # Group by class so a single repeated mistake doesn't spam.
@@ -374,8 +386,8 @@ def validate_body(body: str, kind: str) -> None:
                 lines.append(f"  - {tok}{hint}")
             lines.extend([
                 "",
-                "Every ara-* class must be documented in COMPONENTS.md (or be "
-                "a modifier like ara-callout--info of a documented base).",
+                "Every ara-* class must be cataloged in ARA_CATALOG.json (or "
+                "be a modifier like ara-callout--info of a cataloged base).",
                 "Fix the body and re-run.",
             ])
             raise ValueError("\n".join(lines))
