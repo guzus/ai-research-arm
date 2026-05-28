@@ -57,6 +57,7 @@ and opens a PR with methodology fixes.
 | `check_model_tickets.py` | Validator for `research/models/tickets/*.md` against the schema in `docs/model-tickets.md`. The CRUD agent in `24h-model-timeline.yml` runs it after every pass; CI runs it on every PR. |
 | `check_wiki.py` | Validator for `research/wiki/` pages against the schema in `docs/wiki-schema.md`. `uv run python scripts/check_wiki.py` (exit 0 = safe); `--lint` adds advisory checks. The ingest agent in `wiki-ingest.yml` runs it until exit 0; CI runs it on every PR. |
 | `wiki_search.py` | Search wrapper over `research/wiki/` (`uv run python scripts/wiki_search.py "<query>"`). The ingest agent runs it before writing any page so it UPDATEs an existing page instead of duplicating. |
+| `check_lane_freshness.py` | Freshness watchdog. Measures git-commit recency per research lane against per-lane cadence thresholds; exits 2 (and emits a hooker/Telegram alert from `liveness-check.yml`) when a lane is stale. Stdlib-only so it runs on both runner tiers. |
 | `test_ara_dsl.py`, `test_dedupe_headline_alerts.py` | Pytest-style tests run in CI. |
 
 ## GitHub Actions Workflows
@@ -68,7 +69,7 @@ Workflows split between two runners:
   GitHub-hosted runners so they don't queue behind the single self-hosted
   job slot. Currently: `hourly-rss.yml`, `daily-arxiv.yml`,
   `2h-bluesky.yml`, `daily-improve.yml`, `claude-code-review.yml`,
-  `claude.yml`, `liveness-check.yml`.
+  `claude.yml`.
 - **`runs-on: [self-hosted, Linux]`** — workflows that genuinely need
   the self-hosted runner's persistent state (bird CLI + birdy daemon,
   LFS-hydrated `research/` checkout, Puppeteer/Chrome, large agent
@@ -77,6 +78,12 @@ Workflows split between two runners:
   `daily-front-page.yml`, `generative-research.yml`,
   `24h-model-timeline.yml`, `ai-news-research.yml`, `ci.yml`,
   `research-issue.yml`, `4h-community.yml`, `wiki-ingest.yml`.
+- **Both tiers** — `liveness-check.yml` (the freshness watchdog) runs one
+  job on each runner. No single runner survives both failure modes — an
+  `ubuntu-latest` billing/spending-limit block (kills the GitHub-hosted
+  tier) vs. a self-hosted outage — so the watchdog must run on both;
+  whichever tier is alive emits the hooker/Telegram alert. See the
+  workflow header for the rationale.
 
 Claude workflows use `anthropics/claude-code-action@v1` with the model
 passed via `claude_args: "--model opus"` (never as a separate `model:`

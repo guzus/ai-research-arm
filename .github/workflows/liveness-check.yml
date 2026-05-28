@@ -1,23 +1,29 @@
 name: Pipeline Liveness Check
 
-# Daily heartbeat that verifies each research subdirectory has produced a
-# file within the last 48h. Designed to make silent pipeline outages loud:
-# audit found research/rss/ went 20 days stale with zero alarm.
+# Freshness watchdog that makes silent pipeline outages loud. For each
+# scheduled research lane it measures git-commit recency against a per-lane
+# cadence threshold (see scripts/check_lane_freshness.py) and, on staleness,
+# alerts via hooker (relays to Telegram) AND fails the job.
 #
-# Uses GitHub-hosted ubuntu-latest (not the self-hosted runner) so this
-# check still fires even when the self-hosted runner is down — which is
-# precisely the failure mode we need to catch.
+# Two-tier by design. No single runner survives both failure modes:
+#   - A GitHub Actions billing/spending-limit block kills *ubuntu-latest*
+#     (the job never even starts) — this is what silently froze rss/twitter/
+#     arxiv/bluesky for 2+ days with zero alarm, because the previous
+#     ubuntu-only watchdog was killed by the same block.
+#   - A self-hosted runner outage kills the *self-hosted* tier.
+# So we run the identical check on BOTH tiers: whichever tier is alive does
+# the alerting. The alert goes out over hooker (an external endpoint), NOT via
+# GitHub's native workflow-failure email — that email requires the job to run,
+# which is exactly what a billing block prevents.
 #
-# Failure surface: on staleness this workflow exits non-zero. GitHub's
-# native workflow-failure email/notification is the alert. Deliberately
-# NOT using `gh issue create` to avoid spamming the repo with duplicate
-# issues every day until the underlying pipeline is fixed.
+# Alerts dedupe via a per-day Idempotency-Key over the stale set, so the two
+# jobs (and repeat runs) collapse to one Telegram message per stale set per day.
 
 on:
   schedule:
-    # Daily at 12:00 UTC (12 hours after midnight pipelines run, giving
-    # them plenty of room to publish before we check).
-    - cron: '0 12 * * *'
+    # Every 6h: catches an hourly lane (rss) within ~6h instead of the old
+    # 48h-and-no-alert. Self-hosted cost is a few seconds per run.
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -25,88 +31,38 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check:
+  # ubuntu-latest: survives a self-hosted runner outage.
+  ubuntu:
+    name: Freshness (ubuntu-latest)
     runs-on: ubuntu-latest
     permissions:
       contents: read
-
     steps:
-      - name: Checkout repository
+      - name: Checkout (full history, no LFS blobs)
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0   # git log needs full history; depth:1 breaks it
+          lfs: false       # we only read commit metadata, not file contents
+      - name: Check freshness + alert on staleness
+        uses: ./.github/actions/lane-freshness-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
 
-      - name: Check freshness of each research subdir
-        run: |
-          set -uo pipefail
-
-          # Filenames carry the canonical date as a YYYY-MM-DD prefix
-          # (e.g. 2026-05-17.md, 2026-05-17-reddit.md, 2026-05-17-papers.md).
-          # We parse the filename, not the file mtime, because git checkout
-          # rewrites mtimes to the checkout time — making mtime useless for
-          # measuring pipeline output freshness.
-
-          today_epoch=$(date -u +%s)
-          # Threshold in seconds, not days, to avoid the truncation bug where
-          # `(now - newest) / 86400` reports `2` for anything in the 48h..72h
-          # window — which would silently let a 60h-stale subdir pass an
-          # "alert above 48h" check until it crossed 72h.
-          max_age_seconds=$(( 48 * 3600 ))
-          fail=0
-          report=""
-
-          subdirs="rss twitter bluesky community arxiv digest"
-
-          for sub in $subdirs; do
-            dir="research/$sub"
-            if [ ! -d "$dir" ]; then
-              report="${report}MISSING DIR: $dir\n"
-              fail=1
-              continue
-            fi
-
-            # Extract YYYY-MM-DD prefix from each filename, take the max.
-            # `grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}'` skips files that
-            # don't start with a date (subdirs, READMEs, etc.).
-            newest_date=$(
-              ls -1 "$dir" 2>/dev/null \
-                | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}' \
-                | sort -u \
-                | tail -1
-            )
-
-            if [ -z "$newest_date" ]; then
-              report="${report}EMPTY: $dir (no date-prefixed files found)\n"
-              fail=1
-              continue
-            fi
-
-            # GNU date on ubuntu-latest. Convert YYYY-MM-DD to epoch.
-            newest_epoch=$(date -u -d "${newest_date}T00:00:00Z" +%s 2>/dev/null || echo 0)
-            if [ "$newest_epoch" -eq 0 ]; then
-              report="${report}PARSE ERROR: $dir (newest=$newest_date)\n"
-              fail=1
-              continue
-            fi
-
-            age_seconds=$(( today_epoch - newest_epoch ))
-            age_hours=$(( age_seconds / 3600 ))
-
-            if [ "$age_seconds" -gt "$max_age_seconds" ]; then
-              report="${report}STALE: $dir -- newest file dated $newest_date (${age_hours}h old, max 48h)\n"
-              fail=1
-            else
-              echo "OK: $dir -- newest $newest_date (${age_hours}h old)"
-            fi
-          done
-
-          if [ "$fail" -ne 0 ]; then
-            echo ""
-            echo "::error::Pipeline liveness check FAILED -- one or more research subdirs are stale."
-            echo ""
-            printf "%b" "$report"
-            echo ""
-            echo "Investigate the corresponding workflow(s) on the self-hosted runner."
-            exit 1
-          fi
-
-          echo ""
-          echo "All research subdirs are fresh."
+  # self-hosted: survives an ubuntu-latest billing/spending-limit block.
+  self-hosted:
+    name: Freshness (self-hosted)
+    runs-on: [self-hosted, Linux]
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout (full history, no LFS blobs)
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          lfs: false
+      - name: Check freshness + alert on staleness
+        uses: ./.github/actions/lane-freshness-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}

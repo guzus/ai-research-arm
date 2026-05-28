@@ -1,0 +1,91 @@
+name: Lane freshness alert
+description: >-
+  Check research-lane freshness (git-commit recency vs per-lane cadence) and,
+  on staleness, alert via hooker (relays to Telegram) and fail the job. Stdlib
+  Python only, so it runs identically on ubuntu-latest and the self-hosted
+  runner. Intended to be invoked from both tiers so the watchdog survives
+  whichever tier an outage takes down.
+
+inputs:
+  hooker_url:
+    description: Hooker base URL (e.g. https://hooker.guzus.xyz). Alert is skipped if empty.
+    required: false
+    default: ""
+  hooker_token:
+    description: Hooker bearer token. Alert is skipped if empty.
+    required: false
+    default: ""
+  topic:
+    description: Hooker topic that relays to Telegram.
+    required: false
+    default: ara-research
+
+runs:
+  using: composite
+  steps:
+    # The script writes stale / stale_lanes / idempotency_key / report to
+    # $GITHUB_OUTPUT (registered as this step's outputs) and a table to the
+    # job step summary. `|| true` keeps this step green so the alert step can
+    # still fire on staleness; the explicit "Fail if stale" step sets the
+    # job's final red status. (Avoids relying on composite continue-on-error.)
+    - name: Check lane freshness
+      id: check
+      shell: bash
+      run: python3 scripts/check_lane_freshness.py || true
+
+    # Loud alert that reaches a human. Idempotency-Key is a per-day hash over
+    # the stale set, so the ubuntu-latest and self-hosted jobs (and repeat runs
+    # the same day) collapse to a single delivered message; a change in the
+    # stale set produces a new key and re-alerts.
+    - name: Alert via hooker (relays to Telegram)
+      if: steps.check.outputs.stale == 'true'
+      shell: bash
+      continue-on-error: true
+      env:
+        HOOKER_URL: ${{ inputs.hooker_url }}
+        HOOKER_TOKEN: ${{ inputs.hooker_token }}
+        TOPIC: ${{ inputs.topic }}
+        STALE_LANES: ${{ steps.check.outputs.stale_lanes }}
+        IDEMPOTENCY_KEY: ${{ steps.check.outputs.idempotency_key }}
+        REPO: ${{ github.repository }}
+        SERVER: ${{ github.server_url }}
+      run: |
+        set -euo pipefail
+        if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+          echo "Hooker credentials missing — skipping alert (staleness still fails the job)"
+          exit 0
+        fi
+        count=$(printf '%s' "$STALE_LANES" | tr ',' '\n' | grep -c . || true)
+        # Lane names come from a controlled allowlist, but escape defensively
+        # since the body uses parse_mode:HTML.
+        SAFE_LANES=$(printf '%s' "$STALE_LANES" \
+          | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
+        TEXT=$(printf 'Stale lanes: %s\n\nThese research lanes have not committed within their expected cadence — likely a workflow outage. Check the GitHub Actions billing/spending limit and the self-hosted runner.' "$SAFE_LANES")
+        ACTIONS_URL="${SERVER%/}/${REPO}/actions/workflows/liveness-check.yml"
+        jq -n \
+          --arg title "🚨 ARA pipeline: ${count} lane(s) stale" \
+          --arg text "$TEXT" \
+          --arg btn "Investigate (Actions)" \
+          --arg url "$ACTIONS_URL" \
+          '{
+            title: $title,
+            text: $text,
+            priority: 5,
+            tags: ["ara", "alert", "liveness"],
+            parse_mode: "HTML",
+            reply_markup: { inline_keyboard: [[{ text: $btn, url: $url }]] }
+          }' > "${RUNNER_TEMP:-/tmp}/hooker-lane-freshness.json"
+        curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/${TOPIC}" \
+          -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+          -H "Content-Type: application/json" \
+          -H "Idempotency-Key: ${IDEMPOTENCY_KEY}" \
+          --data-binary "@${RUNNER_TEMP:-/tmp}/hooker-lane-freshness.json"
+
+    - name: Fail if stale
+      if: steps.check.outputs.stale == 'true'
+      shell: bash
+      env:
+        STALE_LANES: ${{ steps.check.outputs.stale_lanes }}
+      run: |
+        echo "::error::stale lanes: ${STALE_LANES}"
+        exit 1
