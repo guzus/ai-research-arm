@@ -1,0 +1,14 @@
+Daily AI Digest - 2026-05-28
+
+TOP STORIES:
+• Cognition AI closes $1B at $26B post — Devin maker 2.55x its Sep-2025 mark; $492M ARR (~13x YoY); 89% of its own code now written by Devin
+• Anthropic Glasswing update: Claude Mythos surfaced 10,000+ high/critical vulns in 1 month (incl. 27-yr-old OpenBSD bug); stays gated
+• Altman walks back "white-collar jobs apocalypse" — "I'm delighted to be wrong" — cleanest CEO reversal yet
+
+KEY NUMBERS:
+• Fireworks AI: ~$15B talks (~3.75x its Oct-2025 mark); Index co-lead
+• Heretic tool strips guardrails from Llama 3.3 / Gemma 3 in <10 min; ~13M downloads
+
+TRENDING: "I'm Tired of Talking to AI" — 1,628 pts on HN; AI content-fatigue tops the day
+
+Full digest on GitHub.
