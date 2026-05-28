@@ -28,7 +28,10 @@ Thumbs.db
 *~
 
 # --- Local AI agent tools (not tracked, not shareable) ---
-.agents/
+.agents/*
+!.agents/
+!.agents/commands/
+!.agents/commands/*.md
 .gstack/
 AGENTS.md
 

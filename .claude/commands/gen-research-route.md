@@ -54,6 +54,15 @@ Runtime is typically 20–45 min depending on topic complexity.
    switching `-f backend=deepseek-v4-pro` instead. Otherwise default
    to `claude`.
 
+   If the user's entire argument is a Twitter/X status URL, prefer the
+   dedicated Twitter-seed input instead of stuffing the URL into `topic`:
+
+   ```bash
+   gh workflow run generative-research.yml \
+     -f twitter_url="$ARGUMENTS" \
+     -f backend=claude
+   ```
+
 3. **Wait a few seconds for the run to register, then look it up.**
    GitHub takes a moment to enqueue dispatched runs:
 

@@ -119,15 +119,30 @@ gantt
 | `ai-news-research.yml` | Twice daily (08:23, 20:23 UTC) | Perplexity/Exa MCP | `research/` |
 | `daily-improve.yml` | Daily 00:17 UTC | Self-improvement | PRs with improvements |
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
-| `generative-research.yml` | On `gen-research` issue label or `workflow_dispatch` | Claude or DeepSeek writes an HTML article | `research/generative/` |
+| `generative-research.yml` | On `gen-research` issue label or `workflow_dispatch` (`topic` or `twitter_url`) | Claude or DeepSeek writes an HTML article | `research/generative/` |
 
 Dashboard deploys are handled by **Vercel's git integration**, not a workflow file — every push to `main` triggers a build automatically.
 
-`generative-research.yml` defaults to **DeepSeek V4 Pro** for new manual,
-issue-triggered, and auto-dispatched runs. Use `backend=claude` for the
-Claude Opus 4.7 baseline, or `backend=deepseek-v4-pro` for the explicit
-DeepSeek path. See [Generative Research Backends](docs/generative-research-backends.md)
+`generative-research.yml` defaults to **Claude Opus 4.7** for new manual,
+issue-triggered, and auto-dispatched runs. Use `backend=deepseek-v4-pro`
+for the DeepSeek V4 Pro comparison path. See
+[Generative Research Backends](docs/generative-research-backends.md)
 for the exact env mapping and comparison commands.
+
+Twitter-seeded generative research is a first-class manual primitive:
+dispatch the workflow with only a tweet/status URL and it will read the
+tweet/thread with bird, infer the research question, verify claims
+against primary sources, and publish the article through the same
+`research/generative/` writer path:
+
+```bash
+gh workflow run generative-research.yml \
+  -f twitter_url="https://x.com/<handle>/status/<id>" \
+  -f backend=claude
+```
+
+Claude command: `/gen-research-tweet <twitter-or-x-status-url>`.
+Agents command: `.agents/commands/gen-research-tweet.md`.
 
 For a concise framework on which AI industry areas matter most, see
 [AI Industry Map](docs/ai-industry-map.md).

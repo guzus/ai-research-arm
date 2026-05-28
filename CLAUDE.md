@@ -108,7 +108,7 @@ input).
 | Workflow | Trigger | Output |
 |---|---|---|
 | `daily-front-page.yml` | daily `00:30` (after digest) | `research/front-page/YYYY-MM-DD-front-page.png` |
-| `generative-research.yml` | `gen-research` issue label or `workflow_dispatch` | `research/generative/*.{html,ara.md}` + `index.json` |
+| `generative-research.yml` | `gen-research` issue label or `workflow_dispatch` with `topic` or `twitter_url` | `research/generative/*.{html,ara.md}` + `index.json` |
 | `research-issue.yml` | issue labeled `research` | `research/issues/{issue-number}-research.md` |
 
 ### Meta (CI, code-review, self-improvement)
@@ -135,6 +135,28 @@ opus everywhere.
 
 Backend selection details, env-var mapping, and comparison commands:
 `docs/generative-research-backends.md`.
+
+### Twitter-Seeded Generative Research
+
+`generative-research.yml` accepts `twitter_url` as a standalone
+`workflow_dispatch` input. When set, `topic` is optional. The workflow
+stages the URL in `.gen-input/twitter_url.txt`; the agent must read the
+tweet/thread with `bird read` and `bird thread`, infer the underlying
+research question, treat the tweet as primary evidence only for what the
+author said, and verify the underlying claims against independent
+primary sources before writing the article.
+
+Command entry points:
+
+```bash
+/gen-research-tweet https://x.com/<handle>/status/<id>
+```
+
+```bash
+gh workflow run generative-research.yml \
+  -f twitter_url="https://x.com/<handle>/status/<id>" \
+  -f backend=claude
+```
 
 ## Output Locations
 
