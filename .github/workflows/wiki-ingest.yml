@@ -84,6 +84,23 @@ jobs:
       # of expected runs without leaving a quietly-hung job to chew runner
       # time forever.
       #
+      # --max-turns 80 (was 50): the lane is a strict superset of the
+      # 24h-model-timeline CRUD loop (which runs at 60). Per significant
+      # subject this agent spends ~3+ turns — wiki_search (Bash) -> read the
+      # matched page (Read) -> Edit — BEFORE the per-run index.md + log.md
+      # writes, the build_wiki_index.py regen, and the
+      # "iterate check_wiki until exit 0" validate loop. On a real digest
+      # (10-25 KB, a dozen-plus subjects) 50 turns was exhausted mid-pass and
+      # the agent died with the SDK error "Reached maximum number of turns
+      # (50)" BEFORE STEP 6's commit — so nothing was ever committed and the
+      # lane sat frozen at its 2026-05-24 seed (see PR diagnosis). 80 gives
+      # the validate-fix loop real headroom while staying well inside the
+      # 90-min wall clock; we stop short of generative-research's 120 because
+      # this agent only edits short markdown pages (no long-form article) and
+      # over-provisioning turns on the ephemeral runner invites runaway/OOM.
+      # The prompt now also bounds work per run and commits a valid PARTIAL
+      # pass rather than racing the cap to zero with an empty tree.
+      #
       # continue-on-error keeps the runner alive past a Claude failure so
       # the "Inspect Claude outcome" step below can decide what to surface
       # to job.status (and so hooker-telemetry's `if: always()` step still
@@ -101,7 +118,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --max-turns 50 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),WebSearch,Task,TodoWrite"
+            --model opus --max-turns 80 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),WebSearch,Task,TodoWrite"
           prompt: |
             You maintain the LLM Wiki: a compounding, interlinked knowledge
             base of markdown pages at research/wiki/. One page per
@@ -158,13 +175,36 @@ jobs:
               or corroborate a single specific claim — never as a general
               research pass.
 
-            STEP 2 — EXTRACT SIGNIFICANT SUBJECTS.
+            STEP 2 — EXTRACT SIGNIFICANT SUBJECTS (AND BOUND THE SET).
               From the curated input, pull the entities (companies, models,
               people, products), concepts (techniques, architectures,
               benchmarks, ideas), and themes (ongoing storylines, trends)
               that are genuinely significant today. A passing mention is not
               a page. Favor depth on the day's real developments over
               breadth.
+
+              You have a finite turn budget and EACH subject costs several
+              turns (search + read + edit). Rank the subjects by significance
+              and cap this pass: handle AT MOST the top ~8 subjects (prefer
+              updating existing pages — that is cheaper and is the default —
+              over minting new ones). The wiki compounds daily; anything you
+              skip today gets picked up the next run. Do NOT attempt to cover
+              every subject in one pass — that is exactly what exhausted the
+              turn budget before the commit and left the lane frozen. A small,
+              valid, COMMITTED pass beats an ambitious one that dies with
+              nothing on disk.
+
+            TURN-BUDGET DISCIPLINE (read before STEP 3).
+              Treat STEP 5b + STEP 6 (regenerate index.json, then commit) as a
+              checkpoint you MUST reach with turns to spare — not an
+              afterthought. As you work, keep a rough count of turns used. If
+              you sense you are running low (e.g. past ~60 turns) before
+              you've finished every intended subject, STOP starting new
+              subjects, finish whatever page you are mid-edit on, then jump
+              straight to STEP 4 → 5 → 5b → 6 and COMMIT what you have.
+              Committing a validator-clean partial pass is success; running
+              out of turns mid-edit with an uncommitted tree is the failure
+              this lane has been hitting. When in doubt, commit early.
 
             STEP 3 — FOR EACH SUBJECT, SEARCH FIRST, THEN CRUD.
               This is the core dedup discipline. For every subject, BEFORE
@@ -219,6 +259,13 @@ jobs:
 
               (`git add research/wiki/` includes the regenerated index.json.)
               Do NOT run `git push`. A later workflow step publishes.
+
+              This commit is the WHOLE POINT of the run. Always reach it,
+              even after a deliberately bounded/partial pass (see STEP 2 and
+              the turn-budget discipline). The only acceptable "No changes"
+              outcome is when the digest genuinely contained nothing new for
+              the wiki — never because you ran out of turns before getting
+              here.
 
             CONSTRAINTS
               - The validator is the contract enforcer; treat docs/wiki-schema.md
