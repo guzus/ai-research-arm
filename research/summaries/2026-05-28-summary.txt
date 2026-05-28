@@ -1,0 +1,15 @@
+AI News - 2026-05-28
+
+TOP STORIES:
+• Meta launches paid AI subs: Meta One Plus $7.99/mo, Premium $19.99/mo (Singapore/Guatemala/Bolivia first).
+• Anthropic opens Milan office (6th in EU); EMEA revenue +9x YoY.
+• OpenAI + Thrive ship Codex tax agent at 97% accuracy; Codex Goal Mode now GA.
+• Tensormesh $20M from AMD+CoreWeave+NVIDIA — KV-cache inference, up to 10x cost cut.
+• RevEng.AI $15M Series A led by NATO Innovation Fund — binary-level AI supply-chain security.
+• TechCrunch reveals Apple standalone Siri app: chat history, file upload, Gemini-powered Spotlight.
+
+KEY NUMBERS:
+• OpenAI/Thrive: 7,000 returns, -33% prep time, +50% throughput.
+• Slamcore $14M (Rockwell, Toyota) — 30+ facilities live.
+
+Full report on GitHub.
