@@ -96,6 +96,12 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Setup uv
+        if: steps.check.outputs.exists == 'true'
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
       # Install Chromium dependencies and puppeteer
       - name: Install Chromium system dependencies
         if: steps.check.outputs.exists == 'true'
@@ -121,14 +127,18 @@ jobs:
         if: steps.check.outputs.exists == 'true'
         run: cd /tmp && npm install @resvg/resvg-js@2.6.2
 
-      # Render deterministic newspaper-style PNG from the digest. This keeps
-      # front-page generation independent of external model latency and makes
-      # backfills reliable.
-      - name: Generate front page PNG
+      # Render deterministic newspaper artifacts from the digest. The PNG stays
+      # as the shareable image; the .ara.md source is compiled into the
+      # interactive dashboard edition by the newspaper target of the ARA compiler.
+      - name: Generate front page artifacts
         if: steps.check.outputs.exists == 'true'
         run: |
           mkdir -p research/front-page
           node scripts/render_front_page.mjs "${{ steps.date.outputs.date }}" "research/front-page/${{ steps.date.outputs.date }}-front-page.png"
+          node scripts/render_front_page.mjs "${{ steps.date.outputs.date }}" "research/front-page/${{ steps.date.outputs.date }}-front-page.ara.md"
+          uv run python scripts/compile_ara.py --target newspaper \
+            "research/front-page/${{ steps.date.outputs.date }}-front-page.ara.md" \
+            --out "research/front-page/${{ steps.date.outputs.date }}-front-page.html"
 
       # Update README front page image link
       - name: Update README with latest front page
@@ -172,7 +182,11 @@ jobs:
           # existing PNGs into LFS pointers in one commit — exactly the
           # "Phase 1 only" violation this PR promises to defer to a manual
           # `git lfs migrate import` runbook.
-          git add "research/front-page/${TODAY}-front-page.png" README.md
+          git add \
+            "research/front-page/${TODAY}-front-page.png" \
+            "research/front-page/${TODAY}-front-page.ara.md" \
+            "research/front-page/${TODAY}-front-page.html" \
+            README.md
           if git diff --cached --quiet; then
             echo "Nothing to commit"
           else

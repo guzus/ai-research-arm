@@ -7,12 +7,29 @@ from contextlib import redirect_stderr, redirect_stdout
 from io import StringIO
 from pathlib import Path
 
+import ara_catalog
 import compile_ara
 import write_generative_research as writer
 
 
 def compile_ok(body: str) -> str:
     return compile_ara.compile_source(body)
+
+
+def compile_newspaper_ok(body: str) -> str:
+    return compile_ara.compile_source(body, target="newspaper")
+
+
+class AraCatalogTest(unittest.TestCase):
+    def test_catalog_matches_component_reference_classes(self):
+        self.assertEqual([], ara_catalog.validate_catalog_against_components())
+
+    def test_writer_loads_classes_from_catalog(self):
+        writer._VALID_CLASSES_CACHE = None
+        classes = writer.load_valid_classes()
+        self.assertIn("ara-doc", classes)
+        self.assertIn("ara-bar-chart", classes)
+        self.assertNotIn("ara-grid", classes)
 
 
 class AraDslTest(unittest.TestCase):
@@ -214,6 +231,62 @@ Space: 0, 0, 3.0, 0.6
         self.assertIn('data-series-2="0,0,3,0.6"', html)
         self.assertIn('data-unit="$"', html)
         self.assertIn('data-value-suffix="B"', html)
+
+    def test_newspaper_target_emits_interactive_components(self):
+        html = compile_newspaper_ok(
+            """---
+title: THE AGI AWARENESS POST
+date: May 28, 2026
+edition: All Sources Edition
+volume: 2026
+number: 149
+---
+
+:::paper-index
+- {label: Lead, target: "#lead-top"}
+- {label: Signals, target: "#meter-signals"}
+:::
+
+:::lead(id="lead-top", label="Top Story", title="Models move into production")
+The day opens with ==production AI== pressure across labs.
+:::
+
+:::briefs(title="Breaking", columns=2)
+- {headline: New model ships, tag: Models, body: Early customers report lower latency.}
+- {headline: Regulator opens inquiry, tag: Policy}
+:::
+
+:::news-meter(id="meter-signals", title="Signal Mix")
+- {label: Breaking, value: 75, display: "3 items", tone: hot}
+- {label: Research, value: 40, max: 80, display: "2 papers", tone: research}
+:::
+
+:::story-deck(title="Departments")
+- {headline: Models & Systems, summary: Release notes and benchmarks., meta: "3 items", tone: watch}
+:::
+"""
+        )
+        self.assertIn('class="ara-paper"', html)
+        self.assertIn('class="ara-paper-toggle"', html)
+        self.assertIn('aria-expanded="true"', html)
+        self.assertIn('class="ara-paper-brief"', html)
+        self.assertIn('class="ara-paper-meter-fill" data-pct="75"', html)
+        self.assertIn('class="ara-paper-meter-fill" data-pct="50"', html)
+        self.assertIn('class="ara-paper-story ara-paper-story--watch"', html)
+        self.assertNotIn('class="ara-doc"', html)
+
+    def test_newspaper_meter_rejects_out_of_range_values(self):
+        with self.assertRaisesRegex(compile_ara.AraSyntaxError, "0-100 percent"):
+            compile_newspaper_ok(
+                """---
+title: Bad Paper
+---
+
+:::news-meter(title="Signals")
+- {label: Broken, value: 101}
+:::
+"""
+            )
 
     def test_bar_chart_horizontal_diverging_keeps_negative(self):
         html = compile_ok(

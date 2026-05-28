@@ -123,6 +123,11 @@ type Manifest = {
   audio: string[];
   generative: GenResearchRow[];
 };
+type FrontPageAsset = {
+  url: string;
+  html: string | null;
+  fallback: string | null;
+};
 type TwitterStory = {
   rank: string;
   title: string;
@@ -324,9 +329,25 @@ function applyRoute(): boolean {
 
 function syncTabUi(): void {
   document.querySelectorAll('.tab').forEach((b) => {
-    b.classList.toggle('active', (b as HTMLElement).dataset.tab === activeTab);
+    const tabButton = b as HTMLElement;
+    const isActive = tabButton.dataset.tab === activeTab;
+    tabButton.classList.toggle('active', isActive);
   });
+  const activeTabButton = document.querySelector<HTMLElement>('.tab.active');
+  if (activeTabButton) {
+    const activeButton = activeTabButton;
+    const revealActiveTab = () => {
+      const tabs = document.getElementById('tabs');
+      if (!tabs) return;
+      const target =
+        activeButton.offsetLeft - (tabs.clientWidth - activeButton.offsetWidth) / 2;
+      tabs.scrollLeft = Math.max(0, target);
+    };
+    requestAnimationFrame(revealActiveTab);
+    window.setTimeout(revealActiveTab, 120);
+  }
   document.body.classList.toggle('tab-research', activeTab === 'research');
+  document.body.classList.toggle('tab-frontpage', activeTab === 'frontpage');
   // Models tab shows the ticket grid (no date routing); the calendar
   // would just be dead UI on this tab. Same toggle pattern as research.
   document.body.classList.toggle('tab-models', activeTab === 'models');
@@ -682,8 +703,8 @@ function setSafeContent(el: HTMLElement, rawHtml: string): void {
   while (el.firstChild) el.removeChild(el.firstChild);
   const clean = DOMPurify.sanitize(rawHtml, {
     USE_PROFILES: { html: true, svg: true, svgFilters: true },
-    ADD_TAGS: ['mark', 'article', 'figure', 'figcaption', 'iframe', 'audio'],
-    ADD_ATTR: ['data-slug', 'data-pct', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'sandbox', 'loading', 'allow', 'decoding', 'referrerpolicy', 'controls', 'preload', 'src'],
+    ADD_TAGS: ['mark', 'article', 'figure', 'figcaption', 'iframe', 'audio', 'nav', 'section', 'details', 'summary'],
+    ADD_ATTR: ['id', 'href', 'type', 'data-slug', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-expanded', 'aria-controls', 'sandbox', 'loading', 'allow', 'decoding', 'referrerpolicy', 'controls', 'preload', 'src'],
   });
   el.insertAdjacentHTML('beforeend', clean);
 }
@@ -1019,17 +1040,44 @@ async function fetchFrontPage(dateStr: string, signal: AbortSignal): Promise<str
   }
 }
 
+async function fetchFrontPageHtml(dateStr: string, signal: AbortSignal): Promise<string | null> {
+  const url = `${DATA_BASE}/front-page/${dateStr}-front-page.html`;
+  try {
+    const resp = await fetch(url, { signal, cache: 'no-cache' });
+    if (!resp.ok) return null;
+    const text = await resp.text();
+    if (isViteAppShell(text) || !text.includes('class="ara-paper"')) return null;
+    return text;
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') return null;
+    return null;
+  }
+}
+
+async function fetchFrontPageAsset(dateStr: string, signal: AbortSignal): Promise<FrontPageAsset | null> {
+  const [url, html] = await Promise.all([
+    fetchFrontPage(dateStr, signal),
+    fetchFrontPageHtml(dateStr, signal),
+  ]);
+  if (!url && !html) return null;
+  return {
+    url: url || `${DATA_BASE}/front-page/${dateStr}-front-page.png`,
+    html,
+    fallback: null,
+  };
+}
+
 async function findFrontPageAtOrBefore(
   targetDateStr: string,
   signal: AbortSignal,
-): Promise<{ url: string; date: string } | null> {
+): Promise<FrontPageAsset | null> {
   const candidates = (manifestDates('frontpage') ?? [])
     .filter((date) => date <= targetDateStr)
     .sort()
     .reverse();
   for (const date of candidates) {
-    const url = await fetchFrontPage(date, signal);
-    if (url) return { url, date };
+    const asset = await fetchFrontPageAsset(date, signal);
+    if (asset) return { ...asset, fallback: date === targetDateStr ? null : date };
   }
   return null;
 }
@@ -2164,9 +2212,50 @@ function renderTickets(tickets: Ticket[] | null): void {
   );
 }
 
-function renderFrontPage(imageUrl: string, fallbackDate: string | null): void {
-  const noteHtml = fallbackDate
-    ? '  <div class="frontpage-fallback-note">Today’s front page auto-generates at 00:30 UTC. Showing ' + escapeHtml(fallbackDate) + ' instead.</div>'
+function frontPageBodyHtml(frontPage: FrontPageAsset): string {
+  if (frontPage.html) {
+    return [
+      '  <div class="content-card-body frontpage-body frontpage-body-interactive">',
+      frontPage.html,
+      '  </div>',
+    ].join('\n');
+  }
+  return [
+    '  <div class="content-card-body frontpage-body">',
+    '    <img class="frontpage-img" src="' + escapeHtml(frontPage.url) + '" alt="Front Page" />',
+    '  </div>',
+  ].join('\n');
+}
+
+function enhanceNewspaper(root: ParentNode = content): void {
+  const papers = root.querySelectorAll<HTMLElement>('article.ara-paper');
+  for (const paper of papers) {
+    applyBarFills(paper);
+    wrapAraTables(paper);
+    renderSparklines(paper);
+    renderLineCharts(paper);
+    renderDonuts(paper);
+    renderSlopes(paper);
+    renderTradingView(paper);
+    renderBarCharts(paper);
+    const toggles = paper.querySelectorAll<HTMLButtonElement>('.ara-paper-toggle');
+    for (const toggle of toggles) {
+      if (toggle.dataset.bound === 'true') continue;
+      toggle.dataset.bound = 'true';
+      const controlledId = toggle.getAttribute('aria-controls');
+      const panel = controlledId ? paper.querySelector<HTMLElement>('#' + CSS.escape(controlledId)) : null;
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') !== 'false';
+        toggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        if (panel) panel.hidden = expanded;
+      });
+    }
+  }
+}
+
+function renderFrontPage(frontPage: FrontPageAsset): void {
+  const noteHtml = frontPage.fallback
+    ? '  <div class="frontpage-fallback-note">Today’s front page auto-generates at 00:30 UTC. Showing ' + escapeHtml(frontPage.fallback) + ' instead.</div>'
     : '';
   setSafeContent(
     content,
@@ -2176,18 +2265,17 @@ function renderFrontPage(imageUrl: string, fallbackDate: string | null): void {
       '    <div class="content-card-title">THE AGI AWARENESS POST — ' + escapeHtml(displayDate(currentDate)) + '</div>',
       '  </div>',
       noteHtml,
-      '  <div class="content-card-body frontpage-body">',
-      '    <img class="frontpage-img" src="' + escapeHtml(imageUrl) + '" alt="Front Page" />',
-      '  </div>',
+      frontPageBodyHtml(frontPage),
       '</div>',
     ].join('\n'),
   );
+  enhanceNewspaper();
 }
 
 /** Render the daily digest. Treats Executive Summary specially as a TL;DR block.
  * When `frontPage` is supplied the layout splits into two desktop columns: front
  * page on the left, digest cards on the right. Stacks under ~900px. */
-function renderToday(md: string, frontPage: { url: string; fallback: string | null } | null = null): void {
+function renderToday(md: string, frontPage: FrontPageAsset | null = null): void {
   const sections = splitSections(md);
 
   // Digest files often start with `# AI Daily Digest - <date>` before the
@@ -2286,9 +2374,7 @@ function renderToday(md: string, frontPage: { url: string; fallback: string | nu
       '    <div class="content-card-title">THE AGI AWARENESS POST — ' + escapeHtml(displayDate(currentDate)) + '</div>',
       '  </div>',
       noteHtml,
-      '  <div class="content-card-body frontpage-body">',
-      '    <img class="frontpage-img" src="' + escapeHtml(frontPage.url) + '" alt="Front Page" />',
-      '  </div>',
+      frontPageBodyHtml(frontPage),
       '</div>',
     ].join('\n');
     setSafeContent(
@@ -2300,6 +2386,7 @@ function renderToday(md: string, frontPage: { url: string; fallback: string | nu
         '</div>',
       ].join('\n'),
     );
+    enhanceNewspaper();
     return;
   }
   setSafeContent(content, todayCards);
@@ -4417,17 +4504,17 @@ async function load(): Promise<void> {
         }
       }
     } else if (activeTab === 'frontpage') {
-      const result = await withTimeout(fetchFrontPage(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
+      const result = await withTimeout(fetchFrontPageAsset(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
       if (requestId !== loadRequestId) return;
       if (result === 'timeout') {
         showError('Loading timed out', 'Network may be slow. Click to retry.');
       } else if (result) {
-        renderFrontPage(result, null);
+        renderFrontPage(result);
       } else {
         // Front page missing for today — fall back to the most recent available
         const fallback = await findFrontPageAtOrBefore(dateStr, controller.signal);
-        if (fallback && fallback.date !== dateStr) {
-          renderFrontPage(fallback.url, fallback.date);
+        if (fallback) {
+          renderFrontPage(fallback);
         } else {
           showEmpty(dateStr);
         }
@@ -4449,22 +4536,17 @@ async function load(): Promise<void> {
       // into the left column of the two-column today layout on desktop.
       const [digestResult, fpResult] = await Promise.all([
         withTimeout(fetchDigest(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller),
-        fetchFrontPage(dateStr, controller.signal),
+        fetchFrontPageAsset(dateStr, controller.signal),
       ]);
       if (requestId !== loadRequestId) return;
       // Resolve which front-page URL to pass (today's, or the most-recent fallback).
-      let frontPage: { url: string; fallback: string | null } | null = null;
+      let frontPage: FrontPageAsset | null = null;
       if (fpResult) {
-        frontPage = { url: fpResult, fallback: null };
+        frontPage = fpResult;
       } else {
         const fp = await findFrontPageAtOrBefore(dateStr, controller.signal);
         if (requestId !== loadRequestId) return;
-        if (fp && fp.date !== dateStr) {
-          frontPage = {
-            url: fp.url,
-            fallback: fp.date,
-          };
-        }
+        if (fp) frontPage = fp;
       }
       if (digestResult === 'timeout') {
         showError('Loading timed out', 'Network may be slow. Click to retry.');

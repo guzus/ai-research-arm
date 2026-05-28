@@ -85,6 +85,82 @@ function smallList(items) {
   return items.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n");
 }
 
+function yamlValue(value) {
+  return JSON.stringify(String(value ?? ""));
+}
+
+function directiveAttr(value) {
+  return JSON.stringify(String(value ?? ""));
+}
+
+function yamlItems(items, mapper) {
+  return items.map(mapper).join("\n");
+}
+
+function renderAraSource() {
+  const leadBody = leadDeck.length
+    ? leadDeck.map((item) => `${item}`).join("\n\n")
+    : "No executive-summary detail was available for this edition.";
+  const breakingItems = [...breaking, ...policy].slice(0, 6);
+  if (breakingItems.length === 0) {
+    breakingItems.push("No breaking or policy items were highlighted in this edition.");
+  }
+  const storyItems = [
+    ["Models & Systems", models, "hot"],
+    ["Research Ledger", research, "research"],
+    ["Capital & Compute", business, "market"],
+  ];
+  const source = [
+    "---",
+    "title: " + yamlValue("THE AGI AWARENESS POST"),
+    "kicker: " + yamlValue("Your Daily Artificial Intelligence Briefing"),
+    "date: " + yamlValue(monthDay),
+    "edition: " + yamlValue("All Sources Edition"),
+    "volume: " + yamlValue(date.slice(0, 4)),
+    "number: " + yamlValue(issue),
+    "deck: " + yamlValue("An interactive newspaper edition generated from the daily AI digest."),
+    "---",
+    "",
+    ":::paper-index",
+    "- label: " + yamlValue("Lead") + "\n  target: " + yamlValue("#lead-top-story"),
+    "- label: " + yamlValue("Breaking") + "\n  target: " + yamlValue("#briefs-breaking-policy"),
+    "- label: " + yamlValue("Signals") + "\n  target: " + yamlValue("#meter-signal-mix"),
+    "- label: " + yamlValue("Departments") + "\n  target: " + yamlValue("#deck-departments"),
+    ":::",
+    "",
+    `:::lead(id="lead-top-story", label="Top Story", title=${directiveAttr(lead)})`,
+    leadBody,
+    ":::",
+    "",
+    `:::briefs(id="briefs-breaking-policy", title="Breaking & Policy", columns=2)`,
+    yamlItems(breakingItems, (item, index) => {
+      const tag = index < breaking.length ? "Breaking" : "Policy";
+      return "- headline: " + yamlValue(item) + "\n  tag: " + yamlValue(tag);
+    }),
+    ":::",
+    "",
+    `:::news-meter(id="meter-signal-mix", title="Signal Mix")`,
+    "- label: " + yamlValue("Breaking news") + "\n  value: " + Math.min(100, breaking.length * 25) + "\n  display: " + yamlValue(`${breaking.length} items`) + "\n  tone: hot",
+    "- label: " + yamlValue("Model releases") + "\n  value: " + Math.min(100, models.length * 25) + "\n  display: " + yamlValue(`${models.length} items`) + "\n  tone: watch",
+    "- label: " + yamlValue("Research highlights") + "\n  value: " + Math.min(100, research.length * 20) + "\n  display: " + yamlValue(`${research.length} items`) + "\n  tone: research",
+    "- label: " + yamlValue("Funding and compute") + "\n  value: " + Math.min(100, business.length * 25) + "\n  display: " + yamlValue(`${business.length} items`) + "\n  tone: market",
+    ":::",
+    "",
+    `:::story-deck(id="deck-departments", title="Departments")`,
+    yamlItems(storyItems, ([label, items, tone]) => {
+      const summary = items.slice(0, 3).join(" ");
+      return "- headline: " + yamlValue(label) + "\n  summary: " + yamlValue(summary || "No items reported in this section.") + "\n  meta: " + yamlValue(`${items.length} digest items`) + "\n  tone: " + tone;
+    }),
+    ":::",
+    "",
+    `:::quote(label="Quote of the Day")`,
+    quote || "No quote of the day was available in the digest.",
+    ":::",
+    "",
+  ];
+  return source.join("\n");
+}
+
 function wrapText(text, maxChars, maxLines = 99) {
   const words = text.split(/\s+/).filter(Boolean);
   const lines = [];
@@ -218,6 +294,12 @@ if (output.endsWith(".png")) {
     },
   }).render().asPng();
   await writeFile(output, png);
+  console.log(`Wrote ${output}`);
+  process.exit(0);
+}
+
+if (output.endsWith(".ara.md")) {
+  await writeFile(output, renderAraSource(), "utf8");
   console.log(`Wrote ${output}`);
   process.exit(0);
 }

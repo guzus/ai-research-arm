@@ -2,9 +2,16 @@
 
 This is the language section-writer sub-agents emit. The compiler at
 `scripts/compile_ara.py` turns it into a validated `<article>` fragment
-using only the `ara-*` component vocabulary documented in
+using only the `ara-*` component vocabulary cataloged in
+[ARA_CATALOG.json](ARA_CATALOG.json) and documented in
 [COMPONENTS.md](COMPONENTS.md). The DSL is the source of truth; the
 HTML is a build artifact stored beside it.
+
+For daily front-page editions, use the compiler's dedicated
+`--target newspaper` mode and the components documented in
+[NEWSPAPER_DSL.md](NEWSPAPER_DSL.md). That target emits
+`<article class="ara-paper">` and is dashboard-facing, not a generative
+research article fragment.
 
 Rule of thumb: if you can express it as a block directive, use one. If
 you can express it in plain markdown, do that. Never write raw HTML —
@@ -422,7 +429,7 @@ After the compiler runs, the output is fed through `validate_body`
 
 - Any HTML tag outside the allowlist (`article, section, div, header, footer, h2, h3, h4, p, span, em, strong, code, mark, sup, sub, abbr, time, ul, ol, li, dl, dt, dd, a, img, figure, figcaption, table, thead, tbody, tr, th, td, blockquote, pre, br, hr`).
 - Any `class=` token that doesn't start with `ara-`.
-- Any `ara-*` class not documented in COMPONENTS.md (or a valid `--variant` suffix of one).
+- Any `ara-*` class not cataloged in ARA_CATALOG.json (or a valid `--variant` suffix of one).
 - Inline `style=`, `on*=` handlers, `javascript:` URLs.
 
 If you write valid DSL, the validator never fires. If you reach for

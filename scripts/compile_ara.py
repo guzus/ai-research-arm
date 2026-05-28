@@ -36,6 +36,7 @@ Run standalone:
 
     uv run python scripts/compile_ara.py path/to/source.ara.md
     uv run python scripts/compile_ara.py - < source.ara.md
+    uv run python scripts/compile_ara.py --target newspaper path/to/source.ara.md
 """
 
 from __future__ import annotations
@@ -1292,6 +1293,173 @@ def emit_raw(attrs: dict, body: str, line_no: int) -> str:
     return body
 
 
+def _safe_optional_url(value: Any, ctx: str, line_no: int) -> str | None:
+    if value is None or value == "":
+        return None
+    url = str(value).strip()
+    parsed = urlparse(url)
+    if url.startswith("#") or url.startswith("/"):
+        return url
+    if parsed.scheme in ("http", "https") and parsed.netloc:
+        return url
+    raise AraSyntaxError(f"{ctx} URL must be http(s), root-relative, or #anchor", line=line_no)
+
+
+def _slug_id(value: Any, prefix: str = "paper") -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", str(value).lower()).strip("-")
+    return f"{prefix}-{slug or 'item'}"
+
+
+def _paper_item_title(item: dict, ctx: str, line_no: int) -> str:
+    return str(item.get("headline") or item.get("title") or _req(item, "label", ctx, line_no))
+
+
+def emit_paper_index(attrs: dict, body: Any, line_no: int) -> str:
+    if not isinstance(body, list):
+        raise AraSyntaxError(":::paper-index body must be a YAML list", line=line_no)
+    title = str(attrs.get("title", "In this edition"))
+    out = [
+        '<nav class="ara-paper-index" aria-label="' + html.escape(title, quote=True) + '">',
+        f'<div class="ara-paper-index-title">{parse_inline(title)}</div>',
+        '<div class="ara-paper-index-links">',
+    ]
+    for item in body:
+        if not isinstance(item, dict):
+            raise AraSyntaxError(":::paper-index entries must be mappings", line=line_no)
+        label = _req(item, "label", "paper-index", line_no)
+        target = str(_req(item, "target", "paper-index", line_no))
+        if not target.startswith("#"):
+            raise AraSyntaxError("paper-index target must be an #anchor", line=line_no)
+        out.append(
+            f'<a class="ara-paper-index-link" href="{html.escape(target, quote=True)}">'
+            f'{parse_inline(str(label))}</a>'
+        )
+    out.extend(["</div>", "</nav>"])
+    return "".join(out)
+
+
+def emit_paper_lead(attrs: dict, body: str, line_no: int) -> str:
+    title = str(attrs.get("title") or attrs.get("headline") or "Top story")
+    label = str(attrs.get("label", "Top story"))
+    deck = attrs.get("deck")
+    section_id = str(attrs.get("id") or _slug_id(title, "lead"))
+    inner = compile_blocks(split_blocks(body)) if body.strip() else ""
+    out = [
+        f'<section class="ara-paper-lead" id="{html.escape(section_id, quote=True)}">',
+        f'<div class="ara-paper-label">{parse_inline(label)}</div>',
+        f'<button class="ara-paper-toggle" type="button" aria-expanded="true" aria-controls="{html.escape(section_id + "-body", quote=True)}">',
+        f'<span>{parse_inline(title)}</span><span class="ara-paper-toggle-icon" aria-hidden="true">⌄</span>',
+        '</button>',
+    ]
+    if deck:
+        out.append(f'<p class="ara-paper-deck">{parse_inline(str(deck))}</p>')
+    out.append(f'<div class="ara-paper-collapsible" id="{html.escape(section_id + "-body", quote=True)}">')
+    out.append(inner)
+    out.extend(["</div>", "</section>"])
+    return "".join(out)
+
+
+def emit_paper_briefs(attrs: dict, body: Any, line_no: int) -> str:
+    if not isinstance(body, list):
+        raise AraSyntaxError(":::briefs body must be a YAML list", line=line_no)
+    title = str(attrs.get("title", "Briefs"))
+    section_id = str(attrs.get("id") or _slug_id(title, "briefs"))
+    columns = _int_range_text(attrs.get("columns", 2), "brief columns", line_no, 1, 4)
+    out = [
+        f'<section class="ara-paper-briefs" id="{html.escape(section_id, quote=True)}" data-columns="{columns}">',
+        f'<h3 class="ara-paper-section-title">{parse_inline(title)}</h3>',
+        '<div class="ara-paper-brief-grid">',
+    ]
+    for idx, item in enumerate(body, start=1):
+        if not isinstance(item, dict):
+            raise AraSyntaxError(":::briefs entries must be mappings", line=line_no)
+        headline = str(item.get("headline") or item.get("title") or _req(item, "label", "briefs", line_no))
+        text = str(item.get("body") or item.get("text") or "")
+        tag = item.get("tag")
+        url = _safe_optional_url(item.get("url"), "brief", line_no)
+        out.append('<details class="ara-paper-brief">')
+        out.append('<summary>')
+        out.append(f'<span class="ara-paper-brief-rank">{idx:02d}</span>')
+        if tag:
+            out.append(f'<span class="ara-paper-brief-tag">{parse_inline(str(tag))}</span>')
+        out.append(f'<span class="ara-paper-brief-headline">{parse_inline(headline)}</span>')
+        out.append('</summary>')
+        if text:
+            out.append(f'<p>{parse_inline(text)}</p>')
+        if url:
+            out.append(
+                f'<a class="ara-paper-brief-link" href="{html.escape(url, quote=True)}">Read source</a>'
+            )
+        out.append('</details>')
+    out.extend(["</div>", "</section>"])
+    return "".join(out)
+
+
+def emit_paper_story_deck(attrs: dict, body: Any, line_no: int) -> str:
+    if not isinstance(body, list):
+        raise AraSyntaxError(":::story-deck body must be a YAML list", line=line_no)
+    title = str(attrs.get("title", "Story deck"))
+    section_id = str(attrs.get("id") or _slug_id(title, "deck"))
+    out = [
+        f'<section class="ara-paper-story-deck" id="{html.escape(section_id, quote=True)}">',
+        f'<h3 class="ara-paper-section-title">{parse_inline(title)}</h3>',
+        '<div class="ara-paper-story-list">',
+    ]
+    for item in body:
+        if not isinstance(item, dict):
+            raise AraSyntaxError(":::story-deck entries must be mappings", line=line_no)
+        headline = _paper_item_title(item, "story-deck", line_no)
+        summary = str(item.get("summary") or item.get("body") or item.get("text") or "")
+        meta = item.get("meta")
+        tone = str(item.get("tone", "neutral")).lower()
+        if tone not in ("neutral", "hot", "watch", "research", "market"):
+            raise AraSyntaxError("story-deck tone must be neutral|hot|watch|research|market", line=line_no)
+        out.append(f'<details class="ara-paper-story ara-paper-story--{tone}">')
+        out.append(f'<summary><span>{parse_inline(headline)}</span></summary>')
+        if meta:
+            out.append(f'<div class="ara-paper-story-meta">{parse_inline(str(meta))}</div>')
+        if summary:
+            out.append(f'<p>{parse_inline(summary)}</p>')
+        out.append('</details>')
+    out.extend(["</div>", "</section>"])
+    return "".join(out)
+
+
+def emit_paper_meter(attrs: dict, body: Any, line_no: int) -> str:
+    if not isinstance(body, list):
+        raise AraSyntaxError(":::news-meter body must be a YAML list", line=line_no)
+    title = str(attrs.get("title", "Signal meter"))
+    section_id = str(attrs.get("id") or _slug_id(title, "meter"))
+    out = [
+        f'<section class="ara-paper-meter" id="{html.escape(section_id, quote=True)}">',
+        f'<h3 class="ara-paper-section-title">{parse_inline(title)}</h3>',
+    ]
+    for item in body:
+        if not isinstance(item, dict):
+            raise AraSyntaxError(":::news-meter entries must be mappings", line=line_no)
+        label = _req(item, "label", "news-meter", line_no)
+        value = float(_req(item, "value", "news-meter", line_no))
+        max_value = float(item.get("max", 100))
+        if max_value <= 0:
+            raise AraSyntaxError("news-meter max must be greater than 0", line=line_no)
+        pct = round((value / max_value) * 100, 2)
+        if pct < 0 or pct > 100:
+            raise AraSyntaxError("news-meter value must resolve to a 0-100 percent range", line=line_no)
+        tone = str(item.get("tone", "neutral")).lower()
+        if tone not in ("neutral", "hot", "watch", "research", "market"):
+            raise AraSyntaxError("news-meter tone must be neutral|hot|watch|research|market", line=line_no)
+        out.append(f'<div class="ara-paper-meter-row ara-paper-meter-row--{tone}">')
+        out.append(
+            f'<div class="ara-paper-meter-label"><span>{parse_inline(str(label))}</span>'
+            f'<strong>{html.escape(str(item.get("display", value)))}</strong></div>'
+        )
+        out.append('<div class="ara-paper-meter-track">')
+        out.append(f'<span class="ara-paper-meter-fill" data-pct="{pct:g}"></span>')
+        out.append('</div></div>')
+    out.append("</section>")
+    return "".join(out)
+
+
 DIRECTIVES: dict[str, tuple[Callable, str]] = {
     # (emitter, body-kind) — body-kind: 'yaml', 'markdown', 'lines', 'none'
     "stats":       (emit_stats,       "yaml"),
@@ -1316,19 +1484,33 @@ DIRECTIVES: dict[str, tuple[Callable, str]] = {
 }
 
 
-def emit_directive(buf: list[str], line_no: int) -> str:
+NEWSPAPER_DIRECTIVES: dict[str, tuple[Callable, str]] = {
+    "paper-index": (emit_paper_index, "yaml"),
+    "lead":        (emit_paper_lead,  "markdown"),
+    "briefs":      (emit_paper_briefs, "yaml"),
+    "story-deck":  (emit_paper_story_deck, "yaml"),
+    "news-meter":  (emit_paper_meter, "yaml"),
+}
+
+
+def emit_directive(
+    buf: list[str],
+    line_no: int,
+    directives: dict[str, tuple[Callable, str]] | None = None,
+) -> str:
     head = buf[0]
     parsed = parse_directive_open(head)
     if not parsed:
         raise AraSyntaxError(f"invalid directive opener: {head!r}", line=line_no)
     name, attrs_raw = parsed
-    if name not in DIRECTIVES:
+    directive_map = directives or DIRECTIVES
+    if name not in directive_map:
         raise AraSyntaxError(
-            f"unknown directive :::{name}. Known: {', '.join(sorted(DIRECTIVES))}",
+            f"unknown directive :::{name}. Known: {', '.join(sorted(directive_map))}",
             line=line_no,
         )
     attrs = parse_attrs(attrs_raw)
-    emitter, body_kind = DIRECTIVES[name]
+    emitter, body_kind = directive_map[name]
     if body_kind == "yaml":
         body = _yaml_body(buf, line_no)
         return emitter(attrs, body, line_no)
@@ -1346,7 +1528,10 @@ def emit_directive(buf: list[str], line_no: int) -> str:
 # ----------------------------------------------------------------------
 
 
-def compile_blocks(blocks: list[tuple[int, str, list[str]]]) -> str:
+def compile_blocks(
+    blocks: list[tuple[int, str, list[str]]],
+    directives: dict[str, tuple[Callable, str]] | None = None,
+) -> str:
     out: list[str] = []
     for line_no, kind, buf in blocks:
         if kind == "heading":
@@ -1364,7 +1549,7 @@ def compile_blocks(blocks: list[tuple[int, str, list[str]]]) -> str:
         elif kind == "table":
             out.append(emit_table(buf))
         elif kind == "directive":
-            out.append(emit_directive(buf, line_no))
+            out.append(emit_directive(buf, line_no, directives))
         else:
             raise AraSyntaxError(f"internal: unknown block kind {kind}", line=line_no)
     return "\n".join(out)
@@ -1391,6 +1576,39 @@ def emit_header(meta: dict) -> str:
     if meta.get("stats"):
         parts.append(emit_stats({}, meta["stats"], line_no=0))
     parts.append("</header>")
+    return "".join(parts)
+
+
+def emit_newspaper_header(meta: dict) -> str:
+    if not meta or not meta.get("title"):
+        raise AraSyntaxError("frontmatter must include `title:`")
+    title = str(meta["title"])
+    kicker = str(meta.get("kicker", "Your Daily Artificial Intelligence Briefing"))
+    date = meta.get("date")
+    edition = str(meta.get("edition", "All Sources Edition"))
+    volume = meta.get("volume")
+    number = meta.get("number")
+    deck = meta.get("deck")
+    meta_bits: list[str] = []
+    if volume or number:
+        vol = f"Vol. {volume}" if volume else "Vol."
+        no = f"No. {number}" if number else ""
+        meta_bits.append(f"{vol}, {no}".strip().rstrip(","))
+    if date:
+        meta_bits.append(str(date))
+    meta_bits.append(edition)
+    meta_html = "".join(
+        f'<span>{parse_inline(bit)}</span>' for bit in meta_bits if str(bit).strip()
+    )
+    parts = [
+        '<header class="ara-paper-masthead">',
+        f'<div class="ara-paper-kicker">{parse_inline(kicker)}</div>',
+        f'<h2 class="ara-paper-name">{parse_inline(title)}</h2>',
+        f'<div class="ara-paper-meta">{meta_html}</div>',
+    ]
+    if deck:
+        parts.append(f'<p class="ara-paper-deck">{parse_inline(str(deck))}</p>')
+    parts.append('</header>')
     return "".join(parts)
 
 
@@ -1471,7 +1689,7 @@ def wrap_in_sections(body_html: str) -> str:
 # ----------------------------------------------------------------------
 
 
-def compile_source(source: str) -> str:
+def compile_article_source(source: str) -> str:
     meta, body = parse_frontmatter(source)
     header = emit_header(meta)
     blocks = split_blocks(body)
@@ -1493,6 +1711,25 @@ def compile_source(source: str) -> str:
     return article
 
 
+def compile_newspaper_source(source: str) -> str:
+    meta, body = parse_frontmatter(source)
+    header = emit_newspaper_header(meta)
+    blocks = split_blocks(body)
+    directive_map = {**DIRECTIVES, **NEWSPAPER_DIRECTIVES}
+    body_html = compile_blocks(blocks, directive_map)
+    date_attr = f' data-paper-date="{html.escape(str(meta.get("date")), quote=True)}"' if meta.get("date") else ""
+    parts = [f'<article class="ara-paper"{date_attr}>', header, body_html, '</article>\n']
+    return "\n".join(parts)
+
+
+def compile_source(source: str, target: str = "article") -> str:
+    if target == "article":
+        return compile_article_source(source)
+    if target == "newspaper":
+        return compile_newspaper_source(source)
+    raise AraSyntaxError(f"unknown compile target {target!r}")
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("source", help="path to .ara.md (or '-' for stdin)")
@@ -1500,6 +1737,12 @@ def main(argv: list[str] | None = None) -> int:
         "--out",
         default="-",
         help="output path for compiled HTML (default: stdout)",
+    )
+    p.add_argument(
+        "--target",
+        choices=("article", "newspaper"),
+        default="article",
+        help="compiler target (default: article)",
     )
     p.add_argument("--meta-json", help="if set, also dump frontmatter as JSON to this path")
     args = p.parse_args(argv)
@@ -1510,17 +1753,18 @@ def main(argv: list[str] | None = None) -> int:
         source = Path(args.source).read_text(encoding="utf-8")
 
     try:
-        html_out = compile_source(source)
+        html_out = compile_source(source, target=args.target)
     except AraSyntaxError as e:
         print(f"compile_ara: {e}", file=sys.stderr)
         return 1
 
-    try:
-        from write_generative_research import validate_body, KIND_FRAGMENT
-        validate_body(html_out, KIND_FRAGMENT)
-    except ValueError as e:
-        print(f"compile_ara: validation failed: {e}", file=sys.stderr)
-        return 1
+    if args.target == "article":
+        try:
+            from write_generative_research import validate_body, KIND_FRAGMENT
+            validate_body(html_out, KIND_FRAGMENT)
+        except ValueError as e:
+            print(f"compile_ara: validation failed: {e}", file=sys.stderr)
+            return 1
 
     if args.out == "-":
         sys.stdout.write(html_out)
