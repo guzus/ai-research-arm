@@ -3102,11 +3102,15 @@ function renderSparklines(root: HTMLElement): void {
     const lastValue = values[values.length - 1];
     const delta = lastValue - firstValue;
     const pct = firstValue !== 0 ? ` (${formatSignedNumber((delta / Math.abs(firstValue)) * 100, 1)}%)` : '';
+    const label =
+      `${formatNumber(firstValue)} to ${formatNumber(lastValue)}; ` +
+      `change ${formatSignedNumber(delta, deltaDigits(delta))}${pct}`;
     el.setAttribute(
       'aria-label',
-      `Sparkline ${formatNumber(firstValue)} to ${formatNumber(lastValue)}; change ${formatSignedNumber(delta, deltaDigits(delta))}${pct}`,
+      `Sparkline ${label}`,
     );
     el.setAttribute('role', 'img');
+    setAraTooltip(el, 'Sparkline', label);
     el.textContent = '';
     el.appendChild(svg);
     el.dataset.rendered = '1';
@@ -3400,7 +3404,7 @@ function renderLineCharts(root: HTMLElement): void {
         item.className = `ara-chart-legend-item ara-chart-legend-item--${idx + 1}`;
         item.textContent = s.label;
         const latestLabel = xLabels[s.values.length - 1] || `point ${s.values.length}`;
-        item.title = `${s.label}: latest ${formatUnitValue(s.values[s.values.length - 1], yUnit)} (${latestLabel})`;
+        setAraTooltip(item, s.label, `latest ${formatUnitValue(s.values[s.values.length - 1], yUnit)} (${latestLabel})`);
         legend.appendChild(item);
       });
       el.appendChild(legend);
@@ -3890,6 +3894,7 @@ function renderBarCharts(root: HTMLElement): void {
               height: h,
             });
             appendSvgTitle(rect, `${s.label} · ${cat}: ${fmt(v)}`);
+            setAraTooltip(rect, `${s.label} · ${cat}`, fmt(v));
             svg.appendChild(rect);
             posTop = segTopVal;
           });
@@ -3912,6 +3917,7 @@ function renderBarCharts(root: HTMLElement): void {
               height: h,
             });
             appendSvgTitle(rect, `${s.label} · ${cat}: ${fmt(v)}`);
+            setAraTooltip(rect, `${s.label} · ${cat}`, fmt(v));
             svg.appendChild(rect);
           });
         } else {
@@ -3930,6 +3936,7 @@ function renderBarCharts(root: HTMLElement): void {
             height: h,
           });
           appendSvgTitle(rect, `${cat}: ${fmt(v)}`);
+          setAraTooltip(rect, cat, fmt(v));
           svg.appendChild(rect);
         }
 
@@ -4003,6 +4010,7 @@ function renderBarCharts(root: HTMLElement): void {
               height: barH,
             });
             appendSvgTitle(rect, `${s.label} · ${cat}: ${fmt(v)}`);
+            setAraTooltip(rect, `${s.label} · ${cat}`, fmt(v));
             svg.appendChild(rect);
             posRight += v;
           });
@@ -4024,6 +4032,7 @@ function renderBarCharts(root: HTMLElement): void {
               height: Math.max(0, barH - 1),
             });
             appendSvgTitle(rect, `${s.label} · ${cat}: ${fmt(v)}`);
+            setAraTooltip(rect, `${s.label} · ${cat}`, fmt(v));
             svg.appendChild(rect);
           });
         } else {
@@ -4041,6 +4050,7 @@ function renderBarCharts(root: HTMLElement): void {
             height: barH,
           });
           appendSvgTitle(rect, `${cat}: ${fmt(v)}`);
+          setAraTooltip(rect, cat, fmt(v));
           svg.appendChild(rect);
         }
 
@@ -4070,6 +4080,8 @@ function renderBarCharts(root: HTMLElement): void {
         const item = document.createElement('span');
         item.className = `ara-chart-legend-item ara-chart-legend-item--${idx + 1}`;
         item.textContent = s.label;
+        const total = s.values.reduce((acc, value) => acc + value, 0);
+        setAraTooltip(item, s.label, `${N} categories · total ${fmt(total)}`);
         legend.appendChild(item);
       });
       el.appendChild(legend);

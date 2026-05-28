@@ -822,6 +822,15 @@ body.ara-figure-modal-open {
   cursor: help;
 }
 
+.ara-doc [data-ara-tooltip-title]:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 3px;
+}
+
+.ara-doc svg [data-ara-tooltip-title]:focus {
+  outline: none;
+}
+
 @media (prefers-color-scheme: dark) {
   .ara-flag--green  { background: #6fcc92; }
   .ara-flag--yellow { background: #d4a672; }
@@ -878,6 +887,16 @@ body.ara-figure-modal-open {
   transition: width 0.5s ease-out;
 }
 
+.ara-bar:hover::after,
+.ara-bar:focus-visible::after {
+  height: 5px;
+}
+
+.ara-bar:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 4px;
+}
+
 .ara-bar-label {
   font-size: 0.9rem;
   color: var(--text);
@@ -924,6 +943,11 @@ body.ara-figure-modal-open {
   font-size: 0.72rem;
   color: var(--bg);
   padding: 0 6px;
+}
+
+.ara-stack-seg:hover,
+.ara-stack-seg:focus {
+  filter: brightness(1.12);
 }
 
 /* Six-step neutral palette — neutral so categorical data doesn't impose
@@ -1084,6 +1108,15 @@ body.ara-figure-modal-open {
   vertical-align: -4px;
   color: var(--accent-warm);
   overflow: hidden;
+  cursor: help;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.ara-sparkline:hover,
+.ara-sparkline:focus-visible {
+  border-color: var(--accent-warm);
+  color: var(--text);
+  transform: translateY(-1px);
 }
 
 .ara-sparkline svg {
@@ -1303,6 +1336,7 @@ body.ara-figure-modal-open {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  cursor: help;
 }
 
 .ara-line-chart-legend .ara-chart-legend-item::before {
@@ -1342,6 +1376,14 @@ body.ara-figure-modal-open {
   /* Thin stroke matching the card bg separates adjacent segments. */
   stroke: var(--bg);
   stroke-width: 0.75;
+  cursor: help;
+  transition: filter 0.12s ease, stroke-width 0.12s ease;
+}
+
+.ara-bar-chart-bar:hover,
+.ara-bar-chart-bar:focus {
+  filter: brightness(1.08);
+  stroke-width: 2;
 }
 
 .ara-bar-chart-bar--1 { fill: var(--ara-viz-1); }
@@ -1373,6 +1415,7 @@ body.ara-figure-modal-open {
   align-items: center;
   gap: 6px;
   color: var(--text-secondary);
+  cursor: help;
 }
 
 .ara-bar-chart-legend .ara-chart-legend-item::before {
@@ -1460,6 +1503,12 @@ body.ara-figure-modal-open {
   border-bottom: 1.5px solid var(--border);
   color: var(--text);
   margin: 0;
+  cursor: help;
+}
+
+.ara-donut-legend li:hover,
+.ara-donut-legend li:focus-visible {
+  color: var(--accent-warm);
 }
 
 .ara-donut-legend li:last-child { border-bottom: none; }
@@ -1669,6 +1718,12 @@ body.ara-figure-modal-open {
   gap: 10px;
   padding: 6px 8px;
   border-bottom: 1.5px solid var(--border);
+  transition: background 0.12s ease;
+}
+
+.ara-rank-item:hover,
+.ara-rank-item:focus-visible {
+  background: var(--bg-secondary);
 }
 
 .ara-rank-item:last-child { border-bottom: none; }
@@ -1730,6 +1785,11 @@ body.ara-figure-modal-open {
 
 .ara-rank-item.ara-row-highlight .ara-rank-fill::after {
   background: var(--accent-warm);
+}
+
+.ara-rank-item:hover .ara-rank-fill::after,
+.ara-rank-item:focus-visible .ara-rank-fill::after {
+  height: 100%;
 }
 
 @media (max-width: 640px) {
