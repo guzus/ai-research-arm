@@ -22,12 +22,14 @@ sources:
   - "@elonmusk"
   - "@ai_for_success"
 created_at: 2026-05-25
-updated_at: 2026-05-25
+updated_at: 2026-05-28
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-05-25
     change: "Created — @elonmusk announced Grok V9-Medium (1.5T) finished training, fine-tuning underway, RL in days, 2-3 weeks to public release; major coding upgrade over the 0.5T v8-small, trained with heavy Cursor data"
+  - ts: 2026-05-28
+    change: "Context: xAI shipped the Grok Build agentic coding CLI in general beta on 2026-05-25 (the same day as the V9-Medium training announcement), with the backing model branded `grok-build-0.1` — distinct from V9-Medium. Spun out as its own ticket: see [[xai-grok-build-2026-05]]. The V9-Medium 2-3 week window from 2026-05-25 still points to ~mid-June 2026 for public release; no new signal on benchmarks, pricing, or surface this cycle"
 ---
 
 xAI's next foundation model, **Grok V9-Medium**, was announced by Elon
