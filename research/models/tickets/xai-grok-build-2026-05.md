@@ -27,12 +27,14 @@ sources:
   - "@xai"
   - "@grok"
 created_at: 2026-05-28
-updated_at: 2026-05-28
+updated_at: 2026-05-29
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-05-28
     change: "Created — xAI Grok Build agentic coding CLI shipped in stages: early beta 2026-05-14 (SuperGrok Heavy), general beta 2026-05-25 (all SuperGrok / X Premium+), with backing model `grok-build-0.1` exposed across @opencode (May 21), @openclaw (May 19), @kilocode (May 27). xAI reset Grok Build usage limits on 2026-05-26 after early users hit rate caps fast. Distinct from the pending 1.5T Grok V9-Medium release (grok-v9-medium)"
+  - ts: 2026-05-29
+    change: "Grok Build 0.2.7 point release (@xai, 2026-05-28 20:55 UTC): adds /usage and /login slash commands, shared terminals across subagents, and improved image understanding. First post-launch capability bump — incremental, not a model swap"
 ---
 
 **Grok Build** is xAI's agentic coding CLI + developer-platform surface,

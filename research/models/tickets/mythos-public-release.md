@@ -27,7 +27,7 @@ sources:
   - "@techcrunch"
   - "@alexalbert__"
 created_at: 2026-04-12
-updated_at: 2026-05-28
+updated_at: 2026-05-29
 closed_at: null
 closed_reason: null
 history:
@@ -49,6 +49,8 @@ history:
     change: "TechCrunch coverage — \"Anthropic debuts preview of Mythos in a new cybersecurity initiative,\" putting the gated cyber angle in primary tech press and corroborating the 2026-05-20 Glasswing cyber-findings-sharing report"
   - ts: 2026-05-28
     change: "Glasswing month-1 update (official @AnthropicAI, 2026-05-22 19:38 UTC): Anthropic + partners have found more than 10,000 high- or critical-severity vulnerabilities in essential software since the April launch, framed by Anthropic as a volume the software industry will need to adapt to. Separately on 2026-05-26 @alexalbert__ RTd @__alpoge__ checking whether Mythos can solve the Erdős unit-distance problem (the same problem OpenAI announced an internal-model breakthrough on May 20) — a third-party capability probe rather than an Anthropic claim, but on the same benchmark surface"
+  - ts: 2026-05-29
+    change: "Opus 4.8 launch coverage (2026-05-28) references Project Glasswing as continuing to test Claude Mythos Preview for cybersecurity applications, with broader availability hinted 'in the coming weeks' (per IT-Administrator and other launch-day write-ups). No primary @AnthropicAI confirmation of a Mythos public-release schedule — adjacent signal, gated-preview stance unchanged"
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a
