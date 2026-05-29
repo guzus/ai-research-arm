@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   bluesky-feed:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     timeout-minutes: 15
     permissions:
       contents: write

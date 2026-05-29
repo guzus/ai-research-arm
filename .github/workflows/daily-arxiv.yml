@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   arxiv-research:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     timeout-minutes: 30
     permissions:
       contents: write

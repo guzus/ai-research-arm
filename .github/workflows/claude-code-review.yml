@@ -21,7 +21,7 @@ jobs:
     # trigger with a `pr_number` input in a follow-up).
     if: contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.pull_request.author_association)
 
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     timeout-minutes: 30
     permissions:
       contents: read
