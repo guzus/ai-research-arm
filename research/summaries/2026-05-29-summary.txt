@@ -1,0 +1,13 @@
+AI News - 2026-05-29
+
+TOP STORIES:
+• Anthropic Series H closes: $65B raised at $965B post — first time eclipsing OpenAI ($852B); Sequoia/Dragoneer/Altimeter/Greenoaks each ≥$2B; Oct 2026 IPO target
+• Claude Opus 4.8 ships same day: agentic coding 64.3% → 69.2%; Fast Mode 2.5x faster + 3x cheaper; new Dynamic Workflows (1,000 parallel subagents)
+• Saris $28.8M Series A (8VC-led): agentic AI for banks/credit unions; 70% task automation, 35% cost cut
+• California May 29 crossover: ~all 30 AI bills clear chamber of origin; AB 1609 chatbot-disclosure to Senate
+
+KEY NUMBERS:
+• Anthropic: $47B run-rate (+57% in 3mo); valuation +154% from Feb's $380B
+• Opus 4.8: +4.9pp coding, +137 Elo knowledge work
+
+Full report on GitHub.
