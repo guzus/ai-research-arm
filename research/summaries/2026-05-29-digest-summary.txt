@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-05-29
+
+TOP STORIES:
+• Anthropic ships Claude Opus 4.8 and closes $65B Series H at $965B post-money in the same window
+• Dynamic Workflows in Claude Code — hundreds of parallel subagents per session (Enterprise/Team/Max)
+• Liquid AI LFM2.5-8B-A1B + X Square Robot Wall-OSS-0.5 open-VLA reset Western open-weight signal
+
+KEY NUMBERS:
+• Opus 4.8: 84% Online-Mind2Web, 4x stricter on code flaws, Fast mode 3x cheaper
+• HN: Opus 4.8 943 pts / 751 comments; Willison PMF post 1,071 comments
+• AgingBench: Sonnet 4.6 → Opus 4.7 swap cut agent PyTest pass rate ~15%
+
+TRENDING: Anthropic's model+funding drop vs OpenClaw / vLLM agentic-security crises
+
+Full digest on GitHub.
