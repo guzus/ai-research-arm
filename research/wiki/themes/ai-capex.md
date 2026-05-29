@@ -6,10 +6,11 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 summary: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-updated_at: 2026-05-24
+updated_at: 2026-05-29
 sources:
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
+  - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
 ---
 
@@ -37,9 +38,12 @@ skepticism in one window:
   first investment-grade GPU-backed loan (ARA generative research, 2026-05-16).
   [[nebius]] is the named independent peer; Google × Blackstone's $5B TPU JV is
   the hyperscaler entrant.
-- **Frontier-lab capital.** [[anthropic]]'s rumored **$30B round at ~$900B** and
-  OpenAI's "Guaranteed Capacity" futures show labs locking in compute at any
-  cost (ARA digest 2026-05-20, 2026-05-21).
+- **Frontier-lab capital.** [[anthropic]] **closed a $65B Series H at a $965B
+  post-money** on 2026-05-29, confirming the >$30B / >$900B Bloomberg carry —
+  and [[cognition-ai]] closed **$1B+ at $26B post** in the same window, against
+  $492M ARR. OpenAI's "Guaranteed Capacity" futures and confidential S-1
+  filing (Q4 2026 window) compound the signal — labs are locking in compute
+  and listing optionality at any cost (ARA digest 2026-05-20, 2026-05-29).
 - **The bubble counter-narrative.** Meta's paradox — **$56B Q1 revenue but an
   8,000-job layoff** against a $115–135B 2026 capex guide — and a hardening
   "AI bubble / backlash" thread on r/artificial are the bear case (ARA digest

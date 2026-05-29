@@ -1,6 +1,70 @@
 {
   "pages": [
     {
+      "slug": "agent-lifespan-engineering",
+      "title": "Agent Lifespan Engineering",
+      "type": "concept",
+      "tags": [
+        "agents",
+        "evaluation",
+        "benchmarks",
+        "memory",
+        "deployment"
+      ],
+      "summary": "Treating deployed agentic systems as objects whose effectiveness degrades over a deployment horizon, with memory policy — not model strength — as the dominant variable; the underlying frame of the 2026-05-29 AgingBench paper.",
+      "created_at": "2026-05-29",
+      "updated_at": "2026-05-29",
+      "file": "concepts/agent-lifespan-engineering.md",
+      "aliases": [
+        "Agent Lifespan Engineering",
+        "agent half-life",
+        "AgingBench",
+        "Your Agents Are Aging Too"
+      ],
+      "outbound": [
+        "anthropic",
+        "dynamic-workflows"
+      ],
+      "inbound": [
+        "anthropic",
+        "dynamic-workflows"
+      ]
+    },
+    {
+      "slug": "agentic-ai-security",
+      "title": "Agentic AI Security Crisis",
+      "type": "theme",
+      "tags": [
+        "security",
+        "supply-chain",
+        "mcp",
+        "agents",
+        "governance"
+      ],
+      "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
+      "created_at": "2026-05-29",
+      "updated_at": "2026-05-29",
+      "file": "themes/agentic-ai-security.md",
+      "aliases": [
+        "agentic AI security",
+        "agent security",
+        "AI supply-chain security",
+        "agentic supply-chain"
+      ],
+      "outbound": [
+        "anthropic",
+        "cognition-ai",
+        "dynamic-workflows",
+        "liquid-ai"
+      ],
+      "inbound": [
+        "anthropic",
+        "cognition-ai",
+        "dynamic-workflows",
+        "liquid-ai"
+      ]
+    },
+    {
       "slug": "ai-capex",
       "title": "The AI Capex Supercycle",
       "type": "theme",
@@ -12,7 +76,7 @@
       ],
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-05-24",
+      "updated_at": "2026-05-29",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -22,12 +86,14 @@
       ],
       "outbound": [
         "anthropic",
+        "cognition-ai",
         "coreweave",
         "nebius",
         "neocloud"
       ],
       "inbound": [
         "anthropic",
+        "cognition-ai",
         "coreweave",
         "gemini-3-5-flash",
         "nebius",
@@ -44,9 +110,9 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family, operating gated frontier model Mythos and pursuing a $30B raise at a ~$900B valuation.",
+      "summary": "AI safety company and frontier lab behind the Claude model family, operating gated frontier model Mythos and valued at $965B post-money after closing a $65B Series H in May 2026.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-05-24",
+      "updated_at": "2026-05-29",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -54,13 +120,85 @@
         "@AnthropicAI"
       ],
       "outbound": [
+        "agent-lifespan-engineering",
+        "agentic-ai-security",
         "ai-capex",
+        "claude-opus-4-8",
+        "cognition-ai",
+        "dynamic-workflows",
         "gemini-3-5-flash",
         "neocloud"
       ],
       "inbound": [
+        "agent-lifespan-engineering",
+        "agentic-ai-security",
         "ai-capex",
+        "claude-opus-4-8",
+        "cognition-ai",
+        "dynamic-workflows",
         "gemini-3-5-flash"
+      ]
+    },
+    {
+      "slug": "claude-opus-4-8",
+      "title": "Claude Opus 4.8",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "anthropic",
+        "claude",
+        "frontier-model",
+        "alignment"
+      ],
+      "summary": "Anthropic's 2026-05-29 frontier flagship, succeeding Opus 4.7 at the same price with materially better alignment numbers and the cleanest deception-rate result of any 2026 frontier release.",
+      "created_at": "2026-05-29",
+      "updated_at": "2026-05-29",
+      "file": "entities/claude-opus-4-8.md",
+      "aliases": [
+        "Claude Opus 4.8",
+        "Opus 4.8",
+        "claude-opus-4-8"
+      ],
+      "outbound": [
+        "anthropic",
+        "dynamic-workflows"
+      ],
+      "inbound": [
+        "anthropic",
+        "dynamic-workflows"
+      ]
+    },
+    {
+      "slug": "cognition-ai",
+      "title": "Cognition AI",
+      "type": "entity",
+      "tags": [
+        "agentic",
+        "coding-agent",
+        "startup",
+        "ai-engineering"
+      ],
+      "summary": "Maker of the Devin autonomous coding agent; raised $1B+ at a $26B post-money valuation in May 2026 against $492M ARR (~13× YoY), with 89% of Cognition's own code now written by Devin.",
+      "created_at": "2026-05-29",
+      "updated_at": "2026-05-29",
+      "file": "entities/cognition-ai.md",
+      "aliases": [
+        "Cognition",
+        "Cognition AI",
+        "Cognition Labs",
+        "Devin"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "ai-capex",
+        "anthropic",
+        "dynamic-workflows"
+      ],
+      "inbound": [
+        "agentic-ai-security",
+        "ai-capex",
+        "anthropic",
+        "dynamic-workflows"
       ]
     },
     {
@@ -94,6 +232,41 @@
       ]
     },
     {
+      "slug": "dynamic-workflows",
+      "title": "Dynamic Workflows",
+      "type": "concept",
+      "tags": [
+        "agentic",
+        "claude-code",
+        "anthropic",
+        "subagents",
+        "codebase-migration"
+      ],
+      "summary": "Anthropic's 2026-05-29 Claude Code feature that fans a single session into hundreds of parallel subagents, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.",
+      "created_at": "2026-05-29",
+      "updated_at": "2026-05-29",
+      "file": "concepts/dynamic-workflows.md",
+      "aliases": [
+        "Dynamic Workflows",
+        "Claude Code Dynamic Workflows",
+        "parallel subagents"
+      ],
+      "outbound": [
+        "agent-lifespan-engineering",
+        "agentic-ai-security",
+        "anthropic",
+        "claude-opus-4-8",
+        "cognition-ai"
+      ],
+      "inbound": [
+        "agent-lifespan-engineering",
+        "agentic-ai-security",
+        "anthropic",
+        "claude-opus-4-8",
+        "cognition-ai"
+      ]
+    },
+    {
       "slug": "gemini-3-5-flash",
       "title": "Gemini 3.5 Flash",
       "type": "entity",
@@ -118,6 +291,33 @@
       ],
       "inbound": [
         "anthropic"
+      ]
+    },
+    {
+      "slug": "liquid-ai",
+      "title": "Liquid AI",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "on-device",
+        "hybrid-models",
+        "mit-spinout"
+      ],
+      "summary": "MIT-spinout foundation model lab focused on on-device hybrid (non-pure-transformer) architectures; shipped LFM2.5-8B-A1B with day-one llama.cpp / MLX / vLLM / SGLang support on 2026-05-29.",
+      "created_at": "2026-05-29",
+      "updated_at": "2026-05-29",
+      "file": "entities/liquid-ai.md",
+      "aliases": [
+        "Liquid AI",
+        "LiquidAI",
+        "Liquid Foundation Models",
+        "LFM"
+      ],
+      "outbound": [
+        "agentic-ai-security"
+      ],
+      "inbound": [
+        "agentic-ai-security"
       ]
     },
     {
@@ -186,28 +386,60 @@
   ],
   "resolver": {
     "@anthropicai": "anthropic",
+    "agent half-life": "agent-lifespan-engineering",
+    "agent lifespan engineering": "agent-lifespan-engineering",
+    "agent security": "agentic-ai-security",
+    "agent-lifespan-engineering": "agent-lifespan-engineering",
+    "agentic ai security": "agentic-ai-security",
+    "agentic supply-chain": "agentic-ai-security",
+    "agentic-ai-security": "agentic-ai-security",
+    "agingbench": "agent-lifespan-engineering",
     "ai capex": "ai-capex",
     "ai capex supercycle": "ai-capex",
     "ai infrastructure buildout": "ai-capex",
+    "ai supply-chain security": "agentic-ai-security",
     "ai-capex": "ai-capex",
     "anthropic": "anthropic",
     "anthropic pbc": "anthropic",
+    "claude code dynamic workflows": "dynamic-workflows",
+    "claude opus 4.8": "claude-opus-4-8",
+    "claude-opus-4-8": "claude-opus-4-8",
+    "cognition": "cognition-ai",
+    "cognition ai": "cognition-ai",
+    "cognition labs": "cognition-ai",
+    "cognition-ai": "cognition-ai",
     "compute buildout": "ai-capex",
     "coreweave": "coreweave",
     "coreweave, inc.": "coreweave",
     "crwv": "coreweave",
+    "devin": "cognition-ai",
+    "dynamic workflows": "dynamic-workflows",
+    "dynamic-workflows": "dynamic-workflows",
     "gemini 3.2 flash": "gemini-3-5-flash",
     "gemini 3.5 flash": "gemini-3-5-flash",
     "gemini-3-5-flash": "gemini-3-5-flash",
     "gpu-as-a-service": "neocloud",
     "gpuaas": "neocloud",
+    "lfm": "liquid-ai",
+    "liquid ai": "liquid-ai",
+    "liquid foundation models": "liquid-ai",
+    "liquid-ai": "liquid-ai",
+    "liquidai": "liquid-ai",
     "nbis": "nebius",
     "nebius": "nebius",
     "nebius group n.v.": "nebius",
     "neo-cloud": "neocloud",
-    "neocloud": "neocloud"
+    "neocloud": "neocloud",
+    "opus 4.8": "claude-opus-4-8",
+    "parallel subagents": "dynamic-workflows",
+    "your agents are aging too": "agent-lifespan-engineering"
   },
   "recent_log": [
+    {
+      "date": "2026-05-29",
+      "op": "ingest",
+      "summary": "Ingested 2026-05-29 digest. Created 6 (claude-opus-4-8, cognition-ai, liquid-ai entities; dynamic-workflows, agent-lifespan-engineering concepts; agentic-ai-security theme), updated 2 (anthropic — Opus 4.8 ship + Series H close at $65B/$965B; ai-capex — frontier-lab capital paragraph)."
+    },
     {
       "date": "2026-05-24",
       "op": "seed",
