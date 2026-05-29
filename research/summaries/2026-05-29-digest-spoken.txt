@@ -1,0 +1,10 @@
+Speaker 1: Friday, May twenty-ninth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic dropped Opus four point eight and closed a sixty-five billion dollar Series H in the same window, putting the company at [emphasis]nine hundred sixty-five billion dollars[/emphasis] post-money.
+Speaker 1: That is one announcement away from a trillion, and the model backs it up — eighty-four percent on Online-Mind2Web, four times stricter on code flaws.
+Speaker 2: Fast mode also comes in three times cheaper, and the Hacker News thread hit nine hundred forty-three points with seven hundred fifty-one comments before the day was out.
+Speaker 1: Dynamic Workflows also shipped to Claude Code at the same time — hundreds of parallel subagents per session for Enterprise, Team, and Max tiers.
+Speaker 2: Worth noting that Simon Willison's product-market-fit post pulled [emphasis]over one thousand comments[/emphasis] on its own, which tells you where developer sentiment is landing.
+Speaker 1: On the open-weight side, Liquid AI's LFM two point five and X Square's Wall-OSS zero point five are both resetting what Western open-source looks like.
+Speaker 2: And the AgingBench numbers are a quiet warning — swapping Sonnet four point six for Opus four point seven [dramatic_pause] cut agent PyTest pass rates by roughly fifteen percent.
+Speaker 1: All of this lands against a backdrop of ongoing OpenClaw and vLLM agentic-security concerns — a dense week even by this industry's standards.
+Speaker 2: That is your ARA broadcast — full digest on GitHub.
