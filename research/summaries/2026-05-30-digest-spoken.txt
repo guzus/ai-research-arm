@@ -1,0 +1,11 @@
+Speaker 1: Saturday, May thirtieth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic closes its Series H at a sixty-five billion dollar raise, landing a post-money valuation of [emphasis]nine hundred sixty-five billion dollars[/emphasis] — the first time Anthropic has eclipsed OpenAI's eight hundred fifty-two billion dollar valuation.
+Speaker 1: And they're eyeing an IPO as early as October of this year, with annual recurring revenue already at forty-seven billion dollars, up from thirty billion.
+Speaker 2: Alongside that, Claude Opus four point eight shipped today — agentic coding scores jumped from sixty-four point three to sixty-nine point two percent, with knowledge-work Elo up one hundred thirty-seven points.
+Speaker 1: The headline feature is Dynamic Workflows, where Opus four point eight can now spin up [emphasis]one thousand parallel subagents[/emphasis] simultaneously — that is a different order of magnitude than anything we have seen before.
+Speaker 2: [dramatic_pause] And Fast Mode cuts costs three times compared to standard, so you get the power, faster, cheaper.
+Speaker 1: Over at OpenAI, they launched the Frontier Governance Framework alongside a biodefense initiative called Rosalind, built with Lawrence Livermore National Lab, Johns Hopkins APL, and CEPI.
+Speaker 2: That is a serious consortium — real biosecurity institutions, not a press-release play.
+Speaker 1: Some quick funding numbers from the vertical-agent space: Fonoa raised one hundred ten million, Garner Health one hundred million at a two point seven four billion dollar valuation, Daloopa forty-seven million, and Saris twenty-eight point eight million.
+Speaker 2: [high_energy] Meanwhile, Opus four point eight is already trending on Hacker News with one thousand six hundred ninety-three points and over thirteen hundred comments.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
