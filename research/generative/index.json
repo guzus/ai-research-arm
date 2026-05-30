@@ -521,5 +521,23 @@
     "source": "claude",
     "prompt": "800 VDC Architecture",
     "tags": []
+  },
+  {
+    "slug": "ramp-multi-agent-security-pipeline-ai-vulnerability-discovery",
+    "file": "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Ramp's Multi-Agent Security Pipeline and What AI Changes for Vulnerability Discovery",
+    "model": "deepseek-v4-pro",
+    "created_at": "2026-05-30T11:39:03Z",
+    "source": "workflow_dispatch",
+    "prompt": "Ramp's 10,000-agent security scan: what AI vulnerability discovery changes for appsec",
+    "tags": [
+      "hooker",
+      "logs",
+      "auto-routed",
+      "security",
+      "agents"
+    ]
   }
 ]
