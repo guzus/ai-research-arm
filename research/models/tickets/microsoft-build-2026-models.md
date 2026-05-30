@@ -12,9 +12,12 @@ status_note: |
   Copilot in the face of Cursor/Claude Code competition, plus models
   at multiple parameter sizes. Also flagged in @mustafasuleyman's
   2026-05-26 MAI-Image-2.5 tweet ("with Build just a week away, there's
-  much more to come from the @MicrosoftAI team"). Verification partial
-  — primary Microsoft confirmation not yet published.
-expected: Microsoft Build 2026 (next week, San Francisco; agent to update once date confirmed)
+  much more to come from the @MicrosoftAI team"). **Build keynote
+  date now primary-confirmed: 2026-06-02 09:30 PT, kicked off by
+  @satyanadella** (per @Microsoft, RT'd by @satyanadella and
+  @mustafasuleyman 2026-05-29 19:50 UTC). Model lineup itself still
+  partial-verification; awaiting the keynote.
+expected: "Microsoft Build 2026 keynote 2026-06-02 09:30 PT (primary @Microsoft confirmation 2026-05-29)"
 labels:
   - rumored
   - coding-model
@@ -25,13 +28,17 @@ sources:
   - "@IndiaTodayTech"
   - "@Awesome_AI_News"
   - "@mustafasuleyman"
+  - "@satyanadella"
+  - "@Microsoft"
 created_at: 2026-05-29
-updated_at: 2026-05-29
+updated_at: 2026-05-30
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-05-29
     change: "Created — The Information-sourced reports (via The Hindu, India Today Tech, et al.) describe Microsoft planning multiple homegrown AI models for Build 2026, including a cost-efficient code-specific model to compete with Cursor and Claude Code on GitHub Copilot pricing, plus multiple parameter sizes. Foreshadowed by @mustafasuleyman on 2026-05-26 ('with Build just a week away, there's much more to come')"
+  - ts: 2026-05-30
+    change: "Build keynote date primary-confirmed: 2026-06-02 09:30 PT, kicked off by @satyanadella (per @Microsoft, RT'd by @satyanadella 19:50 UTC and @mustafasuleyman 21:55 UTC on 2026-05-29). The keynote date moves to confirmed; the model lineup itself stays at partial verification pending the keynote announcement"
 ---
 
 A 2026-05-29 cluster of reports — The Information via several mainstream

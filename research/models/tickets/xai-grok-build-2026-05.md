@@ -13,9 +13,12 @@ status_note: |
   branded `grok-build-0.1` and is also exposed via third-party harnesses
   — @opencode (2026-05-21), @openclaw (2026-05-19), and @kilocode
   (2026-05-27). After fast rate-limit consumption, xAI reset Grok Build
-  usage limits on 2026-05-26. This is the developer-tooling surface for
-  xAI's coding push and is distinct from the still-pending 1.5T Grok
-  V9-Medium release (see [[grok-v9-medium]]).
+  usage limits on 2026-05-26. **2026-05-29: grok-build-0.1 launched on
+  the xAI API in public beta at $1/m input + $2/m output**, with
+  distribution via OpenRouter, Vercel AI Gateway, Cursor, Hermes Agent,
+  OpenClaw, Kilo Code, and OpenCode. This is the developer-tooling
+  surface for xAI's coding push and is distinct from the still-pending
+  1.5T Grok V9-Medium release (see [[grok-v9-medium]]).
 expected: null
 labels:
   - coding
@@ -27,7 +30,7 @@ sources:
   - "@xai"
   - "@grok"
 created_at: 2026-05-28
-updated_at: 2026-05-29
+updated_at: 2026-05-30
 closed_at: null
 closed_reason: null
 history:
@@ -35,6 +38,8 @@ history:
     change: "Created — xAI Grok Build agentic coding CLI shipped in stages: early beta 2026-05-14 (SuperGrok Heavy), general beta 2026-05-25 (all SuperGrok / X Premium+), with backing model `grok-build-0.1` exposed across @opencode (May 21), @openclaw (May 19), @kilocode (May 27). xAI reset Grok Build usage limits on 2026-05-26 after early users hit rate caps fast. Distinct from the pending 1.5T Grok V9-Medium release (grok-v9-medium)"
   - ts: 2026-05-29
     change: "Grok Build 0.2.7 point release (@xai, 2026-05-28 20:55 UTC): adds /usage and /login slash commands, shared terminals across subagents, and improved image understanding. First post-launch capability bump — incremental, not a model swap"
+  - ts: 2026-05-30
+    change: "grok-build-0.1 launched on the xAI API in public beta (primary @xai, 2026-05-29 16:06 UTC) at $1/m input + $2/m output, framed as extremely cost-effective. Distribution expanded to OpenRouter, Vercel AI Gateway, Cursor, Hermes Agent, OpenClaw, Kilo Code, and OpenCode — the model that powers the Grok Build CLI is now accessible to any developer through the standard third-party agentic-harness ecosystem. Lands the same week as OpenAI's Codex platform Windows push (see [[openai-codex-platform-2026-05]])"
 ---
 
 **Grok Build** is xAI's agentic coding CLI + developer-platform surface,
