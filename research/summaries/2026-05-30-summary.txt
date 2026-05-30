@@ -1,0 +1,13 @@
+AI News - 2026-05-30
+
+TOP STORIES:
+• Groq raising $650M for new "Groq2" inference-neocloud (backstopped by Disruptive + Infinitium), 6mo after Nvidia's $20B not-acqui-hire
+• OpenAI launches Rosalind Biodefense (May 29) — GPT-Rosalind to JHU APL + CEPI for active Bundibugyo Ebola in DRC/Uganda
+• Mistral AI Now Summit (May 28): Le Chat rebrand to "Vibe"; Industrial Engineering w/ Airbus 5y, BMW, EDF, CMA CGM; 10MW Les Ulis DC
+• Snowflake commits $6B/5y to AWS Graviton+GPU; Q1 FY27 +33% YoY, NRR 126%; stock +36%
+• CNN sues Perplexity (SDNY) — first broadcast-tier AI copyright suit; 17K+ items
+
+KEY NUMBERS:
+• Groq $650M / Snowflake $6B/5y / Cerebras IPO $6.38B + 981 tok/s on Kimi K2.6
+
+Full report on GitHub.
