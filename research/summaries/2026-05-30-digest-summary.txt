@@ -1,0 +1,14 @@
+Daily AI Digest - 2026-05-30
+
+TOP STORIES:
+• Anthropic $65B Series H closes at $965B post-money — first time eclipsing OpenAI ($852B); Oct 2026 IPO target
+• Claude Opus 4.8 ships: agentic coding 64.3→69.2%, knowledge-work Elo +137; Dynamic Workflows = 1,000 parallel subagents
+• OpenAI Frontier Governance Framework + Rosalind Biodefense launch (LLNL/JHU APL/CEPI)
+
+KEY NUMBERS:
+• Anthropic ARR $47B (up from $30B); Opus 4.8 Fast Mode 3x cheaper
+• Vertical-agent funding: Fonoa $110M, Garner Health $100M @ $2.74B, Daloopa $47M, Saris $28.8M
+
+TRENDING: Claude Opus 4.8 — 1,693 pts / 1,319 comments on HN
+
+Full digest on GitHub.
