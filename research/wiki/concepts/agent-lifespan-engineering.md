@@ -6,9 +6,10 @@ aliases: ["Agent Lifespan Engineering", "agent half-life", "AgingBench", "Your A
 tags: [agents, evaluation, benchmarks, memory, deployment]
 summary: Treating deployed agentic systems as objects whose effectiveness degrades over a deployment horizon, with memory policy — not model strength — as the dominant variable; the underlying frame of the 2026-05-29 AgingBench paper.
 created_at: 2026-05-29
-updated_at: 2026-05-29
+updated_at: 2026-05-30
 sources:
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
+  - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
   - {title: "Your Agents Are Aging Too — r/MachineLearning", url: "https://www.reddit.com/r/MachineLearning/", date: 2026-05-29}
 ---
 
@@ -49,3 +50,9 @@ dominant variable** in that curve.
 - **Counter-signal to Mythos GA?** If frontier model strength has rapidly
   diminishing returns on deployed-agent half-life, what does that imply for
   Anthropic's Mythos-class GA rollout (see [[anthropic]])?
+- **Does [[claude-opus-4-8]] reverse the regression?** The 2026-05-30 carry
+  still cites the **Sonnet 4.6 → Opus 4.7 −15% PyTest** result as the leading
+  empirical pushback against "just upgrade." Whether Opus 4.8's +4.9pp
+  agentic-coding lift translates to the deployed-agent setting — or whether
+  memory policy continues to swamp the model delta — is the next AgingBench
+  iteration to watch.

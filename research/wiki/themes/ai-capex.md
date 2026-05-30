@@ -6,11 +6,12 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 summary: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-updated_at: 2026-05-29
+updated_at: 2026-05-30
 sources:
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
+  - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
 ---
 
@@ -38,16 +39,43 @@ skepticism in one window:
   first investment-grade GPU-backed loan (ARA generative research, 2026-05-16).
   [[nebius]] is the named independent peer; Google × Blackstone's $5B TPU JV is
   the hyperscaler entrant.
-- **Frontier-lab capital.** [[anthropic]] **closed a $65B Series H at a $965B
-  post-money** on 2026-05-29, confirming the >$30B / >$900B Bloomberg carry —
-  and [[cognition-ai]] closed **$1B+ at $26B post** in the same window, against
-  $492M ARR. OpenAI's "Guaranteed Capacity" futures and confidential S-1
-  filing (Q4 2026 window) compound the signal — labs are locking in compute
-  and listing optionality at any cost (ARA digest 2026-05-20, 2026-05-29).
+- **Frontier-lab capital — the valuation flip.** [[anthropic]] **closed a $65B
+  Series H at a $965B post-money** on 2026-05-28, putting it **$113B above
+  [[openai|OpenAI]]'s March $852B mark** — the **first time Anthropic has
+  outranked OpenAI on private valuation** — with an **October 2026 IPO target**
+  in active discussion with Goldman Sachs / JPMorgan / Morgan Stanley.
+  ARR disclosed at close: **$47B annualized** (vs $30B earlier in 2026 and
+  $10B in 2025). [[cognition-ai]] closed **$1B+ at $26B post** in the same
+  window against $492M ARR. OpenAI's "Guaranteed Capacity" futures and
+  confidential S-1 filing (Q4 2026 window) compound the signal — labs are
+  locking in compute and listing optionality at any cost (ARA digest
+  2026-05-29, 2026-05-30).
+- **Vertical-agent capital is now its own category.** Four May 28 deals
+  cluster into a real funding lane: **Saris $28.8M Series A** (banking
+  back-office agents, 70% task automation, 35% cost cut; integrated with
+  Fiserv / Encompass / MeridianLink); **Fonoa $110M Series C + acquisition of
+  PwC's "Indirect Tax Edge"** — the **first Big-Four-to-AI-startup software
+  carve-out on record** — covering 190+ jurisdictions and >1B
+  transactions/year; **Daloopa $47M Series C** (auditable financial data on
+  5,500+ public companies, 160+ FI customers); **Garner Health $100M Series E
+  at $2.74B post** (employer care-navigation continuously matching ~320M
+  patients against current literature). The vertical-agent lane is now the
+  high-multiple application-layer counterpart to the infrastructure
+  supercycle (ARA digest 2026-05-30).
 - **The bubble counter-narrative.** Meta's paradox — **$56B Q1 revenue but an
   8,000-job layoff** against a $115–135B 2026 capex guide — and a hardening
   "AI bubble / backlash" thread on r/artificial are the bear case (ARA digest
-  2026-05-21).
+  2026-05-21). The 2026-05-30 carry adds **Ohio suspending its data-center
+  tax break** — the first US-state pushback on hyperscaler power-cost
+  externalization — and **Microsoft data suggesting AI is more expensive than
+  hiring people**, against a YoY jump in CEOs planning junior-role cuts from
+  17% → 43% while only 27% report met-expectations on AI ROI.
+
+**Policy overlay.** [[california-ai-regulation]] is now the operative US
+regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s
+Frontier Governance Framework (2026-05-29) explicitly maps onto the
+California Transparency in Frontier AI Act, on the same day the California
+package cleared its chamber-of-origin crossover.
 
 ## Open questions
 - **Demand durability.** Is committed [[neocloud]] backlog genuine end-demand, or

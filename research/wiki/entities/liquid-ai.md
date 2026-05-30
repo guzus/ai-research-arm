@@ -4,17 +4,22 @@ title: Liquid AI
 type: entity
 aliases: ["Liquid AI", "LiquidAI", "Liquid Foundation Models", "LFM"]
 tags: [open-weights, on-device, hybrid-models, mit-spinout]
-summary: MIT-spinout foundation model lab focused on on-device hybrid (non-pure-transformer) architectures; shipped LFM2.5-8B-A1B with day-one llama.cpp / MLX / vLLM / SGLang support on 2026-05-29.
+summary: MIT-spinout foundation model lab focused on on-device hybrid (non-pure-transformer) architectures; shipped LFM2.5-8B-A1B (8B/1B-active MoE, 128K context, 38T pre-training tokens) with day-one llama.cpp / MLX / vLLM / SGLang support on 2026-05-29.
 created_at: 2026-05-29
-updated_at: 2026-05-29
+updated_at: 2026-05-30
 sources:
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
+  - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
+  - {title: "LFM2.5-8B-A1B on HuggingFace", url: "https://huggingface.co/LiquidAI/LFM2.5-8B-A1B", date: 2026-05-29}
+  - {title: "Liquid AI blog — LFM2.5-8B-A1B", url: "https://www.liquid.ai/blog/lfm2-5-8b-a1b", date: 2026-05-29}
 ---
 
 Liquid AI is a foundation-model lab (MIT-spinout lineage) that ships the
 **Liquid Foundation Models (LFM)** series, focused on **on-device hybrid
 architectures** — explicitly not pure transformers. On 2026-05-29 it released
-**LFM2.5-8B-A1B** (8B total parameters, 1B active), the latest in the series.
+**LFM2.5-8B-A1B** — an 8B total / **1B active MoE** with **128K context**,
+trained on **38T tokens** (up from 12T in the prior generation), with the
+**vocabulary doubled for non-Latin languages**.
 
 ## Why it matters
 - **Day-one runtime support.** LFM2.5-8B-A1B shipped with **simultaneous

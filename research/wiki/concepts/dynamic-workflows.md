@@ -4,19 +4,24 @@ title: Dynamic Workflows
 type: concept
 aliases: ["Dynamic Workflows", "Claude Code Dynamic Workflows", "parallel subagents"]
 tags: [agentic, claude-code, anthropic, subagents, codebase-migration]
-summary: Anthropic's 2026-05-29 Claude Code feature that fans a single session into hundreds of parallel subagents, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.
+summary: Anthropic's 2026-05-28 Claude Code feature in which Claude writes a JavaScript orchestrator that fans a single session out to up to 1,000 parallel subagents per run, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.
 created_at: 2026-05-29
-updated_at: 2026-05-29
+updated_at: 2026-05-30
 sources:
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
-  - {title: "Introducing Dynamic Workflows in Claude Code", url: "https://claude.com/blog/introducing-dynamic-workflows-in-claude-code", date: 2026-05-29}
+  - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
+  - {title: "Introducing Dynamic Workflows in Claude Code", url: "https://claude.com/blog/introducing-dynamic-workflows-in-claude-code", date: 2026-05-28}
+  - {title: "Anthropic ships Opus 4.8 alongside Dynamic Workflows (MarkTechPost)", url: "https://www.marktechpost.com/2026/05/28/anthropic-ships-claude-opus-4-8-alongside-dynamic-workflows-and-cheaper-fast-mode-with-workflows-capped-at-1000-subagents/", date: 2026-05-28}
 ---
 
 **Dynamic Workflows** is a Claude Code feature shipped by [[anthropic]] on
-2026-05-29 alongside [[claude-opus-4-8]]. It lets a single Claude Code session
-spawn **hundreds of parallel subagents** to attack a codebase-scale task — the
-canonical example is a large-codebase migration — coordinated and reported back
-to the parent session. Gated to **Enterprise / Team / Max** tiers.
+2026-05-28 alongside [[claude-opus-4-8]]. The mechanism is unusual:
+**Claude writes a JavaScript script that orchestrates subagents**, and the
+script — not Claude directly — drives the fan-out. Each run is **capped at
+1,000 parallel agents** (ARA digest 2026-05-30), explicitly framed for
+**codebase-scale migrations across hundreds of thousands of LOC, with the
+existing test suite as the merge bar**. Gated to **Enterprise / Team / Max**
+tiers.
 
 ## Why it matters
 - **Concrete answer to "agent until done."** Dynamic Workflows reads as
@@ -34,10 +39,11 @@ to the parent session. Gated to **Enterprise / Team / Max** tiers.
   injection via the Messages API** ship with Dynamic Workflows — together
   these turn multi-turn sessions into editable agentic loops without
   restarting context (ARA digest 2026-05-29).
-- **Community reception.** A standalone HN thread (118 pts / 92 comments)
-  ran in parallel with the launch — excitement balanced with questions about
-  cost controls and **blast radius on destructive operations**, the natural
-  failure mode of large-fan-out agentic systems.
+- **Community reception.** A standalone HN thread (**150 pts / 117 comments**
+  by the 2026-05-30 carry) ran in parallel with the launch — the **1,000
+  subagent cap** itself became the focal point of cost-control and
+  blast-radius discussion, exactly the failure mode that [[agentic-ai-security]]
+  predicts will dominate large-fan-out agentic systems.
 
 ## Open questions
 - **Blast radius.** Hundreds of parallel subagents on a real codebase create

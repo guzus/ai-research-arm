@@ -13,7 +13,7 @@
       ],
       "summary": "Treating deployed agentic systems as objects whose effectiveness degrades over a deployment horizon, with memory policy — not model strength — as the dominant variable; the underlying frame of the 2026-05-29 AgingBench paper.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-05-29",
+      "updated_at": "2026-05-30",
       "file": "concepts/agent-lifespan-engineering.md",
       "aliases": [
         "Agent Lifespan Engineering",
@@ -23,10 +23,12 @@
       ],
       "outbound": [
         "anthropic",
+        "claude-opus-4-8",
         "dynamic-workflows"
       ],
       "inbound": [
         "anthropic",
+        "claude-opus-4-8",
         "dynamic-workflows"
       ]
     },
@@ -76,7 +78,7 @@
       ],
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-05-29",
+      "updated_at": "2026-05-30",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -86,18 +88,22 @@
       ],
       "outbound": [
         "anthropic",
+        "california-ai-regulation",
         "cognition-ai",
         "coreweave",
         "nebius",
-        "neocloud"
+        "neocloud",
+        "openai"
       ],
       "inbound": [
         "anthropic",
+        "california-ai-regulation",
         "cognition-ai",
         "coreweave",
         "gemini-3-5-flash",
         "nebius",
-        "neocloud"
+        "neocloud",
+        "openai"
       ]
     },
     {
@@ -110,9 +116,9 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family, operating gated frontier model Mythos and valued at $965B post-money after closing a $65B Series H in May 2026.",
+      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-05-29",
+      "updated_at": "2026-05-30",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -123,20 +129,59 @@
         "agent-lifespan-engineering",
         "agentic-ai-security",
         "ai-capex",
+        "california-ai-regulation",
         "claude-opus-4-8",
         "cognition-ai",
         "dynamic-workflows",
         "gemini-3-5-flash",
-        "neocloud"
+        "neocloud",
+        "openai"
       ],
       "inbound": [
         "agent-lifespan-engineering",
         "agentic-ai-security",
         "ai-capex",
+        "california-ai-regulation",
         "claude-opus-4-8",
         "cognition-ai",
         "dynamic-workflows",
-        "gemini-3-5-flash"
+        "gemini-3-5-flash",
+        "openai"
+      ]
+    },
+    {
+      "slug": "california-ai-regulation",
+      "title": "California AI Regulation",
+      "type": "theme",
+      "tags": [
+        "policy",
+        "regulation",
+        "california",
+        "ai-governance",
+        "frontier-ai"
+      ],
+      "summary": "The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover.",
+      "created_at": "2026-05-30",
+      "updated_at": "2026-05-30",
+      "file": "themes/california-ai-regulation.md",
+      "aliases": [
+        "California AI regulation",
+        "California AI bills",
+        "Sacramento AI policy",
+        "California Transparency in Frontier AI Act",
+        "AB 1609",
+        "AB 1159",
+        "A 9317"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "openai"
+      ],
+      "inbound": [
+        "ai-capex",
+        "anthropic",
+        "openai"
       ]
     },
     {
@@ -150,9 +195,9 @@
         "frontier-model",
         "alignment"
       ],
-      "summary": "Anthropic's 2026-05-29 frontier flagship, succeeding Opus 4.7 at the same price with materially better alignment numbers and the cleanest deception-rate result of any 2026 frontier release.",
+      "summary": "Anthropic's 2026-05-28 frontier flagship, succeeding Opus 4.7 at flat pricing with a +4.9pp agentic-coding lift, +137 knowledge-work Elo, and a Fast Mode that runs ~2.5× faster and 3× cheaper.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-05-29",
+      "updated_at": "2026-05-30",
       "file": "entities/claude-opus-4-8.md",
       "aliases": [
         "Claude Opus 4.8",
@@ -160,10 +205,12 @@
         "claude-opus-4-8"
       ],
       "outbound": [
+        "agent-lifespan-engineering",
         "anthropic",
         "dynamic-workflows"
       ],
       "inbound": [
+        "agent-lifespan-engineering",
         "anthropic",
         "dynamic-workflows"
       ]
@@ -242,9 +289,9 @@
         "subagents",
         "codebase-migration"
       ],
-      "summary": "Anthropic's 2026-05-29 Claude Code feature that fans a single session into hundreds of parallel subagents, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.",
+      "summary": "Anthropic's 2026-05-28 Claude Code feature in which Claude writes a JavaScript orchestrator that fans a single session out to up to 1,000 parallel subagents per run, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-05-29",
+      "updated_at": "2026-05-30",
       "file": "concepts/dynamic-workflows.md",
       "aliases": [
         "Dynamic Workflows",
@@ -303,9 +350,9 @@
         "hybrid-models",
         "mit-spinout"
       ],
-      "summary": "MIT-spinout foundation model lab focused on on-device hybrid (non-pure-transformer) architectures; shipped LFM2.5-8B-A1B with day-one llama.cpp / MLX / vLLM / SGLang support on 2026-05-29.",
+      "summary": "MIT-spinout foundation model lab focused on on-device hybrid (non-pure-transformer) architectures; shipped LFM2.5-8B-A1B (8B/1B-active MoE, 128K context, 38T pre-training tokens) with day-one llama.cpp / MLX / vLLM / SGLang support on 2026-05-29.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-05-29",
+      "updated_at": "2026-05-30",
       "file": "entities/liquid-ai.md",
       "aliases": [
         "Liquid AI",
@@ -382,10 +429,45 @@
         "gemini-3-5-flash",
         "nebius"
       ]
+    },
+    {
+      "slug": "openai",
+      "title": "OpenAI",
+      "type": "entity",
+      "tags": [
+        "frontier-lab",
+        "gpt",
+        "foundation-models",
+        "ai-policy"
+      ],
+      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped the Frontier Governance Framework and Rosalind Biodefense program on 2026-05-29.",
+      "created_at": "2026-05-30",
+      "updated_at": "2026-05-30",
+      "file": "entities/openai.md",
+      "aliases": [
+        "OpenAI",
+        "OpenAI OpCo",
+        "@OpenAI",
+        "OpenAI Inc."
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "california-ai-regulation"
+      ],
+      "inbound": [
+        "ai-capex",
+        "anthropic",
+        "california-ai-regulation"
+      ]
     }
   ],
   "resolver": {
     "@anthropicai": "anthropic",
+    "@openai": "openai",
+    "a 9317": "california-ai-regulation",
+    "ab 1159": "california-ai-regulation",
+    "ab 1609": "california-ai-regulation",
     "agent half-life": "agent-lifespan-engineering",
     "agent lifespan engineering": "agent-lifespan-engineering",
     "agent security": "agentic-ai-security",
@@ -401,6 +483,10 @@
     "ai-capex": "ai-capex",
     "anthropic": "anthropic",
     "anthropic pbc": "anthropic",
+    "california ai bills": "california-ai-regulation",
+    "california ai regulation": "california-ai-regulation",
+    "california transparency in frontier ai act": "california-ai-regulation",
+    "california-ai-regulation": "california-ai-regulation",
     "claude code dynamic workflows": "dynamic-workflows",
     "claude opus 4.8": "claude-opus-4-8",
     "claude-opus-4-8": "claude-opus-4-8",
@@ -430,11 +516,20 @@
     "nebius group n.v.": "nebius",
     "neo-cloud": "neocloud",
     "neocloud": "neocloud",
+    "openai": "openai",
+    "openai inc.": "openai",
+    "openai opco": "openai",
     "opus 4.8": "claude-opus-4-8",
     "parallel subagents": "dynamic-workflows",
+    "sacramento ai policy": "california-ai-regulation",
     "your agents are aging too": "agent-lifespan-engineering"
   },
   "recent_log": [
+    {
+      "date": "2026-05-30",
+      "op": "ingest",
+      "summary": "Ingested 2026-05-30 digest. Created 2 (openai entity — first page despite frequent mentions, anchored by Frontier Governance Framework + Rosalind Biodefense + $852B valuation; california-ai-regulation theme — May 29 crossover deadline + AB 1609/AB 1159/A 9317). Updated 6 (anthropic — Series H formalized, valuation flip $113B above OpenAI, October 2026 IPO target, $47B ARR at close; claude-opus-4-8 — final benchmark deltas, Fast Mode 2.5×/3×, Simon Willison \"modest but tangible\"; dynamic-workflows — JavaScript orchestrator + 1,000-subagent cap; liquid-ai — LFM2.5-8B-A1B 128K/38T/doubled-vocab detail; agent-lifespan-engineering — Opus 4.8 regression-reversal question; ai-capex — valuation flip + May 28 vertical-agent funding cluster + Ohio data-center tax pushback)."
+    },
     {
       "date": "2026-05-29",
       "op": "ingest",
