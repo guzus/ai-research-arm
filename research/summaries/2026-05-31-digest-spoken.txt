@@ -1,0 +1,11 @@
+Speaker 1: Sunday, May thirty-first, twenty twenty-six.
+Speaker 2: [high_energy] OpenRouter just closed a one hundred thirteen million dollar Series B, making model routing officially a fundable infrastructure category.
+Speaker 1: The big valuation news: Anthropic's post-money is now [emphasis]nine hundred sixty-five billion dollars[/emphasis], putting it ahead of OpenAI at eight hundred fifty-two billion, the first time Anthropic has been on top.
+Speaker 2: On the enterprise side, Salesforce cut a migration from two hundred thirty-one days down to thirteen using Claude Code, and saw seventy-nine percent more pull requests per developer.
+Speaker 1: There's also an anonymous enterprise reportedly running a [emphasis]five hundred million dollar[/emphasis] Claude bill in a single month, with no usage caps at all.
+Speaker 2: [dramatic_pause] That is one very expensive month of AI.
+Speaker 1: Microsoft and NVIDIA are reportedly aligning on agentic Windows PCs through a framework called OpenClaw, with Build twenty twenty-six coming up June second and third.
+Speaker 2: Worth flagging, EY Canada's cybersecurity report is under fire, GPTZero found that a majority of its citations were AI-hallucinated.
+Speaker 1: And Mistral had a busy Now Summit, a vibe rebrand, industrial deals with Airbus, BMW, and EDF, and a ten megawatt data center being built outside Paris.
+Speaker 2: A lot of enterprise momentum, and the infrastructure layer is clearly racing to keep up.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
