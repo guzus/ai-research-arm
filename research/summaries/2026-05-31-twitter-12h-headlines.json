@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "APPLE WWDC SIRI: ON-DEVICE DISTILLED GEMINI; HEAVY QUERIES NOW ROUTE TO GOOGLE CLOUD VIA NVIDIA CONFIDENTIAL-COMPUTE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2061058117304262999",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC CLOSES $65B SERIES H AT $965B POST-MONEY; $47B RUN-RATE — FIRST PRIVATE AI LAB PAST OPENAI BY PAPER VALUATION",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2060061347522433422",
+    "category": "business"
+  },
+  {
+    "headline": "CHAPTER CEO ON THE INFORMATION: ANTHROPIC 'DECREASED PRIOR MODEL QUALITY BEFORE NEW LAUNCH' — 'APPLE PLAYBOOK'",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2060783533564612887",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENROUTER RAISES $113M SERIES B AT $1.3B; CAPITALG (ALPHABET) LED, NVENTURES (NVIDIA) IN — ON TRACK FOR >1Q TOKENS/YR",
+    "source": "@betterhn300",
+    "url": "https://x.com/betterhn300/status/2060934546376249774",
+    "category": "business"
+  },
+  {
+    "headline": "ROBINHOOD LAUNCHES AGENTIC TRADING + AGENTIC CREDIT CARD — THIRD-PARTY AI AGENTS NOW EXECUTE TRADES, PURCHASES",
+    "source": "@0xJiuJitsuJerry",
+    "url": "https://x.com/0xJiuJitsuJerry/status/2060766741018583515",
+    "category": "business"
+  },
+  {
+    "headline": "DEEPSEEK PUBLISHES MULTI-CODING-AGENT INTEGRATION REPO — CLAUDE CODE, COPILOT, CODEX, CURSOR, WINDSURF + 20 MORE",
+    "source": "@chenzeling4",
+    "url": "https://x.com/chenzeling4/status/2061055850400375192",
+    "category": "opensource"
+  }
+]

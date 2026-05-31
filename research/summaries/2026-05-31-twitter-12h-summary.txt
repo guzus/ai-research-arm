@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-31 12:47 UTC
+
+CYCLE: Apple WWDC Siri preview + Anthropic $965B valuation aftermath + new model-degradation accusation.
+
+TOP STORIES:
+• Apple Siri runs distilled Gemini on-device; heavy queries route to Google Cloud (not Apple Private Cloud Compute) via NVIDIA confidential-compute — Information report relayed by @kimmonismus [⚠]
+• Anthropic $65B Series H at $965B / $47B run-rate keeps cascading 3 days post-announce; first private AI lab past OpenAI on paper [✓]
+• Chapter CEO Cobi Gantz on @theinformation: Anthropic "decreased quality of prior models right before launching new ones — Apple playbook"; Gary Marcus amplifies [🚩]
+
+WATCH: WWDC keynote (June) confirming Google-Cloud routing; any Anthropic response to the Gantz degradation accusation; Microsoft Build 2026 June 2-3.
+
+Full update on GitHub.
