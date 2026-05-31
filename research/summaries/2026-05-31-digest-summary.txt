@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-05-31
+
+TOP STORIES:
+• OpenRouter raises $113M Series B — model-routing layer now a fundable infra category (HN 223 pts)
+• EY Canada cybersecurity report — majority of citations AI-hallucinated, per GPTZero (HN 187 pts)
+• Microsoft + NVIDIA reportedly aligning on agentic Windows PCs via "OpenClaw" framework ahead of Build 2026 (June 2-3)
+
+KEY NUMBERS:
+• Anthropic $965B post-money > OpenAI $852B — first time on top
+• Salesforce: 231 → 13 day migration with Claude Code; 79% more PRs/dev
+• Mystery enterprise: $500M Claude bill in one month (no usage caps)
+
+TRENDING: Mistral AI Now Summit notes (HN 447 pts, 196 comments) — Vibe rebrand + Airbus/BMW/EDF industrial AI + Les Ulis 10 MW data center
+
+Full digest on GitHub.
