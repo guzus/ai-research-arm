@@ -62,27 +62,30 @@ and opens a PR with methodology fixes.
 
 ## GitHub Actions Workflows
 
-Workflows split between two runners:
+Almost every workflow runs on **`runs-on: [self-hosted, Linux]`** — an
+autoscaled fleet of ephemeral Cloud Run workers (the `runner-autoscaler`
+service in `../runner`; see Load-bearing rule 5). A fresh
+`cloud-run-worker-*` instance spins up per job, so "self-hosted" no longer
+means one serial slot — jobs run in parallel, and each worker carries the
+pipeline's baked-in state (bird CLI + birdy daemon, LFS-hydrated
+`research/` checkout, Puppeteer/Chrome, pre-installed tooling). Aggregation,
+synthesis, output, CI, and the Claude agent lanes all run here.
 
-- **`runs-on: ubuntu-latest`** — stateless workflows (no bird-CLI state,
-  no LFS hydration, no Puppeteer/Chrome, no warm caches). These run on
-  GitHub-hosted runners so they don't queue behind the single self-hosted
-  job slot. Currently: `hourly-rss.yml`, `daily-arxiv.yml`,
-  `2h-bluesky.yml`, `daily-improve.yml`, `claude-code-review.yml`,
-  `claude.yml`.
-- **`runs-on: [self-hosted, Linux]`** — workflows that genuinely need
-  the self-hosted runner's persistent state (bird CLI + birdy daemon,
-  LFS-hydrated `research/` checkout, Puppeteer/Chrome, large agent
-  pipelines). Currently: `hourly-twitter.yml`, `daily-digest.yml`,
-  `daily-front-page.yml`, `generative-research.yml`,
-  `24h-model-timeline.yml`, `ai-news-research.yml`, `ci.yml`,
-  `research-issue.yml`, `4h-community.yml`, `wiki-ingest.yml`.
-- **Both tiers** — `liveness-check.yml` (the freshness watchdog) runs one
-  job on each runner. No single runner survives both failure modes — an
-  `ubuntu-latest` billing/spending-limit block (kills the GitHub-hosted
-  tier) vs. a self-hosted outage — so the watchdog must run on both;
-  whichever tier is alive emits the hooker/Telegram alert. See the
-  workflow header for the rationale.
+Only **two `runs-on: ubuntu-latest`** (GitHub-hosted) jobs exist, and both
+are watchdogs that must survive a self-hosted/Cloud Run outage — a watchdog
+that runs on the runners it is watching is useless:
+- `liveness-check.yml` runs one job on EACH tier (its `ubuntu` job + its
+  `self-hosted` job). No single runner survives both failure modes — a
+  GitHub-hosted billing/spending-limit block vs. a self-hosted outage — so
+  whichever tier is alive emits the hooker/Telegram staleness alert.
+- `auto-rerun-on-runner-loss.yml` re-runs jobs whose ephemeral worker
+  vanished mid-run (Load-bearing rule 11).
+
+The per-workflow `ubuntu-latest` vs. `self-hosted` lists that used to live
+here are gone on purpose: the answer is now "self-hosted unless it's one of
+those two watchdogs." **Always read the workflow's actual `runs-on:` —
+never trust a cached list** (the old list here drifted to 100% wrong once
+the autoscaler landed and the stateless lanes moved back to self-hosted).
 
 Claude workflows use `anthropics/claude-code-action@v1` with the model
 passed via `claude_args: "--model opus"` (never as a separate `model:`
@@ -244,21 +247,23 @@ output or break the pipeline. Read them before editing.
    `continue-on-error: true` style. Don't add hard dependencies on
    telemetry success.
 
-5. **Runner choice is load-bearing — pick by state dependency.** Two
-   runners, two rules:
-   - **Self-hosted** for workflows that depend on baked-in state: bird
-     CLI + warm birdy daemon (`hourly-twitter*`, `24h-model-timeline`),
-     LFS-hydrated `research/` for prior-output context
-     (`daily-digest`, `daily-front-page`, `ci.yml` dashboard job),
-     Puppeteer/Chrome (`daily-front-page`), or pre-installed
-     pnpm/Oracle tooling.
-   - **`ubuntu-latest`** for stateless workflows. The self-hosted runner
-     processes one job at a time; stateless work on `ubuntu-latest`
-     frees that queue. See the "GitHub Actions Workflows" section for
-     the current split. Before flipping a workflow from self-hosted to
-     `ubuntu-latest`, verify it doesn't read pre-populated dirs, depend
-     on warm caches, or need bird/birdy state — the cost of getting
-     this wrong is a silently-broken pipeline.
+5. **Runner choice is load-bearing — default to self-hosted.** The
+   self-hosted tier is an autoscaled Cloud Run worker fleet
+   (`runner-autoscaler` in `../runner`): a fresh ephemeral
+   `cloud-run-worker-*` registers per job, runs it, then deregisters, so
+   jobs run in PARALLEL (no single serial slot) and each carries baked-in
+   state — bird CLI + warm birdy daemon (`hourly-twitter*`,
+   `24h-model-timeline`), LFS-hydrated `research/` for prior-output context
+   (`daily-digest`, `daily-front-page`, `ci.yml` dashboard job),
+   Puppeteer/Chrome (`daily-front-page`), pre-installed pnpm/Oracle
+   tooling. Use `[self-hosted, Linux]` for anything touching that state,
+   which is nearly everything. Reserve `ubuntu-latest` for the two
+   watchdogs that must outlive a self-hosted outage (`liveness-check.yml`,
+   `auto-rerun-on-runner-loss.yml`). The tradeoff of ephemeral workers: an
+   instance can vanish mid-job (preemption / maintenance / OOM), failing
+   the run with no error in the log — rule 11 auto-recovers that. Before
+   moving a job to `ubuntu-latest`, verify it needs neither the warm state
+   nor bird/birdy — getting this wrong silently breaks the pipeline.
 
 6. **bird CLI calls must be graceful.** Always pass `--json --plain`
    and pipe to a fallback (`|| echo "[]"`). The Twitter cookies expire;
@@ -310,6 +315,27 @@ output or break the pipeline. Read them before editing.
     validator (or vice versa) silently corrupts the lane. The agent
     iterates `check_wiki.py` until exit 0 before committing; CI runs it
     on every PR.
+
+11. **Worker-death auto-rerun must stay loop-safe.**
+    `.github/workflows/auto-rerun-on-runner-loss.yml` watches the
+    unattended self-hosted pipelines via `workflow_run` and, when one fails
+    because its ephemeral worker vanished (a failed/incomplete job with NO
+    genuinely-failed step — "died at Set up job", or steps stuck
+    `in_progress`/`null`), re-runs only the failed jobs. Three invariants
+    keep it from becoming a retry storm or masking real red CI, and MUST be
+    preserved if you edit it:
+    (a) **Cap on `run_attempt`** — it only fires when
+    `github.event.workflow_run.run_attempt < 3` (≤ 2 auto re-runs). This is
+    the single load-bearing guard against infinite loops.
+    (b) **Gate on the lost-runner signature** — never re-run a run whose
+    failed job has a step with `conclusion == "failure"` (a genuine
+    failure), nor a `cancelled` run. Only the "worker vanished" shape
+    qualifies.
+    (c) **Not self-referential, and `ubuntu-latest`** — the watchdog's own
+    name is absent from its `workflows:` trigger list (so it can't
+    self-trigger) and it runs GitHub-hosted (so a Cloud Run blip can't take
+    out the recovery path too). Adding its name to the trigger list, or
+    moving it to self-hosted, breaks both protections.
 
 ## Code Style
 
