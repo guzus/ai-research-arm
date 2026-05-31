@@ -3,8 +3,8 @@ description: >
   Install bird CLI + birdy, fetch the unified Twitter snapshot (handles +
   searches + news) via birdy multi-fetch into /tmp/bird/, optionally
   pre-filter zero-engagement noise from search results, and (optionally)
-  build an aggregated /tmp/bird/all.json. Shared across the three Twitter
-  backend tiers (claude, deepseek-agentic, deepseek-pi) — the per-tier
+  build an aggregated /tmp/bird/all.json. Shared across the Twitter
+  backend tiers (claude, deepseek-claude-code, deepseek-pi, fireworks-pi) — the per-tier
   workflow controls behavior via the inputs below.
 
 inputs:
@@ -24,7 +24,7 @@ inputs:
   pre_filter:
     description: >
       Drop search-*.json tweets with zero engagement older than 30min.
-      Historically only the deepseek-agentic tier enabled this — leave 'false'
+      Historically only the deepseek-claude-code tier enabled this — leave 'false'
       to preserve verbatim behavior for other tiers.
     required: false
     default: 'false'

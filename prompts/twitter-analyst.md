@@ -21,7 +21,7 @@ PRIOR CONTEXT (read these BEFORE writing — multi-day arcs are first-class):
 
 TOOLS YOU CAN USE:
 {{tools_section}}
-HARD CAPS: {{bird_budget}} bird/bird-fast follow-up calls + {{curl_budget}} curl fetches per run.
+HARD CAPS: {{bird_budget}} {{follow_up_tools}} follow-up calls + {{curl_budget}} curl fetches per run.
 Use them when verification matters; quiet cycles should use fewer.
 
 INSTRUCTIONS:
@@ -53,7 +53,7 @@ INSTRUCTIONS:
 8. Flag loud-but-shaky claims in Skeptic's corner.
 9. End with a concrete Watch list and Research notes.
 10. Public-output hygiene: never make internal collection failures,
-   auth/cookie problems, `bird`/`bird-fast` errors, HTTP 403s, Cloudflare
+   auth/cookie problems, {{follow_up_tools}} errors, HTTP 403s, Cloudflare
    challenge pages, stack traces, or raw tool stderr/stdout into a Top Story,
    Quick hit, Skeptic's corner item, Watch item, or public Research note.
    Treat those as private pipeline diagnostics. If a source cannot be

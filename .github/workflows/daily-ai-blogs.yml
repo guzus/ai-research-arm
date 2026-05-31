@@ -1,0 +1,59 @@
+name: Daily AI Expert Blogs
+
+on:
+  schedule:
+    # Run every 6 hours. Expert blogs are slower and duplicate-heavy, so
+    # this stays separate from the official hourly RSS announcement lane.
+    - cron: '13 */6 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: daily-ai-blogs
+  cancel-in-progress: true
+
+jobs:
+  ai-blogs:
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 15
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Get current date
+        id: date
+        run: |
+          echo "date=$(date -u +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+          echo "timestamp=$(date -u +'%Y-%m-%d %H:%M UTC')" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch expert blog feeds
+        run: |
+          set -euo pipefail
+          python3 scripts/fetch_ai_blogs.py \
+            --date "${{ steps.date.outputs.date }}" \
+            --registry data/sources/ai_blogs.json \
+            --out-dir research/blogs
+
+      - name: Commit blog watch output
+        run: |
+          set -euo pipefail
+          git add research/blogs/${{ steps.date.outputs.date }}.md
+          git commit -m "AI expert blog watch ${{ steps.date.outputs.timestamp }}" || echo "No changes"
+
+      - name: Push changes
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

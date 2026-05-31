@@ -1,10 +1,12 @@
-name: Twitter AI News (matrix — claude / deepseek-agentic / deepseek-pi)
+name: Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / fireworks-pi)
 
-# Unified Twitter/X pipeline that fans out across three backend tiers:
+# Unified Twitter/X pipeline that fans out across four backend tiers:
 #   - claude            (cron '7 */3 * * *', model: opus,             output → research/twitter/)
-#   - deepseek-agentic  (cron '37 */6 * * *', model: deepseek-v4-pro,  output → research/twitter-deepseek/)
+#   - deepseek-claude-code (cron '37 */6 * * *', model: deepseek-v4-pro,  output → research/twitter-deepseek/)
 #   - deepseek-pi       (manual only,        model: deepseek-v4-pro via pi harness,
 #                        output → research/twitter-deepseek-pi/)
+#   - fireworks-pi      (manual only,        model: Kimi K2.6 via Fireworks + pi,
+#                        output → research/twitter-fireworks-pi/)
 #
 # Routing rules:
 #   - schedule trigger → backend resolved from github.event.schedule by the
@@ -12,29 +14,30 @@ name: Twitter AI News (matrix — claude / deepseek-agentic / deepseek-pi)
 #     whose `schedule` field matches, so the active matrix size is 1.
 #   - workflow_dispatch → backend resolved from inputs.backend (default: claude).
 #
-# The three backends share:
+# The four backends share:
 #   - .github/actions/twitter-fetch          (bird + birdy multi-fetch + optional pre-filter + optional aggregate)
-#   - .github/actions/birdy-daemon           (warm daemon + bird-fast wrapper, used by claude + deepseek-agentic)
+#   - .github/actions/birdy-daemon           (warm daemon + bird-fast wrapper, used by claude + deepseek-claude-code)
 #   - .github/actions/render-twitter-prompt  (substitute {{placeholders}} in prompts/twitter-analyst.md)
 #   - prompts/twitter-analyst.md             (one prompt body with {{placeholders}} for tier-specific values)
 #
-# History (collapsed from three workflows in #PR-twitter-matrix):
-#   - hourly-twitter.yml                       (Claude tier)
-#   - hourly-twitter-deepseek-agentic.yml      (DeepSeek-via-Anthropic-shim tier)
-#   - hourly-twitter-deepseek-pi.yml           (DeepSeek-via-pi-harness tier)
+# History (collapsed from earlier per-backend workflows in #PR-twitter-matrix):
+#   - hourly-twitter.yml                   (Claude tier)
+#   - legacy DeepSeek Claude Code tier     (DeepSeek via Anthropic-compatible shim)
+#   - legacy DeepSeek pi tier              (DeepSeek via pi harness)
 #
 # Required secrets:
-#   CLAUDE_CODE_OAUTH_TOKEN              — claude tier (also passed to deepseek-agentic but unused there)
+#   CLAUDE_CODE_OAUTH_TOKEN              — claude tier (also passed to deepseek-claude-code but unused there)
 #   DEEPSEEK_API_KEY                     — both deepseek tiers
+#   FIREWORKS_API_KEY                    — fireworks-pi tier
 #   BIRD_AUTH_TOKEN, BIRD_CT0            — all tiers
-#   HOOKER_URL, HOOKER_TOKEN             — claude tier (headline-alert blast + telemetry) and deepseek tiers (per-cycle notification, relayed to Telegram)
+#   HOOKER_URL, HOOKER_TOKEN             — claude tier (headline-alert blast + telemetry) and comparison tiers (per-cycle notification, relayed to Telegram)
 #   VERCEL_DEPLOY_HOOK                   — optional, claude tier only
 
 on:
   schedule:
     # claude tier: every 3 hours at minute 7.
     - cron: '7 */3 * * *'
-    # deepseek-agentic tier: every 6 hours at minute 37. Offset 30min from
+    # deepseek-claude-code tier: every 6 hours at minute 37. Offset 30min from
     # the nearest claude run so neither hits bird CLI at the same time.
     # Slots are 00:37, 06:37, 12:37, 18:37 UTC.
     - cron: '37 */6 * * *'
@@ -47,8 +50,9 @@ on:
         type: choice
         options:
           - claude
-          - deepseek-agentic
+          - deepseek-claude-code
           - deepseek-pi
+          - fireworks-pi
       dry_run:
         description: Claude tier only — render fixture, skip push/deploy/alerts.
         required: false
@@ -58,7 +62,7 @@ on:
 # Per-backend concurrency groups: each tier serializes against itself
 # (cron-driven and manually-dispatched runs of the same backend land
 # in the same group, so they queue/cancel against each other) but the
-# three tiers can run in parallel when their schedules collide.
+# four tiers can run in parallel when their schedules collide.
 #
 # For workflow_dispatch we read inputs.backend. For schedule we map
 # the cron expression to a backend label inline — keeping the
@@ -72,7 +76,7 @@ concurrency:
   # 'claude' and collapse both cron tiers into the same concurrency
   # group. Reading inputs.backend ONLY when we're actually on a dispatch
   # trigger keeps the cron→backend mapping intact.
-  group: hourly-twitter-${{ (github.event_name == 'workflow_dispatch' && inputs.backend) || (github.event.schedule == '7 */3 * * *' && 'claude') || (github.event.schedule == '37 */6 * * *' && 'deepseek-agentic') || 'unknown' }}
+  group: hourly-twitter-${{ (github.event_name == 'workflow_dispatch' && inputs.backend) || (github.event.schedule == '7 */3 * * *' && 'claude') || (github.event.schedule == '37 */6 * * *' && 'deepseek-claude-code') || 'unknown' }}
   cancel-in-progress: false
 
 jobs:
@@ -98,7 +102,7 @@ jobs:
           - backend: claude
             event: schedule
             schedule: '7 */3 * * *'
-          - backend: deepseek-agentic
+          - backend: deepseek-claude-code
             event: schedule
             schedule: '37 */6 * * *'
           # workflow_dispatch path — single entry, runtime-resolved.
@@ -144,7 +148,7 @@ jobs:
             BACKEND="$MATRIX_BACKEND"
           fi
           case "$BACKEND" in
-            claude|deepseek-agentic|deepseek-pi) ;;
+            claude|deepseek-claude-code|deepseek-pi|fireworks-pi) ;;
             *) echo "::error::Unknown backend '$BACKEND'"; exit 1 ;;
           esac
           {
@@ -232,7 +236,7 @@ jobs:
               HARNESS_LABEL="the production Claude Twitter/X AI monitor"
               FEATURES="headlines,hooker-batch,auto-research,dry-run"
               ;;
-            deepseek-agentic)
+            deepseek-claude-code)
               OUTPUT_DIR="research/twitter-deepseek"
               SUMMARY_SLUG="twitter-deepseek"
               TITLE_SUFFIX=" (DeepSeek v4 Pro)"
@@ -260,6 +264,21 @@ jobs:
               BIRD_BUDGET=5
               CURL_BUDGET=3
               HARNESS_LABEL="on DeepSeek v4 Pro under the pi coding agent harness"
+              FEATURES="telegram"
+              ;;
+            fireworks-pi)
+              OUTPUT_DIR="research/twitter-fireworks-pi"
+              SUMMARY_SLUG="twitter-fireworks-pi"
+              TITLE_SUFFIX=" (pi + Fireworks Kimi K2.6)"
+              CYCLE_HOURS=6
+              COMMIT_PREFIX="Twitter (pi+Fireworks) update"
+              FETCH_CONCURRENCY=6
+              PRE_FILTER=false
+              AGGREGATE=false
+              ENABLE_DAEMON=false
+              BIRD_BUDGET=5
+              CURL_BUDGET=3
+              HARNESS_LABEL="on Kimi K2.6 through Fireworks under the pi coding agent harness"
               FEATURES="telegram"
               ;;
           esac
@@ -296,7 +315,7 @@ jobs:
           aggregate: ${{ steps.const.outputs.aggregate }}
           free_disk: 'true'
 
-      # ── Start birdy daemon (claude + deepseek-agentic) ─────────────
+      # ── Start birdy daemon (claude + deepseek-claude-code) ─────────────
       # pi tier skips this — its harness uses plain `bird` only.
       # claude tier also skips on dry_run.
       - name: Start birdy daemon
@@ -308,13 +327,13 @@ jobs:
           bird_auth_token: ${{ secrets.BIRD_AUTH_TOKEN }}
           bird_ct0: ${{ secrets.BIRD_CT0 }}
 
-      # ── Install pi-coding-agent (deepseek-pi only) ─────────────────
+      # ── Install pi-coding-agent (pi tiers only) ────────────────────
       - name: Install pi coding agent
-        if: steps.backend.outputs.name == 'deepseek-pi'
+        if: contains(fromJSON('["deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
         run: npm install -g @mariozechner/pi-coding-agent
 
       - name: Configure git identity (pi tier — no claude-code-action to do it)
-        if: steps.backend.outputs.name == 'deepseek-pi'
+        if: contains(fromJSON('["deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -359,8 +378,8 @@ jobs:
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*),Bash(bird-fast:*),Bash(curl:*),Bash(jq:*)"
           prompt: ${{ steps.render.outputs.prompt }}
 
-      - name: Process tweets with DeepSeek v4 Pro (deepseek-agentic tier)
-        if: steps.backend.outputs.name == 'deepseek-agentic'
+      - name: Process tweets with DeepSeek v4 Pro (deepseek-claude-code tier)
+        if: steps.backend.outputs.name == 'deepseek-claude-code'
         uses: anthropics/claude-code-action@v1
         env:
           # Redirect Claude Code CLI to DeepSeek's Anthropic-compatible endpoint.
@@ -389,7 +408,7 @@ jobs:
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
-          # Mirrors the model used by the agentic tier.
+          # Mirrors the model used by the Claude Code tier.
           # Note: the [1m] suffix used in the Anthropic-shim path is NOT
           # accepted on DeepSeek's OpenAI-compatible endpoint (returns
           # `400 Model Not Exist`). 1M context is the default for v4-pro
@@ -401,6 +420,23 @@ jobs:
             --thinking high \
             --tools read,write,edit,bash,grep,find,ls \
             --model deepseek/deepseek-v4-pro
+
+      - name: Process tweets with pi + Fireworks (fireworks-pi tier)
+        if: steps.backend.outputs.name == 'fireworks-pi'
+        env:
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        run: |
+          # Fireworks uses an OpenAI-compatible chat completions endpoint.
+          # pi has a built-in Fireworks provider, so only the API key,
+          # provider name, and Fireworks model id are needed here.
+          pi -p "$(cat /tmp/prompt-rendered.md)" \
+            --no-session \
+            --thinking high \
+            --tools read,write,edit,bash,grep,find,ls \
+            --provider fireworks \
+            --model accounts/fireworks/models/kimi-k2p6
 
       # ── Stop birdy daemon (always, if started) ─────────────────────
       - name: Stop birdy daemon
@@ -729,10 +765,10 @@ jobs:
 
           echo "Done — batch delivered (delivered=$DELIVERED_COUNT, failed=$FAILED)."
 
-      # ── DeepSeek-tier Telegram notification ────────────────────────
-      - name: Read summary for Telegram (deepseek tiers)
+      # ── Comparison-tier Telegram notification ──────────────────────
+      - name: Read summary for Telegram (comparison tiers)
         id: summary
-        if: contains(fromJSON('["deepseek-agentic","deepseek-pi"]'), steps.backend.outputs.name)
+        if: contains(fromJSON('["deepseek-claude-code","deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
         env:
           SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
         run: |
@@ -751,8 +787,8 @@ jobs:
       # appleboy/telegram-action, which fails on the Cloud Run runner.
       # hooker handles the bot token, so this job no longer needs
       # TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID.
-      - name: Send notification via hooker (deepseek-agentic)
-        if: success() && steps.backend.outputs.name == 'deepseek-agentic'
+      - name: Send notification via hooker (deepseek-claude-code)
+        if: success() && steps.backend.outputs.name == 'deepseek-claude-code'
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -774,7 +810,7 @@ jobs:
             | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
           REPORT_URL="https://github.com/${REPO}/blob/main/research/twitter-deepseek/${DATE}.md"
           jq -n \
-            --arg title "🐦🦌 Twitter/X AI Pulse — DeepSeek v4 Pro Agentic" \
+            --arg title "🐦🦌 Twitter/X AI Pulse — DeepSeek v4 Pro Claude Code" \
             --arg text "$SAFE" \
             --arg btn "Full Update on GitHub" \
             --arg url "$REPORT_URL" \
@@ -785,12 +821,12 @@ jobs:
               tags: ["ara", "twitter"],
               parse_mode: "HTML",
               reply_markup: { inline_keyboard: [[{ text: $btn, url: $url }]] }
-            }' > /tmp/hooker-twitter-deepseek-agentic.json
+            }' > /tmp/hooker-twitter-deepseek-claude-code.json
           curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/ara-research" \
             -H "Authorization: Bearer ${HOOKER_TOKEN}" \
             -H "Content-Type: application/json" \
-            -H "Idempotency-Key: twitter-deepseek-agentic-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
-            --data-binary "@/tmp/hooker-twitter-deepseek-agentic.json"
+            -H "Idempotency-Key: twitter-deepseek-claude-code-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
+            --data-binary "@/tmp/hooker-twitter-deepseek-claude-code.json"
 
       # Notify via hooker (relays to Telegram). Replaces the Docker-based
       # appleboy/telegram-action, which fails on the Cloud Run runner.
@@ -836,6 +872,48 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Idempotency-Key: twitter-deepseek-pi-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
             --data-binary "@/tmp/hooker-twitter-deepseek-pi.json"
+
+      # Notify via hooker for the Fireworks-backed pi comparison lane.
+      - name: Send notification via hooker (fireworks-pi)
+        if: success() && steps.backend.outputs.name == 'fireworks-pi'
+        continue-on-error: true
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          SUMMARY: ${{ steps.summary.outputs.content }}
+          REPO: ${{ github.repository }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          GH_RUN_ID: ${{ github.run_id }}
+          GH_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+            echo "Hooker credentials missing — skipping notification"
+            exit 0
+          fi
+          # HTML-escape the untrusted summary before it goes into a
+          # parse_mode:"HTML" body. Order matters: escape & first.
+          SAFE=$(printf '%s' "$SUMMARY" \
+            | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
+          REPORT_URL="https://github.com/${REPO}/blob/main/research/twitter-fireworks-pi/${DATE}.md"
+          jq -n \
+            --arg title "🐦🥧 Twitter/X AI Pulse — pi + Fireworks Kimi K2.6" \
+            --arg text "$SAFE" \
+            --arg btn "Full Update on GitHub" \
+            --arg url "$REPORT_URL" \
+            '{
+              title: $title,
+              text: $text,
+              priority: 3,
+              tags: ["ara", "twitter"],
+              parse_mode: "HTML",
+              reply_markup: { inline_keyboard: [[{ text: $btn, url: $url }]] }
+            }' > /tmp/hooker-twitter-fireworks-pi.json
+          curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/ara-research" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: twitter-fireworks-pi-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
+            --data-binary "@/tmp/hooker-twitter-fireworks-pi.json"
 
       # ── claude-tier auto-research throttle + topic select + dispatch ─
       # Picks ONE high-signal topic from today's twitter pulse and
