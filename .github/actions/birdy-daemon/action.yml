@@ -1,7 +1,7 @@
 name: Birdy daemon + bird-fast wrapper
 description: >
   Start a birdy daemon on 127.0.0.1:8080 (warm bird API for LLM follow-up
-  queries) and install /usr/local/bin/bird-fast — a drop-in shim that
+  queries) and install bird-fast on the job PATH — a drop-in shim that
   routes the same `bird ...` args through the daemon's POST /run endpoint
   for sub-second latency. The companion stop step lives inline in each
   workflow (kept as a separate step so it can use `if: always()`).
@@ -67,7 +67,10 @@ runs:
         # forwards them to the local daemon's POST /run endpoint. Same JSON
         # output on stdout. Lets the LLM keep its existing mental model
         # ("bird search ...") while paying daemon-speed latency.
-        sudo tee /usr/local/bin/bird-fast > /dev/null <<WRAPPER
+        INSTALL_DIR="$HOME/.local/bin"
+        mkdir -p "$INSTALL_DIR"
+        WRAPPER_PATH="$INSTALL_DIR/bird-fast"
+        cat > "$WRAPPER_PATH" <<WRAPPER
         #!/bin/bash
         set -e
         DAEMON_URL="\${BIRDY_DAEMON_URL:-http://127.0.0.1:${DAEMON_PORT}}"
@@ -87,5 +90,8 @@ runs:
           exit 1
         fi
         WRAPPER
-        sudo chmod +x /usr/local/bin/bird-fast
+        chmod +x "$WRAPPER_PATH"
+        echo "$INSTALL_DIR" >> "$GITHUB_PATH"
+        export PATH="$INSTALL_DIR:$PATH"
+
         bird-fast whoami 2>&1 | head -3 || echo "(bird-fast wrapper installed)"

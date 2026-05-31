@@ -100,7 +100,12 @@ runs:
           exit 1
         fi
 
-        sudo install -m 755 "$BIN" /usr/local/bin/birdy
+        INSTALL_DIR="$HOME/.local/bin"
+        mkdir -p "$INSTALL_DIR"
+        install -m 755 "$BIN" "$INSTALL_DIR/birdy"
+        echo "$INSTALL_DIR" >> "$GITHUB_PATH"
+        export PATH="$INSTALL_DIR:$PATH"
+
         birdy version 2>&1 | head -3 || echo "(birdy installed)"
 
     - name: Fetch tweets, searches, and news via birdy multi-fetch
