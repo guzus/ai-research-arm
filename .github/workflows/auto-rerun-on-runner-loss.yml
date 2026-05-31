@@ -1,0 +1,122 @@
+name: Auto-rerun on runner loss
+
+# Self-healing watchdog for the ephemeral self-hosted (Cloud Run autoscaler)
+# fleet. When a covered run FAILS because its worker vanished mid-job —
+# preemption / maintenance / OOM, which GitHub records as a job that died at
+# "Set up job" or with steps stuck `in_progress` and NO step that genuinely
+# failed — this re-runs only the failed jobs of that run.
+#
+# Load-bearing invariants (CLAUDE.md Load-bearing rule 11) — preserve all three:
+#   1. Runs on ubuntu-latest, NOT self-hosted. A recovery path for dead
+#      self-hosted workers must not depend on (or share the fate of) them.
+#   2. This workflow's own name is intentionally ABSENT from `workflows:`
+#      below, so it can never trigger itself.
+#   3. `run_attempt` is capped (< 3 => at most 2 auto re-runs) to bound loops,
+#      and only the "worker vanished" signature qualifies — a run with a
+#      genuinely failed step (real red CI) is left alone.
+
+on:
+  workflow_run:
+    # Unattended, main-branch pipelines worth auto-recovering. PR-scoped CI /
+    # code-review are intentionally excluded (their author re-runs those).
+    workflows:
+      - "Hourly RSS Official Announcements"
+      - "Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / fireworks-pi)"
+      - "Daily AI Expert Blogs"
+      - "Bluesky AI Researcher Feed (Twice Daily)"
+      - "Community AI Digest (HN + Reddit)"
+      - "Daily arXiv AI Research"
+      - "Daily AI Digest (All Sources)"
+      - "AI News Research Agent"
+      - "Hyperscaler Model Release Timeline (Every 24 Hours)"
+      - "LLM Wiki Ingest (After Daily Digest)"
+      - "Daily Front Page"
+      - "Generative Research"
+    types: [completed]
+    # Filters the TRIGGERING run's head_branch. Scheduled, issue-, and
+    # workflow_run-chained runs all resolve to the default branch, so every
+    # covered lane is admitted; this only scopes out stray non-main runs.
+    branches: [main]
+
+permissions:
+  actions: write # required to call rerun-failed-jobs
+  contents: read
+
+# One reconcile per (run, attempt); don't cancel an in-flight decision.
+concurrency:
+  group: auto-rerun-${{ github.event.workflow_run.id }}-${{ github.event.workflow_run.run_attempt }}
+  cancel-in-progress: false
+
+jobs:
+  rerun:
+    name: Re-run jobs killed by worker loss
+    runs-on: ubuntu-latest
+    # Only failures, and only within the retry cap (<= 2 auto re-runs).
+    if: >-
+      github.event.workflow_run.conclusion == 'failure' &&
+      github.event.workflow_run.run_attempt < 3
+    steps:
+      # Checkout only so the local hooker-telemetry composite action resolves.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Re-run failed jobs if (and only if) a worker vanished
+        id: decide
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_NAME: ${{ github.event.workflow_run.name }}
+          RUN_ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+        run: |
+          set -euo pipefail
+          echo "Inspecting run '$RUN_NAME' (#$RUN_ID, attempt $RUN_ATTEMPT)"
+
+          # Pull every job's steps (job counts are small; one page of 100 is plenty).
+          gh api "repos/$REPO/actions/runs/$RUN_ID/jobs?per_page=100" > jobs.json
+
+          # Worker-loss signature: >=1 failed/incomplete/cancelled job that has NO
+          # step with conclusion == "failure". A genuinely failed step (a non-zero
+          # exit, e.g. a content-guard step) means a real failure -> leave it red.
+          # A preempted worker can surface as a "cancelled" job inside a run-level
+          # failure, so cancelled jobs count too; a USER-cancelled run never reaches
+          # here because the job `if` requires run-level conclusion == 'failure'.
+          # jq -e exit codes: 0 = matched (rerun), 1 = false/null (skip),
+          # >=2 = jq/parse error (skip, don't turn the recovery lane red).
+          set +e
+          jq -e '
+              [ .jobs[]
+                | select(.conclusion == "failure" or .conclusion == "cancelled" or .conclusion == null)
+              ] as $failed
+              | ($failed | length) > 0
+                and ( $failed
+                      | map( ([ .steps[]? | select(.conclusion == "failure") ] | length) == 0 )
+                      | any )
+            ' jobs.json > /dev/null
+          rc=$?
+          set -e
+          case "$rc" in
+            0)
+              echo "Worker-loss signature detected -> re-running failed jobs."
+              gh api -X POST "repos/$REPO/actions/runs/$RUN_ID/rerun-failed-jobs"
+              echo "decision=rerun" >> "$GITHUB_OUTPUT" ;;
+            1)
+              echo "No worker-loss signature (genuine failure) -> leaving run alone."
+              echo "decision=skip" >> "$GITHUB_OUTPUT" ;;
+            *)
+              echo "::warning::could not evaluate jobs.json (jq rc=$rc) -> skipping."
+              echo "decision=skip" >> "$GITHUB_OUTPUT" ;;
+          esac
+
+      # Non-blocking telemetry so silent retry storms stay visible (rule 4).
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+          title: "auto-rerun (${{ steps.decide.outputs.decision || 'error' }})"
+          text: "${{ github.event.workflow_run.name }} #${{ github.event.workflow_run.id }} attempt ${{ github.event.workflow_run.run_attempt }}"
+          tags: "auto-rerun,runner-loss"
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
