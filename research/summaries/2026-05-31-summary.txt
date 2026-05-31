@@ -1,0 +1,14 @@
+AI News - 2026-05-31
+
+TOP STORIES:
+• Figure AI's Figure 03 "Rose" completes 200-hour autonomous package-sort run at Sunnyvale — 249,560 packages, zero hardware failures, zero teleop, all on in-house Helix-02 net; ~10x prior humanoid-autonomy envelope.
+• Anthropic opens Seoul office (3rd APAC hub); Choi Ki-young (ex-Snowflake Korea) appointed head; Korean Claude Code WAU grew 6x in 4 months.
+• Google Gemini Spark goes live May 29 for US AI Ultra at $99.99/mo — first paid frontier-lab persistent-agent GA; dedicated cloud VMs + Workspace integration.
+
+KEY NUMBERS:
+• Figure 03: 200 hrs, 249,560 packages, 0 failures
+• Korea Claude Code WAU: +6x in 4 months
+• Gemini Spark: $99.99/mo
+• SpaceX IPO: trading June 12 SPCX, ~$75B at $1.75T+
+
+Full report on GitHub.
