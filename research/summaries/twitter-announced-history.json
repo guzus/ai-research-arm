@@ -7351,5 +7351,47 @@
     "headline": "EX-PALANTIR TRIO LAUNCH PERCEPTIC OUT OF STEALTH WITH $12M SEED FOR END-TO-END AI DRUG DEVELOPMENT PLATFORM",
     "source": "@FortuneMagazine",
     "url": "https://x.com/FortuneMagazine/status/2059255967909208224"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-31 12:47 UTC",
+    "headline": "APPLE WWDC SIRI: ON-DEVICE DISTILLED GEMINI; HEAVY QUERIES NOW ROUTE TO GOOGLE CLOUD VIA NVIDIA CONFIDENTIAL-COMPUTE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2061058117304262999"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-31 12:47 UTC",
+    "headline": "ANTHROPIC CLOSES $65B SERIES H AT $965B POST-MONEY; $47B RUN-RATE \u2014 FIRST PRIVATE AI LAB PAST OPENAI BY PAPER VALUATION",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2060061347522433422"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-31 12:47 UTC",
+    "headline": "CHAPTER CEO ON THE INFORMATION: ANTHROPIC 'DECREASED PRIOR MODEL QUALITY BEFORE NEW LAUNCH' \u2014 'APPLE PLAYBOOK'",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2060783533564612887"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-31 12:47 UTC",
+    "headline": "OPENROUTER RAISES $113M SERIES B AT $1.3B; CAPITALG (ALPHABET) LED, NVENTURES (NVIDIA) IN \u2014 ON TRACK FOR >1Q TOKENS/YR",
+    "source": "@betterhn300",
+    "url": "https://x.com/betterhn300/status/2060934546376249774"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-31 12:47 UTC",
+    "headline": "ROBINHOOD LAUNCHES AGENTIC TRADING + AGENTIC CREDIT CARD \u2014 THIRD-PARTY AI AGENTS NOW EXECUTE TRADES, PURCHASES",
+    "source": "@0xJiuJitsuJerry",
+    "url": "https://x.com/0xJiuJitsuJerry/status/2060766741018583515"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-05-31 12:47 UTC",
+    "headline": "DEEPSEEK PUBLISHES MULTI-CODING-AGENT INTEGRATION REPO \u2014 CLAUDE CODE, COPILOT, CODEX, CURSOR, WINDSURF + 20 MORE",
+    "source": "@chenzeling4",
+    "url": "https://x.com/chenzeling4/status/2061055850400375192"
   }
 ]
