@@ -124,7 +124,8 @@ Preview the bundle without sending it to a model:
 uv run python scripts/run_generative_research_oracle.py "Topic" --oracle-dry-run
 ```
 
-The DeepSeek path mirrors `.github/workflows/hourly-twitter-deepseek-agentic.yml`:
+The DeepSeek path mirrors the `deepseek-claude-code` backend in
+`.github/workflows/hourly-twitter.yml`:
 
 ```yaml
 ANTHROPIC_BASE_URL: https://api.deepseek.com/anthropic

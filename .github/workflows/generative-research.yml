@@ -11,7 +11,8 @@ name: Generative Research
 #   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-opus-4-7).
 #   * deepseek — same action, but redirected to DeepSeek's Anthropic-compatible
 #                endpoint via ANTHROPIC_BASE_URL/ANTHROPIC_AUTH_TOKEN (model
-#                deepseek-v4-pro). Mirrors hourly-twitter-deepseek-agentic.yml.
+#                deepseek-v4-pro). Mirrors the hourly-twitter.yml
+#                deepseek-claude-code backend.
 #
 # The Python writer commits internally; this workflow only pushes.
 #
@@ -1503,8 +1504,8 @@ jobs:
 
       # ---- DeepSeek backend -------------------------------------------------
       # claude-code-action redirected to DeepSeek's Anthropic-compatible
-      # endpoint. Mirrors the env-var shape in
-      # hourly-twitter-deepseek-agentic.yml. The OAuth input is required by
+      # endpoint. Mirrors the env-var shape in the hourly-twitter.yml
+      # deepseek-claude-code backend. The OAuth input is required by
       # the action schema but ignored by the CLI when ANTHROPIC_BASE_URL is set.
       # The writer records --model deepseek-v4-pro (the served model).
       - name: Run Generative Research (DeepSeek V4 Pro, attempt 1)

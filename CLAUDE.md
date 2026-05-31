@@ -72,8 +72,7 @@ Workflows split between two runners:
 - **`runs-on: [self-hosted, Linux]`** — workflows that genuinely need
   the self-hosted runner's persistent state (bird CLI + birdy daemon,
   LFS-hydrated `research/` checkout, Puppeteer/Chrome, large agent
-  pipelines). Currently: `hourly-twitter.yml`,
-  `hourly-twitter-deepseek-*.yml`, `daily-digest.yml`,
+  pipelines). Currently: `hourly-twitter.yml`, `daily-digest.yml`,
   `daily-front-page.yml`, `generative-research.yml`,
   `24h-model-timeline.yml`, `ai-news-research.yml`, `ci.yml`,
   `research-issue.yml`, `4h-community.yml`, `wiki-ingest.yml`.
@@ -88,9 +87,7 @@ input).
 |---|---|---|
 | `hourly-rss.yml` | `:30` every hour | `research/rss/` |
 | `daily-ai-blogs.yml` | `:13` every 6h | `research/blogs/` |
-| `hourly-twitter.yml` | every 3h `:07` | `research/twitter/` + `research/summaries/` + Telegram headline alerts |
-| `hourly-twitter-deepseek-agentic.yml` | every 6h `:37` | `research/twitter-deepseek/` (DeepSeek V4 Pro via Anthropic shim, capped at 5 follow-up bird calls) |
-| `hourly-twitter-deepseek-pi.yml` | manual only | `research/twitter-deepseek-pi/` (A/B test using `pi-mono` harness) |
+| `hourly-twitter.yml` | every 3h `:07`; DeepSeek/Fireworks comparison lanes via matrix/manual dispatch | `research/twitter/` + `research/summaries/` + Telegram headline alerts; comparison outputs under `research/twitter-deepseek/`, `research/twitter-deepseek-pi/`, and `research/twitter-fireworks-pi/` |
 | `2h-bluesky.yml` | daily `00:11` | `research/bluesky/` |
 | `4h-community.yml` | every 4h `:19` | `research/community/*-hn.md`, `*-reddit.md` |
 | `daily-arxiv.yml` | daily `06:13` | `research/arxiv/` |
@@ -131,7 +128,8 @@ opus everywhere.
 | Backend | When | Auth | Notes |
 |---|---|---|---|
 | **Claude (default)** | All Claude workflows; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic. `claude-opus-4-7` for generative-research. |
-| **DeepSeek V4 Pro (shim)** | `generative-research backend=deepseek-v4-pro`; the two `hourly-twitter-deepseek-*` workflows | `DEEPSEEK_API_KEY` | Uses Anthropic-compatible endpoint at `https://api.deepseek.com/anthropic`. Overrides `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`/`ANTHROPIC_MODEL` so the Claude Code action transparently calls DeepSeek. Subagents use `deepseek-v4-flash`. Generative-research retries up to 2x on socket drops before commit. |
+| **DeepSeek V4 Pro (shim)** | `generative-research backend=deepseek-v4-pro`; `hourly-twitter.yml` DeepSeek lanes | `DEEPSEEK_API_KEY` | Uses Anthropic-compatible endpoint at `https://api.deepseek.com/anthropic`. Overrides `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`/`ANTHROPIC_MODEL` so the Claude Code action transparently calls DeepSeek. Subagents use `deepseek-v4-flash`. Generative-research retries up to 2x on socket drops before commit. |
+| **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p6`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
 | **Local Oracle (GPT-5.5 Pro)** | `scripts/run_generative_research_oracle.py` | Local `../oracle` checkout (browser engine by default) | Runs entirely on the developer machine; outputs go through the same `check_generative_research.py` → `write_generative_research.py` contract. Source metadata: `local-oracle`. |
 
 Backend selection details, env-var mapping, and comparison commands:
@@ -156,8 +154,9 @@ research/
 ├── blogs/                     # daily-ai-blogs.yml
 ├── summaries/                 # hourly-twitter.yml (Telegram digest + headline-alert state)
 ├── twitter/                   # hourly-twitter.yml
-├── twitter-deepseek/          # hourly-twitter-deepseek-agentic.yml
-├── twitter-deepseek-pi/       # hourly-twitter-deepseek-pi.yml
+├── twitter-deepseek/          # hourly-twitter.yml backend=deepseek-claude-code
+├── twitter-deepseek-pi/       # hourly-twitter.yml backend=deepseek-pi
+├── twitter-fireworks-pi/      # hourly-twitter.yml backend=fireworks-pi
 └── wiki/                      # wiki-ingest.yml (compounding LLM knowledge base)
     ├── index.md                # entry point / page directory
     ├── log.md                  # append-only ingest log (one entry per run)
@@ -173,7 +172,8 @@ Secrets are configured in GitHub Actions. None are committed.
 | Secret | Used by | Notes |
 |---|---|---|
 | `CLAUDE_CODE_OAUTH_TOKEN` | All Claude workflows | Required. |
-| `DEEPSEEK_API_KEY` | `generative-research backend=deepseek-v4-pro`, `hourly-twitter-deepseek-*` | Required when running the DeepSeek lane. |
+| `DEEPSEEK_API_KEY` | `generative-research backend=deepseek-v4-pro`, `hourly-twitter.yml` DeepSeek lanes | Required when running the DeepSeek lane. |
+| `FIREWORKS_API_KEY` | `hourly-twitter.yml backend=fireworks-pi` | Required when running the Fireworks pi lane. |
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | All bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies. |
 | `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional; enhance MCP search. |
 | `HOOKER_TOKEN` | Telemetry composite action | Optional; without it, telemetry steps no-op. |

@@ -124,7 +124,7 @@ gantt
 | `4h-community.yml` | Every 4 hours | Reddit RSS + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 06:13 UTC | arXiv papers | `research/arxiv/` |
 | `daily-digest.yml` | Daily 00:00 UTC | All sources + MCP search | `research/digest/` |
-| `hourly-twitter.yml` (matrix) | claude tier every 3h (`:07`), deepseek-agentic tier every 6h (`:37`), deepseek-pi tier manual | Twitter/X via bird CLI (50+ accounts, 7 search queries) | `research/twitter/` (claude) + `research/twitter-deepseek/` (agentic) + `research/twitter-deepseek-pi/` (pi) |
+| `hourly-twitter.yml` (matrix) | claude tier every 3h (`:07`), deepseek-claude-code tier every 6h (`:37`), deepseek-pi and fireworks-pi tiers manual | Twitter/X via bird CLI (50+ accounts, 7 search queries) | `research/twitter/` (claude) + `research/twitter-deepseek/` (Claude Code) + `research/twitter-deepseek-pi/` (pi) + `research/twitter-fireworks-pi/` (Fireworks pi) |
 | `ai-news-research.yml` | Twice daily (08:23, 20:23 UTC) | Perplexity/Exa MCP | `research/` |
 | `daily-improve.yml` | Daily 00:17 UTC | Self-improvement | PRs with improvements |
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
@@ -218,6 +218,7 @@ uv run python scripts/check_model_tickets.py
 |--------|----------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code auth |
 | `DEEPSEEK_API_KEY` | Yes for DeepSeek V4 Pro generative research and DeepSeek Twitter workflows | DeepSeek API key used through the Anthropic-compatible endpoint |
+| `FIREWORKS_API_KEY` | Yes for the manual `fireworks-pi` Twitter workflow tier | Fireworks API key used by pi's built-in Fireworks provider |
 | `BIRD_AUTH_TOKEN` | Yes | X/Twitter auth_token cookie for bird CLI |
 | `BIRD_CT0` | Yes | X/Twitter ct0 cookie for bird CLI |
 | `GEMINI_API_KEY` | Yes for article/digest audio | Gemini API key used for price-performant TTS audio generation |

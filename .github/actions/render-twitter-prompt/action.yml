@@ -10,7 +10,7 @@ description: >
 
 inputs:
   backend:
-    description: claude | deepseek-agentic | deepseek-pi
+    description: claude | deepseek-claude-code | deepseek-pi | fireworks-pi
     required: true
   template_path:
     description: Path to the prompt template (with `{{placeholders}}`).
@@ -139,10 +139,10 @@ runs:
         else:
             outputs_overview = f"OUTPUT (markdown digest): {output_dir}/{date}.md"
 
-        # cross_harness_note — only the pi tier peeks at the agentic digest.
+        # cross_harness_note — only the DeepSeek pi tier peeks at the Claude Code digest.
         if backend == "deepseek-pi":
             cross_harness_note = (
-                "- For cross-harness reference you MAY peek at the agentic-side digest:\n"
+                "- For cross-harness reference you MAY peek at the Claude Code-side digest:\n"
                 f"  research/twitter-deepseek/{date}.md — read once at the start ONLY\n"
                 "  to learn what's continuing; do not just paraphrase it."
             )
@@ -172,8 +172,8 @@ runs:
                 "- news.json — trending AI news"
             )
 
-        # tools_section — claude/agentic mention bird-fast; pi only has plain bird.
-        if backend == "deepseek-pi":
+        # tools_section — Claude Code tiers mention bird-fast; pi tiers only have plain bird.
+        if backend in {"deepseek-pi", "fireworks-pi"}:
             tools_section = (
                 '- `bird search "query" -n 30 --json --plain` — search live for a story keyword\n'
                 '- `bird user-tweets "@handle" -n 20 --json --plain` — read a specific account\n'
