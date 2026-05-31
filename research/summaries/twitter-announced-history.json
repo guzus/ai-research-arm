@@ -7442,5 +7442,47 @@
     "headline": "APPLE AI GLASSES PUSHED TO LATE 2027, VISION AIR TO 2029 \u2014 GURMAN REPORT",
     "source": "@9to5mac",
     "url": "https://x.com/9to5mac/status/2061103805857505725"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-05-31 21:30 UTC",
+    "headline": "SAM ALTMAN FORMALIZES OPENAI ROBOTICS \u2014 WORLD-SIM RESEARCH BECOMES HARDWARE ORG UNDER ADITYA RAMESH",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2061117302528188712"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-31 21:30 UTC",
+    "headline": "THE INFORMATION: MICROSOFT TO UNVEIL HOMEGROWN AI MODELS FOR CODING, SPEECH, REASONING AT BUILD 2026 TO CUT OPENAI / ANTHROPIC RELIANCE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2061160814615097363"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-05-31 21:30 UTC",
+    "headline": "CLAUDE MYTHOS PREVIEW PRICED AT $25 / $125 PER MILLION TOKENS \u2014 5X OPUS 4.7",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2061170599309791738"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-31 21:30 UTC",
+    "headline": "SEMIANALYSIS: FRONTIER INFERENCE NOW 10X SPEED AT 20-50X PRICE PREMIUM \u2014 MARKET TEST FOR ULTRA-LOW-LATENCY AI",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2061130917947576700"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-05-31 21:30 UTC",
+    "headline": "THE INFORMATION: META LAUNCHES ENTERPRISE SOLUTIONS UNIT TO EMBED ENGINEERS WITH CORPORATE CUSTOMERS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2061168362768454035"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-05-31 21:30 UTC",
+    "headline": "THE INFORMATION: APPLE'S AI COMEBACK PIVOTS TO ON-DEVICE INFERENCE OVER DATA CENTERS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2061175908308807750"
   }
 ]
