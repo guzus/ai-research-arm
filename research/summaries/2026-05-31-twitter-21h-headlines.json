@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "SAM ALTMAN FORMALIZES OPENAI ROBOTICS — WORLD-SIM RESEARCH BECOMES HARDWARE ORG UNDER ADITYA RAMESH",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2061117302528188712",
+    "category": "breaking"
+  },
+  {
+    "headline": "THE INFORMATION: MICROSOFT TO UNVEIL HOMEGROWN AI MODELS FOR CODING, SPEECH, REASONING AT BUILD 2026 TO CUT OPENAI / ANTHROPIC RELIANCE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2061160814615097363",
+    "category": "model"
+  },
+  {
+    "headline": "TESTINGCATALOG SCOOPS COPILOT CODE + COWORK + SCOUT 24/7 AGENT TABS IN MICROSOFT BUILD 2026 SUPER-APP",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2061108892709347444",
+    "category": "model"
+  },
+  {
+    "headline": "CLAUDE MYTHOS PREVIEW PRICED AT $25 / $125 PER MILLION TOKENS — 5X OPUS 4.7",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2061170599309791738",
+    "category": "model"
+  },
+  {
+    "headline": "SEMIANALYSIS: FRONTIER INFERENCE NOW 10X SPEED AT 20-50X PRICE PREMIUM — MARKET TEST FOR ULTRA-LOW-LATENCY AI",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2061130917947576700",
+    "category": "infra"
+  },
+  {
+    "headline": "THE INFORMATION: META LAUNCHES ENTERPRISE SOLUTIONS UNIT TO EMBED ENGINEERS WITH CORPORATE CUSTOMERS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2061168362768454035",
+    "category": "business"
+  },
+  {
+    "headline": "THE INFORMATION: APPLE'S AI COMEBACK PIVOTS TO ON-DEVICE INFERENCE OVER DATA CENTERS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2061175908308807750",
+    "category": "infra"
+  }
+]

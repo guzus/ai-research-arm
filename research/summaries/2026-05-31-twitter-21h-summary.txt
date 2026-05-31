@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-05-31 21:30 UTC
+
+CYCLE: Frontier labs stake the four corners of the AI stack in one weekend — OpenAI Robotics formalized, Microsoft homegrown model lineup hardens for Build, Anthropic Mythos pricing back on the timeline.
+
+TOP STORIES:
+• @sama formalizes OpenAI Robotics — Aditya Ramesh (@model_mechanic) leads, world-sim research evolved into a hardware-manufacturing org, "co-design" hardware + ML, ~7.6K likes / 522 RT [✓]
+• Microsoft Build 2026 two-source convergence — The Information confirms homegrown coding/speech/transcription/reasoning/image model lineup; testingcatalog's Copilot Code/Cowork/Scout super-app scoop climbs 10× [⚠→✓]
+• Claude Mythos $25/$125 per M tokens (5× Opus 4.7) re-anchored by @kimmonismus + SemiAnalysis "10× speed at 20-50× price premium" framing — frontier and utility inference tiers visibly decoupling [⚠]
+
+WATCH: Microsoft Build keynote Mon June 2 (Satya/Mustafa/Scott Guthrie) — whether unified Copilot ships with Scout 24/7 always-on agent and whether MAI Voice 2 / Transcribe 1.5 / Image 2.5 launch on-stage.
+
+Full update on GitHub.
