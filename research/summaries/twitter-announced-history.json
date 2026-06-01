@@ -7666,5 +7666,54 @@
     "headline": "CALIFORNIA SENATE PASSES FIRST-IN-NATION BAN ON AI CHATBOT TOYS FOR CHILDREN UNDER 18 \u2014 27% OF RESPONSES FOUND INAPPROPRIATE",
     "source": "@digitalbrain01",
     "url": "https://x.com/digitalbrain01/status/2061436269951856888"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-01 17:22 UTC",
+    "headline": "ANTHROPIC CONFIDENTIALLY FILES DRAFT S-1 WITH SEC \u2014 FIRST FRONTIER AI LAB IPO STEP AT $965B SERIES H MARK",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2061478052257841495"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-01 17:22 UTC",
+    "headline": "FLORIDA AG SUES OPENAI AND SAM ALTMAN PERSONALLY \u2014 FIRST STATE AG TO SEEK CEO LIABILITY FOR AI PRODUCT HARMS",
+    "source": "@CNBC",
+    "url": "https://x.com/CNBC/status/2061495893929418768"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-01 17:22 UTC",
+    "headline": "WSJ \u2014 ANTHROPIC COULD GO PUBLIC AS EARLY AS THIS FALL AFTER CONFIDENTIAL IPO FILING",
+    "source": "@WSJ",
+    "url": "https://x.com/WSJ/status/2061483205253894205"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-01 17:22 UTC",
+    "headline": "COREWEAVE FIRST AI CLOUD TO BRING UP NVIDIA VERA RUBIN NVL72 \u2014 CLAIMS 10X INFERENCE PER WATT, 1/10 COST PER MILLION TOKENS VS BLACKWELL",
+    "source": "@CoreWeave",
+    "url": "https://x.com/CoreWeave/status/2061441369961566601"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-01 17:22 UTC",
+    "headline": "NVIDIA NEMOTRON 3 ULTRA NOW BEST OPEN-WEIGHT MODEL ON ARTIFICIAL ANALYSIS \u2014 VP CATANZARO CONFIRMS",
+    "source": "@ctnzr",
+    "url": "https://x.com/ctnzr/status/2061483152741175757"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-01 17:22 UTC",
+    "headline": "FLORIDA AG READS CHATGPT-AIDED SUICIDE TRANSCRIPT ON STAGE \u2014 ZANE SHAMBLIN CASE ANCHORS 83-PAGE COMPLAINT VS OPENAI",
+    "source": "@Techmeme",
+    "url": "https://x.com/Techmeme/status/2061459179647504843"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-01 17:22 UTC",
+    "headline": "NVIDIA AND TSMC EXPAND COLLABORATION \u2014 TSMC ADOPTING CUDA-X, METROPOLIS, TAO AND OMNIVERSE ACROSS CHIP DESIGN AND FAB",
+    "source": "@nvidianewsroom",
+    "url": "https://x.com/nvidianewsroom/status/2061491683011744078"
   }
 ]
