@@ -23,13 +23,16 @@ labels:
 verification: confirmed
 sources:
   - "@OpenAI"
+  - "@sama"
 created_at: 2026-05-30
-updated_at: 2026-05-30
+updated_at: 2026-06-01
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-05-30
     change: "Created — @OpenAI primary announcement 2026-05-29 15:03 UTC: Rosalind Biodefense initiative launches to help trusted builders develop biodefense + pandemic-preparedness capabilities, alongside expanded trusted access to GPT-Rosalind for select U.S. government + allied partners supporting public-health and biodefense missions. Gated model; parallel structurally to Anthropic's Project Glasswing pattern on the [[mythos-public-release]] ticket"
+  - ts: 2026-06-01
+    change: "@sama amplification 2026-05-31 15:05 UTC (~472 likes / 51 RT / 147 replies): 'We want to help the world get a head start on biodefense:' with the openai.com Rosalind Biodefense URL — recirculating the May 29 launch as part of OpenAI's weekend defensive cadence opposite the Anthropic Series H ([[anthropic-series-h-2026-05]]) and testingcatalog Anthropic-Operon-for-bioscience leak ([[anthropic-conway-orbit-2026-05]]). No new partner / scope disclosure in-window"
 ---
 
 **OpenAI's 2026-05-29 announcement** combined two moves in a single

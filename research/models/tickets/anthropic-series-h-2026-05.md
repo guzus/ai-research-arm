@@ -12,7 +12,16 @@ status_note: |
   framed as compute-capacity buildout and research investment.
   Coincident with the [[opus-4-8]] release on the same day and pairs
   with the multi-gigawatt compute commitments documented under
-  [[anthropic-spacex-colossus-2026-05]].
+  [[anthropic-spacex-colossus-2026-05]]. **Post-announcement cascade**:
+  by 2026-05-31 (12:00 UTC), Japanese / Spanish / Vietnamese / Hong
+  Kong AI-news outlets frame the round as the first time a private AI
+  lab has eclipsed OpenAI by paper valuation; by 2026-06-01 04:44 UTC,
+  @JoeMaristela cites Anthropic at a **secondary-market price of
+  ~$992B** ("just shy of becoming the first AI company to reach the
+  trillion-dollar mark"). Concurrent credibility tests in the same
+  week: Chapter CEO Cobi Gantz on @theinformation (2026-05-30 18:00
+  UTC) accusing Anthropic of "Apple-playbook" pre-launch model
+  degradation (single-source, no benchmark, no Anthropic response).
 expected: null
 labels:
   - funding
@@ -22,13 +31,18 @@ verification: confirmed
 sources:
   - "@AnthropicAI"
   - https://www.anthropic.com/news
+  - "@JoeMaristela"
+  - "@theinformation"
+  - "@GaryMarcus"
 created_at: 2026-05-28
-updated_at: 2026-05-28
+updated_at: 2026-06-01
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-05-28
     change: "Created — Anthropic announced $65B Series H at $965B post-money valuation (Altimeter, Dragoneer, Greenoaks, Sequoia leads), plus $47B run-rate revenue. Announced same day as the [[opus-4-8]] launch"
+  - ts: 2026-06-01
+    change: "Cascade + credibility tests: @JoeMaristela 2026-06-01 04:44 UTC cites Anthropic at ~$992B in secondary-market trading; non-English aggregator framing (Japanese, Spanish, Vietnamese) reads it as 'first private AI lab to overtake OpenAI by paper valuation'. Chapter CEO Cobi Gantz (@theinformation 2026-05-30 18:00 UTC, ~73 likes; amplified by @GaryMarcus 2026-05-31 00:27 UTC, ~93 likes) accuses Anthropic of 'Apple-playbook' deliberate model degradation before new launches — single-source, no benchmark, no Anthropic response in-window. No primary @AnthropicAI / @darioamodei post in-window beyond the May 28 round announcement"
 ---
 
 Anthropic's Series H, announced 2026-05-28 18:11 UTC on @AnthropicAI's

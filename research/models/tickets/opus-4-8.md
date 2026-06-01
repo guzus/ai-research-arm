@@ -29,8 +29,10 @@ sources:
   - "@AnthropicAI"
   - "@alexalbert__"
   - "@Azure"
+  - "@testingcatalog"
+  - "@kimmonismus"
 created_at: 2026-05-28
-updated_at: 2026-05-29
+updated_at: 2026-06-01
 closed_at: null
 closed_reason: null
 history:
@@ -38,6 +40,8 @@ history:
     change: "Created — Claude Opus 4.8 announced and released same day (@claudeai 16:57 UTC, retweeted by @AnthropicAI). Same price as Opus 4.7. Successor to the closed [[opus-4-7]] ticket. Headline: 4× better at catching flaws in its own generated code, sharper judgment, longer independent work, Dynamic Workflows research preview in Claude Code (parallel sub-agent swarms), Fast mode 2.5× faster and 3× cheaper than 4.7 Fast preview. Microsoft Foundry availability confirmed same day"
   - ts: 2026-05-29
     change: "Day-1 adoption signal: Eden AI, Microsoft Foundry, third-party benches surfacing. Reported pace: 42 days from Opus 4.7 (Apr 16) to Opus 4.8 (May 28), the shortest Opus-to-Opus gap to date"
+  - ts: 2026-06-01
+    change: "Post-launch use signals (week 1): trending-news framing 'Anthropic's Claude Opus 4.8 Tops AI Index Over OpenAI's GPT-5.5' at ~19K post-count; @testingcatalog 2026-05-31 14:49 UTC endorses Opus 4.8 Max as 'best for writing at this moment'; Salesforce reportedly moved its entire dev org to Claude Code with no token limits (231-day migration cut to 13 days, 79% more PRs/dev per the-decoder). Adversarial framing: Cobi Gantz (Chapter CEO, @theinformation 2026-05-30 18:00 UTC) accuses Anthropic of 'Apple-playbook' pre-launch model degradation (single-source, no benchmark, no response); @kimmonismus 2026-05-31 02:11 UTC 'Opus 4.8 is a solid jump over Opus 4.7, GPT-5.5 xhigh still beats it by a pretty clear margin while being cheaper' (directional, not third-party eval). No primary @AnthropicAI / @darioamodei rebuttal in-window. No regression / rollback. Status remains released"
 ---
 
 Claude Opus 4.8 is Anthropic's successor to

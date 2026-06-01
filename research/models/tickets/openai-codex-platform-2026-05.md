@@ -16,7 +16,18 @@ status_note: |
   underlying GPT-5.x family. Parallel to xAI's Grok Build CLI
   ([[xai-grok-build-2026-05]]), Anthropic Claude Code rate-limit and
   Fast-mode pushes around [[opus-4-8]], and Google Antigravity 3x
-  rate-limit resets logged on [[gemini-3-2-flash]].
+  rate-limit resets logged on [[gemini-3-2-flash]]. **2026-05-31
+  milestone**: @thsottiaux (Tibo, OpenAI; 05:59 UTC, ~320 RT) — "Five
+  million users would agree. Resetting the limits tomorrow morning to
+  celebrate. Time to go /fast." RT'd by @sama 14:48 UTC quote-tweeting
+  Aaron Levie's "switching back from Claude to Codex xhigh to remind
+  you how much better 5.5 is right now." First concrete OpenAI-side
+  Codex penetration number, though the denominator (Codex API users vs
+  Plus/Pro seats vs ChatGPT-as-whole) is undefined. **2026-05-31 same-
+  day fix**: @simonw 18:51 UTC caught a Codex Desktop "Copy as Markdown"
+  feature regression; @PhilippSpiess (OpenAI) committed at 21:17 UTC
+  to restore — first publicly-acknowledged same-day Codex Desktop fix
+  pledge.
 expected: null
 labels:
   - coding
@@ -29,13 +40,18 @@ sources:
   - "@OpenAI"
   - "@OpenAIDevs"
   - "@sama"
+  - "@thsottiaux"
+  - "@PhilippSpiess"
+  - "@simonw"
 created_at: 2026-05-30
-updated_at: 2026-05-30
+updated_at: 2026-06-01
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-05-30
     change: "Created — multi-week May 2026 Codex platform shipping cadence consolidated: Codex in ChatGPT mobile preview iOS/Android 2026-05-14, hooks + programmatic access tokens 2026-05-14, Mac Appshots 2026-05-21, secure Mac app control from phone with screen off 2026-05-22, and the 2026-05-29 push of computer use on Windows + Codex in ChatGPT mobile for Windows (primary @OpenAI). Distinct from underlying GPT-5.x family; tracks the developer surface OpenAI is using to compete with Claude Code, Grok Build (xai-grok-build-2026-05), and Antigravity"
+  - ts: 2026-06-01
+    change: "5M Codex users milestone: @thsottiaux (Tibo, OpenAI) 2026-05-31 05:59 UTC ~320 RT — 'Five million users would agree. Resetting the limits tomorrow morning to celebrate. Time to go /fast.' RT'd by @sama 14:48 UTC. First concrete OpenAI-side Codex penetration number (denominator undefined: API users vs Plus/Pro seats vs ChatGPT-as-whole). Codex Desktop 'Copy as Markdown' regression caught by @simonw 2026-05-31 18:51 UTC (~479 likes), committed-to-fix by @PhilippSpiess (OpenAI) 21:17 UTC — first publicly-acknowledged same-day Codex Desktop fix pledge. @reach_vb logs Codex multi-file ops anecdote (verified codec/fps/resolution, stitched MP4s without re-encoding) 2026-05-31 23:09 UTC"
 ---
 
 This ticket tracks the **OpenAI Codex platform** as a shipping surface —
