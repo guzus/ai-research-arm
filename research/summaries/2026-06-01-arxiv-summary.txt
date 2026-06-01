@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-01
+
+TOP 5 PAPERS:
+• Stateful Online Monitoring (UPenn) - builds first distributed agent attack splitting harmful tasks across accounts; clustering monitor catches it 30% earlier
+• Lumos-Nexus (Alibaba DAMO) - two-stage unified video model bridges lightweight + heavy generators in shared latent for reasoning-driven generation
+• LongTraceRL (THU KEG) - tiered distractors mined from search-agent trajectories + entity rubric rewards beat baselines on 5 long-context benchmarks
+• CHARM JEPA (ICML 2026) - channel-aware JEPA gives heterogeneous time-series sensors a semantic embedding interface usable with linear probes
+• TxFM (Recursion) - masked-AE RNA-seq model on curated 1.4M corpus beats foundation models trained on data 100x larger
+
+CATEGORIES: NLP 6, CV/Multimodal 5, Agents/Reasoning 4, Safety 3, Other 4
+
+Full report on GitHub.
