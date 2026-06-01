@@ -6,9 +6,10 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 summary: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped the Frontier Governance Framework and Rosalind Biodefense program on 2026-05-29.
 created_at: 2026-05-30
-updated_at: 2026-05-30
+updated_at: 2026-06-01
 sources:
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
+  - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "OpenAI — Frontier Governance Framework", url: "https://openai.com/index/openai-frontier-governance-framework/", date: 2026-05-29}
   - {title: "OpenAI — Rosalind Biodefense", url: "https://openai.com/index/strengthening-societal-resilience-with-rosalind-biodefense/", date: 2026-05-29}
   - {title: "Anthropic raises at $965B valuation, eclipsing OpenAI (Bloomberg)", url: "https://www.bloomberg.com/news/articles/2026-05-28/anthropic-raises-at-965-billion-valuation-eclipsing-openai", date: 2026-05-28}
@@ -56,6 +57,19 @@ materially reshape how the lab is positioned heading into its IPO window:
   + companion (May 24). The 2026-05-29 digest carries Karpathy's departure
   *from* OpenAI to [[anthropic]] as the year's most significant frontier-talent
   move.
+- **GPT-5.5 Instant readability upgrade + retirements (2026-06-01).**
+  **GPT-5.5 Instant** received a "readability upgrade"; **two older models
+  were retired** in the same window (per the-decoder). Product-line
+  housekeeping rather than a frontier ship — but the pruning + tuning
+  signal alongside the confidential S-1 is the explicit pre-IPO
+  product-discipline posture.
+- **"5M Codex users" (2026-06-01).** **@thsottiaux (Tibo, OpenAI)** posted:
+  "Five million users would agree. Resetting the limits tomorrow morning
+  to celebrate. Time to go /fast." — RT'd by **@sama**. First concrete
+  OpenAI-disclosed **Codex penetration number**, surfaced after Aaron
+  Levie's "switching back from Claude to Codex xhigh to remind you how
+  much better 5.5 is right now" tweet. Informal but materially bumps the
+  Codex Goal Mode vs Claude Code competitive frame (ARA digest 2026-06-01).
 
 ## Open questions
 

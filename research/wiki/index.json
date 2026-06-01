@@ -78,7 +78,7 @@
       ],
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-05-30",
+      "updated_at": "2026-06-01",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -91,19 +91,25 @@
         "california-ai-regulation",
         "cognition-ai",
         "coreweave",
+        "dell",
+        "figure-ai",
         "nebius",
         "neocloud",
-        "openai"
+        "openai",
+        "openrouter"
       ],
       "inbound": [
         "anthropic",
         "california-ai-regulation",
         "cognition-ai",
         "coreweave",
+        "dell",
+        "figure-ai",
         "gemini-3-5-flash",
         "nebius",
         "neocloud",
-        "openai"
+        "openai",
+        "openrouter"
       ]
     },
     {
@@ -118,7 +124,7 @@
       ],
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-05-30",
+      "updated_at": "2026-06-01",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -134,6 +140,7 @@
         "cognition-ai",
         "dynamic-workflows",
         "gemini-3-5-flash",
+        "gemini-spark",
         "neocloud",
         "openai"
       ],
@@ -145,8 +152,11 @@
         "claude-opus-4-8",
         "cognition-ai",
         "dynamic-workflows",
+        "figure-ai",
         "gemini-3-5-flash",
-        "openai"
+        "gemini-spark",
+        "openai",
+        "openrouter"
       ]
     },
     {
@@ -274,8 +284,39 @@
       ],
       "inbound": [
         "ai-capex",
+        "dell",
         "nebius",
         "neocloud"
+      ]
+    },
+    {
+      "slug": "dell",
+      "title": "Dell Technologies",
+      "type": "entity",
+      "tags": [
+        "oem",
+        "server-vendor",
+        "enterprise-ai",
+        "capital-markets"
+      ],
+      "summary": "US enterprise-IT OEM; Q1 FY27 (reported 2026-05-29) printed $43.8B revenue (+88% YoY) with AI-Optimized Servers at $16.1B (+757% YoY), $24.4B AI orders booked, FY27 AI-server outlook raised to $60B; stock +32% on the print, the best single day in company history.",
+      "created_at": "2026-06-01",
+      "updated_at": "2026-06-01",
+      "file": "entities/dell.md",
+      "aliases": [
+        "Dell",
+        "Dell Technologies",
+        "Dell Inc.",
+        "DELL",
+        "@MichaelDell"
+      ],
+      "outbound": [
+        "ai-capex",
+        "coreweave",
+        "neocloud"
+      ],
+      "inbound": [
+        "ai-capex"
       ]
     },
     {
@@ -310,7 +351,42 @@
         "agentic-ai-security",
         "anthropic",
         "claude-opus-4-8",
-        "cognition-ai"
+        "cognition-ai",
+        "gemini-spark"
+      ]
+    },
+    {
+      "slug": "figure-ai",
+      "title": "Figure AI",
+      "type": "entity",
+      "tags": [
+        "humanoid-robotics",
+        "vla",
+        "robotics",
+        "brett-adcock"
+      ],
+      "summary": "US humanoid-robotics company whose Helix-02 in-house VLA ran a 200-hour fully autonomous package-sort shift (249,560 packages, zero hardware failures, zero teleop) on its Figure 03 fleet at Sunnyvale on 2026-05-30, ~10× the previous public envelope on MTBI.",
+      "created_at": "2026-06-01",
+      "updated_at": "2026-06-01",
+      "file": "entities/figure-ai.md",
+      "aliases": [
+        "Figure",
+        "Figure AI",
+        "Figure Robotics",
+        "Figure 03",
+        "Figure 4",
+        "Helix",
+        "Helix-02",
+        "@adcock_brett",
+        "Brett Adcock"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "openai"
+      ],
+      "inbound": [
+        "ai-capex"
       ]
     },
     {
@@ -335,6 +411,36 @@
         "ai-capex",
         "anthropic",
         "neocloud"
+      ],
+      "inbound": [
+        "anthropic",
+        "gemini-spark"
+      ]
+    },
+    {
+      "slug": "gemini-spark",
+      "title": "Gemini Spark",
+      "type": "entity",
+      "tags": [
+        "agents",
+        "google",
+        "gemini",
+        "consumer-agent",
+        "product"
+      ],
+      "summary": "Google's persistent consumer agent for Gemini, hit GA on 2026-05-29 for US AI Ultra subscribers at $99.99/mo — the first GA paid frontier-lab persistent consumer agent, running on dedicated Google Cloud VMs so state persists with the phone off.",
+      "created_at": "2026-06-01",
+      "updated_at": "2026-06-01",
+      "file": "entities/gemini-spark.md",
+      "aliases": [
+        "Gemini Spark",
+        "Google Gemini Spark",
+        "Spark agent"
+      ],
+      "outbound": [
+        "anthropic",
+        "dynamic-workflows",
+        "gemini-3-5-flash"
       ],
       "inbound": [
         "anthropic"
@@ -426,6 +532,7 @@
         "ai-capex",
         "anthropic",
         "coreweave",
+        "dell",
         "gemini-3-5-flash",
         "nebius"
       ]
@@ -442,7 +549,7 @@
       ],
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped the Frontier Governance Framework and Rosalind Biodefense program on 2026-05-29.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-05-30",
+      "updated_at": "2026-06-01",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -458,13 +565,46 @@
       "inbound": [
         "ai-capex",
         "anthropic",
-        "california-ai-regulation"
+        "california-ai-regulation",
+        "figure-ai",
+        "openrouter"
+      ]
+    },
+    {
+      "slug": "openrouter",
+      "title": "OpenRouter",
+      "type": "entity",
+      "tags": [
+        "llm-router",
+        "inference",
+        "infrastructure",
+        "capital-markets"
+      ],
+      "summary": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 (CapitalG led, NVentures participated); weekly volume jumped 5× to 25T tokens, on track for >1 quadrillion tokens in 2026.",
+      "created_at": "2026-06-01",
+      "updated_at": "2026-06-01",
+      "file": "entities/openrouter.md",
+      "aliases": [
+        "OpenRouter",
+        "openrouter.ai",
+        "@OpenRouterAI"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "openai"
+      ],
+      "inbound": [
+        "ai-capex"
       ]
     }
   ],
   "resolver": {
+    "@adcock_brett": "figure-ai",
     "@anthropicai": "anthropic",
+    "@michaeldell": "dell",
     "@openai": "openai",
+    "@openrouterai": "openrouter",
     "a 9317": "california-ai-regulation",
     "ab 1159": "california-ai-regulation",
     "ab 1609": "california-ai-regulation",
@@ -483,6 +623,7 @@
     "ai-capex": "ai-capex",
     "anthropic": "anthropic",
     "anthropic pbc": "anthropic",
+    "brett adcock": "figure-ai",
     "california ai bills": "california-ai-regulation",
     "california ai regulation": "california-ai-regulation",
     "california transparency in frontier ai act": "california-ai-regulation",
@@ -498,14 +639,28 @@
     "coreweave": "coreweave",
     "coreweave, inc.": "coreweave",
     "crwv": "coreweave",
+    "dell": "dell",
+    "dell inc.": "dell",
+    "dell technologies": "dell",
     "devin": "cognition-ai",
     "dynamic workflows": "dynamic-workflows",
     "dynamic-workflows": "dynamic-workflows",
+    "figure": "figure-ai",
+    "figure 03": "figure-ai",
+    "figure 4": "figure-ai",
+    "figure ai": "figure-ai",
+    "figure robotics": "figure-ai",
+    "figure-ai": "figure-ai",
     "gemini 3.2 flash": "gemini-3-5-flash",
     "gemini 3.5 flash": "gemini-3-5-flash",
+    "gemini spark": "gemini-spark",
     "gemini-3-5-flash": "gemini-3-5-flash",
+    "gemini-spark": "gemini-spark",
+    "google gemini spark": "gemini-spark",
     "gpu-as-a-service": "neocloud",
     "gpuaas": "neocloud",
+    "helix": "figure-ai",
+    "helix-02": "figure-ai",
     "lfm": "liquid-ai",
     "liquid ai": "liquid-ai",
     "liquid foundation models": "liquid-ai",
@@ -519,12 +674,20 @@
     "openai": "openai",
     "openai inc.": "openai",
     "openai opco": "openai",
+    "openrouter": "openrouter",
+    "openrouter.ai": "openrouter",
     "opus 4.8": "claude-opus-4-8",
     "parallel subagents": "dynamic-workflows",
     "sacramento ai policy": "california-ai-regulation",
+    "spark agent": "gemini-spark",
     "your agents are aging too": "agent-lifespan-engineering"
   },
   "recent_log": [
+    {
+      "date": "2026-06-01",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-01 digest. Created 4 entities (figure-ai — 200h Helix-02 marathon, 249,560 packages, 0 hardware failures, 0 teleop; gemini-spark — first GA paid frontier-lab persistent consumer agent on Google Cloud VMs; dell — Q1 FY27 $16.1B AI servers +757% YoY, $24.4B orders, +32% stock; openrouter — $113M Series B at $1.3B, 25T tokens/week). Updated 3 (anthropic — Seoul office + Salesforce 231d→13d migration + $500M accident + Conway/Orbit/Operon leaks + Cobi Gantz credibility-test variable; openai — GPT-5.5 Instant readability upgrade + 5M Codex users milestone; ai-capex — Dell print + SoftBank €75B France commitment + OpenRouter router-layer round)."
+    },
     {
       "date": "2026-05-30",
       "op": "ingest",

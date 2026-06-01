@@ -6,12 +6,13 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 summary: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-updated_at: 2026-05-30
+updated_at: 2026-06-01
 sources:
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
+  - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
 ---
 
@@ -62,6 +63,41 @@ skepticism in one window:
   patients against current literature). The vertical-agent lane is now the
   high-multiple application-layer counterpart to the infrastructure
   supercycle (ARA digest 2026-05-30).
+- **Enterprise OEM print — Dell Q1 FY27 (2026-05-29).** [[dell]]'s
+  Q1 FY27 print is the cleanest **enterprise / tier-2 cloud /
+  sovereign-AI** demand signal of the cycle: **$43.8B total revenue
+  (+88% YoY)**, **AI-Optimized Servers $16.1B (+757% YoY)**, **$24.4B
+  AI orders booked**, FY27 AI-server outlook **raised to $60B**
+  (prior $40–45B band), **stock +32% intraday** — Dell's best
+  single-day move in company history, **+234% YTD**. Because Dell ISG
+  sells to enterprise / sovereign-AI rather than hyperscalers, the
+  $16.1B isolates demand outside the direct-to-NVIDIA hyperscaler
+  channel. Dell + [[coreweave]] were also first to bring up a **Rubin
+  VR200 NVL72** passing L11 diagnostics — first production-class
+  signal on Rubin availability outside NVIDIA's own venues
+  (ARA digest 2026-06-01).
+- **Geographic shift — SoftBank's €75B France commitment.** TechCrunch:
+  SoftBank plans up to **5 GW of additional data-center capacity in
+  France** at up to **€75B investment** — the biggest non-US capex
+  announcement of the week and SoftBank's **first major EU-AI
+  infrastructure commitment outside the Stargate-style US footprint**.
+  EU sovereign-AI capacity is now a multi-tens-of-billions line item
+  alongside the US buildout (ARA digest 2026-06-01).
+- **Router-layer capital — [[openrouter]] Series B.** OpenRouter
+  closed **$113M at $1.3B post-money** (CapitalG led, NVentures in),
+  with **weekly volume 5×'d to 25T tokens** and a run rate of **>1
+  quadrillion tokens in 2026**. The first major routing-layer round
+  of the cycle — the demand-side counterpart to the supply-side
+  inference startups (Fireworks at $800M ARR; Baseten, Modal, Together
+  facing NVIDIA-rental margin pressure on the supply side per
+  The Information) (ARA digest 2026-06-01).
+- **Adjacent demand signal — humanoid autonomy.** [[figure-ai]]'s
+  2026-05-30 **200-hour Helix-02 marathon** (249,560 packages, zero
+  hardware failures, zero teleop) is the cleanest publicly-verified
+  warehouse-grade MTBI datapoint to date — **~10× the previous public
+  envelope**. Humanoid autonomy at production-grade MTBI lifts the
+  addressable case for on-prem AI-server demand sitting alongside the
+  data-center buildout (ARA digest 2026-06-01).
 - **The bubble counter-narrative.** Meta's paradox — **$56B Q1 revenue but an
   8,000-job layoff** against a $115–135B 2026 capex guide — and a hardening
   "AI bubble / backlash" thread on r/artificial are the bear case (ARA digest

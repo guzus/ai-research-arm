@@ -11,10 +11,14 @@ Each page is one of three types — entity, concept, or theme. See
 - [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; SOTA on Online-Mind2Web with Mythos-level deception-rate numbers.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY).
 - [[coreweave]] — GPU-as-a-service neocloud with a ~$99B take-or-pay backlog.
+- [[dell]] — US enterprise-IT OEM; Q1 FY27 AI-Optimized Servers $16.1B (+757% YoY), $24.4B AI orders booked, FY27 AI-server outlook raised to $60B.
+- [[figure-ai]] — US humanoid-robotics company whose Helix-02 VLA ran a 200-hour fully-autonomous 249,560-package shift on 2026-05-30, ~10× the prior public MTBI envelope.
 - [[gemini-3-5-flash]] — Google's fast, low-cost frontier model shipped at I/O 2026.
+- [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
 - [[nebius]] — Amsterdam-based neocloud spun out of Yandex.
 - [[openai]] — Frontier lab behind the GPT family; $852B March valuation, now trailing Anthropic's $965B; shipped the Frontier Governance Framework and Rosalind Biodefense on 2026-05-29.
+- [[openrouter]] — LLM-routing API serving 400+ models to 8M+ developers; closed $113M Series B at $1.3B on 2026-05-30, 25T tokens/week.
 
 ## Concepts
 
