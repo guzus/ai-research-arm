@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-01 14:32 UTC
+
+CYCLE: Pre-Build hour — three concrete signals: first IG-rated GPU debt placed, foundry / Korea memory data hardens AI-infra re-rate, Nadella publicly endorses RTX Spark and books Jensen live at Build.
+
+TOP STORIES:
+• IREN closes $3.65B IG GPU financing for $5.81B MSFT AI Cloud — A by Fitch, A(low) DBRS, 96% of capex covered, 480MW / 50K+ Blackwell Ultra by end-2026, first GPU debt in U.S. PP market history [✓]
+• SemiAnalysis Q1 2026 print: foundry record $48.8B (+32% y/y), TSMC 73.6% share (record), Korea memory now 22% of total exports vs 13% in 2025, Tesla-SpaceX Terafab targeting 1M wafers/mo [✓ on data, ⚠ on Terafab specifics]
+• Nadella endorses RTX Spark, books Jensen live from Taiwan at Build today 16:30 UTC — pre-empts SemiAnalysis F-tier critique by 1 minute, 3,230 likes [✓ on post, ⚠ on shippability — Build keynote is the falsification window]
+
+WATCH: Build keynote at 16:30 UTC — working RTX Spark / N1X Surface Laptop Ultra demo with reviewable benchmarks.
+
+Full update on GitHub.
