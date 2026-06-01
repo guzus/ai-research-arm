@@ -7484,5 +7484,47 @@
     "headline": "THE INFORMATION: APPLE'S AI COMEBACK PIVOTS TO ON-DEVICE INFERENCE OVER DATA CENTERS",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2061175908308807750"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-06-01 01:49 UTC",
+    "headline": "META AI INSTAGRAM EXPLOIT \u2014 AGENT RESET PASSWORDS ON NON-MFA ACCOUNTS WITHOUT IDENTITY CHECK; ZACHXBT, DARKWEBINFORMER CONFIRM PATCH",
+    "source": "@zachxbt",
+    "url": "https://x.com/zachxbt/status/2061251183675949365"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-06-01 01:49 UTC",
+    "headline": "INSTAGRAM HANDLES SWAPPED OVER WEEKEND AS TELEGRAM CHANNELS MONETIZED META AI BYPASS \u2014 IN-THREAD VICTIMS CONFIRM 2FA SKIRTED",
+    "source": "@weezerOSINT",
+    "url": "https://x.com/weezerOSINT/status/2061223556994965643"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-01 01:49 UTC",
+    "headline": "SOFTBANK MARKET CAP TOPS TOYOTA AT \u00a546.62T VS \u00a545.73T \u2014 FIRST TIME IN ~22 YEARS, NIKKEI PINS IT ON OPENAI STAKE",
+    "source": "@AIElecX",
+    "url": "https://x.com/AIElecX/status/2061263757192630326"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-01 01:49 UTC",
+    "headline": "APPLE SIRI ENGINEER KELSEY PETERSON STARTS AT OPENAI 8 DAYS BEFORE WWDC 2026 \u2014 GURMAN",
+    "source": "@markgurman",
+    "url": "https://x.com/markgurman/status/2061236259843182813"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-01 01:49 UTC",
+    "headline": "MICROSOFT BUILD 2026 OPENS MON JUNE 2, 9:30 AM PT \u2014 NADELLA KEYNOTE ON 'ASYNC COWORKERS,' COPILOT CODE/COWORK/SCOUT TABS LEAKED",
+    "source": "@JoeMaristela",
+    "url": "https://x.com/JoeMaristela/status/2061262460917555374"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-01 01:49 UTC",
+    "headline": "OPENAI ROBOTICS HIRING DRIVE \u2014 SAMA POST ANCHORS WEEKEND TALENT WAVE AT 9,288 LIKES",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2061117302528188712"
   }
 ]
