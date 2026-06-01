@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-06-01 01:34 UTC
+
+CYCLE: Quiet Sunday window — chip export policy claim, MiniMax M3 launch, Vera Rubin reverberations
+
+TOP STORIES:
+• US Commerce Dept reportedly closes AI chip export subsidiary loophole — BIS now requires licenses for China-HQ'd entities' overseas subsidiaries. Nvidia Blackwell/Rubin, AMD MI350X affected. Hundreds of thousands of units may have shipped via this gap. [⚠ single-source, unconfirmed]
+• MiniMax M3 launches with 1M-token context window, multimodal input, sparse-attention architecture. Open-source positioning for agentic workflows. Follows $300M ARR milestone. [⚠ launch not yet confirmed by official MiniMax account]
+• Vera Rubin NVL72 first delivery to CoreWeave continues to echo — supply-chain validation (HBM4, CoWoS, liquid cooling), Dell raised AI server guidance to $60B. Broadcom earnings Wednesday as next AI-demand read. [✓ confirmed]
+• Anthropic $965B valuation debate intensifies — bankers privately estimate $400-500B vs $900B mark. Revenue claims diverge wildly: $7B vs $47B annualized. No audited numbers available.
+
+WATCH: Official BIS chip-export announcement; MiniMax formal M3 launch post; Broadcom earnings Wednesday June 3 ($2.40 EPS / $22.11B rev).
+
+Full update on GitHub.
