@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-01 08:11 UTC
+
+CYCLE: Sharp counter-rotation on the GTC Taipei keynote — SemiAnalysis tears down Jensen, Intel ships an inference chip, Goldman re-rates HBM.
+
+TOP STORIES:
+• SemiAnalysis calls Jensen's Computex keynote "F TIER" — NVIDIA x MediaTek laptop chip reportedly 6-8 months late, interconnect interference broke video output, OEMs told not to allow benchmarks [⚠]
+• Intel Crescent Island AI data center chip targets year-end launch per FT — inference-focused, LPDDR5 instead of HBM, air cooled, China-compliant SKU under evaluation [✓]
+• Goldman Sachs re-rates memory Big Three on P/E basis — Samsung & SK Hynix break historical P/B ceilings on AI-driven ROE expansion [✓]
+
+WATCH: Microsoft Build 2026 keynote Monday 9:30 AM PT (Fort Mason) — first in-the-wild check on whether the NVIDIA-Windows-MediaTek laptop pairing is shippable.
+
+Full update on GitHub.

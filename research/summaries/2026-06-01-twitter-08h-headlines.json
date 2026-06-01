@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "SEMIANALYSIS LABELS JENSEN COMPUTEX KEYNOTE 'F TIER' — NVIDIA x MEDIATEK LAPTOP CHIP REPORTEDLY 6-8 MONTHS DELAYED",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2061315076045295727",
+    "category": "infra"
+  },
+  {
+    "headline": "INTEL CRESCENT ISLAND AI DATA CENTER CHIP TARGETS YEAR-END LAUNCH — INFERENCE-FOCUSED, LPDDR5 NOT HBM, CHINA-COMPLIANT SKU IN PLAY (PER FT)",
+    "source": "@wallstengine",
+    "url": "https://x.com/wallstengine/status/2061356265507614854",
+    "category": "infra"
+  },
+  {
+    "headline": "GOLDMAN SACHS RE-RATES MEMORY BIG THREE ON P/E BASIS — SAMSUNG, SK HYNIX BREAK HISTORICAL P/B CEILINGS ON AI ROE EXPANSION",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2061333846759784518",
+    "category": "business"
+  },
+  {
+    "headline": "NVIDIA COSMOS 3 WEIGHTS + POST-TRAINING RECIPES LIVE ON HUGGING FACE — HF RT HITS 158 IN CYCLE",
+    "source": "@huggingface",
+    "url": "https://x.com/huggingface/status/2061346254706094352",
+    "category": "opensource"
+  },
+  {
+    "headline": "NIKKEI 67,000 UPDATE 1 — SOFTBANK CONFIRMED AS JAPAN'S MOST VALUABLE FIRM AT CLOSE, 150+ STOCKS FELL ON THE DAY",
+    "source": "@The_Japan_News",
+    "url": "https://x.com/The_Japan_News/status/2061356965322969109",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC 'CODE WITH CLAUDE' ASIA-FIRST EVENT CONFIRMED FOR JUNE 10 TOKYO — FREEE CAIO ON SPEAKER LINE",
+    "source": "@freeeDevelopers",
+    "url": "https://x.com/freeeDevelopers/status/2061359776316137673",
+    "category": "business"
+  },
+  {
+    "headline": "MINIMAX M3 AGENT ADDS PERSISTENT MEMORY, EVOLVING SKILLS, UNIFIED BILLING — 59% SWE-BENCH PRO ON OPEN WEIGHTS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2061316009361838241",
+    "category": "model"
+  }
+]
