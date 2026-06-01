@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-06-01 11:02 UTC
+
+CYCLE: Quiet pre-Microsoft-Build cycle — Asia winding down, US not yet awake, frontier-lab Western handles silent ahead of Nadella's 16:30 UTC keynote.
+
+TOP STORIES:
+• DriveNets raises $410M at $8.5B, claims >$1B AI-networking backlog and cash-flow positive — first AI-infra round of GTC/Build week, ~10× the 2022 mark [⚠ single-source CTech]
+• RTX Spark / N1X spec hardens: 20 CPU cores, 6,144 GPU cores, 128GB LPDDR5X, 1 PFLOP, MediaTek-ARM, Microsoft+Dell launch — SemiAnalysis F-tier critique still uncountered at hour 6 [⚠ shippability open]
+
+WATCH: Nadella's Microsoft Build keynote 16:30 UTC today — does a working RTX Spark / N1X Surface Laptop Ultra appear on stage with reviewable benchmarks?
+
+Full update on GitHub.
