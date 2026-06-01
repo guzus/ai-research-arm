@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-01 05:04 UTC
+
+CYCLE: Asia-time keynote dump - NVIDIA GTC Taipei + MiniMax M3 open-weights ship dominate; Western frontier labs silent.
+
+TOP STORIES:
+• NVIDIA GTC Taipei: DGX Station for Windows (1T-param local), Cosmos 3, Alpamayo 2 Super 32B driving VLA, Isaac GR00T humanoid, RTX Spark 1 PFLOP PC chip, Nemotron 3 Ultra truly-open, Vera CPU, NVIDIA DSX [✓]
+• MiniMax M3 ships - open-weights, 1M context via Sparse Attention, native multimodal; 59% SWE-Bench Pro / 66% Terminal Bench 2.1; day-zero on Ollama/OpenRouter/OpenCode/Hermes; weights in ~10 days [✓]
+• China issues sweeping new rules tightening overseas deals (investors/tech/data/national-security), one month post-Manus unwind order [✓]
+
+WATCH: Microsoft Build keynote June 2 9:30 AM PT - does Nadella frame DGX Station for Windows + RTX Spark + OpenShell as the Windows-on-NVIDIA stack?
+
+Full update on GitHub.

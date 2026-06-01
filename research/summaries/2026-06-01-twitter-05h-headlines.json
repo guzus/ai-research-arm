@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "NVIDIA SHIPS DGX STATION FOR WINDOWS — 1-TRILLION-PARAMETER FRONTIER MODELS RUN LOCALLY ON GB300, OPENSHELL FOR ON-DEVICE AGENTS",
+    "source": "@nvidianewsroom",
+    "url": "https://x.com/nvidianewsroom/status/2061307670607319201",
+    "category": "infra"
+  },
+  {
+    "headline": "MINIMAX M3 LAUNCHES — OPEN-WEIGHTS, 1M CONTEXT VIA SPARSE ATTENTION, 59% SWE-BENCH PRO; WEIGHTS + TECH REPORT IN 10 DAYS",
+    "source": "@MiniMax_AI",
+    "url": "https://x.com/MiniMax_AI/status/2061266317815296322",
+    "category": "model"
+  },
+  {
+    "headline": "NVIDIA ALPAMAYO 2 SUPER — 32B OPEN-WEIGHTS REASONING VLA FOR LEVEL-4 ROBOTAXIS, SHIPS WITH ALPAGYM + OMNIDREAMS",
+    "source": "@nvidianewsroom",
+    "url": "https://x.com/nvidianewsroom/status/2061311112059003264",
+    "category": "opensource"
+  },
+  {
+    "headline": "NVIDIA RTX SPARK — 1 PFLOP CONSUMER PC CHIP FOR ON-DEVICE AI AGENTS, SHIPPING FALL 2026 WITH ASUS DELL HP LENOVO MS SURFACE MSI",
+    "source": "@IdleProtocol",
+    "url": "https://x.com/IdleProtocol/status/2061311993458397675",
+    "category": "infra"
+  },
+  {
+    "headline": "NVIDIA ISAAC GR00T — FIRST OPEN HUMANOID ROBOT REFERENCE DESIGN, UNITREE H2 BODY + SHARPA FIVE-FINGERED HANDS + JETSON THOR",
+    "source": "@nvidianewsroom",
+    "url": "https://x.com/nvidianewsroom/status/2061312819480392042",
+    "category": "research"
+  },
+  {
+    "headline": "CHINA ISSUES SWEEPING NEW RULES TIGHTENING OVERSEAS DEALS ON INVESTORS, TECH, DATA, NATIONAL SECURITY — ONE MONTH POST-MANUS UNWIND",
+    "source": "@ReutersTech",
+    "url": "https://x.com/ReutersTech/status/2061310663595553237",
+    "category": "policy"
+  },
+  {
+    "headline": "DECART RAISES $300M WITH NVIDIA BACKING — GENERATIVE-AI INFRASTRUCTURE LAYER STILL TOP VC TARGET",
+    "source": "@FutureWire__",
+    "url": "https://x.com/FutureWire__/status/2061312156050563357",
+    "category": "business"
+  }
+]
