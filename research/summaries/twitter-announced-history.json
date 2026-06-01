@@ -7526,5 +7526,54 @@
     "headline": "OPENAI ROBOTICS HIRING DRIVE \u2014 SAMA POST ANCHORS WEEKEND TALENT WAVE AT 9,288 LIKES",
     "source": "@sama",
     "url": "https://x.com/sama/status/2061117302528188712"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-01 05:04 UTC",
+    "headline": "NVIDIA SHIPS DGX STATION FOR WINDOWS \u2014 1-TRILLION-PARAMETER FRONTIER MODELS RUN LOCALLY ON GB300, OPENSHELL FOR ON-DEVICE AGENTS",
+    "source": "@nvidianewsroom",
+    "url": "https://x.com/nvidianewsroom/status/2061307670607319201"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-01 05:04 UTC",
+    "headline": "MINIMAX M3 LAUNCHES \u2014 OPEN-WEIGHTS, 1M CONTEXT VIA SPARSE ATTENTION, 59% SWE-BENCH PRO; WEIGHTS + TECH REPORT IN 10 DAYS",
+    "source": "@MiniMax_AI",
+    "url": "https://x.com/MiniMax_AI/status/2061266317815296322"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-01 05:04 UTC",
+    "headline": "NVIDIA ALPAMAYO 2 SUPER \u2014 32B OPEN-WEIGHTS REASONING VLA FOR LEVEL-4 ROBOTAXIS, SHIPS WITH ALPAGYM + OMNIDREAMS",
+    "source": "@nvidianewsroom",
+    "url": "https://x.com/nvidianewsroom/status/2061311112059003264"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-01 05:04 UTC",
+    "headline": "NVIDIA RTX SPARK \u2014 1 PFLOP CONSUMER PC CHIP FOR ON-DEVICE AI AGENTS, SHIPPING FALL 2026 WITH ASUS DELL HP LENOVO MS SURFACE MSI",
+    "source": "@IdleProtocol",
+    "url": "https://x.com/IdleProtocol/status/2061311993458397675"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-01 05:04 UTC",
+    "headline": "NVIDIA ISAAC GR00T \u2014 FIRST OPEN HUMANOID ROBOT REFERENCE DESIGN, UNITREE H2 BODY + SHARPA FIVE-FINGERED HANDS + JETSON THOR",
+    "source": "@nvidianewsroom",
+    "url": "https://x.com/nvidianewsroom/status/2061312819480392042"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-01 05:04 UTC",
+    "headline": "CHINA ISSUES SWEEPING NEW RULES TIGHTENING OVERSEAS DEALS ON INVESTORS, TECH, DATA, NATIONAL SECURITY \u2014 ONE MONTH POST-MANUS UNWIND",
+    "source": "@ReutersTech",
+    "url": "https://x.com/ReutersTech/status/2061310663595553237"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-01 05:04 UTC",
+    "headline": "DECART RAISES $300M WITH NVIDIA BACKING \u2014 GENERATIVE-AI INFRASTRUCTURE LAYER STILL TOP VC TARGET",
+    "source": "@FutureWire__",
+    "url": "https://x.com/FutureWire__/status/2061312156050563357"
   }
 ]
