@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-06-01 14:40 UTC
+
+CYCLE: NVIDIA Cosmos 3 — first open omnimodel for physical AI launches at GTC Taipei; Anthropic grants EU access to Claude Mythos; IREN closes first A-rated GPU financing in history
+
+TOP STORIES:
+• NVIDIA Cosmos 3: open-weight 64B MoT omnimodel for physical AI — unifies vision, world simulation, and action generation. Weights on Hugging Face. #1 across Physics-IQ, PAI-Bench, RoboLab. [✓]
+• Anthropic offers ENISA EU access to Claude Mythos through Project Glasswing — zero-day capable model enters transatlantic government use. [✓]
+• IREN closes $3.65B A-rated GPU financing for Microsoft AI cloud — first investment-grade GPU debt package ever; 480MW target, $3.4B ARR. [✓]
+• Google's SynthID watermark cracked — single developer, 200 samples, 91% accuracy. Open source tool on GitHub. Challenges AI content provenance. [⚠]
+
+WATCH: Broadcom earnings Wed June 3 — consensus $2.40 EPS on $22.11B. Cleanest AI demand read of the week.
+
+Full update on GitHub.
