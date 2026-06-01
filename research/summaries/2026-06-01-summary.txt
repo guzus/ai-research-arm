@@ -1,13 +1,14 @@
 AI News - 2026-06-01
 
 TOP STORIES:
-• NVIDIA Computex 2026 (June 1) — Jensen keynote stacks N1X Arm PC chip + RTX Spark (MediaTek/TSMC 3nm, fall laptops from MSFT/Dell/HP/ASUS/Lenovo/MSI); Cosmos 3 open world model; Alpamayo 2 Super 32B robotaxi VLA; Vera Rubin NVL72 volume H2 2026
-• NVIDIA Isaac GR00T Humanoid (May 31) — first open humanoid reference: Unitree H2 Plus + Sharpa hands + Jetson Thor; Ai2/ETH/Stanford/UCSD adopt
-• Cosmos Coalition: Black Forest Labs, Runway, Agile Robots, Skild AI; Samsung/LG/Li Auto/Doosan adopt Cosmos 3
+• Anthropic confidentially files draft S-1 with SEC TODAY (Jun 1) — 4 days post Series H, ~4 months ahead of Oct target, beats OpenAI to filing
+• NVIDIA Computex 2026 (Jun 1, Taipei): N1X/RTX Spark PC chip + Cosmos 3 + Alpamayo 2 Super 32B robotaxi VLA + Vera Rubin volume H2 2026
+• NVIDIA Isaac GR00T Humanoid (May 31) — Unitree H2 Plus + Sharpa hands + Jetson Thor; first open humanoid ref design
+• Microsoft Project Polaris leak (Jun 1) — replaces GPT-4 Turbo as Copilot default Aug 2026; MAI-Image 2.5 / Voice 2 / Transcribe 1.5 drop at Build Jun 2
 
 KEY NUMBERS:
+• Anthropic post-money $965B (> OpenAI $852B); combined SpaceX+Anthropic+OpenAI IPO supply ~$185B
 • N1X: 20-core Arm + 6,144-CUDA Blackwell + 128GB RAM, 14mm laptops
-• Alpamayo: 32B params, 1,700+ hrs open AV data
-• Spark roadmap: N1X (2026) → Vera Rubin (2028) → Rosa Feynman (2030)
+• Microsoft kills internal Claude Code Jun 30 after burning full year AI budget; Uber same ($500-$2K/eng/mo)
 
 Full report on GitHub.
