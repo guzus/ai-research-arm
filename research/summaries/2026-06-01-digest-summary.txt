@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-01
+
+TOP STORIES:
+• Figure AI Helix-02 humanoid runs 200h autonomously, sorts 249,560 packages, zero failures — ~10x prior humanoid MTBI envelope
+• Anthropic opens Seoul (3rd APAC hub); Korean Claude Code WAUs +6x in 4 months
+• Gemini Spark GA at $99.99/mo — first paid frontier-lab persistent consumer agent
+
+KEY NUMBERS:
+• Dell Q1 FY27: $43.8B rev (+88%), $16.1B AI servers (+757%), FY27 outlook raised to $60B; stock +32% (best day ever)
+• OpenRouter $113M Series B @ $1.3B (CapitalG/NVentures); 5x weekly tokens to 25T
+• Meta wearables memo: 10M H2 unit target, AI pendant, "Wearables for Work" B2B
+
+TRENDING: "Domain expertise has always been the real moat" — 764 pts/477 comments, top HN thread
+
+Full digest on GitHub.
