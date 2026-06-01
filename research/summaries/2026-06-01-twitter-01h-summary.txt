@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-01 01:49 UTC
+
+CYCLE: AI-agent security incident + capital-allocation tipping point — Meta Instagram exploit, SoftBank tops Toyota, Apple's Siri lead defects to OpenAI.
+
+TOP STORIES:
+- Instagram AI-agent exploit let attackers reset passwords on non-MFA accounts; ZachXBT + DarkWebInformer + weezerOSINT corroborate, Meta has just patched [v]
+- SoftBank Group market cap surpasses Toyota's (¥46.62T vs ¥45.73T) for first time in ~22 years, Nikkei pins it on the ~$65B OpenAI stake ahead of September IPO [v]
+- Mark Gurman: Kelsey Peterson — Apple AI exec who unveiled never-launched 2024 Siri revamp — starts at OpenAI 8 days before WWDC 2026 [s]
+
+WATCH: Microsoft Build 2026 opens Mon June 2, 9:30 AM PT — Nadella keynote on "async coworkers," Copilot Code/Cowork/Scout tabs from testingcatalog leaks expected on stage.
+
+Full update on GitHub.
