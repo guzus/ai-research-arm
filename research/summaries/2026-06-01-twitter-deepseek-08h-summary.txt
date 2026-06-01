@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-06-01 08:29 UTC
+
+CYCLE: COMPUTEX dominates — NVIDIA RTX Spark AI PC platform and Intel Crescent Island inference chip reshape AI hardware landscape
+
+TOP STORIES:
+• NVIDIA+Microsoft unveil RTX Spark & N1X — Arm-based AI PC chip, 128GB unified memory, local agents no cloud needed. Ships fall 2026 on Dell/HP/Lenovo/Surface. [✓]
+• Intel counters with Crescent Island — inference-only GPU using LPDDR5X + air cooling, deliberately sidestepping HBM cost trap. Year-end launch, GA likely 2027. [✓]
+• MiniMax M3 officially launched — 59% SWE-Bench Pro, 66% Terminal Bench, 1M context, multimodal. Open weights on HuggingFace in ~10 days. [✓]
+
+WATCH: Broadcom earnings Wed June 3 — key AI demand read. NVIDIA Nemotron 3 Ultra drops this week. MiniMax M3 weights ~June 10.
+
+Full update on GitHub.
