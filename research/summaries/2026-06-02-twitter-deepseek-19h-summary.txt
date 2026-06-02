@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-06-02 19:58 UTC
+
+CYCLE: Microsoft Build 2026 dominates with 7 MAI models + Majorana 2 quantum + Solaris agent hardware. Trump signs AI executive order. OpenAI counters with Codex Sites + 62-app plugin marketplace.
+
+TOP STORIES:
+• Microsoft launches 7 MAI models at Build 2026 — MAI-Thinking-1 (35B MoE) beats Sonnet 4.6 on human eval, scores 97% AIME 2025, optimized for custom MAIA 200 silicon at 30% better perf/$ vs GB200 [✓]
+• Trump signs executive order requiring AI companies to give US government 30-day pre-release access to frontier models for cybersecurity review — CNN/CNBC confirmed, reportedly triggered by Anthropic's Claude Mythos [✓]
+• Microsoft unveils Majorana 2 quantum chip — AI-designed materials, 1,000x reliability improvement, targets 2029 — but Scientific American reports physicists call the claims "bogus" due to missing verification data [⚠]
+• OpenAI launches Codex Sites (agent output → interactive apps) and a 62-app plugin marketplace across sales, analytics, creative, product design, and investing [✓]
+
+WATCH: Full text of Trump AI EO on whitehouse.gov (voluntary vs mandatory distinction). Independent third-party evals of MAI-Thinking-1. Whether Microsoft releases Majorana 2 X measurement data.
+
+Full update on GitHub.
