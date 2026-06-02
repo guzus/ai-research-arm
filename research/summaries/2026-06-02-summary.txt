@@ -1,0 +1,14 @@
+AI News - 2026-06-02
+
+TOP STORIES:
+• Microsoft Build 2026 (Fort Mason): Nadella declares "agents are the new OS for work"; Polaris confirmed as default GitHub Copilot from Aug 2026 (replacing GPT-4 Turbo); MAI-Thinking-1 unveiled - first MS reasoning model built WITHOUT distillation
+• Windows Local AI ships June 9 (Win11 KB5039239) with Phi-4-mini-silicon for Snapdragon X / Intel Lunar Lake / AMD XDNA NPUs; Win Agent Framework v1.0 MIT-licensed
+• OpenAI GPT-5.5 + GPT-5.4 + Codex GA on Amazon Bedrock (June 1) - ends Azure-exclusive era
+• OpenAI GPT-5.2-Codex ships - SOTA SWE-Bench Pro / Terminal-Bench 2.0
+
+KEY NUMBERS:
+• ~5,000 devs on-site at Build
+• Waypoint Bio: $20M Series A
+• SpaceX SPCX trading opens June 12
+
+Full report on GitHub.
