@@ -45,7 +45,7 @@ sources:
   - "@jiayuan_jy"
   - "@MikaStars39"
 created_at: 2026-05-28
-updated_at: 2026-06-01
+updated_at: 2026-06-02
 closed_at: null
 closed_reason: null
 history:
@@ -53,6 +53,8 @@ history:
     change: "Created — MiniMax M3 teased with a new sparse-attention mechanism and 15.6× long-context response speed boost over M2, per secondary roundup coverage 2026-05-27/28. No MiniMax-primary source in the visible signal; status set to `rumored` with `verification: unverified` accordingly"
   - ts: 2026-06-01
     change: "Released — primary @MiniMax_AI launch tweet 2026-06-01 01:59 UTC (~2,965 likes / 430 RT). Open-weights, MiniMax Sparse Attention scaling context to 1M, natively multimodal from step zero. Self-reported benchmarks: 59.0% SWE-Bench Pro, 66.0% Terminal Bench 2.1, 34.8% SWE-fficiency, 28.8% KernelBench Hard, 74.2% MCP Atlas. API live now (50% off ≤512K context first 7 days); weights + tech report in ~10 days. Day-zero integrations: Ollama Cloud, OpenRouter (50% off first week), AskVenice (anonymous), OpenCode (free trial), Hermes Agent. status: rumored → released; verification: unverified → confirmed. Trending #2 on X (~3,400 posts). Third-party live test @jiayuan_jy: subjective feel approaching Opus 4.7. @buildwithhassan skeptic note: small delta vs M2.7 implies M2.x scores may have been inflated"
+  - ts: 2026-06-02
+    change: "Adoption / sibling-product clarifications surfaced in-cycle: (1) **MiniMax Code** was launched same-tweet as M3 ('🚀New! MiniMax Code') — a coding-agent product surface bundled with the API release, separate from the model itself; reframes the launch as an M3 + Code-agent dual-ship rather than a pure model drop. (2) Pricing comparison framing emerging in third-party coverage (@_Venturini 2026-06-02 08:00 UTC): 'M3 supera GPT 5.5 e Gemini 3.1 Pro... custa 5-10% dos rivais, open source' — claim that M3 runs at ~5–10% of frontier closed-model API cost (directional, not yet third-party verified). (3) Multimodal upload of long-research-project framing from secondary aggregators: 12-hour autonomous research run with 18 code commits cited as MiniMax-supplied internal example. Status unchanged (released); waiting for weight drop (~2026-06-10/11) before independent benchmark reproductions"
 ---
 
 **MiniMax M3** launched on **2026-06-01 at 01:59 UTC** via the primary

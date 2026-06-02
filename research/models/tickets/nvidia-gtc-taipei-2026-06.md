@@ -47,13 +47,17 @@ sources:
   - "@PANewsCN"
   - "@IdleProtocol"
   - "@andrei199868"
+  - "@NVIDIAAI"
+  - "@WesRoth"
 created_at: 2026-06-01
-updated_at: 2026-06-01
+updated_at: 2026-06-02
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-01
     change: "Created — NVIDIA GTC Taipei keynote (Computex 2026, Jensen Huang) shipped eleven announcements 2026-06-01 04:43–05:04 UTC via primary @nvidianewsroom: DGX Station for Windows (1T-param local on GB300 + OpenShell, ASUS/Dell/GIGABYTE), Cosmos 3 Super/Nano/Edge for robotics + AV + edge, Cosmos Coalition (Agilex, BFL, GeneralistAI, LTX, Runway, Skild), Alpamayo 2 Super (32B open driving VLA), DRIVE Hyperion expansion (Lucid+HUMAIN, VinFast+Autobrains, Uber+Autobrains), Isaac GR00T Reference Humanoid (Unitree H2 + Sharpa + Jetson Thor), Nemotron 3 Ultra truly-open (weights+datasets+code), RTX Spark (1 PFLOP consumer Windows AI inference, every major OEM, fall 2026), Vera CPU ('fastest product launch in our company's history' — Jensen), NVIDIA DSX AI-factory platform. Lands 24h before [[microsoft-build-2026-models]] keynote (2026-06-02 09:30 PT). Open driving VLA and Nemotron 3 Ultra published with weights"
+  - ts: 2026-06-02
+    change: "Param-size + benchmark clarifications surfaced 2026-06-01 04:46 UTC via primary @NVIDIAAI launch tweet (~2,514 likes / 376 RT) + 2026-06-02 07:00 UTC @WesRoth amplification: **Cosmos 3 Super = 32B, Cosmos 3 Nano = 8B** explicit parameter sizes (the bundle ticket previously had Super/Nano/Edge tiers without sizes). Cosmos 3 frames as 'the world's first fully open omnimodel with native vision reasoning, world and action generation' and 'ranks first among open models' across Artificial Analysis, Physics-IQ, PAI-Bench, R-Bench, RoboLab, RoboArena, VANTAGE-Bench, and TAR. Separately, **Nemotron 3 Ultra = 550B parameters** confirmed via @NVIDIAAI 'Nemotron 3 Ultra is coming this week' tweet (2026-06-01 04:35 UTC, ~3,030 likes / 332 RT) + @WesRoth secondary framing ('NVIDIA's most intelligent open-weight model so far'). Param-size disclosure was the only material delta in-window — strategic framing of the bundle (Windows-on-NVIDIA, agentic, robotaxi) unchanged"
 ---
 
 NVIDIA's **GTC Taipei keynote at Computex 2026** ran 2026-06-01
@@ -72,10 +76,15 @@ a deliberate counter-position before Nadella takes the stage.
   building and running secure on-device agents. Chassis partners:
   ASUS, Dell, GIGABYTE (full list TBD). The Linux-native DGX line had
   existed; the Windows-first variant is the new product.
-- **Cosmos 3 family** — Cosmos Super (highest-accuracy robotics + AV
-  post-training), Cosmos Nano (high-speed video + action reasoning),
-  Cosmos Edge (real-time edge inference). Replaces the prior Cosmos
-  generation as the world-model + simulation stack.
+- **Cosmos 3 family** — **Cosmos Super (32B)** for highest-accuracy
+  robotics + AV post-training, **Cosmos Nano (8B)** for high-speed
+  video + action reasoning, **Cosmos Edge** for real-time edge
+  inference. Per @NVIDIAAI's launch framing: "the world's first fully
+  open omnimodel with native vision reasoning, world and action
+  generation"; "ranks first among open models" on Artificial Analysis,
+  Physics-IQ, PAI-Bench, R-Bench, RoboLab, RoboArena, VANTAGE-Bench,
+  and TAR. Replaces the prior Cosmos generation as the world-model +
+  simulation stack.
 - **Cosmos Coalition** — Agilex Robotics, Black Forest Labs,
   GeneralistAI, LTX Studio, Runway, Skild AI as the named coalition
   of world-model builders + AI developers.
@@ -89,8 +98,11 @@ a deliberate counter-position before Nadella takes the stage.
   humanoid robot reference design** for robotics research, combining
   the Unitree H2 body, Sharpa five-fingered hands, Jetson Thor
   compute, and the Isaac GR00T open software/models stack.
-- **Nemotron 3 Ultra** — released **"truly open"**: weights + datasets
-  + code, not weights-only.
+- **Nemotron 3 Ultra** — a **550-billion-parameter open-weight model**
+  framed by @NVIDIAAI as "NVIDIA's most intelligent open-weight model
+  so far," released **"truly open"**: weights + datasets + code, not
+  weights-only. Drop window: "this week" per the 2026-06-01 @NVIDIAAI
+  tweet.
 - **RTX Spark** — **1 PFLOP of on-device AI inference** for consumer
   Windows laptops, shipping **fall 2026** with ASUS, Dell, HP, Lenovo,
   Microsoft Surface, MSI, Acer — every major PC OEM.
