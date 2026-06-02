@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-02 19:43 UTC
+
+CYCLE: Microsoft Build delivers — 7-MAI stack with concrete benchmarks; Marvell closes +29.74%.
+
+TOP STORIES:
+• Mustafa Suleyman ships 7 MAI models on stage: MAI-Thinking-1 (35B MoE, 256K ctx, 97% AIME, 53% SWE-Bench Pro = Opus 4.6 parity), MAI-Code-1-Flash 5B at 51% SWE-Bench Pro, MAIA 200 claims 30% better $/perf vs GB200, McKinsey-tuned MAI beats GPT-5.5 at 10x lower cost, Mayo Clinic healthcare-model partnership [✓]
+• Satya Nadella primary recap thread at 19:43 UTC: Aion on-device models + Surface RTX Spark Dev Box, Project Solara (MDEP custom Android, PCMag-confirmed), Autopilots framed as "enterprise-grade Claws", IQ unified Foundry+Fabric+M365, Majorana 2 quantum [✓]
+• $MRVL closes +29.74% at $282.93 — best single session in 3 years; sector spillover: $COHR +16%, $LITE +13.7%, $GLW +12.5%; $19.37M deep-ITM call SALE flags institutional "monetizing into euphoria" [✓]
+
+WATCH: MAI-Thinking-1 third-party leaderboard reproduction (Surge / SWE-Bench Pro / AIME 2025); Marvell Wednesday open vs +29.74% close.
+
+Full update on GitHub.
