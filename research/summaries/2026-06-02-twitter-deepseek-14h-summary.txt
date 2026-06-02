@@ -1,0 +1,14 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-06-02 14:14 UTC
+
+CYCLE: Digestion window — second-order analysis of the prior 18h's Anthropic S-1, Google $80B raise, and COMPUTEX hardware wave. Key refinement: only ~$50B of Google's $80B raise is for AI capex; $30B is for ESOP taxes.
+
+TOP STORIES:
+• Google's $80B raise is only ~$50B for AI — $30B earmarked for employee stock option taxes, moderating the "AI capex desperation" narrative [✓]
+• Genius Group ($GNS) launches first AI Treasury with retail pre-IPO exposure to SpaceX, Anthropic, and OpenAI — early signal of the financialization of AI mega-cap access [⚠]
+• NeurIPS 2026 requires papers to be "substantially human-written" — the premier ML conference draws the hardest line yet against AI-generated research [✓]
+• OpenAI sunsets GPT-5.2/5.3-Codex today; 2x usage promo expired May 31 — users now on GPT-5.5 with tighter limits [✓]
+• Google Quantum's ECDLP circuits were blocked from publication by US gov, then AI re-derived and improved them using the ZKP verifier as a reward function [⚠]
+
+WATCH: Broadcom ($AVGO) earnings June 3 — the week's best AI-infrastructure-demand read. GOOGL regular-session price action on the $80B raise. SpaceX IPO June 12.
+
+Full update on GitHub.
