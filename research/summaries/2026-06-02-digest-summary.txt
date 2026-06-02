@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-06-02
+
+TOP STORIES:
+• Anthropic confidentially files draft S-1 with SEC — first frontier AI lab IPO step, at $965B Series H mark
+• Alphabet announces $80B AI-infra equity raise; Berkshire takes $10B
+• Florida AG sues OpenAI + Sam Altman PERSONALLY in 83-page complaint
+
+KEY NUMBERS:
+• NVIDIA GTC Taipei: 11 announcements (DGX Station for Windows, RTX Spark, Cosmos 3, Nemotron 3 Ultra)
+• MiniMax M3 ships open-weights: 1M context, 59% SWE-Bench Pro
+• HPE +33% AH on Q2 blowout (rev +40%, AI orders 2×)
+• SoftBank passes Toyota first time in 22 years
+
+TRENDING: Meta AI Instagram exploit (#1 HN, 952 pts) — agent reset passwords on non-MFA accounts
+
+Full digest on GitHub.
