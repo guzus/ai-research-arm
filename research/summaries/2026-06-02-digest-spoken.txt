@@ -1,0 +1,11 @@
+Speaker 1: Tuesday, June second, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic has confidentially filed a draft S-one with the SEC — the first IPO step by a frontier AI lab — and the filing comes at a [emphasis]nine hundred sixty-five billion dollar[/emphasis] Series H valuation.
+Speaker 1: Nearly a trillion before they ring the bell. On the capital side, Alphabet also announced an [emphasis]eighty billion dollar[/emphasis] AI infrastructure equity raise, with Berkshire Hathaway taking ten billion of that.
+Speaker 2: Berkshire in AI infrastructure is not something you see every day — that is a real signal about where the smart money thinks this is going.
+Speaker 1: On the legal front, the Florida Attorney General has sued OpenAI and Sam Altman personally — an eighty-three page complaint naming Altman directly.
+Speaker 2: [dramatic_pause] Eighty-three pages. That is not a nuisance filing.
+Speaker 1: Shifting to hardware — NVIDIA's GTC Taipei brought eleven announcements, including DGX Station for Windows, RTX Spark, Cosmos three, and Nemotron three Ultra.
+Speaker 2: And on the model side, MiniMax M three ships open-weights with one million token context and fifty-nine percent on SWE-Bench Pro — that is a genuinely competitive number for an open release.
+Speaker 1: Some quick market moves — HPE surged thirty-three percent after hours on a Q two blowout, revenue up forty percent with AI orders doubling. SoftBank also passed Toyota in market cap for the first time in twenty-two years.
+Speaker 2: And one more worth flagging — a Meta AI Instagram exploit hit number one on Hacker News with over nine hundred fifty points. The agent was resetting passwords on accounts without multi-factor authentication enabled.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
