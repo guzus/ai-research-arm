@@ -7988,5 +7988,54 @@
     "headline": "MARVELL TERALYNX T100 + FY2028 GUIDANCE RAISED TO $16.5B \u2014 SELL-SIDE PRICE TARGETS LIFTED TO $240-$275",
     "source": "@VestExchange",
     "url": "https://x.com/VestExchange/status/2061802629509059004"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-02 19:43 UTC",
+    "headline": "MICROSOFT AI SHIPS 7-MODEL MAI STACK AT BUILD \u2014 MAI-THINKING-1 CLAIMS OPUS 4.6 PARITY AT 53% SWE-BENCH PRO ON 35B MOE",
+    "source": "@mustafasuleyman",
+    "url": "https://x.com/mustafasuleyman/status/2061880164498428188"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-02 19:43 UTC",
+    "headline": "MICROSOFT MAIA 200 SILICON CLAIMS 30% BETTER PERF-PER-DOLLAR AND 1.4X PERF-PER-WATT VS NVIDIA GB200 ON MAI MODELS",
+    "source": "@mustafasuleyman",
+    "url": "https://x.com/mustafasuleyman/status/2061880164498428188"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-02 19:43 UTC",
+    "headline": "MCKINSEY-TUNED MAI BEATS GPT-5.5 ON QUALITY AT 10X LOWER COST \u2014 MICROSOFT FRONTIER TUNING IS THE NEW ENTERPRISE LANE",
+    "source": "@mustafasuleyman",
+    "url": "https://x.com/mustafasuleyman/status/2061880164498428188"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-02 19:43 UTC",
+    "headline": "MICROSOFT AND MAYO CLINIC TO JOINTLY TRAIN A FRONTIER HEALTHCARE AI MODEL ON RECORDS, RESEARCH AND CLINICIAN EXPERTISE",
+    "source": "@mustafasuleyman",
+    "url": "https://x.com/mustafasuleyman/status/2061880164498428188"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-02 19:43 UTC",
+    "headline": "SATYA NADELLA ANNOUNCES MICROSOFT AUTOPILOTS AS 'ENTERPRISE-GRADE CLAWS' \u2014 DELIBERATE ANTHROPIC-CODED COUNTER-POSITIONING",
+    "source": "@satyanadella",
+    "url": "https://x.com/satyanadella/status/2061896512934949105"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-02 19:43 UTC",
+    "headline": "MARVELL CLOSES +29.74% AT $282.93 \u2014 BEST SINGLE SESSION IN OVER 3 YEARS AFTER JENSEN TRILLION-DOLLAR CALL EXTENDS RATHER THAN COMPRESSES",
+    "source": "@optionwhalesio",
+    "url": "https://x.com/optionwhalesio/status/2061886641581551639"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-02 19:43 UTC",
+    "headline": "MICROSOFT PROJECT SOLARA REVEALED \u2014 NEW AGENT-ERA HARDWARE PLATFORM RUNNING CUSTOM ANDROID VARIANT 'MDEP'",
+    "source": "@PCMag",
+    "url": "https://x.com/PCMag/status/2061897502660677667"
   }
 ]
