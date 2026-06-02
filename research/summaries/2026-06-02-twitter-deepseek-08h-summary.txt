@@ -1,0 +1,14 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-06-02 08:13 UTC
+
+CYCLE: OpenAI's dual platform push — GPT-5.5/Codex GA on AWS Bedrock + rumored major Codex update — marks a structural shift where cloud platforms become the neutral ground between frontier labs. Viral "Microsoft bans Claude Code" story (19.9K likes) fires the AI ROI debate but lacks a credible primary source.
+
+TOP STORIES:
+• GPT-5.5, GPT-5.4, and Codex now generally available on Amazon Bedrock — AWS becomes the neutral ground hosting both Claude and OpenAI models side by side [✓]
+• Viral claim Microsoft banned Claude Code after costs exceeded developer salaries — 19.9K likes but zero verifiable sourcing [🚩]
+• SK Hynix to double wafer capacity in 5 years, explicitly targeting NVIDIA Vera Rubin HBM supply [✓]
+• OpenAI preparing major Codex update "different from GPT-5.6" — per @kimmonismus, dropping June 2 [⚠]
+• DeepSWE benchmark on MiniMax M3: 15/113 passed (13.3%) — far below the 59% SWE-Bench Pro claimed at launch [✓]
+
+WATCH: US market open Tuesday — GOOGL price action on $80B dilution, HPE 30% after-hours gain test. OpenAI Codex update if it materializes. Microsoft/Claude Code story — any official confirmation or debunk.
+
+Full update on GitHub.
