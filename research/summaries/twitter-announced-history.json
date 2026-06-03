@@ -8212,5 +8212,54 @@
     "headline": "RAY DALIO SAYS THE AI BUBBLE WILL BURST EVENTUALLY",
     "source": "@i",
     "url": "https://x.com/i/web/status/2062213718054723648"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-03 19:48 UTC",
+    "headline": "DEEPSEEK REPORTED CLOSING ~$7.4B ROUND AT UP TO ~$59B VALUATION \u2014 TENCENT, CATL BACK CHINA'S AI CHAMPION",
+    "source": "@Benzinga",
+    "url": "https://x.com/Benzinga/status/2062225300545552508"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-03 19:48 UTC",
+    "headline": "DEEPSEEK FOUNDER LIANG WENFENG PUTS ~$3B OF OWN CASH INTO ROUND; ALIBABA TALKED THEN WALKED AWAY",
+    "source": "@mergenewsapp",
+    "url": "https://x.com/mergenewsapp/status/2062256288780681335"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-03 19:48 UTC",
+    "headline": "OPENAI PUBLISHES FRONTIER-AI-SAFETY 'BLUEPRINT' FOR DEMOCRATIC GOVERNANCE, FRAMED AS NEXT STEP AFTER CYBER EO",
+    "source": "@gdb",
+    "url": "https://x.com/gdb/status/2062259921664835833"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-03 19:48 UTC",
+    "headline": "SURGE AI LAUNCHES COMPLEXCONSTRAINTS BENCHMARK \u2014 FRONTIER MODELS SCORE ONLY 0-40% ON ENTANGLED INSTRUCTIONS",
+    "source": "@echen",
+    "url": "https://x.com/echen/status/2062258181905219813"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-03 19:48 UTC",
+    "headline": "SURGE AI: 4B MODEL FINE-TUNED ON 1K EXAMPLES MATCHES A MODEL 60X ITS SIZE ON INSTRUCTION-FOLLOWING",
+    "source": "@echen",
+    "url": "https://x.com/echen/status/2062258181905219813"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-03 19:48 UTC",
+    "headline": "GOOGLE RELEASES MAGENTA REALTIME 2 ON HUGGING FACE \u2014 OPEN-WEIGHTS ON-DEVICE MUSIC GEN AT ~200MS LATENCY",
+    "source": "@HuggingPapers",
+    "url": "https://x.com/HuggingPapers/status/2062260306039259236"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-03 19:48 UTC",
+    "headline": "UBER COMMITS ~$500M TO AUTONOMOUS-DRIVING STARTUP NURO, FAR MORE THAN PREVIOUSLY DISCLOSED \u2014 REUTERS",
+    "source": "@EmmanuelInvest",
+    "url": "https://x.com/EmmanuelInvest/status/2062257285171200391"
   }
 ]
