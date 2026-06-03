@@ -3,8 +3,22 @@ slug: microsoft-build-2026-models
 title: Microsoft Build 2026 — homegrown AI model unveilings
 company: Microsoft AI
 model: null
-status: rumored
+status: confirmed
 status_note: |
+  **KEYNOTE DELIVERED 2026-06-02.** Microsoft used Build to unveil a
+  sweeping slate of in-house AI: a new from-scratch reasoning model
+  **MAI-Thinking-1** (trained without distillation, reported near-SOTA /
+  top marks on math + coding benchmarks), **Project Solara**, autonomous
+  workplace assistants, and NVIDIA-powered PCs (RTX Spark, see
+  [[nvidia-gtc-taipei-2026-06]]). The unified **Copilot super-app shipped
+  a model picker** — notably exposing **Anthropic Claude Opus 4.8** inside
+  a Microsoft product ([[opus-4-8]]) — and **MAI-Thinking-1 is available
+  now via the Microsoft Frontier program** (requires a GitHub Copilot
+  subscription). Status advances rumored → confirmed: the keynote happened
+  and the models were announced on Microsoft's own surfaces, with
+  MAI-Thinking-1 in limited Frontier availability rather than broad GA.
+  Pre-keynote reporting below remains for the audit trail.
+
   The Information (via The Hindu / India Today Tech / aggregator
   syndication, 2026-05-29 ~07:30 UTC) reports Microsoft will unveil a
   suite of self-developed AI models at next week's Build conference in
@@ -36,12 +50,13 @@ status_note: |
   Windows-on-NVIDIA counter-position).
 expected: "Microsoft Build 2026 keynote 2026-06-02 09:30 PT (primary @Microsoft confirmation 2026-05-29)"
 labels:
-  - rumored
   - coding-model
   - microsoft-build
   - mai-models
+  - mai-thinking-1
   - copilot-super-app
-verification: partial
+  - reasoning-model
+verification: confirmed
 sources:
   - "@the_hindu"
   - "@IndiaTodayTech"
@@ -51,8 +66,10 @@ sources:
   - "@Microsoft"
   - "@testingcatalog"
   - "@theinformation"
+  - "@gmanews"
+  - "@AI_News_Digest"
 created_at: 2026-05-29
-updated_at: 2026-06-01
+updated_at: 2026-06-03
 closed_at: null
 closed_reason: null
 history:
@@ -62,6 +79,8 @@ history:
     change: "Build keynote date primary-confirmed: 2026-06-02 09:30 PT, kicked off by @satyanadella (per @Microsoft, RT'd by @satyanadella 19:50 UTC and @mustafasuleyman 21:55 UTC on 2026-05-29). The keynote date moves to confirmed; the model lineup itself stays at partial verification pending the keynote announcement"
   - ts: 2026-06-01
     change: "Two-source convergence: @testingcatalog 2026-05-31 leaks the unified Copilot super-app with Copilot Code (GitHub Copilot inside), Copilot Cowork, and Scout 24/7 Agent tabs; same outlet's earlier MAI lineup leak names MAI Voice 2 (15 languages, wider emotional range), MAI Transcribe 1.5 (STT), MAI Image 2.5 (already on LM Arena, see [[microsoft-mai-image-2-5]]). @theinformation 2026-05-31 19:00 UTC restates: 'homegrown AI models for coding, speech, transcription, reasoning and images' aimed at reducing reliance on OpenAI/Anthropic via Azure. Two reporting paths, one product map. Build session catalog has 90+ agentic-AI / Azure AI Foundry / GitHub Copilot sessions; Copilot Studio computer-using agents now GA. Lands 24h after [[nvidia-gtc-taipei-2026-06]] DGX Station for Windows + RTX Spark + OpenShell. @kimmonismus in SF for Build 2026-05-31 21:07 UTC"
+  - ts: 2026-06-03
+    change: "Keynote delivered 2026-06-02 — status rumored → confirmed, verification partial → confirmed. Microsoft unveiled the homegrown reasoning model **MAI-Thinking-1** (trained from scratch without distillation, reported near-SOTA / top math + coding benchmark marks), **Project Solara**, autonomous workplace assistants, and NVIDIA-powered PCs. The unified Copilot super-app shipped a **model picker** exposing Anthropic **Claude Opus 4.8** ([[opus-4-8]]) inside a Microsoft product — same week Microsoft reportedly cut internal Claude Code licenses. **MAI-Thinking-1 is available now via the Microsoft Frontier program** (GitHub Copilot subscription required) — limited availability, not broad GA. Sources: GMA News (Microsoft 'announced a sweeping slate of AI initiatives… a new in-house reasoning model'), AI_News_Digest / Marktechpost (MAI-Thinking-1 trained from scratch, top math/coding marks), plus pre-keynote @theinformation / @testingcatalog map confirmed. The reasoning model fulfils 'reasoning' in the pre-leaked coding/speech/transcription/reasoning/images lineup"
 ---
 
 A 2026-05-29 cluster of reports — The Information via several mainstream

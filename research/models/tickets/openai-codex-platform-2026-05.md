@@ -44,7 +44,7 @@ sources:
   - "@PhilippSpiess"
   - "@simonw"
 created_at: 2026-05-30
-updated_at: 2026-06-01
+updated_at: 2026-06-03
 closed_at: null
 closed_reason: null
 history:
@@ -52,6 +52,8 @@ history:
     change: "Created — multi-week May 2026 Codex platform shipping cadence consolidated: Codex in ChatGPT mobile preview iOS/Android 2026-05-14, hooks + programmatic access tokens 2026-05-14, Mac Appshots 2026-05-21, secure Mac app control from phone with screen off 2026-05-22, and the 2026-05-29 push of computer use on Windows + Codex in ChatGPT mobile for Windows (primary @OpenAI). Distinct from underlying GPT-5.x family; tracks the developer surface OpenAI is using to compete with Claude Code, Grok Build (xai-grok-build-2026-05), and Antigravity"
   - ts: 2026-06-01
     change: "5M Codex users milestone: @thsottiaux (Tibo, OpenAI) 2026-05-31 05:59 UTC ~320 RT — 'Five million users would agree. Resetting the limits tomorrow morning to celebrate. Time to go /fast.' RT'd by @sama 14:48 UTC. First concrete OpenAI-side Codex penetration number (denominator undefined: API users vs Plus/Pro seats vs ChatGPT-as-whole). Codex Desktop 'Copy as Markdown' regression caught by @simonw 2026-05-31 18:51 UTC (~479 likes), committed-to-fix by @PhilippSpiess (OpenAI) 21:17 UTC — first publicly-acknowledged same-day Codex Desktop fix pledge. @reach_vb logs Codex multi-file ops anecdote (verified codec/fps/resolution, stitched MP4s without re-encoding) 2026-05-31 23:09 UTC"
+  - ts: 2026-06-03
+    change: "Enterprise 'work layer' expansion (secondary-source convergence, no primary @OpenAI link in-window). Multiple recap threads 2026-06-03 describe three new building blocks on the Codex/ChatGPT surface: **Plugins** (role-specific environments — data analytics, public-equity investing, investment banking, sales, product design, creative production — connecting ~62 apps), **Sites** (turn AI outputs into dashboards / internal tools / reports / shareable web apps, framed as replacing front-end dev), and **Annotations** (highlight a region of a doc/sheet/deck and instruct the model to modify only that region). Restated usage figure: **Codex >5M weekly active, up >400% since January**, with **AWS distribution**. Verification stays partial on these specifics (engagement-thread sourcing, e.g. @StanVolynsky / @shree_code), but the named features are internally consistent across accounts. Status remains released; framing shifts from 'agentic coding CLI' toward 'interface layer for knowledge work'"
 ---
 
 This ticket tracks the **OpenAI Codex platform** as a shipping surface —
