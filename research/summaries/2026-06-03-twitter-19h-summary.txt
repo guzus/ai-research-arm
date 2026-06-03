@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-03 19:48 UTC
+
+CYCLE: Noisy window; 3 primary-sourced stories cut through the crypto/spam.
+
+TOP STORIES:
+• DeepSeek reported closing ~$7.4B round at up to ~$59B valuation; Tencent + CATL backing, founder adds ~$3B of own cash ⚠
+• OpenAI breaks lab silence with frontier-AI-safety "blueprint" (amplified by Greg Brockman), framed as next step after the cyber EO ✓
+• Surge AI ships ComplexConstraints IF benchmark — frontier models top out at ~40%; a 4B model on 1k examples matches a 60x-larger one ⚠
+
+WATCH: Official DeepSeek/Tencent/CATL confirmation of the round size and final valuation ($50B vs $59B).
+
+Full update on GitHub.

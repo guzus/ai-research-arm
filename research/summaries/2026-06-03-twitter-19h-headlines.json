@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "DEEPSEEK REPORTED CLOSING ~$7.4B ROUND AT UP TO ~$59B VALUATION — TENCENT, CATL BACK CHINA'S AI CHAMPION",
+    "source": "@Benzinga",
+    "url": "https://x.com/Benzinga/status/2062225300545552508",
+    "category": "business"
+  },
+  {
+    "headline": "DEEPSEEK FOUNDER LIANG WENFENG PUTS ~$3B OF OWN CASH INTO ROUND; ALIBABA TALKED THEN WALKED AWAY",
+    "source": "@mergenewsapp",
+    "url": "https://x.com/mergenewsapp/status/2062256288780681335",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI PUBLISHES FRONTIER-AI-SAFETY 'BLUEPRINT' FOR DEMOCRATIC GOVERNANCE, FRAMED AS NEXT STEP AFTER CYBER EO",
+    "source": "@gdb",
+    "url": "https://x.com/gdb/status/2062259921664835833",
+    "category": "policy"
+  },
+  {
+    "headline": "SURGE AI LAUNCHES COMPLEXCONSTRAINTS BENCHMARK — FRONTIER MODELS SCORE ONLY 0-40% ON ENTANGLED INSTRUCTIONS",
+    "source": "@echen",
+    "url": "https://x.com/echen/status/2062258181905219813",
+    "category": "research"
+  },
+  {
+    "headline": "SURGE AI: 4B MODEL FINE-TUNED ON 1K EXAMPLES MATCHES A MODEL 60X ITS SIZE ON INSTRUCTION-FOLLOWING",
+    "source": "@echen",
+    "url": "https://x.com/echen/status/2062258181905219813",
+    "category": "research"
+  },
+  {
+    "headline": "GOOGLE RELEASES MAGENTA REALTIME 2 ON HUGGING FACE — OPEN-WEIGHTS ON-DEVICE MUSIC GEN AT ~200MS LATENCY",
+    "source": "@HuggingPapers",
+    "url": "https://x.com/HuggingPapers/status/2062260306039259236",
+    "category": "opensource"
+  },
+  {
+    "headline": "UBER COMMITS ~$500M TO AUTONOMOUS-DRIVING STARTUP NURO, FAR MORE THAN PREVIOUSLY DISCLOSED — REUTERS",
+    "source": "@EmmanuelInvest",
+    "url": "https://x.com/EmmanuelInvest/status/2062257285171200391",
+    "category": "business"
+  }
+]
