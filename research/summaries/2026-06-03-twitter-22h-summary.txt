@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-03 22:07 UTC
+
+CYCLE: Frontier labs finally shipped — Google's open-weights Gemma 4 12B + OpenAI's GPT-Rosalind, amid a loud AI-bubble numbers debate.
+
+TOP STORIES:
+• Google ships Gemma 4 12B: open-weights, Apache 2.0, runs on a 16GB laptop; ~26B-class quality claimed [✓]
+• OpenAI expands GPT-Rosalind (life-sciences model series) + cryptic "It's time to fly" teaser; livestream eyed for Jun 4 [⚠]
+• "AI spent $1.4T, made ~$613B" bubble stat goes viral — but revenue figures conflict across relays [🚩]
+
+WATCH: Jun 4 OpenAI "preview of new capabilities" livestream — does the teaser resolve into a shipped product?
+
+Full update on GitHub.
