@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-06-03 01:30 UTC
+
+CYCLE: Capital-markets-led overnight; SpaceX IPO gets a price, frontier labs quiet.
+
+TOP STORIES:
+• SpaceX IPO terms (Reuters via Bloomberg): 555.6M shares @ $135, ~$75B raise, ~$1.75T val; marketing starts Jun 4 [✓]
+• Anthropic ships `ant` CLI — every Claude API endpoint from the terminal, agents versioned like Git repos (@ClaudeDevs, ~3.6K likes) [✓]
+
+ALSO: >$350B cross-company equity unlock (Google/SpaceX/Anthropic/OpenAI) being priced as one story; Sen. Blumenthal weighs in on Trump's AI EO (labs still silent).
+
+WATCH: Jun 4 — SpaceX official term sheet confirming/revising $135 & ~$1.75T valuation.
+
+Full update on GitHub.
