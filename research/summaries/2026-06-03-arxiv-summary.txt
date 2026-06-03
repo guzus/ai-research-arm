@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-03
+
+TOP 5 PAPERS:
+• Agentic Transformers Provably Learn to Search via RL - theory of how RL-trained transformers acquire tree-search reasoning.
+• Deep Research as Rubric for RL - rubric-based rewards for open-ended, unverifiable reasoning tasks.
+• RoboDream - compositional world models synthesize scalable, physically plausible robot training data.
+• SafeSteer - token-localized distillation gives efficient safety alignment without the capability tax.
+• ProbeScale - probing-derived scaling laws optimize small-LM inference efficiency.
+
+CATEGORIES: LLM/NLP 4, CV/Multimodal 2, Agents/Reasoning 3, Safety 2, Other 3
+
+Full report on GitHub.
