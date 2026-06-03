@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-03 05:07 UTC
+
+CYCLE: Developer-platform window — agents-as-the-platform from both OpenAI and Microsoft; no new frontier models in-window.
+
+TOP STORIES:
+• OpenAI recasts Codex into a general "work platform," merging ChatGPT + Codex + Atlas into one desktop app; leaked figures: ~5M weekly Codex users, +50% WoW enterprise revenue [⚠]
+• Microsoft Build 2026 goes agent-first: 7 in-house MAI models, Windows as agent runtime, open-source Agent Control Specification [⚠]
+• Sam Altman backs Trump's new AI Executive Order ("the new EO gets the balance right") — OpenAI joins Anthropic, breaking prior-cycle silence [✓]
+
+WATCH: OpenAI on-record confirmation of the Codex desktop merge + 5M-user figure; official Microsoft Build materials on the Agent Control Spec.
+
+Full update on GitHub.
