@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 summary: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-updated_at: 2026-06-01
+updated_at: 2026-06-03
 sources:
+  - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
@@ -84,6 +85,25 @@ Four developments through May 2026 put Anthropic at the center of the field:
   governance cautionary tale and a counterweight to the Salesforce
   productivity story; both point at the same fact pattern — enterprise
   Claude Code consumption is structurally unbounded without governance.
+- **Confidential S-1 filed; the mega-IPO race tightens (2026-06-01).** Anthropic
+  **confidentially filed its S-1 on June 1**, four days after closing the
+  Series H ($65B raised / $965B post-money), putting it **ahead of [[openai]] in
+  the confidential-filing race** (OpenAI filed May 22). A **~$50B run-rate
+  milestone is expected by end of June**. The filing anchors a **three-front
+  mega-IPO calendar** alongside SpaceX (Nasdaq: SPCX, trading June 12), feeding
+  the [[ai-capex]] capital-markets rotation (ARA digest 2026-06-03).
+- **Lone lab backing the federal EO (2026-06-02).** Anthropic is the **only
+  frontier lab publicly endorsing** Trump's June 2 executive order mandating
+  30-day government pre-release access to frontier models; [[openai]], Google and
+  xAI stayed silent. The order was reportedly **catalyzed by Anthropic's Project
+  Mythos 10,000-bug disclosure** — see [[federal-ai-policy]] and
+  [[agentic-ai-security]]. Continues Anthropic's pattern of leaning into
+  governance artifacts ahead of its IPO window (ARA digest 2026-06-03).
+- **Project Glasswing expansion (2026-06-03).** The gated **Mythos** partner
+  program expanded to **150+ orgs across 15+ countries** (HN: 137 pts, 180
+  comments) — the operational footprint of the deliberately-gated frontier
+  model, and the program whose 10,000-bug disclosure catalyzed the federal EO
+  (ARA digest 2026-06-03).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

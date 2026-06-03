@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 summary: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-updated_at: 2026-06-01
+updated_at: 2026-06-03
 sources:
+  - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
@@ -98,6 +99,23 @@ skepticism in one window:
   envelope**. Humanoid autonomy at production-grade MTBI lifts the
   addressable case for on-prem AI-server demand sitting alongside the
   data-center buildout (ARA digest 2026-06-01).
+- **Capital markets rotate hard into AI (2026-06-03).** The cycle's clearest
+  public-markets capex signal: **Marvell ($MRVL) closed +29.74%** at $282.93 —
+  its best session in three years — on Jensen Huang's "trillion-dollar"
+  networking line, dragging **$COHR +16%, $LITE +13.7%, $GLW +12.5%** and
+  Corning double-digits; **Bitcoin fell ~5.8% to $67K** as cash rotated into AI.
+  **Alphabet is raising $80B** for its AI buildout with **Berkshire Hathaway
+  taking $10B** — Berkshire's first AI-infrastructure equity allocation at this
+  scale. **HPE** printed **Q2 FY26 +33% after-hours** (revenue +40% YoY, AI
+  orders 2× sequential) (ARA digest 2026-06-03).
+- **The three-front mega-IPO calendar (2026-06-03).** [[anthropic]]'s
+  **confidential S-1** (filed June 1, ahead of [[openai]]'s May 22) anchors a
+  three-front IPO calendar alongside **SpaceX** (Nasdaq: SPCX — roadshow June 8,
+  pricing June 11, trading June 12 at a ~$1.75T+ valuation). **SoftBank passed
+  Toyota in market cap for the first time in 22 years** on the back of its AI
+  bets, the same week it committed up to €75B to French data centers. The
+  capital-formation side of the supercycle is now running through public
+  markets, not just private rounds (ARA digest 2026-06-03).
 - **The bubble counter-narrative.** Meta's paradox — **$56B Q1 revenue but an
   8,000-job layoff** against a $115–135B 2026 capex guide — and a hardening
   "AI bubble / backlash" thread on r/artificial are the bear case (ARA digest

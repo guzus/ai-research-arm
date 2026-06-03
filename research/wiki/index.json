@@ -45,7 +45,7 @@
       ],
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-05-29",
+      "updated_at": "2026-06-03",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -57,12 +57,15 @@
         "anthropic",
         "cognition-ai",
         "dynamic-workflows",
-        "liquid-ai"
+        "federal-ai-policy",
+        "liquid-ai",
+        "openai"
       ],
       "inbound": [
         "anthropic",
         "cognition-ai",
         "dynamic-workflows",
+        "federal-ai-policy",
         "liquid-ai"
       ]
     },
@@ -78,7 +81,7 @@
       ],
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-01",
+      "updated_at": "2026-06-03",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -106,6 +109,8 @@
         "dell",
         "figure-ai",
         "gemini-3-5-flash",
+        "microsoft",
+        "minimax-m3",
         "nebius",
         "neocloud",
         "openai",
@@ -124,7 +129,7 @@
       ],
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-01",
+      "updated_at": "2026-06-03",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -139,6 +144,7 @@
         "claude-opus-4-8",
         "cognition-ai",
         "dynamic-workflows",
+        "federal-ai-policy",
         "gemini-3-5-flash",
         "gemini-spark",
         "neocloud",
@@ -152,9 +158,11 @@
         "claude-opus-4-8",
         "cognition-ai",
         "dynamic-workflows",
+        "federal-ai-policy",
         "figure-ai",
         "gemini-3-5-flash",
         "gemini-spark",
+        "minimax-m3",
         "openai",
         "openrouter"
       ]
@@ -172,7 +180,7 @@
       ],
       "summary": "The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-05-30",
+      "updated_at": "2026-06-03",
       "file": "themes/california-ai-regulation.md",
       "aliases": [
         "California AI regulation",
@@ -186,11 +194,13 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "federal-ai-policy",
         "openai"
       ],
       "inbound": [
         "ai-capex",
         "anthropic",
+        "federal-ai-policy",
         "openai"
       ]
     },
@@ -356,6 +366,43 @@
       ]
     },
     {
+      "slug": "federal-ai-policy",
+      "title": "Federal AI Policy",
+      "type": "theme",
+      "tags": [
+        "policy",
+        "regulation",
+        "federal",
+        "executive-order",
+        "ai-governance",
+        "frontier-ai"
+      ],
+      "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
+      "created_at": "2026-06-03",
+      "updated_at": "2026-06-03",
+      "file": "themes/federal-ai-policy.md",
+      "aliases": [
+        "federal AI policy",
+        "Trump AI executive order",
+        "federal AI executive order",
+        "Promoting Advanced AI Innovation and Security",
+        "30-day pre-release access",
+        "CAISI MOU"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "california-ai-regulation",
+        "openai"
+      ],
+      "inbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "california-ai-regulation",
+        "openai"
+      ]
+    },
+    {
       "slug": "figure-ai",
       "title": "Figure AI",
       "type": "entity",
@@ -474,6 +521,76 @@
       ]
     },
     {
+      "slug": "microsoft",
+      "title": "Microsoft",
+      "type": "entity",
+      "tags": [
+        "hyperscaler",
+        "frontier-lab",
+        "copilot",
+        "azure",
+        "foundation-models",
+        "custom-silicon"
+      ],
+      "summary": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.",
+      "created_at": "2026-06-03",
+      "updated_at": "2026-06-03",
+      "file": "entities/microsoft.md",
+      "aliases": [
+        "Microsoft",
+        "MSFT",
+        "Microsoft Corporation",
+        "@Microsoft",
+        "MAI",
+        "Microsoft AI",
+        "MAI-Thinking-1",
+        "MAI-Code-1-Flash",
+        "Project Polaris",
+        "MAIA 200"
+      ],
+      "outbound": [
+        "ai-capex",
+        "minimax-m3",
+        "openai",
+        "openrouter"
+      ],
+      "inbound": [
+        "minimax-m3",
+        "openai"
+      ]
+    },
+    {
+      "slug": "minimax-m3",
+      "title": "MiniMax M3",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "model",
+        "agentic-coding",
+        "chinese-llm",
+        "long-context"
+      ],
+      "summary": "MiniMax's open-weights model with 1M context and 59% SWE-Bench Pro — the strongest open-weights agentic-coding model of the cycle.",
+      "created_at": "2026-06-03",
+      "updated_at": "2026-06-03",
+      "file": "entities/minimax-m3.md",
+      "aliases": [
+        "MiniMax M3",
+        "M3",
+        "MiniMax-M3",
+        "MiniMax"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "microsoft",
+        "openrouter"
+      ],
+      "inbound": [
+        "microsoft"
+      ]
+    },
+    {
       "slug": "nebius",
       "title": "Nebius Group",
       "type": "entity",
@@ -549,7 +666,7 @@
       ],
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped the Frontier Governance Framework and Rosalind Biodefense program on 2026-05-29.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-01",
+      "updated_at": "2026-06-03",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -560,13 +677,18 @@
       "outbound": [
         "ai-capex",
         "anthropic",
-        "california-ai-regulation"
+        "california-ai-regulation",
+        "federal-ai-policy",
+        "microsoft"
       ],
       "inbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
         "california-ai-regulation",
+        "federal-ai-policy",
         "figure-ai",
+        "microsoft",
         "openrouter"
       ]
     },
@@ -595,14 +717,18 @@
         "openai"
       ],
       "inbound": [
-        "ai-capex"
+        "ai-capex",
+        "microsoft",
+        "minimax-m3"
       ]
     }
   ],
   "resolver": {
+    "30-day pre-release access": "federal-ai-policy",
     "@adcock_brett": "figure-ai",
     "@anthropicai": "anthropic",
     "@michaeldell": "dell",
+    "@microsoft": "microsoft",
     "@openai": "openai",
     "@openrouterai": "openrouter",
     "a 9317": "california-ai-regulation",
@@ -624,6 +750,7 @@
     "anthropic": "anthropic",
     "anthropic pbc": "anthropic",
     "brett adcock": "figure-ai",
+    "caisi mou": "federal-ai-policy",
     "california ai bills": "california-ai-regulation",
     "california ai regulation": "california-ai-regulation",
     "california transparency in frontier ai act": "california-ai-regulation",
@@ -645,6 +772,9 @@
     "devin": "cognition-ai",
     "dynamic workflows": "dynamic-workflows",
     "dynamic-workflows": "dynamic-workflows",
+    "federal ai executive order": "federal-ai-policy",
+    "federal ai policy": "federal-ai-policy",
+    "federal-ai-policy": "federal-ai-policy",
     "figure": "figure-ai",
     "figure 03": "figure-ai",
     "figure 4": "figure-ai",
@@ -666,6 +796,18 @@
     "liquid foundation models": "liquid-ai",
     "liquid-ai": "liquid-ai",
     "liquidai": "liquid-ai",
+    "m3": "minimax-m3",
+    "mai": "microsoft",
+    "mai-code-1-flash": "microsoft",
+    "mai-thinking-1": "microsoft",
+    "maia 200": "microsoft",
+    "microsoft": "microsoft",
+    "microsoft ai": "microsoft",
+    "microsoft corporation": "microsoft",
+    "minimax": "minimax-m3",
+    "minimax m3": "minimax-m3",
+    "minimax-m3": "minimax-m3",
+    "msft": "microsoft",
     "nbis": "nebius",
     "nebius": "nebius",
     "nebius group n.v.": "nebius",
@@ -678,11 +820,19 @@
     "openrouter.ai": "openrouter",
     "opus 4.8": "claude-opus-4-8",
     "parallel subagents": "dynamic-workflows",
+    "project polaris": "microsoft",
+    "promoting advanced ai innovation and security": "federal-ai-policy",
     "sacramento ai policy": "california-ai-regulation",
     "spark agent": "gemini-spark",
+    "trump ai executive order": "federal-ai-policy",
     "your agents are aging too": "agent-lifespan-engineering"
   },
   "recent_log": [
+    {
+      "date": "2026-06-03",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-03 digest. Created 3 (microsoft entity — Build 2026 MAI stack/Project Polaris/MAIA 200, OpenAI multi-stack divorce; minimax-m3 entity — open-weights 1M ctx 59% SWE-Bench Pro; federal-ai-policy theme — Trump June 2 EO 30-day pre-release access). Updated 5 (openai — Codex platform/Sites/62-app marketplace/5M WAU + GPT-5.2-Codex + Bedrock GA + Florida AG suit; anthropic — confidential S-1 June 1 + lone EO backing + Glasswing 150+ orgs; ai-capex — Marvell +29.7%/Alphabet $80B/Berkshire $10B/HPE + three-front mega-IPO calendar; agentic-ai-security — Mythos 10k-bug disclosure catalyzing federal EO; california-ai-regulation — federal-regime open question partly resolved by the June 2 EO)."
+    },
     {
       "date": "2026-06-01",
       "op": "ingest",

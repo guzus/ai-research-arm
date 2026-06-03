@@ -6,10 +6,11 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 summary: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped the Frontier Governance Framework and Rosalind Biodefense program on 2026-05-29.
 created_at: 2026-05-30
-updated_at: 2026-06-01
+updated_at: 2026-06-03
 sources:
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
+  - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "OpenAI — Frontier Governance Framework", url: "https://openai.com/index/openai-frontier-governance-framework/", date: 2026-05-29}
   - {title: "OpenAI — Rosalind Biodefense", url: "https://openai.com/index/strengthening-societal-resilience-with-rosalind-biodefense/", date: 2026-05-29}
   - {title: "Anthropic raises at $965B valuation, eclipsing OpenAI (Bloomberg)", url: "https://www.bloomberg.com/news/articles/2026-05-28/anthropic-raises-at-965-billion-valuation-eclipsing-openai", date: 2026-05-28}
@@ -70,6 +71,29 @@ materially reshape how the lab is positioned heading into its IPO window:
   Levie's "switching back from Claude to Codex xhigh to remind you how
   much better 5.5 is right now" tweet. Informal but materially bumps the
   Codex Goal Mode vs Claude Code competitive frame (ARA digest 2026-06-01).
+- **Codex becomes a platform (2026-06-03).** The Codex push escalated from a
+  user count to a full platform play: **Codex Sites** (compile agent output into
+  live, hosted interactive web apps), a **62-app plugin marketplace**
+  (sales/analytics/creative/product/investing), **Codex Annotations**, and a
+  **native ChatGPT merge** — now at **5M weekly actives** with the
+  **knowledge-worker cohort growing 3× faster than the base**. **GPT-5.2-Codex**
+  (June 1) rolled out to all Codex surfaces for paid ChatGPT users: SOTA on
+  SWE-Bench Pro and Terminal-Bench 2.0, native compaction, stronger Windows
+  performance, and "stronger cybersecurity capabilities than any model OpenAI
+  has released so far" — the latter directly relevant to the
+  [[federal-ai-policy]] pre-release-review regime (ARA digest 2026-06-03).
+- **Bedrock GA — the Azure-exclusive era ends (2026-06-01).** **GPT-5.5, GPT-5.4
+  and Codex are generally available on Amazon Bedrock** at OpenAI first-party
+  pricing, with usage counting toward AWS commitments and full IAM/VPC/KMS
+  controls. Structurally ends the "OpenAI is Azure-exclusive" narrative and is
+  the mirror image of [[microsoft]] migrating GitHub Copilot off OpenAI the same
+  week — both sides of the 2023 integration now hold alternative stacks for the
+  first time (ARA digest 2026-06-03).
+- **Florida AG lawsuit (2026-06-03).** The **Florida AG sued OpenAI and Sam
+  Altman personally** — an 83-page complaint over violent incidents, the **first
+  2026 state-AG action naming a frontier-lab CEO as a personal defendant**. Part
+  of the broadening [[federal-ai-policy]] / state-enforcement pressure on the lab
+  heading into its IPO window (ARA digest 2026-06-03).
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: ["California AI regulation", "California AI bills", "Sacramento AI poli
 tags: [policy, regulation, california, ai-governance, frontier-ai]
 summary: The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover.
 created_at: 2026-05-30
-updated_at: 2026-05-30
+updated_at: 2026-06-03
 sources:
+  - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
   - {title: "AI legislative update — May 29 2026 (Transparency Coalition)", url: "https://www.transparencycoalition.ai/news/ai-legislative-update-may29-2026", date: 2026-05-29}
   - {title: "California assumes role as lead US regulator of AI (Latham & Watkins)", url: "https://www.lw.com/en/insights/california-assumes-role-as-lead-us-regulator-of-ai", date: 2026-05-29}
@@ -59,9 +60,13 @@ a California legislature carrying a **~30-bill AI package** through the
   global. Does AB 1609-style disclosure flow back to non-California users
   via the labs' chosen lowest-common-denominator UX, or does multi-region
   compliance fragment the chatbot surface?
-- **Does federal regime reappear?** A successor to the pulled May 21
-  executive order — or a Frontier AI Act analogue at the federal level —
-  changes the calculus immediately.
+- **Does federal regime reappear?** Partially answered: a **pared-down federal
+  executive order was signed 2026-06-02** ([[federal-ai-policy]]), but it is
+  narrowly scoped to 30-day cybersecurity pre-release review rather than the
+  broad disclosure/transparency package California is carrying — so Sacramento
+  remains the operative regulator on the consumer-facing axis. Does a fuller
+  federal Frontier AI Act analogue follow, or does the narrow EO leave the field
+  to California?
 - **Companion-chatbot scope.** A 9317's warning requirement implicates
   conversational products well outside the "frontier model" frame.
   Where does "companion" end and "assistant" begin?

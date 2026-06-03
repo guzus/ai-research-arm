@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 summary: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.
 created_at: 2026-05-29
-updated_at: 2026-05-29
+updated_at: 2026-06-03
 sources:
+  - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
   - {title: "ARA daily digest 2026-05-27", path: research/digest/2026-05-27-digest.md}
 ---
@@ -47,6 +48,16 @@ the cycle:
   instead of better reasoning" experiment — agents fixing each other's bugs
   — is the lighter-hearted version of the same theme: emergent behaviors at
   the boundary between independent agentic systems (ARA digest 2026-05-29).
+- **The theme reaches federal policy (2026-06-03).** [[anthropic]]'s **Project
+  Mythos 10,000-bug disclosure** — Mythos surfacing bugs at scale through the
+  gated **Project Glasswing** program (now **150+ orgs across 15+ countries**) —
+  reportedly **catalyzed Trump's June 2 executive order** mandating 30-day
+  government pre-release access to frontier models for cybersecurity review. The
+  agentic-security narrative has now produced its first concrete federal-policy
+  output: see [[federal-ai-policy]]. OpenAI separately framed
+  **[[openai|GPT-5.2-Codex]]** as having "stronger cybersecurity capabilities
+  than any model OpenAI has released so far" — capability and policy converging
+  on the same axis (ARA digest 2026-06-03).
 
 ## Open questions
 - **Does [[dynamic-workflows]] make this worse?** Hundreds of parallel
