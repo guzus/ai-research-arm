@@ -1,0 +1,11 @@
+Speaker 1: Wednesday, June third, twenty twenty-six.
+Speaker 2: [high_energy] Microsoft shipped MAI-Thinking-one today — a new reasoning model scoring fifty-three percent on SWE-Bench Pro — and immediately named it GitHub Copilot's default starting in August, a clear move to reduce OpenAI dependency.
+Speaker 1: And OpenAI had its own big day: GPT five point five, five point four, and Codex are now generally available on AWS Bedrock, ending their Azure exclusivity and opening them to a much broader cloud footprint.
+Speaker 2: Codex is already at [emphasis]five million weekly users[/emphasis], so that general availability is going to move fast.
+Speaker 1: On the policy front, Trump signed an executive order requiring a thirty-day government pre-release review for frontier models. Anthropic backed it publicly — rivals stayed silent.
+Speaker 2: That silence is notable. Pretty rare to see Anthropic stand alone on a regulatory position while everyone else goes quiet.
+Speaker 1: Some quick numbers: Marvell surged [emphasis]twenty-nine point seven percent[/emphasis] — its best session in three years. Alphabet is raising eighty billion dollars, with Berkshire putting in ten billion of that.
+Speaker 2: [dramatic_pause] And SoftBank committed up to [emphasis]seventy-five billion euros[/emphasis] for five gigawatts of French AI data centers. That is a massive infrastructure bet.
+Speaker 1: On the open-weights front, MiniMax dropped M three, hitting fifty-nine percent on SWE-Bench Pro — the open-source side is keeping pace with the closed leaders.
+Speaker 2: The theme today is that the bottleneck has shifted — it is no longer raw capability, it is trust and reliability, and every major player is scrambling to own that narrative.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
