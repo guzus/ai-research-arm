@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-03
+
+TOP STORIES:
+• Microsoft Build ships MAI-Thinking-1 (53% SWE-Bench Pro) + Project Polaris as GitHub Copilot's default model from Aug — cutting OpenAI reliance
+• OpenAI's GPT-5.5/5.4/Codex go GA on AWS Bedrock, ending Azure exclusivity
+• Trump signs EO requiring 30-day govt pre-release review of frontier models — Anthropic alone backs it; rivals silent
+
+KEY NUMBERS:
+• Marvell +29.7% (best session in 3yrs); Alphabet raising $80B (Berkshire $10B)
+• SoftBank commits up to €75B for 5GW of French AI data centers
+• OpenAI Codex hits 5M weekly users; MiniMax M3 open-weights at 59% SWE-Bench Pro
+
+TRENDING: Microsoft's MAI launches + the bottleneck shifting from capability to trust/reliability
+
+Full digest on GitHub.
