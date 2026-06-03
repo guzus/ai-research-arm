@@ -2,12 +2,11 @@ AI News - 2026-06-03
 
 TOP STORIES:
 • Trump AI executive order full text published — it's VOLUNTARY, not mandatory (correcting yesterday): covered-frontier-model benchmarking, up-to-30-day opt-in govt access, new Treasury "AI Cybersecurity Clearinghouse" within 30 days. Google & OpenAI both endorse it.
-• Anthropic expands Project Glasswing to ~150 more orgs in 15+ countries — Claude Mythos now reaching power, water, healthcare & comms critical infrastructure (10,000+ flaws found to date).
-• Microsoft Build day two: Aion on-device model family (14B reasoning, ships in-box with Windows) + standalone GitHub Copilot desktop app (git-worktree parallel agents, Autopilot mode) + Replit partnership.
+• Anthropic expands Project Glasswing to ~150 more orgs in 15+ countries (power/water/healthcare/comms critical infra; 10,000+ flaws found) AND launches Claude Partner Network Services Track + daily-graded Partner Hub (40,000+ firms applied, 10,000+ certified).
+• Microsoft Build day two: Aion on-device model family (14B reasoning, ships in-box with Windows) + standalone GitHub Copilot desktop app (git-worktree parallel agents) + Replit partnership.
 
 KEY NUMBERS:
-• Glasswing: ~150 new orgs, 15+ countries, 10,000+ high/critical flaws
-• Aion 1.0 Plan: 14B params, 32K context, on-device
-• Funding: Adaptive Innovations $50M Series A (healthcare AI); Layup Parts $42M; Findigs $32M
+• Glasswing: ~150 new orgs, 15+ countries, 10,000+ flaws; Anthropic Partner Net: 40K firms applied, 10K certified
+• Funding: Adaptive Innovations $50M Series A; Layup Parts $42M; Findigs $32M
 
 Full report on GitHub.
