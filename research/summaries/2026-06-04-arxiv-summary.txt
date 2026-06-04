@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-04
+
+TOP 5 PAPERS:
+• StreamMA - streaming reasoning steps between agents reveals a new "step-level scaling law" (+22pp on HMMT)
+• DistIL - distributional DAgger RL beats single-bit RLVR with provable monotonic improvement
+• AutoLab - long-horizon agent benchmark: persistence, not first-try quality, predicts success
+• STRIDE - training-data attribution via activation-space sparse recovery, ~13x faster, SOTA
+• Audio Interaction Model - unifies offline + streaming audio LLMs into one real-time, proactive LALM
+
+CATEGORIES: NLP/LLM 5, Vision/Multimodal 6, Agents/Reasoning 5, Safety/Interp 3, Benchmarks 3, Other 3
+
+Full report on GitHub.
