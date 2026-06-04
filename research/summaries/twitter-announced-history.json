@@ -8443,5 +8443,40 @@
     "headline": "OPENAI SAFETY POST: TODAY'S SYSTEMS SHOW 'EARLY SIGNS OF RECURSIVE SELF-IMPROVEMENT' \u2014 AI ACCELERATING AI",
     "source": "@haider1",
     "url": "https://x.com/haider1/status/2062522256211775924"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-04 16:28 UTC",
+    "headline": "ANTHROPIC: CLAUDE NOW SHOWS 'EARLY SIGNS OF RECURSIVE SELF-IMPROVEMENT' \u2014 WRITES 80%+ OF ITS OWN PRODUCTION CODE",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2062568862479208923"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-04 16:28 UTC",
+    "headline": "ANTHROPIC'S UNRELEASED 'MYTHOS PREVIEW' HITS 52X CODING-SPEEDUP, RUNS 16+ HOURS AUTONOMOUSLY PER METR",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2062568869240476050"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-04 16:28 UTC",
+    "headline": "OPENAI SHIPS REBUILT CHATGPT MEMORY \u2014 2X CAPACITY, BACKGROUND CURATION, ROLLING OUT TO US PLUS/PRO TODAY",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2062567556524003631"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-04 16:28 UTC",
+    "headline": "BROADCOM SELLOFF DEEPENS TO ~14.7% (~$409); MACQUARIE CUTS TO NEUTRAL ON GOOGLE TPU IN-HOUSE BY 2027 RISK",
+    "source": "@_TP888",
+    "url": "https://x.com/_TP888/status/2062565436663705625"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-04 16:28 UTC",
+    "headline": "BEAT-AND-SOLD: CROWDSTRIKE -10%, PALO ALTO -6% DESPITE BEATS \u2014 MARKET'S 'BEAT = REWARD' RULE BREAKS",
+    "source": "@theaietf",
+    "url": "https://x.com/theaietf/status/2062560549234225441"
   }
 ]
