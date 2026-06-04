@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-04 16:28 UTC
+
+CYCLE: Dual frontier-lab primaries — Anthropic on recursive self-improvement, OpenAI ships new ChatGPT memory; super app still not out.
+
+TOP STORIES:
+• Anthropic publishes RSI data: Claude writes 80%+ of its own code, unreleased "Mythos Preview" hits 52x speedup + 16hr task length (METR); Anthropic Institute to study loss-of-control [✓ primary, metrics self-reported]
+• OpenAI ships rebuilt ChatGPT memory ("Dreaming") — 2x memory, background curation, US Plus/Pro today; NOT the teased Codex super app [✓]
+• Broadcom deepens to ~-14.7% (~$409): Macquarie cuts to Neutral on Google-TPU-insourcing risk; CrowdStrike/Palo Alto also beat-and-sold [✓]
+
+WATCH: Independent (METR/3rd-party) replication of Anthropic's 52x/16hr claims, and whether OpenAI finally ships the Codex×ChatGPT super app.
+
+Full update on GitHub.
