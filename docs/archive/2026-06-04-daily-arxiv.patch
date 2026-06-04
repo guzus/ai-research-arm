@@ -1,0 +1,35 @@
+diff --git a/.github/workflows/daily-arxiv.yml b/.github/workflows/daily-arxiv.yml
+index a6279d7b..8ffe63c1 100644
+--- a/.github/workflows/daily-arxiv.yml
++++ b/.github/workflows/daily-arxiv.yml
+@@ -84,7 +84,20 @@ jobs:
+             SKIP:
+             - Minor incremental improvements
+             - Application papers with no novel methods
+-            - Papers from unknown authors with few citations
++            (Do NOT skip a paper just because it has few citations — papers
++            submitted in the last 24h have ~zero citations by definition;
++            judge on novelty and substance, not citation count.)
++
++            AUTHORS — REQUIRED, no bare "et al.":
++            The arXiv MCP metadata includes the full author list for every
++            paper. You MUST surface real names. Format each Authors field as
++            the first author's full name; if there are more authors, append
++            ", et al." and (when known) the lead affiliation in parentheses,
++            e.g. "Jane Doe, et al. (DeepMind)". A bare "et al." with no name
++            is NOT acceptable — pull the names from the MCP `authors` field.
++            Only if the metadata genuinely lacks authors may you write
++            "(authors unavailable)", and prefer not to feature such a paper
++            in the Top 5.
+
+             FORMAT:
+
+@@ -93,7 +106,7 @@ jobs:
+             ## Highlights (Top 5 Must-Read)
+
+             ### 1. [Paper Title]
+-            **Authors**: [names]
++            **Authors**: [first author full name, et al. (affiliation) — real names, never a bare "et al."]
+             **arXiv**: [link]
+             **TL;DR**: [2-3 sentence summary of key contribution]
+             **Why it matters**: [1 sentence on significance]
