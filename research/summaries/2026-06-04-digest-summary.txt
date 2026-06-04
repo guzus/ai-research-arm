@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-06-04
+
+TOP STORIES:
+• Google ships Gemma 4 12B — open-weights, encoder-free multimodal, runs on a 16GB laptop; OpenAI expands GPT-Rosalind + teases June 4 event
+• Florida becomes first state to sue OpenAI — and names Sam Altman personally — in an 83-page child-safety complaint
+• Capital-markets wave: SpaceX IPO marketing starts today (~$1.75T), Alphabet's ~$80B share sale (first since 2006), DeepSeek's first round (~$7.4B)
+
+KEY NUMBERS:
+• DeepSeek: ~$7.4B raise at up to $59B (Tencent + CATL)
+• SpaceX: ~$75B IPO, ~$1.75T valuation
+• Suno: $400M at $5.4B; NewLimit: $435M Series C
+• Reality check: Uber caps AI tools at $1,500/mo; productivity gain 7.8%, not 10x
+
+TRENDING: Gemma 4 12B on-device + "is AI a bubble?" issuance-wave debate
+
+Full digest on GitHub.
