@@ -6,9 +6,10 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 summary: The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.
 created_at: 2026-06-03
-updated_at: 2026-06-03
+updated_at: 2026-06-04
 sources:
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
+  - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
 ---
 
 **Federal AI policy** is the Washington counterpart to the
@@ -26,11 +27,19 @@ footing for the first time in the cycle.
   MOU regime after the May 21 draft was pulled. It was reportedly catalyzed by
   [[anthropic]]'s **Project Mythos 10,000-bug disclosure**, tying the policy
   directly to the [[agentic-ai-security]] theme.
-- **Anthropic alone backs it.** [[anthropic]] is the **only frontier lab
-  publicly backing the order**; [[openai]], Google and xAI stayed silent — a
-  rare public split among the five labs that anchor the CAISI pre-deployment
-  regime, and a continuation of Anthropic's pattern of leaning into governance
-  artifacts ahead of its IPO window.
+- **Lab backing broadens (2026-06-04).** What looked on 2026-06-03 like
+  [[anthropic]] *alone* backing the order broadened a day later: **Sam Altman**
+  ([[openai]]) said "the new EO gets the balance right," and Sen. Blumenthal
+  called it "kernels of the right ideas." **Google DeepMind and xAI remained
+  off-record.** The split is now narrower — two of the five CAISI labs publicly
+  endorsing, two silent — but Anthropic remains the most consistent endorser.
+- **OpenAI's frontier-safety "blueprint" (2026-06-04).** [[openai]] published a
+  plan for "democratic governance of frontier AI" and durable US frontier-safety
+  institutions (amplified by Greg Brockman), framed as the next step after the
+  cyber EO and a sibling to its own
+  [[openai|Frontier Governance Framework]]. Critics flagged
+  **regulatory-capture risk** — the recurring worry that lab-authored governance
+  artifacts entrench incumbents.
 - **It resolves a standing open question.** The pulled May 21 EO had left
   "does a federal regime reappear?" hanging over
   [[california-ai-regulation|California's]] position as the operative US AI

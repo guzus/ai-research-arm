@@ -6,11 +6,12 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 summary: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped the Frontier Governance Framework and Rosalind Biodefense program on 2026-05-29.
 created_at: 2026-05-30
-updated_at: 2026-06-03
+updated_at: 2026-06-04
 sources:
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
+  - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "OpenAI — Frontier Governance Framework", url: "https://openai.com/index/openai-frontier-governance-framework/", date: 2026-05-29}
   - {title: "OpenAI — Rosalind Biodefense", url: "https://openai.com/index/strengthening-societal-resilience-with-rosalind-biodefense/", date: 2026-05-29}
   - {title: "Anthropic raises at $965B valuation, eclipsing OpenAI (Bloomberg)", url: "https://www.bloomberg.com/news/articles/2026-05-28/anthropic-raises-at-965-billion-valuation-eclipsing-openai", date: 2026-05-28}
@@ -94,6 +95,26 @@ materially reshape how the lab is positioned heading into its IPO window:
   2026 state-AG action naming a frontier-lab CEO as a personal defendant**. Part
   of the broadening [[federal-ai-policy]] / state-enforcement pressure on the lab
   heading into its IPO window (ARA digest 2026-06-03).
+- **Florida suit escalates — child-safety framing (2026-06-04).** Further
+  reporting recast the action as the **first state to sue OpenAI**: AG James
+  Uthmeier's 83-page **consumer-safety** complaint alleges OpenAI concealed
+  ChatGPT safety risks, hooked minors without parental oversight, pushed young
+  users toward self-harm, and that the tool helped plan the Florida State
+  University shooting — following a criminal probe Uthmeier opened in April.
+  OpenAI says it has "strong protections for minors." *(Underlying causation
+  claims are allegations in a pleading, not adjudicated.)* (ARA digest
+  2026-06-04).
+- **GPT-Rosalind expanded; "It's time to fly" teaser (2026-06-04).** OpenAI
+  **expanded GPT-Rosalind**, its life-sciences model series (named for Rosalind
+  Franklin) purpose-built for **drug discovery, analysis, design and
+  experimental workflows**, folding in GPT-5.5's agentic coding and tool use —
+  the productization of the earlier Rosalind Biodefense framing.
+  *(Vendor-stated; no third-party drug-discovery result attached.)* Separately,
+  the day's most-engaged OpenAI post — **"It's time to fly"** (~5,700 likes) —
+  fueled expectations of a **June 4 livestream / "preview of new
+  capabilities."** OpenAI also published a frontier-AI-safety **"blueprint"**
+  and **Sam Altman backed Trump's new AI EO** — see [[federal-ai-policy]] (ARA
+  digest 2026-06-04).
 
 ## Open questions
 

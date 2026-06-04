@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 summary: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-updated_at: 2026-06-03
+updated_at: 2026-06-04
 sources:
+  - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
@@ -116,6 +117,30 @@ skepticism in one window:
   bets, the same week it committed up to €75B to French data centers. The
   capital-formation side of the supercycle is now running through public
   markets, not just private rounds (ARA digest 2026-06-03).
+- **The ~$340B issuance wave / "is-this-a-bubble?" debate (2026-06-04).** A
+  single day stacked a historic block of AI-driven capital formation:
+  **SpaceX's record IPO** (~555.6M shares at $135, ~$75B raise, ~$1.75T
+  valuation — would be the largest IPO ever — **formal marketing began June 4**);
+  **Alphabet's reported ~$80B equity sale**, its **first new-share issuance
+  since 2006**, to fund ~$190B of AI infrastructure (Goldman reportedly called
+  it "unprecedented"); and **[[deepseek]]'s first-ever external round** (~$7.4B
+  at up to a $59B valuation, Tencent + CATL leading). Aggregators bundle these
+  with [[anthropic]] (~$65B/$965B) and [[openai]] (~$122B) into a **~$340B+
+  "circular financing / bubble-top" narrative**, and **Ray Dalio warned the AI
+  bubble "will burst eventually."** Other rounds in-window: **Suno $400M at
+  $5.4B** (largest AI-music round yet) and **NewLimit** (Brian Armstrong's
+  AI-genomics longevity startup) **$435M Series C at ~$3.1B** (Founders Fund).
+  *(The $340B "wave" is a sentiment aggregation, not a measured flow; the
+  Alphabet size is report-grade with no SEC filing captured.)* (ARA digest
+  2026-06-04).
+- **The ROI reality-check hardens (2026-06-04).** The bear case gained concrete
+  data points: **Uber capped employee AI-tool spend at $1,500/month** (the
+  day's most-active HN AI thread — a rare public enterprise-pricing datapoint);
+  a widely-shared analysis pegged **measured engineering productivity gains at
+  7.8%, not 10×** (with 66% of peak-gain users seeing it fade the next quarter);
+  and **DDR5 memory prices spiked** (~$375 for 32 GB) as AI-datacenter DRAM
+  demand crowds out consumer supply — the buildout's cost now reaching
+  household hardware (ARA digest 2026-06-04).
 - **The bubble counter-narrative.** Meta's paradox — **$56B Q1 revenue but an
   8,000-job layoff** against a $115–135B 2026 capex guide — and a hardening
   "AI bubble / backlash" thread on r/artificial are the bear case (ARA digest

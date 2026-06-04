@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 summary: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-updated_at: 2026-06-03
+updated_at: 2026-06-04
 sources:
+  - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
@@ -104,6 +105,19 @@ Four developments through May 2026 put Anthropic at the center of the field:
   comments) — the operational footprint of the deliberately-gated frontier
   model, and the program whose 10,000-bug disclosure catalyzed the federal EO
   (ARA digest 2026-06-03).
+- **`ant` CLI ships (2026-06-04).** Anthropic shipped the **`ant` CLI** — a
+  terminal client exposing **every Claude Platform API endpoint** from the
+  command line, with agents defined, **versioned and synced from Git repos**
+  ("agents-as-repos"). It extends the [[dynamic-workflows]] developer-surface
+  push from inside Claude Code out to the whole API, hardening Anthropic's
+  developer-tooling moat against OpenAI Codex. *(Terminal CLI confirmed; the
+  full Git-versioning surface is pending docs.)* (ARA digest 2026-06-04).
+- **EO backing broadens (2026-06-04).** What read on 2026-06-03 as Anthropic
+  *alone* backing Trump's June 2 executive order broadened: **Sam Altman**
+  ("the new EO gets the balance right") publicly backed it the next day, and
+  Sen. Blumenthal called it "kernels of the right ideas." Anthropic remains the
+  most consistent frontier-lab endorser, but it is no longer the only one — see
+  [[federal-ai-policy]] (ARA digest 2026-06-04).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

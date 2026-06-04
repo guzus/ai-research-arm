@@ -6,9 +6,10 @@ aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsof
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
 summary: Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.
 created_at: 2026-06-03
-updated_at: 2026-06-03
+updated_at: 2026-06-04
 sources:
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
+  - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "Microsoft Build 2026 (Fort Mason, SF; June 2–3)", date: 2026-06-03}
 ---
 
@@ -35,7 +36,12 @@ under a **"zero distillation, own your intelligence"** framing:
   wave.
 - **MAI-Code-1-Flash** — 5B, **51% SWE-Bench Pro** (HN: 246 pts, the top story
   of the launch) — though open-weights **[[minimax-m3]]** edged it the same week
-  at 59%.
+  at 59%. **Reaching production (2026-06-04):** MAI-Code-1-Flash began rolling
+  into **GitHub Copilot and VS Code** — completion, PR-diff review, and chat on
+  a route that **doesn't touch [[openai]] infra** — the first concrete instance
+  of an MAI model displacing OpenAI inference in Microsoft's flagship developer
+  surface, ahead of the August Project Polaris default switch
+  (ARA digest 2026-06-04).
 - **MAI-Image 2.5 / MAI-Voice 2 / MAI-Transcribe 1.5**, plus a McKinsey-tuned
   variant claiming GPT-5.5-level quality at ~10× lower cost.
 - **Project Polaris** becomes the **default GitHub Copilot coding engine from

@@ -81,7 +81,7 @@
       ],
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-03",
+      "updated_at": "2026-06-04",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -94,6 +94,7 @@
         "california-ai-regulation",
         "cognition-ai",
         "coreweave",
+        "deepseek",
         "dell",
         "figure-ai",
         "nebius",
@@ -106,9 +107,11 @@
         "california-ai-regulation",
         "cognition-ai",
         "coreweave",
+        "deepseek",
         "dell",
         "figure-ai",
         "gemini-3-5-flash",
+        "gemma-4",
         "microsoft",
         "minimax-m3",
         "nebius",
@@ -129,7 +132,7 @@
       ],
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-03",
+      "updated_at": "2026-06-04",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -300,6 +303,41 @@
       ]
     },
     {
+      "slug": "deepseek",
+      "title": "DeepSeek",
+      "type": "entity",
+      "tags": [
+        "frontier-lab",
+        "chinese-llm",
+        "open-weights",
+        "foundation-models",
+        "commercialization"
+      ],
+      "summary": "Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.",
+      "created_at": "2026-06-04",
+      "updated_at": "2026-06-04",
+      "file": "entities/deepseek.md",
+      "aliases": [
+        "DeepSeek",
+        "DeepSeek AI",
+        "深度求索",
+        "DeepSeek-V4",
+        "DeepSeek V4 Pro",
+        "Liang Wenfeng"
+      ],
+      "outbound": [
+        "ai-capex",
+        "gemma-4",
+        "minimax-m3",
+        "openrouter"
+      ],
+      "inbound": [
+        "ai-capex",
+        "gemma-4",
+        "minimax-m3"
+      ]
+    },
+    {
       "slug": "dell",
       "title": "Dell Technologies",
       "type": "entity",
@@ -379,7 +417,7 @@
       ],
       "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-03",
+      "updated_at": "2026-06-04",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -461,7 +499,8 @@
       ],
       "inbound": [
         "anthropic",
-        "gemini-spark"
+        "gemini-spark",
+        "gemma-4"
       ]
     },
     {
@@ -491,6 +530,40 @@
       ],
       "inbound": [
         "anthropic"
+      ]
+    },
+    {
+      "slug": "gemma-4",
+      "title": "Gemma 4",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "model",
+        "multimodal",
+        "google-deepmind",
+        "apache-2-0",
+        "on-device"
+      ],
+      "summary": "Google DeepMind's open-weights (Apache 2.0) multimodal model family; the 2026-06-04 cycle surfaced an encoder-free 12B variant that runs locally on 16 GB RAM as Gemma crossed 150M+ cumulative downloads.",
+      "created_at": "2026-06-04",
+      "updated_at": "2026-06-04",
+      "file": "entities/gemma-4.md",
+      "aliases": [
+        "Gemma 4",
+        "Gemma 4 12B",
+        "Gemma-4",
+        "Gemma 4 family",
+        "Gemma"
+      ],
+      "outbound": [
+        "ai-capex",
+        "deepseek",
+        "gemini-3-5-flash",
+        "minimax-m3"
+      ],
+      "inbound": [
+        "deepseek",
+        "minimax-m3"
       ]
     },
     {
@@ -534,7 +607,7 @@
       ],
       "summary": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-03",
+      "updated_at": "2026-06-04",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -572,7 +645,7 @@
       ],
       "summary": "MiniMax's open-weights model with 1M context and 59% SWE-Bench Pro — the strongest open-weights agentic-coding model of the cycle.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-03",
+      "updated_at": "2026-06-04",
       "file": "entities/minimax-m3.md",
       "aliases": [
         "MiniMax M3",
@@ -583,10 +656,14 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "deepseek",
+        "gemma-4",
         "microsoft",
         "openrouter"
       ],
       "inbound": [
+        "deepseek",
+        "gemma-4",
         "microsoft"
       ]
     },
@@ -666,7 +743,7 @@
       ],
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped the Frontier Governance Framework and Rosalind Biodefense program on 2026-05-29.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-03",
+      "updated_at": "2026-06-04",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -718,6 +795,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "deepseek",
         "microsoft",
         "minimax-m3"
       ]
@@ -766,6 +844,10 @@
     "coreweave": "coreweave",
     "coreweave, inc.": "coreweave",
     "crwv": "coreweave",
+    "deepseek": "deepseek",
+    "deepseek ai": "deepseek",
+    "deepseek v4 pro": "deepseek",
+    "deepseek-v4": "deepseek",
     "dell": "dell",
     "dell inc.": "dell",
     "dell technologies": "dell",
@@ -786,12 +868,18 @@
     "gemini spark": "gemini-spark",
     "gemini-3-5-flash": "gemini-3-5-flash",
     "gemini-spark": "gemini-spark",
+    "gemma": "gemma-4",
+    "gemma 4": "gemma-4",
+    "gemma 4 12b": "gemma-4",
+    "gemma 4 family": "gemma-4",
+    "gemma-4": "gemma-4",
     "google gemini spark": "gemini-spark",
     "gpu-as-a-service": "neocloud",
     "gpuaas": "neocloud",
     "helix": "figure-ai",
     "helix-02": "figure-ai",
     "lfm": "liquid-ai",
+    "liang wenfeng": "deepseek",
     "liquid ai": "liquid-ai",
     "liquid foundation models": "liquid-ai",
     "liquid-ai": "liquid-ai",
@@ -825,9 +913,15 @@
     "sacramento ai policy": "california-ai-regulation",
     "spark agent": "gemini-spark",
     "trump ai executive order": "federal-ai-policy",
-    "your agents are aging too": "agent-lifespan-engineering"
+    "your agents are aging too": "agent-lifespan-engineering",
+    "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-04",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-04 digest. Created 2 (deepseek entity — first-ever external round ~$7.4B at up to $59B, Tencent+CATL, commercialization pivot + Tencent Cloud 97.5% V4 price cut; gemma-4 entity — Google DeepMind open-weights family, encoder-free 12B on 16 GB RAM, 150M+ downloads, Qwen3.5-9B quality debate). Updated 6 (openai — Florida child-safety suit escalation + GPT-Rosalind life-sciences expansion + \"It's time to fly\" June 4 teaser + safety blueprint/Altman EO backing; anthropic — `ant` CLI agents-as-repos + EO-backing broadens beyond lone-lab; microsoft — MAI-Code-1-Flash reaching GitHub Copilot/VS Code production off-OpenAI; ai-capex — ~$340B issuance wave SpaceX/Alphabet/DeepSeek + Ray Dalio bubble + Suno/NewLimit + ROI reality-check Uber $1,500 cap/7.8%/DDR5; federal-ai-policy — EO backing broadens to Altman + OpenAI safety blueprint; minimax-m3 — MiniMax Sparse Attention MSA 1M-context engine)."
+    },
     {
       "date": "2026-06-03",
       "op": "ingest",
