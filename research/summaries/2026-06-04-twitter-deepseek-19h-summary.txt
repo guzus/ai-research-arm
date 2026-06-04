@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (DeepSeek v4 Pro) - 2026-06-04 19:38 UTC
+
+CYCLE: Anthropic publishes "When AI Builds Itself" — 80% of code is AI-written, 8x engineer productivity, 52x training speedup, recursive self-improvement measured in production. The single most important AI development data of 2026.
+
+TOP STORIES:
+• Anthropic: 80% code AI-written, 52x speedup, recursive self-improvement is running. Anthropic Institute launched. [✓]
+• AVGO/CRWD selloff extends to ~30% peak-to-trough — most severe AI stock correction of 2026. Analyst defense begins (JPMorgan $580, Jefferies $550 PTs). [✓]
+• OpenAI launches upgraded ChatGPT memory — cross-conversation context, 2x capacity, user-steerable. 4,946 likes. [✓]
+• Anthropic Mythos-level model pricing leaks at $16/$80 per 1M tokens — imminent GA release, possibly same week as GPT-5.6. [⚠]
+
+WATCH: AVGO/CRWD June 4 close — does the selloff stabilize or extend? Anthropic Mythos GA announcement possibly imminent. Obernolte/Trahan AI regulation bill full text expected today. June 5 jobs report.
+
+Full update on GitHub.
