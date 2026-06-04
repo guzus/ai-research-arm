@@ -24,8 +24,9 @@ sources:
   - https://thetechportal.com/2026/05/23/chinas-deepseek-permanently-cuts-prices-of-flagship-v4-pro-ai-model-by-75/
   - "@caixin"
   - "@DTechtrends"
+  - "@WindInfoUS"
 created_at: 2026-05-25
-updated_at: 2026-05-26
+updated_at: 2026-06-04
 closed_at: null
 closed_reason: null
 history:
@@ -33,6 +34,8 @@ history:
     change: "Created — DeepSeek made permanent a 75% price cut on flagship V4-Pro (announced ~2026-05-23, Bloomberg/Engadget multi-source): input ~$1.74→~$0.435, output ~$3.48→~$0.87 per MTok. Surfaced on X alongside V4-Flash topping global usage rankings"
   - ts: 2026-05-26
     change: "Caixin (2026-05-25 14:59 UTC) corroborated the price cut as authoritative Chinese financial reporting (\"less than a tenth of OpenAI's GPT-5.5 rates\"); landed the same day as The Information's $7.35B raise exclusive (see deepseek-funding-round-2026-05) — supply-side commercialization + price war. Huawei's Tau Scaling Law / LogicFolding announcement (see huawei-tau-scaling-law-2026-05) reframes the cut partly as a hardware-co-design dividend if the third-party-reported V4/Ascend co-engineering holds"
+  - ts: 2026-06-04
+    change: "Platform-side escalation: a Wind Info market brief (2026-06-03) reports Tencent Cloud cut its hosted DeepSeek-V4 API pricing by up to ~97.5% — distinct from DeepSeek's own 75% V4-Pro cut and landing the same day as DeepSeek's ~$7B raise reporting. Reinforces the 'model layer racing to zero' thread (xAI's Grok Composer at ~$0.50/M input cited alongside). Single market-brief relay; no Tencent Cloud primary captured"
 ---
 
 DeepSeek converted its temporary 75% V4-Pro discount — originally set to
