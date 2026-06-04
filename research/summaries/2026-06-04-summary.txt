@@ -1,0 +1,13 @@
+AI News - 2026-06-04
+
+TOP STORIES:
+• OpenAI ships major GPT-Rosalind update — life-sciences model now on GPT-5.5 agentic stack + Codex "Life Sciences" plugin wiring 50+ scientific tools/data sources
+• AI music startup Suno raises $400M+ (Series D) at $5.4B valuation, led by Bond Capital — despite ongoing Universal/Sony copyright suits
+• Dense June 3 VC roundup: AlphaSense $350M (~$7.5B val), Oxford Quantum Circuits ~$350M Series C, Coralogix $200M Series F, Apoha $36M, Lassie $35M (a16z)
+
+KEY NUMBERS:
+• Suno: $5.4B valuation (2x its $2.45B Nov 2025 mark), ~$300M ARR, 2M+ subscribers
+• GPT-Rosalind Codex plugin: 50+ genomics/chemistry/clinical tools & data sources
+• Anthropic reaffirms Claude stays ad-free in pre-IPO posture (S-1 filed June 1)
+
+Full report on GitHub.
