@@ -1,0 +1,11 @@
+Speaker 1: Thursday, June fourth, twenty twenty-six.
+Speaker 2: [high_energy] Google just dropped Gemma four — twelve billion parameters, open-weights, encoder-free multimodal, and it runs on a sixteen-gigabyte laptop.
+Speaker 1: OpenAI is moving today too — expanding GPT Rosalind and hosting an event later today.
+Speaker 2: The bigger OpenAI story is legal, though. Florida became the first state to sue OpenAI, and they named Sam Altman personally in an eighty-three-page child-safety complaint. [dramatic_pause] First time a state has gone after the CEO directly.
+Speaker 1: On capital markets, it is a packed day. SpaceX starts IPO marketing today, eyeing a valuation of [emphasis] one point seven five trillion dollars [/emphasis] on a roughly seventy-five-billion-dollar offering.
+Speaker 2: And Alphabet is running its first share sale since two thousand six — about eighty billion dollars on the table. Meanwhile DeepSeek closed its first outside funding round at seven point four billion, backed by Tencent and CATL, at up to fifty-nine billion valuation.
+Speaker 1: Suno raised four hundred million at a five point four billion valuation, and NewLimit brought in four hundred thirty-five million in a Series C.
+Speaker 2: A reality check from Uber — they capped AI tool spending at fifteen hundred dollars per employee per month, and their actual measured productivity gain is seven point eight percent, not ten times.
+Speaker 1: That feeds right into the broader debate: Gemma four showing capable on-device AI plus this capital issuance wave are fueling serious questions about whether valuations reflect reality.
+Speaker 2: The numbers are real. Whether the multiples are — that is the open question.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
