@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-05
+
+TOP 5 PAPERS:
+• Autoregressive Consistency Hurts Safety: shallow alignment is a structural side-effect of next-token training
+• Inference-Time Vulnerability: mid-generation token injections break aligned models; align over full trajectories
+• CART: parameter-efficient recurrent transformer cross-attends to frozen K/V with a learned-stable LTI gate
+• Orchestrating Cognitive Memory (Meta): learned structured memory beats raw-retrieval context for lifelong agents
+• PlanarBench: memorization-resistant ASCII planar-graph spatial-reasoning test across 91 models
+
+CATEGORIES: LLM/NLP 3 | CV & Multimodal 3 | Agents & Reasoning 5 | Safety & Alignment 4 | Other/Benchmarks 4
+
+Full report on GitHub.
