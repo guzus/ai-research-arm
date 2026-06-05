@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-05
+
+TOP STORIES:
+• SpaceX IPO live: SPCX prices Jun 11 at $135, debuts Nasdaq Jun 12 (~$1.75T); prospectus shows $18.7B rev, $4.9B net loss
+• Broadcom closes -12.6% (~$320B erased): record +143% AI revenue not enough without a raised Q3 guide
+• OpenAI ships "Dreaming" memory (retention 52%→75%); the teased Codex×ChatGPT "super app" still unshipped
+
+KEY NUMBERS:
+• DeepSeek nears first-ever ~$7B round at up to $59B (Tencent/CATL)
+• Alphabet upsizes raise to ~$85B; Anthropic run-rate hits $47B
+• Gemma 4 12B (Apache-2.0, 256K ctx) runs on a 16GB laptop
+
+TRENDING: HN debates "AI is not conscious" (Ted Chiang, 1,221 comments); r/artificial on AI ROI ($2.5T spend, 95% zero P&L)
+
+Full digest on GitHub.
