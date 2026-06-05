@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-05 08:14 UTC
+
+CYCLE: Anthropic-dominated window on three fronts — a Claude-found crypto bug, an FT NSA-cyber report, and the pause paper.
+
+TOP STORIES:
+• Claude Opus 4.8 credited with finding a critical "unlimited-mint" bug in Zcash; ZEC crashes ~40-50%, ~$1.2B altcoin liquidations [✓ event / ⚠ AI-credit]
+• FT: Anthropic has engineers embedded in the NSA deploying "Mythos" for offensive cyber ops, while fighting the Pentagon in court [⚠ FT-sourced, substance unconfirmed]
+• Anthropic's "When AI Builds Itself" pause paper meets its IPO — skeptics read the doomerism as positioning ahead of a ~$965B listing [⚠ continuation]
+
+WATCH: An official Zcash/ECC post-mortem and whether the mint bug was ever exploited (privacy may make it unknowable).
+
+Full update on GitHub.
