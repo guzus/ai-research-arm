@@ -1,0 +1,13 @@
+AI News - 2026-06-05
+
+TOP STORIES:
+• Bipartisan "Great American AI Act" draft hits the House (Obernolte/Trahan) — mandatory frontier-safety duties + 3-year preemption of STATE AI-development laws
+• Generalist AI raises $400M at $2B for "physical AGI" robotics — Radical Ventures led; NVIDIA, Bezos, Fei-Fei Li in
+• Industry split instantly: ITI applauds; Public Citizen + labor + safety groups call preemption a "generational mistake"
+
+KEY NUMBERS:
+• 269-page draft bill; 3-year sunset on dev-law preemption (use/deployment left to states)
+• $100M/yr for a Center for AI Standards and Innovation; codifies NAIRR
+• Generalist AI: $400M round, $2B valuation, >$500M total raised
+
+Full report on GitHub.
