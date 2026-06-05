@@ -1,0 +1,11 @@
+Speaker 1: Friday, June fifth, twenty twenty-six.
+Speaker 2: [high_energy] SpaceX is going public — SPCX prices on June eleventh at one hundred thirty-five dollars a share and debuts on Nasdaq June twelfth at a valuation of roughly one point seven five trillion dollars.
+Speaker 1: The prospectus shows eighteen point seven billion dollars in revenue — but also four point nine billion in net losses.
+Speaker 2: Not exactly a profitable rocket ship. Meanwhile, Broadcom closed down twelve point six percent — [emphasis] three hundred twenty billion dollars [/emphasis] erased in a single session.
+Speaker 1: Record AI revenue up one hundred forty-three percent still wasn't enough without a raised third-quarter guide. Wall Street wanted more.
+Speaker 2: [dramatic_pause] OpenAI did ship something: a new Dreaming memory feature that lifts retention from fifty-two to seventy-five percent. Their ChatGPT and Codex super app is still teased, not shipped.
+Speaker 1: Some quick numbers — DeepSeek is nearing its first-ever fundraise, reportedly around [emphasis] seven billion dollars [/emphasis] at a fifty-nine billion dollar valuation, with Tencent and CATL backing it.
+Speaker 2: Alphabet upsized its raise to roughly eighty-five billion, and Anthropic's annualized run-rate has hit forty-seven billion dollars.
+Speaker 1: On the model front, Google's Gemma four twelve-billion is Apache-licensed, handles a two hundred fifty-six thousand token context window, and runs on a sixteen-gigabyte laptop.
+Speaker 2: And community debate is running hot — a Ted Chiang piece on AI consciousness pulled over twelve hundred comments on Hacker News, while a Reddit thread on AI return on investment tallied two point five trillion dollars spent with ninety-five percent of companies reporting zero bottom-line impact.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
