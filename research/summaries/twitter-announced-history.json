@@ -8506,5 +8506,33 @@
     "headline": "ANTHROPIC CORRECTS RSI DATA \u2014 OPUS 4 3X SPEEDUP DATES TO MAY 2025, NOT 2024; 2024 MODELS SHOWED ZERO",
     "source": "@AnthropicAI",
     "url": "https://x.com/AnthropicAI/status/2062634151556292775"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-05 10:43 UTC",
+    "headline": "WSJ MAINSTREAMS ANTHROPIC SELF-IMPROVEMENT DATA AS CALL FOR 'GLOBAL PAUSE' ON AI DEVELOPMENT",
+    "source": "@AShmueil",
+    "url": "https://x.com/AShmueil/status/2062646456264355841"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-05 10:43 UTC",
+    "headline": "'IRONWORM' NPM WORM HARVESTS OPENAI, ANTHROPIC AND AWS API KEYS VIA RUST INFOSTEALER + EBPF ROOTKIT",
+    "source": "@cyber__razz",
+    "url": "https://x.com/cyber__razz/status/2062617083846754526"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-05 10:43 UTC",
+    "headline": "ANTHROPIC IPO CHATTER TURNS SPECIFIC: 'CONFIDENTIAL S-1 FILED JUNE 1' AT ~$1T \u2014 SINGLE LOW-CRED SOURCE, UNVERIFIED",
+    "source": "@bulldoghill",
+    "url": "https://x.com/bulldoghill/status/2062817975921451338"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-05 10:43 UTC",
+    "headline": "OPENAI SAYS ONE OF ITS MODELS FOUND A COUNTEREXAMPLE TO AN 80-YEAR-OLD ERDOS CONJECTURE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2062630454537424930"
   }
 ]
