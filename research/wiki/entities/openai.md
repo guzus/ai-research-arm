@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 summary: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped the Frontier Governance Framework and Rosalind Biodefense program on 2026-05-29.
 created_at: 2026-05-30
-updated_at: 2026-06-04
+updated_at: 2026-06-05
 sources:
+  - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
@@ -115,6 +116,25 @@ materially reshape how the lab is positioned heading into its IPO window:
   capabilities."** OpenAI also published a frontier-AI-safety **"blueprint"**
   and **Sam Altman backed Trump's new AI EO** — see [[federal-ai-policy]] (ARA
   digest 2026-06-04).
+
+- **"Dreaming" memory ships — but not the "super app" (2026-06-05).** After ~2
+  days of "It's time to fly" teasing, OpenAI shipped **memory, not the
+  long-rumored Codex×ChatGPT "super app"** (The Information had reported an
+  imminent merge). The new **"Dreaming"** system builds **coherent, narrative
+  user "dossiers"** sorted by work, hobbies and travel, keeping context fresh
+  across conversations and **lifting information retention from 52.2% → 75.1%**
+  (The Decoder). The reported all-in-one Codex×ChatGPT app **stayed unshipped**
+  as of the cycle — the teaser overshot the release, a recurring OpenAI
+  expectations-management tell. Persistent memory is also the consumer-agent
+  substrate that pulls OpenAI toward the [[gemini-spark]] persistent-agent frame
+  (ARA digest 2026-06-05).
+- **Cross-lab biosecurity letter (2026-06-05).** Sam Altman co-signed (with
+  [[anthropic|Anthropic's Dario Amodei]] and Google DeepMind's Demis Hassabis,
+  "and many others") a letter pressing **Congress to screen synthetic-nucleic-acid
+  orders** as frontier models turn bio-capable, paired with OpenAI's
+  **"Biodefense in the Intelligence Age"** action plan — the productization arc
+  of the earlier Rosalind Biodefense framing. Critics frame it as
+  regulatory-moat building; see [[federal-ai-policy]] (ARA digest 2026-06-05).
 
 ## Open questions
 

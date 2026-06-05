@@ -21,8 +21,10 @@ Each page is one of three types — entity, concept, or theme. See
 - [[microsoft]] — Hyperscaler turned frontier-model builder; shipped the MAI stack and made Project Polaris GitHub Copilot's default at Build 2026.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
 - [[nebius]] — Amsterdam-based neocloud spun out of Yandex.
+- [[nvidia]] — Dominant AI-accelerator supplier underwriting the capex buildout; released the open-weights Nemotron-3-Ultra-550B on 2026-06-05.
 - [[openai]] — Frontier lab behind the GPT family; $852B March valuation, now trailing Anthropic's $965B; shipped the Frontier Governance Framework and Rosalind Biodefense on 2026-05-29.
 - [[openrouter]] — LLM-routing API serving 400+ models to 8M+ developers; closed $113M Series B at $1.3B on 2026-05-30, 25T tokens/week.
+- [[spacex]] — Record IPO (Nasdaq: SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation) anchoring the 2026 AI-financing issuance wave.
 
 ## Concepts
 

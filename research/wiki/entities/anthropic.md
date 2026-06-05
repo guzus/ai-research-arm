@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 summary: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-updated_at: 2026-06-04
+updated_at: 2026-06-05
 sources:
+  - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
@@ -118,6 +119,18 @@ Four developments through May 2026 put Anthropic at the center of the field:
   Sen. Blumenthal called it "kernels of the right ideas." Anthropic remains the
   most consistent frontier-lab endorser, but it is no longer the only one — see
   [[federal-ai-policy]] (ARA digest 2026-06-04).
+
+- **Daniela Amodei talks down AI-returns doubts ahead of IPO (2026-06-05).**
+  President **Daniela Amodei** publicly pushed back on AI-returns skepticism,
+  disclosing that **annualized revenue crossed $47B in May** — up from ~$9B at
+  end-2025 — following the **June 1 confidential S-1** (TechCrunch). The framing
+  lands the same week the broader [[ai-capex]] "is-this-a-bubble?" debate
+  hardened (Broadcom's ~$320B single-day drop, the MIT NANDA "95% of AI spend
+  produces zero P&L" thread), making the revenue print Anthropic's pre-IPO
+  counter to the ROI bear case. Separately, **r/artificial surfaced visible
+  [[claude-opus-4-8|Claude Opus 4.8]] quality-regression complaints** (premature
+  conversation-ending, over-pushback) — the recurring credibility-test variable
+  resurfacing on the consumer side (ARA digest 2026-06-05).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

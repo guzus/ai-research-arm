@@ -6,8 +6,9 @@ aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 P
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
 summary: Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.
 created_at: 2026-06-04
-updated_at: 2026-06-04
+updated_at: 2026-06-05
 sources:
+  - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "ARA model ticket — DeepSeek funding round", path: research/models/tickets/deepseek-funding-round-2026-05.md}
   - {title: "ARA model ticket — DeepSeek V4 Pro price cut", path: research/models/tickets/deepseek-v4-pro-price-cut-2026-05.md}
@@ -42,6 +43,17 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   alongside peers like [[minimax-m3]], Google's [[gemma-4]], and Alibaba's Qwen line — capable
   downloadable models that compress closed-API pricing and expand the
   inference base routed through layers like [[openrouter]].
+
+- **The "filing would make it real" critique (2026-06-05).** A day later the
+  round was still **anonymously sourced** — no DeepSeek, Tencent, or CATL
+  primary or filing — even as it was bundled into the day's wall-to-wall
+  AI-financing headlines alongside [[spacex|SpaceX's]] *filed* prospectus and
+  Alphabet's *oversubscribed* convertible. The digest's Quote of the Day
+  (@Signal8Ai) made DeepSeek the cleanest case study in financing discipline:
+  "no press release. no S-1. no filing of any kind. $59B valuation built
+  entirely on what unnamed insiders told a reporter… the $7B is real until it
+  isn't. the filing would make it real. there isn't one." The contrast with the
+  same week's hard SEC filings is the point (ARA digest 2026-06-05).
 
 ## Open questions
 

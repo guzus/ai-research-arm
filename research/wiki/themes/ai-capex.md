@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 summary: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-updated_at: 2026-06-04
+updated_at: 2026-06-05
 sources:
+  - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
@@ -30,7 +31,7 @@ cases?
 The May 2026 cycle is unusually rich in capex signal — supply, demand, and
 skepticism in one window:
 
-- **The supply/demand pin.** NVIDIA's Q1 FY27 print — **$81.62B revenue (+85%
+- **The supply/demand pin.** [[nvidia|NVIDIA]]'s Q1 FY27 print — **$81.62B revenue (+85%
   Y/Y)**, Data Center $75.25B, a $91B Q2 guide above the buy-side bar, a fresh
   $80B buyback — is the canonical "demand is real" data point. Jensen Huang:
   "the largest infrastructure expansion in human history… agentic AI has
@@ -133,6 +134,35 @@ skepticism in one window:
   *(The $340B "wave" is a sentiment aggregation, not a measured flow; the
   Alphabet size is report-grade with no SEC filing captured.)* (ARA digest
   2026-06-04).
+- **The issuance wave crystallizes into hard filings; Broadcom delivers the
+  gut-check (2026-06-05).** The week's AI-financing narrative hardened from
+  rumor into filed paper. **[[spacex|SpaceX]]'s record IPO went live** — SPCX
+  prices **June 11 at a flat $135/share** (~$1.75T valuation, **$74.4B net
+  raise**, up to $85.7B with the greenshoe) and debuts on Nasdaq **June 12** —
+  while the prospectus exposed the underlying business: **$18.7B 2025 revenue
+  against a $4.9B net loss (~94× sales)**, the hard counterweight to the
+  headline valuation. In parallel **[[deepseek]] neared its ~$7B round** (up to
+  $59B, Tencent/CATL) and **Alphabet upsized its convertible raise to ~$85B
+  from $80B** on oversubscription (~$30B / ~40% reportedly earmarked for
+  employee-equity tax obligations). But the day's gut-check was **Broadcom**
+  (AVGO, the custom-ASIC vendor): a record Q2
+  (**$22.19B revenue +48% YoY, AI semis +143% to $10.8B**) wasn't enough — an
+  *in-line, un-raised* ~$16B Q3 AI-chip guide sent **AVGO down ~12.6% at the
+  close** (off ~16% intraday), **erasing ~$320B of value** (a top-3 single-day
+  mega-cap loss) and briefly dragging the whole semi complex. The tell: the
+  market is done paying for "AI poetry" — it now demands *raised* guidance, the
+  sharpest expression yet of the "beats but closes lower" pattern (ARA digest
+  2026-06-05).
+- **Supply ceiling + cost-discipline tactics (2026-06-05).** **TSMC warned it
+  cannot meet AI-chip demand even with US expansion** ("We can only support so
+  much") — a hard supply ceiling on the buildout. **Meta** is probing the cost
+  frontier: exploring **tent-based "temporary" data centers** (a Tesla-style
+  cost tactic), weighing up to **$199.99/mo** for its "Hatch" consumer agent,
+  and repeatedly delaying its "Muse Spark" developer API. **US data-center
+  construction hit a ~$50.7B annual rate in April (+28% YoY), surpassing
+  public-transportation spending for the first time** — even as datacenter
+  backlash spread (see [[federal-ai-policy]]: Monterey Park's ~86% permanent
+  ban, O'Leary halving Project Stratos) (ARA digest 2026-06-05).
 - **The ROI reality-check hardens (2026-06-04).** The bear case gained concrete
   data points: **Uber capped employee AI-tool spend at $1,500/month** (the
   day's most-active HN AI thread — a rare public enterprise-pricing datapoint);

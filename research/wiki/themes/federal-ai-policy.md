@@ -6,10 +6,11 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 summary: The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.
 created_at: 2026-06-03
-updated_at: 2026-06-04
+updated_at: 2026-06-05
 sources:
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
+  - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
 ---
 
 **Federal AI policy** is the Washington counterpart to the
@@ -51,6 +52,30 @@ footing for the first time in the cycle.
   first 2026 state-AG action naming a frontier-lab CEO as a personal defendant —
   showing that federal, state-legislative, and state-AG channels are all
   applying pressure at once.
+
+- **Cross-lab biosecurity letter (2026-06-05).** The labs publicly argued their
+  own models are now dangerous: **Sam Altman ([[openai]]), Dario Amodei
+  ([[anthropic]]) and Demis Hassabis (Google DeepMind) "and many others"** urged
+  Congress to **tighten security on synthetic-nucleic-acid orders** (and
+  synthesis equipment) as frontier models turn bio-capable (WSJ-covered).
+  [[openai]] separately published **"Biodefense in the Intelligence Age."** This
+  is a different policy axis from the June 2 cyber EO — a **supply-chain
+  screening** ask rather than a pre-release-access mandate — but the same pattern
+  of lab-authored governance artifacts. Critics again flagged
+  regulatory-moat building; defenders note the synthesis-screening ask predates
+  any single lab (ARA digest 2026-06-05).
+- **Datacenter backlash goes local (2026-06-05).** Community pushback against the
+  [[ai-capex]] buildout produced two firsts: **Monterey Park, CA reportedly
+  voted ~86% to permanently ban data centers** (framed as a US first), and
+  **Kevin O'Leary agreed to halve his 40,000-acre Utah "Project Stratos"** under
+  community pressure. Local-government power is now a binding constraint on where
+  compute can physically land — the municipal counterpart to the federal/state
+  legislative tracks (ARA digest 2026-06-05).
+- **AI-generated litigation strains the courts (2026-06-05).** Self-represented
+  cases rose from **11% to 16.8% (2022–2025)** with AI-generated filings more
+  than doubling, forcing courts to grapple with chatbot liability (MIT Tech
+  Review) — a third front (judicial) opening alongside the legislative and
+  executive ones (ARA digest 2026-06-05).
 
 ## Open questions
 

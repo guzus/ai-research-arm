@@ -81,7 +81,7 @@
       ],
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-04",
+      "updated_at": "2026-06-05",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -96,11 +96,14 @@
         "coreweave",
         "deepseek",
         "dell",
+        "federal-ai-policy",
         "figure-ai",
         "nebius",
         "neocloud",
+        "nvidia",
         "openai",
-        "openrouter"
+        "openrouter",
+        "spacex"
       ],
       "inbound": [
         "anthropic",
@@ -109,6 +112,7 @@
         "coreweave",
         "deepseek",
         "dell",
+        "federal-ai-policy",
         "figure-ai",
         "gemini-3-5-flash",
         "gemma-4",
@@ -116,8 +120,10 @@
         "minimax-m3",
         "nebius",
         "neocloud",
+        "nvidia",
         "openai",
-        "openrouter"
+        "openrouter",
+        "spacex"
       ]
     },
     {
@@ -132,7 +138,7 @@
       ],
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-04",
+      "updated_at": "2026-06-05",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -167,7 +173,8 @@
         "gemini-spark",
         "minimax-m3",
         "openai",
-        "openrouter"
+        "openrouter",
+        "spacex"
       ]
     },
     {
@@ -299,7 +306,8 @@
         "ai-capex",
         "dell",
         "nebius",
-        "neocloud"
+        "neocloud",
+        "nvidia"
       ]
     },
     {
@@ -315,7 +323,7 @@
       ],
       "summary": "Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-06-04",
+      "updated_at": "2026-06-05",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -329,12 +337,14 @@
         "ai-capex",
         "gemma-4",
         "minimax-m3",
-        "openrouter"
+        "openrouter",
+        "spacex"
       ],
       "inbound": [
         "ai-capex",
         "gemma-4",
-        "minimax-m3"
+        "minimax-m3",
+        "spacex"
       ]
     },
     {
@@ -417,7 +427,7 @@
       ],
       "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-04",
+      "updated_at": "2026-06-05",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -429,12 +439,14 @@
       ],
       "outbound": [
         "agentic-ai-security",
+        "ai-capex",
         "anthropic",
         "california-ai-regulation",
         "openai"
       ],
       "inbound": [
         "agentic-ai-security",
+        "ai-capex",
         "anthropic",
         "california-ai-regulation",
         "openai"
@@ -529,7 +541,8 @@
         "gemini-3-5-flash"
       ],
       "inbound": [
-        "anthropic"
+        "anthropic",
+        "openai"
       ]
     },
     {
@@ -546,7 +559,7 @@
       ],
       "summary": "Google DeepMind's open-weights (Apache 2.0) multimodal model family; the 2026-06-04 cycle surfaced an encoder-free 12B variant that runs locally on 16 GB RAM as Gemma crossed 150M+ cumulative downloads.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-06-04",
+      "updated_at": "2026-06-05",
       "file": "entities/gemma-4.md",
       "aliases": [
         "Gemma 4",
@@ -559,11 +572,13 @@
         "ai-capex",
         "deepseek",
         "gemini-3-5-flash",
-        "minimax-m3"
+        "minimax-m3",
+        "nvidia"
       ],
       "inbound": [
         "deepseek",
-        "minimax-m3"
+        "minimax-m3",
+        "nvidia"
       ]
     },
     {
@@ -629,6 +644,7 @@
       ],
       "inbound": [
         "minimax-m3",
+        "nvidia",
         "openai"
       ]
     },
@@ -694,7 +710,8 @@
       "inbound": [
         "ai-capex",
         "coreweave",
-        "neocloud"
+        "neocloud",
+        "nvidia"
       ]
     },
     {
@@ -728,7 +745,49 @@
         "coreweave",
         "dell",
         "gemini-3-5-flash",
-        "nebius"
+        "nebius",
+        "nvidia"
+      ]
+    },
+    {
+      "slug": "nvidia",
+      "title": "NVIDIA",
+      "type": "entity",
+      "tags": [
+        "gpu",
+        "ai-chips",
+        "accelerators",
+        "open-weights",
+        "datacenter",
+        "semiconductors"
+      ],
+      "summary": "The dominant AI accelerator supplier; its GPUs underwrite the AI-capex buildout, and on 2026-06-05 it released the open-weights Nemotron-3-Ultra-550B that dominated developer mindshare alongside Gemma 4.",
+      "created_at": "2026-06-05",
+      "updated_at": "2026-06-05",
+      "file": "entities/nvidia.md",
+      "aliases": [
+        "NVIDIA",
+        "Nvidia",
+        "NVDA",
+        "@nvidia",
+        "@nvidianewsroom",
+        "Jensen Huang",
+        "Nemotron",
+        "Nemotron-3-Ultra",
+        "Nemotron-3-Ultra-550B",
+        "Nemotron 3 Ultra"
+      ],
+      "outbound": [
+        "ai-capex",
+        "coreweave",
+        "gemma-4",
+        "microsoft",
+        "nebius",
+        "neocloud"
+      ],
+      "inbound": [
+        "ai-capex",
+        "gemma-4"
       ]
     },
     {
@@ -743,7 +802,7 @@
       ],
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped the Frontier Governance Framework and Rosalind Biodefense program on 2026-05-29.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-04",
+      "updated_at": "2026-06-05",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -756,6 +815,7 @@
         "anthropic",
         "california-ai-regulation",
         "federal-ai-policy",
+        "gemini-spark",
         "microsoft"
       ],
       "inbound": [
@@ -766,7 +826,8 @@
         "federal-ai-policy",
         "figure-ai",
         "microsoft",
-        "openrouter"
+        "openrouter",
+        "spacex"
       ]
     },
     {
@@ -799,6 +860,39 @@
         "microsoft",
         "minimax-m3"
       ]
+    },
+    {
+      "slug": "spacex",
+      "title": "SpaceX",
+      "type": "entity",
+      "tags": [
+        "ipo",
+        "capital-markets",
+        "ai-infrastructure",
+        "space",
+        "public-listing"
+      ],
+      "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side.",
+      "created_at": "2026-06-05",
+      "updated_at": "2026-06-05",
+      "file": "entities/spacex.md",
+      "aliases": [
+        "SpaceX",
+        "@SpaceX",
+        "SPCX",
+        "Space Exploration Technologies",
+        "Starlink"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "deepseek",
+        "openai"
+      ],
+      "inbound": [
+        "ai-capex",
+        "deepseek"
+      ]
     }
   ],
   "resolver": {
@@ -807,8 +901,11 @@
     "@anthropicai": "anthropic",
     "@michaeldell": "dell",
     "@microsoft": "microsoft",
+    "@nvidia": "nvidia",
+    "@nvidianewsroom": "nvidia",
     "@openai": "openai",
     "@openrouterai": "openrouter",
+    "@spacex": "spacex",
     "a 9317": "california-ai-regulation",
     "ab 1159": "california-ai-regulation",
     "ab 1609": "california-ai-regulation",
@@ -878,6 +975,7 @@
     "gpuaas": "neocloud",
     "helix": "figure-ai",
     "helix-02": "figure-ai",
+    "jensen huang": "nvidia",
     "lfm": "liquid-ai",
     "liang wenfeng": "deepseek",
     "liquid ai": "liquid-ai",
@@ -899,8 +997,14 @@
     "nbis": "nebius",
     "nebius": "nebius",
     "nebius group n.v.": "nebius",
+    "nemotron": "nvidia",
+    "nemotron 3 ultra": "nvidia",
+    "nemotron-3-ultra": "nvidia",
+    "nemotron-3-ultra-550b": "nvidia",
     "neo-cloud": "neocloud",
     "neocloud": "neocloud",
+    "nvda": "nvidia",
+    "nvidia": "nvidia",
     "openai": "openai",
     "openai inc.": "openai",
     "openai opco": "openai",
@@ -911,12 +1015,21 @@
     "project polaris": "microsoft",
     "promoting advanced ai innovation and security": "federal-ai-policy",
     "sacramento ai policy": "california-ai-regulation",
+    "space exploration technologies": "spacex",
+    "spacex": "spacex",
     "spark agent": "gemini-spark",
+    "spcx": "spacex",
+    "starlink": "spacex",
     "trump ai executive order": "federal-ai-policy",
     "your agents are aging too": "agent-lifespan-engineering",
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-05",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-05 digest. Created 2 (nvidia entity — Q1 FY27 demand pin + GTC Taipei + open-weights Nemotron-3-Ultra-550B; spacex entity — record IPO SPCX $135/$1.75T anchoring the issuance wave). Updated 6 (ai-capex — SpaceX hard filing + Broadcom −12.6%/$320B gut-check + Alphabet ~$85B + TSMC ceiling + Meta tent DCs + $50.7B DC construction; openai — \"Dreaming\" memory ship 52.2→75.1% but no Codex×ChatGPT super app + cross-lab biosecurity letter; gemma-4 — runaway HN dev story + Nemotron open-weights bracketing; deepseek — \"the filing would make it real\" financing-discipline critique; federal-ai-policy — Altman/Amodei/Hassabis synthetic-nucleic-acid letter + Monterey Park/O'Leary datacenter backlash + AI-litigation strain; anthropic — Daniela Amodei $47B-ARR pre-IPO talk-down + Opus 4.8 regression complaints)."
+    },
     {
       "date": "2026-06-04",
       "op": "ingest",
