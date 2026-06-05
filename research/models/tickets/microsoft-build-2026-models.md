@@ -69,7 +69,7 @@ sources:
   - "@gmanews"
   - "@AI_News_Digest"
 created_at: 2026-05-29
-updated_at: 2026-06-03
+updated_at: 2026-06-05
 closed_at: null
 closed_reason: null
 history:
@@ -81,6 +81,8 @@ history:
     change: "Two-source convergence: @testingcatalog 2026-05-31 leaks the unified Copilot super-app with Copilot Code (GitHub Copilot inside), Copilot Cowork, and Scout 24/7 Agent tabs; same outlet's earlier MAI lineup leak names MAI Voice 2 (15 languages, wider emotional range), MAI Transcribe 1.5 (STT), MAI Image 2.5 (already on LM Arena, see [[microsoft-mai-image-2-5]]). @theinformation 2026-05-31 19:00 UTC restates: 'homegrown AI models for coding, speech, transcription, reasoning and images' aimed at reducing reliance on OpenAI/Anthropic via Azure. Two reporting paths, one product map. Build session catalog has 90+ agentic-AI / Azure AI Foundry / GitHub Copilot sessions; Copilot Studio computer-using agents now GA. Lands 24h after [[nvidia-gtc-taipei-2026-06]] DGX Station for Windows + RTX Spark + OpenShell. @kimmonismus in SF for Build 2026-05-31 21:07 UTC"
   - ts: 2026-06-03
     change: "Keynote delivered 2026-06-02 — status rumored → confirmed, verification partial → confirmed. Microsoft unveiled the homegrown reasoning model **MAI-Thinking-1** (trained from scratch without distillation, reported near-SOTA / top math + coding benchmark marks), **Project Solara**, autonomous workplace assistants, and NVIDIA-powered PCs. The unified Copilot super-app shipped a **model picker** exposing Anthropic **Claude Opus 4.8** ([[opus-4-8]]) inside a Microsoft product — same week Microsoft reportedly cut internal Claude Code licenses. **MAI-Thinking-1 is available now via the Microsoft Frontier program** (GitHub Copilot subscription required) — limited availability, not broad GA. Sources: GMA News (Microsoft 'announced a sweeping slate of AI initiatives… a new in-house reasoning model'), AI_News_Digest / Marktechpost (MAI-Thinking-1 trained from scratch, top math/coding marks), plus pre-keynote @theinformation / @testingcatalog map confirmed. The reasoning model fulfils 'reasoning' in the pre-leaked coding/speech/transcription/reasoning/images lineup"
+  - ts: 2026-06-05
+    change: "The pre-leaked **coding** model in the lineup ships as **MAI Code 1 Flash** — Microsoft's own coding model inside GitHub Copilot, reported free across all Copilot tiers from 2026-06-05, with 256K context, ~60% fewer tokens on complex tasks, and 85.8% on Microsoft's adversarial coding benchmark; pitched as trained inside the Copilot production environment to defend Copilot vs Cursor/Claude Code. Spun out to its own per-model ticket [[microsoft-mai-code-1-flash]] (single hype-account source @cyrilXBT, no Microsoft primary in-window). This bundle stays the umbrella; the coding slot in the coding/speech/transcription/reasoning/images map is now filled. Status unchanged (confirmed)"
 ---
 
 A 2026-05-29 cluster of reports — The Information via several mainstream

@@ -31,8 +31,10 @@ sources:
   - "@Azure"
   - "@testingcatalog"
   - "@kimmonismus"
+  - "@WatcherGuru"
+  - "@cryptorover"
 created_at: 2026-05-28
-updated_at: 2026-06-03
+updated_at: 2026-06-05
 closed_at: null
 closed_reason: null
 history:
@@ -44,6 +46,8 @@ history:
     change: "Post-launch use signals (week 1): trending-news framing 'Anthropic's Claude Opus 4.8 Tops AI Index Over OpenAI's GPT-5.5' at ~19K post-count; @testingcatalog 2026-05-31 14:49 UTC endorses Opus 4.8 Max as 'best for writing at this moment'; Salesforce reportedly moved its entire dev org to Claude Code with no token limits (231-day migration cut to 13 days, 79% more PRs/dev per the-decoder). Adversarial framing: Cobi Gantz (Chapter CEO, @theinformation 2026-05-30 18:00 UTC) accuses Anthropic of 'Apple-playbook' pre-launch model degradation (single-source, no benchmark, no response); @kimmonismus 2026-05-31 02:11 UTC 'Opus 4.8 is a solid jump over Opus 4.7, GPT-5.5 xhigh still beats it by a pretty clear margin while being cheaper' (directional, not third-party eval). No primary @AnthropicAI / @darioamodei rebuttal in-window. No regression / rollback. Status remains released"
   - ts: 2026-06-03
     change: "Distribution + third-party eval signals. **Max thinking setting** now exposed in the Claude consumer app (first time available to @deredleritt3r 2026-06-03 04:18 UTC); on prinzbench, **Opus 4.8 (Max) scored 42/99 vs 25/99 for Opus 4.7 (Extended)** — second-highest among models not from OpenAI and not using multi-agent/parallel compute (Gemini 3.1 Pro still leads such models at 50/99). Separately, Opus 4.8 surfaced in **Microsoft's new Copilot model picker** at Build 2026 ([[microsoft-build-2026-models]]) — reportedly the same week Microsoft cut internal Claude Code licenses ('tool war and model peace at the same time'). Status remains released"
+  - ts: 2026-06-05
+    change: "Real-world capability event: security researcher Taylor Hornby used **Opus 4.8** to surface a ~4-year-old soundness (counterfeiting) bug in **Zcash's Orchard shielded pool** — a flaw that, if exploited, allowed unlimited undetectable counterfeit $ZEC. Discovered 2026-05-29, emergency-patched June 1–3 (Orchard pool briefly disabled), publicly disclosed June 5; $ZEC fell ~30–48% intraday and Zcash conceded it cannot cryptographically prove the supply was never abused. Widely amplified (Watcher.Guru ~345 likes, Crypto Rover ~478 likes) as an 'AI as protocol auditor' milestone — human review missed it for 4 years; ~1 day of AI-assisted review caught it. Capability signal only; status remains released, no model change"
 ---
 
 Claude Opus 4.8 is Anthropic's successor to
@@ -87,6 +91,19 @@ Per the schema, the Opus 4.7 ticket was closed 2026-05-19 with reason
 `released-and-aged`, and successor releases get their own ticket
 rather than reopening the prior one. The history on this ticket is the
 only place that captures the 4.7 → 4.8 transition.
+
+**Real-world capability signal (2026-06-05).** A security researcher
+(Taylor Hornby) used Opus 4.8 to find a ~4-year-old soundness bug in
+**Zcash's Orchard shielded pool** that would have allowed unlimited,
+undetectable counterfeit ZEC. The flaw sat undiscovered from the pool's
+May 2022 launch until 2026-05-29; Zcash disabled the affected pool and
+shipped an emergency fix (June 1–3) before going public June 5. $ZEC
+dropped sharply (~30–48% intraday) and — because the pool is private by
+design — the team could not cryptographically prove the bug was never
+exploited. The story dominated the day's signal as a marquee example of
+a frontier model doing security auditing that years of human review
+missed. This is logged as a capability data point on the released model,
+not a state change.
 
 **Transition triggers:**
 - ≥4 weeks past 2026-05-28 release with no successor → close with

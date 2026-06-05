@@ -12,7 +12,7 @@ status_note: |
   currently serves all Grok production traffic; heavy Cursor coding data
   added in supplementary training, positioned as a major upgrade for
   difficult coding tasks. Not yet publicly available.
-expected: "~2026-06 (2–3 weeks to public release per @elonmusk, 2026-05-25)"
+expected: "~mid-June 2026 (re-reported 'public release days away' / 'this month' as of 2026-06-05; originally 2–3 weeks per @elonmusk 2026-05-25)"
 labels:
   - frontier-model
   - coding
@@ -22,7 +22,7 @@ sources:
   - "@elonmusk"
   - "@ai_for_success"
 created_at: 2026-05-25
-updated_at: 2026-05-28
+updated_at: 2026-06-05
 closed_at: null
 closed_reason: null
 history:
@@ -30,6 +30,8 @@ history:
     change: "Created — @elonmusk announced Grok V9-Medium (1.5T) finished training, fine-tuning underway, RL in days, 2-3 weeks to public release; major coding upgrade over the 0.5T v8-small, trained with heavy Cursor data"
   - ts: 2026-05-28
     change: "Context: xAI shipped the Grok Build agentic coding CLI in general beta on 2026-05-25 (the same day as the V9-Medium training announcement), with the backing model branded `grok-build-0.1` — distinct from V9-Medium. Spun out as its own ticket: see [[xai-grok-build-2026-05]]. The V9-Medium 2-3 week window from 2026-05-25 still points to ~mid-June 2026 for public release; no new signal on benchmarks, pricing, or surface this cycle"
+  - ts: 2026-06-05
+    change: "Timing tightened (secondary): aggregator restatements (e.g. @GlobalWireLive) frame V9-Medium — 1.5T params, training complete, fine-tuning underway — as 'launching this month' / 'public release days away', consistent with the original ~mid-June window now that we're inside it. Attributed to Musk's prior announcement, no fresh xAI primary this cycle. Added context (single low-cred source, not separately tracked): Grok 4.3 cited at ~75% SWE-bench Verified (current production), and a larger **Grok 5** (~6T-param MoE) said to be 'actively training' on the Colossus 2 supercluster. Status stays confirmed; expected refreshed"
 ---
 
 xAI's next foundation model, **Grok V9-Medium**, was announced by Elon

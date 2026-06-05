@@ -3,32 +3,41 @@ slug: meta-hatch-muse-spark-2026-06
 title: Meta "Hatch" consumer AI agent + Muse Spark model — reported up to $199.99/mo tier
 company: Meta
 model: Muse Spark
-status: rumored
+status: in-testing
 status_note: |
-  The Information (relayed 2026-06-04 02:25 UTC) reports Meta is weighing
-  up to $199.99/mo for "Hatch," a consumer AI-agent product — a consumer
-  version of OpenClaw that builds tools/automations from plain-language
-  prompts — with a premium "Hatch Plus" tier. Hatch was reportedly built
-  using Claude in development but is expected to run on Meta's own Muse
-  Spark model at launch. Single-source (The Information via dev-circuit
-  relay); no Meta primary, no confirmed launch date or final pricing.
-expected: "Launch TBD; reported up to $199.99/mo, premium 'Hatch Plus' tier"
+  **Muse Spark corroborated as a real Meta model in private testing.** WSJ
+  reporting (relayed 2026-06-05) says Meta has repeatedly delayed the
+  **Muse Spark developer API** — no firm public date as of 2026-06-02,
+  ~2 months past Alexandr Wang's early-April "soon"; a Meta spokesperson
+  says it is being tested with select partners and is still expected
+  "later this month." Muse Spark is described as Meta's debut proprietary,
+  closed-source foundation model from Wang's Superintelligence Labs (TBD
+  Lab), already used internally to power WhatsApp/Instagram business
+  agents (model itself "done"; the API is the bottleneck). This adds a
+  second outlet (WSJ) beyond The Information, so the Muse Spark model
+  advances to in-testing / partial. The "Hatch" consumer-agent angle and
+  the up-to-$199.99/mo pricing remain single-source (The Information) and
+  unconfirmed.
+expected: "Muse Spark developer API expected 'later this month' (late June 2026, repeatedly slipped); Hatch launch + up-to-$199.99/mo pricing still TBD/unconfirmed"
 labels:
   - consumer-agent
   - pricing
   - rumor
   - muse-spark
-verification: unverified
+verification: partial
 sources:
   - "@theinformation"
   - https://x.com/JGidel4/status/2062360036190376378
+  - "@WSJ"
 created_at: 2026-06-04
-updated_at: 2026-06-04
+updated_at: 2026-06-05
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-04
     change: "Created — The Information (relayed @JGidel4 02:25 UTC) reports Meta weighing up to $199.99/mo for 'Hatch', a consumer AI-agent (consumer OpenClaw) that builds tools/automations from prompts, with a 'Hatch Plus' premium tier; reportedly developed with Claude but expected to run on Meta's own Muse Spark model at launch. Single-source, no Meta primary → rumored / unverified"
+  - ts: 2026-06-05
+    change: "Status rumored → in-testing, verification unverified → partial. WSJ reporting (relayed via aggregators 2026-06-05, citing a 2026-06-02 status) corroborates **Muse Spark** as Meta's debut proprietary closed-source foundation model (Superintelligence Labs / TBD Lab, led by Alexandr Wang), already in internal production for WhatsApp/Instagram business agents — the model is 'done', but its **developer API has been repeatedly delayed** (~2 months past Wang's early-April 'soon'). A Meta spokesperson says the API is in testing with select partners and is still expected 'later this month.' Real artifact in partner testing → in-testing; second outlet (WSJ) beyond The Information → partial. The Hatch consumer-agent product and up-to-$199.99/mo pricing remain single-source (The Information) and unconfirmed"
 ---
 
 **The Information** (relayed on 2026-06-04, 02:25 UTC) reports that Meta is

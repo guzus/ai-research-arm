@@ -27,7 +27,7 @@ sources:
   - "@techcrunch"
   - "@alexalbert__"
 created_at: 2026-04-12
-updated_at: 2026-05-29
+updated_at: 2026-06-05
 closed_at: null
 closed_reason: null
 history:
@@ -51,6 +51,8 @@ history:
     change: "Glasswing month-1 update (official @AnthropicAI, 2026-05-22 19:38 UTC): Anthropic + partners have found more than 10,000 high- or critical-severity vulnerabilities in essential software since the April launch, framed by Anthropic as a volume the software industry will need to adapt to. Separately on 2026-05-26 @alexalbert__ RTd @__alpoge__ checking whether Mythos can solve the Erdős unit-distance problem (the same problem OpenAI announced an internal-model breakthrough on May 20) — a third-party capability probe rather than an Anthropic claim, but on the same benchmark surface"
   - ts: 2026-05-29
     change: "Opus 4.8 launch coverage (2026-05-28) references Project Glasswing as continuing to test Claude Mythos Preview for cybersecurity applications, with broader availability hinted 'in the coming weeks' (per IT-Administrator and other launch-day write-ups). No primary @AnthropicAI confirmation of a Mythos public-release schedule — adjacent signal, gated-preview stance unchanged"
+  - ts: 2026-06-05
+    change: "Glasswing preview expansion (secondary): reports describe Anthropic extending Claude Mythos Preview access from the initial ~50 partners to **150+ organizations across 15 countries (incl. India)**, prioritizing critical sectors (power, water, healthcare, hardware) and partners where one exploit could affect 100M+ people; initial cohort said to have surfaced 10,000+ high/critical flaws (consistent with the 2026-05-22 official month-1 figure). Pricing restated at **$25 / $125 per MTok**. Separately, a new Anthropic model name **`claude-oceanus-v1-p`** reportedly appeared for red-team access — a possible Mythos-adjacent successor, spun out to its own ticket [[anthropic-claude-oceanus-v1]]. Still no public-release schedule; gated stance unchanged, status remains in-testing"
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a
