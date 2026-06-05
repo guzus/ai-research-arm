@@ -41,19 +41,32 @@ function stripMarkdown(value) {
     .trim();
 }
 
+function markdownLinks(value) {
+  const links = [];
+  const re = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g;
+  for (const match of value.matchAll(re)) {
+    links.push({ label: stripMarkdown(match[1]), url: match[2] });
+  }
+  return links;
+}
+
 function section(name) {
   const pattern = new RegExp(`^##\\s+${name}\\s*$([\\s\\S]*?)(?=^##\\s+|\\z)`, "mi");
   return markdown.match(pattern)?.[1]?.trim() ?? "";
 }
 
-function bullets(text, limit) {
+function bulletRecords(text, limit) {
   return text
     .split("\n")
     .map((line) => line.trim())
     .filter((line) => /^([-*]|\d+\.)\s+/.test(line))
-    .map(stripMarkdown)
-    .filter(Boolean)
+    .map((raw) => ({ raw, text: stripMarkdown(raw), links: markdownLinks(raw) }))
+    .filter((item) => item.text)
     .slice(0, limit);
+}
+
+function bullets(text, limit) {
+  return bulletRecords(text, limit).map((item) => item.text);
 }
 
 function paragraphs(text, limit) {
@@ -65,17 +78,131 @@ function paragraphs(text, limit) {
 }
 
 const executive = bullets(section("Executive Summary"), 5);
+const executiveRecords = bulletRecords(section("Executive Summary"), 5);
 const breaking = bullets(section("Breaking News"), 3);
+const breakingRecords = bulletRecords(section("Breaking News"), 3);
 const models = bullets(section("Model Releases & Updates"), 3);
+const modelRecords = bulletRecords(section("Model Releases & Updates"), 3);
 const research = bullets(section("Research Highlights"), 5);
+const researchRecords = bulletRecords(section("Research Highlights"), 5);
 const business = bullets(section("Funding & Business"), 4);
+const businessRecords = bulletRecords(section("Funding & Business"), 4);
 const policy = bullets(section("Policy & Regulation"), 3);
+const policyRecords = bulletRecords(section("Policy & Regulation"), 3);
 const quoteBlock = markdown.match(/## Quote of the Day\s+>\s*([\s\S]*?)(?=\n---|\n##\s+|$)/i)?.[1] ?? "";
 const quote = stripMarkdown(quoteBlock.replace(/^>\s?/gm, " "));
 
 const lead = executive[0] || paragraphs(markdown, 1)[0] || "Today's AI digest is ready.";
 const leadDeck = executive.slice(1, 4);
 const issue = Math.floor((new Date(`${date}T00:00:00Z`) - new Date(`${date.slice(0, 4)}-01-01T00:00:00Z`)) / 86400000) + 1;
+
+function uniqueSourceLinks() {
+  const records = [
+    ...executiveRecords,
+    ...breakingRecords,
+    ...modelRecords,
+    ...researchRecords,
+    ...businessRecords,
+    ...policyRecords,
+  ];
+  const seen = new Set();
+  const links = [];
+  for (const record of records) {
+    for (const link of record.links) {
+      if (seen.has(link.url)) continue;
+      seen.add(link.url);
+      links.push({ ...link, story: record.text });
+    }
+  }
+  return links;
+}
+
+function firstMetaContent(htmlText, names) {
+  for (const name of names) {
+    const patterns = [
+      new RegExp(`<meta[^>]+property=["']${name}["'][^>]+content=["']([^"']+)["'][^>]*>`, "i"),
+      new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+property=["']${name}["'][^>]*>`, "i"),
+      new RegExp(`<meta[^>]+name=["']${name}["'][^>]+content=["']([^"']+)["'][^>]*>`, "i"),
+      new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+name=["']${name}["'][^>]*>`, "i"),
+    ];
+    for (const pattern of patterns) {
+      const value = htmlText.match(pattern)?.[1];
+      if (value) return value.replaceAll("&amp;", "&");
+    }
+  }
+  return "";
+}
+
+function absoluteUrl(candidate, baseUrl) {
+  try {
+    return new URL(candidate, baseUrl).toString();
+  } catch {
+    return "";
+  }
+}
+
+async function fetchWithTimeout(url, options = {}, timeoutMs = 8000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function imageFromPage(link) {
+  try {
+    const pageResponse = await fetchWithTimeout(link.url, {
+      headers: {
+        "user-agent": "ai-research-arm-front-page/1.0",
+        accept: "text/html,application/xhtml+xml",
+      },
+      redirect: "follow",
+    });
+    if (!pageResponse.ok) return null;
+    const htmlText = (await pageResponse.text()).slice(0, 250000);
+    const imageUrl = absoluteUrl(
+      firstMetaContent(htmlText, ["og:image", "twitter:image", "twitter:image:src"]),
+      pageResponse.url || link.url,
+    );
+    if (!imageUrl || imageUrl.endsWith(".svg")) return null;
+
+    const imageResponse = await fetchWithTimeout(imageUrl, {
+      headers: {
+        "user-agent": "ai-research-arm-front-page/1.0",
+        accept: "image/avif,image/webp,image/png,image/jpeg,image/*",
+      },
+      redirect: "follow",
+    });
+    if (!imageResponse.ok) return null;
+    const contentType = imageResponse.headers.get("content-type")?.split(";")[0]?.trim() || "";
+    if (!/^image\/(png|jpe?g|webp|avif|gif)$/.test(contentType)) return null;
+    const contentLength = Number(imageResponse.headers.get("content-length") || "0");
+    if (contentLength > 2500000) return null;
+    const bytes = Buffer.from(await imageResponse.arrayBuffer());
+    if (bytes.length > 2500000) return null;
+    return {
+      src: `data:${contentType};base64,${bytes.toString("base64")}`,
+      imageUrl,
+      alt: link.label || link.story,
+      caption: link.story,
+      sourceUrl: link.url,
+    };
+  } catch {
+    return null;
+  }
+}
+
+async function resolveImages(limit = 3) {
+  const images = [];
+  for (const link of uniqueSourceLinks()) {
+    const image = await imageFromPage(link);
+    if (image) images.push(image);
+    if (images.length >= limit) break;
+  }
+  return images;
+}
 
 function storyList(items) {
   return items.map((item) => `<p>${escapeHtml(item)}</p>`).join("\n");
@@ -97,7 +224,7 @@ function yamlItems(items, mapper) {
   return items.map(mapper).join("\n");
 }
 
-function renderAraSource() {
+function renderAraSource(images = []) {
   const leadBody = leadDeck.length
     ? leadDeck.map((item) => `${item}`).join("\n\n")
     : "No executive-summary detail was available for this edition.";
@@ -132,6 +259,15 @@ function renderAraSource() {
     leadBody,
     ":::",
     "",
+    ...(
+      images[0]
+        ? [
+            `:::figure(src=${directiveAttr(images[0].imageUrl)}, alt=${directiveAttr(images[0].alt)}, caption=${directiveAttr(images[0].caption)}, source-url=${directiveAttr(images[0].sourceUrl)}, variant=wide)`,
+            ":::",
+            "",
+          ]
+        : []
+    ),
     `:::briefs(id="briefs-breaking-policy", title="Breaking & Policy", columns=2)`,
     yamlItems(breakingItems, (item, index) => {
       const tag = index < breaking.length ? "Breaking" : "Policy";
@@ -195,7 +331,15 @@ function svgText(x, y, lines, options = {}) {
   return `<text y="${y}" text-anchor="${anchor}" style="${style}">${tspans}</text>`;
 }
 
-function renderSvg() {
+function svgImage(image, x, y, width, height) {
+  return [
+    `<clipPath id="lead-image-clip"><rect x="${x}" y="${y}" width="${width}" height="${height}" rx="4"/></clipPath>`,
+    `<image href="${image.src}" x="${x}" y="${y}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid slice" clip-path="url(#lead-image-clip)"/>`,
+    `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="none" stroke="#2b251d" stroke-width="2"/>`,
+  ].join("\n");
+}
+
+function renderSvg(images = []) {
   const parts = [];
   parts.push(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">`);
   parts.push(`<rect width="1200" height="1600" fill="#fff8ed"/>`);
@@ -227,6 +371,14 @@ function renderSvg() {
     const lines = wrapText(item, 56, 4);
     parts.push(svgText(62, y, lines, { size: 22, lineHeight: 29 }));
     y += lines.length * 29 + 14;
+  }
+  if (images[0]) {
+    parts.push(svgImage(images[0], 62, 690, 650, 210));
+    parts.push(svgText(62, 924, wrapText(images[0].alt, 72, 1), {
+      size: 13,
+      weight: "700",
+      family: "Arial, sans-serif",
+    }));
   }
 
   parts.push(`<line x1="760" x2="760" y1="282" y2="900" stroke="#2b251d" stroke-width="2"/>`);
@@ -285,7 +437,8 @@ function renderSvg() {
 
 if (output.endsWith(".png")) {
   const { Resvg } = await import("/tmp/node_modules/@resvg/resvg-js/index.js");
-  const png = new Resvg(renderSvg(), {
+  const images = await resolveImages(1);
+  const png = new Resvg(renderSvg(images), {
     fitTo: { mode: "width", value: 2400 },
     font: {
       fontFiles: [],
@@ -299,10 +452,13 @@ if (output.endsWith(".png")) {
 }
 
 if (output.endsWith(".ara.md")) {
-  await writeFile(output, renderAraSource(), "utf8");
+  const images = await resolveImages(3);
+  await writeFile(output, renderAraSource(images), "utf8");
   console.log(`Wrote ${output}`);
   process.exit(0);
 }
+
+const htmlImages = await resolveImages(1);
 
 const html = `<!doctype html>
 <html lang="en">
@@ -370,6 +526,24 @@ const html = `<!doctype html>
     font-size: 76px;
     line-height: .82;
     padding: 7px 9px 0 0;
+  }
+  .lead-image {
+    float: right;
+    width: 310px;
+    margin: 2px 0 14px 20px;
+    padding: 6px;
+    border: 2px solid #2b251d;
+    background: #fffaf2;
+  }
+  .lead-image img {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+  }
+  .lead-image figcaption {
+    margin-top: 6px;
+    font: 700 12px/1.25 Arial, sans-serif;
   }
   .sidebar {
     border-left: 2px solid #2b251d;
@@ -442,6 +616,7 @@ const html = `<!doctype html>
     <section class="layout">
       <article class="lead">
         <h2 class="headline">${escapeHtml(lead)}</h2>
+        ${htmlImages[0] ? `<figure class="lead-image"><img src="${htmlImages[0].src}" alt="${escapeHtml(htmlImages[0].alt)}"><figcaption>${escapeHtml(htmlImages[0].alt)}</figcaption></figure>` : ""}
         ${storyList(leadDeck)}
       </article>
       <aside class="sidebar">
