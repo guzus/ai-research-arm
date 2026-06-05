@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-05 10:43 UTC
+
+CYCLE: Anthropic's self-improvement data goes mainstream as a WSJ "global pause" story; a real npm worm starts stealing AI API keys.
+
+TOP STORIES:
+• WSJ mainstreams Anthropic's RSI disclosure as a call for a "global pause" on AI; no new first-party post, IPO-positioning skeptics get louder [⚠]
+• "IronWorm" npm supply-chain worm harvests OpenAI/Anthropic/AWS keys via a Rust infostealer + eBPF rootkit; JFrog + outlets confirm [✓]
+• Anthropic IPO chatter turns specific ("confidential S-1 filed June 1, $47B run-rate") but from one low-cred bot account [unverified]
+
+WATCH: Any real Anthropic S-1/banker confirmation behind the ~$1T IPO chatter; JFrog's full IronWorm package list.
+
+Full update on GitHub.

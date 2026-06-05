@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "WSJ MAINSTREAMS ANTHROPIC SELF-IMPROVEMENT DATA AS CALL FOR 'GLOBAL PAUSE' ON AI DEVELOPMENT",
+    "source": "@AShmueil",
+    "url": "https://x.com/AShmueil/status/2062646456264355841",
+    "category": "policy"
+  },
+  {
+    "headline": "'IRONWORM' NPM WORM HARVESTS OPENAI, ANTHROPIC AND AWS API KEYS VIA RUST INFOSTEALER + EBPF ROOTKIT",
+    "source": "@cyber__razz",
+    "url": "https://x.com/cyber__razz/status/2062617083846754526",
+    "category": "infra"
+  },
+  {
+    "headline": "ANTHROPIC IPO CHATTER TURNS SPECIFIC: 'CONFIDENTIAL S-1 FILED JUNE 1' AT ~$1T — SINGLE LOW-CRED SOURCE, UNVERIFIED",
+    "source": "@bulldoghill",
+    "url": "https://x.com/bulldoghill/status/2062817975921451338",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI SAYS ONE OF ITS MODELS FOUND A COUNTEREXAMPLE TO AN 80-YEAR-OLD ERDOS CONJECTURE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2062630454537424930",
+    "category": "research"
+  }
+]
