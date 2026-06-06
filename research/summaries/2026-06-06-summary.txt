@@ -1,0 +1,13 @@
+AI News - 2026-06-06
+
+TOP STORIES:
+• Anthropic, days before its IPO, warns AI is nearing "recursive self-improvement" and calls for a coordinated, verifiable multi-lab pause
+• OpenAI rolls out "Dreaming V3" — ChatGPT memory that synthesizes in the background across years of chats, ~5x cheaper to serve, now reaching Free users
+• Helion (Altman-backed fusion) raises $465M Series G at $15.5B, led by Thrive, to build a fusion power plant for Microsoft
+
+KEY NUMBERS:
+• Anthropic: >80% of its own merged code now written by Claude; task ability doubling ~every 4 months; ~$965B valuation
+• Dreaming V3: ~5x less compute to serve memory
+• Helion: $465M raised, $15.5B valuation, ~$1.5B total; Polaris exceeded 150M °C
+
+Full report on GitHub.
