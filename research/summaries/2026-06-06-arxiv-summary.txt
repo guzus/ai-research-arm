@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-06
+
+TOP 5 PAPERS:
+• Pretraining Recurrent Networks without Recurrence (Kumar & Isola, MIT) - train RNNs without BPTT, restoring parallelism + long-range credit
+• You Only Index Once (Microsoft) - shared cross-layer sparse-attention routing cuts long-context reasoning cost
+• Latent Reasoning with Normalizing Flows - move chain-of-thought into a continuous latent space
+• MLEvolve - self-evolving LLM agent for automated ML algorithm discovery
+• Reward-Hack Activations to Agentic Risk States - mechanistic monitors flag agent reward hacking from internal state
+
+CATEGORIES: LMs/NLP 7, CV/Multimodal 6, Agents/Reasoning 7, Safety/Alignment 6, Other 6
+
+Full report on GitHub.
