@@ -1,13 +1,14 @@
 AI News - 2026-06-06
 
 TOP STORIES:
-• Anthropic, days before its IPO, warns AI is nearing "recursive self-improvement" and calls for a coordinated, verifiable multi-lab pause
-• OpenAI rolls out "Dreaming V3" — ChatGPT memory that synthesizes in the background across years of chats, ~5x cheaper to serve, now reaching Free users
-• Helion (Altman-backed fusion) raises $465M Series G at $15.5B, led by Thrive, to build a fusion power plant for Microsoft
+• Google to pay SpaceX ~$920M/month (~$32B total) to rent ~110k NVIDIA GPUs at the merged xAI/Colossus sites — 2nd hyperscaler offtake after Anthropic's ~$1.25B/month
+• Anthropic, days before its IPO, warns AI nears "recursive self-improvement" and calls for a coordinated, verifiable multi-lab pause
+• OpenAI rolls out "Dreaming V3" — ChatGPT memory that synthesizes in the background across years of chats, ~5x cheaper to serve
+• Helion (Altman-backed fusion) raises $465M at $15.5B to build a fusion plant for Microsoft
 
 KEY NUMBERS:
-• Anthropic: >80% of its own merged code now written by Claude; task ability doubling ~every 4 months; ~$965B valuation
-• Dreaming V3: ~5x less compute to serve memory
-• Helion: $465M raised, $15.5B valuation, ~$1.5B total; Polaris exceeded 150M °C
+• Google–SpaceX: ~$920M/mo, ~$32B total, ~110k GPUs, Oct 2026 → June 2029
+• Anthropic: >80% of own merged code now Claude-written; ~$965B valuation
+• Helion: $465M raised, $15.5B valuation
 
 Full report on GitHub.
