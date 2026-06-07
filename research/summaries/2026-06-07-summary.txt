@@ -1,0 +1,14 @@
+AI News - 2026-06-07
+
+Quiet consolidation weekend - big June 5-6 stories carry over.
+
+TOP STORIES:
+• SpaceX IPO hardens: fixed $135/share, ~$1.77T valuation, ~$75B raise (largest ever); roadshow launched early June 4, prices June 11, trades June 12 on Nasdaq (SPCX)
+• Anthropic adds Services Track + Claude Partner Hub to the Claude Partner Network (June 6)
+• Gemini 3.5 Pro nears in-month GA (2M-token context, Deep Think); GPT-5.6 / Mythos 1 still pending - no frontier model shipped in-window
+
+KEY NUMBERS:
+• SpaceX: $135/share, ~556.6M shares, ~$75B raise, ~$1.77T valuation, ~$150B demand, ~30% retail
+• Next catalyst: Apple WWDC keynote June 8 (Gemini-powered Siri)
+
+Full report on GitHub.
