@@ -8576,5 +8576,47 @@
     "headline": "TRUMP ADMIN STILL 'DISCUSSING' US EQUITY STAKE IN OPENAI 'SO THE AMERICAN PEOPLE CAN BENEFIT' \u2014 NO TERMS ON RECORD",
     "source": "@LasinduLive",
     "url": "https://x.com/LasinduLive/status/2063482688074563768"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-07 10:12 UTC",
+    "headline": "OPENAI REORGANIZING AROUND CODEX \u2014 5M WEEKLY USERS, FOLDING IT INTO CHATGPT TO RACE ANTHROPIC ON CODING AGENTS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2063274751527731441"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-07 10:12 UTC",
+    "headline": "OPENAI CODEX ENTERPRISE REVENUE UP ~50% WEEK-OVER-WEEK, NOW MERGING INTO CHATGPT AND ATLAS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2063282280362037468"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-07 10:12 UTC",
+    "headline": "SPACEX/xAI IS THE COMPUTE SELLER \u2014 ANTHROPIC RENTING ITS CAPACITY FOR ~$1.25B/MONTH, THE INFORMATION CONFIRMS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2063244564937183235"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-07 10:12 UTC",
+    "headline": "ELON NOW PULLING $2B+/MONTH IN COMPUTE-AS-A-SERVICE: GOOGLE ~$920M/MO + ANTHROPIC ~$1.25B/MO",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2063278695763329352"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-07 10:12 UTC",
+    "headline": "CHATGPT CAN NOW REFERENCE YOUR SYNCED GMAIL FOR PERSONALIZED RESPONSES, ROLLING OUT TO MORE ACCOUNTS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2063532702356160962"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-07 10:12 UTC",
+    "headline": "META WEIGHS $200/MONTH 'HATCH' AI AGENT TO BUILD TOOLS AND AUTOMATE WEB TASKS \u2014 INTERNAL DOCS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2062957697436123636"
   }
 ]
