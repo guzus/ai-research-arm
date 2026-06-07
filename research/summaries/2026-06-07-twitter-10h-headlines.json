@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI REORGANIZING AROUND CODEX — 5M WEEKLY USERS, FOLDING IT INTO CHATGPT TO RACE ANTHROPIC ON CODING AGENTS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2063274751527731441",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI CODEX ENTERPRISE REVENUE UP ~50% WEEK-OVER-WEEK, NOW MERGING INTO CHATGPT AND ATLAS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2063282280362037468",
+    "category": "business"
+  },
+  {
+    "headline": "SPACEX/xAI IS THE COMPUTE SELLER — ANTHROPIC RENTING ITS CAPACITY FOR ~$1.25B/MONTH, THE INFORMATION CONFIRMS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2063244564937183235",
+    "category": "infra"
+  },
+  {
+    "headline": "ELON NOW PULLING $2B+/MONTH IN COMPUTE-AS-A-SERVICE: GOOGLE ~$920M/MO + ANTHROPIC ~$1.25B/MO",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2063278695763329352",
+    "category": "infra"
+  },
+  {
+    "headline": "CHATGPT CAN NOW REFERENCE YOUR SYNCED GMAIL FOR PERSONALIZED RESPONSES, ROLLING OUT TO MORE ACCOUNTS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2063532702356160962",
+    "category": "model"
+  },
+  {
+    "headline": "META WEIGHS $200/MONTH 'HATCH' AI AGENT TO BUILD TOOLS AND AUTOMATE WEB TASKS — INTERNAL DOCS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2062957697436123636",
+    "category": "business"
+  }
+]

@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-06-07 10:12 UTC
+
+CYCLE: Quiet on launches; the AI-compute money map sharpens.
+
+TOP STORIES:
+• OpenAI reorganizing around Codex (5M weekly users, enterprise rev +50% w/w), folding it into ChatGPT to race Anthropic on coding agents — The Information ✓
+• Google–SpaceX deal direction resolved: SpaceX/xAI is the compute SELLER; Anthropic separately pays ~$1.25B/mo, on top of Google's reported ~$920M/mo — The Information ⚠ (Google leg still aggregator-level)
+
+ALSO: ChatGPT now references synced Gmail for personalization (@testingcatalog); Switch in talks at $50B+, Helion at $15.5B; Meta weighs $200/mo "Hatch" agent.
+
+WATCH: OpenAI on-record confirmation of a Codex/ChatGPT merge or a ship date.
+
+Full update on GitHub.
