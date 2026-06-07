@@ -24,12 +24,14 @@ sources:
   - "@testingcatalog"
   - "@WesRoth"
 created_at: 2026-06-05
-updated_at: 2026-06-05
+updated_at: 2026-06-07
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-05
     change: "Created — a new Anthropic model name `claude-oceanus-v1-p` reportedly surfaced for red-team access (@WesRoth 2026-06-05 relaying @testingcatalog 2026-06-04). Possible Mythos-adjacent next-gen model in pre-release testing ([[mythos-public-release]]). Single-source name-string leak, no Anthropic primary → rumored / unverified"
+  - ts: 2026-06-07
+    change: "Skeptic-grade follow-on, no advance. A claim circulated (@iamalijandro and similar, 2026-06-06/07) that a red-team tester 'exfiltrated' the unreleased `claude-oceanus-v1-p` by selling third-party API access. Single low-credibility source, no primary evidence, near-zero engagement — logged but NOT treated as fact. Status stays rumored / unverified; the only solid datum remains the red-team name-string itself"
 ---
 
 A new Anthropic model identifier — **`claude-oceanus-v1-p`** — was

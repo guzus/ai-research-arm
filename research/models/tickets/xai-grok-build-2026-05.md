@@ -29,8 +29,9 @@ verification: confirmed
 sources:
   - "@xai"
   - "@grok"
+  - "@elonmusk"
 created_at: 2026-05-28
-updated_at: 2026-05-30
+updated_at: 2026-06-07
 closed_at: null
 closed_reason: null
 history:
@@ -40,6 +41,8 @@ history:
     change: "Grok Build 0.2.7 point release (@xai, 2026-05-28 20:55 UTC): adds /usage and /login slash commands, shared terminals across subagents, and improved image understanding. First post-launch capability bump — incremental, not a model swap"
   - ts: 2026-05-30
     change: "grok-build-0.1 launched on the xAI API in public beta (primary @xai, 2026-05-29 16:06 UTC) at $1/m input + $2/m output, framed as extremely cost-effective. Distribution expanded to OpenRouter, Vercel AI Gateway, Cursor, Hermes Agent, OpenClaw, Kilo Code, and OpenCode — the model that powers the Grok Build CLI is now accessible to any developer through the standard third-party agentic-harness ecosystem. Lands the same week as OpenAI's Codex platform Windows push (see [[openai-codex-platform-2026-05]])"
+  - ts: 2026-06-07
+    change: "Maintenance: Elon Musk posted (2026-06-07, ~3.4K likes) 'Grep timeout issue fixed in latest Grok Build' — an incremental bug-fix to the live CLI, not a model swap or new release. Status stays released. (Separately, reporting that xAI trained its coding models on Claude outputs and kept going after Anthropic cut access is tracked on its own ticket [[xai-claude-training-cutoff-2026-06]])"
 ---
 
 **Grok Build** is xAI's agentic coding CLI + developer-platform surface,

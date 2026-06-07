@@ -29,8 +29,9 @@ sources:
   - "@theinformation"
   - https://x.com/JGidel4/status/2062360036190376378
   - "@WSJ"
+  - https://the-decoder.com/metas-hatch-ai-agent-could-cost-up-to-200-a-month-and-marks-its-first-paid-ai-product/
 created_at: 2026-06-04
-updated_at: 2026-06-05
+updated_at: 2026-06-07
 closed_at: null
 closed_reason: null
 history:
@@ -38,6 +39,8 @@ history:
     change: "Created — The Information (relayed @JGidel4 02:25 UTC) reports Meta weighing up to $199.99/mo for 'Hatch', a consumer AI-agent (consumer OpenClaw) that builds tools/automations from prompts, with a 'Hatch Plus' premium tier; reportedly developed with Claude but expected to run on Meta's own Muse Spark model at launch. Single-source, no Meta primary → rumored / unverified"
   - ts: 2026-06-05
     change: "Status rumored → in-testing, verification unverified → partial. WSJ reporting (relayed via aggregators 2026-06-05, citing a 2026-06-02 status) corroborates **Muse Spark** as Meta's debut proprietary closed-source foundation model (Superintelligence Labs / TBD Lab, led by Alexandr Wang), already in internal production for WhatsApp/Instagram business agents — the model is 'done', but its **developer API has been repeatedly delayed** (~2 months past Wang's early-April 'soon'). A Meta spokesperson says the API is in testing with select partners and is still expected 'later this month.' Real artifact in partner testing → in-testing; second outlet (WSJ) beyond The Information → partial. The Hatch consumer-agent product and up-to-$199.99/mo pricing remain single-source (The Information) and unconfirmed"
+  - ts: 2026-06-07
+    change: "The Decoder (2026-06-06) published a full writeup framing **Hatch** as **Meta's first paid AI product** at **up to $200/mo**: users describe what they need in plain language and Hatch builds working tools, schedules appointments, or sends emails. Second independent outlet on the Hatch consumer-agent angle (beyond The Information), reinforcing the pricing band; still no Meta primary on a launch date and the Muse Spark backend is unconfirmed. Status stays in-testing / partial"
 ---
 
 **The Information** (relayed on 2026-06-04, 02:25 UTC) reports that Meta is
