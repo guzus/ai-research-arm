@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-07
+
+TOP 5 PAPERS:
+• Goedel-Architect: blueprint-based Lean prover hits 100% MiniF2F, 88.8% PutnamBench, 4/6 IMO 2025 (open-source, 500x cheaper)
+• You Only Index Once: cross-layer shared routing index gives 7.6x decode speedup at 128K context
+• Pretraining Recurrent Networks without Recurrence: Supervised Memory Training beats BPTT, fully time-parallel (MIT)
+• MLEvolve: self-evolving multi-agent system sets SOTA on MLE-Bench in half the time budget
+• Latent Reasoning with Normalizing Flows: continuous-thought CoT with exact likelihoods + autoregressive decoding
+
+CATEGORIES: cs.CL, cs.LG, cs.AI, cs.CV, cs.NE (highlights span theorem proving, attention efficiency, RNN training, agents, latent reasoning)
+
+Full report on GitHub.
