@@ -25,12 +25,14 @@ sources:
   - https://www.ft.com/
   - "@Polymarket"
 created_at: 2026-06-07
-updated_at: 2026-06-07
+updated_at: 2026-06-08
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-07
     change: "Created — FT report (Jun 6–7, 2026) that OpenAI plots its biggest ChatGPT overhaul since launch, recasting it into an IPO-ready 'super app' that folds coding tools + AI agents into higher-margin products for the ~$850bn company. Single-origin FT, relayed by Reuters / @Polymarket; no OpenAI confirmation, feature list, or ship date → rumored / partial"
+  - ts: 2026-06-08
+    change: "Detail + corroboration (still FT-origin). A Chinese-community AI digest (@dotey via @paramiao, 2026-06-08) relays the same FT report with a blunt internal-exec quote — **'Chat is dead'** — and a concrete integration list for the 'super app': **Codex, AI agents, image generation, and third-party apps (Canva, Booking)**. Business rationale restated: migrate users from low-margin free chat to higher-margin enterprise tools to tell a platformization story ahead of the IPO. Adds texture but no independent confirmation — still single-origin FT, no OpenAI on-record statement or ship date; status stays rumored / partial"
 ---
 
 The **Financial Times** reported (Jun 6–7, 2026) that OpenAI is preparing the

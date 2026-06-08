@@ -20,12 +20,14 @@ sources:
   - "@GoogleDeepMind"
   - "@demishassabis"
 created_at: 2026-05-20
-updated_at: 2026-05-20
+updated_at: 2026-06-08
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-05-20
     change: "Created — Google confirmed at I/O 2026 (official @GoogleDeepMind) that Gemini 3.5 Pro ships next month, the Pro tier of the 3.5 family unveiled with 3.5 Flash; reported in internal use already"
+  - ts: 2026-06-08
+    change: "Launch-imminence chatter inside the promised June window (the 'next month' commitment is now in-month). Gemini API lead @OfficialLoganK posted a 'bullish on Gemini' teaser (2026-06-08 03:06 UTC, ~1,069 likes / 219 replies), widely read as a pre-launch tell; @haider1 follows (2026-06-08 07:25 UTC, ~30 likes) with 'Gemini 3.5 Pro is probably close to launch,' wishing for better planning/orchestration and codebase tool-use. Semi-primary teaser + community read — still **no public artifact, API, or pricing**, so status stays confirmed (not yet in-testing); verification confirmed"
 ---
 
 At Google I/O 2026, Google revealed the **Gemini 3.5** family. The first

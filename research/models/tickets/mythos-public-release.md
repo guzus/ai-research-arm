@@ -28,7 +28,7 @@ sources:
   - "@alexalbert__"
   - https://the-decoder.com/anthropics-mythos-model-is-reportedly-powering-nsa-offensive-cyber-ops-against-china-and-iran/
 created_at: 2026-04-12
-updated_at: 2026-06-07
+updated_at: 2026-06-08
 closed_at: null
 closed_reason: null
 history:
@@ -56,6 +56,8 @@ history:
     change: "Glasswing preview expansion (secondary): reports describe Anthropic extending Claude Mythos Preview access from the initial ~50 partners to **150+ organizations across 15 countries (incl. India)**, prioritizing critical sectors (power, water, healthcare, hardware) and partners where one exploit could affect 100M+ people; initial cohort said to have surfaced 10,000+ high/critical flaws (consistent with the 2026-05-22 official month-1 figure). Pricing restated at **$25 / $125 per MTok**. Separately, a new Anthropic model name **`claude-oceanus-v1-p`** reportedly appeared for red-team access — a possible Mythos-adjacent successor, spun out to its own ticket [[anthropic-claude-oceanus-v1]]. Still no public-release schedule; gated stance unchanged, status remains in-testing"
   - ts: 2026-06-07
     change: "New deployment + leak signal, gated stance unchanged. The Decoder (2026-06-05) reports **Mythos is powering NSA offensive cyber ops against China and Iran**, with ~6 Anthropic engineers stationed at the NSA adapting the model — a national-security application angle for the gated preview (secondary, no Anthropic primary). MIT Tech Review's 'the Meta hack shows there's more to AI security than Mythos' (2026-06-05) keeps Mythos as the reference point in the AI-security discourse. This-cycle X leak chatter stayed rumor-grade: a `claude-mythos-5` slug reportedly surfaced in Dev Mode (floated as a fourth class above Opus), plus a 'too dangerous to release' branding-critique thread and unsourced 'Apple + 150+ orgs, public in weeks' hype — no Anthropic primary, held to skeptic-grade. Status remains in-testing / confirmed"
+  - ts: 2026-06-08
+    change: "Mythos-5 rebrand rumor persists (skeptic-grade, no new corroboration). Low-credibility single source (@ssict / Saudi ICT Shopper News, 2026-06-08 07:33 UTC) claims **'Claude Mythos 5' will be the official new name for Anthropic's next flagship, dropping the Opus brand entirely** — framed against a purported 'June 16 IPO filing.' The IPO-date claim garbles the already-confirmed 2026-06-01 confidential S-1 ([[anthropic-ipo-2026-06]]), undercutting the source's reliability. Restates the 2026-06-07 `claude-mythos-5` Dev-Mode slug chatter without adding a primary source. No @AnthropicAI confirmation; gated-preview stance and status unchanged (in-testing / confirmed)"
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a

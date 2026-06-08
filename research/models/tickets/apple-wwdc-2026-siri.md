@@ -41,7 +41,7 @@ sources:
   - https://www.theverge.com/tech/944245/apple-wwdc-2026-ai-siri-gemini
   - https://techcrunch.com/2026/06/06/what-to-expect-from-wwdc-2026-siris-highly-anticipated-revamp-and-apple-intelligence-updates/
 created_at: 2026-06-01
-updated_at: 2026-06-07
+updated_at: 2026-06-08
 closed_at: null
 closed_reason: null
 history:
@@ -49,6 +49,8 @@ history:
     change: "Created — The Information's WWDC preview (paywalled, relayed by @kimmonismus 2026-05-31 12:12 UTC, ~76 likes): Apple's on-device Siri runs distilled Gemini locally; heavier queries route to Google Cloud via NVIDIA confidential-compute, not Apple's Private Cloud Compute (PCC brand stays). Apple reportedly scouting Liquid AI for distillation help. @theinformation's own enterprise framing of the on-device pivot 16:00 + 20:00 UTC the same day corroborates. Kelsey Peterson defection to OpenAI 2026-05-31 23:59 UTC (Gurman scoop, ~656 likes) sets the talent vector. WWDC 2026 keynote confirmed 2026-06-08; Apple AI Glasses pushed to late 2027, Vision Air to 2029 (Gurman via @9to5mac, @t0nAr1sm)"
   - ts: 2026-06-07
     change: "Pre-keynote corroboration in primary tech press: The Verge 'Here comes new Siri again' (2026-06-06) and TechCrunch's WWDC-2026 preview (2026-06-06) both frame Apple as set to reintroduce a Gemini-assisted Siri with Apple Intelligence updates, consistent with the distilled-Gemini reporting. Keynote is **tomorrow (2026-06-08)** — the on-stage architecture will confirm or contradict the routing/PCC detail. Status stays rumored / partial pending the keynote"
+  - ts: 2026-06-08
+    change: "Keynote day (WWDC 2026, 1pm PT today). Pre-keynote preview relay (Gurman PowerOn newsletter, via @dlimeng192048 08:01 UTC) restates the architecture and adds detail: Apple to launch a **standalone AI-assistant app** capable of competing with ChatGPT (chatbot-style interaction + generative AI image editing), with Siri's underlying technical stack reportedly **replaced by Google's Gemini model on Google Cloud infrastructure**; iOS 27 / macOS 27 / watchOS 27 / visionOS 27 unveiled simultaneously; framed as Apple's largest-ever Siri/AI update and **Tim Cook's last major product unveiling before retirement**. Org backdrop: the internal AI team once nicknamed 'AIMLess', a 2025 crisis meeting after Apple Intelligence 1.0 failed, Mike Rockwell now over Siri, Craig Federighi over AI strategy, Amar Subramanya leading model research, John Giannandrea departed this year. Still **pre-stage** — no on-record Apple confirmation yet; status stays rumored / partial pending the actual keynote later today, which will confirm (→ confirmed/released) or contradict (→ closed:disproved + successor) the Gemini routing detail"
 ---
 
 **Apple's WWDC 2026 Siri rebuild** has now been previewed across two
