@@ -11,10 +11,10 @@ name: Generative Research
 #
 # Two backends, mutually exclusive at runtime:
 #   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-opus-4-7).
-#   * deepseek — same action, but redirected to DeepSeek's Anthropic-compatible
+#   * deepseek — same action, but redirected to Fireworks' Anthropic-compatible
 #                endpoint via ANTHROPIC_BASE_URL/ANTHROPIC_AUTH_TOKEN (model
-#                deepseek-v4-pro). Mirrors the hourly-twitter.yml
-#                deepseek-claude-code backend.
+#                deepseek-v4-flash, served by Fireworks). Mirrors the
+#                hourly-twitter.yml deepseek-claude-code backend.
 #
 # The Python writer commits internally; this workflow only pushes.
 #
@@ -1568,28 +1568,32 @@ jobs:
         env: *claude_env
         with: *claude_with
 
-      # ---- DeepSeek backend -------------------------------------------------
-      # claude-code-action redirected to DeepSeek's Anthropic-compatible
-      # endpoint. Mirrors the env-var shape in the hourly-twitter.yml
-      # deepseek-claude-code backend. The OAuth input is required by
-      # the action schema but ignored by the CLI when ANTHROPIC_BASE_URL is set.
-      # The writer records --model deepseek-v4-pro (the served model).
-      - name: Run Generative Research (DeepSeek V4 Pro, attempt 1)
+      # ---- DeepSeek (via Fireworks) backend ---------------------------------
+      # claude-code-action redirected to Fireworks' Anthropic-compatible
+      # endpoint, serving DeepSeek V4 Flash. Mirrors the env-var shape in the
+      # hourly-twitter.yml deepseek-claude-code backend. The OAuth input is
+      # required by the action schema but ignored by the CLI when
+      # ANTHROPIC_BASE_URL is set. The direct DeepSeek API is no longer used.
+      # The writer records --model deepseek-v4-flash (the served model).
+      - name: Run Generative Research (DeepSeek V4 Flash via Fireworks, attempt 1)
         if: steps.params.outputs.backend == 'deepseek-v4-pro'
         id: gen-deepseek
         continue-on-error: true
         timeout-minutes: 90
         uses: anthropics/claude-code-action@v1
         env: &deepseek_v4_pro_env
-          # Redirect Claude Code CLI to DeepSeek's Anthropic-compatible endpoint.
-          # See https://api-docs.deepseek.com/guides/coding_agents
-          ANTHROPIC_BASE_URL: https://api.deepseek.com/anthropic
-          ANTHROPIC_AUTH_TOKEN: ${{ secrets.DEEPSEEK_API_KEY }}
-          ANTHROPIC_MODEL: deepseek-v4-pro
-          ANTHROPIC_DEFAULT_OPUS_MODEL: deepseek-v4-pro
-          ANTHROPIC_DEFAULT_SONNET_MODEL: deepseek-v4-pro
-          ANTHROPIC_DEFAULT_HAIKU_MODEL: deepseek-v4-flash
-          CLAUDE_CODE_SUBAGENT_MODEL: deepseek-v4-flash
+          # Redirect Claude Code CLI to Fireworks' Anthropic-compatible endpoint,
+          # which serves DeepSeek V4 Flash. Base URL omits /v1 — the client
+          # appends /v1/messages. The direct DeepSeek API is no longer used
+          # (billing/credits). Every model slot uses the full Fireworks model id.
+          # See https://docs.fireworks.ai/tools-sdks/anthropic-compatibility
+          ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.FIREWORKS_API_KEY }}
+          ANTHROPIC_MODEL: accounts/fireworks/models/deepseek-v4-flash
+          ANTHROPIC_DEFAULT_OPUS_MODEL: accounts/fireworks/models/deepseek-v4-flash
+          ANTHROPIC_DEFAULT_SONNET_MODEL: accounts/fireworks/models/deepseek-v4-flash
+          ANTHROPIC_DEFAULT_HAIKU_MODEL: accounts/fireworks/models/deepseek-v4-flash
+          CLAUDE_CODE_SUBAGENT_MODEL: accounts/fireworks/models/deepseek-v4-flash
           CLAUDE_CODE_EFFORT_LEVEL: max
           # Security: GEN_TOPIC / GEN_PROMPT / GEN_TAGS are NOT in this env
           # block (same defense as the Claude backend step above). The agent
@@ -1613,7 +1617,7 @@ jobs:
           claude_args: |
             --model opus --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
-            You are a deep-research analyst running on DeepSeek v4 Pro,
+            You are a deep-research analyst running on DeepSeek V4 Flash (via Fireworks),
             writing a COMPREHENSIVE, analyst-grade HTML article on the
             topic supplied by the user. Reason from first principles —
             challenge weak claims rather than echo them. Depth is measured
@@ -2648,7 +2652,7 @@ jobs:
                     --tags "$(cat .gen-input/tags.txt)" \
                     --source "$GEN_SOURCE" \
                     --prompt "$(cat .gen-input/prompt.txt)" \
-                    --model deepseek-v4-pro \
+                    --model deepseek-v4-flash \
                     --cite-density-min 10 --refs-min 20 \
                     --qsanity \
                     --html-body "$GEN_DRAFT"
@@ -2660,7 +2664,7 @@ jobs:
                     --tags "$(cat .gen-input/tags.txt)" \
                     --source "$GEN_SOURCE" \
                     --prompt "$(cat .gen-input/prompt.txt)" \
-                    --model deepseek-v4-pro \
+                    --model deepseek-v4-flash \
                     --cite-density-min 10 --refs-min 20 \
                     --qsanity \
                     --html-body "$GEN_DRAFT"
@@ -2714,7 +2718,7 @@ jobs:
             echo "retry=$RETRY"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Run Generative Research (DeepSeek V4 Pro, retry 1)
+      - name: Run Generative Research (DeepSeek V4 Flash via Fireworks, retry 1)
         if: steps.deepseek-attempt-1.outputs.retry == 'true'
         id: gen-deepseek-retry
         continue-on-error: true
@@ -2765,7 +2769,7 @@ jobs:
             echo "retry=$RETRY"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Run Generative Research (DeepSeek V4 Pro, retry 2)
+      - name: Run Generative Research (DeepSeek V4 Flash via Fireworks, retry 2)
         if: steps.deepseek-retry-1.outputs.retry == 'true'
         id: gen-deepseek-retry-2
         continue-on-error: true

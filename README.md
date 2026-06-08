@@ -232,8 +232,8 @@ uv run python scripts/check_model_tickets.py
 | Secret | Required | Description |
 |--------|----------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code auth |
-| `DEEPSEEK_API_KEY` | Yes for DeepSeek V4 Pro generative research and DeepSeek Twitter workflows | DeepSeek API key used through the Anthropic-compatible endpoint |
-| `FIREWORKS_API_KEY` | Yes for the manual `fireworks-pi` Twitter workflow tier | Fireworks API key used by pi's built-in Fireworks provider |
+| `DEEPSEEK_API_KEY` | No — retired | DeepSeek lanes now route through Fireworks (`FIREWORKS_API_KEY`); no longer referenced by any workflow |
+| `FIREWORKS_API_KEY` | Yes for generative-research `backend=deepseek-v4-pro` and all non-claude Twitter tiers (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Fireworks API key — serves DeepSeek V4 Flash via the Anthropic-compatible endpoint, and Kimi via pi's Fireworks provider |
 | `BIRD_AUTH_TOKEN` | Yes | X/Twitter auth_token cookie for bird CLI |
 | `BIRD_CT0` | Yes | X/Twitter ct0 cookie for bird CLI |
 | `GEMINI_API_KEY` | Yes for article/digest audio | Gemini API key used for price-performant TTS audio generation |

@@ -2,8 +2,8 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / 
 
 # Unified Twitter/X pipeline that fans out across four backend tiers:
 #   - claude            (cron '7 */3 * * *', model: opus,             output → research/twitter/)
-#   - deepseek-claude-code (cron '37 */6 * * *', model: deepseek-v4-pro,  output → research/twitter-deepseek/)
-#   - deepseek-pi       (manual only,        model: deepseek-v4-pro via pi harness,
+#   - deepseek-claude-code (cron '37 */6 * * *', model: deepseek-v4-flash via Fireworks, output → research/twitter-deepseek/)
+#   - deepseek-pi       (manual only,        model: deepseek-v4-flash via Fireworks + pi harness,
 #                        output → research/twitter-deepseek-pi/)
 #   - fireworks-pi      (manual only,        model: Kimi K2.6 via Fireworks + pi,
 #                        output → research/twitter-fireworks-pi/)
@@ -27,8 +27,7 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / 
 #
 # Required secrets:
 #   CLAUDE_CODE_OAUTH_TOKEN              — claude tier (also passed to deepseek-claude-code but unused there)
-#   DEEPSEEK_API_KEY                     — both deepseek tiers
-#   FIREWORKS_API_KEY                    — fireworks-pi tier
+#   FIREWORKS_API_KEY                    — deepseek-claude-code, deepseek-pi, fireworks-pi tiers (all served via Fireworks)
 #   BIRD_AUTH_TOKEN, BIRD_CT0            — all tiers
 #   HOOKER_URL, HOOKER_TOKEN             — claude tier (headline-alert blast + telemetry) and comparison tiers (per-cycle notification, relayed to Telegram)
 #   VERCEL_DEPLOY_HOOK                   — optional, claude tier only
@@ -239,7 +238,7 @@ jobs:
             deepseek-claude-code)
               OUTPUT_DIR="research/twitter-deepseek"
               SUMMARY_SLUG="twitter-deepseek"
-              TITLE_SUFFIX=" (DeepSeek v4 Pro)"
+              TITLE_SUFFIX=" (DeepSeek v4 Flash · Fireworks)"
               CYCLE_HOURS=6
               COMMIT_PREFIX="Twitter (DeepSeek) update"
               FETCH_CONCURRENCY=6
@@ -248,13 +247,13 @@ jobs:
               ENABLE_DAEMON=true
               BIRD_BUDGET=30
               CURL_BUDGET=5
-              HARNESS_LABEL="on DeepSeek v4 Pro"
+              HARNESS_LABEL="on DeepSeek v4 Flash via Fireworks"
               FEATURES="telegram"
               ;;
             deepseek-pi)
               OUTPUT_DIR="research/twitter-deepseek-pi"
               SUMMARY_SLUG="twitter-deepseek-pi"
-              TITLE_SUFFIX=" (pi + DeepSeek)"
+              TITLE_SUFFIX=" (pi + DeepSeek v4 Flash · Fireworks)"
               CYCLE_HOURS=6
               COMMIT_PREFIX="Twitter (pi+DeepSeek) update"
               FETCH_CONCURRENCY=6
@@ -263,7 +262,7 @@ jobs:
               ENABLE_DAEMON=false
               BIRD_BUDGET=5
               CURL_BUDGET=3
-              HARNESS_LABEL="on DeepSeek v4 Pro under the pi coding agent harness"
+              HARNESS_LABEL="on DeepSeek v4 Flash via Fireworks under the pi coding agent harness"
               FEATURES="telegram"
               ;;
             fireworks-pi)
@@ -378,19 +377,21 @@ jobs:
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*),Bash(bird-fast:*),Bash(curl:*),Bash(jq:*)"
           prompt: ${{ steps.render.outputs.prompt }}
 
-      - name: Process tweets with DeepSeek v4 Pro (deepseek-claude-code tier)
+      - name: Process tweets with DeepSeek v4 Flash via Fireworks (deepseek-claude-code tier)
         if: steps.backend.outputs.name == 'deepseek-claude-code'
         uses: anthropics/claude-code-action@v1
         env:
-          # Redirect Claude Code CLI to DeepSeek's Anthropic-compatible endpoint.
-          # See https://api-docs.deepseek.com/guides/coding_agents
-          ANTHROPIC_BASE_URL: https://api.deepseek.com/anthropic
-          ANTHROPIC_AUTH_TOKEN: ${{ secrets.DEEPSEEK_API_KEY }}
-          ANTHROPIC_MODEL: deepseek-v4-pro
-          ANTHROPIC_DEFAULT_OPUS_MODEL: deepseek-v4-pro
-          ANTHROPIC_DEFAULT_SONNET_MODEL: deepseek-v4-pro
-          ANTHROPIC_DEFAULT_HAIKU_MODEL: deepseek-v4-flash
-          CLAUDE_CODE_SUBAGENT_MODEL: deepseek-v4-flash
+          # Redirect Claude Code CLI to Fireworks' Anthropic-compatible endpoint,
+          # which serves DeepSeek V4 Flash. Base URL omits /v1 — the client
+          # appends /v1/messages. The direct DeepSeek API is no longer used.
+          # See https://docs.fireworks.ai/tools-sdks/anthropic-compatibility
+          ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.FIREWORKS_API_KEY }}
+          ANTHROPIC_MODEL: accounts/fireworks/models/deepseek-v4-flash
+          ANTHROPIC_DEFAULT_OPUS_MODEL: accounts/fireworks/models/deepseek-v4-flash
+          ANTHROPIC_DEFAULT_SONNET_MODEL: accounts/fireworks/models/deepseek-v4-flash
+          ANTHROPIC_DEFAULT_HAIKU_MODEL: accounts/fireworks/models/deepseek-v4-flash
+          CLAUDE_CODE_SUBAGENT_MODEL: accounts/fireworks/models/deepseek-v4-flash
           CLAUDE_CODE_EFFORT_LEVEL: max
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
@@ -401,25 +402,25 @@ jobs:
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*),Bash(bird-fast:*),Bash(curl:*),Bash(jq:*)"
           prompt: ${{ steps.render.outputs.prompt }}
 
-      - name: Process tweets with pi + DeepSeek (deepseek-pi tier)
+      - name: Process tweets with pi + DeepSeek v4 Flash via Fireworks (deepseek-pi tier)
         if: steps.backend.outputs.name == 'deepseek-pi'
         env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
-          # Mirrors the model used by the Claude Code tier.
-          # Note: the [1m] suffix used in the Anthropic-shim path is NOT
-          # accepted on DeepSeek's OpenAI-compatible endpoint (returns
-          # `400 Model Not Exist`). 1M context is the default for v4-pro
-          # there, so plain `deepseek-v4-pro` already gets the 1M variant.
+          # Mirrors the model used by the Claude Code tier (DeepSeek V4 Flash),
+          # served via Fireworks (the direct DeepSeek API is no longer used).
+          # pi has a built-in Fireworks provider, so only the API key, provider
+          # name, and Fireworks model id are needed here.
           # Bash allowlist: pi's --tools is coarse (bash on/off). For this
           # experiment we accept full bash on the trusted self-hosted runner.
           pi -p "$(cat /tmp/prompt-rendered.md)" \
             --no-session \
             --thinking high \
             --tools read,write,edit,bash,grep,find,ls \
-            --model deepseek/deepseek-v4-pro
+            --provider fireworks \
+            --model accounts/fireworks/models/deepseek-v4-flash
 
       - name: Process tweets with pi + Fireworks (fireworks-pi tier)
         if: steps.backend.outputs.name == 'fireworks-pi'

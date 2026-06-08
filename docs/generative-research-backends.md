@@ -6,7 +6,7 @@ research pipeline:
 | Dispatch value | Served model | Auth path | Notes |
 |---|---|---|---|
 | `claude` | `claude-opus-4-7` | `CLAUDE_CODE_OAUTH_TOKEN` | Default for manual and issue-triggered generative research. Native Anthropic Claude Code path. |
-| `deepseek-v4-pro` | `deepseek-v4-pro` | `DEEPSEEK_API_KEY` via DeepSeek's Anthropic-compatible endpoint | Optional comparison backend. The workflow still passes `--model opus` to Claude Code because the endpoint remaps the Opus request to DeepSeek V4 Pro through env vars. Subagents use `deepseek-v4-flash`. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
+| `deepseek-v4-pro` (legacy token) | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 
 ## Local Oracle / GPT-5.5 Pro
 
@@ -125,16 +125,17 @@ uv run python scripts/run_generative_research_oracle.py "Topic" --oracle-dry-run
 ```
 
 The DeepSeek path mirrors the `deepseek-claude-code` backend in
-`.github/workflows/hourly-twitter.yml`:
+`.github/workflows/hourly-twitter.yml` — both route through Fireworks'
+Anthropic-compatible endpoint (the direct DeepSeek API is retired):
 
 ```yaml
-ANTHROPIC_BASE_URL: https://api.deepseek.com/anthropic
-ANTHROPIC_AUTH_TOKEN: ${{ secrets.DEEPSEEK_API_KEY }}
-ANTHROPIC_MODEL: deepseek-v4-pro
-ANTHROPIC_DEFAULT_OPUS_MODEL: deepseek-v4-pro
-ANTHROPIC_DEFAULT_SONNET_MODEL: deepseek-v4-pro
-ANTHROPIC_DEFAULT_HAIKU_MODEL: deepseek-v4-flash
-CLAUDE_CODE_SUBAGENT_MODEL: deepseek-v4-flash
+ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
+ANTHROPIC_AUTH_TOKEN: ${{ secrets.FIREWORKS_API_KEY }}
+ANTHROPIC_MODEL: accounts/fireworks/models/deepseek-v4-flash
+ANTHROPIC_DEFAULT_OPUS_MODEL: accounts/fireworks/models/deepseek-v4-flash
+ANTHROPIC_DEFAULT_SONNET_MODEL: accounts/fireworks/models/deepseek-v4-flash
+ANTHROPIC_DEFAULT_HAIKU_MODEL: accounts/fireworks/models/deepseek-v4-flash
+CLAUDE_CODE_SUBAGENT_MODEL: accounts/fireworks/models/deepseek-v4-flash
 ```
 
 ## Comparing Claude And DeepSeek
@@ -162,7 +163,7 @@ Both runs execute the same writer contract, ARA DSL validation,
 design gates, quality report, commit writer, and push/rebase logic.
 The expected difference is the model backend:
 
-- DeepSeek: Anthropic-compatible DeepSeek endpoint, `deepseek-v4-pro`
+- DeepSeek (via Fireworks): Anthropic-compatible Fireworks endpoint, `deepseek-v4-flash`
   metadata in `research/generative/index.json`. This path has a longer
   action timeout because the Anthropic shim plus large sub-agent waves can
   run slower than the native Claude path. The workflow makes the first
