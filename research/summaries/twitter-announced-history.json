@@ -8849,5 +8849,33 @@
     "headline": "TIM COOK'S FINAL WWDC KEYNOTE \u2014 JOHN TERNUS TO TAKE OVER AS APPLE CEO IN SEPTEMBER",
     "source": "WWDC 2026 keynote",
     "url": "https://x.com/i/status/2064059964709388774"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-06-08 21:46 UTC",
+    "headline": "OPENAI CONFIRMS IT FILED A CONFIDENTIAL S-1 \u2014 ANNOUNCES AHEAD OF EXPECTED LEAK, TIMING UNDECIDED",
+    "source": "@OpenAINewsroom",
+    "url": "https://x.com/OpenAINewsroom/status/2064094175541461220"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-08 21:46 UTC",
+    "headline": "REPORTS: OPENAI IPO TARGETS UP TO $1T VALUATION, COULD DEBUT AS EARLY AS SEPTEMBER; GOLDMAN, MORGAN STANLEY LEADING",
+    "source": "@KobeissiLetter",
+    "url": "https://x.com/KobeissiLetter/status/2064094804523229538"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-08 21:46 UTC",
+    "headline": "AI IPO SUPERCYCLE \u2014 OPENAI + ANTHROPIC (FILED JUN 1) + SPACEX ($1.75T, JUN 12) HEAD TO PUBLIC MARKETS",
+    "source": "@NewsTongueX",
+    "url": "https://x.com/NewsTongueX/status/2063914441402413423"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-08 21:46 UTC",
+    "headline": "ANTHROPIC RESEARCH CLAIM: CLAUDE MYTHOS PREVIEW BUILT WORKING FIREFOX EXPLOIT IN 1 HOUR FROM A PATCH",
+    "source": "@IntCyberDigest",
+    "url": "https://x.com/IntCyberDigest/status/2064084653175169212"
   }
 ]
