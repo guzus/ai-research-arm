@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-08
+
+TOP STORIES:
+• Apple WWDC opens today: Gemini-powered Siri rebuild + ChatGPT/Gemini/Claude as pickable Apple Intelligence backends
+• OpenAI rebuilds ChatGPT as agent-first "super app" — employee tells FT "chat is dead"; GPT-5.6 expected; 600M MAU
+• Anthropic's confidential $965B IPO filing meets its own call for a global frontier-AI "pause"
+
+KEY NUMBERS:
+• SpaceX IPO: ~$135/share, ~$75B raise, ~$1.77T val — prices Jun 11, trades Jun 12 (SPCX)
+• Elon's compute-as-a-service: Anthropic ~$1.25B/mo + Google ~$920M/mo = $2B+/mo
+• Meta "Hatch" paid AI agent: up to $200/mo
+
+TRENDING: HN — "LLMs are eroding my software engineering career" (500 pts) + "your 'oh shit' GenAI moment" (1029 comments)
+
+Full digest on GitHub.
