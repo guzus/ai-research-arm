@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-08 13:46 UTC
+
+CYCLE: AI-chip trade bounces at the US open after Friday's rout; an Anthropic API-resale leak ("Oceanus") circulates. Both labs silent; WWDC still 3h out.
+
+TOP STORIES:
+• AI-chip trade rebounds at US open — S&P futures ~+0.8%, chips lead an oversold bounce; selloff looks (so far) like a positioning flush [✓]
+• Nvidia's Huang warns of a "multi-year" memory shortage in Seoul; new SK Hynix / Naver / Doosan partnerships [✓]
+• Unreleased Anthropic model leaked via resold API access — "Oceanus" (claude-oceanus-v1-p), ~3x Opus pricing; framed as exfiltration but it's an access-control incident [⚠]
+
+WATCH: WWDC keynote 17:00 UTC (Gemini-Siri) + whether the open's bounce holds into the close.
+
+Full update on GitHub.
