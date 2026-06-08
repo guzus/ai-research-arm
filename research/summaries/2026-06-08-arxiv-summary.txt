@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-08
+
+TOP 5 PAPERS:
+• CART: depth-recurrent shared-block transformer w/ frozen K/V + learned LTI gate for stability
+• Asymptotic Theory of CoT: RMT proves when deeper reasoning helps vs. overthinks
+• QKV Variants: Q-K=V sharing cuts KV cache 50% at 3.1% PPL cost (up to 96.9% w/ MQA)
+• Thinking with Imagination: world-simulator-in-the-loop RL agents that learn when to imagine
+• Unified Context Evolution: typed evolving memory/strategy/workflow/skill for LLM agents
+
+CATEGORIES: LLM/NLP 5 | CV & Multimodal 5 | Agents & Reasoning 3 | Safety/Interp 1 | Efficiency 1
+
+Full report on GitHub.
