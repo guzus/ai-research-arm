@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 summary: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.
 created_at: 2026-05-29
-updated_at: 2026-06-03
+updated_at: 2026-06-08
 sources:
+  - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
   - {title: "ARA daily digest 2026-05-27", path: research/digest/2026-05-27-digest.md}
@@ -58,6 +59,17 @@ the cycle:
   **[[openai|GPT-5.2-Codex]]** as having "stronger cybersecurity capabilities
   than any model OpenAI has released so far" — capability and policy converging
   on the same axis (ARA digest 2026-06-03).
+- **Capability misuse gets its real-world incident — the Meta-Instagram hijack
+  (2026-06-08).** Meta **confirmed thousands of Instagram accounts were hijacked
+  via its AI chatbot** (630 pts on HN): attackers abused the chatbot through
+  **prompt injection and social engineering** to take over accounts. This is the
+  first mass, *deployed-consumer-product* security failure of the cycle — a
+  distinct vector from the OpenClaw/vLLM **supply-chain** failures, closer to the
+  "capability misuse" gap flagged below. [[openai]] shipped a direct
+  counter-mitigation the same day — **Lockdown Mode** for ChatGPT, which disables
+  web access, Deep Research, and Agent Mode to cut prompt-injection
+  data-exfiltration — the first product-level hardening response in this theme
+  (ARA digest 2026-06-08).
 
 ## Open questions
 - **Does [[dynamic-workflows]] make this worse?** Hundreds of parallel

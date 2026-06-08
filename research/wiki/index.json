@@ -45,7 +45,7 @@
       ],
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-06-03",
+      "updated_at": "2026-06-08",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -66,7 +66,8 @@
         "cognition-ai",
         "dynamic-workflows",
         "federal-ai-policy",
-        "liquid-ai"
+        "liquid-ai",
+        "openai"
       ]
     },
     {
@@ -81,7 +82,7 @@
       ],
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-05",
+      "updated_at": "2026-06-08",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -103,10 +104,12 @@
         "nvidia",
         "openai",
         "openrouter",
-        "spacex"
+        "spacex",
+        "xai"
       ],
       "inbound": [
         "anthropic",
+        "apple",
         "california-ai-regulation",
         "cognition-ai",
         "coreweave",
@@ -123,7 +126,8 @@
         "nvidia",
         "openai",
         "openrouter",
-        "spacex"
+        "spacex",
+        "xai"
       ]
     },
     {
@@ -138,7 +142,7 @@
       ],
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-05",
+      "updated_at": "2026-06-08",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -157,12 +161,15 @@
         "gemini-3-5-flash",
         "gemini-spark",
         "neocloud",
-        "openai"
+        "openai",
+        "spacex",
+        "xai"
       ],
       "inbound": [
         "agent-lifespan-engineering",
         "agentic-ai-security",
         "ai-capex",
+        "apple",
         "california-ai-regulation",
         "claude-opus-4-8",
         "cognition-ai",
@@ -174,7 +181,43 @@
         "minimax-m3",
         "openai",
         "openrouter",
-        "spacex"
+        "spacex",
+        "xai"
+      ]
+    },
+    {
+      "slug": "apple",
+      "title": "Apple",
+      "type": "entity",
+      "tags": [
+        "consumer-tech",
+        "on-device-ai",
+        "apple-intelligence",
+        "siri",
+        "wwdc"
+      ],
+      "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08).",
+      "created_at": "2026-06-08",
+      "updated_at": "2026-06-08",
+      "file": "entities/apple.md",
+      "aliases": [
+        "Apple",
+        "Apple Inc.",
+        "Siri",
+        "Apple Intelligence",
+        "Private Cloud Compute",
+        "PCC"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "gemini-3-5-flash",
+        "liquid-ai",
+        "nvidia",
+        "openai"
+      ],
+      "inbound": [
+        "openai"
       ]
     },
     {
@@ -410,7 +453,8 @@
         "anthropic",
         "claude-opus-4-8",
         "cognition-ai",
-        "gemini-spark"
+        "gemini-spark",
+        "xai"
       ]
     },
     {
@@ -427,7 +471,7 @@
       ],
       "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-05",
+      "updated_at": "2026-06-08",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -511,6 +555,7 @@
       ],
       "inbound": [
         "anthropic",
+        "apple",
         "gemini-spark",
         "gemma-4"
       ]
@@ -605,7 +650,8 @@
         "agentic-ai-security"
       ],
       "inbound": [
-        "agentic-ai-security"
+        "agentic-ai-security",
+        "apple"
       ]
     },
     {
@@ -787,6 +833,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "apple",
         "gemma-4"
       ]
     },
@@ -800,9 +847,9 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped the Frontier Governance Framework and Rosalind Biodefense program on 2026-05-29.",
+      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-05",
+      "updated_at": "2026-06-08",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -811,8 +858,10 @@
         "OpenAI Inc."
       ],
       "outbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "apple",
         "california-ai-regulation",
         "federal-ai-policy",
         "gemini-spark",
@@ -822,12 +871,14 @@
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "apple",
         "california-ai-regulation",
         "federal-ai-policy",
         "figure-ai",
         "microsoft",
         "openrouter",
-        "spacex"
+        "spacex",
+        "xai"
       ]
     },
     {
@@ -874,7 +925,7 @@
       ],
       "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-06-05",
+      "updated_at": "2026-06-08",
       "file": "entities/spacex.md",
       "aliases": [
         "SpaceX",
@@ -887,11 +938,50 @@
         "ai-capex",
         "anthropic",
         "deepseek",
-        "openai"
+        "openai",
+        "xai"
       ],
       "inbound": [
         "ai-capex",
-        "deepseek"
+        "anthropic",
+        "deepseek",
+        "xai"
+      ]
+    },
+    {
+      "slug": "xai",
+      "title": "xAI",
+      "type": "entity",
+      "tags": [
+        "frontier-lab",
+        "grok",
+        "compute-landlord",
+        "elon-musk",
+        "ai-infrastructure"
+      ],
+      "summary": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M).",
+      "created_at": "2026-06-08",
+      "updated_at": "2026-06-08",
+      "file": "entities/xai.md",
+      "aliases": [
+        "xAI",
+        "x.AI",
+        "@xai",
+        "Grok",
+        "Colossus",
+        "Colossus 1"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "dynamic-workflows",
+        "openai",
+        "spacex"
+      ],
+      "inbound": [
+        "ai-capex",
+        "anthropic",
+        "spacex"
       ]
     }
   ],
@@ -906,6 +996,7 @@
     "@openai": "openai",
     "@openrouterai": "openrouter",
     "@spacex": "spacex",
+    "@xai": "xai",
     "a 9317": "california-ai-regulation",
     "ab 1159": "california-ai-regulation",
     "ab 1609": "california-ai-regulation",
@@ -924,6 +1015,9 @@
     "ai-capex": "ai-capex",
     "anthropic": "anthropic",
     "anthropic pbc": "anthropic",
+    "apple": "apple",
+    "apple inc.": "apple",
+    "apple intelligence": "apple",
     "brett adcock": "figure-ai",
     "caisi mou": "federal-ai-policy",
     "california ai bills": "california-ai-regulation",
@@ -937,6 +1031,8 @@
     "cognition ai": "cognition-ai",
     "cognition labs": "cognition-ai",
     "cognition-ai": "cognition-ai",
+    "colossus": "xai",
+    "colossus 1": "xai",
     "compute buildout": "ai-capex",
     "coreweave": "coreweave",
     "coreweave, inc.": "coreweave",
@@ -973,6 +1069,7 @@
     "google gemini spark": "gemini-spark",
     "gpu-as-a-service": "neocloud",
     "gpuaas": "neocloud",
+    "grok": "xai",
     "helix": "figure-ai",
     "helix-02": "figure-ai",
     "jensen huang": "nvidia",
@@ -1012,19 +1109,29 @@
     "openrouter.ai": "openrouter",
     "opus 4.8": "claude-opus-4-8",
     "parallel subagents": "dynamic-workflows",
+    "pcc": "apple",
+    "private cloud compute": "apple",
     "project polaris": "microsoft",
     "promoting advanced ai innovation and security": "federal-ai-policy",
     "sacramento ai policy": "california-ai-regulation",
+    "siri": "apple",
     "space exploration technologies": "spacex",
     "spacex": "spacex",
     "spark agent": "gemini-spark",
     "spcx": "spacex",
     "starlink": "spacex",
     "trump ai executive order": "federal-ai-policy",
+    "x.ai": "xai",
+    "xai": "xai",
     "your agents are aging too": "agent-lifespan-engineering",
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-08",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-08 digest. Created 2 entities (apple — WWDC 2026 Siri rebuild on custom Gemini + \"Extensions\" layer + NVIDIA confidential-compute routing; xai — Elon's compute-landlord business renting Colossus to Anthropic ~$1.25B/mo + Google ~$920M/mo, Grok Build CLI). Updated 6 (openai — \"super app\" pivot / \"chat is dead\" / 600M MAU / GPT-5.6 / govt equity-stake talks / Lockdown Mode; anthropic — S-1 multi-source confirmed + coordinated-pause proposal + compute-landlord tenancy + chip-engineer poach + Mythos silence; spacex — final IPO terms $135/~$75B/~$1.77T + compute-landlord angle; federal-ai-policy — Krishnan exit + OpenAI govt equity stake + Anthropic pause proposal + carried compliance calendar; agentic-ai-security — Meta-Instagram chatbot hijack + OpenAI Lockdown Mode; ai-capex — $2B+/mo compute-landlord economics + Helion $15.5B + Meta Hatch $200/mo)."
+    },
     {
       "date": "2026-06-05",
       "op": "ingest",

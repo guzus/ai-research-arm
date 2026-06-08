@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-summary: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped the Frontier Governance Framework and Rosalind Biodefense program on 2026-05-29.
+summary: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-updated_at: 2026-06-05
+updated_at: 2026-06-08
 sources:
+  - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
@@ -135,6 +136,35 @@ materially reshape how the lab is positioned heading into its IPO window:
   **"Biodefense in the Intelligence Age"** action plan — the productization arc
   of the earlier Rosalind Biodefense framing. Critics frame it as
   regulatory-moat building; see [[federal-ai-policy]] (ARA digest 2026-06-05).
+
+- **The "super app" pivot hardens from rumor to roadmap (2026-06-08).** The
+  rumored ChatGPT overhaul moved from "It's time to fly" teasing to a reported
+  roadmap: an OpenAI employee told the **Financial Times "chat is dead,"** with a
+  **phased rollout "in the coming weeks"** steering users toward **Codex, AI
+  agents, image generation, and partner apps (Canva, Booking.com)** — explicitly
+  framed around higher-margin revenue ahead of a potential IPO (The Decoder,
+  TechCrunch corroborating). **ChatGPT crossed 600M MAU.** **GPT-5.6** is expected
+  alongside the revamp "next week" (Andrew Curran; prediction markets ~89% by
+  June 30), and multiple developers independently hit **"Model not found:
+  gpt-5.5" 404s inside Codex** — a weak infra tell. Caveat: every version traces
+  to FT reporting plus inference — OpenAI has issued nothing on record, no event
+  date or feature list (ARA digest 2026-06-08).
+- **Trump administration reportedly in talks for an equity stake (2026-06-08).**
+  Per NOTUS and TechCrunch, **Sam Altman pitched the White House on a
+  US-government equity position** in OpenAI, with Trump floating deals "where the
+  American people can benefit." Still talks — no stake size, instrument, or
+  on-record confirmation — but an unprecedented government-equity proposition for
+  a frontier lab; see [[federal-ai-policy]] (ARA digest 2026-06-08).
+- **Lockdown Mode ships (2026-06-08).** OpenAI shipped **Lockdown Mode** for
+  ChatGPT to reduce prompt-injection data exfiltration by **disabling web access,
+  Deep Research, and Agent Mode** — a timely counterpart to the Meta-Instagram
+  chatbot hijacks and a concrete [[agentic-ai-security]] mitigation (ARA digest
+  2026-06-08).
+- **Distribution surface: Apple's "Extensions" (2026-06-08).** Apple is reportedly
+  adding a system letting users pick **ChatGPT**, Gemini, or Claude to power
+  Apple Intelligence at WWDC 2026 — putting [[apple]]'s install base in play as a
+  distribution prize even though Apple's reported Siri model is Gemini, not GPT
+  (ARA digest 2026-06-08).
 
 ## Open questions
 

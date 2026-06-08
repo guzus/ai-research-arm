@@ -6,8 +6,9 @@ aliases: [SpaceX, "@SpaceX", SPCX, "Space Exploration Technologies", Starlink]
 tags: [ipo, capital-markets, ai-infrastructure, space, public-listing]
 summary: "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side."
 created_at: 2026-06-05
-updated_at: 2026-06-05
+updated_at: 2026-06-08
 sources:
+  - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
@@ -39,6 +40,16 @@ frontier labs (the Anthropic–SpaceX "Colossus" datacenter arrangement).
   the [[ai-capex]] supercycle's shift from private rounds into public capital
   formation — a ~$340B+ aggregated "issuance wave" that doubles as the
   bubble-top debate's exhibit A.
+
+- **Final terms + the compute-landlord angle (2026-06-08).** The IPO firmed up
+  as the largest in history: **~556.6M shares at a fixed $135/share, ~$75B raise**
+  at a **~$1.77T valuation**, with **~30% reserved for retail** and reported
+  demand **~$150B**. Prices after the close **June 11**, first trade **June 12**
+  (Nasdaq: SPCX); some Wall Street coverage argues the stock is worth roughly
+  **half the ask**. The AI angle is now explicit: the raise funds the
+  **[[xai]]/Colossus compute-landlord business** renting capacity to
+  [[anthropic]] (~$1.25B/month) and Google (~$920M/month) — SpaceX/xAI as the
+  *seller* of compute to rival labs, not the buyer (ARA digest 2026-06-08).
 
 ## Open questions
 

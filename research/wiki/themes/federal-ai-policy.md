@@ -6,11 +6,12 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 summary: The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.
 created_at: 2026-06-03
-updated_at: 2026-06-05
+updated_at: 2026-06-08
 sources:
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
+  - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
 ---
 
 **Federal AI policy** is the Washington counterpart to the
@@ -76,6 +77,36 @@ footing for the first time in the cycle.
   than doubling, forcing courts to grapple with chatbot liability (MIT Tech
   Review) — a third front (judicial) opening alongside the legislative and
   executive ones (ARA digest 2026-06-05).
+
+- **Sriram Krishnan exits the senior AI-adviser seat (2026-06-08).** The former
+  a16z partner and **AI Action Plan co-author** confirmed he leaves at the **end
+  of June 2026**, reportedly to start a new AI-policy institution; AI Czar
+  **David Sacks** publicly thanked him. The seat empties just as the
+  administration reportedly weighs an unprecedented move (below) — a leadership
+  vacuum at the top of federal AI policy at a decisive moment (ARA digest
+  2026-06-08).
+- **Government equity stake in [[openai]] (2026-06-08).** Per NOTUS and
+  TechCrunch, **Sam Altman pitched the White House on a US-government equity
+  position** in OpenAI, with Trump floating deals "where the American people can
+  benefit." Still talks — no stake size, instrument, or on-record confirmation —
+  but a categorically new instrument: the federal government as **equity holder**
+  in a frontier lab, a step beyond access mandates or procurement (ARA digest
+  2026-06-08).
+- **[[anthropic]]'s coordinated-pause proposal (2026-06-08).** Anthropic publicly
+  called for a **"coordinated and verifiable pause in frontier model
+  development,"** anchored to a WSJ report (Olson/Schechner, updated June 4) and
+  an Anthropic blog post warning of imminent recursive self-improvement.
+  Skeptics note its **strategic convenience days after a confidential
+  trillion-dollar IPO filing** — the sharpest instance yet of the
+  lab-authored-governance / regulatory-moat critique that recurs across this
+  theme (ARA digest 2026-06-08).
+- **Carried governance threads (2026-06-08).** Unchanged in-window but live: the
+  **Great American AI Act** discussion draft (mandatory frontier risk plans +
+  incident reporting + audits, traded for a **3-year state-law preemption**); EU
+  AI Act GPAI obligations effective **Aug 2, 2026**; the Colorado AI Act effective
+  **June 30**; and China CAC anthropomorphic-interaction measures effective
+  **July 15** — the multi-jurisdiction compliance calendar the frontier-lab IPO
+  window must clear (ARA digest 2026-06-08).
 
 ## Open questions
 

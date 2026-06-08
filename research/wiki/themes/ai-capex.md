@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 summary: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-updated_at: 2026-06-05
+updated_at: 2026-06-08
 sources:
+  - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
@@ -179,6 +180,24 @@ skepticism in one window:
   externalization — and **Microsoft data suggesting AI is more expensive than
   hiring people**, against a YoY jump in CEOs planning junior-role cuts from
   17% → 43% while only 27% report met-expectations on AI ROI.
+
+- **The compute-landlord business comes into focus (2026-06-08).** The cycle's
+  capex story gained a clean application-layer engine: The Information confirmed
+  **[[anthropic]] rents [[xai]]/[[spacex]] capacity at ~$1.25B/month**, on top of
+  **Google's reported ~$920M/month** — **Elon bringing in $2B+/month selling
+  compute to rival labs** (notably **not** [[openai]]). This reframes the
+  contested Google–SpaceX deal with **SpaceX/xAI as the *seller***, and the
+  **[[spacex]] record IPO** (final terms: ~556.6M shares at $135, ~$75B raise,
+  ~$1.77T; prices June 11, trades June 12) is the public-markets vehicle that
+  funds it — the supercycle's rent-the-compute layer made explicit (ARA digest
+  2026-06-08).
+- **AI-energy capex continues — Helion $15.5B (2026-06-08).** [[openai|Sam
+  Altman]]-backed fusion startup **Helion was valued at $15.5B** after a
+  Thrive-led round — extending the AI-energy thread (power is the binding input
+  to the buildout) into the speculative-generation frontier. Separately, **Meta
+  "Hatch"** — a paid AI agent at up to **$200/month**, Meta's first paid AI
+  product — marks the demand-side monetization push running alongside the supply
+  buildout (ARA digest 2026-06-08).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s
