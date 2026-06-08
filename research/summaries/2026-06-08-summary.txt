@@ -1,13 +1,13 @@
 AI News - 2026-06-08
 
 TOP STORIES:
-• WWDC 2026 today — Tim Cook's final keynote: Gemini-powered Siri finally ships as a standalone app; iOS 27 Extensions let you set ChatGPT/Gemini/Claude as Apple Intelligence's engine
-• Govt equity stakes go mainstream — Trump (June 5) says US may take "pieces" of OpenAI & xAI via OpenAI's donated-equity "Public Wealth Fund"; Sanders pushes 50% stake + 50% tax
-• Anthropic notably excluded from the equity talks; no frontier model shipped in-window
+• WWDC 2026 SHIPPED (Cook's final keynote): Gemini-powered Siri now a standalone app on a 3-tier router ending on Nvidia B200 via Google Cloud; homeOS+HomePad previewed; Claude selectable via iOS 27 Extensions
+• NEW: Pentagon racing to replace Claude. After Anthropic held its no-mass-surveillance / no-autonomous-weapons lines, DoD now tests OpenAI, Google & xAI Grok; Anthropic fights the "supply-chain risk" tag in court
+• Govt equity stakes: Trump eyes "pieces" of OpenAI & xAI; Anthropic excluded
 
 KEY NUMBERS:
-• ~$1B/yr — Apple's reported license for a custom ~1.2T-parameter Gemini model for Siri
-• 50% equity + 50% stock tax — Sanders' bill targeting OpenAI, Anthropic, xAI
-• SpaceX IPO still on deck: ~$75B raise, ~$1.77T, prices June 11 (Nasdaq SPCX)
+• ~$1B/yr — Apple's license for the custom ~1.2T-param Gemini behind Siri
+• 25 DoD "power users" evaluating Claude replacements
+• SpaceX IPO: ~$75B raise, ~$1.77T, prices June 11 (Nasdaq SPCX)
 
 Full report on GitHub.
