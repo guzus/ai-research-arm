@@ -1,0 +1,11 @@
+Speaker 1: Monday, June eighth, twenty twenty-six.
+Speaker 2: [high_energy] Apple WWDC is open, and Siri is getting a full Gemini-powered rebuild — with ChatGPT, Gemini, and Claude all available as pickable Apple Intelligence backends.
+Speaker 1: Big week for Apple. Meanwhile, OpenAI is rethinking ChatGPT from the ground up as an agent-first super app — one employee told the Financial Times that chat is dead.
+Speaker 2: GPT five point six is expected soon, and they are sitting at [emphasis] six hundred million monthly active users [/emphasis] — that is not a company that bets small.
+Speaker 1: And Anthropic filed confidentially for an IPO — the valuation floated is [emphasis] nine hundred sixty-five billion dollars [/emphasis]. Awkward timing, given that Anthropic itself has been calling for a global pause on frontier AI development.
+Speaker 2: [dramatic_pause] They want the world to slow down — right after handing bankers a near-trillion-dollar number. That is a tension worth watching.
+Speaker 1: Some quick numbers. SpaceX prices its IPO at around one hundred thirty-five dollars a share — a seventy-five billion dollar raise targeting a one point seven seven trillion dollar valuation. Ticker SPCX, prices June eleventh, trades June twelfth.
+Speaker 2: And on the compute side, Elon Musk's infrastructure reportedly pulls in one point two five billion dollars a month from Anthropic alone, nine hundred twenty million a month from Google — [emphasis] over two billion dollars a month [/emphasis] just from those two.
+Speaker 1: Meta is also moving into paid AI with their Hatch agent, priced up to two hundred dollars a month.
+Speaker 2: Worth noting: Hacker News is lit today. A thread called LLMs are eroding my software engineering career hit five hundred points, and a GenAI turning-point thread crossed over one thousand comments.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
