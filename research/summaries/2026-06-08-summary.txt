@@ -1,0 +1,13 @@
+AI News - 2026-06-08
+
+TOP STORIES:
+• WWDC 2026 today — Tim Cook's final keynote: Gemini-powered Siri finally ships as a standalone app; iOS 27 Extensions let you set ChatGPT/Gemini/Claude as Apple Intelligence's engine
+• Govt equity stakes go mainstream — Trump (June 5) says US may take "pieces" of OpenAI & xAI via OpenAI's donated-equity "Public Wealth Fund"; Sanders pushes 50% stake + 50% tax
+• Anthropic notably excluded from the equity talks; no frontier model shipped in-window
+
+KEY NUMBERS:
+• ~$1B/yr — Apple's reported license for a custom ~1.2T-parameter Gemini model for Siri
+• 50% equity + 50% stock tax — Sanders' bill targeting OpenAI, Anthropic, xAI
+• SpaceX IPO still on deck: ~$75B raise, ~$1.77T, prices June 11 (Nasdaq SPCX)
+
+Full report on GitHub.
