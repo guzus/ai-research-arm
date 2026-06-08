@@ -14,7 +14,7 @@ and stop until they answer.
 
 Dispatches the `generative-research.yml` GitHub Actions workflow
 with `backend=claude` by default (Claude Opus 4.7 via
-anthropics/claude-code-action@v1). Use `backend=deepseek-v4-pro` for
+anthropics/claude-code-action@v1). Use `backend=deepseek-v4-flash` for
 the DeepSeek V4 Pro comparison baseline (DeepSeek's Anthropic-compatible
 endpoint). The workflow runs on the self-hosted Linux runner and
 executes the full deep pipeline documented in the workflow file:
@@ -50,8 +50,8 @@ Runtime is typically 20–45 min depending on topic complexity.
    ```
 
    If the user passed a brief in their topic that mentions
-   `backend: deepseek-v4-pro` (or `backend: deepseek`), honor it by
-   switching `-f backend=deepseek-v4-pro` instead. Otherwise default
+   `backend: deepseek-v4-flash` (or `backend: deepseek`), honor it by
+   switching `-f backend=deepseek-v4-flash` instead. Otherwise default
    to `claude`.
 
    If the user's entire argument is a Twitter/X status URL, prefer the

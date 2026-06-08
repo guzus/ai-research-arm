@@ -1046,7 +1046,7 @@ jobs:
           echo "Dispatching generative-research for: $TOPIC"
           gh workflow run generative-research.yml \
             -f topic="$TOPIC" \
-            -f backend=deepseek-v4-pro
+            -f backend=deepseek-v4-flash
           echo "::notice::Auto-dispatched generative-research: ${TOPIC}"
 
       # ── Hooker telemetry (all tiers, always) ───────────────────────

@@ -23,7 +23,7 @@ sources, writes the article through `scripts/write_generative_research.py`,
 and pushes the result to `main`.
 
 Default backend is `claude` unless the user explicitly asks for
-`deepseek-v4-pro`.
+`deepseek-v4-flash`.
 
 ## Steps
 

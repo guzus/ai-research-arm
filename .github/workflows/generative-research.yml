@@ -47,7 +47,7 @@ on:
         default: claude
         type: choice
         options:
-          - deepseek-v4-pro
+          - deepseek-v4-flash
           - claude
           - deepseek
       tags:
@@ -189,21 +189,21 @@ jobs:
             PROMPT="$TOPIC"
             if [ -n "${ISSUE_BODY:-}" ]; then
               CANDIDATE=$(printf '%s\n' "$ISSUE_BODY" \
-                | grep -iE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-7|deepseek|deepseek-v4-pro)[[:space:]]*$' \
+                | grep -iE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-7|deepseek|deepseek-v4-flash)[[:space:]]*$' \
                 | head -n1 \
                 | sed -E 's/^[[:space:]]*[Bb][Aa][Cc][Kk][Ee][Nn][Dd][[:space:]]*:[[:space:]]*//' \
                 | tr -d '[:space:]' \
                 | tr '[:upper:]' '[:lower:]' || true)
               case "$CANDIDATE" in
                 claude-opus-4-7) CANDIDATE="claude" ;;
-                deepseek) CANDIDATE="deepseek-v4-pro" ;;
+                deepseek) CANDIDATE="deepseek-v4-flash" ;;
               esac
-              if [ "$CANDIDATE" = "claude" ] || [ "$CANDIDATE" = "deepseek-v4-pro" ]; then
+              if [ "$CANDIDATE" = "claude" ] || [ "$CANDIDATE" = "deepseek-v4-flash" ]; then
                 BACKEND="$CANDIDATE"
               fi
               # Strip the backend: directive line out, keep the rest as the brief.
               CLEAN_BODY=$(printf '%s\n' "$ISSUE_BODY" \
-                | grep -ivE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-7|deepseek|deepseek-v4-pro)[[:space:]]*$' \
+                | grep -ivE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-7|deepseek|deepseek-v4-flash)[[:space:]]*$' \
                 | sed -E 's/[[:space:]]+$//' \
                 || true)
               # Substantive = any non-whitespace remains after the strip.
@@ -226,10 +226,10 @@ jobs:
           fi
 
           case "$BACKEND" in
-            deepseek) BACKEND="deepseek-v4-pro" ;;
+            deepseek) BACKEND="deepseek-v4-flash" ;;
             claude-opus-4-7) BACKEND="claude" ;;
           esac
-          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "deepseek-v4-pro" ]; then
+          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "deepseek-v4-flash" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
           fi
@@ -1576,12 +1576,12 @@ jobs:
       # ANTHROPIC_BASE_URL is set. The direct DeepSeek API is no longer used.
       # The writer records --model deepseek-v4-flash (the served model).
       - name: Run Generative Research (DeepSeek V4 Flash via Fireworks, attempt 1)
-        if: steps.params.outputs.backend == 'deepseek-v4-pro'
+        if: steps.params.outputs.backend == 'deepseek-v4-flash'
         id: gen-deepseek
         continue-on-error: true
         timeout-minutes: 90
         uses: anthropics/claude-code-action@v1
-        env: &deepseek_v4_pro_env
+        env: &deepseek_v4_flash_env
           # Redirect Claude Code CLI to Fireworks' Anthropic-compatible endpoint,
           # which serves DeepSeek V4 Flash. Base URL omits /v1 — the client
           # appends /v1/messages. The direct DeepSeek API is no longer used
@@ -1606,7 +1606,7 @@ jobs:
           # hourly-twitter workflow.
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
-        with: &deepseek_v4_pro_with
+        with: &deepseek_v4_flash_with
           # Required by the action input schema; superseded at runtime by
           # ANTHROPIC_AUTH_TOKEN because ANTHROPIC_BASE_URL is set.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -2677,7 +2677,7 @@ jobs:
               invocation; do not work around the validator.
 
       - name: Inspect DeepSeek attempt 1
-        if: steps.params.outputs.backend == 'deepseek-v4-pro'
+        if: steps.params.outputs.backend == 'deepseek-v4-flash'
         id: deepseek-attempt-1
         env:
           PRE_SHA: ${{ steps.pre.outputs.sha }}
@@ -2724,8 +2724,8 @@ jobs:
         continue-on-error: true
         timeout-minutes: 90
         uses: anthropics/claude-code-action@v1
-        env: *deepseek_v4_pro_env
-        with: *deepseek_v4_pro_with
+        env: *deepseek_v4_flash_env
+        with: *deepseek_v4_flash_with
 
       - name: Inspect DeepSeek retry 1
         if: steps.deepseek-attempt-1.outputs.retry == 'true'
@@ -2775,8 +2775,8 @@ jobs:
         continue-on-error: true
         timeout-minutes: 90
         uses: anthropics/claude-code-action@v1
-        env: *deepseek_v4_pro_env
-        with: *deepseek_v4_pro_with
+        env: *deepseek_v4_flash_env
+        with: *deepseek_v4_flash_with
 
       # Identify the file THIS run produced by diffing HEAD against the
       # snapshot we took before the action. This rejects the "newest file in
@@ -3422,7 +3422,7 @@ jobs:
             --data-binary "@$HOOKER_PAYLOAD_PATH"
 
       - name: Fail DeepSeek run without article
-        if: always() && steps.params.outputs.backend == 'deepseek-v4-pro' && steps.outfile.outputs.has_file != 'true'
+        if: always() && steps.params.outputs.backend == 'deepseek-v4-flash' && steps.outfile.outputs.has_file != 'true'
         run: |
           echo "::error::DeepSeek did not produce an article after the two-retry policy."
           echo "Attempt 1 outcome: ${{ steps.gen-deepseek.outcome }}"

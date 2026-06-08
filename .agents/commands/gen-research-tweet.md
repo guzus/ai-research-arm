@@ -29,7 +29,7 @@ gh run list --workflow=generative-research.yml --limit 1 \
   --jq '.[0]'
 ```
 
-Use `backend=deepseek-v4-pro` only when the user explicitly asks for
+Use `backend=deepseek-v4-flash` only when the user explicitly asks for
 DeepSeek.
 
 Report the run URL, `gh run watch <id>`, expected runtime (~20-45 min),

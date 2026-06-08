@@ -133,7 +133,7 @@ gantt
 Dashboard deploys are handled by **Vercel's git integration**, not a workflow file — every push to `main` triggers a build automatically.
 
 `generative-research.yml` defaults to **Claude Opus 4.7** for new manual,
-issue-triggered, and auto-dispatched runs. Use `backend=deepseek-v4-pro`
+issue-triggered, and auto-dispatched runs. Use `backend=deepseek-v4-flash`
 for the DeepSeek V4 Pro comparison path. See
 [Generative Research Backends](docs/generative-research-backends.md)
 for the exact env mapping and comparison commands.
@@ -233,7 +233,7 @@ uv run python scripts/check_model_tickets.py
 |--------|----------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code auth |
 | `DEEPSEEK_API_KEY` | No — retired | DeepSeek lanes now route through Fireworks (`FIREWORKS_API_KEY`); no longer referenced by any workflow |
-| `FIREWORKS_API_KEY` | Yes for generative-research `backend=deepseek-v4-pro` and all non-claude Twitter tiers (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Fireworks API key — serves DeepSeek V4 Flash via the Anthropic-compatible endpoint, and Kimi via pi's Fireworks provider |
+| `FIREWORKS_API_KEY` | Yes for generative-research `backend=deepseek-v4-flash` and all non-claude Twitter tiers (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Fireworks API key — serves DeepSeek V4 Flash via the Anthropic-compatible endpoint, and Kimi via pi's Fireworks provider |
 | `BIRD_AUTH_TOKEN` | Yes | X/Twitter auth_token cookie for bird CLI |
 | `BIRD_CT0` | Yes | X/Twitter ct0 cookie for bird CLI |
 | `GEMINI_API_KEY` | Yes for article/digest audio | Gemini API key used for price-performant TTS audio generation |

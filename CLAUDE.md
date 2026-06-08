@@ -138,7 +138,7 @@ opus everywhere.
 | Backend | When | Auth | Notes |
 |---|---|---|---|
 | **Claude (default)** | All Claude workflows; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic. `claude-opus-4-7` for generative-research. |
-| **DeepSeek V4 Flash (via Fireworks)** | `generative-research backend=deepseek-v4-pro`; `hourly-twitter.yml` DeepSeek lanes | `FIREWORKS_API_KEY` | Uses Fireworks' Anthropic-compatible endpoint at `https://api.fireworks.ai/inference` with model `accounts/fireworks/models/deepseek-v4-flash` (base URL omits `/v1`; the client appends `/v1/messages`). Overrides `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`/`ANTHROPIC_MODEL` so the Claude Code action transparently calls Fireworks. The direct DeepSeek API (`api.deepseek.com`) is retired (billing/credits). Selector token is still `deepseek-v4-pro`/`deepseek`. Generative-research retries up to 2x on socket drops before commit. |
+| **DeepSeek V4 Flash (via Fireworks)** | `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek lanes | `FIREWORKS_API_KEY` | Uses Fireworks' Anthropic-compatible endpoint at `https://api.fireworks.ai/inference` with model `accounts/fireworks/models/deepseek-v4-flash` (base URL omits `/v1`; the client appends `/v1/messages`). Overrides `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`/`ANTHROPIC_MODEL` so the Claude Code action transparently calls Fireworks. The direct DeepSeek API (`api.deepseek.com`) is retired (billing/credits). Selector token: `deepseek-v4-flash` (or `deepseek`). Generative-research retries up to 2x on socket drops before commit. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p6`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
 | **Local Oracle (GPT-5.5 Pro)** | `scripts/run_generative_research_oracle.py` | Local `../oracle` checkout (browser engine by default) | Runs entirely on the developer machine; outputs go through the same `check_generative_research.py` → `write_generative_research.py` contract. Source metadata: `local-oracle`. |
 
@@ -205,7 +205,7 @@ Secrets are configured in GitHub Actions. None are committed.
 |---|---|---|
 | `CLAUDE_CODE_OAUTH_TOKEN` | All Claude workflows | Required. |
 | `DEEPSEEK_API_KEY` | _Retired_ — DeepSeek lanes now route through Fireworks | No longer referenced by any workflow. |
-| `FIREWORKS_API_KEY` | `generative-research backend=deepseek-v4-pro`; all `hourly-twitter.yml` non-claude lanes (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Required for the DeepSeek-V4-Flash-via-Fireworks and Kimi lanes. |
+| `FIREWORKS_API_KEY` | `generative-research backend=deepseek-v4-flash`; all `hourly-twitter.yml` non-claude lanes (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Required for the DeepSeek-V4-Flash-via-Fireworks and Kimi lanes. |
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | All bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies. |
 | `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional; enhance MCP search. |
 | `HOOKER_TOKEN` | Telemetry composite action | Optional; without it, telemetry steps no-op. |

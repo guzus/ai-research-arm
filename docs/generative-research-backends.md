@@ -6,7 +6,7 @@ research pipeline:
 | Dispatch value | Served model | Auth path | Notes |
 |---|---|---|---|
 | `claude` | `claude-opus-4-7` | `CLAUDE_CODE_OAUTH_TOKEN` | Default for manual and issue-triggered generative research. Native Anthropic Claude Code path. |
-| `deepseek-v4-pro` (legacy token) | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
+| `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 
 ## Local Oracle / GPT-5.5 Pro
 
@@ -148,8 +148,8 @@ TOPIC="QA comparison: AI infrastructure power bottlenecks in 2026"
 
 gh workflow run generative-research.yml \
   -f topic="$TOPIC" \
-  -f slug="qa-deepseek-v4-pro-power-bottlenecks" \
-  -f backend=deepseek-v4-pro \
+  -f slug="qa-deepseek-v4-flash-power-bottlenecks" \
+  -f backend=deepseek-v4-flash \
   -f tags="qa,comparison,deepseek"
 
 gh workflow run generative-research.yml \
