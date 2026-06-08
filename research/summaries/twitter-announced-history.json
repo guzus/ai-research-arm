@@ -8814,5 +8814,40 @@
     "headline": "ARK'S CATHIE WOOD DEFENDS PRE-IPO AI NAMES \u2014 SPACEX, OPENAI, ANTHROPIC \u2014 AGAINST 'MONEY-LOSING' CRITICS",
     "source": "@ARKInvest",
     "url": "https://x.com/ARKInvest/status/2063980079827337460"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-06-08 19:02 UTC",
+    "headline": "APPLE SHIPS REBUILT 'SIRI AI' RUNNING ON CUSTOM GOOGLE GEMINI MODEL AT WWDC \u2014 NOT OPENAI",
+    "source": "WWDC 2026 keynote",
+    "url": "https://x.com/i/status/2064061146227757412"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-08 19:02 UTC",
+    "headline": "APPLE'S NEW SIRI AI BLOCKED IN EU AND CHINA AT LAUNCH AS DMA TALKS HIT DEAD END",
+    "source": "WWDC 2026 post-keynote",
+    "url": "https://x.com/i/status/2064060428863619542"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-08 19:02 UTC",
+    "headline": "iOS 27 LETS USERS SET CLAUDE, CHATGPT, GEMINI OR GROK AS DEFAULT AI ASSISTANT",
+    "source": "WWDC 2026 keynote",
+    "url": "https://x.com/i/status/2064045749260988811"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-08 19:02 UTC",
+    "headline": "iOS 27 / iPadOS 27 / macOS 27 DEV BETA LIVE NOW WITH SYSTEM-WIDE 'LIQUID GLASS' UI",
+    "source": "WWDC 2026 keynote",
+    "url": "https://x.com/i/status/2064053087946608646"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-08 19:02 UTC",
+    "headline": "TIM COOK'S FINAL WWDC KEYNOTE \u2014 JOHN TERNUS TO TAKE OVER AS APPLE CEO IN SEPTEMBER",
+    "source": "WWDC 2026 keynote",
+    "url": "https://x.com/i/status/2064059964709388774"
   }
 ]
