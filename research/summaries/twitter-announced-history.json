@@ -8737,5 +8737,47 @@
     "headline": "HITACHI GRANTED CLAUDE MYTHOS PREVIEW ACCESS AS ANTHROPIC SCALES TO CRITICAL INFRA IN 15+ COUNTRIES",
     "source": "@ITLINE410513",
     "url": "https://x.com/ITLINE410513/status/2063794596078039490"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-08 10:47 UTC",
+    "headline": "KOSPI HALTED: SOUTH KOREA TRIPS CIRCUIT BREAKER ON ~8-9% PLUNGE AS BROADCOM AI-CHIP MISS REPRICES SEMIS TRADE",
+    "source": "@onechancefreedm",
+    "url": "https://x.com/onechancefreedm/status/2063871000000000000"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-08 10:47 UTC",
+    "headline": "AI TRADE UNWIND: NASDAQ -4.18% FRIDAY (WORST SINCE APRIL 2025), NVIDIA -6.2%, BROADCOM -7.9% ON CUSTOM-SILICON FEARS",
+    "source": "@capitalcom",
+    "url": "https://x.com/capitalcom/status/2063931000000000000"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-08 10:47 UTC",
+    "headline": "ANTHROPIC: `CLAUDE-MYTHOS-5` SLUG SPOTTED IN DEV MODE \u2014 MYTHOS MAY BECOME A FOURTH MODEL CLASS BESIDE HAIKU/SONNET/OPUS",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2063848000000000000"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-08 10:47 UTC",
+    "headline": "AMD TO INVEST UP TO \u00a32B IN UK AI AND COMPUTE OVER 5 YEARS, PARTNERING IMPERIAL COLLEGE LONDON AND ORIOLE NETWORKS",
+    "source": "@AIStockSavvy",
+    "url": "https://x.com/AIStockSavvy/status/2063927000000000000"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-06-08 10:47 UTC",
+    "headline": "WWDC TODAY 17:00 UTC: APPLE SET TO UNVEIL GEMINI-BACKED SIRI IN TIM COOK'S REPORTEDLY FINAL KEYNOTE AS CEO",
+    "source": "@aaronp613",
+    "url": "https://x.com/aaronp613/status/2063931000000000000"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-08 10:47 UTC",
+    "headline": "GROK LEAVES X PREMIUM WALLED GARDEN \u2014 NOW REACHABLE BY DEVELOPERS VIA CLOUDFLARE AI GATEWAY",
+    "source": "@contextreportai",
+    "url": "https://x.com/contextreportai/status/2063920000000000000"
   }
 ]
