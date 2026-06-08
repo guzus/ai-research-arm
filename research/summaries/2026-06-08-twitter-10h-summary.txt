@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-08 10:47 UTC
+
+CYCLE: The story turned from a launch into a selloff — Asia's open repriced the crowded AI/semiconductor trade.
+
+TOP STORIES:
+• KOSPI trips circuit breaker (~8-9% plunge, ~20min halt) on the tail of Broadcom's Friday AI-chip guidance miss; Nasdaq -4.18% Fri, worst since Apr 2025 [✓]
+• `claude-mythos-5-*` slug spotted in Dev Mode — Anthropic appears to be making Mythos its own model class alongside Haiku/Sonnet/Opus [⚠]
+• AMD commits up to £2B to UK AI compute over 5yrs (Imperial College London, Oriole Networks) amid a UK sovereign-AI push [✓]
+
+WATCH: WWDC keynote today 17:00 UTC (reportedly Tim Cook's last) — Gemini-Siri + on-device Foundation Models API the marquee expectation; plus the US cash open for whether semis extend Friday's losses.
+
+Full update on GitHub.
