@@ -1,0 +1,244 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "NAVER will expand sovereign AI infrastructure on the NVIDIA DSX platform starting at 55 megawatts with plans to move to gigawatt scale, expanding its GAK Sejong data center.",
+      "type": "event",
+      "source_urls": ["https://nvidianews.nvidia.com/news/naver-ai-infrastructure"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "The June 2026 NAVER-NVIDIA release names no GPU count, no specific chip SKU, no dollar capex figure, and no full build-out timeline beyond an H2 2026 agent-platform launch.",
+      "type": "technical",
+      "source_urls": ["https://nvidianews.nvidia.com/news/naver-ai-infrastructure"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "At the October 2025 APEC summit in Gyeongju, NVIDIA, the Korean government and four conglomerates committed to deploy over 260,000 NVIDIA GPUs, valued at up to 14 trillion won (about $9.8 billion) by 2030.",
+      "type": "event",
+      "source_urls": ["https://nvidianews.nvidia.com/news/south-korea-ai-infrastructure", "https://www.kedglobal.com/tech,-media-telecom/newsView/ked202510310020"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2025-10-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Within the APEC allocation, NAVER Cloud plans to deploy over 60,000 GPUs, the largest single corporate allocation, with Samsung, SK and Hyundai each over 50,000 and the government up to 50,000.",
+      "type": "comparison",
+      "source_urls": ["https://nvidianews.nvidia.com/news/south-korea-ai-infrastructure", "https://www.koreaherald.com/article/10606193"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2025-10-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "NAVER Cloud was eliminated in January 2026 from the first evaluation round of Korea's Sovereign AI Foundation Model project because its entry relied on fine-tuning overseas models, including using Alibaba Qwen 2.5-VL weights without updates; LG AI Research, SK Telecom and Upstage advanced and NAVER said it will not re-enter.",
+      "type": "event",
+      "source_urls": ["https://www.koreaherald.com/article/10656367"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-01-15",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "LG EXAONE 4.0 ranked 11th globally on the Artificial Analysis Intelligence Index (MMLU-Pro 81.8%, AIME 2025 85.3%), outscoring HyperCLOVA X on global reasoning benchmarks, while HyperCLOVA X leads on Korean-language benchmarks.",
+      "type": "comparison",
+      "source_urls": ["https://www.theinvestor.co.kr/article/10554458"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-07-15",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c7",
+      "claim": "Amazon Web Services holds roughly 60-70% of Korea's cloud market, Microsoft around 10-12%, and NAVER around 7%; AWS received CSAP Low certification in April 2025, entering the public-sector tier that was the domestic sovereignty moat.",
+      "type": "market-structure",
+      "source_urls": ["https://www.koreatimes.co.kr/www/tech/2024/09/129_342689.html", "https://www.marketreportanalytics.com/reports/south-korea-cloud-computing-market-87712"],
+      "source_tiers": ["secondary", "opinion"],
+      "as_of": "2025-04",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c8",
+      "claim": "KEPCO carried total debt around 203 trillion won (about $151 billion) after near-bankruptcy in 2023, then swung to roughly 8.9 trillion won operating profit in 2024 on tariff hikes and lower fuel costs.",
+      "type": "metric",
+      "source_urls": ["https://www.koreaherald.com/article/3395050", "https://www.koreaherald.com/article/10409931"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2024-12",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c9",
+      "claim": "Korea's industrial electricity price reached about 182.7 won/kWh (~$0.13) after an October 2024 hike, roughly 65% above the US industrial rate of about $0.08/kWh, making cheap power a headwind rather than a tailwind for Korean AI data centers.",
+      "type": "comparison",
+      "source_urls": ["https://energynews.pro/en/south-korea-9-7-industrial-electricity-rate-hike-to-reduce-kepcos-losses/", "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_5_03"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2024-10",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "KEPCO grid-supply confirmation now takes about 12 months versus 2-3 months previously, and over 55% of transmission and substation projects are delayed as of October 2025.",
+      "type": "metric",
+      "source_urls": ["https://www.msn.com/en-xl/news/other/over-half-of-kepco-grid-projects-delayed-risking-renewable-expansion/ar-AA1ORvxw"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-10",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "NAVER GAK Sejong opened November 2023 with a planned 270MW capacity fed from a 154kV substation; reaching gigawatt scale on site would require a higher-voltage 345kV-class interconnection.",
+      "type": "technical",
+      "source_urls": ["https://www.datacentermap.com/south-korea/sejong/naver-gak-sejong/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2023-11",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "A 1GW GB200-class AI data center costs roughly $38 billion up-front with about $8.5 billion per year total cost of ownership under a 5-year IT life; shortening that life to 3 years raises annual cost to about $12 billion (+41%).",
+      "type": "metric",
+      "source_urls": ["https://epoch.ai/data-insights/ai-datacenter-cost-breakdown"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-14",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c13",
+      "claim": "NVIDIA DSX MaxLPS lets AI factories deploy up to 40% more GPUs within the same power envelope, confirming megawatts not GPU count as the binding constraint.",
+      "type": "technical",
+      "source_urls": ["https://nvidianews.nvidia.com/news/dsx-infrastructure-ai-factory", "https://www.nextplatform.com/ai/2026/06/02/nvidia-extends-its-grip-on-the-ai-datacenter-outwards/5250344"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-05-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "Bare-metal GPU clouds run 55-65% gross margin before depreciation but have almost no margin of safety; returns flatline if utilization slips below 80% or rental prices dip.",
+      "type": "technical",
+      "source_urls": ["https://newsletter.semianalysis.com/p/ai-neocloud-playbook-and-anatomy"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c15",
+      "claim": "NAVER FY2025 revenue was 12.04 trillion won (+12.1%) with operating profit 2,208 billion won (+11.6%), but net income fell 5.8% to 1,820 billion won; Q1 2026 operating margin compressed to 16.7%.",
+      "type": "metric",
+      "source_urls": ["https://www.navercorp.com/en/media/pressReleasesDetail?seq=10034270", "https://www.thepickool.com/naver-fy2025-revenue-hits-krw-12-04-trillion-on-ad-growth/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-04-30",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "NAVER's FY2025 capex more than doubled to 1,317 billion won as GPU and computing-asset purchases drove infrastructure expenses up 32.5% year-on-year, per CFO Kim Hee-cheol on the Q1 2026 call.",
+      "type": "quote",
+      "source_urls": ["https://www.alphaspread.com/security/krx/035420/investor-relations/earnings-call/q1-2026", "https://www.thelec.net/news/articleView.html?idxno=10822"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-04-30",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "NAVER's cloud/enterprise segment is roughly 1.4-5% of group revenue, so the AI data-center business is optionality rather than a current earnings driver.",
+      "type": "market-structure",
+      "source_urls": ["https://matrixbcg.com/blogs/how-it-works/navercorp", "https://www.digitaltoday.co.kr/en/view/3168/naver-annual-revenue-tops-12-trillion-won-commerce-fintech-drive-growth"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-02-06",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "NAVER trades around 16x forward earnings versus roughly 22x for Alphabet and 25x for Meta, with a 27-analyst consensus target near 292,500 won against a spot near 279,000 won, implying only about 5% upside; recent broker targets have been cut on margin compression.",
+      "type": "metric",
+      "source_urls": ["https://www.investing.com/equities/nhn-corp-consensus-estimates", "https://simplywall.st/stocks/kr/media/kose-a035420/naver-shares/future"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-08",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "NAVER shares rose about 14% to 290,500 won on the June 8 2026 DSX news even as the KOSPI fell nearly 9% and the KOSDAQ triggered a circuit breaker amid a memory-chip selloff.",
+      "type": "event",
+      "source_urls": ["https://www.investing.com/news/stock-market-news/south-koreas-naver-rallies-on-nvidia-ai-partnership-4729773", "https://www.digitaltoday.co.kr/en/view/61433/kosdaq-triggers-circuit-breaker-after-8-percent-plunge-following-kospi-drop"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "SK Hynix posted a record Q1 2026 with 52.6 trillion won revenue and 37.6 trillion won operating profit at a 72% operating margin, higher than NVIDIA's or TSMC's most recent margins, and its shares rose roughly seven-fold over twelve months.",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2026/04/23/sk-hynix-earnings-ai-memory-shortage-hbm-demand.html", "https://news.skhynix.com/sk-hynix-announces-fy25-financial-results/"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-04-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c21",
+      "claim": "SK Hynix is expected to supply roughly two-thirds of NVIDIA's HBM4, and HBM plus advanced packaging account for about two-thirds of a Blackwell B200's unit cost, making Korean memory the prime value-capture layer of each AI server.",
+      "type": "comparison",
+      "source_urls": ["https://www.trendforce.com/news/2026/01/28/news-sk-hynix-reportedly-to-supply-about-two-thirds-of-nvidia-hbm4-samsung-targets-early-delivery/", "https://epoch.ai/data-insights/b200-cost-breakdown"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-01-28",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c22",
+      "claim": "An MIT study found 95% of enterprise generative-AI pilots produced zero measurable return, and Bain estimates the global AI buildout needs $2 trillion of annual revenue by 2030 while falling about $800 billion short.",
+      "type": "forecast",
+      "source_urls": ["https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/", "https://www.bain.com/about/media-center/press-releases/20252/$2-trillion-in-new-revenue-needed-to-fund-ais-scaling-trend---bain--companys-6th-annual-global-technology-report/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2025-09-23",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c23",
+      "claim": "NVIDIA CEO Jensen Huang is the chief promoter of sovereign AI, arguing every country must own the production of its own intelligence, and has framed roughly $1 trillion of cumulative Blackwell and Rubin demand through 2027.",
+      "type": "quote",
+      "source_urls": ["https://blogs.nvidia.com/blog/world-governments-summit/", "https://www.fool.com/investing/2026/03/24/jensen-huang-sees-1-trillion-in-demand-3-ai-stocks/"],
+      "source_tiers": ["primary", "opinion"],
+      "as_of": "2024-02-12",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "GPU depreciation is contested: hyperscalers assume 5-6 year useful lives while critics argue 2-3 years; CoreWeave depreciates GPUs over 6 years and Nebius over 4 years for identical chips.",
+      "type": "comparison",
+      "source_urls": ["https://deepquarry.substack.com/p/depreciation-of-gpus-between-useful", "https://www.cnbc.com/2025/11/14/ai-gpu-depreciation-coreweave-nvidia-michael-burry.html"],
+      "source_tiers": ["opinion", "opinion"],
+      "as_of": "2025-11-14",
+      "confidence": "medium",
+      "risk": "contested"
+    }
+  ]
+}

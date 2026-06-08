@@ -551,5 +551,26 @@
     "source": "local",
     "prompt": "3d printer stocks",
     "tags": []
+  },
+  {
+    "slug": "naver-nvidia-sovereign-ai-gigawatt-bet",
+    "file": "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Sovereign by the megawatt",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-06-08T07:57:13Z",
+    "source": "workflow_dispatch",
+    "prompt": "expand research from this: https://contents.premium.naver.com/umbrellaresearch/richguy/contents/260608125327204tf",
+    "tags": [
+      "korea",
+      "nvidia",
+      "naver",
+      "sovereign-ai",
+      "data-center",
+      "hbm",
+      "sk-hynix",
+      "kospi"
+    ]
   }
 ]

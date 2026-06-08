@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "NVIDIA's own release says NAVER \"will expand sovereign AI infrastructure, starting at 55 megawatts with plans to move to gigawatt scale using the NVIDIA DSX platform,\" anchored at the GAK Sejong data center.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "In the first evaluation round, announced January 15, 2026, NAVER Cloud was eliminated. LG AI Research ranked first; SK Telecom and Upstage advanced.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "SK Hynix posted a record Q1 2026 — 52.6 trillion won revenue, 37.6 trillion won operating profit, a 72% operating margin higher than NVIDIA's or TSMC's most recent — and management said customer HBM demand for the next three years already exceeds its supply capacity.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
