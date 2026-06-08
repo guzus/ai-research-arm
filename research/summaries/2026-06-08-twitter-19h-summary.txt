@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-08 19:02 UTC
+
+CYCLE: WWDC delivered — Apple's rebuilt "Siri AI" runs on a custom Google Gemini model, at Tim Cook's last keynote.
+
+TOP STORIES:
+• Apple ships ground-up "Siri AI" on Google Gemini; iOS 27 dev beta live now [✓]
+• New Siri AI blocked in EU and China at launch over a DMA dead-end [⚠]
+• iOS 27 lets users set Claude, ChatGPT, Gemini or Grok as a default assistant [✓]
+
+WATCH: US cash close (20:00 UTC) + Apple's official iOS 27 docs confirming the Gemini backend and EU/China region restrictions.
+
+Full update on GitHub.
