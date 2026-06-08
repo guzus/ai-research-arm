@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-06-08 01:24 UTC
+
+CYCLE: Quiet US-overnight window — no frontier launch; all eyes on Apple's WWDC keynote later today.
+
+TOP STORIES:
+• Apple WWDC keynote today (10am PT/17:00 UTC): Gemini-powered Siri expected, reportedly Tim Cook's last keynote as CEO — anticipation, not yet announced [⚠]
+• Open-weights wave keeps cresting — Gemma 4 12B (Apache, runs on 16GB) hands-on shows real capability + a reliability footgun; Holo 3.1, Nemotron 3, Mellum2 all live [✓]
+
+WATCH: WWDC keynote 17:00 UTC — Siri ship date, Gemini-backend confirmation, AI-assistant marketplace, Cook→Ternus transition.
+
+NOTE: A few aggregators already (falsely) posted "Gemini Siri officially announced" before the keynote — premature, not real.
+
+Full update on GitHub.
