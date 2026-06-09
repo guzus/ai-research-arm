@@ -8919,5 +8919,40 @@
     "headline": "ANTHROPIC SELF-REPORTS FABLE 5 AT 80.3% ON SWE-BENCH PRO VS GPT-5.5 58.6% AND GEMINI 3.1 PRO 54.2% \u2014 NO INDEPENDENT EVAL YET",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2064394487317528592"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-09 18:59 UTC",
+    "headline": "KARPATHY CALLS CLAUDE FABLE 5 A 'MAJOR-VERSION-BUMP STEP CHANGE' \u2014 SOTA ON EVERYTHING BY A MARGIN",
+    "source": "@karpathy",
+    "url": "https://x.com/karpathy/status/2064409694761054332"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-09 18:59 UTC",
+    "headline": "FABLE 5 BACKLASH: USERS SAY OPUS 4.8 SAFETY REROUTE FIRES ON BENIGN QUERIES, BURNS ~2X TOKENS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2064406584923464174"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-09 18:59 UTC",
+    "headline": "GOOGLE SHIPS GEMINI 3.5 LIVE TRANSLATE \u2014 REAL-TIME SPEECH-TO-SPEECH, 70+ LANGUAGES, LIVE IN API NOW",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2064369125447864674"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-09 18:59 UTC",
+    "headline": "GOOGLE TO GUARANTEE ~$35B OF TPU LEASES FOR ANTHROPIC ACROSS 5 US DATA CENTERS; BROADCOM DESIGNS CHIPS",
+    "source": "@Sam_Badawi",
+    "url": "https://x.com/Sam_Badawi/status/2064420693048193485"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-09 18:59 UTC",
+    "headline": "FABLE 5 LISTS AT $10/$50 PER M \u2014 ~70% CHEAPER THAN GPT-5.5 PRO AT $30/$180, BUT ~2X OPUS 4.8",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2064407019537170731"
   }
 ]
