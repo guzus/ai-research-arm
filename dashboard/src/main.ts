@@ -424,6 +424,20 @@ function fmtDate(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
+/** A dated artifact (digest/twitter/front-page for `YYYY-MM-DD`) is treated as
+ * immutable — and therefore safe to serve straight from the HTTP cache without
+ * a forced revalidation round-trip — only when its date is comfortably in the
+ * past. We keep a one-day buffer (strictly before *yesterday*, local time) so
+ * timezone skew between the viewer's local clock and the pipeline's UTC write
+ * schedule can never cause a still-updating "today"/"yesterday" file (the
+ * digest regenerates daily; the twitter report rewrites every few hours) to be
+ * mistakenly cached. Today's and yesterday's files keep `cache: 'no-cache'`. */
+function isImmutableDate(dateStr: string): boolean {
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  return dateStr < fmtDate(yesterday);
+}
+
 function displayDate(d: Date): string {
   return d.toLocaleDateString('en-US', {
     weekday: 'long',
@@ -451,15 +465,19 @@ async function loadManifest(): Promise<Manifest | null> {
     try {
       const resp = await fetch(`${DATA_BASE}/manifest.json`, { cache: 'no-cache' });
       if (!resp.ok) return null;
-      const m = (await resp.json()) as Partial<Manifest>;
+      // `digest` is a legacy alias for `today` that older manifests emitted;
+      // it's not part of the current Manifest shape, so type the parsed object
+      // as Partial<Manifest> plus that one optional legacy key rather than
+      // reaching for `as any`.
+      const m = (await resp.json()) as Partial<Manifest> & { digest?: unknown };
       // Normalize: ensure all sources have an array
       const normalized: Manifest = {
-        today: Array.isArray(m.today) ? m.today : (Array.isArray((m as any).digest) ? (m as any).digest : []),
+        today: Array.isArray(m.today) ? m.today : (Array.isArray(m.digest) ? m.digest : []),
         twitter: Array.isArray(m.twitter) ? m.twitter : [],
         models: Array.isArray(m.models) ? m.models : [],
         frontpage: Array.isArray(m.frontpage) ? m.frontpage : [],
-        audio: Array.isArray((m as any).audio) ? (m as any).audio : [],
-        generative: Array.isArray((m as any).generative) ? (m as any).generative as GenResearchRow[] : [],
+        audio: Array.isArray(m.audio) ? m.audio : [],
+        generative: Array.isArray(m.generative) ? m.generative : [],
       };
       manifest = normalized;
       // Pre-populate availability cache from manifest
@@ -695,16 +713,43 @@ function escapeHtml(str: string): string {
 }
 
 /** Safely set element content using DOMPurify + insertAdjacentHTML.
- * `iframe` is allowed only with sandbox/src/loading/title attributes; we
- * use it for standalone research docs whose styling/scripts are isolated
- * inside a sandboxed iframe. Fragments cannot embed iframes — the writer's
- * deny list rejects <iframe in fragment bodies before they reach here. */
-function setSafeContent(el: HTMLElement, rawHtml: string): void {
+ *
+ * By default `iframe` is FORBIDDEN. Almost everything that flows through here
+ * is LLM-synthesized and/or sourced from adversarial inputs (the daily digest,
+ * the Twitter report, model tickets, the gen-research article body) and none
+ * of it passes the fragment validator — so an injected raw `<iframe>` must not
+ * survive (clickjacking/redress/referrer-leak via an un-sandboxed external
+ * frame; inline JS is already stripped). This mirrors `setSafeWikiContent`
+ * below, which likewise forbids iframe.
+ *
+ * The ONE trusted exception is the standalone research-doc view, which embeds
+ * its own iframe that *we* construct with a sandboxed (`sandbox="allow-scripts"`,
+ * no `allow-same-origin`) escapeHtml'd src. That single call site passes
+ * `{ allowIframe: true }`; it is the only caller permitted to. The iframe
+ * still renders THROUGH this sanitizer, so the allowance is opt-in rather
+ * than a bypass. */
+function setSafeContent(
+  el: HTMLElement,
+  rawHtml: string,
+  opts: { allowIframe?: boolean } = {},
+): void {
   while (el.firstChild) el.removeChild(el.firstChild);
+  // `src`/`loading`/`decoding`/`controls`/`preload` serve the <audio>/<img>
+  // elements that also flow through here (front-page image, digest/article
+  // audio players), so they stay in the default allowlist; they are NOT
+  // iframe-only.
+  const addTags = ['mark', 'article', 'figure', 'figcaption', 'audio', 'nav', 'section', 'details', 'summary'];
+  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src'];
+  if (opts.allowIframe) {
+    // iframe + its iframe-only attributes are re-enabled exclusively for the
+    // trusted, self-constructed sandboxed standalone-doc iframe.
+    addTags.push('iframe');
+    addAttr.push('sandbox', 'allow', 'referrerpolicy');
+  }
   const clean = DOMPurify.sanitize(rawHtml, {
     USE_PROFILES: { html: true, svg: true, svgFilters: true },
-    ADD_TAGS: ['mark', 'article', 'figure', 'figcaption', 'iframe', 'audio', 'nav', 'section', 'details', 'summary'],
-    ADD_ATTR: ['id', 'href', 'type', 'data-slug', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-expanded', 'aria-controls', 'sandbox', 'loading', 'allow', 'decoding', 'referrerpolicy', 'controls', 'preload', 'src'],
+    ADD_TAGS: addTags,
+    ADD_ATTR: addAttr,
   });
   el.insertAdjacentHTML('beforeend', clean);
 }
@@ -1013,9 +1058,20 @@ function isViteAppShell(text: string): boolean {
   return text.slice(0, 200).trim().toLowerCase().startsWith('<!doctype html');
 }
 
-async function fetchMarkdownReport(url: string, signal: AbortSignal): Promise<string | null> {
+// `cache: 'no-cache'` forces a conditional-GET revalidation round-trip on
+// every fetch. That's correct for files the pipeline still rewrites (today's
+// digest/report, the always-mutable manifest, CRUD'd wiki pages) but pure
+// latency waste for past dated artifacts that never change again. Callers pass
+// `immutable: true` for those so the browser can serve them from cache without
+// a round-trip; the default stays `no-cache` so nothing becomes stale by
+// accident.
+async function fetchMarkdownReport(
+  url: string,
+  signal: AbortSignal,
+  immutable = false,
+): Promise<string | null> {
   try {
-    const resp = await fetch(url, { signal, cache: 'no-cache' });
+    const resp = await fetch(url, { signal, cache: immutable ? 'default' : 'no-cache' });
     if (!resp.ok) return null;
     const text = await resp.text();
     return isViteAppShell(text) ? null : text;
@@ -1027,13 +1083,17 @@ async function fetchMarkdownReport(url: string, signal: AbortSignal): Promise<st
 
 async function fetchTwitter(dateStr: string, signal: AbortSignal): Promise<string | null> {
   const url = `${DATA_BASE}/twitter/${dateStr}.md`;
-  return fetchMarkdownReport(url, signal);
+  return fetchMarkdownReport(url, signal, isImmutableDate(dateStr));
 }
 
 async function fetchFrontPage(dateStr: string, signal: AbortSignal): Promise<string | null> {
   const url = `${DATA_BASE}/front-page/${dateStr}-front-page.png`;
   try {
-    const resp = await fetch(url, { method: 'HEAD', signal, cache: 'no-cache' });
+    const resp = await fetch(url, {
+      method: 'HEAD',
+      signal,
+      cache: isImmutableDate(dateStr) ? 'default' : 'no-cache',
+    });
     if (!resp.ok) return null;
     const contentType = (resp.headers.get('content-type') || '').toLowerCase();
     if (!contentType.startsWith('image/')) return null;
@@ -1047,7 +1107,10 @@ async function fetchFrontPage(dateStr: string, signal: AbortSignal): Promise<str
 async function fetchFrontPageHtml(dateStr: string, signal: AbortSignal): Promise<string | null> {
   const url = `${DATA_BASE}/front-page/${dateStr}-front-page.html`;
   try {
-    const resp = await fetch(url, { signal, cache: 'no-cache' });
+    const resp = await fetch(url, {
+      signal,
+      cache: isImmutableDate(dateStr) ? 'default' : 'no-cache',
+    });
     if (!resp.ok) return null;
     const text = await resp.text();
     if (isViteAppShell(text) || !text.includes('class="ara-paper"')) return null;
@@ -1088,7 +1151,9 @@ async function findFrontPageAtOrBefore(
 
 async function fetchDigest(dateStr: string, signal: AbortSignal): Promise<string | null> {
   const url = `${DATA_BASE}/digest/${dateStr}-digest.md`;
-  return fetchMarkdownReport(url, signal);
+  // Past digests are immutable; today's/yesterday's keep no-cache because the
+  // digest workflow can regenerate the current day's file.
+  return fetchMarkdownReport(url, signal, isImmutableDate(dateStr));
 }
 
 async function fetchResearchDoc(row: GenResearchRow, signal: AbortSignal): Promise<string | null> {
@@ -1266,6 +1331,59 @@ function highlightPlainText(text: string): string {
   const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const re = new RegExp('(' + escaped + ')', 'gi');
   return escapedText.replace(re, '<mark>$1</mark>');
+}
+
+// Ancestors whose text must NOT be wrapped in <mark>: SVG charts (axis labels
+// etc. — wrapping there breaks the rendered chart), code/pre (highlighting code
+// noise), and any element we've already marked.
+const HIGHLIGHT_SKIP_ANCESTORS = new Set(['SVG', 'CODE', 'PRE', 'MARK', 'SCRIPT', 'STYLE', 'TEXTAREA']);
+
+/** Wrap occurrences of `searchTerm` in `<mark>` by walking the rendered DOM's
+ * text nodes — the markup-safe replacement for the old `>([^<]+)<` regex over
+ * serialized HTML, which could corrupt chart `data-*` attributes and element
+ * markup. Operates on real Text nodes only, so structure is never touched; it
+ * skips nodes inside SVG/code/pre/existing-mark subtrees. Idempotent enough for
+ * a single render pass (each text node is matched at most once). */
+function highlightSearchMatches(root: HTMLElement, term: string): void {
+  if (!term) return;
+  const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Collect first, mutate after — never mutate the tree the walker is reading.
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      let el = node.parentElement;
+      while (el && el !== root) {
+        // nodeName is upper-case for HTML; SVG elements report e.g. 'svg'/'text',
+        // so compare case-insensitively for the SVG subtree guard.
+        if (HIGHLIGHT_SKIP_ANCESTORS.has(el.nodeName.toUpperCase())) return NodeFilter.FILTER_REJECT;
+        el = el.parentElement;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    },
+  });
+  const targets: Text[] = [];
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+    if (n.nodeValue && new RegExp(escaped, 'i').test(n.nodeValue)) targets.push(n as Text);
+  }
+  for (const textNode of targets) {
+    const value = textNode.nodeValue || '';
+    const re = new RegExp('(' + escaped + ')', 'gi');
+    const frag = document.createDocumentFragment();
+    let lastIndex = 0;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(value))) {
+      if (m.index > lastIndex) frag.appendChild(document.createTextNode(value.slice(lastIndex, m.index)));
+      const mark = document.createElement('mark');
+      mark.textContent = m[0];
+      frag.appendChild(mark);
+      lastIndex = m.index + m[0].length;
+      // Guard against zero-length matches looping forever (escaped term is
+      // always non-empty here, but be defensive).
+      if (m[0].length === 0) re.lastIndex++;
+    }
+    if (lastIndex < value.length) frag.appendChild(document.createTextNode(value.slice(lastIndex)));
+    textNode.parentNode?.replaceChild(frag, textNode);
+  }
 }
 
 function extractUrls(md: string): string[] {
@@ -2487,15 +2605,11 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
 }
 
 function renderResearchDoc(row: GenResearchRow, body: string): void {
-  let docHtml = body;
-  if (searchTerm) {
-    const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const re = new RegExp('(' + escaped + ')', 'gi');
-    // Apply mark only to text outside tags. Simple split-by-tag pass.
-    docHtml = docHtml.replace(/>([^<]+)</g, (_m, text: string) => {
-      return '>' + text.replace(re, '<mark>$1</mark>') + '<';
-    });
-  }
+  // The article body is inserted verbatim and search matches are highlighted
+  // AFTER render by walking the DOM's text nodes (see highlightSearchMatches),
+  // which can't corrupt chart `data-*` attributes the way the old regex over
+  // serialized HTML could.
+  const docHtml = body;
   const created = new Date(row.created_at);
   const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
 
@@ -2546,6 +2660,14 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     scrollToHashIfPresent();
   } else {
     hideResearchTOC();
+  }
+
+  // Highlight search matches LAST — after every chart/SVG has rendered — so the
+  // text-node walk skips already-built SVG subtrees and only marks prose. Runs
+  // on the whole body so non-ara-doc article shapes are highlighted too.
+  if (searchTerm) {
+    const cardBody = content.querySelector('.content-card-body') as HTMLElement | null;
+    if (cardBody) highlightSearchMatches(cardBody, searchTerm);
   }
 }
 
@@ -4410,6 +4532,11 @@ function renderResearchStandalone(row: GenResearchRow): void {
       '  <iframe class="gen-research-iframe" src="' + escapeHtml(src) + '" sandbox="allow-scripts" loading="lazy" title="' + escapeHtml(row.title) + '"></iframe>',
       '</div>',
     ].join('\n'),
+    // The standalone-doc view is the ONLY trusted caller allowed to keep the
+    // iframe above (sandboxed, no allow-same-origin, escapeHtml'd src). Every
+    // other setSafeContent caller renders LLM/adversarial content with iframe
+    // forbidden by default.
+    { allowIframe: true },
   );
   setDocTitle(row.title);
   updateResearchAudioUi();

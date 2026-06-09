@@ -178,18 +178,25 @@ function buildTicketsIndex() {
   const files = readdirSync(ticketsSrc).filter((n) => n.endsWith('.md')).sort();
   if (files.length === 0) return;
 
+  // A single malformed ticket among ~55 must NOT fail the whole deploy: skip
+  // the bad file and warn, then ship the rest of the timeline. scripts/
+  // check_model_tickets.py (run in CI) is the hard schema gate; this copy step
+  // is best-effort so one corrupt autonomous-agent write can't stale the site.
   const tickets = [];
+  let skipped = 0;
   for (const name of files) {
     const path = join(ticketsSrc, name);
     const text = readFileSync(path, 'utf8');
     if (!text.startsWith('---\n')) {
-      console.error(`prebuild: tickets/${name}: missing leading '---'`);
-      process.exit(1);
+      console.warn(`prebuild: WARNING — tickets/${name}: missing leading '---'; skipping ticket`);
+      skipped++;
+      continue;
     }
     const end = text.indexOf('\n---\n', 4);
     if (end < 0) {
-      console.error(`prebuild: tickets/${name}: missing closing '---'`);
-      process.exit(1);
+      console.warn(`prebuild: WARNING — tickets/${name}: missing closing '---'; skipping ticket`);
+      skipped++;
+      continue;
     }
     const header = text.slice(4, end);
     const body = text.slice(end + 5).replace(/^\n+/, '');
@@ -197,12 +204,14 @@ function buildTicketsIndex() {
     try {
       fm = yaml.load(header);
     } catch (e) {
-      console.error(`prebuild: tickets/${name}: YAML parse error: ${e.message}`);
-      process.exit(1);
+      console.warn(`prebuild: WARNING — tickets/${name}: YAML parse error: ${e.message}; skipping ticket`);
+      skipped++;
+      continue;
     }
     if (!fm || typeof fm !== 'object') {
-      console.error(`prebuild: tickets/${name}: frontmatter is not a mapping`);
-      process.exit(1);
+      console.warn(`prebuild: WARNING — tickets/${name}: frontmatter is not a mapping; skipping ticket`);
+      skipped++;
+      continue;
     }
     // Normalize date fields to ISO strings so JSON round-trips cleanly.
     const isoDate = (v) => (v instanceof Date ? v.toISOString().slice(0, 10) : v);
@@ -222,7 +231,11 @@ function buildTicketsIndex() {
     acc[t.status] = (acc[t.status] || 0) + 1;
     return acc;
   }, {});
-  console.log(`prebuild: tickets/index.json (${tickets.length} tickets)`, byStatus);
+  console.log(
+    `prebuild: tickets/index.json (${tickets.length} tickets` +
+    (skipped > 0 ? `, ${skipped} skipped as malformed` : '') + ')',
+    byStatus,
+  );
 }
 
 function buildManifest() {
@@ -232,7 +245,20 @@ function buildManifest() {
   }
   const genIndex = join(publicResearch, 'generative', 'index.json');
   if (existsSync(genIndex)) {
-    manifest.generative = JSON.parse(readFileSync(genIndex, 'utf8'));
+    // A half-written/malformed generative index (the publish + audio-backfill
+    // agents write this file) must NOT crash the whole deploy — degrade to an
+    // empty generative list and warn, so the rest of the site still ships.
+    // check_generative_research.py / write_generative_research.py remain the
+    // hard gate; this is only the deploy-time copy step.
+    try {
+      manifest.generative = JSON.parse(readFileSync(genIndex, 'utf8'));
+    } catch (e) {
+      console.warn(
+        `prebuild: WARNING — generative/index.json failed to parse (${e.message}); ` +
+        'shipping with an empty generative list for this build.',
+      );
+      manifest.generative = [];
+    }
   } else {
     manifest.generative = [];
   }
