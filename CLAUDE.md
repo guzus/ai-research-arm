@@ -31,7 +31,8 @@ and opens a PR with methodology fixes.
 | Path | What it is |
 |---|---|
 | [`ARA_DSL.md`](ARA_DSL.md) | Source format for generative-research articles. The compiler at `scripts/compile_ara.py` turns `.ara.md` into a validated `<article>` fragment. |
-| [`COMPONENTS.md`](COMPONENTS.md) | Reference for the `ara-*` component vocabulary the validator enforces. The CSS at `dashboard/src/components/ara-research.css` is the live source of truth — currently ~113 classes vs ~81 documented (see "Known drift" below). |
+| [`COMPONENTS.md`](COMPONENTS.md) | Human reference for the `ara-*` component vocabulary. The machine-readable contract the validator loads is [`ARA_CATALOG.json`](ARA_CATALOG.json); the two are kept in lockstep (CI-enforced — see "Component catalog" below). The CSS at `dashboard/src/components/ara-research.css` is the rendering source of truth and intentionally carries *more* `ara-*` classes than the article allowlist (runtime + front-page layers). |
+| [`ARA_CATALOG.json`](ARA_CATALOG.json) | Machine-readable ara-* component catalog the validator loads its class allowlist from. `scripts/ara_catalog.py` validates it stays in lockstep with COMPONENTS.md (CI-enforced; see "Component catalog" below). |
 | [`docs/generative-research-backends.md`](docs/generative-research-backends.md) | Backend matrix for the generative-research lane (Claude vs DeepSeek vs local Oracle), env mapping, comparison commands. |
 | [`docs/model-tickets.md`](docs/model-tickets.md) | Schema + lifecycle + dedup protocol for `research/models/tickets/*.md`. Read by the CRUD agent in `24h-model-timeline.yml` and enforced by `scripts/check_model_tickets.py`. |
 | [`docs/wiki-schema.md`](docs/wiki-schema.md) | Canonical schema + page conventions for the LLM Wiki (`research/wiki/`). Read at runtime by the ingest agent in `wiki-ingest.yml` and enforced by `scripts/check_wiki.py`. |
@@ -46,7 +47,7 @@ and opens a PR with methodology fixes.
 | Script | Purpose |
 |---|---|
 | `compile_ara.py` | `.ara.md` → validated HTML fragment. |
-| `decompile_ara.py` | HTML fragment → `.ara.md` source (round-trip). |
+| `ara_catalog.py` | Loads + validates `ARA_CATALOG.json` (the validator's class allowlist) and checks it stays in lockstep with COMPONENTS.md. `uv run python scripts/ara_catalog.py` (exit 0 = in sync); CI runs the same check via `test_ara_dsl.py`. |
 | `check_generative_research.py` | Pre-commit validator. Tag/class allowlist + optional `--diversity-min`, `--callout-max`, `--strict-shape` design gates. Exit 0 = safe to commit. |
 | `write_generative_research.py` | Single publisher for `research/generative/`. Validates body, writes HTML + DSL source, updates `index.json`, commits. |
 | `run_generative_research_oracle.py` | Local runner: bundles ARA docs + recent research, calls `../oracle` (GPT-5.5 Pro), extracts `.ara.md`, runs the validator with `--diversity-min 3 --callout-max 5 --strict-shape`, then hands to the writer. |
@@ -58,7 +59,25 @@ and opens a PR with methodology fixes.
 | `check_wiki.py` | Validator for `research/wiki/` pages against the schema in `docs/wiki-schema.md`. `uv run python scripts/check_wiki.py` (exit 0 = safe); `--lint` adds advisory checks. The ingest agent in `wiki-ingest.yml` runs it until exit 0; CI runs it on every PR. |
 | `wiki_search.py` | Search wrapper over `research/wiki/` (`uv run python scripts/wiki_search.py "<query>"`). The ingest agent runs it before writing any page so it UPDATEs an existing page instead of duplicating. |
 | `check_lane_freshness.py` | Freshness watchdog. Measures git-commit recency per research lane against per-lane cadence thresholds; exits 2 (and emits a hooker/Telegram alert from `liveness-check.yml`) when a lane is stale. Stdlib-only so it runs on both runner tiers. |
-| `test_ara_dsl.py`, `test_dedupe_headline_alerts.py` | Pytest-style tests run in CI. |
+| `build_wiki_index.py` | Rebuilds `research/wiki/index.json` from the wiki pages. **CI-load-bearing**: `ci.yml` runs `--check` (exit 1 if the committed index is stale or any page fails validation); `wiki-ingest.yml` regenerates it every run. |
+| `fetch_ai_blogs.py` | Per-feed AI-blog fetcher used by `daily-ai-blogs.yml`; boundary-handles bad feeds so one failure doesn't crash the run. |
+| `source_cache.py` | Runtime primary-source fetch cache under `data/source-cache/` (gitignored), used by `generative-research.yml`. |
+| `render_front_page.mjs` | Puppeteer/Chrome renderer for the daily newspaper PNG, used by `daily-front-page.yml`. |
+| `test_ara_dsl.py`, `test_dedupe_headline_alerts.py` | Pytest-style tests run in CI. (`test_ara_dsl.py` also asserts `ARA_CATALOG.json` ↔ `COMPONENTS.md` lockstep.) |
+
+#### Experimental / manually-run scripts (NOT in the automated pipeline)
+
+These exist in `scripts/` but are referenced by **zero** workflows — they
+are run by hand, not on a schedule. Tested and functional, but not
+pipeline code; don't assume the dashboard or any lane depends on them.
+
+| Script | Purpose |
+|---|---|
+| `generate_generative_article_audio.py` | Backfill TTS audio for a generative article (Gemini Flash TTS / Vertex). Run manually; needs `GEMINI_API_KEY`. |
+| `collect_viral_tweets.py`, `analyze_viral_tweets.py` | Viral-tweet collection + analysis. Write `research/twitter-viral/`. |
+| `analyze_overperformance.py`, `enrich_overperformance.py`, `experiment_overperf_cv.py` | Tweet-overperformance analysis / enrichment / cross-validation experiments. |
+| `enrich_bookmarks.py` | Enrich a bookmark export with engagement/features. |
+| `tweet_content.py`, `tweet_features.py`, `tweet_virality_verifier.py` | Tweet content/feature extraction + virality scoring helpers used by the viral/overperf cluster. |
 
 ## GitHub Actions Workflows
 
@@ -189,6 +208,7 @@ research/
 ├── twitter-deepseek/          # hourly-twitter.yml backend=deepseek-claude-code
 ├── twitter-deepseek-pi/       # hourly-twitter.yml backend=deepseek-pi
 ├── twitter-fireworks-pi/      # hourly-twitter.yml backend=fireworks-pi
+├── twitter-viral/             # experimental viral/overperf cluster (manual; see Scripts)
 └── wiki/                      # wiki-ingest.yml (compounding LLM knowledge base)
     ├── index.md                # entry point / page directory
     ├── log.md                  # append-only ingest log (one entry per run)
@@ -208,8 +228,11 @@ Secrets are configured in GitHub Actions. None are committed.
 | `FIREWORKS_API_KEY` | `generative-research backend=deepseek-v4-flash`; all `hourly-twitter.yml` non-claude lanes (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Required for the DeepSeek-V4-Flash-via-Fireworks and Kimi lanes. |
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | All bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies. |
 | `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional; enhance MCP search. |
+| `GEMINI_API_KEY` | `daily-digest` (inline Gemini Flash TTS for digest audio); also the manual `generate_generative_article_audio.py` | Optional; without it, audio generation is skipped. |
 | `HOOKER_TOKEN` | Telemetry composite action | Optional; without it, telemetry steps no-op. |
+| `HOOKER_URL` | Hooker telemetry composite + most workflows (the hooker endpoint, distinct from `HOOKER_TOKEN`) | The `https://hooker.guzus.xyz`-style base URL the telemetry/alert steps POST to. Referenced widely across workflows/actions. |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `hourly-twitter*` | For headline alert delivery. |
+| `VERCEL_DEPLOY_HOOK` | `24h-model-timeline`, `wiki-ingest` | Optional; belt-and-suspenders deploy trigger. When unset, the lane relies on Vercel's GitHub auto-deploy on push. |
 | `GITHUB_TOKEN` | All workflows | Auto-provided. |
 
 ## Load-bearing Rules
@@ -217,22 +240,28 @@ Secrets are configured in GitHub Actions. None are committed.
 These are the conventions that, if broken, will silently corrupt
 output or break the pipeline. Read them before editing.
 
-1. **ARA DSL round-trip is mandatory.** Every commit to
+1. **ARA DSL compile + validate is mandatory.** Every commit to
    `research/generative/` must go through
    `scripts/compile_ara.py` (`.ara.md` → HTML) and pass
    `scripts/check_generative_research.py` (tag/class allowlist plus
    optional `--diversity-min`, `--callout-max`, `--strict-shape`
    design gates). `scripts/write_generative_research.py` is the
    **only** committer for that directory — it re-validates at write
-   time. Workflows that bypass the writer will fail review.
+   time and persists the `.ara.md` source verbatim alongside the
+   generated HTML (there is no decompile step; the source is the
+   committed `.ara.md`, not something regenerated from the HTML).
+   Workflows that bypass the writer will fail review.
 
 2. **The validator is exact-match.** Class tokens must start with
-   `ara-` *and* be documented in `COMPONENTS.md` (or be a valid
-   `--variant` suffix of a documented class). Tags outside the
-   allowlist (`<style>`, `<script>`, `<iframe>`, `<h1>`, inline
-   `style=`, `on*=`, `javascript:` URLs) are rejected. Reach for
-   `:::raw` only when the DSL genuinely can't express the shape;
-   invented classes still fail.
+   `ara-` *and* be a base class in `ARA_CATALOG.json` (or be a valid
+   `--variant` suffix of a cataloged base class). The allowlist is
+   loaded from `ARA_CATALOG.json` (via `scripts/ara_catalog.py`), NOT
+   parsed from `COMPONENTS.md` — `COMPONENTS.md` is the human reference
+   kept in lockstep with the catalog (CI-enforced; see "Component
+   catalog"). Tags outside the allowlist (`<style>`, `<script>`,
+   `<iframe>`, `<h1>`, inline `style=`, `on*=`, `javascript:` URLs) are
+   rejected. Reach for `:::raw` only when the DSL genuinely can't
+   express the shape; invented classes still fail.
 
 3. **Dashboard deploys are git-push driven.** Vercel watches `main`
    and rebuilds on every push (root `dashboard/`). There is no
@@ -354,15 +383,42 @@ output or break the pipeline. Read them before editing.
   `env:` rather than direct `${{ }}` interpolation in `run:` blocks
   to avoid script-injection.
 
-## Known Drift
+## Component catalog
 
-- `dashboard/src/components/ara-research.css` defines ~113 `ara-*`
-  classes; `COMPONENTS.md` documents ~81. If you encounter an
-  undocumented `ara-*` class in a real article, grep the CSS (it's the
-  live source of truth) and add the missing primitive to
-  `COMPONENTS.md` in the same PR. The validator's allowlist comes from
-  `COMPONENTS.md`, so an undocumented class will be rejected at commit
-  time regardless of whether the CSS supports it.
+The article-fragment class allowlist lives in **`ARA_CATALOG.json`**
+(73 base `ara-*` classes). The validator
+(`scripts/check_generative_research.py` → `write_generative_research.py`
+→ `ara_catalog.load_catalog`/`catalog_classes`) loads its allowlist from
+that file, NOT from `COMPONENTS.md`. `COMPONENTS.md` is the human
+reference and documents the **same 73** classes;
+`scripts/ara_catalog.py` (`validate_catalog_against_components`) asserts
+the two stay in perfect lockstep and CI enforces it via
+`test_ara_dsl.py`. To add a new primitive, add it to BOTH files in the
+same PR (and ship the matching CSS); a class present in one but not the
+other fails CI.
+
+The CSS intentionally defines **more** `ara-*` classes than the article
+allowlist. The extra classes are NOT drift and are NOT a commit-time
+rejection risk — they belong to layers that live outside the
+article-fragment contract on purpose:
+
+- `dashboard/src/components/ara-research.css` defines ~98 base `ara-*`
+  classes total: the 73 cataloged article primitives (`ara-doc`,
+  `ara-callout`, `ara-figure`, …) that DO appear in `.ara.md` and ARE the
+  allowlist, **plus** ~25 **runtime/interactive extras** — table-of-
+  contents, figure lightbox, chart tooltips/axes/series (e.g.
+  `ara-chart-series-*`, built at `main.ts` ~line 3311) — injected by
+  `dashboard/src/main.ts` at runtime. The runtime extras never appear in
+  `.ara.md` source, so they don't need to be in the allowlist.
+- **Front-page template classes** (`ara-paper-*`, styled in
+  `dashboard/src/style.css`) used by the daily-front-page newspaper
+  render, which is its own template, not an ARA article.
+
+So a higher CSS class count than `COMPONENTS.md`/`ARA_CATALOG.json` is
+expected. Only worry about an undocumented class if it appears in an
+*article fragment* — and then the fix is to add it to both
+`ARA_CATALOG.json` and `COMPONENTS.md`, not to the CSS (the CSS may
+already have it).
 
 ## Historical Docs
 

@@ -77,7 +77,7 @@ flowchart TB
 
 | Source | Method | Frequency | Real-time? |
 |--------|--------|-----------|------------|
-| **Twitter/X** | bird CLI (33 accounts + 7 searches) | Every 3 hours | ✅ Yes |
+| **Twitter/X** | bird CLI (75 accounts + 7 searches) | Every 3 hours | ✅ Yes |
 | **RSS Feeds** | Direct XML fetch | Hourly | ✅ Yes |
 | **Bluesky** | Public API | Daily | ✅ Yes |
 | **Reddit** | RSS feeds | Every 4 hours | ✅ Yes |
@@ -124,7 +124,7 @@ gantt
 | `4h-community.yml` | Every 4 hours | Reddit RSS + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 06:13 UTC | arXiv papers | `research/arxiv/` |
 | `daily-digest.yml` | Daily 00:00 UTC | All sources + MCP search | `research/digest/` |
-| `hourly-twitter.yml` (matrix) | claude tier every 3h (`:07`), deepseek-claude-code tier every 6h (`:37`), deepseek-pi and fireworks-pi tiers manual | Twitter/X via bird CLI (50+ accounts, 7 search queries) | `research/twitter/` (claude) + `research/twitter-deepseek/` (Claude Code) + `research/twitter-deepseek-pi/` (pi) + `research/twitter-fireworks-pi/` (Fireworks pi) |
+| `hourly-twitter.yml` (matrix) | claude tier every 3h (`:07`), deepseek-claude-code tier every 6h (`:37`), deepseek-pi and fireworks-pi tiers manual | Twitter/X via bird CLI (75 accounts, 7 search queries) | `research/twitter/` (claude) + `research/twitter-deepseek/` (Claude Code) + `research/twitter-deepseek-pi/` (pi) + `research/twitter-fireworks-pi/` (Fireworks pi) |
 | `ai-news-research.yml` | Twice daily (08:23, 20:23 UTC) | Perplexity/Exa MCP | `research/` |
 | `daily-improve.yml` | Daily 00:17 UTC | Self-improvement | PRs with improvements |
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
@@ -283,7 +283,7 @@ dashboard/                          # Vite + Bun + TypeScript SPA
 ## Data Source Details
 
 ### Twitter/X (Every 3 hours)
-Via [bird CLI](https://github.com/steipete/bird) — 33 monitored accounts, 20 tweets each, 7 search queries.
+Via [bird CLI](https://github.com/steipete/bird) — 75 monitored accounts, 20 tweets each, 7 search queries.
 
 **AI Labs & Companies (11):**
 OpenAI, Anthropic, Google AI, DeepMind, Mistral, Meta AI, Cohere, AI21Labs, Stability AI, Hugging Face, NVIDIA AI Dev
