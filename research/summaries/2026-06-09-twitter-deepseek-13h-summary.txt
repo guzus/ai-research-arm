@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-06-09 13:42 UTC
+
+CYCLE: Infrastructure financing and regulatory standoff — Broadcom/Anthropic $35B, Apple-EU Siri AI clash, AI worm security escalation.
+
+TOP STORIES:
+• Broadcom launches $35B AI XPV Platform with Apollo/Blackstone — first tranche funds Anthropic 1GW compute expansion ✓
+• Apple refuses to launch Siri AI in EU over DMA standoff — Commission says nothing blocks it ✓
+• AI worm self-replicates across 62% test network using local open-weight LLM — no API to revoke ⚠
+• Microsoft signed open-source packages compromised targeting AI coding agents ⚠
+
+WATCH: Anthropic Mythos release "tomorrow" per Polymarket — potential model launch event.
+
+Full update on GitHub.
