@@ -1,0 +1,14 @@
+AI News - 2026-06-09
+
+Quiet post-WWDC day. One net-new megaround; no frontier model shipped.
+
+TOP STORIES:
+• PhysicsX closes $300M Series C led by Temasek at ~$2.4B valuation — NVIDIA/Siemens/Atomico-backed "Large Physics Models" for industrial engineering
+• June 9 funding roundup: PointFive $60M Series B (Accel, AI cloud-cost cutting); A Security $37M (autonomous pentesting); Edge Markets $29.2M Series A
+• Leaked OpenAI dev docs point to a June 9 GA target for a ChatGPT "superapp" redesign (unconfirmed by OpenAI)
+
+KEY NUMBERS:
+• PhysicsX: $300M raised, ~$2.4B valuation, 300+ staff (2x YoY)
+• Gemini 3.5 Pro GA still in-month watch-item; SpaceX IPO prices June 11, trades June 12 (SPCX)
+
+Full report on GitHub.
