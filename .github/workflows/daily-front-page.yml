@@ -26,6 +26,9 @@ concurrency:
 jobs:
   front-page:
     runs-on: [self-hosted, Linux]
+    # Cap a wedged Puppeteer/Chrome render so it can't pin a Cloud Run worker
+    # for GitHub's 6h default (mirrors the 90-min agent-lane convention).
+    timeout-minutes: 30
     # Only run when the digest succeeded, OR when a human dispatched us.
     # `workflow_run.conclusion` is empty on workflow_dispatch, so we must
     # explicitly allow that event or the manual fallback silently no-ops.

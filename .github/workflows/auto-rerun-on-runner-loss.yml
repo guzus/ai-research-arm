@@ -84,6 +84,14 @@ jobs:
           # jq -e exit codes: 0 = matched (rerun), 1 = false/null (skip),
           # >=2 = jq/parse error (skip, don't turn the recovery lane red).
           set +e
+          # `| all` (not `any`): rerun-failed-jobs re-runs EVERY non-success
+          # job, so on a mixed run (one worker-death + one genuine failure) we
+          # must NOT rerun — `all` is false the moment any failed job has a
+          # genuinely-failed step, leaving real red CI alone (Rule 11(b)). The
+          # `length > 0` guard keeps `[] | all == true` from false-firing when
+          # there are no failed jobs. For single-job lanes `$failed` has <= 1
+          # entry, so `all` is equivalent to `any` — this only tightens the
+          # mixed-matrix case.
           jq -e '
               [ .jobs[]
                 | select(.conclusion == "failure" or .conclusion == "cancelled" or .conclusion == null)
@@ -91,7 +99,7 @@ jobs:
               | ($failed | length) > 0
                 and ( $failed
                       | map( ([ .steps[]? | select(.conclusion == "failure") ] | length) == 0 )
-                      | any )
+                      | all )
             ' jobs.json > /dev/null
           rc=$?
           set -e

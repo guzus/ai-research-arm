@@ -18,6 +18,9 @@ concurrency:
 jobs:
   ai-news-research:
     runs-on: [self-hosted, Linux]
+    # Cap a hung research agent so it can't pin a Cloud Run worker for GitHub's
+    # 6h default (mirrors the 90-min agent-lane convention).
+    timeout-minutes: 60
     permissions:
       contents: write
       pull-requests: write

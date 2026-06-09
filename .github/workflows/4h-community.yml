@@ -13,6 +13,9 @@ concurrency:
 jobs:
   community-digest:
     runs-on: [self-hosted, Linux]
+    # Cap a hung agent/fetch so it can't pin a Cloud Run worker for GitHub's
+    # 6h default (mirrors the 90-min agent-lane convention).
+    timeout-minutes: 30
     permissions:
       contents: write
       id-token: write
