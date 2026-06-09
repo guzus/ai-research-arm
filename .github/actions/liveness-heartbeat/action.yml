@@ -1,0 +1,79 @@
+name: Liveness heartbeat (dead-man's switch)
+description: >-
+  Emit a tiny success "the watchdog ran and the pipeline is healthy" ping to
+  hooker on every healthy liveness run. This is the dead-man's-switch half of
+  the watchdog: the freshness/content alerts fire when something is WRONG, but
+  if the whole watchdog stops running (or hooker itself goes silent) there is no
+  alert to miss — so a downstream monitor that expects this heartbeat on a fixed
+  cadence can detect the watchdog's / hooker's OWN silence. Caller gates this on
+  freshness `stale == 'false'` so a "down" pipeline never emits an "alive" ping.
+  NEVER fails the job (telemetry semantics, Rule 4). NOTE: a heartbeat *to*
+  hooker cannot detect hooker's own silence by itself — that detection lives in
+  whatever downstream consumes the heartbeat.
+
+inputs:
+  hooker_url:
+    description: Hooker base URL. Heartbeat skipped if empty.
+    required: false
+    default: ""
+  hooker_token:
+    description: Hooker bearer token. Heartbeat skipped if empty.
+    required: false
+    default: ""
+  topic:
+    description: >-
+      Hooker topic for the heartbeat. Defaults to ara-telemetry (not the
+      alerting topic) so the heartbeat does not relay to the human Telegram
+      channel as a notification.
+    required: false
+    default: ara-telemetry
+
+runs:
+  using: composite
+  steps:
+    - name: Heartbeat ping to hooker
+      shell: bash
+      continue-on-error: true
+      env:
+        HOOKER_URL: ${{ inputs.hooker_url }}
+        HOOKER_TOKEN: ${{ inputs.hooker_token }}
+        TOPIC: ${{ inputs.topic }}
+        REPO: ${{ github.repository }}
+        SERVER: ${{ github.server_url }}
+        RUN_ID: ${{ github.run_id }}
+        JOB: ${{ github.job }}
+      run: |
+        set -euo pipefail
+        if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+          echo "Hooker credentials missing — skipping heartbeat (non-blocking)"
+          exit 0
+        fi
+        # Per-day + per-tier idempotency so the two tiers (ubuntu + self-hosted)
+        # and any repeat runs collapse to one heartbeat marker per tier per day —
+        # a downstream monitor only needs to see "at least one tier checked in
+        # today", and dedup keeps hooker history clean.
+        DATE=$(date -u +%Y-%m-%d)
+        KEY="ara-liveness-heartbeat-${DATE}-${JOB}"
+        RUN_URL="${SERVER%/}/${REPO}/actions/runs/${RUN_ID}"
+        jq -n \
+          --arg title "💓 ARA liveness heartbeat (${JOB})" \
+          --arg text "Watchdog ran and all lanes are fresh. If this heartbeat stops arriving on its ~6h cadence, the liveness watchdog or hooker itself has gone silent." \
+          --arg run "$RUN_URL" \
+          --arg tier "$JOB" \
+          --arg date "$DATE" \
+          '{
+            title: $title,
+            text: $text,
+            priority: 1,
+            tags: ["ara", "heartbeat", "liveness"],
+            payload: { kind: "liveness-heartbeat", tier: $tier, date: $date, run_url: $run }
+          }' > "${RUNNER_TEMP:-/tmp}/hooker-heartbeat.json"
+        if curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/${TOPIC}" \
+          -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+          -H "Content-Type: application/json" \
+          -H "Idempotency-Key: ${KEY}" \
+          --data-binary "@${RUNNER_TEMP:-/tmp}/hooker-heartbeat.json"; then
+          echo "Heartbeat sent (${KEY})"
+        else
+          echo "Heartbeat send failed (non-blocking)"
+        fi

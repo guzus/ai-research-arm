@@ -1,9 +1,21 @@
 name: Pipeline Liveness Check
 
-# Freshness watchdog that makes silent pipeline outages loud. For each
-# scheduled research lane it measures git-commit recency against a per-lane
-# cadence threshold (see scripts/check_lane_freshness.py) and, on staleness,
-# alerts via hooker (relays to Telegram) AND fails the job.
+# Freshness + content watchdog that makes silent pipeline outages loud. For
+# each scheduled research lane it:
+#   1. (advisory) checks CONTENT — is the most recent artifact anomalously
+#      small / collapsed vs its trailing median? (scripts/check_lane_content.py)
+#      A lane can commit on time yet emit a husk (expired bird cookies → [] →
+#      near-empty file). This never fails the job; it just alerts.
+#   2. checks FRESHNESS — git-commit recency vs a per-lane cadence threshold
+#      (scripts/check_lane_freshness.py); on staleness it alerts AND fails.
+#   3. (healthy runs only) emits a HEARTBEAT — a dead-man's-switch success ping
+#      so the watchdog's / hooker's OWN silence becomes detectable downstream.
+#
+# Alerts now go out over TWO independent channels: hooker (relays to Telegram)
+# AND a direct Telegram sendMessage. Previously hooker was a single point of
+# failure for all alerting — a hooker outage / rotated token silently
+# black-holed every alert (Rule 4 makes telemetry non-blocking). The direct
+# Telegram fallback closes that gap.
 #
 # Two-tier by design. No single runner survives both failure modes:
 #   - A GitHub Actions billing/spending-limit block kills *ubuntu-latest*
@@ -12,12 +24,20 @@ name: Pipeline Liveness Check
 #     ubuntu-only watchdog was killed by the same block.
 #   - A self-hosted runner outage kills the *self-hosted* tier.
 # So we run the identical check on BOTH tiers: whichever tier is alive does
-# the alerting. The alert goes out over hooker (an external endpoint), NOT via
-# GitHub's native workflow-failure email — that email requires the job to run,
-# which is exactly what a billing block prevents.
+# the alerting. The alert goes out over hooker + direct Telegram (external
+# endpoints), NOT via GitHub's native workflow-failure email — that email
+# requires the job to run, which is exactly what a billing block prevents.
 #
-# Alerts dedupe via a per-day Idempotency-Key over the stale set, so the two
-# jobs (and repeat runs) collapse to one Telegram message per stale set per day.
+# Alerts dedupe via per-day Idempotency-Keys over the anomalous/stale set, so
+# the two jobs (and repeat runs) collapse to one message per set per day.
+#
+# Step ORDERING is load-bearing: the freshness action ends with a `Fail if
+# stale` step that exits non-zero. GHA skips later steps in a job once a step
+# fails without continue-on-error, so:
+#   - the content gate runs BEFORE freshness (so a stale day can't skip it);
+#   - the heartbeat runs AFTER freshness but is guarded by stale == 'false'
+#     (a stale/down pipeline must not emit an "alive" ping anyway, so being
+#     skipped on stale days is the desired behavior).
 
 on:
   schedule:
@@ -42,9 +62,32 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0   # git log needs full history; depth:1 breaks it
-          lfs: false       # we only read commit metadata, not file contents
+          lfs: false       # commit metadata + non-LFS text artifacts only
+
+      # Advisory content/volume gate FIRST (never fails the job, and must not
+      # be skipped on a stale day — hence ahead of the freshness fail step).
+      - name: Content quality gate (advisory) + alert on anomaly
+        uses: ./.github/actions/lane-content-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
+          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      # Freshness check + dual-channel alert; its final step fails on staleness.
       - name: Check freshness + alert on staleness
+        id: freshness
         uses: ./.github/actions/lane-freshness-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
+          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      # Dead-man's-switch heartbeat — only on a healthy (non-stale) run.
+      - name: Heartbeat (healthy runs only)
+        if: steps.freshness.outputs.stale == 'false'
+        uses: ./.github/actions/liveness-heartbeat
         with:
           hooker_url: ${{ secrets.HOOKER_URL }}
           hooker_token: ${{ secrets.HOOKER_TOKEN }}
@@ -61,8 +104,27 @@ jobs:
         with:
           fetch-depth: 0
           lfs: false
+
+      - name: Content quality gate (advisory) + alert on anomaly
+        uses: ./.github/actions/lane-content-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
+          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+
       - name: Check freshness + alert on staleness
+        id: freshness
         uses: ./.github/actions/lane-freshness-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
+          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Heartbeat (healthy runs only)
+        if: steps.freshness.outputs.stale == 'false'
+        uses: ./.github/actions/liveness-heartbeat
         with:
           hooker_url: ${{ secrets.HOOKER_URL }}
           hooker_token: ${{ secrets.HOOKER_TOKEN }}
