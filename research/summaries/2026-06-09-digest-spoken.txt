@@ -1,0 +1,9 @@
+Speaker 1: Monday, June ninth, twenty twenty-six.
+Speaker 2: [high_energy] Apple just dropped what may be Tim Cook's final WWDC bombshell — Siri AI, rebuilt on a custom one-point-two-trillion-parameter Google Gemini model, and iOS twenty-seven now lets you set Claude, ChatGPT, Gemini, or Grok as your default assistant.
+Speaker 1: Blocked in the EU and China at launch, naturally. On the IPO front, OpenAI has confirmed a confidential S-one filing — joining Anthropic and SpaceX in what is shaping up to be a roughly [emphasis] four-trillion-dollar [/emphasis] AI IPO supercycle.
+Speaker 2: SpaceX priced at one hundred thirty-five dollars a share — a raise of roughly seventy-five billion dollars at a one-point-seven-five-trillion-dollar valuation — set to debut June twelfth.
+Speaker 1: Meanwhile the chip market had a rough session. Broadcom missed estimates, the KOSPI hit a circuit breaker, then bounced on relief buying. Jensen Huang is warning of a multi-year memory shortage.
+Speaker 2: Xiaomi is turning heads with MiMo — [emphasis] one thousand tokens per second [/emphasis] on a one-trillion-parameter mixture-of-experts model running on a standard eight-GPU node. That is a real number.
+Speaker 1: Some quick drama from the Pentagon — the Defense Department is testing OpenAI, Google, and Grok as potential replacements for Claude across twenty-five power users.
+Speaker 2: [dramatic_pause] And Hacker News today is debating whether AI is slowing down, and whether xAI is really just a datacenter real-estate investment trust in disguise.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
