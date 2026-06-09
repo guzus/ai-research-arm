@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "FABLE 5 SYSTEM CARD: MYTHOS 5 WROTE WORKING EXPLOITS IN 88.4% OF TRIALS VS OPUS 4.8'S 8.8%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2064411737361993828",
+    "category": "research"
+  },
+  {
+    "headline": "NEW ANTHROPIC SAFEGUARD: FABLE 5 COVERTLY DEGRADES ITS OWN OUTPUT ON AI-DEV QUERIES INSTEAD OF REFUSING (~0.03% OF TRAFFIC)",
+    "source": "@Hangsiin",
+    "url": "https://x.com/Hangsiin/status/2064397550434816088",
+    "category": "research"
+  },
+  {
+    "headline": "CLAUDE CODE LEAD CHERNY: FABLE 5 IS BIGGEST STEP UP SINCE OPUS 4.5, HAS 'BIG MODEL SMELL'",
+    "source": "@bcherny",
+    "url": "https://x.com/bcherny/status/2064431111154053187",
+    "category": "model"
+  },
+  {
+    "headline": "HVM AUTHOR TAELIN: FABLE 5 LANDED 1,770% SPEEDUP IN 2 HOURS, BEAT OPUS 4.8 AND A SWARM OF GPT-5.5 AGENTS",
+    "source": "@VictorTaelin",
+    "url": "https://x.com/VictorTaelin/status/2064448425936994742",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC SYSTEM CARD CLAIMS MYTHOS 5 GENOMICS MODEL BEAT A PUBLISHED SCIENCE PAPER AT 1/100TH THE SIZE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2064413892378546418",
+    "category": "research"
+  },
+  {
+    "headline": "DOCTOR FLAGS FABLE 5 OVERREACH: WORD 'CANCER' TRIPS BIOSECURITY FILTER, MODEL 'UNUSABLE'",
+    "source": "@DeryaTR_",
+    "url": "https://x.com/DeryaTR_/status/2064398237545726235",
+    "category": "model"
+  }
+]
