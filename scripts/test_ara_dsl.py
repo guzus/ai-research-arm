@@ -288,6 +288,106 @@ title: Bad Paper
 """
             )
 
+    # --- Newspaper defense-in-depth validator (validate_newspaper_body) ---
+    # compile_newspaper_source returns WITHOUT the article path's
+    # FRAGMENT_ALLOWED_TAGS allowlist (it legitimately emits
+    # <nav>/<button>/<details>/aria-*), so a denylist guards against the
+    # dangerous constructs the trusted compiler never emits.
+
+    def test_real_front_page_sources_still_compile(self):
+        # Strongest non-breaking guard: compile EVERY committed front-page
+        # newspaper source and assert the validator passes it. The front-page
+        # output legitimately uses <nav>/<button>/<details>/<summary> +
+        # aria-*/type/data-columns; the validator must not reject any of it.
+        repo_root = Path(compile_ara.__file__).resolve().parent.parent
+        sources = sorted((repo_root / "research" / "front-page").glob("*.ara.md"))
+        self.assertGreater(len(sources), 0, "expected committed front-page .ara.md sources")
+        for src in sources:
+            with self.subTest(source=src.name):
+                html = compile_ara.compile_source(
+                    src.read_text(encoding="utf-8"), target="newspaper"
+                )
+                # Sanity: the legitimate interactive tags are present and kept.
+                self.assertIn("<nav", html)
+                self.assertIn("<button", html)
+                self.assertIn("<details", html)
+                self.assertIn('aria-expanded="true"', html)
+
+    def test_newspaper_validator_passes_clean_interactive_output(self):
+        # The full interactive newspaper fixture must pass end to end.
+        html = compile_newspaper_ok(
+            """---
+title: Clean Paper
+date: May 28, 2026
+---
+
+:::paper-index
+- {label: Lead, target: "#lead-top"}
+:::
+
+:::lead(id="lead-top", label="Top Story", title="Models move into production")
+The day opens with ==production AI== pressure.
+:::
+
+:::briefs(title="Breaking", columns=2)
+- {headline: New model ships, tag: Models, body: Lower latency.}
+:::
+
+:::news-meter(title="Signal Mix")
+- {label: Breaking, value: 75, display: "3 items", tone: hot}
+:::
+"""
+        )
+        self.assertIn('class="ara-paper"', html)
+        # Idempotent: re-validating the already-compiled output is a no-op.
+        compile_ara.validate_newspaper_body(html)
+
+    def test_newspaper_validator_rejects_script_tag(self):
+        # The gap the denylist closes: DISALLOWED_PATTERNS (style=/on*=/
+        # javascript:) does NOT match a bare <script> tag. The tag patterns do.
+        with self.assertRaisesRegex(compile_ara.AraSyntaxError, "disallowed pattern"):
+            compile_ara.validate_newspaper_body(
+                '<article class="ara-paper"><script>alert(1)</script></article>'
+            )
+
+    def test_newspaper_validator_rejects_style_and_iframe_tags(self):
+        with self.assertRaises(compile_ara.AraSyntaxError):
+            compile_ara.validate_newspaper_body(
+                '<article class="ara-paper"><style>x{}</style></article>'
+            )
+        with self.assertRaises(compile_ara.AraSyntaxError):
+            compile_ara.validate_newspaper_body(
+                '<article class="ara-paper"><iframe src="x"></iframe></article>'
+            )
+
+    def test_newspaper_validator_rejects_inline_style_and_handlers(self):
+        with self.assertRaises(compile_ara.AraSyntaxError):
+            compile_ara.validate_newspaper_body(
+                '<article class="ara-paper"><div style="color:red">x</div></article>'
+            )
+        with self.assertRaises(compile_ara.AraSyntaxError):
+            compile_ara.validate_newspaper_body(
+                '<article class="ara-paper"><button onclick="x()">x</button></article>'
+            )
+        with self.assertRaises(compile_ara.AraSyntaxError):
+            compile_ara.validate_newspaper_body(
+                '<article class="ara-paper"><a href="javascript:void(0)">x</a></article>'
+            )
+
+    def test_newspaper_validator_allows_legit_interactive_markup(self):
+        # The exact tag/attribute shapes the compiler emits must NOT trip the
+        # denylist: <nav aria-label>, <button type aria-expanded aria-controls>,
+        # <details>/<summary>, <section data-columns>, data-paper-date.
+        compile_ara.validate_newspaper_body(
+            '<article class="ara-paper" data-paper-date="June 9, 2026">'
+            '<nav class="ara-paper-index" aria-label="In this edition"></nav>'
+            '<button class="ara-paper-toggle" type="button" aria-expanded="true" '
+            'aria-controls="x-body"><span aria-hidden="true">v</span></button>'
+            '<section class="ara-paper-briefs" data-columns="2">'
+            '<details class="ara-paper-brief"><summary>x</summary></details>'
+            "</section></article>"
+        )
+
     def test_bar_chart_horizontal_diverging_keeps_negative(self):
         html = compile_ok(
             """---

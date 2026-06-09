@@ -1711,6 +1711,54 @@ def compile_article_source(source: str) -> str:
     return article
 
 
+# Newspaper output is emitted by trusted directive code that html.escape()s
+# every interpolated value, so it can never produce a raw <script>/<style>/
+# <iframe> tag or an inline event handler from its (already-curated) input.
+# The check below is defense-in-depth. It reuses write_generative_research's
+# DISALLOWED_PATTERNS (style=, on*=, javascript:) AND adds the three tag
+# patterns those expressions DON'T cover: the article path blocks <script>/
+# <style>/<iframe> via the FRAGMENT_ALLOWED_TAGS *tag* allowlist, but the
+# newspaper path deliberately emits <nav>/<button>/<details>/<summary> +
+# aria-*/type/data-columns, so it has no tag allowlist — without these
+# patterns a bare `<script>...</script>` would slip straight through (the
+# three DISALLOWED_PATTERNS only match attribute/URL shapes, not tags).
+NEWSPAPER_FORBIDDEN_TAGS = [
+    re.compile(r"<\s*script\b", re.IGNORECASE),
+    re.compile(r"<\s*style\b", re.IGNORECASE),
+    re.compile(r"<\s*iframe\b", re.IGNORECASE),
+]
+
+
+def validate_newspaper_body(body: str) -> None:
+    """Defense-in-depth denylist check on compiled newspaper HTML.
+
+    compile_article_source routes its output through
+    write_generative_research.validate_body and its FRAGMENT_ALLOWED_TAGS
+    allowlist. The newspaper target can't use that allowlist because it
+    legitimately emits interactive tags (<nav>/<button>/<details>/<summary>)
+    and aria-*/type/data-columns attributes the fragment allowlist rejects.
+    Re-deriving a full per-attribute allowlist for that wider, less-exercised
+    surface risks false-rejecting a future digest shape, so this is a
+    denylist instead: it rejects the dangerous constructs the trusted
+    compiler never emits (raw <script>/<style>/<iframe> tags, inline style=,
+    on*= handlers, javascript: URLs).
+
+    Raises AraSyntaxError on a violation so compile_ara.main() / callers
+    surface a clean error rather than a traceback.
+    """
+    # Reuse the writer's canonical attribute/URL denylist so the two stay in
+    # lockstep. Imported lazily to mirror the existing deferred imports from
+    # write_generative_research below (avoids a module-load import cycle).
+    from write_generative_research import DISALLOWED_PATTERNS  # noqa: E402
+
+    for pat in (*NEWSPAPER_FORBIDDEN_TAGS, *DISALLOWED_PATTERNS):
+        m = pat.search(body)
+        if m:
+            raise AraSyntaxError(
+                f"newspaper body contains disallowed pattern: {m.group(0)!r}"
+            )
+
+
 def compile_newspaper_source(source: str) -> str:
     meta, body = parse_frontmatter(source)
     header = emit_newspaper_header(meta)
@@ -1719,7 +1767,9 @@ def compile_newspaper_source(source: str) -> str:
     body_html = compile_blocks(blocks, directive_map)
     date_attr = f' data-paper-date="{html.escape(str(meta.get("date")), quote=True)}"' if meta.get("date") else ""
     parts = [f'<article class="ara-paper"{date_attr}>', header, body_html, '</article>\n']
-    return "\n".join(parts)
+    article = "\n".join(parts)
+    validate_newspaper_body(article)
+    return article
 
 
 def compile_source(source: str, target: str = "article") -> str:
