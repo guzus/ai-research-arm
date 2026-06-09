@@ -151,11 +151,68 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = 8000) {
   }
 }
 
+// Real browser UA — many publishers/CDNs serve og:image meta only to
+// browser-like clients; a generic bot UA gets a thin or blocked response
+// (which is why non-arxiv sources previously yielded no image).
+const IMAGE_FETCH_UA =
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
+
+// Hosts whose pages don't yield a usable article image:
+// - arxiv.org exposes the generic arxiv LOGO as og:image, not the paper,
+// - x.com / twitter.com are auth-walled to non-browser clients,
+// - news.ycombinator.com pages are comment threads, not articles.
+function isImageCandidate(url) {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, "").toLowerCase();
+    if (/(^|\.)arxiv\.org$/.test(host)) return false;
+    if (/(^|\.)(x|twitter)\.com$/.test(host)) return false;
+    if (host === "news.ycombinator.com") return false;
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+// The digest links are almost entirely arxiv (Research Highlights), so its
+// only reliable og:image is the arxiv logo. Pull richer candidates from the
+// raw aggregation — RSS (news/blog articles) and community (HN/Reddit outbound
+// links) carry real article URLs with real og:images.
+async function richSourceLinks() {
+  const out = [];
+  for (const file of [
+    `research/rss/${date}.md`,
+    `research/community/${date}-hn.md`,
+    `research/community/${date}-reddit.md`,
+  ]) {
+    try {
+      const text = await readFile(file, "utf8");
+      for (const link of markdownLinks(text)) out.push({ ...link, story: link.label });
+    } catch {
+      // file may not exist for this date — skip it
+    }
+  }
+  return out;
+}
+
+// Prioritised, de-duped, filtered candidate links for the lead image:
+// rich aggregation sources first (real article images), digest links last.
+async function imageCandidateLinks() {
+  const all = [...(await richSourceLinks()), ...uniqueSourceLinks()];
+  const seen = new Set();
+  const out = [];
+  for (const link of all) {
+    if (!isImageCandidate(link.url) || seen.has(link.url)) continue;
+    seen.add(link.url);
+    out.push(link);
+  }
+  return out.slice(0, 30);
+}
+
 async function imageFromPage(link) {
   try {
     const pageResponse = await fetchWithTimeout(link.url, {
       headers: {
-        "user-agent": "ai-research-arm-front-page/1.0",
+        "user-agent": IMAGE_FETCH_UA,
         accept: "text/html,application/xhtml+xml",
       },
       redirect: "follow",
@@ -170,7 +227,7 @@ async function imageFromPage(link) {
 
     const imageResponse = await fetchWithTimeout(imageUrl, {
       headers: {
-        "user-agent": "ai-research-arm-front-page/1.0",
+        "user-agent": IMAGE_FETCH_UA,
         accept: "image/avif,image/webp,image/png,image/jpeg,image/*",
       },
       redirect: "follow",
@@ -196,7 +253,7 @@ async function imageFromPage(link) {
 
 async function resolveImages(limit = 3) {
   const images = [];
-  for (const link of uniqueSourceLinks()) {
+  for (const link of await imageCandidateLinks()) {
     const image = await imageFromPage(link);
     if (image) images.push(image);
     if (images.length >= limit) break;
