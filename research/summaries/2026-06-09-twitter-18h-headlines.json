@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "KARPATHY CALLS CLAUDE FABLE 5 A 'MAJOR-VERSION-BUMP STEP CHANGE' — SOTA ON EVERYTHING BY A MARGIN",
+    "source": "@karpathy",
+    "url": "https://x.com/karpathy/status/2064409694761054332",
+    "category": "model"
+  },
+  {
+    "headline": "FABLE 5 BACKLASH: USERS SAY OPUS 4.8 SAFETY REROUTE FIRES ON BENIGN QUERIES, BURNS ~2X TOKENS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2064406584923464174",
+    "category": "model"
+  },
+  {
+    "headline": "GOOGLE SHIPS GEMINI 3.5 LIVE TRANSLATE — REAL-TIME SPEECH-TO-SPEECH, 70+ LANGUAGES, LIVE IN API NOW",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2064369125447864674",
+    "category": "model"
+  },
+  {
+    "headline": "GOOGLE TO GUARANTEE ~$35B OF TPU LEASES FOR ANTHROPIC ACROSS 5 US DATA CENTERS; BROADCOM DESIGNS CHIPS",
+    "source": "@Sam_Badawi",
+    "url": "https://x.com/Sam_Badawi/status/2064420693048193485",
+    "category": "infra"
+  },
+  {
+    "headline": "FABLE 5 LISTS AT $10/$50 PER M — ~70% CHEAPER THAN GPT-5.5 PRO AT $30/$180, BUT ~2X OPUS 4.8",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2064407019537170731",
+    "category": "business"
+  }
+]

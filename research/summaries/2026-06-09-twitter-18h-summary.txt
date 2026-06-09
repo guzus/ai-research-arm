@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-09 18:59 UTC
+
+CYCLE: Fable 5 moves from launch to lived experience — first expert verdicts vs first guardrail friction; Google counter-programs.
+
+TOP STORIES:
+• Fable 5's first verdicts: Karpathy calls it a "major-version-bump step change," emollick gets 9+hr autonomous runs — but early users hit the Opus 4.8 safety reroute on benign queries (~2x token burn), some call June 22 trial cliff a "bait and switch" [✓]
+• Google ships Gemini 3.5 Live Translate same day — real-time speech-to-speech, 70+ languages, live now in API/AI Studio/Google Translate [✓]
+• Google to guarantee ~$35B of TPU leases for Anthropic across 5 US data centers; Broadcom chips, Apollo/Blackstone financing (traces to Bloomberg) [✓]
+
+WATCH: A measured false-positive rate on Fable 5's Opus 4.8 safety reroute vs Anthropic's "<5% of sessions" claim.
+
+Full update on GitHub.
