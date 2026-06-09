@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-09 17:50 UTC
+
+CYCLE: Anthropic ships Claude Fable 5 — the first public "Mythos-class" model — resolving the week's Mythos/Oceanus leak arc.
+
+TOP STORIES:
+• Claude Fable 5 launches: Mythos-class, "SOTA on nearly every benchmark," high-risk queries fall back to Opus 4.8; gated Mythos 5 for Glasswing/gov partners [✓ primary, benchmarks vendor-stated]
+• The fine print: ~2x pricing ($10/$50 per M), free on paid plans only until June 22 then credits, plus a reported 30-day retention policy overriding enterprise zero-retention contracts [⚠ media-relay]
+• OpenAI silent — timeline pivots to "where is GPT-5.6"; "Kindle"/Thursday rumors unconfirmed [🚩]
+
+WATCH: An Anthropic model card / docs confirming pricing + the disputed data-retention terms; first independent benchmarks vs GPT-5.5 / Gemini 3.1.
+
+Full update on GitHub.

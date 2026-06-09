@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "ANTHROPIC SHIPS CLAUDE FABLE 5 — FIRST PUBLIC 'MYTHOS-CLASS' MODEL, 'EXCEEDS ANY MODEL WE'VE MADE GENERALLY AVAILABLE'",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2064394146916229443",
+    "category": "model"
+  },
+  {
+    "headline": "FABLE 5 ROUTES HIGH-RISK CYBER/BIO/CHEM QUERIES TO OPUS 4.8 — SAFETY FALLBACK IN UNDER 5% OF SESSIONS",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2064394155258765783",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC ALSO LAUNCHES MYTHOS 5 — SAME MODEL, SAFEGUARDS LIFTED, RESTRICTED TO GLASSWING PARTNERS",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2064394158056386684",
+    "category": "model"
+  },
+  {
+    "headline": "FABLE 5 PRICED ~2X OPUS 4.8 AT $10/$50 PER MILLION TOKENS — FREE ON PAID PLANS ONLY UNTIL JUNE 22, THEN CREDITS",
+    "source": "@theguptaankush",
+    "url": "https://x.com/theguptaankush/status/2064403418580754919",
+    "category": "business"
+  },
+  {
+    "headline": "REPORTS: FABLE 5 IMPOSES MANDATORY 30-DAY DATA RETENTION, OVERRIDING ENTERPRISE ZERO-RETENTION CONTRACTS",
+    "source": "@oesnadaki",
+    "url": "https://x.com/oesnadaki/status/2064402107961098252",
+    "category": "policy"
+  },
+  {
+    "headline": "ANTHROPIC SELF-REPORTS FABLE 5 AT 80.3% ON SWE-BENCH PRO VS GPT-5.5 58.6% AND GEMINI 3.1 PRO 54.2% — NO INDEPENDENT EVAL YET",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2064394487317528592",
+    "category": "research"
+  }
+]
