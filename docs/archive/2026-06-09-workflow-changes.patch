@@ -1,0 +1,51 @@
+diff --git a/.github/workflows/daily-arxiv.yml b/.github/workflows/daily-arxiv.yml
+index a6279d7b..747b28f9 100644
+--- a/.github/workflows/daily-arxiv.yml
++++ b/.github/workflows/daily-arxiv.yml
+@@ -86,6 +86,18 @@ jobs:
+             - Application papers with no novel methods
+             - Papers from unknown authors with few citations
+
++            AUTHOR FIDELITY (required):
++            For every paper you list, capture the REAL author names from the
++            arXiv metadata (the MCP tool's `authors` field, or the "Authors"
++            line on the abstract page). Use the first 1-3 surnames followed by
++            "et al." when the list is long (e.g. "Chung, Wang, Chen, et al.")
++            and add an affiliation in parentheses when known. NEVER emit a bare
++            "**Authors**: et al." with no preceding name — if you cannot
++            resolve any name, fetch the paper's abstract page before writing
++            it; if it still cannot be resolved, drop that paper rather than
++            ship an empty author field. (Recent runs intermittently lost the
++            top papers' author names; this guard closes that gap.)
++
+             FORMAT:
+
+             # arXiv AI Research - ${{ steps.date.outputs.date }}
+diff --git a/.github/workflows/hourly-rss.yml b/.github/workflows/hourly-rss.yml
+index bb951cd3..266ecb4c 100644
+--- a/.github/workflows/hourly-rss.yml
++++ b/.github/workflows/hourly-rss.yml
+@@ -131,6 +131,15 @@ jobs:
+             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
+             > /tmp/rss/interconnects.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/interconnects.xml
+
++          # Ahead of AI (Sebastian Raschka) — technical LLM-architecture /
++          # post-training deep dives + curated paper roundups. Substack feed
++          # (/feed); probed HTTP 200 with a newest item dated 2026-06-06.
++          # Complements interconnects.xml: this leans implementation/architecture
++          # where Interconnects leans open-model/RL policy.
++          curl -sL "https://magazine.sebastianraschka.com/feed" \
++            -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
++            > /tmp/rss/ahead_of_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/ahead_of_ai.xml
++
+           # Import AI (Jack Clark, Anthropic co-founder) — frontier-lab essays;
+           # pairs with anthropic.xml for "what Anthropic is thinking" coverage.
+           curl -sL "https://jack-clark.net/feed/" \
+@@ -186,6 +195,8 @@ jobs:
+               hands-on LLM coverage. Atom uses entry/title/link[@href]/published
+               instead of item/title/link/pubDate. Include only AI/LLM entries.)
+             - interconnects.xml (Nathan Lambert — open-model / post-training)
++            - ahead_of_ai.xml (Sebastian Raschka — LLM-architecture deep dives
++              + paper roundups; standard RSS item/title/link/pubDate)
+             - import_ai.xml (Jack Clark / Anthropic — frontier-lab essays)
+             - one_useful_thing.xml (Ethan Mollick — applied-AI essays)
