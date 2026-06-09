@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-09
+
+TOP STORIES:
+• Apple ships "Siri AI" on a custom ~1.2T Google Gemini model at Tim Cook's final WWDC; iOS 27 lets you pick Claude/ChatGPT/Gemini/Grok as default — blocked in EU & China at launch
+• OpenAI confirms a confidential S-1, joining Anthropic + SpaceX (debuts June 12) in a ~$4T AI IPO supercycle
+• AI-chip trade whipsaws: Broadcom miss → KOSPI circuit breaker → relief bounce; Huang warns of a "multi-year" memory shortage
+
+KEY NUMBERS:
+• Xiaomi MiMo: 1,000+ tok/s on a 1T MoE, standard 8-GPU node
+• SpaceX IPO: $135/share, ~$75B raise, ~$1.75T
+• Pentagon testing OpenAI/Google/Grok to replace Claude (25 power users)
+
+TRENDING: HN debates "AI is slowing down" and "xAI is a datacenter REIT"
+
+Full digest on GitHub.
