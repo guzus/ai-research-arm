@@ -39,12 +39,14 @@ sources:
   - "@PSInvestor"
   - "@celestrix"
 created_at: 2026-06-08
-updated_at: 2026-06-08
+updated_at: 2026-06-09
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-08
     change: "Created — NVIDIA unveiled a Korea 'AI Factories' partnership cluster during Jensen Huang's Seoul visit (2026-06-08). LG Group: AI factories on NVIDIA DSX, CLOiD home assistants trained with Isaac GR00T, LG subsidiaries on data centers / autonomous driving / factory robots, LG Energy Solution on 800V DC data-center power. SK Group: partnership extended beyond memory into full-stack AI factories; multi-year SK hynix/SKM HBM co-development aligned to NVIDIA's roadmap (Vera Rubin → Jetson Thor), SK adopting CUDA-X + Omniverse in its fabs; same-day Doosan + NAVER tie-ups. Multiple secondary relays (@_PradeepGoel, @PSInvestor, @celestrix) of an official NVIDIA/LG/SK announcement; no primary handle captured in-window → status confirmed, verification partial. Deploys the DSX + Isaac GR00T stack introduced at [[nvidia-gtc-taipei-2026-06]]"
+  - ts: 2026-06-09
+    change: "Refinement + macro context. The SK supply piece is specified as a multiyear **SK hynix HBM4** agreement ahead of the **Vera Rubin** launch. Jensen Huang framed the surrounding semiconductor selloff (Broadcom's Friday AI-chip guidance miss dragged the Nasdaq −4.18%; KOSPI tripped its **circuit breaker** ~8–9% at Monday's open) as a **multi-year ('quite a few years') memory shortage**, not a cyclical top — a reframing that helped power a US-open relief bounce. No change to the partnership structure; status confirmed, verification partial pending a primary NVIDIA/SK handle"
 ---
 
 On **2026-06-08**, during Jensen Huang's visit to **Seoul**, NVIDIA

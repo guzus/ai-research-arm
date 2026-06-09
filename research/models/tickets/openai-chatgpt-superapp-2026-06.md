@@ -25,7 +25,7 @@ sources:
   - https://www.ft.com/
   - "@Polymarket"
 created_at: 2026-06-07
-updated_at: 2026-06-08
+updated_at: 2026-06-09
 closed_at: null
 closed_reason: null
 history:
@@ -33,6 +33,8 @@ history:
     change: "Created — FT report (Jun 6–7, 2026) that OpenAI plots its biggest ChatGPT overhaul since launch, recasting it into an IPO-ready 'super app' that folds coding tools + AI agents into higher-margin products for the ~$850bn company. Single-origin FT, relayed by Reuters / @Polymarket; no OpenAI confirmation, feature list, or ship date → rumored / partial"
   - ts: 2026-06-08
     change: "Detail + corroboration (still FT-origin). A Chinese-community AI digest (@dotey via @paramiao, 2026-06-08) relays the same FT report with a blunt internal-exec quote — **'Chat is dead'** — and a concrete integration list for the 'super app': **Codex, AI agents, image generation, and third-party apps (Canva, Booking)**. Business rationale restated: migrate users from low-margin free chat to higher-margin enterprise tools to tell a platformization story ahead of the IPO. Adds texture but no independent confirmation — still single-origin FT, no OpenAI on-record statement or ship date; status stays rumored / partial"
+  - ts: 2026-06-09
+    change: "More texture, same single-origin FT spine. The phased rollout is framed as landing 'in the coming weeks', pushing users toward Codex, agents, and partner apps (Canva, Booking.com); **ChatGPT crossed 600M MAU**. The expected **GPT-5.6** model accompaniment is now tracked on its own ticket [[openai-gpt-5-6]] (developers hitting `gpt-5.5` 404s in Codex are a weak rollout tell logged there). Still no OpenAI on-record confirmation, feature set, or ship date for the 'super app' itself; status stays rumored / partial"
 ---
 
 The **Financial Times** reported (Jun 6–7, 2026) that OpenAI is preparing the

@@ -30,12 +30,14 @@ sources:
   - "@mswnlz"
   - "@Sharity"
 created_at: 2026-06-07
-updated_at: 2026-06-07
+updated_at: 2026-06-09
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-07
     change: "Created — Trump administration reportedly negotiating a direct US-government equity stake in OpenAI via a 'Public Wealth Fund' paying out to citizens; Altman said to have pitched it, Trump publicly floated deals 'where the American people can benefit' (NOTUS/TechCrunch 2026-06-06; The Decoder 2026-06-06). Talks only — no signed terms, stake size, or instrument; no on-record OpenAI/WH confirmation → confirmed (the negotiation is multi-source + Trump on-record) / partial (no closed deal)"
+  - ts: 2026-06-09
+    change: "Scope + structure detail. Per the curated cycle, **Trump confirmed (2026-06-05) the federal government may take 'pieces' of both OpenAI AND xAI** via the OpenAI-pitched 'Public Wealth Fund', with the equity **donated, not sold**. A competing, far more aggressive line emerged: **Sen. Bernie Sanders is pushing a bill for a 50% government stake plus a 50% tax**. **Anthropic is reportedly excluded** from the equity talks. Status stays confirmed (multi-source + Trump on-record) / partial (still no signed terms, stake size, or instrument; framing remains directional)"
 ---
 
 Per **NOTUS, TechCrunch, and The Decoder** (2026-06-06), the **Trump

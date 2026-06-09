@@ -28,7 +28,7 @@ sources:
   - "@alexalbert__"
   - https://the-decoder.com/anthropics-mythos-model-is-reportedly-powering-nsa-offensive-cyber-ops-against-china-and-iran/
 created_at: 2026-04-12
-updated_at: 2026-06-08
+updated_at: 2026-06-09
 closed_at: null
 closed_reason: null
 history:
@@ -58,6 +58,8 @@ history:
     change: "New deployment + leak signal, gated stance unchanged. The Decoder (2026-06-05) reports **Mythos is powering NSA offensive cyber ops against China and Iran**, with ~6 Anthropic engineers stationed at the NSA adapting the model — a national-security application angle for the gated preview (secondary, no Anthropic primary). MIT Tech Review's 'the Meta hack shows there's more to AI security than Mythos' (2026-06-05) keeps Mythos as the reference point in the AI-security discourse. This-cycle X leak chatter stayed rumor-grade: a `claude-mythos-5` slug reportedly surfaced in Dev Mode (floated as a fourth class above Opus), plus a 'too dangerous to release' branding-critique thread and unsourced 'Apple + 150+ orgs, public in weeks' hype — no Anthropic primary, held to skeptic-grade. Status remains in-testing / confirmed"
   - ts: 2026-06-08
     change: "Mythos-5 rebrand rumor persists (skeptic-grade, no new corroboration). Low-credibility single source (@ssict / Saudi ICT Shopper News, 2026-06-08 07:33 UTC) claims **'Claude Mythos 5' will be the official new name for Anthropic's next flagship, dropping the Opus brand entirely** — framed against a purported 'June 16 IPO filing.' The IPO-date claim garbles the already-confirmed 2026-06-01 confidential S-1 ([[anthropic-ipo-2026-06]]), undercutting the source's reliability. Restates the 2026-06-07 `claude-mythos-5` Dev-Mode slug chatter without adding a primary source. No @AnthropicAI confirmation; gated-preview stance and status unchanged (in-testing / confirmed)"
+  - ts: 2026-06-09
+    change: "New viral cyber-capability claim (single-origin, skeptic-grade). A widely-shared eval claims **Mythos Preview weaponized a freshly-patched Firefox vulnerability in ~one hour** (built a working exploit one hour after Mozilla's patch) and produced **8 Windows privilege-escalation chains for ~$15.7K** in model spend. It rhymes with the Glasswing volume metrics (10,000+ high/critical flaws) but is a third-party demonstration claim with **no Anthropic primary and a single origin** — held to skeptic-grade. Separately, the curated June-8 cycle restates the `claude-mythos-5-*` Dev-Mode slug and the `claude-oceanus-v1-p` API-resale incident (tracked on [[anthropic-claude-oceanus-v1]]). Still gated, no public-release schedule; status unchanged (in-testing / confirmed)"
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a
