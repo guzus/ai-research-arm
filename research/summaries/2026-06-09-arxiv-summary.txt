@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-09
+
+TOP 5 PAPERS:
+• End-to-End Context Compression at Scale - trainable KV-cache compression cuts long-context memory cost without the usual quality/latency hit
+• Muon Learns More Robust Features than Adam - Muon's pretraining edge is feature learning, not just faster convergence
+• Tight Sample Complexity of Transformers - near-tight VC-dim bound O(L*W*log(TW))
+• Latent Spatial Memory for Video World Models - learned latent memory keeps 3D consistency at lower cost than point-cloud memory
+• PRIME - finds a learned precursor to reward hacking that shows up before overt hacking
+
+CATEGORIES: cs.AI/cs.LG (efficiency, RL, theory), cs.CL (long-context, reasoning), cs.CV (world models, VLA), safety (red teaming, RLHF), cs.NE
+
+Full report on GitHub.
