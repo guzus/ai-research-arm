@@ -1002,11 +1002,15 @@ async function toggleResearchAudio(): Promise<void> {
 
 // ── Fetch ─────────────────────────────────────────────
 function isViteAppShell(text: string): boolean {
-  const head = text.slice(0, 1000).trim().toLowerCase();
-  return (
-    head.startsWith('<!doctype html') &&
-    (head.includes('script type="module" src="/@vite/client"') || head.includes('<title>ai research'))
-  );
+  // Vercel serves index.html (HTTP 200) for any missing /research/... path —
+  // its SPA fallback for client-side routes. No real research artifact
+  // (markdown, txt, or an HTML *fragment*) is a full HTML document, so a
+  // doctype-led response is always the app shell, never content. Keep this
+  // title-/build-independent: it previously also required the dev-only Vite
+  // client or a literal `<title>ai research`, which silently stopped matching
+  // in production once the page <title> became "ara -- AI research arm" —
+  // leaking index.html into the Signal Brief (and any other date with no file).
+  return text.slice(0, 200).trim().toLowerCase().startsWith('<!doctype html');
 }
 
 async function fetchMarkdownReport(url: string, signal: AbortSignal): Promise<string | null> {
@@ -1092,7 +1096,10 @@ async function fetchResearchDoc(row: GenResearchRow, signal: AbortSignal): Promi
   try {
     const resp = await fetch(url, { signal });
     if (!resp.ok) return null;
-    return await resp.text();
+    const text = await resp.text();
+    // Same SPA-fallback guard as fetchMarkdownReport: a missing/not-yet-
+    // deployed generative file resolves to index.html (HTTP 200), not a 404.
+    return isViteAppShell(text) ? null : text;
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') return null;
     return null;
