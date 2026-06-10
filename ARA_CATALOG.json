@@ -60,6 +60,47 @@
       "example": ":::quote(attr=\"Source\")"
     },
     {
+      "id": "statement",
+      "category": "content",
+      "intent": "Large serif statement on a periwinkle panel — the McKinsey inside-cover thesis line.",
+      "classes": ["ara-statement", "ara-statement-attr"],
+      "default_when": "Use once or twice per article for the single thesis worth a full beat. Not for ordinary emphasis.",
+      "example": ":::statement(attr=\"ARA Research\")"
+    },
+    {
+      "id": "footnotes",
+      "category": "content",
+      "intent": "Small gray sans Note / Source lines beneath an exhibit, or standalone in prose.",
+      "classes": ["ara-note", "ara-note-label", "ara-source", "ara-source-label"],
+      "default_when": "Use for exhibit footnotes (methodology caveats, data provenance) or any small-print attribution line.",
+      "example": ":::source\\nCompany 10-K filings; ARA analysis.\\n:::"
+    },
+    {
+      "id": "exhibit",
+      "category": "data",
+      "intent": "Framed McKinsey exhibit: numbered eyebrow, title, units subtitle, a nested chart/figure/table, Note/Source, and an ARA wordmark.",
+      "classes": ["ara-exhibit", "ara-exhibit-num", "ara-exhibit-title", "ara-exhibit-subtitle", "ara-exhibit-body", "ara-wordmark"],
+      "default_when": "Use to present any chart or figure as a formal, attributed exhibit. The inner chart's own border and watermark are suppressed so the frame and wordmark are never doubled.",
+      "example": ":::exhibit(num=\"Exhibit 1\", title=\"Revenue by segment\", subtitle=\"$ billion\", source=\"Company filings\")"
+    },
+    {
+      "id": "cols",
+      "category": "layout",
+      "intent": "Two-column body for dense prose; collapses to one column on narrow screens.",
+      "classes": ["ara-cols"],
+      "default_when": "Use for a long, dense prose passage that benefits from a newspaper-style two-up measure. Do not put charts or wide blocks inside.",
+      "example": ":::cols"
+    },
+    {
+      "id": "change-bubble",
+      "category": "inline",
+      "intent": "Circular percentage-change marker (the McKinsey +N% / -N% bubble).",
+      "classes": ["ara-bubble"],
+      "variants": ["ara-bubble--up", "ara-bubble--down"],
+      "default_when": "Use inline beside a figure or label to mark a delta. Sign infers direction (royal=up, navy=down).",
+      "example": "{bubble:+12%} or {bubble:-8%}"
+    },
+    {
       "id": "figure",
       "category": "media",
       "intent": "Image, caption, and source credit.",

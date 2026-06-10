@@ -26,38 +26,86 @@
 
 /* ── Doc root ─────────────────────────────────────── */
 /* No outer max-width — children pick their own measure (reading vs.
- * wide). MoMA-style editorial pattern: title block and prose stay
- * narrow, data viz breathes wider.
+ * wide). Exhibit pattern: title block and prose stay narrow, framed
+ * data exhibits breathe wider.
  *
- * House style: hard edges, high-contrast borders, no rgba washes.
- * The two overrides below shadow the dashboard's softer global
- * tokens inside `.ara-doc` only — the rest of the chrome keeps its
- * native palette. */
+ * House style: McKinsey-consulting-grade. Serif DISPLAY headlines and
+ * big stat figures; clean sans for body, labels, captions, and all
+ * chart text. A near-monochrome blue family — deep navy, electric
+ * royal blue, cyan — not a rainbow. Airy thin rules over hard black
+ * borders, generous whitespace, framed exhibits with source lines.
+ *
+ * The overrides below shadow the dashboard's softer global tokens
+ * inside `.ara-doc` ONLY — the rest of the chrome keeps its native
+ * palette. Every token has a dark-mode mapping further down. */
 .ara-doc {
-  --border: #1a1a1a;
-  --border-light: #1a1a1a;
-  --ara-viz-1: #0072b2;
-  --ara-viz-2: #d55e00;
-  --ara-viz-3: #009e73;
-  --ara-viz-4: #cc79a7;
-  --ara-viz-5: #e69f00;
-  --ara-viz-6: #56b4e9;
+  /* — McKinsey palette (named tokens) — */
+  --ara-ink: #1a1a1a;            /* primary body ink */
+  --ara-navy: #051c2c;           /* deep navy — dark fills, exhibit accents, darkest series */
+  --ara-royal: #2251ff;          /* electric/royal blue — primary accent, big figures, change bubbles */
+  --ara-cyan: #00a9f4;           /* cyan — secondary accent / series */
+  --ara-periwinkle: #e6ebff;     /* soft statement & section panel bg */
+  --ara-periwinkle-deep: #c7d2fe;/* deeper periwinkle panel bg */
+  --ara-panel-gray: #f2f2f2;     /* light gray sidebars / notes */
+  --ara-rule: #d6d6db;           /* thin airy hairline rule */
+  --ara-rule-strong: #051c2c;    /* strong navy rule atop exhibits */
+  --ara-sec2: #6e6e6e;           /* secondary text */
+  --ara-sec3: #9a9a9a;           /* tertiary text */
+
+  /* — shadow the dashboard tokens inside .ara-doc — */
+  --text: var(--ara-ink);
+  --text-secondary: var(--ara-sec2);
+  --text-tertiary: var(--ara-sec3);
+  --accent-warm: var(--ara-royal);      /* links, accents, big figures */
+  --accent-warm-bg: var(--ara-periwinkle);
+  --border: var(--ara-rule);            /* airy hairline, not hard black */
+  --border-light: #e8e8ec;
+
+  /* — sequential mono-blue chart ramp (navy → royal → cyan → pale) — */
+  --ara-viz-1: #051c2c;
+  --ara-viz-2: #2251ff;
+  --ara-viz-3: #00a9f4;
+  --ara-viz-4: #7fb3ff;
+  --ara-viz-5: #c7dcff;
+  --ara-viz-6: #6e6e6e;          /* neutral 6th step keeps the ramp blue-only */
+
   font-family: var(--font);
   color: var(--text);
-  line-height: 1.5;
-  letter-spacing: -0.005em;
+  line-height: 1.55;
+  letter-spacing: -0.004em;
 }
 
 @media (prefers-color-scheme: dark) {
   .ara-doc {
-    --border: #e0e0e0;
-    --border-light: #e0e0e0;
-    --ara-viz-1: #56b4e9;
-    --ara-viz-2: #ff8a4c;
-    --ara-viz-3: #35d0a0;
-    --ara-viz-4: #f0a6d8;
-    --ara-viz-5: #f6c35b;
-    --ara-viz-6: #8bd3ff;
+    /* Dark mapping: lift navy to a luminous slate-blue ground, keep the
+     * royal/cyan accents bright, periwinkle panels become deep-navy
+     * washes, rules stay thin but lighter. */
+    --ara-ink: #f1f3f7;
+    --ara-navy: #0a2740;
+    --ara-royal: #6f95ff;        /* brighter royal so it reads on dark */
+    --ara-cyan: #38c0ff;
+    --ara-periwinkle: rgba(111,149,255,0.12);
+    --ara-periwinkle-deep: rgba(111,149,255,0.18);
+    --ara-panel-gray: #16181d;
+    --ara-rule: #34373e;
+    --ara-rule-strong: #6f95ff;
+    --ara-sec2: #aeb4c0;
+    --ara-sec3: #7d828e;
+
+    --text: var(--ara-ink);
+    --text-secondary: var(--ara-sec2);
+    --text-tertiary: var(--ara-sec3);
+    --accent-warm: var(--ara-royal);
+    --accent-warm-bg: var(--ara-periwinkle);
+    --border: var(--ara-rule);
+    --border-light: #2b2e35;
+
+    --ara-viz-1: #c7dcff;        /* invert ramp direction for dark ground */
+    --ara-viz-2: #6f95ff;
+    --ara-viz-3: #38c0ff;
+    --ara-viz-4: #4f78d6;
+    --ara-viz-5: #33529a;
+    --ara-viz-6: #9aa0ac;
   }
 }
 
@@ -109,13 +157,15 @@
   margin-right: auto;
 }
 
+/* Body is SANS in the McKinsey language — serif is reserved for the
+ * display headline, big statements, and stat figures. Generous rhythm. */
 .ara-doc p {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  line-height: 1.55;
-  margin: 0 0 18px;
+  font-family: var(--font);
+  font-size: 1.02rem;
+  line-height: 1.62;
+  margin: 0 0 20px;
   color: var(--text);
-  letter-spacing: -0.003em;
+  letter-spacing: -0.002em;
 }
 
 .ara-doc p:last-child { margin-bottom: 0; }
@@ -134,66 +184,79 @@
 .ara-doc em { color: var(--text-secondary); }
 
 /* ── Headings + meta ─────────────────────────────── */
+/* Eyebrow: uppercase, letter-spaced sans kicker in McKinsey royal blue.
+ * Sans (not mono) keeps it consulting-grade rather than terminal-ish. */
 .ara-eyebrow {
   display: block;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-bottom: 12px;
-}
-
-.ara-display {
   font-family: var(--font);
-  font-size: clamp(1.95rem, 3vw, 2.7rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  color: var(--text);
-  margin: 0 0 16px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ara-royal);
+  margin-bottom: 14px;
 }
 
+/* McKinsey display: large SERIF headline. This is the one place serif
+ * carries the masthead weight. */
+.ara-display {
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 3.2vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  color: var(--ara-navy);
+  margin: 0 0 18px;
+}
+
+/* Deck: clean SANS standfirst, not italic serif. Restrained gray. */
 .ara-deck {
-  font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 1.4vw, 1.4rem);
-  font-style: italic;
+  font-family: var(--font);
+  font-size: clamp(1.1rem, 1.35vw, 1.32rem);
+  font-style: normal;
+  font-weight: 400;
   color: var(--text-secondary);
-  line-height: 1.4;
-  margin: 0 0 32px;
-  letter-spacing: -0.005em;
+  line-height: 1.5;
+  margin: 0 0 34px;
+  letter-spacing: -0.006em;
 }
 
+/* Lede: opening paragraph, sans to match body but slightly larger and
+ * tighter — the "first graf" weight. */
 .ara-lede {
-  font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 1.2vw, 1.25rem);
-  line-height: 1.55;
+  font-family: var(--font);
+  font-size: clamp(1.12rem, 1.25vw, 1.28rem);
+  font-weight: 400;
+  line-height: 1.58;
   color: var(--text);
-  margin: 0 0 24px;
-  letter-spacing: -0.005em;
+  margin: 0 0 28px;
+  letter-spacing: -0.006em;
 }
 
+/* Section head: bold SANS over a strong navy rule (McKinsey exhibit-rule
+ * placement). Airier top margin for generous vertical rhythm. */
 .ara-h2 {
   font-family: var(--font);
-  font-size: clamp(1.32rem, 1.5vw, 1.55rem);
+  font-size: clamp(1.34rem, 1.5vw, 1.58rem);
   font-weight: 700;
-  letter-spacing: -0.022em;
-  color: var(--text);
-  line-height: 1.2;
-  margin: 44px 0 14px;
-  padding-top: 22px;
-  border-top: 1.5px solid var(--border);
+  letter-spacing: -0.018em;
+  color: var(--ara-navy);
+  line-height: 1.22;
+  margin: 54px 0 16px;
+  padding-top: 18px;
+  border-top: 2px solid var(--ara-rule-strong);
 }
 
 .ara-h2:first-child { padding-top: 0; border-top: none; margin-top: 0; }
 
+/* Section number: royal-blue tabular index, the McKinsey "01 / 02" rhythm. */
 .ara-h2-num {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--text-tertiary);
-  margin-right: 12px;
+  font-family: var(--font);
+  font-size: 0.86rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ara-royal);
+  margin-right: 14px;
 }
 
 /* Per-section share link, injected by addSectionAnchors() in main.ts on
@@ -265,8 +328,8 @@
 
 .ara-divider {
   border: none;
-  border-top: 1px solid var(--text);
-  margin: 48px 0 32px;
+  border-top: 1px solid var(--ara-rule);
+  margin: 52px 0 36px;
 }
 
 /* Optional grouping wrapper. Keeps a logical section visually separated. */
@@ -275,14 +338,15 @@
 }
 
 /* ── Lists ───────────────────────────────────────── */
+/* Sans, matching body. */
 .ara-doc ul,
 .ara-doc ol {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  line-height: 1.55;
+  font-family: var(--font);
+  font-size: 1.02rem;
+  line-height: 1.62;
   padding-left: 24px;
-  margin: 0 0 18px;
-  letter-spacing: -0.003em;
+  margin: 0 0 20px;
+  letter-spacing: -0.002em;
 }
 
 .ara-doc li {
@@ -356,15 +420,19 @@
 }
 
 /* ── Pull quote ──────────────────────────────────── */
+/* Serif, royal-blue rule. Not italic — McKinsey pull quotes are upright
+ * serif statements, not magazine italics. */
 .ara-quote {
-  border-left: 4px solid var(--accent-warm);
-  padding: 4px 0 4px 18px;
-  margin: 24px 0;
+  border-left: 3px solid var(--ara-royal);
+  padding: 2px 0 2px 22px;
+  margin: 28px 0;
   font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.15rem;
-  line-height: 1.6;
-  color: var(--text);
+  font-style: normal;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--ara-navy);
 }
 
 .ara-quote-attr {
@@ -416,46 +484,51 @@
  * known in pure CSS, so we can't safely use per-cell borders). */
 .ara-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.5px;
-  margin: 22px 0;
-  background: var(--border);
-  border: 1.5px solid var(--border);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  margin: 28px 0;
+  background: var(--ara-rule);
+  border: 1px solid var(--ara-rule);
   border-radius: 0;
 }
 
 .ara-stat {
   background: var(--bg);
-  padding: 14px 16px;
+  padding: 18px 18px 16px;
   text-align: left;
 }
 
+/* Label: small uppercase tracked SANS in gray — McKinsey exhibit-label feel. */
 .ara-stat-label {
   display: block;
-  font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-family: var(--font);
+  font-size: 0.66rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-tertiary);
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
+/* The big figure: huge electric-blue SERIF number — the McKinsey
+ * inside-cover statistic. Tabular for column alignment. */
 .ara-stat-value {
-  font-family: var(--font-mono);
-  font-size: 1.55rem;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.1;
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--ara-royal);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
 }
 
 /* Tiny unit suffix on big-figure values — "87 yrs.", "$39.6T", "5.2GW".
- * Same primitive works inside .ara-stat-value and .ara-compare-value. */
+ * Sans, muted, so it doesn't compete with the serif figure. Same
+ * primitive works inside .ara-stat-value and .ara-compare-value. */
 .ara-stat-unit,
 .ara-compare-value .ara-stat-unit {
   font-family: var(--font);
-  font-size: 0.52em;
+  font-size: 0.42em;
   font-weight: 500;
   color: var(--text-secondary);
   margin-left: 4px;
@@ -466,7 +539,7 @@
   font-family: var(--font);
   font-size: 0.78rem;
   color: var(--text-secondary);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 /* ── Tables ──────────────────────────────────────── */
@@ -492,30 +565,32 @@
   font-size: 0.88rem;
 }
 
+/* McKinsey exhibit table: navy header rule, sans tracked header labels,
+ * airy hairline body rules. */
 .ara-table thead th {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-family: var(--font);
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text);
+  color: var(--ara-navy);
   text-align: left;
-  padding: 9px 12px;
-  border-top: 1.5px solid var(--border);
-  border-bottom: 1.5px solid var(--border);
+  padding: 10px 12px;
+  border-top: 2px solid var(--ara-rule-strong);
+  border-bottom: 1px solid var(--ara-rule-strong);
   background: transparent;
   white-space: nowrap;
 }
 
 .ara-table tbody td {
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--border);
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--ara-rule);
   vertical-align: top;
   color: var(--text);
 }
 
-.ara-table tbody tr:last-child td { border-bottom: 1.5px solid var(--border); }
-.ara-table tbody tr:hover td { background: transparent; }
+.ara-table tbody tr:last-child td { border-bottom: 2px solid var(--ara-rule-strong); }
+.ara-table tbody tr:hover td { background: var(--ara-panel-gray); }
 
 @media (max-width: 640px) {
   .ara-table { font-size: 0.78rem; }
@@ -950,16 +1025,16 @@ body.ara-figure-modal-open {
   filter: brightness(1.12);
 }
 
-/* Six-step neutral palette — neutral so categorical data doesn't impose
- * meaning the article isn't claiming (red ≠ bad, green ≠ good unless the
- * author wants it). For categorical color where the chart legend carries
- * the meaning (e.g., country breakdowns), use these in order. */
-.ara-stack-seg--1 { background: var(--text); }
-.ara-stack-seg--2 { background: var(--accent-warm); }
-.ara-stack-seg--3 { background: var(--text-secondary); }
-.ara-stack-seg--4 { background: var(--text-tertiary); }
-.ara-stack-seg--5 { background: #94a3b8; }
-.ara-stack-seg--6 { background: var(--border); }
+/* Six-step mono-blue ramp (navy → royal → cyan → pale → neutral) — the
+ * McKinsey sequential chart palette. Blue-only by design so categorical
+ * data reads as one restrained family, not a rainbow. The legend carries
+ * the meaning; use these in order. */
+.ara-stack-seg--1 { background: var(--ara-viz-1); }
+.ara-stack-seg--2 { background: var(--ara-viz-2); }
+.ara-stack-seg--3 { background: var(--ara-viz-3); }
+.ara-stack-seg--4 { background: var(--ara-viz-4); }
+.ara-stack-seg--5 { background: var(--ara-viz-5); }
+.ara-stack-seg--6 { background: var(--ara-viz-6); }
 
 .ara-stack-legend {
   list-style: none;
@@ -988,12 +1063,12 @@ body.ara-figure-modal-open {
   vertical-align: middle;
 }
 
-.ara-stack-dot--1 { background: var(--text); }
-.ara-stack-dot--2 { background: var(--accent-warm); }
-.ara-stack-dot--3 { background: var(--text-secondary); }
-.ara-stack-dot--4 { background: var(--text-tertiary); }
-.ara-stack-dot--5 { background: #94a3b8; }
-.ara-stack-dot--6 { background: var(--border); }
+.ara-stack-dot--1 { background: var(--ara-viz-1); }
+.ara-stack-dot--2 { background: var(--ara-viz-2); }
+.ara-stack-dot--3 { background: var(--ara-viz-3); }
+.ara-stack-dot--4 { background: var(--ara-viz-4); }
+.ara-stack-dot--5 { background: var(--ara-viz-5); }
+.ara-stack-dot--6 { background: var(--ara-viz-6); }
 
 /* ── Stack-rows: multi-row stacked bar with shared legend ─── */
 /* Bloomberg "Luxury Companies' Sales Exposure to Consumer Clusters" pattern:
@@ -1029,12 +1104,12 @@ body.ara-figure-modal-open {
   background: currentColor;
 }
 
-.ara-stack-rows-cat--1 { color: var(--text); }
-.ara-stack-rows-cat--2 { color: var(--accent-warm); }
-.ara-stack-rows-cat--3 { color: var(--text-secondary); }
-.ara-stack-rows-cat--4 { color: var(--text-tertiary); }
-.ara-stack-rows-cat--5 { color: #94a3b8; }
-.ara-stack-rows-cat--6 { color: var(--border); }
+.ara-stack-rows-cat--1 { color: var(--ara-viz-1); }
+.ara-stack-rows-cat--2 { color: var(--ara-viz-2); }
+.ara-stack-rows-cat--3 { color: var(--ara-viz-3); }
+.ara-stack-rows-cat--4 { color: var(--ara-viz-4); }
+.ara-stack-rows-cat--5 { color: var(--ara-viz-5); }
+.ara-stack-rows-cat--6 { color: var(--ara-viz-6); }
 /* Repeat in --color rule for the swatch — the label text color is the
  * surrounding text-secondary, so override here. */
 .ara-stack-rows-cat--1,
@@ -1045,12 +1120,12 @@ body.ara-figure-modal-open {
 .ara-stack-rows-cat--6 {
   color: var(--text-secondary);
 }
-.ara-stack-rows-cat--1::before { background: var(--text); }
-.ara-stack-rows-cat--2::before { background: var(--accent-warm); }
-.ara-stack-rows-cat--3::before { background: var(--text-secondary); }
-.ara-stack-rows-cat--4::before { background: var(--text-tertiary); }
-.ara-stack-rows-cat--5::before { background: #94a3b8; }
-.ara-stack-rows-cat--6::before { background: var(--border); }
+.ara-stack-rows-cat--1::before { background: var(--ara-viz-1); }
+.ara-stack-rows-cat--2::before { background: var(--ara-viz-2); }
+.ara-stack-rows-cat--3::before { background: var(--ara-viz-3); }
+.ara-stack-rows-cat--4::before { background: var(--ara-viz-4); }
+.ara-stack-rows-cat--5::before { background: var(--ara-viz-5); }
+.ara-stack-rows-cat--6::before { background: var(--ara-viz-6); }
 
 .ara-stack-rows-grid {
   display: grid;
@@ -1593,6 +1668,226 @@ body.ara-figure-modal-open {
   text-transform: uppercase;
 }
 
+/* ── Exhibit (framed data display) ───────────────── */
+/* The signature McKinsey primitive: a numbered, titled frame around a
+ * chart/figure with a strong navy top rule, units subtitle, and footnote
+ * Note/Source lines plus an ARA wordmark at the bottom. Authored via
+ * :::exhibit(...) which auto-emits the wordmark and wraps a nested chart
+ * directive. The exhibit owns the frame and the wordmark; the inner chart
+ * surrenders its own border + ::after wordmark (suppressed below) so there
+ * is exactly one frame and one wordmark — never a box-in-a-box. */
+.ara-exhibit {
+  margin: 32px 0;
+  padding: 0 0 14px;
+  border-top: 2px solid var(--ara-rule-strong);
+  background: var(--bg);
+  font-family: var(--font);
+}
+
+/* When an exhibit sits before the first heading it can use the wide
+ * column; inside a section it inherits the 760px reading measure (the
+ * section is the constraining box). Both read as clean framed exhibits. */
+.ara-doc > .ara-exhibit { max-width: 1120px; margin-left: 0; margin-right: auto; }
+
+.ara-exhibit-num {
+  display: block;
+  font-family: var(--font);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ara-royal);
+  margin: 12px 0 6px;
+}
+
+.ara-exhibit-title {
+  font-family: var(--font);
+  font-size: 1.06rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ara-navy);
+  line-height: 1.3;
+  margin: 0 0 2px;
+}
+
+.ara-exhibit-subtitle {
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin: 0 0 14px;
+}
+
+/* Body holds the chart/figure/table. Removes the doubled top margin the
+ * inner viz would otherwise add under the title. */
+.ara-exhibit-body { margin: 0; }
+.ara-exhibit-body > :first-child { margin-top: 0; }
+.ara-exhibit-body > :last-child { margin-bottom: 0; }
+
+/* Inner viz inside an exhibit: surrender the self-border, padding frame,
+ * and reserved wordmark space — the exhibit provides all three. Covers the
+ * full viz set (border lives on line/bar-chart/tradingview; ::after
+ * wordmark lives on line-chart/donut/slope/bars/stack-rows). */
+.ara-exhibit .ara-line-chart,
+.ara-exhibit .ara-bar-chart,
+.ara-exhibit .ara-tradingview,
+.ara-exhibit .ara-donut,
+.ara-exhibit .ara-slope,
+.ara-exhibit .ara-bars,
+.ara-exhibit .ara-stack-rows {
+  border: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  background: transparent;
+}
+
+.ara-exhibit .ara-line-chart::after,
+.ara-exhibit .ara-donut::after,
+.ara-exhibit .ara-slope::after,
+.ara-exhibit .ara-bars::after,
+.ara-exhibit .ara-stack-rows::after {
+  content: none;
+}
+
+/* The ARA wordmark — McKinsey-style attribution at the exhibit foot.
+ * Also usable standalone. */
+.ara-wordmark {
+  display: block;
+  margin-top: 14px;
+  padding-top: 8px;
+  border-top: 1px solid var(--ara-rule);
+  font-family: var(--font);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* ── Footnote lines (Note / Source) ──────────────── */
+/* Small gray sans lines beneath an exhibit (or standalone in prose). The
+ * leading label ("Note:" / "Source:") is supplied by the author or the
+ * directive. Hanging-indent so wrapped lines align under the text. */
+.ara-note,
+.ara-source {
+  font-family: var(--font);
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin: 10px 0 0;
+  padding-left: 0;
+}
+
+.ara-source { color: var(--text-tertiary); }
+
+.ara-note-label,
+.ara-source-label {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  margin-right: 6px;
+}
+
+/* Inside an exhibit, Note/Source tuck right under the chart with tighter
+ * spacing and sit above the wordmark. */
+.ara-exhibit .ara-note,
+.ara-exhibit .ara-source { margin-top: 12px; }
+
+/* ── Statement (big serif on periwinkle) ─────────── */
+/* The McKinsey inside-cover statement: a large serif sentence in royal
+ * blue on a soft periwinkle panel. For one thesis worth a full beat. */
+.ara-statement {
+  margin: 36px 0;
+  padding: 32px 36px;
+  background: var(--ara-periwinkle);
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.2vw, 2.05rem);
+  font-weight: 500;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  color: var(--ara-royal);
+}
+
+.ara-statement p {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+.ara-statement p + p { margin-top: 14px; }
+
+/* Optional attribution / source line under a statement. */
+.ara-statement-attr {
+  display: block;
+  margin-top: 18px;
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ara-navy);
+}
+
+/* ── Two-column body (dense prose) ───────────────── */
+/* For dense prose sections that benefit from a newspaper-style two-up
+ * measure. Collapses to one column on narrow screens. Authored via
+ * :::cols. Uses CSS columns so the text balances and flows naturally. */
+.ara-cols {
+  margin: 24px 0;
+  column-count: 2;
+  column-gap: 40px;
+  column-rule: 1px solid var(--ara-rule);
+}
+
+.ara-cols > :first-child { margin-top: 0; }
+
+.ara-cols p {
+  /* Avoid a paragraph splitting awkwardly across the column break. */
+  break-inside: avoid;
+}
+
+@media (max-width: 760px) {
+  .ara-cols { column-count: 1; column-rule: none; }
+}
+
+/* ── Change bubble (circular +N% / −N% accent) ───── */
+/* McKinsey's circular percentage-change marker. Inline, sits beside a
+ * figure or label. --up is royal blue, --down is navy (restrained — no
+ * red/green rainbow). Authored inline via {bubble:+12%} / {bubble:-8%}. */
+.ara-bubble {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.9em;
+  height: 2.9em;
+  padding: 0 0.5em;
+  border-radius: 999px;
+  font-family: var(--font);
+  font-size: 0.74rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: #ffffff;
+  background: var(--ara-royal);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.ara-bubble--up   { background: var(--ara-royal); }
+.ara-bubble--down { background: var(--ara-navy); }
+
 /* ── Source watermark on data-viz blocks ─────────── */
 /* Bottom-right "ara.guzus.xyz" credit so a screenshot of a chart carries
  * attribution back to the site. Scoped to block-level visualizations with
@@ -1674,14 +1969,14 @@ body.ara-figure-modal-open {
 }
 
 .ara-compare-value {
-  font-family: var(--font-mono);
-  font-size: 2rem;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
-  color: var(--text);
-  line-height: 1.1;
-  margin-top: 2px;
+  color: var(--ara-navy);
+  line-height: 1.06;
+  margin-top: 4px;
 }
 
 .ara-compare-card--subject .ara-compare-value {
@@ -1767,7 +2062,7 @@ body.ara-figure-modal-open {
   position: absolute;
   inset: 0;
   width: var(--ara-bar-pct, 0%);
-  background: var(--text);
+  background: var(--ara-viz-1);
   transition: width 0.5s ease-out;
 }
 
@@ -2001,10 +2296,15 @@ body.ara-figure-modal-open {
   .ara-iso,
   .ara-table-wrap,
   .ara-table,
+  .ara-exhibit,
+  .ara-statement,
   figure {
     break-inside: avoid;
     page-break-inside: avoid;
   }
+
+  /* Two-column body reflows to a single column in print. */
+  .ara-cols { column-count: 1; column-rule: none; }
 
   .ara-display,
   .ara-h2,

@@ -171,7 +171,7 @@ def _coerce_scalar(raw: str) -> Any:
 # {accent}text{/}, {tag}cdn{/}, {mark}text{/}
 INLINE_WRAP_RE = re.compile(r"\{(accent|tag|mark)\}(.*?)\{/\}", re.DOTALL)
 # {sparkline:5.2,5.4,5.5}, {flag:green}, {flag-red}
-INLINE_SELF_RE = re.compile(r"\{(sparkline|flag|h2num):([^}]+)\}")
+INLINE_SELF_RE = re.compile(r"\{(sparkline|flag|h2num|bubble):([^}]+)\}")
 # Cite refs: [^1], [^1,2,3]
 CITE_RE = re.compile(r"\[\^([0-9]+(?:,\s*[0-9]+)*)\]")
 # Highlight: ==text==
@@ -230,6 +230,16 @@ def parse_inline(text: str) -> str:
             return _mask(f'<span class="ara-flag ara-flag--{variant}"></span>')
         if kind == "h2num":
             return _mask(f'<span class="ara-h2-num">{html.escape(payload)}</span>')
+        if kind == "bubble":
+            # McKinsey circular change-bubble. Direction inferred from the
+            # leading sign: "-"/"−" → down (navy), anything else → up (royal).
+            label = payload.strip()
+            first = label[:1]
+            variant = "down" if first in ("-", "−") else "up"
+            return _mask(
+                f'<span class="ara-bubble ara-bubble--{variant}">'
+                f'{html.escape(label)}</span>'
+            )
         raise AraSyntaxError(f"unknown inline directive {kind!r}")
 
     def _on_wrap(m):
@@ -801,6 +811,104 @@ def emit_quote(attrs: dict, body: str, line_no: int) -> str:
         out.append(f'<span class="ara-quote-attr">{parse_inline(str(attr))}</span>')
     out.append("</blockquote>")
     return "".join(out)
+
+
+def emit_statement(attrs: dict, body: str, line_no: int) -> str:
+    """Large serif statement on a periwinkle panel (the McKinsey
+    inside-cover quote). Body is markdown; an optional `attr=`/`by=`
+    renders a small uppercase attribution line beneath it."""
+    attr = _opt(attrs, "attr") or _opt(attrs, "by")
+    inner = compile_blocks(split_blocks(body))
+    out = ['<div class="ara-statement">', inner]
+    if attr:
+        out.append(
+            f'<span class="ara-statement-attr">{parse_inline(str(attr))}</span>'
+        )
+    out.append("</div>")
+    return "".join(out)
+
+
+def _emit_footnote(attrs: dict, body: str, css_class: str, default_label: str) -> str:
+    """Shared shape for :::note and :::source — a small gray sans line
+    with an optional uppercase label prefix. `label=` overrides the
+    default; `label=""` (or label=none) suppresses the prefix."""
+    label_raw = attrs.get("label", default_label)
+    inner = parse_inline(body.strip())
+    out = [f'<p class="{css_class}">']
+    if label_raw not in (None, "", "none", False):
+        label_class = css_class + "-label"
+        out.append(f'<span class="{label_class}">{parse_inline(str(label_raw))}</span>')
+    out.append(inner)
+    out.append("</p>")
+    return "".join(out)
+
+
+def emit_note(attrs: dict, body: str, line_no: int) -> str:
+    """Footnote NOTE line (methodology / caveat). `label=` overrides the
+    default 'Note'; pass label="" to omit the prefix."""
+    return _emit_footnote(attrs, body, "ara-note", "Note")
+
+
+def emit_source(attrs: dict, body: str, line_no: int) -> str:
+    """Footnote SOURCE line. `label=` overrides the default 'Source';
+    pass label="" to omit the prefix."""
+    return _emit_footnote(attrs, body, "ara-source", "Source")
+
+
+def emit_exhibit(attrs: dict, body: str, line_no: int) -> str:
+    """Framed McKinsey exhibit. Attributes:
+        num       -> ara-exhibit-num eyebrow (e.g. "Exhibit 1")
+        title     -> ara-exhibit-title (bold)
+        subtitle  -> ara-exhibit-subtitle (units, e.g. "$ billion")
+        note      -> convenience ara-note line (also expressible as a
+                     nested :::note block in the body)
+        source    -> convenience ara-source line (also expressible as a
+                     nested :::source block in the body)
+        wordmark  -> auto-append the ARA wordmark (default true; pass
+                     wordmark=false to suppress)
+
+    The body is compiled as a normal block sequence — typically one nested
+    chart/figure/table directive, optionally followed by :::note/:::source.
+    The inner chart's own border + ARA watermark are suppressed by CSS so
+    the exhibit frame and wordmark are not doubled."""
+    num = _opt(attrs, "num")
+    title = _opt(attrs, "title")
+    subtitle = _opt(attrs, "subtitle")
+    note = _opt(attrs, "note")
+    source = _opt(attrs, "source")
+    wordmark = attrs.get("wordmark", True)
+    inner = compile_blocks(split_blocks(body)) if body.strip() else ""
+    out = ['<div class="ara-exhibit">']
+    if num:
+        out.append(f'<span class="ara-exhibit-num">{parse_inline(str(num))}</span>')
+    if title:
+        out.append(f'<div class="ara-exhibit-title">{parse_inline(str(title))}</div>')
+    if subtitle:
+        out.append(
+            f'<div class="ara-exhibit-subtitle">{parse_inline(str(subtitle))}</div>'
+        )
+    out.append(f'<div class="ara-exhibit-body">{inner}</div>')
+    # Convenience note/source attributes render after the body. They are
+    # additive to any nested :::note/:::source already inside the body.
+    if note:
+        out.append(_emit_footnote({"label": "Note"}, str(note), "ara-note", "Note"))
+    if source:
+        out.append(
+            _emit_footnote({"label": "Source"}, str(source), "ara-source", "Source")
+        )
+    if wordmark not in (False, "false", "no", "off", 0):
+        mark = "ara.guzus.xyz" if wordmark in (True, "true", "yes", "on") else str(wordmark)
+        out.append(f'<span class="ara-wordmark">{parse_inline(mark)}</span>')
+    out.append("</div>")
+    return "".join(out)
+
+
+def emit_cols(attrs: dict, body: str, line_no: int) -> str:
+    """Two-column body for dense prose. Body is compiled as a normal block
+    sequence and laid out in CSS columns (collapses to one column on narrow
+    screens)."""
+    inner = compile_blocks(split_blocks(body))
+    return f'<div class="ara-cols">{inner}</div>'
 
 
 def emit_figure(attrs: dict, body: str, line_no: int) -> str:
@@ -1466,6 +1574,11 @@ DIRECTIVES: dict[str, tuple[Callable, str]] = {
     "kv":          (emit_kv,          "yaml"),
     "callout":     (emit_callout,     "markdown"),
     "quote":       (emit_quote,       "markdown"),
+    "statement":   (emit_statement,   "markdown"),
+    "note":        (emit_note,        "markdown"),
+    "source":      (emit_source,      "markdown"),
+    "exhibit":     (emit_exhibit,     "markdown"),
+    "cols":        (emit_cols,        "markdown"),
     "figure":      (emit_figure,      "markdown"),
     "line-chart":  (emit_line_chart,  "lines"),
     "tradingview": (emit_tradingview, "markdown"),

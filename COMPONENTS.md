@@ -59,6 +59,12 @@ Anything else is rejected. No `<style>`, `<script>`, `<iframe>`, `<h1>` (the das
 | `ara-caption` | `<figcaption class="ara-caption">` | Caption wrapper. Italic, centered, muted. |
 | `ara-caption-text` | `<span class="ara-caption-text">` inside `ara-caption` | Human-readable image caption. |
 | `ara-credit` | `<span class="ara-credit">` inside `ara-caption` | Source/credit line, optionally linking to the source URL. |
+| `ara-statement` | `<div class="ara-statement">` | Large serif statement on a periwinkle panel — the McKinsey inside-cover thesis line. One striking sentence. Use once or twice per article, not for ordinary emphasis. Authored via `:::statement`. |
+| `ara-statement-attr` | `<span class="ara-statement-attr">` inside `ara-statement` | Small uppercase attribution line under the statement (e.g. source or author). |
+| `ara-note` | `<p class="ara-note">` | Small gray sans footnote NOTE line (methodology caveat). Use beneath an exhibit or standalone. Authored via `:::note`. |
+| `ara-note-label` | `<span class="ara-note-label">Note</span>` inside `ara-note` | Uppercase label prefix on a note line. |
+| `ara-source` | `<p class="ara-source">` | Small gray sans footnote SOURCE line (data provenance). Use beneath an exhibit or standalone. Authored via `:::source`. |
+| `ara-source-label` | `<span class="ara-source-label">Source</span>` inside `ara-source` | Uppercase label prefix on a source line. |
 
 ## Data display
 
@@ -71,6 +77,12 @@ Anything else is rejected. No `<style>`, `<script>`, `<iframe>`, `<h1>` (the das
 | `ara-stat-value` | `<div class="ara-stat-value">` | The big mono number. Tabular figures. |
 | `ara-stat-unit` | `<span class="ara-stat-unit">yrs.</span>` inside any big-figure value | Tiny unit suffix attached to a big number — `87 yrs.`, `$39.6T`, `5.2 GW`. Works inside `ara-stat-value` or `ara-compare-value`. |
 | `ara-stat-note` | `<div class="ara-stat-note">` | Optional small caption (e.g. "+4.7% YoY"). |
+| `ara-exhibit` | `<div class="ara-exhibit">` | Framed McKinsey exhibit: numbered eyebrow, title, units subtitle, a nested chart/figure/table, optional Note/Source, and an ARA wordmark. The inner chart's own border and watermark are suppressed so the frame and wordmark are never doubled. Authored via `:::exhibit`. |
+| `ara-exhibit-num` | `<span class="ara-exhibit-num">Exhibit 1</span>` inside `ara-exhibit` | Uppercase royal-blue exhibit-number eyebrow. |
+| `ara-exhibit-title` | `<div class="ara-exhibit-title">` inside `ara-exhibit` | Bold navy exhibit title. |
+| `ara-exhibit-subtitle` | `<div class="ara-exhibit-subtitle">` inside `ara-exhibit` | Units / scope subtitle (e.g. "$ billion"). |
+| `ara-exhibit-body` | `<div class="ara-exhibit-body">` inside `ara-exhibit` | Wraps the chart, figure, or table the exhibit frames. |
+| `ara-wordmark` | `<span class="ara-wordmark">ara.guzus.xyz</span>` | ARA attribution line at the exhibit foot (auto-emitted by `:::exhibit`). Also usable standalone. |
 | `ara-table` | `<table class="ara-table">` | Comparison or ranked data. Use `<thead>` + `<tbody>`. |
 | `ara-row-highlight` | `<tr class="ara-row-highlight">` inside `ara-table`, or `<li class="ara-rank-item ara-row-highlight">` inside `ara-rank-list` | Single-row emphasis. Use for "the subject" row in a ranked list (e.g., your country in a global comparison). At most one per table. |
 | `ara-compare` | `<div class="ara-compare">` containing three `ara-compare-card` blocks | Three-card horizontal block for "where the subject sits on the distribution" — e.g. `Lowest · Highest · Subject`. Mark the subject card with `ara-compare-card--subject`. |
@@ -132,6 +144,15 @@ Proportional fills are declared with `data-pct="N"` (integer 0–100). The dashb
 | `ara-mark` | `<mark class="ara-mark">` | Highlight a phrase. Distinct from search highlight (raw `<mark>`). |
 | `ara-accent` | `<strong class="ara-accent">United States</strong>` (or `<span>`) | Inline accent color + semi-bold. Use to anchor the eye on "the subject" across a global comparison. Distinct from `<em>` (italic) and `ara-mark` (background highlight). |
 | `ara-flag` | `<span class="ara-flag ara-flag--green"></span>` | Status dot. Variants: `--green`, `--yellow`, `--red`. |
+| `ara-bubble` | `<span class="ara-bubble ara-bubble--up">+12%</span>` | Circular percentage-change marker (McKinsey `+N%` / `−N%` bubble). Variants: `--up` (royal), `--down` (navy). Authored inline via `{bubble:+12%}` / `{bubble:-8%}`; the sign infers direction. |
+
+## Layout
+
+The one sanctioned layout primitive. Everything else still flows top to bottom — there is no general grid system (see "What's not here").
+
+| Class | Tag | When |
+|---|---|---|
+| `ara-cols` | `<div class="ara-cols">` | Two-column body for dense prose; collapses to one column on narrow screens. Authored via `:::cols`. Keep charts and wide blocks out of it. |
 
 ## Code
 
@@ -144,7 +165,7 @@ Inline `<code>` and `<pre><code>` need no class — they're styled automatically
 
 ## What's not here, by design
 
-- **No layout primitives.** No `ara-grid`, `ara-row`, `ara-col`. Articles flow top to bottom; if you need a grid, it's probably `ara-stats` or a table.
+- **No general layout primitives.** No `ara-grid`, `ara-row`, `ara-col`. Articles flow top to bottom; if you need a grid, it's probably `ara-stats` or a table. The single exception is `ara-cols` (a two-column *prose* body) — it does not generalize to arbitrary grids.
 - **No color utilities.** No `ara-text-red`. Use callouts or flags for semantic color.
 - **No spacing utilities.** Margins live inside each component. If two components feel cramped, fix the component's margins.
 - **No theming knobs.** Light/dark come from dashboard CSS variables. Articles never pick colors.
