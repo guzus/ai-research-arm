@@ -20,7 +20,7 @@ sources (Twitter/RSS/Bluesky/HN/Reddit/arXiv)
     → synthesis workflows (digest, news research, model timeline) read research/
     → output workflows (front-page, generative-research) produce shareable artifacts
     → dashboard prebuild copies research/* into dashboard/public/research/
-    → Vercel git integration auto-builds and deploys on every push to main
+    → Railway rebuilds the root Dockerfile image and deploys on every push to main
 ```
 
 Daily-improve runs at the tail of the cycle, reads yesterday's output,
@@ -38,7 +38,8 @@ and opens a PR with methodology fixes.
 | [`docs/wiki-schema.md`](docs/wiki-schema.md) | Canonical schema + page conventions for the LLM Wiki (`research/wiki/`). Read at runtime by the ingest agent in `wiki-ingest.yml` and enforced by `scripts/check_wiki.py`. |
 | [`docs/hooker-telemetry.md`](docs/hooker-telemetry.md) | Non-blocking telemetry route via `https://hooker.guzus.xyz` topic `ara-telemetry`. |
 | [`docs/archive/`](docs/archive/) | Historical improvement logs and superseded docs. |
-| `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`; Vercel auto-deploys on every push to `main`. |
+| `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`; Railway auto-deploys on every push to `main` (next row). |
+| [`Dockerfile`](Dockerfile) + [`Caddyfile`](Caddyfile) + [`railway.json`](railway.json) | The Railway deploy stack serving **ara.guzus.xyz** (behind Cloudflare — responses carry `x-railway-edge`). The root `Dockerfile` builds the dashboard with bun (`oven/bun:1-alpine`, plus `nodejs` for the pre/postbuild node scripts) and serves `dashboard/dist` with Caddy; `railway.json` pins the DOCKERFILE builder + `/` healthcheck. `dashboard/vercel.json` is the legacy Vercel config — Vercel no longer serves the domain (Load-bearing rule 3). |
 | `data/` | Static lookup data used by aggregation scripts. |
 | `research/` | All generated artifacts. Subdir map in "Output Locations" below. |
 
@@ -232,7 +233,7 @@ Secrets are configured in GitHub Actions. None are committed.
 | `HOOKER_TOKEN` | Telemetry composite action | Optional; without it, telemetry steps no-op. |
 | `HOOKER_URL` | Hooker telemetry composite + most workflows (the hooker endpoint, distinct from `HOOKER_TOKEN`) | The `https://hooker.guzus.xyz`-style base URL the telemetry/alert steps POST to. Referenced widely across workflows/actions. |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `hourly-twitter*` | For headline alert delivery. |
-| `VERCEL_DEPLOY_HOOK` | `24h-model-timeline`, `wiki-ingest` | Optional; belt-and-suspenders deploy trigger. When unset, the lane relies on Vercel's GitHub auto-deploy on push. |
+| `VERCEL_DEPLOY_HOOK` | `24h-model-timeline`, `wiki-ingest`, `hourly-twitter` (claude tier) | Optional legacy nudge to a Vercel project that does NOT serve ara.guzus.xyz (prod deploys are Railway, git-push driven — Load-bearing rule 3; Vercel's last recorded deploy failed 2026-05-25). Harmless: the step no-ops when unset. |
 | `GITHUB_TOKEN` | All workflows | Auto-provided. |
 
 ## Load-bearing Rules
@@ -263,12 +264,23 @@ output or break the pipeline. Read them before editing.
    rejected. Reach for `:::raw` only when the DSL genuinely can't
    express the shape; invented classes still fail.
 
-3. **Dashboard deploys are git-push driven.** Vercel watches `main`
-   and rebuilds on every push (root `dashboard/`). There is no
-   workflow file for deploys. `dashboard/scripts/prebuild.mjs` copies
-   `research/<source>/` into `public/research/` and emits
-   `manifest.json` before Vite runs. Touching it changes what the
-   dashboard sees.
+3. **Dashboard deploys are git-push driven — Railway is the deployer.**
+   Railway watches `main` and rebuilds the Docker image on every push
+   (root `Dockerfile`: bun build → Caddy serve; `railway.json` pins
+   the builder + healthcheck). ara.guzus.xyz is served by that
+   container behind Cloudflare (responses carry `x-railway-edge`) —
+   NOT by Vercel, whose last recorded deploy failed 2026-05-25 and
+   whose leftovers (`dashboard/vercel.json`, `VERCEL_DEPLOY_HOOK`)
+   are legacy. There is still no workflow file for deploys.
+   `dashboard/scripts/prebuild.mjs` copies `research/<source>/` into
+   `public/research/` and emits `manifest.json` before Vite runs (the
+   Docker build runs the same `bun run build` lifecycle). Touching it
+   changes what the dashboard sees. Incident-learned corollary: the
+   Dockerfile's package manager MUST stay in lockstep with the
+   dashboard's (bun since #102) — a leftover `npm ci` froze prod at a
+   stale build for ~a day with CI green, because CI never runs the
+   Dockerfile. Deploy staleness is watched by
+   `scripts/check_deploy_health.py`, wired into `liveness-check.yml`.
 
 4. **Hooker telemetry is non-blocking.** Every workflow's final step
    posts to `https://hooker.guzus.xyz` via the local composite at
@@ -308,7 +320,8 @@ output or break the pipeline. Read them before editing.
 8. **Atomic file writes.** Long-running aggregation scripts that
    write into `research/` should write to a temp file in the same
    directory and `os.replace()` into place, so a half-finished file
-   never reaches Vercel's prebuild.
+   never reaches the dashboard prebuild (and thus the next deployed
+   Railway image).
 
 9. **Model tickets are CRUD'd, not regenerated.**
    `research/models/tickets/<slug>.md` is the persistent store for the
