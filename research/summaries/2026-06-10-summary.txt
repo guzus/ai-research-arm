@@ -1,0 +1,14 @@
+AI News - 2026-06-10
+
+TOP STORIES:
+• Anthropic ships Claude Fable 5 — its first PUBLIC "Mythos-class" model (same weights as gated Mythos 5, safeguards on); tops SWE-Bench Pro
+• Google ships Gemini 3.5 Live Translate — real-time speech-to-speech in 70+ languages, preserves voice; live on Android/iOS + Gemini Live API
+• Builders call Fable 5 a "step change," but critics flag "bait-and-switch" guardrails: cyber/bio/chem queries auto-reroute to Opus 4.8
+
+KEY NUMBERS:
+• Fable 5 SWE-Bench Pro: 80.3% vs Opus 4.8 69.2%, GPT-5.5 58.6%; ~95% SWE-Bench Verified
+• Fable 5 pricing: $10/$50 per M tokens (~2x Opus 4.8)
+• SpaceX IPO prices June 11, trades June 12 (SPCX) — >$250B demand
+• No OpenAI GPT-5.6 signal
+
+Full report on GitHub.
