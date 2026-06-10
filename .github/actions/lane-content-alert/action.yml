@@ -1,0 +1,129 @@
+name: Lane content quality gate (advisory)
+description: >-
+  Run the advisory content/volume gate (scripts/check_lane_content.py): inspect
+  the most recent artifact in each research lane and flag anomalously small or
+  collapsed output that recency alone would miss (e.g. expired Twitter cookies →
+  bird returns [] → lane commits a husk → freshness stays green). On an anomaly
+  it alerts via hooker AND a direct Telegram fallback. Sibling to
+  lane-freshness-alert; stdlib Python only so it runs on both runner tiers. This
+  action NEVER fails the job — content anomalies are advisory; freshness remains
+  the hard gate.
+
+inputs:
+  hooker_url:
+    description: Hooker base URL. Hooker alert skipped if empty.
+    required: false
+    default: ""
+  hooker_token:
+    description: Hooker bearer token. Hooker alert skipped if empty.
+    required: false
+    default: ""
+  topic:
+    description: Hooker topic that relays to Telegram.
+    required: false
+    default: ara-research
+  telegram_bot_token:
+    description: Telegram bot token for the direct fallback channel. Skipped if empty.
+    required: false
+    default: ""
+  telegram_chat_id:
+    description: Telegram chat id for the direct fallback channel. Skipped if empty.
+    required: false
+    default: ""
+
+outputs:
+  anomaly:
+    description: "'true' when one or more lanes are content-anomalous."
+    value: ${{ steps.check.outputs.anomaly }}
+  anomalous_lanes:
+    description: Comma-separated anomalous lane names.
+    value: ${{ steps.check.outputs.anomalous_lanes }}
+
+runs:
+  using: composite
+  steps:
+    # Advisory: the script exits 0 even on an anomaly (no --exit-code), writing
+    # anomaly / anomalous_lanes / idempotency_key / report to $GITHUB_OUTPUT and
+    # a table to the step summary. `|| true` is belt-and-suspenders so this step
+    # can never fail the job even if the script hits an internal error.
+    - name: Check lane content
+      id: check
+      shell: bash
+      run: python3 scripts/check_lane_content.py || true
+
+    # ── Channel 1: hooker (relays to Telegram). Lower priority than the
+    #    freshness alert (3 vs 5): this is advisory, not "pipeline down". ─────
+    - name: Alert via hooker (relays to Telegram)
+      if: steps.check.outputs.anomaly == 'true'
+      shell: bash
+      continue-on-error: true
+      env:
+        HOOKER_URL: ${{ inputs.hooker_url }}
+        HOOKER_TOKEN: ${{ inputs.hooker_token }}
+        TOPIC: ${{ inputs.topic }}
+        ANOMALOUS_LANES: ${{ steps.check.outputs.anomalous_lanes }}
+        IDEMPOTENCY_KEY: ${{ steps.check.outputs.idempotency_key }}
+        REPO: ${{ github.repository }}
+        SERVER: ${{ github.server_url }}
+        RUN_ID: ${{ github.run_id }}
+      run: |
+        set -euo pipefail
+        if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+          echo "Hooker credentials missing — skipping hooker content alert (Telegram fallback still applies)"
+          exit 0
+        fi
+        count=$(printf '%s' "$ANOMALOUS_LANES" | tr ',' '\n' | grep -c . || true)
+        SAFE_LANES=$(printf '%s' "$ANOMALOUS_LANES" \
+          | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
+        TEXT=$(printf 'Content anomaly in lanes: %s\n\nThese lanes committed on time but the latest artifact is anomalously small or collapsed vs its trailing median — a likely silent upstream/source failure (e.g. expired Twitter cookies, a dead feed). Advisory: the pipeline is still running, but this output may be empty/garbage.' "$SAFE_LANES")
+        RUN_URL="${SERVER%/}/${REPO}/actions/runs/${RUN_ID}"
+        jq -n \
+          --arg title "🟠 ARA content: ${count} lane(s) anomalous (advisory)" \
+          --arg text "$TEXT" \
+          --arg btn "Inspect (Actions run)" \
+          --arg url "$RUN_URL" \
+          '{
+            title: $title,
+            text: $text,
+            priority: 3,
+            tags: ["ara", "advisory", "content"],
+            parse_mode: "HTML",
+            reply_markup: { inline_keyboard: [[{ text: $btn, url: $url }]] }
+          }' > "${RUNNER_TEMP:-/tmp}/hooker-lane-content.json"
+        curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/${TOPIC}" \
+          -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+          -H "Content-Type: application/json" \
+          -H "Idempotency-Key: ${IDEMPOTENCY_KEY}" \
+          --data-binary "@${RUNNER_TEMP:-/tmp}/hooker-lane-content.json"
+
+    # ── Channel 2: direct Telegram fallback (bypasses hooker). ──────────────
+    - name: Alert via Telegram (direct fallback)
+      if: steps.check.outputs.anomaly == 'true'
+      shell: bash
+      continue-on-error: true
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ inputs.telegram_bot_token }}
+        TELEGRAM_CHAT_ID: ${{ inputs.telegram_chat_id }}
+        ANOMALOUS_LANES: ${{ steps.check.outputs.anomalous_lanes }}
+        REPO: ${{ github.repository }}
+        SERVER: ${{ github.server_url }}
+        RUN_ID: ${{ github.run_id }}
+      run: |
+        set -euo pipefail
+        if [ -z "${TELEGRAM_BOT_TOKEN:-}" ] || [ -z "${TELEGRAM_CHAT_ID:-}" ]; then
+          echo "Telegram credentials missing — skipping direct Telegram content fallback"
+          exit 0
+        fi
+        count=$(printf '%s' "$ANOMALOUS_LANES" | tr ',' '\n' | grep -c . || true)
+        RUN_URL="${SERVER%/}/${REPO}/actions/runs/${RUN_ID}"
+        TEXT=$(printf '🟠 ARA content anomaly (advisory): %s lane(s)\n\nLanes: %s\n\nCommitted on time but the latest artifact is anomalously small / collapsed vs median — likely a silent source failure (expired cookies, dead feed). Pipeline still running; output may be empty.\n\n[Inspect](%s)' \
+          "$count" "$ANOMALOUS_LANES" "$RUN_URL")
+        if curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+          --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+          --data-urlencode "text=${TEXT}" \
+          -d "parse_mode=Markdown" \
+          -d "disable_web_page_preview=true" >/dev/null; then
+          echo "Telegram content fallback sent"
+        else
+          echo "Telegram content fallback send failed (non-blocking)"
+        fi

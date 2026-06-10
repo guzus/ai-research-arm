@@ -1,42 +1,62 @@
 name: Lane freshness alert
 description: >-
   Check research-lane freshness (git-commit recency vs per-lane cadence) and,
-  on staleness, alert via hooker (relays to Telegram) and fail the job. Stdlib
-  Python only, so it runs identically on ubuntu-latest and the self-hosted
-  runner. Intended to be invoked from both tiers so the watchdog survives
-  whichever tier an outage takes down.
+  on staleness, alert via hooker (relays to Telegram) AND a direct Telegram
+  fallback, then fail the job. Stdlib Python only, so it runs identically on
+  ubuntu-latest and the self-hosted runner. Intended to be invoked from both
+  tiers so the watchdog survives whichever tier an outage takes down. The dual
+  alert channel (hooker + direct Telegram) means a hooker outage / rotated
+  token no longer blackholes the alert.
 
 inputs:
   hooker_url:
-    description: Hooker base URL (e.g. https://hooker.guzus.xyz). Alert is skipped if empty.
+    description: Hooker base URL (e.g. https://hooker.guzus.xyz). Hooker alert skipped if empty.
     required: false
     default: ""
   hooker_token:
-    description: Hooker bearer token. Alert is skipped if empty.
+    description: Hooker bearer token. Hooker alert skipped if empty.
     required: false
     default: ""
   topic:
     description: Hooker topic that relays to Telegram.
     required: false
     default: ara-research
+  telegram_bot_token:
+    description: Telegram bot token for the direct fallback channel. Telegram alert skipped if empty.
+    required: false
+    default: ""
+  telegram_chat_id:
+    description: Telegram chat id for the direct fallback channel. Telegram alert skipped if empty.
+    required: false
+    default: ""
+
+outputs:
+  stale:
+    description: "'true' when one or more lanes are stale (lets the caller gate a heartbeat)."
+    value: ${{ steps.check.outputs.stale }}
+  stale_lanes:
+    description: Comma-separated stale lane names.
+    value: ${{ steps.check.outputs.stale_lanes }}
 
 runs:
   using: composite
   steps:
     # The script writes stale / stale_lanes / idempotency_key / report to
     # $GITHUB_OUTPUT (registered as this step's outputs) and a table to the
-    # job step summary. `|| true` keeps this step green so the alert step can
-    # still fire on staleness; the explicit "Fail if stale" step sets the
-    # job's final red status. (Avoids relying on composite continue-on-error.)
+    # job step summary. `|| true` keeps this step green so the alert steps can
+    # still fire on staleness; the explicit "Fail if stale" step (LAST) sets
+    # the job's final red status. (Avoids relying on composite continue-on-error.)
     - name: Check lane freshness
       id: check
       shell: bash
       run: python3 scripts/check_lane_freshness.py || true
 
-    # Loud alert that reaches a human. Idempotency-Key is a per-day hash over
-    # the stale set, so the ubuntu-latest and self-hosted jobs (and repeat runs
-    # the same day) collapse to a single delivered message; a change in the
-    # stale set produces a new key and re-alerts.
+    # ── Channel 1: hooker (relays to Telegram) ─────────────────────────────
+    # Idempotency-Key is a per-day hash over the stale set, so the ubuntu-latest
+    # and self-hosted jobs (and repeat runs the same day) collapse to a single
+    # delivered message; a change in the stale set produces a new key and
+    # re-alerts. continue-on-error so a hooker outage cannot fail the job and
+    # cannot prevent the Telegram fallback below from firing.
     - name: Alert via hooker (relays to Telegram)
       if: steps.check.outputs.stale == 'true'
       shell: bash
@@ -52,7 +72,7 @@ runs:
       run: |
         set -euo pipefail
         if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
-          echo "Hooker credentials missing — skipping alert (staleness still fails the job)"
+          echo "Hooker credentials missing — skipping hooker alert (Telegram fallback + staleness fail still apply)"
           exit 0
         fi
         count=$(printf '%s' "$STALE_LANES" | tr ',' '\n' | grep -c . || true)
@@ -81,6 +101,53 @@ runs:
           -H "Idempotency-Key: ${IDEMPOTENCY_KEY}" \
           --data-binary "@${RUNNER_TEMP:-/tmp}/hooker-lane-freshness.json"
 
+    # ── Channel 2: direct Telegram fallback (bypasses hooker entirely) ──────
+    # Independent of hooker so a hooker outage / rotated HOOKER_TOKEN cannot
+    # blackhole the alert. Mirrors the proven sendMessage call in
+    # daily-digest.yml (endpoint, --data-urlencode, parse_mode=Markdown,
+    # disable_web_page_preview). The two watchdog tiers can each send one
+    # Telegram message here — an acceptable belt-and-suspenders for the failure
+    # mode we are guarding (better a duplicate page than a missed outage).
+    # continue-on-error so a malformed/limited send can never fail the job.
+    - name: Alert via Telegram (direct fallback)
+      if: steps.check.outputs.stale == 'true'
+      shell: bash
+      continue-on-error: true
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ inputs.telegram_bot_token }}
+        TELEGRAM_CHAT_ID: ${{ inputs.telegram_chat_id }}
+        STALE_LANES: ${{ steps.check.outputs.stale_lanes }}
+        REPO: ${{ github.repository }}
+        SERVER: ${{ github.server_url }}
+        RUN_ID: ${{ github.run_id }}
+      run: |
+        set -euo pipefail
+        if [ -z "${TELEGRAM_BOT_TOKEN:-}" ] || [ -z "${TELEGRAM_CHAT_ID:-}" ]; then
+          echo "Telegram credentials missing — skipping direct Telegram fallback"
+          exit 0
+        fi
+        count=$(printf '%s' "$STALE_LANES" | tr ',' '\n' | grep -c . || true)
+        RUN_URL="${SERVER%/}/${REPO}/actions/runs/${RUN_ID}"
+        # Plain text + a Markdown link. Lane names are a controlled allowlist
+        # (no Markdown metacharacters), so keeping the body metachar-free is
+        # what prevents a silent Telegram parse error under continue-on-error.
+        TEXT=$(printf '🚨 ARA pipeline: %s lane(s) STALE\n\nStale lanes: %s\n\nNo commit within the expected cadence — likely a workflow outage (check GitHub Actions billing/spending limit + the self-hosted runner).\n\n[Investigate](%s)' \
+          "$count" "$STALE_LANES" "$RUN_URL")
+        if curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+          --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+          --data-urlencode "text=${TEXT}" \
+          -d "parse_mode=Markdown" \
+          -d "disable_web_page_preview=true" >/dev/null; then
+          echo "Telegram fallback sent"
+        else
+          echo "Telegram fallback send failed (non-blocking)"
+        fi
+
+    # MUST remain the LAST step: it is the only step allowed to exit non-zero.
+    # Any step placed after it would be skipped on stale days (GHA skips
+    # subsequent steps once one fails without continue-on-error), which is why
+    # the alert channels above run first and why the heartbeat is wired in the
+    # caller AFTER this action with an `if: stale == 'false'` guard.
     - name: Fail if stale
       if: steps.check.outputs.stale == 'true'
       shell: bash
