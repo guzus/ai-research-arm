@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-06-10
+
+TOP STORIES:
+• Anthropic ships Claude Fable 5 — first public "Mythos-class" model; high-risk queries auto-route to Opus 4.8. Mythos 5 (same weights, safeguards off) gated to partners.
+• Builders say "Anthropic is pulling away" (Karpathy: "step change") — but benchmarks are vendor-stated, and fine print bites: ~2x pricing, June 22 trial cliff, 30-day retention.
+• Google counters with Gemini 3.5 Live Translate (real-time speech-to-speech, 70+ langs).
+
+KEY NUMBERS:
+• SWE-Bench Pro: Fable 5 80.3% vs Opus 4.8 69.2%, GPT-5.5 58.6%
+• Pricing $10/$50 per M (~2x Opus 4.8)
+• Google to guarantee ~$35B TPU leases for Anthropic
+• HN: Fable 5 at 1,277 pts, top story
+
+TRENDING: Fable 5 guardrails reroute benign queries ("bait and switch"). Still no OpenAI GPT-5.6 signal.
+
+Full digest on GitHub.
