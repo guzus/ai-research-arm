@@ -13,6 +13,10 @@ concurrency:
 jobs:
   daily-digest:
     runs-on: [self-hosted, Linux]
+    # Cap the 3 sequential Opus synthesis steps so a wedged agent can't pin a
+    # Cloud Run worker for GitHub's 6h default. 60 is the whole-job budget; a
+    # genuinely heavy run that overruns times out loudly (freshness catches it).
+    timeout-minutes: 60
     permissions:
       contents: write
       id-token: write

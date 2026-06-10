@@ -81,6 +81,9 @@ concurrency:
 jobs:
   twitter:
     runs-on: [self-hosted, Linux]
+    # Per-matrix-leg cap (applies to each backend leg, not summed) so a hung
+    # bird/agent step can't pin a Cloud Run worker for GitHub's 6h default.
+    timeout-minutes: 60
     permissions:
       contents: write
       actions: write

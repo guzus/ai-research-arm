@@ -10,6 +10,12 @@ on:
     #   - "src/**/*.js"
     #   - "src/**/*.jsx"
 
+# Cancel an in-flight review when a new commit is pushed to the same PR, so
+# rapid pushes don't stack overlapping ~30-min Opus reviews on stale diffs.
+concurrency:
+  group: claude-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   claude-review:
     # Security: gate on author_association. PR bodies/titles/diffs are

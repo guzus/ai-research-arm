@@ -55,21 +55,23 @@ on:
         required: false
         type: string
 
-# Per-topic concurrency. Each unique topic gets its own group so a new
-# dispatch for a DIFFERENT topic does not cancel a pending run for some
-# other topic. GitHub Actions only keeps ONE pending run per concurrency
-# group — using a global `generative-research` group would mean every
-# new dispatch silently bumps the queue and erases ~30 min of work.
+# Concurrency key. Earlier this interpolated the raw `inputs.topic` /
+# `twitter_url` free text into the group name. A long `/gen-research-route`
+# topic blew GitHub's ~400-char concurrency-group limit, and GitHub silently
+# refused to schedule the run (instant `jobs=0` with no surfaced error) — an
+# observed failure. We now key on bounded values only: the issue number for
+# label-triggered runs, else the per-run `run_id`.
 #
-# Re-dispatching the SAME topic still collapses to one pending run
-# (intentional dedup — usually a duplicate click).
-#
-# Concurrent in-progress runs are now safe at the data layer: the Push
-# step does a union-by-slug merge on research/generative/index.json
-# inside a 5-attempt retry loop, so two writers landing simultaneously
-# no longer race on the shared JSON array.
+# Tradeoff of `run_id` for dispatch: every workflow_dispatch gets a UNIQUE
+# group, so same-topic dispatches no longer dedup to one pending run — each
+# dispatch runs. (Issue-event runs still group by issue number.) That's the
+# right tradeoff vs. silently dropping long-topic runs, and concurrent
+# in-progress runs are safe at the data layer: the Push step does a
+# union-by-slug merge on research/generative/index.json inside a 5-attempt
+# retry loop, so two writers landing simultaneously don't race on the shared
+# JSON array.
 concurrency:
-  group: generative-research-${{ github.event.inputs.topic || github.event.inputs.twitter_url || github.event.issue.number || github.run_id }}
+  group: generative-research-${{ github.event.issue.number || github.run_id }}
   cancel-in-progress: false
 
 jobs:
