@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import fcntl
 import html
 import html.parser
 import json
@@ -24,6 +25,15 @@ import urllib.request
 import ssl
 from pathlib import Path
 from typing import Any
+
+# The generative index.json is also written by write_generative_research.py
+# (the canonical committer for research/generative/). Reuse ITS atomic
+# temp-file+os.replace writer and lockfile convention so an audio backfill and
+# a concurrent article publish serialize on the same lock instead of clobbering
+# each other (Rule 8 — atomic writes). We import only the write primitive and
+# replicate the small flock dance locally; we do NOT hand-roll a third writer.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from write_generative_research import atomic_write_json  # noqa: E402
 
 
 DEFAULT_DEVELOPER_MODEL = "gemini-2.5-flash-preview-tts"
@@ -351,15 +361,38 @@ def encode_mp3(pcm_path: Path, mp3_path: Path, bitrate: str) -> None:
 
 
 def update_index(root: Path, slug: str, audio_rel: str) -> None:
+    """Set `audio_file` on the matching row in research/generative/index.json,
+    serialized against write_generative_research.py's writer.
+
+    This read-modify-write must run under the SAME advisory lock the article
+    writer uses (fcntl.flock on `index.json.lock`) so a concurrent publish and
+    an audio backfill cannot interleave their read/write and lose a row, and so
+    a reader never sees a half-written file (the write itself is atomic via
+    os.replace inside atomic_write_json). We lock a SEPARATE lockfile next to
+    index.json — never index.json itself — because atomic_write_json rotates
+    index.json to a fresh inode, so a lock held on the data file would not be
+    seen by the next writer (this mirrors append_index_atomically's rationale).
+    The on-disk snapshot is (re-)read INSIDE the critical section; any caller's
+    earlier read is stale by definition.
+    """
     path = root / "research" / "generative" / "index.json"
-    rows = json.loads(path.read_text(encoding="utf-8"))
-    for row in rows:
-        if row.get("slug") == slug:
-            row["audio_file"] = audio_rel
-            break
-    else:
-        raise SystemExit(f"cannot update audio_file, slug not found: {slug}")
-    path.write_text(json.dumps(rows, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    lock_path = path.with_suffix(path.suffix + ".lock")
+    lock_fd = os.open(str(lock_path), os.O_RDWR | os.O_CREAT, 0o644)
+    try:
+        fcntl.flock(lock_fd, fcntl.LOCK_EX)
+        rows = json.loads(path.read_text(encoding="utf-8"))
+        for row in rows:
+            if row.get("slug") == slug:
+                row["audio_file"] = audio_rel
+                break
+        else:
+            raise SystemExit(f"cannot update audio_file, slug not found: {slug}")
+        atomic_write_json(path, rows)
+    finally:
+        try:
+            fcntl.flock(lock_fd, fcntl.LOCK_UN)
+        finally:
+            os.close(lock_fd)
 
 
 def estimate_cost(text_chars: int, duration_seconds: float, model: str) -> str:
