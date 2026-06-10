@@ -1,0 +1,11 @@
+Speaker 1: Wednesday, June tenth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic dropped Fable 5 overnight — their first Mythos-class model — and builders are already calling it a step change.
+Speaker 1: Andrej Karpathy used those exact words. Hacker News landed it at [emphasis]one thousand two hundred seventy-seven points[/emphasis], the top story of the day.
+Speaker 2: The benchmark numbers are striking: Fable 5 scores eighty point three percent on SWE-Bench Pro versus sixty-nine point two for Opus four point eight and fifty-eight point six for GPT five point five.
+Speaker 1: Read the fine print though. Pricing runs ten and fifty dollars per million tokens — roughly twice what Opus four point eight cost — and there is a June twenty-second trial cliff for free users.
+Speaker 2: There is already a guardrails complaint circulating: Fable 5 is auto-routing some benign queries up to Opus four point eight. Builders are calling it a bait and switch. Worth noting those benchmark numbers are also vendor-stated.
+Speaker 1: The safety tier — Mythos 5, same weights with safeguards removed — stays gated to partners only.
+Speaker 2: On the competitive side, Google countered with Gemini three point five Live Translate — real-time speech-to-speech across seventy-plus languages.
+Speaker 1: And the capital story: Google is reportedly set to guarantee [dramatic_pause] [emphasis]thirty-five billion dollars[/emphasis] in TPU leases for Anthropic.
+Speaker 2: [high_energy] That is a different kind of bet entirely — and OpenAI has still shown no GPT five point six signal.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
