@@ -67,10 +67,10 @@ flowchart TB
     Improve -->|"Creates PRs"| sources
 
     subgraph dashboard["🖥️ Dashboard"]
-        Vercel["Vercel<br/><i>ara.guzus.xyz</i>"]
+        Railway["Railway<br/><i>ara.guzus.xyz</i>"]
     end
 
-    twitter_out --> Vercel
+    twitter_out --> Railway
 ```
 
 ## Data Sources
@@ -130,7 +130,7 @@ gantt
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
 | `generative-research.yml` | On `gen-research` issue label or `workflow_dispatch` (`topic` or `twitter_url`) | Claude or DeepSeek writes an HTML article | `research/generative/` |
 
-Dashboard deploys are handled by **Vercel's git integration**, not a workflow file — every push to `main` triggers a build automatically.
+Dashboard deploys are handled by **Railway's git integration**, not a workflow file — every push to `main` rebuilds the root `Dockerfile` (bun build → Caddy serve) automatically.
 
 `generative-research.yml` defaults to **Claude Opus 4.7** for new manual,
 issue-triggered, and auto-dispatched runs. Use `backend=deepseek-v4-flash`
@@ -213,7 +213,7 @@ A single-page dashboard that displays Twitter/X research reports with:
 - Date picker, search, and refresh controls
 - Mobile responsive with bottom nav bar
 
-Built with **Vite + Bun + TypeScript**, deployed to Vercel via the git integration (root directory: `dashboard/`). Every push to `main` triggers a Vercel build; the `prebuild` hook in `dashboard/scripts/prebuild.mjs` copies `research/<source>/` into `public/research/` and emits `manifest.json` before Vite runs.
+Built with **Vite + Bun + TypeScript**, deployed by Railway from the root `Dockerfile` (bun build → Caddy serve, behind Cloudflare; see also `Caddyfile` and `railway.json`). Every push to `main` triggers a Railway rebuild; the `prebuild` hook in `dashboard/scripts/prebuild.mjs` copies `research/<source>/` into `public/research/` and emits `manifest.json` before Vite runs.
 
 ## Setup
 
@@ -275,7 +275,7 @@ dashboard/                          # Vite + Bun + TypeScript SPA
 │   └── style.css                  # Warm cream palette, responsive styles
 ├── index.html                     # Entry point
 ├── scripts/prebuild.mjs           # Copies research/ into public/, builds manifest.json
-├── vercel.json                    # Vercel build settings (framework, install, build)
+├── vercel.json                    # Legacy Vercel config (prod is served by Railway via the root Dockerfile)
 ├── vite.config.js                 # Vite config
 └── package.json                   # Dependencies (vite, marked, dompurify)
 ```
