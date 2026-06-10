@@ -37,13 +37,16 @@ sources:
   - https://www.theregister.com/ai-and-ml/2026/06/02/trump-ai-executive-order-sets-30-day-frontier-model-review/5250322
   - https://thenextweb.com/news/trump-signs-downsized-ai-executive-order-voluntary-review
   - https://federalnewsnetwork.com/cybersecurity/2026/06/ai-executive-order-sets-stage-for-new-cybersecurity-directives/
+  - "@shashj"
 created_at: 2026-06-03
-updated_at: 2026-06-03
+updated_at: 2026-06-10
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-03
     change: "Created — Trump signed an executive order 2026-06-02 asking AI companies to voluntarily give the government up to 30 days of pre-release access to 'covered frontier models,' plus an AI cybersecurity clearinghouse (Treasury / National Cyber Director / NSA / CISA) to stand up within 30 days. Narrowed from the mandatory-90-day draft scrapped 2026-05-21; David Sacks reportedly assented once the window was cut to 30 days. Corroborated across NPR, CNBC, The Register, TNW, Federal News Network, plus a NYT-sourced summary in the bird signal"
+  - ts: 2026-06-10
+    change: "First implementation signal (single-source, secondary). @shashj reports that administration officials — including **National Cyber Director Sean Cairncross** — told the **Center for AI Standards and Innovation (CAISI)** to **halt publication of its model assessments** while this executive order is implemented. If accurate, it is the first concrete downstream effect of the EO on the model-evaluation pipeline: a pause on CAISI's public eval releases pending the new framework. Held to secondary/single-source pending corroboration on official channels; scope (all assessments vs. specific findings) and duration unstated. Status stays confirmed (the EO itself is unchanged); logged as an implementation development"
 ---
 
 On **2026-06-02**, President Trump signed an executive order creating a

@@ -3,11 +3,24 @@ slug: mythos-public-release
 title: Claude Mythos — full public release
 company: Anthropic
 model: Mythos
-status: in-testing
+status: confirmed
 status_note: |
-  Multi-cloud gated preview (AWS Claude Platform GA 2026-05-11, GCP Vertex AI
-  Private Preview 2026-05-16) with no plan for a public release.
-expected: TBD — voluntary CAISI partnership; toned-down variant possible "in foreseeable future" (Boris Cherny, 2026-05-05)
+  **2026-06-09 RESOLUTION (two-tier launch):** Anthropic officially named and
+  shipped the Mythos class. **Mythos 5** — the unrestricted flagship — goes only
+  to **vetted defenders / governments** (Project Glasswing + an upcoming
+  trusted-access program); it is NOT publicly available. The public path is the
+  toned-down, safety-gated derivative **Claude Fable 5** ([[claude-fable-5]]),
+  released to all paid users the same day. So the "full public release" of Mythos
+  proper did NOT happen — Mythos stays gated — but the long-anticipated
+  toned-down public variant (Cherny, 2026-05-05) did. This ticket continues as
+  the **Mythos-proper / Glasswing** tracker; the public-release lifecycle now
+  lives on [[claude-fable-5]].
+
+  Prior context: multi-cloud gated preview (AWS Claude Platform GA 2026-05-11,
+  GCP Vertex AI Private Preview 2026-05-16); Glasswing expanded from ~50 to 150+
+  orgs across 15 countries; 10,000+ high/critical vulns surfaced; reported
+  Mythos-Preview pricing $25/$125 per MTok.
+expected: "Mythos 5 stays restricted (Glasswing + trusted-access program); no public-release schedule for the unrestricted model. Public capability now reaches users via Fable 5 ([[claude-fable-5]])."
 labels:
   - frontier-model
   - gated
@@ -15,6 +28,7 @@ labels:
   - project-glasswing
 verification: confirmed
 sources:
+  - "@claudeai"
   - https://red.anthropic.com/2026/mythos-preview/
   - https://cloud.google.com/blog/products/ai-machine-learning/claude-mythos-preview-on-vertex-ai
   - https://www.anthropic.com/glasswing
@@ -28,7 +42,7 @@ sources:
   - "@alexalbert__"
   - https://the-decoder.com/anthropics-mythos-model-is-reportedly-powering-nsa-offensive-cyber-ops-against-china-and-iran/
 created_at: 2026-04-12
-updated_at: 2026-06-09
+updated_at: 2026-06-10
 closed_at: null
 closed_reason: null
 history:
@@ -60,6 +74,8 @@ history:
     change: "Mythos-5 rebrand rumor persists (skeptic-grade, no new corroboration). Low-credibility single source (@ssict / Saudi ICT Shopper News, 2026-06-08 07:33 UTC) claims **'Claude Mythos 5' will be the official new name for Anthropic's next flagship, dropping the Opus brand entirely** — framed against a purported 'June 16 IPO filing.' The IPO-date claim garbles the already-confirmed 2026-06-01 confidential S-1 ([[anthropic-ipo-2026-06]]), undercutting the source's reliability. Restates the 2026-06-07 `claude-mythos-5` Dev-Mode slug chatter without adding a primary source. No @AnthropicAI confirmation; gated-preview stance and status unchanged (in-testing / confirmed)"
   - ts: 2026-06-09
     change: "New viral cyber-capability claim (single-origin, skeptic-grade). A widely-shared eval claims **Mythos Preview weaponized a freshly-patched Firefox vulnerability in ~one hour** (built a working exploit one hour after Mozilla's patch) and produced **8 Windows privilege-escalation chains for ~$15.7K** in model spend. It rhymes with the Glasswing volume metrics (10,000+ high/critical flaws) but is a third-party demonstration claim with **no Anthropic primary and a single origin** — held to skeptic-grade. Separately, the curated June-8 cycle restates the `claude-mythos-5-*` Dev-Mode slug and the `claude-oceanus-v1-p` API-resale incident (tracked on [[anthropic-claude-oceanus-v1]]). Still gated, no public-release schedule; status unchanged (in-testing / confirmed)"
+  - ts: 2026-06-10
+    change: "RESOLUTION — in-testing → confirmed. Anthropic officially launched the Mythos class on **2026-06-09** (@claudeai 17:08 UTC, ~90K likes): a **two-tier** release. **Mythos 5** = the unrestricted flagship, available only to **vetted defenders / governments** via Glasswing + an upcoming trusted-access program (NOT public). **Claude Fable 5** = the toned-down, safety-gated public derivative (Mythos-class 'made safe for general use'), released to all paid users the same day — spun out to its own released ticket [[claude-fable-5]] per this ticket's dedup note. The 'full public release' of the *unrestricted* Mythos did not happen (Mythos stays gated), but the long-anticipated toned-down public variant (Cherny 2026-05-05) did ship as Fable 5. This ticket now confirmed and continues as the Mythos-proper / Glasswing tracker; public-release lifecycle moves to [[claude-fable-5]]"
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a
