@@ -1,13 +1,18 @@
-FROM node:22-alpine AS build
+FROM oven/bun:1-alpine AS build
 
 WORKDIR /app
 
-COPY dashboard/package*.json ./dashboard/
-RUN cd dashboard && npm ci
+# The dashboard's package manager is bun (package-lock.json was dropped in #102,
+# so `npm ci` can no longer run). Its pre/postbuild lifecycle scripts shell out
+# to `node` (node scripts/prebuild.mjs, postbuild-seo.mjs), so install nodejs too.
+RUN apk add --no-cache nodejs
+
+COPY dashboard/package.json dashboard/bun.lock ./dashboard/
+RUN cd dashboard && bun install --frozen-lockfile
 
 COPY . .
 
-RUN cd dashboard && SKIP_LFS_POINTERS=1 npm run build
+RUN cd dashboard && SKIP_LFS_POINTERS=1 bun run build
 
 FROM caddy:2-alpine
 
