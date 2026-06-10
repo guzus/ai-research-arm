@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-10
+
+TOP 5 PAPERS:
+• You Only Index Once - cross-layer sparse attention, shared routing; 7.6x decode / 17.1x throughput at 128K
+• Latent Reasoning with Normalizing Flows - continuous "thoughts" via normalizing flows (NF-CoT)
+• Spatial Language Model - first MLLM treating location as a first-class modality for geometric reasoning
+• CHASE - co-evolving red-blue teaming via RL to harden LLM safety
+• Synthesize and Reward (PROVE) - live-execution RL for multi-step tool use with programmatic rewards
+
+CATEGORIES: LLM/NLP 7, Vision/Multimodal 4, Agents/Reasoning 4, Safety 1, Efficiency 4
+
+Full report on GitHub.
