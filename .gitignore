@@ -33,7 +33,6 @@ Thumbs.db
 !.agents/commands/
 !.agents/commands/*.md
 .gstack/
-AGENTS.md
 
 # --- Node ---
 node_modules/

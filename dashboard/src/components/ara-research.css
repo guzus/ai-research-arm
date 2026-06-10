@@ -12,7 +12,7 @@
  *              ara-h2 (+ ara-h2-num), ara-h3, ara-h4, ara-divider
  *   Blocks:    ara-callout (+ --info|success|warn|danger),
  *              ara-callout-label, ara-quote, ara-quote-attr,
- *              ara-figure, ara-caption, ara-code
+ *              ara-figure, ara-caption
  *   Data:      ara-kv (with dt/dd inside), ara-stats, ara-stat,
  *              ara-stat-label, ara-stat-value, ara-stat-note,
  *              ara-table
@@ -687,8 +687,7 @@ body.ara-figure-modal-open {
 }
 
 /* ── Code ────────────────────────────────────────── */
-.ara-doc code,
-.ara-code {
+.ara-doc code {
   font-family: var(--font-mono);
   font-size: 0.86em;
   background: var(--bg-secondary);
@@ -708,8 +707,7 @@ body.ara-figure-modal-open {
   line-height: 1.55;
 }
 
-.ara-doc pre code,
-.ara-doc pre .ara-code {
+.ara-doc pre code {
   background: none;
   padding: 0;
   font-size: inherit;
@@ -1986,7 +1984,6 @@ body.ara-figure-modal-open {
   }
 
   .ara-callout,
-  .ara-card,
   .ara-quote,
   .ara-stat,
   .ara-stat-unit,

@@ -2,9 +2,12 @@
 """Compile-check a generative research article body without committing.
 
 Runs the same validation rules write_generative_research.py enforces at
-commit time — tag allowlist, ara-* exact-match class allowlist parsed
-from COMPONENTS.md (modifier suffixes allowed), size cap, no inline
-style/script/JS handlers, opening/closing <article> structure.
+commit time — tag allowlist, ara-* exact-match class allowlist loaded
+from ARA_CATALOG.json (modifier suffixes allowed), size cap, no inline
+style/script/JS handlers, opening/closing <article> structure. The
+allowlist comes from ARA_CATALOG.json via write_generative_research's
+load_valid_classes(); COMPONENTS.md is the human reference kept in
+lockstep with the catalog (CI-enforced via ara_catalog.py).
 
 Optional design-system enforcement flags (off by default so check
 stays additive):
