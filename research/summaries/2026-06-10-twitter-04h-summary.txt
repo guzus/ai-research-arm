@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-10 04:41 UTC
+
+CYCLE: Independent benchmarks finally land on Fable 5 — verified #1, but the fallback tax now has numbers.
+
+TOP STORIES:
+• Artificial Analysis ranks Fable 5 #1 overall (64.9, ~5 pts ahead of GPT-5.5) — but measures the Opus-4.8 safety reroute at ~8% of tasks, above Anthropic's stated <5% [✓]
+• The cost gets a price tag: $10/$50 per 1M (2× Opus), a single HLE run ~$2.2k (AA's priciest ever), safety flags firing on FPGAs / GPU drivers / coffee-machine code [✓/⚠]
+• Still no OpenAI GPT-5.6 primary signal; prediction-market relays cite conflicting odds — anticipation, not news [🚩]
+
+WATCH: Does Anthropic reconcile "<5% of sessions" with AA's measured ~8%, and is the June 22 free window extended?
+
+Full update on GitHub.
