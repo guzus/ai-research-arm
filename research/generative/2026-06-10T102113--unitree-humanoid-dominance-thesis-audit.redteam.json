@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "That abstraction stopped being abstract on **2026-06-08**, when the U.S. Department of Defense added Unitree to its Section 1260H list of \"Chinese military companies,\" alongside Alibaba, Baidu and BYD — a list of 188 entities the Pentagon says contribute to China's military-civil fusion.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The only independent shipment tracker, Omdia, ranks AgiBot first in 2025 with 5,168 humanoids, Unitree second at 4,200, and UBTech third near 1,000, out of 13,318 globally; Unitree's own claim of \"#1, 5,500+ units\" is a self-report the tracker contradicts.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "the G1 launched at $16,000 in May 2024 and now lists at $13,500 on Unitree's own store, with an R1 model introduced in July 2025 at $5,900.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

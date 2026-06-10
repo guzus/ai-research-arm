@@ -1,0 +1,254 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "The Pentagon added Unitree to its Section 1260H list of Chinese military companies on 2026-06-08, alongside Alibaba, Baidu and BYD; the list names 188 entities.",
+      "type": "regulatory",
+      "source_urls": ["https://techcrunch.com/2026/06/08/pentagon-says-alibaba-baidu-byd-and-unitree-support-chinas-military/", "https://media.defense.gov/2026/Jun/08/2003945537/-1/-1/1/ENTITIES-IDENTIFIED-AS-CHINESE-MILITARY-COMPANIES-OPERATING-IN-THE-UNITED-STATES-IN-ACCORDANCE-WITH-SECTION-1260H.PDF", "https://www.cnbc.com/2026/06/09/alibaba-baidu-byd-named-on-pentagons-china-military-list-.html"],
+      "source_tiers": ["secondary", "primary", "secondary"],
+      "as_of": "2026-06-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "The Unitree G1 humanoid's official US list price is $13,500, down from a $16,000 launch price in May 2024.",
+      "type": "metric",
+      "source_urls": ["https://www.unitree.com/g1/", "https://www.therobotreport.com/unitree-robotics-unveils-g1-humanoid-for-16k/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-06-10",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c3",
+      "claim": "Unitree launched the R1 humanoid in July 2025 at $5,900 (39,999 yuan), the cheapest mass-produced humanoid then available.",
+      "type": "metric",
+      "source_urls": ["https://www.scmp.com/tech/tech-trends/article/3319637/chinas-unitree-debuts-us5900-humanoid-robot-race-make-cheaper-products"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-07-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Unitree revenue rose from 159M yuan (2023) to 392M yuan (2024) to 1.70B yuan (2025), a ~335% YoY jump in 2025.",
+      "type": "metric",
+      "source_urls": ["https://hellochinatech.com/p/unitree-ipo-humanoid-robotics-really-sells", "https://www.humanoidsdaily.com/news/inside-unitree-s-prospectus-revenue-climbs-and-profits-dip-as-star-market-ipo-hearing-approaches"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-03-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Unitree's humanoid gross margin fell from 87.67% (2023) to 68.44% (2024) to 62.91% (Jan-Sep 2025) as average selling prices collapsed ~72%.",
+      "type": "metric",
+      "source_urls": ["https://eu.36kr.com/en/p/3731404085015046"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-09-30",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c6",
+      "claim": "Of Unitree's 2025 humanoid shipments, ~74% went to universities/research and only ~3-4% to genuinely productive enterprise use (inspection, reception).",
+      "type": "metric",
+      "source_urls": ["https://hellochinatech.com/p/unitree-ipo-humanoid-robotics-really-sells", "https://www.humanoidsdaily.com/news/inside-unitree-s-prospectus-revenue-climbs-and-profits-dip-as-star-market-ipo-hearing-approaches"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2025-09-30",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c7",
+      "claim": "Independent tracker Omdia ranked AgiBot #1 in 2025 humanoid shipments (5,168 units) ahead of Unitree (4,200) and UBTech (~1,000), out of 13,318 global units.",
+      "type": "comparison",
+      "source_urls": ["https://www.scmp.com/tech/tech-trends/article/3339346/chinese-firms-outpace-us-rivals-2025-humanoid-robot-shipments-agibot-takes-lead"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-12-31",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c8",
+      "claim": "Unitree filed for a STAR Market IPO around 2026-03-20 seeking ~4.2B yuan (~$610M), with CITIC Securities as sponsor and a reported ~$7B valuation target.",
+      "type": "event",
+      "source_urls": ["https://www.caixinglobal.com/2026-03-21/unitree-robotics-files-for-608-million-star-market-ipo-102425491.html", "https://www.cnbc.com/2025/09/09/chinas-unitree-plans-7-billion-ipo-valuation-as-humanoid-robot-race-heats-up.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-03-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Quasi-direct-drive actuators use a low-ratio gearbox (under ~10:1) and originated in the MIT Cheetah lineage; the MIT paper notes that for slow load-carrying a higher gear ratio is energetically superior.",
+      "type": "technical",
+      "source_urls": ["https://fab.cba.mit.edu/classes/865.18/motion/papers/mit-cheetah-actuator.pdf"],
+      "source_tiers": ["academic"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Tesla Optimus and Figure use harmonic-drive (rotary) and planetary roller-screw (linear) actuators, not quasi-direct-drive, choosing the expensive high-torque-density path.",
+      "type": "technical",
+      "source_urls": ["https://optimusk.blog/blog/tesla-optimus-hardware-specs/", "https://arxiv.org/abs/1904.03815"],
+      "source_tiers": ["secondary", "academic"],
+      "as_of": "2026-01-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "The Unitree G1 has a ~2 kg arm payload, far below the 15-25 kg of typical warehouse totes.",
+      "type": "technical",
+      "source_urls": ["https://humanoid.guide/product/g1/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-01-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Tesla has shipped zero Optimus units to external customers; Musk conceded in the Q4 2025 call that Optimus is 'not in usage in our factories in a material way.'",
+      "type": "quote",
+      "source_urls": ["https://www.fool.com/earnings/call-transcripts/2026/01/28/tesla-tsla-q4-2025-earnings-call-transcript/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "Figure AI raised over $1B in Series C at a $39B post-money valuation (Sep 2025); its BMW Spartanburg deployment was a two-robot pilot, retired after ~1,250 runtime hours.",
+      "type": "metric",
+      "source_urls": ["https://www.figure.ai/news/series-c", "https://www.figure.ai/news/production-at-bmw"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-11-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "China controls roughly 69% of rare-earth mining, ~91% of refining, ~94% of NdFeB magnet production, and ~99% of heavy-rare-earth (Dy/Tb) separation.",
+      "type": "market-structure",
+      "source_urls": ["https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-rare-earths.pdf", "https://www.iea.org/reports/rare-earth-elements/executive-summary"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2024-12-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "China imposed export licensing on seven medium/heavy rare earths and their magnets on 2025-04-04, the dopants (Dy/Tb) that humanoid actuators need for heat resistance.",
+      "type": "regulatory",
+      "source_urls": ["https://www.hklaw.com/en/insights/publications/2025/04/china-imposes-export-controls-on-medium-and-heavy-rare-earth-materials"],
+      "source_tiers": ["legal"],
+      "as_of": "2025-04-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "DJI was effectively locked out of the US market: CBP detains its imports under UFLPA (since Oct 2024) and the FCC added foreign-made drones to its Covered List on 2025-12-22.",
+      "type": "regulatory",
+      "source_urls": ["https://dronelife.com/2025/12/22/fcc-adds-foreign-made-drones-and-components-to-covered-list-citing-national-security-risks/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-12-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "A wormable Bluetooth vulnerability (UniPwn) disclosed September 2025 affects Unitree Go2/G1/H1/B2 robots via a single fleet-wide hardcoded AES key, enabling self-spreading root remote-code-execution.",
+      "type": "technical",
+      "source_urls": ["https://github.com/Bin4ry/UniPwn", "https://www.helpnetsecurity.com/2025/10/16/unitree-g1-humanoid-robot-vulnerability/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2025-09-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Morgan Stanley projects ~1 billion humanoids and a $5 trillion market by 2050; Goldman Sachs projects a $38B market and 1.4M units by 2035 — forecasts that disagree by orders of magnitude.",
+      "type": "forecast",
+      "source_urls": ["https://www.morganstanley.com/insights/articles/humanoid-robot-market-5-trillion-by-2050", "https://fortune.com/2026/03/13/bank-of-america-humanoid-robot-forecast-3-billion-2060/"],
+      "source_tiers": ["opinion", "secondary"],
+      "as_of": "2026-03-13",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "Roboticist Rodney Brooks argues profitable humanoid deployment with even minimal dexterity is more than ten years away because dexterity cannot be learned from vision alone.",
+      "type": "forecast",
+      "source_urls": ["https://rodneybrooks.com/why-todays-humanoids-wont-learn-dexterity/"],
+      "source_tiers": ["opinion"],
+      "as_of": "2025-09-26",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c20",
+      "claim": "Unitree earmarked roughly $300M of IPO proceeds for in-house embodied foundation models and has open-sourced two (UnifoLM-WMA-0, UnifoLM-VLA-0), while also serving as an NVIDIA Isaac GR00T reference platform.",
+      "type": "technical",
+      "source_urls": ["https://www.techflowpost.com/en-US/article/31730", "https://nvidianews.nvidia.com/news/nvidia-open-humanoid-robot-reference-design"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-06-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "UBTech (HK:9880) began Walker S2 mass production in Nov 2025 with 2025 order book exceeding 800M yuan across automakers including BYD, Geely and Foxconn.",
+      "type": "metric",
+      "source_urls": ["https://www.prnewswire.com/news-releases/ubtech-humanoid-robot-walker-s2-begins-mass-production-and-delivery-with-orders-exceeding-800-million-yuan-302616924.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-11-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "TrendForce projects Unitree and AgiBot together will capture nearly 80% of China humanoid shipments in 2026, indicating a duopoly rather than a single dominant firm.",
+      "type": "forecast",
+      "source_urls": ["https://www.trendforce.com/presscenter/news/20260409-13007.html"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-04-09",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "Agility Robotics' Digit, working under the first commercial humanoid RaaS contract (GXO, June 2024), surpassed 100,000 totes moved in commercial operation; Digit is a ~$150K-class machine.",
+      "type": "metric",
+      "source_urls": ["https://www.agilityrobotics.com/content/gxo-signs-industry-first-multi-year-agreement-with-agility-robotics", "https://www.agilityrobotics.com/content/digit-moves-over-100k-totes"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-11-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "Harmonic Drive Systems (6324.T) stock more than doubled over the 12 months to June 2026 (from ~2,906 to ~6,240 yen, peaking ~7,800), as the market bid up the strain-wave incumbent on humanoid actuator demand.",
+      "type": "metric",
+      "source_urls": ["https://finance.yahoo.com/quote/6324.T/"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-06-10",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c25",
+      "claim": "BYD's NEV deliveries jumped from ~179K (2020) to ~604K (2021) after the Blade Battery, but BYD is shut out of the US by 100%+ tariffs with ~77% of 2025 sales still in China.",
+      "type": "comparison",
+      "source_urls": ["https://technode.com/2022/01/05/byd-ev-2021-deliveries-up-232-year-on-year/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-12-31",
+      "confidence": "medium",
+      "risk": "stable"
+    }
+  ]
+}
