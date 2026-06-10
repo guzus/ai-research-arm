@@ -2,12 +2,13 @@
 slug: gemini-3-5-flash
 title: Gemini 3.5 Flash
 type: entity
-aliases: ["Gemini 3.5 Flash", "Gemini 3.2 Flash"]
+aliases: ["Gemini 3.5 Flash", "Gemini 3.2 Flash", "Gemini 3.5 Live Translate"]
 tags: [model-release, google-deepmind, flash-tier, agentic]
-summary: Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots.
+summary: Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots; gained a real-time speech-to-speech Live Translate variant (70+ languages) on 2026-06-09.
 created_at: 2026-05-24
-updated_at: 2026-05-24
+updated_at: 2026-06-10
 sources:
+  - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
 ---
@@ -38,7 +39,17 @@ like [[anthropic]] (Claude Haiku) and OpenAI.
   the broader [[ai-capex]] story.
 - **Frontier framing.** Analysts placed the 3.5 family "in the class of GPT-5.5,
   well short of Mythos," using [[anthropic]]'s gated frontier model as the
-  high-water mark.
+  high-water mark — a model that has since shipped publicly as
+  [[claude-fable-5|Fable 5 / Mythos 5]].
+- **Live Translate — same-day counter-programming (2026-06-09).** Google shipped
+  **Gemini 3.5 Live Translate**, a real-time **speech-to-speech** translation
+  model spanning **70+ languages** (in and out) that begins translating as you
+  speak while preserving **tone, pace, and pitch**. Announced by DeepMind product
+  lead Logan Kilpatrick / GoogleDeepMind / GoogleAI; live now in the Gemini API,
+  AI Studio, and Google Translate, with Google Meet "coming soon." The obvious read
+  is timing: it landed the **same day as [[anthropic]]'s
+  [[claude-fable-5|Fable 5 / Mythos 5]] launch** — a release engineered to share
+  the news cycle (ARA digest 2026-06-10).
 
 ## Open questions
 - **Pro tier.** Gemini 3.5 Pro was confirmed for "next month" — does it close the

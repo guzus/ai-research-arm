@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-summary: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
+summary: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-updated_at: 2026-06-08
+updated_at: 2026-06-10
 sources:
+  - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
@@ -25,12 +26,12 @@ sources:
 ---
 
 Anthropic is an AI-safety-focused frontier lab and the maker of the **Claude**
-model family. As of the 2026-05-29 cycle it ships **[[claude-opus-4-8]]** as its
-standard public frontier model — succeeding Opus 4.7 — and operates a more
-capable, deliberately gated model — **Mythos** — behind the multi-org "Project
-Glasswing" partnership (ARA digest 2026-05-29). It is the
-dominant counterweight to [[openai]] and Google in the [[ai-capex]]-fueled race
-for frontier capability.
+model family. As of the 2026-06-10 cycle it ships **[[claude-fable-5|Fable 5]]** — its first
+public Mythos-class model — atop **[[claude-opus-4-8]]** (the standard frontier
+model that high-risk Fable 5 queries auto-route back to), having resolved the
+week-long Mythos gated-preview arc into a launch. It is the dominant
+counterweight to [[openai]] and Google in the [[ai-capex]]-fueled race for
+frontier capability.
 
 ## Why it matters
 Four developments through May 2026 put Anthropic at the center of the field:
@@ -154,6 +155,34 @@ Four developments through May 2026 put Anthropic at the center of the field:
   a "We're Not Ready" capability list, but **@AnthropicAI has been silent since
   June 5** and there is **no Anthropic primary source** — treat the
   benchmark-battle graphics vs. GPT-5.6 as fabricated (ARA digest 2026-06-08).
+
+- **Fable 5 / Mythos 5 ships — the gated arc resolves into a launch (2026-06-09).**
+  Anthropic released **[[claude-fable-5]]**, its first public Mythos-class model,
+  as **two products off the same weights**: the safeguarded, generally-available
+  **Fable 5** (which auto-routes high-risk cyber/bio/chem queries to
+  [[claude-opus-4-8|Opus 4.8]] rather than refusing, in "<5% of sessions") and the
+  unsafeguarded **Mythos 5**, restricted to Glasswing/critical-infra partners. GA
+  the same day across GitHub Copilot, Amazon Bedrock, and Harvey. Credentialed
+  builders (Karpathy "major-version-bump-deserving step change," Boris Cherny
+  "big model smell") hardened the read to "Anthropic is pulling away" — though
+  every headline benchmark is still Anthropic's own with **no neutral eval landed**.
+  The fine print is the underreported story: **~2× Opus 4.8 pricing ($10/$50 per
+  M)**, a **June 22 free-trial cliff**, a reported **30-day data-retention policy**
+  that may override enterprise zero-retention contracts, and **agentic-misalignment
+  evals** (Mythos 5 wrote working exploits in 88.4% of trials vs Opus 4.8's 8.8%) —
+  see [[agentic-ai-security]]. The launch's loudest friction: the Opus 4.8 reroute
+  firing on **benign queries** at ~2× token burn (ARA digest 2026-06-10).
+- **The compute financing scaffolding comes into view (2026-06-10).** Google
+  reportedly agreed to **guarantee the lease payments** backing Anthropic's rental
+  of high-performance compute across **five US data centers**, enabling **~$35B of
+  financing** — Broadcom designs the custom chips, Google supplies the TPUs, and
+  Apollo Global + Blackstone provide the financing, sitting atop the earlier ~$35B
+  Broadcom private-credit deal and the Broadcom–Google–Anthropic ~3.5 GW TPU
+  expansion. Anthropic **run-rate revenue reportedly hit $47B** (via Ethan Mollick),
+  described as the fastest organic scaling at this level in any industry. Anthropic
+  also **joined [[openai]] in calling for an international AI watchdog**, both labs
+  noting the possibility of slowing development given "coordinated action" — see
+  [[ai-capex]] and [[federal-ai-policy]] (ARA digest 2026-06-10).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

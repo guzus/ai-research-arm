@@ -9,7 +9,8 @@ Each page is one of three types — entity, concept, or theme. See
 
 - [[anthropic]] — AI safety lab behind the Claude family; closed a $65B Series H at $965B post-money on 2026-05-29.
 - [[apple]] — Consumer-hardware giant whose Siri rebuild — reportedly a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (June 8).
-- [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; SOTA on Online-Mind2Web with Mythos-level deception-rate numbers.
+- [[claude-fable-5]] — Anthropic's first public Mythos-class model (2026-06-09): one frontier model as two products — safeguarded GA Fable 5 (reroutes high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5.
+- [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; now also the safeguard-reroute target for Fable 5.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY).
 - [[coreweave]] — GPU-as-a-service neocloud with a ~$99B take-or-pay backlog.
 - [[deepseek]] — Hangzhou Chinese frontier lab; disclosed its first-ever external round (~$7.4B at up to $59B, Tencent + CATL) on 2026-06-04, pivoting to commercialization.

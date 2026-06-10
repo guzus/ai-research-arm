@@ -6,8 +6,9 @@ aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Comput
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
 summary: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08).
 created_at: 2026-06-08
-updated_at: 2026-06-08
+updated_at: 2026-06-10
 sources:
+  - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA model ticket — Apple WWDC 2026 Siri", path: research/models/tickets/apple-wwdc-2026-siri.md}
   - {title: "The Verge — Apple WWDC 2026 AI Siri / Gemini", url: "https://www.theverge.com/tech/944245/apple-wwdc-2026-ai-siri-gemini", date: 2026-06-06}
@@ -48,7 +49,29 @@ than the building side.
   started at [[openai]] eight days before WWDC 2026: a defection to the lab whose
   model is *not* the reported Siri partner.
 
-**Status caveat.** As of this ingest Apple has **confirmed nothing**; the
+- **AFM 3 + CoreAI ship — the on-device stack (2026-06-10).** Apple announced
+  **AFM 3 Core Advanced**, a **20B on-device foundation model** for iPhone 17 Pro
+  that **keeps the full model in flash and streams only the active slice into
+  memory** — its concrete answer to the on-device-frontier squeeze. It also
+  announced **CoreAI**, a new on-device inference framework (**replacing CoreML**)
+  supporting up to **20B-param MoE** models. This is the productized core of the
+  partner-and-distill strategy: a custom-Gemini-backed Siri "designed for privacy"
+  riding on Apple's own on-device runtime (ARA digest 2026-06-10).
+- **Apple pulls Siri AI from the EU (2026-06-10).** After EU regulators **denied an
+  exemption request to the DMA**, Apple **withheld its new AI Siri features from
+  the EU** (and reportedly China at launch) — a flashpoint in the AI-governance
+  debate (**282 pts / 480 HN comments**). It puts Apple's distribution leverage
+  directly against EU digital-markets rules and echoes the broader
+  [[federal-ai-policy]] / regional-fragmentation tension over where frontier
+  features may ship (ARA digest 2026-06-10).
+
+**Status update (2026-06-10).** The 2026-06-08 keynote has now landed; the
+distilled-Gemini + on-device (AFM 3 / CoreAI) architecture above is **confirmed in
+broad strokes**, and the EU/China launch carve-out is now a concrete policy event
+rather than a rumor. Earlier rumor-state caveats remain only on the finer cloud-routing
+mechanics.
+
+**Status caveat (pre-keynote, retained for history).** As of the 2026-06-08 ingest Apple had **confirmed nothing**; the
 architecture is single-/multi-source reporting and the 2026-06-08 keynote (which
 lands after the digest's generation time) will confirm or contradict the
 distilled-Gemini + cloud-routing detail. Treat every figure above as reported,

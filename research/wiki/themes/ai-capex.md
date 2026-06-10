@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 summary: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-updated_at: 2026-06-08
+updated_at: 2026-06-10
 sources:
+  - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
@@ -198,6 +199,25 @@ skepticism in one window:
   "Hatch"** — a paid AI agent at up to **$200/month**, Meta's first paid AI
   product — marks the demand-side monetization push running alongside the supply
   buildout (ARA digest 2026-06-08).
+
+- **The Anthropic compute-financing stack gets named (2026-06-10).** The money
+  behind [[anthropic]]'s compute surge came into view: **Google reportedly agreed
+  to guarantee the lease payments** backing Anthropic's rental of high-performance
+  compute across **five US data centers**, enabling **~$35B of financing**.
+  **Broadcom** designs the custom chips, **Google** supplies the TPUs, and
+  **Apollo Global + Blackstone** provide the financing — sitting atop the earlier
+  ~$35B Broadcom private-credit deal and the Broadcom–Google–Anthropic ~3.5 GW TPU
+  expansion (from 2027). The "Google guarantee" mechanics are the freshest,
+  lighter-sourced layer. Anthropic's **run-rate revenue reportedly hit $47B** (via
+  Ethan Mollick), the demand-side counterweight to the financing complexity. The
+  buildout now visibly fuses a hyperscaler (Google), a custom-ASIC vendor
+  (Broadcom), private-credit financiers, and a frontier lab into one compute
+  supply chain (ARA digest 2026-06-10).
+- **AI/semis rotation continued (2026-06-10).** Intraday: **Semiconductors (SMH)
+  −2.8%, Robotics/AI (BOTZ) −2.3%**, money rotating into housing/healthcare/banks —
+  a continuation of the Jun 6–8 Broadcom-led selloff rather than a fresh catalyst,
+  extending the "beats but closes lower" mood into a multi-day risk-off rotation
+  out of the AI complex (ARA digest 2026-06-10).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s

@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 summary: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-updated_at: 2026-06-08
+updated_at: 2026-06-10
 sources:
+  - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
@@ -165,6 +166,23 @@ materially reshape how the lab is positioned heading into its IPO window:
   Apple Intelligence at WWDC 2026 — putting [[apple]]'s install base in play as a
   distribution prize even though Apple's reported Siri model is Gemini, not GPT
   (ARA digest 2026-06-08).
+
+- **Silent on Fable 5 day; the timeline pivots to "where is GPT-5.6" (2026-06-10).**
+  As [[anthropic]] shipped [[claude-fable-5|Fable 5 / Mythos 5]], **OpenAI stayed
+  silent** and the discourse instantly turned to its next model. **No official
+  date, system card, or model-list entry exists** for GPT-5.6 — only **Codex-log
+  leaks** and prediction-market bets (**Polymarket pricing a June 30 release
+  ~80%**). Separately, OpenAI reportedly **filed confidentially for an IPO (June 8)**
+  with traders eyeing a **~$1.5T valuation**, alongside reports of a ChatGPT
+  **"superapp" rebuild codenamed Aria** — extending the "chat is dead" /
+  agent-first pivot (Reddit-relayed; treat as unconfirmed pending primary
+  sourcing). The pricing gap stays stark: **GPT-5.5 Pro at $30/$180 per M vs
+  Fable 5 at $10/$50**, Anthropic's top tier ~70% cheaper (ARA digest 2026-06-10).
+- **Joins Anthropic in calling for an international AI watchdog (2026-06-10).**
+  Both labs publicly back a frontier-AI regulatory body, with both also noting the
+  possibility of **slowing development given "coordinated action"** (per Mollick) —
+  a notable alignment with [[anthropic]]'s coordinated-pause proposal; see
+  [[federal-ai-policy]] (ARA digest 2026-06-10).
 
 ## Open questions
 

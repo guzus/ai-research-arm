@@ -45,7 +45,7 @@
       ],
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-06-08",
+      "updated_at": "2026-06-10",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -55,6 +55,8 @@
       ],
       "outbound": [
         "anthropic",
+        "claude-fable-5",
+        "claude-opus-4-8",
         "cognition-ai",
         "dynamic-workflows",
         "federal-ai-policy",
@@ -63,6 +65,7 @@
       ],
       "inbound": [
         "anthropic",
+        "claude-fable-5",
         "cognition-ai",
         "dynamic-workflows",
         "federal-ai-policy",
@@ -82,7 +85,7 @@
       ],
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-08",
+      "updated_at": "2026-06-10",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -140,9 +143,9 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
+      "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-08",
+      "updated_at": "2026-06-10",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -154,6 +157,7 @@
         "agentic-ai-security",
         "ai-capex",
         "california-ai-regulation",
+        "claude-fable-5",
         "claude-opus-4-8",
         "cognition-ai",
         "dynamic-workflows",
@@ -171,6 +175,7 @@
         "ai-capex",
         "apple",
         "california-ai-regulation",
+        "claude-fable-5",
         "claude-opus-4-8",
         "cognition-ai",
         "dynamic-workflows",
@@ -198,7 +203,7 @@
       ],
       "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08).",
       "created_at": "2026-06-08",
-      "updated_at": "2026-06-08",
+      "updated_at": "2026-06-10",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -211,6 +216,7 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "federal-ai-policy",
         "gemini-3-5-flash",
         "liquid-ai",
         "nvidia",
@@ -258,6 +264,46 @@
       ]
     },
     {
+      "slug": "claude-fable-5",
+      "title": "Claude Fable 5 / Mythos 5",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "anthropic",
+        "claude",
+        "frontier-model",
+        "mythos-class",
+        "alignment"
+      ],
+      "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
+      "created_at": "2026-06-10",
+      "updated_at": "2026-06-10",
+      "file": "entities/claude-fable-5.md",
+      "aliases": [
+        "Claude Fable 5",
+        "Fable 5",
+        "Claude Mythos 5",
+        "Mythos 5",
+        "Mythos-class",
+        "claude-fable-5",
+        "claude-mythos-5"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "claude-opus-4-8",
+        "gemini-3-5-flash",
+        "openai"
+      ],
+      "inbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "claude-opus-4-8",
+        "gemini-3-5-flash",
+        "openai"
+      ]
+    },
+    {
       "slug": "claude-opus-4-8",
       "title": "Claude Opus 4.8",
       "type": "entity",
@@ -270,7 +316,7 @@
       ],
       "summary": "Anthropic's 2026-05-28 frontier flagship, succeeding Opus 4.7 at flat pricing with a +4.9pp agentic-coding lift, +137 knowledge-work Elo, and a Fast Mode that runs ~2.5× faster and 3× cheaper.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-05-30",
+      "updated_at": "2026-06-10",
       "file": "entities/claude-opus-4-8.md",
       "aliases": [
         "Claude Opus 4.8",
@@ -280,11 +326,14 @@
       "outbound": [
         "agent-lifespan-engineering",
         "anthropic",
+        "claude-fable-5",
         "dynamic-workflows"
       ],
       "inbound": [
         "agent-lifespan-engineering",
+        "agentic-ai-security",
         "anthropic",
+        "claude-fable-5",
         "dynamic-workflows"
       ]
     },
@@ -492,6 +541,7 @@
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "apple",
         "california-ai-regulation",
         "openai"
       ]
@@ -540,22 +590,25 @@
         "flash-tier",
         "agentic"
       ],
-      "summary": "Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots.",
+      "summary": "Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots; gained a real-time speech-to-speech Live Translate variant (70+ languages) on 2026-06-09.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-05-24",
+      "updated_at": "2026-06-10",
       "file": "entities/gemini-3-5-flash.md",
       "aliases": [
         "Gemini 3.5 Flash",
-        "Gemini 3.2 Flash"
+        "Gemini 3.2 Flash",
+        "Gemini 3.5 Live Translate"
       ],
       "outbound": [
         "ai-capex",
         "anthropic",
+        "claude-fable-5",
         "neocloud"
       ],
       "inbound": [
         "anthropic",
         "apple",
+        "claude-fable-5",
         "gemini-spark",
         "gemma-4"
       ]
@@ -849,7 +902,7 @@
       ],
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-08",
+      "updated_at": "2026-06-10",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -863,6 +916,7 @@
         "anthropic",
         "apple",
         "california-ai-regulation",
+        "claude-fable-5",
         "federal-ai-policy",
         "gemini-spark",
         "microsoft"
@@ -873,6 +927,7 @@
         "anthropic",
         "apple",
         "california-ai-regulation",
+        "claude-fable-5",
         "federal-ai-policy",
         "figure-ai",
         "microsoft",
@@ -1025,7 +1080,11 @@
     "california transparency in frontier ai act": "california-ai-regulation",
     "california-ai-regulation": "california-ai-regulation",
     "claude code dynamic workflows": "dynamic-workflows",
+    "claude fable 5": "claude-fable-5",
+    "claude mythos 5": "claude-fable-5",
     "claude opus 4.8": "claude-opus-4-8",
+    "claude-fable-5": "claude-fable-5",
+    "claude-mythos-5": "claude-fable-5",
     "claude-opus-4-8": "claude-opus-4-8",
     "cognition": "cognition-ai",
     "cognition ai": "cognition-ai",
@@ -1047,6 +1106,7 @@
     "devin": "cognition-ai",
     "dynamic workflows": "dynamic-workflows",
     "dynamic-workflows": "dynamic-workflows",
+    "fable 5": "claude-fable-5",
     "federal ai executive order": "federal-ai-policy",
     "federal ai policy": "federal-ai-policy",
     "federal-ai-policy": "federal-ai-policy",
@@ -1058,6 +1118,7 @@
     "figure-ai": "figure-ai",
     "gemini 3.2 flash": "gemini-3-5-flash",
     "gemini 3.5 flash": "gemini-3-5-flash",
+    "gemini 3.5 live translate": "gemini-3-5-flash",
     "gemini spark": "gemini-spark",
     "gemini-3-5-flash": "gemini-3-5-flash",
     "gemini-spark": "gemini-spark",
@@ -1091,6 +1152,8 @@
     "minimax m3": "minimax-m3",
     "minimax-m3": "minimax-m3",
     "msft": "microsoft",
+    "mythos 5": "claude-fable-5",
+    "mythos-class": "claude-fable-5",
     "nbis": "nebius",
     "nebius": "nebius",
     "nebius group n.v.": "nebius",
@@ -1127,6 +1190,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-10",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-10 digest (Claude Fable 5 / Mythos 5 launch day). Created 1 entity (claude-fable-5 — first public Mythos-class model: safeguarded GA Fable 5 reroutes high-risk queries to Opus 4.8, restricted unsafeguarded Mythos 5; ~2× Opus pricing, June 22 trial cliff, 88.4% misalignment-exploit eval). Updated 7 (anthropic — Fable 5 ship resolves the Mythos arc + Google ~$35B TPU-lease guarantee + $47B run-rate + intl AI-watchdog call; claude-opus-4-8 — now the Fable 5 safeguard-reroute floor, successor-sequencing resolved; agentic-ai-security — Mythos 5 88.4% exploit eval + guardrail overreach + Microsoft AI-dev supply-chain hack; gemini-3-5-flash — Gemini 3.5 Live Translate same-day counter-programming; openai — silence on Fable 5 day, GPT-5.6 watch + ~$1.5T IPO filing + Aria superapp + AI-watchdog; ai-capex — Google $35B Broadcom/TPU lease-guarantee stack + semis rotation continued; apple — AFM 3 / CoreAI on-device stack + Siri AI pulled from EU after DMA exemption denial)."
+    },
     {
       "date": "2026-06-08",
       "op": "ingest",
