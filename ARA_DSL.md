@@ -105,6 +105,7 @@ Plain CommonMark for these, with one ara-specific affordance per row.
 | `{flag:green}` (or `yellow` / `red`) | `<span class="ara-flag ara-flag--green"></span>` |
 | `{sparkline:1.2,1.4,1.5,1.8}` | `<span class="ara-sparkline" data-points="...">` |
 | `{h2num:X}` | `<span class="ara-h2-num">X</span>` — only if you need a custom chip outside a heading. |
+| `{bubble:+12%}` / `{bubble:-8%}` | `<span class="ara-bubble ara-bubble--up\|--down">…</span>` — circular McKinsey change-bubble. A leading `-`/`−` renders the navy `--down` variant; anything else is the royal `--up` variant. |
 
 Cites are the most important inline primitive. Every substantive factual
 claim must end with one or more `[^N]` markers, and every `N` must
@@ -172,6 +173,86 @@ the price.
 
 Use for pull quotes (one striking sentence). For inline quotation
 in prose, use a regular markdown `> ...` blockquote.
+
+#### `:::statement(attr="ARA Research")` (body: markdown)
+
+```
+:::statement(attr="ARA Research")
+The compute will keep getting cheaper, but demand will outpace the price.
+:::
+```
+
+A large serif statement on a periwinkle panel — the McKinsey
+inside-cover thesis line. Use once or twice per article for the single
+sentence worth a full beat, not for ordinary emphasis. `attr` is
+optional and renders a small uppercase attribution line beneath.
+
+#### `:::note` / `:::source` (body: markdown)
+
+```
+:::note
+Figures are fiscal-year; FY ends December 31.
+:::
+
+:::source
+Company 10-K filings; ARA analysis.
+:::
+```
+
+Small gray sans footnote lines. `:::note` is for methodology caveats;
+`:::source` is for data provenance. Each renders an uppercase label
+prefix ("Note" / "Source") by default — pass `label="My label"` to
+override it or `label=""` to omit it. Use them standalone in prose, or
+inside an `:::exhibit` body where they tuck under the chart.
+
+#### `:::exhibit(num=..., title=..., subtitle=..., note=..., source=..., wordmark=true)` (body: markdown — usually one nested chart)
+
+```
+:::exhibit(num="Exhibit 1", title="Revenue by segment", subtitle="$ billion", source="Company filings; ARA analysis", note="FY ends December.")
+:::bar-chart(title="Revenue", orientation=vertical, value-unit=$, value-suffix=B)
+categories: FY 2024, FY 2025
+Connectivity: 10, 14
+Space: 5, 8
+:::
+:::
+```
+
+The signature framed exhibit: a strong navy top rule, a royal-blue
+`num` eyebrow ("Exhibit 1"), a bold `title`, a units `subtitle`, then
+the **nested chart/figure/table** in its body, then optional Note/Source
+lines and an ARA wordmark at the foot.
+
+- The body is compiled as a normal block sequence. Put exactly one chart
+  (or figure, or table) inside; the exhibit frames it. The inner chart's
+  own border and `ara.guzus.xyz` watermark are suppressed automatically,
+  so the frame and wordmark are never doubled.
+- `num`, `title`, `subtitle` are all optional but `num` + `title` is the
+  idiomatic minimum.
+- Note/Source can be supplied two ways: as the `note=`/`source=`
+  attributes (convenient, single line), or as nested `:::note` / `:::source`
+  blocks in the body (when the text is longer or has inline markup). Both
+  render; attribute lines come after nested ones.
+- `wordmark` defaults to `true` (emits `ara.guzus.xyz`). Pass
+  `wordmark=false` to suppress, or `wordmark="Custom credit"` to override
+  the text.
+
+Reach for `:::exhibit` whenever a chart deserves to read as a formal,
+attributed exhibit rather than a bare inline figure.
+
+#### `:::cols` (body: markdown)
+
+```
+:::cols
+A dense prose passage that benefits from a two-up newspaper measure.
+This is the first paragraph.
+
+The second paragraph continues, and the two columns balance
+automatically. Collapses to a single column on narrow screens.
+:::
+```
+
+Two-column body for dense prose. Keep charts and wide blocks out of it —
+it is for *text*. Collapses to one column under ~760px and in print.
 
 #### `:::figure(src=..., alt=..., caption=..., credit=..., source-url=...)` (body: empty)
 

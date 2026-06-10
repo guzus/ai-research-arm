@@ -232,6 +232,123 @@ Space: 0, 0, 3.0, 0.6
         self.assertIn('data-unit="$"', html)
         self.assertIn('data-value-suffix="B"', html)
 
+    def test_exhibit_wraps_nested_chart_with_single_wordmark(self):
+        html = compile_ok(
+            """---
+title: Exhibit test
+---
+
+## 01. Exhibits
+
+:::exhibit(num="Exhibit 1", title="Revenue by segment", subtitle="$ billion", source="Company filings", note="FY ends December.")
+:::bar-chart(title="Revenue", orientation=vertical, value-unit=$, value-suffix=B)
+categories: FY24, FY25
+A: 10, 14
+:::
+:::
+"""
+        )
+        # Frame parts present.
+        self.assertIn('class="ara-exhibit"', html)
+        self.assertIn('<span class="ara-exhibit-num">Exhibit 1</span>', html)
+        self.assertIn('<div class="ara-exhibit-title">Revenue by segment</div>', html)
+        self.assertIn('<div class="ara-exhibit-subtitle">$ billion</div>', html)
+        self.assertIn('class="ara-exhibit-body"', html)
+        # Nested chart compiled inside the body.
+        self.assertIn('class="ara-bar-chart"', html)
+        # Attribute-driven note + source rendered.
+        self.assertIn('<span class="ara-note-label">Note</span>', html)
+        self.assertIn('<span class="ara-source-label">Source</span>', html)
+        # Exactly one wordmark per exhibit (no doubling).
+        self.assertEqual(html.count('class="ara-wordmark"'), 1)
+
+    def test_exhibit_accepts_nested_note_and_source_blocks(self):
+        html = compile_ok(
+            """---
+title: Exhibit nested footnotes
+---
+
+## 01. Exhibits
+
+:::exhibit(num="Exhibit 2", title="Share")
+:::donut(center-label="100%")
+- {label: One, value: 60}
+- {label: Two, value: 40}
+:::
+:::note
+A nested note with **markup**.
+:::
+:::source
+A nested source line.
+:::
+:::
+"""
+        )
+        self.assertIn('class="ara-donut"', html)
+        self.assertIn('class="ara-note"', html)
+        self.assertIn('class="ara-source"', html)
+        self.assertEqual(html.count('class="ara-wordmark"'), 1)
+
+    def test_exhibit_wordmark_can_be_suppressed(self):
+        html = compile_ok(
+            """---
+title: Exhibit no wordmark
+---
+
+## 01. Exhibits
+
+:::exhibit(num="Exhibit 3", title="Plain", wordmark=false)
+:::bars
+- {label: A, value: "60%", pct: 60}
+:::
+:::
+"""
+        )
+        self.assertNotIn('class="ara-wordmark"', html)
+
+    def test_statement_and_change_bubble_and_cols(self):
+        html = compile_ok(
+            """---
+title: Statement and bubble
+---
+
+## 01. Body
+
+Up {bubble:+12%} and down {bubble:-8%}.
+
+:::statement(attr="ARA Research")
+The compute keeps getting cheaper.
+:::
+
+:::cols
+Paragraph one of the dense prose.
+
+Paragraph two of the dense prose.
+:::
+"""
+        )
+        self.assertIn('class="ara-statement"', html)
+        self.assertIn('<span class="ara-statement-attr">ARA Research</span>', html)
+        self.assertIn('class="ara-bubble ara-bubble--up">+12%</span>', html)
+        self.assertIn('class="ara-bubble ara-bubble--down">-8%</span>', html)
+        self.assertIn('class="ara-cols"', html)
+
+    def test_note_source_labels_can_be_omitted(self):
+        html = compile_ok(
+            """---
+title: Bare footnote
+---
+
+## 01. Body
+
+:::source(label="")
+Raw provenance with no prefix label.
+:::
+"""
+        )
+        self.assertIn('class="ara-source"', html)
+        self.assertNotIn('ara-source-label', html)
+
     def test_newspaper_target_emits_interactive_components(self):
         html = compile_newspaper_ok(
             """---

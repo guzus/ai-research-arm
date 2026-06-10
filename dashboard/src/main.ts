@@ -3640,6 +3640,11 @@ function renderDonuts(root: HTMLElement): void {
     const total = values.reduce((a, b) => a + b, 0);
     if (total <= 0) continue;
 
+    // Donut share formatting: keep one-decimal precision but drop a trailing
+    // ".0" so whole-number shares read "66%" not "66.0%". round-then-reparse
+    // also absorbs IEEE754 noise (0.66*100 -> 66.00000000000001).
+    const fmtShare = (share: number): string => `${parseFloat(share.toFixed(1))}%`;
+
     const size = 200;
     const cx = size / 2;
     const cy = size / 2;
@@ -3676,7 +3681,7 @@ function renderDonuts(root: HTMLElement): void {
         d,
         tabindex: '0',
       });
-      const pct = `${((values[idx] / total) * 100).toFixed(1)}%`;
+      const pct = fmtShare((values[idx] / total) * 100);
       appendSvgTitle(slice, `${labels[idx]}: ${values[idx]} (${pct})`);
       setAraTooltip(slice, labels[idx], `${values[idx]} (${pct})`);
       svg.appendChild(slice);
@@ -3742,10 +3747,10 @@ function renderDonuts(root: HTMLElement): void {
       name.textContent = label;
       const value = document.createElement('span');
       value.className = 'ara-donut-legend-value';
-      const pct = (values[idx] / total) * 100;
-      value.textContent = `${pct.toFixed(1)}%`;
-      li.title = `${label}: ${values[idx]} (${pct.toFixed(1)}%)`;
-      setAraTooltip(li, label, `${values[idx]} (${pct.toFixed(1)}%)`);
+      const pctText = fmtShare((values[idx] / total) * 100);
+      value.textContent = pctText;
+      li.title = `${label}: ${values[idx]} (${pctText})`;
+      setAraTooltip(li, label, `${values[idx]} (${pctText})`);
       li.appendChild(swatch);
       li.appendChild(name);
       li.appendChild(value);
