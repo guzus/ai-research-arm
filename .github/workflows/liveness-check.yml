@@ -1,14 +1,23 @@
 name: Pipeline Liveness Check
 
-# Freshness + content watchdog that makes silent pipeline outages loud. For
-# each scheduled research lane it:
+# Freshness + content + deploy watchdog that makes silent pipeline outages
+# loud. For each scheduled research lane it:
 #   1. (advisory) checks CONTENT — is the most recent artifact anomalously
 #      small / collapsed vs its trailing median? (scripts/check_lane_content.py)
 #      A lane can commit on time yet emit a husk (expired bird cookies → [] →
 #      near-empty file). This never fails the job; it just alerts.
-#   2. checks FRESHNESS — git-commit recency vs a per-lane cadence threshold
+#   2. (advisory) checks DEPLOY HEALTH — is the LIVE site serving a current
+#      build? (scripts/check_deploy_health.py) The repo can be perfectly fresh
+#      while prod is dead: the Railway Docker build broke on every push after
+#      #102 and ara.guzus.xyz silently served a day-old build for ~1 day with
+#      zero alarms, because both repo-side checks stayed green. This fetches
+#      the live manifest's `generatedAt` stamp (cache-busted past Cloudflare)
+#      and pages only when the build lags >8h while the repo is demonstrably
+#      pushing (<2h since last commit) — a big lag with an idle repo defers to
+#      the freshness page below instead of double-paging. Never fails the job.
+#   3. checks FRESHNESS — git-commit recency vs a per-lane cadence threshold
 #      (scripts/check_lane_freshness.py); on staleness it alerts AND fails.
-#   3. (healthy runs only) emits a HEARTBEAT — a dead-man's-switch success ping
+#   4. (healthy runs only) emits a HEARTBEAT — a dead-man's-switch success ping
 #      so the watchdog's / hooker's OWN silence becomes detectable downstream.
 #
 # Alerts now go out over TWO independent channels: hooker (relays to Telegram)
@@ -32,9 +41,13 @@ name: Pipeline Liveness Check
 # the two jobs (and repeat runs) collapse to one message per set per day.
 #
 # Step ORDERING is load-bearing: the freshness action ends with a `Fail if
-# stale` step that exits non-zero. GHA skips later steps in a job once a step
-# fails without continue-on-error, so:
+# stale` step that exits non-zero — it must stay the only step that can fail,
+# and it must stay LAST among the checks. GHA skips later steps in a job once
+# a step fails without continue-on-error, so:
 #   - the content gate runs BEFORE freshness (so a stale day can't skip it);
+#   - deploy health also runs BEFORE freshness: one stale lane must not mask
+#     a dead deploy (the rest of the pipeline can still be pushing hourly
+#     while prod serves a stale build);
 #   - the heartbeat runs AFTER freshness but is guarded by stale == 'false'
 #     (a stale/down pipeline must not emit an "alive" ping anyway, so being
 #     skipped on stale days is the desired behavior).
@@ -74,6 +87,19 @@ jobs:
           telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
 
+      # Advisory deploy-health check — is the LIVE site serving a current
+      # build? Also ahead of the freshness fail step: one stale lane must not
+      # skip the deploy probe. continue-on-error is belt-and-suspenders on top
+      # of the composite's own never-fail design (Rule 4 semantics).
+      - name: Deploy health (advisory) + alert if prod is stale
+        continue-on-error: true
+        uses: ./.github/actions/deploy-health-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
+          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+
       # Freshness check + dual-channel alert; its final step fails on staleness.
       - name: Check freshness + alert on staleness
         id: freshness
@@ -107,6 +133,15 @@ jobs:
 
       - name: Content quality gate (advisory) + alert on anomaly
         uses: ./.github/actions/lane-content-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
+          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Deploy health (advisory) + alert if prod is stale
+        continue-on-error: true
+        uses: ./.github/actions/deploy-health-alert
         with:
           hooker_url: ${{ secrets.HOOKER_URL }}
           hooker_token: ${{ secrets.HOOKER_TOKEN }}

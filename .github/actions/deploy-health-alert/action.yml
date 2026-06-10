@@ -1,0 +1,140 @@
+name: Deploy health check (advisory)
+description: >-
+  Run the advisory deploy-health watchdog (scripts/check_deploy_health.py):
+  fetch the LIVE site's manifest (cache-busted past Cloudflare) and compare its
+  build stamp (`generatedAt`, emitted by dashboard/scripts/prebuild.mjs) against
+  now. Catches the failure mode the repo-side watchdogs cannot see: the repo
+  commits on time, lane content looks fine, but the Railway Docker build fails
+  on every push and prod silently serves a day-old build (the 2026-06-09
+  incident). Pages only when the repo is demonstrably pushing (deploy-stale);
+  defers to lane-freshness when the repo is idle too. On an alert-class finding
+  (deploy-stale / site-unreachable / manifest-unparseable) it alerts via hooker
+  AND a direct Telegram fallback. Sibling to lane-content-alert; stdlib Python
+  only so it runs on both runner tiers. This action NEVER fails the job —
+  deploy-health findings are advisory; freshness remains the hard gate.
+
+inputs:
+  hooker_url:
+    description: Hooker base URL. Hooker alert skipped if empty.
+    required: false
+    default: ""
+  hooker_token:
+    description: Hooker bearer token. Hooker alert skipped if empty.
+    required: false
+    default: ""
+  topic:
+    description: Hooker topic that relays to Telegram.
+    required: false
+    default: ara-research
+  telegram_bot_token:
+    description: Telegram bot token for the direct fallback channel. Skipped if empty.
+    required: false
+    default: ""
+  telegram_chat_id:
+    description: Telegram chat id for the direct fallback channel. Skipped if empty.
+    required: false
+    default: ""
+
+outputs:
+  finding:
+    description: >-
+      The deploy-health state (healthy / deploy-stale / site-unreachable /
+      manifest-unparseable / legacy-build / pipeline-idle).
+    value: ${{ steps.check.outputs.finding }}
+  alert:
+    description: "'true' when the finding is alert-class (page-worthy)."
+    value: ${{ steps.check.outputs.alert }}
+
+runs:
+  using: composite
+  steps:
+    # Advisory: the script exits 0 even on a finding (no --exit-code), writing
+    # finding / alert / idempotency_key / detail / report to $GITHUB_OUTPUT and
+    # a diagnostics block to the step summary. `|| true` is belt-and-suspenders
+    # so this step can never fail the job even on an internal script error.
+    # Needs a checkout: the deploy-stale vs pipeline-idle split reads
+    # `git log -1 --format=%ct` from the working tree.
+    - name: Check deploy health
+      id: check
+      shell: bash
+      run: python3 scripts/check_deploy_health.py || true
+
+    # ── Channel 1: hooker (relays to Telegram). Priority 4: prod serving a
+    #    stale build is user-facing (worse than a content anomaly at 3) but the
+    #    pipeline itself is still running (freshness pages at 5). ─────────────
+    - name: Alert via hooker (relays to Telegram)
+      if: steps.check.outputs.alert == 'true'
+      shell: bash
+      continue-on-error: true
+      env:
+        HOOKER_URL: ${{ inputs.hooker_url }}
+        HOOKER_TOKEN: ${{ inputs.hooker_token }}
+        TOPIC: ${{ inputs.topic }}
+        FINDING: ${{ steps.check.outputs.finding }}
+        DETAIL: ${{ steps.check.outputs.detail }}
+        IDEMPOTENCY_KEY: ${{ steps.check.outputs.idempotency_key }}
+        REPO: ${{ github.repository }}
+        SERVER: ${{ github.server_url }}
+        RUN_ID: ${{ github.run_id }}
+      run: |
+        set -euo pipefail
+        if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+          echo "Hooker credentials missing — skipping hooker deploy-health alert (Telegram fallback still applies)"
+          exit 0
+        fi
+        # Finding/detail come from our own script, but escape defensively
+        # since the body uses parse_mode:HTML.
+        SAFE_DETAIL=$(printf '%s' "$DETAIL" \
+          | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
+        TEXT=$(printf '%s\n\nThe LIVE site (ara.guzus.xyz) is not serving a current build even though the repo looks healthy — likely the Railway Docker build is failing on every push (check the Railway deploy logs), or the site/manifest route is down. Advisory: the research pipeline itself is still running.' "$SAFE_DETAIL")
+        RUN_URL="${SERVER%/}/${REPO}/actions/runs/${RUN_ID}"
+        jq -n \
+          --arg title "🔴 ARA deploy health: ${FINDING} (advisory)" \
+          --arg text "$TEXT" \
+          --arg btn "Inspect (Actions run)" \
+          --arg url "$RUN_URL" \
+          '{
+            title: $title,
+            text: $text,
+            priority: 4,
+            tags: ["ara", "advisory", "deploy"],
+            parse_mode: "HTML",
+            reply_markup: { inline_keyboard: [[{ text: $btn, url: $url }]] }
+          }' > "${RUNNER_TEMP:-/tmp}/hooker-deploy-health.json"
+        curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/${TOPIC}" \
+          -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+          -H "Content-Type: application/json" \
+          -H "Idempotency-Key: ${IDEMPOTENCY_KEY}" \
+          --data-binary "@${RUNNER_TEMP:-/tmp}/hooker-deploy-health.json"
+
+    # ── Channel 2: direct Telegram fallback (bypasses hooker). ──────────────
+    - name: Alert via Telegram (direct fallback)
+      if: steps.check.outputs.alert == 'true'
+      shell: bash
+      continue-on-error: true
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ inputs.telegram_bot_token }}
+        TELEGRAM_CHAT_ID: ${{ inputs.telegram_chat_id }}
+        FINDING: ${{ steps.check.outputs.finding }}
+        DETAIL: ${{ steps.check.outputs.detail }}
+        REPO: ${{ github.repository }}
+        SERVER: ${{ github.server_url }}
+        RUN_ID: ${{ github.run_id }}
+      run: |
+        set -euo pipefail
+        if [ -z "${TELEGRAM_BOT_TOKEN:-}" ] || [ -z "${TELEGRAM_CHAT_ID:-}" ]; then
+          echo "Telegram credentials missing — skipping direct Telegram deploy-health fallback"
+          exit 0
+        fi
+        RUN_URL="${SERVER%/}/${REPO}/actions/runs/${RUN_ID}"
+        TEXT=$(printf '🔴 ARA deploy health (advisory): %s\n\n%s\n\nThe live site is not serving a current build even though the repo looks healthy — check the Railway deploy logs.\n\n[Inspect](%s)' \
+          "$FINDING" "$DETAIL" "$RUN_URL")
+        if curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+          --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+          --data-urlencode "text=${TEXT}" \
+          -d "parse_mode=Markdown" \
+          -d "disable_web_page_preview=true" >/dev/null; then
+          echo "Telegram deploy-health fallback sent"
+        else
+          echo "Telegram deploy-health fallback send failed (non-blocking)"
+        fi
