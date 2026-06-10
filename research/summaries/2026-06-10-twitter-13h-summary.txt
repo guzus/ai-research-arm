@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-10 13:31 UTC
+
+CYCLE: Fable 5 still dominates by volume, but the real news is two funding rounds — not Anthropic.
+
+TOP STORIES:
+• TensorWave (AMD-only AI cloud, refuses Nvidia) raises $350M Series B led by AMD + Magnetar at $1.55B post-money, ~4x year-ago [✓]
+• Cyera (AI data-security) raises $600M at $12B valuation, $2.3B total — via NYT [⚠]
+• Fable 5: no new data — same cost complaint, still no OpenAI GPT-5.6 signal, still no Anthropic post since launch [⚠]
+
+WATCH: Oracle earnings tonight (OCI/AI-capex guidance); TensorWave customer receipts behind its 500MW→2GW claim.
+
+Full update on GitHub.
