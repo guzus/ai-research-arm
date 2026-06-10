@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-10 01:21 UTC
+
+CYCLE: Fable 5 saturation, but the first non-vendor data lands — a split decision, not a sweep.
+
+TOP STORIES:
+• Real-world coding head-to-heads confirm Fable 5 beats GPT-5.5/Codex — but only when the Opus-4.8 safety reroute stays out of the way (@ImAI_Eruel, 387L) ✓
+• First independent benchmark: Fable 5 ranks SECOND to GPT-5.5 on creative writing, denting "SOTA on everything" (@LechMazur) ✓
+• GPT-5.6 is the whole counter-narrative now — relays say "next week," but still zero OpenAI signal ⚠
+
+WATCH: The Opus-4.8 reroute false-positive rate — the one number deciding if the coding lead is usable (Anthropic claims <5% of sessions).
+
+Full update on GitHub.
