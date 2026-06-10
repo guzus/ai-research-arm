@@ -124,7 +124,6 @@
 .ara-doc > .ara-h3,
 .ara-doc > .ara-h4,
 .ara-doc > .ara-callout,
-.ara-doc > .ara-section,
 .ara-doc > .ara-quote {
   max-width: 760px;
   margin-left: 0;
@@ -132,7 +131,13 @@
 }
 
 /* Wide column — section breaks and data viz share the full content width
- * so h2 rules visually span the section they separate. */
+ * so h2 rules visually span the section they separate. The section
+ * wrapper itself is a WIDE container: it spans the 1120px measure and
+ * re-creates the two-measure pattern internally (prose capped at 760px,
+ * data viz allowed out to 1120px) via the `.ara-section > …` blocks
+ * below. Without this, a sectioned article would trap every exhibit at
+ * the 760px reading measure (the section would be the constraining box). */
+.ara-doc > .ara-section,
 .ara-doc > .ara-h2,
 .ara-doc > .ara-divider,
 .ara-doc > .ara-stats,
@@ -152,6 +157,76 @@
 .ara-doc > .ara-iso,
 .ara-doc > .ara-timeline,
 .ara-doc > .ara-figure {
+  max-width: 1120px;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* ── Two-measure pattern INSIDE a section ─────────────────────────────
+ * The compiler wraps every `##` section's content in `.ara-section`,
+ * which now spans the wide 1120px measure (above). So we must re-create
+ * the reading-vs-wide split among the section's direct children, exactly
+ * mirroring the top-level `.ara-doc > …` lists — otherwise prose would
+ * run the full 1120px and read poorly.
+ *
+ * Reading column — prose children of a section stay at the 760px measure,
+ * left-aligned to share the section's hard left edge. Bare prose tags
+ * (p/ul/ol/dl/blockquote/pre) plus the prose-flavored ara-* primitives.
+ * `.ara-cols` keeps the 760px TOTAL measure on purpose: its two ~365px
+ * columns then match the reference two-column body. */
+.ara-section > p,
+.ara-section > ul,
+.ara-section > ol,
+.ara-section > dl,
+.ara-section > blockquote,
+.ara-section > pre,
+.ara-section > .ara-lede,
+.ara-section > .ara-deck,
+.ara-section > .ara-h3,
+.ara-section > .ara-h4,
+.ara-section > .ara-callout,
+.ara-section > .ara-quote,
+.ara-section > .ara-statement,
+.ara-section > .ara-kv,
+.ara-section > .ara-cols,
+.ara-section > .ara-caption,
+.ara-section > .ara-note,
+.ara-section > .ara-source,
+.ara-section > .ara-references {
+  max-width: 760px;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Wide column — data-viz children of a section get the full 1120px
+ * measure. Mirrors the top-level wide list EXACTLY (plus `.ara-exhibit`,
+ * the headline frame) so a chart renders the same width whether it sits
+ * bare in a section, inside an `.ara-exhibit` frame (the exhibit is the
+ * wide child; the chart inherits), or before the first heading. The
+ * `> ol` collision is intentional: `.ara-rank-list` / `.ara-timeline`
+ * are `<ol>` elements and would otherwise be caught by the `> ol` prose
+ * cap above — the class selectors here (specificity 0,2,0) override the
+ * tag selector (0,1,1) and pull them wide. */
+.ara-section > .ara-h2,
+.ara-section > .ara-divider,
+.ara-section > .ara-exhibit,
+.ara-section > .ara-stats,
+.ara-section > .ara-table,
+.ara-section > .ara-table-wrap,
+.ara-section > .ara-bars,
+.ara-section > .ara-stack-bar,
+.ara-section > .ara-stack-legend,
+.ara-section > .ara-stack-rows,
+.ara-section > .ara-line-chart,
+.ara-section > .ara-bar-chart,
+.ara-section > .ara-donut,
+.ara-section > .ara-slope,
+.ara-section > .ara-tradingview,
+.ara-section > .ara-compare,
+.ara-section > .ara-rank-list,
+.ara-section > .ara-iso,
+.ara-section > .ara-timeline,
+.ara-section > .ara-figure {
   max-width: 1120px;
   margin-left: 0;
   margin-right: auto;
@@ -1682,9 +1757,11 @@ body.ara-figure-modal-open {
   font-family: var(--font);
 }
 
-/* When an exhibit sits before the first heading it can use the wide
- * column; inside a section it inherits the 760px reading measure (the
- * section is the constraining box). Both read as clean framed exhibits. */
+/* The exhibit uses the wide 1120px column wherever it sits — before the
+ * first heading (`.ara-doc > .ara-exhibit`) or inside a section
+ * (`.ara-section > .ara-exhibit`, in the wide list above). The inner
+ * chart/table inherits the exhibit's width, so a framed exhibit renders
+ * identically at top level and inside a section. */
 .ara-doc > .ara-exhibit { max-width: 1120px; margin-left: 0; margin-right: auto; }
 
 .ara-exhibit-num {
