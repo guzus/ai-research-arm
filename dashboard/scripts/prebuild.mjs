@@ -239,7 +239,18 @@ function buildTicketsIndex() {
 }
 
 function buildManifest() {
-  const manifest = {};
+  const manifest = {
+    // Deploy-health stamp (scripts/check_deploy_health.py reads these from the
+    // LIVE site). `generatedAt` is the build wall-clock: on a healthy system a
+    // push to main rebuilds within minutes, so the live value should never lag
+    // far behind the latest commit. `gitSha` is best-effort diagnostic only —
+    // the Docker build context has no .git, so never shell out to git here;
+    // Railway/Vercel expose the sha via env when configured, else null.
+    // Additive only: main.ts's loadManifest() normalizes by picking known
+    // keys, so existing consumers ignore these fields.
+    generatedAt: new Date().toISOString(),
+    gitSha: process.env.RAILWAY_GIT_COMMIT_SHA || process.env.VERCEL_GIT_COMMIT_SHA || null,
+  };
   for (const [key, { dir, re }] of Object.entries(DATE_PATTERNS)) {
     manifest[key] = collectDates(join(publicResearch, dir), re);
   }
@@ -267,9 +278,14 @@ function buildManifest() {
     JSON.stringify(manifest),
   );
   const counts = Object.fromEntries(
-    Object.entries(manifest).map(([k, v]) => [k, Array.isArray(v) ? v.length : 0]),
+    Object.entries(manifest)
+      .filter(([, v]) => Array.isArray(v))
+      .map(([k, v]) => [k, v.length]),
   );
-  console.log('prebuild: manifest.json', counts);
+  console.log(
+    `prebuild: manifest.json (generatedAt=${manifest.generatedAt} gitSha=${manifest.gitSha ?? 'null'})`,
+    counts,
+  );
 }
 
 copyData();
