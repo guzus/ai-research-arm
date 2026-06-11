@@ -1,0 +1,11 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-06-11 01:42 UTC
+
+CYCLE: Quiet overnight — DiffusionGemma and MiMo Code headlines.
+
+TOP STORIES:
+• Google DiffusionGemma: open text-diffusion model, up to 4× faster inference by generating blocks in parallel [⚠]
+• Xiaomi MiMo Code V0.1: MIT-licensed, Claude Code-compatible, claims 5% above Claude Code on SWE-Bench [⚠]
+
+WATCH: DiffusionGemma weight availability; MiMo Code GitHub star velocity; SpaceX IPO pricing tonight.
+
+Full update on GitHub.
