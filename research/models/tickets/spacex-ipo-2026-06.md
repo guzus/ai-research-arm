@@ -7,7 +7,7 @@ status: confirmed
 status_note: |
   **SpaceX's IPO** — reported as the largest in history — **prices after the
   close 2026-06-11** and **first trades 2026-06-12 on Nasdaq under ticker
-  SPCX** at **$135/share**, a **~$75B raise** at a **~$1.75T valuation**
+  SPCX** at **$135/share**, a **~$75B raise** at a **~$1.75–1.77T valuation**
   (~30% reserved for retail; reported demand far exceeding the raise). The AI
   relevance: SpaceX funds the **xAI / Colossus compute-landlord business**
   that rents capacity to Anthropic and Google
@@ -25,12 +25,14 @@ sources:
   - "@SpaceX"
   - "@business"
 created_at: 2026-06-09
-updated_at: 2026-06-09
+updated_at: 2026-06-11
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-09
     change: "Created — SpaceX IPO (reported largest in history) prices 2026-06-11 after close, first trade 2026-06-12 on Nasdaq SPCX at $135/share, ~$75B raise, ~$1.75T valuation, ~30% reserved for retail. AI relevance: funds the xAI/Colossus compute-landlord business renting to Anthropic and Google ([[anthropic-spacex-colossus-2026-05]], [[google-spacex-compute-2026-06]]). Widely reported with a set ticker/date → status confirmed; no primary filing captured in-window → verification partial. Part of the 2026 AI IPO supercycle alongside [[openai-ipo-2026-06]] and [[anthropic-ipo-2026-06]]"
+  - ts: 2026-06-11
+    change: "Pricing-day reaffirmation — on the scheduled 2026-06-11 pricing date, secondary press (CNBC, NYT, Forbes, Daily Maverick) reaffirms the terms: $135/share, ~$75B raise, first trade 2026-06-12 on Nasdaq SPCX, with the valuation now reported at ~$1.77T (vs the ~$1.75T originally captured). Coverage also frames Musk crossing the $1T net-worth mark on the listing. Still no primary SEC/IR URL captured in-window → status stays confirmed, verification stays partial. Final priced terms + opening print to be UPDATEd as they land"
 ---
 
 **SpaceX's IPO** — reported as the largest in history — is the third leg of
