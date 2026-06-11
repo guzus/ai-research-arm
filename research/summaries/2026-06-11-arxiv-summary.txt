@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-11
+
+TOP 5 PAPERS:
+• Subquadratic Architectures - xLSTM beats Mamba-2 & Gated DeltaNet on principle: robust state tracking
+• Impossibility of Eliciting Latent Knowledge - proof that behavior-only feedback can't guarantee an honest AI
+• Bebop - rejection sampling + TV loss breaks MTP entropy bound for up to 1.8x faster RL training
+• InternVideo3 - closed-loop multimodal reasoning + latent attention for long-horizon video agents
+• RACES - recursively compose verifiable RL environments; 50 base envs match 300 hand-built ones
+
+CATEGORIES: LM/NLP 6, CV/Multimodal 4, Agents/Reasoning 4, Safety 4, Other 5
+
+Full report on GitHub.
