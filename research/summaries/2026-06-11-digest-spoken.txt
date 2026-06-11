@@ -1,0 +1,9 @@
+Speaker 1: Wednesday, June eleventh, twenty twenty-six.
+Speaker 2: [high_energy] Oracle beat expectations and booked a record [emphasis]six hundred thirty-eight billion dollars[/emphasis] in AI backlog, but the stock dropped about six percent as the company burned through fifty-five point seven billion in capex and posted negative twenty-three point seven billion in free cash flow.
+Speaker 1: Rough quarter. Meanwhile, SpaceX priced its record IPO today at around seventy-five billion dollars, valuing the company at roughly [emphasis]one point seven seven trillion[/emphasis], trading Friday under the ticker SPCX.
+Speaker 2: That would make it one of the largest public offerings ever. And Anthropic broke its silence today with a roughly three hundred fifty million dollar policy push and a new framework that would let governments block or revoke unsafe models.
+Speaker 1: Still no word from Anthropic on the June twenty-second Fable pricing cliff. Speaking of Fable, Fable five is now number one on Artificial Analysis with a score of sixty-four point nine, but the safety reroute rate is running above eight percent, higher than the stated five.
+Speaker 2: It costs ten dollars per million input tokens, fifty per million output. [dramatic_pause] Developers are not happy, Hacker News has it at number one with over two thousand comments on whether the guardrails silently handicap development work.
+Speaker 1: On the funding front: TensorWave raised three hundred fifty million at a one point five five billion valuation in an AMD-led round, and Cyera closed six hundred million at twelve billion.
+Speaker 2: Big week for AI infrastructure capital.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
