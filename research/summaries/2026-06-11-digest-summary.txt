@@ -1,0 +1,14 @@
+Daily AI Digest - 2026-06-11
+
+TOP STORIES:
+• Oracle beats + books record $638B AI backlog, but stock drops ~6% on $55.7B capex & -$23.7B FCF
+• SpaceX prices record ~$75B IPO after close today at ~$1.77T; trades Friday as SPCX
+• Anthropic breaks silence with ~$350M policy push + framework letting govt block/revoke unsafe models — still silent on June 22 Fable pricing cliff
+
+KEY NUMBERS:
+• Fable 5: #1 on Artificial Analysis (64.9), but ~8% safety-reroute rate (>stated 5%), $10/$50 per 1M tokens
+• TensorWave $350M @ $1.55B (AMD-led); Cyera $600M @ $12B
+
+TRENDING: Claude Fable 5 guardrails (HN #1, 2,005 comments) — silent handicapping of LLM-dev work
+
+Full digest on GitHub.
