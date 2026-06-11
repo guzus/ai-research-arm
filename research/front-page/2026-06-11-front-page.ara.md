@@ -27,7 +27,7 @@ Anthropic broke its launch-week silence — with policy, not pricing. It posted 
 Independent benchmarks settle the Fable 5 verdict — and it's a split, not a sweep. Artificial Analysis put Fable 5 #1 overall (64.9, ~5 pts clear of GPT-5.5) but independently clocked the Opus-4.8 safety reroute at ~8% of tasks (vs Anthropic's stated "<5% of sessions") and a single Humanity's-Last-Exam run at ~$2.2k. The day-2 consensus: exceptional capability, real "fallback tax," not an everyday driver.
 :::
 
-:::figure(src="https://image.cnbcfm.com/api/v1/image/108315896-1780491649482-gettyimages-1175168392-AFP_1LB3WB.jpeg?v=1781036537&w=1920&h=1080", alt="Reuters via CNBC", caption="SpaceX IPO prices today, trades Friday. Pricing is expected after the close on June 11 at a fixed $135/share, ~555.6M shares for a ~$75B raise at a ~$1.77T valuation — the largest IPO in history, slotting SpaceX in as roughly the 7th-most-valuable US public company. First trade targeted for June 12 under SPCX. (Reuters via CNBC, heygotrade)", source-url="https://www.cnbc.com/2026/06/03/spacex-ipo-stock-price-roadshow-musk.html", variant=wide)
+:::figure(src="https://cdn.arstechnica.net/wp-content/uploads/2026/06/HeroVisual.width-2200.format-webp-1152x648.png", alt="Google DeepMind releases DiffusionGemma, a model that runs local AI 4x faster", caption="Google DeepMind releases DiffusionGemma, a model that runs local AI 4x faster", source-url="https://arstechnica.com/google/2026/06/googles-latest-diffusiongemma-open-ai-model-comes-with-a-4x-speed-boost/", variant=wide)
 :::
 
 :::briefs(id="briefs-breaking-policy", title="Breaking & Policy", columns=2)
