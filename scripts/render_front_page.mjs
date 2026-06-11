@@ -51,7 +51,10 @@ function markdownLinks(value) {
 }
 
 function section(name) {
-  const pattern = new RegExp(`^##\\s+${name}\\s*$([\\s\\S]*?)(?=^##\\s+|\\z)`, "mi");
+  // End-of-input must be spelled (?![\s\S]) here: JS regex has no \z, and a
+  // literal \z in the lookahead truncated every section at its first letter
+  // "z" ("optimizer", "Normalizing", …), silently dropping the rest.
+  const pattern = new RegExp(`^##\\s+${name}\\s*$([\\s\\S]*?)(?=^##\\s+|(?![\\s\\S]))`, "mi");
   return markdown.match(pattern)?.[1]?.trim() ?? "";
 }
 
@@ -194,10 +197,15 @@ async function richSourceLinks() {
   return out;
 }
 
-// Prioritised, de-duped, filtered candidate links for the lead image:
-// rich aggregation sources first (real article images), digest links last.
+// Prioritised, de-duped, filtered candidate links for the lead image.
+// Digest links first — uniqueSourceLinks starts with the executive-summary
+// and breaking records, so a usable og:image there is a photo that MATCHES
+// the headline story (arxiv/x/hn digest links are dropped by
+// isImageCandidate, so the old "digest is all arxiv logos" failure mode
+// can't recur). Rich aggregation sources (RSS/community article URLs)
+// remain the fallback pool when the digest yields nothing fetchable.
 async function imageCandidateLinks() {
-  const all = [...(await richSourceLinks()), ...uniqueSourceLinks()];
+  const all = [...uniqueSourceLinks(), ...(await richSourceLinks())];
   const seen = new Set();
   const out = [];
   for (const link of all) {
@@ -300,8 +308,12 @@ function yamlItems(items, mapper) {
 }
 
 function renderAraSource(images = []) {
-  const leadBody = leadDeck.length
-    ? leadDeck.map((item) => `${item}`).join("\n\n")
+  // Same editorial split as the PNG: the title holds one headline-sized
+  // sentence, the rest of the lead bullet opens the body.
+  const [leadTitle, leadTitleRest] = splitFirstSentence(lead);
+  const leadBodyItems = [leadTitleRest, ...leadDeck].filter(Boolean);
+  const leadBody = leadBodyItems.length
+    ? leadBodyItems.join("\n\n")
     : "No executive-summary detail was available for this edition.";
   const breakingItems = [...breaking, ...policy].slice(0, 6);
   if (breakingItems.length === 0) {
@@ -330,7 +342,7 @@ function renderAraSource(images = []) {
     "- label: " + yamlValue("Departments") + "\n  target: " + yamlValue("#deck-departments"),
     ":::",
     "",
-    `:::lead(id="lead-top-story", label="Top Story", title=${directiveAttr(lead)})`,
+    `:::lead(id="lead-top-story", label="Top Story", title=${directiveAttr(leadTitle)})`,
     leadBody,
     ":::",
     "",
@@ -475,16 +487,19 @@ function renderSvg(images = []) {
   const headlineLines = clampText(headlineText, headlineWrap, 5);
   parts.push(svgText(62, y, headlineLines, { size: headlineSize, weight: "700", lineHeight: headlineLineHeight }));
   y += headlineLines.length * headlineLineHeight + 24;
-  for (const item of [headlineRest, ...leadDeck].filter(Boolean)) {
+  const ledeItems = [headlineRest, ...leadDeck].filter(Boolean);
+  for (let i = 0; i < ledeItems.length; i += 1) {
     const linesThatFit = Math.floor((leadBottom - y) / 29) + 1;
     if (linesThatFit < 2) break;
-    const lines = clampText(item, 54, Math.min(4, linesThatFit));
+    // The opening paragraph may run longer so the column doesn't sit
+    // half-empty above the photo; follow-ups stay short.
+    const lines = clampText(ledeItems[i], 54, Math.min(i === 0 ? 6 : 4, linesThatFit));
     parts.push(svgText(62, y, lines, { size: 22, lineHeight: 29 }));
     y += lines.length * 29 + 14;
   }
   if (images[0]) {
     parts.push(svgImage(images[0], 62, imageTop, 650, 210));
-    parts.push(svgText(62, 924, clampText(images[0].alt, 72, 1), {
+    parts.push(svgText(62, 924, clampText(splitFirstSentence(images[0].caption || images[0].alt)[0], 72, 1), {
       size: 13,
       weight: "700",
       family: "Arial, sans-serif",
@@ -505,7 +520,9 @@ function renderSvg(images = []) {
     for (const item of items.slice(0, 3)) {
       const linesThatFit = Math.floor((sidebarBottom - sideY) / 22) + 1;
       if (linesThatFit < 2) break;
-      const lines = clampText(item, 38, Math.min(4, linesThatFit));
+      // Briefs read as briefs: the digest bullets open with a
+      // headline-shaped sentence, so print that and stop.
+      const lines = clampText(splitFirstSentence(item)[0], 38, Math.min(3, linesThatFit));
       parts.push(svgText(790, sideY, lines, { size: 17, lineHeight: 22 }));
       sideY += lines.length * 22 + 14;
     }
@@ -527,7 +544,7 @@ function renderSvg(images = []) {
     for (const item of columns[i][1].slice(0, i === 1 ? 4 : 3)) {
       const linesThatFit = Math.floor((columnBottom - columnY) / 22) + 1;
       if (linesThatFit < 2) break;
-      const lines = clampText(`• ${item}`, 35, Math.min(4, linesThatFit));
+      const lines = clampText(`• ${splitFirstSentence(item)[0]}`, 35, Math.min(3, linesThatFit));
       parts.push(svgText(x, columnY, lines, { size: 17, lineHeight: 22 }));
       columnY += lines.length * 22 + 12;
     }
