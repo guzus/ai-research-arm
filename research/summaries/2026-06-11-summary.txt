@@ -1,0 +1,15 @@
+AI News - 2026-06-11
+
+TOP STORIES:
+• OpenAI + Oracle: OCI customers can soon spend existing Oracle cloud credits on OpenAI frontier models + Codex (demand-side counterpart to the ~$300B Stargate compute deal)
+• EU Commission publishes FINAL voluntary Code of Practice on marking & labelling AI-generated content — machine-readable watermarks + deepfake icons, ahead of Aug 2 AI Act transparency rules
+• SpaceX IPO prices after today's close (Nasdaq SPCX), first trade June 12
+
+KEY NUMBERS:
+• SpaceX: $135/share, ~$75B raise, ~$1.75T valuation (largest IPO ever)
+• Oracle–OpenAI Stargate compute relationship: ~$300B scale / 4.5 GW
+• EU AI Act transparency obligations bind from Aug 2, 2026
+
+No net-new frontier model shipped; Gemini 3.5 Pro, Claude Sonnet 4.8/Mythos 1, Grok 5 still pending.
+
+Full report on GitHub.
