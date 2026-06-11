@@ -208,7 +208,23 @@ async function imageCandidateLinks() {
   return out.slice(0, 30);
 }
 
-async function imageFromPage(link) {
+// Content-type headers lie often enough (CDN error pages, mislabeled
+// formats) that the downloaded bytes are the only trustworthy signal.
+function sniffImageFormat(bytes) {
+  if (bytes.length >= 4 && bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4e && bytes[3] === 0x47) return "image/png";
+  if (bytes.length >= 3 && bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff) return "image/jpeg";
+  if (bytes.length >= 4 && bytes.toString("ascii", 0, 4) === "GIF8") return "image/gif";
+  if (bytes.length >= 12 && bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WEBP") return "image/webp";
+  if (bytes.length >= 12 && bytes.toString("ascii", 4, 8) === "ftyp" && /^av(if|is)/.test(bytes.toString("ascii", 8, 12))) return "image/avif";
+  return null;
+}
+
+const ALL_IMAGE_FORMATS = ["image/png", "image/jpeg", "image/gif", "image/webp", "image/avif"];
+// resvg cannot decode webp/avif — embedding one paints an empty frame on
+// the rendered PNG, so the SVG path must stick to this set.
+const SVG_SAFE_FORMATS = ["image/png", "image/jpeg", "image/gif"];
+
+async function imageFromPage(link, allowedFormats) {
   try {
     const pageResponse = await fetchWithTimeout(link.url, {
       headers: {
@@ -239,8 +255,10 @@ async function imageFromPage(link) {
     if (contentLength > 2500000) return null;
     const bytes = Buffer.from(await imageResponse.arrayBuffer());
     if (bytes.length > 2500000) return null;
+    const format = sniffImageFormat(bytes);
+    if (!format || !allowedFormats.includes(format)) return null;
     return {
-      src: `data:${contentType};base64,${bytes.toString("base64")}`,
+      src: `data:${format};base64,${bytes.toString("base64")}`,
       imageUrl,
       alt: link.label || link.story,
       caption: link.story,
@@ -251,10 +269,10 @@ async function imageFromPage(link) {
   }
 }
 
-async function resolveImages(limit = 3) {
+async function resolveImages(limit = 3, allowedFormats = ALL_IMAGE_FORMATS) {
   const images = [];
   for (const link of await imageCandidateLinks()) {
-    const image = await imageFromPage(link);
+    const image = await imageFromPage(link, allowedFormats);
     if (image) images.push(image);
     if (images.length >= limit) break;
   }
@@ -354,7 +372,7 @@ function renderAraSource(images = []) {
   return source.join("\n");
 }
 
-function wrapText(text, maxChars, maxLines = 99) {
+function wrapText(text, maxChars) {
   const words = text.split(/\s+/).filter(Boolean);
   const lines = [];
   let line = "";
@@ -363,13 +381,36 @@ function wrapText(text, maxChars, maxLines = 99) {
     if (next.length > maxChars && line) {
       lines.push(line);
       line = word;
-      if (lines.length >= maxLines) break;
     } else {
       line = next;
     }
   }
-  if (line && lines.length < maxLines) lines.push(line);
+  if (line) lines.push(line);
   return lines;
+}
+
+// Truncation must stay visible: a clamp that drops words silently produces
+// mid-sentence headlines on the rendered page.
+function clampText(text, maxChars, maxLines) {
+  const lines = wrapText(text, maxChars);
+  if (lines.length <= maxLines) return lines;
+  const kept = lines.slice(0, maxLines);
+  const last = kept[maxLines - 1].slice(0, Math.max(1, maxChars - 1));
+  kept[maxLines - 1] = `${last.replace(/[\s,;:.—–-]+$/, "")}…`;
+  return kept;
+}
+
+// The digest's lead bullet is a full paragraph; only its first sentence is
+// headline-sized. Requiring a following capital/figure and a 30-char minimum
+// avoids false splits on decimals ("$19.2B") and short abbreviations.
+function splitFirstSentence(text) {
+  for (const match of text.matchAll(/[.!?]["”')\]]*\s+(?=["“(]?[A-Z0-9~$€£#@])/g)) {
+    const head = text.slice(0, match.index + match[0].length).trimEnd();
+    if (head.length < 30) continue;
+    if (/\b(?:vs|Mr|Mrs|Ms|Dr|Prof|St|Vol|No|Inc|Corp|Co|Ltd|Jr|Sr|etc)\.$/i.test(head.replace(/["”')\]]+$/, ""))) continue;
+    return [head, text.slice(match.index + match[0].length)];
+  }
+  return [text.trim(), ""];
 }
 
 function svgText(x, y, lines, options = {}) {
@@ -420,18 +461,30 @@ function renderSvg(images = []) {
   parts.push(`<line x1="62" x2="1138" y1="242" y2="242" stroke="#1f1a14" stroke-width="3"/>`);
   parts.push(`<line x1="62" x2="1138" y1="248" y2="248" stroke="#1f1a14" stroke-width="1"/>`);
 
+  // Lead column geometry: text flows from y=305 and must stop above the
+  // image slot (fixed at 690..900) or, with no image, above the 930 rule.
+  // Every block fits its remaining vertical budget — content that doesn't
+  // fit is ellipsized or dropped, never painted over by a later element.
+  const imageTop = 690;
+  const leadBottom = images[0] ? imageTop - 18 : 906;
   let y = 305;
-  const headlineLines = wrapText(lead, 25, 5);
-  parts.push(svgText(62, y, headlineLines, { size: 44, weight: "700", lineHeight: 48 }));
-  y += headlineLines.length * 48 + 24;
-  for (const item of leadDeck) {
-    const lines = wrapText(item, 56, 4);
+  const [headlineText, headlineRest] = splitFirstSentence(lead);
+  const headlineSize = headlineText.length > 130 ? 36 : 44;
+  const headlineWrap = headlineSize === 36 ? 31 : 25;
+  const headlineLineHeight = headlineSize === 36 ? 40 : 48;
+  const headlineLines = clampText(headlineText, headlineWrap, 5);
+  parts.push(svgText(62, y, headlineLines, { size: headlineSize, weight: "700", lineHeight: headlineLineHeight }));
+  y += headlineLines.length * headlineLineHeight + 24;
+  for (const item of [headlineRest, ...leadDeck].filter(Boolean)) {
+    const linesThatFit = Math.floor((leadBottom - y) / 29) + 1;
+    if (linesThatFit < 2) break;
+    const lines = clampText(item, 54, Math.min(4, linesThatFit));
     parts.push(svgText(62, y, lines, { size: 22, lineHeight: 29 }));
     y += lines.length * 29 + 14;
   }
   if (images[0]) {
-    parts.push(svgImage(images[0], 62, 690, 650, 210));
-    parts.push(svgText(62, 924, wrapText(images[0].alt, 72, 1), {
+    parts.push(svgImage(images[0], 62, imageTop, 650, 210));
+    parts.push(svgText(62, 924, clampText(images[0].alt, 72, 1), {
       size: 13,
       weight: "700",
       family: "Arial, sans-serif",
@@ -439,13 +492,20 @@ function renderSvg(images = []) {
   }
 
   parts.push(`<line x1="760" x2="760" y1="282" y2="900" stroke="#2b251d" stroke-width="2"/>`);
+  const sidebarBottom = 906;
   let sideY = 305;
   for (const [label, items] of [["Breaking", breaking], ["Policy Watch", policy]]) {
+    // Section label plus at least two lines of its first item must fit,
+    // otherwise the whole section is dropped rather than spilling over
+    // the 930 rule into the departments grid.
+    if (items.length === 0 || sideY + 31 + 22 > sidebarBottom) continue;
     parts.push(`<line x1="790" x2="1138" y1="${sideY - 22}" y2="${sideY - 22}" stroke="#1f1a14" stroke-width="7"/>`);
     parts.push(svgText(790, sideY, [label.toUpperCase()], { size: 16, weight: "800", family: "Arial, sans-serif" }));
     sideY += 31;
     for (const item of items.slice(0, 3)) {
-      const lines = wrapText(item, 38, 4);
+      const linesThatFit = Math.floor((sidebarBottom - sideY) / 22) + 1;
+      if (linesThatFit < 2) break;
+      const lines = clampText(item, 38, Math.min(4, linesThatFit));
       parts.push(svgText(790, sideY, lines, { size: 17, lineHeight: 22 }));
       sideY += lines.length * 22 + 14;
     }
@@ -462,16 +522,19 @@ function renderSvg(images = []) {
     const x = 62 + i * 365;
     if (i > 0) parts.push(`<line x1="${x - 22}" x2="${x - 22}" y1="958" y2="1360" stroke="#7d725f" stroke-width="1"/>`);
     parts.push(svgText(x, 982, [columns[i][0]], { size: 26, weight: "700" }));
+    const columnBottom = 1360;
     let columnY = 1022;
     for (const item of columns[i][1].slice(0, i === 1 ? 4 : 3)) {
-      const lines = wrapText(`• ${item}`, 35, 4);
+      const linesThatFit = Math.floor((columnBottom - columnY) / 22) + 1;
+      if (linesThatFit < 2) break;
+      const lines = clampText(`• ${item}`, 35, Math.min(4, linesThatFit));
       parts.push(svgText(x, columnY, lines, { size: 17, lineHeight: 22 }));
       columnY += lines.length * 22 + 12;
     }
   }
 
   parts.push(`<rect x="62" y="1390" width="1076" height="106" fill="#fffaf2" stroke="#2b251d" stroke-width="2"/>`);
-  parts.push(svgText(84, 1426, wrapText(quote || "No quote of the day was available in the digest.", 100, 3), {
+  parts.push(svgText(84, 1426, clampText(quote || "No quote of the day was available in the digest.", 100, 3), {
     size: 18,
     lineHeight: 25,
     italic: true,
@@ -494,7 +557,7 @@ function renderSvg(images = []) {
 
 if (output.endsWith(".png")) {
   const { Resvg } = await import("/tmp/node_modules/@resvg/resvg-js/index.js");
-  const images = await resolveImages(1);
+  const images = await resolveImages(1, SVG_SAFE_FORMATS);
   const png = new Resvg(renderSvg(images), {
     fitTo: { mode: "width", value: 2400 },
     font: {
