@@ -88,7 +88,7 @@ service in `../runner`; see Load-bearing rule 5). A fresh
 `cloud-run-worker-*` instance spins up per job, so "self-hosted" no longer
 means one serial slot — jobs run in parallel, and each worker carries the
 pipeline's baked-in state (bird CLI + birdy daemon, LFS-hydrated
-`research/` checkout, Puppeteer/Chrome, pre-installed tooling). Aggregation,
+`research/` checkout, pre-installed tooling). Aggregation,
 synthesis, output, CI, and the Claude agent lanes all run here.
 
 Only **two `runs-on: ubuntu-latest`** (GitHub-hosted) jobs exist, and both
@@ -295,9 +295,10 @@ output or break the pipeline. Read them before editing.
    jobs run in PARALLEL (no single serial slot) and each carries baked-in
    state — bird CLI + warm birdy daemon (`hourly-twitter*`,
    `24h-model-timeline`), LFS-hydrated `research/` for prior-output context
-   (`daily-digest`, `daily-front-page`, `ci.yml` dashboard job),
-   Puppeteer/Chrome (`daily-front-page`), pre-installed pnpm/Oracle
-   tooling. Use `[self-hosted, Linux]` for anything touching that state,
+   (`daily-digest`, `ci.yml` dashboard job), pre-installed pnpm/Oracle
+   tooling. (`daily-front-page` checks out with `lfs: false` and renders
+   via resvg — it needs neither LFS media nor Chromium.) Use
+   `[self-hosted, Linux]` for anything touching that state,
    which is nearly everything. Reserve `ubuntu-latest` for the two
    watchdogs that must outlive a self-hosted outage (`liveness-check.yml`,
    `auto-rerun-on-runner-loss.yml`). The tradeoff of ephemeral workers: an

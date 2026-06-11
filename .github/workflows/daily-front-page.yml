@@ -26,8 +26,9 @@ concurrency:
 jobs:
   front-page:
     runs-on: [self-hosted, Linux]
-    # Cap a wedged Puppeteer/Chrome render so it can't pin a Cloud Run worker
-    # for GitHub's 6h default (mirrors the 90-min agent-lane convention).
+    # Cap a wedged render (resvg + network-bound og:image fetches) so it
+    # can't pin a Cloud Run worker for GitHub's 6h default (mirrors the
+    # 90-min agent-lane convention).
     timeout-minutes: 30
     # Only run when the digest succeeded, OR when a human dispatched us.
     # `workflow_run.conclusion` is empty on workflow_dispatch, so we must
@@ -105,27 +106,9 @@ jobs:
         with:
           enable-cache: true
 
-      # Install Chromium dependencies and puppeteer
-      - name: Install Chromium system dependencies
-        if: steps.check.outputs.exists == 'true'
-        run: |
-          if [ "${{ runner.os }}" = "Linux" ]; then
-            if ! command -v sudo >/dev/null 2>&1 || ! sudo -n true >/dev/null 2>&1; then
-              echo "sudo unavailable on this runner; assuming Chromium dependencies are already present."
-              exit 0
-            fi
-            sudo apt-get update -qq
-            sudo apt-get install -y -qq \
-              libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
-              libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 \
-              libpango-1.0-0 libcairo2 libasound2 libxshmfence1 \
-              libx11-6 libx11-xcb1 libxcb1 libxext6 libxfixes3 libxi6 \
-              libxrender1 libxtst6 libglib2.0-0 libdbus-1-3 \
-              fonts-liberation xdg-utils wget > /dev/null 2>&1
-          else
-            echo "Skipping Linux-only Chromium dependencies on ${{ runner.os }}"
-          fi
-
+      # resvg is the renderer's only native dependency (prebuilt napi binary,
+      # no Chromium/X11 libs). Text uses system fonts: the Cloud Run worker
+      # image carries fonts-dejavu-core via ffmpeg's fontconfig dependency.
       - name: Install PNG renderer
         if: steps.check.outputs.exists == 'true'
         run: cd /tmp && npm install @resvg/resvg-js@2.6.2
