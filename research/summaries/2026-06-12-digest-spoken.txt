@@ -1,0 +1,11 @@
+Speaker 1: Friday, June twelfth, twenty twenty-six.
+Speaker 2: [high_energy] Bezos-backed Prometheus just closed [emphasis]twelve billion dollars[/emphasis] at a forty-one billion dollar valuation, the industrial AI sector's first true megaround, billing itself as an artificial general engineer for manufacturing, with around one hundred fifty staff.
+Speaker 1: And SpaceX started trading on Nasdaq today under the ticker SPCX, at one hundred thirty-five dollars a share, raising roughly [emphasis]seventy-five billion dollars[/emphasis] and valuing the company at about one point seven seven trillion dollars, the largest IPO in history.
+Speaker 2: Worth noting that xAI and Grok now have a real proxy trade on public markets every time Musk makes a move.
+Speaker 1: On the model front, it was a quiet day. OpenAI, Anthropic, and Google all held back on new weights.
+Speaker 2: But OpenAI wasn't idle. They're acquiring Ona to strengthen Codex, and they're reportedly eyeing API price cuts to undercut Anthropic on cost.
+Speaker 1: And Anthropic had some friction of its own. They're walking back invisible guardrails they quietly added to Claude Fable, after backlash from machine learning researchers.
+Speaker 2: [dramatic_pause] Invisible guardrails reversed under researcher pressure, that's a significant transparency moment for the whole field.
+Speaker 1: One more number to close. DeepMind committed [emphasis]ten million dollars[/emphasis] to multi-agent safety research, modest by today's standards but a pointed directional bet.
+Speaker 2: That covers the big moves today.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
