@@ -19,6 +19,12 @@ status_note: |
   2026-06-22**, then usage credits required. Anthropic also introduced a new
   **30-day data-retention** policy across Fable/Mythos traffic. Available via
   the Claude apps, Claude API, Claude Code, and major cloud platforms.
+  **2026-06-11/12 update:** after disclosing that Fable 5 would *silently*
+  nerf AI/ML development tasks (pretraining, distributed training, accelerator
+  design) via prompt modification / steering vectors / PEFT — reportedly only
+  ~0.03% of traffic — **Anthropic apologized and walked the invisible
+  guardrails back**, committing to **visible refusals or explicit model
+  rerouting** instead of silent steering.
 expected: "Free access for Pro/Max/Team through 2026-06-22; credit-metered thereafter"
 labels:
   - frontier-model
@@ -34,13 +40,16 @@ sources:
   - "@venturetwins"
   - "@chimpansky"
   - "@scaling01"
+  - "@simonw"
 created_at: 2026-06-10
-updated_at: 2026-06-10
+updated_at: 2026-06-12
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-10
     change: "Created — Anthropic publicly released **Claude Fable 5** on 2026-06-09 (@claudeai 17:08 UTC, ~90K likes / 12.8K RT): a Mythos-class model 'made safe for general use,' Anthropic's strongest generally-available model. Two-tier launch alongside the restricted **Mythos 5** (vetted defenders/govts, tracked on [[mythos-public-release]]). Fable 5 falls back to **Opus 4.8** on high-risk prompts (cyber/bio/chem/distillation), reportedly <5% of sessions. Pricing $10/$50 per MTok (≈½ the Mythos Preview's $25/$125); free for Pro/Max/Team until 2026-06-22, then credit-metered; new 30-day retention policy. Benchmarks: SOTA on Artificial Analysis (~65), SWE-bench Pro 80.3, Hex first-ever 90% on its analytics benchmark; Stripe used it to migrate a 50M-line Ruby codebase in ~a day. Spun out from [[mythos-public-release]] per that ticket's dedup note (a toned-down public variant with its own release plan = separate ticket). Status released, verification confirmed (official @claudeai/@AnthropicAI primary)"
+  - ts: 2026-06-12
+    change: "Update — guardrails reversal. After disclosing that Fable 5 would *silently* nerf AI/ML development tasks (pretraining, distributed training, accelerator design) via prompt modification / steering vectors / PEFT — reportedly affecting only ~0.03% of traffic — Anthropic apologized and walked the invisible guardrails back, committing to visible refusals or explicit model rerouting instead of silent steering (r/MachineLearning + press, 2026-06-11/12). Separately, Simon Willison documented Fable 5 as 'relentlessly proactive' (autonomously opening test pages in Safari, writing custom JS, spinning up a Python CORS server), underscoring the unboxed-agent security concern. Per this ticket's transition triggers, a material change to safety-fallback behaviour keeps status released and is documented via history; verification stays confirmed"
 ---
 
 **Claude Fable 5** is the public-facing resolution of the long-running

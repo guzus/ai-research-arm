@@ -25,7 +25,7 @@ sources:
   - "@SpaceX"
   - "@business"
 created_at: 2026-06-09
-updated_at: 2026-06-11
+updated_at: 2026-06-12
 closed_at: null
 closed_reason: null
 history:
@@ -33,6 +33,8 @@ history:
     change: "Created — SpaceX IPO (reported largest in history) prices 2026-06-11 after close, first trade 2026-06-12 on Nasdaq SPCX at $135/share, ~$75B raise, ~$1.75T valuation, ~30% reserved for retail. AI relevance: funds the xAI/Colossus compute-landlord business renting to Anthropic and Google ([[anthropic-spacex-colossus-2026-05]], [[google-spacex-compute-2026-06]]). Widely reported with a set ticker/date → status confirmed; no primary filing captured in-window → verification partial. Part of the 2026 AI IPO supercycle alongside [[openai-ipo-2026-06]] and [[anthropic-ipo-2026-06]]"
   - ts: 2026-06-11
     change: "Pricing-day reaffirmation — on the scheduled 2026-06-11 pricing date, secondary press (CNBC, NYT, Forbes, Daily Maverick) reaffirms the terms: $135/share, ~$75B raise, first trade 2026-06-12 on Nasdaq SPCX, with the valuation now reported at ~$1.77T (vs the ~$1.75T originally captured). Coverage also frames Musk crossing the $1T net-worth mark on the listing. Still no primary SEC/IR URL captured in-window → status stays confirmed, verification stays partial. Final priced terms + opening print to be UPDATEd as they land"
+  - ts: 2026-06-12
+    change: "Debut day — first trade scheduled today on Nasdaq SPCX at the finalized $135/share on ~555.6M Class A shares (~$75B raised, ~$1.77T valuation), the largest IPO in history (surpassing Saudi Aramco's 2019 record); ~30% of public shares reserved for retail (vs the usual 5–10%). Heavy price discovery means the opening print may land late-morning/early-afternoon ET rather than at the bell, so as of this run (pre-US-open) shares are not yet trading → status stays confirmed, verification stays partial (no primary SEC/IR URL captured). AI relevance: puts the SpaceX/xAI complex (Colossus, Grok, the federal Grok contract) on a daily public tape. Opening print + first-day close to be UPDATEd once it trades"
 ---
 
 **SpaceX's IPO** — reported as the largest in history — is the third leg of
