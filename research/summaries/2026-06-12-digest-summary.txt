@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-12
+
+TOP STORIES:
+• Bezos's Prometheus raises $12B at ~$41B — industrial AI's first megaround ("artificial general engineer" for manufacturing)
+• SpaceX debuts on Nasdaq TODAY (SPCX, $135/share, ~$1.77T) — largest IPO ever; xAI/Grok trade by proxy
+• Quiet model day — OpenAI, Anthropic, Google all silent on new weights; OpenAI to acquire Ona for Codex + eyeing API price cuts vs Anthropic
+
+KEY NUMBERS:
+• Prometheus: $12B raised, ~$41B valuation, ~150 staff
+• SpaceX: $135/share, ~$75B raised, ~$1.77T
+• DeepMind: $10M into multi-agent safety research
+
+TRENDING: Anthropic walks back invisible Claude Fable guardrails after ML-researcher backlash
+
+Full digest on GitHub.
