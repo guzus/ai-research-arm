@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-12
+
+TOP 5 PAPERS:
+• ARM (2606.11188) - one 7B autoregressive model unifies image understanding, generation & editing via discrete semantic tokens
+• Forget Attention (2606.02332) - SISA fuses softmax attention with SSM importance signal for efficient long-context
+• Cold-Start Safety Gap (2606.07867) - LLM agents are least safe at session start; safety rises 9-52% after warm-up tasks
+• Janus benchmark (2606.10852) - measures technically-true-but-misleading LLM output under persuasive goals
+• Back on Track / PAPO (2606.08501) - aligns RL to diffusion-LLM trajectory, stabilizing reasoning RL
+
+CATEGORIES: NLP 4 | CV/Multimodal 5 | Agents/Reasoning 4 | Safety 5 | Other 3
+
+Full report on GitHub.
