@@ -45,7 +45,7 @@
       ],
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-06-10",
+      "updated_at": "2026-06-12",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -85,7 +85,7 @@
       ],
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-10",
+      "updated_at": "2026-06-12",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -95,7 +95,9 @@
       ],
       "outbound": [
         "anthropic",
+        "artificial-general-engineer",
         "california-ai-regulation",
+        "claude-fable-5",
         "cognition-ai",
         "coreweave",
         "deepseek",
@@ -107,12 +109,14 @@
         "nvidia",
         "openai",
         "openrouter",
+        "prometheus",
         "spacex",
         "xai"
       ],
       "inbound": [
         "anthropic",
         "apple",
+        "artificial-general-engineer",
         "california-ai-regulation",
         "cognition-ai",
         "coreweave",
@@ -129,6 +133,7 @@
         "nvidia",
         "openai",
         "openrouter",
+        "prometheus",
         "spacex",
         "xai"
       ]
@@ -145,7 +150,7 @@
       ],
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-10",
+      "updated_at": "2026-06-12",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -186,6 +191,7 @@
         "minimax-m3",
         "openai",
         "openrouter",
+        "prometheus",
         "spacex",
         "xai"
       ]
@@ -224,6 +230,36 @@
       ],
       "inbound": [
         "openai"
+      ]
+    },
+    {
+      "slug": "artificial-general-engineer",
+      "title": "Artificial General Engineer",
+      "type": "concept",
+      "tags": [
+        "industrial-ai",
+        "manufacturing",
+        "design",
+        "agents"
+      ],
+      "summary": "The thesis that an AI system can take complex physical products from concept through production — extending AI's reach from software and chatbots into hardware design and manufacturing.",
+      "created_at": "2026-06-12",
+      "updated_at": "2026-06-12",
+      "file": "concepts/artificial-general-engineer.md",
+      "aliases": [
+        "artificial general engineer",
+        "AGE",
+        "industrial AI",
+        "AI-for-manufacturing"
+      ],
+      "outbound": [
+        "ai-capex",
+        "figure-ai",
+        "prometheus"
+      ],
+      "inbound": [
+        "ai-capex",
+        "prometheus"
       ]
     },
     {
@@ -277,7 +313,7 @@
       ],
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-06-10",
+      "updated_at": "2026-06-12",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -297,6 +333,7 @@
       ],
       "inbound": [
         "agentic-ai-security",
+        "ai-capex",
         "anthropic",
         "claude-opus-4-8",
         "gemini-3-5-flash",
@@ -436,6 +473,7 @@
         "ai-capex",
         "gemma-4",
         "minimax-m3",
+        "prometheus",
         "spacex"
       ]
     },
@@ -577,7 +615,9 @@
         "openai"
       ],
       "inbound": [
-        "ai-capex"
+        "ai-capex",
+        "artificial-general-engineer",
+        "prometheus"
       ]
     },
     {
@@ -902,7 +942,7 @@
       ],
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-10",
+      "updated_at": "2026-06-12",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -932,6 +972,7 @@
         "figure-ai",
         "microsoft",
         "openrouter",
+        "prometheus",
         "spacex",
         "xai"
       ]
@@ -968,6 +1009,39 @@
       ]
     },
     {
+      "slug": "prometheus",
+      "title": "Prometheus",
+      "type": "entity",
+      "tags": [
+        "industrial-ai",
+        "megaround",
+        "manufacturing",
+        "funding",
+        "jeff-bezos"
+      ],
+      "summary": "Jeff Bezos's industrial-AI startup building an \"artificial general engineer\"; disclosed a $12B Series B at a ~$41B valuation on 2026-06-11 — industrial AI's first megaround.",
+      "created_at": "2026-06-12",
+      "updated_at": "2026-06-12",
+      "file": "entities/prometheus.md",
+      "aliases": [
+        "Prometheus",
+        "Prometheus AI",
+        "Bezos Prometheus"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "artificial-general-engineer",
+        "deepseek",
+        "figure-ai",
+        "openai"
+      ],
+      "inbound": [
+        "ai-capex",
+        "artificial-general-engineer"
+      ]
+    },
+    {
       "slug": "spacex",
       "title": "SpaceX",
       "type": "entity",
@@ -980,7 +1054,7 @@
       ],
       "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-06-08",
+      "updated_at": "2026-06-12",
       "file": "entities/spacex.md",
       "aliases": [
         "SpaceX",
@@ -1055,6 +1129,7 @@
     "a 9317": "california-ai-regulation",
     "ab 1159": "california-ai-regulation",
     "ab 1609": "california-ai-regulation",
+    "age": "artificial-general-engineer",
     "agent half-life": "agent-lifespan-engineering",
     "agent lifespan engineering": "agent-lifespan-engineering",
     "agent security": "agentic-ai-security",
@@ -1068,11 +1143,15 @@
     "ai infrastructure buildout": "ai-capex",
     "ai supply-chain security": "agentic-ai-security",
     "ai-capex": "ai-capex",
+    "ai-for-manufacturing": "artificial-general-engineer",
     "anthropic": "anthropic",
     "anthropic pbc": "anthropic",
     "apple": "apple",
     "apple inc.": "apple",
     "apple intelligence": "apple",
+    "artificial general engineer": "artificial-general-engineer",
+    "artificial-general-engineer": "artificial-general-engineer",
+    "bezos prometheus": "prometheus",
     "brett adcock": "figure-ai",
     "caisi mou": "federal-ai-policy",
     "california ai bills": "california-ai-regulation",
@@ -1133,6 +1212,7 @@
     "grok": "xai",
     "helix": "figure-ai",
     "helix-02": "figure-ai",
+    "industrial ai": "artificial-general-engineer",
     "jensen huang": "nvidia",
     "lfm": "liquid-ai",
     "liang wenfeng": "deepseek",
@@ -1175,6 +1255,8 @@
     "pcc": "apple",
     "private cloud compute": "apple",
     "project polaris": "microsoft",
+    "prometheus": "prometheus",
+    "prometheus ai": "prometheus",
     "promoting advanced ai innovation and security": "federal-ai-policy",
     "sacramento ai policy": "california-ai-regulation",
     "siri": "apple",
@@ -1190,6 +1272,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-12",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-12 digest. Created 2 (prometheus entity — Bezos $12B Series B at ~$41B, industrial AI's first megaround; artificial-general-engineer concept — AI-for-manufacturing thesis). Updated 6 (spacex — SPCX Nasdaq debut live at $135/~$1.77T; openai — Ona acquisition for Codex runtime + API price-cut war vs Anthropic + BBVA 100k seats; anthropic — invisible-guardrails reversal/apology + price-war pressure; claude-fable-5 — covert-throttle safeguard reversed + Endor \"mid-tier coding\"/Willison \"relentlessly proactive\"; agentic-ai-security — DeepMind $10M multi-agent fund + Fable guardrails reversal + German AI-Overviews liability + autonomous-drone lethality + Claw Patrol firewall; ai-capex — Prometheus industrial-AI megaround + SpaceX debut + OpenAI-Anthropic price war)."
+    },
     {
       "date": "2026-06-10",
       "op": "ingest",

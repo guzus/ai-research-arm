@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 summary: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-updated_at: 2026-06-10
+updated_at: 2026-06-12
 sources:
+  - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
@@ -218,6 +219,19 @@ skepticism in one window:
   a continuation of the Jun 6–8 Broadcom-led selloff rather than a fresh catalyst,
   extending the "beats but closes lower" mood into a multi-day risk-off rotation
   out of the AI complex (ARA digest 2026-06-10).
+
+- **The wave broadens into industrial AI; SpaceX debuts (2026-06-12).** The capital
+  wave extended past chatbots, coding, and compute: **[[prometheus]]** — Jeff
+  Bezos's [[artificial-general-engineer]] startup — disclosed a **$12B Series B at
+  a ~$41B valuation** (JPMorgan, BlackRock, Goldman Sachs, DST Global, Arch),
+  **industrial AI's first megaround** and a bet on AI-for-manufacturing rather
+  than software. Meanwhile **[[spacex|SpaceX (SPCX)]] began trading on Nasdaq** at
+  $135/share for a **~$1.77T valuation** (~$75B raised) — the largest IPO in
+  history going live, the public-markets anchor of the issuance wave. And the
+  demand-side monetization war sharpened: **[[openai]] is reportedly weighing API
+  token price cuts to pull customers from [[anthropic]]**, an emerging price war
+  on top of the ~70% pricing gap [[claude-fable-5|Fable 5]] opened — margin
+  pressure now running alongside the supply buildout (ARA digest 2026-06-12).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s

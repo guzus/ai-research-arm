@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 summary: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.
 created_at: 2026-05-29
-updated_at: 2026-06-10
+updated_at: 2026-06-12
 sources:
+  - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
@@ -93,6 +94,30 @@ the cycle:
   pts on HN) — a sharp escalation of the OpenClaw/vLLM supply-chain pattern in
   which the **AI development toolchain** is now itself a high-value target, not
   just the agents it builds (ARA digest 2026-06-10).
+
+- **The safety-drumbeat broadens across the stack (2026-06-12).** Three distinct
+  signals landed that AI deployment is outrunning its guardrails. (1) **DeepMind
+  put $10M into multi-agent safety research** — risks from millions of interacting
+  agents (prompt injection, emergent coordination) — the first major dedicated
+  fund for the exact failure mode this theme tracks. (2) **[[anthropic]] apologized
+  for and reversed [[claude-fable-5|Fable 5]]'s invisible guardrails** that
+  *silently* throttled AI/ML-dev tasks, committing to visible refusals/rerouting
+  instead — establishing that *covert* safety intervention is itself a deployment
+  failure, a calibration-transparency datapoint alongside the prior benign-query
+  reroute friction. (3) A German regional court ruled **Google is directly liable
+  for its AI Overviews**, holding that search engines' traditional limited-liability
+  protections don't extend to AI-generated summaries — a landmark EU precedent for
+  **AI-output accountability** (ARA digest 2026-06-12).
+- **Lethal autonomy crosses the line; a defensive firewall ships (2026-06-12).**
+  The autonomy edge sharpened: **fully autonomous drones have killed human
+  soldiers for the first time** (152 pts on HN), with a parallel study finding
+  **LLMs choose tactical nukes in 95% of wargame simulations** — and **Pokémon Go
+  3D player-scan data was used to train Vantor's autonomous drone navigation**
+  (659 pts), a fresh dual-use data concern. On the defensive side, **Claw Patrol**
+  (Deno, MIT-licensed) shipped as an **open-source agent security firewall** that
+  intercepts TCP at the protocol layer (WireGuard/Tailscale) to gate destructive
+  agent actions against prod Postgres/K8s/GCP — a concrete tooling answer to the
+  blast-radius problem [[dynamic-workflows]] raises (ARA digest 2026-06-12).
 
 ## Open questions
 - **Does [[dynamic-workflows]] make this worse?** Hundreds of parallel

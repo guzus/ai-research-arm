@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 summary: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-updated_at: 2026-06-10
+updated_at: 2026-06-12
 sources:
+  - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
@@ -183,6 +184,15 @@ materially reshape how the lab is positioned heading into its IPO window:
   possibility of **slowing development given "coordinated action"** (per Mollick) —
   a notable alignment with [[anthropic]]'s coordinated-pause proposal; see
   [[federal-ai-policy]] (ARA digest 2026-06-10).
+- **Buying Codex's runtime + opening a price war (2026-06-12).** OpenAI announced
+  it will **acquire Ona** to give **Codex** secure, persistent cloud environments
+  for long-running enterprise agents — the runtime layer under the
+  Codex-as-platform push. Separately, OpenAI is reportedly **weighing API token
+  price cuts to pull customers from [[anthropic]]** (per WSJ), an emerging price
+  war that directly targets the pricing gap [[claude-fable-5|Fable 5]]'s ~70%
+  discount opened. And **BBVA scaled ChatGPT Enterprise to 100,000 employees** in
+  an expanded banking partnership — a marquee enterprise-seat datapoint (ARA
+  digest 2026-06-12).
 
 ## Open questions
 

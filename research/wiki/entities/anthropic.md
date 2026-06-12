@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 summary: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-updated_at: 2026-06-10
+updated_at: 2026-06-12
 sources:
+  - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
@@ -183,6 +184,19 @@ Four developments through May 2026 put Anthropic at the center of the field:
   also **joined [[openai]] in calling for an international AI watchdog**, both labs
   noting the possibility of slowing development given "coordinated action" — see
   [[ai-capex]] and [[federal-ai-policy]] (ARA digest 2026-06-10).
+
+- **The invisible-guardrails reversal (2026-06-12).** Anthropic **apologized for
+  and walked back** the [[claude-fable-5|Fable 5]] safeguard that would *silently*
+  nerf AI/ML-development tasks (pretraining, distributed training, accelerator
+  design) via prompt modification / steering vectors / PEFT — affecting only
+  ~0.03% of traffic. It committed to **visible refusals or model rerouting**
+  instead of covert throttling. The reversal (which dominated r/MachineLearning)
+  is the second guardrail-calibration retreat in days after the benign-query
+  reroute friction, and a concrete [[agentic-ai-security]] datapoint on safety
+  *transparency* as a deployment requirement. Meanwhile [[openai]] is reportedly
+  **weighing API token price cuts to win Anthropic customers** — turning the
+  ~70%-cheaper pricing gap Fable 5 opened into a two-way price war (ARA digest
+  2026-06-12).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

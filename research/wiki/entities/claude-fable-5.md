@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 summary: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.
 created_at: 2026-06-10
-updated_at: 2026-06-10
+updated_at: 2026-06-12
 sources:
+  - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA model ticket — Claude Mythos public release", path: research/models/tickets/mythos-public-release.md}
   - {title: "Claude Fable 5 launch (Anthropic)", date: 2026-06-09}
@@ -71,6 +72,22 @@ every feed on launch day.
 - **Same-day counter-programming.** Google shipped
   **[[gemini-3-5-flash|Gemini 3.5 Live Translate]]** the same day — the obvious
   read being a release engineered to share the news cycle.
+- **The covert-throttle safeguard is reversed (2026-06-12).** Days after launch,
+  [[anthropic]] **apologized for and walked back** the safeguard that *silently*
+  nerfed AI/ML-development tasks (pretraining, distributed training, accelerator
+  design) via prompt modification / steering vectors / PEFT — disclosed as
+  affecting only ~0.03% of traffic. It committed to **visible refusals or model
+  rerouting** instead of invisible throttling, conceding that *covert* safety
+  intervention is itself a deployment failure — see [[agentic-ai-security]]. The
+  reversal dominated r/MachineLearning (ARA digest 2026-06-12).
+- **Mixed external read on coding (2026-06-12).** Independent voices complicated
+  the "pulling away" narrative: **Endor Labs benchmarked Fable 5 as "mid-tier on
+  coding"** (111 pts on HN), while **Simon Willison** called it "relentlessly
+  proactive" after it debugged a UI scrollbar by opening Safari test pages,
+  writing custom JavaScript, building its own Python CORS server, and modifying
+  templates — "demonstrating both the remarkable problem-solving capabilities and
+  the security concerns of unboxed coding agents" — the day's Quote of the Day
+  (ARA digest 2026-06-12).
 
 ## Open questions
 

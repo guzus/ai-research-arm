@@ -6,8 +6,9 @@ aliases: [SpaceX, "@SpaceX", SPCX, "Space Exploration Technologies", Starlink]
 tags: [ipo, capital-markets, ai-infrastructure, space, public-listing]
 summary: "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side."
 created_at: 2026-06-05
-updated_at: 2026-06-08
+updated_at: 2026-06-12
 sources:
+  - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
@@ -50,6 +51,16 @@ frontier labs (the Anthropic–SpaceX "Colossus" datacenter arrangement).
   **[[xai]]/Colossus compute-landlord business** renting capacity to
   [[anthropic]] (~$1.25B/month) and Google (~$920M/month) — SpaceX/xAI as the
   *seller* of compute to rival labs, not the buyer (ARA digest 2026-06-08).
+
+- **The debut goes live (2026-06-12).** **SPCX began trading June 12 on Nasdaq**
+  at **$135/share** for a **~$1.77T valuation**, raising **~$75B** on ~**555.6M
+  Class A shares** — surpassing Saudi Aramco's 2019 record as the **largest IPO
+  in history**. About **30% of public shares were reserved for retail** (vs. the
+  usual 5–10%); heavy price discovery meant the first print was expected
+  late-morning/early-afternoon ET rather than at the bell. The listing puts the
+  **SpaceX/[[xai]]** complex — Colossus, the Grok model family, the federal Grok
+  contract — on a daily public tape by proxy for the first time, the public-markets
+  anchor of the [[ai-capex]] issuance wave (ARA digest 2026-06-12).
 
 ## Open questions
 
