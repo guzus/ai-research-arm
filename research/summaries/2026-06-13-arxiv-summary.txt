@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-13
+
+TOP 5 PAPERS:
+• MiniMax Sparse Attention - blockwise sparse attention on GQA for efficient million-token context
+• End-to-End Context Compression at Scale - latent-context compressors push the perf/speed/memory frontier
+• SABER - stateful safety benchmark for LLM coding agents; best model still >54% violation rate
+• ARM - 7B autoregressive multimodal model unifying image understanding, generation, and editing
+• MemoPilot - test-time learning by training a frozen LLM's memory updates with multi-turn GRPO
+
+CATEGORIES: LM/NLP 5, Vision/Multimodal 5, Agents/Reasoning 5, Safety/Alignment 5, Other 3
+
+Full report on GitHub.
