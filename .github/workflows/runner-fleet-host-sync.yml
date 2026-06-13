@@ -1,0 +1,51 @@
+name: Runner fleet host sync
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync-gunix:
+    name: Sync gunux takeover runners
+    runs-on: [self-hosted, gunux]
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ secrets.RUNNER_FLEET_GH_PAT }}
+      HOST_RUNNER_EXTRA_LABELS: gunux,docker
+    steps:
+      - name: Register fleet repos on gunux
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "RUNNER_FLEET_GH_PAT is not set" >&2
+            exit 1
+          fi
+
+          echo "host=$(hostname -s) user=$(id -un) runner=${RUNNER_NAME:-?}"
+          cd "$HOME"
+
+          if [ -d runner/.git ]; then
+            cd runner
+            git fetch origin main
+            git checkout main
+            git pull --ff-only
+          else
+            gh repo clone guzus/runner runner
+            cd runner
+          fi
+
+          cat > target-repos.txt <<'EOF'
+          guzus/ai-research-arm
+          guzus/synonym-dictionary-android
+          guzus/novelforge
+          guzus/tuber
+          guzus/gectangle
+          guzus/chrome-bookmark-sync
+          EOF
+
+          ./host-runners/setup-runners.sh --serve-self-hosted --apply
+          ./host-runners/setup-runners.sh --status
