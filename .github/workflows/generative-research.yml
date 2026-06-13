@@ -500,10 +500,14 @@ jobs:
             the start, check whether $GEN_DRAFT already exists from an
             earlier attempt in this same workflow run. If it exists, read
             it, run the compile check from step 7.5, repair only validator
-            or obvious completion gaps, then proceed directly to the writer
-            commit step. Do not restart research from scratch when a valid
-            or nearly-valid draft is already present. Do not read or
-            recover from any other /tmp/gen-research*.ara.md file.
+            or obvious completion gaps, and ensure
+            `$GITHUB_WORKSPACE/.gen-verifier-findings.json` exists before
+            the writer commit step. If the verifier JSON is missing,
+            run the claim-ledger / verifier pass from steps 5-6 against
+            the existing draft first; do not publish a recovered draft
+            without that file. Do not restart research from scratch when
+            a valid or nearly-valid draft is already present. Do not read
+            or recover from any other /tmp/gen-research*.ara.md file.
 
             TOOLBELT — beyond Read/Write/WebSearch/WebFetch, you have:
               - `uv run python scripts/prior_context.py "$(cat .gen-input/topic.txt)"`
@@ -1517,12 +1521,13 @@ jobs:
             - If validation fails, fix the HTML and retry the same Bash
               invocation; do not work around the validator.
 
-      # Inspect Claude attempt 1 — decide whether to retry. If the action
-      # failed (most commonly the 90-minute wall-clock cap) AND no article
-      # was committed yet, run one more attempt under RECOVERY MODE. The
-      # second attempt sees the partial $GEN_DRAFT on disk (the runner's
-      # _work/_temp survives across steps within the same job) and
-      # finishes the draft instead of restarting research from scratch.
+      # Inspect Claude attempt 1 — decide whether to retry. A publishable
+      # attempt needs both a new article commit and the claim-verifier JSON
+      # that the later audit consumes. If either artifact is missing, run
+      # one more attempt under RECOVERY MODE. The second attempt sees the
+      # partial $GEN_DRAFT on disk (the runner's _work/_temp survives across
+      # steps within the same job) and finishes the draft instead of
+      # restarting research from scratch.
       - name: Inspect Claude attempt 1
         if: steps.params.outputs.backend == 'claude'
         id: claude-attempt-1
@@ -1539,12 +1544,23 @@ jobs:
               HAS_FILE=true
             fi
           fi
+          HAS_VERIFIER=false
+          if [ -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json" ]; then
+            HAS_VERIFIER=true
+          fi
 
           RETRY=false
-          if [ "$OUTCOME" = "failure" ] && [ "$HAS_FILE" != "true" ]; then
+          RETRY_REASON=""
+          if [ "$HAS_FILE" != "true" ]; then
+            RETRY_REASON="no article commit"
+          elif [ "$HAS_VERIFIER" != "true" ]; then
+            RETRY_REASON="missing verifier findings JSON"
+          fi
+
+          if [ -n "$RETRY_REASON" ]; then
             RETRY=true
-            echo "::warning::Claude attempt 1 failed before producing an article; retrying once. This covers the wall-clock cap and transient OAuth/socket drops."
-            echo "Cleaning tracked and untracked repository artifacts from the failed attempt before retry."
+            echo "::warning::Claude attempt 1 did not produce a publishable article ($RETRY_REASON); retrying once."
+            echo "Cleaning tracked and untracked repository artifacts from the incomplete attempt before retry."
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative
             # Drop stale verifier- and red-team-findings JSON so the
@@ -1562,6 +1578,7 @@ jobs:
           {
             echo "outcome=$OUTCOME"
             echo "has_file=$HAS_FILE"
+            echo "has_verifier=$HAS_VERIFIER"
             echo "retry=$RETRY"
           } >> "$GITHUB_OUTPUT"
 
@@ -1669,10 +1686,14 @@ jobs:
             an article. At the start, check whether $GEN_DRAFT already exists
             from an earlier attempt in this same workflow run. If it exists,
             read it, run the compile check from step 7.5, repair only
-            validator or obvious completion gaps, then proceed directly to the
-            writer commit step. Do not restart research from scratch when a
-            valid or nearly-valid draft is already present. Do not read or
-            recover from any other /tmp/gen-research*.ara.md file.
+            validator or obvious completion gaps, and ensure
+            `$GITHUB_WORKSPACE/.gen-verifier-findings.json` exists before
+            the writer commit step. If the verifier JSON is missing,
+            run the claim-ledger / verifier pass from steps 5-6 against
+            the existing draft first; do not publish a recovered draft
+            without that file. Do not restart research from scratch when
+            a valid or nearly-valid draft is already present. Do not read
+            or recover from any other /tmp/gen-research*.ara.md file.
 
             TOOLBELT — beyond Read/Write/WebSearch/WebFetch, you have:
               - `uv run python scripts/prior_context.py "$(cat .gen-input/topic.txt)"`
@@ -2702,12 +2723,23 @@ jobs:
               HAS_FILE=true
             fi
           fi
+          HAS_VERIFIER=false
+          if [ -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json" ]; then
+            HAS_VERIFIER=true
+          fi
 
           RETRY=false
-          if [ "$OUTCOME" = "failure" ] && [ "$HAS_FILE" != "true" ]; then
+          RETRY_REASON=""
+          if [ "$HAS_FILE" != "true" ]; then
+            RETRY_REASON="no article commit"
+          elif [ "$HAS_VERIFIER" != "true" ]; then
+            RETRY_REASON="missing verifier findings JSON"
+          fi
+
+          if [ -n "$RETRY_REASON" ]; then
             RETRY=true
-            echo "::warning::DeepSeek attempt 1 failed before producing an article; retrying (1/2). This covers transient Anthropic-compatible API/socket drops."
-            echo "Cleaning tracked and untracked repository artifacts from the failed attempt before retry."
+            echo "::warning::DeepSeek attempt 1 did not produce a publishable article ($RETRY_REASON); retrying (1/2)."
+            echo "Cleaning tracked and untracked repository artifacts from the incomplete attempt before retry."
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative
             # Drop stale verifier- and red-team-findings JSON so the
@@ -2725,6 +2757,7 @@ jobs:
           {
             echo "outcome=$OUTCOME"
             echo "has_file=$HAS_FILE"
+            echo "has_verifier=$HAS_VERIFIER"
             echo "retry=$RETRY"
           } >> "$GITHUB_OUTPUT"
 
@@ -2753,12 +2786,23 @@ jobs:
               HAS_FILE=true
             fi
           fi
+          HAS_VERIFIER=false
+          if [ -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json" ]; then
+            HAS_VERIFIER=true
+          fi
 
           RETRY=false
-          if [ "$OUTCOME" = "failure" ] && [ "$HAS_FILE" != "true" ]; then
+          RETRY_REASON=""
+          if [ "$HAS_FILE" != "true" ]; then
+            RETRY_REASON="no article commit"
+          elif [ "$HAS_VERIFIER" != "true" ]; then
+            RETRY_REASON="missing verifier findings JSON"
+          fi
+
+          if [ -n "$RETRY_REASON" ]; then
             RETRY=true
-            echo "::warning::DeepSeek retry 1 failed before producing an article; retrying (2/2)."
-            echo "Cleaning tracked and untracked repository artifacts from the failed retry before the final retry."
+            echo "::warning::DeepSeek retry 1 did not produce a publishable article ($RETRY_REASON); retrying (2/2)."
+            echo "Cleaning tracked and untracked repository artifacts from the incomplete retry before the final retry."
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative
             # Drop stale verifier- and red-team-findings JSON so the
@@ -2776,6 +2820,7 @@ jobs:
           {
             echo "outcome=$OUTCOME"
             echo "has_file=$HAS_FILE"
+            echo "has_verifier=$HAS_VERIFIER"
             echo "retry=$RETRY"
           } >> "$GITHUB_OUTPUT"
 
