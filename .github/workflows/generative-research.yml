@@ -447,6 +447,10 @@ jobs:
           CT0: ${{ secrets.BIRD_CT0 }}
         with: &claude_with
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # The hourly Twitter lane auto-dispatches this workflow with
+          # GITHUB_TOKEN, so the actor is github-actions[bot]. Keep the
+          # allowlist narrow instead of using '*' for all bot actors.
+          allowed_bots: github-actions[bot]
           # Security: `Bash(printenv:*)` removed from this allowlist. The
           # wildcard is over variable NAMES, so it lets a jailbroken model
           # read ANY env var (CLAUDE_CODE_OAUTH_TOKEN, GITHUB_TOKEN, etc.).
@@ -1612,6 +1616,10 @@ jobs:
           # Required by the action input schema; superseded at runtime by
           # ANTHROPIC_AUTH_TOKEN because ANTHROPIC_BASE_URL is set.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # The hourly Twitter lane auto-dispatches this workflow with
+          # GITHUB_TOKEN, so the actor is github-actions[bot]. Keep the
+          # allowlist narrow instead of using '*' for all bot actors.
+          allowed_bots: github-actions[bot]
           # Security: `Bash(printenv:*)` removed (matches the Claude backend
           # step). Wildcard over variable NAMES → exposes every secret env
           # var the action injects. The agent reads topic/prompt/tags from
