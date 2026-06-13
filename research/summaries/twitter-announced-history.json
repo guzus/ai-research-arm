@@ -9374,5 +9374,33 @@
     "headline": "OPENAI DISRUPTS CHINA-LINKED OP POSING AS AMERICANS TO STOKE ANTI-DATA-CENTER SENTIMENT",
     "source": "@OpenAI",
     "url": "https://x.com/i/status/2065253251025637866"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-13 16:32 UTC",
+    "headline": "ANTHROPIC FABLE 5 & MYTHOS 5 STILL DARK ~16H AFTER US EXPORT-CONTROL SHUTOFF \u2014 NO RESTORATION",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2065597531644743999"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-13 16:32 UTC",
+    "headline": "EXPORT-CONTROL DIRECTIVE NOW ATTRIBUTED TO US COMMERCE DEPARTMENT, JUNE 12 \u2014 NO PUBLISHED PRIMARY DOC YET",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2065597531644743999"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-13 16:32 UTC",
+    "headline": "CLAUDE PRODUCTS NOW DEFAULT TO OPUS 4.8 AS FABLE 5 SESSIONS ERROR OUT; API CALLS REJECTED",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2065597942602531163"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-13 16:32 UTC",
+    "headline": "JAILBREAKER PLINY NAMED AS ALLEGED TRIGGER FOR FABLE 5 NATIONAL-SECURITY SHUTDOWN \u2014 UNVERIFIED",
+    "source": "@dinq_me",
+    "url": "https://x.com/AnthropicAI/status/2065597531644743999"
   }
 ]
