@@ -1,0 +1,82 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Anthropic received a US government export control directive on June 12, 2026 at 5:21pm ET ordering suspension of all access to Fable 5 and Mythos 5 by any foreign national",
+      "verdict": "supported",
+      "citation": "https://anthropic.com/news/fable-mythos-access"
+    },
+    {
+      "id": "c2",
+      "text": "Both Fable 5 and Mythos 5 were disabled for ALL customers globally because Anthropic cannot selectively block foreign nationals within its customer base",
+      "verdict": "supported",
+      "citation": "https://anthropic.com/news/fable-mythos-access"
+    },
+    {
+      "id": "c3",
+      "text": "Fable 5 and Mythos 5 are the same underlying model; Fable 5 has safety classifiers that route cybersecurity, biology/chemistry, and distillation queries to Opus 4.8",
+      "verdict": "supported",
+      "citation": "https://anthropic.com/claude/fable"
+    },
+    {
+      "id": "c4",
+      "text": "The government's stated concern was a specific jailbreak technique used to identify a small number of previously known, minor vulnerabilities",
+      "verdict": "supported",
+      "citation": "https://anthropic.com/news/fable-mythos-access"
+    },
+    {
+      "id": "c5",
+      "text": "No universal jailbreak was found across over 1,000 hours of internal and external red-teaming; Fable 5 complied with zero harmful single-turn cyber requests across 30 public jailbreak techniques",
+      "verdict": "supported",
+      "citation": "https://www-cdn.anthropic.com/2f9323abbcc4abe219577539efe19a623c9ca2bd/Claude%20Fable%205%20&%20Claude%20Mythos%205%20System%20Card.pdf"
+    },
+    {
+      "id": "c6",
+      "text": "Anthropic voluntarily stopped selling to groups majority-owned by Chinese, Russian, Iranian, or North Korean entities in September 2025",
+      "verdict": "supported",
+      "citation": "https://en.wikipedia.org/wiki/Anthropic"
+    },
+    {
+      "id": "c7",
+      "text": "The Trump administration ordered US government agencies to stop using Anthropic models on February 27, 2026, and the Pentagon labeled Anthropic a 'supply chain risk'",
+      "verdict": "supported",
+      "citation": "https://en.wikipedia.org/wiki/Anthropic"
+    },
+    {
+      "id": "c8",
+      "text": "A federal judge granted a temporary injunction against the Pentagon actions on March 26, 2026, writing the case 'appears to be classic First Amendment retaliation'",
+      "verdict": "supported",
+      "citation": "https://en.wikipedia.org/wiki/Anthropic"
+    },
+    {
+      "id": "c9",
+      "text": "Mythos Preview scored 83.1% on CyberGym (vs 66.6% for Claude Opus 4.6) and 77.8% on SWE-bench Pro (vs 53.4%)",
+      "verdict": "supported",
+      "citation": "https://anthropic.com/glasswing"
+    },
+    {
+      "id": "c10",
+      "text": "Project Glasswing partners found more than 10,000 high- or critical-severity vulnerabilities across systemically important software",
+      "verdict": "supported",
+      "citation": "https://anthropic.com/claude/mythos"
+    },
+    {
+      "id": "c11",
+      "text": "Anthropic stated 'perfect jailbreak resistance is not currently possible for any model provider' and that Fable 5's defense-in-depth approach makes risks comparable to existing models",
+      "verdict": "supported",
+      "citation": "https://anthropic.com/news/fable-mythos-access"
+    },
+    {
+      "id": "c12",
+      "text": "Anthropic argues the action sets a precedent that 'would essentially halt all new model deployments for all frontier model providers' if applied consistently",
+      "verdict": "supported",
+      "citation": "https://anthropic.com/news/fable-mythos-access"
+    },
+    {
+      "id": "c13",
+      "text": "The Bernstein v. United States litigation established encryption source code as speech protected by the First Amendment",
+      "verdict": "supported",
+      "citation": "https://en.wikipedia.org/wiki/Bernstein_v._United_States"
+    }
+  ]
+}

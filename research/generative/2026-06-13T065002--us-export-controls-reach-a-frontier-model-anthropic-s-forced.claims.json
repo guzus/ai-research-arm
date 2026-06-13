@@ -1,0 +1,204 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Anthropic received a US government export control directive on June 12, 2026 at 5:21pm ET ordering suspension of all access to Fable 5 and Mythos 5 by any foreign national",
+      "type": "event",
+      "source_urls": ["https://anthropic.com/news/fable-mythos-access"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Both Fable 5 and Mythos 5 were disabled for ALL customers globally because Anthropic cannot selectively block foreign nationals within its customer base",
+      "type": "event",
+      "source_urls": ["https://anthropic.com/news/fable-mythos-access"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Fable 5 and Mythos 5 are the same underlying model; Fable 5 has safety classifiers that route cybersecurity, biology/chemistry, and distillation queries to Opus 4.8",
+      "type": "definition",
+      "source_urls": ["https://anthropic.com/claude/fable", "https://anthropic.com/claude/mythos"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-06-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "The government's stated concern was a specific jailbreak technique used to identify a small number of previously known, minor vulnerabilities",
+      "type": "event",
+      "source_urls": ["https://anthropic.com/news/fable-mythos-access"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-12",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c5",
+      "claim": "Anthropic states the disclosed capability is 'widely available from other models (including OpenAI's GPT-5.5)' and 'used every day by the defenders who keep systems safe'",
+      "type": "quote",
+      "source_urls": ["https://anthropic.com/news/fable-mythos-access"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-12",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c6",
+      "claim": "No universal jailbreak was found across over 1,000 hours of internal and external red-teaming; Fable 5 complied with zero harmful single-turn cyber requests across 30 public jailbreak techniques",
+      "type": "metric",
+      "source_urls": ["https://www-cdn.anthropic.com/2f9323abbcc4abe219577539efe19a623c9ca2bd/Claude%20Fable%205%20&%20Claude%20Mythos%205%20System%20Card.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-09",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Fable 5 is priced at $10 per million input tokens and $50 per million output tokens; 90% prompt caching discount applies",
+      "type": "metric",
+      "source_urls": ["https://anthropic.com/claude/fable"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "Mythos 5 is Anthropic's most capable model on cybersecurity tasks; Mythos Preview scored 83.1% on CyberGym vs 66.6% for Claude Opus 4.6",
+      "type": "metric",
+      "source_urls": ["https://anthropic.com/glasswing"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-04-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Project Glasswing partners found more than 10,000 high- or critical-severity vulnerabilities across systemically important software using Mythos Preview",
+      "type": "metric",
+      "source_urls": ["https://anthropic.com/claude/mythos"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Anthropic's Fable 5 fallback classifiers trigger in less than 5% of sessions; more than 95% of sessions involve no fallback to Opus 4.8",
+      "type": "metric",
+      "source_urls": ["https://anthropic.com/news/claude-fable-5-mythos-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "Anthropic argues the action sets a precedent that 'would essentially halt all new model deployments for all frontier model providers' if applied consistently",
+      "type": "quote",
+      "source_urls": ["https://anthropic.com/news/fable-mythos-access"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "The Trump administration ordered US government agencies to stop using Anthropic models on February 27, 2026, and the Pentagon labeled Anthropic a 'supply chain risk'",
+      "type": "event",
+      "source_urls": ["https://en.wikipedia.org/wiki/Anthropic"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-02-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "A federal judge granted a temporary injunction against the Pentagon actions on March 26, 2026, writing the case 'appears to be classic First Amendment retaliation'",
+      "type": "quote",
+      "source_urls": ["https://en.wikipedia.org/wiki/Anthropic"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-03-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "Anthropic voluntarily stopped selling to groups majority-owned by Chinese, Russian, Iranian, or North Korean entities in September 2025",
+      "type": "event",
+      "source_urls": ["https://en.wikipedia.org/wiki/Anthropic"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "The Bernstein v. United States district court and original Ninth Circuit panel held that encryption source code is speech protected by the First Amendment (panel opinion later vacated en banc)",
+      "type": "regulatory",
+      "source_urls": ["https://en.wikipedia.org/wiki/Bernstein_v._United_States"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "The UK AISI made 'progress towards one' jailbreak within a 'brief initial testing window' against Fable 5, though no universal jailbreak was found by any tester",
+      "type": "event",
+      "source_urls": ["https://www-cdn.anthropic.com/2f9323abbcc4abe219577539efe19a623c9ca2bd/Claude%20Fable%205%20&%20Claude%20Mythos%205%20System%20Card.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-09",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "Mythos 5 accelerated drug design by approximately 10x; 9 of 14 protein targets yielded strong drug design candidates",
+      "type": "metric",
+      "source_urls": ["https://anthropic.com/news/claude-fable-5-mythos-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-09",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Mythos 5 assembled single-cell data for millions of cells across 138 animal species and trained a custom ML model that outperformed a Science-published model while being 100x smaller",
+      "type": "metric",
+      "source_urls": ["https://anthropic.com/news/claude-fable-5-mythos-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-09",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "The June 2026 Trump AI Executive Order requires 30-day pre-release government access for cybersecurity review of frontier models",
+      "type": "regulatory",
+      "source_urls": ["https://research/2026-06-05-ai-news.md"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "Anthropic stated 'perfect jailbreak resistance is not currently possible for any model provider' and that Fable 5's defense-in-depth approach makes risks 'comparable to existing models already deployed across the industry'",
+      "type": "quote",
+      "source_urls": ["https://anthropic.com/news/fable-mythos-access"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-12",
+      "confidence": "high",
+      "risk": "stable"
+    }
+  ]
+}
