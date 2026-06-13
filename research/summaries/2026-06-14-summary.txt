@@ -1,0 +1,14 @@
+AI News - 2026-06-14
+
+TOP STORIES:
+• The Information: US export control on Anthropic's Fable 5/Mythos 5 unlikely to extend to other AI labs; Anthropic still working to restore access
+• The Information "Anthropic Blindsides Its Business Partners" — Anthropic ships apps competing with customers; backtracks on silently degrading Mythos
+• EngineAI, Shenzhen humanoid-robot maker, files confidentially for a Hong Kong IPO
+
+KEY NUMBERS:
+• EngineAI: $200M Series B at ~$1.5B valuation; new Shenzhen factory geared for 10,000 T800 robots
+• IDC survey: only ~19% of orgs use Claude extensively (~25% evaluating) — still behind OpenAI & Google
+
+Note: June 12 megastories (Fable/Mythos global shutdown, SpaceX +19% >$2T IPO) covered in prior report.
+
+Full report on GitHub.
