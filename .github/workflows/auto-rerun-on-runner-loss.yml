@@ -58,7 +58,7 @@ jobs:
     steps:
       # Checkout only so the local hooker-telemetry composite action resolves.
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Re-run failed jobs if (and only if) a worker vanished
         id: decide

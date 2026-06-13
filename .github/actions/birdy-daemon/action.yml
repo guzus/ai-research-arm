@@ -1,6 +1,6 @@
 name: Birdy daemon + bird-fast wrapper
 description: >
-  Start a birdy daemon on 127.0.0.1:8080 (warm bird API for LLM follow-up
+  Start a birdy daemon on a free localhost port (warm bird API for LLM follow-up
   queries) and install bird-fast on the job PATH — a drop-in shim that
   routes the same `bird ...` args through the daemon's POST /run endpoint
   for sub-second latency. The companion stop step lives inline in each
@@ -14,9 +14,9 @@ inputs:
     description: BIRD_CT0 secret value.
     required: true
   port:
-    description: Daemon listen port (still on 127.0.0.1 only).
+    description: Daemon listen port (still on 127.0.0.1 only). Use 0 for an automatically selected free port.
     required: false
-    default: '8080'
+    default: '0'
   concurrency:
     description: Internal request concurrency.
     required: false
@@ -33,7 +33,7 @@ runs:
       shell: bash
       env:
         BIRDY_ACCOUNTS: '[{"name":"ci","auth_token":"${{ inputs.bird_auth_token }}","ct0":"${{ inputs.bird_ct0 }}"}]'
-        DAEMON_PORT: ${{ inputs.port }}
+        DAEMON_PORT_INPUT: ${{ inputs.port }}
         DAEMON_CONC: ${{ inputs.concurrency }}
         DAEMON_TTL: ${{ inputs.cache_ttl }}
       run: |
@@ -42,38 +42,65 @@ runs:
         # bird-CLI startup. The daemon holds warm auth + account-rotation,
         # so each follow-up is ~300ms (network only). Translates to
         # ~10-15s saved on busy cycles.
+        set -euo pipefail
+
+        STATE_DIR=$(mktemp -d "${RUNNER_TEMP:-/tmp}/birdy-daemon.XXXXXX")
+        LOG_PATH="$STATE_DIR/birdy-daemon.log"
+        PID_PATH="$STATE_DIR/birdy-daemon.pid"
+
+        if [ -z "${DAEMON_PORT_INPUT}" ] || [ "${DAEMON_PORT_INPUT}" = "0" ] || [ "${DAEMON_PORT_INPUT}" = "auto" ]; then
+          DAEMON_PORT=$(python3 - <<'PY'
+        import socket
+
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+            sock.bind(("127.0.0.1", 0))
+            print(sock.getsockname()[1])
+        PY
+          )
+        else
+          DAEMON_PORT="${DAEMON_PORT_INPUT}"
+        fi
+
+        DAEMON_URL="http://127.0.0.1:${DAEMON_PORT}"
+        {
+          echo "BIRDY_DAEMON_URL=${DAEMON_URL}"
+          echo "BIRDY_DAEMON_PID_PATH=${PID_PATH}"
+          echo "BIRDY_DAEMON_LOG_PATH=${LOG_PATH}"
+        } >> "$GITHUB_ENV"
+
         nohup birdy daemon --addr "127.0.0.1:${DAEMON_PORT}" --concurrency "${DAEMON_CONC}" --cache-ttl "${DAEMON_TTL}" \
-          > /tmp/birdy-daemon.log 2>&1 &
-        echo $! > /tmp/birdy-daemon.pid
+          > "$LOG_PATH" 2>&1 &
+        echo $! > "$PID_PATH"
 
         for attempt in 1 2 3 4 5 6 7 8 9 10; do
           sleep 1
-          if curl -fsS "http://127.0.0.1:${DAEMON_PORT}/health" 2>/dev/null | grep -q '"ok":true'; then
-            echo "birdy daemon up: $(curl -sS http://127.0.0.1:${DAEMON_PORT}/health)"
+          if curl -fsS "${DAEMON_URL}/health" 2>/dev/null | grep -q '"ok":true'; then
+            echo "birdy daemon up: $(curl -sS "${DAEMON_URL}/health")"
             exit 0
           fi
           echo "Waiting for birdy daemon, attempt ${attempt}/10"
         done
         echo "birdy daemon did not become healthy in 10s:"
-        cat /tmp/birdy-daemon.log
+        cat "$LOG_PATH"
         exit 1
 
     - name: Install bird-fast wrapper (calls daemon)
       shell: bash
-      env:
-        DAEMON_PORT: ${{ inputs.port }}
       run: |
         # bird-fast: a drop-in shim that takes the same args as `bird` but
         # forwards them to the local daemon's POST /run endpoint. Same JSON
         # output on stdout. Lets the LLM keep its existing mental model
         # ("bird search ...") while paying daemon-speed latency.
+        set -euo pipefail
+
+        DEFAULT_DAEMON_URL="${BIRDY_DAEMON_URL:?BIRDY_DAEMON_URL was not exported by the daemon start step}"
         INSTALL_DIR="$HOME/.local/bin"
         mkdir -p "$INSTALL_DIR"
         WRAPPER_PATH="$INSTALL_DIR/bird-fast"
         cat > "$WRAPPER_PATH" <<WRAPPER
         #!/bin/bash
         set -e
-        DAEMON_URL="\${BIRDY_DAEMON_URL:-http://127.0.0.1:${DAEMON_PORT}}"
+        DAEMON_URL="\${BIRDY_DAEMON_URL:-${DEFAULT_DAEMON_URL}}"
         PAYLOAD=\$(printf '%s\n' "\$@" | jq -Rs '{args: split("\n") | map(select(length > 0))}')
         RESP=\$(curl -sS -X POST "\${DAEMON_URL}/run" \\
           -H "Content-Type: application/json" \\

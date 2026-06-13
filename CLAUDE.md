@@ -400,11 +400,11 @@ output or break the pipeline. Read them before editing.
 ## Component catalog
 
 The article-fragment class allowlist lives in **`ARA_CATALOG.json`**
-(73 base `ara-*` classes). The validator
+(currently 87 base `ara-*` classes). The validator
 (`scripts/check_generative_research.py` → `write_generative_research.py`
 → `ara_catalog.load_catalog`/`catalog_classes`) loads its allowlist from
 that file, NOT from `COMPONENTS.md`. `COMPONENTS.md` is the human
-reference and documents the **same 73** classes;
+reference and documents the **same cataloged base classes**;
 `scripts/ara_catalog.py` (`validate_catalog_against_components`) asserts
 the two stay in perfect lockstep and CI enforces it via
 `test_ara_dsl.py`. To add a new primitive, add it to BOTH files in the
@@ -416,11 +416,12 @@ allowlist. The extra classes are NOT drift and are NOT a commit-time
 rejection risk — they belong to layers that live outside the
 article-fragment contract on purpose:
 
-- `dashboard/src/components/ara-research.css` defines ~98 base `ara-*`
-  classes total: the 73 cataloged article primitives (`ara-doc`,
+- `dashboard/src/components/ara-research.css` defines more `ara-*`
+  classes than the catalog: the cataloged article primitives (`ara-doc`,
   `ara-callout`, `ara-figure`, …) that DO appear in `.ara.md` and ARE the
-  allowlist, **plus** ~25 **runtime/interactive extras** — table-of-
-  contents, figure lightbox, chart tooltips/axes/series (e.g.
+  allowlist, **plus** **runtime/interactive extras** — table-of-
+  contents, figure lightbox, chart tooltips/axes/series, generated chart
+  internals (e.g.
   `ara-chart-series-*`, built at `main.ts` ~line 3311) — injected by
   `dashboard/src/main.ts` at runtime. The runtime extras never appear in
   `.ara.md` source, so they don't need to be in the allowlist.

@@ -446,8 +446,16 @@ jobs:
       - name: Stop birdy daemon
         if: always() && steps.const.outputs.enable_daemon == 'true'
         run: |
-          if [ -f /tmp/birdy-daemon.pid ]; then
-            PID=$(cat /tmp/birdy-daemon.pid)
+          if [ -z "${BIRDY_DAEMON_PID_PATH:-}" ]; then
+            echo "No birdy daemon state exported; nothing to stop."
+            exit 0
+          fi
+
+          PID_PATH="$BIRDY_DAEMON_PID_PATH"
+          LOG_PATH="${BIRDY_DAEMON_LOG_PATH:-}"
+
+          if [ -f "$PID_PATH" ]; then
+            PID=$(cat "$PID_PATH")
             if kill -0 "$PID" 2>/dev/null; then
               echo "Stopping daemon PID $PID..."
               kill -TERM "$PID" 2>/dev/null || true
@@ -458,11 +466,11 @@ jobs:
               done
               kill -KILL "$PID" 2>/dev/null || true
             fi
-            rm -f /tmp/birdy-daemon.pid
+            rm -f "$PID_PATH"
           fi
-          if [ -f /tmp/birdy-daemon.log ]; then
+          if [ -n "$LOG_PATH" ] && [ -f "$LOG_PATH" ]; then
             echo "--- daemon log (last 20 lines) ---"
-            tail -20 /tmp/birdy-daemon.log
+            tail -20 "$LOG_PATH"
           fi
 
       # ── claude-tier dry-run fixture (skips push) ───────────────────
