@@ -9,7 +9,7 @@ dependencies = [
 
 [project.optional-dependencies]
 stock = [
-    "yfinance==1.3.0",
+    "yfinance==1.4.1",
 ]
 
 [tool.uv]
