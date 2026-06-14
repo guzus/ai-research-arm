@@ -18,16 +18,20 @@ labels:
   - codex
   - agents
   - infrastructure
-verification: partial
+verification: confirmed
 sources:
   - "@OpenAI"
+  - https://openai.com/index/openai-to-acquire-ona
+  - "@sama"
 created_at: 2026-06-12
-updated_at: 2026-06-12
+updated_at: 2026-06-14
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-12
     change: "Created — OpenAI announced (2026-06-11) it will acquire Ona to give Codex secure, persistent cloud environments for long-running enterprise agents. Extends the Codex platform ([[openai-codex-platform-2026-05]]) from interactive coding into durable, stateful agent infrastructure. Terms undisclosed in-window. Announced acquisition → status confirmed; no captured primary URL/terms → verification partial"
+  - ts: 2026-06-14
+    change: "Update — verification partial → confirmed. OpenAI's own newsroom page (openai.com/index/openai-to-acquire-ona) is now the captured primary source ('OpenAI plans to acquire Ona to expand Codex with secure, persistent cloud environments, enabling long-running AI agents across enterprise workflows'), and @sama publicly welcomed the team. Status stays confirmed; terms still undisclosed so close/price to be UPDATEd when they land"
 ---
 
 **OpenAI announced on 2026-06-11 that it will acquire Ona**, a deal aimed at

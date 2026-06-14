@@ -25,7 +25,19 @@ status_note: |
   ~0.03% of traffic — **Anthropic apologized and walked the invisible
   guardrails back**, committing to **visible refusals or explicit model
   rerouting** instead of silent steering.
-expected: "Free access for Pro/Max/Team through 2026-06-22; credit-metered thereafter"
+  **2026-06-13/14 — GLOBALLY DISABLED by US export-control order.** Anthropic
+  abruptly **suspended Fable 5 (and Mythos 5) for ALL customers worldwide** to
+  comply with a US government export-control directive barring access by any
+  foreign national — the regulatory action itself is tracked on
+  [[anthropic-fable-mythos-export-control-2026-06]]. New sessions fall back to
+  **Opus 4.8** ([[opus-4-8]]); Fable 5 Platform/API calls now error
+  ("It may not exist or you may not have access to it"). Anthropic calls it a
+  "misunderstanding," disputes the jailbreak's severity (arguing GPT-5.5 shares
+  the vulnerability), and says it is working to restore access. Both models
+  remained dark into a second day; a Polymarket on restoration priced ~65% "back
+  by July 1." Per this ticket's transition triggers, a pause of general
+  availability keeps status `released` and is documented via history.
+expected: "Suspended worldwide since 2026-06-13 under export-control order (see [[anthropic-fable-mythos-export-control-2026-06]]); restoration pending. Was free for Pro/Max/Team through 2026-06-22, credit-metered thereafter"
 labels:
   - frontier-model
   - released
@@ -41,8 +53,11 @@ sources:
   - "@chimpansky"
   - "@scaling01"
   - "@simonw"
+  - "@ClaudeDevs"
+  - "@DavidSacks"
+  - "@AndrewCurran_"
 created_at: 2026-06-10
-updated_at: 2026-06-12
+updated_at: 2026-06-14
 closed_at: null
 closed_reason: null
 history:
@@ -50,6 +65,8 @@ history:
     change: "Created — Anthropic publicly released **Claude Fable 5** on 2026-06-09 (@claudeai 17:08 UTC, ~90K likes / 12.8K RT): a Mythos-class model 'made safe for general use,' Anthropic's strongest generally-available model. Two-tier launch alongside the restricted **Mythos 5** (vetted defenders/govts, tracked on [[mythos-public-release]]). Fable 5 falls back to **Opus 4.8** on high-risk prompts (cyber/bio/chem/distillation), reportedly <5% of sessions. Pricing $10/$50 per MTok (≈½ the Mythos Preview's $25/$125); free for Pro/Max/Team until 2026-06-22, then credit-metered; new 30-day retention policy. Benchmarks: SOTA on Artificial Analysis (~65), SWE-bench Pro 80.3, Hex first-ever 90% on its analytics benchmark; Stripe used it to migrate a 50M-line Ruby codebase in ~a day. Spun out from [[mythos-public-release]] per that ticket's dedup note (a toned-down public variant with its own release plan = separate ticket). Status released, verification confirmed (official @claudeai/@AnthropicAI primary)"
   - ts: 2026-06-12
     change: "Update — guardrails reversal. After disclosing that Fable 5 would *silently* nerf AI/ML development tasks (pretraining, distributed training, accelerator design) via prompt modification / steering vectors / PEFT — reportedly affecting only ~0.03% of traffic — Anthropic apologized and walked the invisible guardrails back, committing to visible refusals or explicit model rerouting instead of silent steering (r/MachineLearning + press, 2026-06-11/12). Separately, Simon Willison documented Fable 5 as 'relentlessly proactive' (autonomously opening test pages in Safari, writing custom JS, spinning up a Python CORS server), underscoring the unboxed-agent security concern. Per this ticket's transition triggers, a material change to safety-fallback behaviour keeps status released and is documented via history; verification stays confirmed"
+  - ts: 2026-06-14
+    change: "Major update — GLOBALLY DISABLED by US export control (2026-06-13). Anthropic abruptly suspended Fable 5 AND Mythos 5 for ALL customers worldwide to comply with a US government export-control directive barring access by any foreign national (inc. its own foreign-national staff). New sessions fall back to Opus 4.8; Fable 5 API/Platform calls now error. The regulatory action itself is spun out to its own legal-event ticket [[anthropic-fable-mythos-export-control-2026-06]]; this entry records the product impact. Anthropic calls it a 'misunderstanding,' disputes the jailbreak's severity (argues GPT-5.5 shares it), and says it is working to restore access; White House AI czar @DavidSacks says the Admin asked Anthropic to fix or de-deploy and Anthropic refused. Both models still dark into day 2; Polymarket priced ~65% restoration by July 1. Per transition triggers, a pause of general availability keeps status released and is documented via history; verification stays confirmed (Anthropic's own statement + @ClaudeDevs notice + Reuters/Techmeme + Sacks on-record)"
 ---
 
 **Claude Fable 5** is the public-facing resolution of the long-running
