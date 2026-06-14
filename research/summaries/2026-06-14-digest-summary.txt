@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-14
+
+TOP STORIES:
+• Anthropic export ban goes on-record: Sacks says Amodei refused to fix Fable 5 jailbreak; Anthropic blog calls it a "misunderstanding" — both models still dark
+• ~42-state AG coalition (NY-led) subpoenas OpenAI over ads, retention, health data, minors & model sycophancy
+• GLM 5.2 ships (1M context, MIT weights next week, beats Qwen 3.6 27B); Kimi K2.7-Code undercuts frontier by up to 12x
+
+KEY NUMBERS:
+• SpaceX IPO: ~$75B raised, ~$1.75T valuation — largest US IPO ever
+• Mistral: ~€3B raise talks at ~€20B (nearly 2x its 2025 mark)
+• Only ~19% of orgs use Claude extensively (IDC) — behind OpenAI & Google
+
+TRENDING: "Open source AI must win" (1,480 pts on HN) — local-model backlash to the Fable 5 shutdown
+
+Full digest on GitHub.
