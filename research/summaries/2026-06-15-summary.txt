@@ -1,0 +1,13 @@
+AI News - 2026-06-15
+
+TOP STORIES:
+• David Sacks: Anthropic "refused" to patch a known Fable 5 jailbreak before US export controls hit — "the ball is in Anthropic's court"
+• Semafor exclusive: export limits tied to suspected China-linked access to Mythos 5 (Anthropic disputes this was ever raised)
+• Fable 5 & Mythos 5 still completely offline as of June 15, no restoration date; Anthropic had ~90 min to comply
+
+KEY NUMBERS:
+• ~90-minute compliance deadline before models pulled
+• 0 net-new frontier launches / dated megarounds this window
+• Anthropic IPO target window: October 2026 (now clouded)
+
+Full report on GitHub.
