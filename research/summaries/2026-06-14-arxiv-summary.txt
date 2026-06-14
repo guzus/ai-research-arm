@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-14
+
+TOP 5 PAPERS:
+• MaxProof (MiniMax-M3): generative-verifier RL + population test-time search beats human gold on IMO 2025 (35/42) & USAMO 2026 (36/42)
+• HYDRA-X: first single-ViT tokenizer unifying image + video for native multimodal models
+• Commitment Boundary: reasoning models lock in answers early; early-exit cuts CoT length up to 55% with no accuracy loss
+• RA-RFT: reasoning-by-analogy retrieval + RL fine-tuning lifts AIME 2025 by +7.1 pts over GRPO
+• SpikeDecoder: fully spiking GPT-style decoder for NLP, 87-93% less theoretical energy
+
+CATEGORIES: cs.AI/cs.LG (reasoning, scaling, efficiency), cs.CL (agents, RAG), cs.CV (unified multimodal, world-action models), cs.NE (spiking nets)
+
+Full report on GitHub.
