@@ -1,0 +1,9 @@
+Speaker 1: Saturday, June fourteenth, twenty twenty-six.
+Speaker 2: [high_energy] The top story: Anthropic is in a public dispute over Fable five — David Sacks says the model had an unfixed jailbreak, Anthropic calls it a misunderstanding, and both models are still dark.
+Speaker 1: Compounding that: a coalition of roughly forty-two state attorneys general, led by New York, has subpoenaed OpenAI — covering ads, user retention, health data, minors, and model sycophancy.
+Speaker 2: On the open source side, GLM five point two just shipped with a one million token context window, MIT weights coming next week, edging out Qwen three point six's twenty-seven billion parameter model. And Kimi K two point seven Code is undercutting frontier pricing by up to twelve times.
+Speaker 1: Some quick numbers. SpaceX priced its IPO at a [emphasis] one-point-seven-five trillion dollar [/emphasis] valuation — seventy-five billion dollars raised, making it the largest US IPO on record.
+Speaker 2: And Mistral is in talks to raise [emphasis] three billion euros [/emphasis] at a twenty billion euro valuation — nearly twice its twenty twenty-five mark.
+Speaker 1: Worth noting: IDC found only nineteen percent of organizations use Claude extensively, trailing both OpenAI and Google.
+Speaker 2: [dramatic_pause] Which may explain why the top post on Hacker News right now — fourteen hundred eighty points — is titled "Open source AI must win."
+Speaker 1: That's your ARA broadcast — full digest on GitHub.
