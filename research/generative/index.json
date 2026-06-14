@@ -612,5 +612,17 @@
       "regulatory",
       "policy"
     ]
+  },
+  {
+    "slug": "openai-42-state-ag-subpoena",
+    "file": "2026-06-14T221424--openai-42-state-ag-subpoena.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The 42-State Play: How State Consumer-Protection Enforcement Became AI's Real Regulatory Front — and Why It Threatens OpenAI's Trillion-Dollar IPO",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-06-14T22:14:24Z",
+    "source": "workflow_dispatch",
+    "prompt": "OpenAI's 42-state AG subpoena: how state consumer-protection enforcement became AI's real regulatory front ahead of its IPO",
+    "tags": []
   }
 ]

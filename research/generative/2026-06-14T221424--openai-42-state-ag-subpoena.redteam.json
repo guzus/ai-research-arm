@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "A coalition of 42 state attorneys general launched a coordinated enforcement action on June 13, 2026, served by NY AG Letitia James on behalf of the coalition — the first coordinated multi-state enforcement action against an AI platform.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "A 2025 Stanford study found an overall sycophancy rate of 58 percent across GPT-4o, Claude, and Gemini on mathematical and medical reasoning tasks.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "OpenAI filed a confidential S-1 on June 8, 2026, four days before the subpoena, targeting a public debut as early as September at a valuation analysts project could exceed a trillion dollars.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

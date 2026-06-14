@@ -1,0 +1,64 @@
+{
+  "claims": [
+    {
+      "id": "v1",
+      "text": "On Friday, June 13, a coalition of 42 state attorneys general launched what the National Association of Attorneys General has called the first coordinated multi-state enforcement action against any AI platform.",
+      "verdict": "supported",
+      "citation": "https://www.techtimes.com/articles/318351/20260614/chatgpt-faces-42-state-probe-sycophancy-design-flaw-named-subpoena.htm"
+    },
+    {
+      "id": "v2",
+      "text": "A 2025 Stanford study measuring sycophancy rates across three leading models — GPT-4o, Claude, and Gemini — on mathematical and medical reasoning tasks found an overall sycophancy rate of 58%.",
+      "verdict": "supported",
+      "citation": "https://www.techtimes.com/articles/318351/20260614/chatgpt-faces-42-state-probe-sycophancy-design-flaw-named-subpoena.htm"
+    },
+    {
+      "id": "v3",
+      "text": "On June 1, 2026 — 12 days before the 42-state subpoena — Florida Attorney General James Uthmeier filed an 83-page civil complaint against OpenAI and, notably, against Sam Altman personally.",
+      "verdict": "supported",
+      "citation": "https://www.techtimes.com/articles/318351/20260614/chatgpt-faces-42-state-probe-sycophancy-design-flaw-named-subpoena.htm"
+    },
+    {
+      "id": "v4",
+      "text": "OpenAI reported $13.1 billion in revenue in 2025, up from $3.7 billion in 2024 — roughly 3.5× growth.",
+      "verdict": "supported",
+      "citation": "https://en.wikipedia.org/wiki/OpenAI"
+    },
+    {
+      "id": "v5",
+      "text": "The company lost an estimated $9 billion in 2025, meaning it spends roughly $1.70 for every dollar it earns.",
+      "verdict": "supported",
+      "citation": "https://en.wikipedia.org/wiki/OpenAI"
+    },
+    {
+      "id": "v6",
+      "text": "The SEC subpoenaed Altman's communications in February 2024 regarding candor to investors.",
+      "verdict": "supported",
+      "citation": "https://en.wikipedia.org/wiki/OpenAI"
+    },
+    {
+      "id": "v7",
+      "text": "OpenAI staff had flagged the shooter's account for suspicious activity in June 2025 — eight months before the shooting — but company leadership had decided not to notify law enforcement.",
+      "verdict": "supported",
+      "citation": "https://www.techtimes.com/articles/318351/20260614/chatgpt-faces-42-state-probe-sycophancy-design-flaw-named-subpoena.htm"
+    },
+    {
+      "id": "v8",
+      "text": "Independent research from October 2025 found that ChatGPT-5 produced harmful responses on prompts about self-harm in 53 percent of tests.",
+      "verdict": "supported",
+      "citation": "https://www.techtimes.com/articles/318351/20260614/chatgpt-faces-42-state-probe-sycophancy-design-flaw-named-subpoena.htm"
+    },
+    {
+      "id": "v9",
+      "text": "On June 4, 2026, a bipartisan discussion draft circulated proposing a three-year freeze on state laws targeting AI model development.",
+      "verdict": "supported",
+      "citation": "https://www.techtimes.com/articles/318351/20260614/chatgpt-faces-42-state-probe-sycophancy-design-flaw-named-subpoena.htm"
+    },
+    {
+      "id": "v10",
+      "text": "OpenAI closed a $122 billion funding round in February-April 2026 at an $852 billion post-money valuation.",
+      "verdict": "supported",
+      "citation": "https://en.wikipedia.org/wiki/OpenAI"
+    }
+  ]
+}
