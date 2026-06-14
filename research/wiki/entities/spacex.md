@@ -6,8 +6,9 @@ aliases: [SpaceX, "@SpaceX", SPCX, "Space Exploration Technologies", Starlink]
 tags: [ipo, capital-markets, ai-infrastructure, space, public-listing]
 summary: "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side."
 created_at: 2026-06-05
-updated_at: 2026-06-12
+updated_at: 2026-06-14
 sources:
+  - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
@@ -61,6 +62,16 @@ frontier labs (the Anthropic–SpaceX "Colossus" datacenter arrangement).
   **SpaceX/[[xai]]** complex — Colossus, the Grok model family, the federal Grok
   contract — on a daily public tape by proxy for the first time, the public-markets
   anchor of the [[ai-capex]] issuance wave (ARA digest 2026-06-12).
+
+- **The IPO completes — largest on record (2026-06-14).** SPCX **priced at
+  $135/share, opened ~$150, touched ~$176 intraday, and closed ~$161**: **~$75B
+  raised at a ~$1.75T valuation, the largest US IPO on record** (some headlines
+  rounded to $2T+ on the intraday pop). The completed listing anchors the
+  **"AI IPO summer" frame** the digest now uses for the cycle — alongside
+  **Mistral in talks to raise ~€3B at ~€20B** (nearly doubling its 2025 mark) and
+  **Shenzhen humanoid maker EngineAI filing confidentially for a Hong Kong
+  listing** — extending the public-markets capital-formation read across the
+  [[ai-capex]] supercycle (ARA digest 2026-06-14).
 
 ## Open questions
 

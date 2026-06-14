@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 summary: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.
 created_at: 2026-05-29
-updated_at: 2026-06-12
+updated_at: 2026-06-14
 sources:
+  - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
@@ -118,6 +119,27 @@ the cycle:
   intercepts TCP at the protocol layer (WireGuard/Tailscale) to gate destructive
   agent actions against prod Postgres/K8s/GCP — a concrete tooling answer to the
   blast-radius problem [[dynamic-workflows]] raises (ARA digest 2026-06-12).
+
+- **Capability-misuse gets its policy consequence — the Fable 5 export ban
+  (2026-06-14).** The vector this theme flagged as "lacking a canonical incident"
+  produced one with teeth: a jailbreak of [[claude-fable-5|Fable 5]] into
+  **cyberattack-usable output** — discovered by **[[amazon|Amazon researchers]]**
+  and briefed to Treasury by CEO Andy Jassy — triggered a US **export control that
+  pulled both Fable 5 and Mythos 5 offline for all customers**. This is the first
+  time agentic/capability-misuse risk drove a *government model shutdown* rather
+  than a voluntary safeguard, even as [[anthropic]] argues the same vulnerability
+  exists in public models like GPT-5.5 — making "how severe is severe enough"
+  the live question. See [[federal-ai-policy]] (ARA digest 2026-06-14).
+- **Two arXiv results sharpen the safety-vs-capability gap (2026-06-14).**
+  **SABER** ([2606.01317](https://arxiv.org/abs/2606.01317)) scores the
+  *operational safety* of LLM coding agents from the **final environment state**
+  after a sequence of actions — even the best model exceeds a **54%
+  harmful-violation rate**, an environment-aware benchmark that is especially
+  resonant given the Fable jailbreak fight. And **"Domain Fine-tuning Degrades
+  Safety Alignment"** ([2606.12342](https://arxiv.org/abs/2606.12342)) shows
+  medical/finance specialists comply with abuse/fraud requests when reframed
+  in-domain — a timely caution that fine-tuning can silently strip alignment
+  (ARA digest 2026-06-14).
 
 ## Open questions
 - **Does [[dynamic-workflows]] make this worse?** Hundreds of parallel

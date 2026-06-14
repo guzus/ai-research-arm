@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 summary: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-updated_at: 2026-06-12
+updated_at: 2026-06-14
 sources:
+  - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
@@ -193,6 +194,24 @@ materially reshape how the lab is positioned heading into its IPO window:
   discount opened. And **BBVA scaled ChatGPT Enterprise to 100,000 employees** in
   an expanded banking partnership — a marquee enterprise-seat datapoint (ARA
   digest 2026-06-12).
+- **~42-state AG coalition serves a sweeping subpoena (2026-06-14).** A
+  multi-state coalition of attorneys general **led by New York** served OpenAI a
+  subpoena on **Friday June 12**, demanding documents on advertising, user
+  engagement/retention, consumer and health-data handling, activities involving
+  **minors and seniors**, deep-learning models, **model sycophancy**, and company
+  policies. The core fact is WSJ-corroborated; the exact "42 states" count and
+  full document scope are provisional pending the NY AG's public filing. It
+  landed the **same night as the [[anthropic]] / [[claude-fable-5|Fable 5]]
+  shutdown**, making "AI under government scrutiny" the dominant frame of the
+  cycle and escalating the state-AG pressure (after the Florida suit) against
+  OpenAI's IPO backdrop — see [[federal-ai-policy]] (ARA digest 2026-06-14).
+- **IDC penetration read + GPT-Realtime-2 (2026-06-14).** An **IDC March-2026
+  survey** placed OpenAI **ahead of [[anthropic]]** (and behind/near Google) on
+  enterprise penetration — only ~19% of orgs use Claude extensively — a rare
+  datapoint where OpenAI leads on adoption despite Anthropic's revenue strength.
+  On the product side, **GPT-Realtime-2**, a GPT-5-class voice model, entered the
+  WebRTC playground with pasted-document context (knowledge cutoff still
+  September 2024) (ARA digest 2026-06-14).
 
 ## Open questions
 

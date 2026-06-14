@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 summary: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.
 created_at: 2026-06-10
-updated_at: 2026-06-12
+updated_at: 2026-06-14
 sources:
+  - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA model ticket — Claude Mythos public release", path: research/models/tickets/mythos-public-release.md}
@@ -88,6 +89,23 @@ every feed on launch day.
   templates — "demonstrating both the remarkable problem-solving capabilities and
   the security concerns of unboxed coding agents" — the day's Quote of the Day
   (ARA digest 2026-06-12).
+- **Both models pulled offline by US export control (2026-06-14).** The friction
+  strands became moot: **both Fable 5 and Mythos 5 are offline for all
+  customers** ~36h+ after a US export-control order, with no restoration as of
+  June 14. Per WSJ/Axios, **[[amazon|Amazon CEO Andy Jassy]]** told Treasury that
+  **Amazon researchers had jailbroken Fable 5** into cyberattack-usable output;
+  [[federal-ai-policy|White House AI czar David Sacks]] says the administration
+  asked [[anthropic|Dario Amodei]] to fix or de-deploy and he refused, so the
+  control issued. The ban covers **every foreign national** — including
+  foreign-national Anthropic staff who built the models. Pre-shutdown reporting
+  had credited **Fable 5 with 88% on FrontierMath's hardest tier** (13 points
+  ahead of GPT-5.5), underscoring what is now dark. **Skeptic's corner:** a viral
+  "3.4TB Fable 5 torrent on Pirate Bay" claim is circulating with no magnet
+  link/hash — the textbook shape of a post-ban "weights leaked" hoax; treat it
+  and an unverified "Anthropic confidentially filed a $300B+ IPO" claim as
+  unconfirmed. The shutdown fueled an **[[open-weights|open-weights backlash]]**
+  ("APIs are rented, local weights are forever") — see [[agentic-ai-security]]
+  (ARA digest 2026-06-14).
 
 ## Open questions
 

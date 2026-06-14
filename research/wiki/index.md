@@ -7,6 +7,7 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Entities
 
+- [[amazon]] — Hyperscaler and Anthropic's largest investor; per WSJ/Axios, CEO Andy Jassy's Treasury briefing triggered the June 2026 Fable 5 / Mythos 5 export crackdown.
 - [[anthropic]] — AI safety lab behind the Claude family; closed a $65B Series H at $965B post-money on 2026-05-29.
 - [[apple]] — Consumer-hardware giant whose Siri rebuild — reportedly a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (June 8).
 - [[claude-fable-5]] — Anthropic's first public Mythos-class model (2026-06-09): one frontier model as two products — safeguarded GA Fable 5 (reroutes high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5.
@@ -43,3 +44,4 @@ Each page is one of three types — entity, concept, or theme. See
 - [[ai-capex]] — The historically large compute buildout and the bubble debate.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator on the consumer-facing axis; ~30-bill package cleared the May 29 crossover.
 - [[federal-ai-policy]] — US federal AI governance; Trump's June 2 EO mandates 30-day government pre-release access to frontier models for cybersecurity review.
+- [[open-weights]] — Open-weight models closing on the frontier amid a decentralization backlash, surging on the Fable 5 government shutdown ("APIs are rented, local weights are forever").

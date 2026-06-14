@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 summary: The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.
 created_at: 2026-06-03
-updated_at: 2026-06-08
+updated_at: 2026-06-14
 sources:
+  - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
@@ -107,6 +108,34 @@ footing for the first time in the cycle.
   **June 30**; and China CAC anthropomorphic-interaction measures effective
   **July 15** — the multi-jurisdiction compliance calendar the frontier-lab IPO
   window must clear (ARA digest 2026-06-08).
+
+- **The export-control fight goes on-record (2026-06-14).** The June 2026
+  Commerce export control on [[anthropic]]'s [[claude-fable-5|Fable 5 / Mythos 5]]
+  hardened from anonymous sourcing into a public standoff. AI czar **David Sacks**
+  posted a detailed on-record account: a trusted partner jailbroke the model, the
+  administration asked **Dario Amodei** to fix or de-deploy, **he refused**, and
+  the export control issued with presidential sign-off — *"the ball is in
+  Anthropic's court."* Anthropic's blog calls it a **"misunderstanding."** Per
+  WSJ/Axios the trigger was **[[amazon|Amazon CEO Andy Jassy]]** briefing Treasury
+  that Amazon researchers jailbroke Fable 5. Crucially, *The Information* reports
+  the action is **unlikely to extend to other frontier labs** — narrowing the
+  precedent to **Anthropic-specific enforcement** rather than a blanket
+  frontier-AI export regime, a categorically new use of export controls against a
+  *domestic* model (ARA digest 2026-06-14). See [[agentic-ai-security]].
+- **~42-state AG coalition subpoenas [[openai]] (2026-06-14).** A multi-state
+  coalition **led by New York** served OpenAI a sweeping subpoena on **June 12**
+  covering advertising, retention, health data, minors/seniors, and **model
+  sycophancy** — landing the same night as the Anthropic shutdown. The core fact
+  is WSJ-corroborated; the "42 states" count is provisional. State-AG pressure
+  (after Florida's suit) and the federal export action now apply to **two labs at
+  once** (ARA digest 2026-06-14).
+- **Regulatory clock (carries, 2026-06-14).** White House "Promoting Advanced AI
+  Innovation and Security" EO deliverables due **July 2 / Aug 1**; **EU AI Act**
+  GPAI + transparency obligations binding **Aug 2, 2026**; **Colorado AI Act**
+  effective **June 30**; **China CAC** anthropomorphic-interaction measures
+  effective **July 15**. The US also **banned differential privacy in Census
+  data** — a live policy decision with direct ML/fairness implications (ARA digest
+  2026-06-14).
 
 ## Open questions
 

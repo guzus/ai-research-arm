@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 summary: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-updated_at: 2026-06-12
+updated_at: 2026-06-14
 sources:
+  - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
@@ -197,6 +198,36 @@ Four developments through May 2026 put Anthropic at the center of the field:
   **weighing API token price cuts to win Anthropic customers** — turning the
   ~70%-cheaper pricing gap Fable 5 opened into a two-way price war (ARA digest
   2026-06-12).
+
+- **The export-control saga goes fully on-record — and Amazon triggered it
+  (2026-06-14).** What began as anonymous "people familiar" sourcing hardened
+  into a public standoff. **White House AI czar David Sacks** posted a detailed
+  on-record account: a "highly credible trusted partner" jailbroke
+  [[claude-fable-5|Fable 5]]'s guardrails, the administration asked **Dario
+  Amodei** to fix or de-deploy the model, **he refused**, and the administration
+  issued an export control — *"the ball is in Anthropic's court."* Anthropic's own
+  blog calls the order a **"misunderstanding,"** minimizes the jailbreak's
+  severity, and (per critics quoting it) concedes the **same vulnerability exists
+  in public models like GPT-5.5** — making the singling-out of Fable look
+  selective. The trigger was its **own largest investor**: per WSJ/Axios,
+  **[[amazon|Amazon CEO Andy Jassy]]** told Treasury Secretary Scott Bessent that
+  **Amazon researchers had jailbroken Fable 5** into cyberattack-usable output.
+  The order bars *every foreign national* — including foreign-national Anthropic
+  employees who *built* the models — from Fable 5 / Mythos 5; [[claude-opus-4-8|Opus
+  4.8]] and other models are unaffected. **Both models remain dark 36h+ later**
+  with no on-record Amodei rebuttal to the "refused to fix" claim. *The
+  Information* reports the Commerce action is **unlikely to extend to other
+  frontier labs**, narrowing it to Anthropic-specific enforcement — see
+  [[federal-ai-policy]] and [[agentic-ai-security]] (ARA digest 2026-06-14).
+- **Enterprise-penetration soft spot + a transparency walk-back (2026-06-14).** An
+  **IDC March-2026 survey** found only **~19% of orgs use Claude extensively**
+  (~25% evaluating) — **behind [[openai]] and Google** on penetration despite
+  Anthropic's revenue strength, a rare datapoint cutting against the
+  $47B-run-rate narrative. Separately, Anthropic **walked back its policy of
+  silently substituting a weaker model for AI/ML-development tasks** and will now
+  **notify users** when a weaker model is used — the second transparency retreat
+  in days after the [[claude-fable-5|Fable 5]] covert-throttle reversal (ARA
+  digest 2026-06-14).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

@@ -45,7 +45,7 @@
       ],
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-06-12",
+      "updated_at": "2026-06-14",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -54,6 +54,7 @@
         "agentic supply-chain"
       ],
       "outbound": [
+        "amazon",
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
@@ -64,6 +65,7 @@
         "openai"
       ],
       "inbound": [
+        "amazon",
         "anthropic",
         "claude-fable-5",
         "cognition-ai",
@@ -114,6 +116,7 @@
         "xai"
       ],
       "inbound": [
+        "amazon",
         "anthropic",
         "apple",
         "artificial-general-engineer",
@@ -139,6 +142,42 @@
       ]
     },
     {
+      "slug": "amazon",
+      "title": "Amazon",
+      "type": "entity",
+      "tags": [
+        "hyperscaler",
+        "cloud",
+        "investor",
+        "ai-infrastructure",
+        "bedrock"
+      ],
+      "summary": "Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.",
+      "created_at": "2026-06-14",
+      "updated_at": "2026-06-14",
+      "file": "entities/amazon.md",
+      "aliases": [
+        "Amazon",
+        "Amazon.com",
+        "AWS",
+        "Amazon Web Services",
+        "Andy Jassy"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "ai-capex",
+        "anthropic",
+        "claude-fable-5",
+        "federal-ai-policy"
+      ],
+      "inbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "claude-fable-5",
+        "federal-ai-policy"
+      ]
+    },
+    {
       "slug": "anthropic",
       "title": "Anthropic",
       "type": "entity",
@@ -150,7 +189,7 @@
       ],
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-12",
+      "updated_at": "2026-06-14",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -161,6 +200,7 @@
         "agent-lifespan-engineering",
         "agentic-ai-security",
         "ai-capex",
+        "amazon",
         "california-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
@@ -178,6 +218,7 @@
         "agent-lifespan-engineering",
         "agentic-ai-security",
         "ai-capex",
+        "amazon",
         "apple",
         "california-ai-regulation",
         "claude-fable-5",
@@ -189,6 +230,7 @@
         "gemini-3-5-flash",
         "gemini-spark",
         "minimax-m3",
+        "open-weights",
         "openai",
         "openrouter",
         "prometheus",
@@ -313,7 +355,7 @@
       ],
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-06-12",
+      "updated_at": "2026-06-14",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -326,17 +368,23 @@
       ],
       "outbound": [
         "agentic-ai-security",
+        "amazon",
         "anthropic",
         "claude-opus-4-8",
+        "federal-ai-policy",
         "gemini-3-5-flash",
+        "open-weights",
         "openai"
       ],
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
+        "amazon",
         "anthropic",
         "claude-opus-4-8",
+        "federal-ai-policy",
         "gemini-3-5-flash",
+        "open-weights",
         "openai"
       ]
     },
@@ -473,6 +521,7 @@
         "ai-capex",
         "gemma-4",
         "minimax-m3",
+        "open-weights",
         "prometheus",
         "spacex"
       ]
@@ -558,7 +607,7 @@
       ],
       "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-08",
+      "updated_at": "2026-06-14",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -571,16 +620,20 @@
       "outbound": [
         "agentic-ai-security",
         "ai-capex",
+        "amazon",
         "anthropic",
         "california-ai-regulation",
+        "claude-fable-5",
         "openai"
       ],
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
+        "amazon",
         "anthropic",
         "apple",
         "california-ai-regulation",
+        "claude-fable-5",
         "openai"
       ]
     },
@@ -716,7 +769,8 @@
       "inbound": [
         "deepseek",
         "minimax-m3",
-        "nvidia"
+        "nvidia",
+        "open-weights"
       ]
     },
     {
@@ -819,7 +873,8 @@
       "inbound": [
         "deepseek",
         "gemma-4",
-        "microsoft"
+        "microsoft",
+        "open-weights"
       ]
     },
     {
@@ -927,7 +982,44 @@
       "inbound": [
         "ai-capex",
         "apple",
-        "gemma-4"
+        "gemma-4",
+        "open-weights"
+      ]
+    },
+    {
+      "slug": "open-weights",
+      "title": "The Open-Weights Wave",
+      "type": "theme",
+      "tags": [
+        "open-weights",
+        "open-source",
+        "local-llm",
+        "china",
+        "decentralization"
+      ],
+      "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
+      "created_at": "2026-06-14",
+      "updated_at": "2026-06-14",
+      "file": "themes/open-weights.md",
+      "aliases": [
+        "open weights",
+        "open-weights",
+        "open source AI",
+        "open-source AI",
+        "open weights wave",
+        "local weights"
+      ],
+      "outbound": [
+        "anthropic",
+        "claude-fable-5",
+        "deepseek",
+        "gemma-4",
+        "minimax-m3",
+        "nvidia",
+        "openai"
+      ],
+      "inbound": [
+        "claude-fable-5"
       ]
     },
     {
@@ -942,7 +1034,7 @@
       ],
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-12",
+      "updated_at": "2026-06-14",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -971,6 +1063,7 @@
         "federal-ai-policy",
         "figure-ai",
         "microsoft",
+        "open-weights",
         "openrouter",
         "prometheus",
         "spacex",
@@ -1054,7 +1147,7 @@
       ],
       "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-06-12",
+      "updated_at": "2026-06-14",
       "file": "entities/spacex.md",
       "aliases": [
         "SpaceX",
@@ -1144,6 +1237,10 @@
     "ai supply-chain security": "agentic-ai-security",
     "ai-capex": "ai-capex",
     "ai-for-manufacturing": "artificial-general-engineer",
+    "amazon": "amazon",
+    "amazon web services": "amazon",
+    "amazon.com": "amazon",
+    "andy jassy": "amazon",
     "anthropic": "anthropic",
     "anthropic pbc": "anthropic",
     "apple": "apple",
@@ -1151,6 +1248,7 @@
     "apple intelligence": "apple",
     "artificial general engineer": "artificial-general-engineer",
     "artificial-general-engineer": "artificial-general-engineer",
+    "aws": "amazon",
     "bezos prometheus": "prometheus",
     "brett adcock": "figure-ai",
     "caisi mou": "federal-ai-policy",
@@ -1220,6 +1318,7 @@
     "liquid foundation models": "liquid-ai",
     "liquid-ai": "liquid-ai",
     "liquidai": "liquid-ai",
+    "local weights": "open-weights",
     "m3": "minimax-m3",
     "mai": "microsoft",
     "mai-code-1-flash": "microsoft",
@@ -1245,6 +1344,11 @@
     "neocloud": "neocloud",
     "nvda": "nvidia",
     "nvidia": "nvidia",
+    "open source ai": "open-weights",
+    "open weights": "open-weights",
+    "open weights wave": "open-weights",
+    "open-source ai": "open-weights",
+    "open-weights": "open-weights",
     "openai": "openai",
     "openai inc.": "openai",
     "openai opco": "openai",
@@ -1272,6 +1376,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-14",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-14 digest (Fable 5 export-ban saga goes on-record). Created 2 (amazon entity — Jassy→Bessent jailbreak briefing triggered the export crackdown on Anthropic's own largest investee + Cerebras/AWS; open-weights theme — GLM 5.2 MIT / Kimi K2.7-Code 12x-cheaper / \"Open source AI must win\" 1480pts / r/LocalLLaMA torrent-network backlash surging on the shutdown). Updated 6 (anthropic — Sacks on-record \"Dario refused\" account vs Anthropic \"misunderstanding\" blog, Amazon trigger, both models dark 36h+, IDC 19% penetration, model-substitution notification walk-back; claude-fable-5 — both models offline for all customers, 88% FrontierMath, torrent hoax, open-weights backlash; openai — ~42-state NY-led AG subpoena June 12 + GPT-Realtime-2 + IDC ahead of Anthropic; federal-ai-policy — on-record export standoff narrowed to Anthropic-specific per The Information + 42-state subpoena + regulatory clock + Census DP ban; agentic-ai-security — capability-misuse drove first govt model shutdown + SABER 54% + domain-finetuning safety degradation; spacex — IPO completed ~$161 close/$75B/$1.75T largest US IPO on record + Mistral/EngineAI IPO-summer frame)."
+    },
     {
       "date": "2026-06-12",
       "op": "ingest",
