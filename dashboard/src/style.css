@@ -568,13 +568,18 @@ body:not(.tab-research) .controls { display: none; }
 }
 
 .cal-grid {
-  display: none;
-}
-
-.calendar.open .cal-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2px;
+}
+
+/* The opened picker (month nav + grid) is a popover so the pill keeps a fixed
+ * size and never shoves the tabs when toggled. */
+.cal-pop {
+  display: none;
+}
+.calendar.open .cal-pop {
+  display: block;
   position: absolute;
   top: calc(100% + 8px);
   left: 0;
@@ -608,13 +613,11 @@ body:not(.tab-research) .controls { display: none; }
 }
 
 .cal-header-nav {
-  display: none;
-  align-items: center;
-  gap: 4px;
-}
-
-.calendar.open .cal-header-nav {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  margin-bottom: 8px;
 }
 
 .cal-nav-btn {

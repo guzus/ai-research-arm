@@ -611,11 +611,15 @@ function buildCalendarHtml(): string {
   const coverageHint = coverage > 0 ? ' · ' + coverage + (coverage === 1 ? ' day' : ' days') : '';
   let html = '<div class="cal-header" data-cal-toggle>';
   html += '<span class="cal-header-label">' + monthLabel + '<span class="cal-coverage">' + coverageHint + '</span> <span class="cal-chevron">' + (open ? '&#9650;' : '&#9660;') + '</span></span>';
+  html += '</div>';
+
+  // Month nav + day grid live in a popover so the pill keeps a fixed size.
+  html += '<div class="cal-pop">';
   html += '<div class="cal-header-nav">';
   html += '<button class="cal-nav-btn" data-cal-nav="-1">&lsaquo;</button>';
   html += '<button class="cal-today-btn" data-cal-today>Today</button>';
   html += '<button class="cal-nav-btn" data-cal-nav="1">&rsaquo;</button>';
-  html += '</div></div>';
+  html += '</div>';
 
   html += '<div class="cal-grid">';
   for (const dow of dows) {
@@ -649,6 +653,7 @@ function buildCalendarHtml(): string {
   }
 
   html += '</div>';
+  html += '</div>';
   return html;
 }
 
@@ -676,6 +681,7 @@ function handleCalendarClick(e: Event): void {
     // digest/newspaper; when already there it just folds the date picker.
     if (activeTab !== 'today') {
       activeTab = 'today';
+      syncTabUi();
       load();
     } else {
       calendarEl.classList.toggle('open');
@@ -696,6 +702,7 @@ function handleCalendarClick(e: Event): void {
     const now = new Date();
     currentDate = now;
     activeTab = 'today';
+    syncTabUi();
     calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     load();
@@ -707,6 +714,7 @@ function handleCalendarClick(e: Event): void {
     const parts = dayEl.dataset.date.split('-');
     currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
     activeTab = 'today';                 // picking a date opens that day's view
+    syncTabUi();
     calendarEl.classList.remove('open');
     const clickedMonth = new Date(+parts[0], +parts[1] - 1, 1);
     if (clickedMonth.getTime() !== calendarMonth.getTime()) {
