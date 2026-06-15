@@ -1,0 +1,14 @@
+Daily AI Digest - 2026-06-15
+
+TOP STORIES:
+• Anthropic export saga becomes a public blame fight: Sacks says Anthropic "refused" to patch Fable 5 jailbreak; Amazon's Jassy named as early trigger; Semafor adds suspected China access to Mythos (Anthropic disputes). Models still offline — staff flown to DC for talks.
+• 42-state AG coalition subpoenas OpenAI (ads, minors, sycophancy, safety); Florida sues over ChatGPT-shooting claim — days after its reported IPO filing.
+• Chinese open weights fill the void: Kimi K2.7-Code (#2 ErdosBench) + GLM-5.2 (1M ctx) ship same window.
+
+KEY NUMBERS:
+• Anthropic sales ~$50B annualized; SpaceX prices ~$1.75T IPO
+• Fable 5 / Mythos 5 still offline, no restore date
+
+TRENDING: "US Government Kills Fable 5"
+
+Full digest on GitHub.
