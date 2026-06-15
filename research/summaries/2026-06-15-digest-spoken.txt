@@ -1,0 +1,9 @@
+Speaker 1: Sunday, June fifteenth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic's export crisis has turned into a full public blame fight — David Sacks says Anthropic refused to patch a Fable five jailbreak, Amazon's Jassy has been named as an early trigger, and Semafor is now reporting suspected Chinese access to Mythos, which Anthropic disputes. Both models are still offline with no restore date given.
+Speaker 1: Staff have been flown to DC for talks, so this is not a quiet weekend on the Anthropic side of the world.
+Speaker 2: And worth noting — the trending phrase right now is literally "US Government Kills Fable Five." That is the sentiment we are living in.
+Speaker 1: On the legal front, a forty-two state attorney general coalition has hit OpenAI with subpoenas covering advertising, minors, sycophancy, and safety. Florida separately is suing over a ChatGPT-related shooting claim — and all of this lands just days after OpenAI's reported IPO filing.
+Speaker 2: The timing could not be worse for them. You do not want forty-two states in your inbox the week you are trying to go public.
+Speaker 1: Some quick numbers: Anthropic is running at [emphasis] roughly fifty billion dollars annualized [/emphasis] in sales, and SpaceX is pricing its IPO at [dramatic_pause] [emphasis] around one point seven five trillion dollars [/emphasis].
+Speaker 2: Meanwhile Chinese open-weight models are quietly filling the void — Kimi K two point seven Code just hit number two on ErdosBench, and GLM five point two ships with a one-million token context window. Both dropped in the same window as the Fable five outage. Coincidence, maybe.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
