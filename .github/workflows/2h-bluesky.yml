@@ -96,12 +96,29 @@ jobs:
           cp /tmp/bluesky/*.json data/bluesky/ || echo "No files to copy"
           ls -la data/bluesky/
 
+      # Pre-create the daily file with its title header (idempotent). The
+      # agent only ever APPENDS a per-run section to a temp file; a
+      # deterministic bash step (below) concatenates it onto this file. This
+      # removes the agent's ability to overwrite the day's earlier run —
+      # the bug that wiped the 2026-06-14 10:36 UTC snapshot (12 posts,
+      # incl. 144/137/95-like items) when the 22:02 UTC run rewrote the file.
+      - name: Ensure daily Bluesky file exists
+        env:
+          DATE: ${{ steps.datetime.outputs.date }}
+        run: |
+          set -euo pipefail
+          mkdir -p research/bluesky
+          FILE="research/bluesky/${DATE}.md"
+          if [ ! -f "$FILE" ]; then
+            printf '# Bluesky AI Feed - %s\n' "$DATE" > "$FILE"
+          fi
+
       - name: Process Bluesky Feed with Claude
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model sonnet --allowedTools "Read,Write,Edit,Bash(ls:*),Bash(git:*)"
+            --model sonnet --allowedTools "Read,Write,Bash(ls:*)"
           prompt: |
             You are a Bluesky AI feed curator. Process REAL-TIME posts from Bluesky.
 
@@ -131,12 +148,19 @@ jobs:
 
             ## OUTPUT
 
-            Write to: research/bluesky/${{ steps.datetime.outputs.date }}.md
+            Write ONLY your new section for THIS run to the temp file
+            `/tmp/bluesky-section.md` using the Write tool. Do NOT read,
+            write, or edit anything under `research/bluesky/` — a
+            deterministic workflow step appends your section onto the daily
+            file, and a second daily run must never clobber the first.
 
-            FORMAT (append if file exists):
+            Do NOT include the top-level `# Bluesky AI Feed` title — it
+            already exists in the daily file. Write ONLY the timestamped
+            section, starting with the `## <timestamp>` heading. Omit any
+            category subheading that has no qualifying posts.
+
+            FORMAT of /tmp/bluesky-section.md:
             ```
-            # Bluesky AI Feed - ${{ steps.datetime.outputs.date }}
-
             ## ${{ steps.datetime.outputs.timestamp }}
 
             ### Announcements & News
@@ -151,6 +175,10 @@ jobs:
             ### Notable Researchers
             - **@handle**: "Post excerpt..." - [link]
             ```
+
+            If NO posts qualify after filtering, still write the
+            `## ${{ steps.datetime.outputs.timestamp }}` heading followed by
+            one line: `_No qualifying posts this cycle._`
 
             ## FILTERS
 
@@ -168,11 +196,44 @@ jobs:
             - Low engagement posts
             - Pure reposts where feed[].reason is a repost reason
 
-            ## COMMIT
+            ## DO NOT COMMIT
 
-            After writing:
-            git add research/bluesky/
-            git commit -m "Bluesky feed ${{ steps.datetime.outputs.timestamp }}"
+            Do NOT run git. Writing `/tmp/bluesky-section.md` is your only
+            output; the workflow appends and commits it deterministically.
+
+      # Append the agent's section onto the daily file and commit. Using a
+      # deterministic `cat >>` (mirroring hourly-twitter's section append)
+      # guarantees the second daily run accumulates onto the first instead
+      # of overwriting it — the twice-daily schedule exists precisely to
+      # roughly double candidate posts per day, which an overwrite defeats.
+      - name: Append section to daily file and commit
+        env:
+          DATE: ${{ steps.datetime.outputs.date }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+        run: |
+          set -euo pipefail
+          FILE="research/bluesky/${DATE}.md"
+          SECTION="/tmp/bluesky-section.md"
+          if [ ! -s "$SECTION" ]; then
+            echo "No section produced by the agent; nothing to append."
+            exit 0
+          fi
+          # Ensure the title header exists (the pre-step creates it, but be
+          # defensive in case the agent never ran).
+          if [ ! -f "$FILE" ]; then
+            printf '# Bluesky AI Feed - %s\n' "$DATE" > "$FILE"
+          fi
+          printf '\n' >> "$FILE"
+          cat "$SECTION" >> "$FILE"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/bluesky/
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+          else
+            git commit -m "Bluesky feed ${TIMESTAMP}"
+          fi
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm).
       #
