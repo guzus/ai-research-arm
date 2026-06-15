@@ -429,12 +429,28 @@ body {
 
 /* ── Calendar ──────────────────────────────────────── */
 .calendar {
+  /* Compact affordance: a small pill when collapsed; expands only when opened. */
+  display: inline-block;
   background: var(--bg);
   border: 1px solid var(--border-light);
-  border-radius: 16px;
+  border-radius: 10px;
   box-shadow: var(--shadow-sm);
-  padding: 16px;
+  padding: 7px 13px;
   margin-bottom: 12px;
+}
+.calendar.open {
+  display: block;
+  padding: 14px 16px;
+  border-radius: 14px;
+}
+
+/* Aggressive-minimalism chrome cuts: drop the floating section-nav widget, the
+ * keyboard-shortcut guide, and the manual refresh button — content-first.
+ * Keyboard shortcuts still work; only the visual widgets are removed. */
+.section-nav,
+.shortcut-guide,
+.refresh-btn {
+  display: none !important;
 }
 
 .cal-header {

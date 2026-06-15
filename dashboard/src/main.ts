@@ -2155,7 +2155,9 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
     const leadText = cycleSummary
       ? truncateText(cleanPublicLeadText(stripMarkdown(cycleSummary)), 620)
       : truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 620);
-    const leadHtml = twitterMarkdownToHtml(section.body);
+    // Storyless cycles fall back to the cycle markdown — minus the Cycle
+    // summary paragraph, which the Signal Brief above already shows verbatim.
+    const fallbackBody = section.body.replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '').trim();
     const structuredStoryCards = renderStructuredTwitterStories(section.body);
     const storyCards = structuredStoryCards || stories.map((story) => {
       const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
@@ -2205,11 +2207,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
         '      <p class="twitter-brief-text">' + highlightPlainText(leadText) + '</p>',
         '    </div>',
         '  </div>',
-        '  <details class="twitter-cycle-summary">',
-        '    <summary>Full cycle text</summary>',
-        '    <div class="md-content twitter-summary-body">' + leadHtml + '</div>',
-        '  </details>',
-        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + twitterMarkdownToHtml(section.body) + '</div>',
+        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + twitterMarkdownToHtml(fallbackBody) + '</div>',
         skepticHtml,
         '</section>',
       ].join('\n'),
@@ -2464,7 +2462,6 @@ function renderTickets(tickets: Ticket[] | null): void {
       <div class="tickets-controls">
         <div class="ticket-filters">${statusBar}</div>
         <select class="ticket-company-select" data-filter-company>${companyOptions}</select>
-        <div class="ticket-summary">${filtered.length} of ${tickets.length} tickets</div>
       </div>
       <div class="tickets-board">
         ${board}
