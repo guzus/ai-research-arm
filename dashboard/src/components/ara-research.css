@@ -35,10 +35,14 @@
  * royal blue, cyan — not a rainbow. Airy thin rules over hard black
  * borders, generous whitespace, framed exhibits with source lines.
  *
- * The overrides below shadow the dashboard's softer global tokens
- * inside `.ara-doc` ONLY — the rest of the chrome keeps its native
- * palette. Every token has a dark-mode mapping further down. */
-.ara-doc {
+ * The ara-* palette below is the PRODUCT-WIDE design spine. It lives at
+ * :root (not just inside `.ara-doc`) so the dashboard shell, the index
+ * lists and the newspaper inherit the SAME ink / accent / rule family as
+ * the articles. style.css remaps the shell's semantic tokens (--text,
+ * --accent, --accent-warm, --border) onto these named tokens — change a
+ * color here and it propagates everywhere. Every token has a dark-mode
+ * mapping below. */
+:root {
   /* — McKinsey palette (named tokens) — */
   --ara-ink: #1a1a1a;            /* primary body ink */
   --ara-navy: #051c2c;           /* deep navy — dark fills, exhibit accents, darkest series */
@@ -52,15 +56,6 @@
   --ara-sec2: #6e6e6e;           /* secondary text */
   --ara-sec3: #9a9a9a;           /* tertiary text */
 
-  /* — shadow the dashboard tokens inside .ara-doc — */
-  --text: var(--ara-ink);
-  --text-secondary: var(--ara-sec2);
-  --text-tertiary: var(--ara-sec3);
-  --accent-warm: var(--ara-royal);      /* links, accents, big figures */
-  --accent-warm-bg: var(--ara-periwinkle);
-  --border: var(--ara-rule);            /* airy hairline, not hard black */
-  --border-light: #e8e8ec;
-
   /* — sequential mono-blue chart ramp (navy → royal → cyan → pale) — */
   --ara-viz-1: #051c2c;
   --ara-viz-2: #2251ff;
@@ -68,15 +63,10 @@
   --ara-viz-4: #7fb3ff;
   --ara-viz-5: #c7dcff;
   --ara-viz-6: #6e6e6e;          /* neutral 6th step keeps the ramp blue-only */
-
-  font-family: var(--font);
-  color: var(--text);
-  line-height: 1.55;
-  letter-spacing: -0.004em;
 }
 
 @media (prefers-color-scheme: dark) {
-  .ara-doc {
+  :root {
     /* Dark mapping: lift navy to a luminous slate-blue ground, keep the
      * royal/cyan accents bright, periwinkle panels become deep-navy
      * washes, rules stay thin but lighter. */
@@ -92,14 +82,6 @@
     --ara-sec2: #aeb4c0;
     --ara-sec3: #7d828e;
 
-    --text: var(--ara-ink);
-    --text-secondary: var(--ara-sec2);
-    --text-tertiary: var(--ara-sec3);
-    --accent-warm: var(--ara-royal);
-    --accent-warm-bg: var(--ara-periwinkle);
-    --border: var(--ara-rule);
-    --border-light: #2b2e35;
-
     --ara-viz-1: #c7dcff;        /* invert ramp direction for dark ground */
     --ara-viz-2: #6f95ff;
     --ara-viz-3: #38c0ff;
@@ -107,6 +89,17 @@
     --ara-viz-5: #33529a;
     --ara-viz-6: #9aa0ac;
   }
+}
+
+/* Doc root — inherits the global ara palette above; sets only the
+ * article's reading typography. The shell's semantic tokens (--text,
+ * --border, --accent-warm) are already mapped to the ara palette in
+ * style.css, so an article reads in the same ink/accent as the chrome. */
+.ara-doc {
+  font-family: var(--font);
+  color: var(--text);
+  line-height: 1.55;
+  letter-spacing: -0.004em;
 }
 
 /* Reading column — prose flows in a 760px measure. Left-aligned so it
