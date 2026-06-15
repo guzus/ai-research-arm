@@ -1,0 +1,164 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Post-trained NVIDIA Nemotron 3 Ultra reached 5.8% all-pass on a held-out subset of Harvey's Legal Agent Benchmark, from 0% at baseline, landing between Sonnet 4.6 (4.2%) and Opus 4.6 (6.6%).",
+      "type": "metric",
+      "source_urls": ["https://trajectory.ai/field-notes/harvey-nemotron-3-ultra", "https://x.com/harvey/status/2064757424540749879"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-06-09",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c2",
+      "claim": "On the rubric-criteria pass-rate metric, post-trained Nemotron 3 Ultra reached 83% (from 52% base), versus GPT 5.5 at 78% and Sonnet 4.6 / Opus 4.6 both at 85%.",
+      "type": "metric",
+      "source_urls": ["https://trajectory.ai/field-notes/harvey-nemotron-3-ultra"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-09",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c3",
+      "claim": "Harvey's published full LAB leaderboard (a different, larger task set than the Nemotron held-out subset) lists Claude Opus 4.7 at 7.1%, Sonnet 4.6 at 5.4%, Opus 4.6 at 4.2%, GPT-5.5 at 2.1%, and Gemini 3.5 Flash at 0.8% all-pass.",
+      "type": "metric",
+      "source_urls": ["https://www.harvey.ai/blog/legal-agent-benchmark-initial-results"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-26",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c4",
+      "claim": "Under Harvey's strict all-pass standard, frontier models complete less than 10% of LAB tasks end-to-end, and topping the leaderboard costs roughly $50 per task and over 20 minutes of latency.",
+      "type": "metric",
+      "source_urls": ["https://www.harvey.ai/blog/legal-agent-benchmark-initial-results"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Harvey's LAB v1 comprises more than 1,200 agent tasks across 24 legal practice areas, evaluated by over 75,000 expert-written rubric criteria, derived from real client matters.",
+      "type": "metric",
+      "source_urls": ["https://www.harvey.ai/blog/introducing-harveys-legal-agent-benchmark"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Nemotron 3 Ultra is a 550B-total / 55B-active-parameter hybrid Mamba-2 + MoE + attention model with up to 1M-token context, released June 4, 2026 under the permissive OpenMDW-1.1 license.",
+      "type": "technical",
+      "source_urls": ["https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16", "https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-06-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Trajectory says it post-trained Nemotron 3 Ultra on the Harvey LAB in under 24 hours by reusing the same harness, data, and recipe it had used for Nemotron 3 Super, without disclosing the training method.",
+      "type": "event",
+      "source_urls": ["https://trajectory.ai/field-notes/harvey-nemotron-3-ultra", "https://x.com/trajectorylabs/status/2064756005507072339"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-06-09",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "Trajectory claims its post-trained Nemotron runs at least 10x cheaper than leading closed models; the Harvey tweet states 1/8th to 1/50th the per-token price of Sonnet 4.6 and Opus 4.6.",
+      "type": "comparison",
+      "source_urls": ["https://trajectory.ai/field-notes/harvey-nemotron-3-ultra", "https://x.com/harvey/status/2064757424540749879"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-06-10",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "Independent third-party serverless pricing for Nemotron 3 Ultra runs roughly $0.37-0.50 per million input tokens and $1.08-2.50 output, versus Sonnet 4.6 at $3/$15 and Opus 4.6 at $5/$25, yielding a verified per-token gap of about 1/6 to 1/23, not 1/50.",
+      "type": "comparison",
+      "source_urls": ["https://artificialanalysis.ai/models/nvidia-nemotron-3-ultra-550b-a55b/providers", "https://www.anthropic.com/news/claude-sonnet-4-6"],
+      "source_tiers": ["market-data", "primary"],
+      "as_of": "2026-06-15",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "Reinforcement learning with verifiable rewards lifted DeepSeek-R1-Zero from 15.6% to 71.0% pass@1 on AIME 2024, establishing that rubric/verifiable-reward RL can produce large reasoning gains.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2501.12948"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-01-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "Research shows RL-with-verifiable-rewards often does not expand a model's reasoning beyond the base model: base models match or exceed RL-trained variants at large pass@k, implying RL reweights existing paths rather than teaching new capability.",
+      "type": "causal",
+      "source_urls": ["https://arxiv.org/abs/2504.13837"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-04-18",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c12",
+      "claim": "RLVR gains can be artifacts: random or correctness-uncorrelated rewards lifted Qwen2.5-Math-7B by 21.4 points on MATH-500, nearly matching the 29.1-point ground-truth gain, via a GRPO optimization bias.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2506.10947"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-06-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "Harvey raised $200M in March 2026 at an $11B valuation, serving 1,300+ organizations and 100,000+ lawyers, with roughly $300M ARR, and does not build its own frontier model.",
+      "type": "metric",
+      "source_urls": ["https://www.harvey.ai/blog/harvey-raises-at-dollar11-billion-valuation-to-scale-agents-across-law-firms-and-enterprises", "https://sacra.com/c/harvey/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-03-25",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c14",
+      "claim": "NVIDIA positions open models as ecosystem infrastructure that runs on its stack, with Jensen Huang saying the AI ecosystem needs open models and open stacks.",
+      "type": "quote",
+      "source_urls": ["https://www.dwarkesh.com/p/jensen-huang", "https://nvidianews.nvidia.com/news/nvidia-debuts-nemotron-3-family-of-open-models"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-06-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Open-weight models reached parity with closed frontier on code and math by H1 2026 but still trailed materially on factual retrieval (SimpleQA gap ~17.7 points) and 1M long-context (MRCR gap ~9.4 points) - the dimensions most relevant to legal document work.",
+      "type": "comparison",
+      "source_urls": ["https://www.digitalapplied.com/blog/open-weight-models-h1-2026-retrospective-deepseek-qwen-llama"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-01",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c16",
+      "claim": "Harvey's LAB is post-trained by multiple independent vendors with different recipes (Trajectory on Nemotron; Baseten Research using Iterative SFT + GRPO on Qwen3.5), so results from one vendor must not be attributed to another.",
+      "type": "market-structure",
+      "source_urls": ["https://www.harvey.ai/blog/post-training-open-legal-agents-with-baseten-research"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-19",
+      "confidence": "medium",
+      "risk": "stable"
+    }
+  ]
+}

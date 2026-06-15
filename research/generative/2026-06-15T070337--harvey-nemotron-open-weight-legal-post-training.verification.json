@@ -1,0 +1,130 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Post-trained Nemotron 3 Ultra hit 5.8% all-pass on a held-out slice of Harvey's benchmark, between Sonnet 4.6 (4.2%) and Opus 4.6 (6.6%) on that same slice.",
+      "verdict": "supported",
+      "citation": "https://trajectory.ai/field-notes/harvey-nemotron-3-ultra"
+    },
+    {
+      "id": "c2",
+      "text": "On Harvey's own published leaderboard, the best model on earth — Claude Opus 4.7 — clears 7.1% of tasks end-to-end, and \"the frontier models we evaluated complete less than 10% of tasks end-to-end in aggregate.\"",
+      "verdict": "supported",
+      "citation": "https://www.harvey.ai/blog/legal-agent-benchmark-initial-results"
+    },
+    {
+      "id": "c3",
+      "text": "The all-pass numbers in the Nemotron thread — Sonnet 4.6 at 4.2%, Opus 4.6 at 6.6% — are *not* the numbers on Harvey's published LAB leaderboard, where Sonnet 4.6 scores 5.4% and Opus 4.6 scores 4.2%.",
+      "verdict": "weak",
+      "citation": "https://www.harvey.ai/blog/legal-agent-benchmark-initial-results"
+    },
+    {
+      "id": "c4",
+      "text": "It refers to a *second*, gentler metric: the share of individual rubric criteria a model passes, where post-trained Ultra reaches 83%, within two points of Sonnet 4.6 and Opus 4.6 at 85%, and well past the 52% base.",
+      "verdict": "weak",
+      "citation": "https://trajectory.ai/field-notes/harvey-nemotron-3-ultra"
+    },
+    {
+      "id": "c5",
+      "text": "Harvey built LAB from \"more than 1,200 agent tasks across 24 legal practice areas,\" decomposed from real client matters and graded against \"over 75,000 expert-written rubric criteria.\"",
+      "verdict": "supported",
+      "citation": "https://www.harvey.ai/blog/introducing-harveys-legal-agent-benchmark"
+    },
+    {
+      "id": "c6",
+      "text": "Third, cost: the open model runs \"at roughly 1/8th to 1/50th the per-token price of Sonnet 4.6 and Opus 4.6.\"",
+      "verdict": "unsupported",
+      "citation": "https://x.com/harvey/status/2064757424540749879"
+    },
+    {
+      "id": "c7",
+      "text": "NVIDIA released it on 4 June 2026 as a 550-billion-parameter Mixture-of-Experts model with 55 billion active parameters — a hybrid that \"interleaves MoE layers with cheaper Mamba-2 layers\" plus a few attention layers, supporting up to a 1-million-token context window.",
+      "verdict": "supported",
+      "citation": "https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents/"
+    },
+    {
+      "id": "c8",
+      "text": "NVIDIA's self-reported scores put it at 86.8 on MMLU-Pro and 70.7 on SWE-Bench Verified — genuinely competitive numbers, with the standard caveat that they are vendor-run on NVIDIA's own evaluation harness, not independently replicated.",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16"
+    },
+    {
+      "id": "c9",
+      "text": "It ships under the Linux Foundation's permissive OpenMDW-1.1, which grants rights to \"train, modify, contribute, redistribute and deploy\" the model — a materially more permissive grant than the restrictive NVIDIA house license attached to the smaller Super and Nano variants.",
+      "verdict": "supported",
+      "citation": "https://www.linuxfoundation.org/press/linux-foundation-releases-openmdw-1.1-nvidia-adopts-openmdw-for-cosmos-isaac-gr00t-ising-and-nemotron-ai-model-families"
+    },
+    {
+      "id": "c10",
+      "text": "Anthropic lists Sonnet 4.6 at $3 per million input tokens and $15 output; Opus 4.6 at $5 input and $25 output.",
+      "verdict": "supported",
+      "citation": "https://www.anthropic.com/news/claude-sonnet-4-6"
+    },
+    {
+      "id": "c11",
+      "text": "Nemotron 3 Ultra, served on third-party infrastructure, runs roughly $0.37–$0.50 per million input tokens and $1.08–$2.50 output across providers.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/models/nvidia-nemotron-3-ultra-550b-a55b/providers"
+    },
+    {
+      "id": "c12",
+      "text": "Trajectory's own field note is, to its credit, more conservative than the Harvey tweet: it says \"at least 10x cheaper to run,\" which the pricing data supports.",
+      "verdict": "weak",
+      "citation": "https://trajectory.ai/field-notes/harvey-nemotron-3-ultra"
+    },
+    {
+      "id": "c13",
+      "text": "Reinforcement learning with verifiable rewards (RLVR) lifted DeepSeek-R1-Zero from 15.6% to 71.0% pass@1 on AIME 2024 using nothing but a correctness signal.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2501.12948"
+    },
+    {
+      "id": "c14",
+      "text": "\"Rubrics as Rewards\" extended the same idea to soft domains, using checklist-style rubrics as the reward and reporting up to ~31% relative gains on HealthBench",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2507.17746"
+    },
+    {
+      "id": "c15",
+      "text": "A widely-cited 2025 study found that RL with verifiable rewards often does *not* expand a model's reasoning beyond its base: base models match or exceed RL-trained variants at large pass@k, implying RL mostly reweights paths the model could already find rather than teaching new capability.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2504.13837"
+    },
+    {
+      "id": "c16",
+      "text": "More damning, a separate result showed that *random* rewards — uncorrelated with correctness — lifted Qwen2.5-Math-7B by 21.4 points on MATH-500, nearly matching the 29.1-point gain from real rewards, because of an optimization bias in the GRPO algorithm.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2506.10947"
+    },
+    {
+      "id": "c17",
+      "text": "The Tulu 3 recipe scaled RLVR to 405B parameters and reached parity with closed models like GPT-4o on targeted benchmarks,",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2411.15124"
+    },
+    {
+      "id": "c18",
+      "text": "and \"Tina\" showed LoRA-based RL can add 20-plus points of reasoning for about $9 of compute.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2504.15777"
+    },
+    {
+      "id": "c19",
+      "text": "Trajectory — a continual-learning startup that raised $15M in May 2026, backed by Conviction, Bessemer, and Radical with angels including Jeff Dean and Fei-Fei Li",
+      "verdict": "supported",
+      "citation": "https://pulse2.com/trajectory-raises-15-million-to-build-a-platform-for-continual-learning/"
+    },
+    {
+      "id": "c20",
+      "text": "Harvey raised $200M in March 2026 at an $11B valuation, serves 1,300-plus organizations and 100,000-plus lawyers, and runs on roughly $300M of ARR",
+      "verdict": "supported",
+      "citation": "https://sacra.com/c/harvey/"
+    },
+    {
+      "id": "c21",
+      "text": "open models still trail closed frontier on factual retrieval (a ~17.7-point SimpleQA gap) and on 1-million-token long-context recall (a ~9.4-point MRCR gap)",
+      "verdict": "weak",
+      "citation": "https://www.digitalapplied.com/blog/open-weight-models-h1-2026-retrospective-deepseek-qwen-llama"
+    }
+  ]
+}

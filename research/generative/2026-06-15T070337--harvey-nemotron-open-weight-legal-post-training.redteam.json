@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Post-trained Nemotron 3 Ultra hit 5.8% all-pass on a held-out slice of Harvey's benchmark, between Sonnet 4.6 (4.2%) and Opus 4.6 (6.6%) on that same slice.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Verified per-token pricing is ~1/6 to ~1/23 cheaper than Sonnet/Opus; the headline's 1/50 is not charged by any provider today.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Nemotron 3 Ultra is a genuinely open-weight 550B-total / 55B-active MoE model released 4 June 2026 under the permissive Linux Foundation OpenMDW-1.1 license.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

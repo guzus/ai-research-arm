@@ -624,5 +624,19 @@
     "source": "workflow_dispatch",
     "prompt": "OpenAI's 42-state AG subpoena: how state consumer-protection enforcement became AI's real regulatory front ahead of its IPO",
     "tags": []
+  },
+  {
+    "slug": "harvey-nemotron-open-weight-legal-post-training",
+    "file": "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "One day, one open model, the frontier band — what the Harvey × Nemotron experiment actually proves",
+    "model": "claude-opus-4-7",
+    "created_at": "2026-06-15T07:03:37Z",
+    "source": "workflow_dispatch",
+    "prompt": "Seed Twitter/X URL: https://x.com/harvey/status/2064757424540749879 — Read the tweet and thread, infer the underlying research question, treat the tweet as a seed primary source, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
