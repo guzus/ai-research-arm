@@ -39,7 +39,7 @@
         <div class="header-top">
           <div class="brand">
             <h1 class="brand-title">ai-research-arm</h1>
-            <button class="brand-search" id="searchToggle" type="button" aria-label="Search" title="Search (/)">
+            <button class="brand-search" id="searchToggle" type="button" aria-label="Search" title="Search (⌘K or /)">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             </button>
           </div>
@@ -60,8 +60,11 @@
         <div class="search-overlay" id="searchOverlay" hidden>
           <div class="search-box">
             <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search content...">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search this view…" autocomplete="off" spellcheck="false">
             <span class="search-count" id="searchCount" aria-live="polite"></span>
+            <button class="search-clear" id="searchClear" type="button" aria-label="Clear search" hidden>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
           </div>
         </div>
         <div class="controls">

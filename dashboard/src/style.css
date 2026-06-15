@@ -410,10 +410,10 @@ body {
   background: var(--bg);
   border: 1px solid var(--border);
   color: var(--text);
-  padding: 7px 12px 7px 34px;
-  border-radius: 9px;
+  padding: 9px 58px 9px 36px;
+  border-radius: 10px;
   font-family: var(--font);
-  font-size: 0.84rem;
+  font-size: 0.9rem;
   outline: none;
   transition: all 0.15s;
 }
@@ -431,7 +431,7 @@ body {
 
 .search-count {
   position: absolute;
-  right: 10px;
+  right: 38px;
   top: 50%;
   transform: translateY(-50%);
   font-family: var(--font-mono);
@@ -487,8 +487,26 @@ body:not(.tab-research) .request-btn { display: none; }
 body:not(.tab-research) .controls { display: none; }
 
 /* Search overlay — revealed by the magnifier button next to the wordmark. */
-.search-overlay { margin-bottom: 12px; }
+.search-overlay { margin-bottom: 12px; max-width: 480px; }
 .search-overlay[hidden] { display: none; }
+.search-clear {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: var(--text-tertiary);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.search-clear:hover { background: var(--bg-hover); color: var(--text); }
+.search-clear[hidden] { display: none; }
 
 /* Audio digest: bare player, no card chrome / "Audio digest" label. */
 .today-audio { margin: 0 0 18px; }

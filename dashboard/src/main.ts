@@ -5079,23 +5079,49 @@ document.getElementById('shortcutToggle')!.addEventListener('click', () => {
 
 const searchToggle = document.getElementById('searchToggle');
 const searchOverlay = document.getElementById('searchOverlay');
+const searchClear = document.getElementById('searchClear');
+function syncSearchClear(): void {
+  if (searchClear) (searchClear as HTMLElement).hidden = searchInput.value.length === 0;
+}
 function openSearch(): void {
   if (searchOverlay) searchOverlay.hidden = false;
+  syncSearchClear();
   searchInput.focus();
   searchInput.select();
 }
 function closeSearch(): void {
   if (searchOverlay) searchOverlay.hidden = true;
 }
+function clearSearch(): void {
+  searchInput.value = '';
+  searchTerm = '';
+  syncSearchClear();
+  load();
+  searchInput.focus();
+}
 searchToggle?.addEventListener('click', () => {
   if (searchOverlay && searchOverlay.hidden) openSearch();
   else closeSearch();
 });
+searchClear?.addEventListener('click', clearSearch);
 searchInput.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') { closeSearch(); searchInput.blur(); }
 });
+// ⌘K / Ctrl+K opens search from anywhere; click outside the panel closes it.
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+    e.preventDefault();
+    openSearch();
+  }
+});
+document.addEventListener('mousedown', (e) => {
+  if (!searchOverlay || searchOverlay.hidden) return;
+  const t = e.target as Node;
+  if (!searchOverlay.contains(t) && !(searchToggle && searchToggle.contains(t))) closeSearch();
+});
 
 searchInput.addEventListener('input', () => {
+  syncSearchClear();
   if (searchDebounceId !== null) window.clearTimeout(searchDebounceId);
   searchDebounceId = window.setTimeout(() => {
     searchTerm = searchInput.value.trim();
