@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 summary: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-updated_at: 2026-06-14
+updated_at: 2026-06-15
 sources:
+  - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
@@ -212,6 +213,17 @@ materially reshape how the lab is positioned heading into its IPO window:
   On the product side, **GPT-Realtime-2**, a GPT-5-class voice model, entered the
   WebRTC playground with pasted-document context (knowledge cutoff still
   September 2024) (ARA digest 2026-06-14).
+- **The AG pressure reframed; an IPO-filing backdrop (2026-06-15).** The **42-state**
+  subpoena's bipartisan breadth (ads, data practices, minors, **model sycophancy**,
+  safety) is now read as **removing the political-persecution framing** and exposing
+  any consumer-facing AI system to **distributed state consumer-protection law** amid
+  federal deregulation — landing **days after OpenAI's reported IPO filing**.
+  Important correction: the viral **"criminal investigation / suing Altman
+  personally"** gloss **overstates** what is a civil consumer-protection action.
+  Separately, **Florida's** suit is reframed as reportedly the **first US state suit
+  alleging ChatGPT aided a campus shooter** — a causal *allegation*, not an
+  established fact; OpenAI says it will "engage constructively." See
+  [[federal-ai-policy]] (ARA digest 2026-06-15).
 
 ## Open questions
 

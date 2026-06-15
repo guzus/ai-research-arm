@@ -6,8 +6,9 @@ aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy"]
 tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
 summary: Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.
 created_at: 2026-06-14
-updated_at: 2026-06-14
+updated_at: 2026-06-15
 sources:
+  - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "Amazon CEO's talks with U.S. officials triggered crackdown on Anthropic models (WSJ)", url: "https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578", date: 2026-06-13}
 ---
@@ -42,6 +43,17 @@ largest investee banned.
   stack — a reminder that Amazon's AI footprint spans investment, distribution
   (Bedrock), silicon (Trainium/Inferentia), and now third-party inference
   capacity.
+- **The trigger timeline firms up — with a caveat (2026-06-15).** The Information,
+  Axios and WSJ converged on a reconstructed sequence: **June 9** [[claude-fable-5|Fable
+  5]] launch → **June 11** Amazon escalation after researchers reportedly jailbroke
+  Mythos → **June 12** emergency directive and global shutdown, with
+  conversations between **Jassy and Treasury Secretary Scott Bessent** feeding the
+  directive. **Caveat (Community Note):** Amazon *researchers* doing the jailbreak
+  work **does not confirm Amazon formally reported it to Commerce** — the causal
+  link from Amazon's lab to the export order remains an inference, not an
+  established fact. AI czar **David Sacks** separately put the administration's
+  "Anthropic refused to fix it" account on record — see [[federal-ai-policy]] (ARA
+  digest 2026-06-15).
 
 ## Open questions
 

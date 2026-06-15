@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 summary: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown.
 created_at: 2026-06-14
-updated_at: 2026-06-14
+updated_at: 2026-06-15
 sources:
+  - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
 ---
 
@@ -46,6 +47,17 @@ fragile and local weights look like insurance.
 - **Local hosting goes mainstream-practical.** A cluster of HN posts ("AI coding
   at home without going broke," RTX 5080+3090 hitting 80 tok/s on Qwen 3.6 27B)
   gained traction on shutdown anxiety — the demand side of the same wave.
+- **The vacuum fills fast — three open ships in the Fable window (2026-06-15).**
+  With [[claude-fable-5|Fable 5]] still dark, Chinese open-weight flagships poured
+  into the gap, sharpening the "the export control is accelerating the very
+  commoditization it aimed to slow" narrative. **Kimi K2.7-Code (Moonshot)**
+  landed **#2 on ErdosBench** (behind Fable 5 max), reporting **+21.8% Kimi Code
+  Bench v2 / +11.0% Program Bench / +31.5% MLS Bench Lite vs K2.6** with **~30%
+  fewer reasoning tokens** (treat placements as preliminary/vendor-adjacent).
+  **GLM-5.2 (Z.ai)** shipped to coding-plan users with a usable **1M context**,
+  open weights/API "planned for next week." And **[[minimax-m3|MiniMax M3]]**
+  weights landed on **Hugging Face with a free NVIDIA testing endpoint** — lowering
+  the try-it barrier further (ARA digest 2026-06-15).
 
 ## Open questions
 

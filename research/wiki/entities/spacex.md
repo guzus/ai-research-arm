@@ -6,8 +6,9 @@ aliases: [SpaceX, "@SpaceX", SPCX, "Space Exploration Technologies", Starlink]
 tags: [ipo, capital-markets, ai-infrastructure, space, public-listing]
 summary: "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side."
 created_at: 2026-06-05
-updated_at: 2026-06-14
+updated_at: 2026-06-15
 sources:
+  - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
@@ -72,6 +73,15 @@ frontier labs (the Anthropic–SpaceX "Colossus" datacenter arrangement).
   **Shenzhen humanoid maker EngineAI filing confidentially for a Hong Kong
   listing** — extending the public-markets capital-formation read across the
   [[ai-capex]] supercycle (ARA digest 2026-06-14).
+
+- **xAI folded in; fresh frontier-lab data-center deals (2026-06-15).** Follow-on
+  reporting framed the **~$1.75T priced IPO ($135/share) as now including [[xai]]**,
+  with **last-minute additions reportedly including new data-center deals with
+  [[anthropic]] and Google** — deepening the read of SPCX as a compute-landlord
+  vehicle selling capacity to rival labs. Amplified figures put **Musk past a $1T
+  net worth** (treat the headline net-worth number as promotional). The
+  Anthropic-side deals dovetail with Anthropic's own-servers pivot — see
+  [[anthropic]] and [[ai-capex]] (ARA digest 2026-06-15).
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 summary: The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.
 created_at: 2026-06-03
-updated_at: 2026-06-14
+updated_at: 2026-06-15
 sources:
+  - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
@@ -136,6 +137,36 @@ footing for the first time in the cycle.
   effective **July 15**. The US also **banned differential privacy in Census
   data** — a live policy decision with direct ML/fairness implications (ARA digest
   2026-06-14).
+
+- **The export fight becomes a multi-actor blame war (2026-06-15).** The standoff
+  turned public and many-sided. AI czar **David Sacks** put the administration's
+  case on record — that [[anthropic]] "refused to fix" a known [[claude-fable-5|Fable
+  5]] jailbreak and Amodei called it "not serious" — framing the control as issued
+  "reluctantly." New reporting named **[[amazon|Amazon CEO Andy Jassy]]** as an
+  early alarm-raiser whose call to Treasury Secretary **Scott Bessent** helped
+  trigger the directive; both sides openly dispute a contested **~90-minute
+  shutdown ultimatum**. A **Semafor exclusive** added a **China-access** rationale
+  — the White House reportedly moved partly over suspicions a **China-linked group
+  accessed [[claude-fable-5|Mythos 5]]** (reverse-engineering/distillation fears) —
+  which Anthropic disputes was ever raised. The first de-escalation: Anthropic
+  flew senior technical staff to Washington for direct talks; no
+  Commerce/BIS document had surfaced as of June 15 (ARA digest 2026-06-15).
+- **International pushback against the Americans-only order (2026-06-15).** The
+  **EU Commission** is assessing the order's impact, warning controls "should not
+  be discriminatory"; **Canada's PM** likened over-reliance on certain models to
+  **2008 systemic risk** (hyperbolic, but signaling multilateral resistance to a
+  US-only access regime). The narrowing of the precedent to one *domestic* model
+  is now drawing allied-government scrutiny (ARA digest 2026-06-15).
+- **Florida suit reframed; "AI slop" reaches consulting (2026-06-15).** Further
+  reporting recast the **Florida** action as a **civil consumer-protection suit**
+  alleging ChatGPT aided an FSU campus shooter — reportedly the **first US state
+  suit** of its kind — with the digest cautioning that the viral "criminal
+  investigation / suing Altman personally" gloss **overstates** what is a civil
+  action (a correction to earlier coverage); the causal claim is an allegation,
+  not established fact. Separately, **KPMG pulled an AI-adoption report** after
+  **~40 of 45 citations** could not be corroborated — an early institutional
+  casualty of AI-slop-in-consulting and a fresh data point on AI-output
+  accountability (ARA digest 2026-06-15). See [[openai]].
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 summary: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-updated_at: 2026-06-14
+updated_at: 2026-06-15
 sources:
+  - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
@@ -229,6 +230,33 @@ Four developments through May 2026 put Anthropic at the center of the field:
   in days after the [[claude-fable-5|Fable 5]] covert-throttle reversal (ARA
   digest 2026-06-14).
 
+- **A China-access dimension surfaces; direct DC talks begin (2026-06-15).** The
+  export saga gained a second, sharper rationale and its first de-escalation move
+  on the same day. A **Semafor exclusive (amplified by The Verge)** reported the
+  White House moved partly over suspicions a **China-linked group had accessed
+  [[claude-fable-5|Mythos 5]]**, raising reverse-engineering/distillation fears —
+  shifting the public read from a jailbreak-*safety* story to a
+  model-*weight-security* one. Anthropic **disputes that China was ever raised**
+  in its conversations, putting the two accounts directly at odds. Crucially,
+  Anthropic **flew senior technical staff to Washington for direct talks** (Axios)
+  — the first concrete move from dueling statements to face-to-face negotiation —
+  even as **both models remained completely offline with no restoration date** as
+  of June 15. AI czar **David Sacks** put the administration's case on record
+  ("Anthropic refused to fix" the Fable 5 jailbreak; Amodei called the flaw "not
+  serious"); Anthropic's rebuttal is unchanged (narrow, already-known bypass
+  present in rival models). See [[federal-ai-policy]] and [[agentic-ai-security]]
+  (ARA digest 2026-06-15).
+- **~$50B run-rate reported; the own-servers pivot (2026-06-15).** *The
+  Information* reported Anthropic's **annualized sales near ~$50B** — clearing the
+  end-June milestone flagged at the June 1 S-1 — even as some customers fear "they
+  are paying Anthropic to build products that compete with them." Anthropic is
+  also reportedly **moving to control its own servers**, with **Google backstopping
+  some lease obligations** — a step toward owned infrastructure atop the
+  Google/Broadcom/Apollo financing stack, and a partial answer to the
+  compute-dependence open question below. New SpaceX (SPCX) data-center deals
+  reportedly include Anthropic — see [[spacex]] and [[ai-capex]] (ARA digest
+  2026-06-15).
+
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 
 Code-reference leaks indicate Anthropic is staging a product cluster
@@ -281,7 +309,9 @@ of the listing.
 ## Open questions
 - **Gated frontier strategy.** Anthropic has signaled no public release of
   Mythos. Does a permanently-gated frontier model become the norm, and what does
-  that do to the public benchmark race against [[gemini-3-5-flash]] and GPT-5.x?
+  that do to the public benchmark race against [[gemini-3-5-flash]] and GPT-5.x —
+  especially as the [[open-weights]] wave (now accelerated by the Fable 5 export
+  ban) closes the gap from below?
 - **Compute dependence.** A $900B-valuation lab needs guaranteed capacity. How
   much of Anthropic's roadmap rides on [[neocloud]] / hyperscaler GPU supply
   versus owned infrastructure?

@@ -45,7 +45,7 @@
       ],
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-06-14",
+      "updated_at": "2026-06-15",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -154,7 +154,7 @@
       ],
       "summary": "Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-06-14",
+      "updated_at": "2026-06-15",
       "file": "entities/amazon.md",
       "aliases": [
         "Amazon",
@@ -189,7 +189,7 @@
       ],
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-14",
+      "updated_at": "2026-06-15",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -210,6 +210,7 @@
         "gemini-3-5-flash",
         "gemini-spark",
         "neocloud",
+        "open-weights",
         "openai",
         "spacex",
         "xai"
@@ -355,7 +356,7 @@
       ],
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-06-14",
+      "updated_at": "2026-06-15",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -607,7 +608,7 @@
       ],
       "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-14",
+      "updated_at": "2026-06-15",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -999,7 +1000,7 @@
       ],
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-06-14",
+      "updated_at": "2026-06-15",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -1019,6 +1020,7 @@
         "openai"
       ],
       "inbound": [
+        "anthropic",
         "claude-fable-5"
       ]
     },
@@ -1034,7 +1036,7 @@
       ],
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-14",
+      "updated_at": "2026-06-15",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -1147,7 +1149,7 @@
       ],
       "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-06-14",
+      "updated_at": "2026-06-15",
       "file": "entities/spacex.md",
       "aliases": [
         "SpaceX",
@@ -1376,6 +1378,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-15",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-15 digest (Fable 5 export saga: China-access twist + first de-escalation). Created 0, updated 8 (anthropic — Semafor China-access dimension, senior staff flew to DC for direct talks, ~$50B ARR per The Information, own-servers pivot w/ Google lease backstop; federal-ai-policy — multi-actor blame war/Sacks on-record/~90-min ultimatum dispute, China-access rationale, EU \"not discriminatory\"/Canada 2008-risk pushback, Florida civil-suit reframe + KPMG pulled report; claude-fable-5 — still dark June 15, China-weight-security twist, Kimi K2.7 #2 ErdosBench/GLM-5.2 1M filling the vacuum; open-weights — Kimi K2.7-Code/GLM-5.2/MiniMax-M3-on-HF pouring into the Fable gap; agentic-ai-security — \"Verifier Tax\" safety↔success paper + coding-agents-find-file-miss-lines study; amazon — June 9→11→12 trigger timeline + Community Note caveat; openai — 42-state subpoena reframe/IPO-filing backdrop + Florida campus-shooter clarification; spacex — xAI folded in, new Anthropic/Google DC deals, Musk >$1T net worth)."
+    },
     {
       "date": "2026-06-14",
       "op": "ingest",

@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 summary: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.
 created_at: 2026-05-29
-updated_at: 2026-06-14
+updated_at: 2026-06-15
 sources:
+  - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
@@ -140,6 +141,22 @@ the cycle:
   medical/finance specialists comply with abuse/fraud requests when reframed
   in-domain — a timely caution that fine-tuning can silently strip alignment
   (ARA digest 2026-06-14).
+- **The "verifier tax" quantifies the safety↔success tradeoff (2026-06-15).** "The
+  Verifier Tax: Horizon-Dependent Safety–Success Tradeoffs in Tool-Using LLM
+  Agents" (discussed on r/MachineLearning) separates outcomes into **safe-success,
+  unsafe-success, and failure**, and finds that **adding verification reduces
+  unsafe completions but also reduces overall task completion as the horizon
+  grows** — a clean formalization of the same calibration tension the [[claude-fable-5|Fable
+  5]] reroute exposed (safety guardrails that bite into usefulness). A companion
+  community experiment, **routing LLMs by task verifiability** (n=120), found that
+  on **high-verifiability** tasks (code, structured extraction) weaker models with
+  retries approach frontier performance, while **multi-hop reasoning** shows the
+  largest gap — sharpening *where* verification pays (ARA digest 2026-06-15).
+- **Coding agents locate the file but miss the lines (2026-06-15).** A study (via
+  The Decoder) found agents like **Claude Code** and **Codex** reliably find the
+  *right file* but **miss most of the critical lines within it** — a precision gap
+  directly relevant to the blast-radius and auto-edit risks this theme tracks (see
+  [[dynamic-workflows]]) (ARA digest 2026-06-15).
 
 ## Open questions
 - **Does [[dynamic-workflows]] make this worse?** Hundreds of parallel
