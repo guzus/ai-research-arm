@@ -1457,9 +1457,20 @@ function renderHandleChips(handles: string[], limit = 10): string {
 function twitterMarkdownToHtml(md: string): string {
   let html = marked.parse(md) as string;
   html = wrapTables(html);
+  const wantDark = typeof window !== 'undefined'
+    && window.matchMedia
+    && window.matchMedia('(prefers-color-scheme: dark)').matches;
   html = html.replace(
-    /href="https?:\/\/(?:x|twitter)\.com\/\w+\/status\/(\d+)"[^>]*>([^<]+)<\/a>/g,
-    (match, tweetId: string) => {
+    /<a\s+href="(https?:\/\/(?:x|twitter)\.com\/\w+\/status\/(\d+))"[^>]*>([\s\S]*?)<\/a>/g,
+    (match, url: string, tweetId: string, text: string) => {
+      // A "bare" status link (the visible text is the URL itself) is a source
+      // citation, not inline prose — embed it as a tweet. Inline text links
+      // stay as links (just annotated with how long ago).
+      const bare = text.trim() === url.trim() || /^https?:\/\/(?:x|twitter)\.com\//.test(text.trim());
+      if (bare) {
+        return '<blockquote class="twitter-tweet" data-dnt="true" data-theme="' +
+          (wantDark ? 'dark' : 'light') + '"><a href="' + url + '"></a></blockquote>';
+      }
       const date = snowflakeToDate(tweetId);
       if (!date) return match;
       return match + '<span class="tweet-ago">' + escapeHtml(timeAgo(date)) + '</span>';
@@ -1467,6 +1478,25 @@ function twitterMarkdownToHtml(md: string): string {
   );
   html = html.replace(/(?<!\w)(@\w+)/g, '<span class="handle">$1</span>');
   return html;
+}
+
+// Hydrate any `blockquote.twitter-tweet` placeholders into real embeds using
+// X's widgets.js (loaded async from index.html). The script may not be ready
+// on first paint, so retry briefly. Idempotent — widgets.load skips already
+// rendered tweets.
+let tweetEmbedRetries = 0;
+function loadTweetEmbeds(root: HTMLElement): void {
+  if (!root.querySelector('blockquote.twitter-tweet')) return;
+  const tw = (window as unknown as { twttr?: { widgets?: { load?: (el?: HTMLElement) => void } } }).twttr;
+  if (tw?.widgets?.load) {
+    tweetEmbedRetries = 0;
+    tw.widgets.load(root);
+    return;
+  }
+  if (tweetEmbedRetries < 25) {
+    tweetEmbedRetries += 1;
+    setTimeout(() => loadTweetEmbeds(root), 400);
+  }
 }
 
 // ── Wiki (LLM Wiki) ───────────────────────────────────
@@ -1746,30 +1776,6 @@ function renderWikiIndex(index: WikiIndex): void {
     );
   }
 
-  // Recent-changes panel (newest first, already ordered in the index).
-  const log = (index.recent_log || []).slice(0, 12);
-  const logHtml = log.length
-    ? [
-        '<aside class="wiki-recent">',
-        '  <h2 class="wiki-recent-title">Recent changes</h2>',
-        '  <ul class="wiki-recent-list">',
-        log
-          .map((e) =>
-            [
-              '<li class="wiki-recent-item">',
-              '  <span class="wiki-recent-date">' + escapeHtml(e.date || '') + '</span>',
-              '  <span class="wiki-recent-op wiki-op-' + escapeHtml(e.op || '') + '">' +
-                escapeHtml(e.op || '') + '</span>',
-              '  <span class="wiki-recent-summary">' + escapeHtml(e.summary || '') + '</span>',
-              '</li>',
-            ].join('\n'),
-          )
-          .join('\n'),
-        '  </ul>',
-        '</aside>',
-      ].join('\n')
-    : '';
-
   const emptyNote =
     visible.length === 0
       ? '<div class="empty-state-text wiki-empty">No wiki pages match the search.</div>'
@@ -1783,12 +1789,9 @@ function renderWikiIndex(index: WikiIndex): void {
       '    <h1 class="wiki-index-title">LLM Wiki</h1>',
       '    <span class="wiki-index-count">' + pages.length + ' pages</span>',
       '  </div>',
-      '  <div class="wiki-index-layout">',
-      '    <div class="wiki-index-main">',
+      '  <div class="wiki-index-main">',
       emptyNote,
       sections.join('\n'),
-      '    </div>',
-      logHtml,
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -2150,7 +2153,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
         '    <summary>Full cycle text</summary>',
         '    <div class="md-content twitter-summary-body">' + leadHtml + '</div>',
         '  </details>',
-        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : '  <div class="md-content twitter-story-body">' + twitterMarkdownToHtml(section.body) + '</div>',
+        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + twitterMarkdownToHtml(section.body) + '</div>',
         skepticHtml,
         '</section>',
       ].join('\n'),
@@ -2158,6 +2161,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
   }
 
   setSafeContent(content, '<div class="twitter-report">' + cards.join('\n') + '</div>');
+  loadTweetEmbeds(content);
 }
 
 function loadTickets(): Promise<Ticket[] | null> {
