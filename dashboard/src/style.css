@@ -9,20 +9,23 @@
 
 :root {
   color-scheme: light dark;
+  /* Shell semantic tokens remap onto the ara-* design spine (defined at
+   * :root in components/ara-research.css) so the chrome, the index lists
+   * and the articles share one ink / accent / rule family. */
   --bg: #ffffff;
-  --bg-secondary: #f5f5f5;
-  --bg-hover: #ededed;
-  --border: #e5e5e5;
-  --border-light: #ededed;
-  --text: #171717;
-  --text-secondary: #525252;
-  --text-tertiary: #a3a3a3;
-  --accent: #171717;
+  --bg-secondary: #f4f5f8;            /* faint cool gray, tied to the blue family */
+  --bg-hover: #eceef4;
+  --border: var(--ara-rule);          /* airy hairline — same as article exhibits */
+  --border-light: #e8e8ec;
+  --text: var(--ara-ink);
+  --text-secondary: var(--ara-sec2);
+  --text-tertiary: var(--ara-sec3);
+  --accent: var(--ara-navy);          /* strong: active tabs, primary buttons, icon badges */
   --on-accent: #ffffff;
-  --accent-light: #ededed;
-  --accent-warm: #1f2937;
-  --accent-warm-bg: rgba(31,41,55,0.06);
-  --accent-warm-shadow: rgba(31,41,55,0.14);
+  --accent-light: var(--ara-periwinkle);
+  --accent-warm: var(--ara-royal);    /* links + accents — the same royal as the articles */
+  --accent-warm-bg: var(--ara-periwinkle);
+  --accent-warm-shadow: rgba(34,81,255,0.16);
   --mark-bg: #fde68a;
   --mark-fg: #171717;
   --radius: 12px;
@@ -40,20 +43,20 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0a0a0a;
-    --bg-secondary: #171717;
-    --bg-hover: #262626;
-    --border: #404040;
-    --border-light: #2e2e2e;
-    --text: #fafafa;
-    --text-secondary: #a3a3a3;
-    --text-tertiary: #737373;
-    --accent: #fafafa;
-    --on-accent: #0a0a0a;
-    --accent-light: #262626;
-    --accent-warm: #cbd5e1;
-    --accent-warm-bg: rgba(203,213,225,0.10);
-    --accent-warm-shadow: rgba(203,213,225,0.18);
+    --bg: #0b0d11;                    /* blue-black ground (was neutral #0a0a0a) */
+    --bg-secondary: #14161c;
+    --bg-hover: #1c1f27;
+    --border: var(--ara-rule);        /* #34373e */
+    --border-light: #2b2e35;
+    --text: var(--ara-ink);           /* #f1f3f7 */
+    --text-secondary: var(--ara-sec2);
+    --text-tertiary: var(--ara-sec3);
+    --accent: var(--ara-royal);       /* royal primary reads on the dark ground */
+    --on-accent: #08101c;             /* near-black text/icon on royal */
+    --accent-light: var(--ara-periwinkle);
+    --accent-warm: var(--ara-royal);
+    --accent-warm-bg: var(--ara-periwinkle);
+    --accent-warm-shadow: rgba(111,149,255,0.22);
     --mark-bg: #facc15;
     --mark-fg: #0a0a0a;
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
@@ -1492,21 +1495,27 @@ body.has-toc .section-nav { display: none; }
 }
 
 .ara-paper {
+  /* The daily "edition" is a newspaper FORMAT re-skinned onto the ara
+   * design spine: navy ink, royal accents and the Source Serif display
+   * face — not vintage brown-on-cream. Sourcing from the ara tokens also
+   * gives the edition dark-mode support it never had. */
+  --paper-ink: var(--ara-ink);
+  --paper-rule: var(--ara-rule-strong);   /* navy double-rule (royal in dark) */
+  --paper-accent: var(--ara-royal);        /* kickers, tags, links */
+  --paper-track: var(--accent-warm-bg);    /* faint periwinkle meter track */
   width: 100%;
   min-height: 100%;
   padding: clamp(20px, 4vw, 44px);
-  color: #181614;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,.12)),
-    #fff8ec;
-  border: 1px solid rgba(31, 26, 20, .22);
-  font-family: Georgia, "Times New Roman", serif;
+  color: var(--paper-ink);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  font-family: var(--font-serif);
 }
 
 .ara-paper-masthead {
   text-align: center;
-  border-top: 4px double #1f1a14;
-  border-bottom: 4px double #1f1a14;
+  border-top: 4px double var(--paper-rule);
+  border-bottom: 4px double var(--paper-rule);
   padding: 18px 0 16px;
   margin-bottom: 22px;
 }
@@ -1557,7 +1566,7 @@ body.has-toc .section-nav { display: none; }
   align-items: center;
   margin-bottom: 22px;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(31, 26, 20, .28);
+  border-bottom: 1px solid var(--border);
 }
 
 .ara-paper-index-title {
@@ -1574,8 +1583,8 @@ body.has-toc .section-nav { display: none; }
 }
 
 .ara-paper-index-link {
-  color: #181614;
-  border: 1px solid rgba(31, 26, 20, .32);
+  color: var(--paper-ink);
+  border: 1px solid var(--border);
   padding: 6px 9px;
   text-decoration: none;
   font-size: .78rem;
@@ -1594,7 +1603,7 @@ body.has-toc .section-nav { display: none; }
 .ara-paper-section-title {
   margin: 0 0 10px;
   padding-top: 8px;
-  border-top: 7px solid #1f1a14;
+  border-top: 7px solid var(--paper-rule);
   font-size: .8rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -1627,7 +1636,7 @@ body.has-toc .section-nav { display: none; }
   flex: 0 0 32px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(31, 26, 20, .35);
+  border: 1px solid var(--border);
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   transition: transform .18s ease;
 }
@@ -1662,7 +1671,7 @@ body.has-toc .section-nav { display: none; }
 
 .ara-paper-brief,
 .ara-paper-story {
-  border-top: 1px solid rgba(31, 26, 20, .35);
+  border-top: 1px solid var(--border);
   padding-top: 10px;
 }
 
@@ -1693,7 +1702,7 @@ body.has-toc .section-nav { display: none; }
 .ara-paper-brief-tag {
   justify-self: start;
   grid-column: 2;
-  color: #7b1d1d;
+  color: var(--paper-accent);
   font-size: .7rem;
   font-weight: 850;
   text-transform: uppercase;
@@ -1714,7 +1723,7 @@ body.has-toc .section-nav { display: none; }
 .ara-paper-brief-link {
   display: inline-block;
   margin-top: 8px;
-  color: #0b5d70;
+  color: var(--paper-accent);
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-size: .78rem;
   font-weight: 750;
@@ -1736,21 +1745,23 @@ body.has-toc .section-nav { display: none; }
 .ara-paper-meter-track {
   height: 10px;
   margin-top: 6px;
-  background: rgba(31, 26, 20, .13);
-  border: 1px solid rgba(31, 26, 20, .28);
+  background: var(--paper-track);
+  border: 1px solid var(--border);
 }
 
 .ara-paper-meter-fill {
   display: block;
   width: var(--ara-bar-pct, 0%);
   height: 100%;
-  background: #1f1a14;
+  background: var(--paper-rule);
 }
 
-.ara-paper-meter-row--hot .ara-paper-meter-fill { background: #9c2f27; }
-.ara-paper-meter-row--watch .ara-paper-meter-fill { background: #a66b16; }
-.ara-paper-meter-row--research .ara-paper-meter-fill { background: #356f61; }
-.ara-paper-meter-row--market .ara-paper-meter-fill { background: #274f88; }
+/* Category meters mapped onto the blue viz ramp (royal → cyan → light →
+ * navy) so the edition stays in one palette instead of red/orange/teal. */
+.ara-paper-meter-row--hot .ara-paper-meter-fill { background: var(--ara-royal); }
+.ara-paper-meter-row--watch .ara-paper-meter-fill { background: var(--ara-cyan); }
+.ara-paper-meter-row--research .ara-paper-meter-fill { background: var(--ara-viz-4); }
+.ara-paper-meter-row--market .ara-paper-meter-fill { background: var(--ara-navy); }
 
 .ara-paper-story summary {
   font-size: 1.2rem;
@@ -1760,15 +1771,15 @@ body.has-toc .section-nav { display: none; }
 
 .ara-paper-story-meta {
   margin-top: 7px;
-  color: #6d6256;
+  color: var(--text-secondary);
   font-size: .76rem;
   font-weight: 800;
   text-transform: uppercase;
 }
 
 .ara-paper .ara-quote {
-  border: 2px solid #1f1a14;
-  background: rgba(255,255,255,.35);
+  border: 2px solid var(--paper-rule);
+  background: var(--accent-warm-bg);
 }
 
 @media (max-width: 720px) {
