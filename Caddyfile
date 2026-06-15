@@ -1,5 +1,34 @@
-:{$PORT}
+:{$PORT} {
+	root * /srv
+	encode zstd gzip
 
-root * /srv
-try_files {path} /index.html
-file_server
+	@html {
+		path / /index.html /today /today/ /twitter /models /frontpage /research /research/* /wiki /wiki/*
+		not path *.js *.css *.json *.xml *.txt *.png *.jpg *.jpeg *.webp *.gif *.svg *.ico *.avif *.woff *.woff2
+	}
+	header @html Cache-Control "public, max-age=0, must-revalidate"
+	header @html CDN-Cache-Control "public, max-age=0, must-revalidate"
+
+	@assets path /assets/*
+	header @assets Cache-Control "public, max-age=31536000, immutable"
+	header @assets CDN-Cache-Control "public, max-age=31536000, immutable"
+
+	@data path /research/manifest.json /research/*.json /research/*/*.json /research/*/*/*.json
+	header @data Cache-Control "public, max-age=0, must-revalidate"
+
+	@seo path /sitemap.xml /robots.txt /feed.xml /llms.txt
+	header @seo Cache-Control "public, max-age=300, stale-while-revalidate=3600"
+	header @seo CDN-Cache-Control "public, max-age=300, stale-while-revalidate=3600"
+
+	@media path *.png *.jpg *.jpeg *.webp *.gif *.svg *.ico *.avif *.woff *.woff2
+	header @media Cache-Control "public, max-age=86400, stale-while-revalidate=604800"
+	header @media CDN-Cache-Control "public, max-age=86400, stale-while-revalidate=604800"
+
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+
+	try_files {path} {path}/index.html /index.html
+	file_server
+}

@@ -12,8 +12,9 @@
 //   - Wiki pages (dist/wiki/<slug>/index.html): per-page title/description/OG
 //     from research/wiki/index.json + page body inlined.
 //
-// Also emits dist/sitemap.xml (article + tab + wiki URLs with lastmod) and
-// dist/robots.txt (allow all + sitemap pointer).
+// Also emits dist/sitemap.xml (article + tab + wiki URLs with lastmod),
+// dist/robots.txt (allow all + sitemap pointer), dist/feed.xml, and
+// dist/llms.txt for AI-answer engines.
 //
 // Social share image: the most recent research/front-page/<date>-front-page.png
 // (the purpose-built daily newspaper graphic) is reused as the default og:image
@@ -44,6 +45,19 @@ const wikiIndexPath = join(wikiDir, 'index.json');
 
 // Override via env (POSTBUILD_SITE_ORIGIN) for preview deploys.
 const SITE_ORIGIN = process.env.POSTBUILD_SITE_ORIGIN || 'https://ara.guzus.xyz';
+const SITE_NAME = 'ara -- AI research arm';
+const SITE_DESCRIPTION =
+  'Automated AI-news intelligence: daily digests, a model-release timeline, ' +
+  'an LLM wiki, and long-form generative research synthesized from Twitter/X, ' +
+  'RSS, Bluesky, Hacker News, Reddit, and arXiv.';
+const HOME_DESCRIPTION =
+  'An automated AI-news intelligence pipeline: daily digests, a model-release ' +
+  'timeline, an LLM wiki, and long-form generative research synthesized from ' +
+  'Twitter/X, RSS, Bluesky, Hacker News, Reddit, and arXiv.';
+const SITE_LINKS = {
+  github: 'https://github.com/guzus/ai-research-arm',
+  author: 'https://x.com/uncanny_guzus',
+};
 
 // Markers that delimit the default SEO block in index.html. postbuild replaces
 // the whole block (markers included) per page; if the markers are absent we
@@ -77,6 +91,41 @@ function htmlEscapeAttr(s) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+function jsonLdTag(data) {
+  return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
+}
+
+function sharedMetaTags(title, desc) {
+  return [
+    `<meta name="author" content="ara -- AI research arm" />`,
+    `<meta name="application-name" content="ara" />`,
+    `<meta name="theme-color" content="#0f172a" />`,
+    `<meta name="generator" content="ARA static SEO postbuild" />`,
+    `<meta name="keywords" content="${htmlEscapeAttr('AI news, AI research, LLMs, model releases, artificial intelligence digest, generative AI, machine learning')}" />`,
+    `<meta name="abstract" content="${htmlEscapeAttr(desc)}" />`,
+    `<meta property="og:locale" content="en_US" />`,
+  ];
+}
+
+function organizationNode() {
+  return {
+    '@type': 'Organization',
+    '@id': `${SITE_ORIGIN}/#organization`,
+    name: SITE_NAME,
+    alternateName: 'ara',
+    url: SITE_ORIGIN,
+    sameAs: [SITE_LINKS.github, SITE_LINKS.author],
+  };
+}
+
+function publisherNode() {
+  return { '@id': `${SITE_ORIGIN}/#organization` };
+}
+
+function compactText(s) {
+  return String(s || '').replace(/\s+/g, ' ').trim();
 }
 
 // SERPs typically truncate descriptions around 155-160 chars. Aim for ~190
@@ -161,17 +210,21 @@ function buildArticlePage(template, row, articleHtml, shareImageUrl) {
   const { title: extracted, desc } = extractMeta(articleHtml);
   const title = extracted || row.title || row.slug;
   const dateIso = row.created_at;
+  const keywords = Array.isArray(row.tags) ? row.tags.filter(Boolean) : [];
 
   const jsonLd = {
-    '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
     description: desc,
     datePublished: dateIso,
     dateModified: dateIso,
-    author: { '@type': 'Organization', name: 'ara -- AI research arm', url: SITE_ORIGIN },
-    publisher: { '@type': 'Organization', name: 'ara', url: SITE_ORIGIN },
+    inLanguage: 'en',
+    isAccessibleForFree: true,
+    author: publisherNode(),
+    publisher: publisherNode(),
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    keywords,
+    about: keywords.map(name => ({ '@type': 'Thing', name })),
     url,
   };
   if (shareImageUrl) jsonLd.image = shareImageUrl;
@@ -179,6 +232,8 @@ function buildArticlePage(template, row, articleHtml, shareImageUrl) {
   const metaBlock = [
     `<title>${htmlEscapeAttr(title)} -- ara</title>`,
     `<meta name="description" content="${htmlEscapeAttr(desc)}" />`,
+    ...sharedMetaTags(title, desc),
+    keywords.length ? `<meta name="news_keywords" content="${htmlEscapeAttr(keywords.join(', '))}" />` : '',
     `<link rel="canonical" href="${url}" />`,
     `<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />`,
     `<meta property="og:type" content="article" />`,
@@ -192,8 +247,9 @@ function buildArticlePage(template, row, articleHtml, shareImageUrl) {
     `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
     `<link rel="alternate" type="application/rss+xml" title="ara -- AI research arm" href="${SITE_ORIGIN}/feed.xml" />`,
-    `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
-  ];
+    `<link rel="alternate" type="text/plain" title="llms.txt" href="${SITE_ORIGIN}/llms.txt" />`,
+    jsonLdTag({ '@context': 'https://schema.org', '@graph': [organizationNode(), jsonLd] }),
+  ].filter(Boolean);
 
   let html = applySeoBlock(template, metaBlock);
   html = inlineContent(
@@ -205,15 +261,28 @@ function buildArticlePage(template, row, articleHtml, shareImageUrl) {
 
 function buildHomePage(template, shareImageUrl) {
   const title = 'ara -- AI research arm';
-  const desc = truncateDescription(
-    'An automated AI-news intelligence pipeline: daily digests, a model-release ' +
-    'timeline, an LLM wiki, and long-form generative research synthesized from ' +
-    'Twitter/X, RSS, Bluesky, Hacker News, Reddit, and arXiv.',
-  );
+  const desc = truncateDescription(HOME_DESCRIPTION);
   const url = `${SITE_ORIGIN}/`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      organizationNode(),
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_ORIGIN}/#website`,
+        name: SITE_NAME,
+        alternateName: 'ara',
+        url,
+        description: desc,
+        inLanguage: 'en',
+        publisher: publisherNode(),
+      },
+    ],
+  };
   const metaBlock = [
     `<title>${htmlEscapeAttr(title)}</title>`,
     `<meta name="description" content="${htmlEscapeAttr(desc)}" />`,
+    ...sharedMetaTags(title, desc),
     `<link rel="canonical" href="${url}" />`,
     `<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />`,
     `<meta property="og:type" content="website" />`,
@@ -226,6 +295,8 @@ function buildHomePage(template, shareImageUrl) {
     `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
     `<link rel="alternate" type="application/rss+xml" title="ara -- AI research arm" href="${SITE_ORIGIN}/feed.xml" />`,
+    `<link rel="alternate" type="text/plain" title="llms.txt" href="${SITE_ORIGIN}/llms.txt" />`,
+    jsonLdTag(jsonLd),
   ];
   return applySeoBlock(template, metaBlock);
 }
@@ -264,15 +335,21 @@ function buildDigestPage(template, digest, shareImageUrl) {
   const bodyHtml = sanitizeFragment(marked.parse(md));
 
   const jsonLd = {
-    '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
     description: desc,
     datePublished: digest.date,
     dateModified: digest.date,
-    author: { '@type': 'Organization', name: 'ara -- AI research arm', url: SITE_ORIGIN },
-    publisher: { '@type': 'Organization', name: 'ara', url: SITE_ORIGIN },
+    inLanguage: 'en',
+    isAccessibleForFree: true,
+    author: publisherNode(),
+    publisher: publisherNode(),
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    about: [
+      { '@type': 'Thing', name: 'AI news' },
+      { '@type': 'Thing', name: 'model releases' },
+      { '@type': 'Thing', name: 'AI research' },
+    ],
     url,
   };
   if (shareImageUrl) jsonLd.image = shareImageUrl;
@@ -280,6 +357,7 @@ function buildDigestPage(template, digest, shareImageUrl) {
   const metaBlock = [
     `<title>${htmlEscapeAttr(title)} -- ara</title>`,
     `<meta name="description" content="${htmlEscapeAttr(desc)}" />`,
+    ...sharedMetaTags(title, desc),
     `<link rel="canonical" href="${url}" />`,
     `<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />`,
     `<meta property="og:type" content="article" />`,
@@ -293,7 +371,8 @@ function buildDigestPage(template, digest, shareImageUrl) {
     `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
     `<link rel="alternate" type="application/rss+xml" title="ara -- AI research arm" href="${SITE_ORIGIN}/feed.xml" />`,
-    `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
+    `<link rel="alternate" type="text/plain" title="llms.txt" href="${SITE_ORIGIN}/llms.txt" />`,
+    jsonLdTag({ '@context': 'https://schema.org', '@graph': [organizationNode(), jsonLd] }),
   ];
 
   let html = applySeoBlock(template, metaBlock);
@@ -308,6 +387,10 @@ function buildWikiPage(template, page, shareImageUrl) {
   const url = `${SITE_ORIGIN}/wiki/${page.slug}`;
   const title = page.title || page.slug;
   const desc = truncateDescription(decodeEntities(stripTags(page.summary || title)));
+  const keywords = [
+    ...(Array.isArray(page.tags) ? page.tags : []),
+    ...(Array.isArray(page.aliases) ? page.aliases : []),
+  ].filter(Boolean);
 
   // Inline the page body (markdown after the YAML frontmatter) for crawlers.
   let bodyHtml = '';
@@ -324,15 +407,18 @@ function buildWikiPage(template, page, shareImageUrl) {
   }
 
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'TechArticle',
     headline: title,
     description: desc,
     datePublished: page.created_at,
     dateModified: page.updated_at || page.created_at,
-    author: { '@type': 'Organization', name: 'ara -- AI research arm', url: SITE_ORIGIN },
-    publisher: { '@type': 'Organization', name: 'ara', url: SITE_ORIGIN },
+    inLanguage: 'en',
+    isAccessibleForFree: true,
+    author: publisherNode(),
+    publisher: publisherNode(),
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    keywords,
+    about: keywords.map(name => ({ '@type': 'Thing', name })),
     url,
   };
   if (shareImageUrl) jsonLd.image = shareImageUrl;
@@ -340,6 +426,7 @@ function buildWikiPage(template, page, shareImageUrl) {
   const metaBlock = [
     `<title>${htmlEscapeAttr(title)} -- ara wiki</title>`,
     `<meta name="description" content="${htmlEscapeAttr(desc)}" />`,
+    ...sharedMetaTags(title, desc),
     `<link rel="canonical" href="${url}" />`,
     `<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />`,
     `<meta property="og:type" content="article" />`,
@@ -352,7 +439,8 @@ function buildWikiPage(template, page, shareImageUrl) {
     `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
     `<link rel="alternate" type="application/rss+xml" title="ara -- AI research arm" href="${SITE_ORIGIN}/feed.xml" />`,
-    `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
+    `<link rel="alternate" type="text/plain" title="llms.txt" href="${SITE_ORIGIN}/llms.txt" />`,
+    jsonLdTag({ '@context': 'https://schema.org', '@graph': [organizationNode(), jsonLd] }),
   ];
 
   let html = applySeoBlock(template, metaBlock);
@@ -406,9 +494,117 @@ function buildRobots() {
     'User-agent: *',
     'Allow: /',
     '',
+    'User-agent: GPTBot',
+    'Allow: /',
+    '',
+    'User-agent: ClaudeBot',
+    'Allow: /',
+    '',
+    'User-agent: PerplexityBot',
+    'Allow: /',
+    '',
+    'User-agent: CCBot',
+    'Allow: /',
+    '',
     `Sitemap: ${SITE_ORIGIN}/sitemap.xml`,
     '',
   ].join('\n');
+}
+
+function markdownLine(s) {
+  return compactText(s).replace(/[\[\]]/g, '');
+}
+
+function recentDigestEntries(limit = 10) {
+  if (!existsSync(digestDir)) return [];
+  const re = /^(\d{4}-\d{2}-\d{2})-digest\.md$/;
+  return readdirSync(digestDir)
+    .map(n => (re.exec(n) || [])[1])
+    .filter(Boolean)
+    .sort()
+    .reverse()
+    .slice(0, limit)
+    .map(date => {
+      const md = readFileSync(join(digestDir, `${date}-digest.md`), 'utf8');
+      return {
+        date,
+        title: `AI Daily Digest -- ${date}`,
+        url: `${SITE_ORIGIN}/today#${date}`,
+        description: digestDescription(md),
+      };
+    });
+}
+
+function buildLlmsTxt(entries, wikiPages) {
+  const today = new Date().toISOString().slice(0, 10);
+  const recentArticles = entries
+    .filter(e => e.kind !== 'standalone')
+    .slice()
+    .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')))
+    .slice(0, 15);
+  const recentWiki = (wikiPages || [])
+    .slice()
+    .sort((a, b) => String(b.updated_at || b.created_at || '').localeCompare(String(a.updated_at || a.created_at || '')))
+    .slice(0, 20);
+
+  const lines = [
+    '# ara -- AI research arm',
+    '',
+    `> ${SITE_DESCRIPTION}`,
+    '',
+    `Updated: ${today}`,
+    '',
+    '## Canonical entry points',
+    '',
+    `- [Homepage](${SITE_ORIGIN}/): Live AI-news dashboard and archive navigation.`,
+    `- [Today](${SITE_ORIGIN}/today): Latest daily AI digest.`,
+    `- [Research archive](${SITE_ORIGIN}/research): Long-form generative research articles.`,
+    `- [LLM Wiki](${SITE_ORIGIN}/wiki): Entity, concept, and theme pages built from curated AI-news synthesis.`,
+    `- [Model timeline](${SITE_ORIGIN}/models): Model-release timeline and tickets.`,
+    `- [RSS feed](${SITE_ORIGIN}/feed.xml): Recent digests and research in RSS 2.0.`,
+    `- [Sitemap](${SITE_ORIGIN}/sitemap.xml): Full crawl map.`,
+    '',
+    '## Citation guidance',
+    '',
+    '- Prefer canonical URLs from this file, the sitemap, or each page canonical tag.',
+    '- Treat dated digest anchors as daily snapshots and research article URLs as stable article pages.',
+    '- The site is generated from public research artifacts in the GitHub repository linked on the homepage.',
+    '',
+  ];
+
+  const digests = recentDigestEntries(10);
+  if (digests.length) {
+    lines.push('## Recent daily digests', '');
+    for (const digest of digests) {
+      lines.push(`- [${markdownLine(digest.title)}](${digest.url}): ${markdownLine(digest.description)}`);
+    }
+    lines.push('');
+  }
+
+  if (recentArticles.length) {
+    lines.push('## Recent generative research', '');
+    for (const article of recentArticles) {
+      const title = markdownLine(article.title || article.slug);
+      const tags = Array.isArray(article.tags) && article.tags.length
+        ? ` Tags: ${article.tags.map(markdownLine).join(', ')}.`
+        : '';
+      const desc = markdownLine(article.prompt || title);
+      lines.push(`- [${title}](${SITE_ORIGIN}/research/${article.slug}): ${desc}${tags}`);
+    }
+    lines.push('');
+  }
+
+  if (recentWiki.length) {
+    lines.push('## Recently updated wiki pages', '');
+    for (const page of recentWiki) {
+      const title = markdownLine(page.title || page.slug);
+      const desc = markdownLine(page.summary || title);
+      lines.push(`- [${title}](${SITE_ORIGIN}/wiki/${page.slug}): ${desc}`);
+    }
+    lines.push('');
+  }
+
+  return lines.join('\n') + '\n';
 }
 
 // ---- RSS 2.0 feed of recent digests + recent generative articles ----
@@ -574,14 +770,15 @@ if (existsSync(wikiIndexPath)) {
 //    article/today/wiki pages inherit the default block, not the homepage one).
 writeFileSync(indexHtmlPath, buildHomePage(template, shareImageUrl));
 
-// 5) sitemap.xml, robots.txt, feed.xml.
+// 5) sitemap.xml, robots.txt, feed.xml, llms.txt.
 writeFileSync(join(dist, 'sitemap.xml'), buildSitemap(entries, wikiPages));
 writeFileSync(join(dist, 'robots.txt'), buildRobots());
 writeFileSync(join(dist, 'feed.xml'), buildFeed(entries, shareImageUrl));
+writeFileSync(join(dist, 'llms.txt'), buildLlmsTxt(entries, wikiPages));
 
 console.log(
   `postbuild-seo: ${written} article pages (${skipped} skipped), ` +
   `${digest ? 1 : 0} digest page, ${wikiWritten} wiki pages`,
 );
 console.log(`postbuild-seo: share image: ${shareImageUrl || '(none found)'}`);
-console.log('postbuild-seo: sitemap.xml + robots.txt + feed.xml written to dist/');
+console.log('postbuild-seo: sitemap.xml + robots.txt + feed.xml + llms.txt written to dist/');
