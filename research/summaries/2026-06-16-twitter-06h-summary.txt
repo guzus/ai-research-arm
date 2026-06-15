@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-16 06:59 UTC
+
+CYCLE: Quiet window — snapshot lags ~9h; no story past the 04:00 cycle.
+
+TOP STORIES:
+• Fable 5 / Mythos 5 embargo unresolved, day 4 — no readout from Anthropic-USG meetings, models still dark [⚠]
+• Xiaomi MiMo-V2.5-Pro-UltraSpeed: 1T-param MoE at 1,000+ tok/s on commodity GPUs, speed-as-moat (week-old) [⚠]
+• No new frontier launches (OpenAI/Google/xAI) and no fresh funding/M&A this window [✓]
+
+WATCH: A public readout from the Anthropic-Commerce/CIA/Kratsios meetings — restoration notice or modified Fable 5 release.
+
+Full update on GitHub.
