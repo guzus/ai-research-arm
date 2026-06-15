@@ -1,0 +1,8 @@
+node_modules/
+out/
+.remotion/
+*.log
+
+# Staged from research/front-page/ by scripts/copy-frontpages.mjs (not duplicated
+# into git — the source PNGs already ship in the repo). Regenerated on build.
+public/frontpages/
