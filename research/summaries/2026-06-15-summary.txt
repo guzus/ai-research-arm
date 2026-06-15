@@ -1,9 +1,9 @@
 AI News - 2026-06-15
 
 TOP STORIES:
-• David Sacks: Anthropic "refused" to patch a known Fable 5 jailbreak before US export controls hit — "the ball is in Anthropic's court"
-• Semafor exclusive: export limits tied to suspected China-linked access to Mythos 5 (Anthropic disputes this was ever raised)
-• Fable 5 & Mythos 5 still completely offline as of June 15, no restoration date; Anthropic had ~90 min to comply
+• NEW: Amazon CEO Andy Jassy reportedly triggered the shutdown — Amazon researchers red-teamed Mythos-class model into giving restricted cyberattack info, Jassy warned the White House (investor + cloud host, now regulator-trigger)
+• NEW: Anthropic flies senior staff (co-founder Tom Brown, policy chief Sarah Heck) to DC to negotiate restoration with Commerce Sec. Lutnick & Cyber Dir. Cairncross — both sides want models back, no fix/timeline yet
+• Earlier in window: Sacks says Anthropic "refused" to patch Fable 5 jailbreak; Semafor ties limits to suspected China access (Anthropic disputes); Fable 5 & Mythos 5 still offline, no ETA
 
 KEY NUMBERS:
 • ~90-minute compliance deadline before models pulled
