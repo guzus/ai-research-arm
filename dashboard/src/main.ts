@@ -1555,6 +1555,131 @@ async function hydrateTweetCards(root: HTMLElement): Promise<void> {
   }
 }
 
+// ── Wiki mentions (auto-link known entities to the LLM wiki) ──────────────
+// In rendered content (digest / twitter / articles) underline the FIRST
+// mention of any term that has an LLM-wiki page, link it, and show a hover
+// preview on desktop — so readers can quick-look + discover without leaving
+// the page. Clicking navigates to the wiki (cross-tab, SPA).
+let wikiIndexLoad: Promise<WikiIndex | null> | null = null;
+function loadWikiIndexCached(): Promise<WikiIndex | null> {
+  if (wikiIndexCache) return Promise.resolve(wikiIndexCache);
+  if (!wikiIndexLoad) wikiIndexLoad = loadWikiIndex(new AbortController().signal);
+  return wikiIndexLoad;
+}
+
+let wikiMatcher: { re: RegExp; map: Map<string, string> } | null = null;
+function getWikiMatcher(index: WikiIndex): { re: RegExp; map: Map<string, string> } | null {
+  if (wikiMatcher) return wikiMatcher;
+  const map = new Map<string, string>();   // lowercased term → slug
+  for (const p of index.pages) {
+    for (const term of [p.title, ...(p.aliases || [])]) {
+      const key = (term || '').trim().toLowerCase();
+      if (key.length < 3) continue;          // skip noise like "AI"
+      if (!map.has(key)) map.set(key, p.slug);
+    }
+  }
+  if (map.size === 0) return null;
+  // Longest terms first so "Claude Opus 4.8" wins over "Claude".
+  const escaped = Array.from(map.keys())
+    .sort((a, b) => b.length - a.length)
+    .map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  wikiMatcher = {
+    re: new RegExp('(?<![A-Za-z0-9])(' + escaped.join('|') + ')(?![A-Za-z0-9])', 'gi'),
+    map,
+  };
+  return wikiMatcher;
+}
+
+// Text inside these must NOT be wikified (links, code, chips, tweet cards).
+const WIKIFY_SKIP = 'a, code, pre, kbd, mark, button, select, .tweet-card, .ara-tag, .handle, .ara-eyebrow, .twitter-source-chip, .twitter-handle-chip, [data-wiki-slug], .wiki-mention';
+
+async function wikifyContent(root: HTMLElement): Promise<void> {
+  if (document.body.classList.contains('tab-wiki')) return;  // don't self-link the wiki
+  const index = await loadWikiIndexCached();
+  if (!index) return;
+  const matcher = getWikiMatcher(index);
+  if (!matcher) return;
+  const used = new Set<string>();   // link only the FIRST mention of each entity
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node: Node): number {
+      const el = (node as Text).parentElement;
+      if (!el || el.closest(WIKIFY_SKIP)) return NodeFilter.FILTER_REJECT;
+      return node.nodeValue && node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    },
+  });
+  const textNodes: Text[] = [];
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) textNodes.push(n as Text);
+  for (const node of textNodes) {
+    const text = node.nodeValue || '';
+    matcher.re.lastIndex = 0;
+    const hits: Array<{ s: number; e: number; slug: string; term: string }> = [];
+    let m: RegExpExecArray | null;
+    while ((m = matcher.re.exec(text))) {
+      const slug = matcher.map.get(m[1].toLowerCase());
+      if (slug && !used.has(slug)) {
+        used.add(slug);
+        hits.push({ s: m.index, e: m.index + m[1].length, slug, term: m[1] });
+      }
+    }
+    if (hits.length === 0) continue;
+    const frag = document.createDocumentFragment();
+    let cur = 0;
+    for (const h of hits) {
+      if (h.s > cur) frag.appendChild(document.createTextNode(text.slice(cur, h.s)));
+      const a = document.createElement('a');
+      a.className = 'wiki-mention';
+      a.setAttribute('data-wiki-slug', h.slug);
+      a.setAttribute('href', '/wiki/' + h.slug);
+      a.textContent = h.term;
+      frag.appendChild(a);
+      cur = h.e;
+    }
+    if (cur < text.length) frag.appendChild(document.createTextNode(text.slice(cur)));
+    node.parentNode?.replaceChild(frag, node);
+  }
+  ensureWikiHover();
+}
+
+// Shared desktop hover-preview card (one element, repositioned per mention).
+let wikiHoverEl: HTMLElement | null = null;
+let wikiHoverReady = false;
+function ensureWikiHover(): void {
+  if (wikiHoverReady) return;
+  wikiHoverReady = true;
+  document.addEventListener('mouseover', (e) => {
+    const el = (e.target as HTMLElement)?.closest?.('.wiki-mention') as HTMLElement | null;
+    if (el) showWikiHover(el);
+  });
+  document.addEventListener('mouseout', (e) => {
+    if ((e.target as HTMLElement)?.closest?.('.wiki-mention')) hideWikiHover();
+  });
+  window.addEventListener('scroll', hideWikiHover, true);
+}
+function showWikiHover(el: HTMLElement): void {
+  const slug = el.getAttribute('data-wiki-slug');
+  const page = slug ? wikiPageMap.get(slug) : null;
+  if (!page) return;
+  if (!wikiHoverEl) {
+    wikiHoverEl = document.createElement('div');
+    wikiHoverEl.className = 'wiki-hover';
+    document.body.appendChild(wikiHoverEl);
+  }
+  setSafeContent(
+    wikiHoverEl,
+    '<span class="wiki-hover-type">' + escapeHtml(String(page.type)) + '</span>' +
+    '<span class="wiki-hover-title">' + escapeHtml(page.title) + '</span>' +
+    '<span class="wiki-hover-summary">' + escapeHtml(page.summary || '') + '</span>',
+  );
+  const r = el.getBoundingClientRect();
+  const left = Math.max(12, Math.min(r.left, window.innerWidth - 320 - 12));
+  wikiHoverEl.style.display = 'block';
+  wikiHoverEl.style.left = left + 'px';
+  wikiHoverEl.style.top = (r.bottom + 8) + 'px';
+}
+function hideWikiHover(): void {
+  if (wikiHoverEl) wikiHoverEl.style.display = 'none';
+}
+
 // ── Wiki (LLM Wiki) ───────────────────────────────────
 //
 // The wiki is a compounding knowledge base under research/wiki/. The Python
@@ -1841,10 +1966,6 @@ function renderWikiIndex(index: WikiIndex): void {
     content,
     [
       '<div class="content-card wiki-index-card">',
-      '  <div class="wiki-index-header">',
-      '    <h1 class="wiki-index-title">LLM Wiki</h1>',
-      '    <span class="wiki-index-count">' + pages.length + ' pages</span>',
-      '  </div>',
       '  <div class="wiki-index-main">',
       emptyNote,
       sections.join('\n'),
@@ -2152,12 +2273,18 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
     const displayTime = timeInfo
       ? '<span class="twitter-cycle-time">' + escapeHtml(timeInfo.utc) + '</span><span class="local-time">' + escapeHtml(timeInfo.local) + '</span>'
       : '<span class="twitter-cycle-time">' + escapeHtml(title) + '</span>';
+    // Show the full cycle summary in the Signal Brief — it's the only place
+    // the summary lives now, so don't cut it mid-sentence.
     const leadText = cycleSummary
-      ? truncateText(cleanPublicLeadText(stripMarkdown(cycleSummary)), 620)
+      ? cleanPublicLeadText(stripMarkdown(cycleSummary))
       : truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 620);
-    // Storyless cycles fall back to the cycle markdown — minus the Cycle
-    // summary paragraph, which the Signal Brief above already shows verbatim.
-    const fallbackBody = section.body.replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '').trim();
+    // Storyless cycles fall back to the cycle markdown — minus the parts shown
+    // separately above (Cycle summary → Signal Brief; Skeptic's corner → its
+    // own callout) so nothing renders twice.
+    const fallbackBody = section.body
+      .replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '')
+      .replace(/###\s+[^\n]*[Ss]keptic[^\n]*\n[\s\S]*?(?=\n#{2,3}\s|$)/i, '')
+      .trim();
     const structuredStoryCards = renderStructuredTwitterStories(section.body);
     const storyCards = structuredStoryCards || stories.map((story) => {
       const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
@@ -2216,6 +2343,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
 
   setSafeContent(content, '<div class="twitter-report">' + cards.join('\n') + '</div>');
   void hydrateTweetCards(content);
+  void wikifyContent(content);
 }
 
 function loadTickets(): Promise<Ticket[] | null> {
@@ -2456,9 +2584,6 @@ function renderTickets(tickets: Ticket[] | null): void {
   setSafeContent(
     content,
     `<div class="tickets-view">
-      <div class="tickets-heading">
-        <h2>Model release timeline</h2>
-      </div>
       <div class="tickets-controls">
         <div class="ticket-filters">${statusBar}</div>
         <select class="ticket-company-select" data-filter-company>${companyOptions}</select>
@@ -2553,15 +2678,10 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     const audioUrl = `${AUDIO_BASE}/audio/${dateStr}-digest.mp3`;
     cards.push(
       [
-        '<div class="content-card today-audio-card">',
-        '  <div class="content-card-header">',
-        '    <div class="content-card-title">🎧 Audio digest</div>',
-        '  </div>',
-        '  <div class="content-card-body">',
-        '    <audio controls preload="metadata" style="width:100%;" src="' + audioUrl + '">',
-        '      Your browser does not support the audio element.',
-        '    </audio>',
-        '  </div>',
+        '<div class="today-audio">',
+        '  <audio controls preload="metadata" style="width:100%;" src="' + audioUrl + '">',
+        '    Your browser does not support the audio element.',
+        '  </audio>',
         '</div>',
       ].join('\n'),
     );
@@ -2592,9 +2712,6 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
       cards.push(
         [
           '<div class="content-card today-card">',
-          '  <div class="content-card-header">',
-          '    <div class="content-card-title">' + escapeHtml(displayDate(currentDate)) + '</div>',
-          '  </div>',
           '  <div class="content-card-body">',
           '    <div class="today-tldr">',
           '      <span class="today-tldr-label">TL;DR</span>',
@@ -2641,9 +2758,11 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
       ].join('\n'),
     );
     enhanceNewspaper();
+    void wikifyContent(content);
     return;
   }
   setSafeContent(content, todayCards);
+  void wikifyContent(content);
 }
 
 // ── Generative research ───────────────────────────────
@@ -2786,6 +2905,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     applyAraTooltips(article);
     renderResearchTOC(article);
     addSectionAnchors(article);
+    void wikifyContent(article);
     scrollToHashIfPresent();
   } else {
     hideResearchTOC();
@@ -5012,6 +5132,19 @@ content.addEventListener('click', (e) => {
   // for instant SPA nav so a click never triggers a full page reload. Mirror the
   // research [data-slug] branch. Placed before the [data-slug] lookup; they use
   // distinct attributes so there's no collision, but ordering keeps intent clear.
+  // Wiki mentions (auto-linked entities in digest/twitter/articles) navigate
+  // to the wiki from ANY tab — distinct from the wiki-tab-only links below.
+  const wikiMention = target.closest('.wiki-mention') as HTMLElement | null;
+  if (wikiMention) {
+    const slug = wikiMention.dataset.wikiSlug;
+    if (slug) {
+      e.preventDefault();
+      activeTab = 'wiki';
+      selectedSlug = slug;
+      load();
+    }
+    return;
+  }
   const wikiAnchor = target.closest('[data-wiki-slug]') as HTMLElement | null;
   if (wikiAnchor && activeTab === 'wiki') {
     const slug = wikiAnchor.dataset.wikiSlug;

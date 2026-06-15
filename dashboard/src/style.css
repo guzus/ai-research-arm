@@ -72,6 +72,7 @@ body {
   background: var(--bg-secondary);
   color: var(--text);
   line-height: 1.6;
+  letter-spacing: -0.012em;  /* tighter tracking overall for faster reading */
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
@@ -451,6 +452,74 @@ body {
 .shortcut-guide,
 .refresh-btn {
   display: none !important;
+}
+
+/* "Request research" is a research-tab action — only show it on /research. */
+body:not(.tab-research) .request-btn { display: none; }
+
+/* Audio digest: bare player, no card chrome / "Audio digest" label. */
+.today-audio { margin: 0 0 18px; }
+.today-audio audio { width: 100%; display: block; }
+
+/* Tidy list margins inside callouts (e.g. Skeptic's corner) so bullets sit
+ * close to the colored edge instead of deeply indented. */
+.ara-callout ul,
+.ara-callout ol { margin: 8px 0 0; padding-left: 18px; }
+.ara-callout li { margin: 4px 0; }
+.ara-callout li::marker { color: var(--text-tertiary); }
+
+/* Wiki mentions: underline entities that have an LLM-wiki page; hover (desktop)
+ * shows a quick-look preview, click navigates to the page. */
+.wiki-mention {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent-warm);
+  cursor: pointer;
+  transition: color 0.1s ease, border-color 0.1s ease;
+}
+.wiki-mention:hover {
+  color: var(--accent-warm);
+  border-bottom-color: var(--accent-warm);
+  border-bottom-style: solid;
+}
+.wiki-hover {
+  position: fixed;
+  z-index: 1200;
+  display: none;
+  width: 320px;
+  max-width: calc(100vw - 24px);
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  pointer-events: none;
+}
+.wiki-hover-type {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ara-royal);
+  margin-bottom: 5px;
+}
+.wiki-hover-title {
+  display: block;
+  font-weight: 650;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+.wiki-hover-summary {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
 }
 
 .cal-header {
