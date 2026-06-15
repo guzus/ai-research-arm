@@ -3073,15 +3073,14 @@ body.tab-frontpage .section-nav {
   min-width: 0;
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
-  border-top: 3px solid var(--border);
   border-radius: 8px;
 }
-/* Status lives on the column top accent (cards no longer carry a pill). */
-.ticket-column-rumored    { border-top-color: #9aa0ac; }
-.ticket-column-in-testing { border-top-color: #d99a2b; }
-.ticket-column-confirmed  { border-top-color: #2ba8e0; }
-.ticket-column-released   { border-top-color: #2fa86a; }
-.ticket-column-closed     { border-top-color: #b6bcc6; }
+/* Status reads from the column-header label color (no top bar / card pill). */
+.ticket-column-rumored    .ticket-column-header { color: #8a92a0; }
+.ticket-column-in-testing .ticket-column-header { color: #c77f1a; }
+.ticket-column-confirmed  .ticket-column-header { color: #1f93cc; }
+.ticket-column-released   .ticket-column-header { color: #2a9560; }
+.ticket-column-closed     .ticket-column-header { color: #8a92a0; }
 
 .ticket-column-header {
   height: 30px;
