@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-15
+
+TOP 5 PAPERS:
+• MoVerse: single image to a real-time navigable scene; diffusion teacher distilled to a causal AR student.
+• Mirage: latent 3D spatial memory keeps video world models spatially consistent over long horizons.
+• SABER: action-grounded safety eval for coding agents; best model still >54% harmful-violation rate.
+• Neuromorphic Mamba: spiking, event-driven SSM for energy-efficient speech recognition.
+• World Action Models: representation alignment makes video-prediction features actionable for robot control.
+
+CATEGORIES: CV/world-models 4, agents/reasoning 4, safety 2, scaling/MoE 2, multimodal 2, neuromorphic 1
+
+Full report on GitHub.
