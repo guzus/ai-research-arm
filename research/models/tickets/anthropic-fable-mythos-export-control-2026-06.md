@@ -25,6 +25,15 @@ status_note: |
   restore access. Anthropic's account says it got a **90-minute hard deadline**;
   the Admin says it "begged for hours." The actual Commerce/Lutnick directive
   text remains **unpublished**.
+
+  **As of 2026-06-15 (day 3):** both models remain suspended worldwide — no
+  restoration, license carve-out, or published Commerce/BIS directive yet, and
+  the open-weights / sovereignty discourse continues. Additional *unverified*
+  secondary/social claims are circulating and are **not** primary-sourced:
+  Microsoft reportedly told its own staff to stop using Fable 5 (citing a
+  30-day data-retention rule) even before the order; **Andrej Karpathy** and
+  other non-US Anthropic staff reportedly locked out; and a low-credibility
+  claim that a China-linked group had obtained access to Mythos.
 expected: "Restoration pending — Anthropic 'working to restore access'; Polymarket priced ~65% restoration by 2026-07-01. No published Commerce/BIS document yet"
 labels:
   - regulatory
@@ -42,12 +51,14 @@ sources:
   - https://arstechnica.com/ai/2026/06/anthropic-shuts-down-fable-mythos-models-following-trump-admin-directive/
   - https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578
 created_at: 2026-06-14
-updated_at: 2026-06-14
+updated_at: 2026-06-15
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-14
     change: "Created — US export-control directive (2026-06-12) bars foreign-national access to Anthropic's Fable 5 and Mythos 5, forcing a worldwide shutdown of both models for all customers late 2026-06-12 (other Claude models unaffected; sessions fall back to Opus 4.8). First US export control reaching a frontier model rather than chips. Reported trigger: an Amazon-surfaced Fable 5 jailbreak; Amazon CEO Jassy briefed Treasury's Bessent; White House asked Dario Amodei to fix or de-deploy and (per @DavidSacks) he refused. Anthropic calls it a 'misunderstanding,' disputes severity (says GPT-5.5 shares the vuln), and is working to restore access; dueling timelines on whether it was a 90-min ultimatum or hours of negotiation. Reuters/Techmeme, The Verge, Ars Technica, WSJ all carry it; Anthropic's own statement (@AnthropicAI, ~70K+ likes) + @ClaudeDevs product notice are primary for the suspension. Status confirmed (the order and shutdown are on-record/multi-source); verification partial (no published Commerce/BIS directive text; trigger details rest on anonymous/secondary sourcing). Product impact tracked on [[claude-fable-5]] and [[mythos-public-release]]"
+  - ts: 2026-06-15
+    change: "Day 3 — Fable 5 and Mythos 5 remain suspended worldwide; no restoration, license carve-out, or published Commerce/BIS directive text yet, and the open-weights / sovereignty discourse continues. Additional *unverified* secondary/social claims circulating (none primary-sourced): Microsoft reportedly told its own staff to stop using Fable 5 over a 30-day data-retention rule even before the order; Andrej Karpathy and other non-US Anthropic staff reportedly locked out; and a low-credibility claim that a China-linked group obtained access to Mythos. Status stays confirmed; verification stays partial."
 ---
 
 On **2026-06-12** the US government issued an **export-control directive**

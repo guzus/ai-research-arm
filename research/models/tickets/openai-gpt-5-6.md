@@ -12,7 +12,12 @@ status_note: |
   developers independently hit **"Model not found: gpt-5.5" 404s inside Codex** —
   a *weak* backend tell equally consistent with a routing hiccup, and about 5.5
   rather than 5.6. **No OpenAI on-record date, no public artifact, no benchmarks.**
-expected: "Prediction markets ~89% by 2026-06-30; no OpenAI-confirmed date"
+  A newer **low-credibility, single secondary/social** rumor (2026-06-15) pins
+  a **2026-06-23** release with ~1.5M-token context, stronger agentic coding,
+  and pricing ~3x cheaper than Fable 5 — timed to the date many Fable 5 users
+  are pushed to a premium plan. Consistent with the by-2026-06-30 window;
+  unconfirmed, no primary.
+expected: "Prediction markets ~89% by 2026-06-30; a social rumor floats 2026-06-23; no OpenAI-confirmed date"
 labels:
   - openai
   - frontier-model
@@ -23,12 +28,14 @@ sources:
   - "@AndrewCurran_"
   - "@Polymarket"
 created_at: 2026-06-09
-updated_at: 2026-06-09
+updated_at: 2026-06-15
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-09
     change: "Created — GPT-5.6 anticipated alongside OpenAI's ChatGPT 'super app' overhaul ([[openai-chatgpt-superapp-2026-06]]). Andrew Curran flagged a 'next week' window; prediction markets price a by-2026-06-30 release ~89%; multiple devs hit 'gpt-5.5' 404s in Codex (weak tell, and about 5.5 not 5.6). No OpenAI on-record date, no artifact, no benchmarks → status rumored, verification partial (multiple secondary corroborations, no primary)"
+  - ts: 2026-06-15
+    change: "Rumor refresh — a low-credibility single-source social rumor now pins a 2026-06-23 GPT-5.6 release with ~1.5M-token context, stronger agentic coding, and ~3x-cheaper-than-Fable-5 pricing, timed to the date many Fable 5 users are pushed to premium. Consistent with the existing by-2026-06-30 window; still no OpenAI on-record date or public artifact. Status stays rumored; verification stays partial."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely
