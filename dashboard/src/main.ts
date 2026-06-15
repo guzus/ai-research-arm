@@ -677,16 +677,10 @@ function handleCalendarClick(e: Event): void {
   // Toggle fold/unfold when clicking the header (but not nav buttons)
   const toggleEl = target.closest('[data-cal-toggle]') as HTMLElement | null;
   if (toggleEl && !target.closest('[data-cal-nav]') && !target.closest('[data-cal-today]')) {
-    // The calendar pill is the day-view entry: from another tab it opens the
-    // digest/newspaper; when already there it just folds the date picker.
-    if (activeTab !== 'today') {
-      activeTab = 'today';
-      syncTabUi();
-      load();
-    } else {
-      calendarEl.classList.toggle('open');
-      renderCalendar();
-    }
+    // The pill is a date picker: clicking it opens the calendar from any tab;
+    // picking a day (cal-day handler) then opens that day's digest/newspaper.
+    calendarEl.classList.toggle('open');
+    renderCalendar();
     return;
   }
 
@@ -2638,6 +2632,10 @@ function enhanceNewspaper(root: ParentNode = content): void {
       toggle.dataset.bound = 'true';
       const controlledId = toggle.getAttribute('aria-controls');
       const panel = controlledId ? paper.querySelector<HTMLElement>('#' + CSS.escape(controlledId)) : null;
+      // Unfold by default — sections (Departments, lead, etc.) start expanded so
+      // the content reads without a click; clicking still collapses.
+      toggle.setAttribute('aria-expanded', 'true');
+      if (panel) panel.hidden = false;
       toggle.addEventListener('click', () => {
         const expanded = toggle.getAttribute('aria-expanded') !== 'false';
         toggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
