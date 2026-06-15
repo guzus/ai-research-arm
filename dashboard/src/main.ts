@@ -2406,14 +2406,12 @@ function ticketStatusPill(status: TicketStatus): string {
 // (note, expected, model, verification, sources, history) lives in the modal
 // that opens on click, so the board stays short and scannable.
 function ticketCard(ticket: Ticket): string {
-  const labelsHtml = (ticket.labels || []).slice(0, 3)
-    .map((l) => `<span class="ara-tag">${escapeHtml(l)}</span>`).join('');
+  // Bird's-eye board = company + title only; labels/details live in the modal.
   return `<article class="ticket-card ticket-card-${ticket.status}" data-slug="${escapeHtml(ticket.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(ticket.title)}">
     <div class="ticket-card-top">
       <span class="ticket-company">${escapeHtml(ticket.company)}</span>
     </div>
     <h3 class="ticket-title">${escapeHtml(ticket.title)}</h3>
-    ${labelsHtml ? `<div class="ticket-labels">${labelsHtml}</div>` : ''}
   </article>`;
 }
 

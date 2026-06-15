@@ -2983,60 +2983,67 @@ body.tab-frontpage .section-nav {
 
 /* (The non-functional "Release"/"•••" Jira chrome buttons were removed.) */
 
+/* Unified filter bar: status segments + company dropdown share one bordered
+ * toolbar with consistent type/height and a divider between the two facets. */
 .tickets-controls {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
 }
 
 .ticket-filters {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 2px;
 }
 
 .ticket-filter-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 10px;
+  padding: 5px 11px;
   font-size: 12px;
   font-weight: 600;
-  color: #42526e;
+  color: var(--text-secondary);
   background: transparent;
-  border: 1px solid transparent;
-  border-radius: 3px;
+  border: 0;
+  border-radius: 8px;
   cursor: pointer;
   text-transform: capitalize;
-  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  transition: background 120ms ease, color 120ms ease;
 }
-.ticket-filter-pill:hover { background: var(--bg-hover); }
+.ticket-filter-pill:hover { background: var(--bg-hover); color: var(--text); }
 .ticket-filter-pill.active {
   background: var(--accent-warm-bg);
   color: var(--accent-warm);
-  border-color: var(--accent-warm-bg);
 }
 .ticket-filter-count {
   font-variant-numeric: tabular-nums;
   font-size: 11px;
   opacity: 0.7;
 }
-.ticket-filter-pill.active .ticket-filter-count { opacity: 0.85; }
+.ticket-filter-pill.active .ticket-filter-count { opacity: 0.9; }
 
 .ticket-company-select {
   font-size: 12px;
   font-weight: 500;
-  padding: 6px 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg);
-  color: var(--text);
+  padding: 5px 8px 5px 12px;
+  margin-left: 4px;
+  border: 0;
+  border-left: 1px solid var(--border-light);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: background 0.12s ease, border-color 0.12s ease;
+  transition: color 0.12s ease;
 }
-.ticket-company-select:hover { background: var(--bg-hover); }
+.ticket-company-select:hover { color: var(--text); }
 
 .ticket-summary {
   font-size: 12px;
