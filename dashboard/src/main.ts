@@ -657,9 +657,30 @@ function buildCalendarHtml(): string {
   return html;
 }
 
+// The picker popover is position:fixed (so it escapes the .tabs overflow clip);
+// position it under the pill in viewport coords after each render.
+function positionCalPop(): void {
+  const pop = calendarEl.querySelector<HTMLElement>('.cal-pop');
+  const header = calendarEl.querySelector<HTMLElement>('.cal-header');
+  if (!pop || !header) return;
+  const r = header.getBoundingClientRect();
+  pop.style.top = (r.bottom + 8) + 'px';
+  pop.style.left = Math.max(8, Math.min(r.left, window.innerWidth - 296)) + 'px';
+}
+
 function renderCalendar(): void {
   setSafeCalendar(calendarEl, buildCalendarHtml());
+  if (calendarEl.classList.contains('open')) positionCalPop();
 }
+
+// Close the picker on scroll — the pill isn't sticky, so a fixed popover would
+// otherwise detach from it.
+window.addEventListener('scroll', () => {
+  if (calendarEl.classList.contains('open')) {
+    calendarEl.classList.remove('open');
+    renderCalendar();
+  }
+}, true);
 
 /** Safely set calendar content using DOMPurify */
 function setSafeCalendar(el: HTMLElement, rawHtml: string): void {

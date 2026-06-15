@@ -580,10 +580,8 @@ body:not(.tab-research) .controls { display: none; }
 }
 .calendar.open .cal-pop {
   display: block;
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  z-index: 60;
+  position: fixed;          /* fixed so it escapes the .tabs overflow-x clip */
+  z-index: 1100;
   width: 280px;
   padding: 12px;
   background: var(--bg);
