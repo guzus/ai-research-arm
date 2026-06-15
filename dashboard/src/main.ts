@@ -1644,9 +1644,21 @@ function wikiTagsHtml(tags: string[] | undefined): string {
   if (!tags || tags.length === 0) return '';
   return (
     '<span class="wiki-tags">' +
-    tags.map((t) => '<span class="wiki-tag">' + escapeHtml(t) + '</span>').join('') +
+    tags.map((t) => '<span class="ara-tag">' + escapeHtml(t) + '</span>').join('') +
     '</span>'
   );
+}
+
+// Page metadata as an ara-kv grid. Surfaces updated/created (which the index
+// carries but the UI never showed) + the link degree, so a page reads like a
+// compact entity card.
+function wikiKvHtml(page: WikiPage): string {
+  const rows = [
+    page.updated_at ? '<dt>Updated</dt><dd>' + escapeHtml(page.updated_at) + '</dd>' : '',
+    page.created_at ? '<dt>Created</dt><dd>' + escapeHtml(page.created_at) + '</dd>' : '',
+    '<dt>Links</dt><dd>' + (page.inbound || []).length + ' in · ' + (page.outbound || []).length + ' out</dd>',
+  ].filter(Boolean).join('');
+  return '<dl class="ara-kv">' + rows + '</dl>';
 }
 
 /** Internal link to another wiki page (used in lists/backlinks). Always an
@@ -1832,12 +1844,14 @@ function renderWikiPage(page: WikiPage, body: string): void {
       '<div class="content-card wiki-page-card">',
       '  <div class="wiki-page-meta">',
       '    <button class="gen-research-back" data-wiki-back>&lsaquo; All pages</button>',
-      '    <span class="wiki-type-chip wiki-type-' + escapeHtml(String(page.type)) + '">' +
-        escapeHtml(String(page.type)) + '</span>',
       '  </div>',
       '  <div class="wiki-page-header">',
+      '    <span class="ara-eyebrow">' + escapeHtml(String(page.type)) + '</span>',
       '    <h1 class="wiki-page-title">' + escapeHtml(page.title) + '</h1>',
-      page.summary ? '    <p class="wiki-page-summary">' + escapeHtml(page.summary) + '</p>' : '',
+      page.summary
+        ? '    <div class="ara-callout ara-callout--info"><span class="ara-callout-label">Summary</span><p>' + escapeHtml(page.summary) + '</p></div>'
+        : '',
+      wikiKvHtml(page),
       wikiTagsHtml(page.tags),
       '  </div>',
       '  <div class="wiki-page-body md-content"></div>',
@@ -1937,6 +1951,40 @@ function firstHtml(root: ParentNode, selector: string): string {
   return (root.querySelector(selector) as HTMLElement | null)?.innerHTML?.trim() || '';
 }
 
+// Turn a story's Verify/Watch signals into ara-callouts. The Verify variant
+// (and its flag dot) is keyed off the verdict glyph the data already carries:
+// ✓ = multi-source confirmed (success/green), ⚠ = single-source (warn/yellow).
+function twitterSignalsToCallouts(story: Element): string {
+  const sig = story.querySelector('.twitter-story-signals');
+  if (!sig) return '';
+  const rows = Array.from(sig.querySelectorAll(':scope > div'));
+  if (rows.length === 0) return '';
+  return rows.map((row) => {
+    const label = (row.querySelector('span')?.textContent || '').trim();
+    let text = (row.textContent || '').replace(/\s+/g, ' ').trim();
+    if (label && text.startsWith(label)) text = text.slice(label.length).trim();
+    const isVerify = /verif/i.test(label);
+    let variant = 'ara-callout--info';
+    let flag = '';
+    if (isVerify) {
+      if (/⚠/.test(text)) { variant = 'ara-callout--warn'; flag = '<span class="ara-flag ara-flag--yellow"></span>'; }
+      else if (/✓/.test(text)) { variant = 'ara-callout--success'; flag = '<span class="ara-flag ara-flag--green"></span>'; }
+      text = text.replace(/^[✓⚠✗]\s*/, '');
+    }
+    const labelText = label || (isVerify ? 'Verify' : 'Watch');
+    return '<div class="ara-callout ' + variant + '">'
+      + '<span class="ara-callout-label">' + flag + escapeHtml(labelText) + '</span>'
+      + '<p>' + highlightPlainText(text) + '</p></div>';
+  }).join('\n');
+}
+
+// The "Skeptic's corner" markdown section (after the stories). The structured
+// story path drops it today; surface it as a danger callout.
+function extractSkepticCorner(body: string): string {
+  const m = body.match(/###\s+[^\n]*[Ss]keptic[^\n]*\n([\s\S]*?)(?=\n#{2,3}\s|$)/);
+  return m ? m[1].trim() : '';
+}
+
 function renderStructuredTwitterStories(body: string): string {
   if (!/\btwitter-story\b/.test(body)) return '';
   const doc = new DOMParser().parseFromString('<div>' + body + '</div>', 'text/html');
@@ -1948,11 +1996,11 @@ function renderStructuredTwitterStories(body: string): string {
     const title = firstText(story, '.twitter-story-title, h3');
     const lead = firstText(story, '.twitter-story-lead');
     const sources = firstHtml(story, '.twitter-story-sources');
-    const signals = firstHtml(story, '.twitter-story-signals');
+    const signalsHtml = twitterSignalsToCallouts(story);
     const bodyHtml = firstHtml(story, '.twitter-story-body') || firstHtml(story, '.twitter-story-details');
     const detailsBits = [
       sources ? '<div class="twitter-story-chips">' + sources + '</div>' : '',
-      signals ? '<div class="twitter-story-signals">' + signals + '</div>' : '',
+      signalsHtml,
       bodyHtml ? '<div class="md-content twitter-story-body">' + bodyHtml + '</div>' : '',
     ].filter(Boolean).join('\n');
 
@@ -2081,6 +2129,11 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
       ].filter(Boolean).join('\n');
     }).join('\n');
 
+    const skepticBody = extractSkepticCorner(section.body);
+    const skepticHtml = skepticBody
+      ? '<div class="ara-callout ara-callout--danger"><span class="ara-callout-label">🚩 Skeptic\'s corner</span>' + twitterMarkdownToHtml(skepticBody) + '</div>'
+      : '';
+
     cards.push(
       [
         '<section class="content-card twitter-cycle-card">',
@@ -2098,6 +2151,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
         '    <div class="md-content twitter-summary-body">' + leadHtml + '</div>',
         '  </details>',
         storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : '  <div class="md-content twitter-story-body">' + twitterMarkdownToHtml(section.body) + '</div>',
+        skepticHtml,
         '</section>',
       ].join('\n'),
     );
@@ -2149,7 +2203,7 @@ function ticketCard(ticket: Ticket): string {
     return `<a class="ticket-source-link" href="${escapeHtml(s)}" target="_blank" rel="noopener">${escapeHtml(hostnameOf(s))}</a>`;
   }).join('');
   const extraSources = ticket.sources.length > 3 ? `<span class="ticket-source-more">+${ticket.sources.length - 3}</span>` : '';
-  const labelsHtml = (ticket.labels || []).map((l) => `<span class="ticket-label">${escapeHtml(l)}</span>`).join('');
+  const labelsHtml = (ticket.labels || []).map((l) => `<span class="ara-tag">${escapeHtml(l)}</span>`).join('');
   const expectedRow = ticket.expected
     ? `<div class="ticket-row"><span class="ticket-row-key">Expected</span><span class="ticket-row-val">${escapeHtml(ticket.expected)}</span></div>`
     : '';
@@ -2189,16 +2243,44 @@ function ticketCard(ticket: Ticket): string {
 
 function ticketExpandedPanel(ticket: Ticket | null): string {
   if (!ticket) return '';
+  // Verification → ara-flag dot (honest 3-state use: confirmed/partial/unverified).
+  const verifFlag: Record<TicketVerification, string> = {
+    'confirmed': 'ara-flag--green',
+    'partial': 'ara-flag--yellow',
+    'unverified': 'ara-flag--red',
+  };
+  const verifLabel: Record<TicketVerification, string> = {
+    'confirmed': 'Confirmed',
+    'partial': 'Partial corroboration',
+    'unverified': 'Unverified',
+  };
+  // Structured metadata as an ara-kv definition grid.
+  const kvRows = [
+    `<dt>Company</dt><dd>${escapeHtml(ticket.company)}</dd>`,
+    ticket.model ? `<dt>Model</dt><dd>${escapeHtml(ticket.model)}</dd>` : '',
+    ticket.expected ? `<dt>Expected</dt><dd>${escapeHtml(ticket.expected)}</dd>` : '',
+    `<dt>Verification</dt><dd><span class="ara-flag ${verifFlag[ticket.verification]}"></span>${escapeHtml(verifLabel[ticket.verification])}</dd>`,
+    `<dt>Updated</dt><dd>${escapeHtml(ticket.updated_at)}</dd>`,
+    `<dt>Created</dt><dd>${escapeHtml(ticket.created_at)}</dd>`,
+    ticket.status === 'closed' && ticket.closed_reason
+      ? `<dt>Closed</dt><dd>${escapeHtml(ticket.closed_at || '')} — ${escapeHtml(ticket.closed_reason)}</dd>`
+      : '',
+  ].filter(Boolean).join('\n');
+  // History → ara-timeline (the canonical chronological-log component).
+  const historyItems = ticket.history.map((h) =>
+    `<li class="ara-timeline-item"><time class="ara-timeline-date">${escapeHtml(h.ts)}</time><div class="ara-timeline-event"><p>${escapeHtml(h.change)}</p></div></li>`,
+  ).join('');
   return `<section class="ticket-detail-panel" aria-label="${escapeHtml(ticket.title)} details">
     <div class="ticket-detail-header">
       ${ticketStatusPill(ticket.status)}
       <h3>${escapeHtml(ticket.title)}</h3>
     </div>
     <div class="ticket-expanded">
+      <dl class="ara-kv">${kvRows}</dl>
       <div class="ticket-body md-content">${DOMPurify.sanitize(marked.parse(ticket.body) as string)}</div>
       <div class="ticket-history">
         <h4 class="ticket-history-title">History</h4>
-        <ol class="ticket-history-list">${ticket.history.map((h) => `<li><span class="ticket-history-ts">${escapeHtml(h.ts)}</span><span class="ticket-history-change">${escapeHtml(h.change)}</span></li>`).join('')}</ol>
+        <ol class="ara-timeline">${historyItems}</ol>
       </div>
       <div class="ticket-all-sources">
         <h4 class="ticket-history-title">All sources (${ticket.sources.length})</h4>
@@ -2317,11 +2399,7 @@ function renderTickets(tickets: Ticket[] | null): void {
     content,
     `<div class="tickets-view">
       <div class="tickets-heading">
-        <h2>Board</h2>
-        <div class="tickets-actions">
-          <button class="ticket-action-btn" type="button" disabled>Release</button>
-          <button class="ticket-more-btn" type="button" disabled aria-label="More options">•••</button>
-        </div>
+        <h2>Model release timeline</h2>
       </div>
       <div class="tickets-controls">
         <div class="ticket-filters">${statusBar}</div>
