@@ -1758,6 +1758,7 @@ body.has-toc .section-nav { display: none; }
 .ara-paper-kicker,
 .ara-paper-deck,
 .ara-paper-index,
+.ara-paper-meter,
 .ara-paper-meta > span:last-child {
   /* !important: the template's own .ara-paper-index { display: flex } rule
    * is defined later in this file and would otherwise win. */
@@ -3103,6 +3104,60 @@ body.tab-frontpage .section-nav {
 
 /* Per-status left-border accent — quick visual triage. */
 .ticket-card-closed     { border-left-color: var(--text-tertiary); opacity: 0.72; }
+
+/* Compact card top row (status + company). */
+.ticket-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Ticket detail modal — opens on click with the full ticket. */
+.ticket-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(8, 12, 20, 0.55);
+  padding: 48px 16px;
+  overflow-y: auto;
+}
+.ticket-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  padding: 28px 30px;
+}
+.ticket-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 13px;
+}
+.ticket-modal-close:hover { background: var(--bg-hover); color: var(--text); }
+.ticket-modal .ticket-detail-panel {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+body.modal-open { overflow: hidden; }
 .ticket-card-closed:hover { opacity: 0.95; }
 
 .ticket-header-top {

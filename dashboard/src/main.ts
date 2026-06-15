@@ -178,7 +178,6 @@ let researchDocCache: { slug: string; language: ResearchLanguage; body: string }
 let ticketsCache: Ticket[] | null = null;
 let ticketsPromise: Promise<Ticket[] | null> | null = null;
 // Which ticket is expanded (showing body + history). Null = grid view.
-let expandedTicketSlug: string | null = null;
 // Filter state for the tickets grid.
 const ticketFilters = { status: 'all', company: 'all' };
 const LOAD_TIMEOUT_MS = 12000;
@@ -1406,14 +1405,6 @@ function extractHandles(md: string, limit = 12): string[] {
   return Array.from(handles);
 }
 
-function hostnameOf(url: string): string {
-  try {
-    return new URL(url).hostname.replace(/^www\./, '');
-  } catch {
-    return url;
-  }
-}
-
 function renderTweetAgoFromUrl(url: string): string {
   const match = url.match(/(?:x|twitter)\.com\/[^/]+\/status\/(\d+)/);
   if (!match) return '';
@@ -2376,54 +2367,19 @@ function ticketStatusPill(status: TicketStatus): string {
   return `<span class="ticket-pill ticket-pill-${status}">${escapeHtml(labels[status])}</span>`;
 }
 
-function ticketVerificationBadge(verification: TicketVerification): string {
-  if (verification === 'confirmed') return '';
-  const label = verification === 'partial' ? '◐ partial corroboration' : '⚠ unverified';
-  return `<span class="ticket-verification ticket-verification-${verification}">${escapeHtml(label)}</span>`;
-}
-
+// Compact card — status + title + company + a few labels. Everything else
+// (note, expected, model, verification, sources, history) lives in the modal
+// that opens on click, so the board stays short and scannable.
 function ticketCard(ticket: Ticket): string {
-  const expanded = ticket.slug === expandedTicketSlug;
-  const sourcesPreview = ticket.sources.slice(0, 3).map((s) => {
-    if (s.startsWith('@')) return `<span class="ticket-source-handle">${escapeHtml(s)}</span>`;
-    return `<a class="ticket-source-link" href="${escapeHtml(s)}" target="_blank" rel="noopener">${escapeHtml(hostnameOf(s))}</a>`;
-  }).join('');
-  const extraSources = ticket.sources.length > 3 ? `<span class="ticket-source-more">+${ticket.sources.length - 3}</span>` : '';
-  const labelsHtml = (ticket.labels || []).map((l) => `<span class="ara-tag">${escapeHtml(l)}</span>`).join('');
-  const expectedRow = ticket.expected
-    ? `<div class="ticket-row"><span class="ticket-row-key">Expected</span><span class="ticket-row-val">${escapeHtml(ticket.expected)}</span></div>`
-    : '';
-  const noteRow = ticket.status_note
-    ? `<div class="ticket-row ticket-row-note">${escapeHtml(ticket.status_note)}</div>`
-    : '';
-  const closedRow = ticket.status === 'closed' && ticket.closed_reason
-    ? `<div class="ticket-row ticket-row-closed"><span class="ticket-row-key">Closed</span><span class="ticket-row-val">${escapeHtml(ticket.closed_at || '')} — ${escapeHtml(ticket.closed_reason)}</span></div>`
-    : '';
-
-  const headerHtml = [
-    `<div class="ticket-header">`,
-    `  <div class="ticket-header-top">`,
-    `    ${ticketStatusPill(ticket.status)}`,
-    `    <span class="ticket-company">${escapeHtml(ticket.company)}</span>`,
-    `    ${ticketVerificationBadge(ticket.verification)}`,
-    `  </div>`,
-    `  <h3 class="ticket-title">${escapeHtml(ticket.title)}</h3>`,
-    ticket.model ? `  <div class="ticket-model">${escapeHtml(ticket.model)}</div>` : '',
-    `</div>`,
-  ].filter(Boolean).join('\n');
-
-  const metaHtml = [
-    expectedRow,
-    noteRow,
-    closedRow,
-    labelsHtml ? `<div class="ticket-labels">${labelsHtml}</div>` : '',
-    `<div class="ticket-sources">${sourcesPreview}${extraSources}</div>`,
-    `<div class="ticket-footer"><span>updated ${escapeHtml(ticket.updated_at)}</span><span>slug: ${escapeHtml(ticket.slug)}</span></div>`,
-  ].filter(Boolean).join('\n');
-
-  return `<article class="ticket-card ticket-card-${ticket.status}${expanded ? ' ticket-card-expanded' : ''}" data-slug="${escapeHtml(ticket.slug)}">
-    ${headerHtml}
-    <div class="ticket-meta">${metaHtml}</div>
+  const labelsHtml = (ticket.labels || []).slice(0, 3)
+    .map((l) => `<span class="ara-tag">${escapeHtml(l)}</span>`).join('');
+  return `<article class="ticket-card ticket-card-${ticket.status}" data-slug="${escapeHtml(ticket.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(ticket.title)}">
+    <div class="ticket-card-top">
+      ${ticketStatusPill(ticket.status)}
+      <span class="ticket-company">${escapeHtml(ticket.company)}</span>
+    </div>
+    <h3 class="ticket-title">${escapeHtml(ticket.title)}</h3>
+    ${labelsHtml ? `<div class="ticket-labels">${labelsHtml}</div>` : ''}
   </article>`;
 }
 
@@ -2520,6 +2476,45 @@ function companyKey(company: string): string {
   return company.toLowerCase().split('/')[0].trim();
 }
 
+// Ticket detail modal — clicking a card opens a larger overlay with the full
+// ticket (metadata grid, body, history timeline, sources).
+let ticketModalEl: HTMLElement | null = null;
+function openTicketModal(ticket: Ticket): void {
+  if (!ticketModalEl) {
+    ticketModalEl = document.createElement('div');
+    ticketModalEl.className = 'ticket-modal';
+    ticketModalEl.addEventListener('click', (e) => {
+      const tgt = e.target as HTMLElement;
+      if (tgt === ticketModalEl || tgt.closest('.ticket-modal-close')) closeTicketModal();
+    });
+    document.body.appendChild(ticketModalEl);
+  }
+  setSafeContent(
+    ticketModalEl,
+    '<div class="ticket-modal-card"><button class="ticket-modal-close" type="button" aria-label="Close">✕</button>' +
+      ticketExpandedPanel(ticket) + '</div>',
+  );
+  ticketModalEl.style.display = 'flex';
+  document.body.classList.add('modal-open');
+}
+function closeTicketModal(): void {
+  if (ticketModalEl) ticketModalEl.style.display = 'none';
+  document.body.classList.remove('modal-open');
+}
+document.addEventListener('keydown', (e) => {
+  if (!ticketModalEl) return;
+  if (e.key === 'Escape' && ticketModalEl.style.display === 'flex') {
+    closeTicketModal();
+    return;
+  }
+  if ((e.key === 'Enter' || e.key === ' ') && document.body.classList.contains('tab-models')) {
+    const card = (document.activeElement as HTMLElement | null)?.closest?.('.ticket-card') as HTMLElement | null;
+    const slug = card?.dataset.slug;
+    const ticket = slug && ticketsCache ? ticketsCache.find((t) => t.slug === slug) : null;
+    if (ticket) { e.preventDefault(); openTicketModal(ticket); }
+  }
+});
+
 function renderTickets(tickets: Ticket[] | null): void {
   if (!tickets || tickets.length === 0) {
     setSafeContent(
@@ -2577,10 +2572,6 @@ function renderTickets(tickets: Ticket[] | null): void {
   const emptyNote = filtered.length === 0
     ? `<div class="ticket-board-empty">No tickets match the current filters.</div>`
     : '';
-  const detailPanel = ticketExpandedPanel(
-    expandedTicketSlug ? filtered.find((ticket) => ticket.slug === expandedTicketSlug) || null : null,
-  );
-
   setSafeContent(
     content,
     `<div class="tickets-view">
@@ -2591,7 +2582,6 @@ function renderTickets(tickets: Ticket[] | null): void {
       <div class="tickets-board">
         ${board}
       </div>
-      ${detailPanel}
       ${emptyNote}
     </div>`,
   );
@@ -5167,13 +5157,11 @@ content.addEventListener('click', (e) => {
     return;
   }
   if (row && activeTab === 'models') {
-    // Don't toggle on link clicks inside the card — let them open.
+    // Don't open the modal on link clicks inside the card — let them through.
     if (target.closest('a, button')) return;
     const slug = row.dataset.slug;
-    if (slug) {
-      expandedTicketSlug = expandedTicketSlug === slug ? null : slug;
-      if (ticketsCache) renderTickets(ticketsCache);
-    }
+    const ticket = slug && ticketsCache ? ticketsCache.find((t) => t.slug === slug) : null;
+    if (ticket) openTicketModal(ticket);
   }
 });
 
