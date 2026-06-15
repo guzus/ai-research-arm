@@ -559,12 +559,7 @@ body:not(.tab-research) .controls { display: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0;
   cursor: pointer;
-}
-
-.calendar.open .cal-header {
-  margin-bottom: 12px;
 }
 
 .cal-grid {
