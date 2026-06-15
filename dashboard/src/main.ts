@@ -2524,9 +2524,6 @@ function renderFrontPage(frontPage: FrontPageAsset): void {
     content,
     [
       '<div class="content-card frontpage-card">',
-      '  <div class="content-card-header">',
-      '    <div class="content-card-title">THE AGI AWARENESS POST — ' + escapeHtml(displayDate(currentDate)) + '</div>',
-      '  </div>',
       noteHtml,
       frontPageBodyHtml(frontPage),
       '</div>',
@@ -2633,9 +2630,6 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
       : '';
     const fpCard = [
       '<div class="content-card frontpage-card today-frontpage-card">',
-      '  <div class="content-card-header">',
-      '    <div class="content-card-title">THE AGI AWARENESS POST — ' + escapeHtml(displayDate(currentDate)) + '</div>',
-      '  </div>',
       noteHtml,
       frontPageBodyHtml(frontPage),
       '</div>',

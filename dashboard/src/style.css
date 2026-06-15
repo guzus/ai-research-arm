@@ -2930,6 +2930,17 @@ body.tab-frontpage .section-nav {
   padding-bottom: 10px;
 }
 
+@media (max-width: 640px) {
+  /* Kanban lanes are unusable on a phone (cramped horizontal scroll) — stack
+   * the status columns into one vertical list instead. */
+  .tickets-board {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: 1fr;
+    overflow-x: visible;
+  }
+}
+
 .ticket-column {
   min-width: 0;
   background: var(--bg-secondary);
