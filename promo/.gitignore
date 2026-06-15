@@ -3,6 +3,12 @@ out/
 .remotion/
 *.log
 
+# Rendered video belongs in out/ (above). Belt-and-suspenders so a stray
+# default-path render at the project root is never committed (note: .gitattributes
+# routes *.mp4/*.png through LFS, so an accidental add would push an LFS object).
+*.mp4
+/poster.png
+
 # Staged from research/front-page/ by scripts/copy-frontpages.mjs (not duplicated
 # into git — the source PNGs already ship in the repo). Regenerated on build.
 public/frontpages/
