@@ -164,12 +164,33 @@ body {
   gap: 16px;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
 .brand-title {
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   font-family: var(--font-mono);
 }
+.brand-search {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.brand-search:hover { background: var(--bg-hover); color: var(--text); }
 
 .header-actions {
   display: flex;
@@ -429,21 +450,27 @@ body {
 }
 
 /* ── Calendar ──────────────────────────────────────── */
+/* The calendar pill is the first nav item — the "day view" entry that replaced
+ * the Today tab. Collapsed = a pill; the date grid pops over when opened. It
+ * goes navy/active when the day view is showing (like an active tab). */
 .calendar {
-  /* Compact affordance: a small pill when collapsed; expands only when opened. */
-  display: inline-block;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
   background: var(--bg);
-  border: 1px solid var(--border-light);
-  border-radius: 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
   box-shadow: var(--shadow-sm);
-  padding: 7px 13px;
-  margin-bottom: 12px;
+  padding: 7px 14px;
 }
-.calendar.open {
-  display: block;
-  padding: 14px 16px;
-  border-radius: 14px;
+body.tab-today .calendar {
+  background: var(--accent);
+  border-color: var(--accent);
 }
+body.tab-today .cal-header-label { color: var(--on-accent); }
+body.tab-today .cal-coverage,
+body.tab-today .cal-chevron { color: var(--on-accent); opacity: 0.75; }
 
 /* Aggressive-minimalism chrome cuts: drop the floating section-nav widget, the
  * keyboard-shortcut guide, and the manual refresh button — content-first.
@@ -456,6 +483,12 @@ body {
 
 /* "Request research" is a research-tab action — only show it on /research. */
 body:not(.tab-research) .request-btn { display: none; }
+/* The controls row now holds only Request research → hide it off /research. */
+body:not(.tab-research) .controls { display: none; }
+
+/* Search overlay — revealed by the magnifier button next to the wordmark. */
+.search-overlay { margin-bottom: 12px; }
+.search-overlay[hidden] { display: none; }
 
 /* Audio digest: bare player, no card chrome / "Audio digest" label. */
 .today-audio { margin: 0 0 18px; }
@@ -542,6 +575,16 @@ body:not(.tab-research) .request-btn { display: none; }
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2px;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 60;
+  width: 280px;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
 }
 
 .cal-chevron {
@@ -2069,11 +2112,7 @@ body.has-toc .section-nav { display: none; }
 }
 
 /* ── Generative Research ────────────────────────────── */
-body.tab-research #calendar,
-body.tab-models #calendar,
-body.tab-wiki #calendar {
-  display: none;
-}
+/* (The calendar is now the day-view nav pill — visible on every tab.) */
 
 /* The floating section-nav (prev/next ## section, "1/1") is meaningless on the
    wiki catalog and single-page newspaper editions. */
@@ -2992,13 +3031,16 @@ body.tab-frontpage .section-nav {
 
 .ticket-company-select {
   font-size: 12px;
-  padding: 6px 10px;
+  font-weight: 500;
+  padding: 6px 12px;
   border: 1px solid var(--border);
-  border-radius: 3px;
+  border-radius: 8px;
   background: var(--bg);
   color: var(--text);
   cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
 }
+.ticket-company-select:hover { background: var(--bg-hover); }
 
 .ticket-summary {
   font-size: 12px;
@@ -3031,8 +3073,15 @@ body.tab-frontpage .section-nav {
   min-width: 0;
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
+  border-top: 3px solid var(--border);
   border-radius: 8px;
 }
+/* Status lives on the column top accent (cards no longer carry a pill). */
+.ticket-column-rumored    { border-top-color: #9aa0ac; }
+.ticket-column-in-testing { border-top-color: #d99a2b; }
+.ticket-column-confirmed  { border-top-color: #2ba8e0; }
+.ticket-column-released   { border-top-color: #2fa86a; }
+.ticket-column-closed     { border-top-color: #b6bcc6; }
 
 .ticket-column-header {
   height: 30px;

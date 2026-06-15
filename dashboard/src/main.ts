@@ -206,7 +206,7 @@ const content = document.getElementById('content')!;
 const calendarEl = document.getElementById('calendar')!;
 const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 const searchCountEl = document.getElementById('searchCount')!;
-const languageSwitch = document.getElementById('languageSwitch')!;
+const languageSwitch = document.getElementById('languageSwitch');
 
 // ── Path routing ─────────────────────────────────────
 // Format (history API, no hash):
@@ -345,6 +345,7 @@ function syncTabUi(): void {
     requestAnimationFrame(revealActiveTab);
     window.setTimeout(revealActiveTab, 120);
   }
+  document.body.classList.toggle('tab-today', activeTab === 'today');
   document.body.classList.toggle('tab-research', activeTab === 'research');
   document.body.classList.toggle('tab-frontpage', activeTab === 'frontpage');
   // Models tab shows the ticket grid (no date routing); the calendar
@@ -399,6 +400,7 @@ function hasResearchLanguage(row: GenResearchRow | null, language: ResearchLangu
 }
 
 function syncLanguageUi(row: GenResearchRow | null = null): void {
+  if (!languageSwitch) return;  // language toggle removed (English-only for now)
   languageSwitch.querySelectorAll<HTMLButtonElement>('[data-language]').forEach((btn) => {
     const language = btn.dataset.language as ResearchLanguage;
     const available = !row || hasResearchLanguage(row, language);
@@ -670,8 +672,15 @@ function handleCalendarClick(e: Event): void {
   // Toggle fold/unfold when clicking the header (but not nav buttons)
   const toggleEl = target.closest('[data-cal-toggle]') as HTMLElement | null;
   if (toggleEl && !target.closest('[data-cal-nav]') && !target.closest('[data-cal-today]')) {
-    calendarEl.classList.toggle('open');
-    renderCalendar();
+    // The calendar pill is the day-view entry: from another tab it opens the
+    // digest/newspaper; when already there it just folds the date picker.
+    if (activeTab !== 'today') {
+      activeTab = 'today';
+      load();
+    } else {
+      calendarEl.classList.toggle('open');
+      renderCalendar();
+    }
     return;
   }
 
@@ -686,6 +695,7 @@ function handleCalendarClick(e: Event): void {
   if (target.closest('[data-cal-today]')) {
     const now = new Date();
     currentDate = now;
+    activeTab = 'today';
     calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     load();
@@ -696,6 +706,8 @@ function handleCalendarClick(e: Event): void {
   if (dayEl && dayEl.dataset.date) {
     const parts = dayEl.dataset.date.split('-');
     currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+    activeTab = 'today';                 // picking a date opens that day's view
+    calendarEl.classList.remove('open');
     const clickedMonth = new Date(+parts[0], +parts[1] - 1, 1);
     if (clickedMonth.getTime() !== calendarMonth.getTime()) {
       calendarMonth = clickedMonth;
@@ -2375,7 +2387,6 @@ function ticketCard(ticket: Ticket): string {
     .map((l) => `<span class="ara-tag">${escapeHtml(l)}</span>`).join('');
   return `<article class="ticket-card ticket-card-${ticket.status}" data-slug="${escapeHtml(ticket.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(ticket.title)}">
     <div class="ticket-card-top">
-      ${ticketStatusPill(ticket.status)}
       <span class="ticket-company">${escapeHtml(ticket.company)}</span>
     </div>
     <h3 class="ticket-title">${escapeHtml(ticket.title)}</h3>
@@ -5041,6 +5052,24 @@ document.getElementById('shortcutToggle')!.addEventListener('click', () => {
 
 // ── Events ────────────────────────────────────────────
 
+const searchToggle = document.getElementById('searchToggle');
+const searchOverlay = document.getElementById('searchOverlay');
+function openSearch(): void {
+  if (searchOverlay) searchOverlay.hidden = false;
+  searchInput.focus();
+  searchInput.select();
+}
+function closeSearch(): void {
+  if (searchOverlay) searchOverlay.hidden = true;
+}
+searchToggle?.addEventListener('click', () => {
+  if (searchOverlay && searchOverlay.hidden) openSearch();
+  else closeSearch();
+});
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') { closeSearch(); searchInput.blur(); }
+});
+
 searchInput.addEventListener('input', () => {
   if (searchDebounceId !== null) window.clearTimeout(searchDebounceId);
   searchDebounceId = window.setTimeout(() => {
@@ -5049,7 +5078,7 @@ searchInput.addEventListener('input', () => {
   }, 180);
 });
 
-languageSwitch.addEventListener('click', (e) => {
+languageSwitch?.addEventListener('click', (e) => {
   const btn = (e.target as HTMLElement).closest('[data-language]') as HTMLButtonElement | null;
   if (!btn) return;
   const language = btn.dataset.language === 'ko' ? 'ko' : 'en';
@@ -5234,7 +5263,7 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
     }
     case '/':
       e.preventDefault();
-      searchInput.focus();
+      openSearch();
       break;
     case 'r':
     case 'R':

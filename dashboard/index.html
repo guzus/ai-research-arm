@@ -39,12 +39,11 @@
         <div class="header-top">
           <div class="brand">
             <h1 class="brand-title">ai-research-arm</h1>
+            <button class="brand-search" id="searchToggle" type="button" aria-label="Search" title="Search (/)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
           </div>
           <div class="header-actions">
-            <div class="language-switch" id="languageSwitch" aria-label="Article language">
-              <button class="language-btn active" type="button" data-language="en" title="Show English">EN</button>
-              <button class="language-btn" type="button" data-language="ko" title="Show Korean when available">한국어</button>
-            </div>
             <a class="header-link" href="https://github.com/guzus/ai-research-arm" target="_blank" rel="noopener">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               <span class="header-link-label">guzus/ai-research-arm</span>
@@ -52,19 +51,20 @@
           </div>
         </div>
         <nav class="tabs" id="tabs">
-          <button class="tab active" data-tab="today">Today</button>
+          <div class="calendar" id="calendar"></div>
           <button class="tab" data-tab="twitter">Twitter</button>
           <button class="tab" data-tab="models">Model Timeline</button>
           <button class="tab" data-tab="research">Research</button>
           <button class="tab" data-tab="wiki">Wiki</button>
         </nav>
-        <div class="calendar" id="calendar"></div>
-        <div class="controls">
+        <div class="search-overlay" id="searchOverlay" hidden>
           <div class="search-box">
             <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search content... (/)">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search content...">
             <span class="search-count" id="searchCount" aria-live="polite"></span>
           </div>
+        </div>
+        <div class="controls">
           <a
             class="request-btn"
             href="https://github.com/guzus/ai-research-arm/issues/new?labels=gen-research&title=%5BResearch%5D%20&body=%23%23%20Research%20request%0A%0ATopic%3A%20%0A%0AContext%3A%20%0A%0ATags%3A%20%0A%0Abackend%3A%20claude"
@@ -85,6 +85,9 @@
       <footer class="site-footer">
         <a class="footer-link" href="https://x.com/uncanny_guzus" target="_blank" rel="noopener noreferrer">
           x.com/uncanny_guzus
+        </a>
+        <a class="footer-link" href="https://t.me/robot_colosseum" target="_blank" rel="noopener noreferrer">
+          t.me/robot_colosseum
         </a>
       </footer>
     </div>
