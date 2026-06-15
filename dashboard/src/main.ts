@@ -5080,6 +5080,105 @@ document.getElementById('shortcutToggle')!.addEventListener('click', () => {
 const searchToggle = document.getElementById('searchToggle');
 const searchOverlay = document.getElementById('searchOverlay');
 const searchClear = document.getElementById('searchClear');
+const searchResultsEl = document.getElementById('searchResults');
+
+// ── Global search ─────────────────────────────────────
+// Search across ALL content — research articles, wiki pages, model tickets —
+// from any tab; a result jumps straight to the item. The corpus is built lazily
+// from the already-loaded indexes and cached.
+type SearchHit = { type: 'research' | 'wiki' | 'model'; title: string; subtitle: string; slug: string; hay: string };
+let searchCorpus: SearchHit[] | null = null;
+let searchHits: SearchHit[] = [];
+let searchSel = -1;
+const SEARCH_TYPE_LABEL: Record<SearchHit['type'], string> = { research: 'Research', wiki: 'Wiki', model: 'Model' };
+
+async function buildSearchCorpus(): Promise<SearchHit[]> {
+  if (searchCorpus) return searchCorpus;
+  const [m, wiki, tickets] = await Promise.all([loadManifest(), loadWikiIndexCached(), loadTickets()]);
+  const hits: SearchHit[] = [];
+  if (wiki) for (const p of wiki.pages) {
+    hits.push({ type: 'wiki', title: p.title, subtitle: (p.aliases || []).slice(0, 3).join(', ') || String(p.type),
+      slug: p.slug, hay: (p.title + ' ' + (p.aliases || []).join(' ') + ' ' + (p.summary || '') + ' ' + (p.tags || []).join(' ')).toLowerCase() });
+  }
+  if (m) for (const r of (m.generative || [])) {
+    hits.push({ type: 'research', title: r.title, subtitle: (r.tags || []).slice(0, 4).join(', '),
+      slug: r.slug, hay: (r.title + ' ' + (r.tags || []).join(' ') + ' ' + (r.prompt || '')).toLowerCase() });
+  }
+  if (tickets) for (const t of tickets) {
+    hits.push({ type: 'model', title: t.title, subtitle: t.company + (t.model ? ' · ' + t.model : ''),
+      slug: t.slug, hay: (t.title + ' ' + t.company + ' ' + (t.model || '') + ' ' + (t.labels || []).join(' ')).toLowerCase() });
+  }
+  searchCorpus = hits;
+  return hits;
+}
+
+function renderSearchHits(): void {
+  if (!searchResultsEl) return;
+  if (searchHits.length === 0) {
+    setSafeContent(searchResultsEl, '<div class="search-empty">No matches</div>');
+    searchResultsEl.hidden = false;
+    return;
+  }
+  const rows = searchHits.map((h, i) =>
+    '<button class="search-result' + (i === searchSel ? ' is-sel' : '') + '" type="button" role="option" data-sr-index="' + i + '">' +
+    '<span class="search-result-type">' + SEARCH_TYPE_LABEL[h.type] + '</span>' +
+    '<span class="search-result-title">' + escapeHtml(h.title) + '</span>' +
+    (h.subtitle ? '<span class="search-result-sub">' + escapeHtml(h.subtitle) + '</span>' : '') +
+    '</button>',
+  ).join('');
+  setSafeContent(searchResultsEl, rows);
+  searchResultsEl.hidden = false;
+}
+
+async function runGlobalSearch(query: string): Promise<void> {
+  const q = query.trim().toLowerCase();
+  if (!q) {
+    searchHits = [];
+    searchSel = -1;
+    if (searchResultsEl) searchResultsEl.hidden = true;
+    if (searchCountEl) searchCountEl.textContent = '';
+    return;
+  }
+  const corpus = await buildSearchCorpus();
+  searchHits = corpus
+    .map((h) => {
+      const t = h.title.toLowerCase();
+      const score = t.startsWith(q) ? 3 : t.includes(q) ? 2 : h.hay.includes(q) ? 1 : 0;
+      return { h, score };
+    })
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score || a.h.title.length - b.h.title.length)
+    .slice(0, 24)
+    .map((x) => x.h);
+  searchSel = searchHits.length ? 0 : -1;
+  if (searchCountEl) searchCountEl.textContent = searchHits.length ? String(searchHits.length) : '';
+  renderSearchHits();
+}
+
+function moveSearchSel(d: number): void {
+  if (searchHits.length === 0) return;
+  searchSel = (searchSel + d + searchHits.length) % searchHits.length;
+  renderSearchHits();
+  (searchResultsEl?.querySelector('.search-result.is-sel') as HTMLElement | null)?.scrollIntoView({ block: 'nearest' });
+}
+
+function activateSearchHit(h: SearchHit): void {
+  closeSearch();
+  if (h.type === 'model') {
+    activeTab = 'models';
+    selectedSlug = null;
+    syncTabUi();
+    load();
+    const t = ticketsCache ? ticketsCache.find((x) => x.slug === h.slug) : null;
+    if (t) window.setTimeout(() => openTicketModal(t), 60);
+    return;
+  }
+  activeTab = h.type; // 'research' | 'wiki'
+  selectedSlug = h.slug;
+  syncTabUi();
+  load();
+}
+
 function syncSearchClear(): void {
   if (searchClear) (searchClear as HTMLElement).hidden = searchInput.value.length === 0;
 }
@@ -5091,12 +5190,12 @@ function openSearch(): void {
 }
 function closeSearch(): void {
   if (searchOverlay) searchOverlay.hidden = true;
+  if (searchResultsEl) searchResultsEl.hidden = true;
 }
 function clearSearch(): void {
   searchInput.value = '';
-  searchTerm = '';
   syncSearchClear();
-  load();
+  void runGlobalSearch('');
   searchInput.focus();
 }
 searchToggle?.addEventListener('click', () => {
@@ -5104,8 +5203,17 @@ searchToggle?.addEventListener('click', () => {
   else closeSearch();
 });
 searchClear?.addEventListener('click', clearSearch);
+searchResultsEl?.addEventListener('click', (e) => {
+  const btn = (e.target as HTMLElement).closest('.search-result') as HTMLElement | null;
+  if (!btn) return;
+  const i = Number(btn.dataset.srIndex);
+  if (searchHits[i]) activateSearchHit(searchHits[i]);
+});
 searchInput.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') { closeSearch(); searchInput.blur(); }
+  else if (e.key === 'ArrowDown') { e.preventDefault(); moveSearchSel(1); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); moveSearchSel(-1); }
+  else if (e.key === 'Enter') { e.preventDefault(); if (searchHits[searchSel]) activateSearchHit(searchHits[searchSel]); }
 });
 // ⌘K / Ctrl+K opens search from anywhere; click outside the panel closes it.
 document.addEventListener('keydown', (e) => {
@@ -5123,10 +5231,7 @@ document.addEventListener('mousedown', (e) => {
 searchInput.addEventListener('input', () => {
   syncSearchClear();
   if (searchDebounceId !== null) window.clearTimeout(searchDebounceId);
-  searchDebounceId = window.setTimeout(() => {
-    searchTerm = searchInput.value.trim();
-    load();
-  }, 180);
+  searchDebounceId = window.setTimeout(() => { void runGlobalSearch(searchInput.value); }, 120);
 });
 
 languageSwitch?.addEventListener('click', (e) => {
