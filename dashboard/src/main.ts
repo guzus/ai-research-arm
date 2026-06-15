@@ -1457,19 +1457,16 @@ function renderHandleChips(handles: string[], limit = 10): string {
 function twitterMarkdownToHtml(md: string): string {
   let html = marked.parse(md) as string;
   html = wrapTables(html);
-  const wantDark = typeof window !== 'undefined'
-    && window.matchMedia
-    && window.matchMedia('(prefers-color-scheme: dark)').matches;
   html = html.replace(
     /<a\s+href="(https?:\/\/(?:x|twitter)\.com\/\w+\/status\/(\d+))"[^>]*>([\s\S]*?)<\/a>/g,
     (match, url: string, tweetId: string, text: string) => {
-      // A "bare" status link (the visible text is the URL itself) is a source
-      // citation, not inline prose — embed it as a tweet. Inline text links
-      // stay as links (just annotated with how long ago).
+      // A "bare" status link (visible text IS the URL) is a source citation —
+      // leave a slot the renderer hydrates into a native tweet card from
+      // tweets.json. Inline text links stay links (annotated with how long ago).
       const bare = text.trim() === url.trim() || /^https?:\/\/(?:x|twitter)\.com\//.test(text.trim());
       if (bare) {
-        return '<blockquote class="twitter-tweet" data-dnt="true" data-theme="' +
-          (wantDark ? 'dark' : 'light') + '"><a href="' + url + '"></a></blockquote>';
+        return '<div class="tweet-card-slot" data-tweet-id="' + escapeHtml(tweetId) +
+          '" data-tweet-url="' + escapeHtml(url) + '"></div>';
       }
       const date = snowflakeToDate(tweetId);
       if (!date) return match;
@@ -1480,22 +1477,81 @@ function twitterMarkdownToHtml(md: string): string {
   return html;
 }
 
-// Hydrate any `blockquote.twitter-tweet` placeholders into real embeds using
-// X's widgets.js (loaded async from index.html). The script may not be ready
-// on first paint, so retry briefly. Idempotent — widgets.load skips already
-// rendered tweets.
-let tweetEmbedRetries = 0;
-function loadTweetEmbeds(root: HTMLElement): void {
-  if (!root.querySelector('blockquote.twitter-tweet')) return;
-  const tw = (window as unknown as { twttr?: { widgets?: { load?: (el?: HTMLElement) => void } } }).twttr;
-  if (tw?.widgets?.load) {
-    tweetEmbedRetries = 0;
-    tw.widgets.load(root);
-    return;
+// ── Native tweet cards ────────────────────────────────────
+// Real tweet data (author / text / avatar / likes / time) is hydrated at
+// BUILD time into research/tweets.json (prebuild.mjs, via X's public
+// syndication endpoint — CORS blocks fetching it from the browser). We render
+// lightweight native cards from it: no third-party iframe, no runtime script,
+// on-brand styling. Missing data falls back to a compact "view on X" card.
+type TweetCard = {
+  name: string; handle: string; avatar: string; verified: boolean;
+  text: string; date: string; likes: number; replies: number; url: string;
+};
+let tweetsPromise: Promise<Record<string, TweetCard>> | null = null;
+function loadTweets(): Promise<Record<string, TweetCard>> {
+  if (!tweetsPromise) {
+    tweetsPromise = fetch(`${DATA_BASE}/tweets.json`)
+      .then((r) => (r.ok ? r.json() : {}))
+      .catch(() => ({}));
   }
-  if (tweetEmbedRetries < 25) {
-    tweetEmbedRetries += 1;
-    setTimeout(() => loadTweetEmbeds(root), 400);
+  return tweetsPromise;
+}
+
+function compactNum(n: number): string {
+  if (!n || n < 0) return '0';
+  if (n < 1000) return String(n);
+  if (n < 1_000_000) return (n / 1000).toFixed(n < 10_000 ? 1 : 0).replace(/\.0$/, '') + 'K';
+  return (n / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+}
+
+const X_LOGO_SVG = '<svg class="tweet-card-logo" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
+const VERIFIED_SVG = '<svg class="tweet-card-verified" viewBox="0 0 22 22" aria-label="Verified" fill="currentColor"><path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.854-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.688-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.634.433 1.218.877 1.688.47.443 1.054.747 1.687.878.633.132 1.29.084 1.897-.136.274.586.705 1.084 1.246 1.439.54.354 1.17.551 1.816.569.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.239 1.266.296 1.903.164.636-.132 1.221-.447 1.68-.907.46-.46.776-1.044.908-1.681s.075-1.299-.165-1.903c.586-.274 1.084-.705 1.439-1.246.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"/></svg>';
+const HEART_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 21.638l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z"/></svg>';
+const REPLY_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01z"/></svg>';
+
+function tweetCardHtml(t: TweetCard): string {
+  const time = t.date ? timeAgo(new Date(t.date)) : '';
+  const avatar = t.avatar
+    ? '<img class="tweet-card-avatar" src="' + escapeHtml(t.avatar) + '" alt="" loading="lazy" decoding="async">'
+    : '<span class="tweet-card-avatar"></span>';
+  return [
+    '<a class="tweet-card" href="' + escapeHtml(t.url) + '" target="_blank" rel="noopener noreferrer">',
+    '<div class="tweet-card-head">',
+    avatar,
+    '<span class="tweet-card-id">',
+    '<span class="tweet-card-name">' + escapeHtml(t.name) + (t.verified ? VERIFIED_SVG : '') + '</span>',
+    '<span class="tweet-card-handle">@' + escapeHtml(t.handle) + '</span>',
+    '</span>',
+    X_LOGO_SVG,
+    '</div>',
+    '<div class="tweet-card-text">' + escapeHtml(t.text) + '</div>',
+    '<div class="tweet-card-meta">',
+    time ? '<span>' + escapeHtml(time) + '</span>' : '',
+    '<span class="tweet-card-stat">' + HEART_SVG + compactNum(t.likes) + '</span>',
+    t.replies ? '<span class="tweet-card-stat">' + REPLY_SVG + compactNum(t.replies) + '</span>' : '',
+    '</div>',
+    '</a>',
+  ].filter(Boolean).join('');
+}
+
+function tweetFallbackHtml(url: string): string {
+  return '<a class="tweet-card tweet-card--fallback" href="' + escapeHtml(url) +
+    '" target="_blank" rel="noopener noreferrer">' + X_LOGO_SVG +
+    '<span class="tweet-card-fallback-text">View post on X</span></a>';
+}
+
+// Fill any tweet-card slots emitted by twitterMarkdownToHtml with real cards.
+async function hydrateTweetCards(root: HTMLElement): Promise<void> {
+  const slots = Array.from(root.querySelectorAll('.tweet-card-slot')) as HTMLElement[];
+  if (slots.length === 0) return;
+  const tweets = await loadTweets();
+  for (const slot of slots) {
+    const id = slot.getAttribute('data-tweet-id') || '';
+    const url = slot.getAttribute('data-tweet-url') || '';
+    const data = tweets[id];
+    // Fields are escapeHtml'd in the builders; route through the app's
+    // DOMPurify wrapper too (defense-in-depth + allows the card's svg/img).
+    setSafeContent(slot, data ? tweetCardHtml(data) : tweetFallbackHtml(url));
   }
 }
 
@@ -2161,7 +2217,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
   }
 
   setSafeContent(content, '<div class="twitter-report">' + cards.join('\n') + '</div>');
-  loadTweetEmbeds(content);
+  void hydrateTweetCards(content);
 }
 
 function loadTickets(): Promise<Ticket[] | null> {

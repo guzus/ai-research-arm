@@ -976,12 +976,111 @@ body {
   padding: 18px 24px 22px;
 }
 
-/* Tweet embeds: X's widgets.js swaps these blockquotes for iframes after
- * render. Constrain width + give vertical rhythm so they sit in the column
- * like the surrounding prose (horizontal inset comes from the container). */
-.twitter-report .twitter-tweet {
-  margin: 16px 0;
+/* Native tweet card — hydrated from research/tweets.json (real author/text/
+ * avatar/likes). Lightweight, on-brand, no third-party iframe. */
+.tweet-card {
+  display: block;
   max-width: 550px;
+  margin: 16px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.tweet-card:hover {
+  border-color: var(--border);
+  background: var(--bg-hover);
+}
+.tweet-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tweet-card-avatar {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--bg-secondary);
+}
+.tweet-card-id {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  line-height: 1.25;
+}
+.tweet-card-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 650;
+  font-size: 0.92rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tweet-card-verified {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  color: var(--ara-royal);
+}
+.tweet-card-handle {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-tertiary);
+}
+.tweet-card-logo {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  color: var(--text-tertiary);
+}
+.tweet-card-text {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.tweet-card-meta {
+  margin-top: 11px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+}
+.tweet-card-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.tweet-card-stat svg {
+  width: 13px;
+  height: 13px;
+}
+/* Fallback card when no hydrated data exists (old date / fetch failed). */
+.tweet-card--fallback {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.tweet-card--fallback .tweet-card-logo {
+  color: var(--text-secondary);
 }
 
 .twitter-story-grid {
