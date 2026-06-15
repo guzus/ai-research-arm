@@ -36,7 +36,7 @@ def _sample_rows() -> list[dict]:
             "kind": "fragment",
             "language": "en",
             "title": "First Article — détail",  # non-ASCII to lock ensure_ascii=False
-            "model": "claude-opus-4-7",
+            "model": "claude-opus-4-8",
             "created_at": "2026-05-01T00:00:00Z",
             "source": "workflow_dispatch",
             "prompt": "first",
@@ -48,7 +48,7 @@ def _sample_rows() -> list[dict]:
             "kind": "fragment",
             "language": "en",
             "title": "Second Article",
-            "model": "claude-opus-4-7",
+            "model": "claude-opus-4-8",
             "created_at": "2026-05-02T00:00:00Z",
             "source": "workflow_dispatch",
             "prompt": "second",
@@ -80,7 +80,7 @@ class UpdateIndexTest(unittest.TestCase):
         self.assertNotIn("audio_file", by_slug["first-article"])
         # Every other field on the mutated row is preserved.
         self.assertEqual(by_slug["second-article"]["title"], "Second Article")
-        self.assertEqual(by_slug["second-article"]["model"], "claude-opus-4-7")
+        self.assertEqual(by_slug["second-article"]["model"], "claude-opus-4-8")
 
     def test_shape_byte_identical_to_writer(self):
         # Capture the exact bytes the old hand-rolled writer would have produced

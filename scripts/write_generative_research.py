@@ -598,7 +598,7 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--topic", required=True, help="user-supplied topic; default title source")
     p.add_argument("--html-body", required=True, help="path to <article> fragment, or '-' for stdin")
-    p.add_argument("--model", required=True, help="model identifier, e.g. claude-opus-4-7")
+    p.add_argument("--model", required=True, help="model identifier, e.g. claude-opus-4-8")
     p.add_argument("--title", default=None, help="explicit title; falls back to first <h2> then topic")
     p.add_argument("--slug", default=None, help="url slug; falls back to slugify(topic)")
     p.add_argument("--prompt", default=None, help="original user prompt (stored in index)")

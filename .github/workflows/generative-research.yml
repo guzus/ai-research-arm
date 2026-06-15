@@ -10,7 +10,7 @@ name: Generative Research
 #      infer the research question, then expand into a full article.
 #
 # Two backends, mutually exclusive at runtime:
-#   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-opus-4-7).
+#   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-opus-4-8).
 #   * deepseek — same action, but redirected to Fireworks' Anthropic-compatible
 #                endpoint via ANTHROPIC_BASE_URL/ANTHROPIC_AUTH_TOKEN (model
 #                deepseek-v4-flash, served by Fireworks). Mirrors the
@@ -191,13 +191,13 @@ jobs:
             PROMPT="$TOPIC"
             if [ -n "${ISSUE_BODY:-}" ]; then
               CANDIDATE=$(printf '%s\n' "$ISSUE_BODY" \
-                | grep -iE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-7|deepseek|deepseek-v4-flash)[[:space:]]*$' \
+                | grep -iE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-8|claude-opus-4-7|deepseek|deepseek-v4-flash)[[:space:]]*$' \
                 | head -n1 \
                 | sed -E 's/^[[:space:]]*[Bb][Aa][Cc][Kk][Ee][Nn][Dd][[:space:]]*:[[:space:]]*//' \
                 | tr -d '[:space:]' \
                 | tr '[:upper:]' '[:lower:]' || true)
               case "$CANDIDATE" in
-                claude-opus-4-7) CANDIDATE="claude" ;;
+                claude-opus-4-8|claude-opus-4-7) CANDIDATE="claude" ;;
                 deepseek) CANDIDATE="deepseek-v4-flash" ;;
               esac
               if [ "$CANDIDATE" = "claude" ] || [ "$CANDIDATE" = "deepseek-v4-flash" ]; then
@@ -205,7 +205,7 @@ jobs:
               fi
               # Strip the backend: directive line out, keep the rest as the brief.
               CLEAN_BODY=$(printf '%s\n' "$ISSUE_BODY" \
-                | grep -ivE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-7|deepseek|deepseek-v4-flash)[[:space:]]*$' \
+                | grep -ivE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-8|claude-opus-4-7|deepseek|deepseek-v4-flash)[[:space:]]*$' \
                 | sed -E 's/[[:space:]]+$//' \
                 || true)
               # Substantive = any non-whitespace remains after the strip.
@@ -229,7 +229,7 @@ jobs:
 
           case "$BACKEND" in
             deepseek) BACKEND="deepseek-v4-flash" ;;
-            claude-opus-4-7) BACKEND="claude" ;;
+            claude-opus-4-8|claude-opus-4-7) BACKEND="claude" ;;
           esac
           if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "deepseek-v4-flash" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
@@ -417,8 +417,9 @@ jobs:
 
       # ---- Claude backend ---------------------------------------------------
       # OAuth-authenticated against native Anthropic. The writer records
-      # --model claude-opus-4-7 (the actual served model), not the CLI's
-      # --model opus alias.
+      # --model claude-opus-4-8 (the actual served model). Pinning
+      # ANTHROPIC_DEFAULT_OPUS_MODEL keeps the CLI's --model opus alias from
+      # drifting under this workflow.
       # Hard wall-clock cap on the model step. The runner already lost
       # comms once when the action ran ~19m on the un-capped concurrent
       # fan-out version of the prompt; pacing fixed that, but a stuck
@@ -445,6 +446,7 @@ jobs:
           # hourly-twitter workflow.
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
+          ANTHROPIC_DEFAULT_OPUS_MODEL: claude-opus-4-8
         with: &claude_with
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # The hourly Twitter lane auto-dispatches this workflow with
@@ -1497,7 +1499,7 @@ jobs:
                     --tags "$(cat .gen-input/tags.txt)" \
                     --source "$GEN_SOURCE" \
                     --prompt "$(cat .gen-input/prompt.txt)" \
-                    --model claude-opus-4-7 \
+                    --model claude-opus-4-8 \
                     --cite-density-min 10 --refs-min 20 \
                     --qsanity \
                     --html-body "$GEN_DRAFT"
@@ -1509,7 +1511,7 @@ jobs:
                     --tags "$(cat .gen-input/tags.txt)" \
                     --source "$GEN_SOURCE" \
                     --prompt "$(cat .gen-input/prompt.txt)" \
-                    --model claude-opus-4-7 \
+                    --model claude-opus-4-8 \
                     --cite-density-min 10 --refs-min 20 \
                     --qsanity \
                     --html-body "$GEN_DRAFT"

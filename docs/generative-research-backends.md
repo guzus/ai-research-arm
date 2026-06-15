@@ -5,7 +5,7 @@ research pipeline:
 
 | Dispatch value | Served model | Auth path | Notes |
 |---|---|---|---|
-| `claude` | `claude-opus-4-7` | `CLAUDE_CODE_OAUTH_TOKEN` | Default for manual and issue-triggered generative research. Native Anthropic Claude Code path. |
+| `claude` | `claude-opus-4-8` | `CLAUDE_CODE_OAUTH_TOKEN` | Default for manual and issue-triggered generative research. Native Anthropic Claude Code path. The workflow pins `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-8`, so the Claude Code `opus` alias resolves to Opus 4.8 for this lane. |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 
 ## Local Oracle / GPT-5.5 Pro
@@ -173,7 +173,7 @@ The expected difference is the model backend:
   limited to the workflow's run-scoped `$GEN_DRAFT` path, so a self-hosted
   runner cannot reuse stale `/tmp/gen-research*.ara.md` content from another
   backend or run.
-- Claude: native Anthropic endpoint, `claude-opus-4-7` metadata in
+- Claude: native Anthropic endpoint, `claude-opus-4-8` metadata in
   `research/generative/index.json`.
 
 After both runs finish, compare:
