@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-15 17:25 UTC
+
+CYCLE: Quiet Monday afternoon — no new launches; Anthropic embargo still unresolved.
+
+TOP STORIES:
+• Embargo's core rationale sharpens: Semafor reports White House suspected a China-linked group had ACCESSED Mythos — distinct from the Amazon-jailbreak framing (suspicion, not confirmed breach) [✓]
+• No Fable 5 / Mythos 5 restoration, no Commerce/BIS doc; Anthropic's last word is still the June 13 statement; DC trip readout unreported [⚠]
+• Open-weights thread unchanged: GLM-5.2 weights still "next week"; no OpenAI/Google/xAI/Meta launch this window [✓]
+
+WATCH: Monday US-business-hours movement on the embargo — restoration notice or published Commerce/BIS document.
+
+Full update on GitHub.
