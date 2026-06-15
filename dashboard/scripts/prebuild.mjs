@@ -288,6 +288,114 @@ function buildManifest() {
   );
 }
 
+// ── Tweet card hydration ───────────────────────────────────
+// Fetch real tweet data (author/text/avatar/likes/time) for the status URLs
+// referenced in the Twitter view, so the dashboard renders native tweet cards
+// instead of bare links or third-party iframes. X's public syndication
+// endpoint returns clean JSON server-side (no auth; CORS blocks the browser,
+// hence build-time). Disk-cached under data/source-cache/tweets/ (gitignored)
+// so repeat builds don't refetch; capped + concurrency-limited + fully
+// graceful so a slow/blocked/rate-limited X never fails or stalls the build.
+const tweetCacheDir = join(repoRoot, 'data', 'source-cache', 'tweets');
+const TWEET_FETCH_CAP = 200;     // max NEW network fetches per build
+const TWEET_CONCURRENCY = 8;
+const TWEET_TIMEOUT_MS = 4000;
+const TWEET_RECENT_FILES = 21;   // only scan the most recent N twitter days
+
+function syndicationToken(id) {
+  return ((Number(id) / 1e15) * Math.PI).toString(36).replace(/(0+|\.)/g, '');
+}
+
+function collectTweetIds() {
+  const dir = join(researchSrc, 'twitter');
+  if (!existsSync(dir)) return [];
+  const files = readdirSync(dir)
+    .filter((n) => /^\d{4}-\d{2}-\d{2}\.md$/.test(n))
+    .sort()
+    .reverse()
+    .slice(0, TWEET_RECENT_FILES);
+  const ids = new Set();
+  for (const name of files) {
+    const text = readFileSync(join(dir, name), 'utf8');
+    for (const m of text.matchAll(/(?:x|twitter)\.com\/\w+\/status\/(\d+)/g)) ids.add(m[1]);
+  }
+  return Array.from(ids);
+}
+
+async function fetchTweetCard(id) {
+  const token = syndicationToken(id);
+  const url = `https://cdn.syndication.twimg.com/tweet-result?id=${id}&token=${token}&lang=en`;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), TWEET_TIMEOUT_MS);
+  try {
+    const r = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' }, signal: ctrl.signal });
+    if (!r.ok) return null;
+    const d = await r.json();
+    if (!d || !d.user) return null;
+    let text = String(d.text || '');
+    const range = Array.isArray(d.display_text_range) ? d.display_text_range : null;
+    if (range && range.length === 2 && range[1] <= text.length) text = text.slice(range[0], range[1]);
+    text = text.replace(/\s*https:\/\/t\.co\/\S+\s*$/, '').trim();
+    return {
+      name: String(d.user.name || ''),
+      handle: String(d.user.screen_name || ''),
+      avatar: String(d.user.profile_image_url_https || ''),
+      verified: !!(d.user.verified || d.user.is_blue_verified),
+      text,
+      date: String(d.created_at || ''),
+      likes: Number(d.favorite_count || 0),
+      replies: Number(d.conversation_count || 0),
+      url: `https://x.com/${d.user.screen_name}/status/${id}`,
+    };
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function hydrateTweets() {
+  const outPath = join(publicResearch, 'tweets.json');
+  const ids = collectTweetIds();
+  if (ids.length === 0) {
+    writeFileSync(outPath, '{}');
+    return;
+  }
+  mkdirSync(tweetCacheDir, { recursive: true });
+  const out = {};
+  const toFetch = [];
+  for (const id of ids) {
+    const cachePath = join(tweetCacheDir, `${id}.json`);
+    if (existsSync(cachePath)) {
+      try { out[id] = JSON.parse(readFileSync(cachePath, 'utf8')); continue; } catch { /* fall through to refetch */ }
+    }
+    toFetch.push(id);
+  }
+  const fetchList = toFetch.slice(0, TWEET_FETCH_CAP);
+  let ok = 0;
+  let fail = 0;
+  for (let i = 0; i < fetchList.length; i += TWEET_CONCURRENCY) {
+    const batch = fetchList.slice(i, i + TWEET_CONCURRENCY);
+    const results = await Promise.all(batch.map(async (id) => [id, await fetchTweetCard(id)]));
+    for (const [id, card] of results) {
+      if (card) {
+        out[id] = card;
+        ok++;
+        try { writeFileSync(join(tweetCacheDir, `${id}.json`), JSON.stringify(card)); } catch { /* cache best-effort */ }
+      } else {
+        fail++;
+      }
+    }
+  }
+  writeFileSync(outPath, JSON.stringify(out));
+  const over = toFetch.length - fetchList.length;
+  console.log(
+    `prebuild: tweets.json (${Object.keys(out).length} cards; ${ok} fetched, ${fail} failed` +
+    (over > 0 ? `, ${over} over cap` : '') + ')',
+  );
+}
+
 copyData();
 buildTicketsIndex();
 buildManifest();
+await hydrateTweets().catch((e) => console.warn('prebuild: tweet hydration skipped:', e?.message || e));

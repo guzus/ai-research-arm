@@ -969,6 +969,120 @@ body {
   font-size: 1rem;
 }
 
+/* Storyless cycles fall back to the full cycle markdown rendered directly in
+ * the card; pad it to the card's content inset so it lines up with the
+ * header and Signal Brief above instead of sitting flush to the edge. */
+.twitter-cycle-fallback {
+  padding: 18px 24px 22px;
+}
+
+/* Native tweet card — hydrated from research/tweets.json (real author/text/
+ * avatar/likes). Lightweight, on-brand, no third-party iframe. */
+.tweet-card {
+  display: block;
+  max-width: 550px;
+  margin: 16px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.tweet-card:hover {
+  border-color: var(--border);
+  background: var(--bg-hover);
+}
+.tweet-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tweet-card-avatar {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--bg-secondary);
+}
+.tweet-card-id {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  line-height: 1.25;
+}
+.tweet-card-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 650;
+  font-size: 0.92rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tweet-card-verified {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  color: var(--ara-royal);
+}
+.tweet-card-handle {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-tertiary);
+}
+.tweet-card-logo {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  color: var(--text-tertiary);
+}
+.tweet-card-text {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.tweet-card-meta {
+  margin-top: 11px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+}
+.tweet-card-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.tweet-card-stat svg {
+  width: 13px;
+  height: 13px;
+}
+/* Fallback card when no hydrated data exists (old date / fetch failed). */
+.tweet-card--fallback {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.tweet-card--fallback .tweet-card-logo {
+  color: var(--text-secondary);
+}
+
 .twitter-story-grid {
   display: grid;
   gap: 12px;
@@ -1552,6 +1666,19 @@ body.has-toc .section-nav { display: none; }
   text-transform: uppercase;
 }
 
+/* Decluttered edition: drop the filler — the tagline kicker, the "All Sources
+ * Edition" label, the deck blurb, and the in-this-edition nav — keeping just
+ * the masthead name + issue/date. (The data is still emitted by the front-page
+ * generator; this hides it in the rendered edition.) */
+.ara-paper-kicker,
+.ara-paper-deck,
+.ara-paper-index,
+.ara-paper-meta > span:last-child {
+  /* !important: the template's own .ara-paper-index { display: flex } rule
+   * is defined later in this file and would otherwise win. */
+  display: none !important;
+}
+
 .ara-paper-deck {
   max-width: 58rem;
   margin: 12px auto 0;
@@ -1820,6 +1947,11 @@ body.has-toc .section-nav { display: none; }
 .today-layout-frontpage {
   position: sticky;
   top: 16px;
+  /* Bound the newspaper to the viewport and give it its own scroll, so a
+   * tall edition scrolls independently of the digest (which scrolls with
+   * the page on the right). */
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
 }
 
 .today-layout-frontpage .frontpage-card {
@@ -1845,6 +1977,8 @@ body.has-toc .section-nav { display: none; }
   }
   .today-layout-frontpage {
     position: static;
+    max-height: none;
+    overflow-y: visible;
   }
 }
 
@@ -2703,16 +2837,9 @@ body.tab-frontpage .section-nav {
   }
 }
 
-/* ── Model-release tickets (Jira-style cards) ─────── */
+/* ── Model-release tickets (board, ara-themed) ─────── */
 .tickets-view {
-  --bg: #ffffff;
-  --bg-secondary: #f4f5f7;
-  --bg-hover: #ebecf0;
-  --border: #dfe3e8;
-  --border-light: #edf0f3;
-  --text: #172b4d;
-  --text-secondary: #42526e;
-  --text-tertiary: #6b778c;
+  /* Inherit the global ara-* spine — no local palette override. */
   max-width: none;
   margin: 0;
 }
@@ -2733,30 +2860,7 @@ body.tab-frontpage .section-nav {
   line-height: 1.2;
 }
 
-.tickets-actions {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.ticket-action-btn,
-.ticket-more-btn {
-  height: 32px;
-  border: 0;
-  border-radius: 3px;
-  background: #f4f5f7;
-  color: #42526e;
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.ticket-action-btn { padding: 0 14px; }
-
-.ticket-more-btn {
-  width: 34px;
-  letter-spacing: 1px;
-}
+/* (The non-functional "Release"/"•••" Jira chrome buttons were removed.) */
 
 .tickets-controls {
   display: flex;
@@ -2789,9 +2893,9 @@ body.tab-frontpage .section-nav {
 }
 .ticket-filter-pill:hover { background: var(--bg-hover); }
 .ticket-filter-pill.active {
-  background: #deebff;
-  color: #0052cc;
-  border-color: #deebff;
+  background: var(--accent-warm-bg);
+  color: var(--accent-warm);
+  border-color: var(--accent-warm-bg);
 }
 .ticket-filter-count {
   font-variant-numeric: tabular-nums;
@@ -2828,8 +2932,9 @@ body.tab-frontpage .section-nav {
 
 .ticket-column {
   min-width: 0;
-  background: #ebecf0;
-  border-radius: 3px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
 }
 
 .ticket-column-header {
@@ -2838,14 +2943,15 @@ body.tab-frontpage .section-nav {
   align-items: center;
   gap: 5px;
   padding: 0 10px;
-  color: #6b778c;
+  color: var(--text-tertiary);
   font-size: 11px;
   font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .ticket-column-count {
-  color: #97a0af;
+  color: var(--text-tertiary);
   font-weight: 700;
 }
 
@@ -2858,7 +2964,7 @@ body.tab-frontpage .section-nav {
 
 .ticket-column-empty,
 .ticket-board-empty {
-  color: #6b778c;
+  color: var(--text-tertiary);
   font-size: 12px;
 }
 
@@ -2867,8 +2973,8 @@ body.tab-frontpage .section-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px dashed #c1c7d0;
-  border-radius: 3px;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
 }
 
 .ticket-board-empty {
@@ -2877,28 +2983,30 @@ body.tab-frontpage .section-nav {
 
 .ticket-card {
   background: var(--bg);
-  border: 0;
-  border-radius: 3px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
   padding: 12px;
   cursor: pointer;
-  box-shadow: 0 1px 1px rgba(9,30,66,0.25), 0 0 1px rgba(9,30,66,0.31);
-  transition: background 120ms ease, box-shadow 120ms ease;
+  box-shadow: var(--shadow-sm);
+  transition: background 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
   display: flex;
   flex-direction: column;
   gap: 9px;
 }
 .ticket-card:hover {
-  background: #fafbfc;
-  box-shadow: 0 2px 4px rgba(9,30,66,0.22), 0 0 1px rgba(9,30,66,0.31);
+  background: var(--bg-hover);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
 }
 .ticket-card-expanded {
   cursor: default;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(9,30,66,0.22), 0 0 1px rgba(9,30,66,0.31);
+  background: var(--bg);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
 }
 
 /* Per-status left-border accent — quick visual triage. */
-.ticket-card-closed     { border-left-color: #525252; opacity: 0.72; }
+.ticket-card-closed     { border-left-color: var(--text-tertiary); opacity: 0.72; }
 .ticket-card-closed:hover { opacity: 0.95; }
 
 .ticket-header-top {
@@ -3069,9 +3177,10 @@ body.tab-frontpage .section-nav {
 .ticket-detail-panel {
   margin-top: 14px;
   padding: 18px;
-  background: #fff;
-  border-radius: 3px;
-  box-shadow: 0 1px 1px rgba(9,30,66,0.25), 0 0 1px rgba(9,30,66,0.31);
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
 }
 
 .ticket-detail-header {

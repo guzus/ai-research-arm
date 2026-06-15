@@ -60,3 +60,5 @@ dashboard/public/research/
 # fresh clone, but never commit cached bytes or per-run config overrides.
 data/source-cache/[0-9]*/
 data/source-cache-config.json
+# Tweet-card hydration cache (dashboard prebuild.mjs, via X syndication API).
+data/source-cache/tweets/
