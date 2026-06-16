@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-16 13:43 UTC
+
+CYCLE: The Fable 5 embargo's premise gets stress-tested — the alleged "jailbreak" surfaces and devs call it trivial.
+
+TOP STORIES:
+• Alleged Fable 5 "jailbreak" surfaces; Simon Willison "deeply unimpressed," calls it essentially a "fix this code" prompt he's used for 2+ years [⚠]
+• Dozens of cybersecurity experts (76 by one count) sign an open letter urging the US to lift the Anthropic ban — "it disarms defenders" [⚠]
+• No resolution: Monday's Anthropic–Trump talks ended with the embargo still in place; jailbreak risk remains the sticking point [✓]
+
+WATCH: A primary publication of the actual operative jailbreak technique — the test of whether "fix this code" is the real trigger.
+
+Full update on GitHub.
