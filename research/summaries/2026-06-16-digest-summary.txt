@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-16
+
+TOP STORIES:
+• Anthropic standoff: first restoration timeline — Fable 5/Mythos 5 stay dark until US apparatus is "hardened," possibly "weeks"
+• Salesforce buys AI customer-service platform Fin (ex-Intercom) for $3.6B to power Agentforce
+• Cybersecurity vets (Adobe, Zoom, Sophos) protest the Anthropic ban as hurting defenders (TechCrunch)
+
+KEY NUMBERS:
+• $3.6B Salesforce/Fin deal
+• $35B Broadcom-backed Anthropic chip order (~20GW compute)
+• Agents now hit 89% of workplace tasks vs 43% in 2024 (WorkBench)
+
+TRENDING: HN debates replacing Claude/GPT with local models for daily coding (461 pts)
+
+Full digest on GitHub.
