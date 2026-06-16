@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARA UI Prototype 2 - Reading Desk</title>
+    <style>
+      :root {
+        --paper: #ffffff;
+        --wash: #f5f6f8;
+        --ink: #111318;
+        --muted: #6c7280;
+        --accent: #235bff;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .masthead {
+        min-height: 68px;
+        border-bottom: 1px solid var(--muted);
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 18px;
+        padding: 0 28px;
+        background: var(--paper);
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+
+      .brand {
+        font-size: 18px;
+        font-weight: 760;
+      }
+
+      .tabs {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        min-width: 0;
+        overflow-x: auto;
+      }
+
+      .tabs button {
+        border: 0;
+        background: var(--paper);
+        color: var(--muted);
+        min-height: 40px;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .tabs button[aria-current="page"] {
+        color: var(--ink);
+        box-shadow: inset 0 -3px 0 var(--accent);
+      }
+
+      .toolset {
+        display: flex;
+        gap: 8px;
+      }
+
+      .icon-button {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--muted);
+        background: var(--paper);
+        color: var(--ink);
+        display: inline-grid;
+        place-items: center;
+        cursor: pointer;
+      }
+
+      .icon-button svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        min-height: 0;
+      }
+
+      article {
+        padding: clamp(24px, 6vw, 78px);
+        display: grid;
+        justify-items: center;
+      }
+
+      .article-inner {
+        width: min(100%, 760px);
+      }
+
+      .kicker {
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 760;
+        margin-bottom: 20px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+        overflow-wrap: anywhere;
+      }
+
+      h1 {
+        font-size: clamp(34px, 7vw, 76px);
+        line-height: 0.98;
+        letter-spacing: 0;
+        margin-bottom: 22px;
+      }
+
+      .dek {
+        color: var(--muted);
+        font-size: clamp(18px, 2.2vw, 23px);
+        margin-bottom: 30px;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 13px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid var(--muted);
+      }
+
+      .body {
+        display: grid;
+        gap: 22px;
+        padding-top: 32px;
+        font-size: 18px;
+      }
+
+      .callout {
+        border-left: 4px solid var(--accent);
+        background: var(--wash);
+        padding: 18px 20px;
+        font-size: 17px;
+      }
+
+      .aside {
+        border-left: 1px solid var(--muted);
+        background: var(--wash);
+        padding: 24px;
+        display: grid;
+        align-content: start;
+        gap: 24px;
+      }
+
+      .search {
+        border: 1px solid var(--muted);
+        background: var(--paper);
+        height: 42px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 12px;
+      }
+
+      .search input {
+        border: 0;
+        outline: 0;
+        width: 100%;
+        background: var(--paper);
+      }
+
+      .module {
+        display: grid;
+        gap: 12px;
+      }
+
+      .module h2 {
+        font-size: 14px;
+      }
+
+      .link-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .link-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--muted);
+      }
+
+      .link-row span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 12px;
+      }
+
+      .timeline-row {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 12px;
+      }
+
+      .time {
+        color: var(--accent);
+        font-weight: 760;
+        font-size: 13px;
+      }
+
+      @media (max-width: 900px) {
+        .masthead {
+          grid-template-columns: 1fr auto;
+          grid-template-areas:
+            "brand tools"
+            "tabs tabs";
+          padding: 14px 18px;
+        }
+
+        .brand { grid-area: brand; }
+        .tabs { grid-area: tabs; }
+        .toolset { grid-area: tools; }
+
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .aside {
+          border-left: 0;
+          border-top: 1px solid var(--muted);
+        }
+      }
+
+      @media (max-width: 560px) {
+        article {
+          padding: 24px 18px;
+        }
+
+        .meta {
+          display: grid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="masthead">
+        <div class="brand">ai-research-arm</div>
+        <nav class="tabs" aria-label="Sections">
+          <button type="button" aria-current="page">Digest</button>
+          <button type="button">Timeline</button>
+          <button type="button">Research</button>
+          <button type="button">Wiki</button>
+        </nav>
+        <div class="toolset">
+          <button class="icon-button" type="button" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+          </button>
+          <button class="icon-button" type="button" aria-label="Refresh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 12a9 9 0 1 1-3-6.7"></path>
+              <path d="M21 3v7h-7"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <article>
+          <div class="article-inner">
+            <p class="kicker">Daily digest</p>
+            <h1>The export-control story is now a negotiation, not a freeze.</h1>
+            <p class="dek">The product names still dominate the conversation, but the operational center of gravity has moved to conditional access, enforcement, and compute supply.</p>
+            <div class="meta">
+              <span>June 16, 2026</span>
+              <span>5 min read</span>
+              <span>109 twitter cycles</span>
+              <span>35 wiki pages</span>
+            </div>
+            <div class="body">
+              <p>Anthropic's Fable 5 and Mythos 5 remain unreleased for a fourth straight day while federal agencies and industry buyers negotiate the terms under which the models can ship.</p>
+              <p>The cleaner dashboard premise is simple: put one story in front of the reader, move source lanes into support, and remove decorative chrome that competes with the daily thesis.</p>
+              <div class="callout">
+                The first screen should answer one question: what changed since yesterday, and which source lane proves it?
+              </div>
+              <p>Model-release tickets, wiki pages, and social-source cycles remain available, but they become context panels instead of equal-weight tabs fighting for attention.</p>
+            </div>
+          </div>
+        </article>
+
+        <aside class="aside">
+          <label class="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <input placeholder="Search this issue">
+          </label>
+
+          <section class="module">
+            <h2>Source lanes</h2>
+            <div class="link-list">
+              <div class="link-row"><strong>Twitter</strong><span>109</span></div>
+              <div class="link-row"><strong>Model timeline</strong><span>86</span></div>
+              <div class="link-row"><strong>Research</strong><span>46</span></div>
+              <div class="link-row"><strong>Wiki</strong><span>35</span></div>
+            </div>
+          </section>
+
+          <section class="module">
+            <h2>Today</h2>
+            <div class="timeline">
+              <div class="timeline-row">
+                <div class="time">09:20</div>
+                <p>Salesforce confirms Fin acquisition.</p>
+              </div>
+              <div class="timeline-row">
+                <div class="time">08:10</div>
+                <p>Cybersecurity vendors contest the Anthropic restriction.</p>
+              </div>
+              <div class="timeline-row">
+                <div class="time">06:42</div>
+                <p>Broadcom chip-order report reframes supply risk.</p>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>
