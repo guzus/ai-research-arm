@@ -3622,6 +3622,9 @@ body.modal-open { overflow: hidden; }
   --fr-ink: #101216;
   --fr-muted: #6f7682;
   --fr-accent: #1f6feb;
+  --font: var(--font-serif);
+  --font-mono: var(--font-serif);
+  font-family: var(--font-serif);
   background: var(--fr-wash);
   color: var(--fr-ink);
   color-scheme: light;
@@ -4126,6 +4129,9 @@ body.tab-briefing {
   --brief-ink: #171b18;
   --brief-muted: #667069;
   --brief-accent: #0d766d;
+  --font: var(--font-serif);
+  --font-mono: var(--font-serif);
+  font-family: var(--font-serif);
   background: var(--brief-bg);
   color: var(--brief-ink);
 }
@@ -4532,7 +4538,19 @@ body.tab-source-map {
   --source-map-muted: #6c6e64;
   --source-map-line: #c9c4b8;
   --source-map-accent: #2d6a5b;
+  --font: var(--font-serif);
+  --font-mono: var(--font-serif);
+  font-family: var(--font-serif);
   background: var(--source-map-paper);
+}
+
+.tab-focus-reader button,
+.tab-focus-reader input,
+body.tab-briefing button,
+body.tab-briefing input,
+body.tab-source-map button,
+body.tab-source-map input {
+  font-family: inherit;
 }
 
 body.tab-source-map .app {
