@@ -178,7 +178,6 @@ let researchDocCache: { slug: string; language: ResearchLanguage; body: string }
 let ticketsCache: Ticket[] | null = null;
 let ticketsPromise: Promise<Ticket[] | null> | null = null;
 // Which ticket is expanded (showing body + history). Null = grid view.
-let expandedTicketSlug: string | null = null;
 // Filter state for the tickets grid.
 const ticketFilters = { status: 'all', company: 'all' };
 const LOAD_TIMEOUT_MS = 12000;
@@ -207,7 +206,7 @@ const content = document.getElementById('content')!;
 const calendarEl = document.getElementById('calendar')!;
 const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 const searchCountEl = document.getElementById('searchCount')!;
-const languageSwitch = document.getElementById('languageSwitch')!;
+const languageSwitch = document.getElementById('languageSwitch');
 
 // ── Path routing ─────────────────────────────────────
 // Format (history API, no hash):
@@ -346,6 +345,7 @@ function syncTabUi(): void {
     requestAnimationFrame(revealActiveTab);
     window.setTimeout(revealActiveTab, 120);
   }
+  document.body.classList.toggle('tab-today', activeTab === 'today');
   document.body.classList.toggle('tab-research', activeTab === 'research');
   document.body.classList.toggle('tab-frontpage', activeTab === 'frontpage');
   // Models tab shows the ticket grid (no date routing); the calendar
@@ -400,6 +400,7 @@ function hasResearchLanguage(row: GenResearchRow | null, language: ResearchLangu
 }
 
 function syncLanguageUi(row: GenResearchRow | null = null): void {
+  if (!languageSwitch) return;  // language toggle removed (English-only for now)
   languageSwitch.querySelectorAll<HTMLButtonElement>('[data-language]').forEach((btn) => {
     const language = btn.dataset.language as ResearchLanguage;
     const available = !row || hasResearchLanguage(row, language);
@@ -610,11 +611,15 @@ function buildCalendarHtml(): string {
   const coverageHint = coverage > 0 ? ' · ' + coverage + (coverage === 1 ? ' day' : ' days') : '';
   let html = '<div class="cal-header" data-cal-toggle>';
   html += '<span class="cal-header-label">' + monthLabel + '<span class="cal-coverage">' + coverageHint + '</span> <span class="cal-chevron">' + (open ? '&#9650;' : '&#9660;') + '</span></span>';
+  html += '</div>';
+
+  // Month nav + day grid live in a popover so the pill keeps a fixed size.
+  html += '<div class="cal-pop">';
   html += '<div class="cal-header-nav">';
   html += '<button class="cal-nav-btn" data-cal-nav="-1">&lsaquo;</button>';
   html += '<button class="cal-today-btn" data-cal-today>Today</button>';
   html += '<button class="cal-nav-btn" data-cal-nav="1">&rsaquo;</button>';
-  html += '</div></div>';
+  html += '</div>';
 
   html += '<div class="cal-grid">';
   for (const dow of dows) {
@@ -648,12 +653,34 @@ function buildCalendarHtml(): string {
   }
 
   html += '</div>';
+  html += '</div>';
   return html;
+}
+
+// The picker popover is position:fixed (so it escapes the .tabs overflow clip);
+// position it under the pill in viewport coords after each render.
+function positionCalPop(): void {
+  const pop = calendarEl.querySelector<HTMLElement>('.cal-pop');
+  const header = calendarEl.querySelector<HTMLElement>('.cal-header');
+  if (!pop || !header) return;
+  const r = header.getBoundingClientRect();
+  pop.style.top = (r.bottom + 8) + 'px';
+  pop.style.left = Math.max(8, Math.min(r.left, window.innerWidth - 296)) + 'px';
 }
 
 function renderCalendar(): void {
   setSafeCalendar(calendarEl, buildCalendarHtml());
+  if (calendarEl.classList.contains('open')) positionCalPop();
 }
+
+// Close the picker on scroll — the pill isn't sticky, so a fixed popover would
+// otherwise detach from it.
+window.addEventListener('scroll', () => {
+  if (calendarEl.classList.contains('open')) {
+    calendarEl.classList.remove('open');
+    renderCalendar();
+  }
+}, true);
 
 /** Safely set calendar content using DOMPurify */
 function setSafeCalendar(el: HTMLElement, rawHtml: string): void {
@@ -671,6 +698,8 @@ function handleCalendarClick(e: Event): void {
   // Toggle fold/unfold when clicking the header (but not nav buttons)
   const toggleEl = target.closest('[data-cal-toggle]') as HTMLElement | null;
   if (toggleEl && !target.closest('[data-cal-nav]') && !target.closest('[data-cal-today]')) {
+    // The pill is a date picker: clicking it opens the calendar from any tab;
+    // picking a day (cal-day handler) then opens that day's digest/newspaper.
     calendarEl.classList.toggle('open');
     renderCalendar();
     return;
@@ -687,6 +716,8 @@ function handleCalendarClick(e: Event): void {
   if (target.closest('[data-cal-today]')) {
     const now = new Date();
     currentDate = now;
+    activeTab = 'today';
+    syncTabUi();
     calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     load();
@@ -697,6 +728,9 @@ function handleCalendarClick(e: Event): void {
   if (dayEl && dayEl.dataset.date) {
     const parts = dayEl.dataset.date.split('-');
     currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+    activeTab = 'today';                 // picking a date opens that day's view
+    syncTabUi();
+    calendarEl.classList.remove('open');
     const clickedMonth = new Date(+parts[0], +parts[1] - 1, 1);
     if (clickedMonth.getTime() !== calendarMonth.getTime()) {
       calendarMonth = clickedMonth;
@@ -1406,14 +1440,6 @@ function extractHandles(md: string, limit = 12): string[] {
   return Array.from(handles);
 }
 
-function hostnameOf(url: string): string {
-  try {
-    return new URL(url).hostname.replace(/^www\./, '');
-  } catch {
-    return url;
-  }
-}
-
 function renderTweetAgoFromUrl(url: string): string {
   const match = url.match(/(?:x|twitter)\.com\/[^/]+\/status\/(\d+)/);
   if (!match) return '';
@@ -1553,6 +1579,131 @@ async function hydrateTweetCards(root: HTMLElement): Promise<void> {
     // DOMPurify wrapper too (defense-in-depth + allows the card's svg/img).
     setSafeContent(slot, data ? tweetCardHtml(data) : tweetFallbackHtml(url));
   }
+}
+
+// ── Wiki mentions (auto-link known entities to the LLM wiki) ──────────────
+// In rendered content (digest / twitter / articles) underline the FIRST
+// mention of any term that has an LLM-wiki page, link it, and show a hover
+// preview on desktop — so readers can quick-look + discover without leaving
+// the page. Clicking navigates to the wiki (cross-tab, SPA).
+let wikiIndexLoad: Promise<WikiIndex | null> | null = null;
+function loadWikiIndexCached(): Promise<WikiIndex | null> {
+  if (wikiIndexCache) return Promise.resolve(wikiIndexCache);
+  if (!wikiIndexLoad) wikiIndexLoad = loadWikiIndex(new AbortController().signal);
+  return wikiIndexLoad;
+}
+
+let wikiMatcher: { re: RegExp; map: Map<string, string> } | null = null;
+function getWikiMatcher(index: WikiIndex): { re: RegExp; map: Map<string, string> } | null {
+  if (wikiMatcher) return wikiMatcher;
+  const map = new Map<string, string>();   // lowercased term → slug
+  for (const p of index.pages) {
+    for (const term of [p.title, ...(p.aliases || [])]) {
+      const key = (term || '').trim().toLowerCase();
+      if (key.length < 3) continue;          // skip noise like "AI"
+      if (!map.has(key)) map.set(key, p.slug);
+    }
+  }
+  if (map.size === 0) return null;
+  // Longest terms first so "Claude Opus 4.8" wins over "Claude".
+  const escaped = Array.from(map.keys())
+    .sort((a, b) => b.length - a.length)
+    .map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  wikiMatcher = {
+    re: new RegExp('(?<![A-Za-z0-9])(' + escaped.join('|') + ')(?![A-Za-z0-9])', 'gi'),
+    map,
+  };
+  return wikiMatcher;
+}
+
+// Text inside these must NOT be wikified (links, code, chips, tweet cards).
+const WIKIFY_SKIP = 'a, code, pre, kbd, mark, button, select, .tweet-card, .ara-tag, .handle, .ara-eyebrow, .twitter-source-chip, .twitter-handle-chip, [data-wiki-slug], .wiki-mention';
+
+async function wikifyContent(root: HTMLElement): Promise<void> {
+  if (document.body.classList.contains('tab-wiki')) return;  // don't self-link the wiki
+  const index = await loadWikiIndexCached();
+  if (!index) return;
+  const matcher = getWikiMatcher(index);
+  if (!matcher) return;
+  const used = new Set<string>();   // link only the FIRST mention of each entity
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node: Node): number {
+      const el = (node as Text).parentElement;
+      if (!el || el.closest(WIKIFY_SKIP)) return NodeFilter.FILTER_REJECT;
+      return node.nodeValue && node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    },
+  });
+  const textNodes: Text[] = [];
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) textNodes.push(n as Text);
+  for (const node of textNodes) {
+    const text = node.nodeValue || '';
+    matcher.re.lastIndex = 0;
+    const hits: Array<{ s: number; e: number; slug: string; term: string }> = [];
+    let m: RegExpExecArray | null;
+    while ((m = matcher.re.exec(text))) {
+      const slug = matcher.map.get(m[1].toLowerCase());
+      if (slug && !used.has(slug)) {
+        used.add(slug);
+        hits.push({ s: m.index, e: m.index + m[1].length, slug, term: m[1] });
+      }
+    }
+    if (hits.length === 0) continue;
+    const frag = document.createDocumentFragment();
+    let cur = 0;
+    for (const h of hits) {
+      if (h.s > cur) frag.appendChild(document.createTextNode(text.slice(cur, h.s)));
+      const a = document.createElement('a');
+      a.className = 'wiki-mention';
+      a.setAttribute('data-wiki-slug', h.slug);
+      a.setAttribute('href', '/wiki/' + h.slug);
+      a.textContent = h.term;
+      frag.appendChild(a);
+      cur = h.e;
+    }
+    if (cur < text.length) frag.appendChild(document.createTextNode(text.slice(cur)));
+    node.parentNode?.replaceChild(frag, node);
+  }
+  ensureWikiHover();
+}
+
+// Shared desktop hover-preview card (one element, repositioned per mention).
+let wikiHoverEl: HTMLElement | null = null;
+let wikiHoverReady = false;
+function ensureWikiHover(): void {
+  if (wikiHoverReady) return;
+  wikiHoverReady = true;
+  document.addEventListener('mouseover', (e) => {
+    const el = (e.target as HTMLElement)?.closest?.('.wiki-mention') as HTMLElement | null;
+    if (el) showWikiHover(el);
+  });
+  document.addEventListener('mouseout', (e) => {
+    if ((e.target as HTMLElement)?.closest?.('.wiki-mention')) hideWikiHover();
+  });
+  window.addEventListener('scroll', hideWikiHover, true);
+}
+function showWikiHover(el: HTMLElement): void {
+  const slug = el.getAttribute('data-wiki-slug');
+  const page = slug ? wikiPageMap.get(slug) : null;
+  if (!page) return;
+  if (!wikiHoverEl) {
+    wikiHoverEl = document.createElement('div');
+    wikiHoverEl.className = 'wiki-hover';
+    document.body.appendChild(wikiHoverEl);
+  }
+  setSafeContent(
+    wikiHoverEl,
+    '<span class="wiki-hover-type">' + escapeHtml(String(page.type)) + '</span>' +
+    '<span class="wiki-hover-title">' + escapeHtml(page.title) + '</span>' +
+    '<span class="wiki-hover-summary">' + escapeHtml(page.summary || '') + '</span>',
+  );
+  const r = el.getBoundingClientRect();
+  const left = Math.max(12, Math.min(r.left, window.innerWidth - 320 - 12));
+  wikiHoverEl.style.display = 'block';
+  wikiHoverEl.style.left = left + 'px';
+  wikiHoverEl.style.top = (r.bottom + 8) + 'px';
+}
+function hideWikiHover(): void {
+  if (wikiHoverEl) wikiHoverEl.style.display = 'none';
 }
 
 // ── Wiki (LLM Wiki) ───────────────────────────────────
@@ -1841,10 +1992,6 @@ function renderWikiIndex(index: WikiIndex): void {
     content,
     [
       '<div class="content-card wiki-index-card">',
-      '  <div class="wiki-index-header">',
-      '    <h1 class="wiki-index-title">LLM Wiki</h1>',
-      '    <span class="wiki-index-count">' + pages.length + ' pages</span>',
-      '  </div>',
       '  <div class="wiki-index-main">',
       emptyNote,
       sections.join('\n'),
@@ -2152,10 +2299,18 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
     const displayTime = timeInfo
       ? '<span class="twitter-cycle-time">' + escapeHtml(timeInfo.utc) + '</span><span class="local-time">' + escapeHtml(timeInfo.local) + '</span>'
       : '<span class="twitter-cycle-time">' + escapeHtml(title) + '</span>';
+    // Show the full cycle summary in the Signal Brief — it's the only place
+    // the summary lives now, so don't cut it mid-sentence.
     const leadText = cycleSummary
-      ? truncateText(cleanPublicLeadText(stripMarkdown(cycleSummary)), 620)
+      ? cleanPublicLeadText(stripMarkdown(cycleSummary))
       : truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 620);
-    const leadHtml = twitterMarkdownToHtml(section.body);
+    // Storyless cycles fall back to the cycle markdown — minus the parts shown
+    // separately above (Cycle summary → Signal Brief; Skeptic's corner → its
+    // own callout) so nothing renders twice.
+    const fallbackBody = section.body
+      .replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '')
+      .replace(/###\s+[^\n]*[Ss]keptic[^\n]*\n[\s\S]*?(?=\n#{2,3}\s|$)/i, '')
+      .trim();
     const structuredStoryCards = renderStructuredTwitterStories(section.body);
     const storyCards = structuredStoryCards || stories.map((story) => {
       const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
@@ -2205,11 +2360,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
         '      <p class="twitter-brief-text">' + highlightPlainText(leadText) + '</p>',
         '    </div>',
         '  </div>',
-        '  <details class="twitter-cycle-summary">',
-        '    <summary>Full cycle text</summary>',
-        '    <div class="md-content twitter-summary-body">' + leadHtml + '</div>',
-        '  </details>',
-        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + twitterMarkdownToHtml(section.body) + '</div>',
+        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + twitterMarkdownToHtml(fallbackBody) + '</div>',
         skepticHtml,
         '</section>',
       ].join('\n'),
@@ -2218,6 +2369,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
 
   setSafeContent(content, '<div class="twitter-report">' + cards.join('\n') + '</div>');
   void hydrateTweetCards(content);
+  void wikifyContent(content);
 }
 
 function loadTickets(): Promise<Ticket[] | null> {
@@ -2250,54 +2402,16 @@ function ticketStatusPill(status: TicketStatus): string {
   return `<span class="ticket-pill ticket-pill-${status}">${escapeHtml(labels[status])}</span>`;
 }
 
-function ticketVerificationBadge(verification: TicketVerification): string {
-  if (verification === 'confirmed') return '';
-  const label = verification === 'partial' ? '◐ partial corroboration' : '⚠ unverified';
-  return `<span class="ticket-verification ticket-verification-${verification}">${escapeHtml(label)}</span>`;
-}
-
+// Compact card — status + title + company + a few labels. Everything else
+// (note, expected, model, verification, sources, history) lives in the modal
+// that opens on click, so the board stays short and scannable.
 function ticketCard(ticket: Ticket): string {
-  const expanded = ticket.slug === expandedTicketSlug;
-  const sourcesPreview = ticket.sources.slice(0, 3).map((s) => {
-    if (s.startsWith('@')) return `<span class="ticket-source-handle">${escapeHtml(s)}</span>`;
-    return `<a class="ticket-source-link" href="${escapeHtml(s)}" target="_blank" rel="noopener">${escapeHtml(hostnameOf(s))}</a>`;
-  }).join('');
-  const extraSources = ticket.sources.length > 3 ? `<span class="ticket-source-more">+${ticket.sources.length - 3}</span>` : '';
-  const labelsHtml = (ticket.labels || []).map((l) => `<span class="ara-tag">${escapeHtml(l)}</span>`).join('');
-  const expectedRow = ticket.expected
-    ? `<div class="ticket-row"><span class="ticket-row-key">Expected</span><span class="ticket-row-val">${escapeHtml(ticket.expected)}</span></div>`
-    : '';
-  const noteRow = ticket.status_note
-    ? `<div class="ticket-row ticket-row-note">${escapeHtml(ticket.status_note)}</div>`
-    : '';
-  const closedRow = ticket.status === 'closed' && ticket.closed_reason
-    ? `<div class="ticket-row ticket-row-closed"><span class="ticket-row-key">Closed</span><span class="ticket-row-val">${escapeHtml(ticket.closed_at || '')} — ${escapeHtml(ticket.closed_reason)}</span></div>`
-    : '';
-
-  const headerHtml = [
-    `<div class="ticket-header">`,
-    `  <div class="ticket-header-top">`,
-    `    ${ticketStatusPill(ticket.status)}`,
-    `    <span class="ticket-company">${escapeHtml(ticket.company)}</span>`,
-    `    ${ticketVerificationBadge(ticket.verification)}`,
-    `  </div>`,
-    `  <h3 class="ticket-title">${escapeHtml(ticket.title)}</h3>`,
-    ticket.model ? `  <div class="ticket-model">${escapeHtml(ticket.model)}</div>` : '',
-    `</div>`,
-  ].filter(Boolean).join('\n');
-
-  const metaHtml = [
-    expectedRow,
-    noteRow,
-    closedRow,
-    labelsHtml ? `<div class="ticket-labels">${labelsHtml}</div>` : '',
-    `<div class="ticket-sources">${sourcesPreview}${extraSources}</div>`,
-    `<div class="ticket-footer"><span>updated ${escapeHtml(ticket.updated_at)}</span><span>slug: ${escapeHtml(ticket.slug)}</span></div>`,
-  ].filter(Boolean).join('\n');
-
-  return `<article class="ticket-card ticket-card-${ticket.status}${expanded ? ' ticket-card-expanded' : ''}" data-slug="${escapeHtml(ticket.slug)}">
-    ${headerHtml}
-    <div class="ticket-meta">${metaHtml}</div>
+  // Bird's-eye board = company + title only; labels/details live in the modal.
+  return `<article class="ticket-card ticket-card-${ticket.status}" data-slug="${escapeHtml(ticket.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(ticket.title)}">
+    <div class="ticket-card-top">
+      <span class="ticket-company">${escapeHtml(ticket.company)}</span>
+    </div>
+    <h3 class="ticket-title">${escapeHtml(ticket.title)}</h3>
   </article>`;
 }
 
@@ -2394,6 +2508,45 @@ function companyKey(company: string): string {
   return company.toLowerCase().split('/')[0].trim();
 }
 
+// Ticket detail modal — clicking a card opens a larger overlay with the full
+// ticket (metadata grid, body, history timeline, sources).
+let ticketModalEl: HTMLElement | null = null;
+function openTicketModal(ticket: Ticket): void {
+  if (!ticketModalEl) {
+    ticketModalEl = document.createElement('div');
+    ticketModalEl.className = 'ticket-modal';
+    ticketModalEl.addEventListener('click', (e) => {
+      const tgt = e.target as HTMLElement;
+      if (tgt === ticketModalEl || tgt.closest('.ticket-modal-close')) closeTicketModal();
+    });
+    document.body.appendChild(ticketModalEl);
+  }
+  setSafeContent(
+    ticketModalEl,
+    '<div class="ticket-modal-card"><button class="ticket-modal-close" type="button" aria-label="Close">✕</button>' +
+      ticketExpandedPanel(ticket) + '</div>',
+  );
+  ticketModalEl.style.display = 'flex';
+  document.body.classList.add('modal-open');
+}
+function closeTicketModal(): void {
+  if (ticketModalEl) ticketModalEl.style.display = 'none';
+  document.body.classList.remove('modal-open');
+}
+document.addEventListener('keydown', (e) => {
+  if (!ticketModalEl) return;
+  if (e.key === 'Escape' && ticketModalEl.style.display === 'flex') {
+    closeTicketModal();
+    return;
+  }
+  if ((e.key === 'Enter' || e.key === ' ') && document.body.classList.contains('tab-models')) {
+    const card = (document.activeElement as HTMLElement | null)?.closest?.('.ticket-card') as HTMLElement | null;
+    const slug = card?.dataset.slug;
+    const ticket = slug && ticketsCache ? ticketsCache.find((t) => t.slug === slug) : null;
+    if (ticket) { e.preventDefault(); openTicketModal(ticket); }
+  }
+});
+
 function renderTickets(tickets: Ticket[] | null): void {
   if (!tickets || tickets.length === 0) {
     setSafeContent(
@@ -2451,25 +2604,16 @@ function renderTickets(tickets: Ticket[] | null): void {
   const emptyNote = filtered.length === 0
     ? `<div class="ticket-board-empty">No tickets match the current filters.</div>`
     : '';
-  const detailPanel = ticketExpandedPanel(
-    expandedTicketSlug ? filtered.find((ticket) => ticket.slug === expandedTicketSlug) || null : null,
-  );
-
   setSafeContent(
     content,
     `<div class="tickets-view">
-      <div class="tickets-heading">
-        <h2>Model release timeline</h2>
-      </div>
       <div class="tickets-controls">
         <div class="ticket-filters">${statusBar}</div>
         <select class="ticket-company-select" data-filter-company>${companyOptions}</select>
-        <div class="ticket-summary">${filtered.length} of ${tickets.length} tickets</div>
       </div>
       <div class="tickets-board">
         ${board}
       </div>
-      ${detailPanel}
       ${emptyNote}
     </div>`,
   );
@@ -2507,6 +2651,10 @@ function enhanceNewspaper(root: ParentNode = content): void {
       toggle.dataset.bound = 'true';
       const controlledId = toggle.getAttribute('aria-controls');
       const panel = controlledId ? paper.querySelector<HTMLElement>('#' + CSS.escape(controlledId)) : null;
+      // Unfold by default — sections (Departments, lead, etc.) start expanded so
+      // the content reads without a click; clicking still collapses.
+      toggle.setAttribute('aria-expanded', 'true');
+      if (panel) panel.hidden = false;
       toggle.addEventListener('click', () => {
         const expanded = toggle.getAttribute('aria-expanded') !== 'false';
         toggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
@@ -2524,9 +2672,6 @@ function renderFrontPage(frontPage: FrontPageAsset): void {
     content,
     [
       '<div class="content-card frontpage-card">',
-      '  <div class="content-card-header">',
-      '    <div class="content-card-title">THE AGI AWARENESS POST — ' + escapeHtml(displayDate(currentDate)) + '</div>',
-      '  </div>',
       noteHtml,
       frontPageBodyHtml(frontPage),
       '</div>',
@@ -2559,15 +2704,10 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     const audioUrl = `${AUDIO_BASE}/audio/${dateStr}-digest.mp3`;
     cards.push(
       [
-        '<div class="content-card today-audio-card">',
-        '  <div class="content-card-header">',
-        '    <div class="content-card-title">🎧 Audio digest</div>',
-        '  </div>',
-        '  <div class="content-card-body">',
-        '    <audio controls preload="metadata" style="width:100%;" src="' + audioUrl + '">',
-        '      Your browser does not support the audio element.',
-        '    </audio>',
-        '  </div>',
+        '<div class="today-audio">',
+        '  <audio controls preload="metadata" style="width:100%;" src="' + audioUrl + '">',
+        '    Your browser does not support the audio element.',
+        '  </audio>',
         '</div>',
       ].join('\n'),
     );
@@ -2598,9 +2738,6 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
       cards.push(
         [
           '<div class="content-card today-card">',
-          '  <div class="content-card-header">',
-          '    <div class="content-card-title">' + escapeHtml(displayDate(currentDate)) + '</div>',
-          '  </div>',
           '  <div class="content-card-body">',
           '    <div class="today-tldr">',
           '      <span class="today-tldr-label">TL;DR</span>',
@@ -2633,9 +2770,6 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
       : '';
     const fpCard = [
       '<div class="content-card frontpage-card today-frontpage-card">',
-      '  <div class="content-card-header">',
-      '    <div class="content-card-title">THE AGI AWARENESS POST — ' + escapeHtml(displayDate(currentDate)) + '</div>',
-      '  </div>',
       noteHtml,
       frontPageBodyHtml(frontPage),
       '</div>',
@@ -2650,9 +2784,11 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
       ].join('\n'),
     );
     enhanceNewspaper();
+    void wikifyContent(content);
     return;
   }
   setSafeContent(content, todayCards);
+  void wikifyContent(content);
 }
 
 // ── Generative research ───────────────────────────────
@@ -2795,6 +2931,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     applyAraTooltips(article);
     renderResearchTOC(article);
     addSectionAnchors(article);
+    void wikifyContent(article);
     scrollToHashIfPresent();
   } else {
     hideResearchTOC();
@@ -4940,15 +5077,164 @@ document.getElementById('shortcutToggle')!.addEventListener('click', () => {
 
 // ── Events ────────────────────────────────────────────
 
-searchInput.addEventListener('input', () => {
-  if (searchDebounceId !== null) window.clearTimeout(searchDebounceId);
-  searchDebounceId = window.setTimeout(() => {
-    searchTerm = searchInput.value.trim();
+const searchToggle = document.getElementById('searchToggle');
+const searchOverlay = document.getElementById('searchOverlay');
+const searchClear = document.getElementById('searchClear');
+const searchResultsEl = document.getElementById('searchResults');
+
+// ── Global search ─────────────────────────────────────
+// Search across ALL content — research articles, wiki pages, model tickets —
+// from any tab; a result jumps straight to the item. The corpus is built lazily
+// from the already-loaded indexes and cached.
+type SearchHit = { type: 'research' | 'wiki' | 'model'; title: string; subtitle: string; slug: string; hay: string };
+let searchCorpus: SearchHit[] | null = null;
+let searchHits: SearchHit[] = [];
+let searchSel = -1;
+const SEARCH_TYPE_LABEL: Record<SearchHit['type'], string> = { research: 'Research', wiki: 'Wiki', model: 'Model' };
+
+async function buildSearchCorpus(): Promise<SearchHit[]> {
+  if (searchCorpus) return searchCorpus;
+  const [m, wiki, tickets] = await Promise.all([loadManifest(), loadWikiIndexCached(), loadTickets()]);
+  const hits: SearchHit[] = [];
+  if (wiki) for (const p of wiki.pages) {
+    hits.push({ type: 'wiki', title: p.title, subtitle: (p.aliases || []).slice(0, 3).join(', ') || String(p.type),
+      slug: p.slug, hay: (p.title + ' ' + (p.aliases || []).join(' ') + ' ' + (p.summary || '') + ' ' + (p.tags || []).join(' ')).toLowerCase() });
+  }
+  if (m) for (const r of (m.generative || [])) {
+    hits.push({ type: 'research', title: r.title, subtitle: (r.tags || []).slice(0, 4).join(', '),
+      slug: r.slug, hay: (r.title + ' ' + (r.tags || []).join(' ') + ' ' + (r.prompt || '')).toLowerCase() });
+  }
+  if (tickets) for (const t of tickets) {
+    hits.push({ type: 'model', title: t.title, subtitle: t.company + (t.model ? ' · ' + t.model : ''),
+      slug: t.slug, hay: (t.title + ' ' + t.company + ' ' + (t.model || '') + ' ' + (t.labels || []).join(' ')).toLowerCase() });
+  }
+  searchCorpus = hits;
+  return hits;
+}
+
+function renderSearchHits(): void {
+  if (!searchResultsEl) return;
+  if (searchHits.length === 0) {
+    setSafeContent(searchResultsEl, '<div class="search-empty">No matches</div>');
+    searchResultsEl.hidden = false;
+    return;
+  }
+  const rows = searchHits.map((h, i) =>
+    '<button class="search-result' + (i === searchSel ? ' is-sel' : '') + '" type="button" role="option" data-sr-index="' + i + '">' +
+    '<span class="search-result-type">' + SEARCH_TYPE_LABEL[h.type] + '</span>' +
+    '<span class="search-result-title">' + escapeHtml(h.title) + '</span>' +
+    (h.subtitle ? '<span class="search-result-sub">' + escapeHtml(h.subtitle) + '</span>' : '') +
+    '</button>',
+  ).join('');
+  setSafeContent(searchResultsEl, rows);
+  searchResultsEl.hidden = false;
+}
+
+async function runGlobalSearch(query: string): Promise<void> {
+  const q = query.trim().toLowerCase();
+  if (!q) {
+    searchHits = [];
+    searchSel = -1;
+    if (searchResultsEl) searchResultsEl.hidden = true;
+    if (searchCountEl) searchCountEl.textContent = '';
+    return;
+  }
+  const corpus = await buildSearchCorpus();
+  searchHits = corpus
+    .map((h) => {
+      const t = h.title.toLowerCase();
+      const score = t.startsWith(q) ? 3 : t.includes(q) ? 2 : h.hay.includes(q) ? 1 : 0;
+      return { h, score };
+    })
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score || a.h.title.length - b.h.title.length)
+    .slice(0, 24)
+    .map((x) => x.h);
+  searchSel = searchHits.length ? 0 : -1;
+  if (searchCountEl) searchCountEl.textContent = searchHits.length ? String(searchHits.length) : '';
+  renderSearchHits();
+}
+
+function moveSearchSel(d: number): void {
+  if (searchHits.length === 0) return;
+  searchSel = (searchSel + d + searchHits.length) % searchHits.length;
+  renderSearchHits();
+  (searchResultsEl?.querySelector('.search-result.is-sel') as HTMLElement | null)?.scrollIntoView({ block: 'nearest' });
+}
+
+function activateSearchHit(h: SearchHit): void {
+  closeSearch();
+  if (h.type === 'model') {
+    activeTab = 'models';
+    selectedSlug = null;
+    syncTabUi();
     load();
-  }, 180);
+    const t = ticketsCache ? ticketsCache.find((x) => x.slug === h.slug) : null;
+    if (t) window.setTimeout(() => openTicketModal(t), 60);
+    return;
+  }
+  activeTab = h.type; // 'research' | 'wiki'
+  selectedSlug = h.slug;
+  syncTabUi();
+  load();
+}
+
+function syncSearchClear(): void {
+  if (searchClear) (searchClear as HTMLElement).hidden = searchInput.value.length === 0;
+}
+function openSearch(): void {
+  if (searchOverlay) searchOverlay.hidden = false;
+  syncSearchClear();
+  searchInput.focus();
+  searchInput.select();
+}
+function closeSearch(): void {
+  if (searchOverlay) searchOverlay.hidden = true;
+  if (searchResultsEl) searchResultsEl.hidden = true;
+}
+function clearSearch(): void {
+  searchInput.value = '';
+  syncSearchClear();
+  void runGlobalSearch('');
+  searchInput.focus();
+}
+searchToggle?.addEventListener('click', () => {
+  if (searchOverlay && searchOverlay.hidden) openSearch();
+  else closeSearch();
+});
+searchClear?.addEventListener('click', clearSearch);
+searchResultsEl?.addEventListener('click', (e) => {
+  const btn = (e.target as HTMLElement).closest('.search-result') as HTMLElement | null;
+  if (!btn) return;
+  const i = Number(btn.dataset.srIndex);
+  if (searchHits[i]) activateSearchHit(searchHits[i]);
+});
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') { closeSearch(); searchInput.blur(); }
+  else if (e.key === 'ArrowDown') { e.preventDefault(); moveSearchSel(1); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); moveSearchSel(-1); }
+  else if (e.key === 'Enter') { e.preventDefault(); if (searchHits[searchSel]) activateSearchHit(searchHits[searchSel]); }
+});
+// ⌘K / Ctrl+K opens search from anywhere; click outside the panel closes it.
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+    e.preventDefault();
+    openSearch();
+  }
+});
+document.addEventListener('mousedown', (e) => {
+  if (!searchOverlay || searchOverlay.hidden) return;
+  const t = e.target as Node;
+  if (!searchOverlay.contains(t) && !(searchToggle && searchToggle.contains(t))) closeSearch();
 });
 
-languageSwitch.addEventListener('click', (e) => {
+searchInput.addEventListener('input', () => {
+  syncSearchClear();
+  if (searchDebounceId !== null) window.clearTimeout(searchDebounceId);
+  searchDebounceId = window.setTimeout(() => { void runGlobalSearch(searchInput.value); }, 120);
+});
+
+languageSwitch?.addEventListener('click', (e) => {
   const btn = (e.target as HTMLElement).closest('[data-language]') as HTMLButtonElement | null;
   if (!btn) return;
   const language = btn.dataset.language === 'ko' ? 'ko' : 'en';
@@ -5021,6 +5307,19 @@ content.addEventListener('click', (e) => {
   // for instant SPA nav so a click never triggers a full page reload. Mirror the
   // research [data-slug] branch. Placed before the [data-slug] lookup; they use
   // distinct attributes so there's no collision, but ordering keeps intent clear.
+  // Wiki mentions (auto-linked entities in digest/twitter/articles) navigate
+  // to the wiki from ANY tab — distinct from the wiki-tab-only links below.
+  const wikiMention = target.closest('.wiki-mention') as HTMLElement | null;
+  if (wikiMention) {
+    const slug = wikiMention.dataset.wikiSlug;
+    if (slug) {
+      e.preventDefault();
+      activeTab = 'wiki';
+      selectedSlug = slug;
+      load();
+    }
+    return;
+  }
   const wikiAnchor = target.closest('[data-wiki-slug]') as HTMLElement | null;
   if (wikiAnchor && activeTab === 'wiki') {
     const slug = wikiAnchor.dataset.wikiSlug;
@@ -5043,13 +5342,11 @@ content.addEventListener('click', (e) => {
     return;
   }
   if (row && activeTab === 'models') {
-    // Don't toggle on link clicks inside the card — let them open.
+    // Don't open the modal on link clicks inside the card — let them through.
     if (target.closest('a, button')) return;
     const slug = row.dataset.slug;
-    if (slug) {
-      expandedTicketSlug = expandedTicketSlug === slug ? null : slug;
-      if (ticketsCache) renderTickets(ticketsCache);
-    }
+    const ticket = slug && ticketsCache ? ticketsCache.find((t) => t.slug === slug) : null;
+    if (ticket) openTicketModal(ticket);
   }
 });
 
@@ -5122,7 +5419,7 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
     }
     case '/':
       e.preventDefault();
-      searchInput.focus();
+      openSearch();
       break;
     case 'r':
     case 'R':

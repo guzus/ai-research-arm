@@ -72,6 +72,7 @@ body {
   background: var(--bg-secondary);
   color: var(--text);
   line-height: 1.6;
+  letter-spacing: -0.012em;  /* tighter tracking overall for faster reading */
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
@@ -163,12 +164,33 @@ body {
   gap: 16px;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
 .brand-title {
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   font-family: var(--font-mono);
 }
+.brand-search {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.brand-search:hover { background: var(--bg-hover); color: var(--text); }
 
 .header-actions {
   display: flex;
@@ -388,10 +410,10 @@ body {
   background: var(--bg);
   border: 1px solid var(--border);
   color: var(--text);
-  padding: 7px 12px 7px 34px;
-  border-radius: 9px;
+  padding: 9px 58px 9px 36px;
+  border-radius: 10px;
   font-family: var(--font);
-  font-size: 0.84rem;
+  font-size: 0.9rem;
   outline: none;
   transition: all 0.15s;
 }
@@ -409,7 +431,7 @@ body {
 
 .search-count {
   position: absolute;
-  right: 10px;
+  right: 38px;
   top: 50%;
   transform: translateY(-50%);
   font-family: var(--font-mono);
@@ -428,35 +450,218 @@ body {
 }
 
 /* ── Calendar ──────────────────────────────────────── */
+/* The calendar pill is the first nav item — the "day view" entry that replaced
+ * the Today tab. Collapsed = a pill; the date grid pops over when opened. It
+ * goes navy/active when the day view is showing (like an active tab). */
 .calendar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
   background: var(--bg);
-  border: 1px solid var(--border-light);
-  border-radius: 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
   box-shadow: var(--shadow-sm);
+  padding: 7px 14px;
+}
+body.tab-today .calendar {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+body.tab-today .cal-header-label { color: var(--on-accent); }
+body.tab-today .cal-coverage,
+body.tab-today .cal-chevron { color: var(--on-accent); opacity: 0.75; }
+
+/* Aggressive-minimalism chrome cuts: drop the floating section-nav widget, the
+ * keyboard-shortcut guide, and the manual refresh button — content-first.
+ * Keyboard shortcuts still work; only the visual widgets are removed. */
+.section-nav,
+.shortcut-guide,
+.refresh-btn {
+  display: none !important;
+}
+
+/* "Request research" is a research-tab action — only show it on /research. */
+body:not(.tab-research) .request-btn { display: none; }
+/* The controls row now holds only Request research → hide it off /research. */
+body:not(.tab-research) .controls { display: none; }
+
+/* Search overlay — revealed by the magnifier button next to the wordmark. */
+.search-overlay { margin-bottom: 12px; max-width: 560px; }
+.search-overlay[hidden] { display: none; }
+.search-clear {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: var(--text-tertiary);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.search-clear:hover { background: var(--bg-hover); color: var(--text); }
+.search-clear[hidden] { display: none; }
+
+/* Global search results (command-palette style). */
+.search-results {
+  margin-top: 6px;
+  max-height: 380px;
+  overflow-y: auto;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  padding: 6px;
+}
+.search-results[hidden] { display: none; }
+.search-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+}
+.search-result:hover,
+.search-result.is-sel { background: var(--bg-hover); }
+.search-result-type {
+  flex: 0 0 56px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+}
+.search-result-title {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.86rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-result-sub {
+  flex: 0 0 auto;
+  max-width: 38%;
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-empty {
   padding: 16px;
-  margin-bottom: 12px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+}
+
+/* Audio digest: bare player, no card chrome / "Audio digest" label. */
+.today-audio { margin: 0 0 18px; }
+.today-audio audio { width: 100%; display: block; }
+
+/* Tidy list margins inside callouts (e.g. Skeptic's corner) so bullets sit
+ * close to the colored edge instead of deeply indented. */
+.ara-callout ul,
+.ara-callout ol { margin: 8px 0 0; padding-left: 18px; }
+.ara-callout li { margin: 4px 0; }
+.ara-callout li::marker { color: var(--text-tertiary); }
+
+/* Wiki mentions: underline entities that have an LLM-wiki page; hover (desktop)
+ * shows a quick-look preview, click navigates to the page. */
+.wiki-mention {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent-warm);
+  cursor: pointer;
+  transition: color 0.1s ease, border-color 0.1s ease;
+}
+.wiki-mention:hover {
+  color: var(--accent-warm);
+  border-bottom-color: var(--accent-warm);
+  border-bottom-style: solid;
+}
+.wiki-hover {
+  position: fixed;
+  z-index: 1200;
+  display: none;
+  width: 320px;
+  max-width: calc(100vw - 24px);
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  pointer-events: none;
+}
+.wiki-hover-type {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ara-royal);
+  margin-bottom: 5px;
+}
+.wiki-hover-title {
+  display: block;
+  font-weight: 650;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+.wiki-hover-summary {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
 }
 
 .cal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0;
   cursor: pointer;
 }
 
-.calendar.open .cal-header {
-  margin-bottom: 12px;
-}
-
 .cal-grid {
-  display: none;
-}
-
-.calendar.open .cal-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2px;
+}
+
+/* The opened picker (month nav + grid) is a popover so the pill keeps a fixed
+ * size and never shoves the tabs when toggled. */
+.cal-pop {
+  display: none;
+}
+.calendar.open .cal-pop {
+  display: block;
+  position: fixed;          /* fixed so it escapes the .tabs overflow-x clip */
+  z-index: 1100;
+  width: 280px;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
 }
 
 .cal-chevron {
@@ -480,13 +685,11 @@ body {
 }
 
 .cal-header-nav {
-  display: none;
-  align-items: center;
-  gap: 4px;
-}
-
-.calendar.open .cal-header-nav {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  margin-bottom: 8px;
 }
 
 .cal-nav-btn {
@@ -1673,6 +1876,7 @@ body.has-toc .section-nav { display: none; }
 .ara-paper-kicker,
 .ara-paper-deck,
 .ara-paper-index,
+.ara-paper-meter,
 .ara-paper-meta > span:last-child {
   /* !important: the template's own .ara-paper-index { display: flex } rule
    * is defined later in this file and would otherwise win. */
@@ -1983,11 +2187,7 @@ body.has-toc .section-nav { display: none; }
 }
 
 /* ── Generative Research ────────────────────────────── */
-body.tab-research #calendar,
-body.tab-models #calendar,
-body.tab-wiki #calendar {
-  display: none;
-}
+/* (The calendar is now the day-view nav pill — visible on every tab.) */
 
 /* The floating section-nav (prev/next ## section, "1/1") is meaningless on the
    wiki catalog and single-page newspaper editions. */
@@ -2862,57 +3062,67 @@ body.tab-frontpage .section-nav {
 
 /* (The non-functional "Release"/"•••" Jira chrome buttons were removed.) */
 
+/* Unified filter bar: status segments + company dropdown share one bordered
+ * toolbar with consistent type/height and a divider between the two facets. */
 .tickets-controls {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
 }
 
 .ticket-filters {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 2px;
 }
 
 .ticket-filter-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 10px;
+  padding: 5px 11px;
   font-size: 12px;
   font-weight: 600;
-  color: #42526e;
+  color: var(--text-secondary);
   background: transparent;
-  border: 1px solid transparent;
-  border-radius: 3px;
+  border: 0;
+  border-radius: 8px;
   cursor: pointer;
   text-transform: capitalize;
-  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  transition: background 120ms ease, color 120ms ease;
 }
-.ticket-filter-pill:hover { background: var(--bg-hover); }
+.ticket-filter-pill:hover { background: var(--bg-hover); color: var(--text); }
 .ticket-filter-pill.active {
   background: var(--accent-warm-bg);
   color: var(--accent-warm);
-  border-color: var(--accent-warm-bg);
 }
 .ticket-filter-count {
   font-variant-numeric: tabular-nums;
   font-size: 11px;
   opacity: 0.7;
 }
-.ticket-filter-pill.active .ticket-filter-count { opacity: 0.85; }
+.ticket-filter-pill.active .ticket-filter-count { opacity: 0.9; }
 
 .ticket-company-select {
   font-size: 12px;
-  padding: 6px 10px;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  background: var(--bg);
-  color: var(--text);
+  font-weight: 500;
+  padding: 5px 8px 5px 12px;
+  margin-left: 4px;
+  border: 0;
+  border-left: 1px solid var(--border-light);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-secondary);
   cursor: pointer;
+  transition: color 0.12s ease;
 }
+.ticket-company-select:hover { color: var(--text); }
 
 .ticket-summary {
   font-size: 12px;
@@ -2930,12 +3140,29 @@ body.tab-frontpage .section-nav {
   padding-bottom: 10px;
 }
 
+@media (max-width: 640px) {
+  /* Kanban lanes are unusable on a phone (cramped horizontal scroll) — stack
+   * the status columns into one vertical list instead. */
+  .tickets-board {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: 1fr;
+    overflow-x: visible;
+  }
+}
+
 .ticket-column {
   min-width: 0;
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: 8px;
 }
+/* Status reads from the column-header label color (no top bar / card pill). */
+.ticket-column-rumored    .ticket-column-header { color: #8a92a0; }
+.ticket-column-in-testing .ticket-column-header { color: #c77f1a; }
+.ticket-column-confirmed  .ticket-column-header { color: #1f93cc; }
+.ticket-column-released   .ticket-column-header { color: #2a9560; }
+.ticket-column-closed     .ticket-column-header { color: #8a92a0; }
 
 .ticket-column-header {
   height: 30px;
@@ -3007,6 +3234,60 @@ body.tab-frontpage .section-nav {
 
 /* Per-status left-border accent — quick visual triage. */
 .ticket-card-closed     { border-left-color: var(--text-tertiary); opacity: 0.72; }
+
+/* Compact card top row (status + company). */
+.ticket-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Ticket detail modal — opens on click with the full ticket. */
+.ticket-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(8, 12, 20, 0.55);
+  padding: 48px 16px;
+  overflow-y: auto;
+}
+.ticket-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  padding: 28px 30px;
+}
+.ticket-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 13px;
+}
+.ticket-modal-close:hover { background: var(--bg-hover); color: var(--text); }
+.ticket-modal .ticket-detail-panel {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+body.modal-open { overflow: hidden; }
 .ticket-card-closed:hover { opacity: 0.95; }
 
 .ticket-header-top {
