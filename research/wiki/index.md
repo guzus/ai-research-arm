@@ -10,6 +10,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; per WSJ/Axios, CEO Andy Jassy's Treasury briefing triggered the June 2026 Fable 5 / Mythos 5 export crackdown.
 - [[anthropic]] — AI safety lab behind the Claude family; closed a $65B Series H at $965B post-money on 2026-05-29.
 - [[apple]] — Consumer-hardware giant whose Siri rebuild — reportedly a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (June 8).
+- [[broadcom]] — Custom AI ASIC vendor and capex sentiment lever behind Google/Anthropic TPU financing, OpenAI custom-chip plans, and the June 2026 AVGO guidance gut-check.
 - [[claude-fable-5]] — Anthropic's first public Mythos-class model (2026-06-09): one frontier model as two products — safeguarded GA Fable 5 (reroutes high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5.
 - [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; now also the safeguard-reroute target for Fable 5.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY).
@@ -24,6 +25,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[meta]] — Social-platform hyperscaler and Llama maker; launched "AI Mode" on Facebook (2026-06-16), leaning on distribution to catch up in the AI-assistant race.
 - [[microsoft]] — Hyperscaler turned frontier-model builder; shipped the MAI stack and made Project Polaris GitHub Copilot's default at Build 2026.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
+- [[moonshot-kimi-k2-7-code]] — Moonshot AI open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while filling the Fable 5 vacuum.
 - [[nebius]] — Amsterdam-based neocloud spun out of Yandex.
 - [[nvidia]] — Dominant AI-accelerator supplier underwriting the capex buildout; released the open-weights Nemotron-3-Ultra-550B on 2026-06-05.
 - [[openai]] — Frontier lab behind the GPT family; $852B March valuation, now trailing Anthropic's $965B; shipped the Frontier Governance Framework and Rosalind Biodefense on 2026-05-29.
@@ -33,6 +35,8 @@ Each page is one of three types — entity, concept, or theme. See
 - [[salesforce]] — Enterprise-CRM giant betting on agentic AI (Agentforce); bought AI customer-service platform Fin for $3.6B (2026-06-15), the day's largest confirmed AI M&A.
 - [[spacex]] — Record IPO (Nasdaq: SPCX, debuted 2026-06-12 at $135/share, ~$1.77T valuation) anchoring the 2026 AI-financing issuance wave.
 - [[xai]] — Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business renting Colossus capacity to rival labs at $2B+/month.
+- [[xiaomi-mimo-v2-5-pro]] — Xiaomi MiMo UltraSpeed model tied to the 1,000+ tok/s on 1T MoE claim using a standard 8-GPU server; high-signal but still partially verified.
+- [[zhipu-glm-5-2]] — Zhipu / Z.ai's 1M-context GLM-5.2, deployed in the GLM Coding Plan with MIT open weights promised; marquee Chinese open-weight release.
 
 ## Concepts
 

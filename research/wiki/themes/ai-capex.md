@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-06-12T00:00:00Z
+timestamp: 2026-06-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
@@ -137,7 +138,7 @@ skepticism in one window:
   *(The $340B "wave" is a sentiment aggregation, not a measured flow; the
   Alphabet size is report-grade with no SEC filing captured.)* (ARA digest
   2026-06-04).
-- **The issuance wave crystallizes into hard filings; Broadcom delivers the
+- **The issuance wave crystallizes into hard filings; [[broadcom|Broadcom]] delivers the
   gut-check (2026-06-05).** The week's AI-financing narrative hardened from
   rumor into filed paper. **[[spacex|SpaceX]]'s record IPO went live** — SPCX
   prices **June 11 at a flat $135/share** (~$1.75T valuation, **$74.4B net
@@ -147,7 +148,7 @@ skepticism in one window:
   headline valuation. In parallel **[[deepseek]] neared its ~$7B round** (up to
   $59B, Tencent/CATL) and **Alphabet upsized its convertible raise to ~$85B
   from $80B** on oversubscription (~$30B / ~40% reportedly earmarked for
-  employee-equity tax obligations). But the day's gut-check was **Broadcom**
+  employee-equity tax obligations). But the day's gut-check was **[[broadcom|Broadcom]]**
   (AVGO, the custom-ASIC vendor): a record Q2
   (**$22.19B revenue +48% YoY, AI semis +143% to $10.8B**) wasn't enough — an
   *in-line, un-raised* ~$16B Q3 AI-chip guide sent **AVGO down ~12.6% at the
@@ -205,18 +206,25 @@ skepticism in one window:
   behind [[anthropic]]'s compute surge came into view: **Google reportedly agreed
   to guarantee the lease payments** backing Anthropic's rental of high-performance
   compute across **five US data centers**, enabling **~$35B of financing**.
-  **Broadcom** designs the custom chips, **Google** supplies the TPUs, and
+  **[[broadcom|Broadcom]]** designs the custom chips, **Google** supplies the TPUs, and
   **Apollo Global + Blackstone** provide the financing — sitting atop the earlier
-  ~$35B Broadcom private-credit deal and the Broadcom–Google–Anthropic ~3.5 GW TPU
+  ~$35B [[broadcom|Broadcom]] private-credit deal and the Broadcom–Google–Anthropic ~3.5 GW TPU
   expansion (from 2027). The "Google guarantee" mechanics are the freshest,
   lighter-sourced layer. Anthropic's **run-rate revenue reportedly hit $47B** (via
   Ethan Mollick), the demand-side counterweight to the financing complexity. The
   buildout now visibly fuses a hyperscaler (Google), a custom-ASIC vendor
-  (Broadcom), private-credit financiers, and a frontier lab into one compute
+  ([[broadcom|Broadcom]]), private-credit financiers, and a frontier lab into one compute
   supply chain (ARA digest 2026-06-10).
+- **The Anthropic custom-chip order keeps the stack live (2026-06-16).** Even as
+  [[claude-fable-5|Fable 5 / Mythos 5]] sat embargoed, Anthropic-adjacent
+  reporting described [[broadcom|Broadcom]] backing a **~$35B custom-chip order**
+  for [[anthropic]], financed with Apollo/Blackstone and targeting roughly
+  **20 GW** of compute. This is the most important capex wrinkle of the week:
+  frontier-model access can be politically interrupted while the infrastructure
+  financing machine keeps compounding underneath it.
 - **AI/semis rotation continued (2026-06-10).** Intraday: **Semiconductors (SMH)
   −2.8%, Robotics/AI (BOTZ) −2.3%**, money rotating into housing/healthcare/banks —
-  a continuation of the Jun 6–8 Broadcom-led selloff rather than a fresh catalyst,
+  a continuation of the Jun 6–8 [[broadcom|Broadcom]]-led selloff rather than a fresh catalyst,
   extending the "beats but closes lower" mood into a multi-day risk-off rotation
   out of the AI complex (ARA digest 2026-06-10).
 

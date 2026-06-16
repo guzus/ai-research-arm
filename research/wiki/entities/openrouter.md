@@ -2,12 +2,13 @@
 slug: openrouter
 title: OpenRouter
 type: entity
-aliases: ["OpenRouter", "openrouter.ai", "@OpenRouterAI"]
+aliases: ["OpenRouter", "openrouter.ai", "@OpenRouterAI", "OpenRouter Fusion", "Fusion API"]
 tags: [llm-router, inference, infrastructure, capital-markets]
-description: LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 (CapitalG led, NVentures participated); weekly volume jumped 5× to 25T tokens, on track for >1 quadrillion tokens in 2026.
+description: LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 and later surfaced Fusion API, a model-fusion endpoint blending outputs across providers.
 created_at: 2026-06-01
-timestamp: 2026-06-01T00:00:00Z
+timestamp: 2026-06-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "OpenRouter Series B announcement", date: 2026-05-30}
 ---
@@ -29,6 +30,13 @@ funding signal of the cycle:
 - **Weekly token volume jumped 5× to 25T tokens** — on track for **>1
   quadrillion tokens in 2026**.
 - **400+ models served to 8M+ developers**.
+- **Fusion API surfaced on HN (2026-06-16).** OpenRouter's Fusion API blends
+  outputs across multiple LLMs behind one route. It is the router-layer cousin
+  of [[sakana-ai]]'s multi-model Marlin bet: instead of picking one winner,
+  orchestrate and arbitrate across model diversity. This is also the practical
+  product response to [[open-weights]] fragmentation as [[zhipu-glm-5-2]],
+  [[moonshot-kimi-k2-7-code]], [[minimax-m3]], and other models compete on
+  price, context, and specialty.
 
 **Why the round matters.** OpenRouter sits between the application
 layer and the inference layer, capturing routing economics across
@@ -58,3 +66,6 @@ OpenRouter monetizes from the demand side.
   coverage. How much of the >1Q-token run rate is open-weights vs
   closed-frontier — and how does that shift as DeepSeek V4 Pro's
   75% price cut compounds?
+- **Fusion quality.** Does blending improve answer quality enough to justify
+  latency and attribution complexity, or is it mostly a way to sell model
+  optionality when the underlying leaderboard is unstable?

@@ -6,7 +6,7 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.
 created_at: 2026-06-10
-timestamp: 2026-06-16T00:00:00Z
+timestamp: 2026-06-17T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
@@ -118,8 +118,9 @@ every feed on launch day.
   fix" the jailbreak (Amodei calling it "not serious"); Anthropic's rebuttal is
   unchanged (narrow, already-known, present in rival models). The one thaw:
   Anthropic **flew senior technical staff to Washington for direct talks**. Mean­while
-  Chinese open-weight models poured into the vacuum — Moonshot's **Kimi K2.7-Code**
-  landed **#2 on ErdosBench** (behind Fable 5 max) and Z.ai's **GLM-5.2** shipped
+  Chinese open-weight models poured into the vacuum — Moonshot's
+  **[[moonshot-kimi-k2-7-code|Kimi K2.7-Code]]** landed **#2 on ErdosBench**
+  (behind Fable 5 max) and Z.ai's **[[zhipu-glm-5-2|GLM-5.2]]** shipped
   with 1M context — sharpening the read that the ban is **accelerating the very
   open-weight commoditization it aimed to slow** ([[open-weights]]) (ARA digest
   2026-06-15). See [[federal-ai-policy]].

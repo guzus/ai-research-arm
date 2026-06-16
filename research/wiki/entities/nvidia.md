@@ -6,7 +6,7 @@ aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "N
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: The dominant AI accelerator supplier; its GPUs underwrite the AI-capex buildout, and on 2026-06-05 it released the open-weights Nemotron-3-Ultra-550B that dominated developer mindshare alongside Gemma 4.
 created_at: 2026-06-05
-timestamp: 2026-06-05T00:00:00Z
+timestamp: 2026-06-17T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
@@ -29,8 +29,8 @@ its own **open-weights models** (the Nemotron line) on top of the silicon.
   human history… agentic AI has arrived." Yet the stock slid ~3% after-hours,
   extending the **"beats but closes lower"** pattern — the market prices the
   *narrative*, not the quarter (ARA digest 2026-05-21). That same tell hit
-  Broadcom far harder on 2026-06-05 (AVGO −12.6%, ~$320B erased on an *un-raised*
-  guide) — see [[ai-capex]].
+  [[broadcom]] far harder on 2026-06-05 (AVGO −12.6%, ~$320B erased on an
+  *un-raised* guide) — see [[ai-capex]].
 - **GTC Taipei keynote (2026-06-01).** Jensen Huang's Computex keynote rolled out
   eleven announcements, led by **DGX Station for Windows** (first deskside AI
   supercomputer running up to **1-trillion-parameter** models locally on Windows
