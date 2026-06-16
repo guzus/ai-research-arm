@@ -4,9 +4,9 @@ title: Salesforce
 type: entity
 aliases: [Salesforce, "Salesforce Inc", CRM, Agentforce]
 tags: [enterprise-software, agentic-ai, crm, m-and-a, claude-code]
-summary: Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 — the day's largest confirmed AI M&A.
+description: Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 — the day's largest confirmed AI M&A.
 created_at: 2026-06-16
-updated_at: 2026-06-16
+timestamp: 2026-06-16T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "Salesforce acquires Fin for $3.6B (CNBC)", url: "https://www.cnbc.com/amp/2026/06/15/salesforce-ai-customer-service-fin-acquistion.html", date: 2026-06-15}

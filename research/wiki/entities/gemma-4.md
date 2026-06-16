@@ -4,9 +4,9 @@ title: Gemma 4
 type: entity
 aliases: ["Gemma 4", "Gemma 4 12B", "Gemma-4", "Gemma 4 family", "Gemma"]
 tags: [open-weights, model, multimodal, google-deepmind, apache-2-0, on-device]
-summary: Google DeepMind's open-weights (Apache 2.0) multimodal model family; the 2026-06-04 cycle surfaced an encoder-free 12B variant that runs locally on 16 GB RAM as Gemma crossed 150M+ cumulative downloads.
+description: Google DeepMind's open-weights (Apache 2.0) multimodal model family; the 2026-06-04 cycle surfaced an encoder-free 12B variant that runs locally on 16 GB RAM as Gemma crossed 150M+ cumulative downloads.
 created_at: 2026-06-04
-updated_at: 2026-06-05
+timestamp: 2026-06-05T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}

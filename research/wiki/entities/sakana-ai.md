@@ -4,9 +4,9 @@ title: Sakana AI
 type: entity
 aliases: ["Sakana AI", Sakana, Marlin, "Sakana Marlin"]
 tags: [ai-lab, japan, deep-research, agents, ab-mcts]
-summary: Tokyo-based AI lab shipping Marlin — an autonomous "Ultra Deep Research" agent ("Virtual CSO") built on its AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.
+description: Tokyo-based AI lab shipping Marlin — an autonomous "Ultra Deep Research" agent ("Virtual CSO") built on its AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.
 created_at: 2026-06-16
-updated_at: 2026-06-16
+timestamp: 2026-06-16T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
 ---

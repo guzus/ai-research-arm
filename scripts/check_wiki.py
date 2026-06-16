@@ -22,7 +22,7 @@ import argparse
 import re
 import sys
 from dataclasses import dataclass, field
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -72,7 +72,7 @@ class Page:
     aliases: list[str]
     title: str
     body: str
-    updated_at: date | None
+    timestamp: date | None
     links: list[str]  # resolved-target slugs of outbound wikilinks
 
 
@@ -147,6 +147,29 @@ def _check_date(data: dict, key: str, path: Path, report: Report) -> date | None
             report.fail(path, key, f"not a valid ISO date (YYYY-MM-DD): {val!r}")
             return None
     report.fail(path, key, f"must be a date, got {type(val).__name__}")
+    return None
+
+
+def _check_timestamp(data: dict, key: str, path: Path, report: Report) -> date | None:
+    """Required OKF timestamp. Return its date component for freshness checks."""
+    val = data.get(key)
+    if val is None:
+        report.fail(path, key, "required timestamp missing or null")
+        return None
+    if isinstance(val, datetime):
+        return val.date()
+    if isinstance(val, date):
+        return val
+    if isinstance(val, str):
+        try:
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", val):
+                return date.fromisoformat(val)
+            normalized = val[:-1] + "+00:00" if val.endswith("Z") else val
+            return datetime.fromisoformat(normalized).date()
+        except ValueError:
+            report.fail(path, key, f"not a valid ISO 8601 timestamp: {val!r}")
+            return None
+    report.fail(path, key, f"must be a timestamp, got {type(val).__name__}")
     return None
 
 
@@ -295,16 +318,16 @@ def load_page(path: Path, report: Report) -> Page | None:
 
     aliases = _check_str_list(data, "aliases", path, report)
     _check_str_list(data, "tags", path, report)
-    _check_str(data, "summary", path, report)
-    # summary must be a single line (one-liner contract).
-    summary_val = data.get("summary")
-    if isinstance(summary_val, str) and "\n" in summary_val.strip():
-        report.fail(path, "summary", "must be a single line (no embedded newlines)")
+    _check_str(data, "description", path, report)
+    # OKF description must stay a single-line preview in the ARA wiki.
+    description_val = data.get("description")
+    if isinstance(description_val, str) and "\n" in description_val.strip():
+        report.fail(path, "description", "must be a single line (no embedded newlines)")
 
     created_at = _check_date(data, "created_at", path, report)
-    updated_at = _check_date(data, "updated_at", path, report)
-    if created_at and updated_at and updated_at < created_at:
-        report.fail(path, "updated_at", f"updated_at {updated_at} < created_at {created_at}")
+    timestamp = _check_timestamp(data, "timestamp", path, report)
+    if created_at and timestamp and timestamp < created_at:
+        report.fail(path, "timestamp", f"timestamp {timestamp} < created_at {created_at}")
 
     if "sources" in data and data["sources"] is not None:
         _check_sources(data["sources"], path, report)
@@ -323,7 +346,7 @@ def load_page(path: Path, report: Report) -> Page | None:
         aliases=aliases,
         title=title or slug,
         body=body,
-        updated_at=updated_at,
+        timestamp=timestamp,
         links=links,
     )
 
@@ -497,10 +520,10 @@ def run_lint(pages: list[Page], resolver: dict[str, str], report: Report, *, tod
     for page in pages:
         if not inbound[page.slug]:
             report.warn(page.path, "orphan", f"{page.slug!r} has no inbound links from other pages")
-        if page.updated_at is not None:
-            age = (today - page.updated_at).days
+        if page.timestamp is not None:
+            age = (today - page.timestamp).days
             if age > STALE_AFTER_DAYS:
-                report.warn(page.path, "stale", f"{page.slug!r} updated_at {page.updated_at} is {age}d old (> {STALE_AFTER_DAYS}d)")
+                report.warn(page.path, "stale", f"{page.slug!r} timestamp {page.timestamp} is {age}d old (> {STALE_AFTER_DAYS}d)")
         # Missing reciprocal: A links B but B does not link back to A.
         for tgt in sorted(outbound[page.slug]):
             if tgt in by_slug and page.slug not in outbound.get(tgt, set()):

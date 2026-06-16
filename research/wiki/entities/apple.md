@@ -4,9 +4,9 @@ title: Apple
 type: entity
 aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC]
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
-summary: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08).
+description: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08).
 created_at: 2026-06-08
-updated_at: 2026-06-10
+timestamp: 2026-06-10T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}

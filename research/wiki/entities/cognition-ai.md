@@ -4,9 +4,9 @@ title: Cognition AI
 type: entity
 aliases: ["Cognition", "Cognition AI", "Cognition Labs", "Devin"]
 tags: [agentic, coding-agent, startup, ai-engineering]
-summary: Maker of the Devin autonomous coding agent; raised $1B+ at a $26B post-money valuation in May 2026 against $492M ARR (~13× YoY), with 89% of Cognition's own code now written by Devin.
+description: Maker of the Devin autonomous coding agent; raised $1B+ at a $26B post-money valuation in May 2026 against $492M ARR (~13× YoY), with 89% of Cognition's own code now written by Devin.
 created_at: 2026-05-29
-updated_at: 2026-05-29
+timestamp: 2026-05-29T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
   - {title: "ARA daily digest 2026-05-27", path: research/digest/2026-05-27-digest.md}

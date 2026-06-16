@@ -4,9 +4,9 @@ title: Gemini Spark
 type: entity
 aliases: ["Gemini Spark", "Google Gemini Spark", "Spark agent"]
 tags: [agents, google, gemini, consumer-agent, product]
-summary: Google's persistent consumer agent for Gemini, hit GA on 2026-05-29 for US AI Ultra subscribers at $99.99/mo — the first GA paid frontier-lab persistent consumer agent, running on dedicated Google Cloud VMs so state persists with the phone off.
+description: Google's persistent consumer agent for Gemini, hit GA on 2026-05-29 for US AI Ultra subscribers at $99.99/mo — the first GA paid frontier-lab persistent consumer agent, running on dedicated Google Cloud VMs so state persists with the phone off.
 created_at: 2026-06-01
-updated_at: 2026-06-01
+timestamp: 2026-06-01T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "9to5Google — Gemini Spark GA", date: 2026-05-29}

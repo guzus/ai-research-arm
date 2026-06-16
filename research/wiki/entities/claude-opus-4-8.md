@@ -4,9 +4,9 @@ title: Claude Opus 4.8
 type: entity
 aliases: ["Claude Opus 4.8", "Opus 4.8", "claude-opus-4-8"]
 tags: [model-release, anthropic, claude, frontier-model, alignment]
-summary: Anthropic's 2026-05-28 frontier flagship, succeeding Opus 4.7 at flat pricing with a +4.9pp agentic-coding lift, +137 knowledge-work Elo, and a Fast Mode that runs ~2.5× faster and 3× cheaper.
+description: Anthropic's 2026-05-28 frontier flagship, succeeding Opus 4.7 at flat pricing with a +4.9pp agentic-coding lift, +137 knowledge-work Elo, and a Fast Mode that runs ~2.5× faster and 3× cheaper.
 created_at: 2026-05-29
-updated_at: 2026-06-10
+timestamp: 2026-06-10T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}

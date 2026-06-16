@@ -12,8 +12,10 @@
         "deployment"
       ],
       "summary": "Treating deployed agentic systems as objects whose effectiveness degrades over a deployment horizon, with memory policy — not model strength — as the dominant variable; the underlying frame of the 2026-05-29 AgingBench paper.",
+      "description": "Treating deployed agentic systems as objects whose effectiveness degrades over a deployment horizon, with memory policy — not model strength — as the dominant variable; the underlying frame of the 2026-05-29 AgingBench paper.",
       "created_at": "2026-05-29",
       "updated_at": "2026-05-30",
+      "timestamp": "2026-05-30T00:00:00Z",
       "file": "concepts/agent-lifespan-engineering.md",
       "aliases": [
         "Agent Lifespan Engineering",
@@ -44,8 +46,10 @@
         "governance"
       ],
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
+      "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
       "updated_at": "2026-06-15",
+      "timestamp": "2026-06-15T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -86,8 +90,10 @@
         "capital-markets"
       ],
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
+      "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
       "updated_at": "2026-06-12",
+      "timestamp": "2026-06-12T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -153,8 +159,10 @@
         "bedrock"
       ],
       "summary": "Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.",
+      "description": "Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.",
       "created_at": "2026-06-14",
       "updated_at": "2026-06-15",
+      "timestamp": "2026-06-15T00:00:00Z",
       "file": "entities/amazon.md",
       "aliases": [
         "Amazon",
@@ -188,8 +196,10 @@
         "foundation-models"
       ],
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
+      "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
       "updated_at": "2026-06-16",
+      "timestamp": "2026-06-16T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -253,8 +263,10 @@
         "wwdc"
       ],
       "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08).",
+      "description": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08).",
       "created_at": "2026-06-08",
       "updated_at": "2026-06-10",
+      "timestamp": "2026-06-10T00:00:00Z",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -288,8 +300,10 @@
         "agents"
       ],
       "summary": "The thesis that an AI system can take complex physical products from concept through production — extending AI's reach from software and chatbots into hardware design and manufacturing.",
+      "description": "The thesis that an AI system can take complex physical products from concept through production — extending AI's reach from software and chatbots into hardware design and manufacturing.",
       "created_at": "2026-06-12",
       "updated_at": "2026-06-12",
+      "timestamp": "2026-06-12T00:00:00Z",
       "file": "concepts/artificial-general-engineer.md",
       "aliases": [
         "artificial general engineer",
@@ -319,8 +333,10 @@
         "frontier-ai"
       ],
       "summary": "The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover.",
+      "description": "The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover.",
       "created_at": "2026-05-30",
       "updated_at": "2026-06-03",
+      "timestamp": "2026-06-03T00:00:00Z",
       "file": "themes/california-ai-regulation.md",
       "aliases": [
         "California AI regulation",
@@ -357,8 +373,10 @@
         "alignment"
       ],
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
+      "description": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "created_at": "2026-06-10",
       "updated_at": "2026-06-16",
+      "timestamp": "2026-06-16T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -403,8 +421,10 @@
         "alignment"
       ],
       "summary": "Anthropic's 2026-05-28 frontier flagship, succeeding Opus 4.7 at flat pricing with a +4.9pp agentic-coding lift, +137 knowledge-work Elo, and a Fast Mode that runs ~2.5× faster and 3× cheaper.",
+      "description": "Anthropic's 2026-05-28 frontier flagship, succeeding Opus 4.7 at flat pricing with a +4.9pp agentic-coding lift, +137 knowledge-work Elo, and a Fast Mode that runs ~2.5× faster and 3× cheaper.",
       "created_at": "2026-05-29",
       "updated_at": "2026-06-10",
+      "timestamp": "2026-06-10T00:00:00Z",
       "file": "entities/claude-opus-4-8.md",
       "aliases": [
         "Claude Opus 4.8",
@@ -436,8 +456,10 @@
         "ai-engineering"
       ],
       "summary": "Maker of the Devin autonomous coding agent; raised $1B+ at a $26B post-money valuation in May 2026 against $492M ARR (~13× YoY), with 89% of Cognition's own code now written by Devin.",
+      "description": "Maker of the Devin autonomous coding agent; raised $1B+ at a $26B post-money valuation in May 2026 against $492M ARR (~13× YoY), with 89% of Cognition's own code now written by Devin.",
       "created_at": "2026-05-29",
       "updated_at": "2026-05-29",
+      "timestamp": "2026-05-29T00:00:00Z",
       "file": "entities/cognition-ai.md",
       "aliases": [
         "Cognition",
@@ -469,8 +491,10 @@
         "take-or-pay"
       ],
       "summary": "NASDAQ-listed GPU-as-a-service neocloud with a ~$99B contracted backlog, ~$25B debt, and revenue concentrated in Microsoft, OpenAI, and Meta.",
+      "description": "NASDAQ-listed GPU-as-a-service neocloud with a ~$99B contracted backlog, ~$25B debt, and revenue concentrated in Microsoft, OpenAI, and Meta.",
       "created_at": "2026-05-24",
       "updated_at": "2026-05-24",
+      "timestamp": "2026-05-24T00:00:00Z",
       "file": "entities/coreweave.md",
       "aliases": [
         "CoreWeave",
@@ -502,8 +526,10 @@
         "commercialization"
       ],
       "summary": "Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.",
+      "description": "Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.",
       "created_at": "2026-06-04",
       "updated_at": "2026-06-05",
+      "timestamp": "2026-06-05T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -540,8 +566,10 @@
         "capital-markets"
       ],
       "summary": "US enterprise-IT OEM; Q1 FY27 (reported 2026-05-29) printed $43.8B revenue (+88% YoY) with AI-Optimized Servers at $16.1B (+757% YoY), $24.4B AI orders booked, FY27 AI-server outlook raised to $60B; stock +32% on the print, the best single day in company history.",
+      "description": "US enterprise-IT OEM; Q1 FY27 (reported 2026-05-29) printed $43.8B revenue (+88% YoY) with AI-Optimized Servers at $16.1B (+757% YoY), $24.4B AI orders booked, FY27 AI-server outlook raised to $60B; stock +32% on the print, the best single day in company history.",
       "created_at": "2026-06-01",
       "updated_at": "2026-06-01",
+      "timestamp": "2026-06-01T00:00:00Z",
       "file": "entities/dell.md",
       "aliases": [
         "Dell",
@@ -571,8 +599,10 @@
         "codebase-migration"
       ],
       "summary": "Anthropic's 2026-05-28 Claude Code feature in which Claude writes a JavaScript orchestrator that fans a single session out to up to 1,000 parallel subagents per run, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.",
+      "description": "Anthropic's 2026-05-28 Claude Code feature in which Claude writes a JavaScript orchestrator that fans a single session out to up to 1,000 parallel subagents per run, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.",
       "created_at": "2026-05-29",
       "updated_at": "2026-05-30",
+      "timestamp": "2026-05-30T00:00:00Z",
       "file": "concepts/dynamic-workflows.md",
       "aliases": [
         "Dynamic Workflows",
@@ -609,8 +639,10 @@
         "frontier-ai"
       ],
       "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
+      "description": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "created_at": "2026-06-03",
       "updated_at": "2026-06-16",
+      "timestamp": "2026-06-16T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -651,8 +683,10 @@
         "brett-adcock"
       ],
       "summary": "US humanoid-robotics company whose Helix-02 in-house VLA ran a 200-hour fully autonomous package-sort shift (249,560 packages, zero hardware failures, zero teleop) on its Figure 03 fleet at Sunnyvale on 2026-05-30, ~10× the previous public envelope on MTBI.",
+      "description": "US humanoid-robotics company whose Helix-02 in-house VLA ran a 200-hour fully autonomous package-sort shift (249,560 packages, zero hardware failures, zero teleop) on its Figure 03 fleet at Sunnyvale on 2026-05-30, ~10× the previous public envelope on MTBI.",
       "created_at": "2026-06-01",
       "updated_at": "2026-06-01",
+      "timestamp": "2026-06-01T00:00:00Z",
       "file": "entities/figure-ai.md",
       "aliases": [
         "Figure",
@@ -687,8 +721,10 @@
         "agentic"
       ],
       "summary": "Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots; gained a real-time speech-to-speech Live Translate variant (70+ languages) on 2026-06-09.",
+      "description": "Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots; gained a real-time speech-to-speech Live Translate variant (70+ languages) on 2026-06-09.",
       "created_at": "2026-05-24",
       "updated_at": "2026-06-10",
+      "timestamp": "2026-06-10T00:00:00Z",
       "file": "entities/gemini-3-5-flash.md",
       "aliases": [
         "Gemini 3.5 Flash",
@@ -721,8 +757,10 @@
         "product"
       ],
       "summary": "Google's persistent consumer agent for Gemini, hit GA on 2026-05-29 for US AI Ultra subscribers at $99.99/mo — the first GA paid frontier-lab persistent consumer agent, running on dedicated Google Cloud VMs so state persists with the phone off.",
+      "description": "Google's persistent consumer agent for Gemini, hit GA on 2026-05-29 for US AI Ultra subscribers at $99.99/mo — the first GA paid frontier-lab persistent consumer agent, running on dedicated Google Cloud VMs so state persists with the phone off.",
       "created_at": "2026-06-01",
       "updated_at": "2026-06-01",
+      "timestamp": "2026-06-01T00:00:00Z",
       "file": "entities/gemini-spark.md",
       "aliases": [
         "Gemini Spark",
@@ -753,8 +791,10 @@
         "on-device"
       ],
       "summary": "Google DeepMind's open-weights (Apache 2.0) multimodal model family; the 2026-06-04 cycle surfaced an encoder-free 12B variant that runs locally on 16 GB RAM as Gemma crossed 150M+ cumulative downloads.",
+      "description": "Google DeepMind's open-weights (Apache 2.0) multimodal model family; the 2026-06-04 cycle surfaced an encoder-free 12B variant that runs locally on 16 GB RAM as Gemma crossed 150M+ cumulative downloads.",
       "created_at": "2026-06-04",
       "updated_at": "2026-06-05",
+      "timestamp": "2026-06-05T00:00:00Z",
       "file": "entities/gemma-4.md",
       "aliases": [
         "Gemma 4",
@@ -788,8 +828,10 @@
         "mit-spinout"
       ],
       "summary": "MIT-spinout foundation model lab focused on on-device hybrid (non-pure-transformer) architectures; shipped LFM2.5-8B-A1B (8B/1B-active MoE, 128K context, 38T pre-training tokens) with day-one llama.cpp / MLX / vLLM / SGLang support on 2026-05-29.",
+      "description": "MIT-spinout foundation model lab focused on on-device hybrid (non-pure-transformer) architectures; shipped LFM2.5-8B-A1B (8B/1B-active MoE, 128K context, 38T pre-training tokens) with day-one llama.cpp / MLX / vLLM / SGLang support on 2026-05-29.",
       "created_at": "2026-05-29",
       "updated_at": "2026-05-30",
+      "timestamp": "2026-05-30T00:00:00Z",
       "file": "entities/liquid-ai.md",
       "aliases": [
         "Liquid AI",
@@ -817,8 +859,10 @@
         "social"
       ],
       "summary": "Social-platform hyperscaler and frontier-model builder (Llama); on 2026-06-16 launched \"AI Mode\" on Facebook, pulling from public info across its platforms as it races to catch up in the AI-assistant race.",
+      "description": "Social-platform hyperscaler and frontier-model builder (Llama); on 2026-06-16 launched \"AI Mode\" on Facebook, pulling from public info across its platforms as it races to catch up in the AI-assistant race.",
       "created_at": "2026-06-16",
       "updated_at": "2026-06-16",
+      "timestamp": "2026-06-16T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -850,8 +894,10 @@
         "custom-silicon"
       ],
       "summary": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.",
+      "description": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.",
       "created_at": "2026-06-03",
       "updated_at": "2026-06-04",
+      "timestamp": "2026-06-04T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -889,8 +935,10 @@
         "long-context"
       ],
       "summary": "MiniMax's open-weights model with 1M context and 59% SWE-Bench Pro — the strongest open-weights agentic-coding model of the cycle.",
+      "description": "MiniMax's open-weights model with 1M context and 59% SWE-Bench Pro — the strongest open-weights agentic-coding model of the cycle.",
       "created_at": "2026-06-03",
       "updated_at": "2026-06-04",
+      "timestamp": "2026-06-04T00:00:00Z",
       "file": "entities/minimax-m3.md",
       "aliases": [
         "MiniMax M3",
@@ -924,8 +972,10 @@
         "nvidia-partner"
       ],
       "summary": "Amsterdam-based AI cloud (\"neocloud\") provider spun out of Yandex, scaling GPU capacity for AI training and inference.",
+      "description": "Amsterdam-based AI cloud (\"neocloud\") provider spun out of Yandex, scaling GPU capacity for AI training and inference.",
       "created_at": "2026-05-24",
       "updated_at": "2026-05-24",
+      "timestamp": "2026-05-24T00:00:00Z",
       "file": "entities/nebius.md",
       "aliases": [
         "Nebius",
@@ -955,8 +1005,10 @@
         "take-or-pay"
       ],
       "summary": "Business model where a specialized provider buys GPUs on debt and rents the capacity back under multi-year take-or-pay contracts, distinct from general-purpose hyperscalers.",
+      "description": "Business model where a specialized provider buys GPUs on debt and rents the capacity back under multi-year take-or-pay contracts, distinct from general-purpose hyperscalers.",
       "created_at": "2026-05-24",
       "updated_at": "2026-05-24",
+      "timestamp": "2026-05-24T00:00:00Z",
       "file": "concepts/neocloud.md",
       "aliases": [
         "neocloud",
@@ -992,8 +1044,10 @@
         "semiconductors"
       ],
       "summary": "The dominant AI accelerator supplier; its GPUs underwrite the AI-capex buildout, and on 2026-06-05 it released the open-weights Nemotron-3-Ultra-550B that dominated developer mindshare alongside Gemma 4.",
+      "description": "The dominant AI accelerator supplier; its GPUs underwrite the AI-capex buildout, and on 2026-06-05 it released the open-weights Nemotron-3-Ultra-550B that dominated developer mindshare alongside Gemma 4.",
       "created_at": "2026-06-05",
       "updated_at": "2026-06-05",
+      "timestamp": "2026-06-05T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -1034,8 +1088,10 @@
         "decentralization"
       ],
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
+      "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
       "created_at": "2026-06-14",
       "updated_at": "2026-06-16",
+      "timestamp": "2026-06-16T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -1074,8 +1130,10 @@
         "ai-policy"
       ],
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
+      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "created_at": "2026-05-30",
       "updated_at": "2026-06-15",
+      "timestamp": "2026-06-15T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -1125,8 +1183,10 @@
         "capital-markets"
       ],
       "summary": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 (CapitalG led, NVentures participated); weekly volume jumped 5× to 25T tokens, on track for >1 quadrillion tokens in 2026.",
+      "description": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 (CapitalG led, NVentures participated); weekly volume jumped 5× to 25T tokens, on track for >1 quadrillion tokens in 2026.",
       "created_at": "2026-06-01",
       "updated_at": "2026-06-01",
+      "timestamp": "2026-06-01T00:00:00Z",
       "file": "entities/openrouter.md",
       "aliases": [
         "OpenRouter",
@@ -1158,8 +1218,10 @@
         "jeff-bezos"
       ],
       "summary": "Jeff Bezos's industrial-AI startup building an \"artificial general engineer\"; disclosed a $12B Series B at a ~$41B valuation on 2026-06-11 — industrial AI's first megaround.",
+      "description": "Jeff Bezos's industrial-AI startup building an \"artificial general engineer\"; disclosed a $12B Series B at a ~$41B valuation on 2026-06-11 — industrial AI's first megaround.",
       "created_at": "2026-06-12",
       "updated_at": "2026-06-12",
+      "timestamp": "2026-06-12T00:00:00Z",
       "file": "entities/prometheus.md",
       "aliases": [
         "Prometheus",
@@ -1191,8 +1253,10 @@
         "ab-mcts"
       ],
       "summary": "Tokyo-based AI lab shipping Marlin — an autonomous \"Ultra Deep Research\" agent (\"Virtual CSO\") built on its AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.",
+      "description": "Tokyo-based AI lab shipping Marlin — an autonomous \"Ultra Deep Research\" agent (\"Virtual CSO\") built on its AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.",
       "created_at": "2026-06-16",
       "updated_at": "2026-06-16",
+      "timestamp": "2026-06-16T00:00:00Z",
       "file": "entities/sakana-ai.md",
       "aliases": [
         "Sakana AI",
@@ -1219,8 +1283,10 @@
         "claude-code"
       ],
       "summary": "Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 — the day's largest confirmed AI M&A.",
+      "description": "Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 — the day's largest confirmed AI M&A.",
       "created_at": "2026-06-16",
       "updated_at": "2026-06-16",
+      "timestamp": "2026-06-16T00:00:00Z",
       "file": "entities/salesforce.md",
       "aliases": [
         "Salesforce",
@@ -1248,8 +1314,10 @@
         "public-listing"
       ],
       "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side.",
+      "description": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side.",
       "created_at": "2026-06-05",
       "updated_at": "2026-06-15",
+      "timestamp": "2026-06-15T00:00:00Z",
       "file": "entities/spacex.md",
       "aliases": [
         "SpaceX",
@@ -1284,8 +1352,10 @@
         "ai-infrastructure"
       ],
       "summary": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M).",
+      "description": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M).",
       "created_at": "2026-06-08",
       "updated_at": "2026-06-08",
+      "timestamp": "2026-06-08T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",

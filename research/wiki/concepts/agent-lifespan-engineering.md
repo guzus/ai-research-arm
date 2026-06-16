@@ -4,9 +4,9 @@ title: Agent Lifespan Engineering
 type: concept
 aliases: ["Agent Lifespan Engineering", "agent half-life", "AgingBench", "Your Agents Are Aging Too"]
 tags: [agents, evaluation, benchmarks, memory, deployment]
-summary: Treating deployed agentic systems as objects whose effectiveness degrades over a deployment horizon, with memory policy — not model strength — as the dominant variable; the underlying frame of the 2026-05-29 AgingBench paper.
+description: Treating deployed agentic systems as objects whose effectiveness degrades over a deployment horizon, with memory policy — not model strength — as the dominant variable; the underlying frame of the 2026-05-29 AgingBench paper.
 created_at: 2026-05-29
-updated_at: 2026-05-30
+timestamp: 2026-05-30T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}

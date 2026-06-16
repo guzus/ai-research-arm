@@ -10,7 +10,7 @@ Usage:
 Prints ranked (slug, score, snippet). With --json, prints a JSON array.
 
 Scoring: Okapi BM25 over a per-page bag of tokens assembled from weighted
-fields — title + aliases (heaviest), tags, summary, body — so a name match in
+fields — title + aliases (heaviest), tags, description, body — so a name match in
 the title beats a passing mention in the body. The corpus is tiny (~6 pages),
 so two BM25 quirks are handled explicitly: the IDF term is clamped to >= 0
 (otherwise terms appearing in >half the corpus become anti-signal), and field
@@ -119,7 +119,7 @@ def _field_text(data: dict, body: str) -> dict[str, str]:
         "title": str(data.get("title", "") or ""),
         "aliases": join_list("aliases"),
         "tags": join_list("tags"),
-        "summary": str(data.get("summary", "") or ""),
+        "summary": str(data.get("description", data.get("summary", "")) or ""),
         "body": _strip_fences(body),
     }
 

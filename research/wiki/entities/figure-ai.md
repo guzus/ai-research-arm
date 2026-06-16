@@ -4,9 +4,9 @@ title: Figure AI
 type: entity
 aliases: [Figure, "Figure AI", "Figure Robotics", "Figure 03", "Figure 4", "Helix", "Helix-02", "@adcock_brett", "Brett Adcock"]
 tags: [humanoid-robotics, vla, robotics, brett-adcock]
-summary: US humanoid-robotics company whose Helix-02 in-house VLA ran a 200-hour fully autonomous package-sort shift (249,560 packages, zero hardware failures, zero teleop) on its Figure 03 fleet at Sunnyvale on 2026-05-30, ~10× the previous public envelope on MTBI.
+description: US humanoid-robotics company whose Helix-02 in-house VLA ran a 200-hour fully autonomous package-sort shift (249,560 packages, zero hardware failures, zero teleop) on its Figure 03 fleet at Sunnyvale on 2026-05-30, ~10× the previous public envelope on MTBI.
 created_at: 2026-06-01
-updated_at: 2026-06-01
+timestamp: 2026-06-01T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "Humanoids Daily — Figure 200-hour Helix-02 marathon", date: 2026-05-30}

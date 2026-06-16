@@ -26,9 +26,9 @@ title: {title}
 type: {type}
 aliases: {aliases}
 tags: [alpha, beta]
-summary: {summary}
+description: {description}
 created_at: 2026-05-24
-updated_at: 2026-05-24
+timestamp: 2026-05-24T00:00:00Z
 sources:
   - {{title: "ARA daily digest", path: research/digest/2026-05-24-digest.md}}
 ---
@@ -54,7 +54,7 @@ def write_page(
     type_: str = "entity",
     title: str | None = None,
     aliases: str = "[]",
-    summary: str = "A one-line summary.",
+    description: str = "A one-line description.",
     body: str = "No links here.",
     subdir: str | None = None,
     filename: str | None = None,
@@ -68,7 +68,7 @@ def write_page(
             title=title or slug.title(),
             type=type_,
             aliases=aliases,
-            summary=summary,
+            description=description,
             body=body,
         ),
         encoding="utf-8",
@@ -81,7 +81,7 @@ def write_index(root: Path, entities=(), concepts=(), themes=()) -> Path:
     for header, slugs in (("Entities", entities), ("Concepts", concepts), ("Themes", themes)):
         lines.append(f"## {header}")
         for slug in slugs:
-            lines.append(f"- [[{slug}]] — summary for {slug}")
+            lines.append(f"- [[{slug}]] — description for {slug}")
         lines.append("")
     path = root / "index.md"
     path.write_text("\n".join(lines), encoding="utf-8")
@@ -133,9 +133,9 @@ title: NBX Group
 type: entity
 aliases: [NBX, "N.B.X. Group"]
 tags: [neocloud, gpu-cloud]
-summary: Flow-style frontmatter must parse.
+description: Flow-style frontmatter must parse.
 created_at: 2026-05-24
-updated_at: 2026-05-24
+timestamp: 2026-05-24T00:00:00Z
 sources:
   - {title: "Q1 results", url: "https://example.com/q1", date: 2026-05-20}
   - {title: "ARA digest", path: research/digest/2026-05-24-digest.md}
@@ -163,19 +163,19 @@ class FrontmatterFailureTest(unittest.TestCase):
             return run_validate(root)
 
     def test_missing_required_field_fails(self):
-        # Drop `summary` (required).
+        # Drop `description` (required).
         def build(root):
             p = root / "entities" / "alpha.md"
             p.write_text(
                 "---\nslug: alpha\ntitle: Alpha\ntype: entity\n"
-                "created_at: 2026-05-24\nupdated_at: 2026-05-24\n---\n\nBody.\n",
+                "created_at: 2026-05-24\ntimestamp: 2026-05-24\n---\n\nBody.\n",
                 encoding="utf-8",
             )
             write_index(root, entities=["alpha"])
 
         report = self._one_page_report(build)
         self.assertFalse(report.ok())
-        self.assertIn("summary", fail_fields(report))
+        self.assertIn("description", fail_fields(report))
 
     def test_bad_slug_fails(self):
         def build(root):
@@ -205,7 +205,7 @@ class FrontmatterFailureTest(unittest.TestCase):
             # Rewrite with an illegal type but keep it in entities/.
             (root / "entities" / "alpha.md").write_text(
                 "---\nslug: alpha\ntitle: Alpha\ntype: widget\n"
-                "summary: x\ncreated_at: 2026-05-24\nupdated_at: 2026-05-24\n---\n\nBody.\n",
+                "description: x\ncreated_at: 2026-05-24\ntimestamp: 2026-05-24\n---\n\nBody.\n",
                 encoding="utf-8",
             )
             write_index(root, entities=["alpha"])
@@ -228,22 +228,22 @@ class FrontmatterFailureTest(unittest.TestCase):
         def build(root):
             p = root / "entities" / "alpha.md"
             p.write_text(
-                "---\nslug: alpha\ntitle: Alpha\ntype: entity\nsummary: x\n"
-                "created_at: 2026-05-24\nupdated_at: 2026-05-01\n---\n\nBody.\n",
+                "---\nslug: alpha\ntitle: Alpha\ntype: entity\ndescription: x\n"
+                "created_at: 2026-05-24\ntimestamp: 2026-05-01\n---\n\nBody.\n",
                 encoding="utf-8",
             )
             write_index(root, entities=["alpha"])
 
         report = self._one_page_report(build)
         self.assertFalse(report.ok())
-        self.assertIn("updated_at", fail_fields(report))
+        self.assertIn("timestamp", fail_fields(report))
 
     def test_bad_date_format_fails(self):
         def build(root):
             p = root / "entities" / "alpha.md"
             p.write_text(
-                "---\nslug: alpha\ntitle: Alpha\ntype: entity\nsummary: x\n"
-                'created_at: "05/24/2026"\nupdated_at: 2026-05-24\n---\n\nBody.\n',
+                "---\nslug: alpha\ntitle: Alpha\ntype: entity\ndescription: x\n"
+                'created_at: "05/24/2026"\ntimestamp: 2026-05-24\n---\n\nBody.\n',
                 encoding="utf-8",
             )
             write_index(root, entities=["alpha"])
@@ -256,8 +256,8 @@ class FrontmatterFailureTest(unittest.TestCase):
         def build(root):
             p = root / "entities" / "alpha.md"
             p.write_text(
-                "---\nslug: alpha\ntitle: Alpha\ntype: entity\nsummary: x\n"
-                "created_at: 2026-05-24\nupdated_at: 2026-05-24\n---\n\n   \n",
+                "---\nslug: alpha\ntitle: Alpha\ntype: entity\ndescription: x\n"
+                "created_at: 2026-05-24\ntimestamp: 2026-05-24\n---\n\n   \n",
                 encoding="utf-8",
             )
             write_index(root, entities=["alpha"])
@@ -266,27 +266,27 @@ class FrontmatterFailureTest(unittest.TestCase):
         self.assertFalse(report.ok())
         self.assertIn("body", fail_fields(report))
 
-    def test_multiline_summary_fails(self):
+    def test_multiline_description_fails(self):
         def build(root):
             p = root / "entities" / "alpha.md"
             p.write_text(
                 "---\nslug: alpha\ntitle: Alpha\ntype: entity\n"
-                "summary: |\n  line one\n  line two\n"
-                "created_at: 2026-05-24\nupdated_at: 2026-05-24\n---\n\nBody.\n",
+                "description: |\n  line one\n  line two\n"
+                "created_at: 2026-05-24\ntimestamp: 2026-05-24\n---\n\nBody.\n",
                 encoding="utf-8",
             )
             write_index(root, entities=["alpha"])
 
         report = self._one_page_report(build)
         self.assertFalse(report.ok())
-        self.assertIn("summary", fail_fields(report))
+        self.assertIn("description", fail_fields(report))
 
     def test_bad_source_missing_title_fails(self):
         def build(root):
             p = root / "entities" / "alpha.md"
             p.write_text(
-                "---\nslug: alpha\ntitle: Alpha\ntype: entity\nsummary: x\n"
-                "created_at: 2026-05-24\nupdated_at: 2026-05-24\n"
+                "---\nslug: alpha\ntitle: Alpha\ntype: entity\ndescription: x\n"
+                "created_at: 2026-05-24\ntimestamp: 2026-05-24\n"
                 "sources:\n  - {url: \"https://example.com\"}\n---\n\nBody.\n",
                 encoding="utf-8",
             )
@@ -401,7 +401,7 @@ class IndexLogFailureTest(unittest.TestCase):
             root = make_wiki(Path(td))
             write_page(root, "alpha", type_="entity")
             write_index(root, entities=["alpha"])
-            # Missing the ' | summary' segment.
+            # Missing the ' | description' segment.
             write_log(root, lines=["## [2026-05-24] seed no-pipe-here"])
             report = run_validate(root)
             self.assertFalse(report.ok())
@@ -499,7 +499,7 @@ class WikiSearchTest(unittest.TestCase):
             type_="entity",
             title="Nebius Group",
             aliases="[Nebius, NBIS]",
-            summary="Amsterdam neocloud provider for GPU compute.",
+            description="Amsterdam neocloud provider for GPU compute.",
             body="Nebius rents GPU capacity. It competes with CoreWeave.",
         )
         write_page(
@@ -507,7 +507,7 @@ class WikiSearchTest(unittest.TestCase):
             "coreweave",
             type_="entity",
             title="CoreWeave",
-            summary="GPU-as-a-service neocloud with a large backlog.",
+            description="GPU-as-a-service neocloud with a large backlog.",
             body="CoreWeave is the reference neocloud. Mentions nebius once.",
         )
         write_page(
@@ -515,7 +515,7 @@ class WikiSearchTest(unittest.TestCase):
             "neocloud",
             type_="concept",
             title="Neocloud",
-            summary="Buy GPUs on debt, rent capacity back.",
+            description="Buy GPUs on debt, rent capacity back.",
             body="The neocloud model underwrites debt against contracts.",
         )
 
@@ -566,7 +566,7 @@ class WikiSearchTest(unittest.TestCase):
                 "alpha",
                 type_="entity",
                 title="Alpha",
-                summary="No special terms.",
+                description="No special terms.",
                 body="Normal text.\n\n```\nquxzzytoken here\n```\n",
             )
             results = wiki_search.search(root, "quxzzytoken")

@@ -34,6 +34,7 @@ and opens a PR with methodology fixes.
 | [`COMPONENTS.md`](COMPONENTS.md) | Human reference for the `ara-*` component vocabulary. The machine-readable contract the validator loads is [`ARA_CATALOG.json`](ARA_CATALOG.json); the two are kept in lockstep (CI-enforced — see "Component catalog" below). The CSS at `dashboard/src/components/ara-research.css` is the rendering source of truth and intentionally carries *more* `ara-*` classes than the article allowlist (runtime + front-page layers). |
 | [`ARA_CATALOG.json`](ARA_CATALOG.json) | Machine-readable ara-* component catalog the validator loads its class allowlist from. `scripts/ara_catalog.py` validates it stays in lockstep with COMPONENTS.md (CI-enforced; see "Component catalog" below). |
 | [`docs/generative-research-backends.md`](docs/generative-research-backends.md) | Backend matrix for the generative-research lane (Claude vs DeepSeek vs local Oracle), env mapping, comparison commands. |
+| [`docs/okf.md`](docs/okf.md) | Open Knowledge Format export contract for sharing `research/wiki/` as a portable Markdown/YAML knowledge bundle. |
 | [`docs/model-tickets.md`](docs/model-tickets.md) | Schema + lifecycle + dedup protocol for `research/models/tickets/*.md`. Read by the CRUD agent in `24h-model-timeline.yml` and enforced by `scripts/check_model_tickets.py`. |
 | [`docs/wiki-schema.md`](docs/wiki-schema.md) | Canonical schema + page conventions for the LLM Wiki (`research/wiki/`). Read at runtime by the ingest agent in `wiki-ingest.yml` and enforced by `scripts/check_wiki.py`. |
 | [`docs/hooker-telemetry.md`](docs/hooker-telemetry.md) | Non-blocking telemetry route via `https://hooker.guzus.xyz` topic `ara-telemetry`. |
@@ -59,6 +60,7 @@ and opens a PR with methodology fixes.
 | `check_model_tickets.py` | Validator for `research/models/tickets/*.md` against the schema in `docs/model-tickets.md`. The CRUD agent in `24h-model-timeline.yml` runs it after every pass; CI runs it on every PR. |
 | `check_wiki.py` | Validator for `research/wiki/` pages against the schema in `docs/wiki-schema.md`. `uv run python scripts/check_wiki.py` (exit 0 = safe); `--lint` adds advisory checks. The ingest agent in `wiki-ingest.yml` runs it until exit 0; CI runs it on every PR. |
 | `wiki_search.py` | Search wrapper over `research/wiki/` (`uv run python scripts/wiki_search.py "<query>"`). The ingest agent runs it before writing any page so it UPDATEs an existing page instead of duplicating. |
+| `export_wiki_okf.py` | Export `research/wiki/` as a portable Open Knowledge Format bundle: validates the OKF-native wiki pages and rewrites `[[wikilinks]]` to standard Markdown links. |
 | `check_lane_freshness.py` | Freshness watchdog. Measures git-commit recency per research lane against per-lane cadence thresholds; exits 2 (and emits a hooker/Telegram alert from `liveness-check.yml`) when a lane is stale. Stdlib-only so it runs on both runner tiers. |
 | `build_wiki_index.py` | Rebuilds `research/wiki/index.json` from the wiki pages. **CI-load-bearing**: `ci.yml` runs `--check` (exit 1 if the committed index is stale or any page fails validation); `wiki-ingest.yml` regenerates it every run. |
 | `fetch_ai_blogs.py` | Per-feed AI-blog fetcher used by `daily-ai-blogs.yml`; boundary-handles bad feeds so one failure doesn't crash the run. |
@@ -345,7 +347,7 @@ output or break the pipeline. Read them before editing.
     The `wiki-ingest.yml` agent runs daily *after the digest*
     (`workflow_run`), reads the schema doc, and for each subject runs
     `scripts/wiki_search.py` to find an existing page and UPDATE it
-    (bump `updated_at`, refine `[[links]]`/`aliases`) rather than
+    (bump the OKF `timestamp`, refine `[[links]]`/`aliases`) rather than
     duplicating — it creates a new page only when none exists. Update is
     the default; creation is the exception. **Slugs are immutable** (a
     rename updates the title + aliases, never the filename); pages are

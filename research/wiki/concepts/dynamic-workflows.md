@@ -4,9 +4,9 @@ title: Dynamic Workflows
 type: concept
 aliases: ["Dynamic Workflows", "Claude Code Dynamic Workflows", "parallel subagents"]
 tags: [agentic, claude-code, anthropic, subagents, codebase-migration]
-summary: Anthropic's 2026-05-28 Claude Code feature in which Claude writes a JavaScript orchestrator that fans a single session out to up to 1,000 parallel subagents per run, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.
+description: Anthropic's 2026-05-28 Claude Code feature in which Claude writes a JavaScript orchestrator that fans a single session out to up to 1,000 parallel subagents per run, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.
 created_at: 2026-05-29
-updated_at: 2026-05-30
+timestamp: 2026-05-30T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}

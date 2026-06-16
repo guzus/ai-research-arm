@@ -4,9 +4,9 @@ title: OpenRouter
 type: entity
 aliases: ["OpenRouter", "openrouter.ai", "@OpenRouterAI"]
 tags: [llm-router, inference, infrastructure, capital-markets]
-summary: LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 (CapitalG led, NVentures participated); weekly volume jumped 5× to 25T tokens, on track for >1 quadrillion tokens in 2026.
+description: LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 (CapitalG led, NVentures participated); weekly volume jumped 5× to 25T tokens, on track for >1 quadrillion tokens in 2026.
 created_at: 2026-06-01
-updated_at: 2026-06-01
+timestamp: 2026-06-01T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "OpenRouter Series B announcement", date: 2026-05-30}
