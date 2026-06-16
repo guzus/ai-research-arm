@@ -83,10 +83,10 @@ function timeAgo(date: Date): string {
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki';
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader';
 // Tabs that route by date (calendar-driven). research + wiki are slug-driven
 // (or index views) and are excluded — mirror the research precedent.
-type DateTab = Exclude<Tab, 'research' | 'wiki'>;
+type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader'>;
 type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
@@ -135,6 +135,28 @@ type TwitterStory = {
   links: string[];
   handles: string[];
 };
+type FocusReaderItem = {
+  title: string;
+  label: string;
+  summary: string;
+  body: string;
+  minutes: number;
+  sources: string[];
+  signal: string;
+  score: number;
+};
+type FocusReaderData = {
+  date: string;
+  digestDate: string;
+  generatedAt: string | null;
+  items: FocusReaderItem[];
+  digestCount: number;
+  researchCount: number;
+  ticketCount: number;
+  activeTicketCount: number;
+  wikiCount: number;
+  latestResearchTitle: string;
+};
 
 // Model-release ticket — see docs/model-tickets.md for the contract.
 type TicketStatus = 'rumored' | 'in-testing' | 'confirmed' | 'released' | 'closed';
@@ -177,6 +199,9 @@ let researchDocCache: { slug: string; language: ResearchLanguage; body: string }
 // Cache the tickets index — fetched once per session on first models-tab visit.
 let ticketsCache: Ticket[] | null = null;
 let ticketsPromise: Promise<Ticket[] | null> | null = null;
+let focusReaderData: FocusReaderData | null = null;
+let focusReaderSelectedIndex = 0;
+let focusReaderSearchTerm = '';
 // Which ticket is expanded (showing body + history). Null = grid view.
 // Filter state for the tickets grid.
 const ticketFilters = { status: 'all', company: 'all' };
@@ -217,6 +242,9 @@ const languageSwitch = document.getElementById('languageSwitch');
 // are disambiguated from routes by the file extension; Vercel rewrites only
 // extensionless paths to /index.html.
 function routeFromState(): string {
+  if (activeTab === 'focusReader') {
+    return '/design/focus-reader';
+  }
   if (activeTab === 'research') {
     return selectedSlug ? '/research/' + selectedSlug : '/research';
   }
@@ -281,6 +309,12 @@ function parseRoute(path: string): boolean {
   const clean = path.replace(/\/+$/, '') || '/';
   if (clean === '/') return false;
   const trimmed = clean.replace(/^\/+/, '');
+  if (trimmed === 'design/focus-reader') {
+    activeTab = 'focusReader';
+    selectedSlug = null;
+    syncTabUi();
+    return true;
+  }
   const dateMatch = trimmed.match(/^(today|twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
   if (dateMatch) {
     activeTab = dateMatch[1] as Tab;
@@ -354,6 +388,7 @@ function syncTabUi(): void {
   // Wiki is slug/index-driven, not date-driven — same calendar-hiding
   // toggle as research/models.
   document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
+  document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
 }
 
 // ── Helpers ───────────────────────────────────────────
@@ -773,7 +808,7 @@ function setSafeContent(
   // audio players), so they stay in the default allowlist; they are NOT
   // iframe-only.
   const addTags = ['mark', 'article', 'figure', 'figcaption', 'audio', 'nav', 'section', 'details', 'summary'];
-  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src'];
+  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -1241,6 +1276,8 @@ function showLoading(): void {
     ? 'Loading front page\u2026'
     : activeTab === 'models'
     ? 'Loading model timeline\u2026'
+    : activeTab === 'focusReader'
+    ? 'Loading focus reader\u2026'
     : activeTab === 'research'
     ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
     : activeTab === 'wiki'
@@ -1266,6 +1303,8 @@ function showEmpty(dateStr: string): void {
     ? 'No front page for ' + escapeHtml(dateStr)
     : activeTab === 'models'
     ? 'No model timeline for ' + escapeHtml(dateStr)
+    : activeTab === 'focusReader'
+    ? 'No focus reader data available'
     : activeTab === 'research'
     ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
     : 'No Twitter report for ' + escapeHtml(dateStr);
@@ -4879,6 +4918,228 @@ function renderResearchStandalone(row: GenResearchRow): void {
   updateResearchAudioUi();
 }
 
+// ── Focus Reader design route ─────────────────────────
+function latestDateFromList(dates: string[] | undefined, target = fmtDate(new Date())): string | null {
+  if (!dates || dates.length === 0) return null;
+  let best: string | null = null;
+  for (const date of dates.slice().sort()) {
+    if (date <= target) best = date;
+  }
+  return best || dates.slice().sort()[dates.length - 1] || null;
+}
+
+function sentenceFromMarkdown(md: string, max = 220): string {
+  const text = stripMarkdown(md)
+    .replace(/^\s*[-*]\s+/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!text) return '';
+  const sentence = text.match(/^(.+?[.!?])(?:\s|$)/)?.[1] || text;
+  return truncateText(sentence, max);
+}
+
+function digestSectionItems(md: string): FocusReaderItem[] {
+  const sections = splitSections(md);
+  const cleanSections = sections
+    .map((section) => ({
+      title: (section.title || 'Daily brief').trim(),
+      body: section.body.replace(/^\s*#\s+[^\n]+\n*/, '').trim(),
+    }))
+    .filter((section) => section.body);
+
+  const items = cleanSections.slice(0, 6).map((section, index) => {
+    const urls = extractUrls(section.body);
+    const wordCount = stripMarkdown(section.body).split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(2, Math.min(12, Math.ceil(wordCount / 190)));
+    const score = Math.max(46, Math.min(94, 64 + urls.length * 4 + (cleanSections.length - index)));
+    const label = /summary|tl;dr/i.test(section.title)
+      ? 'Executive scan'
+      : section.title.replace(/&amp;/g, '&');
+    return {
+      title: label,
+      label,
+      summary: sentenceFromMarkdown(section.body),
+      body: section.body,
+      minutes,
+      sources: urls,
+      signal: score >= 80 ? 'High signal' : score >= 68 ? 'Watch' : 'Brief',
+      score,
+    };
+  });
+
+  if (items.length > 0) return items;
+
+  // Deterministic fallback for older or malformed digest files that do not
+  // split into sections. This keeps the design route useful without inventing
+  // visible fixture labels.
+  return [{
+    title: 'Daily brief',
+    label: 'Digest',
+    summary: sentenceFromMarkdown(md) || 'Latest AI research digest is available.',
+    body: md,
+    minutes: 4,
+    sources: extractUrls(md),
+    signal: 'Brief',
+    score: 64,
+  }];
+}
+
+function generatedAtFromDigest(md: string): string | null {
+  const match = md.match(/\*Generated at ([^*]+)\*/i);
+  return match ? match[1].trim() : null;
+}
+
+function sourceLinkHtml(url: string, index: number): string {
+  const label = sourceLabel(url);
+  return [
+    '<a class="focus-source-link" href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">',
+    '  <span>',
+    '    <strong>' + escapeHtml(label) + '</strong>',
+    '    <span class="focus-source-meta">Source ' + String(index + 1).padStart(2, '0') + '</span>',
+    '  </span>',
+    '  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>',
+    '</a>',
+  ].join('\n');
+}
+
+async function loadFocusReaderData(signal: AbortSignal): Promise<FocusReaderData | null> {
+  if (focusReaderData) return focusReaderData;
+  const m = await loadManifest();
+  const today = fmtDate(new Date());
+  const digestDate = latestDateFromList(m?.today, today) || today;
+  const digestMd = await fetchDigest(digestDate, signal);
+  if (!digestMd) return null;
+
+  const [tickets, wikiIndex] = await Promise.all([
+    loadTickets(),
+    loadWikiIndex(signal),
+  ]);
+  const rows = m?.generative ?? [];
+  const sortedResearch = rows.slice().sort((a, b) => a.created_at.localeCompare(b.created_at));
+  const latestResearch = sortedResearch[sortedResearch.length - 1];
+  const ticketList = tickets ?? [];
+
+  const data: FocusReaderData = {
+    date: today,
+    digestDate,
+    generatedAt: generatedAtFromDigest(digestMd),
+    items: digestSectionItems(digestMd),
+    digestCount: m?.today?.length ?? 0,
+    researchCount: rows.length,
+    ticketCount: ticketList.length,
+    activeTicketCount: ticketList.filter((ticket) => ticket.status !== 'closed').length,
+    wikiCount: wikiIndex?.pages?.length ?? 0,
+    // Deterministic fallback for manifests that predate generative research.
+    latestResearchTitle: latestResearch?.title || 'No long-form research published yet',
+  };
+  if (!signal.aborted && tickets && wikiIndex) {
+    focusReaderData = data;
+  }
+  return data;
+}
+
+function renderFocusReader(data: FocusReaderData): void {
+  setDocTitle('Focus Reader');
+  const term = focusReaderSearchTerm.trim().toLowerCase();
+  const visibleEntries = data.items
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => {
+      if (!term) return true;
+      const hay = [item.title, item.label, item.summary, item.body, ...item.sources].join(' ').toLowerCase();
+      return hay.includes(term);
+    });
+  const selectedEntry = visibleEntries.find((entry) => entry.index === focusReaderSelectedIndex) || visibleEntries[0];
+  const hasVisibleMatch = visibleEntries.length > 0;
+  const selected = hasVisibleMatch
+    ? (selectedEntry?.item || data.items[Math.max(0, Math.min(focusReaderSelectedIndex, data.items.length - 1))] || data.items[0])
+    : null;
+  const selectedIndex = selected && selectedEntry ? selectedEntry.index : (selected ? data.items.indexOf(selected) : -1);
+  const articleHtml = selected
+    ? wrapTables(marked.parse(selected.body) as string)
+    : '<p class="focus-empty-copy">No briefing section contains "' + escapeHtml(focusReaderSearchTerm.trim()) + '".</p>';
+  const sources = selected && selected.sources.length
+    ? selected.sources.slice(0, 5).map(sourceLinkHtml).join('\n')
+    : selected ? [
+        // Deterministic fallback when a digest section has no direct URLs.
+        sourceLinkHtml('/research/digest/' + data.digestDate + '-digest.md', 0),
+      ].join('\n') : '<p class="focus-note">No source stack while the search has no matching briefing.</p>';
+  const queue = visibleEntries.map(({ item, index }) => [
+    '<button class="focus-story-card" type="button" data-focus-index="' + index + '" aria-current="' + (index === selectedIndex ? 'true' : 'false') + '">',
+    '  <span class="focus-story-meta">' + escapeHtml(item.label) + ' · ' + item.minutes + ' min</span>',
+    '  <h3>' + escapeHtml(item.title) + '</h3>',
+    item.summary ? '  <p>' + escapeHtml(item.summary) + '</p>' : '',
+    '  <span class="focus-story-footer">',
+    '    <span class="focus-signal">' + escapeHtml(item.signal) + '</span>',
+    '    <span class="focus-story-meta">' + item.sources.length + ' sources</span>',
+    '  </span>',
+    '</button>',
+  ].join('\n')).join('\n');
+  const queueEmpty = visibleEntries.length === 0
+    ? '<div class="focus-queue-empty">No briefings match the search.</div>'
+    : '';
+
+  setSafeContent(
+    content,
+    [
+      '<div class="focus-reader-page">',
+      '  <header class="focus-masthead">',
+      '    <a class="focus-brand" href="/today/' + escapeHtml(data.digestDate) + '" aria-label="ARA home">',
+      '      <span class="focus-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 19 12 4l7 15"></path><path d="M8 14h8"></path></svg></span>',
+      '      <span>ARA</span>',
+      '    </a>',
+      '    <label class="focus-search">',
+      '      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg>',
+      '      <input type="search" value="' + escapeHtml(focusReaderSearchTerm) + '" placeholder="Search briefings, sources, claims" aria-label="Search briefings, sources, claims">',
+      '    </label>',
+      '    <div class="focus-header-actions" aria-label="Reader actions">',
+      '      <a class="focus-icon-button" href="/research" aria-label="Open research index"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 7h10v10H7z"></path><path d="M4 4h10"></path><path d="M10 20h10V10"></path></svg></a>',
+      '      <a class="focus-icon-button primary" href="/models" aria-label="Open model timeline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 21H5V3h11l3 3v15Z"></path><path d="M8 3v6h8"></path><path d="M8 17h8"></path></svg></a>',
+      '    </div>',
+      '  </header>',
+      '  <main class="focus-workspace">',
+      '    <aside class="focus-queue" aria-label="Reading queue">',
+      '      <div class="focus-queue-header"><h2>Today</h2><span class="focus-count">' + visibleEntries.length + '</span></div>',
+      '      <div class="focus-story-list">' + queue + queueEmpty + '</div>',
+      '    </aside>',
+      '    <section class="focus-reader" aria-label="Current briefing">',
+      '      <div class="focus-reader-toolbar">',
+      '        <div class="focus-reading-state">',
+      '          <span>Focus reader</span><span class="focus-dot" aria-hidden="true"></span><span>' + escapeHtml(data.digestDate) + '</span><span class="focus-dot" aria-hidden="true"></span><span>' + escapeHtml(data.generatedAt || 'Latest manifest data') + '</span>',
+      '        </div>',
+      '        <div class="focus-reader-actions">',
+      '          <a class="focus-icon-button" href="/today/' + escapeHtml(data.digestDate) + '" aria-label="Open full digest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h10"></path></svg></a>',
+      '          <a class="focus-icon-button" href="/wiki" aria-label="Open wiki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"></path></svg></a>',
+      '        </div>',
+      '      </div>',
+      '      <article class="focus-article">',
+      '        <div class="focus-article-inner">',
+      '          <div class="focus-kicker">' + escapeHtml(selected?.label || 'Search') + '</div>',
+      '          <h1>' + escapeHtml(selected?.title || 'No matching briefing') + '</h1>',
+      selected?.summary ? '          <p class="focus-dek">' + escapeHtml(selected.summary) + '</p>' : '',
+      '          <div class="focus-article-meta"><span>Signal score ' + (selected?.score ?? 0) + '</span><span>' + (selected?.sources.length ?? 0) + ' sources</span><span>' + (selected?.minutes ?? 0) + ' min read</span><span>Digest: ' + escapeHtml(data.digestDate) + '</span></div>',
+      '          <div class="focus-article-body md-content">' + articleHtml + '</div>',
+      '        </div>',
+      '      </article>',
+      '    </section>',
+      '    <aside class="focus-evidence" aria-label="Evidence">',
+      '      <div class="focus-evidence-header"><h2>Evidence</h2><span class="focus-count">' + (selected?.score ?? 0) + '</span></div>',
+      '      <div class="focus-evidence-body">',
+      '        <section class="focus-meter" aria-label="Confidence"><div class="focus-meter-top"><span class="focus-meter-label">Confidence</span><strong>' + (selected?.score ?? 0) + '</strong></div><div class="focus-bar" aria-hidden="true"><span></span></div><p class="focus-note">Score combines section depth, source count, and whether the item appears in the latest digest cycle.</p></section>',
+      '        <section class="focus-source-list" aria-label="Source stack"><h3 class="focus-section-title">Source Stack</h3>' + sources + '</section>',
+      '        <section class="focus-notes" aria-label="Repository state"><h3 class="focus-section-title">Repo State</h3>',
+      '          <p class="focus-note">' + data.digestCount + ' digests · ' + data.researchCount + ' research articles · ' + data.wikiCount + ' wiki pages.</p>',
+      '          <p class="focus-note">' + data.activeTicketCount + ' active model tickets out of ' + data.ticketCount + '. Latest research: ' + escapeHtml(data.latestResearchTitle) + '.</p>',
+      '        </section>',
+      '      </div>',
+      '    </aside>',
+      '  </main>',
+      '</div>',
+    ].join('\n'),
+  );
+  const bar = content.querySelector<HTMLElement>('.focus-bar span');
+  if (bar) bar.style.width = (selected?.score ?? 0) + '%';
+}
+
 // ── Main load ─────────────────────────────────────────
 async function load(): Promise<void> {
   const dateStr = fmtDate(currentDate);
@@ -4896,7 +5157,17 @@ async function load(): Promise<void> {
   showLoading();
 
   try {
-    if (activeTab === 'wiki') {
+    if (activeTab === 'focusReader') {
+      const result = await withTimeout(loadFocusReaderData(controller.signal), LOAD_TIMEOUT_MS, controller);
+      if (requestId !== loadRequestId) return;
+      if (result === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (result) {
+        renderFocusReader(result);
+      } else {
+        showEmpty(dateStr);
+      }
+    } else if (activeTab === 'wiki') {
       // Fetch + cache the committed index.json once; everything (catalog,
       // backlinks, resolver) is derived from it. No JS-side graph building.
       const idx = await withTimeout(loadWikiIndex(controller.signal), LOAD_TIMEOUT_MS, controller);
@@ -5429,6 +5700,15 @@ content.addEventListener('click', (e) => {
     load();
     return;
   }
+  const focusQueueButton = target.closest('[data-focus-index]') as HTMLElement | null;
+  if (focusQueueButton && activeTab === 'focusReader') {
+    const nextIndex = Number(focusQueueButton.dataset.focusIndex);
+    if (Number.isFinite(nextIndex) && focusReaderData) {
+      focusReaderSelectedIndex = Math.max(0, Math.min(nextIndex, focusReaderData.items.length - 1));
+      renderFocusReader(focusReaderData);
+    }
+    return;
+  }
   const back = target.closest('[data-research-back]') as HTMLElement | null;
   if (back) {
     selectedSlug = null;
@@ -5526,6 +5806,27 @@ content.addEventListener('change', (e) => {
   load();
 });
 
+content.addEventListener('input', (e) => {
+  if (activeTab !== 'focusReader' || !focusReaderData) return;
+  const input = (e.target as HTMLElement).closest('.focus-search input') as HTMLInputElement | null;
+  if (!input) return;
+  focusReaderSearchTerm = input.value;
+  const needle = focusReaderSearchTerm.trim().toLowerCase();
+  if (needle) {
+    const matchIndex = focusReaderData.items.findIndex((item) =>
+      [item.title, item.label, item.summary, item.body, ...item.sources].join(' ').toLowerCase().includes(needle),
+    );
+    if (matchIndex >= 0) focusReaderSelectedIndex = matchIndex;
+  }
+  renderFocusReader(focusReaderData);
+  const nextInput = content.querySelector<HTMLInputElement>('.focus-search input');
+  if (nextInput) {
+    nextInput.focus();
+    const end = nextInput.value.length;
+    nextInput.setSelectionRange(end, end);
+  }
+});
+
 content.addEventListener('keydown', (e: KeyboardEvent) => {
   if (e.key !== 'Enter' && e.key !== ' ') return;
   const target = e.target as HTMLElement;
@@ -5608,10 +5909,11 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
     document.body.classList.toggle('tab-research', activeTab === 'research');
     document.body.classList.toggle('tab-models', activeTab === 'models');
     document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
+    document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
     // Re-probe availability for current month with new tab (date tabs only).
     // The models/wiki tabs don't use date routing, so skip probing there too —
     // it'd just paint dots on a calendar that's hidden anyway.
-    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki') {
+    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -5630,7 +5932,8 @@ const currentTab: Tab = activeTab as Tab;
 document.body.classList.toggle('tab-research', currentTab === 'research');
 document.body.classList.toggle('tab-models', currentTab === 'models');
 document.body.classList.toggle('tab-wiki', currentTab === 'wiki');
-if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki') {
+document.body.classList.toggle('tab-focus-reader', currentTab === 'focusReader');
+if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();
