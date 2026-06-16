@@ -5547,3 +5547,81 @@ body.tab-source-map .app {
     justify-content: flex-start;
   }
 }
+
+/* Simplification pass: keep the full frontend surfaces, remove the extra frame
+   density, and make each design read as one primary workflow. */
+.focus-full-frontend,
+.briefing-full-frontend {
+  display: block;
+}
+
+.focus-surface-panel,
+.briefing-surface-panel,
+.source-map-surface-panel {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.focus-surface-head,
+.briefing-surface-head {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+
+.focus-surface-head h2,
+.briefing-surface-head h2,
+.source-map-surface-head h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.focus-surface-tabs,
+.briefing-surface-tabs,
+.source-map-surface-tabs {
+  justify-content: flex-start;
+}
+
+.focus-surface-tab,
+.briefing-surface-tab,
+.source-map-surface-tab {
+  min-height: 30px;
+  padding: 0 9px;
+}
+
+.focus-surface-grid,
+.briefing-surface-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.focus-surface-item,
+.briefing-surface-item,
+.source-map-surface-item {
+  gap: 6px;
+  padding: 10px;
+}
+
+.focus-surface-item p,
+.briefing-surface-item p,
+.source-map-surface-item p {
+  display: none;
+}
+
+.briefing-layout {
+  grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.35fr);
+}
+
+.briefing-evidence-panel {
+  display: none;
+}
+
+.source-map-right {
+  gap: 14px;
+}
+
+@media (max-width: 760px) {
+  .focus-surface-grid,
+  .briefing-surface-grid {
+    grid-template-columns: 1fr;
+  }
+}
