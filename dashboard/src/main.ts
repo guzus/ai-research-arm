@@ -156,6 +156,7 @@ type FocusReaderData = {
   activeTicketCount: number;
   wikiCount: number;
   latestResearchTitle: string;
+  frontend: DesignFrontendData;
 };
 type BriefingKind = 'digest' | 'twitter' | 'model' | 'source';
 type BriefingEvidence = {
@@ -182,6 +183,7 @@ type BriefingInboxData = {
   items: BriefingItem[];
   stats: { label: string; value: string }[];
   latestDate: string | null;
+  frontend: DesignFrontendData;
 };
 
 // Model-release ticket — see docs/model-tickets.md for the contract.
@@ -242,6 +244,18 @@ type SourceMapModel = {
   };
   entities: SourceMapEntity[];
   evidence: SourceMapEvidence[];
+  frontend: DesignFrontendData;
+};
+type DesignSurface = 'digest' | 'signals' | 'models' | 'research' | 'wiki';
+type DesignFrontendData = {
+  digestDate: string | null;
+  twitterDate: string | null;
+  digestItems: FocusReaderItem[];
+  twitterStories: TwitterStory[];
+  tickets: Ticket[];
+  researchRows: GenResearchRow[];
+  wikiPages: WikiPage[];
+  stats: Array<{ label: string; value: string; href: string }>;
 };
 
 let currentDate = new Date();
@@ -264,8 +278,11 @@ let ticketsPromise: Promise<Ticket[] | null> | null = null;
 let focusReaderData: FocusReaderData | null = null;
 let focusReaderSelectedIndex = 0;
 let focusReaderSearchTerm = '';
+let focusReaderSurface: DesignSurface = 'digest';
 let briefingInboxCache: BriefingInboxData | null = null;
 let selectedBriefingId: string | null = null;
+let briefingSurface: DesignSurface = 'signals';
+let sourceMapSurface: DesignSurface = 'digest';
 // Which ticket is expanded (showing body + history). Null = grid view.
 // Filter state for the tickets grid.
 const ticketFilters = { status: 'all', company: 'all' };
@@ -1495,6 +1512,8 @@ async function buildSourceMapModel(signal: AbortSignal): Promise<SourceMapModel 
     loadWikiIndex(signal),
   ]);
   if (signal.aborted) return null;
+  const frontend = await loadDesignFrontendData(m, signal);
+  if (signal.aborted) return null;
 
   const summaryLines = digest ? extractDigestSummaryLines(digest) : [];
   const sourceLines = digest ? extractDigestSourceLines(digest) : [];
@@ -1578,6 +1597,7 @@ async function buildSourceMapModel(signal: AbortSignal): Promise<SourceMapModel 
     },
     entities: topSourceMapEntities(wiki, tickets, [thesis, detail, ...summaryLines, ...sourceLines].join(' ').toLowerCase()),
     evidence: buildSourceMapEvidence(sourceLines, tickets, m.generative, wiki),
+    frontend,
   };
 }
 
@@ -3229,6 +3249,8 @@ function renderSourceMap(model: SourceMapModel): void {
       mobileFlow,
       '    </main>',
       '    <aside class="source-map-panel source-map-right" aria-label="Entity and evidence detail">',
+      '      <section class="source-map-stat-grid" aria-label="ARA sections">' + renderDesignStats('source-map', model.frontend) + '</section>',
+      renderDesignSurfacePanel('source-map', model.frontend, sourceMapSurface),
       '      <section class="source-map-entity-list" aria-labelledby="source-map-entity-heading"><div class="source-map-section-label"><span id="source-map-entity-heading">Linked entities</span><span>ranked</span></div>' + model.entities.slice(0, 5).map((entity) => renderSourceMapEntity(entity, true)).join('\n') + '</section>',
       '      <section class="source-map-evidence-list" aria-labelledby="source-map-evidence-heading"><div class="source-map-section-label"><span id="source-map-evidence-heading">Evidence trail</span><span>primary</span></div>' + model.evidence.map(renderSourceMapEvidenceItem).join('\n') + '</section>',
       '      <button class="source-map-pill-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg><span>Open digest</span></button>',
@@ -3436,6 +3458,152 @@ function briefingExcerpt(text: string, max = 250): string {
   return (at > 120 ? clipped.slice(0, at + 1) : clipped).trim() + '...';
 }
 
+const DESIGN_SURFACES: Array<{ key: DesignSurface; label: string; href: string }> = [
+  { key: 'digest', label: 'Digest', href: '/today' },
+  { key: 'signals', label: 'Signals', href: '/twitter' },
+  { key: 'models', label: 'Models', href: '/models' },
+  { key: 'research', label: 'Research', href: '/research' },
+  { key: 'wiki', label: 'Wiki', href: '/wiki' },
+];
+
+function designSurfaceHref(surface: DesignSurface, data: DesignFrontendData): string {
+  if (surface === 'digest') return data.digestDate ? `/today/${data.digestDate}` : '/today/' + fmtDate(currentDate);
+  if (surface === 'signals') return data.twitterDate ? `/twitter/${data.twitterDate}` : '/twitter/' + fmtDate(currentDate);
+  return DESIGN_SURFACES.find((item) => item.key === surface)?.href || '/';
+}
+
+function renderDesignSurfaceTabs(prefix: string, active: DesignSurface, data: DesignFrontendData): string {
+  return DESIGN_SURFACES.map((surface) => (
+    '<button class="' + prefix + '-surface-tab" type="button" data-design-surface="' + surface.key + '" aria-current="' + (active === surface.key ? 'true' : 'false') + '">' +
+    '<span>' + escapeHtml(surface.label) + '</span>' +
+    '</button>'
+  )).join('\n') + '<a class="' + prefix + '-surface-open" href="' + escapeHtml(designSurfaceHref(active, data)) + '">Open route</a>';
+}
+
+function renderDesignSurfaceList(data: DesignFrontendData, surface: DesignSurface, prefix: string): string {
+  if (surface === 'digest') {
+    const rows = data.digestItems.slice(0, 5).map((item) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(item.label) + ' · ' + escapeHtml(String(item.score)) + '</div>',
+      '  <h3>' + escapeHtml(item.title) + '</h3>',
+      '  <p>' + escapeHtml(item.summary || truncateText(stripMarkdown(item.body), 150)) + '</p>',
+      '  <span>' + escapeHtml(String(item.sources.length)) + ' sources · ' + escapeHtml(String(item.minutes)) + ' min</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No digest sections available.</div>';
+  }
+  if (surface === 'signals') {
+    const rows = data.twitterStories.slice(0, 5).map((story) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">Signal ' + escapeHtml(story.rank || 'watch') + '</div>',
+      '  <h3>' + escapeHtml(story.title) + '</h3>',
+      '  <p>' + escapeHtml(briefingExcerpt(storyCurrentLead(story.body) || story.body, 170)) + '</p>',
+      '  <span>' + escapeHtml(String(story.links.length)) + ' links · ' + escapeHtml(story.handles.slice(0, 2).join(', ') || 'source report') + '</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No signal stories available.</div>';
+  }
+  if (surface === 'models') {
+    const rows = data.tickets.slice(0, 5).map((ticket) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(ticket.company) + ' · ' + escapeHtml(ticket.status) + '</div>',
+      '  <h3>' + escapeHtml(ticket.title) + '</h3>',
+      '  <p>' + escapeHtml(briefingExcerpt(ticket.status_note || ticket.body || ticket.expected || ticket.title, 170)) + '</p>',
+      '  <span>' + escapeHtml(ticket.verification) + ' · ' + escapeHtml(String(ticket.sources.length)) + ' sources</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No model tickets available.</div>';
+  }
+  if (surface === 'research') {
+    const rows = data.researchRows.slice(0, 5).map((row) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(row.model) + ' · ' + escapeHtml(shortDateLabel(row.created_at.slice(0, 10))) + '</div>',
+      '  <h3>' + escapeHtml(row.title) + '</h3>',
+      '  <p>' + escapeHtml(briefingExcerpt(row.prompt || row.source || row.title, 170)) + '</p>',
+      '  <span>' + escapeHtml((row.tags || []).slice(0, 3).join(', ') || 'long-form') + '</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No research articles available.</div>';
+  }
+  const rows = data.wikiPages.slice(0, 5).map((page) => [
+    '<article class="' + prefix + '-surface-item">',
+    '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(String(page.type)) + ' · ' + escapeHtml(shortDateLabel(page.updated_at.slice(0, 10))) + '</div>',
+    '  <h3>' + escapeHtml(page.title) + '</h3>',
+    '  <p>' + escapeHtml(page.summary || (page.aliases || []).slice(0, 3).join(', ') || 'Entity memory page') + '</p>',
+    '  <span>' + escapeHtml(String((page.inbound || []).length + (page.outbound || []).length)) + ' graph links</span>',
+    '</article>',
+  ].join('\n')).join('\n');
+  return rows || '<div class="' + prefix + '-surface-empty">No wiki pages available.</div>';
+}
+
+function renderDesignStats(prefix: string, data: DesignFrontendData): string {
+  return data.stats.map((stat) => [
+    '<a class="' + prefix + '-stat-card" href="' + escapeHtml(stat.href) + '">',
+    '  <span>' + escapeHtml(stat.label) + '</span>',
+    '  <strong>' + escapeHtml(stat.value) + '</strong>',
+    '</a>',
+  ].join('\n')).join('\n');
+}
+
+function renderDesignSurfacePanel(prefix: string, data: DesignFrontendData, surface: DesignSurface): string {
+  const meta = DESIGN_SURFACES.find((item) => item.key === surface) || DESIGN_SURFACES[0];
+  return [
+    '<section class="' + prefix + '-surface-panel" aria-label="' + escapeHtml(meta.label) + ' surface">',
+    '  <div class="' + prefix + '-surface-head">',
+    '    <div><span>Surface</span><h2>' + escapeHtml(meta.label) + '</h2></div>',
+    '    <div class="' + prefix + '-surface-tabs">' + renderDesignSurfaceTabs(prefix, surface, data) + '</div>',
+    '  </div>',
+    '  <div class="' + prefix + '-surface-grid">' + renderDesignSurfaceList(data, surface, prefix) + '</div>',
+    '</section>',
+  ].join('\n');
+}
+
+async function loadDesignFrontendData(m: Manifest, signal: AbortSignal): Promise<DesignFrontendData> {
+  const digestDate = latestManifestDate(m.today);
+  const twitterDate = latestManifestDate(m.twitter);
+  const [digestMd, twitterMd, tickets, wiki] = await Promise.all([
+    digestDate ? fetchDigest(digestDate, signal) : Promise.resolve(null),
+    twitterDate ? fetchTwitter(twitterDate, signal) : Promise.resolve(null),
+    loadTickets(),
+    loadWikiIndex(signal),
+  ]);
+  const ticketRows = (tickets || []).slice().sort((a, b) => (b.updated_at || '').localeCompare(a.updated_at || ''));
+  const researchRows = (m.generative || []).slice().sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''));
+  const wikiPages = (wiki?.pages || []).slice().sort((a, b) => (b.updated_at || '').localeCompare(a.updated_at || ''));
+  const cleanTwitter = twitterMd ? sanitizePublicReportMarkdown(twitterMd) : '';
+  const parsedTwitterStories = cleanTwitter ? parseTwitterStories(cleanTwitter).slice(0, 6) : [];
+  const twitterStories = parsedTwitterStories.length > 0 ? parsedTwitterStories : (() => {
+    if (!cleanTwitter || !twitterDate) return [];
+    const sections = splitSections(cleanTwitter).filter((section) => section.title || section.body);
+    const lead = sections.find((section) => /cycle summary|summary|signal/i.test(section.title + ' ' + section.body)) || sections[0];
+    if (!lead) return [];
+    return [{
+      rank: 'cycle',
+      title: lead.title || `Twitter pulse - ${twitterDate}`,
+      body: lead.body || cleanTwitter,
+      links: extractUrls(cleanTwitter).slice(0, 8),
+      handles: extractHandles(cleanTwitter).slice(0, 8),
+    }];
+  })();
+  const digestItems = digestMd ? digestSectionItems(digestMd).slice(0, 8) : [];
+  return {
+    digestDate,
+    twitterDate,
+    digestItems,
+    twitterStories,
+    tickets: ticketRows,
+    researchRows,
+    wikiPages,
+    stats: [
+      { label: 'Digests', value: String(m.today.length), href: digestDate ? `/today/${digestDate}` : '/today/' + fmtDate(currentDate) },
+      { label: 'Signals', value: String(m.twitter.length), href: twitterDate ? `/twitter/${twitterDate}` : '/twitter/' + fmtDate(currentDate) },
+      { label: 'Models', value: String(ticketRows.length), href: '/models' },
+      { label: 'Research', value: String(researchRows.length), href: '/research' },
+      { label: 'Wiki', value: String(wikiPages.length), href: '/wiki' },
+    ],
+  };
+}
+
 function digestBriefingItem(date: string, md: string, m: Manifest): BriefingItem {
   const sections = splitSections(md).filter((section) => section.title || section.body);
   const executive = sections.find((section) => /executive summary|tl;dr|tldr|summary/i.test(section.title));
@@ -3621,6 +3789,7 @@ async function loadBriefingInbox(signal: AbortSignal): Promise<BriefingInboxData
 
   items.sort((a, b) => b.score - a.score);
   const ticketCount = tickets?.length ?? 0;
+  const frontend = await loadDesignFrontendData(m, signal);
   return {
     items,
     latestDate: digestDate || twitterDate,
@@ -3629,6 +3798,7 @@ async function loadBriefingInbox(signal: AbortSignal): Promise<BriefingInboxData
       { label: 'Twitter', value: twitterDate || 'missing' },
       { label: 'Tickets', value: String(ticketCount) },
     ],
+    frontend,
   };
 }
 
@@ -3691,6 +3861,10 @@ function renderBriefingInbox(data: BriefingInboxData): void {
     '      <div class="briefing-panel-header"><div><span class="briefing-eyebrow">Evidence</span><h2>Selected item</h2></div></div>',
     '      <div class="briefing-evidence-list">' + evidence + '</div>',
     '    </aside>',
+    '  </section>',
+    '  <section class="briefing-full-frontend" aria-label="Complete ARA frontend">',
+    '    <div class="briefing-stat-grid">' + renderDesignStats('briefing', data.frontend) + '</div>',
+    renderDesignSurfacePanel('briefing', data.frontend, briefingSurface),
     '  </section>',
     '</main>',
   ].join('\n'));
@@ -5815,8 +5989,9 @@ function sourceLinkHtml(url: string, index: number): string {
 async function loadFocusReaderData(signal: AbortSignal): Promise<FocusReaderData | null> {
   if (focusReaderData) return focusReaderData;
   const m = await loadManifest();
+  if (!m) return null;
   const today = fmtDate(new Date());
-  const digestDate = latestDateFromList(m?.today, today) || today;
+  const digestDate = latestDateFromList(m.today, today) || today;
   const digestMd = await fetchDigest(digestDate, signal);
   if (!digestMd) return null;
 
@@ -5824,23 +5999,25 @@ async function loadFocusReaderData(signal: AbortSignal): Promise<FocusReaderData
     loadTickets(),
     loadWikiIndex(signal),
   ]);
-  const rows = m?.generative ?? [];
+  const rows = m.generative;
   const sortedResearch = rows.slice().sort((a, b) => a.created_at.localeCompare(b.created_at));
   const latestResearch = sortedResearch[sortedResearch.length - 1];
   const ticketList = tickets ?? [];
+  const frontend = await loadDesignFrontendData(m, signal);
 
   const data: FocusReaderData = {
     date: today,
     digestDate,
     generatedAt: generatedAtFromDigest(digestMd),
     items: digestSectionItems(digestMd),
-    digestCount: m?.today?.length ?? 0,
+    digestCount: m.today.length,
     researchCount: rows.length,
     ticketCount: ticketList.length,
     activeTicketCount: ticketList.filter((ticket) => ticket.status !== 'closed').length,
     wikiCount: wikiIndex?.pages?.length ?? 0,
     // Deterministic fallback for manifests that predate generative research.
     latestResearchTitle: latestResearch?.title || 'No long-form research published yet',
+    frontend,
   };
   if (!signal.aborted && tickets && wikiIndex) {
     focusReaderData = data;
@@ -5943,6 +6120,10 @@ function renderFocusReader(data: FocusReaderData): void {
       '      </div>',
       '    </aside>',
       '  </main>',
+      '  <section class="focus-full-frontend" aria-label="Complete ARA frontend">',
+      '    <div class="focus-stat-grid">' + renderDesignStats('focus', data.frontend) + '</div>',
+      renderDesignSurfacePanel('focus', data.frontend, focusReaderSurface),
+      '  </section>',
       '</div>',
     ].join('\n'),
   );
@@ -6528,6 +6709,23 @@ content.addEventListener('click', (e) => {
   }
   if (target.closest('[data-retry]')) {
     load();
+    return;
+  }
+  const designSurfaceButton = target.closest('[data-design-surface]') as HTMLElement | null;
+  if (designSurfaceButton) {
+    const surface = designSurfaceButton.dataset.designSurface as DesignSurface | undefined;
+    if (surface && DESIGN_SURFACES.some((item) => item.key === surface)) {
+      if (activeTab === 'focusReader' && focusReaderData) {
+        focusReaderSurface = surface;
+        renderFocusReader(focusReaderData);
+      } else if (activeTab === 'briefing' && briefingInboxCache) {
+        briefingSurface = surface;
+        renderBriefingInbox(briefingInboxCache);
+      } else if (activeTab === 'sourceMap') {
+        sourceMapSurface = surface;
+        void load();
+      }
+    }
     return;
   }
   const focusQueueButton = target.closest('[data-focus-index]') as HTMLElement | null;
