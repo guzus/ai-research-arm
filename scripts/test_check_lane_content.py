@@ -8,12 +8,19 @@ from datetime import datetime, timezone
 import check_lane_content as clc
 
 
-def _spec(min_bytes=400, drop_ratio=0.10, soft_floor_mult=3.0, glob="research/x/[0-9]*.md"):
+def _spec(
+    min_bytes=400,
+    drop_ratio=0.10,
+    soft_floor_mult=3.0,
+    glob="research/x/[0-9]*.md",
+    reject_patterns=(),
+):
     return clc.LaneSpec(
         glob=glob,
         min_bytes=min_bytes,
         drop_ratio=drop_ratio,
         soft_floor_mult=soft_floor_mult,
+        reject_patterns=reject_patterns,
     )
 
 
@@ -118,6 +125,34 @@ class ClassifyTest(unittest.TestCase):
                               history_min=4, trailing_n=8)
         self.assertEqual(status.state, clc.HEALTHY)
         self.assertFalse(status.anomalous)
+
+    def test_semantic_empty_pattern_flags_boilerplate_report(self):
+        spec = _spec(
+            min_bytes=600,
+            reject_patterns=(r"(?m)^- Unique videos collected:\s*0\b",),
+        )
+        latest_text = "\n".join([
+            "# YouTube AI Signal - 2026-06-17",
+            "",
+            "## Summary",
+            "- Unique videos collected: 0",
+            "- High-signal videos selected: 0",
+            "",
+            "## Sources Checked",
+            "- source boilerplate that makes the file large",
+        ])
+
+        status = clc.classify(
+            _series([5000]),
+            spec,
+            history_min=4,
+            trailing_n=8,
+            latest_text=latest_text,
+        )
+
+        self.assertEqual(status.state, clc.EMPTY)
+        self.assertTrue(status.anomalous)
+        self.assertIn("semantic empty pattern", status.detail)
 
 
 class EvaluateTest(unittest.TestCase):

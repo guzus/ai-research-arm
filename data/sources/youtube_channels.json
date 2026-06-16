@@ -1,0 +1,105 @@
+[
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "kind": "search",
+    "query": "OpenAI official model release demo developer update",
+    "priority": "P0",
+    "count": 8,
+    "tags": ["official", "frontier-lab", "model-release"],
+    "include_in_digest": true,
+    "notes": "Official/lab signal via search to avoid depending on handle resolution."
+  },
+  {
+    "id": "anthropic",
+    "name": "Anthropic",
+    "kind": "search",
+    "query": "Anthropic Claude official model release demo developer update",
+    "priority": "P0",
+    "count": 8,
+    "tags": ["official", "frontier-lab", "model-release"],
+    "include_in_digest": true
+  },
+  {
+    "id": "google-deepmind",
+    "name": "Google DeepMind",
+    "kind": "search",
+    "query": "Google DeepMind Gemini official research demo keynote",
+    "priority": "P0",
+    "count": 8,
+    "tags": ["official", "frontier-lab", "research"],
+    "include_in_digest": true
+  },
+  {
+    "id": "nvidia-ai",
+    "name": "NVIDIA AI",
+    "kind": "search",
+    "query": "NVIDIA AI official developer keynote model inference GPU",
+    "priority": "P1",
+    "count": 6,
+    "tags": ["official", "infrastructure", "inference"],
+    "include_in_digest": true
+  },
+  {
+    "id": "microsoft-ai",
+    "name": "Microsoft AI / Azure AI",
+    "kind": "search",
+    "query": "Microsoft Azure AI official developer model agent demo",
+    "priority": "P1",
+    "count": 6,
+    "tags": ["official", "enterprise", "agents"],
+    "include_in_digest": true
+  },
+  {
+    "id": "meta-ai",
+    "name": "Meta AI",
+    "kind": "search",
+    "query": "Meta AI official Llama model release research demo",
+    "priority": "P1",
+    "count": 6,
+    "tags": ["official", "open-models", "research"],
+    "include_in_digest": true
+  },
+  {
+    "id": "hugging-face",
+    "name": "Hugging Face",
+    "kind": "search",
+    "query": "Hugging Face official open model agent demo",
+    "priority": "P1",
+    "count": 6,
+    "tags": ["official", "open-models", "tooling"],
+    "include_in_digest": true
+  },
+  {
+    "id": "ai-podcasts",
+    "name": "AI Podcasts",
+    "kind": "trending",
+    "topic": "ai-podcasts",
+    "range": "1w",
+    "priority": "P1",
+    "count": 20,
+    "tags": ["interviews", "podcasts", "strategy"],
+    "include_in_digest": true
+  },
+  {
+    "id": "ai-agents",
+    "name": "AI Agents",
+    "kind": "trending",
+    "topic": "ai-agents",
+    "range": "1w",
+    "priority": "P1",
+    "count": 12,
+    "tags": ["agents", "tools", "developer"],
+    "include_in_digest": true
+  },
+  {
+    "id": "ai-research-talks",
+    "name": "AI Research Talks",
+    "kind": "search",
+    "query": "AI research talk large language models agents evaluation",
+    "priority": "P2",
+    "count": 10,
+    "tags": ["research", "talks", "evals"],
+    "include_in_digest": true
+  }
+]

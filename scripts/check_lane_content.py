@@ -40,9 +40,9 @@ Why this design avoids alert fatigue:
 Like the freshness watchdog this is stdlib-only, so it runs identically on
 both the ubuntu-latest and self-hosted runner tiers. It reads files from the
 working tree (the checkout the watchdog already has), not git history, so it
-does not need full history or LFS blobs. (All inspected artifacts are
-non-LFS text — the front-page lane deliberately reads the `.html` render, not
-the LFS-tracked `.png`, so `lfs: false` checkouts still see real bytes.)
+does not need full history or binary media. All inspected artifacts are
+committed text; the front-page lane deliberately reads the `.html` render, not
+the S3-backed `.png`.
 
 Known limitations (conscious MVP scope):
   - The gate measures BYTES, not item/line counts. It cannot catch a
@@ -75,6 +75,7 @@ import argparse
 import glob
 import json
 import os
+import re
 import statistics
 import sys
 from dataclasses import dataclass, field
@@ -97,12 +98,16 @@ class LaneSpec:
     soft_floor_mult: soft floor = min_bytes * this. The relative-drop arm
                     only fires when latest is ALSO below this, so a large lane
                     halving on a quiet day does not page.
+    reject_patterns: regexes that make the latest artifact anomalous even when
+                    byte volume is healthy. Use sparingly for lanes where
+                    boilerplate can be larger than the byte floor.
     """
 
     glob: str
     min_bytes: int
     drop_ratio: float = 0.10
     soft_floor_mult: float = 3.0
+    reject_patterns: tuple[str, ...] = ()
 
 
 # Per-lane content policy. Floors are calibrated from the real history in
@@ -123,12 +128,23 @@ LANE_SPECS: dict[str, LaneSpec] = {
     "bluesky": LaneSpec("research/bluesky/[0-9]*.md", min_bytes=80),
     # daily arxiv papers.            obs min ~6KB
     "arxiv": LaneSpec("research/arxiv/[0-9]*-papers.md", min_bytes=1500),
+    # daily YouTube signal via tuber. The report always includes source
+    # boilerplate, so semantic zero-count markers are anomalous even if byte
+    # volume clears the floor.
+    "youtube": LaneSpec(
+        "research/youtube/[0-9]*.md",
+        min_bytes=600,
+        reject_patterns=(
+            r"(?m)^- Unique videos collected:\s*0\b",
+            r"(?m)^- High-signal videos selected:\s*0\b",
+        ),
+    ),
     # daily synthesized digest.      obs min ~8.4KB
     "digest": LaneSpec("research/digest/[0-9]*-digest.md", min_bytes=2000),
     # daily model-timeline diff.     obs min ~455B (slow news days)
     "models": LaneSpec("research/models/[0-9]*-timeline.md", min_bytes=150),
-    # daily front-page (HTML render is the stable text artifact; the PNG can
-    # be an LFS pointer on read-only checkouts so we avoid it). obs min ~6.5KB
+    # daily front-page (HTML render is the stable text artifact; PNG media lives
+    # in S3 and is intentionally not inspected here). obs min ~6.5KB
     "front-page": LaneSpec("research/front-page/[0-9]*-front-page.html", min_bytes=1500),
     # daily wiki ingest. The per-page slugs are CRUD'd (an UPDATE may not grow
     # bytes), but log.md is append-only — one entry per run — so it is the
@@ -184,12 +200,28 @@ def lane_artifact_sizes(spec: LaneSpec, repo_root: str) -> list[tuple[str, int]]
     return out
 
 
+def latest_artifact_text(spec: LaneSpec, repo_root: str, artifact: str | None) -> str:
+    if not artifact or not spec.reject_patterns:
+        return ""
+    pattern = os.path.join(repo_root, spec.glob)
+    for path in sorted(glob.glob(pattern)):
+        if os.path.basename(path) != artifact or not os.path.isfile(path):
+            continue
+        try:
+            with open(path, encoding="utf-8") as fh:
+                return fh.read(4096)
+        except OSError:
+            return ""
+    return ""
+
+
 def classify(
     sizes: list[tuple[str, int]],
     spec: LaneSpec,
     *,
     history_min: int,
     trailing_n: int,
+    latest_text: str = "",
 ) -> LaneContent:
     """Pure classification over a list of (name, size) samples for one lane.
 
@@ -219,7 +251,17 @@ def classify(
             detail=f"{latest_size}B < floor {spec.min_bytes}B",
         )
 
-    # 2) Relative drop — only when we have enough history to trust a median,
+    # 2) Semantic rejects — byte volume can be healthy while the latest artifact
+    #    explicitly says it carried no usable lane signal.
+    for pattern in spec.reject_patterns:
+        if latest_text and re.search(pattern, latest_text):
+            return LaneContent(
+                lane="", spec=spec, artifact=latest_name, size=latest_size,
+                median=median, sample_count=len(trail), state=EMPTY, ratio=ratio,
+                detail=f"{latest_size}B matched semantic empty pattern {pattern!r}",
+            )
+
+    # 3) Relative drop — only when we have enough history to trust a median,
     #    the lane opts in (drop_ratio > 0), and the artifact is BOTH a small
     #    fraction of typical AND below the soft floor.
     if (
@@ -262,6 +304,7 @@ def evaluate(
     history_min: int = 4,
     trailing_n: int = 8,
     sizes_fn: Callable[[LaneSpec, str], list[tuple[str, int]]] = lane_artifact_sizes,
+    text_fn: Callable[[LaneSpec, str, str | None], str] = latest_artifact_text,
 ) -> list[LaneContent]:
     """Evaluate every configured lane. sizes_fn is injectable so the logic can
     be unit-tested without a real repository (mirrors check_lane_freshness.py's
@@ -269,7 +312,15 @@ def evaluate(
     results: list[LaneContent] = []
     for lane, spec in specs.items():
         sizes = sizes_fn(spec, repo_root)
-        status = classify(sizes, spec, history_min=history_min, trailing_n=trailing_n)
+        latest_name = sizes[-1][0] if sizes else None
+        latest_text = text_fn(spec, repo_root, latest_name)
+        status = classify(
+            sizes,
+            spec,
+            history_min=history_min,
+            trailing_n=trailing_n,
+            latest_text=latest_text,
+        )
         status.lane = lane
         results.append(status)
     return results

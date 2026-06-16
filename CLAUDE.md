@@ -64,6 +64,7 @@ and opens a PR with methodology fixes.
 | `check_lane_freshness.py` | Freshness watchdog. Measures git-commit recency per research lane against per-lane cadence thresholds; exits 2 (and emits a hooker/Telegram alert from `liveness-check.yml`) when a lane is stale. Stdlib-only so it runs on both runner tiers. |
 | `build_wiki_index.py` | Rebuilds `research/wiki/index.json` from the wiki pages. **CI-load-bearing**: `ci.yml` runs `--check` (exit 1 if the committed index is stale or any page fails validation); `wiki-ingest.yml` regenerates it every run. |
 | `fetch_ai_blogs.py` | Per-feed AI-blog fetcher used by `daily-ai-blogs.yml`; boundary-handles bad feeds so one failure doesn't crash the run. |
+| `fetch_youtube_signal.py` | tuber-backed YouTube lane used by `daily-youtube.yml`; read-only by default (discovery, existing summary previews, transcript probes) and never triggers paid summary generation. |
 | `source_cache.py` | Runtime primary-source fetch cache under `data/source-cache/` (gitignored), used by `generative-research.yml`. |
 | `render_front_page.mjs` | Deterministic newspaper renderer used by `daily-front-page.yml`: digest → SVG → PNG via `@resvg/resvg-js` (no Chromium/model dependency), plus the `.ara.md` source for the interactive edition. Layout is budget-aware — overflow is ellipsized/dropped, never painted over. |
 | `test_ara_dsl.py`, `test_dedupe_headline_alerts.py` | Pytest-style tests run in CI. (`test_ara_dsl.py` also asserts `ARA_CATALOG.json` ↔ `COMPONENTS.md` lockstep.) |
@@ -89,7 +90,7 @@ autoscaled fleet of ephemeral Cloud Run workers (the `runner-autoscaler`
 service in `../runner`; see Load-bearing rule 5). A fresh
 `cloud-run-worker-*` instance spins up per job, so "self-hosted" no longer
 means one serial slot — jobs run in parallel, and each worker carries the
-pipeline's baked-in state (bird CLI + birdy daemon, LFS-hydrated
+pipeline's baked-in state (bird CLI + birdy daemon, recent
 `research/` checkout, pre-installed tooling). Aggregation,
 synthesis, output, CI, and the Claude agent lanes all run here.
 
@@ -119,6 +120,7 @@ input).
 |---|---|---|
 | `hourly-rss.yml` | `:30` every hour | `research/rss/` |
 | `daily-ai-blogs.yml` | `:13` every 6h | `research/blogs/` |
+| `daily-youtube.yml` | daily `23:20` for the next `00:00` digest | `research/youtube/` (tuber discovery + read-only summary/transcript evidence) |
 | `hourly-twitter.yml` | every 3h `:07`; DeepSeek/Fireworks comparison lanes via matrix/manual dispatch | `research/twitter/` + `research/summaries/` + Telegram headline alerts; comparison outputs under `research/twitter-deepseek/`, `research/twitter-deepseek-pi/`, and `research/twitter-fireworks-pi/` |
 | `2h-bluesky.yml` | daily `10:11` | `research/bluesky/` (supplemental expert commentary, capped output) |
 | `4h-community.yml` | every 4h `:19` | `research/community/*-hn.md`, `*-reddit.md` |
@@ -208,6 +210,7 @@ research/
 ├── blogs/                     # daily-ai-blogs.yml
 ├── summaries/                 # hourly-twitter.yml (Telegram digest + headline-alert state)
 ├── twitter/                   # hourly-twitter.yml
+├── youtube/                   # daily-youtube.yml (tuber read-only signal lane)
 ├── twitter-deepseek/          # hourly-twitter.yml backend=deepseek-claude-code
 ├── twitter-deepseek-pi/       # hourly-twitter.yml backend=deepseek-pi
 ├── twitter-fireworks-pi/      # hourly-twitter.yml backend=fireworks-pi
@@ -296,10 +299,10 @@ output or break the pipeline. Read them before editing.
    `cloud-run-worker-*` registers per job, runs it, then deregisters, so
    jobs run in PARALLEL (no single serial slot) and each carries baked-in
    state — bird CLI + warm birdy daemon (`hourly-twitter*`,
-   `24h-model-timeline`), LFS-hydrated `research/` for prior-output context
+   `24h-model-timeline`), recent `research/` checkout for prior-output context
    (`daily-digest`, `ci.yml` dashboard job), pre-installed pnpm/Oracle
-   tooling. (`daily-front-page` checks out with `lfs: false` and renders
-   via resvg — it needs neither LFS media nor Chromium.) Use
+   tooling. Generated media lives in S3; `daily-front-page` renders via
+   resvg and uploads the PNG rather than committing it. Use
    `[self-hosted, Linux]` for anything touching that state,
    which is nearly everything. Reserve `ubuntu-latest` for the two
    watchdogs that must outlive a self-hosted outage (`liveness-check.yml`,

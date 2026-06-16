@@ -54,6 +54,7 @@ LANE_THRESHOLDS_HOURS: dict[str, float] = {
     "blogs": 14,        # every 6h at :13 — two missed cycles + queue slack
     "bluesky": 30,      # twice daily at 00:11 / 12:11
     "arxiv": 30,        # daily at 06:13
+    "youtube": 30,      # daily at 23:20
     "digest": 30,       # daily at 00:00
     "models": 30,       # daily at 06:29
     "front-page": 30,   # daily at 00:30

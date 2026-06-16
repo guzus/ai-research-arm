@@ -5,7 +5,7 @@ Automated multi-source AI news research agent powered by Claude and MCP.
 ## Today's Front Page
 
 <!-- FRONT_PAGE_START -->
-![Today's Front Page](research/front-page/2026-06-16-front-page.png)
+![Today's Front Page](https://s3.guzus.xyz/obj-ai-research-arm/front-page/2026-06-16-front-page.png)
 <!-- FRONT_PAGE_END -->
 
 > *Generated daily at 00:30 UTC. See [`research/front-page/`](research/front-page/) for the archive.*
@@ -22,6 +22,7 @@ flowchart TB
         arXiv["📄 arXiv<br/><i>Daily</i>"]
         Twitter["🐦 Twitter/X<br/><i>Every 3h</i>"]
         Blogs["✍️ Expert Blogs<br/><i>Every 6h</i>"]
+        YouTube["▶️ YouTube/tuber<br/><i>Daily</i>"]
     end
 
     subgraph mcp["🔌 MCP Tools (Optional)"]
@@ -36,6 +37,7 @@ flowchart TB
         arxiv_out["research/arxiv/"]
         twitter_out["research/twitter/"]
         blogs_out["research/blogs/"]
+        youtube_out["research/youtube/"]
     end
 
     RSS --> rss_out
@@ -45,6 +47,7 @@ flowchart TB
     arXiv --> arxiv_out
     Twitter --> twitter_out
     Blogs --> blogs_out
+    YouTube --> youtube_out
 
     rss_out --> Digest
     bluesky_out --> Digest
@@ -52,6 +55,7 @@ flowchart TB
     arxiv_out --> Digest
     twitter_out --> Digest
     blogs_out --> Digest
+    youtube_out --> Digest
 
     Exa -.-> Digest
     Perplexity -.-> Digest
@@ -84,6 +88,7 @@ flowchart TB
 | **Hacker News** | MCP Server | Every 4 hours | ✅ Yes |
 | **arXiv** | MCP + RSS | Daily | ✅ Yes |
 | **Expert Blogs** | Curated RSS/Atom registry | Every 6 hours | ✅ Yes |
+| **YouTube** | tuber API discovery + read-only summaries/transcripts | Daily | ✅ Yes |
 | **Web Search** | Exa/Perplexity MCP | On-demand | ✅ Yes (via MCP) |
 
 ## Workflows
@@ -110,6 +115,7 @@ gantt
     AI News Research    :08:23, 1h
 
     section Daily
+    YouTube Signal      :23:20, 1h
     Bluesky             :00:11, 1h
     arXiv Papers        :06:13, 1h
     Daily Digest        :00:00, 1h
@@ -120,6 +126,7 @@ gantt
 |----------|----------|--------|--------|
 | `hourly-rss.yml` | Every hour (:30) | Official blogs, TechCrunch, arXiv RSS | `research/rss/` |
 | `daily-ai-blogs.yml` | Every 6 hours (:13) | Curated KOL Substacks, expert blogs, research/operator blogs | `research/blogs/` |
+| `daily-youtube.yml` | Daily 23:20 UTC for the next 00:00 digest | tuber API trending/search/channel metadata, existing summaries, transcript probes | `research/youtube/` |
 | `2h-bluesky.yml` | Daily 00:11 UTC | Bluesky AI posts | `research/bluesky/` |
 | `4h-community.yml` | Every 4 hours | Reddit RSS + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 06:13 UTC | arXiv papers | `research/arxiv/` |

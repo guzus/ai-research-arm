@@ -1,0 +1,68 @@
+name: Daily YouTube Signal
+
+on:
+  schedule:
+    # Run before the 00:00 UTC digest so YouTube can feed the same-day synthesis.
+    - cron: '20 23 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: daily-youtube
+  cancel-in-progress: true
+
+jobs:
+  youtube:
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 15
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Get current date
+        id: date
+        run: |
+          # This lane runs shortly before the 00:00 UTC digest. Target the
+          # digest's date, not the still-current wall-clock date at 23:45.
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import datetime as dt
+          now = dt.datetime.now(dt.timezone.utc)
+          digest_date = now + dt.timedelta(minutes=60)
+          print(f"date={digest_date.date().isoformat()}")
+          print(f"timestamp={now.strftime('%Y-%m-%d %H:%M UTC')}")
+          PY
+
+      - name: Fetch tuber YouTube signal
+        env:
+          TUBER_API_BASE: ${{ vars.TUBER_API_BASE || 'https://tuber-api.guzus.xyz' }}
+        run: |
+          set -euo pipefail
+          python3 scripts/fetch_youtube_signal.py \
+            --date "${{ steps.date.outputs.date }}" \
+            --registry data/sources/youtube_channels.json \
+            --out-dir research/youtube \
+            --tuber-api-base "$TUBER_API_BASE"
+
+      - name: Commit YouTube signal output
+        run: |
+          set -euo pipefail
+          git add research/youtube/${{ steps.date.outputs.date }}.md
+          git commit -m "YouTube AI signal ${{ steps.date.outputs.timestamp }}" || echo "No changes"
+
+      - name: Push changes
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
