@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARA Briefing Inbox</title>
+    <style>
+      :root {
+        --bg: #f6f4ed;
+        --surface: #fffdfa;
+        --ink: #171b18;
+        --muted: #667069;
+        --accent: #0d766d;
+      }
+
+      * {
+        box-sizing: border-box;
+        letter-spacing: 0;
+      }
+
+      html {
+        min-width: 0;
+      }
+
+      body {
+        margin: 0;
+        min-width: 0;
+        overflow-x: hidden;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.45;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      svg {
+        display: block;
+        width: 18px;
+        height: 18px;
+      }
+
+      .app {
+        min-height: 100vh;
+        padding: 14px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 12px;
+      }
+
+      .topbar,
+      .panel,
+      .story,
+      .evidence-card {
+        background: var(--surface);
+        border: 1px solid var(--muted);
+      }
+
+      .topbar {
+        min-height: 58px;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 16px;
+        align-items: center;
+        padding: 0 14px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+        font-weight: 780;
+        font-size: 18px;
+      }
+
+      .brand-mark {
+        width: 28px;
+        height: 28px;
+        border: 2px solid var(--accent);
+        display: inline-grid;
+        place-items: center;
+        color: var(--accent);
+        flex: 0 0 auto;
+      }
+
+      .brand span {
+        white-space: nowrap;
+      }
+
+      .search {
+        min-width: 0;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid var(--muted);
+        background: var(--surface);
+        padding: 0 11px;
+        color: var(--muted);
+      }
+
+      .search input {
+        min-width: 0;
+        width: 100%;
+        border: 0;
+        outline: 0;
+        color: var(--ink);
+        background: var(--surface);
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .icon-button,
+      .text-button,
+      .segmented button {
+        min-height: 38px;
+        border: 1px solid var(--muted);
+        background: var(--surface);
+        color: var(--ink);
+      }
+
+      .icon-button {
+        width: 38px;
+        display: inline-grid;
+        place-items: center;
+        padding: 0;
+      }
+
+      .text-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 12px;
+        font-weight: 720;
+        white-space: nowrap;
+      }
+
+      .layout {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: minmax(260px, 0.78fr) minmax(420px, 1.4fr) minmax(286px, 0.82fr);
+        gap: 12px;
+      }
+
+      .panel {
+        min-width: 0;
+        min-height: 0;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .panel-header {
+        min-height: 56px;
+        border-bottom: 1px solid var(--muted);
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .panel-title {
+        min-width: 0;
+        display: grid;
+        gap: 2px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+        overflow-wrap: anywhere;
+      }
+
+      h1 {
+        font-size: clamp(26px, 4vw, 48px);
+        line-height: 0.98;
+      }
+
+      h2 {
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      h3 {
+        font-size: 15px;
+        line-height: 1.25;
+      }
+
+      .eyebrow,
+      .meta,
+      .source,
+      .time,
+      .label,
+      .status {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .eyebrow {
+        font-weight: 720;
+        color: var(--accent);
+      }
+
+      .segmented {
+        display: flex;
+        gap: 4px;
+        flex: 0 0 auto;
+      }
+
+      .segmented button {
+        padding: 0 10px;
+        color: var(--muted);
+      }
+
+      .segmented button[aria-pressed="true"] {
+        color: var(--surface);
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .inbox-list {
+        min-height: 0;
+        overflow: auto;
+      }
+
+      .story-row {
+        width: 100%;
+        border: 0;
+        border-bottom: 1px solid var(--muted);
+        background: var(--surface);
+        color: var(--ink);
+        text-align: left;
+        display: grid;
+        grid-template-columns: 36px minmax(0, 1fr);
+        gap: 10px;
+        padding: 12px 14px;
+      }
+
+      .story-row[aria-current="true"] {
+        box-shadow: inset 4px 0 0 var(--accent);
+        background: var(--bg);
+      }
+
+      .score {
+        color: var(--accent);
+        font-size: 20px;
+        font-weight: 780;
+        line-height: 1;
+      }
+
+      .story-copy {
+        min-width: 0;
+        display: grid;
+        gap: 6px;
+      }
+
+      .row-meta,
+      .chips,
+      .brief-actions,
+      .evidence-meta,
+      .fact-row,
+      .source-row,
+      .timeline-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .row-meta {
+        justify-content: space-between;
+      }
+
+      .status {
+        border: 1px solid var(--muted);
+        padding: 2px 6px;
+        white-space: nowrap;
+      }
+
+      .status.ready {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .chips {
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        border: 1px solid var(--muted);
+        color: var(--muted);
+        font-size: 12px;
+        padding: 2px 6px;
+      }
+
+      .story-panel {
+        min-width: 0;
+        min-height: 0;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .story {
+        min-width: 0;
+        min-height: 0;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .story-head {
+        padding: clamp(16px, 3vw, 26px);
+        border-bottom: 1px solid var(--muted);
+        display: grid;
+        gap: 16px;
+      }
+
+      .brief-actions {
+        flex-wrap: wrap;
+      }
+
+      .brief-actions .text-button:first-child {
+        background: var(--accent);
+        color: var(--surface);
+        border-color: var(--accent);
+      }
+
+      .story-body {
+        min-height: 0;
+        overflow: auto;
+        padding: 18px clamp(16px, 3vw, 26px) 24px;
+        display: grid;
+        gap: 18px;
+        align-content: start;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border: 1px solid var(--muted);
+      }
+
+      .summary-cell {
+        min-width: 0;
+        padding: 12px;
+        display: grid;
+        gap: 4px;
+        border-right: 1px solid var(--muted);
+      }
+
+      .summary-cell:last-child {
+        border-right: 0;
+      }
+
+      .summary-cell strong {
+        font-size: 18px;
+      }
+
+      .section {
+        display: grid;
+        gap: 10px;
+      }
+
+      .section h2 {
+        font-size: 13px;
+        color: var(--accent);
+      }
+
+      .bullets {
+        display: grid;
+        gap: 10px;
+      }
+
+      .bullet {
+        display: grid;
+        grid-template-columns: 20px minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .bullet-icon {
+        width: 20px;
+        height: 20px;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        display: inline-grid;
+        place-items: center;
+        margin-top: 1px;
+      }
+
+      .bullet-icon svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .quote {
+        border-left: 4px solid var(--accent);
+        padding: 2px 0 2px 14px;
+        color: var(--muted);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 8px;
+      }
+
+      .timeline-item {
+        align-items: flex-start;
+      }
+
+      .dot {
+        width: 9px;
+        height: 9px;
+        margin-top: 7px;
+        border: 2px solid var(--accent);
+        flex: 0 0 auto;
+      }
+
+      .evidence-panel {
+        min-width: 0;
+      }
+
+      .evidence-list {
+        min-height: 0;
+        overflow: auto;
+        padding: 12px;
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+
+      .evidence-card {
+        min-width: 0;
+        display: grid;
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .evidence-card.primary {
+        border-color: var(--accent);
+      }
+
+      .evidence-meta {
+        justify-content: space-between;
+      }
+
+      .source-row {
+        align-items: flex-start;
+      }
+
+      .source-icon {
+        width: 28px;
+        height: 28px;
+        border: 1px solid var(--muted);
+        display: inline-grid;
+        place-items: center;
+        color: var(--accent);
+        flex: 0 0 auto;
+      }
+
+      .source-row h3 {
+        font-size: 14px;
+      }
+
+      .fact-row {
+        align-items: flex-start;
+        border-top: 1px solid var(--muted);
+        padding-top: 10px;
+      }
+
+      .fact-row svg {
+        color: var(--accent);
+        flex: 0 0 auto;
+        margin-top: 2px;
+      }
+
+      .confidence {
+        height: 8px;
+        border: 1px solid var(--muted);
+        background: var(--bg);
+        display: grid;
+      }
+
+      .confidence span {
+        display: block;
+        width: var(--value);
+        background: var(--accent);
+      }
+
+      .next-card {
+        border: 1px solid var(--accent);
+        padding: 14px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .next-card h2 {
+        color: var(--accent);
+      }
+
+      .kbd-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .mini-stat {
+        border: 1px solid var(--muted);
+        padding: 8px;
+        min-width: 0;
+      }
+
+      .mini-stat strong {
+        display: block;
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      @media (max-width: 1120px) {
+        .layout {
+          grid-template-columns: minmax(250px, 0.82fr) minmax(0, 1.18fr);
+        }
+
+        .evidence-panel {
+          grid-column: 1 / -1;
+          min-height: 360px;
+        }
+
+        .evidence-list {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .app {
+          padding: 10px;
+        }
+
+        .topbar {
+          grid-template-columns: 1fr auto;
+          min-height: auto;
+          padding: 10px;
+        }
+
+        .search {
+          grid-column: 1 / -1;
+          order: 3;
+        }
+
+        .actions .text-button {
+          display: none;
+        }
+
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .panel,
+        .story {
+          min-height: auto;
+        }
+
+        .inbox-list,
+        .story-body,
+        .evidence-list {
+          overflow: visible;
+        }
+
+        .summary-grid,
+        .evidence-list,
+        .kbd-row {
+          grid-template-columns: 1fr;
+        }
+
+        .summary-cell {
+          border-right: 0;
+          border-bottom: 1px solid var(--muted);
+        }
+
+        .summary-cell:last-child {
+          border-bottom: 0;
+        }
+
+        .panel-header {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .segmented {
+          width: 100%;
+        }
+
+        .segmented button {
+          flex: 1 1 0;
+        }
+
+        .story-row {
+          grid-template-columns: 30px minmax(0, 1fr);
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand" aria-label="ARA">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 17 12 4l7 13"></path>
+              <path d="M8 13h8"></path>
+            </svg>
+          </span>
+          <span>ARA Briefing</span>
+        </div>
+        <label class="search">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-4-4"></path>
+          </svg>
+          <input value="frontier models, agents, infra" aria-label="Search briefings">
+        </label>
+        <div class="actions" aria-label="Briefing actions">
+          <button class="icon-button" aria-label="Refresh">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 11a8 8 0 0 0-14-5"></path>
+              <path d="M4 5v6h6"></path>
+              <path d="M4 13a8 8 0 0 0 14 5"></path>
+              <path d="M20 19v-6h-6"></path>
+            </svg>
+          </button>
+          <button class="icon-button" aria-label="Filter">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 6h16"></path>
+              <path d="M7 12h10"></path>
+              <path d="M10 18h4"></path>
+            </svg>
+          </button>
+          <button class="text-button">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 6 9 17l-5-5"></path>
+            </svg>
+            Publish queue
+          </button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel" aria-labelledby="inbox-title">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="eyebrow">Inbox</div>
+              <h2 id="inbox-title">9 stories to triage</h2>
+            </div>
+            <div class="segmented" aria-label="Inbox filter">
+              <button aria-pressed="true">Hot</button>
+              <button aria-pressed="false">New</button>
+              <button aria-pressed="false">Saved</button>
+            </div>
+          </div>
+
+          <div class="inbox-list">
+            <button class="story-row" aria-current="true">
+              <span class="score">94</span>
+              <span class="story-copy">
+                <span class="row-meta">
+                  <span class="status ready">ready</span>
+                  <span class="time">12 min</span>
+                </span>
+                <h3>OpenAI and Anthropic push agent runtimes closer to first-party product surfaces</h3>
+                <span class="source">8 sources - models, tools, infra</span>
+              </span>
+            </button>
+
+            <button class="story-row">
+              <span class="score">88</span>
+              <span class="story-copy">
+                <span class="row-meta">
+                  <span class="status">watch</span>
+                  <span class="time">31 min</span>
+                </span>
+                <h3>GPU rental markets tighten around long-context inference clusters</h3>
+                <span class="source">5 sources - infra, markets</span>
+              </span>
+            </button>
+
+            <button class="story-row">
+              <span class="score">81</span>
+              <span class="story-copy">
+                <span class="row-meta">
+                  <span class="status">needs source</span>
+                  <span class="time">44 min</span>
+                </span>
+                <h3>New coding benchmark claims higher pass rates for tool-use agents</h3>
+                <span class="source">3 sources - evals</span>
+              </span>
+            </button>
+
+            <button class="story-row">
+              <span class="score">77</span>
+              <span class="story-copy">
+                <span class="row-meta">
+                  <span class="status">merge</span>
+                  <span class="time">1h</span>
+                </span>
+                <h3>Small labs converge on retrieval-heavy video understanding demos</h3>
+                <span class="source">6 sources - multimodal</span>
+              </span>
+            </button>
+
+            <button class="story-row">
+              <span class="score">72</span>
+              <span class="story-copy">
+                <span class="row-meta">
+                  <span class="status">watch</span>
+                  <span class="time">2h</span>
+                </span>
+                <h3>Enterprise copilots add policy controls before deeper automation</h3>
+                <span class="source">4 sources - enterprise</span>
+              </span>
+            </button>
+
+            <button class="story-row">
+              <span class="score">65</span>
+              <span class="story-copy">
+                <span class="row-meta">
+                  <span class="status">low confidence</span>
+                  <span class="time">3h</span>
+                </span>
+                <h3>Rumored open weights release draws sparse corroboration</h3>
+                <span class="source">2 sources - models</span>
+              </span>
+            </button>
+          </div>
+        </section>
+
+        <section class="story-panel" aria-labelledby="story-title">
+          <article class="story">
+            <header class="story-head">
+              <div class="chips">
+                <span class="chip">agent runtimes</span>
+                <span class="chip">product surface</span>
+                <span class="chip">high confidence</span>
+              </div>
+              <div>
+                <div class="eyebrow">Selected story</div>
+                <h1 id="story-title">Agent platforms are moving from demos into default work surfaces</h1>
+              </div>
+              <p class="meta">A publishable briefing item with confirmed product signals, two independent context sources, and no unresolved contradiction.</p>
+              <div class="brief-actions">
+                <button class="text-button">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                  Approve
+                </button>
+                <button class="text-button">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 20h9"></path>
+                    <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                  </svg>
+                  Edit angle
+                </button>
+                <button class="text-button">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 8v13H3V8"></path>
+                    <path d="M1 3h22v5H1z"></path>
+                    <path d="M10 12h4"></path>
+                  </svg>
+                  Archive
+                </button>
+              </div>
+            </header>
+
+            <div class="story-body">
+              <section class="summary-grid" aria-label="Story metrics">
+                <div class="summary-cell">
+                  <span class="label">Signal</span>
+                  <strong>94</strong>
+                  <span class="meta">top 6% today</span>
+                </div>
+                <div class="summary-cell">
+                  <span class="label">Evidence</span>
+                  <strong>8</strong>
+                  <span class="meta">3 primary</span>
+                </div>
+                <div class="summary-cell">
+                  <span class="label">Next run</span>
+                  <strong>00:30</strong>
+                  <span class="meta">front page</span>
+                </div>
+              </section>
+
+              <section class="section">
+                <h2>Brief</h2>
+                <div class="bullets">
+                  <div class="bullet">
+                    <span class="bullet-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6 9 17l-5-5"></path>
+                      </svg>
+                    </span>
+                    <p>Two model vendors are positioning agent execution as a persistent layer inside existing chat, IDE, and workspace products.</p>
+                  </div>
+                  <div class="bullet">
+                    <span class="bullet-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14"></path>
+                        <path d="M5 12h14"></path>
+                      </svg>
+                    </span>
+                    <p>The relevant change is not a new benchmark win; it is the shift from isolated agent demos to managed surfaces with permissions, files, and review checkpoints.</p>
+                  </div>
+                  <div class="bullet">
+                    <span class="bullet-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="8"></circle>
+                        <path d="M12 8v4l3 2"></path>
+                      </svg>
+                    </span>
+                    <p>ARA should frame this as an adoption and control story, with infra demand as the secondary thread.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="next-card" aria-labelledby="next-action-title">
+                <h2 id="next-action-title">Next action</h2>
+                <p>Approve for the next digest after trimming the headline to a product-shift angle and keeping the infra paragraph as supporting context.</p>
+                <div class="kbd-row">
+                  <div class="mini-stat">
+                    <strong>0</strong>
+                    <span class="meta">conflicts</span>
+                  </div>
+                  <div class="mini-stat">
+                    <strong>2</strong>
+                    <span class="meta">quotes kept</span>
+                  </div>
+                  <div class="mini-stat">
+                    <strong>1</strong>
+                    <span class="meta">angle edit</span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="section">
+                <h2>Draft angle</h2>
+                <p class="quote">The story is becoming less about whether agents can complete tasks and more about where companies will allow them to operate by default.</p>
+              </section>
+
+              <section class="section">
+                <h2>Timeline</h2>
+                <div class="timeline">
+                  <div class="timeline-item">
+                    <span class="dot" aria-hidden="true"></span>
+                    <p><strong>08:12</strong> Product announcement enters RSS and vendor blog lanes.</p>
+                  </div>
+                  <div class="timeline-item">
+                    <span class="dot" aria-hidden="true"></span>
+                    <p><strong>08:39</strong> Developer reaction confirms early IDE and workflow impact.</p>
+                  </div>
+                  <div class="timeline-item">
+                    <span class="dot" aria-hidden="true"></span>
+                    <p><strong>09:04</strong> Community sources connect the release to cluster capacity and cost pressure.</p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </article>
+        </section>
+
+        <aside class="panel evidence-panel" aria-labelledby="evidence-title">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="eyebrow">Evidence</div>
+              <h2 id="evidence-title">Source lane</h2>
+            </div>
+            <button class="icon-button" aria-label="Open source list">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 6h16"></path>
+                <path d="M4 12h16"></path>
+                <path d="M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="evidence-list">
+            <section class="evidence-card primary">
+              <div class="evidence-meta">
+                <span class="status ready">primary</span>
+                <span class="time">08:12</span>
+              </div>
+              <div class="source-row">
+                <span class="source-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <path d="M14 2v6h6"></path>
+                  </svg>
+                </span>
+                <div>
+                  <h3>Vendor product post</h3>
+                  <p class="source">Confirms runtime availability, file access, and review controls.</p>
+                </div>
+              </div>
+              <div class="confidence" aria-label="Confidence 96 percent"><span style="--value: 96%"></span></div>
+            </section>
+
+            <section class="evidence-card primary">
+              <div class="evidence-meta">
+                <span class="status ready">primary</span>
+                <span class="time">08:18</span>
+              </div>
+              <div class="source-row">
+                <span class="source-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  </svg>
+                </span>
+                <div>
+                  <h3>Docs changelog</h3>
+                  <p class="source">Adds permission language and execution limits missing from the launch summary.</p>
+                </div>
+              </div>
+              <div class="confidence" aria-label="Confidence 91 percent"><span style="--value: 91%"></span></div>
+            </section>
+
+            <section class="evidence-card">
+              <div class="evidence-meta">
+                <span class="status">context</span>
+                <span class="time">08:39</span>
+              </div>
+              <div class="source-row">
+                <span class="source-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+                  </svg>
+                </span>
+                <div>
+                  <h3>Developer thread</h3>
+                  <p class="source">Useful for reaction only; do not treat adoption claims as confirmed.</p>
+                </div>
+              </div>
+              <div class="fact-row">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 9v4"></path>
+                  <path d="M12 17h.01"></path>
+                  <circle cx="12" cy="12" r="9"></circle>
+                </svg>
+                <p class="meta">Keep one short reaction line; exclude the market-size estimate.</p>
+              </div>
+            </section>
+
+            <section class="evidence-card">
+              <div class="evidence-meta">
+                <span class="status">context</span>
+                <span class="time">09:04</span>
+              </div>
+              <div class="source-row">
+                <span class="source-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 3v18h18"></path>
+                    <path d="m19 9-5 5-4-4-5 5"></path>
+                  </svg>
+                </span>
+                <div>
+                  <h3>Infra market note</h3>
+                  <p class="source">Supports the capacity angle but does not prove user demand.</p>
+                </div>
+              </div>
+              <div class="confidence" aria-label="Confidence 74 percent"><span style="--value: 74%"></span></div>
+            </section>
+          </div>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARA UI Prototype 4 - Focus Reader</title>
+    <style>
+      :root {
+        --paper: #ffffff;
+        --wash: #f6f7f9;
+        --ink: #101216;
+        --muted: #6f7682;
+        --accent: #1f6feb;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background: var(--wash);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      button {
+        color: inherit;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .masthead {
+        position: sticky;
+        top: 0;
+        z-index: 4;
+        min-height: 64px;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 18px;
+        padding: 0 22px;
+        background: var(--paper);
+        border-bottom: 1px solid var(--muted);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: 780;
+        line-height: 1;
+        letter-spacing: 0;
+        white-space: nowrap;
+      }
+
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+        display: inline-grid;
+        place-items: center;
+        color: var(--accent);
+        border: 1px solid var(--muted);
+        background: var(--paper);
+      }
+
+      .brand-mark svg,
+      .icon-button svg,
+      .search svg,
+      .source-link svg,
+      .mobile-toggle svg {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
+
+      .search {
+        min-width: 0;
+        width: min(100%, 560px);
+        justify-self: center;
+        min-height: 42px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 12px;
+        background: var(--wash);
+        border: 1px solid var(--muted);
+        color: var(--muted);
+      }
+
+      .search input {
+        width: 100%;
+        min-width: 0;
+        border: 0;
+        outline: 0;
+        color: var(--ink);
+        background: var(--wash);
+      }
+
+      .search input::placeholder {
+        color: var(--muted);
+      }
+
+      .header-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .icon-button,
+      .mobile-toggle {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--muted);
+        background: var(--paper);
+        color: var(--ink);
+        display: inline-grid;
+        place-items: center;
+        cursor: pointer;
+      }
+
+      .icon-button.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--paper);
+      }
+
+      .mobile-toggle {
+        display: none;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: 288px minmax(0, 1fr) 280px;
+        min-height: 0;
+      }
+
+      .queue,
+      .evidence {
+        background: var(--paper);
+      }
+
+      .queue {
+        border-right: 1px solid var(--muted);
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-width: 0;
+      }
+
+      .queue-header,
+      .evidence-header {
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 0 18px;
+        border-bottom: 1px solid var(--muted);
+      }
+
+      .queue-header h2,
+      .evidence-header h2,
+      .section-title {
+        font-size: 13px;
+        font-weight: 760;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .count {
+        min-width: 34px;
+        height: 26px;
+        display: inline-grid;
+        place-items: center;
+        border: 1px solid var(--muted);
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .story-list {
+        display: grid;
+        align-content: start;
+      }
+
+      .story-card {
+        border: 0;
+        border-bottom: 1px solid var(--muted);
+        background: var(--paper);
+        color: var(--ink);
+        text-align: left;
+        padding: 16px 18px;
+        display: grid;
+        gap: 8px;
+        cursor: pointer;
+      }
+
+      .story-card[aria-current="true"] {
+        box-shadow: inset 4px 0 0 var(--accent);
+        background: var(--wash);
+      }
+
+      .story-meta,
+      .article-meta,
+      .source-meta,
+      .note,
+      .meter-label,
+      .reading-state {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .story-card h3 {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+
+      .story-card p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .story-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .signal {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 760;
+      }
+
+      .signal::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        background: var(--accent);
+      }
+
+      .reader {
+        min-width: 0;
+        background: var(--paper);
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .reader-toolbar {
+        min-height: 64px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: center;
+        padding: 0 24px;
+        border-bottom: 1px solid var(--muted);
+        background: var(--paper);
+      }
+
+      .reading-state {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .dot {
+        width: 4px;
+        height: 4px;
+        background: var(--muted);
+      }
+
+      .reader-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      article {
+        overflow: auto;
+        padding: clamp(26px, 5vw, 72px);
+      }
+
+      .article-inner {
+        width: min(100%, 820px);
+        margin: 0 auto;
+      }
+
+      .kicker {
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 780;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        max-width: 780px;
+        font-size: clamp(36px, 6vw, 72px);
+        line-height: 0.98;
+        letter-spacing: 0;
+        margin-bottom: 22px;
+      }
+
+      .dek {
+        max-width: 760px;
+        color: var(--muted);
+        font-size: clamp(18px, 2vw, 23px);
+        line-height: 1.35;
+        margin-bottom: 24px;
+      }
+
+      .article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid var(--muted);
+      }
+
+      .article-body {
+        display: grid;
+        gap: 22px;
+        padding-top: 34px;
+        font-size: 18px;
+      }
+
+      .article-body p {
+        max-width: 740px;
+      }
+
+      .pull-quote {
+        max-width: 740px;
+        border-left: 4px solid var(--accent);
+        background: var(--wash);
+        padding: 18px 20px;
+        font-size: 20px;
+        line-height: 1.35;
+      }
+
+      .decision-row {
+        max-width: 740px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        padding-top: 8px;
+      }
+
+      .decision {
+        min-height: 78px;
+        display: grid;
+        align-content: center;
+        gap: 4px;
+        padding: 12px;
+        background: var(--wash);
+        border: 1px solid var(--muted);
+      }
+
+      .decision strong {
+        font-size: 15px;
+        letter-spacing: 0;
+      }
+
+      .decision span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .evidence {
+        border-left: 1px solid var(--muted);
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-width: 0;
+      }
+
+      .evidence-body {
+        padding: 18px;
+        display: grid;
+        align-content: start;
+        gap: 22px;
+      }
+
+      .meter {
+        display: grid;
+        gap: 8px;
+      }
+
+      .meter-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: baseline;
+      }
+
+      .meter-top strong {
+        font-size: 30px;
+        line-height: 1;
+        color: var(--accent);
+        letter-spacing: 0;
+      }
+
+      .bar {
+        height: 8px;
+        border: 1px solid var(--muted);
+        background: var(--paper);
+      }
+
+      .bar span {
+        display: block;
+        height: 100%;
+        width: 72%;
+        background: var(--accent);
+      }
+
+      .source-list,
+      .notes {
+        display: grid;
+        gap: 10px;
+      }
+
+      .source-link {
+        border: 1px solid var(--muted);
+        background: var(--paper);
+        color: var(--ink);
+        padding: 12px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .source-link strong {
+        display: block;
+        font-size: 14px;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+
+      .source-meta {
+        display: block;
+        margin-top: 4px;
+      }
+
+      .note {
+        padding: 12px;
+        border-left: 3px solid var(--accent);
+        background: var(--wash);
+        line-height: 1.4;
+      }
+
+      @media (max-width: 1080px) {
+        .workspace {
+          grid-template-columns: 240px minmax(0, 1fr);
+        }
+
+        .evidence {
+          display: none;
+        }
+      }
+
+      @media (max-width: 760px) {
+        body {
+          max-width: 100vw;
+        }
+
+        .masthead {
+          grid-template-columns: auto minmax(0, 1fr) auto;
+          gap: 10px;
+          padding: 10px 12px;
+        }
+
+        .brand {
+          display: inline-flex;
+        }
+
+        .brand > span:not(.brand-mark) {
+          display: none;
+        }
+
+        .search {
+          justify-self: stretch;
+          width: 100%;
+          min-width: 0;
+          min-height: 40px;
+          overflow: hidden;
+        }
+
+        .header-actions {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: inline-grid;
+          flex: 0 0 auto;
+        }
+
+        .workspace {
+          grid-template-columns: 1fr;
+          overflow: hidden;
+          max-width: 100vw;
+        }
+
+        .queue {
+          border-right: 0;
+          border-bottom: 1px solid var(--muted);
+          overflow: hidden;
+        }
+
+        .queue-header {
+          min-height: 52px;
+        }
+
+        .story-list {
+          display: flex;
+          overflow-x: auto;
+          max-width: 100vw;
+        }
+
+        .story-card {
+          flex: 0 0 calc(100vw - 36px);
+          min-width: 0;
+          max-width: calc(100vw - 36px);
+          border-right: 1px solid var(--muted);
+          border-bottom: 0;
+        }
+
+        .story-card[aria-current="true"] {
+          box-shadow: inset 0 4px 0 var(--accent);
+        }
+
+        .reader-toolbar {
+          min-height: 56px;
+          grid-template-columns: 1fr;
+          padding: 10px 14px;
+        }
+
+        .reader-actions {
+          display: none;
+        }
+
+        article {
+          padding: 28px 18px 44px;
+          overflow: visible;
+        }
+
+        .article-inner,
+        .reader {
+          min-width: 0;
+          max-width: 100%;
+        }
+
+        .story-footer {
+          flex-wrap: wrap;
+        }
+
+        h1 {
+          font-size: clamp(34px, 12vw, 48px);
+        }
+
+        .article-body {
+          font-size: 17px;
+        }
+
+        .decision-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="masthead">
+        <div class="brand" aria-label="ARA">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 19 12 4l7 15"></path>
+              <path d="M8 14h8"></path>
+            </svg>
+          </span>
+          <span>ARA</span>
+        </div>
+
+        <label class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m16 16 4 4"></path>
+          </svg>
+          <input type="search" value="" placeholder="Search briefings, sources, claims" aria-label="Search briefings, sources, claims">
+        </label>
+
+        <div class="header-actions" aria-label="Reader actions">
+          <button class="icon-button" aria-label="Archive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 7h16"></path>
+              <path d="M6 7v12h12V7"></path>
+              <path d="M9 11h6"></path>
+            </svg>
+          </button>
+          <button class="icon-button primary" aria-label="Save">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M19 21H5V3h11l3 3v15Z"></path>
+              <path d="M8 3v6h8"></path>
+              <path d="M8 17h8"></path>
+            </svg>
+          </button>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Open queue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 6h16"></path>
+            <path d="M4 12h16"></path>
+            <path d="M4 18h16"></path>
+          </svg>
+        </button>
+      </header>
+
+      <main class="workspace">
+        <aside class="queue" aria-label="Reading queue">
+          <div class="queue-header">
+            <h2>Today</h2>
+            <span class="count">04</span>
+          </div>
+
+          <div class="story-list">
+            <button class="story-card" aria-current="true">
+              <span class="story-meta">Model routing · 8 min</span>
+              <h3>Frontier labs split capacity between coding agents and long-form synthesis</h3>
+              <p>Three product moves point to a sharper separation between autonomous execution and editorial review.</p>
+              <span class="story-footer">
+                <span class="signal">High signal</span>
+                <span class="story-meta">12 sources</span>
+              </span>
+            </button>
+
+            <button class="story-card">
+              <span class="story-meta">Infrastructure · 6 min</span>
+              <h3>GPU availability improves, but priority queues stay expensive</h3>
+              <p>Spot capacity is less volatile while reserved inference lanes remain the main budget pressure.</p>
+              <span class="story-footer">
+                <span class="signal">Watch</span>
+                <span class="story-meta">9 sources</span>
+              </span>
+            </button>
+
+            <button class="story-card">
+              <span class="story-meta">Policy · 5 min</span>
+              <h3>Procurement rules begin naming evaluation artifacts</h3>
+              <p>New drafts make model cards, incident trails, and test sets part of the buying process.</p>
+              <span class="story-footer">
+                <span class="signal">New</span>
+                <span class="story-meta">7 sources</span>
+              </span>
+            </button>
+
+            <button class="story-card">
+              <span class="story-meta">Markets · 4 min</span>
+              <h3>Enterprise buyers ask for lower variance over higher benchmark peaks</h3>
+              <p>Reliability language is replacing raw capability claims in recent platform announcements.</p>
+              <span class="story-footer">
+                <span class="signal">Brief</span>
+                <span class="story-meta">5 sources</span>
+              </span>
+            </button>
+          </div>
+        </aside>
+
+        <section class="reader" aria-label="Current briefing">
+          <div class="reader-toolbar">
+            <div class="reading-state">
+              <span>Focus reader</span>
+              <span class="dot" aria-hidden="true"></span>
+              <span>June 16</span>
+              <span class="dot" aria-hidden="true"></span>
+              <span>Updated 12:40 KST</span>
+            </div>
+
+            <div class="reader-actions">
+              <button class="icon-button" aria-label="Decrease density">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14"></path>
+                </svg>
+              </button>
+              <button class="icon-button" aria-label="Increase density">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M12 5v14"></path>
+                  <path d="M5 12h14"></path>
+                </svg>
+              </button>
+              <button class="icon-button" aria-label="Open sources">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M7 7h10v10H7z"></path>
+                  <path d="M4 4h10"></path>
+                  <path d="M10 20h10V10"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <article>
+            <div class="article-inner">
+              <div class="kicker">Model routing</div>
+              <h1>AI research workflows are moving from dashboards to focused reading loops</h1>
+              <p class="dek">The strongest ARA direction is not another console. It is a narrowed reader that lets analysts move from a ranked queue to one briefing, with evidence close enough to verify without becoming a second workspace.</p>
+
+              <div class="article-meta">
+                <span>Signal score 72</span>
+                <span>12 sources</span>
+                <span>3 open claims</span>
+                <span>Owner: research desk</span>
+              </div>
+
+              <div class="article-body">
+                <p>The core interface question is mechanical: what does a researcher need in the minute after a briefing appears? They need to decide whether the item deserves attention, read the synthesized claim, and inspect the strongest supporting or conflicting evidence. Every extra navigation lane competes with that loop.</p>
+
+                <p>This layout keeps one primary axis. The left queue answers what to read next, the center carries the current briefing, and the right rail explains why the item is trusted. The header stays limited to search and two durable actions, avoiding a second set of tabs, filters, or modes.</p>
+
+                <div class="pull-quote">Simplification here means fewer competing decisions: one queue, one article, one evidence rail, and no decorative surface that asks for attention.</div>
+
+                <p>The evidence panel is intentionally narrow. It exposes confidence, source shape, and analyst notes without becoming a full research table. If a reader needs deeper work, the source buttons can carry that transition while the default state remains quiet.</p>
+
+                <div class="decision-row" aria-label="Reader summary">
+                  <div class="decision">
+                    <strong>Primary action</strong>
+                    <span>Read and save</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Secondary action</strong>
+                    <span>Check sources</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Deferred action</strong>
+                    <span>Route to workflow</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <aside class="evidence" aria-label="Evidence">
+          <div class="evidence-header">
+            <h2>Evidence</h2>
+            <span class="count">72</span>
+          </div>
+
+          <div class="evidence-body">
+            <section class="meter" aria-label="Confidence">
+              <div class="meter-top">
+                <span class="meter-label">Confidence</span>
+                <strong>72</strong>
+              </div>
+              <div class="bar" aria-hidden="true"><span></span></div>
+              <p class="note">Confidence is strongest where product announcements, hiring signals, and customer-facing docs agree.</p>
+            </section>
+
+            <section class="source-list" aria-label="Source stack">
+              <h3 class="section-title">Source Stack</h3>
+              <button class="source-link">
+                <span>
+                  <strong>Product release notes</strong>
+                  <span class="source-meta">4 updates · direct source</span>
+                </span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M7 17 17 7"></path>
+                  <path d="M8 7h9v9"></path>
+                </svg>
+              </button>
+              <button class="source-link">
+                <span>
+                  <strong>Customer workflow posts</strong>
+                  <span class="source-meta">5 posts · public signal</span>
+                </span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M7 17 17 7"></path>
+                  <path d="M8 7h9v9"></path>
+                </svg>
+              </button>
+              <button class="source-link">
+                <span>
+                  <strong>Pricing and capacity docs</strong>
+                  <span class="source-meta">3 docs · budget signal</span>
+                </span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M7 17 17 7"></path>
+                  <path d="M8 7h9v9"></path>
+                </svg>
+              </button>
+            </section>
+
+            <section class="notes" aria-label="Analyst notes">
+              <h3 class="section-title">Notes</h3>
+              <p class="note">Open question: whether routing is becoming a user-facing feature or staying hidden inside orchestration layers.</p>
+              <p class="note">Watch for procurement language that treats reading artifacts as auditable work product.</p>
+            </section>
+          </div>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>
