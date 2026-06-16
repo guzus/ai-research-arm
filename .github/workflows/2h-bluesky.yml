@@ -30,8 +30,8 @@ jobs:
       - name: Get current datetime
         id: datetime
         run: |
-          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-          echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+          echo "date=$(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+          echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> "$GITHUB_OUTPUT"
 
       - name: Fetch Bluesky AI Posts
         id: bluesky
@@ -107,7 +107,7 @@ jobs:
           DATE: ${{ steps.datetime.outputs.date }}
         run: |
           set -euo pipefail
-          mkdir -p research/bluesky
+          mkdir -p research/bluesky .tmp
           FILE="research/bluesky/${DATE}.md"
           if [ ! -f "$FILE" ]; then
             printf '# Bluesky AI Feed - %s\n' "$DATE" > "$FILE"
@@ -149,17 +149,18 @@ jobs:
             ## OUTPUT
 
             Write ONLY your new section for THIS run to the temp file
-            `/tmp/bluesky-section.md` using the Write tool. Do NOT read,
+            `.tmp/bluesky-section.md` using the Write tool. Do NOT read,
             write, or edit anything under `research/bluesky/` — a
-            deterministic workflow step appends your section onto the daily
-            file, and a second daily run must never clobber the first.
+            deterministic workflow step deduplicates your section by post
+            link, appends it onto the daily file, and prevents a second daily
+            run from clobbering or re-listing the first.
 
             Do NOT include the top-level `# Bluesky AI Feed` title — it
             already exists in the daily file. Write ONLY the timestamped
             section, starting with the `## <timestamp>` heading. Omit any
             category subheading that has no qualifying posts.
 
-            FORMAT of /tmp/bluesky-section.md:
+            FORMAT of .tmp/bluesky-section.md:
             ```
             ## ${{ steps.datetime.outputs.timestamp }}
 
@@ -198,14 +199,15 @@ jobs:
 
             ## DO NOT COMMIT
 
-            Do NOT run git. Writing `/tmp/bluesky-section.md` is your only
+            Do NOT run git. Writing `.tmp/bluesky-section.md` is your only
             output; the workflow appends and commits it deterministically.
 
-      # Append the agent's section onto the daily file and commit. Using a
-      # deterministic `cat >>` (mirroring hourly-twitter's section append)
-      # guarantees the second daily run accumulates onto the first instead
-      # of overwriting it — the twice-daily schedule exists precisely to
-      # roughly double candidate posts per day, which an overwrite defeats.
+      # Append the agent's section onto the daily file and commit. The post
+      # step validates that the agent produced a section, removes any post
+      # link already present in today's file, and only then mutates
+      # research/bluesky/. The twice-daily schedule exists to collect net-new
+      # posts; without link dedup, the 48-hour source window would re-list the
+      # morning posts in the evening section.
       - name: Append section to daily file and commit
         env:
           DATE: ${{ steps.datetime.outputs.date }}
@@ -213,18 +215,93 @@ jobs:
         run: |
           set -euo pipefail
           FILE="research/bluesky/${DATE}.md"
-          SECTION="/tmp/bluesky-section.md"
+          SECTION=".tmp/bluesky-section.md"
+          FILTERED=".tmp/bluesky-section-deduped.md"
+          export FILE SECTION FILTERED
           if [ ! -s "$SECTION" ]; then
-            echo "No section produced by the agent; nothing to append."
-            exit 0
+            echo "::error::Claude did not produce $SECTION; refusing to silently drop this cycle."
+            exit 1
           fi
           # Ensure the title header exists (the pre-step creates it, but be
           # defensive in case the agent never ran).
           if [ ! -f "$FILE" ]; then
             printf '# Bluesky AI Feed - %s\n' "$DATE" > "$FILE"
           fi
+
+          python3 - <<'PY'
+          import os
+          import re
+          import sys
+
+          daily_file = os.environ["FILE"]
+          section_file = os.environ["SECTION"]
+          filtered_file = os.environ["FILTERED"]
+          timestamp = os.environ["TIMESTAMP"]
+          link_re = re.compile(r"https://bsky\.app/profile/[^)\s]+")
+
+          seen_links = set()
+          if os.path.exists(daily_file):
+              with open(daily_file, encoding="utf-8") as handle:
+                  for line in handle:
+                      seen_links.update(link_re.findall(line))
+          had_existing_posts = bool(seen_links)
+
+          with open(section_file, encoding="utf-8") as handle:
+              lines = handle.read().splitlines()
+
+          if not any(line.startswith("## ") for line in lines):
+              print(f"::error::{section_file} must start with a timestamp section heading.", file=sys.stderr)
+              sys.exit(1)
+
+          output = [f"## {timestamp}"]
+          current_heading = None
+          current_items = []
+          unique_posts = 0
+
+          def flush_category():
+              if current_heading and current_items:
+                  output.append("")
+                  output.append(current_heading)
+                  output.extend(current_items)
+
+          for line in lines:
+              if line.startswith("# "):
+                  continue
+              if line.startswith("## "):
+                  continue
+              if line.startswith("### "):
+                  flush_category()
+                  current_heading = line
+                  current_items = []
+                  continue
+              if not line.startswith("- "):
+                  continue
+
+              links = link_re.findall(line)
+              if links and any(link in seen_links for link in links):
+                  continue
+              current_items.append(line)
+              unique_posts += 1
+              seen_links.update(links)
+
+          flush_category()
+
+          if unique_posts == 0:
+              message = "_No new qualifying posts since the previous snapshot._"
+              if not had_existing_posts:
+                  message = "_No qualifying posts this cycle._"
+              output = [
+                  f"## {timestamp}",
+                  "",
+                  message,
+              ]
+
+          with open(filtered_file, "w", encoding="utf-8") as handle:
+              handle.write("\n".join(output).rstrip() + "\n")
+          PY
+
           printf '\n' >> "$FILE"
-          cat "$SECTION" >> "$FILE"
+          cat "$FILTERED" >> "$FILE"
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

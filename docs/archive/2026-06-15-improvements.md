@@ -49,22 +49,23 @@ mirroring the proven `daily-front-page.yml` bash-commit pattern:
    creates `research/bluesky/<date>.md` with its `# Bluesky AI Feed` title
    header if missing.
 2. **Agent contract narrowed** — it now writes ONLY its per-run section
-   (starting at `## <timestamp>`) to `/tmp/bluesky-section.md`. The
+   (starting at `## <timestamp>`) to `.tmp/bluesky-section.md`. The
    `git` tool was removed from `allowedTools` (now `Read,Write,Bash(ls:*)`)
    and the prompt forbids touching `research/bluesky/`, so the model can no
    longer clobber or commit the daily file. A quiet cycle still emits a
    `## <timestamp>` heading with `_No qualifying posts this cycle._`.
-3. **New post-step `Append section to daily file and commit`** —
-   `cat /tmp/bluesky-section.md >> research/bluesky/<date>.md`, then commits
-   under the standard `github-actions[bot]` identity. `safe-push` pushes it
-   as before.
+3. **New post-step `Append section to daily file and commit`** — validates
+   that the agent produced the section, drops any bullet whose Bluesky post
+   link already exists in today's file, appends the filtered section to
+   `research/bluesky/<date>.md`, then commits under the standard
+   `github-actions[bot]` identity. `safe-push` pushes it as before.
 
 ## Expected impact
 
-- The evening run can no longer erase the morning run; both snapshots
-  accumulate, restoring the twice-daily cadence's intended doubling of
-  Bluesky candidate posts.
+- The evening run can no longer erase the morning run; snapshots accumulate
+  as net-new posts instead of re-listing the same 48-hour window.
 - High-engagement posts captured early in the day reach the daily digest
   instead of being silently deleted before it runs.
-- Append behavior no longer depends on model discretion — it is enforced
-  by the workflow, matching the determinism of the other aggregation lanes.
+- Append and dedup behavior no longer depend on model discretion — they are
+  enforced by the workflow, matching the determinism of the other aggregation
+  lanes.
