@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-16
+
+TOP 5 PAPERS:
+• ARM (2606.11188): one 7B autoregressive model unifies image understanding, generation & editing via shared discrete tokens.
+• WorldReasoner (2606.11816): leakage-controlled benchmark testing if LM agents forecast with VALID reasoning, not luck.
+• Back on Track (2606.08501): RL reward/state alignment unlocks reasoning in non-autoregressive diffusion LLMs.
+• Grammar-Constrained Decoding jailbreak (2606.11817): GCD exploited for ~82% malicious-code attacks; CodeShield defends.
+• Scaling Laws for Behavioral Foundation Models (2606.05257): compute-optimal = only ~2% of params in the embedder.
+
+CATEGORIES: NLP/LM 3 · CV/Multimodal 5 · Agents/Reasoning 3 · Safety 4 · Other 2
+
+Full report on GitHub.
