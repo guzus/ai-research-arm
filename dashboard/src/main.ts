@@ -2294,6 +2294,9 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
     const title = section.title || displayDate(currentDate);
     const dateStr = fmtDate(currentDate);
     const timeInfo = parseUtcTime(section.title, dateStr);
+    // Stable per-cycle anchor for search-driven deep links — must match the
+    // anchor prebuild writes into search-index.json (cycle-HHMMutc).
+    const cycleAnchor = 'cycle-' + section.title.replace(/[:\s]/g, '').toLowerCase();
     const cycleSummary = extractCycleSummary(section.body);
     const stories = parseTwitterStories(section.body);
     const displayTime = timeInfo
@@ -2350,7 +2353,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
 
     cards.push(
       [
-        '<section class="content-card twitter-cycle-card">',
+        '<section id="' + cycleAnchor + '" class="content-card twitter-cycle-card">',
         '  <div class="twitter-cycle-header">',
         '    <div class="twitter-cycle-kicker">' + (timeInfo ? clockIcon(timeInfo.localHours, timeInfo.localMinutes) : '') + displayTime + '</div>',
         '  </div>',
@@ -4985,6 +4988,12 @@ async function load(): Promise<void> {
           showEmpty(dateStr);
         }
       }
+      // Search-driven deep link into a specific digest section.
+      if (pendingDigestSection) {
+        const want = pendingDigestSection;
+        pendingDigestSection = null;
+        requestAnimationFrame(() => scrollToDigestSection(want));
+      }
     } else {
       const result = await withTimeout(fetchTwitter(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
       if (requestId !== loadRequestId) return;
@@ -5005,6 +5014,14 @@ async function load(): Promise<void> {
         } else {
           showEmpty(dateStr);
         }
+      }
+      // Search-driven deep link into a specific twitter cycle (by id anchor).
+      if (pendingTwitterAnchor) {
+        const id = pendingTwitterAnchor;
+        pendingTwitterAnchor = null;
+        requestAnimationFrame(() =>
+          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+        );
       }
     }
 
@@ -5065,6 +5082,21 @@ function scrollToSection(index: number): void {
   updateNavCounter();
 }
 
+// Deferred scroll targets for search-driven navigation into the today/twitter
+// views — set by activateSearchHit, consumed post-render in load().
+let pendingDigestSection: string | null = null;
+let pendingTwitterAnchor: string | null = null;
+
+// Digest section cards carry no id, so match by the rendered .content-card-title
+// (textContent decodes &amp; back to &, so a literal-& title compares equal).
+function scrollToDigestSection(title: string): void {
+  const want = title.trim();
+  const idx = getCards().findIndex(
+    (c) => (c.querySelector('.content-card-title')?.textContent || '').trim() === want,
+  );
+  if (idx >= 0) scrollToSection(idx);
+}
+
 document.getElementById('navUp')!.addEventListener('click', () => scrollToSection(currentSection - 1));
 document.getElementById('navDown')!.addEventListener('click', () => scrollToSection(currentSection + 1));
 window.addEventListener('beforeunload', () => stopResearchAudio());
@@ -5077,6 +5109,19 @@ document.getElementById('shortcutToggle')!.addEventListener('click', () => {
 
 // ── Events ────────────────────────────────────────────
 
+// Clicking the wordmark returns to the home (today) view.
+function goHome(): void {
+  activeTab = 'today';
+  selectedSlug = null;
+  syncTabUi();
+  load();
+}
+const brandHome = document.getElementById('brandHome');
+brandHome?.addEventListener('click', goHome);
+brandHome?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); }
+});
+
 const searchToggle = document.getElementById('searchToggle');
 const searchOverlay = document.getElementById('searchOverlay');
 const searchClear = document.getElementById('searchClear');
@@ -5086,15 +5131,44 @@ const searchResultsEl = document.getElementById('searchResults');
 // Search across ALL content — research articles, wiki pages, model tickets —
 // from any tab; a result jumps straight to the item. The corpus is built lazily
 // from the already-loaded indexes and cached.
-type SearchHit = { type: 'research' | 'wiki' | 'model'; title: string; subtitle: string; slug: string; hay: string };
+type SearchHit = { type: 'research' | 'wiki' | 'model' | 'digest' | 'twitter'; title: string; subtitle: string; slug: string; hay: string; date?: string; anchor?: string; sectionTitle?: string };
 let searchCorpus: SearchHit[] | null = null;
 let searchHits: SearchHit[] = [];
 let searchSel = -1;
-const SEARCH_TYPE_LABEL: Record<SearchHit['type'], string> = { research: 'Research', wiki: 'Wiki', model: 'Model' };
+const SEARCH_TYPE_LABEL: Record<SearchHit['type'], string> = { research: 'Research', wiki: 'Wiki', model: 'Model', digest: 'Digest', twitter: 'Twitter' };
+
+// Build-time content index (digest sections + twitter cycles) — see
+// scripts/prebuild.mjs:buildSearchIndex. Loaded once, cached, best-effort.
+type SearchIndexFile = {
+  digestSections?: { date: string; sectionTitle: string; snippet?: string }[];
+  twitter?: { date: string; cycleTime: string; anchor: string; summary?: string; storyTitles?: string[] }[];
+};
+let searchIndexCache: SearchIndexFile | null = null;
+let searchIndexPromise: Promise<SearchIndexFile | null> | null = null;
+function loadSearchIndex(): Promise<SearchIndexFile | null> {
+  if (searchIndexCache) return Promise.resolve(searchIndexCache);
+  if (searchIndexPromise) return searchIndexPromise;
+  searchIndexPromise = (async () => {
+    try {
+      const r = await fetch(`${DATA_BASE}/search-index.json`);
+      if (!r.ok) return null;
+      const j = (await r.json()) as SearchIndexFile;
+      searchIndexCache = j;
+      return j;
+    } catch {
+      return null; // missing file / SPA-shell HTML / parse error → no content hits
+    }
+  })();
+  return searchIndexPromise;
+}
+function ymdToDate(s: string): Date {
+  const [y, m, d] = s.split('-').map(Number);
+  return new Date(y, (m || 1) - 1, d || 1);
+}
 
 async function buildSearchCorpus(): Promise<SearchHit[]> {
   if (searchCorpus) return searchCorpus;
-  const [m, wiki, tickets] = await Promise.all([loadManifest(), loadWikiIndexCached(), loadTickets()]);
+  const [m, wiki, tickets, idx] = await Promise.all([loadManifest(), loadWikiIndexCached(), loadTickets(), loadSearchIndex()]);
   const hits: SearchHit[] = [];
   if (wiki) for (const p of wiki.pages) {
     hits.push({ type: 'wiki', title: p.title, subtitle: (p.aliases || []).slice(0, 3).join(', ') || String(p.type),
@@ -5107,6 +5181,19 @@ async function buildSearchCorpus(): Promise<SearchHit[]> {
   if (tickets) for (const t of tickets) {
     hits.push({ type: 'model', title: t.title, subtitle: t.company + (t.model ? ' · ' + t.model : ''),
       slug: t.slug, hay: (t.title + ' ' + t.company + ' ' + (t.model || '') + ' ' + (t.labels || []).join(' ')).toLowerCase() });
+  }
+  const ds = idx?.digestSections;
+  if (ds) for (const s of ds) {
+    hits.push({ type: 'digest', title: s.sectionTitle, subtitle: displayDate(ymdToDate(s.date)) + ' digest',
+      slug: '', date: s.date, sectionTitle: s.sectionTitle,
+      hay: (s.date + ' ' + s.sectionTitle + ' ' + (s.snippet || '')).toLowerCase() });
+  }
+  const tw = idx?.twitter;
+  if (tw) for (const c of tw) {
+    const titleText = c.summary || c.storyTitles?.[0] || (c.cycleTime + ' cycle');
+    hits.push({ type: 'twitter', title: titleText, subtitle: displayDate(ymdToDate(c.date)) + ' · ' + c.cycleTime,
+      slug: '', date: c.date, anchor: c.anchor,
+      hay: (c.date + ' ' + c.cycleTime + ' ' + (c.summary || '') + ' ' + (c.storyTitles || []).join(' ')).toLowerCase() });
   }
   searchCorpus = hits;
   return hits;
@@ -5173,6 +5260,30 @@ function activateSearchHit(h: SearchHit): void {
     if (t) window.setTimeout(() => openTicketModal(t), 60);
     return;
   }
+  if (h.type === 'digest') {
+    if (h.date) {
+      activeTab = 'today';
+      selectedSlug = null;
+      currentDate = ymdToDate(h.date);
+      calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+      pendingDigestSection = h.sectionTitle || null;
+      syncTabUi();
+      load();
+    }
+    return;
+  }
+  if (h.type === 'twitter') {
+    if (h.date) {
+      activeTab = 'twitter';
+      selectedSlug = null;
+      currentDate = ymdToDate(h.date);
+      calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+      pendingTwitterAnchor = h.anchor || null;
+      syncTabUi();
+      load();
+    }
+    return;
+  }
   activeTab = h.type; // 'research' | 'wiki'
   selectedSlug = h.slug;
   syncTabUi();
@@ -5215,9 +5326,10 @@ searchInput.addEventListener('keydown', (e) => {
   else if (e.key === 'ArrowUp') { e.preventDefault(); moveSearchSel(-1); }
   else if (e.key === 'Enter') { e.preventDefault(); if (searchHits[searchSel]) activateSearchHit(searchHits[searchSel]); }
 });
-// ⌘K / Ctrl+K opens search from anywhere; click outside the panel closes it.
+// ⌘F / Ctrl+F opens search from anywhere (overrides native find); click outside
+// the panel closes it.
 document.addEventListener('keydown', (e) => {
-  if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+  if ((e.metaKey || e.ctrlKey) && (e.key === 'f' || e.key === 'F')) {
     e.preventDefault();
     openSearch();
   }
