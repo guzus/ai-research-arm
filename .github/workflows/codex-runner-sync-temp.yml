@@ -1,0 +1,22 @@
+name: Codex Runner Sync Temporary
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: [self-hosted, gunux]
+    steps:
+      - name: Sync runner target repos on gunux
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd ~/runner
+          git pull --ff-only
+          for repo in guzus/memtherscan-interface guzus/memtherscan-server; do
+            grep -Fxq "$repo" target-repos.txt || printf '%s\n' "$repo" >> target-repos.txt
+          done
+          ./list-repos.sh
+          HOST_RUNNER_EXTRA_LABELS=gunux,docker \
+            ./host-runners/setup-runners.sh --serve-self-hosted --apply
+          ./host-runners/setup-runners.sh --status
