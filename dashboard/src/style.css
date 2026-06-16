@@ -273,6 +273,7 @@ textarea {
 /* ── Tabs ─────────────────────────────────────────── */
 .tabs {
   display: flex;
+  align-items: center;
   gap: 6px;
   margin-bottom: 16px;
   overflow-x: auto;
@@ -282,11 +283,14 @@ textarea {
 
 .tabs::-webkit-scrollbar { display: none; }
 
-.tab { flex-shrink: 0; }
+.tab,
+.tabs .brand-search {
+  flex-shrink: 0;
+}
 
 /* Fade the right edge on narrow viewports so users can tell the tab strip
  * scrolls horizontally — without a scrollbar (hidden above) there's no
- * other affordance and the rightmost tab (Research) was getting cut off. */
+ * other affordance and the rightmost controls can get cut off. */
 @media (max-width: 640px) {
   .header-top {
     align-items: flex-start;
