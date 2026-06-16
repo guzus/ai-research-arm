@@ -83,10 +83,10 @@ function timeAgo(date: Date): string {
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki';
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'briefing';
 // Tabs that route by date (calendar-driven). research + wiki are slug-driven
 // (or index views) and are excluded — mirror the research precedent.
-type DateTab = Exclude<Tab, 'research' | 'wiki'>;
+type DateTab = Exclude<Tab, 'research' | 'wiki' | 'briefing'>;
 type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
@@ -135,6 +135,32 @@ type TwitterStory = {
   links: string[];
   handles: string[];
 };
+type BriefingKind = 'digest' | 'twitter' | 'model' | 'source';
+type BriefingEvidence = {
+  label: string;
+  source: string;
+  detail: string;
+  href?: string;
+};
+type BriefingItem = {
+  id: string;
+  kind: BriefingKind;
+  score: number;
+  status: string;
+  title: string;
+  source: string;
+  time: string;
+  summary: string;
+  bullets: string[];
+  chips: string[];
+  evidence: BriefingEvidence[];
+  actionHref: string;
+};
+type BriefingInboxData = {
+  items: BriefingItem[];
+  stats: { label: string; value: string }[];
+  latestDate: string | null;
+};
 
 // Model-release ticket — see docs/model-tickets.md for the contract.
 type TicketStatus = 'rumored' | 'in-testing' | 'confirmed' | 'released' | 'closed';
@@ -177,6 +203,8 @@ let researchDocCache: { slug: string; language: ResearchLanguage; body: string }
 // Cache the tickets index — fetched once per session on first models-tab visit.
 let ticketsCache: Ticket[] | null = null;
 let ticketsPromise: Promise<Ticket[] | null> | null = null;
+let briefingInboxCache: BriefingInboxData | null = null;
+let selectedBriefingId: string | null = null;
 // Which ticket is expanded (showing body + history). Null = grid view.
 // Filter state for the tickets grid.
 const ticketFilters = { status: 'all', company: 'all' };
@@ -217,6 +245,9 @@ const languageSwitch = document.getElementById('languageSwitch');
 // are disambiguated from routes by the file extension; Vercel rewrites only
 // extensionless paths to /index.html.
 function routeFromState(): string {
+  if (activeTab === 'briefing') {
+    return '/design/briefing-inbox';
+  }
   if (activeTab === 'research') {
     return selectedSlug ? '/research/' + selectedSlug : '/research';
   }
@@ -281,6 +312,12 @@ function parseRoute(path: string): boolean {
   const clean = path.replace(/\/+$/, '') || '/';
   if (clean === '/') return false;
   const trimmed = clean.replace(/^\/+/, '');
+  if (trimmed === 'design/briefing-inbox') {
+    activeTab = 'briefing';
+    selectedSlug = null;
+    syncTabUi();
+    return true;
+  }
   const dateMatch = trimmed.match(/^(today|twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
   if (dateMatch) {
     activeTab = dateMatch[1] as Tab;
@@ -354,6 +391,7 @@ function syncTabUi(): void {
   // Wiki is slug/index-driven, not date-driven — same calendar-hiding
   // toggle as research/models.
   document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
+  document.body.classList.toggle('tab-briefing', activeTab === 'briefing');
 }
 
 // ── Helpers ───────────────────────────────────────────
@@ -773,7 +811,7 @@ function setSafeContent(
   // audio players), so they stay in the default allowlist; they are NOT
   // iframe-only.
   const addTags = ['mark', 'article', 'figure', 'figcaption', 'audio', 'nav', 'section', 'details', 'summary'];
-  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src'];
+  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-briefing-id', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -1241,6 +1279,8 @@ function showLoading(): void {
     ? 'Loading front page\u2026'
     : activeTab === 'models'
     ? 'Loading model timeline\u2026'
+    : activeTab === 'briefing'
+    ? 'Loading briefing inbox\u2026'
     : activeTab === 'research'
     ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
     : activeTab === 'wiki'
@@ -1266,6 +1306,8 @@ function showEmpty(dateStr: string): void {
     ? 'No front page for ' + escapeHtml(dateStr)
     : activeTab === 'models'
     ? 'No model timeline for ' + escapeHtml(dateStr)
+    : activeTab === 'briefing'
+    ? 'No briefing data available'
     : activeTab === 'research'
     ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
     : 'No Twitter report for ' + escapeHtml(dateStr);
@@ -2792,6 +2834,292 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
   }
   setSafeContent(content, todayCards);
   void wikifyContent(content);
+}
+
+// ── Briefing Inbox design route ───────────────────────
+function latestManifestDate(dates: string[] | undefined): string | null {
+  if (!dates || dates.length === 0) return null;
+  return dates.slice().sort().reverse()[0] || null;
+}
+
+function markdownPlainText(md: string): string {
+  return md
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\[[^\]]+\]\([^)]+\)/g, '')
+    .replace(/[#>*_~|]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function briefingExcerpt(text: string, max = 250): string {
+  const clean = markdownPlainText(text);
+  if (clean.length <= max) return clean;
+  const clipped = clean.slice(0, max - 1);
+  const at = Math.max(clipped.lastIndexOf('. '), clipped.lastIndexOf('; '), clipped.lastIndexOf(', '));
+  return (at > 120 ? clipped.slice(0, at + 1) : clipped).trim() + '...';
+}
+
+function digestBriefingItem(date: string, md: string, m: Manifest): BriefingItem {
+  const sections = splitSections(md).filter((section) => section.title || section.body);
+  const executive = sections.find((section) => /executive summary|tl;dr|tldr|summary/i.test(section.title));
+  const leadSection = executive || sections[0];
+  const bullets = (leadSection?.body || '')
+    .split('\n')
+    .map((line) => line.replace(/^[-*]\s+/, '').trim())
+    .filter(Boolean)
+    .slice(0, 3)
+    .map((line) => briefingExcerpt(line, 150));
+  const sectionNames = sections
+    .map((section) => section.title.trim())
+    .filter(Boolean)
+    .filter((title) => !/executive summary/i.test(title))
+    .slice(0, 3);
+
+  return {
+    id: `digest-${date}`,
+    kind: 'digest',
+    score: 96,
+    status: 'Ready',
+    title: `Daily digest triage - ${date}`,
+    source: 'Digest',
+    time: date,
+    summary: briefingExcerpt(leadSection?.body || md),
+    bullets: bullets.length > 0 ? bullets : sectionNames,
+    chips: sectionNames.length > 0 ? sectionNames : ['Daily digest'],
+    evidence: [
+      {
+        label: 'Primary file',
+        source: `research/digest/${date}-digest.md`,
+        detail: `${sections.length} digest sections parsed from the latest manifest date.`,
+        href: `/today/${date}`,
+      },
+      {
+        label: 'Coverage',
+        source: 'manifest.json',
+        detail: `${m.twitter.length} Twitter reports, ${m.models.length} model timelines, ${m.generative.length} research articles indexed.`,
+      },
+    ],
+    actionHref: `/today/${date}`,
+  };
+}
+
+function twitterBriefingItems(date: string, md: string): BriefingItem[] {
+  const clean = sanitizePublicReportMarkdown(md);
+  const stories = parseTwitterStories(clean).slice(0, 3);
+  if (stories.length === 0) {
+    const sections = splitSections(clean).reverse();
+    const lead = sections.find((section) => /cycle summary/i.test(section.body)) || sections[0];
+    if (!lead) return [];
+    return [{
+      id: `twitter-${date}-summary`,
+      kind: 'twitter',
+      score: 88,
+      status: 'Watch',
+      title: `Twitter pulse - ${date}`,
+      source: 'Twitter',
+      time: date,
+      summary: briefingExcerpt(lead.body),
+      bullets: splitSections(clean).slice(0, 3).map((section) => section.title).filter(Boolean),
+      chips: ['Cycle report'],
+      evidence: [
+        {
+          label: 'Primary file',
+          source: `research/twitter/${date}.md`,
+          detail: 'No structured story articles were found; showing cycle-level summary.',
+          href: `/twitter/${date}`,
+        },
+      ],
+      actionHref: `/twitter/${date}`,
+    }];
+  }
+  return stories.map((story, idx) => ({
+    id: `twitter-${date}-${story.rank}`,
+    kind: 'twitter',
+    score: 92 - idx * 5,
+    status: idx === 0 ? 'Ready' : 'Watch',
+    title: story.title,
+    source: 'Twitter',
+    time: date,
+    summary: briefingExcerpt(storyCurrentLead(story.body) || story.body),
+    bullets: [
+      extractSectionText(story.body, 'Evidence'),
+      extractSectionText(story.body, 'Verification'),
+      extractSectionText(story.body, 'Watch'),
+    ].filter(Boolean).slice(0, 3).map((line) => briefingExcerpt(line, 150)),
+    chips: story.handles.slice(0, 3),
+    evidence: [
+      {
+        label: 'Primary file',
+        source: `research/twitter/${date}.md`,
+        detail: `Rank ${story.rank} story with ${story.links.length} extracted source link${story.links.length === 1 ? '' : 's'}.`,
+        href: `/twitter/${date}`,
+      },
+      ...story.links.slice(0, 2).map((href) => ({
+        label: 'Source link',
+        source: href.replace(/^https?:\/\//, ''),
+        detail: 'Referenced by the selected Twitter story.',
+        href,
+      })),
+    ],
+    actionHref: `/twitter/${date}`,
+  }));
+}
+
+function modelBriefingItems(tickets: Ticket[]): BriefingItem[] {
+  const open = tickets
+    .filter((ticket) => ticket.status !== 'closed')
+    .sort((a, b) => (b.updated_at || '').localeCompare(a.updated_at || ''))
+    .slice(0, 2);
+  return open.map((ticket, idx) => {
+    const baseScore = ticket.verification === 'confirmed' ? 90 : ticket.verification === 'partial' ? 82 : 74;
+    return {
+      id: `model-${ticket.slug}`,
+      kind: 'model',
+      score: baseScore - idx * 4,
+      status: ticket.status.replace('-', ' '),
+      title: ticket.title,
+      source: ticket.company,
+      time: ticket.updated_at || ticket.created_at,
+      summary: briefingExcerpt(ticket.status_note || ticket.body || ticket.expected || ticket.title),
+      bullets: [
+        ticket.model ? `Model: ${ticket.model}` : '',
+        ticket.expected ? `Expected: ${ticket.expected}` : '',
+        `${ticket.sources.length} source${ticket.sources.length === 1 ? '' : 's'} tracked`,
+      ].filter(Boolean).slice(0, 3),
+      chips: [ticket.verification, ...ticket.labels].slice(0, 4),
+      evidence: [
+        {
+          label: 'Ticket',
+          source: `research/models/tickets/${ticket.slug}.md`,
+          detail: `Updated ${ticket.updated_at}; status ${ticket.status}; verification ${ticket.verification}.`,
+          href: '/models',
+        },
+        ...ticket.sources.slice(0, 2).map((source) => ({
+          label: source.startsWith('http') ? 'Source link' : 'Source handle',
+          source,
+          detail: 'Tracked in the model-release ticket.',
+          href: source.startsWith('http') ? source : undefined,
+        })),
+      ],
+      actionHref: '/models',
+    };
+  });
+}
+
+async function loadBriefingInbox(signal: AbortSignal): Promise<BriefingInboxData | null> {
+  const m = manifest || await loadManifest();
+  if (!m) return null;
+  const digestDate = latestManifestDate(m.today);
+  const twitterDate = latestManifestDate(m.twitter);
+
+  const [digestMd, twitterMd, tickets] = await Promise.all([
+    digestDate ? fetchDigest(digestDate, signal) : Promise.resolve(null),
+    twitterDate ? fetchTwitter(twitterDate, signal) : Promise.resolve(null),
+    loadTickets(),
+  ]);
+
+  const items: BriefingItem[] = [];
+  if (digestDate && digestMd) items.push(digestBriefingItem(digestDate, digestMd, m));
+  if (twitterDate && twitterMd) items.push(...twitterBriefingItems(twitterDate, twitterMd));
+  if (tickets) items.push(...modelBriefingItems(tickets));
+
+  // Deterministic fallback for sparse local checkouts: keep the route usable
+  // without implying live data when manifest-backed files are unavailable.
+  if (items.length === 0) {
+    items.push({
+      id: 'source-empty',
+      kind: 'source',
+      score: 50,
+      status: 'Check',
+      title: 'Research source mirror is empty',
+      source: 'Manifest',
+      time: 'No date',
+      summary: 'The dashboard route loaded, but no manifest-backed digest, Twitter, or ticket data was available in this checkout.',
+      bullets: ['Run the dashboard prebuild to mirror research data.', 'Expected runtime source is dashboard/public/research/manifest.json.'],
+      chips: ['Fallback'],
+      evidence: [{ label: 'Fallback path', source: 'manifest.json', detail: 'No visible fallback label is rendered in the UI.' }],
+      actionHref: '/',
+    });
+  }
+
+  items.sort((a, b) => b.score - a.score);
+  const ticketCount = tickets?.length ?? 0;
+  return {
+    items,
+    latestDate: digestDate || twitterDate,
+    stats: [
+      { label: 'Digest', value: digestDate || 'missing' },
+      { label: 'Twitter', value: twitterDate || 'missing' },
+      { label: 'Tickets', value: String(ticketCount) },
+    ],
+  };
+}
+
+function renderBriefingInbox(data: BriefingInboxData): void {
+  briefingInboxCache = data;
+  const selected = data.items.find((item) => item.id === selectedBriefingId) || data.items[0];
+  selectedBriefingId = selected.id;
+  const rows = data.items.map((item) => [
+    '<button class="briefing-row" type="button" data-briefing-id="' + escapeHtml(item.id) + '" aria-current="' + (item.id === selected.id ? 'true' : 'false') + '">',
+    '  <span class="briefing-score">' + escapeHtml(String(item.score)) + '</span>',
+    '  <span class="briefing-row-copy">',
+    '    <span class="briefing-row-meta"><span>' + escapeHtml(item.source) + '</span><span class="briefing-status">' + escapeHtml(item.status) + '</span></span>',
+    '    <strong>' + escapeHtml(item.title) + '</strong>',
+    '    <span>' + escapeHtml(item.summary) + '</span>',
+    '  </span>',
+    '</button>',
+  ].join('\n')).join('\n');
+
+  const stats = data.stats.map((stat) =>
+    '<div class="briefing-mini-stat"><span>' + escapeHtml(stat.label) + '</span><strong>' + escapeHtml(stat.value) + '</strong></div>',
+  ).join('\n');
+  const bullets = selected.bullets.length > 0
+    ? selected.bullets.map((bullet) => '<li>' + escapeHtml(bullet) + '</li>').join('\n')
+    : '<li>' + escapeHtml(selected.summary) + '</li>';
+  const chips = selected.chips.map((chip) => '<span class="briefing-chip">' + escapeHtml(chip) + '</span>').join('\n');
+  const evidence = selected.evidence.map((card, idx) => [
+    '<article class="briefing-evidence-card' + (idx === 0 ? ' primary' : '') + '">',
+    '  <div class="briefing-evidence-meta"><span>' + escapeHtml(card.label) + '</span><span>' + escapeHtml(String(idx + 1).padStart(2, '0')) + '</span></div>',
+    '  <h3>' + escapeHtml(card.source) + '</h3>',
+    '  <p>' + escapeHtml(card.detail) + '</p>',
+    card.href ? '  <a href="' + escapeHtml(card.href) + '">Open evidence</a>' : '',
+    '</article>',
+  ].join('\n')).join('\n');
+
+  setSafeContent(content, [
+    '<main class="briefing-shell">',
+    '  <header class="briefing-topbar">',
+    '    <div class="briefing-brand"><span class="briefing-mark">A</span><span>Briefing Inbox</span></div>',
+    '    <div class="briefing-search" aria-label="Search placeholder"><span>Latest repo-backed AI intelligence</span></div>',
+    '    <a class="briefing-open" href="' + escapeHtml(selected.actionHref) + '">Open source view</a>',
+    '  </header>',
+    '  <section class="briefing-layout">',
+    '    <aside class="briefing-panel briefing-inbox-panel">',
+    '      <div class="briefing-panel-header"><div><span class="briefing-eyebrow">Triage</span><h2>Inbox</h2></div><span>' + escapeHtml(String(data.items.length)) + ' items</span></div>',
+    '      <div class="briefing-list">' + rows + '</div>',
+    '    </aside>',
+    '    <section class="briefing-story">',
+    '      <div class="briefing-story-head">',
+    '        <div class="briefing-eyebrow">' + escapeHtml(selected.kind.toUpperCase()) + ' - ' + escapeHtml(selected.time) + '</div>',
+    '        <h1>' + escapeHtml(selected.title) + '</h1>',
+    '        <p>' + escapeHtml(selected.summary) + '</p>',
+    '        <div class="briefing-chips">' + chips + '</div>',
+    '      </div>',
+    '      <div class="briefing-story-body">',
+    '        <div class="briefing-summary-grid">' + stats + '</div>',
+    '        <section class="briefing-section"><h2>Why it is selected</h2><ul>' + bullets + '</ul></section>',
+    '      </div>',
+    '    </section>',
+    '    <aside class="briefing-panel briefing-evidence-panel">',
+    '      <div class="briefing-panel-header"><div><span class="briefing-eyebrow">Evidence</span><h2>Selected item</h2></div></div>',
+    '      <div class="briefing-evidence-list">' + evidence + '</div>',
+    '    </aside>',
+    '  </section>',
+    '</main>',
+  ].join('\n'));
+  setDocTitle('Briefing Inbox');
 }
 
 // ── Generative research ───────────────────────────────
@@ -4842,7 +5170,17 @@ async function load(): Promise<void> {
   showLoading();
 
   try {
-    if (activeTab === 'wiki') {
+    if (activeTab === 'briefing') {
+      const briefingResult = await withTimeout(loadBriefingInbox(controller.signal), LOAD_TIMEOUT_MS, controller);
+      if (requestId !== loadRequestId) return;
+      if (briefingResult === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (briefingResult) {
+        renderBriefingInbox(briefingResult);
+      } else {
+        showEmpty(dateStr);
+      }
+    } else if (activeTab === 'wiki') {
       // Fetch + cache the committed index.json once; everything (catalog,
       // backlinks, resolver) is derived from it. No JS-side graph building.
       const idx = await withTimeout(loadWikiIndex(controller.signal), LOAD_TIMEOUT_MS, controller);
@@ -5375,6 +5713,15 @@ content.addEventListener('click', (e) => {
     load();
     return;
   }
+  const briefingRow = target.closest('[data-briefing-id]') as HTMLElement | null;
+  if (briefingRow && activeTab === 'briefing') {
+    const id = briefingRow.dataset.briefingId;
+    if (id && briefingInboxCache) {
+      selectedBriefingId = id;
+      renderBriefingInbox(briefingInboxCache);
+    }
+    return;
+  }
   const back = target.closest('[data-research-back]') as HTMLElement | null;
   if (back) {
     selectedSlug = null;
@@ -5557,7 +5904,7 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
     // Re-probe availability for current month with new tab (date tabs only).
     // The models/wiki tabs don't use date routing, so skip probing there too —
     // it'd just paint dots on a calendar that's hidden anyway.
-    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki') {
+    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'briefing') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -5576,7 +5923,8 @@ const currentTab: Tab = activeTab as Tab;
 document.body.classList.toggle('tab-research', currentTab === 'research');
 document.body.classList.toggle('tab-models', currentTab === 'models');
 document.body.classList.toggle('tab-wiki', currentTab === 'wiki');
-if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki') {
+document.body.classList.toggle('tab-briefing', currentTab === 'briefing');
+if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'briefing') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();
