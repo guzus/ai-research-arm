@@ -32,6 +32,10 @@ Thumbs.db
 !.agents/
 !.agents/commands/
 !.agents/commands/*.md
+!.agents/skills/
+.agents/skills/*
+!.agents/skills/expand-llm-wiki/
+!.agents/skills/expand-llm-wiki/**
 .gstack/
 
 # --- Node ---

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Expand LLM Wiki"
+  short_description: "Grow ARA wiki pages safely"
+  default_prompt: "Use $expand-llm-wiki to expand the ARA LLM wiki from the latest digest and model tickets."
