@@ -132,7 +132,7 @@ gantt
 
 Dashboard deploys are handled by **Railway's git integration**, not a workflow file — every push to `main` rebuilds the root `Dockerfile` (bun build → Caddy serve) automatically.
 
-`generative-research.yml` defaults to **Claude Opus 4.7** for new manual,
+`generative-research.yml` defaults to **Claude Opus 4.8** for new manual,
 issue-triggered, and auto-dispatched runs. Use `backend=deepseek-v4-flash`
 for the DeepSeek V4 Pro comparison path. See
 [Generative Research Backends](docs/generative-research-backends.md)

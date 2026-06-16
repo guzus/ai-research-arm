@@ -191,21 +191,25 @@ jobs:
             PROMPT="$TOPIC"
             if [ -n "${ISSUE_BODY:-}" ]; then
               CANDIDATE=$(printf '%s\n' "$ISSUE_BODY" \
-                | grep -iE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-8|claude-opus-4-7|deepseek|deepseek-v4-flash)[[:space:]]*$' \
+                | grep -iE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*[^[:space:]]+[[:space:]]*$' \
                 | head -n1 \
                 | sed -E 's/^[[:space:]]*[Bb][Aa][Cc][Kk][Ee][Nn][Dd][[:space:]]*:[[:space:]]*//' \
                 | tr -d '[:space:]' \
                 | tr '[:upper:]' '[:lower:]' || true)
               case "$CANDIDATE" in
-                claude-opus-4-8|claude-opus-4-7) CANDIDATE="claude" ;;
+                claude-opus-4-8) CANDIDATE="claude" ;;
                 deepseek) CANDIDATE="deepseek-v4-flash" ;;
               esac
-              if [ "$CANDIDATE" = "claude" ] || [ "$CANDIDATE" = "deepseek-v4-flash" ]; then
+              if [ -n "${CANDIDATE:-}" ]; then
+                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ]; then
+                  echo "unsupported backend/model: $CANDIDATE" >&2
+                  exit 1
+                fi
                 BACKEND="$CANDIDATE"
               fi
               # Strip the backend: directive line out, keep the rest as the brief.
               CLEAN_BODY=$(printf '%s\n' "$ISSUE_BODY" \
-                | grep -ivE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*(claude|claude-opus-4-8|claude-opus-4-7|deepseek|deepseek-v4-flash)[[:space:]]*$' \
+                | grep -ivE '^[[:space:]]*backend[[:space:]]*:[[:space:]]*[^[:space:]]+[[:space:]]*$' \
                 | sed -E 's/[[:space:]]+$//' \
                 || true)
               # Substantive = any non-whitespace remains after the strip.
@@ -229,7 +233,7 @@ jobs:
 
           case "$BACKEND" in
             deepseek) BACKEND="deepseek-v4-flash" ;;
-            claude-opus-4-8|claude-opus-4-7) BACKEND="claude" ;;
+            claude-opus-4-8) BACKEND="claude" ;;
           esac
           if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "deepseek-v4-flash" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
@@ -665,7 +669,7 @@ jobs:
                 ONLY if all three ambiguity conditions hold, take the
                 scope-clarification path:
                   a. Pick 3 specific sub-topics the user could research
-                     instead (e.g. for "AI" → "Anthropic Claude 4.7
+                     instead (e.g. for "AI" → "Anthropic Claude 4.8
                      enterprise adoption Q1 2026", "GPU supply
                      constraints from TSMC CoWoS-L capacity 2026",
                      "EU AI Act Article 6 enforcement timeline").
@@ -1851,7 +1855,7 @@ jobs:
                 ONLY if all three ambiguity conditions hold, take the
                 scope-clarification path:
                   a. Pick 3 specific sub-topics the user could research
-                     instead (e.g. for "AI" → "Anthropic Claude 4.7
+                     instead (e.g. for "AI" → "Anthropic Claude 4.8
                      enterprise adoption Q1 2026", "GPU supply
                      constraints from TSMC CoWoS-L capacity 2026",
                      "EU AI Act Article 6 enforcement timeline").
