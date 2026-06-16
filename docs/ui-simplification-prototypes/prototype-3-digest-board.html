@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARA UI Prototype 3 - Digest Board</title>
+    <style>
+      :root {
+        --paper: #ffffff;
+        --wash: #f5f6f8;
+        --ink: #111318;
+        --muted: #6c7280;
+        --accent: #235bff;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background: var(--wash);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.45;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .page {
+        min-height: 100vh;
+        padding: 18px;
+        display: grid;
+        gap: 14px;
+        grid-template-rows: auto auto 1fr;
+      }
+
+      .bar,
+      .command,
+      .board,
+      .drawer {
+        background: var(--paper);
+        border: 1px solid var(--muted);
+      }
+
+      .bar {
+        min-height: 58px;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 16px;
+        padding: 0 16px;
+      }
+
+      .brand {
+        font-size: 17px;
+        font-weight: 760;
+      }
+
+      .date-strip {
+        min-width: 0;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        justify-content: center;
+      }
+
+      .date-strip button,
+      .view-toggle button {
+        border: 0;
+        background: var(--paper);
+        color: var(--muted);
+        min-height: 34px;
+        padding: 0 10px;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .date-strip button[aria-current="date"],
+      .view-toggle button[aria-current="page"] {
+        color: var(--ink);
+        box-shadow: inset 0 -3px 0 var(--accent);
+      }
+
+      .view-toggle {
+        display: flex;
+        gap: 4px;
+      }
+
+      .command {
+        min-height: 52px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 12px;
+        padding: 0 14px;
+      }
+
+      .command label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .command input {
+        border: 0;
+        outline: 0;
+        width: 100%;
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      .command svg,
+      .mini-button svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .mini-button {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--muted);
+        background: var(--paper);
+        display: inline-grid;
+        place-items: center;
+        color: var(--ink);
+        cursor: pointer;
+      }
+
+      .workspace {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 14px;
+      }
+
+      .board {
+        min-width: 0;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .board-header {
+        padding: 18px;
+        border-bottom: 1px solid var(--muted);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 16px;
+        align-items: end;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+        overflow-wrap: anywhere;
+      }
+
+      h1 {
+        font-size: clamp(28px, 5vw, 56px);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 14px;
+      }
+
+      .muted,
+      .score-label,
+      .source {
+        color: var(--muted);
+      }
+
+      .score {
+        display: grid;
+        justify-items: end;
+        gap: 4px;
+      }
+
+      .score strong {
+        font-size: 44px;
+        line-height: 1;
+        color: var(--accent);
+      }
+
+      .rows {
+        display: grid;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 58px minmax(0, 1fr) 130px 100px;
+        gap: 14px;
+        padding: 16px 18px;
+        border-bottom: 1px solid var(--muted);
+        align-items: start;
+      }
+
+      .number {
+        color: var(--accent);
+        font-weight: 760;
+      }
+
+      .row h3 {
+        font-size: 18px;
+        line-height: 1.18;
+      }
+
+      .row p {
+        margin-top: 5px;
+      }
+
+      .source,
+      .status {
+        font-size: 13px;
+      }
+
+      .status {
+        color: var(--ink);
+      }
+
+      .drawer {
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        min-width: 0;
+      }
+
+      .drawer-section {
+        padding: 18px;
+        border-bottom: 1px solid var(--muted);
+        display: grid;
+        gap: 12px;
+      }
+
+      .next-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .next-item {
+        display: grid;
+        grid-template-columns: 32px 1fr;
+        gap: 10px;
+      }
+
+      .badge {
+        width: 28px;
+        height: 28px;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        display: grid;
+        place-items: center;
+        font-weight: 760;
+      }
+
+      .mini-chart {
+        height: 84px;
+        border-left: 1px solid var(--muted);
+        border-bottom: 1px solid var(--muted);
+        display: flex;
+        align-items: end;
+        gap: 8px;
+        padding: 0 0 0 10px;
+      }
+
+      .mini-chart span {
+        width: 100%;
+        background: var(--accent);
+        display: block;
+      }
+
+      @media (max-width: 980px) {
+        .bar {
+          grid-template-columns: 1fr;
+          padding: 14px;
+        }
+
+        .date-strip {
+          justify-content: flex-start;
+        }
+
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .page {
+          padding: 10px;
+        }
+
+        .command {
+          grid-template-columns: 1fr;
+          padding: 12px;
+        }
+
+        .board-header,
+        .row {
+          grid-template-columns: 1fr;
+        }
+
+        .score {
+          justify-items: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="bar">
+        <div class="brand">ara</div>
+        <nav class="date-strip" aria-label="Dates">
+          <button type="button">Jun 12</button>
+          <button type="button">Jun 13</button>
+          <button type="button">Jun 14</button>
+          <button type="button">Jun 15</button>
+          <button type="button" aria-current="date">Jun 16</button>
+        </nav>
+        <nav class="view-toggle" aria-label="Views">
+          <button type="button" aria-current="page">Board</button>
+          <button type="button">Reader</button>
+          <button type="button">Archive</button>
+        </nav>
+      </header>
+
+      <section class="command" aria-label="Command search">
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input placeholder="Jump to a model, source, entity, or story">
+        </label>
+        <button class="mini-button" type="button" aria-label="Open filters">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 6h16M7 12h10M10 18h4"></path>
+          </svg>
+        </button>
+      </section>
+
+      <main class="workspace">
+        <section class="board">
+          <div class="board-header">
+            <div>
+              <p class="muted">Today</p>
+              <h1>Four stories explain the AI market today.</h1>
+            </div>
+            <div class="score">
+              <strong>74</strong>
+              <span class="score-label">signal score</span>
+            </div>
+          </div>
+          <div class="rows">
+            <article class="row">
+              <div class="number">01</div>
+              <div>
+                <h3>Anthropic standoff becomes an access negotiation</h3>
+                <p class="muted">Conditional release terms now matter more than launch speculation.</p>
+              </div>
+              <div class="source">Digest + Wiki</div>
+              <div class="status">High</div>
+            </article>
+            <article class="row">
+              <div class="number">02</div>
+              <div>
+                <h3>Salesforce buys Fin for agentic customer service</h3>
+                <p class="muted">The acquisition gives Agentforce a working service channel.</p>
+              </div>
+              <div class="source">RSS + Twitter</div>
+              <div class="status">High</div>
+            </article>
+            <article class="row">
+              <div class="number">03</div>
+              <div>
+                <h3>Security vendors push back on model restrictions</h3>
+                <p class="muted">The debate now includes defender capability, not just lab access.</p>
+              </div>
+              <div class="source">Twitter</div>
+              <div class="status">Medium</div>
+            </article>
+            <article class="row">
+              <div class="number">04</div>
+              <div>
+                <h3>Compute supply reports keep moving under policy noise</h3>
+                <p class="muted">Infrastructure commitments are decoupling from launch timing.</p>
+              </div>
+              <div class="source">Models</div>
+              <div class="status">Medium</div>
+            </article>
+          </div>
+        </section>
+
+        <aside class="drawer">
+          <section class="drawer-section">
+            <h2>Evidence mix</h2>
+            <div class="mini-chart" aria-hidden="true">
+              <span style="height: 70%"></span>
+              <span style="height: 48%"></span>
+              <span style="height: 92%"></span>
+              <span style="height: 38%"></span>
+              <span style="height: 62%"></span>
+            </div>
+          </section>
+          <section class="drawer-section">
+            <h2>Next actions</h2>
+            <div class="next-list">
+              <div class="next-item">
+                <div class="badge">1</div>
+                <p>Open the digest when the reader wants narrative context.</p>
+              </div>
+              <div class="next-item">
+                <div class="badge">2</div>
+                <p>Open tickets when the reader wants model-release state.</p>
+              </div>
+              <div class="next-item">
+                <div class="badge">3</div>
+                <p>Open wiki when the reader wants durable entity memory.</p>
+              </div>
+            </div>
+          </section>
+          <section class="drawer-section">
+            <h2>Archive</h2>
+            <p class="muted">Older daily views move behind search and date navigation so the first screen stays task-focused.</p>
+          </section>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>
