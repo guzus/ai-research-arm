@@ -1,0 +1,9 @@
+Speaker 1: Tuesday, June sixteenth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic is in a standoff — Fable five and Mythos five are still dark, blocked until U.S. AI infrastructure is, quote, hardened. That could take weeks.
+Speaker 1: And cybersecurity veterans from Adobe, Zoom, and Sophos are protesting the ban, arguing it is hurting defenders far more than attackers.
+Speaker 2: Meanwhile on the business side, Salesforce just paid [emphasis] three point six billion dollars [/emphasis] for Fin, the AI customer-service platform that spun out of Intercom, to fuel their Agentforce push.
+Speaker 1: Some big numbers behind that deal — Broadcom is backing a [emphasis] thirty-five billion dollar [/emphasis] Anthropic chip order representing roughly twenty gigawatts of compute.
+Speaker 2: And agents are everywhere now. WorkBench says they hit eighty-nine percent of workplace tasks, up from forty-three percent in twenty twenty-four.
+Speaker 1: [dramatic_pause] On the community front, a Hacker News thread scoring four hundred sixty-one points is debating whether to drop Claude and GPT entirely in favor of local models for daily coding.
+Speaker 2: That is the tension of this moment, enterprise AI spending keeps climbing while the open-source crowd asks if they even need the big names anymore.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
