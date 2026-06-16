@@ -72,7 +72,7 @@ body {
   background: var(--bg-secondary);
   color: var(--text);
   line-height: 1.6;
-  letter-spacing: -0.012em;  /* tighter tracking overall for faster reading */
+  letter-spacing: -0.022em;  /* tight tracking overall for faster reading */
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
@@ -175,7 +175,9 @@ body {
   font-weight: 700;
   letter-spacing: -0.02em;
   font-family: var(--font-mono);
+  cursor: pointer;
 }
+.brand-title:hover { color: var(--accent-warm); }
 .brand-search {
   display: inline-flex;
   align-items: center;

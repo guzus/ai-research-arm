@@ -395,7 +395,102 @@ async function hydrateTweets() {
   );
 }
 
+// ── Search index (digest sections + twitter cycles) ─────────
+// A small, bounded JSON the SPA loads once so digest sections and twitter
+// cycles become searchable jump targets in the global command palette. Bounded
+// to recent dates (older sections/cycles aren't worth searching) and fully
+// best-effort so a malformed file never fails the build.
+const DIGEST_RECENT_FILES = 14;
+
+function buildSearchIndex() {
+  const out = { digestSections: [], twitter: [] };
+  // Digest sections: split each recent digest on `## ` headings (mirrors
+  // splitSections() in main.ts). Skip "Executive Summary" — it renders as the
+  // tldr card with no .content-card-title to scroll to.
+  try {
+    const dir = join(researchSrc, 'digest');
+    if (existsSync(dir)) {
+      const re = /^(\d{4}-\d{2}-\d{2})-digest\.md$/;
+      const dates = readdirSync(dir)
+        .map((n) => (re.exec(n) || [])[1])
+        .filter(Boolean)
+        .sort()
+        .reverse()
+        .slice(0, DIGEST_RECENT_FILES);
+      const SKIP = new Set(['Executive Summary']);
+      for (const date of dates) {
+        const md = readFileSync(join(dir, `${date}-digest.md`), 'utf8');
+        let title = null;
+        let buf = [];
+        const flush = () => {
+          if (title && !SKIP.has(title)) {
+            const snippet = buf
+              .join(' ')
+              .replace(/[#>*_`~|\[\]()]/g, ' ')
+              .replace(/https?:\/\/\S+/g, ' ')
+              .replace(/\s+/g, ' ')
+              .trim()
+              .slice(0, 140);
+            out.digestSections.push({ date, sectionTitle: title, snippet });
+          }
+        };
+        for (const line of md.split('\n')) {
+          const mm = line.match(/^## (.+)/);
+          if (mm) {
+            flush();
+            title = mm[1].trim();
+            buf = [];
+          } else if (title) {
+            buf.push(line);
+          }
+        }
+        flush();
+      }
+    }
+  } catch (e) {
+    console.warn('prebuild: digest search index skipped:', e?.message || e);
+  }
+  // Twitter cycles: split each recent twitter file on `## HH:MM UTC` cycle
+  // headings; index the Cycle summary (Signal Brief) + story titles. The anchor
+  // MUST match the id assigned in renderTwitterReport (cycle-HHMMutc).
+  try {
+    const dir = join(researchSrc, 'twitter');
+    if (existsSync(dir)) {
+      const files = readdirSync(dir)
+        .filter((n) => /^\d{4}-\d{2}-\d{2}\.md$/.test(n))
+        .sort()
+        .reverse()
+        .slice(0, TWEET_RECENT_FILES);
+      for (const name of files) {
+        const date = name.slice(0, 10);
+        const text = readFileSync(join(dir, name), 'utf8');
+        const parts = text.split(/^## (\d{2}:\d{2} UTC)\s*$/m);
+        for (let i = 1; i < parts.length; i += 2) {
+          const cycleTime = parts[i];
+          const body = parts[i + 1] || '';
+          const sum = body.match(/\*\*Cycle summary\*\*:\s*([\s\S]*?)(?=\n#{1,3}\s|\n\*\*|\n## |$)/i);
+          const summary = (sum ? sum[1] : '').replace(/\s+/g, ' ').trim().slice(0, 200);
+          const storyTitles = [
+            ...[...body.matchAll(/^####\s+\d+\.\s+(.+)$/gm)].map((m) => m[1].trim()),
+            ...[...body.matchAll(/class="twitter-story-title"[^>]*>([^<]+)</g)].map((m) => m[1].trim()),
+          ];
+          if (!summary && storyTitles.length === 0) continue;
+          const anchor = 'cycle-' + cycleTime.replace(/[:\s]/g, '').toLowerCase();
+          out.twitter.push({ date, cycleTime, anchor, summary, storyTitles });
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('prebuild: twitter search index skipped:', e?.message || e);
+  }
+  writeFileSync(join(publicResearch, 'search-index.json'), JSON.stringify(out));
+  console.log(
+    `prebuild: search-index.json (${out.digestSections.length} digest sections, ${out.twitter.length} twitter cycles)`,
+  );
+}
+
 copyData();
 buildTicketsIndex();
 buildManifest();
+buildSearchIndex();
 await hydrateTweets().catch((e) => console.warn('prebuild: tweet hydration skipped:', e?.message || e));
