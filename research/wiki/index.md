@@ -21,6 +21,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; encoder-free 12B variant runs on 16 GB RAM, 150M+ cumulative downloads.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
+- [[meta]] — Social-platform hyperscaler and Llama maker; launched "AI Mode" on Facebook (2026-06-16), leaning on distribution to catch up in the AI-assistant race.
 - [[microsoft]] — Hyperscaler turned frontier-model builder; shipped the MAI stack and made Project Polaris GitHub Copilot's default at Build 2026.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
 - [[nebius]] — Amsterdam-based neocloud spun out of Yandex.
@@ -28,6 +29,8 @@ Each page is one of three types — entity, concept, or theme. See
 - [[openai]] — Frontier lab behind the GPT family; $852B March valuation, now trailing Anthropic's $965B; shipped the Frontier Governance Framework and Rosalind Biodefense on 2026-05-29.
 - [[openrouter]] — LLM-routing API serving 400+ models to 8M+ developers; closed $113M Series B at $1.3B on 2026-05-30, 25T tokens/week.
 - [[prometheus]] — Jeff Bezos's industrial-AI startup building an "artificial general engineer"; $12B Series B at ~$41B on 2026-06-11, industrial AI's first megaround.
+- [[sakana-ai]] — Tokyo lab shipping Marlin, an autonomous "Ultra Deep Research" agent on AB-MCTS multi-model reasoning; a non-US entrant into the deep-research category.
+- [[salesforce]] — Enterprise-CRM giant betting on agentic AI (Agentforce); bought AI customer-service platform Fin for $3.6B (2026-06-15), the day's largest confirmed AI M&A.
 - [[spacex]] — Record IPO (Nasdaq: SPCX, debuted 2026-06-12 at $135/share, ~$1.77T valuation) anchoring the 2026 AI-financing issuance wave.
 - [[xai]] — Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business renting Colossus capacity to rival labs at $2B+/month.
 

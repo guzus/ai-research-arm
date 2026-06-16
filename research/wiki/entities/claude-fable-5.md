@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 summary: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.
 created_at: 2026-06-10
-updated_at: 2026-06-15
+updated_at: 2026-06-16
 sources:
+  - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
@@ -122,6 +123,17 @@ every feed on launch day.
   with 1M context — sharpening the read that the ban is **accelerating the very
   open-weight commoditization it aimed to slow** ([[open-weights]]) (ARA digest
   2026-06-15). See [[federal-ai-policy]].
+- **Fourth day dark; the first restoration timeline (2026-06-16).** Both models
+  **remain offline for a fourth straight day** with no deal announced — but for the
+  first time the suspension got a *directional* end: an administration official said
+  they stay locked until the US national-security apparatus is **"hardened,"** which
+  "could happen in the next few weeks," moving the standoff from indefinite to
+  **conditional and time-boxed**. A named **June 13 call** (Commerce Sec Lutnick +
+  National Cyber Director Cairncross vs. Anthropic's Tom Brown) anchors the
+  negotiation, and both sides are now reported to want access restored. Cybersecurity
+  veterans (Adobe, Zoom, Sophos) formally protested the ban to the White House
+  (TechCrunch). See [[anthropic]], [[federal-ai-policy]] and [[open-weights]] (ARA
+  digest 2026-06-16).
 
 ## Open questions
 

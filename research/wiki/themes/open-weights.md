@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 summary: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown.
 created_at: 2026-06-14
-updated_at: 2026-06-15
+updated_at: 2026-06-16
 sources:
+  - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
 ---
@@ -59,6 +60,20 @@ fragile and local weights look like insurance.
   weights landed on **Hugging Face with a free NVIDIA testing endpoint** — lowering
   the try-it barrier further (ARA digest 2026-06-15).
 
+- **"Open weights are not enough" — the transparency caveat sharpens (2026-06-16).**
+  With [[claude-fable-5|Fable 5]] still dark and the pipeline pointing to **GLM-5.2
+  open weights "next week,"** r/MachineLearning pushed back on the
+  open-weights=open-research framing: an **"Open weights are not enough"** thread
+  argued weights *without* transparent training code leave researchers blind to the
+  training loop — a maturation of the movement's own self-critique. A parallel thread
+  debated a Bitcoin-mining-style **"proof-of-training"** mechanism (gradient
+  verification + Byzantine fault tolerance) for decentralized training — the
+  compute-layer counterpart to the weight-distribution problem. Meanwhile
+  **[[openrouter]]'s Fusion API** (a model-fusion endpoint blending outputs across
+  multiple LLMs) trended on HN, a routing-layer answer to model fragmentation —
+  echoing the multi-model-orchestration bet behind [[sakana-ai]]'s Marlin (ARA
+  digest 2026-06-16).
+
 ## Open questions
 
 - **Does decentralization survive contact with capability?** Open weights are
@@ -66,8 +81,9 @@ fragile and local weights look like insurance.
   cyber/bio capabilities that got [[claude-fable-5|Fable 5]] banned, and what
   happens to export-control logic if they do?
 - **China as the open-weights default.** GLM 5.2, Kimi, DeepSeek, MiniMax, Qwen —
-  the open-weights frontier is increasingly Chinese. Does that reframe the
-  open-vs-closed debate as a US-vs-China one?
+  the open-weights frontier is increasingly Chinese, with [[meta]]'s Llama the main
+  Western counterweight. Does that reframe the open-vs-closed debate as a US-vs-China
+  one?
 - **Infrastructure single points of failure.** If "HuggingFace is a US single
   point of failure," does a credible decentralized weight-distribution layer
   actually ship, or does the torrent-network talk stay aspirational?

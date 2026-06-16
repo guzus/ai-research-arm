@@ -189,7 +189,7 @@
       ],
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-15",
+      "updated_at": "2026-06-16",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -212,6 +212,7 @@
         "neocloud",
         "open-weights",
         "openai",
+        "salesforce",
         "spacex",
         "xai"
       ],
@@ -235,6 +236,7 @@
         "openai",
         "openrouter",
         "prometheus",
+        "salesforce",
         "spacex",
         "xai"
       ]
@@ -356,7 +358,7 @@
       ],
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-06-15",
+      "updated_at": "2026-06-16",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -608,7 +610,7 @@
       ],
       "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-15",
+      "updated_at": "2026-06-16",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -734,6 +736,7 @@
       ],
       "inbound": [
         "anthropic",
+        "meta",
         "openai"
       ]
     },
@@ -800,6 +803,38 @@
       "inbound": [
         "agentic-ai-security",
         "apple"
+      ]
+    },
+    {
+      "slug": "meta",
+      "title": "Meta",
+      "type": "entity",
+      "tags": [
+        "hyperscaler",
+        "frontier-lab",
+        "consumer-ai",
+        "open-weights",
+        "social"
+      ],
+      "summary": "Social-platform hyperscaler and frontier-model builder (Llama); on 2026-06-16 launched \"AI Mode\" on Facebook, pulling from public info across its platforms as it races to catch up in the AI-assistant race.",
+      "created_at": "2026-06-16",
+      "updated_at": "2026-06-16",
+      "file": "entities/meta.md",
+      "aliases": [
+        "Meta",
+        "Meta Platforms",
+        "Facebook",
+        "Meta AI",
+        "Llama",
+        "AI Mode"
+      ],
+      "outbound": [
+        "gemini-spark",
+        "open-weights",
+        "openai"
+      ],
+      "inbound": [
+        "open-weights"
       ]
     },
     {
@@ -1000,7 +1035,7 @@
       ],
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-06-15",
+      "updated_at": "2026-06-16",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -1015,13 +1050,17 @@
         "claude-fable-5",
         "deepseek",
         "gemma-4",
+        "meta",
         "minimax-m3",
         "nvidia",
-        "openai"
+        "openai",
+        "openrouter",
+        "sakana-ai"
       ],
       "inbound": [
         "anthropic",
-        "claude-fable-5"
+        "claude-fable-5",
+        "meta"
       ]
     },
     {
@@ -1064,10 +1103,13 @@
         "claude-fable-5",
         "federal-ai-policy",
         "figure-ai",
+        "meta",
         "microsoft",
         "open-weights",
         "openrouter",
         "prometheus",
+        "sakana-ai",
+        "salesforce",
         "spacex",
         "xai"
       ]
@@ -1100,7 +1142,8 @@
         "ai-capex",
         "deepseek",
         "microsoft",
-        "minimax-m3"
+        "minimax-m3",
+        "open-weights"
       ]
     },
     {
@@ -1134,6 +1177,63 @@
       "inbound": [
         "ai-capex",
         "artificial-general-engineer"
+      ]
+    },
+    {
+      "slug": "sakana-ai",
+      "title": "Sakana AI",
+      "type": "entity",
+      "tags": [
+        "ai-lab",
+        "japan",
+        "deep-research",
+        "agents",
+        "ab-mcts"
+      ],
+      "summary": "Tokyo-based AI lab shipping Marlin — an autonomous \"Ultra Deep Research\" agent (\"Virtual CSO\") built on its AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.",
+      "created_at": "2026-06-16",
+      "updated_at": "2026-06-16",
+      "file": "entities/sakana-ai.md",
+      "aliases": [
+        "Sakana AI",
+        "Sakana",
+        "Marlin",
+        "Sakana Marlin"
+      ],
+      "outbound": [
+        "openai"
+      ],
+      "inbound": [
+        "open-weights"
+      ]
+    },
+    {
+      "slug": "salesforce",
+      "title": "Salesforce",
+      "type": "entity",
+      "tags": [
+        "enterprise-software",
+        "agentic-ai",
+        "crm",
+        "m-and-a",
+        "claude-code"
+      ],
+      "summary": "Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 — the day's largest confirmed AI M&A.",
+      "created_at": "2026-06-16",
+      "updated_at": "2026-06-16",
+      "file": "entities/salesforce.md",
+      "aliases": [
+        "Salesforce",
+        "Salesforce Inc",
+        "CRM",
+        "Agentforce"
+      ],
+      "outbound": [
+        "anthropic",
+        "openai"
+      ],
+      "inbound": [
+        "anthropic"
       ]
     },
     {
@@ -1229,6 +1329,7 @@
     "agent lifespan engineering": "agent-lifespan-engineering",
     "agent security": "agentic-ai-security",
     "agent-lifespan-engineering": "agent-lifespan-engineering",
+    "agentforce": "salesforce",
     "agentic ai security": "agentic-ai-security",
     "agentic supply-chain": "agentic-ai-security",
     "agentic-ai-security": "agentic-ai-security",
@@ -1236,6 +1337,7 @@
     "ai capex": "ai-capex",
     "ai capex supercycle": "ai-capex",
     "ai infrastructure buildout": "ai-capex",
+    "ai mode": "meta",
     "ai supply-chain security": "agentic-ai-security",
     "ai-capex": "ai-capex",
     "ai-for-manufacturing": "artificial-general-engineer",
@@ -1274,6 +1376,7 @@
     "compute buildout": "ai-capex",
     "coreweave": "coreweave",
     "coreweave, inc.": "coreweave",
+    "crm": "salesforce",
     "crwv": "coreweave",
     "deepseek": "deepseek",
     "deepseek ai": "deepseek",
@@ -1286,6 +1389,7 @@
     "dynamic workflows": "dynamic-workflows",
     "dynamic-workflows": "dynamic-workflows",
     "fable 5": "claude-fable-5",
+    "facebook": "meta",
     "federal ai executive order": "federal-ai-policy",
     "federal ai policy": "federal-ai-policy",
     "federal-ai-policy": "federal-ai-policy",
@@ -1320,12 +1424,17 @@
     "liquid foundation models": "liquid-ai",
     "liquid-ai": "liquid-ai",
     "liquidai": "liquid-ai",
+    "llama": "meta",
     "local weights": "open-weights",
     "m3": "minimax-m3",
     "mai": "microsoft",
     "mai-code-1-flash": "microsoft",
     "mai-thinking-1": "microsoft",
     "maia 200": "microsoft",
+    "marlin": "sakana-ai",
+    "meta": "meta",
+    "meta ai": "meta",
+    "meta platforms": "meta",
     "microsoft": "microsoft",
     "microsoft ai": "microsoft",
     "microsoft corporation": "microsoft",
@@ -1365,6 +1474,12 @@
     "prometheus ai": "prometheus",
     "promoting advanced ai innovation and security": "federal-ai-policy",
     "sacramento ai policy": "california-ai-regulation",
+    "sakana": "sakana-ai",
+    "sakana ai": "sakana-ai",
+    "sakana marlin": "sakana-ai",
+    "sakana-ai": "sakana-ai",
+    "salesforce": "salesforce",
+    "salesforce inc": "salesforce",
     "siri": "apple",
     "space exploration technologies": "spacex",
     "spacex": "spacex",
@@ -1378,6 +1493,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-16",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-16 digest (export standoff goes conditional; Salesforce/Fin M&A). Created 3 (salesforce entity — $3.6B Fin/Intercom acquisition for Agentforce, Apex specialist model beating frontier on resolution; sakana-ai entity — Marlin autonomous \"Ultra Deep Research\" agent on AB-MCTS, non-US deep-research entrant; meta entity — \"AI Mode\" on Facebook, distribution bet to catch up in the assistant race). Updated 4 (anthropic — first restoration timeline (\"hardened in a few weeks\"), June 13 Lutnick/Cairncross/Tom Brown call, $35B Broadcom chip order, Claude Max class-action, ~$14B staff share sales, cybersecurity-vets protest; claude-fable-5 — 4th day dark, conditional/time-boxed restoration; federal-ai-policy — conditional export timeline, June 2 EO read as de facto licensing, cybersecurity-vets TechCrunch protest, OpenAI pre-coordinating to avoid Anthropic's fate; open-weights — \"Open weights are not enough\" transparency caveat, proof-of-training debate, OpenRouter Fusion API)."
+    },
     {
       "date": "2026-06-15",
       "op": "ingest",

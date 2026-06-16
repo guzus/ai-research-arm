@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 summary: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-updated_at: 2026-06-15
+updated_at: 2026-06-16
 sources:
+  - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
@@ -81,7 +82,7 @@ Four developments through May 2026 put Anthropic at the center of the field:
   SNU / NIA research. Combined with the **Milan office (2026-05-19)** this is
   **two international offices in eight days** — the most aggressive APAC + EMEA
   cadence of any frontier lab in 2026 (ARA digest 2026-06-01).
-- **Salesforce migration (2026-06-01 carry).** Salesforce moved its entire
+- **Salesforce migration (2026-06-01 carry).** [[salesforce|Salesforce]] moved its entire
   developer organization to Claude Code with **no token limits**; reports a
   **231-day migration cut to 13 days** and **79% more PRs/developer** — the
   most concrete enterprise productivity data point published against
@@ -256,6 +257,31 @@ Four developments through May 2026 put Anthropic at the center of the field:
   compute-dependence open question below. New SpaceX (SPCX) data-center deals
   reportedly include Anthropic — see [[spacex]] and [[ai-capex]] (ARA digest
   2026-06-15).
+
+- **First restoration timeline; the standoff goes conditional (2026-06-16).** With
+  [[claude-fable-5|Fable 5 / Mythos 5]] dark for a **fourth straight day**, reporting
+  attached the first *directional* timeline: an administration official said the
+  models stay locked until the US national-security apparatus is **"hardened" —
+  possibly "in the next few weeks,"** reframing the suspension from "indefinite" to
+  **conditional and time-boxed** (and shifting part of the remediation burden onto
+  the *government's* clock). A named **Saturday June 13 call** — Commerce Secretary
+  **Lutnick** + National Cyber Director **Cairncross** vs. Anthropic's **Tom Brown**
+  — anchors the talks; both sides are now reported to **want access restored**. Axios
+  added behind-the-scenes color: **"personality clashes"** over model-safety
+  disagreements helped send the models offline. The "revoke the ban" push gained
+  tier-1 corroboration — **cybersecurity veterans (Adobe, Zoom, Sophos and others)
+  formally urged the White House to lift it** ("the restriction hurts defenders more
+  than attackers"), now TechCrunch-covered rather than a single X relay — see
+  [[federal-ai-policy]] and [[agentic-ai-security]] (ARA digest 2026-06-16).
+- **$35B Broadcom chip order; a Claude Max class-action (2026-06-16).** Two
+  Anthropic-adjacent items surfaced on X: **Broadcom is backing a ~$35B custom-chip
+  order for Anthropic** (Apollo/Blackstone financing, targeting ~20 GW of compute) —
+  a fresh data point on the financing scaffolding underpinning Anthropic's
+  owned-infrastructure pivot even as its frontier models sit embargoed (see
+  [[ai-capex]]) — and Anthropic was hit with a **federal class-action over Claude
+  Max usage limits**, alleging marketing fraud. Separately, *The Information* reported
+  **[[openai]] + Anthropic staff have sold ~$14B in private shares**, easing pre-IPO
+  liquidity pressure on both (ARA digest 2026-06-16).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 
