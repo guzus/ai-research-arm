@@ -4,9 +4,9 @@ title: Nebius Group
 type: entity
 aliases: [Nebius, NBIS, "Nebius Group N.V."]
 tags: [neocloud, gpu-cloud, ai-infrastructure, nvidia-partner]
-summary: Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex, scaling GPU capacity for AI training and inference.
+description: Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex, scaling GPU capacity for AI training and inference.
 created_at: 2026-05-24
-updated_at: 2026-05-24
+timestamp: 2026-05-24T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
   - {title: "ARA daily digest 2026-05-21 (Google × Blackstone neocloud JV targets CoreWeave/Nebius)", path: research/digest/2026-05-21-digest.md}

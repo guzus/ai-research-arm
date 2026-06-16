@@ -156,6 +156,9 @@ Agents command: `.agents/commands/gen-research-tweet.md`.
 For a concise framework on which AI industry areas matter most, see
 [AI Industry Map](docs/ai-industry-map.md).
 
+For portable data sharing from the ARA wiki, see
+[Open Knowledge Format for ARA](docs/okf.md).
+
 ## On-Demand Research Agent
 
 Request deep research on any topic by creating a GitHub Issue with the `research` label.

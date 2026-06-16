@@ -25,9 +25,9 @@ title: Alpha Corp
 type: entity
 aliases: [A1]
 tags: [infra]
-summary: Alpha summary.
+description: Alpha description.
 created_at: 2026-05-01
-updated_at: 2026-05-02
+timestamp: 2026-05-02T00:00:00Z
 ---
 Alpha links to [[beta]] and again via alias [[b-one|Beta]].
 """
@@ -37,9 +37,9 @@ slug: beta
 title: Beta Concept
 type: concept
 aliases: [b-one]
-summary: Beta summary.
+description: Beta description.
 created_at: 2026-05-01
-updated_at: 2026-05-03
+timestamp: 2026-05-03T00:00:00Z
 ---
 Beta links back to [[alpha]].
 
@@ -82,9 +82,11 @@ class BuildWikiIndexTest(unittest.TestCase):
             self.assertEqual(alpha["inbound"], ["beta"])
             self.assertEqual(alpha["file"], "entities/alpha.md")
             self.assertEqual(alpha["tags"], ["infra"])
-            self.assertEqual(alpha["summary"], "Alpha summary.")
-            self.assertEqual(alpha["created_at"], "2026-05-01")
+            self.assertEqual(alpha["summary"], "Alpha description.")
             self.assertEqual(alpha["updated_at"], "2026-05-02")
+            self.assertEqual(alpha["description"], "Alpha description.")
+            self.assertEqual(alpha["created_at"], "2026-05-01")
+            self.assertEqual(alpha["timestamp"], "2026-05-02T00:00:00Z")
             self.assertEqual(alpha["aliases"], ["A1"])
 
     def test_fenced_links_excluded_from_graph(self):
@@ -114,7 +116,7 @@ class BuildWikiIndexTest(unittest.TestCase):
             self.assertEqual(bwi.main(["--root", str(root)]), 0)
             self.assertEqual(bwi.main(["--root", str(root), "--check"]), 0)
             # Mutate a page → committed index.json is now stale → --check fails.
-            _write(root, "concepts/beta.md", BETA.replace("updated_at: 2026-05-03", "updated_at: 2026-05-09"))
+            _write(root, "concepts/beta.md", BETA.replace("timestamp: 2026-05-03", "timestamp: 2026-05-09"))
             self.assertEqual(bwi.main(["--root", str(root), "--check"]), 1)
 
     def test_check_missing_file_fails(self):

@@ -34,7 +34,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -46,6 +46,10 @@ RECENT_LOG_LIMIT = 20
 def _isoformat(value: Any) -> str | None:
     if value is None:
         return None
+    if isinstance(value, datetime):
+        if value.tzinfo is None:
+            return value.isoformat()
+        return value.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
     if isinstance(value, date):
         return value.isoformat()
     return str(value)
@@ -53,7 +57,7 @@ def _isoformat(value: Any) -> str | None:
 
 def _page_extra_fields(path: Path) -> dict[str, Any]:
     """Re-read a page's frontmatter for fields check_wiki's Page doesn't carry
-    (tags, summary, created_at). check_wiki already validated the page, so this
+    (tags, description, created_at). check_wiki already validated the page, so this
     is a thin metadata read, not a re-validation."""
     text = path.read_text(encoding="utf-8")
     throwaway = cw.Report()
@@ -64,8 +68,10 @@ def _page_extra_fields(path: Path) -> dict[str, Any]:
         tags = []
     return {
         "tags": [str(t) for t in tags],
-        "summary": str(data.get("summary") or ""),
+        "summary": str(data.get("description") or data.get("summary") or ""),
+        "description": str(data.get("description") or data.get("summary") or ""),
         "created_at": _isoformat(data.get("created_at")),
+        "timestamp": _isoformat(data.get("timestamp") or data.get("updated_at")),
     }
 
 
@@ -118,8 +124,10 @@ def build_index(wiki_dir: Path) -> dict[str, Any]:
                 "type": page.type,
                 "tags": extra["tags"],
                 "summary": extra["summary"],
+                "description": extra["description"],
                 "created_at": extra["created_at"],
-                "updated_at": _isoformat(page.updated_at),
+                "updated_at": _isoformat(page.timestamp),
+                "timestamp": extra["timestamp"],
                 "file": str(page.path.relative_to(wiki_dir)),
                 "aliases": list(page.aliases),
                 "outbound": sorted(outbound[page.slug]),

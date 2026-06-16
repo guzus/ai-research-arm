@@ -4,9 +4,9 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-summary: Social-platform hyperscaler and frontier-model builder (Llama); on 2026-06-16 launched "AI Mode" on Facebook, pulling from public info across its platforms as it races to catch up in the AI-assistant race.
+description: Social-platform hyperscaler and frontier-model builder (Llama); on 2026-06-16 launched "AI Mode" on Facebook, pulling from public info across its platforms as it races to catch up in the AI-assistant race.
 created_at: 2026-06-16
-updated_at: 2026-06-16
+timestamp: 2026-06-16T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
 ---

@@ -7,6 +7,11 @@ markdown pages — one per entity, concept, or theme — that a daily Claude age
 model-release tickets), **not** the raw firehose. Each page accretes detail and
 cross-links over time; pages are updated and interlinked, rarely deleted.
 
+The wiki is also the source bundle for ARA's Open Knowledge Format (OKF) export.
+See [`docs/okf.md`](okf.md) for the field mapping and export command. OKF is the
+portable sharing shape; this schema remains the stricter source-of-truth
+contract enforced inside the repo.
+
 This doc is the **contract**: the maintenance agent reads it each run, and the
 validator (`scripts/check_wiki.py`) enforces it. Keep this doc and the validator
 in lockstep — every field and rule described here is checked there, and vice
@@ -61,9 +66,9 @@ title: Nebius Group                # required; human-readable display name
 type: entity                       # required; one of: entity | concept | theme
 aliases: [Nebius, NBIS, "Nebius Group N.V."]   # optional; list of strings (other names this page answers to)
 tags: [neocloud, gpu-cloud, ai-infrastructure] # optional; list of strings (free-text facets)
-summary: Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex.  # required; ONE line
+description: Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex.  # required; ONE line
 created_at: 2026-05-24             # required; YYYY-MM-DD (ISO date)
-updated_at: 2026-05-24             # required; YYYY-MM-DD (>= created_at)
+timestamp: 2026-05-24T00:00:00Z    # required; ISO 8601 timestamp (>= created_at)
 sources:                           # optional; list of mappings, each with a title (req)
   - {title: "ARA daily digest 2026-05-24", path: research/digest/2026-05-24-digest.md}
   - {title: "Nebius Q1 2026 results", url: "https://example.com/nebius-q1", date: 2026-05-20}
@@ -81,9 +86,9 @@ Field reference:
 | `type` | yes | enum | `entity` \| `concept` \| `theme`. Must match the subdir (see taxonomy). |
 | `aliases` | no | list[str] | Alternate names. **Each alias joins the wikilink resolver namespace** (see slug rules). |
 | `tags` | no | list[str] | Free-text facets used by search/lint. |
-| `summary` | yes | string | A single line (no embedded newlines). |
+| `description` | yes | string | OKF preview field; a single line (no embedded newlines). |
 | `created_at` | yes | date | ISO `YYYY-MM-DD`. |
-| `updated_at` | yes | date | ISO `YYYY-MM-DD`; must be `>= created_at`. |
+| `timestamp` | yes | datetime | OKF last-meaningful-change timestamp; use ISO 8601 UTC (`YYYY-MM-DDT00:00:00Z` for date-granular updates); must be `>= created_at`. |
 | `sources` | no | list[map] | Each item is a mapping with `title` (req) and optional `url` (http(s)), `path` (repo-relative), `date` (ISO). No other keys. |
 
 Both flow style (`aliases: [a, b]`, `sources: - {title: ...}`) and block style
@@ -159,19 +164,19 @@ Rules:
 # Wiki Index
 
 ## Entities
-- [[slug]] — one-line summary
+- [[slug]] — one-line description
 - ...
 
 ## Concepts
-- [[slug]] — one-line summary
+- [[slug]] — one-line description
 
 ## Themes
-- [[slug]] — one-line summary
+- [[slug]] — one-line description
 ```
 
 - First line must be exactly `# Wiki Index`.
 - One `##` section per type (`Entities` / `Concepts` / `Themes`).
-- Each catalog line is `- [[slug]] — one-line summary` (em dash `—`).
+- Each catalog line is `- [[slug]] — one-line description` (em dash `—`).
 - **Every page must be listed exactly once**, under the section matching its
   `type`. **Every listed slug must have a page file.** The validator checks both
   directions and the section↔type match.
@@ -226,13 +231,13 @@ On each daily run:
      wikilink resolution working).
    - Add new citations to `sources`.
    - Add new cross-links (`[[...]]`) to other pages the update touches.
-   - Bump `updated_at` to today. **Do not** change `slug` or `created_at`.
+   - Bump `timestamp` to the ingested date as `YYYY-MM-DDT00:00:00Z`. **Do not** change `slug` or `created_at`.
 
 5. **If no match → CREATE a page.**
    - Choose the correct `type` and put the file in the matching subdir.
    - Pick a slug per the slug rules; ensure it is unique across all subdirs and
      that its aliases don't collide with any existing slug or alias.
-   - Set `created_at = updated_at = today`.
+   - Set `created_at = today` and `timestamp = <today>T00:00:00Z`.
    - Write a non-empty body with at least the "why it matters" framing and
      source citations, and cross-link it to related pages.
    - Add it to `index.md` under the right section.
@@ -261,7 +266,7 @@ On each daily run:
 
 - **Orphans** — pages with no inbound links from any other page. Candidates for
   better cross-linking.
-- **Stale pages** — `updated_at` older than ~30 days. Candidates for a refresh
+- **Stale pages** — `timestamp` older than ~30 days. Candidates for a refresh
   pass.
 - **Missing reciprocal links** — page A links B but B does not link back to A.
   Often a cheap, high-value link to add.
@@ -279,11 +284,11 @@ consistency. Exit 0 on success, exit 1 on any failure with `FAIL <relpath>:
 Hard-fail checks:
 
 - Frontmatter schema: required fields present and correctly typed; `sources`
-  mappings well-formed; `summary` single-line.
+  mappings well-formed; `description` single-line.
 - Slug: matches the pattern, equals the filename stem, globally unique; aliases
   don't collide (the resolver namespace is slugs ∪ aliases).
 - `type`: in the enum and matching the subdir.
-- Dates: ISO `YYYY-MM-DD`; `updated_at >= created_at`.
+- Dates: ISO `YYYY-MM-DD` / ISO 8601 UTC timestamp; `timestamp >= created_at`.
 - Body: non-empty.
 - Wikilinks: every `[[target]]` (outside fenced code) resolves to a slug or
   alias.

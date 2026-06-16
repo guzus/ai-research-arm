@@ -212,9 +212,10 @@ jobs:
                    the canonical name AND likely aliases). Inspect the hits.
                 b) IF a page already covers this subject → UPDATE it in
                    place: fold today's development into the body, add or
-                   refine `[[links]]` and `aliases`, and bump `updated_at`
-                   to the ingested date per the schema. Do NOT create a
-                   second page. Do NOT change its slug.
+                   refine `[[links]]` and `aliases`, and bump `timestamp`
+                   to the ingested date as `<ingested-date>T00:00:00Z` per
+                   the schema. Do NOT create a second page. Do NOT change
+                   its slug.
                 c) ONLY IF no existing page covers it → CREATE a new page in
                    the correct subdir (entities/ vs concepts/ vs themes/)
                    with a slug per the schema conventions, full frontmatter,

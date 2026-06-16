@@ -4,9 +4,9 @@ title: Liquid AI
 type: entity
 aliases: ["Liquid AI", "LiquidAI", "Liquid Foundation Models", "LFM"]
 tags: [open-weights, on-device, hybrid-models, mit-spinout]
-summary: MIT-spinout foundation model lab focused on on-device hybrid (non-pure-transformer) architectures; shipped LFM2.5-8B-A1B (8B/1B-active MoE, 128K context, 38T pre-training tokens) with day-one llama.cpp / MLX / vLLM / SGLang support on 2026-05-29.
+description: MIT-spinout foundation model lab focused on on-device hybrid (non-pure-transformer) architectures; shipped LFM2.5-8B-A1B (8B/1B-active MoE, 128K context, 38T pre-training tokens) with day-one llama.cpp / MLX / vLLM / SGLang support on 2026-05-29.
 created_at: 2026-05-29
-updated_at: 2026-05-30
+timestamp: 2026-05-30T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}

@@ -4,9 +4,9 @@ title: Neocloud
 type: concept
 aliases: [neocloud, "neo-cloud", "GPU-as-a-service", GPUaaS]
 tags: [ai-infrastructure, gpu-cloud, business-model, take-or-pay]
-summary: Business model where a specialized provider buys GPUs on debt and rents the capacity back under multi-year take-or-pay contracts, distinct from general-purpose hyperscalers.
+description: Business model where a specialized provider buys GPUs on debt and rents the capacity back under multi-year take-or-pay contracts, distinct from general-purpose hyperscalers.
 created_at: 2026-05-24
-updated_at: 2026-05-24
+timestamp: 2026-05-24T00:00:00Z
 sources:
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}

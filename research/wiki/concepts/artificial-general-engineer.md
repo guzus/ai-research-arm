@@ -4,9 +4,9 @@ title: Artificial General Engineer
 type: concept
 aliases: ["artificial general engineer", "AGE", "industrial AI", "AI-for-manufacturing"]
 tags: [industrial-ai, manufacturing, design, agents]
-summary: The thesis that an AI system can take complex physical products from concept through production — extending AI's reach from software and chatbots into hardware design and manufacturing.
+description: The thesis that an AI system can take complex physical products from concept through production — extending AI's reach from software and chatbots into hardware design and manufacturing.
 created_at: 2026-06-12
-updated_at: 2026-06-12
+timestamp: 2026-06-12T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
 ---

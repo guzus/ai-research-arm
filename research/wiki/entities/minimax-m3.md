@@ -4,9 +4,9 @@ title: MiniMax M3
 type: entity
 aliases: ["MiniMax M3", "M3", "MiniMax-M3", MiniMax]
 tags: [open-weights, model, agentic-coding, chinese-llm, long-context]
-summary: MiniMax's open-weights model with 1M context and 59% SWE-Bench Pro — the strongest open-weights agentic-coding model of the cycle.
+description: MiniMax's open-weights model with 1M context and 59% SWE-Bench Pro — the strongest open-weights agentic-coding model of the cycle.
 created_at: 2026-06-03
-updated_at: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}

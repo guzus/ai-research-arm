@@ -4,9 +4,9 @@ title: Prometheus
 type: entity
 aliases: [Prometheus, "Prometheus AI", "Bezos Prometheus"]
 tags: [industrial-ai, megaround, manufacturing, funding, jeff-bezos]
-summary: Jeff Bezos's industrial-AI startup building an "artificial general engineer"; disclosed a $12B Series B at a ~$41B valuation on 2026-06-11 — industrial AI's first megaround.
+description: Jeff Bezos's industrial-AI startup building an "artificial general engineer"; disclosed a $12B Series B at a ~$41B valuation on 2026-06-11 — industrial AI's first megaround.
 created_at: 2026-06-12
-updated_at: 2026-06-12
+timestamp: 2026-06-12T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
 ---

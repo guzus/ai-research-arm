@@ -4,9 +4,9 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-summary: Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M).
+description: Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M).
 created_at: 2026-06-08
-updated_at: 2026-06-08
+timestamp: 2026-06-08T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA model ticket — xAI Grok Build", path: research/models/tickets/xai-grok-build-2026-05.md}
