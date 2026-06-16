@@ -259,7 +259,7 @@
   font-family: var(--font);
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--ara-royal);
   margin-bottom: 14px;
@@ -367,7 +367,7 @@
   font-family: var(--font-mono);
   font-size: 0.95em;
   color: var(--accent-warm);
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
   opacity: 1;
 }
@@ -467,7 +467,7 @@
   font-family: var(--font-mono);
   font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--text-tertiary);
   margin-bottom: 6px;
@@ -527,7 +527,7 @@
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--text-tertiary);
   padding-top: 3px;
@@ -572,7 +572,7 @@
   font-family: var(--font);
   font-size: 0.66rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--text-tertiary);
   margin-bottom: 8px;
@@ -639,7 +639,7 @@
   font-family: var(--font);
   font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--ara-navy);
   text-align: left;
@@ -1730,7 +1730,7 @@ body.ara-figure-modal-open {
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -1762,7 +1762,7 @@ body.ara-figure-modal-open {
   font-family: var(--font);
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--ara-royal);
   margin: 12px 0 6px;
@@ -1830,7 +1830,7 @@ body.ara-figure-modal-open {
   font-family: var(--font);
   font-size: 0.64rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--text-tertiary);
 }
@@ -1854,7 +1854,7 @@ body.ara-figure-modal-open {
 .ara-note-label,
 .ara-source-label {
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   text-transform: uppercase;
   font-size: 0.7rem;
   color: var(--text-tertiary);
@@ -1902,7 +1902,7 @@ body.ara-figure-modal-open {
   font-family: var(--font);
   font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--ara-navy);
 }
@@ -1984,7 +1984,7 @@ body.ara-figure-modal-open {
   bottom: 4px;
   font-family: var(--font-mono);
   font-size: 0.6rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
   color: var(--text-tertiary);
   opacity: 0.6;
   pointer-events: none;
@@ -2021,7 +2021,7 @@ body.ara-figure-modal-open {
   font-family: var(--font-mono);
   font-size: 0.66rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--text-tertiary);
 }
@@ -2180,7 +2180,7 @@ body.ara-figure-modal-open {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--text-tertiary);
   min-width: 72px;
@@ -2247,7 +2247,7 @@ body.ara-figure-modal-open {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--text-tertiary);
   margin-bottom: 4px;
@@ -2289,7 +2289,7 @@ body.ara-figure-modal-open {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--text-tertiary);
   margin: 0 0 12px;

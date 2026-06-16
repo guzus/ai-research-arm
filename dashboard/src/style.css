@@ -542,7 +542,7 @@ body:not(.tab-research) .controls { display: none; }
   font-family: var(--font-mono);
   font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--accent-warm);
 }
@@ -614,7 +614,7 @@ body:not(.tab-research) .controls { display: none; }
   font-family: var(--font-mono);
   font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--ara-royal);
   margin-bottom: 5px;
@@ -862,7 +862,7 @@ body:not(.tab-research) .controls { display: none; }
   font-family: var(--font-serif);
   font-size: 1.1rem;
   line-height: 1.85;
-  letter-spacing: 0.005em;
+  letter-spacing: 0;
   color: var(--text);
 }
 
@@ -1077,7 +1077,7 @@ body:not(.tab-research) .controls { display: none; }
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--text-tertiary);
 }
@@ -1362,7 +1362,7 @@ body:not(.tab-research) .controls { display: none; }
   font-family: var(--font-mono);
   font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -1528,7 +1528,7 @@ body.has-toc .section-nav { display: none; }
   font-weight: 500;
   color: var(--text-tertiary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
   font-family: var(--font);
   white-space: nowrap;
   overflow: hidden;
@@ -1588,7 +1588,7 @@ body.has-toc .section-nav { display: none; }
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
   color: var(--text-tertiary);
   margin-bottom: 12px;
 }
@@ -1640,7 +1640,7 @@ body.has-toc .section-nav { display: none; }
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   color: var(--accent-warm);
   margin-bottom: 10px;
   display: block;
@@ -2227,7 +2227,7 @@ body.tab-frontpage .section-nav {
   font-family: var(--font-mono);
   font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
   padding: 3px 8px;
   border-radius: 999px;
@@ -2672,7 +2672,7 @@ body.tab-frontpage .section-nav {
   font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   color: var(--text-secondary);
   margin: 0 0 10px;
   display: flex;
@@ -2735,7 +2735,7 @@ body.tab-frontpage .section-nav {
   font-family: var(--font-mono);
   font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
   padding: 2px 7px;
   border-radius: 999px;
@@ -2774,7 +2774,7 @@ body.tab-frontpage .section-nav {
   font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   color: var(--text-secondary);
   margin: 0 0 12px;
 }
@@ -2798,7 +2798,7 @@ body.tab-frontpage .section-nav {
   font-size: 0.62rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   color: var(--text-secondary);
   justify-self: start;
 }
@@ -2871,7 +2871,7 @@ body.tab-frontpage .section-nav {
   font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   color: var(--text-secondary);
   margin: 0 0 12px;
 }
@@ -2949,7 +2949,7 @@ body.tab-frontpage .section-nav {
       font-family: 'JetBrains Mono', ui-monospace, monospace;
       font-size: 8.5pt;
       color: #888;
-      letter-spacing: 0.06em;
+      letter-spacing: 0;
       padding: 0.18in 0 0 0;
       vertical-align: top;
     }
@@ -3175,7 +3175,7 @@ body.tab-frontpage .section-nav {
   color: var(--text-tertiary);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -3304,7 +3304,7 @@ body.modal-open { overflow: hidden; }
   font-size: 10.5px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   padding: 2px 8px;
   border-radius: 4px;
   white-space: nowrap;
@@ -3377,7 +3377,7 @@ body.modal-open { overflow: hidden; }
 .ticket-row-key {
   font-size: 10.5px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
   color: var(--text-tertiary);
   min-width: 60px;
 }
@@ -3497,7 +3497,7 @@ body.modal-open { overflow: hidden; }
 .ticket-history-title {
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   color: var(--text-tertiary);
   margin: 0 0 8px 0;
 }
