@@ -35,6 +35,7 @@
   --font-serif: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
   --font: var(--font-serif);
   --font-mono: var(--font-serif);
+  --nav-font-size: 0.82rem;
   --page-max: 1180px;
   --page-gutter: clamp(18px, 4vw, 64px);
   --card-pad-x: clamp(18px, 3vw, 32px);
@@ -196,6 +197,7 @@ textarea {
   border-radius: 8px;
   background: var(--bg);
   color: var(--text-secondary);
+  font-size: var(--nav-font-size);
   cursor: pointer;
   transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
 }
@@ -257,7 +259,7 @@ textarea {
 }
 
 .header-link {
-  font-size: 0.78rem;
+  font-size: var(--nav-font-size);
   color: var(--text-tertiary);
   text-decoration: none;
   display: flex;
@@ -317,7 +319,7 @@ textarea {
   padding: 6px 18px;
   border-radius: 20px;
   font-family: var(--font);
-  font-size: 0.82rem;
+  font-size: var(--nav-font-size);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
@@ -684,14 +686,14 @@ body:not(.tab-research) .controls { display: none; }
 }
 
 .cal-coverage {
-  font-size: 0.78rem;
+  font-size: var(--nav-font-size);
   font-weight: 500;
   color: var(--text-tertiary);
   margin-left: 2px;
 }
 
 .cal-header-label {
-  font-size: 0.88rem;
+  font-size: var(--nav-font-size);
   font-weight: 600;
   color: var(--text);
   user-select: none;
