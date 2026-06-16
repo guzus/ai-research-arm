@@ -131,7 +131,7 @@ Four developments through May 2026 put Anthropic at the center of the field:
   disclosing that **annualized revenue crossed $47B in May** — up from ~$9B at
   end-2025 — following the **June 1 confidential S-1** (TechCrunch). The framing
   lands the same week the broader [[ai-capex]] "is-this-a-bubble?" debate
-  hardened (Broadcom's ~$320B single-day drop, the MIT NANDA "95% of AI spend
+  hardened ([[broadcom|Broadcom]]'s ~$320B single-day drop, the MIT NANDA "95% of AI spend
   produces zero P&L" thread), making the revenue print Anthropic's pre-IPO
   counter to the ROI bear case. Separately, **r/artificial surfaced visible
   [[claude-opus-4-8|Claude Opus 4.8]] quality-regression complaints** (premature
@@ -179,9 +179,9 @@ Four developments through May 2026 put Anthropic at the center of the field:
 - **The compute financing scaffolding comes into view (2026-06-10).** Google
   reportedly agreed to **guarantee the lease payments** backing Anthropic's rental
   of high-performance compute across **five US data centers**, enabling **~$35B of
-  financing** — Broadcom designs the custom chips, Google supplies the TPUs, and
+  financing** — [[broadcom|Broadcom]] designs the custom chips, Google supplies the TPUs, and
   Apollo Global + Blackstone provide the financing, sitting atop the earlier ~$35B
-  Broadcom private-credit deal and the Broadcom–Google–Anthropic ~3.5 GW TPU
+  [[broadcom|Broadcom]] private-credit deal and the Broadcom–Google–Anthropic ~3.5 GW TPU
   expansion. Anthropic **run-rate revenue reportedly hit $47B** (via Ethan Mollick),
   described as the fastest organic scaling at this level in any industry. Anthropic
   also **joined [[openai]] in calling for an international AI watchdog**, both labs
@@ -253,7 +253,7 @@ Four developments through May 2026 put Anthropic at the center of the field:
   are paying Anthropic to build products that compete with them." Anthropic is
   also reportedly **moving to control its own servers**, with **Google backstopping
   some lease obligations** — a step toward owned infrastructure atop the
-  Google/Broadcom/Apollo financing stack, and a partial answer to the
+  Google/[[broadcom|Broadcom]]/Apollo financing stack, and a partial answer to the
   compute-dependence open question below. New SpaceX (SPCX) data-center deals
   reportedly include Anthropic — see [[spacex]] and [[ai-capex]] (ARA digest
   2026-06-15).
@@ -274,11 +274,11 @@ Four developments through May 2026 put Anthropic at the center of the field:
   than attackers"), now TechCrunch-covered rather than a single X relay — see
   [[federal-ai-policy]] and [[agentic-ai-security]] (ARA digest 2026-06-16).
 - **$35B Broadcom chip order; a Claude Max class-action (2026-06-16).** Two
-  Anthropic-adjacent items surfaced on X: **Broadcom is backing a ~$35B custom-chip
+  Anthropic-adjacent items surfaced on X: **[[broadcom|Broadcom]] is backing a ~$35B custom-chip
   order for Anthropic** (Apollo/Blackstone financing, targeting ~20 GW of compute) —
   a fresh data point on the financing scaffolding underpinning Anthropic's
   owned-infrastructure pivot even as its frontier models sit embargoed (see
-  [[ai-capex]]) — and Anthropic was hit with a **federal class-action over Claude
+  [[ai-capex]] and [[broadcom]]) — and Anthropic was hit with a **federal class-action over Claude
   Max usage limits**, alleging marketing fraud. Separately, *The Information* reported
   **[[openai]] + Anthropic staff have sold ~$14B in private shares**, easing pre-IPO
   liquidity pressure on both (ARA digest 2026-06-16).

@@ -76,7 +76,8 @@
         "dynamic-workflows",
         "federal-ai-policy",
         "liquid-ai",
-        "openai"
+        "openai",
+        "sakana-ai"
       ]
     },
     {
@@ -92,8 +93,8 @@
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-12",
-      "timestamp": "2026-06-12T00:00:00Z",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -104,6 +105,7 @@
       "outbound": [
         "anthropic",
         "artificial-general-engineer",
+        "broadcom",
         "california-ai-regulation",
         "claude-fable-5",
         "cognition-ai",
@@ -126,6 +128,7 @@
         "anthropic",
         "apple",
         "artificial-general-engineer",
+        "broadcom",
         "california-ai-regulation",
         "cognition-ai",
         "coreweave",
@@ -211,6 +214,7 @@
         "agentic-ai-security",
         "ai-capex",
         "amazon",
+        "broadcom",
         "california-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
@@ -232,6 +236,7 @@
         "ai-capex",
         "amazon",
         "apple",
+        "broadcom",
         "california-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
@@ -242,6 +247,7 @@
         "gemini-3-5-flash",
         "gemini-spark",
         "minimax-m3",
+        "moonshot-kimi-k2-7-code",
         "open-weights",
         "openai",
         "openrouter",
@@ -322,6 +328,41 @@
       ]
     },
     {
+      "slug": "broadcom",
+      "title": "Broadcom",
+      "type": "entity",
+      "tags": [
+        "ai-infrastructure",
+        "semiconductors",
+        "custom-asic",
+        "private-credit",
+        "ai-capex"
+      ],
+      "summary": "Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI custom-chip plans, and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.",
+      "description": "Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI custom-chip plans, and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.",
+      "created_at": "2026-06-17",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
+      "file": "entities/broadcom.md",
+      "aliases": [
+        "Broadcom",
+        "Broadcom Inc.",
+        "AVGO",
+        "Broadcom custom ASICs"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "nvidia",
+        "openai"
+      ],
+      "inbound": [
+        "ai-capex",
+        "anthropic",
+        "nvidia"
+      ]
+    },
+    {
       "slug": "california-ai-regulation",
       "title": "California AI Regulation",
       "type": "theme",
@@ -375,8 +416,8 @@
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "description": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-06-16",
-      "timestamp": "2026-06-16T00:00:00Z",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -394,8 +435,10 @@
         "claude-opus-4-8",
         "federal-ai-policy",
         "gemini-3-5-flash",
+        "moonshot-kimi-k2-7-code",
         "open-weights",
-        "openai"
+        "openai",
+        "zhipu-glm-5-2"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -405,8 +448,10 @@
         "claude-opus-4-8",
         "federal-ai-policy",
         "gemini-3-5-flash",
+        "moonshot-kimi-k2-7-code",
         "open-weights",
-        "openai"
+        "openai",
+        "zhipu-glm-5-2"
       ]
     },
     {
@@ -550,9 +595,11 @@
         "ai-capex",
         "gemma-4",
         "minimax-m3",
+        "moonshot-kimi-k2-7-code",
         "open-weights",
         "prometheus",
-        "spacex"
+        "spacex",
+        "zhipu-glm-5-2"
       ]
     },
     {
@@ -623,6 +670,7 @@
         "claude-opus-4-8",
         "cognition-ai",
         "gemini-spark",
+        "sakana-ai",
         "xai"
       ]
     },
@@ -814,7 +862,8 @@
         "deepseek",
         "minimax-m3",
         "nvidia",
-        "open-weights"
+        "open-weights",
+        "zhipu-glm-5-2"
       ]
     },
     {
@@ -958,7 +1007,50 @@
         "deepseek",
         "gemma-4",
         "microsoft",
-        "open-weights"
+        "moonshot-kimi-k2-7-code",
+        "open-weights",
+        "openrouter",
+        "zhipu-glm-5-2"
+      ]
+    },
+    {
+      "slug": "moonshot-kimi-k2-7-code",
+      "title": "Moonshot Kimi K2.7 Code",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "china",
+        "coding",
+        "inference-pricing",
+        "local-llm"
+      ],
+      "summary": "Moonshot AI's open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while staying competitive; one of the Chinese open-weight releases filling the Fable 5 vacuum.",
+      "description": "Moonshot AI's open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while staying competitive; one of the Chinese open-weight releases filling the Fable 5 vacuum.",
+      "created_at": "2026-06-17",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
+      "file": "entities/moonshot-kimi-k2-7-code.md",
+      "aliases": [
+        "Kimi K2.7 Code",
+        "Kimi K2.7-Code",
+        "Moonshot Kimi K2.7 Code",
+        "Moonshot AI Kimi K2.7 Code"
+      ],
+      "outbound": [
+        "anthropic",
+        "claude-fable-5",
+        "deepseek",
+        "minimax-m3",
+        "open-weights",
+        "openai",
+        "openrouter",
+        "zhipu-glm-5-2"
+      ],
+      "inbound": [
+        "claude-fable-5",
+        "open-weights",
+        "openrouter",
+        "zhipu-glm-5-2"
       ]
     },
     {
@@ -1046,8 +1138,8 @@
       "summary": "The dominant AI accelerator supplier; its GPUs underwrite the AI-capex buildout, and on 2026-06-05 it released the open-weights Nemotron-3-Ultra-550B that dominated developer mindshare alongside Gemma 4.",
       "description": "The dominant AI accelerator supplier; its GPUs underwrite the AI-capex buildout, and on 2026-06-05 it released the open-weights Nemotron-3-Ultra-550B that dominated developer mindshare alongside Gemma 4.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-06-05",
-      "timestamp": "2026-06-05T00:00:00Z",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -1063,6 +1155,7 @@
       ],
       "outbound": [
         "ai-capex",
+        "broadcom",
         "coreweave",
         "gemma-4",
         "microsoft",
@@ -1072,8 +1165,10 @@
       "inbound": [
         "ai-capex",
         "apple",
+        "broadcom",
         "gemma-4",
-        "open-weights"
+        "open-weights",
+        "xiaomi-mimo-v2-5-pro"
       ]
     },
     {
@@ -1090,8 +1185,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-06-16",
-      "timestamp": "2026-06-16T00:00:00Z",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -1108,15 +1203,22 @@
         "gemma-4",
         "meta",
         "minimax-m3",
+        "moonshot-kimi-k2-7-code",
         "nvidia",
         "openai",
         "openrouter",
-        "sakana-ai"
+        "sakana-ai",
+        "xiaomi-mimo-v2-5-pro",
+        "zhipu-glm-5-2"
       ],
       "inbound": [
         "anthropic",
         "claude-fable-5",
-        "meta"
+        "meta",
+        "moonshot-kimi-k2-7-code",
+        "openrouter",
+        "xiaomi-mimo-v2-5-pro",
+        "zhipu-glm-5-2"
       ]
     },
     {
@@ -1157,12 +1259,14 @@
         "ai-capex",
         "anthropic",
         "apple",
+        "broadcom",
         "california-ai-regulation",
         "claude-fable-5",
         "federal-ai-policy",
         "figure-ai",
         "meta",
         "microsoft",
+        "moonshot-kimi-k2-7-code",
         "open-weights",
         "openrouter",
         "prometheus",
@@ -1182,28 +1286,38 @@
         "infrastructure",
         "capital-markets"
       ],
-      "summary": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 (CapitalG led, NVentures participated); weekly volume jumped 5× to 25T tokens, on track for >1 quadrillion tokens in 2026.",
-      "description": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 (CapitalG led, NVentures participated); weekly volume jumped 5× to 25T tokens, on track for >1 quadrillion tokens in 2026.",
+      "summary": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 and later surfaced Fusion API, a model-fusion endpoint blending outputs across providers.",
+      "description": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 and later surfaced Fusion API, a model-fusion endpoint blending outputs across providers.",
       "created_at": "2026-06-01",
-      "updated_at": "2026-06-01",
-      "timestamp": "2026-06-01T00:00:00Z",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
       "file": "entities/openrouter.md",
       "aliases": [
         "OpenRouter",
         "openrouter.ai",
-        "@OpenRouterAI"
+        "@OpenRouterAI",
+        "OpenRouter Fusion",
+        "Fusion API"
       ],
       "outbound": [
         "ai-capex",
         "anthropic",
-        "openai"
+        "minimax-m3",
+        "moonshot-kimi-k2-7-code",
+        "open-weights",
+        "openai",
+        "sakana-ai",
+        "zhipu-glm-5-2"
       ],
       "inbound": [
         "ai-capex",
         "deepseek",
         "microsoft",
         "minimax-m3",
-        "open-weights"
+        "moonshot-kimi-k2-7-code",
+        "open-weights",
+        "sakana-ai",
+        "zhipu-glm-5-2"
       ]
     },
     {
@@ -1252,11 +1366,11 @@
         "agents",
         "ab-mcts"
       ],
-      "summary": "Tokyo-based AI lab shipping Marlin — an autonomous \"Ultra Deep Research\" agent (\"Virtual CSO\") built on its AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.",
-      "description": "Tokyo-based AI lab shipping Marlin — an autonomous \"Ultra Deep Research\" agent (\"Virtual CSO\") built on its AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.",
+      "summary": "Tokyo-based AI lab shipping Marlin — an autonomous \"Ultra Deep Research\" agent (\"Virtual CSO\") built on AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.",
+      "description": "Tokyo-based AI lab shipping Marlin — an autonomous \"Ultra Deep Research\" agent (\"Virtual CSO\") built on AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-06-16",
-      "timestamp": "2026-06-16T00:00:00Z",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
       "file": "entities/sakana-ai.md",
       "aliases": [
         "Sakana AI",
@@ -1265,10 +1379,14 @@
         "Sakana Marlin"
       ],
       "outbound": [
-        "openai"
+        "agentic-ai-security",
+        "dynamic-workflows",
+        "openai",
+        "openrouter"
       ],
       "inbound": [
-        "open-weights"
+        "open-weights",
+        "openrouter"
       ]
     },
     {
@@ -1285,8 +1403,8 @@
       "summary": "Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 — the day's largest confirmed AI M&A.",
       "description": "Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 — the day's largest confirmed AI M&A.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-06-16",
-      "timestamp": "2026-06-16T00:00:00Z",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
       "file": "entities/salesforce.md",
       "aliases": [
         "Salesforce",
@@ -1377,6 +1495,77 @@
         "anthropic",
         "spacex"
       ]
+    },
+    {
+      "slug": "xiaomi-mimo-v2-5-pro",
+      "title": "Xiaomi MiMo-v2.5-Pro-UltraSpeed",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "china",
+        "moe",
+        "inference-throughput",
+        "efficiency"
+      ],
+      "summary": "Xiaomi's MiMo-v2.5-Pro-UltraSpeed claim of 1,000+ tokens/sec on a 1T-parameter MoE using a standard 8-GPU server; a high-signal but still partially verified inference-efficiency story.",
+      "description": "Xiaomi's MiMo-v2.5-Pro-UltraSpeed claim of 1,000+ tokens/sec on a 1T-parameter MoE using a standard 8-GPU server; a high-signal but still partially verified inference-efficiency story.",
+      "created_at": "2026-06-17",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
+      "file": "entities/xiaomi-mimo-v2-5-pro.md",
+      "aliases": [
+        "Xiaomi MiMo-v2.5-Pro-UltraSpeed",
+        "MiMo-v2.5-Pro-UltraSpeed",
+        "MiMo v2.5 Pro UltraSpeed",
+        "Xiaomi MiMo"
+      ],
+      "outbound": [
+        "nvidia",
+        "open-weights"
+      ],
+      "inbound": [
+        "open-weights"
+      ]
+    },
+    {
+      "slug": "zhipu-glm-5-2",
+      "title": "Zhipu GLM-5.2",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "china",
+        "coding",
+        "long-context",
+        "frontier-model"
+      ],
+      "summary": "Zhipu AI / Z.ai flagship model deployed in the GLM Coding Plan with 1M context and MIT-licensed open weights promised; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
+      "description": "Zhipu AI / Z.ai flagship model deployed in the GLM Coding Plan with 1M context and MIT-licensed open weights promised; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
+      "created_at": "2026-06-17",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
+      "file": "entities/zhipu-glm-5-2.md",
+      "aliases": [
+        "Zhipu GLM 5.2",
+        "Zhipu GLM-5.2",
+        "GLM 5.2",
+        "GLM-5.2",
+        "Z.ai GLM-5.2"
+      ],
+      "outbound": [
+        "claude-fable-5",
+        "deepseek",
+        "gemma-4",
+        "minimax-m3",
+        "moonshot-kimi-k2-7-code",
+        "open-weights",
+        "openrouter"
+      ],
+      "inbound": [
+        "claude-fable-5",
+        "moonshot-kimi-k2-7-code",
+        "open-weights",
+        "openrouter"
+      ]
     }
   ],
   "resolver": {
@@ -1422,9 +1611,13 @@
     "apple intelligence": "apple",
     "artificial general engineer": "artificial-general-engineer",
     "artificial-general-engineer": "artificial-general-engineer",
+    "avgo": "broadcom",
     "aws": "amazon",
     "bezos prometheus": "prometheus",
     "brett adcock": "figure-ai",
+    "broadcom": "broadcom",
+    "broadcom custom asics": "broadcom",
+    "broadcom inc.": "broadcom",
     "caisi mou": "federal-ai-policy",
     "california ai bills": "california-ai-regulation",
     "california ai regulation": "california-ai-regulation",
@@ -1469,6 +1662,7 @@
     "figure ai": "figure-ai",
     "figure robotics": "figure-ai",
     "figure-ai": "figure-ai",
+    "fusion api": "openrouter",
     "gemini 3.2 flash": "gemini-3-5-flash",
     "gemini 3.5 flash": "gemini-3-5-flash",
     "gemini 3.5 live translate": "gemini-3-5-flash",
@@ -1480,6 +1674,8 @@
     "gemma 4 12b": "gemma-4",
     "gemma 4 family": "gemma-4",
     "gemma-4": "gemma-4",
+    "glm 5.2": "zhipu-glm-5-2",
+    "glm-5.2": "zhipu-glm-5-2",
     "google gemini spark": "gemini-spark",
     "gpu-as-a-service": "neocloud",
     "gpuaas": "neocloud",
@@ -1488,6 +1684,8 @@
     "helix-02": "figure-ai",
     "industrial ai": "artificial-general-engineer",
     "jensen huang": "nvidia",
+    "kimi k2.7 code": "moonshot-kimi-k2-7-code",
+    "kimi k2.7-code": "moonshot-kimi-k2-7-code",
     "lfm": "liquid-ai",
     "liang wenfeng": "deepseek",
     "liquid ai": "liquid-ai",
@@ -1508,9 +1706,14 @@
     "microsoft": "microsoft",
     "microsoft ai": "microsoft",
     "microsoft corporation": "microsoft",
+    "mimo v2.5 pro ultraspeed": "xiaomi-mimo-v2-5-pro",
+    "mimo-v2.5-pro-ultraspeed": "xiaomi-mimo-v2-5-pro",
     "minimax": "minimax-m3",
     "minimax m3": "minimax-m3",
     "minimax-m3": "minimax-m3",
+    "moonshot ai kimi k2.7 code": "moonshot-kimi-k2-7-code",
+    "moonshot kimi k2.7 code": "moonshot-kimi-k2-7-code",
+    "moonshot-kimi-k2-7-code": "moonshot-kimi-k2-7-code",
     "msft": "microsoft",
     "mythos 5": "claude-fable-5",
     "mythos-class": "claude-fable-5",
@@ -1534,6 +1737,7 @@
     "openai inc.": "openai",
     "openai opco": "openai",
     "openrouter": "openrouter",
+    "openrouter fusion": "openrouter",
     "openrouter.ai": "openrouter",
     "opus 4.8": "claude-opus-4-8",
     "parallel subagents": "dynamic-workflows",
@@ -1559,10 +1763,22 @@
     "trump ai executive order": "federal-ai-policy",
     "x.ai": "xai",
     "xai": "xai",
+    "xiaomi mimo": "xiaomi-mimo-v2-5-pro",
+    "xiaomi mimo-v2.5-pro-ultraspeed": "xiaomi-mimo-v2-5-pro",
+    "xiaomi-mimo-v2-5-pro": "xiaomi-mimo-v2-5-pro",
     "your agents are aging too": "agent-lifespan-engineering",
+    "z.ai glm-5.2": "zhipu-glm-5-2",
+    "zhipu glm 5.2": "zhipu-glm-5-2",
+    "zhipu glm-5.2": "zhipu-glm-5-2",
+    "zhipu-glm-5-2": "zhipu-glm-5-2",
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-17",
+      "op": "ingest",
+      "summary": "Backfilled and flourished the LLM wiki after OKF migration. Created 4 entities (broadcom — custom ASIC and private-credit hinge for Anthropic/OpenAI compute financing; zhipu-glm-5-2 — 1M-context GLM Coding Plan flagship with MIT weights promised; moonshot-kimi-k2-7-code — low-price open coding model filling the Fable 5 vacuum; xiaomi-mimo-v2-5-pro — 1T MoE / 1,000+ tok/s efficiency claim). Updated surrounding graph pages (open-weights, openrouter, ai-capex, anthropic, nvidia, claude-fable-5, sakana-ai, salesforce) with reciprocal links and richer context."
+    },
     {
       "date": "2026-06-16",
       "op": "ingest",

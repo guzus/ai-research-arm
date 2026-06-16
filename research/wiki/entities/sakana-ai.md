@@ -4,9 +4,9 @@ title: Sakana AI
 type: entity
 aliases: ["Sakana AI", Sakana, Marlin, "Sakana Marlin"]
 tags: [ai-lab, japan, deep-research, agents, ab-mcts]
-description: Tokyo-based AI lab shipping Marlin — an autonomous "Ultra Deep Research" agent ("Virtual CSO") built on its AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.
+description: Tokyo-based AI lab shipping Marlin — an autonomous "Ultra Deep Research" agent ("Virtual CSO") built on AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.
 created_at: 2026-06-16
-timestamp: 2026-06-16T00:00:00Z
+timestamp: 2026-06-17T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
 ---
@@ -30,6 +30,13 @@ the increasingly crowded "deep research" agent category.
   data point on the same long-horizon-agent axis as autonomous coding agents and
   Sakana's multi-model orchestration — where the bottleneck is sustained
   goal-direction and verification rather than single-shot capability.
+- **Multi-model orchestration as product strategy.** Marlin's AB-MCTS approach
+  rhymes with [[openrouter]]'s Fusion API and [[dynamic-workflows]]' subagent
+  fan-out: do not bet everything on one model call, generate competing branches,
+  then select or verify. That is the attractive part. The hard part is exactly
+  what [[agentic-ai-security]] warns about — long-running autonomous systems
+  need visible provenance, bounded tools, and verification that does not destroy
+  task success.
 
 ## Open questions
 
@@ -40,3 +47,6 @@ the increasingly crowded "deep research" agent category.
 - **Can a non-US lab carve share in a category the US frontier labs anchor?** Marlin
   is the test case for whether differentiated *method* (vs. raw model scale) is
   enough to compete.
+- **Can it prove work quality, not just work duration?** An eight-hour run sounds
+  serious, but the buyer cares whether the final report is correct, cited, and
+  decision-useful.
