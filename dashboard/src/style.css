@@ -32,9 +32,9 @@
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
   --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-serif: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --font: var(--font-serif);
+  --font-mono: var(--font-serif);
   --page-max: 1180px;
   --page-gutter: clamp(18px, 4vw, 64px);
   --card-pad-x: clamp(18px, 3vw, 32px);
@@ -72,9 +72,16 @@ body {
   background: var(--bg-secondary);
   color: var(--text);
   line-height: 1.6;
-  letter-spacing: -0.022em;  /* tight tracking overall for faster reading */
+  letter-spacing: -0.012em;  /* subtle editorial tracking, shared with the design prototypes */
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
 /* ── Scrollbar ─────────────────────────────────────── */
@@ -862,7 +869,7 @@ body:not(.tab-research) .controls { display: none; }
   font-family: var(--font-serif);
   font-size: 1.1rem;
   line-height: 1.85;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
   color: var(--text);
 }
 
