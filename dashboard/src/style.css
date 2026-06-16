@@ -3640,7 +3640,7 @@ body.modal-open { overflow: hidden; }
   grid-template-rows: auto 1fr;
   background: var(--fr-wash);
   color: var(--fr-ink);
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
 }
 
 .focus-masthead {
@@ -3665,7 +3665,7 @@ body.modal-open { overflow: hidden; }
   font-size: 18px;
   font-weight: 780;
   line-height: 1;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -3773,7 +3773,7 @@ body.modal-open { overflow: hidden; }
 .focus-section-title {
   font-size: 13px;
   font-weight: 760;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
   text-transform: uppercase;
 }
 
@@ -3829,7 +3829,7 @@ body.modal-open { overflow: hidden; }
 .focus-story-card h3 {
   font-size: 16px;
   line-height: 1.2;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
 }
 
 .focus-story-card p {
@@ -3904,7 +3904,7 @@ body.modal-open { overflow: hidden; }
   color: var(--fr-accent);
   font-size: 13px;
   font-weight: 780;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
   text-transform: uppercase;
   margin-bottom: 18px;
 }
@@ -3913,7 +3913,7 @@ body.modal-open { overflow: hidden; }
   max-width: 780px;
   font-size: clamp(36px, 6vw, 72px);
   line-height: 0.98;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
   margin-bottom: 22px;
 }
 
@@ -3947,7 +3947,7 @@ body.modal-open { overflow: hidden; }
 .focus-article-body h3 {
   font-size: 20px;
   line-height: 1.2;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
 }
 .focus-article-body a { color: var(--fr-accent); }
 .focus-article-body ul,
@@ -3982,7 +3982,7 @@ body.modal-open { overflow: hidden; }
   font-size: 30px;
   line-height: 1;
   color: var(--fr-accent);
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
 }
 
 .focus-bar {
@@ -4020,7 +4020,7 @@ body.modal-open { overflow: hidden; }
   display: block;
   font-size: 14px;
   line-height: 1.2;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
 }
 
 .focus-source-meta {
@@ -4170,11 +4170,11 @@ body.tab-briefing #content {
   grid-template-rows: auto minmax(0, 1fr);
   gap: 12px;
   color: var(--brief-ink);
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
 }
 
 .briefing-shell * {
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
 }
 
 .briefing-topbar,
@@ -4584,7 +4584,7 @@ body.tab-source-map .app {
 
 .source-map-brand strong {
   font-size: 15px;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
   white-space: nowrap;
 }
 
@@ -4701,7 +4701,7 @@ body.tab-source-map .app {
   color: var(--source-map-muted);
   font-size: 12px;
   font-weight: 720;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
   text-transform: uppercase;
 }
 
@@ -4799,7 +4799,7 @@ body.tab-source-map .app {
   color: var(--source-map-accent);
   font-size: 12px;
   font-weight: 760;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
   text-transform: uppercase;
 }
 
@@ -4808,7 +4808,7 @@ body.tab-source-map .app {
   margin: 0;
   font-size: clamp(34px, 5vw, 72px);
   line-height: 0.96;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
 }
 
 .source-map-hero p,
@@ -4878,7 +4878,7 @@ body.tab-source-map .app {
   margin: 0;
   font-size: 14px;
   line-height: 1.18;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
 }
 
 .source-map-lane-top,
@@ -4957,7 +4957,7 @@ body.tab-source-map .app {
   margin: 0;
   font-size: clamp(24px, 3vw, 38px);
   line-height: 1.02;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
 }
 
 .source-map-thesis-links {
@@ -5620,6 +5620,10 @@ body.tab-source-map .app {
 }
 
 @media (max-width: 760px) {
+  .briefing-layout {
+    grid-template-columns: 1fr;
+  }
+
   .focus-surface-grid,
   .briefing-surface-grid {
     grid-template-columns: 1fr;
