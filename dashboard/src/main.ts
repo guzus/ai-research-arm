@@ -83,10 +83,10 @@ function timeAgo(date: Date): string {
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki';
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'sourceMap';
 // Tabs that route by date (calendar-driven). research + wiki are slug-driven
 // (or index views) and are excluded — mirror the research precedent.
-type DateTab = Exclude<Tab, 'research' | 'wiki'>;
+type DateTab = Exclude<Tab, 'research' | 'wiki' | 'sourceMap'>;
 type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
@@ -159,6 +159,42 @@ type Ticket = {
   body: string;
 };
 type TicketIndex = { tickets: Ticket[] };
+type SourceMapLane = {
+  title: string;
+  subtitle: string;
+  count: number;
+  meta: string[];
+  active?: boolean;
+};
+type SourceMapEntity = {
+  title: string;
+  meta: string;
+  score: number;
+  tags: string[];
+  primary?: boolean;
+};
+type SourceMapEvidence = {
+  title: string;
+  meta: string;
+  tags: string[];
+};
+type SourceMapModel = {
+  latestDate: string;
+  dateRail: string[];
+  thesis: string;
+  detail: string;
+  confidence: number;
+  lanes: SourceMapLane[];
+  coverage: Array<{ label: string; value: number }>;
+  linked: {
+    modelTickets: number;
+    wikiPages: number;
+    primarySources: number;
+    generative: number;
+  };
+  entities: SourceMapEntity[];
+  evidence: SourceMapEvidence[];
+};
 
 let currentDate = new Date();
 let searchTerm = '';
@@ -217,6 +253,9 @@ const languageSwitch = document.getElementById('languageSwitch');
 // are disambiguated from routes by the file extension; Vercel rewrites only
 // extensionless paths to /index.html.
 function routeFromState(): string {
+  if (activeTab === 'sourceMap') {
+    return '/design/source-map';
+  }
   if (activeTab === 'research') {
     return selectedSlug ? '/research/' + selectedSlug : '/research';
   }
@@ -281,6 +320,12 @@ function parseRoute(path: string): boolean {
   const clean = path.replace(/\/+$/, '') || '/';
   if (clean === '/') return false;
   const trimmed = clean.replace(/^\/+/, '');
+  if (trimmed === 'design/source-map') {
+    activeTab = 'sourceMap';
+    selectedSlug = null;
+    syncTabUi();
+    return true;
+  }
   const dateMatch = trimmed.match(/^(today|twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
   if (dateMatch) {
     activeTab = dateMatch[1] as Tab;
@@ -354,6 +399,7 @@ function syncTabUi(): void {
   // Wiki is slug/index-driven, not date-driven — same calendar-hiding
   // toggle as research/models.
   document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
+  document.body.classList.toggle('tab-source-map', activeTab === 'sourceMap');
 }
 
 // ── Helpers ───────────────────────────────────────────
@@ -773,7 +819,7 @@ function setSafeContent(
   // audio players), so they stay in the default allowlist; they are NOT
   // iframe-only.
   const addTags = ['mark', 'article', 'figure', 'figcaption', 'audio', 'nav', 'section', 'details', 'summary'];
-  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src'];
+  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-source-map-date', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -1205,6 +1251,263 @@ async function fetchResearchDoc(row: GenResearchRow, signal: AbortSignal): Promi
   }
 }
 
+function shortDateLabel(dateStr: string): string {
+  const parts = dateStr.split('-');
+  if (parts.length !== 3) return dateStr;
+  const date = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+function clampNumber(value: number, min: number, max: number): number {
+  return Math.max(min, Math.min(max, value));
+}
+
+function extractDigestSummaryLines(md: string): string[] {
+  const sections = splitSections(md);
+  const summary = sections.find((section) => /^(executive summary|tl;dr|tldr|summary)$/i.test(section.title.trim()));
+  if (!summary) return [];
+  return summary.body
+    .split('\n')
+    .map((line) => line.replace(/^\s*[-*]\s+/, '').trim())
+    .filter(Boolean)
+    .map((line) => {
+      const lead = line.match(/^\*\*([^*]+)\*\*/);
+      return stripMarkdown(lead?.[1] || line);
+    });
+}
+
+function extractDigestSourceLines(md: string): string[] {
+  const sourceStart = md.search(/^###\s+Sources\s*$/im);
+  if (sourceStart < 0) return [];
+  return md.slice(sourceStart)
+    .split('\n')
+    .slice(1)
+    .map((line) => line.replace(/^\s*[-*]\s+/, '').trim())
+    .filter((line) => line && !line.startsWith('*Generated at'))
+    .map((line) => stripMarkdown(line));
+}
+
+function firstCountInText(text: string): number {
+  const afterLabel = text.includes(':') ? text.split(':').slice(1).join(':') : text;
+  const match = afterLabel.match(/~?(\d{1,4})\b/);
+  return match ? Number(match[1]) : 0;
+}
+
+function sourceEvidenceCount(line: string): number {
+  const afterLabel = line.includes(':') ? line.split(':').slice(1).join(':') : line;
+  if (/twitter|hacker news|reddit|arxiv/i.test(line)) return firstCountInText(line) || 1;
+  if (/rss/i.test(line)) return Math.max(1, afterLabel.split(',').filter((part) => part.trim()).length);
+  if (/mcp search|websearch|perplexity|exa/i.test(line)) return Math.max(1, afterLabel.split(/\band\b|;/i).filter((part) => part.trim()).length);
+  return firstCountInText(line) || 1;
+}
+
+function sourceLineCount(lines: string[], label: RegExp): number {
+  return lines
+    .filter((item) => label.test(item))
+    .reduce((total, line) => total + sourceEvidenceCount(line), 0);
+}
+
+function recencyScore(dateStr: string | undefined): number {
+  if (!dateStr) return 0;
+  const ts = new Date(dateStr).getTime();
+  if (isNaN(ts)) return 0;
+  const ageDays = Math.max(0, Math.floor((Date.now() - ts) / 86400000));
+  return Math.max(0, 30 - ageDays);
+}
+
+function entityContextScore(terms: string[], context: string): number {
+  let score = 0;
+  for (const term of terms) {
+    const normalized = term.trim().toLowerCase();
+    if (normalized.length < 3) continue;
+    if (context.includes(normalized)) score += Math.min(18, normalized.length);
+  }
+  return score;
+}
+
+function topSourceMapEntities(wiki: WikiIndex | null, tickets: Ticket[] | null, context: string): SourceMapEntity[] {
+  const entities = new Map<string, SourceMapEntity>();
+  const addEntity = (entity: SourceMapEntity) => {
+    const key = entity.title.toLowerCase();
+    const existing = entities.get(key);
+    if (!existing || entity.score > existing.score) entities.set(key, entity);
+  };
+
+  for (const page of (wiki?.pages ?? [])) {
+    const degree = (page.inbound || []).length + (page.outbound || []).length;
+    const contextScore = entityContextScore([page.title, ...(page.aliases || []), ...(page.tags || [])], context);
+    addEntity({
+      title: page.title,
+      meta: `wiki: ${page.type}`,
+      score: contextScore + degree + recencyScore(page.updated_at),
+      tags: (page.tags || []).slice(0, 2),
+      primary: contextScore > 0,
+    });
+  }
+
+  for (const ticket of (tickets ?? [])) {
+    const activeBoost = ticket.status === 'closed' ? 0 : 12;
+    const contextScore = entityContextScore([
+      ticket.title,
+      ticket.company,
+      ticket.model || '',
+      ...(ticket.labels || []),
+    ], context);
+    addEntity({
+      title: ticket.model || ticket.company,
+      meta: `model ticket: ${ticket.status}`,
+      score: contextScore + activeBoost + (ticket.sources || []).length + (ticket.history || []).length + recencyScore(ticket.updated_at),
+      tags: [ticket.company, ...(ticket.labels || [])].filter(Boolean).slice(0, 2),
+      primary: contextScore > 0,
+    });
+  }
+
+  const allRanked = Array.from(entities.values())
+    .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
+  const linked = allRanked.filter((entity) => entity.primary);
+  // Deterministic fallback: if a digest uses names not present in the wiki or
+  // ticket index, fall back to global graph prominence instead of showing empty
+  // relationship columns.
+  const ranked = (linked.length > 0 ? linked : allRanked).slice(0, 6);
+  return ranked.map((entity, index) => ({ ...entity, primary: index === 0 }));
+}
+
+function buildSourceMapEvidence(
+  sourceLines: string[],
+  tickets: Ticket[] | null,
+  generativeRows: GenResearchRow[],
+  wiki: WikiIndex | null,
+): SourceMapEvidence[] {
+  const latestTicket = (tickets ?? [])
+    .slice()
+    .sort((a, b) => b.updated_at.localeCompare(a.updated_at))[0];
+  const latestArticle = generativeRows
+    .slice()
+    .sort((a, b) => b.created_at.localeCompare(a.created_at))[0];
+  const latestWiki = (wiki?.pages ?? [])
+    .slice()
+    .sort((a, b) => b.updated_at.localeCompare(a.updated_at))[0];
+
+  return [
+    {
+      title: sourceLines[0]?.split(':')[0] || 'Digest source ledger',
+      meta: sourceLines[0] ? truncateText(sourceLines[0], 54) : 'daily digest evidence',
+      tags: ['digest', 'sources'],
+    },
+    {
+      title: latestTicket?.title || 'Model ticket lifecycle',
+      meta: latestTicket ? `${latestTicket.sources.length} sources` : 'persistent release records',
+      tags: [latestTicket?.status || 'models', latestTicket?.verification || 'verification'].filter(Boolean).slice(0, 2),
+    },
+    {
+      title: latestWiki?.title || 'Wiki link expansion',
+      meta: latestWiki ? `${latestWiki.type} updated ${latestWiki.updated_at}` : 'entity memory index',
+      tags: latestWiki?.tags?.slice(0, 2) || ['wiki', 'entities'],
+    },
+    {
+      title: latestArticle?.title || 'Generative research index',
+      meta: latestArticle ? latestArticle.model : 'long-form research archive',
+      tags: latestArticle?.tags?.slice(0, 2) || ['research', 'archive'],
+    },
+  ];
+}
+
+async function buildSourceMapModel(signal: AbortSignal): Promise<SourceMapModel | null> {
+  const m = await loadManifest();
+  if (!m) return null;
+  const latestDate = (m.today || []).slice().sort().reverse()[0] || fmtDate(currentDate);
+  const [digest, tickets, wiki] = await Promise.all([
+    fetchDigest(latestDate, signal),
+    loadTickets(),
+    loadWikiIndex(signal),
+  ]);
+  if (signal.aborted) return null;
+
+  const summaryLines = digest ? extractDigestSummaryLines(digest) : [];
+  const sourceLines = digest ? extractDigestSourceLines(digest) : [];
+  // Deterministic fallback copy: used only when the latest digest is absent or
+  // its summary shape changes; the UI intentionally does not expose it as a
+  // fallback state because the route still has enough repo data to be useful.
+  const thesis = summaryLines[0] || 'Daily source flow is being compressed into inspectable intelligence.';
+  const detail = summaryLines[1] || 'The map links raw source lanes to the digest thesis, persistent model tickets, wiki memory, and long-form research artifacts.';
+
+  const socialCount =
+    sourceLineCount(sourceLines, /twitter|hacker news|reddit|bluesky/i) ||
+    (m.twitter?.length || 0);
+  const primarySources =
+    sourceLines.reduce((total, line) => total + sourceEvidenceCount(line), 0) ||
+    extractUrls(digest || '').length ||
+    sourceLines.length;
+  const ticketsCount = tickets?.length || 0;
+  const wikiCount = wiki?.pages.length || 0;
+  const activeTicketCount = (tickets || []).filter((ticket) => ticket.status !== 'closed').length;
+  const releasedTicketCount = (tickets || []).filter((ticket) => ticket.status === 'released').length;
+  const entityCount = (wiki?.pages || []).filter((page) => page.type === 'entity').length;
+  const themeCount = (wiki?.pages || []).filter((page) => page.type === 'theme').length;
+  const confidence = clampNumber(
+    45 + Math.round(Math.min(primarySources, 60) * 0.45) + Math.min(activeTicketCount, 12) + Math.min(wikiCount, 18),
+    55,
+    96,
+  );
+
+  const lanes: SourceMapLane[] = [
+    {
+      title: 'Digest synthesis',
+      subtitle: 'latest daily brief',
+      count: m.today.length,
+      meta: [latestDate, `${sourceLines.length || 1} source groups`],
+      active: true,
+    },
+    {
+      title: 'Social signal',
+      subtitle: 'X, HN, Reddit, Bluesky',
+      count: socialCount,
+      meta: ['community', 'conversation'],
+    },
+    {
+      title: 'Model tickets',
+      subtitle: 'persistent release records',
+      count: ticketsCount,
+      meta: [`${activeTicketCount} active`, `${releasedTicketCount} released`],
+    },
+    {
+      title: 'Wiki memory',
+      subtitle: 'entities, concepts, themes',
+      count: wikiCount,
+      meta: [`${entityCount} entities`, `${themeCount} themes`],
+    },
+    {
+      title: 'Generative research',
+      subtitle: 'long-form artifacts',
+      count: m.generative.length,
+      meta: ['articles', 'briefings'],
+    },
+  ];
+
+  return {
+    latestDate,
+    dateRail: (m.today || []).slice(-5),
+    thesis: cleanPublicLeadText(truncateText(thesis, 150)),
+    detail: cleanPublicLeadText(truncateText(detail, 220)),
+    confidence,
+    lanes,
+    coverage: [
+      { label: 'Models', value: clampNumber(Math.round((activeTicketCount / Math.max(ticketsCount, 1)) * 100), 0, 100) },
+      { label: 'Entities', value: clampNumber(Math.round((entityCount / Math.max(wikiCount, 1)) * 100), 0, 100) },
+      { label: 'Evidence', value: clampNumber(Math.min(primarySources, 100), 0, 100) },
+      { label: 'Research', value: clampNumber(Math.min(m.generative.length, 100), 0, 100) },
+    ],
+    linked: {
+      modelTickets: ticketsCount,
+      wikiPages: wikiCount,
+      primarySources,
+      generative: m.generative.length,
+    },
+    entities: topSourceMapEntities(wiki, tickets, [thesis, detail, ...summaryLines, ...sourceLines].join(' ').toLowerCase()),
+    evidence: buildSourceMapEvidence(sourceLines, tickets, m.generative, wiki),
+  };
+}
+
 /** Find the most recent date <= target that has data in the manifest for this tab. */
 function findMostRecentAvailable(tab: DateTab, targetDateStr: string): string | null {
   const dates = manifestDates(tab);
@@ -1241,6 +1544,8 @@ function showLoading(): void {
     ? 'Loading front page\u2026'
     : activeTab === 'models'
     ? 'Loading model timeline\u2026'
+    : activeTab === 'sourceMap'
+    ? 'Loading source map\u2026'
     : activeTab === 'research'
     ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
     : activeTab === 'wiki'
@@ -1268,6 +1573,8 @@ function showEmpty(dateStr: string): void {
     ? 'No model timeline for ' + escapeHtml(dateStr)
     : activeTab === 'research'
     ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
+    : activeTab === 'sourceMap'
+    ? 'Source map unavailable'
     : 'No Twitter report for ' + escapeHtml(dateStr);
   setSafeContent(
     content,
@@ -2619,6 +2926,181 @@ function renderTickets(tickets: Ticket[] | null): void {
       </div>
       ${emptyNote}
     </div>`,
+  );
+}
+
+function renderSourceMapMetric(label: string, value: number): string {
+  return [
+    '<div class="source-map-metric">',
+    '  <strong>' + escapeHtml(String(value)) + '</strong>',
+    '  <span>' + escapeHtml(label) + '</span>',
+    '</div>',
+  ].join('\n');
+}
+
+function renderSourceMapLane(lane: SourceMapLane): string {
+  return [
+    '<article class="source-map-source-card' + (lane.active ? ' is-active' : '') + '">',
+    '  <div class="source-map-source-icon" aria-hidden="true">',
+    '    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">',
+    '      <path d="M4 17V7"></path><path d="M12 20V4"></path><path d="M20 17V7"></path><path d="M4 12h16"></path>',
+    '    </svg>',
+    '  </div>',
+    '  <div class="source-map-source-copy">',
+    '    <strong>' + escapeHtml(lane.title) + '</strong>',
+    '    <span>' + escapeHtml(lane.subtitle) + '</span>',
+    '  </div>',
+    '  <div class="source-map-count">' + escapeHtml(String(lane.count)) + '</div>',
+    '</article>',
+  ].join('\n');
+}
+
+function renderSourceMapInputLane(lane: SourceMapLane): string {
+  return [
+    '<article class="source-map-lane">',
+    '  <div class="source-map-lane-top">',
+    '    <h2>' + escapeHtml(lane.title) + '</h2>',
+    '    <span class="source-map-lane-kicker">' + escapeHtml(String(lane.count)) + '</span>',
+    '  </div>',
+    '  <div class="source-map-lane-meta">',
+    lane.meta.map((item) => '<span>' + escapeHtml(item) + '</span>').join(''),
+    '  </div>',
+    '</article>',
+  ].join('\n');
+}
+
+function renderSourceMapEntity(entity: SourceMapEntity, compact = false): string {
+  const tags = entity.tags.length
+    ? '<div class="source-map-tags">' + entity.tags.map((tag, index) =>
+      '<span class="source-map-tag' + (index === 0 ? ' strong' : '') + '">' + escapeHtml(tag) + '</span>',
+    ).join('') + '</div>'
+    : '';
+  if (compact) {
+    return [
+      '<div class="source-map-entity-row">',
+      '  <div>',
+      '    <strong>' + escapeHtml(entity.title) + '</strong>',
+      '    <div class="source-map-entity-meta">' + escapeHtml(entity.meta) + '</div>',
+      '  </div>',
+      '  <span class="source-map-delta">+' + escapeHtml(String(Math.round(entity.score))) + '</span>',
+      '</div>',
+    ].join('\n');
+  }
+  return [
+    '<article class="source-map-entity' + (entity.primary ? ' is-primary' : '') + '">',
+    '  <div class="source-map-entity-top">',
+    '    <h3>' + escapeHtml(entity.title) + '</h3>',
+    '    <span class="source-map-delta">+' + escapeHtml(String(Math.round(entity.score))) + '</span>',
+    '  </div>',
+    tags,
+    '</article>',
+  ].join('\n');
+}
+
+function renderSourceMapEvidenceItem(item: SourceMapEvidence): string {
+  return [
+    '<article class="source-map-evidence-item">',
+    '  <div class="source-map-evidence-head">',
+    '    <h3>' + escapeHtml(item.title) + '</h3>',
+    '    <span class="source-map-evidence-meta">' + escapeHtml(item.meta) + '</span>',
+    '  </div>',
+    '  <div class="source-map-tags">',
+    item.tags.map((tag, index) =>
+      '<span class="source-map-tag' + (index === 0 ? ' strong' : '') + '">' + escapeHtml(tag) + '</span>',
+    ).join(''),
+    '  </div>',
+    '</article>',
+  ].join('\n');
+}
+
+function renderSourceMap(model: SourceMapModel): void {
+  setDocTitle('Source Map');
+  const inputLanes = model.lanes.slice(0, 3);
+  const mobileLanes = model.lanes;
+  const entityCards = model.entities.slice(0, 3);
+  const linkedMetrics = [
+    renderSourceMapMetric('model tickets', model.linked.modelTickets),
+    renderSourceMapMetric('wiki pages', model.linked.wikiPages),
+    renderSourceMapMetric('primary sources', model.linked.primarySources),
+    renderSourceMapMetric('generative', model.linked.generative),
+  ].join('\n');
+  const mobileFlow = [
+    '<section class="source-map-mobile-flow" aria-label="Source flow">',
+    '  <div class="source-map-mobile-group">',
+    mobileLanes.map(renderSourceMapInputLane).join('\n'),
+    '  </div>',
+    '  <div class="source-map-mobile-arrow" aria-hidden="true">&#8595;</div>',
+    '  <article class="source-map-thesis-card">',
+    '    <div class="source-map-thesis-top"><h2>Digest synthesis</h2><span>' + escapeHtml(shortDateLabel(model.latestDate)) + '</span></div>',
+    '    <div class="source-map-thesis-body"><h3>' + escapeHtml(model.thesis) + '</h3><p>' + escapeHtml(model.detail) + '</p></div>',
+    '    <div class="source-map-thesis-links">' + linkedMetrics + '</div>',
+    '  </article>',
+    '  <div class="source-map-mobile-arrow" aria-hidden="true">&#8595;</div>',
+    '  <div class="source-map-mobile-group">',
+    entityCards.map((entity) => renderSourceMapEntity(entity)).join('\n'),
+    '  </div>',
+    '</section>',
+  ].join('\n');
+
+  setSafeContent(
+    content,
+    [
+      '<div class="source-map-view content-card">',
+      '  <header class="source-map-topbar">',
+      '    <div class="source-map-brand">',
+      '      <div class="source-map-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V7"></path><path d="M12 20V4"></path><path d="M20 17V7"></path><path d="M4 12h16"></path></svg></div>',
+      '      <div><strong>ARA Source Map</strong><span>Daily intelligence graph</span></div>',
+      '    </div>',
+      '    <nav class="source-map-date-rail" aria-label="Digest dates">',
+      model.dateRail.map((date) =>
+        '<button type="button" data-source-map-date="' + escapeHtml(date) + '"' + (date === model.latestDate ? ' aria-current="date"' : '') + '>' + escapeHtml(shortDateLabel(date)) + '</button>',
+      ).join(''),
+      '    </nav>',
+      '    <div class="source-map-actions" aria-label="View controls">',
+      '      <button class="source-map-icon-button" type="button" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg></button>',
+      '    </div>',
+      '  </header>',
+      '  <div class="source-map-page">',
+      '    <aside class="source-map-panel source-map-side" aria-label="Source lanes">',
+      '      <div class="source-map-section-label"><span>Source lanes</span><span>' + escapeHtml(String(model.lanes.reduce((sum, lane) => sum + lane.count, 0))) + ' items</span></div>',
+      '      <div class="source-map-source-stack">' + model.lanes.map(renderSourceMapLane).join('\n') + '</div>',
+      '      <div class="source-map-section-label"><span>Coverage</span><span>fresh</span></div>',
+      '      <div class="source-map-coverage" aria-label="Coverage by lane">',
+      model.coverage.map((item) => [
+        '<div class="source-map-coverage-row">',
+        '  <span>' + escapeHtml(item.label) + '</span>',
+        '  <progress max="100" value="' + escapeHtml(String(item.value)) + '">' + escapeHtml(String(item.value)) + '</progress>',
+        '  <strong>' + escapeHtml(String(item.value)) + '</strong>',
+        '</div>',
+      ].join('\n')).join('\n'),
+      '      </div>',
+      '    </aside>',
+      '    <main class="source-map-panel source-map-main">',
+      '      <section class="source-map-hero" aria-labelledby="source-map-thesis-title">',
+      '        <div class="source-map-hero-copy">',
+      '          <div class="source-map-eyebrow">Daily thesis</div>',
+      '          <h1 id="source-map-thesis-title">' + escapeHtml(model.thesis) + '</h1>',
+      '          <p>' + escapeHtml(model.detail) + '</p>',
+      '        </div>',
+      '        <div class="source-map-thesis-score" aria-label="Source confidence ' + escapeHtml(String(model.confidence)) + ' percent"><strong>' + escapeHtml(String(model.confidence)) + '</strong><span>source confidence</span></div>',
+      '      </section>',
+      '      <section class="source-map-map" aria-label="Source map">',
+      '        <div class="source-map-lane-column" aria-label="Inputs">' + inputLanes.map(renderSourceMapInputLane).join('\n') + '</div>',
+      '        <div class="source-map-connector multi" aria-hidden="true"></div>',
+      '        <div class="source-map-thesis-column"><article class="source-map-thesis-card"><div class="source-map-thesis-top"><h2>Digest synthesis</h2><span>' + escapeHtml(shortDateLabel(model.latestDate)) + '</span></div><div class="source-map-thesis-body"><h3>' + escapeHtml(model.thesis) + '</h3><p>' + escapeHtml(model.detail) + '</p></div><div class="source-map-thesis-links">' + linkedMetrics + '</div></article></div>',
+      '        <div class="source-map-connector" aria-hidden="true"></div>',
+      '        <div class="source-map-entity-column" aria-label="Linked entities">' + entityCards.map((entity) => renderSourceMapEntity(entity)).join('\n') + '</div>',
+      '      </section>',
+      mobileFlow,
+      '    </main>',
+      '    <aside class="source-map-panel source-map-right" aria-label="Entity and evidence detail">',
+      '      <section class="source-map-entity-list" aria-labelledby="source-map-entity-heading"><div class="source-map-section-label"><span id="source-map-entity-heading">Linked entities</span><span>ranked</span></div>' + model.entities.slice(0, 5).map((entity) => renderSourceMapEntity(entity, true)).join('\n') + '</section>',
+      '      <section class="source-map-evidence-list" aria-labelledby="source-map-evidence-heading"><div class="source-map-section-label"><span id="source-map-evidence-heading">Evidence trail</span><span>primary</span></div>' + model.evidence.map(renderSourceMapEvidenceItem).join('\n') + '</section>',
+      '      <button class="source-map-pill-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg><span>Open digest</span></button>',
+      '    </aside>',
+      '  </div>',
+      '</div>',
+    ].join('\n'),
   );
 }
 
@@ -4842,7 +5324,17 @@ async function load(): Promise<void> {
   showLoading();
 
   try {
-    if (activeTab === 'wiki') {
+    if (activeTab === 'sourceMap') {
+      const result = await withTimeout(buildSourceMapModel(controller.signal), LOAD_TIMEOUT_MS, controller);
+      if (requestId !== loadRequestId) return;
+      if (result === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (result) {
+        renderSourceMap(result);
+      } else {
+        showEmpty(dateStr);
+      }
+    } else if (activeTab === 'wiki') {
       // Fetch + cache the committed index.json once; everything (catalog,
       // backlinks, resolver) is derived from it. No JS-side graph building.
       const idx = await withTimeout(loadWikiIndex(controller.signal), LOAD_TIMEOUT_MS, controller);
@@ -5375,6 +5867,39 @@ content.addEventListener('click', (e) => {
     load();
     return;
   }
+  if (activeTab === 'sourceMap' && target.closest('.source-map-icon-button')) {
+    openSearch();
+    return;
+  }
+  const sourceMapDate = activeTab === 'sourceMap'
+    ? target.closest('[data-source-map-date]') as HTMLElement | null
+    : null;
+  if (sourceMapDate) {
+    const picked = sourceMapDate.dataset.sourceMapDate || fmtDate(currentDate);
+    const parts = picked.split('-');
+    if (parts.length === 3) {
+      currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+      calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    }
+    activeTab = 'today';
+    selectedSlug = null;
+    syncTabUi();
+    load();
+    return;
+  }
+  if (activeTab === 'sourceMap' && target.closest('.source-map-pill-button')) {
+    const latest = manifest?.today?.slice().sort().reverse()[0] || fmtDate(currentDate);
+    const parts = latest.split('-');
+    if (parts.length === 3) {
+      currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+      calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    }
+    activeTab = 'today';
+    selectedSlug = null;
+    syncTabUi();
+    load();
+    return;
+  }
   const back = target.closest('[data-research-back]') as HTMLElement | null;
   if (back) {
     selectedSlug = null;
@@ -5554,10 +6079,11 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
     document.body.classList.toggle('tab-research', activeTab === 'research');
     document.body.classList.toggle('tab-models', activeTab === 'models');
     document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
+    document.body.classList.toggle('tab-source-map', activeTab === 'sourceMap');
     // Re-probe availability for current month with new tab (date tabs only).
     // The models/wiki tabs don't use date routing, so skip probing there too —
     // it'd just paint dots on a calendar that's hidden anyway.
-    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki') {
+    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'sourceMap') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -5576,7 +6102,8 @@ const currentTab: Tab = activeTab as Tab;
 document.body.classList.toggle('tab-research', currentTab === 'research');
 document.body.classList.toggle('tab-models', currentTab === 'models');
 document.body.classList.toggle('tab-wiki', currentTab === 'wiki');
-if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki') {
+document.body.classList.toggle('tab-source-map', currentTab === 'sourceMap');
+if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'sourceMap') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();
