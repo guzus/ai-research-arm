@@ -1,11 +1,13 @@
 AI News - 2026-06-16
 
 TOP STORIES:
-• Anthropic Fable 5/Mythos 5: first restoration timeline surfaces — models stay locked until US "national-security apparatus is hardened," possibly "a few weeks" (still offline June 16)
-• Net-new detail: Saturday June 13 negotiation call named — Commerce Sec Lutnick + Cyber Director Cairncross vs. Anthropic co-founder Tom Brown; both sides reportedly want access back
-• Mistral in talks for €3B at ~€20B valuation (new to our coverage; broke June 12) — would ~double its Sept Series C value
+• Cybersecurity community revolts: 120+ security execs (Sophos, Adobe, Zoom, NVIDIA, Veracode) sign open letter to Lutnick & Cairncross demanding the Anthropic Fable 5/Mythos 5 export ban be lifted — argue the models are "not uniquely" dangerous
+• Researcher Katie Moussouris (Luta Security) says the "jailbreak" was just a "fix this code" prompt that returned patches — i.e. no bypass at all, challenging the ban's whole premise
+• First restoration timeline: models stay locked until US "national-security apparatus is hardened," possibly "a few weeks" (Saturday June 13 call: Lutnick + Cairncross vs. Anthropic's Tom Brown). Still offline June 16.
+• Mistral in talks for €3B at ~€20B valuation (new to coverage; broke June 12)
 
 KEY NUMBERS:
+• Open letter: 120+ signatories, named CISOs/CEOs from Sophos, Adobe, Zoom, NVIDIA, Veracode
 • Mistral: €3B raise / €20B (~$23B) valuation, ~2x prior €11.7B
 • Fable 5 / Mythos 5: offline since June 12, still dark; "few weeks" est.
 
