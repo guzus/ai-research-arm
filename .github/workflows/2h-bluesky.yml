@@ -1,12 +1,11 @@
-name: Bluesky AI Researcher Feed (Twice Daily)
+name: Bluesky AI Researcher Commentary (Daily)
 
 on:
   schedule:
-    # Run twice daily (00:11 and 12:11 UTC). A single daily snapshot of a
-    # small set of sporadically-posting researchers repeatedly yielded <3
-    # posts (the digest flagged "Bluesky: 1 feed snapshot" as the lane's weak
-    # point); a second pass roughly doubles candidate posts per day.
-    - cron: '11 0,12 * * *'
+    # Run once daily as a low-maintenance expert-commentary lane. Bluesky is
+    # useful for reactions from a small set of AI researchers, not as a core
+    # breaking-news firehose, so keep cadence and output volume restrained.
+    - cron: '11 10 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -120,7 +119,13 @@ jobs:
           claude_args: |
             --model sonnet --allowedTools "Read,Write,Bash(ls:*)"
           prompt: |
-            You are a Bluesky AI feed curator. Process REAL-TIME posts from Bluesky.
+            You are a Bluesky AI expert-commentary curator. Process recent
+            posts from a small set of tracked AI researchers and practitioners.
+
+            Treat this lane as supplemental interpretation for the daily digest,
+            not as a breaking-news firehose. Prefer posts that add analysis,
+            evaluation, practical experience, or expert context that RSS,
+            Twitter/X, HN, Reddit, and arXiv are unlikely to supply directly.
 
             TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
             DATE: ${{ steps.datetime.outputs.date }}
@@ -152,8 +157,7 @@ jobs:
             `.tmp/bluesky-section.md` using the Write tool. Do NOT read,
             write, or edit anything under `research/bluesky/` — a
             deterministic workflow step deduplicates your section by post
-            link, appends it onto the daily file, and prevents a second daily
-            run from clobbering or re-listing the first.
+            link and appends it onto the daily file.
 
             Do NOT include the top-level `# Bluesky AI Feed` title — it
             already exists in the daily file. Write ONLY the timestamped
@@ -181,6 +185,16 @@ jobs:
             `## ${{ steps.datetime.outputs.timestamp }}` heading followed by
             one line: `_No qualifying posts this cycle._`
 
+            ## OUTPUT BUDGET
+
+            Include at most 8 bullets total. Include at most 3 bullets from any
+            single author. If more posts qualify, keep the highest-signal mix:
+            concrete model evaluations, launch/postmortem reactions, surprising
+            technical notes, governance/policy analysis, and posts with clear
+            downstream digest value. Drop generic reactions, jokes, repeated
+            Fable/Claude usage anecdotes, and posts already well covered by RSS
+            or Twitter/X.
+
             ## FILTERS
 
             INCLUDE:
@@ -204,10 +218,9 @@ jobs:
 
       # Append the agent's section onto the daily file and commit. The post
       # step validates that the agent produced a section, removes any post
-      # link already present in today's file, and only then mutates
-      # research/bluesky/. The twice-daily schedule exists to collect net-new
-      # posts; without link dedup, the 48-hour source window would re-list the
-      # morning posts in the evening section.
+      # link already present in today's file, enforces the lane's output caps,
+      # and only then mutates research/bluesky/. The link dedup is defensive
+      # for manual re-runs and retries against the same 48-hour source window.
       - name: Append section to daily file and commit
         env:
           DATE: ${{ steps.datetime.outputs.date }}
@@ -232,12 +245,16 @@ jobs:
           import os
           import re
           import sys
+          from collections import Counter
 
           daily_file = os.environ["FILE"]
           section_file = os.environ["SECTION"]
           filtered_file = os.environ["FILTERED"]
           timestamp = os.environ["TIMESTAMP"]
           link_re = re.compile(r"https://bsky\.app/profile/[^)\s]+")
+          author_re = re.compile(r"^\s*-\s+\*\*([^*]+)\*\*")
+          max_total = 8
+          max_per_author = 3
 
           seen_links = set()
           if os.path.exists(daily_file):
@@ -256,6 +273,7 @@ jobs:
           output = [f"## {timestamp}"]
           current_heading = None
           current_items = []
+          author_counts = Counter()
           unique_posts = 0
 
           def flush_category():
@@ -280,8 +298,15 @@ jobs:
               links = link_re.findall(line)
               if links and any(link in seen_links for link in links):
                   continue
+              if unique_posts >= max_total:
+                  continue
+              author_match = author_re.search(line)
+              author = author_match.group(1) if author_match else "(unknown)"
+              if author_counts[author] >= max_per_author:
+                  continue
               current_items.append(line)
               unique_posts += 1
+              author_counts[author] += 1
               seen_links.update(links)
 
           flush_category()

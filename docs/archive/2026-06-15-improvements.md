@@ -2,7 +2,8 @@
 
 ## Concrete defect found
 
-**Lane:** Bluesky (`2h-bluesky.yml`, twice-daily `00:11` / `12:11` UTC).
+**Lane:** Bluesky (`2h-bluesky.yml`, formerly twice-daily `00:11` /
+`12:11` UTC; reduced here to daily `10:11` UTC).
 
 **Defect:** the second daily run **overwrote** the daily file instead of
 appending to it, destroying the first run's posts.
@@ -26,12 +27,12 @@ appending to it, destroying the first run's posts.
 - Same shape on `2026-06-13`: only one section survives despite the
   twice-daily schedule.
 
-**Why it matters:** the twice-daily cadence was added *specifically* to
-"roughly double candidate posts per day" (see the cron comment in the
-workflow — a single daily snapshot kept yielding <3 posts). The overwrite
-behavior **inverts that intent**: instead of doubling, the evening run
-*halved* the day's Bluesky signal and dropped its strongest posts before
-the digest could read them.
+**Why it matters:** the twice-daily cadence was added to increase candidate
+posts when the source list was sparse. After the May/June handle fixes, the
+lane became reliable enough to produce real commentary but not valuable enough
+to justify firehose behavior. The overwrite behavior **inverted the original
+intent**: instead of accumulating useful signal, the later run erased the
+earlier run's strongest posts before the digest could read them.
 
 **Root cause:** the agent prompt only asked to "append if file exists" as a
 weak parenthetical inside the FORMAT heading, while the agent held the
@@ -42,30 +43,39 @@ deterministically; Bluesky did not.
 
 ## Fix
 
-Made the append **deterministic** in `.github/workflows/2h-bluesky.yml`,
-mirroring the proven `daily-front-page.yml` bash-commit pattern:
+Made the lane lower-maintenance and the append **deterministic** in
+`.github/workflows/2h-bluesky.yml`, mirroring the proven
+`daily-front-page.yml` bash-commit pattern:
 
-1. **New pre-step `Ensure daily Bluesky file exists`** — idempotently
+1. **Cadence reduced to daily `10:11` UTC** — Bluesky is kept as a
+   supplemental expert-commentary source, not a core breaking-news lane.
+2. **New pre-step `Ensure daily Bluesky file exists`** — idempotently
    creates `research/bluesky/<date>.md` with its `# Bluesky AI Feed` title
    header if missing.
-2. **Agent contract narrowed** — it now writes ONLY its per-run section
+3. **Agent contract narrowed and capped** — it now writes ONLY its per-run section
    (starting at `## <timestamp>`) to `.tmp/bluesky-section.md`. The
    `git` tool was removed from `allowedTools` (now `Read,Write,Bash(ls:*)`)
    and the prompt forbids touching `research/bluesky/`, so the model can no
-   longer clobber or commit the daily file. A quiet cycle still emits a
+   longer clobber or commit the daily file. Output is capped at 8 bullets
+   total and 3 bullets per author, with a quiet cycle still emitting a
    `## <timestamp>` heading with `_No qualifying posts this cycle._`.
-3. **New post-step `Append section to daily file and commit`** — validates
+4. **New post-step `Append section to daily file and commit`** — validates
    that the agent produced the section, drops any bullet whose Bluesky post
-   link already exists in today's file, appends the filtered section to
-   `research/bluesky/<date>.md`, then commits under the standard
-   `github-actions[bot]` identity. `safe-push` pushes it as before.
+   link already exists in today's file, enforces the 8-total / 3-per-author
+   caps, appends the filtered section to `research/bluesky/<date>.md`, then
+   commits under the standard `github-actions[bot]` identity. `safe-push`
+   pushes it as before.
+5. **Daily-improve value check added** — future self-improvement runs should
+   judge supplemental lanes such as Bluesky by distinct digest-worthy insight
+   and prefer removal/demotion over more sources or cadence when value is low.
 
 ## Expected impact
 
-- The evening run can no longer erase the morning run; snapshots accumulate
-  as net-new posts instead of re-listing the same 48-hour window.
-- High-engagement posts captured early in the day reach the daily digest
-  instead of being silently deleted before it runs.
+- The lane keeps its useful part — expert interpretation from a small set of
+  AI researchers/practitioners — without acting like a fragile twice-daily
+  firehose.
+- Manual re-runs can no longer erase prior output; snapshots accumulate as
+  net-new posts instead of re-listing the same 48-hour window.
 - Append and dedup behavior no longer depend on model discretion — they are
   enforced by the workflow, matching the determinism of the other aggregation
   lanes.

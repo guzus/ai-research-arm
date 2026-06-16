@@ -118,7 +118,7 @@ input).
 | `hourly-rss.yml` | `:30` every hour | `research/rss/` |
 | `daily-ai-blogs.yml` | `:13` every 6h | `research/blogs/` |
 | `hourly-twitter.yml` | every 3h `:07`; DeepSeek/Fireworks comparison lanes via matrix/manual dispatch | `research/twitter/` + `research/summaries/` + Telegram headline alerts; comparison outputs under `research/twitter-deepseek/`, `research/twitter-deepseek-pi/`, and `research/twitter-fireworks-pi/` |
-| `2h-bluesky.yml` | twice daily `00:11`,`12:11` | `research/bluesky/` |
+| `2h-bluesky.yml` | daily `10:11` | `research/bluesky/` (supplemental expert commentary, capped output) |
 | `4h-community.yml` | every 4h `:19` | `research/community/*-hn.md`, `*-reddit.md` |
 | `daily-arxiv.yml` | daily `06:13` | `research/arxiv/` |
 
