@@ -3,8 +3,12 @@ slug: gemini-3-2-flash
 title: Gemini 3.5 Flash — Google I/O 2026 release
 company: Google / DeepMind
 model: Gemini 3.5 Flash
-status: released
+status: closed
 status_note: |
+  **Closed 2026-06-16 (released-and-aged).** Shipped GA at Google I/O 2026
+  (2026-05-19); ≥4 weeks of settled coverage with no successor on this slug
+  (the Pro tier is its own ticket [[gemini-3-5-pro]]), so it rolls into normal
+  coverage. History preserved below.
   Revealed and shipped GA at Google I/O 2026 (2026-05-19) as **Gemini 3.5
   Flash** — not the leaked "3.2 Flash". The pre-I/O GCP console artifact
   ("Gemini 3.2 Flash-lite-live") was an internal codename; Google branded
@@ -36,9 +40,9 @@ sources:
   - "@kimmonismus"
   - "@_mohansolo"
 created_at: 2026-05-05
-updated_at: 2026-05-21
-closed_at: null
-closed_reason: null
+updated_at: 2026-06-16
+closed_at: 2026-06-16
+closed_reason: released-and-aged
 history:
   - ts: 2026-05-05
     change: Created — Gemini 3.2 Flash spotted in iOS app + AI Studio with pricing ($0.25 / $2.00 per MTok)
@@ -56,6 +60,8 @@ history:
     change: "status → released. Demis Hassabis: 4x faster than comparable frontier models (12x / ~800 tok/s in Antigravity), beats Gemini 3.1 Pro on coding + agentic; reported pricing $1.50 / $9.00 per MTok (secondary). Gemini 3.5 Pro confirmed for next month (new ticket gemini-3-5-pro)"
   - ts: 2026-05-21
     change: "Post-launch momentum: Antigravity 3x'd Gemini rate limits across all paid tiers + reset weekly quotas after users hit limits fast (@_mohansolo / @OfficialLoganK); 3.5 Flash ranks #1 on Zapier's Automation Bench, beating other frontier models at lower cost; \"Gemini 3.5 Flash has landed\" (official @GoogleDeepMind)"
+  - ts: 2026-06-16
+    change: "Closed — released-and-aged. ≥4 weeks past the 2026-05-19 GA with the model fully shipped and settled into normal coverage; no successor on this slug (the 3.5 Pro tier is tracked on [[gemini-3-5-pro]]). Per the ticket's own transition trigger (close after ~2026-06-16). History preserved."
 ---
 
 Google I/O 2026 (2026-05-19) resolved this ticket: the Flash-tier reveal

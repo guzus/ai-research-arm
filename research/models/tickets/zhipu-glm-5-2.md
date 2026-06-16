@@ -12,8 +12,13 @@ status_note: |
   coding test ranked it **first above Qwen 3.6 27B**. Dominant open-weights
   story this cycle (HN front page ~468 pts; top of r/LocalLLaMA). Tracked
   alongside other open-weight contenders [[minimax-m3]], [[alibaba-qwen-3-7-plus]],
-  [[gemma-4]].
-expected: "API access + MIT open weights ~week of 2026-06-15 (per Zhipu)"
+  [[gemma-4]]. **2026-06-16:** corroborated by a dated **2026-06-15 launch
+  announcement** (Zhipu/"Huazhang Technology") billing GLM-5.2 as its newest
+  flagship — **1M long context**, "leading on long-range tasks," **to be
+  open-sourced under MIT** — restated across China-tech aggregators. Still no
+  captured primary Zhipu blog/model card and the MIT weights are described as
+  forthcoming, so verification stays `partial`.
+expected: "API access + MIT open weights ~week of 2026-06-15 (per Zhipu); 2026-06-15 launch announcement restates MIT open-sourcing forthcoming"
 labels:
   - frontier-model
   - open-weights
@@ -25,12 +30,14 @@ sources:
   - "@Zai_org"
   - https://news.ycombinator.com/item?id=48518684
 created_at: 2026-06-14
-updated_at: 2026-06-14
+updated_at: 2026-06-16
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-14
     change: "Created — Zhipu AI shipped GLM 5.2: deployed in the GLM Coding Plan now, with API + MIT open weights promised within a week. Reported 1M context, max/high thinking modes; early one-shot coding benchmarks rank it above Qwen 3.6 27B. Dominant open-weights story this cycle (HN ~468 pts, top of r/LocalLLaMA). Usable in the coding plan now → status released; widely corroborated across HN/r/LocalLLaMA but no captured primary Zhipu blog/model card and weights not yet public → verification partial. Sits with open-weight peers [[minimax-m3]], [[alibaba-qwen-3-7-plus]], [[gemma-4]]"
+  - ts: 2026-06-16
+    change: "Corroboration — a dated 2026-06-15 launch announcement (attributed to Zhipu / 'Huazhang Technology') restates GLM-5.2 as the newest flagship with 1M long context, a claimed lead on long-range tasks, and MIT open-sourcing, echoed across China-tech aggregators. Strengthens the release record but still no captured primary Zhipu blog/model card and the MIT weights are described as forthcoming → status stays released, verification stays partial."
 ---
 
 **GLM 5.2**, from **Zhipu AI (Z.ai)**, is the cycle's dominant open-weights

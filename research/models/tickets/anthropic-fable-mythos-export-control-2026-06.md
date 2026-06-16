@@ -34,7 +34,21 @@ status_note: |
   30-day data-retention rule) even before the order; **Andrej Karpathy** and
   other non-US Anthropic staff reportedly locked out; and a low-credibility
   claim that a China-linked group had obtained access to Mythos.
-expected: "Restoration pending — Anthropic 'working to restore access'; Polymarket priced ~65% restoration by 2026-07-01. No published Commerce/BIS document yet"
+
+  **As of 2026-06-16 (day 4):** still no restoration. Anthropic leaders **met
+  with White House officials to discuss Fable 5's risks and the talks ended
+  without consensus** (per WIRED, secondary), with export controls left in
+  place — confirming the dispute is now a sustained standoff rather than a
+  one-off shock. Reporting (FT, attributed to a source close to OpenAI) frames
+  the directive as a **"deemed export control"** — the deemed-export regime
+  normally reserved for defense/nuclear tech, where a foreign national merely
+  *touching* the technology counts as an export — and says **frontier labs
+  worked with the government** as the industry pushes to keep foreign-national
+  researchers able to work on advanced models. Anthropic's leadership is
+  reportedly **split internally** on how much risk Fable 5 actually presents.
+  All remains secondary/social-sourced; the Commerce/BIS directive text is
+  still unpublished.
+expected: "Restoration pending — Anthropic/White House talks ended without consensus (day 4, per WIRED); export controls remain in place. No published Commerce/BIS document yet; Polymarket had priced ~65% restoration by 2026-07-01"
 labels:
   - regulatory
   - export-control
@@ -50,8 +64,9 @@ sources:
   - https://www.theverge.com/ai-artificial-intelligence/949553/anthropic-fable-5-mythos-5-government-national-security
   - https://arstechnica.com/ai/2026/06/anthropic-shuts-down-fable-mythos-models-following-trump-admin-directive/
   - https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578
+  - "@WIRED"
 created_at: 2026-06-14
-updated_at: 2026-06-15
+updated_at: 2026-06-16
 closed_at: null
 closed_reason: null
 history:
@@ -59,6 +74,8 @@ history:
     change: "Created — US export-control directive (2026-06-12) bars foreign-national access to Anthropic's Fable 5 and Mythos 5, forcing a worldwide shutdown of both models for all customers late 2026-06-12 (other Claude models unaffected; sessions fall back to Opus 4.8). First US export control reaching a frontier model rather than chips. Reported trigger: an Amazon-surfaced Fable 5 jailbreak; Amazon CEO Jassy briefed Treasury's Bessent; White House asked Dario Amodei to fix or de-deploy and (per @DavidSacks) he refused. Anthropic calls it a 'misunderstanding,' disputes severity (says GPT-5.5 shares the vuln), and is working to restore access; dueling timelines on whether it was a 90-min ultimatum or hours of negotiation. Reuters/Techmeme, The Verge, Ars Technica, WSJ all carry it; Anthropic's own statement (@AnthropicAI, ~70K+ likes) + @ClaudeDevs product notice are primary for the suspension. Status confirmed (the order and shutdown are on-record/multi-source); verification partial (no published Commerce/BIS directive text; trigger details rest on anonymous/secondary sourcing). Product impact tracked on [[claude-fable-5]] and [[mythos-public-release]]"
   - ts: 2026-06-15
     change: "Day 3 — Fable 5 and Mythos 5 remain suspended worldwide; no restoration, license carve-out, or published Commerce/BIS directive text yet, and the open-weights / sovereignty discourse continues. Additional *unverified* secondary/social claims circulating (none primary-sourced): Microsoft reportedly told its own staff to stop using Fable 5 over a 30-day data-retention rule even before the order; Andrej Karpathy and other non-US Anthropic staff reportedly locked out; and a low-credibility claim that a China-linked group obtained access to Mythos. Status stays confirmed; verification stays partial."
+  - ts: 2026-06-16
+    change: "Day 4 — still no restoration; the dispute hardens into a sustained standoff. Anthropic leaders met with White House officials over Fable 5's risks and the talks ended without consensus, export controls left in place (WIRED, secondary). FT (source close to OpenAI) frames the order as a 'deemed export control' — the defense/nuclear-style regime where a foreign national merely touching the tech counts as an export — and reports frontier labs worked with the government, with the industry now pushing to preserve foreign-national researchers' ability to work on advanced models; Anthropic's leadership is reportedly split internally on how much risk Fable 5 presents. Still no published Commerce/BIS directive text. Status stays confirmed; verification stays partial (all new detail secondary/social)."
 ---
 
 On **2026-06-12** the US government issued an **export-control directive**

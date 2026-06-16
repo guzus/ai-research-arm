@@ -3,8 +3,19 @@ slug: anthropic-conway-orbit-2026-05
 title: Anthropic product surface leak — Conway agent, Orbit assistant, Operon bioscience, .EXT extensions, Multilingual Voice Mode, file-based memory
 company: Anthropic
 model: null
-status: rumored
+status: closed
 status_note: |
+  **Closed 2026-06-16 (stale-rumor-unverified).** This single-source
+  code-spelunking cluster (Conway / Orbit / Operon / .EXT / Multilingual Voice
+  Mode / file-based memory) sat at `rumored` / `unverified` for 15 daily cycles
+  (created 2026-06-01) with **no primary confirmation** of any named surface. A
+  heavy Anthropic news cycle through 2026-06-16 — the Fable 5 / Mythos 5
+  export-control shutdown ([[anthropic-fable-mythos-export-control-2026-06]]) and
+  a multi-city developer event — produced **zero** mention of any of these
+  product names, weak negative evidence that the strings did not convert on the
+  expected window. Closed per the ticket's own ≥15-cycle stale trigger; if any
+  named product (Conway, Orbit, Operon, .EXT) later ships, open a fresh
+  per-product ticket and back-link here. History preserved below.
   @testingcatalog (Alexey Shabanov) scoop 2026-05-31 13:58 UTC
   (~199 likes / 9 RT, climbing) plus the companion testingcatalog.com
   article ("What releases to expect from Anthropic in coming weeks",
@@ -40,12 +51,14 @@ sources:
   - "@testingcatalog"
   - https://www.testingcatalog.com/what-releases-to-expect-from-anthropic-in-coming-weeks/
 created_at: 2026-06-01
-updated_at: 2026-06-01
-closed_at: null
-closed_reason: null
+updated_at: 2026-06-16
+closed_at: 2026-06-16
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-06-01
     change: "Created — @testingcatalog scoop 2026-05-31 13:58 UTC (companion article testingcatalog.com 13:48 UTC) on Anthropic product surface: Conway (Claude Code/mobile, one-agent-per-user vs OpenClaw/Hermes), Orbit assistant (Deploy favorite apps), Operon for bioscience, file-based memory, Multilingual Voice Mode, .EXT extension package format / 'UI tabs' abstraction for Claude marketplace + webhook support + Chrome control. Single-source code-spelunking; no @AnthropicAI / @ClaudeDevs / @alexalbert__ confirmation. Lands alongside $965B Series H ([[anthropic-series-h-2026-05]]) and Opus 4.8 ([[opus-4-8]]). Operon parallels [[openai-rosalind-biodefense-2026-05]]; .EXT marketplace parallels [[microsoft-build-2026-models]] Copilot super-app push"
+  - ts: 2026-06-16
+    change: "Closed — stale-rumor-unverified. 15 daily cycles at rumored/unverified (since 2026-06-01) with no primary confirmation of any named surface, and a heavy Anthropic news cycle through 2026-06-16 (export-control shutdown + a multi-city developer event) surfaced none of these product names — weak negative evidence the strings did not convert on the expected window. Per the ticket's own ≥15-cycle stale trigger. If any named product later ships, open a fresh per-product ticket and back-link here; history preserved."
 ---
 
 **@testingcatalog's 2026-05-31 13:58 UTC scoop** (Alexey Shabanov) is

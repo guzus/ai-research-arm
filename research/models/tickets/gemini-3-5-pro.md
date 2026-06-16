@@ -8,8 +8,14 @@ status_note: |
   Officially confirmed at Google I/O 2026 (2026-05-19) as "coming next
   month," announced alongside the Gemini 3.5 Flash GA as the Pro tier of
   the new 3.5 family. Reported to already be in internal use at Google.
-  No public artifact or API yet.
-expected: 2026-06 (next month, per @GoogleDeepMind at I/O)
+  No public artifact or API yet. **2026-06-16:** a **"Coming Soon" tag
+  reportedly surfaced on the Gemini Pro model card** within the promised
+  June window — a weak placeholder/launch tell, not a usable artifact —
+  with commentary noting the upcoming model has seen *surprisingly zero
+  leaks* (a contrast to 3.5 Flash / 3.1 Pro's active pre-launch rumor
+  cycles). Single low-credibility social source; the June commitment is now
+  mid-to-late month with still no 3.5 Pro GA/API/pricing.
+expected: 2026-06 (next month, per @GoogleDeepMind at I/O); "Coming Soon" model-card tag seen 2026-06-16
 labels:
   - google-io
   - pro-tier
@@ -20,7 +26,7 @@ sources:
   - "@GoogleDeepMind"
   - "@demishassabis"
 created_at: 2026-05-20
-updated_at: 2026-06-09
+updated_at: 2026-06-16
 closed_at: null
 closed_reason: null
 history:
@@ -30,6 +36,8 @@ history:
     change: "Launch-imminence chatter inside the promised June window (the 'next month' commitment is now in-month). Gemini API lead @OfficialLoganK posted a 'bullish on Gemini' teaser (2026-06-08 03:06 UTC, ~1,069 likes / 219 replies), widely read as a pre-launch tell; @haider1 follows (2026-06-08 07:25 UTC, ~30 likes) with 'Gemini 3.5 Pro is probably close to launch,' wishing for better planning/orchestration and codebase tool-use. Semi-primary teaser + community read — still **no public artifact, API, or pricing**, so status stays confirmed (not yet in-testing); verification confirmed"
   - ts: 2026-06-09
     change: "Ecosystem signal inside the promised June window, but still no standalone 3.5 Pro GA. (1) At **WWDC 2026 (2026-06-08)** Apple confirmed **Siri AI's Tier-3 heavy-reasoning runs on a custom ~1.2T-parameter Google Gemini on Nvidia B200s via Google Cloud** ([[apple-wwdc-2026-siri]]) — the highest-profile production Gemini deployment yet, though Apple did not name '3.5 Pro' specifically. (2) Google upgraded **NotebookLM to Gemini 3.5** (with a cloud computer + Antigravity integration). The 'next month' (June) commitment is now mid-month with **3.5 Flash still the only public 3.5 model** and no 3.5 Pro artifact/API/pricing — status stays confirmed, verification confirmed"
+  - ts: 2026-06-16
+    change: "Launch-imminence tell inside the June window: a 'Coming Soon' tag reportedly appeared on the Gemini Pro model card (single low-credibility social source, @just_v3ra), with commentary noting the upcoming model has seen surprisingly zero leaks — a contrast to the active pre-launch rumor cycles 3.5 Flash and 3.1 Pro had. A placeholder tag is not a usable console/API artifact, so status stays confirmed (not in-testing); the June commitment is now mid-to-late month with 3.5 Flash still the only public 3.5 model. Verification stays confirmed (the I/O commitment is primary; today's tag is secondary)."
 ---
 
 At Google I/O 2026, Google revealed the **Gemini 3.5** family. The first

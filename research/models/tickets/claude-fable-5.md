@@ -37,6 +37,13 @@ status_note: |
   remained dark into a second day; a Polymarket on restoration priced ~65% "back
   by July 1." Per this ticket's transition triggers, a pause of general
   availability keeps status `released` and is documented via history.
+  **2026-06-16 — benchmark crown, still suspended (day 4).** Despite the
+  worldwide suspension, capability rankings caught up to the launch: Fable 5
+  **set a record on the Epoch Capabilities Index, dethroning GPT-5.5 Pro**, and
+  tops the latest Artificial Analysis ladder at **~64.9** (ahead of Opus 4.8 and
+  GPT-5.5; Chinese models Qwen 3.7 Max / MiniMax M3 / Kimi K2.6 cluster ~55).
+  The export-control suspension remains unresolved on day 4 (see
+  [[anthropic-fable-mythos-export-control-2026-06]]).
 expected: "Suspended worldwide since 2026-06-13 under export-control order (see [[anthropic-fable-mythos-export-control-2026-06]]); restoration pending. Was free for Pro/Max/Team through 2026-06-22, credit-metered thereafter"
 labels:
   - frontier-model
@@ -57,7 +64,7 @@ sources:
   - "@DavidSacks"
   - "@AndrewCurran_"
 created_at: 2026-06-10
-updated_at: 2026-06-14
+updated_at: 2026-06-16
 closed_at: null
 closed_reason: null
 history:
@@ -67,6 +74,8 @@ history:
     change: "Update — guardrails reversal. After disclosing that Fable 5 would *silently* nerf AI/ML development tasks (pretraining, distributed training, accelerator design) via prompt modification / steering vectors / PEFT — reportedly affecting only ~0.03% of traffic — Anthropic apologized and walked the invisible guardrails back, committing to visible refusals or explicit model rerouting instead of silent steering (r/MachineLearning + press, 2026-06-11/12). Separately, Simon Willison documented Fable 5 as 'relentlessly proactive' (autonomously opening test pages in Safari, writing custom JS, spinning up a Python CORS server), underscoring the unboxed-agent security concern. Per this ticket's transition triggers, a material change to safety-fallback behaviour keeps status released and is documented via history; verification stays confirmed"
   - ts: 2026-06-14
     change: "Major update — GLOBALLY DISABLED by US export control (2026-06-13). Anthropic abruptly suspended Fable 5 AND Mythos 5 for ALL customers worldwide to comply with a US government export-control directive barring access by any foreign national (inc. its own foreign-national staff). New sessions fall back to Opus 4.8; Fable 5 API/Platform calls now error. The regulatory action itself is spun out to its own legal-event ticket [[anthropic-fable-mythos-export-control-2026-06]]; this entry records the product impact. Anthropic calls it a 'misunderstanding,' disputes the jailbreak's severity (argues GPT-5.5 shares it), and says it is working to restore access; White House AI czar @DavidSacks says the Admin asked Anthropic to fix or de-deploy and Anthropic refused. Both models still dark into day 2; Polymarket priced ~65% restoration by July 1. Per transition triggers, a pause of general availability keeps status released and is documented via history; verification stays confirmed (Anthropic's own statement + @ClaudeDevs notice + Reuters/Techmeme + Sacks on-record)"
+  - ts: 2026-06-16
+    change: "Benchmark crown while still dark (day 4). Fable 5 set a record on the Epoch Capabilities Index, dethroning GPT-5.5 Pro, and tops the latest Artificial Analysis ladder at ~64.9 (ahead of Opus 4.8 and GPT-5.5; Chinese open models Qwen 3.7 Max / MiniMax M3 / Kimi K2.6 cluster ~55) — capability rankings catching up to the launch even though the model remains globally suspended. Export-control suspension unresolved on day 4 ([[anthropic-fable-mythos-export-control-2026-06]]). Status stays released; verification stays confirmed (benchmark figures are secondary/social)."
 ---
 
 **Claude Fable 5** is the public-facing resolution of the long-running

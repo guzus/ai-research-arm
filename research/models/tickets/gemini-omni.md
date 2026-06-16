@@ -3,8 +3,11 @@ slug: gemini-omni
 title: Gemini Omni — multimodal generation model
 company: Google / DeepMind
 model: Gemini Omni (Omni Flash)
-status: released
+status: closed
 status_note: |
+  **Closed 2026-06-16 (released-and-aged).** Launched GA at Google I/O 2026
+  (2026-05-19); ≥4 weeks of settled coverage, no successor variant or API news
+  in-window, rolled into normal coverage. History preserved below.
   Launched at Google I/O 2026 (2026-05-19), starting with "Omni Flash". A
   generation + editing model that turns any mix of text / photo / audio /
   video into video, with consistent characters, physics, and scenes (and
@@ -22,12 +25,14 @@ sources:
   - "@demishassabis"
   - "@GoogleDeepMind"
 created_at: 2026-05-20
-updated_at: 2026-05-20
-closed_at: null
-closed_reason: null
+updated_at: 2026-06-16
+closed_at: 2026-06-16
+closed_reason: released-and-aged
 history:
   - ts: 2026-05-20
     change: "Created — Gemini Omni unveiled at Google I/O 2026 (official @OfficialLoganK, @demishassabis, @GoogleDeepMind); video-first \"any input → any output\" model, live now in the Gemini app, Flow, and YouTube as Omni Flash, with API support coming soon"
+  - ts: 2026-06-16
+    change: "Closed — released-and-aged. ≥4 weeks past the 2026-05-19 I/O GA with no successor variant, pricing, or public API news in-window; rolled into normal coverage. Per the ticket's transition trigger (close ≥4 weeks past public release). History preserved; reopen via a new ticket if a distinct Omni successor or the Gemini API GA lands."
 ---
 
 Gemini Omni is Google DeepMind's new multimodal generation model,
