@@ -24,8 +24,8 @@ max/high "thinking" modes.
 
 - **Long-context flagship for the open-weights wave.** GLM-5.2 gives the
   [[open-weights]] page a concrete long-context anchor: usable now in a coding
-  plan, MIT weights promised, 1M context, and early community coding tests
-  ranking it above Qwen 3.6 27B. It belongs beside [[minimax-m3]],
+  plan, MIT weights promised, 1M context, and reported early community coding
+  tests ranking it above Qwen 3.6 27B. It belongs beside [[minimax-m3]],
   [[moonshot-kimi-k2-7-code]], [[gemma-4]], and [[deepseek]] in the open-model
   pressure stack.
 - **It filled the Fable 5 vacuum.** As [[claude-fable-5|Fable 5 / Mythos 5]]

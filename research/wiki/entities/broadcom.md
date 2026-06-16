@@ -27,14 +27,16 @@ the clearest named entities inside the [[ai-capex]] supercycle's move from
   [[anthropic]]'s compute surge came into view: Google reportedly guaranteed
   lease payments backing high-performance compute across five US data centers,
   enabling roughly **$35B of financing**. In that stack, Broadcom designs the
-  custom chips, Google supplies the TPU layer, and Apollo / Blackstone provide
-  financing. On 2026-06-16, a separate Anthropic-adjacent report described
-  Broadcom backing a **~$35B custom-chip order** for Anthropic, with
-  Apollo/Blackstone financing and roughly **20 GW** of targeted compute. The
-  exact mechanics remain lighter-sourced, but the direction is clear:
-  Anthropic's owned-infrastructure pivot runs through Broadcom-class custom
-  silicon, not only rented [[nvidia]] GPUs (ARA digests 2026-06-10,
-  2026-06-16).
+  custom-chip / TPU silicon layer, Google is the hyperscaler backstop, and
+  Apollo / Blackstone provide financing. On 2026-06-16, a related
+  Anthropic-adjacent report described Broadcom backing a **~$35B custom-chip
+  order** for Anthropic, with Apollo / Blackstone financing and a reported
+  **20 GW+** targeted compute footprint. Treat the two $35B figures as
+  potentially overlapping descriptions of the same financing architecture, not
+  additive commitments, until primary terms distinguish them. The exact
+  mechanics remain lighter-sourced, but the direction is clear: Anthropic's
+  owned-infrastructure pivot runs through Broadcom-class custom silicon, not
+  only rented [[nvidia]] GPUs (ARA digests 2026-06-10, 2026-06-16).
 - **OpenAI custom-chip financing snag.** A May 2026 Information scoop said the
   [[openai]]-Broadcom Phase-1 custom-chip program, roughly **1.3 GW** of
   data-center capacity, needed Microsoft to commit to buying about **40%** of

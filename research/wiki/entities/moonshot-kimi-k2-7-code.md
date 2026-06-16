@@ -23,11 +23,11 @@ rolling onto Hugging Face in-window.
 ## Why it matters
 
 - **The price story in the open-weights wave.** [[zhipu-glm-5-2]] is the
-  long-context flagship story; [[moonshot-kimi-k2-7-code]] is the price story.
-  Together with [[minimax-m3]] and [[deepseek]], it makes the
-  [[open-weights]] thesis concrete: local or self-hosted models are no longer
-  just sovereignty insurance, they can also be much cheaper per useful coding
-  token than the closed frontier APIs.
+  long-context flagship story; Kimi K2.7 Code is the price story. Together
+  with [[minimax-m3]] and [[deepseek]], it makes the [[open-weights]] thesis
+  concrete: local or self-hosted models are no longer just sovereignty
+  insurance, they can also be much cheaper per useful coding token than the
+  closed frontier APIs.
 - **It landed into the Fable 5 vacuum.** On 2026-06-15, with
   [[claude-fable-5|Fable 5 / Mythos 5]] still dark, Chinese open-weight
   flagships filled the discourse. Kimi K2.7-Code reportedly landed **#2 on
