@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-17 17:11 UTC
+
+CYCLE: Thin window — one real development: GLM-5.2 independently benchmarks as #1 open-weights model.
+
+TOP STORIES:
+• GLM-5.2 ranked #1 open-weights on Artificial Analysis Index (51); GDPval "in line with GPT-5.5"; #2 on Frontend Code Arena behind embargoed Fable 5 [✓]
+• Anthropic Fable 5 / Mythos 5 embargo — still no lift, no BIS PDF, no Anthropic update [✓ no-change]
+• Midjourney's first hardware reveal still ahead (today 6pm PT SF) [⚠ calendar item]
+
+WATCH: Midjourney hardware reveal (6pm PT); independent SWE-bench/LiveCodeBench placement for GLM-5.2.
+
+Full update on GitHub.
