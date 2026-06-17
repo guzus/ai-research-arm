@@ -138,7 +138,7 @@ jobs:
 
             STEP 1: Find and read today's source files
             Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
-            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, and any others.
+            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, blogs/, youtube/, and any others.
             Read all relevant files you find.
 
             STEP 2: Use MCP search tools to fill gaps
@@ -188,6 +188,8 @@ jobs:
             - Reddit: [count] posts
             - arXiv: [count] papers
             - RSS: [count] articles
+            - Expert Blogs: [count] posts
+            - YouTube: [count] videos
             - MCP Search: [results from Exa/Perplexity tools]
 
             *Generated at ${{ steps.date.outputs.date }} 00:00 UTC*
@@ -234,7 +236,7 @@ jobs:
 
             STEP 1: Find and read today's source files
             Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
-            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, perplexity/, and any others.
+            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, blogs/, youtube/, perplexity/, and any others.
             Read all relevant files you find.
 
             STEP 2: Use WebSearch to fill gaps
@@ -282,6 +284,8 @@ jobs:
             - Reddit: [count] posts
             - arXiv: [count] papers
             - RSS: [count] articles
+            - Expert Blogs: [count] posts
+            - YouTube: [count] videos
             - MCP Search: [results from Exa/Perplexity tools]
 
             *Generated at ${{ steps.date.outputs.date }} 00:00 UTC*

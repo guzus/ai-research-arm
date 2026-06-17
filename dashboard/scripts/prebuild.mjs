@@ -29,7 +29,7 @@ const skipLfsPointers = process.env.SKIP_LFS_POINTERS === '1';
 // `wiki` carries research/wiki/ (committed index.json + entities/concepts/themes
 // markdown). The index is built in Python (scripts/build_wiki_index.py) and
 // committed — we only copy it here; we never rebuild it in JS.
-const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki'];
+const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki', 'youtube'];
 
 // Regex patterns for the date-keyed sources. The `generative` key is
 // special-cased below: it reads research/generative/index.json directly.
@@ -39,6 +39,7 @@ const DATE_PATTERNS = {
   frontpage: { dir: 'front-page', re: /^(\d{4}-\d{2}-\d{2})-front-page\.png$/ },
   today:     { dir: 'digest',     re: /^(\d{4}-\d{2}-\d{2})-digest\.md$/ },
   audio:     { dir: 'audio',      re: /^(\d{4}-\d{2}-\d{2})-digest\.mp3$/ },
+  youtube:   { dir: 'youtube',    re: /^(\d{4}-\d{2}-\d{2})\.md$/ },
 };
 
 // Binary file extensions that are routed through git-lfs (see .gitattributes
