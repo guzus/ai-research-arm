@@ -4,10 +4,11 @@ title: Zhipu GLM-5.2
 type: entity
 aliases: ["Zhipu GLM 5.2", "Zhipu GLM-5.2", "GLM 5.2", "GLM-5.2", "Z.ai GLM-5.2"]
 tags: [open-weights, china, coding, long-context, frontier-model]
-description: Zhipu AI / Z.ai flagship model deployed in the GLM Coding Plan with 1M context and MIT-licensed open weights promised; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.
+description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.
 created_at: 2026-06-17
 timestamp: 2026-06-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA model ticket — Zhipu GLM-5.2", path: research/models/tickets/zhipu-glm-5-2.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
@@ -36,6 +37,18 @@ max/high "thinking" modes.
   `released` because the model is usable in the GLM Coding Plan, but
   `verification: partial` because ARA had not captured a primary Zhipu model
   card and the MIT weights were still described as forthcoming.
+
+- **Shipped under MIT (2026-06-17).** GLM-5.2 went out **under an MIT
+  license** — **1M context**, **two reasoning-effort levels (max/high)**,
+  **priced the same as GLM-5.1**, framed as "frontier intelligence" — with
+  **day-0 vLLM v0.23.0 support** plus live **Notion** and **Baseten**
+  availability within hours. Z.ai claims it "leads GLM-5.1 by a wide margin"
+  and **46.2% on DeepSWE**; a community "62 vs [[claude-opus-4-8|Opus 4.8]]'s
+  69 on SWE-Bench Pro" comparison is circulating but unverified, and neutral
+  third-party SWE-bench/LiveCodeBench placement has not yet landed. The MIT
+  ship converts the earlier "weights promised" status into a concrete
+  open-weights anchor in the [[claude-fable-5|Fable 5]] shutdown window — see
+  [[open-weights]] (ARA digest 2026-06-17).
 
 ## Open questions
 

@@ -15,6 +15,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; now also the safeguard-reroute target for Fable 5.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY).
 - [[coreweave]] — GPU-as-a-service neocloud with a ~$99B take-or-pay backlog.
+- [[cursor]] — AI coding tool/IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close).
 - [[deepseek]] — Hangzhou Chinese frontier lab; disclosed its first-ever external round (~$7.4B at up to $59B, Tencent + CATL) on 2026-06-04, pivoting to commercialization.
 - [[dell]] — US enterprise-IT OEM; Q1 FY27 AI-Optimized Servers $16.1B (+757% YoY), $24.4B AI orders booked, FY27 AI-server outlook raised to $60B.
 - [[figure-ai]] — US humanoid-robotics company whose Helix-02 VLA ran a 200-hour fully-autonomous 249,560-package shift on 2026-05-30, ~10× the prior public MTBI envelope.

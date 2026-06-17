@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-timestamp: 2026-06-15T00:00:00Z
+timestamp: 2026-06-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
@@ -224,6 +225,28 @@ materially reshape how the lab is positioned heading into its IPO window:
   alleging ChatGPT aided a campus shooter** — a causal *allegation*, not an
   established fact; OpenAI says it will "engage constructively." See
   [[federal-ai-policy]] (ARA digest 2026-06-15).
+
+- **Leaked financials: losing billions; GPT-5.6 nears (2026-06-17).** Leaked
+  numbers put **2025 revenue at $13.07B** (up from **$3.7B in 2024**) against
+  **$19.18B in R&D alone** — confirming OpenAI is losing billions a year as it
+  weighs an IPO, the hard cost-side counterweight to the ~$1.5T target (see
+  [[ai-capex]]). On the model side, **GPT-5.6** gained a fresh signal: a chief
+  scientist reportedly calls it a **"meaningful" leap** over GPT-5.5 with a
+  **June launch nearing** — an unusually compressed (<60-day) cadence, still
+  with no specs or system card. OpenAI also attended the **G7 Évian Summit**
+  (Altman, alongside [[anthropic|Amodei]] and Hassabis — the first G7 with all
+  three frontier-lab CEOs; see [[federal-ai-policy]]) (ARA digest 2026-06-17).
+- **Codex computer-use push + a pre-release alignment framework (2026-06-17).**
+  **Codex gained Chrome DevTools Protocol support** for browser inspect/modify
+  and is rolling out **computer use, the Codex Chrome extension, personalized
+  memory, and "Chronicle"** across the EEA, UK and Switzerland — extending the
+  Codex-as-platform push into agentic browser control. Separately, OpenAI
+  detailed a **"Deployment Simulation"** alignment framework that **replays
+  recent de-identified user requests** to anticipate model behavior
+  pre-release, reducing "evaluation awareness" to near-production levels — a
+  concrete [[agentic-ai-security]] / pre-release-eval datapoint as
+  [[federal-ai-policy|the 30-day access regime]] takes hold (ARA digest
+  2026-06-17).
 
 ## Open questions
 

@@ -8,6 +8,7 @@ description: The cross-cutting narrative of a historically large, debt- and equi
 created_at: 2026-05-24
 timestamp: 2026-06-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
@@ -240,6 +241,15 @@ skepticism in one window:
   token price cuts to pull customers from [[anthropic]]**, an emerging price war
   on top of the ~70% pricing gap [[claude-fable-5|Fable 5]] opened — margin
   pressure now running alongside the supply buildout (ARA digest 2026-06-12).
+- **Public equity becomes M&A currency; OpenAI's cost side leaks (2026-06-17).**
+  Two days after its record IPO, **[[spacex]] used all-stock to acquire
+  [[cursor|Cursor (Anysphere)]] for $60B**, and its valuation **ballooned ~$1T
+  to ~$2.6–2.7T, briefly passing Amazon** — freshly-public equity recycled
+  straight into AI-coding M&A. Against the headline valuations, **leaked
+  [[openai]] financials** put **2025 revenue at $13.07B** (up from $3.7B in
+  2024) against **$19.18B of R&D alone** — the cost-side counterweight to the
+  ~$1.5T IPO target, and exhibit B (after SpaceX's filed loss) in the
+  bubble-top debate (ARA digest 2026-06-17).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s

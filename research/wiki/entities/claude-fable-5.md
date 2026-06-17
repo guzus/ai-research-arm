@@ -8,6 +8,7 @@ description: Anthropic's 2026-06-09 frontier release — one Mythos-class model 
 created_at: 2026-06-10
 timestamp: 2026-06-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
@@ -135,6 +136,19 @@ every feed on launch day.
   veterans (Adobe, Zoom, Sophos) formally protested the ban to the White House
   (TechCrunch). See [[anthropic]], [[federal-ai-policy]] and [[open-weights]] (ARA
   digest 2026-06-16).
+
+- **The export order is documented; still dark June 17.** The full **BIS
+  "Is Informed" letter** (Lutnick → [[anthropic|Amodei]], obtained by Bloomberg)
+  surfaced, invoking **ECRA / EAR §744.22(b)** to require an individually-
+  validated license to release Fable 5 or Mythos 5 to **any foreign person
+  worldwide**, including **"deemed exports"** to non-US persons inside the US —
+  which in practice walls off Anthropic's own visa-holding staff from the
+  models they built. An export-control lawyer reads the theory as "probably
+  vulnerable to legal/constitutional challenge" under the EAR's
+  published-information carve-out. **Both models remain offline as of June 17
+  with no restoration announced**, and Chinese open-weight flagships kept
+  filling the gap (Z.ai's **[[zhipu-glm-5-2|GLM-5.2]]** shipped under MIT) —
+  see [[federal-ai-policy]] and [[open-weights]] (ARA digest 2026-06-17).
 
 ## Open questions
 
