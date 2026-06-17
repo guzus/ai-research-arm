@@ -2454,7 +2454,6 @@ function renderTwitterMindshareMap(items: TwitterMindshareItem[]): string {
     '<section class="twitter-mindshare" aria-label="Twitter mindshare map">',
     '  <div class="twitter-mindshare-head">',
     '    <h2>Mindshare</h2>',
-    '    <span>Weighted by cycle recency and story rank</span>',
     '  </div>',
     '  <div class="twitter-mindshare-map">' + tiles + '</div>',
     '</section>',
