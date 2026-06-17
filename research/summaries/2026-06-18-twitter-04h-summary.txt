@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-18 04:04 UTC
+
+CYCLE: Quieter incremental window; one new primary story amid unchanged macro arcs.
+
+TOP STORIES:
+• OpenAI says GPT-5.4 + a lab's "Maria" agent found & validated a real drug-discovery chemistry gain (TEMPO/Chan-Lam, mean yield 16.6%->25.2% over 10,080 reactions) ⚠
+• FERC expected to issue guidance on data-center grid hookups — could force hyperscalers to fund grid upgrades or accept curtailment (Bloomberg) ⚠
+• Fable 5 / Mythos 5 embargo still unresolved; Anthropic reports no deal to restore access 🚩(no change)
+
+WATCH: OpenAI's linked paper + outside replication of the chemistry result; the actual FERC interconnection guidance text/date.
+
+Full update on GitHub.
