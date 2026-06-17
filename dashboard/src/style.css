@@ -1974,7 +1974,7 @@ body.has-toc .section-nav { display: none; }
 }
 
 .today-tldr {
-  background: var(--accent-warm-bg);
+  background: transparent;
   border-left: 3px solid var(--accent-warm);
   padding: 18px 22px;
   margin: 0 0 24px 0;
