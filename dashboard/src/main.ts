@@ -2,6 +2,23 @@ import './style.css';
 import { marked, Marked } from 'marked';
 import type { Tokens, TokenizerThis } from 'marked';
 import DOMPurify from 'dompurify';
+import {
+  cleanPublicLeadText,
+  escapeHtml,
+  extractUrls,
+  splitSections,
+  stripMarkdown,
+  truncateText,
+  wrapTables,
+} from './render/shared';
+import { renderTodayHtml } from './render/today';
+import {
+  parseTwitterStories,
+  renderTwitterReportHtml,
+  sanitizePublicReportMarkdown,
+  storyCurrentLead,
+} from './render/twitter';
+import type { TwitterStory } from './render/twitter';
 
 const DATA_BASE: string = import.meta.env.BASE_URL + 'research';
 
@@ -128,28 +145,6 @@ type FrontPageAsset = {
   html: string | null;
   fallback: string | null;
 };
-type TwitterStory = {
-  rank: string;
-  title: string;
-  body: string;
-  links: string[];
-  handles: string[];
-};
-type TwitterMindshareCycle = {
-  anchor: string;
-  body: string;
-  lead: string;
-  recencyWeight: number;
-  stories: TwitterStory[];
-};
-type TwitterMindshareItem = {
-  label: string;
-  share: number;
-  tone: 'rising' | 'steady' | 'fading';
-  href: string;
-  handles: string[];
-  sources: number;
-};
 type FocusReaderItem = {
   title: string;
   label: string;
@@ -196,12 +191,6 @@ type Ticket = {
   body: string;
 };
 type TicketIndex = { tickets: Ticket[] };
-type InfoTimelineItem = {
-  href: string;
-  label: string;
-  title: string;
-  detail: string;
-};
 type DesignSurface = 'digest' | 'signals' | 'models' | 'research' | 'wiki';
 type DesignFrontendData = {
   digestDate: string | null;
@@ -807,45 +796,6 @@ function handleCalendarClick(e: Event): void {
   }
 }
 
-function escapeHtml(str: string): string {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
-
-function sectionAnchorId(prefix: string, title: string, index: number): string {
-  const slug = title
-    .toLowerCase()
-    .replace(/&/g, ' and ')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 48);
-  return prefix + '-' + String(index + 1).padStart(2, '0') + (slug ? '-' + slug : '');
-}
-
-function isModelReleaseDigestSection(title: string): boolean {
-  return /\b(?:new\s+)?model\s+releases?\b/i.test(title) || /\bmodel\s+releases?\s*(?:&|and)\s*updates?\b/i.test(title);
-}
-
-function renderInfoTimeline(className: string, label: string, items: InfoTimelineItem[]): string {
-  if (items.length === 0) return '';
-  return [
-    '<nav class="info-timeline ' + className + '" aria-label="' + escapeHtml(label) + ' timeline">',
-    '  <div class="info-timeline-head">' + escapeHtml(label) + '</div>',
-    '  <ol class="info-timeline-list">',
-    items.map((item) => [
-      '    <li class="info-timeline-item">',
-      '      <a href="' + escapeHtml(item.href) + '">',
-      '        <time>' + escapeHtml(item.label) + '</time>',
-      '        <span>' + escapeHtml(item.detail || item.title) + '</span>',
-      '      </a>',
-      '    </li>',
-    ].join('\n')).join('\n'),
-    '  </ol>',
-    '</nav>',
-  ].join('\n');
-}
-
 /** Safely set element content using DOMPurify + insertAdjacentHTML.
  *
  * By default `iframe` is FORBIDDEN. Almost everything that flows through here
@@ -1401,76 +1351,6 @@ function showError(message: string, hint?: string): void {
   );
 }
 
-/** Split markdown by ## headings into separate sections */
-function splitSections(md: string): { title: string; body: string }[] {
-  const lines = md.split('\n');
-  const sections: { title: string; body: string }[] = [];
-  let currentTitle = '';
-  let currentLines: string[] = [];
-
-  for (const line of lines) {
-    const h2Match = line.match(/^## (.+)/);
-    if (h2Match) {
-      if (currentTitle || currentLines.length) {
-        sections.push({ title: currentTitle, body: currentLines.join('\n').trim() });
-      }
-      currentTitle = h2Match[1];
-      currentLines = [];
-    } else {
-      currentLines.push(line);
-    }
-  }
-  if (currentTitle || currentLines.length) {
-    sections.push({ title: currentTitle, body: currentLines.join('\n').trim() });
-  }
-  return sections;
-}
-
-/** Wrap rendered tables in a horizontally scrollable container so wide tables
- * (many columns or long cell content) don't overflow the card. */
-function wrapTables(html: string): string {
-  return html
-    .replace(/<table(\s[^>]*)?>/g, '<div class="md-table-wrap"><table$1>')
-    .replace(/<\/table>/g, '</table></div>');
-}
-
-function stripMarkdown(md: string): string {
-  return md
-    .replace(/```[\s\S]*?```/g, ' ')
-    .replace(/!\[[^\]]*]\([^)]+\)/g, ' ')
-    .replace(/\[([^\]]+)]\([^)]+\)/g, '$1')
-    .replace(/https?:\/\/\S+/g, ' ')
-    .replace(/[#>*_`~|]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function truncateText(text: string, max = 360): string {
-  if (text.length <= max) return text;
-  const sliced = text.slice(0, max).replace(/\s+\S*$/, '').trim();
-  return sliced + '...';
-}
-
-function cleanPublicLeadText(text: string): string {
-  return text
-    .replace(/\([^)]*\b(?:verified|curl|re-verified|source checks?|multi-source primary-source confirmed)[^)]*\)/gi, '')
-    .replace(/\b(?:verified|re-verified|confirmed)\s+(?:via|by)\s+(?:curl|source checks?|snapshot)[^.;—]*[.;—]?\s*/gi, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function isSourceMethodLead(text: string): boolean {
-  return /\b(?:verified|curl|source checks?|originating .*source|confirmed via|post body|press-release teaser|raw URL|snapshot)\b/i.test(text);
-}
-
-function highlightPlainText(text: string): string {
-  const escapedText = escapeHtml(text);
-  if (!searchTerm) return escapedText;
-  const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const re = new RegExp('(' + escaped + ')', 'gi');
-  return escapedText.replace(re, '<mark>$1</mark>');
-}
-
 // Ancestors whose text must NOT be wrapped in <mark>: SVG charts (axis labels
 // etc. — wrapping there breaks the rendered chart), code/pre (highlighting code
 // noise), and any element we've already marked.
@@ -1522,26 +1402,6 @@ function highlightSearchMatches(root: HTMLElement, term: string): void {
     if (lastIndex < value.length) frag.appendChild(document.createTextNode(value.slice(lastIndex)));
     textNode.parentNode?.replaceChild(frag, textNode);
   }
-}
-
-function extractUrls(md: string): string[] {
-  const urls = new Set<string>();
-  const re = /https?:\/\/[^\s)>\]]+/g;
-  let match: RegExpExecArray | null;
-  while ((match = re.exec(md))) {
-    urls.add(match[0].replace(/[.,;:]+$/, ''));
-  }
-  return Array.from(urls);
-}
-
-function extractHandles(md: string, limit = 12): string[] {
-  const handles = new Set<string>();
-  const re = /(?<!\w)@([A-Za-z0-9_]{2,20})/g;
-  let match: RegExpExecArray | null;
-  while ((match = re.exec(md)) && handles.size < limit) {
-    handles.add('@' + match[1]);
-  }
-  return Array.from(handles);
 }
 
 function renderTweetAgoFromUrl(url: string): string {
@@ -2250,480 +2110,18 @@ function renderWikiNotFound(slug: string): void {
   );
 }
 
-function extractCycleSummary(body: string): string {
-  const match = body.match(/\*\*Cycle summary\*\*:\s*([\s\S]*?)(?=\n###|\n####|\n\*\*(?:Evidence|Previously|Counter|Verification|Watch)\*\*:|$)/i);
-  return match ? match[1].trim() : '';
-}
-
-function extractSectionText(body: string, label: string): string {
-  const re = new RegExp('\\*\\*' + label + '\\*\\*:\\s*([\\s\\S]*?)(?=\\n\\*\\*(?:Previously|Evidence|Counter / contradicting|Verification|Watch)\\*\\*:|\\n####\\s+\\d+\\.|$)', 'i');
-  const match = body.match(re);
-  return match ? match[1].trim() : '';
-}
-
-function cleanEvidenceLead(text: string): string {
-  return text
-    .split('\n')
-    .map((line) => line
-      .replace(/\*\*/g, '')
-      .replace(/^[-*]\s+/, '')
-      .replace(/^https?:\/\/\S+\s*(?:—|-|:)\s*/i, '')
-      .replace(/^[\w.-]+\.[a-z]{2,}(?:\/\S*)?\s*(?:\([^)]*\))?\s*(?:—|-|:)+\s*/i, '')
-      .replace(/^@[\w_]+:\s*/i, '')
-      .replace(/^@[\w_]+\s+[^—\n]{0,140}\s+—\s*/i, '')
-      .replace(/^["“]?[^"”]{0,160}["”]?\s+—\s+https?:\/\/\S+\s*(?:—\s*)?/i, '')
-      .replace(/^\s*(?:—|-)+\s*/, '')
-      .replace(/^the originating\b/i, 'Originating')
-      .trim())
-    .filter(Boolean)
-    .join(' ');
-}
-
-function storyCurrentLead(body: string): string {
-  const evidence = extractSectionText(body, 'Evidence');
-  if (evidence) return cleanEvidenceLead(evidence);
-  return body
-    .replace(/\*\*Previously\*\*:?[\s\S]*?(?=\n\*\*(?:Evidence|Counter \/ contradicting|Verification|Watch)\*\*:|$)/i, '')
-    .trim();
-}
-
-function parseTwitterStories(body: string): TwitterStory[] {
-  const storyRe = /^####\s+(\d+)\.\s+(.+)$/gm;
-  const matches = Array.from(body.matchAll(storyRe));
-  return matches.map((match, idx) => {
-    const start = (match.index || 0) + match[0].length;
-    const nextStory = idx + 1 < matches.length ? matches[idx + 1].index || body.length : body.length;
-    const nextSection = body.slice(start).search(/\n###\s+/);
-    const sectionEnd = nextSection >= 0 ? start + nextSection : body.length;
-    const end = Math.min(nextStory, sectionEnd);
-    const storyBody = body.slice(start, end).trim();
-    return {
-      rank: match[1],
-      title: match[2].trim(),
-      body: storyBody,
-      links: extractUrls(storyBody),
-      handles: extractHandles(match[2] + '\n' + storyBody),
-    };
-  });
-}
-
-const TWITTER_MINDSHARE_TERMS: Array<{ label: string; pattern: RegExp }> = [
-  { label: 'Anthropic', pattern: /\b(?:Anthropic|Claude|Fable\s*5|Mythos\s*5)\b/gi },
-  { label: 'OpenAI', pattern: /\b(?:OpenAI|GPT-?5|GPT-?4\.?1|ChatGPT|Codex)\b/gi },
-  { label: 'Google', pattern: /\b(?:Google|Gemini|DeepMind|NotebookLM|Veo)\b/gi },
-  { label: 'xAI', pattern: /\b(?:xAI|Grok)\b/gi },
-  { label: 'Meta', pattern: /\b(?:Meta|Llama)\b/gi },
-  { label: 'Mistral', pattern: /\bMistral\b/gi },
-  { label: 'Broadcom', pattern: /\bBroadcom\b/gi },
-  { label: 'Sakana', pattern: /\bSakana\b/gi },
-  { label: 'Marlin', pattern: /\bMarlin\b/gi },
-  { label: 'Xiaomi', pattern: /\b(?:Xiaomi|MiMo)\b/gi },
-  { label: 'Nebius', pattern: /\bNebius\b/gi },
-  { label: 'Kimi', pattern: /\bKimi\b/gi },
-  { label: 'MiniMax', pattern: /\bMiniMax\b/gi },
-  { label: 'GLM', pattern: /\bGLM\b/gi },
-  { label: 'Manus', pattern: /\bManus\b/gi },
-  { label: 'NVIDIA', pattern: /\b(?:NVIDIA|NVDA|Blackwell|GB200|GB300)\b/gi },
-  { label: 'Cerebras', pattern: /\bCerebras\b/gi },
-  { label: 'Groq', pattern: /\bGroq\b/gi },
-  { label: 'Adobe', pattern: /\bAdobe\b/gi },
-  { label: 'Zoom', pattern: /\bZoom\b/gi },
-  { label: 'Samsung', pattern: /\bSamsung\b/gi },
-  { label: 'Sophos', pattern: /\bSophos\b/gi },
-  { label: 'Apollo', pattern: /\bApollo\b/gi },
-  { label: 'Blackstone', pattern: /\bBlackstone\b/gi },
-  { label: 'Neuralink', pattern: /\bNeuralink\b/gi },
-];
-
-function twitterMindshareMatches(text: string): string[] {
-  const labels: string[] = [];
-  for (const term of TWITTER_MINDSHARE_TERMS) {
-    term.pattern.lastIndex = 0;
-    if (term.pattern.test(text)) labels.push(term.label);
-  }
-  return labels;
-}
-
-function rankWeight(rank: string): number {
-  const n = Number(rank);
-  if (!Number.isFinite(n) || n <= 0) return 1;
-  return Math.max(1, 5 - n);
-}
-
-function buildTwitterMindshare(cycles: TwitterMindshareCycle[]): TwitterMindshareItem[] {
-  const scores = new Map<string, {
-    score: number;
-    latest: number;
-    earlier: number;
-    href: string;
-    topWeight: number;
-    handles: Set<string>;
-    sources: Set<string>;
-  }>();
-  const midpoint = Math.max(1, Math.ceil(cycles.length / 2));
-
-  const addScore = (
-    label: string,
-    weight: number,
-    cycle: TwitterMindshareCycle,
-    handles: string[],
-    sources: string[],
-    isLatestHalf: boolean,
-  ) => {
-    const current = scores.get(label) || {
-      score: 0,
-      latest: 0,
-      earlier: 0,
-      href: '#' + cycle.anchor,
-      topWeight: 0,
-      handles: new Set<string>(),
-      sources: new Set<string>(),
-    };
-    current.score += weight;
-    if (isLatestHalf) current.latest += weight;
-    else current.earlier += weight;
-    if (weight > current.topWeight) {
-      current.href = '#' + cycle.anchor;
-      current.topWeight = weight;
-    }
-    handles.forEach((handle) => current.handles.add(handle));
-    sources.forEach((source) => current.sources.add(source));
-    scores.set(label, current);
-  };
-
-  cycles.forEach((cycle, index) => {
-    const isLatestHalf = index < midpoint;
-    const cycleWeight = Math.max(1, cycle.recencyWeight);
-    const leadLabels = twitterMindshareMatches(cycle.lead);
-    for (const label of leadLabels) {
-      addScore(label, cycleWeight * 0.8, cycle, extractHandles(cycle.lead, 4), extractUrls(cycle.lead), isLatestHalf);
-    }
-
-    for (const story of cycle.stories) {
-      const storyText = story.title + '\n' + story.body;
-      const labels = twitterMindshareMatches(storyText);
-      const weight = cycleWeight * rankWeight(story.rank);
-      for (const label of labels) {
-        addScore(label, weight, cycle, story.handles, story.links, isLatestHalf);
-      }
-    }
-  });
-
-  const total = Array.from(scores.values()).reduce((sum, item) => sum + item.score, 0);
-  if (total <= 0) return [];
-
-  return Array.from(scores.entries())
-    .map(([label, item]) => {
-      let tone: TwitterMindshareItem['tone'] = 'steady';
-      if (item.latest > item.earlier * 1.25) tone = 'rising';
-      else if (item.earlier > item.latest * 1.25) tone = 'fading';
-      return {
-        label,
-        share: Math.max(1, Math.round((item.score / total) * 100)),
-        tone,
-        href: item.href,
-        handles: Array.from(item.handles).slice(0, 2),
-        sources: item.sources.size,
-      };
-    })
-    .sort((a, b) => b.share - a.share || a.label.localeCompare(b.label))
-    .slice(0, 18);
-}
-
-function twitterMindshareSizeClass(index: number): string {
-  if (index === 0) return 'twitter-mindshare-tile--xl';
-  if (index < 3) return 'twitter-mindshare-tile--lg';
-  if (index < 7) return 'twitter-mindshare-tile--md';
-  return 'twitter-mindshare-tile--sm';
-}
-
-function renderTwitterMindshareMap(items: TwitterMindshareItem[]): string {
-  if (items.length === 0) return '';
-  const tiles = items.map((item, index) => {
-    return [
-      '<a class="twitter-mindshare-tile ' + twitterMindshareSizeClass(index) + ' twitter-mindshare-tile--' + item.tone + '" href="' + escapeHtml(item.href) + '" aria-label="' + escapeHtml(item.label + ' mindshare, ' + item.tone) + '">',
-      '  <strong>' + escapeHtml(item.label) + '</strong>',
-      '</a>',
-    ].filter(Boolean).join('\n');
-  }).join('\n');
-  return [
-    '<section class="twitter-mindshare" aria-label="Twitter mindshare map">',
-    '  <div class="twitter-mindshare-head">',
-    '    <h2>Mindshare</h2>',
-    '  </div>',
-    '  <div class="twitter-mindshare-map">' + tiles + '</div>',
-    '</section>',
-  ].join('\n');
-}
-
-function extractStructuredTwitterStoryTitles(body: string): string[] {
-  if (!/\btwitter-story-title\b/.test(body)) return [];
-  const doc = new DOMParser().parseFromString('<div>' + body + '</div>', 'text/html');
-  return Array.from(doc.querySelectorAll('article.twitter-story .twitter-story-title'))
-    .map((node) => node.textContent?.replace(/\s+/g, ' ').trim() || '')
-    .filter(Boolean);
-}
-
-function cleanTimelineStoryTitle(title: string): string {
-  return cleanPublicLeadText(title
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-    .replace(/[*_`]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim())
-    .split(/\s+—\s+/)[0]
-    .replace(/\.$/, '')
-    .trim();
-}
-
-function summarizeTwitterTimeline(leadText: string, stories: TwitterStory[], body: string): string {
-  const storyTitles = (stories.length > 0 ? stories.map((story) => story.title) : extractStructuredTwitterStoryTitles(body))
-    .slice(0, 2)
-    .map((title) => cleanTimelineStoryTitle(title))
-    .filter(Boolean);
-  if (storyTitles.length > 0) return truncateText(storyTitles.join('; ') + '.', 190);
-
-  const sentences = leadText.match(/[^.!?]+[.!?]+/g)?.map((sentence) => sentence.trim()).filter(Boolean) || [];
-  if (sentences.length > 0) return truncateText(sentences.slice(0, 2).join(' '), 190);
-  return truncateText(leadText, 190);
-}
-
-function firstText(root: ParentNode, selector: string): string {
-  return root.querySelector(selector)?.textContent?.replace(/\s+/g, ' ').trim() || '';
-}
-
-function firstHtml(root: ParentNode, selector: string): string {
-  return (root.querySelector(selector) as HTMLElement | null)?.innerHTML?.trim() || '';
-}
-
-// Turn a story's Verify/Watch signals into ara-callouts. The Verify variant
-// (and its flag dot) is keyed off the verdict glyph the data already carries:
-// ✓ = multi-source confirmed (success/green), ⚠ = single-source (warn/yellow).
-function twitterSignalsToCallouts(story: Element): string {
-  const sig = story.querySelector('.twitter-story-signals');
-  if (!sig) return '';
-  const rows = Array.from(sig.querySelectorAll(':scope > div'));
-  if (rows.length === 0) return '';
-  return rows.map((row) => {
-    const label = (row.querySelector('span')?.textContent || '').trim();
-    let text = (row.textContent || '').replace(/\s+/g, ' ').trim();
-    if (label && text.startsWith(label)) text = text.slice(label.length).trim();
-    const isVerify = /verif/i.test(label);
-    let variant = 'ara-callout--info';
-    let flag = '';
-    if (isVerify) {
-      if (/⚠/.test(text)) { variant = 'ara-callout--warn'; flag = '<span class="ara-flag ara-flag--yellow"></span>'; }
-      else if (/✓/.test(text)) { variant = 'ara-callout--success'; flag = '<span class="ara-flag ara-flag--green"></span>'; }
-      text = text.replace(/^[✓⚠✗]\s*/, '');
-    }
-    const labelText = label || (isVerify ? 'Verify' : 'Watch');
-    return '<div class="ara-callout ' + variant + '">'
-      + '<span class="ara-callout-label">' + flag + escapeHtml(labelText) + '</span>'
-      + '<p>' + highlightPlainText(text) + '</p></div>';
-  }).join('\n');
-}
-
-// The "Skeptic's corner" markdown section (after the stories). The structured
-// story path drops it today; surface it as a danger callout.
-function extractSkepticCorner(body: string): string {
-  const m = body.match(/###\s+[^\n]*[Ss]keptic[^\n]*\n([\s\S]*?)(?=\n#{2,3}\s|$)/);
-  return m ? m[1].trim() : '';
-}
-
-function renderStructuredTwitterStories(body: string): string {
-  if (!/\btwitter-story\b/.test(body)) return '';
-  const doc = new DOMParser().parseFromString('<div>' + body + '</div>', 'text/html');
-  const stories = Array.from(doc.querySelectorAll('article.twitter-story'));
-  if (stories.length === 0) return '';
-
-  return stories.map((story, idx) => {
-    const rank = story.getAttribute('data-rank') || String(idx + 1);
-    const title = firstText(story, '.twitter-story-title, h3');
-    const lead = firstText(story, '.twitter-story-lead');
-    const sources = firstHtml(story, '.twitter-story-sources');
-    const signalsHtml = twitterSignalsToCallouts(story);
-    const bodyHtml = firstHtml(story, '.twitter-story-body') || firstHtml(story, '.twitter-story-details');
-    const detailsBits = [
-      sources ? '<div class="twitter-story-chips">' + sources + '</div>' : '',
-      signalsHtml,
-      bodyHtml ? '<div class="md-content twitter-story-body">' + bodyHtml + '</div>' : '',
-    ].filter(Boolean).join('\n');
-
-    return [
-      '<article class="twitter-story-card">',
-      '  <div class="twitter-story-rank">' + escapeHtml(rank) + '</div>',
-      '  <div class="twitter-story-main">',
-      title ? '    <h3 class="twitter-story-title">' + highlightPlainText(title) + '</h3>' : '',
-      lead ? '    <p class="twitter-story-summary">' + highlightPlainText(truncateText(cleanPublicLeadText(lead), 360)) + '</p>' : '',
-      detailsBits
-        ? [
-            '    <details class="twitter-story-details">',
-            '      <summary>Full analysis</summary>',
-            detailsBits,
-            '    </details>',
-          ].join('\n')
-        : '',
-      '  </div>',
-      '</article>',
-    ].filter(Boolean).join('\n');
-  }).join('\n');
-}
-
-function sanitizePublicReportMarkdown(md: string): string {
-  const lines = md.split('\n');
-  const out: string[] = [];
-  let skippingInternalSection = false;
-  let skippingInternalStory = false;
-  const internalToolLeak =
-    /\b(?:bird-fast|bird)\b.*(?:HTTP\s*403|Cloudflare|cookie|auth|User not found|\[err\]|returned|failed|blocked|degraded)/i;
-  const internalAccessNote =
-    /(?:Twitter access degraded|access restoration|cookie-clearance|not independently re-verifiable|0 successful bird|successful bird-fast|degraded-access)/i;
-
-  for (const line of lines) {
-    if (/^###\s+Research notes\b/i.test(line)) {
-      skippingInternalSection = true;
-      skippingInternalStory = false;
-      continue;
-    }
-    if (skippingInternalSection && /^##\s+/.test(line)) {
-      skippingInternalSection = false;
-    } else if (skippingInternalSection) {
-      continue;
-    }
-
-    if (/^####\s+\d+\.\s+.*(?:TWITTER ACCESS DEGRADED|BIRD-FAST HTTP|BIRD HTTP|ACCESS DEGRADED)/i.test(line)) {
-      skippingInternalStory = true;
-      continue;
-    }
-    if (skippingInternalStory && /^(?:####\s+\d+\.|###\s+|##\s+)/.test(line)) {
-      skippingInternalStory = false;
-    } else if (skippingInternalStory) {
-      continue;
-    }
-
-    if (internalToolLeak.test(line) || internalAccessNote.test(line)) continue;
-    out.push(
-      line
-        .replace(/\bverified bird-fast (?:user-tweets|search|read|tweet|thread)\b/gi, 'verified')
-        .replace(/\bre-verified bird-fast (?:user-tweets|search|read|tweet|thread)\b/gi, 're-verified')
-        .replace(/\bbird-fast\s+/gi, ''),
-    );
-  }
-
-  return out.join('\n').replace(/\n{4,}/g, '\n\n\n').trim();
-}
-
 function renderTwitterReport(md: string, fallbackDate: string | null = null): void {
-  const sections = splitSections(sanitizePublicReportMarkdown(md)).reverse();
-  const cards: string[] = [];
-  const timelineItems: InfoTimelineItem[] = [];
-  const mindshareCycles: TwitterMindshareCycle[] = [];
-  if (fallbackDate) {
-    cards.push(
-      '<div class="frontpage-fallback-note">No Twitter report for ' +
-        escapeHtml(fmtDate(currentDate)) +
-        '. Showing ' +
-        escapeHtml(fallbackDate) +
-        ' instead.</div>',
-    );
-  }
-
-  for (const section of sections) {
-    // Skip the document-level H1 that appears before the first cycle heading.
-    if (!section.title && (!section.body || /^#\s+.+$/.test(section.body.trim()))) continue;
-
-    const title = section.title || displayDate(currentDate);
-    const dateStr = fmtDate(currentDate);
-    const timeInfo = parseUtcTime(section.title, dateStr);
-    // Stable per-cycle anchor for search-driven deep links — must match the
-    // anchor prebuild writes into search-index.json (cycle-HHMMutc).
-    const cycleAnchor = 'cycle-' + section.title.replace(/[:\s]/g, '').toLowerCase();
-    const cycleSummary = extractCycleSummary(section.body);
-    const stories = parseTwitterStories(section.body);
-    const displayTime = timeInfo
-      ? '<span class="twitter-cycle-time">' + escapeHtml(timeInfo.utc) + '</span><span class="local-time">' + escapeHtml(timeInfo.local) + '</span>'
-      : '<span class="twitter-cycle-time">' + escapeHtml(title) + '</span>';
-    // Show the full cycle summary in the Signal Brief — it's the only place
-    // the summary lives now, so don't cut it mid-sentence.
-    const leadText = cycleSummary
-      ? cleanPublicLeadText(stripMarkdown(cycleSummary))
-      : truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 620);
-    mindshareCycles.push({
-      anchor: cycleAnchor,
-      body: section.body,
-      lead: leadText,
-      recencyWeight: Math.max(1, sections.length - mindshareCycles.length),
-      stories,
-    });
-    timelineItems.push({
-      href: '#' + cycleAnchor,
-      label: timeInfo ? timeInfo.utc.replace(/\s*UTC$/i, '') : title,
-      title: timeInfo ? timeInfo.local : title,
-      detail: summarizeTwitterTimeline(leadText, stories, section.body),
-    });
-    // Storyless cycles fall back to the cycle markdown — minus the parts shown
-    // separately above (Cycle summary → Signal Brief; Skeptic's corner → its
-    // own callout) so nothing renders twice.
-    const fallbackBody = section.body
-      .replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '')
-      .replace(/###\s+[^\n]*[Ss]keptic[^\n]*\n[\s\S]*?(?=\n#{2,3}\s|$)/i, '')
-      .trim();
-    const structuredStoryCards = renderStructuredTwitterStories(section.body);
-    const storyCards = structuredStoryCards || stories.map((story) => {
-      const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
-      const watch = truncateText(stripMarkdown(extractSectionText(story.body, 'Watch')), 210);
-      const storyIntro = stripMarkdown(storyCurrentLead(story.body))
-        .replace(/^[\s\-—–]+/, '')
-        .replace(/^the originating\b/i, 'Originating');
-      const storySummary = isSourceMethodLead(storyIntro) ? '' : truncateText(cleanPublicLeadText(storyIntro), 360);
-      const storyLinks = renderSourceChips(story.links, 6);
-      const storyHandles = renderHandleChips(story.handles, 8);
-      return [
-        '<article class="twitter-story-card">',
-        '  <div class="twitter-story-rank">' + escapeHtml(story.rank) + '</div>',
-        '  <div class="twitter-story-main">',
-        '    <h3 class="twitter-story-title">' + highlightPlainText(story.title) + '</h3>',
-        storySummary ? '    <p class="twitter-story-summary">' + highlightPlainText(storySummary) + '</p>' : '',
-        '    <details class="twitter-story-details">',
-        '      <summary>Full analysis</summary>',
-        storyLinks || storyHandles ? '      <div class="twitter-story-chips">' + storyLinks + storyHandles + '</div>' : '',
-        verification || watch
-          ? '      <div class="twitter-story-signals">' +
-              (verification ? '<div><span>Verify</span>' + highlightPlainText(verification) + '</div>' : '') +
-              (watch ? '<div><span>Watch</span>' + highlightPlainText(watch) + '</div>' : '') +
-            '</div>'
-          : '',
-        '      <div class="md-content twitter-story-body">' + twitterMarkdownToHtml(story.body) + '</div>',
-        '    </details>',
-        '  </div>',
-        '</article>',
-      ].filter(Boolean).join('\n');
-    }).join('\n');
-
-    const skepticBody = extractSkepticCorner(section.body);
-    const skepticHtml = skepticBody
-      ? '<div class="ara-callout ara-callout--danger">' + twitterMarkdownToHtml(skepticBody) + '</div>'
-      : '';
-
-    cards.push(
-      [
-        '<section id="' + cycleAnchor + '" class="content-card twitter-cycle-card">',
-        '  <div class="twitter-cycle-header">',
-        '    <div class="twitter-cycle-kicker">' + (timeInfo ? clockIcon(timeInfo.localHours, timeInfo.localMinutes) : '') + displayTime + '</div>',
-        '  </div>',
-        '  <div class="twitter-wire-brief">',
-        '    <div>',
-        '      <p class="twitter-brief-text">' + highlightPlainText(leadText) + '</p>',
-        '    </div>',
-        '  </div>',
-        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + twitterMarkdownToHtml(fallbackBody) + '</div>',
-        skepticHtml,
-        '</section>',
-      ].join('\n'),
-    );
-  }
-
-  const mindshareMap = renderTwitterMindshareMap(buildTwitterMindshare(mindshareCycles));
-  setSafeContent(content, '<div class="twitter-report">' + mindshareMap + renderInfoTimeline('twitter-info-timeline', 'Cycles', timelineItems) + cards.join('\n') + '</div>');
+  setSafeContent(content, renderTwitterReportHtml(md, {
+    fallbackDate,
+    currentDateStr: fmtDate(currentDate),
+    currentDateTitle: displayDate(currentDate),
+    searchTerm,
+    parseUtcTime,
+    clockIcon,
+    twitterMarkdownToHtml,
+    renderSourceChips,
+    renderHandleChips,
+  }));
   void hydrateTweetCards(content);
   void wikifyContent(content);
 }
@@ -3036,118 +2434,31 @@ function renderFrontPage(frontPage: FrontPageAsset): void {
   enhanceNewspaper();
 }
 
-/** Render the daily digest. Treats Executive Summary specially as a TL;DR block.
- * When `frontPage` is supplied the layout splits into two desktop columns: front
- * page on the left, digest cards on the right. Stacks under ~900px. */
 function renderToday(md: string, frontPage: FrontPageAsset | null = null): void {
-  const sections = splitSections(md);
-
-  // Digest files often start with `# AI Daily Digest - <date>` before the
-  // first `## Section`, which duplicates the date already shown in the
-  // card header. Strip the leading h1 from the pre-`##` body; if nothing
-  // else remains, drop the section so we don't render a blank card.
-  if (sections.length > 0 && !sections[0].title) {
-    sections[0].body = sections[0].body.replace(/^\s*#\s+[^\n]+\n*/, '').trim();
-    if (!sections[0].body) sections.shift();
-  }
-
-  const cards: string[] = [];
-
-  // Prepend an audio player if a Deepgram-generated digest MP3 exists for
-  // this date. Manifest is populated by dashboard/scripts/prebuild.mjs.
   const dateStr = fmtDate(currentDate);
-  if (manifest?.audio?.includes(dateStr)) {
-    const audioUrl = `${AUDIO_BASE}/audio/${dateStr}-digest.mp3`;
-    cards.push(
-      [
-        '<div class="today-audio">',
-        '  <audio controls preload="metadata" style="width:100%;" src="' + audioUrl + '">',
-        '    Your browser does not support the audio element.',
-        '  </audio>',
-        '</div>',
-      ].join('\n'),
-    );
-  }
-
-  let sectionIndex = 0;
-  for (const section of sections) {
-    if (!section.title && !section.body) continue;
-    if (section.title && isModelReleaseDigestSection(section.title)) continue;
-
-    const isSummary = /^(executive summary|tl;dr|tldr|summary)$/i.test(section.title.trim());
-    const title = section.title || displayDate(currentDate);
-    const anchorId = sectionAnchorId('today', isSummary ? 'tl-dr' : title, sectionIndex);
-    sectionIndex += 1;
-
-    let html = marked.parse(section.body) as string;
-    html = wrapTables(html);
-
-    html = html.replace(
-      /(?<!\w)(@\w+)/g,
-      '<span class="handle">$1</span>',
-    );
-
-    if (searchTerm) {
-      const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const re = new RegExp('(' + escaped + ')', 'gi');
-      html = html.replace(re, '<mark>$1</mark>');
-    }
-
-    if (isSummary) {
-      // Render as TL;DR block (lead card)
-      cards.push(
-        [
-          '<div id="' + anchorId + '" class="content-card today-card">',
-          '  <div class="content-card-body">',
-          '    <div class="today-tldr">',
-          '      <span class="today-tldr-label">TL;DR</span>',
-          '      <div class="md-content">' + html + '</div>',
-          '    </div>',
-          '  </div>',
-          '</div>',
-        ].join('\n'),
-      );
-    } else {
-      cards.push(
-        [
-          '<div id="' + anchorId + '" class="content-card">',
-          '  <div class="content-card-header">',
-          '    <div class="content-card-title">' + escapeHtml(title) + '</div>',
-          '  </div>',
-          '  <div class="content-card-body">',
-          '    <div class="md-content">' + html + '</div>',
-          '  </div>',
-          '</div>',
-        ].join('\n'),
-      );
-    }
-  }
-
-  const todayCards = cards.join('\n');
+  let frontPageCardHtml: string | null = null;
   if (frontPage) {
     const noteHtml = frontPage.fallback
       ? '  <div class="frontpage-fallback-note">Today’s front page auto-generates at 00:30 UTC. Showing ' + escapeHtml(frontPage.fallback) + ' instead.</div>'
       : '';
-    const fpCard = [
+    frontPageCardHtml = [
       '<div class="content-card frontpage-card today-frontpage-card">',
       noteHtml,
       frontPageBodyHtml(frontPage),
       '</div>',
     ].join('\n');
-    setSafeContent(
-      content,
-      [
-        '<div class="today-layout">',
-        '  <div class="today-layout-frontpage">' + fpCard + '</div>',
-        '  <div class="today-layout-digest">' + todayCards + '</div>',
-        '</div>',
-      ].join('\n'),
-    );
-    enhanceNewspaper();
-    void wikifyContent(content);
-    return;
   }
-  setSafeContent(content, todayCards);
+
+  setSafeContent(content, renderTodayHtml({
+    md,
+    dateStr,
+    fallbackTitle: displayDate(currentDate),
+    audioBase: AUDIO_BASE,
+    audioDates: manifest?.audio || [],
+    searchTerm,
+    frontPageCardHtml,
+  }));
+  if (frontPage) enhanceNewspaper();
   void wikifyContent(content);
 }
 
