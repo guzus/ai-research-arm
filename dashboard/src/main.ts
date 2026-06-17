@@ -827,10 +827,6 @@ function isModelReleaseDigestSection(title: string): boolean {
   return /\b(?:new\s+)?model\s+releases?\b/i.test(title) || /\bmodel\s+releases?\s*(?:&|and)\s*updates?\b/i.test(title);
 }
 
-function sectionTimelineDetail(md: string, max = 170): string {
-  return truncateText(cleanPublicLeadText(stripMarkdown(md)).replace(/^\s*[-*]\s+/, ''), max);
-}
-
 function renderInfoTimeline(className: string, label: string, items: InfoTimelineItem[]): string {
   if (items.length === 0) return '';
   return [
@@ -3056,7 +3052,6 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
   }
 
   const cards: string[] = [];
-  const timelineItems: InfoTimelineItem[] = [];
 
   // Prepend an audio player if a Deepgram-generated digest MP3 exists for
   // this date. Manifest is populated by dashboard/scripts/prebuild.mjs.
@@ -3083,12 +3078,6 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     const title = section.title || displayDate(currentDate);
     const anchorId = sectionAnchorId('today', isSummary ? 'tl-dr' : title, sectionIndex);
     sectionIndex += 1;
-    timelineItems.push({
-      href: '#' + anchorId,
-      label: String(sectionIndex).padStart(2, '0'),
-      title: isSummary ? 'TL;DR' : title,
-      detail: sectionTimelineDetail(section.body),
-    });
 
     let html = marked.parse(section.body) as string;
     html = wrapTables(html);
@@ -3134,7 +3123,6 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     }
   }
 
-  const todayTimeline = renderInfoTimeline('today-info-timeline', 'Today', timelineItems);
   const todayCards = cards.join('\n');
   if (frontPage) {
     const noteHtml = frontPage.fallback
@@ -3151,7 +3139,7 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
       [
         '<div class="today-layout">',
         '  <div class="today-layout-frontpage">' + fpCard + '</div>',
-        '  <div class="today-layout-digest">' + todayTimeline + todayCards + '</div>',
+        '  <div class="today-layout-digest">' + todayCards + '</div>',
         '</div>',
       ].join('\n'),
     );
@@ -3159,7 +3147,7 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     void wikifyContent(content);
     return;
   }
-  setSafeContent(content, todayTimeline + todayCards);
+  setSafeContent(content, todayCards);
   void wikifyContent(content);
 }
 
