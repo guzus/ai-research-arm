@@ -2,11 +2,48 @@
 .github
 .codex
 .claude
+.agents
+
+# The deploy image only copies Caddyfile, dashboard/, and the dashboard
+# research inputs below. Keep repository docs, Python tooling, workflow
+# prompts, and local caches out of Railway's Docker upload.
+*.md
+ARA_CATALOG.json
+.gitattributes
+.gitignore
+.nojekyll
+.python-version
+data
+docs
+prompts
+pyproject.toml
+railway.json
+scripts
+uv.lock
 
 dashboard/node_modules
 dashboard/dist
+dashboard/public/research
 dashboard/.vite
 dashboard/.vercel
+
+research/*
+!research/twitter
+!research/twitter/**
+!research/models
+!research/models/**
+!research/front-page
+!research/front-page/**
+!research/digest
+!research/digest/**
+!research/audio
+!research/audio/**
+!research/generative
+!research/generative/**
+!research/wiki
+!research/wiki/**
+!research/youtube
+!research/youtube/**
 
 node_modules
 __pycache__

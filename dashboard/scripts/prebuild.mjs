@@ -127,7 +127,7 @@ function copyData() {
   // GitHub Actions checkout is missing `lfs: true`. Fail loudly here instead
   // of silently shipping pointer text to production.
   let allPointers = findAllLfsPointers();
-  if (allPointers.length > 0 && tryHydrateLfsObjects()) {
+  if (allPointers.length > 0 && !skipLfsPointers && tryHydrateLfsObjects()) {
     allPointers = findAllLfsPointers();
   }
   if (allPointers.length > 0 && skipLfsPointers) {
