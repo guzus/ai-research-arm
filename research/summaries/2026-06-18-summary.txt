@@ -1,0 +1,13 @@
+AI News - 2026-06-18
+
+TOP STORIES:
+• UNIDIR Global Conference on AI, Security & Ethics opens today in Geneva (June 18-19, Microsoft-co-sponsored) - first UN-level AI-security forum since the Anthropic export action
+• Anthropic Fable 5 / Mythos 5 STILL offline as of June 18 - US export-control standoff, negotiations ongoing, no restoration date
+• No net-new frontier launch, megaround, or regulatory text this window; Gemini 3.5 Pro, GPT-5.6, Grok 5 all still unshipped into the June 30 cliff
+
+KEY NUMBERS:
+• GPT-5.6: Polymarket ~83% weight on a June 22-28 launch window
+• Gemini 3.5 Pro: ~50-55% odds to ship by June 30
+• Grok 5: only ~12-33% odds to ship by June 30
+
+Full report on GitHub.
