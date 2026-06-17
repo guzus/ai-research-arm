@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-17
+
+TOP STORIES:
+• SpaceX confirms $60B all-stock buy of Cursor (Anysphere) — and reveals SpaceXAI is jointly training an in-house model
+• Anthropic Fable 5/Mythos 5 export embargo now documented — full BIS/Lutnick letter public; license needed to release to ANY foreign person worldwide; models still offline
+• Z.ai ships GLM-5.2 (MIT, 1M context) with day-0 vLLM/Notion/Baseten support; Microsoft reportedly eyeing fine-tuned DeepSeek V4 for Copilot
+
+KEY NUMBERS:
+• SpaceX $60B Cursor deal; valuation ~$2.6-2.7T (briefly passed Amazon)
+• Leaked OpenAI: 2025 revenue $13.07B vs $19.18B R&D — losing billions
+• GPT-5.6 "meaningful leap" signal, <60-day cadence after 5.5
+
+TRENDING: HN — "Running local models is good now" (785 pts); SpaceX/Cursor (1,127 comments)
+
+Full digest on GitHub.
