@@ -1052,6 +1052,129 @@ body:not(.tab-research) .controls { display: none; }
   margin: 0 auto;
 }
 
+.twitter-mindshare {
+  max-width: 1040px;
+  margin: 0 auto 28px;
+}
+
+.twitter-mindshare-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.twitter-mindshare-head h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.twitter-mindshare-head span {
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
+
+.twitter-mindshare-map {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: 44px;
+  grid-auto-flow: dense;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.twitter-mindshare-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 9px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.twitter-mindshare-tile:hover {
+  border-color: var(--border);
+  text-decoration: none;
+  filter: none;
+}
+
+.twitter-mindshare-tile strong {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 0.98rem;
+  font-weight: 750;
+  line-height: 1.08;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.twitter-mindshare-tile--rising {
+  background: #edf8f1;
+  border-color: #b9ddc4;
+}
+
+.twitter-mindshare-tile--steady {
+  background: #eef4f7;
+  border-color: #c5d6dd;
+}
+
+.twitter-mindshare-tile--fading {
+  background: #fbefef;
+  border-color: #e7bfc0;
+}
+
+.twitter-mindshare-tile--xl {
+  grid-column: span 4;
+  grid-row: span 4;
+  padding: 14px;
+}
+
+.twitter-mindshare-tile--lg {
+  grid-column: span 3;
+  grid-row: span 3;
+  padding: 12px;
+}
+
+.twitter-mindshare-tile--md {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.twitter-mindshare-tile--sm {
+  grid-column: span 1;
+  grid-row: span 1;
+  padding: 6px;
+}
+
+.twitter-mindshare-tile--xl strong {
+  font-size: 1.45rem;
+}
+
+.twitter-mindshare-tile--lg strong {
+  font-size: 1.16rem;
+}
+
+.twitter-mindshare-tile--sm strong {
+  font-size: 0.72rem;
+}
+
 .info-timeline {
   max-width: 760px;
   margin: 0 0 20px;
@@ -1803,6 +1926,36 @@ body.has-toc .section-nav { display: none; }
   .today-tldr { padding: 14px 16px; margin-bottom: 18px; }
   .today-tldr li { font-size: 0.95rem; }
   .frontpage-fallback-note { margin: 10px 16px 0; font-size: 0.74rem; }
+  .twitter-mindshare {
+    margin-bottom: 22px;
+  }
+  .twitter-mindshare-head {
+    display: block;
+  }
+  .twitter-mindshare-head span {
+    display: block;
+    margin-top: 4px;
+  }
+  .twitter-mindshare-map {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 96px;
+    min-height: 0;
+  }
+  .twitter-mindshare-tile,
+  .twitter-mindshare-tile--xl,
+  .twitter-mindshare-tile--lg,
+  .twitter-mindshare-tile--md,
+  .twitter-mindshare-tile--sm {
+    grid-column: span 1;
+    grid-row: span 1;
+    padding: 10px;
+  }
+  .twitter-mindshare-tile strong,
+  .twitter-mindshare-tile--xl strong,
+  .twitter-mindshare-tile--lg strong,
+  .twitter-mindshare-tile--sm strong {
+    font-size: 0.92rem;
+  }
   .twitter-cycle-header {
     padding: 13px 16px;
   }

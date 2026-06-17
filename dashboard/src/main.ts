@@ -135,6 +135,21 @@ type TwitterStory = {
   links: string[];
   handles: string[];
 };
+type TwitterMindshareCycle = {
+  anchor: string;
+  body: string;
+  lead: string;
+  recencyWeight: number;
+  stories: TwitterStory[];
+};
+type TwitterMindshareItem = {
+  label: string;
+  share: number;
+  tone: 'rising' | 'steady' | 'fading';
+  href: string;
+  handles: string[];
+  sources: number;
+};
 type FocusReaderItem = {
   title: string;
   label: string;
@@ -2296,6 +2311,187 @@ function parseTwitterStories(body: string): TwitterStory[] {
   });
 }
 
+const TWITTER_MINDSHARE_TERMS: Array<{ label: string; pattern: RegExp }> = [
+  { label: 'Anthropic', pattern: /\b(?:Anthropic|Claude|Fable\s*5|Mythos\s*5)\b/gi },
+  { label: 'OpenAI', pattern: /\b(?:OpenAI|GPT-?5|GPT-?4\.?1|ChatGPT|Codex)\b/gi },
+  { label: 'Google', pattern: /\b(?:Google|Gemini|DeepMind|NotebookLM|Veo)\b/gi },
+  { label: 'xAI', pattern: /\b(?:xAI|Grok)\b/gi },
+  { label: 'Meta', pattern: /\b(?:Meta|Llama)\b/gi },
+  { label: 'Mistral', pattern: /\bMistral\b/gi },
+  { label: 'Broadcom', pattern: /\bBroadcom\b/gi },
+  { label: 'Sakana', pattern: /\bSakana\b/gi },
+  { label: 'Marlin', pattern: /\bMarlin\b/gi },
+  { label: 'Xiaomi', pattern: /\b(?:Xiaomi|MiMo)\b/gi },
+  { label: 'Nebius', pattern: /\bNebius\b/gi },
+  { label: 'Kimi', pattern: /\bKimi\b/gi },
+  { label: 'MiniMax', pattern: /\bMiniMax\b/gi },
+  { label: 'GLM', pattern: /\bGLM\b/gi },
+  { label: 'Manus', pattern: /\bManus\b/gi },
+  { label: 'NVIDIA', pattern: /\b(?:NVIDIA|NVDA|Blackwell|GB200|GB300)\b/gi },
+  { label: 'Cerebras', pattern: /\bCerebras\b/gi },
+  { label: 'Groq', pattern: /\bGroq\b/gi },
+  { label: 'Adobe', pattern: /\bAdobe\b/gi },
+  { label: 'Zoom', pattern: /\bZoom\b/gi },
+  { label: 'Samsung', pattern: /\bSamsung\b/gi },
+  { label: 'Sophos', pattern: /\bSophos\b/gi },
+  { label: 'Apollo', pattern: /\bApollo\b/gi },
+  { label: 'Blackstone', pattern: /\bBlackstone\b/gi },
+  { label: 'Neuralink', pattern: /\bNeuralink\b/gi },
+];
+
+function twitterMindshareMatches(text: string): string[] {
+  const labels: string[] = [];
+  for (const term of TWITTER_MINDSHARE_TERMS) {
+    term.pattern.lastIndex = 0;
+    if (term.pattern.test(text)) labels.push(term.label);
+  }
+  return labels;
+}
+
+function rankWeight(rank: string): number {
+  const n = Number(rank);
+  if (!Number.isFinite(n) || n <= 0) return 1;
+  return Math.max(1, 5 - n);
+}
+
+function buildTwitterMindshare(cycles: TwitterMindshareCycle[]): TwitterMindshareItem[] {
+  const scores = new Map<string, {
+    score: number;
+    latest: number;
+    earlier: number;
+    href: string;
+    topWeight: number;
+    handles: Set<string>;
+    sources: Set<string>;
+  }>();
+  const midpoint = Math.max(1, Math.ceil(cycles.length / 2));
+
+  const addScore = (
+    label: string,
+    weight: number,
+    cycle: TwitterMindshareCycle,
+    handles: string[],
+    sources: string[],
+    isLatestHalf: boolean,
+  ) => {
+    const current = scores.get(label) || {
+      score: 0,
+      latest: 0,
+      earlier: 0,
+      href: '#' + cycle.anchor,
+      topWeight: 0,
+      handles: new Set<string>(),
+      sources: new Set<string>(),
+    };
+    current.score += weight;
+    if (isLatestHalf) current.latest += weight;
+    else current.earlier += weight;
+    if (weight > current.topWeight) {
+      current.href = '#' + cycle.anchor;
+      current.topWeight = weight;
+    }
+    handles.forEach((handle) => current.handles.add(handle));
+    sources.forEach((source) => current.sources.add(source));
+    scores.set(label, current);
+  };
+
+  cycles.forEach((cycle, index) => {
+    const isLatestHalf = index < midpoint;
+    const cycleWeight = Math.max(1, cycle.recencyWeight);
+    const leadLabels = twitterMindshareMatches(cycle.lead);
+    for (const label of leadLabels) {
+      addScore(label, cycleWeight * 0.8, cycle, extractHandles(cycle.lead, 4), extractUrls(cycle.lead), isLatestHalf);
+    }
+
+    for (const story of cycle.stories) {
+      const storyText = story.title + '\n' + story.body;
+      const labels = twitterMindshareMatches(storyText);
+      const weight = cycleWeight * rankWeight(story.rank);
+      for (const label of labels) {
+        addScore(label, weight, cycle, story.handles, story.links, isLatestHalf);
+      }
+    }
+  });
+
+  const total = Array.from(scores.values()).reduce((sum, item) => sum + item.score, 0);
+  if (total <= 0) return [];
+
+  return Array.from(scores.entries())
+    .map(([label, item]) => {
+      let tone: TwitterMindshareItem['tone'] = 'steady';
+      if (item.latest > item.earlier * 1.25) tone = 'rising';
+      else if (item.earlier > item.latest * 1.25) tone = 'fading';
+      return {
+        label,
+        share: Math.max(1, Math.round((item.score / total) * 100)),
+        tone,
+        href: item.href,
+        handles: Array.from(item.handles).slice(0, 2),
+        sources: item.sources.size,
+      };
+    })
+    .sort((a, b) => b.share - a.share || a.label.localeCompare(b.label))
+    .slice(0, 18);
+}
+
+function twitterMindshareSizeClass(index: number): string {
+  if (index === 0) return 'twitter-mindshare-tile--xl';
+  if (index < 3) return 'twitter-mindshare-tile--lg';
+  if (index < 7) return 'twitter-mindshare-tile--md';
+  return 'twitter-mindshare-tile--sm';
+}
+
+function renderTwitterMindshareMap(items: TwitterMindshareItem[]): string {
+  if (items.length === 0) return '';
+  const tiles = items.map((item, index) => {
+    return [
+      '<a class="twitter-mindshare-tile ' + twitterMindshareSizeClass(index) + ' twitter-mindshare-tile--' + item.tone + '" href="' + escapeHtml(item.href) + '" aria-label="' + escapeHtml(item.label + ' mindshare, ' + item.tone) + '">',
+      '  <strong>' + escapeHtml(item.label) + '</strong>',
+      '</a>',
+    ].filter(Boolean).join('\n');
+  }).join('\n');
+  return [
+    '<section class="twitter-mindshare" aria-label="Twitter mindshare map">',
+    '  <div class="twitter-mindshare-head">',
+    '    <h2>Mindshare</h2>',
+    '    <span>Weighted by cycle recency and story rank</span>',
+    '  </div>',
+    '  <div class="twitter-mindshare-map">' + tiles + '</div>',
+    '</section>',
+  ].join('\n');
+}
+
+function extractStructuredTwitterStoryTitles(body: string): string[] {
+  if (!/\btwitter-story-title\b/.test(body)) return [];
+  const doc = new DOMParser().parseFromString('<div>' + body + '</div>', 'text/html');
+  return Array.from(doc.querySelectorAll('article.twitter-story .twitter-story-title'))
+    .map((node) => node.textContent?.replace(/\s+/g, ' ').trim() || '')
+    .filter(Boolean);
+}
+
+function cleanTimelineStoryTitle(title: string): string {
+  return cleanPublicLeadText(title
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[*_`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim())
+    .split(/\s+—\s+/)[0]
+    .replace(/\.$/, '')
+    .trim();
+}
+
+function summarizeTwitterTimeline(leadText: string, stories: TwitterStory[], body: string): string {
+  const storyTitles = (stories.length > 0 ? stories.map((story) => story.title) : extractStructuredTwitterStoryTitles(body))
+    .slice(0, 2)
+    .map((title) => cleanTimelineStoryTitle(title))
+    .filter(Boolean);
+  if (storyTitles.length > 0) return truncateText(storyTitles.join('; ') + '.', 190);
+
+  const sentences = leadText.match(/[^.!?]+[.!?]+/g)?.map((sentence) => sentence.trim()).filter(Boolean) || [];
+  if (sentences.length > 0) return truncateText(sentences.slice(0, 2).join(' '), 190);
+  return truncateText(leadText, 190);
+}
+
 function firstText(root: ParentNode, selector: string): string {
   return root.querySelector(selector)?.textContent?.replace(/\s+/g, ' ').trim() || '';
 }
@@ -2425,6 +2621,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
   const sections = splitSections(sanitizePublicReportMarkdown(md)).reverse();
   const cards: string[] = [];
   const timelineItems: InfoTimelineItem[] = [];
+  const mindshareCycles: TwitterMindshareCycle[] = [];
   if (fallbackDate) {
     cards.push(
       '<div class="frontpage-fallback-note">No Twitter report for ' +
@@ -2455,11 +2652,18 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
     const leadText = cycleSummary
       ? cleanPublicLeadText(stripMarkdown(cycleSummary))
       : truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 620);
+    mindshareCycles.push({
+      anchor: cycleAnchor,
+      body: section.body,
+      lead: leadText,
+      recencyWeight: Math.max(1, sections.length - mindshareCycles.length),
+      stories,
+    });
     timelineItems.push({
       href: '#' + cycleAnchor,
       label: timeInfo ? timeInfo.utc.replace(/\s*UTC$/i, '') : title,
       title: timeInfo ? timeInfo.local : title,
-      detail: truncateText(leadText, 180),
+      detail: summarizeTwitterTimeline(leadText, stories, section.body),
     });
     // Storyless cycles fall back to the cycle markdown — minus the parts shown
     // separately above (Cycle summary → Signal Brief; Skeptic's corner → its
@@ -2524,7 +2728,8 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
     );
   }
 
-  setSafeContent(content, '<div class="twitter-report">' + renderInfoTimeline('twitter-info-timeline', 'Cycles', timelineItems) + cards.join('\n') + '</div>');
+  const mindshareMap = renderTwitterMindshareMap(buildTwitterMindshare(mindshareCycles));
+  setSafeContent(content, '<div class="twitter-report">' + mindshareMap + renderInfoTimeline('twitter-info-timeline', 'Cycles', timelineItems) + cards.join('\n') + '</div>');
   void hydrateTweetCards(content);
   void wikifyContent(content);
 }
