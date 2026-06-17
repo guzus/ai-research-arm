@@ -30,6 +30,12 @@ created_at: 2026-05-01
 timestamp: 2026-05-02T00:00:00Z
 sources:
   - {title: "ARA digest", path: research/digest/2026-05-02-digest.md}
+images:
+  - url: "https://example.com/alpha-ui.jpg"
+    alt: "Alpha Corp product UI illustrating the entity page."
+    caption: "Alpha product surface."
+    credit: "Alpha"
+    source_url: "https://example.com/alpha-media"
 ---
 
 Alpha links to [[beta]] and [[b-one|Beta by alias]].
@@ -104,6 +110,8 @@ class ExportWikiOkfTest(unittest.TestCase):
             self.assertEqual(data["aliases"], ["A1"])
             self.assertEqual(data["tags"], ["infra"])
             self.assertEqual(data["sources"][0]["title"], "ARA digest")
+            self.assertEqual(data["images"][0]["url"], "https://example.com/alpha-ui.jpg")
+            self.assertEqual(data["images"][0]["alt"], "Alpha Corp product UI illustrating the entity page.")
 
     def test_export_rewrites_wikilinks_to_markdown_links(self):
         with tempfile.TemporaryDirectory() as td:

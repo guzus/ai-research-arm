@@ -2856,6 +2856,53 @@ body.tab-frontpage .section-nav {
   margin: 0 0 4px;
 }
 
+.wiki-image-gallery {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 14px;
+}
+
+.wiki-image-gallery--single {
+  max-width: 720px;
+}
+
+.wiki-image-gallery--multi {
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+}
+
+.wiki-image-figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.wiki-image-figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+}
+
+.wiki-image-caption {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-tertiary);
+}
+
+.wiki-image-credit {
+  color: var(--text-tertiary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+}
+
+.wiki-image-credit:hover {
+  color: var(--accent-warm);
+  border-bottom-color: var(--accent-warm);
+}
+
 .wiki-page-body {
   margin-left: 0;
   margin-right: auto;

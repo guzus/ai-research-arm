@@ -139,6 +139,8 @@ timestamp: 2026-05-24T00:00:00Z
 sources:
   - {title: "Q1 results", url: "https://example.com/q1", date: 2026-05-20}
   - {title: "ARA digest", path: research/digest/2026-05-24-digest.md}
+images:
+  - {url: "https://example.com/nbx-gpu-rack.jpg", alt: "NBX GPU racks illustrating the neocloud provider.", caption: "Illustrative NBX GPU-cloud hardware.", credit: "NBX", source_url: "https://example.com/media"}
 ---
 
 Body with no wikilinks; just prose to exercise flow-style frontmatter parsing.
@@ -295,6 +297,36 @@ class FrontmatterFailureTest(unittest.TestCase):
         report = self._one_page_report(build)
         self.assertFalse(report.ok())
         self.assertIn("sources", fail_fields(report))
+
+    def test_bad_image_missing_alt_fails(self):
+        def build(root):
+            p = root / "entities" / "alpha.md"
+            p.write_text(
+                "---\nslug: alpha\ntitle: Alpha\ntype: entity\ndescription: x\n"
+                "created_at: 2026-05-24\ntimestamp: 2026-05-24\n"
+                "images:\n  - {url: \"https://example.com/alpha.jpg\"}\n---\n\nBody.\n",
+                encoding="utf-8",
+            )
+            write_index(root, entities=["alpha"])
+
+        report = self._one_page_report(build)
+        self.assertFalse(report.ok())
+        self.assertIn("images", fail_fields(report))
+
+    def test_remote_svg_image_fails(self):
+        def build(root):
+            p = root / "entities" / "alpha.md"
+            p.write_text(
+                "---\nslug: alpha\ntitle: Alpha\ntype: entity\ndescription: x\n"
+                "created_at: 2026-05-24\ntimestamp: 2026-05-24\n"
+                "images:\n  - {url: \"https://example.com/logo.svg\", alt: \"Alpha logo\"}\n---\n\nBody.\n",
+                encoding="utf-8",
+            )
+            write_index(root, entities=["alpha"])
+
+        report = self._one_page_report(build)
+        self.assertFalse(report.ok())
+        self.assertIn("images", fail_fields(report))
 
 
 # --- check_wiki: corpus-level failure modes ---------------------------------
@@ -571,6 +603,30 @@ class WikiSearchTest(unittest.TestCase):
             )
             results = wiki_search.search(root, "quxzzytoken")
             self.assertEqual(results, [])
+
+    def test_image_alt_text_is_searchable(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = make_wiki(Path(td))
+            p = root / "entities" / "alpha.md"
+            p.write_text(
+                """---
+slug: alpha
+title: Alpha
+type: entity
+description: A page with image metadata.
+created_at: 2026-05-24
+timestamp: 2026-05-24T00:00:00Z
+images:
+  - {url: "https://example.com/alpha-wafer.jpg", alt: "Alpha wafer-scale inference cluster"}
+---
+
+Body without the query term.
+""",
+                encoding="utf-8",
+            )
+            results = wiki_search.search(root, "wafer inference")
+            self.assertTrue(results)
+            self.assertEqual(results[0]["slug"], "alpha")
 
 
 if __name__ == "__main__":

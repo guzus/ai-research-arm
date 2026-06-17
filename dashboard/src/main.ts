@@ -1717,6 +1717,14 @@ function hideWikiHover(): void {
 
 type WikiType = 'entity' | 'concept' | 'theme';
 
+type WikiImage = {
+  url: string;
+  alt: string;
+  caption?: string;
+  credit?: string;
+  source_url?: string;
+};
+
 type WikiPage = {
   slug: string;
   title: string;
@@ -1727,6 +1735,7 @@ type WikiPage = {
   updated_at: string;
   file: string;            // relative to research/wiki/, e.g. "entities/nebius.md"
   aliases: string[];
+  images?: WikiImage[];
   outbound: string[];      // slugs
   inbound: string[];       // slugs
 };
@@ -1884,6 +1893,50 @@ function wikiTagsHtml(tags: string[] | undefined): string {
     tags.map((t) => '<span class="ara-tag">' + escapeHtml(t) + '</span>').join('') +
     '</span>'
   );
+}
+
+function safeWikiImageUrl(url: string | undefined): string | null {
+  if (!url || /\s/.test(url)) return null;
+  if (/\.svg(?:$|[?#])/i.test(url)) return null;
+  if (/^https?:\/\//i.test(url)) return url;
+  if (url.startsWith('/') && !url.startsWith('//')) return url;
+  return null;
+}
+
+function safeWikiSourceUrl(url: string | undefined): string | null {
+  if (!url || /\s/.test(url)) return null;
+  if (/^https?:\/\//i.test(url)) return url;
+  return null;
+}
+
+function wikiImagesHtml(images: WikiImage[] | undefined): string {
+  const valid = (images || [])
+    .map((img) => ({ ...img, url: safeWikiImageUrl(img.url), source_url: safeWikiSourceUrl(img.source_url) }))
+    .filter((img) => img.url && img.alt);
+  if (!valid.length) return '';
+
+  const mode = valid.length === 1 ? 'single' : 'multi';
+  const figures = valid.map((img) => {
+    const credit = img.credit
+      ? img.source_url
+        ? '<a href="' + escapeHtml(img.source_url) + '" class="wiki-image-credit">' + escapeHtml(img.credit) + '</a>'
+        : '<span class="wiki-image-credit">' + escapeHtml(img.credit) + '</span>'
+      : img.source_url
+        ? '<a href="' + escapeHtml(img.source_url) + '" class="wiki-image-credit">Source</a>'
+        : '';
+    const captionBits = [
+      img.caption ? '<span class="wiki-image-caption-text">' + escapeHtml(img.caption) + '</span>' : '',
+      credit,
+    ].filter(Boolean);
+    return [
+      '<figure class="wiki-image-figure">',
+      '  <img src="' + escapeHtml(img.url || '') + '" alt="' + escapeHtml(img.alt) + '" loading="lazy" decoding="async">',
+      captionBits.length ? '  <figcaption class="wiki-image-caption">' + captionBits.join(' ') + '</figcaption>' : '',
+      '</figure>',
+    ].filter(Boolean).join('\n');
+  }).join('\n');
+
+  return '<div class="wiki-image-gallery wiki-image-gallery--' + mode + '">' + figures + '</div>';
 }
 
 // Page metadata as an ara-kv grid. Surfaces updated/created (which the index
@@ -2057,6 +2110,7 @@ function renderWikiPage(page: WikiPage, body: string): void {
       page.summary
         ? '    <div class="ara-callout ara-callout--info"><span class="ara-callout-label">Summary</span><p>' + escapeHtml(page.summary) + '</p></div>'
         : '',
+      wikiImagesHtml(page.images),
       wikiKvHtml(page),
       wikiTagsHtml(page.tags),
       '  </div>',

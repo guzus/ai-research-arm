@@ -150,6 +150,22 @@
         "prometheus",
         "spacex",
         "xai"
+      ],
+      "images": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Datacenter_Server_Racks_%2822370909788%29.jpg/1280px-Datacenter_Server_Racks_%2822370909788%29.jpg",
+          "alt": "Rows of datacenter server racks used to depict the AI infrastructure buildout behind the capex supercycle.",
+          "caption": "Server-rack imagery for the physical infrastructure layer of the AI-capex supercycle.",
+          "credit": "Carl Lender / Wikimedia Commons (CC BY 2.0)",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Datacenter_Server_Racks_(22370909788).jpg"
+        },
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Rear_of_rack_at_NERSC_data_center_-_closeup.jpg/1280px-Rear_of_rack_at_NERSC_data_center_-_closeup.jpg",
+          "alt": "Rear view of dense datacenter racks and cabling, illustrating the physical compute layer behind AI-capex demand.",
+          "caption": "Dense rack cabling as a concrete depiction of the power, networking, and compute layer behind AI infrastructure.",
+          "credit": "Derrick Coetzee / Wikimedia Commons (CC0)",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Rear_of_rack_at_NERSC_data_center_-_closeup.jpg"
+        }
       ]
     },
     {
@@ -1210,6 +1226,22 @@
         "gemma-4",
         "open-weights",
         "xiaomi-mimo-v2-5-pro"
+      ],
+      "images": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/NVIDIA_H100_%28%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan%29_007.png/1280px-NVIDIA_H100_%28%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan%29_007.png",
+          "alt": "Close-up of an NVIDIA H100 accelerator used to depict NVIDIA's role in AI training and inference.",
+          "caption": "NVIDIA H100 hardware, the accelerator class at the center of the AI-capex buildout.",
+          "credit": "Geekerwan / Wikimedia Commons (CC BY 3.0)",
+          "source_url": "https://commons.wikimedia.org/wiki/File:NVIDIA_H100_(%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan)_007.png"
+        },
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Nvidia_DGX_Station%2C_world%27s_most_powerful_desktop%2C_a_Supercomputer_at_the_office.webm/1280px--Nvidia_DGX_Station%2C_world%27s_most_powerful_desktop%2C_a_Supercomputer_at_the_office.webm.jpg",
+          "alt": "NVIDIA DGX Station deskside AI supercomputer shown as an example of NVIDIA's local and datacenter AI systems.",
+          "caption": "DGX Station-class hardware, useful context for the page's deskside AI-supercomputer discussion.",
+          "credit": "Charbax / Wikimedia Commons (CC BY 3.0)",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Nvidia_DGX_Station,_world%27s_most_powerful_desktop,_a_Supercomputer_at_the_office.webm"
+        }
       ]
     },
     {
@@ -1500,6 +1532,22 @@
         "cursor",
         "deepseek",
         "xai"
+      ],
+      "images": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Iridium-1_Launch_%2832312419215%29.jpg/1280px-Iridium-1_Launch_%2832312419215%29.jpg",
+          "alt": "SpaceX Falcon 9 launch used to depict the aerospace company behind the SPCX public-markets story.",
+          "caption": "Falcon 9 launch imagery grounds the SpaceX page in the company's core aerospace business.",
+          "credit": "SpaceX / Wikimedia Commons (CC0)",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Iridium-1_Launch_(32312419215).jpg"
+        },
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/SpaceX_Starship_ignition_during_IFT-5.jpg/1280px-SpaceX_Starship_ignition_during_IFT-5.jpg",
+          "alt": "SpaceX Starship ignition during an integrated flight test, depicting the heavy-launch program behind SpaceX's valuation story.",
+          "caption": "Starship launch-system imagery helps contextualize the scale behind the SpaceX valuation and AI-infrastructure financing narrative.",
+          "credit": "Steve Jurvetson / Wikimedia Commons (CC BY 2.0)",
+          "source_url": "https://commons.wikimedia.org/wiki/File:SpaceX_Starship_ignition_during_IFT-5.jpg"
+        }
       ]
     },
     {
@@ -1826,6 +1874,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-17",
+      "op": "ingest",
+      "summary": "Backfilled image metadata for 3 high-traffic wiki pages (nvidia, spacex, ai-capex), adding two topic-specific Wikimedia Commons visuals to each so the new multi-image wiki contract has real corpus coverage."
+    },
     {
       "date": "2026-06-17",
       "op": "ingest",

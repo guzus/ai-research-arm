@@ -16,6 +16,17 @@ sources:
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
+images:
+  - url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Iridium-1_Launch_%2832312419215%29.jpg/1280px-Iridium-1_Launch_%2832312419215%29.jpg"
+    alt: "SpaceX Falcon 9 launch used to depict the aerospace company behind the SPCX public-markets story."
+    caption: "Falcon 9 launch imagery grounds the SpaceX page in the company's core aerospace business."
+    credit: "SpaceX / Wikimedia Commons (CC0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Iridium-1_Launch_(32312419215).jpg"
+  - url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/SpaceX_Starship_ignition_during_IFT-5.jpg/1280px-SpaceX_Starship_ignition_during_IFT-5.jpg"
+    alt: "SpaceX Starship ignition during an integrated flight test, depicting the heavy-launch program behind SpaceX's valuation story."
+    caption: "Starship launch-system imagery helps contextualize the scale behind the SpaceX valuation and AI-infrastructure financing narrative."
+    credit: "Steve Jurvetson / Wikimedia Commons (CC BY 2.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:SpaceX_Starship_ignition_during_IFT-5.jpg"
 ---
 
 **SpaceX** is the aerospace and satellite-internet company whose 2026 IPO became

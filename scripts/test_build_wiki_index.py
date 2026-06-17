@@ -28,6 +28,12 @@ tags: [infra]
 description: Alpha description.
 created_at: 2026-05-01
 timestamp: 2026-05-02T00:00:00Z
+images:
+  - url: "https://example.com/alpha-datacenter.jpg"
+    alt: "Alpha data-center racks illustrating the infrastructure entity."
+    caption: "Alpha infrastructure visual."
+    credit: "Alpha"
+    source_url: "https://example.com/alpha-media"
 ---
 Alpha links to [[beta]] and again via alias [[b-one|Beta]].
 """
@@ -88,6 +94,18 @@ class BuildWikiIndexTest(unittest.TestCase):
             self.assertEqual(alpha["created_at"], "2026-05-01")
             self.assertEqual(alpha["timestamp"], "2026-05-02T00:00:00Z")
             self.assertEqual(alpha["aliases"], ["A1"])
+            self.assertEqual(
+                alpha["images"],
+                [
+                    {
+                        "url": "https://example.com/alpha-datacenter.jpg",
+                        "alt": "Alpha data-center racks illustrating the infrastructure entity.",
+                        "caption": "Alpha infrastructure visual.",
+                        "credit": "Alpha",
+                        "source_url": "https://example.com/alpha-media",
+                    }
+                ],
+            )
 
     def test_fenced_links_excluded_from_graph(self):
         with tempfile.TemporaryDirectory() as td:

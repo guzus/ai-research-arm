@@ -165,13 +165,39 @@ function findShareImageUrl() {
 }
 
 // Shared OG/Twitter image tags (or [] when no share image is available).
-function imageMetaTags(imageUrl, alt) {
-  if (!imageUrl) return [];
-  return [
-    `<meta property="og:image" content="${htmlEscapeAttr(imageUrl)}" />`,
-    `<meta property="og:image:alt" content="${htmlEscapeAttr(alt)}" />`,
-    `<meta name="twitter:image" content="${htmlEscapeAttr(imageUrl)}" />`,
-  ];
+function absoluteImageUrl(url) {
+  if (typeof url !== 'string' || !url.trim() || /\s/.test(url)) return null;
+  if (/\.svg(?:$|[?#])/i.test(url)) return null;
+  if (/^https?:\/\//i.test(url)) return url;
+  if (url.startsWith('/') && !url.startsWith('//')) return `${SITE_ORIGIN}${url}`;
+  return null;
+}
+
+function imageMetaItems(imageInput, fallbackAlt) {
+  if (!imageInput) return [];
+  const rawItems = Array.isArray(imageInput)
+    ? imageInput
+    : [{ url: imageInput, alt: fallbackAlt }];
+  return rawItems
+    .map(item => {
+      if (typeof item === 'string') return { url: absoluteImageUrl(item), alt: fallbackAlt };
+      const url = absoluteImageUrl(item?.url);
+      const alt = String(item?.alt || fallbackAlt || '').trim();
+      return { url, alt };
+    })
+    .filter(item => item.url);
+}
+
+function imageMetaTags(imageInput, alt) {
+  const images = imageMetaItems(imageInput, alt);
+  if (!images.length) return [];
+  const tags = [];
+  for (const img of images) {
+    tags.push(`<meta property="og:image" content="${htmlEscapeAttr(img.url)}" />`);
+    if (img.alt) tags.push(`<meta property="og:image:alt" content="${htmlEscapeAttr(img.alt)}" />`);
+  }
+  tags.push(`<meta name="twitter:image" content="${htmlEscapeAttr(images[0].url)}" />`);
+  return tags;
 }
 
 // Replace the marked SEO block with metaBlock. Fallback: if the markers are
@@ -383,6 +409,51 @@ function buildDigestPage(template, digest, shareImageUrl) {
   return html;
 }
 
+function wikiPageImages(page, fallbackAlt) {
+  if (!Array.isArray(page?.images)) return [];
+  return imageMetaItems(
+    page.images.map(img => ({
+      url: img?.url,
+      alt: String(img?.alt || fallbackAlt || ''),
+    })),
+    fallbackAlt,
+  );
+}
+
+function wikiImageGalleryHtml(page, title) {
+  if (!Array.isArray(page?.images)) return '';
+  const figures = page.images
+    .map(img => {
+      const url = absoluteImageUrl(img?.url);
+      const alt = String(img?.alt || title || '').trim();
+      if (!url || !alt) return '';
+      const caption = String(img?.caption || '').trim();
+      const credit = String(img?.credit || '').trim();
+      const sourceUrl = /^https?:\/\/\S+$/i.test(String(img?.source_url || '')) ? String(img.source_url) : '';
+      const creditHtml = credit
+        ? sourceUrl
+          ? `<a href="${htmlEscapeAttr(sourceUrl)}" class="wiki-image-credit">${htmlEscapeAttr(credit)}</a>`
+          : `<span class="wiki-image-credit">${htmlEscapeAttr(credit)}</span>`
+        : sourceUrl
+          ? `<a href="${htmlEscapeAttr(sourceUrl)}" class="wiki-image-credit">Source</a>`
+          : '';
+      const captionParts = [];
+      if (caption) captionParts.push(`<span class="wiki-image-caption-text">${htmlEscapeAttr(caption)}</span>`);
+      if (creditHtml) captionParts.push(creditHtml);
+      const captionHtml = captionParts.join(' ');
+      return [
+        '<figure class="wiki-image-figure">',
+        `<img src="${htmlEscapeAttr(url)}" alt="${htmlEscapeAttr(alt)}" loading="lazy" decoding="async">`,
+        captionHtml ? `<figcaption class="wiki-image-caption">${captionHtml}</figcaption>` : '',
+        '</figure>',
+      ].filter(Boolean).join('');
+    })
+    .filter(Boolean);
+  if (!figures.length) return '';
+  const mode = figures.length === 1 ? 'single' : 'multi';
+  return `<div class="wiki-image-gallery wiki-image-gallery--${mode}">${figures.join('')}</div>`;
+}
+
 function buildWikiPage(template, page, shareImageUrl) {
   const url = `${SITE_ORIGIN}/wiki/${page.slug}`;
   const title = page.title || page.slug;
@@ -421,7 +492,11 @@ function buildWikiPage(template, page, shareImageUrl) {
     about: keywords.map(name => ({ '@type': 'Thing', name })),
     url,
   };
-  if (shareImageUrl) jsonLd.image = shareImageUrl;
+  const pageImages = wikiPageImages(page, title);
+  const metaImages = pageImages.length
+    ? pageImages
+    : imageMetaItems(shareImageUrl, title);
+  if (metaImages.length) jsonLd.image = metaImages.map(img => img.url);
 
   const metaBlock = [
     `<title>${htmlEscapeAttr(title)} -- ara wiki</title>`,
@@ -434,8 +509,8 @@ function buildWikiPage(template, page, shareImageUrl) {
     `<meta property="og:description" content="${htmlEscapeAttr(desc)}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:site_name" content="ara -- AI research arm" />`,
-    ...imageMetaTags(shareImageUrl, title),
-    `<meta name="twitter:card" content="${shareImageUrl ? 'summary_large_image' : 'summary'}" />`,
+    ...imageMetaTags(metaImages, title),
+    `<meta name="twitter:card" content="${metaImages.length ? 'summary_large_image' : 'summary'}" />`,
     `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
     `<link rel="alternate" type="application/rss+xml" title="ara -- AI research arm" href="${SITE_ORIGIN}/feed.xml" />`,
@@ -446,7 +521,7 @@ function buildWikiPage(template, page, shareImageUrl) {
   let html = applySeoBlock(template, metaBlock);
   html = inlineContent(
     html,
-    `<div class="content-card"><div class="content-card-body"><h2>${htmlEscapeAttr(title)}</h2>${bodyHtml}</div></div>`,
+    `<div class="content-card"><div class="content-card-body"><h2>${htmlEscapeAttr(title)}</h2>${wikiImageGalleryHtml(page, title)}${bodyHtml}</div></div>`,
   );
   return html;
 }

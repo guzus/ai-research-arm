@@ -22,6 +22,17 @@ sources:
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
+images:
+  - url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Datacenter_Server_Racks_%2822370909788%29.jpg/1280px-Datacenter_Server_Racks_%2822370909788%29.jpg"
+    alt: "Rows of datacenter server racks used to depict the AI infrastructure buildout behind the capex supercycle."
+    caption: "Server-rack imagery for the physical infrastructure layer of the AI-capex supercycle."
+    credit: "Carl Lender / Wikimedia Commons (CC BY 2.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Datacenter_Server_Racks_(22370909788).jpg"
+  - url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Rear_of_rack_at_NERSC_data_center_-_closeup.jpg/1280px-Rear_of_rack_at_NERSC_data_center_-_closeup.jpg"
+    alt: "Rear view of dense datacenter racks and cabling, illustrating the physical compute layer behind AI-capex demand."
+    caption: "Dense rack cabling as a concrete depiction of the power, networking, and compute layer behind AI infrastructure."
+    credit: "Derrick Coetzee / Wikimedia Commons (CC0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Rear_of_rack_at_NERSC_data_center_-_closeup.jpg"
 ---
 
 The **AI capex supercycle** is the cross-cutting narrative tying together GPU
