@@ -83,10 +83,10 @@ function timeAgo(date: Date): string {
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader' | 'briefing' | 'sourceMap';
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader';
 // Tabs that route by date (calendar-driven). research + wiki are slug-driven
 // (or index views) and are excluded — mirror the research precedent.
-type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader' | 'briefing' | 'sourceMap'>;
+type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader'>;
 type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
@@ -158,34 +158,6 @@ type FocusReaderData = {
   latestResearchTitle: string;
   frontend: DesignFrontendData;
 };
-type BriefingKind = 'digest' | 'twitter' | 'model' | 'source';
-type BriefingEvidence = {
-  label: string;
-  source: string;
-  detail: string;
-  href?: string;
-};
-type BriefingItem = {
-  id: string;
-  kind: BriefingKind;
-  score: number;
-  status: string;
-  title: string;
-  source: string;
-  time: string;
-  summary: string;
-  bullets: string[];
-  chips: string[];
-  evidence: BriefingEvidence[];
-  actionHref: string;
-};
-type BriefingInboxData = {
-  items: BriefingItem[];
-  stats: { label: string; value: string }[];
-  latestDate: string | null;
-  frontend: DesignFrontendData;
-};
-
 // Model-release ticket — see docs/model-tickets.md for the contract.
 type TicketStatus = 'rumored' | 'in-testing' | 'confirmed' | 'released' | 'closed';
 type TicketVerification = 'confirmed' | 'partial' | 'unverified';
@@ -209,42 +181,11 @@ type Ticket = {
   body: string;
 };
 type TicketIndex = { tickets: Ticket[] };
-type SourceMapLane = {
+type InfoTimelineItem = {
+  href: string;
+  label: string;
   title: string;
-  subtitle: string;
-  count: number;
-  meta: string[];
-  active?: boolean;
-};
-type SourceMapEntity = {
-  title: string;
-  meta: string;
-  score: number;
-  tags: string[];
-  primary?: boolean;
-};
-type SourceMapEvidence = {
-  title: string;
-  meta: string;
-  tags: string[];
-};
-type SourceMapModel = {
-  latestDate: string;
-  dateRail: string[];
-  thesis: string;
   detail: string;
-  confidence: number;
-  lanes: SourceMapLane[];
-  coverage: Array<{ label: string; value: number }>;
-  linked: {
-    modelTickets: number;
-    wikiPages: number;
-    primarySources: number;
-    generative: number;
-  };
-  entities: SourceMapEntity[];
-  evidence: SourceMapEvidence[];
-  frontend: DesignFrontendData;
 };
 type DesignSurface = 'digest' | 'signals' | 'models' | 'research' | 'wiki';
 type DesignFrontendData = {
@@ -278,10 +219,6 @@ let focusReaderData: FocusReaderData | null = null;
 let focusReaderSelectedIndex = 0;
 let focusReaderSearchTerm = '';
 let focusReaderSurface: DesignSurface = 'digest';
-let briefingInboxCache: BriefingInboxData | null = null;
-let selectedBriefingId: string | null = null;
-let briefingSurface: DesignSurface = 'signals';
-let sourceMapSurface: DesignSurface = 'digest';
 // Which ticket is expanded (showing body + history). Null = grid view.
 // Filter state for the tickets grid.
 const ticketFilters = { status: 'all', company: 'all' };
@@ -324,12 +261,6 @@ const languageSwitch = document.getElementById('languageSwitch');
 function routeFromState(): string {
   if (activeTab === 'focusReader') {
     return '/design/focus-reader';
-  }
-  if (activeTab === 'briefing') {
-    return '/design/briefing-inbox';
-  }
-  if (activeTab === 'sourceMap') {
-    return '/design/source-map';
   }
   if (activeTab === 'research') {
     return selectedSlug ? '/research/' + selectedSlug : '/research';
@@ -397,18 +328,6 @@ function parseRoute(path: string): boolean {
   const trimmed = clean.replace(/^\/+/, '');
   if (trimmed === 'design/focus-reader') {
     activeTab = 'focusReader';
-    selectedSlug = null;
-    syncTabUi();
-    return true;
-  }
-  if (trimmed === 'design/briefing-inbox') {
-    activeTab = 'briefing';
-    selectedSlug = null;
-    syncTabUi();
-    return true;
-  }
-  if (trimmed === 'design/source-map') {
-    activeTab = 'sourceMap';
     selectedSlug = null;
     syncTabUi();
     return true;
@@ -487,8 +406,6 @@ function syncTabUi(): void {
   // toggle as research/models.
   document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
   document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
-  document.body.classList.toggle('tab-briefing', activeTab === 'briefing');
-  document.body.classList.toggle('tab-source-map', activeTab === 'sourceMap');
 }
 
 // ── Helpers ───────────────────────────────────────────
@@ -881,6 +798,43 @@ function escapeHtml(str: string): string {
   return div.innerHTML;
 }
 
+function sectionAnchorId(prefix: string, title: string, index: number): string {
+  const slug = title
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 48);
+  return prefix + '-' + String(index + 1).padStart(2, '0') + (slug ? '-' + slug : '');
+}
+
+function isModelReleaseDigestSection(title: string): boolean {
+  return /\b(?:new\s+)?model\s+releases?\b/i.test(title) || /\bmodel\s+releases?\s*(?:&|and)\s*updates?\b/i.test(title);
+}
+
+function sectionTimelineDetail(md: string, max = 170): string {
+  return truncateText(cleanPublicLeadText(stripMarkdown(md)).replace(/^\s*[-*]\s+/, ''), max);
+}
+
+function renderInfoTimeline(className: string, label: string, items: InfoTimelineItem[]): string {
+  if (items.length === 0) return '';
+  return [
+    '<nav class="info-timeline ' + className + '" aria-label="' + escapeHtml(label) + ' timeline">',
+    '  <div class="info-timeline-head">' + escapeHtml(label) + '</div>',
+    '  <ol class="info-timeline-list">',
+    items.map((item) => [
+      '    <li class="info-timeline-item">',
+      '      <a href="' + escapeHtml(item.href) + '">',
+      '        <time>' + escapeHtml(item.label) + '</time>',
+      '        <span>' + escapeHtml(item.detail || item.title) + '</span>',
+      '      </a>',
+      '    </li>',
+    ].join('\n')).join('\n'),
+    '  </ol>',
+    '</nav>',
+  ].join('\n');
+}
+
 /** Safely set element content using DOMPurify + insertAdjacentHTML.
  *
  * By default `iframe` is FORBIDDEN. Almost everything that flows through here
@@ -908,7 +862,7 @@ function setSafeContent(
   // audio players), so they stay in the default allowlist; they are NOT
   // iframe-only.
   const addTags = ['mark', 'article', 'figure', 'figcaption', 'audio', 'nav', 'section', 'details', 'summary'];
-  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-focus-index', 'data-briefing-id', 'data-source-map-date', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
+  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -1340,266 +1294,6 @@ async function fetchResearchDoc(row: GenResearchRow, signal: AbortSignal): Promi
   }
 }
 
-function shortDateLabel(dateStr: string): string {
-  const parts = dateStr.split('-');
-  if (parts.length !== 3) return dateStr;
-  const date = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-}
-
-function clampNumber(value: number, min: number, max: number): number {
-  return Math.max(min, Math.min(max, value));
-}
-
-function extractDigestSummaryLines(md: string): string[] {
-  const sections = splitSections(md);
-  const summary = sections.find((section) => /^(executive summary|tl;dr|tldr|summary)$/i.test(section.title.trim()));
-  if (!summary) return [];
-  return summary.body
-    .split('\n')
-    .map((line) => line.replace(/^\s*[-*]\s+/, '').trim())
-    .filter(Boolean)
-    .map((line) => {
-      const lead = line.match(/^\*\*([^*]+)\*\*/);
-      return stripMarkdown(lead?.[1] || line);
-    });
-}
-
-function extractDigestSourceLines(md: string): string[] {
-  const sourceStart = md.search(/^###\s+Sources\s*$/im);
-  if (sourceStart < 0) return [];
-  return md.slice(sourceStart)
-    .split('\n')
-    .slice(1)
-    .map((line) => line.replace(/^\s*[-*]\s+/, '').trim())
-    .filter((line) => line && !line.startsWith('*Generated at'))
-    .map((line) => stripMarkdown(line));
-}
-
-function firstCountInText(text: string): number {
-  const afterLabel = text.includes(':') ? text.split(':').slice(1).join(':') : text;
-  const match = afterLabel.match(/~?(\d{1,4})\b/);
-  return match ? Number(match[1]) : 0;
-}
-
-function sourceEvidenceCount(line: string): number {
-  const afterLabel = line.includes(':') ? line.split(':').slice(1).join(':') : line;
-  if (/twitter|hacker news|reddit|arxiv/i.test(line)) return firstCountInText(line) || 1;
-  if (/rss/i.test(line)) return Math.max(1, afterLabel.split(',').filter((part) => part.trim()).length);
-  if (/mcp search|websearch|perplexity|exa/i.test(line)) return Math.max(1, afterLabel.split(/\band\b|;/i).filter((part) => part.trim()).length);
-  return firstCountInText(line) || 1;
-}
-
-function sourceLineCount(lines: string[], label: RegExp): number {
-  return lines
-    .filter((item) => label.test(item))
-    .reduce((total, line) => total + sourceEvidenceCount(line), 0);
-}
-
-function recencyScore(dateStr: string | undefined): number {
-  if (!dateStr) return 0;
-  const ts = new Date(dateStr).getTime();
-  if (isNaN(ts)) return 0;
-  const ageDays = Math.max(0, Math.floor((Date.now() - ts) / 86400000));
-  return Math.max(0, 30 - ageDays);
-}
-
-function entityContextScore(terms: string[], context: string): number {
-  let score = 0;
-  for (const term of terms) {
-    const normalized = term.trim().toLowerCase();
-    if (normalized.length < 3) continue;
-    if (context.includes(normalized)) score += Math.min(18, normalized.length);
-  }
-  return score;
-}
-
-function topSourceMapEntities(wiki: WikiIndex | null, tickets: Ticket[] | null, context: string): SourceMapEntity[] {
-  const entities = new Map<string, SourceMapEntity>();
-  const addEntity = (entity: SourceMapEntity) => {
-    const key = entity.title.toLowerCase();
-    const existing = entities.get(key);
-    if (!existing || entity.score > existing.score) entities.set(key, entity);
-  };
-
-  for (const page of (wiki?.pages ?? [])) {
-    const degree = (page.inbound || []).length + (page.outbound || []).length;
-    const contextScore = entityContextScore([page.title, ...(page.aliases || []), ...(page.tags || [])], context);
-    addEntity({
-      title: page.title,
-      meta: `wiki: ${page.type}`,
-      score: contextScore + degree + recencyScore(page.updated_at),
-      tags: (page.tags || []).slice(0, 2),
-      primary: contextScore > 0,
-    });
-  }
-
-  for (const ticket of (tickets ?? [])) {
-    const activeBoost = ticket.status === 'closed' ? 0 : 12;
-    const contextScore = entityContextScore([
-      ticket.title,
-      ticket.company,
-      ticket.model || '',
-      ...(ticket.labels || []),
-    ], context);
-    addEntity({
-      title: ticket.model || ticket.company,
-      meta: `model ticket: ${ticket.status}`,
-      score: contextScore + activeBoost + (ticket.sources || []).length + (ticket.history || []).length + recencyScore(ticket.updated_at),
-      tags: [ticket.company, ...(ticket.labels || [])].filter(Boolean).slice(0, 2),
-      primary: contextScore > 0,
-    });
-  }
-
-  const allRanked = Array.from(entities.values())
-    .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
-  const linked = allRanked.filter((entity) => entity.primary);
-  // Deterministic fallback: if a digest uses names not present in the wiki or
-  // ticket index, fall back to global graph prominence instead of showing empty
-  // relationship columns.
-  const ranked = (linked.length > 0 ? linked : allRanked).slice(0, 6);
-  return ranked.map((entity, index) => ({ ...entity, primary: index === 0 }));
-}
-
-function buildSourceMapEvidence(
-  sourceLines: string[],
-  tickets: Ticket[] | null,
-  generativeRows: GenResearchRow[],
-  wiki: WikiIndex | null,
-): SourceMapEvidence[] {
-  const latestTicket = (tickets ?? [])
-    .slice()
-    .sort((a, b) => b.updated_at.localeCompare(a.updated_at))[0];
-  const latestArticle = generativeRows
-    .slice()
-    .sort((a, b) => b.created_at.localeCompare(a.created_at))[0];
-  const latestWiki = (wiki?.pages ?? [])
-    .slice()
-    .sort((a, b) => b.updated_at.localeCompare(a.updated_at))[0];
-
-  return [
-    {
-      title: sourceLines[0]?.split(':')[0] || 'Digest source ledger',
-      meta: sourceLines[0] ? truncateText(sourceLines[0], 54) : 'daily digest evidence',
-      tags: ['digest', 'sources'],
-    },
-    {
-      title: latestTicket?.title || 'Model ticket lifecycle',
-      meta: latestTicket ? `${latestTicket.sources.length} sources` : 'persistent release records',
-      tags: [latestTicket?.status || 'models', latestTicket?.verification || 'verification'].filter(Boolean).slice(0, 2),
-    },
-    {
-      title: latestWiki?.title || 'Wiki link expansion',
-      meta: latestWiki ? `${latestWiki.type} updated ${latestWiki.updated_at}` : 'entity memory index',
-      tags: latestWiki?.tags?.slice(0, 2) || ['wiki', 'entities'],
-    },
-    {
-      title: latestArticle?.title || 'Generative research index',
-      meta: latestArticle ? latestArticle.model : 'long-form research archive',
-      tags: latestArticle?.tags?.slice(0, 2) || ['research', 'archive'],
-    },
-  ];
-}
-
-async function buildSourceMapModel(signal: AbortSignal): Promise<SourceMapModel | null> {
-  const m = await loadManifest();
-  if (!m) return null;
-  const latestDate = (m.today || []).slice().sort().reverse()[0] || fmtDate(currentDate);
-  const [digest, tickets, wiki] = await Promise.all([
-    fetchDigest(latestDate, signal),
-    loadTickets(),
-    loadWikiIndex(signal),
-  ]);
-  if (signal.aborted) return null;
-  const frontend = await loadDesignFrontendData(m, signal);
-  if (signal.aborted) return null;
-
-  const summaryLines = digest ? extractDigestSummaryLines(digest) : [];
-  const sourceLines = digest ? extractDigestSourceLines(digest) : [];
-  // Deterministic fallback copy: used only when the latest digest is absent or
-  // its summary shape changes; the UI intentionally does not expose it as a
-  // fallback state because the route still has enough repo data to be useful.
-  const thesis = summaryLines[0] || 'Daily source flow is being compressed into inspectable intelligence.';
-  const detail = summaryLines[1] || 'The map links raw source lanes to the digest thesis, persistent model tickets, wiki memory, and long-form research artifacts.';
-
-  const socialCount =
-    sourceLineCount(sourceLines, /twitter|hacker news|reddit|bluesky/i) ||
-    (m.twitter?.length || 0);
-  const primarySources =
-    sourceLines.reduce((total, line) => total + sourceEvidenceCount(line), 0) ||
-    extractUrls(digest || '').length ||
-    sourceLines.length;
-  const ticketsCount = tickets?.length || 0;
-  const wikiCount = wiki?.pages.length || 0;
-  const activeTicketCount = (tickets || []).filter((ticket) => ticket.status !== 'closed').length;
-  const releasedTicketCount = (tickets || []).filter((ticket) => ticket.status === 'released').length;
-  const entityCount = (wiki?.pages || []).filter((page) => page.type === 'entity').length;
-  const themeCount = (wiki?.pages || []).filter((page) => page.type === 'theme').length;
-  const confidence = clampNumber(
-    45 + Math.round(Math.min(primarySources, 60) * 0.45) + Math.min(activeTicketCount, 12) + Math.min(wikiCount, 18),
-    55,
-    96,
-  );
-
-  const lanes: SourceMapLane[] = [
-    {
-      title: 'Digest synthesis',
-      subtitle: 'latest daily brief',
-      count: m.today.length,
-      meta: [latestDate, `${sourceLines.length || 1} source groups`],
-      active: true,
-    },
-    {
-      title: 'Social signal',
-      subtitle: 'X, HN, Reddit, Bluesky',
-      count: socialCount,
-      meta: ['community', 'conversation'],
-    },
-    {
-      title: 'Model tickets',
-      subtitle: 'persistent release records',
-      count: ticketsCount,
-      meta: [`${activeTicketCount} active`, `${releasedTicketCount} released`],
-    },
-    {
-      title: 'Wiki memory',
-      subtitle: 'entities, concepts, themes',
-      count: wikiCount,
-      meta: [`${entityCount} entities`, `${themeCount} themes`],
-    },
-    {
-      title: 'Generative research',
-      subtitle: 'long-form artifacts',
-      count: m.generative.length,
-      meta: ['articles', 'briefings'],
-    },
-  ];
-
-  return {
-    latestDate,
-    dateRail: (m.today || []).slice(-5),
-    thesis: cleanPublicLeadText(truncateText(thesis, 150)),
-    detail: cleanPublicLeadText(truncateText(detail, 220)),
-    confidence,
-    lanes,
-    coverage: [
-      { label: 'Models', value: clampNumber(Math.round((activeTicketCount / Math.max(ticketsCount, 1)) * 100), 0, 100) },
-      { label: 'Entities', value: clampNumber(Math.round((entityCount / Math.max(wikiCount, 1)) * 100), 0, 100) },
-      { label: 'Evidence', value: clampNumber(Math.min(primarySources, 100), 0, 100) },
-      { label: 'Research', value: clampNumber(Math.min(m.generative.length, 100), 0, 100) },
-    ],
-    linked: {
-      modelTickets: ticketsCount,
-      wikiPages: wikiCount,
-      primarySources,
-      generative: m.generative.length,
-    },
-    entities: topSourceMapEntities(wiki, tickets, [thesis, detail, ...summaryLines, ...sourceLines].join(' ').toLowerCase()),
-    evidence: buildSourceMapEvidence(sourceLines, tickets, m.generative, wiki),
-    frontend,
-  };
-}
-
 /** Find the most recent date <= target that has data in the manifest for this tab. */
 function findMostRecentAvailable(tab: DateTab, targetDateStr: string): string | null {
   const dates = manifestDates(tab);
@@ -1638,10 +1332,6 @@ function showLoading(): void {
     ? 'Loading model timeline\u2026'
     : activeTab === 'focusReader'
     ? 'Loading focus reader\u2026'
-    : activeTab === 'briefing'
-    ? 'Loading briefing inbox\u2026'
-    : activeTab === 'sourceMap'
-    ? 'Loading source map\u2026'
     : activeTab === 'research'
     ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
     : activeTab === 'wiki'
@@ -1669,12 +1359,8 @@ function showEmpty(dateStr: string): void {
     ? 'No model timeline for ' + escapeHtml(dateStr)
     : activeTab === 'focusReader'
     ? 'No focus reader data available'
-    : activeTab === 'briefing'
-    ? 'No briefing data available'
     : activeTab === 'research'
     ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
-    : activeTab === 'sourceMap'
-    ? 'Source map unavailable'
     : 'No Twitter report for ' + escapeHtml(dateStr);
   setSafeContent(
     content,
@@ -2738,6 +2424,7 @@ function sanitizePublicReportMarkdown(md: string): string {
 function renderTwitterReport(md: string, fallbackDate: string | null = null): void {
   const sections = splitSections(sanitizePublicReportMarkdown(md)).reverse();
   const cards: string[] = [];
+  const timelineItems: InfoTimelineItem[] = [];
   if (fallbackDate) {
     cards.push(
       '<div class="frontpage-fallback-note">No Twitter report for ' +
@@ -2768,6 +2455,12 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
     const leadText = cycleSummary
       ? cleanPublicLeadText(stripMarkdown(cycleSummary))
       : truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 620);
+    timelineItems.push({
+      href: '#' + cycleAnchor,
+      label: timeInfo ? timeInfo.utc.replace(/\s*UTC$/i, '') : title,
+      title: timeInfo ? timeInfo.local : title,
+      detail: truncateText(leadText, 180),
+    });
     // Storyless cycles fall back to the cycle markdown — minus the parts shown
     // separately above (Cycle summary → Signal Brief; Skeptic's corner → its
     // own callout) so nothing renders twice.
@@ -2831,7 +2524,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
     );
   }
 
-  setSafeContent(content, '<div class="twitter-report">' + cards.join('\n') + '</div>');
+  setSafeContent(content, '<div class="twitter-report">' + renderInfoTimeline('twitter-info-timeline', 'Cycles', timelineItems) + cards.join('\n') + '</div>');
   void hydrateTweetCards(content);
   void wikifyContent(content);
 }
@@ -3083,183 +2776,7 @@ function renderTickets(tickets: Ticket[] | null): void {
   );
 }
 
-function renderSourceMapMetric(label: string, value: number): string {
-  return [
-    '<div class="source-map-metric">',
-    '  <strong>' + escapeHtml(String(value)) + '</strong>',
-    '  <span>' + escapeHtml(label) + '</span>',
-    '</div>',
-  ].join('\n');
-}
-
-function renderSourceMapLane(lane: SourceMapLane): string {
-  return [
-    '<article class="source-map-source-card' + (lane.active ? ' is-active' : '') + '">',
-    '  <div class="source-map-source-icon" aria-hidden="true">',
-    '    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">',
-    '      <path d="M4 17V7"></path><path d="M12 20V4"></path><path d="M20 17V7"></path><path d="M4 12h16"></path>',
-    '    </svg>',
-    '  </div>',
-    '  <div class="source-map-source-copy">',
-    '    <strong>' + escapeHtml(lane.title) + '</strong>',
-    '    <span>' + escapeHtml(lane.subtitle) + '</span>',
-    '  </div>',
-    '  <div class="source-map-count">' + escapeHtml(String(lane.count)) + '</div>',
-    '</article>',
-  ].join('\n');
-}
-
-function renderSourceMapInputLane(lane: SourceMapLane): string {
-  return [
-    '<article class="source-map-lane">',
-    '  <div class="source-map-lane-top">',
-    '    <h2>' + escapeHtml(lane.title) + '</h2>',
-    '    <span class="source-map-lane-kicker">' + escapeHtml(String(lane.count)) + '</span>',
-    '  </div>',
-    '  <div class="source-map-lane-meta">',
-    lane.meta.map((item) => '<span>' + escapeHtml(item) + '</span>').join(''),
-    '  </div>',
-    '</article>',
-  ].join('\n');
-}
-
-function renderSourceMapEntity(entity: SourceMapEntity, compact = false): string {
-  const tags = entity.tags.length
-    ? '<div class="source-map-tags">' + entity.tags.map((tag, index) =>
-      '<span class="source-map-tag' + (index === 0 ? ' strong' : '') + '">' + escapeHtml(tag) + '</span>',
-    ).join('') + '</div>'
-    : '';
-  if (compact) {
-    return [
-      '<div class="source-map-entity-row">',
-      '  <div>',
-      '    <strong>' + escapeHtml(entity.title) + '</strong>',
-      '    <div class="source-map-entity-meta">' + escapeHtml(entity.meta) + '</div>',
-      '  </div>',
-      '  <span class="source-map-delta">+' + escapeHtml(String(Math.round(entity.score))) + '</span>',
-      '</div>',
-    ].join('\n');
-  }
-  return [
-    '<article class="source-map-entity' + (entity.primary ? ' is-primary' : '') + '">',
-    '  <div class="source-map-entity-top">',
-    '    <h3>' + escapeHtml(entity.title) + '</h3>',
-    '    <span class="source-map-delta">+' + escapeHtml(String(Math.round(entity.score))) + '</span>',
-    '  </div>',
-    tags,
-    '</article>',
-  ].join('\n');
-}
-
-function renderSourceMapEvidenceItem(item: SourceMapEvidence): string {
-  return [
-    '<article class="source-map-evidence-item">',
-    '  <div class="source-map-evidence-head">',
-    '    <h3>' + escapeHtml(item.title) + '</h3>',
-    '    <span class="source-map-evidence-meta">' + escapeHtml(item.meta) + '</span>',
-    '  </div>',
-    '  <div class="source-map-tags">',
-    item.tags.map((tag, index) =>
-      '<span class="source-map-tag' + (index === 0 ? ' strong' : '') + '">' + escapeHtml(tag) + '</span>',
-    ).join(''),
-    '  </div>',
-    '</article>',
-  ].join('\n');
-}
-
-function renderSourceMap(model: SourceMapModel): void {
-  setDocTitle('Source Map');
-  const inputLanes = model.lanes.slice(0, 3);
-  const mobileLanes = model.lanes;
-  const entityCards = model.entities.slice(0, 3);
-  const linkedMetrics = [
-    renderSourceMapMetric('model tickets', model.linked.modelTickets),
-    renderSourceMapMetric('wiki pages', model.linked.wikiPages),
-    renderSourceMapMetric('primary sources', model.linked.primarySources),
-    renderSourceMapMetric('generative', model.linked.generative),
-  ].join('\n');
-  const mobileFlow = [
-    '<section class="source-map-mobile-flow" aria-label="Source flow">',
-    '  <div class="source-map-mobile-group">',
-    mobileLanes.map(renderSourceMapInputLane).join('\n'),
-    '  </div>',
-    '  <div class="source-map-mobile-arrow" aria-hidden="true">&#8595;</div>',
-    '  <article class="source-map-thesis-card">',
-    '    <div class="source-map-thesis-top"><h2>Digest synthesis</h2><span>' + escapeHtml(shortDateLabel(model.latestDate)) + '</span></div>',
-    '    <div class="source-map-thesis-body"><h3>' + escapeHtml(model.thesis) + '</h3><p>' + escapeHtml(model.detail) + '</p></div>',
-    '    <div class="source-map-thesis-links">' + linkedMetrics + '</div>',
-    '  </article>',
-    '  <div class="source-map-mobile-arrow" aria-hidden="true">&#8595;</div>',
-    '  <div class="source-map-mobile-group">',
-    entityCards.map((entity) => renderSourceMapEntity(entity)).join('\n'),
-    '  </div>',
-    '</section>',
-  ].join('\n');
-
-  setSafeContent(
-    content,
-    [
-      '<div class="source-map-view content-card">',
-      '  <header class="source-map-topbar">',
-      '    <div class="source-map-brand">',
-      '      <div class="source-map-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V7"></path><path d="M12 20V4"></path><path d="M20 17V7"></path><path d="M4 12h16"></path></svg></div>',
-      '      <div><strong>ARA Source Map</strong><span>Daily intelligence graph</span></div>',
-      '    </div>',
-      '    <nav class="source-map-date-rail" aria-label="Digest dates">',
-      model.dateRail.map((date) =>
-        '<button type="button" data-source-map-date="' + escapeHtml(date) + '"' + (date === model.latestDate ? ' aria-current="date"' : '') + '>' + escapeHtml(shortDateLabel(date)) + '</button>',
-      ).join(''),
-      '    </nav>',
-      '    <div class="source-map-actions" aria-label="View controls">',
-      '      <button class="source-map-icon-button" type="button" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg></button>',
-      '    </div>',
-      '  </header>',
-      '  <div class="source-map-page">',
-      '    <aside class="source-map-panel source-map-side" aria-label="Source lanes">',
-      '      <div class="source-map-section-label"><span>Source lanes</span><span>' + escapeHtml(String(model.lanes.reduce((sum, lane) => sum + lane.count, 0))) + ' items</span></div>',
-      '      <div class="source-map-source-stack">' + model.lanes.map(renderSourceMapLane).join('\n') + '</div>',
-      '      <div class="source-map-section-label"><span>Coverage</span><span>fresh</span></div>',
-      '      <div class="source-map-coverage" aria-label="Coverage by lane">',
-      model.coverage.map((item) => [
-        '<div class="source-map-coverage-row">',
-        '  <span>' + escapeHtml(item.label) + '</span>',
-        '  <progress max="100" value="' + escapeHtml(String(item.value)) + '">' + escapeHtml(String(item.value)) + '</progress>',
-        '  <strong>' + escapeHtml(String(item.value)) + '</strong>',
-        '</div>',
-      ].join('\n')).join('\n'),
-      '      </div>',
-      '    </aside>',
-      '    <main class="source-map-panel source-map-main">',
-      '      <section class="source-map-hero" aria-labelledby="source-map-thesis-title">',
-      '        <div class="source-map-hero-copy">',
-      '          <div class="source-map-eyebrow">Daily thesis</div>',
-      '          <h1 id="source-map-thesis-title">' + escapeHtml(model.thesis) + '</h1>',
-      '          <p>' + escapeHtml(model.detail) + '</p>',
-      '        </div>',
-      '        <div class="source-map-thesis-score" aria-label="Source confidence ' + escapeHtml(String(model.confidence)) + ' percent"><strong>' + escapeHtml(String(model.confidence)) + '</strong><span>source confidence</span></div>',
-      '      </section>',
-      '      <section class="source-map-map" aria-label="Source map">',
-      '        <div class="source-map-lane-column" aria-label="Inputs">' + inputLanes.map(renderSourceMapInputLane).join('\n') + '</div>',
-      '        <div class="source-map-connector multi" aria-hidden="true"></div>',
-      '        <div class="source-map-thesis-column"><article class="source-map-thesis-card"><div class="source-map-thesis-top"><h2>Digest synthesis</h2><span>' + escapeHtml(shortDateLabel(model.latestDate)) + '</span></div><div class="source-map-thesis-body"><h3>' + escapeHtml(model.thesis) + '</h3><p>' + escapeHtml(model.detail) + '</p></div><div class="source-map-thesis-links">' + linkedMetrics + '</div></article></div>',
-      '        <div class="source-map-connector" aria-hidden="true"></div>',
-      '        <div class="source-map-entity-column" aria-label="Linked entities">' + entityCards.map((entity) => renderSourceMapEntity(entity)).join('\n') + '</div>',
-      '      </section>',
-      mobileFlow,
-      '    </main>',
-      '    <aside class="source-map-panel source-map-right" aria-label="Entity and evidence detail">',
-      renderDesignSurfacePanel('source-map', model.frontend, sourceMapSurface),
-      '      <section class="source-map-entity-list" aria-labelledby="source-map-entity-heading"><div class="source-map-section-label"><span id="source-map-entity-heading">Entities</span><span>top 3</span></div>' + model.entities.slice(0, 3).map((entity) => renderSourceMapEntity(entity, true)).join('\n') + '</section>',
-      '      <section class="source-map-evidence-list" aria-labelledby="source-map-evidence-heading"><div class="source-map-section-label"><span id="source-map-evidence-heading">Evidence</span><span>top 3</span></div>' + model.evidence.slice(0, 3).map(renderSourceMapEvidenceItem).join('\n') + '</section>',
-      '      <button class="source-map-pill-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg><span>Open digest</span></button>',
-      '    </aside>',
-      '  </div>',
-      '</div>',
-    ].join('\n'),
-  );
-}
-
-function frontPageBodyHtml(frontPage: FrontPageAsset): string {
+ function frontPageBodyHtml(frontPage: FrontPageAsset): string {
   if (frontPage.html) {
     return [
       '  <div class="content-card-body frontpage-body frontpage-body-interactive">',
@@ -3336,6 +2853,7 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
   }
 
   const cards: string[] = [];
+  const timelineItems: InfoTimelineItem[] = [];
 
   // Prepend an audio player if a Deepgram-generated digest MP3 exists for
   // this date. Manifest is populated by dashboard/scripts/prebuild.mjs.
@@ -3353,10 +2871,22 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     );
   }
 
+  let sectionIndex = 0;
   for (const section of sections) {
     if (!section.title && !section.body) continue;
+    if (section.title && isModelReleaseDigestSection(section.title)) continue;
 
     const isSummary = /^(executive summary|tl;dr|tldr|summary)$/i.test(section.title.trim());
+    const title = section.title || displayDate(currentDate);
+    const anchorId = sectionAnchorId('today', isSummary ? 'tl-dr' : title, sectionIndex);
+    sectionIndex += 1;
+    timelineItems.push({
+      href: '#' + anchorId,
+      label: String(sectionIndex).padStart(2, '0'),
+      title: isSummary ? 'TL;DR' : title,
+      detail: sectionTimelineDetail(section.body),
+    });
+
     let html = marked.parse(section.body) as string;
     html = wrapTables(html);
 
@@ -3371,13 +2901,11 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
       html = html.replace(re, '<mark>$1</mark>');
     }
 
-    const title = section.title || displayDate(currentDate);
-
     if (isSummary) {
       // Render as TL;DR block (lead card)
       cards.push(
         [
-          '<div class="content-card today-card">',
+          '<div id="' + anchorId + '" class="content-card today-card">',
           '  <div class="content-card-body">',
           '    <div class="today-tldr">',
           '      <span class="today-tldr-label">TL;DR</span>',
@@ -3390,7 +2918,7 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     } else {
       cards.push(
         [
-          '<div class="content-card">',
+          '<div id="' + anchorId + '" class="content-card">',
           '  <div class="content-card-header">',
           '    <div class="content-card-title">' + escapeHtml(title) + '</div>',
           '  </div>',
@@ -3403,6 +2931,7 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     }
   }
 
+  const todayTimeline = renderInfoTimeline('today-info-timeline', 'Today', timelineItems);
   const todayCards = cards.join('\n');
   if (frontPage) {
     const noteHtml = frontPage.fallback
@@ -3419,7 +2948,7 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
       [
         '<div class="today-layout">',
         '  <div class="today-layout-frontpage">' + fpCard + '</div>',
-        '  <div class="today-layout-digest">' + todayCards + '</div>',
+        '  <div class="today-layout-digest">' + todayTimeline + todayCards + '</div>',
         '</div>',
       ].join('\n'),
     );
@@ -3427,423 +2956,8 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     void wikifyContent(content);
     return;
   }
-  setSafeContent(content, todayCards);
+  setSafeContent(content, todayTimeline + todayCards);
   void wikifyContent(content);
-}
-
-// ── Briefing Inbox design route ───────────────────────
-function latestManifestDate(dates: string[] | undefined): string | null {
-  if (!dates || dates.length === 0) return null;
-  return dates.slice().sort().reverse()[0] || null;
-}
-
-function markdownPlainText(md: string): string {
-  return md
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/```[\s\S]*?```/g, ' ')
-    .replace(/`([^`]+)`/g, '$1')
-    .replace(/\[[^\]]+\]\([^)]+\)/g, '')
-    .replace(/[#>*_~|]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function briefingExcerpt(text: string, max = 250): string {
-  const clean = markdownPlainText(text);
-  if (clean.length <= max) return clean;
-  const clipped = clean.slice(0, max - 1);
-  const at = Math.max(clipped.lastIndexOf('. '), clipped.lastIndexOf('; '), clipped.lastIndexOf(', '));
-  return (at > 120 ? clipped.slice(0, at + 1) : clipped).trim() + '...';
-}
-
-const DESIGN_SURFACES: Array<{ key: DesignSurface; label: string; href: string }> = [
-  { key: 'digest', label: 'Digest', href: '/today' },
-  { key: 'signals', label: 'Signals', href: '/twitter' },
-  { key: 'models', label: 'Models', href: '/models' },
-  { key: 'research', label: 'Research', href: '/research' },
-  { key: 'wiki', label: 'Wiki', href: '/wiki' },
-];
-
-function renderDesignSurfaceTabs(prefix: string, active: DesignSurface): string {
-  return DESIGN_SURFACES.map((surface) => (
-    '<button class="' + prefix + '-surface-tab" type="button" data-design-surface="' + surface.key + '" aria-current="' + (active === surface.key ? 'true' : 'false') + '">' +
-    '<span>' + escapeHtml(surface.label) + '</span>' +
-    '</button>'
-  )).join('\n');
-}
-
-function renderDesignSurfaceList(data: DesignFrontendData, surface: DesignSurface, prefix: string): string {
-  if (surface === 'digest') {
-    const rows = data.digestItems.slice(0, 3).map((item) => [
-      '<article class="' + prefix + '-surface-item">',
-      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(item.label) + ' · ' + escapeHtml(String(item.score)) + '</div>',
-      '  <h3>' + escapeHtml(item.title) + '</h3>',
-      '  <p>' + escapeHtml(item.summary || truncateText(stripMarkdown(item.body), 120)) + '</p>',
-      '  <span>' + escapeHtml(String(item.sources.length)) + ' sources · ' + escapeHtml(String(item.minutes)) + ' min</span>',
-      '</article>',
-    ].join('\n')).join('\n');
-    return rows || '<div class="' + prefix + '-surface-empty">No digest sections available.</div>';
-  }
-  if (surface === 'signals') {
-    const rows = data.twitterStories.slice(0, 3).map((story) => [
-      '<article class="' + prefix + '-surface-item">',
-      '  <div class="' + prefix + '-surface-kicker">Signal ' + escapeHtml(story.rank || 'watch') + '</div>',
-      '  <h3>' + escapeHtml(story.title) + '</h3>',
-      '  <p>' + escapeHtml(briefingExcerpt(storyCurrentLead(story.body) || story.body, 120)) + '</p>',
-      '  <span>' + escapeHtml(String(story.links.length)) + ' links · ' + escapeHtml(story.handles.slice(0, 2).join(', ') || 'source report') + '</span>',
-      '</article>',
-    ].join('\n')).join('\n');
-    return rows || '<div class="' + prefix + '-surface-empty">No signal stories available.</div>';
-  }
-  if (surface === 'models') {
-    const rows = data.tickets.slice(0, 3).map((ticket) => [
-      '<article class="' + prefix + '-surface-item">',
-      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(ticket.company) + ' · ' + escapeHtml(ticket.status) + '</div>',
-      '  <h3>' + escapeHtml(ticket.title) + '</h3>',
-      '  <p>' + escapeHtml(briefingExcerpt(ticket.status_note || ticket.body || ticket.expected || ticket.title, 120)) + '</p>',
-      '  <span>' + escapeHtml(ticket.verification) + ' · ' + escapeHtml(String(ticket.sources.length)) + ' sources</span>',
-      '</article>',
-    ].join('\n')).join('\n');
-    return rows || '<div class="' + prefix + '-surface-empty">No model tickets available.</div>';
-  }
-  if (surface === 'research') {
-    const rows = data.researchRows.slice(0, 3).map((row) => [
-      '<article class="' + prefix + '-surface-item">',
-      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(row.model) + ' · ' + escapeHtml(shortDateLabel(row.created_at.slice(0, 10))) + '</div>',
-      '  <h3>' + escapeHtml(row.title) + '</h3>',
-      '  <p>' + escapeHtml(briefingExcerpt(row.prompt || row.source || row.title, 120)) + '</p>',
-      '  <span>' + escapeHtml((row.tags || []).slice(0, 3).join(', ') || 'long-form') + '</span>',
-      '</article>',
-    ].join('\n')).join('\n');
-    return rows || '<div class="' + prefix + '-surface-empty">No research articles available.</div>';
-  }
-  const rows = data.wikiPages.slice(0, 3).map((page) => [
-    '<article class="' + prefix + '-surface-item">',
-    '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(String(page.type)) + ' · ' + escapeHtml(shortDateLabel(page.updated_at.slice(0, 10))) + '</div>',
-    '  <h3>' + escapeHtml(page.title) + '</h3>',
-    '  <p>' + escapeHtml(page.summary || (page.aliases || []).slice(0, 3).join(', ') || 'Entity memory page') + '</p>',
-    '  <span>' + escapeHtml(String((page.inbound || []).length + (page.outbound || []).length)) + ' graph links</span>',
-    '</article>',
-  ].join('\n')).join('\n');
-  return rows || '<div class="' + prefix + '-surface-empty">No wiki pages available.</div>';
-}
-
-function renderDesignSurfacePanel(prefix: string, data: DesignFrontendData, surface: DesignSurface): string {
-  const meta = DESIGN_SURFACES.find((item) => item.key === surface) || DESIGN_SURFACES[0];
-  return [
-    '<section class="' + prefix + '-surface-panel" aria-label="' + escapeHtml(meta.label) + ' surface">',
-    '  <div class="' + prefix + '-surface-head">',
-    '    <h2>' + escapeHtml(meta.label) + '</h2>',
-    '    <div class="' + prefix + '-surface-tabs">' + renderDesignSurfaceTabs(prefix, surface) + '</div>',
-    '  </div>',
-    '  <div class="' + prefix + '-surface-grid">' + renderDesignSurfaceList(data, surface, prefix) + '</div>',
-    '</section>',
-  ].join('\n');
-}
-
-async function loadDesignFrontendData(m: Manifest, signal: AbortSignal): Promise<DesignFrontendData> {
-  const digestDate = latestManifestDate(m.today);
-  const twitterDate = latestManifestDate(m.twitter);
-  const [digestMd, twitterMd, tickets, wiki] = await Promise.all([
-    digestDate ? fetchDigest(digestDate, signal) : Promise.resolve(null),
-    twitterDate ? fetchTwitter(twitterDate, signal) : Promise.resolve(null),
-    loadTickets(),
-    loadWikiIndex(signal),
-  ]);
-  const ticketRows = (tickets || []).slice().sort((a, b) => (b.updated_at || '').localeCompare(a.updated_at || ''));
-  const researchRows = (m.generative || []).slice().sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''));
-  const wikiPages = (wiki?.pages || []).slice().sort((a, b) => (b.updated_at || '').localeCompare(a.updated_at || ''));
-  const cleanTwitter = twitterMd ? sanitizePublicReportMarkdown(twitterMd) : '';
-  const parsedTwitterStories = cleanTwitter ? parseTwitterStories(cleanTwitter).slice(0, 6) : [];
-  const twitterStories = parsedTwitterStories.length > 0 ? parsedTwitterStories : (() => {
-    if (!cleanTwitter || !twitterDate) return [];
-    const sections = splitSections(cleanTwitter).filter((section) => section.title || section.body);
-    const lead = sections.find((section) => /cycle summary|summary|signal/i.test(section.title + ' ' + section.body)) || sections[0];
-    if (!lead) return [];
-    return [{
-      rank: 'cycle',
-      title: lead.title || `Twitter pulse - ${twitterDate}`,
-      body: lead.body || cleanTwitter,
-      links: extractUrls(cleanTwitter).slice(0, 8),
-      handles: extractHandles(cleanTwitter).slice(0, 8),
-    }];
-  })();
-  const digestItems = digestMd ? digestSectionItems(digestMd).slice(0, 8) : [];
-  return {
-    digestDate,
-    twitterDate,
-    digestItems,
-    twitterStories,
-    tickets: ticketRows,
-    researchRows,
-    wikiPages,
-  };
-}
-
-function digestBriefingItem(date: string, md: string, m: Manifest): BriefingItem {
-  const sections = splitSections(md).filter((section) => section.title || section.body);
-  const executive = sections.find((section) => /executive summary|tl;dr|tldr|summary/i.test(section.title));
-  const leadSection = executive || sections[0];
-  const bullets = (leadSection?.body || '')
-    .split('\n')
-    .map((line) => line.replace(/^[-*]\s+/, '').trim())
-    .filter(Boolean)
-    .slice(0, 3)
-    .map((line) => briefingExcerpt(line, 150));
-  const sectionNames = sections
-    .map((section) => section.title.trim())
-    .filter(Boolean)
-    .filter((title) => !/executive summary/i.test(title))
-    .slice(0, 3);
-
-  return {
-    id: `digest-${date}`,
-    kind: 'digest',
-    score: 96,
-    status: 'Ready',
-    title: `Daily digest triage - ${date}`,
-    source: 'Digest',
-    time: date,
-    summary: briefingExcerpt(leadSection?.body || md),
-    bullets: bullets.length > 0 ? bullets : sectionNames,
-    chips: sectionNames.length > 0 ? sectionNames : ['Daily digest'],
-    evidence: [
-      {
-        label: 'Primary file',
-        source: `research/digest/${date}-digest.md`,
-        detail: `${sections.length} digest sections parsed from the latest manifest date.`,
-        href: `/today/${date}`,
-      },
-      {
-        label: 'Coverage',
-        source: 'manifest.json',
-        detail: `${m.twitter.length} Twitter reports, ${m.models.length} model timelines, ${m.generative.length} research articles indexed.`,
-      },
-    ],
-    actionHref: `/today/${date}`,
-  };
-}
-
-function twitterBriefingItems(date: string, md: string): BriefingItem[] {
-  const clean = sanitizePublicReportMarkdown(md);
-  const stories = parseTwitterStories(clean).slice(0, 3);
-  if (stories.length === 0) {
-    const sections = splitSections(clean).reverse();
-    const lead = sections.find((section) => /cycle summary/i.test(section.body)) || sections[0];
-    if (!lead) return [];
-    return [{
-      id: `twitter-${date}-summary`,
-      kind: 'twitter',
-      score: 88,
-      status: 'Watch',
-      title: `Twitter pulse - ${date}`,
-      source: 'Twitter',
-      time: date,
-      summary: briefingExcerpt(lead.body),
-      bullets: splitSections(clean).slice(0, 3).map((section) => section.title).filter(Boolean),
-      chips: ['Cycle report'],
-      evidence: [
-        {
-          label: 'Primary file',
-          source: `research/twitter/${date}.md`,
-          detail: 'No structured story articles were found; showing cycle-level summary.',
-          href: `/twitter/${date}`,
-        },
-      ],
-      actionHref: `/twitter/${date}`,
-    }];
-  }
-  return stories.map((story, idx) => ({
-    id: `twitter-${date}-${story.rank}`,
-    kind: 'twitter',
-    score: 92 - idx * 5,
-    status: idx === 0 ? 'Ready' : 'Watch',
-    title: story.title,
-    source: 'Twitter',
-    time: date,
-    summary: briefingExcerpt(storyCurrentLead(story.body) || story.body),
-    bullets: [
-      extractSectionText(story.body, 'Evidence'),
-      extractSectionText(story.body, 'Verification'),
-      extractSectionText(story.body, 'Watch'),
-    ].filter(Boolean).slice(0, 3).map((line) => briefingExcerpt(line, 150)),
-    chips: story.handles.slice(0, 3),
-    evidence: [
-      {
-        label: 'Primary file',
-        source: `research/twitter/${date}.md`,
-        detail: `Rank ${story.rank} story with ${story.links.length} extracted source link${story.links.length === 1 ? '' : 's'}.`,
-        href: `/twitter/${date}`,
-      },
-      ...story.links.slice(0, 2).map((href) => ({
-        label: 'Source link',
-        source: href.replace(/^https?:\/\//, ''),
-        detail: 'Referenced by the selected Twitter story.',
-        href,
-      })),
-    ],
-    actionHref: `/twitter/${date}`,
-  }));
-}
-
-function modelBriefingItems(tickets: Ticket[]): BriefingItem[] {
-  const open = tickets
-    .filter((ticket) => ticket.status !== 'closed')
-    .sort((a, b) => (b.updated_at || '').localeCompare(a.updated_at || ''))
-    .slice(0, 2);
-  return open.map((ticket, idx) => {
-    const baseScore = ticket.verification === 'confirmed' ? 90 : ticket.verification === 'partial' ? 82 : 74;
-    return {
-      id: `model-${ticket.slug}`,
-      kind: 'model',
-      score: baseScore - idx * 4,
-      status: ticket.status.replace('-', ' '),
-      title: ticket.title,
-      source: ticket.company,
-      time: ticket.updated_at || ticket.created_at,
-      summary: briefingExcerpt(ticket.status_note || ticket.body || ticket.expected || ticket.title),
-      bullets: [
-        ticket.model ? `Model: ${ticket.model}` : '',
-        ticket.expected ? `Expected: ${ticket.expected}` : '',
-        `${ticket.sources.length} source${ticket.sources.length === 1 ? '' : 's'} tracked`,
-      ].filter(Boolean).slice(0, 3),
-      chips: [ticket.verification, ...ticket.labels].slice(0, 4),
-      evidence: [
-        {
-          label: 'Ticket',
-          source: `research/models/tickets/${ticket.slug}.md`,
-          detail: `Updated ${ticket.updated_at}; status ${ticket.status}; verification ${ticket.verification}.`,
-          href: '/models',
-        },
-        ...ticket.sources.slice(0, 2).map((source) => ({
-          label: source.startsWith('http') ? 'Source link' : 'Source handle',
-          source,
-          detail: 'Tracked in the model-release ticket.',
-          href: source.startsWith('http') ? source : undefined,
-        })),
-      ],
-      actionHref: '/models',
-    };
-  });
-}
-
-async function loadBriefingInbox(signal: AbortSignal): Promise<BriefingInboxData | null> {
-  const m = manifest || await loadManifest();
-  if (!m) return null;
-  const digestDate = latestManifestDate(m.today);
-  const twitterDate = latestManifestDate(m.twitter);
-
-  const [digestMd, twitterMd, tickets] = await Promise.all([
-    digestDate ? fetchDigest(digestDate, signal) : Promise.resolve(null),
-    twitterDate ? fetchTwitter(twitterDate, signal) : Promise.resolve(null),
-    loadTickets(),
-  ]);
-
-  const items: BriefingItem[] = [];
-  if (digestDate && digestMd) items.push(digestBriefingItem(digestDate, digestMd, m));
-  if (twitterDate && twitterMd) items.push(...twitterBriefingItems(twitterDate, twitterMd));
-  if (tickets) items.push(...modelBriefingItems(tickets));
-
-  // Deterministic fallback for sparse local checkouts: keep the route usable
-  // without implying live data when manifest-backed files are unavailable.
-  if (items.length === 0) {
-    items.push({
-      id: 'source-empty',
-      kind: 'source',
-      score: 50,
-      status: 'Check',
-      title: 'Research source mirror is empty',
-      source: 'Manifest',
-      time: 'No date',
-      summary: 'The dashboard route loaded, but no manifest-backed digest, Twitter, or ticket data was available in this checkout.',
-      bullets: ['Run the dashboard prebuild to mirror research data.', 'Expected runtime source is dashboard/public/research/manifest.json.'],
-      chips: ['Fallback'],
-      evidence: [{ label: 'Fallback path', source: 'manifest.json', detail: 'No visible fallback label is rendered in the UI.' }],
-      actionHref: '/',
-    });
-  }
-
-  items.sort((a, b) => b.score - a.score);
-  const ticketCount = tickets?.length ?? 0;
-  const frontend = await loadDesignFrontendData(m, signal);
-  return {
-    items,
-    latestDate: digestDate || twitterDate,
-    stats: [
-      { label: 'Digest', value: digestDate || 'missing' },
-      { label: 'Twitter', value: twitterDate || 'missing' },
-      { label: 'Tickets', value: String(ticketCount) },
-    ],
-    frontend,
-  };
-}
-
-function renderBriefingInbox(data: BriefingInboxData): void {
-  briefingInboxCache = data;
-  const selected = data.items.find((item) => item.id === selectedBriefingId) || data.items[0];
-  selectedBriefingId = selected.id;
-  const rows = data.items.map((item) => [
-    '<button class="briefing-row" type="button" data-briefing-id="' + escapeHtml(item.id) + '" aria-current="' + (item.id === selected.id ? 'true' : 'false') + '">',
-    '  <span class="briefing-score">' + escapeHtml(String(item.score)) + '</span>',
-    '  <span class="briefing-row-copy">',
-    '    <span class="briefing-row-meta"><span>' + escapeHtml(item.source) + '</span><span class="briefing-status">' + escapeHtml(item.status) + '</span></span>',
-    '    <strong>' + escapeHtml(item.title) + '</strong>',
-    '    <span>' + escapeHtml(item.summary) + '</span>',
-    '  </span>',
-    '</button>',
-  ].join('\n')).join('\n');
-
-  const stats = data.stats.map((stat) =>
-    '<div class="briefing-mini-stat"><span>' + escapeHtml(stat.label) + '</span><strong>' + escapeHtml(stat.value) + '</strong></div>',
-  ).join('\n');
-  const bullets = selected.bullets.length > 0
-    ? selected.bullets.map((bullet) => '<li>' + escapeHtml(bullet) + '</li>').join('\n')
-    : '<li>' + escapeHtml(selected.summary) + '</li>';
-  const chips = selected.chips.map((chip) => '<span class="briefing-chip">' + escapeHtml(chip) + '</span>').join('\n');
-  const evidence = selected.evidence.slice(0, 2).map((card, idx) => [
-    '<article class="briefing-evidence-card' + (idx === 0 ? ' primary' : '') + '">',
-    '  <div class="briefing-evidence-meta"><span>' + escapeHtml(card.label) + '</span><span>' + escapeHtml(String(idx + 1).padStart(2, '0')) + '</span></div>',
-    '  <h3>' + escapeHtml(card.source) + '</h3>',
-    '  <p>' + escapeHtml(card.detail) + '</p>',
-    card.href ? '  <a href="' + escapeHtml(card.href) + '">Open evidence</a>' : '',
-    '</article>',
-  ].join('\n')).join('\n');
-
-  setSafeContent(content, [
-    '<main class="briefing-shell">',
-    '  <header class="briefing-topbar">',
-    '    <div class="briefing-brand"><span class="briefing-mark">A</span><span>Briefing Inbox</span></div>',
-    '    <div class="briefing-search" aria-label="Search placeholder"><span>Latest repo-backed AI intelligence</span></div>',
-    '    <a class="briefing-open" href="' + escapeHtml(selected.actionHref) + '">Open source view</a>',
-    '  </header>',
-    '  <section class="briefing-layout">',
-    '    <aside class="briefing-panel briefing-inbox-panel">',
-    '      <div class="briefing-panel-header"><div><span class="briefing-eyebrow">Triage</span><h2>Inbox</h2></div><span>' + escapeHtml(String(data.items.length)) + ' items</span></div>',
-    '      <div class="briefing-list">' + rows + '</div>',
-    '    </aside>',
-    '    <section class="briefing-story">',
-    '      <div class="briefing-story-head">',
-    '        <div class="briefing-eyebrow">' + escapeHtml(selected.kind.toUpperCase()) + ' - ' + escapeHtml(selected.time) + '</div>',
-    '        <h1>' + escapeHtml(selected.title) + '</h1>',
-    '        <p>' + escapeHtml(selected.summary) + '</p>',
-    '        <div class="briefing-chips">' + chips + '</div>',
-    '      </div>',
-    '      <div class="briefing-story-body">',
-    '        <div class="briefing-summary-grid">' + stats + '</div>',
-    '        <section class="briefing-section"><h2>Why it is selected</h2><ul>' + bullets + '</ul></section>',
-    '      </div>',
-    '    </section>',
-    '    <aside class="briefing-panel briefing-evidence-panel">',
-    '      <div class="briefing-panel-header"><div><span class="briefing-eyebrow">Evidence</span><h2>Selected item</h2></div></div>',
-    '      <div class="briefing-evidence-list">' + evidence + '</div>',
-    '    </aside>',
-    '  </section>',
-    '  <section class="briefing-full-frontend" aria-label="Complete ARA frontend">',
-    renderDesignSurfacePanel('briefing', data.frontend, briefingSurface),
-    '  </section>',
-    '</main>',
-  ].join('\n'));
-  setDocTitle('Briefing Inbox');
 }
 
 // ── Generative research ───────────────────────────────
@@ -5961,6 +5075,122 @@ function sourceLinkHtml(url: string, index: number): string {
   ].join('\n');
 }
 
+const DESIGN_SURFACES: Array<{ key: DesignSurface; label: string }> = [
+  { key: 'digest', label: 'Digest' },
+  { key: 'signals', label: 'Signals' },
+  { key: 'models', label: 'Models' },
+  { key: 'research', label: 'Research' },
+  { key: 'wiki', label: 'Wiki' },
+];
+
+function latestManifestDate(dates: string[] | undefined): string | null {
+  if (!dates || dates.length === 0) return null;
+  return dates.slice().sort().reverse()[0] || null;
+}
+
+function designExcerpt(text: string, max = 120): string {
+  return truncateText(cleanPublicLeadText(stripMarkdown(text)), max);
+}
+
+function renderDesignSurfaceTabs(prefix: string, active: DesignSurface): string {
+  return DESIGN_SURFACES.map((surface) => (
+    '<button class="' + prefix + '-surface-tab" type="button" data-design-surface="' + surface.key + '" aria-current="' + (active === surface.key ? 'true' : 'false') + '">' +
+    '<span>' + escapeHtml(surface.label) + '</span>' +
+    '</button>'
+  )).join('\n');
+}
+
+function renderDesignSurfaceList(data: DesignFrontendData, surface: DesignSurface, prefix: string): string {
+  if (surface === 'digest') {
+    const rows = data.digestItems.slice(0, 3).map((item) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(item.label) + ' · ' + escapeHtml(String(item.score)) + '</div>',
+      '  <h3>' + escapeHtml(item.title) + '</h3>',
+      '  <p>' + escapeHtml(item.summary || designExcerpt(item.body)) + '</p>',
+      '  <span>' + escapeHtml(String(item.sources.length)) + ' sources · ' + escapeHtml(String(item.minutes)) + ' min</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No digest sections available.</div>';
+  }
+  if (surface === 'signals') {
+    const rows = data.twitterStories.slice(0, 3).map((story) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">Signal ' + escapeHtml(story.rank || 'watch') + '</div>',
+      '  <h3>' + escapeHtml(story.title) + '</h3>',
+      '  <p>' + escapeHtml(designExcerpt(storyCurrentLead(story.body) || story.body)) + '</p>',
+      '  <span>' + escapeHtml(String(story.links.length)) + ' links · ' + escapeHtml(story.handles.slice(0, 2).join(', ') || 'source report') + '</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No signal stories available.</div>';
+  }
+  if (surface === 'models') {
+    const rows = data.tickets.slice(0, 3).map((ticket) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(ticket.company) + ' · ' + escapeHtml(ticket.status) + '</div>',
+      '  <h3>' + escapeHtml(ticket.title) + '</h3>',
+      '  <p>' + escapeHtml(designExcerpt(ticket.status_note || ticket.body || ticket.expected || ticket.title)) + '</p>',
+      '  <span>' + escapeHtml(ticket.verification) + ' · ' + escapeHtml(String(ticket.sources.length)) + ' sources</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No model tickets available.</div>';
+  }
+  if (surface === 'research') {
+    const rows = data.researchRows.slice(0, 3).map((row) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(row.model) + '</div>',
+      '  <h3>' + escapeHtml(row.title) + '</h3>',
+      '  <p>' + escapeHtml(designExcerpt(row.prompt || row.source || row.title)) + '</p>',
+      '  <span>' + escapeHtml((row.tags || []).slice(0, 3).join(', ') || 'long-form') + '</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No research articles available.</div>';
+  }
+  const rows = data.wikiPages.slice(0, 3).map((page) => [
+    '<article class="' + prefix + '-surface-item">',
+    '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(String(page.type)) + '</div>',
+    '  <h3>' + escapeHtml(page.title) + '</h3>',
+    '  <p>' + escapeHtml(page.summary || (page.aliases || []).slice(0, 3).join(', ') || 'Entity memory page') + '</p>',
+    '  <span>' + escapeHtml(String((page.inbound || []).length + (page.outbound || []).length)) + ' graph links</span>',
+    '</article>',
+  ].join('\n')).join('\n');
+  return rows || '<div class="' + prefix + '-surface-empty">No wiki pages available.</div>';
+}
+
+function renderDesignSurfacePanel(prefix: string, data: DesignFrontendData, surface: DesignSurface): string {
+  const meta = DESIGN_SURFACES.find((item) => item.key === surface) || DESIGN_SURFACES[0];
+  return [
+    '<section class="' + prefix + '-surface-panel" aria-label="' + escapeHtml(meta.label) + ' surface">',
+    '  <div class="' + prefix + '-surface-head">',
+    '    <h2>' + escapeHtml(meta.label) + '</h2>',
+    '    <div class="' + prefix + '-surface-tabs">' + renderDesignSurfaceTabs(prefix, surface) + '</div>',
+    '  </div>',
+    '  <div class="' + prefix + '-surface-grid">' + renderDesignSurfaceList(data, surface, prefix) + '</div>',
+    '</section>',
+  ].join('\n');
+}
+
+async function loadDesignFrontendData(m: Manifest, signal: AbortSignal): Promise<DesignFrontendData> {
+  const digestDate = latestManifestDate(m.today);
+  const twitterDate = latestManifestDate(m.twitter);
+  const [digestMd, twitterMd, tickets, wiki] = await Promise.all([
+    digestDate ? fetchDigest(digestDate, signal) : Promise.resolve(null),
+    twitterDate ? fetchTwitter(twitterDate, signal) : Promise.resolve(null),
+    loadTickets(),
+    loadWikiIndex(signal),
+  ]);
+  const cleanTwitter = twitterMd ? sanitizePublicReportMarkdown(twitterMd) : '';
+  const parsedTwitterStories = cleanTwitter ? parseTwitterStories(cleanTwitter).slice(0, 6) : [];
+  return {
+    digestDate,
+    twitterDate,
+    digestItems: digestMd ? digestSectionItems(digestMd).slice(0, 8) : [],
+    twitterStories: parsedTwitterStories,
+    tickets: (tickets || []).slice().sort((a, b) => (b.updated_at || '').localeCompare(a.updated_at || '')),
+    researchRows: (m.generative || []).slice().sort((a, b) => (b.created_at || '').localeCompare(a.created_at || '')),
+    wikiPages: (wiki?.pages || []).slice().sort((a, b) => (b.updated_at || '').localeCompare(a.updated_at || '')),
+  };
+}
+
 async function loadFocusReaderData(signal: AbortSignal): Promise<FocusReaderData | null> {
   if (focusReaderData) return focusReaderData;
   const m = await loadManifest();
@@ -6129,26 +5359,6 @@ async function load(): Promise<void> {
         showError('Loading timed out', 'Network may be slow. Click to retry.');
       } else if (result) {
         renderFocusReader(result);
-      } else {
-        showEmpty(dateStr);
-      }
-    } else if (activeTab === 'briefing') {
-      const briefingResult = await withTimeout(loadBriefingInbox(controller.signal), LOAD_TIMEOUT_MS, controller);
-      if (requestId !== loadRequestId) return;
-      if (briefingResult === 'timeout') {
-        showError('Loading timed out', 'Network may be slow. Click to retry.');
-      } else if (briefingResult) {
-        renderBriefingInbox(briefingResult);
-      } else {
-        showEmpty(dateStr);
-      }
-    } else if (activeTab === 'sourceMap') {
-      const result = await withTimeout(buildSourceMapModel(controller.signal), LOAD_TIMEOUT_MS, controller);
-      if (requestId !== loadRequestId) return;
-      if (result === 'timeout') {
-        showError('Loading timed out', 'Network may be slow. Click to retry.');
-      } else if (result) {
-        renderSourceMap(result);
       } else {
         showEmpty(dateStr);
       }
@@ -6692,12 +5902,6 @@ content.addEventListener('click', (e) => {
       if (activeTab === 'focusReader' && focusReaderData) {
         focusReaderSurface = surface;
         renderFocusReader(focusReaderData);
-      } else if (activeTab === 'briefing' && briefingInboxCache) {
-        briefingSurface = surface;
-        renderBriefingInbox(briefingInboxCache);
-      } else if (activeTab === 'sourceMap') {
-        sourceMapSurface = surface;
-        void load();
       }
     }
     return;
@@ -6709,48 +5913,6 @@ content.addEventListener('click', (e) => {
       focusReaderSelectedIndex = Math.max(0, Math.min(nextIndex, focusReaderData.items.length - 1));
       renderFocusReader(focusReaderData);
     }
-    return;
-  }
-  const briefingRow = target.closest('[data-briefing-id]') as HTMLElement | null;
-  if (briefingRow && activeTab === 'briefing') {
-    const id = briefingRow.dataset.briefingId;
-    if (id && briefingInboxCache) {
-      selectedBriefingId = id;
-      renderBriefingInbox(briefingInboxCache);
-    }
-    return;
-  }
-  if (activeTab === 'sourceMap' && target.closest('.source-map-icon-button')) {
-    openSearch();
-    return;
-  }
-  const sourceMapDate = activeTab === 'sourceMap'
-    ? target.closest('[data-source-map-date]') as HTMLElement | null
-    : null;
-  if (sourceMapDate) {
-    const picked = sourceMapDate.dataset.sourceMapDate || fmtDate(currentDate);
-    const parts = picked.split('-');
-    if (parts.length === 3) {
-      currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-      calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    }
-    activeTab = 'today';
-    selectedSlug = null;
-    syncTabUi();
-    load();
-    return;
-  }
-  if (activeTab === 'sourceMap' && target.closest('.source-map-pill-button')) {
-    const latest = manifest?.today?.slice().sort().reverse()[0] || fmtDate(currentDate);
-    const parts = latest.split('-');
-    if (parts.length === 3) {
-      currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-      calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    }
-    activeTab = 'today';
-    selectedSlug = null;
-    syncTabUi();
-    load();
     return;
   }
   const back = target.closest('[data-research-back]') as HTMLElement | null;
@@ -6951,15 +6113,13 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
     selectedSlug = null;
     syncTabUi();
     document.body.classList.toggle('tab-research', activeTab === 'research');
-    document.body.classList.toggle('tab-models', activeTab === 'models');
-    document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
-    document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
-    document.body.classList.toggle('tab-briefing', activeTab === 'briefing');
-    document.body.classList.toggle('tab-source-map', activeTab === 'sourceMap');
+  document.body.classList.toggle('tab-models', activeTab === 'models');
+  document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
+  document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
     // Re-probe availability for current month with new tab (date tabs only).
     // The models/wiki tabs don't use date routing, so skip probing there too —
     // it'd just paint dots on a calendar that's hidden anyway.
-    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader' && activeTab !== 'briefing' && activeTab !== 'sourceMap') {
+    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -6979,9 +6139,7 @@ document.body.classList.toggle('tab-research', currentTab === 'research');
 document.body.classList.toggle('tab-models', currentTab === 'models');
 document.body.classList.toggle('tab-wiki', currentTab === 'wiki');
 document.body.classList.toggle('tab-focus-reader', currentTab === 'focusReader');
-document.body.classList.toggle('tab-briefing', currentTab === 'briefing');
-document.body.classList.toggle('tab-source-map', currentTab === 'sourceMap');
-if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader' && currentTab !== 'briefing' && currentTab !== 'sourceMap') {
+if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();
