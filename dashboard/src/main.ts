@@ -2,6 +2,23 @@ import './style.css';
 import { marked, Marked } from 'marked';
 import type { Tokens, TokenizerThis } from 'marked';
 import DOMPurify from 'dompurify';
+import {
+  cleanPublicLeadText,
+  escapeHtml,
+  extractUrls,
+  splitSections,
+  stripMarkdown,
+  truncateText,
+  wrapTables,
+} from './render/shared';
+import { renderTodayHtml } from './render/today';
+import {
+  parseTwitterStories,
+  renderTwitterReportHtml,
+  sanitizePublicReportMarkdown,
+  storyCurrentLead,
+} from './render/twitter';
+import type { TwitterStory } from './render/twitter';
 
 const DATA_BASE: string = import.meta.env.BASE_URL + 'research';
 
@@ -83,10 +100,10 @@ function timeAgo(date: Date): string {
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki';
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader';
 // Tabs that route by date (calendar-driven). research + wiki are slug-driven
 // (or index views) and are excluded — mirror the research precedent.
-type DateTab = Exclude<Tab, 'research' | 'wiki'>;
+type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader'>;
 type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
@@ -128,14 +145,29 @@ type FrontPageAsset = {
   html: string | null;
   fallback: string | null;
 };
-type TwitterStory = {
-  rank: string;
+type FocusReaderItem = {
   title: string;
+  label: string;
+  summary: string;
   body: string;
-  links: string[];
-  handles: string[];
+  minutes: number;
+  sources: string[];
+  signal: string;
+  score: number;
 };
-
+type FocusReaderData = {
+  date: string;
+  digestDate: string;
+  generatedAt: string | null;
+  items: FocusReaderItem[];
+  digestCount: number;
+  researchCount: number;
+  ticketCount: number;
+  activeTicketCount: number;
+  wikiCount: number;
+  latestResearchTitle: string;
+  frontend: DesignFrontendData;
+};
 // Model-release ticket — see docs/model-tickets.md for the contract.
 type TicketStatus = 'rumored' | 'in-testing' | 'confirmed' | 'released' | 'closed';
 type TicketVerification = 'confirmed' | 'partial' | 'unverified';
@@ -159,6 +191,16 @@ type Ticket = {
   body: string;
 };
 type TicketIndex = { tickets: Ticket[] };
+type DesignSurface = 'digest' | 'signals' | 'models' | 'research' | 'wiki';
+type DesignFrontendData = {
+  digestDate: string | null;
+  twitterDate: string | null;
+  digestItems: FocusReaderItem[];
+  twitterStories: TwitterStory[];
+  tickets: Ticket[];
+  researchRows: GenResearchRow[];
+  wikiPages: WikiPage[];
+};
 
 let currentDate = new Date();
 let searchTerm = '';
@@ -177,6 +219,10 @@ let researchDocCache: { slug: string; language: ResearchLanguage; body: string }
 // Cache the tickets index — fetched once per session on first models-tab visit.
 let ticketsCache: Ticket[] | null = null;
 let ticketsPromise: Promise<Ticket[] | null> | null = null;
+let focusReaderData: FocusReaderData | null = null;
+let focusReaderSelectedIndex = 0;
+let focusReaderSearchTerm = '';
+let focusReaderSurface: DesignSurface = 'digest';
 // Which ticket is expanded (showing body + history). Null = grid view.
 // Filter state for the tickets grid.
 const ticketFilters = { status: 'all', company: 'all' };
@@ -217,6 +263,9 @@ const languageSwitch = document.getElementById('languageSwitch');
 // are disambiguated from routes by the file extension; Vercel rewrites only
 // extensionless paths to /index.html.
 function routeFromState(): string {
+  if (activeTab === 'focusReader') {
+    return '/design/focus-reader';
+  }
   if (activeTab === 'research') {
     return selectedSlug ? '/research/' + selectedSlug : '/research';
   }
@@ -281,6 +330,12 @@ function parseRoute(path: string): boolean {
   const clean = path.replace(/\/+$/, '') || '/';
   if (clean === '/') return false;
   const trimmed = clean.replace(/^\/+/, '');
+  if (trimmed === 'design/focus-reader') {
+    activeTab = 'focusReader';
+    selectedSlug = null;
+    syncTabUi();
+    return true;
+  }
   const dateMatch = trimmed.match(/^(today|twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
   if (dateMatch) {
     activeTab = dateMatch[1] as Tab;
@@ -354,6 +409,7 @@ function syncTabUi(): void {
   // Wiki is slug/index-driven, not date-driven — same calendar-hiding
   // toggle as research/models.
   document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
+  document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
 }
 
 // ── Helpers ───────────────────────────────────────────
@@ -740,12 +796,6 @@ function handleCalendarClick(e: Event): void {
   }
 }
 
-function escapeHtml(str: string): string {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
-
 /** Safely set element content using DOMPurify + insertAdjacentHTML.
  *
  * By default `iframe` is FORBIDDEN. Almost everything that flows through here
@@ -773,7 +823,7 @@ function setSafeContent(
   // audio players), so they stay in the default allowlist; they are NOT
   // iframe-only.
   const addTags = ['mark', 'article', 'figure', 'figcaption', 'audio', 'nav', 'section', 'details', 'summary'];
-  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src'];
+  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -1241,6 +1291,8 @@ function showLoading(): void {
     ? 'Loading front page\u2026'
     : activeTab === 'models'
     ? 'Loading model timeline\u2026'
+    : activeTab === 'focusReader'
+    ? 'Loading focus reader\u2026'
     : activeTab === 'research'
     ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
     : activeTab === 'wiki'
@@ -1266,6 +1318,8 @@ function showEmpty(dateStr: string): void {
     ? 'No front page for ' + escapeHtml(dateStr)
     : activeTab === 'models'
     ? 'No model timeline for ' + escapeHtml(dateStr)
+    : activeTab === 'focusReader'
+    ? 'No focus reader data available'
     : activeTab === 'research'
     ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
     : 'No Twitter report for ' + escapeHtml(dateStr);
@@ -1295,76 +1349,6 @@ function showError(message: string, hint?: string): void {
       '</div>',
     ].join('\n'),
   );
-}
-
-/** Split markdown by ## headings into separate sections */
-function splitSections(md: string): { title: string; body: string }[] {
-  const lines = md.split('\n');
-  const sections: { title: string; body: string }[] = [];
-  let currentTitle = '';
-  let currentLines: string[] = [];
-
-  for (const line of lines) {
-    const h2Match = line.match(/^## (.+)/);
-    if (h2Match) {
-      if (currentTitle || currentLines.length) {
-        sections.push({ title: currentTitle, body: currentLines.join('\n').trim() });
-      }
-      currentTitle = h2Match[1];
-      currentLines = [];
-    } else {
-      currentLines.push(line);
-    }
-  }
-  if (currentTitle || currentLines.length) {
-    sections.push({ title: currentTitle, body: currentLines.join('\n').trim() });
-  }
-  return sections;
-}
-
-/** Wrap rendered tables in a horizontally scrollable container so wide tables
- * (many columns or long cell content) don't overflow the card. */
-function wrapTables(html: string): string {
-  return html
-    .replace(/<table(\s[^>]*)?>/g, '<div class="md-table-wrap"><table$1>')
-    .replace(/<\/table>/g, '</table></div>');
-}
-
-function stripMarkdown(md: string): string {
-  return md
-    .replace(/```[\s\S]*?```/g, ' ')
-    .replace(/!\[[^\]]*]\([^)]+\)/g, ' ')
-    .replace(/\[([^\]]+)]\([^)]+\)/g, '$1')
-    .replace(/https?:\/\/\S+/g, ' ')
-    .replace(/[#>*_`~|]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function truncateText(text: string, max = 360): string {
-  if (text.length <= max) return text;
-  const sliced = text.slice(0, max).replace(/\s+\S*$/, '').trim();
-  return sliced + '...';
-}
-
-function cleanPublicLeadText(text: string): string {
-  return text
-    .replace(/\([^)]*\b(?:verified|curl|re-verified|source checks?|multi-source primary-source confirmed)[^)]*\)/gi, '')
-    .replace(/\b(?:verified|re-verified|confirmed)\s+(?:via|by)\s+(?:curl|source checks?|snapshot)[^.;—]*[.;—]?\s*/gi, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function isSourceMethodLead(text: string): boolean {
-  return /\b(?:verified|curl|source checks?|originating .*source|confirmed via|post body|press-release teaser|raw URL|snapshot)\b/i.test(text);
-}
-
-function highlightPlainText(text: string): string {
-  const escapedText = escapeHtml(text);
-  if (!searchTerm) return escapedText;
-  const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const re = new RegExp('(' + escaped + ')', 'gi');
-  return escapedText.replace(re, '<mark>$1</mark>');
 }
 
 // Ancestors whose text must NOT be wrapped in <mark>: SVG charts (axis labels
@@ -1418,26 +1402,6 @@ function highlightSearchMatches(root: HTMLElement, term: string): void {
     if (lastIndex < value.length) frag.appendChild(document.createTextNode(value.slice(lastIndex)));
     textNode.parentNode?.replaceChild(frag, textNode);
   }
-}
-
-function extractUrls(md: string): string[] {
-  const urls = new Set<string>();
-  const re = /https?:\/\/[^\s)>\]]+/g;
-  let match: RegExpExecArray | null;
-  while ((match = re.exec(md))) {
-    urls.add(match[0].replace(/[.,;:]+$/, ''));
-  }
-  return Array.from(urls);
-}
-
-function extractHandles(md: string, limit = 12): string[] {
-  const handles = new Set<string>();
-  const re = /(?<!\w)@([A-Za-z0-9_]{2,20})/g;
-  let match: RegExpExecArray | null;
-  while ((match = re.exec(md)) && handles.size < limit) {
-    handles.add('@' + match[1]);
-  }
-  return Array.from(handles);
 }
 
 function renderTweetAgoFromUrl(url: string): string {
@@ -2146,285 +2110,18 @@ function renderWikiNotFound(slug: string): void {
   );
 }
 
-function extractCycleSummary(body: string): string {
-  const match = body.match(/\*\*Cycle summary\*\*:\s*([\s\S]*?)(?=\n###|\n####|\n\*\*(?:Evidence|Previously|Counter|Verification|Watch)\*\*:|$)/i);
-  return match ? match[1].trim() : '';
-}
-
-function extractSectionText(body: string, label: string): string {
-  const re = new RegExp('\\*\\*' + label + '\\*\\*:\\s*([\\s\\S]*?)(?=\\n\\*\\*(?:Previously|Evidence|Counter / contradicting|Verification|Watch)\\*\\*:|\\n####\\s+\\d+\\.|$)', 'i');
-  const match = body.match(re);
-  return match ? match[1].trim() : '';
-}
-
-function cleanEvidenceLead(text: string): string {
-  return text
-    .split('\n')
-    .map((line) => line
-      .replace(/\*\*/g, '')
-      .replace(/^[-*]\s+/, '')
-      .replace(/^https?:\/\/\S+\s*(?:—|-|:)\s*/i, '')
-      .replace(/^[\w.-]+\.[a-z]{2,}(?:\/\S*)?\s*(?:\([^)]*\))?\s*(?:—|-|:)+\s*/i, '')
-      .replace(/^@[\w_]+:\s*/i, '')
-      .replace(/^@[\w_]+\s+[^—\n]{0,140}\s+—\s*/i, '')
-      .replace(/^["“]?[^"”]{0,160}["”]?\s+—\s+https?:\/\/\S+\s*(?:—\s*)?/i, '')
-      .replace(/^\s*(?:—|-)+\s*/, '')
-      .replace(/^the originating\b/i, 'Originating')
-      .trim())
-    .filter(Boolean)
-    .join(' ');
-}
-
-function storyCurrentLead(body: string): string {
-  const evidence = extractSectionText(body, 'Evidence');
-  if (evidence) return cleanEvidenceLead(evidence);
-  return body
-    .replace(/\*\*Previously\*\*:?[\s\S]*?(?=\n\*\*(?:Evidence|Counter \/ contradicting|Verification|Watch)\*\*:|$)/i, '')
-    .trim();
-}
-
-function parseTwitterStories(body: string): TwitterStory[] {
-  const storyRe = /^####\s+(\d+)\.\s+(.+)$/gm;
-  const matches = Array.from(body.matchAll(storyRe));
-  return matches.map((match, idx) => {
-    const start = (match.index || 0) + match[0].length;
-    const nextStory = idx + 1 < matches.length ? matches[idx + 1].index || body.length : body.length;
-    const nextSection = body.slice(start).search(/\n###\s+/);
-    const sectionEnd = nextSection >= 0 ? start + nextSection : body.length;
-    const end = Math.min(nextStory, sectionEnd);
-    const storyBody = body.slice(start, end).trim();
-    return {
-      rank: match[1],
-      title: match[2].trim(),
-      body: storyBody,
-      links: extractUrls(storyBody),
-      handles: extractHandles(match[2] + '\n' + storyBody),
-    };
-  });
-}
-
-function firstText(root: ParentNode, selector: string): string {
-  return root.querySelector(selector)?.textContent?.replace(/\s+/g, ' ').trim() || '';
-}
-
-function firstHtml(root: ParentNode, selector: string): string {
-  return (root.querySelector(selector) as HTMLElement | null)?.innerHTML?.trim() || '';
-}
-
-// Turn a story's Verify/Watch signals into ara-callouts. The Verify variant
-// (and its flag dot) is keyed off the verdict glyph the data already carries:
-// ✓ = multi-source confirmed (success/green), ⚠ = single-source (warn/yellow).
-function twitterSignalsToCallouts(story: Element): string {
-  const sig = story.querySelector('.twitter-story-signals');
-  if (!sig) return '';
-  const rows = Array.from(sig.querySelectorAll(':scope > div'));
-  if (rows.length === 0) return '';
-  return rows.map((row) => {
-    const label = (row.querySelector('span')?.textContent || '').trim();
-    let text = (row.textContent || '').replace(/\s+/g, ' ').trim();
-    if (label && text.startsWith(label)) text = text.slice(label.length).trim();
-    const isVerify = /verif/i.test(label);
-    let variant = 'ara-callout--info';
-    let flag = '';
-    if (isVerify) {
-      if (/⚠/.test(text)) { variant = 'ara-callout--warn'; flag = '<span class="ara-flag ara-flag--yellow"></span>'; }
-      else if (/✓/.test(text)) { variant = 'ara-callout--success'; flag = '<span class="ara-flag ara-flag--green"></span>'; }
-      text = text.replace(/^[✓⚠✗]\s*/, '');
-    }
-    const labelText = label || (isVerify ? 'Verify' : 'Watch');
-    return '<div class="ara-callout ' + variant + '">'
-      + '<span class="ara-callout-label">' + flag + escapeHtml(labelText) + '</span>'
-      + '<p>' + highlightPlainText(text) + '</p></div>';
-  }).join('\n');
-}
-
-// The "Skeptic's corner" markdown section (after the stories). The structured
-// story path drops it today; surface it as a danger callout.
-function extractSkepticCorner(body: string): string {
-  const m = body.match(/###\s+[^\n]*[Ss]keptic[^\n]*\n([\s\S]*?)(?=\n#{2,3}\s|$)/);
-  return m ? m[1].trim() : '';
-}
-
-function renderStructuredTwitterStories(body: string): string {
-  if (!/\btwitter-story\b/.test(body)) return '';
-  const doc = new DOMParser().parseFromString('<div>' + body + '</div>', 'text/html');
-  const stories = Array.from(doc.querySelectorAll('article.twitter-story'));
-  if (stories.length === 0) return '';
-
-  return stories.map((story, idx) => {
-    const rank = story.getAttribute('data-rank') || String(idx + 1);
-    const title = firstText(story, '.twitter-story-title, h3');
-    const lead = firstText(story, '.twitter-story-lead');
-    const sources = firstHtml(story, '.twitter-story-sources');
-    const signalsHtml = twitterSignalsToCallouts(story);
-    const bodyHtml = firstHtml(story, '.twitter-story-body') || firstHtml(story, '.twitter-story-details');
-    const detailsBits = [
-      sources ? '<div class="twitter-story-chips">' + sources + '</div>' : '',
-      signalsHtml,
-      bodyHtml ? '<div class="md-content twitter-story-body">' + bodyHtml + '</div>' : '',
-    ].filter(Boolean).join('\n');
-
-    return [
-      '<article class="twitter-story-card">',
-      '  <div class="twitter-story-rank">' + escapeHtml(rank) + '</div>',
-      '  <div class="twitter-story-main">',
-      title ? '    <h3 class="twitter-story-title">' + highlightPlainText(title) + '</h3>' : '',
-      lead ? '    <p class="twitter-story-summary">' + highlightPlainText(truncateText(cleanPublicLeadText(lead), 360)) + '</p>' : '',
-      detailsBits
-        ? [
-            '    <details class="twitter-story-details">',
-            '      <summary>Full analysis</summary>',
-            detailsBits,
-            '    </details>',
-          ].join('\n')
-        : '',
-      '  </div>',
-      '</article>',
-    ].filter(Boolean).join('\n');
-  }).join('\n');
-}
-
-function sanitizePublicReportMarkdown(md: string): string {
-  const lines = md.split('\n');
-  const out: string[] = [];
-  let skippingInternalSection = false;
-  let skippingInternalStory = false;
-  const internalToolLeak =
-    /\b(?:bird-fast|bird)\b.*(?:HTTP\s*403|Cloudflare|cookie|auth|User not found|\[err\]|returned|failed|blocked|degraded)/i;
-  const internalAccessNote =
-    /(?:Twitter access degraded|access restoration|cookie-clearance|not independently re-verifiable|0 successful bird|successful bird-fast|degraded-access)/i;
-
-  for (const line of lines) {
-    if (/^###\s+Research notes\b/i.test(line)) {
-      skippingInternalSection = true;
-      skippingInternalStory = false;
-      continue;
-    }
-    if (skippingInternalSection && /^##\s+/.test(line)) {
-      skippingInternalSection = false;
-    } else if (skippingInternalSection) {
-      continue;
-    }
-
-    if (/^####\s+\d+\.\s+.*(?:TWITTER ACCESS DEGRADED|BIRD-FAST HTTP|BIRD HTTP|ACCESS DEGRADED)/i.test(line)) {
-      skippingInternalStory = true;
-      continue;
-    }
-    if (skippingInternalStory && /^(?:####\s+\d+\.|###\s+|##\s+)/.test(line)) {
-      skippingInternalStory = false;
-    } else if (skippingInternalStory) {
-      continue;
-    }
-
-    if (internalToolLeak.test(line) || internalAccessNote.test(line)) continue;
-    out.push(
-      line
-        .replace(/\bverified bird-fast (?:user-tweets|search|read|tweet|thread)\b/gi, 'verified')
-        .replace(/\bre-verified bird-fast (?:user-tweets|search|read|tweet|thread)\b/gi, 're-verified')
-        .replace(/\bbird-fast\s+/gi, ''),
-    );
-  }
-
-  return out.join('\n').replace(/\n{4,}/g, '\n\n\n').trim();
-}
-
 function renderTwitterReport(md: string, fallbackDate: string | null = null): void {
-  const sections = splitSections(sanitizePublicReportMarkdown(md)).reverse();
-  const cards: string[] = [];
-  if (fallbackDate) {
-    cards.push(
-      '<div class="frontpage-fallback-note">No Twitter report for ' +
-        escapeHtml(fmtDate(currentDate)) +
-        '. Showing ' +
-        escapeHtml(fallbackDate) +
-        ' instead.</div>',
-    );
-  }
-
-  for (const section of sections) {
-    // Skip the document-level H1 that appears before the first cycle heading.
-    if (!section.title && (!section.body || /^#\s+.+$/.test(section.body.trim()))) continue;
-
-    const title = section.title || displayDate(currentDate);
-    const dateStr = fmtDate(currentDate);
-    const timeInfo = parseUtcTime(section.title, dateStr);
-    // Stable per-cycle anchor for search-driven deep links — must match the
-    // anchor prebuild writes into search-index.json (cycle-HHMMutc).
-    const cycleAnchor = 'cycle-' + section.title.replace(/[:\s]/g, '').toLowerCase();
-    const cycleSummary = extractCycleSummary(section.body);
-    const stories = parseTwitterStories(section.body);
-    const displayTime = timeInfo
-      ? '<span class="twitter-cycle-time">' + escapeHtml(timeInfo.utc) + '</span><span class="local-time">' + escapeHtml(timeInfo.local) + '</span>'
-      : '<span class="twitter-cycle-time">' + escapeHtml(title) + '</span>';
-    // Show the full cycle summary in the Signal Brief — it's the only place
-    // the summary lives now, so don't cut it mid-sentence.
-    const leadText = cycleSummary
-      ? cleanPublicLeadText(stripMarkdown(cycleSummary))
-      : truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 620);
-    // Storyless cycles fall back to the cycle markdown — minus the parts shown
-    // separately above (Cycle summary → Signal Brief; Skeptic's corner → its
-    // own callout) so nothing renders twice.
-    const fallbackBody = section.body
-      .replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '')
-      .replace(/###\s+[^\n]*[Ss]keptic[^\n]*\n[\s\S]*?(?=\n#{2,3}\s|$)/i, '')
-      .trim();
-    const structuredStoryCards = renderStructuredTwitterStories(section.body);
-    const storyCards = structuredStoryCards || stories.map((story) => {
-      const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
-      const watch = truncateText(stripMarkdown(extractSectionText(story.body, 'Watch')), 210);
-      const storyIntro = stripMarkdown(storyCurrentLead(story.body))
-        .replace(/^[\s\-—–]+/, '')
-        .replace(/^the originating\b/i, 'Originating');
-      const storySummary = isSourceMethodLead(storyIntro) ? '' : truncateText(cleanPublicLeadText(storyIntro), 360);
-      const storyLinks = renderSourceChips(story.links, 6);
-      const storyHandles = renderHandleChips(story.handles, 8);
-      return [
-        '<article class="twitter-story-card">',
-        '  <div class="twitter-story-rank">' + escapeHtml(story.rank) + '</div>',
-        '  <div class="twitter-story-main">',
-        '    <h3 class="twitter-story-title">' + highlightPlainText(story.title) + '</h3>',
-        storySummary ? '    <p class="twitter-story-summary">' + highlightPlainText(storySummary) + '</p>' : '',
-        '    <details class="twitter-story-details">',
-        '      <summary>Full analysis</summary>',
-        storyLinks || storyHandles ? '      <div class="twitter-story-chips">' + storyLinks + storyHandles + '</div>' : '',
-        verification || watch
-          ? '      <div class="twitter-story-signals">' +
-              (verification ? '<div><span>Verify</span>' + highlightPlainText(verification) + '</div>' : '') +
-              (watch ? '<div><span>Watch</span>' + highlightPlainText(watch) + '</div>' : '') +
-            '</div>'
-          : '',
-        '      <div class="md-content twitter-story-body">' + twitterMarkdownToHtml(story.body) + '</div>',
-        '    </details>',
-        '  </div>',
-        '</article>',
-      ].filter(Boolean).join('\n');
-    }).join('\n');
-
-    const skepticBody = extractSkepticCorner(section.body);
-    const skepticHtml = skepticBody
-      ? '<div class="ara-callout ara-callout--danger"><span class="ara-callout-label">🚩 Skeptic\'s corner</span>' + twitterMarkdownToHtml(skepticBody) + '</div>'
-      : '';
-
-    cards.push(
-      [
-        '<section id="' + cycleAnchor + '" class="content-card twitter-cycle-card">',
-        '  <div class="twitter-cycle-header">',
-        '    <div class="twitter-cycle-kicker">' + (timeInfo ? clockIcon(timeInfo.localHours, timeInfo.localMinutes) : '') + displayTime + '</div>',
-        '  </div>',
-        '  <div class="twitter-wire-brief">',
-        '    <div>',
-        '      <div class="twitter-brief-label">Signal Brief</div>',
-        '      <p class="twitter-brief-text">' + highlightPlainText(leadText) + '</p>',
-        '    </div>',
-        '  </div>',
-        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + twitterMarkdownToHtml(fallbackBody) + '</div>',
-        skepticHtml,
-        '</section>',
-      ].join('\n'),
-    );
-  }
-
-  setSafeContent(content, '<div class="twitter-report">' + cards.join('\n') + '</div>');
+  setSafeContent(content, renderTwitterReportHtml(md, {
+    fallbackDate,
+    currentDateStr: fmtDate(currentDate),
+    currentDateTitle: displayDate(currentDate),
+    searchTerm,
+    parseUtcTime,
+    clockIcon,
+    twitterMarkdownToHtml,
+    renderSourceChips,
+    renderHandleChips,
+  }));
   void hydrateTweetCards(content);
   void wikifyContent(content);
 }
@@ -2676,7 +2373,7 @@ function renderTickets(tickets: Ticket[] | null): void {
   );
 }
 
-function frontPageBodyHtml(frontPage: FrontPageAsset): string {
+ function frontPageBodyHtml(frontPage: FrontPageAsset): string {
   if (frontPage.html) {
     return [
       '  <div class="content-card-body frontpage-body frontpage-body-interactive">',
@@ -2737,114 +2434,31 @@ function renderFrontPage(frontPage: FrontPageAsset): void {
   enhanceNewspaper();
 }
 
-/** Render the daily digest. Treats Executive Summary specially as a TL;DR block.
- * When `frontPage` is supplied the layout splits into two desktop columns: front
- * page on the left, digest cards on the right. Stacks under ~900px. */
 function renderToday(md: string, frontPage: FrontPageAsset | null = null): void {
-  const sections = splitSections(md);
-
-  // Digest files often start with `# AI Daily Digest - <date>` before the
-  // first `## Section`, which duplicates the date already shown in the
-  // card header. Strip the leading h1 from the pre-`##` body; if nothing
-  // else remains, drop the section so we don't render a blank card.
-  if (sections.length > 0 && !sections[0].title) {
-    sections[0].body = sections[0].body.replace(/^\s*#\s+[^\n]+\n*/, '').trim();
-    if (!sections[0].body) sections.shift();
-  }
-
-  const cards: string[] = [];
-
-  // Prepend an audio player if a Deepgram-generated digest MP3 exists for
-  // this date. Manifest is populated by dashboard/scripts/prebuild.mjs.
   const dateStr = fmtDate(currentDate);
-  if (manifest?.audio?.includes(dateStr)) {
-    const audioUrl = `${AUDIO_BASE}/audio/${dateStr}-digest.mp3`;
-    cards.push(
-      [
-        '<div class="today-audio">',
-        '  <audio controls preload="metadata" style="width:100%;" src="' + audioUrl + '">',
-        '    Your browser does not support the audio element.',
-        '  </audio>',
-        '</div>',
-      ].join('\n'),
-    );
-  }
-
-  for (const section of sections) {
-    if (!section.title && !section.body) continue;
-
-    const isSummary = /^(executive summary|tl;dr|tldr|summary)$/i.test(section.title.trim());
-    let html = marked.parse(section.body) as string;
-    html = wrapTables(html);
-
-    html = html.replace(
-      /(?<!\w)(@\w+)/g,
-      '<span class="handle">$1</span>',
-    );
-
-    if (searchTerm) {
-      const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const re = new RegExp('(' + escaped + ')', 'gi');
-      html = html.replace(re, '<mark>$1</mark>');
-    }
-
-    const title = section.title || displayDate(currentDate);
-
-    if (isSummary) {
-      // Render as TL;DR block (lead card)
-      cards.push(
-        [
-          '<div class="content-card today-card">',
-          '  <div class="content-card-body">',
-          '    <div class="today-tldr">',
-          '      <span class="today-tldr-label">TL;DR</span>',
-          '      <div class="md-content">' + html + '</div>',
-          '    </div>',
-          '  </div>',
-          '</div>',
-        ].join('\n'),
-      );
-    } else {
-      cards.push(
-        [
-          '<div class="content-card">',
-          '  <div class="content-card-header">',
-          '    <div class="content-card-title">' + escapeHtml(title) + '</div>',
-          '  </div>',
-          '  <div class="content-card-body">',
-          '    <div class="md-content">' + html + '</div>',
-          '  </div>',
-          '</div>',
-        ].join('\n'),
-      );
-    }
-  }
-
-  const todayCards = cards.join('\n');
+  let frontPageCardHtml: string | null = null;
   if (frontPage) {
     const noteHtml = frontPage.fallback
       ? '  <div class="frontpage-fallback-note">Today’s front page auto-generates at 00:30 UTC. Showing ' + escapeHtml(frontPage.fallback) + ' instead.</div>'
       : '';
-    const fpCard = [
+    frontPageCardHtml = [
       '<div class="content-card frontpage-card today-frontpage-card">',
       noteHtml,
       frontPageBodyHtml(frontPage),
       '</div>',
     ].join('\n');
-    setSafeContent(
-      content,
-      [
-        '<div class="today-layout">',
-        '  <div class="today-layout-frontpage">' + fpCard + '</div>',
-        '  <div class="today-layout-digest">' + todayCards + '</div>',
-        '</div>',
-      ].join('\n'),
-    );
-    enhanceNewspaper();
-    void wikifyContent(content);
-    return;
   }
-  setSafeContent(content, todayCards);
+
+  setSafeContent(content, renderTodayHtml({
+    md,
+    dateStr,
+    fallbackTitle: displayDate(currentDate),
+    audioBase: AUDIO_BASE,
+    audioDates: manifest?.audio || [],
+    searchTerm,
+    frontPageCardHtml,
+  }));
+  if (frontPage) enhanceNewspaper();
   void wikifyContent(content);
 }
 
@@ -4879,6 +4493,350 @@ function renderResearchStandalone(row: GenResearchRow): void {
   updateResearchAudioUi();
 }
 
+// ── Focus Reader design route ─────────────────────────
+function latestDateFromList(dates: string[] | undefined, target = fmtDate(new Date())): string | null {
+  if (!dates || dates.length === 0) return null;
+  let best: string | null = null;
+  for (const date of dates.slice().sort()) {
+    if (date <= target) best = date;
+  }
+  return best || dates.slice().sort()[dates.length - 1] || null;
+}
+
+function sentenceFromMarkdown(md: string, max = 220): string {
+  const text = stripMarkdown(md)
+    .replace(/^\s*[-*]\s+/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!text) return '';
+  const sentence = text.match(/^(.+?[.!?])(?:\s|$)/)?.[1] || text;
+  return truncateText(sentence, max);
+}
+
+function digestSectionItems(md: string): FocusReaderItem[] {
+  const sections = splitSections(md);
+  const cleanSections = sections
+    .map((section) => ({
+      title: (section.title || 'Daily brief').trim(),
+      body: section.body.replace(/^\s*#\s+[^\n]+\n*/, '').trim(),
+    }))
+    .filter((section) => section.body);
+
+  const items = cleanSections.slice(0, 6).map((section, index) => {
+    const urls = extractUrls(section.body);
+    const wordCount = stripMarkdown(section.body).split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(2, Math.min(12, Math.ceil(wordCount / 190)));
+    const score = Math.max(46, Math.min(94, 64 + urls.length * 4 + (cleanSections.length - index)));
+    const label = /summary|tl;dr/i.test(section.title)
+      ? 'Executive scan'
+      : section.title.replace(/&amp;/g, '&');
+    return {
+      title: label,
+      label,
+      summary: sentenceFromMarkdown(section.body),
+      body: section.body,
+      minutes,
+      sources: urls,
+      signal: score >= 80 ? 'High signal' : score >= 68 ? 'Watch' : 'Brief',
+      score,
+    };
+  });
+
+  if (items.length > 0) return items;
+
+  // Deterministic fallback for older or malformed digest files that do not
+  // split into sections. This keeps the design route useful without inventing
+  // visible fixture labels.
+  return [{
+    title: 'Daily brief',
+    label: 'Digest',
+    summary: sentenceFromMarkdown(md) || 'Latest AI research digest is available.',
+    body: md,
+    minutes: 4,
+    sources: extractUrls(md),
+    signal: 'Brief',
+    score: 64,
+  }];
+}
+
+function generatedAtFromDigest(md: string): string | null {
+  const match = md.match(/\*Generated at ([^*]+)\*/i);
+  return match ? match[1].trim() : null;
+}
+
+function sourceLinkHtml(url: string, index: number): string {
+  const label = sourceLabel(url);
+  return [
+    '<a class="focus-source-link" href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">',
+    '  <span>',
+    '    <strong>' + escapeHtml(label) + '</strong>',
+    '    <span class="focus-source-meta">Source ' + String(index + 1).padStart(2, '0') + '</span>',
+    '  </span>',
+    '  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>',
+    '</a>',
+  ].join('\n');
+}
+
+const DESIGN_SURFACES: Array<{ key: DesignSurface; label: string }> = [
+  { key: 'digest', label: 'Digest' },
+  { key: 'signals', label: 'Signals' },
+  { key: 'models', label: 'Models' },
+  { key: 'research', label: 'Research' },
+  { key: 'wiki', label: 'Wiki' },
+];
+
+function latestManifestDate(dates: string[] | undefined): string | null {
+  if (!dates || dates.length === 0) return null;
+  return dates.slice().sort().reverse()[0] || null;
+}
+
+function designExcerpt(text: string, max = 120): string {
+  return truncateText(cleanPublicLeadText(stripMarkdown(text)), max);
+}
+
+function renderDesignSurfaceTabs(prefix: string, active: DesignSurface): string {
+  return DESIGN_SURFACES.map((surface) => (
+    '<button class="' + prefix + '-surface-tab" type="button" data-design-surface="' + surface.key + '" aria-current="' + (active === surface.key ? 'true' : 'false') + '">' +
+    '<span>' + escapeHtml(surface.label) + '</span>' +
+    '</button>'
+  )).join('\n');
+}
+
+function renderDesignSurfaceList(data: DesignFrontendData, surface: DesignSurface, prefix: string): string {
+  if (surface === 'digest') {
+    const rows = data.digestItems.slice(0, 3).map((item) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(item.label) + ' · ' + escapeHtml(String(item.score)) + '</div>',
+      '  <h3>' + escapeHtml(item.title) + '</h3>',
+      '  <p>' + escapeHtml(item.summary || designExcerpt(item.body)) + '</p>',
+      '  <span>' + escapeHtml(String(item.sources.length)) + ' sources · ' + escapeHtml(String(item.minutes)) + ' min</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No digest sections available.</div>';
+  }
+  if (surface === 'signals') {
+    const rows = data.twitterStories.slice(0, 3).map((story) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">Signal ' + escapeHtml(story.rank || 'watch') + '</div>',
+      '  <h3>' + escapeHtml(story.title) + '</h3>',
+      '  <p>' + escapeHtml(designExcerpt(storyCurrentLead(story.body) || story.body)) + '</p>',
+      '  <span>' + escapeHtml(String(story.links.length)) + ' links · ' + escapeHtml(story.handles.slice(0, 2).join(', ') || 'source report') + '</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No signal stories available.</div>';
+  }
+  if (surface === 'models') {
+    const rows = data.tickets.slice(0, 3).map((ticket) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(ticket.company) + ' · ' + escapeHtml(ticket.status) + '</div>',
+      '  <h3>' + escapeHtml(ticket.title) + '</h3>',
+      '  <p>' + escapeHtml(designExcerpt(ticket.status_note || ticket.body || ticket.expected || ticket.title)) + '</p>',
+      '  <span>' + escapeHtml(ticket.verification) + ' · ' + escapeHtml(String(ticket.sources.length)) + ' sources</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No model tickets available.</div>';
+  }
+  if (surface === 'research') {
+    const rows = data.researchRows.slice(0, 3).map((row) => [
+      '<article class="' + prefix + '-surface-item">',
+      '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(row.model) + '</div>',
+      '  <h3>' + escapeHtml(row.title) + '</h3>',
+      '  <p>' + escapeHtml(designExcerpt(row.prompt || row.source || row.title)) + '</p>',
+      '  <span>' + escapeHtml((row.tags || []).slice(0, 3).join(', ') || 'long-form') + '</span>',
+      '</article>',
+    ].join('\n')).join('\n');
+    return rows || '<div class="' + prefix + '-surface-empty">No research articles available.</div>';
+  }
+  const rows = data.wikiPages.slice(0, 3).map((page) => [
+    '<article class="' + prefix + '-surface-item">',
+    '  <div class="' + prefix + '-surface-kicker">' + escapeHtml(String(page.type)) + '</div>',
+    '  <h3>' + escapeHtml(page.title) + '</h3>',
+    '  <p>' + escapeHtml(page.summary || (page.aliases || []).slice(0, 3).join(', ') || 'Entity memory page') + '</p>',
+    '  <span>' + escapeHtml(String((page.inbound || []).length + (page.outbound || []).length)) + ' graph links</span>',
+    '</article>',
+  ].join('\n')).join('\n');
+  return rows || '<div class="' + prefix + '-surface-empty">No wiki pages available.</div>';
+}
+
+function renderDesignSurfacePanel(prefix: string, data: DesignFrontendData, surface: DesignSurface): string {
+  const meta = DESIGN_SURFACES.find((item) => item.key === surface) || DESIGN_SURFACES[0];
+  return [
+    '<section class="' + prefix + '-surface-panel" aria-label="' + escapeHtml(meta.label) + ' surface">',
+    '  <div class="' + prefix + '-surface-head">',
+    '    <h2>' + escapeHtml(meta.label) + '</h2>',
+    '    <div class="' + prefix + '-surface-tabs">' + renderDesignSurfaceTabs(prefix, surface) + '</div>',
+    '  </div>',
+    '  <div class="' + prefix + '-surface-grid">' + renderDesignSurfaceList(data, surface, prefix) + '</div>',
+    '</section>',
+  ].join('\n');
+}
+
+async function loadDesignFrontendData(m: Manifest, signal: AbortSignal): Promise<DesignFrontendData> {
+  const digestDate = latestManifestDate(m.today);
+  const twitterDate = latestManifestDate(m.twitter);
+  const [digestMd, twitterMd, tickets, wiki] = await Promise.all([
+    digestDate ? fetchDigest(digestDate, signal) : Promise.resolve(null),
+    twitterDate ? fetchTwitter(twitterDate, signal) : Promise.resolve(null),
+    loadTickets(),
+    loadWikiIndex(signal),
+  ]);
+  const cleanTwitter = twitterMd ? sanitizePublicReportMarkdown(twitterMd) : '';
+  const parsedTwitterStories = cleanTwitter ? parseTwitterStories(cleanTwitter).slice(0, 6) : [];
+  return {
+    digestDate,
+    twitterDate,
+    digestItems: digestMd ? digestSectionItems(digestMd).slice(0, 8) : [],
+    twitterStories: parsedTwitterStories,
+    tickets: (tickets || []).slice().sort((a, b) => (b.updated_at || '').localeCompare(a.updated_at || '')),
+    researchRows: (m.generative || []).slice().sort((a, b) => (b.created_at || '').localeCompare(a.created_at || '')),
+    wikiPages: (wiki?.pages || []).slice().sort((a, b) => (b.updated_at || '').localeCompare(a.updated_at || '')),
+  };
+}
+
+async function loadFocusReaderData(signal: AbortSignal): Promise<FocusReaderData | null> {
+  if (focusReaderData) return focusReaderData;
+  const m = await loadManifest();
+  if (!m) return null;
+  const today = fmtDate(new Date());
+  const digestDate = latestDateFromList(m.today, today) || today;
+  const digestMd = await fetchDigest(digestDate, signal);
+  if (!digestMd) return null;
+
+  const [tickets, wikiIndex] = await Promise.all([
+    loadTickets(),
+    loadWikiIndex(signal),
+  ]);
+  const rows = m.generative;
+  const sortedResearch = rows.slice().sort((a, b) => a.created_at.localeCompare(b.created_at));
+  const latestResearch = sortedResearch[sortedResearch.length - 1];
+  const ticketList = tickets ?? [];
+  const frontend = await loadDesignFrontendData(m, signal);
+
+  const data: FocusReaderData = {
+    date: today,
+    digestDate,
+    generatedAt: generatedAtFromDigest(digestMd),
+    items: digestSectionItems(digestMd),
+    digestCount: m.today.length,
+    researchCount: rows.length,
+    ticketCount: ticketList.length,
+    activeTicketCount: ticketList.filter((ticket) => ticket.status !== 'closed').length,
+    wikiCount: wikiIndex?.pages?.length ?? 0,
+    // Deterministic fallback for manifests that predate generative research.
+    latestResearchTitle: latestResearch?.title || 'No long-form research published yet',
+    frontend,
+  };
+  if (!signal.aborted && tickets && wikiIndex) {
+    focusReaderData = data;
+  }
+  return data;
+}
+
+function renderFocusReader(data: FocusReaderData): void {
+  setDocTitle('Focus Reader');
+  const term = focusReaderSearchTerm.trim().toLowerCase();
+  const visibleEntries = data.items
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => {
+      if (!term) return true;
+      const hay = [item.title, item.label, item.summary, item.body, ...item.sources].join(' ').toLowerCase();
+      return hay.includes(term);
+    });
+  const selectedEntry = visibleEntries.find((entry) => entry.index === focusReaderSelectedIndex) || visibleEntries[0];
+  const hasVisibleMatch = visibleEntries.length > 0;
+  const selected = hasVisibleMatch
+    ? (selectedEntry?.item || data.items[Math.max(0, Math.min(focusReaderSelectedIndex, data.items.length - 1))] || data.items[0])
+    : null;
+  const selectedIndex = selected && selectedEntry ? selectedEntry.index : (selected ? data.items.indexOf(selected) : -1);
+  const articleHtml = selected
+    ? wrapTables(marked.parse(selected.body) as string)
+    : '<p class="focus-empty-copy">No briefing section contains "' + escapeHtml(focusReaderSearchTerm.trim()) + '".</p>';
+  const sources = selected && selected.sources.length
+    ? selected.sources.slice(0, 3).map(sourceLinkHtml).join('\n')
+    : selected ? [
+        // Deterministic fallback when a digest section has no direct URLs.
+        sourceLinkHtml('/research/digest/' + data.digestDate + '-digest.md', 0),
+      ].join('\n') : '<p class="focus-note">No source stack while the search has no matching briefing.</p>';
+  const queue = visibleEntries.map(({ item, index }) => [
+    '<button class="focus-story-card" type="button" data-focus-index="' + index + '" aria-current="' + (index === selectedIndex ? 'true' : 'false') + '">',
+    '  <span class="focus-story-meta">' + escapeHtml(item.label) + ' · ' + item.minutes + ' min</span>',
+    '  <h3>' + escapeHtml(item.title) + '</h3>',
+    item.summary ? '  <p>' + escapeHtml(item.summary) + '</p>' : '',
+    '  <span class="focus-story-footer">',
+    '    <span class="focus-signal">' + escapeHtml(item.signal) + '</span>',
+    '    <span class="focus-story-meta">' + item.sources.length + ' sources</span>',
+    '  </span>',
+    '</button>',
+  ].join('\n')).join('\n');
+  const queueEmpty = visibleEntries.length === 0
+    ? '<div class="focus-queue-empty">No briefings match the search.</div>'
+    : '';
+
+  setSafeContent(
+    content,
+    [
+      '<div class="focus-reader-page">',
+      '  <header class="focus-masthead">',
+      '    <a class="focus-brand" href="/today/' + escapeHtml(data.digestDate) + '" aria-label="ARA home">',
+      '      <span class="focus-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 19 12 4l7 15"></path><path d="M8 14h8"></path></svg></span>',
+      '      <span>ARA</span>',
+      '    </a>',
+      '    <label class="focus-search">',
+      '      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg>',
+      '      <input type="search" value="' + escapeHtml(focusReaderSearchTerm) + '" placeholder="Search briefings, sources, claims" aria-label="Search briefings, sources, claims">',
+      '    </label>',
+      '    <div class="focus-header-actions" aria-label="Reader actions">',
+      '      <a class="focus-icon-button" href="/research" aria-label="Open research index"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 7h10v10H7z"></path><path d="M4 4h10"></path><path d="M10 20h10V10"></path></svg></a>',
+      '      <a class="focus-icon-button primary" href="/models" aria-label="Open model timeline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 21H5V3h11l3 3v15Z"></path><path d="M8 3v6h8"></path><path d="M8 17h8"></path></svg></a>',
+      '    </div>',
+      '  </header>',
+      '  <main class="focus-workspace">',
+      '    <aside class="focus-queue" aria-label="Reading queue">',
+      '      <div class="focus-queue-header"><h2>Today</h2><span class="focus-count">' + visibleEntries.length + '</span></div>',
+      '      <div class="focus-story-list">' + queue + queueEmpty + '</div>',
+      '    </aside>',
+      '    <section class="focus-reader" aria-label="Current briefing">',
+      '      <div class="focus-reader-toolbar">',
+      '        <div class="focus-reading-state">',
+      '          <span>Focus reader</span><span class="focus-dot" aria-hidden="true"></span><span>' + escapeHtml(data.digestDate) + '</span><span class="focus-dot" aria-hidden="true"></span><span>' + escapeHtml(data.generatedAt || 'Latest manifest data') + '</span>',
+      '        </div>',
+      '        <div class="focus-reader-actions">',
+      '          <a class="focus-icon-button" href="/today/' + escapeHtml(data.digestDate) + '" aria-label="Open full digest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h10"></path></svg></a>',
+      '          <a class="focus-icon-button" href="/wiki" aria-label="Open wiki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"></path></svg></a>',
+      '        </div>',
+      '      </div>',
+      '      <article class="focus-article">',
+      '        <div class="focus-article-inner">',
+      '          <div class="focus-kicker">' + escapeHtml(selected?.label || 'Search') + '</div>',
+      '          <h1>' + escapeHtml(selected?.title || 'No matching briefing') + '</h1>',
+      selected?.summary ? '          <p class="focus-dek">' + escapeHtml(selected.summary) + '</p>' : '',
+      '          <div class="focus-article-meta"><span>Signal score ' + (selected?.score ?? 0) + '</span><span>' + (selected?.sources.length ?? 0) + ' sources</span><span>' + (selected?.minutes ?? 0) + ' min read</span><span>Digest: ' + escapeHtml(data.digestDate) + '</span></div>',
+      '          <div class="focus-article-body md-content">' + articleHtml + '</div>',
+      '        </div>',
+      '      </article>',
+      '    </section>',
+      '    <aside class="focus-evidence" aria-label="Evidence">',
+      '      <div class="focus-evidence-header"><h2>Evidence</h2><span class="focus-count">' + (selected?.score ?? 0) + '</span></div>',
+      '      <div class="focus-evidence-body">',
+      '        <section class="focus-meter" aria-label="Confidence"><div class="focus-meter-top"><span class="focus-meter-label">Confidence</span><strong>' + (selected?.score ?? 0) + '</strong></div><div class="focus-bar" aria-hidden="true"><span></span></div><p class="focus-note">Score combines section depth, source count, and whether the item appears in the latest digest cycle.</p></section>',
+      '        <section class="focus-source-list" aria-label="Source stack"><h3 class="focus-section-title">Source Stack</h3>' + sources + '</section>',
+      '        <section class="focus-notes" aria-label="Repository state"><h3 class="focus-section-title">Repo State</h3>',
+      '          <p class="focus-note">' + data.digestCount + ' digests · ' + data.researchCount + ' research articles · ' + data.wikiCount + ' wiki pages.</p>',
+      '          <p class="focus-note">' + data.activeTicketCount + ' active model tickets out of ' + data.ticketCount + '. Latest research: ' + escapeHtml(data.latestResearchTitle) + '.</p>',
+      '        </section>',
+      '      </div>',
+      '    </aside>',
+      '  </main>',
+      '  <section class="focus-full-frontend" aria-label="Complete ARA frontend">',
+      renderDesignSurfacePanel('focus', data.frontend, focusReaderSurface),
+      '  </section>',
+      '</div>',
+    ].join('\n'),
+  );
+  const bar = content.querySelector<HTMLElement>('.focus-bar span');
+  if (bar) bar.style.width = (selected?.score ?? 0) + '%';
+}
+
 // ── Main load ─────────────────────────────────────────
 async function load(): Promise<void> {
   const dateStr = fmtDate(currentDate);
@@ -4896,7 +4854,17 @@ async function load(): Promise<void> {
   showLoading();
 
   try {
-    if (activeTab === 'wiki') {
+    if (activeTab === 'focusReader') {
+      const result = await withTimeout(loadFocusReaderData(controller.signal), LOAD_TIMEOUT_MS, controller);
+      if (requestId !== loadRequestId) return;
+      if (result === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (result) {
+        renderFocusReader(result);
+      } else {
+        showEmpty(dateStr);
+      }
+    } else if (activeTab === 'wiki') {
       // Fetch + cache the committed index.json once; everything (catalog,
       // backlinks, resolver) is derived from it. No JS-side graph building.
       const idx = await withTimeout(loadWikiIndex(controller.signal), LOAD_TIMEOUT_MS, controller);
@@ -5429,6 +5397,26 @@ content.addEventListener('click', (e) => {
     load();
     return;
   }
+  const designSurfaceButton = target.closest('[data-design-surface]') as HTMLElement | null;
+  if (designSurfaceButton) {
+    const surface = designSurfaceButton.dataset.designSurface as DesignSurface | undefined;
+    if (surface && DESIGN_SURFACES.some((item) => item.key === surface)) {
+      if (activeTab === 'focusReader' && focusReaderData) {
+        focusReaderSurface = surface;
+        renderFocusReader(focusReaderData);
+      }
+    }
+    return;
+  }
+  const focusQueueButton = target.closest('[data-focus-index]') as HTMLElement | null;
+  if (focusQueueButton && activeTab === 'focusReader') {
+    const nextIndex = Number(focusQueueButton.dataset.focusIndex);
+    if (Number.isFinite(nextIndex) && focusReaderData) {
+      focusReaderSelectedIndex = Math.max(0, Math.min(nextIndex, focusReaderData.items.length - 1));
+      renderFocusReader(focusReaderData);
+    }
+    return;
+  }
   const back = target.closest('[data-research-back]') as HTMLElement | null;
   if (back) {
     selectedSlug = null;
@@ -5526,6 +5514,27 @@ content.addEventListener('change', (e) => {
   load();
 });
 
+content.addEventListener('input', (e) => {
+  if (activeTab !== 'focusReader' || !focusReaderData) return;
+  const input = (e.target as HTMLElement).closest('.focus-search input') as HTMLInputElement | null;
+  if (!input) return;
+  focusReaderSearchTerm = input.value;
+  const needle = focusReaderSearchTerm.trim().toLowerCase();
+  if (needle) {
+    const matchIndex = focusReaderData.items.findIndex((item) =>
+      [item.title, item.label, item.summary, item.body, ...item.sources].join(' ').toLowerCase().includes(needle),
+    );
+    if (matchIndex >= 0) focusReaderSelectedIndex = matchIndex;
+  }
+  renderFocusReader(focusReaderData);
+  const nextInput = content.querySelector<HTMLInputElement>('.focus-search input');
+  if (nextInput) {
+    nextInput.focus();
+    const end = nextInput.value.length;
+    nextInput.setSelectionRange(end, end);
+  }
+});
+
 content.addEventListener('keydown', (e: KeyboardEvent) => {
   if (e.key !== 'Enter' && e.key !== ' ') return;
   const target = e.target as HTMLElement;
@@ -5606,12 +5615,13 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
     selectedSlug = null;
     syncTabUi();
     document.body.classList.toggle('tab-research', activeTab === 'research');
-    document.body.classList.toggle('tab-models', activeTab === 'models');
-    document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
+  document.body.classList.toggle('tab-models', activeTab === 'models');
+  document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
+  document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
     // Re-probe availability for current month with new tab (date tabs only).
     // The models/wiki tabs don't use date routing, so skip probing there too —
     // it'd just paint dots on a calendar that's hidden anyway.
-    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki') {
+    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -5630,7 +5640,8 @@ const currentTab: Tab = activeTab as Tab;
 document.body.classList.toggle('tab-research', currentTab === 'research');
 document.body.classList.toggle('tab-models', currentTab === 'models');
 document.body.classList.toggle('tab-wiki', currentTab === 'wiki');
-if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki') {
+document.body.classList.toggle('tab-focus-reader', currentTab === 'focusReader');
+if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();
