@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-17 10:26 UTC
+
+CYCLE: Cursor's "Compile" event dominates — a frontier-scale model and a GitHub challenger.
+
+TOP STORIES:
+• Cursor unveils its SpaceXAI-trained model at Compile — CEO calls it "as big as Opus and GPT," shipping in Cursor + Grok Build (1.5T+ params per analysts) [⚠]
+• Cursor launches Origin — git hosting "for the agentic era," taking direct aim at GitHub (fall 2026, waitlist) [✓]
+• Anthropic Fable 5 / Mythos 5 embargo unchanged — second export-control lawyer publishes a teardown of the Lutnick letter [✓ no lift]
+
+WATCH: Official Cursor model card (name/size/benchmarks) + Midjourney's first-hardware reveal (Wed 6/17, 6pm PT).
+
+Full update on GitHub.
