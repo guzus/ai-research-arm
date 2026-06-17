@@ -2706,7 +2706,7 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
 
     const skepticBody = extractSkepticCorner(section.body);
     const skepticHtml = skepticBody
-      ? '<div class="ara-callout ara-callout--danger"><span class="ara-callout-label">🚩 Skeptic\'s corner</span>' + twitterMarkdownToHtml(skepticBody) + '</div>'
+      ? '<div class="ara-callout ara-callout--danger">' + twitterMarkdownToHtml(skepticBody) + '</div>'
       : '';
 
     cards.push(
@@ -2717,7 +2717,6 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
         '  </div>',
         '  <div class="twitter-wire-brief">',
         '    <div>',
-        '      <div class="twitter-brief-label">Signal Brief</div>',
         '      <p class="twitter-brief-text">' + highlightPlainText(leadText) + '</p>',
         '    </div>',
         '  </div>',
