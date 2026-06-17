@@ -39,6 +39,9 @@ STALE_AFTER_DAYS = 30
 
 SLUG_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 URL_RE = re.compile(r"^https?://\S+$")
+IMAGE_URL_RE = re.compile(r"^(https?://\S+|/(?!/)\S+)$")
+IMAGE_SVG_RE = re.compile(r"\.svg(?:$|[?#])", re.IGNORECASE)
+IMAGE_FIELDS = {"url", "alt", "caption", "credit", "source_url"}
 # [[slug]] or [[slug|Display Label]]. The target is everything up to an
 # optional '|'. We capture the raw target and strip/validate it afterwards.
 WIKILINK_RE = re.compile(r"\[\[([^\[\]]+?)\]\]")
@@ -227,6 +230,90 @@ def _check_sources(val: Any, path: Path, report: Report) -> None:
             report.fail(path, "sources", f"item {i} has unknown keys {sorted(extra)} (allowed: {sorted(allowed)})")
 
 
+def _single_line_str(value: Any, path: Path, field: str, report: Report, *, required: bool) -> str | None:
+    if value is None:
+        if required:
+            report.fail(path, field, "required field missing or null")
+        return None
+    if not isinstance(value, str) or not value.strip():
+        report.fail(path, field, f"must be a non-empty string, got {type(value).__name__}")
+        return None
+    if "\n" in value.strip():
+        report.fail(path, field, "must be a single line (no embedded newlines)")
+        return None
+    return value
+
+
+def _is_safe_image_url(value: str) -> bool:
+    if not isinstance(value, str) or not value.strip():
+        return False
+    if any(ch.isspace() for ch in value):
+        return False
+    if not IMAGE_URL_RE.match(value):
+        return False
+    if IMAGE_SVG_RE.search(value):
+        return False
+    return True
+
+
+def normalize_images(value: Any) -> list[dict[str, str]]:
+    """Return normalized image metadata for validated-ish frontmatter.
+
+    The validator is the authority on failures; this helper is intentionally
+    forgiving so index/export generation can omit malformed partial entries
+    after validation has already reported them.
+    """
+    if not isinstance(value, list):
+        return []
+    out: list[dict[str, str]] = []
+    for item in value:
+        if not isinstance(item, dict):
+            continue
+        normalized: dict[str, str] = {}
+        for key in ("url", "alt", "caption", "credit", "source_url"):
+            val = item.get(key)
+            if isinstance(val, str) and val.strip():
+                normalized[key] = val.strip()
+        if "url" in normalized and "alt" in normalized:
+            out.append(normalized)
+    return out
+
+
+def _check_images(val: Any, path: Path, report: Report) -> None:
+    """Optional list of visual depictions for the topic/description."""
+    if not isinstance(val, list):
+        report.fail(path, "images", "must be a list of mappings")
+        return
+    if not val:
+        report.fail(path, "images", "must be omitted entirely rather than an empty list")
+        return
+    for i, img in enumerate(val):
+        if not isinstance(img, dict):
+            report.fail(path, "images", f"item {i} must be a mapping (got {type(img).__name__})")
+            continue
+
+        extra = set(img) - IMAGE_FIELDS
+        if extra:
+            report.fail(path, "images", f"item {i} has unknown keys {sorted(extra)} (allowed: {sorted(IMAGE_FIELDS)})")
+
+        url = _single_line_str(img.get("url"), path, "images", report, required=True)
+        if url and not _is_safe_image_url(url):
+            report.fail(
+                path,
+                "images",
+                f"item {i} url must be http(s)://... or a site-absolute /path, with no remote/local SVG ({url!r})",
+            )
+
+        _single_line_str(img.get("alt"), path, "images", report, required=True)
+        for key in ("caption", "credit"):
+            if key in img and img[key] is not None:
+                _single_line_str(img[key], path, "images", report, required=False)
+        if "source_url" in img and img["source_url"] is not None:
+            source_url = _single_line_str(img["source_url"], path, "images", report, required=False)
+            if source_url and not URL_RE.match(source_url):
+                report.fail(path, "images", f"item {i} source_url must be http(s)://... ({source_url!r})")
+
+
 def extract_wikilinks(body: str) -> list[str]:
     """Return raw link targets from [[...]] in `body`, skipping fenced code.
 
@@ -331,6 +418,8 @@ def load_page(path: Path, report: Report) -> Page | None:
 
     if "sources" in data and data["sources"] is not None:
         _check_sources(data["sources"], path, report)
+    if "images" in data and data["images"] is not None:
+        _check_images(data["images"], path, report)
 
     if not body.strip():
         report.fail(path, "body", "body must not be empty — write markdown under the frontmatter")

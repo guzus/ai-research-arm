@@ -42,6 +42,8 @@ The ARA wiki is stricter than baseline OKF:
 - It has exactly three canonical concept types: `entity`, `concept`, `theme`.
 - Every page carries stable `slug`, `title`, `description`, `created_at`, and
   `timestamp` fields.
+- Pages may carry an `images` gallery of visual depictions for the
+  topic/description; this is preserved as an ARA extension field.
 - Internal links use ARA wikilinks (`[[slug]]`, `[[slug|Label]]`) so the
   validator can resolve aliases and catch missing pages before publishing.
 - `scripts/check_wiki.py` remains the source validator for the maintained wiki.
@@ -77,6 +79,7 @@ and the export is deterministic from that source.
 | `aliases` | `aliases` | Preserved as an extension field for agent lookup. |
 | `created_at` | `created_at` | Preserved as an extension field. |
 | `sources` | `sources` | Preserved as an extension field. |
+| `images` | `images` | Preserved as an extension field. Each item has `url`, `alt`, and optional `caption`, `credit`, `source_url`. |
 
 ARA does not force `resource` on wiki pages because many pages describe abstract
 entities, concepts, or themes rather than a single underlying data asset.

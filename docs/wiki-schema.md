@@ -46,8 +46,9 @@ markdown with a YAML frontmatter block defining the structured fields, followed
 by a non-empty free-form body.
 
 `index.json` is a **generated artifact**, not hand-authored: `scripts/build_wiki_index.py`
-rebuilds it from the pages (page metadata, the slug∪alias resolver, the backlink
-graph, and recent log entries) and the dashboard reads it directly. It is
+rebuilds it from the pages (page metadata including optional `images`, the
+slug∪alias resolver, the backlink graph, and recent log entries) and the
+dashboard reads it directly. It is
 committed so the dashboard build (`dashboard/scripts/prebuild.mjs`) just copies
 it — no page parsing happens in the browser or at Vercel build time. Regenerate
 it whenever pages change (`uv run python scripts/build_wiki_index.py`); CI's
@@ -72,6 +73,12 @@ timestamp: 2026-05-24T00:00:00Z    # required; ISO 8601 timestamp (>= created_at
 sources:                           # optional; list of mappings, each with a title (req)
   - {title: "ARA daily digest 2026-05-24", path: research/digest/2026-05-24-digest.md}
   - {title: "Nebius Q1 2026 results", url: "https://example.com/nebius-q1", date: 2026-05-20}
+images:                            # optional; list of visual depictions for the page topic
+  - url: "https://example.com/nebius-gpu-cluster.jpg"
+    alt: "Nebius GPU cloud data-center hardware used to illustrate the neocloud topic."
+    caption: "Illustrative visual for Nebius as an AI-cloud provider."
+    credit: "Nebius"
+    source_url: "https://example.com/nebius-media"
 ---
 
 Body in markdown — non-empty. See "[[link]] convention" below.
@@ -90,9 +97,33 @@ Field reference:
 | `created_at` | yes | date | ISO `YYYY-MM-DD`. |
 | `timestamp` | yes | datetime | OKF last-meaningful-change timestamp; use ISO 8601 UTC (`YYYY-MM-DDT00:00:00Z` for date-granular updates); must be `>= created_at`. |
 | `sources` | no | list[map] | Each item is a mapping with `title` (req) and optional `url` (http(s)), `path` (repo-relative), `date` (ISO). No other keys. |
+| `images` | no | list[map] | Visual depictions for the page topic/description. Each item has `url` (req), `alt` (req), and optional `caption`, `credit`, `source_url`. No other keys. |
 
 Both flow style (`aliases: [a, b]`, `sources: - {title: ...}`) and block style
 parse identically under `yaml.safe_load`; either is accepted.
+
+### `images`
+
+`images` is an optional gallery field for visuals that directly depict the page
+topic, product, company, model, architecture, or theme described by `title` and
+`description`. Use multiple items when several images clarify different aspects
+of the subject (for example product UI, hardware, benchmark chart, and company
+logo), not as decorative filler. The first image is treated as the primary share
+image by downstream renderers.
+
+Image item schema:
+
+| Key | Req? | Type | Notes |
+|---|---|---|---|
+| `url` | yes | string | `http(s)://...` or a site-absolute `/path`; remote/local SVG is not allowed. |
+| `alt` | yes | string | Single-line accessible description of what the image depicts. It should be specific to the page topic/description. |
+| `caption` | no | string | Single-line display caption. |
+| `credit` | no | string | Single-line attribution/credit text. |
+| `source_url` | no | string | `http(s)://...` source or credit link. |
+
+Images are presentation metadata, not evidence. Keep factual citations in
+`sources` and the body. If an image is generated or illustrative, say that in
+the `caption` or `credit` rather than implying it is documentary evidence.
 
 After the closing `---`, the body is free-form markdown and **must be
 non-empty**. Use it for the narrative, "why it matters", open questions, and
@@ -230,6 +261,8 @@ On each daily run:
    - Add any new alternate names to `aliases` (this keeps future matching and
      wikilink resolution working).
    - Add new citations to `sources`.
+   - Add or refine `images` only when a visual directly clarifies the page topic
+     or description; keep weak/decorative images out.
    - Add new cross-links (`[[...]]`) to other pages the update touches.
    - Bump `timestamp` to the ingested date as `YYYY-MM-DDT00:00:00Z`. **Do not** change `slug` or `created_at`.
 
@@ -240,6 +273,8 @@ On each daily run:
    - Set `created_at = today` and `timestamp = <today>T00:00:00Z`.
    - Write a non-empty body with at least the "why it matters" framing and
      source citations, and cross-link it to related pages.
+   - Optionally add `images` when there are high-quality visuals that directly
+     depict the subject. Omit the field when no strong image is available.
    - Add it to `index.md` under the right section.
 
 6. **Cross-link, don't silo.** When you create or update a page, link the
@@ -284,7 +319,7 @@ consistency. Exit 0 on success, exit 1 on any failure with `FAIL <relpath>:
 Hard-fail checks:
 
 - Frontmatter schema: required fields present and correctly typed; `sources`
-  mappings well-formed; `description` single-line.
+  and `images` mappings well-formed; `description` single-line.
 - Slug: matches the pattern, equals the filename stem, globally unique; aliases
   don't collide (the resolver namespace is slugs ∪ aliases).
 - `type`: in the enum and matching the subdir.

@@ -11,6 +11,17 @@ sources:
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
   - {title: "ARA model ticket — NVIDIA GTC Taipei 2026", path: research/models/tickets/nvidia-gtc-taipei-2026-06.md}
+images:
+  - url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/NVIDIA_H100_%28%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan%29_007.png/1280px-NVIDIA_H100_%28%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan%29_007.png"
+    alt: "Close-up of an NVIDIA H100 accelerator used to depict NVIDIA's role in AI training and inference."
+    caption: "NVIDIA H100 hardware, the accelerator class at the center of the AI-capex buildout."
+    credit: "Geekerwan / Wikimedia Commons (CC BY 3.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:NVIDIA_H100_(%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan)_007.png"
+  - url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Nvidia_DGX_Station%2C_world%27s_most_powerful_desktop%2C_a_Supercomputer_at_the_office.webm/1280px--Nvidia_DGX_Station%2C_world%27s_most_powerful_desktop%2C_a_Supercomputer_at_the_office.webm.jpg"
+    alt: "NVIDIA DGX Station deskside AI supercomputer shown as an example of NVIDIA's local and datacenter AI systems."
+    caption: "DGX Station-class hardware, useful context for the page's deskside AI-supercomputer discussion."
+    credit: "Charbax / Wikimedia Commons (CC BY 3.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Nvidia_DGX_Station,_world%27s_most_powerful_desktop,_a_Supercomputer_at_the_office.webm"
 ---
 
 **NVIDIA** is the dominant supplier of AI training and inference accelerators —

@@ -22,7 +22,7 @@ index.json shape:
     {
       "pages": [
         {slug, title, type, tags, summary, created_at, updated_at,
-         file, aliases, outbound, inbound}
+         file, aliases, images?, outbound, inbound}
       ],
       "resolver": { "<name-or-alias lowercased>": "<slug>" },
       "recent_log": [ {date, op, summary} ]   # newest first
@@ -72,6 +72,7 @@ def _page_extra_fields(path: Path) -> dict[str, Any]:
         "description": str(data.get("description") or data.get("summary") or ""),
         "created_at": _isoformat(data.get("created_at")),
         "timestamp": _isoformat(data.get("timestamp") or data.get("updated_at")),
+        "images": cw.normalize_images(data.get("images")),
     }
 
 
@@ -117,23 +118,24 @@ def build_index(wiki_dir: Path) -> dict[str, Any]:
     page_docs: list[dict[str, Any]] = []
     for page in sorted(pages, key=lambda p: p.slug):
         extra = _page_extra_fields(page.path)
-        page_docs.append(
-            {
-                "slug": page.slug,
-                "title": page.title,
-                "type": page.type,
-                "tags": extra["tags"],
-                "summary": extra["summary"],
-                "description": extra["description"],
-                "created_at": extra["created_at"],
-                "updated_at": _isoformat(page.timestamp),
-                "timestamp": extra["timestamp"],
-                "file": str(page.path.relative_to(wiki_dir)),
-                "aliases": list(page.aliases),
-                "outbound": sorted(outbound[page.slug]),
-                "inbound": sorted(inbound[page.slug]),
-            }
-        )
+        doc = {
+            "slug": page.slug,
+            "title": page.title,
+            "type": page.type,
+            "tags": extra["tags"],
+            "summary": extra["summary"],
+            "description": extra["description"],
+            "created_at": extra["created_at"],
+            "updated_at": _isoformat(page.timestamp),
+            "timestamp": extra["timestamp"],
+            "file": str(page.path.relative_to(wiki_dir)),
+            "aliases": list(page.aliases),
+            "outbound": sorted(outbound[page.slug]),
+            "inbound": sorted(inbound[page.slug]),
+        }
+        if extra["images"]:
+            doc["images"] = extra["images"]
+        page_docs.append(doc)
 
     return {
         "pages": page_docs,

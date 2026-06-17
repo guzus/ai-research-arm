@@ -10,11 +10,11 @@ Usage:
 Prints ranked (slug, score, snippet). With --json, prints a JSON array.
 
 Scoring: Okapi BM25 over a per-page bag of tokens assembled from weighted
-fields — title + aliases (heaviest), tags, description, body — so a name match in
-the title beats a passing mention in the body. The corpus is tiny (~6 pages),
-so two BM25 quirks are handled explicitly: the IDF term is clamped to >= 0
-(otherwise terms appearing in >half the corpus become anti-signal), and field
-weighting is what makes ranking sensible at this scale.
+fields — title + aliases (heaviest), tags, description, image alt/caption text,
+body — so a name match in the title beats a passing mention in the body. The
+corpus is tiny (~6 pages), so two BM25 quirks are handled explicitly: the IDF
+term is clamped to >= 0 (otherwise terms appearing in >half the corpus become
+anti-signal), and field weighting is what makes ranking sensible at this scale.
 
 stdlib (math/re/collections) + yaml only.
 """
@@ -49,6 +49,7 @@ FIELD_WEIGHTS = {
     "aliases": 3,
     "tags": 2,
     "summary": 2,
+    "images": 1,
     "body": 1,
 }
 
@@ -115,11 +116,26 @@ def _field_text(data: dict, body: str) -> dict[str, str]:
             return " ".join(str(x) for x in v)
         return ""
 
+    def join_images() -> str:
+        v = data.get("images")
+        if not isinstance(v, list):
+            return ""
+        parts: list[str] = []
+        for item in v:
+            if not isinstance(item, dict):
+                continue
+            for key in ("alt", "caption", "credit"):
+                val = item.get(key)
+                if isinstance(val, str):
+                    parts.append(val)
+        return " ".join(parts)
+
     return {
         "title": str(data.get("title", "") or ""),
         "aliases": join_list("aliases"),
         "tags": join_list("tags"),
         "summary": str(data.get("description", data.get("summary", "")) or ""),
+        "images": join_images(),
         "body": _strip_fences(body),
     }
 

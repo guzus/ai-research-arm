@@ -125,7 +125,7 @@ def okf_frontmatter(data: dict[str, Any]) -> dict[str, Any]:
         "created_at": str(data["created_at"]),
         "timestamp": _date_to_timestamp(data["timestamp"]),
     }
-    for key in ("aliases", "tags", "sources"):
+    for key in ("aliases", "tags", "sources", "images"):
         if key in data and data[key]:
             out[key] = data[key]
     return out
