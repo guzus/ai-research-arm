@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-17
+
+TOP 5 PAPERS:
+• GSS-Transformer Hybrid (2606.16093) - parallel SSM+attention branches: matches PPL, +24% throughput, -40% memory at long context
+• Scaling LLM Reasoning from Minimal Labels (2606.16811) - lightweight verifier bootstraps reasoning RL from a handful of labels
+• ReSum (2606.13316) - summarization inside RL rollouts: +4% perf, -18.6% rollout length
+• The Self-Correction Illusion (2606.05976) - LLMs fix others' errors but not their own; self-correction is an attribution effect
+• MCBench (2606.05177) - safety benchmark where harm only emerges from cross-modal integration in omni models
+
+CATEGORIES: LM/NLP 3, CV/Multimodal 3, Agents/Reasoning 4, Safety 1, Other 1
+
+Full report on GitHub.
