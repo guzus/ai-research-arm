@@ -1834,8 +1834,8 @@ body.has-toc .section-nav { display: none; }
 .today-tldr ul { padding-left: 20px; margin: 0; }
 .today-tldr li {
   font-family: var(--font-serif);
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.2rem;
+  line-height: 1.45;
   margin-bottom: 8px;
 }
 
@@ -1913,7 +1913,7 @@ body.has-toc .section-nav { display: none; }
   .cal-dow { font-size: 0.64rem; }
   .shortcut-guide { display: none; }
   .today-tldr { padding: 14px 16px; margin-bottom: 18px; }
-  .today-tldr li { font-size: 0.95rem; }
+  .today-tldr li { font-size: 1.2rem; }
   .frontpage-fallback-note { margin: 10px 16px 0; font-size: 0.74rem; }
   .twitter-mindshare {
     margin-bottom: 22px;
