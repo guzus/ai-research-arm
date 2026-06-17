@@ -526,5 +526,5 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
   }
 
   const mindshareMap = renderTwitterMindshareMap(buildTwitterMindshare(mindshareCycles));
-  return '<div class="twitter-report">' + mindshareMap + renderInfoTimeline('twitter-info-timeline', 'Cycles', timelineItems) + cards.join('\n') + '</div>';
+  return '<div class="twitter-report">' + mindshareMap + renderInfoTimeline('twitter-info-timeline', 'Timeline', timelineItems) + cards.join('\n') + '</div>';
 }

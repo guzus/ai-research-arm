@@ -1055,7 +1055,7 @@ body:not(.tab-research) .controls { display: none; }
 
 .twitter-mindshare {
   max-width: 1040px;
-  margin: 0 auto 28px;
+  margin: 0 0 28px;
 }
 
 .twitter-mindshare-head {
@@ -1173,7 +1173,7 @@ body:not(.tab-research) .controls { display: none; }
 }
 
 .twitter-report > .info-timeline {
-  margin: 0 auto 24px;
+  margin: 0 0 24px;
 }
 
 .info-timeline-head {
