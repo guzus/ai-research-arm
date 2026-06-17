@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-17 19:44 UTC
+
+CYCLE: Thin window — one real launch (Grok Imagine Video 1.5); everything else carryover.
+
+TOP STORIES:
+• xAI ships Grok Imagine Video 1.5 — new image-to-video model, GA in API + consumer "Fast" tier (720p in ~25s) [✓]
+• Anthropic Fable 5 / Mythos 5 embargo — still no lift, no BIS PDF [✓]
+• Sarvam joins India's AI unicorns — $300M Series B (~$234M closed), ~$1.5B val, HCLTech-led [⚠]
+
+WATCH: Midjourney's first hardware reveal today, 6pm PT (~01:00 UTC Jun 18).
+
+Full update on GitHub.
