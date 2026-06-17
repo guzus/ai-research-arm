@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-timestamp: 2026-06-16T00:00:00Z
+timestamp: 2026-06-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
@@ -282,6 +283,26 @@ Four developments through May 2026 put Anthropic at the center of the field:
   Max usage limits**, alleging marketing fraud. Separately, *The Information* reported
   **[[openai]] + Anthropic staff have sold ~$14B in private shares**, easing pre-IPO
   liquidity pressure on both (ARA digest 2026-06-16).
+
+- **The Lutnick "Is Informed" letter goes public; SDK billing paused
+  (2026-06-17).** The export saga moved from "reported" to documented: the
+  full **BIS "Is Informed" letter** Commerce Secretary **Howard Lutnick**
+  sent **Dario Amodei** surfaced (obtained by Bloomberg). It invokes **ECRA
+  and EAR §744.22(b)** (the "military-intelligence end use" hook) to require
+  an **individually-validated license** to release [[claude-fable-5|Fable 5
+  or Mythos 5]] to *any* foreign person worldwide — including **"deemed
+  exports" to non-US persons inside the US**, which would wall off
+  Anthropic's own visa-holding staff from the models — under criminal/civil
+  penalty. An export-control lawyer reading the text argues the theory is
+  "probably vulnerable to legal/constitutional challenge" under the EAR's
+  published-information carve-out. **Both models remain offline as of June
+  17 with no restoration announced** (see [[claude-fable-5]] and
+  [[federal-ai-policy]]). Separately, Anthropic **paused its unpopular
+  token-based billing overhaul for the Claude Agent SDK** just as it was set
+  to take effect, amid the looming [[openai]] price war; and **Ramp
+  spend data suggests the government feud may actually be *boosting*
+  Claude's enterprise adoption** — a counter-signal to the IDC penetration
+  soft spot (ARA digest 2026-06-17).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

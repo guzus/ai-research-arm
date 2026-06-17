@@ -1,0 +1,13 @@
+Speaker 1: Tuesday, June seventeenth, twenty twenty-six.
+Speaker 2: [high_energy] SpaceX is buying Cursor — all stock, sixty billion dollars — and at the same time revealing that SpaceXAI is jointly training its own in-house model.
+Speaker 1: That deal values SpaceX around two point six to two point seven trillion dollars — the company briefly passed Amazon.
+Speaker 2: And the coding assistant market just got a whole lot more interesting overnight.
+Speaker 1: On the regulatory front, Anthropic's Fable five and Mythos five export embargo is now on record — the full BIS and Lutnick letter is public, and a license is required to release those models to any foreign person worldwide. Both remain offline.
+Speaker 2: That's a sweeping restriction — not just adversarial nations, any foreign person. [dramatic_pause] The models aren't even out yet and they're already embargoed.
+Speaker 1: Open source side — Z.ai shipped GLM five point two under MIT license with one million token context and day-zero support from vLLM, Notion, and Baseten. Microsoft is also reportedly eyeing a fine-tuned DeepSeek V four for Copilot.
+Speaker 2: That DeepSeek play would be a significant shift for Microsoft's enterprise AI stack.
+Speaker 1: Some quick numbers — leaked OpenAI financials show twenty twenty-five revenue at [emphasis]thirteen billion dollars[/emphasis] against [emphasis]nineteen billion in R&D spending[/emphasis]. They are burning billions at scale.
+Speaker 2: And GPT five point six is already being called a meaningful leap, with signals pointing to under a sixty-day cadence after five point five. The pace is not slowing.
+Speaker 1: Hacker News is reflecting the mood — "Running local models is good now" hit seven hundred eighty-five points, and the SpaceX slash Cursor thread crossed eleven hundred comments.
+Speaker 2: That local-models thread tells you everything about where developer sentiment is heading right now.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.

@@ -110,6 +110,7 @@
         "claude-fable-5",
         "cognition-ai",
         "coreweave",
+        "cursor",
         "deepseek",
         "dell",
         "federal-ai-policy",
@@ -132,6 +133,7 @@
         "california-ai-regulation",
         "cognition-ai",
         "coreweave",
+        "cursor",
         "deepseek",
         "dell",
         "federal-ai-policy",
@@ -201,8 +203,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-16",
-      "timestamp": "2026-06-16T00:00:00Z",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -241,6 +243,7 @@
         "claude-fable-5",
         "claude-opus-4-8",
         "cognition-ai",
+        "cursor",
         "dynamic-workflows",
         "federal-ai-policy",
         "figure-ai",
@@ -487,7 +490,8 @@
         "agentic-ai-security",
         "anthropic",
         "claude-fable-5",
-        "dynamic-workflows"
+        "dynamic-workflows",
+        "zhipu-glm-5-2"
       ]
     },
     {
@@ -557,6 +561,42 @@
         "nebius",
         "neocloud",
         "nvidia"
+      ]
+    },
+    {
+      "slug": "cursor",
+      "title": "Cursor (Anysphere)",
+      "type": "entity",
+      "tags": [
+        "ai-coding",
+        "ide",
+        "acquisition",
+        "agentic-coding",
+        "capital-markets"
+      ],
+      "summary": "AI coding tool / IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close); the two had been jointly training a from-scratch \"SpaceXAI\" model.",
+      "description": "AI coding tool / IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close); the two had been jointly training a from-scratch \"SpaceXAI\" model.",
+      "created_at": "2026-06-17",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
+      "file": "entities/cursor.md",
+      "aliases": [
+        "Cursor",
+        "Anysphere",
+        "@cursor_ai",
+        "Cursor AI",
+        "SpaceXAI"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "openai",
+        "spacex",
+        "xai"
+      ],
+      "inbound": [
+        "ai-capex",
+        "spacex"
       ]
     },
     {
@@ -689,8 +729,8 @@
       "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "description": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-16",
-      "timestamp": "2026-06-16T00:00:00Z",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -707,7 +747,8 @@
         "anthropic",
         "california-ai-regulation",
         "claude-fable-5",
-        "openai"
+        "openai",
+        "xai"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -1234,8 +1275,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-15",
-      "timestamp": "2026-06-15T00:00:00Z",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -1262,6 +1303,7 @@
         "broadcom",
         "california-ai-regulation",
         "claude-fable-5",
+        "cursor",
         "federal-ai-policy",
         "figure-ai",
         "meta",
@@ -1434,8 +1476,8 @@
       "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side.",
       "description": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-06-15",
-      "timestamp": "2026-06-15T00:00:00Z",
+      "updated_at": "2026-06-17",
+      "timestamp": "2026-06-17T00:00:00Z",
       "file": "entities/spacex.md",
       "aliases": [
         "SpaceX",
@@ -1447,6 +1489,7 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "cursor",
         "deepseek",
         "openai",
         "xai"
@@ -1454,6 +1497,7 @@
       "inbound": [
         "ai-capex",
         "anthropic",
+        "cursor",
         "deepseek",
         "xai"
       ]
@@ -1493,6 +1537,8 @@
       "inbound": [
         "ai-capex",
         "anthropic",
+        "cursor",
+        "federal-ai-policy",
         "spacex"
       ]
     },
@@ -1538,8 +1584,8 @@
         "long-context",
         "frontier-model"
       ],
-      "summary": "Zhipu AI / Z.ai flagship model deployed in the GLM Coding Plan with 1M context and MIT-licensed open weights promised; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
-      "description": "Zhipu AI / Z.ai flagship model deployed in the GLM Coding Plan with 1M context and MIT-licensed open weights promised; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
+      "summary": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
+      "description": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
       "created_at": "2026-06-17",
       "updated_at": "2026-06-17",
       "timestamp": "2026-06-17T00:00:00Z",
@@ -1553,6 +1599,7 @@
       ],
       "outbound": [
         "claude-fable-5",
+        "claude-opus-4-8",
         "deepseek",
         "gemma-4",
         "minimax-m3",
@@ -1572,6 +1619,7 @@
     "30-day pre-release access": "federal-ai-policy",
     "@adcock_brett": "figure-ai",
     "@anthropicai": "anthropic",
+    "@cursor_ai": "cursor",
     "@michaeldell": "dell",
     "@microsoft": "microsoft",
     "@nvidia": "nvidia",
@@ -1606,6 +1654,7 @@
     "andy jassy": "amazon",
     "anthropic": "anthropic",
     "anthropic pbc": "anthropic",
+    "anysphere": "cursor",
     "apple": "apple",
     "apple inc.": "apple",
     "apple intelligence": "apple",
@@ -1641,6 +1690,8 @@
     "coreweave, inc.": "coreweave",
     "crm": "salesforce",
     "crwv": "coreweave",
+    "cursor": "cursor",
+    "cursor ai": "cursor",
     "deepseek": "deepseek",
     "deepseek ai": "deepseek",
     "deepseek v4 pro": "deepseek",
@@ -1757,6 +1808,7 @@
     "siri": "apple",
     "space exploration technologies": "spacex",
     "spacex": "spacex",
+    "spacexai": "cursor",
     "spark agent": "gemini-spark",
     "spcx": "spacex",
     "starlink": "spacex",
@@ -1774,6 +1826,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-17",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-17 digest (separate from the morning OKF-backfill pass). Created 1 (cursor — SpaceX's $60B all-stock acquisition of Anysphere + captive \"SpaceXAI\" model). Updated 8 (spacex — $60B Cursor buy + SpaceXAI model + briefly passing Amazon at ~$2.6-2.7T; anthropic — full BIS \"Is Informed\" Lutnick letter public (EAR §744.22(b), worldwide foreign-person license, deemed-export wall) + SDK token-billing pause + Ramp adoption-boost signal; federal-ai-policy — documented Lutnick letter + UK Starmer carveout denied/\"completely illogical\" + Carney overreliance warning + G7 Évian three-CEO first + DOJ xAI gas turbines + Pentagon genAI; claude-fable-5 — order documented, still dark June 17, deemed-export staff wall; zhipu-glm-5-2 — GLM-5.2 shipped under MIT (1M ctx, two effort levels, day-0 vLLM/Notion/Baseten, 46.2% DeepSWE); open-weights — GLM-5.2 MIT ship + Microsoft evaluating fine-tuned DeepSeek V4 for Copilot Cowork + FeynRL \"open weights are not enough\" + local-models HN; openai — leaked 2025 financials ($13.07B rev vs $19.18B R&D) + GPT-5.6 \"meaningful leap\" June signal + Codex CDP/computer-use/Chronicle + Deployment Simulation framework; ai-capex — SpaceX $60B Cursor all-stock buy + ~$2.6-2.7T valuation + leaked OpenAI cost side ($13.07B rev vs $19.18B R&D))."
+    },
     {
       "date": "2026-06-17",
       "op": "ingest",

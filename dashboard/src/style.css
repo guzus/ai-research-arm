@@ -32,9 +32,10 @@
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
   --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-serif: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --font: var(--font-serif);
+  --font-mono: var(--font-serif);
+  --nav-font-size: 0.82rem;
   --page-max: 1180px;
   --page-gutter: clamp(18px, 4vw, 64px);
   --card-pad-x: clamp(18px, 3vw, 32px);
@@ -72,9 +73,16 @@ body {
   background: var(--bg-secondary);
   color: var(--text);
   line-height: 1.6;
-  letter-spacing: -0.022em;  /* tight tracking overall for faster reading */
+  letter-spacing: -0.012em;  /* subtle editorial tracking, shared with the design prototypes */
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
 /* ── Scrollbar ─────────────────────────────────────── */
@@ -189,6 +197,7 @@ body {
   border-radius: 8px;
   background: var(--bg);
   color: var(--text-secondary);
+  font-size: var(--nav-font-size);
   cursor: pointer;
   transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
 }
@@ -250,7 +259,7 @@ body {
 }
 
 .header-link {
-  font-size: 0.78rem;
+  font-size: var(--nav-font-size);
   color: var(--text-tertiary);
   text-decoration: none;
   display: flex;
@@ -266,6 +275,7 @@ body {
 /* ── Tabs ─────────────────────────────────────────── */
 .tabs {
   display: flex;
+  align-items: center;
   gap: 6px;
   margin-bottom: 16px;
   overflow-x: auto;
@@ -275,11 +285,14 @@ body {
 
 .tabs::-webkit-scrollbar { display: none; }
 
-.tab { flex-shrink: 0; }
+.tab,
+.tabs .brand-search {
+  flex-shrink: 0;
+}
 
 /* Fade the right edge on narrow viewports so users can tell the tab strip
  * scrolls horizontally — without a scrollbar (hidden above) there's no
- * other affordance and the rightmost tab (Research) was getting cut off. */
+ * other affordance and the rightmost controls can get cut off. */
 @media (max-width: 640px) {
   .header-top {
     align-items: flex-start;
@@ -306,7 +319,7 @@ body {
   padding: 6px 18px;
   border-radius: 20px;
   font-family: var(--font);
-  font-size: 0.82rem;
+  font-size: var(--nav-font-size);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
@@ -673,14 +686,14 @@ body:not(.tab-research) .controls { display: none; }
 }
 
 .cal-coverage {
-  font-size: 0.78rem;
+  font-size: var(--nav-font-size);
   font-weight: 500;
   color: var(--text-tertiary);
   margin-left: 2px;
 }
 
 .cal-header-label {
-  font-size: 0.88rem;
+  font-size: var(--nav-font-size);
   font-weight: 600;
   color: var(--text);
   user-select: none;
@@ -862,7 +875,7 @@ body:not(.tab-research) .controls { display: none; }
   font-family: var(--font-serif);
   font-size: 1.1rem;
   line-height: 1.85;
-  letter-spacing: 0;
+  letter-spacing: -0.012em;
   color: var(--text);
 }
 

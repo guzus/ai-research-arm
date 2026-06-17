@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-06-17 04:21 UTC
+
+CYCLE: Open-weight China is the through-line — GLM-5.2 ships, Microsoft eyes DeepSeek.
+
+TOP STORIES:
+• Z.ai ships GLM-5.2 as MIT open weights — 1M context, day-0 vLLM/Notion/Baseten support [✓]
+• Microsoft reportedly fine-tuned a DeepSeek variant, weighing it as a cheaper Copilot Cowork engine [⚠]
+
+ALSO: Anthropic Fable 5 / Mythos 5 embargo unchanged (still June 13 directive, no new primary doc).
+
+WATCH: Neutral third-party benchmarks (Artificial Analysis/Epoch) to confirm or deflate GLM-5.2's "frontier" claim.
+
+Full update on GitHub.

@@ -6,8 +6,9 @@ aliases: [SpaceX, "@SpaceX", SPCX, "Space Exploration Technologies", Starlink]
 tags: [ipo, capital-markets, ai-infrastructure, space, public-listing]
 description: "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side."
 created_at: 2026-06-05
-timestamp: 2026-06-15T00:00:00Z
+timestamp: 2026-06-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
@@ -82,6 +83,21 @@ frontier labs (the Anthropic–SpaceX "Colossus" datacenter arrangement).
   net worth** (treat the headline net-worth number as promotional). The
   Anthropic-side deals dovetail with Anthropic's own-servers pivot — see
   [[anthropic]] and [[ai-capex]] (ARA digest 2026-06-15).
+
+- **$60B Cursor acquisition + a captive model; briefly passes Amazon
+  (2026-06-17).** Two days after the IPO, SpaceX's verified account said it
+  "exercised the option to acquire @cursor_ai in an all-stock transaction
+  with the goal of building the world's most useful AI models," and
+  disclosed that **SpaceXAI has spent months jointly training a from-scratch
+  model with [[cursor|Cursor]]**, slated for release soon. Reuters/TechCrunch/
+  The Verge/Ars/The Decoder carried the **$60B all-stock** figure and a
+  **Q3-2026 close** — turning freshly-public SPCX equity into M&A currency
+  and giving [[xai|Musk's stack]] a route to stop depending on rivals'
+  models (vs [[anthropic]]'s Claude Code and [[openai]]'s Codex). Separately,
+  SpaceX's valuation **ballooned ~$1T since Friday's debut, briefly passing
+  Amazon at ~$2.6–2.7T** — one of the world's most valuable companies. The
+  $60B figure still rests on an aggregator-relayed SEC reference, not a
+  directly-read filing. See [[cursor]] and [[ai-capex]] (ARA digest 2026-06-17).
 
 ## Open questions
 

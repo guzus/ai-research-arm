@@ -1,0 +1,13 @@
+AI News - 2026-06-17
+
+TOP STORIES:
+• G7 Évian Summit (Jun 15-17): first G7 with all 3 frontier-lab CEOs — Altman, Amodei & Hassabis — AI a primary agenda track
+• GPT-5.6 surfaces: OpenAI chief scientist calls it a "meaningful leap," June launch nearing (no specs yet)
+• Anthropic Fable 5 / Mythos 5 still OFFLINE as of Jun 17 — no restoration announced (prior coverage)
+
+KEY NUMBERS:
+• 3 rival AI lab CEOs at one G7 for the first time
+• GPT-5.6 cadence <60 days after GPT-5.5
+• Gemini 3.5 Pro & Grok 5 still unshipped — June 30 cliff
+
+Full report on GitHub.

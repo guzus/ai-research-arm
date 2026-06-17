@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.
 created_at: 2026-06-03
-timestamp: 2026-06-16T00:00:00Z
+timestamp: 2026-06-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
@@ -186,6 +187,42 @@ footing for the first time in the cycle.
   issues" — explicitly seeking to **avoid Anthropic's fate**, the clearest sign the
   precedent is already shaping rival labs' behavior (ARA digest 2026-06-16). See
   [[agentic-ai-security]].
+
+- **The Lutnick letter goes public — and allies get refused (2026-06-17).**
+  The export control on [[anthropic]]'s [[claude-fable-5|Fable 5 / Mythos 5]]
+  moved from "reported" to **documented**: the full **BIS "Is Informed"
+  letter** (signed "Howard W. Lutnick, Secretary of Commerce," obtained by
+  Bloomberg) invokes **ECRA and EAR §744.22(b)** to require a license to
+  export, reexport or transfer either model **"to all destinations worldwide
+  and to all 'foreign persons'… wherever located,"** with non-compliance
+  triggering "prompt criminal and civil penalties." The **"deemed export"**
+  reading would wall off Anthropic's own visa-holding staff; an
+  export-control lawyer argues the theory is **"probably vulnerable to
+  legal/constitutional challenge"** under the EAR's published-information
+  carve-out. **Allied pushback sharpened:** UK PM **Keir Starmer** reportedly
+  requested a carveout for British nationals/companies and was **denied**, a
+  White House official calling an exemption even for a G7 ally **"completely
+  illogical"** (single-outlet NY Post, credible-but-uncorroborated); Canadian
+  PM **Mark Carney** framed the episode as a warning against overreliance on a
+  few American AI providers. The models remain offline (ARA digest 2026-06-17).
+- **G7 Évian: first summit with all three frontier-lab CEOs (2026-06-17).**
+  The **G7 Évian Summit (June 15–17)** became the **first G7 attended by all
+  three frontier-lab CEOs** — **Altman ([[openai]]), Amodei ([[anthropic]]),
+  and Hassabis (Google DeepMind)** — with AI a primary agenda track, but it
+  **closed June 17 with no AI-specific communiqué** (a forum/posture signal,
+  not a new rule).
+- **DOJ defends xAI's gas turbines; Pentagon genAI (2026-06-17).** The DOJ
+  defended **[[xai]]'s unpermitted gas turbines** as a matter of "national,
+  economic, and energy security" in the NAACP Clean Air Act lawsuit, arguing
+  the military "needs xAI for war." Separately, the **Pentagon** boasted of
+  using generative AI (Gemini) to draft congressional reports in 5 hours vs.
+  200 manually, claiming **1.5M personnel using genAI tools** — the
+  procurement/national-security axis of federal AI policy advancing in
+  parallel with the export fight (ARA digest 2026-06-17).
+- **Regulatory clock (carries, 2026-06-17).** White House AI EO deliverables
+  due **July 2 / Aug 1**; **EU AI Act** full applicability **Aug 2**; **China
+  CAC** anthropomorphic-interaction measures **July 15**; **Colorado AI Act**
+  **June 30** (ARA digest 2026-06-17).
 
 ## Open questions
 

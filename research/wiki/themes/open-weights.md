@@ -8,6 +8,7 @@ description: The 2026 storyline of open-weight models closing on frontier capabi
 created_at: 2026-06-14
 timestamp: 2026-06-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
@@ -82,6 +83,26 @@ fragile and local weights look like insurance.
   multiple LLMs) trended on HN, a routing-layer answer to model fragmentation —
   echoing the multi-model-orchestration bet behind [[sakana-ai]]'s Marlin (ARA
   digest 2026-06-16).
+
+- **GLM-5.2 actually ships under MIT; a hyperscaler picks up open weights
+  (2026-06-17).** The "next week" promise landed: **[[zhipu-glm-5-2|GLM-5.2]]
+  shipped under an MIT license** — 1M context, two reasoning-effort levels,
+  same pricing as GLM-5.1, day-0 vLLM v0.23.0 / Notion / Baseten support —
+  the concrete open-weights anchor the [[claude-fable-5|Fable 5]] vacuum was
+  waiting on. And open weights moved up the value chain: **Microsoft is
+  reportedly evaluating a fine-tuned [[deepseek|DeepSeek V4]] as a cheaper
+  Copilot Cowork engine** (Axios) — a Western hyperscaler treating a Chinese
+  open-weight model as a production backend, the clearest sign the
+  cost-and-control logic of open weights is reaching incumbents. Meanwhile
+  HN's **"Running local models is good now"** (785 pts, Vicki Boykis) argued
+  local inference has matured into a practical default — the demand side
+  again (ARA digest 2026-06-17).
+- **"Open weights are not enough" gets a research artifact (2026-06-17).**
+  The movement's self-critique sharpened into a concrete call: **FeynRL's
+  "Open weights are not enough"** argues for **transparent RL post-training
+  infrastructure**, distinguishing "open weights" from "open process" — the
+  same weights-without-training-loop gap raised on 2026-06-16, now framed as
+  a tooling ask rather than just a complaint (ARA digest 2026-06-17).
 
 ## Open questions
 
