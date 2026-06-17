@@ -1209,12 +1209,12 @@ body:not(.tab-research) .controls { display: none; }
 /* ── Twitter Intelligence Wire ─────────────────────── */
 .twitter-report {
   --twitter-reading-size: 1rem;
-  max-width: 1280px;
+  max-width: var(--page-max);
   margin: 0 auto;
 }
 
 .twitter-mindshare {
-  max-width: 1040px;
+  max-width: 100%;
   margin: 0 0 28px;
 }
 
