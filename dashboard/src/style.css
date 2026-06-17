@@ -101,6 +101,10 @@ textarea {
   padding: 18px var(--page-gutter) 80px;
 }
 
+body.has-digest-player .app {
+  padding-bottom: 158px;
+}
+
 /* Keep the masthead from spreading on wide displays — brand and
  * GitHub link should sit close enough to feel like one block. */
 .header {
@@ -584,9 +588,165 @@ body:not(.tab-research) .controls { display: none; }
   color: var(--text-tertiary);
 }
 
-/* Audio digest: bare player, no card chrome / "Audio digest" label. */
-.today-audio { margin: 0 0 18px; }
-.today-audio audio { width: 100%; display: block; }
+/* Daily digest audio: inline affordance hands off to the persistent bar. */
+.today-audio {
+  max-width: var(--page-max);
+  margin: 0 auto 18px;
+}
+
+.today-audio-play {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+}
+
+.today-audio-play:hover {
+  border-color: var(--accent-warm);
+}
+
+.today-audio-play-icon,
+.digest-audio-toggle-icon {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  position: relative;
+}
+
+.today-audio-play-icon::before,
+.digest-audio-toggle-icon::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  border-left: 8px solid currentColor;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+.today-audio-play.is-playing .today-audio-play-icon::before,
+.digest-audio-toggle.is-playing .digest-audio-toggle-icon::before {
+  left: 8px;
+  top: 7px;
+  width: 10px;
+  height: 12px;
+  border: 0;
+  border-left: 3px solid currentColor;
+  border-right: 3px solid currentColor;
+}
+
+.today-audio-play-copy {
+  display: grid;
+  min-width: 0;
+  pointer-events: none;
+}
+
+.today-audio-play-label {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.today-audio-play-date {
+  color: var(--text-tertiary);
+  font-size: 0.78rem;
+}
+
+.digest-audio-bar {
+  position: fixed;
+  left: 50%;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 1300;
+  width: min(760px, calc(100vw - 28px));
+  transform: translateX(-50%);
+}
+
+.digest-audio-bar[hidden] {
+  display: none;
+}
+
+.digest-audio-shell {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  box-shadow: var(--shadow-lg);
+}
+
+.digest-audio-toggle,
+.digest-audio-close {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.digest-audio-toggle {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.digest-audio-title {
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.92rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.digest-audio-title:hover {
+  color: var(--accent-warm);
+}
+
+.digest-audio-time {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.digest-audio-progress {
+  grid-column: 2 / 4;
+  width: 100%;
+  accent-color: var(--accent-warm);
+}
+
+.digest-audio-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  color: var(--text-tertiary);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.digest-audio-close:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
 
 /* Tidy list margins inside callouts (e.g. Skeptic's corner) so bullets sit
  * close to the colored edge instead of deeply indented. */
@@ -1895,6 +2055,7 @@ body.has-toc .section-nav { display: none; }
     --card-pad-y: 16px;
   }
   .app { padding: 16px var(--page-gutter) 60px; }
+  body.has-digest-player .app { padding-bottom: 166px; }
   .header-top { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 8px; }
   .brand { flex: 1; min-width: 0; }
   .header-link-label { display: none; }
@@ -1914,6 +2075,32 @@ body.has-toc .section-nav { display: none; }
   .shortcut-guide { display: none; }
   .today-tldr { padding: 14px 16px; margin-bottom: 18px; }
   .today-tldr li { font-size: 1.2rem; }
+  .today-audio-play { padding: 11px 12px; }
+  .digest-audio-bar {
+    bottom: env(safe-area-inset-bottom);
+    width: 100vw;
+    transform: translateX(-50%);
+  }
+  .digest-audio-shell {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 8px 8px 0 0;
+  }
+  .digest-audio-time {
+    grid-column: 2 / 3;
+    font-size: 0.72rem;
+  }
+  .digest-audio-progress {
+    grid-column: 1 / -1;
+  }
+  .digest-audio-close {
+    grid-column: 3;
+    grid-row: 1;
+  }
   .frontpage-fallback-note { margin: 10px 16px 0; font-size: 0.74rem; }
   .twitter-mindshare {
     margin-bottom: 22px;

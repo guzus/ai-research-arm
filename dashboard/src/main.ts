@@ -247,6 +247,29 @@ const researchAudioState: ResearchAudioState = {
   utterance: null,
 };
 
+type DigestAudioState = {
+  date: string | null;
+  src: string | null;
+  title: string;
+  dismissedSrc: string | null;
+};
+
+const digestAudioState: DigestAudioState = {
+  date: null,
+  src: null,
+  title: 'Daily Digest',
+  dismissedSrc: null,
+};
+
+let digestAudioEl: HTMLAudioElement | null = null;
+let digestAudioBarEl: HTMLElement | null = null;
+let digestAudioPlayEl: HTMLButtonElement | null = null;
+let digestAudioTitleEl: HTMLButtonElement | null = null;
+let digestAudioTimeEl: HTMLElement | null = null;
+let digestAudioProgressEl: HTMLInputElement | null = null;
+let lastDigestAudioBarActivation = 0;
+let lastInlineDigestAudioActivation = 0;
+
 // ── DOM refs ──────────────────────────────────────────
 const content = document.getElementById('content')!;
 const calendarEl = document.getElementById('calendar')!;
@@ -823,7 +846,7 @@ function setSafeContent(
   // audio players), so they stay in the default allowlist; they are NOT
   // iframe-only.
   const addTags = ['mark', 'article', 'figure', 'figcaption', 'audio', 'nav', 'section', 'details', 'summary'];
-  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
+  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -887,6 +910,255 @@ function formatAudioTime(seconds: number): string {
   const minutes = Math.floor(whole / 60);
   const secs = whole % 60;
   return `${minutes}:${String(secs).padStart(2, '0')}`;
+}
+
+function dateFromString(dateStr: string): Date | null {
+  const parts = dateStr.split('-');
+  if (parts.length !== 3) return null;
+  const date = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function digestAudioUrl(dateStr: string): string {
+  return `${AUDIO_BASE}/audio/${dateStr}-digest.mp3`;
+}
+
+function digestAudioTitle(dateStr: string): string {
+  const date = dateFromString(dateStr);
+  return `Daily Digest · ${date ? displayDate(date) : dateStr}`;
+}
+
+function ensureDigestAudioPlayer(): HTMLAudioElement {
+  if (digestAudioEl) return digestAudioEl;
+
+  const bar = document.createElement('aside');
+  bar.id = 'digestAudioBar';
+  bar.className = 'digest-audio-bar';
+  bar.hidden = true;
+  bar.setAttribute('aria-label', 'Daily digest audio player');
+  bar.innerHTML = [
+    '<audio preload="metadata"></audio>',
+    '<div class="digest-audio-shell">',
+    '  <button class="digest-audio-toggle" type="button" data-digest-audio-toggle aria-label="Play digest audio" aria-pressed="false">',
+    '    <span class="digest-audio-toggle-icon" aria-hidden="true"></span>',
+    '  </button>',
+    '  <button class="digest-audio-title" type="button" data-digest-audio-title>Daily Digest</button>',
+    '  <span class="digest-audio-time" data-digest-audio-time aria-live="off">0:00 / --:--</span>',
+    '  <input class="digest-audio-progress" data-digest-audio-progress type="range" min="0" max="1000" value="0" step="1" aria-label="Seek digest audio">',
+    '  <button class="digest-audio-close" type="button" data-digest-audio-close aria-label="Close audio player">&times;</button>',
+    '</div>',
+  ].join('\n');
+  document.body.appendChild(bar);
+
+  digestAudioBarEl = bar;
+  digestAudioEl = bar.querySelector('audio');
+  digestAudioPlayEl = bar.querySelector('[data-digest-audio-toggle]');
+  digestAudioTitleEl = bar.querySelector('[data-digest-audio-title]');
+  digestAudioTimeEl = bar.querySelector('[data-digest-audio-time]');
+  digestAudioProgressEl = bar.querySelector('[data-digest-audio-progress]');
+
+  if (!digestAudioEl || !digestAudioPlayEl || !digestAudioTitleEl || !digestAudioTimeEl || !digestAudioProgressEl) {
+    throw new Error('Digest audio player failed to initialize');
+  }
+
+  const activateBarToggle = (event: Event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const now = Date.now();
+    if (now - lastDigestAudioBarActivation < 250) return;
+    lastDigestAudioBarActivation = now;
+    void toggleDigestAudioPlayback();
+  };
+  digestAudioPlayEl.addEventListener('pointerup', activateBarToggle);
+  digestAudioPlayEl.addEventListener('click', activateBarToggle);
+  digestAudioPlayEl.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    activateBarToggle(event);
+  });
+  digestAudioTitleEl.addEventListener('click', navigateToDigestAudioDate);
+  digestAudioProgressEl.addEventListener('input', () => {
+    const audio = ensureDigestAudioPlayer();
+    const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+    if (duration <= 0) return;
+    const next = Number(digestAudioProgressEl?.value || 0) / 1000;
+    audio.currentTime = duration * Math.max(0, Math.min(1, next));
+  });
+  bar.querySelector('[data-digest-audio-close]')?.addEventListener('click', closeDigestAudioPlayer);
+
+  digestAudioEl.addEventListener('loadedmetadata', updateDigestAudioUi);
+  digestAudioEl.addEventListener('durationchange', updateDigestAudioUi);
+  digestAudioEl.addEventListener('timeupdate', updateDigestAudioUi);
+  digestAudioEl.addEventListener('play', updateDigestAudioUi);
+  digestAudioEl.addEventListener('pause', updateDigestAudioUi);
+  digestAudioEl.addEventListener('ended', () => {
+    hideDigestAudioPlayer();
+    updateDigestAudioUi();
+  });
+  digestAudioEl.addEventListener('error', () => {
+    if (digestAudioTitleEl) digestAudioTitleEl.textContent = `${digestAudioState.title} · unavailable`;
+    updateDigestAudioUi();
+  });
+
+  return digestAudioEl;
+}
+
+function showDigestAudioPlayer(): void {
+  ensureDigestAudioPlayer();
+  if (digestAudioBarEl) digestAudioBarEl.hidden = false;
+  document.body.classList.add('has-digest-player');
+}
+
+function hideDigestAudioPlayer(): void {
+  if (digestAudioBarEl) digestAudioBarEl.hidden = true;
+  document.body.classList.remove('has-digest-player');
+}
+
+function setDigestAudioTrack(dateStr: string, autoplay: boolean): void {
+  const audio = ensureDigestAudioPlayer();
+  const src = digestAudioUrl(dateStr);
+  const changed = digestAudioState.src !== src;
+  digestAudioState.date = dateStr;
+  digestAudioState.src = src;
+  digestAudioState.title = digestAudioTitle(dateStr);
+  digestAudioState.dismissedSrc = null;
+  if (changed) {
+    audio.src = src;
+    audio.currentTime = 0;
+    audio.load();
+  }
+  showDigestAudioPlayer();
+  updateDigestAudioUi();
+  if (autoplay) {
+    stopResearchAudio();
+    void audio.play().catch(() => {
+      updateDigestAudioUi();
+    });
+  }
+}
+
+function syncDigestAudioForDate(dateStr: string): void {
+  if (!manifest?.audio.includes(dateStr)) {
+    updateDigestAudioUi();
+    return;
+  }
+  const audio = ensureDigestAudioPlayer();
+  const src = digestAudioUrl(dateStr);
+  const hasActivePlayback = Boolean(digestAudioState.src) && !audio.paused && !audio.ended;
+  if (hasActivePlayback && digestAudioState.src !== src) {
+    updateDigestAudioUi();
+    return;
+  }
+  if (digestAudioState.src !== src) {
+    if (digestAudioState.dismissedSrc === src) {
+      updateDigestAudioUi();
+      return;
+    }
+    digestAudioState.date = dateStr;
+    digestAudioState.src = src;
+    digestAudioState.title = digestAudioTitle(dateStr);
+    audio.src = src;
+    audio.load();
+  }
+  if (digestAudioState.dismissedSrc !== src) showDigestAudioPlayer();
+  updateDigestAudioUi();
+}
+
+async function toggleDigestAudioPlayback(dateStr: string | null = digestAudioState.date): Promise<void> {
+  if (!dateStr) return;
+  const audio = ensureDigestAudioPlayer();
+  const src = digestAudioUrl(dateStr);
+  if (digestAudioState.src !== src) {
+    setDigestAudioTrack(dateStr, true);
+    return;
+  }
+  digestAudioState.dismissedSrc = null;
+  showDigestAudioPlayer();
+  if (audio.paused || audio.ended) {
+    stopResearchAudio();
+    try {
+      await audio.play();
+    } catch {
+      updateDigestAudioUi();
+    }
+  } else {
+    audio.pause();
+  }
+  updateDigestAudioUi();
+}
+
+function closeDigestAudioPlayer(): void {
+  const audio = ensureDigestAudioPlayer();
+  if (digestAudioState.src) digestAudioState.dismissedSrc = digestAudioState.src;
+  audio.pause();
+  hideDigestAudioPlayer();
+  updateDigestAudioUi();
+}
+
+function navigateToDigestAudioDate(): void {
+  if (!digestAudioState.date) return;
+  const date = dateFromString(digestAudioState.date);
+  if (!date) return;
+  currentDate = date;
+  activeTab = 'today';
+  selectedSlug = null;
+  calendarMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+  syncTabUi();
+  probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+  load();
+}
+
+function updateDigestAudioUi(): void {
+  const audio = digestAudioEl;
+  const src = digestAudioState.src;
+  const isPlaying = Boolean(audio && src && !audio.paused && !audio.ended);
+  const duration = audio && Number.isFinite(audio.duration) ? audio.duration : 0;
+  const current = audio ? audio.currentTime : 0;
+  const pct = duration > 0 ? Math.round((current / duration) * 1000) : 0;
+  const label = isPlaying ? 'Pause digest audio' : 'Play digest audio';
+
+  if (digestAudioPlayEl) {
+    digestAudioPlayEl.setAttribute('aria-label', label);
+    digestAudioPlayEl.setAttribute('aria-pressed', String(isPlaying));
+    digestAudioPlayEl.classList.toggle('is-playing', isPlaying);
+  }
+  if (digestAudioTitleEl) digestAudioTitleEl.textContent = digestAudioState.title;
+  if (digestAudioTimeEl) {
+    digestAudioTimeEl.textContent = `${formatAudioTime(current)} / ${duration > 0 ? formatAudioTime(duration) : '--:--'}`;
+  }
+  if (digestAudioProgressEl) {
+    digestAudioProgressEl.value = String(Math.max(0, Math.min(1000, pct)));
+    digestAudioProgressEl.disabled = duration <= 0;
+    digestAudioProgressEl.style.setProperty('--audio-progress', `${Math.max(0, Math.min(100, pct / 10))}%`);
+  }
+
+  content.querySelectorAll<HTMLButtonElement>('[data-digest-audio-play]').forEach((button) => {
+    if (button.dataset.digestAudioBound !== 'true') {
+      button.dataset.digestAudioBound = 'true';
+      const activate = (event: Event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const now = Date.now();
+        if (now - lastInlineDigestAudioActivation < 250) return;
+        lastInlineDigestAudioActivation = now;
+        void toggleDigestAudioPlayback(button.dataset.audioDate || fmtDate(currentDate));
+      };
+      button.addEventListener('pointerup', activate);
+      button.addEventListener('click', activate);
+      button.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        activate(event);
+      });
+    }
+    const buttonDate = button.dataset.audioDate || null;
+    const isCurrent = buttonDate ? digestAudioState.src === digestAudioUrl(buttonDate) : false;
+    const buttonPlaying = isCurrent && isPlaying;
+    button.classList.toggle('is-playing', buttonPlaying);
+    button.setAttribute('aria-pressed', String(buttonPlaying));
+    const buttonLabel = button.querySelector<HTMLElement>('[data-digest-audio-label]');
+    if (buttonLabel) {
+      buttonLabel.textContent = buttonPlaying ? 'Pause digest audio' : isCurrent && audio && audio.currentTime > 0 && !audio.ended ? 'Resume digest audio' : 'Play digest audio';
+    }
+  });
 }
 
 function updateResearchFileAudioUi(): void {
@@ -2453,12 +2725,12 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     md,
     dateStr,
     fallbackTitle: displayDate(currentDate),
-    audioBase: AUDIO_BASE,
     audioDates: manifest?.audio || [],
     searchTerm,
     frontPageCardHtml,
   }));
   if (frontPage) enhanceNewspaper();
+  syncDigestAudioForDate(dateStr);
   void wikifyContent(content);
 }
 
@@ -4854,6 +5126,10 @@ async function load(): Promise<void> {
   showLoading();
 
   try {
+    if (!manifest) {
+      await loadManifest();
+      if (requestId !== loadRequestId) return;
+    }
     if (activeTab === 'focusReader') {
       const result = await withTimeout(loadFocusReaderData(controller.signal), LOAD_TIMEOUT_MS, controller);
       if (requestId !== loadRequestId) return;
@@ -5047,6 +5323,9 @@ async function load(): Promise<void> {
       }
     }
 
+    if (activeTab !== 'research' && activeTab !== 'wiki' && activeTab !== 'focusReader') {
+      syncDigestAudioForDate(dateStr);
+    }
     renderCalendar();
     currentSection = 0;
     updateNavCounter();

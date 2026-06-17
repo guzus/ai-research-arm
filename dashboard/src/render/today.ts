@@ -11,7 +11,6 @@ export type TodayRenderOptions = {
   md: string;
   dateStr: string;
   fallbackTitle: string;
-  audioBase: string;
   audioDates: string[];
   searchTerm: string;
   frontPageCardHtml: string | null;
@@ -35,13 +34,16 @@ export function renderTodayHtml(options: TodayRenderOptions): string {
   const cards: string[] = [];
 
   if (options.audioDates.includes(options.dateStr)) {
-    const audioUrl = `${options.audioBase}/audio/${options.dateStr}-digest.mp3`;
     cards.push(
       [
         '<div class="today-audio">',
-        '  <audio controls preload="metadata" style="width:100%;" src="' + audioUrl + '">',
-        '    Your browser does not support the audio element.',
-        '  </audio>',
+        '  <button class="today-audio-play" type="button" data-digest-audio-play data-audio-date="' + escapeHtml(options.dateStr) + '" aria-pressed="false">',
+        '    <span class="today-audio-play-icon" aria-hidden="true"></span>',
+        '    <span class="today-audio-play-copy">',
+        '      <span class="today-audio-play-label" data-digest-audio-label>Play digest audio</span>',
+        '      <span class="today-audio-play-date">' + escapeHtml(options.fallbackTitle) + '</span>',
+        '    </span>',
+        '  </button>',
         '</div>',
       ].join('\n'),
     );
