@@ -124,7 +124,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --max-turns 60 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),WebSearch,Task,TodoWrite"
+            --model opus --max-turns 100 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),WebSearch,Task,TodoWrite"
           prompt: |
             You maintain a persistent set of model-release tickets. Each
             ticket tracks one shipping artifact (a model release, a
