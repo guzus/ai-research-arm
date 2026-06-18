@@ -2695,14 +2695,10 @@ function enhanceNewspaper(root: ParentNode = content): void {
 }
 
 function renderFrontPage(frontPage: FrontPageAsset): void {
-  const noteHtml = frontPage.fallback
-    ? '  <div class="frontpage-fallback-note">Today’s front page auto-generates at 00:30 UTC. Showing ' + escapeHtml(frontPage.fallback) + ' instead.</div>'
-    : '';
   setSafeContent(
     content,
     [
       '<div class="content-card frontpage-card">',
-      noteHtml,
       frontPageBodyHtml(frontPage),
       '</div>',
     ].join('\n'),
@@ -2714,12 +2710,8 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
   const dateStr = fmtDate(currentDate);
   let frontPageCardHtml: string | null = null;
   if (frontPage) {
-    const noteHtml = frontPage.fallback
-      ? '  <div class="frontpage-fallback-note">Today’s front page auto-generates at 00:30 UTC. Showing ' + escapeHtml(frontPage.fallback) + ' instead.</div>'
-      : '';
     frontPageCardHtml = [
       '<div class="content-card frontpage-card today-frontpage-card">',
-      noteHtml,
       frontPageBodyHtml(frontPage),
       '</div>',
     ].join('\n');
