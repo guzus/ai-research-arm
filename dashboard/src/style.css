@@ -486,7 +486,6 @@ body.tab-today .calendar {
   border-color: var(--accent);
 }
 body.tab-today .cal-header-label { color: var(--on-accent); }
-body.tab-today .cal-coverage,
 body.tab-today .cal-chevron { color: var(--on-accent); opacity: 0.75; }
 
 /* On phones, the nav becomes a newspaper-style control grid: date masthead,
@@ -537,18 +536,11 @@ body.tab-today .cal-chevron { color: var(--on-accent); opacity: 0.75; }
   }
 
   .cal-header-label,
-  .cal-coverage,
   .cal-chevron,
   body.tab-today .cal-header-label,
-  body.tab-today .cal-coverage,
   body.tab-today .cal-chevron {
     color: #ffffff;
     opacity: 1;
-  }
-
-  .cal-coverage {
-    margin-left: auto;
-    font-weight: 700;
   }
 
   .cal-chevron {
@@ -939,13 +931,6 @@ body:not(.tab-research) .controls { display: none; }
   font-size: 0.65rem;
   color: var(--text-tertiary);
   margin-left: 4px;
-}
-
-.cal-coverage {
-  font-size: var(--nav-font-size);
-  font-weight: 500;
-  color: var(--text-tertiary);
-  margin-left: 2px;
 }
 
 .cal-header-label {

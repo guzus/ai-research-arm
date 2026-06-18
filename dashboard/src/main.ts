@@ -695,10 +695,8 @@ function buildCalendarHtml(): string {
 
   const dows = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   const open = calendarEl.classList.contains('open');
-  const coverage = available.size;
-  const coverageHint = coverage > 0 ? ' · ' + coverage + (coverage === 1 ? ' day' : ' days') : '';
   let html = '<div class="cal-header" data-cal-toggle>';
-  html += '<span class="cal-header-label">' + monthLabel + '<span class="cal-coverage">' + coverageHint + '</span> <span class="cal-chevron">' + (open ? '&#9650;' : '&#9660;') + '</span></span>';
+  html += '<span class="cal-header-label">' + monthLabel + '<span class="cal-chevron">' + (open ? '&#9650;' : '&#9660;') + '</span></span>';
   html += '</div>';
 
   // Month nav + day grid live in a popover so the pill keeps a fixed size.
