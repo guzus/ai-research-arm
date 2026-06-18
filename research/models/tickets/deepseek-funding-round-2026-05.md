@@ -15,7 +15,17 @@ status_note: |
   be identified"); no DeepSeek/Tencent/CATL primary or filing, and the
   $59B is a ceiling ("up to"), not a struck price. The earlier mid-May
   ~$7–13B / $45–55B cluster now converges on $7B / up to $59B.
-expected: "Close to sealing at ~$7B (50B yuan); valuation up to $59B (ceiling); Tencent + CATL lead, NetEase joining; no announced close date"
+
+  **2026-06-18:** The Information now reports the round as **closed** — DeepSeek's
+  **first-ever external round** — at **~RMB 50B (~$7.4B) at a valuation
+  exceeding $50B**. New structural detail: founder **Liang Wenfeng wrote the
+  largest check himself (~$2.8B)**, **Tencent ~$1.4B**, **CATL ~$700M**, and
+  outside capital flowed into a **founder-controlled limited partnership with no
+  investor voting rights**. Widely relayed (multiple accounts citing The
+  Information). Still no official DeepSeek/investor primary statement or filing,
+  so verification stays partial, but the round is now reported-closed rather than
+  "finalizing."
+expected: "Reported closed at ~$7.4B (RMB 50B) / >$50B valuation — first external round; Liang ~$2.8B, Tencent ~$1.4B, CATL ~$700M into a founder-controlled, no-voting-rights LP; no official DeepSeek primary/filing yet"
 labels:
   - funding
   - china
@@ -30,8 +40,10 @@ sources:
   - https://x.com/AndroOxinu/status/2062336652408688918
   - "@FirstSquawk"
   - "@caixin"
+  - "@ns123abc"
+  - "@poezhao0605"
 created_at: 2026-05-26
-updated_at: 2026-06-04
+updated_at: 2026-06-18
 closed_at: null
 closed_reason: null
 history:
@@ -41,6 +53,8 @@ history:
     change: "Reuters (via @Scutty 04:21 UTC) + CNBC + Jiemian News fix the round at ~$7B (50B yuan) at up to a $59B valuation, with Tencent and CATL as the largest external investors and NetEase also planning to invest — superseding the earlier garbled $10B/$50B relays. Round 'finalizing', not closed; $59B is a ceiling. Lands the same morning as Alphabet's ~$80B AI-infra raise, feeding the cross-company issuance-wave narrative"
   - ts: 2026-06-04
     change: "Bloomberg ('DeepSeek Close to Sealing $7 Billion Funding in Historic AI Deal') and SCMP ('nears US$7b haul, backing from Tencent, CATL') now carry the round as near-closed; structure adds founder Liang Wenfeng's ~20B-yuan (~$2.8B) personal check. Still anonymously sourced with no DeepSeek/Tencent/CATL primary or filing (@Signal8Ai: 'no S-1, no filing of any kind') — status stays confirmed-report, verification stays partial"
+  - ts: 2026-06-18
+    change: "Reported closed — The Information now carries the round as DeepSeek's first-ever external round, closed at ~RMB 50B (~$7.4B) at a valuation exceeding $50B. New structure: Liang Wenfeng wrote the largest check himself (~$2.8B), Tencent ~$1.4B, CATL ~$700M, with outside capital into a founder-controlled limited partnership and no investor voting rights. Widely relayed (multiple accounts citing The Information). No official DeepSeek/investor primary or filing yet → status stays confirmed, verification stays partial; round moves from 'finalizing' to reported-closed."
 ---
 
 **The Information's exclusive on 2026-05-25 (21:00 UTC)** pegged DeepSeek's

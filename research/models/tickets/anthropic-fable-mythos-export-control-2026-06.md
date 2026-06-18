@@ -48,14 +48,41 @@ status_note: |
   reportedly **split internally** on how much risk Fable 5 actually presents.
   All remains secondary/social-sourced; the Commerce/BIS directive text is
   still unpublished.
-expected: "Restoration pending — Anthropic/White House talks ended without consensus (day 4, per WIRED); export controls remain in place. No published Commerce/BIS document yet; Polymarket had priced ~65% restoration by 2026-07-01"
+
+  **As of 2026-06-18 (days 5–6):** still no restoration, but the documentary
+  record hardened and the dispute internationalized. The **full BIS "Is
+  Informed" letter** Lutnick sent Amodei — **obtained by Bloomberg** — circulated
+  in full: an individually-validated license now required to release Mythos 5 /
+  Fable 5 to **any "foreign person" worldwide**, including **"deemed exports"** to
+  non-US persons inside the US, under threat of criminal/civil penalty, invoking
+  EAR §744.22(b). Two **export-control lawyers** (@CharlieBull0ck, @alasdairpr)
+  published teardowns arguing the order is legally vulnerable (EAR
+  published-information carve-out, First Amendment, AI-as-a-service may not be an
+  "export" of an "item"). On **2026-06-17** the frontier-lab CEOs (Amodei,
+  Altman, Hassabis) appeared at the **G7 summit in Évian, France**, where
+  **Macron held a bilateral with Amodei** reportedly to seek Europe's Claude
+  access back; **WIRED** reports the admin will only allow a re-release if
+  guardrails are made **uncircumventable** (experts say impossible), AI czar
+  **David Sacks** blamed Anthropic's "needlessly confrontational posture," and
+  **Amodei/Hassabis called for a US-led, China-excluding AI coalition**. A
+  **WIRED scoop** (Matsakis/Zeff) refines the trigger to a **two-step sequence**:
+  South Korean carrier **SK Telecom's** Mythos access (alleged China ties, which
+  SKT denies) cracked Washington's trust **first**, and Amazon's Fable 5
+  jailbreak report was the **final straw** — not the origin. **WSJ** surfaced
+  Lutnick's "that's the point" reply to Amodei; **40+ CISOs** signed a letter
+  demanding reversal; **JPMorgan pulled Claude for Hong Kong staff** (following
+  Goldman, licensing-driven) as access fragmentation reached enterprise. With the
+  full letter text Bloomberg-obtained and independently read, corroborated by
+  WIRED/WSJ/FT named reporting, **verification advances to `confirmed`** (the
+  government's own PDF is still unpublished, the lone remaining gap).
+expected: "Restoration still pending (days 5–6) — full Bloomberg-obtained BIS letter public; admin's re-release bar (uncircumventable guardrails) called impossible by experts; G7/Macron diplomacy + JPMorgan/Goldman HK Claude pulls widen the fallout. No official BIS PDF or restoration yet"
 labels:
   - regulatory
   - export-control
   - anthropic
   - national-security
   - legal-action
-verification: partial
+verification: confirmed
 sources:
   - "@AnthropicAI"
   - "@ClaudeDevs"
@@ -65,8 +92,11 @@ sources:
   - https://arstechnica.com/ai/2026/06/anthropic-shuts-down-fable-mythos-models-following-trump-admin-directive/
   - https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578
   - "@WIRED"
+  - "@LaurenGoode"
+  - "@AmrithRamkumar"
+  - "@alasdairpr"
 created_at: 2026-06-14
-updated_at: 2026-06-16
+updated_at: 2026-06-18
 closed_at: null
 closed_reason: null
 history:
@@ -76,6 +106,8 @@ history:
     change: "Day 3 — Fable 5 and Mythos 5 remain suspended worldwide; no restoration, license carve-out, or published Commerce/BIS directive text yet, and the open-weights / sovereignty discourse continues. Additional *unverified* secondary/social claims circulating (none primary-sourced): Microsoft reportedly told its own staff to stop using Fable 5 over a 30-day data-retention rule even before the order; Andrej Karpathy and other non-US Anthropic staff reportedly locked out; and a low-credibility claim that a China-linked group obtained access to Mythos. Status stays confirmed; verification stays partial."
   - ts: 2026-06-16
     change: "Day 4 — still no restoration; the dispute hardens into a sustained standoff. Anthropic leaders met with White House officials over Fable 5's risks and the talks ended without consensus, export controls left in place (WIRED, secondary). FT (source close to OpenAI) frames the order as a 'deemed export control' — the defense/nuclear-style regime where a foreign national merely touching the tech counts as an export — and reports frontier labs worked with the government, with the industry now pushing to preserve foreign-national researchers' ability to work on advanced models; Anthropic's leadership is reportedly split internally on how much risk Fable 5 presents. Still no published Commerce/BIS directive text. Status stays confirmed; verification stays partial (all new detail secondary/social)."
+  - ts: 2026-06-18
+    change: "Days 5–6 — documentary record hardens, dispute internationalizes; verification → confirmed. The full BIS 'Is Informed' letter (Lutnick→Amodei), obtained by Bloomberg, circulated in full: individually-validated license required to release Mythos 5/Fable 5 to any 'foreign person' worldwide incl. 'deemed exports' inside the US, under criminal/civil penalty, invoking EAR §744.22(b). Two export-control lawyers (@CharlieBull0ck, @alasdairpr) published teardowns (published-information carve-out, First Amendment, AI-as-a-service may not be an 'export'). 2026-06-17: frontier-lab CEOs at G7 Évian; Macron–Amodei bilateral reportedly sought Europe's Claude access back; WIRED says re-release bar is uncircumventable guardrails (experts: impossible); Sacks blamed Anthropic's 'confrontational posture'; Amodei/Hassabis called for a US-led China-excluding AI coalition. WIRED scoop (Matsakis/Zeff) refines trigger to a two-step sequence — SK Telecom's Mythos access (alleged China ties, SKT denies) cracked trust first, Amazon's jailbreak report was the final straw. WSJ surfaced Lutnick's 'that's the point'; 40+ CISOs signed a reversal letter; JPMorgan pulled Claude for Hong Kong staff (after Goldman, licensing-driven). Bloomberg-obtained letter text + WIRED/WSJ/FT named reporting → verification confirmed; only the government's own PDF remains unpublished."
 ---
 
 On **2026-06-12** the US government issued an **export-control directive**
