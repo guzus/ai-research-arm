@@ -2089,10 +2089,10 @@ body.has-toc .section-nav { display: none; }
 
 .today-tldr {
   background: transparent;
-  border-left: 3px solid var(--accent-warm);
-  padding: 18px 22px;
+  border-left: 0;
+  padding: 18px 0;
   margin: 0 0 24px 0;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0;
 }
 
 .today-tldr-label {
@@ -2209,7 +2209,7 @@ body.has-toc .section-nav { display: none; }
   .cal-day { padding: 5px 0; font-size: 0.74rem; }
   .cal-dow { font-size: 0.64rem; }
   .shortcut-guide { display: none; }
-  .today-tldr { padding: 14px 16px; margin-bottom: 18px; }
+  .today-tldr { padding: 14px 0; margin-bottom: 18px; }
   .today-audio-play { padding: 11px 12px; }
   .digest-audio-bar {
     bottom: env(safe-area-inset-bottom);
