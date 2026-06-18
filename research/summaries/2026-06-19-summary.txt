@@ -1,0 +1,13 @@
+AI News - 2026-06-19
+
+TOP STORIES:
+• Noam Shazeer — Transformer co-author & Gemini co-lead — leaves Google for OpenAI as Lead for Architecture Research
+• Anthropic submits formal proposal to Commerce Sec. Lutnick to lift the Fable 5/Mythos 5 export ban; exec "very confident" models return "in coming days" (still offline as of June 19)
+• OpenAI also hires ex-White House AI adviser Dean Ball as Head of Strategic Futures (starts July 6)
+
+KEY NUMBERS:
+• Google paid ~$2.7B in 2024 to re-hire Shazeer — now lost to OpenAI
+• OpenAI LifeSciBench (June 17): best model clears only 36.1% of 750 expert life-science research tasks
+• GPT-5.6 launch window: Polymarket ~83% on June 22–28
+
+Full report on GitHub.
