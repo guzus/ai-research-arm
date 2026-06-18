@@ -37,6 +37,9 @@ Thumbs.db
 !.agents/skills/expand-llm-wiki/
 !.agents/skills/expand-llm-wiki/**
 .gstack/
+.claude/worktrees/
+.context/
+.preview/
 
 # --- Node ---
 node_modules/
