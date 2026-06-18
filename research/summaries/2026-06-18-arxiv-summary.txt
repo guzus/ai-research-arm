@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-18
+
+TOP 5 PAPERS:
+• ASAG: training-free attention-state stopping rule curbs reasoning-model overthinking (2606.15070)
+• Tying the Loop: tied expert layers shrink MoE memory footprint (2606.16825)
+• Predictable scaling laws for optimal hyperparameters in continued pre-training (2606.05610)
+• Automated jailbreak that generalizes across multiple deployed defenses (2606.16751)
+• Spatio-temporal expert prefetching cuts MoE inference latency (2606.15453)
+
+CATEGORIES: LMs/NLP 3 | Vision/Multimodal 2 | Agents/Reasoning 4 | Safety 2 | Other 2
+
+Full report on GitHub.
