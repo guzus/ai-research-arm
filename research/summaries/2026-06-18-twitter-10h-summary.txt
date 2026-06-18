@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-18 10:23 UTC
+
+CYCLE: Shazeer defects to OpenAI; Anthropic embargo standoff hardens.
+
+TOP STORIES:
+• Noam Shazeer (Transformer co-author, Gemini co-lead) leaves Google for OpenAI — year's biggest talent move [✓]
+• Embargo worsens for Anthropic: WIRED says re-release bar (uncircumventable guardrails) is impossible; Sacks blames Anthropic; Amodei/Hassabis push China-excluding AI coalition at G7 [✓]
+• OpenAI ships LifeSciBench; GLM-5.2 ranked #3 model overall [⚠]
+
+WATCH: OpenAI on-record confirmation of Shazeer's role + any further Gemini departures.
+
+Full update on GitHub.
