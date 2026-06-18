@@ -2097,6 +2097,23 @@ body.has-toc .section-nav { display: none; }
   .header-link-label { display: none; }
   .controls { gap: 6px; }
   .search-box { flex-basis: 100%; }
+  .search-overlay {
+    position: fixed;
+    z-index: 1400;
+    top: 58px;
+    left: var(--page-gutter);
+    right: var(--page-gutter);
+    width: auto;
+    max-width: none;
+    margin-bottom: 0;
+  }
+  .search-overlay .search-box,
+  .search-results {
+    width: 100%;
+  }
+  .search-results {
+    max-height: min(420px, calc(100vh - 110px));
+  }
   .content-card-body { padding: var(--card-pad-y) var(--card-pad-x); }
   .content-card-header { padding: 12px var(--card-pad-x); }
   :root { --reading-line-height: 1.75; }
