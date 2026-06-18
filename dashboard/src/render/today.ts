@@ -1,7 +1,7 @@
-import { marked } from 'marked';
 import {
   escapeHtml,
   isModelReleaseDigestSection,
+  renderReportMarkdown,
   sectionAnchorId,
   splitSections,
   wrapTables,
@@ -59,7 +59,7 @@ export function renderTodayHtml(options: TodayRenderOptions): string {
     const anchorId = sectionAnchorId('today', isSummary ? 'tl-dr' : title, sectionIndex);
     sectionIndex += 1;
 
-    let html = marked.parse(section.body) as string;
+    let html = renderReportMarkdown(section.body);
     html = wrapTables(html);
 
     html = html.replace(

@@ -1,3 +1,5 @@
+import { Marked } from 'marked';
+
 export type InfoTimelineItem = {
   href: string;
   label: string;
@@ -9,6 +11,23 @@ export type MarkdownSection = {
   title: string;
   body: string;
 };
+
+const reportMarked = new Marked({
+  gfm: true,
+  breaks: false,
+  tokenizer: {
+    // Report prose uses "~" as approximation syntax ("~$7B", "~40%").
+    // marked's GFM strikethrough accepts single tildes, which can cross whole
+    // sentences when two approximations appear in one line.
+    del() {
+      return undefined;
+    },
+  },
+});
+
+export function renderReportMarkdown(md: string): string {
+  return reportMarked.parse(md) as string;
+}
 
 export function escapeHtml(str: string): string {
   const div = document.createElement('div');

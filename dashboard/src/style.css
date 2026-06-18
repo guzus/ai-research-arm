@@ -36,6 +36,10 @@
   --font: var(--font-serif);
   --font-mono: var(--font-serif);
   --nav-font-size: 0.82rem;
+  --reading-font-family: var(--font-serif);
+  --reading-font-size: 1rem;
+  --reading-line-height: 1.85;
+  --reading-letter-spacing: -0.012em;
   --page-max: 1180px;
   --page-gutter: clamp(18px, 4vw, 64px);
   --card-pad-x: clamp(18px, 3vw, 32px);
@@ -66,7 +70,7 @@
   }
 }
 
-html { font-size: 15px; scroll-behavior: smooth; }
+html { font-size: 16.5px; scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
@@ -1032,10 +1036,10 @@ body:not(.tab-research) .controls { display: none; }
 
 /* ── Markdown Styles ───────────────────────────────── */
 .md-content {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  line-height: 1.85;
-  letter-spacing: -0.012em;
+  font-family: var(--reading-font-family);
+  font-size: var(--reading-font-size);
+  line-height: var(--reading-line-height);
+  letter-spacing: var(--reading-letter-spacing);
   color: var(--text);
 }
 
@@ -1208,7 +1212,7 @@ body:not(.tab-research) .controls { display: none; }
 
 /* ── Twitter Intelligence Wire ─────────────────────── */
 .twitter-report {
-  --twitter-reading-size: 1rem;
+  --twitter-reading-size: var(--reading-font-size);
   max-width: var(--page-max);
   margin: 0 auto;
 }
@@ -1993,9 +1997,9 @@ body.has-toc .section-nav { display: none; }
 
 .today-tldr ul { padding-left: 20px; margin: 0; }
 .today-tldr li {
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-  line-height: 1.45;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
   margin-bottom: 8px;
 }
 
@@ -2063,7 +2067,7 @@ body.has-toc .section-nav { display: none; }
   .search-box { flex-basis: 100%; }
   .content-card-body { padding: var(--card-pad-y) var(--card-pad-x); }
   .content-card-header { padding: 12px var(--card-pad-x); }
-  .md-content { font-size: 0.95rem; line-height: 1.75; }
+  :root { --reading-line-height: 1.75; }
   .md-content li { margin-bottom: 14px; }
   .md-table-wrap {
     margin: 16px calc(-1 * var(--card-pad-x));
@@ -2074,7 +2078,6 @@ body.has-toc .section-nav { display: none; }
   .cal-dow { font-size: 0.64rem; }
   .shortcut-guide { display: none; }
   .today-tldr { padding: 14px 16px; margin-bottom: 18px; }
-  .today-tldr li { font-size: 1.2rem; }
   .today-audio-play { padding: 11px 12px; }
   .digest-audio-bar {
     bottom: env(safe-area-inset-bottom);
@@ -3291,8 +3294,8 @@ body.tab-frontpage .section-nav {
 }
 
 .wiki-page-body.md-content {
-  font-size: 1.04rem;
-  line-height: 1.78;
+  font-size: var(--reading-font-size);
+  line-height: var(--reading-line-height);
 }
 
 .wiki-page-body.md-content a {

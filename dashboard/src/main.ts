@@ -1,11 +1,12 @@
 import './style.css';
-import { marked, Marked } from 'marked';
+import { Marked } from 'marked';
 import type { Tokens, TokenizerThis } from 'marked';
 import DOMPurify from 'dompurify';
 import {
   cleanPublicLeadText,
   escapeHtml,
   extractUrls,
+  renderReportMarkdown,
   splitSections,
   stripMarkdown,
   truncateText,
@@ -1016,7 +1017,7 @@ function hideDigestAudioPlayer(): void {
 function setDigestAudioTrack(dateStr: string, autoplay: boolean): void {
   const audio = ensureDigestAudioPlayer();
   const src = digestAudioUrl(dateStr);
-  const changed = digestAudioState.src !== src;
+  const changed = digestAudioState.src !== src || audio.getAttribute('src') !== src;
   digestAudioState.date = dateStr;
   digestAudioState.src = src;
   digestAudioState.title = digestAudioTitle(dateStr);
@@ -1041,9 +1042,9 @@ function syncDigestAudioForDate(dateStr: string): void {
     updateDigestAudioUi();
     return;
   }
-  const audio = ensureDigestAudioPlayer();
   const src = digestAudioUrl(dateStr);
-  const hasActivePlayback = Boolean(digestAudioState.src) && !audio.paused && !audio.ended;
+  const audio = digestAudioEl;
+  const hasActivePlayback = audio !== null && Boolean(digestAudioState.src) && !audio.paused && !audio.ended;
   if (hasActivePlayback && digestAudioState.src !== src) {
     updateDigestAudioUi();
     return;
@@ -1056,10 +1057,12 @@ function syncDigestAudioForDate(dateStr: string): void {
     digestAudioState.date = dateStr;
     digestAudioState.src = src;
     digestAudioState.title = digestAudioTitle(dateStr);
-    audio.src = src;
-    audio.load();
+    if (audio) {
+      audio.src = src;
+      audio.currentTime = 0;
+      audio.load();
+    }
   }
-  if (digestAudioState.dismissedSrc !== src) showDigestAudioPlayer();
   updateDigestAudioUi();
 }
 
@@ -1067,7 +1070,7 @@ async function toggleDigestAudioPlayback(dateStr: string | null = digestAudioSta
   if (!dateStr) return;
   const audio = ensureDigestAudioPlayer();
   const src = digestAudioUrl(dateStr);
-  if (digestAudioState.src !== src) {
+  if (digestAudioState.src !== src || audio.getAttribute('src') !== src) {
     setDigestAudioTrack(dateStr, true);
     return;
   }
@@ -1717,7 +1720,7 @@ function renderHandleChips(handles: string[], limit = 10): string {
 }
 
 function twitterMarkdownToHtml(md: string): string {
-  let html = marked.parse(md) as string;
+  let html = renderReportMarkdown(md);
   html = wrapTables(html);
   html = html.replace(
     /<a\s+href="(https?:\/\/(?:x|twitter)\.com\/\w+\/status\/(\d+))"[^>]*>([\s\S]*?)<\/a>/g,
@@ -2477,7 +2480,7 @@ function ticketExpandedPanel(ticket: Ticket | null): string {
     </div>
     <div class="ticket-expanded">
       <dl class="ara-kv">${kvRows}</dl>
-      <div class="ticket-body md-content">${DOMPurify.sanitize(marked.parse(ticket.body) as string)}</div>
+      <div class="ticket-body md-content">${DOMPurify.sanitize(renderReportMarkdown(ticket.body))}</div>
       <div class="ticket-history">
         <h4 class="ticket-history-title">History</h4>
         <ol class="ara-timeline">${historyItems}</ol>
@@ -5021,7 +5024,7 @@ function renderFocusReader(data: FocusReaderData): void {
     : null;
   const selectedIndex = selected && selectedEntry ? selectedEntry.index : (selected ? data.items.indexOf(selected) : -1);
   const articleHtml = selected
-    ? wrapTables(marked.parse(selected.body) as string)
+    ? wrapTables(renderReportMarkdown(selected.body))
     : '<p class="focus-empty-copy">No briefing section contains "' + escapeHtml(focusReaderSearchTerm.trim()) + '".</p>';
   const sources = selected && selected.sources.length
     ? selected.sources.slice(0, 3).map(sourceLinkHtml).join('\n')
