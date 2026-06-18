@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-06-19 06:50 UTC
+
+CYCLE: Embargo arc and GPT-5.6 leak both take a concrete step.
+
+TOP STORIES:
+• White House + Anthropic now jointly building a jailbreak-resistance benchmark + release framework to gate Fable/Mythos's return — but no model back, and Anthropic isn't conceding the jailbreak point [✓]
+• GPT-5.6 leak hardens to "next Thursday" (≈June 25); stealth-tested for some Pro accounts, first hands-on outputs show stronger reasoning but flat frontend — no OpenAI confirmation [⚠]
+
+WATCH: An actual Fable 5/Mythos re-enable or a published WH–Anthropic jailbreak benchmark vs. process-only talk; an official OpenAI GPT-5.6 post or June 25 confirm/slip.
+
+Full update on GitHub.
