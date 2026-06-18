@@ -33,6 +33,9 @@ Thumbs.db
 !.agents/commands/
 !.agents/commands/*.md
 .gstack/
+.claude/worktrees/
+.context/
+.preview/
 
 # --- Node ---
 node_modules/
