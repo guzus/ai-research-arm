@@ -131,17 +131,32 @@ body.has-digest-player .app {
   padding-top: 18px;
   border-top: 1px solid var(--border-light);
   color: var(--text-tertiary);
-  font-size: 0.78rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .footer-link {
+  display: inline-block;
   color: inherit;
   text-decoration: none;
+  margin-right: 14px;
+  padding: 2px 0;
   transition: color 0.15s;
 }
 
 .footer-link:hover {
   color: var(--text-secondary);
+}
+
+@media (max-width: 640px) {
+  .site-footer {
+    margin-top: 32px;
+    font-size: 1rem;
+  }
+
+  .footer-link {
+    margin-right: 12px;
+  }
 }
 
 /* When the floating TOC is visible (set by JS in renderResearchTOC),
