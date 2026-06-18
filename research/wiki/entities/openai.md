@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-06-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
@@ -247,6 +248,20 @@ materially reshape how the lab is positioned heading into its IPO window:
   concrete [[agentic-ai-security]] / pre-release-eval datapoint as
   [[federal-ai-policy|the 30-day access regime]] takes hold (ARA digest
   2026-06-17).
+
+- **"AI runs the loop" — GPT-5.4 drives a validated chemistry result; API price
+  cut (2026-06-18).** OpenAI says **GPT-5.4 drove a validated medicinal-chemistry
+  improvement** — a TEMPO additive for Chan–Lam coupling that lifted **mean yield
+  16.6% → 25.2%** — the cleanest claim yet that a model autonomously closed a
+  real-world R&D loop (paired in the digest with NVIDIA's ENPIRE, where AI coding
+  agents taught a robot fleet dexterous tasks at 99% success). It is the
+  productization edge of the GPT-Rosalind life-sciences arc, now with a concrete
+  wet-lab number rather than a vendor framing. Separately, OpenAI **cut API
+  pricing** — the pricing-war move it had been "weighing" against [[anthropic]]
+  since June 12 — and **Copilot/superapp momentum** continued (Microsoft
+  [[microsoft|Copilot Cowork]] GA went multi-model the same day). On the model
+  side, **GPT-5.6** sits at **~83% on a June 22–28 Polymarket window** with no
+  system card yet (ARA digest 2026-06-18).
 
 ## Open questions
 

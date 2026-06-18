@@ -6,8 +6,9 @@ aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 P
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
 description: Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.
 created_at: 2026-06-04
-timestamp: 2026-06-05T00:00:00Z
+timestamp: 2026-06-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "ARA model ticket — DeepSeek funding round", path: research/models/tickets/deepseek-funding-round-2026-05.md}
@@ -54,6 +55,25 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   entirely on what unnamed insiders told a reporter… the $7B is real until it
   isn't. the filing would make it real. there isn't one." The contrast with the
   same week's hard SEC filings is the point (ARA digest 2026-06-05).
+
+- **The round closes — founder-controlled, vote-less capital (2026-06-18).** The
+  "filing would make it real" critique was answered: per *The Information*,
+  DeepSeek **closed its first-ever external round at roughly RMB 50B (~$7.4B) at a
+  $50B+ valuation**, with founder **Liang Wenfeng writing the biggest check
+  (~$2.8B)**, **Tencent ~$1.4B**, and **CATL ~$700M**. The decisive structural
+  detail: **investors received *no voting rights*** and capital flowed into a
+  **founder-controlled LP** — Liang kept hard control while raising the largest
+  Chinese-AI round of the cycle. It landed the same day frontier-lab CEOs sat with
+  the Trump administration over the [[claude-fable-5|Fable 5 / Mythos 5]] export
+  embargo, sharpening the "China's open frontier ascends as America embargoes its
+  own" frame (see [[open-weights]] and [[federal-ai-policy]]).
+- **US declines to blacklist DeepSeek (2026-06-18).** Reuters reported Washington
+  **held off adding DeepSeek to the entity list** as part of a broader review of
+  100+ Chinese firms deemed security risks — the policy counterpoint to the
+  megaround, and a notable restraint given the parallel Fable 5 export crackdown.
+  Separately, **Microsoft is reportedly evaluating a fine-tuned DeepSeek V4** as a
+  cheaper [[microsoft|Copilot Cowork]] tier than [[openai]] or [[anthropic]] — a
+  Western hyperscaler treating DeepSeek's open weights as a production backend.
 
 ## Open questions
 

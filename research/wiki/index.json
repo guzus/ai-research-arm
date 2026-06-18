@@ -219,8 +219,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-06-18",
+      "timestamp": "2026-06-18T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -260,11 +260,13 @@
         "claude-opus-4-8",
         "cognition-ai",
         "cursor",
+        "deepseek",
         "dynamic-workflows",
         "federal-ai-policy",
         "figure-ai",
         "gemini-3-5-flash",
         "gemini-spark",
+        "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
         "open-weights",
@@ -435,8 +437,8 @@
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "description": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-06-18",
+      "timestamp": "2026-06-18T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -465,6 +467,7 @@
         "amazon",
         "anthropic",
         "claude-opus-4-8",
+        "deepseek",
         "federal-ai-policy",
         "gemini-3-5-flash",
         "moonshot-kimi-k2-7-code",
@@ -507,6 +510,7 @@
         "anthropic",
         "claude-fable-5",
         "dynamic-workflows",
+        "open-weights",
         "zhipu-glm-5-2"
       ]
     },
@@ -629,8 +633,8 @@
       "summary": "Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.",
       "description": "Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-06-05",
-      "timestamp": "2026-06-05T00:00:00Z",
+      "updated_at": "2026-06-18",
+      "timestamp": "2026-06-18T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -642,14 +646,22 @@
       ],
       "outbound": [
         "ai-capex",
+        "anthropic",
+        "claude-fable-5",
+        "federal-ai-policy",
         "gemma-4",
+        "microsoft",
         "minimax-m3",
+        "open-weights",
+        "openai",
         "openrouter",
         "spacex"
       ],
       "inbound": [
         "ai-capex",
+        "federal-ai-policy",
         "gemma-4",
+        "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
         "open-weights",
@@ -745,8 +757,8 @@
       "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "description": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-06-18",
+      "timestamp": "2026-06-18T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -763,6 +775,8 @@
         "anthropic",
         "california-ai-regulation",
         "claude-fable-5",
+        "deepseek",
+        "microsoft",
         "openai",
         "xai"
       ],
@@ -774,6 +788,7 @@
         "apple",
         "california-ai-regulation",
         "claude-fable-5",
+        "deepseek",
         "openai"
       ]
     },
@@ -1002,8 +1017,8 @@
       "summary": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.",
       "description": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-04",
-      "timestamp": "2026-06-04T00:00:00Z",
+      "updated_at": "2026-06-18",
+      "timestamp": "2026-06-18T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -1019,13 +1034,19 @@
       ],
       "outbound": [
         "ai-capex",
+        "anthropic",
+        "deepseek",
         "minimax-m3",
+        "open-weights",
         "openai",
         "openrouter"
       ],
       "inbound": [
+        "deepseek",
+        "federal-ai-policy",
         "minimax-m3",
         "nvidia",
+        "open-weights",
         "openai"
       ]
     },
@@ -1258,8 +1279,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-06-18",
+      "timestamp": "2026-06-18T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -1272,9 +1293,11 @@
       "outbound": [
         "anthropic",
         "claude-fable-5",
+        "claude-opus-4-8",
         "deepseek",
         "gemma-4",
         "meta",
+        "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
         "nvidia",
@@ -1287,7 +1310,9 @@
       "inbound": [
         "anthropic",
         "claude-fable-5",
+        "deepseek",
         "meta",
+        "microsoft",
         "moonshot-kimi-k2-7-code",
         "openrouter",
         "xiaomi-mimo-v2-5-pro",
@@ -1307,8 +1332,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-06-18",
+      "timestamp": "2026-06-18T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -1336,6 +1361,7 @@
         "california-ai-regulation",
         "claude-fable-5",
         "cursor",
+        "deepseek",
         "federal-ai-policy",
         "figure-ai",
         "meta",
@@ -1618,7 +1644,8 @@
         "open-weights"
       ],
       "inbound": [
-        "open-weights"
+        "open-weights",
+        "zhipu-glm-5-2"
       ]
     },
     {
@@ -1635,8 +1662,8 @@
       "summary": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
       "description": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-06-18",
+      "timestamp": "2026-06-18T00:00:00Z",
       "file": "entities/zhipu-glm-5-2.md",
       "aliases": [
         "Zhipu GLM 5.2",
@@ -1653,7 +1680,8 @@
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
         "open-weights",
-        "openrouter"
+        "openrouter",
+        "xiaomi-mimo-v2-5-pro"
       ],
       "inbound": [
         "claude-fable-5",
@@ -1874,6 +1902,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-18",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-18 digest (DeepSeek megaround closes; open weight tops the intelligence index; embargo goes transatlantic). Created 0, updated 8 (deepseek — first external round CLOSED ~$7.4B/$50B+, Liang ~$2.8B biggest check, Tencent ~$1.4B/CATL ~$700M, no investor votes/founder-controlled LP, US declines entity-list blacklist; zhipu-glm-5-2 — #1 on Artificial Analysis Intelligence Index, ~1pt off Opus 4.8 on FrontierSWE, #1 HN 689pts, ZCode desktop agent, antirez ~512GB-RAM caveat; open-weights — the crossover milestone: open weight leads the intel index + Microsoft eval of DeepSeek V4; microsoft — Copilot Cowork GA worldwide multi-model ~$0.01/task + DeepSeek V4 substitutability tell; anthropic — G7 Macron bilateral, Lutnick \"that's the point\", 40+ CISO reversal letter, SDK token-billing reverted; federal-ai-policy — ~2h frontier-CEO lunch, G7 Évian sovereignty clause, UNIDIR Geneva #AISE26, US holds off DeepSeek blacklist, Pew 16%/63% poll; openai — GPT-5.4 validated Chan-Lam chemistry loop 16.6%→25.2% + API price cut + GPT-5.6 ~83% June 22-28; claude-fable-5 — still dark June 18, embargo goes diplomatic)."
+    },
     {
       "date": "2026-06-17",
       "op": "ingest",

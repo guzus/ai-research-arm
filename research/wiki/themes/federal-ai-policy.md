@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.
 created_at: 2026-06-03
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-06-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
@@ -223,6 +224,35 @@ footing for the first time in the cycle.
   due **July 2 / Aug 1**; **EU AI Act** full applicability **Aug 2**; **China
   CAC** anthropomorphic-interaction measures **July 15**; **Colorado AI Act**
   **June 30** (ARA digest 2026-06-17).
+
+- **CEOs meet the administration; "that's the point" documented; allies escalate
+  (2026-06-18).** The export fight became active diplomacy. [[anthropic|Amodei]],
+  [[openai|Altman]] and DeepMind's Hassabis met the **Trump administration for a
+  ~two-hour lunch (June 17)** reportedly centered on the still-suspended
+  [[claude-fable-5|Fable 5 / Mythos 5]] embargo, overlapping the **G7 Évian
+  summit** where the order's "foreign national regardless of location" clause has
+  become a **sovereignty problem for US allies** — **Macron held a bilateral with
+  Amodei** seeking European access back. The WSJ documented **Lutnick's "that's
+  the point"** reply to Amodei, reframing the shutdown as intended; **40+ CISOs**
+  (Adobe, Zoom, Sophos) are circulating a reversal letter. TechCrunch's frame:
+  *"World leaders want American AI. They just don't want America to be able to turn
+  it off."* (ARA digest 2026-06-18).
+- **US holds off blacklisting [[deepseek|DeepSeek]] (2026-06-18).** Reuters
+  reported Washington **declined to add DeepSeek to the entity list** as part of a
+  review of 100+ Chinese firms — restraint on the China-inbound side even as the
+  *domestic* Fable 5 export crackdown continues, the policy counterpoint to
+  DeepSeek's new ~$7.4B megaround.
+- **UNIDIR Geneva opens — first UN-level AI-security forum since the export action
+  (2026-06-18).** The **UNIDIR Global Conference on AI, Security and Ethics 2026
+  (#AISE26, June 18–19)** convened at the Palais des Nations (co-sponsored by
+  [[microsoft]]) — the first UN-level AI-*security* forum since the US export
+  action, a multilateral counterweight to the unilateral US move. Separately, a
+  **Berlin court** ruled Google's AI Overviews are "just a new search format, not
+  original content" (diverging from a stricter Munich ruling), the DOJ moved to
+  **block a Clean Air Act suit over [[xai]]'s gas turbines** arguing the military
+  needs Grok for war, and a **Pew poll** found only **16% of Americans** expect a
+  positive AI impact and **63%** think it is advancing too quickly — the public-
+  opinion backdrop to the whole regime (ARA digest 2026-06-18).
 
 ## Open questions
 

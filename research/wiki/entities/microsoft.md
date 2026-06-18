@@ -6,8 +6,9 @@ aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsof
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
 description: Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.
 created_at: 2026-06-03
-timestamp: 2026-06-04T00:00:00Z
+timestamp: 2026-06-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "Microsoft Build 2026 (Fort Mason, SF; June 2–3)", date: 2026-06-03}
@@ -65,6 +66,18 @@ ending the Azure-exclusive era. Both sides now hold alternative stacks for the
 first time since the 2023 integration: Microsoft has its own models; OpenAI has
 non-Azure distribution. The symbiosis is becoming a hedged, two-way
 relationship.
+
+**Copilot Cowork GA — designing for model substitutability (2026-06-18).**
+**Copilot Cowork** went **generally available worldwide** with **multi-model
+support** and **usage-based pricing (~$0.01/task)** — long-running agents pitched
+for "every organization." The strategic tell is the same week's Axios report that
+**Microsoft is evaluating China's fine-tuned [[deepseek|DeepSeek V4]] as a cheaper
+Cowork tier than [[openai]] or [[anthropic]]** — extending the Build-2026
+"own/substitute your intelligence" posture from first-party MAI models to a
+*Chinese open weight* as a production backend. It is the clearest sign yet that
+Microsoft is engineering its agent stack to swap engines on cost, hedging away
+from its marquee frontier partners and pulling [[open-weights]] up the value chain
+(ARA digest 2026-06-18).
 
 **Caveat.** Microsoft's **Majorana 2** quantum chip claim (~1,000× reliability,
 2029 target) drew pushback — *Scientific American* reports multiple physicists

@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown.
 created_at: 2026-06-14
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-06-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
@@ -103,6 +104,23 @@ fragile and local weights look like insurance.
   infrastructure**, distinguishing "open weights" from "open process" — the
   same weights-without-training-loop gap raised on 2026-06-16, now framed as
   a tooling ask rather than just a complaint (ARA digest 2026-06-17).
+
+- **The crossover: an open weight tops the intelligence index (2026-06-18).**
+  The wave reached a symbolic milestone — **[[zhipu-glm-5-2|GLM-5.2]] (744B-A40B
+  MoE, MIT-licensed) climbed to #1 on the Artificial Analysis Intelligence
+  Index**, the first time an open weight has led that composite, and The Decoder
+  put it **~1 point off [[claude-opus-4-8|Claude Opus 4.8]] on FrontierSWE**.
+  It was the **#1 story on Hacker News (689 pts)** — a direct referendum on
+  Chinese open models catching the frontier labs, sharpened by the digest's
+  framing of "China's open frontier ascends as America embargoes its own" while
+  [[claude-fable-5|Fable 5 / Mythos 5]] stays dark. The practical brake (@antirez):
+  GLM-5.2 is **~2× the raw weight of [[deepseek|DeepSeek V4 PRO]]**, ~512GB RAM to
+  run locally — capability is closing faster than serving cost. And the demand
+  side hardened: **[[deepseek]] closed its first external round (~$7.4B,
+  founder-controlled, vote-less)** the same day, and **Microsoft is reportedly
+  evaluating a fine-tuned DeepSeek V4** as a cheaper [[microsoft|Copilot Cowork]]
+  engine — open weights moving up the value chain into a Western hyperscaler's
+  production stack (ARA digest 2026-06-18).
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.
 created_at: 2026-06-10
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-06-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
@@ -149,6 +150,19 @@ every feed on launch day.
   with no restoration announced**, and Chinese open-weight flagships kept
   filling the gap (Z.ai's **[[zhipu-glm-5-2|GLM-5.2]]** shipped under MIT) —
   see [[federal-ai-policy]] and [[open-weights]] (ARA digest 2026-06-17).
+
+- **Still dark June 18; the embargo goes diplomatic (2026-06-18).** **Fable 5 /
+  Mythos 5 remain offline with no confirmed restoration date** as of June 18, with
+  no net-new Western frontier model shipped in the window. Negotiations continued
+  through June 17 (a ~two-hour frontier-CEO lunch with the Trump administration),
+  and the fight widened to the G7: **Macron lobbied [[anthropic|Amodei]] for
+  European access**, while the WSJ documented Commerce Secretary **Lutnick's
+  "that's the point"** reply — framing the shutdown as deliberate. As the embargo
+  held, **[[zhipu-glm-5-2|GLM-5.2]] topped the Artificial Analysis Intelligence
+  Index** (~1pt off [[claude-opus-4-8|Opus 4.8]] on FrontierSWE), the sharpest
+  evidence yet that the ban is accelerating the open-weight catch-up it aimed to
+  slow — see [[anthropic]], [[federal-ai-policy]] and [[open-weights]] (ARA digest
+  2026-06-18).
 
 ## Open questions
 

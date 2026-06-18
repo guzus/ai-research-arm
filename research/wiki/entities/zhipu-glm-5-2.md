@@ -6,8 +6,9 @@ aliases: ["Zhipu GLM 5.2", "Zhipu GLM-5.2", "GLM 5.2", "GLM-5.2", "Z.ai GLM-5.2"
 tags: [open-weights, china, coding, long-context, frontier-model]
 description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.
 created_at: 2026-06-17
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-06-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA model ticket — Zhipu GLM-5.2", path: research/models/tickets/zhipu-glm-5-2.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
@@ -49,6 +50,20 @@ max/high "thinking" modes.
   ship converts the earlier "weights promised" status into a concrete
   open-weights anchor in the [[claude-fable-5|Fable 5]] shutdown window — see
   [[open-weights]] (ARA digest 2026-06-17).
+
+- **Tops the Artificial Analysis Intelligence Index; ~1pt off Opus 4.8 on
+  FrontierSWE (2026-06-18).** GLM-5.2 climbed to **#1 on the Artificial Analysis
+  Intelligence Index** — the first time an MIT-licensed open weight has led that
+  composite — under a "Built for Long-Horizon Tasks" framing, and The Decoder
+  reported it **trails [[claude-opus-4-8|Claude Opus 4.8]] by just ~1 point on
+  FrontierSWE**, the tightest neutral-eval gap an open model has posted against
+  the frontier this cycle. It was the **#1 story on Hacker News (689 pts, 354
+  comments)** — a referendum on Chinese open models catching the closed labs.
+  Z.ai also shipped a **"ZCode" desktop coding agent** built around the model.
+  Practical caveat (@antirez): GLM-5.2 is **~2× the raw weight size of
+  [[deepseek|DeepSeek V4 PRO]]**, so local inference likely needs **~512GB RAM** —
+  the efficiency frontier [[xiaomi-mimo-v2-5-pro|MiMo]] is chasing matters here.
+  See [[open-weights]] (ARA digest 2026-06-18).
 
 ## Open questions
 

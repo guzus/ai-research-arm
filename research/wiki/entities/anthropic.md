@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-06-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
@@ -303,6 +304,25 @@ Four developments through May 2026 put Anthropic at the center of the field:
   spend data suggests the government feud may actually be *boosting*
   Claude's enterprise adoption** — a counter-signal to the IDC penetration
   soft spot (ARA digest 2026-06-17).
+
+- **The embargo goes transatlantic — Macron lobbies Amodei; "that's the point";
+  SDK billing reverted (2026-06-18).** The Fable 5 / Mythos 5 standoff widened
+  from a US-domestic enforcement fight to an **allied-diplomacy** problem. At the
+  **G7 in Évian**, French president **Macron held a bilateral with Dario Amodei**
+  reportedly seeking to restore *European* access to Anthropic's most advanced
+  models — the first head-of-state direct appeal of the saga. The day before,
+  Amodei, [[openai|Sam Altman]] and DeepMind's Demis Hassabis sat with the **Trump
+  administration for a ~two-hour lunch** centered on the still-suspended embargo.
+  The WSJ surfaced the sharpest line yet: when Amodei told Commerce Secretary
+  **Howard Lutnick** "this means we can't have the model out," Lutnick reportedly
+  answered **"that's the point"** — reframing the shutdown as the deliberate,
+  intended outcome rather than collateral damage. **40+ CISOs and execs (Adobe,
+  Zoom, Sophos)** are circulating a reversal letter. Separately, Anthropic
+  **abruptly reverted its token-based billing change for the [[claude-fable-5|Claude
+  Agent SDK]]** (Ars Technica) — the June 17 "pause" became a full rollback,
+  letting users continue on existing subscription limits amid the looming
+  [[openai]] price war. See [[claude-fable-5]] and [[federal-ai-policy]] (ARA
+  digest 2026-06-18).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 
