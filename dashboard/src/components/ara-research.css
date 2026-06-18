@@ -415,11 +415,14 @@
   padding-left: 24px;
   margin: 0 0 20px;
   letter-spacing: -0.002em;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .ara-doc li {
   margin-bottom: 6px;
   padding-left: 4px;
+  overflow-wrap: break-word;
 }
 
 .ara-doc li::marker { color: var(--text-tertiary); }
@@ -836,6 +839,8 @@ body.ara-figure-modal-open {
   background: var(--bg-secondary);
   padding: 1px 6px;
   border-radius: 4px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .ara-doc pre {

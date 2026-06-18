@@ -315,8 +315,38 @@ body.has-digest-player .app {
   }
 
   .tabs {
-    -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
-    mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+    flex-wrap: wrap;
+    overflow-x: visible;
+    gap: 8px;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .calendar {
+    flex: 1 1 100%;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .tab,
+  .tabs .brand-search {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
+  }
+
+  .tab {
+    padding: 8px 10px;
+    border-radius: 16px;
+    text-align: center;
+  }
+
+  .tabs .brand-search {
+    width: auto;
+    height: 36px;
+  }
+
+  .tab[data-tab="models"] {
+    flex-basis: 100%;
   }
 }
 
@@ -1141,6 +1171,8 @@ body:not(.tab-research) .controls { display: none; }
   border-radius: 5px;
   font-family: var(--font-mono);
   font-size: 0.84rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .md-content pre {
@@ -3245,10 +3277,11 @@ body.tab-frontpage .section-nav {
   display: grid;
   gap: 12px;
   margin: 16px 0 14px;
+  max-width: 100%;
 }
 
 .wiki-image-gallery--single {
-  max-width: 720px;
+  max-width: min(720px, 100%);
 }
 
 .wiki-image-gallery--multi {
@@ -3275,6 +3308,7 @@ body.tab-frontpage .section-nav {
   font-size: 0.78rem;
   line-height: 1.45;
   color: var(--text-tertiary);
+  overflow-wrap: anywhere;
 }
 
 .wiki-image-credit {
@@ -3291,16 +3325,23 @@ body.tab-frontpage .section-nav {
 .wiki-page-body {
   margin-left: 0;
   margin-right: auto;
+  min-width: 0;
 }
 
 .wiki-page-body.md-content {
   font-size: var(--reading-font-size);
   line-height: var(--reading-line-height);
+  overflow-wrap: break-word;
 }
 
 .wiki-page-body.md-content a {
   word-break: normal;
   overflow-wrap: anywhere;
+}
+
+.wiki-page-body.md-content li,
+.wiki-page-body.md-content p {
+  overflow-wrap: break-word;
 }
 
 /* Backlinks + related sections. */
