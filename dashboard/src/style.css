@@ -2111,6 +2111,10 @@ body.has-toc .section-nav { display: none; }
   .search-results {
     width: 100%;
   }
+  .search-input {
+    font-size: 16px;
+    line-height: 1.25;
+  }
   .search-results {
     max-height: min(420px, calc(100vh - 110px));
   }
