@@ -1,0 +1,9 @@
+Speaker 1: Wednesday, June eighteenth, twenty twenty-six.
+Speaker 2: [high_energy] DeepSeek just closed its first-ever external funding round, [emphasis]seven point four billion dollars[/emphasis] at a valuation north of fifty billion, and the founder kept full control, no investor votes.
+Speaker 1: That is a serious war chest for a Chinese lab that has been running open source circles around US frontier models.
+Speaker 2: Speaking of which, GLM five point two dropped yesterday, seven hundred forty-four billion parameters, MIT licensed, and it shot straight to number one on Hacker News. It is only about one point behind Claude Opus four point eight on FrontierSWE.
+Speaker 1: So open weights out of China are now brushing against the best closed models in the world, while Fable five and Mythos five are still under US export embargo.
+Speaker 2: And that standoff went to G7. Frontier AI CEOs met with the Trump administration and Macron to lobby for lifting the embargo. Reports suggest Lutnick's response was [dramatic_pause] "that's the point."
+Speaker 1: On the deal front, SpaceX acquired Cursor in an all-stock deal valued at [emphasis]sixty billion dollars[/emphasis]. Odyssey world models raised three hundred ten million at a one point four five billion valuation, and Sarvam pulled in three hundred million at one point five billion.
+Speaker 2: Worth noting that only sixteen percent of Americans now see AI as net positive, per Pew. That gap between industry momentum and public sentiment keeps widening.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
