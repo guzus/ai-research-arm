@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-06-18
+
+TOP STORIES:
+• DeepSeek raises ~$7.4B at $50B+ valuation (first-ever external round, founder-controlled, no investor votes)
+• Frontier CEOs meet Trump admin + Macron at G7 over the still-unlifted Fable 5/Mythos 5 export embargo; WSJ: Lutnick said "that's the point"
+• GLM-5.2 (744B MoE, MIT) tops open-weights leaderboard — #1 on HN; ~1pt behind Claude Opus 4.8 on FrontierSWE
+
+KEY NUMBERS:
+• DeepSeek: $7.4B raised, $50B+ valuation
+• SpaceX–Cursor: $60B all-stock acquisition
+• Odyssey world models: $310M / $1.45B; Sarvam: $300M / $1.5B
+• Only 16% of Americans see AI as net-positive (Pew)
+
+TRENDING: Chinese open weights vs. US self-embargo — GLM-5.2 + DeepSeek surge as Fable 5 stays dark.
+
+Full digest on GitHub.
