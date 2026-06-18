@@ -10263,5 +10263,33 @@
     "headline": "MICROSOFT EVALUATING 'MANY' OPEN MODELS FOR COPILOT COWORK \u2014 GLM, MINIMAX, KIMI PRESSURING INTERNAL MAI TEAMS",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2067626163187376559"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-19 04:00 UTC",
+    "headline": "ANTHROPIC FILES FORMAL PROPOSAL TO COMMERCE SECRETARY LUTNICK TO END US BAN ON MYTHOS AND FABLE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2067680690779607232"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-19 04:00 UTC",
+    "headline": "OPENAI GPT-5.6 AND GPT-5.6-PRO SPOTTED IN TESTING \u2014 POSSIBLE RELEASE AS SOON AS NEXT WEEK",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2067649489293185267"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-19 04:00 UTC",
+    "headline": "MUSK PREDICTS CHINA REACHES FABLE-CLASS FRONTIER BY Q1 2027 AS OPEN GLM-5.2 CLOSES THE GAP",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2067608714635268326"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-19 04:00 UTC",
+    "headline": "CLAUDE CODE SHIPS ARTIFACTS \u2014 TURN IN-PROGRESS WORK INTO SHAREABLE TEAM PAGES",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2067672273570742524"
   }
 ]
