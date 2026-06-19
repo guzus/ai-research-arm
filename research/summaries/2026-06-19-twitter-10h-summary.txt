@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-06-19 10:29 UTC
+
+CYCLE: Export control as the master lever — new US–ASML fight, China's GLM-5.2 gains credible backing, OpenAI presses its run while Anthropic's embargo drags.
+
+TOP STORIES:
+• US accuses ASML of "bad faith"; Lutnick says a restricted EUV machine was diverted to China [✓]
+• GLM-5.2 gets first heavyweight sign-off — Jeremy Howard: "at least as good as Opus 4.8 and GPT-5.5" (testers dissent) [⚠]
+• OpenAI presses ahead: Dean Ball on-record for July 6, a 3rd Meta hire for devices, Codex "Record & Replay" [✓/⚠]
+• Anthropic embargo still in limbo — "coming days" lapsed, jailbreak-severity framework in talks, no model back [✓ talks/⚠ resolution]
+
+WATCH: GPT-5.6 reportedly targeting ~June 25 ("next Thursday") — official OpenAI confirmation or slip.
+
+Full update on GitHub.
