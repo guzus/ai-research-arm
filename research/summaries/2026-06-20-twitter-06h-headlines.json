@@ -1,0 +1,20 @@
+[
+  {
+    "headline": "SAM ALTMAN CONFIRMS NOAM SHAZEER JOINS OPENAI — 'ONLY TOOK 10 YEARS'",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2067427421083652131",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI SHIPS ALIGNMENT RESEARCH: MODELS TRAINED TO RESIST HARMFUL FINE-TUNING",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2067722688165232654",
+    "category": "research"
+  },
+  {
+    "headline": "QWABLE-V1 — OPEN-WEIGHT CLONE DISTILLED FROM CLAUDE FABLE 5 STAYS LIVE ON HUGGINGFACE, BUT TESTS WORSE THAN ITS BASE",
+    "source": "@lordx64",
+    "url": "https://x.com/i/status/2067656586982809973",
+    "category": "opensource"
+  }
+]

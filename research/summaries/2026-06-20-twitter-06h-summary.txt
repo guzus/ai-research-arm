@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-20 06:35 UTC
+
+CYCLE: Quiet continuation — data barely advanced; overnight stories (Jumper, Trump de-escalation, ASML) already covered.
+
+TOP STORIES:
+• Sam Altman personally confirms Noam Shazeer joins OpenAI — "only took 10 years" [✓]
+• OpenAI ships alignment research: models trained to resist harmful fine-tuning [✓]
+• Export saga reframed — Qwable-v1, a distilled Fable 5 clone, lives on HuggingFace, but it tests WORSE than its base [⚠]
+
+WATCH: Whether GPT-5.6 actually ships ~June 25 (rumor only) and any external replication of OpenAI's fine-tuning-resistance claim.
+
+Full update on GitHub.
