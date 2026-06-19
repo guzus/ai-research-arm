@@ -195,6 +195,186 @@ class DedupeHeadlineAlertsTest(unittest.TestCase):
         # record and detects the duplicate via headline_key.
         self.assertEqual(dedupe.duplicate_reason(item, [legacy]), "duplicate_headline")
 
+    # ── cross-source semantic duplicate (different account/URL, paraphrased) ──
+
+    def test_cross_source_similar_headline_is_duplicate(self):
+        # The same hire reported by two different accounts with paraphrased wording —
+        # different URLs, so the same-URL check can't see it. With a reference `now`
+        # inside the window it is caught as a cross-source duplicate (Jaccard ~0.71).
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "OPENAI HIRES EX-WHITE HOUSE AI ADVISER DEAN BALL AS HEAD OF STRATEGIC FUTURES",
+                    "url": "https://x.com/Polymarket/status/2066900000000000001",
+                },
+                "2026-06-18 01:00 UTC",
+            )
+        ]
+        item = {
+            "headline": "OPENAI HIRES EX-TRUMP AI POLICY ADVISER DEAN BALL AS HEAD OF STRATEGIC FUTURES",
+            "url": "https://x.com/another_source/status/2066900000000000002",
+        }
+        now = dedupe.parse_delivered_at("2026-06-18 03:00 UTC")
+        self.assertEqual(
+            dedupe.duplicate_reason(item, history, now=now),
+            "duplicate_cross_source_similar_headline",
+        )
+
+    def test_cross_source_append_fact_progression_is_not_duplicate(self):
+        # Flash -> updated-with-details. The follow-up carries genuinely new facts and
+        # must survive. Containment would score this 1.0 (the short headline is a subset);
+        # Jaccard drops it to ~0.375 and the shared-token floor (3 < 4) also rejects it.
+        history = [
+            dedupe.make_record(
+                {"headline": "META RELEASES LLAMA 5", "url": "https://x.com/a/status/1"},
+                "2026-06-18 01:00 UTC",
+            )
+        ]
+        item = {
+            "headline": "META RELEASES LLAMA 5 WITH 2M TOKEN CONTEXT AND NATIVE VOICE",
+            "url": "https://x.com/b/status/2",
+        }
+        now = dedupe.parse_delivered_at("2026-06-18 02:00 UTC")
+        self.assertEqual(dedupe.duplicate_reason(item, history, now=now), "")
+
+    def test_cross_source_short_headline_containment_is_not_duplicate(self):
+        # The short-subset false positive: "ANTHROPIC RAISES $5B" is a token-subset of
+        # the longer, distinct headline (containment 1.0). Jaccard (~0.43) + the overlap
+        # floor (3 < 4) keep it from being suppressed.
+        history = [
+            dedupe.make_record(
+                {"headline": "ANTHROPIC RAISES $5B", "url": "https://x.com/a/status/1"},
+                "2026-06-18 01:00 UTC",
+            )
+        ]
+        item = {
+            "headline": "ANTHROPIC RAISES CONCERNS ABOUT $5B SAFETY FUND",
+            "url": "https://x.com/b/status/2",
+        }
+        now = dedupe.parse_delivered_at("2026-06-18 02:00 UTC")
+        self.assertEqual(dedupe.duplicate_reason(item, history, now=now), "")
+
+    def test_cross_source_distinct_milestone_is_not_duplicate(self):
+        # Same beat (SpaceX IPO) but genuinely different milestones (marketing-start vs
+        # pricing). Jaccard ~0.31 keeps them apart.
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "SPACEX PRICES IPO: 555.6M SHARES AT $135, ~$75B RAISE, ~$1.75T VALUATION",
+                    "url": "https://x.com/a/status/1",
+                },
+                "2026-06-18 01:00 UTC",
+            )
+        ]
+        item = {
+            "headline": "SPACEX IPO MARKETING STARTS JUNE 4 — $75B RAISE AT ~$1.75T, ON TRACK TO BE LARGEST",
+            "url": "https://x.com/b/status/2",
+        }
+        now = dedupe.parse_delivered_at("2026-06-18 02:00 UTC")
+        self.assertEqual(dedupe.duplicate_reason(item, history, now=now), "")
+
+    def test_cross_source_inert_without_now(self):
+        # No reference time -> cross-source pass is skipped entirely, preserving exact
+        # 2-arg legacy behavior even for near-identical different-URL headlines.
+        history = [
+            dedupe.make_record(
+                {"headline": "OPENAI HIRES NOAM SHAZEER FROM GOOGLE DEEPMIND", "url": "https://x.com/a/status/1"},
+                "2026-06-18 01:00 UTC",
+            )
+        ]
+        item = {
+            "headline": "OPENAI HIRES NOAM SHAZEER AWAY FROM GOOGLE DEEPMIND",
+            "url": "https://x.com/b/status/2",
+        }
+        self.assertEqual(dedupe.duplicate_reason(item, history), "")
+
+    def test_cross_source_outside_window_is_not_duplicate(self):
+        # A near-identical headline delivered well outside the recency window is treated
+        # as a (rare) recurring beat, not a duplicate, and is delivered.
+        history = [
+            dedupe.make_record(
+                {"headline": "OPENAI HIRES NOAM SHAZEER FROM GOOGLE DEEPMIND", "url": "https://x.com/a/status/1"},
+                "2026-05-01 01:00 UTC",
+            )
+        ]
+        item = {
+            "headline": "OPENAI HIRES NOAM SHAZEER AWAY FROM GOOGLE DEEPMIND",
+            "url": "https://x.com/b/status/2",
+        }
+        now = dedupe.parse_delivered_at("2026-06-18 01:00 UTC")  # ~48 days later
+        self.assertEqual(dedupe.duplicate_reason(item, history, now=now), "")
+
+    def test_cross_source_unparseable_delivered_at_fails_open(self):
+        # A single record with a corrupt delivered_at must not eat a real alert: the
+        # window check fails open (treats it as out-of-window) and the item is delivered.
+        history = [
+            dedupe.make_record(
+                {"headline": "OPENAI HIRES NOAM SHAZEER FROM GOOGLE DEEPMIND", "url": "https://x.com/a/status/1"},
+                "not-a-timestamp",
+            )
+        ]
+        item = {
+            "headline": "OPENAI HIRES NOAM SHAZEER AWAY FROM GOOGLE DEEPMIND",
+            "url": "https://x.com/b/status/2",
+        }
+        now = dedupe.parse_delivered_at("2026-06-18 01:00 UTC")
+        self.assertEqual(dedupe.duplicate_reason(item, history, now=now), "")
+
+    def test_exact_headline_still_takes_priority_with_now(self):
+        # Enabling the cross-source pass must not change which reason wins: the exact
+        # (priority) pass still returns first.
+        history = [
+            dedupe.make_record(
+                {"headline": "MUSK V ALTMAN TRIAL OPENS IN OAKLAND", "url": "https://x.com/a/status/1"},
+                "2026-06-18 01:00 UTC",
+            )
+        ]
+        item = {"headline": "Musk v. Altman trial opens in Oakland!", "url": "https://x.com/b/status/2"}
+        now = dedupe.parse_delivered_at("2026-06-18 02:00 UTC")
+        self.assertEqual(dedupe.duplicate_reason(item, history, now=now), "duplicate_headline")
+
+    def test_filter_suppresses_in_batch_cross_source_paraphrase(self):
+        # Two different-account paraphrases of the same story in ONE cycle: the first is
+        # accepted (and appended to history at the run timestamp), so the second is caught
+        # as a cross-source duplicate. Exactly one survives.
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            history_file = root / "history.json"
+            headlines_file = root / "headlines.json"
+            filtered_file = root / "filtered.json"
+            history_file.write_text("[]")
+            headlines_file.write_text(
+                json.dumps(
+                    [
+                        {
+                            "headline": "OPENAI HIRES EX-WHITE HOUSE AI ADVISER DEAN BALL AS HEAD OF STRATEGIC FUTURES",
+                            "url": "https://x.com/src1/status/1",
+                        },
+                        {
+                            "headline": "OPENAI HIRES EX-TRUMP AI POLICY ADVISER DEAN BALL AS HEAD OF STRATEGIC FUTURES",
+                            "url": "https://x.com/src2/status/2",
+                        },
+                    ]
+                )
+            )
+            with redirect_stdout(StringIO()):
+                rc = dedupe.main(
+                    [
+                        "filter",
+                        "--headlines-file",
+                        str(headlines_file),
+                        "--history-file",
+                        str(history_file),
+                        "--filtered-file",
+                        str(filtered_file),
+                        "--timestamp",
+                        "2026-06-18 04:00 UTC",
+                    ]
+                )
+            self.assertEqual(rc, 0)
+            filtered = json.loads(filtered_file.read_text())
+            self.assertEqual(len(filtered), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
