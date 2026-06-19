@@ -4,6 +4,16 @@
 This is intentionally an alert-send ledger, not a global news/event store. The
 workflow already has a structured boundary at `*-headlines.json`; this script
 keeps Telegram/Hooker sends from repeating previously delivered alert items.
+
+Dedupe layers (see `duplicate_reason`), in priority order:
+  1. shared story_key, exact normalized headline (any source), and same-source
+     (same URL) paraphrase — time-independent, highest precision.
+  2. cross-source semantic duplicate — the SAME story reported by a DIFFERENT
+     account (different tweet URL) with paraphrased wording. This catches the
+     re-reports the same-URL check structurally cannot see. It is gated on a
+     Jaccard floor (size-symmetric, so an appended-fact follow-up is not eaten),
+     an absolute shared-token floor, and a recency window; it stays inert unless
+     a reference time is supplied.
 """
 
 from __future__ import annotations
@@ -17,13 +27,35 @@ import sys
 import unicodedata
 from collections import Counter
 from dataclasses import dataclass
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlencode, urlsplit, urlunsplit
 
 
 RETENTION_DEFAULT = 3000
+# Same-source paraphrase gate: identical tweet URL + a high token overlap
+# (max of containment/Jaccard). Lenient because same URL already proves same source.
 URL_SIMILARITY_THRESHOLD = 0.62
+# Cross-source semantic-duplicate gate: the SAME story from a DIFFERENT account
+# (different tweet URL), paraphrased. Deliberately uses Jaccard (size-symmetric) — NOT
+# max-containment — so a short earlier headline being a subset of a longer appended-fact
+# follow-up ("META RELEASES LLAMA 5" -> "...WITH 2M TOKEN CONTEXT AND NATIVE VOICE")
+# does NOT score 1.0 and is not mistaken for a duplicate. Calibrated against the real
+# delivered-alert ledger: genuine cross-source re-reports cluster at Jaccard >= ~0.5 with
+# >= 7 shared tokens; append-a-fact progression and short subset headlines fall well below.
+# Known residual: two genuinely-distinct stories that share enough significant vocabulary
+# to clear BOTH floors can still be suppressed — e.g. two different entities running the
+# same templated beat ("GOOGLE CUTS GEMINI API PRICING ACROSS THE BOARD" / "DEEPSEEK CUTS
+# API PRICING ACROSS THE BOARD": 5 shared tokens, Jaccard ~0.62), or a same-entity
+# follow-up that re-states most of the original. (A short appended-fact follow-up like
+# "META RELEASES LLAMA 5" -> "...WITH 2M TOKEN CONTEXT" is NOT a residual — it shares only
+# 3 tokens and is correctly delivered.) Token overlap alone cannot separate the residual
+# cases from a true re-report; the conservative threshold keeps them a small minority.
+# Tune the constants rather than adding a brittle hand-maintained salient-token list.
+CROSS_SOURCE_JACCARD_THRESHOLD = 0.5
+CROSS_SOURCE_MIN_OVERLAP = 4
+CROSS_SOURCE_WINDOW_DAYS = 14
 STOPWORDS = {
     "A",
     "AN",
@@ -67,6 +99,9 @@ class Keys:
     url_key: str
     external_key: str
     story_key: str
+    # Significant-token set of the headline, precomputed once so the cross-source
+    # pass doesn't re-tokenize every history record for every incoming item.
+    tokens: frozenset[str]
 
 
 def load_json_list(path: Path, *, missing_ok: bool = False) -> list[Any]:
@@ -168,6 +203,31 @@ def external_key(url: str) -> str:
     return f"url:{digest}"
 
 
+def parse_delivered_at(value: Any) -> datetime | None:
+    """Parse a ledger ``delivered_at`` ("YYYY-MM-DD HH:MM UTC"); None if unparseable."""
+    try:
+        return datetime.strptime(str(value or "").strip(), "%Y-%m-%d %H:%M UTC")
+    except (TypeError, ValueError):
+        return None
+
+
+def within_cross_source_window(delivered_at: Any, now: datetime, window_days: int) -> bool:
+    """Is a history record an eligible cross-source suppression source at ``now``?
+
+    Fails OPEN: a record whose ``delivered_at`` is missing or unparseable returns
+    False (treated as outside the window), so a real — possibly new — alert is
+    delivered rather than silently eaten by a single bad timestamp. The cost of a
+    parse bug is at worst one duplicate, never a swallowed headline.
+    ``window_days <= 0`` means unbounded (any parseable record qualifies).
+    """
+    parsed = parse_delivered_at(delivered_at)
+    if parsed is None:
+        return False
+    if window_days <= 0:
+        return True
+    return (now - parsed) <= timedelta(days=window_days)
+
+
 def item_keys(item: dict[str, Any]) -> Keys:
     headline = str(item.get("headline") or "")
     url = str(item.get("url") or "")
@@ -177,6 +237,7 @@ def item_keys(item: dict[str, Any]) -> Keys:
         url_key=normalize_url(url),
         external_key=external_key(url),
         story_key=story,
+        tokens=frozenset(headline_tokens(headline)),
     )
 
 
@@ -200,6 +261,7 @@ def duplicate_reason(
     item: dict[str, Any],
     history: list[dict[str, Any]],
     history_keys: list[Keys] | None = None,
+    now: datetime | None = None,
 ) -> str:
     keys = item_keys(item)
     if not keys.headline_key:
@@ -211,6 +273,9 @@ def duplicate_reason(
         history_keys = [item_keys(record) for record in history]
 
     headline = str(item.get("headline") or "")
+    # Pass 1 — exact identity and same-source paraphrase. Time-independent and the
+    # highest-precision signals, so they always run and take priority over the
+    # fuzzy cross-source pass below.
     for record, record_keys in zip(history, history_keys):
         record_headline = str(record.get("headline") or "")
         if keys.story_key and keys.story_key == record_keys.story_key:
@@ -221,6 +286,27 @@ def duplicate_reason(
             similarity = headline_similarity(headline, record_headline)
             if similarity >= URL_SIMILARITY_THRESHOLD:
                 return "duplicate_source_similar_headline"
+
+    # Pass 2 — cross-source semantic duplicate: same story, DIFFERENT account
+    # (different tweet URL), paraphrased. Inert unless a reference time `now` is
+    # supplied, so 2-arg legacy callers keep their exact behavior. Jaccard (not
+    # max-containment) + an absolute shared-token floor keep an appended-fact
+    # follow-up from being mistaken for a duplicate; the recency window keeps a
+    # legitimately recurring beat much later from being suppressed.
+    if now is not None:
+        for record, record_keys in zip(history, history_keys):
+            if not record_keys.url_key or record_keys.url_key == keys.url_key:
+                continue
+            if not within_cross_source_window(
+                record.get("delivered_at"), now, CROSS_SOURCE_WINDOW_DAYS
+            ):
+                continue
+            overlap = len(keys.tokens & record_keys.tokens)
+            if overlap < CROSS_SOURCE_MIN_OVERLAP:
+                continue
+            union = len(keys.tokens | record_keys.tokens)
+            if union and overlap / union >= CROSS_SOURCE_JACCARD_THRESHOLD:
+                return "duplicate_cross_source_similar_headline"
     return ""
 
 
@@ -229,6 +315,10 @@ def filter_headlines(args: argparse.Namespace) -> int:
     history_raw = load_json_list(Path(args.history_file), missing_ok=True)
     history = [item for item in history_raw if isinstance(item, dict)]
     history_keys = [item_keys(record) for record in history]
+    # Reference "now" for the cross-source recency window. If the run timestamp is
+    # malformed the cross-source pass is skipped (now=None), falling back to the
+    # exact/same-source checks — never a crash.
+    now = parse_delivered_at(args.timestamp)
     accepted: list[dict[str, Any]] = []
     counts: Counter[str] = Counter()
 
@@ -236,7 +326,7 @@ def filter_headlines(args: argparse.Namespace) -> int:
         if not isinstance(item, dict):
             counts["invalid_item"] += 1
             continue
-        reason = duplicate_reason(item, history, history_keys)
+        reason = duplicate_reason(item, history, history_keys, now)
         if reason:
             counts[reason] += 1
             continue
