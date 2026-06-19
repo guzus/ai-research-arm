@@ -1,0 +1,9 @@
+Speaker 1: Friday, June nineteenth, twenty twenty-six.
+Speaker 2: [high_energy] Noam Shazeer — transformer co-author and former Gemini co-lead at Google — has joined OpenAI as head of architecture research. This is the researcher Google paid [emphasis]two point seven billion dollars[/emphasis] to re-hire just two years ago.
+Speaker 1: And OpenAI also brought in ex-White House AI adviser Dean Ball as Head of Strategic Futures, so it has been quite a recruiting week for them.
+Speaker 2: On the regulatory front, Anthropic filed a formal proposal with the Commerce Department to lift the export ban on Fable five and Mythos five. The White House and Anthropic are now co-building a jailbreak benchmark together — but both models remain offline as of today.
+Speaker 1: There is also a hardening rumor around GPT five point six, with leaks pointing to a release around June twenty-fifth.
+Speaker 2: Science check — the new LifeSciBench is out. The best model in the field clears only thirty-six point one percent of seven hundred fifty expert biology tasks. [dramatic_pause] That is a very hard ceiling.
+Speaker 1: Some quick numbers — Baseten is reportedly raising [emphasis]one point five billion dollars[/emphasis] at a thirteen billion dollar valuation, and GLM five point two landed with seven hundred fifty-three billion parameters and a one-million token context window.
+Speaker 2: Worth noting that Midjourney Medical is trending hard on Hacker News today — over twelve hundred upvotes and eight hundred comments.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
