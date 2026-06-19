@@ -10445,5 +10445,26 @@
     "headline": "CLAUDE SHIPS ENTERPRISE-MANAGED AUTH FOR MCP CONNECTORS \u2014 ADMINS CENTRALLY AUTHORIZE ORG-WIDE",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2067863936204947897"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-19 19:42 UTC",
+    "headline": "WIRED: SK TELECOM \u2014 ANTHROPIC INVESTOR & GLASSWING PARTNER \u2014 WAS CUT OFF OVER CHINA TIES, THE REAL TRIGGER FOR FABLE 5 BAN",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2067457198062436391"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-19 19:42 UTC",
+    "headline": "GPT-5.6 STILL UNCONFIRMED \u2014 PREDICTION MARKETS NOW PRICE A JUNE SHIP; NO OFFICIAL OPENAI WORD",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2067652120673739048"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-19 19:42 UTC",
+    "headline": "GLM-5.2 LANDS FIRST CONCRETE BENCHMARK \u2014 WITHIN ~1% OF CLAUDE OPUS 4.8 ON FRONTIERSWE, BEATS GPT-5.5 (SINGLE SOURCE)",
+    "source": "@ReadFuturist",
+    "url": "https://x.com/ReadFuturist/status/2067918222297567501"
   }
 ]
