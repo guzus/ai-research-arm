@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-19 13:42 UTC
+
+CYCLE: Quiet overnight window — leaks and official drops, no new launches.
+
+TOP STORIES:
+• GPT-5.6 leak hardens into a spec sheet — "juice" 960 vs 768, Dec-2025 cutoff, browser-use integrated, "Thursday" (~Jun 25) target [⚠ single-source]
+• OpenAI quietly shipped two official releases: GPT-5.5 Instant health-parity (230M weekly health users) + "persistent alignment" research that resists harmful fine-tuning [✓ official]
+• Anthropic embargo — negative confirmation: no Fable 5/Mythos restoration overnight; "coming days" lapses into a third day [✓ on the negative]
+
+WATCH: An official OpenAI GPT-5.6 post/system card, or confirmation/slip of the ~Jun 25 date.
+
+Full update on GitHub.
