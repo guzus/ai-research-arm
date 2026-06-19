@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-06-19 17:11 UTC
+
+CYCLE: Embargo was never total — a vetted ~200 orgs kept frontier access while the public model stayed dark.
+
+TOP STORIES:
+• Bloomberg: Fable/Mythos ban wasn't total — ~200 orgs (Cisco, Dragos, US-gov) still run Mythos Preview under "Project Glasswing"; ENISA denied [✓ report / ⚠ specifics]
+• GLM-5.2 hits #1 on Design Arena (Elo ~1,360) + demoed served across consumer GPUs — open-weights "no off switch" gets concrete [⚠]
+
+WATCH: Anthropic/Bloomberg on-record detail on Project Glasswing's selection criteria — and whether "selective access" reshapes the WH talks. GPT-5.6 still leak-only (~June 25).
+
+Full update on GitHub.
