@@ -10410,5 +10410,40 @@
     "headline": "ANTHROPIC PROJECT FETCH: OPUS 4.7 PROGRAMMED A ROBODOG ~20X FASTER THAN THE BEST HUMAN TEAM",
     "source": "@AnthropicAI",
     "url": "https://x.com/AnthropicAI/status/2067651699486200091"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-06-19 17:11 UTC",
+    "headline": "BLOOMBERG: ANTHROPIC FABLE/MYTHOS BAN NOT TOTAL \u2014 ~200 ORGS STILL RUN MYTHOS PREVIEW UNDER 'PROJECT GLASSWING'",
+    "source": "@Cointelegraph",
+    "url": "https://x.com/Cointelegraph/status/2067849925384138959"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-19 17:11 UTC",
+    "headline": "CISCO AND DRAGOS AMONG GLASSWING ORGS KEEPING MYTHOS ACCESS; EU AGENCY ENISA REPORTEDLY DENIED",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2067876984206537188"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-19 17:11 UTC",
+    "headline": "GLM-5.2 TAKES #1 ON DESIGN ARENA AT ELO ~1,360, DISPLACING EMBARGOED FABLE 5",
+    "source": "@aiedge_",
+    "url": "https://x.com/aiedge_/status/2067857417912877340"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-19 17:11 UTC",
+    "headline": "GLM-5.2 SERVED ACROSS SIX CONSUMER GPUS OVER OPEN INTERNET AT ~30 TOK/S \u2014 'NOBODY CAN SWITCH THIS ONE OFF'",
+    "source": "@rumidotsol",
+    "url": "https://x.com/rumidotsol/status/2067756916852621638"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-19 17:11 UTC",
+    "headline": "CLAUDE SHIPS ENTERPRISE-MANAGED AUTH FOR MCP CONNECTORS \u2014 ADMINS CENTRALLY AUTHORIZE ORG-WIDE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2067863936204947897"
   }
 ]
