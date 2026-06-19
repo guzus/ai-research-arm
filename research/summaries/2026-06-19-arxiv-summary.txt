@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-19
+
+TOP 5 PAPERS:
+• How Transparent is DiffusionGemma? - first hard look at reasoning faithfulness in a diffusion LLM that computes in latent space (DeepMind).
+• Lie-Algebra Attention - new attention primitive where each token IS a matrix Lie group element.
+• UltraQuant - 4-bit KV caching that holds quality for long-prefix, high-concurrency agents.
+• S-Agent - spatial tool-use lets an agent reason over an evolving 3D world, not stateless images.
+• Mixed Compliance Demos - disentangles what safety-aligned LLMs learn behind in-context jailbreaks.
+
+CATEGORIES: LLM/NLP 6, CV/Multimodal 6, Agents/Reasoning 5, Safety 4, Other 5
+
+Full report on GitHub.
