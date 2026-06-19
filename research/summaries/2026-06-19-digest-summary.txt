@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-19
+
+TOP STORIES:
+• Noam Shazeer (transformer co-author, Gemini co-lead) leaves Google for OpenAI as Lead for Architecture Research
+• Anthropic files formal proposal to Commerce to lift Fable 5/Mythos 5 ban; WH + Anthropic now co-building a jailbreak benchmark — but models still OFFLINE as of June 19
+• OpenAI also hires ex-WH AI adviser Dean Ball (Head of Strategic Futures); GPT-5.6 leak hardens to ~June 25
+
+KEY NUMBERS:
+• Google paid ~$2.7B in 2024 to re-hire Shazeer — now lost to OpenAI
+• LifeSciBench: best model clears only 36.1% of 750 expert tasks
+• Baseten raising $1.5B at ~$13B; GLM-5.2 = 753B params, 1M context
+
+TRENDING: Midjourney Medical (1258 pts / 837 comments on HN); "AI bubble" podcast cycle
+
+Full digest on GitHub.
