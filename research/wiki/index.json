@@ -31,7 +31,8 @@
       "inbound": [
         "anthropic",
         "claude-opus-4-8",
-        "dynamic-workflows"
+        "dynamic-workflows",
+        "lifescibench"
       ]
     },
     {
@@ -219,8 +220,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-18",
-      "timestamp": "2026-06-18T00:00:00Z",
+      "updated_at": "2026-06-19",
+      "timestamp": "2026-06-19T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -269,6 +270,7 @@
         "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
+        "noam-shazeer",
         "open-weights",
         "openai",
         "openrouter",
@@ -437,8 +439,8 @@
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "description": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-06-18",
-      "timestamp": "2026-06-18T00:00:00Z",
+      "updated_at": "2026-06-19",
+      "timestamp": "2026-06-19T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -633,8 +635,8 @@
       "summary": "Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.",
       "description": "Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-06-18",
-      "timestamp": "2026-06-18T00:00:00Z",
+      "updated_at": "2026-06-19",
+      "timestamp": "2026-06-19T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -655,7 +657,8 @@
         "open-weights",
         "openai",
         "openrouter",
-        "spacex"
+        "spacex",
+        "zhipu-glm-5-2"
       ],
       "inbound": [
         "ai-capex",
@@ -757,8 +760,8 @@
       "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "description": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-18",
-      "timestamp": "2026-06-18T00:00:00Z",
+      "updated_at": "2026-06-19",
+      "timestamp": "2026-06-19T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -777,6 +780,7 @@
         "claude-fable-5",
         "deepseek",
         "microsoft",
+        "noam-shazeer",
         "openai",
         "xai"
       ],
@@ -789,6 +793,8 @@
         "california-ai-regulation",
         "claude-fable-5",
         "deepseek",
+        "lifescibench",
+        "noam-shazeer",
         "openai"
       ]
     },
@@ -862,7 +868,8 @@
         "apple",
         "claude-fable-5",
         "gemini-spark",
-        "gemma-4"
+        "gemma-4",
+        "noam-shazeer"
       ]
     },
     {
@@ -936,6 +943,39 @@
         "nvidia",
         "open-weights",
         "zhipu-glm-5-2"
+      ]
+    },
+    {
+      "slug": "lifescibench",
+      "title": "LifeSciBench",
+      "type": "concept",
+      "tags": [
+        "benchmark",
+        "life-sciences",
+        "evaluation",
+        "agentic",
+        "openai",
+        "frontier-ai"
+      ],
+      "summary": "OpenAI's 750-task, expert-authored life-science research benchmark (released 2026-06-17) on which the best model clears only 36.1% — a concrete measure of the gap between frontier models and autonomous scientific research.",
+      "description": "OpenAI's 750-task, expert-authored life-science research benchmark (released 2026-06-17) on which the best model clears only 36.1% — a concrete measure of the gap between frontier models and autonomous scientific research.",
+      "created_at": "2026-06-19",
+      "updated_at": "2026-06-19",
+      "timestamp": "2026-06-19T00:00:00Z",
+      "file": "concepts/lifescibench.md",
+      "aliases": [
+        "LifeSciBench",
+        "Life Sci Bench",
+        "Life-Sci-Bench",
+        "LifeSci Bench"
+      ],
+      "outbound": [
+        "agent-lifespan-engineering",
+        "federal-ai-policy",
+        "openai"
+      ],
+      "inbound": [
+        "openai"
       ]
     },
     {
@@ -1202,6 +1242,39 @@
       ]
     },
     {
+      "slug": "noam-shazeer",
+      "title": "Noam Shazeer",
+      "type": "entity",
+      "tags": [
+        "people",
+        "researcher",
+        "transformer",
+        "openai",
+        "google",
+        "character-ai"
+      ],
+      "summary": "Transformer co-inventor (\"Attention Is All You Need\"), Character.AI founder, and former Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.",
+      "description": "Transformer co-inventor (\"Attention Is All You Need\"), Character.AI founder, and former Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.",
+      "created_at": "2026-06-19",
+      "updated_at": "2026-06-19",
+      "timestamp": "2026-06-19T00:00:00Z",
+      "file": "entities/noam-shazeer.md",
+      "aliases": [
+        "Noam Shazeer",
+        "Shazeer"
+      ],
+      "outbound": [
+        "anthropic",
+        "federal-ai-policy",
+        "gemini-3-5-flash",
+        "openai"
+      ],
+      "inbound": [
+        "federal-ai-policy",
+        "openai"
+      ]
+    },
+    {
       "slug": "nvidia",
       "title": "NVIDIA",
       "type": "entity",
@@ -1279,8 +1352,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-06-18",
-      "timestamp": "2026-06-18T00:00:00Z",
+      "updated_at": "2026-06-19",
+      "timestamp": "2026-06-19T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -1332,8 +1405,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-18",
-      "timestamp": "2026-06-18T00:00:00Z",
+      "updated_at": "2026-06-19",
+      "timestamp": "2026-06-19T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -1350,7 +1423,9 @@
         "claude-fable-5",
         "federal-ai-policy",
         "gemini-spark",
-        "microsoft"
+        "lifescibench",
+        "microsoft",
+        "noam-shazeer"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -1364,9 +1439,11 @@
         "deepseek",
         "federal-ai-policy",
         "figure-ai",
+        "lifescibench",
         "meta",
         "microsoft",
         "moonshot-kimi-k2-7-code",
+        "noam-shazeer",
         "open-weights",
         "openrouter",
         "prometheus",
@@ -1662,8 +1739,8 @@
       "summary": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
       "description": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-06-18",
-      "timestamp": "2026-06-18T00:00:00Z",
+      "updated_at": "2026-06-19",
+      "timestamp": "2026-06-19T00:00:00Z",
       "file": "entities/zhipu-glm-5-2.md",
       "aliases": [
         "Zhipu GLM 5.2",
@@ -1685,6 +1762,7 @@
       ],
       "inbound": [
         "claude-fable-5",
+        "deepseek",
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openrouter"
@@ -1815,6 +1893,10 @@
     "kimi k2.7-code": "moonshot-kimi-k2-7-code",
     "lfm": "liquid-ai",
     "liang wenfeng": "deepseek",
+    "life sci bench": "lifescibench",
+    "life-sci-bench": "lifescibench",
+    "lifesci bench": "lifescibench",
+    "lifescibench": "lifescibench",
     "liquid ai": "liquid-ai",
     "liquid foundation models": "liquid-ai",
     "liquid-ai": "liquid-ai",
@@ -1853,6 +1935,8 @@
     "nemotron-3-ultra-550b": "nvidia",
     "neo-cloud": "neocloud",
     "neocloud": "neocloud",
+    "noam shazeer": "noam-shazeer",
+    "noam-shazeer": "noam-shazeer",
     "nvda": "nvidia",
     "nvidia": "nvidia",
     "open source ai": "open-weights",
@@ -1881,6 +1965,7 @@
     "sakana-ai": "sakana-ai",
     "salesforce": "salesforce",
     "salesforce inc": "salesforce",
+    "shazeer": "noam-shazeer",
     "siri": "apple",
     "space exploration technologies": "spacex",
     "spacex": "spacex",
@@ -1902,6 +1987,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-19",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-19 digest (OpenAI's Shazeer+Dean Ball talent coup; Anthropic files formal Fable/Mythos proposal + co-built jailbreak benchmark, still dark; GLM-5.2 tops AA open-weights board; GPT-5.6 hardens to ~June 25; LifeSciBench reality check). Created 2 (noam-shazeer — transformer co-inventor/ex-Gemini co-lead → OpenAI Lead for Architecture Research; lifescibench — OpenAI 750-task life-science benchmark, best model 36.1%), updated 7 (openai — Shazeer + Dean Ball hires, GPT-5.6 ≈June 25 stealth test, LifeSciBench, GPT-5.5 Instant health upgrade + AI chemist; anthropic — formal proposal to Lutnick, co-developed jailbreak benchmark/release framework, SK Telecom China-ties backstory, Claude Code Artifacts; claude-fable-5 — proposal + gating benchmark, both models still offline June 19; federal-ai-policy — jailbreak-benchmark mechanism, Dean Ball revolving door, Bernie Sanders $7T plan, FERC data-center fast lane, clock; zhipu-glm-5-2 — Simon Willison \"most powerful text-only open-weights LLM\", tops AA open-weights board, Musk Q1 2027; open-weights — Willison endorsement + DeepSeek Vision multimodal; deepseek — introduces Vision/goes multimodal)."
+    },
     {
       "date": "2026-06-18",
       "op": "ingest",

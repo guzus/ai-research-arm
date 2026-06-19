@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-timestamp: 2026-06-18T00:00:00Z
+timestamp: 2026-06-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
@@ -323,6 +324,34 @@ Four developments through May 2026 put Anthropic at the center of the field:
   letting users continue on existing subscription limits amid the looming
   [[openai]] price war. See [[claude-fable-5]] and [[federal-ai-policy]] (ARA
   digest 2026-06-18).
+
+- **Formal proposal to Lutnick; a co-built jailbreak benchmark — but still dark
+  (2026-06-19).** The standoff advanced from talk to process: Anthropic submitted
+  a **formal proposal to Commerce Secretary Howard Lutnick** pledging closer White
+  House cooperation, faster security resolution, and improved communication in
+  exchange for freeing [[claude-fable-5|Fable 5 / Mythos 5]]. Reporting (NY Post,
+  Washington Post) adds the White House and Anthropic are now **co-developing a
+  jailbreak-resistance benchmark and a model-release security framework** — led by
+  co-founder **Tom Brown** and policy head **Sarah Heck** — that would gate the
+  models' return. Exec **Chris Ciauri** said in Seoul he is "very confident" the
+  models return "in the coming days." **Reality check:** a filed proposal is an
+  *ask*, not a *yes* — officials reportedly still view Anthropic's safety framing
+  as "too narrow," the jailbreak-guardrail condition is unconceded, and **both
+  models remain offline worldwide as of June 19**. The skeptic's frame: the
+  co-developed benchmark is *"the yardstick, not the score"* — the mechanism of an
+  unresolved fight, not a lifted ban. See [[federal-ai-policy]] and
+  [[agentic-ai-security]] (ARA digest 2026-06-19).
+- **The crisis's origin story surfaces — alleged SK Telecom China ties
+  (2026-06-19).** The Decoder reported the export crisis traces to **alleged China
+  ties at SK Telecom**, which had access to Claude Mythos via **Project Glasswing**
+  until US concerns triggered the White House intervention — giving the
+  weight-security rationale (vs the jailbreak-safety one) a concrete partner-access
+  vector. *(Single-outlet, "alleged"; treat as reported.)* (ARA digest 2026-06-19).
+- **Claude Code Artifacts ship (2026-06-19).** Anthropic brought **Artifacts to
+  Claude Code** (Team/Enterprise): a coding session can be turned into a
+  shareable, version-tracked interactive page drawing on full session context —
+  extending the [[dynamic-workflows]] developer-surface push into a collaboration
+  artifact (The Decoder, ARA digest 2026-06-19).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

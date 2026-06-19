@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.
 created_at: 2026-06-03
-timestamp: 2026-06-18T00:00:00Z
+timestamp: 2026-06-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
@@ -253,6 +254,40 @@ footing for the first time in the cycle.
   needs Grok for war, and a **Pew poll** found only **16% of Americans** expect a
   positive AI impact and **63%** think it is advancing too quickly — the public-
   opinion backdrop to the whole regime (ARA digest 2026-06-18).
+
+- **The export fight gets a mechanism: a co-built jailbreak benchmark
+  (2026-06-19).** The standoff advanced from talk to process. [[anthropic]] filed
+  a **formal proposal to Commerce Secretary Lutnick** pledging closer cooperation
+  in exchange for freeing [[claude-fable-5|Fable 5 / Mythos 5]], and reporting (NY
+  Post, Washington Post) says the White House and Anthropic are now
+  **co-developing a jailbreak-resistance benchmark and a model-release security
+  framework** (Tom Brown / Sarah Heck) that would **gate** the models' return and
+  guide future government intervention — potentially the **template for how
+  Washington gates future frontier launches**. But it is a *mechanism of an
+  unresolved fight*: officials reportedly still call Anthropic's safety framing
+  "too narrow," the jailbreak condition is unconceded, and both models stay
+  offline as of June 19. A surfacing backstory ties the original intervention to
+  **alleged China ties at SK Telecom** (Mythos access via Project Glasswing) —
+  see [[anthropic]], [[claude-fable-5]] and [[agentic-ai-security]] (ARA digest
+  2026-06-19).
+- **The talent–policy revolving door (2026-06-19).** [[openai]] hired **Dean
+  Ball** — the ex-White House adviser who drafted the 2025 *America's AI Action
+  Plan* and publicly criticized the administration's [[anthropic]] stance — as
+  **Head of Strategic Futures**, alongside architecture hire **[[noam-shazeer]]**.
+  A senior federal AI-policy author moving directly into a frontier lab sharpens
+  the lab–government-ties question this theme tracks (ARA digest 2026-06-19).
+- **Sanders' $7T plan; FERC's data-center fast lane (2026-06-19).** **Bernie
+  Sanders** unveiled a **$7 trillion plan** to "give Americans control of the AI
+  industry" — a left-flank counter to the administration's deregulatory posture.
+  Separately, **FERC ordered grid operators to give AI data centers a fast lane**
+  for interconnection (without addressing supply shortages), even as **Amazon
+  employees allege retaliation** for testifying on data-center limits — the
+  energy/grid axis of federal AI policy (see [[ai-capex]]) advancing in parallel
+  (ARA digest 2026-06-19).
+- **Regulatory clock (carries, 2026-06-19).** White House AI EO deliverables due
+  **July 2 / Aug 1**; **EU AI Act** full applicability **Aug 2**; **China CAC**
+  anthropomorphic-interaction rules **July 15**; **Colorado AI Act** effective
+  **June 30** (ARA digest 2026-06-19).
 
 ## Open questions
 

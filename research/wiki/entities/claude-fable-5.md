@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.
 created_at: 2026-06-10
-timestamp: 2026-06-18T00:00:00Z
+timestamp: 2026-06-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
@@ -163,6 +164,18 @@ every feed on launch day.
   evidence yet that the ban is accelerating the open-weight catch-up it aimed to
   slow — see [[anthropic]], [[federal-ai-policy]] and [[open-weights]] (ARA digest
   2026-06-18).
+- **From talk to process — a formal proposal and a co-built jailbreak benchmark,
+  still offline (2026-06-19).** [[anthropic]] filed a **formal proposal to Commerce
+  Secretary Lutnick** to lift the ban, and reporting says the White House and
+  Anthropic are now **jointly building a jailbreak-resistance benchmark + a
+  model-release security framework** (Tom Brown / Sarah Heck) to *gate* Fable 5 /
+  Mythos 5's return — making the guardrail dispute, not the ban itself, the live
+  question. An exec said models return "in the coming days," but **both remain
+  offline worldwide as of June 19** with no government sign-off and the jailbreak
+  point unconceded. A surfacing backstory ties the original intervention to
+  **alleged China ties at SK Telecom**, which had Mythos access via Project
+  Glasswing — see [[anthropic]], [[federal-ai-policy]] and [[agentic-ai-security]]
+  (ARA digest 2026-06-19).
 
 ## Open questions
 

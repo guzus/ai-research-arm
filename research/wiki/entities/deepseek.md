@@ -6,8 +6,9 @@ aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 P
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
 description: Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.
 created_at: 2026-06-04
-timestamp: 2026-06-18T00:00:00Z
+timestamp: 2026-06-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
@@ -74,6 +75,14 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   Separately, **Microsoft is reportedly evaluating a fine-tuned DeepSeek V4** as a
   cheaper [[microsoft|Copilot Cowork]] tier than [[openai]] or [[anthropic]] — a
   Western hyperscaler treating DeepSeek's open weights as a production backend.
+
+- **DeepSeek introduces Vision — going multimodal (2026-06-19).** DeepSeek added
+  **multimodal Vision** capability, its most significant capability expansion
+  since V4, reigniting the open-weight-vs-closed-frontier debate (HN: 432 pts,
+  176 comments). Combined with the closed [[claude-fable-5|Fable 5]] embargo and
+  [[zhipu-glm-5-2|GLM-5.2]] topping the open-weights board, it extends the Chinese
+  open-weights wave from text into modality — see [[open-weights]] (ARA digest
+  2026-06-19).
 
 ## Open questions
 

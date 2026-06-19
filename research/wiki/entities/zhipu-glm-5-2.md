@@ -6,8 +6,9 @@ aliases: ["Zhipu GLM 5.2", "Zhipu GLM-5.2", "GLM 5.2", "GLM-5.2", "Z.ai GLM-5.2"
 tags: [open-weights, china, coding, long-context, frontier-model]
 description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.
 created_at: 2026-06-17
-timestamp: 2026-06-18T00:00:00Z
+timestamp: 2026-06-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA model ticket — Zhipu GLM-5.2", path: research/models/tickets/zhipu-glm-5-2.md}
@@ -64,6 +65,16 @@ max/high "thinking" modes.
   [[deepseek|DeepSeek V4 PRO]]**, so local inference likely needs **~512GB RAM** —
   the efficiency frontier [[xiaomi-mimo-v2-5-pro|MiMo]] is chasing matters here.
   See [[open-weights]] (ARA digest 2026-06-18).
+
+- **Tops Artificial Analysis' open-weights board; Willison's endorsement
+  (2026-06-19).** Reported at **753B params, 1M-token context, MIT-licensed**,
+  GLM-5.2 **topped Artificial Analysis' open-weights leaderboard**, with **Simon
+  Willison** calling it "**probably the most powerful text-only open-weights
+  LLM**" — a credentialed third-party read that hardens the day-prior
+  intelligence-index milestone. It is the anchor of the day's "China is closing
+  the gap" discourse while [[claude-fable-5|Fable 5 / Mythos 5]] stays embargoed;
+  **Elon Musk pegs Chinese "Fable-class" models at ~Q1 2027**. See
+  [[open-weights]] (ARA digest 2026-06-19).
 
 ## Open questions
 

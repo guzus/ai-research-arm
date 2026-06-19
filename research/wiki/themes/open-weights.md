@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown.
 created_at: 2026-06-14
-timestamp: 2026-06-18T00:00:00Z
+timestamp: 2026-06-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
@@ -121,6 +122,17 @@ fragile and local weights look like insurance.
   evaluating a fine-tuned DeepSeek V4** as a cheaper [[microsoft|Copilot Cowork]]
   engine — open weights moving up the value chain into a Western hyperscaler's
   production stack (ARA digest 2026-06-18).
+
+- **A credentialed endorsement + DeepSeek goes multimodal (2026-06-19).** The
+  open-weights "China is closing the gap" narrative gained its strongest
+  third-party voice: **Simon Willison** called **[[zhipu-glm-5-2|GLM-5.2]]**
+  (753B params, 1M context, MIT) "**probably the most powerful text-only
+  open-weights LLM**" as it **topped Artificial Analysis' open-weights board**,
+  with **Elon Musk pegging Chinese "Fable-class" models at ~Q1 2027**. The same
+  day, **[[deepseek|DeepSeek]] introduced Vision**, adding multimodal capability and
+  reigniting the open-weight-vs-closed-frontier debate (HN: 432 pts, 176
+  comments) — the modality frontier of open weights advancing while
+  [[claude-fable-5|Fable 5 / Mythos 5]] stays embargoed (ARA digest 2026-06-19).
 
 ## Open questions
 
