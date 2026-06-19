@@ -1,0 +1,15 @@
+AI News - 2026-06-20
+
+TOP STORIES:
+• GPT-5.6 now reported for ~June 23 as a full family (standard + Mini + Pro) — leaked 1.5M-token context, faster Codex; still UNCONFIRMED by OpenAI
+• Anthropic expands into India: Bengaluru office + India-wide partnerships, Irina Ghose named MD of India — India now its #2 Claude.ai market
+• Fable 5 / Mythos 5 export suspension hits day eight; June 20 subscriber-refund deadline arrives — both models still offline, no confirmed lift
+
+KEY NUMBERS:
+• GPT-5.6 leaked context: ~1.5M tokens (up from ~1M in GPT-5.5)
+• Anthropic India run-rate revenue ~2x since Oct 2025 (now #2 Claude.ai market)
+• Suspension: day 8 (offline since June 12)
+
+No net-new frontier launch, megaround, or binding regulation in the window. Gemini 3.5 Pro, GPT-5.6, Grok 5 all remain unshipped into the June 30 cliff.
+
+Full report on GitHub.
