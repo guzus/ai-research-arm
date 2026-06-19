@@ -10557,5 +10557,19 @@
     "headline": "ROUGHLY 200 ORGANIZATIONS STILL HAVE CLAUDE MYTHOS ACCESS VIA PROJECT GLASSWING",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2068038020394021000"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-20 06:35 UTC",
+    "headline": "SAM ALTMAN CONFIRMS NOAM SHAZEER JOINS OPENAI \u2014 'ONLY TOOK 10 YEARS'",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2067427421083652131"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-20 06:35 UTC",
+    "headline": "QWABLE-V1 \u2014 OPEN-WEIGHT CLONE DISTILLED FROM CLAUDE FABLE 5 STAYS LIVE ON HUGGINGFACE, BUT TESTS WORSE THAN ITS BASE",
+    "source": "@lordx64",
+    "url": "https://x.com/i/status/2067656586982809973"
   }
 ]
