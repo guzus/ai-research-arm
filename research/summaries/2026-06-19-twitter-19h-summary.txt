@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-19 19:42 UTC
+
+CYCLE: Quiet consolidation — no frontier launch, no Fable restoration; the embargo's origin story sharpens.
+
+TOP STORIES:
+• WIRED: SK Telecom (Anthropic investor, Project Glasswing partner) was cut off over alleged China ties days before the Fable 5 jailbreak surfaced — recasting the embargo as China-access politics, not just safety ⚠
+• GPT-5.6 stays leak-only — prediction markets now price a June ship; "juice 960" prompt-probe spreading; still no OpenAI confirmation ⚠
+• GLM-5.2 lands its first concrete benchmark — within ~1% of Opus 4.8 on FrontierSWE, beats GPT-5.5 (single low-engagement aggregator) ⚠
+
+WATCH: A WIRED follow-up or on-record Anthropic/SK Telecom statement on the Glasswing cutoff — and any congressional inquiry into the directive's basis.
+
+Full update on GitHub.
