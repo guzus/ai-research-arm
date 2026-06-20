@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-20
+
+TOP 5 PAPERS:
+• Decoupled MoE (2606.14243) - inject parametric knowledge via final-layer experts, KV-cache preserved
+• MoE Routers via Manifold Power Iteration (2606.12397) - spectral routing fights router collapse
+• NRT-Bench (2606.20408) - multi-turn red-teaming of LLM agents in a simulated nuclear control room
+• PP-OCRv6 (2606.13108) - 34.5M-param OCR beats billion-scale VLMs
+• Stream3D-VLM (2606.06891) - online streaming 3D spatial understanding for VLMs
+
+CATEGORIES: LM/NLP 3, CV/Multimodal 3, Agents/Reasoning 3, Safety 2
+
+Full report on GitHub.
