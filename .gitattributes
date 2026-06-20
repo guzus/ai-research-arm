@@ -26,6 +26,11 @@
 # front pages as regular git blobs so deploys do not depend on LFS hydration.
 research/front-page/*.png -filter -diff -merge -text
 
+# README/static banner + logos are regular git blobs (NOT LFS) so they always
+# render on GitHub without LFS hydration/bandwidth. Same exemption as front
+# pages above; this is a small, hand-optimized asset dir, not pipeline output.
+assets/*.png -filter -diff -merge -text
+
 # Audio: mp3s live on S3 (s3.guzus.xyz), not in git. The files at
 # research/audio/*.mp3 are 0-byte stubs so dashboard/scripts/prebuild.mjs
 # keeps surfacing the date in the audio manifest. See AUDIO_BASE in
