@@ -1,0 +1,14 @@
+AI News - 2026-06-21
+
+TOP STORIES:
+• Fable 5/Mythos 5 suspension hits day 9 — no lift, June 22 subscription cliff one day out
+• SK Telecom named as the Korean carrier behind the Mythos export directive (denies China ties; ~$100M Anthropic investor, cut from Project Glasswing)
+• Anthropic's rewritten privacy policy (gov ID + facial-geometry biometrics, effective July 8) reads as the path to reopen Fable/Mythos to verified US citizens
+
+NO NET-NEW: frontier model launch, venture megaround, or binding regulation in the 24-48h window. Gemini 3.5 Pro, GPT-5.6 (~June 23, unconfirmed), and Grok 5 all still unshipped into the June 30 cliff.
+
+KEY NUMBERS:
+• SK Telecom: ~$100M Anthropic investor since 2023; ~150 orgs added to Project Glasswing in early June
+• Privacy policy effective July 8; suspension day 9 (live June 9, pulled June 12)
+
+Full report on GitHub.
