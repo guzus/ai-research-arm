@@ -76,7 +76,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(gh:*),Bash(uv:*),Bash(python:*),Bash(python3:*),Bash(bird:*),Bash(jq:*),Bash(cat:*)"
+            --model opus --allowedTools "Read,Write,Edit,Bash(git checkout:*),Bash(git status:*),Bash(git diff:*),Bash(git add:*),Bash(git commit:*),Bash(uv:*),Bash(python:*),Bash(python3:*),Bash(bird:*),Bash(jq:*),Bash(cat:*)"
           prompt: |
             You are the ARA Twitter account explorer agent.
 
@@ -120,20 +120,42 @@ jobs:
                - Commit only:
                  data/sources/twitter_accounts.json
                  docs/archive/${{ steps.dates.outputs.today }}-twitter-account-explorer.md
-               - Push the branch and open a PR against main titled:
-                 `Twitter account explorer - ${{ steps.dates.outputs.today }}`
+               - Write `/tmp/twitter-account-explorer-pr-body.md` with the PR
+                 body described below. Do not push or call `gh`; the workflow
+                 publishes the branch and PR after your step.
 
             PR body must include:
             - Added accounts with evidence URLs and why they improve coverage.
             - Removed accounts with evidence and why removal is safe.
             - Validation commands run.
 
-      - name: Push changes if agent created branch
+      - name: Publish PR if agent created branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -euo pipefail
           CURRENT_BRANCH=$(git branch --show-current)
           if [ -n "$CURRENT_BRANCH" ] && [ "$CURRENT_BRANCH" != "main" ]; then
             git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
             git push -u origin "$CURRENT_BRANCH"
+            BODY_PATH="/tmp/twitter-account-explorer-pr-body.md"
+            if [ ! -s "$BODY_PATH" ]; then
+              BODY_PATH="docs/archive/${{ steps.dates.outputs.today }}-twitter-account-explorer.md"
+            fi
+            if [ ! -s "$BODY_PATH" ]; then
+              BODY_PATH="/tmp/twitter-account-explorer-pr-body.md"
+              cat > "$BODY_PATH" <<'EOF'
+          Automated Twitter account explorer update.
+
+          See the branch diff for the proposed account manifest changes.
+          EOF
+            fi
+            EXISTING_COUNT=$(gh pr list --head "$CURRENT_BRANCH" --state open --json number --jq 'length')
+            if [ "$EXISTING_COUNT" -eq 0 ]; then
+              gh pr create \
+                --base main \
+                --head "$CURRENT_BRANCH" \
+                --title "Twitter account explorer - ${{ steps.dates.outputs.today }}" \
+                --body-file "$BODY_PATH"
+            fi
           fi

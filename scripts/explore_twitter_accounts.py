@@ -129,25 +129,28 @@ def candidates_from_tweets(
             "source": "author",
             "cited_by": set(),
             "mention_count": 0,
+            "citation_examples": [],
         }
     )
 
     for tweet in tweets:
+        url = None
         try:
             handle = _author_username(tweet)
         except ManifestError:
             continue
-        if not handle or handle.lower() in monitored_handles:
+        if not handle:
             continue
-        bucket = by_handle[handle.lower()]
-        bucket["handle"] = handle
-        bucket["tweet_count"] += 1
-        bucket["likes"] += _count(tweet, "likeCount")
-        bucket["retweets"] += _count(tweet, "retweetCount")
-        bucket["replies"] += _count(tweet, "replyCount")
-        url = _tweet_url(tweet, handle)
-        if url and len(bucket["examples"]) < 3:
-            bucket["examples"].append(url)
+        if handle.lower() not in monitored_handles:
+            bucket = by_handle[handle.lower()]
+            bucket["handle"] = handle
+            bucket["tweet_count"] += 1
+            bucket["likes"] += _count(tweet, "likeCount")
+            bucket["retweets"] += _count(tweet, "retweetCount")
+            bucket["replies"] += _count(tweet, "replyCount")
+            url = _tweet_url(tweet, handle)
+            if url and len(bucket["examples"]) < 3:
+                bucket["examples"].append(url)
         text = tweet.get("text") or tweet.get("fullText") or ""
         for mentioned in MENTION_RE.findall(text):
             try:
@@ -162,11 +165,9 @@ def candidates_from_tweets(
             mentioned_bucket["source"] = "mention_graph"
             mentioned_bucket["mention_count"] += 1
             mentioned_bucket["cited_by"].add(handle)
-            mentioned_bucket["likes"] += _count(tweet, "likeCount")
-            mentioned_bucket["retweets"] += _count(tweet, "retweetCount")
-            mentioned_bucket["replies"] += _count(tweet, "replyCount")
-            if url and len(mentioned_bucket["examples"]) < 3:
-                mentioned_bucket["examples"].append(url)
+            url = url or _tweet_url(tweet, handle)
+            if url and len(mentioned_bucket["citation_examples"]) < 3:
+                mentioned_bucket["citation_examples"].append(f"cited in: {url}")
 
     candidates = []
     for bucket in by_handle.values():
@@ -176,6 +177,8 @@ def candidates_from_tweets(
         # lesson: mention-graph traversal beats keyword search for real clusters.
         engagement = bucket["likes"] + (2 * bucket["retweets"]) + bucket["replies"]
         cited_by = sorted(bucket["cited_by"])
+        if bucket["source"] == "mention_graph" and len(cited_by) < 2:
+            continue
         mention_score = (2 * len(cited_by)) + min(3, bucket["mention_count"])
         score = bucket["tweet_count"] + mention_score + min(4.0, math.log10(max(engagement, 1)))
         if score < min_score:
@@ -187,6 +190,7 @@ def candidates_from_tweets(
                 f"by {len(cited_by)} search-surfaced account(s): "
                 f"{', '.join('@' + h for h in cited_by[:5])}."
             )
+            examples = bucket["citation_examples"]
         else:
             reason = (
                 f"Surfaced {bucket['tweet_count']} time(s) as an author in AI discovery searches "

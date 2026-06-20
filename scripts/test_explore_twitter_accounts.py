@@ -74,6 +74,39 @@ class TwitterAccountExplorerTests(unittest.TestCase):
         self.assertIn("networknode", by_handle)
         self.assertEqual(by_handle["networknode"]["source"], "mention_graph")
         self.assertIn("@seed1", by_handle["networknode"]["reason"])
+        self.assertTrue(by_handle["networknode"]["evidence"][0].startswith("cited in: "))
+
+    def test_monitored_authors_still_contribute_mention_graph_signal(self):
+        tweets = [
+            {
+                "id": "1",
+                "author": {"username": "OpenAI"},
+                "text": "interesting work from @networknode",
+            },
+            {
+                "id": "2",
+                "author": {"username": "AnthropicAI"},
+                "text": "also watching @networknode",
+            },
+        ]
+
+        candidates = candidates_from_tweets(tweets, {"openai", "anthropicai"}, min_score=4, max_candidates=10)
+
+        self.assertEqual([item["handle"] for item in candidates], ["networknode"])
+
+    def test_single_mention_does_not_clear_mention_graph_threshold(self):
+        tweets = [
+            {
+                "id": "1",
+                "author": {"username": "seed1"},
+                "text": "one-off mention of @networknode",
+                "likeCount": 10000,
+            }
+        ]
+
+        candidates = candidates_from_tweets(tweets, set(), min_score=3, max_candidates=10)
+
+        self.assertNotIn("networknode", {item["handle"] for item in candidates})
 
 
 if __name__ == "__main__":
