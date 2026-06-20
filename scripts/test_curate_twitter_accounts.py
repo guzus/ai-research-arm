@@ -87,7 +87,11 @@ class TwitterAccountCurationTests(unittest.TestCase):
         }
         self.assertIn("new_ai_signal", handles)
         self.assertNotIn("metaai", handles)
-        self.assertEqual(validate_manifest(updated)["handles"], 75)
+        # One add + one remove nets to zero, so the count must match the
+        # baseline manifest. Relative to baseline (not a hard-coded constant)
+        # so legitimate roster growth by the explorer lane doesn't break it.
+        baseline = validate_manifest(load_manifest())["handles"]
+        self.assertEqual(validate_manifest(updated)["handles"], baseline)
 
 
 if __name__ == "__main__":
