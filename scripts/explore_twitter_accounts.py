@@ -11,6 +11,7 @@ import argparse
 import json
 import math
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -25,6 +26,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT = Path("/tmp/twitter-account-candidates.json")
 DEFAULT_REPORT = Path("/tmp/twitter-account-explorer-report.md")
 BIRD_CMD = os.environ.get("ARA_BIRD_CMD") or ("birdy" if shutil.which("birdy") else "bird")
+MENTION_RE = re.compile(r"(?<![A-Za-z0-9_])@([A-Za-z0-9_]{1,15})")
 
 DISCOVERY_QUERIES = [
     '("new model" OR "model release" OR "open weights" OR "AI launch") min_faves:40 -filter:replies lang:en',
@@ -117,7 +119,17 @@ def candidates_from_tweets(
     max_candidates: int,
 ) -> list[dict[str, Any]]:
     by_handle: dict[str, dict[str, Any]] = defaultdict(
-        lambda: {"handle": "", "tweet_count": 0, "likes": 0, "retweets": 0, "replies": 0, "examples": []}
+        lambda: {
+            "handle": "",
+            "tweet_count": 0,
+            "likes": 0,
+            "retweets": 0,
+            "replies": 0,
+            "examples": [],
+            "source": "author",
+            "cited_by": set(),
+            "mention_count": 0,
+        }
     )
 
     for tweet in tweets:
@@ -136,20 +148,50 @@ def candidates_from_tweets(
         url = _tweet_url(tweet, handle)
         if url and len(bucket["examples"]) < 3:
             bucket["examples"].append(url)
+        text = tweet.get("text") or tweet.get("fullText") or ""
+        for mentioned in MENTION_RE.findall(text):
+            try:
+                mentioned_handle = normalize_handle(mentioned)
+            except ManifestError:
+                continue
+            mentioned_key = mentioned_handle.lower()
+            if mentioned_key == handle.lower() or mentioned_key in monitored_handles:
+                continue
+            mentioned_bucket = by_handle[mentioned_key]
+            mentioned_bucket["handle"] = mentioned_handle
+            mentioned_bucket["source"] = "mention_graph"
+            mentioned_bucket["mention_count"] += 1
+            mentioned_bucket["cited_by"].add(handle)
+            mentioned_bucket["likes"] += _count(tweet, "likeCount")
+            mentioned_bucket["retweets"] += _count(tweet, "retweetCount")
+            mentioned_bucket["replies"] += _count(tweet, "replyCount")
+            if url and len(mentioned_bucket["examples"]) < 3:
+                mentioned_bucket["examples"].append(url)
 
     candidates = []
     for bucket in by_handle.values():
-        # First-principles scoring: repeated surfacing matters, but engagement
-        # is logarithmic because one viral post should not dominate the watchlist.
+        # First-principles scoring: repeated surfacing and cross-account mentions
+        # matter, but engagement is logarithmic because one viral post should not
+        # dominate the watchlist. This borrows goodtweet's strongest discovery
+        # lesson: mention-graph traversal beats keyword search for real clusters.
         engagement = bucket["likes"] + (2 * bucket["retweets"]) + bucket["replies"]
-        score = bucket["tweet_count"] + min(4.0, math.log10(max(engagement, 1)))
+        cited_by = sorted(bucket["cited_by"])
+        mention_score = (2 * len(cited_by)) + min(3, bucket["mention_count"])
+        score = bucket["tweet_count"] + mention_score + min(4.0, math.log10(max(engagement, 1)))
         if score < min_score:
             continue
         examples = bucket["examples"]
-        reason = (
-            f"Surfaced {bucket['tweet_count']} time(s) in AI discovery searches "
-            f"with aggregate engagement {engagement}."
-        )
+        if bucket["source"] == "mention_graph":
+            reason = (
+                f"Mention-graph candidate cited {bucket['mention_count']} time(s) "
+                f"by {len(cited_by)} search-surfaced account(s): "
+                f"{', '.join('@' + h for h in cited_by[:5])}."
+            )
+        else:
+            reason = (
+                f"Surfaced {bucket['tweet_count']} time(s) as an author in AI discovery searches "
+                f"with aggregate engagement {engagement}."
+            )
         candidates.append(
             {
                 "action": "add",
@@ -158,6 +200,7 @@ def candidates_from_tweets(
                 "score": round(score, 2),
                 "reason": reason,
                 "evidence": examples,
+                "source": bucket["source"],
             }
         )
 

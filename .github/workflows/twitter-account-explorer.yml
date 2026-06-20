@@ -99,6 +99,9 @@ jobs:
             Task:
             1. Read the manifest, curation docs, seed candidates, and seed report.
             2. Inspect recent Twitter outputs for coverage gaps or noisy monitored accounts.
+               Prefer mention-graph evidence when available: goodtweet's account
+               discovery work found repeated cross-account mentions more reliable
+               than keyword search alone.
             3. Optionally issue up to 10 follow-up `bird` calls with `--json --plain`
                to verify candidate accounts or suspected stale accounts.
             4. If there are no strong changes, print exactly `no account changes`

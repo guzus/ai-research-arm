@@ -52,6 +52,29 @@ class TwitterAccountExplorerTests(unittest.TestCase):
 
         self.assertEqual(len(candidates), 2)
 
+    def test_candidates_from_tweets_uses_mention_graph_signal(self):
+        tweets = [
+            {
+                "id": "1",
+                "author": {"username": "seed1"},
+                "text": "good thread by @networknode on AI infra",
+                "likeCount": 20,
+            },
+            {
+                "id": "2",
+                "author": {"username": "seed2"},
+                "text": "@networknode has the better sourcing here",
+                "likeCount": 30,
+            },
+        ]
+
+        candidates = candidates_from_tweets(tweets, set(), min_score=4, max_candidates=10)
+
+        by_handle = {item["handle"]: item for item in candidates}
+        self.assertIn("networknode", by_handle)
+        self.assertEqual(by_handle["networknode"]["source"], "mention_graph")
+        self.assertIn("@seed1", by_handle["networknode"]["reason"])
+
 
 if __name__ == "__main__":
     unittest.main()

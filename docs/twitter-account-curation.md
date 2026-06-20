@@ -63,6 +63,9 @@ dispatch. It is an agent loop, but it is intentionally review-gated:
 
 1. `scripts/explore_twitter_accounts.py` runs broad bird searches and writes
    `/tmp/twitter-account-candidates.json` plus a Markdown evidence report.
+   It uses the `goodtweet` lesson that mention-graph traversal is often higher
+   signal than keyword search: unknown handles mentioned by multiple
+   search-surfaced accounts are scored as candidates too.
 2. A Claude explorer reads those candidates, the current manifest, recent
    Twitter outputs, and this curation contract.
 3. If no strong evidence exists, it prints `no account changes`.
