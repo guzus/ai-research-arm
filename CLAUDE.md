@@ -38,6 +38,7 @@ and opens a PR with methodology fixes.
 | [`docs/model-tickets.md`](docs/model-tickets.md) | Schema + lifecycle + dedup protocol for `research/models/tickets/*.md`. Read by the CRUD agent in `24h-model-timeline.yml` and enforced by `scripts/check_model_tickets.py`. |
 | [`docs/wiki-schema.md`](docs/wiki-schema.md) | Canonical schema + page conventions for the LLM Wiki (`research/wiki/`). Read at runtime by the ingest agent in `wiki-ingest.yml` and enforced by `scripts/check_wiki.py`. |
 | [`docs/hooker-telemetry.md`](docs/hooker-telemetry.md) | Non-blocking telemetry route via `https://hooker.guzus.xyz` topic `ara-telemetry`. |
+| [`docs/headline-dedupe.md`](docs/headline-dedupe.md) | Dedup contract + Mermaid flow for the Twitter headline-alert ledger (`research/summaries/twitter-announced-history.json`). Documents the layered `duplicate_reason` check (exact / same-source / cross-source) in `scripts/dedupe_headline_alerts.py`, used by `hourly-twitter.yml`. |
 | [`docs/archive/`](docs/archive/) | Historical improvement logs and superseded docs. |
 | `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`; Railway auto-deploys on every push to `main` (next row). |
 | [`Dockerfile`](Dockerfile) + [`Caddyfile`](Caddyfile) + [`railway.json`](railway.json) | The Railway deploy stack serving **ara.guzus.xyz** (behind Cloudflare — responses carry `x-railway-edge`). The root `Dockerfile` builds the dashboard with bun (`oven/bun:1-alpine`, plus `nodejs` for the pre/postbuild node scripts) and serves `dashboard/dist` with Caddy; `railway.json` pins the DOCKERFILE builder + `/` healthcheck. `dashboard/vercel.json` is the legacy Vercel config — Vercel no longer serves the domain (Load-bearing rule 3). |
@@ -56,7 +57,7 @@ and opens a PR with methodology fixes.
 | `prior_context.py` | Find prior generative-research articles related to a new topic. |
 | `research_search.py` | Specialized search wrappers for primary-source research. |
 | `stock_prices.py` | Yahoo Finance time series → copy-paste lines for `:::line-chart`. |
-| `dedupe_headline_alerts.py` | Filter + record delivered Twitter headline alerts (used by `hourly-twitter.yml`). |
+| `dedupe_headline_alerts.py` | Filter + record delivered Twitter headline alerts (used by `hourly-twitter.yml`). Layered dedup contract + Mermaid diagrams in [`docs/headline-dedupe.md`](docs/headline-dedupe.md). |
 | `check_model_tickets.py` | Validator for `research/models/tickets/*.md` against the schema in `docs/model-tickets.md`. The CRUD agent in `24h-model-timeline.yml` runs it after every pass; CI runs it on every PR. |
 | `check_wiki.py` | Validator for `research/wiki/` pages against the schema in `docs/wiki-schema.md`. `uv run python scripts/check_wiki.py` (exit 0 = safe); `--lint` adds advisory checks. The ingest agent in `wiki-ingest.yml` runs it until exit 0; CI runs it on every PR. |
 | `wiki_search.py` | Search wrapper over `research/wiki/` (`uv run python scripts/wiki_search.py "<query>"`). The ingest agent runs it before writing any page so it UPDATEs an existing page instead of duplicating. |

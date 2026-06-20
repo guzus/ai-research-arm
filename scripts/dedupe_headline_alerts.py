@@ -14,6 +14,8 @@ Dedupe layers (see `duplicate_reason`), in priority order:
      Jaccard floor (size-symmetric, so an appended-fact follow-up is not eaten),
      an absolute shared-token floor, and a recency window; it stays inert unless
      a reference time is supplied.
+
+Full contract + flow diagrams: docs/headline-dedupe.md
 """
 
 from __future__ import annotations
