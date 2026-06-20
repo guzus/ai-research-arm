@@ -548,6 +548,170 @@ jobs:
             --filtered-file "$FILTERED_FILE" \
             --timestamp "$TIMESTAMP"
 
+      # ── claude-tier agent dedupe gate (steps 1/4: shortlist) ───────
+      # The deterministic filter above can't separate true cross-source
+      # re-reports from distinct news that merely shares vocabulary in the
+      # contested band just below its 0.5 suppress floor. Shortlist the
+      # survivors whose nearest prior alert sits in [0.35,0.50) Jaccard so a
+      # model can make the final call. Runs on dry-run too (so a dispatch
+      # exercises the whole gate); usually shortlists nothing.
+      - name: Shortlist near-duplicate headlines (claude tier)
+        id: judge_shortlist
+        if: steps.backend.outputs.name == 'claude'
+        env:
+          FILTERED_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines-to-send.json
+          HISTORY_FILE: research/summaries/twitter-announced-history.json
+          DOUBTFUL_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-judge-doubtful.json
+        run: |
+          set -euo pipefail
+          [ -f "$FILTERED_FILE" ] || echo '[]' > "$FILTERED_FILE"
+          uv run python scripts/headline_judge.py shortlist \
+            --to-send-file "$FILTERED_FILE" \
+            --history-file "$HISTORY_FILE" \
+            --out-file "$DOUBTFUL_FILE"
+          COUNT=$(jq 'length' "$DOUBTFUL_FILE" 2>/dev/null || echo 0)
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Shortlisted $COUNT contested-band headline(s) for the judge."
+
+      # ── claude-tier agent dedupe gate (steps 2/4: Haiku adjudicates) ──
+      # Final gate: Haiku rules on each shortlisted headline vs its <=5
+      # nearest priors. Bias is hard toward KEEP — it may only turn a
+      # would-be send into a suppress, on a HIGH-confidence duplicate. Native
+      # Claude via the same OAuth token + action pattern used elsewhere in
+      # this job. continue-on-error so a model hiccup fails OPEN (no verdicts
+      # -> nothing suppressed). Skipped when the shortlist is empty.
+      - name: Adjudicate near-duplicate headlines with Haiku (claude tier)
+        id: judge_adjudicate
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && steps.judge_shortlist.outputs.count != '0'
+          && steps.judge_shortlist.outputs.count != ''
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        env:
+          DOUBTFUL_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-judge-doubtful.json
+          VERDICTS_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-judge-verdicts.json
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --model haiku --max-turns 6 --allowedTools "Read,Write,Bash(cat:*),Bash(jq:*),Bash(printenv:*)"
+          prompt: |
+            You are the final duplicate gate for an AI-news headline alert
+            feed. Reason from FIRST PRINCIPLES: judge whether two headlines
+            describe the SAME underlying real-world event, NOT whether they
+            share words. Do not assume any balance of duplicates vs distinct.
+
+            CARDINAL RULE: when in doubt, KEEP it (verdict "distinct").
+            Suppressing a real, new headline is far worse than letting one
+            duplicate through. Mark "duplicate" with "high" confidence ONLY
+            when you are certain it is the same specific event already sent.
+
+            Step 1 — read the input. Get the path and read it:
+              DOUBTFUL=$(printenv DOUBTFUL_FILE); cat "$DOUBTFUL"
+            It is a JSON array; each entry is
+              { "url", "headline", "candidates": [ { "headline", "delivered_at", "url" }, ... ] }
+            The candidates are prior ALREADY-SENT alerts that share vocabulary
+            with the headline.
+
+            Step 2 — classify each entry against its candidates.
+            DUPLICATE (same event already alerted) — only if a candidate is the
+            SAME specific event: same action, same primary subject(s), same
+            announcement. Paraphrases, reordered facts, refined numbers
+            ("$2.9B" vs "$3B" of the same round), or a different account
+            reporting the same news ARE duplicates.
+            DISTINCT (keep — send it) — if NONE of the candidates is the same
+            event. These are NOT duplicates even though they share words:
+              - SAME metric/number, DIFFERENT subject (two different companies
+                each crossing the same market cap) -> distinct.
+              - SAME templated action, DIFFERENT entity (two different
+                companies each cutting API pricing) -> distinct.
+              - APPENDED FACTS / real progression: a follow-up adding genuinely
+                new info (a new number, an official confirmation of a prior
+                rumor, a newly-named party) -> distinct. A pure restatement
+                with no new info is a duplicate.
+              - A different, itself-newsworthy stage of an ongoing story
+                (rumor -> official confirmation; priced -> debuted).
+
+            Step 3 — output. Use the Write tool to create the file whose path
+            is in env var VERDICTS_FILE (run: printenv VERDICTS_FILE). Write a
+            JSON array, exactly one object per input entry:
+              { "url": "<the entry's url>", "verdict": "duplicate" | "distinct",
+                "confidence": "high" | "medium" | "low",
+                "matched_url": "<candidate url if duplicate, else empty string>",
+                "reason": "<one short clause>" }
+            Key each verdict by the entry's "url" exactly. Use "duplicate" +
+            "high" ONLY when certain; any genuine uncertainty -> "distinct".
+            Write ONLY the JSON array to that file — no prose, no other files.
+
+      # ── claude-tier agent dedupe gate (steps 3/4: apply verdicts) ──
+      # Drop only HIGH-confidence duplicates from the send set; fail OPEN if
+      # the judge produced no/garbled verdicts. Matches verdicts to headlines
+      # by URL, not position. Writes this cycle's suppressions for the alert.
+      - name: Apply headline judge verdicts (claude tier)
+        id: judge_apply
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && steps.judge_shortlist.outputs.count != '0'
+          && steps.judge_shortlist.outputs.count != ''
+        env:
+          FILTERED_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-headlines-to-send.json
+          VERDICTS_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-judge-verdicts.json
+          SUPPRESSED_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-judge-suppressed.json
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+        run: |
+          set -euo pipefail
+          # Fail open: a skipped/crashed judge step leaves no verdicts file.
+          [ -f "$VERDICTS_FILE" ] || echo '[]' > "$VERDICTS_FILE"
+          SUMMARY=$(uv run python scripts/headline_judge.py apply \
+            --to-send-file "$FILTERED_FILE" \
+            --verdicts-file "$VERDICTS_FILE" \
+            --out-file "$FILTERED_FILE" \
+            --suppressed-file "$SUPPRESSED_FILE" \
+            --timestamp "$TIMESTAMP")
+          echo "$SUMMARY"
+          DROPPED=$(echo "$SUMMARY" | jq -r '.suppressed' 2>/dev/null || echo 0)
+          echo "dropped=$DROPPED" >> "$GITHUB_OUTPUT"
+          echo "$SUMMARY" | jq -r '.suppressed_headlines[]? | "  🔇 judge suppressed: " + .' || true
+
+      # ── claude-tier agent dedupe gate (steps 4/4: alert on eats) ───
+      # The judge enforces immediately with no shadow phase, so every
+      # suppression is surfaced to Telegram via hooker — a wrong eat is
+      # visible in hours, not buried in a log. Non-blocking.
+      - name: Notify on judge suppressions (claude tier)
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && steps.judge_apply.outputs.dropped != '0'
+          && steps.judge_apply.outputs.dropped != ''
+          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+        continue-on-error: true
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          AUDIT_CHAT_ID: "-1003988951534"
+          SUPPRESSED_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-judge-suppressed.json
+        run: |
+          set -euo pipefail
+          if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+            echo "Hooker credentials missing — skipping judge alert"
+            exit 0
+          fi
+          [ -f "$SUPPRESSED_FILE" ] || exit 0
+          COUNT=$(jq 'length' "$SUPPRESSED_FILE" 2>/dev/null || echo 0)
+          [ "$COUNT" -lt 1 ] && exit 0
+          # One audit message listing each eaten headline + the prior it was
+          # judged a duplicate of (clickable) + the judge's reason.
+          TEXT=$(jq -r '
+            "🔇 <b>Dedupe gate suppressed " + (length|tostring) + " near-duplicate(s)</b>",
+            (.[] | "• " + .headline
+                   + (if (.matched_url // "") != "" then " — <a href=\"" + .matched_url + "\">prior</a>" else "" end)
+                   + (if (.reason // "") != "" then " (" + .reason + ")" else "" end))
+          ' "$SUPPRESSED_FILE" | jq -Rs .)
+          curl -sS -X POST "${HOOKER_URL}/send" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "{\"chat_id\":\"${AUDIT_CHAT_ID}\",\"title\":\"\",\"text\":${TEXT},\"priority\":2,\"tags\":[],\"parse_mode\":\"HTML\"}" \
+            && echo "Judge-suppression alert sent ($COUNT)."
+
       # ── Push the markdown digest + summary (all tiers, not on dry-run) ──
       # Note on push semantics (codex [P2] fix): a `git push` exit-non-zero
       # is treated as a HARD FAILURE here. Previously this step swallowed
