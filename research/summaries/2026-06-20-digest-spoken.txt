@@ -1,0 +1,9 @@
+Speaker 1: Saturday, June twentieth, twenty twenty-six.
+Speaker 2: [high_energy] The Anthropic standoff with the Trump administration is still unresolved — controls have NOT been lifted, but the White House is now walking back the threat, with Trump saying it would have been a concern "a week ago maybe." Meanwhile, Fable five and Mythos five hit day eight offline, and the June twentieth refund deadline is here.
+Speaker 1: On the model front, GPT five point six is reportedly landing around June twenty-third as a full family — standard, Mini, and Pro — with a leaked context window of [emphasis] one point five million tokens [/emphasis], up forty-three percent from five point five. Codex also gets faster. OpenAI has not confirmed any of this.
+Speaker 2: That context window is enormous. Worth noting that just a few months ago a million tokens felt like a ceiling.
+Speaker 1: Some big talent moves to cover. Nobel laureate John Jumper, the AlphaFold architect, is leaving Google DeepMind for Anthropic. And Sam Altman confirmed Noam Shazeer is joining OpenAI.
+Speaker 2: Two of the most consequential researchers in the field, both moving in the same week.[dramatic_pause] The talent shuffle is accelerating.
+Speaker 1: On the business side, India is now Anthropic's number two Claude dot ai market, with revenue roughly [emphasis] double [/emphasis] what it was in October twenty twenty-five.
+Speaker 2: And in robotics, Hyundai has taken full control of Boston Dynamics. That story was the top post on Hacker News with four hundred thirty-four points. Open-weights watchers are also tracking a shift toward GLM five point two.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
