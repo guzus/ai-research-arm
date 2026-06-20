@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-06-20 13:37 UTC
+
+CYCLE: Quiet weekend continuation — no new event, no lab release; saga frozen.
+
+TOP STORIES:
+• Open-weights trio (GLM-5.2, MiniMax M3, Kimi K2.7) tops AA open leaderboard; GLM-5.2 cited 62.1 vs GPT-5.5's 58.6 on SWE-bench Pro ⚠
+• Anthropic export-control saga still frozen — no Commerce lift, no re-release; "coming days" pledge now ~3 days elapsed ⚠
+
+WATCH: A dated Commerce decision / Fable 5 re-release — and whether "coming days" passes a full week (~June 24).
+
+Full update on GitHub.
