@@ -222,6 +222,21 @@ class ApplyVerdictsTest(unittest.TestCase):
         kept, _ = self._run(to_send, None, raw_verdicts="{not json at all")
         self.assertEqual(len(kept), 1)
 
+    def test_fenced_json_verdicts_are_parsed(self):
+        # Haiku often wraps output in a ```json fence despite "write ONLY JSON".
+        to_send = [{"headline": "DUP", "url": "https://x.com/b/1"}]
+        raw = '```json\n[{"url": "https://x.com/b/1", "verdict": "duplicate", "confidence": "high"}]\n```'
+        kept, audit = self._run(to_send, None, raw_verdicts=raw)
+        self.assertEqual(kept, [])
+        self.assertEqual(len(audit), 1)
+
+    def test_preambled_json_verdicts_are_parsed(self):
+        # A sentence of preamble before the array must still be recovered.
+        to_send = [{"headline": "DUP", "url": "https://x.com/b/1"}]
+        raw = 'Here are my verdicts:\n[{"url": "https://x.com/b/1", "verdict": "duplicate", "confidence": "high"}]'
+        kept, _ = self._run(to_send, None, raw_verdicts=raw)
+        self.assertEqual(kept, [])
+
     def test_verdicts_matched_by_url_not_index(self):
         # Verdicts arrive in a different order than to-send; the right item must drop.
         to_send = [

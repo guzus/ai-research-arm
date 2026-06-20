@@ -512,6 +512,12 @@ jobs:
               "source": "@dryrun",
               "url": "https://x.com/dryrun/status/999999999999999999",
               "category": "opensource"
+            },
+            {
+              "headline": "NOAM SHAZEER OFFICIALLY JOINS OPENAI, ALTMAN CONFIRMS AFTER A DECADE OF COURTING",
+              "source": "@dryrun",
+              "url": "https://x.com/dryrun/status/999999999999999998",
+              "category": "business"
             }
           ]
           EOF

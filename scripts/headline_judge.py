@@ -40,6 +40,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -150,16 +151,43 @@ def shortlist(args: argparse.Namespace) -> int:
     return 0
 
 
+def _parse_verdicts_text(text: str) -> list[Any]:
+    """Parse a verdicts JSON array from raw model output, tolerantly.
+
+    Haiku ignores "write ONLY the JSON" more readily than larger models, so the
+    file may carry a ```json fence or a sentence of preamble. Try bare JSON
+    first, then a fenced block, then the outermost [...] slice. Returns [] on
+    failure -- the caller treats that as "no verdicts" and keeps every headline,
+    so a garbled response degrades to send-everything (fail OPEN), never a crash.
+    """
+    text = (text or "").strip()
+    if not text:
+        return []
+    candidates = [text]
+    fence = re.search(r"```(?:json)?\s*(.*?)```", text, re.DOTALL)
+    if fence:
+        candidates.append(fence.group(1).strip())
+    start, end = text.find("["), text.rfind("]")
+    if 0 <= start < end:
+        candidates.append(text[start : end + 1])
+    for candidate in candidates:
+        try:
+            data = json.loads(candidate)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(data, list):
+            return data
+    return []
+
+
 def _load_verdicts(path: Path) -> dict[str, dict[str, Any]]:
     """Map incoming-URL -> verdict. Fails OPEN: any problem yields no verdicts,
     so every headline is kept (sent). Never raises on a bad model response."""
     if not path.exists():
         return {}
     try:
-        data = json.loads(path.read_text() or "[]")
-    except (json.JSONDecodeError, OSError):
-        return {}
-    if not isinstance(data, list):
+        data = _parse_verdicts_text(path.read_text())
+    except OSError:
         return {}
     by_url: dict[str, dict[str, Any]] = {}
     for entry in data:
