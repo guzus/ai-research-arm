@@ -1,6 +1,6 @@
-![AI Research — an automated AI-news intelligence pipeline](assets/banner.png)
+![AI Research Arm — an automated AI-news intelligence pipeline](assets/banner.png)
 
-# AI Research
+# AI Research Arm
 
 Automated multi-source AI news research agent powered by Claude and MCP.
 
