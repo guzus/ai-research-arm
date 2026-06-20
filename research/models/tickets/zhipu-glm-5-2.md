@@ -33,7 +33,19 @@ status_note: |
   independent ecosystem adoption, verification advances to `confirmed`; neutral
   SWE-bench/LiveCodeBench placement beyond the lab's own DeepSWE number is the
   remaining gap.
-expected: "Shipped — MIT weights live (HuggingFace), API + GLM Coding Plan, day-0 vLLM/Notion/Baseten support; neutral third-party benchmark placement still settling"
+
+  **2026-06-20:** Surface + benchmark expansion. GLM-5.2 is now **live on Z.ai
+  Web Chat** (following the API launch), putting the 1M-context model in the
+  browser. Neutral-leaderboard placement — the gap flagged on 06-18 — has begun
+  to fill: community recaps put it **#1 on Design Arena**, **#1 open-weights on
+  the Artificial Analysis Intelligence Index**, the **first open model >80% on
+  Terminal-Bench**, and ~**74.4 on FrontierSWE vs Opus 4.8's 75.1** (i.e.
+  near-frontier on a third-party coding eval), at ~**$1.4/$4.4 per MTok**. Still
+  routed largely through secondary/community accounts rather than a neutral
+  benchmark org's primary post, so it sharpens — but does not replace — the
+  neutral-placement caveat. Status stays `released`, verification stays
+  `confirmed`.
+expected: "Shipped — MIT weights live (HuggingFace), API + GLM Coding Plan + Web Chat, day-0 vLLM/Notion/Baseten support; community leaderboards (Design Arena #1, AA Index #1 open-weights, Terminal-Bench >80%) strong, neutral-org primary placement still settling"
 labels:
   - frontier-model
   - open-weights
@@ -48,7 +60,7 @@ sources:
   - "@kimmonismus"
   - "@ns123abc"
 created_at: 2026-06-14
-updated_at: 2026-06-18
+updated_at: 2026-06-20
 closed_at: null
 closed_reason: null
 history:
@@ -58,6 +70,8 @@ history:
     change: "Corroboration — a dated 2026-06-15 launch announcement (attributed to Zhipu / 'Huazhang Technology') restates GLM-5.2 as the newest flagship with 1M long context, a claimed lead on long-range tasks, and MIT open-sourcing, echoed across China-tech aggregators. Strengthens the release record but still no captured primary Zhipu blog/model card and the MIT weights are described as forthcoming → status stays released, verification stays partial."
   - ts: 2026-06-18
     change: "MIT weights live + verification → confirmed. Z.ai's official thread (@Zai_org 2026-06-16) bills GLM-5.2 as 744B-A40B MoE, 1M context, max/high reasoning, 46.2% DeepSWE, same price as GLM-5.1. Day-0 ecosystem uptake (vLLM v0.23.0, Notion, Baseten) plus HuggingFace MIT weights. Strong community placement — @kimmonismus 'third best model across open + proprietary,' top of design arena after Fable 5's pull, @ns123abc 'Opus 4.6 / GPT-5.4 tier'; Z.ai also shipped a ZCode desktop agent. Official thread + live weights + independent adoption → verification confirmed; neutral SWE-bench/LiveCodeBench placement still the open gap."
+  - ts: 2026-06-20
+    change: "Surface + benchmark expansion. GLM-5.2 now live on Z.ai Web Chat (after the API launch), putting the 1M-context model in the browser. Neutral-leaderboard placement (the 06-18 gap) starts filling: community recaps put it #1 on Design Arena, #1 open-weights on the Artificial Analysis Intelligence Index, first open model >80% on Terminal-Bench, and ~74.4 FrontierSWE vs Opus 4.8's 75.1, at ~$1.4/$4.4 per MTok. Still mostly secondary/community routing rather than a neutral benchmark org's primary post → status stays released, verification stays confirmed. Sources: @aimeowyak 2068237497562517938, @johnseach 2068237957669228677."
 ---
 
 **GLM 5.2**, from **Zhipu AI (Z.ai)**, is the cycle's dominant open-weights

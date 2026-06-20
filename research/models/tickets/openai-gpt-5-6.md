@@ -17,7 +17,16 @@ status_note: |
   and pricing ~3x cheaper than Fable 5 — timed to the date many Fable 5 users
   are pushed to a premium plan. Consistent with the by-2026-06-30 window;
   unconfirmed, no primary.
-expected: "Prediction markets ~89% by 2026-06-30; a social rumor floats 2026-06-23; no OpenAI-confirmed date"
+
+  **2026-06-20:** Rumor still live inside the window. @iruletheworldmo floated a
+  fresh **"next week"** launch claim (2026-06-19), and a separate post
+  (@rishflips, 2026-06-20) claims OpenAI is **stealth-testing a model** —
+  speculated GPT-5.6 — via a "Deployment Simulation" method, citing only
+  "users say ChatGPT suddenly feels smarter." Both are zero-artifact influencer
+  teases (the amplifier itself notes "no official GPT-5.6 in OpenAI release
+  notes"). No OpenAI on-record date, public artifact, or benchmarks. Status
+  stays `rumored`, verification stays `partial`.
+expected: "Prediction markets ~89% by 2026-06-30; social rumors float 2026-06-23 / 'next week'; no OpenAI-confirmed date"
 labels:
   - openai
   - frontier-model
@@ -28,7 +37,7 @@ sources:
   - "@AndrewCurran_"
   - "@Polymarket"
 created_at: 2026-06-09
-updated_at: 2026-06-16
+updated_at: 2026-06-20
 closed_at: null
 closed_reason: null
 history:
@@ -38,6 +47,8 @@ history:
     change: "Rumor refresh — a low-credibility single-source social rumor now pins a 2026-06-23 GPT-5.6 release with ~1.5M-token context, stronger agentic coding, and ~3x-cheaper-than-Fable-5 pricing, timed to the date many Fable 5 users are pushed to premium. Consistent with the existing by-2026-06-30 window; still no OpenAI on-record date or public artifact. Status stays rumored; verification stays partial."
   - ts: 2026-06-16
     change: "Rumor at 'fever pitch' — the 2026-06-23 / ~1.5M-context / ~3x-cheaper claim recirculated heavily (the seed post ~276 RT / 1.7K likes) and accounts now add that GPT-5.6 'reportedly surfaced in internal Codex logs' with sources describing it as a 'meaningful improvement' over GPT-5.5. The Codex-logs mention is a weak backend tell (consistent with the earlier 'gpt-5.5' 404s), not a captured artifact. Still no OpenAI on-record date, public artifact, or benchmarks. Status stays rumored; verification stays partial."
+  - ts: 2026-06-20
+    change: "Rumor still live in-window. @iruletheworldmo floated a fresh 'next week' launch claim (2026-06-19); a separate post (@rishflips 2026-06-20) claims OpenAI is stealth-testing a model (speculated GPT-5.6) via a 'Deployment Simulation' method, citing only 'users say ChatGPT suddenly feels smarter.' Both are zero-artifact influencer teases (the amplifier flags 'no official GPT-5.6 in OpenAI release notes'). No OpenAI on-record date, artifact, or benchmarks. Status stays rumored; verification stays partial."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely
