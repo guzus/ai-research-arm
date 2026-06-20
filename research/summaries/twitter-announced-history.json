@@ -10571,5 +10571,26 @@
     "headline": "QWABLE-V1 \u2014 OPEN-WEIGHT CLONE DISTILLED FROM CLAUDE FABLE 5 STAYS LIVE ON HUGGINGFACE, BUT TESTS WORSE THAN ITS BASE",
     "source": "@lordx64",
     "url": "https://x.com/i/status/2067656586982809973"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-20 13:37 UTC",
+    "headline": "OPEN-WEIGHTS TRIO \u2014 GLM-5.2, MINIMAX M3, KIMI K2.7 NOW TOP ARTIFICIAL ANALYSIS OPEN-SOURCE LEADERBOARD",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2068079318484549714"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-20 13:37 UTC",
+    "headline": "GLM-5.2 SCORES 62.1 ON SWE-BENCH PRO \u2014 EDGES GPT-5.5 (58.6) AT ~1/6 THE COST, MIT LICENSE",
+    "source": "@nodescribe89",
+    "url": "https://x.com/nodescribe89/status/2067888482186559709"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-20 13:37 UTC",
+    "headline": "ANTHROPIC EXPORT-CONTROL SAGA STILL FROZEN \u2014 NO COMMERCE LIFT, NO FABLE 5 RE-RELEASE AS 'COMING DAYS' PLEDGE HITS DAY 3",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2068041439481901157"
   }
 ]
