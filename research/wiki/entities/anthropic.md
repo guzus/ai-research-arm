@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-timestamp: 2026-06-19T00:00:00Z
+timestamp: 2026-06-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
@@ -352,6 +353,37 @@ Four developments through May 2026 put Anthropic at the center of the field:
   shareable, version-tracked interactive page drawing on full session context —
   extending the [[dynamic-workflows]] developer-surface push into a collaboration
   artifact (The Decoder, ARA digest 2026-06-19).
+
+- **Trump visibly de-escalates the standoff — but the controls aren't lifted
+  (2026-06-20).** On the Axios Show, President **Trump** signaled resolution of the
+  [[claude-fable-5|Fable 5 / Mythos 5]] export fight: asked whether Amodei is a
+  national-security threat, he said **"not now, but a week ago maybe … he responded
+  very responsibly,"** said he doesn't want to shut the company down, and revealed
+  that **"a competitor, and a part owner, that turned Anthropic in"** (relayed
+  consistently by Bloomberg's Andrew Curran, Kalshi, and Axios's Herb Scribner —
+  the first public *presidential* signal toward unwinding the order). One account
+  attributed the trigger to an **Amazon CEO Andy Jassy** call; Trump did not name
+  [[amazon|Amazon]], and this competes with earlier WIRED reporting tracing it to
+  **SK Telecom**'s Mythos access. **Reality check:** Trump's language is hedged
+  ("So far. I think he will") and **no Commerce order has narrowed or lifted the
+  controls** — Fable 5 / Mythos 5 hit **day eight offline** and the **June 20
+  subscriber-refund deadline arrived with no confirmed restoration** (~200 orgs
+  reportedly retained Mythos access via Project Glasswing despite the order). See
+  [[claude-fable-5]], [[federal-ai-policy]] and [[agentic-ai-security]] (ARA digest
+  2026-06-20).
+- **John Jumper (AlphaFold) joins from DeepMind; the talent shuffle intensifies
+  (2026-06-20).** Nobel laureate **[[john-jumper]]** — co-creator of AlphaFold and
+  joint 2024 Chemistry Nobelist — **left Google DeepMind for Anthropic**, his own
+  announcement acknowledged by Demis Hassabis. It follows the [[noam-shazeer]]→[[openai]]
+  and earlier Karpathy→Anthropic moves, and is the most prestigious science hire of
+  the cycle — a scientific-credibility signal for a lab whose top models sit
+  embargoed (ARA digest 2026-06-20).
+- **India build-out: Bengaluru office; #2 Claude.ai market (2026-06-20).** Anthropic
+  **opened a Bengaluru office** with India-wide partnerships and named **Irina Ghose**
+  (ex-Microsoft India MD) Managing Director of India. **India is now Anthropic's #2
+  Claude.ai market**, with run-rate revenue up **~2× since October 2025** — extending
+  the aggressive APAC/EMEA cadence (Seoul, Tokyo, Milan) even as the frontier models
+  stay dark (ARA digest 2026-06-20).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

@@ -6,8 +6,9 @@ aliases: ["Noam Shazeer", "Shazeer"]
 tags: [people, researcher, transformer, openai, google, character-ai]
 description: Transformer co-inventor ("Attention Is All You Need"), Character.AI founder, and former Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
 created_at: 2026-06-19
-timestamp: 2026-06-19T00:00:00Z
+timestamp: 2026-06-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "CNBC — Google Gemini co-lead Noam Shazeer leaves for OpenAI", url: "https://www.cnbc.com/2026/06/18/google-gemini-co-lead-noam-shazeer-leaves-for-openai.html", date: 2026-06-18}
   - {title: "Axios — Noam Shazeer, Google, OpenAI", url: "https://www.axios.com/2026/06/18/noam-shazeer-google-openai-characterai", date: 2026-06-18}
@@ -25,16 +26,20 @@ Research**, the cycle's most significant frontier-talent move.
   **$2.7B in August 2024** to bring Shazeer and part of his Character.AI team back
   into DeepMind; his exit to [[openai]] **reverses that acqui-hire** and lands
   while Google scrambles to ship Gemini 3.5 Pro before a reported ~June 30 cliff.
-  Sam Altman publicly welcomed the move (HN discussion, 155 pts).
+  Sam Altman publicly welcomed the move (HN discussion, 155 pts), and on
+  2026-06-20 **personally confirmed** it the day's Quote of the Day: *"noam is one
+  of the people I have most wanted to work with since the very beginning of openai.
+  only took 10 years. i think it will be worth the wait!"* (ARA digest 2026-06-20).
 - **Architecture research, specifically.** Shazeer's mandate is *architecture* —
   the model-design frontier — not a product or org role. Paired with [[openai]]'s
   same-week policy hire of **Dean Ball** (Head of Strategic Futures), it signals
   OpenAI building out both its research frontier and its Washington bench ahead of
   its IPO; see [[openai]] and [[federal-ai-policy]].
 - **Part of the 2026 frontier-talent war.** Shazeer→OpenAI mirrors the earlier
-  Karpathy→[[anthropic]] move and the OpenAI/Anthropic chip-engineer poaching —
-  senior research talent is now a contested, headline-grade asset as the labs race
-  toward public listings.
+  Karpathy→[[anthropic]] move, the **[[john-jumper|John Jumper]] (AlphaFold)**
+  DeepMind→[[anthropic]] defection announced 2026-06-20, and the OpenAI/Anthropic
+  chip-engineer poaching — senior research talent is now a contested, headline-grade
+  asset as the labs race toward public listings.
 
 ## Open questions
 

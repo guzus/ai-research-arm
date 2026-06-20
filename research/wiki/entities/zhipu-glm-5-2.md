@@ -6,8 +6,9 @@ aliases: ["Zhipu GLM 5.2", "Zhipu GLM-5.2", "GLM 5.2", "GLM-5.2", "Z.ai GLM-5.2"
 tags: [open-weights, china, coding, long-context, frontier-model]
 description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.
 created_at: 2026-06-17
-timestamp: 2026-06-19T00:00:00Z
+timestamp: 2026-06-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
@@ -75,6 +76,14 @@ max/high "thinking" modes.
   the gap" discourse while [[claude-fable-5|Fable 5 / Mythos 5]] stays embargoed;
   **Elon Musk pegs Chinese "Fable-class" models at ~Q1 2027**. See
   [[open-weights]] (ARA digest 2026-06-19).
+
+- **The migration focal point as Anthropic's models stay gated (2026-06-20).** With
+  [[claude-fable-5|Fable 5 / Mythos 5]] still embargoed, developers are visibly
+  migrating and **GLM-5.2 is the focal point** — praised as the best open model
+  "**aside from Fable 5**" and rated "**[[claude-opus-4-8|Opus 4.6]] / GPT-5.4 tier**."
+  Benchmarks still show closed frontier ahead (Fable 5 #1 on DeepSWE ~70%), so this
+  reads as a **real-but-soft substitution trend**, not a confirmed share shift — see
+  [[open-weights]] (ARA digest 2026-06-20).
 
 ## Open questions
 

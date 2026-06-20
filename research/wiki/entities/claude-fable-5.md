@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.
 created_at: 2026-06-10
-timestamp: 2026-06-19T00:00:00Z
+timestamp: 2026-06-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
@@ -176,6 +177,18 @@ every feed on launch day.
   **alleged China ties at SK Telecom**, which had Mythos access via Project
   Glasswing — see [[anthropic]], [[federal-ai-policy]] and [[agentic-ai-security]]
   (ARA digest 2026-06-19).
+
+- **Day eight dark; the refund deadline lands as Trump de-escalates (2026-06-20).**
+  Both Fable 5 and Mythos 5 remain **offline as of June 20 — day eight** of the
+  suspension in force since June 12 — and the **June 20 subscriber-refund deadline
+  arrived with no confirmed restoration**. **~200 organizations reportedly retained
+  Mythos access via Project Glasswing** despite the order. The day's shift was
+  political, not technical: President **Trump** publicly de-escalated on the Axios
+  Show (Amodei "responded very responsibly," "not now, but a week ago maybe" a
+  threat, and "a competitor, and a part owner, that turned Anthropic in"), the
+  first presidential signal toward unwinding the controls — **but no Commerce order
+  has lifted them**. See [[anthropic]], [[federal-ai-policy]] and [[open-weights]]
+  (ARA digest 2026-06-20).
 
 ## Open questions
 

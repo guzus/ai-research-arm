@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-timestamp: 2026-06-19T00:00:00Z
+timestamp: 2026-06-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
@@ -292,6 +293,21 @@ materially reshape how the lab is positioned heading into its IPO window:
   systems remain from autonomous scientific research. It is the rigor counterpart
   to the GPT-Rosalind life-sciences productization arc above (ARA digest
   2026-06-19).
+
+- **[[gpt-5-6|GPT-5.6]] reported for ~June 23 as a full family; Shazeer confirmed;
+  Zoph out; a hardware device teased (2026-06-20).** Press reporting now points to
+  OpenAI shipping **[[gpt-5-6|GPT-5.6]] next Tuesday (~June 23) as a full family** —
+  **standard + Mini + Pro landing together** — with leaked specs of a **1.5M-token
+  context window** (up ~43% from GPT-5.5's ~1M) and **faster Codex**; developers
+  reported probing an unreleased `gpt-5.6` inside Codex via ChatGPT Pro OAuth.
+  **OpenAI has not confirmed it** — no system card, no API string, no official date;
+  prediction markets favor a June 22–28 window. On talent, **Sam Altman personally
+  confirmed [[noam-shazeer]]→OpenAI** ("noam is one of the people I have most wanted
+  to work with since the very beginning of openai. only took 10 years"), OpenAI
+  also reportedly added ex-Trump AI adviser **Dean Ball** and a **Meta device-comms
+  lead** (Axios says OpenAI expects to **unveil its first hardware device this
+  year**), while **Barret Zoph departed** after five months as head of enterprise
+  AI sales. See [[gpt-5-6]] and [[federal-ai-policy]] (ARA digest 2026-06-20).
 - **Health + chemistry capability prints (2026-06-19).** OpenAI says a **GPT-5.5
   Instant health upgrade** cuts error rate in health statements ~**71%** and
   "beats doctor-written answers" on physician-informed evals; two Nature studies
