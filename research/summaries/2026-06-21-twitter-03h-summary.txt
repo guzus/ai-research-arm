@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-21 03:42 UTC
+
+CYCLE: Consolidation window — two threads harden: GPT-5.6 timing and open-weights moat erosion.
+
+TOP STORIES:
+• GPT-5.6 launch window firms to late June (Pachocki "meaningful improvement" memo via The Information; Polymarket ~83% June 22-28) — but "stealth 5.6" demos debunked as just GPT-5.5-Pro [⚠]
+• GLM-5.2 open-weights moat thesis gets teeth: practitioner raves ("as good as Opus 4.8 / GPT-5.5") + public "cancelled Anthropic & OpenAI" defection [✓ reception]
+• Anthropic resets all usage limits across plans (goodwill) while Fable 5 stays export-frozen into the June 22/23 subscription cliff [✓ action]
+
+WATCH: June 22-28 — does OpenAI ship a GPT-5.6 system card, and does Anthropic post a Fable 5 tier change before the cliff?
+
+Full update on GitHub.
