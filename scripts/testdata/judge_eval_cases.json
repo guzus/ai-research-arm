@@ -1,0 +1,61 @@
+{
+  "_comment": "Hard cases for the headline-dedupe judge, drawn from the real announced-history ledger's contested band ([0.35,0.50) Jaccard). Each case: an incoming headline + the single most-similar prior alert + the ground-truth label. 'duplicate' = same underlying event re-reported (judge SHOULD suppress, HIGH confidence). 'distinct' = genuinely different news that merely shares vocabulary (judge MUST keep). Used by the local prompt smoke-test and as documentation of the failure modes the prompt must handle. The cardinal sin is mislabeling a 'distinct' as 'duplicate' (eating real news).",
+  "cases": [
+    {
+      "label": "distinct",
+      "kind": "same-metric-different-subject",
+      "incoming": "MICRON MARKET CAP CROSSES $900B — JOINS SK HYNIX IN MEMORY SUPER-CYCLE MEGA-RALLY",
+      "candidate": "SK HYNIX MARKET CAP CROSSES $900 BILLION ON HBM SUPER-CYCLE",
+      "note": "Same metric ($900B market cap) and beat (memory super-cycle), DIFFERENT company. The hardest false-positive: high lexical overlap, genuinely distinct subject."
+    },
+    {
+      "label": "distinct",
+      "kind": "appended-fact-progression",
+      "incoming": "META RELEASES LLAMA 5 WITH 2M TOKEN CONTEXT AND NATIVE VOICE",
+      "candidate": "META RELEASES LLAMA 5",
+      "note": "Follow-up carries genuinely new facts (2M context, native voice). The flash was already sent; this adds information and has standalone value."
+    },
+    {
+      "label": "distinct",
+      "kind": "same-template-different-entity",
+      "incoming": "DEEPSEEK CUTS API PRICING ACROSS THE BOARD",
+      "candidate": "GOOGLE CUTS GEMINI API PRICING ACROSS THE BOARD",
+      "note": "Same templated action (cuts API pricing), different company. Two separate events."
+    },
+    {
+      "label": "distinct",
+      "kind": "confirmation-is-new-development",
+      "incoming": "xAI HANDLE CONFIRMS COLOSSUS 1 LEASE TO ANTHROPIC + MULTI-GIGAWATT ORBITAL COMPUTE",
+      "candidate": "ANTHROPIC + SPACEX EXPLORING MULTI-GIGAWATT ORBITAL AI COMPUTE PARTNERSHIP",
+      "note": "Prior was 'exploring'; incoming is an official confirmation with a concrete lease — a real escalation, not a re-report."
+    },
+    {
+      "label": "duplicate",
+      "kind": "same-event-different-account",
+      "incoming": "CHINA NDRC ORDERS META TO UNWIND $2B MANUS ACQUISITION — FIRST FORCED UNWIND",
+      "candidate": "CHINA ORDERS META TO UNWIND $2B MANUS AI DEAL — ~100 STAFF ALREADY INSIDE",
+      "note": "Same regulatory action (China orders Meta to unwind the $2B Manus deal), reported by two accounts."
+    },
+    {
+      "label": "duplicate",
+      "kind": "same-event-different-account",
+      "incoming": "DEEPSEEK IN TALKS FOR $45B FIRST FUNDRAISE — CHINA'S LARGEST STATE-BACKED ROUND",
+      "candidate": "DEEPSEEK IN TALKS TO RAISE AT ~$45B IN FIRST MAJOR ROUND — CHINA STATE-BACKED",
+      "note": "Same fundraise (~$45B, first round, state-backed), paraphrased."
+    },
+    {
+      "label": "duplicate",
+      "kind": "same-event-refined-number",
+      "incoming": "SIERRA RAISES $950M LED BY TIGER GLOBAL AND GV AT $15B+ VALUATION",
+      "candidate": "SIERRA RAISES $950M SERIES E AT $15B+ VALUATION, TIGER GLOBAL + GV LED",
+      "note": "Same raise ($950M, $15B+, Tiger Global + GV), same event."
+    },
+    {
+      "label": "duplicate",
+      "kind": "same-event-different-account",
+      "incoming": "OPENAI-BROADCOM $18B CHIP DEAL HITS FINANCING SNAG — MEMO: 'CAN'T REQUIRE'",
+      "candidate": "OPENAI-BROADCOM 10GW CHIP DEAL HITS FINANCING SNAG — $18 BILLION HINGES ON",
+      "note": "Same story (OpenAI-Broadcom $18B chip deal hits a financing snag)."
+    }
+  ]
+}

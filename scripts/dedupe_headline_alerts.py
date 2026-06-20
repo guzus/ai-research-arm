@@ -5,6 +5,9 @@ This is intentionally an alert-send ledger, not a global news/event store. The
 workflow already has a structured boundary at `*-headlines.json`; this script
 keeps Telegram/Hooker sends from repeating previously delivered alert items.
 
+Full contract + flow diagrams (incl. the downstream agent gate in
+`headline_judge.py`): docs/headline-dedupe.md
+
 Dedupe layers (see `duplicate_reason`), in priority order:
   1. shared story_key, exact normalized headline (any source), and same-source
      (same URL) paraphrase — time-independent, highest precision.

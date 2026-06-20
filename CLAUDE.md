@@ -38,6 +38,7 @@ and opens a PR with methodology fixes.
 | [`docs/model-tickets.md`](docs/model-tickets.md) | Schema + lifecycle + dedup protocol for `research/models/tickets/*.md`. Read by the CRUD agent in `24h-model-timeline.yml` and enforced by `scripts/check_model_tickets.py`. |
 | [`docs/wiki-schema.md`](docs/wiki-schema.md) | Canonical schema + page conventions for the LLM Wiki (`research/wiki/`). Read at runtime by the ingest agent in `wiki-ingest.yml` and enforced by `scripts/check_wiki.py`. |
 | [`docs/hooker-telemetry.md`](docs/hooker-telemetry.md) | Non-blocking telemetry route via `https://hooker.guzus.xyz` topic `ara-telemetry`. |
+| [`docs/headline-dedupe.md`](docs/headline-dedupe.md) | Dedup contract + Mermaid flow for the Twitter headline-alert ledger (`research/summaries/twitter-announced-history.json`): the deterministic layered `duplicate_reason` check (`scripts/dedupe_headline_alerts.py`) **plus** the agent-in-the-loop Haiku gate (`scripts/headline_judge.py`) that adjudicates the contested sub-floor band. Used by `hourly-twitter.yml`. |
 | [`docs/archive/`](docs/archive/) | Historical improvement logs and superseded docs. |
 | `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`; Railway auto-deploys on every push to `main` (next row). |
 | [`Dockerfile`](Dockerfile) + [`Caddyfile`](Caddyfile) + [`railway.json`](railway.json) | The Railway deploy stack serving **ara.guzus.xyz** (behind Cloudflare — responses carry `x-railway-edge`). The root `Dockerfile` builds the dashboard with bun (`oven/bun:1-alpine`, plus `nodejs` for the pre/postbuild node scripts) and serves `dashboard/dist` with Caddy; `railway.json` pins the DOCKERFILE builder + `/` healthcheck. `dashboard/vercel.json` is the legacy Vercel config — Vercel no longer serves the domain (Load-bearing rule 3). |
@@ -56,7 +57,8 @@ and opens a PR with methodology fixes.
 | `prior_context.py` | Find prior generative-research articles related to a new topic. |
 | `research_search.py` | Specialized search wrappers for primary-source research. |
 | `stock_prices.py` | Yahoo Finance time series → copy-paste lines for `:::line-chart`. |
-| `dedupe_headline_alerts.py` | Filter + record delivered Twitter headline alerts (used by `hourly-twitter.yml`). |
+| `dedupe_headline_alerts.py` | Filter + record delivered Twitter headline alerts (used by `hourly-twitter.yml`). Layered deterministic dedup contract + Mermaid diagrams in [`docs/headline-dedupe.md`](docs/headline-dedupe.md). |
+| `headline_judge.py` | Agent-in-the-loop final dedup gate (used by `hourly-twitter.yml`). Two deterministic subcommands — `shortlist` (surface send-set survivors whose nearest prior sits in the contested `[0.35,0.50)` Jaccard band) and `apply` (drop only the Haiku judge's HIGH-confidence duplicates, fail-open, URL-keyed) — bracketing one Haiku adjudication step. Contract in [`docs/headline-dedupe.md`](docs/headline-dedupe.md). |
 | `curate_twitter_accounts.py` | Validates `data/sources/twitter_accounts.json`, builds the birdy fetch manifest, and writes/apply reviewable Twitter account add/remove proposals. |
 | `explore_twitter_accounts.py` | Scout script for `twitter-account-explorer.yml`; runs broad bird searches, scores unknown authors, and emits candidate JSON for reviewed account curation. |
 | `check_model_tickets.py` | Validator for `research/models/tickets/*.md` against the schema in `docs/model-tickets.md`. The CRUD agent in `24h-model-timeline.yml` runs it after every pass; CI runs it on every PR. |
@@ -69,7 +71,7 @@ and opens a PR with methodology fixes.
 | `fetch_youtube_signal.py` | tuber-backed YouTube lane used by `daily-youtube.yml`; read-only by default (discovery, existing summary previews, transcript probes) and never triggers paid summary generation. |
 | `source_cache.py` | Runtime primary-source fetch cache under `data/source-cache/` (gitignored), used by `generative-research.yml`. |
 | `render_front_page.mjs` | Deterministic newspaper renderer used by `daily-front-page.yml`: digest → SVG → PNG via `@resvg/resvg-js` (no Chromium/model dependency), plus the `.ara.md` source for the interactive edition. Layout is budget-aware — overflow is ellipsized/dropped, never painted over. |
-| `test_ara_dsl.py`, `test_dedupe_headline_alerts.py` | Pytest-style tests run in CI. (`test_ara_dsl.py` also asserts `ARA_CATALOG.json` ↔ `COMPONENTS.md` lockstep.) |
+| `test_ara_dsl.py`, `test_dedupe_headline_alerts.py`, `test_headline_judge.py` | Pytest-style tests run in CI. (`test_ara_dsl.py` also asserts `ARA_CATALOG.json` ↔ `COMPONENTS.md` lockstep.) |
 
 #### Experimental / manually-run scripts (NOT in the automated pipeline)
 
