@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "tweets_per_account": 20,
+  "categories": [
+    {
+      "id": "labs",
+      "label": "AI labs and company accounts",
+      "handles": [
+        {"handle": "OpenAI", "name": "OpenAI"},
+        {"handle": "AnthropicAI", "name": "Anthropic"},
+        {"handle": "GoogleAI", "name": "Google AI"},
+        {"handle": "GoogleDeepMind", "name": "Google DeepMind"},
+        {"handle": "MistralAI", "name": "Mistral AI"},
+        {"handle": "MetaAI", "name": "Meta AI"},
+        {"handle": "AIatMeta", "name": "AI at Meta", "notes": "Real Meta AI account; @MetaAI is largely inactive."},
+        {"handle": "CohereAI", "name": "Cohere"},
+        {"handle": "AI21Labs", "name": "AI21 Labs"},
+        {"handle": "StabilityAI", "name": "Stability AI"},
+        {"handle": "HuggingFace", "name": "Hugging Face"},
+        {"handle": "NVIDIAAIDev", "name": "NVIDIA AI Developer"},
+        {"handle": "ClaudeDevs", "name": "Claude Developers", "notes": "Official Anthropic developer announcements."}
+      ]
+    },
+    {
+      "id": "hyperscalers",
+      "label": "Hyperscalers, executives, and key insiders",
+      "handles": [
+        {"handle": "elonmusk", "name": "Elon Musk"},
+        {"handle": "sama", "name": "Sam Altman"},
+        {"handle": "demishassabis", "name": "Demis Hassabis"},
+        {"handle": "OfficialLoganK", "name": "Logan Kilpatrick"},
+        {"handle": "alexalbert__", "name": "Alex Albert"},
+        {"handle": "DrJimFan", "name": "Jim Fan"},
+        {"handle": "tszzl", "name": "Roon"},
+        {"handle": "ilyasut", "name": "Ilya Sutskever"},
+        {"handle": "alexandr_wang", "name": "Alexandr Wang"},
+        {"handle": "OriolVinyalsML", "name": "Oriol Vinyals"},
+        {"handle": "woj_zaremba", "name": "Wojciech Zaremba"}
+      ]
+    },
+    {
+      "id": "others",
+      "label": "Researchers, analysts, builders, and media",
+      "handles": [
+        {"handle": "karpathy", "name": "Andrej Karpathy"},
+        {"handle": "iruletheworldmo", "name": "Strawberry"},
+        {"handle": "AndrewCurran_", "name": "Andrew Curran"},
+        {"handle": "fi56622380", "name": "Fin"},
+        {"handle": "jukan05", "name": "Jukan"},
+        {"handle": "vitrupo", "name": "Vitrupo"},
+        {"handle": "dejavucoder", "name": "Deja Vu Coder"},
+        {"handle": "jiratickets", "name": "Jira Tickets"},
+        {"handle": "SemiAnalysis_", "name": "SemiAnalysis"},
+        {"handle": "benthompson", "name": "Ben Thompson"},
+        {"handle": "theinformation", "name": "The Information"},
+        {"handle": "GavinSBaker", "name": "Gavin Baker"},
+        {"handle": "mark_k", "name": "Mark"},
+        {"handle": "ns123abc", "name": "NIK"},
+        {"handle": "kimmonismus", "name": "Chubby"},
+        {"handle": "_akhaliq", "name": "AK"},
+        {"handle": "simonw", "name": "Simon Willison"},
+        {"handle": "emollick", "name": "Ethan Mollick"},
+        {"handle": "testingcatalog", "name": "TestingCatalog"},
+        {"handle": "rasbt", "name": "Sebastian Raschka"},
+        {"handle": "skirano", "name": "Sriram Krishnan"},
+        {"handle": "jackclarkSF", "name": "Jack Clark"},
+        {"handle": "ylecun", "name": "Yann LeCun"},
+        {"handle": "hardmaru", "name": "David Ha"},
+        {"handle": "JeffDean", "name": "Jeff Dean"},
+        {"handle": "AravSrinivas", "name": "Aravind Srinivas"},
+        {"handle": "deedydas", "name": "Deedy Das"},
+        {"handle": "swyx", "name": "Swyx"},
+        {"handle": "TheAITimeline", "name": "The AI Timeline"},
+        {"handle": "levelsio", "name": "Pieter Levels"},
+        {"handle": "steipete", "name": "Peter Steinberger"},
+        {"handle": "mckaywrigley", "name": "McKay Wrigley"},
+        {"handle": "nutlope", "name": "Nutlope"},
+        {"handle": "rauchg", "name": "Guillermo Rauch"},
+        {"handle": "amasad", "name": "Amjad Masad"},
+        {"handle": "geoffreylitt", "name": "Geoffrey Litt"},
+        {"handle": "jxnlco", "name": "Jason Liu"},
+        {"handle": "danshipper", "name": "Dan Shipper"},
+        {"handle": "andreasklinger", "name": "Andreas Klinger"},
+        {"handle": "nikitabier", "name": "Nikita Bier"},
+        {"handle": "tibo_maker", "name": "Tibo"},
+        {"handle": "marclou", "name": "Marc Lou"},
+        {"handle": "shl", "name": "Suhail"},
+        {"handle": "dharmesh", "name": "Dharmesh Shah"},
+        {"handle": "jeremyphoward", "name": "Jeremy Howard"},
+        {"handle": "soumithchintala", "name": "Soumith Chintala"},
+        {"handle": "giffmana", "name": "David Giffman"},
+        {"handle": "arankomatsuzaki", "name": "Aran Komatsuzaki"},
+        {"handle": "percyliang", "name": "Percy Liang"},
+        {"handle": "JonathanRoss321", "name": "Jonathan Ross"},
+        {"handle": "hendrycks", "name": "Dan Hendrycks"}
+      ]
+    }
+  ],
+  "searches": [
+    {
+      "id": "search-ai",
+      "query": "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama",
+      "limit": 50
+    },
+    {
+      "id": "search-extra",
+      "query": "AI breakthrough OR AI launch OR AI update OR foundation model",
+      "limit": 30
+    },
+    {
+      "id": "search-research",
+      "query": "AI paper OR machine learning research OR new benchmark OR state of the art SOTA",
+      "limit": 30
+    },
+    {
+      "id": "search-infra",
+      "query": "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU",
+      "limit": 20
+    },
+    {
+      "id": "search-policy",
+      "query": "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment",
+      "limit": 20
+    },
+    {
+      "id": "search-business",
+      "query": "AI startup funding OR AI acquisition OR AI valuation OR AI partnership",
+      "limit": 20
+    },
+    {
+      "id": "search-opensource",
+      "query": "open source AI OR open weights OR AI API OR AI developer tools",
+      "limit": 20
+    }
+  ],
+  "news": {
+    "id": "news",
+    "limit": 40,
+    "ai_only": true
+  }
+}
