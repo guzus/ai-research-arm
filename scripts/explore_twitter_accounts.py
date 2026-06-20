@@ -28,6 +28,27 @@ DEFAULT_REPORT = Path("/tmp/twitter-account-explorer-report.md")
 BIRD_CMD = os.environ.get("ARA_BIRD_CMD") or ("birdy" if shutil.which("birdy") else "bird")
 MENTION_RE = re.compile(r"(?<![A-Za-z0-9_])@([A-Za-z0-9_]{1,15})")
 
+# AI-topicality vocabulary. A candidate earns a bonus for each DISTINCT term
+# that actually appears in its evidence text, so an account that merely tripped
+# a broad keyword search on raw engagement (viral politics, crypto, astrology
+# "Gemini") cannot outrank a genuine AI source. Bare "ai"/"ml" are intentionally
+# omitted — too noisy to match on their own.
+AI_TERM_RE = re.compile(
+    r"\b("
+    r"llms?|gpt-?[345]\w*|transformers?|inference|fine-?tun\w+|open[- ]?weights?|"
+    r"rlhf|rlvr|benchmarks?|sota|multimodal|diffusion|quantiz\w+|pre-?train\w+|"
+    r"tokeniz\w+|embeddings?|context window|agentic|coding agent|"
+    r"machine learning|deep learning|neural net\w*|foundation model|"
+    r"anthropic|openai|deepmind|mistral|qwen|deepseek|llama|claude|gemini"
+    r")\b",
+    re.IGNORECASE,
+)
+
+
+def _ai_terms(text: str) -> set[str]:
+    return {match.lower() for match in AI_TERM_RE.findall(text or "")}
+
+
 DISCOVERY_QUERIES = [
     '("new model" OR "model release" OR "open weights" OR "AI launch") min_faves:40 -filter:replies lang:en',
     '(OpenAI OR Anthropic OR Claude OR GPT OR Gemini OR Llama OR Mistral OR DeepSeek) min_faves:40 -filter:replies lang:en',
@@ -130,6 +151,7 @@ def candidates_from_tweets(
             "cited_by": set(),
             "mention_count": 0,
             "citation_examples": [],
+            "ai_terms": set(),
         }
     )
 
@@ -141,6 +163,8 @@ def candidates_from_tweets(
             continue
         if not handle:
             continue
+        text = tweet.get("text") or tweet.get("fullText") or ""
+        terms = _ai_terms(text)
         if handle.lower() not in monitored_handles:
             bucket = by_handle[handle.lower()]
             bucket["handle"] = handle
@@ -148,10 +172,10 @@ def candidates_from_tweets(
             bucket["likes"] += _count(tweet, "likeCount")
             bucket["retweets"] += _count(tweet, "retweetCount")
             bucket["replies"] += _count(tweet, "replyCount")
+            bucket["ai_terms"].update(terms)
             url = _tweet_url(tweet, handle)
             if url and len(bucket["examples"]) < 3:
                 bucket["examples"].append(url)
-        text = tweet.get("text") or tweet.get("fullText") or ""
         for mentioned in MENTION_RE.findall(text):
             try:
                 mentioned_handle = normalize_handle(mentioned)
@@ -165,37 +189,55 @@ def candidates_from_tweets(
             mentioned_bucket["source"] = "mention_graph"
             mentioned_bucket["mention_count"] += 1
             mentioned_bucket["cited_by"].add(handle)
+            mentioned_bucket["ai_terms"].update(terms)
             url = url or _tweet_url(tweet, handle)
             if url and len(mentioned_bucket["citation_examples"]) < 3:
                 mentioned_bucket["citation_examples"].append(f"cited in: {url}")
 
     candidates = []
     for bucket in by_handle.values():
-        # First-principles scoring: repeated surfacing and cross-account mentions
-        # matter, but engagement is logarithmic because one viral post should not
-        # dominate the watchlist. This borrows goodtweet's strongest discovery
-        # lesson: mention-graph traversal beats keyword search for real clusters.
+        # First-principles scoring. Three bounded signals, so no single one can
+        # carry a candidate:
+        #   1. Trust-weighted mentions. The strongest discovery signal is being
+        #      mentioned by accounts WE ALREADY TRUST (the monitored manifest),
+        #      not by whoever happened to trip a broad keyword search. A
+        #      mention-graph candidate must have >= 1 monitored citer; unverified
+        #      citers (which include crypto/spam rings) add only capped, minor
+        #      weight. This is goodtweet's lesson applied to a trusted seed set.
+        #   2. AI topicality. A bonus per DISTINCT AI term actually present in
+        #      the evidence text, so engagement on an off-topic viral post
+        #      (politics, astrology) cannot outrank a genuine AI source.
+        #   3. Engagement, logarithmic AND halved, so it nudges, never dominates.
         engagement = bucket["likes"] + (2 * bucket["retweets"]) + bucket["replies"]
+        engagement_bonus = min(2.0, math.log10(max(engagement, 1)) / 2.0)
+        topicality = float(min(3, len(bucket["ai_terms"])))
         cited_by = sorted(bucket["cited_by"])
-        if bucket["source"] == "mention_graph" and len(cited_by) < 2:
-            continue
-        mention_score = (2 * len(cited_by)) + min(3, bucket["mention_count"])
-        score = bucket["tweet_count"] + mention_score + min(4.0, math.log10(max(engagement, 1)))
+        trusted = [handle for handle in cited_by if handle.lower() in monitored_handles]
+        unverified = [handle for handle in cited_by if handle.lower() not in monitored_handles]
+
+        if bucket["source"] == "mention_graph":
+            # Require a trusted voucher; ignore spam rings of unknown citers.
+            if not trusted:
+                continue
+            mention_score = (3.0 * len(trusted)) + min(1.0, 0.5 * len(unverified))
+            score = mention_score + topicality + engagement_bonus
+            examples = bucket["citation_examples"]
+            extra = f" (+{len(unverified)} unverified mention(s))" if unverified else ""
+            reason = (
+                f"Mention-graph candidate vouched by {len(trusted)} monitored "
+                f"account(s): {', '.join('@' + h for h in trusted[:5])}{extra}. "
+                f"Matched {len(bucket['ai_terms'])} AI term(s)."
+            )
+        else:
+            score = bucket["tweet_count"] + topicality + engagement_bonus
+            examples = bucket["examples"]
+            reason = (
+                f"Surfaced {bucket['tweet_count']} time(s) as an author in AI "
+                f"discovery searches (engagement {engagement}, "
+                f"{len(bucket['ai_terms'])} AI term(s) matched)."
+            )
         if score < min_score:
             continue
-        examples = bucket["examples"]
-        if bucket["source"] == "mention_graph":
-            reason = (
-                f"Mention-graph candidate cited {bucket['mention_count']} time(s) "
-                f"by {len(cited_by)} search-surfaced account(s): "
-                f"{', '.join('@' + h for h in cited_by[:5])}."
-            )
-            examples = bucket["citation_examples"]
-        else:
-            reason = (
-                f"Surfaced {bucket['tweet_count']} time(s) as an author in AI discovery searches "
-                f"with aggregate engagement {engagement}."
-            )
         candidates.append(
             {
                 "action": "add",
@@ -270,7 +312,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--report", type=Path, default=DEFAULT_REPORT)
     parser.add_argument("--query", action="append", default=list(DISCOVERY_QUERIES))
     parser.add_argument("--per-query", type=int, default=50)
-    parser.add_argument("--min-score", type=float, default=3)
+    parser.add_argument("--min-score", type=float, default=4)
     parser.add_argument("--max-candidates", type=int, default=25)
     return parser
 

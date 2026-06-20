@@ -52,7 +52,10 @@ class TwitterAccountExplorerTests(unittest.TestCase):
 
         self.assertEqual(len(candidates), 2)
 
-    def test_candidates_from_tweets_uses_mention_graph_signal(self):
+    def test_unverified_only_mentions_do_not_qualify(self):
+        # seed1/seed2 are not in the monitored manifest, so their mentions are an
+        # unverified (possibly spam-ring) signal. Even cited by two distinct
+        # accounts, the candidate must be dropped — only trusted vouchers count.
         tweets = [
             {
                 "id": "1",
@@ -70,11 +73,7 @@ class TwitterAccountExplorerTests(unittest.TestCase):
 
         candidates = candidates_from_tweets(tweets, set(), min_score=4, max_candidates=10)
 
-        by_handle = {item["handle"]: item for item in candidates}
-        self.assertIn("networknode", by_handle)
-        self.assertEqual(by_handle["networknode"]["source"], "mention_graph")
-        self.assertIn("@seed1", by_handle["networknode"]["reason"])
-        self.assertTrue(by_handle["networknode"]["evidence"][0].startswith("cited in: "))
+        self.assertNotIn("networknode", {item["handle"] for item in candidates})
 
     def test_monitored_authors_still_contribute_mention_graph_signal(self):
         tweets = [
@@ -93,6 +92,10 @@ class TwitterAccountExplorerTests(unittest.TestCase):
         candidates = candidates_from_tweets(tweets, {"openai", "anthropicai"}, min_score=4, max_candidates=10)
 
         self.assertEqual([item["handle"] for item in candidates], ["networknode"])
+        networknode = candidates[0]
+        self.assertEqual(networknode["source"], "mention_graph")
+        self.assertIn("vouched by 2 monitored", networknode["reason"])
+        self.assertTrue(networknode["evidence"][0].startswith("cited in: "))
 
     def test_single_mention_does_not_clear_mention_graph_threshold(self):
         tweets = [
@@ -107,6 +110,47 @@ class TwitterAccountExplorerTests(unittest.TestCase):
         candidates = candidates_from_tweets(tweets, set(), min_score=3, max_candidates=10)
 
         self.assertNotIn("networknode", {item["handle"] for item in candidates})
+
+    def test_topicality_lifts_on_topic_author_over_viral_off_topic(self):
+        tweets = [
+            # Off-topic but extremely viral — engagement alone must not dominate.
+            {
+                "id": "1",
+                "author": {"username": "viralpundit"},
+                "text": "huge breaking news today, everyone is talking about this",
+                "likeCount": 100000,
+            },
+            # On-topic with modest engagement.
+            {
+                "id": "2",
+                "author": {"username": "mlperson"},
+                "text": "new open-weights LLM with strong inference benchmarks",
+                "likeCount": 50,
+            },
+        ]
+
+        candidates = candidates_from_tweets(tweets, set(), min_score=3, max_candidates=10)
+        by_handle = {item["handle"]: item for item in candidates}
+
+        self.assertIn("mlperson", by_handle)
+        if "viralpundit" in by_handle:
+            self.assertGreaterEqual(by_handle["mlperson"]["score"], by_handle["viralpundit"]["score"])
+
+    def test_lone_trusted_mention_needs_corroboration(self):
+        # One bare mention by a single trusted account, with no AI topicality and
+        # no engagement, scores 3.0 — below the default bar of 4, so it is held
+        # back until corroborated by topicality, more vouchers, or engagement.
+        tweets = [
+            {
+                "id": "1",
+                "author": {"username": "OpenAI"},
+                "text": "watching @newcomer",
+            }
+        ]
+
+        candidates = candidates_from_tweets(tweets, {"openai"}, min_score=4, max_candidates=10)
+
+        self.assertNotIn("newcomer", {item["handle"] for item in candidates})
 
 
 if __name__ == "__main__":
