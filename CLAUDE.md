@@ -57,6 +57,8 @@ and opens a PR with methodology fixes.
 | `research_search.py` | Specialized search wrappers for primary-source research. |
 | `stock_prices.py` | Yahoo Finance time series → copy-paste lines for `:::line-chart`. |
 | `dedupe_headline_alerts.py` | Filter + record delivered Twitter headline alerts (used by `hourly-twitter.yml`). |
+| `curate_twitter_accounts.py` | Validates `data/sources/twitter_accounts.json`, builds the birdy fetch manifest, and writes/apply reviewable Twitter account add/remove proposals. |
+| `explore_twitter_accounts.py` | Scout script for `twitter-account-explorer.yml`; runs broad bird searches, scores unknown authors, and emits candidate JSON for reviewed account curation. |
 | `check_model_tickets.py` | Validator for `research/models/tickets/*.md` against the schema in `docs/model-tickets.md`. The CRUD agent in `24h-model-timeline.yml` runs it after every pass; CI runs it on every PR. |
 | `check_wiki.py` | Validator for `research/wiki/` pages against the schema in `docs/wiki-schema.md`. `uv run python scripts/check_wiki.py` (exit 0 = safe); `--lint` adds advisory checks. The ingest agent in `wiki-ingest.yml` runs it until exit 0; CI runs it on every PR. |
 | `wiki_search.py` | Search wrapper over `research/wiki/` (`uv run python scripts/wiki_search.py "<query>"`). The ingest agent runs it before writing any page so it UPDATEs an existing page instead of duplicating. |
@@ -122,6 +124,7 @@ input).
 | `daily-ai-blogs.yml` | `:13` every 6h | `research/blogs/` |
 | `daily-youtube.yml` | daily `23:20` for the next `00:00` digest | `research/youtube/` (tuber discovery + read-only summary/transcript evidence) |
 | `hourly-twitter.yml` | every 3h `:07`; DeepSeek/Fireworks comparison lanes via matrix/manual dispatch | `research/twitter/` + `research/summaries/` + Telegram headline alerts; comparison outputs under `research/twitter-deepseek/`, `research/twitter-deepseek-pi/`, and `research/twitter-fireworks-pi/` |
+| `twitter-account-explorer.yml` | weekly Tuesday `01:47` UTC + manual dispatch | Opens reviewed PRs for `data/sources/twitter_accounts.json` changes when high-signal account evidence exists |
 | `2h-bluesky.yml` | daily `10:11` | `research/bluesky/` (supplemental expert commentary, capped output) |
 | `4h-community.yml` | every 4h `:19` | `research/community/*-hn.md`, `*-reddit.md` |
 | `daily-arxiv.yml` | daily `06:13` | `research/arxiv/` |

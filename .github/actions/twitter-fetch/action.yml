@@ -118,52 +118,13 @@ runs:
       run: |
         mkdir -p /tmp/bird
 
-        # ── Unified handle list (superset across all three tiers) ───────
-        # AI Labs & Company accounts. Includes AIatMeta (real Meta AI
-        # account; @MetaAI is largely inactive) and ClaudeDevs (official
-        # Anthropic developer announcements) — added 2026-05-01 in the
-        # claude tier. We keep them on all tiers now that the workflows
-        # are unified.
-        labs="OpenAI AnthropicAI GoogleAI GoogleDeepMind MistralAI MetaAI AIatMeta CohereAI AI21Labs StabilityAI HuggingFace NVIDIAAIDev ClaudeDevs"
-
-        # Hyperscalers — top execs and key insiders. Includes
-        # ilyasut, alexandr_wang, OriolVinyalsML, woj_zaremba (claude-tier
-        # 2026-05-01 additions).
-        hyperscalers="elonmusk sama demishassabis OfficialLoganK alexalbert__ DrJimFan tszzl ilyasut alexandr_wang OriolVinyalsML woj_zaremba"
-
-        # Others — researchers, analysts, specialists, media. Includes
-        # jeremyphoward, soumithchintala, giffmana, arankomatsuzaki,
-        # percyliang, JonathanRoss321, hendrycks (claude-tier 2026-05-01
-        # additions from anchor-following discovery).
-        others="karpathy iruletheworldmo AndrewCurran_ fi56622380 jukan05 vitrupo dejavucoder jiratickets SemiAnalysis_ benthompson theinformation GavinSBaker mark_k ns123abc kimmonismus _akhaliq simonw emollick testingcatalog rasbt skirano jackclarkSF ylecun hardmaru JeffDean AravSrinivas deedydas swyx TheAITimeline levelsio steipete mckaywrigley nutlope rauchg amasad geoffreylitt jxnlco danshipper andreasklinger nikitabier tibo_maker marclou shl dharmesh jeremyphoward soumithchintala giffmana arankomatsuzaki percyliang JonathanRoss321 hendrycks"
-
-        # Build the manifest via Python (avoids jq's multi-line quoting
-        # issues inside YAML literal blocks): 50+ user-tweets ops + 7
-        # keyword searches + news. All ops run in parallel inside one Go
-        # process via birdy multi-fetch.
-        export HANDLES="$labs $hyperscalers $others"
-        export FETCH_CONCURRENCY
-        python3 -c '
-        import json, os
-        handles = os.environ["HANDLES"].split()
-        concurrency = int(os.environ.get("FETCH_CONCURRENCY", "8"))
-        ops = [
-            {"id": h, "args": ["user-tweets", "@" + h, "-n", "20", "--json", "--plain"]}
-            for h in handles if h
-        ] + [
-            {"id": "search-ai",         "args": ["search", "AI announcement OR new model release OR GPT OR Claude OR Gemini OR Llama", "-n", "50", "--json", "--plain"]},
-            {"id": "search-extra",      "args": ["search", "AI breakthrough OR AI launch OR AI update OR foundation model", "-n", "30", "--json", "--plain"]},
-            {"id": "search-research",   "args": ["search", "AI paper OR machine learning research OR new benchmark OR state of the art SOTA", "-n", "30", "--json", "--plain"]},
-            {"id": "search-infra",      "args": ["search", "AI chip OR GPU cluster OR AI infrastructure OR NVIDIA H100 OR TPU", "-n", "20", "--json", "--plain"]},
-            {"id": "search-policy",     "args": ["search", "AI regulation OR AI safety OR AI policy OR AI governance OR AI alignment", "-n", "20", "--json", "--plain"]},
-            {"id": "search-business",   "args": ["search", "AI startup funding OR AI acquisition OR AI valuation OR AI partnership", "-n", "20", "--json", "--plain"]},
-            {"id": "search-opensource", "args": ["search", "open source AI OR open weights OR AI API OR AI developer tools", "-n", "20", "--json", "--plain"]},
-            {"id": "news",              "args": ["news", "--ai-only", "-n", "40", "--json", "--plain"]},
-        ]
-        with open("/tmp/manifest.json", "w") as f:
-            json.dump({"operations": ops, "concurrency": concurrency}, f)
-        print(f"Built manifest: {len(ops)} ops, concurrency={concurrency}")
-        '
+        # Account and search curation lives in data/sources/twitter_accounts.json.
+        # Keep the scheduled fetch deterministic: validate the reviewed source
+        # manifest and compile it to birdy's multi-fetch contract for this run.
+        python3 scripts/curate_twitter_accounts.py build-fetch-manifest \
+          --manifest data/sources/twitter_accounts.json \
+          --output /tmp/manifest.json \
+          --concurrency "$FETCH_CONCURRENCY"
 
         echo "Manifest: $(jq '.operations | length' /tmp/manifest.json) ops, concurrency=$(jq '.concurrency' /tmp/manifest.json)"
 

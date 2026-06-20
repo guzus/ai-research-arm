@@ -7,12 +7,14 @@ on:
       - '.github/workflows/**'
       - '.github/actions/**'
       - 'dashboard/**'
+      - 'data/sources/twitter_accounts.json'
       - 'scripts/**'
   pull_request:
     paths:
       - '.github/workflows/**'
       - '.github/actions/**'
       - 'dashboard/**'
+      - 'data/sources/twitter_accounts.json'
       - 'scripts/**'
   workflow_dispatch:
 

@@ -293,18 +293,20 @@ dashboard/                          # Vite + Bun + TypeScript SPA
 ## Data Source Details
 
 ### Twitter/X (Every 3 hours)
-Via [bird CLI](https://github.com/steipete/bird) — 75 monitored accounts, 20 tweets each, 7 search queries.
+Via [bird CLI](https://github.com/steipete/bird) and birdy multi-fetch. The
+reviewed source manifest is `data/sources/twitter_accounts.json`: 75 monitored
+accounts, 20 tweets each, 7 search queries, and the AI-only news tab. Account
+add/remove proposals are generated with `scripts/curate_twitter_accounts.py`;
+see `docs/twitter-account-curation.md`. A weekly `twitter-account-explorer.yml`
+agent scouts for high-signal additions and opens reviewed PRs when evidence is
+strong enough.
 
-**AI Labs & Companies (11):**
-OpenAI, Anthropic, Google AI, DeepMind, Mistral, Meta AI, Cohere, AI21Labs, Stability AI, Hugging Face, NVIDIA AI Dev
+**Account groups:** AI labs/company accounts; hyperscalers, executives, and key
+insiders; researchers, analysts, builders, and media.
 
-**Hyperscalers (7):**
-Elon Musk, Sam Altman, Demis Hassabis, Logan (Google AI), Alex Albert (Anthropic), Jim Fan (NVIDIA), Roon (OpenAI)
-
-**Researchers, Analysts & Media (15):**
-Karpathy, strawberry, Curran, fin (China AI), Jukan (semiconductors), Vitrupo, sankalp, JT, Semi Analysis, Ben Thompson, The Information, Gavin Baker, Mark, NIK, Chubby
-
-**Search queries:** AI models & products, breakthroughs, research papers, infrastructure & hardware, policy & safety, business & funding, open source & dev tools
+**Search queries:** AI models & products, breakthroughs, research papers,
+infrastructure & hardware, policy & safety, business & funding, open source &
+dev tools
 
 ### RSS Feeds (Hourly)
 Official announcements from:
