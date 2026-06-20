@@ -10655,5 +10655,26 @@
     "headline": "GPT-5.6 STAYS LEAK-ONLY \u2014 ONE BENCHMARK SHOWS FABLE 5 STILL BEATING SUSPECTED 5.6 ON CORE GEOMETRY, ZERO OPENAI SIGNAL",
     "source": "@testingcatalog",
     "url": "https://x.com/i/status/2068317946426900848"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-21 03:42 UTC",
+    "headline": "GPT-5.6 AND GPT-5.6-PRO EYED WITHIN DAYS \u2014 POLYMARKET ~83% ON A JUNE 22-28 DROP, STILL NO OPENAI CONFIRMATION",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2068370725958730190"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-21 03:42 UTC",
+    "headline": "DEV CANCELS ANTHROPIC, WEIGHS DROPPING OPENAI AFTER 3 DAYS ON GLM-5.2: \"NO MOAT ISN'T HYPOTHETICAL ANYMORE\"",
+    "source": "@burkov",
+    "url": "https://x.com/burkov/status/2068258575315542352"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-21 03:42 UTC",
+    "headline": "ANTHROPIC RESETS 5-HOUR AND WEEKLY USAGE LIMITS ACROSS ALL PLANS AS FABLE 5 STAYS EXPORT-FROZEN",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2068122937308426676"
   }
 ]
