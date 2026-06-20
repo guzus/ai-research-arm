@@ -297,7 +297,9 @@ Via [bird CLI](https://github.com/steipete/bird) and birdy multi-fetch. The
 reviewed source manifest is `data/sources/twitter_accounts.json`: 75 monitored
 accounts, 20 tweets each, 7 search queries, and the AI-only news tab. Account
 add/remove proposals are generated with `scripts/curate_twitter_accounts.py`;
-see `docs/twitter-account-curation.md`.
+see `docs/twitter-account-curation.md`. A weekly `twitter-account-explorer.yml`
+agent scouts for high-signal additions and opens reviewed PRs when evidence is
+strong enough.
 
 **Account groups:** AI labs/company accounts; hyperscalers, executives, and key
 insiders; researchers, analysts, builders, and media.

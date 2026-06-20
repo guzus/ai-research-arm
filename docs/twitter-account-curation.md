@@ -55,3 +55,21 @@ uv run python scripts/curate_twitter_accounts.py apply \
 The proposal step never mutates production state. The apply step preserves
 category order, appends additions to their target category, removes matching
 handles case-insensitively, and re-validates before writing.
+
+## Explorer Loop
+
+`.github/workflows/twitter-account-explorer.yml` runs weekly and by manual
+dispatch. It is an agent loop, but it is intentionally review-gated:
+
+1. `scripts/explore_twitter_accounts.py` runs broad bird searches and writes
+   `/tmp/twitter-account-candidates.json` plus a Markdown evidence report.
+2. A Claude explorer reads those candidates, the current manifest, recent
+   Twitter outputs, and this curation contract.
+3. If no strong evidence exists, it prints `no account changes`.
+4. If evidence supports changes, it uses `curate_twitter_accounts.py propose`
+   and `apply`, validates the manifest, runs focused tests, then opens a PR
+   against `main`.
+
+The loop caps each run at five additions and two removals. Removals require
+clear observed evidence because losing a quiet but important source is costlier
+than adding a marginal candidate.
