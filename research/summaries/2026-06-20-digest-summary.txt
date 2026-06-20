@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-20
+
+TOP STORIES:
+• Trump de-escalates Anthropic standoff: "not now, but a week ago maybe" a security threat — but controls NOT lifted; Fable 5/Mythos 5 day 8 offline, June 20 refund deadline arrives
+• GPT-5.6 reported for ~June 23 as a full family (standard+Mini+Pro), leaked 1.5M-token context, faster Codex — still UNCONFIRMED by OpenAI
+• Talent shuffle: Nobel laureate John Jumper (AlphaFold) leaves DeepMind for Anthropic; Altman confirms Noam Shazeer → OpenAI
+
+KEY NUMBERS:
+• GPT-5.6 leaked context ~1.5M tokens (+43% vs 5.5)
+• India now Anthropic's #2 Claude.ai market, revenue ~2x since Oct 2025
+• Suspension day 8; Hyundai takes full Boston Dynamics control
+
+TRENDING: Hyundai buys Boston Dynamics (434 pts HN); open-weights shift to GLM-5.2
+
+Full digest on GitHub.
