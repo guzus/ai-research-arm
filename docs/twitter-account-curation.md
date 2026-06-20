@@ -62,16 +62,32 @@ handles case-insensitively, and re-validates before writing.
 dispatch. It is an agent loop, but it is intentionally review-gated:
 
 1. `scripts/explore_twitter_accounts.py` runs broad bird searches and writes
-   `/tmp/twitter-account-candidates.json` plus a Markdown evidence report.
-   It uses the `goodtweet` lesson that mention-graph traversal is often higher
-   signal than keyword search: unknown handles mentioned by multiple
-   search-surfaced accounts are scored as candidates too.
+   `/tmp/twitter-account-candidates.json` plus a Markdown evidence report. It
+   scores candidates from three deliberately bounded signals so no single one
+   can carry a watchlist change:
+   - **Trust-weighted mentions** — the `goodtweet` lesson applied to a *trusted*
+     seed set. A mention-graph candidate must be vouched for by at least one
+     account already in the manifest (a monitored citer); being cited only by
+     other broad-search-surfaced accounts is **not** enough, which keeps
+     crypto/spam rings out of the candidate pool.
+   - **AI topicality** — a bonus for distinct AI-vocabulary terms actually
+     present in the candidate's evidence text, so a viral but off-topic post
+     (politics, astrology, crypto) cannot outrank a genuine AI source.
+   - **Engagement** — logarithmic and bounded, so it nudges ranking rather than
+     dominating it.
+   Exact weights and the `--min-score` default live in the script (the source of
+   truth); this contract describes the mechanism, not the constants.
 2. A Claude explorer reads those candidates, the current manifest, recent
    Twitter outputs, and this curation contract.
 3. If no strong evidence exists, it prints `no account changes`.
 4. If evidence supports changes, it uses `curate_twitter_accounts.py propose`
-   and `apply`, validates the manifest, runs focused tests, then opens a PR
-   against `main`.
+   and `apply`, validates the manifest, runs focused tests, then pushes the
+   branch and opens the PR against `main` **from inside the
+   `claude-code-action` step** (the PR is authored as `app/claude`). PR
+   creation must happen there, not in a downstream `run:` step: the default
+   `GITHUB_TOKEN` cannot open PRs in this repo (it fails with "GitHub Actions
+   is not permitted to create or approve pull requests"). See CLAUDE.md's
+   load-bearing rules.
 
 The loop caps each run at five additions and two removals. Removals require
 clear observed evidence because losing a quiet but important source is costlier

@@ -60,7 +60,7 @@ and opens a PR with methodology fixes.
 | `dedupe_headline_alerts.py` | Filter + record delivered Twitter headline alerts (used by `hourly-twitter.yml`). Layered deterministic dedup contract + Mermaid diagrams in [`docs/headline-dedupe.md`](docs/headline-dedupe.md). |
 | `headline_judge.py` | Agent-in-the-loop final dedup gate (used by `hourly-twitter.yml`). Two deterministic subcommands — `shortlist` (surface send-set survivors whose nearest prior sits in the contested `[0.35,0.50)` Jaccard band) and `apply` (drop only the Haiku judge's HIGH-confidence duplicates, fail-open, URL-keyed) — bracketing one Haiku adjudication step. Contract in [`docs/headline-dedupe.md`](docs/headline-dedupe.md). |
 | `curate_twitter_accounts.py` | Validates `data/sources/twitter_accounts.json`, builds the birdy fetch manifest, and writes/apply reviewable Twitter account add/remove proposals. |
-| `explore_twitter_accounts.py` | Scout script for `twitter-account-explorer.yml`; runs broad bird searches, scores unknown authors, and emits candidate JSON for reviewed account curation. |
+| `explore_twitter_accounts.py` | Scout script for `twitter-account-explorer.yml`; runs broad bird searches and emits candidate JSON for reviewed account curation. Scores from three bounded signals — trust-weighted mentions (a mention-graph candidate needs ≥1 *monitored* citer, not just any search-surfaced one), AI topicality (bonus for AI-vocabulary terms in the evidence), and bounded engagement — so viral off-topic/spam accounts don't outrank genuine AI sources. Contract: [`docs/twitter-account-curation.md`](docs/twitter-account-curation.md). |
 | `check_model_tickets.py` | Validator for `research/models/tickets/*.md` against the schema in `docs/model-tickets.md`. The CRUD agent in `24h-model-timeline.yml` runs it after every pass; CI runs it on every PR. |
 | `check_wiki.py` | Validator for `research/wiki/` pages against the schema in `docs/wiki-schema.md`. `uv run python scripts/check_wiki.py` (exit 0 = safe); `--lint` adds advisory checks. The ingest agent in `wiki-ingest.yml` runs it until exit 0; CI runs it on every PR. |
 | `wiki_search.py` | Search wrapper over `research/wiki/` (`uv run python scripts/wiki_search.py "<query>"`). The ingest agent runs it before writing any page so it UPDATEs an existing page instead of duplicating. |
@@ -389,6 +389,21 @@ output or break the pipeline. Read them before editing.
     self-trigger) and it runs GitHub-hosted (so a Cloud Run blip can't take
     out the recovery path too). Adding its name to the trigger list, or
     moving it to self-hosted, breaks both protections.
+
+12. **Workflow-opened PRs must be created inside `claude-code-action`.**
+    The default `GITHUB_TOKEN` cannot open pull requests in this repo: a
+    standalone `run: gh pr create` step fails with `GitHub Actions is not
+    permitted to create or approve pull requests (createPullRequest)`. The
+    working pattern (used by `daily-improve.yml` and
+    `twitter-account-explorer.yml`) is to have the agent push the branch and
+    run `gh pr create` **from inside the `anthropics/claude-code-action@v1`
+    step** — those PRs are authored as `app/claude` and succeed (and, unlike
+    `GITHUB_TOKEN`-authored PRs, they trigger `pull_request` workflows such as
+    CI). So: set `env: GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}` on the claude
+    step, include `Bash(git push:*),Bash(gh:*)` in `--allowedTools`, and do the
+    `gh pr create` in the prompt — never in a downstream plain-`GITHUB_TOKEN`
+    `run:` step. (Learned when the explorer's first run curated accounts
+    correctly but failed at an external publish step — PR #149.)
 
 ## Code Style
 
