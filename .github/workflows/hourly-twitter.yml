@@ -594,13 +594,10 @@ jobs:
           && steps.judge_shortlist.outputs.count != ''
         continue-on-error: true
         uses: anthropics/claude-code-action@v1
-        env:
-          DOUBTFUL_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-judge-doubtful.json
-          VERDICTS_FILE: /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-judge-verdicts.json
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model haiku --max-turns 6 --allowedTools "Read,Write,Bash(cat:*),Bash(jq:*),Bash(printenv:*)"
+            --model haiku --max-turns 12 --allowedTools "Read,Write"
           prompt: |
             You are the final duplicate gate for an AI-news headline alert
             feed. Reason from FIRST PRINCIPLES: judge whether two headlines
@@ -612,8 +609,11 @@ jobs:
             duplicate through. Mark "duplicate" with "high" confidence ONLY
             when you are certain it is the same specific event already sent.
 
-            Step 1 — read the input. Get the path and read it:
-              DOUBTFUL=$(printenv DOUBTFUL_FILE); cat "$DOUBTFUL"
+            Work in as few steps as possible: Read one file, then Write one
+            file. Use ONLY the Read and Write tools, nothing else.
+
+            Step 1 — Read this input file with the Read tool:
+              /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-judge-doubtful.json
             It is a JSON array; each entry is
               { "url", "headline", "candidates": [ { "headline", "delivered_at", "url" }, ... ] }
             The candidates are prior ALREADY-SENT alerts that share vocabulary
@@ -638,16 +638,16 @@ jobs:
               - A different, itself-newsworthy stage of an ongoing story
                 (rumor -> official confirmation; priced -> debuted).
 
-            Step 3 — output. Use the Write tool to create the file whose path
-            is in env var VERDICTS_FILE (run: printenv VERDICTS_FILE). Write a
-            JSON array, exactly one object per input entry:
+            Step 3 — with the Write tool, write your answer to this exact path:
+              /tmp/${{ steps.datetime.outputs.date }}-twitter-${{ steps.datetime.outputs.hour }}h-judge-verdicts.json
+            Content = a JSON array, exactly one object per input entry:
               { "url": "<the entry's url>", "verdict": "duplicate" | "distinct",
                 "confidence": "high" | "medium" | "low",
                 "matched_url": "<candidate url if duplicate, else empty string>",
                 "reason": "<one short clause>" }
             Key each verdict by the entry's "url" exactly. Use "duplicate" +
             "high" ONLY when certain; any genuine uncertainty -> "distinct".
-            Write ONLY the JSON array to that file — no prose, no other files.
+            Write ONLY the JSON array to that file, then stop.
 
       # ── claude-tier agent dedupe gate (steps 3/4: apply verdicts) ──
       # Drop only HIGH-confidence duplicates from the send set; fail OPEN if
