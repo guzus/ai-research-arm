@@ -6,8 +6,9 @@ aliases: ["Zhipu GLM 5.2", "Zhipu GLM-5.2", "GLM 5.2", "GLM-5.2", "Z.ai GLM-5.2"
 tags: [open-weights, china, coding, long-context, frontier-model]
 description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.
 created_at: 2026-06-17
-timestamp: 2026-06-20T00:00:00Z
+timestamp: 2026-06-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
@@ -84,6 +85,21 @@ max/high "thinking" modes.
   Benchmarks still show closed frontier ahead (Fable 5 #1 on DeepSWE ~70%), so this
   reads as a **real-but-soft substitution trend**, not a confirmed share shift — see
   [[open-weights]] (ARA digest 2026-06-20).
+
+- **The moat thesis gets its first leaderboard teeth (2026-06-21).** GLM-5.2 drew
+  multi-practitioner raves (**Jeremy Howard**, ~7K likes) and took **#1 on Design
+  Arena's single-turn HTML web-design board, beating a frozen [[claude-fable-5|Fable
+  5]]** — the first neutral-ish scoreboard backing the practitioner praise. It also
+  anchored the day's loudest open-vs-closed debate: an independent benchmark claim
+  that **GPT-5.5 hallucinates ~3× more than MIT-licensed GLM-5.2** topped Hacker News
+  (467 pts / 232 comments). Reported model details firmed: a **Terminal-Bench 2.1
+  jump 63.5 → 81.0**, 1M-token context, and an **anti-reward-hacking RL module**.
+  The day's defection — developer **@burkov** "already cancelled my Anthropic
+  subscription… No moat isn't hypothetical anymore" after three days on GLM-5.2 with
+  OpenCode — crystallized public subscription-cancellation churn (caveat: he keeps
+  Codex because GLM "cannot see"). **Caveats hold:** design-only board, no vision,
+  and senior devs note self-hosting still doesn't pencil out vs. a $200 Codex plan —
+  see [[open-weights]] (ARA digest 2026-06-21).
 
 ## Open questions
 

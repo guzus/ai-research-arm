@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.
 created_at: 2026-06-10
-timestamp: 2026-06-20T00:00:00Z
+timestamp: 2026-06-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
@@ -189,6 +190,23 @@ every feed on launch day.
   first presidential signal toward unwinding the controls — **but no Commerce order
   has lifted them**. See [[anthropic]], [[federal-ai-policy]] and [[open-weights]]
   (ARA digest 2026-06-20).
+
+- **Day nine dark; a named carrier, an ID-verification path, and the cliff one day
+  out (2026-06-21).** Both models **remain offline on day nine** with no restoration
+  date, and a viral "**Fable 5 RETURNS after government shutdown**" roundup is
+  **false** — Anthropic's own feed shows no restoration. Two previously-loose threads
+  hardened: WIRED **named [[sk-telecom|SK Telecom]]** (a ~$100M [[anthropic]] investor)
+  as the Korean carrier whose **Mythos 5** access via **Project Glasswing** triggered
+  the export directive — reframing the suspension into an **access-control /
+  supply-chain-trust** story — and Anthropic's rewritten **privacy policy** (effective
+  **July 8, 2026**; ID image + photo/video + **facial-geometry biometrics**) now reads
+  as the **mechanism to reopen the models to verified US citizens** rather than keep
+  both dark for all (flagged by Simon Willison). The **June 22 free-trial cliff**
+  arrives tomorrow: Fable 5 was free on Pro/Max/Team/Enterprise only through June 22;
+  on June 23 it leaves those plans and would require usage credits (moot while
+  suspended), with Anthropic saying it aims to restore Fable 5 as a standard
+  subscription feature after June 22 "when capacity allows." See [[anthropic]],
+  [[federal-ai-policy]] and [[open-weights]] (ARA digest 2026-06-21).
 
 ## Open questions
 

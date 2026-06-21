@@ -6,15 +6,24 @@ aliases: ["John Jumper", "Jumper"]
 tags: [people, researcher, alphafold, deepmind, anthropic, nobel-laureate]
 description: AlphaFold co-creator and joint 2024 Nobel laureate in Chemistry who left Google DeepMind for Anthropic on 2026-06-20 — the most prestigious science hire of the frontier-talent war.
 created_at: 2026-06-20
-timestamp: 2026-06-20T00:00:00Z
+timestamp: 2026-06-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
+  - {title: "Nobel laureate John Jumper is leaving DeepMind for rival Anthropic (TechCrunch)", url: "https://techcrunch.com/2026/06/20/nobel-laureate-john-jumper-is-leaving-deepmind-for-rival-anthropic/", date: 2026-06-20}
 ---
 
 **John Jumper** is the co-creator of **AlphaFold** — DeepMind's protein-structure
 prediction system — and a joint **2024 Nobel laureate in Chemistry** for that
 work. On **2026-06-20** he announced he is **leaving Google DeepMind for
-[[anthropic]]**, in his own post, acknowledged by DeepMind CEO Demis Hassabis.
+[[anthropic]]** after nearly nine years, in his own post, acknowledged by
+DeepMind CEO Demis Hassabis with a warm public farewell ("What we achieved with
+AlphaFold changed the world"). The departure was confirmed by named reporter
+@AndrewCurran_ and many independent desks with consistent specifics; Jumper
+reportedly said he will "recharge" before starting, and neither he nor Anthropic
+has revealed his role. It is the **third senior DeepMind exit in three months**
+and lands a day after [[noam-shazeer]] left for [[openai]] (ARA digest
+2026-06-21).
 
 ## Why it matters
 

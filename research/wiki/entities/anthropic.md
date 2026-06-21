@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-timestamp: 2026-06-20T00:00:00Z
+timestamp: 2026-06-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
@@ -384,6 +385,36 @@ Four developments through May 2026 put Anthropic at the center of the field:
   Claude.ai market**, with run-rate revenue up **~2× since October 2025** — extending
   the aggressive APAC/EMEA cadence (Seoul, Tokyo, Milan) even as the frontier models
   stay dark (ARA digest 2026-06-20).
+
+- **Jumper confirmed; the export saga gains a named carrier and an ID-verification
+  exit path (2026-06-21).** Three threads sharpened on day nine of the
+  [[claude-fable-5|Fable 5 / Mythos 5]] suspension. **(1)** The [[john-jumper]] hire
+  was widely corroborated (TechCrunch + many desks): the AI-for-science bet is the
+  strategic tell — where [[openai]]'s recent hires skewed policy/coding, Anthropic is
+  poaching for science mid-embargo. **(2)** WIRED **named [[sk-telecom|SK Telecom]]**
+  — South Korea's largest carrier and a **~$100M Anthropic investor since 2023** — as
+  the telecom whose early **Mythos 5** access via **Project Glasswing** (among ~150
+  orgs added in early June, revoked days before the shutdown) Washington flagged over
+  suspected China ties, reframing the suspension from a model-capability story into an
+  **access-control / supply-chain-trust** one; SKT flatly denies the China linkage.
+  **(3)** Anthropic's **rewritten privacy policy** (published June 8; effective **July
+  8, 2026**) lets it ask Free/Pro/Max users to **verify identity** — government-ID
+  image, a photo/video, and **facial-geometry biometric templates** (not applied to
+  business subs) — published the day before the Fable 5 launch and four days before
+  the export ban (flagged by Simon Willison). It now reads as the **mechanism to
+  reopen Fable 5 / Mythos 5 to verified US citizens** rather than keep both dark for
+  everyone — the first concrete sign of how a nationality-scoped restoration would be
+  enforced (see [[federal-ai-policy]]). The **June 22 subscription cliff** (Fable 5
+  free on Pro/Max/Team/Enterprise only through June 22) arrives tomorrow mid-standoff;
+  Trump's prior-day de-escalation has **not** lifted any Commerce order (ARA digest
+  2026-06-21).
+- **ChatGPT falls below 50% consumer share; Claude the best paid-converter
+  (2026-06-21).** Sensor Tower's *State of AI 2026* put **[[openai|ChatGPT]] below 50%
+  consumer share for the first time** (46.4%, down from 76.5% in Feb 2025), with
+  Gemini at 27.7% and **Claude at 10.3%** — though Claude reportedly carries the
+  sector's **highest paid-conversion rate (~13%)**, a quality-of-revenue counter to
+  its smaller consumer footprint. Treat as a single-vendor analytics estimate
+  (app/usage panel, not audited financials) (ARA digest 2026-06-21).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

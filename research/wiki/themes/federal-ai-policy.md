@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.
 created_at: 2026-06-03
-timestamp: 2026-06-19T00:00:00Z
+timestamp: 2026-06-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
@@ -288,6 +289,31 @@ footing for the first time in the cycle.
   **July 2 / Aug 1**; **EU AI Act** full applicability **Aug 2**; **China CAC**
   anthropomorphic-interaction rules **July 15**; **Colorado AI Act** effective
   **June 30** (ARA digest 2026-06-19).
+
+- **The export action becomes an access-control case; an ID-verification exit path
+  emerges (2026-06-21).** On day nine, the in-window policy signal remained the
+  [[claude-fable-5|Fable 5 / Mythos 5]] export suspension itself — an enforcement
+  action under existing authority (**Export Controls Reform Act of 2018**) — now
+  sharpened by two specifics. WIRED **named [[sk-telecom|SK Telecom]]** (a ~$100M
+  [[anthropic]] investor) as the Korean carrier whose **Project Glasswing** Mythos 5
+  access Washington flagged over suspected China ties, recasting the case from
+  model-capability/jailbreak to **access-control / supply-chain-trust**. And
+  Anthropic's rewritten **privacy policy** (effective July 8; ID image + photo/video +
+  **facial-geometry biometrics**) reads as the **mechanism to reopen the models to
+  verified US citizens** — the first concrete shape of a **nationality-scoped
+  restoration**. President **Trump's prior-day de-escalation** (Amodei "responded very
+  responsibly"; "a competitor, and a part owner, that turned Anthropic in," widely
+  read as **[[amazon|Amazon]]**) is warming rhetoric, **not a rescinded Commerce
+  order**. Separately, an **EU deepfake definitional gap** surfaced — Eurocommerce
+  wants AI-generated ads exempt from **EU AI Act** transparency rules (90% of
+  Zalando's marketing is AI-generated), exposing that the EU "doesn't really know what
+  a deepfake is" ahead of the Aug 2 obligations (ARA digest 2026-06-21).
+- **Regulatory clock (carries, 2026-06-21).** White House "Promoting Advanced AI
+  Innovation and Security" EO deliverables due **July 2 / Aug 1**; **EU AI Act**
+  transparency/GPAI obligations binding **Aug 2, 2026** (final Code of Practice on
+  AI-content labeling issued June 10); **China CAC** anthropomorphic-interaction
+  measures effective **July 15**; **Colorado AI Act** effective **June 30** (ARA
+  digest 2026-06-21).
 
 ## Open questions
 

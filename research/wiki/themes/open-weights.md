@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown.
 created_at: 2026-06-14
-timestamp: 2026-06-19T00:00:00Z
+timestamp: 2026-06-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
@@ -133,6 +134,21 @@ fragile and local weights look like insurance.
   reigniting the open-weight-vs-closed-frontier debate (HN: 432 pts, 176
   comments) — the modality frontier of open weights advancing while
   [[claude-fable-5|Fable 5 / Mythos 5]] stays embargoed (ARA digest 2026-06-19).
+
+- **The "no moat" thesis gets teeth — a leaderboard win + visible defections
+  (2026-06-21).** The wave's strongest evidence yet that the open-vs-closed gap is
+  *eroding*, not merely closing: **[[zhipu-glm-5-2|GLM-5.2]]** took **#1 on Design
+  Arena's single-turn HTML web-design board, beating a frozen [[claude-fable-5|Fable
+  5]]** — the first neutral-ish scoreboard backing the practitioner raves (Jeremy
+  Howard, ~7K likes) — and produced **public subscription-cancellation defections**.
+  The day's Quote of the Day was developer **@burkov**: "I already cancelled my
+  Anthropic subscription and have no regrets… **No moat isn't hypothetical
+  anymore**," after three days running GLM-5.2 with OpenCode instead of Codex (caveat:
+  he keeps Codex because GLM "cannot see"). An independent claim that **GPT-5.5
+  hallucinates ~3× more than MIT-licensed GLM-5.2** dominated Hacker News (467 pts /
+  232 comments) — the open-weights story now leading HN as much as Twitter. The
+  brakes still hold: design-only board, no vision, self-hosting economics still lose
+  to a $200 Codex plan (ARA digest 2026-06-21).
 
 ## Open questions
 

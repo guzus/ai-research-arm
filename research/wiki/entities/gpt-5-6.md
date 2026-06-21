@@ -6,8 +6,9 @@ aliases: ["GPT-5.6", "GPT 5.6", "GPT-5.6 Pro", "GPT-5.6 Mini"]
 tags: [model-release, openai, gpt, frontier-model, upcoming, rumor]
 description: OpenAI's most-anticipated unreleased frontier model — press-reported for ~2026-06-23 as a full standard/Mini/Pro family with a leaked ~1.5M-token context window, but unconfirmed by OpenAI (no system card, API string, or official date).
 created_at: 2026-06-20
-timestamp: 2026-06-20T00:00:00Z
+timestamp: 2026-06-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA model ticket — OpenAI GPT-5.6", path: research/models/tickets/openai-gpt-5-6.md}
 ---
@@ -36,6 +37,16 @@ model ticket `openai-gpt-5-6` for the canonical status (`rumored`,
   and open weights like [[zhipu-glm-5-2|GLM-5.2]] are closing the gap — and to a
   pricing war [[openai]] opened with its June API cut. A bigger context window plus
   cheaper, faster Codex would directly target Anthropic's coding lead.
+- **Timing firmed toward late June; demos debunked (2026-06-21).** Chief scientist
+  **Jakub Pachocki** reportedly told staff GPT-5.6 is a "**meaningful improvement**"
+  over 5.5 (attributed to *The Information*); leak-trackers peg a launch "as soon as
+  next week," with **Polymarket ~83% on a June 22–28 drop**. Still **no system card
+  and no API listing**. The viral "stealth GPT-5.6-Pro" capability demos were
+  **debunked as model-tier confusion** — testers were on **GPT-5.5-Pro, not 5.6**
+  (@MarMarLabs) — and leaked specs (~1.5M context, faster Codex, cheaper pricing)
+  remain rumor. The closed-frontier counterweight stays unshipped heading into the
+  **June 30 pipeline cliff** alongside Gemini 3.5 Pro and Grok 5 (ARA digest
+  2026-06-21).
 
 ## Open questions
 
