@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 // Copy research data from ../research/ into public/research/ and emit the
 // manifest.json the dashboard consumes. Runs as `prebuild` (before
-// `vite build`) and `predev` (before `vite dev`), so both Vercel and local
-// development hit the same pre-build code path.
+// `vite build`) and `predev` (before `vite dev`), so the Railway Docker
+// build and local development hit the same pre-build code path.
 //
-// Replaces what .github/workflows/deploy-dashboard.yml did inline in CI —
-// keeping the logic in-repo means any Vercel build is self-contained and
-// the GH Pages workflow can call this same script too if you simplify it
-// later.
+// Keeping this logic in-repo (rather than inline in a deploy workflow) means
+// any build environment — the production Railway image, a local checkout, or
+// a fork's own host — is self-contained and reproducible.
 
 import { spawnSync } from 'node:child_process';
 import { existsSync, readdirSync, mkdirSync, readFileSync, writeFileSync, cpSync, statSync, openSync, readSync, closeSync } from 'node:fs';

@@ -231,12 +231,14 @@ jobs:
           REPO: ${{ github.repository }}
           TODAY: ${{ steps.date.outputs.date }}
           RUN_ID: ${{ github.run_id }}
+          # Override to host audio elsewhere; defaults to the maintainer's S3.
+          AUDIO_BASE_URL: ${{ vars.AUDIO_BASE_URL }}
         run: |
           MP3="research/audio/${TODAY}-digest.mp3"
           # mp3s live on S3 since May 2026; the file in the working tree is
           # a 0-byte stub. Pull today's audio from S3 if the local stub is empty.
           if [ ! -s "$MP3" ]; then
-            S3_URL="https://s3.guzus.xyz/obj-ai-research-arm/audio/${TODAY}-digest.mp3"
+            S3_URL="${AUDIO_BASE_URL:-https://s3.guzus.xyz/obj-ai-research-arm}/audio/${TODAY}-digest.mp3"
             echo "Local mp3 missing or 0-byte stub; trying S3: ${S3_URL}"
             if ! curl -sSf -o "$MP3" "$S3_URL"; then
               echo "No audio digest available locally or on S3; skipping voice publish."

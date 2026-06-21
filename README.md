@@ -12,6 +12,33 @@ Automated multi-source AI news research agent powered by Claude and MCP.
 
 > *Generated daily at 00:30 UTC. See [`research/front-page/`](research/front-page/) for the archive.*
 
+## Quickstart (no accounts needed)
+
+Prerequisites: [Bun](https://bun.sh) and [Git LFS](https://git-lfs.com) — the
+committed front-page images are stored with Git LFS, so a `git clone` with
+git-lfs installed hydrates them automatically (the dashboard prebuild fails on
+unhydrated LFS pointers).
+
+The dashboard builds and runs against the sample research data already
+committed in this repo — no API keys or secrets required:
+
+```bash
+cd dashboard
+bun install
+bun run dev          # local dev server at http://localhost:5173
+# or: bun run build  # production build into dashboard/dist/
+```
+
+Python tooling is stdlib-first and managed with [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv sync --all-extras
+uv run python -m unittest discover -s scripts -p 'test_*.py'
+```
+
+Running the **full data pipeline** needs the maintainer's accounts and
+infrastructure — see [What you can run vs. what needs accounts](#what-you-can-run-vs-what-needs-accounts).
+
 ## Architecture
 
 ```mermaid
@@ -242,6 +269,11 @@ uv run python scripts/check_model_tickets.py
 
 ### Required Secrets
 
+All credentials are injected via GitHub Actions secrets (or a local `.env`,
+which is gitignored) — see [`.env.example`](.env.example) for the full
+annotated list of pipeline credentials. None of these are needed for the
+[Quickstart](#quickstart-no-accounts-needed).
+
 | Secret | Required | Description |
 |--------|----------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code auth |
@@ -259,6 +291,40 @@ uv run python scripts/check_model_tickets.py
 | `PERPLEXITY_API_KEY` | [perplexity.ai/settings/api](https://www.perplexity.ai/settings/api) | Real-time web search with citations via MCP |
 
 **Note:** Exa and Perplexity integrate as MCP (Model Context Protocol) tools, giving Claude enhanced web search capabilities during research workflows.
+
+## What you can run vs. what needs accounts
+
+This repo is one person's live pipeline, published as-is. Much of it is
+reproducible; some of it points at the maintainer's private infrastructure and
+is included for transparency rather than turnkey reuse.
+
+**Runs with no accounts:**
+- The **dashboard** — builds and serves from the sample data committed under
+  `research/` (see [Quickstart](#quickstart-no-accounts-needed)).
+- The **Python tooling + tests** — stdlib-first, `uv`-managed; validators and
+  unit tests run offline.
+
+**Needs your own credentials (drop-in):**
+- **Claude / Fireworks backends** — set `CLAUDE_CODE_OAUTH_TOKEN` (or
+  `FIREWORKS_API_KEY`) and the synthesis/generative workflows run on your fork.
+- **Twitter/X lanes** — supply your own `BIRD_AUTH_TOKEN` / `BIRD_CT0` cookies
+  (they expire often; lanes degrade to empty data without them).
+- **Exa / Perplexity** search enrichment and **Gemini** TTS are all optional.
+
+**Maintainer-specific (swap or disable to self-host):**
+- **Runners:** nearly every workflow targets a private self-hosted Cloud Run
+  fleet (`runs-on: [self-hosted, Linux]`); on a fork those jobs queue until you
+  point them at your own runners (or change `runs-on`).
+- **Services:** `hooker.guzus.xyz` (telemetry — no-ops if `HOOKER_URL` is
+  unset), `tuber-api.guzus.xyz` (YouTube signal — no public equivalent), and
+  `s3.guzus.xyz` (audio hosting). Override the non-secret endpoints via the env
+  vars in [`.env.example`](.env.example) (`AUDIO_BASE_URL`,
+  `POSTBUILD_SITE_ORIGIN`, `DEPLOY_HEALTH_URL`, …).
+- **Deploy:** production is a Railway service watching `main`, and
+  `ara.guzus.xyz` is the maintainer's domain. The static dashboard shell also
+  embeds a Google Analytics tag in `dashboard/index.html` — remove it on a fork.
+- **Sibling repos** `../oracle` and `../runner` referenced in the docs are
+  private and not required for the default Claude/Fireworks paths.
 
 ## Output Structure
 
@@ -288,7 +354,6 @@ dashboard/                          # Vite + Bun + TypeScript SPA
 │   └── style.css                  # Warm cream palette, responsive styles
 ├── index.html                     # Entry point
 ├── scripts/prebuild.mjs           # Copies research/ into public/, builds manifest.json
-├── vercel.json                    # Legacy Vercel config (prod is served by Railway via the root Dockerfile)
 ├── vite.config.js                 # Vite config
 └── package.json                   # Dependencies (vite, marked, dompurify)
 ```
@@ -372,3 +437,20 @@ See [docs/archive/](./docs/archive/) for improvement history and prior ideas.
 - [Model Context Protocol](https://modelcontextprotocol.io/)
 - [Reddit RSS Feeds](https://www.reddit.com/wiki/rss/)
 - [Bluesky API Docs](https://docs.bsky.app/)
+
+## License
+
+The **source code** in this repository (scripts, workflows, the dashboard, and
+documentation) is released under the [MIT License](LICENSE).
+
+The **contents of `research/`** are a different matter: they are automated
+excerpts, summaries, and reproductions of third-party material (news articles
+and posts from X/Twitter, Hacker News, Reddit, Bluesky, arXiv, and similar
+sources) produced as the pipeline's output. They are **not** relicensed by the
+MIT grant and remain the property of their original authors. If you reuse
+anything under `research/`, you are responsible for complying with the original
+sources' terms — including the X/Twitter Terms of Service and each publisher's
+copyright.
+
+Contributing: [`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md) ·
+Security: [`.github/SECURITY.md`](.github/SECURITY.md)

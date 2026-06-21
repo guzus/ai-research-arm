@@ -3,6 +3,14 @@
 Operating guide for AI agents working in this repo. Read this before
 touching workflows, research output, or the dashboard.
 
+> **New here, or just found this on GitHub?** This file is the *operator's
+> manual* for the live deployment and assumes the maintainer's infrastructure
+> (self-hosted runners, S3, telemetry, X cookies). If you are exploring or
+> forking the project, start with [`README.md`](README.md): its **Quickstart**
+> runs with no accounts, and the **License** and **"What you can run vs. what
+> needs accounts"** sections explain what is reproducible outside the original
+> deployment.
+
 ## Project Overview
 
 `ai-research-arm` (ARA) is an automated AI-news intelligence pipeline.
@@ -41,7 +49,7 @@ and opens a PR with methodology fixes.
 | [`docs/headline-dedupe.md`](docs/headline-dedupe.md) | Dedup contract + Mermaid flow for the Twitter headline-alert ledger (`research/summaries/twitter-announced-history.json`): the deterministic layered `duplicate_reason` check (`scripts/dedupe_headline_alerts.py`) **plus** the agent-in-the-loop Haiku gate (`scripts/headline_judge.py`) that adjudicates the contested sub-floor band. Used by `hourly-twitter.yml`. |
 | [`docs/archive/`](docs/archive/) | Historical improvement logs and superseded docs. |
 | `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`; Railway auto-deploys on every push to `main` (next row). |
-| [`Dockerfile`](Dockerfile) + [`Caddyfile`](Caddyfile) + [`railway.json`](railway.json) | The Railway deploy stack serving **ara.guzus.xyz** (behind Cloudflare — responses carry `x-railway-edge`). The root `Dockerfile` builds the dashboard with bun (`oven/bun:1-alpine`, plus `nodejs` for the pre/postbuild node scripts) and serves `dashboard/dist` with Caddy; `railway.json` pins the DOCKERFILE builder + `/` healthcheck. `dashboard/vercel.json` is the legacy Vercel config — Vercel no longer serves the domain (Load-bearing rule 3). |
+| [`Dockerfile`](Dockerfile) + [`Caddyfile`](Caddyfile) + [`railway.json`](railway.json) | The Railway deploy stack serving **ara.guzus.xyz** (behind Cloudflare — responses carry `x-railway-edge`). The root `Dockerfile` builds the dashboard with bun (`oven/bun:1-alpine`, plus `nodejs` for the pre/postbuild node scripts) and serves `dashboard/dist` with Caddy; `railway.json` pins the DOCKERFILE builder + `/` healthcheck. the legacy `dashboard/vercel.json` Vercel config was removed during open-sourcing; Vercel no longer serves the domain (Load-bearing rule 3). |
 | `data/` | Static lookup data used by aggregation scripts. |
 | `research/` | All generated artifacts. Subdir map in "Output Locations" below. |
 
@@ -279,9 +287,11 @@ output or break the pipeline. Read them before editing.
    (root `Dockerfile`: bun build → Caddy serve; `railway.json` pins
    the builder + healthcheck). ara.guzus.xyz is served by that
    container behind Cloudflare (responses carry `x-railway-edge`) —
-   NOT by Vercel, whose last recorded deploy failed 2026-05-25 and
-   whose leftovers (`dashboard/vercel.json`, `VERCEL_DEPLOY_HOOK`)
-   are legacy. There is still no workflow file for deploys.
+   NOT by Vercel, whose last recorded deploy failed 2026-05-25. Its
+   `dashboard/vercel.json` was removed during open-sourcing; the only
+   remaining leftover is the `VERCEL_DEPLOY_HOOK` secret — a harmless
+   legacy no-op still referenced by a few workflows. There is still no
+   workflow file for deploys.
    `dashboard/scripts/prebuild.mjs` copies `research/<source>/` into
    `public/research/` and emits `manifest.json` before Vite runs (the
    Docker build runs the same `bun run build` lifecycle). Touching it
