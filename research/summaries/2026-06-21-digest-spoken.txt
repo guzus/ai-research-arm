@@ -1,0 +1,9 @@
+Speaker 1: Sunday, June twenty-first, twenty twenty-six.
+Speaker 2: [high_energy] Nobel laureate John Jumper just left Google DeepMind for Anthropic — the AlphaFold creator is now in the race on the other side, and this is the biggest talent-war counter-move we have seen yet.
+Speaker 1: Also in the headlines: the Fable five and Mythos five export freeze enters day nine. SK Telecom has been named as the Korean carrier at the center of it, and the subscription cliff arrives tomorrow, June twenty-second.
+Speaker 2: Meanwhile open-weights GLM five point two has taken the number one spot on Design Arena, beating frozen Fable five. Developers are publicly canceling their Claude and OpenAI subscriptions over it.
+Speaker 1: Some quick numbers — ChatGPT just fell below fifty percent consumer share for the first time, landing at [emphasis] forty-six point four percent [/emphasis]. Gemini sits at twenty-seven point seven, Claude at ten point three.
+Speaker 2: And GLM five point two's Terminal-Bench score jumped from sixty-three point five to eighty-one point zero. That is a serious capability leap for a fully open model.
+Speaker 1: [dramatic_pause] Topping Hacker News today with four hundred sixty-seven points: "GPT five point five hallucinates three times more than MIT-licensed GLM five point two."
+Speaker 2: Worth noting: no new frontier model, no megaround, and no binding regulation in today's window. The day belongs entirely to personnel moves and open weights.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
