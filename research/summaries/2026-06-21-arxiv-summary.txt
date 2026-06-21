@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-21
+
+TOP 5 PAPERS:
+• How Transparent is DiffusionGemma? - DeepMind shows diffusion LLMs are nearly as interpretable/monitorable as autoregressive ones once inter-step flow is decoded.
+• Current World Models Lack a Persistent State Core - WRBench: all 23 tested models forget unobserved events; they "tracking-shot" rather than evolve world state.
+• SSD: Spatially Speculative Decoding - predicting 2D-adjacent tokens speeds autoregressive image generation up to 13.3x with no quality loss.
+• HumanScale - egocentric human video beats real-robot data for embodied pretraining (52-90% higher success rates).
+• Lie-Algebra Attention - tokens as matrix Lie group elements; closed-form geometric attention with 50-80x fewer params.
+
+CATEGORIES: CV/Multimodal 6, Agents/Reasoning 4, LM/NLP 4, Safety 4, Other 3
+
+Full report on GitHub.
