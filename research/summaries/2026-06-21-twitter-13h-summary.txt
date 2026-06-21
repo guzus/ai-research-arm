@@ -1,0 +1,15 @@
+Twitter/X AI Pulse - 2026-06-21 13:42 UTC
+
+CYCLE: Quiet window; one viral re-surface recontextualizes the Anthropic export freeze.
+
+TOP STORIES:
+• The Economist surfaces the freeze's rationale: Sen. Warner's on-record account that NSA testing found Mythos "broke into almost all classified systems… in hours" — real quote, but ~June-11 vintage and from a controlled test, not a new breach ⚠
+
+OTHER:
+• GPT-5.6 timing chatter unchanged (~"Thursday"/this month) — still zero OpenAI artifact 🚩
+• GLM-5.2 open-weights reception keeps maturing; no new neutral leaderboard ⚠
+• OpenAI + Anthropic accounts static since June 18
+
+WATCH: June 22 subscription cliff (tomorrow) — Fable 5 still frozen, day 11+, no restoration.
+
+Full update on GitHub.
