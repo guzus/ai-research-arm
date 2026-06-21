@@ -75,7 +75,31 @@ status_note: |
   full letter text Bloomberg-obtained and independently read, corroborated by
   WIRED/WSJ/FT named reporting, **verification advances to `confirmed`** (the
   government's own PDF is still unpublished, the lone remaining gap).
-expected: "Restoration still pending (days 5–6) — full Bloomberg-obtained BIS letter public; admin's re-release bar (uncircumventable guardrails) called impossible by experts; G7/Macron diplomacy + JPMorgan/Goldman HK Claude pulls widen the fallout. No official BIS PDF or restoration yet"
+
+  **As of 2026-06-21 (days 7–9):** still no restoration; the standoff warmed
+  rhetorically but the order stands. Three threads advanced. (1) **WIRED /
+  Tom's Hardware / Korea JoongAng named the carrier as SK Telecom** — South
+  Korea's largest wireless operator and a **~$100M Anthropic investor** since
+  2023, reportedly among **~150 orgs added to Project Glasswing** in early June,
+  with Mythos 5 access **revoked days before** the suspension; SKT flatly
+  **denies** the China linkage. This reframes the trigger from a
+  model-capability/jailbreak story toward an **access-control / supply-chain-
+  trust** one. (2) Anthropic's **rewritten privacy policy** (published
+  2026-06-08, effective **2026-07-08**) lets it ask Free/Pro/Max users to
+  **verify identity** — a government-ID image, a photo/video, and
+  **facial-geometry biometric templates** (not applied to business subs) —
+  read (flagged by Simon Willison) as the staged mechanism to reopen Fable 5 /
+  Mythos 5 to **verified US citizens** under a nationality-scoped restoration
+  rather than keep both dark for everyone. (3) A fuller **Trump/Axios
+  transcript** circulated — he calls Anthropic "not now, but a week ago maybe"
+  a national-security threat, praises Amodei, and names "a competitor and a
+  part owner that turned Anthropic in" (widely **inferred as Amazon**, not a
+  name Trump said). **No Commerce order has been rescinded** — warming rhetoric,
+  not a lifted ban; a viral "Fable 5 RETURNS after government shutdown" roundup
+  is **false** (Anthropic's own feed shows no restoration). The **June 22
+  subscription cliff** arrives one day out. Status stays `confirmed`;
+  verification stays `confirmed`.
+expected: "Restoration still pending (days 7–9) — no Commerce rescission. SK Telecom named as the Project Glasswing carrier behind the directive (denies China ties); Anthropic's rewritten privacy policy (effective 2026-07-08) stages government-ID + facial-geometry verification as a likely path to reopen Fable 5/Mythos 5 to verified US citizens; Trump de-escalated rhetorically (Amazon inferred as the 'part-owner that turned them in'). June 22 subscription cliff one day out; no official BIS PDF or restoration"
 labels:
   - regulatory
   - export-control
@@ -95,8 +119,10 @@ sources:
   - "@LaurenGoode"
   - "@AmrithRamkumar"
   - "@alasdairpr"
+  - https://www.tomshardware.com/tech-industry/artificial-intelligence/sk-telecom-named-as-the-korean-carrier-at-the-center-of-anthropics-mythos-export-controls
+  - https://www.computerworld.com/article/4185515/anthropics-new-privacy-policy-offers-us-consumers-a-way-around-fable-ban-2.html
 created_at: 2026-06-14
-updated_at: 2026-06-18
+updated_at: 2026-06-21
 closed_at: null
 closed_reason: null
 history:
@@ -108,6 +134,8 @@ history:
     change: "Day 4 — still no restoration; the dispute hardens into a sustained standoff. Anthropic leaders met with White House officials over Fable 5's risks and the talks ended without consensus, export controls left in place (WIRED, secondary). FT (source close to OpenAI) frames the order as a 'deemed export control' — the defense/nuclear-style regime where a foreign national merely touching the tech counts as an export — and reports frontier labs worked with the government, with the industry now pushing to preserve foreign-national researchers' ability to work on advanced models; Anthropic's leadership is reportedly split internally on how much risk Fable 5 presents. Still no published Commerce/BIS directive text. Status stays confirmed; verification stays partial (all new detail secondary/social)."
   - ts: 2026-06-18
     change: "Days 5–6 — documentary record hardens, dispute internationalizes; verification → confirmed. The full BIS 'Is Informed' letter (Lutnick→Amodei), obtained by Bloomberg, circulated in full: individually-validated license required to release Mythos 5/Fable 5 to any 'foreign person' worldwide incl. 'deemed exports' inside the US, under criminal/civil penalty, invoking EAR §744.22(b). Two export-control lawyers (@CharlieBull0ck, @alasdairpr) published teardowns (published-information carve-out, First Amendment, AI-as-a-service may not be an 'export'). 2026-06-17: frontier-lab CEOs at G7 Évian; Macron–Amodei bilateral reportedly sought Europe's Claude access back; WIRED says re-release bar is uncircumventable guardrails (experts: impossible); Sacks blamed Anthropic's 'confrontational posture'; Amodei/Hassabis called for a US-led China-excluding AI coalition. WIRED scoop (Matsakis/Zeff) refines trigger to a two-step sequence — SK Telecom's Mythos access (alleged China ties, SKT denies) cracked trust first, Amazon's jailbreak report was the final straw. WSJ surfaced Lutnick's 'that's the point'; 40+ CISOs signed a reversal letter; JPMorgan pulled Claude for Hong Kong staff (after Goldman, licensing-driven). Bloomberg-obtained letter text + WIRED/WSJ/FT named reporting → verification confirmed; only the government's own PDF remains unpublished."
+  - ts: 2026-06-21
+    change: "Days 7–9 — still no restoration; rhetoric warmed, order stands. (1) WIRED/Tom's Hardware/Korea JoongAng named the carrier as SK Telecom — South Korea's largest wireless operator and a ~$100M Anthropic investor since 2023, reportedly among ~150 orgs added to Project Glasswing in early June with Mythos 5 access revoked days before the suspension; SKT denies China ties, reframing the trigger toward access-control / supply-chain-trust. (2) Anthropic's rewritten privacy policy (published 2026-06-08, effective 2026-07-08) lets it ask Free/Pro/Max users to verify identity (government-ID image, photo/video, facial-geometry biometric templates; not business subs) — read (Simon Willison) as the staged mechanism to reopen Fable 5/Mythos 5 to verified US citizens. (3) Fuller Trump/Axios transcript: 'not now, but a week ago maybe' a threat, praises Amodei, names 'a competitor and a part owner that turned Anthropic in' (widely inferred as Amazon — not a name Trump said). No Commerce rescission; a viral 'Fable 5 RETURNS' roundup is false. June 22 subscription cliff one day out. Status stays confirmed; verification stays confirmed. Sources: Tom's Hardware (SKT), Computerworld/The Register (privacy policy), @AndrewCurran_ (Trump transcript)."
 ---
 
 On **2026-06-12** the US government issued an **export-control directive**

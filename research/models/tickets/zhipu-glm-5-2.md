@@ -45,7 +45,20 @@ status_note: |
   benchmark org's primary post, so it sharpens — but does not replace — the
   neutral-placement caveat. Status stays `released`, verification stays
   `confirmed`.
-expected: "Shipped — MIT weights live (HuggingFace), API + GLM Coding Plan + Web Chat, day-0 vLLM/Notion/Baseten support; community leaderboards (Design Arena #1, AA Index #1 open-weights, Terminal-Bench >80%) strong, neutral-org primary placement still settling"
+
+  **2026-06-21:** The open-weights "no moat" thesis got its sharpest day yet.
+  GLM-5.2 took **#1 on Design Arena's single-turn web-design board** — beating a
+  frozen Fable 5 — and drew multi-practitioner raves (**Jeremy Howard**, ~7K
+  likes). An independent benchmark claiming **GPT-5.5 hallucinates ~3× more than
+  MIT-licensed GLM-5.2** hit the HN front page (467 pts / 232 comments), and
+  public **subscription-cancellation defections** surfaced (developer @burkov:
+  "I already cancelled my Anthropic subscription… No moat isn't hypothetical
+  anymore," keeping Codex only because GLM "cannot see"). Restated specs include
+  a **Terminal-Bench 2.1 jump 63.5→81.0**, 1M context, and an
+  **anti-reward-hacking RL module**. Caveats persist: design-only board, no
+  vision, and senior devs note self-hosting still doesn't pencil out vs. a $200
+  Codex plan. Status stays `released`, verification stays `confirmed`.
+expected: "Shipped — MIT weights live (HuggingFace), API + GLM Coding Plan + Web Chat, day-0 vLLM/Notion/Baseten support; community leaderboards strong (Design Arena #1 incl. web-design board, AA Index #1 open-weights, Terminal-Bench 2.1 ~81); first leaderboard-backed open-vs-closed erosion (GPT-5.5 hallucination benchmark, public sub defections), neutral-org primary placement still settling"
 labels:
   - frontier-model
   - open-weights
@@ -59,8 +72,11 @@ sources:
   - "@testingcatalog"
   - "@kimmonismus"
   - "@ns123abc"
+  - "@jeremyphoward"
+  - "@burkov"
+  - https://news.ycombinator.com/item?id=48600167
 created_at: 2026-06-14
-updated_at: 2026-06-20
+updated_at: 2026-06-21
 closed_at: null
 closed_reason: null
 history:
@@ -72,6 +88,8 @@ history:
     change: "MIT weights live + verification → confirmed. Z.ai's official thread (@Zai_org 2026-06-16) bills GLM-5.2 as 744B-A40B MoE, 1M context, max/high reasoning, 46.2% DeepSWE, same price as GLM-5.1. Day-0 ecosystem uptake (vLLM v0.23.0, Notion, Baseten) plus HuggingFace MIT weights. Strong community placement — @kimmonismus 'third best model across open + proprietary,' top of design arena after Fable 5's pull, @ns123abc 'Opus 4.6 / GPT-5.4 tier'; Z.ai also shipped a ZCode desktop agent. Official thread + live weights + independent adoption → verification confirmed; neutral SWE-bench/LiveCodeBench placement still the open gap."
   - ts: 2026-06-20
     change: "Surface + benchmark expansion. GLM-5.2 now live on Z.ai Web Chat (after the API launch), putting the 1M-context model in the browser. Neutral-leaderboard placement (the 06-18 gap) starts filling: community recaps put it #1 on Design Arena, #1 open-weights on the Artificial Analysis Intelligence Index, first open model >80% on Terminal-Bench, and ~74.4 FrontierSWE vs Opus 4.8's 75.1, at ~$1.4/$4.4 per MTok. Still mostly secondary/community routing rather than a neutral benchmark org's primary post → status stays released, verification stays confirmed. Sources: @aimeowyak 2068237497562517938, @johnseach 2068237957669228677."
+  - ts: 2026-06-21
+    change: "Open-weights 'no moat' thesis got teeth. GLM-5.2 took #1 on Design Arena's single-turn web-design board (beating a frozen Fable 5) and drew multi-practitioner raves (Jeremy Howard ~7K likes). An independent benchmark claiming GPT-5.5 hallucinates ~3× more than MIT-licensed GLM-5.2 hit the HN front page (467 pts / 232 comments); public subscription-cancellation defections surfaced (@burkov: 'I already cancelled my Anthropic subscription… No moat isn't hypothetical anymore,' keeps Codex only because GLM 'cannot see'). Restated specs: Terminal-Bench 2.1 63.5→81.0, 1M context, anti-reward-hacking RL module. Caveats persist (design-only board, no vision, self-hosting still doesn't pencil out vs a $200 Codex plan). First leaderboard-backed erosion of the open-vs-closed gap. Status stays released, verification stays confirmed."
 ---
 
 **GLM 5.2**, from **Zhipu AI (Z.ai)**, is the cycle's dominant open-weights

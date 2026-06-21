@@ -27,7 +27,10 @@ status_note: |
   day fix**: @simonw 18:51 UTC caught a Codex Desktop "Copy as Markdown"
   feature regression; @PhilippSpiess (OpenAI) committed at 21:17 UTC
   to restore — first publicly-acknowledged same-day Codex Desktop fix
-  pledge.
+  pledge. **2026-06-21**: cadence continues — the Codex macOS app added
+  **"Record & Replay"** (watch a user perform a workflow once, then convert
+  it into a **reusable skill**) plus improved browser-based debugging/testing
+  of web apps — the platform's first record-to-skill automation primitive.
 expected: null
 labels:
   - coding
@@ -44,7 +47,7 @@ sources:
   - "@PhilippSpiess"
   - "@simonw"
 created_at: 2026-05-30
-updated_at: 2026-06-03
+updated_at: 2026-06-21
 closed_at: null
 closed_reason: null
 history:
@@ -54,6 +57,8 @@ history:
     change: "5M Codex users milestone: @thsottiaux (Tibo, OpenAI) 2026-05-31 05:59 UTC ~320 RT — 'Five million users would agree. Resetting the limits tomorrow morning to celebrate. Time to go /fast.' RT'd by @sama 14:48 UTC. First concrete OpenAI-side Codex penetration number (denominator undefined: API users vs Plus/Pro seats vs ChatGPT-as-whole). Codex Desktop 'Copy as Markdown' regression caught by @simonw 2026-05-31 18:51 UTC (~479 likes), committed-to-fix by @PhilippSpiess (OpenAI) 21:17 UTC — first publicly-acknowledged same-day Codex Desktop fix pledge. @reach_vb logs Codex multi-file ops anecdote (verified codec/fps/resolution, stitched MP4s without re-encoding) 2026-05-31 23:09 UTC"
   - ts: 2026-06-03
     change: "Enterprise 'work layer' expansion (secondary-source convergence, no primary @OpenAI link in-window). Multiple recap threads 2026-06-03 describe three new building blocks on the Codex/ChatGPT surface: **Plugins** (role-specific environments — data analytics, public-equity investing, investment banking, sales, product design, creative production — connecting ~62 apps), **Sites** (turn AI outputs into dashboards / internal tools / reports / shareable web apps, framed as replacing front-end dev), and **Annotations** (highlight a region of a doc/sheet/deck and instruct the model to modify only that region). Restated usage figure: **Codex >5M weekly active, up >400% since January**, with **AWS distribution**. Verification stays partial on these specifics (engagement-thread sourcing, e.g. @StanVolynsky / @shree_code), but the named features are internally consistent across accounts. Status remains released; framing shifts from 'agentic coding CLI' toward 'interface layer for knowledge work'"
+  - ts: 2026-06-21
+    change: "Cadence continues — the Codex macOS app added 'Record & Replay': it can watch a user perform a workflow once and convert it into a reusable skill, plus improved browser-based debugging/testing of web apps. First record-to-skill automation primitive on the platform; fits the existing 'new shipping artifact in the Codex platform → UPDATE' trigger. Status stays released."
 ---
 
 This ticket tracks the **OpenAI Codex platform** as a shipping surface —

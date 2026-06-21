@@ -17,7 +17,18 @@ status_note: |
   ([[anthropic-fable-mythos-export-control-2026-06]]) and one cycle after
   Noam Shazeer's GDM→OpenAI move ([[openai-shazeer-hire-2026-06]]) — a visible
   reshuffle of the small pool of frontier-lab science talent.
-expected: "Joined Anthropic (self-announced, acknowledged by Hassabis); Anthropic org/role specifics + any follow-on GDM science departures pending"
+
+  **2026-06-21:** Named-desk corroboration hardened the move — **TechCrunch**
+  ran it ("Nobel laureate John Jumper is leaving DeepMind for rival
+  Anthropic") alongside many independent desks with consistent specifics, and
+  Hassabis's farewell was quoted in full ("What we achieved with AlphaFold
+  changed the world"). Jumper reportedly said he'll "**recharge**" before
+  starting; his exact Anthropic remit is still undisclosed. Framed as the
+  **third senior DeepMind exit in three months**, landing a day after Shazeer's
+  GDM→OpenAI move — read as an Anthropic bet on **AI-for-science** even as its
+  own frontier line sits export-frozen. Status stays `confirmed`; verification
+  stays `confirmed`.
+expected: "Joined Anthropic (self-announced, Hassabis-acknowledged, TechCrunch-corroborated); Jumper to 'recharge' before starting; Anthropic org/role specifics + any follow-on GDM science departures pending"
 labels:
   - talent
   - exec-move
@@ -29,13 +40,16 @@ sources:
   - "@demishassabis"
   - https://x.com/JohnJumperSci/status/2068001285173834106
   - https://x.com/demishassabis/status/2068002732250640603
+  - https://techcrunch.com/2026/06/20/nobel-laureate-john-jumper-is-leaving-deepmind-for-rival-anthropic/
 created_at: 2026-06-20
-updated_at: 2026-06-20
+updated_at: 2026-06-21
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-20
     change: "Created — John Jumper (AlphaFold lead, 2024 Chemistry Nobel laureate, one of Google DeepMind's most senior science researchers) announced on his own verified account (2026-06-19) that he is leaving Google DeepMind to join Anthropic. Demis Hassabis acknowledged the move on the record the same day (quote-tweet send-off). Both principals on-record → status confirmed, verification confirmed; Anthropic role/org specifics remain thin. Surfaced via @demishassabis 2068002732250640603 quoting @JohnJumperSci 2068001285173834106."
+  - ts: 2026-06-21
+    change: "Named-desk corroboration — TechCrunch ran the move ('Nobel laureate John Jumper is leaving DeepMind for rival Anthropic') alongside many independent desks with consistent specifics; Hassabis's farewell quoted in full ('What we achieved with AlphaFold changed the world'). Jumper reportedly said he'll 'recharge' before starting; exact Anthropic remit still undisclosed. Framed as the third senior DeepMind exit in three months, a day after Shazeer's GDM→OpenAI move — an Anthropic AI-for-science bet mid-export-freeze. Status/verification stay confirmed."
 ---
 
 On **2026-06-19**, **John Jumper** — the researcher who led **AlphaFold**,
