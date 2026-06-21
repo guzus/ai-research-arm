@@ -38,6 +38,8 @@ Thumbs.db
 !.agents/skills/expand-llm-wiki/**
 .gstack/
 .claude/worktrees/
+# Per-developer Claude Code permission state — local to each contributor.
+.claude/settings.local.json
 .context/
 .preview/
 

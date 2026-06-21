@@ -62,8 +62,9 @@ USER_AGENT = "ai-research-arm/1.0 (https://github.com/guzus/ai-research-arm)"
 # includes contact info; the generic UA above earns a 403. Send an EDGAR-
 # specific UA only on SEC requests.
 # SEC enforces a "Sample Company Name AdminContact@sample.com" format —
-# anything else gets 403'd as an "Undeclared Automated Tool".
-EDGAR_UA = "ai-research-arm guzuseth@gmail.com"
+# anything else gets 403'd as an "Undeclared Automated Tool". Override the
+# contact via EDGAR_CONTACT_EMAIL so SEC can reach the actual operator.
+EDGAR_UA = f"ai-research-arm {os.environ.get('EDGAR_CONTACT_EMAIL', 'ai-research-arm@users.noreply.github.com')}"
 # Some sources (Bing RSS, Google Patents XHR) reject the project UA; they
 # want something that looks like a real browser. Use this UA only for
 # scraping endpoints — keep the project UA elsewhere so source operators

@@ -5,6 +5,10 @@ full operating guide (pipeline architecture, workflows, output
 locations, authentication, and the load-bearing rules). This file is a
 short pointer plus the few genuinely agent-specific notes.
 
+> New to the repo and not operating the live pipeline? Start with
+> [`README.md`](README.md) — its Quickstart runs with no accounts, and it
+> documents the License and the runnable-vs-not boundary.
+
 ## Agent-specific notes
 
 - **Claude workflows** use `anthropics/claude-code-action@v1`. Pass the

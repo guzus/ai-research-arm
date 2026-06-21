@@ -90,7 +90,10 @@ from typing import Callable, Optional
 
 # The manifest the dashboard actually consumes (see docstring: root
 # /manifest.json is the SPA fallback and serves HTML with HTTP 200).
-DEFAULT_URL = "https://ara.guzus.xyz/research/manifest.json"
+# Override with DEPLOY_HEALTH_URL to watch a different deployment.
+DEFAULT_URL = os.environ.get(
+    "DEPLOY_HEALTH_URL", "https://ara.guzus.xyz/research/manifest.json"
+)
 
 # lag > this is anomalous. Calibrated to the repo's real push cadence:
 # max observed push gap over 10 days is ~3.4h, builds finish in minutes,
