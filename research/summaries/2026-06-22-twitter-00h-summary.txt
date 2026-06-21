@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-22 00:44 UTC
+
+CYCLE: Anthropic saga adds two new threads — a walked-back NSA/Mythos "hack" claim, and a Sonnet 5 slug leak — while GLM-5.2 open-weights raves go mainstream.
+
+TOP STORIES:
+• Viral "Mythos broke into all NSA classified systems in hours" claim disowned by the Economist writer; experts call it red-team augmentation, not a breach [⚠]
+• "claude-sonnet-5" slug appears on an Anthropic partner provider — first sign of the next Claude, with Fable 5 still restricted [⚠]
+• GLM-5.2 open-weights raves go mainstream — Vercel CEO Rauch and Jeremy Howard on record ("as good as Opus 4.8/GPT-5.5") [⚠]
+
+WATCH: An Anthropic post confirming Sonnet 5 (and whether Fable 5/Mythos return alongside).
+
+Full update on GitHub.
