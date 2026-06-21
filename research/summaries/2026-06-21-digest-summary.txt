@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-21
+
+TOP STORIES:
+• Nobel laureate John Jumper (AlphaFold) leaves Google DeepMind for Anthropic — biggest talent-war counter-move yet
+• Fable 5/Mythos 5 export freeze hits day 9; Korean carrier named as SK Telecom; June 22 subscription cliff arrives tomorrow
+• Open-weights GLM-5.2 takes #1 on Design Arena (beats frozen Fable 5); developers publicly cancel Claude/OpenAI subs
+
+KEY NUMBERS:
+• ChatGPT below 50% consumer share for first time (46.4%); Gemini 27.7%, Claude 10.3%
+• GLM-5.2 Terminal-Bench 63.5→81.0; GPT-5.6 Polymarket ~83% for June 22-28
+• No new frontier model, megaround, or binding regulation in the window
+
+TRENDING: "GPT-5.5 hallucinates 3x more than MIT-licensed GLM-5.2" (HN, 467 pts)
+
+Full digest on GitHub.
