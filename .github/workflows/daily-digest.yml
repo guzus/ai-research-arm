@@ -34,7 +34,7 @@ jobs:
           git lfs version
 
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           # lfs: false because mp3s no longer live in LFS (moved to S3 in
