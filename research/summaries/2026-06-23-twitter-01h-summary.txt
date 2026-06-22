@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-23 01:44 UTC
+
+CYCLE: Competitors actively colonize the Anthropic export-control vacuum.
+
+TOP STORIES:
+• Sakana AI ships "Fugu Ultra," a multi-model orchestrator pitched as Fable 5/Mythos parity "without export-control risk" (~28K likes, Nikkei) — but independent review calls it a router, not a frontier model [⚠]
+• GPT-5.6 firms to "Thursday" with a surprise bidirectional voice model, GPT-Bidi-1 — still zero OpenAI signal [⚠]
+• Fable 5 subscription cliff passes June 22 with no return; Anthropic answers supply-side (Micron Series H + memory deal), market bets on Sonnet 5 [✓ cliff / ⚠ Sonnet 5]
+
+WATCH: Thursday (~June 25) — does OpenAI actually ship GPT-5.6 / GPT-Bidi-1, or does the date slip again?
+
+Full update on GitHub.
