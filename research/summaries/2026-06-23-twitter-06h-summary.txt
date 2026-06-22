@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-23 06:50 UTC
+
+CYCLE: Quiet on new launches; GLM-5.2's open-weights surge hardens across multiple benchmarks.
+
+TOP STORIES:
+• GLM-5.2 now 2nd on Game Dev Arena (Fable 5's band) + runs autonomous RL research, on top of #3 GDPval-AA — multi-source open-weights surge [✓]
+• OpenAI Daybreak's GPT-5.5-Cyber posts 85.6% CyberGym (vs 81.9% early); "beats Mythos" still vendor chart [⚠]
+• GPT-5.6 leak date slides to "June 23/Thursday" — still no OpenAI artifact [🚩]
+
+WATCH: Whether GLM-5.2 holds on a general (non-domain) leaderboard, and whether OpenAI ships any real GPT-5.6 artifact this week.
+
+Full update on GitHub.
