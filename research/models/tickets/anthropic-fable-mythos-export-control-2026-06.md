@@ -99,7 +99,20 @@ status_note: |
   is **false** (Anthropic's own feed shows no restoration). The **June 22
   subscription cliff** arrives one day out. Status stays `confirmed`;
   verification stays `confirmed`.
-expected: "Restoration still pending (days 7–9) — no Commerce rescission. SK Telecom named as the Project Glasswing carrier behind the directive (denies China ties); Anthropic's rewritten privacy policy (effective 2026-07-08) stages government-ID + facial-geometry verification as a likely path to reopen Fable 5/Mythos 5 to verified US citizens; Trump de-escalated rhetorically (Amazon inferred as the 'part-owner that turned them in'). June 22 subscription cliff one day out; no official BIS PDF or restoration"
+
+  **As of 2026-06-22 (day 10):** still no restoration; the inferred restoration
+  mechanism acquired a **hard date and a vendor**. Anthropic's revised privacy
+  policy now carries a firm enforcement date — **starting 2026-07-08**, Claude
+  **Free/Pro/Max** users may be required to upload a **government ID** (passport,
+  license, national ID) and capture a **live selfie**, processed by third-party
+  verifier **Persona** (not applied to business subs). Framed by Anthropic as
+  "age and identity verification," but the timing — two weeks after foreign
+  access to Fable 5 / Mythos was cut — is widely read as the **compliance gate
+  for a US-only model restoration**, now with trade-press footing (Tech Times).
+  The policy and date are confirmed fact; the "this is how Fable comes back,
+  US-only" purpose remains well-motivated inference, not an Anthropic statement.
+  Status stays `confirmed`; verification stays `confirmed`.
+expected: "Restoration still pending (day 10) — no Commerce rescission. The inferred US-only re-entry path now has a hard date + vendor: Anthropic ID verification via Persona (government ID + live selfie) enforced from 2026-07-08 for Free/Pro/Max. Open question: whether Fable 5/Mythos return for verified US persons on/after July 8, or the verification ships with no frontier model to gate. No official BIS PDF; SK Telecom named as the Project Glasswing carrier (denies China ties)"
 labels:
   - regulatory
   - export-control
@@ -121,8 +134,9 @@ sources:
   - "@alasdairpr"
   - https://www.tomshardware.com/tech-industry/artificial-intelligence/sk-telecom-named-as-the-korean-carrier-at-the-center-of-anthropics-mythos-export-controls
   - https://www.computerworld.com/article/4185515/anthropics-new-privacy-policy-offers-us-consumers-a-way-around-fable-ban-2.html
+  - https://www.techtimes.com/articles/claude-identity-verification-persona-july-8
 created_at: 2026-06-14
-updated_at: 2026-06-21
+updated_at: 2026-06-22
 closed_at: null
 closed_reason: null
 history:
@@ -136,6 +150,8 @@ history:
     change: "Days 5–6 — documentary record hardens, dispute internationalizes; verification → confirmed. The full BIS 'Is Informed' letter (Lutnick→Amodei), obtained by Bloomberg, circulated in full: individually-validated license required to release Mythos 5/Fable 5 to any 'foreign person' worldwide incl. 'deemed exports' inside the US, under criminal/civil penalty, invoking EAR §744.22(b). Two export-control lawyers (@CharlieBull0ck, @alasdairpr) published teardowns (published-information carve-out, First Amendment, AI-as-a-service may not be an 'export'). 2026-06-17: frontier-lab CEOs at G7 Évian; Macron–Amodei bilateral reportedly sought Europe's Claude access back; WIRED says re-release bar is uncircumventable guardrails (experts: impossible); Sacks blamed Anthropic's 'confrontational posture'; Amodei/Hassabis called for a US-led China-excluding AI coalition. WIRED scoop (Matsakis/Zeff) refines trigger to a two-step sequence — SK Telecom's Mythos access (alleged China ties, SKT denies) cracked trust first, Amazon's jailbreak report was the final straw. WSJ surfaced Lutnick's 'that's the point'; 40+ CISOs signed a reversal letter; JPMorgan pulled Claude for Hong Kong staff (after Goldman, licensing-driven). Bloomberg-obtained letter text + WIRED/WSJ/FT named reporting → verification confirmed; only the government's own PDF remains unpublished."
   - ts: 2026-06-21
     change: "Days 7–9 — still no restoration; rhetoric warmed, order stands. (1) WIRED/Tom's Hardware/Korea JoongAng named the carrier as SK Telecom — South Korea's largest wireless operator and a ~$100M Anthropic investor since 2023, reportedly among ~150 orgs added to Project Glasswing in early June with Mythos 5 access revoked days before the suspension; SKT denies China ties, reframing the trigger toward access-control / supply-chain-trust. (2) Anthropic's rewritten privacy policy (published 2026-06-08, effective 2026-07-08) lets it ask Free/Pro/Max users to verify identity (government-ID image, photo/video, facial-geometry biometric templates; not business subs) — read (Simon Willison) as the staged mechanism to reopen Fable 5/Mythos 5 to verified US citizens. (3) Fuller Trump/Axios transcript: 'not now, but a week ago maybe' a threat, praises Amodei, names 'a competitor and a part owner that turned Anthropic in' (widely inferred as Amazon — not a name Trump said). No Commerce rescission; a viral 'Fable 5 RETURNS' roundup is false. June 22 subscription cliff one day out. Status stays confirmed; verification stays confirmed. Sources: Tom's Hardware (SKT), Computerworld/The Register (privacy policy), @AndrewCurran_ (Trump transcript)."
+  - ts: 2026-06-22
+    change: "Day 10 — still no restoration; the inferred US-only re-entry mechanism got a hard date and a vendor. Anthropic's revised privacy policy now sets enforcement at 2026-07-08: Free/Pro/Max users may be required to upload a government ID (passport/license/national ID) and a live selfie, processed by third-party verifier Persona (not business subs). Anthropic labels it 'age and identity verification,' but the timing (two weeks after the foreign-access cutoff) is widely read as the compliance gate for a US-only model restoration, now with trade-press footing (Tech Times). Policy + date are confirmed fact; the US-only-restoration purpose stays inference. Status stays confirmed; verification stays confirmed."
 ---
 
 On **2026-06-12** the US government issued an **export-control directive**
