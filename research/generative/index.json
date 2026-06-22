@@ -708,5 +708,17 @@
       "ai-for-science",
       "talent-war"
     ]
+  },
+  {
+    "slug": "shazeer-google-openai-talent-moat",
+    "file": "2026-06-22T101547--shazeer-google-openai-talent-moat.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Noam Shazeer leaves Google for OpenAI: what the reversal of a $2.7B acquihire signals about the talent moat",
+    "model": "claude-opus-4-8",
+    "created_at": "2026-06-22T10:15:47Z",
+    "source": "workflow_dispatch",
+    "prompt": "Noam Shazeer leaves Google for OpenAI: what the reversal of Google's $2.7B Character.AI acquihire signals about the talent moat",
+    "tags": []
   }
 ]

@@ -1,0 +1,106 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The August 2024 deal was a {accent}non-exclusive license{/} to Character.AI's technology, paired with the return of Shazeer, co-founder Daniel De Freitas, and about 30 of the startup's researchers to Google DeepMind — and Google took {accent}no ownership stake{/}, leaving Character.AI a standalone company.[^5,46]",
+      "verdict": "supported",
+      "citation": "https://techcrunch.com/2024/08/02/character-ai-ceo-noam-shazeer-returns-to-google/"
+    },
+    {
+      "id": "c2",
+      "text": "\"I'm excited to share that I'll be joining OpenAI and look forward to working with the exceptional team there,\" Shazeer wrote on June 18, 2026, adding that \"it was a difficult decision to move on\" and thanking \"the amazing team at Google.\"[^1]",
+      "verdict": "supported",
+      "citation": "https://www.cnbc.com/2026/06/18/google-gemini-co-lead-noam-shazeer-leaves-for-openai.html"
+    },
+    {
+      "id": "c3",
+      "text": "the now-standard description of his OpenAI job — \"Lead for Architecture Research,\" focused on next-generation model architectures — traces to reporting, not to Shazeer or to an OpenAI press release.[^4,3]",
+      "verdict": "supported",
+      "citation": "https://mlq.ai/news/openai-hires-transformer-co-inventor-noam-shazeer-away-from-google-deepmind/"
+    },
+    {
+      "id": "c4",
+      "text": "The cash repriced Character.AI's cap table: existing investors were bought out at roughly $88 a share — about 2.5x the company's 2023 Series A, which had valued it near $1 billion — implying a buyout valuation around $2.5 billion.[^7,8]",
+      "verdict": "supported",
+      "citation": "https://finance.yahoo.com/news/character-ai-co-founders-hired-233448298.html"
+    },
+    {
+      "id": "c5",
+      "text": "within roughly two months Character.AI ==abandoned building its own foundation models== and pivoted to fine-tuning open-source models, reporting \"20%+ jumps in time spent\" once it did.[^10]",
+      "verdict": "supported",
+      "citation": "https://blog.character.ai/breaking-news-our-open-source-models-are-a-lot-of-fun/"
+    },
+    {
+      "id": "c6",
+      "text": "SignalFire's State of Talent 2025 report measured two-year retention across the frontier labs — and the ranking runs *inverse* to headline compensation.",
+      "verdict": "supported",
+      "citation": "https://www.signalfire.com/blog/signalfire-state-of-talent-report-2025"
+    },
+    {
+      "id": "c7",
+      "text": "OpenAI — which paid a reported ~$1.5 million in average *stock-based* compensation per employee in 2025, the highest of any major tech startup on record, and which had built the most aggressive financial handcuff (a two-year sale lock on its profit units) — posted the *worst* two-year retention of the big three at 67%, and bled researchers to Anthropic at roughly 8x the reverse rate.[^35,38]",
+      "verdict": "supported",
+      "citation": "https://fortune.com/2026/02/18/openai-chatgpt-creator-record-million-dollar-equity-compensation-ai-tech-talent-war-career-retention-sam-altman-millionaire-staff/"
+    },
+    {
+      "id": "c8",
+      "text": "Thinking Machines co-founder Andrew Tulloch reportedly declined a Meta package worth up to ~$1.5 billion over six years — and then later joined Meta anyway.[^39]",
+      "verdict": "supported",
+      "citation": "https://futurism.com/ai-researcher-declines-1-billion-offer-meta-mark-zuckerberg"
+    },
+    {
+      "id": "c9",
+      "text": "{accent}All eight authors of the Transformer paper eventually left Google{/} — and Google still shipped Gemini 2.5 Pro to a #1 debut on LMArena in March 2025.[^16,21]",
+      "verdict": "supported",
+      "citation": "https://en.wikipedia.org/wiki/Attention_Is_All_You_Need"
+    },
+    {
+      "id": "c10",
+      "text": "Shazeer is a co-author of \"Attention Is All You Need\" (2017), the eight-author paper that introduced the Transformer; first author of the sparsely-gated Mixture-of-Experts paper (2017), the sparsity technique underpinning modern frontier models; and sole author of multi-query attention (2019), a literal inference-efficiency primitive.[^16,17,18]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/1701.06538"
+    },
+    {
+      "id": "c11",
+      "text": "In May 2025 the DOJ told Google it was examining whether the Character.AI deal specifically was \"structured to avoid formal government merger scrutiny.\"[^9]",
+      "verdict": "supported",
+      "citation": "https://fortune.com/2025/05/22/google-antitrust-investigation-character-ai-chatbot-doj/"
+    },
+    {
+      "id": "c12",
+      "text": "And in March 2026 a joint FTC/DOJ Request for Information stated the agencies had seen \"an uptick in business transactions that parties are not reporting … yet which have the practical effect of eliminating a market participant\" — naming \"acquihires,\" \"reverse acquihires,\" and non-exclusive IP licenses outright.[^34]",
+      "verdict": "supported",
+      "citation": "https://www.ftc.gov/system/files/ftc_gov/pdf/2026.03.25-HSR-RFI.pdf"
+    },
+    {
+      "id": "c13",
+      "text": "from Microsoft's $650M Inflection template in early 2024 to a *reported* ~$20B Nvidia/Groq deal in December 2025, the structure scaled by roughly thirty-fold in under two years.[^23,29]",
+      "verdict": "supported",
+      "citation": "https://www.cnbc.com/2025/12/24/nvidia-buying-ai-chip-startup-groq-for-about-20-billion-biggest-deal.html"
+    },
+    {
+      "id": "c14",
+      "text": "Meta's ~$14.3B move on Scale AI in June 2025 took a 49% *non-voting equity stake* — a minority investment plus acquihire, not a license — and it carried a unique cost: Scale's biggest customers (Google, OpenAI, Microsoft) pulled back over conflict-of-interest fears once a rival part-owned their data vendor.[^30,48]",
+      "verdict": "supported",
+      "citation": "https://www.cnbc.com/2025/06/12/scale-ai-founder-wang-announces-exit-for-meta-part-of-14-billion-deal.html"
+    },
+    {
+      "id": "c15",
+      "text": "ChatGPT reached 800 million weekly active users by October 2025; every fractional improvement in tokens-per-dollar at that volume is worth more than most acquisitions.[^43]",
+      "verdict": "supported",
+      "citation": "https://techcrunch.com/2025/10/06/sam-altman-says-chatgpt-has-hit-800m-weekly-active-users/"
+    },
+    {
+      "id": "c16",
+      "text": "The durable advantages — Alphabet's ~$61B FY2025 R&D, the roughly $725B of combined 2026 hyperscaler capex, Google's ~90% search distribution and OpenAI's 800M-user funnel — are the things money *can* defend because they compound and cannot walk out the door.[^41,42,43,44]",
+      "verdict": "supported",
+      "citation": "https://www.macrotrends.net/stocks/charts/GOOGL/alphabet/research-development-expenses"
+    },
+    {
+      "id": "c17",
+      "text": "GOOGL did not sell off on the June 18–19 departures (Shazeer to OpenAI, and Nobel laureate John Jumper to Anthropic a day later); the monthly close trend {sparkline:338,311.76,287.56,384.8,380.34,368.03} shows the stock far above its March low, with June only modestly below May.[^45]",
+      "verdict": "weak",
+      "citation": "https://finance.yahoo.com/quote/GOOGL"
+    }
+  ]
+}

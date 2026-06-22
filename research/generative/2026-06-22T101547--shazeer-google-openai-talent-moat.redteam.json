@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The August 2024 deal was a non-exclusive license to Character.AI's technology, paired with the return of Shazeer, co-founder Daniel De Freitas, and about 30 of the startup's researchers to Google DeepMind — and Google took no ownership stake, leaving Character.AI a standalone company.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "SignalFire's State of Talent 2025 report measured two-year retention across the frontier labs — Anthropic 80%, Google DeepMind 78%, OpenAI 67%, Meta 64% — and the ranking runs inverse to headline compensation.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "GOOGL did not sell off on the June 18-19 departures (Shazeer to OpenAI, and Nobel laureate John Jumper to Anthropic a day later).",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
