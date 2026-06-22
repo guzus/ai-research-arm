@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Artificial Analysis, the most-cited independent evaluator, scored GLM-5.2 at 51 on its Intelligence Index v4.1 on 17 June 2026 — the top open-weights model, ahead of the next-best open models (DeepSeek V4 Pro and MiniMax-M3, both 44) by eleven points, but fourth-to-sixth overall behind the closed cluster.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "GLM-5.2 reached it by emitting ~43,000 output tokens per task (about 37k of them internal reasoning), the most verbose model in its weight class — a fact that quietly undermines the headline price advantage and recurs in Section 04.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The clearest is modality. GLM-5.2 is text-only. Its Hugging Face plumbing references an AutoModelForMultimodalLM class, which has misled some coverage, but the official blog and independent reviewers confirm it processes only text; vision lives in Zhipu's separate, weaker GLM-V line.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

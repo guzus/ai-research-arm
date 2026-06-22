@@ -1,0 +1,88 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Artificial Analysis, the most-cited independent evaluator, scored GLM-5.2 at 51 on its Intelligence Index v4.1 on 17 June 2026 — the top open-weights model, ahead of the next-best open models (DeepSeek V4 Pro and MiniMax-M3, both 44) by eleven points, but fourth-to-sixth overall behind the closed cluster.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index"
+    },
+    {
+      "id": "c2",
+      "text": "Fable 5 (closed) 60; Claude Opus 4.8 (closed) 56; GPT-5.5 xhigh (closed) 55; Claude Opus 4.7 (closed) 54; GLM-5.2 (open, MIT) 51; DeepSeek V4 Pro (open) 44; MiniMax-M3 (open) 44; Kimi K2.6 (open) 43 (AA Intelligence Index rank-list).",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/leaderboards/models"
+    },
+    {
+      "id": "c3",
+      "text": "GLM-5.2 reached it by emitting ~43,000 output tokens per task (about 37k of them internal reasoning), the most verbose model in its weight class.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index"
+    },
+    {
+      "id": "c4",
+      "text": "The single best independent data point in GLM-5.2's favor is GDPval-AA v2, Artificial Analysis's measure of performance on real-world economic tasks: GLM-5.2 scored 1524, edging GPT-5.5 (xhigh) at 1514.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index"
+    },
+    {
+      "id": "c5",
+      "text": "On Code Arena's blind Frontend leaderboard, GLM-5.2 ranks #2 at ~1595 Elo — behind only the closed Fable 5 (1654) and ahead of every sampled Claude Opus, including Opus 4.8 (1561) — and it is #1 on DesignArena.",
+      "verdict": "supported",
+      "citation": "https://www.digitalapplied.com/blog/glm-5-2-benchmarks-open-weights-vs-claude-opus"
+    },
+    {
+      "id": "c6",
+      "text": "The only coding numbers that survive a standardized independent run are the closed ones: Opus 4.8 at 88.6% and GPT-5.5 at 82.6% on Vals AI's SWE-bench Verified, where GLM-5.2 has no entry.",
+      "verdict": "supported",
+      "citation": "https://www.vals.ai/benchmarks/swebench"
+    },
+    {
+      "id": "c7",
+      "text": "On the hardest agentic benchmarks Zhipu published, GLM-5.2 sits below Opus 4.8: SWE-Marathon 13.0 vs 26.0 (a 2x gap), Toolathlon 48.2 vs 59.9, MCP-Atlas 76.8 vs 77.8.",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/blog/zai-org/glm-52-blog"
+    },
+    {
+      "id": "c8",
+      "text": "Without tools, Opus 4.8 scores 49.8% and GPT-5.5 41.4%, while GLM-5.2 reaches about 40% on Artificial Analysis's independent run — roughly a ten-point gap to Opus on the test specifically designed to resist saturation.",
+      "verdict": "supported",
+      "citation": "https://www.vellum.ai/blog/claude-opus-4-8-benchmarks-explained"
+    },
+    {
+      "id": "c9",
+      "text": "On FrontierMath, the gap is starker still because GLM-5.2 simply isn't measured: GPT-5.5 (xhigh) posts 85.3% and Opus 4.8 80.0% on Tiers 1-3, while no independent FrontierMath score for GLM-5.2 exists.",
+      "verdict": "supported",
+      "citation": "https://lmcouncil.ai/benchmarks"
+    },
+    {
+      "id": "c10",
+      "text": "It is true per token: GLM-5.2 lists at $1.40 input / $4.40 output per million tokens, against Opus 4.8 at $5 / $25 and GPT-5.5 at $5 / $30 — roughly 5.7x to 6.8x cheaper on output.",
+      "verdict": "supported",
+      "citation": "https://docs.z.ai/guides/overview/pricing"
+    },
+    {
+      "id": "c11",
+      "text": "GLM-5.2 (max) — 140M tokens $983; GPT-5.5 (xhigh) — 72M tokens $2,853; Opus 4.8 (max) — 120M tokens $4,012 (cost to run the full AA Intelligence Index).",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/models/glm-5-2"
+    },
+    {
+      "id": "c12",
+      "text": "On Artificial Analysis's AA-Omniscience, GLM-5.2 scores an index of 4 with 25.1% accuracy, against Opus 4.8's index of 27 and 46.6% accuracy.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/models/claude-opus-4-8"
+    },
+    {
+      "id": "c13",
+      "text": "Opus 4.8 falls from 85.9% at 256K to 68.1% at 1M; GPT-5.5 from 73.7% to 45.4%.",
+      "verdict": "supported",
+      "citation": "https://www.datacamp.com/blog/claude-opus-4-8-vs-gpt-5-5"
+    },
+    {
+      "id": "c14",
+      "text": "A subtle point: GLM-5.2's raw hallucination rate (28.1%) actually looks lower than Opus 4.8's (35.9%), but only because it knows and answers far less — the index (4 vs 27) is the honest summary of factual reliability.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/models/claude-opus-4-8"
+    }
+  ]
+}

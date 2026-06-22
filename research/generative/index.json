@@ -677,5 +677,17 @@
       "data-labeling",
       "frontier-labs"
     ]
+  },
+  {
+    "slug": "glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we",
+    "file": "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "GLM-5.2 vs the closed frontier: the narrow band where Zhipu's open model actually matches Opus 4.8 and GPT-5.5 — and where it doesn't",
+    "model": "claude-opus-4-8",
+    "created_at": "2026-06-22T08:42:12Z",
+    "source": "local",
+    "prompt": "GLM-5.2 vs the closed frontier: on which axes Zhipu's open-weight model actually matches Opus 4.8/GPT-5.5 — and where it fails",
+    "tags": []
   }
 ]
