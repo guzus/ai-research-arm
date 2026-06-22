@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-06-22 18:18 UTC
+
+CYCLE: Sakana Fugu Ultra launch, Tencent WeChat AI, and Microsoft's reported DeepSeek pivot dominate.
+
+TOP STORIES:
+• Sakana AI launches Fugu Ultra — multi-agent orchestration matching Fable/Mythos benchmarks, sidesteps export controls by routing around restricted providers [✓]
+• Tencent begins testing Xiaowei AI assistant inside WeChat for 1.4B users — Bloomberg-sourced, uses WeLM + DeepSeek for some queries [✓]
+• Microsoft negotiating DeepSeek integration per WSJ Nadella interview — Nadella criticizes AI power concentration, pivots to cheaper models. elDiario.es citing WSJ [⚠]
+
+WATCH: WSJ full Nadella interview text; independent Fugu Ultra benchmark re-runs.
+
+Full update on GitHub.
