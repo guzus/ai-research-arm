@@ -10970,5 +10970,33 @@
     "headline": "GLM-5.2 RANKS #3 OVERALL ON GDPVAL-AA (1524 ELO) \u2014 TOP OPEN-WEIGHTS MODEL BY A WIDE MARGIN, LEVEL WITH GPT-5.5",
     "source": "@ArtificialAnlys",
     "url": "https://x.com/ArtificialAnlys/status/2069121548670406947"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-23 06:50 UTC",
+    "headline": "GLM-5.2 CLIMBS TO 2ND ON GAME DEV ARENA \u2014 INTO CLAUDE FABLE 5'S BAND, TOP OPEN-WEIGHTS LAB, AHEAD OF OPENAI",
+    "source": "@Designarena",
+    "url": "https://x.com/Designarena/status/2069166634976371084"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-23 06:50 UTC",
+    "headline": "GLM-5.2 IS FIRST OPEN-WEIGHTS MODEL TO RUN REAL AUTORESEARCH \u2014 DRIVES RL TRAINING ACROSS TWO 8xH100 NODES",
+    "source": "@askalphaxiv",
+    "url": "https://x.com/askalphaxiv/status/2069074178829901974"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-23 06:50 UTC",
+    "headline": "EUROPE TO BUILD SOVEREIGN AI MODEL USING 2.5% OF EUROHPC COMPUTE CAPACITY FOR ONE YEAR",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2069156687886352405"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-23 06:50 UTC",
+    "headline": "OPENAI GPT-5.5-CYBER SCORES 85.6% ON CYBERGYM, UP FROM 81.9% EARLY VERSION",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2069163462190657979"
   }
 ]
