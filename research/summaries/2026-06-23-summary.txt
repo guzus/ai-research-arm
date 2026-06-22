@@ -1,0 +1,15 @@
+AI News - 2026-06-23
+
+TOP STORIES:
+• OpenAI expands Daybreak: full GPT-5.5-Cyber + Codex Security + "Patch the Planet" (Trail of Bits + HackerOne), defenders-first cyber AI
+• Micron x Anthropic: multi-year HBM/DRAM/SSD supply + co-design deal AND a Series H investment — Micron stock hits record (~+5.5%)
+• Sakana AI ships Fugu / Fugu Ultra — a multi-agent orchestration router pitched as Fable-class "without export-control risk" (but trails Fable 5)
+
+KEY NUMBERS:
+• GPT-5.5-Cyber: 85.6% CyberGym (vs 81.8% GPT-5.5)
+• Fugu Ultra: 73.7 SWE-Bench Pro (> Opus 4.8 69.2, GPT-5.5 58.6)
+• GLM-5.2: #1 open-weights, Intelligence Index 51
+
+Still dark: Fable 5/Mythos 5 past the June 22 cliff. Unshipped: GPT-5.6, Gemini 3.5 Pro GA, Grok 5.
+
+Full report on GitHub.
