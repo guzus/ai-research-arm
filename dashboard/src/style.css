@@ -4765,3 +4765,142 @@ body.modal-open { overflow: hidden; }
     justify-content: flex-start;
   }
 }
+
+/* ── Related Research ("playlist") ───────────────────────────────────────
+   Trusted dashboard chrome appended below a generative article by
+   renderResearchDoc(). Same hairline/hover/focus language as
+   .gen-research-item; cards carry data-slug and are driven by the existing
+   research click + keydown handlers. Hidden from print (PDF export). */
+.gen-related {
+  margin-top: 44px;
+  padding-top: 24px;
+  border-top: 3px double var(--border);
+}
+
+.gen-related-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.gen-related-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+}
+
+.gen-related-heading {
+  font-family: var(--font);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.gen-related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gen-related-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px var(--card-pad-x);
+  margin: 0 calc(-1 * var(--card-pad-x));
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.gen-related-card:last-child {
+  border-bottom: none;
+}
+
+.gen-related-card:hover {
+  background: var(--bg-hover);
+}
+
+.gen-related-card:hover .gen-related-go {
+  transform: translateX(3px);
+  color: var(--accent-warm);
+}
+
+.gen-related-card:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: -2px;
+  background: var(--bg-hover);
+}
+
+.gen-related-num {
+  flex-shrink: 0;
+  width: 1.6em;
+  margin-top: 1px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-align: right;
+}
+
+.gen-related-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.gen-related-title {
+  display: block;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.gen-related-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gen-related-model,
+.gen-related-time {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.gen-related-tag {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border: 1px solid var(--accent-warm);
+  border-radius: 999px;
+  color: var(--accent-warm);
+  background: transparent;
+}
+
+.gen-related-go {
+  flex-shrink: 0;
+  align-self: center;
+  font-size: 1.1rem;
+  color: var(--text-tertiary);
+  transition: transform 0.12s, color 0.12s;
+}
+
+@media print {
+  .gen-related {
+    display: none !important;
+  }
+}
