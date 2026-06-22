@@ -638,5 +638,26 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "zhipu-ai-glm",
+    "file": "2026-06-22T052035--zhipu-ai-glm.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Zhipu AI (z.ai): the Tsinghua lab that became China's first listed large-model company",
+    "model": "claude-opus-4-8",
+    "created_at": "2026-06-22T05:20:35Z",
+    "source": "local",
+    "prompt": "The company behind GLM (z.ai / Zhipu AI) — everything about the company: history, founding, team, funding, products, the GLM model family, business model, partnerships, geopolitics/export controls, and outlook",
+    "tags": [
+      "zhipu",
+      "z.ai",
+      "glm",
+      "china-ai",
+      "llm",
+      "open-weights",
+      "export-controls",
+      "ipo"
+    ]
   }
 ]

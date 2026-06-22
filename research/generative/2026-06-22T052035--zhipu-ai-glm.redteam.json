@@ -1,0 +1,5 @@
+{"findings":[
+{"claim_id":"c1","claim_text":"By late May 2026 the shares had at one point risen nearly 1,600% since listing, lifting the market value above HK$880B (about US$112B).","contradicting_url":null,"contradicting_quote":null,"severity":null,"no_contradiction_found":true},
+{"claim_id":"c2","claim_text":"In H1 2025, about 84.8% of revenue came from on-premise/private deployment — high-touch, project-based systems work for Chinese government and state-owned buyers — while the cloud API that is MaaS contributed only 15.2%.","contradicting_url":null,"contradicting_quote":null,"severity":null,"no_contradiction_found":true},
+{"claim_id":"c3","claim_text":"contrary to some reporting, the Zhipu entries carry no \"Footnote 4\" or military-end-user designation — they reference only Section 744.11 of the EAR.","contradicting_url":null,"contradicting_quote":null,"severity":null,"no_contradiction_found":true}
+]}
