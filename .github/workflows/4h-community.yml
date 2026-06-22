@@ -42,30 +42,47 @@ jobs:
         run: |
           mkdir -p /tmp/reddit
 
-          # Use Reddit RSS feeds - more reliable than JSON API from GitHub Actions
-          # RSS feeds don't require authentication and work better
+          # Reddit rate-limits/blocks generic bot User-Agents and datacenter
+          # IPs (the Cloud Run workers), returning HTTP 429 with an empty/HTML
+          # body. The old single-shot fetch with "AIResearchBot/1.0" and no
+          # validation/retry left r/LocalLLaMA empty at EVERY cycle for days
+          # (see research/community/2026-06-{19,20,21}-reddit.md — "feed empty"
+          # / "RSS feed returned no entries"), silently dropping the canonical
+          # local/open-weights community on a day whose top story was an
+          # open-weights model (GLM-5.2). Fix: descriptive Reddit-compliant UA,
+          # retry with backoff, VALIDATE the body actually carries Atom
+          # <entry> items, fall back to old.reddit.com, and log the HTTP status
+          # (previously only byte size was logged, so 429 vs empty was
+          # indistinguishable). Always exits 0 with the best body we got, so a
+          # blocked feed degrades gracefully instead of crashing the run
+          # (CLAUDE.md load-bearing rule #6).
+          UA="web:ai-research-arm:1.0 (by /u/ai-research-arm)"
 
-          echo "Fetching r/MachineLearning RSS..."
-          curl -sL "https://www.reddit.com/r/MachineLearning/hot.rss?limit=25" \
-            -H "User-Agent: AIResearchBot/1.0" \
-            > /tmp/reddit/ml.rss
-          echo "ML RSS size: $(wc -c < /tmp/reddit/ml.rss) bytes"
+          fetch_feed() {
+            sub="$1"; limit="$2"; out="$3"
+            : > "$out"
+            for host in www.reddit.com old.reddit.com; do
+              for attempt in 1 2 3; do
+                code=$(curl -sL -m 30 -A "$UA" \
+                  -w '%{http_code}' \
+                  -o "$out" \
+                  "https://$host/r/$sub/hot.rss?limit=$limit" 2>/dev/null || echo "000")
+                bytes=$(wc -c < "$out" 2>/dev/null || echo 0)
+                if [ "$code" = "200" ] && grep -q "<entry" "$out"; then
+                  echo "r/$sub: OK via $host (attempt $attempt, HTTP $code, $bytes bytes)"
+                  return 0
+                fi
+                echo "r/$sub: retry — $host attempt $attempt (HTTP $code, $bytes bytes)"
+                sleep $((attempt * 3))
+              done
+            done
+            echo "r/$sub: all attempts failed — best-effort body ($(wc -c < "$out" 2>/dev/null || echo 0) bytes)"
+            return 0
+          }
 
-          sleep 2
-
-          echo "Fetching r/LocalLLaMA RSS..."
-          curl -sL "https://www.reddit.com/r/LocalLLaMA/hot.rss?limit=25" \
-            -H "User-Agent: AIResearchBot/1.0" \
-            > /tmp/reddit/localllama.rss
-          echo "LocalLLaMA RSS size: $(wc -c < /tmp/reddit/localllama.rss) bytes"
-
-          sleep 2
-
-          echo "Fetching r/artificial RSS..."
-          curl -sL "https://www.reddit.com/r/artificial/hot.rss?limit=20" \
-            -H "User-Agent: AIResearchBot/1.0" \
-            > /tmp/reddit/artificial.rss
-          echo "Artificial RSS size: $(wc -c < /tmp/reddit/artificial.rss) bytes"
+          fetch_feed MachineLearning 25 /tmp/reddit/ml.rss
+          fetch_feed LocalLLaMA 25 /tmp/reddit/localllama.rss
+          fetch_feed artificial 20 /tmp/reddit/artificial.rss
 
           # Check if we got valid RSS (not HTML error page)
           echo "=== ml.rss first 300 chars ==="
