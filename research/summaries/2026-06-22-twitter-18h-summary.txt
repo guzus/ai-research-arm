@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-22 18:11 UTC
+
+CYCLE: Incremental & skeptic-leaning — both hyped threads turned critical, no fresh top-tier news.
+
+TOP STORIES:
+• Sakana Fugu reframed: a closed orchestrator routing over closed models (and geo-blocks the EU), not a new frontier model — vendor benchmarks only [⚠]
+• "claude-sonnet-5 next week" breadcrumb deflates — same slug appeared in Feb and shipped as plain Sonnet 4 [⚠]
+• Zhipu (02513.HK) GLM-5.2 mania keeps running, now with an on-chain $ZHIPU perp; exact figures retail-sourced [⚠]
+
+WATCH: Any official Anthropic artifact naming Sonnet 5 this week, and independent Fugu Ultra benchmarks vs Fable/Mythos.
+
+Full update on GitHub.
