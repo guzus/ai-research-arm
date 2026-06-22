@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-22 23:08 UTC
+
+Quiet period — no new verifiable AI updates on Twitter/X this window.
+
+The day's live threads are unchanged since the 18:00 brief:
+• Sakana Fugu reframed as a closed orchestrator (not a frontier model), EU-geoblocked ⚠
+• "claude-sonnet-5" slug — real but recurring placeholder (shipped as Sonnet 4 in Feb) ⚠
+• Zhipu/GLM-5.2 equity run continues; exact figures still poster-sourced ⚠
+
+WATCH: Any official Anthropic artifact (post/API/system card) naming Sonnet 5.
+
+Full update on GitHub.
