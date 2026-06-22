@@ -689,5 +689,24 @@
     "source": "local",
     "prompt": "GLM-5.2 vs the closed frontier: on which axes Zhipu's open-weight model actually matches Opus 4.8/GPT-5.5 — and where it fails",
     "tags": []
+  },
+  {
+    "slug": "john-jumper-deepmind-anthropic-science-bet",
+    "file": "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "John Jumper leaves DeepMind for Anthropic: what a Nobel laureate's move actually signals",
+    "model": "claude-opus-4-8",
+    "created_at": "2026-06-22T09:48:56Z",
+    "source": "local",
+    "prompt": "John Jumper leaves DeepMind for Anthropic: what an AlphaFold Nobel laureate's move signals about Anthropic's science-AI bet",
+    "tags": [
+      "anthropic",
+      "deepmind",
+      "john-jumper",
+      "alphafold",
+      "ai-for-science",
+      "talent-war"
+    ]
   }
 ]

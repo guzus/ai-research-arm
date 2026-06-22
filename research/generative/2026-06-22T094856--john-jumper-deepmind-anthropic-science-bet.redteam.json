@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "premise-jumper-move",
+      "claim_text": "On June 19, 2026, John Jumper — co-creator of AlphaFold and a 2024 Nobel laureate in Chemistry — posted that he was leaving Google DeepMind after nearly nine years to join Anthropic.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "valuation-ladder",
+      "claim_text": "Its post-money valuation climbed from $183B (Series F, September 2025) to $380B (Series G, February 2026) to $965B (Series H, May 2026) — a roughly five-fold step-up in nine months, alongside a confidential IPO filing.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "alphafold-casp-gdt",
+      "claim_text": "AlphaFold's median GDT score jumped from 58.9 at the CASP13 benchmark in 2018 to 92.4 at CASP14 in 2020, a result the field read as \"solved.\"",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
