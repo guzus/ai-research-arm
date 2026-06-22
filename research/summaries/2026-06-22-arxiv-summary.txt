@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-22
+
+TOP 5 PAPERS:
+• DeepSeek-V4 (2606.19348): 1.6T/49B + 284B/13B MoE, 1M-token context via CSA+HCA hybrid attention.
+• Nemotron 3 Ultra (2606.15007): NVIDIA 550B/55B open MoE hybrid Mamba-Attention, 20T tokens, 1M context.
+• Kwai Keye-VL-2.0 (2606.10651): Open MoE multimodal model with sparse attention for lossless 256K context.
+• Latent Reasoning Test-Time Reconstruction (2606.06252): cache-level reasoning cuts CoT token cost, keeps trace.
+• Mixed Compliance Demonstrations (2606.20508): preference optimization is the load-bearing safety-alignment stage.
+
+CATEGORIES: LLM/NLP 4 • CV/Multimodal 2 • Agents/Reasoning 3 • Safety 1 • Other 1
+
+Full report on GitHub.
