@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-06-23 04:16 UTC
+
+CYCLE: OpenAI breaks silence with a real cyber launch; GLM-5.2 gets its third-party number.
+
+TOP STORIES:
+• OpenAI ships "Daybreak" — full GPT-5.5-Cyber + Codex Security + "Patch the Planet," framed as defenders-only cyber AI (OpenAI + sama, official) [✓]
+• GLM-5.2 lands #3 overall on Artificial Analysis GDPval-AA (1524 Elo), top open-weights model by a wide margin [✓]
+
+WATCH: OpenAI's actual Daybreak blog/system card + any maintainer-confirmed "Patch the Planet" CVE; GPT-5.6 still leak-only.
+
+Full update on GitHub.
