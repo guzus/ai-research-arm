@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-06-23 04:48 UTC
+
+CYCLE: Quiet overnight — OpenAI's GPT-5.5-Cyber launch dominates; Micron-Anthropic deal continues to build ahead of Wed earnings.
+
+TOP STORIES:
+• OpenAI launches GPT-5.5-Cyber + Patch The Planet — SOTA on CyberGym (85.6%, +12 over Opus 4.7), automated vuln patching via Codex + Trail of Bits [✓]
+• Micron +8% to ATH on Anthropic multi-year HBM/DRAM/SSD supply + co-design + Series H investment; earnings Wed tests the AI-memory thesis [✓]
+• SpaceX signs ~$6.3B compute deal with open-source AI lab Reflection — $150M/month through 2029 for Colossus Nvidia chips [⚠ Reuters-sourced, unconfirmed by parties]
+
+WATCH: Micron earnings Wednesday — ~$20 EPS, $34.7B revenue expected.
+
+Full update on GitHub.
