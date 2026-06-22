@@ -659,5 +659,23 @@
       "export-controls",
       "ipo"
     ]
+  },
+  {
+    "slug": "frontier-ai-data-supply-chain",
+    "file": "2026-06-22T061332--frontier-ai-data-supply-chain.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The data behind the models: inside the industry that sells human cognition to frontier AI labs",
+    "model": "claude-opus-4-8",
+    "created_at": "2026-06-22T06:13:32Z",
+    "source": "gen-research",
+    "prompt": "The frontier AI data supply chain in 2026: map the data industry selling to frontier labs, estimate revenue/ARR by vendor (Scale AI, Surge AI, Mercor, Turing, Invisible, Appen, TELUS Digital, Labelbox, Sama, iMerit, Reddit/content licensors, Shutterstock/Getty/Stack Overflow), identify customer concentration, gross vs net revenue, contractor payout economics, moats, margin structure, risks from sample-efficient architectures and synthetic data, and what future data demand looks like for frontier labs.",
+    "tags": [
+      "ai",
+      "data",
+      "rlhf",
+      "data-labeling",
+      "frontier-labs"
+    ]
   }
 ]

@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Bootstrapped by founder Edwin Chen with no outside funding, it booked *more than $1 billion in full-year 2024 revenue* — out-earning Scale's $870M on a like-for-like basis — with only ~110–130 employees and a network of ~50,000 vetted contractors.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Then Meta bought 49% of it for ~$14.3B in June 2025, valued it near $29B, and took CEO Alexandr Wang to run Meta Superintelligence Labs.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "most of what is reported as \"revenue\" or \"ARR\" in this industry is gross billings, 40–70% of which is contractor pay flowing straight through to the people who actually produce the data.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
