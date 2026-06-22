@@ -25,10 +25,13 @@
 // Standalone-kind generative entries (iframe articles) are skipped -- they are
 // already self-contained HTML and need a different SEO path.
 
-import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, createReadStream } from 'node:fs';
+import { createHash, createHmac } from 'node:crypto';
+import { createServer } from 'node:http';
+import { join, dirname, resolve, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { marked } from 'marked';
+import { chromium } from 'playwright-core';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const dashboardDir = dirname(here);
@@ -42,6 +45,7 @@ const frontPageDir = join(researchRoot, 'front-page');
 const digestDir = join(researchRoot, 'digest');
 const wikiDir = join(researchRoot, 'wiki');
 const wikiIndexPath = join(wikiDir, 'index.json');
+const distGenerativeDir = join(dist, 'research', 'generative');
 
 // Override via env (POSTBUILD_SITE_ORIGIN) for preview deploys.
 const SITE_ORIGIN = process.env.POSTBUILD_SITE_ORIGIN || 'https://ara.guzus.xyz';
@@ -58,6 +62,17 @@ const SITE_LINKS = {
   github: 'https://github.com/guzus/ai-research-arm',
   author: 'https://x.com/uncanny_guzus',
 };
+const SOCIAL_PREVIEW_CONCURRENCY = Math.max(
+  1,
+  Math.min(6, Number(process.env.SOCIAL_PREVIEW_CONCURRENCY || 4) || 4),
+);
+const SOCIAL_PREVIEW_BASE_URL = (
+  process.env.SOCIAL_PREVIEW_BASE_URL ||
+  process.env.AUDIO_BASE_URL ||
+  'https://s3.guzus.xyz/obj-ai-research-arm'
+).replace(/\/+$/, '');
+const SOCIAL_PREVIEW_PREFIX = (process.env.SOCIAL_PREVIEW_PREFIX || 'social-preview')
+  .replace(/^\/+|\/+$/g, '');
 
 // Markers that delimit the default SEO block in index.html. postbuild replaces
 // the whole block (markers included) per page; if the markers are absent we
@@ -177,15 +192,33 @@ function imageMetaItems(imageInput, fallbackAlt) {
   if (!imageInput) return [];
   const rawItems = Array.isArray(imageInput)
     ? imageInput
-    : [{ url: imageInput, alt: fallbackAlt }];
+    : typeof imageInput === 'string'
+      ? [{ url: imageInput, alt: fallbackAlt }]
+      : [imageInput];
   return rawItems
     .map(item => {
       if (typeof item === 'string') return { url: absoluteImageUrl(item), alt: fallbackAlt };
       const url = absoluteImageUrl(item?.url);
       const alt = String(item?.alt || fallbackAlt || '').trim();
-      return { url, alt };
+      const width = Number.isFinite(Number(item?.width)) ? Number(item.width) : null;
+      const height = Number.isFinite(Number(item?.height)) ? Number(item.height) : null;
+      const type = String(item?.type || '').trim() || imageMimeType(url);
+      return { url, alt, width, height, type };
     })
     .filter(item => item.url);
+}
+
+function imageMimeType(url) {
+  const path = String(url || '').split(/[?#]/, 1)[0].toLowerCase();
+  if (path.endsWith('.png')) return 'image/png';
+  if (path.endsWith('.jpg') || path.endsWith('.jpeg')) return 'image/jpeg';
+  if (path.endsWith('.webp')) return 'image/webp';
+  if (path.endsWith('.gif')) return 'image/gif';
+  return '';
+}
+
+function isImageLikeUrl(url) {
+  return /\.(png|jpe?g|webp|gif)(?:$|[?#])/i.test(String(url || ''));
 }
 
 function imageMetaTags(imageInput, alt) {
@@ -194,10 +227,373 @@ function imageMetaTags(imageInput, alt) {
   const tags = [];
   for (const img of images) {
     tags.push(`<meta property="og:image" content="${htmlEscapeAttr(img.url)}" />`);
+    if (img.width) tags.push(`<meta property="og:image:width" content="${htmlEscapeAttr(String(img.width))}" />`);
+    if (img.height) tags.push(`<meta property="og:image:height" content="${htmlEscapeAttr(String(img.height))}" />`);
+    if (img.type) tags.push(`<meta property="og:image:type" content="${htmlEscapeAttr(img.type)}" />`);
     if (img.alt) tags.push(`<meta property="og:image:alt" content="${htmlEscapeAttr(img.alt)}" />`);
   }
   tags.push(`<meta name="twitter:image" content="${htmlEscapeAttr(images[0].url)}" />`);
   return tags;
+}
+
+function articleArtifactUrl(url) {
+  const value = String(url || '').trim();
+  if (!value || !isImageLikeUrl(value)) return null;
+  if (/^https?:\/\//i.test(value) || value.startsWith('/')) return value;
+  if (value.startsWith('research/')) return `/${value}`;
+  if (value.startsWith('generative/')) return `/research/${value}`;
+  return `/research/generative/${value}`;
+}
+
+function normalizeArticleArtifactImage(imageInput, fallbackAlt) {
+  if (!imageInput) return null;
+  if (typeof imageInput === 'string') {
+    const url = articleArtifactUrl(imageInput);
+    return url ? { url, alt: fallbackAlt } : null;
+  }
+  if (Array.isArray(imageInput)) {
+    const images = imageInput
+      .map(item => normalizeArticleArtifactImage(item, fallbackAlt))
+      .filter(Boolean);
+    return images.length ? images : null;
+  }
+  const url = articleArtifactUrl(imageInput.url || imageInput.path || imageInput.file);
+  if (!url) return null;
+  return {
+    ...imageInput,
+    url,
+    alt: String(imageInput.alt || fallbackAlt || '').trim(),
+  };
+}
+
+function articleArtifactImage(row, fallbackAlt) {
+  const declared =
+    row?.social_image ||
+    row?.og_image ||
+    row?.preview_image ||
+    row?.artifact_image ||
+    row?.image ||
+    row?.artifacts?.social_image ||
+    row?.artifacts?.preview_image ||
+    row?.artifacts?.image;
+  if (declared) return normalizeArticleArtifactImage(declared, fallbackAlt);
+
+  const file = typeof row?.file === 'string' ? row.file : '';
+  if (!file.endsWith('.html')) return null;
+  const stem = file.slice(0, -'.html'.length);
+  for (const ext of ['png', 'jpg', 'jpeg', 'webp', 'gif']) {
+    const name = `${stem}.${ext}`;
+    if (existsSync(join(articlesDir, name))) {
+      return { url: `/research/generative/${name}`, alt: fallbackAlt };
+    }
+  }
+  return null;
+}
+
+function articleShareImage(row, fallbackShareImageUrl, fallbackAlt, generatedImages = new Map()) {
+  return articleArtifactImage(row, fallbackAlt) || generatedImages.get(row.slug) || fallbackShareImageUrl;
+}
+
+function contentTypeForPath(path) {
+  const ext = extname(path).toLowerCase();
+  if (ext === '.html') return 'text/html; charset=utf-8';
+  if (ext === '.js') return 'text/javascript; charset=utf-8';
+  if (ext === '.css') return 'text/css; charset=utf-8';
+  if (ext === '.json') return 'application/json; charset=utf-8';
+  if (ext === '.png') return 'image/png';
+  if (ext === '.jpg' || ext === '.jpeg') return 'image/jpeg';
+  if (ext === '.webp') return 'image/webp';
+  if (ext === '.gif') return 'image/gif';
+  if (ext === '.svg') return 'image/svg+xml; charset=utf-8';
+  return 'application/octet-stream';
+}
+
+function startStaticServer(root) {
+  const rootDir = resolve(root);
+  const server = createServer((req, res) => {
+    try {
+      const rawPath = new URL(req.url || '/', 'http://127.0.0.1').pathname;
+      const decoded = decodeURIComponent(rawPath);
+      let filePath = resolve(rootDir, `.${decoded}`);
+      if (!filePath.startsWith(rootDir)) {
+        res.writeHead(403);
+        res.end('forbidden');
+        return;
+      }
+      if (!existsSync(filePath)) {
+        const indexPath = resolve(filePath, 'index.html');
+        if (indexPath.startsWith(rootDir) && existsSync(indexPath)) filePath = indexPath;
+      } else if (statSync(filePath).isDirectory()) {
+        filePath = resolve(filePath, 'index.html');
+      }
+      if (!filePath.startsWith(rootDir) || !existsSync(filePath) || !statSync(filePath).isFile()) {
+        res.writeHead(404);
+        res.end('not found');
+        return;
+      }
+      res.writeHead(200, { 'content-type': contentTypeForPath(filePath) });
+      createReadStream(filePath).pipe(res);
+    } catch (e) {
+      res.writeHead(500);
+      res.end(String(e?.message || e));
+    }
+  });
+
+  return new Promise((resolveServer, reject) => {
+    server.once('error', reject);
+    server.listen(0, '127.0.0.1', () => {
+      const address = server.address();
+      resolveServer({
+        origin: `http://127.0.0.1:${address.port}`,
+        close: () => new Promise(resolveClose => server.close(resolveClose)),
+      });
+    });
+  });
+}
+
+function browserExecutablePath() {
+  const candidates = [
+    process.env.SOCIAL_PREVIEW_BROWSER,
+    '/usr/bin/chromium-browser',
+    '/usr/bin/chromium',
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser',
+  ].filter(Boolean);
+  return candidates.find(path => existsSync(path)) || null;
+}
+
+function hashHex(value) {
+  return createHash('sha256').update(value).digest('hex');
+}
+
+function hmac(key, value, encoding) {
+  return createHmac('sha256', key).update(value).digest(encoding);
+}
+
+function s3Config() {
+  const endpoint = process.env.S3_ENDPOINT_URL;
+  const bucket = process.env.S3_BUCKET;
+  const accessKey = process.env.S3_ACCESS_KEY_ID || process.env.AWS_ACCESS_KEY_ID;
+  const secretKey = process.env.S3_SECRET_ACCESS_KEY || process.env.AWS_SECRET_ACCESS_KEY;
+  if (!endpoint || !bucket || !accessKey || !secretKey) return null;
+  return {
+    endpoint: endpoint.replace(/\/+$/, ''),
+    bucket,
+    accessKey,
+    secretKey,
+    region: process.env.S3_REGION || process.env.AWS_REGION || 'us-east-1',
+  };
+}
+
+function encodeS3Key(key) {
+  return key.split('/').map(part => encodeURIComponent(part)).join('/');
+}
+
+function socialPreviewKey(stem) {
+  return `${SOCIAL_PREVIEW_PREFIX}/${stem}.social.png`;
+}
+
+function socialPreviewPublicUrl(key) {
+  return `${SOCIAL_PREVIEW_BASE_URL}/${key.split('/').map(encodeURIComponent).join('/')}`;
+}
+
+async function publicObjectExists(url) {
+  try {
+    const res = await fetch(url, { method: 'HEAD' });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function putS3Object(key, body, contentType) {
+  const cfg = s3Config();
+  if (!cfg) return false;
+
+  const now = new Date();
+  const amzDate = now.toISOString().replace(/[:-]|\.\d{3}/g, '');
+  const dateStamp = amzDate.slice(0, 8);
+  const payloadHash = hashHex(body);
+  const objectPath = `/${cfg.bucket}/${encodeS3Key(key)}`;
+  const url = new URL(`${cfg.endpoint}${objectPath}`);
+  const canonicalHeaders =
+    `host:${url.host}\n` +
+    `x-amz-content-sha256:${payloadHash}\n` +
+    `x-amz-date:${amzDate}\n`;
+  const signedHeaders = 'host;x-amz-content-sha256;x-amz-date';
+  const canonicalRequest = [
+    'PUT',
+    url.pathname,
+    '',
+    canonicalHeaders,
+    signedHeaders,
+    payloadHash,
+  ].join('\n');
+  const credentialScope = `${dateStamp}/${cfg.region}/s3/aws4_request`;
+  const stringToSign = [
+    'AWS4-HMAC-SHA256',
+    amzDate,
+    credentialScope,
+    hashHex(canonicalRequest),
+  ].join('\n');
+  const kDate = hmac(`AWS4${cfg.secretKey}`, dateStamp);
+  const kRegion = hmac(kDate, cfg.region);
+  const kService = hmac(kRegion, 's3');
+  const kSigning = hmac(kService, 'aws4_request');
+  const signature = hmac(kSigning, stringToSign, 'hex');
+  const authorization =
+    `AWS4-HMAC-SHA256 Credential=${cfg.accessKey}/${credentialScope}, ` +
+    `SignedHeaders=${signedHeaders}, Signature=${signature}`;
+
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      authorization,
+      'cache-control': 'public, max-age=31536000, immutable',
+      'content-type': contentType,
+      'x-amz-content-sha256': payloadHash,
+      'x-amz-date': amzDate,
+    },
+    body,
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`S3 upload failed ${res.status} ${res.statusText}${text ? `: ${text.slice(0, 300)}` : ''}`);
+  }
+  return true;
+}
+
+function generatedArticleImageMeta(row) {
+  const file = typeof row?.file === 'string' ? row.file : '';
+  if (!file.endsWith('.html')) return null;
+  const stem = file.slice(0, -'.html'.length);
+  const key = socialPreviewKey(stem);
+  return {
+    key,
+    publicUrl: socialPreviewPublicUrl(key),
+    fileName: `${stem}.social.png`,
+    outputPath: join(distGenerativeDir, `${stem}.social.png`),
+    image: {
+      url: socialPreviewPublicUrl(key),
+      alt: row.title || row.slug,
+      width: 1200,
+      height: 630,
+      type: 'image/png',
+    },
+    localImage: {
+      url: `/research/generative/${stem}.social.png`,
+      alt: row.title || row.slug,
+      width: 1200,
+      height: 630,
+      type: 'image/png',
+    },
+  };
+}
+
+async function renderArticleSocialScreenshots(rows) {
+  const executablePath = browserExecutablePath();
+  if (!executablePath) {
+    console.warn('postbuild-seo: no Chromium executable found; article screenshot previews fall back to front-page image');
+    return new Map();
+  }
+
+  const generated = new Map();
+  const candidates = [];
+  await Promise.all(rows.map(async row => {
+    if (
+      row?.kind === 'standalone' ||
+      !row?.slug ||
+      !row?.file ||
+      articleArtifactImage(row, row.title || row.slug) ||
+      !existsSync(join(dist, 'research', row.slug, 'index.html'))
+    ) {
+      return;
+    }
+    const meta = generatedArticleImageMeta(row);
+    if (!meta) return;
+    if (await publicObjectExists(meta.publicUrl)) {
+      generated.set(row.slug, meta.image);
+      return;
+    }
+    candidates.push(row);
+  }));
+  if (!candidates.length) return generated;
+
+  mkdirSync(distGenerativeDir, { recursive: true });
+  if (!s3Config()) {
+    console.warn(
+      'postbuild-seo: S3 credentials missing; generated social previews will be local dist artifacts only',
+    );
+  }
+  const server = await startStaticServer(dist);
+  const browser = await chromium.launch({
+    executablePath,
+    headless: true,
+    args: ['--no-sandbox', '--disable-dev-shm-usage'],
+  });
+  try {
+    let next = 0;
+    async function renderNext() {
+      const page = await browser.newPage({
+        viewport: { width: 1200, height: 630 },
+        deviceScaleFactor: 1,
+      });
+      try {
+        while (next < candidates.length) {
+          const row = candidates[next++];
+          await renderOne(page, row);
+        }
+      } finally {
+        await page.close();
+      }
+    }
+
+    async function renderOne(page, row) {
+      const meta = generatedArticleImageMeta(row);
+      if (!meta) return;
+      const url = `${server.origin}/research/${encodeURIComponent(row.slug)}`;
+      try {
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        await page.addStyleTag({
+          content: `
+            body { background: #0f172a !important; }
+            .topbar, .tabs, .search-overlay, .ara-toc, .gen-research-doc-meta,
+            .content-card-header, .gen-research-audio { display: none !important; }
+            #content { padding-top: 24px !important; }
+            .content-card.gen-research-doc { margin-top: 0 !important; }
+            html, body, #app { min-height: 1400px !important; }
+          `,
+        });
+        const card = page.locator('.content-card.gen-research-doc').first();
+        await card.waitFor({ state: 'visible', timeout: 10000 });
+        await page.waitForTimeout(700);
+        const box = await card.boundingBox();
+        const clipY = Math.max(0, Math.floor((box?.y || 0) - 24));
+        await page.evaluate(y => window.scrollTo(0, y), clipY);
+        await page.waitForTimeout(100);
+        await page.screenshot({
+          path: meta.outputPath,
+          fullPage: false,
+        });
+        const png = readFileSync(meta.outputPath);
+        const uploaded = await putS3Object(meta.key, png, 'image/png');
+        generated.set(row.slug, uploaded ? meta.image : meta.localImage);
+      } catch (e) {
+        console.warn(`postbuild-seo: screenshot preview failed for ${row.slug}: ${e.message}`);
+      }
+    }
+
+    await Promise.all(
+      Array.from(
+        { length: Math.min(SOCIAL_PREVIEW_CONCURRENCY, candidates.length) },
+        () => renderNext(),
+      ),
+    );
+  } finally {
+    await browser.close();
+    await server.close();
+  }
+  return generated;
 }
 
 // Replace the marked SEO block with metaBlock. Fallback: if the markers are
@@ -231,12 +627,13 @@ function extractMeta(articleHtml) {
   return { title, desc };
 }
 
-function buildArticlePage(template, row, articleHtml, shareImageUrl) {
+function buildArticlePage(template, row, articleHtml, shareImageUrl, generatedImages = new Map()) {
   const url = `${SITE_ORIGIN}/research/${row.slug}`;
   const { title: extracted, desc } = extractMeta(articleHtml);
   const title = extracted || row.title || row.slug;
   const dateIso = row.created_at;
   const keywords = Array.isArray(row.tags) ? row.tags.filter(Boolean) : [];
+  const pageShareImage = articleShareImage(row, shareImageUrl, title, generatedImages);
 
   const jsonLd = {
     '@type': 'Article',
@@ -253,7 +650,8 @@ function buildArticlePage(template, row, articleHtml, shareImageUrl) {
     about: keywords.map(name => ({ '@type': 'Thing', name })),
     url,
   };
-  if (shareImageUrl) jsonLd.image = shareImageUrl;
+  const jsonLdImages = imageMetaItems(pageShareImage, title).map(img => img.url);
+  if (jsonLdImages.length) jsonLd.image = jsonLdImages;
 
   const metaBlock = [
     `<title>${htmlEscapeAttr(title)} -- ara</title>`,
@@ -268,8 +666,8 @@ function buildArticlePage(template, row, articleHtml, shareImageUrl) {
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:site_name" content="ara -- AI research arm" />`,
     `<meta property="article:published_time" content="${dateIso}" />`,
-    ...imageMetaTags(shareImageUrl, title),
-    `<meta name="twitter:card" content="${shareImageUrl ? 'summary_large_image' : 'summary'}" />`,
+    ...imageMetaTags(pageShareImage, title),
+    `<meta name="twitter:card" content="${pageShareImage ? 'summary_large_image' : 'summary'}" />`,
     `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
     `<link rel="alternate" type="application/rss+xml" title="ara -- AI research arm" href="${SITE_ORIGIN}/feed.xml" />`,
@@ -796,6 +1194,7 @@ if (!existsSync(indexJsonPath)) {
 // 1) Generative article pages.
 let written = 0;
 let skipped = 0;
+const articleRows = [];
 for (const row of entries) {
   if (row.kind === 'standalone') {
     skipped++;
@@ -811,7 +1210,16 @@ for (const row of entries) {
   const outDir = join(dist, 'research', row.slug);
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, 'index.html'), page);
+  articleRows.push({ row, articleHtml, outDir });
   written++;
+}
+
+const generatedArticleImages = await renderArticleSocialScreenshots(entries);
+if (generatedArticleImages.size) {
+  for (const { row, articleHtml, outDir } of articleRows) {
+    const page = buildArticlePage(template, row, articleHtml, shareImageUrl, generatedArticleImages);
+    writeFileSync(join(outDir, 'index.html'), page);
+  }
 }
 
 // 2) "today" digest page.
