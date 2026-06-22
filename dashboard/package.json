@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "dompurify": "^3.4.10",
-    "marked": "^18.0.5"
+    "marked": "^18.0.5",
+    "playwright-core": "^1.61.0"
   }
 }

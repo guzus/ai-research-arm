@@ -4,8 +4,9 @@ WORKDIR /app
 
 # The dashboard's package manager is bun (package-lock.json was dropped in #102,
 # so `npm ci` can no longer run). Its pre/postbuild lifecycle scripts shell out
-# to `node` (node scripts/prebuild.mjs, postbuild-seo.mjs), so install nodejs too.
-RUN apk add --no-cache nodejs
+# to `node`; postbuild also renders article social-preview screenshots with
+# headless Chromium.
+RUN apk add --no-cache nodejs chromium
 
 COPY dashboard/package.json dashboard/bun.lock ./dashboard/
 RUN cd dashboard && bun install --frozen-lockfile
