@@ -11075,5 +11075,33 @@
     "headline": "GLM-5.2 GETS FIRST COUNTER-DATA: ~28% HALLUCINATION VS FABLE 5'S ~48%, BUT DECAYS TO ~74.8% OVER LONG MULTI-TURN CHATS",
     "source": "@conanbr",
     "url": "https://x.com/conanbr/status/2069363432953090530"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-23 22:14 UTC",
+    "headline": "GLM-5.2 MAKER ZHIPU SPIKES TO RECORD ~HK$1 TRILLION (~$130B), THEN ROUND-TRIPS ~20% \u2014 BLOW-OFF AT ~1,300X SALES",
+    "source": "@caixin",
+    "url": "https://x.com/caixin/status/2069385696260067575"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-23 22:14 UTC",
+    "headline": "ZHIPU/KNOWLEDGE ATLAS ($02513.HK) UP ~20X FROM JANUARY IPO ON GLM-5.2 WAVE \u2014 ~40% OF OPENAI'S VALUATION IN SIX MONTHS",
+    "source": "@vivilinsv",
+    "url": "https://x.com/vivilinsv/status/2069148427267780703"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-23 22:14 UTC",
+    "headline": "GPT-5.6 DELAYED AGAIN \u2014 LEAK-TRACKERS NO LONGER EXPECT IT THIS WEEK; POLYMARKET REPORTEDLY PUSHES WINDOW OUT",
+    "source": "@bridgemindai",
+    "url": "https://x.com/bridgemindai/status/2069406898739089878"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-23 22:14 UTC",
+    "headline": "GLM-5.2 COST-WIN NARRATIVE CHALLENGED \u2014 DEEPSWE DATA SHOWS IT MORE EXPENSIVE THAN MEDIUM OPUS 4.8 ON SOME TASKS",
+    "source": "@brandon_galang",
+    "url": "https://x.com/brandon_galang/status/2069406877826593134"
   }
 ]
