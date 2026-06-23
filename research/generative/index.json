@@ -720,5 +720,20 @@
     "source": "workflow_dispatch",
     "prompt": "Noam Shazeer leaves Google for OpenAI: what the reversal of Google's $2.7B Character.AI acquihire signals about the talent moat",
     "tags": []
+  },
+  {
+    "slug": "broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th",
+    "file": "2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Broadcom becomes AI's banker: the Apollo-Blackstone chip-financing machine and the circular question underneath",
+    "model": "glm-5p2",
+    "created_at": "2026-06-23T07:49:13Z",
+    "source": "fireworks",
+    "prompt": "Broadcom's B Anthropic chip order: vendor-financed compute, the Apollo/Blackstone structure, and circular-financing risk",
+    "tags": [
+      "glm-5p2",
+      "rerun"
+    ]
   }
 ]

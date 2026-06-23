@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Broadcom's fiscal Q2 2026 AI semiconductor revenue was $10.8B (+143% YoY) and Q2 AI bookings exceeded $30B against $10.8B shipped (book-to-bill >2.8x).",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Broadcom, Apollo, and Blackstone announced the 'AI XPV Platform' to finance up to 20GW of Anthropic's Broadcom XPU purchases, first tranche ~$35B for ~1GW, 20GW target by 2028.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Anthropic filed a confidential IPO S-1 on June 1, 2026 at ~$965B valuation after a ~$65B Series H, with Bloomberg reporting ~$47B annualized revenue run rate.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

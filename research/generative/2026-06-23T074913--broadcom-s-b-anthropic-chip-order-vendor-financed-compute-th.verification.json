@@ -1,0 +1,94 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Broadcom reported fiscal Q2 2026 revenue of $22.187B, up 48% YoY, with AI semiconductor revenue of $10.8B, up 143% YoY.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000051/avgo-20260603.htm"
+    },
+    {
+      "id": "c2",
+      "text": "Hock Tan said Q2 AI semiconductor bookings exceeded $30B against $10.8B shipped, a book-to-bill ratio above 2.8x, and that demand for XPUs and networking is 'simply insatiable'.",
+      "verdict": "supported",
+      "citation": "https://x.com/TheValueist/status/2062268175459426767"
+    },
+    {
+      "id": "c3",
+      "text": "Broadcom guided Q3 FY26 revenue to $29.4B (+84% YoY) with AI semiconductor revenue of $16.0B (+200% YoY), and reaffirmed FY27 AI semiconductor revenue target exceeding $100B.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000051/avgo-20260603.htm"
+    },
+    {
+      "id": "c4",
+      "text": "Broadcom's custom AI accelerator (XPU) customers include Google (TPU), Meta (MTIA), Anthropic, OpenAI, and two others; OpenAI's first XPU is expected in volume in 2027.",
+      "verdict": "supported",
+      "citation": "https://x.com/i/status/2029350664812237162"
+    },
+    {
+      "id": "c5",
+      "text": "Broadcom, Apollo, and Blackstone announced the 'AI XPV Platform', a financing structure for up to 20GW of Anthropic's (and OpenAI's) Broadcom XPU chip purchases, with a first tranche of approximately $35B covering about 1GW, targeting 20GW by 2028.",
+      "verdict": "weak",
+      "citation": "https://x.com/RHouseResearch/status/2066841846991487325"
+    },
+    {
+      "id": "c6",
+      "text": "Under the XPV structure Anthropic owns the chips and leases data-center capacity (issuing LOIs to developers); the first 1GW is sited at Fluidstack-managed sites in mid-2026, with Google backstopping Anthropic's lease obligations.",
+      "verdict": "weak",
+      "citation": "https://x.com/RHouseResearch/status/2066841846991487325"
+    },
+    {
+      "id": "c7",
+      "text": "Google and Blackstone formed a TPU cloud joint venture with a $5B Blackstone equity commitment and a Bloomberg-reported total investment value of approximately $25B, targeting 500MW online in 2027, offering Google Cloud TPUs as compute-as-a-service.",
+      "verdict": "supported",
+      "citation": "https://x.com/i/status/2056582236703543564"
+    },
+    {
+      "id": "c8",
+      "text": "CoreWeave's DDTL 4.0 (March 30, 2026) is an $8.5B delayed-draw term loan, rated A3/A(low), priced at SOFR+2.25% floating / ~5.9% fixed, syndicated by MUFG, Morgan Stanley, Goldman Sachs, JPMorgan, and Blackstone Credit & Insurance, and is backed by Meta contracts worth at least $19B (Bloomberg).",
+      "verdict": "supported",
+      "citation": "https://x.com/i/status/2039398569820491930"
+    },
+    {
+      "id": "c9",
+      "text": "The CoreWeave DDTL uses a ring-fenced SPE architecture with a project-finance cash waterfall, 100% equity pledge, debt-service coverage ratio (DSCR) of at least 1.20x for sizing and 1.15x maintenance, collateralized by productive, power-secured, customer-accepted compute capacity.",
+      "verdict": "supported",
+      "citation": "https://x.com/i/status/2039398569820491930"
+    },
+    {
+      "id": "c10",
+      "text": "Anthropic filed a confidential IPO S-1 with the SEC on June 1, 2026 at a reported valuation of approximately $965B, after closing a reported $65B Series H; Bloomberg reported an annualized revenue run rate of approximately $47B.",
+      "verdict": "weak",
+      "citation": "https://x.com/i/status/2069246244191649944"
+    },
+    {
+      "id": "c11",
+      "text": "Anthropic's reported valuation rose from approximately $4.1B (2023) to $61.5B (March 2025), $183B (September 2025), $380B (February 2026), and approximately $965B (May 2026 Series H).",
+      "verdict": "weak",
+      "citation": "https://x.com/IPONewsroom_/status/2068820920085680391"
+    },
+    {
+      "id": "c12",
+      "text": "Apollo and Blackstone appear across multiple links of the AI compute financing chain: the XPV Platform (Anthropic/OpenAI XPU purchases), the Google-Blackstone TPU JV, and CoreWeave's DDTL 4.0 (Blackstone Credit & Insurance).",
+      "verdict": "supported",
+      "citation": "https://x.com/i/status/2039398569820491930"
+    },
+    {
+      "id": "c13",
+      "text": "AVGO traded from approximately $293.70 in July 2025 to approximately $392.13 in June 2026, with an interim peak near $446.77 in May 2026.",
+      "verdict": "supported",
+      "citation": "https://finance.yahoo.com/quote/AVGO/"
+    },
+    {
+      "id": "c14",
+      "text": "OpenAI's custom-silicon program had a strategic partnership with Broadcom targeting a 10GW AI accelerator system with first rack deliveries in the second half of 2026.",
+      "verdict": "weak",
+      "citation": "https://x.com/TokenandoAI/status/2063578684267659386"
+    },
+    {
+      "id": "c15",
+      "text": "Alphabet raised approximately $85B in an oversubscribed equity offering anchored by a $10B Berkshire Hathaway investment, earmarked for AI compute infrastructure.",
+      "verdict": "weak",
+      "citation": "https://x.com/forelytics/status/2066740807693115476"
+    }
+  ]
+}
