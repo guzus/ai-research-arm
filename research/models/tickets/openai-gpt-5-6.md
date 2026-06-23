@@ -45,6 +45,14 @@ status_note: |
   jump** (~7–8K likes). All still leak/anon-grade — no OpenAI system card, API
   listing, or confirmed date this window. Status stays `rumored`, verification
   stays `partial`.
+
+  **2026-06-23:** Window firmed to a **"Thursday (~June 25)"** leak date and
+  picked up a **surprise bidirectional voice model, "GPT-Bidi-1,"** in the same
+  leak bundle. Betting markets now price a **June 22–28 launch near 90–100%**.
+  Still **no system card, API listing, or OpenAI-confirmed date**, and the
+  loudest "leaked" posts remain SEO spam. GPT-Bidi-1 is a zero-artifact,
+  single-bundle leak folded here as part of the same anticipated launch event.
+  Status stays `rumored`, verification stays `partial`.
 expected: "Polymarket ~83% on 2026-06-22→28; leak relays cite a 'Thursday'/June 25 date and 'testing in Codex'; @thsottiaux teases a big front-end jump; Pachocki reportedly calls 5.6 a 'meaningful improvement' over 5.5 (The Information). No OpenAI-confirmed date, system card, or API string"
 labels:
   - openai
@@ -57,7 +65,7 @@ sources:
   - "@Polymarket"
   - "@MarMarLabs"
 created_at: 2026-06-09
-updated_at: 2026-06-22
+updated_at: 2026-06-23
 closed_at: null
 closed_reason: null
 history:
@@ -73,6 +81,8 @@ history:
     change: "Timing firmed, still unconfirmed. Chief Scientist Jakub Pachocki reportedly told staff GPT-5.6 is a 'meaningful improvement' over 5.5 (attributed to The Information) — most senior-attributed signal yet but still a relayed internal remark, not an artifact. Leak-trackers peg 'as soon as next week'; Polymarket moved to ~83% on a 2026-06-22→28 drop. The viral 'stealth GPT-5.6-Pro' capability demos were debunked as model-tier confusion — testers were on GPT-5.5-Pro, not 5.6 (@MarMarLabs). Leaked specs (~1.5M context, faster Codex, cheaper pricing) remain rumor; no system card or API listing. Status stays rumored; verification stays partial."
   - ts: 2026-06-22
     change: "Window arrived, chatter persisted, no artifact. Leak relays now cite a specific 'Thursday' / June 25 date; a Japanese aggregator (@redcord_okumura) lists 'GPT-5.6 being tested in Codex,' dovetailing with OpenAI's @thsottiaux teasing a big front-end capability jump (~7–8K likes). Still leak/anon-grade — no OpenAI system card, API listing, or confirmed date this window. Status stays rumored; verification stays partial."
+  - ts: 2026-06-23
+    change: "Window firmed to 'Thursday (~June 25)' and the leak bundle added a surprise bidirectional voice model, 'GPT-Bidi-1.' Betting markets now price a June 22–28 launch near 90–100%. Still no system card, API listing, or OpenAI-confirmed date; loudest 'leaked' posts remain SEO spam. GPT-Bidi-1 is a zero-artifact single-bundle leak, folded here as part of the same anticipated launch event rather than a separate ticket. Status stays rumored; verification stays partial."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely

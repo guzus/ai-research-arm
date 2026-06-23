@@ -75,6 +75,16 @@ status_note: |
   is thin (~4%), and a ~July 8 share unlock looms — directional re-rating is real
   and multi-sourced, the decimals are not. Status stays `released`, verification
   stays `confirmed`.
+
+  **2026-06-23:** Neutral-leaderboard placement keeps filling in. Fresh
+  third-party numbers put GLM-5.2 at **#3 overall / #1 open-weights on
+  GDPval-AA** (1524 Elo, level with GPT-5.5 xhigh), **2nd on Game Dev Arena**
+  (Elo 1368, inside Fable 5's band), and **#1 open-weights on Artificial
+  Analysis's Intelligence Index** (score 51); it is also reported as the first
+  open-weights model to run alphaXiv's autoresearch pipeline end-to-end. The
+  open-weights tier now clearing GPT-5.5-class agentic work while the
+  US-controlled frontier sits partly frozen. Caveat: still **no image
+  understanding**. Status stays `released`, verification stays `confirmed`.
 expected: "Shipped — MIT weights live (HuggingFace), API + GLM Coding Plan + Web Chat, day-0 vLLM/Notion/Baseten support; leaderboards strong (Design Arena #1, AA Index #1 open-weights, Terminal-Bench 2.1 ~81). Now a market event: Vercel CEO/Jeremy Howard on-record raves, maker Zhipu (HK:02513) up ~15× since IPO / >1T HKD intraday, reported STAR A-share IPO (~$15B) accepted; exact figures retail-sourced, neutral-org primary benchmark placement still settling"
 labels:
   - frontier-model
@@ -94,8 +104,10 @@ sources:
   - https://news.ycombinator.com/item?id=48600167
   - "@rauchg"
   - "@guohao_li"
+  - "@AndrewCurran_"
+  - https://venturebeat.com/technology/z-ais-open-weights-glm-5-2-beats-gpt-5-5-on-multiple-long-horizon-coding-benchmarks-for-1-6th-the-cost
 created_at: 2026-06-14
-updated_at: 2026-06-22
+updated_at: 2026-06-23
 closed_at: null
 closed_reason: null
 history:
@@ -111,6 +123,8 @@ history:
     change: "Open-weights 'no moat' thesis got teeth. GLM-5.2 took #1 on Design Arena's single-turn web-design board (beating a frozen Fable 5) and drew multi-practitioner raves (Jeremy Howard ~7K likes). An independent benchmark claiming GPT-5.5 hallucinates ~3× more than MIT-licensed GLM-5.2 hit the HN front page (467 pts / 232 comments); public subscription-cancellation defections surfaced (@burkov: 'I already cancelled my Anthropic subscription… No moat isn't hypothetical anymore,' keeps Codex only because GLM 'cannot see'). Restated specs: Terminal-Bench 2.1 63.5→81.0, 1M context, anti-reward-hacking RL module. Caveats persist (design-only board, no vision, self-hosting still doesn't pencil out vs a $200 Codex plan). First leaderboard-backed erosion of the open-vs-closed gap. Status stays released, verification stays confirmed."
   - ts: 2026-06-22
     change: "Model story became a market event. Raves crossed into mainstream dev-tooling leadership — Vercel CEO Guillermo Rauch ('almost shocked… this changes things,' ~5.4K likes) alongside Jeremy Howard; Musk's 'GLM could reach Fable-class by Q1' line cited as a catalyst. Maker Zhipu/Z.ai (HK:02513) reported up ~15× since its ~6-month IPO, JPMorgan said to lift PT to HK$1,800, market cap broke 1 trillion HKD intraday (~HK$2,980 high) on June 22; China reportedly opened a 5th STAR Market listing standard to pre-revenue AI labs with Zhipu's A-share IPO (~$15B) 'accepted.' Directional re-rating multi-sourced; exact figures (+1,700% YTD, +48%/day, HK$1,800, trillion-HKD print) are retail/CT-sourced (thin ~4% float, ~July 8 unlock). Status stays released, verification stays confirmed. Sources: @rauchg, @guohao_li, @au_xbt, @ns123abc."
+  - ts: 2026-06-23
+    change: "Neutral-leaderboard placement keeps filling in. Fresh third-party numbers (VentureBeat + community recaps) put GLM-5.2 at #3 overall / #1 open-weights on GDPval-AA (1524 Elo, level with GPT-5.5 xhigh), 2nd on Game Dev Arena (Elo 1368, inside Fable 5's band), and #1 open-weights on Artificial Analysis's Intelligence Index (51); also reported as the first open-weights model to run alphaXiv's autoresearch pipeline end-to-end. @AndrewCurran_ (quote of the day) frames the open-weights tier as now clearing GPT-5.5-class agentic work while the US-controlled frontier sits partly frozen. Caveat: still no image understanding. Status stays released, verification stays confirmed."
 ---
 
 **GLM 5.2**, from **Zhipu AI (Z.ai)**, is the cycle's dominant open-weights
