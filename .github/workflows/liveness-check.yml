@@ -72,7 +72,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout (full history, no LFS blobs)
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0   # git log needs full history; depth:1 breaks it
           lfs: false       # commit metadata + non-LFS text artifacts only
@@ -126,7 +126,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout (full history, no LFS blobs)
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           lfs: false
