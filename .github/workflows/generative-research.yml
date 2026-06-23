@@ -304,6 +304,17 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "Resolved Fireworks model: $display_name ($model_id)"
 
+      - name: Preflight Fireworks backend
+        id: fireworks-preflight
+        if: steps.fireworks.outputs.model_id != ''
+        env:
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          FIREWORKS_MODEL_ID: ${{ steps.fireworks.outputs.model_id }}
+        run: |
+          uv run python scripts/check_fireworks_backend.py \
+            --model "$FIREWORKS_MODEL_ID" \
+            --github-output "$GITHUB_OUTPUT"
+
       # Verify the writer's required output directory exists. The writer
       # raises SystemExit if research/generative/ is missing, so failing
       # fast here gives a clearer error than a generic action failure.
@@ -3411,11 +3422,15 @@ jobs:
       - name: Fail Fireworks run without article
         if: always() && steps.fireworks.outputs.model_id != '' && steps.outfile.outputs.has_file != 'true'
         env:
+          PREFLIGHT_OUTCOME: ${{ steps.fireworks-preflight.outcome }}
+          PREFLIGHT_STATUS: ${{ steps.fireworks-preflight.outputs.status }}
           EXECUTION_FILE_1: ${{ steps.gen-deepseek.outputs.execution_file }}
           EXECUTION_FILE_2: ${{ steps.gen-deepseek-retry.outputs.execution_file }}
           EXECUTION_FILE_3: ${{ steps.gen-deepseek-retry-2.outputs.execution_file }}
         run: |
           echo "::error::Fireworks backend did not produce an article."
+          echo "Preflight outcome: ${PREFLIGHT_OUTCOME:-skipped}"
+          echo "Preflight status: ${PREFLIGHT_STATUS:-unknown}"
           echo "Attempt 1 outcome: ${{ steps.gen-deepseek.outcome }}"
           echo "Retry 1 outcome: ${{ steps.gen-deepseek-retry.outcome }}"
           echo "Retry 2 outcome: ${{ steps.gen-deepseek-retry-2.outcome }}"
