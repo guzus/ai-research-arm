@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-06-24 01:06 UTC
+
+CYCLE: The state catches up to the AI buildout — on cyber risk and on the chips + megawatts behind it.
+
+TOP STORIES:
+• Five Eyes' rare 6-agency statement: frontier-AI cyberthreat is "months, not years," names Mythos & GPT-5.5-Cyber; CISA cuts patch deadlines to 3 days [✓]
+• SpaceX sells up to $6.3B of Colossus compute to open-weights lab Reflection AI ($150M/mo GB300, from July 1) [⚠]
+• DOE offers $17.5B in low-cost loans for 10 AP1000 reactors, explicitly to power AI data centers [✓]
+• ByteDance announces Seedance 2.5 — 30s clips, native 4K, 50 refs (announced, not released; ~mid-July) [⚠]
+
+WATCH: Anthropic still silent on Fable 5 a week-plus on; any Sonnet 5 / Fable 5 signal.
+
+Full update on GitHub.
