@@ -131,6 +131,7 @@ model id from the dispatch backend:
 
 ```yaml
 ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
+ANTHROPIC_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
 ANTHROPIC_AUTH_TOKEN: ${{ secrets.FIREWORKS_API_KEY }}
 ANTHROPIC_MODEL: accounts/fireworks/models/deepseek-v4-flash
 ANTHROPIC_DEFAULT_OPUS_MODEL: accounts/fireworks/models/deepseek-v4-flash
@@ -141,6 +142,11 @@ CLAUDE_CODE_SUBAGENT_MODEL: accounts/fireworks/models/deepseek-v4-flash
 
 For GLM 5.2, the same env slots are set to
 `accounts/fireworks/models/glm-5p2`.
+
+The Fireworks Anthropic-compatible endpoint does not support Claude server
+tools such as WebSearch/WebFetch. The Fireworks workflow path therefore
+keeps research on local tools: `scripts/research_search.py`,
+`scripts/source_cache.py`, `curl`, `pdftotext`, `bird`, `Glob`, and `Grep`.
 
 ## Comparing Backends
 
@@ -177,10 +183,13 @@ The expected difference is the model backend:
   Fireworks endpoint, backend-specific metadata in
   `research/generative/index.json`. This path has a longer action timeout
   because the Anthropic shim plus large sub-agent waves can run slower than
-  the native Claude path. The workflow makes the first Fireworks attempt
-  recoverable: if Claude Code returns a transient API/socket error before the
-  writer commits a generated HTML file, the job cleans any partial repository
-  artifacts and retries up to two times. Draft recovery is limited to the
+  the native Claude path. It intentionally does not expose Claude server
+  WebSearch/WebFetch tools, which Fireworks does not support; use the local
+  repo search/fetch scripts in the prompt instead. The workflow makes the
+  first Fireworks attempt recoverable: if Claude Code returns a transient
+  API/socket error before the writer commits a generated HTML file, the job
+  cleans any partial repository artifacts and retries up to two times.
+  Draft recovery is limited to the
   workflow's run-scoped `$GEN_DRAFT` path, so a self-hosted runner cannot
   reuse stale `/tmp/gen-research*.ara.md` content from another backend or run.
 - Claude: native Anthropic endpoint, `claude-opus-4-8` metadata in
