@@ -1,0 +1,20 @@
+[
+  {
+    "headline": "OPENAI 'BIDI 1' VOICE MODEL GETS FIRST HANDS-ON TESTS — SPEAKS OVER YOU, HANDLES INTERRUPTIONS, TRANSLATES IN REAL TIME",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2069331697615749530",
+    "category": "model"
+  },
+  {
+    "headline": "'GPT-5.6 THIS WEEK' NARRATIVE DEFLATES — LEAK-WATCHERS NOW EXPECT VOICE MODEL FIRST, 5.6 SLIPS PAST 'THURSDAY' AGAIN",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2069351216648204757",
+    "category": "model"
+  },
+  {
+    "headline": "GLM-5.2 GETS FIRST COUNTER-DATA: ~28% HALLUCINATION VS FABLE 5'S ~48%, BUT DECAYS TO ~74.8% OVER LONG MULTI-TURN CHATS",
+    "source": "@conanbr",
+    "url": "https://x.com/conanbr/status/2069363432953090530",
+    "category": "research"
+  }
+]

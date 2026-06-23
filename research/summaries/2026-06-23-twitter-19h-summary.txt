@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-06-23 19:22 UTC
+
+CYCLE: No official launches; the "GPT-5.6 this week" story deflates while GLM-5.2 hits its first counter-data.
+
+TOP STORIES:
+• "GPT-5.6 this week" narrative cracks — what's actually shipping is the Bidi-1 voice model (now with hands-on tests: real-time translation, talks over you); 5.6 slips again [⚠]
+• GLM-5.2 hype meets nuance — strong calibration (~28% hallucination vs Fable 5's ~48%), but weak grounding over long multi-turn chats (~74.8% on HalluHard); one vendor pegs it at Opus 4.7, not 4.8 [⚠]
+
+WATCH: Whether Bidi-1 actually ships in ChatGPT/Codex this week, and whether GPT-5.6 appears Thursday or slips a 4th time.
+
+Full update on GitHub.
