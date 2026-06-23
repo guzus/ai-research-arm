@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-06-23 10:12 UTC
+
+CYCLE: No new launches (OpenAI/Anthropic quiet) — GLM-5.2 crosses from leaderboards into real-task head-to-heads and wins on cost.
+
+TOP STORIES:
+• GLM-5.2 matches/beats Opus 4.8 & Sakana Fugu Ultra in two independent coding tests at a fraction of the cost — cline real-bug run ($0.41 vs $0.81; Opus left a build-breaking type error) + atomic.chat trading-desk build (~17x cheaper) [✓ pattern / ⚠ n=1]
+• GPT-5.6's "Bidi 1" voice model gets first UI evidence in ChatGPT web settings, but model still unshipped; date still "Thursday," no OpenAI artifact [⚠]
+
+WATCH: Thursday (~Jun 25) — whether OpenAI actually ships GPT-5.6 / "Bidi 1," or the date slips again.
+
+Full update on GitHub.
