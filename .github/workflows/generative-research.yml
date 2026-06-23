@@ -9,12 +9,11 @@ name: Generative Research
 #   3. workflow_dispatch with only twitter_url — read that tweet/thread first,
 #      infer the research question, then expand into a full article.
 #
-# Two backends, mutually exclusive at runtime:
+# Backends, mutually exclusive at runtime:
 #   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-opus-4-8).
-#   * deepseek — same action, but redirected to Fireworks' Anthropic-compatible
-#                endpoint via ANTHROPIC_BASE_URL/ANTHROPIC_AUTH_TOKEN (model
-#                deepseek-v4-flash, served by Fireworks). Mirrors the
-#                hourly-twitter.yml deepseek-claude-code backend.
+#   * deepseek / glm-5p2 — same action, but redirected to Fireworks'
+#                Anthropic-compatible endpoint via ANTHROPIC_BASE_URL /
+#                ANTHROPIC_AUTH_TOKEN.
 #
 # The Python writer commits internally; this workflow only pushes.
 #
@@ -48,6 +47,7 @@ on:
         type: choice
         options:
           - deepseek-v4-flash
+          - glm-5p2
           - claude
           - deepseek
       tags:
@@ -199,9 +199,10 @@ jobs:
               case "$CANDIDATE" in
                 claude-opus-4-8) CANDIDATE="claude" ;;
                 deepseek) CANDIDATE="deepseek-v4-flash" ;;
+                glm-5.2|glm5.2|glm52|glm-5p2) CANDIDATE="glm-5p2" ;;
               esac
               if [ -n "${CANDIDATE:-}" ]; then
-                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ]; then
+                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
                   echo "unsupported backend/model: $CANDIDATE" >&2
                   exit 1
                 fi
@@ -233,9 +234,10 @@ jobs:
 
           case "$BACKEND" in
             deepseek) BACKEND="deepseek-v4-flash" ;;
+            glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
             claude-opus-4-8) BACKEND="claude" ;;
           esac
-          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "deepseek-v4-flash" ]; then
+          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
           fi
@@ -263,6 +265,36 @@ jobs:
           echo "  tags    = ${TAGS:-(none)}"
           echo "  source  = $SOURCE"
           echo "  twitter = ${TWITTER_URL:-(none)}"
+
+      - name: Resolve Fireworks backend
+        id: fireworks
+        if: contains(fromJSON('["deepseek-v4-flash","glm-5p2"]'), steps.params.outputs.backend)
+        env:
+          BACKEND: ${{ steps.params.outputs.backend }}
+        run: |
+          set -euo pipefail
+          case "$BACKEND" in
+            deepseek-v4-flash)
+              model_id="accounts/fireworks/models/deepseek-v4-flash"
+              model_label="deepseek-v4-flash"
+              display_name="DeepSeek V4 Flash"
+              ;;
+            glm-5p2)
+              model_id="accounts/fireworks/models/glm-5p2"
+              model_label="glm-5p2"
+              display_name="GLM 5.2"
+              ;;
+            *)
+              echo "unsupported Fireworks backend: $BACKEND" >&2
+              exit 1
+              ;;
+          esac
+          {
+            echo "model_id=$model_id"
+            echo "model_label=$model_label"
+            echo "display_name=$display_name"
+          } >> "$GITHUB_OUTPUT"
+          echo "Resolved Fireworks model: $display_name ($model_id)"
 
       # Verify the writer's required output directory exists. The writer
       # raises SystemExit if research/generative/ is missing, so failing
@@ -1597,32 +1629,31 @@ jobs:
         env: *claude_env
         with: *claude_with
 
-      # ---- DeepSeek (via Fireworks) backend ---------------------------------
+      # ---- Fireworks backends ----------------------------------------------
       # claude-code-action redirected to Fireworks' Anthropic-compatible
-      # endpoint, serving DeepSeek V4 Flash. Mirrors the env-var shape in the
-      # hourly-twitter.yml deepseek-claude-code backend. The OAuth input is
-      # required by the action schema but ignored by the CLI when
-      # ANTHROPIC_BASE_URL is set. The direct DeepSeek API is no longer used.
-      # The writer records --model deepseek-v4-flash (the served model).
-      - name: Run Generative Research (DeepSeek V4 Flash via Fireworks, attempt 1)
-        if: steps.params.outputs.backend == 'deepseek-v4-flash'
+      # endpoint. The OAuth input is required by the action schema but ignored
+      # by the CLI when ANTHROPIC_BASE_URL is set. The writer records the
+      # resolved model label from the selected backend.
+      - name: Run Generative Research (Fireworks, attempt 1)
+        if: steps.fireworks.outputs.model_id != ''
         id: gen-deepseek
         continue-on-error: true
         timeout-minutes: 90
         uses: anthropics/claude-code-action@v1
         env: &deepseek_v4_flash_env
           # Redirect Claude Code CLI to Fireworks' Anthropic-compatible endpoint,
-          # which serves DeepSeek V4 Flash. Base URL omits /v1 — the client
-          # appends /v1/messages. The direct DeepSeek API is no longer used
-          # (billing/credits). Every model slot uses the full Fireworks model id.
+          # whose base URL omits /v1 — the client appends /v1/messages. Every
+          # model slot uses the full Fireworks model id.
           # See https://docs.fireworks.ai/tools-sdks/anthropic-compatibility
           ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
           ANTHROPIC_AUTH_TOKEN: ${{ secrets.FIREWORKS_API_KEY }}
-          ANTHROPIC_MODEL: accounts/fireworks/models/deepseek-v4-flash
-          ANTHROPIC_DEFAULT_OPUS_MODEL: accounts/fireworks/models/deepseek-v4-flash
-          ANTHROPIC_DEFAULT_SONNET_MODEL: accounts/fireworks/models/deepseek-v4-flash
-          ANTHROPIC_DEFAULT_HAIKU_MODEL: accounts/fireworks/models/deepseek-v4-flash
-          CLAUDE_CODE_SUBAGENT_MODEL: accounts/fireworks/models/deepseek-v4-flash
+          ANTHROPIC_MODEL: ${{ steps.fireworks.outputs.model_id }}
+          ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.fireworks.outputs.model_id }}
+          ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.fireworks.outputs.model_id }}
+          ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.fireworks.outputs.model_id }}
+          CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.fireworks.outputs.model_id }}
+          FIREWORKS_MODEL_LABEL: ${{ steps.fireworks.outputs.model_label }}
+          FIREWORKS_DISPLAY_NAME: ${{ steps.fireworks.outputs.display_name }}
           CLAUDE_CODE_EFFORT_LEVEL: max
           # Security: GEN_TOPIC / GEN_PROMPT / GEN_TAGS are NOT in this env
           # block (same defense as the Claude backend step above). The agent
@@ -1650,7 +1681,7 @@ jobs:
           claude_args: |
             --model opus --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
-            You are a deep-research analyst running on DeepSeek V4 Flash (via Fireworks),
+            You are a deep-research analyst running on the selected Fireworks backend,
             writing a COMPREHENSIVE, analyst-grade HTML article on the
             topic supplied by the user. Reason from first principles —
             challenge weak claims rather than echo them. Depth is measured
@@ -1687,7 +1718,7 @@ jobs:
             (workflow-controlled, not user input); use only $GEN_DRAFT for
             compile checks and writer input.
 
-            RECOVERY MODE. This workflow may retry DeepSeek up to two times
+            RECOVERY MODE. This workflow may retry this Fireworks backend up to two times
             if the Anthropic-compatible socket drops before the writer commits
             an article. At the start, check whether $GEN_DRAFT already exists
             from an earlier attempt in this same workflow run. If it exists,
@@ -2689,7 +2720,7 @@ jobs:
                     --tags "$(cat .gen-input/tags.txt)" \
                     --source "$GEN_SOURCE" \
                     --prompt "$(cat .gen-input/prompt.txt)" \
-                    --model deepseek-v4-flash \
+                    --model "$FIREWORKS_MODEL_LABEL" \
                     --cite-density-min 10 --refs-min 20 \
                     --qsanity \
                     --html-body "$GEN_DRAFT"
@@ -2701,7 +2732,7 @@ jobs:
                     --tags "$(cat .gen-input/tags.txt)" \
                     --source "$GEN_SOURCE" \
                     --prompt "$(cat .gen-input/prompt.txt)" \
-                    --model deepseek-v4-flash \
+                    --model "$FIREWORKS_MODEL_LABEL" \
                     --cite-density-min 10 --refs-min 20 \
                     --qsanity \
                     --html-body "$GEN_DRAFT"
@@ -2713,8 +2744,8 @@ jobs:
             - If validation fails, fix the HTML and retry the same Bash
               invocation; do not work around the validator.
 
-      - name: Inspect DeepSeek attempt 1
-        if: steps.params.outputs.backend == 'deepseek-v4-flash'
+      - name: Inspect Fireworks attempt 1
+        if: steps.fireworks.outputs.model_id != ''
         id: deepseek-attempt-1
         env:
           PRE_SHA: ${{ steps.pre.outputs.sha }}
@@ -2744,7 +2775,7 @@ jobs:
 
           if [ -n "$RETRY_REASON" ]; then
             RETRY=true
-            echo "::warning::DeepSeek attempt 1 did not produce a publishable article ($RETRY_REASON); retrying (1/2)."
+            echo "::warning::Fireworks attempt 1 did not produce a publishable article ($RETRY_REASON); retrying (1/2)."
             echo "Cleaning tracked and untracked repository artifacts from the incomplete attempt before retry."
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative
@@ -2755,9 +2786,9 @@ jobs:
             rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
             rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
           elif [ "$OUTCOME" = "failure" ]; then
-            echo "::warning::DeepSeek attempt 1 reported failure, but an article commit exists; continuing to publish that output."
+            echo "::warning::Fireworks attempt 1 reported failure, but an article commit exists; continuing to publish that output."
           else
-            echo "DeepSeek attempt 1 outcome: $OUTCOME"
+            echo "Fireworks attempt 1 outcome: $OUTCOME"
           fi
 
           {
@@ -2767,7 +2798,7 @@ jobs:
             echo "retry=$RETRY"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Run Generative Research (DeepSeek V4 Flash via Fireworks, retry 1)
+      - name: Run Generative Research (Fireworks, retry 1)
         if: steps.deepseek-attempt-1.outputs.retry == 'true'
         id: gen-deepseek-retry
         continue-on-error: true
@@ -2776,7 +2807,7 @@ jobs:
         env: *deepseek_v4_flash_env
         with: *deepseek_v4_flash_with
 
-      - name: Inspect DeepSeek retry 1
+      - name: Inspect Fireworks retry 1
         if: steps.deepseek-attempt-1.outputs.retry == 'true'
         id: deepseek-retry-1
         env:
@@ -2807,7 +2838,7 @@ jobs:
 
           if [ -n "$RETRY_REASON" ]; then
             RETRY=true
-            echo "::warning::DeepSeek retry 1 did not produce a publishable article ($RETRY_REASON); retrying (2/2)."
+            echo "::warning::Fireworks retry 1 did not produce a publishable article ($RETRY_REASON); retrying (2/2)."
             echo "Cleaning tracked and untracked repository artifacts from the incomplete retry before the final retry."
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative
@@ -2818,9 +2849,9 @@ jobs:
             rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
             rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
           elif [ "$OUTCOME" = "failure" ]; then
-            echo "::warning::DeepSeek retry 1 reported failure, but an article commit exists; continuing to publish that output."
+            echo "::warning::Fireworks retry 1 reported failure, but an article commit exists; continuing to publish that output."
           else
-            echo "DeepSeek retry 1 outcome: $OUTCOME"
+            echo "Fireworks retry 1 outcome: $OUTCOME"
           fi
 
           {
@@ -2830,7 +2861,7 @@ jobs:
             echo "retry=$RETRY"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Run Generative Research (DeepSeek V4 Flash via Fireworks, retry 2)
+      - name: Run Generative Research (Fireworks, retry 2)
         if: steps.deepseek-retry-1.outputs.retry == 'true'
         id: gen-deepseek-retry-2
         continue-on-error: true
@@ -3321,10 +3352,10 @@ jobs:
             -H "Idempotency-Key: $(cat "$HOOKER_IDEMPOTENCY_PATH")" \
             --data-binary "@$HOOKER_PAYLOAD_PATH"
 
-      - name: Fail DeepSeek run without article
-        if: always() && steps.params.outputs.backend == 'deepseek-v4-flash' && steps.outfile.outputs.has_file != 'true'
+      - name: Fail Fireworks run without article
+        if: always() && steps.fireworks.outputs.model_id != '' && steps.outfile.outputs.has_file != 'true'
         run: |
-          echo "::error::DeepSeek did not produce an article after the two-retry policy."
+          echo "::error::Fireworks backend did not produce an article after the two-retry policy."
           echo "Attempt 1 outcome: ${{ steps.gen-deepseek.outcome }}"
           echo "Retry 1 outcome: ${{ steps.gen-deepseek-retry.outcome }}"
           echo "Retry 2 outcome: ${{ steps.gen-deepseek-retry-2.outcome }}"

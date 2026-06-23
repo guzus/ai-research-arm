@@ -1,12 +1,13 @@
 # Generative Research Backends
 
-`generative-research.yml` supports two model backends for the same deep
+`generative-research.yml` supports these model backends for the same deep
 research pipeline:
 
 | Dispatch value | Served model | Auth path | Notes |
 |---|---|---|---|
 | `claude` | `claude-opus-4-8` | `CLAUDE_CODE_OAUTH_TOKEN` | Default for manual and issue-triggered generative research. Native Anthropic Claude Code path. The workflow pins `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-8`, so the Claude Code `opus` alias resolves to Opus 4.8 for this lane. |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
+| `glm-5p2` | `GLM 5.2` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional Fireworks backend for GLM 5.2. Routes through `accounts/fireworks/models/glm-5p2` and records `glm-5p2` in article metadata. Uses the same retry, quality-gate, verifier, methodology-artifact, and safe-push path as `deepseek-v4-flash`. |
 
 ## Local Oracle / GPT-5.5 Pro
 
@@ -124,9 +125,9 @@ Preview the bundle without sending it to a model:
 uv run python scripts/run_generative_research_oracle.py "Topic" --oracle-dry-run
 ```
 
-The DeepSeek path mirrors the `deepseek-claude-code` backend in
-`.github/workflows/hourly-twitter.yml` — both route through Fireworks'
-Anthropic-compatible endpoint (the direct DeepSeek API is retired):
+The Fireworks paths route through Fireworks' Anthropic-compatible endpoint
+(the direct DeepSeek API is retired). `generative-research.yml` resolves the
+model id from the dispatch backend:
 
 ```yaml
 ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
@@ -138,7 +139,10 @@ ANTHROPIC_DEFAULT_HAIKU_MODEL: accounts/fireworks/models/deepseek-v4-flash
 CLAUDE_CODE_SUBAGENT_MODEL: accounts/fireworks/models/deepseek-v4-flash
 ```
 
-## Comparing Claude And DeepSeek
+For GLM 5.2, the same env slots are set to
+`accounts/fireworks/models/glm-5p2`.
+
+## Comparing Backends
 
 Use the same topic and distinct slugs. The topic drives the prompt and
 prior-context lookup; the slug only keeps artifacts separate.
@@ -154,6 +158,12 @@ gh workflow run generative-research.yml \
 
 gh workflow run generative-research.yml \
   -f topic="$TOPIC" \
+  -f slug="qa-glm-5p2-power-bottlenecks" \
+  -f backend=glm-5p2 \
+  -f tags="qa,comparison,glm-5p2"
+
+gh workflow run generative-research.yml \
+  -f topic="$TOPIC" \
   -f slug="qa-claude-power-bottlenecks" \
   -f backend=claude \
   -f tags="qa,comparison,claude"
@@ -163,16 +173,16 @@ Both runs execute the same writer contract, ARA DSL validation,
 design gates, quality report, commit writer, and push/rebase logic.
 The expected difference is the model backend:
 
-- DeepSeek (via Fireworks): Anthropic-compatible Fireworks endpoint, `deepseek-v4-flash`
-  metadata in `research/generative/index.json`. This path has a longer
-  action timeout because the Anthropic shim plus large sub-agent waves can
-  run slower than the native Claude path. The workflow makes the first
-  DeepSeek attempt recoverable: if Claude Code returns a transient API/socket
-  error before the writer commits a generated HTML file, the job cleans any
-  partial repository artifacts and retries up to two times. Draft recovery is
-  limited to the workflow's run-scoped `$GEN_DRAFT` path, so a self-hosted
-  runner cannot reuse stale `/tmp/gen-research*.ara.md` content from another
-  backend or run.
+- Fireworks (`deepseek-v4-flash` or `glm-5p2`): Anthropic-compatible
+  Fireworks endpoint, backend-specific metadata in
+  `research/generative/index.json`. This path has a longer action timeout
+  because the Anthropic shim plus large sub-agent waves can run slower than
+  the native Claude path. The workflow makes the first Fireworks attempt
+  recoverable: if Claude Code returns a transient API/socket error before the
+  writer commits a generated HTML file, the job cleans any partial repository
+  artifacts and retries up to two times. Draft recovery is limited to the
+  workflow's run-scoped `$GEN_DRAFT` path, so a self-hosted runner cannot
+  reuse stale `/tmp/gen-research*.ara.md` content from another backend or run.
 - Claude: native Anthropic endpoint, `claude-opus-4-8` metadata in
   `research/generative/index.json`.
 
