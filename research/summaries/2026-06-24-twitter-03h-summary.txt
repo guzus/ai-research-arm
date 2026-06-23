@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-06-24 03:54 UTC
+
+CYCLE: Anthropic breaks its product silence (Claude Tag) but not its model silence; release calendar slips.
+
+TOP STORIES:
+• Anthropic ships Claude Tag — a persistent Claude "teammate" in Slack, beta for Enterprise/Team [✓]
+• Model calendar slips: GPT-5.6 to mid-July, Gemini 3.5 Pro held, "Bidi" voice imminent, Sonnet 5 in enterprise early-access [⚠]
+
+WATCH: Official OpenAI date for GPT-5.6/Bidi, and any Anthropic word on a Sonnet 5 EAP or Fable 5.
+
+Full update on GitHub.
