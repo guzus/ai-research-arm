@@ -1,0 +1,9 @@
+Speaker 1: Monday, June twenty-third, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI dropped a full cyber stack today — GPT five point five Cyber, Codex Security, and a program called Patch the Planet, all shipped together.
+Speaker 1: The benchmark number: GPT five point five Cyber scores eighty-five point six percent on CyberGym, which is state of the art on that eval.
+Speaker 2: Meanwhile Sakana AI launched Fugu, an orchestration router they're pitching as Fable-class performance without the export control headaches.
+Speaker 1: On the hardware side, Micron is now Anthropic's primary memory supplier and they put money into the Series H round. The stock hit a record on that news.
+Speaker 2: [dramatic_pause] Worth noting that Fable five and Mythos five are still dark — Anthropic has been silent since June eighteenth.
+Speaker 1: Some quick numbers on funding: SpaceX's compute deal with Reflection landed at [emphasis]six point three billion dollars[/emphasis], and Groq closed [emphasis]six hundred fifty million dollars[/emphasis] in a new raise.
+Speaker 2: [high_energy] The thread everyone is in right now is GLM five point two versus Opus — GLM is number one on open-weights GDPval-AA with a fifteen twenty-four Elo score, four hundred forty-seven points on Hacker News and three hundred comments.
+Speaker 1: That's your ARA broadcast — full digest on GitHub.
