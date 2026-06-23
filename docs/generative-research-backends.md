@@ -151,6 +151,12 @@ For targeted debugging, dispatch with `debug_full_output=true` to expose the
 Fireworks Claude Code transcript in the Actions log. Keep it off for routine
 runs because full tool output can include fetched page bodies and draft text.
 
+The Fireworks retry gate reads the Claude Code execution transcript and prints
+short API-error annotations in the normal Actions log. Provider/account errors
+that retries cannot fix (`400`, `401`, `402`, `403`, `404`, `412`) stop
+immediately; transient statuses such as a lone `429` still use the existing
+retry path.
+
 ## Comparing Backends
 
 Use the same topic and distinct slugs. The topic drives the prompt and

@@ -2768,6 +2768,7 @@ jobs:
         env:
           PRE_SHA: ${{ steps.pre.outputs.sha }}
           OUTCOME: ${{ steps.gen-deepseek.outcome }}
+          EXECUTION_FILE: ${{ steps.gen-deepseek.outputs.execution_file }}
         run: |
           set -euo pipefail
           HEAD_SHA=$(git rev-parse HEAD)
@@ -2783,6 +2784,18 @@ jobs:
             HAS_VERIFIER=true
           fi
 
+          CLAUDE_NON_RETRYABLE=false
+          CLAUDE_ERROR_STATUS=""
+          if [ -n "${EXECUTION_FILE:-}" ] && [ -f "$EXECUTION_FILE" ]; then
+            SUMMARY_ENV="${RUNNER_TEMP:-/tmp}/claude-fireworks-attempt-1.env"
+            uv run python scripts/summarize_claude_execution.py "$EXECUTION_FILE" \
+              --github-annotation warning \
+              --github-output "$GITHUB_OUTPUT" \
+              --env-output "$SUMMARY_ENV"
+            # shellcheck disable=SC1090
+            . "$SUMMARY_ENV"
+          fi
+
           RETRY=false
           RETRY_REASON=""
           if [ "$HAS_FILE" != "true" ]; then
@@ -2792,17 +2805,21 @@ jobs:
           fi
 
           if [ -n "$RETRY_REASON" ]; then
-            RETRY=true
-            echo "::warning::Fireworks attempt 1 did not produce a publishable article ($RETRY_REASON); retrying (1/2)."
-            echo "Cleaning tracked and untracked repository artifacts from the incomplete attempt before retry."
-            git reset --hard "$PRE_SHA"
-            git clean -fd -- research/generative
-            # Drop stale verifier- and red-team-findings JSON so the
-            # retry's audit can't compare new article body against old
-            # claims (verifier) or old contradictions (red-team).
-            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
-            rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
-            rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
+            if [ "$CLAUDE_NON_RETRYABLE" = "true" ]; then
+              echo "::error::Fireworks attempt 1 hit non-retryable Claude Code/API status ${CLAUDE_ERROR_STATUS:-unknown}; not retrying."
+            else
+              RETRY=true
+              echo "::warning::Fireworks attempt 1 did not produce a publishable article ($RETRY_REASON); retrying (1/2)."
+              echo "Cleaning tracked and untracked repository artifacts from the incomplete attempt before retry."
+              git reset --hard "$PRE_SHA"
+              git clean -fd -- research/generative
+              # Drop stale verifier- and red-team-findings JSON so the
+              # retry's audit can't compare new article body against old
+              # claims (verifier) or old contradictions (red-team).
+              rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+              rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+              rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
+            fi
           elif [ "$OUTCOME" = "failure" ]; then
             echo "::warning::Fireworks attempt 1 reported failure, but an article commit exists; continuing to publish that output."
           else
@@ -2813,6 +2830,8 @@ jobs:
             echo "outcome=$OUTCOME"
             echo "has_file=$HAS_FILE"
             echo "has_verifier=$HAS_VERIFIER"
+            echo "claude_non_retryable=$CLAUDE_NON_RETRYABLE"
+            echo "claude_error_status=$CLAUDE_ERROR_STATUS"
             echo "retry=$RETRY"
           } >> "$GITHUB_OUTPUT"
 
@@ -2831,6 +2850,7 @@ jobs:
         env:
           PRE_SHA: ${{ steps.pre.outputs.sha }}
           OUTCOME: ${{ steps.gen-deepseek-retry.outcome }}
+          EXECUTION_FILE: ${{ steps.gen-deepseek-retry.outputs.execution_file }}
         run: |
           set -euo pipefail
           HEAD_SHA=$(git rev-parse HEAD)
@@ -2846,6 +2866,18 @@ jobs:
             HAS_VERIFIER=true
           fi
 
+          CLAUDE_NON_RETRYABLE=false
+          CLAUDE_ERROR_STATUS=""
+          if [ -n "${EXECUTION_FILE:-}" ] && [ -f "$EXECUTION_FILE" ]; then
+            SUMMARY_ENV="${RUNNER_TEMP:-/tmp}/claude-fireworks-retry-1.env"
+            uv run python scripts/summarize_claude_execution.py "$EXECUTION_FILE" \
+              --github-annotation warning \
+              --github-output "$GITHUB_OUTPUT" \
+              --env-output "$SUMMARY_ENV"
+            # shellcheck disable=SC1090
+            . "$SUMMARY_ENV"
+          fi
+
           RETRY=false
           RETRY_REASON=""
           if [ "$HAS_FILE" != "true" ]; then
@@ -2855,17 +2887,21 @@ jobs:
           fi
 
           if [ -n "$RETRY_REASON" ]; then
-            RETRY=true
-            echo "::warning::Fireworks retry 1 did not produce a publishable article ($RETRY_REASON); retrying (2/2)."
-            echo "Cleaning tracked and untracked repository artifacts from the incomplete retry before the final retry."
-            git reset --hard "$PRE_SHA"
-            git clean -fd -- research/generative
-            # Drop stale verifier- and red-team-findings JSON so the
-            # final retry's audit can't compare new article body
-            # against old claims or old contradictions.
-            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
-            rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
-            rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
+            if [ "$CLAUDE_NON_RETRYABLE" = "true" ]; then
+              echo "::error::Fireworks retry 1 hit non-retryable Claude Code/API status ${CLAUDE_ERROR_STATUS:-unknown}; not retrying."
+            else
+              RETRY=true
+              echo "::warning::Fireworks retry 1 did not produce a publishable article ($RETRY_REASON); retrying (2/2)."
+              echo "Cleaning tracked and untracked repository artifacts from the incomplete retry before the final retry."
+              git reset --hard "$PRE_SHA"
+              git clean -fd -- research/generative
+              # Drop stale verifier- and red-team-findings JSON so the
+              # final retry's audit can't compare new article body
+              # against old claims or old contradictions.
+              rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+              rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+              rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
+            fi
           elif [ "$OUTCOME" = "failure" ]; then
             echo "::warning::Fireworks retry 1 reported failure, but an article commit exists; continuing to publish that output."
           else
@@ -2876,6 +2912,8 @@ jobs:
             echo "outcome=$OUTCOME"
             echo "has_file=$HAS_FILE"
             echo "has_verifier=$HAS_VERIFIER"
+            echo "claude_non_retryable=$CLAUDE_NON_RETRYABLE"
+            echo "claude_error_status=$CLAUDE_ERROR_STATUS"
             echo "retry=$RETRY"
           } >> "$GITHUB_OUTPUT"
 
@@ -3372,11 +3410,22 @@ jobs:
 
       - name: Fail Fireworks run without article
         if: always() && steps.fireworks.outputs.model_id != '' && steps.outfile.outputs.has_file != 'true'
+        env:
+          EXECUTION_FILE_1: ${{ steps.gen-deepseek.outputs.execution_file }}
+          EXECUTION_FILE_2: ${{ steps.gen-deepseek-retry.outputs.execution_file }}
+          EXECUTION_FILE_3: ${{ steps.gen-deepseek-retry-2.outputs.execution_file }}
         run: |
-          echo "::error::Fireworks backend did not produce an article after the two-retry policy."
+          echo "::error::Fireworks backend did not produce an article."
           echo "Attempt 1 outcome: ${{ steps.gen-deepseek.outcome }}"
           echo "Retry 1 outcome: ${{ steps.gen-deepseek-retry.outcome }}"
           echo "Retry 2 outcome: ${{ steps.gen-deepseek-retry-2.outcome }}"
+          for execution_file in "$EXECUTION_FILE_3" "$EXECUTION_FILE_2" "$EXECUTION_FILE_1"; do
+            if [ -n "${execution_file:-}" ] && [ -f "$execution_file" ]; then
+              uv run python scripts/summarize_claude_execution.py "$execution_file" \
+                --github-annotation error
+              break
+            fi
+          done
           exit 1
 
       # Security: HTML-escape the issue-derived topic before embedding in
