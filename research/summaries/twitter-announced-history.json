@@ -11054,5 +11054,26 @@
     "headline": "ANTHROPIC STILL SILENT SINCE JUNE 18 \u2014 FABLE 5 SUBSCRIPTION CLIFF UNRESOLVED, NO SONNET 5 OR OPUS-LIMIT RESET",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2069189688968265799"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-23 19:22 UTC",
+    "headline": "OPENAI 'BIDI 1' VOICE MODEL GETS FIRST HANDS-ON TESTS \u2014 SPEAKS OVER YOU, HANDLES INTERRUPTIONS, TRANSLATES IN REAL TIME",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2069331697615749530"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-23 19:22 UTC",
+    "headline": "'GPT-5.6 THIS WEEK' NARRATIVE DEFLATES \u2014 LEAK-WATCHERS NOW EXPECT VOICE MODEL FIRST, 5.6 SLIPS PAST 'THURSDAY' AGAIN",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2069351216648204757"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-23 19:22 UTC",
+    "headline": "GLM-5.2 GETS FIRST COUNTER-DATA: ~28% HALLUCINATION VS FABLE 5'S ~48%, BUT DECAYS TO ~74.8% OVER LONG MULTI-TURN CHATS",
+    "source": "@conanbr",
+    "url": "https://x.com/conanbr/status/2069363432953090530"
   }
 ]
