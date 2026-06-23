@@ -54,6 +54,14 @@ on:
         description: 'Comma-separated tags (optional)'
         required: false
         type: string
+      debug_full_output:
+        description: 'Fireworks debug only: show full Claude Code transcript in logs'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
 
 # Concurrency key. Earlier this interpolated the raw `inputs.topic` /
 # `twitter_url` free text into the group name. A long `/gen-research-route`
@@ -1682,6 +1690,7 @@ jobs:
           # .gen-input/*.txt instead.
           claude_args: |
             --model opus --max-turns 120 --allowedTools "Glob,Grep,Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(grep:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),Task,TodoWrite"
+          show_full_output: ${{ inputs.debug_full_output == 'true' }}
           prompt: |
             You are a deep-research analyst running on the selected Fireworks backend,
             writing a COMPREHENSIVE, analyst-grade HTML article on the

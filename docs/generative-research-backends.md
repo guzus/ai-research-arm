@@ -147,6 +147,9 @@ The Fireworks Anthropic-compatible endpoint does not support Claude server
 tools such as WebSearch/WebFetch. The Fireworks workflow path therefore
 keeps research on local tools: `scripts/research_search.py`,
 `scripts/source_cache.py`, `curl`, `pdftotext`, `bird`, `Glob`, and `Grep`.
+For targeted debugging, dispatch with `debug_full_output=true` to expose the
+Fireworks Claude Code transcript in the Actions log. Keep it off for routine
+runs because full tool output can include fetched page bodies and draft text.
 
 ## Comparing Backends
 
