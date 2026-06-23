@@ -2,12 +2,14 @@
 slug: sakana-ai
 title: Sakana AI
 type: entity
-aliases: ["Sakana AI", Sakana, Marlin, "Sakana Marlin"]
-tags: [ai-lab, japan, deep-research, agents, ab-mcts]
-description: Tokyo-based AI lab shipping Marlin — an autonomous "Ultra Deep Research" agent ("Virtual CSO") built on AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.
+aliases: ["Sakana AI", Sakana, Marlin, "Sakana Marlin", "Sakana Fugu", Fugu, "Fugu Ultra"]
+tags: [ai-lab, japan, deep-research, agents, ab-mcts, orchestration]
+description: Tokyo-based AI lab whose multi-model-orchestration thesis ships as Marlin (an autonomous "Ultra Deep Research" agent) and Sakana Fugu (an LLM-as-router that calls a swappable pool of frontier models) — a non-US entrant pitching orchestration as a workaround to the Fable 5 export freeze.
 created_at: 2026-06-16
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-06-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
+  - {title: "ARA model ticket — Sakana Fugu", path: research/models/tickets/sakana-fugu-2026-06.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
 ---
 
@@ -37,6 +39,23 @@ the increasingly crowded "deep research" agent category.
   what [[agentic-ai-security]] warns about — long-running autonomous systems
   need visible provenance, bounded tools, and verification that does not destroy
   task success.
+
+- **Sakana Fugu / Fugu Ultra — orchestration as the export-control workaround
+  (2026-06-22).** Sakana shipped **Fugu**, a single OpenAI-compatible API that is
+  *itself* an LLM trained to call a pool of other LLMs — an **orchestrator/router,
+  not a new frontier model** (independent reviewers stress the distinction). On
+  **SWE-Bench Pro**, **Fugu Ultra (73.7)** edges [[claude-opus-4-8|Opus 4.8]] (69.2),
+  GPT-5.5 (58.6) and Gemini 3.1 Pro (54.2) — but **trails the suspended
+  [[claude-fable-5|Fable 5]]** it cannot include. Sakana's own table claims it
+  exceeds Fable 5 on LiveCodeBench (93.2) and beats Mythos Preview on GPQA-D. Pricing
+  from **$5/$30 per 1M tokens**; subscriptions $20–$200/mo; **not in the EU/EEA** at
+  launch (`fugu-ultra-20260615` snapshot). It is explicitly pitched as Fable-class
+  capability "without export-control risk," making it the orchestration-thesis
+  counterpart to OpenAI's same-day [[openai|Daybreak]] launch. *Caveat:* a technical
+  critique (@eliebakouch) notes Fugu never reports token cost, capping any honest
+  parity claim. This is the cleanest validation yet of the lab's AB-MCTS bet — that
+  routing across many models beats scaling one — see [[openrouter]] and
+  [[open-weights]] (ARA digest 2026-06-23).
 
 ## Open questions
 

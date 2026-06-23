@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-06-15",
-      "timestamp": "2026-06-15T00:00:00Z",
+      "updated_at": "2026-06-23",
+      "timestamp": "2026-06-23T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -141,6 +141,7 @@
         "figure-ai",
         "gemini-3-5-flash",
         "gemma-4",
+        "micron",
         "microsoft",
         "minimax-m3",
         "nebius",
@@ -220,8 +221,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-21",
-      "timestamp": "2026-06-21T00:00:00Z",
+      "updated_at": "2026-06-23",
+      "timestamp": "2026-06-23T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -243,10 +244,12 @@
         "gemini-3-5-flash",
         "gemini-spark",
         "john-jumper",
+        "micron",
         "neocloud",
         "noam-shazeer",
         "open-weights",
         "openai",
+        "sakana-ai",
         "salesforce",
         "sk-telecom",
         "spacex",
@@ -272,6 +275,7 @@
         "gemini-spark",
         "gpt-5-6",
         "john-jumper",
+        "micron",
         "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
@@ -388,6 +392,7 @@
       "inbound": [
         "ai-capex",
         "anthropic",
+        "micron",
         "nvidia"
       ]
     },
@@ -445,8 +450,8 @@
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "description": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-06-21",
-      "timestamp": "2026-06-21T00:00:00Z",
+      "updated_at": "2026-06-23",
+      "timestamp": "2026-06-23T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -467,6 +472,7 @@
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openai",
+        "sakana-ai",
         "sk-telecom",
         "zhipu-glm-5-2"
       ],
@@ -481,9 +487,11 @@
         "gemini-3-5-flash",
         "gpt-5-6",
         "john-jumper",
+        "micron",
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openai",
+        "sakana-ai",
         "sk-telecom",
         "zhipu-glm-5-2"
       ]
@@ -523,6 +531,7 @@
         "claude-fable-5",
         "dynamic-workflows",
         "open-weights",
+        "sakana-ai",
         "zhipu-glm-5-2"
       ]
     },
@@ -973,8 +982,8 @@
       "summary": "OpenAI's most-anticipated unreleased frontier model — press-reported for ~2026-06-23 as a full standard/Mini/Pro family with a leaked ~1.5M-token context window, but unconfirmed by OpenAI (no system card, API string, or official date).",
       "description": "OpenAI's most-anticipated unreleased frontier model — press-reported for ~2026-06-23 as a full standard/Mini/Pro family with a leaked ~1.5M-token context window, but unconfirmed by OpenAI (no system card, API string, or official date).",
       "created_at": "2026-06-20",
-      "updated_at": "2026-06-21",
-      "timestamp": "2026-06-21T00:00:00Z",
+      "updated_at": "2026-06-23",
+      "timestamp": "2026-06-23T00:00:00Z",
       "file": "entities/gpt-5-6.md",
       "aliases": [
         "GPT-5.6",
@@ -1123,6 +1132,42 @@
       ],
       "inbound": [
         "open-weights"
+      ]
+    },
+    {
+      "slug": "micron",
+      "title": "Micron Technology",
+      "type": "entity",
+      "tags": [
+        "memory",
+        "hbm",
+        "dram",
+        "ai-infrastructure",
+        "supply-chain",
+        "anthropic"
+      ],
+      "summary": "US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round.",
+      "description": "US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round.",
+      "created_at": "2026-06-23",
+      "updated_at": "2026-06-23",
+      "timestamp": "2026-06-23T00:00:00Z",
+      "file": "entities/micron.md",
+      "aliases": [
+        "Micron",
+        "Micron Technology",
+        "MU",
+        "@MicronTech"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "broadcom",
+        "claude-fable-5",
+        "openai",
+        "sakana-ai"
+      ],
+      "inbound": [
+        "anthropic"
       ]
     },
     {
@@ -1474,6 +1519,7 @@
         "microsoft",
         "moonshot-kimi-k2-7-code",
         "openrouter",
+        "sakana-ai",
         "xiaomi-mimo-v2-5-pro",
         "zhipu-glm-5-2"
       ]
@@ -1491,8 +1537,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-20",
-      "timestamp": "2026-06-20T00:00:00Z",
+      "updated_at": "2026-06-23",
+      "timestamp": "2026-06-23T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -1530,6 +1576,7 @@
         "john-jumper",
         "lifescibench",
         "meta",
+        "micron",
         "microsoft",
         "moonshot-kimi-k2-7-code",
         "noam-shazeer",
@@ -1630,27 +1677,37 @@
         "japan",
         "deep-research",
         "agents",
-        "ab-mcts"
+        "ab-mcts",
+        "orchestration"
       ],
-      "summary": "Tokyo-based AI lab shipping Marlin — an autonomous \"Ultra Deep Research\" agent (\"Virtual CSO\") built on AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.",
-      "description": "Tokyo-based AI lab shipping Marlin — an autonomous \"Ultra Deep Research\" agent (\"Virtual CSO\") built on AB-MCTS multi-model reasoning — a non-US entrant into the deep-research category dominated by OpenAI/Google.",
+      "summary": "Tokyo-based AI lab whose multi-model-orchestration thesis ships as Marlin (an autonomous \"Ultra Deep Research\" agent) and Sakana Fugu (an LLM-as-router that calls a swappable pool of frontier models) — a non-US entrant pitching orchestration as a workaround to the Fable 5 export freeze.",
+      "description": "Tokyo-based AI lab whose multi-model-orchestration thesis ships as Marlin (an autonomous \"Ultra Deep Research\" agent) and Sakana Fugu (an LLM-as-router that calls a swappable pool of frontier models) — a non-US entrant pitching orchestration as a workaround to the Fable 5 export freeze.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-06-23",
+      "timestamp": "2026-06-23T00:00:00Z",
       "file": "entities/sakana-ai.md",
       "aliases": [
         "Sakana AI",
         "Sakana",
         "Marlin",
-        "Sakana Marlin"
+        "Sakana Marlin",
+        "Sakana Fugu",
+        "Fugu",
+        "Fugu Ultra"
       ],
       "outbound": [
         "agentic-ai-security",
+        "claude-fable-5",
+        "claude-opus-4-8",
         "dynamic-workflows",
+        "open-weights",
         "openai",
         "openrouter"
       ],
       "inbound": [
+        "anthropic",
+        "claude-fable-5",
+        "micron",
         "open-weights",
         "openrouter"
       ]
@@ -1862,8 +1919,8 @@
       "summary": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
       "description": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-06-21",
-      "timestamp": "2026-06-21T00:00:00Z",
+      "updated_at": "2026-06-23",
+      "timestamp": "2026-06-23T00:00:00Z",
       "file": "entities/zhipu-glm-5-2.md",
       "aliases": [
         "Zhipu GLM 5.2",
@@ -1899,6 +1956,7 @@
     "@anthropicai": "anthropic",
     "@cursor_ai": "cursor",
     "@michaeldell": "dell",
+    "@microntech": "micron",
     "@microsoft": "microsoft",
     "@nvidia": "nvidia",
     "@nvidianewsroom": "nvidia",
@@ -1991,6 +2049,8 @@
     "figure ai": "figure-ai",
     "figure robotics": "figure-ai",
     "figure-ai": "figure-ai",
+    "fugu": "sakana-ai",
+    "fugu ultra": "sakana-ai",
     "fusion api": "openrouter",
     "gemini 3.2 flash": "gemini-3-5-flash",
     "gemini 3.5 flash": "gemini-3-5-flash",
@@ -2044,6 +2104,8 @@
     "meta": "meta",
     "meta ai": "meta",
     "meta platforms": "meta",
+    "micron": "micron",
+    "micron technology": "micron",
     "microsoft": "microsoft",
     "microsoft ai": "microsoft",
     "microsoft corporation": "microsoft",
@@ -2056,6 +2118,7 @@
     "moonshot kimi k2.7 code": "moonshot-kimi-k2-7-code",
     "moonshot-kimi-k2-7-code": "moonshot-kimi-k2-7-code",
     "msft": "microsoft",
+    "mu": "micron",
     "mythos 5": "claude-fable-5",
     "mythos-class": "claude-fable-5",
     "nbis": "nebius",
@@ -2093,6 +2156,7 @@
     "sacramento ai policy": "california-ai-regulation",
     "sakana": "sakana-ai",
     "sakana ai": "sakana-ai",
+    "sakana fugu": "sakana-ai",
     "sakana marlin": "sakana-ai",
     "sakana-ai": "sakana-ai",
     "salesforce": "salesforce",
@@ -2124,6 +2188,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-23",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-23 digest (June 22 ends the launch drought with three dated shipments framed around Anthropic's export freeze: OpenAI expands Daybreak, Micron becomes Anthropic's primary memory supplier + Series H participant, Sakana ships Fugu orchestrator; GLM-5.2 hardens into multi-board agentic data; GPT-5.6 window slips to ~Thursday June 25 with a surprise GPT-Bidi-1 voice model). Created 1 (micron — US memory maker, Anthropic's primary HBM/DRAM/SSD supplier + co-design pact + first named Series H participant, stock +5.5% to record), updated 7 (openai — full GPT-5.5-Cyber/Codex Security/\"Patch the Planet\" Daybreak expansion as counter-posture to Mythos \"too powerful to ship\"; anthropic — Micron supply+Series H pact, June 22 subscription cliff passes with Fable dark, silent since June 18; claude-fable-5 — cliff passes still suspended, rivals launch around the outage, Five Eyes \"months not years\" warning; sakana-ai — Fugu/Fugu Ultra orchestration router edges Opus 4.8 on SWE-Bench Pro but trails suspended Fable 5, orchestration-as-export-workaround; zhipu-glm-5-2 — #3 overall/#1 open-weights GDPval-AA 1524 Elo, 2nd Game Dev Arena, #1 open-weights Intelligence Index 51, \"DeepSeek moment for agents\"; gpt-5-6 — window to ~Thursday June 25, surprise GPT-Bidi-1 bidirectional voice model, June 22-28 ~90-100%; agentic-ai-security — Daybreak gated-defender vs too-powerful-to-ship split + Five Eyes offensive-cyber warning)."
+    },
     {
       "date": "2026-06-21",
       "op": "ingest",
@@ -2218,11 +2287,6 @@
       "date": "2026-05-29",
       "op": "ingest",
       "summary": "Ingested 2026-05-29 digest. Created 6 (claude-opus-4-8, cognition-ai, liquid-ai entities; dynamic-workflows, agent-lifespan-engineering concepts; agentic-ai-security theme), updated 2 (anthropic — Opus 4.8 ship + Series H close at $65B/$965B; ai-capex — frontier-lab capital paragraph)."
-    },
-    {
-      "date": "2026-05-24",
-      "op": "seed",
-      "summary": "Seeded 6 pages from ARA digests (2026-05-20/21), the CoreWeave generative-research article, and model tickets: entities nebius, anthropic, coreweave, gemini-3-5-flash; concept neocloud; theme ai-capex. Cross-linked via [[wikilinks]]."
     }
   ]
 }

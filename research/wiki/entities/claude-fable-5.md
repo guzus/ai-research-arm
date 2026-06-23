@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.
 created_at: 2026-06-10
-timestamp: 2026-06-21T00:00:00Z
+timestamp: 2026-06-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
@@ -207,6 +208,22 @@ every feed on launch day.
   suspended), with Anthropic saying it aims to restore Fable 5 as a standard
   subscription feature after June 22 "when capacity allows." See [[anthropic]],
   [[federal-ai-policy]] and [[open-weights]] (ARA digest 2026-06-21).
+
+- **The subscription cliff passes with the model still dark; rivals launch
+  *around* the outage (2026-06-23).** The **June 22 subscription cliff arrived and
+  passed**: Fable 5 was **removed from Pro/Max/Team/Enterprise plans** (moot while
+  suspended), and [[anthropic]]'s feed **has been silent since June 18**, with the
+  lab still saying it aims to restore access "as quickly as possible." The day's
+  shipments framed themselves *around* the freeze: OpenAI's [[openai|Daybreak]]
+  cyber expansion (full GPT-5.5-Cyber, "Patch the Planet") counter-postures against
+  the Mythos "too powerful to ship" narrative, and Japan's
+  **[[sakana-ai|Sakana Fugu]]** orchestrator explicitly pitches Fable-class
+  capability "without export-control risk" — yet Fugu Ultra's own table still **trails
+  the suspended Fable 5** it cannot route to. **Five Eyes cyber agencies** warned
+  (via The Guardian) that models capable of escalating cyberattacks are "months, not
+  years" away, tying the warning directly to the US block on Fable/Mythos. See
+  [[anthropic]], [[federal-ai-policy]], [[agentic-ai-security]] and [[open-weights]]
+  (ARA digest 2026-06-23).
 
 ## Open questions
 

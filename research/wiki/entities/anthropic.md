@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
 created_at: 2026-05-24
-timestamp: 2026-06-21T00:00:00Z
+timestamp: 2026-06-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
@@ -415,6 +416,23 @@ Four developments through May 2026 put Anthropic at the center of the field:
   sector's **highest paid-conversion rate (~13%)**, a quality-of-revenue counter to
   its smaller consumer footprint. Treat as a single-vendor analytics estimate
   (app/usage panel, not audited financials) (ARA digest 2026-06-21).
+
+- **Micron supply pact + a named Series H participant; the subscription cliff
+  passes with Fable still dark (2026-06-23).** A multi-year agreement makes
+  **[[micron|Micron]] Anthropic's primary supplier** of HBM, DRAM and SSDs, paired
+  with a **co-design** relationship on AI-optimized memory/storage architecture and
+  an enterprise Claude rollout across Micron — and Micron **participated in
+  Anthropic's Series H** (terms undisclosed), the **first named participant** data
+  point on that ~$965B round. Micron stock rose **~5.5% to a record**. It is a
+  supply-side vote of confidence landing at the exact moment Anthropic's frontier
+  models sit suspended — and the day's launches frame *around* that outage: OpenAI's
+  [[openai|Daybreak]] cyber program and Japan's **[[sakana-ai|Sakana Fugu]]**
+  orchestrator both pitch themselves as "Fable-class without export-control risk,"
+  while Micron's deal bets on Anthropic's recovery. Meanwhile the **June 22
+  subscription cliff passed**: [[claude-fable-5|Fable 5]] left Pro/Max/Team/Enterprise
+  plans (moot while suspended), **@AnthropicAI has been silent since June 18**, and
+  Anthropic still says it aims to restore access "as quickly as possible." See
+  [[claude-fable-5]], [[federal-ai-policy]] and [[ai-capex]] (ARA digest 2026-06-23).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

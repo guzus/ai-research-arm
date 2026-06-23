@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-timestamp: 2026-06-20T00:00:00Z
+timestamp: 2026-06-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
@@ -308,6 +309,21 @@ materially reshape how the lab is positioned heading into its IPO window:
   lead** (Axios says OpenAI expects to **unveil its first hardware device this
   year**), while **Barret Zoph departed** after five months as head of enterprise
   AI sales. See [[gpt-5-6]] and [[federal-ai-policy]] (ARA digest 2026-06-20).
+- **"Daybreak" expands — full GPT-5.5-Cyber, Codex Security, "Patch the Planet"
+  (2026-06-23).** OpenAI shipped the **full GPT-5.5-Cyber** model — a permissive
+  cyber-tuned GPT-5.5 variant scoring **85.6% on CyberGym** (vs 81.8–81.9% for the
+  standard/early model) — alongside a **Codex Security** plugin that turns Codex into
+  an enterprise app-security platform (find/validate/fix vulnerabilities, plus
+  "Record & Replay" demo-to-automation), a gated **Cyber Partner Program**, and
+  **"Patch the Planet"** — an open-source mass-remediation push with **Trail of Bits +
+  HackerOne** and 30+ committed projects. Sam Altman framed it as putting the
+  strongest cyber AI in the hands of "trusted defenders" only — a deliberate
+  counter-posture to [[anthropic]]'s Mythos "too powerful to ship" narrative, the
+  exact day [[claude-fable-5|Fable 5 / Mythos 5]] stay export-suspended. *Caveats:*
+  the "beats Mythos on CyberGym" line is OpenAI's own single-vendor chart, and the
+  much-relayed concrete CVE list (OpenSSH/GnuTLS/PHP/Chromium) traces to a
+  non-official relay, not OpenAI's posts. See [[agentic-ai-security]] and
+  [[federal-ai-policy]] (ARA digest 2026-06-23).
 - **Health + chemistry capability prints (2026-06-19).** OpenAI says a **GPT-5.5
   Instant health upgrade** cuts error rate in health statements ~**71%** and
   "beats doctor-written answers" on physician-informed evals; two Nature studies

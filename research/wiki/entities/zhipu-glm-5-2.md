@@ -6,8 +6,9 @@ aliases: ["Zhipu GLM 5.2", "Zhipu GLM-5.2", "GLM 5.2", "GLM-5.2", "Z.ai GLM-5.2"
 tags: [open-weights, china, coding, long-context, frontier-model]
 description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.
 created_at: 2026-06-17
-timestamp: 2026-06-21T00:00:00Z
+timestamp: 2026-06-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
@@ -100,6 +101,19 @@ max/high "thinking" modes.
   Codex because GLM "cannot see"). **Caveats hold:** design-only board, no vision,
   and senior devs note self-hosting still doesn't pencil out vs. a $200 Codex plan —
   see [[open-weights]] (ARA digest 2026-06-21).
+
+- **Hardened from thinkpiece into multi-board data (2026-06-23).** GLM-5.2's
+  agentic credentials firmed across several neutral boards in one cycle: a **#3
+  overall / #1 open-weights placement on GDPval-AA** (**1524 Elo**, level with
+  GPT-5.5 xhigh and the top open-weights model by a wide margin), a **2nd-place Game
+  Dev Arena** ranking (Elo 1368, inside [[claude-fable-5|Fable 5]]'s band), a **#1
+  open-weights score on Artificial Analysis's Intelligence Index (51)**, and it
+  became the **first open-weights model to run alphaXiv's autoresearch pipeline
+  end-to-end**. A widely-shared independent benchmark claim that GLM-5.2 beats
+  GPT-5.5 on multiple long-horizon coding tasks "for 1/6th the cost" anchored the
+  day's open-vs-closed discourse (@AndrewCurran_ Quote of the Day). It is now the
+  leading **"DeepSeek moment for agents"** candidate. **Caveat:** it still lacks
+  image understanding — see [[open-weights]] (ARA digest 2026-06-23).
 
 ## Open questions
 

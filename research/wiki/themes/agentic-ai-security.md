@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 description: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.
 created_at: 2026-05-29
-timestamp: 2026-06-15T00:00:00Z
+timestamp: 2026-06-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
@@ -157,6 +158,22 @@ the cycle:
   *right file* but **miss most of the critical lines within it** — a precision gap
   directly relevant to the blast-radius and auto-edit risks this theme tracks (see
   [[dynamic-workflows]]) (ARA digest 2026-06-15).
+
+- **The two cyber postures clarify — gated-defender vs. too-powerful-to-ship
+  (2026-06-23).** The theme's capability-misuse axis hardened into a strategic split.
+  [[openai]] expanded **Daybreak**: a **full GPT-5.5-Cyber** model (SOTA **85.6% on
+  CyberGym**), a **Codex Security** enterprise app-security plugin, a gated **Cyber
+  Partner Program**, and **"Patch the Planet"** — an open-source mass-remediation
+  push with **Trail of Bits + HackerOne** and 30+ projects. Altman framed it as
+  putting the strongest cyber AI in "trusted defenders'" hands only — an explicit
+  counter to [[anthropic]]'s Mythos "too powerful to ship" / export-suspended posture
+  ([[claude-fable-5]]). *Caveat:* the "beats Mythos on CyberGym" line is OpenAI's own
+  single-vendor chart, and the relayed CVE list (OpenSSH/GnuTLS/PHP/Chromium) traces
+  to a non-official relay. The same day, **Five Eyes cyber agencies** warned (via The
+  Guardian) that frontier models capable of **escalating cyberattacks are "months,
+  not years" away** — explicitly tying the warning to the US block on Fable/Mythos,
+  the clearest government statement yet that offensive-cyber capability is the live
+  edge of this theme. See [[federal-ai-policy]] (ARA digest 2026-06-23).
 
 ## Open questions
 - **Does [[dynamic-workflows]] make this worse?** Hundreds of parallel
