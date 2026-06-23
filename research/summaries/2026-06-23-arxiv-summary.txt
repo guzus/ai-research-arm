@@ -1,0 +1,12 @@
+arXiv Papers - 2026-06-23
+
+TOP 5 PAPERS:
+• Engineering Scaling Laws via Data Composition - data mix is a tunable knob that shifts the compute-optimal frontier toward data scaling.
+• NRT-Bench - multi-turn red-teaming pushes frontier LLM agents past safety limits in a simulated nuclear control room (8.7-12.1% failure).
+• Efficient Attention in Hybrid Architectures - the attention block, not just the SSM, sets long-context quality of hybrids.
+• LLM-as-an-Investigator - evidence-first diagnostic agent beats user-driven sycophancy by testing competing hypotheses.
+• Benchmarking AI Agents for Scientific Challenges - long-horizon, multi-tool science benchmark beyond web/coding tasks.
+
+CATEGORIES: NLP/LM 3, Multimodal 1, Agents & Reasoning 4, Safety 2
+
+Full report on GitHub.
