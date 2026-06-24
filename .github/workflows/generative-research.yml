@@ -140,6 +140,22 @@ jobs:
       - name: Install Python dependencies
         run: uv sync --frozen --all-extras
 
+      # The publish target is intentionally the triggering branch. This keeps
+      # workflow_dispatch tests on PR branches reviewable, while scheduled and
+      # issue-triggered runs still publish from the default branch. A manual
+      # dispatch from a tag is ambiguous for a writer workflow, so fail before
+      # any model/backend work starts.
+      - name: Resolve publish branch
+        id: publish-branch
+        run: |
+          set -euo pipefail
+          if [ "${GITHUB_REF_TYPE:-}" != "branch" ]; then
+            echo "::error::Generative research publishes commits and must run from a branch ref; got ref_type='${GITHUB_REF_TYPE:-unknown}' ref_name='${GITHUB_REF_NAME:-unknown}'. Re-run the workflow from main or a PR branch."
+            exit 1
+          fi
+          echo "branch=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          echo "publish branch: ${GITHUB_REF_NAME}"
+
       # Derive a unified set of parameters regardless of trigger source.
       # We pass issue title/body through `env:` so embedded backticks, quotes,
       # dollar signs, and newlines do not break the bash parser or enable
@@ -3267,10 +3283,12 @@ jobs:
         uses: ./.github/actions/safe-push
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          # Publish to the triggering branch. Running this workflow from
+          # `main` still publishes to production, while PR-branch test
+          # dispatches cannot bypass review by updating `main`.
+          branch: ${{ steps.publish-branch.outputs.branch }}
           max-attempts: '5'
           index-merge: 'true'
-          allow-divergent-ref: 'true'
 
       - name: Post results to issue
         if: always() && github.event_name == 'issues'

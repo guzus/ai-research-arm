@@ -137,11 +137,17 @@ Dispatch with:
 
 ```bash
 gh workflow run generative-research.yml \
+  --ref main \
   -f topic="$TOPIC" \
   -f slug="qa-codex-power-bottlenecks" \
   -f backend=codex \
   -f tags="qa,comparison,codex"
 ```
+
+Use `--ref <branch>` for a PR-branch smoke test. The generated article and
+index update publish back to that same branch; only runs dispatched from `main`
+publish to `main`. Dispatching from tags is rejected because the workflow
+writes commits and needs a branch target.
 
 Seed `CODEX_AUTH_JSON` once from a trusted machine:
 
