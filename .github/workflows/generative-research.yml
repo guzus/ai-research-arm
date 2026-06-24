@@ -11,7 +11,7 @@ name: Generative Research
 #
 # Backends, mutually exclusive at runtime:
 #   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-opus-4-8).
-#   * codex    — openai/codex-action@v1 with OPENAI_API_KEY scoped to the action.
+#   * codex    — Codex CLI signed in with ChatGPT-managed auth.json.
 #   * deepseek / glm-5p2 — same action, but redirected to Fireworks'
 #                Anthropic-compatible endpoint via ANTHROPIC_BASE_URL /
 #                ANTHROPIC_AUTH_TOKEN.
@@ -1653,8 +1653,41 @@ jobs:
         with: *claude_with
 
       # ---- Codex backend ---------------------------------------------------
-      # API-authenticated through openai/codex-action@v1. Keep OPENAI_API_KEY
-      # scoped to the action input; do not expose it as job env to repo code.
+      # ChatGPT-managed Codex auth. Seed auth.json from CODEX_AUTH_JSON only
+      # when missing so a persistent self-hosted runner can keep Codex's
+      # refreshed tokens between jobs. This uses the user's ChatGPT/Codex
+      # subscription entitlement, not OpenAI API billing.
+      - name: Bootstrap Codex ChatGPT auth
+        if: steps.params.outputs.backend == 'codex'
+        id: codex-auth
+        env:
+          CODEX_AUTH_JSON: ${{ secrets.CODEX_AUTH_JSON }}
+        run: |
+          set -euo pipefail
+          CODEX_HOME="${CODEX_HOME:-$HOME/.codex-ara}"
+          mkdir -p "$CODEX_HOME"
+          chmod 700 "$CODEX_HOME"
+
+          if [ ! -s "$CODEX_HOME/auth.json" ]; then
+            if [ -z "${CODEX_AUTH_JSON:-}" ]; then
+              echo "::error::CODEX_AUTH_JSON is not configured. Run 'codex login' on a trusted machine, verify auth_mode=chatgpt, and store ~/.codex/auth.json as this GitHub secret."
+              exit 1
+            fi
+            printf '%s' "$CODEX_AUTH_JSON" > "$CODEX_HOME/auth.json"
+            chmod 600 "$CODEX_HOME/auth.json"
+          fi
+
+          if ! jq -e '.auth_mode == "chatgpt" and ((.tokens.refresh_token // "") != "")' "$CODEX_HOME/auth.json" >/dev/null; then
+            echo "::error::CODEX_AUTH_JSON must be a file-backed ChatGPT Codex auth cache with auth_mode=chatgpt and a refresh token."
+            exit 1
+          fi
+
+          echo "home=$CODEX_HOME" >> "$GITHUB_OUTPUT"
+
+      - name: Install Codex CLI
+        if: steps.params.outputs.backend == 'codex'
+        run: npm install -g @openai/codex
+
       # This backend uses the same staged-input files, writer-owned commit, and
       # verifier/methodology artifact contract as the Claude/Fireworks paths.
       - name: Run Generative Research (Codex)
@@ -1662,7 +1695,6 @@ jobs:
         id: gen-codex
         continue-on-error: true
         timeout-minutes: 90
-        uses: openai/codex-action@v1
         env:
           # Security: GEN_TOPIC / GEN_PROMPT / GEN_TAGS are NOT in this env
           # block. The agent reads them from $GITHUB_WORKSPACE/.gen-input/
@@ -1672,23 +1704,19 @@ jobs:
           GEN_DRAFT: ${{ steps.draft.outputs.path }}
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
-        with:
-          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          prompt-file: .github/codex/prompts/generative-research.md
-          # The workflow needs network and write access for source gathering,
-          # the run-temp draft, and the writer-owned article commit. Keep shell
-          # subprocess env tightly scoped so repo prompts cannot enumerate
-          # unrelated Actions secrets.
-          sandbox: danger-full-access
-          codex-args: >-
-            [
-              "--ephemeral",
-              "-c", "shell_environment_policy.inherit=\"all\"",
-              "-c", "shell_environment_policy.ignore_default_excludes=true",
-              "-c", "shell_environment_policy.include_only=[\"PATH\",\"HOME\",\"PWD\",\"GITHUB_WORKSPACE\",\"RUNNER_TEMP\",\"TMPDIR\",\"GEN_DRAFT\",\"GEN_SLUG\",\"GEN_SOURCE\",\"AUTH_TOKEN\",\"CT0\",\"SSL_CERT_FILE\",\"EDGAR_CONTACT_EMAIL\",\"SOURCE_CACHE_MAX_BYTES\",\"SOURCE_CACHE_MAX_TOTAL_BYTES\",\"SOURCE_CACHE_TIMEOUT\"]"
-            ]
-          codex-home: ${{ runner.temp }}/codex-home
-          allow-bots: github-actions[bot]
+          CODEX_HOME: ${{ steps.codex-auth.outputs.home }}
+        run: |
+          set -euo pipefail
+          codex exec \
+            --ephemeral \
+            --sandbox danger-full-access \
+            --ask-for-approval never \
+            --search \
+            -C "$GITHUB_WORKSPACE" \
+            -c 'shell_environment_policy.inherit="all"' \
+            -c 'shell_environment_policy.ignore_default_excludes=true' \
+            -c 'shell_environment_policy.include_only=["PATH","HOME","PWD","GITHUB_WORKSPACE","RUNNER_TEMP","TMPDIR","GEN_DRAFT","GEN_SLUG","GEN_SOURCE","AUTH_TOKEN","CT0","SSL_CERT_FILE","EDGAR_CONTACT_EMAIL","SOURCE_CACHE_MAX_BYTES","SOURCE_CACHE_MAX_TOTAL_BYTES","SOURCE_CACHE_TIMEOUT"]' \
+            < .github/codex/prompts/generative-research.md
 
       # ---- Fireworks backends ----------------------------------------------
       # claude-code-action redirected to Fireworks' Anthropic-compatible

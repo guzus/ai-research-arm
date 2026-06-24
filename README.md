@@ -278,7 +278,7 @@ annotated list of pipeline credentials. None of these are needed for the
 | Secret | Required | Description |
 |--------|----------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code auth |
-| `OPENAI_API_KEY` | Yes for generative-research `backend=codex` | OpenAI API key passed directly to `openai/codex-action@v1`; do not expose it as job-level env |
+| `CODEX_AUTH_JSON` | Yes for generative-research `backend=codex` | File-backed ChatGPT Codex auth cache from `~/.codex/auth.json` after `codex login`; treat like a password |
 | `DEEPSEEK_API_KEY` | No — retired | DeepSeek lanes now route through Fireworks (`FIREWORKS_API_KEY`); no longer referenced by any workflow |
 | `FIREWORKS_API_KEY` | Yes for generative-research `backend=deepseek-v4-flash` / `backend=glm-5p2` and all non-claude Twitter tiers (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Fireworks API key — serves DeepSeek V4 Flash and GLM 5.2 via the Anthropic-compatible endpoint, and Kimi via pi's Fireworks provider |
 | `BIRD_AUTH_TOKEN` | Yes | X/Twitter auth_token cookie for bird CLI |
@@ -308,8 +308,9 @@ is included for transparency rather than turnkey reuse.
 
 **Needs your own credentials (drop-in):**
 - **Claude / Codex / Fireworks backends** — set `CLAUDE_CODE_OAUTH_TOKEN`,
-  `OPENAI_API_KEY`, or `FIREWORKS_API_KEY` for the synthesis/generative lane
-  you want to run on your fork.
+  `CODEX_AUTH_JSON`, or `FIREWORKS_API_KEY` for the synthesis/generative lane
+  you want to run on your fork. The Codex lane uses ChatGPT-managed Codex
+  auth, not OpenAI API billing.
 - **Twitter/X lanes** — supply your own `BIRD_AUTH_TOKEN` / `BIRD_CT0` cookies
   (they expire often; lanes degrade to empty data without them).
 - **Exa / Perplexity** search enrichment and **Gemini** TTS are all optional.

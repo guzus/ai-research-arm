@@ -25,17 +25,20 @@ short pointer plus the few genuinely agent-specific notes.
   Reference: https://code.claude.com/docs/en/github-actions
   (action repo: https://github.com/anthropics/claude-code-action)
 
-- **Codex workflows** use `openai/codex-action@v1`. Pass the OpenAI key
-  via the action input, never as job-level env:
+- **Codex generative-research workflows** use the Codex CLI with
+  ChatGPT-managed file auth, not OpenAI API billing. Seed the workflow
+  from `CODEX_AUTH_JSON`, whose value is the file-backed
+  `~/.codex/auth.json` produced by `codex login`:
 
-  ```yaml
-  openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+  ```bash
+  codex login
+  jq '{auth_mode, has_refresh_token: ((.tokens.refresh_token // "") != "")}' ~/.codex/auth.json
   ```
 
-  Do not copy Claude Code inputs such as `claude_args`,
-  `claude_code_oauth_token`, or `allowed_bots` into Codex steps; Codex
-  uses inputs such as `prompt` / `prompt-file`, `codex-args`, `sandbox`,
-  and `allow-bots`.
+  Treat `auth.json` like a password. Do not commit it, print it, or share
+  one copy across concurrent jobs. Do not switch this lane to
+  `openai-api-key` unless the intent is API billing instead of the
+  ChatGPT/Codex subscription.
 
 - **bird CLI** invocations must always pass `--json --plain` and fall
   back gracefully (`|| echo "[]"`); the X/Twitter cookies expire and a

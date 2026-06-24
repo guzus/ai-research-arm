@@ -6,7 +6,7 @@ research pipeline:
 | Dispatch value | Served model | Auth path | Notes |
 |---|---|---|---|
 | `claude` | `claude-opus-4-8` | `CLAUDE_CODE_OAUTH_TOKEN` | Default for manual and issue-triggered generative research. Native Anthropic Claude Code path. The workflow pins `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-8`, so the Claude Code `opus` alias resolves to Opus 4.8 for this lane. |
-| `codex` | Codex action default model | `OPENAI_API_KEY` via `openai/codex-action@v1` | Optional OpenAI Codex backend. The key is passed only through the action's `openai-api-key` input, not exported as job env. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
+| `codex` | Codex CLI default model for ChatGPT auth | `CODEX_AUTH_JSON` seeded into file-backed `auth.json` | Optional Codex backend using ChatGPT-managed Codex auth rather than OpenAI API billing. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 | `glm-5p2` | `GLM 5.2` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional Fireworks backend for GLM 5.2. Routes through `accounts/fireworks/models/glm-5p2` and records `glm-5p2` in article metadata. Uses the same retry, quality-gate, verifier, methodology-artifact, and safe-push path as `deepseek-v4-flash`. |
 
@@ -126,10 +126,14 @@ Preview the bundle without sending it to a model:
 uv run python scripts/run_generative_research_oracle.py "Topic" --oracle-dry-run
 ```
 
-## Codex GitHub Action
+## Codex Via ChatGPT Auth
 
-The Codex path uses `openai/codex-action@v1` directly rather than routing
-through Claude Code or Fireworks. Dispatch with:
+The Codex path runs `codex exec` in GitHub Actions with a file-backed
+ChatGPT-managed `auth.json`. It does not use `OPENAI_API_KEY`, so usage follows
+the ChatGPT/Codex subscription entitlement attached to the account that created
+the auth cache.
+
+Dispatch with:
 
 ```bash
 gh workflow run generative-research.yml \
@@ -139,28 +143,44 @@ gh workflow run generative-research.yml \
   -f tags="qa,comparison,codex"
 ```
 
-The workflow passes `OPENAI_API_KEY` only through the action input:
+Seed `CODEX_AUTH_JSON` once from a trusted machine:
 
-```yaml
-uses: openai/codex-action@v1
-with:
-  openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-  prompt-file: .github/codex/prompts/generative-research.md
-  sandbox: danger-full-access
-  codex-args: >-
-    [
-      "--ephemeral",
-      "-c", "shell_environment_policy.inherit=\"all\"",
-      "-c", "shell_environment_policy.ignore_default_excludes=true",
-      "-c", "shell_environment_policy.include_only=[\"PATH\",\"HOME\",\"PWD\",\"GITHUB_WORKSPACE\",\"RUNNER_TEMP\",\"TMPDIR\",\"GEN_DRAFT\",\"GEN_SLUG\",\"GEN_SOURCE\",\"AUTH_TOKEN\",\"CT0\",\"SSL_CERT_FILE\",\"EDGAR_CONTACT_EMAIL\",\"SOURCE_CACHE_MAX_BYTES\",\"SOURCE_CACHE_MAX_TOTAL_BYTES\",\"SOURCE_CACHE_TIMEOUT\"]"
-    ]
+```bash
+codex login
+AUTH_FILE="${CODEX_HOME:-$HOME/.codex}/auth.json"
+jq '{
+  auth_mode,
+  has_refresh_token: ((.tokens.refresh_token // "") != ""),
+  last_refresh
+}' "$AUTH_FILE"
+gh secret set CODEX_AUTH_JSON < "$AUTH_FILE"
 ```
 
-Do not move `OPENAI_API_KEY` into job-level `env:` or prompt-visible shell
-exports. The Codex prompt intentionally follows the same data boundary as the
-Claude path: user topic/prompt/tags live in `.gen-input/*.txt`; workflow-owned
-metadata is in env; and Codex subprocesses receive only the allowlisted env
-vars needed by the repo tools. The writer script owns the commit.
+Continue only if `auth_mode` is `chatgpt` and `has_refresh_token` is `true`.
+Treat this file like a password: do not commit it, print it in logs, paste it
+into tickets, or reuse one copy across concurrent jobs.
+
+The workflow seeds `auth.json` only when missing:
+
+```yaml
+CODEX_HOME="${CODEX_HOME:-$HOME/.codex-ara}"
+if [ ! -s "$CODEX_HOME/auth.json" ]; then
+  printf '%s' "$CODEX_AUTH_JSON" > "$CODEX_HOME/auth.json"
+fi
+codex exec --ephemeral --sandbox danger-full-access --ask-for-approval never \
+  -C "$GITHUB_WORKSPACE" < .github/codex/prompts/generative-research.md
+```
+
+That seed-if-missing behavior matters on persistent self-hosted runners: Codex
+can refresh the session during normal `codex exec` runs and write the refreshed
+tokens back to `auth.json`. Overwriting the file from the original secret on
+every run would discard those refreshed tokens. On ephemeral runners, reseed
+`CODEX_AUTH_JSON` whenever the cached session can no longer refresh.
+
+The Codex prompt follows the same data boundary as the Claude path: user
+topic/prompt/tags live in `.gen-input/*.txt`; workflow-owned metadata is in env;
+and Codex subprocesses receive only the allowlisted env vars needed by the repo
+tools. The writer script owns the commit.
 
 ## Fireworks Backends
 
@@ -236,9 +256,9 @@ Each run executes the same writer contract, ARA DSL validation,
 design gates, quality report, commit writer, and push/rebase logic.
 The expected difference is the model backend:
 
-- Codex: official OpenAI GitHub Action, action-scoped `OPENAI_API_KEY`,
-  `codex` metadata in `research/generative/index.json`, and the prompt file
-  at `.github/codex/prompts/generative-research.md`.
+- Codex: Codex CLI with ChatGPT-managed `CODEX_AUTH_JSON`, `codex` metadata
+  in `research/generative/index.json`, and the prompt file at
+  `.github/codex/prompts/generative-research.md`.
 - Fireworks (`deepseek-v4-flash` or `glm-5p2`): Anthropic-compatible
   Fireworks endpoint, backend-specific metadata in
   `research/generative/index.json`. This path has a longer action timeout

@@ -175,7 +175,7 @@ opus everywhere.
 | Backend | When | Auth | Notes |
 |---|---|---|---|
 | **Claude (default)** | All Claude workflows; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic. `claude-opus-4-8` for generative-research. |
-| **Codex** | `generative-research backend=codex` | `OPENAI_API_KEY` | Uses `openai/codex-action@v1` directly with the key passed as the action's `openai-api-key` input, not job env. Publishes through the same writer/verifier contract and records `codex` metadata. |
+| **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Runs Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage follows the ChatGPT/Codex subscription entitlement rather than API billing. Publishes through the same writer/verifier contract and records `codex` metadata. |
 | **DeepSeek V4 Flash (via Fireworks)** | `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek lanes | `FIREWORKS_API_KEY` | Uses Fireworks' Anthropic-compatible endpoint at `https://api.fireworks.ai/inference` with model `accounts/fireworks/models/deepseek-v4-flash` (base URL omits `/v1`; the client appends `/v1/messages`). Overrides `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`/`ANTHROPIC_MODEL` so the Claude Code action transparently calls Fireworks. The direct DeepSeek API (`api.deepseek.com`) is retired (billing/credits). Selector token: `deepseek-v4-flash` (or `deepseek`). Generative-research retries up to 2x on socket drops before commit. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p6`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
 | **Local Oracle (GPT-5.5 Pro)** | `scripts/run_generative_research_oracle.py` | Local `../oracle` checkout (browser engine by default) | Runs entirely on the developer machine; outputs go through the same `check_generative_research.py` → `write_generative_research.py` contract. Source metadata: `local-oracle`. |
@@ -244,7 +244,7 @@ Secrets are configured in GitHub Actions. None are committed.
 | Secret | Used by | Notes |
 |---|---|---|
 | `CLAUDE_CODE_OAUTH_TOKEN` | All Claude workflows | Required. |
-| `OPENAI_API_KEY` | `generative-research backend=codex` | Required for the Codex GitHub Action path. Pass only via `with.openai-api-key`, not job-level env. |
+| `CODEX_AUTH_JSON` | `generative-research backend=codex` | Required for the Codex CLI ChatGPT-auth path. Store the file-backed `~/.codex/auth.json` produced by `codex login`; treat it like a password and use one auth file per serialized runner stream. |
 | `DEEPSEEK_API_KEY` | _Retired_ — DeepSeek lanes now route through Fireworks | No longer referenced by any workflow. |
 | `FIREWORKS_API_KEY` | `generative-research backend=deepseek-v4-flash` / `backend=glm-5p2`; all `hourly-twitter.yml` non-claude lanes (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Required for the DeepSeek-V4-Flash/GLM-via-Fireworks and Kimi lanes. |
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | All bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies. |
