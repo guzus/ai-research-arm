@@ -1707,11 +1707,9 @@ jobs:
           CODEX_HOME: ${{ steps.codex-auth.outputs.home }}
         run: |
           set -euo pipefail
-          codex exec \
+          codex --search -a never exec \
             --ephemeral \
             --sandbox danger-full-access \
-            --ask-for-approval never \
-            --search \
             -C "$GITHUB_WORKSPACE" \
             -c 'shell_environment_policy.inherit="all"' \
             -c 'shell_environment_policy.ignore_default_excludes=true' \

@@ -167,7 +167,7 @@ CODEX_HOME="${CODEX_HOME:-$HOME/.codex-ara}"
 if [ ! -s "$CODEX_HOME/auth.json" ]; then
   printf '%s' "$CODEX_AUTH_JSON" > "$CODEX_HOME/auth.json"
 fi
-codex exec --ephemeral --sandbox danger-full-access --ask-for-approval never \
+codex --search -a never exec --ephemeral --sandbox danger-full-access \
   -C "$GITHUB_WORKSPACE" < .github/codex/prompts/generative-research.md
 ```
 
