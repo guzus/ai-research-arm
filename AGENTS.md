@@ -25,6 +25,18 @@ short pointer plus the few genuinely agent-specific notes.
   Reference: https://code.claude.com/docs/en/github-actions
   (action repo: https://github.com/anthropics/claude-code-action)
 
+- **Codex workflows** use `openai/codex-action@v1`. Pass the OpenAI key
+  via the action input, never as job-level env:
+
+  ```yaml
+  openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+  ```
+
+  Do not copy Claude Code inputs such as `claude_args`,
+  `claude_code_oauth_token`, or `allowed_bots` into Codex steps; Codex
+  uses inputs such as `prompt` / `prompt-file`, `codex-args`, `sandbox`,
+  and `allow-bots`.
+
 - **bird CLI** invocations must always pass `--json --plain` and fall
   back gracefully (`|| echo "[]"`); the X/Twitter cookies expire and a
   workflow must continue with empty data rather than crash.

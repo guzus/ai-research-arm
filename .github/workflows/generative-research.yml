@@ -11,6 +11,7 @@ name: Generative Research
 #
 # Backends, mutually exclusive at runtime:
 #   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-opus-4-8).
+#   * codex    — openai/codex-action@v1 with OPENAI_API_KEY scoped to the action.
 #   * deepseek / glm-5p2 — same action, but redirected to Fireworks'
 #                Anthropic-compatible endpoint via ANTHROPIC_BASE_URL /
 #                ANTHROPIC_AUTH_TOKEN.
@@ -48,6 +49,7 @@ on:
         options:
           - deepseek-v4-flash
           - glm-5p2
+          - codex
           - claude
           - deepseek
       tags:
@@ -206,11 +208,12 @@ jobs:
                 | tr '[:upper:]' '[:lower:]' || true)
               case "$CANDIDATE" in
                 claude-opus-4-8) CANDIDATE="claude" ;;
+                codex|openai-codex) CANDIDATE="codex" ;;
                 deepseek) CANDIDATE="deepseek-v4-flash" ;;
                 glm-5.2|glm5.2|glm52|glm-5p2) CANDIDATE="glm-5p2" ;;
               esac
               if [ -n "${CANDIDATE:-}" ]; then
-                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
+                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
                   echo "unsupported backend/model: $CANDIDATE" >&2
                   exit 1
                 fi
@@ -241,11 +244,12 @@ jobs:
           fi
 
           case "$BACKEND" in
+            codex|openai-codex) BACKEND="codex" ;;
             deepseek) BACKEND="deepseek-v4-flash" ;;
             glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
             claude-opus-4-8) BACKEND="claude" ;;
           esac
-          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
+          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
           fi
@@ -1647,6 +1651,44 @@ jobs:
         uses: anthropics/claude-code-action@v1
         env: *claude_env
         with: *claude_with
+
+      # ---- Codex backend ---------------------------------------------------
+      # API-authenticated through openai/codex-action@v1. Keep OPENAI_API_KEY
+      # scoped to the action input; do not expose it as job env to repo code.
+      # This backend uses the same staged-input files, writer-owned commit, and
+      # verifier/methodology artifact contract as the Claude/Fireworks paths.
+      - name: Run Generative Research (Codex)
+        if: steps.params.outputs.backend == 'codex'
+        id: gen-codex
+        continue-on-error: true
+        timeout-minutes: 90
+        uses: openai/codex-action@v1
+        env:
+          # Security: GEN_TOPIC / GEN_PROMPT / GEN_TAGS are NOT in this env
+          # block. The agent reads them from $GITHUB_WORKSPACE/.gen-input/
+          # so untrusted issue/dispatch text is not injected into env.
+          GEN_SLUG: ${{ steps.params.outputs.slug }}
+          GEN_SOURCE: ${{ steps.params.outputs.source }}
+          GEN_DRAFT: ${{ steps.draft.outputs.path }}
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          prompt-file: .github/codex/prompts/generative-research.md
+          # The workflow needs network and write access for source gathering,
+          # the run-temp draft, and the writer-owned article commit. Keep shell
+          # subprocess env tightly scoped so repo prompts cannot enumerate
+          # unrelated Actions secrets.
+          sandbox: danger-full-access
+          codex-args: >-
+            [
+              "--ephemeral",
+              "-c", "shell_environment_policy.inherit=\"all\"",
+              "-c", "shell_environment_policy.ignore_default_excludes=true",
+              "-c", "shell_environment_policy.include_only=[\"PATH\",\"HOME\",\"PWD\",\"GITHUB_WORKSPACE\",\"RUNNER_TEMP\",\"TMPDIR\",\"GEN_DRAFT\",\"GEN_SLUG\",\"GEN_SOURCE\",\"AUTH_TOKEN\",\"CT0\",\"SSL_CERT_FILE\",\"EDGAR_CONTACT_EMAIL\",\"SOURCE_CACHE_MAX_BYTES\",\"SOURCE_CACHE_MAX_TOTAL_BYTES\",\"SOURCE_CACHE_TIMEOUT\"]"
+            ]
+          codex-home: ${{ runner.temp }}/codex-home
+          allow-bots: github-actions[bot]
 
       # ---- Fireworks backends ----------------------------------------------
       # claude-code-action redirected to Fireworks' Anthropic-compatible
@@ -3268,6 +3310,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           CLAUDE_OUTCOME: ${{ steps.gen-claude.outcome }}
           CLAUDE_RETRY_1_OUTCOME: ${{ steps.gen-claude-retry.outcome }}
+          CODEX_OUTCOME: ${{ steps.gen-codex.outcome }}
           DEEPSEEK_ATTEMPT_1_OUTCOME: ${{ steps.gen-deepseek.outcome }}
           DEEPSEEK_RETRY_1_OUTCOME: ${{ steps.gen-deepseek-retry.outcome }}
           DEEPSEEK_RETRY_2_OUTCOME: ${{ steps.gen-deepseek-retry-2.outcome }}
@@ -3351,6 +3394,7 @@ jobs:
               k: v for k, v in {
                   "claude": env("CLAUDE_OUTCOME"),
                   "claude_retry_1": env("CLAUDE_RETRY_1_OUTCOME"),
+                  "codex": env("CODEX_OUTCOME"),
                   "deepseek_attempt_1": env("DEEPSEEK_ATTEMPT_1_OUTCOME"),
                   "deepseek_retry_1": env("DEEPSEEK_RETRY_1_OUTCOME"),
                   "deepseek_retry_2": env("DEEPSEEK_RETRY_2_OUTCOME"),
@@ -3418,6 +3462,13 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Idempotency-Key: $(cat "$HOOKER_IDEMPOTENCY_PATH")" \
             --data-binary "@$HOOKER_PAYLOAD_PATH"
+
+      - name: Fail Codex run without article
+        if: always() && steps.params.outputs.backend == 'codex' && steps.outfile.outputs.has_file != 'true'
+        run: |
+          echo "::error::Codex backend did not produce an article."
+          echo "Codex outcome: ${{ steps.gen-codex.outcome }}"
+          exit 1
 
       - name: Fail Fireworks run without article
         if: always() && steps.fireworks.outputs.model_id != '' && steps.outfile.outputs.has_file != 'true'

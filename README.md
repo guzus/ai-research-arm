@@ -165,13 +165,14 @@ gantt
 | `daily-improve.yml` | Daily 00:17 UTC | Self-improvement | PRs with improvements |
 | `twitter-account-explorer.yml` | Weekly (Tue 01:47 UTC) + manual | Scouts high-signal AI accounts; trust-weighted curation of `data/sources/twitter_accounts.json` | Reviewed PRs (`app/claude`) |
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
-| `generative-research.yml` | On `gen-research` issue label or `workflow_dispatch` (`topic` or `twitter_url`) | Claude or DeepSeek writes an HTML article | `research/generative/` |
+| `generative-research.yml` | On `gen-research` issue label or `workflow_dispatch` (`topic` or `twitter_url`) | Claude, Codex, or Fireworks-backed models write an HTML article | `research/generative/` |
 
 Dashboard deploys are handled by **Railway's git integration**, not a workflow file — every push to `main` rebuilds the root `Dockerfile` (bun build → Caddy serve) automatically.
 
 `generative-research.yml` defaults to **Claude Opus 4.8** for new manual,
-issue-triggered, and auto-dispatched runs. Use `backend=deepseek-v4-flash`
-for the DeepSeek V4 Flash comparison path. See
+issue-triggered, and auto-dispatched runs. Use `backend=codex` for the OpenAI
+Codex GitHub Action path, `backend=deepseek-v4-flash` for the DeepSeek V4 Flash
+comparison path, or `backend=glm-5p2` for the GLM 5.2 Fireworks path. See
 [Generative Research Backends](docs/generative-research-backends.md)
 for the exact env mapping and comparison commands.
 
@@ -277,8 +278,9 @@ annotated list of pipeline credentials. None of these are needed for the
 | Secret | Required | Description |
 |--------|----------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code auth |
+| `OPENAI_API_KEY` | Yes for generative-research `backend=codex` | OpenAI API key passed directly to `openai/codex-action@v1`; do not expose it as job-level env |
 | `DEEPSEEK_API_KEY` | No — retired | DeepSeek lanes now route through Fireworks (`FIREWORKS_API_KEY`); no longer referenced by any workflow |
-| `FIREWORKS_API_KEY` | Yes for generative-research `backend=deepseek-v4-flash` and all non-claude Twitter tiers (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Fireworks API key — serves DeepSeek V4 Flash via the Anthropic-compatible endpoint, and Kimi via pi's Fireworks provider |
+| `FIREWORKS_API_KEY` | Yes for generative-research `backend=deepseek-v4-flash` / `backend=glm-5p2` and all non-claude Twitter tiers (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Fireworks API key — serves DeepSeek V4 Flash and GLM 5.2 via the Anthropic-compatible endpoint, and Kimi via pi's Fireworks provider |
 | `BIRD_AUTH_TOKEN` | Yes | X/Twitter auth_token cookie for bird CLI |
 | `BIRD_CT0` | Yes | X/Twitter ct0 cookie for bird CLI |
 | `GEMINI_API_KEY` | Yes for article/digest audio | Gemini API key used for price-performant TTS audio generation |
@@ -305,8 +307,9 @@ is included for transparency rather than turnkey reuse.
   unit tests run offline.
 
 **Needs your own credentials (drop-in):**
-- **Claude / Fireworks backends** — set `CLAUDE_CODE_OAUTH_TOKEN` (or
-  `FIREWORKS_API_KEY`) and the synthesis/generative workflows run on your fork.
+- **Claude / Codex / Fireworks backends** — set `CLAUDE_CODE_OAUTH_TOKEN`,
+  `OPENAI_API_KEY`, or `FIREWORKS_API_KEY` for the synthesis/generative lane
+  you want to run on your fork.
 - **Twitter/X lanes** — supply your own `BIRD_AUTH_TOKEN` / `BIRD_CT0` cookies
   (they expire often; lanes degrade to empty data without them).
 - **Exa / Perplexity** search enrichment and **Gemini** TTS are all optional.
@@ -324,7 +327,7 @@ is included for transparency rather than turnkey reuse.
   `ara.guzus.xyz` is the maintainer's domain. The static dashboard shell also
   embeds a Google Analytics tag in `dashboard/index.html` — remove it on a fork.
 - **Sibling repos** `../oracle` and `../runner` referenced in the docs are
-  private and not required for the default Claude/Fireworks paths.
+  private and not required for the default Claude/Codex/Fireworks paths.
 
 ## Output Structure
 

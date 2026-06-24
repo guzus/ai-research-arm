@@ -6,6 +6,7 @@ research pipeline:
 | Dispatch value | Served model | Auth path | Notes |
 |---|---|---|---|
 | `claude` | `claude-opus-4-8` | `CLAUDE_CODE_OAUTH_TOKEN` | Default for manual and issue-triggered generative research. Native Anthropic Claude Code path. The workflow pins `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-8`, so the Claude Code `opus` alias resolves to Opus 4.8 for this lane. |
+| `codex` | Codex action default model | `OPENAI_API_KEY` via `openai/codex-action@v1` | Optional OpenAI Codex backend. The key is passed only through the action's `openai-api-key` input, not exported as job env. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 | `glm-5p2` | `GLM 5.2` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional Fireworks backend for GLM 5.2. Routes through `accounts/fireworks/models/glm-5p2` and records `glm-5p2` in article metadata. Uses the same retry, quality-gate, verifier, methodology-artifact, and safe-push path as `deepseek-v4-flash`. |
 
@@ -125,6 +126,44 @@ Preview the bundle without sending it to a model:
 uv run python scripts/run_generative_research_oracle.py "Topic" --oracle-dry-run
 ```
 
+## Codex GitHub Action
+
+The Codex path uses `openai/codex-action@v1` directly rather than routing
+through Claude Code or Fireworks. Dispatch with:
+
+```bash
+gh workflow run generative-research.yml \
+  -f topic="$TOPIC" \
+  -f slug="qa-codex-power-bottlenecks" \
+  -f backend=codex \
+  -f tags="qa,comparison,codex"
+```
+
+The workflow passes `OPENAI_API_KEY` only through the action input:
+
+```yaml
+uses: openai/codex-action@v1
+with:
+  openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+  prompt-file: .github/codex/prompts/generative-research.md
+  sandbox: danger-full-access
+  codex-args: >-
+    [
+      "--ephemeral",
+      "-c", "shell_environment_policy.inherit=\"all\"",
+      "-c", "shell_environment_policy.ignore_default_excludes=true",
+      "-c", "shell_environment_policy.include_only=[\"PATH\",\"HOME\",\"PWD\",\"GITHUB_WORKSPACE\",\"RUNNER_TEMP\",\"TMPDIR\",\"GEN_DRAFT\",\"GEN_SLUG\",\"GEN_SOURCE\",\"AUTH_TOKEN\",\"CT0\",\"SSL_CERT_FILE\",\"EDGAR_CONTACT_EMAIL\",\"SOURCE_CACHE_MAX_BYTES\",\"SOURCE_CACHE_MAX_TOTAL_BYTES\",\"SOURCE_CACHE_TIMEOUT\"]"
+    ]
+```
+
+Do not move `OPENAI_API_KEY` into job-level `env:` or prompt-visible shell
+exports. The Codex prompt intentionally follows the same data boundary as the
+Claude path: user topic/prompt/tags live in `.gen-input/*.txt`; workflow-owned
+metadata is in env; and Codex subprocesses receive only the allowlisted env
+vars needed by the repo tools. The writer script owns the commit.
+
+## Fireworks Backends
+
 The Fireworks paths route through Fireworks' Anthropic-compatible endpoint
 (the direct DeepSeek API is retired). `generative-research.yml` resolves the
 model id from the dispatch backend:
@@ -182,15 +221,24 @@ gh workflow run generative-research.yml \
 
 gh workflow run generative-research.yml \
   -f topic="$TOPIC" \
+  -f slug="qa-codex-power-bottlenecks" \
+  -f backend=codex \
+  -f tags="qa,comparison,codex"
+
+gh workflow run generative-research.yml \
+  -f topic="$TOPIC" \
   -f slug="qa-claude-power-bottlenecks" \
   -f backend=claude \
   -f tags="qa,comparison,claude"
 ```
 
-Both runs execute the same writer contract, ARA DSL validation,
+Each run executes the same writer contract, ARA DSL validation,
 design gates, quality report, commit writer, and push/rebase logic.
 The expected difference is the model backend:
 
+- Codex: official OpenAI GitHub Action, action-scoped `OPENAI_API_KEY`,
+  `codex` metadata in `research/generative/index.json`, and the prompt file
+  at `.github/codex/prompts/generative-research.md`.
 - Fireworks (`deepseek-v4-flash` or `glm-5p2`): Anthropic-compatible
   Fireworks endpoint, backend-specific metadata in
   `research/generative/index.json`. This path has a longer action timeout
@@ -207,7 +255,7 @@ The expected difference is the model backend:
 - Claude: native Anthropic endpoint, `claude-opus-4-8` metadata in
   `research/generative/index.json`.
 
-After both runs finish, compare:
+After the runs finish, compare:
 
 ```bash
 gh run list --workflow=generative-research.yml --limit 10

@@ -41,7 +41,7 @@ and opens a PR with methodology fixes.
 | [`ARA_DSL.md`](ARA_DSL.md) | Source format for generative-research articles. The compiler at `scripts/compile_ara.py` turns `.ara.md` into a validated `<article>` fragment. |
 | [`COMPONENTS.md`](COMPONENTS.md) | Human reference for the `ara-*` component vocabulary. The machine-readable contract the validator loads is [`ARA_CATALOG.json`](ARA_CATALOG.json); the two are kept in lockstep (CI-enforced — see "Component catalog" below). The CSS at `dashboard/src/components/ara-research.css` is the rendering source of truth and intentionally carries *more* `ara-*` classes than the article allowlist (runtime + front-page layers). |
 | [`ARA_CATALOG.json`](ARA_CATALOG.json) | Machine-readable ara-* component catalog the validator loads its class allowlist from. `scripts/ara_catalog.py` validates it stays in lockstep with COMPONENTS.md (CI-enforced; see "Component catalog" below). |
-| [`docs/generative-research-backends.md`](docs/generative-research-backends.md) | Backend matrix for the generative-research lane (Claude vs DeepSeek vs local Oracle), env mapping, comparison commands. |
+| [`docs/generative-research-backends.md`](docs/generative-research-backends.md) | Backend matrix for the generative-research lane (Claude vs Codex vs Fireworks vs local Oracle), env mapping, comparison commands. |
 | [`docs/okf.md`](docs/okf.md) | Open Knowledge Format export contract for sharing `research/wiki/` as a portable Markdown/YAML knowledge bundle. |
 | [`docs/model-tickets.md`](docs/model-tickets.md) | Schema + lifecycle + dedup protocol for `research/models/tickets/*.md`. Read by the CRUD agent in `24h-model-timeline.yml` and enforced by `scripts/check_model_tickets.py`. |
 | [`docs/wiki-schema.md`](docs/wiki-schema.md) | Canonical schema + page conventions for the LLM Wiki (`research/wiki/`). Read at runtime by the ingest agent in `wiki-ingest.yml` and enforced by `scripts/check_wiki.py`. |
@@ -175,6 +175,7 @@ opus everywhere.
 | Backend | When | Auth | Notes |
 |---|---|---|---|
 | **Claude (default)** | All Claude workflows; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic. `claude-opus-4-8` for generative-research. |
+| **Codex** | `generative-research backend=codex` | `OPENAI_API_KEY` | Uses `openai/codex-action@v1` directly with the key passed as the action's `openai-api-key` input, not job env. Publishes through the same writer/verifier contract and records `codex` metadata. |
 | **DeepSeek V4 Flash (via Fireworks)** | `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek lanes | `FIREWORKS_API_KEY` | Uses Fireworks' Anthropic-compatible endpoint at `https://api.fireworks.ai/inference` with model `accounts/fireworks/models/deepseek-v4-flash` (base URL omits `/v1`; the client appends `/v1/messages`). Overrides `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`/`ANTHROPIC_MODEL` so the Claude Code action transparently calls Fireworks. The direct DeepSeek API (`api.deepseek.com`) is retired (billing/credits). Selector token: `deepseek-v4-flash` (or `deepseek`). Generative-research retries up to 2x on socket drops before commit. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p6`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
 | **Local Oracle (GPT-5.5 Pro)** | `scripts/run_generative_research_oracle.py` | Local `../oracle` checkout (browser engine by default) | Runs entirely on the developer machine; outputs go through the same `check_generative_research.py` → `write_generative_research.py` contract. Source metadata: `local-oracle`. |
@@ -243,8 +244,9 @@ Secrets are configured in GitHub Actions. None are committed.
 | Secret | Used by | Notes |
 |---|---|---|
 | `CLAUDE_CODE_OAUTH_TOKEN` | All Claude workflows | Required. |
+| `OPENAI_API_KEY` | `generative-research backend=codex` | Required for the Codex GitHub Action path. Pass only via `with.openai-api-key`, not job-level env. |
 | `DEEPSEEK_API_KEY` | _Retired_ — DeepSeek lanes now route through Fireworks | No longer referenced by any workflow. |
-| `FIREWORKS_API_KEY` | `generative-research backend=deepseek-v4-flash`; all `hourly-twitter.yml` non-claude lanes (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Required for the DeepSeek-V4-Flash-via-Fireworks and Kimi lanes. |
+| `FIREWORKS_API_KEY` | `generative-research backend=deepseek-v4-flash` / `backend=glm-5p2`; all `hourly-twitter.yml` non-claude lanes (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Required for the DeepSeek-V4-Flash/GLM-via-Fireworks and Kimi lanes. |
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | All bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies. |
 | `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional; enhance MCP search. |
 | `GEMINI_API_KEY` | `daily-digest` (inline Gemini Flash TTS for digest audio); also the manual `generate_generative_article_audio.py` | Optional; without it, audio generation is skipped. |
