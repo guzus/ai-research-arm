@@ -735,5 +735,21 @@
       "glm-5p2",
       "rerun"
     ]
+  },
+  {
+    "slug": "test-ornn-com-codex-2",
+    "file": "2026-06-24T160453--test-ornn-com-codex-2.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Ornn.com and the Attempt to Turn GPU Hours Into a Financial Market",
+    "model": "codex",
+    "created_at": "2026-06-24T16:04:53Z",
+    "source": "workflow_dispatch",
+    "prompt": "Ornn.com",
+    "tags": [
+      "test",
+      "codex",
+      "ornn"
+    ]
   }
 ]

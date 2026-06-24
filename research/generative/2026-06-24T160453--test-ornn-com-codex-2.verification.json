@@ -1,0 +1,19 @@
+{
+  "claims": [
+    {"id": "C1", "text": "Ornn.com is the public site for Ornn AI's compute-market infrastructure business, not a parked domain.", "verdict": "supported", "citation": "[^1][^4]"},
+    {"id": "C2", "text": "Ornn's visible product stack includes Ornn Data for GPU pricing benchmarks and Ornn Compute for access to GPU capacity.", "verdict": "supported", "citation": "[^2][^3]"},
+    {"id": "C3", "text": "Ornn announced a $5.7 million seed round on October 28, 2025 led by Crucible Ventures and Vine Ventures.", "verdict": "supported", "citation": "[^5]"},
+    {"id": "C4", "text": "Ornn announced on April 2, 2026 that OCPI was available on Bloomberg Terminal and had six months as a live index.", "verdict": "supported", "citation": "[^6]"},
+    {"id": "C5", "text": "ICE and Ornn announced plans on May 19, 2026 to launch U.S. dollar-denominated, cash-settled GPU compute futures based on OCPI, subject to regulatory approval.", "verdict": "supported", "citation": "[^7]"},
+    {"id": "C6", "text": "a16z crypto said it led a $33 million seed round in Ornn in June 2026.", "verdict": "supported", "citation": "[^8]"},
+    {"id": "C7", "text": "Ornn says OCPI is built from executed or cleared transactions rather than listings, offers, surveys, or scraped list prices.", "verdict": "supported", "citation": "[^2][^6][^8]"},
+    {"id": "C8", "text": "Ornn's April 2026 release said more than 400 data-center operators, investors, and AI companies accessed the Ornn platform to track GPU pricing.", "verdict": "supported", "citation": "[^6]"},
+    {"id": "C9", "text": "Ornn launched Ornn Token Price Indices on June 16, 2026 for realized inference-token costs, initially including Anthropic and OpenAI indices.", "verdict": "supported", "citation": "[^10]"},
+    {"id": "C10", "text": "NVIDIA reported fiscal 2026 revenue of $215.9 billion, up 65%, with Data Center revenue up 68%.", "verdict": "supported", "citation": "[^11]"},
+    {"id": "C11", "text": "Microsoft said in FY2026 Q2 and Q3 that roughly two-thirds of capex was for short-lived assets, primarily GPUs and CPUs.", "verdict": "supported", "citation": "[^12][^13]"},
+    {"id": "C12", "text": "Meta guided 2026 capital expenditures including finance-lease principal payments to $125 billion to $145 billion in Q1 2026 results.", "verdict": "supported", "citation": "[^15]"},
+    {"id": "C13", "text": "Amazon said trailing-twelve-month free cash flow fell to $1.2 billion, driven primarily by a year-over-year increase in property and equipment purchases that primarily reflected AI investments.", "verdict": "supported", "citation": "[^16]"},
+    {"id": "C14", "text": "CME Group and Silicon Data announced on May 12, 2026 plans to launch compute futures later in 2026, pending regulatory review.", "verdict": "supported", "citation": "[^18]"},
+    {"id": "C15", "text": "CFTC rules allow designated contract markets to list contracts by self-certification or by requesting approval, with regulated entities expected to ensure continuing compliance.", "verdict": "supported", "citation": "[^14]"}
+  ]
+}

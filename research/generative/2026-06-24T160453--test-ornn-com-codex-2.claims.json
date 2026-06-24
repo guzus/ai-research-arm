@@ -1,0 +1,146 @@
+{
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Ornn.com is the public site for Ornn AI's compute-market infrastructure business, not a parked domain.",
+      "type": "definition",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://ornn.com/", "https://ornn.com/about"],
+      "source_tiers": ["primary", "primary"]
+    },
+    {
+      "id": "C2",
+      "claim": "Ornn's visible product stack includes Ornn Data for GPU pricing benchmarks and Ornn Compute for access to GPU capacity.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://ornn.com/product/ornn-data", "https://ornn.com/product/ornn-compute"],
+      "source_tiers": ["primary", "primary"]
+    },
+    {
+      "id": "C3",
+      "claim": "Ornn announced a $5.7 million seed round on October 28, 2025 led by Crucible Ventures and Vine Ventures.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.prnewswire.com/news-releases/ornn-raises-5-7-million-seed-round-to-launch-the-worlds-first-compute-futures-exchange-302596938.html"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "C4",
+      "claim": "Ornn announced on April 2, 2026 that OCPI was available on Bloomberg Terminal and had six months as a live index.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.prnewswire.com/news-releases/ornn-compute-price-index-added-to-bloomberg-terminal-302732184.html"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "C5",
+      "claim": "ICE and Ornn announced plans on May 19, 2026 to launch U.S. dollar-denominated, cash-settled GPU compute futures based on OCPI, subject to regulatory approval.",
+      "type": "regulatory",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-06-24",
+      "source_urls": ["https://ir.theice.com/press/news-details/2026/ICE-and-Ornn-to-Launch-GPU-Compute-Futures-Contracts/default.aspx"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "C6",
+      "claim": "a16z crypto said it led a $33 million seed round in Ornn in June 2026.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://a16zcrypto.com/posts/article/investing-in-ornn"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "C7",
+      "claim": "Ornn says OCPI is built from executed or cleared transactions rather than listings, offers, surveys, or scraped list prices.",
+      "type": "technical",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": ["https://ornn.com/product/ornn-data", "https://www.prnewswire.com/news-releases/ornn-compute-price-index-added-to-bloomberg-terminal-302732184.html", "https://a16zcrypto.com/posts/article/investing-in-ornn"],
+      "source_tiers": ["primary", "primary", "opinion"]
+    },
+    {
+      "id": "C8",
+      "claim": "Ornn's April 2026 release said more than 400 data-center operators, investors, and AI companies accessed the Ornn platform to track GPU pricing.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "single-source",
+      "as_of": "2026-04-02",
+      "source_urls": ["https://www.prnewswire.com/news-releases/ornn-compute-price-index-added-to-bloomberg-terminal-302732184.html"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "C9",
+      "claim": "Ornn launched Ornn Token Price Indices on June 16, 2026 for realized inference-token costs, initially including Anthropic and OpenAI indices.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.prnewswire.com/news-releases/ornn-launches-the-ornn-token-price-indices-benchmarking-the-realized-cost-of-inference-tokens-from-anthropic-and-openai-302801183.html"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "C10",
+      "claim": "NVIDIA reported fiscal 2026 revenue of $215.9 billion, up 65%, with Data Center revenue up 68%.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-01-25",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"],
+      "source_tiers": ["legal"]
+    },
+    {
+      "id": "C11",
+      "claim": "Microsoft said in FY2026 Q2 and Q3 that roughly two-thirds of capex was for short-lived assets, primarily GPUs and CPUs.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-03-31",
+      "source_urls": ["https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2", "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q3"],
+      "source_tiers": ["primary", "primary"]
+    },
+    {
+      "id": "C12",
+      "claim": "Meta guided 2026 capital expenditures including finance-lease principal payments to $125 billion to $145 billion in Q1 2026 results.",
+      "type": "forecast",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-04-29",
+      "source_urls": ["https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-First-Quarter-2026-Results/default.aspx"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "C13",
+      "claim": "Amazon said trailing-twelve-month free cash flow fell to $1.2 billion, driven primarily by a year-over-year increase in property and equipment purchases that primarily reflected AI investments.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-03-31",
+      "source_urls": ["https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-First-Quarter-Results/default.aspx"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "C14",
+      "claim": "CME Group and Silicon Data announced on May 12, 2026 plans to launch compute futures later in 2026, pending regulatory review.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-06-24",
+      "source_urls": ["https://www.cmegroup.com/media-room/press-releases/2026/5/12/cme_group_and_silicondatapartnertolaunchfirstcomputefutures.html"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "C15",
+      "claim": "CFTC rules allow designated contract markets to list contracts by self-certification or by requesting approval, with regulated entities expected to ensure continuing compliance.",
+      "type": "regulatory",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.cftc.gov/IndustryOversight/ContractsProducts/index.htm"],
+      "source_tiers": ["legal"]
+    }
+  ]
+}

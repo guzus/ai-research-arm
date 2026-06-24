@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "C5",
+      "claim_text": "ICE and Ornn announced plans on May 19, 2026 to launch U.S. dollar-denominated, cash-settled GPU compute futures based on OCPI, subject to regulatory approval.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "C7",
+      "claim_text": "Ornn says OCPI is built from executed or cleared transactions rather than listings, offers, surveys, or scraped list prices.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "C14",
+      "claim_text": "CME Group and Silicon Data announced on May 12, 2026 plans to launch compute futures later in 2026, pending regulatory review.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    }
+  ]
+}
