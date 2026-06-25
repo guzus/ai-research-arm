@@ -76,6 +76,8 @@ and opens a PR with methodology fixes.
 | `check_lane_freshness.py` | Freshness watchdog. Measures git-commit recency per research lane against per-lane cadence thresholds; exits 2 (and emits a hooker/Telegram alert from `liveness-check.yml`) when a lane is stale. Stdlib-only so it runs on both runner tiers. |
 | `build_wiki_index.py` | Rebuilds `research/wiki/index.json` from the wiki pages. **CI-load-bearing**: `ci.yml` runs `--check` (exit 1 if the committed index is stale or any page fails validation); `wiki-ingest.yml` regenerates it every run. |
 | `fetch_ai_blogs.py` | Per-feed AI-blog fetcher used by `daily-ai-blogs.yml`; boundary-handles bad feeds so one failure doesn't crash the run. |
+| `deterministic_rss_digest.py` | Model-free fallback for `hourly-rss.yml`; parses fetched RSS/Atom files and appends a timestamped `research/rss/YYYY-MM-DD.md` section when the agent path fails. |
+| `deterministic_community_digest.py` | Model-free fallback for `4h-community.yml`; parses pre-fetched HN JSON and Reddit RSS into `research/community/*-hn.md` and `*-reddit.md` when the agent path fails. |
 | `fetch_youtube_signal.py` | tuber-backed YouTube lane used by `daily-youtube.yml`; read-only by default (discovery, existing summary previews, transcript probes) and never triggers paid summary generation. |
 | `source_cache.py` | Runtime primary-source fetch cache under `data/source-cache/` (gitignored), used by `generative-research.yml`. |
 | `render_front_page.mjs` | Deterministic newspaper renderer used by `daily-front-page.yml`: digest → SVG → PNG via `@resvg/resvg-js` (no Chromium/model dependency), plus the `.ara.md` source for the interactive edition. Layout is budget-aware — overflow is ellipsized/dropped, never painted over. |
@@ -128,10 +130,14 @@ Claude-Code-compatible tool harness but routes the primary freshness lanes
 through Fireworks profiles when Fireworks preflight passes. If Fireworks is
 unavailable (for example billing/spend-limit suspension), the wrapper falls
 back to native Claude by default so scheduled freshness does not hard-stop.
-It can also enforce that the expected output paths were actually committed.
-PR/review/on-demand Claude workflows may still call the Claude action directly;
-when they do, pass the model via `claude_args: "--model opus"` (never as a
-separate `model:` input).
+It can also enforce that the expected output paths were actually committed. The
+RSS and HN/Reddit community workflows add deterministic parser fallbacks after
+the agent step, then run a final `.github/actions/require-output` guard. For
+those lanes, a green run means a committed daily artifact exists; inspect the
+agent/fallback step logs before treating it as evidence that Fireworks or
+native Claude was healthy. PR/review/on-demand Claude workflows may still call
+the Claude action directly; when they do, pass the model via
+`claude_args: "--model opus"` (never as a separate `model:` input).
 
 ### Aggregation (raw signal → `research/<source>/`)
 

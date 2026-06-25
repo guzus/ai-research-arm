@@ -35,6 +35,10 @@ short pointer plus the few genuinely agent-specific notes.
   none` only when strict provider failure is desired. Set `expected-paths` in
   `agent-run`, or call `.github/actions/require-output` after deterministic
   commit steps, so green no-op runs do not leave the freshness watchdog stale.
+  RSS and HN/Reddit community lanes also have deterministic parser fallbacks;
+  a green run there means committed lane output exists, not necessarily that
+  the model provider was healthy. Check the agent/fallback step logs before
+  drawing provider conclusions.
 
 - **Codex generative-research workflows** use the Codex CLI with
   ChatGPT-managed file auth, not OpenAI API billing. Seed the workflow

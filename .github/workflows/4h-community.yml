@@ -111,6 +111,10 @@ jobs:
           cp /tmp/hn/*.json data/hn/ || echo "No files to copy"
           ls -la data/hn/
 
+      - name: Capture community output base
+        id: community-output-base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       - name: Create MCP Config
         run: |
           cat > /tmp/mcp-config.json << 'EOF'
@@ -125,6 +129,8 @@ jobs:
           EOF
 
       - name: Process Community Data with Fireworks
+        id: community-agent
+        continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
           backend: fireworks-glm-5p2
@@ -132,7 +138,7 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           claude-args: |
             --model opus --mcp-config /tmp/mcp-config.json
-            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__hackernews__*"
+            --allowedTools "Read,Write,Edit,Bash(git:*),Bash(ls:*),Bash(cat:*),mcp__hackernews__*"
           expected-paths: |
             research/community/
           label: Community Fireworks processor
@@ -229,6 +235,28 @@ jobs:
             After writing both files:
             git add research/community/
             git commit -m "Community digest ${{ steps.datetime.outputs.timestamp }}"
+
+      - name: Deterministic community fallback
+        if: steps.community-agent.outcome == 'failure'
+        run: |
+          set -euo pipefail
+          echo "::warning::Community agent path failed; writing deterministic fallback from fetched HN/Reddit data."
+          python3 scripts/deterministic_community_digest.py \
+            --hn-json data/hn/frontpage.json \
+            --reddit-dir data/reddit \
+            --out-dir research/community \
+            --date "${{ steps.datetime.outputs.date }}" \
+            --timestamp "${{ steps.datetime.outputs.timestamp }}"
+          git add research/community/
+          git commit -m "Community deterministic fallback ${{ steps.datetime.outputs.timestamp }}" || echo "No deterministic community changes"
+
+      - name: Require community output
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.community-output-base.outputs.sha }}
+          expected-paths: |
+            research/community/
+          label: Community workflow output
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the
