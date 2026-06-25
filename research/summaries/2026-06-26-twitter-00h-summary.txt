@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-26 00:59 UTC
+
+CYCLE: Open-weights narrowing the gap; Google embeds computer use in Gemini 3.5 Flash; macro inflation tightens around AI.
+
+TOP STORIES:
+• GLM-5.2 (Max) hits 1595 on Code Arena Frontend, surpassing Opus 4.8, closing on Fable 5 [✓]
+• Google folds Computer Use into Gemini 3.5 Flash as native capability — no longer a separate model [✓]
+• PCE inflation at 4.1% (3-yr high); Apple hikes Mac/iPad 15-25% on memory costs; Micron beats on AI DRAM demand [✓]
+
+WATCH: GLM-5.2 vs. Fable 5 (1665) gap closes further; first independent benchmarks for Gemini 3.5 Flash Computer Use.
+
+Full update on GitHub.
