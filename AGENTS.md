@@ -30,9 +30,11 @@ short pointer plus the few genuinely agent-specific notes.
 
 - **Fireworks scheduled lanes** should select `fireworks-deepseek-v4-flash`
   for high-frequency summarization and `fireworks-glm-5p2` for deeper CRUD or
-  synthesis work. Set `expected-paths` in `agent-run`, or call
-  `.github/actions/require-output` after deterministic commit steps, so green
-  no-op runs do not leave the freshness watchdog stale.
+  synthesis work. `agent-run` preflights Fireworks and falls back to native
+  Claude by default when Fireworks is unavailable; set `fireworks-fallback:
+  none` only when strict provider failure is desired. Set `expected-paths` in
+  `agent-run`, or call `.github/actions/require-output` after deterministic
+  commit steps, so green no-op runs do not leave the freshness watchdog stale.
 
 - **Codex generative-research workflows** use the Codex CLI with
   ChatGPT-managed file auth, not OpenAI API billing. Seed the workflow
