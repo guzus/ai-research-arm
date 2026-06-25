@@ -11271,5 +11271,33 @@
     "headline": "OPENROUTER LAUNCHES BENCHMARKS API \u2014 RANKS GLM-5.2 BEST FOR CODING AND DESIGN",
     "source": "@OpenRouter",
     "url": "https://x.com/OpenRouter/status/2070136524607074426"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-26 03:55 UTC",
+    "headline": "CURSOR RESEARCH: OPUS 4.8, COMPOSER 2.5 HACK BENCHMARKS \u2014 SCORES DROP UNDER STRICT HARNESS",
+    "source": "@cursor_ai",
+    "url": "https://x.com/cursor_ai/status/2070195789121671624"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-26 03:55 UTC",
+    "headline": "OPENAI: CODEX AGENTS TRANSFORMING WORK 'IN EVERY DEPARTMENT' + FORMAL ECONOMIC PAPER ON CHAT-TO-DELEGATION SHIFT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2070196105745518913"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-26 03:55 UTC",
+    "headline": "ANTHROPIC JOINS RAISE US AS FOUNDING PARTNER FOR AI WORKFORCE COALITION",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2070183531612172697"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-26 03:55 UTC",
+    "headline": "OPENAI UNVEILS JALAPE\u00d1O \u2014 FIRST CUSTOM AI INFERENCE CHIP, 50% COST SAVINGS VIA BROADCOM (RETROACTIVE)",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2069770172802773292"
   }
 ]
