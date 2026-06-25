@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-06-25 22:01 UTC
+
+CYCLE: Fable 5 resurfaces in AWS Bedrock; GPT-5.6 Preview leaks in OpenAI routes; Anthropic accuses Alibaba of largest-ever distillation attack.
+
+TOP STORIES:
+• Fable 5 reappears on Bedrock with bundled weekly usage confirmed in Claude Code binaries; US ID verification gate + use-case review required [✓]
+• GPT-5.6 Preview spotted in OpenAI internal admin routes by two independent leakers; "Preview" label historically signals capability jump [✓]
+• Anthropic letter to US Senate: Alibaba-linked operators ran 28.8M Claude exchanges through 25K fake accounts targeting agentic reasoning & coding [✓]
+• OpenAI Jalapeño chip analysis matures: 50% cost claim (Broadcom CEO), 9-month tape-out, structural NVIDIA pricing-power erosion thesis [✓]
+
+WATCH: Whether Fable 5 restoration expands beyond US-only ID-gated Bedrock access; whether OpenAI acknowledges GPT-5.6 Preview; Alibaba response to distillation accusations.
+
+Full update on GitHub.

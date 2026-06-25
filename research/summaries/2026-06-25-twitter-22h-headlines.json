@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "FABLE 5 BACK IN AWS BEDROCK — WEEKLY BUNDLED USAGE CONFIRMED IN CLAUDE CODE BINARIES, US ID GATE REQUIRED",
+    "source": "@chetaslua",
+    "url": "https://x.com/chetaslua/status/2070109349155103089",
+    "category": "model"
+  },
+  {
+    "headline": "GPT-5.6-PREVIEW SPOTTED IN OPENAI INTERNAL ADMIN ROUTES — TWO INDEPENDENT LEAKERS, HISTORIC 'PREVIEW' LABEL SIGNALS CAPABILITY JUMP",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2070086908235874450",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC ACCUSES ALIBABA OF LARGEST-EVER DISTILLATION ATTACK: 25K FAKE ACCOUNTS, 28.8M CLAUDE EXCHANGES, LETTER TO US SENATE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2069879640835961277",
+    "category": "policy"
+  },
+  {
+    "headline": "ALIBABA STOCK -4.9% TO 16-MONTH LOW AFTER ANTHROPIC DISTILLATION ACCUSATION",
+    "source": "@CarringtinRidge",
+    "url": "https://x.com/CarringtinRidge/status/2070051698106646861",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI'S JALAPEÑO INFERENCE CHIP DELIVERS 50% COST SAVINGS IN EARLY TESTS — BROADCOM CEO, 9-MONTH TAPE-OUT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2069770172802773292",
+    "category": "infra"
+  },
+  {
+    "headline": "NVIDIA DFLASH OPEN-SOURCED — BLOCK DIFFUSION SPECULATIVE DECODING, UP TO 15× THROUGHPUT ON BLACKWELL",
+    "source": "@arsh_goyal",
+    "url": "https://x.com/arsh_goyal/status/2070029887407284303",
+    "category": "research"
+  },
+  {
+    "headline": "CURSOR SHIPS COMPOSER 3 — 1.5T PARAMETER MODEL TRAINED FROM SCRATCH ON XAI'S COLOSSUS, SHIPS 'WITHIN WEEKS'",
+    "source": "@mycomradio",
+    "url": "https://x.com/mycomradio/status/2069980898947170708",
+    "category": "model"
+  }
+]
