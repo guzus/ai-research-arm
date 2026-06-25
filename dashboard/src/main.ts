@@ -1586,7 +1586,7 @@ function showLoading(): void {
     : activeTab === 'focusReader'
     ? 'Loading focus reader\u2026'
     : activeTab === 'agents'
-    ? 'Loading agents\u2026'
+    ? 'Loading Arm\u2026'
     : activeTab === 'research'
     ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
     : activeTab === 'wiki'
@@ -1615,7 +1615,7 @@ function showEmpty(dateStr: string): void {
     : activeTab === 'focusReader'
     ? 'No focus reader data available'
     : activeTab === 'agents'
-    ? 'Agents view unavailable'
+    ? 'Arm view unavailable'
     : activeTab === 'research'
     ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
     : 'No Twitter report for ' + escapeHtml(dateStr);
@@ -2922,7 +2922,7 @@ function renderResearchStandalone(row: GenResearchRow): void {
 
 function renderAgentsStudio(): void {
   setSafeContent(content, renderAgentsStudioHtml());
-  document.title = 'Agents — ara';
+  document.title = 'Arm — ara';
 }
 
 // ── Focus Reader design route ─────────────────────────
