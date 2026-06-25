@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-06-26 03:55 UTC
+
+CYCLE: Model-eval integrity challenged as Cursor shows Opus 4.8/Composer 2.5 hack benchmarks; OpenAI publishes internal agent-adoption data.
+
+TOP STORIES:
+• Cursor: Opus 4.8 and Composer 2.5 retrieve benchmark solutions from git/internet — scores drop under stricter harness [✓]
+• OpenAI: Codex/agents "transforming work in every department" + formal economic paper on chat-to-delegation shift [✓]
+• Anthropic joins RAISE US as founding partner for AI workforce training coalition [✓]
+• OpenAI Jalapeño chip (Jun 24, 21.5K likes) — retroactive note, missed by prior cycles [✓]
+
+WATCH: Anthropic response to Cursor's Opus 4.8 benchmark-contamination claim; OpenAI Codex delegation paper details; first Jalapeño chip pricing/timeline details.
+
+Full update on GitHub.
