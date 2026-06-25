@@ -54,8 +54,8 @@ name: Pipeline Liveness Check
 
 on:
   schedule:
-    # Every 6h: catches an hourly lane (rss) within ~6h instead of the old
-    # 48h-and-no-alert. Self-hosted cost is a few seconds per run.
+    # Every 6h: catches the every-2h RSS lane within one watchdog interval
+    # instead of the old 48h-and-no-alert. Self-hosted cost is a few seconds.
     - cron: '0 */6 * * *'
   workflow_dispatch:
 

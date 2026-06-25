@@ -20,7 +20,7 @@ on:
     # Unattended, main-branch pipelines worth auto-recovering. PR-scoped CI /
     # code-review are intentionally excluded (their author re-runs those).
     workflows:
-      - "Hourly RSS Official Announcements"
+      - "RSS Official Announcements (Every 2 Hours)"
       - "Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / fireworks-pi)"
       - "Daily AI Expert Blogs"
       - "Bluesky AI Researcher Feed (Twice Daily)"
