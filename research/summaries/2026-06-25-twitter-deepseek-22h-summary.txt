@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-06-25 22:24 UTC
+
+CYCLE: Heavy infrastructure cycle — custom chips, memory crunch, consumer impact.
+
+TOP STORIES:
+• OpenAI unveils Jalapeño — first custom inference ASIC with Broadcom, 9-month tape-out, 50% cheaper inference target, AI-model-assisted chip design [✓]
+• IBM 0.7nm nanostack chip — 100B transistors, research-stage, production ~5 years out, +8% stock [✓]
+• Apple hikes Mac/iPad prices 20% — blames AI data centers consuming global memory supply, DRAM costs +98% Q1 2026 [⚠]
+• Qualcomm acquires Modular for $3.9B — Chris Lattner's Mojo runtime becomes Qualcomm's silicon-agnostic AI layer [✓]
+
+WATCH: PCE data out now (3.4% on consensus); Micron Q4 $50B guide; Anthropic-Alibaba official response from Alibaba.
+
+Full update on GitHub.
