@@ -438,7 +438,7 @@ jobs:
             --thinking high \
             --tools read,write,edit,bash,grep,find,ls \
             --provider fireworks \
-            --model accounts/fireworks/models/kimi-k2p6
+            --model accounts/fireworks/models/kimi-k2p7
 
       # ── Stop birdy daemon (always, if started) ─────────────────────
       - name: Stop birdy daemon

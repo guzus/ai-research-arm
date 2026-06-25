@@ -12,6 +12,7 @@ import {
   truncateText,
   wrapTables,
 } from './render/shared';
+import { renderAgentsStudioHtml } from './render/agents';
 import { renderTodayHtml } from './render/today';
 import {
   parseTwitterStories,
@@ -109,10 +110,10 @@ function timeAgo(date: Date): string {
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader';
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader' | 'agents';
 // Tabs that route by date (calendar-driven). research + wiki are slug-driven
 // (or index views) and are excluded — mirror the research precedent.
-type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader'>;
+type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader' | 'agents'>;
 type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
@@ -298,6 +299,9 @@ function routeFromState(): string {
   if (activeTab === 'focusReader') {
     return '/design/focus-reader';
   }
+  if (activeTab === 'agents') {
+    return '/agents';
+  }
   if (activeTab === 'research') {
     return selectedSlug ? '/research/' + selectedSlug : '/research';
   }
@@ -364,6 +368,12 @@ function parseRoute(path: string): boolean {
   const trimmed = clean.replace(/^\/+/, '');
   if (trimmed === 'design/focus-reader') {
     activeTab = 'focusReader';
+    selectedSlug = null;
+    syncTabUi();
+    return true;
+  }
+  if (trimmed === 'agents') {
+    activeTab = 'agents';
     selectedSlug = null;
     syncTabUi();
     return true;
@@ -442,6 +452,7 @@ function syncTabUi(): void {
   // toggle as research/models.
   document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
   document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
+  document.body.classList.toggle('tab-agents', activeTab === 'agents');
 }
 
 // ── Helpers ───────────────────────────────────────────
@@ -1574,6 +1585,8 @@ function showLoading(): void {
     ? 'Loading model timeline\u2026'
     : activeTab === 'focusReader'
     ? 'Loading focus reader\u2026'
+    : activeTab === 'agents'
+    ? 'Loading Arm\u2026'
     : activeTab === 'research'
     ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
     : activeTab === 'wiki'
@@ -1601,6 +1614,8 @@ function showEmpty(dateStr: string): void {
     ? 'No model timeline for ' + escapeHtml(dateStr)
     : activeTab === 'focusReader'
     ? 'No focus reader data available'
+    : activeTab === 'agents'
+    ? 'Arm view unavailable'
     : activeTab === 'research'
     ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
     : 'No Twitter report for ' + escapeHtml(dateStr);
@@ -2905,6 +2920,11 @@ function renderResearchStandalone(row: GenResearchRow): void {
   updateResearchAudioUi();
 }
 
+function renderAgentsStudio(): void {
+  setSafeContent(content, renderAgentsStudioHtml());
+  document.title = 'Arm — ara';
+}
+
 // ── Focus Reader design route ─────────────────────────
 function latestDateFromList(dates: string[] | undefined, target = fmtDate(new Date())): string | null {
   if (!dates || dates.length === 0) return null;
@@ -3266,6 +3286,14 @@ async function load(): Promise<void> {
   showLoading();
 
   try {
+    if (activeTab === 'agents') {
+      renderAgentsStudio();
+      renderCalendar();
+      currentSection = 0;
+      updateNavCounter();
+      updateSearchCount();
+      return;
+    }
     if (!manifest) {
       await loadManifest();
       if (requestId !== loadRequestId) return;
@@ -4034,13 +4062,14 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
     selectedSlug = null;
     syncTabUi();
     document.body.classList.toggle('tab-research', activeTab === 'research');
-  document.body.classList.toggle('tab-models', activeTab === 'models');
-  document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
-  document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
+    document.body.classList.toggle('tab-models', activeTab === 'models');
+    document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
+    document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
+    document.body.classList.toggle('tab-agents', activeTab === 'agents');
     // Re-probe availability for current month with new tab (date tabs only).
     // The models/wiki tabs don't use date routing, so skip probing there too —
     // it'd just paint dots on a calendar that's hidden anyway.
-    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader') {
+    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader' && activeTab !== 'agents') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -4060,7 +4089,8 @@ document.body.classList.toggle('tab-research', currentTab === 'research');
 document.body.classList.toggle('tab-models', currentTab === 'models');
 document.body.classList.toggle('tab-wiki', currentTab === 'wiki');
 document.body.classList.toggle('tab-focus-reader', currentTab === 'focusReader');
-if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader') {
+document.body.classList.toggle('tab-agents', currentTab === 'agents');
+if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader' && currentTab !== 'agents') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();
