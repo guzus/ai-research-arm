@@ -44,6 +44,8 @@ research/*
 !research/wiki/**
 !research/youtube
 !research/youtube/**
+!research/arm
+!research/arm/**
 
 node_modules
 __pycache__
