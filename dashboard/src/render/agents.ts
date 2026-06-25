@@ -22,6 +22,14 @@ export type ArmTimeline = {
   items: ArmTimelineItem[];
 };
 
+type ParsedArmTimelineItem = ArmTimelineItem & { startMs: number; endMs: number };
+type LaneDetailProfile = {
+  statuses: Set<string>;
+  sources: Set<string>;
+  models: Set<string>;
+  hasMissingModel: boolean;
+};
+
 const HOUR_MS = 60 * 60 * 1000;
 const MINUTE_MS = 60 * 1000;
 
@@ -63,6 +71,62 @@ function makeText(tag: string, className: string, text: string): HTMLElement {
   el.className = className;
   el.textContent = text;
   return el;
+}
+
+function normalizedValue(value?: string): string {
+  return (value || '').trim();
+}
+
+function isFailureStatus(status: string): boolean {
+  return /\b(?:fail|failed|failure|error|cancelled|canceled|timeout|timed out)\b/i.test(status);
+}
+
+function statusValue(item: ArmTimelineItem): string {
+  return normalizedValue(item.status || item.kind).toLowerCase();
+}
+
+function laneDetailProfile(items: ParsedArmTimelineItem[]): LaneDetailProfile {
+  return {
+    statuses: new Set(items.map((item) => statusValue(item))),
+    sources: new Set(items.map((item) => normalizedValue(item.source).toLowerCase()).filter(Boolean)),
+    models: new Set(items.map((item) => normalizedValue(item.model).toLowerCase()).filter(Boolean)),
+    hasMissingModel: items.some((item) => !normalizedValue(item.model)),
+  };
+}
+
+function appendDetailRow(list: HTMLElement, label: string, value: string): void {
+  if (!value) return;
+  const row = document.createElement('div');
+  row.className = 'agents-work-detail-row';
+  row.appendChild(makeText('dt', '', label));
+  row.appendChild(makeText('dd', '', value));
+  list.appendChild(row);
+}
+
+function makeItemDetails(item: ParsedArmTimelineItem, profile: LaneDetailProfile): HTMLElement {
+  const details = document.createElement('dl');
+  details.className = 'agents-work-details';
+
+  const failed = isFailureStatus(item.status);
+  const primaryLabel = failed ? 'Failed' : item.kind === 'scheduled' ? 'Scheduled' : 'Updated';
+  const primaryMs = item.kind === 'scheduled' ? item.startMs : item.endMs;
+  appendDetailRow(details, primaryLabel, formatUtcDateTime(primaryMs));
+  appendDetailRow(details, 'Time', formatUtcTime(item.startMs) + '-' + formatUtcTime(item.endMs) + ' UTC');
+  appendDetailRow(details, 'Duration', formatDuration(item.startMs, item.endMs));
+
+  const showStatus = failed || profile.statuses.size > 1 || statusValue(item) !== item.kind;
+  if (showStatus) appendDetailRow(details, 'Status', normalizedValue(item.status || item.kind));
+
+  const model = normalizedValue(item.model);
+  if (model && (profile.models.size > 1 || profile.hasMissingModel)) {
+    appendDetailRow(details, 'Model', model);
+  }
+
+  const source = normalizedValue(item.source);
+  if (source && profile.sources.size > 1) appendDetailRow(details, 'Source', source);
+  if (item.commit) appendDetailRow(details, 'Commit', item.commit);
+
+  return details;
 }
 
 function itemSort(a: ArmTimelineItem, b: ArmTimelineItem): number {
@@ -175,6 +239,7 @@ export function hydrateAgentsTimeline(root: ParentNode, timeline: ArmTimeline | 
 
   for (const lane of lanes) {
     const laneItems = items.filter((item) => item.lane === lane);
+    const detailProfile = laneDetailProfile(laneItems);
     const head = document.createElement('header');
     head.className = 'agents-work-row-head';
     head.appendChild(makeText('strong', '', lane));
@@ -191,16 +256,21 @@ export function hydrateAgentsTimeline(root: ParentNode, timeline: ArmTimeline | 
       const left = ((start - windowStartMs) / (windowEndMs - windowStartMs)) * 100;
       const width = Math.max(1.4, ((end - start) / (windowEndMs - windowStartMs)) * 100);
       const card = document.createElement(item.url ? 'a' : 'article');
-      card.className = 'agents-work-item agents-work-item--' + item.kind;
+      const failed = isFailureStatus(item.status);
+      card.className = 'agents-work-item agents-work-item--' + item.kind + (failed ? ' agents-work-item--failed' : '');
       if (item.url && card instanceof HTMLAnchorElement) {
         card.href = item.url;
         card.target = '_blank';
         card.rel = 'noopener noreferrer';
       }
+      card.tabIndex = 0;
+      card.dataset.status = normalizedValue(item.status || item.kind);
       card.style.left = left.toFixed(3) + '%';
       card.style.width = width.toFixed(3) + '%';
       card.setAttribute('aria-label', item.title + ', ' + formatUtcDateTime(item.startMs) + ' to ' + formatUtcDateTime(item.endMs));
       card.appendChild(makeText('strong', '', item.title));
+      if (failed) card.appendChild(makeText('span', 'agents-work-fail-badge', 'FAILED'));
+      card.appendChild(makeItemDetails(item, detailProfile));
       track.appendChild(card);
     }
     scroll.appendChild(track);

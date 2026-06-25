@@ -845,11 +845,35 @@ body.tab-agents .section-nav {
   background: var(--bg);
   box-shadow: var(--shadow-sm);
   color: inherit;
+  overflow: visible;
   text-decoration: none;
+  z-index: 1;
 }
 
 .agents-work-item--scheduled {
   background: var(--bg-secondary);
+}
+
+.agents-work-item--failed {
+  border-color: #b91c1c;
+}
+
+.agents-work-item:hover,
+.agents-work-item:focus-within {
+  top: 6px;
+  min-width: 250px;
+  height: auto;
+  min-height: 72px;
+  align-content: start;
+  background: var(--bg);
+  border-color: var(--text-tertiary);
+  box-shadow: var(--shadow);
+  z-index: 12;
+}
+
+.agents-work-item:focus {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 0;
 }
 
 .agents-work-item strong {
@@ -863,6 +887,57 @@ body.tab-agents .section-nav {
   color: var(--text);
   font-size: 0.8rem;
   line-height: 1.15;
+}
+
+.agents-work-fail-badge {
+  margin-top: 2px;
+  color: #b91c1c;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.agents-work-details {
+  display: none;
+  gap: 3px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border-light);
+}
+
+.agents-work-item:hover .agents-work-details,
+.agents-work-item:focus .agents-work-details,
+.agents-work-item:focus-within .agents-work-details {
+  display: grid;
+}
+
+.agents-work-detail-row {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  gap: 8px;
+  min-width: 0;
+  color: var(--text-tertiary);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.agents-work-detail-row dt,
+.agents-work-detail-row dd {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.agents-work-detail-row dt {
+  text-transform: uppercase;
+}
+
+.agents-work-detail-row dd {
+  color: var(--text-secondary);
 }
 
 @media (max-width: 760px) {
