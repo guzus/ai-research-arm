@@ -70,6 +70,8 @@ const METRICS = [
   ['latest', '19:57'],
 ];
 
+const MODEL_NAME = 'kimi-k2p7';
+
 function renderClip(track: AgentTrack, clip: AgentClip): string {
   return [
     '<article class="agents-lite-clip ' + clip.className + '" aria-label="' + escapeHtml(track.name + ': ' + clip.title) + '">',
@@ -113,6 +115,10 @@ export function renderAgentsStudioHtml(): string {
     '      <div>',
     '        <div class="content-card-title">Agent workers</div>',
     '        <p>Parallel research work, shown as tracks and task spans.</p>',
+    '        <dl class="agents-lite-model">',
+    '          <dt>model</dt>',
+    '          <dd>' + escapeHtml(MODEL_NAME) + '</dd>',
+    '        </dl>',
     '      </div>',
     '      <div class="agents-lite-metrics">' + renderMetrics() + '</div>',
     '    </div>',
