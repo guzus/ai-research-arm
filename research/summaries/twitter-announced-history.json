@@ -11229,5 +11229,47 @@
     "headline": "CURSOR SHIPS COMPOSER 3 \u2014 1.5T PARAMETER MODEL TRAINED FROM SCRATCH ON XAI'S COLOSSUS, SHIPS 'WITHIN WEEKS'",
     "source": "@mycomradio",
     "url": "https://x.com/mycomradio/status/2069980898947170708"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-26 00:59 UTC",
+    "headline": "GLM-5.2 SURPASSES OPUS 4.8 ON CODE ARENA FRONTEND \u2014 1595, WITHIN 70 PTS OF FABLE 5",
+    "source": "@arena",
+    "url": "https://x.com/arena/status/2070155847606571286"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-26 00:59 UTC",
+    "headline": "GOOGLE FOLDS COMPUTER USE INTO GEMINI 3.5 FLASH \u2014 NATIVE CAPABILITY ON THE CHEAP TIER",
+    "source": "@Google",
+    "url": "https://x.com/Google/status/2070155847606571286"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-26 00:59 UTC",
+    "headline": "PCE INFLATION HITS 4.1% \u2014 THREE-YEAR HIGH; BITCOIN TO $58K AS MARKET SELLS OFF",
+    "source": "@Ajoobz",
+    "url": "https://x.com/Ajoobz/status/2070159327779537073"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-26 00:59 UTC",
+    "headline": "APPLE RAISES MAC AND IPAD PRICES 15-25% OVERNIGHT \u2014 BLAMED ON MEMORY COST INFLATION",
+    "source": "@Blackintus",
+    "url": "https://x.com/Blackintus/status/2070153831261532599"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-26 00:59 UTC",
+    "headline": "DEEPSEEK PLANS TO DOUBLE STAFF ACROSS ALL DEPARTMENTS AFTER $7.4B FUNDRAISING PUSH",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2070116134206947685"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-26 00:59 UTC",
+    "headline": "OPENROUTER LAUNCHES BENCHMARKS API \u2014 RANKS GLM-5.2 BEST FOR CODING AND DESIGN",
+    "source": "@OpenRouter",
+    "url": "https://x.com/OpenRouter/status/2070136524607074426"
   }
 ]
