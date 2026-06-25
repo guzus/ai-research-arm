@@ -201,8 +201,6 @@ export function hydrateAgentsTimeline(root: ParentNode, timeline: ArmTimeline | 
       card.style.width = width.toFixed(3) + '%';
       card.setAttribute('aria-label', item.title + ', ' + formatUtcDateTime(item.startMs) + ' to ' + formatUtcDateTime(item.endMs));
       card.appendChild(makeText('strong', '', item.title));
-      card.appendChild(makeText('span', '', formatUtcTime(item.startMs) + '-' + formatUtcTime(item.endMs) + ' UTC'));
-      card.appendChild(makeText('em', '', item.status + ' · ' + item.source));
       track.appendChild(card);
     }
     scroll.appendChild(track);

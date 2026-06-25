@@ -834,16 +834,14 @@ body.tab-agents .section-nav {
 
 .agents-work-item {
   position: absolute;
-  top: 14px;
+  top: 21px;
   min-width: 132px;
-  height: 56px;
+  height: 42px;
   display: grid;
   align-content: center;
-  gap: 3px;
-  padding: 7px 10px;
+  padding: 8px 10px;
   border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
-  border-radius: 8px;
+  border-radius: 0;
   background: var(--bg);
   box-shadow: var(--shadow-sm);
   color: inherit;
@@ -851,13 +849,10 @@ body.tab-agents .section-nav {
 }
 
 .agents-work-item--scheduled {
-  border-left-color: var(--text-tertiary);
   background: var(--bg-secondary);
 }
 
-.agents-work-item strong,
-.agents-work-item span,
-.agents-work-item em {
+.agents-work-item strong {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -868,17 +863,6 @@ body.tab-agents .section-nav {
   color: var(--text);
   font-size: 0.8rem;
   line-height: 1.15;
-}
-
-.agents-work-item span,
-.agents-work-item em {
-  color: var(--text-tertiary);
-  font-size: 0.68rem;
-  font-style: normal;
-  font-weight: 650;
-  letter-spacing: 0;
-  line-height: 1.2;
-  text-transform: uppercase;
 }
 
 @media (max-width: 760px) {
