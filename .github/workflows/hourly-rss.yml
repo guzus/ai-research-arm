@@ -145,12 +145,17 @@ jobs:
           echo "RSS feeds fetched successfully"
           ls -la /tmp/rss/
 
-      - name: Process RSS Feeds with Claude
-        uses: anthropics/claude-code-action@v1
+      - name: Process RSS Feeds with Fireworks
+        uses: ./.github/actions/agent-run
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
-            --model haiku --allowedTools "Read,Write,Edit,Bash(git:*)"
+          backend: fireworks-deepseek-v4-flash
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*)"
+          expected-paths: |
+            research/rss/
+          label: RSS Fireworks processor
           prompt: |
             You are an RSS feed processor for AI news. Extract NEW articles from official sources.
 

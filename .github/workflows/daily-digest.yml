@@ -125,12 +125,18 @@ jobs:
 
       - name: Synthesize Daily Digest (with MCP tools)
         if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
-        uses: anthropics/claude-code-action@v1
+        uses: ./.github/actions/agent-run
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
+          backend: fireworks-glm-5p2
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
             --model opus --mcp-config /tmp/mcp-config.json
             --allowedTools "Glob,Read,Write,Edit,Bash(git:*),mcp__exa__*,mcp__perplexity__*"
+          expected-paths: |
+            research/digest/
+            research/summaries/
+          label: Daily digest Fireworks synthesizer
           prompt: |
             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
 
@@ -222,13 +228,19 @@ jobs:
             git add research/digest/${{ steps.date.outputs.date }}-digest.md research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
-      - name: Synthesize Daily Digest (WebSearch fallback)
+      - name: Synthesize Daily Digest (local-source fallback)
         if: steps.check-keys.outputs.has_exa != 'true' && steps.check-keys.outputs.has_perplexity != 'true'
-        uses: anthropics/claude-code-action@v1
+        uses: ./.github/actions/agent-run
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
-            --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*),WebSearch"
+          backend: fireworks-glm-5p2
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
+            --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*)"
+          expected-paths: |
+            research/digest/
+            research/summaries/
+          label: Daily digest Fireworks local-source synthesizer
           prompt: |
             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
 
@@ -239,8 +251,10 @@ jobs:
             Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, blogs/, youtube/, perplexity/, and any others.
             Read all relevant files you find.
 
-            STEP 2: Use WebSearch to fill gaps
-            Search for any major AI news from today we might have missed.
+            STEP 2: Identify gaps from local sources
+            In this fallback path, no external MCP search provider is
+            configured. Do not use WebSearch. Synthesize from the local source
+            files only, and call out uncertainty when coverage is thin.
 
             STEP 3: Write the digest
             OUTPUT: research/digest/${{ steps.date.outputs.date }}-digest.md
@@ -318,14 +332,19 @@ jobs:
             git add research/digest/${{ steps.date.outputs.date }}-digest.md research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
-      - name: Rewrite summary as ARA spoken script (Claude Sonnet)
+      - name: Rewrite summary as ARA spoken script (Fireworks)
         if: success()
         continue-on-error: true
-        uses: anthropics/claude-code-action@v1
+        uses: ./.github/actions/agent-run
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
-            --model sonnet --allowedTools "Read,Write,Edit,Bash(git:*)"
+          backend: fireworks-deepseek-v4-flash
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*)"
+          expected-paths: |
+            research/summaries/
+          label: Digest spoken-script Fireworks rewrite
           prompt: |
             You are writing the daily ARA broadcast — a TWO-HOST AI-news podcast
             with banter between Speaker 1 (anchor, deep voice) and Speaker 2
@@ -394,7 +413,7 @@ jobs:
 
             STEP 4 — Commit:
             git add research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
-            git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA two-host, Claude Sonnet rewrite)" || echo "No changes"
+            git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA two-host Fireworks rewrite)" || echo "No changes"
 
       - name: Generate audio digest with Gemini 3.1 Flash TTS
         if: success()

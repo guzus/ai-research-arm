@@ -78,7 +78,7 @@ jobs:
       #
       # timeout-minutes mirrors the bump on 24h-model-timeline.yml /
       # generative-research.yml: a page-by-page CRUD loop with wiki_search
-      # dedup lookups, a validate loop, and occasional WebSearch
+      # dedup lookups, a validate loop, and source-file corroboration
       # corroboration can stretch on heavy news days. 90 min is well clear
       # of expected runs without leaving a quietly-hung job to chew runner
       # time forever.
@@ -105,19 +105,24 @@ jobs:
       # to job.status (and so hooker-telemetry's `if: always()` step still
       # fires). Without the inspect step, this flag would silently mask
       # timeouts as success.
-      - name: Ingest digest into wiki via Claude
+      - name: Ingest digest into wiki via Fireworks
         id: ingest
         timeout-minutes: 90
         continue-on-error: true
-        uses: anthropics/claude-code-action@v1
+        uses: ./.github/actions/agent-run
         env:
           DATE_TODAY: ${{ steps.datetime.outputs.date }}
           DATE_YESTERDAY: ${{ steps.datetime.outputs.yesterday }}
           TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
-            --model opus --max-turns 80 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),WebSearch,Task,TodoWrite"
+          backend: fireworks-glm-5p2
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
+            --model opus --max-turns 80 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),Task,TodoWrite"
+          expected-paths: |
+            research/wiki/
+          label: Wiki Fireworks ingest
           prompt: |
             You maintain the LLM Wiki: a compounding, interlinked knowledge
             base of markdown pages at research/wiki/. One page per
@@ -170,9 +175,10 @@ jobs:
               research/community/, research/arxiv/, or any other raw-source
               directory; the digest is the curated distillation of those and
               reading them again would re-introduce the noise the digest
-              exists to remove. Use WebSearch only sparingly, to disambiguate
-              or corroborate a single specific claim — never as a general
-              research pass.
+              exists to remove. Do not use WebSearch in this Fireworks-routed
+              lane; if a claim is not supported by the digest or model tickets,
+              leave it out or mark it as unresolved rather than expanding the
+              research scope.
 
             STEP 2 — EXTRACT SIGNIFICANT SUBJECTS (AND BOUND THE SET).
               From the curated input, pull the entities (companies, models,
@@ -284,22 +290,22 @@ jobs:
               - Write ONLY under research/wiki/. Do not touch the digest,
                 the tickets, the dashboard, or any other research subdir.
 
-      # Propagate the Claude step's outcome to job.status. With
-      # continue-on-error: true on the Claude step, a timeout/error would
+      # Propagate the agent step's outcome to job.status. With
+      # continue-on-error: true on the agent step, a timeout/error would
       # otherwise resolve to step.conclusion=success and hooker-telemetry
       # would report a green run. exit 1 here lets later `if: always()`
       # steps (telemetry) still fire while flipping job.status to failure
       # when it should be.
-      - name: Inspect Claude outcome
+      - name: Inspect Fireworks outcome
         if: always()
         env:
           OUTCOME: ${{ steps.ingest.outcome }}
         run: |
           if [ "$OUTCOME" = "failure" ]; then
-            echo "::error::Claude wiki-ingest step failed (timeout or error); failing the job so telemetry reports honestly."
+            echo "::error::Wiki Fireworks ingest step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
             exit 1
           fi
-          echo "Claude wiki-ingest step succeeded."
+          echo "Wiki Fireworks ingest step succeeded."
 
       # Mechanically enforce the "never delete a page" invariant. The prompt
       # says it, but a prompt is not a guarantee. Diff exactly the agent's

@@ -112,12 +112,16 @@ jobs:
             printf '# Bluesky AI Feed - %s\n' "$DATE" > "$FILE"
           fi
 
-      - name: Process Bluesky Feed with Claude
-        uses: anthropics/claude-code-action@v1
+      - name: Process Bluesky Feed with Fireworks
+        id: bluesky_agent
+        uses: ./.github/actions/agent-run
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
-            --model sonnet --allowedTools "Read,Write,Bash(ls:*)"
+          backend: fireworks-deepseek-v4-flash
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
+            --model opus --allowedTools "Read,Write,Bash(ls:*)"
+          label: Bluesky Fireworks curator
           prompt: |
             You are a Bluesky AI expert-commentary curator. Process recent
             posts from a small set of tracked AI researchers and practitioners.
@@ -336,6 +340,14 @@ jobs:
           else
             git commit -m "Bluesky feed ${TIMESTAMP}"
           fi
+
+      - name: Require Bluesky output
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.bluesky_agent.outputs.pre-sha }}
+          expected-paths: |
+            research/bluesky/
+          label: Bluesky Fireworks curator
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm).
       #

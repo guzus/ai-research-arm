@@ -11,8 +11,11 @@ short pointer plus the few genuinely agent-specific notes.
 
 ## Agent-specific notes
 
-- **Claude workflows** use `anthropics/claude-code-action@v1`. Pass the
-  model via `claude_args`, never as a separate `model:` input:
+- **Scheduled content workflows** use `.github/actions/agent-run` so the
+  provider route is modular and Fireworks-backed lanes can enforce committed
+  output. Direct Claude workflows may still use
+  `anthropics/claude-code-action@v1`; when they do, pass the model via
+  `claude_args`, never as a separate `model:` input:
 
   ```yaml
   # Correct (v1)
@@ -24,6 +27,12 @@ short pointer plus the few genuinely agent-specific notes.
 
   Reference: https://code.claude.com/docs/en/github-actions
   (action repo: https://github.com/anthropics/claude-code-action)
+
+- **Fireworks scheduled lanes** should select `fireworks-deepseek-v4-flash`
+  for high-frequency summarization and `fireworks-glm-5p2` for deeper CRUD or
+  synthesis work. Set `expected-paths` in `agent-run`, or call
+  `.github/actions/require-output` after deterministic commit steps, so green
+  no-op runs do not leave the freshness watchdog stale.
 
 - **Codex generative-research workflows** use the Codex CLI with
   ChatGPT-managed file auth, not OpenAI API billing. Seed the workflow
