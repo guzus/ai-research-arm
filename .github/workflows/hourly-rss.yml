@@ -145,7 +145,13 @@ jobs:
           echo "RSS feeds fetched successfully"
           ls -la /tmp/rss/
 
+      - name: Capture RSS output base
+        id: rss-output-base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       - name: Process RSS Feeds with Fireworks
+        id: rss-agent
+        continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
           backend: fireworks-deepseek-v4-flash
@@ -290,6 +296,27 @@ jobs:
             After writing:
             git add research/rss/
             git commit -m "RSS update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
+
+      - name: Deterministic RSS fallback
+        if: steps.rss-agent.outcome == 'failure'
+        run: |
+          set -euo pipefail
+          echo "::warning::RSS agent path failed; writing deterministic RSS fallback from fetched XML."
+          python3 scripts/deterministic_rss_digest.py \
+            --input-dir /tmp/rss \
+            --out-dir research/rss \
+            --date "${{ steps.datetime.outputs.date }}" \
+            --timestamp "${{ steps.datetime.outputs.timestamp }}"
+          git add research/rss/
+          git commit -m "RSS deterministic fallback ${{ steps.datetime.outputs.timestamp }}" || echo "No deterministic RSS changes"
+
+      - name: Require RSS output
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.rss-output-base.outputs.sha }}
+          expected-paths: |
+            research/rss/
+          label: RSS workflow output
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the
