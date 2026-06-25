@@ -1,5 +1,3 @@
-import { escapeHtml } from './shared';
-
 export type ArmTimelineItemKind = 'completed' | 'scheduled';
 
 export type ArmTimelineItem = {
@@ -24,7 +22,6 @@ export type ArmTimeline = {
   items: ArmTimelineItem[];
 };
 
-const MODEL_NAME = 'kimi-k2p7';
 const HOUR_MS = 60 * 60 * 1000;
 const MINUTE_MS = 60 * 1000;
 
@@ -80,10 +77,6 @@ export function renderAgentsStudioHtml(): string {
     '      <div>',
     '        <div class="content-card-title">Agent workers</div>',
     '        <p>Real completed and scheduled pipeline work, shown by UTC start and end time.</p>',
-    '        <dl class="agents-lite-model">',
-    '          <dt>model</dt>',
-    '          <dd>' + escapeHtml(MODEL_NAME) + '</dd>',
-    '        </dl>',
     '      </div>',
     '      <div class="agents-lite-metrics" id="armMetrics">',
     '        <div class="agents-lite-metric"><span>completed</span><strong>--</strong></div>',
