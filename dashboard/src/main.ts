@@ -12,7 +12,8 @@ import {
   truncateText,
   wrapTables,
 } from './render/shared';
-import { renderAgentsStudioHtml } from './render/agents';
+import { hydrateAgentsTimeline, renderAgentsStudioHtml } from './render/agents';
+import type { ArmTimeline } from './render/agents';
 import { renderTodayHtml } from './render/today';
 import {
   parseTwitterStories,
@@ -230,6 +231,7 @@ let researchDocCache: { slug: string; language: ResearchLanguage; body: string }
 let ticketsCache: Ticket[] | null = null;
 let ticketsPromise: Promise<Ticket[] | null> | null = null;
 let focusReaderData: FocusReaderData | null = null;
+let armTimelinePromise: Promise<ArmTimeline | null> | null = null;
 let focusReaderSelectedIndex = 0;
 let focusReaderSearchTerm = '';
 let focusReaderSurface: DesignSurface = 'digest';
@@ -588,6 +590,23 @@ async function loadManifest(): Promise<Manifest | null> {
     }
   })();
   return manifestPromise;
+}
+
+async function loadArmTimeline(signal?: AbortSignal): Promise<ArmTimeline | null> {
+  if (armTimelinePromise) return armTimelinePromise;
+  armTimelinePromise = (async () => {
+    try {
+      const resp = await fetch(`${DATA_BASE}/arm/timeline.json`, { cache: 'no-cache', signal });
+      if (!resp.ok) return null;
+      const data = await resp.json();
+      if (!data || !Array.isArray(data.items)) return null;
+      return data as ArmTimeline;
+    } catch {
+      if (signal?.aborted) armTimelinePromise = null;
+      return null;
+    }
+  })();
+  return armTimelinePromise;
 }
 
 function hydrateAvailabilityFromManifest(m: Manifest): void {
@@ -3288,6 +3307,10 @@ async function load(): Promise<void> {
   try {
     if (activeTab === 'agents') {
       renderAgentsStudio();
+      loadArmTimeline(controller.signal).then((timeline) => {
+        if (requestId !== loadRequestId || activeTab !== 'agents') return;
+        hydrateAgentsTimeline(content, timeline);
+      });
       renderCalendar();
       currentSection = 0;
       updateNavCounter();

@@ -28,7 +28,7 @@ const skipLfsPointers = process.env.SKIP_LFS_POINTERS === '1';
 // `wiki` carries research/wiki/ (committed index.json + entities/concepts/themes
 // markdown). The index is built in Python (scripts/build_wiki_index.py) and
 // committed — we only copy it here; we never rebuild it in JS.
-const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki', 'youtube'];
+const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki', 'youtube', 'arm'];
 
 // Regex patterns for the date-keyed sources. The `generative` key is
 // special-cased below: it reads research/generative/index.json directly.
@@ -40,6 +40,13 @@ const DATE_PATTERNS = {
   audio:     { dir: 'audio',      re: /^(\d{4}-\d{2}-\d{2})-digest\.mp3$/ },
   youtube:   { dir: 'youtube',    re: /^(\d{4}-\d{2}-\d{2})\.md$/ },
 };
+
+const ARM_WINDOW_PAST_HOURS = 36;
+const ARM_WINDOW_FUTURE_HOURS = 36;
+const ARM_MINUTE_MS = 60 * 1000;
+const ARM_HOUR_MS = 60 * ARM_MINUTE_MS;
+const armSourcePath = join(researchSrc, 'arm', 'timeline.json');
+const armPublicPath = join(publicResearch, 'arm', 'timeline.json');
 
 // Binary file extensions that are routed through git-lfs (see .gitattributes
 // at repo root). Anything else can be skipped — pointer-file detection is
@@ -236,6 +243,241 @@ function buildTicketsIndex() {
     (skipped > 0 ? `, ${skipped} skipped as malformed` : '') + ')',
     byStatus,
   );
+}
+
+function isoMinute(date) {
+  return new Date(Math.floor(date.getTime() / ARM_MINUTE_MS) * ARM_MINUTE_MS).toISOString();
+}
+
+function isoMinuteCeil(date) {
+  return new Date(Math.ceil(date.getTime() / ARM_MINUTE_MS) * ARM_MINUTE_MS).toISOString();
+}
+
+function parseSubjectUtc(subject) {
+  const m = subject.match(/(\d{4}-\d{2}-\d{2})\s+(\d{2}):(\d{2})\s+UTC/);
+  if (!m) return null;
+  const ms = Date.parse(`${m[1]}T${m[2]}:${m[3]}:00Z`);
+  return Number.isFinite(ms) ? new Date(ms) : null;
+}
+
+function subjectDetails(subject) {
+  if (/^RSS\b/i.test(subject)) return { lane: 'RSS', title: 'RSS official announcements', model: 'scheduled agent' };
+  if (/^Twitter \(DeepSeek\)/i.test(subject)) return { lane: 'Twitter/X', title: 'Twitter/X DeepSeek brief', model: 'deepseek-v4-flash' };
+  if (/^Twitter \(pi\+Fireworks\)/i.test(subject)) return { lane: 'Twitter/X', title: 'Twitter/X Fireworks pi brief', model: 'kimi-k2p7' };
+  if (/^Twitter\b/i.test(subject)) return { lane: 'Twitter/X', title: 'Twitter/X brief', model: 'deepseek-v4-flash' };
+  if (/^Track delivered Twitter/i.test(subject)) return { lane: 'Delivery', title: 'Twitter alert delivery', model: 'hooker' };
+  if (/^Community/i.test(subject)) return { lane: 'Community', title: 'HN + Reddit digest', model: 'scheduled agent' };
+  if (/^AI expert blog/i.test(subject)) return { lane: 'Blogs', title: 'AI expert blog watch', model: 'scheduled agent' };
+  if (/^Bluesky/i.test(subject)) return { lane: 'Bluesky', title: 'Bluesky commentary', model: 'scheduled agent' };
+  if (/^YouTube/i.test(subject)) return { lane: 'YouTube', title: 'YouTube signal', model: 'scheduled agent' };
+  if (/^Model tickets/i.test(subject)) return { lane: 'Models', title: 'Model release tickets', model: 'scheduled agent' };
+  if (/^arXiv/i.test(subject)) return { lane: 'arXiv', title: 'arXiv papers', model: 'scheduled agent' };
+  if (/^Wiki ingest/i.test(subject)) return { lane: 'Wiki', title: 'LLM wiki ingest', model: 'scheduled agent' };
+  if (/^Generative research:/i.test(subject)) return { lane: 'Generative', title: subject.replace(/^Generative research:\s*/i, '').slice(0, 96), model: 'research agent' };
+  if (/Arm|Agents|dashboard|frontend|visualization|tab/i.test(subject)) return { lane: 'Dashboard', title: subject.slice(0, 96), model: 'codex' };
+  return null;
+}
+
+function collectCompletedArmItems(now) {
+  const result = spawnSync('git', [
+    'log',
+    '--max-count=140',
+    '--pretty=format:%H%x09%cI%x09%an%x09%s',
+    '--',
+    '.',
+  ], {
+    cwd: repoRoot,
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  if (result.status !== 0 || !result.stdout.trim()) return null;
+  const cutoff = now.getTime() - (ARM_WINDOW_PAST_HOURS * ARM_HOUR_MS);
+  const items = [];
+  for (const line of result.stdout.split('\n')) {
+    const [sha, committedAt, author, ...subjectParts] = line.split('\t');
+    const subject = subjectParts.join('\t').trim();
+    const end = new Date(committedAt);
+    if (!sha || !subject || Number.isNaN(end.getTime()) || end.getTime() < cutoff) continue;
+    const details = subjectDetails(subject);
+    if (!details) continue;
+    const parsedStart = parseSubjectUtc(subject);
+    const fallbackMinutes = details.lane === 'Generative' ? 50 : details.lane === 'Dashboard' ? 20 : 8;
+    let start = parsedStart || new Date(end.getTime() - (fallbackMinutes * ARM_MINUTE_MS));
+    if (start.getTime() > end.getTime()) start = new Date(end.getTime() - (fallbackMinutes * ARM_MINUTE_MS));
+    if (end.getTime() - start.getTime() > 6 * ARM_HOUR_MS) start = new Date(end.getTime() - (fallbackMinutes * ARM_MINUTE_MS));
+    items.push({
+      id: `commit-${sha.slice(0, 12)}`,
+      kind: 'completed',
+      lane: details.lane,
+      title: details.title,
+      status: 'completed',
+      start: isoMinute(start),
+      end: isoMinuteCeil(end),
+      source: author || 'git commit',
+      model: details.model,
+      commit: sha.slice(0, 12),
+      url: `https://github.com/guzus/ai-research-arm/commit/${sha}`,
+    });
+  }
+  return items;
+}
+
+function parseCronField(field, min, max) {
+  const values = new Set();
+  for (const part of String(field).split(',')) {
+    const trimmed = part.trim();
+    if (trimmed === '*') {
+      for (let i = min; i <= max; i += 1) values.add(i);
+      continue;
+    }
+    const step = trimmed.match(/^\*\/(\d+)$/);
+    if (step) {
+      const n = Number(step[1]);
+      for (let i = min; i <= max; i += n) values.add(i);
+      continue;
+    }
+    const rangeStep = trimmed.match(/^(\d+)-(\d+)\/(\d+)$/);
+    if (rangeStep) {
+      const start = Number(rangeStep[1]);
+      const end = Number(rangeStep[2]);
+      const n = Number(rangeStep[3]);
+      for (let i = start; i <= end; i += n) if (i >= min && i <= max) values.add(i);
+      continue;
+    }
+    const range = trimmed.match(/^(\d+)-(\d+)$/);
+    if (range) {
+      for (let i = Number(range[1]); i <= Number(range[2]); i += 1) if (i >= min && i <= max) values.add(i);
+      continue;
+    }
+    const value = Number(trimmed);
+    if (Number.isInteger(value) && value >= min && value <= max) values.add(value);
+  }
+  return values;
+}
+
+function cronMatches(cron, date) {
+  const parts = cron.trim().split(/\s+/);
+  if (parts.length !== 5) return false;
+  const [minute, hour, dayOfMonth, month, dayOfWeek] = parts;
+  const tests = [
+    [parseCronField(minute, 0, 59), date.getUTCMinutes()],
+    [parseCronField(hour, 0, 23), date.getUTCHours()],
+    [parseCronField(dayOfMonth, 1, 31), date.getUTCDate()],
+    [parseCronField(month, 1, 12), date.getUTCMonth() + 1],
+    [parseCronField(dayOfWeek, 0, 7), date.getUTCDay()],
+  ];
+  return tests.every(([set, value], index) => {
+    if (index === 4 && set.has(7) && value === 0) return true;
+    return set.has(value);
+  });
+}
+
+function scheduledDurationMinutes(name, file) {
+  const key = `${name} ${file}`.toLowerCase();
+  if (key.includes('twitter')) return 60;
+  if (key.includes('digest')) return 60;
+  if (key.includes('community')) return 30;
+  if (key.includes('rss')) return 15;
+  if (key.includes('model')) return 45;
+  if (key.includes('blog')) return 30;
+  if (key.includes('arxiv')) return 30;
+  if (key.includes('youtube')) return 25;
+  if (key.includes('bluesky')) return 25;
+  if (key.includes('wiki')) return 30;
+  if (key.includes('liveness')) return 20;
+  return 30;
+}
+
+function scheduledLane(name, file) {
+  const key = `${name} ${file}`.toLowerCase();
+  if (key.includes('twitter')) return 'Twitter/X';
+  if (key.includes('rss')) return 'RSS';
+  if (key.includes('community')) return 'Community';
+  if (key.includes('blog')) return 'Blogs';
+  if (key.includes('arxiv')) return 'arXiv';
+  if (key.includes('youtube')) return 'YouTube';
+  if (key.includes('bluesky')) return 'Bluesky';
+  if (key.includes('model')) return 'Models';
+  if (key.includes('wiki')) return 'Wiki';
+  if (key.includes('digest')) return 'Digest';
+  return 'Scheduled';
+}
+
+function collectScheduledArmItems(now) {
+  const workflowsDir = join(repoRoot, '.github', 'workflows');
+  if (!existsSync(workflowsDir)) return [];
+  const windowEnd = now.getTime() + (ARM_WINDOW_FUTURE_HOURS * ARM_HOUR_MS);
+  const files = readdirSync(workflowsDir).filter((name) => name.endsWith('.yml') || name.endsWith('.yaml')).sort();
+  const items = [];
+  for (const file of files) {
+    const text = readFileSync(join(workflowsDir, file), 'utf8');
+    const name = (text.match(/^name:\s*(.+)$/m)?.[1] || file).trim().replace(/^['"]|['"]$/g, '');
+    const crons = Array.from(text.matchAll(/cron:\s*['"]([^'"]+)['"]/g)).map((m) => m[1]);
+    if (crons.length === 0) continue;
+    const duration = scheduledDurationMinutes(name, file);
+    const lane = scheduledLane(name, file);
+    for (const cron of crons) {
+      const cursor = new Date(Math.ceil(now.getTime() / ARM_MINUTE_MS) * ARM_MINUTE_MS);
+      for (let guard = 0; cursor.getTime() <= windowEnd && guard < ARM_WINDOW_FUTURE_HOURS * 60; guard += 1) {
+        if (cronMatches(cron, cursor)) {
+          const start = new Date(cursor);
+          const end = new Date(start.getTime() + duration * ARM_MINUTE_MS);
+          items.push({
+            id: `scheduled-${file}-${cron}-${start.toISOString()}`.replace(/[^a-zA-Z0-9_-]/g, '-'),
+            kind: 'scheduled',
+            lane,
+            title: name,
+            status: 'scheduled',
+            start: isoMinute(start),
+            end: isoMinuteCeil(end),
+            source: `cron ${cron}`,
+          });
+        }
+        cursor.setUTCMinutes(cursor.getUTCMinutes() + 1);
+      }
+    }
+  }
+  return items;
+}
+
+function readFallbackCompletedArmItems() {
+  if (!existsSync(armSourcePath)) return [];
+  try {
+    const data = JSON.parse(readFileSync(armSourcePath, 'utf8'));
+    return Array.isArray(data.items) ? data.items.filter((item) => item.kind === 'completed') : [];
+  } catch (e) {
+    console.warn(`prebuild: WARNING — failed to read arm timeline fallback: ${e.message}`);
+    return [];
+  }
+}
+
+function buildArmTimeline() {
+  const now = new Date();
+  const windowStart = new Date(Math.floor((now.getTime() - ARM_WINDOW_PAST_HOURS * ARM_HOUR_MS) / ARM_HOUR_MS) * ARM_HOUR_MS);
+  const windowEnd = new Date(Math.ceil((now.getTime() + ARM_WINDOW_FUTURE_HOURS * ARM_HOUR_MS) / ARM_HOUR_MS) * ARM_HOUR_MS);
+  const completed = collectCompletedArmItems(now) || readFallbackCompletedArmItems();
+  const scheduled = collectScheduledArmItems(now);
+  const items = [...completed, ...scheduled]
+    .filter((item) => Date.parse(item.end) >= windowStart.getTime() && Date.parse(item.start) <= windowEnd.getTime())
+    .sort((a, b) => String(a.start).localeCompare(String(b.start)) || String(a.title).localeCompare(String(b.title)));
+  const timeline = {
+    generatedAt: now.toISOString(),
+    windowStart: windowStart.toISOString(),
+    windowEnd: windowEnd.toISOString(),
+    timezone: 'UTC',
+    items,
+  };
+  mkdirSync(dirname(armPublicPath), { recursive: true });
+  writeFileSync(armPublicPath, JSON.stringify(timeline, null, 2));
+  if (process.env.ARM_TIMELINE_WRITE_SOURCE === '1') {
+    mkdirSync(dirname(armSourcePath), { recursive: true });
+    writeFileSync(armSourcePath, JSON.stringify(timeline, null, 2));
+  }
+  const byKind = items.reduce((acc, item) => {
+    acc[item.kind] = (acc[item.kind] || 0) + 1;
+    return acc;
+  }, {});
+  console.log(`prebuild: arm/timeline.json (${items.length} items)`, byKind);
 }
 
 function buildManifest() {
@@ -490,6 +732,7 @@ function buildSearchIndex() {
 }
 
 copyData();
+buildArmTimeline();
 buildTicketsIndex();
 buildManifest();
 buildSearchIndex();
