@@ -143,7 +143,7 @@ the Claude action directly; when they do, pass the model via
 
 | Workflow | Schedule | Output |
 |---|---|---|
-| `hourly-rss.yml` | `:30` every hour | `research/rss/` |
+| `hourly-rss.yml` | `:30` every 2h | `research/rss/` |
 | `daily-ai-blogs.yml` | `:13` every 6h | `research/blogs/` |
 | `daily-youtube.yml` | daily `23:20` for the next `00:00` digest | `research/youtube/` (tuber discovery + read-only summary/transcript evidence) |
 | `hourly-twitter.yml` | every 3h `:07`; primary lane uses Fireworks through `.github/actions/agent-run`; comparison lanes via matrix/manual dispatch | `research/twitter/` + `research/summaries/` + Telegram headline alerts; comparison outputs under `research/twitter-deepseek/`, `research/twitter-deepseek-pi/`, and `research/twitter-fireworks-pi/` |

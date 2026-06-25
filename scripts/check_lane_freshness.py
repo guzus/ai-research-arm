@@ -47,7 +47,7 @@ from typing import Callable, Optional
 # (twitter-deepseek*, twitter-viral) are intentionally excluded: they
 # have no fixed cadence, so staleness is not a meaningful signal there.
 LANE_THRESHOLDS_HOURS: dict[str, float] = {
-    "rss": 4,           # hourly at :30
+    "rss": 8,           # every 2h at :30 — four missed cycles + runner slack
     "blogs": 15,        # every 6h at :13 (~2 missed cycles + runner slack)
     "twitter": 9,       # every 3h at :07
     "community": 11,    # every 4h at :19

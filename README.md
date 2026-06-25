@@ -44,7 +44,7 @@ infrastructure — see [What you can run vs. what needs accounts](#what-you-can-
 ```mermaid
 flowchart TB
     subgraph sources["📡 Real-Time Sources"]
-        RSS["🔗 RSS Feeds<br/><i>Hourly</i>"]
+        RSS["🔗 RSS Feeds<br/><i>Every 2h</i>"]
         Bluesky["🦋 Bluesky<br/><i>Daily</i>"]
         Reddit["🔴 Reddit<br/><i>Every 4h</i>"]
         HN["🟠 Hacker News<br/><i>Every 4h</i>"]
@@ -111,7 +111,7 @@ flowchart TB
 | Source | Method | Frequency | Real-time? |
 |--------|--------|-----------|------------|
 | **Twitter/X** | bird CLI (reviewed account manifest + 7 searches) | Every 3 hours | ✅ Yes |
-| **RSS Feeds** | Direct XML fetch | Hourly | ✅ Yes |
+| **RSS Feeds** | Direct XML fetch | Every 2 hours | ✅ Yes |
 | **Bluesky** | Public API | Daily | ✅ Yes |
 | **Reddit** | RSS feeds | Every 4 hours | ✅ Yes |
 | **Hacker News** | MCP Server | Every 4 hours | ✅ Yes |
@@ -128,8 +128,8 @@ gantt
     dateFormat HH:mm
     axisFormat %H:%M
 
-    section Hourly
-    RSS Feeds           :crit, 00:00, 1h
+    section Every 2h
+    RSS Feeds           :crit, 00:30, 2h
 
     section Every 3h
     Twitter/X           :active, 00:07, 3h
@@ -153,7 +153,7 @@ gantt
 
 | Workflow | Schedule | Source | Output |
 |----------|----------|--------|--------|
-| `hourly-rss.yml` | Every hour (:30) | Official blogs, TechCrunch, arXiv RSS | `research/rss/` |
+| `hourly-rss.yml` | Every 2 hours (:30) | Official blogs, TechCrunch, arXiv RSS | `research/rss/` |
 | `daily-ai-blogs.yml` | Every 6 hours (:13) | Curated KOL Substacks, expert blogs, research/operator blogs | `research/blogs/` |
 | `daily-youtube.yml` | Daily 23:20 UTC for the next 00:00 digest | tuber API trending/search/channel metadata, existing summaries, transcript probes | `research/youtube/` |
 | `2h-bluesky.yml` | Daily 00:11 UTC | Bluesky AI posts | `research/bluesky/` |
@@ -383,7 +383,7 @@ insiders; researchers, analysts, builders, and media.
 infrastructure & hardware, policy & safety, business & funding, open source &
 dev tools
 
-### RSS Feeds (Hourly)
+### RSS Feeds (Every 2 Hours)
 Official announcements from:
 - OpenAI Blog
 - Anthropic News
