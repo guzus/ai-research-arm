@@ -678,40 +678,6 @@ body.tab-agents .section-nav {
   letter-spacing: 0;
 }
 
-.agents-lite-model {
-  width: fit-content;
-  min-height: 32px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 12px 0 0;
-  padding: 6px 10px;
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-  background: var(--bg-secondary);
-}
-
-.agents-lite-model dt,
-.agents-lite-model dd {
-  margin: 0;
-}
-
-.agents-lite-model dt {
-  color: var(--text-tertiary);
-  font-size: 0.72rem;
-  font-weight: 650;
-  letter-spacing: 0;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.agents-lite-model dd {
-  color: var(--text);
-  font-size: 0.86rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
 .agents-lite-metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(88px, 1fr));
