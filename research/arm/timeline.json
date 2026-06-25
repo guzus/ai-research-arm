@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T14:33:53.715Z",
+  "generatedAt": "2026-06-25T14:47:35.224Z",
   "windowStart": "2026-06-24T02:00:00.000Z",
   "windowEnd": "2026-06-27T03:00:00.000Z",
   "timezone": "UTC",
@@ -289,6 +289,19 @@
       "model": "scheduled agent",
       "commit": "c3d7de7abb72",
       "url": "https://github.com/guzus/ai-research-arm/commit/c3d7de7abb72abb64ecc6c63e897cc8382645fec"
+    },
+    {
+      "id": "commit-7f600ed38d4f",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Render Arm tab from real work timeline",
+      "status": "completed",
+      "start": "2026-06-25T14:23:00.000Z",
+      "end": "2026-06-25T14:44:00.000Z",
+      "source": "guzus",
+      "model": "codex",
+      "commit": "7f600ed38d4f",
+      "url": "https://github.com/guzus/ai-research-arm/commit/7f600ed38d4fbeefd1e25e25b934d56ac66e73be"
     },
     {
       "id": "scheduled-hourly-twitter-yml-7---3-------2026-06-25T15-07-00-000Z",

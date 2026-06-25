@@ -440,23 +440,31 @@ function collectScheduledArmItems(now) {
   return items;
 }
 
-function readFallbackCompletedArmItems() {
-  if (!existsSync(armSourcePath)) return [];
-  try {
-    const data = JSON.parse(readFileSync(armSourcePath, 'utf8'));
-    return Array.isArray(data.items) ? data.items.filter((item) => item.kind === 'completed') : [];
-  } catch (e) {
-    console.warn(`prebuild: WARNING — failed to read arm timeline fallback: ${e.message}`);
-    return [];
+function readFallbackArmTimeline() {
+  for (const path of [armPublicPath, armSourcePath]) {
+    if (!existsSync(path)) continue;
+    try {
+      const data = JSON.parse(readFileSync(path, 'utf8'));
+      if (Array.isArray(data.items)) return data;
+    } catch (e) {
+      console.warn(`prebuild: WARNING — failed to read arm timeline fallback ${path}: ${e.message}`);
+    }
   }
+  return null;
 }
 
 function buildArmTimeline() {
   const now = new Date();
   const windowStart = new Date(Math.floor((now.getTime() - ARM_WINDOW_PAST_HOURS * ARM_HOUR_MS) / ARM_HOUR_MS) * ARM_HOUR_MS);
   const windowEnd = new Date(Math.ceil((now.getTime() + ARM_WINDOW_FUTURE_HOURS * ARM_HOUR_MS) / ARM_HOUR_MS) * ARM_HOUR_MS);
-  const completed = collectCompletedArmItems(now) || readFallbackCompletedArmItems();
-  const scheduled = collectScheduledArmItems(now);
+  const fallback = readFallbackArmTimeline();
+  const fallbackItems = Array.isArray(fallback?.items) ? fallback.items : [];
+  const completedFromGit = collectCompletedArmItems(now);
+  const scheduledFromWorkflows = collectScheduledArmItems(now);
+  const completed = completedFromGit || fallbackItems.filter((item) => item.kind === 'completed');
+  const scheduled = scheduledFromWorkflows.length > 0
+    ? scheduledFromWorkflows
+    : fallbackItems.filter((item) => item.kind === 'scheduled');
   const items = [...completed, ...scheduled]
     .filter((item) => Date.parse(item.end) >= windowStart.getTime() && Date.parse(item.start) <= windowEnd.getTime())
     .sort((a, b) => String(a.start).localeCompare(String(b.start)) || String(a.title).localeCompare(String(b.title)));
