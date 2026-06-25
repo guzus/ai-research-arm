@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-06-26 04:18 UTC
+
+CYCLE: GPT-5.6 Thinking surfaces in Enterprise tier; KPMG retracts AI-hallucinated report; Krea 2 goes open-weights.
+
+TOP STORIES:
+• GPT-5.6 Thinking spotted in Enterprise ChatGPT routing — model ID "gpt-5-6-thinking" live for some users, 5+ independent reports [⚠]
+• KPMG retracts report after FT/GPTZero exposed 15+ AI-hallucinated claims (UBS, NHS, Swiss Rail cases fabricated) — joins Deloitte and EY [✓]
+• Krea 2 open weights released — ranked #1 open-source TTI by LMSYS, ComfyUI + LoRA ready, competitive with closed models [✓]
+• $110B GenAI trailing-12-month revenue — Exponential View report ($175B annualized run rate) [⚠]
+
+WATCH: GPT-5.6 official confirmation or silence; KPMG client legal follow-up; PCE data 8:30AM ET.
+
+Full update on GitHub.
