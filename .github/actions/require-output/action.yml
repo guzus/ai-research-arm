@@ -1,0 +1,85 @@
+name: Require output changes
+description: Fail when a workflow run did not change the expected committed output paths.
+
+inputs:
+  base-sha:
+    description: Commit SHA captured before the producer ran.
+    required: true
+  expected-paths:
+    description: Newline-delimited git pathspecs that must change between base-sha and HEAD.
+    required: true
+  label:
+    description: Human-readable producer label for annotations.
+    required: false
+    default: agent run
+
+outputs:
+  changed:
+    description: "true when expected paths changed"
+    value: ${{ steps.guard.outputs.changed }}
+  changed-files:
+    description: Newline-delimited changed files under expected paths.
+    value: ${{ steps.guard.outputs.changed-files }}
+
+runs:
+  using: composite
+  steps:
+    - name: Check expected output diff
+      id: guard
+      shell: bash
+      env:
+        BASE_SHA: ${{ inputs.base-sha }}
+        EXPECTED_PATHS: ${{ inputs.expected-paths }}
+        LABEL: ${{ inputs.label }}
+      run: |
+        set -euo pipefail
+
+        if [ -z "${BASE_SHA:-}" ]; then
+          echo "::error::require-output needs a base-sha."
+          exit 1
+        fi
+        if ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
+          echo "::error::require-output base-sha is not a commit: ${BASE_SHA}"
+          exit 1
+        fi
+
+        pathspecs=()
+        while IFS= read -r pathspec; do
+          pathspec="${pathspec#"${pathspec%%[![:space:]]*}"}"
+          pathspec="${pathspec%"${pathspec##*[![:space:]]}"}"
+          [ -z "$pathspec" ] && continue
+          pathspecs+=("$pathspec")
+        done <<< "$EXPECTED_PATHS"
+
+        if [ "${#pathspecs[@]}" -eq 0 ]; then
+          echo "::error::require-output expected-paths is empty."
+          exit 1
+        fi
+
+        changed_files="$(git diff --name-only "${BASE_SHA}..HEAD" -- "${pathspecs[@]}" || true)"
+        if [ -z "$changed_files" ]; then
+          {
+            echo "::error::${LABEL} did not commit changes under expected path(s):"
+            printf '  - %s\n' "${pathspecs[@]}"
+            echo "HEAD: $(git rev-parse HEAD)"
+            echo "Status:"
+            git status --short
+          }
+          echo "changed=false" >> "$GITHUB_OUTPUT"
+          {
+            echo "changed-files<<__CHANGED_FILES__"
+            echo
+            echo "__CHANGED_FILES__"
+          } >> "$GITHUB_OUTPUT"
+          exit 1
+        fi
+
+        echo "changed=true" >> "$GITHUB_OUTPUT"
+        {
+          echo "changed-files<<__CHANGED_FILES__"
+          echo "$changed_files"
+          echo "__CHANGED_FILES__"
+        } >> "$GITHUB_OUTPUT"
+
+        echo "${LABEL} changed expected output files:"
+        echo "$changed_files"

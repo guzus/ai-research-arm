@@ -1,0 +1,179 @@
+name: ARA agent run
+description: Run a Claude-Code-compatible agent through native Claude or Fireworks and optionally require committed output.
+
+inputs:
+  backend:
+    description: claude, fireworks-deepseek-v4-flash, fireworks-glm-5p2, deepseek-v4-flash, or glm-5p2.
+    required: false
+    default: fireworks-deepseek-v4-flash
+  claude-code-oauth-token:
+    description: Claude Code OAuth token. Required by claude-code-action, even for Fireworks-routed runs.
+    required: true
+  fireworks-api-key:
+    description: Fireworks API key for Fireworks-routed backends.
+    required: false
+    default: ""
+  claude-args:
+    description: Arguments passed to claude-code-action.
+    required: true
+  prompt:
+    description: Prompt passed to claude-code-action.
+    required: true
+  expected-paths:
+    description: Optional newline-delimited git pathspecs that must change between pre-run HEAD and post-run HEAD.
+    required: false
+    default: ""
+  label:
+    description: Human-readable label for logs and output guard annotations.
+    required: false
+    default: agent run
+  allowed-bots:
+    description: Optional allowed_bots value for claude-code-action.
+    required: false
+    default: ""
+
+outputs:
+  pre-sha:
+    description: HEAD before the agent ran.
+    value: ${{ steps.pre.outputs.sha }}
+  post-sha:
+    description: HEAD after the agent ran.
+    value: ${{ steps.post.outputs.sha }}
+  backend:
+    description: Normalized backend selector.
+    value: ${{ steps.profile.outputs.backend }}
+  model-id:
+    description: Provider model id for Fireworks backends.
+    value: ${{ steps.profile.outputs.model-id }}
+  changed:
+    description: "true when expected-paths were provided and changed"
+    value: ${{ steps.guard.outputs.changed }}
+  changed-files:
+    description: Newline-delimited changed files under expected paths.
+    value: ${{ steps.guard.outputs.changed-files }}
+
+runs:
+  using: composite
+  steps:
+    - name: Capture pre-run HEAD
+      id: pre
+      shell: bash
+      run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+    - name: Resolve agent backend
+      id: profile
+      shell: bash
+      env:
+        BACKEND: ${{ inputs.backend }}
+      run: |
+        set -euo pipefail
+        case "$BACKEND" in
+          claude)
+            normalized="claude"
+            model_id=""
+            display_name="Claude"
+            ;;
+          fireworks-deepseek-v4-flash|deepseek-v4-flash|deepseek)
+            normalized="fireworks-deepseek-v4-flash"
+            model_id="accounts/fireworks/models/deepseek-v4-flash"
+            display_name="DeepSeek V4 Flash via Fireworks"
+            ;;
+          fireworks-glm-5p2|glm-5p2|glm)
+            normalized="fireworks-glm-5p2"
+            model_id="accounts/fireworks/models/glm-5p2"
+            display_name="GLM 5.2 via Fireworks"
+            ;;
+          *)
+            echo "::error::Unsupported ARA agent backend: $BACKEND"
+            exit 1
+            ;;
+        esac
+
+        {
+          echo "backend=$normalized"
+          echo "model-id=$model_id"
+          echo "display-name=$display_name"
+        } >> "$GITHUB_OUTPUT"
+        echo "ARA agent backend: $display_name"
+
+    - name: Preflight Fireworks backend
+      if: steps.profile.outputs.model-id != ''
+      shell: bash
+      env:
+        FIREWORKS_API_KEY: ${{ inputs.fireworks-api-key }}
+        FIREWORKS_MODEL_ID: ${{ steps.profile.outputs.model-id }}
+      run: |
+        set -euo pipefail
+        python3 scripts/check_fireworks_backend.py --model "$FIREWORKS_MODEL_ID"
+
+    - name: Run agent with Claude
+      if: steps.profile.outputs.backend == 'claude' && inputs.allowed-bots == ''
+      uses: anthropics/claude-code-action@v1
+      with:
+        claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
+        claude_args: ${{ inputs.claude-args }}
+        prompt: ${{ inputs.prompt }}
+
+    - name: Run agent with Claude
+      if: steps.profile.outputs.backend == 'claude' && inputs.allowed-bots != ''
+      uses: anthropics/claude-code-action@v1
+      with:
+        claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
+        allowed_bots: ${{ inputs.allowed-bots }}
+        claude_args: ${{ inputs.claude-args }}
+        prompt: ${{ inputs.prompt }}
+
+    - name: Run agent with Fireworks
+      if: steps.profile.outputs.model-id != '' && inputs.allowed-bots == ''
+      uses: anthropics/claude-code-action@v1
+      env:
+        ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
+        ANTHROPIC_API_KEY: ${{ inputs.fireworks-api-key }}
+        ANTHROPIC_AUTH_TOKEN: ${{ inputs.fireworks-api-key }}
+        ANTHROPIC_MODEL: ${{ steps.profile.outputs.model-id }}
+        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.profile.outputs.model-id }}
+        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.profile.outputs.model-id }}
+        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.profile.outputs.model-id }}
+        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.profile.outputs.model-id }}
+        CLAUDE_CODE_EFFORT_LEVEL: max
+        ARA_AGENT_BACKEND: ${{ steps.profile.outputs.backend }}
+        ARA_AGENT_MODEL_ID: ${{ steps.profile.outputs.model-id }}
+      with:
+        claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
+        claude_args: ${{ inputs.claude-args }}
+        prompt: ${{ inputs.prompt }}
+
+    - name: Run agent with Fireworks
+      if: steps.profile.outputs.model-id != '' && inputs.allowed-bots != ''
+      uses: anthropics/claude-code-action@v1
+      env:
+        ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
+        ANTHROPIC_API_KEY: ${{ inputs.fireworks-api-key }}
+        ANTHROPIC_AUTH_TOKEN: ${{ inputs.fireworks-api-key }}
+        ANTHROPIC_MODEL: ${{ steps.profile.outputs.model-id }}
+        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.profile.outputs.model-id }}
+        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.profile.outputs.model-id }}
+        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.profile.outputs.model-id }}
+        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.profile.outputs.model-id }}
+        CLAUDE_CODE_EFFORT_LEVEL: max
+        ARA_AGENT_BACKEND: ${{ steps.profile.outputs.backend }}
+        ARA_AGENT_MODEL_ID: ${{ steps.profile.outputs.model-id }}
+      with:
+        claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
+        allowed_bots: ${{ inputs.allowed-bots }}
+        claude_args: ${{ inputs.claude-args }}
+        prompt: ${{ inputs.prompt }}
+
+    - name: Capture post-run HEAD
+      id: post
+      shell: bash
+      run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+    - name: Require committed output
+      id: guard
+      if: inputs.expected-paths != ''
+      uses: ./.github/actions/require-output
+      with:
+        base-sha: ${{ steps.pre.outputs.sha }}
+        expected-paths: ${{ inputs.expected-paths }}
+        label: ${{ inputs.label }}

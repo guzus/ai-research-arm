@@ -124,13 +124,18 @@ jobs:
           }
           EOF
 
-      - name: Process Community Data with Claude
-        uses: anthropics/claude-code-action@v1
+      - name: Process Community Data with Fireworks
+        uses: ./.github/actions/agent-run
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
-            --model sonnet --mcp-config /tmp/mcp-config.json
+          backend: fireworks-glm-5p2
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
+            --model opus --mcp-config /tmp/mcp-config.json
             --allowedTools "Read,Write,Edit,Bash(git:*),mcp__hackernews__*"
+          expected-paths: |
+            research/community/
+          label: Community Fireworks processor
           prompt: |
             You are a community AI news curator. Process REAL-TIME data from HN and Reddit.
 

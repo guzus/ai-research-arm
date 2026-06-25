@@ -1,7 +1,8 @@
 name: Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / fireworks-pi)
 
 # Unified Twitter/X pipeline that fans out across four backend tiers:
-#   - claude            (cron '7 */3 * * *', model: opus,             output → research/twitter/)
+#   - claude            (cron '7 */3 * * *', model: DeepSeek V4 Flash via Fireworks,
+#                        output → research/twitter/)
 #   - deepseek-claude-code (cron '37 */6 * * *', model: deepseek-v4-flash via Fireworks, output → research/twitter-deepseek/)
 #   - deepseek-pi       (manual only,        model: deepseek-v4-flash via Fireworks + pi harness,
 #                        output → research/twitter-deepseek-pi/)
@@ -26,11 +27,11 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / 
 #   - legacy DeepSeek pi tier              (DeepSeek via pi harness)
 #
 # Required secrets:
-#   CLAUDE_CODE_OAUTH_TOKEN              — claude tier (also passed to deepseek-claude-code but unused there)
-#   FIREWORKS_API_KEY                    — deepseek-claude-code, deepseek-pi, fireworks-pi tiers (all served via Fireworks)
+#   CLAUDE_CODE_OAUTH_TOKEN              — required by claude-code-action wrapper
+#   FIREWORKS_API_KEY                    — primary claude-labeled tier and comparison tiers
 #   BIRD_AUTH_TOKEN, BIRD_CT0            — all tiers
-#   HOOKER_URL, HOOKER_TOKEN             — claude tier (headline-alert blast + telemetry) and comparison tiers (per-cycle notification, relayed to Telegram)
-#   VERCEL_DEPLOY_HOOK                   — optional, claude tier only
+#   HOOKER_URL, HOOKER_TOKEN             — primary tier (headline-alert blast + telemetry) and comparison tiers (per-cycle notification, relayed to Telegram)
+#   VERCEL_DEPLOY_HOOK                   — optional, primary tier only
 
 on:
   schedule:
@@ -366,43 +367,40 @@ jobs:
 
       # ── LLM step (one per backend) ─────────────────────────────────
 
-      - name: Process tweets with Claude (claude tier)
+      - name: Process tweets with Fireworks (primary tier)
         if: >-
           steps.backend.outputs.name == 'claude'
           && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
-        uses: anthropics/claude-code-action@v1
+        uses: ./.github/actions/agent-run
         env:
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
+          backend: fireworks-deepseek-v4-flash
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*),Bash(bird-fast:*),Bash(curl:*),Bash(jq:*)"
+          expected-paths: |
+            research/twitter/
+          label: Twitter primary Fireworks processor
           prompt: ${{ steps.render.outputs.prompt }}
 
       - name: Process tweets with DeepSeek v4 Flash via Fireworks (deepseek-claude-code tier)
         if: steps.backend.outputs.name == 'deepseek-claude-code'
-        uses: anthropics/claude-code-action@v1
+        uses: ./.github/actions/agent-run
         env:
-          # Redirect Claude Code CLI to Fireworks' Anthropic-compatible endpoint,
-          # which serves DeepSeek V4 Flash. Base URL omits /v1 — the client
-          # appends /v1/messages. The direct DeepSeek API is no longer used.
-          # See https://docs.fireworks.ai/tools-sdks/anthropic-compatibility
-          ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
-          ANTHROPIC_AUTH_TOKEN: ${{ secrets.FIREWORKS_API_KEY }}
-          ANTHROPIC_MODEL: accounts/fireworks/models/deepseek-v4-flash
-          ANTHROPIC_DEFAULT_OPUS_MODEL: accounts/fireworks/models/deepseek-v4-flash
-          ANTHROPIC_DEFAULT_SONNET_MODEL: accounts/fireworks/models/deepseek-v4-flash
-          ANTHROPIC_DEFAULT_HAIKU_MODEL: accounts/fireworks/models/deepseek-v4-flash
-          CLAUDE_CODE_SUBAGENT_MODEL: accounts/fireworks/models/deepseek-v4-flash
-          CLAUDE_CODE_EFFORT_LEVEL: max
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
         with:
-          # Required by the action but ignored when ANTHROPIC_AUTH_TOKEN is set.
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
+          backend: fireworks-deepseek-v4-flash
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*),Bash(bird-fast:*),Bash(curl:*),Bash(jq:*)"
+          expected-paths: |
+            research/twitter-deepseek/
+          label: Twitter DeepSeek comparison processor
           prompt: ${{ steps.render.outputs.prompt }}
 
       - name: Process tweets with pi + DeepSeek v4 Flash via Fireworks (deepseek-pi tier)
@@ -579,25 +577,27 @@ jobs:
           echo "count=$COUNT" >> "$GITHUB_OUTPUT"
           echo "Shortlisted $COUNT contested-band headline(s) for the judge."
 
-      # ── claude-tier agent dedupe gate (steps 2/4: Haiku adjudicates) ──
-      # Final gate: Haiku rules on each shortlisted headline vs its <=5
+      # ── primary-tier agent dedupe gate (steps 2/4: Fireworks adjudicates) ──
+      # Final gate: the Fireworks-backed agent rules on each shortlisted headline vs its <=5
       # nearest priors. Bias is hard toward KEEP — it may only turn a
-      # would-be send into a suppress, on a HIGH-confidence duplicate. Native
-      # Claude via the same OAuth token + action pattern used elsewhere in
-      # this job. continue-on-error so a model hiccup fails OPEN (no verdicts
-      # -> nothing suppressed). Skipped when the shortlist is empty.
-      - name: Adjudicate near-duplicate headlines with Haiku (claude tier)
+      # would-be send into a suppress, on a HIGH-confidence duplicate.
+      # continue-on-error so a model hiccup fails OPEN (no verdicts -> nothing
+      # suppressed). Skipped when the shortlist is empty.
+      - name: Adjudicate near-duplicate headlines with Fireworks (primary tier)
         id: judge_adjudicate
         if: >-
           steps.backend.outputs.name == 'claude'
           && steps.judge_shortlist.outputs.count != '0'
           && steps.judge_shortlist.outputs.count != ''
         continue-on-error: true
-        uses: anthropics/claude-code-action@v1
+        uses: ./.github/actions/agent-run
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
-            --model haiku --max-turns 12 --allowedTools "Read,Write"
+          backend: fireworks-deepseek-v4-flash
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
+            --model opus --max-turns 12 --allowedTools "Read,Write"
+          label: Twitter headline Fireworks judge
           prompt: |
             You are the final duplicate gate for an AI-news headline alert
             feed. Reason from FIRST PRINCIPLES: judge whether two headlines
@@ -1142,19 +1142,22 @@ jobs:
             echo "Auto-research budget available — proceeding to topic selection."
           fi
 
-      - name: Auto-research topic selection (claude tier)
+      - name: Auto-research topic selection (primary Fireworks tier)
         id: autoresearch_select
         if: >-
           steps.backend.outputs.name == 'claude'
           && steps.autoresearch_throttle.outputs.skip == 'false'
         continue-on-error: true
-        uses: anthropics/claude-code-action@v1
+        uses: ./.github/actions/agent-run
         env:
           GEN_TOPIC_DATE: ${{ steps.datetime.outputs.date }}
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
+          backend: fireworks-glm-5p2
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
             --model opus --max-turns 10 --allowedTools "Read,Bash(ls:*),Bash(cat:*),Bash(jq:*),Bash(date:*),Bash(printenv:*),Write"
+          label: Twitter auto-research Fireworks selector
           prompt: |
             You select AT MOST ONE topic from today's Twitter AI Pulse to
             dispatch to the generative-research deep pipeline (4500–7000

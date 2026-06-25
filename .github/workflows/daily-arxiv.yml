@@ -49,12 +49,17 @@ jobs:
           EOF
 
       - name: Fetch arXiv AI Papers
-        uses: anthropics/claude-code-action@v1
+        uses: ./.github/actions/agent-run
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
+          backend: fireworks-glm-5p2
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
             --model opus --mcp-config /tmp/mcp-config.json
-            --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch,mcp__arxiv__*"
+            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__arxiv__*"
+          expected-paths: |
+            research/arxiv/
+          label: arXiv Fireworks curator
           prompt: |
             You are an AI research paper curator. Find the most important NEW papers from arXiv.
 
@@ -68,7 +73,7 @@ jobs:
             - cs.CV (Computer Vision)
             - cs.NE (Neural and Evolutionary Computing)
 
-            Use arXiv MCP tools AND WebSearch:
+            Use arXiv MCP tools:
             - Search for papers submitted in last 24 hours
             - "site:arxiv.org cs.AI" submitted today
             - "site:arxiv.org LLM language model" new

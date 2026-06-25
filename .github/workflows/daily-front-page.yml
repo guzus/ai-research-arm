@@ -106,6 +106,11 @@ jobs:
         with:
           enable-cache: true
 
+      - name: Capture pre-render HEAD
+        if: steps.check.outputs.exists == 'true'
+        id: pre_render
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       # resvg is the renderer's only native dependency (prebuilt napi binary,
       # no Chromium/X11 libs). Text uses system fonts: the Cloud Run worker
       # image carries fonts-dejavu-core via ffmpeg's fontconfig dependency.
@@ -178,6 +183,15 @@ jobs:
           else
             git commit -m "Front page ${TODAY}"
           fi
+
+      - name: Require front page output
+        if: steps.check.outputs.exists == 'true'
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.pre_render.outputs.sha }}
+          expected-paths: |
+            research/front-page/
+          label: Front page renderer
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the

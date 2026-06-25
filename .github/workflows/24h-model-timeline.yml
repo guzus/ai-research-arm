@@ -102,7 +102,7 @@ jobs:
       # and dedup protocol.
       # timeout-minutes mirrors the bump made on generative-research.yml
       # after the 2026-05-19 cluster of 45-min wall-clock failures. The
-      # CRUD agent does ~20 ticket reads + WebSearch corroborations +
+      # CRUD agent does ~20 ticket reads + source-file corroboration +
       # validate-loop, which can stretch on heavy news days. 90 min is
       # well clear of observed runs (~10-25 min) without leaving a
       # quietly-hung job to chew runner time forever.
@@ -112,19 +112,24 @@ jobs:
       # surface to job.status (and so hooker-telemetry's `if: always()`
       # step still fires). Without the inspect step, this flag would
       # silently mask timeouts as success — see the inspect step.
-      - name: CRUD model tickets via Claude
+      - name: CRUD model tickets via Fireworks
         id: crud
         timeout-minutes: 90
         continue-on-error: true
-        uses: anthropics/claude-code-action@v1
+        uses: ./.github/actions/agent-run
         env:
           DATE_TODAY: ${{ steps.datetime.outputs.date }}
           DATE_YESTERDAY: ${{ steps.datetime.outputs.yesterday }}
           TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
-            --model opus --max-turns 60 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),WebSearch,Task,TodoWrite"
+          backend: fireworks-glm-5p2
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          claude-args: |
+            --model opus --max-turns 60 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),Bash(curl:*),Task,TodoWrite"
+          expected-paths: |
+            research/models/
+          label: Model-ticket Fireworks CRUD
           prompt: |
             You maintain a persistent set of model-release tickets. Each
             ticket tracks one shipping artifact (a model release, a
@@ -164,9 +169,10 @@ jobs:
             STEP 2 — INGEST RAW SIGNAL.
               The bird CLI dropped JSON files at /tmp/bird/*.json. Read
               them. The data is messy and partly redundant; that's
-              expected. Use WebSearch sparingly to corroborate or
-              clarify a specific claim — not as a general research
-              pass. Watch for:
+              expected. Use the source URLs and quoted evidence already
+              present in the JSON; if a specific source URL is available, you
+              may use `curl` to corroborate that URL. Do not use WebSearch.
+              Watch for:
                 - Model leaks (GCP / AWS / iOS app / docs URL artifacts)
                 - Official announcements (company handles, blogs)
                 - Pricing / context / tier reveals
@@ -253,22 +259,22 @@ jobs:
               - Do not write outside research/models/tickets/ and the
                 single daily-diff file in research/models/.
 
-      # Propagate the Claude step's outcome to job.status. With
-      # continue-on-error: true on the Claude step, a timeout/error
+      # Propagate the agent step's outcome to job.status. With
+      # continue-on-error: true on the agent step, a timeout/error
       # would otherwise resolve to step.conclusion=success and
       # hooker-telemetry would report a green run. exit 1 here lets
       # later `if: always()` steps (telemetry) still fire while flipping
       # job.status to failure when it should be.
-      - name: Inspect Claude outcome
+      - name: Inspect Fireworks outcome
         if: always()
         env:
           OUTCOME: ${{ steps.crud.outcome }}
         run: |
           if [ "$OUTCOME" = "failure" ]; then
-            echo "::error::Claude CRUD step failed (timeout or error); failing the job so telemetry reports honestly."
+            echo "::error::Model-ticket Fireworks CRUD step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
             exit 1
           fi
-          echo "Claude CRUD step succeeded."
+          echo "Model-ticket Fireworks CRUD step succeeded."
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the
