@@ -152,7 +152,7 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           claude-args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*)"
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(ls:*),Bash(cat:*)"
           expected-paths: |
             research/rss/
           label: RSS Fireworks processor
