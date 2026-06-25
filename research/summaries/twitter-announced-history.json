@@ -11180,5 +11180,54 @@
     "headline": "MICRON STRIKES MULTI-YEAR HBM/DRAM/SSD DEAL WITH ANTHROPIC, ALSO A SERIES H INVESTOR",
     "source": "@ns123abc",
     "url": "https://x.com/i/status/2069065429201359037"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-25 22:01 UTC",
+    "headline": "FABLE 5 BACK IN AWS BEDROCK \u2014 WEEKLY BUNDLED USAGE CONFIRMED IN CLAUDE CODE BINARIES, US ID GATE REQUIRED",
+    "source": "@chetaslua",
+    "url": "https://x.com/chetaslua/status/2070109349155103089"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-25 22:01 UTC",
+    "headline": "GPT-5.6-PREVIEW SPOTTED IN OPENAI INTERNAL ADMIN ROUTES \u2014 TWO INDEPENDENT LEAKERS, HISTORIC 'PREVIEW' LABEL SIGNALS CAPABILITY JUMP",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2070086908235874450"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-25 22:01 UTC",
+    "headline": "ANTHROPIC ACCUSES ALIBABA OF LARGEST-EVER DISTILLATION ATTACK: 25K FAKE ACCOUNTS, 28.8M CLAUDE EXCHANGES, LETTER TO US SENATE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2069879640835961277"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-25 22:01 UTC",
+    "headline": "ALIBABA STOCK -4.9% TO 16-MONTH LOW AFTER ANTHROPIC DISTILLATION ACCUSATION",
+    "source": "@CarringtinRidge",
+    "url": "https://x.com/CarringtinRidge/status/2070051698106646861"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-25 22:01 UTC",
+    "headline": "OPENAI'S JALAPE\u00d1O INFERENCE CHIP DELIVERS 50% COST SAVINGS IN EARLY TESTS \u2014 BROADCOM CEO, 9-MONTH TAPE-OUT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2069770172802773292"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-25 22:01 UTC",
+    "headline": "NVIDIA DFLASH OPEN-SOURCED \u2014 BLOCK DIFFUSION SPECULATIVE DECODING, UP TO 15\u00d7 THROUGHPUT ON BLACKWELL",
+    "source": "@arsh_goyal",
+    "url": "https://x.com/arsh_goyal/status/2070029887407284303"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-25 22:01 UTC",
+    "headline": "CURSOR SHIPS COMPOSER 3 \u2014 1.5T PARAMETER MODEL TRAINED FROM SCRATCH ON XAI'S COLOSSUS, SHIPS 'WITHIN WEEKS'",
+    "source": "@mycomradio",
+    "url": "https://x.com/mycomradio/status/2069980898947170708"
   }
 ]
