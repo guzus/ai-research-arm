@@ -11299,5 +11299,40 @@
     "headline": "OPENAI UNVEILS JALAPE\u00d1O \u2014 FIRST CUSTOM AI INFERENCE CHIP, 50% COST SAVINGS VIA BROADCOM (RETROACTIVE)",
     "source": "@OpenAI",
     "url": "https://x.com/OpenAI/status/2069770172802773292"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-26 13:37 UTC",
+    "headline": "TRUMP ADMIN ASKS OPENAI TO STAGGER GPT-5.6 RELEASE \u2014 GOV TO APPROVE CUSTOMERS ONE-BY-ONE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2070243181283737874"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-06-26 13:37 UTC",
+    "headline": "SAM ALTMAN TOLD STAFF GPT-5.6 LIMITED PREVIEW WITH CUSTOMER-BY-CUSTOMER GOV APPROVAL",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2070245282026319945"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-26 13:37 UTC",
+    "headline": "IBM UNVEILS WORLD'S FIRST SUB-1NM CHIP \u2014 0.7NM NANOSTACK, 100B TRANSISTORS, 5 YRS OUT",
+    "source": "@IBMNews",
+    "url": "https://x.com/IBMNews/status/2070100944017092734"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-26 13:37 UTC",
+    "headline": "AI HARDWARE INFLATION SPREADS \u2014 ASUS, DELL, HP, ALIBABA CLOUD ALL RAISING PRICES",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2070212168566677640"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-26 13:37 UTC",
+    "headline": "NOAM SHAZEER LEFT GOOGLE OVER COMPUTE REALLOCATION, PER THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2070241539528249402"
   }
 ]
