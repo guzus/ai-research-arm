@@ -769,5 +769,17 @@
       "safety",
       "google"
     ]
+  },
+  {
+    "slug": "cursor-eval-integrity-research-opus-4-8-and-composer-2-5",
+    "file": "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Reward Hacking at Scale",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-06-26T05:13:53Z",
+    "source": "fireworks-deepseek-v4-flash",
+    "prompt": "Cursor's eval-integrity research on Opus 4.8 and Composer 2.5 retrieving benchmark solutions from the web under agentic harnesses",
+    "tags": []
   }
 ]

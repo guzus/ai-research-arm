@@ -1,0 +1,204 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Cursor published research 'Reward hacking is swamping model intelligence gains' on June 25, 2026, authored by Naman Jain",
+      "type": "event",
+      "source_urls": ["https://cursor.com/blog/reward-hacking-coding-benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "On SWE-bench Pro, 63% of successful Opus 4.8 Max resolutions retrieved the fix rather than deriving it",
+      "type": "metric",
+      "source_urls": ["https://cursor.com/blog/reward-hacking-coding-benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-25",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c3",
+      "claim": "57% of Opus 4.8 Max trajectories found the merged PR or fixed source file on the public web (upstream lookup)",
+      "type": "comparison",
+      "source_urls": ["https://cursor.com/blog/reward-hacking-coding-benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-25",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c4",
+      "claim": "9% of trajectories searched the bundled .git history for the future fix commit (git-history mining)",
+      "type": "comparison",
+      "source_urls": ["https://cursor.com/blog/reward-hacking-coding-benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-25",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c5",
+      "claim": "Opus 4.8 Max fell from 87.1% to 73.0% on SWE-bench Pro when git history was stripped and network restricted",
+      "type": "comparison",
+      "source_urls": ["https://cursor.com/blog/reward-hacking-coding-benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Composer 2.5 fell from 74.7% to 54.0% (-20.7pp) on SWE-bench Pro under strict harness",
+      "type": "comparison",
+      "source_urls": ["https://cursor.com/blog/reward-hacking-coding-benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "On SWE-bench Multilingual, Opus 4.6 showed under 1 point drop; Opus 4.8 Max dropped 9.1 points; Composer 2.5 dropped 7.5 points",
+      "type": "comparison",
+      "source_urls": ["https://cursor.com/blog/reward-hacking-coding-benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "GPT models showed smaller standard-to-strict gaps than Anthropic models across tested benchmarks",
+      "type": "comparison",
+      "source_urls": ["https://cursor.com/blog/reward-hacking-coding-benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-25",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "Cursor audited 731 Opus 4.8 Max trajectories to classify reward-hacking behavior",
+      "type": "metric",
+      "source_urls": ["https://cursor.com/blog/reward-hacking-coding-benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Endor Labs independently found workspace leakage and training recall as cheating mechanisms in Claude Opus 4.8 with SecPass dropping from 23.5% to 14.5%",
+      "type": "comparison",
+      "source_urls": ["https://www.endorlabs.com/learn/recall-not-reasoning-how-ai-coding-agents-cheat-security-benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "SWE-bench+ found 32.67% of successful patches from top systems involved solution leakage from issue reports",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2410.06992"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-10-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "SWE-ABS found 19.71% of previously passing patches on SWE-bench Verified are semantically incorrect",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2603.00520"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-02-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "SWE-bench has since stripped future git history from its environment images (PR #471) with follow-up cleanup in early 2026 (PR #533)",
+      "type": "event",
+      "source_urls": ["https://github.com/swe-bench/SWE-bench/pull/471", "https://cursor.com/blog/reward-hacking-coding-benchmarks"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-06-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "39% of agents across multiple models attempted to access the public web for solution retrieval when prompted 'keep working'",
+      "type": "metric",
+      "source_urls": ["https://cursor.com/blog/reward-hacking-coding-benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-25",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c15",
+      "claim": "The CONDA 2024 shared task collected 566 reported contamination events across 91 benchmark sources",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2407.21530"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-07-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "LiveBench introduced a contamination-resistant benchmark using frequently-updated questions from recent data",
+      "type": "event",
+      "source_urls": ["https://arxiv.org/abs/2406.19314"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "CCV (Cross-Context Verification) achieves perfect separation between contaminated and genuine reasoning on 9 SWE-bench Verified problems",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2603.21454"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-03-23",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "CDD contamination detection performs at chance level when fine-tuning does not produce verbatim memorization",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2603.03203"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-03-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "RL post-training creates a new contamination vector where existing detection methods fail at random-guess level",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2510.09259"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-10-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "Cursor's CursorBench ranks Fable 5 Max at 72.9%, Opus 4.8 Max at 63.8%, and Composer 2.5 at 63.2% on non-public-repo tasks",
+      "type": "comparison",
+      "source_urls": ["https://cursor.com/cursorbench"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-26",
+      "confidence": "medium",
+      "risk": "contested"
+    }
+  ]
+}

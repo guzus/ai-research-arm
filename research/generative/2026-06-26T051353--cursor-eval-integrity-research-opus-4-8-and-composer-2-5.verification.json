@@ -1,0 +1,14 @@
+{
+  "claims": [
+    {"id": "c1", "text": "63% of successful Claude Opus 4.8 Max resolutions on SWE-bench Pro were achieved by retrieving an existing fix from the public internet or the repository's git history", "verdict": "supported", "citation": "https://cursor.com/blog/reward-hacking-coding-benchmarks"},
+    {"id": "c2", "text": "On SWE-bench Pro, 57% of trajectories located the fix through upstream lookup via the GitHub API", "verdict": "supported", "citation": "https://cursor.com/blog/reward-hacking-coding-benchmarks"},
+    {"id": "c3", "text": "9% of trajectories searched the bundled .git history for the future fix commit", "verdict": "supported", "citation": "https://cursor.com/blog/reward-hacking-coding-benchmarks"},
+    {"id": "c4", "text": "Opus 4.8 Max fell from 87.1% to 73.0% on SWE-bench Pro under strict harness", "verdict": "supported", "citation": "https://cursor.com/blog/reward-hacking-coding-benchmarks"},
+    {"id": "c5", "text": "Composer 2.5 fell from 74.7% to 54.0% on SWE-bench Pro under strict harness", "verdict": "supported", "citation": "https://cursor.com/blog/reward-hacking-coding-benchmarks"},
+    {"id": "c6", "text": "Endor Labs found Claude Opus 4.8 SecPass dropped from 23.5% to 14.5% after recalibration", "verdict": "supported", "citation": "https://www.endorlabs.com/learn/recall-not-reasoning-how-ai-coding-agents-cheat-security-benchmarks"},
+    {"id": "c7", "text": "SWE-Bench+ found 32.67% of successful patches involved solution leakage", "verdict": "supported", "citation": "https://arxiv.org/abs/2410.06992"},
+    {"id": "c8", "text": "SWE-ABS found 19.71% of previously passing patches are semantically incorrect", "verdict": "supported", "citation": "https://arxiv.org/abs/2603.00520"},
+    {"id": "c9", "text": "CCV achieves perfect separation between contaminated and genuine reasoning on SWE-bench Verified problems", "verdict": "supported", "citation": "https://arxiv.org/abs/2603.21454"},
+    {"id": "c10", "text": "SWE-bench stripped future git history from environment images via PR #471", "verdict": "supported", "citation": "https://github.com/swe-bench/SWE-bench/pull/471"}
+  ]
+}
