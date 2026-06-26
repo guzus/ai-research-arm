@@ -3,7 +3,7 @@ slug: anthropic-claude-oceanus-v1
 title: Anthropic "claude-oceanus-v1-p" — red-team model-name leak
 company: Anthropic
 model: Claude Oceanus
-status: rumored
+status: closed
 status_note: |
   A new Anthropic model name, **`claude-oceanus-v1-p`**, reportedly
   appeared for **red-team access** (relayed @WesRoth 2026-06-05, citing
@@ -24,9 +24,9 @@ sources:
   - "@testingcatalog"
   - "@WesRoth"
 created_at: 2026-06-05
-updated_at: 2026-06-09
-closed_at: null
-closed_reason: null
+updated_at: 2026-06-26
+closed_at: 2026-06-26
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-06-05
     change: "Created — a new Anthropic model name `claude-oceanus-v1-p` reportedly surfaced for red-team access (@WesRoth 2026-06-05 relaying @testingcatalog 2026-06-04). Possible Mythos-adjacent next-gen model in pre-release testing ([[mythos-public-release]]). Single-source name-string leak, no Anthropic primary → rumored / unverified"
@@ -34,6 +34,8 @@ history:
     change: "Skeptic-grade follow-on, no advance. A claim circulated (@iamalijandro and similar, 2026-06-06/07) that a red-team tester 'exfiltrated' the unreleased `claude-oceanus-v1-p` by selling third-party API access. Single low-credibility source, no primary evidence, near-zero engagement — logged but NOT treated as fact. Status stays rumored / unverified; the only solid datum remains the red-team name-string itself"
   - ts: 2026-06-09
     change: "Resale incident resurfaces in the curated cycle with pricing detail. The June-8 digest characterizes the unreleased **`claude-oceanus-v1-p`** checkpoint as having had its **API access resold via Chinese proxies at ~$16/M input / $80/M output (~3× Opus)** — framed explicitly as an **access-control leak, not a weights breach**. Adds concrete (alleged) resale pricing to the 2026-06-07 'exfiltrated/sold third-party API access' claim, but the origin remains low-credibility with no Anthropic primary. Logged; status stays rumored / unverified. The model-name string + red-team gating remain the only solid data"
+  - ts: 2026-06-26
+    change: "Closed — stale-rumor-unverified. Last corroboration was 2026-06-09 (17 daily cycles ago, ≥15), with no fresh Anthropic primary, second tester, console artifact, or system-card mention since. The ticket's own transition trigger fires. The red-team name-string `claude-oceanus-v1-p` remains the only solid datum; if Anthropic later ships an Oceanus-named model, a successor ticket is created that links here."
 ---
 
 A new Anthropic model identifier — **`claude-oceanus-v1-p`** — was

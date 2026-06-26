@@ -15,7 +15,27 @@ status_note: |
   (~$965B, [[anthropic-ipo-2026-06]]) and a week before SpaceX's 2026-06-12
   Nasdaq debut ([[spacex-ipo-2026-06]]), anchoring a 2026 **AI IPO supercycle**
   (~$3.5–4T combined private valuation heading public within a quarter).
-expected: "Public S-1 with detailed financials to follow per SEC review cadence; possible debut as early as September 2026 (media inference, not OpenAI-confirmed)"
+
+  **2026-06-26:** NYT reported OpenAI is **leaning toward delaying its IPO to
+  2027** (from a planned Q3/Q4 2026 window), with **Sam Altman pushing advisers
+  for a $1T valuation** and rejecting lower offers — advisers warned retail
+  appetite may not support it after SpaceX's volatile post-IPO trading
+  (ATH $201.80 → $154.54, -23%; [[spacex-ipo-2026-06]]) and a broader tech
+  pullback. Financials per the NYT relay: **~$13B revenue in 2025**, now
+  **~$2B/month**, hoping to roughly **triple this year**, against heavy
+  compute/data-center costs; bankers/lawyers had been hired for a Q3/Q4 2026
+  offering; prior private valuation **~$852B (March 2026)**. The market reaction
+  was severe and measurable: **SoftBank -12–13%** (~$65B OpenAI exposure),
+  **¥5.6T erased**, **Nikkei -4%**, **KOSPI circuit breaker (-5.81%)**, broad
+  Asian tech selloff. Single-sourced to NYT ("people familiar"); **no OpenAI
+  confirmation or denial** — the delay could be a negotiating posture (bridge
+  financing at favorable terms) rather than a fixed decision. The filing itself
+  stays `confirmed`; the 2027 lean + $1T ask is NYT-reported, not OpenAI-stated,
+  so verification stays `confirmed` (credible outlet, observable market
+  reaction). Pairs with the same day's GPT-5.6 federal-stagger story
+  ([[openai-gpt-5-6]]) as compounding near-term monetization constraints on
+  frontier AI.
+expected: "NYT reports (2026-06-26) OpenAI leaning toward delaying IPO to 2027 from Q3/Q4 2026, Altman holding for $1T valuation (~$13B 2025 revenue, ~$2B/mo now, hoping to ~triple this year); no OpenAI confirmation. Public S-1 with detailed financials to follow per SEC review cadence; possible debut as early as September 2026 (media inference) or slipping to 2027 per the NYT lean. SoftBank -12–13%, Nikkei -4%, KOSPI circuit breaker on the report"
 labels:
   - openai
   - ipo
@@ -27,13 +47,18 @@ sources:
   - https://x.com/OpenAINewsroom/status/2064094175541461220
   - "@OpenAINewsroom"
   - "@Reuters"
+  - "@kimmonismus"
+  - "@NikkeiAsia"
+  - "@AndrewCurran_"
 created_at: 2026-06-09
-updated_at: 2026-06-09
+updated_at: 2026-06-26
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-09
     change: "Created — OpenAI's newsroom confirmed on record it 'recently submitted a confidential S-1,' pre-empting an expected leak and stressing timing is undecided. OpenAI primary statement → status confirmed, verification confirmed. Media-only (not in OpenAI's statement): up-to-$1T valuation, ~$2B/month revenue, possible September debut, Goldman Sachs / Morgan Stanley as leads. Lands days after Anthropic's confidential filing ([[anthropic-ipo-2026-06]]) and a week before the SpaceX debut ([[spacex-ipo-2026-06]]) — the AI IPO supercycle now formally on the record"
+  - ts: 2026-06-26
+    change: "NYT reported OpenAI is leaning toward delaying its IPO to 2027 (from Q3/Q4 2026), with Altman pushing advisers for a $1T valuation and rejecting lower offers; advisers warned retail appetite may not hold after SpaceX's volatile post-IPO trading (ATH $201.80→$154.54, -23%; [[spacex-ipo-2026-06]]). Financials per NYT: ~$13B 2025 revenue, ~$2B/mo now, hoping to ~triple this year; bankers/lawyers hired for Q3/Q4 2026; prior private valuation ~$852B (Mar 2026). Severe market reaction: SoftBank -12–13% (~$65B OpenAI exposure), ¥5.6T erased, Nikkei -4%, KOSPI circuit breaker (-5.81%). Single-sourced to NYT ('people familiar'), no OpenAI confirmation/denial — the delay could be negotiating posture (bridge financing) rather than a fixed decision. The filing stays confirmed; the 2027 lean + $1T ask is NYT-reported → status confirmed, verification confirmed (credible outlet + observable market reaction). Pairs with the GPT-5.6 federal-stagger story ([[openai-gpt-5-6]]) as compounding near-term monetization constraints. Sources: @kimmonismus (NYT relay), @NikkeiAsia, @AndrewCurran_."
 ---
 
 OpenAI **confirmed on record, via its own newsroom**, that it has

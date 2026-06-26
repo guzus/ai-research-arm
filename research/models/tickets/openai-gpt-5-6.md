@@ -3,7 +3,7 @@ slug: openai-gpt-5-6
 title: OpenAI GPT-5.6 — anticipated frontier release
 company: OpenAI
 model: GPT-5.6
-status: rumored
+status: in-testing
 status_note: |
   GPT-5.6 is the most-watched unreleased OpenAI model, expected **alongside the
   ChatGPT "super app" overhaul** ([[openai-chatgpt-superapp-2026-06]]). Signal is
@@ -53,7 +53,36 @@ status_note: |
   loudest "leaked" posts remain SEO spam. GPT-Bidi-1 is a zero-artifact,
   single-bundle leak folded here as part of the same anticipated launch event.
   Status stays `rumored`, verification stays `partial`.
-expected: "Polymarket ~83% on 2026-06-22→28; leak relays cite a 'Thursday'/June 25 date and 'testing in Codex'; @thsottiaux teases a big front-end jump; Pachocki reportedly calls 5.6 a 'meaningful improvement' over 5.5 (The Information). No OpenAI-confirmed date, system card, or API string"
+
+  **2026-06-25:** A real artifact appeared. Two independent leakers (@scaling01
+  ~742 likes, @haider1 ~141 likes) spotted a **`gpt-5.6-preview` route in
+  OpenAI's internal admin model-access panel** (`admin/model-access/gpt-5.6-
+  preview`), visible in routing and frontend files. The "Preview" suffix
+  historically preceded OpenAI's biggest capability leaps (o1-preview,
+  o3-preview, GPT-4.5-Preview) and signals readiness for external testing — a
+  materially different stage from "in training." @scaling01 himself cautioned it
+  may be "just for testing and not for release," and there is zero first-party
+  OpenAI acknowledgement, but a console route is the kind of artifact this
+  ticket's transition trigger says moves the lifecycle toward `in-testing`.
+
+  **2026-06-26:** The regulatory picture crystallized around the preview. **The
+  Information** broke (and **Axios** confirmed) that the **Trump administration
+  formally asked OpenAI to stagger GPT-5.6's release** — Sam Altman told staff
+  the government will approve access **"customer by customer"** during a limited
+  preview, with a broader release possibly "a couple of weeks" later; the
+  request came through the Office of the National Cyber Director and OSTP under
+  the voluntary June 2 frontier-model review EO ([[us-ai-model-review-eo-2026-06]]).
+  **Axios** adds GPT-5.6 has **"Mythos-like" capability** — the same tier that
+  triggered the Fable 5/Mythos 5 export suspension
+  ([[anthropic-fable-mythos-export-control-2026-06]]) — and that **OpenAI had
+  been pushing for its release since before the Fable ban**, implying the model
+  was ready weeks ago and is held up by the review environment. No OpenAI
+  official tweet/blog/denial. The admin-route leak plus the reported limited
+  preview clear the `in-testing` bar (a real artifact + a gated external
+  preview); still no OpenAI on-record date, system card, or API string, so
+  verification stays `partial` (The Information + Axios are credible secondary,
+  not OpenAI-primary). Status advances to `in-testing`.
+expected: "gpt-5.6-preview route leaked in OpenAI admin panel (2026-06-25); The Information/Axios report the admin asked OpenAI to stagger release with customer-by-customer approval during a limited preview (~'a couple of weeks' to broader release); Axios calls capability 'Mythos-like'; OpenAI reportedly pushed for release since before the Fable ban. No OpenAI-confirmed date, system card, or API string"
 labels:
   - openai
   - frontier-model
@@ -64,8 +93,11 @@ sources:
   - "@AndrewCurran_"
   - "@Polymarket"
   - "@MarMarLabs"
+  - "@scaling01"
+  - "@haider1"
+  - "@theinformation"
 created_at: 2026-06-09
-updated_at: 2026-06-23
+updated_at: 2026-06-26
 closed_at: null
 closed_reason: null
 history:
@@ -83,6 +115,10 @@ history:
     change: "Window arrived, chatter persisted, no artifact. Leak relays now cite a specific 'Thursday' / June 25 date; a Japanese aggregator (@redcord_okumura) lists 'GPT-5.6 being tested in Codex,' dovetailing with OpenAI's @thsottiaux teasing a big front-end capability jump (~7–8K likes). Still leak/anon-grade — no OpenAI system card, API listing, or confirmed date this window. Status stays rumored; verification stays partial."
   - ts: 2026-06-23
     change: "Window firmed to 'Thursday (~June 25)' and the leak bundle added a surprise bidirectional voice model, 'GPT-Bidi-1.' Betting markets now price a June 22–28 launch near 90–100%. Still no system card, API listing, or OpenAI-confirmed date; loudest 'leaked' posts remain SEO spam. GPT-Bidi-1 is a zero-artifact single-bundle leak, folded here as part of the same anticipated launch event rather than a separate ticket. Status stays rumored; verification stays partial."
+  - ts: 2026-06-25
+    change: "First real artifact — two independent leakers (@scaling01 ~742 likes, @haider1 ~141 likes) spotted a `gpt-5.6-preview` route in OpenAI's internal admin model-access panel (visible in routing/frontend files). The 'Preview' suffix historically precedes OpenAI's biggest capability leaps (o1/o3/GPT-4.5-Preview); @scaling01 cautioned it may be 'just for testing,' and there is no OpenAI acknowledgement, but a console route is the artifact class this ticket's transition trigger says moves the lifecycle toward in-testing. No system card, API listing, or OpenAI-confirmed date. Status stays rumored this entry; verification stays partial."
+  - ts: 2026-06-26
+    change: "Status → in-testing. The Information broke (Axios confirmed) that the Trump administration asked OpenAI to stagger GPT-5.6's release: Altman told staff the government will approve access 'customer by customer' during a limited preview, broader release possibly 'a couple of weeks' later, via ONCD/OSTP under the voluntary June 2 frontier-model review EO ([[us-ai-model-review-eo-2026-06]]). Axios adds GPT-5.6 has 'Mythos-like' capability (the Fable 5/Mythos 5 export-suspension tier, [[anthropic-fable-mythos-export-control-2026-06]]) and that OpenAI had pushed for release since before the Fable ban — implying the model was ready weeks ago and is held up by the review environment. The admin-route leak (06-25) + the reported gated limited preview clear the in-testing bar (real artifact + external preview). Still no OpenAI on-record date, system card, or API string → verification stays partial (credible secondary via The Information + Axios, not OpenAI-primary)."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely

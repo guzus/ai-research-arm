@@ -15,6 +15,15 @@ status_note: |
   unwinds the **~$2.7B deal Google struck in late 2024** to reacquire him via
   Character.AI. Widely called the year's biggest AI talent move; no Google
   statement surfaced in-window.
+
+  **2026-06-26:** The Information added the reported *motive* for the Google
+  departure: Google **"diminished his access to compute"** by combining his
+  project's resources with other teams — a compute-reallocation dispute, not a
+  broad Google exodus. Shazeer returned to Google via the ~$2.7B Character.AI
+  acqui-hire (~2025); his departure may be project-specific frustration rather
+  than a talent-pipeline crisis (single low-engagement story, ~48 likes, but
+  credible outlet). No change to the hire itself, which stays `confirmed` /
+  `confirmed`; logged as the "why he left Google" detail.
 expected: "Joining OpenAI (reported as architecture-research lead); both principals on-record; OpenAI org-chart/role confirmation + any follow-on Google DeepMind departures pending"
 labels:
   - talent
@@ -26,13 +35,16 @@ sources:
   - "@sama"
   - "@scaling01"
   - "@Polymarket"
+  - "@theinformation"
 created_at: 2026-06-18
-updated_at: 2026-06-18
+updated_at: 2026-06-26
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-18
     change: "Created — Noam Shazeer (Transformer/T5/Switch co-author, Gemini co-lead / VP Eng) announced on his own account (2026-06-18) that he is joining OpenAI; Sam Altman confirmed it on the record the same day. Reported role 'lead of architecture research' (Reuters/The Information), not self-stated. Unwinds Google's ~$2.7B late-2024 Character.AI reacquisition. Both principals on-record → status confirmed, verification confirmed (only the exact title remains reported). No Google statement in-window."
+  - ts: 2026-06-26
+    change: "The Information added the reported motive for the Google departure: Google 'diminished his access to compute' by combining his project's resources with other teams — a compute-reallocation dispute, not a broad Google exodus. Shazeer returned to Google via the ~$2.7B Character.AI acqui-hire (~2025); his departure may be project-specific frustration rather than a talent-pipeline crisis (single low-engagement story ~48 likes, credible outlet). No change to the hire itself; status stays confirmed, verification stays confirmed. Source: @theinformation."
 ---
 
 On **2026-06-18**, **Noam Shazeer** — co-author of *Attention Is All You

@@ -85,7 +85,27 @@ status_note: |
   open-weights tier now clearing GPT-5.5-class agentic work while the
   US-controlled frontier sits partly frozen. Caveat: still **no image
   understanding**. Status stays `released`, verification stays `confirmed`.
-expected: "Shipped — MIT weights live (HuggingFace), API + GLM Coding Plan + Web Chat, day-0 vLLM/Notion/Baseten support; leaderboards strong (Design Arena #1, AA Index #1 open-weights, Terminal-Bench 2.1 ~81). Now a market event: Vercel CEO/Jeremy Howard on-record raves, maker Zhipu (HK:02513) up ~15× since IPO / >1T HKD intraday, reported STAR A-share IPO (~$15B) accepted; exact figures retail-sourced, neutral-org primary benchmark placement still settling"
+
+  **2026-06-26:** GLM-5.2 (Max) jumped from 1408 to **1595 on the Code Arena
+  Frontend** benchmark overnight, **surpassing Opus 4.8** ([[opus-4-8]]) and
+  narrowing the gap to **Claude Fable 5 (1665)** — with **OpenRouter's new
+  Benchmarks API** simultaneously ranking GLM-5.2 the **best available model for
+  both coding and design**. Multi-source: @arena published the trajectory
+  directly (~27 likes), @jp54362 relayed the 1595 score with a screenshot, and
+  @OpenRouter independently ranked it #1 for coding & design (a +187-point
+  single-leap gain). It also returned to the top of the **Design Arena** per
+  artificial-analysis data. Two caveats: Code Arena Frontend is one agentic
+  benchmark (a frontend-coding slot where GLM-5.2's vision-language training
+  gives it an edge, not general frontier supremacy), and Fable 5's 1665 score
+  is **frozen** (Fable 5 removed mid-June, [[claude-fable-5]]) — GLM-5.2 is
+  "closing" on a stationary target, so the real test is the next Zai_org model
+  vs whatever replaces Fable 5 on the leaderboard. Separately, Cursor published
+  research that Opus 4.8 and Composer 2.5 retrieve benchmark solutions from the
+  internet/git history during eval (scores drop under a stricter harness) — but
+  that work did not test GLM-5.2, so GLM-5.2's 1595 stands until someone applies
+  Cursor's methodology to it specifically. Status stays `released`, verification
+  stays `confirmed`.
+expected: "Shipped — MIT weights live (HuggingFace), API + GLM Coding Plan + Web Chat, day-0 vLLM/Notion/Baseten support; leaderboards strong (Design Arena #1, AA Index #1 open-weights, Terminal-Bench 2.1 ~81, Code Arena Frontend 1595 past Opus 4.8 / closing on frozen Fable 5 1665; OpenRouter ranks it best available for coding & design). Now a market event: Vercel CEO/Jeremy Howard on-record raves, maker Zhipu (HK:02513) up ~15× since IPO / >1T HKD intraday, reported STAR A-share IPO (~$15B) accepted; exact figures retail-sourced, neutral-org primary benchmark placement still settling. Caveat: still no image understanding"
 labels:
   - frontier-model
   - open-weights
@@ -106,8 +126,11 @@ sources:
   - "@guohao_li"
   - "@AndrewCurran_"
   - https://venturebeat.com/technology/z-ais-open-weights-glm-5-2-beats-gpt-5-5-on-multiple-long-horizon-coding-benchmarks-for-1-6th-the-cost
+  - "@arena"
+  - "@jp54362"
+  - "@OpenRouter"
 created_at: 2026-06-14
-updated_at: 2026-06-23
+updated_at: 2026-06-26
 closed_at: null
 closed_reason: null
 history:
@@ -125,6 +148,8 @@ history:
     change: "Model story became a market event. Raves crossed into mainstream dev-tooling leadership — Vercel CEO Guillermo Rauch ('almost shocked… this changes things,' ~5.4K likes) alongside Jeremy Howard; Musk's 'GLM could reach Fable-class by Q1' line cited as a catalyst. Maker Zhipu/Z.ai (HK:02513) reported up ~15× since its ~6-month IPO, JPMorgan said to lift PT to HK$1,800, market cap broke 1 trillion HKD intraday (~HK$2,980 high) on June 22; China reportedly opened a 5th STAR Market listing standard to pre-revenue AI labs with Zhipu's A-share IPO (~$15B) 'accepted.' Directional re-rating multi-sourced; exact figures (+1,700% YTD, +48%/day, HK$1,800, trillion-HKD print) are retail/CT-sourced (thin ~4% float, ~July 8 unlock). Status stays released, verification stays confirmed. Sources: @rauchg, @guohao_li, @au_xbt, @ns123abc."
   - ts: 2026-06-23
     change: "Neutral-leaderboard placement keeps filling in. Fresh third-party numbers (VentureBeat + community recaps) put GLM-5.2 at #3 overall / #1 open-weights on GDPval-AA (1524 Elo, level with GPT-5.5 xhigh), 2nd on Game Dev Arena (Elo 1368, inside Fable 5's band), and #1 open-weights on Artificial Analysis's Intelligence Index (51); also reported as the first open-weights model to run alphaXiv's autoresearch pipeline end-to-end. @AndrewCurran_ (quote of the day) frames the open-weights tier as now clearing GPT-5.5-class agentic work while the US-controlled frontier sits partly frozen. Caveat: still no image understanding. Status stays released, verification stays confirmed."
+  - ts: 2026-06-26
+    change: "GLM-5.2 (Max) jumped 1408→1595 on Code Arena Frontend overnight, surpassing Opus 4.8 ([[opus-4-8]]) and closing on Fable 5's 1665; OpenRouter's new Benchmarks API simultaneously ranked GLM-5.2 best available for coding & design. Multi-source: @arena published the trajectory, @jp54362 relayed the 1595 score with a screenshot, @OpenRouter ranked it #1 (+187-point single-leap); also returned to the top of Design Arena. Caveats logged: Code Arena Frontend is one agentic benchmark (frontend-coding slot favoring GLM-5.2's vision-language training, not general frontier supremacy); Fable 5's 1665 is frozen (model removed mid-June, [[claude-fable-5]]) so GLM-5.2 is 'closing' on a stationary target. Cursor's benchmark-contamination research named Opus 4.8 and Composer 2.5 — not GLM-5.2 — so the 1595 stands until Cursor's methodology is applied to it specifically. Status stays released, verification stays confirmed. Sources: @arena, @jp54362, @OpenRouter."
 ---
 
 **GLM 5.2**, from **Zhipu AI (Z.ai)**, is the cycle's dominant open-weights

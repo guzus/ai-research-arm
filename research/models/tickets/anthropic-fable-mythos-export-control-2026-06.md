@@ -112,7 +112,26 @@ status_note: |
   The policy and date are confirmed fact; the "this is how Fable comes back,
   US-only" purpose remains well-motivated inference, not an Anthropic statement.
   Status stays `confirmed`; verification stays `confirmed`.
-expected: "Restoration still pending (day 10) — no Commerce rescission. The inferred US-only re-entry path now has a hard date + vendor: Anthropic ID verification via Persona (government ID + live selfie) enforced from 2026-07-08 for Free/Pro/Max. Open question: whether Fable 5/Mythos return for verified US persons on/after July 8, or the verification ships with no frontier model to gate. No official BIS PDF; SK Telecom named as the Project Glasswing carrier (denies China ties)"
+
+  **As of 2026-06-26 (day ~14):** still no formal Commerce rescission, but the
+  inferred US-only restoration mechanism crossed from policy inference into a
+  **product artifact**. Fable 5 reappeared in the **AWS Bedrock catalog** as
+  `anthropic.claude-fable-5` (Active, sold by Anthropic; multi-source
+  screenshots), and **Claude Code v2.1.190 binaries** now carry bundled-weekly
+  Fable 5 usage strings — product impact tracked on [[claude-fable-5]]. Access
+  is gated through the **Persona US-ID verification** (live 2026-07-08) +
+  use-case review + Anthropic approval first inferred here on day 10. The
+  political backdrop warmed: **Trump walked back the "national-security threat"
+  framing** ("not now, but a week ago maybe"), and cofounder **Tom Brown
+  replaced Dario Amodei** as the White House point person — the admin is
+  reportedly "happier with Brown." Anthropic's own status page still shows the
+  2026-06-13 suspension as active with no restoration date, and the
+  Commerce/BIS directive text remains unpublished, so this is a **controlled
+  re-opening** (US-ID-gated Bedrock availability), not a lifted ban. The same
+  review logic is now being applied to OpenAI's GPT-5.6 ([[openai-gpt-5-6]]),
+  which Axios reports was classified "Mythos-like." Status stays `confirmed`;
+  verification stays `confirmed`.
+expected: "No formal Commerce rescission (day ~14), but the US-only restoration mechanism now has a product artifact: Fable 5 active in AWS Bedrock (anthropic.claude-fable-5) + Claude Code bundled-weekly usage strings, gated by Persona US-ID verification (live 2026-07-08) + use-case review + Anthropic approval (product impact on [[claude-fable-5]]). Political thaw: Trump walked back the national-security-threat framing; Tom Brown replaced Dario as WH point person. Anthropic status page still shows the 2026-06-13 suspension active; Commerce/BIS directive text still unpublished. Same review logic now applied to OpenAI GPT-5.6 ([[openai-gpt-5-6]], 'Mythos-like' per Axios). SK Telecom named as the Project Glasswing carrier (denies China ties)"
 labels:
   - regulatory
   - export-control
@@ -135,8 +154,10 @@ sources:
   - https://www.tomshardware.com/tech-industry/artificial-intelligence/sk-telecom-named-as-the-korean-carrier-at-the-center-of-anthropics-mythos-export-controls
   - https://www.computerworld.com/article/4185515/anthropics-new-privacy-policy-offers-us-consumers-a-way-around-fable-ban-2.html
   - https://www.techtimes.com/articles/claude-identity-verification-persona-july-8
+  - "@chetaslua"
+  - "@alphabatcher"
 created_at: 2026-06-14
-updated_at: 2026-06-22
+updated_at: 2026-06-26
 closed_at: null
 closed_reason: null
 history:
@@ -152,6 +173,8 @@ history:
     change: "Days 7–9 — still no restoration; rhetoric warmed, order stands. (1) WIRED/Tom's Hardware/Korea JoongAng named the carrier as SK Telecom — South Korea's largest wireless operator and a ~$100M Anthropic investor since 2023, reportedly among ~150 orgs added to Project Glasswing in early June with Mythos 5 access revoked days before the suspension; SKT denies China ties, reframing the trigger toward access-control / supply-chain-trust. (2) Anthropic's rewritten privacy policy (published 2026-06-08, effective 2026-07-08) lets it ask Free/Pro/Max users to verify identity (government-ID image, photo/video, facial-geometry biometric templates; not business subs) — read (Simon Willison) as the staged mechanism to reopen Fable 5/Mythos 5 to verified US citizens. (3) Fuller Trump/Axios transcript: 'not now, but a week ago maybe' a threat, praises Amodei, names 'a competitor and a part owner that turned Anthropic in' (widely inferred as Amazon — not a name Trump said). No Commerce rescission; a viral 'Fable 5 RETURNS' roundup is false. June 22 subscription cliff one day out. Status stays confirmed; verification stays confirmed. Sources: Tom's Hardware (SKT), Computerworld/The Register (privacy policy), @AndrewCurran_ (Trump transcript)."
   - ts: 2026-06-22
     change: "Day 10 — still no restoration; the inferred US-only re-entry mechanism got a hard date and a vendor. Anthropic's revised privacy policy now sets enforcement at 2026-07-08: Free/Pro/Max users may be required to upload a government ID (passport/license/national ID) and a live selfie, processed by third-party verifier Persona (not business subs). Anthropic labels it 'age and identity verification,' but the timing (two weeks after the foreign-access cutoff) is widely read as the compliance gate for a US-only model restoration, now with trade-press footing (Tech Times). Policy + date are confirmed fact; the US-only-restoration purpose stays inference. Status stays confirmed; verification stays confirmed."
+  - ts: 2026-06-26
+    change: "Day ~14 — no formal Commerce rescission, but the US-only restoration mechanism crossed from policy inference into a product artifact. Fable 5 reappeared in the AWS Bedrock catalog as anthropic.claude-fable-5 (Active, sold by Anthropic; multi-source screenshots) and Claude Code v2.1.190 binaries now carry bundled-weekly Fable 5 usage strings (product impact on [[claude-fable-5]]). Access gated by Persona US-ID verification (live 2026-07-08) + use-case review + Anthropic approval — the re-entry path first inferred on day 10. Political thaw: Trump walked back the 'national-security threat' framing; Tom Brown replaced Dario Amodei as WH point person (admin reportedly 'happier with Brown'). Anthropic's status page still shows the 06-13 suspension active and the Commerce/BIS directive text remains unpublished — a controlled US-ID-gated re-opening, not a lifted ban. The same review logic is now applied to OpenAI GPT-5.6 ([[openai-gpt-5-6]], 'Mythos-like' per Axios). Status stays confirmed; verification stays confirmed."
 ---
 
 On **2026-06-12** the US government issued an **export-control directive**

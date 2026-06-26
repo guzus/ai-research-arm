@@ -50,7 +50,29 @@ status_note: |
   under the export-control order; Anthropic still says it aims to restore access
   "as quickly as possible." Per transition triggers, an availability/billing
   change keeps status `released` and is documented via history.
-expected: "Suspended worldwide since 2026-06-13 under export-control order (see [[anthropic-fable-mythos-export-control-2026-06]]); restoration pending. Was free for Pro/Max/Team through 2026-06-22, credit-metered thereafter"
+  **2026-06-26 — partial restoration surfaces in AWS Bedrock.** Fable 5
+  reappeared in the **Amazon Bedrock model catalog** as `anthropic.claude-fable-5`,
+  listed **Active and sold by Anthropic** (independently screenshotted by
+  @chetaslua with a screen recording, @alphabatcher, @LuminaXspace, @plasmakick,
+  @VincentLogic). **Claude Code v2.1.190 binary strings** now show "You've used
+  your included Fable 5 usage for this week" — the old "purchased separately
+  from your plan" model is **dropped in favor of bundled weekly allocation**
+  (verified by Decrypt via npm extraction, per @synthwavedd ~4.6K likes). Both a
+  **US-region and a global model ID** are present (@plasmakick). Access is
+  gated: **US identity verification via Persona** (live 2026-07-08), a use-case
+  submission, and an Anthropic account review — the US-only re-entry mechanism
+  inferred on [[anthropic-fable-mythos-export-control-2026-06]] now has product
+  footing. Political backdrop warmed: **Trump walked back calling Anthropic a
+  national-security threat**, and cofounder **Tom Brown replaced Dario Amodei**
+  as the White House point person (the admin is reportedly "happier with Brown").
+  Skeptical read: a Bedrock listing is infra-provisioning, not full restoration —
+  Anthropic's own status page still shows the 2026-06-13 suspension as active
+  with no restoration date, the Persona July 8 date could slip, and US-only ID
+  gating means most of the market still can't use it. But Bedrock listing +
+  Claude Code bundled-usage strings + political thaw + Persona infra is more
+  restoration signals than any prior day. Per transition triggers, a
+  re-availability event keeps status `released` and is documented via history.
+expected: "Partial restoration surfacing: Fable 5 listed Active in AWS Bedrock (anthropic.claude-fable-5) with bundled weekly Claude Code usage; US ID verification via Persona live 2026-07-08 + use-case review + Anthropic approval; both US and global model IDs present. Anthropic status page still shows the 2026-06-13 suspension as active (see [[anthropic-fable-mythos-export-control-2026-06]]). Was free for Pro/Max/Team through 2026-06-22, credit-metered thereafter"
 labels:
   - frontier-model
   - released
@@ -69,8 +91,13 @@ sources:
   - "@ClaudeDevs"
   - "@DavidSacks"
   - "@AndrewCurran_"
+  - "@chetaslua"
+  - "@alphabatcher"
+  - "@LuminaXspace"
+  - "@synthwavedd"
+  - "@plasmakick"
 created_at: 2026-06-10
-updated_at: 2026-06-23
+updated_at: 2026-06-26
 closed_at: null
 closed_reason: null
 history:
@@ -84,6 +111,8 @@ history:
     change: "Benchmark crown while still dark (day 4). Fable 5 set a record on the Epoch Capabilities Index, dethroning GPT-5.5 Pro, and tops the latest Artificial Analysis ladder at ~64.9 (ahead of Opus 4.8 and GPT-5.5; Chinese open models Qwen 3.7 Max / MiniMax M3 / Kimi K2.6 cluster ~55) — capability rankings catching up to the launch even though the model remains globally suspended. Export-control suspension unresolved on day 4 ([[anthropic-fable-mythos-export-control-2026-06]]). Status stays released; verification stays confirmed (benchmark figures are secondary/social)."
   - ts: 2026-06-23
     change: "Subscription cliff passed, model still dark. The 2026-06-22 free-access cliff arrived — Fable 5 removed from Pro/Max/Team/Enterprise plans (moot while suspended). The model remains globally offline under the export-control order ([[anthropic-fable-mythos-export-control-2026-06]]); Anthropic still says it aims to restore access 'as quickly as possible.' Per transition triggers, an availability/billing change keeps status released and is documented via history; verification stays confirmed."
+  - ts: 2026-06-26
+    change: "Partial restoration surfaces in AWS Bedrock. Fable 5 reappeared in the Bedrock catalog as anthropic.claude-fable-5, listed Active and sold by Anthropic (multi-source screenshots: @chetaslua screen recording, @alphabatcher, @LuminaXspace, @plasmakick, @VincentLogic). Claude Code v2.1.190 binaries now show 'You've used your included Fable 5 usage for this week' — the 'purchased separately' add-on model is dropped for bundled weekly allocation (Decrypt-verified npm extraction, @synthwavedd ~4.6K likes). Both US and global model IDs present. Access gated: US ID verification via Persona (live 2026-07-08) + use-case submission + Anthropic review — the US-only re-entry mechanism inferred on [[anthropic-fable-mythos-export-control-2026-06]] now has product footing. Political thaw: Trump walked back the national-security-threat framing; Tom Brown replaced Dario as White House point person (admin reportedly 'happier with Brown'). Caveat: Anthropic's status page still shows the 06-13 suspension active with no restoration date; a Bedrock listing is infra-provisioning, not full restoration. Per transition triggers, a re-availability event keeps status released and is documented via history; verification stays confirmed."
 ---
 
 **Claude Fable 5** is the public-facing resolution of the long-running

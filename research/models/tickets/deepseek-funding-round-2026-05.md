@@ -25,7 +25,15 @@ status_note: |
   Information). Still no official DeepSeek/investor primary statement or filing,
   so verification stays partial, but the round is now reported-closed rather than
   "finalizing."
-expected: "Reported closed at ~$7.4B (RMB 50B) / >$50B valuation — first external round; Liang ~$2.8B, Tencent ~$1.4B, CATL ~$700M into a founder-controlled, no-voting-rights LP; no official DeepSeek primary/filing yet"
+
+  **2026-06-26:** DeepSeek plans to **double staff across all departments**
+  after the $7.4B fundraising push — hiring across technical/engineering roles
+  at least 2x — per Andrew Curran's relay of a WeChat post (~93 likes):
+  "DeepSeek's philosophy is simple: let talented people directly take on the
+  core challenges." Confirms the round is being deployed into aggressive
+  expansion; the round itself is unchanged (reported-closed, no DeepSeek
+  primary) → status stays `confirmed`, verification stays `partial`.
+expected: "Reported closed at ~$7.4B (RMB 50B) / >$50B valuation — first external round; Liang ~$2.8B, Tencent ~$1.4B, CATL ~$700M into a founder-controlled, no-voting-rights LP; no official DeepSeek primary/filing yet. 2026-06-26: DeepSeek plans to ~2x staff across all departments post-raise (Andrew Curran relay of a WeChat post)"
 labels:
   - funding
   - china
@@ -42,8 +50,9 @@ sources:
   - "@caixin"
   - "@ns123abc"
   - "@poezhao0605"
+  - "@AndrewCurran_"
 created_at: 2026-05-26
-updated_at: 2026-06-18
+updated_at: 2026-06-26
 closed_at: null
 closed_reason: null
 history:
@@ -55,6 +64,8 @@ history:
     change: "Bloomberg ('DeepSeek Close to Sealing $7 Billion Funding in Historic AI Deal') and SCMP ('nears US$7b haul, backing from Tencent, CATL') now carry the round as near-closed; structure adds founder Liang Wenfeng's ~20B-yuan (~$2.8B) personal check. Still anonymously sourced with no DeepSeek/Tencent/CATL primary or filing (@Signal8Ai: 'no S-1, no filing of any kind') — status stays confirmed-report, verification stays partial"
   - ts: 2026-06-18
     change: "Reported closed — The Information now carries the round as DeepSeek's first-ever external round, closed at ~RMB 50B (~$7.4B) at a valuation exceeding $50B. New structure: Liang Wenfeng wrote the largest check himself (~$2.8B), Tencent ~$1.4B, CATL ~$700M, with outside capital into a founder-controlled limited partnership and no investor voting rights. Widely relayed (multiple accounts citing The Information). No official DeepSeek/investor primary or filing yet → status stays confirmed, verification stays partial; round moves from 'finalizing' to reported-closed."
+  - ts: 2026-06-26
+    change: "DeepSeek plans to ~2x staff across all departments after the $7.4B fundraising push (technical/engineering roles at least 2x), per Andrew Curran's relay of a WeChat post (~93 likes): 'let talented people directly take on the core challenges.' Confirms the round is being deployed into aggressive expansion; the round itself is unchanged (reported-closed, no DeepSeek primary) → status stays confirmed, verification stays partial. Source: @AndrewCurran_."
 ---
 
 **The Information's exclusive on 2026-05-25 (21:00 UTC)** pegged DeepSeek's

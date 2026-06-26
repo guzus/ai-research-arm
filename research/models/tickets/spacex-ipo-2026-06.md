@@ -13,7 +13,17 @@ status_note: |
   that rents capacity to Anthropic and Google
   ([[anthropic-spacex-colossus-2026-05]], [[google-spacex-compute-2026-06]]).
   Some Wall Street coverage argues the stock is worth roughly half the ask.
-expected: "Traded 2026-06-12 (Nasdaq: SPCX) — priced $135, opened ~$150, high ~$176, closed ~$161 (~+19%), ~$75B raised, ~$1.75–1.77T offer valuation (intraday pop past ~$2T); largest IPO in history. Settling into normal coverage"
+
+  **2026-06-26:** Post-debut volatility now a comp in the OpenAI IPO story. SPCX
+  traded volatile post-IPO — **ATH ~$201.80 → ~$154.54 (-23%)** — and the NYT
+  explicitly cites that volatility as a reason advisers warned OpenAI's Altman
+  that retail appetite may not support a $1T OpenAI valuation
+  ([[openai-ipo-2026-06]]). Separately, an Information note flags the SpaceX
+  rapid IPO as suggesting OpenAI and Anthropic could go public "within weeks"
+  (low-engagement, directional). The stock action is observable market data;
+  status stays `confirmed`, verification stays `partial` (still no primary
+  SEC/IR URL).
+expected: "Traded 2026-06-12 (Nasdaq: SPCX) — priced $135, opened ~$150, high ~$176, closed ~$161 (~+19%), ~$75B raised, ~$1.75–1.77T offer valuation (intraday pop past ~$2T); largest IPO in history. Post-debut drawdown: ATH ~$201.80 → ~$154.54 (-23%) by 2026-06-26, cited by NYT as a comp against a $1T OpenAI valuation ([[openai-ipo-2026-06]]). Settling into normal coverage"
 labels:
   - spacex
   - ipo
@@ -24,8 +34,9 @@ verification: partial
 sources:
   - "@SpaceX"
   - "@business"
+  - "@kimmonismus"
 created_at: 2026-06-09
-updated_at: 2026-06-14
+updated_at: 2026-06-26
 closed_at: null
 closed_reason: null
 history:
@@ -37,6 +48,8 @@ history:
     change: "Debut day — first trade scheduled today on Nasdaq SPCX at the finalized $135/share on ~555.6M Class A shares (~$75B raised, ~$1.77T valuation), the largest IPO in history (surpassing Saudi Aramco's 2019 record); ~30% of public shares reserved for retail (vs the usual 5–10%). Heavy price discovery means the opening print may land late-morning/early-afternoon ET rather than at the bell, so as of this run (pre-US-open) shares are not yet trading → status stays confirmed, verification stays partial (no primary SEC/IR URL captured). AI relevance: puts the SpaceX/xAI complex (Colossus, Grok, the federal Grok contract) on a daily public tape. Opening print + first-day close to be UPDATEd once it trades"
   - ts: 2026-06-14
     change: "Debut completed — SPCX traded 2026-06-12: priced $135, opened ~$150, intraday high ~$176.50, closed ~$161 (~+19%), ~$75B raised at a ~$1.75–1.77T offer valuation; the intraday pop pushed the market cap past ~$2T and lifted Musk past $1T net worth (first trillionaire, per The Verge/Bloomberg). Confirmed largest IPO in history. Valuation framing inconsistent across coverage — $2T+ headlines use the intraday peak vs the ~$1.75T offer mark; bear case persists (Morningstar fair value ~$780B). Anchors the 2026 'AI IPO summer' alongside [[anthropic-ipo-2026-06]] and [[openai-ipo-2026-06]]. Status stays confirmed; verification stays partial (no primary SEC/IR URL captured). Will close `released-and-aged` ~4 weeks post-debut if it settles into normal coverage"
+  - ts: 2026-06-26
+    change: "Post-debut volatility as a comp: SPCX traded volatile post-IPO (ATH ~$201.80 → ~$154.54, -23%), and the NYT cites that volatility as a reason advisers warned OpenAI's Altman that retail appetite may not support a $1T OpenAI valuation ([[openai-ipo-2026-06]]). An Information note also flags the SpaceX rapid IPO as suggesting OpenAI/Anthropic could go public 'within weeks' (low-engagement, directional). Observable market data; status stays confirmed, verification stays partial (still no primary SEC/IR URL). Source: @kimmonismus."
 ---
 
 **SpaceX's IPO** — reported as the largest in history — is the third leg of

@@ -3,7 +3,7 @@ slug: google-nano-banana-2-2026-05
 title: Google Nano Banana 2 + Nano Banana Pro — image generation GA
 company: Google / DeepMind
 model: Nano Banana 2 / Nano Banana Pro
-status: released
+status: closed
 status_note: |
   Nano Banana 2 and Nano Banana Pro went generally available on
   2026-05-28, surfaced via @GoogleDeepMind retweet of @Google: "Our best
@@ -21,12 +21,14 @@ sources:
   - "@GoogleDeepMind"
   - "@Google"
 created_at: 2026-05-28
-updated_at: 2026-05-28
-closed_at: null
-closed_reason: null
+updated_at: 2026-06-26
+closed_at: 2026-06-26
+closed_reason: released-and-aged
 history:
   - ts: 2026-05-28
     change: "Created — Nano Banana 2 and Nano Banana Pro now generally available to developers, announced by @Google and retweeted by @GoogleDeepMind 16:33 UTC. GA on developer platforms"
+  - ts: 2026-06-26
+    change: "Closed — released-and-aged. GA was 2026-06-26 +29 days past the 2026-05-28 release (≥4 weeks), with no successor and no fresh signal this cycle; the ticket's own transition trigger fires. Settled into normal coverage."
 ---
 
 Google's **Nano Banana 2** and **Nano Banana Pro** image generation

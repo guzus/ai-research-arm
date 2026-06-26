@@ -23,7 +23,20 @@ status_note: |
   it directly touches the release cadence of every US frontier lab — see
   the voluntary-CAISI-partnership condition already noted on
   [[mythos-public-release]].
-expected: "AI cybersecurity clearinghouse stand-up within 30 days (~by early July 2026, Treasury-coordinated); 'covered frontier model' criteria + trusted-partner list TBD"
+
+  **2026-06-26:** The EO's first named application to a specific model, plus the
+  opt-in roster firmed. **The Information** (then **Axios**) reported the
+  administration used the voluntary review framework to ask **OpenAI to stagger
+  GPT-5.6's release** — customer-by-customer approval during a limited preview,
+  via ONCD/OSTP; Axios adds GPT-5.6 was classified **"Mythos-like"** (the same
+  tier as the Fable 5/Mythos 5 export suspension). This is the first concrete
+  case of the EO shaping a named lab's ship date — cross-link
+  [[openai-gpt-5-6]]. Separately, **Meta is the lone holdout**: per NYT
+  reporting amplified by @AndrewCurran_, **OpenAI, Anthropic, Google, xAI, and
+  Microsoft have all signed voluntary government model-review agreements; Meta
+  has not** — a fact "a lot more important now" against the GPT-5.6 stagger.
+  Status stays `confirmed`; verification stays `confirmed`.
+expected: "AI cybersecurity clearinghouse stand-up within 30 days (~by early July 2026, Treasury-coordinated); 'covered frontier model' criteria + trusted-partner list TBD. First named application 2026-06-26: voluntary review used to ask OpenAI to stagger GPT-5.6 ([[openai-gpt-5-6]]) with customer-by-customer approval; Meta is the lone holdout on the voluntary model-review agreements (OpenAI/Anthropic/Google/xAI/Microsoft signed)"
 labels:
   - regulation
   - executive-order
@@ -38,8 +51,10 @@ sources:
   - https://thenextweb.com/news/trump-signs-downsized-ai-executive-order-voluntary-review
   - https://federalnewsnetwork.com/cybersecurity/2026/06/ai-executive-order-sets-stage-for-new-cybersecurity-directives/
   - "@shashj"
+  - "@theinformation"
+  - "@AndrewCurran_"
 created_at: 2026-06-03
-updated_at: 2026-06-10
+updated_at: 2026-06-26
 closed_at: null
 closed_reason: null
 history:
@@ -47,6 +62,8 @@ history:
     change: "Created — Trump signed an executive order 2026-06-02 asking AI companies to voluntarily give the government up to 30 days of pre-release access to 'covered frontier models,' plus an AI cybersecurity clearinghouse (Treasury / National Cyber Director / NSA / CISA) to stand up within 30 days. Narrowed from the mandatory-90-day draft scrapped 2026-05-21; David Sacks reportedly assented once the window was cut to 30 days. Corroborated across NPR, CNBC, The Register, TNW, Federal News Network, plus a NYT-sourced summary in the bird signal"
   - ts: 2026-06-10
     change: "First implementation signal (single-source, secondary). @shashj reports that administration officials — including **National Cyber Director Sean Cairncross** — told the **Center for AI Standards and Innovation (CAISI)** to **halt publication of its model assessments** while this executive order is implemented. If accurate, it is the first concrete downstream effect of the EO on the model-evaluation pipeline: a pause on CAISI's public eval releases pending the new framework. Held to secondary/single-source pending corroboration on official channels; scope (all assessments vs. specific findings) and duration unstated. Status stays confirmed (the EO itself is unchanged); logged as an implementation development"
+  - ts: 2026-06-26
+    change: "First named application to a specific model + opt-in roster firmed. The Information (then Axios) reported the administration used the voluntary review framework to ask OpenAI to stagger GPT-5.6's release — customer-by-customer approval during a limited preview via ONCD/OSTP; Axios classified GPT-5.6 'Mythos-like' (the Fable 5/Mythos 5 export-suspension tier). First concrete case of the EO shaping a named lab's ship date (cross-link [[openai-gpt-5-6]]). Separately, per NYT (amplified @AndrewCurran_), OpenAI/Anthropic/Google/xAI/Microsoft have all signed voluntary government model-review agreements; Meta is the lone holdout — 'a lot more important now' against the GPT-5.6 stagger. Status stays confirmed; verification stays confirmed. Sources: @theinformation, @AndrewCurran_."
 ---
 
 On **2026-06-02**, President Trump signed an executive order creating a
