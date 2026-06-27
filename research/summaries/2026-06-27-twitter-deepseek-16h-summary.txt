@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-06-27 16:46 UTC
+
+CYCLE: Anthropic wins partial Mythos 5 export rollback; GPT-5.6 family officially live; Nous launches MoA counter to gated models.
+
+TOP STORIES:
+• Mythos 5 export curbs partially lifted — Anthropic confirms govt clearance for international restoration (Fable 5 still restricted) [✓]
+• GPT-5.6 Sol/Terra/Luna officially launched — confirmed pricing, 750 tok/s via Cerebras in July, govt-vetted preview [✓]
+• Nous Research Hermes Agent MoA 2.0 — open-source composition runtime claiming 8% above Opus 4.8 on HermesBench [⚠]
+
+WATCH: Fable 5 restoration announcement; GPT-5.6 Sol independent benchmarks; Monday US market open after Friday's AI-led selloff.
+
+Full update on GitHub.
