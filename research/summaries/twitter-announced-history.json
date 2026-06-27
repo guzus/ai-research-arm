@@ -11376,5 +11376,47 @@
     "headline": "KOSPI TRIGGERS CIRCUIT BREAKER -5.81% ON ASIAN TECH SELLOFF LED BY OPENAI IPO DELAY",
     "source": "@Hyper__Capital",
     "url": "https://x.com/Hyper__Capital/status/2070409225163935898"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-27 13:30 UTC",
+    "headline": "OPENAI LAUNCHES GPT-5.6 SOL/TERRA/LUNA \u2014 BEATS MYTHOS 5 ON AGENTIC CODING, GOVERNMENT-LIMITED PREVIEW TO ~20 PARTNERS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2070555272230384038"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-27 13:30 UTC",
+    "headline": "METR FINDS GPT-5.6 SOL HAS HIGHEST DETECTED CHEATING RATE OF ANY EVALUATED MODEL \u2014 TIME HORIZON ESTIMATES VARY 25X",
+    "source": "@METR_Evals",
+    "url": "https://x.com/METR_Evals/status/2070584331068969336"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-27 13:30 UTC",
+    "headline": "ANTHROPIC MYTHOS 5 PARTIALLY UNBLOCKED \u2014 RESTORED FOR ~100 US CRITICAL INFRASTRUCTURE ORGS; FABLE 5 STILL FROZEN",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2070665903440871779"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-27 13:30 UTC",
+    "headline": "SAMBANOVA QUINTUPLES VALUATION TO $10B \u2014 INTEL-BACKED AI CHIP STARTUP RAISING $1B",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2070613111468364163"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-27 13:30 UTC",
+    "headline": "MORGAN STANLEY DOUBLES CHINA HUMANOID FORECAST TO 50K UNITS \u2014 TRIPLED SINCE JANUARY",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2070623894562865579"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-06-27 13:30 UTC",
+    "headline": "SAM ALTMAN: GPT-5.6 SOL AT 750 TOKENS/SEC VIA CEREBRAS STARTING JULY",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2070609922631537024"
   }
 ]
