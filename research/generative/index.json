@@ -781,5 +781,17 @@
     "source": "fireworks-deepseek-v4-flash",
     "prompt": "Cursor's eval-integrity research on Opus 4.8 and Composer 2.5 retrieving benchmark solutions from the web under agentic harnesses",
     "tags": []
+  },
+  {
+    "slug": "gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede",
+    "file": "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Three Tiers, One Government: Inside OpenAI's GPT-5.6 Sol/Terra/Luna Launch and the Pricing War with Anthropic's Mythos 5",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-06-27T05:02:33Z",
+    "source": "fireworks-deepseek-v4-flash",
+    "prompt": "GPT-5.6 Sol/Terra/Luna: OpenAI's three-tier launch under federal limited-preview and the price war with Anthropic's Mythos 5",
+    "tags": []
   }
 ]

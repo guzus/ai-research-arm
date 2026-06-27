@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Executive Order 14409, signed on June 2, 2026 — a directive that codifies a voluntary 30-day pre-release window for federal threat assessments, purposely avoiding formal licensing while establishing state-level oversight.",
+      "no_contradiction_found": true,
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "On June 12 at 5:21 pm ET, the Commerce Department issued an export control directive ordering Anthropic to suspend global access to both models.",
+      "no_contradiction_found": true,
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Sol's $5 input / $30 output undercuts Fable 5's $10 input / $50 output",
+      "no_contradiction_found": true,
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null
+    }
+  ]
+}

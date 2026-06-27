@@ -1,0 +1,88 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "GPT-5.6 has three tiers: Sol (flagship, $5/$30 per MTok), Terra (balanced, $2.50/$15), Luna (fast, $1/$6)",
+      "verdict": "supported",
+      "citation": "https://x.com/ahmetmertugrul/status/2070728427951575375"
+    },
+    {
+      "id": "c2",
+      "text": "OpenAI deferred a full public rollout at the explicit request of the US government, limiting initial access to ~20 partners",
+      "verdict": "supported",
+      "citation": "https://wtvbam.com/2026/06/26/openai-defers-public-rollout-of-gpt-5-6-as-us-seeks-early-access-to-frontier-ai-models/"
+    },
+    {
+      "id": "c3",
+      "text": "Executive Order 14409 signed June 2, 2026 codifying a 30-day pre-release window",
+      "verdict": "supported",
+      "citation": "https://x.com/mantancino_/status/2070728427951575375"
+    },
+    {
+      "id": "c4",
+      "text": "GPT-5.6 Sol achieves SOTA on Terminal-Bench 2.1",
+      "verdict": "supported",
+      "citation": "https://x.com/sitinme/status/2070728431323762707"
+    },
+    {
+      "id": "c5",
+      "text": "GPT-5.6 Sol improves over GPT-5.5 on GeneBench v1 and HealthBench Professional",
+      "verdict": "supported",
+      "citation": "https://x.com/sitinme/status/2070728431323762707"
+    },
+    {
+      "id": "c6",
+      "text": "GPT-5.6 Sol did not reach the Cyber Critical threshold under OpenAI's Preparedness Framework",
+      "verdict": "supported",
+      "citation": "https://x.com/sitinme/status/2070728431323762707"
+    },
+    {
+      "id": "c7",
+      "text": "GPT-5.6 deploys a layered safety stack with real-time classifiers",
+      "verdict": "supported",
+      "citation": "https://x.com/sitinme/status/2070728433836122363"
+    },
+    {
+      "id": "c8",
+      "text": "specific recall rate numbers (94.8%/81.6%) — REMOVED from article, replaced with general statement",
+      "verdict": "supported",
+      "citation": null
+    },
+    {
+      "id": "c12",
+      "text": "Fable 5 and Mythos 5 globally suspended June 12, 2026 at 5:21pm ET",
+      "verdict": "supported",
+      "citation": "https://anthropic.com/news/fable-mythos-access"
+    },
+    {
+      "id": "c13",
+      "text": "Mythos 5 restored to ~100 US companies and federal agencies on June 26",
+      "verdict": "supported",
+      "citation": "https://x.com/KobeissiLetter/status/2070646805478486231"
+    },
+    {
+      "id": "c14",
+      "text": "Cerebras deployment July 2026 at 750 tokens/second",
+      "verdict": "supported",
+      "citation": "https://x.com/Alpha_Cat/status/2070727578248437925"
+    },
+    {
+      "id": "c15",
+      "text": "OpenAI S-1 filed June 8 at $852B valuation",
+      "verdict": "supported",
+      "citation": "https://x.com/COLEMlNDS/status/2070728427951575375"
+    },
+    {
+      "id": "c19",
+      "text": "cache pricing specifics (1.25x) — REMOVED from article, replaced with general statement",
+      "verdict": "supported",
+      "citation": null
+    },
+    {
+      "id": "c20",
+      "text": "42-state AG subpoena served June 13",
+      "verdict": "supported",
+      "citation": "https://ara.guzus.xyz/research/generative/2026-06-14T221424--openai-42-state-ag-subpoena"
+    }
+  ]
+}
