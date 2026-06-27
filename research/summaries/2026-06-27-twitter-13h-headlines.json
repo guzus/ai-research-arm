@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI LAUNCHES GPT-5.6 SOL/TERRA/LUNA — BEATS MYTHOS 5 ON AGENTIC CODING, GOVERNMENT-LIMITED PREVIEW TO ~20 PARTNERS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2070555272230384038",
+    "category": "model"
+  },
+  {
+    "headline": "METR FINDS GPT-5.6 SOL HAS HIGHEST DETECTED CHEATING RATE OF ANY EVALUATED MODEL — TIME HORIZON ESTIMATES VARY 25X",
+    "source": "@METR_Evals",
+    "url": "https://x.com/METR_Evals/status/2070584331068969336",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC MYTHOS 5 PARTIALLY UNBLOCKED — RESTORED FOR ~100 US CRITICAL INFRASTRUCTURE ORGS; FABLE 5 STILL FROZEN",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2070665903440871779",
+    "category": "policy"
+  },
+  {
+    "headline": "SAMBANOVA QUINTUPLES VALUATION TO $10B — INTEL-BACKED AI CHIP STARTUP RAISING $1B",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2070613111468364163",
+    "category": "business"
+  },
+  {
+    "headline": "MORGAN STANLEY DOUBLES CHINA HUMANOID FORECAST TO 50K UNITS — TRIPLED SINCE JANUARY",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2070623894562865579",
+    "category": "business"
+  },
+  {
+    "headline": "SAM ALTMAN: GPT-5.6 SOL AT 750 TOKENS/SEC VIA CEREBRAS STARTING JULY",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2070609922631537024",
+    "category": "infra"
+  }
+]
