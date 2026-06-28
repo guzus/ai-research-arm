@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-06-29 04:39 UTC
+
+CYCLE: Grok 4.5 enters private beta; Zhipu GLM-5.2 beats Claude Code on security benchmark; Kunlunxin $50B HK IPO
+
+TOP STORIES:
+• xAI Grok 4.5 — SpaceX/Tesla private beta, 1.5T V9 foundation model, "exceeding Opus" claimed, monthly new-model cadence announced by Musk [✓ multi-source]
+• Kunlunxin $50B Hong Kong IPO — Baidu AI chip unit requires investors to buy 3-7x chips as allocation condition, novel sovereign AI capex financing [✓ multi-source]
+• Zhipu GLM-5.2 "Mythos-level" claim contested — 39% F1 on Semgrep IDOR is real but WSJ "matches Mythos" headline overstates narrow single-benchmark result; Guillermo Rauch calls for retraction [⚠ benchmark verified, headline misleading]
+
+WATCH: Grok 4.5 third-party benchmarks within 2-4 weeks; Kunlunxin HKEX filing resolves $50B vs $64.6B valuation discrepancy
+
+Full update on GitHub.
