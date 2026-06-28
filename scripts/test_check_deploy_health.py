@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 
 import json
+import os
+import subprocess
+import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 import check_deploy_health as cdh
 
@@ -287,6 +291,33 @@ class FetchManifestTest(unittest.TestCase):
 
 
 class HelpersTest(unittest.TestCase):
+    def _git(self, repo, *args, **kwargs):
+        env = kwargs.pop("env", None)
+        return subprocess.run(
+            ["git", *args],
+            cwd=repo,
+            env=env,
+            capture_output=True,
+            text=True,
+            check=True,
+            **kwargs,
+        )
+
+    def _commit(self, repo, message, when):
+        env = {
+            **os.environ,
+            "GIT_AUTHOR_DATE": when,
+            "GIT_COMMITTER_DATE": when,
+        }
+        self._git(repo, "add", ".")
+        self._git(
+            repo,
+            "-c", "user.name=Test",
+            "-c", "user.email=test@example.invalid",
+            "commit", "-m", message,
+            env=env,
+        )
+
     def test_idempotency_key_format(self):
         self.assertEqual(
             cdh.idempotency_key(cdh.DEPLOY_STALE, NOW),
@@ -317,6 +348,26 @@ class HelpersTest(unittest.TestCase):
         )
         for state in (cdh.HEALTHY, cdh.LEGACY_BUILD, cdh.PIPELINE_IDLE):
             self.assertNotIn(state, cdh.ALERTING_STATES)
+
+    def test_repo_last_commit_epoch_ignores_non_deploy_paths_by_default(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            self._git(repo, "init")
+            (repo / "dashboard").mkdir()
+            (repo / "research" / "rss").mkdir(parents=True)
+
+            (repo / "dashboard" / "app.ts").write_text("deploy relevant\n")
+            self._commit(repo, "dashboard", "2026-06-10T08:00:00+00:00")
+            deploy_epoch = cdh.repo_last_commit_epoch(str(repo))
+
+            (repo / "research" / "rss" / "2026-06-10.md").write_text("ignored\n")
+            self._commit(repo, "rss", "2026-06-10T11:00:00+00:00")
+
+            self.assertEqual(cdh.repo_last_commit_epoch(str(repo)), deploy_epoch)
+            self.assertEqual(
+                cdh.repo_last_commit_epoch(str(repo), pathspecs=("research/rss",)),
+                int(datetime(2026, 6, 10, 11, 0, tzinfo=timezone.utc).timestamp()),
+            )
 
 
 if __name__ == "__main__":

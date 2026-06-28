@@ -14,19 +14,20 @@ dashboard/scripts/prebuild.mjs stamps the manifest it emits with
 manifest and compute `lag = now - generatedAt`.
 
 Why the lag threshold works for THIS repo (no false positives in quiet
-periods): the pipeline pushes to main around the clock — over the trailing
-10 days, 367 commits with a MAXIMUM gap of ~3.4h between pushes (hourly
-RSS is the floor; lane-freshness pages rss at 4h idle anyway). Railway
-rebuilds on every push, so on a healthy system lag stays under ~1h and can
-never legitimately reach the default 8h threshold (>2x the worst observed
-push gap) without something being wrong.
+periods): deploy-relevant dashboard commits normally land frequently enough
+that a healthy Railway build produces a fresh manifest within the default
+8h threshold. Raw lanes excluded from the Docker context (for example
+research/rss, research/community, and research/blogs) are intentionally not
+counted as deploy-relevant, because BuildKit can correctly reuse the cached
+dashboard image when only those files changed.
 
 Distinguishing deploy-stale from pipeline-dead (don't double-page): if the
 whole pipeline froze, lag grows too — but lane-freshness already owns that
 page. So the page-worthy finding requires the repo to be DEMONSTRABLY
-alive: `deploy-stale` fires only when lag > threshold AND the last commit
-in the checkout is < 2h old (`git log -1 --format=%ct`; the liveness-check
-checkout always exists). Big lag + idle repo is reported as
+alive: `deploy-stale` fires only when lag > threshold AND the last
+deploy-relevant commit in the checkout is < 2h old (`git log -1 --format=%ct
+-- <dashboard pathspecs>`; the liveness-check checkout always exists). Big
+lag + deploy-idle repo is reported as
 `pipeline-idle (deferring to lane-freshness)` and does not alert.
 
 Defeating the CDN cache (the read must be the ORIGIN's manifest):
@@ -49,9 +50,10 @@ HTTP 200, which would JSON-parse-fail forever. Default accordingly;
 Findings (state machine):
   healthy                 lag <= threshold (or generatedAt in the future —
                           clock skew is not an outage).
-  deploy-stale            ALERT. lag > threshold AND repo alive (< 2h since
-                          last commit). The incident this watchdog exists
-                          for: pushes flow, builds don't.
+  deploy-stale            ALERT. lag > threshold AND dashboard-affecting
+                          commits are flowing (< 2h since last deploy-
+                          relevant commit). The incident this watchdog exists
+                          for: deploy-relevant pushes flow, builds don't.
   site-unreachable        ALERT. Fetch failed after one retry, or non-200.
   manifest-unparseable    ALERT. Body is not a JSON object (e.g. the SPA
                           fallback served HTML for the manifest path) or
@@ -60,8 +62,9 @@ Findings (state machine):
                           `generatedAt` — the live build predates the
                           stamping feature. Disappears after the first
                           successful post-feature deploy.
-  pipeline-idle           note, NOT a page. lag > threshold but the repo is
-                          idle too — lane-freshness owns that page.
+  pipeline-idle           note, NOT a page. lag > threshold but the deploy-
+                          relevant pathset is idle too — lane-freshness owns
+                          raw-lane stalls.
 
 Stdlib-only (urllib.request/json/argparse/datetime) so it runs identically
 on both watchdog tiers. All external effects (fetch, git, clock) are
@@ -86,7 +89,7 @@ import urllib.error
 import urllib.request
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from typing import Callable, Optional
+from typing import Callable, Optional, Sequence
 
 # The manifest the dashboard actually consumes (see docstring: root
 # /manifest.json is the SPA fallback and serves HTML with HTTP 200).
@@ -104,6 +107,30 @@ DEFAULT_MAX_LAG_HOURS = 8.0
 # is younger than this. Under that bound, a healthy deploy chain MUST have
 # produced a recent build (pushes flow hourly), so big lag = broken deploys.
 DEFAULT_REPO_ALIVE_HOURS = 2.0
+
+# Only commits that can change the Railway-served dashboard should make a
+# stale live manifest page-worthy. Railway builds the root Dockerfile, whose
+# .dockerignore intentionally excludes raw pipeline lanes such as
+# research/rss, research/community, and research/blogs. Those commits keep the
+# repo active but do not require a new image; counting them caused false
+# deploy-stale alerts when BuildKit correctly reused the cached dashboard
+# image.
+DEFAULT_DEPLOY_RELEVANT_PATHS = (
+    ".dockerignore",
+    "Dockerfile",
+    "Caddyfile",
+    "railway.json",
+    "dashboard",
+    "research/twitter",
+    "research/models",
+    "research/front-page",
+    "research/digest",
+    "research/audio",
+    "research/generative",
+    "research/wiki",
+    "research/youtube",
+    "research/arm",
+)
 
 DEFAULT_TIMEOUT_SECONDS = 15.0
 RETRY_DELAY_SECONDS = 5.0
@@ -213,15 +240,23 @@ def fetch_manifest(
     ) from last_error
 
 
-def repo_last_commit_epoch(repo_root: str) -> Optional[int]:
-    """Epoch of the last commit in the checkout, or None when unavailable.
+def repo_last_commit_epoch(
+    repo_root: str,
+    pathspecs: Sequence[str] = DEFAULT_DEPLOY_RELEVANT_PATHS,
+) -> Optional[int]:
+    """Epoch of the last deploy-relevant commit, or None when unavailable.
 
     `git log -1 --format=%ct` works even on a depth-1 checkout (it only
-    needs the tip), so this is robust on both watchdog tiers.
+    needs the tip), so this is robust on both watchdog tiers. Restricting the
+    log to the Docker/dashboard pathspecs keeps ignored research-lane commits
+    from looking like deploy failures when the live build is correctly cached.
     """
+    cmd = ["git", "log", "-1", "--format=%ct"]
+    if pathspecs:
+        cmd += ["--", *pathspecs]
     try:
         out = subprocess.run(
-            ["git", "log", "-1", "--format=%ct"],
+            cmd,
             cwd=repo_root,
             capture_output=True,
             text=True,
@@ -385,8 +420,10 @@ def evaluate(
             **base,
         )
 
-    # 5) lag is anomalous. Page only when the repo is demonstrably pushing —
-    #    otherwise lane-freshness owns the page (premise c: don't double-page).
+    # 5) lag is anomalous. Page only when deploy-relevant files are
+    #    demonstrably changing — otherwise lane-freshness owns the page
+    #    (premise c: don't double-page). Raw lanes ignored by the Docker
+    #    context can continue committing without requiring a new image.
     last_commit_epoch = git_time_fn()
     repo_idle_hours: Optional[float] = None
     if last_commit_epoch is not None:
@@ -401,8 +438,8 @@ def evaluate(
             state=DEPLOY_STALE,
             detail=(
                 f"live build is {_fmt_hours(lag_hours)} old (> {max_lag_hours:g}h) "
-                "and repo liveness is UNKNOWN (git unavailable) — cannot apply "
-                "the pipeline-idle deferral; treat as deploy-stale"
+                "and deploy-relevant repo liveness is UNKNOWN (git unavailable) "
+                "— cannot apply the pipeline-idle deferral; treat as deploy-stale"
             ),
             **base,
         )
@@ -411,9 +448,9 @@ def evaluate(
             state=DEPLOY_STALE,
             detail=(
                 f"live build is {_fmt_hours(lag_hours)} old (> {max_lag_hours:g}h) "
-                f"while the repo pushed {_fmt_hours(repo_idle_hours)} ago — "
-                "pushes are flowing but deploys are not (check the Railway "
-                "build: Dockerfile / bun build / Caddy image)"
+                f"while deploy-relevant files changed {_fmt_hours(repo_idle_hours)} "
+                "ago — dashboard-affecting pushes are flowing but deploys are "
+                "not (check the Railway build: Dockerfile / bun build / Caddy image)"
             ),
             **base,
         )
@@ -421,7 +458,7 @@ def evaluate(
         state=PIPELINE_IDLE,
         detail=(
             f"live build is {_fmt_hours(lag_hours)} old but the repo has also "
-            f"been idle {_fmt_hours(repo_idle_hours)} (>= {repo_alive_hours:g}h) "
+            f"been deploy-idle {_fmt_hours(repo_idle_hours)} (>= {repo_alive_hours:g}h) "
             "— pipeline-idle (deferring to lane-freshness, which owns that page)"
         ),
         **base,
@@ -449,7 +486,7 @@ def format_report(health: DeployHealth) -> str:
         f"- http_status: {health.http_status if health.http_status is not None else '?'}",
         f"- generatedAt: {health.generated_at or 'absent'}",
         f"- lag: {_fmt_hours(health.lag_hours)}",
-        f"- repo idle: {_fmt_hours(health.repo_idle_hours)}",
+        f"- deploy-relevant repo idle: {_fmt_hours(health.repo_idle_hours)}",
         f"- gitSha: {health.git_sha or 'absent'}",
         f"- cache: {cache_note(headers)}",
     ]
