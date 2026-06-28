@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-06-29 03:36 UTC
+
+CYCLE: Weekend accumulation — Grok 4.5 announced, DeepSeek $7.4B raise at $50B, GLM-5.2 cyber benchmarks go viral.
+
+TOP STORIES:
+• Grok 4.5 (1.5T V9 model, Cursor data) in private beta at SpaceX/Tesla — claims Opus-level performance, monthly from-scratch model cadence. Unverifiable until third-party testing. [⚠]
+• DeepSeek raised $7.4B at $50B+ valuation — largest Chinese AI round ever. Founder Liang Wenfeng put in ~$3B of his own money after Mythos preview convinced him to scale. [✓]
+• GLM-5.2 "matches Mythos" headline is bogus — real finding is 39% F1 on narrow IDOR benchmark vs Claude Code's 32% at $0.17/task. Not comparable to Mythos's autonomous exploit chains. [⚠]
+• Austria publicly courted Anthropic to relocate to EU. Read as desperation: US compute concentration makes it impossible. [✓]
+
+WATCH: Grok 4.4 imminent release (version number removed from UI); Monday trading reaction to DeepSeek raise.
+
+Full update on GitHub.

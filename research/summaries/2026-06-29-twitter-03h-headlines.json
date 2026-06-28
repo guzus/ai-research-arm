@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ELON MUSK ANNOUNCES GROK 4.5 — 1.5T PARAM V9 MODEL IN PRIVATE BETA AT SPACEX/TESLA, CLAIMS OPUS-LEVEL PERFORMANCE",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2071184354756477041",
+    "category": "model"
+  },
+  {
+    "headline": "DEEPSEEK RAISED $7.4B AT $50B+ VALUATION — LARGEST CHINESE AI ROUND EVER; FOUNDER PUT IN $3B OF OWN MONEY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2071262396727890323",
+    "category": "business"
+  },
+  {
+    "headline": "SPACEX TO RELEASE FROM-SCRATCH AI MODELS EVERY MONTH THIS YEAR PER MUSK — RADICAL ACCELERATION OVER INDUSTRY CADENCE",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2071184354756477041",
+    "category": "model"
+  },
+  {
+    "headline": "AUSTRIA PUBLICLY COURTED ANTHROPIC TO RELOCATE TO EUROPE — SIGNAL EU FACES PERMANENT FRONTIER-MODEL EXCLUSION",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2071251833826193881",
+    "category": "policy"
+  },
+  {
+    "headline": "VIRAL CLAIM THAT CHINA'S GLM-5.2 MATCHES MYTHOS IN CYBERSECURITY DEBUNKED — NARROW IDOR BENCHMARK ONLY",
+    "source": "@janekm",
+    "url": "https://x.com/janekm/status/2071256883931893791",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC RUMORED AT $30B REVENUE RUN RATE, SURPASSING OPENAI'S ~$25B — UNVERIFIED CRYPTO-AGGREGATOR CLAIM",
+    "source": "@CryptoTweets",
+    "url": "https://x.com/CryptoTweets/status/2071297800172671303",
+    "category": "business"
+  },
+  {
+    "headline": "GROK 4.4 LIKELY GOING LIVE — VERSION NUMBER DISAPPEARED FROM UI, TERMS OF SERVICE UPDATED",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2071283196885660026",
+    "category": "model"
+  }
+]
