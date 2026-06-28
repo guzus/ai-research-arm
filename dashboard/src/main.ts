@@ -2791,40 +2791,109 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
       })
     : reversed;
 
-  const items: string[] = [];
-  for (const row of visible) {
+  const titleFor = (row: GenResearchRow): string => {
     let title = escapeHtml(row.title);
     if (searchTerm) {
       const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const re = new RegExp('(' + escaped + ')', 'gi');
       title = title.replace(re, '<mark>$1</mark>');
     }
+    return title;
+  };
+  const dateFor = (row: GenResearchRow): { rel: string; short: string; year: string } => {
     const created = new Date(row.created_at);
-    const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
+    if (isNaN(created.getTime())) return { rel: '', short: '', year: '' };
+    return {
+      rel: timeAgo(created),
+      short: created.toLocaleDateString([], { month: 'short', day: 'numeric' }),
+      year: String(created.getFullYear()),
+    };
+  };
+  const tagHtmlFor = (row: GenResearchRow, limit: number): string =>
+    (row.tags || [])
+      .slice(0, limit)
+      .map((t) => '<span class="gen-research-tag">' + escapeHtml(t) + '</span>')
+      .join('');
+  const kindFor = (row: GenResearchRow): { label: string; className: string } => {
+    const isStandalone = row.kind === 'standalone';
+    return {
+      label: isStandalone ? 'Standalone' : 'Article',
+      className: isStandalone ? 'gen-research-kind--standalone' : 'gen-research-kind--article',
+    };
+  };
+  const coverSource = visible.slice(0, 13);
+  const sideCovers = coverSource.slice(1);
+  const leftCovers = sideCovers.filter((_, index) => index % 2 === 0).reverse();
+  const rightCovers = sideCovers.filter((_, index) => index % 2 === 1);
+  const coverRows = [
+    ...leftCovers.map((row, index) => ({
+      row,
+      className: 'gen-research-item--left gen-research-item--depth-' + Math.min(4, leftCovers.length - index),
+    })),
+    ...coverSource.slice(0, 1).map((row) => ({ row, className: 'gen-research-item--center' })),
+    ...rightCovers.map((row, index) => ({
+      row,
+      className: 'gen-research-item--right gen-research-item--depth-' + Math.min(4, index + 1),
+    })),
+  ];
+
+  const coverItems: string[] = [];
+  for (const { row, className } of coverRows) {
+    const title = titleFor(row);
+    const dates = dateFor(row);
+    const kind = kindFor(row);
+    const tags = tagHtmlFor(row, 2);
+    const languageHtml = hasResearchLanguage(row, 'ko')
+      ? '      <span class="gen-research-tag" lang="ko">한국어</span>'
+      : '';
+    coverItems.push(
+      [
+        '<li class="gen-research-item ' + className + '" data-slug="' + escapeHtml(row.slug) + '" tabindex="0" aria-label="' + escapeHtml(row.title) + '">',
+        '  <div class="gen-research-cover-face">',
+        '    <div class="gen-research-cover-top">',
+        '      <span class="gen-research-kind ' + kind.className + '">' + kind.label + '</span>',
+        dates.year ? '      <span class="gen-research-cover-year">' + escapeHtml(dates.year) + '</span>' : '',
+        '    </div>',
+        '    <div class="gen-research-cover-title">' + title + '</div>',
+        '    <div class="gen-research-cover-bottom">',
+        '      <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
+        dates.short ? '      <span class="gen-research-time">' + escapeHtml(dates.short) + '</span>' : '',
+        tags || languageHtml ? '      <span class="gen-research-tags">' + tags + languageHtml + '</span>' : '',
+        '    </div>',
+        '  </div>',
+        '  <div class="gen-research-cover-spine">' + escapeHtml(row.title) + '</div>',
+        '</li>',
+      ].join('\n'),
+    );
+  }
+
+  const trackItems: string[] = [];
+  for (const [index, row] of visible.entries()) {
+    const title = titleFor(row);
+    const dates = dateFor(row);
     // Surface first three tags inline; the chip on the right indicates fragment vs standalone.
     const tagHtml = (row.tags || [])
       .slice(0, 3)
       .map((t) => '<span class="gen-research-tag">' + escapeHtml(t) + '</span>')
       .join('');
-    const isStandalone = row.kind === 'standalone';
-    const kindLabel = isStandalone ? 'Standalone' : 'Article';
-    const kindClass = isStandalone ? 'gen-research-kind--standalone' : 'gen-research-kind--article';
+    const kind = kindFor(row);
     const languageHtml = hasResearchLanguage(row, 'ko')
       ? '      <span class="gen-research-tag" lang="ko">한국어</span>'
       : '';
-    items.push(
+    trackItems.push(
       [
-        '<li class="gen-research-item" data-slug="' + escapeHtml(row.slug) + '" tabindex="0">',
-        '  <div class="gen-research-item-main">',
-        '    <div class="gen-research-item-title">' + title + '</div>',
-        '    <div class="gen-research-item-meta">',
+        '<li class="gen-research-track-item" data-slug="' + escapeHtml(row.slug) + '" tabindex="0" aria-label="' + escapeHtml(row.title) + '">',
+        '  <span class="gen-research-track-number">' + String(index + 1).padStart(2, '0') + '</span>',
+        '  <div class="gen-research-track-main">',
+        '    <div class="gen-research-track-title">' + title + '</div>',
+        '    <div class="gen-research-track-meta">',
         '      <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
-        rel ? '      <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
+        dates.rel ? '      <span class="gen-research-time">' + escapeHtml(dates.rel) + '</span>' : '',
         tagHtml ? '      <span class="gen-research-tags">' + tagHtml + '</span>' : '',
         languageHtml,
         '    </div>',
         '  </div>',
-        '  <span class="gen-research-kind ' + kindClass + '">' + kindLabel + '</span>',
+        '  <span class="gen-research-kind ' + kind.className + '">' + kind.label + '</span>',
         '</li>',
       ].join('\n'),
     );
@@ -2837,16 +2906,29 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
   setSafeContent(
     content,
     [
-      '<div class="content-card">',
-      '  <div class="content-card-body">',
-      '    <ul class="gen-research-index">',
-      items.join('\n'),
-      '    </ul>',
+      '<div class="content-card gen-research-library">',
+      '  <div class="content-card-body gen-research-library-body">',
+      '    <div class="gen-research-library-top">',
+      '      <div class="gen-research-mode-pill"><span>Articles</span><span>' + String(visible.length) + '</span></div>',
+      '      <div class="gen-research-mode-pill gen-research-mode-pill--muted"><span>Generative Research</span></div>',
+      '    </div>',
+      '    <ol class="gen-research-index gen-research-flow" aria-label="Generative research covers">',
+      coverItems.join('\n'),
+      '    </ol>',
+      '    <ol class="gen-research-tracklist" aria-label="Generative research articles">',
+      trackItems.join('\n'),
+      '    </ol>',
       empty,
       '  </div>',
       '</div>',
     ].join('\n'),
   );
+  window.requestAnimationFrame(() => {
+    const flow = content.querySelector<HTMLElement>('.gen-research-flow');
+    const centerCard = flow?.querySelector<HTMLElement>('.gen-research-item--center');
+    if (!flow || !centerCard) return;
+    flow.scrollLeft = centerCard.offsetLeft - ((flow.clientWidth - centerCard.clientWidth) / 2);
+  });
 }
 
 function renderResearchDoc(row: GenResearchRow, body: string): void {
