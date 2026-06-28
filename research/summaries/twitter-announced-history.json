@@ -11418,5 +11418,54 @@
     "headline": "SAM ALTMAN: GPT-5.6 SOL AT 750 TOKENS/SEC VIA CEREBRAS STARTING JULY",
     "source": "@sama",
     "url": "https://x.com/sama/status/2070609922631537024"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-29 03:36 UTC",
+    "headline": "ELON MUSK ANNOUNCES GROK 4.5 \u2014 1.5T PARAM V9 MODEL IN PRIVATE BETA AT SPACEX/TESLA, CLAIMS OPUS-LEVEL PERFORMANCE",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2071184354756477041"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-29 03:36 UTC",
+    "headline": "DEEPSEEK RAISED $7.4B AT $50B+ VALUATION \u2014 LARGEST CHINESE AI ROUND EVER; FOUNDER PUT IN $3B OF OWN MONEY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2071262396727890323"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-29 03:36 UTC",
+    "headline": "SPACEX TO RELEASE FROM-SCRATCH AI MODELS EVERY MONTH THIS YEAR PER MUSK \u2014 RADICAL ACCELERATION OVER INDUSTRY CADENCE",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2071184354756477041"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-29 03:36 UTC",
+    "headline": "AUSTRIA PUBLICLY COURTED ANTHROPIC TO RELOCATE TO EUROPE \u2014 SIGNAL EU FACES PERMANENT FRONTIER-MODEL EXCLUSION",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2071251833826193881"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-06-29 03:36 UTC",
+    "headline": "VIRAL CLAIM THAT CHINA'S GLM-5.2 MATCHES MYTHOS IN CYBERSECURITY DEBUNKED \u2014 NARROW IDOR BENCHMARK ONLY",
+    "source": "@janekm",
+    "url": "https://x.com/janekm/status/2071256883931893791"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-29 03:36 UTC",
+    "headline": "ANTHROPIC RUMORED AT $30B REVENUE RUN RATE, SURPASSING OPENAI'S ~$25B \u2014 UNVERIFIED CRYPTO-AGGREGATOR CLAIM",
+    "source": "@CryptoTweets",
+    "url": "https://x.com/CryptoTweets/status/2071297800172671303"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-29 03:36 UTC",
+    "headline": "GROK 4.4 LIKELY GOING LIVE \u2014 VERSION NUMBER DISAPPEARED FROM UI, TERMS OF SERVICE UPDATED",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2071283196885660026"
   }
 ]
