@@ -1,0 +1,244 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "DeepSeek raised more than RMB 50 billion ($7.4B) in its first external funding round at a post-money valuation exceeding $50 billion",
+      "type": "metric",
+      "source_urls": ["https://www.dealstreetasia.com/stories/deepseek-funding-485657", "https://x.com/jukan05/status/2066752564809605584"],
+      "source_tiers": ["secondary", "opinion"],
+      "as_of": "2026-06-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Most external investors invest into a limited partnership managed by CEO Liang Wenfeng, receiving no voting rights and subject to a 5-year lock-up",
+      "type": "market-structure",
+      "source_urls": ["https://www.dealstreetasia.com/stories/deepseek-funding-485657", "https://x.com/baoshu88/status/2066756006818779300"],
+      "source_tiers": ["secondary", "opinion"],
+      "as_of": "2026-06-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "China's National Artificial Intelligence Industry Investment Fund is the sole exception, investing directly into DeepSeek with full voting rights and no lock-up",
+      "type": "market-structure",
+      "source_urls": ["https://www.dealstreetasia.com/stories/deepseek-funding-485657", "https://x.com/baoshu88/status/2066756006818779300"],
+      "source_tiers": ["secondary", "opinion"],
+      "as_of": "2026-06-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Liang Wenfeng personally committed approximately RMB 20 billion ($3B) of his own capital, the single largest check in the round",
+      "type": "metric",
+      "source_urls": ["https://www.dealstreetasia.com/stories/deepseek-set-to-raise-7b-in-first-fundraising-backed-by-catl-tencent-others-484341/", "https://x.com/0xLogicrw/status/2066771226073366761"],
+      "source_tiers": ["secondary", "opinion"],
+      "as_of": "2026-06-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Tencent invested ~RMB 10B ($1.48B), CATL ~RMB 5B ($740M), JD.com, NetEase, and IDG Capital each ~RMB 3B ($420M)",
+      "type": "market-structure",
+      "source_urls": ["https://www.dealstreetasia.com/stories/deepseek-set-to-raise-7b-in-first-fundraising-backed-by-catl-tencent-others-484341/", "https://x.com/BTCdayu/status/2067377865621200935"],
+      "source_tiers": ["secondary", "opinion"],
+      "as_of": "2026-06-17",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "DeepSeek was self-funded from founding (May 2023) until this round, backed by High-Flyer Quant's internal capital",
+      "type": "definition",
+      "source_urls": ["https://www.wikidata.org/wiki/Q131577453", "https://x.com/linwanwan823/status/2051950233207406694"],
+      "source_tiers": ["secondary", "opinion"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "DeepSeek's API pricing is 36-179x cheaper than GPT-5.5 and Claude Fable 5 on a per-token basis",
+      "type": "comparison",
+      "source_urls": ["https://x.com/ollobrains/status/2070433586264887783"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c8",
+      "claim": "DeepSeek V4 Flash captured the No. 1 spot on OpenRouter, processing ~6 trillion tokens/week vs. GPT-5.5 at 470B tokens — a 13x volume advantage",
+      "type": "metric",
+      "source_urls": ["https://x.com/hsu_steve/status/2060496778332602738"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-05-29",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c9",
+      "claim": "DeepSeek's estimated annualized revenue run-rate is ~$120M, implying a ~430x revenue multiple on the $50B valuation",
+      "type": "metric",
+      "source_urls": ["https://x.com/Islaladrones/status/2069587324246303031"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-06-24",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c10",
+      "claim": "OpenAI's February 2026 mega-round raised ~$110B at a $730-852B valuation; SoftBank committed $30B, Amazon $50B, Nvidia $30B in-kind",
+      "type": "metric",
+      "source_urls": ["https://x.com/anishmoonka/status/2039097880489984380"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-03-31",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "Anthropic's valuation rose from $61.5B (Mar 2025) to ~$965B (May 2026); annualized revenue run-rate surged to ~$47B by May 2026",
+      "type": "metric",
+      "source_urls": ["https://x.com/cryptogoos/status/2071260013583028442"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-05-31",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "DeepSeek's structural inference cost advantage is estimated at 10-50x over US labs, driven by China energy pricing (0.3 RMB/kWh), MLA architecture, MoE efficiency, and DSpark speculative decoding",
+      "type": "technical",
+      "source_urls": ["https://x.com/LarryPureLabs/status/2063772116730990781"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-06-07",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c13",
+      "claim": "DeepSeek V4 runs on Huawei Ascend 950PR processors; Nvidia's China market share collapsed from 90%+ to ~55%",
+      "type": "metric",
+      "source_urls": ["https://x.com/czverse/status/2050562702028742786"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-06-28",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c14",
+      "claim": "China Integrated Circuit Fund (Big Fund) Phase III has RMB 344B ($47.5B) registered capital",
+      "type": "metric",
+      "source_urls": ["https://x.com/lianyanshe/status/2071203866654417085"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-06-28",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c15",
+      "claim": "Liang Wenfeng's pre-funding ownership was ~84% through two holding vehicles; post-round estimated at ~70-75%",
+      "type": "metric",
+      "source_urls": ["https://x.com/1a1n1d1y/status/2036987673035104513"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-06-16",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c16",
+      "claim": "The fundraise grew from an initial $3-4B target in April 2026 to a final $7.4B",
+      "type": "comparison",
+      "source_urls": ["https://www.dealstreetasia.com/stories/deepseek-first-fundraising-481442/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "In April 2026, China's NDRC ordered Meta to unwind its $2B Manus acquisition and imposed exit bans on founders",
+      "type": "event",
+      "source_urls": ["https://x.com/spotlightoncn/status/2057664815674667509"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-04-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "USD LPs advised dual-currency funds not to participate in DeepSeek's round due to geopolitical risk",
+      "type": "market-structure",
+      "source_urls": ["https://x.com/yuhasbeentaken/status/2066867792272400810"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-06-16",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "Anthropic uses a Public Benefit Corporation + Long-Term Benefit Trust structure; OpenAI uses a capped-profit for-profit with 100x return cap managed by a nonprofit board",
+      "type": "definition",
+      "source_urls": ["https://finance.yahoo.com/sectors/technology/articles/harvard-law-anthropic-sell-safety-193510988.html"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "DeepSeek was founded in May 2023 by Liang Wenfeng, headquartered in Hangzhou, parent company High-Flyer (founded 2015)",
+      "type": "definition",
+      "source_urls": ["https://www.wikidata.org/wiki/Q131577453", "https://www.wikidata.org/wiki/Q116949516"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2023-05-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "DeepSeek V4 Pro uses 1.6T parameters with 49B active via MoE, 1M-token context window, MIT license; training cost ~$5.2M vs GPT-5.4 estimated $200M+",
+      "type": "technical",
+      "source_urls": ["https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro", "https://x.com/heyshrutimishra/status/2048040659135652020"],
+      "source_tiers": ["primary", "opinion"],
+      "as_of": "2026-06-28",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c22",
+      "claim": "DeepSeek V4 Flash API pricing: $0.14/1M input tokens vs Claude Fable 5 at $10/1M — 71x cheaper on input, 179x on output",
+      "type": "comparison",
+      "source_urls": ["https://x.com/ollobrains/status/2070433586264887783"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "Chinese models rose from 1.2% to ~30% of OpenRouter token usage; China surpassed US in Hugging Face monthly model downloads at 41% share",
+      "type": "metric",
+      "source_urls": ["https://x.com/hsu_steve/status/2060496778332602738"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-05-29",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "DeepSeek plans to at least double its workforce across all 27 technical role categories plus corporate functions post-funding",
+      "type": "metric",
+      "source_urls": ["https://x.com/briefing_block_/status/2070567776096547231"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-06-28",
+      "confidence": "medium",
+      "risk": "single-source"
+    }
+  ]
+}

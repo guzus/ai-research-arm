@@ -793,5 +793,17 @@
     "source": "fireworks-deepseek-v4-flash",
     "prompt": "GPT-5.6 Sol/Terra/Luna: OpenAI's three-tier launch under federal limited-preview and the price war with Anthropic's Mythos 5",
     "tags": []
+  },
+  {
+    "slug": "deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f",
+    "file": "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The $7.4B That Divided the Cap Table: DeepSeek's State-Golden-Share Model and What It Means for AI Valuation",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-06-28T19:29:53Z",
+    "source": "workflow_dispatch",
+    "prompt": "DeepSeek's $7.4B round at $50B: cap-table asymmetry, the state fund's voting-rights override, and the valuation benchmark vs OpenAI/Anthropic",
+    "tags": []
   }
 ]

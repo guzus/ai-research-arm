@@ -1,0 +1,94 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "DeepSeek raised more than RMB 50 billion ($7.4B) in its first external funding round at a post-money valuation exceeding $50 billion",
+      "verdict": "supported",
+      "citation": "https://www.dealstreetasia.com/stories/deepseek-funding-485657"
+    },
+    {
+      "id": "c2",
+      "text": "Most external investors invest into a limited partnership managed by CEO Liang Wenfeng, receiving no voting rights and subject to a 5-year lock-up",
+      "verdict": "supported",
+      "citation": "https://www.dealstreetasia.com/stories/deepseek-funding-485657"
+    },
+    {
+      "id": "c3",
+      "text": "China's National Artificial Intelligence Industry Investment Fund is the sole exception, investing directly into DeepSeek with full voting rights and no lock-up",
+      "verdict": "supported",
+      "citation": "https://www.dealstreetasia.com/stories/deepseek-funding-485657"
+    },
+    {
+      "id": "c4",
+      "text": "Liang Wenfeng personally committed approximately RMB 20 billion ($3B) of his own capital",
+      "verdict": "supported",
+      "citation": "https://www.dealstreetasia.com/stories/deepseek-set-to-raise-7b-in-first-fundraising-backed-by-catl-tencent-others-484341/"
+    },
+    {
+      "id": "c5",
+      "text": "Tencent invested ~RMB 10B, CATL ~RMB 5B, JD.com, NetEase, and IDG Capital each ~RMB 3B",
+      "verdict": "supported",
+      "citation": "https://x.com/BTCdayu/status/2067377865621200935"
+    },
+    {
+      "id": "c6",
+      "text": "The LP structure means next cap-table event is 2031",
+      "verdict": "weak",
+      "citation": "https://x.com/jukan05/status/2066752564809605584"
+    },
+    {
+      "id": "c7",
+      "text": "DeepSeek V4 Flash pricing at $0.14/M input is 71x cheaper than Claude Fable 5",
+      "verdict": "supported",
+      "citation": "https://x.com/ollobrains/status/2070433586264887783"
+    },
+    {
+      "id": "c8",
+      "text": "DeepSeek processes ~6 trillion tokens/week vs GPT-5.5 at 470B — 13x volume advantage",
+      "verdict": "supported",
+      "citation": "https://x.com/hsu_steve/status/2060496778332602738"
+    },
+    {
+      "id": "c9",
+      "text": "DeepSeek's estimated ARR is ~$120M, implying ~430x multiple",
+      "verdict": "weak",
+      "citation": "https://x.com/Islaladrones/status/2069587324246303031"
+    },
+    {
+      "id": "c10",
+      "text": "OpenAI's February 2026 round at $730-852B valuation",
+      "verdict": "supported",
+      "citation": "https://x.com/anishmoonka/status/2039097880489984380"
+    },
+    {
+      "id": "c11",
+      "text": "Anthropic valuation rose from $61.5B to ~$965B; revenue run-rate $47B",
+      "verdict": "supported",
+      "citation": "https://x.com/cryptogoos/status/2071260013583028442"
+    },
+    {
+      "id": "c12",
+      "text": "Electricity cost advantage at 0.3 RMB/kWh vs $0.08-0.15/kWh in US",
+      "verdict": "supported",
+      "citation": "https://x.com/LarryPureLabs/status/2063772116730990781"
+    },
+    {
+      "id": "c13",
+      "text": "Nvidia China share collapsed from 90%+ to ~55%",
+      "verdict": "supported",
+      "citation": "https://x.com/czverse/status/2050562702028742786"
+    },
+    {
+      "id": "c14",
+      "text": "Big Fund Phase III registered capital RMB 344B ($47.5B)",
+      "verdict": "supported",
+      "citation": "https://x.com/lianyanshe/status/2071203866654417085"
+    },
+    {
+      "id": "c15",
+      "text": "Manus AI acquisition was unwound by NDRC with founder exit bans",
+      "verdict": "supported",
+      "citation": "https://x.com/spotlightoncn/status/2057664815674667509"
+    }
+  ]
+}

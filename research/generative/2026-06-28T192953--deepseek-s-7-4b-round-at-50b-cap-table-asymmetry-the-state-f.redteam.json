@@ -1,0 +1,22 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The limited partnership structure creates a cap-table asymmetry unprecedented in venture history — external investors contribute $7.4B yet receive no voting rights, no board seats, and a 5-year lock-up.",
+      "no_contradiction_found": true,
+      "redteam_failed": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "DeepSeek's 10-50x inference cost advantage over US labs is a structural moat built on three compounding layers: China's subsidized industrial energy, DeepSeek's architectural innovations, and a domestic Huawei compute stack.",
+      "no_contradiction_found": true,
+      "redteam_failed": false
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "DeepSeek's $50B valuation, against an estimated ~$120M ARR, produces a revenue multiple of ~430x — a figure 12x to 22x higher than OpenAI and Anthropic.",
+      "no_contradiction_found": true,
+      "redteam_failed": false
+    }
+  ]
+}
