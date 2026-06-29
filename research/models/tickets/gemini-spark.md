@@ -3,7 +3,7 @@ slug: gemini-spark
 title: Gemini Spark — first GA paid persistent consumer AI agent
 company: Google / DeepMind
 model: Gemini Spark
-status: released
+status: closed
 status_note: |
   **Gemini Spark** went live for US-based Google AI Ultra subscribers
   on 2026-05-29 at the existing **$99.99/mo Ultra tier**, surfaced by
@@ -33,12 +33,14 @@ sources:
   - "@GoogleDeepMind"
   - https://9to5google.com/
 created_at: 2026-06-01
-updated_at: 2026-06-01
-closed_at: null
-closed_reason: null
+updated_at: 2026-06-29
+closed_at: 2026-06-29
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-01
     change: "Created — Gemini Spark went GA for US AI Ultra subscribers 2026-05-29 at $99.99/mo (existing Ultra tier), surfaced by 9to5Google. Architecture: dedicated Google Cloud VMs, agent state persists server-side with the phone/laptop off — first frontier-lab consumer agent on a fully cloud-resident substrate. Three surfaces: Tasks, Skills, Schedules. Built on Gemini 3.5 Flash ([[gemini-3-2-flash]]) + Antigravity. Wins paid US-consumer persistent-agent category on time-to-ship; lands 4 days before Microsoft Build 2026 ([[microsoft-build-2026-models]])"
+  - ts: 2026-06-29
+    change: "Closed — released-and-aged. Gemini Spark went GA 2026-05-29; now ~31 days (≥4 weeks) past launch with no new signal this cycle (no non-US rollout, Spark API, or Skills-marketplace news), settled into normal coverage per this ticket's own close trigger. A successor product (Spark Pro / a new persistent-agent tier) or regional expansion would open a new ticket linking back here. History preserved."
 ---
 
 **Gemini Spark** is Google's persistent consumer AI agent, which

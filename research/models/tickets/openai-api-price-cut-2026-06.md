@@ -3,7 +3,7 @@ slug: openai-api-price-cut-2026-06
 title: OpenAI weighing API token price cuts to win Anthropic customers
 company: OpenAI
 model: null
-status: rumored
+status: closed
 status_note: |
   Per WSJ reporting surfaced 2026-06-11/12, **OpenAI is reportedly weighing
   cuts to API token prices** to pull customers from **Anthropic** — an
@@ -22,12 +22,14 @@ verification: unverified
 sources:
   - "@WSJ"
 created_at: 2026-06-12
-updated_at: 2026-06-12
-closed_at: null
-closed_reason: null
+updated_at: 2026-06-29
+closed_at: 2026-06-29
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-06-12
     change: "Created — WSJ reports (surfaced 2026-06-11/12) that OpenAI is weighing API token price cuts to win customers from Anthropic, signaling an emerging API price war. Report of internal deliberation only — no announced price points/date/official confirmation → status rumored, verification unverified (single-outlet report). Pricing is in-scope for the lane, so tracked for follow-through"
+  - ts: 2026-06-29
+    change: "Closed — stale-rumor-unverified. 17 days since creation with no fresh corroboration and no announced OpenAI API price cut (≥15-cycle threshold per this ticket's own trigger). The WSJ 'weighing cuts to win Anthropic customers' report never produced an actual price change. Note: GPT-5.6's new-model preview pricing (Sol $5/$30, Terra $2.50/$15, Luna $1/$6, [[openai-gpt-5-6]]) is a new-product price card, NOT a cut to existing API prices to poach Anthropic accounts, so it does not corroborate this deliberation. If OpenAI announces an actual cut to existing API token prices, open a new ticket. History preserved."
 ---
 
 Per **WSJ** reporting that surfaced in the 2026-06-11→12 window, **OpenAI is

@@ -3,7 +3,7 @@ slug: github-copilot-ai-points-2026-06
 title: GitHub Copilot transitions to usage-based "AI Points" billing
 company: GitHub / Microsoft
 model: null
-status: released
+status: closed
 status_note: |
   GitHub flipped Copilot from a low-cost unlimited monthly subscription
   to a **usage-based billing model on 2026-06-01**, debiting per-model
@@ -32,12 +32,14 @@ sources:
   - "@Awesome_AI_News"
   - "@dazfl"
 created_at: 2026-06-02
-updated_at: 2026-06-02
-closed_at: null
-closed_reason: null
+updated_at: 2026-06-29
+closed_at: 2026-06-29
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-02
     change: "Created — GitHub Copilot transitioned 2026-06-01 from unlimited monthly subscription to usage-based 'GitHub AI Points' billing across three tiers (Pro $10/1.5k, Pro+ $39/7k, Max $100/20k), per @Awesome_AI_News 2026-06-02 06:15 UTC bilingual write-up. Day-2 enterprise pain reported by @dazfl 2026-06-02 06:11 UTC: '100% of our enterprise AI credits' burned in ~36h, agent runs in Visual Studio surfacing $5/run effective cost. Status: released (live now); verification: confirmed (specific tier prices + agent-mode cost behaviour described). Frames as the dev-tools/billing side of the Build 2026 unified-Copilot push tracked on [[microsoft-build-2026-models]] — Build keynote 2026-06-02 09:30 PT may surface bundle / Visual Studio Copilot Code integration details"
+  - ts: 2026-06-29
+    change: "Closed — released-and-aged. The usage-based 'AI Points' billing went live 2026-06-01; now 4 weeks (≥28 days) past the transition with the pricing settled into normal coverage and no fresh in-cycle signal (no reversal, grace-period extension, or new bundle). Per this ticket's own close trigger. A successor billing model (e.g. 'GitHub AI Points 2' or a return to flat-rate) would open a new ticket. History preserved."
 ---
 
 **GitHub Copilot's billing model flipped on 2026-06-01** from a

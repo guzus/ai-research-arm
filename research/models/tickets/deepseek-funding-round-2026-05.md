@@ -33,7 +33,21 @@ status_note: |
   core challenges." Confirms the round is being deployed into aggressive
   expansion; the round itself is unchanged (reported-closed, no DeepSeek
   primary) → status stays `confirmed`, verification stays `partial`.
-expected: "Reported closed at ~$7.4B (RMB 50B) / >$50B valuation — first external round; Liang ~$2.8B, Tencent ~$1.4B, CATL ~$700M into a founder-controlled, no-voting-rights LP; no official DeepSeek primary/filing yet. 2026-06-26: DeepSeek plans to ~2x staff across all departments post-raise (Andrew Curran relay of a WeChat post)"
+
+  **2026-06-29:** Fuller The Information detail firms numbers + structure:
+  Liang Wenfeng **~$3B** (largest check, retains voting control), **Tencent
+  ~$1.5B**, **CATL ~$740M**, plus **NetEase, JD.com, IDG Capital**. Key new
+  structural detail — most outside investors received **no voting rights and a
+  five-year lock-up**, while the state-backed **National AI Industry Investment
+  Fund is the only investor** with direct equity, voting rights, and no lock-up.
+  Reads more like a state-directed capital injection with a commercial veneer
+  than a market-priced round. Reporting frames **Anthropic's Mythos preview as
+  the catalyst** that convinced Liang the lab needed far more capital; DeepSeek
+  plans to **double every department** toward AGI ("humanity is at the dawn of
+  AGI"). `@deepseek_ai` still hasn't tweeted since May 22; all detail remains
+  The Information-sourced → status stays `confirmed`, verification stays
+  `partial`.
+expected: "Reported closed at ~$7.4B (RMB 50B) / >$50B valuation — first external round; Liang ~$3B (voting control), Tencent ~$1.5B, CATL ~$740M, plus NetEase/JD.com/IDG; outside investors get no voting rights + 5-yr lock-up, state-backed National AI Industry Investment Fund the only voting investor with no lock-up; no official DeepSeek primary/filing yet. DeepSeek plans to double every department toward AGI; Mythos preview cited as the raise catalyst"
 labels:
   - funding
   - china
@@ -51,8 +65,9 @@ sources:
   - "@ns123abc"
   - "@poezhao0605"
   - "@AndrewCurran_"
+  - https://x.com/theinformation/status/2071262396727890323
 created_at: 2026-05-26
-updated_at: 2026-06-26
+updated_at: 2026-06-29
 closed_at: null
 closed_reason: null
 history:
@@ -66,6 +81,8 @@ history:
     change: "Reported closed — The Information now carries the round as DeepSeek's first-ever external round, closed at ~RMB 50B (~$7.4B) at a valuation exceeding $50B. New structure: Liang Wenfeng wrote the largest check himself (~$2.8B), Tencent ~$1.4B, CATL ~$700M, with outside capital into a founder-controlled limited partnership and no investor voting rights. Widely relayed (multiple accounts citing The Information). No official DeepSeek/investor primary or filing yet → status stays confirmed, verification stays partial; round moves from 'finalizing' to reported-closed."
   - ts: 2026-06-26
     change: "DeepSeek plans to ~2x staff across all departments after the $7.4B fundraising push (technical/engineering roles at least 2x), per Andrew Curran's relay of a WeChat post (~93 likes): 'let talented people directly take on the core challenges.' Confirms the round is being deployed into aggressive expansion; the round itself is unchanged (reported-closed, no DeepSeek primary) → status stays confirmed, verification stays partial. Source: @AndrewCurran_."
+  - ts: 2026-06-29
+    change: "Round structure refined. Fuller The Information detail (relayed via the 2026-06-29 digest cycle) firms the closed round at ~$7.4B / >$50B: Liang Wenfeng ~$3B (largest check, retains voting control), Tencent ~$1.5B, CATL ~$740M, plus NetEase, JD.com, IDG Capital. Key new structural detail — most outside investors got NO voting rights + a five-year lock-up, while the state-backed National AI Industry Investment Fund is the ONLY investor with direct equity, voting rights, and no lock-up (reads as a state-directed capital injection with a commercial veneer more than a market-priced round). Reporting frames Anthropic's Mythos preview as the catalyst that convinced Liang the lab needed far more capital; DeepSeek plans to double every department toward AGI ('humanity is at the dawn of AGI'). @deepseek_ai still silent (no tweet since May 22); all detail The Information-sourced → status stays confirmed, verification stays partial."
 ---
 
 **The Information's exclusive on 2026-05-25 (21:00 UTC)** pegged DeepSeek's

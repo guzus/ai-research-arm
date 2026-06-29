@@ -16,7 +16,14 @@ status_note: |
   usable now (status `released`), but in-window sourcing is a single secondary
   mention without a captured primary NVIDIA/OpenRouter post or model card, so
   verification stays `partial`.
-expected: "Live free on OpenRouter (Nemotron 3.5 Content Safety + Nemotron 3 Ultra); primary NVIDIA/OpenRouter announcement or model card + neutral benchmark placement pending"
+
+  **2026-06-29:** Spec firm-up — the digest (Interconnects #22 roundup) gives
+  **Nemotron 3 Ultra** concrete specs: a **550B LatentMoE** model under the
+  **OpenMDW license**, part of a broader open-weight wave (Cohere Command A+ 218B
+  MoE now Apache 2.0, Zyphra ZAYA1-74B, Poolside Laguna-M.1, Kimi-K2.7-Code).
+  Still a secondary roundup mention without a captured primary NVIDIA model card
+  → status stays `released`, verification stays `partial`.
+expected: "Live free on OpenRouter (Nemotron 3.5 Content Safety + Nemotron 3 Ultra, the latter a 550B LatentMoE / OpenMDW-licensed model per Interconnects #22); primary NVIDIA/OpenRouter announcement or model card + neutral benchmark placement pending"
 labels:
   - nvidia
   - open-weights
@@ -28,12 +35,14 @@ sources:
   - "@nvidia"
   - https://openrouter.ai/nvidia
 created_at: 2026-06-21
-updated_at: 2026-06-21
+updated_at: 2026-06-29
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-21
     change: "Created — NVIDIA put two Nemotron models free on OpenRouter: a Nemotron 3.5 Content Safety classifier and a Nemotron 3 Ultra frontier-tier model. Read as a GPU-demand distribution play (NVIDIA monetizes silicon, not API calls), pressuring paid closed-API economics. Usable now → status released; single secondary in-window mention (2026-06-21 digest) without a captured primary NVIDIA/OpenRouter post or model card → verification partial."
+  - ts: 2026-06-29
+    change: "Spec firm-up — the 2026-06-29 digest (Interconnects #22 roundup) gives Nemotron 3 Ultra concrete specs: a 550B LatentMoE model under the OpenMDW license, alongside a broader open-weight wave (Cohere Command A+ 218B MoE now Apache 2.0, Zyphra ZAYA1-74B, Poolside Laguna-M.1, Kimi-K2.7-Code). Also relayed: OpenRouter's top-4 broker models are now all Chinese (GLM-5.2 joining DeepSeek models), reflecting the broker market not direct API usage. Fills part of the model-card gap flagged at creation, but still a secondary roundup mention without a captured primary NVIDIA model card → status stays released, verification stays partial."
 ---
 
 On **2026-06-21**, **NVIDIA** made **two Nemotron models available for free on

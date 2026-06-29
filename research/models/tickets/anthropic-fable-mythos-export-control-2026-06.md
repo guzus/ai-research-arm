@@ -131,7 +131,25 @@ status_note: |
   review logic is now being applied to OpenAI's GPT-5.6 ([[openai-gpt-5-6]]),
   which Axios reports was classified "Mythos-like." Status stays `confirmed`;
   verification stays `confirmed`.
-expected: "No formal Commerce rescission (day ~14), but the US-only restoration mechanism now has a product artifact: Fable 5 active in AWS Bedrock (anthropic.claude-fable-5) + Claude Code bundled-weekly usage strings, gated by Persona US-ID verification (live 2026-07-08) + use-case review + Anthropic approval (product impact on [[claude-fable-5]]). Political thaw: Trump walked back the national-security-threat framing; Tom Brown replaced Dario as WH point person. Anthropic status page still shows the 2026-06-13 suspension active; Commerce/BIS directive text still unpublished. Same review logic now applied to OpenAI GPT-5.6 ([[openai-gpt-5-6]], 'Mythos-like' per Axios). SK Telecom named as the Project Glasswing carrier (denies China ties)"
+
+  **As of 2026-06-29 (day ~17):** still no formal rescission; the order's
+  **geographic fallout** surfaced. **Austria publicly courted Anthropic to
+  relocate to the EU** — an open letter offering "legal certainty, market
+  access, capital" and pitching Anthropic's safety-first values as "a deeply
+  European attitude." Analysts read it as **performative** (compute, USG
+  relationships, and the Mythos 5 license are all US-bound; @kimmonismus:
+  anyone who thinks the US would let Anthropic move to Europe if Fable/Mythos
+  are deemed national security is "out of touch with reality") and the **first
+  explicit acknowledgment that US export controls structurally exclude Europe**
+  from frontier models — the UK's similar overtures months ago went nowhere.
+  The **de facto licensing regime** hardened into a recognized "new normal"
+  (The Information's Leo Schwartz: "a de facto licensing regime with no rules"),
+  now visible in two fresh data points: GPT-5.6 Sol's government-gated preview
+  ([[openai-gpt-5-6]]) and Anthropic's Alibaba-distillation letter
+  ([[anthropic-alibaba-distillation-2026-06]]). Anthropic's revised privacy
+  policy (ID + biometric verification) takes effect **2026-07-08**. Status stays
+  `confirmed`; verification stays `confirmed`.
+expected: "No formal Commerce rescission (day ~17). Austria publicly courted Anthropic to relocate to the EU (open letter; read as performative, first explicit acknowledgment US export controls structurally exclude Europe). De facto licensing regime now a recognized 'new normal' (GPT-5.6 Sol gated preview + Alibaba-distillation letter as fresh data points). Persona US-ID verification live 2026-07-08. Earlier: US-only restoration mechanism now has a product artifact — Fable 5 active in AWS Bedrock (anthropic.claude-fable-5) + Claude Code bundled-weekly usage strings, gated by Persona US-ID verification (live 2026-07-08) + use-case review + Anthropic approval (product impact on [[claude-fable-5]]). Political thaw: Trump walked back the national-security-threat framing; Tom Brown replaced Dario as WH point person. Anthropic status page still shows the 2026-06-13 suspension active; Commerce/BIS directive text still unpublished. Same review logic now applied to OpenAI GPT-5.6 ([[openai-gpt-5-6]], 'Mythos-like' per Axios). SK Telecom named as the Project Glasswing carrier (denies China ties)"
 labels:
   - regulatory
   - export-control
@@ -156,8 +174,9 @@ sources:
   - https://www.techtimes.com/articles/claude-identity-verification-persona-july-8
   - "@chetaslua"
   - "@alphabatcher"
+  - "@kimmonismus"
 created_at: 2026-06-14
-updated_at: 2026-06-26
+updated_at: 2026-06-29
 closed_at: null
 closed_reason: null
 history:
@@ -175,6 +194,8 @@ history:
     change: "Day 10 — still no restoration; the inferred US-only re-entry mechanism got a hard date and a vendor. Anthropic's revised privacy policy now sets enforcement at 2026-07-08: Free/Pro/Max users may be required to upload a government ID (passport/license/national ID) and a live selfie, processed by third-party verifier Persona (not business subs). Anthropic labels it 'age and identity verification,' but the timing (two weeks after the foreign-access cutoff) is widely read as the compliance gate for a US-only model restoration, now with trade-press footing (Tech Times). Policy + date are confirmed fact; the US-only-restoration purpose stays inference. Status stays confirmed; verification stays confirmed."
   - ts: 2026-06-26
     change: "Day ~14 — no formal Commerce rescission, but the US-only restoration mechanism crossed from policy inference into a product artifact. Fable 5 reappeared in the AWS Bedrock catalog as anthropic.claude-fable-5 (Active, sold by Anthropic; multi-source screenshots) and Claude Code v2.1.190 binaries now carry bundled-weekly Fable 5 usage strings (product impact on [[claude-fable-5]]). Access gated by Persona US-ID verification (live 2026-07-08) + use-case review + Anthropic approval — the re-entry path first inferred on day 10. Political thaw: Trump walked back the 'national-security threat' framing; Tom Brown replaced Dario Amodei as WH point person (admin reportedly 'happier with Brown'). Anthropic's status page still shows the 06-13 suspension active and the Commerce/BIS directive text remains unpublished — a controlled US-ID-gated re-opening, not a lifted ban. The same review logic is now applied to OpenAI GPT-5.6 ([[openai-gpt-5-6]], 'Mythos-like' per Axios). Status stays confirmed; verification stays confirmed."
+  - ts: 2026-06-29
+    change: "Day ~17 — still no formal rescission; the order's geographic fallout surfaced. Austria publicly courted Anthropic to relocate to the EU (open letter offering 'legal certainty, market access, capital,' pitching Anthropic's safety-first values as 'a deeply European attitude'), read by analysts as performative (compute/USG ties/Mythos license are all US-bound; @kimmonismus: anyone who thinks the US would let Anthropic move to Europe if Fable/Mythos are national security is 'out of touch with reality') and the first explicit acknowledgment that US export controls structurally exclude Europe from frontier models — the UK's similar overtures months ago went nowhere. The de facto frontier-model licensing regime hardened into a recognized 'new normal' (The Information's Leo Schwartz: 'a de facto licensing regime with no rules'), now visible in two fresh data points — GPT-5.6 Sol's government-gated preview ([[openai-gpt-5-6]]) and Anthropic's Alibaba-distillation letter ([[anthropic-alibaba-distillation-2026-06]]). Anthropic's revised privacy policy (ID + biometric verification) takes effect 2026-07-08. Status stays confirmed; verification stays confirmed. Sources: @kimmonismus, 2026-06-29 digest (Policy & Regulation)."
 ---
 
 On **2026-06-12** the US government issued an **export-control directive**

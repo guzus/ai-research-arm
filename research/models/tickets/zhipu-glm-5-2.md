@@ -105,7 +105,18 @@ status_note: |
   that work did not test GLM-5.2, so GLM-5.2's 1595 stands until someone applies
   Cursor's methodology to it specifically. Status stays `released`, verification
   stays `confirmed`.
-expected: "Shipped — MIT weights live (HuggingFace), API + GLM Coding Plan + Web Chat, day-0 vLLM/Notion/Baseten support; leaderboards strong (Design Arena #1, AA Index #1 open-weights, Terminal-Bench 2.1 ~81, Code Arena Frontend 1595 past Opus 4.8 / closing on frozen Fable 5 1665; OpenRouter ranks it best available for coding & design). Now a market event: Vercel CEO/Jeremy Howard on-record raves, maker Zhipu (HK:02513) up ~15× since IPO / >1T HKD intraday, reported STAR A-share IPO (~$15B) accepted; exact figures retail-sourced, neutral-org primary benchmark placement still settling. Caveat: still no image understanding"
+
+  **2026-06-29:** A viral weekend **"GLM-5.2 matches Claude Mythos on
+  cybersecurity"** headline was **debunked as a category error**. The real
+  result: **~39% F1 on the narrow Semgrep IDOR benchmark at $0.17/task, beating
+  Claude Code's ~32%** — prompt-only vulnerability detection, **not** Mythos-class
+  autonomous exploit-chain capability (@janekm: "not vs Mythos but vs Opus, not
+  in the same harness, and only for IDOR. Terrible methodology"). Zhipu's stock
+  still jumped **~30% on the HK exchange** on the headline. A separate Chinese
+  effort, **360 Security's "Tulongfeng"** (3,432 vulnerabilities flagged per
+  founder Zhou Hongyi), is the more direct Mythos analog — unverified. Status
+  stays `released`, verification stays `confirmed`.
+expected: "Shipped — MIT weights live (HuggingFace), API + GLM Coding Plan + Web Chat, day-0 vLLM/Notion/Baseten support; leaderboards strong (Design Arena #1, AA Index #1 open-weights, Terminal-Bench 2.1 ~81, Code Arena Frontend 1595 past Opus 4.8 / closing on frozen Fable 5 1665; OpenRouter ranks it best available for coding & design). Now a market event: Vercel CEO/Jeremy Howard on-record raves, maker Zhipu (HK:02513) up ~15× since IPO / >1T HKD intraday, reported STAR A-share IPO (~$15B) accepted; exact figures retail-sourced, neutral-org primary benchmark placement still settling. Caveat: still no image understanding. 2026-06-29: the viral 'matches Mythos on cyber' headline corrected to a narrow Semgrep IDOR win over Claude Code, not Mythos-class exploit chains"
 labels:
   - frontier-model
   - open-weights
@@ -129,8 +140,10 @@ sources:
   - "@arena"
   - "@jp54362"
   - "@OpenRouter"
+  - "@janekm"
+  - https://semgrep.dev/blog/2026/we-have-mythos-at-home-glm-52-beats-claude-in-our-cyber-benchmarks/
 created_at: 2026-06-14
-updated_at: 2026-06-26
+updated_at: 2026-06-29
 closed_at: null
 closed_reason: null
 history:
@@ -150,6 +163,8 @@ history:
     change: "Neutral-leaderboard placement keeps filling in. Fresh third-party numbers (VentureBeat + community recaps) put GLM-5.2 at #3 overall / #1 open-weights on GDPval-AA (1524 Elo, level with GPT-5.5 xhigh), 2nd on Game Dev Arena (Elo 1368, inside Fable 5's band), and #1 open-weights on Artificial Analysis's Intelligence Index (51); also reported as the first open-weights model to run alphaXiv's autoresearch pipeline end-to-end. @AndrewCurran_ (quote of the day) frames the open-weights tier as now clearing GPT-5.5-class agentic work while the US-controlled frontier sits partly frozen. Caveat: still no image understanding. Status stays released, verification stays confirmed."
   - ts: 2026-06-26
     change: "GLM-5.2 (Max) jumped 1408→1595 on Code Arena Frontend overnight, surpassing Opus 4.8 ([[opus-4-8]]) and closing on Fable 5's 1665; OpenRouter's new Benchmarks API simultaneously ranked GLM-5.2 best available for coding & design. Multi-source: @arena published the trajectory, @jp54362 relayed the 1595 score with a screenshot, @OpenRouter ranked it #1 (+187-point single-leap); also returned to the top of Design Arena. Caveats logged: Code Arena Frontend is one agentic benchmark (frontend-coding slot favoring GLM-5.2's vision-language training, not general frontier supremacy); Fable 5's 1665 is frozen (model removed mid-June, [[claude-fable-5]]) so GLM-5.2 is 'closing' on a stationary target. Cursor's benchmark-contamination research named Opus 4.8 and Composer 2.5 — not GLM-5.2 — so the 1595 stands until Cursor's methodology is applied to it specifically. Status stays released, verification stays confirmed. Sources: @arena, @jp54362, @OpenRouter."
+  - ts: 2026-06-29
+    change: "Cyber-benchmark claim corrected. A viral weekend headline that GLM-5.2 'matches Claude Mythos' on security bug detection was debunked as a category error: the real Semgrep result is ~39% F1 on the narrow Semgrep IDOR benchmark at $0.17/task, beating Claude Code's ~32% — prompt-only vulnerability detection, NOT Mythos-class autonomous exploit-chain capability, not the same harness, and vs Opus rather than Mythos (@janekm: 'terrible methodology'). Zhipu's stock nonetheless jumped ~30% on the HK exchange on the headline. A separate Chinese effort, 360 Security's 'Tulongfeng' (3,432 vulnerabilities flagged per founder Zhou Hongyi), is the more direct Mythos analog — unverified. Status stays released, verification stays confirmed. Sources: Semgrep blog, @kimmonismus, @janekm."
 ---
 
 **GLM 5.2**, from **Zhipu AI (Z.ai)**, is the cycle's dominant open-weights

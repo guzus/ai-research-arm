@@ -19,7 +19,16 @@ status_note: |
   frozen (no Fable 5 restoration announcement, no Sonnet 5) — the latest in a
   series of workforce/policy moves that signal Anthropic investing in the
   labor-policy side of the AI transition rather than the model side.
-expected: "Further detail on RAISE US program scope, employer partners, and whether Anthropic's involvement includes Claude access for training or is financial/policy-only; possible link to the Claude Corps fellowship program"
+
+  **2026-06-29 (secondary):** RAISE US is reported as a **$1B worker-retraining
+  program launched by former Commerce Secretary Gina Raimondo**, funded by
+  **Amazon, Anthropic, Microsoft, and OpenAI** — filling the dollar-figure and
+  co-funder gaps flagged at creation. So Anthropic is **one of four founding
+  corporate funders** of a $1B AI-displacement retraining effort, not a solo
+  partner. The $1B / Raimondo / co-funder detail is digest-relayed secondary
+  (2026-06-29 digest, Funding & Business), not an Anthropic-primary restatement;
+  status stays `confirmed`, verification stays `confirmed`.
+expected: "RAISE US reported as a $1B worker-retraining program launched by Gina Raimondo, funded by Amazon/Anthropic/Microsoft/OpenAI (secondary). Still open: whether Anthropic's involvement includes Claude access for training vs financial/policy-only; possible link to the Claude Corps fellowship program"
 labels:
   - partnership
   - workforce-policy
@@ -29,13 +38,16 @@ verification: confirmed
 sources:
   - https://x.com/AnthropicAI/status/2070183531612172697
   - "@AnthropicAI"
+  - "@raiseus_ai"
 created_at: 2026-06-26
-updated_at: 2026-06-26
+updated_at: 2026-06-29
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-26
     change: "Created — Anthropic announced 2026-06-25 (@AnthropicAI ~1.6K likes) it is joining RAISE US (@raiseus_ai) as a founding partner: a nonprofit coalition for employer-led AI workforce training + policy innovation. Three-pillar framing mirrors Anthropic's institutional-policy lane (Claude Corps, Economic Index). A partnership event → status confirmed, verification confirmed (official @AnthropicAI). No dollar/headcount/timeline disclosed; scope (Claude-for-training vs financial/policy) unspecified. Lands while the frontier-model situation stays frozen (no Fable 5 restoration or Sonnet 5 announcement) — continued workforce/policy posture over model communication."
+  - ts: 2026-06-29
+    change: "Program scope detail (secondary). RAISE US reported as a $1B worker-retraining program launched by former Commerce Secretary Gina Raimondo, funded by Amazon, Anthropic, Microsoft, and OpenAI — filling the dollar-figure and co-funder gaps flagged at creation. Anthropic is one of four founding corporate funders of a $1B AI-displacement retraining effort, not a solo partner. The $1B / Raimondo / co-funder detail is digest-relayed secondary (2026-06-29 digest, Funding & Business), not an Anthropic-primary restatement → status stays confirmed; verification stays confirmed (membership first-party), the $1B/co-funder figures held as secondary."
 ---
 
 On 2026-06-25, Anthropic announced it is **joining RAISE US** as a **founding
