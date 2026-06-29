@@ -1,0 +1,9 @@
+Speaker 1: Monday, June twenty-ninth, twenty twenty-six.
+Speaker 2: [high_energy] Musk just dropped Grok four point five into private beta at SpaceX and Tesla — a one point five trillion parameter model they claim is near or above Opus, though there are no third-party benchmarks yet.
+Speaker 1: DeepSeek closed the largest funding round in Chinese AI history — [emphasis] seven point four billion dollars [/emphasis] at a fifty billion dollar valuation, with a state fund as the only voting investor.
+Speaker 2: And OpenAI shipped GPT five point six in three tiers — Sol, Terra, and Luna — in a US-government-gated preview, [emphasis] plus their first custom inference chip [/emphasis] with Broadcom, called Jalapeño.
+Speaker 1: On the policy front, Anthropic accused Alibaba of running twenty-five thousand fake accounts and generating [emphasis] twenty-eight point eight million [/emphasis] Claude queries through adversarial distillation, in a letter to the White House.
+Speaker 2: Worth noting that the GLM five point two headlines claiming it matches Mythos turned out to be a narrow win on one benchmark, not the exploit chain comparison people assumed.
+Speaker 1: Some quick numbers — DeepSeek's round included founder at roughly three billion, Tencent at one and a half billion, and CATL at seven hundred forty million. GPT five point six Sol pricing is five dollars in and thirty dollars out per million tokens.
+Speaker 2: And trending online — a developer got a Claude Code second opinion on their MRI, sparking a three hundred comment debate on AI medical reliability.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
