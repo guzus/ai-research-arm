@@ -1,0 +1,15 @@
+AI News - 2026-06-30
+
+TOP STORIES:
+• Claude GA in Microsoft Foundry on Azure — Anthropic's FIRST-EVER deployment on NVIDIA GPUs (GB300); now native across AWS, Vertex + Azure
+• Frontier gate reverses: US clears Mythos 5 for ~100 vetted orgs; Fable 5 reported returning "this week"
+• California signs Claude for ALL state agencies at ~50% off; Amazon deal repriced onto tokens
+• OpenAI reported weighing IPO delay to 2027 after SpaceX's weak listing; DeepSeek dates V4 GA for mid-July w/ first LLM surge pricing (~2x peak)
+
+KEY NUMBERS:
+• Mythos 5 cleared for ~100 US orgs/agencies
+• California: ~50% Claude discount, all state + local govt
+• OpenAI holding firm on $1T valuation; Anthropic ~$965B
+• DeepSeek V4 peak-hour pricing ~2x off-peak
+
+Full report on GitHub.
