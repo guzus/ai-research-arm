@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-06-29
+
+TOP STORIES:
+• Musk unveils Grok 4.5 — from-scratch 1.5T-param V9 model in private beta at SpaceX/Tesla, claims near/above Opus (no third-party benchmarks)
+• DeepSeek closes first external round: $7.4B at $50B+ — largest in Chinese AI history; state fund is the only voting investor
+• OpenAI ships GPT-5.6 Sol/Terra/Luna in a US-gov-gated preview + "Jalapeño," its first custom inference chip with Broadcom
+• Anthropic accuses Alibaba of "adversarial distillation" — 25K fake accounts, 28.8M Claude queries; letter to White House
+• GLM-5.2 "matches Mythos" headline debunked — it beats Claude Code on a narrow IDOR benchmark, not Mythos on exploit chains
+
+KEY NUMBERS:
+• DeepSeek: $7.4B raise, $50B+ valuation (founder ~$3B, Tencent ~$1.5B, CATL ~$740M)
+• Grok 4.5: 1.5T params (3× Grok 4.3)
+• GPT-5.6 Sol pricing: $5 in / $30 out per 1M tokens; 90% Polymarket chance of public release by Jul 31
+• Alibaba: 25K accounts / 28.8M Claude exchanges alleged
+
+TRENDING: HN's "Claude Code second opinion on my MRI" (191 pts/300 comments) — AI medical reliability debate
+
+Full digest on GitHub.
