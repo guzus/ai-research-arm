@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.
+description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.
 created_at: 2026-05-24
-timestamp: 2026-06-23T00:00:00Z
+timestamp: 2026-06-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
@@ -433,6 +434,32 @@ Four developments through May 2026 put Anthropic at the center of the field:
   plans (moot while suspended), **@AnthropicAI has been silent since June 18**, and
   Anthropic still says it aims to restore access "as quickly as possible." See
   [[claude-fable-5]], [[federal-ai-policy]] and [[ai-capex]] (ARA digest 2026-06-23).
+
+- **Accuses Alibaba of the largest documented distillation attack on Claude
+  (2026-06-26).** Anthropic sent a **letter to US senators and White House
+  officials** alleging **Alibaba-linked operators** ran **~25,000 fraudulent
+  accounts** generating **28.8M+ Claude interactions (2026-04-22 → 06-05)** to
+  distill Claude's coding and agentic-reasoning capability into **Qwen** — "adversarial
+  distillation at industrial scale," the biggest such effort yet by a Chinese
+  company. Bloomberg-carried; an Anthropic spokesperson confirmed the letter's
+  existence; Alibaba declined to comment (BABA fell ~4.9% to a 16-month low). It
+  frames US–China frontier distillation as **national security, not just ToS
+  enforcement**, and lands the same week as Fable 5 restoration maneuvering —
+  reminding the same officials that Anthropic is the lab being attacked while it is
+  simultaneously export-controlled for the models Alibaba allegedly seeks to copy.
+  The accusation is Anthropic's and should be held at arm's length (distillation via
+  API is a legal gray area Anthropic itself litigates the other side of). See
+  [[federal-ai-policy]] and [[agentic-ai-security]] (ARA digest 2026-06-29).
+- **Austria publicly courts Anthropic to relocate to the EU (2026-06-29).** An
+  **open letter from Austria** offered Anthropic "legal certainty, market access,
+  capital" and pitched its safety-first values as "a deeply European attitude" —
+  the first explicit European governmental acknowledgment that US export controls
+  **structurally exclude Europe** from frontier models. Analysts read it as
+  performative: compute, US-government relationships, and the [[claude-fable-5|Mythos
+  5]] license are all US-bound, and the UK's similar overtures months earlier went
+  nowhere. The offer underscores how the de facto licensing regime is generating
+  allied-government friction even as Anthropic stays put — see [[federal-ai-policy]]
+  (ARA digest 2026-06-29).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

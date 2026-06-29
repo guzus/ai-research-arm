@@ -4,10 +4,12 @@ title: Broadcom
 type: entity
 aliases: [Broadcom, "Broadcom Inc.", AVGO, "Broadcom custom ASICs"]
 tags: [ai-infrastructure, semiconductors, custom-asic, private-credit, ai-capex]
-description: Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI custom-chip plans, and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.
+description: Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI's first custom inference chip (Jalapeño, co-designed with Broadcom), and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.
 created_at: 2026-06-17
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-06-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
+  - {title: "ARA model ticket — OpenAI Jalapeño chip", path: research/models/tickets/openai-jalapeno-chip-2026-06.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
@@ -52,6 +54,23 @@ the clearest named entities inside the [[ai-capex]] supercycle's move from
   the sharpest expression of the "beats but closes lower" pattern that also
   hangs over [[nvidia]]: the market is no longer paying for AI poetry; it wants
   raised guidance.
+- **OpenAI's Jalapeño — Broadcom brings OpenAI's first custom chip to production
+  (2026-06-24).** [[openai]] unveiled **Jalapeño**, its **first custom AI chip**
+  — **inference-only**, "designed from the ground up by OpenAI and brought to
+  production with Broadcom" — with **3nm TSMC engineering samples** already
+  hand-delivered to Altman/Brockman. Broadcom CEO **Hock Tan** told Bloomberg
+  early testing shows **~50% cost savings per inference token vs standard GPUs**
+  and told Reuters performance is "on par with NVIDIA Blackwell and Google TPUs"
+  (the 50% is Tan's claim, not OpenAI's — OpenAI hedges to "substantially better
+  than state-of-the-art"). A reported **9-month AI-assisted design-to-tape-out**,
+  Microsoft reportedly guaranteeing **~40% of initial output** (unconfirmed), and
+  prototype deployment **late 2026** ramping **2027–2028**. The honest framing is
+  **pricing-power erosion for [[nvidia]], not displacement** — inference-only and
+  far from scale — but it lands the same week as NVIDIA's open-sourced DFlash
+  speculative decoding, two competing answers to dropping inference cost. It also
+  resolves the May OpenAI-Broadcom off-take question partially: Microsoft's
+  reported 40% guarantee is the offtake party the May scoop said was missing (ARA
+  digest 2026-06-29).
 
 ## Open questions
 

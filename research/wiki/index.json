@@ -218,11 +218,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
-      "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target.",
+      "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
+      "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-23",
-      "timestamp": "2026-06-23T00:00:00Z",
+      "updated_at": "2026-06-29",
+      "timestamp": "2026-06-29T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -371,11 +371,11 @@
         "private-credit",
         "ai-capex"
       ],
-      "summary": "Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI custom-chip plans, and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.",
-      "description": "Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI custom-chip plans, and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.",
+      "summary": "Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI's first custom inference chip (Jalapeño, co-designed with Broadcom), and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.",
+      "description": "Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI's first custom inference chip (Jalapeño, co-designed with Broadcom), and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-06-29",
+      "timestamp": "2026-06-29T00:00:00Z",
       "file": "entities/broadcom.md",
       "aliases": [
         "Broadcom",
@@ -392,6 +392,7 @@
       "inbound": [
         "ai-capex",
         "anthropic",
+        "gpt-5-6",
         "micron",
         "nvidia"
       ]
@@ -493,6 +494,7 @@
         "openai",
         "sakana-ai",
         "sk-telecom",
+        "xai",
         "zhipu-glm-5-2"
       ]
     },
@@ -637,7 +639,8 @@
       ],
       "inbound": [
         "ai-capex",
-        "spacex"
+        "spacex",
+        "xai"
       ]
     },
     {
@@ -651,11 +654,11 @@
         "foundation-models",
         "commercialization"
       ],
-      "summary": "Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.",
-      "description": "Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.",
+      "summary": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.",
+      "description": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-06-19",
-      "timestamp": "2026-06-19T00:00:00Z",
+      "updated_at": "2026-06-29",
+      "timestamp": "2026-06-29T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -776,11 +779,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
-      "description": "The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.",
+      "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
+      "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-21",
-      "timestamp": "2026-06-21T00:00:00Z",
+      "updated_at": "2026-06-29",
+      "timestamp": "2026-06-29T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -798,6 +801,7 @@
         "california-ai-regulation",
         "claude-fable-5",
         "deepseek",
+        "gpt-5-6",
         "microsoft",
         "noam-shazeer",
         "openai",
@@ -813,6 +817,7 @@
         "california-ai-regulation",
         "claude-fable-5",
         "deepseek",
+        "gpt-5-6",
         "john-jumper",
         "lifescibench",
         "noam-shazeer",
@@ -976,29 +981,39 @@
         "openai",
         "gpt",
         "frontier-model",
-        "upcoming",
-        "rumor"
+        "government-gated",
+        "preview"
       ],
-      "summary": "OpenAI's most-anticipated unreleased frontier model — press-reported for ~2026-06-23 as a full standard/Mini/Pro family with a leaked ~1.5M-token context window, but unconfirmed by OpenAI (no system card, API string, or official date).",
-      "description": "OpenAI's most-anticipated unreleased frontier model — press-reported for ~2026-06-23 as a full standard/Mini/Pro family with a leaked ~1.5M-token context window, but unconfirmed by OpenAI (no system card, API string, or official date).",
+      "summary": "OpenAI frontier family shipped 2026-06-26 as a US-government-gated limited preview — Sol (flagship) / Terra (balanced) / Luna (fast/cheap), with new \"max\" and \"ultra\" (subagent-spawning) reasoning modes and a Terminal-Bench 2.1 SOTA; GA \"in the coming weeks.\"",
+      "description": "OpenAI frontier family shipped 2026-06-26 as a US-government-gated limited preview — Sol (flagship) / Terra (balanced) / Luna (fast/cheap), with new \"max\" and \"ultra\" (subagent-spawning) reasoning modes and a Terminal-Bench 2.1 SOTA; GA \"in the coming weeks.\"",
       "created_at": "2026-06-20",
-      "updated_at": "2026-06-23",
-      "timestamp": "2026-06-23T00:00:00Z",
+      "updated_at": "2026-06-29",
+      "timestamp": "2026-06-29T00:00:00Z",
       "file": "entities/gpt-5-6.md",
       "aliases": [
         "GPT-5.6",
         "GPT 5.6",
         "GPT-5.6 Pro",
-        "GPT-5.6 Mini"
+        "GPT-5.6 Mini",
+        "GPT-5.6 Sol",
+        "GPT-5.6 Terra",
+        "GPT-5.6 Luna",
+        "Sol",
+        "Terra",
+        "Luna"
       ],
       "outbound": [
         "anthropic",
+        "broadcom",
         "claude-fable-5",
+        "federal-ai-policy",
         "openai",
         "zhipu-glm-5-2"
       ],
       "inbound": [
-        "openai"
+        "federal-ai-policy",
+        "openai",
+        "xai"
       ]
     },
     {
@@ -1480,11 +1495,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
-      "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown.",
+      "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
+      "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-06-21",
-      "timestamp": "2026-06-21T00:00:00Z",
+      "updated_at": "2026-06-29",
+      "timestamp": "2026-06-29T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -1844,11 +1859,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M).",
-      "description": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M).",
+      "summary": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M) — and by Grok 4.5, a from-scratch 1.5T \"V9\" model in private beta at SpaceX/Tesla claiming Opus-level performance.",
+      "description": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M) — and by Grok 4.5, a from-scratch 1.5T \"V9\" model in private beta at SpaceX/Tesla claiming Opus-level performance.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-06-08",
-      "timestamp": "2026-06-08T00:00:00Z",
+      "updated_at": "2026-06-29",
+      "timestamp": "2026-06-29T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -1861,7 +1876,10 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "claude-fable-5",
+        "cursor",
         "dynamic-workflows",
+        "gpt-5-6",
         "openai",
         "spacex"
       ],
@@ -1916,11 +1934,11 @@
         "long-context",
         "frontier-model"
       ],
-      "summary": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
-      "description": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.",
+      "summary": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked \"matches Mythos\" cybersecurity headline.",
+      "description": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked \"matches Mythos\" cybersecurity headline.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-06-23",
-      "timestamp": "2026-06-23T00:00:00Z",
+      "updated_at": "2026-06-29",
+      "timestamp": "2026-06-29T00:00:00Z",
       "file": "entities/zhipu-glm-5-2.md",
       "aliases": [
         "Zhipu GLM 5.2",
@@ -2069,8 +2087,11 @@
     "gpt 5.6": "gpt-5-6",
     "gpt-5-6": "gpt-5-6",
     "gpt-5.6": "gpt-5-6",
+    "gpt-5.6 luna": "gpt-5-6",
     "gpt-5.6 mini": "gpt-5-6",
     "gpt-5.6 pro": "gpt-5-6",
+    "gpt-5.6 sol": "gpt-5-6",
+    "gpt-5.6 terra": "gpt-5-6",
     "gpu-as-a-service": "neocloud",
     "gpuaas": "neocloud",
     "grok": "xai",
@@ -2095,6 +2116,7 @@
     "liquidai": "liquid-ai",
     "llama": "meta",
     "local weights": "open-weights",
+    "luna": "gpt-5-6",
     "m3": "minimax-m3",
     "mai": "microsoft",
     "mai-code-1-flash": "microsoft",
@@ -2168,12 +2190,14 @@
     "sk telecom co., ltd.": "sk-telecom",
     "sk-telecom": "sk-telecom",
     "skt": "sk-telecom",
+    "sol": "gpt-5-6",
     "space exploration technologies": "spacex",
     "spacex": "spacex",
     "spacexai": "cursor",
     "spark agent": "gemini-spark",
     "spcx": "spacex",
     "starlink": "spacex",
+    "terra": "gpt-5-6",
     "trump ai executive order": "federal-ai-policy",
     "x.ai": "xai",
     "xai": "xai",
@@ -2188,6 +2212,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-06-29",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-29 digest (six-day gap Jun 24–29; Grok 4.5 from-scratch 1.5T V9 private beta claiming Opus-level; DeepSeek $7.4B close framed as largest in Chinese AI history, state fund sole voting investor; GPT-5.6 Sol/Terra/Luna shipped in US-government-gated preview + Jalapeño chip; Anthropic accuses Alibaba of largest documented Claude distillation attack; GLM-5.2 \"matches Mythos\" cyber headline debunked; Austria courts Anthropic to the EU; open-weights release bench deepens + broker/router layer tips Chinese with Coinbase cutting spend in half). Created 0, updated 8 (xai — Grok 4.5 1.5T V9 private beta at SpaceX/Tesla, Opus-level claim unaudited, unrestricted-vs-gated asymmetry; deepseek — round largest in Chinese AI history, Liang ~$3B/Tencent ~$1.5B/CATL ~$740M, state fund sole voting investor w/ no lock-up, others 5-yr lock-up, double-every-department-toward-AGI, @deepseek_ai silent since May 22; gpt-5-6 — transforms from rumored to shipped: Sol/Terra/Luna government-gated limited preview, max/ultra reasoning, Terminal-Bench 2.1 SOTA, pricing, GA \"coming weeks\"/Polymarket ~90% by Jul 31; anthropic — Alibaba distillation letter (25K accounts/28.8M exchanges) + Austria EU-relocation open letter; zhipu-glm-5-2 — \"matches Mythos\" cyber headline debunked as IDOR-vs-Claude-Code category error, stock +30% decoupled from benchmark; broadcom — OpenAI Jalapeño first custom inference ASIC co-designed w/ Broadcom, 50% cost saving claim, 9-mo design, MS ~40% output; open-weights — Nemotron-3-Ultra/Command A+ Apache 2.0/ZAYA1/Poolside/Kimi-K2.7-Code pipeline + OpenRouter top-4-broker all Chinese + Coinbase halves spend, VibeThinker-3B; federal-ai-policy — \"de facto licensing regime with no rules\" two new data points (Sol gated + Alibaba distillation letter) + Europe structurally excluded/Austria courtship)."
+    },
     {
       "date": "2026-06-23",
       "op": "ingest",
@@ -2282,11 +2311,6 @@
       "date": "2026-05-30",
       "op": "ingest",
       "summary": "Ingested 2026-05-30 digest. Created 2 (openai entity — first page despite frequent mentions, anchored by Frontier Governance Framework + Rosalind Biodefense + $852B valuation; california-ai-regulation theme — May 29 crossover deadline + AB 1609/AB 1159/A 9317). Updated 6 (anthropic — Series H formalized, valuation flip $113B above OpenAI, October 2026 IPO target, $47B ARR at close; claude-opus-4-8 — final benchmark deltas, Fast Mode 2.5×/3×, Simon Willison \"modest but tangible\"; dynamic-workflows — JavaScript orchestrator + 1,000-subagent cap; liquid-ai — LFM2.5-8B-A1B 128K/38T/doubled-vocab detail; agent-lifespan-engineering — Opus 4.8 regression-reversal question; ai-capex — valuation flip + May 28 vertical-agent funding cluster + Ohio data-center tax pushback)."
-    },
-    {
-      "date": "2026-05-29",
-      "op": "ingest",
-      "summary": "Ingested 2026-05-29 digest. Created 6 (claude-opus-4-8, cognition-ai, liquid-ai entities; dynamic-workflows, agent-lifespan-engineering concepts; agentic-ai-security theme), updated 2 (anthropic — Opus 4.8 ship + Series H close at $65B/$965B; ai-capex — frontier-lab capital paragraph)."
     }
   ]
 }

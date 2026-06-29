@@ -4,10 +4,11 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou-based Chinese frontier lab; on 2026-06-04 disclosed its first-ever external round (~$7.4B / ~50B yuan at up to a $59B valuation, Tencent + CATL leading), marking its pivot from research to commercialization.
+description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.
 created_at: 2026-06-04
-timestamp: 2026-06-19T00:00:00Z
+timestamp: 2026-06-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
@@ -84,11 +85,30 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   open-weights wave from text into modality — see [[open-weights]] (ARA digest
   2026-06-19).
 
+- **The round is the largest in Chinese AI history — and a state-directed read
+  hardens (2026-06-29).** The 2026-06-18 close is now framed as the **largest
+  external round in Chinese AI history**: **>¥50B (~$7.4B) at a post-money
+  valuation exceeding $50B**, with founder **Liang Wenfeng** personally in
+  **~$3B** (the single largest check, retaining voting control), **Tencent
+  ~$1.5B**, **CATL ~$740M**, and NetEase / JD.com / IDG Capital among the
+  backers. The decisive structural tell: most outside investors got **no voting
+  rights and a five-year lock-up**; only the state-backed **National AI Industry
+  Investment Fund** took **direct equity with voting rights and no lock-up**.
+  Reporting frames [[anthropic|Anthropic's]] Mythos preview as the catalyst that
+  convinced Liang the lab needed far more capital; the lab plans to **double
+  every department** toward AGI. The counter-read: $50B for a discount-API lab is
+  rich by public-market standards, and the structure reads more like a
+  **state-directed capital injection with a commercial veneer** than a
+  market-priced round — notably **`@deepseek_ai` has not tweeted since May 22**,
+  so all detail remains The Information-sourced with no DeepSeek primary (ARA
+  digest 2026-06-29).
+
 ## Open questions
 
-- **Does the round close at the reported size/valuation?** No DeepSeek primary
-  statement yet; the figure is report-grade and the round is not confirmed
-  closed.
+- **Does the round close at the reported size/valuation?** Reported-closed at
+  ~$7.4B / $50B+ (The Information, 2026-06-18), now framed as the largest in
+  Chinese AI history — but still no DeepSeek primary statement or filing, and
+  the official @deepseek_ai account has been silent since May 22.
 - **What does outside capital do to the open-weights posture?** Tencent/CATL
   involvement and a commercialization mandate could pull DeepSeek toward more
   gated or monetized releases over time.

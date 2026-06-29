@@ -4,11 +4,13 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M).
+description: Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M) — and by Grok 4.5, a from-scratch 1.5T "V9" model in private beta at SpaceX/Tesla claiming Opus-level performance.
 created_at: 2026-06-08
-timestamp: 2026-06-08T00:00:00Z
+timestamp: 2026-06-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
+  - {title: "ARA model ticket — Grok V9-Medium", path: research/models/tickets/grok-v9-medium.md}
   - {title: "ARA model ticket — xAI Grok Build", path: research/models/tickets/xai-grok-build-2026-05.md}
   - {title: "ARA model ticket — Anthropic–SpaceX Colossus lease", path: research/models/tickets/anthropic-spacex-colossus-2026-05.md}
   - {title: "ARA model ticket — Google–SpaceX compute pact", path: research/models/tickets/google-spacex-compute-2026-06.md}
@@ -38,13 +40,28 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   the xAI API at **$1/m input + $2/m output**, distributed through OpenRouter,
   Vercel AI Gateway, Cursor, and other third-party harnesses — xAI's developer
   answer to [[openai|OpenAI Codex]] and Claude Code ([[dynamic-workflows]]).
-- **Grok V9-Medium pending.** A **1.5T-parameter** frontier foundation model is
-  reportedly training-complete with public release weeks out — the model that
-  would put xAI back in the public benchmark race against GPT-5.x and the gated
-  [[anthropic|Anthropic Mythos]].
+- **Grok V9-Medium → Grok 4.5 ships to private beta.** The **1.5T-parameter
+  "V9" foundation model** (3× the 0.5T v8 that served Grok 4.3 production, trained
+  with heavy [[cursor|Cursor]] data) moved from "training complete" into a **private
+  beta at SpaceX and Tesla** as **Grok 4.5** (2026-06-28). Musk claimed early
+  internal evals show performance "close to, perhaps exceeding Opus" and committed
+  to **from-scratch new models every month** for the rest of 2026 via SpaceX. A
+  public **Grok 4.4 (~1T)** may ship within days while 4.5 stays in beta. This is
+  xAI's first from-scratch model since Grok 3.
 - **Training-data controversy.** Reporting that xAI trained its coding models on
   [[anthropic|Claude]] outputs and continued after Anthropic cut access is an
   open credibility thread on the lab's model-provenance.
+- **Grok 4.5: audited by nobody, but the asymmetry is real (2026-06-29).** "Opus"
+  is version-ambiguous (4.6/4.7/4.8?), the evals are **internal and unaudited**,
+  and xAI has a track record of bold benchmark claims that don't replicate; a
+  monthly from-scratch pretraining cadence is extraordinarily aggressive and may
+  describe fine-tuned variants. The xAI safety-engineer lawsuit (Devin Kim, filed
+  2026-06-10) alleging firing for raising Grok safety concerns days before the
+  [[spacex|SpaceX]] IPO adds context to the pace. But the structural point holds:
+  a genuinely Opus-competitive Grok shipping **unrestricted** — while
+  [[gpt-5-6|GPT-5.6 Sol]] and [[claude-fable-5|Claude Mythos 5]] are
+  government-gated — would expose an asymmetry in the de facto US frontier-model
+  licensing regime (ARA digest 2026-06-29).
 
 ## Open questions
 
@@ -55,5 +72,6 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   props up SpaceX's pre-IPO revenue line is the same capacity xAI needs for its
   own Grok roadmap — the S-1 language will clarify who has first call on it.
 - **Can Grok V9-Medium close the frontier gap?** xAI's public models trail the
-  GPT/Claude/Gemini frontier; V9-Medium is the test of whether the compute
-  advantage converts into model capability.
+  GPT/Claude/Gemini frontier; Grok 4.5 (the 1.5T V9 in private beta) is the test
+  of whether the compute advantage converts into model capability — but with
+  no independent benchmarks yet, the Opus-level claim is unaudited.

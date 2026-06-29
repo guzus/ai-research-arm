@@ -10,19 +10,19 @@ Each page is one of three types — entity, concept, or theme. See
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; per WSJ/Axios, CEO Andy Jassy's Treasury briefing triggered the June 2026 Fable 5 / Mythos 5 export crackdown.
 - [[anthropic]] — AI safety lab behind the Claude family; closed a $65B Series H at $965B post-money on 2026-05-29.
 - [[apple]] — Consumer-hardware giant whose Siri rebuild — reportedly a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (June 8).
-- [[broadcom]] — Custom AI ASIC vendor and capex sentiment lever behind Google/Anthropic TPU financing, OpenAI custom-chip plans, and the June 2026 AVGO guidance gut-check.
+- [[broadcom]] — Custom AI ASIC vendor and capex sentiment lever behind Google/Anthropic TPU financing, OpenAI's first custom inference chip (Jalapeño, co-designed with Broadcom), and the June 2026 AVGO guidance gut-check.
 - [[claude-fable-5]] — Anthropic's first public Mythos-class model (2026-06-09): one frontier model as two products — safeguarded GA Fable 5 (reroutes high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5.
 - [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; now also the safeguard-reroute target for Fable 5.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY).
 - [[coreweave]] — GPU-as-a-service neocloud with a ~$99B take-or-pay backlog.
 - [[cursor]] — AI coding tool/IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close).
-- [[deepseek]] — Hangzhou Chinese frontier lab; disclosed its first-ever external round (~$7.4B at up to $59B, Tencent + CATL) on 2026-06-04, pivoting to commercialization.
+- [[deepseek]] — Hangzhou Chinese frontier lab; closed its first-ever external round (~$7.4B at $50B+, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital with the state AI fund the only voting investor — pivoting to commercialization toward AGI.
 - [[dell]] — US enterprise-IT OEM; Q1 FY27 AI-Optimized Servers $16.1B (+757% YoY), $24.4B AI orders booked, FY27 AI-server outlook raised to $60B.
 - [[figure-ai]] — US humanoid-robotics company whose Helix-02 VLA ran a 200-hour fully-autonomous 249,560-package shift on 2026-05-30, ~10× the prior public MTBI envelope.
 - [[gemini-3-5-flash]] — Google's fast, low-cost frontier model shipped at I/O 2026.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; encoder-free 12B variant runs on 16 GB RAM, 150M+ cumulative downloads.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
-- [[gpt-5-6]] — OpenAI's most-anticipated unreleased frontier model; press-reported for ~2026-06-23 as a full standard/Mini/Pro family with a leaked ~1.5M-token context, but unconfirmed by OpenAI.
+- [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
 - [[meta]] — Social-platform hyperscaler and Llama maker; launched "AI Mode" on Facebook (2026-06-16), leaning on distribution to catch up in the AI-assistant race.
@@ -40,7 +40,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[salesforce]] — Enterprise-CRM giant betting on agentic AI (Agentforce); bought AI customer-service platform Fin for $3.6B (2026-06-15), the day's largest confirmed AI M&A.
 - [[sk-telecom]] — South Korea's largest carrier and ~$100M Anthropic investor; named 2026-06-21 as the Project Glasswing partner whose Mythos 5 access helped trigger the Fable 5 export suspension.
 - [[spacex]] — Record IPO (Nasdaq: SPCX, debuted 2026-06-12 at $135/share, ~$1.77T valuation) anchoring the 2026 AI-financing issuance wave.
-- [[xai]] — Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business renting Colossus capacity to rival labs at $2B+/month.
+- [[xai]] — Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business renting Colossus capacity to rival labs at $2B+/month, and by Grok 4.5 — a from-scratch 1.5T "V9" model in private beta at SpaceX/Tesla claiming Opus-level performance.
 - [[xiaomi-mimo-v2-5-pro]] — Xiaomi MiMo UltraSpeed model tied to the 1,000+ tok/s on 1T MoE claim using a standard 8-GPU server; high-signal but still partially verified.
 - [[zhipu-glm-5-2]] — Zhipu / Z.ai's 1M-context GLM-5.2, deployed in the GLM Coding Plan with MIT open weights promised; marquee Chinese open-weight release.
 

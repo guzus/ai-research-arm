@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: The 2026 storyline of US federal AI governance — culminating in Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review.
+description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-06-21T00:00:00Z
+timestamp: 2026-06-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
@@ -314,6 +315,30 @@ footing for the first time in the cycle.
   AI-content labeling issued June 10); **China CAC** anthropomorphic-interaction
   measures effective **July 15**; **Colorado AI Act** effective **June 30** (ARA
   digest 2026-06-21).
+
+- **"A de facto licensing regime with no rules" — two new data points
+  (2026-06-29).** No net-new binding regulatory text landed June 28–29, but the
+  dominant policy signal — the US de facto frontier-model licensing regime —
+  sharpened on two fronts. **(1)** [[openai]]'s [[gpt-5-6|GPT-5.6 Sol]] shipped
+  **directly into a government-gated limited preview** (access restricted to
+  government-shared trusted partners before broader release) — the second US
+  frontier flagship, after [[anthropic]]'s [[claude-fable-5|Mythos 5]], to ship
+  under the regime. **(2)** [[anthropic|Anthropic's]] letter accusing **Alibaba**
+  of the largest documented adversarial distillation attack on Claude reframes
+  US–China frontier distillation as **national security, not just ToS
+  enforcement** — the same national-security framing that underwrites the export
+  controls. *The Information*'s Leo Schwartz: "We just have this new normal,
+  which is essentially a de facto licensing regime with no rules."
+- **Europe is structurally excluded — and knows it (2026-06-29).** **Austria's
+  open letter courting [[anthropic]] to relocate to the EU** is the first explicit
+  European governmental acknowledgment that US export controls **structurally
+  exclude Europe** from frontier models. Analysts read it as performative —
+  compute, US-government relationships, and the Mythos 5 license are all US-bound,
+  and the UK's similar overtures months earlier went nowhere — but it confirms the
+  "foreign national regardless of location" clause has become a **sovereignty
+  problem for US allies**, extending the [[federal-ai-policy|G7 Évian]] friction
+  (Macron's bilateral with Amodei; the UK carveout denial) into open European
+  courtship. See [[anthropic]].
 
 ## Open questions
 

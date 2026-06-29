@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown.
+description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
 created_at: 2026-06-14
-timestamp: 2026-06-21T00:00:00Z
+timestamp: 2026-06-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
@@ -149,6 +150,25 @@ fragile and local weights look like insurance.
   232 comments) — the open-weights story now leading HN as much as Twitter. The
   brakes still hold: design-only board, no vision, self-hosting economics still lose
   to a $200 Codex plan (ARA digest 2026-06-21).
+
+- **The wave broadens and starts routing real production traffic (2026-06-29).** Two
+  shifts firmed the open-weights story past the leaderboard moment. **(1) The release
+  bench deepened:** [[nvidia]]'s **Nemotron-3-Ultra (550B LatentMoE, OpenMDW
+  license)**, **Cohere Command A+ (218B MoE, now Apache 2.0)**, **Zyphra ZAYA1-74B**,
+  **Poolside Laguna-M.1**, and [[moonshot-kimi-k2-7-code|Kimi-K2.7-Code]] all landed —
+  the open tier is no longer a handful of flagships but a steady pipeline. **(2) The
+  router/broker layer tipped Chinese:** [[openrouter]]'s top 4 broker models are now
+  all Chinese (**[[zhipu-glm-5-2|GLM-5.2]]** joining [[deepseek|DeepSeek]] models), and
+  **Coinbase publicly switched to Chinese models (GLM-5.2, Kimi 2.7)** with automated
+  price/task routing and better caching — **cutting AI spending in half even as token
+  usage rose** (cache hit rate 5% → 60%). A Western public company naming Chinese open
+  models as a production cost win is the demand-side counterpart to the supply-side
+  release wave. Caveat: the OpenRouter ranking reflects the *broker* market, not
+  direct API usage. Separately, **VibeThinker-3B (Sina Weibo)** — a 3B model matching
+  DeepSeek V3.2 / Kimi K2.5 on math and coding (up to 333× smaller) via multi-stage
+  post-training — advances the "logical reasoning compresses well, factual knowledge
+  doesn't" hypothesis, a long-tail efficiency data point for the local-hosting lane
+  (ARA digest 2026-06-29).
 
 ## Open questions
 

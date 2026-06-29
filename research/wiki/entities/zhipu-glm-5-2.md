@@ -4,10 +4,11 @@ title: Zhipu GLM-5.2
 type: entity
 aliases: ["Zhipu GLM 5.2", "Zhipu GLM-5.2", "GLM 5.2", "GLM-5.2", "Z.ai GLM-5.2"]
 tags: [open-weights, china, coding, long-context, frontier-model]
-description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window.
+description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked "matches Mythos" cybersecurity headline.
 created_at: 2026-06-17
-timestamp: 2026-06-23T00:00:00Z
+timestamp: 2026-06-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
@@ -114,6 +115,20 @@ max/high "thinking" modes.
   day's open-vs-closed discourse (@AndrewCurran_ Quote of the Day). It is now the
   leading **"DeepSeek moment for agents"** candidate. **Caveat:** it still lacks
   image understanding — see [[open-weights]] (ARA digest 2026-06-23).
+
+- **The "matches Mythos" cybersecurity headline is debunked (2026-06-29).** A viral
+  weekend claim that GLM-5.2 "matches [[claude-fable-5|Claude Mythos]]" on security
+  bug detection was **corrected as a category error**. The real result (Semgrep's
+  own blog): **~39% F1 on the narrow Semgrep IDOR benchmark at $0.17/task, beating
+  Claude Code's ~32%** — prompt-only vulnerability detection, **not** Mythos-class
+  autonomous exploit-chain capability. @janekm: "not vs Mythos but vs Opus, not in
+  the same harness, and only for IDOR. Terrible methodology." A separate Chinese
+  effort — **360 Security's "Tulongfeng"** (3,432 vulnerabilities flagged, per
+  founder Zhou Hongyi) — is the more direct Mythos analog, and remains unverified.
+  Zhipu's stock nonetheless **jumped ~30% on the Hong Kong exchange** on the
+  headline — a market move decoupled from what the benchmark actually showed, and a
+  reminder that the model's narrative momentum now outruns its verified capability
+  (ARA digest 2026-06-29).
 
 ## Open questions
 
