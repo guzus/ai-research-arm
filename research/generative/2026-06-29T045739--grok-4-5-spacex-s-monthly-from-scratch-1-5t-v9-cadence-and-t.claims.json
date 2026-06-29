@@ -1,0 +1,274 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Elon Musk announced Grok 4.5 on June 28, 2026, based on xAI's 1.5-trillion-parameter V9 foundation model",
+      "type": "event",
+      "source_urls": ["https://x.com/elonmusk/status/2071184354756477041"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Grok 4.5 was supplementally trained on Cursor developer workflow data to improve coding abilities",
+      "type": "technical",
+      "source_urls": ["https://x.com/elonmusk/status/2071184354756477041"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Grok 4.5 is in private beta testing at SpaceX and Tesla",
+      "type": "event",
+      "source_urls": ["https://x.com/elonmusk/status/2071184354756477041"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Elon Musk stated completely trained-from-scratch models based on V9 will be released by SpaceX every month for the rest of 2026",
+      "type": "forecast",
+      "source_urls": ["https://x.com/elonmusk/status/2071184354756477041"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c5",
+      "claim": "Early evaluations show Grok 4.5 performing close to or exceeding Claude Opus",
+      "type": "comparison",
+      "source_urls": ["https://x.com/elonmusk/status/2071184354756477041"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-28",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c6",
+      "claim": "Reinforcement learning continues to significantly improve the model",
+      "type": "technical",
+      "source_urls": ["https://x.com/elonmusk/status/2071184354756477041"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "xAI's Colossus 1 datacenter in Memphis contains 220,000+ NVIDIA GPUs (H100, H200, GB200) with 300+ MW power capacity",
+      "type": "metric",
+      "source_urls": ["https://x.com/claudeai/status/2052060691893227611", "https://x.com/dhinchcliffe/status/2052097490015670679"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-05-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "Anthropic signed a compute deal to rent capacity at SpaceX/xAI's Colossus 1 facility",
+      "type": "event",
+      "source_urls": ["https://x.com/claudeai/status/2052060691893227611"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "xAI merged into SpaceX earlier in 2026, becoming effectively a subsidiary within the broader SpaceX structure",
+      "type": "event",
+      "source_urls": ["https://x.com/dhinchcliffe/status/2052097490015670679"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-06",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c10",
+      "claim": "Colossus 2 is the largest AI training supercluster, with 550,000+ NVIDIA Blackwell GPUs operating at 1+ GW power capacity",
+      "type": "metric",
+      "source_urls": ["https://x.com/Fuzzygoat/status/2069014549395644672"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c11",
+      "claim": "Grok 5 is being trained as a 6-trillion-parameter Mixture-of-Experts model on Colossus 2, with a larger 10-trillion variant",
+      "type": "technical",
+      "source_urls": ["https://x.com/Fuzzygoat/status/2069014549395644672", "https://x.com/ShinkaIoT/status/2065583785958314179"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c12",
+      "claim": "xAI plans a C/C++ rewrite of the training and inference stack targeting NVIDIA GB300 Grace Blackwell Ultra superchips for massive gains",
+      "type": "technical",
+      "source_urls": ["https://x.com/horanaS/status/2071456221186396213"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-29",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c13",
+      "claim": "On June 12, 2026, the US government issued an export control directive ordering Anthropic to suspend access to Fable 5 and Mythos 5 by foreign nationals",
+      "type": "event",
+      "source_urls": ["https://anthropic.com/news/fable-mythos-access"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "Trump signed AI Executive Order on June 2, 2026 requiring 30-day pre-release government access for cybersecurity review of frontier models",
+      "type": "regulatory",
+      "source_urls": ["https://www.whitehouse.gov/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "SpaceX was included in the Department of War's May 2026 classified-network AI agreements alongside OpenAI, Google, NVIDIA, Microsoft, AWS, and Oracle",
+      "type": "event",
+      "source_urls": ["https://x.com/ollobrains/status/2065753665009516636"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c16",
+      "claim": "Grok holds approximately 6% enterprise AI adoption versus 55% for OpenAI and 47% for Anthropic",
+      "type": "metric",
+      "source_urls": ["https://x.com/GlobalWireLive/status/2062796857915346970"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-05",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "xAI raised approximately $20B in Series E funding, absorbed into SpaceX for securing compute energy",
+      "type": "metric",
+      "source_urls": ["https://x.com/ShinkaIoT/status/2065583785958314179"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-12",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "The Trump administration has been hostile to Anthropic since early 2026, with Trump ordering a federal ban on Claude and the Pentagon labeling Anthropic a supply-chain risk",
+      "type": "event",
+      "source_urls": ["https://www.washingtonpost.com/technology/2026/02/27/anthropic-trump-ban-federal-agencies/", "https://www.cnbc.com/2026/03/26/anthropic-wins-injunction-trump-pentagon.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-02-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "The Trump administration asked OpenAI to initially limit GPT-5.6 to government-approved partners, per Axios reporting",
+      "type": "regulatory",
+      "source_urls": ["https://x.com/ollobrains/status/2065753665009516636"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c20",
+      "claim": "SpaceX has introduced AI1, the first generation of its AI satellite (orbital datacenter)",
+      "type": "technical",
+      "source_urls": ["https://x.com/SERobinsonJr/status/2064491214020161630"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-09",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c21",
+      "claim": "NSPM-11 (June 5, 2026) requires that fielded AI systems cannot be disabled, degraded, or materially modified without federal knowledge and approval",
+      "type": "regulatory",
+      "source_urls": ["https://x.com/intrana/status/2070628174233235841"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "Grok 4.5 is described internally as 'extremely fast and extremely smart' by xAI engineer Yagiz Nizipli",
+      "type": "quote",
+      "source_urls": ["https://x.com/yagiznizipli/status/2071364044280197432"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "The V9-Medium model completed training at 1.5 trillion parameters, three times larger than the prior production model",
+      "type": "metric",
+      "source_urls": ["https://x.com/GlobalWireLive/status/2062796857915346970"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-05",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c24",
+      "claim": "SpaceX AI infrastructure is effectively becoming a commercial compute provider, monetizing Colossus overhang to competitors like Anthropic",
+      "type": "market-structure",
+      "source_urls": ["https://x.com/dhinchcliffe/status/2052097490015670679", "https://x.com/claudeai/status/2052060691893227611"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-05-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "The Fable 5 export control was legally novel — model weights have no established ECCN classification under the Commerce Control List",
+      "type": "regulatory",
+      "source_urls": ["https://anthropic.com/news/fable-mythos-access"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "Anthropic's annual run-rate revenue exceeded $30B as of April 2026",
+      "type": "metric",
+      "source_urls": ["https://x.com/jackvi810/status/2052248678354833827"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-04-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c27",
+      "claim": "xAI retrains the V9 model monthly from scratch at 1.5 trillion parameters, requiring massive sustained compute infrastructure",
+      "type": "technical",
+      "source_urls": ["https://x.com/elonmusk/status/2071184354756477041"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "volatile"
+    }
+  ]
+}

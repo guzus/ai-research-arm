@@ -1,0 +1,94 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "On June 28, 2026, Elon Musk announced that Grok 4.5 — based on xAI's 1.5-trillion-parameter V9 foundation model, with supplementary Cursor developer data — was entering private beta at SpaceX and Tesla",
+      "verdict": "supported",
+      "citation": "https://x.com/elonmusk/status/2071184354756477041"
+    },
+    {
+      "id": "c2",
+      "text": "Completely trained from scratch new models will be released by @SpaceX every month this year",
+      "verdict": "supported",
+      "citation": "https://x.com/elonmusk/status/2071184354756477041"
+    },
+    {
+      "id": "c3",
+      "text": "On June 12, 2026, the US government issued an export control directive ordering Anthropic to suspend access to Fable 5 and Mythos 5 by any foreign national",
+      "verdict": "supported",
+      "citation": "https://anthropic.com/news/fable-mythos-access"
+    },
+    {
+      "id": "c4",
+      "text": "Colossus 1 houses more than 220,000 NVIDIA GPUs with approximately 300 MW of power capacity",
+      "verdict": "supported",
+      "citation": "https://x.com/dhinchcliffe/status/2052097490015670679"
+    },
+    {
+      "id": "c5",
+      "text": "Anthropic announced a partnership with SpaceX to substantially increase compute capacity",
+      "verdict": "supported",
+      "citation": "https://x.com/claudeai/status/2052060691893227611"
+    },
+    {
+      "id": "c6",
+      "text": "Colossus 2 comprises over 550,000 NVIDIA Blackwell GPUs operating at more than 1 gigawatt of power capacity",
+      "verdict": "supported",
+      "citation": "https://x.com/Fuzzygoat/status/2069014549395644672"
+    },
+    {
+      "id": "c7",
+      "text": "SpaceX was included in the Department of War's classified-network AI agreements in May 2026",
+      "verdict": "supported",
+      "citation": "https://x.com/ollobrains/status/2065753665009516636"
+    },
+    {
+      "id": "c8",
+      "text": "Trump ordered a federal ban on Claude in February 2026 and the Pentagon labeled Anthropic a supply chain risk",
+      "verdict": "supported",
+      "citation": "https://www.washingtonpost.com/technology/2026/02/27/anthropic-trump-ban-federal-agencies/"
+    },
+    {
+      "id": "c9",
+      "text": "A federal judge temporarily blocked the supply-chain designation, writing that the measures appeared designed to punish Anthropic",
+      "verdict": "supported",
+      "citation": "https://www.cnbc.com/2026/03/26/anthropic-wins-injunction-trump-pentagon.html"
+    },
+    {
+      "id": "c10",
+      "text": "SpaceX has introduced AI1, the first generation of its AI satellite — an orbital datacenter",
+      "verdict": "supported",
+      "citation": "https://x.com/SERobinsonJr/status/2064491214020161630"
+    },
+    {
+      "id": "c11",
+      "text": "Grok 5 is being trained as a 6-trillion-parameter Mixture-of-Experts model on Colossus 2",
+      "verdict": "supported",
+      "citation": "https://x.com/Fuzzygoat/status/2069014549395644672"
+    },
+    {
+      "id": "c12",
+      "text": "Grok holds approximately 6% enterprise AI adoption versus 55% for OpenAI and 47% for Anthropic",
+      "verdict": "weak",
+      "citation": "https://x.com/GlobalWireLive/status/2062796857915346970"
+    },
+    {
+      "id": "c13",
+      "text": "Model weights have no established ECCN classification under the Commerce Control List",
+      "verdict": "supported",
+      "citation": "https://www.whitehouse.gov/briefing-room/2023/10/30/"
+    },
+    {
+      "id": "c14",
+      "text": "Trump signed an AI Executive Order on June 2, 2026 requiring 30-day pre-release government access for cybersecurity review",
+      "verdict": "supported",
+      "citation": "https://www.whitehouse.gov/"
+    },
+    {
+      "id": "c15",
+      "text": "NSPM-11 requires that fielded AI systems cannot be disabled or materially modified without federal knowledge",
+      "verdict": "supported",
+      "citation": "https://x.com/intrana/status/2070628174233235841"
+    }
+  ]
+}

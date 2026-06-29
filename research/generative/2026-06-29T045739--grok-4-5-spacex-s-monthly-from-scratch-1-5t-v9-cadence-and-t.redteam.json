@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Completely trained from scratch new models will be released by SpaceX every month this year [^1]",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "SpaceX was included in the Department of War's classified-network AI agreements announced in May 2026, alongside OpenAI, Google, NVIDIA, Microsoft, AWS, and Oracle [^23]",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "On June 12, 2026, the US government issued an export control directive ordering Anthropic to suspend all access to Fable 5 and Mythos 5 by any foreign national [^2]",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
