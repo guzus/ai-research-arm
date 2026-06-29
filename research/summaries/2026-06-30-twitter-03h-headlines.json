@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "CLAUDE NOW GENERALLY AVAILABLE IN MICROSOFT FOUNDRY ON AZURE — OPUS 4.8 + HAIKU 4.5 ON NVIDIA GB300",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2071653958905467027",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC MODELS RUN ON NVIDIA GPUS FOR FIRST TIME — GB300 NVL72 WITH QUANTUM-X800 INFINIBAND ON AZURE",
+    "source": "@nvidia",
+    "url": "https://x.com/nvidia/status/2071654937335926864",
+    "category": "infra"
+  },
+  {
+    "headline": "US CLEARS ANTHROPIC MYTHOS 5 FOR ~100 APPROVED ORGS; FABLE 5 EXPECTED BACK THIS WEEK AFTER 15-DAY SUSPENSION — AXIOS",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2071398246996717834",
+    "category": "policy"
+  },
+  {
+    "headline": "CALIFORNIA SIGNS ANTHROPIC DEAL — CLAUDE FOR ALL STATE AGENCIES AT 50% DISCOUNT",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2071653958905467027",
+    "category": "business"
+  }
+]

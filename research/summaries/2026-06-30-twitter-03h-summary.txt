@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-06-30 03:52 UTC
+
+CYCLE: Anthropic completes the hyperscaler sweep as Washington starts un-gating the frontier.
+
+TOP STORIES:
+• Claude GA in Microsoft Foundry on Azure — first-ever Anthropic deployment on NVIDIA GPUs (GB300); now native across AWS, GCP, Azure [✓]
+• Frontier gate reverses: US clears Mythos 5 for ~100 approved orgs; Anthropic exec says Fable 5 returns "this week" (Axios) [✓]
+
+WATCH: Anthropic confirmation that Fable 5 is actually back online + the named-org conditions on the Mythos 5 clearance.
+
+Full update on GitHub.
