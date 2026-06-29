@@ -13,4 +13,10 @@ KEY NUMBERS:
 • GPT-5.6 Sol pricing: $5 in / $30 out per 1M tokens
 • Alibaba: 25K accounts / 28.8M Claude exchanges alleged
 
+JUST IN (June 29 US session):
+• S. Korea unveils ~$1.3T "Three Mega-Projects" — Samsung+SK Hynix ~$518B for 4 new chip fabs + AI data centers; shares fell (Samsung -4.7%, SK Hynix -3.1%)
+• Baidu's AI-chip unit Kunlunxin targets $50B Hong Kong IPO; asked investors to buy its chips at 3-7x their subscription; BIDU +7%
+• Google reorgs AI-coding "strike team" into midtraining to catch Anthropic; CFO: Anthropic codes ~100% w/ AI vs Google ~50%
+• Anthropic audit: ~$1.7M overcharge from an AI agent stuck in a retry loop (The Information)
+
 Full report on GitHub.
