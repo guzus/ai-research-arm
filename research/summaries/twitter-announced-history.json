@@ -11614,5 +11614,40 @@
     "headline": "ANDREESSEN'S DEFENSE-BOARD SEAT MAY CONFER MYTHOS 5 ACCESS VIA DEPARTMENT OF WAR \u2014 CURRAN",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2071663021110460630"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-06-30 10:14 UTC",
+    "headline": "ANTHROPIC ALLEGES ALIBABA RAN 28.8M FRAUDULENT API CALLS ACROSS 25,000 FAKE ACCOUNTS TO DISTILL CLAUDE",
+    "source": "@PeterDiamandis",
+    "url": "https://x.com/PeterDiamandis/status/2071705010694767042"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-06-30 10:14 UTC",
+    "headline": "MUSK AMPLIFIES ALIBABA-DISTILLATION CLAIM AS 'LARGEST AI MODEL THEFT EVER ATTEMPTED' \u2014 STILL UNCONFIRMED",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2071762302068740115"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-30 10:14 UTC",
+    "headline": "GROK 4.5 IN PRIVATE BETA \u2014 xAI CLAIMS OPUS-LEVEL ON 1.5T 'V9' MODEL, AUGUST RELEASE, NO THIRD-PARTY BENCHMARKS",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2071184354756477041"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-30 10:14 UTC",
+    "headline": "CHINA'S OPEN GLM-5.2 BEATS CLAUDE CODE ON SEMGREP IDOR TEST \u2014 39% F1 VS 32-37%, ~$0.17 PER VULNERABILITY",
+    "source": "@AlphaSignalAI",
+    "url": "https://x.com/AlphaSignalAI/status/2071762782014624213"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-06-30 10:14 UTC",
+    "headline": "CALIFORNIA-ANTHROPIC DEAL CONFIRMED: CLAUDE ACROSS STATE AGENCIES AT 50% DISCOUNT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2071623588474429813"
   }
 ]
