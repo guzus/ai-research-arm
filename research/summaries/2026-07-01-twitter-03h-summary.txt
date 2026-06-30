@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-07-01 03:49 UTC
+
+CYCLE: Anthropic double-launch — Sonnet 5 ships, plus Claude Science
+
+TOP STORIES:
+• Claude Sonnet 5 officially live — default on Free/Pro, ~Opus-4.8 agentic, $2/$10 intro ($3/$15 Sept), 1M context, system card published [✓]
+• Claude Science launched — research workbench, 60+ sci tools, debut partners Novartis/BMS/Genentech; OpenAI ships GeneBench-Pro same day [✓]
+
+WATCH: Independent Sonnet 5 benchmarks vs Opus 4.8; whether system card matches the viral "self-approval" threads.
+
+Full update on GitHub.
