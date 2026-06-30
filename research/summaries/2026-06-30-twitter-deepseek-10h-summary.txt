@@ -1,0 +1,11 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-06-30 10:25 UTC
+
+CYCLE: Tooling and unit-economics, not new models — agentic-coding UX + inference pricing.
+
+TOP STORIES:
+• Claude Code making subagents run in the background by default — Anthropic pushes toward async multi-agent orchestration (@bcherny, 6.5K likes) [✓]
+• DeepSeek confirms mid-July V4 commercial launch with peak/off-peak API pricing — first major lab to bring time-of-use economics to inference; even peak ~6-12% of Sonnet-class US cost [⚠]
+
+WATCH: Claude Code release notes shipping background-default subagents; official DeepSeek post confirming V4 GA date + pricing table.
+
+Full update on GitHub.
