@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-30 16:34 UTC
+
+CYCLE: Open-weight surge hits the export-control nerve — Chinese + open labs collapse the cost of frontier-class coding.
+
+TOP STORIES:
+• Meituan open-sources LongCat-2.0: 1.6T MoE, 1M context, claims trained 100% on Chinese chips (no Nvidia); was the anonymous "Owl Alpha" #1 on OpenRouter ✓ (release) / ⚠ (self-eval claims)
+• Cognition ships Devin Fusion: "sidekick" routing harness, ~35% cheaper Fable-class coding ⚠
+• MiniMax M3 lands on OpenRouter at $0.30/M input — ~6% of Opus 4.8's price ⚠
+
+WATCH: First independent LongCat-2.0 benchmark + scrutiny of the "no Nvidia chips" training claim.
+
+Full update on GitHub.
