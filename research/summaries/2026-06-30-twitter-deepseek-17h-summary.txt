@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-06-30 17:07 UTC
+
+CYCLE: Contest shifts to the silicon-and-access layer — China ships frontier-scale without NVIDIA; US tightens frontier access.
+
+TOP STORIES:
+• Meituan's LongCat-2.0 (1.6T MoE, 1M ctx) — first trillion-param model trained AND served entirely on Chinese chips, no NVIDIA; MIT-licensed; was OpenRouter's "Owl Alpha" [✓]
+• NVIDIA quietly halves Rubin Ultra — SemiAnalysis says 4-die flagship scrapped on CoWoS-L packaging yields, replaced by 2-die part at ~half performance [⚠]
+• Claude app strings put Fable 5 behind identity verification + usage credits — possibly a US govt condition for unblocking it [⚠]
+
+WATCH: Independent third-party benchmarks of LongCat-2.0 (Owl Alpha) + any audit of its no-NVIDIA 50K-chip cluster claim.
+
+Full update on GitHub.
