@@ -11733,5 +11733,33 @@
     "headline": "'CLAUDE CODE SPYWARE' CLAIM SPREADS \u2014 ALLEGES REGION/PROXY TELEMETRY SINCE v2.1.91; UNVERIFIED, LIKELY EXPORT COMPLIANCE",
     "source": "@bdsqlsz",
     "url": "https://x.com/bdsqlsz/status/2071887369817772358"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-07-01 00:59 UTC",
+    "headline": "CLAUDE SONNET 5 STRING GOES LIVE IN SELECTOR \u2014 LEAKED $2/$10 PROMO, JAN-2026 CUTOFF, 1M CONTEXT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2071953298169778636"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-07-01 00:59 UTC",
+    "headline": "GOOGLE SHIPS NANO BANANA 2 LITE \u2014 GEMINI-3.1-FLASH-LITE-IMAGE LIVE AT $0.25 IN / $0.0336 OUT",
+    "source": "@testingcatalog",
+    "url": "https://x.com/i/status/2071981784846258503"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-07-01 00:59 UTC",
+    "headline": "ETCHED EXITS STEALTH \u2014 $800M RAISED, $1B+ IN SIGNED CONTRACTS, SOHU ASIC RACKS SHIP THIS SUMMER",
+    "source": "@kimmonismus",
+    "url": "https://x.com/i/status/2071976332628537834"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-07-01 00:59 UTC",
+    "headline": "APIFY + COINBASE ADD 20,000 ACTORS TO X402 \u2014 AI AGENTS PAY PER-RESULT IN USDC ON BASE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/i/status/2071975453376536788"
   }
 ]
