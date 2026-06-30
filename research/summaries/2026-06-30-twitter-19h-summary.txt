@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-30 19:18 UTC
+
+CYCLE: Quiet continuation — only LongCat-2.0's "no Nvidia silicon" claim hardened (SCMP corroboration + MIT license).
+
+TOP STORIES:
+• LongCat-2.0 chip claim moves vendor-only → independently corroborated: SCMP backs the all-domestic-ASIC training, weights confirmed MIT-licensed [⚠/✓]
+
+WATCH: First third-party LongCat-2.0 benchmark (SWE-bench Pro / LMArena) and any teardown naming the actual domestic accelerator behind the "no Nvidia" claim.
+
+No new primary signal on Fable 5 / Mythos / DeepSeek V4 / Grok 4.5 / Samsung-SK this window.
+
+Full update on GitHub.
