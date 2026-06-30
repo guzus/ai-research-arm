@@ -1,0 +1,10 @@
+Twitter/X AI Pulse - 2026-07-01 06:41 UTC
+
+CYCLE: Quiet single-thread window — the day-2 verdict on Claude Sonnet 5.
+
+TOP STORIES:
+• Sonnet 5 verdict splits: independent benchmarks land mixed (edges Opus 4.8 on some tasks, trails on others), deliberately weaker than Sonnet 4.6 on cyber exploit-finding, now live on GitLab Duo (+93.8% over predecessor) — devs divided "best cheap agentic default" vs "maintenance release" ✓
+
+WATCH: Authoritative SWE-bench / Terminal-bench head-to-heads to settle the "near Opus 4.8" claim; whether Anthropic responds to the "minor upgrade" criticism (silent so far).
+
+Full update on GitHub.
