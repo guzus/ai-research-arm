@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-06-30
+
+TOP STORIES:
+• Claude GA in Microsoft Foundry on Azure — Anthropic's first-ever deployment on NVIDIA GPUs (GB300), completing all 3 hyperscaler clouds
+• US frontier gate reverses: Mythos 5 cleared for ~100 critical-infra orgs (Anthropic-confirmed); Fable 5 return reported but not yet live
+• Anthropic locks distribution: California signs all state agencies at ~50% off; Amazon pact repriced to tokens
+
+KEY NUMBERS:
+• DeepSeek V4 GA mid-July + first LLM surge pricing (peak ~2x off-peak)
+• OpenAI weighing IPO delay to 2027, holding firm on $1T valuation
+• Samsung+SK Hynix $550B+ chip capex vs "RAMageddon"
+
+TRENDING: Qwen 3.6 27B "sweet spot for local dev" (379 pts, 331 comments on HN)
+
+Full digest on GitHub.
