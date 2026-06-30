@@ -6,8 +6,9 @@ aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 P
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
 description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.
 created_at: 2026-06-04
-timestamp: 2026-06-29T00:00:00Z
+timestamp: 2026-06-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
@@ -102,6 +103,19 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   market-priced round — notably **`@deepseek_ai` has not tweeted since May 22**,
   so all detail remains The Information-sourced with no DeepSeek primary (ARA
   digest 2026-06-29).
+
+- **V4 dated for mid-July GA — with the first major LLM API surge pricing
+  (2026-06-30).** DeepSeek emailed API users that **V4-Pro and V4-Flash** (~1M
+  context) leave preview **mid-July**, paired with the first major LLM
+  **time-of-day demand pricing**: **peak hours cost ~2× off-peak** (reported as
+  ~9:00–12:00 and 14:00–18:00 Beijing time; exact windows still diverge across
+  reposters). V4-Flash is already in wide use, so "V4" here means **full GA**. The
+  surge-pricing move is a notable inversion of DeepSeek's flat-low-price reputation —
+  a demand-management lever on the inference base it has spent the [[ai-capex]]
+  buildout trying to capture. Separately, a single-sourced practitioner claim says
+  DeepSeek's **"DSpark" speculative decoding** beats DFlash and EAGLE-3 on AMD MI300X
+  (avg ~127 tok/s vs 111/81; +20% acceptance length). *(Watch the official pricing
+  page for exact windows/rates.)* See [[open-weights]] (ARA digest 2026-06-30).
 
 ## Open questions
 

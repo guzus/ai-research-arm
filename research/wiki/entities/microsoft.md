@@ -6,8 +6,9 @@ aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsof
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
 description: Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.
 created_at: 2026-06-03
-timestamp: 2026-06-18T00:00:00Z
+timestamp: 2026-06-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
@@ -78,6 +79,21 @@ Cowork tier than [[openai]] or [[anthropic]]** — extending the Build-2026
 Microsoft is engineering its agent stack to swap engines on cost, hedging away
 from its marquee frontier partners and pulling [[open-weights]] up the value chain
 (ARA digest 2026-06-18).
+
+**Claude GA in Foundry — the only cloud with both frontier stacks (2026-06-30).**
+[[anthropic|Anthropic's]] [[claude-opus-4-8|Claude Opus 4.8]] and **Haiku 4.5** went
+**generally available in Microsoft Foundry on Azure**, hosted natively
+with **Azure auth, billing, and commitment retirement** (prompt caching + extended
+thinking supported), running on **[[nvidia|NVIDIA]] GB300 NVL72 (Blackwell Ultra)**
+with Quantum-X800 InfiniBand — reportedly **Anthropic's first deployment on NVIDIA
+silicon**. Announced jointly by @claudeai, @nvidia and @Azure within the hour. It
+makes **Microsoft the only cloud offering both [[openai|OpenAI]] and Anthropic
+frontier models on one platform** — a hedge that complements (rather than replaces)
+the Build-2026 first-party MAI / "own-or-substitute your intelligence" posture.
+*Skeptic's note:* "GA in Foundry" is largely a procurement/billing integration; the
+genuinely new facts are native Azure auth/billing and the NVIDIA-GPU lane (the
+"first-ever on NVIDIA" superlative was initially single-sourced) (ARA digest
+2026-06-30).
 
 **Caveat.** Microsoft's **Majorana 2** quantum chip claim (~1,000× reliability,
 2029 target) drew pushback — *Scientific American* reports multiple physicists

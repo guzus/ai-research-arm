@@ -6,8 +6,9 @@ aliases: ["California AI regulation", "California AI bills", "Sacramento AI poli
 tags: [policy, regulation, california, ai-governance, frontier-ai]
 description: The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover.
 created_at: 2026-05-30
-timestamp: 2026-06-03T00:00:00Z
+timestamp: 2026-06-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
   - {title: "AI legislative update — May 29 2026 (Transparency Coalition)", url: "https://www.transparencycoalition.ai/news/ai-legislative-update-may29-2026", date: 2026-05-29}
@@ -48,6 +49,18 @@ a California legislature carrying a **~30-bill AI package** through the
   pointing back at Sacramento on the same day Sacramento's package cleared
   procedural risk is the cleanest "the operative regulator is in
   California" signal of 2026.
+- **California becomes a frontier-lab *customer*: Newsom signs Claude for all state
+  agencies (2026-06-30).** Governor **Gavin Newsom** signed a deal making
+  **[[anthropic|Claude]] the first AI cleared for every California state agency and
+  local government**, at a reported **~50% discount** — billed as a **first-of-its-kind
+  state-government deployment**. It is a different lever from the disclosure/transparency
+  bills this theme tracks: California acting as a **procurement** actor, not just a
+  regulator, and the most concrete public-sector frontier-model adoption of the cycle —
+  landing the same week Washington gates Anthropic's top models access client-by-client
+  (see [[federal-ai-policy]] and [[anthropic]]). *(Confirmed via TechCrunch reporting;
+  full dollar terms/scope still pending an official release.)* The **Colorado AI Act
+  also took effect today (June 30)**, a reminder that state-level regimes are
+  proliferating beyond California (ARA digest 2026-06-30).
 - **Q3 timing.** The next four-week window moves bills toward the **July 2
   summer adjournment** — the procedural milestone that pegs which package
   arrives on the governor's desk and which falls into the next session.

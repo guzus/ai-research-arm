@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.
 created_at: 2026-06-10
-timestamp: 2026-06-23T00:00:00Z
+timestamp: 2026-06-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
@@ -224,6 +225,21 @@ every feed on launch day.
   years" away, tying the warning directly to the US block on Fable/Mythos. See
   [[anthropic]], [[federal-ai-policy]], [[agentic-ai-security]] and [[open-weights]]
   (ARA digest 2026-06-23).
+
+- **The gate begins to reverse — Mythos 5 cleared for ~100 orgs; Fable 5 reported
+  returning but unconfirmed (2026-06-30).** After roughly two weeks dark, the export
+  freeze entered managed-release mode. Commerce Secretary **Lutnick's June 26 letter**
+  cleared **Mythos 5** — Anthropic's strongest cybersecurity model — for **~100 vetted
+  US companies and federal agencies** defending critical infrastructure, with the list
+  amendable "at any time"; **[[anthropic]] confirmed this first-party** (~30K likes),
+  saying the government notified them Mythos 5 can be redeployed and that they are
+  "continuing to work… to make Fable 5 available for general use again." **Fable 5's
+  general re-release is still pending** — relays say "this week," but **no Anthropic
+  status post confirms it is live** and **Pentagon/NSA sign-off was reportedly still
+  outstanding** as of June 28. Treat Fable 5 reactivation as **reported-imminent, not
+  confirmed**; the Mythos 5 clearance is the firmer fact, and it crystallizes the
+  export ban into a **managed-access licensing regime** — see [[federal-ai-policy]] and
+  [[agentic-ai-security]] (ARA digest 2026-06-30).
 
 ## Open questions
 

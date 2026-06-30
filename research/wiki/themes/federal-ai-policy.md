@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-06-29T00:00:00Z
+timestamp: 2026-06-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
@@ -339,6 +340,28 @@ footing for the first time in the cycle.
   problem for US allies**, extending the [[federal-ai-policy|G7 Évian]] friction
   (Macron's bilateral with Amodei; the UK carveout denial) into open European
   courtship. See [[anthropic]].
+
+- **The managed-access regime gets its first concrete instrument; Andreessen joins
+  the Pentagon (2026-06-30).** The "de facto licensing regime" hardened into a
+  named mechanism. **(1)** Commerce Secretary **Lutnick's June 26 letter** cleared
+  [[anthropic]]'s **[[claude-fable-5|Mythos 5]]** for **~100 vetted US organizations**
+  defending critical infrastructure, **with the list amendable "at any time"** —
+  [[anthropic]] confirmed first-party — turning the export ban into an explicit,
+  client-by-client **managed-access licensing regime**; **[[claude-fable-5|Fable 5]]'s**
+  general restoration is reported "this week" but still **needs Pentagon/NSA sign-off**.
+  **(2)** **Marc Andreessen was appointed to the Pentagon's reconstituted Defense
+  Policy Board** (by Secretary of War Pete Hegseth) — placing a16z, already on PCAST
+  and a top White House AI-policy voice, **inside formal defense decision-making** just
+  as Washington hands out frontier-model access case by case. *(The "Mythos access via
+  Department of War" angle is an inference, not a confirmed grant; the appointment
+  itself is solid.)* **(3)** Two bills surfaced: **Sen. Warner's AI "Agents" bill**
+  (autonomous-agent liability scope, text imminent) and a **Warren–Scanlon Health and
+  Location Data Protection Act** barring sale of Americans' health/location data —
+  including info revealed to chatbots like ChatGPT or Claude. **(4)** Calendar:
+  **Colorado AI Act effective today (June 30)**; White House AI EO deadlines **July 2 /
+  Aug 1**; China CAC anthropomorphic-interaction measures **July 15**; **EU AI Act**
+  GPAI/transparency obligations binding **Aug 2**. See [[anthropic]] and
+  [[california-ai-regulation]] (ARA digest 2026-06-30).
 
 ## Open questions
 

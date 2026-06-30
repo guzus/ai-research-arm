@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.
 created_at: 2026-05-24
-timestamp: 2026-06-29T00:00:00Z
+timestamp: 2026-06-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
@@ -460,6 +461,25 @@ Four developments through May 2026 put Anthropic at the center of the field:
   nowhere. The offer underscores how the de facto licensing regime is generating
   allied-government friction even as Anthropic stays put — see [[federal-ai-policy]]
   (ARA digest 2026-06-29).
+- **A distribution day: Claude GA in Microsoft Foundry on NVIDIA silicon; Mythos 5
+  cleared; California state deal; Amazon repricing (2026-06-30).** June 29 stacked
+  four distribution moves. **(1)** [[claude-opus-4-8|Claude Opus 4.8]] and **Haiku
+  4.5** went **GA in [[microsoft|Microsoft Foundry]] on Azure** (native Azure auth /
+  billing / commitment retirement, prompt caching + extended thinking) — reportedly
+  **Anthropic's first-ever deployment on [[nvidia|NVIDIA]] GPUs** (GB300 NVL72
+  Blackwell Ultra + Quantum-X800 InfiniBand), completing a native presence across
+  all three hyperscaler clouds (AWS Bedrock, Google Vertex, Azure Foundry). *(The
+  "first on NVIDIA" superlative was initially single-sourced.)* **(2)** The export
+  gate began reversing: Commerce Secretary **Lutnick's June 26 letter** cleared
+  **[[claude-fable-5|Mythos 5]]** for **~100 vetted US critical-infrastructure orgs**
+  (Anthropic **confirmed first-party**, ~30K likes), with **Fable 5** "reported
+  returning this week" but **not yet confirmed live** (Pentagon/NSA sign-off
+  reportedly pending) — see [[federal-ai-policy]]. **(3)** **California signed Claude
+  for all state agencies + local governments at a ~50% discount** (first-of-its-kind
+  state-government deal — see [[california-ai-regulation]]). **(4)** Anthropic
+  **repriced its [[amazon|Amazon]] pact from compute-hours to tokens**, reportedly
+  raising Amazon's costs and prompting Amazon engineers to **distill cheaper internal
+  models** ahead of a 2027 per-token shift (ARA digest 2026-06-30).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

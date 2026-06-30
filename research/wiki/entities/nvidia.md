@@ -6,8 +6,9 @@ aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "N
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: The dominant AI accelerator supplier; its GPUs underwrite the AI-capex buildout, and on 2026-06-05 it released the open-weights Nemotron-3-Ultra-550B that dominated developer mindshare alongside Gemma 4.
 created_at: 2026-06-05
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-06-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
   - {title: "ARA model ticket — NVIDIA GTC Taipei 2026", path: research/models/tickets/nvidia-gtc-taipei-2026-06.md}
@@ -62,6 +63,17 @@ its own **open-weights models** (the Nemotron line) on top of the silicon.
   end, Gemma's 16 GB-laptop accessibility at the other. NVIDIA also shipped
   **Nemotron 3.5 Content Safety**, a customizable multimodal enterprise safety
   model (Hugging Face) (ARA digest 2026-06-05).
+
+- **Anthropic's first deployment lands on NVIDIA silicon (2026-06-30).**
+  [[anthropic|Anthropic's]] [[claude-opus-4-8|Claude Opus 4.8]] and **Haiku 4.5** went
+  GA in **[[microsoft|Microsoft Foundry]] on Azure** running on **NVIDIA GB300 NVL72
+  (Blackwell Ultra)** systems with **Quantum-X800 InfiniBand** — reportedly the
+  **first time Anthropic models run on NVIDIA GPUs** (its stack historically leaned on
+  AWS Trainium and Google TPUs). It is a notable demand-pull data point: the last
+  major frontier lab not natively on NVIDIA now ships its flagship on Blackwell Ultra,
+  reinforcing the silicon's position at the center of the [[ai-capex]] buildout. *(The
+  "first-ever on NVIDIA" superlative was initially single-sourced.)* (ARA digest
+  2026-06-30).
 
 ## Open questions
 

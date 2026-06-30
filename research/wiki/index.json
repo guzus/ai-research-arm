@@ -221,8 +221,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
       "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-29",
-      "timestamp": "2026-06-29T00:00:00Z",
+      "updated_at": "2026-06-30",
+      "timestamp": "2026-06-30T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -245,8 +245,10 @@
         "gemini-spark",
         "john-jumper",
         "micron",
+        "microsoft",
         "neocloud",
         "noam-shazeer",
+        "nvidia",
         "open-weights",
         "openai",
         "sakana-ai",
@@ -280,6 +282,7 @@
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
         "noam-shazeer",
+        "nvidia",
         "open-weights",
         "openai",
         "openrouter",
@@ -411,8 +414,8 @@
       "summary": "The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover.",
       "description": "The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-03",
-      "timestamp": "2026-06-03T00:00:00Z",
+      "updated_at": "2026-06-30",
+      "timestamp": "2026-06-30T00:00:00Z",
       "file": "themes/california-ai-regulation.md",
       "aliases": [
         "California AI regulation",
@@ -451,8 +454,8 @@
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "description": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-06-23",
-      "timestamp": "2026-06-23T00:00:00Z",
+      "updated_at": "2026-06-30",
+      "timestamp": "2026-06-30T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -532,6 +535,8 @@
         "anthropic",
         "claude-fable-5",
         "dynamic-workflows",
+        "microsoft",
+        "nvidia",
         "open-weights",
         "sakana-ai",
         "zhipu-glm-5-2"
@@ -657,8 +662,8 @@
       "summary": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.",
       "description": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-06-29",
-      "timestamp": "2026-06-29T00:00:00Z",
+      "updated_at": "2026-06-30",
+      "timestamp": "2026-06-30T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -782,8 +787,8 @@
       "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-29",
-      "timestamp": "2026-06-29T00:00:00Z",
+      "updated_at": "2026-06-30",
+      "timestamp": "2026-06-30T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1200,8 +1205,8 @@
       "summary": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.",
       "description": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-18",
-      "timestamp": "2026-06-18T00:00:00Z",
+      "updated_at": "2026-06-30",
+      "timestamp": "2026-06-30T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -1218,13 +1223,16 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "claude-opus-4-8",
         "deepseek",
         "minimax-m3",
+        "nvidia",
         "open-weights",
         "openai",
         "openrouter"
       ],
       "inbound": [
+        "anthropic",
         "deepseek",
         "federal-ai-policy",
         "minimax-m3",
@@ -1435,8 +1443,8 @@
       "summary": "The dominant AI accelerator supplier; its GPUs underwrite the AI-capex buildout, and on 2026-06-05 it released the open-weights Nemotron-3-Ultra-550B that dominated developer mindshare alongside Gemma 4.",
       "description": "The dominant AI accelerator supplier; its GPUs underwrite the AI-capex buildout, and on 2026-06-05 it released the open-weights Nemotron-3-Ultra-550B that dominated developer mindshare alongside Gemma 4.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-06-30",
+      "timestamp": "2026-06-30T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -1452,7 +1460,9 @@
       ],
       "outbound": [
         "ai-capex",
+        "anthropic",
         "broadcom",
+        "claude-opus-4-8",
         "coreweave",
         "gemma-4",
         "microsoft",
@@ -1461,9 +1471,11 @@
       ],
       "inbound": [
         "ai-capex",
+        "anthropic",
         "apple",
         "broadcom",
         "gemma-4",
+        "microsoft",
         "open-weights",
         "xiaomi-mimo-v2-5-pro"
       ],
@@ -1552,8 +1564,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
       "created_at": "2026-05-30",
-      "updated_at": "2026-06-23",
-      "timestamp": "2026-06-23T00:00:00Z",
+      "updated_at": "2026-06-30",
+      "timestamp": "2026-06-30T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -1573,7 +1585,8 @@
         "gpt-5-6",
         "lifescibench",
         "microsoft",
-        "noam-shazeer"
+        "noam-shazeer",
+        "spacex"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -1829,6 +1842,7 @@
         "anthropic",
         "cursor",
         "deepseek",
+        "openai",
         "xai"
       ],
       "images": [
@@ -2213,6 +2227,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-06-30",
+      "op": "ingest",
+      "summary": "Ingested 2026-06-30 digest (June 29 Anthropic distribution day: Claude Opus 4.8/Haiku 4.5 GA in Microsoft Foundry on Azure + first-ever Anthropic deployment on NVIDIA GB300 NVL72; export gate reverses — Lutnick June 26 letter clears Mythos 5 for ~100 critical-infra orgs, Fable 5 reported returning but unconfirmed pending Pentagon/NSA; California signs Claude for all state agencies at ~50% discount; Anthropic→Amazon repricing to tokens; DeepSeek V4 dated mid-July GA with first major LLM API surge pricing; OpenAI weighs IPO delay to 2027 + Booz Allen). Created 0, updated 8 (anthropic, microsoft, nvidia, claude-fable-5, federal-ai-policy, california-ai-regulation, deepseek, openai)."
+    },
+    {
       "date": "2026-06-29",
       "op": "ingest",
       "summary": "Ingested 2026-06-29 digest (six-day gap Jun 24–29; Grok 4.5 from-scratch 1.5T V9 private beta claiming Opus-level; DeepSeek $7.4B close framed as largest in Chinese AI history, state fund sole voting investor; GPT-5.6 Sol/Terra/Luna shipped in US-government-gated preview + Jalapeño chip; Anthropic accuses Alibaba of largest documented Claude distillation attack; GLM-5.2 \"matches Mythos\" cyber headline debunked; Austria courts Anthropic to the EU; open-weights release bench deepens + broker/router layer tips Chinese with Coinbase cutting spend in half). Created 0, updated 8 (xai — Grok 4.5 1.5T V9 private beta at SpaceX/Tesla, Opus-level claim unaudited, unrestricted-vs-gated asymmetry; deepseek — round largest in Chinese AI history, Liang ~$3B/Tencent ~$1.5B/CATL ~$740M, state fund sole voting investor w/ no lock-up, others 5-yr lock-up, double-every-department-toward-AGI, @deepseek_ai silent since May 22; gpt-5-6 — transforms from rumored to shipped: Sol/Terra/Luna government-gated limited preview, max/ultra reasoning, Terminal-Bench 2.1 SOTA, pricing, GA \"coming weeks\"/Polymarket ~90% by Jul 31; anthropic — Alibaba distillation letter (25K accounts/28.8M exchanges) + Austria EU-relocation open letter; zhipu-glm-5-2 — \"matches Mythos\" cyber headline debunked as IDOR-vs-Claude-Code category error, stock +30% decoupled from benchmark; broadcom — OpenAI Jalapeño first custom inference ASIC co-designed w/ Broadcom, 50% cost saving claim, 9-mo design, MS ~40% output; open-weights — Nemotron-3-Ultra/Command A+ Apache 2.0/ZAYA1/Poolside/Kimi-K2.7-Code pipeline + OpenRouter top-4-broker all Chinese + Coinbase halves spend, VibeThinker-3B; federal-ai-policy — \"de facto licensing regime with no rules\" two new data points (Sol gated + Alibaba distillation letter) + Europe structurally excluded/Austria courtship)."
@@ -2306,11 +2325,6 @@
       "date": "2026-06-01",
       "op": "ingest",
       "summary": "Ingested 2026-06-01 digest. Created 4 entities (figure-ai — 200h Helix-02 marathon, 249,560 packages, 0 hardware failures, 0 teleop; gemini-spark — first GA paid frontier-lab persistent consumer agent on Google Cloud VMs; dell — Q1 FY27 $16.1B AI servers +757% YoY, $24.4B orders, +32% stock; openrouter — $113M Series B at $1.3B, 25T tokens/week). Updated 3 (anthropic — Seoul office + Salesforce 231d→13d migration + $500M accident + Conway/Orbit/Operon leaks + Cobi Gantz credibility-test variable; openai — GPT-5.5 Instant readability upgrade + 5M Codex users milestone; ai-capex — Dell print + SoftBank €75B France commitment + OpenRouter router-layer round)."
-    },
-    {
-      "date": "2026-05-30",
-      "op": "ingest",
-      "summary": "Ingested 2026-05-30 digest. Created 2 (openai entity — first page despite frequent mentions, anchored by Frontier Governance Framework + Rosalind Biodefense + $852B valuation; california-ai-regulation theme — May 29 crossover deadline + AB 1609/AB 1159/A 9317). Updated 6 (anthropic — Series H formalized, valuation flip $113B above OpenAI, October 2026 IPO target, $47B ARR at close; claude-opus-4-8 — final benchmark deltas, Fast Mode 2.5×/3×, Simon Willison \"modest but tangible\"; dynamic-workflows — JavaScript orchestrator + 1,000-subagent cap; liquid-ai — LFM2.5-8B-A1B 128K/38T/doubled-vocab detail; agent-lifespan-engineering — Opus 4.8 regression-reversal question; ai-capex — valuation flip + May 28 vertical-agent funding cluster + Ohio data-center tax pushback)."
     }
   ]
 }

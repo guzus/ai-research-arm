@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-timestamp: 2026-06-23T00:00:00Z
+timestamp: 2026-06-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
@@ -333,6 +334,20 @@ materially reshape how the lab is positioned heading into its IPO window:
   GPT-5.4 (with Molecule.one) improved a medicinal-chemistry reaction across
   10,080 reactions — the wet-lab continuation of the June 18 Chan–Lam result (ARA
   digest 2026-06-19).
+
+- **IPO reportedly slips toward 2027; Booz Allen + Codex hardware (2026-06-30).**
+  OpenAI is **reported weighing a delay of its IPO into 2027** after [[spacex|SpaceX's]]
+  record $75B June 12 listing faded back toward its IPO price (~$153 by June 26);
+  **Altman is "holding firm on a $1T valuation,"** and [[anthropic]] (confidentially
+  filed after its $965B Series H) reportedly cites the same SpaceX scare — Kalshi
+  puts ~**59% odds** on an OpenAI IPO being *announced* by March 1, 2027, a direct
+  read on the [[ai-capex]] capital-markets rotation cooling. Separately, **Booz Allen
+  partnered with OpenAI** to push frontier models into national-security /
+  critical-infrastructure work (the same managed-access lane [[gpt-5-6|GPT-5.6 Sol]]
+  shipped into — see [[federal-ai-policy]]), and OpenAI **teased a Codex hardware
+  device** — a button-laden macro-pad built with Work Louder, launching July 15.
+  *(IPO-delay and California-deal-adjacent items are Twitter-sourced, primary-source
+  confirmation pending.)* (ARA digest 2026-06-30).
 
 ## Open questions
 
