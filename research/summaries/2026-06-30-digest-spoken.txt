@@ -1,0 +1,11 @@
+Speaker 1: Tuesday, June thirtieth, twenty twenty-six.
+Speaker 2: [high_energy] And the big one, Claude is now generally available in Microsoft Foundry on Azure, and that's Anthropic's first-ever deployment on NVIDIA GPUs, the GB three hundred.
+Speaker 1: That completes all three hyperscaler clouds for Anthropic in one move.
+Speaker 2: It really does. Worth noting that on the policy front the US frontier gate just reversed, Mythos five is cleared for roughly one hundred critical-infrastructure organizations, Anthropic-confirmed.
+Speaker 1: And a Fable five return is reported, though not yet live.
+Speaker 2: Meanwhile Anthropic is locking distribution, California signed all state agencies at about fifty percent off, and the Amazon pact got repriced to tokens.
+Speaker 1: Some quick numbers. DeepSeek V four goes generally available in mid-July, bringing the first LLM surge pricing, peak running about two times off-peak.
+Speaker 2: That's the first time we've seen surge pricing on a frontier model. And OpenAI is weighing an IPO delay to twenty twenty-seven while holding firm on a [emphasis] one trillion dollar [/emphasis] valuation.
+Speaker 1: On the hardware side, Samsung and SK Hynix are committing [emphasis] five hundred fifty billion dollars [/emphasis] in chip capex against what people are calling RAMageddon.
+Speaker 2: [dramatic_pause] And trending with developers, Qwen three point six, the twenty-seven billion parameter model, getting called the sweet spot for local dev, nearly four hundred points on Hacker News.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
