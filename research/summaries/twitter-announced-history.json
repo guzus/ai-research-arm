@@ -11705,5 +11705,33 @@
     "headline": "MINIMAX M3 LANDS ON OPENROUTER AT $0.30/M INPUT \u2014 CHEAPEST 1M-CONTEXT MODEL, ~6% OF OPUS 4.8",
     "source": "@TeksCreate",
     "url": "https://x.com/TeksCreate/status/2071858001338589537"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-30 21:56 UTC",
+    "headline": "ANTHROPIC PREPS CLAUDE SONNET 5; FABLE 5 RETURNS BEHIND PAID CREDITS + ID VERIFICATION, PER LEAKED APP CODE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2071923897520288164"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-30 21:56 UTC",
+    "headline": "GOOGLE TEASES NANO BANANA 2 LITE FOR CHEAP IMAGE GEN AND GEMINI OMNI FLASH FOR CONVERSATIONAL VIDEO",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2071917358101213204"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-30 21:56 UTC",
+    "headline": "MEITUAN'S OPEN-WEIGHT 1.6T LONGCAT-2.0 HITS MAINSTREAM PRESS \u2014 REUTERS, TOM'S HARDWARE CARRY 'NO-NVIDIA' CLAIM",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2071864999799058768"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-06-30 21:56 UTC",
+    "headline": "'CLAUDE CODE SPYWARE' CLAIM SPREADS \u2014 ALLEGES REGION/PROXY TELEMETRY SINCE v2.1.91; UNVERIFIED, LIKELY EXPORT COMPLIANCE",
+    "source": "@bdsqlsz",
+    "url": "https://x.com/bdsqlsz/status/2071887369817772358"
   }
 ]
