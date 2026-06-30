@@ -1,15 +1,15 @@
-AI News - 2026-06-30
+AI News - 2026-06-30 (update)
 
 TOP STORIES:
-• Claude GA in Microsoft Foundry on Azure — Anthropic's FIRST-EVER deployment on NVIDIA GPUs (GB300); now native across AWS, Vertex + Azure
-• Frontier gate reverses: US clears Mythos 5 for ~100 vetted orgs; Fable 5 reported returning "this week"
-• California signs Claude for ALL state agencies at ~50% off; Amazon deal repriced onto tokens
-• OpenAI reported weighing IPO delay to 2027 after SpaceX's weak listing; DeepSeek dates V4 GA for mid-July w/ first LLM surge pricing (~2x peak)
+• Open-weight surge: Meituan open-sources LongCat-2.0 (1.6T MoE, 1M ctx), claims trained 100% on Chinese chips/no Nvidia — was the anonymous "Owl Alpha" #1 on OpenRouter
+• Cognition ships Devin Fusion: small-model "sidekick" routing, ~35% cheaper Fable-class coding; MiniMax M3 lands on OpenRouter at $0.30/M (~6% of Opus)
+• OpenAI teases first Codex hardware — a Work Louder macro pad, reveal July 15
+• Fable 5's return reportedly gated behind ID verification + separate metered credits (datamined app strings, not official)
+• Marc Andreessen appointed to the Pentagon's Defense Policy Board
 
 KEY NUMBERS:
-• Mythos 5 cleared for ~100 US orgs/agencies
-• California: ~50% Claude discount, all state + local govt
-• OpenAI holding firm on $1T valuation; Anthropic ~$965B
-• DeepSeek V4 peak-hour pricing ~2x off-peak
+• LongCat-2.0: 1.6T params / ~48B active, 35T-token pretrain, ~50K-chip domestic cluster
+• MiniMax M3: $0.30/M input vs Opus $5/M
+• Alibaba "distillation" (Anthropic's claim): 28.8M API calls / 25K fake accounts
 
 Full report on GitHub.
