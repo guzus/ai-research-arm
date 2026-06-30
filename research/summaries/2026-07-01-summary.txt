@@ -1,0 +1,15 @@
+AI News - 2026-07-01
+
+TOP STORIES:
+• Anthropic ships Claude Sonnet 5 — official launch, default on Free/Pro, ~Opus-4.8-class agentic work at $2/$10 (1M context)
+• Anthropic launches Claude Science (biopharma workbench) with Novartis, BMS & Genentech — OpenAI counters same day with GeneBench-Pro benchmark
+• Etched exits stealth: $800M raised, $1B+ in contracts, transformer-only Sohu inference chip shipping this summer
+• Google ships Nano Banana 2 Lite (Gemini 3.1 Flash-Lite Image) + Gemini Omni Flash video preview
+
+KEY NUMBERS:
+• Sonnet 5: $2/$10 per Mtok intro (→ $3/$15 Sep)
+• Etched: $800M raised, $1B+ contracts, $5B valuation
+• GeneBench-Pro: GPT-5.6 Sol 28.7% (31.5% Pro) vs Opus 4.8 16%
+• BMS rolls out Claude to 30,000+ employees
+
+Full report on GitHub.
