@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-07-01 00:59 UTC
+
+CYCLE: Anthropic's Sonnet 5 firms up (model string now live), Google ships Nano Banana 2 Lite, Etched exits stealth, Andreessen joins Pentagon board.
+
+TOP STORIES:
+• claude-sonnet-5 now selectable in app/CLI (still errors); leaked $2/$10 promo, Jan-2026 cutoff, 1M context [⚠]
+• Google SHIPS Nano Banana 2 Lite — gemini-3.1-flash-lite-image live, $0.25 in / $0.0336 out [✓]
+• Etched exits stealth: $800M raised, $1B+ contracts, Sohu ASIC racks shipping this summer [✓]
+• Marc Andreessen named to Pentagon Defense Policy Board — a16z formally advising DoD [✓]
+
+WATCH: Official @AnthropicAI Sonnet 5 launch and whether the selectable model stops erroring and actually serves.
+
+Full update on GitHub.
