@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-06-30 10:14 UTC
+
+CYCLE: The trigger behind the week's frontier-gating saga surfaces — Anthropic's Alibaba "distillation attack" allegation — while China's GLM-5.2 and xAI's Grok 4.5 undercut the gated-moat premise.
+
+TOP STORIES:
+• Anthropic alleges Alibaba ran 28.8M-call "distillation attack" to copy Claude; Elon-amplified, traces to Anthropic's own June 10 letter [⚠]
+• Grok 4.5 in private beta — xAI claims Opus-level (1.5T V9, Aug release), zero independent benchmarks [⚠]
+• GLM-5.2 posts Claude-matching cyber numbers (Semgrep IDOR 39% F1 vs 32-37%); broader "matches Mythos" framing still disputed [⚠]
+
+WATCH: Samsung/SK ~$1.3T briefing today (June 30 KST); any Alibaba response to the distillation claim.
+
+Full update on GitHub.
