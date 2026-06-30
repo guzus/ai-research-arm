@@ -11677,5 +11677,33 @@
     "headline": "PALANTIR + NVIDIA BUILDING CUSTOM AI FOR US GOVERNMENT SECURITY APPLICATIONS",
     "source": "@nikkei",
     "url": "https://x.com/nikkei/status/2071660170497659357"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-30 16:34 UTC",
+    "headline": "MEITUAN OPEN-SOURCES LONGCAT-2.0 \u2014 1.6T AGENTIC CODER IT SAYS WAS TRAINED ON CHINESE CHIPS, ZERO NVIDIA",
+    "source": "@VentureBeat",
+    "url": "https://x.com/VentureBeat/status/2071831014872092715"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-30 16:34 UTC",
+    "headline": "LONGCAT-2.0 WAS THE ANONYMOUS 'OWL ALPHA' \u2014 TOPPED OPENROUTER CODING CHARTS FOR WEEKS BEFORE MEITUAN UNMASKED IT",
+    "source": "@__vandos__",
+    "url": "https://x.com/__vandos__/status/2071842186627317844"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-06-30 16:34 UTC",
+    "headline": "COGNITION SHIPS DEVIN FUSION \u2014 'SIDEKICK' ROUTING HARNESS CLAIMS ~35% CHEAPER FABLE-CLASS CODING",
+    "source": "@stretchcloud",
+    "url": "https://x.com/stretchcloud/status/2071797120617836614"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-06-30 16:34 UTC",
+    "headline": "MINIMAX M3 LANDS ON OPENROUTER AT $0.30/M INPUT \u2014 CHEAPEST 1M-CONTEXT MODEL, ~6% OF OPUS 4.8",
+    "source": "@TeksCreate",
+    "url": "https://x.com/TeksCreate/status/2071858001338589537"
   }
 ]
