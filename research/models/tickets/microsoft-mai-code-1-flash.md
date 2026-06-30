@@ -3,7 +3,7 @@ slug: microsoft-mai-code-1-flash
 title: Microsoft MAI Code 1 Flash — homegrown coding model in GitHub Copilot
 company: Microsoft AI
 model: MAI Code 1 Flash
-status: released
+status: closed
 status_note: |
   Reported live 2026-06-05: Microsoft's own coding model inside **GitHub
   Copilot**, available **free across every Copilot tier** (selectable from
@@ -29,12 +29,14 @@ verification: unverified
 sources:
   - "@cyrilXBT"
 created_at: 2026-06-05
-updated_at: 2026-06-05
-closed_at: null
-closed_reason: null
+updated_at: 2026-06-30
+closed_at: 2026-06-30
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-06-05
     change: "Created — reported launch of **MAI Code 1 Flash**, Microsoft's first-party coding model inside GitHub Copilot, free across all Copilot tiers from today (@cyrilXBT). Claimed: 256K context, ~60% fewer tokens on complex tasks, 85.8% on Microsoft's adversarial coding benchmark, trained inside the Copilot production environment. Fills the 'coding' slot of the confirmed Build 2026 MAI lineup ([[microsoft-build-2026-models]]). Single hype-account source, no Microsoft primary in-window → status released (availability claim) but verification unverified"
+  - ts: 2026-06-30
+    change: "Closed — stale-rumor-unverified. 25 days after the single-hype-account launch claim (@cyrilXBT, 2026-06-05), no Microsoft primary (blog / @MicrosoftAI / @mustafasuleyman) or independent press has corroborated MAI Code 1 Flash, and no fresh signal has appeared in ≥15 daily cycles. Per the contract's stale-unverified close trigger, closing; history preserved. The Build 2026 MAI umbrella remains tracked on [[microsoft-build-2026-models]]. If a Microsoft primary later confirms the model, open a successor ticket rather than reopening this one."
 ---
 
 **MAI Code 1 Flash** is reported (2026-06-05, @cyrilXBT) as Microsoft's

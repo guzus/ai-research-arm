@@ -149,7 +149,29 @@ status_note: |
   ([[anthropic-alibaba-distillation-2026-06]]). Anthropic's revised privacy
   policy (ID + biometric verification) takes effect **2026-07-08**. Status stays
   `confirmed`; verification stays `confirmed`.
-expected: "No formal Commerce rescission (day ~17). Austria publicly courted Anthropic to relocate to the EU (open letter; read as performative, first explicit acknowledgment US export controls structurally exclude Europe). De facto licensing regime now a recognized 'new normal' (GPT-5.6 Sol gated preview + Alibaba-distillation letter as fresh data points). Persona US-ID verification live 2026-07-08. Earlier: US-only restoration mechanism now has a product artifact — Fable 5 active in AWS Bedrock (anthropic.claude-fable-5) + Claude Code bundled-weekly usage strings, gated by Persona US-ID verification (live 2026-07-08) + use-case review + Anthropic approval (product impact on [[claude-fable-5]]). Political thaw: Trump walked back the national-security-threat framing; Tom Brown replaced Dario as WH point person. Anthropic status page still shows the 2026-06-13 suspension active; Commerce/BIS directive text still unpublished. Same review logic now applied to OpenAI GPT-5.6 ([[openai-gpt-5-6]], 'Mythos-like' per Axios). SK Telecom named as the Project Glasswing carrier (denies China ties)"
+
+  **As of 2026-06-30 (day ~18) — the gate visibly reverses (first-party):**
+  The official **@AnthropicAI** account (June 27 statement, ~30K likes)
+  confirmed the **first un-gating**: "the government notified us that Mythos 5…
+  can be redeployed to a set of US organizations that operate and defend
+  critical infrastructure," and Anthropic is "continuing to work with the
+  government to expand access to Mythos 5 and **make Fable 5 available for
+  general use again**." Commerce Secretary **Lutnick's June 26 letter** cleared
+  Mythos 5 for **~100 vetted US companies and federal agencies** (list amendable
+  "at any time") — relayed via an Axios scoop (@WesRoth, @argofowl, @Mr_Salio).
+  **Fable 5's general re-release is reported imminent but NOT confirmed live**:
+  relays say "this week," but no Anthropic status post confirms it, and
+  Pentagon/NSA sign-off was reportedly still pending. A fresh datamine
+  (**@M1Astra**, June 30) of Claude app strings ties Fable 5 to **a usage-credit
+  system billed separately from your plan, gated behind identity verification**
+  ("Your credits will be added once your identity is verified") — consistent
+  with the Persona US-ID mechanism (live 2026-07-08), though string presence ≠
+  shipped policy. The managed-access regime is now visibly **two-way** (gate →
+  selectively un-gate to vetted users), and Marc Andreessen's new Pentagon
+  Defense Policy Board seat ([[andreessen-defense-policy-board-2026-06]]) sits
+  adjacent to the gatekeeping. Status stays `confirmed`; verification stays
+  `confirmed`.
+expected: "Day ~18: the gate reverses — @AnthropicAI first-party confirmed Mythos 5 cleared for ~100 critical-infra orgs (Lutnick June 26 letter, list amendable 'at any time'), and says it is working to make Fable 5 available for general use again. Fable 5 re-release reported imminent ('this week') but NOT confirmed live (Pentagon/NSA sign-off reportedly pending). Datamined Claude app strings (@M1Astra, June 30) tie Fable 5 to a separate metered-credit system gated behind identity verification ('credits added once your identity is verified'), consistent with the Persona US-ID mechanism (live 2026-07-08). Andreessen's Pentagon Defense Policy Board seat ([[andreessen-defense-policy-board-2026-06]]) now sits adjacent to the gatekeeping. Earlier: No formal Commerce rescission (day ~17). Austria publicly courted Anthropic to relocate to the EU (open letter; read as performative, first explicit acknowledgment US export controls structurally exclude Europe). De facto licensing regime now a recognized 'new normal' (GPT-5.6 Sol gated preview + Alibaba-distillation letter as fresh data points). Persona US-ID verification live 2026-07-08. Earlier: US-only restoration mechanism now has a product artifact — Fable 5 active in AWS Bedrock (anthropic.claude-fable-5) + Claude Code bundled-weekly usage strings, gated by Persona US-ID verification (live 2026-07-08) + use-case review + Anthropic approval (product impact on [[claude-fable-5]]). Political thaw: Trump walked back the national-security-threat framing; Tom Brown replaced Dario as WH point person. Anthropic status page still shows the 2026-06-13 suspension active; Commerce/BIS directive text still unpublished. Same review logic now applied to OpenAI GPT-5.6 ([[openai-gpt-5-6]], 'Mythos-like' per Axios). SK Telecom named as the Project Glasswing carrier (denies China ties)"
 labels:
   - regulatory
   - export-control
@@ -175,8 +197,10 @@ sources:
   - "@chetaslua"
   - "@alphabatcher"
   - "@kimmonismus"
+  - "@WesRoth"
+  - "@M1Astra"
 created_at: 2026-06-14
-updated_at: 2026-06-29
+updated_at: 2026-06-30
 closed_at: null
 closed_reason: null
 history:
@@ -196,6 +220,8 @@ history:
     change: "Day ~14 — no formal Commerce rescission, but the US-only restoration mechanism crossed from policy inference into a product artifact. Fable 5 reappeared in the AWS Bedrock catalog as anthropic.claude-fable-5 (Active, sold by Anthropic; multi-source screenshots) and Claude Code v2.1.190 binaries now carry bundled-weekly Fable 5 usage strings (product impact on [[claude-fable-5]]). Access gated by Persona US-ID verification (live 2026-07-08) + use-case review + Anthropic approval — the re-entry path first inferred on day 10. Political thaw: Trump walked back the 'national-security threat' framing; Tom Brown replaced Dario Amodei as WH point person (admin reportedly 'happier with Brown'). Anthropic's status page still shows the 06-13 suspension active and the Commerce/BIS directive text remains unpublished — a controlled US-ID-gated re-opening, not a lifted ban. The same review logic is now applied to OpenAI GPT-5.6 ([[openai-gpt-5-6]], 'Mythos-like' per Axios). Status stays confirmed; verification stays confirmed."
   - ts: 2026-06-29
     change: "Day ~17 — still no formal rescission; the order's geographic fallout surfaced. Austria publicly courted Anthropic to relocate to the EU (open letter offering 'legal certainty, market access, capital,' pitching Anthropic's safety-first values as 'a deeply European attitude'), read by analysts as performative (compute/USG ties/Mythos license are all US-bound; @kimmonismus: anyone who thinks the US would let Anthropic move to Europe if Fable/Mythos are national security is 'out of touch with reality') and the first explicit acknowledgment that US export controls structurally exclude Europe from frontier models — the UK's similar overtures months ago went nowhere. The de facto frontier-model licensing regime hardened into a recognized 'new normal' (The Information's Leo Schwartz: 'a de facto licensing regime with no rules'), now visible in two fresh data points — GPT-5.6 Sol's government-gated preview ([[openai-gpt-5-6]]) and Anthropic's Alibaba-distillation letter ([[anthropic-alibaba-distillation-2026-06]]). Anthropic's revised privacy policy (ID + biometric verification) takes effect 2026-07-08. Status stays confirmed; verification stays confirmed. Sources: @kimmonismus, 2026-06-29 digest (Policy & Regulation)."
+  - ts: 2026-06-30
+    change: "Day ~18 — the gate visibly reverses, first-party. @AnthropicAI (June 27 statement, ~30K likes) confirmed the government notified it that Mythos 5 can be redeployed to a set of US organizations that defend critical infrastructure, and that it is working to expand Mythos 5 access and 'make Fable 5 available for general use again.' Commerce Sec. Lutnick's June 26 letter cleared Mythos 5 for ~100 vetted US companies/federal agencies (list amendable 'at any time'; Axios scoop relayed by @WesRoth/@argofowl/@Mr_Salio). Fable 5's general re-release reported imminent ('this week') but NOT confirmed live — no Anthropic status post, Pentagon/NSA sign-off reportedly pending. Fresh datamine (@M1Astra, June 30) of Claude app strings ties Fable 5 to a usage-credit system billed separately from your plan and gated behind identity verification ('Your credits will be added once your identity is verified'), consistent with the Persona US-ID mechanism (live 2026-07-08); string presence ≠ shipped policy. Managed-access regime now visibly two-way (gate → selectively un-gate to vetted users); Andreessen's Pentagon Defense Policy Board seat ([[andreessen-defense-policy-board-2026-06]]) sits adjacent. Status stays confirmed; verification stays confirmed. Sources: @AnthropicAI (primary), @WesRoth/Axios relay, @M1Astra datamine, 2026-06-30 digest + Twitter pulse."
 ---
 
 On **2026-06-12** the US government issued an **export-control directive**
