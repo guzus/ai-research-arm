@@ -11796,5 +11796,26 @@
     "headline": "X LAUNCHES HOSTED MCP \u2014 AI AGENTS CONNECT TO THE X API AND DEV DOCS WITH NO SETUP",
     "source": "@Polymarket",
     "url": "https://x.com/Polymarket/status/2071786298713756104"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-07-01 06:41 UTC",
+    "headline": "SONNET 5 BENCHMARKS LAND MIXED \u2014 EDGES OPUS 4.8 ON SOME TASKS, SCORES BELOW OLDER SONNET 4.6 ON CYBER EXPLOIT-FINDING",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/i/status/2072073081477283846"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-07-01 06:41 UTC",
+    "headline": "GITLAB DUO SHIPS SONNET 5 ACROSS ALL TIERS \u2014 FIRST MODEL TO CLEAR FULL BENCHMARK SUITE, UP 93.8% OVER PREDECESSOR",
+    "source": "@gitlab",
+    "url": "https://x.com/gitlab/status/2072068540736344171"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-07-01 06:41 UTC",
+    "headline": "SONNET 5 RUNS ~60 TOK/S VS GLM 5.2'S CLAIMED 150-300 \u2014 CHINESE MODELS REOPEN PRICE/SPEED GAP ON ANTHROPIC",
+    "source": "@JordanFrery",
+    "url": "https://x.com/i/status/2072068739605123089"
   }
 ]
