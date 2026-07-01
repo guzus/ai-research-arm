@@ -1,0 +1,20 @@
+[
+  {
+    "headline": "ANTHROPIC'S NEXT VERTICAL APP LEAKS: 'CLAUDE SCIENCE' — DESKTOP RESEARCH TOOL WITH 60+ SCIENTIFIC DATABASES, DEV-NAMED 'OPERON'",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2072338885724525007",
+    "category": "business"
+  },
+  {
+    "headline": "NEW GEMINI FLASH CHECKPOINT SPOTTED TESTING ON LM ARENA — POSSIBLY GEMINI 3.6 FLASH OR GEMINI 4 FLASH",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2072321107365957837",
+    "category": "model"
+  },
+  {
+    "headline": "XAI SHIPS VOICE AGENT BUILDER ON XAI CONSOLE — CONVERSATIONAL AGENTS WITH GROK VOICES AND CONNECTORS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2072346189320667412",
+    "category": "infra"
+  }
+]

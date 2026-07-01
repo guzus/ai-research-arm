@@ -1,0 +1,15 @@
+Twitter/X AI Pulse - 2026-07-02 01:00 UTC
+
+CYCLE: Quiet frontier window — no new model or funding break; two early/unofficial signals surfaced.
+
+TOP STORIES:
+• Claude Science leaks — Anthropic desktop research app (dev-named "Operon"), 60+ scientific DBs + custom "Specialist" agents; not officially announced [⚠]
+• New Gemini Flash checkpoint spotted testing on LM Arena (Gemini 3.6/4 Flash?); no version, no benchmark yet [⚠]
+
+QUICK HITS:
+• xAI ships Voice Agent Builder on xAI Console (Grok voices + connectors)
+• Fable 5 confirmed back online as expected; terms unchanged (≤50% weekly limits to July 7)
+
+WATCH: Official Anthropic reveal of Claude Science, or a Google Flash version bump matching the LM Arena checkpoint.
+
+Full update on GitHub.
