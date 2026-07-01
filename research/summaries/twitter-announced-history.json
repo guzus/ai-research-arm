@@ -11929,5 +11929,33 @@
     "headline": "XAI SHIPS VOICE AGENT BUILDER ON XAI CONSOLE \u2014 CONVERSATIONAL AGENTS WITH GROK VOICES AND CONNECTORS",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2072346189320667412"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-07-02 03:50 UTC",
+    "headline": "FABLE 5 TOPS SCALE AI REMOTE LABOR INDEX AT 16% \u2014 ROUGHLY 2X NEXT BEST, AHEAD OF OPUS 4.8 AND CODEX GPT-5.5",
+    "source": "@ScaleAILabs",
+    "url": "https://x.com/ScaleAILabs/status/2072372960686703016"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-07-02 03:50 UTC",
+    "headline": "AI AGENT AUTOMATION ON REAL FREELANCE WORK JUMPS FROM UNDER 3% TO 16% IN UNDER A YEAR \u2014 RLI STILL FAILS MOST PROJECTS",
+    "source": "@ScaleAILabs",
+    "url": "https://x.com/ScaleAILabs/status/2072372960686703016"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-07-02 03:50 UTC",
+    "headline": "SONNET 5 RECEPTION COOLING FAST \u2014 'LARGELY NEGATIVE' ON PRICE-TO-PERFORMANCE ONE DAY AFTER LAUNCH",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2072365174896361785"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-07-02 03:50 UTC",
+    "headline": "ZAI LAUNCHES ZCODE 3.0 \u2014 AI-NATIVE CODING IDE OPTIMIZED FOR GLM-5.2 WITH AGENTIC PLANNING-TO-CODE FLOW",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2072378141041991702"
   }
 ]
