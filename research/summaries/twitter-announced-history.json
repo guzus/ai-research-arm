@@ -11887,5 +11887,26 @@
     "headline": "ANTHROPIC'S NEW CLASSIFIER BLOCKS REPORTED JAILBREAK >99% \u2014 OVER-FLAGS BENIGN CODING, ROUTES SMALL FRACTION TO OPUS 4.8",
     "source": "@AnthropicAI",
     "url": "https://x.com/AnthropicAI/status/2072163884430229756"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-07-01 22:10 UTC",
+    "headline": "CURRAN PREDICTS ARCHITECTURE-LEVEL MEMORY-EFFICIENCY BREAKTHROUGH FROM OPENAI-SPINOUT TEAM (NOT SSI) \u2014 UNANNOUNCED, UNVERIFIED",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2072076893730349409"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-07-01 22:10 UTC",
+    "headline": "OPENAI SHIPS GENEBENCH-PRO \u2014 RESEARCH BENCHMARK FOR AGENTS NAVIGATING MESSY BIOLOGICAL DATA",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2072004836674167294"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-07-01 22:10 UTC",
+    "headline": "OPENAI CHIEF ECONOMIST AT ECB SINTRA: AI MAY COMPLEMENT WORKERS BUT LABOR-MARKET DATA IS GETTING LESS COMFORTABLE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2072290557238390944"
   }
 ]
