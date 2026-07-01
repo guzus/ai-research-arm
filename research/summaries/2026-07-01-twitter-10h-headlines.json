@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "COMMERCE LIFTS EXPORT CONTROLS ON ANTHROPIC FABLE 5 AND MYTHOS 5 — ACCESS RESTORING TODAY",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2072106151890809341",
+    "category": "policy"
+  },
+  {
+    "headline": "POLITICO: FABLE 5 RETURN IS A GENERAL RE-RELEASE, NOT LIMITED TO THE US — ENDING THE 18-DAY GATE",
+    "source": "@spectatorindex",
+    "url": "https://x.com/spectatorindex/status/2072087011067076745",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI REPORTEDLY MORE THAN HALVES INFERENCE COSTS VIA NEW OPTIMIZATION — THE INFORMATION",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2072053812420825234",
+    "category": "infra"
+  },
+  {
+    "headline": "SONNET 5 DAY-2 VERDICT: CHEAPER PER TOKEN, PRICIER PER SOLVED PROBLEM, STILL TRAILS OPUS 4.8",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2072022739334873511",
+    "category": "model"
+  }
+]
