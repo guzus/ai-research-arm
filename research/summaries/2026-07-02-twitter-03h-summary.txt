@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-07-02 03:50 UTC
+
+CYCLE: Quiet, incremental — one corroborated benchmark result stands out.
+
+TOP STORIES:
+• Scale AI + CAIS's Remote Labor Index: Fable 5 leads at ~16% (2x next model), ahead of Opus 4.8 & Codex GPT-5.5 — but still fails ~84% of real freelance work [✓]
+• Sonnet 5's reception cooling fast — "largely negative" on price-to-performance a day after launch [⚠ sentiment]
+• Zai ships ZCode 3.0, an AI-native coding IDE optimized for GLM-5.2 [⚠]
+
+WATCH: RLI leaderboard adding GPT-5.6 Sol/Terra & Gemini Flash — does Fable 5's lead hold?
+
+Full update on GitHub.
