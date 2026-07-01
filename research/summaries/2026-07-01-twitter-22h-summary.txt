@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-07-01 22:10 UTC
+
+CYCLE: Quiet frontier window — the only fresh item is a prediction, not a release.
+
+TOP STORIES:
+• Andrew Curran predicts an architecture-level memory-efficiency breakthrough from an OpenAI-spinout team (not SSI), "announce soon" — unannounced, no benchmark [🚩]
+• OpenAI ships GeneBench-Pro, an agents-on-messy-biology research benchmark [⚠]
+• Fable 5 / Sonnet 5 / Gemini Omni Flash — no fresh datum; day's spine unchanged [✓]
+
+WATCH: Any OpenAI-alumni team actually shipping a memory-efficiency / long-context result — converts Curran's rumor into a story.
+
+Full update on GitHub.
