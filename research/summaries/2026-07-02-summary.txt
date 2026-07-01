@@ -1,0 +1,17 @@
+AI News - 2026-07-02
+
+Quiet post-launch window — the layers AROUND the model moved.
+
+TOP STORIES:
+• Anthropic poaches UC Berkeley's EECS chair Jelani Nelson — sharpest academic-talent-drain signal yet
+• xAI ships no-code Voice Agent Builder on Grok Voice — $0.05/min, 25+ languages, ~2-min setup
+• Venice AI becomes a privacy-first unicorn: $65M Series A at $1B valuation, led by Dragonfly
+• Z.ai releases ZCode 3.0, agentic coding IDE for GLM-5.2 (/goal long-horizon tasks)
+• Remote Labor Index: Fable 5 leads (~16%) but still fails ~84% of real freelance work
+
+KEY NUMBERS:
+• Venice: $65M raise, $1B valuation, 3M users, >$70M ARR, profitable
+• xAI voice: $0.05/min audio + $0.01/min telephony
+• RLI: leader ~16% (2x next), ~84% failure rate
+
+Full report on GitHub.
