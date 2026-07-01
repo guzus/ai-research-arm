@@ -1,0 +1,20 @@
+[
+  {
+    "headline": "ANTHROPIC REDEPLOYS FABLE 5 GLOBALLY TODAY WITH NEW CYBER CLASSIFIERS; ROUTINE CODING TEMPORARILY FALLS BACK TO OPUS 4.8",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2072163884430229756",
+    "category": "policy"
+  },
+  {
+    "headline": "ANTHROPIC LAUNCHES 'GLASSWING' CONSENSUS FRAMEWORK WITH AMAZON, MICROSOFT, GOOGLE TO GRADE AI JAILBREAK SEVERITY",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2072163884430229756",
+    "category": "policy"
+  },
+  {
+    "headline": "CLAUDE CODE ADDS 'ROUTINES' — AUTONOMOUS SCHEDULED AGENTS TRIGGERED BY TIME, API, OR GITHUB EVENTS, RUN ON ANTHROPIC CLOUD",
+    "source": "@Di_Krass_",
+    "url": "https://x.com/Di_Krass_/status/2072099865207636370",
+    "category": "infra"
+  }
+]

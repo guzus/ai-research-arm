@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-07-01 13:41 UTC
+
+CYCLE: Anthropic spells out the Fable 5 comeback terms; Claude Code adds autonomous Routines. Quiet elsewhere.
+
+TOP STORIES:
+• Fable 5 returns globally today — redeployed with new cyber classifiers; routine coding/debugging temporarily falls back to Opus 4.8; new "Glasswing" jailbreak-severity framework w/ Amazon, Microsoft, Google [✓]
+• Claude Code ships "Routines" — autonomous agent runs on Anthropic's cloud, triggered by schedule, API, or GitHub events via /schedule [⚠]
+
+WATCH: Whether Fable 5 access actually restores globally without geo/ID gating, and how much the Opus 4.8 coding fallback degrades UX.
+
+Full update on GitHub.
