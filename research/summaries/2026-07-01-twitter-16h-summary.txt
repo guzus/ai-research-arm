@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-07-01 16:47 UTC
+
+CYCLE: Fable 5 comeback goes operational — model back online, now metered; quiet non-Anthropic front.
+
+TOP STORIES:
+• Fable 5 back globally: 50% of weekly limits through July 7, then usage credits; Mythos 5 stays US-only [✓]
+• New classifier blocks reported jailbreak >99% but over-flags benign coding, routes a small fraction to Opus 4.8 [✓]
+• Sonnet 5 day-3: no new benchmark shift; prior "cheaper per token, pricier per solved problem, trails Opus 4.8" verdict holds [✓]
+
+WATCH: July 7 shift of Fable 5 to usage credits — quiet, or a pricing/access backlash?
+
+Full update on GitHub.
