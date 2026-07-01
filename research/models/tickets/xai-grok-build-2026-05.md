@@ -3,7 +3,7 @@ slug: xai-grok-build-2026-05
 title: xAI Grok Build — agentic coding CLI + grok-build-0.1 model
 company: xAI
 model: grok-build-0.1
-status: released
+status: closed
 status_note: |
   xAI's agentic coding push shipped in two stages: an early beta on
   2026-05-14 limited to SuperGrok Heavy subscribers, then general beta
@@ -31,9 +31,9 @@ sources:
   - "@grok"
   - "@elonmusk"
 created_at: 2026-05-28
-updated_at: 2026-06-07
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-01
+closed_at: 2026-07-01
+closed_reason: released-and-aged
 history:
   - ts: 2026-05-28
     change: "Created — xAI Grok Build agentic coding CLI shipped in stages: early beta 2026-05-14 (SuperGrok Heavy), general beta 2026-05-25 (all SuperGrok / X Premium+), with backing model `grok-build-0.1` exposed across @opencode (May 21), @openclaw (May 19), @kilocode (May 27). xAI reset Grok Build usage limits on 2026-05-26 after early users hit rate caps fast. Distinct from the pending 1.5T Grok V9-Medium release (grok-v9-medium)"
@@ -43,6 +43,8 @@ history:
     change: "grok-build-0.1 launched on the xAI API in public beta (primary @xai, 2026-05-29 16:06 UTC) at $1/m input + $2/m output, framed as extremely cost-effective. Distribution expanded to OpenRouter, Vercel AI Gateway, Cursor, Hermes Agent, OpenClaw, Kilo Code, and OpenCode — the model that powers the Grok Build CLI is now accessible to any developer through the standard third-party agentic-harness ecosystem. Lands the same week as OpenAI's Codex platform Windows push (see [[openai-codex-platform-2026-05]])"
   - ts: 2026-06-07
     change: "Maintenance: Elon Musk posted (2026-06-07, ~3.4K likes) 'Grep timeout issue fixed in latest Grok Build' — an incremental bug-fix to the live CLI, not a model swap or new release. Status stays released. (Separately, reporting that xAI trained its coding models on Claude outputs and kept going after Anthropic cut access is tracked on its own ticket [[xai-claude-training-cutoff-2026-06]])"
+  - ts: 2026-07-01
+    change: "Closed — released-and-aged. Grok Build reached general beta 2026-05-25 and grok-build-0.1 hit the xAI API 2026-05-29; now ≥4 weeks past release (37 days) with no fresh signal since the 06-07 maintenance note and no successor. Settled into normal coverage. The pending 1.5T Grok V9-Medium foundation model stays tracked on [[grok-v9-medium]]; the Claude-training-cutoff dispute on [[xai-claude-training-cutoff-2026-06]]. History preserved."
 ---
 
 **Grok Build** is xAI's agentic coding CLI + developer-platform surface,

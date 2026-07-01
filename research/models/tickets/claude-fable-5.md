@@ -72,6 +72,14 @@ status_note: |
   Claude Code bundled-usage strings + political thaw + Persona infra is more
   restoration signals than any prior day. Per transition triggers, a
   re-availability event keeps status `released` and is documented via history.
+  **2026-07-01 — Sonnet 5 shipped, Fable 5 re-release still absent.** Anthropic
+  launched **Claude Sonnet 5** ([[claude-sonnet-5]]) on 2026-06-30 as the new
+  default mid-tier — widely read as the mass-market "consolation tier" for
+  users shut out of gated Fable 5 — but **no Fable 5 general re-release
+  accompanied it**. The US ID-verification (Persona) gate remains dated
+  2026-07-08; no fresh restoration progress this cycle. Still globally
+  suspended for general use under the export-control order
+  ([[anthropic-fable-mythos-export-control-2026-06]]).
 expected: "Partial restoration surfacing: Fable 5 listed Active in AWS Bedrock (anthropic.claude-fable-5) with bundled weekly Claude Code usage; US ID verification via Persona live 2026-07-08 + use-case review + Anthropic approval; both US and global model IDs present. Anthropic status page still shows the 2026-06-13 suspension as active (see [[anthropic-fable-mythos-export-control-2026-06]]). Was free for Pro/Max/Team through 2026-06-22, credit-metered thereafter"
 labels:
   - frontier-model
@@ -97,7 +105,7 @@ sources:
   - "@synthwavedd"
   - "@plasmakick"
 created_at: 2026-06-10
-updated_at: 2026-06-26
+updated_at: 2026-07-01
 closed_at: null
 closed_reason: null
 history:
@@ -113,6 +121,8 @@ history:
     change: "Subscription cliff passed, model still dark. The 2026-06-22 free-access cliff arrived — Fable 5 removed from Pro/Max/Team/Enterprise plans (moot while suspended). The model remains globally offline under the export-control order ([[anthropic-fable-mythos-export-control-2026-06]]); Anthropic still says it aims to restore access 'as quickly as possible.' Per transition triggers, an availability/billing change keeps status released and is documented via history; verification stays confirmed."
   - ts: 2026-06-26
     change: "Partial restoration surfaces in AWS Bedrock. Fable 5 reappeared in the Bedrock catalog as anthropic.claude-fable-5, listed Active and sold by Anthropic (multi-source screenshots: @chetaslua screen recording, @alphabatcher, @LuminaXspace, @plasmakick, @VincentLogic). Claude Code v2.1.190 binaries now show 'You've used your included Fable 5 usage for this week' — the 'purchased separately' add-on model is dropped for bundled weekly allocation (Decrypt-verified npm extraction, @synthwavedd ~4.6K likes). Both US and global model IDs present. Access gated: US ID verification via Persona (live 2026-07-08) + use-case submission + Anthropic review — the US-only re-entry mechanism inferred on [[anthropic-fable-mythos-export-control-2026-06]] now has product footing. Political thaw: Trump walked back the national-security-threat framing; Tom Brown replaced Dario as White House point person (admin reportedly 'happier with Brown'). Caveat: Anthropic's status page still shows the 06-13 suspension active with no restoration date; a Bedrock listing is infra-provisioning, not full restoration. Per transition triggers, a re-availability event keeps status released and is documented via history; verification stays confirmed."
+  - ts: 2026-07-01
+    change: "Sonnet 5 shipped, Fable 5 re-release still absent. Anthropic launched Claude Sonnet 5 ([[claude-sonnet-5]]) on 2026-06-30 as the new default mid-tier — widely framed as the mass-market consolation tier for users locked out of gated Fable 5 — but no Fable 5 general re-release accompanied it. The US ID-verification (Persona) gate stays dated 2026-07-08; no fresh restoration progress this cycle. Model remains globally suspended for general use under the export-control order ([[anthropic-fable-mythos-export-control-2026-06]]). Per transition triggers, this availability observation keeps status released and is documented via history; verification stays confirmed."
 ---
 
 **Claude Fable 5** is the public-facing resolution of the long-running

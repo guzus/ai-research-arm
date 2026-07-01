@@ -3,7 +3,7 @@ slug: microsoft-mai-image-2-5
 title: Microsoft MAI-Image-2.5 (Preview) — #3 on Text-to-Image Arena
 company: Microsoft AI
 model: MAI-Image-2.5
-status: released
+status: closed
 status_note: |
   Mustafa Suleyman announced MAI-Image-2.5 (Preview) on 2026-05-26 18:48 UTC,
   the same day LMArena listed it at **#3 on the Text-to-Image Arena** with a
@@ -28,14 +28,16 @@ sources:
   - "@satyanadella"
   - "@NeowinFeed"
 created_at: 2026-05-27
-updated_at: 2026-06-05
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-01
+closed_at: 2026-07-01
+closed_reason: released-and-aged
 history:
   - ts: 2026-05-27
     change: "Created — Mustafa Suleyman announced MAI-Image-2.5 (Preview) on 2026-05-26 18:48 UTC; debuts at #3 on the @arena Text-to-Image leaderboard with score 1,254 (+72 pts); live now on Copilot.com, rolling out to MAI Playground + Microsoft Foundry next week. Satya Nadella RT'd the announcement at 21:05 UTC. Pitched as typography / layout / brand-visual upgrade in the MAI-Image line; Microsoft Build 2026 a week out"
   - ts: 2026-06-05
     change: "Post-launch traction (secondary, @cyrilXBT 2026-06-05): framed as 'launched June 2', reportedly hit **#2 worldwide for AI image editing on day one** (above Nano Banana 2 and Grok Imagine) and **#3 in text-to-image generation**. Now shipping in **two tiers — Full (max quality) and Flash (faster/cheaper)** — already built into **PowerPoint** and rolling into **OneDrive** photo editing. Capabilities pitched: precise local edits, face consistency across viewpoints, readable in-image text, scene-aware object placement. Single hype-account source; consistent with the confirmed MAI launch arc. Status stays released; status_note refreshed"
+  - ts: 2026-07-01
+    change: "Closed — released-and-aged. MAI-Image-2.5 (Preview) went live on Copilot.com 2026-05-26; now ≥4 weeks past release (36 days) with no fresh signal since the 06-05 traction note and no MAI-Image successor surfaced. Rolled into normal coverage. Google's competing image stack ([[google-nano-banana-2-2026-05]] and the new [[google-nano-banana-2-lite-2026-06]]) is tracked separately. History preserved."
 ---
 
 **MAI-Image-2.5 (Preview)** is Microsoft AI's new text-to-image model,
