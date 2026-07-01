@@ -11817,5 +11817,33 @@
     "headline": "SONNET 5 RUNS ~60 TOK/S VS GLM 5.2'S CLAIMED 150-300 \u2014 CHINESE MODELS REOPEN PRICE/SPEED GAP ON ANTHROPIC",
     "source": "@JordanFrery",
     "url": "https://x.com/i/status/2072068739605123089"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-07-01 10:20 UTC",
+    "headline": "COMMERCE LIFTS EXPORT CONTROLS ON ANTHROPIC FABLE 5 AND MYTHOS 5 \u2014 ACCESS RESTORING TODAY",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2072106151890809341"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-07-01 10:20 UTC",
+    "headline": "POLITICO: FABLE 5 RETURN IS A GENERAL RE-RELEASE, NOT LIMITED TO THE US \u2014 ENDING THE 18-DAY GATE",
+    "source": "@spectatorindex",
+    "url": "https://x.com/spectatorindex/status/2072087011067076745"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-07-01 10:20 UTC",
+    "headline": "OPENAI REPORTEDLY MORE THAN HALVES INFERENCE COSTS VIA NEW OPTIMIZATION \u2014 THE INFORMATION",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2072053812420825234"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-07-01 10:20 UTC",
+    "headline": "SONNET 5 DAY-2 VERDICT: CHEAPER PER TOKEN, PRICIER PER SOLVED PROBLEM, STILL TRAILS OPUS 4.8",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2072022739334873511"
   }
 ]
