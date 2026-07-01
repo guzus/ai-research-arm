@@ -1,0 +1,11 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-07-01 17:13 UTC
+
+CYCLE: Fable 5 returns — but on the government's terms, and Anthropic's coding pitch quietly got worse.
+
+TOP STORIES:
+• Anthropic publishes Fable 5 redeployment deal: new cyber classifier, coding/debugging routed down to Opus 4.8, joint jailbreak-severity framework with Amazon/MS/Google, and a US-gov pre-release-access regime it wants made industry-wide law [✓]
+• The coding squeeze: Fable won't code (falls back to Opus 4.8), and independent benchmarks peg "cheap flagship" Sonnet 5 as costing MORE than Opus 4.8 — undercutting the launch pitch [⚠]
+
+WATCH: Fable 5 going live globally Jul 2, and whether OpenAI/Google adopt Anthropic's pre-release-access + jailbreak-severity framework.
+
+Full update on GitHub.
