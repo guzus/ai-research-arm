@@ -11908,5 +11908,26 @@
     "headline": "OPENAI CHIEF ECONOMIST AT ECB SINTRA: AI MAY COMPLEMENT WORKERS BUT LABOR-MARKET DATA IS GETTING LESS COMFORTABLE",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2072290557238390944"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-07-02 01:00 UTC",
+    "headline": "ANTHROPIC'S NEXT VERTICAL APP LEAKS: 'CLAUDE SCIENCE' \u2014 DESKTOP RESEARCH TOOL WITH 60+ SCIENTIFIC DATABASES, DEV-NAMED 'OPERON'",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2072338885724525007"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-07-02 01:00 UTC",
+    "headline": "NEW GEMINI FLASH CHECKPOINT SPOTTED TESTING ON LM ARENA \u2014 POSSIBLY GEMINI 3.6 FLASH OR GEMINI 4 FLASH",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2072321107365957837"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-07-02 01:00 UTC",
+    "headline": "XAI SHIPS VOICE AGENT BUILDER ON XAI CONSOLE \u2014 CONVERSATIONAL AGENTS WITH GROK VOICES AND CONNECTORS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2072346189320667412"
   }
 ]
