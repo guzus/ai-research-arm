@@ -11866,5 +11866,26 @@
     "headline": "CLAUDE CODE ADDS 'ROUTINES' \u2014 AUTONOMOUS SCHEDULED AGENTS TRIGGERED BY TIME, API, OR GITHUB EVENTS, RUN ON ANTHROPIC CLOUD",
     "source": "@Di_Krass_",
     "url": "https://x.com/Di_Krass_/status/2072099865207636370"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-07-01 16:47 UTC",
+    "headline": "CLAUDE FABLE 5 BACK ONLINE GLOBALLY \u2014 METERED AT 50% OF WEEKLY LIMITS THROUGH JULY 7, THEN USAGE CREDITS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2072174915076186348"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-07-01 16:47 UTC",
+    "headline": "MYTHOS 5 RESTORED ONLY FOR APPROVED US ORGS \u2014 FABLE 5 GOES GLOBAL, MYTHOS STAYS GATED",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2072199399833240054"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-07-01 16:47 UTC",
+    "headline": "ANTHROPIC'S NEW CLASSIFIER BLOCKS REPORTED JAILBREAK >99% \u2014 OVER-FLAGS BENIGN CODING, ROUTES SMALL FRACTION TO OPUS 4.8",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2072163884430229756"
   }
 ]
