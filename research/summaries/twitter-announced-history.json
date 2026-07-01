@@ -11845,5 +11845,26 @@
     "headline": "SONNET 5 DAY-2 VERDICT: CHEAPER PER TOKEN, PRICIER PER SOLVED PROBLEM, STILL TRAILS OPUS 4.8",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2072022739334873511"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-07-01 13:41 UTC",
+    "headline": "ANTHROPIC REDEPLOYS FABLE 5 GLOBALLY TODAY WITH NEW CYBER CLASSIFIERS; ROUTINE CODING TEMPORARILY FALLS BACK TO OPUS 4.8",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2072163884430229756"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-07-01 13:41 UTC",
+    "headline": "ANTHROPIC LAUNCHES 'GLASSWING' CONSENSUS FRAMEWORK WITH AMAZON, MICROSOFT, GOOGLE TO GRADE AI JAILBREAK SEVERITY",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2072163884430229756"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-07-01 13:41 UTC",
+    "headline": "CLAUDE CODE ADDS 'ROUTINES' \u2014 AUTONOMOUS SCHEDULED AGENTS TRIGGERED BY TIME, API, OR GITHUB EVENTS, RUN ON ANTHROPIC CLOUD",
+    "source": "@Di_Krass_",
+    "url": "https://x.com/Di_Krass_/status/2072099865207636370"
   }
 ]
