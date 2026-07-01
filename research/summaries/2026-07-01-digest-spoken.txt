@@ -1,0 +1,12 @@
+Speaker 1: Wednesday, July first, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic just shipped Claude Sonnet five, and it's the new default across Free and Pro, at [emphasis] two dollars and ten dollars [/emphasis] per million tokens with a one million token context window.
+Speaker 1: The day-two benchmarks came back split, and interestingly, it's deliberately weaker on cyber tasks.
+Speaker 2: Worth noting that's a design choice, not a miss. And on that intro pricing, it steps up to three dollars and fifteen in September.
+Speaker 1: Same day, Anthropic launched Claude Science, over sixty research tools with Novartis, Bristol Myers Squibb, and Genentech on board.
+Speaker 2: And OpenAI countered on the exact same day with GeneBench-Pro. The science race is officially on.
+Speaker 1: On the image front, Google shipped Nano Banana two Lite, roughly three point four cents an image in about four seconds, plus Gemini Omni Flash video in the API.
+Speaker 2: Some quick numbers on the money side. Etched came out of stealth with [emphasis] eight hundred million dollars [/emphasis] raised, over a billion in contracts, and a five billion dollar valuation.
+Speaker 1: GitLab Duo posted a ninety-three point eight percent jump over its predecessor on Sonnet five.
+Speaker 2: And on Hacker News, [dramatic_pause] the top thread was Claude Code steganographic request marking, over one thousand points and a real fingerprinting debate.
+Speaker 1: Trending alongside it, Qwen three point six twenty-seven B is being called the sweet spot for local development.
+Speaker 2: That is your ARA broadcast — full digest on GitHub.
