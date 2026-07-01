@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-07-01
+
+TOP STORIES:
+• Anthropic ships Claude Sonnet 5 (default Free/Pro, $2/$10, 1M ctx) — day-2 benchmarks split, deliberately weaker on cyber
+• Anthropic launches Claude Science (60+ research tools; Novartis/BMS/Genentech) same day OpenAI ships GeneBench-Pro
+• Google ships Nano Banana 2 Lite (~$0.034/image, ~4s) + Gemini Omni Flash API video
+
+KEY NUMBERS:
+• Sonnet 5: $2/$10 intro (→$3/$15 Sep), GitLab Duo +93.8% vs predecessor
+• Etched out of stealth: $800M raised, $1B+ contracts, $5B valuation
+• HN top thread: Claude Code steganographic request marking (1,024 pts)
+
+TRENDING: Qwen 3.6 27B "sweet spot for local dev" + Claude Code fingerprinting debate
+
+Full digest on GitHub.
