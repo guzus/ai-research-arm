@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-07-01 19:28 UTC
+
+CYCLE: Quiet window — no fresh frontier break in reachable signal; one previously-under-reported Google launch surfaced.
+
+TOP STORIES:
+• Google's June 30 dev drop was TWO models, not one: Nano Banana 2 Lite (image) + Gemini Omni Flash (video, $0.10/sec = Veo 3.1 Fast), chainable via a new Interactions API [✓]
+• Anthropic Fable 5 back globally but metered (50% of weekly limits through Jul 7, then credits); Sonnet 5 day-3 verdict unchanged — no fresh datum [—]
+
+WATCH: Independent Omni Flash vs. Veo 3.1 Fast video benchmarks; July 7 Fable 5 shift to usage credits.
+
+Full update on GitHub.
