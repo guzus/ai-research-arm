@@ -73,6 +73,7 @@
         "amazon",
         "anthropic",
         "claude-fable-5",
+        "claude-sonnet-5",
         "cognition-ai",
         "dynamic-workflows",
         "federal-ai-policy",
@@ -137,6 +138,7 @@
         "cursor",
         "deepseek",
         "dell",
+        "etched",
         "federal-ai-policy",
         "figure-ai",
         "gemini-3-5-flash",
@@ -221,8 +223,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
       "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-30",
-      "timestamp": "2026-06-30T00:00:00Z",
+      "updated_at": "2026-07-01",
+      "timestamp": "2026-07-01T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -238,6 +240,8 @@
         "california-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-science",
+        "claude-sonnet-5",
         "cognition-ai",
         "dynamic-workflows",
         "federal-ai-policy",
@@ -267,6 +271,8 @@
         "california-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-science",
+        "claude-sonnet-5",
         "cognition-ai",
         "cursor",
         "deepseek",
@@ -395,6 +401,7 @@
       "inbound": [
         "ai-capex",
         "anthropic",
+        "etched",
         "gpt-5-6",
         "micron",
         "nvidia"
@@ -486,6 +493,8 @@
         "amazon",
         "anthropic",
         "claude-opus-4-8",
+        "claude-science",
+        "claude-sonnet-5",
         "deepseek",
         "federal-ai-policy",
         "gemini-3-5-flash",
@@ -534,12 +543,83 @@
         "agentic-ai-security",
         "anthropic",
         "claude-fable-5",
+        "claude-sonnet-5",
         "dynamic-workflows",
         "microsoft",
         "nvidia",
         "open-weights",
         "sakana-ai",
         "zhipu-glm-5-2"
+      ]
+    },
+    {
+      "slug": "claude-science",
+      "title": "Claude Science",
+      "type": "entity",
+      "tags": [
+        "anthropic",
+        "claude",
+        "ai-for-science",
+        "agentic-research",
+        "product"
+      ],
+      "summary": "Anthropic's agentic research workbench launched 2026-06-30 — 60+ scientific tools, on-demand managed compute, a citation/calculation verification agent, and local/HPC execution — debuting with Novartis, Bristol Myers Squibb, and Genentech.",
+      "description": "Anthropic's agentic research workbench launched 2026-06-30 — 60+ scientific tools, on-demand managed compute, a citation/calculation verification agent, and local/HPC execution — debuting with Novartis, Bristol Myers Squibb, and Genentech.",
+      "created_at": "2026-07-01",
+      "updated_at": "2026-07-01",
+      "timestamp": "2026-07-01T00:00:00Z",
+      "file": "entities/claude-science.md",
+      "aliases": [
+        "Claude Science"
+      ],
+      "outbound": [
+        "anthropic",
+        "claude-fable-5",
+        "claude-sonnet-5",
+        "federal-ai-policy",
+        "john-jumper",
+        "lifescibench"
+      ],
+      "inbound": [
+        "anthropic"
+      ]
+    },
+    {
+      "slug": "claude-sonnet-5",
+      "title": "Claude Sonnet 5",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "anthropic",
+        "claude",
+        "agentic-coding",
+        "frontier-model"
+      ],
+      "summary": "Anthropic's 2026-06-30 mid-tier model — now the default on Free and Pro, priced $2/$10 per M (intro) with a 1M-token context — positioned as a cheap agentic default, whose day-2 independent benchmarks landed mixed and whose cyber capability was deliberately reduced.",
+      "description": "Anthropic's 2026-06-30 mid-tier model — now the default on Free and Pro, priced $2/$10 per M (intro) with a 1M-token context — positioned as a cheap agentic default, whose day-2 independent benchmarks landed mixed and whose cyber capability was deliberately reduced.",
+      "created_at": "2026-07-01",
+      "updated_at": "2026-07-01",
+      "timestamp": "2026-07-01T00:00:00Z",
+      "file": "entities/claude-sonnet-5.md",
+      "aliases": [
+        "Claude Sonnet 5",
+        "Sonnet 5",
+        "claude-sonnet-5"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "claude-fable-5",
+        "claude-opus-4-8",
+        "federal-ai-policy",
+        "open-weights",
+        "zhipu-glm-5-2"
+      ],
+      "inbound": [
+        "anthropic",
+        "claude-science",
+        "federal-ai-policy",
+        "open-weights"
       ]
     },
     {
@@ -691,6 +771,7 @@
         "ai-capex",
         "federal-ai-policy",
         "gemma-4",
+        "meituan-longcat-2",
         "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
@@ -773,6 +854,37 @@
       ]
     },
     {
+      "slug": "etched",
+      "title": "Etched",
+      "type": "entity",
+      "tags": [
+        "ai-chips",
+        "inference",
+        "transformer-asic",
+        "hardware",
+        "funding"
+      ],
+      "summary": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised, $1B+ in signed contracts, and a $5B valuation — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).",
+      "description": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised, $1B+ in signed contracts, and a $5B valuation — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).",
+      "created_at": "2026-07-01",
+      "updated_at": "2026-07-01",
+      "timestamp": "2026-07-01T00:00:00Z",
+      "file": "entities/etched.md",
+      "aliases": [
+        "Etched",
+        "Sohu"
+      ],
+      "outbound": [
+        "ai-capex",
+        "broadcom",
+        "meituan-longcat-2",
+        "nvidia"
+      ],
+      "inbound": [
+        "meituan-longcat-2"
+      ]
+    },
+    {
       "slug": "federal-ai-policy",
       "title": "Federal AI Policy",
       "type": "theme",
@@ -787,8 +899,8 @@
       "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-30",
-      "timestamp": "2026-06-30T00:00:00Z",
+      "updated_at": "2026-07-01",
+      "timestamp": "2026-07-01T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -805,10 +917,13 @@
         "anthropic",
         "california-ai-regulation",
         "claude-fable-5",
+        "claude-sonnet-5",
         "deepseek",
         "gpt-5-6",
+        "meituan-longcat-2",
         "microsoft",
         "noam-shazeer",
+        "open-weights",
         "openai",
         "sk-telecom",
         "xai"
@@ -821,11 +936,15 @@
         "apple",
         "california-ai-regulation",
         "claude-fable-5",
+        "claude-science",
+        "claude-sonnet-5",
         "deepseek",
         "gpt-5-6",
         "john-jumper",
         "lifescibench",
+        "meituan-longcat-2",
         "noam-shazeer",
+        "open-weights",
         "openai",
         "sk-telecom"
       ]
@@ -881,8 +1000,8 @@
       "summary": "Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots; gained a real-time speech-to-speech Live Translate variant (70+ languages) on 2026-06-09.",
       "description": "Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots; gained a real-time speech-to-speech Live Translate variant (70+ languages) on 2026-06-09.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-06-10",
-      "timestamp": "2026-06-10T00:00:00Z",
+      "updated_at": "2026-07-01",
+      "timestamp": "2026-07-01T00:00:00Z",
       "file": "entities/gemini-3-5-flash.md",
       "aliases": [
         "Gemini 3.5 Flash",
@@ -893,6 +1012,7 @@
         "ai-capex",
         "anthropic",
         "claude-fable-5",
+        "nano-banana-2-lite",
         "neocloud"
       ],
       "inbound": [
@@ -901,6 +1021,7 @@
         "claude-fable-5",
         "gemini-spark",
         "gemma-4",
+        "nano-banana-2-lite",
         "noam-shazeer"
       ]
     },
@@ -972,6 +1093,7 @@
       "inbound": [
         "deepseek",
         "minimax-m3",
+        "nano-banana-2-lite",
         "nvidia",
         "open-weights",
         "zhipu-glm-5-2"
@@ -1053,6 +1175,7 @@
       ],
       "inbound": [
         "anthropic",
+        "claude-science",
         "noam-shazeer"
       ]
     },
@@ -1086,6 +1209,7 @@
         "openai"
       ],
       "inbound": [
+        "claude-science",
         "john-jumper",
         "openai"
       ]
@@ -1118,6 +1242,42 @@
       "inbound": [
         "agentic-ai-security",
         "apple"
+      ]
+    },
+    {
+      "slug": "meituan-longcat-2",
+      "title": "Meituan LongCat-2.0",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "china",
+        "coding",
+        "frontier-model",
+        "moe"
+      ],
+      "summary": "Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model, ~1M context, that Meituan says was pretrained on a ~50,000-chip all-domestic (no-Nvidia) cluster — and revealed as the anonymous \"Owl Alpha\" that had topped OpenRouter coding usage for ~two months.",
+      "description": "Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model, ~1M context, that Meituan says was pretrained on a ~50,000-chip all-domestic (no-Nvidia) cluster — and revealed as the anonymous \"Owl Alpha\" that had topped OpenRouter coding usage for ~two months.",
+      "created_at": "2026-07-01",
+      "updated_at": "2026-07-01",
+      "timestamp": "2026-07-01T00:00:00Z",
+      "file": "entities/meituan-longcat-2.md",
+      "aliases": [
+        "LongCat-2.0",
+        "LongCat",
+        "Owl Alpha",
+        "Meituan LongCat"
+      ],
+      "outbound": [
+        "deepseek",
+        "etched",
+        "federal-ai-policy",
+        "open-weights",
+        "zhipu-glm-5-2"
+      ],
+      "inbound": [
+        "etched",
+        "federal-ai-policy",
+        "open-weights"
       ]
     },
     {
@@ -1323,6 +1483,38 @@
       ]
     },
     {
+      "slug": "nano-banana-2-lite",
+      "title": "Nano Banana 2 Lite",
+      "type": "entity",
+      "tags": [
+        "google",
+        "gemini",
+        "image-generation",
+        "video-generation",
+        "multimodal"
+      ],
+      "summary": "Google's fastest/cheapest image model (gemini-3.1-flash-lite-image), live 2026-06-30 at ~4s and ~$0.034/image — shipped alongside Gemini Omni Flash, which brings text-prompt video generation/editing to the Gemini API for the first time.",
+      "description": "Google's fastest/cheapest image model (gemini-3.1-flash-lite-image), live 2026-06-30 at ~4s and ~$0.034/image — shipped alongside Gemini Omni Flash, which brings text-prompt video generation/editing to the Gemini API for the first time.",
+      "created_at": "2026-07-01",
+      "updated_at": "2026-07-01",
+      "timestamp": "2026-07-01T00:00:00Z",
+      "file": "entities/nano-banana-2-lite.md",
+      "aliases": [
+        "Nano Banana 2 Lite",
+        "gemini-3.1-flash-lite-image",
+        "gemini-3-1-flash-lite-image",
+        "Gemini Omni Flash"
+      ],
+      "outbound": [
+        "gemini-3-5-flash",
+        "gemma-4",
+        "open-weights"
+      ],
+      "inbound": [
+        "gemini-3-5-flash"
+      ]
+    },
+    {
       "slug": "nebius",
       "title": "Nebius Group",
       "type": "entity",
@@ -1474,6 +1666,7 @@
         "anthropic",
         "apple",
         "broadcom",
+        "etched",
         "gemma-4",
         "microsoft",
         "open-weights",
@@ -1510,8 +1703,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-06-29",
-      "timestamp": "2026-06-29T00:00:00Z",
+      "updated_at": "2026-07-01",
+      "timestamp": "2026-07-01T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -1525,8 +1718,11 @@
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-sonnet-5",
         "deepseek",
+        "federal-ai-policy",
         "gemma-4",
+        "meituan-longcat-2",
         "meta",
         "microsoft",
         "minimax-m3",
@@ -1541,10 +1737,14 @@
       "inbound": [
         "anthropic",
         "claude-fable-5",
+        "claude-sonnet-5",
         "deepseek",
+        "federal-ai-policy",
+        "meituan-longcat-2",
         "meta",
         "microsoft",
         "moonshot-kimi-k2-7-code",
+        "nano-banana-2-lite",
         "openrouter",
         "sakana-ai",
         "xiaomi-mimo-v2-5-pro",
@@ -1974,8 +2174,10 @@
       ],
       "inbound": [
         "claude-fable-5",
+        "claude-sonnet-5",
         "deepseek",
         "gpt-5-6",
+        "meituan-longcat-2",
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openrouter"
@@ -2044,9 +2246,13 @@
     "claude fable 5": "claude-fable-5",
     "claude mythos 5": "claude-fable-5",
     "claude opus 4.8": "claude-opus-4-8",
+    "claude science": "claude-science",
+    "claude sonnet 5": "claude-sonnet-5",
     "claude-fable-5": "claude-fable-5",
     "claude-mythos-5": "claude-fable-5",
     "claude-opus-4-8": "claude-opus-4-8",
+    "claude-science": "claude-science",
+    "claude-sonnet-5": "claude-sonnet-5",
     "cognition": "cognition-ai",
     "cognition ai": "cognition-ai",
     "cognition labs": "cognition-ai",
@@ -2070,6 +2276,7 @@
     "devin": "cognition-ai",
     "dynamic workflows": "dynamic-workflows",
     "dynamic-workflows": "dynamic-workflows",
+    "etched": "etched",
     "fable 5": "claude-fable-5",
     "facebook": "meta",
     "federal ai executive order": "federal-ai-policy",
@@ -2087,8 +2294,11 @@
     "gemini 3.2 flash": "gemini-3-5-flash",
     "gemini 3.5 flash": "gemini-3-5-flash",
     "gemini 3.5 live translate": "gemini-3-5-flash",
+    "gemini omni flash": "nano-banana-2-lite",
     "gemini spark": "gemini-spark",
+    "gemini-3-1-flash-lite-image": "nano-banana-2-lite",
     "gemini-3-5-flash": "gemini-3-5-flash",
+    "gemini-3.1-flash-lite-image": "nano-banana-2-lite",
     "gemini-spark": "gemini-spark",
     "gemma": "gemma-4",
     "gemma 4": "gemma-4",
@@ -2130,6 +2340,8 @@
     "liquidai": "liquid-ai",
     "llama": "meta",
     "local weights": "open-weights",
+    "longcat": "meituan-longcat-2",
+    "longcat-2.0": "meituan-longcat-2",
     "luna": "gpt-5-6",
     "m3": "minimax-m3",
     "mai": "microsoft",
@@ -2137,6 +2349,8 @@
     "mai-thinking-1": "microsoft",
     "maia 200": "microsoft",
     "marlin": "sakana-ai",
+    "meituan longcat": "meituan-longcat-2",
+    "meituan-longcat-2": "meituan-longcat-2",
     "meta": "meta",
     "meta ai": "meta",
     "meta platforms": "meta",
@@ -2157,6 +2371,8 @@
     "mu": "micron",
     "mythos 5": "claude-fable-5",
     "mythos-class": "claude-fable-5",
+    "nano banana 2 lite": "nano-banana-2-lite",
+    "nano-banana-2-lite": "nano-banana-2-lite",
     "nbis": "nebius",
     "nebius": "nebius",
     "nebius group n.v.": "nebius",
@@ -2182,6 +2398,7 @@
     "openrouter fusion": "openrouter",
     "openrouter.ai": "openrouter",
     "opus 4.8": "claude-opus-4-8",
+    "owl alpha": "meituan-longcat-2",
     "parallel subagents": "dynamic-workflows",
     "pcc": "apple",
     "private cloud compute": "apple",
@@ -2204,7 +2421,9 @@
     "sk telecom co., ltd.": "sk-telecom",
     "sk-telecom": "sk-telecom",
     "skt": "sk-telecom",
+    "sohu": "etched",
     "sol": "gpt-5-6",
+    "sonnet 5": "claude-sonnet-5",
     "space exploration technologies": "spacex",
     "spacex": "spacex",
     "spacexai": "cursor",
@@ -2226,6 +2445,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-07-01",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-01 digest (Anthropic product day — Sonnet 5 + Claude Science ship as frontier Fable/Mythos stays absent; Etched exits stealth at $5B; Meituan LongCat-2.0 pushes open weights to 1.6T on claimed no-Nvidia silicon; Nano Banana 2 Lite + Gemini Omni Flash; Andreessen joins the Pentagon board). Created 5 (claude-sonnet-5 — 2026-06-30 default on Free/Pro, $2/$10 intro, 1M context, split day-2 benchmarks + deliberately lower cyber; claude-science — agentic research workbench w/ Novartis/BMS/Genentech; etched — transformer-ASIC startup out of stealth, $800M/$1B contracts/$5B; meituan-longcat-2 — 1.6T MoE \"Owl Alpha\", claimed all-domestic-cluster training; nano-banana-2-lite — Google's fastest/cheapest image model + Omni Flash API video gen), updated 3 (anthropic — Sonnet 5 + Claude Science launches, Amazon $1B FDE org + repricing tension, Fable re-release absent; open-weights — LongCat-2.0 frontier-scale + no-Nvidia turn, DSpark, Qwen 3.6 local sweet spot, Zluda 6; federal-ai-policy — Andreessen Pentagon Defense Policy Board, Sonnet 5 cyber de-scoping as controls-by-design, Taiwan Super Micro raid, LongCat/DSpark as export-control responses)."
+    },
     {
       "date": "2026-06-30",
       "op": "ingest",
@@ -2320,11 +2544,6 @@
       "date": "2026-06-03",
       "op": "ingest",
       "summary": "Ingested 2026-06-03 digest. Created 3 (microsoft entity — Build 2026 MAI stack/Project Polaris/MAIA 200, OpenAI multi-stack divorce; minimax-m3 entity — open-weights 1M ctx 59% SWE-Bench Pro; federal-ai-policy theme — Trump June 2 EO 30-day pre-release access). Updated 5 (openai — Codex platform/Sites/62-app marketplace/5M WAU + GPT-5.2-Codex + Bedrock GA + Florida AG suit; anthropic — confidential S-1 June 1 + lone EO backing + Glasswing 150+ orgs; ai-capex — Marvell +29.7%/Alphabet $80B/Berkshire $10B/HPE + three-front mega-IPO calendar; agentic-ai-security — Mythos 10k-bug disclosure catalyzing federal EO; california-ai-regulation — federal-regime open question partly resolved by the June 2 EO)."
-    },
-    {
-      "date": "2026-06-01",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-01 digest. Created 4 entities (figure-ai — 200h Helix-02 marathon, 249,560 packages, 0 hardware failures, 0 teleop; gemini-spark — first GA paid frontier-lab persistent consumer agent on Google Cloud VMs; dell — Q1 FY27 $16.1B AI servers +757% YoY, $24.4B orders, +32% stock; openrouter — $113M Series B at $1.3B, 25T tokens/week). Updated 3 (anthropic — Seoul office + Salesforce 231d→13d migration + $500M accident + Conway/Orbit/Operon leaks + Cobi Gantz credibility-test variable; openai — GPT-5.5 Instant readability upgrade + 5M Codex users milestone; ai-capex — Dell print + SoftBank €75B France commitment + OpenRouter router-layer round)."
     }
   ]
 }

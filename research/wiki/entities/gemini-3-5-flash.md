@@ -6,8 +6,9 @@ aliases: ["Gemini 3.5 Flash", "Gemini 3.2 Flash", "Gemini 3.5 Live Translate"]
 tags: [model-release, google-deepmind, flash-tier, agentic]
 description: Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots; gained a real-time speech-to-speech Live Translate variant (70+ languages) on 2026-06-09.
 created_at: 2026-05-24
-timestamp: 2026-06-10T00:00:00Z
+timestamp: 2026-07-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
@@ -50,6 +51,14 @@ like [[anthropic]] (Claude Haiku) and OpenAI.
   is timing: it landed the **same day as [[anthropic]]'s
   [[claude-fable-5|Fable 5 / Mythos 5]] launch** — a release engineered to share
   the news cycle (ARA digest 2026-06-10).
+
+- **The Flash lineup extends to image/video (2026-07-01).** Google's fast-tier
+  strategy broadened beyond text: **[[nano-banana-2-lite|Nano Banana 2 Lite]]**
+  (`gemini-3.1-flash-lite-image`) shipped as Google's fastest/cheapest image
+  model (~4s, ~$0.034/image), and **Gemini Omni Flash** brought text-prompt
+  video generation/editing to the Gemini API for the first time — the same
+  cheap-and-fast positioning Gemini 3.5 Flash pioneered for text now applied to
+  generative media (ARA digest 2026-07-01).
 
 ## Open questions
 - **Pro tier.** Gemini 3.5 Pro was confirmed for "next month" — does it close the

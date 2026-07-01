@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.
 created_at: 2026-05-24
-timestamp: 2026-06-30T00:00:00Z
+timestamp: 2026-07-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
@@ -480,6 +481,27 @@ Four developments through May 2026 put Anthropic at the center of the field:
   **repriced its [[amazon|Amazon]] pact from compute-hours to tokens**, reportedly
   raising Amazon's costs and prompting Amazon engineers to **distill cheaper internal
   models** ahead of a 2027 per-token shift (ARA digest 2026-06-30).
+
+- **Sonnet 5 + Claude Science ship; a $1B FDE org and Amazon repricing tension
+  (2026-07-01).** Anthropic stacked a product day around its still-embargoed
+  frontier line. **(1)** **[[claude-sonnet-5|Claude Sonnet 5]]** launched 18:00
+  UTC June 30 — new default on Free/Pro, **$2/$10 per M intro** (→ $3/$15 in
+  September), 1M context — pitched as a cheap agentic default; day-2 independent
+  benchmarks landed **split** (GDPval-AA v2 1,618 edges Opus 4.8 on some tasks,
+  trails on others) and it scores **deliberately lower on cyber
+  exploit-discovery** than the older Sonnet 4.6, consistent with the Mythos
+  export-control posture (see [[federal-ai-policy]], [[agentic-ai-security]]).
+  **(2)** An hour earlier Anthropic launched **[[claude-science|Claude Science]]**,
+  an agentic research workbench (60+ tools, on-demand compute, in-lab execution)
+  debuting with **Novartis, BMS, Genentech** — the same day [[openai]] shipped
+  its GeneBench-Pro benchmark, opening the AI-for-science contest the
+  [[john-jumper]] hire foreshadowed. **(3)** [[amazon|Amazon]] launched a **$1B
+  forward-deployed-engineer org** (embedding engineers to deploy purpose-built
+  agents) mirroring OpenAI and Anthropic, and a viral (satirical) post alleged
+  Anthropic hiked what AWS/Bedrock pays to resell Claude — pointing at the real
+  cloud-economics strain flagged in the June 30 [[amazon|Amazon]] token-repricing
+  item. Notably, **Fable 5's general re-release stayed conspicuously absent**
+  alongside Sonnet 5 (ARA digest 2026-07-01).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

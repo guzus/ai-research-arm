@@ -13,11 +13,14 @@ Each page is one of three types — entity, concept, or theme. See
 - [[broadcom]] — Custom AI ASIC vendor and capex sentiment lever behind Google/Anthropic TPU financing, OpenAI's first custom inference chip (Jalapeño, co-designed with Broadcom), and the June 2026 AVGO guidance gut-check.
 - [[claude-fable-5]] — Anthropic's first public Mythos-class model (2026-06-09): one frontier model as two products — safeguarded GA Fable 5 (reroutes high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5.
 - [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; now also the safeguard-reroute target for Fable 5.
+- [[claude-science]] — Anthropic's agentic research workbench (2026-06-30); 60+ scientific tools, on-demand compute, in-lab execution, debuting with Novartis, BMS, and Genentech.
+- [[claude-sonnet-5]] — Anthropic's 2026-06-30 mid-tier default on Free/Pro ($2/$10 intro, 1M context); pitched as a cheap agentic default, with mixed day-2 benchmarks and deliberately reduced cyber capability.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY).
 - [[coreweave]] — GPU-as-a-service neocloud with a ~$99B take-or-pay backlog.
 - [[cursor]] — AI coding tool/IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close).
 - [[deepseek]] — Hangzhou Chinese frontier lab; closed its first-ever external round (~$7.4B at $50B+, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital with the state AI fund the only voting investor — pivoting to commercialization toward AGI.
 - [[dell]] — US enterprise-IT OEM; Q1 FY27 AI-Optimized Servers $16.1B (+757% YoY), $24.4B AI orders booked, FY27 AI-server outlook raised to $60B.
+- [[etched]] — AI-chip startup out of stealth 2026-06-30 ($800M raised, $1B+ contracts, $5B valuation); Sohu transformer-only inference ASIC ships summer 2026.
 - [[figure-ai]] — US humanoid-robotics company whose Helix-02 VLA ran a 200-hour fully-autonomous 249,560-package shift on 2026-05-30, ~10× the prior public MTBI envelope.
 - [[gemini-3-5-flash]] — Google's fast, low-cost frontier model shipped at I/O 2026.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; encoder-free 12B variant runs on 16 GB RAM, 150M+ cumulative downloads.
@@ -25,11 +28,13 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
+- [[meituan-longcat-2]] — Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model ("Owl Alpha"); claimed no-Nvidia domestic-cluster training, topped OpenRouter coding usage incognito for ~two months.
 - [[meta]] — Social-platform hyperscaler and Llama maker; launched "AI Mode" on Facebook (2026-06-16), leaning on distribution to catch up in the AI-assistant race.
 - [[micron]] — US memory maker (HBM/DRAM/SSD) that became Anthropic's primary memory supplier and a named Series H participant on 2026-06-23.
 - [[microsoft]] — Hyperscaler turned frontier-model builder; shipped the MAI stack and made Project Polaris GitHub Copilot's default at Build 2026.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
 - [[moonshot-kimi-k2-7-code]] — Moonshot AI open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while filling the Fable 5 vacuum.
+- [[nano-banana-2-lite]] — Google's fastest/cheapest image model (gemini-3.1-flash-lite-image, ~4s/~$0.034), shipped 2026-06-30 with Gemini Omni Flash bringing text-prompt video gen/editing to the API.
 - [[nebius]] — Amsterdam-based neocloud spun out of Yandex.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
 - [[nvidia]] — Dominant AI-accelerator supplier underwriting the capex buildout; released the open-weights Nemotron-3-Ultra-550B on 2026-06-05.

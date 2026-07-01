@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
 created_at: 2026-06-14
-timestamp: 2026-06-29T00:00:00Z
+timestamp: 2026-07-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
@@ -169,6 +170,24 @@ fragile and local weights look like insurance.
   post-training — advances the "logical reasoning compresses well, factual knowledge
   doesn't" hypothesis, a long-tail efficiency data point for the local-hosting lane
   (ARA digest 2026-06-29).
+
+- **Frontier scale, no Nvidia: LongCat-2.0 + the compute-sovereignty turn
+  (2026-07-01).** The wave reached frontier parameter scale on claimed domestic
+  silicon. **[[meituan-longcat-2|Meituan LongCat-2.0]]** — a **1.6T-param MoE
+  (~48B active), ~1M context**, open-weighted 2026-06-30 — was revealed as the
+  anonymous **"Owl Alpha"** that had **topped OpenRouter coding usage for ~two
+  months** before Meituan claimed it, and Meituan says it was trained on a
+  **~50,000-chip all-domestic cluster with no Nvidia silicon** (one relay cites
+  SWE-bench Pro 59.5 "beats GPT-5.5"; parity and silicon claims are
+  vendor-supplied). Alongside **DeepSeek's DSpark (60–85% speed boost)** and
+  continued [[zhipu-glm-5-2|GLM 5.2]] price/speed pressure (~150–300 tok/s cited
+  against [[claude-sonnet-5|Sonnet 5]]'s ~60), the story shifts from "open
+  weights close the gap" to **"open weights + domestic compute route around the
+  export regime"** (see [[federal-ai-policy]]). On the demand side, HN's
+  **"Qwen 3.6 27B is the sweet spot for local development"** (1,078 pts) was the
+  dominant local-LLM argument of the day, and **Zluda 6** (run unmodified CUDA
+  on non-Nvidia GPUs) echoed the same vendor-lock-in theme (ARA digest
+  2026-07-01).
 
 ## Open questions
 

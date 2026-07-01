@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-06-30T00:00:00Z
+timestamp: 2026-07-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
@@ -362,6 +363,25 @@ footing for the first time in the cycle.
   Aug 1**; China CAC anthropomorphic-interaction measures **July 15**; **EU AI Act**
   GPAI/transparency obligations binding **Aug 2**. See [[anthropic]] and
   [[california-ai-regulation]] (ARA digest 2026-06-30).
+
+- **Andreessen at the Pentagon; the export arc shows up in product design
+  (2026-07-01).** Two threads advanced the "de facto licensing regime" story.
+  **(1)** **Marc Andreessen joined the Pentagon's Defense Policy Board** —
+  Defense Secretary Pete Hegseth named the a16z co-founder to the 15-member
+  advisory panel (appointment June 29). Advisory, not operational, but it places
+  the largest AI venture firm at DoD's strategy table and invites
+  conflict-of-interest scrutiny over a16z's defense portfolio (Anduril, Skydio) —
+  extending the lab/venture–government-ties question this theme tracks (relayed
+  by @ns123abc, corroborated). **(2)** The export-control arc is now visible in
+  *model design itself*: [[anthropic|Anthropic's]] **[[claude-sonnet-5|Sonnet 5]]
+  scores deliberately lower on cyber exploit-discovery** (below the older Sonnet
+  4.6 on CyberGym), a de-scoping that fits Anthropic's Mythos critical-
+  infrastructure posture — controls shaping capability pre-emptively, not just
+  gating release. Meanwhile **[[meituan-longcat-2|Meituan's LongCat-2.0]]** (1.6T
+  params, claimed no-Nvidia training) and **DeepSeek's DSpark** read as strategic
+  responses to tightening controls (see [[open-weights]]), and **Taiwan raided
+  Super Micro offices** over alleged Nvidia-chip smuggling to China — the
+  enforcement edge of the same export regime. (ARA digest 2026-07-01).
 
 ## Open questions
 
