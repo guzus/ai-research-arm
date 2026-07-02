@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-02
+
+TOP 5 PAPERS:
+• AutoMem - memory-as-a-skill training makes a 32B agent rival Opus 4.5 on long-horizon tasks (~2-4x)
+• Is One Layer Enough? - training a single mid-stack transformer layer matches full RL post-training
+• TiRex-2 - streaming multivariate xLSTM time-series foundation model, SOTA zero-shot at constant cost
+• Message Passing Enables Efficient Reasoning - threads that send/receive beat CoT and fork-join
+• The Model Organism Lottery - interpretability of model organisms hinges on training method; proxy validity in doubt
+
+CATEGORIES: cs.CL/LG heavy (LLM efficiency, RL, quantization); cs.CV (4D/Gaussian, diffusion); agents & eval benchmarks; safety/interpretability
+
+Full report on GitHub.
