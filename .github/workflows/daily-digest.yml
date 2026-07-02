@@ -360,8 +360,9 @@ jobs:
       # Content floor on the AGENT's digest. Catches both "agent failed /
       # committed nothing" (file missing) and "agent committed a template
       # shell" (sub-floor bytes/sections, unexpanded placeholders) — the
-      # latter previously stayed green. The floor only decides whether the
-      # deterministic fallback runs; it never fails the job itself.
+      # latter previously stayed green. The verdict routes the next two
+      # steps (ok=true → recover any uncommitted agent output; ok=false →
+      # deterministic fallback); it never fails the job itself.
       - name: Check digest content floor
         id: digest-floor
         run: |
@@ -373,6 +374,30 @@ jobs:
           else
             echo "ok=false" >> "$GITHUB_OUTPUT"
           fi
+
+      # Recovery for validated-but-uncommitted agent output. The floor reads
+      # the WORKING TREE while require-output checks base..HEAD COMMITS, so
+      # an agent that wrote a floor-passing digest but died before its git
+      # commit (mid-run tool/API error) would otherwise strand the content:
+      # floor ok → fallback skipped → require-output red → wiki-ingest/
+      # front-page starve. Commit exactly this workflow's expected output
+      # paths (research/digest/ + research/summaries/ — both are .md/.txt/
+      # .json only, no LFS-filtered media). On a clean tree (re-dispatch on
+      # a healthy day) this is a no-op, so the fallback's overwrite
+      # protection and honest-red semantics are unchanged.
+      - name: Commit recovered agent digest output
+        if: steps.digest-floor.outputs.ok == 'true'
+        env:
+          DATE: ${{ steps.date.outputs.date }}
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain -- research/digest/ research/summaries/)" ]; then
+            echo "No uncommitted digest-lane changes — nothing to recover."
+            exit 0
+          fi
+          echo "::notice::Floor-passing digest output found uncommitted in the working tree (agent likely died before its commit step); committing it."
+          git add research/digest/ research/summaries/
+          git commit -m "Daily digest ${DATE} (recovered uncommitted agent output)" || echo "No recovered digest changes"
 
       # Model-free floor: compose the digest verbatim from the day's
       # committed lane artifacts so the lane — and its workflow_run consumers
