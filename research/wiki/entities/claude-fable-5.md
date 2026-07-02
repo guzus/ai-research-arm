@@ -4,10 +4,11 @@ title: Claude Fable 5 / Mythos 5
 type: entity
 aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-class", "claude-fable-5", "claude-mythos-5"]
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
-description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners.
+description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.
 created_at: 2026-06-10
-timestamp: 2026-06-30T00:00:00Z
+timestamp: 2026-07-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
@@ -240,6 +241,23 @@ every feed on launch day.
   confirmed**; the Mythos 5 clearance is the firmer fact, and it crystallizes the
   export ban into a **managed-access licensing regime** — see [[federal-ai-policy]] and
   [[agentic-ai-security]] (ARA digest 2026-06-30).
+
+- **Back worldwide, metered and reclassified; tops the Remote Labor Index (2026-07-02).**
+  The US Department of Commerce **lifted the export controls** (top HN story of the day,
+  864 pts / 563 comments) and [[anthropic]] **redeployed Fable 5 globally** (Mythos 5
+  US-only) with a **new safety classifier** said to block the exploited jailbreak in
+  **>99% of cases** — ending the roughly two-week outage. Access is **capped at ≤50% of
+  weekly limits through July 7**, then continues via usage credits. Reception split along
+  the launch's original fault lines: practitioner praise (**Theo/t3.gg**: "the first
+  model that feels like it actually gets how to use and orchestrate agents") against
+  heavy users exhausting the cap almost immediately and calling the **new bio/chem
+  classifiers over-restrictive** — a re-run of the June benign-query reroute friction.
+  The clean external data point: Fable 5 **topped Scale AI × CAIS's
+  [[remote-labor-index|Remote Labor Index]] at ~16.10%** (🥈 [[claude-opus-4-8|Opus 4.8]],
+  🥉 Codex GPT-5.5), roughly double the next model — though even the leader still fails
+  **~84%** of real freelance tasks, and the field excludes GPT-5.6 and any Gemini Flash,
+  so "#1" is a snapshot. See [[anthropic]], [[federal-ai-policy]] and [[open-weights]]
+  (ARA digest 2026-07-02).
 
 ## Open questions
 

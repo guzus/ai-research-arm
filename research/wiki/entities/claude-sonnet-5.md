@@ -6,8 +6,9 @@ aliases: ["Claude Sonnet 5", "Sonnet 5", "claude-sonnet-5"]
 tags: [model-release, anthropic, claude, agentic-coding, frontier-model]
 description: Anthropic's 2026-06-30 mid-tier model — now the default on Free and Pro, priced $2/$10 per M (intro) with a 1M-token context — positioned as a cheap agentic default, whose day-2 independent benchmarks landed mixed and whose cyber capability was deliberately reduced.
 created_at: 2026-07-01
-timestamp: 2026-07-01T00:00:00Z
+timestamp: 2026-07-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "@claudeai launch post", date: 2026-06-30}
 ---
@@ -41,6 +42,14 @@ beneath Anthropic's frontier line (ARA digest 2026-07-01).
 - **Enterprise distribution day-one.** **GitLab** put Sonnet 5 live on its Duo
   Agent Platform across all tiers, calling it the first model to handle its full
   benchmark range, "up 93.8% from its predecessor."
+- **Reception cools on price-to-performance (2026-07-02).** A week after launch,
+  sentiment turned negative: The Decoder reports Sonnet 5 **chews ~40% more tokens per
+  task** than its predecessor, **nearly doubling real cost despite identical list
+  prices** — compounding the launch-day tokenizer tax below. The complaint fed the
+  wider **"tokenmaxxing" pushback** ([[meta|Meta]] capping internal token spend,
+  Palantir's Karp arguing enterprises need an application/ontology layer over raw token
+  access) that ran through the day's [[ai-capex]] ROI debate — reframing "cheap agentic
+  default" as expensive-in-practice (ARA digest 2026-07-02).
 
 ## Open questions
 - **Does "cheap agentic default" hold under the tokenizer tax?** The ~30%

@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-07-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-12", path: research/digest/2026-06-12-digest.md}
@@ -261,6 +262,25 @@ skepticism in one window:
   2024) against **$19.18B of R&D alone** — the cost-side counterweight to the
   ~$1.5T IPO target, and exhibit B (after SpaceX's filed loss) in the
   bubble-top debate (ARA digest 2026-06-17).
+
+- **"Meta Compute" cracks the infinite-capex thesis; the ownership question opens
+  (2026-07-02).** The supercycle's most direct ceiling signal yet: [[meta|Meta]] is
+  reported (Bloomberg, corroborated) building **"Meta Compute"** to **sell surplus AI
+  capacity** — the **first hyperscaler framed as having compute to *sell***, against
+  ~$115–145B 2026 capex. The tape read it as a possible ceiling on the
+  infinite-demand story: **$META +~8–9%** while neoclouds **[[coreweave|CoreWeave]] and
+  [[nebius|Nebius]] each fell ~12–17%** and the semi complex ([[nvidia|Nvidia]], Micron,
+  [[broadcom|Broadcom]], AMD, Marvell, ASML, TSMC) traded red. The bull rebuttal:
+  Meta pre-committed ~$35B to CoreWeave and ~$27B to Nebius, so the likelier read is
+  **2027+ capacity pre-monetized** — timing, not overbuild — making the selloff a
+  possible overreaction. In parallel, the value question moved from capability to
+  **ownership**: [[openai|OpenAI]] floated **handing the US government a 5% equity
+  stake** (~$42.6B) and wants [[anthropic]], Google and Meta to match — the state
+  shifting from regulator toward stakeholder (see [[openai]], [[federal-ai-policy]]).
+  Demand-side discipline hardened too: **Meta capped its own internal AI token spend**
+  as costs neared billions, and Palantir's Alex Karp took his "labs oversold models /
+  *tokenmaxxing*" critique to CNBC — the ROI-reality-check thread now questioning
+  raw-token consumption itself (ARA digest 2026-07-02).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s

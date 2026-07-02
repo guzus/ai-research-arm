@@ -6,8 +6,9 @@ aliases: ["Zhipu GLM 5.2", "Zhipu GLM-5.2", "GLM 5.2", "GLM-5.2", "Z.ai GLM-5.2"
 tags: [open-weights, china, coding, long-context, frontier-model]
 description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked "matches Mythos" cybersecurity headline.
 created_at: 2026-06-17
-timestamp: 2026-06-29T00:00:00Z
+timestamp: 2026-07-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
@@ -129,6 +130,18 @@ max/high "thinking" modes.
   headline — a market move decoupled from what the benchmark actually showed, and a
   reminder that the model's narrative momentum now outruns its verified capability
   (ARA digest 2026-06-29).
+
+- **ZCode 3.0 ships as a GLM-5.2 agentic harness; #1 open-source on LMArena Code
+  (2026-07-02).** Z.ai shipped **ZCode 3.0** — an **agentic coding harness/IDE
+  optimized for GLM-5.2** — extending the earlier "ZCode" desktop agent into a full
+  plan→code→review→deploy loop with a **`/goal` long-horizon feature**, **SSH remote
+  dev**, and mobile control via WeChat/Feishu/Telegram. It lands the "harness, not just
+  the model" thesis directly on top of GLM-5.2, and reignited a **200+ comment HN
+  debate** on Chinese labs chasing the coding-agent workflow. On the leaderboard,
+  GLM-5.2 now sits **#1 open-source / #2 global on LMArena Code**, behind only
+  [[claude-fable-5|Fable 5]] (freshly back from its export ban) — the tightest the
+  open-weights gap has been on a neutral coding board this cycle. See [[open-weights]]
+  (ARA digest 2026-07-02).
 
 ## Open questions
 

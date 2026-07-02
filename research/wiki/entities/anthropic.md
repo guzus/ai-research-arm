@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.
 created_at: 2026-05-24
-timestamp: 2026-07-01T00:00:00Z
+timestamp: 2026-07-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
@@ -502,6 +503,23 @@ Four developments through May 2026 put Anthropic at the center of the field:
   cloud-economics strain flagged in the June 30 [[amazon|Amazon]] token-repricing
   item. Notably, **Fable 5's general re-release stayed conspicuously absent**
   alongside Sonnet 5 (ARA digest 2026-07-01).
+
+- **Fable 5 returns worldwide; poaches a sitting Berkeley department chair
+  (2026-07-02).** Two threads closed on the same day. **(1)** The export saga
+  resolved: **Commerce lifted the controls** and Anthropic **redeployed
+  [[claude-fable-5|Fable 5]] globally** (Mythos 5 US-only) with a **new safety
+  classifier** blocking the exploited jailbreak in **>99% of cases**, metered to
+  **≤50% of weekly limits through July 7** — Ars Technica's framing: "after spooking
+  Trump into safety testing, Anthropic AI models get global release." Fable 5 then
+  **topped Scale AI × CAIS's [[remote-labor-index|Remote Labor Index]] at ~16.10%**,
+  roughly double the next model ([[claude-opus-4-8|Opus 4.8]] 🥈), the cleanest
+  neutral capability print of the window (see [[federal-ai-policy]]). **(2)** On
+  talent, Anthropic **poached [[jelani-nelson|Jelani Nelson]]** — theoretical
+  computer scientist and **sitting chair of UC Berkeley's EECS department** — as a
+  Member of Technical Staff (on leave, not resignation), the cycle's sharpest
+  academic-talent-drain data point after [[john-jumper]] and Karpathy. *(The Nelson
+  hire is sourced primarily to his own post; an IC seat, not evidence of an
+  org-level pipeline.)* (ARA digest 2026-07-02).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

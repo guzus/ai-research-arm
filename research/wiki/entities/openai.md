@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-timestamp: 2026-06-30T00:00:00Z
+timestamp: 2026-07-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
@@ -348,6 +349,23 @@ materially reshape how the lab is positioned heading into its IPO window:
   device** — a button-laden macro-pad built with Work Louder, launching July 15.
   *(IPO-delay and California-deal-adjacent items are Twitter-sourced, primary-source
   confirmation pending.)* (ARA digest 2026-06-30).
+
+- **Floats handing the US government a 5% equity stake (2026-07-02).** Per an FT scoop
+  (widely corroborated), OpenAI has **discussed giving Washington a 5% equity stake** —
+  roughly **$42.6B against its $852B valuation** — routed into a public wealth fund
+  modeled on the **Alaska Permanent Fund**. **Sam Altman** reportedly raised it with
+  **Trump, Commerce Secretary Lutnick and Treasury Secretary Bessent** (and, separately,
+  Bernie Sanders, who pushed for closer to 50%), and suggested each leading US developer
+  allot 5% — he **wants [[anthropic]], Google and [[meta]] to match**, and none have
+  agreed. The cited precedent: Washington's ~10% stake in Intel. It reframes the AI
+  debate from "best model" to "**who owns the upside**," and would make export controls
+  and release timing partly shareholder-value decisions — the state moving from regulator
+  toward stakeholder. **Skeptic's note:** "discussed" is a long way from "agreed" — a
+  single-outlet trial balloon, unconfirmed on the record, read by some as defensive
+  goodwill-buying after Fable/GPT-5.6 scrutiny; dilution mechanics (Foundation ~26%,
+  [[microsoft|Microsoft]] ~27%, employees/investors ~47%) would likely force non-voting
+  shares. This hardens the June 8 "Trump-administration-in-talks-for-a-stake" thread into
+  a concrete number — see [[federal-ai-policy]] and [[ai-capex]] (ARA digest 2026-07-02).
 
 ## Open questions
 
