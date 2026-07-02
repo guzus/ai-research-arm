@@ -48,7 +48,20 @@ jobs:
           }
           EOF
 
+      # Base SHA for the standalone output guard below — captured BEFORE the
+      # agent so the guard passes when EITHER the agent or the deterministic
+      # fallback committed under research/arxiv/ (mirrors hourly-rss.yml).
+      - name: Capture arXiv output base
+        id: arxiv-output-base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # continue-on-error so a failed agent (provider outage, MCP server
+      # unavailable, nothing committed — the composite's internal
+      # expected-paths guard fails the step in that case) hands off to the
+      # deterministic fallback instead of killing the job.
       - name: Fetch arXiv AI Papers
+        id: arxiv-agent
+        continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
           backend: fireworks-glm-5p2
@@ -56,7 +69,7 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           claude-args: |
             --model opus --mcp-config /tmp/mcp-config.json
-            --allowedTools "Read,Write,Edit,Bash(git:*),mcp__arxiv__*"
+            --allowedTools "Read,Write,Edit,Bash(git:*),Bash(curl:*),WebFetch,mcp__arxiv__*"
           expected-paths: |
             research/arxiv/
           label: arXiv Fireworks curator
@@ -77,6 +90,11 @@ jobs:
             - Search for papers submitted in last 24 hours
             - "site:arxiv.org cs.AI" submitted today
             - "site:arxiv.org LLM language model" new
+
+            If the arXiv MCP tools are unavailable or erroring, do NOT give up:
+            fetch the arXiv Atom API directly via curl or WebFetch, e.g.
+            `curl -sL "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.LG+OR+cat:cs.CL+OR+cat:cs.CV+OR+cat:cs.NE&sortBy=submittedDate&sortOrder=descending&max_results=100"`
+            and curate from the returned Atom XML instead.
 
             PRIORITIZE papers about:
             1. New model architectures
@@ -148,6 +166,31 @@ jobs:
             historical PNGs/MP3s to LFS pointers in one commit):
             git add research/arxiv/${{ steps.date.outputs.date }}-papers.md research/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt
             git commit -m "arXiv papers ${{ steps.date.outputs.date }}"
+
+      # Model-free floor: when the agent path failed (or committed nothing —
+      # same outcome, via the composite's internal guard), query the arXiv
+      # Atom API directly and commit an uncurated per-category listing so the
+      # lane never goes silently dark. Mirrors the hourly-rss.yml pattern.
+      - name: Deterministic arXiv fallback
+        if: steps.arxiv-agent.outcome == 'failure'
+        run: |
+          set -euo pipefail
+          echo "::warning::arXiv agent path failed; writing deterministic arXiv fallback from the arXiv Atom API."
+          python3 scripts/deterministic_arxiv_digest.py \
+            --out-dir research/arxiv \
+            --date "${{ steps.date.outputs.date }}"
+          git add research/arxiv/
+          git commit -m "arXiv deterministic fallback ${{ steps.date.outputs.date }}" || echo "No deterministic arXiv changes"
+
+      # Final hard gate: SOMETHING (agent or fallback) must have committed
+      # under research/arxiv/ since the pre-agent base SHA.
+      - name: Require arXiv output
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.arxiv-output-base.outputs.sha }}
+          expected-paths: |
+            research/arxiv/
+          label: arXiv workflow output
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the
