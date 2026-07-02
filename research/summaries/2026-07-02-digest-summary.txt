@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-07-02
+
+TOP STORIES:
+• OpenAI floats giving the US govt a 5% stake (~$42.6B), Alaska-fund style — wants Anthropic/Google/Meta to match (FT, unconfirmed)
+• Meta building "Meta Compute" to sell spare AI capacity: $META +~9%, neoclouds CoreWeave/Nebius -12–17% on capex-ceiling fears
+• Anthropic's Fable 5 back worldwide (export ban lifted, metered to Jul 7) and tops Scale AI's Remote Labor Index at ~16%
+
+KEY NUMBERS:
+• Fable 5 #1 on RLI (~16.1%) — still fails ~84% of real freelance work
+• Venice AI: $65M Series A at $1B valuation, >$70M ARR
+• US June layoffs 45,849; AI top-cited reason 4th straight month
+
+TRENDING: HN dominated by Fable 5's return + ZCode/GLM-5.2 coding stack
+
+Full digest on GitHub.
