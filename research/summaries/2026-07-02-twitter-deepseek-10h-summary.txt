@@ -1,0 +1,11 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-07-02 10:35 UTC
+
+CYCLE: Quiet window — no fresh lab announcement; two continuing threads gained concrete detail.
+
+TOP STORIES:
+• Anthropic's real Fable 5 terms: 50% weekly-usage cap through July 7, and safeguards that silently downgrade flagged requests to Opus 4.8 (bio/chem classifiers over-block) [✓]
+• Jelani Nelson (Berkeley EECS chair) reportedly joins Anthropic's PRETRAINING team — capability, not safety [⚠ single-source on the team]
+
+WATCH: Whether the Fable 5 50% cap lifts after July 7 or hardens, and how loud false-positive complaints get on the Opus-4.8 fallback.
+
+Full update on GitHub.
