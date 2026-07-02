@@ -2,7 +2,7 @@
 
 # AI Research Arm
 
-Automated multi-source AI news research agent powered by Claude and MCP.
+Automated multi-source AI news research agent powered by LLMs.
 
 ## Today's Front Page
 
