@@ -181,6 +181,7 @@ the Claude action directly; when they do, pass the model via
 
 | Workflow | Trigger | Purpose |
 |---|---|---|
+| `arm-timeline.yml` | every 2h `:45` | Deterministic refresh of `research/arm/timeline.json` so the dashboard's Arm tab renders in prod (the Docker build context has no `.git`/`.github`, so prebuild falls back to this committed file; unrefreshed it ages out of the ±36h window). |
 | `daily-improve.yml` | weekly, Monday `00:17` UTC | Opens improve/YYYY-MM-DD PR with methodology fixes; each run auto-closes prior unmerged `improve/*` PRs. See "Load-bearing rules" for where the IMPROVEMENTS file belongs. |
 | `ci.yml` | push/PR on workflows/dashboard/scripts | actionlint + dashboard build + Python tests |
 | `claude.yml` | `@claude` mention in issue/PR/review | Interactive Claude-Code agent |
@@ -236,6 +237,7 @@ gh workflow run generative-research.yml \
 ```
 research/
 ├── arxiv/                     # daily-arxiv.yml
+├── arm/                       # arm-timeline.yml (dashboard Arm-tab timeline source; prod fallback for prebuild)
 ├── audio/                     # digest audio; mp3s live on S3 (since May 2026) — committed files are 0-byte stubs
 ├── bluesky/                   # 2h-bluesky.yml
 ├── community/                 # 4h-community.yml (-hn.md, -reddit.md)
