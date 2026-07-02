@@ -109,7 +109,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --mcp-config /tmp/mcp-config.json
+            --model claude-sonnet-5 --mcp-config /tmp/mcp-config.json
             --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__*,mcp__perplexity__*"
           prompt: |
             You are an AI news research agent. Find BREAKING NEWS and RECENT ANNOUNCEMENTS only.
@@ -186,7 +186,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
+            --model claude-sonnet-5 --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
           prompt: |
             You are an AI news research agent. Find BREAKING NEWS and RECENT ANNOUNCEMENTS only.
 

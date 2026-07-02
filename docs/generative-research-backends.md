@@ -5,7 +5,7 @@ research pipeline:
 
 | Dispatch value | Served model | Auth path | Notes |
 |---|---|---|---|
-| `claude` | `claude-opus-4-8` | `CLAUDE_CODE_OAUTH_TOKEN` | Default for manual and issue-triggered generative research. Native Anthropic Claude Code path. The workflow pins `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-8`, so the Claude Code `opus` alias resolves to Opus 4.8 for this lane. |
+| `claude` | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Default for manual and issue-triggered generative research. Native Anthropic Claude Code path. The workflow pins `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-sonnet-5`, so the Claude Code `opus` alias resolves to Sonnet 5 for this lane. |
 | `codex` | Codex CLI default model for ChatGPT auth | `CODEX_AUTH_JSON` seeded into file-backed `auth.json` | Optional Codex backend using ChatGPT-managed Codex auth rather than OpenAI API billing. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 | `glm-5p2` | `GLM 5.2` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional Fireworks backend for GLM 5.2. Routes through `accounts/fireworks/models/glm-5p2` and records `glm-5p2` in article metadata. Uses the same retry, quality-gate, verifier, methodology-artifact, and safe-push path as `deepseek-v4-flash`. |
@@ -292,7 +292,7 @@ The expected difference is the model backend:
   Draft recovery is limited to the
   workflow's run-scoped `$GEN_DRAFT` path, so a self-hosted runner cannot
   reuse stale `/tmp/gen-research*.ara.md` content from another backend or run.
-- Claude: native Anthropic endpoint, `claude-opus-4-8` metadata in
+- Claude: native Anthropic endpoint, `claude-sonnet-5` metadata in
   `research/generative/index.json`.
 
 After the runs finish, compare:

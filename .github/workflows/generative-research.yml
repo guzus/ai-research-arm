@@ -10,7 +10,7 @@ name: Generative Research
 #      infer the research question, then expand into a full article.
 #
 # Backends, mutually exclusive at runtime:
-#   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-opus-4-8).
+#   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-sonnet-5).
 #   * codex    — Codex CLI signed in with ChatGPT-managed auth.json.
 #   * deepseek / glm-5p2 — same action, but redirected to Fireworks'
 #                Anthropic-compatible endpoint via ANTHROPIC_BASE_URL /
@@ -23,7 +23,7 @@ name: Generative Research
 # workflow still flows. Dispatch with fireworks_fallback=none for strict
 # backend-comparison runs that must fail instead of substituting Claude.
 # Fallback runs record honest provenance: the writer records model
-# claude-opus-4-8, and the tags gain fireworks-fallback,requested-<backend>.
+# claude-sonnet-5, and the tags gain fireworks-fallback,requested-<backend>.
 #
 # The Python writer commits internally; this workflow only pushes.
 #
@@ -240,7 +240,7 @@ jobs:
                 | tr -d '[:space:]' \
                 | tr '[:upper:]' '[:lower:]' || true)
               case "$CANDIDATE" in
-                claude-opus-4-8) CANDIDATE="claude" ;;
+                claude-opus-4-8|claude-sonnet-5) CANDIDATE="claude" ;;
                 codex|openai-codex) CANDIDATE="codex" ;;
                 deepseek) CANDIDATE="deepseek-v4-flash" ;;
                 glm-5.2|glm5.2|glm52|glm-5p2) CANDIDATE="glm-5p2" ;;
@@ -280,7 +280,7 @@ jobs:
             codex|openai-codex) BACKEND="codex" ;;
             deepseek) BACKEND="deepseek-v4-flash" ;;
             glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
-            claude-opus-4-8) BACKEND="claude" ;;
+            claude-opus-4-8|claude-sonnet-5) BACKEND="claude" ;;
           esac
           if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
@@ -548,7 +548,7 @@ jobs:
         run: |
           set -euo pipefail
           # When the fallback engaged, the Claude path's writer records
-          # model claude-opus-4-8; these tags additionally record what was
+          # model claude-sonnet-5; these tags additionally record what was
           # REQUESTED so a fallback article can never masquerade as a
           # Fireworks-authored one in index.json / on the dashboard.
           if [ "${FALLBACK_USED:-false}" = "true" ]; then
@@ -582,7 +582,7 @@ jobs:
 
       # ---- Claude backend ---------------------------------------------------
       # OAuth-authenticated against native Anthropic. The writer records
-      # --model claude-opus-4-8 (the actual served model). Pinning
+      # --model claude-sonnet-5 (the actual served model). Pinning
       # ANTHROPIC_DEFAULT_OPUS_MODEL keeps the CLI's --model opus alias from
       # drifting under this workflow. This lane is gated on the EFFECTIVE
       # backend, so it also serves runs that requested a Fireworks profile
@@ -613,7 +613,7 @@ jobs:
           # hourly-twitter workflow.
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
-          ANTHROPIC_DEFAULT_OPUS_MODEL: claude-opus-4-8
+          ANTHROPIC_DEFAULT_OPUS_MODEL: claude-sonnet-5
         with: &claude_with
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # The hourly Twitter lane auto-dispatches this workflow with
@@ -1666,7 +1666,7 @@ jobs:
                     --tags "$(cat .gen-input/tags.txt)" \
                     --source "$GEN_SOURCE" \
                     --prompt "$(cat .gen-input/prompt.txt)" \
-                    --model claude-opus-4-8 \
+                    --model claude-sonnet-5 \
                     --cite-density-min 10 --refs-min 20 \
                     --qsanity \
                     --html-body "$GEN_DRAFT"
@@ -1678,7 +1678,7 @@ jobs:
                     --tags "$(cat .gen-input/tags.txt)" \
                     --source "$GEN_SOURCE" \
                     --prompt "$(cat .gen-input/prompt.txt)" \
-                    --model claude-opus-4-8 \
+                    --model claude-sonnet-5 \
                     --cite-density-min 10 --refs-min 20 \
                     --qsanity \
                     --html-body "$GEN_DRAFT"
