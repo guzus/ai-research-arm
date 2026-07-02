@@ -180,9 +180,81 @@ def iter_entries(root: ET.Element) -> tuple[bool, Iterable[ET.Element]]:
     return False, [child for child in list(parent) if local_name(child.tag) == "item"]
 
 
-def parse_feed(source: Source, body: bytes) -> list[FeedItem]:
-    root = ET.fromstring(body)
+# Common feed namespace prefixes that show up *inside* <item>/<entry> bodies
+# (content:encoded, dc:date, media:*, ...). When we salvage an entry in
+# isolation we re-declare them on a synthetic wrapper so those prefixed
+# children don't trip an "unbound prefix" parse error.
+_FEED_NAMESPACES = {
+    "content": "http://purl.org/rss/1.0/modules/content/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "atom": "http://www.w3.org/2005/Atom",
+    "media": "http://search.yahoo.com/mrss/",
+    "slash": "http://purl.org/rss/1.0/modules/slash/",
+    "wfw": "http://wellformedness.net/wfw/",
+}
+
+# Bytes that XML 1.0 forbids — a single stray one yields "not well-formed
+# (invalid token)" and (with strict parsing) drops the entire feed.
+_CONTROL_CHARS_RE = re.compile(rb"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+# A bare '&' that is not the start of a numeric or named entity.
+_BARE_AMP_RE = re.compile(rb"&(?!#[0-9]+;|#x[0-9a-fA-F]+;|[A-Za-z][A-Za-z0-9]*;)")
+# Individual entry blocks, used for last-resort per-entry salvage.
+_ENTRY_BLOCK_RE = re.compile(rb"<(item|entry)\b[^>]*>.*?</\1\s*>", re.DOTALL | re.IGNORECASE)
+
+
+def _sanitize_xml(body: bytes) -> bytes:
+    """Repair the two malformations that most often break otherwise-valid feeds:
+    invalid XML control bytes and bare ampersands."""
+    body = _CONTROL_CHARS_RE.sub(b"", body)
+    return _BARE_AMP_RE.sub(b"&amp;", body)
+
+
+def _salvage_entries(body: bytes) -> list[ET.Element]:
+    """Recover whatever <item>/<entry> blocks still parse on their own.
+
+    A single mismatched tag (or a truncated download) makes strict
+    ``ET.fromstring`` reject the *whole* feed, throwing away every good entry.
+    Here we extract each entry block and parse it in isolation under a wrapper
+    that re-declares the common feed namespaces, keeping the survivors.
+    """
+    ns_decl = " ".join(
+        f'xmlns:{prefix}="{uri}"' for prefix, uri in _FEED_NAMESPACES.items()
+    ).encode()
+    recovered: list[ET.Element] = []
+    for match in _ENTRY_BLOCK_RE.finditer(body):
+        wrapped = b"<__salvage__ " + ns_decl + b">" + _sanitize_xml(match.group(0)) + b"</__salvage__>"
+        try:
+            node = ET.fromstring(wrapped)
+        except ET.ParseError:
+            continue
+        recovered.extend(list(node))
+    return recovered
+
+
+def resilient_entries(body: bytes) -> tuple[bool, list[ET.Element]]:
+    """Parse a feed body into (is_atom, entry_elements), tolerating malformed XML.
+
+    Fast path is strict parsing; on failure we retry after sanitizing, then fall
+    back to per-entry salvage. Only when nothing at all is recoverable does the
+    original ``ET.ParseError`` propagate (so a genuinely non-feed body — e.g. an
+    HTML error page from a proxy — still surfaces as a Feed Note)."""
+    try:
+        root = ET.fromstring(body)
+    except ET.ParseError:
+        try:
+            root = ET.fromstring(_sanitize_xml(body))
+        except ET.ParseError:
+            entries = _salvage_entries(body)
+            if not entries:
+                raise
+            atom = any(local_name(entry.tag) == "entry" for entry in entries)
+            return atom, entries
     atom, entries = iter_entries(root)
+    return atom, list(entries)
+
+
+def parse_feed(source: Source, body: bytes) -> list[FeedItem]:
+    atom, entries = resilient_entries(body)
     items: list[FeedItem] = []
     for entry in entries:
         title = child_text(entry, "title")
