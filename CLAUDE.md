@@ -136,8 +136,11 @@ through Fireworks profiles when Fireworks preflight passes. If Fireworks is
 unavailable (for example billing/spend-limit suspension), the wrapper falls
 back to native Claude by default so scheduled freshness does not hard-stop.
 It can also enforce that the expected output paths were actually committed. The
-RSS and HN/Reddit community workflows add deterministic parser fallbacks after
-the agent step, then run a final `.github/actions/require-output` guard. For
+RSS, HN/Reddit community, arXiv, daily-digest, and Bluesky workflows (plus the
+twitter-deepseek comparison tier) add deterministic model-free fallbacks after
+the agent step, then run a final `.github/actions/require-output` guard — the
+digest additionally gates its agent output on a hard content floor
+(`scripts/check_digest_content.py`) before the fallback decision. For
 those lanes, a green run means a committed daily artifact exists; inspect the
 agent/fallback step logs before treating it as evidence that Fireworks or
 native Claude was healthy. PR/review/on-demand Claude workflows may still call
@@ -178,7 +181,7 @@ the Claude action directly; when they do, pass the model via
 
 | Workflow | Trigger | Purpose |
 |---|---|---|
-| `daily-improve.yml` | daily `00:17` | Opens improve/YYYY-MM-DD PR with workflow fixes. See "Load-bearing rules" for where the IMPROVEMENTS file belongs. |
+| `daily-improve.yml` | weekly, Monday `00:17` UTC | Opens improve/YYYY-MM-DD PR with methodology fixes; each run auto-closes prior unmerged `improve/*` PRs. See "Load-bearing rules" for where the IMPROVEMENTS file belongs. |
 | `ci.yml` | push/PR on workflows/dashboard/scripts | actionlint + dashboard build + Python tests |
 | `claude.yml` | `@claude` mention in issue/PR/review | Interactive Claude-Code agent |
 | `claude-code-review.yml` | PR opened/synced | Automated Claude code review |
@@ -230,11 +233,11 @@ gh workflow run generative-research.yml \
 ```
 research/
 ├── arxiv/                     # daily-arxiv.yml
-├── audio/                     # ad-hoc audio artifacts
+├── audio/                     # digest audio; mp3s live on S3 (since May 2026) — committed files are 0-byte stubs
 ├── bluesky/                   # 2h-bluesky.yml
 ├── community/                 # 4h-community.yml (-hn.md, -reddit.md)
 ├── digest/                    # daily-digest.yml
-├── front-page/                # daily-front-page.yml (PNG)
+├── front-page/                # daily-front-page.yml (committed PNG + interactive .ara.md/.html edition)
 ├── generative/                # generative-research.yml + Oracle runner (HTML + .ara.md + index.json)
 ├── issues/                    # research-issue.yml
 ├── models/                    # 24h-model-timeline.yml
@@ -268,12 +271,13 @@ Secrets are configured in GitHub Actions. None are committed.
 | `DEEPSEEK_API_KEY` | _Retired_ — DeepSeek lanes now route through Fireworks | No longer referenced by any workflow. |
 | `FIREWORKS_API_KEY` | Scheduled content lanes through `.github/actions/agent-run`; `generative-research backend=deepseek-v4-flash` / `backend=glm-5p2`; all `hourly-twitter.yml` non-primary comparison lanes (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Required for the DeepSeek-V4-Flash/GLM-via-Fireworks and Kimi lanes. |
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | All bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies. |
-| `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional; enhance MCP search. |
+| `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional; enhance MCP search. **Currently unset in the repo** (verified absent 2026-07-02) — `daily-digest` detects the absence, emits a run warning, and uses its local-source synthesis path until they are restored. |
 | `GEMINI_API_KEY` | `daily-digest` (inline Gemini Flash TTS for digest audio); also the manual `generate_generative_article_audio.py` | Optional; without it, audio generation is skipped. |
+| `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `S3_ENDPOINT_URL`, `S3_BUCKET` | `daily-digest` (audio upload) | Optional; generated digest mp3s upload to S3 while the working tree keeps 0-byte stubs. Missing = upload skipped. |
 | `HOOKER_TOKEN` | Telemetry composite action | Optional; without it, telemetry steps no-op. |
 | `HOOKER_URL` | Hooker telemetry composite + most workflows (the hooker endpoint, distinct from `HOOKER_TOKEN`) | The `https://hooker.guzus.xyz`-style base URL the telemetry/alert steps POST to. Referenced widely across workflows/actions. |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `hourly-twitter*` | For headline alert delivery. |
-| `VERCEL_DEPLOY_HOOK` | `24h-model-timeline`, `wiki-ingest`, `hourly-twitter` (claude tier) | Optional legacy nudge to a Vercel project that does NOT serve ara.guzus.xyz (prod deploys are Railway, git-push driven — Load-bearing rule 3; Vercel's last recorded deploy failed 2026-05-25). Harmless: the step no-ops when unset. |
+| `VERCEL_DEPLOY_HOOK` | `24h-model-timeline`, `wiki-ingest`, `hourly-twitter` (claude tier) | **Secret removed from the repo** (verified absent 2026-07-02); the referencing steps are permanent no-ops kept as legacy scaffolding and safe to delete in a future cleanup. Vercel does NOT serve ara.guzus.xyz — prod deploys are Railway, git-push driven (Load-bearing rule 3). |
 | `GITHUB_TOKEN` | All workflows | Auto-provided. |
 
 ## Load-bearing Rules
@@ -310,10 +314,10 @@ output or break the pipeline. Read them before editing.
    the builder + healthcheck). ara.guzus.xyz is served by that
    container behind Cloudflare (responses carry `x-railway-edge`) —
    NOT by Vercel, whose last recorded deploy failed 2026-05-25. Its
-   `dashboard/vercel.json` was removed during open-sourcing; the only
-   remaining leftover is the `VERCEL_DEPLOY_HOOK` secret — a harmless
-   legacy no-op still referenced by a few workflows. There is still no
-   workflow file for deploys.
+   `dashboard/vercel.json` was removed during open-sourcing, and the
+   `VERCEL_DEPLOY_HOOK` secret has since been deleted from the repo —
+   the steps that still reference it in a few workflows are permanent
+   no-ops. There is still no workflow file for deploys.
    `dashboard/scripts/prebuild.mjs` copies `research/<source>/` into
    `public/research/` and emits `manifest.json` before Vite runs (the
    Docker build runs the same `bun run build` lifecycle). Touching it
@@ -338,8 +342,10 @@ output or break the pipeline. Read them before editing.
    state — bird CLI + warm birdy daemon (`hourly-twitter*`,
    `24h-model-timeline`), recent `research/` checkout for prior-output context
    (`daily-digest`, `ci.yml` dashboard job), pre-installed pnpm/Oracle
-   tooling. Generated media lives in S3; `daily-front-page` renders via
-   resvg and uploads the PNG rather than committing it. Use
+   tooling. Digest audio lives in S3 (uploaded by `daily-digest` via the
+   `S3_*` secrets; the committed `research/audio/*.mp3` files are 0-byte
+   stubs), while `daily-front-page` renders via resvg and COMMITS the
+   PNG alongside the interactive `.ara.md`/`.html` edition. Use
    `[self-hosted, Linux]` for anything touching that state,
    which is nearly everything. Reserve `ubuntu-latest` for the two
    watchdogs that must outlive a self-hosted outage (`liveness-check.yml`,
@@ -356,9 +362,9 @@ output or break the pipeline. Read them before editing.
 7. **Improvement logs belong in `docs/archive/`.** When
    `daily-improve.yml` (or any agent) generates a new improvements
    file, write it to `docs/archive/YYYY-MM-DD-improvements.md`, not
-   to repo root. The workflow prompt still says "Create an
-   IMPROVEMENTS.md" — that text predates this rule. Follow this rule,
-   not the older prompt.
+   to repo root. (The workflow prompt now says this too — the old
+   "Create an IMPROVEMENTS.md" wording is gone. The improve loop runs
+   weekly on Mondays and auto-closes its own stale `improve/*` PRs.)
 
 8. **Atomic file writes.** Long-running aggregation scripts that
    write into `research/` should write to a temp file in the same

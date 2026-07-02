@@ -93,7 +93,7 @@ flowchart TB
     Digest --> digest_out["research/digest/"]
 
     subgraph improve["🔄 Self-Improvement"]
-        Improve["daily-improve.yml<br/><i>00:17 UTC</i>"]
+        Improve["daily-improve.yml<br/><i>Mon 00:17 UTC</i>"]
     end
 
     digest_out --> Improve
@@ -156,13 +156,13 @@ gantt
 | `hourly-rss.yml` | Every 2 hours (:30) | Official blogs, TechCrunch, arXiv RSS | `research/rss/` |
 | `daily-ai-blogs.yml` | Every 6 hours (:13) | Curated KOL Substacks, expert blogs, research/operator blogs | `research/blogs/` |
 | `daily-youtube.yml` | Daily 23:20 UTC for the next 00:00 digest | tuber API trending/search/channel metadata, existing summaries, transcript probes | `research/youtube/` |
-| `2h-bluesky.yml` | Daily 00:11 UTC | Bluesky AI posts | `research/bluesky/` |
+| `2h-bluesky.yml` | Daily 10:11 UTC | Bluesky AI posts | `research/bluesky/` |
 | `4h-community.yml` | Every 4 hours | Reddit RSS + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 06:13 UTC | arXiv papers | `research/arxiv/` |
 | `daily-digest.yml` | Daily 00:00 UTC | All sources + MCP search | `research/digest/` |
 | `hourly-twitter.yml` (matrix) | claude tier every 3h (`:07`), deepseek-claude-code tier every 6h (`:37`), deepseek-pi and fireworks-pi tiers manual | Twitter/X via bird CLI (reviewed account manifest, 7 search queries) | `research/twitter/` (claude) + `research/twitter-deepseek/` (Claude Code) + `research/twitter-deepseek-pi/` (pi) + `research/twitter-fireworks-pi/` (Fireworks pi) |
 | `ai-news-research.yml` | Twice daily (08:23, 20:23 UTC) | Perplexity/Exa MCP | `research/` |
-| `daily-improve.yml` | Daily 00:17 UTC | Self-improvement | PRs with improvements |
+| `daily-improve.yml` | Weekly (Mon 00:17 UTC) | Self-improvement | PRs with improvements |
 | `twitter-account-explorer.yml` | Weekly (Tue 01:47 UTC) + manual | Scouts high-signal AI accounts; trust-weighted curation of `data/sources/twitter_accounts.json` | Reviewed PRs (`app/claude`) |
 | `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
 | `generative-research.yml` | On `gen-research` issue label or `workflow_dispatch` (`topic` or `twitter_url`) | Claude, Codex, or Fireworks-backed models write an HTML article | `research/generative/` |
