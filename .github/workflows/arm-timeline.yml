@@ -75,6 +75,8 @@ jobs:
       - name: Push changes
         if: steps.commit.outputs.changed == 'true'
         uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish Hooker workflow telemetry
         if: always()
