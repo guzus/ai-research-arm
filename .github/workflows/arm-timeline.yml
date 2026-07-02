@@ -1,0 +1,87 @@
+name: Arm Timeline Refresh
+
+# Keeps research/arm/timeline.json fresh so the dashboard's "Arm" tab has
+# data in production. The Railway Docker build context excludes .git and
+# .github (.dockerignore), so prebuild.mjs cannot collect completed work
+# (git log) or scheduled work (workflow crons) at image-build time — it
+# falls back to this committed file. Without a refresher the fallback ages
+# out of the ±36h render window and the tab shows "No completed or
+# scheduled work found" (the 2026-07-02 empty-tab incident).
+#
+# Deterministic lane: no model involved. scripts/check_lane_freshness.py
+# watches research/arm/ with a 7h threshold (~3 missed 2h cycles).
+
+on:
+  schedule:
+    # Every 2 hours at :45, offset from the other lanes' minute slots.
+    - cron: '45 */2 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: arm-timeline
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 15
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          # Full history: prebuild's collectCompletedArmItems reads
+          # `git log --max-count=140` for the completed-work half.
+          fetch-depth: 0
+
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v2
+
+      # prebuild.mjs imports js-yaml, so dashboard deps must be installed
+      # even though this job only cares about the arm timeline output.
+      - name: Install dashboard dependencies
+        working-directory: dashboard
+        run: bun install --frozen-lockfile
+
+      # ARM_TIMELINE_WRITE_SOURCE=1 makes prebuild also write the collected
+      # timeline to research/arm/timeline.json (the committed source the
+      # Docker build falls back to). SKIP_LFS_POINTERS=1 keeps this
+      # ancillary job from hard-failing on unhydrated media pointers —
+      # only the timeline JSON matters here.
+      - name: Regenerate arm timeline source
+        env:
+          ARM_TIMELINE_WRITE_SOURCE: '1'
+          SKIP_LFS_POINTERS: '1'
+        run: node dashboard/scripts/prebuild.mjs
+
+      # Commit only the timeline source. generatedAt changes every run, so
+      # in practice each cycle commits — that is the point of the lane: the
+      # committed fallback must stay inside the ±36h render window.
+      - name: Commit refreshed timeline
+        id: commit
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- research/arm/timeline.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "arm timeline unchanged; nothing to commit"
+            exit 0
+          fi
+          git add research/arm/timeline.json
+          git commit -m "Arm timeline refresh $(date -u +'%Y-%m-%d %H:%M UTC')"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Push changes
+        if: steps.commit.outputs.changed == 'true'
+        uses: ./.github/actions/safe-push
+
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+          text: "arm-timeline committed=${{ steps.commit.outputs.changed }}"
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
