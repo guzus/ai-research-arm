@@ -218,17 +218,29 @@ runs because full tool output can include fetched page bodies and draft text.
 
 The Fireworks path preflights the selected model with a one-token
 Anthropic-compatible request before Claude Code starts. Provider/account errors
-that retries cannot fix (`400`, `401`, `402`, `403`, `404`, `412`) stop
-immediately with a normal Actions annotation; transient statuses such as a lone
-`429` still proceed to the existing retry path. The retry gate also reads the
-Claude Code execution transcript and prints short API-error annotations when the
-transcript includes provider status fields, which is most useful during
-`debug_full_output=true` runs.
+that retries cannot fix (`400`, `401`, `402`, `403`, `404`, `412` — e.g. an
+account suspension) no longer kill the run: by default the workflow resolves
+the EFFECTIVE backend to native Claude and the normal Claude lane runs,
+mirroring `.github/actions/agent-run`. Dispatch with `fireworks_fallback=none`
+to restore the strict behavior (fail instead of substituting Claude) for
+backend-comparison runs. Fallback runs are honest about provenance: a
+`::warning` annotation records the reroute, the hooker telemetry payload
+carries `backend` (effective) + `requested_backend` + `used_fallback`, and the
+published article records `model claude-opus-4-8` with tags
+`fireworks-fallback,requested-<backend>` in `research/generative/index.json` —
+a fallback article never masquerades as a Fireworks one. Transient statuses
+such as a lone `429` still proceed to the existing Fireworks retry path. The
+retry gate also reads the Claude Code execution transcript and prints short
+API-error annotations when the transcript includes provider status fields,
+which is most useful during `debug_full_output=true` runs.
 
 ## Comparing Backends
 
 Use the same topic and distinct slugs. The topic drives the prompt and
-prior-context lookup; the slug only keeps artifacts separate.
+prior-context lookup; the slug only keeps artifacts separate. For the
+Fireworks lanes, pass `fireworks_fallback=none` so an unavailable Fireworks
+account fails the run instead of silently substituting a Claude article into
+the comparison set (the default, `claude`, favors flow over strictness).
 
 ```bash
 TOPIC="QA comparison: AI infrastructure power bottlenecks in 2026"
@@ -237,12 +249,14 @@ gh workflow run generative-research.yml \
   -f topic="$TOPIC" \
   -f slug="qa-deepseek-v4-flash-power-bottlenecks" \
   -f backend=deepseek-v4-flash \
+  -f fireworks_fallback=none \
   -f tags="qa,comparison,deepseek"
 
 gh workflow run generative-research.yml \
   -f topic="$TOPIC" \
   -f slug="qa-glm-5p2-power-bottlenecks" \
   -f backend=glm-5p2 \
+  -f fireworks_fallback=none \
   -f tags="qa,comparison,glm-5p2"
 
 gh workflow run generative-research.yml \
