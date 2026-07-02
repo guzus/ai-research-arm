@@ -16,6 +16,15 @@ name: Generative Research
 #                Anthropic-compatible endpoint via ANTHROPIC_BASE_URL /
 #                ANTHROPIC_AUTH_TOKEN.
 #
+# Fireworks availability: a requested Fireworks backend is preflighted before
+# the agent runs. On a non-retryable preflight failure (e.g. 402/412 account
+# suspension, missing FIREWORKS_API_KEY) the run falls back to the native
+# Claude path by default — mirroring .github/actions/agent-run — so the
+# workflow still flows. Dispatch with fireworks_fallback=none for strict
+# backend-comparison runs that must fail instead of substituting Claude.
+# Fallback runs record honest provenance: the writer records model
+# claude-opus-4-8, and the tags gain fireworks-fallback,requested-<backend>.
+#
 # The Python writer commits internally; this workflow only pushes.
 #
 # SECURITY: Issue title/body are passed through env: into bash, never
@@ -52,6 +61,14 @@ on:
           - codex
           - claude
           - deepseek
+      fireworks_fallback:
+        description: 'If a Fireworks backend fails preflight: claude = fall back to native Claude (default), none = fail the run (strict backend comparison)'
+        required: false
+        default: claude
+        type: choice
+        options:
+          - claude
+          - none
       tags:
         description: 'Comma-separated tags (optional)'
         required: false
@@ -324,9 +341,18 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "Resolved Fireworks model: $display_name ($model_id)"
 
+      # One-token probe of the selected Fireworks model BEFORE the expensive
+      # agent step. The script exits 1 only on non-retryable provider/account
+      # statuses (400/401/402/403/404/412, or a missing FIREWORKS_API_KEY);
+      # retryable statuses (429/5xx) exit 0 and keep the Fireworks lane, whose
+      # attempt + 2-retry ladder below is the designed handler for transient
+      # blips. continue-on-error keeps a preflight failure from killing the
+      # job — the "Resolve effective backend" step next decides whether to
+      # fall back to native Claude or fail, mirroring agent-run's design.
       - name: Preflight Fireworks backend
         id: fireworks-preflight
         if: steps.fireworks.outputs.model_id != ''
+        continue-on-error: true
         env:
           FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
           FIREWORKS_MODEL_ID: ${{ steps.fireworks.outputs.model_id }}
@@ -334,6 +360,58 @@ jobs:
           uv run python scripts/check_fireworks_backend.py \
             --model "$FIREWORKS_MODEL_ID" \
             --github-output "$GITHUB_OUTPUT"
+
+      # Decide which backend actually runs. Mirrors agent-run's "Resolve
+      # effective backend": when a Fireworks profile was requested but its
+      # preflight step failed (non-retryable status such as a 412 account
+      # suspension), route the run to the native Claude path instead of
+      # hard-failing — unless fireworks_fallback=none was dispatched
+      # (comparison-strict runs where a Claude article must never stand in
+      # for a Fireworks one). Every downstream backend gate reads THIS
+      # step's outputs, not steps.params.outputs.backend. Outputs are
+      # written on every path (including the fail-fast one) so the always()
+      # reporting steps stay honest about what was requested vs. what ran.
+      - name: Resolve effective backend
+        id: effective
+        env:
+          REQUESTED_BACKEND: ${{ steps.params.outputs.backend }}
+          FIREWORKS_MODEL_ID: ${{ steps.fireworks.outputs.model_id }}
+          PREFLIGHT_OUTCOME: ${{ steps.fireworks-preflight.outcome }}
+          PREFLIGHT_STATUS: ${{ steps.fireworks-preflight.outputs.status }}
+          PREFLIGHT_MESSAGE: ${{ steps.fireworks-preflight.outputs.message }}
+          # Empty on the issues path (no dispatch inputs) — bash defaults it
+          # to claude below so issue-requested Fireworks backends also flow.
+          FIREWORKS_FALLBACK: ${{ github.event.inputs.fireworks_fallback }}
+        run: |
+          set -euo pipefail
+          backend="$REQUESTED_BACKEND"
+          used_fallback=false
+          failed=false
+          if [ -n "$FIREWORKS_MODEL_ID" ] && [ "$PREFLIGHT_OUTCOME" != "success" ]; then
+            if [ "${FIREWORKS_FALLBACK:-claude}" = "none" ]; then
+              echo "::error::Fireworks backend ${REQUESTED_BACKEND} is unavailable (status=${PREFLIGHT_STATUS:-unknown}) and fireworks_fallback=none — failing instead of falling back. ${PREFLIGHT_MESSAGE:-}"
+              failed=true
+            else
+              backend="claude"
+              used_fallback=true
+              echo "::warning::Fireworks backend ${REQUESTED_BACKEND} is unavailable (status=${PREFLIGHT_STATUS:-unknown}); falling back to native Claude. ${PREFLIGHT_MESSAGE:-}"
+            fi
+          fi
+          fireworks_active=false
+          if [ "$failed" = "false" ] && { [ "$backend" = "deepseek-v4-flash" ] || [ "$backend" = "glm-5p2" ]; }; then
+            fireworks_active=true
+          fi
+          {
+            echo "backend=$backend"
+            echo "requested_backend=$REQUESTED_BACKEND"
+            echo "used_fallback=$used_fallback"
+            echo "fireworks_active=$fireworks_active"
+          } >> "$GITHUB_OUTPUT"
+          echo "Requested backend:  $REQUESTED_BACKEND"
+          echo "Effective backend:  $backend (used_fallback=$used_fallback, fireworks_active=$fireworks_active)"
+          if [ "$failed" = "true" ]; then
+            exit 1
+          fi
 
       # Verify the writer's required output directory exists. The writer
       # raises SystemExit if research/generative/ is missing, so failing
@@ -462,8 +540,20 @@ jobs:
           GEN_PROMPT: ${{ steps.params.outputs.prompt }}
           GEN_TAGS: ${{ steps.params.outputs.tags }}
           GEN_TWITTER_URL: ${{ steps.params.outputs.twitter_url }}
+          # Honest provenance for Fireworks→Claude fallback runs (see the
+          # "Resolve effective backend" step): both values are
+          # workflow-derived tokens, not user free text.
+          FALLBACK_USED: ${{ steps.effective.outputs.used_fallback }}
+          REQUESTED_BACKEND: ${{ steps.params.outputs.backend }}
         run: |
           set -euo pipefail
+          # When the fallback engaged, the Claude path's writer records
+          # model claude-opus-4-8; these tags additionally record what was
+          # REQUESTED so a fallback article can never masquerade as a
+          # Fireworks-authored one in index.json / on the dashboard.
+          if [ "${FALLBACK_USED:-false}" = "true" ]; then
+            GEN_TAGS="${GEN_TAGS:+${GEN_TAGS},}fireworks-fallback,requested-${REQUESTED_BACKEND}"
+          fi
           mkdir -p "$GITHUB_WORKSPACE/.gen-input"
           printf '%s' "$GEN_TOPIC"  > "$GITHUB_WORKSPACE/.gen-input/topic.txt"
           printf '%s' "$GEN_PROMPT" > "$GITHUB_WORKSPACE/.gen-input/prompt.txt"
@@ -494,13 +584,15 @@ jobs:
       # OAuth-authenticated against native Anthropic. The writer records
       # --model claude-opus-4-8 (the actual served model). Pinning
       # ANTHROPIC_DEFAULT_OPUS_MODEL keeps the CLI's --model opus alias from
-      # drifting under this workflow.
+      # drifting under this workflow. This lane is gated on the EFFECTIVE
+      # backend, so it also serves runs that requested a Fireworks profile
+      # but fell back here when preflight found Fireworks unavailable.
       # Hard wall-clock cap on the model step. The runner already lost
       # comms once when the action ran ~19m on the un-capped concurrent
       # fan-out version of the prompt; pacing fixed that, but a stuck
       # runner is much worse than a missed article, so hard-cap here.
       - name: Run Generative Research (Claude, attempt 1)
-        if: steps.params.outputs.backend == 'claude'
+        if: steps.effective.outputs.backend == 'claude'
         id: gen-claude
         continue-on-error: true
         timeout-minutes: 90
@@ -1606,7 +1698,7 @@ jobs:
       # steps within the same job) and finishes the draft instead of
       # restarting research from scratch.
       - name: Inspect Claude attempt 1
-        if: steps.params.outputs.backend == 'claude'
+        if: steps.effective.outputs.backend == 'claude'
         id: claude-attempt-1
         env:
           PRE_SHA: ${{ steps.pre.outputs.sha }}
@@ -1674,7 +1766,7 @@ jobs:
       # refreshed tokens between jobs. This uses the user's ChatGPT/Codex
       # subscription entitlement, not OpenAI API billing.
       - name: Bootstrap Codex ChatGPT auth
-        if: steps.params.outputs.backend == 'codex'
+        if: steps.effective.outputs.backend == 'codex'
         id: codex-auth
         env:
           CODEX_AUTH_JSON: ${{ secrets.CODEX_AUTH_JSON }}
@@ -1701,13 +1793,13 @@ jobs:
           echo "home=$CODEX_HOME" >> "$GITHUB_OUTPUT"
 
       - name: Install Codex CLI
-        if: steps.params.outputs.backend == 'codex'
+        if: steps.effective.outputs.backend == 'codex'
         run: npm install -g @openai/codex
 
       # This backend uses the same staged-input files, writer-owned commit, and
       # verifier/methodology artifact contract as the Claude/Fireworks paths.
       - name: Run Generative Research (Codex)
-        if: steps.params.outputs.backend == 'codex'
+        if: steps.effective.outputs.backend == 'codex'
         id: gen-codex
         continue-on-error: true
         timeout-minutes: 90
@@ -1736,9 +1828,12 @@ jobs:
       # claude-code-action redirected to Fireworks' Anthropic-compatible
       # endpoint. The OAuth input is required by the action schema but ignored
       # by the CLI when ANTHROPIC_BASE_URL is set. The writer records the
-      # resolved model label from the selected backend.
+      # resolved model label from the selected backend. Gated on the
+      # EFFECTIVE backend (not the requested one): when preflight found
+      # Fireworks unavailable and the run fell back to Claude, this lane
+      # must not run.
       - name: Run Generative Research (Fireworks, attempt 1)
-        if: steps.fireworks.outputs.model_id != ''
+        if: steps.effective.outputs.fireworks_active == 'true'
         id: gen-deepseek
         continue-on-error: true
         timeout-minutes: 90
@@ -2858,7 +2953,7 @@ jobs:
               invocation; do not work around the validator.
 
       - name: Inspect Fireworks attempt 1
-        if: steps.fireworks.outputs.model_id != ''
+        if: steps.effective.outputs.fireworks_active == 'true'
         id: deepseek-attempt-1
         env:
           PRE_SHA: ${{ steps.pre.outputs.sha }}
@@ -3297,13 +3392,22 @@ jobs:
           HAS_FILE: ${{ steps.outfile.outputs.has_file }}
           FILE_NAME: ${{ steps.outfile.outputs.file }}
           PUSHED: ${{ steps.push.outputs.pushed }}
-          BACKEND: ${{ steps.params.outputs.backend }}
+          # Effective backend (what actually ran); falls back to the
+          # requested one when the job died before backend resolution.
+          BACKEND: ${{ steps.effective.outputs.backend || steps.params.outputs.backend }}
+          REQUESTED_BACKEND: ${{ steps.params.outputs.backend }}
+          USED_FALLBACK: ${{ steps.effective.outputs.used_fallback }}
         with:
           script: |
             const hasFile = process.env.HAS_FILE === 'true';
             const pushed = process.env.PUSHED === 'true';
             const filename = process.env.FILE_NAME || '';
             const backend = process.env.BACKEND || '';
+            const requested = process.env.REQUESTED_BACKEND || '';
+            const usedFallback = process.env.USED_FALLBACK === 'true';
+            const backendLine = usedFallback
+              ? `Backend: \`${backend}\` (requested \`${requested}\`; Fireworks unavailable — fell back to native Claude)\n`
+              : `Backend: \`${backend}\`\n`;
             const issueNumber = context.issue.number;
             const repoUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}`;
 
@@ -3311,12 +3415,12 @@ jobs:
             if (hasFile && pushed && filename) {
               const blobUrl = `${repoUrl}/blob/main/research/generative/${filename}`;
               body = `## 🧪 Generative research complete\n\n` +
-                     `Backend: \`${backend}\`\n` +
+                     backendLine +
                      `File: [\`${filename}\`](${blobUrl})\n\n` +
                      `The article will also appear on the dashboard once the deploy workflow runs.`;
             } else if (hasFile && !pushed) {
               body = `## 🧪 Generative research drafted, but push failed\n\n` +
-                     `Backend: \`${backend}\`\n` +
+                     backendLine +
                      `File: \`${filename}\` (local to the runner, not published)\n\n` +
                      `Likely cause: a rebase conflict or auth issue. Check the workflow logs and re-run.`;
             } else {
@@ -3341,7 +3445,11 @@ jobs:
           HAS_FILE: ${{ steps.outfile.outputs.has_file }}
           FILE_NAME: ${{ steps.outfile.outputs.file }}
           PUSHED: ${{ steps.push.outputs.pushed }}
-          BACKEND: ${{ steps.params.outputs.backend }}
+          # Effective backend (what actually ran); falls back to the
+          # requested one when the job died before backend resolution.
+          BACKEND: ${{ steps.effective.outputs.backend || steps.params.outputs.backend }}
+          REQUESTED_BACKEND: ${{ steps.params.outputs.backend }}
+          USED_FALLBACK: ${{ steps.effective.outputs.used_fallback }}
           GEN_TOPIC: ${{ steps.params.outputs.topic }}
           GEN_SLUG: ${{ steps.params.outputs.slug }}
           GEN_TAGS: ${{ steps.params.outputs.tags }}
@@ -3383,9 +3491,13 @@ jobs:
           has_file = env("HAS_FILE") == "true"
           pushed = env("PUSHED") == "true"
           file_name = env("FILE_NAME")
+          used_fallback = env("USED_FALLBACK") == "true"
+          requested_backend = env("REQUESTED_BACKEND")
           status = "published" if has_file and pushed else ("drafted_not_pushed" if has_file else "no_article")
           priority = 4 if status == "published" else 5
           tags = ["ara", "generative-research", env("BACKEND"), status]
+          if used_fallback:
+              tags.append("fireworks-fallback")
           tags.extend(t.strip() for t in env("GEN_TAGS").split(",") if t.strip())
 
           metrics = {}
@@ -3447,6 +3559,8 @@ jobs:
           payload = {
               "status": status,
               "backend": env("BACKEND"),
+              "requested_backend": requested_backend,
+              "used_fallback": used_fallback,
               "topic": env("GEN_TOPIC"),
               "slug": index_row.get("slug") or env("GEN_SLUG"),
               "tags": tags,
@@ -3465,9 +3579,12 @@ jobs:
               "model_step_outcomes": outcomes,
           }
 
+          backend_line = f"Backend: {payload['backend']}"
+          if used_fallback:
+              backend_line += f" (requested {requested_backend}; fireworks-fallback)"
           lines = [
               f"Status: {status}",
-              f"Backend: {payload['backend']}",
+              backend_line,
               f"Slug: {payload['slug'] or '(generated)'}",
               f"Run: {payload['run_url']}",
           ]
@@ -3508,14 +3625,19 @@ jobs:
             --data-binary "@$HOOKER_PAYLOAD_PATH"
 
       - name: Fail Codex run without article
-        if: always() && steps.params.outputs.backend == 'codex' && steps.outfile.outputs.has_file != 'true'
+        if: always() && steps.effective.outputs.backend == 'codex' && steps.outfile.outputs.has_file != 'true'
         run: |
           echo "::error::Codex backend did not produce an article."
           echo "Codex outcome: ${{ steps.gen-codex.outcome }}"
           exit 1
 
+      # Only fires when the EFFECTIVE backend was a Fireworks profile —
+      # i.e. preflight passed but the Fireworks agent produced nothing.
+      # A run that already fell back to Claude follows the Claude lane's
+      # semantics instead (and a fireworks_fallback=none preflight failure
+      # has already failed the job at "Resolve effective backend").
       - name: Fail Fireworks run without article
-        if: always() && steps.fireworks.outputs.model_id != '' && steps.outfile.outputs.has_file != 'true'
+        if: always() && steps.effective.outputs.fireworks_active == 'true' && steps.outfile.outputs.has_file != 'true'
         env:
           PREFLIGHT_OUTCOME: ${{ steps.fireworks-preflight.outcome }}
           PREFLIGHT_STATUS: ${{ steps.fireworks-preflight.outputs.status }}
@@ -3575,7 +3697,11 @@ jobs:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
           TG_TOPIC: ${{ steps.tg-prep.outputs.safe_topic }}
-          TG_BACKEND: ${{ steps.params.outputs.backend }}
+          # Effective backend — a fallback article must not be announced
+          # as a Fireworks one.
+          TG_BACKEND: ${{ steps.effective.outputs.backend }}
+          TG_REQUESTED_BACKEND: ${{ steps.params.outputs.backend }}
+          TG_USED_FALLBACK: ${{ steps.effective.outputs.used_fallback }}
           TG_FILE: ${{ steps.outfile.outputs.file }}
           TG_REPO: ${{ github.repository }}
           GH_RUN_ID: ${{ github.run_id }}
@@ -3588,6 +3714,9 @@ jobs:
           fi
           ARTICLE_URL="https://github.com/${TG_REPO}/blob/main/research/generative/${TG_FILE}"
           BODY=$(printf '📝 Topic: %s\n🤖 Backend: %s' "${TG_TOPIC}" "${TG_BACKEND}")
+          if [ "${TG_USED_FALLBACK:-false}" = "true" ]; then
+            BODY=$(printf '%s (requested %s; fireworks-fallback)' "$BODY" "${TG_REQUESTED_BACKEND}")
+          fi
           PAYLOAD=$(jq -n \
             --arg title "🧪 Generative Research Published" \
             --arg text "$BODY" \
