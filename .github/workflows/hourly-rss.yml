@@ -38,22 +38,22 @@ jobs:
           mkdir -p /tmp/rss
 
           # OpenAI Blog RSS (news section)
-          curl -sL "https://openai.com/news/rss.xml" \
+          curl -fsL "https://openai.com/news/rss.xml" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/openai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/openai.xml
 
           # Anthropic News RSS (via OpenRSS since no official feed)
-          curl -sL "https://openrss.org/www.anthropic.com/news" \
+          curl -fsL "https://openrss.org/www.anthropic.com/news" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/anthropic.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/anthropic.xml
 
           # Google AI Blog RSS (Atom feed)
-          curl -sL "http://googleaiblog.blogspot.com/atom.xml" \
+          curl -fsL "http://googleaiblog.blogspot.com/atom.xml" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/google_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/google_ai.xml
 
           # DeepMind Blog RSS (Google Research)
-          curl -sL "https://research.google/blog/rss/" \
+          curl -fsL "https://research.google/blog/rss/" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/deepmind.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/deepmind.xml
 
@@ -61,54 +61,54 @@ jobs:
           # Probe https://ai.meta.com/blog/rss/ before restoring it.
 
           # Hugging Face Blog RSS
-          curl -sL "https://huggingface.co/blog/feed.xml" \
+          curl -fsL "https://huggingface.co/blog/feed.xml" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/huggingface.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/huggingface.xml
 
           # arXiv CS.AI RSS (recent submissions)
-          curl -sL "https://export.arxiv.org/rss/cs.AI" \
+          curl -fsL "https://export.arxiv.org/rss/cs.AI" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/arxiv_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arxiv_ai.xml
 
           # arXiv CS.LG RSS (Machine Learning)
-          curl -sL "https://export.arxiv.org/rss/cs.LG" \
+          curl -fsL "https://export.arxiv.org/rss/cs.LG" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/arxiv_lg.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arxiv_lg.xml
 
           # TechCrunch AI RSS
-          curl -sL "https://techcrunch.com/category/artificial-intelligence/feed/" \
+          curl -fsL "https://techcrunch.com/category/artificial-intelligence/feed/" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/techcrunch_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/techcrunch_ai.xml
 
           # The Verge AI RSS
-          curl -sL "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" \
+          curl -fsL "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/verge_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/verge_ai.xml
 
           # VentureBeat AI RSS
-          curl -sL "https://venturebeat.com/category/ai/feed/" \
+          curl -fsL "https://venturebeat.com/category/ai/feed/" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/venturebeat_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/venturebeat_ai.xml
 
           # Ars Technica AI RSS (section feed; probed HTTP 200, fresh items)
-          curl -sL "https://arstechnica.com/ai/feed/" \
+          curl -fsL "https://arstechnica.com/ai/feed/" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/arstechnica_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/arstechnica_ai.xml
 
           # MIT Technology Review — AI section. Long-form AI journalism the
           # daily-digest synthesizer cites; probed HTTP 200 with fresh items.
-          curl -sL "https://www.technologyreview.com/topic/artificial-intelligence/feed/" \
+          curl -fsL "https://www.technologyreview.com/topic/artificial-intelligence/feed/" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/mit_tech_review_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/mit_tech_review_ai.xml
 
           # The Decoder — AI-only news outlet (probed HTTP 200, fresh items)
-          curl -sL "https://the-decoder.com/feed/" \
+          curl -fsL "https://the-decoder.com/feed/" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/the_decoder.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/the_decoder.xml
 
           # MarkTechPost — high-volume AI research/news aggregator surfacing new
           # papers, model releases, and open-source drops (probed HTTP 200).
-          curl -sL "https://www.marktechpost.com/feed/" \
+          curl -fsL "https://www.marktechpost.com/feed/" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/marktechpost.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/marktechpost.xml
 
@@ -122,23 +122,23 @@ jobs:
 
           # Simon Willison's Weblog (Atom) — high-signal hands-on LLM coverage.
           # Atom uses entry/title/link[@href]/published, not item/.../pubDate.
-          curl -sL "https://simonwillison.net/atom/everything/" \
+          curl -fsL "https://simonwillison.net/atom/everything/" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/simonwillison.xml 2>/dev/null || echo "<feed></feed>" > /tmp/rss/simonwillison.xml
 
           # Interconnects (Nathan Lambert) — open-model / post-training analysis.
-          curl -sL "https://www.interconnects.ai/feed" \
+          curl -fsL "https://www.interconnects.ai/feed" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/interconnects.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/interconnects.xml
 
           # Import AI (Jack Clark, Anthropic co-founder) — frontier-lab essays;
           # pairs with anthropic.xml for "what Anthropic is thinking" coverage.
-          curl -sL "https://jack-clark.net/feed/" \
+          curl -fsL "https://jack-clark.net/feed/" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/import_ai.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/import_ai.xml
 
           # One Useful Thing (Ethan Mollick, Wharton) — applied-AI essays.
-          curl -sL "https://www.oneusefulthing.org/feed" \
+          curl -fsL "https://www.oneusefulthing.org/feed" \
             -H "User-Agent: Mozilla/5.0 (compatible; AIResearchBot/1.0)" \
             > /tmp/rss/one_useful_thing.xml 2>/dev/null || echo "<rss></rss>" > /tmp/rss/one_useful_thing.xml
 
