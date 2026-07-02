@@ -12,7 +12,7 @@ import { spawnSync } from 'node:child_process';
 import { existsSync, readdirSync, mkdirSync, readFileSync, writeFileSync, cpSync, statSync, openSync, readSync, closeSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const dashboardDir = dirname(here);
