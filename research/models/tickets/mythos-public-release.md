@@ -28,6 +28,17 @@ status_note: |
   [[anthropic-fable-mythos-export-control-2026-06]]; gated-product stance is
   otherwise unchanged. Even some Anthropic employees who built the models are
   reportedly locked out under the foreign-national bar.
+
+  **2026-07-02 — export-control suspension LIFTED; Mythos 5 re-cleared, gated
+  stance unchanged.** Commerce lifted the June 12 export controls on both
+  Mythos 5 and the public [[claude-fable-5]] (@AnthropicAI June 30 23:52 UTC +
+  Politico; regulatory event on [[anthropic-fable-mythos-export-control-2026-06]]).
+  Fable 5 returned to general availability (metered); **Mythos 5 remains the
+  gated defenders / governments product** — the lift restores the pre-suspension
+  status quo rather than making the unrestricted Mythos public. Anthropic says
+  it will "continue to work with the government to **expand access to Mythos 5**."
+  Gated stance otherwise unchanged; status stays `confirmed`, verification stays
+  `confirmed`.
 expected: "Mythos 5 stays restricted (Glasswing + trusted-access program); no public-release schedule for the unrestricted model. Public capability now reaches users via Fable 5 ([[claude-fable-5]])."
 labels:
   - frontier-model
@@ -50,7 +61,7 @@ sources:
   - "@alexalbert__"
   - https://the-decoder.com/anthropics-mythos-model-is-reportedly-powering-nsa-offensive-cyber-ops-against-china-and-iran/
 created_at: 2026-04-12
-updated_at: 2026-06-14
+updated_at: 2026-07-02
 closed_at: null
 closed_reason: null
 history:
@@ -86,6 +97,8 @@ history:
     change: "RESOLUTION — in-testing → confirmed. Anthropic officially launched the Mythos class on **2026-06-09** (@claudeai 17:08 UTC, ~90K likes): a **two-tier** release. **Mythos 5** = the unrestricted flagship, available only to **vetted defenders / governments** via Glasswing + an upcoming trusted-access program (NOT public). **Claude Fable 5** = the toned-down, safety-gated public derivative (Mythos-class 'made safe for general use'), released to all paid users the same day — spun out to its own released ticket [[claude-fable-5]] per this ticket's dedup note. The 'full public release' of the *unrestricted* Mythos did not happen (Mythos stays gated), but the long-anticipated toned-down public variant (Cherny 2026-05-05) did ship as Fable 5. This ticket now confirmed and continues as the Mythos-proper / Glasswing tracker; public-release lifecycle moves to [[claude-fable-5]]"
   - ts: 2026-06-14
     change: "Update — Mythos 5 SUSPENDED by US export control (2026-06-13). The same export-control directive that pulled the public Fable 5 also barred all foreign-national access to Mythos 5, forcing Anthropic to disable both worldwide; some Anthropic staff who built the models are reportedly locked out under the foreign-national bar. The regulatory action itself is tracked on the new legal-event ticket [[anthropic-fable-mythos-export-control-2026-06]]; this entry records the impact on the gated Mythos line. Gated-product stance otherwise unchanged; status stays confirmed, verification stays confirmed"
+  - ts: 2026-07-02
+    change: "Update — export-control suspension LIFTED (2026-06-30/07-01); Mythos 5 re-cleared, gated stance unchanged. Commerce lifted the June 12 export controls on both Mythos 5 and the public [[claude-fable-5]] (@AnthropicAI June 30 23:52 UTC, ~34.7K likes + Politico general-re-release framing; regulatory event on [[anthropic-fable-mythos-export-control-2026-06]]). Fable 5 returned to general availability (metered); Mythos 5 remains the gated defenders/governments product — the lift restores the pre-suspension status quo, NOT a public release of the unrestricted model. Anthropic says it will 'continue to work with the government to expand access to Mythos 5.' Gated stance unchanged; status stays confirmed, verification stays confirmed"
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a

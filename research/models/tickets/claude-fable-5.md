@@ -80,7 +80,25 @@ status_note: |
   2026-07-08; no fresh restoration progress this cycle. Still globally
   suspended for general use under the export-control order
   ([[anthropic-fable-mythos-export-control-2026-06]]).
-expected: "Partial restoration surfacing: Fable 5 listed Active in AWS Bedrock (anthropic.claude-fable-5) with bundled weekly Claude Code usage; US ID verification via Persona live 2026-07-08 + use-case review + Anthropic approval; both US and global model IDs present. Anthropic status page still shows the 2026-06-13 suspension as active (see [[anthropic-fable-mythos-export-control-2026-06]]). Was free for Pro/Max/Team through 2026-06-22, credit-metered thereafter"
+  **2026-07-02 — BACK ONLINE GLOBALLY (metered).** Commerce **lifted the
+  export-control order** (June 30 23:52 UTC @AnthropicAI + Politico; regulatory
+  event on [[anthropic-fable-mythos-export-control-2026-06]]) and Anthropic
+  **restored Fable 5 worldwide on July 1 as a general re-release** — not the
+  US-only regime datamined strings had implied. Access is **metered: ≤50% of
+  each plan's weekly usage limits through July 7, then usage credits**;
+  @ClaudeDevs **reset all users' 5-hour and weekly rate limits** as it came back
+  (~12K likes). A **small fraction of routine coding still falls back to Opus
+  4.8**, and **tightened cyber + bio/chem safety classifiers** ship with the
+  redeploy. Reception: strong praise for the model itself alongside friction
+  with the terms — heavy users report **exhausting the 50% cap almost
+  immediately** and call the bio/chem classifiers **over-restrictive** on
+  legitimate science (single-amplifier enthusiast sentiment, @kimmonismus, not
+  usage data). Capability datum: Fable 5 **tops the Scale AI + CAIS Remote Labor
+  Index at 16.10%** (240 real paid freelance projects), ahead of Opus 4.8 and
+  Codex GPT-5.5 — best automation up from <3% to 16% in under a year, though the
+  leader still fails ~84% of real freelance work (@ScaleAILabs July 1). Status
+  stays `released`; verification stays `confirmed`.
+expected: "BACK ONLINE GLOBALLY (2026-07-02): export controls lifted, Fable 5 restored worldwide as a general re-release, metered (≤50% of weekly usage limits through July 7, then usage credits; @ClaudeDevs reset all rate limits on relaunch); tightened cyber + bio/chem classifiers, small fraction of routine coding still routed to Opus 4.8; tops Scale AI + CAIS Remote Labor Index at 16.10% (ahead of Opus 4.8 / Codex GPT-5.5). Next watch: July 7 shift from the 50%-of-weekly cap to usage credits (day-one cap-exhaustion complaints), and whether Anthropic loosens the bio/chem classifier false positives as promised. Prior — partial restoration surfacing: Fable 5 listed Active in AWS Bedrock (anthropic.claude-fable-5) with bundled weekly Claude Code usage; US ID verification via Persona live 2026-07-08 + use-case review + Anthropic approval; both US and global model IDs present. Anthropic status page still shows the 2026-06-13 suspension as active (see [[anthropic-fable-mythos-export-control-2026-06]]). Was free for Pro/Max/Team through 2026-06-22, credit-metered thereafter"
 labels:
   - frontier-model
   - released
@@ -104,8 +122,9 @@ sources:
   - "@LuminaXspace"
   - "@synthwavedd"
   - "@plasmakick"
+  - "@ScaleAILabs"
 created_at: 2026-06-10
-updated_at: 2026-07-01
+updated_at: 2026-07-02
 closed_at: null
 closed_reason: null
 history:
@@ -123,6 +142,8 @@ history:
     change: "Partial restoration surfaces in AWS Bedrock. Fable 5 reappeared in the Bedrock catalog as anthropic.claude-fable-5, listed Active and sold by Anthropic (multi-source screenshots: @chetaslua screen recording, @alphabatcher, @LuminaXspace, @plasmakick, @VincentLogic). Claude Code v2.1.190 binaries now show 'You've used your included Fable 5 usage for this week' — the 'purchased separately' add-on model is dropped for bundled weekly allocation (Decrypt-verified npm extraction, @synthwavedd ~4.6K likes). Both US and global model IDs present. Access gated: US ID verification via Persona (live 2026-07-08) + use-case submission + Anthropic review — the US-only re-entry mechanism inferred on [[anthropic-fable-mythos-export-control-2026-06]] now has product footing. Political thaw: Trump walked back the national-security-threat framing; Tom Brown replaced Dario as White House point person (admin reportedly 'happier with Brown'). Caveat: Anthropic's status page still shows the 06-13 suspension active with no restoration date; a Bedrock listing is infra-provisioning, not full restoration. Per transition triggers, a re-availability event keeps status released and is documented via history; verification stays confirmed."
   - ts: 2026-07-01
     change: "Sonnet 5 shipped, Fable 5 re-release still absent. Anthropic launched Claude Sonnet 5 ([[claude-sonnet-5]]) on 2026-06-30 as the new default mid-tier — widely framed as the mass-market consolation tier for users locked out of gated Fable 5 — but no Fable 5 general re-release accompanied it. The US ID-verification (Persona) gate stays dated 2026-07-08; no fresh restoration progress this cycle. Model remains globally suspended for general use under the export-control order ([[anthropic-fable-mythos-export-control-2026-06]]). Per transition triggers, this availability observation keeps status released and is documented via history; verification stays confirmed."
+  - ts: 2026-07-02
+    change: "BACK ONLINE GLOBALLY (metered). Commerce lifted the export-control order (June 30 23:52 UTC @AnthropicAI + Politico; regulatory event on [[anthropic-fable-mythos-export-control-2026-06]]) and Anthropic restored Fable 5 worldwide on July 1 as a general re-release — not the US-only regime datamined strings implied. Access is metered: ≤50% of each plan's weekly usage limits through July 7, then continuation via usage credits; @ClaudeDevs reset all users' 5-hour and weekly rate limits on relaunch (~12K likes). A small fraction of routine coding still falls back to Opus 4.8, and tightened cyber + bio/chem safety classifiers ship with the redeploy. Reception: strong praise for the model itself ('I forgive you for the bad Sonnet 5 launch') alongside term-friction — heavy users report exhausting the 50% cap almost immediately and call the bio/chem classifiers over-restrictive on legitimate science (single-amplifier enthusiast sentiment @kimmonismus, not usage data). Capability datum: Fable 5 tops the Scale AI + CAIS Remote Labor Index at 16.10% (240 real paid freelance projects), ahead of Opus 4.8 and Codex GPT-5.5 — best automation up from <3% to 16% in under a year, though the leader still fails ~84% of real freelance work (@ScaleAILabs July 1 17:33 UTC). Per transition triggers, a re-availability event keeps status released and is documented via history; verification stays confirmed."
 ---
 
 **Claude Fable 5** is the public-facing resolution of the long-running
