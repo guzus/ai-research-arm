@@ -112,8 +112,21 @@ jobs:
             printf '# Bluesky AI Feed - %s\n' "$DATE" > "$FILE"
           fi
 
+      # Base SHA for the output guard below — captured at workflow level
+      # (like hourly-rss.yml) rather than via the agent composite's pre-sha
+      # output, which is not reliably available when the composite step
+      # itself fails.
+      - name: Capture Bluesky output base
+        id: bluesky-output-base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # continue-on-error so a hard agent failure (provider outage, turn-1
+      # API error) still reaches the deterministic fallback below. The agent
+      # writing nothing while exiting green (the 2026-07-01 failure mode) is
+      # caught by the fallback's own file check either way.
       - name: Process Bluesky Feed with Fireworks
         id: bluesky_agent
+        continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
           backend: fireworks-deepseek-v4-flash
@@ -219,6 +232,27 @@ jobs:
 
             Do NOT run git. Writing `.tmp/bluesky-section.md` is your only
             output; the workflow appends and commits it deterministically.
+
+      # Model-free floor: when the agent produced no section (hard failure OR
+      # exited green without writing the file — the 2026-07-01 failure mode),
+      # compose an engagement-ranked section from the staged per-account
+      # JSONs so the cycle is never silently dropped. The append step below
+      # stays the final backstop and still fails the run if this file is
+      # missing after both paths.
+      - name: Deterministic Bluesky fallback
+        env:
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+        run: |
+          set -euo pipefail
+          if [ -s .tmp/bluesky-section.md ]; then
+            echo "Agent produced .tmp/bluesky-section.md — no fallback needed"
+            exit 0
+          fi
+          echo "::warning::Bluesky agent path produced no section; composing deterministic engagement-ranked fallback from data/bluesky/*.json."
+          python3 scripts/deterministic_bluesky_digest.py \
+            --input-dir data/bluesky \
+            --out .tmp/bluesky-section.md \
+            --timestamp "$TIMESTAMP"
 
       # Append the agent's section onto the daily file and commit. The post
       # step validates that the agent produced a section, removes any post
@@ -344,7 +378,7 @@ jobs:
       - name: Require Bluesky output
         uses: ./.github/actions/require-output
         with:
-          base-sha: ${{ steps.bluesky_agent.outputs.pre-sha }}
+          base-sha: ${{ steps.bluesky-output-base.outputs.sha }}
           expected-paths: |
             research/bluesky/
           label: Bluesky Fireworks curator
