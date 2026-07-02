@@ -1,0 +1,204 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "On July 1, 2026 Bloomberg reported Meta is building a cloud business ('Meta Compute') to sell excess AI compute capacity and access to models; the plans are 'still in development'.",
+      "type": "event",
+      "source_urls": ["https://www.cnbc.com/2026/07/01/meta-stock-cloud-ai-compute.html", "https://techcrunch.com/2026/07/01/meta-like-spacex-looks-to-turn-excess-ai-compute-into-cash/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-01",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c2",
+      "claim": "On the report, Meta rose roughly +10% while CoreWeave and Nebius fell about 15% in morning trading July 1 2026 (Nebius closed -17%, CoreWeave about -14%).",
+      "type": "market-structure",
+      "source_urls": ["https://finance.yahoo.com/technology/ai/articles/nebius-coreweave-iren-tumble-meta-162444225.html", "https://www.techi.com/nebius-stock-meta-cloud-plan/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-01",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c3",
+      "claim": "At Meta's May 27 2026 shareholder meeting Zuckerberg said a cloud business is 'definitely on the table' if Meta overbuilds, and that companies ask 'almost every week' to buy compute.",
+      "type": "quote",
+      "source_urls": ["https://www.cnbc.com/2026/05/27/mark-zuckerberg-says-meta-starting-cloud-business-on-the-table.html", "https://mlq.ai/news/zuckerberg-says-meta-cloud-business-is-definitely-on-the-table-as-ai-capex-hits-145-billion/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-05-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Meta capex incl. finance leases rose from $28.1B (FY2023) to $39.2B (FY2024) to $72.2B (FY2025); FY2026 guidance is $125-145B (raised from $115-135B).",
+      "type": "metric",
+      "source_urls": ["https://s21.q4cdn.com/399680738/files/doc_financials/2025/q4/Meta-12-31-2025-Exhibit-99-1-FINAL.pdf", "https://www.sec.gov/Archives/edgar/data/0001326801/000162828026028364/meta-03312026xexhibit991.htm"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-04-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Meta extended the useful life of most servers/network assets to 5.5 years effective Jan 1 2025, cutting FY2025 depreciation ~$2.92B and lifting net income $2.59B (+$1.00 diluted EPS).",
+      "type": "regulatory",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/0001326801/000162828026003942/meta-20251231.htm"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Meta is a large net buyer of external compute: CoreWeave ~$21B expansion (to ~$35B total, through Dec 2032) and Nebius up to ~$27B (Vera Rubin, deploying early 2027).",
+      "type": "event",
+      "source_urls": ["https://www.coreweave.com/news/coreweave-and-meta-announce-21-billion-expanded-ai-infrastructure-agreement", "https://nebius.com/newsroom/nebius-signs-new-ai-infrastructure-agreement-with-meta"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-04-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Around March 2026 Google capped Meta's paid access to Gemini models because Meta wanted more capacity than Google could supply, delaying some internal Meta AI projects.",
+      "type": "event",
+      "source_urls": ["https://www.cnbc.com/2026/06/28/google-limits-metas-use-of-its-gemini-ai-models-ft-reports.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-28",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "CoreWeave FY2025 revenue was $5.13B (up from $1.9B FY2024, $229M FY2023); RPO was $60.7B and total committed backlog $66.8B; net loss $1.17B; total debt ~$21.4B net.",
+      "type": "metric",
+      "source_urls": ["https://s205.q4cdn.com/133937190/files/doc_financials/2025/q4/CoreWeave-Inc-FY25-10-K-7.pdf", "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000094/coreweave4q25earningspress.htm"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-12-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Microsoft was ~67% of CoreWeave's FY2025 revenue; forward commitments include OpenAI up to ~$11.9B + $6.5B and Meta ~$14.2B (later expanded).",
+      "type": "market-structure",
+      "source_urls": ["https://s205.q4cdn.com/133937190/files/doc_financials/2025/q4/CoreWeave-Inc-FY25-10-K-7.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-12-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Nebius ARR rose from ~$551M (Sep 2025) to $1.92B (Mar 2026), guided to $7-9B by year-end 2026; Microsoft deal ~$17.4B (up to $19.4B).",
+      "type": "metric",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/0001513845/000110465926059872/tm2614392d1_ex99-2.htm", "https://www.sec.gov/Archives/edgar/data/0001513845/000110465925088312/tm2525580d1_6k.htm"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-03-31",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "H100 1-year reserved rental pricing rose ~40% from $1.70/hr (Oct 2025) to $2.35/hr (Mar 2026), and on-demand GPU capacity was sold out across all types.",
+      "type": "metric",
+      "source_urls": ["https://newsletter.semianalysis.com/p/the-great-gpu-shortage-rental-capacity"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-03-31",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "Hyperscaler server/GPU useful lives diverge: Google 6yr, Microsoft up to 6yr, CoreWeave 6yr, Meta 5.5yr, Amazon cut a subset to 5yr (Jan 2025), Nebius ~4yr effective.",
+      "type": "comparison",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm", "https://www.cnbc.com/2025/11/11/big-short-investor-michael-burry-accuses-ai-hyperscalers-of-artificially-boosting-earnings.html"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-01-30",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "Michael Burry estimated hyperscalers would understate depreciation / overstate profit by ~$176B across 2026-2028 by depreciating ~2-3yr-life GPUs over 5-6 years.",
+      "type": "forecast",
+      "source_urls": ["https://www.cnbc.com/2025/11/11/big-short-investor-michael-burry-accuses-ai-hyperscalers-of-artificially-boosting-earnings.html"],
+      "source_tiers": ["opinion"],
+      "as_of": "2025-11-11",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c14",
+      "claim": "GE Vernova's gas-turbine backlog exceeds 110GW stretching into 2029 with ~3-year lead times, and reservations are expected sold out through 2030 by end of 2026.",
+      "type": "metric",
+      "source_urls": ["https://www.utilitydive.com/news/ge-vernova-gas-turbine-investor/807662/", "https://www.power-eng.com/gas/turbines/data-centers-drive-record-surge-in-ge-vernova-power-equipment-orders-as-turbine-slots-tighten-through-2030/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-04-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "The AWS 'built from surplus retail capacity' story is a myth; AWS was purpose-built from inception per co-proposer Benjamin Black.",
+      "type": "definition",
+      "source_urls": ["https://www.networkworld.com/article/936248/the-myth-about-how-amazon-s-web-service-started-just-won-t-die.html", "https://blog.b3k.us/2009/01/25/ec2-origins.html"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "OpenAI has amassed roughly $1.4T of multi-year compute commitments (including ~$300B Oracle and up-to-$100B Nvidia investment) against a small revenue base, illustrating circular AI financing.",
+      "type": "market-structure",
+      "source_urls": ["https://finance.yahoo.com/news/oracle-made-a-300-billion-bet-on-openai-its-paying-the-price-205441863.html", "https://fortune.com/2025/09/28/nvidia-openai-circular-financing-ai-bubble/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2025-12-13",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c17",
+      "claim": "Sell-side reaction split: Rosenblatt (Buy, $250) and Roth called the neocloud sell-off overdone and noted Meta likely cannot resell CoreWeave-leased capacity contracted through 2032.",
+      "type": "quote",
+      "source_urls": ["https://www.investing.com/news/analyst-ratings/rosenblatt-reiterates-coreweave-stock-rating-amid-meta-cloud-reports-93CH-4771129", "https://www.tipranks.com/news/the-fly/roth-says-neocloud-selloff-overdone-buyer-of-coreweave-on-metas-cloud-news-thefly-news"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "The neocloud market exceeded $25B revenue in 2025 and is forecast to approach $400B by 2031 (~58% CAGR).",
+      "type": "forecast",
+      "source_urls": ["https://www.srgresearch.com/articles/neocloud-market-forecast-to-approach-400b-by-2031-driven-by-surging-ai-infrastructure-demand"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-02-01",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c19",
+      "claim": "Bloomberg Intelligence estimated an xAI-style excess-compute resale business could generate more than $50B by 2028 and $100B by 2030.",
+      "type": "forecast",
+      "source_urls": ["https://thenextweb.com/news/meta-cloud-business-excess-ai-compute"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-01",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c20",
+      "claim": "Combined Meta commitments to CoreWeave and Nebius reach up to ~$62.2B, roughly 46% of the midpoint of Meta's 2026 capex guidance.",
+      "type": "comparison",
+      "source_urls": ["https://ts2.tech/en/meta-platforms-nasdaqmeta-cloud-report-sends-shares-higher-weighs-on-coreweave-nasdaqcrwv-nebius-nasdaqnbis/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-01",
+      "confidence": "medium",
+      "risk": "stable"
+    }
+  ]
+}

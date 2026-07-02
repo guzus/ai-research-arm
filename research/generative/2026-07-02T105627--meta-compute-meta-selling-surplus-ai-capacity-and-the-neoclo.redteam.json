@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The market treated it as material: Meta jumped more than 10% while CoreWeave and Nebius each fell about 15% in morning trading, Nebius closing down 17%.",
+      "contradicting_url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262004243-meta-ai-metaplatforms-aws-azure-tradingkey",
+      "contradicting_quote": "Meta Platforms shares surged over 8% ... Meta was up 7.74% at $606.88.",
+      "severity": "medium",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "In the ninety days before the surplus report, Meta was aggressively buying external capacity: it expanded its CoreWeave agreement by ~$21 billion (to roughly $35 billion total, through December 2032) and signed a Nebius deal worth up to ~$27 billion on NVIDIA's Vera Rubin platform, deploying from early 2027.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "GE Vernova's gas-turbine backlog exceeds 110 GW stretching into 2029, with roughly 10 GW of slots left across 2029-2030 and ~3-year lead times on heavy-duty units; management expects reservations sold out through 2030 by the end of 2026.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

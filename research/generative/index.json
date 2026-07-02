@@ -817,5 +817,20 @@
     "source": "fireworks-deepseek-v4-flash",
     "prompt": "Grok 4.5: SpaceX's monthly from-scratch 1.5T V9 cadence and the regulatory asymmetry under the de facto frontier licensing regime",
     "tags": []
+  },
+  {
+    "slug": "meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo",
+    "file": "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Meta Compute: the surplus that reprices the neocloud",
+    "model": "claude-opus-4-8",
+    "created_at": "2026-07-02T10:56:27Z",
+    "source": "workflow_dispatch",
+    "prompt": "Meta Compute: Meta selling surplus AI capacity and the neocloud repricing",
+    "tags": [
+      "fireworks-fallback",
+      "requested-deepseek-v4-flash"
+    ]
   }
 ]

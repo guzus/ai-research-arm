@@ -1,0 +1,124 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "On July 1, 2026, Bloomberg reported that Meta is developing a cloud unit internally called \"Meta Compute\" to sell access to both AI compute capacity and models — with the plans explicitly \"still in development.\"",
+      "verdict": "supported",
+      "citation": "https://www.cnbc.com/2026/07/01/meta-stock-cloud-ai-compute.html"
+    },
+    {
+      "id": "c2",
+      "text": "The market treated it as material: Meta jumped more than 10% while CoreWeave and Nebius each fell about 15% in morning trading, Nebius closing down 17%.",
+      "verdict": "supported",
+      "citation": "https://finance.yahoo.com/technology/ai/articles/nebius-coreweave-iren-tumble-meta-162444225.html"
+    },
+    {
+      "id": "c3",
+      "text": "It is co-led by infrastructure head Santosh Janardhan alongside Superintelligence Labs' Daniel Gross and president Dina Powell McCormick.",
+      "verdict": "supported",
+      "citation": "https://www.cnbc.com/2026/07/01/meta-stock-cloud-ai-compute.html"
+    },
+    {
+      "id": "c4",
+      "text": "At Meta's May 27, 2026 shareholder meeting, Zuckerberg said a cloud business is \"definitely on the table\" — but conditioned it: \"if we get to a point where we feel that we have overbuilt, then that is an option that we have.\"",
+      "verdict": "supported",
+      "citation": "https://www.cnbc.com/2026/05/27/mark-zuckerberg-says-meta-starting-cloud-business-on-the-table.html"
+    },
+    {
+      "id": "c5",
+      "text": "Meta's capital expenditure, including finance-lease principal, went from $28.1 billion in FY2023 to $39.2 billion in FY2024 to $72.2 billion in FY2025 — and 2026 guidance was raised in April to $125–145 billion, up from $115–135 billion, citing higher GPU/component pricing.",
+      "verdict": "supported",
+      "citation": "https://s21.q4cdn.com/399680738/files/doc_financials/2025/q4/Meta-12-31-2025-Exhibit-99-1-FINAL.pdf"
+    },
+    {
+      "id": "c6",
+      "text": "Effective January 1, 2025 Meta extended the useful life of most servers and network assets to 5.5 years; the change cut FY2025 depreciation by $2.92 billion and lifted net income $2.59 billion, or $1.00 per diluted share.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001326801/000162828026003942/meta-20251231.htm"
+    },
+    {
+      "id": "c7",
+      "text": "it expanded its CoreWeave agreement by ~$21 billion (to roughly $35 billion total, through December 2032)",
+      "verdict": "supported",
+      "citation": "https://www.coreweave.com/news/coreweave-and-meta-announce-21-billion-expanded-ai-infrastructure-agreement"
+    },
+    {
+      "id": "c8",
+      "text": "and signed a Nebius deal worth up to ~$27 billion on NVIDIA's Vera Rubin platform, deploying from early 2027.",
+      "verdict": "supported",
+      "citation": "https://nebius.com/newsroom/nebius-signs-new-ai-infrastructure-agreement-with-meta"
+    },
+    {
+      "id": "c9",
+      "text": "Combined, Meta's commitments to just these two neoclouds reach up to ~$62 billion — about 46% of the midpoint of its own 2026 capex guide.",
+      "verdict": "supported",
+      "citation": "https://ts2.tech/en/meta-platforms-nasdaqmeta-cloud-report-sends-shares-higher-weighs-on-coreweave-nasdaqcrwv-nebius-nasdaqnbis/"
+    },
+    {
+      "id": "c10",
+      "text": "But by SemiAnalysis's index, one-year reserved H100 pricing then *rose* about 40%, from $1.70/hour in October 2025 to $2.35/hour by March 2026, with on-demand capacity \"sold out across all GPU types.\"",
+      "verdict": "supported",
+      "citation": "https://newsletter.semianalysis.com/p/the-great-gpu-shortage-rental-capacity"
+    },
+    {
+      "id": "c11",
+      "text": "CoreWeave, the largest pure-play, is the archetype: revenue scaled ~22× in two years, from $229 million (2023) to $1.9 billion (2024) to $5.1 billion (2025), against a committed backlog of $66.8 billion — of which $60.7 billion is the stricter GAAP remaining-performance-obligation figure, up from $15.1 billion a year earlier.",
+      "verdict": "supported",
+      "citation": "https://s205.q4cdn.com/133937190/files/doc_financials/2025/q4/CoreWeave-Inc-FY25-10-K-7.pdf"
+    },
+    {
+      "id": "c12",
+      "text": "That concentration is the soft spot. Microsoft alone was ~67% of CoreWeave's FY2025 revenue.",
+      "verdict": "supported",
+      "citation": "https://s205.q4cdn.com/133937190/files/doc_financials/2025/q4/CoreWeave-Inc-FY25-10-K-7.pdf"
+    },
+    {
+      "id": "c13",
+      "text": "A 60%-plus adjusted-EBITDA margin looks like healthy infrastructure; the −1% operating margin and $1.17 billion net loss are what survive after $1.23 billion of interest and heavy depreciation.",
+      "verdict": "supported",
+      "citation": "https://s205.q4cdn.com/133937190/files/doc_financials/2025/q4/CoreWeave-Inc-FY25-10-K-7.pdf"
+    },
+    {
+      "id": "c14",
+      "text": "Nebius shows the mirror image: ARR compounding from ~$551 million (September 2025) to $1.92 billion (March 2026), guided to $7–9 billion by year-end 2026, on the back of a ~$17.4 billion Microsoft deal (up to $19.4 billion) and the Meta contract.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001513845/000110465926059872/tm2614392d1_ex99-2.htm"
+    },
+    {
+      "id": "c15",
+      "text": "GE Vernova's gas-turbine backlog exceeds 110 GW stretching into 2029, with roughly 10 GW of slots left across 2029–2030 and ~3-year lead times on heavy-duty units; management expects reservations sold out through 2030 by the end of 2026.",
+      "verdict": "weak",
+      "citation": "https://www.power-eng.com/gas/turbines/data-centers-drive-record-surge-in-ge-vernova-power-equipment-orders-as-turbine-slots-tighten-through-2030/"
+    },
+    {
+      "id": "c16",
+      "text": "Grid interconnection is no faster: ERCOT's large-load queue nearly quadrupled in a single year to 226 GW, about 77% of it data centers targeting connection by 2030.",
+      "verdict": "supported",
+      "citation": "https://www.latitudemedia.com/news/ercots-large-load-queue-has-nearly-quadrupled-in-a-single-year/"
+    },
+    {
+      "id": "c17",
+      "text": "Amazon — the operator with the most GPU-cloud experience — *cut* a subset of servers and networking from six to five years, explicitly citing \"an increased pace of technology development, particularly in the area of artificial intelligence,\" and booked ~$920 million of accelerated depreciation on early retirements.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm"
+    },
+    {
+      "id": "c18",
+      "text": "ramping capex on chips with a 2–3-year product cycle \"should not result in the extension of useful lives,\" and he estimated ~$176 billion of understated depreciation and overstated profit across the industry in 2026–2028.",
+      "verdict": "supported",
+      "citation": "https://www.cnbc.com/2025/11/11/big-short-investor-michael-burry-accuses-ai-hyperscalers-of-artificially-boosting-earnings.html"
+    },
+    {
+      "id": "c19",
+      "text": "That reversal is the crux: rental rates sit right on top of owned break-even (~$2.55/hour at full utilization), so a marginal-cost seller can push prices back below the level at which debt-funded neoclouds service their depreciation.",
+      "verdict": "weak",
+      "citation": "https://www.gmicloud.ai/en/blog/nvidia-h100-gpu-pricing-2026-rent-vs-buy-cost-analysis"
+    },
+    {
+      "id": "c20",
+      "text": "On July 1, 2026, a single Bloomberg report that Meta was building a cloud business to sell excess AI compute wiped roughly $18 billion off two companies' market value in a session — CoreWeave and Nebius each fell about 15% while Meta rose more than 10%.",
+      "verdict": "weak",
+      "citation": "https://finance.yahoo.com/technology/ai/articles/nebius-coreweave-iren-tumble-meta-162444225.html"
+    }
+  ]
+}
