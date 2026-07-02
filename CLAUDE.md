@@ -145,7 +145,7 @@ those lanes, a green run means a committed daily artifact exists; inspect the
 agent/fallback step logs before treating it as evidence that Fireworks or
 native Claude was healthy. PR/review/on-demand Claude workflows may still call
 the Claude action directly; when they do, pass the model via
-`claude_args: "--model opus"` (never as a separate `model:` input).
+`claude_args` (e.g. `"--model claude-sonnet-5"`) — never as a separate `model:` input.
 
 ### Aggregation (raw signal → `research/<source>/`)
 
@@ -187,16 +187,19 @@ the Claude action directly; when they do, pass the model via
 | `claude-code-review.yml` | PR opened/synced | Automated Claude code review |
 
 Model convention: scheduled content workflows pass `--model opus` to the
-Claude-Code-compatible CLI but the provider model is selected by the
-`agent-run` backend (`fireworks-deepseek-v4-flash` or `fireworks-glm-5p2`).
-Native Claude workflows still pin through `claude_args`; defer to the
-workflow file rather than assuming one provider everywhere.
+Claude-Code-compatible CLI, but that alias is remapped by `agent-run`: to
+the Fireworks profile model (`fireworks-deepseek-v4-flash` or
+`fireworks-glm-5p2`) when preflight passes, or to the action's
+`native-model` input (default **`claude-sonnet-5`**) on native-Claude
+runs and Fireworks fallbacks. Direct Claude workflows pin
+`--model claude-sonnet-5` through `claude_args`; defer to the workflow
+file rather than assuming one provider everywhere.
 
 ## Backends
 
 | Backend | When | Auth | Notes |
 |---|---|---|---|
-| **Claude (default)** | All Claude workflows; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic. `claude-opus-4-8` for generative-research. |
+| **Claude (default)** | All Claude workflows; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic. Default model **`claude-sonnet-5`** everywhere native Claude runs (generative-research pin + `agent-run` `native-model` default). |
 | **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Runs Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage follows the ChatGPT/Codex subscription entitlement rather than API billing. Publishes through the same writer/verifier contract and records `codex` metadata. |
 | **DeepSeek V4 Flash (via Fireworks)** | High-frequency scheduled lanes through `.github/actions/agent-run`; `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` comparison lanes | `FIREWORKS_API_KEY` | Uses Fireworks' Anthropic-compatible endpoint at `https://api.fireworks.ai/inference` with model `accounts/fireworks/models/deepseek-v4-flash` (base URL omits `/v1`; the client appends `/v1/messages`). Overrides `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`/`ANTHROPIC_MODEL` so the Claude Code action transparently calls Fireworks. The direct DeepSeek API (`api.deepseek.com`) is retired (billing/credits). Selector token: `fireworks-deepseek-v4-flash`, `deepseek-v4-flash`, or `deepseek`. In scheduled `agent-run` lanes AND in `generative-research.yml`, a non-retryable Fireworks preflight failure falls back to native Claude by default (`generative-research` dispatch input `fireworks_fallback=none` opts back into hard failure for strict comparisons; fallback articles record `model claude-opus-4-8` + tags `fireworks-fallback,requested-<backend>`). Generative-research retries up to 2x on socket drops before commit. |
 | **GLM 5.2 (via Fireworks)** | Higher-reasoning scheduled lanes through `.github/actions/agent-run`; `generative-research backend=glm-5p2` | `FIREWORKS_API_KEY` | Uses the same Fireworks Anthropic-compatible env slots with model `accounts/fireworks/models/glm-5p2`. Selector token: `fireworks-glm-5p2`, `glm-5p2`, or `glm`. In scheduled `agent-run` lanes AND in `generative-research.yml`, a non-retryable Fireworks preflight failure falls back to native Claude by default (same `fireworks_fallback` input and provenance tagging as the DeepSeek row). |

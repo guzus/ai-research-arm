@@ -19,7 +19,7 @@ short pointer plus the few genuinely agent-specific notes.
 
   ```yaml
   # Correct (v1)
-  claude_args: "--model opus"
+  claude_args: "--model claude-sonnet-5"
 
   # Wrong (do not use a separate model input here)
   model: <versioned-model-name>
