@@ -171,10 +171,27 @@ jobs:
       # same outcome, via the composite's internal guard), query the arXiv
       # Atom API directly and commit an uncurated per-category listing so the
       # lane never goes silently dark. Mirrors the hourly-rss.yml pattern.
+      # Two in-step guards keep a curated listing from being overwritten with
+      # the uncurated fallback: a base..HEAD diff (agent committed mid-run,
+      # then a later composite step failed) and a HEAD-file check (today's
+      # listing already landed in a PREVIOUS run — e.g. a manual re-dispatch
+      # on a completed day). In the re-dispatch case nothing new is
+      # committed, so require-output below goes red — the honest outcome.
       - name: Deterministic arXiv fallback
         if: steps.arxiv-agent.outcome == 'failure'
+        env:
+          BASE_SHA: ${{ steps.arxiv-output-base.outputs.sha }}
+          DATE: ${{ steps.date.outputs.date }}
         run: |
           set -euo pipefail
+          if ! git diff --quiet "${BASE_SHA}..HEAD" -- research/arxiv/; then
+            echo "Agent already committed under research/arxiv/ since ${BASE_SHA} — skipping deterministic fallback."
+            exit 0
+          fi
+          if git cat-file -e "HEAD:research/arxiv/${DATE}-papers.md" 2>/dev/null; then
+            echo "research/arxiv/${DATE}-papers.md already exists in HEAD (previous run) — skipping deterministic fallback."
+            exit 0
+          fi
           echo "::warning::arXiv agent path failed; writing deterministic arXiv fallback from the arXiv Atom API."
           python3 scripts/deterministic_arxiv_digest.py \
             --out-dir research/arxiv \

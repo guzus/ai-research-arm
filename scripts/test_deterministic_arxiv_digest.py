@@ -132,11 +132,13 @@ class FilterWindowTest(unittest.TestCase):
 
 class RenderTest(unittest.TestCase):
     def test_zero_papers_writes_honest_empty_note(self):
-        text = arxiv.render("2026-07-02", NOW, 26, [])
+        text = arxiv.render("2026-07-02", NOW, 26, [], 400)
 
         self.assertIn("# arXiv AI Research - 2026-07-02", text)
         self.assertIn("Deterministic model-free fallback", text)
+        self.assertIn("newest ≤400 API results", text)
         self.assertIn("No new papers found in the lookback window", text)
+        self.assertNotIn("Window truncated", text)
 
     def test_renders_category_sections_and_et_al(self):
         papers = arxiv.parse_papers(
@@ -153,7 +155,7 @@ class RenderTest(unittest.TestCase):
                 )
             )
         )
-        text = arxiv.render("2026-07-02", NOW, 26, papers)
+        text = arxiv.render("2026-07-02", NOW, 26, papers, 400)
 
         self.assertIn("## cs.AI — Artificial Intelligence (1)", text)
         self.assertIn("## cs.CV — Computer Vision (1)", text)
@@ -161,6 +163,36 @@ class RenderTest(unittest.TestCase):
         self.assertIn("[A Paper About Agents](https://arxiv.org/abs/2607.00123v1)", text)
         self.assertIn("> First sentence of the abstract. Second sentence.", text)
         self.assertNotIn("Third one here", text)  # abstract trimmed to 2 sentences
+
+    def test_truncated_window_carries_explicit_banner(self):
+        papers = arxiv.parse_papers(atom_fixture(entry_fixture()))
+        text = arxiv.render("2026-07-02", NOW, 26, papers, 1, truncated=True)
+
+        self.assertIn("Window truncated", text)
+        self.assertIn("max_results=1", text)
+
+    def test_main_flags_truncation_when_full_page_is_all_in_window(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "arxiv"
+            with mock.patch.object(
+                arxiv, "fetch_feed", return_value=atom_fixture(entry_fixture())
+            ):
+                code = arxiv.main(
+                    [
+                        "--out-dir",
+                        str(out_dir),
+                        "--date",
+                        "2026-07-02",
+                        "--now",
+                        "2026-07-02T06:15:00+00:00",
+                        "--max-results",
+                        "1",
+                    ]
+                )
+
+            self.assertEqual(code, 0)
+            written = (out_dir / "2026-07-02-papers.md").read_text(encoding="utf-8")
+            self.assertIn("Window truncated", written)
 
 
 class MainTest(unittest.TestCase):

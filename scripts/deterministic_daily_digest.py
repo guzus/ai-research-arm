@@ -200,6 +200,17 @@ def extract_lane(research_dir: Path, lane: LaneSource, dates: list[str], cap: in
     return LaneExtract(lane, None, (), f"no artifact for {window} — lane skipped")
 
 
+def lane_leads(extracts: list[LaneExtract]) -> list[tuple[str, str]]:
+    """(lane label, first excerpt body) for each covered lane — the digest's
+    best available stand-in for a lead-story list. Shared by the Executive
+    Summary section and the Telegram summary."""
+    leads: list[tuple[str, str]] = []
+    for extract in extracts:
+        if extract.lines:
+            leads.append((extract.lane.label, extract.lines[0][2:]))
+    return leads
+
+
 def render_digest(date: str, now: dt.datetime, extracts: list[LaneExtract]) -> str:
     lines = [
         f"# AI Daily Digest - {date}",
@@ -212,6 +223,24 @@ def render_digest(date: str, now: dt.datetime, extracts: list[LaneExtract]) -> s
         "> synthesis, no external search**. Treat coverage as raw and uncurated.",
         "",
     ]
+    # Canonical `## Executive Summary` section: the front-page renderer
+    # (scripts/render_front_page.mjs) builds its masthead lead + deck from
+    # this section's bullets, and when it is absent falls back to the
+    # digest's first paragraph — the raw `# ` title line. One verbatim top
+    # excerpt per covered lane, lane-labelled — still zero synthesis.
+    leads = lane_leads(extracts)
+    if leads:
+        lines.extend(
+            [
+                "## Executive Summary",
+                "",
+                "_Top verbatim excerpt from each covered lane (no editorial",
+                "ranking — see the fallback banner above):_",
+                "",
+                *[f"- **{label}:** {body}" for label, body in leads],
+                "",
+            ]
+        )
     for extract in extracts:
         if not extract.lines:
             continue
@@ -255,14 +284,11 @@ def strip_markdown(line: str) -> str:
 
 def render_summary(date: str, extracts: list[LaneExtract], *, max_stories: int = 5) -> str:
     stories: list[str] = []
-    for extract in extracts:
-        if len(stories) >= max_stories:
-            break
-        if extract.lines:
-            headline = strip_markdown(extract.lines[0])
-            if len(headline) > 100:
-                headline = headline[:99].rstrip() + "…"
-            stories.append(f"• [{extract.lane.label}] {headline}")
+    for label, body in lane_leads(extracts)[:max_stories]:
+        headline = strip_markdown(body)
+        if len(headline) > 100:
+            headline = headline[:99].rstrip() + "…"
+        stories.append(f"• [{label}] {headline}")
     covered = sum(1 for e in extracts if e.lines)
     missing = [e.lane.label for e in extracts if not e.lines]
     parts = [

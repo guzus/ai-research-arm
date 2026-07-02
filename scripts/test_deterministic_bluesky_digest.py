@@ -193,13 +193,58 @@ class MainTest(unittest.TestCase):
             out = root / ".tmp" / "bluesky-section.md"
 
             code = bluesky.main(
-                ["--input-dir", str(input_dir), "--out", str(out), "--timestamp", TIMESTAMP]
+                [
+                    "--input-dir",
+                    str(input_dir),
+                    "--out",
+                    str(out),
+                    "--timestamp",
+                    TIMESTAMP,
+                    "--now-utc",
+                    NOW.isoformat(),
+                ]
             )
 
             self.assertEqual(code, 0)
             text = out.read_text(encoding="utf-8")
             self.assertTrue(text.startswith(f"## {TIMESTAMP}"))
             self.assertIn("emollick.bsky.social", text)
+
+    def test_window_anchors_on_now_utc_not_on_timestamp_heading(self):
+        # The workflow's --timestamp is KST wall time mislabelled " UTC"
+        # (+9h ahead of real UTC). Anchoring the window on it dropped posts
+        # 39-48h old. A 45h-old post must survive a +9h-skewed heading.
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            input_dir = root / "data"
+            input_dir.mkdir()
+            (input_dir / "old.json").write_text(
+                json.dumps({"feed": [feed_item(hours_ago=45, likes=10)]}),
+                encoding="utf-8",
+            )
+            out = root / "section.md"
+            skewed_heading = (NOW + dt.timedelta(hours=9)).strftime("%Y-%m-%d %H:%M UTC")
+
+            code = bluesky.main(
+                [
+                    "--input-dir",
+                    str(input_dir),
+                    "--out",
+                    str(out),
+                    "--timestamp",
+                    skewed_heading,
+                    "--now-utc",
+                    NOW.isoformat(),
+                ]
+            )
+
+            self.assertEqual(code, 0)
+            text = out.read_text(encoding="utf-8")
+            # Heading text is used verbatim; the 45h-old post is selected
+            # because the window anchors on --now-utc, not on the heading.
+            self.assertTrue(text.startswith(f"## {skewed_heading}"))
+            self.assertIn("emollick.bsky.social", text)
+            self.assertNotIn("No qualifying posts", text)
 
     def test_main_with_missing_input_dir_exits_nonzero(self):
         with tempfile.TemporaryDirectory() as tmp:

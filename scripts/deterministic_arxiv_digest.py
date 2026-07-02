@@ -245,7 +245,15 @@ def markdown_escape(value: str) -> str:
     return value.replace("|", r"\|").replace("\n", " ")
 
 
-def render(date: str, now: dt.datetime, lookback_hours: int, papers: list[Paper]) -> str:
+def render(
+    date: str,
+    now: dt.datetime,
+    lookback_hours: int,
+    papers: list[Paper],
+    max_results: int,
+    *,
+    truncated: bool = False,
+) -> str:
     lines = [
         f"# arXiv AI Research - {date}",
         "",
@@ -253,10 +261,21 @@ def render(date: str, now: dt.datetime, lookback_hours: int, papers: list[Paper]
         "> unavailable for this run, so this listing was generated mechanically",
         "> by `scripts/deterministic_arxiv_digest.py` from the arXiv Atom API:",
         "> papers in cs.AI / cs.LG / cs.CL / cs.CV / cs.NE submitted or updated",
-        f"> in the last {lookback_hours}h, newest first. **Uncurated — no",
-        "> importance ranking, no significance filtering.**",
+        f"> in the last {lookback_hours}h (newest ≤{max_results} API results),",
+        "> newest first. **Uncurated — no importance ranking, no significance",
+        "> filtering.**",
         "",
     ]
+    if truncated:
+        lines.extend(
+            [
+                f"> ⚠ **Window truncated:** all {len(papers)} fetched results fall",
+                f"> inside the {lookback_hours}h window, so older in-window papers were",
+                f"> cut off by the max_results={max_results} cap. This listing covers",
+                "> the newest submissions only.",
+                "",
+            ]
+        )
     if not papers:
         lines.extend(
             [
@@ -323,8 +342,10 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--max-results",
         type=int,
-        default=150,
-        help="max_results for the combined arXiv API query (default: 150).",
+        default=400,
+        help="max_results for the combined arXiv API query (default: 400 — a"
+        " busy weekday exceeds 150 across the five categories, and the render"
+        " flags the window as truncated when even this cap saturates).",
     )
     parser.add_argument(
         "--now",
@@ -355,11 +376,25 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     in_window = filter_window(papers, now, args.lookback_hours)
+    # Saturation signal: the API returned a full page AND every result is
+    # inside the window — older in-window papers were cut off by the cap.
+    truncated = len(papers) >= args.max_results and len(in_window) == len(papers)
     out_path = args.out_dir / f"{args.date}-papers.md"
-    write_atomic(out_path, render(args.date, now, args.lookback_hours, in_window))
+    write_atomic(
+        out_path,
+        render(
+            args.date,
+            now,
+            args.lookback_hours,
+            in_window,
+            args.max_results,
+            truncated=truncated,
+        ),
+    )
     print(
         f"Wrote {out_path}: {len(in_window)} of {len(papers)} fetched paper(s) "
         f"within the {args.lookback_hours}h window"
+        + (" — WINDOW TRUNCATED by max_results cap" if truncated else "")
     )
     return 0
 

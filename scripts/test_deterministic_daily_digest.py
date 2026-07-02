@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import datetime as dt
 import os
+import re
 import sys
 import tempfile
 import unittest
@@ -109,6 +110,13 @@ class ComposeTest(unittest.TestCase):
             text = out.read_text(encoding="utf-8")
             self.assertIn("# AI Daily Digest - 2026-07-02", text)
             self.assertIn("Deterministic fallback digest", text)
+            # Canonical Executive Summary (the front-page renderer's lead/deck
+            # source): lane-labelled first excerpt of each covered lane,
+            # placed before the per-lane sections.
+            self.assertIn("## Executive Summary", text)
+            self.assertIn("- **Twitter/X:** Meta building Meta Compute [✓]", text)
+            self.assertIn("- **RSS / Official Announcements:** [Venice AI becomes a unicorn]", text)
+            self.assertLess(text.index("## Executive Summary"), text.index("## Twitter/X"))
             # Latest PRIMARY twitter cycle won, verbatim; the comparison
             # lane's file (lexically later) was excluded.
             self.assertIn("- Meta building Meta Compute [✓]", text)
@@ -177,6 +185,104 @@ class ComposeTest(unittest.TestCase):
             digest.strip_markdown("- **[Venice AI](https://tc)** raised money"),
             "Venice AI raised money",
         )
+
+
+class FrontPageRendererParityTest(unittest.TestCase):
+    """Literal Python ports of scripts/render_front_page.mjs's extraction
+    logic (`section()`, the bullet filter, `stripMarkdown`, and the `lead`
+    selection chain), asserted against a fallback-composed digest. Guards the
+    contract that fallback days still populate the front page's masthead
+    lead + deck instead of an all-empty render with a `# `-prefixed lead."""
+
+    @staticmethod
+    def _js_section(markdown: str, name: str) -> str:
+        # JS: ^##\s+NAME\s*$([\s\S]*?)(?=^##\s+|(?![\s\S])) with flags mi
+        pattern = re.compile(
+            rf"^##\s+{name}\s*$(.*?)(?=^##\s+|\Z)", re.M | re.I | re.S
+        )
+        match = pattern.search(markdown)
+        return match.group(1).strip() if match else ""
+
+    @staticmethod
+    def _js_strip_markdown(value: str) -> str:
+        value = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", value)
+        value = re.sub(r"\*\*([^*]+)\*\*", r"\1", value)
+        value = re.sub(r"\*([^*]+)\*", r"\1", value)
+        value = re.sub(r"`([^`]+)`", r"\1", value)
+        value = value.replace("**", "")
+        value = re.sub(r"[*_\[\]]", "", value)
+        value = re.sub(r"^[-*]\s+", "", value)
+        value = re.sub(r"^\d+\.\s+", "", value)
+        return re.sub(r"\s+", " ", value).strip()
+
+    @classmethod
+    def _js_bullets(cls, text: str, limit: int) -> list[str]:
+        out = []
+        for line in text.split("\n"):
+            line = line.strip()
+            if not re.match(r"^([-*]|\d+\.)\s+", line):
+                continue
+            stripped = cls._js_strip_markdown(line)
+            if stripped:
+                out.append(stripped)
+            if len(out) >= limit:
+                break
+        return out
+
+    @classmethod
+    def _js_paragraphs(cls, text: str, limit: int) -> list[str]:
+        out = []
+        for block in re.split(r"\n{2,}", text):
+            stripped = cls._js_strip_markdown(block)
+            if stripped:
+                out.append(stripped)
+            if len(out) >= limit:
+                break
+        return out
+
+    def _compose_fallback_digest(self, root: Path) -> str:
+        research = root / "research"
+        (research / "summaries").mkdir(parents=True)
+        (research / "rss").mkdir()
+        (research / "summaries" / "2026-07-02-twitter-10h-summary.txt").write_text(
+            "TOP STORIES:\n• Meta building Meta Compute\n", encoding="utf-8"
+        )
+        (research / "rss" / "2026-07-02.md").write_text(
+            "# Official AI News\n\n- [Venice AI raises](https://tc/v) - 2026-07-01\n",
+            encoding="utf-8",
+        )
+        out = root / "digest.md"
+        digest.compose(research, "2026-07-02", out, None, now=NOW)
+        return out.read_text(encoding="utf-8")
+
+    def test_renderer_extracts_lead_and_deck_from_fallback_digest(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            markdown = self._compose_fallback_digest(Path(tmp))
+
+            executive = self._js_bullets(self._js_section(markdown, "Executive Summary"), 5)
+            lead = (executive or self._js_paragraphs(markdown, 1))[0]
+
+            self.assertGreaterEqual(len(executive), 2)
+            self.assertEqual(lead, executive[0])
+            self.assertFalse(lead.startswith("#"))
+            self.assertIn("Meta building Meta Compute", lead)
+            self.assertIn("Venice AI raises", executive[1])
+
+    def test_without_executive_summary_lead_regresses_to_hash_title(self):
+        # Control experiment: strip the Executive Summary section and confirm
+        # the renderer's fallback chain would produce the broken `# `-lead —
+        # i.e. this suite genuinely guards the failure mode it claims to.
+        with tempfile.TemporaryDirectory() as tmp:
+            markdown = self._compose_fallback_digest(Path(tmp))
+            gutted = re.sub(
+                r"^## Executive Summary$.*?(?=^## )", "", markdown, flags=re.M | re.S
+            )
+
+            executive = self._js_bullets(self._js_section(gutted, "Executive Summary"), 5)
+            lead = (executive or self._js_paragraphs(gutted, 1))[0]
+
+            self.assertEqual(executive, [])
+            self.assertTrue(lead.startswith("#"))
 
 
 if __name__ == "__main__":

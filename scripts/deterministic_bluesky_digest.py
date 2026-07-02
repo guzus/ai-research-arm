@@ -10,7 +10,12 @@ the workflow).
 
 Selection contract (mirrors the documented lane rules):
   - Skip reposts (`feed[].reason` set) — only original posts qualify.
-  - Window: posts created in the last 48 hours.
+  - Window: posts created in the last 48 hours, anchored on REAL UTC now —
+    not on `--timestamp`, which is heading text only. The workflow builds
+    that string with the runner's wall clock, which is KST mislabelled
+    " UTC" (verified: the "2026-06-30 20:15 UTC" run was committed at
+    20:18 +0900), so anchoring the window on it would shift the cutoff by
+    +9h and silently drop posts 39-48h old.
   - Engagement floor: >=2 likes OR >=1 repost.
   - Rank by likes + 2*reposts, descending.
   - Caps: at most 8 bullets total, at most 3 per author (the lane's
@@ -223,19 +228,25 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--timestamp",
         required=True,
-        help="Section heading timestamp, e.g. '2026-07-02 10:15 UTC'. Also the"
-        " reference time for the 48h window.",
+        help="Section heading text, e.g. '2026-07-02 10:15 UTC'. Heading ONLY —"
+        " the 48h window anchors on real UTC now, because the workflow builds"
+        " this string from the runner's KST wall clock mislabelled ' UTC'.",
     )
+    # Hidden test seam: pin the window anchor for deterministic tests.
+    parser.add_argument("--now-utc", default=None, help=argparse.SUPPRESS)
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv or sys.argv[1:])
-    try:
-        now = parse_timestamp(args.timestamp)
-    except ValueError as exc:
-        print(f"error: {exc}", file=sys.stderr)
-        return 1
+    if args.now_utc:
+        try:
+            now = parse_timestamp(args.now_utc)
+        except ValueError as exc:
+            print(f"error: --now-utc: {exc}", file=sys.stderr)
+            return 1
+    else:
+        now = dt.datetime.now(dt.timezone.utc)
     if not args.input_dir.is_dir():
         print(f"error: input dir {args.input_dir} does not exist", file=sys.stderr)
         return 1

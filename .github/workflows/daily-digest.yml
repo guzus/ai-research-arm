@@ -379,12 +379,17 @@ jobs:
       # (wiki-ingest, front-page) — never silently skip a day. A fallback
       # digest counts as digest success on purpose. Also (re)writes the
       # Telegram summary so the notification/audio steps stay meaningful.
+      #
+      # Gated on the FLOOR alone, not on agent outcome: a missing digest
+      # fails the floor, so every agent-failure case still triggers the
+      # fallback — but a healthy digest already committed for today (e.g. a
+      # manual re-dispatch after a good run) survives instead of being
+      # overwritten with degraded content. In that re-dispatch case nothing
+      # new is committed, so require-output below goes red and the failure
+      # alert fires — the honest outcome.
       - name: Deterministic digest fallback
         id: digest-fallback
-        if: >-
-          steps.digest-agent-mcp.outcome == 'failure'
-          || steps.digest-agent-local.outcome == 'failure'
-          || steps.digest-floor.outputs.ok != 'true'
+        if: steps.digest-floor.outputs.ok != 'true'
         run: |
           set -euo pipefail
           echo "::warning::Digest agent path failed or produced sub-floor output; composing deterministic digest from committed lane artifacts."
@@ -828,7 +833,7 @@ jobs:
             echo "Telegram credentials missing — skipping failure alert"
             exit 0
           fi
-          TEXT="❌ Daily digest FAILED for ${DATE} — even the deterministic fallback did not produce a digest. wiki-ingest and front-page will skip this cycle. ${RUN_URL}"
+          TEXT="❌ Daily digest run FAILED for ${DATE}. wiki-ingest and front-page will skip this cycle. Check the run logs: ${RUN_URL}"
           curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
             --data-urlencode "text=${TEXT}" \
