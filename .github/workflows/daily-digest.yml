@@ -59,6 +59,14 @@ jobs:
         id: date
         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
+      # Base SHA for the standalone output guard below — captured AFTER the
+      # pull and BEFORE the synthesis agents, so the guard passes when EITHER
+      # the agent or the deterministic fallback committed the digest
+      # (mirrors hourly-rss.yml / 4h-community.yml).
+      - name: Capture digest output base
+        id: digest-output-base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
@@ -76,6 +84,13 @@ jobs:
             echo "has_perplexity=true" >> $GITHUB_OUTPUT
           else
             echo "has_perplexity=false" >> $GITHUB_OUTPUT
+          fi
+          # Surface the silent path switch: with neither key configured the
+          # digest runs on the local-source prompt with NO external MCP
+          # search. That is a materially thinner digest, so say it loudly
+          # (the final telemetry step reports it too).
+          if [ -z "${{ secrets.EXA_API_KEY }}" ] && [ -z "${{ secrets.PERPLEXITY_API_KEY }}" ]; then
+            echo "::warning::EXA_API_KEY and PERPLEXITY_API_KEY are both unset — digest is running the local-source path with no external MCP search."
           fi
 
       - name: Create MCP Config
@@ -123,8 +138,16 @@ jobs:
           echo "Generated MCP config:"
           cat /tmp/mcp-config.json
 
+      # continue-on-error on both synthesis paths: a failed agent (provider
+      # outage, turn-1 API error, nothing committed — the composite's internal
+      # expected-paths guard fails the step in that case) hands off to the
+      # content-floor check + deterministic fallback below instead of killing
+      # the job — and with it the workflow_run consumers (wiki-ingest,
+      # front-page), which only fire on digest success.
       - name: Synthesize Daily Digest (with MCP tools)
+        id: digest-agent-mcp
         if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
+        continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
           backend: fireworks-glm-5p2
@@ -229,7 +252,9 @@ jobs:
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
       - name: Synthesize Daily Digest (local-source fallback)
+        id: digest-agent-local
         if: steps.check-keys.outputs.has_exa != 'true' && steps.check-keys.outputs.has_perplexity != 'true'
+        continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
           backend: fireworks-glm-5p2
@@ -331,6 +356,56 @@ jobs:
             pointers in one commit):
             git add research/digest/${{ steps.date.outputs.date }}-digest.md research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
+
+      # Content floor on the AGENT's digest. Catches both "agent failed /
+      # committed nothing" (file missing) and "agent committed a template
+      # shell" (sub-floor bytes/sections, unexpanded placeholders) — the
+      # latter previously stayed green. The floor only decides whether the
+      # deterministic fallback runs; it never fails the job itself.
+      - name: Check digest content floor
+        id: digest-floor
+        run: |
+          set -euo pipefail
+          if python3 scripts/check_digest_content.py \
+              --file "research/digest/${{ steps.date.outputs.date }}-digest.md" \
+              --min-bytes 4000 --min-sections 3; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Model-free floor: compose the digest verbatim from the day's
+      # committed lane artifacts so the lane — and its workflow_run consumers
+      # (wiki-ingest, front-page) — never silently skip a day. A fallback
+      # digest counts as digest success on purpose. Also (re)writes the
+      # Telegram summary so the notification/audio steps stay meaningful.
+      - name: Deterministic digest fallback
+        id: digest-fallback
+        if: >-
+          steps.digest-agent-mcp.outcome == 'failure'
+          || steps.digest-agent-local.outcome == 'failure'
+          || steps.digest-floor.outputs.ok != 'true'
+        run: |
+          set -euo pipefail
+          echo "::warning::Digest agent path failed or produced sub-floor output; composing deterministic digest from committed lane artifacts."
+          python3 scripts/deterministic_daily_digest.py \
+            --research-dir research \
+            --date "${{ steps.date.outputs.date }}" \
+            --out "research/digest/${{ steps.date.outputs.date }}-digest.md" \
+            --summary-out "research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt"
+          git add "research/digest/${{ steps.date.outputs.date }}-digest.md" "research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt"
+          git commit -m "Daily digest deterministic fallback ${{ steps.date.outputs.date }}" || echo "No deterministic digest changes"
+
+      # Final hard gate: SOMETHING (agent or fallback) must have committed
+      # the digest since the pre-agent base SHA. research/digest/ only —
+      # a summary-only commit must not count.
+      - name: Require digest output
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.digest-output-base.outputs.sha }}
+          expected-paths: |
+            research/digest/
+          label: Daily digest workflow output
 
       - name: Rewrite summary as ARA spoken script (Fireworks)
         if: success()
@@ -737,11 +812,35 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      # A failed digest run silently starves wiki-ingest and front-page
+      # (both gate on workflow_run conclusion == success). Say so on
+      # Telegram instead of failing quietly. Never blocks the job.
+      - name: Alert digest failure via Telegram
+        if: failure()
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DATE: ${{ steps.date.outputs.date }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "Telegram credentials missing — skipping failure alert"
+            exit 0
+          fi
+          TEXT="❌ Daily digest FAILED for ${DATE} — even the deterministic fallback did not produce a digest. wiki-ingest and front-page will skip this cycle. ${RUN_URL}"
+          curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${TEXT}" \
+            -d "disable_web_page_preview=true" >/dev/null \
+            || echo "Telegram failure alert send failed"
+
       - name: Publish Hooker workflow telemetry
         if: always()
         uses: ./.github/actions/hooker-telemetry
         with:
           status: ${{ job.status }}
+          text: "search-providers exa=${{ steps.check-keys.outputs.has_exa }} perplexity=${{ steps.check-keys.outputs.has_perplexity }}; digest-floor ok=${{ steps.digest-floor.outputs.ok }}; deterministic-fallback=${{ steps.digest-fallback.outcome }}"
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
