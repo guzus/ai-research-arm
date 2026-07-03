@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-07-01T00:00:00Z
+timestamp: 2026-07-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
@@ -382,6 +383,22 @@ footing for the first time in the cycle.
   responses to tightening controls (see [[open-weights]]), and **Taiwan raided
   Super Micro offices** over alleged Nvidia-chip smuggling to China — the
   enforcement edge of the same export regime. (ARA digest 2026-07-01).
+
+- **A new instrument: labeling a frontier lab a "supply-chain risk"
+  (2026-07-03).** WSJ-reported court filings made public a months-long fight
+  between [[anthropic|Dario Amodei]] and Pentagon undersecretary **Emil
+  Michael** over guardrails for AI-powered weapons and domestic surveillance;
+  after Anthropic refused to drop its bans, the Pentagon designated it a
+  **"supply-chain risk"** — a label normally reserved for **foreign-adversary
+  sabotage threats**, now turned on a *domestic* frontier lab over a values
+  disagreement — blocking DoD partners from using Claude. Michael claims (per
+  his own, unverified account) **two-thirds of DoD Anthropic usage has already
+  switched** to other AI tools. A federal judge has **paused parts of the
+  designation**; the government is appealing. It is a categorically new use of
+  a supply-chain-risk label as leverage in a domestic government-contracting
+  dispute, distinct from the resolved June export-control saga (which concerned
+  foreign-market access, not a values line with the government's own preferred
+  buyer). See [[anthropic]] and [[claude-fable-5]] (ARA digest 2026-07-03).
 
 ## Open questions
 

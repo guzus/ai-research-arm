@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 description: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.
 created_at: 2026-05-29
-timestamp: 2026-06-23T00:00:00Z
+timestamp: 2026-07-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
@@ -174,6 +175,23 @@ the cycle:
   not years" away** — explicitly tying the warning to the US block on Fable/Mythos,
   the clearest government statement yet that offensive-cyber capability is the live
   edge of this theme. See [[federal-ai-policy]] (ARA digest 2026-06-23).
+
+- **A quantified data point for "AI is finding vulnerabilities at scale"; coding
+  agents remain wide open to old attacks (2026-07-03).** **Epoch AI** reported
+  global high/critical CVE disclosures hit **~1,500 in June — 3.5x the prior
+  monthly record** — the same month **Claude Mythos Preview** shipped, giving
+  the "AI-assisted vulnerability discovery is scaling" argument its first
+  quantified data point (Epoch itself hedges on causation; some, e.g.
+  @kimmonismus, read it as retroactive justification for [[claude-fable-5|Fable
+  5]]'s tightened cyber/bio/chem classifiers). Separately, **GuardFall research**
+  (TheHackerNews) found **10 of 11 tested open-source AI coding agents**
+  (Aider/Continue/Cline-class tools) vulnerable to **decades-old shell-injection
+  techniques** via poisoned repos/docstrings — a concrete supply-chain risk for
+  anyone running agentic coding tools unsandboxed, and a reminder that the
+  capability-misuse axis (frontier models finding exploits) and the
+  supply-chain axis (old techniques still working against agent tooling) are
+  advancing in parallel, not in sequence. See [[claude-fable-5]] and
+  [[federal-ai-policy]] (ARA digest 2026-07-03).
 
 ## Open questions
 - **Does [[dynamic-workflows]] make this worse?** Hundreds of parallel

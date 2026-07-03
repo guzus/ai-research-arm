@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-06-23",
-      "timestamp": "2026-06-23T00:00:00Z",
+      "updated_at": "2026-07-03",
+      "timestamp": "2026-07-03T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -227,8 +227,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
       "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-02",
-      "timestamp": "2026-07-02T00:00:00Z",
+      "updated_at": "2026-07-03",
+      "timestamp": "2026-07-03T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -468,8 +468,8 @@
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.",
       "description": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-07-02",
-      "timestamp": "2026-07-02T00:00:00Z",
+      "updated_at": "2026-07-03",
+      "timestamp": "2026-07-03T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -912,8 +912,8 @@
       "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-07-01",
-      "timestamp": "2026-07-01T00:00:00Z",
+      "updated_at": "2026-07-03",
+      "timestamp": "2026-07-03T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1508,8 +1508,8 @@
       "summary": "Moonshot AI's open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while staying competitive; one of the Chinese open-weight releases filling the Fable 5 vacuum.",
       "description": "Moonshot AI's open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while staying competitive; one of the Chinese open-weight releases filling the Fable 5 vacuum.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-07-03",
+      "timestamp": "2026-07-03T00:00:00Z",
       "file": "entities/moonshot-kimi-k2-7-code.md",
       "aliases": [
         "Kimi K2.7 Code",
@@ -2541,6 +2541,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-07-03",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-03 digest (Anthropic-Pentagon fight goes public — DoD \"supply-chain risk\" designation over refused autonomous-weapons/surveillance guardrails, judge pauses parts, government appeals; BridgeMind independently quantifies Fable 5's guardrail cost — debugging 86.2→25.9; Epoch AI's ~1,500 June CVE spike gives \"AI finds vulnerabilities at scale\" its first data point; Kimi K2.7 Code goes GA in GitHub Copilot). Created 0, updated 5 (anthropic — Pentagon \"supply-chain risk\" designation + Samsung custom-chip talks; claude-fable-5 — BridgeMind guardrail-cost benchmark + Epoch AI CVE-spike cross-reference; federal-ai-policy — Pentagon supply-chain-risk designation as a new domestic-enforcement instrument; agentic-ai-security — Epoch AI CVE spike + GuardFall 10/11 open-source coding-agent shell-injection finding; moonshot-kimi-k2-7-code — GitHub Copilot GA, top HN story of the day)."
+    },
+    {
       "date": "2026-07-02",
       "op": "ingest",
       "summary": "Ingested 2026-07-02 digest (Fable 5 back worldwide after the two-week export ban — metered ≤50% weekly through July 7, new >99% jailbreak classifier — and tops Scale×CAIS's Remote Labor Index at ~16.10%; Meta builds \"Meta Compute\" to sell surplus capacity, cracking the infinite-capex thesis as CoreWeave/Nebius fall ~12–17%; OpenAI floats handing the US government a 5% stake; ZCode 3.0 GLM-5.2 harness; Sonnet 5 reception cools on ~40% token bloat; Anthropic poaches Berkeley EECS chair Jelani Nelson). Created 2 (remote-labor-index — Scale×CAIS end-to-end paid-freelance automation benchmark, leader ~16% / fails ~84%; jelani-nelson — sitting UC Berkeley EECS chair → Anthropic MTS on leave), updated 7 (claude-fable-5 — global re-release metered + reclassified + tops RLI; anthropic — Fable 5 return + Nelson hire; openai — 5% US-government equity-stake proposal ~$42.6B; meta — \"Meta Compute\" surplus-capacity cloud + internal token-spend cap; ai-capex — Meta Compute ceiling signal + neocloud/semis selloff + ownership question; claude-sonnet-5 — price-to-performance reception cools on ~40% more tokens/task; zhipu-glm-5-2 — ZCode 3.0 harness + #1 open-source / #2 global on LMArena Code)."
@@ -2634,11 +2639,6 @@
       "date": "2026-06-05",
       "op": "ingest",
       "summary": "Ingested 2026-06-05 digest. Created 2 (nvidia entity — Q1 FY27 demand pin + GTC Taipei + open-weights Nemotron-3-Ultra-550B; spacex entity — record IPO SPCX $135/$1.75T anchoring the issuance wave). Updated 6 (ai-capex — SpaceX hard filing + Broadcom −12.6%/$320B gut-check + Alphabet ~$85B + TSMC ceiling + Meta tent DCs + $50.7B DC construction; openai — \"Dreaming\" memory ship 52.2→75.1% but no Codex×ChatGPT super app + cross-lab biosecurity letter; gemma-4 — runaway HN dev story + Nemotron open-weights bracketing; deepseek — \"the filing would make it real\" financing-discipline critique; federal-ai-policy — Altman/Amodei/Hassabis synthetic-nucleic-acid letter + Monterey Park/O'Leary datacenter backlash + AI-litigation strain; anthropic — Daniela Amodei $47B-ARR pre-IPO talk-down + Opus 4.8 regression complaints)."
-    },
-    {
-      "date": "2026-06-04",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-04 digest. Created 2 (deepseek entity — first-ever external round ~$7.4B at up to $59B, Tencent+CATL, commercialization pivot + Tencent Cloud 97.5% V4 price cut; gemma-4 entity — Google DeepMind open-weights family, encoder-free 12B on 16 GB RAM, 150M+ downloads, Qwen3.5-9B quality debate). Updated 6 (openai — Florida child-safety suit escalation + GPT-Rosalind life-sciences expansion + \"It's time to fly\" June 4 teaser + safety blueprint/Altman EO backing; anthropic — `ant` CLI agents-as-repos + EO-backing broadens beyond lone-lab; microsoft — MAI-Code-1-Flash reaching GitHub Copilot/VS Code production off-OpenAI; ai-capex — ~$340B issuance wave SpaceX/Alphabet/DeepSeek + Ray Dalio bubble + Suno/NewLimit + ROI reality-check Uber $1,500 cap/7.8%/DDR5; federal-ai-policy — EO backing broadens to Altman + OpenAI safety blueprint; minimax-m3 — MiniMax Sparse Attention MSA 1M-context engine)."
     }
   ]
 }

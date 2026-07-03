@@ -6,8 +6,9 @@ aliases: ["Kimi K2.7 Code", "Kimi K2.7-Code", "Moonshot Kimi K2.7 Code", "Moonsh
 tags: [open-weights, china, coding, inference-pricing, local-llm]
 description: Moonshot AI's open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while staying competitive; one of the Chinese open-weight releases filling the Fable 5 vacuum.
 created_at: 2026-06-17
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-07-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA model ticket — Moonshot Kimi K2.7 Code", path: research/models/tickets/moonshot-kimi-k2-7-code.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
@@ -39,6 +40,16 @@ rolling onto Hugging Face in-window.
   keeps moving, application developers need a routing layer or benchmark habit
   rather than a single-vendor default. It also pushes [[openai]] and
   [[anthropic]] toward price cuts or specialist packaging.
+
+- **GA inside GitHub Copilot — mainstream IDE distribution (2026-07-03).** Kimi
+  K2.7 Code is now **generally available inside GitHub Copilot** — the top
+  Hacker News story of the day (342 points) — read as a signal that non-US open
+  models are winning **first-class mainstream IDE distribution**, not just
+  self-hosted/OpenRouter usage. It landed alongside heavy HN discussion of new
+  agent-evaluation benchmarks (**Senior SWE-Bench**, **CursorBench 3.1**)
+  questioning what current coding-agent benchmarks miss — sharpening the
+  question of whether Kimi's price/performance edge (see "Why it matters"
+  above) holds up under the same neutral-eval scrutiny (ARA digest 2026-07-03).
 
 ## Open questions
 

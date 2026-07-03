@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.
 created_at: 2026-05-24
-timestamp: 2026-07-02T00:00:00Z
+timestamp: 2026-07-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
@@ -520,6 +521,26 @@ Four developments through May 2026 put Anthropic at the center of the field:
   academic-talent-drain data point after [[john-jumper]] and Karpathy. *(The Nelson
   hire is sourced primarily to his own post; an IC seat, not evidence of an
   org-level pipeline.)* (ARA digest 2026-07-02).
+
+- **The Pentagon fight goes public — "supply-chain risk" designation; Samsung
+  chip talks (2026-07-03).** WSJ-reported court documents surfaced months of
+  emails between **Dario Amodei** and Pentagon undersecretary **Emil Michael**
+  over guardrails for AI-powered weapons and domestic surveillance: Anthropic
+  wanted bans on fully autonomous weapons and certain surveillance uses; the
+  Pentagon pushed for Claude to be available across all lawful national-security
+  use cases. After Anthropic refused to drop its bans, DoD designated it a
+  **"supply-chain risk"** — a label normally reserved for foreign-adversary
+  sabotage threats — effectively blocking DoD partners from Claude. Michael
+  claims (per his own, unverified account) **two-thirds of DoD Anthropic usage
+  has already switched to other AI tools**. A federal judge has **paused parts
+  of the designation**; the government is appealing. Distinct from the resolved
+  June export-control saga (foreign-market access) — this is a **domestic**
+  contract fight over Anthropic drawing a values line the Pentagon didn't
+  accept, with real financial consequences. Separately, *The Decoder* reports
+  Anthropic is **exploring custom chip manufacturing with Samsung**
+  while publicly maintaining [[nvidia|Nvidia]] "still matters" — a compute-supply hedge
+  continuing the thread tracked since July 2. See [[federal-ai-policy]] and
+  [[agentic-ai-security]] (ARA digest 2026-07-03).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

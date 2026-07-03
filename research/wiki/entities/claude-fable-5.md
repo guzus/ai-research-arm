@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.
 created_at: 2026-06-10
-timestamp: 2026-07-02T00:00:00Z
+timestamp: 2026-07-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
@@ -258,6 +259,22 @@ every feed on launch day.
   **~84%** of real freelance tasks, and the field excludes GPT-5.6 and any Gemini Flash,
   so "#1" is a snapshot. See [[anthropic]], [[federal-ai-policy]] and [[open-weights]]
   (ARA digest 2026-07-02).
+
+- **Guardrails quantifiably hurting performance — BridgeMind benchmark (2026-07-03).**
+  Independent benchmark firm **BridgeMind** re-tested the **July 1 relaunch build**
+  and found the metered-and-reclassified reroute is costing real capability:
+  **debugging 86.2 → 25.9**, **refactoring 73.6 → 38.4**, hallucination rate
+  worsening **75.9 → 61.7** — as new cybersecurity classifiers over-trigger a
+  **silent fallback to [[claude-opus-4-8|Opus 4.8]]**. [[anthropic]] has already
+  committed to tuning the classifiers. @Hesamation's Quote of the Day: "Fable 5
+  isn't nerfed, it's SLAUGHTERED... the problem isn't even the model itself, but
+  the hard guardrails Anthropic has set in place." The same cycle, **Epoch AI**
+  reported global high/critical CVE disclosures hit **~1,500 in June — 3.5x the
+  prior monthly record** — the same month **Claude Mythos Preview** shipped, the
+  first quantified data point behind the "AI is finding vulnerabilities at scale"
+  argument some (e.g. @kimmonismus) read as retroactive justification for the
+  tightened classifiers; Epoch itself hedges on causation. See
+  [[agentic-ai-security]] and [[federal-ai-policy]] (ARA digest 2026-07-03).
 
 ## Open questions
 
