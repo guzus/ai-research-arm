@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-07-03
+
+TOP STORIES:
+• WSJ court docs: Pentagon labeled Anthropic a "supply-chain risk" after it refused to drop weapons/surveillance guardrails; 2/3 of DoD ops reportedly switched away
+• BridgeBench: Fable 5 debugging scores crater 86.2→25.9 post-relaunch as new classifiers over-fire to Opus 4.8
+• Epoch AI: global high/critical CVE disclosures hit 3.5x monthly record in June, same month Claude Mythos Preview shipped
+• Kimi K2.7 Code goes GA in GitHub Copilot (#1 on HN, 342 pts)
+
+KEY NUMBERS:
+• Fable 5 debugging: 86.2 → 25.9 (BridgeBench)
+• June CVE disclosures: ~1,500 high/critical, 3.5x prior record
+• Two-thirds of Pentagon AI ops switched away from Anthropic (per DoD official)
+
+TRENDING: Coding-agent evaluation (Kimi K2.7 Copilot GA, Senior SWE-Bench, CursorBench 3.1) + Japan's top court barring AI patent inventorship
+
+Full digest on GitHub.
