@@ -1,0 +1,10 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-07-03 13:28 UTC
+
+CYCLE: Quiet window — mostly recycled 05:00 UTC signal. One real update.
+
+TOP STORIES:
+• Restored Claude Fable 5 draws "nerfed" backlash from new safety classifiers, but viral degradation numbers may actually be Opus 4.8 (silent reroute), not Fable 5 [⚠]
+
+WATCH: Whether Anthropic acknowledges elevated Fable-5 fallback-routing or tunes the classifiers.
+
+Full update on GitHub.
