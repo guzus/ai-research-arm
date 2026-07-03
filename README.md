@@ -4,7 +4,7 @@
 
 Automated multi-source AI news research agent powered by LLMs.
 
-> 📖 **[Open-sourcing ai-research-arm (ARA)](https://guzus.substack.com/p/open-sourcing-ai-research-arm-ara)** — the maintainer's write-up on the philosophies poured into this project: GitHub Actions as an audit trail, constraints that sharpen LLM output, cost-aware model routing, and composable sibling services.
+> 📖 **[Open-sourcing ai-research-arm (ARA)](https://guzus.substack.com/p/open-sourcing-ai-research-arm-ara)**
 
 ## Today's Front Page
 
