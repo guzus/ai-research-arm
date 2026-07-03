@@ -1,0 +1,10 @@
+Speaker 1: Friday, July third, twenty twenty-six.
+Speaker 2: [high_energy] We start with a story straight out of court documents — the Pentagon reportedly labeled Anthropic a supply-chain risk after the company refused to drop weapons and surveillance guardrails.
+Speaker 1: A defense official says [emphasis] two thirds of Pentagon AI operations [/emphasis] have already switched away from Anthropic's models.
+Speaker 2: Meanwhile Fable five just had a brutal debugging benchmark run. On BridgeBench its score fell from [emphasis] eighty six point two down to twenty five point nine [/emphasis] after new classifiers started over-firing traffic to Opus four point eight.
+Speaker 1: That is not a small regression, that is a collapse.
+Speaker 2: On the security side, Epoch AI clocked global high and critical vulnerability disclosures at [emphasis] three and a half times the prior monthly record [/emphasis] in June — the same month Claude Mythos Preview shipped.
+Speaker 1: [dramatic_pause] Worth sitting with that timing for a second.
+Speaker 2: On a lighter note, Kimi two point seven Code just went GA in GitHub Copilot, and it is sitting at number one on Hacker News with three hundred forty two points.
+Speaker 1: Also trending, coding agent evaluation is heating up across Senior SWE-Bench and CursorBench three point one, and Japan's top court just barred AI systems from being named as patent inventors.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
