@@ -42,8 +42,12 @@ sources:
   - "@techepages"
   - "@PeterDiamandis"
   - "@elonmusk"
+  - "@yicaichina"
+  - "@loong_of"
+  - "@poezhao0605"
+  - "@BiteyeHQ"
 created_at: 2026-06-26
-updated_at: 2026-06-30
+updated_at: 2026-07-03
 closed_at: null
 closed_reason: null
 history:
@@ -51,6 +55,8 @@ history:
     change: "Created — Anthropic sent a letter to US senators and White House officials accusing Alibaba-linked operators of the largest documented adversarial distillation campaign against a US AI lab: ~25K fraudulent accounts, 28.8M Claude exchanges (2026-04-22→06-05), targeting software-engineering and agentic-reasoning capabilities for distillation into Qwen. Bloomberg-carried; Anthropic spokesperson confirmed the letter to Bloomberg; BABA -4.9% to a 16-mo low. Backdrop: DoD Alibaba PLA designation (Alibaba suing to overturn) + pending Hagerty-Kim amendment to blacklist distillation firms. Anthropic flagged a broader pattern (Feb: DeepSeek/Moonshot/MiniMax, 24K accounts / 16M exchanges). A discrete legal/regulatory action → status confirmed, verification confirmed (letter exists + Bloomberg + Anthropic spokesperson on-record; the underlying accusations remain Anthropic's, Alibaba declined to comment). Cross-links [[alibaba-qwen-3-7-plus]], [[anthropic-fable-mythos-export-control-2026-06]]."
   - ts: 2026-06-30
     change: "Viral amplification + casus-belli framing. The 28.8M-call / 25,000-account figures went viral overnight (Peter Diamandis week-in-review post, ~868 likes/149 RT: 'largest AI model theft ever attempted… if confirmed') and were boosted by Elon Musk's repost (~147 RT). A widely-circulated analysis thread explicitly ties the export-control saga's origin to this allegation: Anthropic's June 10 White House letter (the distillation attack) → the June 12 export directive suspending Fable 5/Mythos 5 → 15-day suspension → selective Mythos 5 re-clearance ([[anthropic-fable-mythos-export-control-2026-06]]). Counter-framing hardened — analysts note distillation-via-API is a known, contested technique ('not espionage… industrialized homework copying at national scale') and that Anthropic is the direct beneficiary of the controls the allegation triggered. No primary letter text or Alibaba rebuttal surfaced. Core facts unchanged → status stays confirmed, verification stays confirmed; this entry records the amplification and the now-explicit link to the export gate. Sources: @PeterDiamandis, @elonmusk (RT), 2026-06-30 Twitter pulse (10:00 UTC top story)."
+  - ts: 2026-07-03
+    change: "Alibaba's countermove. Alibaba will ban Claude Code company-wide from office environments starting July 10, designating it 'high-risk software' over an alleged 'backdoor' and directing employees to its own Qoder tool instead. Mechanism per @BiteyeHQ: developers reportedly found hidden flagging logic tied to proxies/timezones/Chinese-AI-lab keywords, which an Anthropic engineer called an experimental anti-abuse/anti-distillation mechanism already rolled back. Two independent Chinese outlets (Yicai/第一财经, The Paper via relay) plus ~6 social accounts converge on the July 10 date and Qoder replacement; no Anthropic or Alibaba on-record statement. One analyst (@poezhao0605) notes the ban implicitly confirms Alibaba had been tolerating unauthorized Claude Code usage. Status stays confirmed; verification stays confirmed (multi-outlet convergence on undisputed facts, though sourced to unnamed Alibaba insiders)."
 ---
 
 Anthropic sent a **letter to multiple US senators and White House officials**

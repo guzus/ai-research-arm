@@ -18,7 +18,12 @@ status_note: |
   advances to in-testing / partial. The "Hatch" consumer-agent angle and
   the up-to-$199.99/mo pricing remain single-source (The Information) and
   unconfirmed.
-expected: "Muse Spark developer API expected 'later this month' (late June 2026, repeatedly slipped); Hatch launch + up-to-$199.99/mo pricing still TBD/unconfirmed"
+
+  **2026-07-03:** Alexandr Wang confirmed (own tweet) a "next Muse Spark
+  update" is coming soon with big coding/agentic gains; Business Insider
+  (secondary) names it "Watermelon" and claims GPT-5.5-parity on internal
+  benchmarks with ~10x Muse Spark's training compute — unconfirmed by Meta.
+expected: "Muse Spark developer API expected 'later this month' (late June 2026, repeatedly slipped); Hatch launch + up-to-$199.99/mo pricing still TBD/unconfirmed. 2026-07-03: next Muse Spark update ('Watermelon' per BI) coming soon per Wang; GPT-5.5-parity claim unconfirmed"
 labels:
   - consumer-agent
   - pricing
@@ -30,8 +35,10 @@ sources:
   - https://x.com/JGidel4/status/2062360036190376378
   - "@WSJ"
   - https://the-decoder.com/metas-hatch-ai-agent-could-cost-up-to-200-a-month-and-marks-its-first-paid-ai-product/
+  - "@alexandr_wang"
+  - "@kimmonismus"
 created_at: 2026-06-04
-updated_at: 2026-06-07
+updated_at: 2026-07-03
 closed_at: null
 closed_reason: null
 history:
@@ -41,6 +48,8 @@ history:
     change: "Status rumored → in-testing, verification unverified → partial. WSJ reporting (relayed via aggregators 2026-06-05, citing a 2026-06-02 status) corroborates **Muse Spark** as Meta's debut proprietary closed-source foundation model (Superintelligence Labs / TBD Lab, led by Alexandr Wang), already in internal production for WhatsApp/Instagram business agents — the model is 'done', but its **developer API has been repeatedly delayed** (~2 months past Wang's early-April 'soon'). A Meta spokesperson says the API is in testing with select partners and is still expected 'later this month.' Real artifact in partner testing → in-testing; second outlet (WSJ) beyond The Information → partial. The Hatch consumer-agent product and up-to-$199.99/mo pricing remain single-source (The Information) and unconfirmed"
   - ts: 2026-06-07
     change: "The Decoder (2026-06-06) published a full writeup framing **Hatch** as **Meta's first paid AI product** at **up to $200/mo**: users describe what they need in plain language and Hatch builds working tools, schedules appointments, or sends emails. Second independent outlet on the Hatch consumer-agent angle (beyond The Information), reinforcing the pricing band; still no Meta primary on a launch date and the Muse Spark backend is unconfirmed. Status stays in-testing / partial"
+  - ts: 2026-07-03
+    change: "Next Muse Spark update confirmed coming, codename + benchmark claim still secondary. Meta Superintelligence Labs chief Alexandr Wang tweeted (01:01 UTC Jul 3, primary, 2,116 likes): 'Our next Muse Spark update is coming soon. Big improvements in coding and agentic capabilities.' Separately, Business Insider reporting (relayed by @kimmonismus) names the update 'Watermelon,' claims it already matches GPT-5.5 on internal benchmarks, and says it trains with ~10x the compute of Muse Spark (internal codename Avocado) — this specific codename/benchmark claim is BI-secondary, not in Wang's own tweet, and not independently verified. A real primary confirms an update is coming; the Watermelon specifics stay unconfirmed. Status stays in-testing; verification stays partial."
 ---
 
 **The Information** (relayed on 2026-06-04, 02:25 UTC) reports that Meta is

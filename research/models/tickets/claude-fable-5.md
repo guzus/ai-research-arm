@@ -98,6 +98,24 @@ status_note: |
   Codex GPT-5.5 — best automation up from <3% to 16% in under a year, though the
   leader still fails ~84% of real freelance work (@ScaleAILabs July 1). Status
   stays `released`; verification stays `confirmed`.
+  **2026-07-03 — guardrail cost quantified; subscription-return commitment
+  reaffirmed.** Independent benchmark firm **BridgeMind** re-ran the July 1
+  relaunch build on **BridgeBench** and found the new cyber/bio/chem
+  classifiers over-triggering the Opus 4.8 fallback so aggressively that
+  debugging collapsed **86.2 → 25.9**, refactoring **73.6 → 38.4**, and
+  hallucination rate worsened **75.9 → 61.7** — the first hard numbers behind
+  the "Fable 5 feels nerfed" complaints tracked since relaunch. Single
+  benchmark org, no independent replication yet, but directionally consistent
+  with Anthropic's own relaunch disclosure. Separately, **Epoch AI** reports
+  June 2026 saw ~1,500 high/critical CVE disclosures — 3.5x the prior monthly
+  record, set before Mythos Preview shipped — read by some (@kimmonismus) as
+  retroactive justification for the tightened classifiers, though Epoch's own
+  framing hedges on causation. On the access side, an Anthropic team member
+  (**@trq212**) reaffirmed late 2026-07-02 that Fable 5 **will return to
+  Pro/Max/Team subscriptions "as soon as capacity allows,"** addressing an
+  analyst concern that the July 1 blog's "temporary" framing had gone quiet —
+  not yet matched by an official @AnthropicAI/@claudeai statement. Status
+  stays `released`; verification stays `confirmed`.
 expected: "BACK ONLINE GLOBALLY (2026-07-02): export controls lifted, Fable 5 restored worldwide as a general re-release, metered (≤50% of weekly usage limits through July 7, then usage credits; @ClaudeDevs reset all rate limits on relaunch); tightened cyber + bio/chem classifiers, small fraction of routine coding still routed to Opus 4.8; tops Scale AI + CAIS Remote Labor Index at 16.10% (ahead of Opus 4.8 / Codex GPT-5.5). Next watch: July 7 shift from the 50%-of-weekly cap to usage credits (day-one cap-exhaustion complaints), and whether Anthropic loosens the bio/chem classifier false positives as promised. Prior — partial restoration surfacing: Fable 5 listed Active in AWS Bedrock (anthropic.claude-fable-5) with bundled weekly Claude Code usage; US ID verification via Persona live 2026-07-08 + use-case review + Anthropic approval; both US and global model IDs present. Anthropic status page still shows the 2026-06-13 suspension as active (see [[anthropic-fable-mythos-export-control-2026-06]]). Was free for Pro/Max/Team through 2026-06-22, credit-metered thereafter"
 labels:
   - frontier-model
@@ -123,8 +141,12 @@ sources:
   - "@synthwavedd"
   - "@plasmakick"
   - "@ScaleAILabs"
+  - "@bridgemindai"
+  - "@Hesamation"
+  - "@EpochAIResearch"
+  - "@trq212"
 created_at: 2026-06-10
-updated_at: 2026-07-02
+updated_at: 2026-07-03
 closed_at: null
 closed_reason: null
 history:
@@ -144,6 +166,8 @@ history:
     change: "Sonnet 5 shipped, Fable 5 re-release still absent. Anthropic launched Claude Sonnet 5 ([[claude-sonnet-5]]) on 2026-06-30 as the new default mid-tier — widely framed as the mass-market consolation tier for users locked out of gated Fable 5 — but no Fable 5 general re-release accompanied it. The US ID-verification (Persona) gate stays dated 2026-07-08; no fresh restoration progress this cycle. Model remains globally suspended for general use under the export-control order ([[anthropic-fable-mythos-export-control-2026-06]]). Per transition triggers, this availability observation keeps status released and is documented via history; verification stays confirmed."
   - ts: 2026-07-02
     change: "BACK ONLINE GLOBALLY (metered). Commerce lifted the export-control order (June 30 23:52 UTC @AnthropicAI + Politico; regulatory event on [[anthropic-fable-mythos-export-control-2026-06]]) and Anthropic restored Fable 5 worldwide on July 1 as a general re-release — not the US-only regime datamined strings implied. Access is metered: ≤50% of each plan's weekly usage limits through July 7, then continuation via usage credits; @ClaudeDevs reset all users' 5-hour and weekly rate limits on relaunch (~12K likes). A small fraction of routine coding still falls back to Opus 4.8, and tightened cyber + bio/chem safety classifiers ship with the redeploy. Reception: strong praise for the model itself ('I forgive you for the bad Sonnet 5 launch') alongside term-friction — heavy users report exhausting the 50% cap almost immediately and call the bio/chem classifiers over-restrictive on legitimate science (single-amplifier enthusiast sentiment @kimmonismus, not usage data). Capability datum: Fable 5 tops the Scale AI + CAIS Remote Labor Index at 16.10% (240 real paid freelance projects), ahead of Opus 4.8 and Codex GPT-5.5 — best automation up from <3% to 16% in under a year, though the leader still fails ~84% of real freelance work (@ScaleAILabs July 1 17:33 UTC). Per transition triggers, a re-availability event keeps status released and is documented via history; verification stays confirmed."
+  - ts: 2026-07-03
+    change: "Guardrail cost quantified + subscription-return reaffirmed. BridgeMind's BridgeBench re-test of the July 1 build found the new classifiers over-triggering the Opus 4.8 fallback hard enough to crater debugging 86.2→25.9, refactoring 73.6→38.4, and worsen hallucination 75.9→61.7 (single-benchmark-org, no independent replication, but directionally consistent with Anthropic's own relaunch disclosure and widespread anecdotal complaints). Epoch AI reports June 2026 CVE disclosures hit ~1,500 (3.5x prior record, set before Mythos Preview shipped) — read by some as retroactive justification for the classifiers, though Epoch hedges on causation. Anthropic team member @trq212 reaffirmed Fable 5 will return to Pro/Max/Team subscriptions 'as soon as capacity allows,' addressing a dropped-commitment concern; not yet matched by an official @AnthropicAI/@claudeai statement. Status stays released; verification stays confirmed."
 ---
 
 **Claude Fable 5** is the public-facing resolution of the long-running

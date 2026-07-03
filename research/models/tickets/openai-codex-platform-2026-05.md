@@ -3,7 +3,7 @@ slug: openai-codex-platform-2026-05
 title: OpenAI Codex platform — Mac/iOS/Android/Windows agentic coding cadence
 company: OpenAI
 model: Codex
-status: released
+status: closed
 status_note: |
   OpenAI shipped a multi-week "Codex Thursday" cadence in May 2026 that
   built out the Codex agentic-coding surface across operating systems:
@@ -47,9 +47,9 @@ sources:
   - "@PhilippSpiess"
   - "@simonw"
 created_at: 2026-05-30
-updated_at: 2026-06-21
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-03
+closed_at: 2026-07-03
+closed_reason: released-and-aged
 history:
   - ts: 2026-05-30
     change: "Created — multi-week May 2026 Codex platform shipping cadence consolidated: Codex in ChatGPT mobile preview iOS/Android 2026-05-14, hooks + programmatic access tokens 2026-05-14, Mac Appshots 2026-05-21, secure Mac app control from phone with screen off 2026-05-22, and the 2026-05-29 push of computer use on Windows + Codex in ChatGPT mobile for Windows (primary @OpenAI). Distinct from underlying GPT-5.x family; tracks the developer surface OpenAI is using to compete with Claude Code, Grok Build (xai-grok-build-2026-05), and Antigravity"
@@ -59,6 +59,8 @@ history:
     change: "Enterprise 'work layer' expansion (secondary-source convergence, no primary @OpenAI link in-window). Multiple recap threads 2026-06-03 describe three new building blocks on the Codex/ChatGPT surface: **Plugins** (role-specific environments — data analytics, public-equity investing, investment banking, sales, product design, creative production — connecting ~62 apps), **Sites** (turn AI outputs into dashboards / internal tools / reports / shareable web apps, framed as replacing front-end dev), and **Annotations** (highlight a region of a doc/sheet/deck and instruct the model to modify only that region). Restated usage figure: **Codex >5M weekly active, up >400% since January**, with **AWS distribution**. Verification stays partial on these specifics (engagement-thread sourcing, e.g. @StanVolynsky / @shree_code), but the named features are internally consistent across accounts. Status remains released; framing shifts from 'agentic coding CLI' toward 'interface layer for knowledge work'"
   - ts: 2026-06-21
     change: "Cadence continues — the Codex macOS app added 'Record & Replay': it can watch a user perform a workflow once and convert it into a reusable skill, plus improved browser-based debugging/testing of web apps. First record-to-skill automation primitive on the platform; fits the existing 'new shipping artifact in the Codex platform → UPDATE' trigger. Status stays released."
+  - ts: 2026-07-03
+    change: "Closed — released-and-aged. Per this ticket's own transition trigger (≥4 weeks past the 2026-05-29 Windows shipping with no fresh material cadence signal), 35 days have passed since the last dated Codex Thursday drop with no new platform-cadence signal since the 2026-06-21 Record & Replay update. The OpenAI Codex/Work Louder hardware reveal (targeted July 15) is a distinct artifact tracked on [[openai-codex-hardware-2026-06]], not a continuation of this platform-cadence ticket."
 ---
 
 This ticket tracks the **OpenAI Codex platform** as a shipping surface —

@@ -99,6 +99,15 @@ status_note: |
   corroborated by VentureBeat / Axios / Simon Willison / TechCrunch → status
   **in-testing → confirmed**, verification **partial → confirmed**. Not yet
   `released`: the preview is gated/limited, not publicly available to anyone.
+
+  **2026-07-03 — firsthand OpenAI-staffer reconfirmation, still gated.**
+  @altryne relayed a firsthand conversation with OpenAI's own @dkundel at an
+  AI conference booth, reconfirming the Sol/Terra/Luna tiers, Ultra mode, the
+  Codex app, and a "token bank" concept. Separately, per-tier pricing
+  ($5/$30, $2.50/$15, $1/$6 per MTok) already on this ticket recirculated via
+  secondary relays (@amohan120) with no new figures. Still limited to ~20
+  vetted organizations; no GA date. Status stays `confirmed`; verification
+  stays `confirmed`.
 expected: "GPT-5.6 family (Sol flagship / Terra balanced / Luna fast) shipped in a US-government-approved limited preview ~2026-06-26 (official OpenAI blog); Sol new SOTA on Terminal-Bench 2.1, max + ultra (subagent) modes; pricing Sol $5/$30, Terra $2.50/$15, Luna $1/$6, 30-min min cache. GA 'in the coming weeks' — Polymarket ~90% public release by 2026-07-31"
 labels:
   - openai
@@ -116,7 +125,7 @@ sources:
   - https://openai.com/index/previewing-gpt-5-6-sol/
   - https://simonwillison.net/2026/Jun/26/openai/
 created_at: 2026-06-09
-updated_at: 2026-06-29
+updated_at: 2026-07-03
 closed_at: null
 closed_reason: null
 history:
@@ -140,6 +149,8 @@ history:
     change: "Status → in-testing. The Information broke (Axios confirmed) that the Trump administration asked OpenAI to stagger GPT-5.6's release: Altman told staff the government will approve access 'customer by customer' during a limited preview, broader release possibly 'a couple of weeks' later, via ONCD/OSTP under the voluntary June 2 frontier-model review EO ([[us-ai-model-review-eo-2026-06]]). Axios adds GPT-5.6 has 'Mythos-like' capability (the Fable 5/Mythos 5 export-suspension tier, [[anthropic-fable-mythos-export-control-2026-06]]) and that OpenAI had pushed for release since before the Fable ban — implying the model was ready weeks ago and is held up by the review environment. The admin-route leak (06-25) + the reported gated limited preview clear the in-testing bar (real artifact + external preview). Still no OpenAI on-record date, system card, or API string → verification stays partial (credible secondary via The Information + Axios, not OpenAI-primary)."
   - ts: 2026-06-29
     change: "Status → confirmed; verification → confirmed. OpenAI published the official 'Previewing GPT-5.6 Sol' blog (openai.com/index/previewing-gpt-5-6-sol/), launching the GPT-5.6 family — Sol (flagship), Terra (balanced), Luna (fast/cheap) — in a limited, US-government-approved preview (access restricted to a small group of trusted partners shared with the government before broader release; OpenAI: 'this kind of government access process shouldn't become the long-term default'). Sol sets a new SOTA on Terminal-Bench 2.1, improves agentic coding/biology/cybersecurity; new 'max' reasoning effort + 'ultra' subagent-spawning mode. Pricing/1M tok: Sol $5/$30, Terra $2.50/$15, Luna $1/$6, explicit cache breakpoints (30-min min cache). GA 'in the coming weeks'; Polymarket ~90% public release by 2026-07-31. Official OpenAI primary + named tiers + pricing + benchmarks, corroborated by VentureBeat/Axios/Simon Willison/TechCrunch → status advances to confirmed, verification to confirmed. Not released yet: preview is gated/limited, not public to anyone. The leak-grade 'GPT-Bidi-1' bidirectional voice model from the prior bundle was NOT part of this preview; it stays a folded rumor pending its own artifact. Sources: @OpenAI, openai.com blog, Simon Willison."
+  - ts: 2026-07-03
+    change: "Firsthand reconfirmation, no new state change. @altryne relayed a firsthand conversation with OpenAI's @dkundel at an AI conference reconfirming Sol/Terra/Luna, Ultra mode, the Codex app, and a 'token bank' concept; pricing figures already on this ticket recirculated via secondary relay (@amohan120) with no new numbers. Still ~20-org gated, no GA date. Status stays confirmed; verification stays confirmed."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely

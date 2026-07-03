@@ -12,25 +12,45 @@ status_note: |
   AI on classified networks via the **Maven Smart System**. **Anthropic is
   challenging the designation in court.** Multi-outlet reporting; no DoD or
   Anthropic primary filing captured in-window → verification partial.
-expected: "Replacement evaluation ongoing; Anthropic's legal challenge to the designation pending"
+
+  **2026-07-03 — court documents make the fight public, named officials.**
+  WSJ-reported court filings surfaced months of emails between **Dario
+  Amodei and Pentagon undersecretary Emil Michael** over guardrails for
+  AI-powered weapons and domestic surveillance: Anthropic wanted bans on
+  fully autonomous weapons and certain surveillance uses; the Pentagon
+  pushed for Claude to be available across "any lawful" national-security
+  use case. Michael's own (unverified) claim: **two-thirds of Pentagon
+  operations using Anthropic have already switched to other AI tools**. A
+  **judge has paused parts of the "supply-chain risk" designation and the
+  government is appealing**. Fortune's "Eye on AI" newsletter separately
+  frames this as the week's defining AI story, and (per a same-day relay)
+  describes a leaked internal Amodei Slack memo calling OpenAI's messaging
+  "mendacious"/"gaslighting" — single-source, not yet independently
+  confirmed. Named officials + quoted emails + multi-outlet convergence
+  clears the bar for `confirmed` verification.
+expected: "Government's appeal of the judge's pause on the 'supply-chain risk' designation pending; watching for an on-record Anthropic/Pentagon/DoD statement"
 labels:
   - policy
   - defense
   - anthropic
   - legal-action
   - procurement
-verification: partial
+verification: confirmed
 sources:
   - "@WSJ"
   - "@TechCrunch"
   - "@AnthropicAI"
+  - "@kimmonismus"
+  - "@whoisanku"
 created_at: 2026-06-09
-updated_at: 2026-06-09
+updated_at: 2026-07-03
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-09
     change: "Created — the DoD designated Anthropic a 'supply-chain risk' after Anthropic refused to drop its no-mass-surveillance / no-autonomous-weapons red lines, and is testing OpenAI, Google, and xAI's Grok to replace Claude (the primary AI on classified networks via the Maven Smart System), evaluated by ~25 'power users'. Anthropic is challenging the designation in court. Multi-source reporting, no DoD/Anthropic primary captured in-window → status confirmed (event), verification partial"
+  - ts: 2026-07-03
+    change: "WSJ-reported court documents made the dispute public with named officials: months of emails between Dario Amodei and Pentagon undersecretary Emil Michael over autonomous-weapons/surveillance guardrails. Michael claims two-thirds of Pentagon Anthropic usage already switched away (unverified, his own figure). A judge has paused parts of the 'supply-chain risk' designation; the government is appealing. Fortune 'Eye on AI' calls this the week's defining AI story and relays an unconfirmed leaked Amodei Slack memo calling OpenAI's messaging 'mendacious'/'gaslighting'. Named officials + quoted emails + multi-outlet convergence (WSJ, two independent tweet relays, Fortune) → verification partial → confirmed; status stays confirmed."
 ---
 
 The **US Department of Defense has designated Anthropic a "supply-chain
