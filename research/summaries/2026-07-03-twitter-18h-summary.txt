@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-07-03 18:31 UTC
+
+CYCLE: US-China AI toolchain rivalry sharpens as Alibaba bans Claude Code internally; GPT-5.6 tier pricing and Meta's next model both get new data points.
+
+TOP STORIES:
+• Alibaba bans Claude Code company-wide from July 10, citing "backdoor" risk, pushes Qoder instead ✓
+• GPT-5.6's Sol/Terra/Luna tiers get concrete pricing, still gated to ~20 vetted orgs ✓
+• Meta's next model "Watermelon" reportedly matches GPT-5.5 on internal benchmarks, per Alexandr Wang ⚠
+
+WATCH: Whether Anthropic or Alibaba issue an official statement on the Claude Code workplace ban.
+
+Full update on GitHub.
