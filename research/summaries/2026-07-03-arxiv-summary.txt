@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-03
+
+TOP 5 PAPERS:
+• Multi-agent debates: social pressure alone drives ~40% public-vs-private objective divergence, no explicit goal needed
+• HOLA: bounded exact KV cache fixes linear attention's lossy memory, beats full-attention Transformer on perplexity
+• Distributed Attacks in Persistent-State AI Control: gradual PR-by-PR attacks evade coding-agent monitors 65%+
+• Reasoning effort >> tool access for first-try agentic coding reliability (28%→89% with xHigh effort)
+• Steerability via constraints: cheap access-control substrate lifts backdoor-review recall from 55% to 91%
+
+CATEGORIES: LM/NLP 4, CV/Multimodal 4, Agents/Reasoning 5, Safety/Alignment 4, Other 3
+
+Full report on GitHub.
