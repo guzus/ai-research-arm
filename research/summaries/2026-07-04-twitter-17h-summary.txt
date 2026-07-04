@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-07-04 17:48 UTC
+
+CYCLE: Alibaba-Anthropic Claude Code dispute finally gets full mutual-accusation detail; GPT-5.6 names confirmed via OpenAI's own GitHub repo.
+
+TOP STORIES:
+• Alibaba's Claude Code ban traces to reverse-engineered proxy/timezone checks tied to Anthropic's 25K-fake-account distillation complaint [✓]
+• GPT-5.6 Sol/Terra/Luna names confirmed in OpenAI's public GitHub repo (June 26 commit), independent of leaker chain [✓]
+• Anthropic publishes "first draft" 0-4 jailbreak severity framework with Amazon, Microsoft, Google [✓]
+
+WATCH: Whether a third-party security firm audits the Claude Code code Alibaba calls a "backdoor."
+
+Full update on GitHub.
