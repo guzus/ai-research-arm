@@ -1,0 +1,10 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-07-04 18:06 UTC
+
+CYCLE: Alibaba/Claude Code "backdoor" dispute gets a name and a technical teardown; rest of the window is recirculated rumors.
+
+TOP STORIES:
+• Anthropic's Thariq Shihipar confirmed the Claude Code detection code; reverse-engineers detail the exact mechanism (147-domain list, XOR cipher, steganographic date marker) [⚠]
+
+WATCH: Whether an independent security researcher confirms Claude Code 2.1.197 actually removed the mechanism, and whether Alibaba's July 10 ban proceeds anyway.
+
+Full update on GitHub.
