@@ -1,0 +1,10 @@
+Twitter/X AI Pulse - 2026-07-05 04:33 UTC
+
+CYCLE: Viral thread details Claude Code's China-routing detection mechanism — but fabricates its own HN engagement stat
+
+TOP STORIES:
+• Reverse-engineered Unicode-steganography mechanism behind Claude Code's proxy/timezone detection recirculates; claimed "1,891-point" HN comment falsified (actual: 9 points) [⚠]
+
+WATCH: Whether Anthropic, Alibaba, or an independent researcher confirms/disputes the specific mechanism and "147 domains" figure.
+
+Full update on GitHub.
