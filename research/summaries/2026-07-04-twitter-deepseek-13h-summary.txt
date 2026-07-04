@@ -1,0 +1,11 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-07-04 13:22 UTC
+
+CYCLE: Alibaba bans Claude Code internally after Anthropic flags a large-scale Claude-distillation scheme; DeepMind's A24 equity deal keeps drawing industry pushback.
+
+TOP STORIES:
+• Alibaba to ban Claude Code (effective July 10) over alleged "backdoor" tracking, following Anthropic's report to US senators of ~25,000 fake accounts distilling Claude ✓
+• Google DeepMind's $70-75M equity R&D partnership with A24 draws sharper "why would A24 do this" pushback from filmmakers ✓
+
+WATCH: Whether Alibaba's July 10 Claude Code ban actually takes effect, and whether Anthropic issues an on-record statement on the tracking mechanism and distillation claim.
+
+Full update on GitHub.
