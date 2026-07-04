@@ -6,8 +6,9 @@ aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsof
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
 description: Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.
 created_at: 2026-06-03
-timestamp: 2026-06-30T00:00:00Z
+timestamp: 2026-07-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
@@ -98,6 +99,16 @@ genuinely new facts are native Azure auth/billing and the NVIDIA-GPU lane (the
 **Caveat.** Microsoft's **Majorana 2** quantum chip claim (~1,000× reliability,
 2029 target) drew pushback — *Scientific American* reports multiple physicists
 calling it "bogus" pending published measurement data.
+
+**Copilot apps merge; "Frontier Co." sells surplus capacity (2026-07-04).**
+Microsoft is reportedly **merging its consumer and enterprise Copilot apps**
+into a single app landing in August — cutting rarely-used features (e.g.
+Copilot Podcasts) while adding new background-task **"AutoPilot"** agents for
+an extra fee — part of a broader AI "super app" race alongside [[anthropic]]
+and [[openai]]. Separately, Microsoft **launched a $2.5B "Frontier Co." unit**,
+embedding 6,000 staff directly with AI customers — a services/distribution
+push that pairs with the Build-2026 first-party MAI stack (ARA digest
+2026-07-04).
 
 ## Open questions
 

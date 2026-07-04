@@ -6,8 +6,9 @@ aliases: ["GPT-5.6", "GPT 5.6", "GPT-5.6 Pro", "GPT-5.6 Mini", "GPT-5.6 Sol", "G
 tags: [model-release, openai, gpt, frontier-model, government-gated, preview]
 description: OpenAI frontier family shipped 2026-06-26 as a US-government-gated limited preview — Sol (flagship) / Terra (balanced) / Luna (fast/cheap), with new "max" and "ultra" (subagent-spawning) reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 created_at: 2026-06-20
-timestamp: 2026-06-29T00:00:00Z
+timestamp: 2026-07-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
@@ -56,6 +57,19 @@ gated external preview); GA is "in the coming weeks."
   the same window as OpenAI's **Jalapeño** custom inference ASIC
   ([[broadcom|Broadcom]]-co-designed) — vertical integration on both the model
   and the silicon layer.
+
+- **GA timing narrows to a single-leaker July 7 target (2026-07-04).** Tier
+  names **"Sol," "Terra," and "Luna"** were spotted embedded in Codex app
+  code (not yet enabled); real-time voice support reportedly remains in
+  development. A single leaker (@synthwavedd) now names **July 7** as the
+  most likely launch date within a July 7–9 window — explicitly timed to
+  catch users leaving [[claude-fable-5|Claude]] after Fable 5's
+  subscription-plan cutoff — with plan limits claimed to be "significantly
+  more generous" than Fable 5's, though unconfirmed. Prediction-market
+  activity (one trader accumulating ~8,000 shares) also clusters on July 7,
+  though this reads as pattern-matching rather than inside information.
+  *Single-source; no OpenAI confirmation or system card yet* (ARA digest
+  2026-07-04).
 
 ## Open questions
 

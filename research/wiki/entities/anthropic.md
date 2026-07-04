@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.
 created_at: 2026-05-24
-timestamp: 2026-07-03T00:00:00Z
+timestamp: 2026-07-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
@@ -541,6 +542,21 @@ Four developments through May 2026 put Anthropic at the center of the field:
   while publicly maintaining [[nvidia|Nvidia]] "still matters" — a compute-supply hedge
   continuing the thread tracked since July 2. See [[federal-ai-policy]] and
   [[agentic-ai-security]] (ARA digest 2026-07-03).
+
+- **Pentagon fight details unsealed; Alibaba ban circumvention and alleged
+  fingerprinting code surface (2026-07-04).** Newly unsealed court filings
+  clarify the July 3 "supply-chain risk" story: the months-long
+  **Amodei–Emil Michael** negotiation collapsed specifically over
+  **autonomous-weapons and domestic-surveillance guardrails**, not over
+  whether the military could use Claude at all — the Pentagon wanted Claude
+  cleared for "all lawful national security work." Separately, the
+  China/Alibaba Claude Code ban saga continues with **no on-record statement
+  from either side**, while reporting says both companies are **circumventing
+  the ban via VPNs and overseas subsidiaries**, and that **hidden code
+  allegedly capable of fingerprinting Chinese users** was found inside
+  Alibaba's own tooling — a new enforcement-evasion data point on top of the
+  distillation-attack accusation. See [[federal-ai-policy]] and
+  [[agentic-ai-security]] (ARA digest 2026-07-04).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

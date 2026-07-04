@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
 created_at: 2026-05-30
-timestamp: 2026-07-02T00:00:00Z
+timestamp: 2026-07-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
@@ -366,6 +367,18 @@ materially reshape how the lab is positioned heading into its IPO window:
   [[microsoft|Microsoft]] ~27%, employees/investors ~47%) would likely force non-voting
   shares. This hardens the June 8 "Trump-administration-in-talks-for-a-stake" thread into
   a concrete number — see [[federal-ai-policy]] and [[ai-capex]] (ARA digest 2026-07-02).
+
+- **The equity-stake trial balloon draws sharply negative public reaction
+  (2026-07-04).** A CNBC follow-up to the July 2 FT scoop reports the 5%
+  US-government equity idea has **circulated for over a year**, and that
+  **Sam Altman first pitched it to the Trump administration in early 2025** —
+  pushing the origin of the idea back well before last week's reporting
+  suggested. Public reaction has been sharply negative: Digg tracked
+  **1M+ views and 79.5% negative sentiment** across 472 analyzed comments,
+  including comparisons to state-directed economies ("Are we China?"). Still
+  **no on-record confirmation or denial** from OpenAI or the White House; the
+  proposal remains preliminary/non-binding and would likely need Congressional
+  action. See [[federal-ai-policy]] (ARA digest 2026-07-04).
 
 ## Open questions
 

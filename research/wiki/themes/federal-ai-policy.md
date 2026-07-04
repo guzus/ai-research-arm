@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-07-03T00:00:00Z
+timestamp: 2026-07-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
@@ -399,6 +400,20 @@ footing for the first time in the cycle.
   dispute, distinct from the resolved June export-control saga (which concerned
   foreign-market access, not a values line with the government's own preferred
   buyer). See [[anthropic]] and [[claude-fable-5]] (ARA digest 2026-07-03).
+
+- **The equity-stake proposal draws public backlash; voluntary release
+  standards near (2026-07-04).** [[openai]]'s proposed 5% US-government
+  equity stake (see [[openai]]) drew sharply negative public reaction (Digg:
+  1M+ views, 79.5% negative) as CNBC reporting pushed its origin back to
+  **early 2025**, when Sam Altman reportedly first raised it with the Trump
+  administration. Separately, the **US is reportedly near voluntary AI
+  model-release standards with industry** (FT) — a softer-touch complement
+  to the mandatory 30-day pre-release regime this theme tracks. On the
+  enforcement side, [[anthropic]]'s Pentagon "supply-chain risk" designation
+  gained detail: unsealed filings show the Amodei–Emil Michael talks
+  collapsed specifically over **autonomous-weapons and domestic-surveillance
+  guardrails**, not blanket military access — see [[anthropic]] (ARA digest
+  2026-07-04).
 
 ## Open questions
 

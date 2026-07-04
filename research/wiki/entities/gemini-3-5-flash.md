@@ -6,8 +6,9 @@ aliases: ["Gemini 3.5 Flash", "Gemini 3.2 Flash", "Gemini 3.5 Live Translate"]
 tags: [model-release, google-deepmind, flash-tier, agentic]
 description: Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots; gained a real-time speech-to-speech Live Translate variant (70+ languages) on 2026-06-09.
 created_at: 2026-05-24
-timestamp: 2026-07-01T00:00:00Z
+timestamp: 2026-07-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
@@ -62,7 +63,15 @@ like [[anthropic]] (Claude Haiku) and OpenAI.
 
 ## Open questions
 - **Pro tier.** Gemini 3.5 Pro was confirmed for "next month" — does it close the
-  gap to the gated frontier, or stay a tier below?
+  gap to the gated frontier, or stay a tier below? A single-leaker report
+  (2026-07-04) claims Google DeepMind scrapped reusing the old 2.5 Pro base
+  and reset Gemini 3.5 Pro to a **full pretrain**, pushing the target to
+  **July 17** (previously unreported), with a follow-on Nano Banana Pro model
+  said to be in progress on the new base. **Unverified** — no independent
+  corroboration, and a near-verbatim second post from another account is not
+  an independent source; a cited Polymarket market gives ~48% odds on the
+  July 17 date, a pricing signal rather than confirmation (ARA digest
+  2026-07-04).
 - **Cost trajectory.** Does Flash-tier pricing keep drifting up as inference
   demand strains [[neocloud]] and hyperscaler capacity?
 - **Default-model leverage.** As the new default for AI Mode in Search, how much
