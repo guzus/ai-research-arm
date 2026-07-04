@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-07-04
+
+TOP STORIES:
+• OpenAI's proposed 5% US govt equity stake (~$42.6B) draws viral backlash (79.5% negative)
+• Unsealed filings: Anthropic-Pentagon fight was over military AI guardrails, not Claude access
+• Anthropic launches "Claude Science" workbench; Alibaba Claude Code ban saga continues
+• GPT-5.6 narrows to single-leaker July 7 target; Gemini 3.5 Pro retrain/July 17 unverified
+
+KEY NUMBERS:
+• 1,500 high-severity CVEs in June (3.5x prior record) amid AI bug-hunting boom
+• Kling raises ~$2B ahead of HK IPO; Crusoe in talks to raise ~$3B (~$30-40B valuation)
+• Microsoft launches $2.5B "Frontier Co." unit, 6,000 staff embedded with customers
+
+TRENDING: HN's "Right to Local Intelligence" manifesto + local-LLM guide
+
+Full digest on GitHub.
