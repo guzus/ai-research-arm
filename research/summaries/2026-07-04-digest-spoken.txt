@@ -1,0 +1,10 @@
+Speaker 1: Saturday, July fourth, twenty twenty-six.
+Speaker 2: [high_energy] Top story — OpenAI's proposed five percent US government equity stake, worth [emphasis]forty-two point six billion dollars[/emphasis], is drawing massive backlash online, nearly eighty percent negative reaction.
+Speaker 1: Meanwhile, unsealed court filings show the Anthropic-Pentagon fight was actually over military AI guardrails, not access to Claude itself.
+Speaker 2: And Anthropic just launched a new "Claude Science" workbench, though that Alibaba Claude Code ban saga is still dragging on.
+Speaker 1: On release timing, GPT five point six has narrowed to a single leaker pointing at July seventh, while a Gemini three point five Pro retrain around July seventeenth remains unverified.
+Speaker 2: Some quick numbers — June saw fifteen hundred high-severity CVEs, that's [emphasis]three and a half times[/emphasis] the prior record, as AI-powered bug hunting takes off. [dramatic_pause]
+Speaker 1: On the funding front, Kling raised about two billion dollars ahead of its Hong Kong IPO, and Crusoe is in talks to raise around three billion at a thirty to forty billion dollar valuation.
+Speaker 2: Microsoft's also making moves, launching a two point five billion dollar "Frontier Co." unit with six thousand staff embedded directly with customers.
+Speaker 1: And trending on Hacker News, a "Right to Local Intelligence" manifesto paired with a local-LLM guide is getting a lot of traction.
+Speaker 2: That is your ARA broadcast — full digest on GitHub.
