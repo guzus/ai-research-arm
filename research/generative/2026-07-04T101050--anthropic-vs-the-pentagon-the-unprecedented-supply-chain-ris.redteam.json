@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c3",
+      "claim_text": "Absence of a disclosed negative market reaction is not the same as absence of cost... Anthropic's revenue and valuation kept climbing through the dispute rather than absorbing a commercial hit (run-rate ~$47B by May 2026; $65B Series H at $965B post-money) — 'the market didn't blink.'",
+      "contradicting_url": "https://www.investing.com/news/stock-market-news/anthropic-executivessay-pentagon-blacklisting-could-hit-billions-in-sales-harm-reputation-4550981",
+      "contradicting_quote": "CFO Krishna Rao: government's actions could reduce 2026 revenue by multiple billions of dollars; public-sector head warned 2026 ARR of 'more than half a billion dollars' could 'disappear entirely.'",
+      "severity": "high",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The Washington Post reported that Claude, integrated with Palantir's Maven Smart System, helped identify and prioritize roughly 1,000 targets in the first 24 hours [of Operation Epic Fury].",
+      "contradicting_url": "https://www.nbcnews.com/tech/tech-news/us-military-using-ai-help-plan-iran-air-attacks-sources-say-lawmakers-rcna262150",
+      "contradicting_quote": "Claude is used to help military analysts sort through intelligence and does not directly provide targeting advice, according to a person with knowledge of Anthropic's work with the Defense Department.",
+      "severity": "medium",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c1",
+      "claim_text": "On February 27, 2026, the Pentagon designated Anthropic ... a 'supply chain risk,' a label whose statutory machinery had, in every documented prior use, been reserved for companies like Huawei, ZTE, and Kaspersky Lab — the first American-owned company ever so designated.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

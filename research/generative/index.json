@@ -832,5 +832,20 @@
       "fireworks-fallback",
       "requested-deepseek-v4-flash"
     ]
+  },
+  {
+    "slug": "anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris",
+    "file": "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Anthropic vs the Pentagon: the unprecedented supply-chain-risk label and what it reveals about AI vendor leverage",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-04T10:10:50Z",
+    "source": "local",
+    "prompt": "Anthropic vs the Pentagon: the unprecedented supply-chain-risk label and what it reveals about AI vendor leverage",
+    "tags": [
+      "fireworks-fallback",
+      "requested-deepseek-v4-flash"
+    ]
   }
 ]

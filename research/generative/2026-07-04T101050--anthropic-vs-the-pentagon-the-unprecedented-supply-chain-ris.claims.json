@@ -1,0 +1,244 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "DoD/Department of War designated Anthropic a 'supply chain risk' under 10 U.S.C. § 3252 (plus a separate FASCSA track), the first time either mechanism has been applied to a US-headquartered, US-owned company.",
+      "type": "regulatory",
+      "source_urls": ["https://www.anthropic.com/news/statement-comments-secretary-war", "https://www.lawfaremedia.org/article/pentagon's-anthropic-designation-won't-survive-first-contact-with-legal-system", "https://www.justsecurity.org/132851/anthropic-supply-chain-risk-designation/"],
+      "source_tiers": ["primary", "legal", "legal"],
+      "as_of": "2026-03-03",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c2",
+      "claim": "FASCSA's only prior invocation before Anthropic was against Acronis AG, a Swiss cybersecurity firm, in September 2025 — five months earlier.",
+      "type": "event",
+      "source_urls": ["https://www.mayerbrown.com/en/insights/publications/2025/10/dni-issues-first-fascsa-exclusion-and-removal-order-against-acronis-ag"],
+      "source_tiers": ["legal"],
+      "as_of": "2025-09-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Every prior US 'supply chain risk'/covered-entity designation (Huawei, ZTE, Hytera, Hikvision, Dahua, Kaspersky Lab, China Unicom/Pacific Networks subsidiaries, Acronis) targeted a foreign-headquartered or foreign-state-controlled entity; none was an American-founded, American-owned company before Anthropic.",
+      "type": "comparison",
+      "source_urls": ["https://www.federalregister.gov/documents/2019/08/13/2019-17201/federal-acquisition-regulation-prohibition-on-contracting-for-certain-telecommunications-and-video", "https://www.congress.gov/crs-product/LSB10895", "https://www.fcc.gov/document/pacific-networks-corp-and-comnet-usa-llc-order-show-cause"],
+      "source_tiers": ["primary", "primary", "primary"],
+      "as_of": "2026-03-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "The July 14, 2025 Anthropic-DoD contract was a $200 million-ceiling, two-year prototype Other Transaction Agreement making Claude the first frontier model on classified networks via Palantir's Maven Smart System.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/news/anthropic-and-the-department-of-defense-to-advance-responsible-ai-in-defense-operations"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "A January 2026 DoD AI Strategy memo directed a standardized 'any lawful use' contract clause across all DoD AI contracts within 180 days; Anthropic was the only one of four $200M CDAO AI vendors (with Google, OpenAI, xAI) to refuse it.",
+      "type": "event",
+      "source_urls": ["https://www.ox.ac.uk/news/2026-03-06-expert-comment-pentagon-anthropic-dispute-reflects-governance-failures-consequences"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-01-12",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "Anthropic's two stated red lines are refusing to permit mass domestic surveillance of Americans and fully autonomous weapons without human oversight over targeting/firing decisions; Anthropic CEO Dario Amodei said these were 'not a barrier' to adoption of Claude across the armed forces to date.",
+      "type": "quote",
+      "source_urls": ["https://www.anthropic.com/news/statement-department-of-war", "https://www.anthropic.com/news/statement-comments-secretary-war"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-02-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "On February 27, 2026, Trump directed all federal agencies to immediately cease using Anthropic technology; roughly 90 minutes later Defense Secretary Pete Hegseth announced the supply-chain-risk designation and a six-month DoD phase-out; GSA removed Anthropic from USAi.gov and its Multiple Award Schedule the same day.",
+      "type": "event",
+      "source_urls": ["https://www.cnbc.com/2026/02/27/trump-anthropic-ai-pentagon.html", "https://fortune.com/2026/02/27/trump-us-government-anthropic-claude-pentagon-6-months-phaseout-ai-standoff/", "https://www.nextgov.com/acquisition/2026/03/agencies-begin-shed-anthropic-contracts-following-trumps-directive/411823/"],
+      "source_tiers": ["secondary", "secondary", "secondary"],
+      "as_of": "2026-02-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "Anthropic itself argues, per its own statement, that the designation is legally narrower than Hegseth's public 'no contractor, supplier, or partner...any commercial activity' framing — it can only reach Claude's use as part of Department of War contracts, not Anthropic's broader commercial business.",
+      "type": "definition",
+      "source_urls": ["https://www.anthropic.com/news/statement-comments-secretary-war", "https://www.justsecurity.org/132851/anthropic-supply-chain-risk-designation/", "https://www.cbsnews.com/news/hegseth-declares-anthropic-supply-chain-risk/"],
+      "source_tiers": ["primary", "legal", "secondary"],
+      "as_of": "2026-02-27",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "Anthropic filed two lawsuits on March 9, 2026 — a district-court complaint in N.D. Cal. (No. 3:26-cv-01996) and a petition for review in the D.C. Circuit (No. 26-1049) — alleging APA violations, First Amendment retaliation, and due-process violations.",
+      "type": "event",
+      "source_urls": ["https://www.courtlistener.com/docket/72379655/anthropic-pbc-v-us-department-of-war/", "https://www.pearlcohen.com/anthropic-sues-department-of-defense-over-supply-chain-risk-designation/"],
+      "source_tiers": ["legal", "legal"],
+      "as_of": "2026-03-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "On March 26, 2026, U.S. District Judge Rita Lin (N.D. Cal.) granted Anthropic a preliminary injunction, finding the designation likely constituted First Amendment retaliation and calling the government's 'adversary' framing without statutory support ('Nothing in the governing statute supports the Orwellian notion that an American company may be branded a potential adversary').",
+      "type": "event",
+      "source_urls": ["https://www.cnbc.com/2026/03/26/anthropic-pentagon-dod-claude-court-ruling.html", "https://www.joneswalker.com/en/insights/blogs/ai-law-blog/the-orwell-card-what-the-preliminary-injunction-in-anthropic-v-u-s-tells-us-ab.html"],
+      "source_tiers": ["secondary", "legal"],
+      "as_of": "2026-03-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "The D.C. Circuit denied Anthropic's emergency stay motion on April 8, 2026 without reaching the merits, applying the Nken four-factor standard; oral argument on the merits was held May 19-20, 2026 before a panel (Henderson, Rao, Katsas) that appeared divided, with Judge Henderson calling the designation 'a spectacular overreach' and Judge Rao showing deference to executive national-security judgment. No merits ruling had been reported as of early July 2026.",
+      "type": "event",
+      "source_urls": ["https://www.axios.com/2026/04/08/anthropic-loses-bid-to-block-pentagon-blacklisting", "https://federalnewsnetwork.com/artificial-intelligence/2026/05/appeals-court-judges-appear-to-be-divided-over-pentagons-legal-dispute-with-ai-company-anthropic/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-03",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "DoD disputed the scope of the injunction: Pentagon CTO/Undersecretary Emil Michael said the designation remained 'in full force and effect' under a separate statutory track not covered by Judge Lin's order, even after GSA restored Anthropic to its pre-February 27 status on April 3, 2026.",
+      "type": "event",
+      "source_urls": ["https://breakingdefense.com/2026/03/judge-grants-anthropic-preliminary-injunction-but-pentagon-cto-says-ban-still-stands/", "https://www.gsa.gov/about-gsa/newsroom/news-releases/gsa-issues-statement-on-anthropic-preliminary-injunction-04032026"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-04-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "On May 1, 2026, DoD announced classified (IL6/IL7) AI network agreements with 8 companies — SpaceX, OpenAI, Google, NVIDIA, Reflection, Microsoft, AWS, and Oracle — explicitly excluding Anthropic; Pentagon CTO Emil Michael said DoD had been 'single-threaded' on one AI vendor and would 'never again' rely on a single provider.",
+      "type": "event",
+      "source_urls": ["https://defensescoop.com/2026/05/01/dod-expands-classified-ai-work-with-8-companies-excluding-anthropic/", "https://www.nextgov.com/artificial-intelligence/2026/05/pentagon-will-never-again-rely-single-ai-provider-official-says/413399/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-05-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "DoD had in fact already run a nominally multi-vendor contract structure since mid-2025 ($200M OTA ceilings each to Anthropic, Google, and xAI in July 2025, following a similar OpenAI award in June 2025) — undercutting a clean 'brand-new diversification' narrative; what was actually singular was production integration, since Claude alone was wired into Palantir's Maven Smart System on classified networks.",
+      "type": "comparison",
+      "source_urls": ["https://defensescoop.com/2025/07/14/pentagon-ai-contracts-musk-xai-google-openai-anthropic-cdao/", "https://fortune.com/2026/03/07/pentagon-emil-michael-anthropic-claude-defense-ai-openai-iran-war-palantir/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2025-07-14",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c15",
+      "claim": "A US-Israel military campaign against Iran ('Operation Epic Fury' / Israel's 'Operation Roaring Lion') began February 28, 2026, with roughly 900 strikes in 12 hours; major combat ran about 38 days before an April 8 ceasefire, followed by a June 17 US-Iran memorandum of understanding and a June 22 OFAC General License X authorizing Iranian oil transactions.",
+      "type": "event",
+      "source_urls": ["https://www.centcom.mil/OPERATIONS-AND-EXERCISES/EPIC-FURY/", "https://www.whitehouse.gov/releases/2026/04/peace-through-strength-operation-epic-fury-crushes-iranian-threat-as-ceasefire-takes-hold/", "https://ofac.treasury.gov/recent-actions/20260622_33", "https://www.congress.gov/crs-product/IN12692"],
+      "source_tiers": ["primary", "primary", "primary", "primary"],
+      "as_of": "2026-06-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "Anthropic's Claude, integrated with Palantir's Maven Smart System, was used by the US military to help identify and prioritize roughly 1,000 targets in the first 24 hours of Operation Epic Fury — reported independently by Washington Post and corroborated in substance by sworn Senate testimony from Pentagon CIO Kirsten Davies and by Military Times/DefenseScoop defense-trade reporting.",
+      "type": "metric",
+      "source_urls": ["https://www.washingtonpost.com/technology/2026/03/04/anthropic-ai-iran-campaign/", "https://thehill.com/policy/defense/5799136-claude-pentagon-iran-war/", "https://www.militarytimes.com/news/your-military/2026/03/24/deadly-iran-school-strike-casts-shadow-over-pentagons-ai-targeting-push/"],
+      "source_tiers": ["secondary", "secondary", "secondary"],
+      "as_of": "2026-03-04",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "Anthropic's run-rate revenue reached approximately $47 billion by late May 2026 (up from ~$14B in February and ~$1B in December 2024); it raised a $30B Series G at a $380B post-money valuation in February 2026 and a $65B Series H at a $965B post-money valuation on May 28, 2026, with no disclosed markdown tied to the Pentagon dispute.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/news/series-h"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-28",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c18",
+      "claim": "The $200M DoD contract ceiling was roughly 1% (or less) of Anthropic's contemporaneous annual revenue, per investor/press estimates — a comparatively small direct dollar exposure relative to the designation's broader blacklist mechanism.",
+      "type": "comparison",
+      "source_urls": ["https://fortune.com/2026/03/05/anthropic-investors-divided-pentagon-dispute/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-03-05",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "Microsoft filed in federal court supporting Anthropic's position, warning that using a supply-chain-risk designation to resolve a contract dispute 'may bring severe economic effects that are not in the public interest'; Google stated Anthropic's models remained available via Google Cloud outside DoD contracts; more than 30 OpenAI and Google DeepMind employees (including Google chief scientist Jeff Dean) filed an amicus brief warning the designation 'threatens to damage the entire American AI industry.'",
+      "type": "event",
+      "source_urls": ["https://federalnewsnetwork.com/artificial-intelligence/2026/03/microsoft-backs-anthropic-urging-a-judge-to-halt-pentagons-actions-against-ai-company/", "https://thehill.com/policy/technology/5759106-google-openai-anthropic-pentagon-ai/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-03-10",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c20",
+      "claim": "OpenAI, by contrast, accepted Pentagon contract language close to the disputed 'any lawful use' standard in a February 28, 2026 deal (later narrowed after public criticism) and disclosed a $200 million Pentagon contract in the same window Anthropic was being excluded.",
+      "type": "comparison",
+      "source_urls": ["https://www.cnbc.com/2026/03/03/openai-sam-altman-pentagon-deal-amended-surveillance-limits.html", "https://finance.yahoo.com/news/openai-secures-200-million-pentagon-190059280.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-03-03",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c21",
+      "claim": "Congressional reaction was real but narrow: Sen. Elizabeth Warren opened an investigation calling the designation likely retaliatory; Sen. Adam Schiff introduced the HALO Act (S.3179) and Sen. Elissa Slotkin a separate AI-guardrails bill citing the dispute; Sen. Thom Tillis (R-NC) broke from the administration to argue Congress should have a say; Reps. Whitesides and Houlahan criticized the designation for weakening military AI capability rather than on civil-liberties grounds. No GAO report or DoD Inspector General review of the designation itself was found.",
+      "type": "event",
+      "source_urls": ["https://www.cnbc.com/2026/03/23/sen-warren-dod-anthropic-blacklist-hegseth.html", "https://www.congress.gov/bill/119th-congress/senate-bill/3179"],
+      "source_tiers": ["secondary", "legal"],
+      "as_of": "2026-06-08",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c22",
+      "claim": "Executive Order 14409 (signed June 2, 2026) is a separate AI-cybersecurity/frontier-model-benchmarking framework with no found substantive connection to the Anthropic supply-chain-risk designation; a later, distinct June 12, 2026 Commerce Department export-control action forced Anthropic to suspend its Fable 5 and Mythos 5 models for foreign nationals worldwide, under EAR/BIS authority rather than the DoD procurement mechanism used in March.",
+      "type": "definition",
+      "source_urls": ["https://www.federalregister.gov/documents/2026/06/05/2026-11415/promoting-advanced-artificial-intelligence-innovation-and-security", "https://www.gtlaw.com/en/insights/2026/6/ai-company-anthropic-suspends-access-to-claude-fable-5-claude-mythos-5-following-us-export-control-directive"],
+      "source_tiers": ["primary", "legal"],
+      "as_of": "2026-06-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "Legal scholars (Lawfare's Endrias and Rozenshtein) argue the Pentagon reached for the most extreme tool in the procurement arsenal (a foreign-adversary-designed statute) when a simple contract non-renewal was available, evidence the designation was doing 'something other than managing supply chain risk'; other analysts (CFR's Duffy, Forbes/Tirias' Sideco) read the same episode as proof of Anthropic's technical/reputational leverage, since the government retaliated precisely because it judged Claude too valuable to simply drop.",
+      "type": "causal",
+      "source_urls": ["https://www.lawfaremedia.org/article/pentagon's-anthropic-designation-won't-survive-first-contact-with-legal-system", "https://www.cfr.org/articles/anthropics-standoff-with-the-pentagon-is-a-test-of-u-s-credibility", "https://www.forbes.com/sites/tiriasresearch/2026/04/01/anthropicpentagon-dispute-brings-a-turning-point-for-the-ai-industry/"],
+      "source_tiers": ["legal", "academic", "opinion"],
+      "as_of": "2026-04-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c24",
+      "claim": "Former Google Cloud CEO Diane Greene argues the episode recapitulates Google's 2018 Project Maven withdrawal: principled refusal doesn't stop the capability from being built, it only determines who builds it and under what safeguards.",
+      "type": "comparison",
+      "source_urls": ["https://sfstandard.com/opinion/2026/04/03/google-maven-anthropic-pentagon-ai/"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-04-03",
+      "confidence": "medium",
+      "risk": "single-source"
+    }
+  ]
+}
