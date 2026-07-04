@@ -1,0 +1,15 @@
+arXiv Papers - 2026-07-04
+
+No new submissions since 2026-07-02 (weekend gap). Picks below are from
+that same batch, not featured yesterday.
+
+TOP 5 PAPERS:
+• Program-as-Weights: 0.6B model matches 32B prompting at 1/50 the memory
+• Clinical benchmark: frontier LLMs miss 32-42% of critical rubric criteria
+• SkillFuzz: fuzzes agent-skill marketplaces, finds 1,000+ hidden intents
+• Bias-aware LLM-judge ranking lifts top-k recall from ~0.5 to 0.84-1.0
+• Task-agnostic VLA pretraining matches 1M-demo models, far less data
+
+CATEGORIES: NLP 6, CV/Multimodal 5, Agents/Reasoning 8, Safety 3, Other 6
+
+Full report on GitHub.
