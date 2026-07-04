@@ -52,6 +52,81 @@ class DedupeHeadlineAlertsTest(unittest.TestCase):
         }
         self.assertEqual(dedupe.duplicate_reason(item, history), "")
 
+    def test_same_tweet_earlier_run_is_rebroadcast_even_with_zero_overlap(self):
+        # The same status id re-headlined in a LATER cycle is a duplicate alert
+        # regardless of wording — this is the wording-independent layer 1d.
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "GPT-5.6 POSTPONED AGAIN; NEXT MOVE FRAMED AS SONNET 5",
+                    "url": "https://x.com/apples_jimmy/status/2071000000000000001",
+                },
+                "2026-06-24 01:06 UTC",
+            )
+        ]
+        item = {
+            "headline": "COMPLETELY DIFFERENT WORDING ABOUT A MID-JULY SLIP",
+            "url": "https://twitter.com/apples_jimmy/status/2071000000000000001?s=20",
+        }
+        now = dedupe.parse_delivered_at("2026-06-24 03:54 UTC")
+        self.assertEqual(
+            dedupe.duplicate_reason(item, history, None, now),
+            "duplicate_rebroadcast",
+        )
+
+    def test_same_tweet_same_run_multi_claim_still_delivers(self):
+        # In-batch appends carry delivered_at == now; a second distinct claim
+        # extracted from the same thread in the SAME cycle must not be eaten.
+        now_str = "2026-06-29 03:36 UTC"
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "ELON MUSK ANNOUNCES GROK 4.5 IN PRIVATE BETA",
+                    "url": "https://x.com/elonmusk/status/2071184354756477041",
+                },
+                now_str,
+            )
+        ]
+        item = {
+            "headline": "SPACEX TO RELEASE FROM-SCRATCH AI MODELS EVERY MONTH THIS YEAR",
+            "url": "https://x.com/elonmusk/status/2071184354756477041",
+        }
+        now = dedupe.parse_delivered_at(now_str)
+        self.assertEqual(dedupe.duplicate_reason(item, history, None, now), "")
+
+    def test_rebroadcast_layer_inert_for_legacy_two_arg_callers(self):
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "ORIGINAL WORDING OF SOME STORY",
+                    "url": "https://x.com/a/status/777",
+                },
+                "2026-06-24 01:06 UTC",
+            )
+        ]
+        item = {
+            "headline": "TOTALLY REWORDED TAKE WITH NO SHARED TOKENS AT ALL",
+            "url": "https://x.com/a/status/777",
+        }
+        self.assertEqual(dedupe.duplicate_reason(item, history), "")
+
+    def test_rebroadcast_fails_open_on_unparseable_record_timestamp(self):
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "ORIGINAL WORDING OF SOME STORY",
+                    "url": "https://x.com/a/status/888",
+                },
+                "not-a-timestamp",
+            )
+        ]
+        item = {
+            "headline": "TOTALLY REWORDED TAKE WITH NO SHARED TOKENS AT ALL",
+            "url": "https://x.com/a/status/888",
+        }
+        now = dedupe.parse_delivered_at("2026-06-24 03:54 UTC")
+        self.assertEqual(dedupe.duplicate_reason(item, history, None, now), "")
+
     def test_exact_headline_is_duplicate_even_with_different_url(self):
         history = [
             dedupe.make_record(

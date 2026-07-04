@@ -120,6 +120,76 @@ export function parseTwitterStories(body: string): TwitterStory[] {
   });
 }
 
+// ── Cross-cycle repeat collapse ──────────────────────────────────────
+// The report renders every cycle of the day (newest first), and an ongoing
+// storyline gets a full card in cycle after cycle. Stories in an OLDER cycle
+// that re-cover a story already rendered in a NEWER cycle collapse to a
+// compact expandable row, so the day reads as "latest state + history"
+// instead of the same story five times. Mirrors the alert-side dedupe
+// signals: shared status id (wording-independent) or title-token containment.
+type StoryFingerprint = { tokens: Set<string>; statusIds: Set<string> };
+
+const STORY_TOKEN_STOPWORDS = new Set([
+  'A', 'AN', 'AND', 'ARE', 'AS', 'AT', 'BY', 'FOR', 'FROM', 'IN', 'INTO',
+  'IS', 'NEW', 'NOW', 'OF', 'ON', 'OR', 'OVER', 'THE', 'TO', 'VIA', 'WITH',
+]);
+const REPEAT_MIN_OVERLAP = 4;      // shared significant title tokens
+const REPEAT_CONTAINMENT = 0.5;    // overlap / smaller title token set
+const REPEAT_STATUS_MIN_OVERLAP = 2; // token sanity floor for a status-id match
+
+function storyTokens(text: string): Set<string> {
+  const norm = (text || '')
+    .toUpperCase()
+    .replace(/HTTPS?:\/\/\S+/g, ' ')
+    .replace(/(\d)\.(\d)/g, '$1§$2') // protect decimals (5.6) before dot strip
+    .replace(/[^A-Z0-9§$]+/g, ' ')
+    .replace(/§/g, '.');
+  const out = new Set<string>();
+  for (const token of norm.split(/\s+/)) {
+    if (token.length > 1 && !STORY_TOKEN_STOPWORDS.has(token)) out.add(token);
+  }
+  return out;
+}
+
+function statusIdsFrom(urls: string[]): Set<string> {
+  const ids = new Set<string>();
+  for (const url of urls) {
+    // Host-boundary anchor so e.g. netflix.com/…/status/123 can't read as a
+    // tweet id (accepts scheme-full URLs and *.x.com/*.twitter.com hosts).
+    const m = (url || '').match(/(?:^|\/\/|\.)(?:x|twitter)\.com\/[^/\s]+\/status\/(\d+)/);
+    if (m) ids.add(m[1]);
+  }
+  return ids;
+}
+
+function isRepeatOfLaterCycle(fp: StoryFingerprint, seen: StoryFingerprint[]): boolean {
+  for (const prior of seen) {
+    let overlap = 0;
+    for (const token of fp.tokens) if (prior.tokens.has(token)) overlap++;
+    let sharedStatus = false;
+    for (const id of fp.statusIds) {
+      if (prior.statusIds.has(id)) { sharedStatus = true; break; }
+    }
+    if (sharedStatus && overlap >= REPEAT_STATUS_MIN_OVERLAP) return true;
+    const denom = Math.min(fp.tokens.size, prior.tokens.size);
+    if (denom > 0 && overlap >= REPEAT_MIN_OVERLAP && overlap / denom >= REPEAT_CONTAINMENT) return true;
+  }
+  return false;
+}
+
+function wrapRepeatStoryCard(rank: string, titleHtml: string, cardHtml: string): string {
+  return [
+    '<details class="twitter-story-repeat">',
+    '  <summary>',
+    '    <span class="twitter-story-rank">' + escapeHtml(rank) + '</span>',
+    '    <span class="twitter-story-repeat-title">' + titleHtml + '</span>',
+    '    <span class="twitter-story-repeat-chip">↑ updated in a later cycle</span>',
+    '  </summary>',
+    cardHtml,
+    '</details>',
+  ].join('\n');
+}
+
 const TWITTER_MINDSHARE_TERMS: Array<{ label: string; pattern: RegExp }> = [
   { label: 'Anthropic', pattern: /\b(?:Anthropic|Claude|Fable\s*5|Mythos\s*5)\b/gi },
   { label: 'OpenAI', pattern: /\b(?:OpenAI|GPT-?5|GPT-?4\.?1|ChatGPT|Codex)\b/gi },
@@ -340,6 +410,8 @@ function extractSkepticCorner(body: string): string {
 function renderStructuredTwitterStories(
   body: string,
   searchTerm: string,
+  seenEarlier: StoryFingerprint[],
+  cycleFingerprints: StoryFingerprint[],
 ): string {
   if (!/\btwitter-story\b/.test(body)) return '';
   const doc = new DOMParser().parseFromString('<div>' + body + '</div>', 'text/html');
@@ -359,11 +431,20 @@ function renderStructuredTwitterStories(
       bodyHtml ? '<div class="md-content twitter-story-body">' + bodyHtml + '</div>' : '',
     ].filter(Boolean).join('\n');
 
-    return [
+    const titleHtml = highlightPlainText(title, searchTerm);
+    const sourceHrefs = Array.from(story.querySelectorAll('.twitter-story-sources a'))
+      .map((a) => a.getAttribute('href') || '');
+    const fingerprint: StoryFingerprint = {
+      tokens: storyTokens(title),
+      statusIds: statusIdsFrom(sourceHrefs),
+    };
+    cycleFingerprints.push(fingerprint);
+
+    const cardHtml = [
       '<article class="twitter-story-card">',
       '  <div class="twitter-story-rank">' + escapeHtml(rank) + '</div>',
       '  <div class="twitter-story-main">',
-      title ? '    <h3 class="twitter-story-title">' + highlightPlainText(title, searchTerm) + '</h3>' : '',
+      title ? '    <h3 class="twitter-story-title">' + titleHtml + '</h3>' : '',
       lead ? '    <p class="twitter-story-summary">' + highlightPlainText(truncateText(cleanPublicLeadText(lead), 360), searchTerm) + '</p>' : '',
       detailsBits
         ? [
@@ -376,6 +457,12 @@ function renderStructuredTwitterStories(
       '  </div>',
       '</article>',
     ].filter(Boolean).join('\n');
+
+    // Search must keep every occurrence visible — collapse only when idle.
+    if (!searchTerm && isRepeatOfLaterCycle(fingerprint, seenEarlier)) {
+      return wrapRepeatStoryCard(rank, titleHtml, cardHtml);
+    }
+    return cardHtml;
   }).join('\n');
 }
 
@@ -428,6 +515,9 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
   const cards: string[] = [];
   const timelineItems: InfoTimelineItem[] = [];
   const mindshareCycles: TwitterMindshareCycle[] = [];
+  // Fingerprints of stories already rendered in NEWER cycles (sections render
+  // newest-first) — older re-coverage of these collapses to a compact row.
+  const seenStories: StoryFingerprint[] = [];
   if (options.fallbackDate) {
     cards.push(
       '<div class="frontpage-fallback-note">No Twitter report for ' +
@@ -470,7 +560,8 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
       .replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '')
       .replace(/###\s+[^\n]*[Ss]keptic[^\n]*\n[\s\S]*?(?=\n#{2,3}\s|$)/i, '')
       .trim();
-    const structuredStoryCards = renderStructuredTwitterStories(section.body, options.searchTerm);
+    const cycleFingerprints: StoryFingerprint[] = [];
+    const structuredStoryCards = renderStructuredTwitterStories(section.body, options.searchTerm, seenStories, cycleFingerprints);
     const storyCards = structuredStoryCards || stories.map((story) => {
       const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
       const watch = truncateText(stripMarkdown(extractSectionText(story.body, 'Watch')), 210);
@@ -480,11 +571,17 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
       const storySummary = isSourceMethodLead(storyIntro) ? '' : truncateText(cleanPublicLeadText(storyIntro), 360);
       const storyLinks = options.renderSourceChips(story.links, 6);
       const storyHandles = options.renderHandleChips(story.handles, 8);
-      return [
+      const titleHtml = highlightPlainText(story.title, options.searchTerm);
+      const fingerprint: StoryFingerprint = {
+        tokens: storyTokens(story.title),
+        statusIds: statusIdsFrom(story.links.slice(0, 4)),
+      };
+      cycleFingerprints.push(fingerprint);
+      const cardHtml = [
         '<article class="twitter-story-card">',
         '  <div class="twitter-story-rank">' + escapeHtml(story.rank) + '</div>',
         '  <div class="twitter-story-main">',
-        '    <h3 class="twitter-story-title">' + highlightPlainText(story.title, options.searchTerm) + '</h3>',
+        '    <h3 class="twitter-story-title">' + titleHtml + '</h3>',
         storySummary ? '    <p class="twitter-story-summary">' + highlightPlainText(storySummary, options.searchTerm) + '</p>' : '',
         '    <details class="twitter-story-details">',
         '      <summary>Full analysis</summary>',
@@ -500,7 +597,14 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
         '  </div>',
         '</article>',
       ].filter(Boolean).join('\n');
+      if (!options.searchTerm && isRepeatOfLaterCycle(fingerprint, seenStories)) {
+        return wrapRepeatStoryCard(story.rank, titleHtml, cardHtml);
+      }
+      return cardHtml;
     }).join('\n');
+
+    // This cycle's stories become "already covered" for every OLDER cycle.
+    seenStories.push(...cycleFingerprints);
 
     const skepticBody = extractSkepticCorner(section.body);
     const skepticHtml = skepticBody

@@ -68,9 +68,13 @@ flowchart TD
     H -->|yes| R3([duplicate_source_similar_headline]):::supp
     H -->|no| Q
 
-    %% Gate: cross-source pass only runs when a reference time is supplied
+    %% Gate: rebroadcast + cross-source passes only run when a reference time is supplied
     Q{now provided?} -->|"no — legacy / test caller"| SEND
-    Q -->|yes| K
+    Q -->|yes| RB
+
+    %% Pass 1d — same source, earlier cycle (wording-independent)
+    RB{"Any record with the same<br/>external key (status id / exact URL)<br/>delivered in an EARLIER run?<br/>(record timestamp fails open)"} -->|yes| R5([duplicate_rebroadcast]):::supp
+    RB -->|no| K
 
     %% Pass 2 — cross-source semantic duplicate
     K{"Any DIFFERENT-url record where ALL hold:<br/>• delivered within 14 days (fail-open)<br/>• shared tokens ≥ 4<br/>• Jaccard ≥ 0.5"} -->|yes| R4([duplicate_cross_source_similar_headline]):::supp
@@ -90,6 +94,7 @@ flowchart TD
 | 1a | `duplicate_story_key` | same non-empty `story_key` | explicit story grouping (**inert today** — the agent's schema emits no `story_key`; kept for when it does) |
 | 1b | `duplicate_headline` | identical **normalized** headline, **any** source | verbatim re-posts / cross-account copies |
 | 1c | `duplicate_source_similar_headline` | **same URL** + `max(containment, jaccard) ≥ 0.62` | one author rephrasing their own tweet |
+| 1d | `duplicate_rebroadcast` | same **external key** (status id / exact URL) delivered in an **earlier run** (`delivered_at < now`, fails open on a bad record timestamp) | the same tweet re-headlined in a later cycle, **at any wording** — the 0.60/0.615 near-threshold paraphrases and zero-overlap rewrites 1c structurally misses. In-batch appends share `delivered_at == now`, so multi-claim extraction from one thread within a single cycle still delivers. Backtest: 100 of 1730 ledger records (all 6 post-2026-06-22 leaks); the strict `<` is load-bearing — relaxing it to `<=` would additionally eat 42 legitimately-delivered in-batch multi-claim records. |
 | 2 | `duplicate_cross_source_similar_headline` | **different URL** + in 14-day window + `≥ 4` shared tokens + `Jaccard ≥ 0.5` | **the same story from a different account, paraphrased** (the leak this layer was added to close) |
 
 **Normalization** (`normalize_headline`): NFKC, uppercase, strip URLs, drop
@@ -97,6 +102,17 @@ non-decimal dots, collapse to `[A-Z0-9.$]`. **Tokens** (`headline_tokens`):
 the normalized words minus a stopword list, length > 1. Token sets are
 precomputed once per record and cached on `Keys.tokens`, so the Pass-2 scan
 never re-tokenizes history.
+
+**External key** (`external_key`, what layer 1d matches on): one of
+`x:status:<id>` (the tweet's status id — the handle segment is IGNORED, so
+`x.com/alice/status/123` ≡ `twitter.com/bob/status/123`), `x:trend:<id>`,
+`x:search:<sha16 of the query>`, or `url:<sha24>` of the **normalized** URL
+(tracking params stripped, `www.`/`twitter.com` folded) — so "exact URL" means
+post-normalization, not byte-identical. Layer 1d deliberately has **no recency
+window** (unlike Pass 2's 14 days): a repeated key is suppressed for the
+ledger's full 3000-record retention. Backtest supports this — the widest
+genuine rebroadcast gap observed is 11.4 days, and a months-later re-alert of
+the same immutable tweet is still the same alert.
 
 ## Tunable constants (defaults live in the script — no workflow change to tune)
 
@@ -158,8 +174,10 @@ news that merely shares vocabulary. Calibration on the real ledger shows that
 band is ~half true duplicates that leaked and ~half genuinely-distinct items:
 "MICRON CROSSES $900B" vs "SK HYNIX CROSSES $900B" (same metric, different
 subject), appended-fact follow-ups, running-counter progressions. Separating
-those is a *semantic* judgment, so a Claude **Haiku** step adjudicates exactly
-that band — and only that band — as a final gate on the send path.
+those is a *semantic* judgment, so a model step (currently **DeepSeek V4 Flash
+via Fireworks** through the `agent-run` composite; originally Claude Haiku)
+adjudicates exactly that band — and only that band — as a final gate on the
+send path.
 
 It lives in `scripts/headline_judge.py` (two deterministic, unit-tested
 subcommands) bracketing one model step in `hourly-twitter.yml`:
@@ -168,7 +186,7 @@ subcommands) bracketing one model step in `hourly-twitter.yml`:
 flowchart LR
     FILTER["deterministic filter<br/>→ to-send.json"]:::proc --> SHORT["shortlist<br/>survivors in [0.35,0.50)<br/>+ ≤5 nearest priors"]:::proc
     SHORT -->|empty| BLAST
-    SHORT -->|"doubtful.json"| JUDGE{{"Haiku judge<br/>same event?"}}:::model
+    SHORT -->|"doubtful.json"| JUDGE{{"model judge (Fireworks)<br/>same event?"}}:::model
     JUDGE -->|"verdicts.json"| APPLY["apply<br/>drop duplicate+high only"]:::proc
     APPLY --> ALERT["Telegram alert<br/>on every suppression"]:::io
     APPLY --> BLAST["Hooker blast"]:::io
