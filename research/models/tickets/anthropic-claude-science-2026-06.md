@@ -18,6 +18,13 @@ status_note: |
   Lands the **same day OpenAI shipped GeneBench-Pro**, a benchmark for AI
   research *judgment* — the AI-for-science race is now an open contest, not a
   clearing.
+
+  **2026-07-04:** Secondary business-press coverage continues (a
+  fourweekmba.com piece framing Claude Science as "rewriting the model
+  company playbook") alongside notes on two life-sciences hires — Jonah Cool
+  and John Jumper (a DeepMind alum). Still no primary @AnthropicAI post
+  naming target diseases or partners. Status stays released; verification
+  stays confirmed.
 expected: null
 labels:
   - anthropic
@@ -32,12 +39,14 @@ sources:
   - "@CMichaelGibson"
   - https://x.com/claudeai/status/2072002740830842899
 created_at: 2026-07-01
-updated_at: 2026-07-01
+updated_at: 2026-07-04
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-07-01
     change: "Created — Anthropic launched Claude Science on 2026-06-30 17:02 UTC (official @claudeai ~11.8K likes / 977 RT), an agentic research workbench with code-traced artifacts, on-demand managed compute, and 60+ optional scientific tools, debuting alongside Novartis, Bristol Myers Squibb and Genentech. Multi-source confirmed via trade press (Endpoints News, STAT/Matthew Herper); Modal and Harvard's ToolUniverse self-confirmed integrations. Shipped an hour before Sonnet 5 ([[claude-sonnet-5]]) and the same day OpenAI published GeneBench-Pro. Status released, verification confirmed (official primary + independent trade-press). Scope skepticism noted (a wet-lab-bio tool, not 'all of science'; researcher data-appropriation concerns)."
+  - ts: 2026-07-04
+    change: "Secondary business-press coverage continues (fourweekmba.com: 'rewriting the model company playbook') plus notes on life-sciences hire Jonah Cool and DeepMind alum John Jumper. Still no primary @AnthropicAI post naming target diseases or partners. Status stays released; verification stays confirmed."
 ---
 
 **Claude Science** is Anthropic's agentic research environment, launched
@@ -78,4 +87,3 @@ tickets; this ticket carries the Claude Science product lifecycle.
 **Dedup note:** further Claude Science product signal UPDATES this ticket.
 The underlying models stay on [[claude-sonnet-5]] / [[opus-4-8]]; OpenAI's
 science-benchmark push is a separate lane if it warrants its own ticket.
-</content>

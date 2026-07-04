@@ -40,6 +40,25 @@ status_note: |
   equity-donation proposal — a continuing thread with a fresh betting-market
   data point, not new fact confirmation. Still no OpenAI or White House
   on-record statement. Status stays `confirmed`; verification stays `partial`.
+
+  **2026-07-04 — viral backlash, plus the first on-record presidential
+  reaction.** The FT scoop is now drawing sustained, heavily negative public
+  reaction: Digg tracked **1M+ views and 79.5% negative sentiment** across
+  472 analyzed comments a day after the report. A **CNBC follow-up** adds
+  that the concept has circulated for **over a year** and Altman first
+  pitched it to the Trump administration in **early 2025**. Most notably,
+  in a CNBC interview **President Trump was asked directly whether the
+  government will take the 5% stake and did not confirm or deny it** —
+  instead citing the government's existing **~10% Intel stake** (from an
+  $8.9B investment last August) as producing a "$60 or $70B" paper gain in
+  eight months and calling that arrangement "very American." At least four
+  independent accounts reproduce matching quotes from the same interview,
+  so this is Trump's own on-record words, not a relayed claim — though it
+  is a non-answer to the direct yes/no question, not a confirmation of
+  terms. Separately, an Ars Technica-sourced relay notes the proposed 5%
+  figure is "far below" what Bernie Sanders had pushed for. Status stays
+  `confirmed`; verification stays `partial` (Trump's remarks are on-record
+  but non-committal; still no OpenAI/White House confirmation of deal terms).
 expected: "FT scoop (2026-07-02): OpenAI floated a 5% stake (~$42.6B at $852B valuation) into an Alaska-Permanent-Fund-style public wealth fund; Altman wants each US frontier lab to allot 5% (none of Anthropic/Google/Meta agreed); FT calls it 'conceptual'/early, possibly requiring an act of Congress. Next: on-record OpenAI/White House confirmation or denial; whether the structure uses voting or non-voting shares. Prior — TBD, talks ongoing; no announced structure or close date"
 labels:
   - openai
@@ -56,7 +75,7 @@ sources:
   - "@rohanpaul_ai"
   - "@_StockMlKTNewz"
 created_at: 2026-06-07
-updated_at: 2026-07-03
+updated_at: 2026-07-04
 closed_at: null
 closed_reason: null
 history:
@@ -68,6 +87,8 @@ history:
     change: "Concrete stake size surfaces (FT scoop). The Financial Times reports (broke ~04:00 UTC July 2) OpenAI floated giving Washington a 5% equity stake — ~$42.6B against its $852B valuation — routed into a public wealth fund modeled on the Alaska Permanent Fund, pitched by Altman to 'clear political obstacles by securing financial buy-in' from the Trump administration. Altman reportedly proposed each leading US AI developer allot 5% and discussed it with Trump, Commerce Sec. Lutnick, Treasury Sec. Bessent, and separately Bernie Sanders (who wants ~50%); none of Anthropic/Google/Meta have agreed. Cited precedent: Washington's ~10% Intel stake. FT frames the talks as 'conceptual'/early; any deal 'might require an act of Congress.' OpenAI declined to comment; the White House did not respond. Corroborated across finance relays (unusual_whales, zerohedge, Straits Times, Bloomberg relay, @rohanpaul_ai). Adds a specific size + structure to the prior 'Public Wealth Fund' talks. Status stays confirmed; verification stays partial (no on-record OpenAI/WH confirmation of terms)"
   - ts: 2026-07-03
     change: "Polymarket odds data point (~73% implied) on the government taking a stake (@_StockMlKTNewz); TechCrunch/Ars Technica reiterate Altman's ~5% donation proposal. Continuing thread, no new fact confirmation. Status stays confirmed; verification stays partial."
+  - ts: 2026-07-04
+    change: "Viral backlash (Digg: 1M+ views, 79.5% negative across 472 comments) plus the first on-record presidential reaction: in a CNBC interview, Trump declined to confirm or deny the 5% stake, instead citing the government's ~10% Intel stake ('$60 or $70B' paper gain in 8 months) as the operating precedent and calling it 'very American' — reproduced verbatim across 4+ independent accounts, so on-record but non-committal. CNBC follow-up: the concept has circulated over a year, Altman first pitched it to Trump in early 2025. Ars Technica-sourced relay: the 5% figure is 'far below' Sanders' ask. Status stays confirmed; verification stays partial (no OpenAI/WH confirmation of terms)."
 ---
 
 Per **NOTUS, TechCrunch, and The Decoder** (2026-06-06), the **Trump

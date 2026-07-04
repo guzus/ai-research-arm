@@ -108,6 +108,22 @@ status_note: |
   secondary relays (@amohan120) with no new figures. Still limited to ~20
   vetted organizations; no GA date. Status stays `confirmed`; verification
   stays `confirmed`.
+
+  **2026-07-04 — tier names go primary-source via OpenAI's own GitHub repo;
+  "Tuesday" firms the July 7 date.** A GPG-signed commit merged **2026-06-26**
+  into OpenAI's public Codex repo (independently verified against GitHub's
+  API this cycle) adds `openai.gpt-5.6-sol` / `-terra` / `-luna` to Codex's
+  Amazon Bedrock model catalog — the first **primary-source** confirmation of
+  the tier names, upgrading them from leaker-sourced to OpenAI-authored code.
+  The commit is a catalog entry, not a launch announcement, and predates the
+  "next week" rumor window by over a week — consistent with pre-launch prep,
+  not proof of the ship date. Separately, a live Codex-app UI popup
+  screenshot (@DevAdventur3s, 387 likes) shows the Sol/Terra/Luna tier
+  selector visible in-product (not just code strings), and @kimmonismus
+  replied with the first insider-adjacent nod to a specific weekday —
+  "have to wait until tuesday" (July 7). The July 7-9 launch window itself
+  remains single-leaker-sourced (no OpenAI on-record date). Status stays
+  `confirmed`; verification stays `confirmed`.
 expected: "GPT-5.6 family (Sol flagship / Terra balanced / Luna fast) shipped in a US-government-approved limited preview ~2026-06-26 (official OpenAI blog); Sol new SOTA on Terminal-Bench 2.1, max + ultra (subagent) modes; pricing Sol $5/$30, Terra $2.50/$15, Luna $1/$6, 30-min min cache. GA 'in the coming weeks' — Polymarket ~90% public release by 2026-07-31"
 labels:
   - openai
@@ -125,7 +141,7 @@ sources:
   - https://openai.com/index/previewing-gpt-5-6-sol/
   - https://simonwillison.net/2026/Jun/26/openai/
 created_at: 2026-06-09
-updated_at: 2026-07-03
+updated_at: 2026-07-04
 closed_at: null
 closed_reason: null
 history:
@@ -151,6 +167,8 @@ history:
     change: "Status → confirmed; verification → confirmed. OpenAI published the official 'Previewing GPT-5.6 Sol' blog (openai.com/index/previewing-gpt-5-6-sol/), launching the GPT-5.6 family — Sol (flagship), Terra (balanced), Luna (fast/cheap) — in a limited, US-government-approved preview (access restricted to a small group of trusted partners shared with the government before broader release; OpenAI: 'this kind of government access process shouldn't become the long-term default'). Sol sets a new SOTA on Terminal-Bench 2.1, improves agentic coding/biology/cybersecurity; new 'max' reasoning effort + 'ultra' subagent-spawning mode. Pricing/1M tok: Sol $5/$30, Terra $2.50/$15, Luna $1/$6, explicit cache breakpoints (30-min min cache). GA 'in the coming weeks'; Polymarket ~90% public release by 2026-07-31. Official OpenAI primary + named tiers + pricing + benchmarks, corroborated by VentureBeat/Axios/Simon Willison/TechCrunch → status advances to confirmed, verification to confirmed. Not released yet: preview is gated/limited, not public to anyone. The leak-grade 'GPT-Bidi-1' bidirectional voice model from the prior bundle was NOT part of this preview; it stays a folded rumor pending its own artifact. Sources: @OpenAI, openai.com blog, Simon Willison."
   - ts: 2026-07-03
     change: "Firsthand reconfirmation, no new state change. @altryne relayed a firsthand conversation with OpenAI's @dkundel at an AI conference reconfirming Sol/Terra/Luna, Ultra mode, the Codex app, and a 'token bank' concept; pricing figures already on this ticket recirculated via secondary relay (@amohan120) with no new numbers. Still ~20-org gated, no GA date. Status stays confirmed; verification stays confirmed."
+  - ts: 2026-07-04
+    change: "Tier names go primary-source. A GPG-signed commit merged 2026-06-26 into OpenAI's public Codex GitHub repo (independently verified via GitHub's API) adds openai.gpt-5.6-sol/-terra/-luna to the Bedrock model catalog — first primary-source confirmation of the tier names (a catalog entry, not a launch announcement; predates the rumor window by a week). A live Codex-app UI popup screenshot (@DevAdventur3s) shows the tier selector in-product; @kimmonismus adds the first insider-adjacent 'Tuesday' (July 7) nod. Launch date itself stays single-leaker-sourced. Status stays confirmed; verification stays confirmed."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely

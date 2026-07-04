@@ -11,6 +11,11 @@ status_note: |
   ~$3.48 to ~$0.87 per MTok. Framed as a cost-efficiency / "intelligence
   per dollar" play; the V4 series is DeepSeek's first family optimized to
   run on Huawei Ascend (950 / 950PR) rather than Nvidia.
+
+  **2026-07-04:** An unconfirmed Chinese-aggregator rumor claims V4-Pro's
+  peak-time output price doubled (~6→~12 yuan/MTok) — contradicting this
+  ticket's tracked permanent cut. Low-engagement secondary sourcing only, no
+  DeepSeek statement; treat as contested, not adopted.
 expected: null
 labels:
   - pricing
@@ -26,7 +31,7 @@ sources:
   - "@DTechtrends"
   - "@WindInfoUS"
 created_at: 2026-05-25
-updated_at: 2026-06-04
+updated_at: 2026-07-04
 closed_at: null
 closed_reason: null
 history:
@@ -36,6 +41,8 @@ history:
     change: "Caixin (2026-05-25 14:59 UTC) corroborated the price cut as authoritative Chinese financial reporting (\"less than a tenth of OpenAI's GPT-5.5 rates\"); landed the same day as The Information's $7.35B raise exclusive (see deepseek-funding-round-2026-05) — supply-side commercialization + price war. Huawei's Tau Scaling Law / LogicFolding announcement (see huawei-tau-scaling-law-2026-05) reframes the cut partly as a hardware-co-design dividend if the third-party-reported V4/Ascend co-engineering holds"
   - ts: 2026-06-04
     change: "Platform-side escalation: a Wind Info market brief (2026-06-03) reports Tencent Cloud cut its hosted DeepSeek-V4 API pricing by up to ~97.5% — distinct from DeepSeek's own 75% V4-Pro cut and landing the same day as DeepSeek's ~$7B raise reporting. Reinforces the 'model layer racing to zero' thread (xAI's Grok Composer at ~$0.50/M input cited alongside). Single market-brief relay; no Tencent Cloud primary captured"
+  - ts: 2026-07-04
+    change: "Contradicting but unverified rumor: a Chinese-market report circulated via low-engagement Japanese finance-aggregator accounts (@cb_terminal, @melone3710) claims DeepSeek doubled V4-Pro's peak-time output price from ~6 to ~12 yuan per million tokens — the opposite direction of this ticket's tracked permanent cut. No link to an official DeepSeek pricing page or primary source. Status stays confirmed (the underlying permanent cut); verification stays confirmed; the price-hike claim itself is noted as contested/unverified, not adopted."
 ---
 
 DeepSeek converted its temporary 75% V4-Pro discount — originally set to

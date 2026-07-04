@@ -15,7 +15,18 @@ status_note: |
   leaks* (a contrast to 3.5 Flash / 3.1 Pro's active pre-launch rumor
   cycles). Single low-credibility social source; the June commitment is now
   mid-to-late month with still no 3.5 Pro GA/API/pricing.
-expected: 2026-06 (next month, per @GoogleDeepMind at I/O); "Coming Soon" model-card tag seen 2026-06-16
+
+  **2026-07-04:** A single AI-leak account (@synthwavedd, near-verbatim
+  relayed by @whoisanku) claims Google DeepMind **scrapped reusing the old
+  2.5 Pro base and reset Gemini 3.5 Pro to a full pretrain**, pushing the
+  target to a new, previously-unreported **July 17** date, with a follow-on
+  Nano Banana Pro model said to be in progress on the new base. Single-source
+  (the @whoisanku relay is not an independent second source); a Polymarket
+  market cited by a third account gives ~48% odds on the July 17 date — a
+  pricing signal, not corroboration. No Google/DeepMind on-record statement.
+  Status stays confirmed (the model's existence was confirmed at I/O);
+  verification stays confirmed; the full-retrain/July 17 claim itself is
+  flagged unverified pending independent corroboration.
 labels:
   - google-io
   - pro-tier
@@ -26,7 +37,7 @@ sources:
   - "@GoogleDeepMind"
   - "@demishassabis"
 created_at: 2026-05-20
-updated_at: 2026-06-16
+updated_at: 2026-07-04
 closed_at: null
 closed_reason: null
 history:
@@ -38,6 +49,8 @@ history:
     change: "Ecosystem signal inside the promised June window, but still no standalone 3.5 Pro GA. (1) At **WWDC 2026 (2026-06-08)** Apple confirmed **Siri AI's Tier-3 heavy-reasoning runs on a custom ~1.2T-parameter Google Gemini on Nvidia B200s via Google Cloud** ([[apple-wwdc-2026-siri]]) — the highest-profile production Gemini deployment yet, though Apple did not name '3.5 Pro' specifically. (2) Google upgraded **NotebookLM to Gemini 3.5** (with a cloud computer + Antigravity integration). The 'next month' (June) commitment is now mid-month with **3.5 Flash still the only public 3.5 model** and no 3.5 Pro artifact/API/pricing — status stays confirmed, verification confirmed"
   - ts: 2026-06-16
     change: "Launch-imminence tell inside the June window: a 'Coming Soon' tag reportedly appeared on the Gemini Pro model card (single low-credibility social source, @just_v3ra), with commentary noting the upcoming model has seen surprisingly zero leaks — a contrast to the active pre-launch rumor cycles 3.5 Flash and 3.1 Pro had. A placeholder tag is not a usable console/API artifact, so status stays confirmed (not in-testing); the June commitment is now mid-to-late month with 3.5 Flash still the only public 3.5 model. Verification stays confirmed (the I/O commitment is primary; today's tag is secondary)."
+  - ts: 2026-07-04
+    change: "Single-leaker claim: Google DeepMind scrapped reusing the 2.5 Pro base and reset Gemini 3.5 Pro to a full pretrain, pushing the target to a new July 17 date (previously unreported); a follow-on Nano Banana Pro said to be in progress on the new base. Single-source (@synthwavedd, near-verbatim @whoisanku relay is not independent); a cited Polymarket market gives ~48% odds on July 17 — a pricing signal, not corroboration. No Google/DeepMind on-record statement. Status stays confirmed; verification stays confirmed; the retrain/July 17 claim itself flagged unverified."
 ---
 
 At Google I/O 2026, Google revealed the **Gemini 3.5** family. The first

@@ -116,6 +116,18 @@ status_note: |
   analyst concern that the July 1 blog's "temporary" framing had gone quiet —
   not yet matched by an official @AnthropicAI/@claudeai statement. Status
   stays `released`; verification stays `confirmed`.
+  **2026-07-04 — jailbreak severity framework "first draft" published.**
+  Anthropic posted a new blog page ("More details on Fable 5's cyber
+  safeguards and our jailbreak framework") describing a **first-draft 0-4
+  severity scale** for grading AI jailbreaks, developed with **Amazon,
+  Microsoft, and Google** — a "CVSS for jailbreaks" (per @Ruben_Luetke)
+  expanding on the vaguer "consensus framework" language from the July 1
+  restoration post. Independently fetched the Anthropic blog URL this cycle
+  to confirm it exists and matches the described content; Anthropic's own
+  page labels it a "first draft," and no Amazon/Microsoft/Google statement
+  confirms adopting the specific 0-4 delineations rather than just the
+  general collaborative effort already announced July 1. Status stays
+  `released`; verification stays `confirmed`.
 expected: "BACK ONLINE GLOBALLY (2026-07-02): export controls lifted, Fable 5 restored worldwide as a general re-release, metered (≤50% of weekly usage limits through July 7, then usage credits; @ClaudeDevs reset all rate limits on relaunch); tightened cyber + bio/chem classifiers, small fraction of routine coding still routed to Opus 4.8; tops Scale AI + CAIS Remote Labor Index at 16.10% (ahead of Opus 4.8 / Codex GPT-5.5). Next watch: July 7 shift from the 50%-of-weekly cap to usage credits (day-one cap-exhaustion complaints), and whether Anthropic loosens the bio/chem classifier false positives as promised. Prior — partial restoration surfacing: Fable 5 listed Active in AWS Bedrock (anthropic.claude-fable-5) with bundled weekly Claude Code usage; US ID verification via Persona live 2026-07-08 + use-case review + Anthropic approval; both US and global model IDs present. Anthropic status page still shows the 2026-06-13 suspension as active (see [[anthropic-fable-mythos-export-control-2026-06]]). Was free for Pro/Max/Team through 2026-06-22, credit-metered thereafter"
 labels:
   - frontier-model
@@ -146,7 +158,7 @@ sources:
   - "@EpochAIResearch"
   - "@trq212"
 created_at: 2026-06-10
-updated_at: 2026-07-03
+updated_at: 2026-07-04
 closed_at: null
 closed_reason: null
 history:
@@ -168,6 +180,8 @@ history:
     change: "BACK ONLINE GLOBALLY (metered). Commerce lifted the export-control order (June 30 23:52 UTC @AnthropicAI + Politico; regulatory event on [[anthropic-fable-mythos-export-control-2026-06]]) and Anthropic restored Fable 5 worldwide on July 1 as a general re-release — not the US-only regime datamined strings implied. Access is metered: ≤50% of each plan's weekly usage limits through July 7, then continuation via usage credits; @ClaudeDevs reset all users' 5-hour and weekly rate limits on relaunch (~12K likes). A small fraction of routine coding still falls back to Opus 4.8, and tightened cyber + bio/chem safety classifiers ship with the redeploy. Reception: strong praise for the model itself ('I forgive you for the bad Sonnet 5 launch') alongside term-friction — heavy users report exhausting the 50% cap almost immediately and call the bio/chem classifiers over-restrictive on legitimate science (single-amplifier enthusiast sentiment @kimmonismus, not usage data). Capability datum: Fable 5 tops the Scale AI + CAIS Remote Labor Index at 16.10% (240 real paid freelance projects), ahead of Opus 4.8 and Codex GPT-5.5 — best automation up from <3% to 16% in under a year, though the leader still fails ~84% of real freelance work (@ScaleAILabs July 1 17:33 UTC). Per transition triggers, a re-availability event keeps status released and is documented via history; verification stays confirmed."
   - ts: 2026-07-03
     change: "Guardrail cost quantified + subscription-return reaffirmed. BridgeMind's BridgeBench re-test of the July 1 build found the new classifiers over-triggering the Opus 4.8 fallback hard enough to crater debugging 86.2→25.9, refactoring 73.6→38.4, and worsen hallucination 75.9→61.7 (single-benchmark-org, no independent replication, but directionally consistent with Anthropic's own relaunch disclosure and widespread anecdotal complaints). Epoch AI reports June 2026 CVE disclosures hit ~1,500 (3.5x prior record, set before Mythos Preview shipped) — read by some as retroactive justification for the classifiers, though Epoch hedges on causation. Anthropic team member @trq212 reaffirmed Fable 5 will return to Pro/Max/Team subscriptions 'as soon as capacity allows,' addressing a dropped-commitment concern; not yet matched by an official @AnthropicAI/@claudeai statement. Status stays released; verification stays confirmed."
+  - ts: 2026-07-04
+    change: "Anthropic published a 'first draft' jailbreak severity framework blog post — a 0-4 severity scale developed with Amazon, Microsoft, and Google, expanding on the July 1 restoration post's vaguer 'consensus framework' language ('a CVSS for jailbreaks' per @Ruben_Luetke). Independently fetched the Anthropic blog URL to confirm; the page itself labels it a first draft, and no Amazon/Microsoft/Google statement confirms adopting these specific delineations. Status stays released; verification stays confirmed."
 ---
 
 **Claude Fable 5** is the public-facing resolution of the long-running
