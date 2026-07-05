@@ -41,6 +41,11 @@ short pointer plus the few genuinely agent-specific notes.
   the model provider was healthy. Check the agent/fallback step logs before
   drawing provider conclusions.
 
+- **Z.ai GLM-5.2** is available through `agent-run` as `zai-glm-5p2` using
+  `ZAI_API_KEY` and Claude Code's Anthropic-compatible route. Keep it manual
+  until quota behavior is measured; `hourly-twitter.yml backend=zai-glm-5p2`
+  is the smoke-test lane and writes to `research/twitter-zai/`.
+
 - **Codex generative-research workflows** use the Codex CLI with
   ChatGPT-managed file auth, not OpenAI API billing. Seed the workflow
   from `CODEX_AUTH_JSON`, whose value is the file-backed
