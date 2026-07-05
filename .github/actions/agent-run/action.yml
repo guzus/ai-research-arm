@@ -298,6 +298,39 @@ runs:
         claude_args: ${{ inputs.claude-args }}
         prompt: ${{ inputs.prompt }}
 
+    - name: Clean sandbox probe
+      shell: bash
+      run: rm -f .tmp-sandbox-probe.txt
+
+    - name: Commit expected-path changes
+      if: inputs.expected-paths != ''
+      shell: bash
+      env:
+        EXPECTED_PATHS: ${{ inputs.expected-paths }}
+        LABEL: ${{ inputs.label }}
+      run: |
+        set -euo pipefail
+
+        pathspecs=()
+        while IFS= read -r pathspec; do
+          pathspec="${pathspec#"${pathspec%%[![:space:]]*}"}"
+          pathspec="${pathspec%"${pathspec##*[![:space:]]}"}"
+          [ -z "$pathspec" ] && continue
+          pathspecs+=("$pathspec")
+        done <<< "$EXPECTED_PATHS"
+
+        if [ "${#pathspecs[@]}" -eq 0 ]; then
+          exit 0
+        fi
+
+        git add -- "${pathspecs[@]}"
+        if git diff --cached --quiet -- "${pathspecs[@]}"; then
+          echo "${LABEL} left no uncommitted changes under expected path(s)."
+          exit 0
+        fi
+
+        git commit -m "${LABEL} output"
+
     - name: Capture post-run HEAD
       id: post
       shell: bash
