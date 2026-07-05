@@ -1630,7 +1630,7 @@ function showEmpty(dateStr: string): void {
     : activeTab === 'frontpage'
     ? 'No front page for ' + escapeHtml(dateStr)
     : activeTab === 'models'
-    ? 'No model timeline for ' + escapeHtml(dateStr)
+    ? 'No Jira for ' + escapeHtml(dateStr)
     : activeTab === 'focusReader'
     ? 'No focus reader data available'
     : activeTab === 'agents'
