@@ -1,0 +1,7 @@
+Twitter/X AI Pulse - 2026-07-05 18:19 UTC
+
+Quiet period — no major AI updates on Twitter/X.
+
+Notes: GLM-5.2's "matches Claude Mythos" claim got narrowed by a Semgrep benchmark (vs Claude Code, not Mythos, on one bug class). A zero-engagement thread reframed the Emil Michael/xAI stock story with a timeline that doesn't match our established chronology — unverified. An $800M Together AI funding claim also lacks independent corroboration.
+
+Full update on GitHub.
