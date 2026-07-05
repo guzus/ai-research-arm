@@ -368,9 +368,9 @@ dashboard/                          # Vite + Bun + TypeScript SPA
 
 ### Twitter/X (Every 3 hours)
 Via [bird CLI](https://github.com/steipete/bird) and birdy multi-fetch. The
-reviewed source manifest is `data/sources/twitter_accounts.json` (currently 80
-monitored accounts, periodically expanded by the explorer lane below), 20
-tweets each, 7 search queries, and the AI-only news tab. Account add/remove
+reviewed source manifest is `data/sources/twitter_accounts.json`, periodically
+expanded by the explorer lane below. The fetch pulls 20 tweets per monitored
+account, 7 search queries, and the AI-only news tab. Account add/remove
 proposals are generated with `scripts/curate_twitter_accounts.py`; see
 [`docs/twitter-account-curation.md`](docs/twitter-account-curation.md) for the
 full contract. A weekly `twitter-account-explorer.yml` agent scouts for
