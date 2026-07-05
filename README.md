@@ -112,7 +112,7 @@ flowchart TB
 
 | Source | Method | Frequency | Real-time? |
 |--------|--------|-----------|------------|
-| **Twitter/X** | bird CLI (reviewed account manifest + 7 searches) | Every 3 hours | ✅ Yes |
+| **Twitter/X** | Birdy read-only multi-fetch (reviewed account manifest + 7 searches) | Every 3 hours | ✅ Yes |
 | **RSS Feeds** | Direct XML fetch | Every 2 hours | ✅ Yes |
 | **Bluesky** | Public API | Daily | ✅ Yes |
 | **Reddit** | RSS feeds | Every 4 hours | ✅ Yes |
@@ -162,7 +162,7 @@ gantt
 | `4h-community.yml` | Every 4 hours | Reddit RSS + HN MCP | `research/community/` |
 | `daily-arxiv.yml` | Daily 06:13 UTC | arXiv papers | `research/arxiv/` |
 | `daily-digest.yml` | Daily 00:00 UTC | All sources + MCP search | `research/digest/` |
-| `hourly-twitter.yml` (matrix) | claude tier every 3h (`:07`), deepseek-claude-code tier every 6h (`:37`), deepseek-pi and fireworks-pi tiers manual | Twitter/X via bird CLI (reviewed account manifest, 7 search queries) | `research/twitter/` (claude) + `research/twitter-deepseek/` (Claude Code) + `research/twitter-deepseek-pi/` (pi) + `research/twitter-fireworks-pi/` (Fireworks pi) |
+| `hourly-twitter.yml` (matrix) | claude tier every 3h (`:07`), deepseek-claude-code tier every 6h (`:37`), deepseek-pi and fireworks-pi tiers manual | Twitter/X via Birdy read-only multi-fetch (reviewed account manifest, 7 search queries) | `research/twitter/` (claude) + `research/twitter-deepseek/` (Claude Code) + `research/twitter-deepseek-pi/` (pi) + `research/twitter-fireworks-pi/` (Fireworks pi) |
 | `ai-news-research.yml` | Twice daily (08:23, 20:23 UTC) | Perplexity/Exa MCP | `research/` |
 | `daily-improve.yml` | Weekly (Mon 00:17 UTC) | Self-improvement | PRs with improvements |
 | `twitter-account-explorer.yml` | Weekly (Tue 01:47 UTC) + manual | Scouts high-signal AI accounts; trust-weighted curation of `data/sources/twitter_accounts.json` | Reviewed PRs (`app/claude`) |
@@ -283,8 +283,9 @@ annotated list of pipeline credentials. None of these are needed for the
 | `CODEX_AUTH_JSON` | Yes for generative-research `backend=codex` | File-backed ChatGPT Codex auth cache from `~/.codex/auth.json` after `codex login`; treat like a password |
 | `DEEPSEEK_API_KEY` | No — retired | DeepSeek lanes now route through Fireworks (`FIREWORKS_API_KEY`); no longer referenced by any workflow |
 | `FIREWORKS_API_KEY` | Yes for generative-research `backend=deepseek-v4-flash` / `backend=glm-5p2` and all non-claude Twitter tiers (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Fireworks API key — serves DeepSeek V4 Flash and GLM 5.2 via the Anthropic-compatible endpoint, and Kimi via pi's Fireworks provider |
-| `BIRD_AUTH_TOKEN` | Yes | X/Twitter auth_token cookie for bird CLI |
-| `BIRD_CT0` | Yes | X/Twitter ct0 cookie for bird CLI |
+| `BIRDY_ACCOUNTS` | No | Optional Birdy multi-account rotation JSON. The Twitter workflow forces every account to read-only before use |
+| `BIRD_AUTH_TOKEN` | Yes | Fallback single-account X/Twitter auth_token cookie when `BIRDY_ACCOUNTS` is absent |
+| `BIRD_CT0` | Yes | Fallback single-account X/Twitter ct0 cookie when `BIRDY_ACCOUNTS` is absent |
 | `GEMINI_API_KEY` | Yes for article/digest audio | Gemini API key used for price-performant TTS audio generation |
 
 ### Optional API Keys (for enhanced features)
@@ -346,7 +347,7 @@ research/
 ├── arxiv/
 │   └── 2026-01-14-papers.md       # Daily arXiv papers
 ├── twitter/
-│   └── 2026-01-14.md              # Twitter updates (every 3h via bird CLI)
+│   └── 2026-01-14.md              # Twitter updates (every 3h via Birdy)
 ├── issues/
 │   └── 42-research.md             # On-demand research from GitHub Issues
 ├── digest/
@@ -367,13 +368,15 @@ dashboard/                          # Vite + Bun + TypeScript SPA
 ## Data Source Details
 
 ### Twitter/X (Every 3 hours)
-Via [bird CLI](https://github.com/steipete/bird) and birdy multi-fetch. The
-reviewed source manifest is `data/sources/twitter_accounts.json`, periodically
-expanded by the explorer lane below. The fetch pulls 20 tweets per monitored
-account, 7 search queries, and the AI-only news tab. Account add/remove
-proposals are generated with `scripts/curate_twitter_accounts.py`; see
-[`docs/twitter-account-curation.md`](docs/twitter-account-curation.md) for the
-full contract. A weekly `twitter-account-explorer.yml` agent scouts for
+Via Birdy read-only multi-fetch and the warm `birdy-fast` daemon for follow-up
+reads. The reviewed source manifest is `data/sources/twitter_accounts.json`,
+periodically expanded by the explorer lane below. The fetch pulls 20 tweets per
+monitored account, 7 search queries, and the AI-only news tab. `BIRDY_ACCOUNTS`
+can provide multi-account rotation; if absent, the workflow synthesizes a
+single read-only account from `BIRD_AUTH_TOKEN` and `BIRD_CT0`. Account
+add/remove proposals are generated with `scripts/curate_twitter_accounts.py`;
+see [`docs/twitter-account-curation.md`](docs/twitter-account-curation.md) for
+the full contract. A weekly `twitter-account-explorer.yml` agent scouts for
 high-signal additions — favoring accounts vouched for by ones already monitored
 and on-topic for AI over merely viral handles — and opens reviewed PRs (as
 `app/claude`) when the evidence is strong enough.

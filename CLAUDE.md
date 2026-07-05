@@ -109,7 +109,7 @@ autoscaled fleet of ephemeral Cloud Run workers (the `runner-autoscaler`
 service in `../runner`; see Load-bearing rule 5). A fresh
 `cloud-run-worker-*` instance spins up per job, so "self-hosted" no longer
 means one serial slot — jobs run in parallel, and each worker carries the
-pipeline's baked-in state (bird CLI + birdy daemon, recent
+pipeline's baked-in state (Birdy read-only CLI/daemon, recent
 `research/` checkout, pre-installed tooling). Aggregation,
 synthesis, output, CI, and the Claude agent lanes all run here.
 
@@ -344,7 +344,7 @@ output or break the pipeline. Read them before editing.
    (`runner-autoscaler` in `../runner`): a fresh ephemeral
    `cloud-run-worker-*` registers per job, runs it, then deregisters, so
    jobs run in PARALLEL (no single serial slot) and each carries baked-in
-   state — bird CLI + warm birdy daemon (`hourly-twitter*`,
+   state — Birdy read-only CLI + warm Birdy daemon (`hourly-twitter*`,
    `24h-model-timeline`), recent `research/` checkout for prior-output context
    (`daily-digest`, `ci.yml` dashboard job), pre-installed pnpm/Oracle
    tooling. Digest audio lives in S3 (uploaded by `daily-digest` via the
@@ -360,9 +360,10 @@ output or break the pipeline. Read them before editing.
    moving a job to `ubuntu-latest`, verify it needs neither the warm state
    nor bird/birdy — getting this wrong silently breaks the pipeline.
 
-6. **bird CLI calls must be graceful.** Always pass `--json --plain`
-   and pipe to a fallback (`|| echo "[]"`). The Twitter cookies expire;
-   workflows must continue (with empty data) rather than crash the run.
+6. **X/Twitter CLI calls must be graceful and read-only.** Use Birdy for
+   Twitter workflows, pass `--json --plain`, and pipe to a fallback
+   (`|| echo "[]"`). The Twitter cookies expire; workflows must continue
+   (with empty data) rather than crash the run.
 
 7. **Improvement logs belong in `docs/archive/`.** When
    `daily-improve.yml` (or any agent) generates a new improvements
@@ -459,7 +460,8 @@ output or break the pipeline. Read them before editing.
 - **Python:** stdlib-first; manage dependencies with `uv` in
   `pyproject.toml`/`uv.lock`. Error-handle at boundaries (network,
   subprocess, file IO); inner logic should fail fast.
-- **bird CLI invocations:** `--json --plain` + `|| echo "[]"` fallback.
+- **X/Twitter CLI invocations:** Birdy read-only mode, `--json --plain`,
+  and `|| echo "[]"` fallback.
 - **Claude prompts in workflows:** quote multi-line prompts with `|`
   block scalars; pass user-controlled values (issue title/body) through
   `env:` rather than direct `${{ }}` interpolation in `run:` blocks

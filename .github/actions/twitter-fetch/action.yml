@@ -1,11 +1,13 @@
-name: Twitter fetch (bird CLI + birdy multi-fetch)
+name: Twitter fetch (Birdy multi-fetch)
 description: >
-  Install bird CLI + birdy, fetch the unified Twitter snapshot (handles +
-  searches + news) via birdy multi-fetch into /tmp/bird/, optionally
-  pre-filter zero-engagement noise from search results, and (optionally)
-  build an aggregated /tmp/bird/all.json. Shared across the Twitter
-  backend tiers (claude, deepseek-claude-code, deepseek-pi, fireworks-pi) — the per-tier
-  workflow controls behavior via the inputs below.
+  Install the bundled Birdy release, fetch the unified Twitter snapshot
+  (handles + searches + news) via birdy multi-fetch into /tmp/bird/,
+  optionally pre-filter zero-engagement noise from search results, and
+  (optionally) build an aggregated /tmp/bird/all.json. The final JSON is
+  also staged under .twitter-input/bird/ so agents can read it without broad
+  /tmp access. Shared across the Twitter backend tiers (claude,
+  deepseek-claude-code, deepseek-pi, fireworks-pi) — the per-tier workflow
+  controls behavior via the inputs below.
 
 inputs:
   bird_auth_token:
@@ -17,6 +19,13 @@ inputs:
   github_token:
     description: GITHUB_TOKEN (used only to follow GitHub release redirects).
     required: true
+  birdy_accounts:
+    description: >
+      Optional BIRDY_ACCOUNTS JSON for multi-account rotation. Every account is
+      forced read_only=true before Birdy sees it. If empty, a single read-only
+      ci account is synthesized from bird_auth_token/bird_ct0.
+    required: false
+    default: ""
   concurrency:
     description: birdy multi-fetch internal parallelism. 8 is the historical claude default, 6 is the historical deepseek default.
     required: false
@@ -40,6 +49,10 @@ inputs:
     description: Run the self-hosted-runner disk-cleanup step first (claude tier had a more aggressive version).
     required: false
     default: 'true'
+  workspace_output_dir:
+    description: Checkout-relative directory where Birdy JSON is staged for agent Read tools.
+    required: false
+    default: .twitter-input/bird
 
 runs:
   using: composite
@@ -62,11 +75,6 @@ runs:
         echo "Disk after:"
         df -h / 2>&1 | tail -2
 
-    - name: Install bird CLI
-      # pinned 2026-05-17 (matches PR #41 dep-pinning); bump manually
-      shell: bash
-      run: npm install -g @steipete/bird@0.8.0
-
     - name: Install birdy from GitHub release
       shell: bash
       env:
@@ -88,7 +96,8 @@ runs:
         TMPDIR=$(mktemp -d)
         trap 'rm -rf "$TMPDIR"' EXIT
 
-        # Public repo, no auth needed — but use gh if available for redirect handling
+        # Public repo, no auth needed. Install the whole release layout because
+        # birdy locates the bundled bird runtime next to the birdy binary.
         curl -fsSL "https://github.com/guzus/birdy/releases/latest/download/${ASSET}" -o "$TMPDIR/$ASSET"
         tar -xzf "$TMPDIR/$ASSET" -C "$TMPDIR"
 
@@ -100,8 +109,10 @@ runs:
           exit 1
         fi
 
-        INSTALL_DIR="$HOME/.local/bin"
+        INSTALL_DIR="$HOME/.local/birdy"
+        rm -rf "$INSTALL_DIR"
         mkdir -p "$INSTALL_DIR"
+        cp -R "$TMPDIR"/bird "$INSTALL_DIR"/
         install -m 755 "$BIN" "$INSTALL_DIR/birdy"
         echo "$INSTALL_DIR" >> "$GITHUB_PATH"
         export PATH="$INSTALL_DIR:$PATH"
@@ -111,12 +122,40 @@ runs:
     - name: Fetch tweets, searches, and news via birdy multi-fetch
       shell: bash
       env:
-        # birdy's stateless account injection — no ~/.config/birdy file
-        # needed in CI. The store auto-loads BIRDY_ACCOUNTS on Open().
-        BIRDY_ACCOUNTS: '[{"name":"ci","auth_token":"${{ inputs.bird_auth_token }}","ct0":"${{ inputs.bird_ct0 }}"}]'
+        BIRDY_ACCOUNTS_JSON: ${{ inputs.birdy_accounts }}
+        BIRD_AUTH_TOKEN: ${{ inputs.bird_auth_token }}
+        BIRD_CT0: ${{ inputs.bird_ct0 }}
         FETCH_CONCURRENCY: ${{ inputs.concurrency }}
       run: |
+        set -euo pipefail
         mkdir -p /tmp/bird
+        export BIRDY_READ_ONLY=1
+        BIRDY_ACCOUNTS="$(python3 - <<'PY'
+        import json
+        import os
+
+        raw = os.environ.get("BIRDY_ACCOUNTS_JSON", "").strip()
+        if raw:
+            accounts = json.loads(raw)
+            if not isinstance(accounts, list) or not accounts:
+                raise SystemExit("BIRDY_ACCOUNTS must be a non-empty JSON array")
+        else:
+            accounts = [{
+                "name": "ci",
+                "auth_token": os.environ["BIRD_AUTH_TOKEN"],
+                "ct0": os.environ["BIRD_CT0"],
+            }]
+
+        for idx, account in enumerate(accounts, start=1):
+            if not isinstance(account, dict):
+                raise SystemExit("every BIRDY_ACCOUNTS entry must be an object")
+            account.setdefault("name", f"ci-{idx}")
+            account["read_only"] = True
+
+        print(json.dumps(accounts, separators=(",", ":")))
+        PY
+        )"
+        export BIRDY_ACCOUNTS
 
         # Account and search curation lives in data/sources/twitter_accounts.json.
         # Keep the scheduled fetch deterministic: validate the reviewed source
@@ -137,7 +176,7 @@ runs:
       if: ${{ inputs.pre_filter == 'true' }}
       shell: bash
       run: |
-        # v3 engagement-floor filter with the CORRECT bird CLI field names
+        # v3 engagement-floor filter with the CORRECT Bird/Birdy JSON field names
         # (verified via diagnostic dump in run 24981373124):
         #   likeCount, retweetCount, replyCount  (camelCase, not snake_case)
         #   createdAt format: "Mon Apr 27 07:09:16 +0000 2026" (legacy Twitter,
@@ -158,8 +197,8 @@ runs:
         export TZ=UTC
         CUTOFF_EPOCH=$(date -u -d '30 minutes ago' +%s)
 
-        # One-line schema sanity check (protects against future bird upgrades
-        # that rename fields again).
+        # One-line schema sanity check (protects against future Birdy runtime
+        # upgrades that rename fields again).
         first_search=$(ls /tmp/bird/search-*.json 2>/dev/null | head -1)
         if [ -n "$first_search" ]; then
           sample_keys=$(jq -r '.[0] // {} | keys | join(",")' "$first_search" 2>/dev/null)
@@ -214,7 +253,7 @@ runs:
         echo ""
         echo "Pre-filter summary: $total_before → $total_after tweets (-${pct}%)"
 
-    - name: Aggregate bird JSONs into a single all.json
+    - name: Aggregate Birdy JSONs into a single all.json
       if: ${{ inputs.aggregate == 'true' }}
       shell: bash
       run: |
@@ -282,3 +321,25 @@ runs:
               f"{total} tweets total")
         '
         echo "all.json size: $(wc -c < /tmp/bird/all.json) bytes"
+
+    - name: Stage Birdy snapshot inside workspace
+      shell: bash
+      env:
+        WORKSPACE_OUTPUT_DIR: ${{ inputs.workspace_output_dir }}
+      run: |
+        set -euo pipefail
+        case "$WORKSPACE_OUTPUT_DIR" in
+          ""|/*|*..*)
+            echo "::error::workspace_output_dir must be a non-empty checkout-relative path without '..'"
+            exit 1
+            ;;
+        esac
+
+        TARGET="$GITHUB_WORKSPACE/$WORKSPACE_OUTPUT_DIR"
+        mkdir -p "$TARGET"
+        find "$TARGET" -mindepth 1 -maxdepth 1 -type f -name '*.json' -delete
+        cp /tmp/bird/*.json "$TARGET"/
+        cp /tmp/manifest.json "$TARGET/manifest.json"
+
+        COUNT=$(find "$TARGET" -mindepth 1 -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')
+        echo "Staged $COUNT Birdy JSON files under $WORKSPACE_OUTPUT_DIR"
