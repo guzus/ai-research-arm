@@ -1,0 +1,11 @@
+Speaker 1: Sunday, July fifth, twenty twenty-six.
+Speaker 2: [high_energy] Big one out of Alibaba, they've confirmed an internal ban on Claude Code, effective July tenth.
+Speaker 1: There's a viral thread claiming it's about a Unicode steganography exploit, but the headline stat behind it, a supposed one thousand eight hundred ninety one point Hacker News post, turned out to be fake.
+Speaker 2: Meanwhile Anthropic's drug-discovery push, Claude Science, is getting real trade-press attention now, Financial Times, STAT, MIT Tech Review all picked it up.
+Speaker 1: Still no official details from Anthropic itself on that one.
+Speaker 2: On the open-source side, Mistral's Leanstral one point five is topping Hacker News, it's a Lean four formal verification model that found five previously unknown bugs across fifty-seven repositories.
+Speaker 1: And a GitHub commit appears to confirm GPT-5.6's tier names, Sol, Terra, and Luna, with a July seventh launch rumored.
+Speaker 2: Some quick numbers. Kuaishou's Kling raised [emphasis] roughly two billion dollars [/emphasis], with one report floating a fifteen billion dollar valuation ahead of its Hong Kong IPO.
+Speaker 1: A tool called pxpipe is cutting Claude Code and Fable five token costs by fifty-nine to seventy percent, by encoding text as PNG images.
+Speaker 2: [dramatic_pause] And that Claude Code session-leakage bug on GitHub jumped from one hundred ninety-five to two hundred forty-five Hacker News points in a single day.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
