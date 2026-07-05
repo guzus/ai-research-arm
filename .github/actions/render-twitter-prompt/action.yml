@@ -138,7 +138,16 @@ runs:
                 f"OUTPUT (markdown digest): {output_dir}/{date}.md"
             )
         else:
-            outputs_overview = f"OUTPUT (markdown digest): {output_dir}/{date}.md"
+            outputs_overview = (
+                "YOU WILL WRITE TWO OUTPUT FILES (both are mandatory):\n"
+                f"1. {output_dir}/{date}.md (daily markdown digest, append section)\n"
+                f"2. research/summaries/{date}-{summary_slug}-{hour}h-summary.txt (Telegram-friendly text rollup)\n"
+                "\n"
+                "Both files exist in every cycle, including quiet ones. Do not commit until\n"
+                "both files have been created or updated.\n"
+                "\n"
+                f"OUTPUT (markdown digest): {output_dir}/{date}.md"
+            )
 
         # cross_harness_note — only the DeepSeek pi tier peeks at the Claude Code digest.
         if backend == "deepseek-pi":
@@ -249,7 +258,8 @@ runs:
             )
         else:
             final_step = (
-                "After writing both files, commit:\n"
+                "STEP 3 — Verify BOTH files exist before committing. If the Telegram\n"
+                "summary is missing, go back and create it. Then commit:\n"
                 f"git add {output_dir}/ research/summaries/\n"
                 f"git commit -m \"{commit_prefix} {ts}\" || echo \"No changes\""
             )
