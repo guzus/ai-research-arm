@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-05
+
+TOP 5 PAPERS:
+• HOLA: exact hippocampal KV cache for linear attention beats full-attention Transformer++ on perplexity + long-context recall
+• Persistent-State AI Control: PR-gradual covert coding-agent attacks evade single monitors (93%); 4-monitor ensemble cuts it to 47%
+• Agentic coding study: reasoning effort High->xHigh lifts first-try-perfect runs 28%->89%; extra tools didn't help
+• DecompRL: RL-learned problem decomposition cuts agent GPU token cost ~50x, solves what plain sampling can't
+• Program-as-Weights: compiles NL specs into adapters matching a 32B model at ~1/50th inference memory
+
+CATEGORIES: LM/NLP 6 | CV/Multimodal 5 | Agents/Reasoning 6 | Safety/Alignment 6 | Other 5
+
+Full report on GitHub.
