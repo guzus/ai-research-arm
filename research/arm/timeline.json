@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-07-05T14:24:06.980Z",
-  "windowStart": "2026-07-04T02:00:00.000Z",
-  "windowEnd": "2026-07-07T03:00:00.000Z",
+  "generatedAt": "2026-07-05T15:52:49.610Z",
+  "windowStart": "2026-07-04T03:00:00.000Z",
+  "windowEnd": "2026-07-07T04:00:00.000Z",
   "timezone": "UTC",
   "items": [
     {
@@ -902,34 +902,43 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/7782f9e8bb83f7e84c8ad6476d1423997d3ec5b1"
     },
     {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-07-05T14-30-00-000Z",
-      "kind": "scheduled",
-      "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-07-05T14:30:00.000Z",
-      "end": "2026-07-05T14:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-07-05T14-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-07-05T14:45:00.000Z",
-      "end": "2026-07-05T15:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-hourly-twitter-yml-7---3-------2026-07-05T15-07-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-04f725fd16e8",
+      "kind": "completed",
       "lane": "Twitter/X",
-      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / fireworks-pi)",
-      "status": "scheduled",
-      "start": "2026-07-05T15:07:00.000Z",
-      "end": "2026-07-05T16:07:00.000Z",
-      "source": "cron 7 */3 * * *"
+      "title": "Twitter/X DeepSeek brief",
+      "status": "completed",
+      "start": "2026-07-05T14:15:00.000Z",
+      "end": "2026-07-05T14:24:00.000Z",
+      "source": "claude[bot]",
+      "model": "deepseek-v4-flash",
+      "commit": "04f725fd16e8",
+      "url": "https://github.com/guzus/ai-research-arm/commit/04f725fd16e84fc82d7aecf590ce62da33119423"
+    },
+    {
+      "id": "commit-371f24f3a804",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-07-05 14:24 UTC",
+      "status": "completed",
+      "start": "2026-07-05T14:24:00.000Z",
+      "end": "2026-07-05T14:25:00.000Z",
+      "source": "guzus",
+      "model": "codex",
+      "commit": "371f24f3a804",
+      "url": "https://github.com/guzus/ai-research-arm/commit/371f24f3a804e7f5b6024d2c2345ca266f74794f"
+    },
+    {
+      "id": "commit-ca8e19d3ef3b",
+      "kind": "completed",
+      "lane": "RSS",
+      "title": "RSS official announcements",
+      "status": "completed",
+      "start": "2026-07-05T15:38:00.000Z",
+      "end": "2026-07-05T15:47:00.000Z",
+      "source": "claude[bot]",
+      "model": "scheduled agent",
+      "commit": "ca8e19d3ef3b",
+      "url": "https://github.com/guzus/ai-research-arm/commit/ca8e19d3ef3b3b1337651f330afc08dc70691617"
     },
     {
       "id": "scheduled-4h-community-yml-19---4-------2026-07-05T16-19-00-000Z",
@@ -1770,6 +1779,36 @@
       "start": "2026-07-07T01:47:00.000Z",
       "end": "2026-07-07T02:47:00.000Z",
       "source": "cron 47 1 * * 2"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-07-07T02-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-07-07T02:30:00.000Z",
+      "end": "2026-07-07T02:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-07-07T02-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-07-07T02:45:00.000Z",
+      "end": "2026-07-07T03:15:00.000Z",
+      "source": "cron 45 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-7---3-------2026-07-07T03-07-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / fireworks-pi)",
+      "status": "scheduled",
+      "start": "2026-07-07T03:07:00.000Z",
+      "end": "2026-07-07T04:07:00.000Z",
+      "source": "cron 7 */3 * * *"
     }
   ]
 }
