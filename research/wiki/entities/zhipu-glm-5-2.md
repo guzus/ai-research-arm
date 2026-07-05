@@ -6,8 +6,9 @@ aliases: ["Zhipu GLM 5.2", "Zhipu GLM-5.2", "GLM 5.2", "GLM-5.2", "Z.ai GLM-5.2"
 tags: [open-weights, china, coding, long-context, frontier-model]
 description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked "matches Mythos" cybersecurity headline.
 created_at: 2026-06-17
-timestamp: 2026-07-02T00:00:00Z
+timestamp: 2026-07-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
@@ -142,6 +143,17 @@ max/high "thinking" modes.
   [[claude-fable-5|Fable 5]] (freshly back from its export ban) — the tightest the
   open-weights gap has been on a neutral coding board this cycle. See [[open-weights]]
   (ARA digest 2026-07-02).
+
+- **A wafer.ai cost-per-token benchmark, and another unverified "matches
+  Mythos" claim (2026-07-05).** An HN-featured wafer.ai benchmark on AMD
+  hardware shows GLM-5.2 improving cost-per-token performance, feeding the
+  ongoing local-inference-economics debate. Separately on Twitter, a
+  single-source claim says GLM-5.2 matches [[claude-fable-5|Claude Mythos]]
+  on vulnerability-hunting benchmarks — notable given Mythos's US-government
+  export restriction was justified by that exact capability, but unverified
+  by any independent benchmark. This is the same "matches Mythos" pattern
+  debunked on 2026-06-29 above; treat with the same skepticism until a
+  neutral third party replicates it (ARA digest 2026-07-05).
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: ["GPT-5.6", "GPT 5.6", "GPT-5.6 Pro", "GPT-5.6 Mini", "GPT-5.6 Sol", "G
 tags: [model-release, openai, gpt, frontier-model, government-gated, preview]
 description: OpenAI frontier family shipped 2026-06-26 as a US-government-gated limited preview — Sol (flagship) / Terra (balanced) / Luna (fast/cheap), with new "max" and "ultra" (subagent-spawning) reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 created_at: 2026-06-20
-timestamp: 2026-07-04T00:00:00Z
+timestamp: 2026-07-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
@@ -70,6 +71,13 @@ gated external preview); GA is "in the coming weeks."
   though this reads as pattern-matching rather than inside information.
   *Single-source; no OpenAI confirmation or system card yet* (ARA digest
   2026-07-04).
+- **Tier names upgrade from code-spotted to primary-source confirmed
+  (2026-07-05).** The **Sol / Terra / Luna** tier names are now confirmed
+  via a primary-source commit in OpenAI's Codex GitHub repo (not just
+  spotted in shipped app code as reported 2026-07-04), and live Codex-app UI
+  sightings reinforce the rumored **July 7 ("Tuesday")** launch date — still
+  unconfirmed as an official date; no OpenAI statement or system card has
+  landed (ARA digest 2026-07-05).
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: ["Claude Science"]
 tags: [anthropic, claude, ai-for-science, agentic-research, product]
 description: Anthropic's agentic research workbench launched 2026-06-30 — 60+ scientific tools, on-demand managed compute, a citation/calculation verification agent, and local/HPC execution — debuting with Novartis, Bristol Myers Squibb, and Genentech.
 created_at: 2026-07-01
-timestamp: 2026-07-04T00:00:00Z
+timestamp: 2026-07-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "@claudeai launch post", date: 2026-06-30}
@@ -46,6 +47,14 @@ Review calls it Anthropic's "newest flagship product" (ARA digest 2026-07-01).
   partners. The digest also names a new life-sciences hire, **Jonah Cool**,
   alongside AlphaFold co-creator **[[john-jumper]]** as the personnel signal
   behind Anthropic's science push (ARA digest 2026-07-04).
+- **Trade-press coverage keeps broadening, still no primary specifics
+  (2026-07-05).** FT, Pharmaceutical Technology, MIT Technology Review, STAT
+  News, and GEN all covered the launch this week, and The Decoder separately
+  reports Anthropic is funding development for diseases "Big Pharma
+  considers unprofitable." Anthropic still has not published an official
+  blog post naming specific diseases, partners beyond the debut three, or a
+  timeline — the coverage volume is growing faster than the primary-source
+  detail behind it (ARA digest 2026-07-05).
 
 ## Open questions
 - **Does the workbench beat a benchmark?** GeneBench-Pro and LifeSciBench

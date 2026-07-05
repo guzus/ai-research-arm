@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.
 created_at: 2026-05-24
-timestamp: 2026-07-04T00:00:00Z
+timestamp: 2026-07-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
@@ -557,6 +558,17 @@ Four developments through May 2026 put Anthropic at the center of the field:
   Alibaba's own tooling — a new enforcement-evasion data point on top of the
   distillation-attack accusation. See [[federal-ai-policy]] and
   [[agentic-ai-security]] (ARA digest 2026-07-04).
+- **A viral thread over-claims its own credibility marker (2026-07-05).** A
+  widely-shared thread (@AseemShrey) described a granular Unicode-apostrophe
+  steganography scheme allegedly embedded in Claude Code v2.1.91-v2.1.196 to
+  encode proxy/timezone flags across a claimed "147 domains." A direct
+  Hacker News Algolia query found the thread's cited **"1,891-point" top
+  comment does not exist** — the real submission of the underlying
+  (independently-verified) blog post has **9 points and 4 comments**. Treat
+  the granular mechanism and the "147 domains" figure as one blogger's
+  reverse-engineering, not confirmed fact — the underlying [[alibaba|Alibaba]]
+  ban and the mechanism-level timeline recorded above stand independently of
+  this embellishment. See [[alibaba]] (ARA digest 2026-07-05).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

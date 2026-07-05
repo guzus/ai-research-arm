@@ -177,6 +177,36 @@
       ]
     },
     {
+      "slug": "alibaba",
+      "title": "Alibaba",
+      "type": "entity",
+      "tags": [
+        "china",
+        "distillation",
+        "litigation",
+        "export-control",
+        "hyperscaler-china"
+      ],
+      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; banned Claude Code internally as \"high-risk software\" effective 2026-07-10 amid a US DoD PLA-linked designation it is suing to overturn.",
+      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; banned Claude Code internally as \"high-risk software\" effective 2026-07-10 amid a US DoD PLA-linked designation it is suing to overturn.",
+      "created_at": "2026-07-05",
+      "updated_at": "2026-07-05",
+      "timestamp": "2026-07-05T00:00:00Z",
+      "file": "entities/alibaba.md",
+      "aliases": [
+        "Alibaba Group",
+        "Alibaba Cloud",
+        "BABA",
+        "Alibaba Group Holding"
+      ],
+      "outbound": [
+        "anthropic"
+      ],
+      "inbound": [
+        "anthropic"
+      ]
+    },
+    {
       "slug": "amazon",
       "title": "Amazon",
       "type": "entity",
@@ -227,8 +257,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
       "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-04",
-      "timestamp": "2026-07-04T00:00:00Z",
+      "updated_at": "2026-07-05",
+      "timestamp": "2026-07-05T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -239,6 +269,7 @@
         "agent-lifespan-engineering",
         "agentic-ai-security",
         "ai-capex",
+        "alibaba",
         "amazon",
         "broadcom",
         "california-ai-regulation",
@@ -271,6 +302,7 @@
         "agent-lifespan-engineering",
         "agentic-ai-security",
         "ai-capex",
+        "alibaba",
         "amazon",
         "apple",
         "broadcom",
@@ -576,8 +608,8 @@
       "summary": "Anthropic's agentic research workbench launched 2026-06-30 — 60+ scientific tools, on-demand managed compute, a citation/calculation verification agent, and local/HPC execution — debuting with Novartis, Bristol Myers Squibb, and Genentech.",
       "description": "Anthropic's agentic research workbench launched 2026-06-30 — 60+ scientific tools, on-demand managed compute, a citation/calculation verification agent, and local/HPC execution — debuting with Novartis, Bristol Myers Squibb, and Genentech.",
       "created_at": "2026-07-01",
-      "updated_at": "2026-07-04",
-      "timestamp": "2026-07-04T00:00:00Z",
+      "updated_at": "2026-07-05",
+      "timestamp": "2026-07-05T00:00:00Z",
       "file": "entities/claude-science.md",
       "aliases": [
         "Claude Science"
@@ -1127,8 +1159,8 @@
       "summary": "OpenAI frontier family shipped 2026-06-26 as a US-government-gated limited preview — Sol (flagship) / Terra (balanced) / Luna (fast/cheap), with new \"max\" and \"ultra\" (subagent-spawning) reasoning modes and a Terminal-Bench 2.1 SOTA; GA \"in the coming weeks.\"",
       "description": "OpenAI frontier family shipped 2026-06-26 as a US-government-gated limited preview — Sol (flagship) / Terra (balanced) / Luna (fast/cheap), with new \"max\" and \"ultra\" (subagent-spawning) reasoning modes and a Terminal-Bench 2.1 SOTA; GA \"in the coming weeks.\"",
       "created_at": "2026-06-20",
-      "updated_at": "2026-07-04",
-      "timestamp": "2026-07-04T00:00:00Z",
+      "updated_at": "2026-07-05",
+      "timestamp": "2026-07-05T00:00:00Z",
       "file": "entities/gpt-5-6.md",
       "aliases": [
         "GPT-5.6",
@@ -1454,6 +1486,29 @@
       ]
     },
     {
+      "slug": "midjourney",
+      "title": "Midjourney",
+      "type": "entity",
+      "tags": [
+        "image-generation",
+        "litigation",
+        "copyright",
+        "entity"
+      ],
+      "summary": "Investor-free, community-funded AI image-generation lab (~$100M revenue in its first 9 months) now diversifying into hardware (a full-body ultrasound scanner under Midjourney Medical) while seeking discovery into Disney/Universal/Warner Bros.' own internal AI-training practices in its copyright suit.",
+      "description": "Investor-free, community-funded AI image-generation lab (~$100M revenue in its first 9 months) now diversifying into hardware (a full-body ultrasound scanner under Midjourney Medical) while seeking discovery into Disney/Universal/Warner Bros.' own internal AI-training practices in its copyright suit.",
+      "created_at": "2026-07-05",
+      "updated_at": "2026-07-05",
+      "timestamp": "2026-07-05T00:00:00Z",
+      "file": "entities/midjourney.md",
+      "aliases": [
+        "Midjourney Inc.",
+        "Midjourney Medical"
+      ],
+      "outbound": [],
+      "inbound": []
+    },
+    {
       "slug": "minimax-m3",
       "title": "MiniMax M3",
       "type": "entity",
@@ -1493,6 +1548,32 @@
         "openrouter",
         "zhipu-glm-5-2"
       ]
+    },
+    {
+      "slug": "mistral-leanstral-1-5",
+      "title": "Mistral Leanstral 1.5",
+      "type": "entity",
+      "tags": [
+        "mistral",
+        "open-weights",
+        "formal-verification",
+        "lean4",
+        "coding"
+      ],
+      "summary": "Mistral's open-source (Apache 2.0) formal-verification model for Lean 4 — saturates miniF2F, sets SOTA on FATE-H/FATE-X, and found 5 previously-unknown bugs across 57 scanned open-source repos; the day's top Hacker News AI story.",
+      "description": "Mistral's open-source (Apache 2.0) formal-verification model for Lean 4 — saturates miniF2F, sets SOTA on FATE-H/FATE-X, and found 5 previously-unknown bugs across 57 scanned open-source repos; the day's top Hacker News AI story.",
+      "created_at": "2026-07-05",
+      "updated_at": "2026-07-05",
+      "timestamp": "2026-07-05T00:00:00Z",
+      "file": "entities/mistral-leanstral-1-5.md",
+      "aliases": [
+        "Leanstral 1.5",
+        "Leanstral"
+      ],
+      "outbound": [
+        "open-weights"
+      ],
+      "inbound": []
     },
     {
       "slug": "moonshot-kimi-k2-7-code",
@@ -1799,6 +1880,7 @@
         "meituan-longcat-2",
         "meta",
         "microsoft",
+        "mistral-leanstral-1-5",
         "moonshot-kimi-k2-7-code",
         "nano-banana-2-lite",
         "openrouter",
@@ -2240,8 +2322,8 @@
       "summary": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked \"matches Mythos\" cybersecurity headline.",
       "description": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked \"matches Mythos\" cybersecurity headline.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-07-02",
-      "timestamp": "2026-07-02T00:00:00Z",
+      "updated_at": "2026-07-05",
+      "timestamp": "2026-07-05T00:00:00Z",
       "file": "entities/zhipu-glm-5-2.md",
       "aliases": [
         "Zhipu GLM 5.2",
@@ -2307,6 +2389,10 @@
     "ai supply-chain security": "agentic-ai-security",
     "ai-capex": "ai-capex",
     "ai-for-manufacturing": "artificial-general-engineer",
+    "alibaba": "alibaba",
+    "alibaba cloud": "alibaba",
+    "alibaba group": "alibaba",
+    "alibaba group holding": "alibaba",
     "amazon": "amazon",
     "amazon web services": "amazon",
     "amazon.com": "amazon",
@@ -2321,6 +2407,7 @@
     "artificial-general-engineer": "artificial-general-engineer",
     "avgo": "broadcom",
     "aws": "amazon",
+    "baba": "alibaba",
     "bezos prometheus": "prometheus",
     "brett adcock": "figure-ai",
     "broadcom": "broadcom",
@@ -2419,6 +2506,8 @@
     "jumper": "john-jumper",
     "kimi k2.7 code": "moonshot-kimi-k2-7-code",
     "kimi k2.7-code": "moonshot-kimi-k2-7-code",
+    "leanstral": "mistral-leanstral-1-5",
+    "leanstral 1.5": "mistral-leanstral-1-5",
     "lfm": "liquid-ai",
     "liang wenfeng": "deepseek",
     "life sci bench": "lifescibench",
@@ -2450,11 +2539,15 @@
     "microsoft": "microsoft",
     "microsoft ai": "microsoft",
     "microsoft corporation": "microsoft",
+    "midjourney": "midjourney",
+    "midjourney inc.": "midjourney",
+    "midjourney medical": "midjourney",
     "mimo v2.5 pro ultraspeed": "xiaomi-mimo-v2-5-pro",
     "mimo-v2.5-pro-ultraspeed": "xiaomi-mimo-v2-5-pro",
     "minimax": "minimax-m3",
     "minimax m3": "minimax-m3",
     "minimax-m3": "minimax-m3",
+    "mistral-leanstral-1-5": "mistral-leanstral-1-5",
     "moonshot ai kimi k2.7 code": "moonshot-kimi-k2-7-code",
     "moonshot kimi k2.7 code": "moonshot-kimi-k2-7-code",
     "moonshot-kimi-k2-7-code": "moonshot-kimi-k2-7-code",
@@ -2540,6 +2633,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-07-05",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-05 digest (Alibaba confirms the internal Claude Code ban effective July 10, \"high-risk software,\" while a viral Unicode-steganography thread's central credibility marker — a claimed 1,891-point HN comment — is directly falsified; Mistral's open-source Leanstral 1.5 saturates miniF2F and tops HN; GPT-5.6's Sol/Terra/Luna tier names confirmed via a primary-source GitHub commit; Midjourney seeks discovery into Disney/Universal/Warner Bros.' own AI-training practices; Claude Science trade-press coverage keeps broadening with no primary specifics; GLM-5.2 draws a wafer.ai cost-per-token benchmark and another unverified \"matches Mythos\" claim). Created 3 (alibaba entity — distillation accusation, mechanism-level ban timeline, viral-thread debunk; mistral-leanstral-1-5 entity — open-source Lean 4 formal-verification model, top HN story; midjourney entity — Hollywood discovery motion + Midjourney Medical scanner), updated 4 (anthropic — viral thread's fabricated \"1,891-point\" HN comment debunked; claude-science — broadening trade press, still no official disease/partner/timeline detail; gpt-5-6 — tier names upgrade to primary-source confirmed, July 7 launch date still unconfirmed; zhipu-glm-5-2 — wafer.ai AMD cost-per-token benchmark + unverified Mythos vulnerability-hunting parity claim)."
+    },
     {
       "date": "2026-07-04",
       "op": "ingest",
@@ -2634,11 +2732,6 @@
       "date": "2026-06-10",
       "op": "ingest",
       "summary": "Ingested 2026-06-10 digest (Claude Fable 5 / Mythos 5 launch day). Created 1 entity (claude-fable-5 — first public Mythos-class model: safeguarded GA Fable 5 reroutes high-risk queries to Opus 4.8, restricted unsafeguarded Mythos 5; ~2× Opus pricing, June 22 trial cliff, 88.4% misalignment-exploit eval). Updated 7 (anthropic — Fable 5 ship resolves the Mythos arc + Google ~$35B TPU-lease guarantee + $47B run-rate + intl AI-watchdog call; claude-opus-4-8 — now the Fable 5 safeguard-reroute floor, successor-sequencing resolved; agentic-ai-security — Mythos 5 88.4% exploit eval + guardrail overreach + Microsoft AI-dev supply-chain hack; gemini-3-5-flash — Gemini 3.5 Live Translate same-day counter-programming; openai — silence on Fable 5 day, GPT-5.6 watch + ~$1.5T IPO filing + Aria superapp + AI-watchdog; ai-capex — Google $35B Broadcom/TPU lease-guarantee stack + semis rotation continued; apple — AFM 3 / CoreAI on-device stack + Siri AI pulled from EU after DMA exemption denial)."
-    },
-    {
-      "date": "2026-06-08",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-08 digest. Created 2 entities (apple — WWDC 2026 Siri rebuild on custom Gemini + \"Extensions\" layer + NVIDIA confidential-compute routing; xai — Elon's compute-landlord business renting Colossus to Anthropic ~$1.25B/mo + Google ~$920M/mo, Grok Build CLI). Updated 6 (openai — \"super app\" pivot / \"chat is dead\" / 600M MAU / GPT-5.6 / govt equity-stake talks / Lockdown Mode; anthropic — S-1 multi-source confirmed + coordinated-pause proposal + compute-landlord tenancy + chip-engineer poach + Mythos silence; spacex — final IPO terms $135/~$75B/~$1.77T + compute-landlord angle; federal-ai-policy — Krishnan exit + OpenAI govt equity stake + Anthropic pause proposal + carried compliance calendar; agentic-ai-security — Meta-Instagram chatbot hijack + OpenAI Lockdown Mode; ai-capex — $2B+/mo compute-landlord economics + Helion $15.5B + Meta Hatch $200/mo)."
     }
   ]
 }
