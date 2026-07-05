@@ -111,11 +111,16 @@ service in `../runner`; see Load-bearing rule 5). A fresh
 means one serial slot — jobs run in parallel, and each worker carries the
 pipeline's baked-in state (Birdy read-only CLI/daemon, recent
 `research/` checkout, pre-installed tooling). Aggregation,
-synthesis, output, CI, and the Claude agent lanes all run here.
+synthesis, output, and the Claude agent lanes all run here.
 
-Only **two `runs-on: ubuntu-latest`** (GitHub-hosted) jobs exist, and both
-are watchdogs that must survive a self-hosted/Cloud Run outage — a watchdog
-that runs on the runners it is watching is useless:
+GitHub-hosted runners are used for jobs that must not execute
+repository-controlled code on the self-hosted fleet:
+- `ci.yml` runs on `ubuntu-latest`. Pull requests can change dashboard
+  build scripts, package scripts, Python tests, and workflow/action files,
+  so CI must not execute that code on the self-hosted runner host.
+- Watchdog jobs also run on `ubuntu-latest` because they must survive a
+  self-hosted/Cloud Run outage — a watchdog that runs on the runners it is
+  watching is useless:
 - `liveness-check.yml` runs one job on EACH tier (its `ubuntu` job + its
   `self-hosted` job). No single runner survives both failure modes — a
   GitHub-hosted billing/spending-limit block vs. a self-hosted outage — so
@@ -124,8 +129,9 @@ that runs on the runners it is watching is useless:
   vanished mid-run (Load-bearing rule 11).
 
 The per-workflow `ubuntu-latest` vs. `self-hosted` lists that used to live
-here are gone on purpose: the answer is now "self-hosted unless it's one of
-those two watchdogs." **Always read the workflow's actual `runs-on:` —
+here are gone on purpose: the answer is now "read the workflow's actual
+`runs-on:`; most production lanes are self-hosted, but CI and watchdogs are
+deliberately GitHub-hosted." **Always read the workflow's actual `runs-on:` —
 never trust a cached list** (the old list here drifted to 100% wrong once
 the autoscaler landed and the stateless lanes moved back to self-hosted).
 
@@ -146,6 +152,16 @@ agent/fallback step logs before treating it as evidence that Fireworks or
 native Claude was healthy. PR/review/on-demand Claude workflows may still call
 the Claude action directly; when they do, pass the model via
 `claude_args` (e.g. `"--model claude-sonnet-5"`) — never as a separate `model:` input.
+
+Claude Code runs are protected by the checked-in `.claude/settings.json`
+sandbox policy. On Linux this requires `bubblewrap` and `socat`; workflows
+that call Claude directly must run `.github/actions/setup-claude-sandbox`
+before the Claude action, and scheduled lanes that use `.github/actions/agent-run`
+get that setup centrally. The policy sets `sandbox.failIfUnavailable: true`
+and `sandbox.allowUnsandboxedCommands: false`, so a missing sandbox fails
+the workflow instead of silently running Bash commands with host filesystem
+access. It also blocks reads of common host credential paths such as `~/.ssh`,
+`~/.aws`, `/proc`, and `/var/run`.
 
 ### Aggregation (raw signal → `research/<source>/`)
 
@@ -183,7 +199,7 @@ the Claude action directly; when they do, pass the model via
 |---|---|---|
 | `arm-timeline.yml` | every 2h `:45` | Deterministic refresh of `research/arm/timeline.json` so the dashboard's Arm tab renders in prod (the Docker build context has no `.git`/`.github`, so prebuild falls back to this committed file; unrefreshed it ages out of the ±36h window). |
 | `daily-improve.yml` | weekly, Monday `00:17` UTC | Opens improve/YYYY-MM-DD PR with methodology fixes; each run auto-closes prior unmerged `improve/*` PRs. See "Load-bearing rules" for where the IMPROVEMENTS file belongs. |
-| `ci.yml` | push/PR on workflows/dashboard/scripts | actionlint + dashboard build + Python tests |
+| `ci.yml` | push/PR on workflows/dashboard/scripts | actionlint + dashboard build + Python tests on GitHub-hosted runners |
 | `claude.yml` | `@claude` mention in issue/PR/review | Interactive Claude-Code agent |
 | `claude-code-review.yml` | PR opened/synced | Automated Claude code review |
 

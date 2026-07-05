@@ -41,6 +41,9 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Setup Claude sandbox
+        uses: ./.github/actions/setup-claude-sandbox
+
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@v1

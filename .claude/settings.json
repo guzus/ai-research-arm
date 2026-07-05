@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false,
+    "autoAllowBashIfSandboxed": true,
+    "filesystem": {
+      "denyRead": [
+        "~/",
+        "/root",
+        "/proc",
+        "/sys",
+        "/var/run",
+        "/etc/ssh",
+        "/etc/ssl/private"
+      ],
+      "allowRead": [
+        "."
+      ]
+    },
+    "credentials": {
+      "files": [
+        {
+          "path": "~/.aws",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.config/gh",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.docker",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.ssh",
+          "mode": "deny"
+        }
+      ],
+      "envVars": [
+        {
+          "name": "ANTHROPIC_API_KEY",
+          "mode": "deny"
+        },
+        {
+          "name": "ANTHROPIC_AUTH_TOKEN",
+          "mode": "deny"
+        },
+        {
+          "name": "CLAUDE_CODE_OAUTH_TOKEN",
+          "mode": "deny"
+        },
+        {
+          "name": "FIREWORKS_API_KEY",
+          "mode": "deny"
+        }
+      ]
+    }
+  },
+  "permissions": {
+    "deny": [
+      "Read(~/**)",
+      "Read(//root/**)",
+      "Read(//proc/**)",
+      "Read(//sys/**)",
+      "Read(//var/run/**)",
+      "Read(//etc/ssh/**)",
+      "Read(//etc/ssl/private/**)"
+    ]
+  }
+}

@@ -135,8 +135,9 @@ jobs:
           }
           EOF
           
-          echo "Generated MCP config:"
-          cat /tmp/mcp-config.json
+          echo "Generated MCP config with servers:"
+          [ "${{ steps.check-keys.outputs.has_exa }}" = "true" ] && echo "exa"
+          [ "${{ steps.check-keys.outputs.has_perplexity }}" = "true" ] && echo "perplexity"
 
       # continue-on-error on both synthesis paths: a failed agent (provider
       # outage, turn-1 API error, nothing committed — the composite's internal

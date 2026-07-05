@@ -67,6 +67,9 @@ jobs:
                 -c "Superseded by this week's self-improvement run." || true
             done
 
+      - name: Setup Claude sandbox
+        uses: ./.github/actions/setup-claude-sandbox
+
       - name: Analyze and Improve Methodology
         uses: anthropics/claude-code-action@v1
         env:

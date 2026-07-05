@@ -1228,14 +1228,12 @@ jobs:
           && steps.autoresearch_throttle.outputs.skip == 'false'
         continue-on-error: true
         uses: ./.github/actions/agent-run
-        env:
-          GEN_TOPIC_DATE: ${{ steps.datetime.outputs.date }}
         with:
           backend: fireworks-glm-5p2
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           claude-args: |
-            --model opus --max-turns 10 --allowedTools "Read,Bash(ls:*),Bash(cat:*),Bash(jq:*),Bash(date:*),Bash(printenv:*),Write"
+            --model opus --max-turns 10 --allowedTools "Read,Bash(ls:*),Bash(cat:*),Bash(jq:*),Bash(date:*),Write"
           label: Twitter auto-research Fireworks selector
           prompt: |
             You select AT MOST ONE topic from today's Twitter AI Pulse to
@@ -1246,9 +1244,8 @@ jobs:
             nothing meets the bar, output NO_TOPIC and stop. Better to
             skip than to dispatch a weak topic.
 
-            Step 1 — read today's twitter file. Get the date from env:
-              DATE=$(printenv GEN_TOPIC_DATE)
-              cat "research/twitter/${DATE}.md"
+            Step 1 — read today's twitter file for date `${{ steps.datetime.outputs.date }}`:
+              cat "research/twitter/${{ steps.datetime.outputs.date }}.md"
             If that path doesn't exist, fall back to the most recent file:
               ls -t research/twitter/*.md | head -1
             Read it.

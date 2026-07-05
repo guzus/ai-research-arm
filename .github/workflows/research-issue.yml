@@ -6,8 +6,12 @@ on:
 
 jobs:
   research:
-    # Trigger only when 'research' label is added
-    if: github.event.label.name == 'research'
+    # Trigger only when a trusted issue author receives the 'research' label.
+    # The issue title/body flow into a write-capable web research agent, so
+    # untrusted public issue text must not be enough to start the job.
+    if: >-
+      github.event.label.name == 'research' &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association)
     runs-on: [self-hosted, Linux]
     # Cap a hung research agent so it can't pin a Cloud Run worker for GitHub's
     # 6h default (mirrors the 90-min agent-lane convention).
@@ -101,8 +105,9 @@ jobs:
           }
           EOF
 
-          echo "Generated MCP config:"
-          cat /tmp/mcp-config.json
+          echo "Generated MCP config with servers:"
+          [ "${{ steps.check-keys.outputs.has_exa }}" = "true" ] && echo "exa"
+          [ "${{ steps.check-keys.outputs.has_perplexity }}" = "true" ] && echo "perplexity"
 
       # Security: stage the attacker-controlled issue title/body to plain files
       # so the Claude step does NOT need any env vars or `printenv` permission.
@@ -130,6 +135,9 @@ jobs:
           # Sanity check (size only — never echo the content; would leak into
           # the workflow log).
           wc -c "$GITHUB_WORKSPACE/.issue-input/title.txt" "$GITHUB_WORKSPACE/.issue-input/body.txt"
+
+      - name: Setup Claude sandbox
+        uses: ./.github/actions/setup-claude-sandbox
 
       - name: Run Deep Research (with MCP)
         if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'

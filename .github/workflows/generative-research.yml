@@ -591,6 +591,9 @@ jobs:
       # comms once when the action ran ~19m on the un-capped concurrent
       # fan-out version of the prompt; pacing fixed that, but a stuck
       # runner is much worse than a missed article, so hard-cap here.
+      - name: Setup Claude sandbox
+        uses: ./.github/actions/setup-claude-sandbox
+
       - name: Run Generative Research (Claude, attempt 1)
         if: steps.effective.outputs.backend == 'claude'
         id: gen-claude
