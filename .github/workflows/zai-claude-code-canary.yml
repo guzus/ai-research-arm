@@ -1,0 +1,144 @@
+name: Z.ai Claude Code Canary
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: zai-claude-code-canary
+  cancel-in-progress: false
+
+jobs:
+  canary:
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Probe raw Z.ai Anthropic tool-use
+        env:
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.error
+          import urllib.request
+
+          key = os.environ.get("ZAI_API_KEY", "")
+          if not key:
+              print("::error::ZAI_API_KEY is not configured")
+              sys.exit(1)
+
+          payload = {
+              "model": "glm-5.2[1m]",
+              "max_tokens": 256,
+              "messages": [
+                  {
+                      "role": "user",
+                      "content": (
+                          "Use the write_probe tool exactly once with "
+                          "path='research/zai-canary/raw-tool-probe.txt' "
+                          "and text='ok'. Do not answer in prose."
+                      ),
+                  }
+              ],
+              "tools": [
+                  {
+                      "name": "write_probe",
+                      "description": "Record the path and text that should be written.",
+                      "input_schema": {
+                          "type": "object",
+                          "properties": {
+                              "path": {"type": "string"},
+                              "text": {"type": "string"},
+                          },
+                          "required": ["path", "text"],
+                      },
+                  }
+              ],
+              "tool_choice": {"type": "tool", "name": "write_probe"},
+          }
+          req = urllib.request.Request(
+              "https://api.z.ai/api/anthropic/v1/messages",
+              data=json.dumps(payload).encode(),
+              headers={
+                  "Authorization": f"Bearer {key}",
+                  "Content-Type": "application/json",
+                  "anthropic-version": "2023-06-01",
+              },
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=120) as resp:
+                  body = json.loads(resp.read().decode())
+          except urllib.error.HTTPError as exc:
+              safe_body = exc.read().decode(errors="replace")[:500]
+              print(f"::error::Z.ai raw tool probe failed with HTTP {exc.code}: {safe_body}")
+              sys.exit(1)
+
+          content = body.get("content", [])
+          tool_uses = [part for part in content if part.get("type") == "tool_use"]
+          if not tool_uses:
+              print("::error::Z.ai raw tool probe returned no tool_use content")
+              print(json.dumps({"stop_reason": body.get("stop_reason"), "content_types": [part.get("type") for part in content]}))
+              sys.exit(1)
+
+          first = tool_uses[0]
+          print(
+              "Z.ai raw tool probe returned tool_use:",
+              json.dumps(
+                  {
+                      "name": first.get("name"),
+                      "input_keys": sorted((first.get("input") or {}).keys()),
+                      "stop_reason": body.get("stop_reason"),
+                      "model": body.get("model"),
+                  },
+                  sort_keys=True,
+              ),
+          )
+          PY
+
+      - name: Run Claude Code file-write canary via Z.ai
+        uses: ./.github/actions/agent-run
+        with:
+          backend: zai-glm-5p2
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          claude-args: |
+            --model opus --max-turns 8 --allowedTools "Read,Write,Bash(pwd:*),Bash(ls:*),Bash(git:*)"
+          expected-paths: |
+            research/zai-canary/
+          allowed-paths: |
+            research/zai-canary/
+            research/summaries/
+          label: Z.ai Claude Code file-write canary
+          prompt: |
+            This is a minimal file-write canary for GLM-5.2 through Claude Code.
+
+            Do exactly these steps and nothing else:
+            1. Use the Write tool to create `research/zai-canary/${{ github.run_id }}.md` with:
+               `# Z.ai Claude Code canary`
+               blank line
+               `ok`
+            2. Use the Write tool to create `research/summaries/${{ github.run_id }}-zai-canary.txt` with:
+               `Z.ai Claude Code canary ok`
+            3. Run:
+               `git add research/zai-canary/ research/summaries/`
+               `git commit -m "Z.ai Claude Code canary ${{ github.run_id }}"`
+
+            Do not modify any other files. Do not answer with prose instead of writing files.
+
+      - name: Show local canary commit
+        run: |
+          set -euo pipefail
+          git show --stat --oneline --no-renames HEAD

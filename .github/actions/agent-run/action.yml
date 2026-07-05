@@ -117,7 +117,7 @@ runs:
           zai-glm-5p2|zai-glm-5.2|zai-glm52|zai)
             normalized="zai-glm-5p2"
             provider="zai"
-            model_id="glm-5.2"
+            model_id="glm-5.2[1m]"
             display_name="GLM 5.2 via Z.ai"
             ;;
           *)
@@ -279,6 +279,7 @@ runs:
         ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.profile.outputs.model-id }}
         CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.profile.outputs.model-id }}
         CLAUDE_CODE_EFFORT_LEVEL: max
+        CLAUDE_CODE_AUTO_COMPACT_WINDOW: "1000000"
         API_TIMEOUT_MS: "3000000"
         ARA_AGENT_BACKEND: ${{ steps.profile.outputs.backend }}
         ARA_AGENT_MODEL_ID: ${{ steps.profile.outputs.model-id }}
@@ -299,6 +300,7 @@ runs:
         ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.profile.outputs.model-id }}
         CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.profile.outputs.model-id }}
         CLAUDE_CODE_EFFORT_LEVEL: max
+        CLAUDE_CODE_AUTO_COMPACT_WINDOW: "1000000"
         API_TIMEOUT_MS: "3000000"
         ARA_AGENT_BACKEND: ${{ steps.profile.outputs.backend }}
         ARA_AGENT_MODEL_ID: ${{ steps.profile.outputs.model-id }}
