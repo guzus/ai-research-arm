@@ -40,7 +40,7 @@ jobs:
               sys.exit(1)
 
           payload = {
-              "model": "glm-5.2[1m]",
+              "model": "glm-5.2",
               "max_tokens": 256,
               "messages": [
                   {
