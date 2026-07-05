@@ -117,7 +117,7 @@ runs:
           zai-glm-5p2|zai-glm-5.2|zai-glm52|zai)
             normalized="zai-glm-5p2"
             provider="zai"
-            model_id="glm-5.2[1m]"
+            model_id="glm-5.2"
             display_name="GLM 5.2 via Z.ai"
             ;;
           *)
