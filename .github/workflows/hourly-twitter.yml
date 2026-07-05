@@ -326,6 +326,14 @@ jobs:
           echo "Backend constants for ${BACKEND}:"
           grep -E '^[a-z_]+=' "$GITHUB_OUTPUT" | sed 's/^/  /'
 
+      - name: Prepare output directories
+        if: steps.backend.outputs.skip != 'true'
+        env:
+          OUTPUT_DIR: ${{ steps.const.outputs.output_dir }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$OUTPUT_DIR" research/summaries
+
       # ── Shared fetch (Birdy multi-fetch + optional helpers) ────────
       - name: Fetch twitter snapshot
         if: steps.backend.outputs.skip != 'true'
