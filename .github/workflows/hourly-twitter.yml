@@ -320,6 +320,7 @@ jobs:
             echo "curl_budget=${CURL_BUDGET}"
             echo "harness_label=${HARNESS_LABEL}"
             echo "features=${FEATURES}"
+            echo "digest_file=${OUTPUT_DIR}/${DATE}.md"
             echo "headlines_file=research/summaries/${DATE}-${SUMMARY_SLUG}-${HOUR}h-headlines.json"
             echo "summary_file=research/summaries/${DATE}-${SUMMARY_SLUG}-${HOUR}h-summary.txt"
           } >> "$GITHUB_OUTPUT"
@@ -413,7 +414,9 @@ jobs:
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
-            research/twitter/
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
           allowed-paths: |
             research/twitter/
             research/summaries/
@@ -435,7 +438,8 @@ jobs:
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
-            research/twitter-deepseek/
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.summary_file }}
           allowed-paths: |
             research/twitter-deepseek/
             research/summaries/
@@ -456,7 +460,8 @@ jobs:
           claude-args: |
             --model opus --max-turns 30 --allowedTools "Read,Write,Edit,Bash(pwd:*),Bash(ls:*),Bash(rg:*),Bash(find:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
-            research/twitter-zai/
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.summary_file }}
           allowed-paths: |
             research/twitter-zai/
             research/summaries/
@@ -495,7 +500,8 @@ jobs:
         with:
           base-sha: ${{ steps.twitter-output-base.outputs.sha }}
           expected-paths: |
-            research/twitter-deepseek/
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.summary_file }}
           label: Twitter DeepSeek comparison workflow output
 
       - name: Process tweets with pi + DeepSeek v4 Flash via Fireworks (deepseek-pi tier)
