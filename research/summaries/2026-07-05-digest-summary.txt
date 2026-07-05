@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-07-05
+
+TOP STORIES:
+• Alibaba confirms internal Claude Code ban (effective July 10); viral "Unicode steganography" thread on the underlying mechanism partly debunked (fake 1,891-pt HN claim)
+• Claude Science drug-discovery push gets broader trade-press pickup (FT, STAT, MIT Tech Review) but still no official Anthropic details
+• Mistral's open-source Leanstral 1.5 tops HN — Lean 4 formal verification, found 5 unknown bugs in 57 repos
+• GPT-5.6 "Sol/Terra/Luna" tier names confirmed via GitHub commit; July 7 launch rumored
+
+KEY NUMBERS:
+• Kuaishou/Kling: ~$2B raised (one report cites $15B valuation) ahead of HK IPO
+• pxpipe tool cuts Claude Code/Fable 5 token costs 59-70% by encoding text as PNGs
+• Claude Code session-leakage GitHub issue: 195→245 HN points in one day
+
+TRENDING: Claude Code cross-session/cache leakage bug report gaining traction on HN
+
+Full digest on GitHub.
