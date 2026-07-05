@@ -1,0 +1,11 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-07-05 18:42 UTC
+
+CYCLE: Quiet window overall; Anthropic's Project Glasswing vuln-hunting program (10,000+ found via Claude Mythos) and AI chip startup Etched's $5B stealth exit are the two real stories.
+
+TOP STORIES:
+• Project Glasswing (Claude Mythos): 10,000+ high/critical vulns found across major software in ~1 month, incl. a reported 17-yr-old FreeBSD RCE [⚠]
+• Etched exits stealth: $800M raised, $5B valuation, $1B in inference-chip contracts [✓]
+
+WATCH: Whether Anthropic publishes its own Glasswing results (vuln count, CVE list) instead of leaving it to recirculating threads.
+
+Full update on GitHub.
