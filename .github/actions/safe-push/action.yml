@@ -97,7 +97,10 @@ runs:
           exit 1
         fi
 
-        git remote set-url origin "https://x-access-token:${SAFE_PUSH_GITHUB_TOKEN}@github.com/${SAFE_PUSH_REPOSITORY}.git"
+        AUTH_HEADER=$(printf 'x-access-token:%s' "$SAFE_PUSH_GITHUB_TOKEN" | base64 | tr -d '\n')
+        git_auth() {
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${AUTH_HEADER}" "$@"
+        }
 
         # Concurrent writers can land on $BRANCH while this job runs. Retry
         # the fetch+rebase+push loop a few times; each iteration stashes
@@ -129,7 +132,7 @@ runs:
           ATTEMPTS=$((ATTEMPTS + 1))
           echo "::group::push attempt $ATTEMPTS / $MAX_ATTEMPTS"
 
-          git fetch origin "$BRANCH"
+          git_auth fetch origin "$BRANCH"
 
           # Stash any leftover working-tree state (tracked modifications
           # OR untracked artifacts) that would otherwise make `git rebase`
@@ -256,7 +259,7 @@ runs:
             exit 0
           fi
 
-          if git push origin "HEAD:$BRANCH"; then
+          if git_auth push origin "HEAD:$BRANCH"; then
             echo "::endgroup::"
             echo "Pushed successfully on attempt $ATTEMPTS"
             echo "pushed=true" >> "$GITHUB_OUTPUT"

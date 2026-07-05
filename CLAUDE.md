@@ -163,6 +163,14 @@ the workflow instead of silently running Bash commands with host filesystem
 access. It also blocks reads of common host credential paths such as `~/.ssh`,
 `~/.aws`, `/proc`, and `/var/run`.
 
+Pi comparison lanes do not read Claude Code settings. When `hourly-twitter.yml`
+runs `deepseek-pi` or `fireworks-pi`, it must use
+`.github/actions/run-pi-container` instead of invoking `pi` on the host. That
+wrapper builds a small Node container with `pi`, `bird`, `git`, and `jq`, mounts
+only `$GITHUB_WORKSPACE`, `/tmp/bird` read-only, and the rendered prompt file,
+then runs pi with a container-local home directory. Missing Docker is a hard
+failure for pi lanes; do not fall back to host-level `pi --tools ... bash`.
+
 ### Aggregation (raw signal → `research/<source>/`)
 
 | Workflow | Schedule | Output |
