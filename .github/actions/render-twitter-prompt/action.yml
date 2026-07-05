@@ -10,7 +10,7 @@ description: >
 
 inputs:
   backend:
-    description: claude | deepseek-claude-code | deepseek-pi | fireworks-pi
+    description: claude | deepseek-claude-code | zai-glm-5p2 | deepseek-pi | fireworks-pi
     required: true
   template_path:
     description: Path to the prompt template (with `{{placeholders}}`).
