@@ -1,14 +1,14 @@
 AI News - 2026-07-05
 
 TOP STORIES:
-• Alibaba bans employees from using Anthropic's Claude Code starting July 10, citing security concerns after Anthropic's China-detection code was revealed
-• Escalation follows Anthropic's late-June claim that Qwen-linked accounts ran the largest known Claude distillation campaign (~25K fake accounts, 29M exchanges)
-• Midjourney asks court to force Disney, Universal, and Warner Bros. to disclose their own internal AI training/business practices in copyright suit
+• Alibaba bans staff from using Claude Code from July 10, citing security concerns over Anthropic's China-detection code
+• Midjourney asks court to force Disney, Universal, Warner Bros. to disclose their own internal AI practices
+• Meta's Alexandr Wang tells staff unreleased "Watermelon" model caught GPT-5.5 -- Zuckerberg admits AI-agent progress stalled
 
 KEY NUMBERS:
-• ~29M exchanges via ~25,000 fraudulent accounts alleged in the Anthropic-Alibaba distillation dispute
-• Alibaba's Claude Code ban takes effect July 10, 2026
+• ~29M exchanges via ~25K fraudulent accounts alleged in Anthropic-Alibaba distillation dispute
+• Watermelon reportedly uses ~10x the compute of Meta's prior model
 
-No new frontier model, funding round, or regulatory action cleared the 48h bar today.
+No new shipped frontier model, funding round, or regulation cleared the 48h bar today.
 
 Full report on GitHub.
