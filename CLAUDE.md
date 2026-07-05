@@ -141,17 +141,23 @@ Claude-Code-compatible tool harness but routes the primary freshness lanes
 through Fireworks profiles when Fireworks preflight passes. If Fireworks is
 unavailable (for example billing/spend-limit suspension), the wrapper falls
 back to native Claude by default so scheduled freshness does not hard-stop.
-It can also enforce that the expected output paths were actually committed. The
-RSS, HN/Reddit community, arXiv, daily-digest, and Bluesky workflows (plus the
-twitter-deepseek comparison tier) add deterministic model-free fallbacks after
-the agent step, then run a final `.github/actions/require-output` guard — the
-digest additionally gates its agent output on a hard content floor
-(`scripts/check_digest_content.py`) before the fallback decision. For
-those lanes, a green run means a committed daily artifact exists; inspect the
-agent/fallback step logs before treating it as evidence that Fireworks or
-native Claude was healthy. PR/review/on-demand Claude workflows may still call
-the Claude action directly; when they do, pass the model via
-`claude_args` (e.g. `"--model claude-sonnet-5"`) — never as a separate `model:` input.
+It also enforces output and commit-scope contracts for agent lanes:
+`.github/actions/require-output` proves the expected output path changed,
+while `.github/actions/require-diff-scope` proves the committed diff since
+the pre-agent SHA is limited to the declared allowed pathspecs. Use
+`expected-paths` for the artifact that must exist and `allowed-paths` for the
+full set of paths the agent may commit (for example, a primary digest
+directory plus `research/summaries/`). The RSS, HN/Reddit community, arXiv,
+daily-digest, and Bluesky workflows (plus the twitter-deepseek comparison tier)
+add deterministic model-free fallbacks after the agent step, then run a final
+`.github/actions/require-output` guard — the digest additionally gates its
+agent output on a hard content floor (`scripts/check_digest_content.py`) before
+the fallback decision. For those lanes, a green run means a committed daily
+artifact exists; inspect the agent/fallback step logs before treating it as
+evidence that Fireworks or native Claude was healthy. PR/review/on-demand
+Claude workflows may still call the Claude action directly; when they do, pass
+the model via `claude_args` (e.g. `"--model claude-sonnet-5"`) — never as a
+separate `model:` input.
 
 Claude Code runs are protected by the checked-in `.claude/settings.json`
 sandbox policy. On Linux this requires `bubblewrap` and `socat`; workflows
@@ -229,7 +235,7 @@ file rather than assuming one provider everywhere.
 | **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Runs Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage follows the ChatGPT/Codex subscription entitlement rather than API billing. Publishes through the same writer/verifier contract and records `codex` metadata. |
 | **DeepSeek V4 Flash (via Fireworks)** | High-frequency scheduled lanes through `.github/actions/agent-run`; `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` comparison lanes | `FIREWORKS_API_KEY` | Uses Fireworks' Anthropic-compatible endpoint at `https://api.fireworks.ai/inference` with model `accounts/fireworks/models/deepseek-v4-flash` (base URL omits `/v1`; the client appends `/v1/messages`). Overrides `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`/`ANTHROPIC_MODEL` so the Claude Code action transparently calls Fireworks. The direct DeepSeek API (`api.deepseek.com`) is retired (billing/credits). Selector token: `fireworks-deepseek-v4-flash`, `deepseek-v4-flash`, or `deepseek`. In scheduled `agent-run` lanes AND in `generative-research.yml`, a non-retryable Fireworks preflight failure falls back to native Claude by default (`generative-research` dispatch input `fireworks_fallback=none` opts back into hard failure for strict comparisons; fallback articles record `model claude-opus-4-8` + tags `fireworks-fallback,requested-<backend>`). Generative-research retries up to 2x on socket drops before commit. |
 | **GLM 5.2 (via Fireworks)** | Higher-reasoning scheduled lanes through `.github/actions/agent-run`; `generative-research backend=glm-5p2` | `FIREWORKS_API_KEY` | Uses the same Fireworks Anthropic-compatible env slots with model `accounts/fireworks/models/glm-5p2`. Selector token: `fireworks-glm-5p2`, `glm-5p2`, or `glm`. In scheduled `agent-run` lanes AND in `generative-research.yml`, a non-retryable Fireworks preflight failure falls back to native Claude by default (same `fireworks_fallback` input and provenance tagging as the DeepSeek row). |
-| **GLM 5.2 (via Z.ai Coding Plan)** | Manual comparison runs through `.github/actions/agent-run`; `hourly-twitter.yml backend=zai-glm-5p2` | `ZAI_API_KEY` | Uses Z.ai's Anthropic-compatible Claude Code endpoint at `https://api.z.ai/api/anthropic` with model `glm-5.2`. Selector token: `zai-glm-5p2`, `zai-glm-5.2`, `zai-glm52`, or `zai`. This path is intentionally manual while quota behavior is being measured; it fails closed if `ZAI_API_KEY` is unset. |
+| **GLM 5.2 (via Z.ai Coding Plan)** | Manual comparison runs through `.github/actions/agent-run`; `hourly-twitter.yml backend=zai-glm-5p2`; `zai-claude-code-canary.yml` for diagnostics | `ZAI_API_KEY` | Uses Z.ai's Anthropic-compatible Claude Code endpoint at `https://api.z.ai/api/anthropic` with model `glm-5.2[1m]` and `CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000`, matching Z.ai's Claude Code guidance for the long-context GLM 5.2 alias. Selector token: `zai-glm-5p2`, `zai-glm-5.2`, `zai-glm52`, or `zai`. This path is intentionally manual while quota and tool-write behavior are being measured; it fails closed if `ZAI_API_KEY` is unset. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p7`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
 | **Local Oracle (GPT-5.5 Pro)** | `scripts/run_generative_research_oracle.py` | Local `../oracle` checkout (browser engine by default) | Runs entirely on the developer machine; outputs go through the same `check_generative_research.py` → `write_generative_research.py` contract. Source metadata: `local-oracle`. |
 
@@ -301,7 +307,7 @@ Secrets are configured in GitHub Actions. None are committed.
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | Required for the Codex CLI ChatGPT-auth path. Store the file-backed `~/.codex/auth.json` produced by `codex login`; treat it like a password and use one auth file per serialized runner stream. |
 | `DEEPSEEK_API_KEY` | _Retired_ — DeepSeek lanes now route through Fireworks | No longer referenced by any workflow. |
 | `FIREWORKS_API_KEY` | Scheduled content lanes through `.github/actions/agent-run`; `generative-research backend=deepseek-v4-flash` / `backend=glm-5p2`; all `hourly-twitter.yml` non-primary comparison lanes (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Required for the DeepSeek-V4-Flash/GLM-via-Fireworks and Kimi lanes. |
-| `ZAI_API_KEY` | `.github/actions/agent-run` when `backend=zai-glm-5p2`; `hourly-twitter.yml backend=zai-glm-5p2` | Z.ai Coding Plan API key for Claude Code's Anthropic-compatible route. |
+| `ZAI_API_KEY` | `.github/actions/agent-run` when `backend=zai-glm-5p2`; `hourly-twitter.yml backend=zai-glm-5p2`; `zai-claude-code-canary.yml` | Z.ai Coding Plan API key for Claude Code's Anthropic-compatible route. |
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | All bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies. |
 | `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional; enhance MCP search. **Currently unset in the repo** (verified absent 2026-07-02) — `daily-digest` detects the absence, emits a run warning, and uses its local-source synthesis path until they are restored. |
 | `GEMINI_API_KEY` | `daily-digest` (inline Gemini Flash TTS for digest audio); also the manual `generate_generative_article_audio.py` | Optional; without it, audio generation is skipped. |

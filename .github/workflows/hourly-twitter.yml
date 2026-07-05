@@ -414,6 +414,9 @@ jobs:
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
             research/twitter/
+          allowed-paths: |
+            research/twitter/
+            research/summaries/
           label: Twitter primary Fireworks processor
           prompt: ${{ steps.render.outputs.prompt }}
 
@@ -433,6 +436,9 @@ jobs:
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
             research/twitter-deepseek/
+          allowed-paths: |
+            research/twitter-deepseek/
+            research/summaries/
           label: Twitter DeepSeek comparison processor
           prompt: ${{ steps.render.outputs.prompt }}
 
@@ -448,9 +454,12 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
-            --model opus --max-turns 30 --allowedTools "Read,Write,Edit,Bash(pwd:*),Bash(ls:*),Bash(find:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
+            --model opus --max-turns 30 --allowedTools "Read,Write,Edit,Bash(pwd:*),Bash(ls:*),Bash(rg:*),Bash(find:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
             research/twitter-zai/
+          allowed-paths: |
+            research/twitter-zai/
+            research/summaries/
           label: Twitter Z.ai GLM-5.2 comparison processor
           prompt: ${{ steps.render.outputs.prompt }}
 

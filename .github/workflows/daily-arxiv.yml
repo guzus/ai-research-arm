@@ -72,6 +72,9 @@ jobs:
             --allowedTools "Read,Write,Edit,Bash(git:*),Bash(curl:*),WebFetch,mcp__arxiv__*"
           expected-paths: |
             research/arxiv/
+          allowed-paths: |
+            research/arxiv/
+            research/summaries/
           label: arXiv Fireworks curator
           prompt: |
             You are an AI research paper curator. Find the most important NEW papers from arXiv.

@@ -31,6 +31,10 @@ inputs:
     description: Optional newline-delimited git pathspecs that must change between pre-run HEAD and post-run HEAD.
     required: false
     default: ""
+  allowed-paths:
+    description: Optional newline-delimited git pathspecs that are allowed to change between pre-run HEAD and post-run HEAD. Defaults to expected-paths.
+    required: false
+    default: ""
   label:
     description: Human-readable label for logs and output guard annotations.
     required: false
@@ -69,6 +73,12 @@ outputs:
   changed-files:
     description: Newline-delimited changed files under expected paths.
     value: ${{ steps.guard.outputs.changed-files }}
+  diff-in-scope:
+    description: "true when every committed changed file is under allowed paths"
+    value: ${{ steps.scope.outputs.in-scope }}
+  violating-files:
+    description: Newline-delimited committed changed files outside allowed paths.
+    value: ${{ steps.scope.outputs.violating-files }}
 
 runs:
   using: composite
@@ -107,7 +117,7 @@ runs:
           zai-glm-5p2|zai-glm-5.2|zai-glm52|zai)
             normalized="zai-glm-5p2"
             provider="zai"
-            model_id="glm-5.2"
+            model_id="glm-5.2[1m]"
             display_name="GLM 5.2 via Z.ai"
             ;;
           *)
@@ -269,6 +279,7 @@ runs:
         ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.profile.outputs.model-id }}
         CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.profile.outputs.model-id }}
         CLAUDE_CODE_EFFORT_LEVEL: max
+        CLAUDE_CODE_AUTO_COMPACT_WINDOW: "1000000"
         API_TIMEOUT_MS: "3000000"
         ARA_AGENT_BACKEND: ${{ steps.profile.outputs.backend }}
         ARA_AGENT_MODEL_ID: ${{ steps.profile.outputs.model-id }}
@@ -289,6 +300,7 @@ runs:
         ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.profile.outputs.model-id }}
         CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.profile.outputs.model-id }}
         CLAUDE_CODE_EFFORT_LEVEL: max
+        CLAUDE_CODE_AUTO_COMPACT_WINDOW: "1000000"
         API_TIMEOUT_MS: "3000000"
         ARA_AGENT_BACKEND: ${{ steps.profile.outputs.backend }}
         ARA_AGENT_MODEL_ID: ${{ steps.profile.outputs.model-id }}
@@ -307,9 +319,15 @@ runs:
       shell: bash
       env:
         EXPECTED_PATHS: ${{ inputs.expected-paths }}
+        ALLOWED_PATHS: ${{ inputs.allowed-paths }}
         LABEL: ${{ inputs.label }}
       run: |
         set -euo pipefail
+
+        paths="$ALLOWED_PATHS"
+        if [ -z "$paths" ]; then
+          paths="$EXPECTED_PATHS"
+        fi
 
         pathspecs=()
         while IFS= read -r pathspec; do
@@ -317,7 +335,7 @@ runs:
           pathspec="${pathspec%"${pathspec##*[![:space:]]}"}"
           [ -z "$pathspec" ] && continue
           pathspecs+=("$pathspec")
-        done <<< "$EXPECTED_PATHS"
+        done <<< "$paths"
 
         if [ "${#pathspecs[@]}" -eq 0 ]; then
           exit 0
@@ -325,7 +343,7 @@ runs:
 
         git add -- "${pathspecs[@]}"
         if git diff --cached --quiet -- "${pathspecs[@]}"; then
-          echo "${LABEL} left no uncommitted changes under expected path(s)."
+          echo "${LABEL} left no uncommitted changes under allowed output path(s)."
           exit 0
         fi
 
@@ -336,6 +354,25 @@ runs:
       shell: bash
       run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
+    - name: Resolve allowed diff paths
+      id: allowed
+      if: inputs.expected-paths != ''
+      shell: bash
+      env:
+        EXPECTED_PATHS: ${{ inputs.expected-paths }}
+        ALLOWED_PATHS: ${{ inputs.allowed-paths }}
+      run: |
+        set -euo pipefail
+        paths="$ALLOWED_PATHS"
+        if [ -z "$paths" ]; then
+          paths="$EXPECTED_PATHS"
+        fi
+        {
+          echo "paths<<__ALLOWED_PATHS__"
+          echo "$paths"
+          echo "__ALLOWED_PATHS__"
+        } >> "$GITHUB_OUTPUT"
+
     - name: Require committed output
       id: guard
       if: inputs.expected-paths != ''
@@ -343,4 +380,13 @@ runs:
       with:
         base-sha: ${{ steps.pre.outputs.sha }}
         expected-paths: ${{ inputs.expected-paths }}
+        label: ${{ inputs.label }}
+
+    - name: Require committed diff scope
+      id: scope
+      if: inputs.expected-paths != ''
+      uses: ./.github/actions/require-diff-scope
+      with:
+        base-sha: ${{ steps.pre.outputs.sha }}
+        allowed-paths: ${{ steps.allowed.outputs.paths }}
         label: ${{ inputs.label }}
