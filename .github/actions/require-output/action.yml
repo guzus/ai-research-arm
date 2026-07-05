@@ -57,11 +57,27 @@ runs:
         fi
 
         changed_files="$(git diff --name-only "${BASE_SHA}..HEAD" -- "${pathspecs[@]}" || true)"
-        if [ -z "$changed_files" ]; then
+        missing_pathspecs=()
+        for pathspec in "${pathspecs[@]}"; do
+          pathspec_changed="$(git diff --name-only "${BASE_SHA}..HEAD" -- "$pathspec" || true)"
+          if [ -z "$pathspec_changed" ]; then
+            missing_pathspecs+=("$pathspec")
+          fi
+        done
+
+        if [ "${#missing_pathspecs[@]}" -gt 0 ]; then
           {
-            echo "::error::${LABEL} did not commit changes under expected path(s):"
+            echo "::error::${LABEL} did not commit changes under every expected path:"
+            printf '  missing: %s\n' "${missing_pathspecs[@]}"
+            echo "Expected path(s):"
             printf '  - %s\n' "${pathspecs[@]}"
             echo "HEAD: $(git rev-parse HEAD)"
+            echo "Changed files under expected path(s):"
+            if [ -n "$changed_files" ]; then
+              echo "$changed_files"
+            else
+              echo "  (none)"
+            fi
             echo "Status:"
             git status --short
           }

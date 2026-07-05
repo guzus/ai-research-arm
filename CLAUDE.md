@@ -142,12 +142,13 @@ through Fireworks profiles when Fireworks preflight passes. If Fireworks is
 unavailable (for example billing/spend-limit suspension), the wrapper falls
 back to native Claude by default so scheduled freshness does not hard-stop.
 It also enforces output and commit-scope contracts for agent lanes:
-`.github/actions/require-output` proves the expected output path changed,
+`.github/actions/require-output` proves every expected output pathspec changed,
 while `.github/actions/require-diff-scope` proves the committed diff since
 the pre-agent SHA is limited to the declared allowed pathspecs. Use
-`expected-paths` for the artifact that must exist and `allowed-paths` for the
-full set of paths the agent may commit (for example, a primary digest
-directory plus `research/summaries/`). The RSS, HN/Reddit community, arXiv,
+`expected-paths` for the exact artifact files that must exist when their names
+are known, and `allowed-paths` for the full set of paths the agent may commit
+(for example, a primary digest directory plus `research/summaries/`). The RSS,
+HN/Reddit community, arXiv,
 daily-digest, and Bluesky workflows (plus the twitter-deepseek comparison tier)
 add deterministic model-free fallbacks after the agent step, then run a final
 `.github/actions/require-output` guard — the digest additionally gates its
