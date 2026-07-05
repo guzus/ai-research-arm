@@ -1,0 +1,112 @@
+name: Require diff scope
+description: Fail when committed changes since a base SHA include files outside allowed git pathspecs.
+
+inputs:
+  base-sha:
+    description: Commit SHA captured before the producer ran.
+    required: true
+  allowed-paths:
+    description: Newline-delimited git pathspecs that may change between base-sha and HEAD.
+    required: true
+  label:
+    description: Human-readable producer label for annotations.
+    required: false
+    default: workflow output
+
+outputs:
+  in-scope:
+    description: "true when every committed changed file is under allowed-paths"
+    value: ${{ steps.scope.outputs.in-scope }}
+  changed-files:
+    description: Newline-delimited committed changed files since base-sha.
+    value: ${{ steps.scope.outputs.changed-files }}
+  violating-files:
+    description: Newline-delimited committed changed files outside allowed-paths.
+    value: ${{ steps.scope.outputs.violating-files }}
+
+runs:
+  using: composite
+  steps:
+    - name: Check committed diff scope
+      id: scope
+      shell: bash
+      env:
+        BASE_SHA: ${{ inputs.base-sha }}
+        ALLOWED_PATHS: ${{ inputs.allowed-paths }}
+        LABEL: ${{ inputs.label }}
+      run: |
+        set -euo pipefail
+
+        if [ -z "${BASE_SHA:-}" ]; then
+          echo "::error::require-diff-scope needs a base-sha."
+          exit 1
+        fi
+        if ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
+          echo "::error::require-diff-scope base-sha is not a commit: ${BASE_SHA}"
+          exit 1
+        fi
+
+        pathspecs=()
+        while IFS= read -r pathspec; do
+          pathspec="${pathspec#"${pathspec%%[![:space:]]*}"}"
+          pathspec="${pathspec%"${pathspec##*[![:space:]]}"}"
+          [ -z "$pathspec" ] && continue
+          pathspecs+=("$pathspec")
+        done <<< "$ALLOWED_PATHS"
+
+        if [ "${#pathspecs[@]}" -eq 0 ]; then
+          echo "::error::require-diff-scope allowed-paths is empty."
+          exit 1
+        fi
+
+        python3 - "$BASE_SHA" "$LABEL" "${pathspecs[@]}" <<'PY'
+        import os
+        import subprocess
+        import sys
+
+        base = sys.argv[1]
+        label = sys.argv[2]
+        pathspecs = sys.argv[3:]
+
+        def git_changed(*pathspec_args: str) -> list[str]:
+            cmd = ["git", "diff", "--name-only", "-z", f"{base}..HEAD", "--"]
+            cmd.extend(pathspec_args)
+            output = subprocess.check_output(cmd)
+            if not output:
+                return []
+            return [part.decode("utf-8", "surrogateescape") for part in output.rstrip(b"\0").split(b"\0") if part]
+
+        all_changed = sorted(set(git_changed(".")))
+        allowed_changed = set(git_changed(*pathspecs))
+        violations = [path for path in all_changed if path not in allowed_changed]
+
+        output_path = os.environ.get("GITHUB_OUTPUT")
+        if output_path:
+            with open(output_path, "a", encoding="utf-8") as f:
+                f.write(f"in-scope={'false' if violations else 'true'}\n")
+                f.write("changed-files<<__CHANGED_FILES__\n")
+                f.write("\n".join(all_changed))
+                f.write("\n__CHANGED_FILES__\n")
+                f.write("violating-files<<__VIOLATING_FILES__\n")
+                f.write("\n".join(violations))
+                f.write("\n__VIOLATING_FILES__\n")
+
+        if violations:
+            print(f"::error::{label} changed files outside allowed path(s):")
+            for pathspec in pathspecs:
+                print(f"  allowed: {pathspec}")
+            print("Violating files:")
+            for path in violations:
+                print(f"  - {path}")
+            print("All committed changed files:")
+            for path in all_changed:
+                print(f"  - {path}")
+            sys.exit(1)
+
+        if all_changed:
+            print(f"{label} committed diff is within allowed path(s):")
+            for path in all_changed:
+                print(f"  - {path}")
+        else:
+            print(f"{label} has no committed diff since {base}.")
+        PY

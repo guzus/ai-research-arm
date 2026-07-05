@@ -141,17 +141,23 @@ Claude-Code-compatible tool harness but routes the primary freshness lanes
 through Fireworks profiles when Fireworks preflight passes. If Fireworks is
 unavailable (for example billing/spend-limit suspension), the wrapper falls
 back to native Claude by default so scheduled freshness does not hard-stop.
-It can also enforce that the expected output paths were actually committed. The
-RSS, HN/Reddit community, arXiv, daily-digest, and Bluesky workflows (plus the
-twitter-deepseek comparison tier) add deterministic model-free fallbacks after
-the agent step, then run a final `.github/actions/require-output` guard — the
-digest additionally gates its agent output on a hard content floor
-(`scripts/check_digest_content.py`) before the fallback decision. For
-those lanes, a green run means a committed daily artifact exists; inspect the
-agent/fallback step logs before treating it as evidence that Fireworks or
-native Claude was healthy. PR/review/on-demand Claude workflows may still call
-the Claude action directly; when they do, pass the model via
-`claude_args` (e.g. `"--model claude-sonnet-5"`) — never as a separate `model:` input.
+It also enforces output and commit-scope contracts for agent lanes:
+`.github/actions/require-output` proves the expected output path changed,
+while `.github/actions/require-diff-scope` proves the committed diff since
+the pre-agent SHA is limited to the declared allowed pathspecs. Use
+`expected-paths` for the artifact that must exist and `allowed-paths` for the
+full set of paths the agent may commit (for example, a primary digest
+directory plus `research/summaries/`). The RSS, HN/Reddit community, arXiv,
+daily-digest, and Bluesky workflows (plus the twitter-deepseek comparison tier)
+add deterministic model-free fallbacks after the agent step, then run a final
+`.github/actions/require-output` guard — the digest additionally gates its
+agent output on a hard content floor (`scripts/check_digest_content.py`) before
+the fallback decision. For those lanes, a green run means a committed daily
+artifact exists; inspect the agent/fallback step logs before treating it as
+evidence that Fireworks or native Claude was healthy. PR/review/on-demand
+Claude workflows may still call the Claude action directly; when they do, pass
+the model via `claude_args` (e.g. `"--model claude-sonnet-5"`) — never as a
+separate `model:` input.
 
 Claude Code runs are protected by the checked-in `.claude/settings.json`
 sandbox policy. On Linux this requires `bubblewrap` and `socat`; workflows
