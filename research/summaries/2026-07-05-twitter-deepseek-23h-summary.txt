@@ -1,0 +1,11 @@
+Twitter/X AI Pulse (DeepSeek v4 Flash · Fireworks) - 2026-07-05 23:19 UTC
+
+CYCLE: Community says Fable 5 is about to leave Pro/Max subscriptions; Alibaba-ban saga gets a detection-mechanism admission but conflicting scale numbers.
+
+TOP STORIES:
+• Fable 5 reportedly exits Pro/Max subscription for metered API access within ~48h — no Anthropic-confirmed end date [⚠]
+• Anthropic engineer reportedly admits Claude Code's China-detection code is a real anti-distillation experiment, to be removed — but Alibaba ban employee counts (124K vs 260K) still conflict [⚠]
+
+WATCH: Whether Fable 5 actually disappears from Claude.ai Pro/Max around July 7-9, or Anthropic publishes an explicit pricing changelog instead.
+
+Full update on GitHub.
