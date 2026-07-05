@@ -130,31 +130,7 @@ runs:
         set -euo pipefail
         mkdir -p /tmp/bird
         export BIRDY_READ_ONLY=1
-        BIRDY_ACCOUNTS="$(python3 - <<'PY'
-        import json
-        import os
-
-        raw = os.environ.get("BIRDY_ACCOUNTS_JSON", "").strip()
-        if raw:
-            accounts = json.loads(raw)
-            if not isinstance(accounts, list) or not accounts:
-                raise SystemExit("BIRDY_ACCOUNTS must be a non-empty JSON array")
-        else:
-            accounts = [{
-                "name": "ci",
-                "auth_token": os.environ["BIRD_AUTH_TOKEN"],
-                "ct0": os.environ["BIRD_CT0"],
-            }]
-
-        for idx, account in enumerate(accounts, start=1):
-            if not isinstance(account, dict):
-                raise SystemExit("every BIRDY_ACCOUNTS entry must be an object")
-            account.setdefault("name", f"ci-{idx}")
-            account["read_only"] = True
-
-        print(json.dumps(accounts, separators=(",", ":")))
-        PY
-        )"
+        BIRDY_ACCOUNTS="$(python3 scripts/birdy_ci_accounts.py)"
         export BIRDY_ACCOUNTS
 
         # Account and search curation lives in data/sources/twitter_accounts.json.
