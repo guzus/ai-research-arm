@@ -160,6 +160,9 @@ runs:
         } >> "$GITHUB_OUTPUT"
         echo "ARA agent effective backend: $backend"
 
+    - name: Setup Claude sandbox
+      uses: ./.github/actions/setup-claude-sandbox
+
     # Native-Claude runs (requested backend=claude or Fireworks fallback)
     # serve inputs.native-model: the workflows' `--model opus` alias is
     # remapped the same way the Fireworks steps below remap it to the

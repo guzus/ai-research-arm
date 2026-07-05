@@ -67,6 +67,9 @@ jobs:
         run: |
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
 
+      - name: Setup Claude sandbox
+        uses: ./.github/actions/setup-claude-sandbox
+
       - name: Explore and curate account list
         uses: anthropics/claude-code-action@v1
         env:

@@ -1,0 +1,104 @@
+name: Run pi in container
+description: Run the pi coding agent inside a Docker container with only the workflow workspace and run-scoped Twitter inputs mounted.
+
+inputs:
+  prompt-file:
+    description: Prompt file rendered by render-twitter-prompt.
+    required: true
+  provider:
+    description: pi provider name.
+    required: true
+  model:
+    description: Provider model id.
+    required: true
+  fireworks-api-key:
+    description: Fireworks API key.
+    required: true
+  bird-auth-token:
+    description: X/Twitter auth_token cookie for bird.
+    required: true
+  bird-ct0:
+    description: X/Twitter ct0 cookie for bird.
+    required: true
+  thinking:
+    description: pi thinking level.
+    required: false
+    default: high
+  tools:
+    description: Comma-separated pi tools.
+    required: false
+    default: read,write,edit,bash,grep,find,ls
+
+runs:
+  using: composite
+  steps:
+    - name: Build and run pi container
+      shell: bash
+      env:
+        PROMPT_FILE: ${{ inputs.prompt-file }}
+        PI_PROVIDER: ${{ inputs.provider }}
+        PI_MODEL: ${{ inputs.model }}
+        PI_THINKING: ${{ inputs.thinking }}
+        PI_TOOLS: ${{ inputs.tools }}
+        FIREWORKS_API_KEY: ${{ inputs.fireworks-api-key }}
+        AUTH_TOKEN: ${{ inputs.bird-auth-token }}
+        CT0: ${{ inputs.bird-ct0 }}
+      run: |
+        set -euo pipefail
+
+        if ! command -v docker >/dev/null 2>&1; then
+          echo "::error::Docker is required for sandboxed pi runs on self-hosted runners."
+          exit 1
+        fi
+        if [ ! -f "$PROMPT_FILE" ]; then
+          echo "::error::pi prompt file not found: $PROMPT_FILE"
+          exit 1
+        fi
+        if [ ! -d /tmp/bird ]; then
+          echo "::error::Twitter fetch directory /tmp/bird is missing."
+          exit 1
+        fi
+
+        build_dir="${RUNNER_TEMP:-/tmp}/pi-container-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        rm -rf "$build_dir"
+        mkdir -p "$build_dir"
+
+        cat > "$build_dir/Dockerfile" <<'EOF'
+        FROM node:22-bookworm-slim
+        RUN apt-get update \
+          && apt-get install -y --no-install-recommends ca-certificates curl git jq \
+          && rm -rf /var/lib/apt/lists/*
+        RUN npm install -g --ignore-scripts @mariozechner/pi-coding-agent @steipete/bird@0.8.0
+        WORKDIR /workspace
+        EOF
+
+        image="ara-pi-agent:${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        docker build --pull -t "$image" "$build_dir"
+
+        docker run --rm \
+          --user "$(id -u):$(id -g)" \
+          --workdir /workspace \
+          --cap-drop ALL \
+          --security-opt no-new-privileges \
+          --pids-limit 512 \
+          --env HOME=/tmp/pi-home \
+          --env XDG_CONFIG_HOME=/tmp/pi-home/.config \
+          --env FIREWORKS_API_KEY \
+          --env AUTH_TOKEN \
+          --env CT0 \
+          --env BIRDY_READ_ONLY=1 \
+          --env BIRDY_TOOL_LOG_PATH=/workspace/.twitter-input/birdy-tool-log.jsonl \
+          --env PI_PROVIDER \
+          --env PI_MODEL \
+          --env PI_THINKING \
+          --env PI_TOOLS \
+          --volume "$GITHUB_WORKSPACE:/workspace" \
+          --volume "/tmp/bird:/tmp/bird:ro" \
+          --volume "$PROMPT_FILE:/tmp/prompt-rendered.md:ro" \
+          "$image" \
+          bash -lc 'mkdir -p "$HOME" "$XDG_CONFIG_HOME" && pi -p "$(cat /tmp/prompt-rendered.md)" \
+            --no-session \
+            --thinking "$PI_THINKING" \
+            --tools "$PI_TOOLS" \
+            --provider "$PI_PROVIDER" \
+            --model "$PI_MODEL"'

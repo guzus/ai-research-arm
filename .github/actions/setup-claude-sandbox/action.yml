@@ -1,0 +1,26 @@
+name: Setup Claude sandbox
+description: Install Linux dependencies required for Claude Code's fail-closed Bash sandbox.
+
+runs:
+  using: composite
+  steps:
+    - name: Install sandbox dependencies
+      if: runner.os == 'Linux'
+      shell: bash
+      run: |
+        set -euo pipefail
+        missing=""
+        command -v bwrap >/dev/null 2>&1 || missing="$missing bubblewrap"
+        command -v socat >/dev/null 2>&1 || missing="$missing socat"
+
+        if [ -n "$missing" ]; then
+          if ! command -v apt-get >/dev/null 2>&1; then
+            echo "::error::Claude sandbox dependencies missing:$missing, and apt-get is unavailable."
+            exit 1
+          fi
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq $missing
+        fi
+
+        echo "bubblewrap: $(bwrap --version)"
+        echo "socat: $(socat -V 2>&1 | head -1)"

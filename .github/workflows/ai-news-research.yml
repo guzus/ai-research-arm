@@ -100,8 +100,12 @@ jobs:
           }
           EOF
           
-          echo "Generated MCP config:"
-          cat /tmp/mcp-config.json
+          echo "Generated MCP config with servers:"
+          [ "${{ steps.check-keys.outputs.has_exa }}" = "true" ] && echo "exa"
+          [ "${{ steps.check-keys.outputs.has_perplexity }}" = "true" ] && echo "perplexity"
+
+      - name: Setup Claude sandbox
+        uses: ./.github/actions/setup-claude-sandbox
 
       - name: Run AI News Research with Claude (with MCP)
         if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'

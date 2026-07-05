@@ -166,6 +166,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Get current datetime
         if: steps.backend.outputs.skip != 'true'
@@ -333,11 +334,6 @@ jobs:
           bird_ct0: ${{ secrets.BIRD_CT0 }}
           birdy_accounts: ${{ secrets.BIRDY_ACCOUNTS }}
 
-      # ── Install pi-coding-agent (pi tiers only) ────────────────────
-      - name: Install pi coding agent
-        if: contains(fromJSON('["deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
-        run: npm install -g @mariozechner/pi-coding-agent
-
       - name: Configure git identity (pi tier — no claude-code-action to do it)
         if: contains(fromJSON('["deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
         run: |
@@ -450,40 +446,25 @@ jobs:
 
       - name: Process tweets with pi + DeepSeek v4 Flash via Fireworks (deepseek-pi tier)
         if: steps.backend.outputs.name == 'deepseek-pi'
-        env:
-          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
-          BIRDY_READ_ONLY: "1"
-          BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
-        run: |
-          # Mirrors the model used by the Claude Code tier (DeepSeek V4 Flash),
-          # served via Fireworks (the direct DeepSeek API is no longer used).
-          # pi has a built-in Fireworks provider, so only the API key, provider
-          # name, and Fireworks model id are needed here.
-          # Bash allowlist: pi's --tools is coarse (bash on/off). For this
-          # experiment we accept full bash on the trusted self-hosted runner.
-          pi -p "$(cat /tmp/prompt-rendered.md)" \
-            --no-session \
-            --thinking high \
-            --tools read,write,edit,bash,grep,find,ls \
-            --provider fireworks \
-            --model accounts/fireworks/models/deepseek-v4-flash
+        uses: ./.github/actions/run-pi-container
+        with:
+          prompt-file: /tmp/prompt-rendered.md
+          provider: fireworks
+          model: accounts/fireworks/models/deepseek-v4-flash
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
 
       - name: Process tweets with pi + Fireworks (fireworks-pi tier)
         if: steps.backend.outputs.name == 'fireworks-pi'
-        env:
-          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
-          BIRDY_READ_ONLY: "1"
-          BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
-        run: |
-          # Fireworks uses an OpenAI-compatible chat completions endpoint.
-          # pi has a built-in Fireworks provider, so only the API key,
-          # provider name, and Fireworks model id are needed here.
-          pi -p "$(cat /tmp/prompt-rendered.md)" \
-            --no-session \
-            --thinking high \
-            --tools read,write,edit,bash,grep,find,ls \
-            --provider fireworks \
-            --model accounts/fireworks/models/kimi-k2p7
+        uses: ./.github/actions/run-pi-container
+        with:
+          prompt-file: /tmp/prompt-rendered.md
+          provider: fireworks
+          model: accounts/fireworks/models/kimi-k2p7
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
 
       - name: Summarize Birdy follow-up telemetry
         if: always() && steps.backend.outputs.skip != 'true'
@@ -996,15 +977,19 @@ jobs:
 
             git add "$HISTORY_FILE"
             if git commit -m "Track delivered Twitter headline alerts ${ANNOUNCED_AT}"; then
+              AUTH_HEADER=$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')
+              git_auth() {
+                git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${AUTH_HEADER}" "$@"
+              }
               # Retry push in case another workflow committed concurrently.
               PUSHED=false
               for attempt in 1 2 3; do
-                if git push; then
+                if git_auth push origin "HEAD:main"; then
                   PUSHED=true
                   break
                 fi
                 echo "History push attempt $attempt failed; rebasing"
-                if ! git pull --rebase; then
+                if ! git_auth pull --rebase origin main; then
                   git rebase --abort 2>/dev/null || true
                   break
                 fi
@@ -1228,14 +1213,12 @@ jobs:
           && steps.autoresearch_throttle.outputs.skip == 'false'
         continue-on-error: true
         uses: ./.github/actions/agent-run
-        env:
-          GEN_TOPIC_DATE: ${{ steps.datetime.outputs.date }}
         with:
           backend: fireworks-glm-5p2
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           claude-args: |
-            --model opus --max-turns 10 --allowedTools "Read,Bash(ls:*),Bash(cat:*),Bash(jq:*),Bash(date:*),Bash(printenv:*),Write"
+            --model opus --max-turns 10 --allowedTools "Read,Bash(ls:*),Bash(cat:*),Bash(jq:*),Bash(date:*),Write"
           label: Twitter auto-research Fireworks selector
           prompt: |
             You select AT MOST ONE topic from today's Twitter AI Pulse to
@@ -1246,9 +1229,8 @@ jobs:
             nothing meets the bar, output NO_TOPIC and stop. Better to
             skip than to dispatch a weak topic.
 
-            Step 1 — read today's twitter file. Get the date from env:
-              DATE=$(printenv GEN_TOPIC_DATE)
-              cat "research/twitter/${DATE}.md"
+            Step 1 — read today's twitter file for date `${{ steps.datetime.outputs.date }}`:
+              cat "research/twitter/${{ steps.datetime.outputs.date }}.md"
             If that path doesn't exist, fall back to the most recent file:
               ls -t research/twitter/*.md | head -1
             Read it.
