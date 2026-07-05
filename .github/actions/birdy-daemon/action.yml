@@ -1,10 +1,9 @@
-name: Birdy daemon + bird-fast wrapper
+name: Birdy daemon + birdy-fast read-only wrapper
 description: >
-  Start a birdy daemon on a free localhost port (warm bird API for LLM follow-up
-  queries) and install bird-fast on the job PATH — a drop-in shim that
-  routes the same `bird ...` args through the daemon's POST /run endpoint
-  for sub-second latency. The companion stop step lives inline in each
-  workflow (kept as a separate step so it can use `if: always()`).
+  Start a Birdy daemon on a free localhost port and install birdy-fast on the
+  job PATH. The wrapper routes read-only Birdy commands through the daemon's
+  POST /run endpoint, blocks mutating commands before they reach the daemon,
+  and records only redacted command-level telemetry.
 
 inputs:
   bird_auth_token:
@@ -13,6 +12,13 @@ inputs:
   bird_ct0:
     description: BIRD_CT0 secret value.
     required: true
+  birdy_accounts:
+    description: >
+      Optional BIRDY_ACCOUNTS JSON for multi-account rotation. Every account is
+      forced read_only=true before Birdy sees it. If empty, a single read-only
+      ci account is synthesized from bird_auth_token/bird_ct0.
+    required: false
+    default: ""
   port:
     description: Daemon listen port (still on 127.0.0.1 only). Use 0 for an automatically selected free port.
     required: false
@@ -29,20 +35,49 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Start birdy daemon
+    - name: Start Birdy daemon
       shell: bash
       env:
-        BIRDY_ACCOUNTS: '[{"name":"ci","auth_token":"${{ inputs.bird_auth_token }}","ct0":"${{ inputs.bird_ct0 }}"}]'
+        BIRDY_ACCOUNTS_JSON: ${{ inputs.birdy_accounts }}
+        BIRD_AUTH_TOKEN: ${{ inputs.bird_auth_token }}
+        BIRD_CT0: ${{ inputs.bird_ct0 }}
         DAEMON_PORT_INPUT: ${{ inputs.port }}
         DAEMON_CONC: ${{ inputs.concurrency }}
         DAEMON_TTL: ${{ inputs.cache_ttl }}
       run: |
-        # Start the birdy daemon on localhost. The LLM step may issue 3-30
-        # follow-up bird queries — each one would normally pay ~1.5s of
-        # bird-CLI startup. The daemon holds warm auth + account-rotation,
-        # so each follow-up is ~300ms (network only). Translates to
-        # ~10-15s saved on busy cycles.
+        # Start the Birdy daemon on localhost. Follow-up X/Twitter reads can
+        # then reuse warm auth + account rotation instead of paying CLI
+        # startup on every call. Read-only is enforced twice: every configured
+        # account is marked read_only and BIRDY_READ_ONLY=1 is exported.
         set -euo pipefail
+
+        export BIRDY_READ_ONLY=1
+        BIRDY_ACCOUNTS="$(python3 - <<'PY'
+        import json
+        import os
+
+        raw = os.environ.get("BIRDY_ACCOUNTS_JSON", "").strip()
+        if raw:
+            accounts = json.loads(raw)
+            if not isinstance(accounts, list) or not accounts:
+                raise SystemExit("BIRDY_ACCOUNTS must be a non-empty JSON array")
+        else:
+            accounts = [{
+                "name": "ci",
+                "auth_token": os.environ["BIRD_AUTH_TOKEN"],
+                "ct0": os.environ["BIRD_CT0"],
+            }]
+
+        for idx, account in enumerate(accounts, start=1):
+            if not isinstance(account, dict):
+                raise SystemExit("every BIRDY_ACCOUNTS entry must be an object")
+            account.setdefault("name", f"ci-{idx}")
+            account["read_only"] = True
+
+        print(json.dumps(accounts, separators=(",", ":")))
+        PY
+        )"
+        export BIRDY_ACCOUNTS
 
         STATE_DIR=$(mktemp -d "${RUNNER_TEMP:-/tmp}/birdy-daemon.XXXXXX")
         LOG_PATH="$STATE_DIR/birdy-daemon.log"
@@ -66,6 +101,8 @@ runs:
           echo "BIRDY_DAEMON_URL=${DAEMON_URL}"
           echo "BIRDY_DAEMON_PID_PATH=${PID_PATH}"
           echo "BIRDY_DAEMON_LOG_PATH=${LOG_PATH}"
+          echo "BIRDY_READ_ONLY=1"
+          echo "BIRDY_TOOL_LOG_PATH=${GITHUB_WORKSPACE}/.twitter-input/birdy-tool-log.jsonl"
         } >> "$GITHUB_ENV"
 
         nohup birdy daemon --addr "127.0.0.1:${DAEMON_PORT}" --concurrency "${DAEMON_CONC}" --cache-ttl "${DAEMON_TTL}" \
@@ -75,39 +112,120 @@ runs:
         for attempt in 1 2 3 4 5 6 7 8 9 10; do
           sleep 1
           if curl -fsS "${DAEMON_URL}/health" 2>/dev/null | grep -q '"ok":true'; then
-            echo "birdy daemon up: $(curl -sS "${DAEMON_URL}/health")"
+            echo "Birdy daemon up: $(curl -sS "${DAEMON_URL}/health")"
             exit 0
           fi
-          echo "Waiting for birdy daemon, attempt ${attempt}/10"
+          echo "Waiting for Birdy daemon, attempt ${attempt}/10"
         done
-        echo "birdy daemon did not become healthy in 10s:"
+        echo "Birdy daemon did not become healthy in 10s:"
         cat "$LOG_PATH"
         exit 1
 
-    - name: Install bird-fast wrapper (calls daemon)
+    - name: Install birdy-fast wrapper (calls daemon)
       shell: bash
       run: |
-        # bird-fast: a drop-in shim that takes the same args as `bird` but
-        # forwards them to the local daemon's POST /run endpoint. Same JSON
-        # output on stdout. Lets the LLM keep its existing mental model
-        # ("bird search ...") while paying daemon-speed latency.
+        # birdy-fast accepts the same argument shape as Birdy/Bird read
+        # commands, then forwards the request to the local Birdy daemon.
+        # It does not log arguments, stdout, stderr, cookies, or URLs because
+        # this repository is public and GitHub Action logs are visible.
         set -euo pipefail
 
         DEFAULT_DAEMON_URL="${BIRDY_DAEMON_URL:?BIRDY_DAEMON_URL was not exported by the daemon start step}"
         INSTALL_DIR="$HOME/.local/bin"
         mkdir -p "$INSTALL_DIR"
-        WRAPPER_PATH="$INSTALL_DIR/bird-fast"
+        WRAPPER_PATH="$INSTALL_DIR/birdy-fast"
         cat > "$WRAPPER_PATH" <<WRAPPER
         #!/bin/bash
-        set -e
+        set -euo pipefail
+
         DAEMON_URL="\${BIRDY_DAEMON_URL:-${DEFAULT_DAEMON_URL}}"
+        LOG_PATH="\${BIRDY_TOOL_LOG_PATH:-\${GITHUB_WORKSPACE:-/tmp}/.twitter-input/birdy-tool-log.jsonl}"
+        mkdir -p "\$(dirname "\$LOG_PATH")" 2>/dev/null || true
+
+        CMD=""
+        SKIP_NEXT=0
+        for ARG in "\$@"; do
+          if [ "\$SKIP_NEXT" = "1" ]; then
+            SKIP_NEXT=0
+            continue
+          fi
+          case "\$ARG" in
+            --auth-token|--ct0|--chrome-profile|--chrome-profile-dir|--firefox-profile|--cookie-timeout|--cookie-source|--media|--alt|--timeout|--quote-depth|-n|--count)
+              SKIP_NEXT=1
+              continue
+              ;;
+            --*=*|-*)
+              continue
+              ;;
+            *)
+              CMD="\$(printf '%s' "\$ARG" | tr '[:upper:]' '[:lower:]')"
+              break
+              ;;
+          esac
+        done
+
+        case "\$CMD" in
+          tweet|post|reply|follow|unfollow|unbookmark)
+            python3 - "\$LOG_PATH" "\$CMD" <<'PY' || true
+        import json
+        import sys
+        import time
+
+        path, cmd = sys.argv[1], sys.argv[2]
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(json.dumps({
+                "ts": int(time.time()),
+                "tool": "birdy-fast",
+                "command": cmd,
+                "blocked": True,
+                "redacted": True,
+            }, separators=(",", ":")) + "\n")
+        PY
+            echo "birdy-fast: mutating command '\$CMD' is disabled in read-only workflow mode" >&2
+            exit 2
+            ;;
+        esac
+
+        START_MS=\$(python3 - <<'PY'
+        import time
+        print(int(time.time() * 1000))
+        PY
+        )
         PAYLOAD=\$(printf '%s\n' "\$@" | jq -Rs '{args: split("\n") | map(select(length > 0))}')
-        RESP=\$(curl -sS -X POST "\${DAEMON_URL}/run" \\
-          -H "Content-Type: application/json" \\
-          -d "\$PAYLOAD")
+        RESP=\$(curl -sS -X POST "\${DAEMON_URL}/run" -H "Content-Type: application/json" -d "\$PAYLOAD")
         OK=\$(echo "\$RESP" | jq -r '.ok // false')
+        EXIT=\$(echo "\$RESP" | jq -r '.exit_code // 1')
+        DURATION_MS=\$(echo "\$RESP" | jq -r '.duration_ms // empty')
+        if [ -z "\$DURATION_MS" ]; then
+          END_MS=\$(python3 - <<'PY'
+        import time
+        print(int(time.time() * 1000))
+        PY
+          )
+          DURATION_MS=\$((END_MS - START_MS))
+        fi
+        CACHED=\$(echo "\$RESP" | jq -r '.cached // false')
+
+        python3 - "\$LOG_PATH" "\${CMD:-unknown}" "\$OK" "\$EXIT" "\$DURATION_MS" "\$CACHED" <<'PY' || true
+        import json
+        import sys
+        import time
+
+        path, cmd, ok, exit_code, duration_ms, cached = sys.argv[1:]
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(json.dumps({
+                "ts": int(time.time()),
+                "tool": "birdy-fast",
+                "command": cmd,
+                "ok": ok == "true",
+                "exit_code": int(exit_code) if str(exit_code).isdigit() else None,
+                "duration_ms": int(duration_ms) if str(duration_ms).isdigit() else None,
+                "cached": cached == "true",
+                "redacted": True,
+            }, separators=(",", ":")) + "\n")
+        PY
+
         if [ "\$OK" = "true" ]; then
-          EXIT=\$(echo "\$RESP" | jq -r '.exit_code // 0')
           echo "\$RESP" | jq -r '.stdout // ""'
           STDERR=\$(echo "\$RESP" | jq -r '.stderr // ""')
           [ -n "\$STDERR" ] && printf '%s' "\$STDERR" >&2
@@ -121,4 +239,4 @@ runs:
         echo "$INSTALL_DIR" >> "$GITHUB_PATH"
         export PATH="$INSTALL_DIR:$PATH"
 
-        bird-fast whoami 2>&1 | head -3 || echo "(bird-fast wrapper installed)"
+        birdy-fast whoami 2>&1 | head -3 || echo "(birdy-fast wrapper installed)"

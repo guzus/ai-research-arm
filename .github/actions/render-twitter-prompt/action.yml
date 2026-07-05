@@ -33,7 +33,7 @@ inputs:
     description: Reporting window length in hours (3 for claude, 6 for deepseek tiers).
     required: true
   bird_budget:
-    description: HARD CAP on follow-up bird/bird-fast calls per run.
+    description: HARD CAP on follow-up Birdy calls per run.
     required: true
   curl_budget:
     description: HARD CAP on curl fetches per run.
@@ -118,6 +118,7 @@ runs:
         yesterday = os.environ["YESTERDAY"]
         template_path = os.environ["TEMPLATE_PATH"]
         output_path = os.environ["OUTPUT_PATH"]
+        birdy_input_dir = ".twitter-input/bird"
 
         # cycle window phrase: "~3-hour" for claude, "6-hour" for the others.
         cycle_window = "~3-hour" if cycle_hours == 3 else f"{cycle_hours}-hour"
@@ -149,55 +150,44 @@ runs:
         else:
             cross_harness_note = ""
 
-        # input_section — claude reads /tmp/bird/all.json first; others use per-file listing.
+        # input_section — claude reads the staged all.json first; others use per-file listing.
         if backend == "claude":
             input_section = (
-                "RAW DATA: a SINGLE consolidated file at `/tmp/bird/all.json` with this shape:\n"
+                f"RAW DATA: a SINGLE consolidated file at `{birdy_input_dir}/all.json` with this shape:\n"
                 "{\n"
-                '  "accounts":  { "OpenAI": [...tweets], "sama": [...], ... },   // ~50 monitored handles\n'
+                '  "accounts":  { "OpenAI": [...tweets], "sama": [...], ... },   // curated monitored handles\n'
                 '  "searches":  { "ai": [...], "extra": [...], "research": [...], "infra": [...], "policy": [...], "business": [...], "opensource": [...] },\n'
                 '  "news":      [...trending AI news headlines],\n'
                 '  "meta":      { "total_tweets": N, "non_empty_accounts": M, ... }\n'
                 "}\n"
                 "\n"
-                "(Per-handle and per-search files also exist at /tmp/bird/<id>.json\n"
-                "for follow-up inspection when useful. Read `/tmp/bird/all.json` first.)"
+                f"(Per-handle and per-search files also exist at {birdy_input_dir}/<id>.json\n"
+                f"for follow-up inspection when useful. Read `{birdy_input_dir}/all.json` first.)"
             )
         else:
             input_section = (
-                "INPUT — pre-fetched JSON in /tmp/bird/:\n"
-                "- Individual account feeds (OpenAI.json, sama.json, ~50 handles)\n"
+                f"INPUT — pre-fetched JSON in {birdy_input_dir}/:\n"
+                "- Individual account feeds (OpenAI.json, sama.json, curated monitored handles)\n"
                 "- search-ai.json, search-extra.json, search-research.json, search-infra.json,\n"
                 "  search-policy.json, search-business.json, search-opensource.json\n"
                 "- news.json — trending AI news"
             )
 
-        # tools_section — Claude Code tiers mention bird-fast; pi tiers only have plain bird.
-        if backend in {"deepseek-pi", "fireworks-pi"}:
-            tools_section = (
-                '- `bird search "query" -n 30 --json --plain` — search live for a story keyword\n'
-                '- `bird user-tweets "@handle" -n 20 --json --plain` — read a specific account\n'
-                "- `bird tweet <tweet_id> --json --plain` — fetch one tweet\n"
-                "- `bird thread <tweet_id> --json --plain` — fetch a full thread\n"
-                "- `curl -sSL <url>` can fetch primary sources, official statements,\n"
-                "  blog posts, or paper abstracts.\n"
-                "- `jq` can filter JSON efficiently."
-            )
-            follow_up_tools = "bird/curl"
-        else:
-            tools_section = (
-                "- PREFER `bird-fast` for follow-up X/Twitter queries. It is a drop-in\n"
-                "  shim for `bird` via a local daemon:\n"
-                '    `bird-fast search "query" -n 30 --json --plain`\n'
-                '    `bird-fast user-tweets "@handle" -n 20 --json --plain`\n'
-                "    `bird-fast tweet <tweet_id> --json --plain`\n"
-                "    `bird-fast thread <tweet_id> --json --plain`\n"
-                "- `bird ...` is the slower fallback.\n"
-                "- `curl -sSL <url>` can fetch primary sources, official statements,\n"
-                "  blog posts, or paper abstracts.\n"
-                "- `jq` can filter JSON efficiently."
-            )
-            follow_up_tools = "bird-fast/bird/curl"
+        tools_section = (
+            "- Use `birdy-fast` for follow-up X/Twitter queries. It routes read-only\n"
+            "  Birdy commands through the local Birdy daemon with account rotation:\n"
+            '    `birdy-fast search "query" -n 30 --json --plain`\n'
+            '    `birdy-fast user-tweets "@handle" -n 20 --json --plain`\n'
+            "    `birdy-fast read <tweet_id> --json --plain`\n"
+            "    `birdy-fast thread <tweet_id> --json --plain`\n"
+            "- Do not use `bird` directly. This workflow exposes Birdy only.\n"
+            "- Mutating X actions are disabled: no tweet/post, reply, follow,\n"
+            "  unfollow, or unbookmark commands.\n"
+            "- `curl -sSL <url>` can fetch primary sources, official statements,\n"
+            "  blog posts, or paper abstracts.\n"
+            "- `jq` can filter JSON efficiently."
+        )
+        follow_up_tools = "birdy-fast/curl"
 
         # headlines_section — claude only.
         if "headlines" in features:

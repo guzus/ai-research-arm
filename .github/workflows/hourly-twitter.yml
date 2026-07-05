@@ -16,8 +16,8 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / 
 #   - workflow_dispatch → backend resolved from inputs.backend (default: claude).
 #
 # The four backends share:
-#   - .github/actions/twitter-fetch          (bird + birdy multi-fetch + optional pre-filter + optional aggregate)
-#   - .github/actions/birdy-daemon           (warm daemon + bird-fast wrapper, used by claude + deepseek-claude-code)
+#   - .github/actions/twitter-fetch          (Birdy multi-fetch + optional pre-filter + optional aggregate)
+#   - .github/actions/birdy-daemon           (warm read-only Birdy daemon + birdy-fast wrapper)
 #   - .github/actions/render-twitter-prompt  (substitute {{placeholders}} in prompts/twitter-analyst.md)
 #   - prompts/twitter-analyst.md             (one prompt body with {{placeholders}} for tier-specific values)
 #
@@ -29,7 +29,8 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / 
 # Required secrets:
 #   CLAUDE_CODE_OAUTH_TOKEN              — required by claude-code-action wrapper
 #   FIREWORKS_API_KEY                    — primary claude-labeled tier and comparison tiers
-#   BIRD_AUTH_TOKEN, BIRD_CT0            — all tiers
+#   BIRDY_ACCOUNTS                       — optional multi-account rotation JSON; each account is forced read-only
+#   BIRD_AUTH_TOKEN, BIRD_CT0            — fallback single-account cookies when BIRDY_ACCOUNTS is absent
 #   HOOKER_URL, HOOKER_TOKEN             — primary tier (headline-alert blast + telemetry) and comparison tiers (per-cycle notification, relayed to Telegram)
 #   VERCEL_DEPLOY_HOOK                   — optional, primary tier only
 
@@ -38,7 +39,7 @@ on:
     # claude tier: every 3 hours at minute 7.
     - cron: '7 */3 * * *'
     # deepseek-claude-code tier: every 6 hours at minute 37. Offset 30min from
-    # the nearest claude run so neither hits bird CLI at the same time.
+    # the nearest claude run so neither hits Birdy at the same time.
     # Slots are 00:37, 06:37, 12:37, 18:37 UTC.
     - cron: '37 */6 * * *'
   workflow_dispatch:
@@ -83,7 +84,7 @@ jobs:
   twitter:
     runs-on: [self-hosted, Linux]
     # Per-matrix-leg cap (applies to each backend leg, not summed) so a hung
-    # bird/agent step can't pin a Cloud Run worker for GitHub's 6h default.
+    # Birdy/agent step can't pin a Cloud Run worker for GitHub's 6h default.
     timeout-minutes: 60
     permissions:
       contents: write
@@ -212,8 +213,8 @@ jobs:
       # ── Per-backend constants ──────────────────────────────────────
       # Centralized routing table so downstream steps don't need case
       # statements. One write here = many reads later.
-      # Note: bird CLI + birdy install moved into the twitter-fetch composite
-      # action (used below). Pin lives there.
+      # Note: Birdy install moved into the twitter-fetch composite action
+      # (used below). Pin/release selection lives there.
       - name: Compute backend constants
         if: steps.backend.outputs.skip != 'true'
         id: const
@@ -263,7 +264,7 @@ jobs:
               FETCH_CONCURRENCY=6
               PRE_FILTER=false
               AGGREGATE=false
-              ENABLE_DAEMON=false
+              ENABLE_DAEMON=true
               BIRD_BUDGET=5
               CURL_BUDGET=3
               HARNESS_LABEL="on DeepSeek v4 Flash via Fireworks under the pi coding agent harness"
@@ -278,7 +279,7 @@ jobs:
               FETCH_CONCURRENCY=6
               PRE_FILTER=false
               AGGREGATE=false
-              ENABLE_DAEMON=false
+              ENABLE_DAEMON=true
               BIRD_BUDGET=5
               CURL_BUDGET=3
               HARNESS_LABEL="on Kimi K2.6 through Fireworks under the pi coding agent harness"
@@ -305,21 +306,22 @@ jobs:
           echo "Backend constants for ${BACKEND}:"
           grep -E '^[a-z_]+=' "$GITHUB_OUTPUT" | sed 's/^/  /'
 
-      # ── Shared fetch (bird + birdy multi-fetch + optional helpers) ─
+      # ── Shared fetch (Birdy multi-fetch + optional helpers) ────────
       - name: Fetch twitter snapshot
         if: steps.backend.outputs.skip != 'true'
         uses: ./.github/actions/twitter-fetch
         with:
           bird_auth_token: ${{ secrets.BIRD_AUTH_TOKEN }}
           bird_ct0: ${{ secrets.BIRD_CT0 }}
+          birdy_accounts: ${{ secrets.BIRDY_ACCOUNTS }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           concurrency: ${{ steps.const.outputs.fetch_concurrency }}
           pre_filter: ${{ steps.const.outputs.pre_filter }}
           aggregate: ${{ steps.const.outputs.aggregate }}
           free_disk: 'true'
 
-      # ── Start birdy daemon (claude + deepseek-claude-code) ─────────────
-      # pi tier skips this — its harness uses plain `bird` only.
+      # ── Start Birdy daemon (all tiers) ─────────────────────────────
+      # The daemon enforces read-only mode even for pi's coarse bash tool.
       # claude tier also skips on dry_run.
       - name: Start birdy daemon
         if: >-
@@ -329,6 +331,7 @@ jobs:
         with:
           bird_auth_token: ${{ secrets.BIRD_AUTH_TOKEN }}
           bird_ct0: ${{ secrets.BIRD_CT0 }}
+          birdy_accounts: ${{ secrets.BIRDY_ACCOUNTS }}
 
       # ── Install pi-coding-agent (pi tiers only) ────────────────────
       - name: Install pi coding agent
@@ -378,14 +381,14 @@ jobs:
           && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: ./.github/actions/agent-run
         env:
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
+          BIRDY_READ_ONLY: "1"
+          BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
         with:
           backend: fireworks-deepseek-v4-flash
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           claude-args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*),Bash(bird-fast:*),Bash(curl:*),Bash(jq:*)"
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
             research/twitter/
           label: Twitter primary Fireworks processor
@@ -397,14 +400,14 @@ jobs:
         if: steps.backend.outputs.name == 'deepseek-claude-code'
         uses: ./.github/actions/agent-run
         env:
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
+          BIRDY_READ_ONLY: "1"
+          BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
         with:
           backend: fireworks-deepseek-v4-flash
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           claude-args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(bird:*),Bash(bird-fast:*),Bash(curl:*),Bash(jq:*)"
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
             research/twitter-deepseek/
           label: Twitter DeepSeek comparison processor
@@ -425,7 +428,7 @@ jobs:
           set -euo pipefail
           echo "::warning::DeepSeek comparison agent path failed; writing deterministic Twitter fallback."
           python3 scripts/deterministic_twitter_digest.py \
-            --input-dir /tmp/bird \
+            --input-dir .twitter-input/bird \
             --out-dir "$OUTPUT_DIR" \
             --summaries-dir research/summaries \
             --date "$DATE" \
@@ -449,8 +452,8 @@ jobs:
         if: steps.backend.outputs.name == 'deepseek-pi'
         env:
           FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
+          BIRDY_READ_ONLY: "1"
+          BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
         run: |
           # Mirrors the model used by the Claude Code tier (DeepSeek V4 Flash),
           # served via Fireworks (the direct DeepSeek API is no longer used).
@@ -469,8 +472,8 @@ jobs:
         if: steps.backend.outputs.name == 'fireworks-pi'
         env:
           FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
+          BIRDY_READ_ONLY: "1"
+          BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
         run: |
           # Fireworks uses an OpenAI-compatible chat completions endpoint.
           # pi has a built-in Fireworks provider, so only the API key,
@@ -481,6 +484,40 @@ jobs:
             --tools read,write,edit,bash,grep,find,ls \
             --provider fireworks \
             --model accounts/fireworks/models/kimi-k2p7
+
+      - name: Summarize Birdy follow-up telemetry
+        if: always() && steps.backend.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+          LOG="$GITHUB_WORKSPACE/.twitter-input/birdy-tool-log.jsonl"
+          if [ ! -s "$LOG" ]; then
+            echo "No Birdy follow-up calls recorded."
+            exit 0
+          fi
+          python3 - "$LOG" <<'PY'
+          import collections
+          import json
+          import sys
+
+          rows = []
+          with open(sys.argv[1], encoding="utf-8") as handle:
+              for line in handle:
+                  line = line.strip()
+                  if not line:
+                      continue
+                  try:
+                      rows.append(json.loads(line))
+                  except json.JSONDecodeError:
+                      continue
+
+          by_command = collections.Counter(row.get("command", "unknown") for row in rows)
+          blocked = sum(1 for row in rows if row.get("blocked"))
+          failures = sum(1 for row in rows if row.get("ok") is False)
+          durations = [row.get("duration_ms") for row in rows if isinstance(row.get("duration_ms"), int)]
+          print(f"Birdy follow-up calls: {len(rows)}; blocked={blocked}; failures={failures}; commands={dict(by_command)}")
+          if durations:
+              print(f"Birdy duration ms: avg={sum(durations)//len(durations)} max={max(durations)}")
+          PY
 
       # ── Stop birdy daemon (always, if started) ─────────────────────
       - name: Stop birdy daemon
