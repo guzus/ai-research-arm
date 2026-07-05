@@ -3,7 +3,7 @@ slug: openai-lockdown-mode-2026-06
 title: OpenAI ships ChatGPT "Lockdown Mode" against prompt-injection data exfiltration
 company: OpenAI
 model: null
-status: released
+status: closed
 status_note: |
   OpenAI **unveiled "Lockdown Mode"** for ChatGPT (TechCrunch, 2026-06-06), a
   hardened setting that **reduces the likelihood that sensitive data gets
@@ -21,12 +21,14 @@ verification: confirmed
 sources:
   - https://techcrunch.com/2026/06/06/openai-unveils-lockdown-mode-to-protect-sensitive-data-from-prompt-injection-attacks/
 created_at: 2026-06-07
-updated_at: 2026-06-07
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-05
+closed_at: 2026-07-05
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-07
     change: "Created — OpenAI unveiled ChatGPT 'Lockdown Mode' (TechCrunch 2026-06-06), a hardened setting to reduce sensitive-data exfiltration from prompt-injection attacks; OpenAI notes it mitigates rather than eliminates the risk. Announced product feature → released / confirmed"
+  - ts: 2026-07-05
+    change: "Closed — released ≥4 weeks ago (2026-06-07) with no further rollout, efficacy, or adoption signal in the interim. closed_reason: released-and-aged."
 ---
 
 OpenAI **unveiled "Lockdown Mode"** for ChatGPT on 2026-06-06 (TechCrunch), a

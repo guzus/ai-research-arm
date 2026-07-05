@@ -27,6 +27,17 @@ status_note: |
   Status stays confirmed (the model's existence was confirmed at I/O);
   verification stays confirmed; the full-retrain/July 17 claim itself is
   flagged unverified pending independent corroboration.
+
+  **2026-07-05:** The date rumor fragments further — the same window now
+  carries contradictory claims (July 17 vs. a competing "July 22" figure vs.
+  a reply denying "there is no such model as Gemini 3.5 Pro"), and a
+  separate zero-engagement account claims a **2M-token context window**
+  (vs. Claude's 1M) with no Google confirmation. Unconfirmed across twelve
+  consecutive digest cycles now, with internal contradiction on both date
+  and spec — treat the entire post-I/O rumor cluster (retrain, date,
+  context size) as noise pending an on-record Google/DeepMind statement.
+  Status stays confirmed (I/O commitment only); verification stays
+  confirmed.
 labels:
   - google-io
   - pro-tier
@@ -37,7 +48,7 @@ sources:
   - "@GoogleDeepMind"
   - "@demishassabis"
 created_at: 2026-05-20
-updated_at: 2026-07-04
+updated_at: 2026-07-05
 closed_at: null
 closed_reason: null
 history:
@@ -51,6 +62,8 @@ history:
     change: "Launch-imminence tell inside the June window: a 'Coming Soon' tag reportedly appeared on the Gemini Pro model card (single low-credibility social source, @just_v3ra), with commentary noting the upcoming model has seen surprisingly zero leaks — a contrast to the active pre-launch rumor cycles 3.5 Flash and 3.1 Pro had. A placeholder tag is not a usable console/API artifact, so status stays confirmed (not in-testing); the June commitment is now mid-to-late month with 3.5 Flash still the only public 3.5 model. Verification stays confirmed (the I/O commitment is primary; today's tag is secondary)."
   - ts: 2026-07-04
     change: "Single-leaker claim: Google DeepMind scrapped reusing the 2.5 Pro base and reset Gemini 3.5 Pro to a full pretrain, pushing the target to a new July 17 date (previously unreported); a follow-on Nano Banana Pro said to be in progress on the new base. Single-source (@synthwavedd, near-verbatim @whoisanku relay is not independent); a cited Polymarket market gives ~48% odds on July 17 — a pricing signal, not corroboration. No Google/DeepMind on-record statement. Status stays confirmed; verification stays confirmed; the retrain/July 17 claim itself flagged unverified."
+  - ts: 2026-07-05
+    change: "Date rumor fragments further: contradictory claims now circulate in the same window (July 17 vs. a competing July 22 figure vs. a reply denying the model exists at all), plus a separate zero-engagement claim of a 2M-token context window (vs. Claude's 1M), no Google confirmation. Unconfirmed across twelve consecutive digest cycles now with internal contradiction on both date and spec. Status stays confirmed (I/O commitment only); verification stays confirmed; the retrain/date/context-size cluster stays unverified."
 ---
 
 At Google I/O 2026, Google revealed the **Gemini 3.5** family. The first

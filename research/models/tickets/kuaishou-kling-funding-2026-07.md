@@ -11,7 +11,15 @@ status_note: |
   by a single tech-press outlet with no additional corroboration captured
   in-window → status `confirmed` (a named-outlet report), verification
   `partial` (single outlet, no primary filing or second source yet).
-expected: "Pending: Hong Kong IPO filing/timeline; investor names; Kling product roadmap tied to the raise"
+
+  **2026-07-05:** A same-day Twitter relay (via The Information, per
+  @ainewsusa) separately cites a **$15B valuation** for the round — a
+  different figure than the ~$2B raise amount tracked above, and not
+  corroborated against a primary filing or second outlet in-window. Treat
+  the valuation figure as secondary-sourced pending confirmation; the raise
+  amount itself is unchanged. Status stays confirmed; verification stays
+  partial.
+expected: "Pending: Hong Kong IPO filing/timeline; investor names; Kling product roadmap tied to the raise; independent confirmation of the $15B valuation figure"
 labels:
   - funding
   - china
@@ -21,12 +29,14 @@ verification: partial
 sources:
   - https://the-decoder.com/chinese-ai-video-maker-kling-raises-2-billion-as-it-gears-up-for-hong-kong-ipo
 created_at: 2026-07-04
-updated_at: 2026-07-04
+updated_at: 2026-07-05
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-07-04
     change: "Created — Kuaishou raised ~$2B for its AI video division Kling ahead of a planned Hong Kong IPO (The Decoder, 2026-07-03). A discrete funding-round event → status confirmed (named-outlet report); single-outlet sourcing, no primary filing or second source captured → verification partial."
+  - ts: 2026-07-05
+    change: "A same-day Twitter relay (The Information via @ainewsusa) cites a $15B valuation for the round, distinct from the ~$2B raise amount already tracked — single trade-press relay, no Kuaishou/Kling confirmation or second outlet this cycle. Status stays confirmed; verification stays partial."
 ---
 
 **Kuaishou** raised roughly **$2 billion** from investors for its AI video
