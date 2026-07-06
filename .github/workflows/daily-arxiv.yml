@@ -65,9 +65,10 @@ jobs:
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
-          backend: fireworks-glm-5p2
+          lane: arxiv
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --mcp-config /tmp/mcp-config.json
             --allowedTools "Read,Write,Edit,Bash(git:*),Bash(curl:*),WebFetch,mcp__arxiv__*"

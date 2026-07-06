@@ -52,11 +52,12 @@ on:
         required: false
         type: string
       backend:
-        description: 'Which model/backend to run'
+        description: 'Which model/backend to run (default = the generative-research-default lane in data/agent-backends.json)'
         required: false
-        default: glm-5p2
+        default: default
         type: choice
         options:
+          - default
           - glm-5p2
           - deepseek-v4-flash
           - codex
@@ -193,11 +194,15 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Routing SSOT: the default backend lives in data/agent-backends.json
+          # (lane generative-research-default), not in this file.
+          DEFAULT_BACKEND="$(python3 scripts/resolve_backend_lane.py generative-research-default)"
+
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             TOPIC="$INPUT_TOPIC"
             TWITTER_URL="$INPUT_TWITTER_URL"
             SLUG="$INPUT_SLUG"
-            BACKEND="${INPUT_BACKEND:-glm-5p2}"
+            BACKEND="${INPUT_BACKEND:-$DEFAULT_BACKEND}"
             TAGS="$INPUT_TAGS"
             SOURCE="workflow_dispatch"
             PROMPT="$TOPIC"
@@ -225,7 +230,7 @@ jobs:
               | grep -Eo 'https://(twitter\.com|x\.com)/[^[:space:]]+/status/[0-9]+' \
               | head -n1 || true)
             SLUG=""
-            BACKEND="glm-5p2"
+            BACKEND="$DEFAULT_BACKEND"
             TAGS=""
             SOURCE="issue"
             # Default PROMPT to the title; if the body has substantive content
@@ -242,6 +247,7 @@ jobs:
                 | tr -d '[:space:]' \
                 | tr '[:upper:]' '[:lower:]' || true)
               case "$CANDIDATE" in
+                default) CANDIDATE="$DEFAULT_BACKEND" ;;
                 claude-opus-4-8|claude-sonnet-5) CANDIDATE="claude" ;;
                 codex|openai-codex) CANDIDATE="codex" ;;
                 deepseek) CANDIDATE="deepseek-v4-flash" ;;
@@ -279,6 +285,7 @@ jobs:
           fi
 
           case "$BACKEND" in
+            default) BACKEND="$DEFAULT_BACKEND" ;;
             codex|openai-codex) BACKEND="codex" ;;
             deepseek) BACKEND="deepseek-v4-flash" ;;
             glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
