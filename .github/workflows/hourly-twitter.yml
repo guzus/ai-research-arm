@@ -449,6 +449,7 @@ jobs:
 
       - name: Process tweets with GLM-5.2 via Z.ai (zai-glm-5p2 tier)
         id: twitter-zai-agent
+        continue-on-error: true
         if: steps.backend.outputs.name == 'zai-glm-5p2'
         uses: ./.github/actions/agent-run
         env:
@@ -495,6 +496,32 @@ jobs:
           git add "$OUTPUT_DIR/" research/summaries/
           git commit -m "Twitter (DeepSeek) deterministic fallback ${TIMESTAMP}" || echo "No deterministic Twitter changes"
 
+      - name: Deterministic Twitter fallback (zai-glm-5p2 tier)
+        if: >-
+          steps.backend.outputs.name == 'zai-glm-5p2'
+          && steps.twitter-zai-agent.outcome == 'failure'
+        env:
+          OUTPUT_DIR: ${{ steps.const.outputs.output_dir }}
+          SUMMARY_SLUG: ${{ steps.const.outputs.summary_slug }}
+          TITLE_SUFFIX: ${{ steps.const.outputs.title_suffix }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+        run: |
+          set -euo pipefail
+          echo "::warning::Z.ai GLM-5.2 comparison agent path failed; writing deterministic Twitter fallback."
+          python3 scripts/deterministic_twitter_digest.py \
+            --input-dir .twitter-input/bird \
+            --out-dir "$OUTPUT_DIR" \
+            --summaries-dir research/summaries \
+            --date "$DATE" \
+            --hour "$HOUR" \
+            --timestamp "$TIMESTAMP" \
+            --title-suffix "$TITLE_SUFFIX" \
+            --summary-slug "$SUMMARY_SLUG"
+          git add "$OUTPUT_DIR/" research/summaries/
+          git commit -m "Twitter (Z.ai GLM-5.2) deterministic fallback ${TIMESTAMP}" || echo "No deterministic Twitter changes"
+
       - name: Require DeepSeek comparison output
         if: steps.backend.outputs.name == 'deepseek-claude-code'
         uses: ./.github/actions/require-output
@@ -504,6 +531,16 @@ jobs:
             ${{ steps.const.outputs.digest_file }}
             ${{ steps.const.outputs.summary_file }}
           label: Twitter DeepSeek comparison workflow output
+
+      - name: Require Z.ai comparison output
+        if: steps.backend.outputs.name == 'zai-glm-5p2'
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.twitter-output-base.outputs.sha }}
+          expected-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.summary_file }}
+          label: Twitter Z.ai GLM-5.2 comparison workflow output
 
       - name: Process tweets with pi + DeepSeek v4 Flash via Fireworks (deepseek-pi tier)
         if: steps.backend.outputs.name == 'deepseek-pi'
