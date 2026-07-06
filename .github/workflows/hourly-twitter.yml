@@ -92,6 +92,7 @@ jobs:
     timeout-minutes: 60
     permissions:
       contents: write
+      pull-requests: write
       actions: write
       id-token: write
     strategy:
@@ -1077,7 +1078,9 @@ jobs:
       # ── Comparison-tier Telegram notification ──────────────────────
       - name: Read summary for Telegram (comparison tiers)
         id: summary
-        if: contains(fromJSON('["deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
+        if: >-
+          steps.push.outputs.pushed == 'true'
+          && contains(fromJSON('["deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
         env:
           SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
         run: |
@@ -1097,7 +1100,10 @@ jobs:
       # hooker handles the bot token, so this job no longer needs
       # TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID.
       - name: Send notification via hooker (deepseek-claude-code)
-        if: success() && steps.backend.outputs.name == 'deepseek-claude-code'
+        if: >-
+          success()
+          && steps.push.outputs.pushed == 'true'
+          && steps.backend.outputs.name == 'deepseek-claude-code'
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -1138,7 +1144,10 @@ jobs:
             --data-binary "@/tmp/hooker-twitter-deepseek-claude-code.json"
 
       - name: Send notification via hooker (zai-glm-5p2)
-        if: success() && steps.backend.outputs.name == 'zai-glm-5p2'
+        if: >-
+          success()
+          && steps.push.outputs.pushed == 'true'
+          && steps.backend.outputs.name == 'zai-glm-5p2'
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -1181,7 +1190,10 @@ jobs:
       # hooker handles the bot token, so this job no longer needs
       # TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID.
       - name: Send notification via hooker (deepseek-pi)
-        if: success() && steps.backend.outputs.name == 'deepseek-pi'
+        if: >-
+          success()
+          && steps.push.outputs.pushed == 'true'
+          && steps.backend.outputs.name == 'deepseek-pi'
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -1223,7 +1235,10 @@ jobs:
 
       # Notify via hooker for the Fireworks-backed pi comparison lane.
       - name: Send notification via hooker (fireworks-pi)
-        if: success() && steps.backend.outputs.name == 'fireworks-pi'
+        if: >-
+          success()
+          && steps.push.outputs.pushed == 'true'
+          && steps.backend.outputs.name == 'fireworks-pi'
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}

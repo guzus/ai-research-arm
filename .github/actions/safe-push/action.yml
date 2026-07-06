@@ -17,7 +17,12 @@ description: >
   Outputs `pushed=true` on a successful push attempt (no-op pushes — where
   HEAD already matches the remote — also count as success and emit
   `pushed=true`, matching the prior behavior of consumers that gated
-  downstream notifications on this output).
+  downstream notifications on this output). If GitHub rejects a direct push
+  because repository rules require pull requests, the action can publish the
+  generated commit to a run-scoped branch and open a pull request instead.
+  If repository settings block Actions-created pull requests, the generated
+  branch still publishes and the action exits successfully with
+  `publication-mode=branch`.
 
 inputs:
   branch:
@@ -55,11 +60,31 @@ inputs:
       target. Defaults to 'true' for compatibility with existing callers.
     required: false
     default: 'true'
+  protected-branch-fallback:
+    description: >
+      Behavior when GitHub rejects the target branch push because repository
+      rules require pull requests. Use 'pull-request' to push a generated
+      branch and open a PR, or 'fail' to keep the old hard-fail behavior.
+    required: false
+    default: 'pull-request'
+  pr-branch-prefix:
+    description: Prefix for generated protected-branch fallback branches.
+    required: false
+    default: 'automation/safe-push'
 
 outputs:
   pushed:
     description: 'true if the push succeeded (including no-op pushes); empty otherwise.'
     value: ${{ steps.do-push.outputs.pushed }}
+  pull-request-url:
+    description: Pull request URL when protected-branch-fallback opened one.
+    value: ${{ steps.do-push.outputs.pull-request-url }}
+  pull-request-branch:
+    description: Generated branch name when protected-branch-fallback opened a pull request.
+    value: ${{ steps.do-push.outputs.pull-request-branch }}
+  publication-mode:
+    description: direct, noop, pull-request, branch, or empty on hard failure.
+    value: ${{ steps.do-push.outputs.publication-mode }}
 
 runs:
   using: composite
@@ -76,12 +101,16 @@ runs:
         SAFE_PUSH_REF_NAME: ${{ github.ref_name }}
         SAFE_PUSH_ALLOW_DIVERGENT_REF: ${{ inputs.allow-divergent-ref }}
         SAFE_PUSH_NOOP_PUSHED: ${{ inputs.noop-pushed }}
+        SAFE_PUSH_PROTECTED_BRANCH_FALLBACK: ${{ inputs.protected-branch-fallback }}
+        SAFE_PUSH_PR_BRANCH_PREFIX: ${{ inputs.pr-branch-prefix }}
       run: |
         set -euo pipefail
 
         BRANCH="${SAFE_PUSH_BRANCH}"
         MAX_ATTEMPTS="${SAFE_PUSH_MAX_ATTEMPTS}"
         INDEX_MERGE="${SAFE_PUSH_INDEX_MERGE}"
+        PROTECTED_BRANCH_FALLBACK="${SAFE_PUSH_PROTECTED_BRANCH_FALLBACK}"
+        PR_BRANCH_PREFIX="${SAFE_PUSH_PR_BRANCH_PREFIX}"
 
         # Safety: refuse to push if the workflow's trigger ref doesn't match
         # the target branch. Without this check, a workflow_dispatch run
@@ -100,6 +129,82 @@ runs:
         AUTH_HEADER=$(printf 'x-access-token:%s' "$SAFE_PUSH_GITHUB_TOKEN" | base64 | tr -d '\n')
         git_auth() {
           git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${AUTH_HEADER}" "$@"
+        }
+
+        is_protected_branch_rejection() {
+          local log_path="$1"
+          grep -Eiq 'GH013|Repository rule violations|Changes must be made through a pull request|protected branch' "$log_path"
+        }
+
+        sanitize_branch_part() {
+          printf '%s' "$1" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E 's#[^a-z0-9._/-]+#-#g; s#/{2,}#/#g; s#-+/#/#g; s#/-+#/#g; s#(^[./-]+|[./-]+$)##g'
+        }
+
+        create_pull_request_fallback() {
+          if [ "$PROTECTED_BRANCH_FALLBACK" != "pull-request" ]; then
+            return 1
+          fi
+
+          local workflow_part run_part pr_branch title body pr_url
+          workflow_part="$(sanitize_branch_part "${GITHUB_WORKFLOW:-workflow}")"
+          run_part="${GITHUB_RUN_ID:-manual}-${GITHUB_RUN_ATTEMPT:-1}"
+          pr_branch="$(sanitize_branch_part "${PR_BRANCH_PREFIX}/${BRANCH}/${workflow_part}-${run_part}")"
+          title="$(git log -1 --pretty=%s)"
+          body="$(printf '%s\n\n%s\n\n- Run: %s\n- Source ref: %s\n- Target branch: %s\n- Commit: %s' \
+            "Automated publish fallback for \`${GITHUB_WORKFLOW:-workflow}\`." \
+            "Direct push to \`${BRANCH}\` was rejected by repository rules requiring pull requests, so this run published the generated commit to \`${pr_branch}\` instead." \
+            "${GITHUB_SERVER_URL:-https://github.com}/${SAFE_PUSH_REPOSITORY}/actions/runs/${GITHUB_RUN_ID:-}" \
+            "${SAFE_PUSH_REF_NAME}" \
+            "${BRANCH}" \
+            "$(git rev-parse HEAD)")"
+
+          echo "Direct push to ${BRANCH} is blocked by repository rules; publishing fallback PR branch ${pr_branch}."
+          git_auth push origin "HEAD:refs/heads/${pr_branch}"
+
+          if ! command -v gh >/dev/null 2>&1; then
+            echo "::warning::Published fallback branch ${pr_branch}, but gh is unavailable so no pull request was opened."
+            {
+              echo "pushed=false"
+              echo "publication-mode=branch"
+              echo "pull-request-url="
+              echo "pull-request-branch=${pr_branch}"
+            } >> "$GITHUB_OUTPUT"
+            return 0
+          fi
+
+          if pr_url="$(GH_TOKEN="$SAFE_PUSH_GITHUB_TOKEN" gh pr view "$pr_branch" \
+              --repo "$SAFE_PUSH_REPOSITORY" \
+              --json url \
+              --jq .url 2>/dev/null)"; then
+            echo "Existing fallback PR: ${pr_url}"
+          else
+            if ! pr_url="$(GH_TOKEN="$SAFE_PUSH_GITHUB_TOKEN" gh pr create \
+              --repo "$SAFE_PUSH_REPOSITORY" \
+              --base "$BRANCH" \
+              --head "$pr_branch" \
+              --title "$title" \
+              --body "$body")"; then
+              echo "::warning::Published fallback branch ${pr_branch}, but opening a pull request failed. Check whether Actions is allowed to create pull requests for this repository."
+              {
+                echo "pushed=false"
+                echo "publication-mode=branch"
+                echo "pull-request-url="
+                echo "pull-request-branch=${pr_branch}"
+              } >> "$GITHUB_OUTPUT"
+              return 0
+            fi
+            echo "Created fallback PR: ${pr_url}"
+          fi
+
+          {
+            echo "pushed=false"
+            echo "publication-mode=pull-request"
+            echo "pull-request-url=${pr_url}"
+            echo "pull-request-branch=${pr_branch}"
+          } >> "$GITHUB_OUTPUT"
+          return 0
         }
 
         # Concurrent writers can land on $BRANCH while this job runs. Retry
@@ -256,15 +361,31 @@ runs:
             echo "::endgroup::"
             echo "Nothing to push -- HEAD matches origin/$BRANCH"
             echo "pushed=${SAFE_PUSH_NOOP_PUSHED}" >> "$GITHUB_OUTPUT"
+            echo "publication-mode=noop" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          if git_auth push origin "HEAD:$BRANCH"; then
+          PUSH_LOG="$(mktemp)"
+          if git_auth push origin "HEAD:$BRANCH" >"$PUSH_LOG" 2>&1; then
             echo "::endgroup::"
             echo "Pushed successfully on attempt $ATTEMPTS"
             echo "pushed=true" >> "$GITHUB_OUTPUT"
+            echo "publication-mode=direct" >> "$GITHUB_OUTPUT"
+            rm -f "$PUSH_LOG"
             exit 0
           fi
+
+          cat "$PUSH_LOG"
+          if is_protected_branch_rejection "$PUSH_LOG"; then
+            rm -f "$PUSH_LOG"
+            echo "::endgroup::"
+            if create_pull_request_fallback; then
+              exit 0
+            fi
+            echo "::error::Direct push to ${BRANCH} is blocked by repository rules and PR fallback failed."
+            exit 1
+          fi
+          rm -f "$PUSH_LOG"
 
           echo "::endgroup::"
           echo "Push rejected ($BRANCH moved during attempt $ATTEMPTS); retrying"
