@@ -160,6 +160,15 @@ Claude workflows may still call the Claude action directly; when they do, pass
 the model via `claude_args` (e.g. `"--model claude-sonnet-5"`) — never as a
 separate `model:` input.
 
+Publishing generated commits uses `.github/actions/safe-push`. Direct pushes
+to protected branches may be rejected by repository rules requiring pull
+requests; in that case `safe-push` publishes the commit to a run-scoped
+`automation/safe-push/...` branch and attempts to open a PR. It emits
+`pushed=false` and `publication-mode=pull-request` (or `branch` if repository
+settings block Actions-created PRs), so downstream deploys and public
+notifications must continue to gate on `steps.push.outputs.pushed == 'true'`
+when they link to `main`.
+
 Claude Code runs are protected by the checked-in `.claude/settings.json`
 sandbox policy. On Linux this requires `bubblewrap` and `socat`; workflows
 that call Claude directly must run `.github/actions/setup-claude-sandbox`
@@ -468,18 +477,20 @@ output or break the pipeline. Read them before editing.
     out the recovery path too). Adding its name to the trigger list, or
     moving it to self-hosted, breaks both protections.
 
-12. **Workflow-opened PRs must be created inside `claude-code-action`.**
-    The default `GITHUB_TOKEN` cannot open pull requests in this repo: a
-    standalone `run: gh pr create` step fails with `GitHub Actions is not
-    permitted to create or approve pull requests (createPullRequest)`. The
-    working pattern (used by `daily-improve.yml` and
-    `twitter-account-explorer.yml`) is to have the agent push the branch and
-    run `gh pr create` **from inside the `anthropics/claude-code-action@v1`
-    step** — those PRs are authored as `app/claude` and succeed (and, unlike
-    `GITHUB_TOKEN`-authored PRs, they trigger `pull_request` workflows such as
-    CI). So: set `env: GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}` on the claude
-    step, include `Bash(git push:*),Bash(gh:*)` in `--allowedTools`, and do the
-    `gh pr create` in the prompt — never in a downstream plain-`GITHUB_TOKEN`
+12. **Workflow-opened PRs need explicit token semantics.**
+    `safe-push` has an automated protected-branch fallback: it pushes a
+    generated branch, then attempts `gh pr create` with `GITHUB_TOKEN` when the
+    workflow grants `pull-requests: write`. If repository settings still block
+    Actions-created PRs, it leaves the generated branch in place and emits
+    `publication-mode=branch` instead of failing the workflow. For agent-authored
+    feature PRs, the older working pattern (used by `daily-improve.yml` and
+    `twitter-account-explorer.yml`) is still valid: have the agent push the
+    branch and run `gh pr create` **from inside the
+    `anthropics/claude-code-action@v1` step** so the PR is authored as
+    `app/claude` and triggers `pull_request` CI. In that case, set
+    `env: GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}` on the claude step, include
+    `Bash(git push:*),Bash(gh:*)` in `--allowedTools`, and do the `gh pr create`
+    in the prompt — not in a downstream plain-`GITHUB_TOKEN`
     `run:` step. (Learned when the explorer's first run curated accounts
     correctly but failed at an external publish step — PR #149.)
 
