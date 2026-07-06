@@ -439,19 +439,19 @@ jobs:
             research/digest/
           label: Daily digest workflow output
 
-      - name: Rewrite summary as ARA spoken script (Fireworks)
+      - name: Rewrite summary as ARA spoken script (GLM-5.2 via Fireworks)
         if: success()
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
-          backend: fireworks-deepseek-v4-flash
+          backend: fireworks-glm-5p2
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*)"
           expected-paths: |
             research/summaries/
-          label: Digest spoken-script Fireworks rewrite
+          label: Digest spoken-script GLM-5.2 Fireworks rewrite
           prompt: |
             You are writing the daily ARA broadcast — a TWO-HOST AI-news podcast
             with banter between Speaker 1 (anchor, deep voice) and Speaker 2

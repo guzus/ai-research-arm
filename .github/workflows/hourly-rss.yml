@@ -150,19 +150,19 @@ jobs:
         id: rss-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      - name: Process RSS Feeds with Fireworks
+      - name: Process RSS Feeds with GLM-5.2 via Fireworks
         id: rss-agent
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
-          backend: fireworks-deepseek-v4-flash
+          backend: fireworks-glm-5p2
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(ls:*),Bash(cat:*)"
           expected-paths: |
             research/rss/
-          label: RSS Fireworks processor
+          label: RSS GLM-5.2 Fireworks processor
           prompt: |
             You are an RSS feed processor for AI news. Extract NEW articles from official sources.
 

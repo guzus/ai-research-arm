@@ -125,17 +125,17 @@ jobs:
       # API error) still reaches the deterministic fallback below. The agent
       # writing nothing while exiting green (the 2026-07-01 failure mode) is
       # caught by the fallback's own file check either way.
-      - name: Process Bluesky Feed with Fireworks
+      - name: Process Bluesky Feed with GLM-5.2 via Fireworks
         id: bluesky_agent
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
-          backend: fireworks-deepseek-v4-flash
+          backend: fireworks-glm-5p2
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           claude-args: |
             --model opus --allowedTools "Read,Write,Bash(ls:*)"
-          label: Bluesky Fireworks curator
+          label: Bluesky GLM-5.2 Fireworks curator
           prompt: |
             You are a Bluesky AI expert-commentary curator. Process recent
             posts from a small set of tracked AI researchers and practitioners.

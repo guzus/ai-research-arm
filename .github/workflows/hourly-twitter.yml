@@ -1,7 +1,7 @@
 name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi)
 
-# Unified Twitter/X pipeline that fans out across four backend tiers:
-#   - claude            (cron '7 */3 * * *', model: DeepSeek V4 Flash via Fireworks,
+# Unified Twitter/X pipeline that fans out across five backend tiers:
+#   - claude            (cron '7 */3 * * *', primary tier, model: GLM 5.2 via Fireworks,
 #                        output → research/twitter/)
 #   - deepseek-claude-code (cron '37 */6 * * *', model: deepseek-v4-flash via Fireworks, output → research/twitter-deepseek/)
 #   - zai-glm-5p2      (manual only,        model: glm-5.2 via Z.ai Coding Plan,
@@ -15,9 +15,9 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 #   - schedule trigger → backend resolved from github.event.schedule by the
 #     matrix `include` list. Each cron only activates the matrix entry
 #     whose `schedule` field matches, so the active matrix size is 1.
-#   - workflow_dispatch → backend resolved from inputs.backend (default: claude).
+#   - workflow_dispatch → backend resolved from inputs.backend (default: zai-glm-5p2).
 #
-# The four backends share:
+# The backend tiers share:
 #   - .github/actions/twitter-fetch          (Birdy multi-fetch + optional pre-filter + optional aggregate)
 #   - .github/actions/birdy-daemon           (warm read-only Birdy daemon + birdy-fast wrapper)
 #   - .github/actions/render-twitter-prompt  (substitute {{placeholders}} in prompts/twitter-analyst.md)
@@ -30,8 +30,8 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 #
 # Required secrets:
 #   CLAUDE_CODE_OAUTH_TOKEN              — required by claude-code-action wrapper
-#   FIREWORKS_API_KEY                    — primary claude-labeled tier and comparison tiers
-#   ZAI_API_KEY                          — manual Z.ai GLM-5.2 Claude Code comparison tier
+#   FIREWORKS_API_KEY                    — primary GLM-5.2 tier and comparison tiers
+#   ZAI_API_KEY                          — preferred manual Z.ai GLM-5.2 Claude Code comparison tier
 #   BIRDY_ACCOUNTS                       — optional multi-account rotation JSON; each account is forced read-only
 #   BIRD_AUTH_TOKEN, BIRD_CT0            — fallback single-account cookies when BIRDY_ACCOUNTS is absent
 #   HOOKER_URL, HOOKER_TOKEN             — primary tier (headline-alert blast + telemetry) and comparison tiers (per-cycle notification, relayed to Telegram)
@@ -50,12 +50,12 @@ on:
       backend:
         description: Which backend tier to run.
         required: false
-        default: claude
+        default: zai-glm-5p2
         type: choice
         options:
+          - zai-glm-5p2
           - claude
           - deepseek-claude-code
-          - zai-glm-5p2
           - deepseek-pi
           - fireworks-pi
       dry_run:
@@ -67,7 +67,7 @@ on:
 # Per-backend concurrency groups: each tier serializes against itself
 # (cron-driven and manually-dispatched runs of the same backend land
 # in the same group, so they queue/cancel against each other) but the
-# four tiers can run in parallel when their schedules collide.
+# tiers can run in parallel when their schedules collide.
 #
 # For workflow_dispatch we read inputs.backend. For schedule we map
 # the cron expression to a backend label inline — keeping the
@@ -152,7 +152,7 @@ jobs:
           fi
 
           if [ "$MATRIX_BACKEND" = "dispatch" ]; then
-            BACKEND="${INPUT_BACKEND:-claude}"
+            BACKEND="${INPUT_BACKEND:-zai-glm-5p2}"
           else
             BACKEND="$MATRIX_BACKEND"
           fi
@@ -400,7 +400,7 @@ jobs:
         id: twitter-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      - name: Process tweets with Fireworks (primary tier)
+      - name: Process tweets with GLM-5.2 via Fireworks (primary tier)
         if: >-
           steps.backend.outputs.name == 'claude'
           && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
@@ -409,7 +409,7 @@ jobs:
           BIRDY_READ_ONLY: "1"
           BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
         with:
-          backend: fireworks-deepseek-v4-flash
+          backend: fireworks-glm-5p2
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           claude-args: |
@@ -421,7 +421,7 @@ jobs:
           allowed-paths: |
             research/twitter/
             research/summaries/
-          label: Twitter primary Fireworks processor
+          label: Twitter primary GLM-5.2 Fireworks processor
           prompt: ${{ steps.render.outputs.prompt }}
 
       - name: Process tweets with DeepSeek v4 Flash via Fireworks (deepseek-claude-code tier)
@@ -1445,7 +1445,7 @@ jobs:
           echo "Dispatching generative-research for: $TOPIC"
           gh workflow run generative-research.yml \
             -f topic="$TOPIC" \
-            -f backend=deepseek-v4-flash
+            -f backend=glm-5p2
           echo "::notice::Auto-dispatched generative-research: ${TOPIC}"
 
       # ── Hooker telemetry (all tiers, always) ───────────────────────

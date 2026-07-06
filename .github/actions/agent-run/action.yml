@@ -3,9 +3,9 @@ description: Run a Claude-Code-compatible agent through native Claude, Fireworks
 
 inputs:
   backend:
-    description: claude, fireworks-deepseek-v4-flash, fireworks-glm-5p2, zai-glm-5p2, deepseek-v4-flash, or glm-5p2.
+    description: claude, fireworks-glm-5p2, zai-glm-5p2, fireworks-deepseek-v4-flash, glm-5p2, or deepseek-v4-flash.
     required: false
-    default: fireworks-deepseek-v4-flash
+    default: fireworks-glm-5p2
   claude-code-oauth-token:
     description: Claude Code OAuth token. Required by claude-code-action, even for Fireworks-routed runs.
     required: true

@@ -28,23 +28,26 @@ short pointer plus the few genuinely agent-specific notes.
   Reference: https://code.claude.com/docs/en/github-actions
   (action repo: https://github.com/anthropics/claude-code-action)
 
-- **Fireworks scheduled lanes** should select `fireworks-deepseek-v4-flash`
-  for high-frequency summarization and `fireworks-glm-5p2` for deeper CRUD or
-  synthesis work. `agent-run` preflights Fireworks and falls back to native
-  Claude by default when Fireworks is unavailable; set `fireworks-fallback:
-  none` only when strict provider failure is desired. Set `expected-paths` in
-  `agent-run`, or call `.github/actions/require-output` after deterministic
-  commit steps, so green no-op runs do not leave the freshness watchdog stale.
-  RSS, HN/Reddit community, arXiv, daily-digest, and Bluesky lanes (plus the
-  twitter-deepseek comparison tier) have deterministic model-free fallbacks;
-  a green run there means committed lane output exists, not necessarily that
-  the model provider was healthy. Check the agent/fallback step logs before
-  drawing provider conclusions.
+- **GLM-5.2 is the preferred backend for agent-run content lanes.** Use
+  `fireworks-glm-5p2` / `glm-5p2` for default scheduled synthesis, CRUD, and
+  high-frequency summarization work. Keep `fireworks-deepseek-v4-flash` for
+  explicit low-cost or DeepSeek-labeled comparison lanes only. `agent-run`
+  preflights Fireworks and falls back to native Claude by default when
+  Fireworks is unavailable; set `fireworks-fallback: none` only when strict
+  provider failure is desired. Set `expected-paths` in `agent-run`, or call
+  `.github/actions/require-output` after deterministic commit steps, so green
+  no-op runs do not leave the freshness watchdog stale. RSS, HN/Reddit
+  community, arXiv, daily-digest, and Bluesky lanes (plus the twitter-deepseek
+  comparison tier) have deterministic model-free fallbacks; a green run there
+  means committed lane output exists, not necessarily that the model provider
+  was healthy. Check the agent/fallback step logs before drawing provider
+  conclusions.
 
 - **Z.ai GLM-5.2** is available through `agent-run` as `zai-glm-5p2` using
-  `ZAI_API_KEY` and Claude Code's Anthropic-compatible route. Keep it manual
-  until quota behavior is measured; `hourly-twitter.yml backend=zai-glm-5p2`
-  is the smoke-test lane and writes to `research/twitter-zai/`.
+  `ZAI_API_KEY` and Claude Code's Anthropic-compatible route. It is the
+  preferred manual `hourly-twitter.yml` backend and writes to
+  `research/twitter-zai/`; use `zai-claude-code-canary.yml` for focused
+  provider diagnostics.
 
 - **Codex generative-research workflows** use the Codex CLI with
   ChatGPT-managed file auth, not OpenAI API billing. Seed the workflow
