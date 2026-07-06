@@ -1,5 +1,8 @@
 # Generative Research Backends
 
+> Repo-wide per-workflow harness/provider/token mapping (all lanes, not
+> just generative research): [`backend-matrix.md`](backend-matrix.md).
+
 `generative-research.yml` supports these model backends for the same deep
 research pipeline:
 

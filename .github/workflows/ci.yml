@@ -9,6 +9,7 @@ on:
       - 'dashboard/**'
       - 'data/sources/twitter_accounts.json'
       - 'scripts/**'
+      - 'docs/backend-matrix.md'
   pull_request:
     paths:
       - '.github/workflows/**'
@@ -16,6 +17,7 @@ on:
       - 'dashboard/**'
       - 'data/sources/twitter_accounts.json'
       - 'scripts/**'
+      - 'docs/backend-matrix.md'
   workflow_dispatch:
 
 concurrency:
@@ -121,6 +123,13 @@ jobs:
       # build_wiki_index.py. The ingest workflow regenerates it every run.
       - name: Check wiki index is in sync
         run: uv run python scripts/build_wiki_index.py --check
+
+      # docs/backend-matrix.md carries a generated per-workflow harness/
+      # provider/token table derived from the workflow files. This gate
+      # fails when a workflow edit changed a lane's backend wiring without
+      # regenerating the matrix (build_backend_matrix.py).
+      - name: Check backend matrix is in sync
+        run: uv run python scripts/build_backend_matrix.py --check
 
   hooker-telemetry:
     needs: [actionlint, dashboard, python-scripts]
