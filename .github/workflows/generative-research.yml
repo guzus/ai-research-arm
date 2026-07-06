@@ -10,9 +10,10 @@ name: Generative Research
 #      infer the research question, then expand into a full article.
 #
 # Backends, mutually exclusive at runtime:
+#   * glm-5p2  — preferred default: GLM 5.2 through Fireworks' Anthropic-compatible endpoint.
 #   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-sonnet-5).
 #   * codex    — Codex CLI signed in with ChatGPT-managed auth.json.
-#   * deepseek / glm-5p2 — same action, but redirected to Fireworks'
+#   * deepseek — comparison/fallback route through Fireworks'
 #                Anthropic-compatible endpoint via ANTHROPIC_BASE_URL /
 #                ANTHROPIC_AUTH_TOKEN.
 #
@@ -53,11 +54,11 @@ on:
       backend:
         description: 'Which model/backend to run'
         required: false
-        default: claude
+        default: glm-5p2
         type: choice
         options:
-          - deepseek-v4-flash
           - glm-5p2
+          - deepseek-v4-flash
           - codex
           - claude
           - deepseek
@@ -196,7 +197,7 @@ jobs:
             TOPIC="$INPUT_TOPIC"
             TWITTER_URL="$INPUT_TWITTER_URL"
             SLUG="$INPUT_SLUG"
-            BACKEND="${INPUT_BACKEND:-claude}"
+            BACKEND="${INPUT_BACKEND:-glm-5p2}"
             TAGS="$INPUT_TAGS"
             SOURCE="workflow_dispatch"
             PROMPT="$TOPIC"
@@ -224,7 +225,7 @@ jobs:
               | grep -Eo 'https://(twitter\.com|x\.com)/[^[:space:]]+/status/[0-9]+' \
               | head -n1 || true)
             SLUG=""
-            BACKEND="claude"
+            BACKEND="glm-5p2"
             TAGS=""
             SOURCE="issue"
             # Default PROMPT to the title; if the body has substantive content
