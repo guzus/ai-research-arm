@@ -4,7 +4,7 @@
 
 Automated multi-source AI news research agent powered by LLMs.
 
-> 📖 **[Open-sourcing ai-research-arm (ARA)](https://guzus.substack.com/p/open-sourcing-ai-research-arm-ara)**
+> 📖 **[Open-sourcing ai-research-arm (ARA)](https://guzus.substack.com/p/open-sourcing-ai-research-arm-ara)** · [what's changed since the post](docs/since-the-open-sourcing-post.md)
 
 ## Today's Front Page
 
