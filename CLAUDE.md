@@ -497,9 +497,10 @@ output or break the pipeline. Read them before editing.
 12. **Workflow-opened PRs need explicit token semantics.**
     `safe-push` has an automated protected-branch fallback: it pushes a
     generated branch, then attempts `gh pr create` with `GITHUB_TOKEN` when the
-    workflow grants `pull-requests: write`. If repository settings still block
-    Actions-created PRs, it leaves the generated branch in place and emits
-    `publication-mode=branch` instead of failing the workflow. For agent-authored
+    workflow grants `pull-requests: write`, and by default (`pr-merge: true`)
+    immediately squash-merges that PR (see rule 13). If repository settings
+    still block Actions-created PRs, it leaves the generated branch in place
+    and emits `publication-mode=branch` instead of failing the workflow. For agent-authored
     feature PRs, the older working pattern (used by `daily-improve.yml` and
     `twitter-account-explorer.yml`) is still valid: have the agent push the
     branch and run `gh pr create` **from inside the
@@ -510,6 +511,25 @@ output or break the pipeline. Read them before editing.
     in the prompt — not in a downstream plain-`GITHUB_TOKEN`
     `run:` step. (Learned when the explorer's first run curated accounts
     correctly but failed at an external publish step — PR #149.)
+
+13. **`main` is PR-only; scheduled lanes publish via auto-merged safe-push
+    PRs.** A repository ruleset (active since 2026-07-06, no bypass actors,
+    squash merges only) rejects every direct push to `main` — including
+    workflow `GITHUB_TOKEN` pushes — with `GH013`. Scheduled publishers
+    therefore land output through safe-push's fallback: run-scoped
+    `automation/safe-push/*` branch → PR → immediate squash-merge.
+    `pushed=true` now means "content is on `main`" (direct, no-op, or merged
+    fallback PR), and Railway still deploys on each merge because a merge IS
+    a push to `main`. Two operational corollaries: (a) an
+    `automation/safe-push/*` PR left OPEN means the auto-merge failed —
+    usually a same-file conflict with a concurrent writer; resolve and merge
+    it manually (oldest first) or the lane's data never reaches the
+    dashboard, and (b) safe-push resets any checkout-persisted
+    `http.<url>.extraheader` before injecting its own auth — do NOT "simplify"
+    that away, or every fetch/push 400s with `Duplicate header:
+    "Authorization"` (the 2026-07-06 outage: all lanes but hourly-twitter
+    hard-failed at push because persisted credentials + injected header sent
+    two Authorization headers).
 
 ## Code Style
 
