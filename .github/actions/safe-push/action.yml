@@ -18,11 +18,15 @@ description: >
   HEAD already matches the remote — also count as success and emit
   `pushed=true`, matching the prior behavior of consumers that gated
   downstream notifications on this output). If GitHub rejects a direct push
-  because repository rules require pull requests, the action can publish the
-  generated commit to a run-scoped branch and open a pull request instead.
-  If repository settings block Actions-created pull requests, the generated
-  branch still publishes and the action exits successfully with
-  `publication-mode=branch`.
+  because repository rules require pull requests, the action publishes the
+  generated commit to a run-scoped branch, opens a pull request, and — by
+  default (`pr-merge: true`) — squash-merges it immediately, emitting
+  `pushed=true` + `publication-mode=pull-request-merged` since the content
+  did land on the target branch. If the merge fails (e.g. a same-file
+  conflict with a concurrent writer), the PR is left open for manual review
+  with `publication-mode=pull-request`. If repository settings block
+  Actions-created pull requests, the generated branch still publishes and
+  the action exits successfully with `publication-mode=branch`.
 
 inputs:
   branch:
@@ -71,10 +75,23 @@ inputs:
     description: Prefix for generated protected-branch fallback branches.
     required: false
     default: 'automation/safe-push'
+  pr-merge:
+    description: >
+      If 'true' (default), squash-merge the fallback pull request immediately
+      after opening it, so scheduled publishers stay autonomous under a
+      pull-request-required ruleset (squash is the only merge method the main
+      ruleset allows). The workflows' pre-push diff-scope guards — not the
+      fallback PR — are the review boundary for generated output. Set 'false'
+      to leave fallback PRs open for manual review.
+    required: false
+    default: 'true'
 
 outputs:
   pushed:
-    description: 'true if the push succeeded (including no-op pushes); empty otherwise.'
+    description: >-
+      'true' if the content landed on the target branch: a direct push, a
+      no-op push, or a squash-merged fallback pull request. 'false'/empty
+      when it did not (open fallback PR, branch-only publication, failure).
     value: ${{ steps.do-push.outputs.pushed }}
   pull-request-url:
     description: Pull request URL when protected-branch-fallback opened one.
@@ -83,7 +100,9 @@ outputs:
     description: Generated branch name when protected-branch-fallback opened a pull request.
     value: ${{ steps.do-push.outputs.pull-request-branch }}
   publication-mode:
-    description: direct, noop, pull-request, branch, or empty on hard failure.
+    description: >-
+      direct, noop, pull-request-merged, pull-request, branch, or empty on
+      hard failure.
     value: ${{ steps.do-push.outputs.publication-mode }}
 
 runs:
@@ -103,6 +122,7 @@ runs:
         SAFE_PUSH_NOOP_PUSHED: ${{ inputs.noop-pushed }}
         SAFE_PUSH_PROTECTED_BRANCH_FALLBACK: ${{ inputs.protected-branch-fallback }}
         SAFE_PUSH_PR_BRANCH_PREFIX: ${{ inputs.pr-branch-prefix }}
+        SAFE_PUSH_PR_MERGE: ${{ inputs.pr-merge }}
       run: |
         set -euo pipefail
 
@@ -111,6 +131,7 @@ runs:
         INDEX_MERGE="${SAFE_PUSH_INDEX_MERGE}"
         PROTECTED_BRANCH_FALLBACK="${SAFE_PUSH_PROTECTED_BRANCH_FALLBACK}"
         PR_BRANCH_PREFIX="${SAFE_PUSH_PR_BRANCH_PREFIX}"
+        PR_MERGE="${SAFE_PUSH_PR_MERGE}"
 
         # Safety: refuse to push if the workflow's trigger ref doesn't match
         # the target branch. Without this check, a workflow_dispatch run
@@ -127,8 +148,17 @@ runs:
         fi
 
         AUTH_HEADER=$(printf 'x-access-token:%s' "$SAFE_PUSH_GITHUB_TOKEN" | base64 | tr -d '\n')
+        # actions/checkout with persist-credentials (its default) stores its
+        # own AUTHORIZATION value under the same multi-valued config key in
+        # the repo's local git config. A bare `-c` APPENDS to that list, git
+        # then sends BOTH Authorization headers, and GitHub rejects the
+        # request with HTTP 400 "Duplicate header" — killing the very first
+        # `git_auth fetch` before the retry loop or PR fallback can run. The
+        # leading empty -c resets the inherited header list (documented
+        # http.extraHeader semantics) so exactly one header — ours — is sent.
         git_auth() {
-          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${AUTH_HEADER}" "$@"
+          git -c "http.https://github.com/.extraheader=" \
+              -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${AUTH_HEADER}" "$@"
         }
 
         is_protected_branch_rejection() {
@@ -196,6 +226,35 @@ runs:
               return 0
             fi
             echo "Created fallback PR: ${pr_url}"
+          fi
+
+          # Squash-merge the fallback PR right away (unless opted out) so the
+          # scheduled publishers stay autonomous: the ruleset requires a PR,
+          # but nobody hand-merges 30+ data PRs a day, and unmerged output
+          # never reaches the dashboard prebuild. Retries cover the window
+          # where GitHub is still computing mergeability on a fresh PR or a
+          # concurrent lane just moved the base.
+          if [ "$PR_MERGE" = "true" ]; then
+            local merge_attempt
+            for merge_attempt in 1 2 3 4; do
+              if GH_TOKEN="$SAFE_PUSH_GITHUB_TOKEN" gh pr merge "$pr_branch" \
+                  --repo "$SAFE_PUSH_REPOSITORY" \
+                  --squash; then
+                echo "Squash-merged fallback PR: ${pr_url}"
+                # Best-effort cleanup; a leftover merged branch is harmless.
+                git_auth push origin --delete "refs/heads/${pr_branch}" 2>/dev/null || true
+                {
+                  echo "pushed=true"
+                  echo "publication-mode=pull-request-merged"
+                  echo "pull-request-url=${pr_url}"
+                  echo "pull-request-branch=${pr_branch}"
+                } >> "$GITHUB_OUTPUT"
+                return 0
+              fi
+              echo "Fallback PR merge attempt ${merge_attempt}/4 failed; retrying"
+              sleep $((2 * merge_attempt))
+            done
+            echo "::warning::Fallback PR ${pr_url} was created but could not be squash-merged (same-file conflict with a concurrent writer, or merging is blocked). Merge it manually — this lane's output is not on ${BRANCH} until then."
           fi
 
           {
