@@ -111,8 +111,9 @@ jobs:
       - name: Run Claude Code file-write canary via Z.ai
         uses: ./.github/actions/agent-run
         with:
-          backend: zai-glm-5p2
+          lane: zai-canary
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --max-turns 8 --allowedTools "Read,Write,Bash(pwd:*),Bash(ls:*),Bash(git:*)"

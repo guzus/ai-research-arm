@@ -409,9 +409,10 @@ jobs:
           BIRDY_READ_ONLY: "1"
           BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
         with:
-          backend: fireworks-glm-5p2
+          lane: twitter-primary
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
@@ -433,9 +434,10 @@ jobs:
           BIRDY_READ_ONLY: "1"
           BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
         with:
-          backend: fireworks-deepseek-v4-flash
+          lane: twitter-deepseek
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
@@ -456,8 +458,9 @@ jobs:
           BIRDY_READ_ONLY: "1"
           BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
         with:
-          backend: zai-glm-5p2
+          lane: twitter-zai
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --max-turns 30 --allowedTools "Read,Write,Edit,Bash(pwd:*),Bash(ls:*),Bash(rg:*),Bash(find:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
@@ -750,9 +753,10 @@ jobs:
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
-          backend: fireworks-deepseek-v4-flash
+          lane: twitter-judge
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --max-turns 12 --allowedTools "Read,Write"
           label: Twitter headline Fireworks judge
@@ -1368,9 +1372,10 @@ jobs:
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
-          backend: fireworks-glm-5p2
+          lane: twitter-autoresearch
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --max-turns 10 --allowedTools "Read,Bash(ls:*),Bash(cat:*),Bash(jq:*),Bash(date:*),Write"
           label: Twitter auto-research Fireworks selector
@@ -1443,9 +1448,10 @@ jobs:
             exit 0
           fi
           echo "Dispatching generative-research for: $TOPIC"
+          # Backend intentionally omitted: gen-research resolves its default
+          # from data/agent-backends.json (generative-research-default lane).
           gh workflow run generative-research.yml \
-            -f topic="$TOPIC" \
-            -f backend=glm-5p2
+            -f topic="$TOPIC"
           echo "::notice::Auto-dispatched generative-research: ${TOPIC}"
 
       # ── Hooker telemetry (all tiers, always) ───────────────────────

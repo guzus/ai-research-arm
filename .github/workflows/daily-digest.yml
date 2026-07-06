@@ -152,9 +152,10 @@ jobs:
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
-          backend: fireworks-glm-5p2
+          lane: digest-synthesis
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --mcp-config /tmp/mcp-config.json
             --allowedTools "Glob,Read,Write,Edit,Bash(git:*),mcp__exa__*,mcp__perplexity__*"
@@ -259,9 +260,10 @@ jobs:
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
-          backend: fireworks-glm-5p2
+          lane: digest-synthesis-fallback
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*)"
           expected-paths: |
@@ -444,9 +446,10 @@ jobs:
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
-          backend: fireworks-glm-5p2
+          lane: digest-audio-script
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*)"
           expected-paths: |

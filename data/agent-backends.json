@@ -1,0 +1,215 @@
+{
+  "$comment": "SINGLE SOURCE OF TRUTH for per-lane agent backend routing. Two consumption modes: (1) harness=agent-run and harness=dispatch-default lanes are resolved AT RUNTIME on the runner (scripts/resolve_backend_lane.py) — editing this file re-routes those lanes with no workflow change; (2) harness=pi and harness=claude-code-action lanes are CI-ENFORCED MIRRORS — the model/provider stays literal in the workflow step and scripts/build_backend_matrix.py --check fails CI until workflow and this file agree. docs/backend-matrix.md is generated from this file. Backend selectors resolve to provider/model via the `backends` profile table below (endpoints live in scripts/select_backend.py); scripts/select_backend.py walks [lane backend] + fallback.chain in order and runs the first candidate whose provider probe passes.",
+  "backends": {
+    "claude": {
+      "provider": "claude",
+      "model": "",
+      "display_name": "Claude",
+      "aliases": [],
+      "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it). Always considered available."
+    },
+    "fireworks-glm-5p2": {
+      "provider": "fireworks",
+      "model": "accounts/fireworks/models/glm-5p2",
+      "display_name": "GLM 5.2 via Fireworks",
+      "aliases": [
+        "glm-5p2",
+        "glm"
+      ]
+    },
+    "fireworks-deepseek-v4-flash": {
+      "provider": "fireworks",
+      "model": "accounts/fireworks/models/deepseek-v4-flash",
+      "display_name": "DeepSeek V4 Flash via Fireworks",
+      "aliases": [
+        "deepseek-v4-flash",
+        "deepseek"
+      ]
+    },
+    "zai-glm-5p2": {
+      "provider": "zai",
+      "model": "glm-5.2",
+      "display_name": "GLM 5.2 via Z.ai",
+      "aliases": [
+        "zai-glm-5.2",
+        "zai-glm52",
+        "zai"
+      ]
+    }
+  },
+  "fallback": {
+    "harness": "agent-run",
+    "chain": [
+      "zai-glm-5p2",
+      "claude"
+    ],
+    "native_model": "claude-sonnet-5",
+    "notes": "ORDERED fallback chain, globally applied to every non-strict agent-run lane. When the lane's requested provider probe fails, scripts/select_backend.py walks this chain in order (skipping the already-failed requested backend if it reappears) and runs the first candidate whose provider is available: zai = Z.ai key + endpoint probe, fireworks = preflight, claude = always available. Keeping `claude` terminal guarantees selection always succeeds when the OAuth token exists. Lanes with \"strict\": true (zai-canary) never walk the chain — unavailability fails the run. `native_model` is the model served whenever the native claude path runs (also what the --model opus alias resolves to)."
+  },
+  "lanes": {
+    "rss": {
+      "workflow": "hourly-rss.yml",
+      "harness": "agent-run",
+      "backend": "fireworks-glm-5p2",
+      "notes": "2h RSS digest; deterministic_rss_digest.py backstops output."
+    },
+    "bluesky": {
+      "workflow": "2h-bluesky.yml",
+      "harness": "agent-run",
+      "backend": "fireworks-glm-5p2",
+      "notes": "Daily Bluesky expert-commentary section."
+    },
+    "community": {
+      "workflow": "4h-community.yml",
+      "harness": "agent-run",
+      "backend": "fireworks-glm-5p2",
+      "notes": "HN + Reddit digests; deterministic_community_digest.py backstops output."
+    },
+    "arxiv": {
+      "workflow": "daily-arxiv.yml",
+      "harness": "agent-run",
+      "backend": "fireworks-glm-5p2",
+      "notes": "Daily arXiv sweep; deterministic_arxiv_digest.py backstops output."
+    },
+    "digest-synthesis": {
+      "workflow": "daily-digest.yml",
+      "harness": "agent-run",
+      "backend": "fireworks-glm-5p2",
+      "notes": "Primary daily digest synthesis (MCP search path)."
+    },
+    "digest-synthesis-fallback": {
+      "workflow": "daily-digest.yml",
+      "harness": "agent-run",
+      "backend": "fireworks-glm-5p2",
+      "notes": "Local-source digest synthesis when MCP keys are absent."
+    },
+    "digest-audio-script": {
+      "workflow": "daily-digest.yml",
+      "harness": "agent-run",
+      "backend": "fireworks-glm-5p2",
+      "notes": "Rewrites the digest summary as the ARA spoken TTS script."
+    },
+    "model-timeline": {
+      "workflow": "24h-model-timeline.yml",
+      "harness": "agent-run",
+      "backend": "fireworks-glm-5p2",
+      "notes": "Model-release ticket CRUD agent."
+    },
+    "wiki-ingest": {
+      "workflow": "wiki-ingest.yml",
+      "harness": "agent-run",
+      "backend": "fireworks-glm-5p2",
+      "notes": "Digest -> LLM wiki page CRUD agent."
+    },
+    "twitter-primary": {
+      "workflow": "hourly-twitter.yml",
+      "tier": "claude",
+      "harness": "agent-run",
+      "backend": "fireworks-glm-5p2",
+      "notes": "Primary 3h Twitter/X processor (tier slot named 'claude' for historical reasons)."
+    },
+    "twitter-judge": {
+      "workflow": "hourly-twitter.yml",
+      "tier": "claude",
+      "harness": "agent-run",
+      "backend": "fireworks-deepseek-v4-flash",
+      "notes": "Headline-dedupe adjudication gate inside the primary tier (docs/headline-dedupe.md)."
+    },
+    "twitter-autoresearch": {
+      "workflow": "hourly-twitter.yml",
+      "tier": "claude",
+      "harness": "agent-run",
+      "backend": "fireworks-glm-5p2",
+      "notes": "Auto-research topic selection inside the primary tier."
+    },
+    "twitter-deepseek": {
+      "workflow": "hourly-twitter.yml",
+      "tier": "deepseek-claude-code",
+      "harness": "agent-run",
+      "backend": "fireworks-deepseek-v4-flash",
+      "strict": true,
+      "notes": "6h DeepSeek comparison tier. STRICT: comparison artifacts must be attributable to the labeled backend, so this lane never walks the fallback chain (fixes a pre-SSOT bug where a Fireworks outage silently produced native-Claude output labeled DeepSeek); deterministic_twitter_digest.py backstops output freshness with honest labeling."
+    },
+    "twitter-zai": {
+      "workflow": "hourly-twitter.yml",
+      "tier": "zai-glm-5p2",
+      "harness": "agent-run",
+      "backend": "zai-glm-5p2",
+      "strict": true,
+      "notes": "Manual-default Z.ai comparison tier. STRICT: comparison artifacts must be attributable to Z.ai, so this lane never walks the fallback chain; deterministic_twitter_digest.py backstops output freshness with honest labeling."
+    },
+    "zai-canary": {
+      "workflow": "zai-claude-code-canary.yml",
+      "harness": "agent-run",
+      "backend": "zai-glm-5p2",
+      "pinned": true,
+      "pinned_provider": "zai",
+      "strict": true,
+      "notes": "Z.ai provider diagnostics. PINNED to zai and STRICT (never walks the fallback chain): this lane exists to test Z.ai — a Z.ai outage must fail this run, not re-route it."
+    },
+    "twitter-deepseek-pi": {
+      "workflow": "hourly-twitter.yml",
+      "tier": "deepseek-pi",
+      "harness": "pi",
+      "provider": "fireworks",
+      "model": "accounts/fireworks/models/deepseek-v4-flash",
+      "notes": "Manual pi-harness comparison tier. MIRROR: model/provider live in the workflow step; CI enforces equality with this entry."
+    },
+    "twitter-fireworks-pi": {
+      "workflow": "hourly-twitter.yml",
+      "tier": "fireworks-pi",
+      "harness": "pi",
+      "provider": "fireworks",
+      "model": "accounts/fireworks/models/kimi-k2p7",
+      "notes": "Manual pi-harness Kimi comparison tier. MIRROR: CI enforces equality with the workflow step."
+    },
+    "generative-research-default": {
+      "workflow": "generative-research.yml",
+      "harness": "dispatch-default",
+      "backend": "glm-5p2",
+      "notes": "Default backend when neither the dispatch input nor an issue-label form specifies one. Runtime-resolved by the workflow's backend-resolution step."
+    },
+    "generative-research-claude": {
+      "workflow": "generative-research.yml",
+      "harness": "claude-code-action",
+      "model": "claude-sonnet-5",
+      "notes": "Model served on the backend=claude path (env-pinned in the workflow). MIRROR: CI enforces equality."
+    },
+    "ai-news-research": {
+      "workflow": "ai-news-research.yml",
+      "harness": "claude-code-action",
+      "model": "claude-sonnet-5",
+      "notes": "Twice-daily broad news sweep (MCP and no-MCP variants share the lane). MIRROR: CI enforces equality."
+    },
+    "research-issue": {
+      "workflow": "research-issue.yml",
+      "harness": "claude-code-action",
+      "model": "claude-sonnet-5",
+      "notes": "Issue-labeled deep research (MCP and no-MCP variants). MIRROR: CI enforces equality."
+    },
+    "daily-improve": {
+      "workflow": "daily-improve.yml",
+      "harness": "claude-code-action",
+      "model": "claude-sonnet-5",
+      "notes": "Daily methodology-improvement PR agent. MIRROR: CI enforces equality."
+    },
+    "claude-interactive": {
+      "workflow": "claude.yml",
+      "harness": "claude-code-action",
+      "model": "claude-sonnet-5",
+      "notes": "@claude mentions in issues/PRs. MIRROR: CI enforces equality."
+    },
+    "claude-code-review": {
+      "workflow": "claude-code-review.yml",
+      "harness": "claude-code-action",
+      "model": "claude-sonnet-5",
+      "notes": "Automated PR review. MIRROR: CI enforces equality."
+    },
+    "twitter-account-explorer": {
+      "workflow": "twitter-account-explorer.yml",
+      "harness": "claude-code-action",
+      "model": "claude-sonnet-5",
+      "notes": "Weekly account-curation PR agent. MIRROR: CI enforces equality."
+    }
+  }
+}

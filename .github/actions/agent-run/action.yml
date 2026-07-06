@@ -2,10 +2,14 @@ name: ARA agent run
 description: Run a Claude-Code-compatible agent through native Claude, Fireworks, or Z.ai and optionally require committed output.
 
 inputs:
-  backend:
-    description: claude, fireworks-glm-5p2, zai-glm-5p2, fireworks-deepseek-v4-flash, glm-5p2, or deepseek-v4-flash.
+  lane:
+    description: Lane key in data/agent-backends.json (the routing SSOT). The lane's backend is resolved at runtime, so editing that file re-routes the lane with no workflow change.
     required: false
-    default: fireworks-glm-5p2
+    default: ""
+  backend:
+    description: Explicit backend override (claude, fireworks-glm-5p2, zai-glm-5p2, fireworks-deepseek-v4-flash, glm-5p2, deepseek-v4-flash). Bypasses the lane lookup. CI BANS explicit backends in committed workflows (build_backend_matrix.py cross-check) — this input exists only for manual/emergency composite invocation outside CI-checked workflows.
+    required: false
+    default: ""
   claude-code-oauth-token:
     description: Claude Code OAuth token. Required by claude-code-action, even for Fireworks-routed runs.
     required: true
@@ -18,7 +22,7 @@ inputs:
     required: false
     default: ""
   fireworks-fallback:
-    description: Fallback when Fireworks preflight is unavailable. Use claude or none.
+    description: Fallback policy. claude (default) = walk the ordered fallback.chain from data/agent-backends.json when the requested provider is unavailable; none = strict, the requested backend is the only candidate.
     required: false
     default: claude
   claude-args:
@@ -44,9 +48,9 @@ inputs:
     required: false
     default: ""
   native-model:
-    description: Model served when the effective backend is native Claude (direct requests and Fireworks fallback). The claude-args `--model opus` alias resolves to this.
+    description: Override for the model served when the effective backend is native Claude (direct requests and Fireworks fallback). Empty = the global fallback.native_model from data/agent-backends.json. The claude-args `--model opus` alias resolves to this.
     required: false
-    default: claude-sonnet-5
+    default: ""
 
 outputs:
   pre-sha:
@@ -56,17 +60,17 @@ outputs:
     description: HEAD after the agent ran.
     value: ${{ steps.post.outputs.sha }}
   backend:
-    description: Normalized backend selector.
-    value: ${{ steps.profile.outputs.backend }}
+    description: Normalized requested backend selector.
+    value: ${{ steps.select.outputs.requested-backend }}
   effective-backend:
-    description: Backend actually used after provider preflight and fallback.
-    value: ${{ steps.effective.outputs.backend }}
+    description: Backend actually used after walking the SSOT fallback chain.
+    value: ${{ steps.select.outputs.backend }}
   used-fallback:
-    description: "true when a Fireworks backend fell back to Claude"
-    value: ${{ steps.effective.outputs.used-fallback }}
+    description: "true when the requested backend was unavailable and a chain candidate was selected"
+    value: ${{ steps.select.outputs.used-fallback }}
   model-id:
-    description: Provider model id for routed backends.
-    value: ${{ steps.profile.outputs.model-id }}
+    description: Provider model id of the EFFECTIVE backend (empty on the native path — see native-model resolution).
+    value: ${{ steps.select.outputs.model-id }}
   changed:
     description: "true when expected-paths were provided and changed"
     value: ${{ steps.guard.outputs.changed }}
@@ -88,138 +92,70 @@ runs:
       shell: bash
       run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-    - name: Resolve agent backend
-      id: profile
+    # Routing SSOT: scripts/select_backend.py resolves the lane's backend
+    # from data/agent-backends.json, probes the requested provider, and on
+    # unavailability walks the ordered fallback.chain — first available
+    # candidate wins. Strict lanes / fireworks-fallback=none skip the chain.
+    # No input at all is a hard error — never a silent default.
+    - name: Select backend (SSOT lane + ordered fallback chain)
+      id: select
       shell: bash
       env:
-        BACKEND: ${{ inputs.backend }}
-      run: |
-        set -euo pipefail
-        case "$BACKEND" in
-          claude)
-            normalized="claude"
-            provider="claude"
-            model_id=""
-            display_name="Claude"
-            ;;
-          fireworks-deepseek-v4-flash|deepseek-v4-flash|deepseek)
-            normalized="fireworks-deepseek-v4-flash"
-            provider="fireworks"
-            model_id="accounts/fireworks/models/deepseek-v4-flash"
-            display_name="DeepSeek V4 Flash via Fireworks"
-            ;;
-          fireworks-glm-5p2|glm-5p2|glm)
-            normalized="fireworks-glm-5p2"
-            provider="fireworks"
-            model_id="accounts/fireworks/models/glm-5p2"
-            display_name="GLM 5.2 via Fireworks"
-            ;;
-          zai-glm-5p2|zai-glm-5.2|zai-glm52|zai)
-            normalized="zai-glm-5p2"
-            provider="zai"
-            model_id="glm-5.2"
-            display_name="GLM 5.2 via Z.ai"
-            ;;
-          *)
-            echo "::error::Unsupported ARA agent backend: $BACKEND"
-            exit 1
-            ;;
-        esac
-
-        {
-          echo "backend=$normalized"
-          echo "provider=$provider"
-          echo "model-id=$model_id"
-          echo "display-name=$display_name"
-        } >> "$GITHUB_OUTPUT"
-        echo "ARA agent backend: $display_name"
-
-    - name: Preflight Fireworks backend
-      id: fireworks-preflight
-      if: steps.profile.outputs.provider == 'fireworks'
-      continue-on-error: true
-      shell: bash
-      env:
+        LANE: ${{ inputs.lane }}
+        BACKEND_OVERRIDE: ${{ inputs.backend }}
+        NATIVE_MODEL_OVERRIDE: ${{ inputs.native-model }}
+        FALLBACK_POLICY: ${{ inputs.fireworks-fallback }}
         FIREWORKS_API_KEY: ${{ inputs.fireworks-api-key }}
-        FIREWORKS_MODEL_ID: ${{ steps.profile.outputs.model-id }}
-      run: |
-        set -euo pipefail
-        python3 scripts/check_fireworks_backend.py \
-          --model "$FIREWORKS_MODEL_ID" \
-          --github-output "$GITHUB_OUTPUT"
-
-    - name: Resolve effective backend
-      id: effective
-      shell: bash
-      env:
-        REQUESTED_BACKEND: ${{ steps.profile.outputs.backend }}
-        REQUESTED_PROVIDER: ${{ steps.profile.outputs.provider }}
-        REQUESTED_MODEL_ID: ${{ steps.profile.outputs.model-id }}
-        PREFLIGHT_OUTCOME: ${{ steps.fireworks-preflight.outcome }}
-        PREFLIGHT_AVAILABLE: ${{ steps.fireworks-preflight.outputs.available }}
-        PREFLIGHT_STATUS: ${{ steps.fireworks-preflight.outputs.status }}
-        PREFLIGHT_MESSAGE: ${{ steps.fireworks-preflight.outputs.message }}
-        FIREWORKS_FALLBACK: ${{ inputs.fireworks-fallback }}
         ZAI_API_KEY: ${{ inputs.zai-api-key }}
       run: |
         set -euo pipefail
-
-        backend="$REQUESTED_BACKEND"
-        used_fallback=false
-
-        if [ "$REQUESTED_PROVIDER" = "fireworks" ]; then
-          if [ "$PREFLIGHT_OUTCOME" = "success" ] && [ "$PREFLIGHT_AVAILABLE" = "true" ]; then
-            backend="$REQUESTED_BACKEND"
-          elif [ "$FIREWORKS_FALLBACK" = "claude" ]; then
-            backend="claude"
-            used_fallback=true
-            echo "::warning::Fireworks backend ${REQUESTED_BACKEND} is unavailable (status=${PREFLIGHT_STATUS:-unknown}); falling back to native Claude. ${PREFLIGHT_MESSAGE:-}"
-          else
-            echo "::error::Fireworks backend ${REQUESTED_BACKEND} is unavailable (status=${PREFLIGHT_STATUS:-unknown}) and fireworks-fallback=${FIREWORKS_FALLBACK}."
-            exit 1
+        args=(--github-output "$GITHUB_OUTPUT" --fallback-policy "${FALLBACK_POLICY:-claude}")
+        if [ -n "$BACKEND_OVERRIDE" ]; then
+          if [ -n "$LANE" ]; then
+            echo "::notice::agent-run lane '$LANE' overridden by explicit backend '$BACKEND_OVERRIDE'"
           fi
-        elif [ "$REQUESTED_PROVIDER" = "zai" ]; then
-          if [ -z "${ZAI_API_KEY:-}" ]; then
-            echo "::error::ZAI_API_KEY is required for backend ${REQUESTED_BACKEND}."
-            exit 1
-          fi
+          args+=(--backend "$BACKEND_OVERRIDE")
+        elif [ -n "$LANE" ]; then
+          args+=(--lane "$LANE")
+        else
+          echo "::error::agent-run requires a 'lane' (see data/agent-backends.json) or an explicit 'backend' input."
+          exit 1
         fi
-
-        {
-          echo "backend=$backend"
-          echo "used-fallback=$used_fallback"
-        } >> "$GITHUB_OUTPUT"
-        echo "ARA agent effective backend: $backend"
+        if [ -n "$NATIVE_MODEL_OVERRIDE" ]; then
+          args+=(--native-model-override "$NATIVE_MODEL_OVERRIDE")
+        fi
+        python3 scripts/select_backend.py "${args[@]}"
 
     - name: Setup Claude sandbox
       uses: ./.github/actions/setup-claude-sandbox
 
     # Native-Claude runs (requested backend=claude or Fireworks fallback)
-    # serve inputs.native-model: the workflows' `--model opus` alias is
+    # serve the resolved native model (native-model input, else the SSOT's
+    # global fallback.native_model): the workflows' `--model opus` alias is
     # remapped the same way the Fireworks steps below remap it to the
     # profile model. Haiku alias is left alone so cheap subagent calls
     # stay cheap.
     - name: Run agent with Claude
-      if: steps.effective.outputs.backend == 'claude' && inputs.allowed-bots == ''
+      if: steps.select.outputs.provider == 'claude' && inputs.allowed-bots == ''
       uses: anthropics/claude-code-action@v1
       env:
-        ANTHROPIC_MODEL: ${{ inputs.native-model }}
-        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ inputs.native-model }}
+        ANTHROPIC_MODEL: ${{ steps.select.outputs.native-model }}
+        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.native-model }}
         ARA_AGENT_BACKEND: claude
-        ARA_AGENT_MODEL_ID: ${{ inputs.native-model }}
+        ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.native-model }}
       with:
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         claude_args: ${{ inputs.claude-args }}
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Claude
-      if: steps.effective.outputs.backend == 'claude' && inputs.allowed-bots != ''
+      if: steps.select.outputs.provider == 'claude' && inputs.allowed-bots != ''
       uses: anthropics/claude-code-action@v1
       env:
-        ANTHROPIC_MODEL: ${{ inputs.native-model }}
-        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ inputs.native-model }}
+        ANTHROPIC_MODEL: ${{ steps.select.outputs.native-model }}
+        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.native-model }}
         ARA_AGENT_BACKEND: claude
-        ARA_AGENT_MODEL_ID: ${{ inputs.native-model }}
+        ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.native-model }}
       with:
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         allowed_bots: ${{ inputs.allowed-bots }}
@@ -227,40 +163,40 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Fireworks
-      if: steps.profile.outputs.provider == 'fireworks' && steps.effective.outputs.backend != 'claude' && inputs.allowed-bots == ''
+      if: steps.select.outputs.provider == 'fireworks' && inputs.allowed-bots == ''
       uses: anthropics/claude-code-action@v1
       env:
         ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
         ANTHROPIC_API_KEY: ${{ inputs.fireworks-api-key }}
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.fireworks-api-key }}
-        ANTHROPIC_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.profile.outputs.model-id }}
-        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.profile.outputs.model-id }}
+        ANTHROPIC_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.select.outputs.model-id }}
+        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.select.outputs.model-id }}
         CLAUDE_CODE_EFFORT_LEVEL: max
-        ARA_AGENT_BACKEND: ${{ steps.profile.outputs.backend }}
-        ARA_AGENT_MODEL_ID: ${{ steps.profile.outputs.model-id }}
+        ARA_AGENT_BACKEND: ${{ steps.select.outputs.backend }}
+        ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.model-id }}
       with:
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         claude_args: ${{ inputs.claude-args }}
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Fireworks
-      if: steps.profile.outputs.provider == 'fireworks' && steps.effective.outputs.backend != 'claude' && inputs.allowed-bots != ''
+      if: steps.select.outputs.provider == 'fireworks' && inputs.allowed-bots != ''
       uses: anthropics/claude-code-action@v1
       env:
         ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
         ANTHROPIC_API_KEY: ${{ inputs.fireworks-api-key }}
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.fireworks-api-key }}
-        ANTHROPIC_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.profile.outputs.model-id }}
-        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.profile.outputs.model-id }}
+        ANTHROPIC_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.select.outputs.model-id }}
+        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.select.outputs.model-id }}
         CLAUDE_CODE_EFFORT_LEVEL: max
-        ARA_AGENT_BACKEND: ${{ steps.profile.outputs.backend }}
-        ARA_AGENT_MODEL_ID: ${{ steps.profile.outputs.model-id }}
+        ARA_AGENT_BACKEND: ${{ steps.select.outputs.backend }}
+        ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.model-id }}
       with:
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         allowed_bots: ${{ inputs.allowed-bots }}
@@ -268,42 +204,42 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Z.ai
-      if: steps.profile.outputs.provider == 'zai' && inputs.allowed-bots == ''
+      if: steps.select.outputs.provider == 'zai' && inputs.allowed-bots == ''
       uses: anthropics/claude-code-action@v1
       env:
         ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
-        ANTHROPIC_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.profile.outputs.model-id }}
-        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.profile.outputs.model-id }}
+        ANTHROPIC_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.select.outputs.model-id }}
+        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.select.outputs.model-id }}
         CLAUDE_CODE_EFFORT_LEVEL: max
         CLAUDE_CODE_AUTO_COMPACT_WINDOW: "1000000"
         API_TIMEOUT_MS: "3000000"
-        ARA_AGENT_BACKEND: ${{ steps.profile.outputs.backend }}
-        ARA_AGENT_MODEL_ID: ${{ steps.profile.outputs.model-id }}
+        ARA_AGENT_BACKEND: ${{ steps.select.outputs.backend }}
+        ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.model-id }}
       with:
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         claude_args: ${{ inputs.claude-args }}
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Z.ai
-      if: steps.profile.outputs.provider == 'zai' && inputs.allowed-bots != ''
+      if: steps.select.outputs.provider == 'zai' && inputs.allowed-bots != ''
       uses: anthropics/claude-code-action@v1
       env:
         ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
-        ANTHROPIC_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.profile.outputs.model-id }}
-        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.profile.outputs.model-id }}
-        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.profile.outputs.model-id }}
+        ANTHROPIC_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.select.outputs.model-id }}
+        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.select.outputs.model-id }}
+        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.select.outputs.model-id }}
         CLAUDE_CODE_EFFORT_LEVEL: max
         CLAUDE_CODE_AUTO_COMPACT_WINDOW: "1000000"
         API_TIMEOUT_MS: "3000000"
-        ARA_AGENT_BACKEND: ${{ steps.profile.outputs.backend }}
-        ARA_AGENT_MODEL_ID: ${{ steps.profile.outputs.model-id }}
+        ARA_AGENT_BACKEND: ${{ steps.select.outputs.backend }}
+        ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.model-id }}
       with:
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         allowed_bots: ${{ inputs.allowed-bots }}

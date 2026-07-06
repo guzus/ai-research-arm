@@ -10,6 +10,8 @@ on:
       - 'data/sources/twitter_accounts.json'
       - 'scripts/**'
       - 'docs/backend-matrix.md'
+      - 'data/agent-backends.json'
+      - 'README.md'
   pull_request:
     paths:
       - '.github/workflows/**'
@@ -18,6 +20,8 @@ on:
       - 'data/sources/twitter_accounts.json'
       - 'scripts/**'
       - 'docs/backend-matrix.md'
+      - 'data/agent-backends.json'
+      - 'README.md'
   workflow_dispatch:
 
 concurrency:
@@ -124,11 +128,12 @@ jobs:
       - name: Check wiki index is in sync
         run: uv run python scripts/build_wiki_index.py --check
 
-      # docs/backend-matrix.md carries a generated per-workflow harness/
-      # provider/token table derived from the workflow files. This gate
-      # fails when a workflow edit changed a lane's backend wiring without
-      # regenerating the matrix (build_backend_matrix.py).
-      - name: Check backend matrix is in sync
+      # data/agent-backends.json is the routing SSOT. This gate cross-checks
+      # it against the workflows (every agent-run call site routes via lane:
+      # with all provider secrets; pi/native mirrors match the file) and
+      # fails when docs/backend-matrix.md wasn't regenerated after a routing
+      # change (build_backend_matrix.py).
+      - name: Check backend routing SSOT and matrix
         run: uv run python scripts/build_backend_matrix.py --check
 
   hooker-telemetry:

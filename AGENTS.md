@@ -32,9 +32,10 @@ short pointer plus the few genuinely agent-specific notes.
   `fireworks-glm-5p2` / `glm-5p2` for default scheduled synthesis, CRUD, and
   high-frequency summarization work. Keep `fireworks-deepseek-v4-flash` for
   explicit low-cost or DeepSeek-labeled comparison lanes only. `agent-run`
-  preflights Fireworks and falls back to native Claude by default when
-  Fireworks is unavailable; set `fireworks-fallback: none` only when strict
-  provider failure is desired. Set `expected-paths` in `agent-run`, or call
+  probes the requested provider and walks the ordered `fallback.chain` from
+  `data/agent-backends.json` when it is unavailable (currently Z.ai GLM →
+  native Claude); lanes marked `"strict": true` and `fireworks-fallback:
+  none` runs never fall back. Set `expected-paths` in `agent-run`, or call
   `.github/actions/require-output` after deterministic commit steps, so green
   no-op runs do not leave the freshness watchdog stale. RSS, HN/Reddit
   community, arXiv, daily-digest, and Bluesky lanes (plus the twitter-deepseek
@@ -43,11 +44,17 @@ short pointer plus the few genuinely agent-specific notes.
   was healthy. Check the agent/fallback step logs before drawing provider
   conclusions.
 
-- **Per-workflow backend wiring is defined in `docs/backend-matrix.md`** —
-  a generated harness × provider × token-secret matrix derived from the
-  workflow files (`uv run python scripts/build_backend_matrix.py`; CI runs
-  `--check`). Consult and regenerate it whenever you change which backend a
-  workflow lane runs on.
+- **Backend routing SSOT: `data/agent-backends.json`.** Every model lane,
+  the backend profile table, and the ordered `fallback.chain` are defined
+  there. agent-run lanes select at runtime via `scripts/select_backend.py`
+  (workflow steps pass `lane:` and all provider secrets — editing the file
+  re-routes or re-orders fallbacks with no workflow change; on provider
+  outage the chain is walked in order and the first available candidate
+  runs); pi and direct claude-code-action lanes are CI-enforced mirrors;
+  strict lanes (zai-canary) never fall back. After any routing change run
+  `uv run python scripts/build_backend_matrix.py` to regenerate
+  `docs/backend-matrix.md` (CI runs `--check` and fails on drift, missing
+  secrets, orphan lanes, or mirror divergence).
 
 - **Z.ai GLM-5.2** is available through `agent-run` as `zai-glm-5p2` using
   `ZAI_API_KEY` and Claude Code's Anthropic-compatible route. It is the

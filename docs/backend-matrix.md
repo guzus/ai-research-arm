@@ -1,91 +1,105 @@
-# Backend Matrix — harness × token provider per workflow
+# Backend Matrix — harness × token provider per lane
 
-This is the **canonical per-workflow mapping** of which agent harness each
-GitHub Actions workflow runs, which provider serves its tokens, under which
-model id, authenticated by which GitHub secret, and what the fallback chain
-is. The per-*backend* contracts (env slots, endpoints, selector tokens) live
-in `CLAUDE.md` → "Backends" and `docs/generative-research-backends.md`; this
-file is the per-*workflow* view that used to exist only implicitly across
-the workflow files.
-
-The table below is **generated, not hand-maintained** — the repo has been
-burned twice by hand-maintained lists drifting (the `runs-on:` list, the
-pre-Z.ai backend table). Rows are derived from `.github/workflows/*.yml`
-plus the backend profile block in `.github/actions/agent-run/action.yml`:
-
-```bash
-uv run python scripts/build_backend_matrix.py          # regenerate after editing a workflow
-uv run python scripts/build_backend_matrix.py --check  # CI gate: exit 1 when stale
-```
-
-CI runs `--check` on every PR that touches workflows, actions, scripts, or
-this file — a workflow edit that changes a lane's harness/provider/token
-fails CI until this table is regenerated in the same PR.
+**The routing SSOT is [`data/agent-backends.json`](../data/agent-backends.json).**
+Every model lane in the pipeline is defined there — one entry per lane with
+its workflow, harness, backend/model, and notes. This doc is the generated,
+human-readable projection of that file; the per-*backend* contracts (env
+slots, endpoints, selector tokens) live in `CLAUDE.md` → "Backends" and
+`docs/generative-research-backends.md`.
 
 ## Harness vocabulary
 
-| Harness | What it means | Where defined |
+| Harness | What it means |
+|---|---|
+| Claude Code · agent-run | `anthropics/claude-code-action@v1` wrapped by `.github/actions/agent-run`: resolves the lane from the SSOT, selects provider env (Fireworks / Z.ai Anthropic-compatible endpoints, or native), preflights Fireworks with native-Claude fallback, then enforces `expected-paths` / `allowed-paths`. |
+| Claude Code · claude-code-action | The action invoked directly. Native Anthropic unless the step's `env` reroutes `ANTHROPIC_BASE_URL` (generative-research does this on its Fireworks paths). |
+| pi · run-pi-container | The pi coding-agent harness in a container with pi's own provider config. Twitter comparison tiers only. |
+| Codex CLI | `codex exec` with ChatGPT-managed file auth (subscription entitlement, not API billing). |
+| dispatch default | Not an agent itself: the SSOT-resolved default backend a dispatch/issue run uses when none is specified. |
+
+## How routing consumption works
+
+Two modes, chosen per harness:
+
+| Mode | Harnesses | Semantics |
 |---|---|---|
-| Claude Code · agent-run | `anthropics/claude-code-action@v1` wrapped by the local composite: backend profile selects provider env (Fireworks / Z.ai Anthropic-compatible endpoints, or native), preflights Fireworks, falls back to native Claude, then enforces `expected-paths` / `allowed-paths`. | `.github/actions/agent-run/action.yml` |
-| Claude Code · claude-code-action (direct) | The action invoked directly. Native Anthropic unless the step's `env` reroutes `ANTHROPIC_BASE_URL` (generative-research does this for its Fireworks paths). | each workflow step |
-| pi · run-pi-container | The pi coding-agent harness in a container, with pi's own provider config. Twitter comparison tiers only. | `.github/actions/run-pi-container/action.yml` |
-| Codex CLI | `codex exec` with ChatGPT-managed file auth (subscription entitlement, not API billing). | `generative-research.yml` codex path |
+| **Runtime SSOT** | `agent-run`, `dispatch-default` | The workflow step passes `lane: <key>`; the runner selects the backend from the file via `scripts/select_backend.py`. **Editing the file re-routes the lane with no workflow change.** Every agent-run call site passes all provider secrets (`CLAUDE_CODE_OAUTH_TOKEN`, `FIREWORKS_API_KEY`, `ZAI_API_KEY`) so a flip never needs a workflow edit; an unknown lane fails the run loudly. |
+| **CI-enforced mirror** | `pi`, `claude-code-action` | The model/provider stays literal in the workflow step (these workflows either run manual comparisons or don't check out before the agent step); `build_backend_matrix.py --check` fails CI until workflow and file agree. A flip is a two-line PR: edit the file, edit the step. |
+
+Fallback is an ORDERED CHAIN, SSOT-defined: the top-level `fallback.chain`
+lists backend selectors tried in order. At run time `scripts/select_backend.py`
+walks `[lane's backend] + chain` (deduplicated — a failed primary isn't
+retried from the chain), probes each candidate's provider (fireworks =
+preflight request, zai = Z.ai endpoint probe, claude = always available),
+and runs the first available candidate. Keeping `claude` terminal in the
+chain guarantees selection succeeds whenever the OAuth token exists — a
+unit test pins this invariant. Lanes marked `"strict": true` (zai-canary)
+and runs with `fireworks-fallback: none` never walk the chain: requested
+backend or hard fail. The `backends` profile table (selector → provider /
+model / aliases) also lives in the SSOT file — the action has no routing
+knowledge of its own left.
+
+To re-route a lane:
+
+```bash
+# 1. Edit data/agent-backends.json (runtime lanes: done; mirror lanes: also update the workflow step)
+# 2. Regenerate this doc — CI fails otherwise:
+uv run python scripts/build_backend_matrix.py
+# 3. Sanity-check the whole contract:
+uv run python scripts/build_backend_matrix.py --check
+```
 
 Reading notes:
 
-- **Token secret** is the secret that pays for the tokens on the requested
-  path. Every agent-run and direct-action step *also* receives
-  `CLAUDE_CODE_OAUTH_TOKEN` because the action's input schema requires it —
-  for Fireworks/Z.ai-routed runs it is inert unless the native-Claude
-  fallback fires.
+- **Token secret** is the secret that pays for tokens on the lane's current
+  route. agent-run lanes always carry all three secrets (see above); the
+  unused ones are inert.
 - **`--model opus` in `claude_args` is an alias**, not a provider model:
-  agent-run remaps it to the profile model id (Fireworks/Z.ai) or to
-  `native-model` (default `claude-sonnet-5`) on the native path.
-- **Fallback** shows the chain: provider fallback first (Fireworks preflight
-  → native Claude unless `fireworks-fallback: none`; Z.ai fails closed),
-  then `; then \`deterministic_*.py\`` where the lane has a model-free
-  composer guarding output freshness.
-- `hourly-twitter.yml` lane names are the *tier* selectors from its matrix.
-  Historical warning: the tier named `claude` is the tier *slot* name — its
-  requested backend is whatever the workflow passes (GLM-5.2 via Fireworks
-  since 2026-07-06), which is exactly why this table exists.
-- `generative-research.yml`'s Fireworks model is `dynamic:` because one env
-  block serves both `deepseek-v4-flash` and `glm-5p2` via its profile step.
+  agent-run remaps it to the effective profile's model id (Fireworks/Z.ai)
+  or to the SSOT's global `fallback.native_model` on the native path.
+- **Fallback** shows the lane's chain (already excluding its own backend);
+  strict lanes show `hard fail` instead. A trailing `deterministic_*.py`
+  names the model-free composer that guards output freshness after the
+  agent path is exhausted.
+- `hourly-twitter.yml` tier names are dispatch/cron *slots*, not routing:
+  the tier named `claude` hosts three lanes (`twitter-primary`,
+  `twitter-judge`, `twitter-autoresearch`) whose backends come from the
+  file. `(dispatch path)` rows are execution paths of
+  `generative-research-default`, not independent routing decisions.
 
 <!-- BEGIN GENERATED BACKEND MATRIX (scripts/build_backend_matrix.py — do not edit by hand) -->
 
-### Model lanes
+### Lanes
 
-| Workflow | Lane | Harness | Provider | Model | Token secret | Fallback |
+| Lane | Workflow | Harness | Provider | Model | Token secret | Fallback |
 |---|---|---|---|---|---|---|
-| `24h-model-timeline.yml` | crud-model-tickets-via-fireworks | Claude Code · agent-run | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`) |
-| `2h-bluesky.yml` | process-bluesky-feed-with-glm-5-2-via-fireworks | Claude Code · agent-run | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`); then `deterministic_bluesky_digest.py` |
-| `4h-community.yml` | process-community-data-with-fireworks | Claude Code · agent-run | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`); then `deterministic_community_digest.py` |
-| `ai-news-research.yml` | run-ai-news-research-with-claude-with-mcp | Claude Code · claude-code-action (direct) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| `ai-news-research.yml` | run-ai-news-research-with-claude-without-mcp | Claude Code · claude-code-action (direct) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| `claude-code-review.yml` | run-claude-code-review | Claude Code · claude-code-action (direct) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| `claude.yml` | run-claude-code | Claude Code · claude-code-action (direct) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| `daily-arxiv.yml` | fetch-arxiv-ai-papers | Claude Code · agent-run | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`); then `deterministic_arxiv_digest.py` |
-| `daily-digest.yml` | synthesize-daily-digest-with-mcp-tools | Claude Code · agent-run | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`); then `deterministic_daily_digest.py` |
-| `daily-digest.yml` | synthesize-daily-digest-local-source-fallback | Claude Code · agent-run | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`); then `deterministic_daily_digest.py` |
-| `daily-digest.yml` | rewrite-summary-as-ara-spoken-script-glm-5-2-via-fireworks | Claude Code · agent-run | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`); then `deterministic_daily_digest.py` |
-| `daily-improve.yml` | analyze-and-improve-methodology | Claude Code · claude-code-action (direct) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| `generative-research.yml` | backend=claude (+1 retry step) | Claude Code · claude-code-action (direct) | Anthropic (native) | `opus` → `claude-sonnet-5` (env pin) | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| `generative-research.yml` | backend=codex | Codex CLI | OpenAI (ChatGPT subscription auth) | codex CLI default | `CODEX_AUTH_JSON` | — |
-| `generative-research.yml` | backend=fireworks (deepseek-v4-flash / glm-5p2) (+2 retry steps) | Claude Code · claude-code-action (direct) | Fireworks (Anthropic-compatible endpoint) | dynamic: `${{ steps.fireworks.outputs.model_id }}` | `FIREWORKS_API_KEY` | workflow-level `fireworks_fallback` input (default `claude`) |
-| `hourly-rss.yml` | process-rss-feeds-with-glm-5-2-via-fireworks | Claude Code · agent-run | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`); then `deterministic_rss_digest.py` |
-| `hourly-twitter.yml` | tier:claude · process-tweets-with-glm-5-2-via-fireworks-primary-tier | Claude Code · agent-run | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`) |
-| `hourly-twitter.yml` | tier:deepseek-claude-code | Claude Code · agent-run | DeepSeek V4 Flash via Fireworks | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`); then `deterministic_twitter_digest.py` |
-| `hourly-twitter.yml` | tier:zai-glm-5p2 | Claude Code · agent-run | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail if key unset (no provider fallback); then `deterministic_twitter_digest.py` |
-| `hourly-twitter.yml` | tier:deepseek-pi | pi · run-pi-container | fireworks (pi built-in) | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | — |
-| `hourly-twitter.yml` | tier:fireworks-pi | pi · run-pi-container | fireworks (pi built-in) | `accounts/fireworks/models/kimi-k2p7` | `FIREWORKS_API_KEY` | — |
-| `hourly-twitter.yml` | tier:claude · adjudicate-near-duplicate-headlines-with-fireworks-primary | Claude Code · agent-run | DeepSeek V4 Flash via Fireworks | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`) |
-| `hourly-twitter.yml` | tier:claude · auto-research-topic-selection-primary-fireworks-tier | Claude Code · agent-run | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`) |
-| `research-issue.yml` | run-deep-research-with-mcp | Claude Code · claude-code-action (direct) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| `research-issue.yml` | run-deep-research-without-mcp | Claude Code · claude-code-action (direct) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| `twitter-account-explorer.yml` | explore-and-curate-account-list | Claude Code · claude-code-action (direct) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| `wiki-ingest.yml` | ingest-digest-into-wiki-via-fireworks | Claude Code · agent-run | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | native Claude (`claude-sonnet-5`) |
-| `zai-claude-code-canary.yml` | run-claude-code-file-write-canary-via-z-ai | Claude Code · agent-run | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail if key unset (no provider fallback) |
+| ai-news-research (×2 step variants) | `ai-news-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
+| arxiv | `daily-arxiv.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`); then `deterministic_arxiv_digest.py` |
+| bluesky | `2h-bluesky.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`); then `deterministic_bluesky_digest.py` |
+| claude-code-review | `claude-code-review.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
+| claude-interactive | `claude.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
+| community | `4h-community.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`); then `deterministic_community_digest.py` |
+| daily-improve | `daily-improve.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
+| digest-audio-script | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`); then `deterministic_daily_digest.py` |
+| digest-synthesis | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`); then `deterministic_daily_digest.py` |
+| digest-synthesis-fallback | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`); then `deterministic_daily_digest.py` |
+| generative-research-claude (+1 retry step) | `generative-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
+| generative-research-default | `generative-research.yml` | dispatch default (runtime SSOT) | (per chosen backend) | default: `glm-5p2` | (per chosen backend) | workflow-level `fireworks_fallback` input (default `claude`) |
+| model-timeline | `24h-model-timeline.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`) |
+| research-issue (×2 step variants) | `research-issue.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
+| rss | `hourly-rss.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`); then `deterministic_rss_digest.py` |
+| twitter-account-explorer | `twitter-account-explorer.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
+| twitter-autoresearch (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`) |
+| twitter-deepseek (tier:deepseek-claude-code) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | DeepSeek V4 Flash via Fireworks | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | hard fail (strict — never walks the chain); then `deterministic_twitter_digest.py` |
+| twitter-deepseek-pi (tier:deepseek-pi) | `hourly-twitter.yml` | pi · run-pi-container (CI-enforced mirror) | fireworks (pi built-in) | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | — |
+| twitter-fireworks-pi (tier:fireworks-pi) | `hourly-twitter.yml` | pi · run-pi-container (CI-enforced mirror) | fireworks (pi built-in) | `accounts/fireworks/models/kimi-k2p7` | `FIREWORKS_API_KEY` | — |
+| twitter-judge (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | DeepSeek V4 Flash via Fireworks | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`) |
+| twitter-primary (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`) |
+| twitter-zai (tier:zai-glm-5p2) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain); then `deterministic_twitter_digest.py` |
+| wiki-ingest | `wiki-ingest.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Fireworks | `accounts/fireworks/models/glm-5p2` | `FIREWORKS_API_KEY` | chain: `zai-glm-5p2` → claude (`claude-sonnet-5`) |
+| zai-canary · PINNED | `zai-claude-code-canary.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
+| (dispatch path) backend=fireworks (+2 retry steps) | `generative-research.yml` | Claude Code · claude-code-action (env-rerouted) | Fireworks (Anthropic-compatible endpoint) | dynamic: per fireworks profile step | `FIREWORKS_API_KEY` | workflow-level `fireworks_fallback` input (default `claude`) |
+| (dispatch path) backend=codex | `generative-research.yml` | Codex CLI | OpenAI (ChatGPT subscription auth) | codex CLI default | `CODEX_AUTH_JSON` | — |
 
 ### Workflows with no model lane (deterministic / infra)
 
@@ -97,7 +111,7 @@ Reading notes:
 - `daily-youtube.yml`
 - `liveness-check.yml`
 
-_28 model lanes across 23 workflows; 7 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `zai-glm-5p2` → `claude`; native path serves `claude-sonnet-5`. 25 SSOT lanes (+2 dispatch execution paths) across 23 workflows; 7 workflows run no model._
 
 <!-- END GENERATED BACKEND MATRIX -->
 

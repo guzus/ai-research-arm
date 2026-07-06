@@ -116,9 +116,10 @@ jobs:
           DATE_YESTERDAY: ${{ steps.datetime.outputs.yesterday }}
           TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
         with:
-          backend: fireworks-glm-5p2
+          lane: wiki-ingest
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --max-turns 80 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),Task,TodoWrite"
           expected-paths: |
