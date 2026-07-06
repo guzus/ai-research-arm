@@ -43,6 +43,12 @@ short pointer plus the few genuinely agent-specific notes.
   was healthy. Check the agent/fallback step logs before drawing provider
   conclusions.
 
+- **Per-workflow backend wiring is defined in `docs/backend-matrix.md`** —
+  a generated harness × provider × token-secret matrix derived from the
+  workflow files (`uv run python scripts/build_backend_matrix.py`; CI runs
+  `--check`). Consult and regenerate it whenever you change which backend a
+  workflow lane runs on.
+
 - **Z.ai GLM-5.2** is available through `agent-run` as `zai-glm-5p2` using
   `ZAI_API_KEY` and Claude Code's Anthropic-compatible route. It is the
   preferred manual `hourly-twitter.yml` backend and writes to

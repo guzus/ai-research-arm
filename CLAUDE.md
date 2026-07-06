@@ -75,6 +75,7 @@ and opens a PR with methodology fixes.
 | `export_wiki_okf.py` | Export `research/wiki/` as a portable Open Knowledge Format bundle: validates the OKF-native wiki pages and rewrites `[[wikilinks]]` to standard Markdown links. |
 | `check_lane_freshness.py` | Freshness watchdog. Measures git-commit recency per research lane against per-lane cadence thresholds; exits 2 (and emits a hooker/Telegram alert from `liveness-check.yml`) when a lane is stale. Stdlib-only so it runs on both runner tiers. |
 | `build_wiki_index.py` | Rebuilds `research/wiki/index.json` from the wiki pages. **CI-load-bearing**: `ci.yml` runs `--check` (exit 1 if the committed index is stale or any page fails validation); `wiki-ingest.yml` regenerates it every run. |
+| `build_backend_matrix.py` | Rebuilds the generated per-workflow harness/provider/token table in `docs/backend-matrix.md` from `.github/workflows/*.yml` + the `agent-run` backend profiles. **CI-load-bearing**: `ci.yml` runs `--check` (exit 1 when a workflow's backend wiring changed without regenerating the matrix). |
 | `fetch_ai_blogs.py` | Per-feed AI-blog fetcher used by `daily-ai-blogs.yml`; boundary-handles bad feeds so one failure doesn't crash the run. |
 | `deterministic_rss_digest.py` | Model-free fallback for `hourly-rss.yml`; parses fetched RSS/Atom files and appends a timestamped `research/rss/YYYY-MM-DD.md` section when the agent path fails. |
 | `deterministic_community_digest.py` | Model-free fallback for `4h-community.yml`; parses pre-fetched HN JSON and Reddit RSS into `research/community/*-hn.md` and `*-reddit.md` when the agent path fails. |
@@ -238,6 +239,12 @@ fallbacks. Direct Claude workflows pin
 file rather than assuming one provider everywhere.
 
 ## Backends
+
+The table below is the per-*backend* contract. The per-*workflow* view —
+which harness, provider, model, and token secret each workflow lane
+actually runs, with fallback chains — is the **generated, CI-checked**
+matrix in [`docs/backend-matrix.md`](docs/backend-matrix.md)
+(regenerate with `uv run python scripts/build_backend_matrix.py`).
 
 | Backend | When | Auth | Notes |
 |---|---|---|---|
