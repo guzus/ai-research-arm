@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-07-07 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] LeRobot v0.6.0: Imagine, Evaluate, Improve - Jul 7, 2026
+• [Hacker News] AMD Ryzen AI Halo – $4k AI Dev Kit: 146 points, 121 comments - discuss
+• [Reddit] [LingBot-Vision: masked boundary modeling for self-supervised pretraining (0.296 NYUv2 linear-probe…
+• [Expert Blogs] sqlite-utils 4.0rc3
+• [YouTube] Introducing Claude Science (now in beta)
+
+SOURCES: 5/8 lanes had data; missing: Twitter/X, Bluesky, arXiv Papers
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
