@@ -1,0 +1,12 @@
+📚 arXiv AI Research — 2026-07-07
+
+TOP 5 PAPERS:
+1. LLM-as-a-Verifier (2607.05391) — verification as a new scaling axis; training-free SOTA on Terminal-Bench/SWE-Bench. Finn, Pavone, Stoica, Mirhoseini.
+2. Nemotron Puzzle-75B-A9B (2607.04371) — NVIDIA compresses hybrid MoE+Mamba; ~2x throughput, 1M-ctx concurrency 1→8 on one H100.
+3. Audex (2607.05196) — NVIDIA unified audio-text LLM; SOTA audio w/ no text-IQ regression. Checkpoints released.
+4. Weak-to-Strong Direct-OPD (2607.05394) — reuse a small model's RL gains for a stronger one; Qwen3-1.7B AIME 48→62% in 4h on 8xA100.
+5. DSpark (2607.05147) — DeepSeek speculative decoding; 60-85% faster vs MTP-1 in live V4 traffic.
+
+CATEGORIES: cs.AI 451, cs.LG 427, cs.CV 389, cs.CL 164, cs.NE 0 new.
+
+Full report on GitHub.
