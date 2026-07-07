@@ -11,6 +11,13 @@ Full contract + flow diagrams (incl. the downstream agent gate in
 Dedupe layers (see `duplicate_reason`), in priority order:
   1. shared story_key, exact normalized headline (any source), and same-source
      (same URL) paraphrase — time-independent, highest precision.
+  1d. same-source rebroadcast — the SAME tweet/status id (or exact external
+     URL) that already alerted in an EARLIER run, regardless of wording. A
+     re-headlined tweet is the same alert even at zero token overlap; this is
+     wording-independent where layer 1's paraphrase check is not. Records
+     stamped by the current run (in-batch appends) don't qualify, so
+     multi-claim extraction from one thread within a single cycle still
+     delivers. Gated on a reference time like layer 2.
   2. cross-source semantic duplicate — the SAME story reported by a DIFFERENT
      account (different tweet URL) with paraphrased wording. This catches the
      re-reports the same-URL check structurally cannot see. It is gated on a
@@ -289,6 +296,23 @@ def duplicate_reason(
             similarity = headline_similarity(headline, record_headline)
             if similarity >= URL_SIMILARITY_THRESHOLD:
                 return "duplicate_source_similar_headline"
+
+    # Pass 1d — same source, earlier cycle (rebroadcast): a tweet/status id (or
+    # exact external URL) that already alerted in a PREVIOUS run is the same
+    # alert regardless of wording. Re-headlining one tweet hours later is how
+    # near-threshold paraphrases (0.60/0.615 vs the 0.62 floor) and zero-overlap
+    # rewrites of the same tweet kept leaking. Gated on `now` like Pass 2 so
+    # legacy 2-arg callers are unchanged. Records stamped by THIS run (in-batch
+    # appends share `delivered_at == now`) never qualify, so multi-claim
+    # extraction from one thread within a single cycle still delivers; the
+    # per-record timestamp fails OPEN (unparseable → cannot suppress).
+    if now is not None and keys.external_key:
+        for record, record_keys in zip(history, history_keys):
+            if record_keys.external_key != keys.external_key:
+                continue
+            delivered = parse_delivered_at(record.get("delivered_at"))
+            if delivered is not None and delivered < now:
+                return "duplicate_rebroadcast"
 
     # Pass 2 — cross-source semantic duplicate: same story, DIFFERENT account
     # (different tweet URL), paraphrased. Inert unless a reference time `now` is
