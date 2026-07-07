@@ -2,9 +2,26 @@
 
 # AI Research Arm
 
-Automated multi-source AI news research agent powered by LLMs.
+**The AI newspaper that writes itself.** Every few hours, a fleet of LLM agents
+reads the AI firehose — Twitter/X, RSS, Hacker News, Reddit, Bluesky, arXiv,
+expert blogs, YouTube. Every night it writes the paper: a synthesized digest, a
+rendered front page, a model-release timeline, a compounding wiki. Every week
+it opens a pull request to improve its own methodology. The only human in the
+loop reviews the PRs.
 
-> 📖 **[Open-sourcing ai-research-arm (ARA)](https://guzus.substack.com/p/open-sourcing-ai-research-arm-ara)** · [what's changed since the post](docs/since-the-open-sourcing-post.md)
+[![CI](https://github.com/guzus/ai-research-arm/actions/workflows/ci.yml/badge.svg)](https://github.com/guzus/ai-research-arm/actions/workflows/ci.yml)
+[![Live dashboard](https://img.shields.io/badge/live-ara.guzus.xyz-1f6feb)](https://ara.guzus.xyz)
+[![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f)](LICENSE)
+[![Commit activity](https://img.shields.io/github/commit-activity/w/guzus/ai-research-arm?label=commits)](https://github.com/guzus/ai-research-arm/commits/main)
+
+Running unattended since January 2026: **23 GitHub Actions workflows** have
+committed **1,400+ research artifacts** — 110+ daily digests, 60+ long-form
+cited articles, a 115-ticket model-release timeline, and a 58-page wiki — all
+deployed continuously to **[ara.guzus.xyz](https://ara.guzus.xyz)**.
+
+📖 [Why this is open source](https://guzus.substack.com/p/open-sourcing-ai-research-arm-ara) ·
+[What's changed since the post](docs/since-the-open-sourcing-post.md) ·
+[Operator's manual](CLAUDE.md)
 
 ## Today's Front Page
 
@@ -12,7 +29,26 @@ Automated multi-source AI news research agent powered by LLMs.
 ![Today's Front Page](research/front-page/2026-07-07-front-page.png)
 <!-- FRONT_PAGE_END -->
 
-> *Generated daily at 00:30 UTC. See [`research/front-page/`](research/front-page/) for the archive.*
+> 🗞️ Rendered every day at 00:30 UTC from the digest — deterministic SVG→PNG,
+> no model in the render path. [Interactive edition](https://ara.guzus.xyz/frontpage) ·
+> [archive](research/front-page/)
+
+## What it publishes
+
+| Output | Cadence | Live | Source of truth |
+|---|---|---|---|
+| 🗞️ **Front page** — the day's digest as a newspaper | daily 00:30 | [/frontpage](https://ara.guzus.xyz/frontpage) | [`research/front-page/`](research/front-page/) |
+| 📰 **Daily digest** — all-source synthesis, with TTS audio | daily 00:00 | [/today](https://ara.guzus.xyz/today) | [`research/digest/`](research/digest/) |
+| 🎫 **Model timeline** — one CRUD'd ticket per release, funding round, or legal fight | daily | [/models](https://ara.guzus.xyz/models) | [`research/models/tickets/`](research/models/tickets/) |
+| 📚 **LLM wiki** — compounding knowledge base; one page per entity, concept, theme | daily, post-digest | [/wiki](https://ara.guzus.xyz/wiki) | [`research/wiki/`](research/wiki/) |
+| 🔬 **Generative research** — long-form, heavily-cited articles in a custom DSL | on demand | [/research](https://ara.guzus.xyz/research) | [`research/generative/`](research/generative/) |
+| 🐦 **Twitter reports** — from a reviewed, self-expanding account manifest | every 3h | [/twitter](https://ara.guzus.xyz/twitter) | [`research/twitter/`](research/twitter/) |
+| 📣 **Headline alerts** — deduped breaking-news pings | every 3h | Telegram | [`research/summaries/`](research/summaries/) |
+
+Recent articles the pipeline researched, wrote, validated, and published by
+itself: *"Reward Hacking at Scale"*, *"Meta Compute: the surplus that reprices
+the neocloud"*, *"Anthropic vs the Pentagon: the unprecedented
+supply-chain-risk label"* — [browse all](https://ara.guzus.xyz/research).
 
 ## Quickstart (no accounts needed)
 
@@ -38,77 +74,67 @@ uv sync --all-extras
 uv run python -m unittest discover -s scripts -p 'test_*.py'
 ```
 
-Running the **full data pipeline** needs the maintainer's accounts and
+Running the **full data pipeline** needs your own credentials and
 infrastructure — see [What you can run vs. what needs accounts](#what-you-can-run-vs-what-needs-accounts).
 
 ## Architecture
 
+Read → synthesize → publish → improve. Every artifact at every stage is a git
+commit, so the entire history of the pipeline's "mind" is diffable.
+
 ```mermaid
 flowchart TB
-    subgraph sources["📡 Real-Time Sources"]
-        RSS["🔗 RSS Feeds<br/><i>Every 2h</i>"]
-        Bluesky["🦋 Bluesky<br/><i>Daily</i>"]
-        Reddit["🔴 Reddit<br/><i>Every 4h</i>"]
-        HN["🟠 Hacker News<br/><i>Every 4h</i>"]
-        arXiv["📄 arXiv<br/><i>Daily</i>"]
-        Twitter["🐦 Twitter/X<br/><i>Every 3h</i>"]
-        Blogs["✍️ Expert Blogs<br/><i>Every 6h</i>"]
-        YouTube["▶️ YouTube/tuber<br/><i>Daily</i>"]
+    subgraph read["📡 READ — around the clock"]
+        direction LR
+        Twitter["🐦 Twitter/X<br/><i>3h</i>"]
+        RSS["🔗 RSS<br/><i>2h</i>"]
+        HN["🟠 HN · 🔴 Reddit<br/><i>4h</i>"]
+        Blogs["✍️ Expert blogs<br/><i>6h</i>"]
+        Bluesky["🦋 Bluesky<br/><i>daily</i>"]
+        arXiv["📄 arXiv<br/><i>daily</i>"]
+        YouTube["▶️ YouTube<br/><i>daily</i>"]
     end
 
-    subgraph mcp["🔌 MCP Tools (Optional)"]
-        Exa["Exa Search"]
-        Perplexity["Perplexity"]
+    read --> store[("📁 research/<br/>every artifact is a git commit")]
+
+    subgraph synth["🧠 SYNTHESIZE — daily"]
+        Digest["📰 Daily digest<br/><i>00:00 UTC · + TTS audio</i>"]
+        Tickets["🎫 Model-release tickets<br/><i>CRUD'd, never regenerated</i>"]
+        Wiki["📚 LLM wiki<br/><i>compounds from the digest</i>"]
     end
 
-    subgraph storage["📁 Research Storage"]
-        rss_out["research/rss/"]
-        bluesky_out["research/bluesky/"]
-        community_out["research/community/"]
-        arxiv_out["research/arxiv/"]
-        twitter_out["research/twitter/"]
-        blogs_out["research/blogs/"]
-        youtube_out["research/youtube/"]
+    store --> Digest
+    store --> Tickets
+    Digest --> Wiki
+
+    subgraph publish["🚀 PUBLISH"]
+        Front["🗞️ Front page<br/><i>deterministic SVG→PNG</i>"]
+        Gen["🔬 Cited research articles<br/><i>on demand</i>"]
+        TG["📣 Telegram alerts"]
+        Site["🖥️ ara.guzus.xyz<br/><i>Railway rebuilds on every push to main</i>"]
     end
 
-    RSS --> rss_out
-    Bluesky --> bluesky_out
-    Reddit --> community_out
-    HN --> community_out
-    arXiv --> arxiv_out
-    Twitter --> twitter_out
-    Blogs --> blogs_out
-    YouTube --> youtube_out
+    Digest --> Front
+    store --> Gen
+    Twitter -.-> TG
+    Digest --> Site
+    Tickets --> Site
+    Wiki --> Site
+    Front --> Site
+    Gen --> Site
 
-    rss_out --> Digest
-    bluesky_out --> Digest
-    community_out --> Digest
-    arxiv_out --> Digest
-    twitter_out --> Digest
-    blogs_out --> Digest
-    youtube_out --> Digest
-
-    Exa -.-> Digest
-    Perplexity -.-> Digest
-
-    Digest["📊 Daily Digest<br/><i>00:00 UTC</i>"]
-    Digest --> digest_out["research/digest/"]
-
-    subgraph improve["🔄 Self-Improvement"]
-        Improve["daily-improve.yml<br/><i>Mon 00:17 UTC</i>"]
-    end
-
-    digest_out --> Improve
-    Improve -->|"Creates PRs"| sources
-
-    subgraph dashboard["🖥️ Dashboard"]
-        Railway["Railway<br/><i>ara.guzus.xyz</i>"]
-    end
-
-    twitter_out --> Railway
+    Improve["🔄 IMPROVE — weekly<br/><i>reads its own output, opens a PR</i>"]
+    Site -.-> Improve
+    Improve -.-> read
 ```
 
-## Backend Routing
+The dashboard is a Vite + Bun + TypeScript SPA. On every push to `main`,
+Railway rebuilds the root [`Dockerfile`](Dockerfile) (bun build → Caddy serve,
+behind Cloudflare); `dashboard/scripts/prebuild.mjs` copies `research/` into
+the site before Vite runs. There is no deploy workflow — publishing research
+*is* deploying.
+
+## Backend routing
 
 Which model serves each lane — and where it falls back on a provider
 outage — is defined in one file:
@@ -151,21 +177,73 @@ flowchart LR
 _Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `zai-glm-5p2` → `claude`; regenerate with `uv run python scripts/build_backend_matrix.py`._
 <!-- END GENERATED BACKEND DIAGRAM -->
 
-## Data Sources
+## Sources
 
-| Source | Method | Frequency | Real-time? |
-|--------|--------|-----------|------------|
-| **Twitter/X** | Birdy read-only multi-fetch (reviewed account manifest + 7 searches) | Every 3 hours | ✅ Yes |
-| **RSS Feeds** | Direct XML fetch | Every 2 hours | ✅ Yes |
-| **Bluesky** | Public API | Daily | ✅ Yes |
-| **Reddit** | RSS feeds | Every 4 hours | ✅ Yes |
-| **Hacker News** | MCP Server | Every 4 hours | ✅ Yes |
-| **arXiv** | MCP + RSS | Daily | ✅ Yes |
-| **Expert Blogs** | Curated RSS/Atom registry | Every 6 hours | ✅ Yes |
-| **YouTube** | tuber API discovery + read-only summaries/transcripts | Daily | ✅ Yes |
-| **Web Search** | Exa/Perplexity MCP | On-demand | ✅ Yes (via MCP) |
+| Source | Method | Frequency |
+|--------|--------|-----------|
+| **Twitter/X** | Birdy read-only multi-fetch (reviewed account manifest + 7 searches) | Every 3 hours |
+| **RSS feeds** | Direct XML fetch (OpenAI, Anthropic, DeepMind, TechCrunch, …) | Every 2 hours |
+| **Hacker News** | MCP server | Every 4 hours |
+| **Reddit** | RSS feeds (r/MachineLearning, r/LocalLLaMA, r/artificial) | Every 4 hours |
+| **Expert blogs** | Curated KOL/researcher/operator feed registry | Every 6 hours |
+| **Bluesky** | Public API | Daily |
+| **arXiv** | MCP + RSS | Daily |
+| **YouTube** | tuber API discovery + read-only summaries/transcripts | Daily |
+| **Web search** | Exa/Perplexity MCP (optional) | On demand |
+
+The Twitter account manifest ([`data/sources/twitter_accounts.json`](data/sources/twitter_accounts.json))
+is itself agent-curated: a weekly explorer lane scouts for high-signal
+accounts — favoring ones vouched for by accounts already monitored, and
+on-topic for AI over merely viral — and opens a reviewed PR when the evidence
+is strong. Contract: [`docs/twitter-account-curation.md`](docs/twitter-account-curation.md).
 
 ## Workflows
+
+All 23 workflows live in [`.github/workflows/`](.github/workflows/). The
+interesting ones:
+
+**Aggregate** — raw signal in, markdown out
+
+| Workflow | Schedule | Output |
+|---|---|---|
+| `hourly-twitter.yml` | every 3h | `research/twitter/` + Telegram headline alerts (plus DeepSeek/pi comparison tiers) |
+| `hourly-rss.yml` | every 2h | `research/rss/` |
+| `4h-community.yml` | every 4h | `research/community/` (HN + Reddit) |
+| `daily-ai-blogs.yml` | every 6h | `research/blogs/` |
+| `2h-bluesky.yml` | daily | `research/bluesky/` |
+| `daily-arxiv.yml` | daily | `research/arxiv/` |
+| `daily-youtube.yml` | daily | `research/youtube/` |
+| `twitter-account-explorer.yml` | weekly | reviewed PRs against the account manifest |
+
+**Synthesize** — read everything, write the record
+
+| Workflow | Schedule | Output |
+|---|---|---|
+| `daily-digest.yml` | daily 00:00 UTC | `research/digest/` + TTS audio |
+| `24h-model-timeline.yml` | daily | CRUDs `research/models/tickets/` + daily diff |
+| `wiki-ingest.yml` | after the digest | updates `research/wiki/` from the *curated* synthesis |
+| `ai-news-research.yml` | twice daily | broad topic sweep via Perplexity/Exa MCP |
+
+**Publish** — shareable artifacts
+
+| Workflow | Trigger | Output |
+|---|---|---|
+| `daily-front-page.yml` | daily 00:30 UTC | newspaper PNG + interactive edition |
+| `generative-research.yml` | issue label or dispatch | long-form cited article |
+| `research-issue.yml` | `research` issue label | report posted back to the issue |
+
+**Keep it honest** — the pipeline watching itself
+
+| Workflow | Trigger | Purpose |
+|---|---|---|
+| `daily-improve.yml` | weekly Mon | reads its own output, opens a methodology PR |
+| `liveness-check.yml` | scheduled | per-lane freshness watchdog, runs on *both* runner tiers |
+| `auto-rerun-on-runner-loss.yml` | on failure | re-runs jobs whose ephemeral worker vanished (loop-capped) |
+| `ci.yml` | push/PR | actionlint + dashboard build + Python tests |
+| `claude.yml` / `claude-code-review.yml` | `@claude` / PR | interactive agent + automated review |
+
+<details>
+<summary>📅 Daily schedule as a Gantt chart</summary>
 
 ```mermaid
 gantt
@@ -196,149 +274,61 @@ gantt
     Self-Improve        :milestone, 00:17, 0h
 ```
 
-| Workflow | Schedule | Source | Output |
-|----------|----------|--------|--------|
-| `hourly-rss.yml` | Every 2 hours (:30) | Official blogs, TechCrunch, arXiv RSS | `research/rss/` |
-| `daily-ai-blogs.yml` | Every 6 hours (:13) | Curated KOL Substacks, expert blogs, research/operator blogs | `research/blogs/` |
-| `daily-youtube.yml` | Daily 23:20 UTC for the next 00:00 digest | tuber API trending/search/channel metadata, existing summaries, transcript probes | `research/youtube/` |
-| `2h-bluesky.yml` | Daily 10:11 UTC | Bluesky AI posts | `research/bluesky/` |
-| `4h-community.yml` | Every 4 hours | Reddit RSS + HN MCP | `research/community/` |
-| `daily-arxiv.yml` | Daily 06:13 UTC | arXiv papers | `research/arxiv/` |
-| `daily-digest.yml` | Daily 00:00 UTC | All sources + MCP search | `research/digest/` |
-| `hourly-twitter.yml` (matrix) | claude tier every 3h (`:07`), deepseek-claude-code tier every 6h (`:37`), deepseek-pi and fireworks-pi tiers manual | Twitter/X via Birdy read-only multi-fetch (reviewed account manifest, 7 search queries) | `research/twitter/` (claude) + `research/twitter-deepseek/` (Claude Code) + `research/twitter-deepseek-pi/` (pi) + `research/twitter-fireworks-pi/` (Fireworks pi) |
-| `ai-news-research.yml` | Twice daily (08:23, 20:23 UTC) | Perplexity/Exa MCP | `research/` |
-| `daily-improve.yml` | Weekly (Mon 00:17 UTC) | Self-improvement | PRs with improvements |
-| `twitter-account-explorer.yml` | Weekly (Tue 01:47 UTC) + manual | Scouts high-signal AI accounts; trust-weighted curation of `data/sources/twitter_accounts.json` | Reviewed PRs (`app/claude`) |
-| `research-issue.yml` | On issue label | Deep research on any topic | `research/issues/` |
-| `generative-research.yml` | On `gen-research` issue label or `workflow_dispatch` (`topic` or `twitter_url`) | Claude, Codex, or Fireworks-backed models write an HTML article | `research/generative/` |
+</details>
 
-Dashboard deploys are handled by **Railway's git integration**, not a workflow file — every push to `main` rebuilds the root `Dockerfile` (bun build → Caddy serve) automatically.
+## Research on demand
 
-`generative-research.yml` defaults to **Claude Opus 4.8** for new manual,
-issue-triggered, and auto-dispatched runs. Use `backend=codex` for the OpenAI
-Codex GitHub Action path, `backend=deepseek-v4-flash` for the DeepSeek V4 Flash
-comparison path, or `backend=glm-5p2` for the GLM 5.2 Fireworks path. See
-[Generative Research Backends](docs/generative-research-backends.md)
-for the exact env mapping and comparison commands.
+Three ways to commission work from the pipeline:
 
-Twitter-seeded generative research is a first-class manual primitive:
-dispatch the workflow with only a tweet/status URL and it will read the
-tweet/thread with bird, infer the research question, verify claims
-against primary sources, and publish the article through the same
-`research/generative/` writer path:
+**1. Issue → research report.** Open a GitHub issue, add the `research` label.
+The agent acknowledges it, researches with web search + MCP tools, commits a
+report to `research/issues/`, and posts the findings back on the issue.
+
+**2. Topic → published article.** Label an issue `gen-research` or dispatch
+`generative-research.yml` with a `topic`. The agent researches primary
+sources, writes in the [ARA DSL](ARA_DSL.md) (a validated component language
+— see [Component catalog](COMPONENTS.md)), and publishes through a single
+writer path that re-validates everything before commit. Defaults to GLM 5.2
+via Fireworks; `backend=claude|codex|deepseek-v4-flash` selects other
+providers ([details](docs/generative-research-backends.md)).
+
+**3. Tweet → verified article.** Give it just a tweet URL — it reads the
+thread, infers the underlying research question, then verifies the claims
+against independent primary sources before writing:
 
 ```bash
 gh workflow run generative-research.yml \
-  -f twitter_url="https://x.com/<handle>/status/<id>" \
-  -f backend=claude
+  -f twitter_url="https://x.com/<handle>/status/<id>"
 ```
 
-Claude command: `/gen-research-tweet <twitter-or-x-status-url>`.
-Agents command: `.agents/commands/gen-research-tweet.md`.
+## Built to keep running
 
-For a concise framework on which AI industry areas matter most, see
-[AI Industry Map](docs/ai-industry-map.md).
+The interesting engineering is less "call an LLM" and more "survive every way
+this can break":
 
-For portable data sharing from the ARA wiki, see
-[Open Knowledge Format for ARA](docs/okf.md).
-
-## On-Demand Research Agent
-
-Request deep research on any topic by creating a GitHub Issue with the `research` label.
-
-### How to Use
-
-1. **Create a new issue** with your research question as the title
-2. **Add the `research` label** to the issue
-3. **Claude will automatically:**
-   - Acknowledge the request with a comment
-   - Search the web using multiple tools (WebSearch, Exa, Perplexity)
-   - Fetch and analyze relevant documentation, articles, and code
-   - Create a comprehensive research report
-   - Post findings back to the issue
-
-### Example Research Requests
-
-| Issue Title | What Claude Researches |
-|-------------|------------------------|
-| "Research how to make AI UGC for my iOS app" | AI-powered user-generated content tools, SDKs, APIs for iOS |
-| "Best practices for LLM fine-tuning in 2026" | Latest fine-tuning techniques, tools, and frameworks |
-| "Compare vector databases for RAG applications" | Pinecone vs Weaviate vs Chroma vs Milvus comparison |
-| "How to implement voice cloning ethically" | Voice synthesis APIs, legal considerations, implementation guides |
-
-### Research Output
-
-Reports are saved to `research/issues/{issue-number}-research.md` with:
-
-- **Executive Summary** - Quick overview of findings
-- **Key Findings** - Detailed analysis by category
-- **Recommended Approaches** - Ranked options with pros/cons
-- **Tools & Libraries** - Relevant SDKs, APIs, frameworks
-- **Code Examples** - Working code snippets
-- **Resources** - Links to docs, tutorials, repos
-- **Next Steps** - Actionable recommendations
-
-### Trigger Methods
-
-| Method | When It Triggers |
-|--------|------------------|
-| Create issue with `research` label | Immediately on issue creation |
-| Add `research` label to existing issue | Immediately when label is added |
-
-## Dashboard
-
-Live at **[ara.guzus.xyz](https://ara.guzus.xyz/)**
-
-A single-page dashboard that displays Twitter/X research reports with:
-- Warm cream/parchment color palette for readability
-- Source Serif 4 body font with Inter UI headings
-- Each report time slot rendered as its own card (latest first)
-- Clock icon with accurate local time conversion next to UTC timestamps
-- @handle highlighting with distinct pill styling
-- Section navigation (up/down arrows, keyboard shortcuts)
-- Date picker, search, and refresh controls
-- Mobile responsive with bottom nav bar
-
-Built with **Vite + Bun + TypeScript**, deployed by Railway from the root `Dockerfile` (bun build → Caddy serve, behind Cloudflare; see also `Caddyfile` and `railway.json`). Every push to `main` triggers a Railway rebuild; the `prebuild` hook in `dashboard/scripts/prebuild.mjs` copies `research/<source>/` into `public/research/` and emits `manifest.json` before Vite runs.
-
-## Setup
-
-### Local Python Tooling
-
-Python dependencies are managed with **uv**:
-
-```bash
-uv sync --all-extras
-uv run python -m unittest discover -s scripts -p 'test_*.py'
-uv run python scripts/check_model_tickets.py
-```
-
-### Required Secrets
-
-All credentials are injected via GitHub Actions secrets (or a local `.env`,
-which is gitignored) — see [`.env.example`](.env.example) for the full
-annotated list of pipeline credentials. None of these are needed for the
-[Quickstart](#quickstart-no-accounts-needed).
-
-| Secret | Required | Description |
-|--------|----------|-------------|
-| `CLAUDE_CODE_OAUTH_TOKEN` | Yes | Claude Code auth |
-| `CODEX_AUTH_JSON` | Yes for generative-research `backend=codex` | File-backed ChatGPT Codex auth cache from `~/.codex/auth.json` after `codex login`; treat like a password |
-| `DEEPSEEK_API_KEY` | No — retired | DeepSeek lanes now route through Fireworks (`FIREWORKS_API_KEY`); no longer referenced by any workflow |
-| `FIREWORKS_API_KEY` | Yes for generative-research `backend=deepseek-v4-flash` / `backend=glm-5p2` and all non-claude Twitter tiers (`deepseek-claude-code`, `deepseek-pi`, `fireworks-pi`) | Fireworks API key — serves DeepSeek V4 Flash and GLM 5.2 via the Anthropic-compatible endpoint, and Kimi via pi's Fireworks provider |
-| `BIRDY_ACCOUNTS` | No | Optional Birdy multi-account rotation JSON. The Twitter workflow forces every account to read-only before use |
-| `BIRD_AUTH_TOKEN` | Yes | Fallback single-account X/Twitter auth_token cookie when `BIRDY_ACCOUNTS` is absent |
-| `BIRD_CT0` | Yes | Fallback single-account X/Twitter ct0 cookie when `BIRDY_ACCOUNTS` is absent |
-| `GEMINI_API_KEY` | Yes for article/digest audio | Gemini API key used for price-performant TTS audio generation |
-
-### Optional API Keys (for enhanced features)
-
-| Secret | Source | Benefit |
-|--------|--------|---------|
-| `EXA_API_KEY` | [dashboard.exa.ai](https://dashboard.exa.ai) | Neural web search via MCP |
-| `PERPLEXITY_API_KEY` | [perplexity.ai/settings/api](https://www.perplexity.ai/settings/api) | Real-time web search with citations via MCP |
-
-**Note:** Exa and Perplexity integrate as MCP (Model Context Protocol) tools, giving Claude enhanced web search capabilities during research workflows.
+- **Deterministic fallbacks.** Every scheduled lane has a model-free composer
+  (`scripts/deterministic_*_digest.py`) that writes the day's artifact from
+  already-fetched data when the agent path fails. A provider outage never
+  means a missing daily file.
+- **Output contracts.** Agent lanes must *prove* their work:
+  [`require-output`](.github/actions/require-output) asserts the expected
+  artifacts changed, and [`require-diff-scope`](.github/actions/require-diff-scope)
+  asserts nothing outside the declared paths was committed.
+- **Sandboxed agents.** Claude Code runs under a fail-closed bubblewrap policy
+  ([`.claude/settings.json`](.claude/settings.json)) — no host credentials, no
+  unsandboxed shell. Comparison lanes on other harnesses run in containers.
+- **Provider failover.** One SSOT file routes every lane across
+  Fireworks / Z.ai / Anthropic / Codex with an ordered fallback chain — and CI
+  fails if docs or workflows drift from it.
+- **Watchdogs that outlive the fleet.** Freshness checks run on both runner
+  tiers so an outage on either still alerts; a loop-safe auto-rerunner
+  recovers jobs whose ephemeral Cloud Run worker vanished mid-run.
+- **CRUD, not regenerate.** The model timeline and wiki are persistent stores
+  with immutable slugs and append-only history, schema-validated on every PR
+  — knowledge compounds instead of being rewritten nightly.
+- **Self-improvement with review.** The weekly improve lane reads the
+  pipeline's own output and opens PRs — it can propose anything, but a human
+  merges.
 
 ## What you can run vs. what needs accounts
 
@@ -353,13 +343,13 @@ is included for transparency rather than turnkey reuse.
   unit tests run offline.
 
 **Needs your own credentials (drop-in):**
-- **Claude / Codex / Fireworks backends** — set `CLAUDE_CODE_OAUTH_TOKEN`,
-  `CODEX_AUTH_JSON`, or `FIREWORKS_API_KEY` for the synthesis/generative lane
-  you want to run on your fork. The Codex lane uses ChatGPT-managed Codex
-  auth, not OpenAI API billing.
+- **Claude / Codex / Fireworks / Z.ai backends** — set
+  `CLAUDE_CODE_OAUTH_TOKEN`, `CODEX_AUTH_JSON`, `FIREWORKS_API_KEY`, or
+  `ZAI_API_KEY` for the synthesis/generative lanes you want to run on your
+  fork. The Codex lane uses ChatGPT-managed auth, not OpenAI API billing.
 - **Twitter/X lanes** — supply your own `BIRD_AUTH_TOKEN` / `BIRD_CT0` cookies
   (they expire often; lanes degrade to empty data without them).
-- **Exa / Perplexity** search enrichment and **Gemini** TTS are all optional.
+- **Exa / Perplexity** search enrichment and **Gemini** TTS are optional.
 
 **Maintainer-specific (swap or disable to self-host):**
 - **Runners:** nearly every workflow targets a private self-hosted Cloud Run
@@ -376,119 +366,59 @@ is included for transparency rather than turnkey reuse.
 - **Sibling repos** `../oracle` and `../runner` referenced in the docs are
   private and not required for the default Claude/Codex/Fireworks paths.
 
-## Output Structure
+### Secrets
+
+All credentials are injected via GitHub Actions secrets (or a local `.env`,
+which is gitignored) — see [`.env.example`](.env.example) for the full
+annotated list. None are needed for the
+[Quickstart](#quickstart-no-accounts-needed).
+
+| Secret | Required for | Description |
+|--------|--------------|-------------|
+| `CLAUDE_CODE_OAUTH_TOKEN` | native-Claude lanes + fallback path | Claude Code auth |
+| `FIREWORKS_API_KEY` | default scheduled lanes (GLM 5.2, DeepSeek, Kimi) | Anthropic-compatible Fireworks endpoint |
+| `ZAI_API_KEY` | Z.ai GLM 5.2 lanes | Z.ai Coding Plan, Anthropic-compatible route |
+| `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
+| `BIRD_AUTH_TOKEN` / `BIRD_CT0` | Twitter/X lanes | X cookies (read-only use; expire often) |
+| `BIRDY_ACCOUNTS` | optional | multi-account rotation JSON; every account forced read-only |
+| `GEMINI_API_KEY` | digest/article audio | price-performant TTS |
+| `EXA_API_KEY` / `PERPLEXITY_API_KEY` | optional | neural + cited web search via MCP |
+| `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` | headline alerts | delivery channel |
+
+<details>
+<summary>Output directory layout</summary>
 
 ```
 research/
-├── rss/
-│   └── 2026-01-14.md              # Official blog posts, tech news
-├── bluesky/
-│   └── 2026-01-14.md              # Bluesky AI researcher posts
-├── community/
-│   ├── 2026-01-14-hn.md           # Hacker News digest
-│   └── 2026-01-14-reddit.md       # Reddit real-time posts
-├── arxiv/
-│   └── 2026-01-14-papers.md       # Daily arXiv papers
-├── twitter/
-│   └── 2026-01-14.md              # Twitter updates (every 3h via Birdy)
-├── issues/
-│   └── 42-research.md             # On-demand research from GitHub Issues
-├── digest/
-│   └── 2026-01-14-digest.md       # Daily synthesized digest (enhanced with MCP tools)
-└── summaries/
-    └── 2026-01-14-summary.txt     # Telegram digest summaries
-
-dashboard/                          # Vite + Bun + TypeScript SPA
-├── src/
-│   ├── main.ts                    # App logic, markdown rendering, clock icons
-│   └── style.css                  # Warm cream palette, responsive styles
-├── index.html                     # Entry point
-├── scripts/prebuild.mjs           # Copies research/ into public/, builds manifest.json
-├── vite.config.js                 # Vite config
-└── package.json                   # Dependencies (vite, marked, dompurify)
+├── arxiv/          # daily papers
+├── blogs/          # expert-blog digests
+├── bluesky/        # supplemental commentary
+├── community/      # HN + Reddit digests
+├── digest/         # the daily synthesis (+ audio stubs; mp3s on S3)
+├── front-page/     # newspaper PNG + interactive edition
+├── generative/     # long-form articles (.html + .ara.md + index.json)
+├── issues/         # on-demand issue research
+├── models/tickets/ # persistent model-release tickets
+├── rss/            # raw-signal digests
+├── summaries/      # Telegram digests + headline-alert ledger
+├── twitter/        # 3-hourly reports
+├── wiki/           # the compounding knowledge base
+└── youtube/        # tuber signal lane
 ```
 
-## Data Source Details
+</details>
 
-### Twitter/X (Every 3 hours)
-Via Birdy read-only multi-fetch and the warm `birdy-fast` daemon for follow-up
-reads. The reviewed source manifest is `data/sources/twitter_accounts.json`,
-periodically expanded by the explorer lane below. The fetch pulls 20 tweets per
-monitored account, 7 search queries, and the AI-only news tab. `BIRDY_ACCOUNTS`
-can provide multi-account rotation; if absent, the workflow synthesizes a
-single read-only account from `BIRD_AUTH_TOKEN` and `BIRD_CT0`. Account
-add/remove proposals are generated with `scripts/curate_twitter_accounts.py`;
-see [`docs/twitter-account-curation.md`](docs/twitter-account-curation.md) for
-the full contract. A weekly `twitter-account-explorer.yml` agent scouts for
-high-signal additions — favoring accounts vouched for by ones already monitored
-and on-topic for AI over merely viral handles — and opens reviewed PRs (as
-`app/claude`) when the evidence is strong enough.
+## Repository map
 
-**Account groups:** AI labs/company accounts; hyperscalers, executives, and key
-insiders; researchers, analysts, builders, and media.
-
-**Search queries:** AI models & products, breakthroughs, research papers,
-infrastructure & hardware, policy & safety, business & funding, open source &
-dev tools
-
-### RSS Feeds (Every 2 Hours)
-Official announcements from:
-- OpenAI Blog
-- Anthropic News
-- Google AI Blog
-- DeepMind Blog
-- Meta AI Blog
-- Hugging Face Blog
-- TechCrunch AI
-- The Verge AI
-- VentureBeat AI
-- arXiv CS.AI & CS.LG
-
-### Bluesky (Daily)
-Public API search for:
-- AI announcements
-- LLM releases
-- Model discussions
-- ML papers
-- Key researchers (Karpathy, etc.)
-
-### Reddit (Every 4 hours)
-RSS feeds (no API key needed):
-- r/MachineLearning
-- r/LocalLLaMA
-- r/artificial
-
-### Hacker News (Every 4 hours)
-MCP Server for:
-- Top AI/ML stories
-- Trending discussions
-
-## Manual Triggers
-
-All workflows can be triggered manually:
-1. Go to Actions tab
-2. Select workflow
-3. Click "Run workflow"
-
-## Self-Improvement System
-
-The pipeline includes a **self-improving meta-workflow** (`daily-improve.yml`) that:
-
-1. **Analyzes** yesterday's research output quality
-2. **Identifies** coverage gaps and data freshness issues
-3. **Searches** for new MCP servers, RSS feeds, and data sources
-4. **Creates PRs** with proposed improvements
-
-This creates a feedback loop where the system continuously improves its own methodology.
-
-See [docs/archive/](./docs/archive/) for improvement history and prior ideas.
-
-## Resources
-
-- [Claude Code Action](https://github.com/anthropics/claude-code-action)
-- [Model Context Protocol](https://modelcontextprotocol.io/)
-- [Reddit RSS Feeds](https://www.reddit.com/wiki/rss/)
-- [Bluesky API Docs](https://docs.bsky.app/)
+| Path | What it is |
+|---|---|
+| [`CLAUDE.md`](CLAUDE.md) | The operator's manual — load-bearing rules, lane contracts, failure modes |
+| [`ARA_DSL.md`](ARA_DSL.md) + [`ARA_CATALOG.json`](ARA_CATALOG.json) + [`COMPONENTS.md`](COMPONENTS.md) | The article component language: source format, machine catalog, human reference — kept in lockstep by CI |
+| [`data/agent-backends.json`](data/agent-backends.json) | Single source of truth for model routing + fallback chains |
+| [`scripts/`](scripts/) | 75 stdlib-first Python tools: validators, deterministic fallbacks, dedup gates, renderers |
+| [`docs/`](docs/) | Contracts and deep dives: [backend matrix](docs/backend-matrix.md), [model tickets](docs/model-tickets.md), [wiki schema](docs/wiki-schema.md), [headline dedup](docs/headline-dedupe.md), [AI industry map](docs/ai-industry-map.md), [OKF export](docs/okf.md) |
+| [`dashboard/`](dashboard/) | Vite + Bun + TypeScript SPA behind ara.guzus.xyz |
+| [`prompts/`](prompts/) | Agent prompts for the scheduled lanes |
 
 ## License
 
