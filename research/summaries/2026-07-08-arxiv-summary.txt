@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-08
+
+TOP 5 PAPERS:
+• SenseNova-Vision — one unified multimodal model matches specialized SOTA at detection, depth, normals, segmentation, pose (48pp).
+• Multiplayer World Models — first real-time multiplayer world model; 5B latent diffusion, 4-player Rocket League @20fps on one B200 (v2).
+• Doomed from the Start — hidden-state probes predict agent failure early, saving ~47% inference compute at 90% recall.
+• Danus — math-reasoning agents with shared fact-graph memory; built research-level proofs (incl. an AI-derived matroid result). Open source.
+• DT-Guard — "reasoning-trained, reasoning-free" safety guardrail; 4B beats 8B (dual-side F1 0.878).
+
+CATEGORIES: cs.AI 49 new + 135 cross-lists (8 Jul); sampled cs.LG/CL/CV/NE.
+
+Full report on GitHub.
