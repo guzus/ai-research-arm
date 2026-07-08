@@ -189,10 +189,10 @@ class ComposeTest(unittest.TestCase):
 
 class FrontPageRendererParityTest(unittest.TestCase):
     """Literal Python ports of scripts/render_front_page.mjs's extraction
-    logic (`section()`, the bullet filter, `stripMarkdown`, and the `lead`
-    selection chain), asserted against a fallback-composed digest. Guards the
-    contract that fallback days still populate the front page's masthead
-    lead + deck instead of an all-empty render with a `# `-prefixed lead."""
+    logic (`section()`, record extraction, `stripMarkdown`, and the `lead`
+    selection chain). Guards the contract that both fallback and Claude-written
+    digests populate the front page's masthead instead of regressing to a
+    `# `-prefixed lead."""
 
     @staticmethod
     def _js_section(markdown: str, name: str) -> str:
@@ -202,6 +202,14 @@ class FrontPageRendererParityTest(unittest.TestCase):
         )
         match = pattern.search(markdown)
         return match.group(1).strip() if match else ""
+
+    @classmethod
+    def _js_section_any(cls, markdown: str, names: list[str]) -> str:
+        for name in names:
+            value = cls._js_section(markdown, name)
+            if value:
+                return value
+        return ""
 
     @staticmethod
     def _js_strip_markdown(value: str) -> str:
@@ -216,7 +224,7 @@ class FrontPageRendererParityTest(unittest.TestCase):
         return re.sub(r"\s+", " ", value).strip()
 
     @classmethod
-    def _js_bullets(cls, text: str, limit: int) -> list[str]:
+    def _js_bullet_records(cls, text: str, limit: int) -> list[str]:
         out = []
         for line in text.split("\n"):
             line = line.strip()
@@ -228,6 +236,22 @@ class FrontPageRendererParityTest(unittest.TestCase):
             if len(out) >= limit:
                 break
         return out
+
+    @classmethod
+    def _js_paragraph_records(cls, text: str, limit: int) -> list[str]:
+        out = []
+        for block in re.split(r"\n{2,}", text):
+            stripped = cls._js_strip_markdown(block)
+            if stripped and not stripped.startswith("#"):
+                out.append(stripped)
+            if len(out) >= limit:
+                break
+        return out
+
+    @classmethod
+    def _js_section_records(cls, text: str, limit: int) -> list[str]:
+        records = cls._js_bullet_records(text, limit)
+        return records or cls._js_paragraph_records(text, limit)
 
     @classmethod
     def _js_paragraphs(cls, text: str, limit: int) -> list[str]:
@@ -259,7 +283,7 @@ class FrontPageRendererParityTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             markdown = self._compose_fallback_digest(Path(tmp))
 
-            executive = self._js_bullets(self._js_section(markdown, "Executive Summary"), 5)
+            executive = self._js_section_records(self._js_section(markdown, "Executive Summary"), 5)
             lead = (executive or self._js_paragraphs(markdown, 1))[0]
 
             self.assertGreaterEqual(len(executive), 2)
@@ -278,11 +302,53 @@ class FrontPageRendererParityTest(unittest.TestCase):
                 r"^## Executive Summary$.*?(?=^## )", "", markdown, flags=re.M | re.S
             )
 
-            executive = self._js_bullets(self._js_section(gutted, "Executive Summary"), 5)
+            executive = self._js_section_records(self._js_section(gutted, "Executive Summary"), 5)
             lead = (executive or self._js_paragraphs(gutted, 1))[0]
 
             self.assertEqual(executive, [])
             self.assertTrue(lead.startswith("#"))
+
+    def test_renderer_extracts_paragraph_lead_and_alternate_claude_headings(self):
+        markdown = (
+            "# AI Daily Digest - 2026-07-08\n\n"
+            "## Executive Summary\n\n"
+            "The day's clearest throughline is a widening gap between the US and China on model export policy. "
+            "Infrastructure economics are the second-order story.\n\n"
+            "## Lead Developments\n\n"
+            "**GPT-5.6's Thursday launch is the best-corroborated story of the day.** OpenAI previewed Sol, Terra, and Luna.\n\n"
+            "**Claude Cowork's mobile/web expansion is confirmed.** Three outlets reported it.\n\n"
+            "## Model Releases & Product Updates\n\n"
+            "- **OpenAI GPT-5.6 (Sol/Terra/Luna)** -- limited preview live.\n"
+            "- **Claude Cowork** -- now available on mobile and web.\n\n"
+            "## Policy, Safety & Market Context\n\n"
+            "The US-China export-control picture cuts both ways today.\n\n"
+            "On the market/infrastructure side: Microsoft is phasing external models out of Copilot-adjacent products.\n\n"
+            "On safety/incidents specifically: GitLost and HalluSquatting kept agent security in focus.\n"
+        )
+
+        executive = self._js_section_records(self._js_section(markdown, "Executive Summary"), 5)
+        breaking = self._js_section_records(
+            self._js_section_any(markdown, ["Breaking News", "Lead Developments"]), 3
+        )
+        models = self._js_section_records(
+            self._js_section_any(markdown, ["Model Releases & Updates", "Model Releases & Product Updates"]),
+            4,
+        )
+        policy_context = self._js_section_any(
+            markdown, ["Policy & Regulation", "Policy, Safety & Market Context"]
+        )
+        policy_paragraphs = self._js_paragraph_records(policy_context, 4)
+        policy = [policy_paragraphs[0], *policy_paragraphs[2:3]]
+        business = [policy_paragraphs[1]]
+        lead = (executive or self._js_paragraphs(markdown, 1))[0]
+
+        self.assertFalse(lead.startswith("#"))
+        self.assertIn("widening gap between the US and China", lead)
+        self.assertIn("GPT-5.6's Thursday launch", breaking[0])
+        self.assertIn("OpenAI GPT-5.6", models[0])
+        self.assertIn("US-China export-control", policy[0])
+        self.assertIn("GitLost", policy[1])
+        self.assertIn("Microsoft is phasing", business[0])
 
 
 if __name__ == "__main__":

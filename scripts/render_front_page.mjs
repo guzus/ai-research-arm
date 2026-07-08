@@ -50,12 +50,24 @@ function markdownLinks(value) {
   return links;
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 function section(name) {
   // End-of-input must be spelled (?![\s\S]) here: JS regex has no \z, and a
   // literal \z in the lookahead truncated every section at its first letter
   // "z" ("optimizer", "Normalizing", …), silently dropping the rest.
-  const pattern = new RegExp(`^##\\s+${name}\\s*$([\\s\\S]*?)(?=^##\\s+|(?![\\s\\S]))`, "mi");
+  const pattern = new RegExp(`^##\\s+${escapeRegExp(name)}\\s*$([\\s\\S]*?)(?=^##\\s+|(?![\\s\\S]))`, "mi");
   return markdown.match(pattern)?.[1]?.trim() ?? "";
+}
+
+function sectionAny(names) {
+  for (const name of names) {
+    const value = section(name);
+    if (value) return value;
+  }
+  return "";
 }
 
 function bulletRecords(text, limit) {
@@ -66,6 +78,19 @@ function bulletRecords(text, limit) {
     .map((raw) => ({ raw, text: stripMarkdown(raw), links: markdownLinks(raw) }))
     .filter((item) => item.text)
     .slice(0, limit);
+}
+
+function paragraphRecords(text, limit) {
+  return text
+    .split(/\n{2,}/)
+    .map((raw) => ({ raw, text: stripMarkdown(raw), links: markdownLinks(raw) }))
+    .filter((item) => item.text && !item.text.startsWith("#"))
+    .slice(0, limit);
+}
+
+function sectionRecords(text, limit) {
+  const records = bulletRecords(text, limit);
+  return records.length ? records : paragraphRecords(text, limit);
 }
 
 function bullets(text, limit) {
@@ -80,18 +105,33 @@ function paragraphs(text, limit) {
     .slice(0, limit);
 }
 
-const executive = bullets(section("Executive Summary"), 5);
-const executiveRecords = bulletRecords(section("Executive Summary"), 5);
-const breaking = bullets(section("Breaking News"), 3);
-const breakingRecords = bulletRecords(section("Breaking News"), 3);
-const models = bullets(section("Model Releases & Updates"), 3);
-const modelRecords = bulletRecords(section("Model Releases & Updates"), 3);
-const research = bullets(section("Research Highlights"), 5);
-const researchRecords = bulletRecords(section("Research Highlights"), 5);
-const business = bullets(section("Funding & Business"), 4);
-const businessRecords = bulletRecords(section("Funding & Business"), 4);
-const policy = bullets(section("Policy & Regulation"), 3);
-const policyRecords = bulletRecords(section("Policy & Regulation"), 3);
+const executiveSection = section("Executive Summary");
+const executiveRecords = sectionRecords(executiveSection, 5);
+const executive = executiveRecords.map((item) => item.text);
+
+const leadDevelopmentsSection = sectionAny(["Breaking News", "Lead Developments"]);
+const breakingRecords = sectionRecords(leadDevelopmentsSection, 3);
+const breaking = breakingRecords.map((item) => item.text);
+
+const modelSection = sectionAny(["Model Releases & Updates", "Model Releases & Product Updates"]);
+const modelRecords = sectionRecords(modelSection, 4);
+const models = modelRecords.map((item) => item.text);
+
+const researchRecords = sectionRecords(section("Research Highlights"), 5);
+const research = researchRecords.map((item) => item.text);
+
+const policyContextSection = sectionAny(["Policy & Regulation", "Policy, Safety & Market Context"]);
+let policyRecords = sectionRecords(policyContextSection, 3);
+let businessRecords = sectionRecords(section("Funding & Business"), 4);
+if (businessRecords.length === 0 && policyContextSection) {
+  const policyContextParagraphs = paragraphRecords(policyContextSection, 4);
+  if (policyContextParagraphs.length >= 2) {
+    policyRecords = [policyContextParagraphs[0], ...policyContextParagraphs.slice(2, 3)];
+    businessRecords = [policyContextParagraphs[1]];
+  }
+}
+const business = businessRecords.map((item) => item.text);
+const policy = policyRecords.map((item) => item.text);
 const quoteBlock = markdown.match(/## Quote of the Day\s+>\s*([\s\S]*?)(?=\n---|\n##\s+|$)/i)?.[1] ?? "";
 const quote = stripMarkdown(quoteBlock.replace(/^>\s?/gm, " "));
 
@@ -197,6 +237,36 @@ async function richSourceLinks() {
   return out;
 }
 
+const imagePriorityText = [lead, ...breaking, ...models, ...policy, ...business]
+  .join(" ")
+  .toLowerCase();
+
+const IMAGE_PRIORITY_TERMS = [
+  "gpt-5.6",
+  "openai",
+  "claude",
+  "anthropic",
+  "deepseek",
+  "export",
+  "microsoft",
+  "meta",
+  "muse",
+  "sambanova",
+  "zml",
+  "cohere",
+  "together ai",
+];
+
+function imageCandidateScore(link) {
+  const haystack = `${link.label || ""} ${link.story || ""}`.toLowerCase();
+  let score = 0;
+  for (const term of IMAGE_PRIORITY_TERMS) {
+    if (!haystack.includes(term)) continue;
+    score += imagePriorityText.includes(term) ? 10 : 1;
+  }
+  return score;
+}
+
 // Prioritised, de-duped, filtered candidate links for the lead image.
 // Digest links first — uniqueSourceLinks starts with the executive-summary
 // and breaking records, so a usable og:image there is a photo that MATCHES
@@ -208,12 +278,12 @@ async function imageCandidateLinks() {
   const all = [...uniqueSourceLinks(), ...(await richSourceLinks())];
   const seen = new Set();
   const out = [];
-  for (const link of all) {
+  for (const [index, link] of all.entries()) {
     if (!isImageCandidate(link.url) || seen.has(link.url)) continue;
     seen.add(link.url);
-    out.push(link);
+    out.push({ ...link, index, score: imageCandidateScore(link) });
   }
-  return out.slice(0, 30);
+  return out.sort((a, b) => b.score - a.score || a.index - b.index).slice(0, 30);
 }
 
 // Content-type headers lie often enough (CDN error pages, mislabeled
