@@ -107,6 +107,13 @@
       "backend": "claude",
       "notes": "Primary 3h Twitter/X processor (tier slot named 'claude' for historical reasons)."
     },
+    "twitter-primary-repair": {
+      "workflow": "hourly-twitter.yml",
+      "tier": "claude",
+      "harness": "agent-run",
+      "backend": "claude",
+      "notes": "Claude-only repair writer for the primary Twitter/X tier when the first Claude pass returns without required files."
+    },
     "twitter-judge": {
       "workflow": "hourly-twitter.yml",
       "tier": "claude",

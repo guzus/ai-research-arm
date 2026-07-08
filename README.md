@@ -147,7 +147,7 @@ drift. Full per-lane matrix: [`docs/backend-matrix.md`](docs/backend-matrix.md).
 ```mermaid
 flowchart LR
     subgraph runtime["⚙️ Runtime-routed lanes — lane: → data/agent-backends.json"]
-        lanes0["arxiv · bluesky · community<br/>digest-audio-script · digest-synthesis · digest-synthesis-fallback<br/>model-timeline · rss · twitter-autoresearch<br/>twitter-judge · twitter-primary · wiki-ingest<br/><i>12 lanes</i>"]
+        lanes0["arxiv · bluesky · community<br/>digest-audio-script · digest-synthesis · digest-synthesis-fallback<br/>model-timeline · rss · twitter-autoresearch<br/>twitter-judge · twitter-primary · twitter-primary-repair<br/>wiki-ingest<br/><i>13 lanes</i>"]
         strict0["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
         strict1["🔒 twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
         gendef["generative-research-default<br/><i>dispatch default</i>"]

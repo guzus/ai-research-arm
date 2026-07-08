@@ -12,7 +12,10 @@ TIMESTAMP: {{timestamp}}
 
 PRIOR CONTEXT (read these BEFORE writing — multi-day arcs are first-class):
 - Today's file so far: {{output_dir}}/{{date}}.md
-  (may already contain earlier cycles from today; append a new section at the end)
+  (may already contain earlier cycles from today. If a section for
+  `## {{hour}}:00 UTC` already exists because this is a rerun, replace that
+  same-hour section instead of appending a duplicate. Otherwise append a new
+  section at the end.)
 - Yesterday's full digest: {{output_dir}}/{{yesterday}}.md
   (may not exist on the first day; if Read fails, skip)
 {{cross_harness_note}}
@@ -25,12 +28,19 @@ HARD CAPS: {{bird_budget}} {{follow_up_tools}} follow-up calls + {{curl_budget}}
 Use them when verification matters; quiet cycles should use fewer.
 
 INSTRUCTIONS:
+0. Reason from first principles. Stress-test the premise that each candidate
+   tweet is actually AI-specific and publication-worthy before promoting it
+   into the public brief.
 1. Read PRIOR CONTEXT first. Note continuing narratives. A continuing
    thread should not be re-reported from scratch; identify what changed.
    Top Stories must lead with what happened in the current cycle, not with
    prior-cycle recap. If prior context matters, fold it into the Evidence,
    Counter, or Watch text after the current-cycle news is stated.
 2. Read the raw input data and skim for signal. Most tweets are noise.
+   The public brief is AI-only. Do not include personal life updates,
+   sports, generic politics, generic outrage, engagement-bait, or unrelated
+   viral tweets as Top Stories, Quick hits, Watch items, or headline alerts
+   unless they materially change the AI landscape.
 3. Identify 2-5 MAIN STORIES from this {{cycle_window}} window. A main story:
    - Materially changes the AI landscape, OR
    - Adds concrete new data to a continuing thread, AND
@@ -61,7 +71,8 @@ INSTRUCTIONS:
    the tooling failure or command output to readers.
 
 FORMAT: Append to the daily file (create if doesn't exist).
-If the file already exists, append the new section at the end.
+If the file already exists and already has a section for `## {{hour}}:00 UTC`,
+replace that same-hour section. Otherwise append the new section at the end.
 If it doesn't exist, start with:
 `# Twitter/X AI Pulse{{title_suffix}} — {{date}}`
 
@@ -103,7 +114,8 @@ Then repeat the same `<article class="twitter-story" data-rank="2">…</article>
 shape for the next story.
 
 ### Quick hits
-- [Concrete item with @handle + URL. Specific numbers, names, dates.]
+- [Concrete AI item with @handle + URL. Specific numbers, names, dates. Do
+  not pad with non-AI viral tweets.]
 
 ### 🚩 Skeptic's corner
 - [Loud claim that did not corroborate, with reason and URL.]
@@ -121,7 +133,7 @@ If no main stories exist, write:
 ## {{hour}}:00 UTC
 **Cycle summary**: Quiet period — no main stories this window.
 ### Quick hits
-- [Whatever notable items did appear, even if minor]
+- No AI-specific quick hits cleared the publication bar this cycle.
 
 CONSTRAINTS:
 - Be specific. "Big funding round" → "$200M Series C, $2B post-money, led by X."

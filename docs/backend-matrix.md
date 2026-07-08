@@ -89,12 +89,13 @@ Reading notes:
 | research-issue (×2 step variants) | `research-issue.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | rss | `hourly-rss.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted); then `deterministic_rss_digest.py` |
 | twitter-account-explorer | `twitter-account-explorer.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| twitter-autoresearch (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted); then `deterministic_twitter_digest.py` |
+| twitter-autoresearch (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
 | twitter-deepseek (tier:deepseek-claude-code) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | DeepSeek V4 Flash via Fireworks | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | hard fail (strict — never walks the chain); then `deterministic_twitter_digest.py` |
 | twitter-deepseek-pi (tier:deepseek-pi) | `hourly-twitter.yml` | pi · run-pi-container (CI-enforced mirror) | fireworks (pi built-in) | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | — |
 | twitter-fireworks-pi (tier:fireworks-pi) | `hourly-twitter.yml` | pi · run-pi-container (CI-enforced mirror) | fireworks (pi built-in) | `accounts/fireworks/models/kimi-k2p7` | `FIREWORKS_API_KEY` | — |
-| twitter-judge (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted); then `deterministic_twitter_digest.py` |
-| twitter-primary (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted); then `deterministic_twitter_digest.py` |
+| twitter-judge (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
+| twitter-primary (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
+| twitter-primary-repair (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
 | twitter-zai (tier:zai-glm-5p2) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain); then `deterministic_twitter_digest.py` |
 | wiki-ingest | `wiki-ingest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
 | zai-canary · PINNED | `zai-claude-code-canary.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
@@ -111,7 +112,7 @@ Reading notes:
 - `daily-youtube.yml`
 - `liveness-check.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude`; native path serves `claude-sonnet-5`. 25 SSOT lanes (+2 dispatch execution paths) across 23 workflows; 7 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude`; native path serves `claude-sonnet-5`. 26 SSOT lanes (+2 dispatch execution paths) across 23 workflows; 7 workflows run no model._
 
 <!-- END GENERATED BACKEND MATRIX -->
 
