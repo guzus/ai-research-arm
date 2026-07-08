@@ -106,7 +106,7 @@ jobs:
       # to job.status (and so hooker-telemetry's `if: always()` step still
       # fires). Without the inspect step, this flag would silently mask
       # timeouts as success.
-      - name: Ingest digest into wiki via Fireworks
+      - name: Ingest digest into wiki via Claude
         id: ingest
         timeout-minutes: 90
         continue-on-error: true
@@ -124,7 +124,7 @@ jobs:
             --model opus --max-turns 80 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),Task,TodoWrite"
           expected-paths: |
             research/wiki/
-          label: Wiki Fireworks ingest
+          label: Wiki Claude ingest
           prompt: |
             You maintain the LLM Wiki: a compounding, interlinked knowledge
             base of markdown pages at research/wiki/. One page per
@@ -139,15 +139,15 @@ jobs:
             already exists is the primary failure mode — guard against it.
 
             CONTEXT
-              TODAY:           $DATE_TODAY
-              YESTERDAY:       $DATE_YESTERDAY
-              TIMESTAMP:       $TIMESTAMP
+              TODAY:           ${{ steps.datetime.outputs.date }}
+              YESTERDAY:       ${{ steps.datetime.outputs.yesterday }}
+              TIMESTAMP:       ${{ steps.datetime.outputs.timestamp }}
               SCHEMA / CONTRACT:  docs/wiki-schema.md
               WIKI ROOT:          research/wiki/
               WIKI INDEX:         research/wiki/index.md
               WIKI LOG:           research/wiki/log.md
               PAGE DIRS:          research/wiki/{entities,concepts,themes}/
-              CURATED INPUT:      research/digest/$DATE_TODAY-digest.md
+              CURATED INPUT:      research/digest/${{ steps.datetime.outputs.date }}-digest.md
               MODEL TICKETS:      research/models/tickets/*.md
               SEARCH CLI:         uv run python scripts/wiki_search.py "<query>"
               VALIDATOR:          uv run python scripts/check_wiki.py
@@ -163,7 +163,7 @@ jobs:
               schema wins.
 
             STEP 1 — READ THE CURATED INPUT (NOT THE FIREHOSE).
-              Read today's digest at research/digest/$DATE_TODAY-digest.md.
+              Read today's digest at research/digest/${{ steps.datetime.outputs.date }}-digest.md.
               If that exact file does not exist (the digest can cross
               midnight UTC and land under yesterday's date, or a manual
               dispatch can run on an off-day), `ls research/digest/` and use
@@ -177,7 +177,7 @@ jobs:
               research/community/, research/arxiv/, or any other raw-source
               directory; the digest is the curated distillation of those and
               reading them again would re-introduce the noise the digest
-              exists to remove. Do not use WebSearch in this Fireworks-routed
+              exists to remove. Do not use WebSearch in this Claude-routed
               lane; if a claim is not supported by the digest or model tickets,
               leave it out or mark it as unresolved rather than expanding the
               research scope.
@@ -237,7 +237,7 @@ jobs:
               structure the schema/index already uses — do not invent a new
               one). Then APPEND exactly ONE entry to research/wiki/log.md:
 
-                ## [$DATE_TODAY] ingest | <one-line summary of what changed>
+                ## [${{ steps.datetime.outputs.date }}] ingest | <one-line summary of what changed>
 
               The summary should name the created vs updated pages at a
               glance (e.g. "created 2 (gpt-5-2, foo-bench), updated 4
@@ -263,7 +263,7 @@ jobs:
 
             STEP 6 — COMMIT (Bash).
               git add research/wiki/
-              git commit -m "Wiki ingest $DATE_TODAY" || echo "No changes"
+              git commit -m "Wiki ingest ${{ steps.datetime.outputs.date }}" || echo "No changes"
 
               (`git add research/wiki/` includes the regenerated index.json.)
               Do NOT run `git push`. A later workflow step publishes.
@@ -298,16 +298,16 @@ jobs:
       # would report a green run. exit 1 here lets later `if: always()`
       # steps (telemetry) still fire while flipping job.status to failure
       # when it should be.
-      - name: Inspect Fireworks outcome
+      - name: Inspect Claude outcome
         if: always()
         env:
           OUTCOME: ${{ steps.ingest.outcome }}
         run: |
           if [ "$OUTCOME" = "failure" ]; then
-            echo "::error::Wiki Fireworks ingest step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
+            echo "::error::Wiki Claude ingest step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
             exit 1
           fi
-          echo "Wiki Fireworks ingest step succeeded."
+          echo "Wiki Claude ingest step succeeded."
 
       # Mechanically enforce the "never delete a page" invariant. The prompt
       # says it, but a prompt is not a guarantee. Diff exactly the agent's

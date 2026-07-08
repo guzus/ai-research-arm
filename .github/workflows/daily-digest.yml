@@ -162,7 +162,7 @@ jobs:
           expected-paths: |
             research/digest/
             research/summaries/
-          label: Daily digest Fireworks synthesizer
+          label: Daily digest Claude synthesizer
           prompt: |
             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
 
@@ -269,7 +269,7 @@ jobs:
           expected-paths: |
             research/digest/
             research/summaries/
-          label: Daily digest Fireworks local-source synthesizer
+          label: Daily digest Claude local-source synthesizer
           prompt: |
             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
 
@@ -441,7 +441,7 @@ jobs:
             research/digest/
           label: Daily digest workflow output
 
-      - name: Rewrite summary as ARA spoken script (GLM-5.2 via Fireworks)
+      - name: Rewrite summary as ARA spoken script (Claude)
         if: success()
         continue-on-error: true
         uses: ./.github/actions/agent-run
@@ -454,7 +454,7 @@ jobs:
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*)"
           expected-paths: |
             research/summaries/
-          label: Digest spoken-script GLM-5.2 Fireworks rewrite
+          label: Digest spoken-script Claude rewrite
           prompt: |
             You are writing the daily ARA broadcast — a TWO-HOST AI-news podcast
             with banter between Speaker 1 (anchor, deep voice) and Speaker 2
@@ -523,7 +523,7 @@ jobs:
 
             STEP 4 — Commit:
             git add research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
-            git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA two-host Fireworks rewrite)" || echo "No changes"
+            git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA two-host Claude rewrite)" || echo "No changes"
 
       - name: Generate audio digest with Gemini 3.1 Flash TTS
         if: success()
