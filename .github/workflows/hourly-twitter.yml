@@ -401,6 +401,8 @@ jobs:
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Process tweets with Claude (primary tier)
+        id: twitter-claude-agent
+        continue-on-error: true
         if: >-
           steps.backend.outputs.name == 'claude'
           && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
@@ -424,6 +426,35 @@ jobs:
             research/summaries/
           label: Twitter primary Claude processor
           prompt: ${{ steps.render.outputs.prompt }}
+
+      - name: Deterministic Twitter fallback (claude tier)
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && steps.twitter-claude-agent.outcome == 'failure'
+          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+        env:
+          OUTPUT_DIR: ${{ steps.const.outputs.output_dir }}
+          SUMMARY_SLUG: ${{ steps.const.outputs.summary_slug }}
+          TITLE_SUFFIX: ${{ steps.const.outputs.title_suffix }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+          HEADLINES_FILE: ${{ steps.const.outputs.headlines_file }}
+        run: |
+          set -euo pipefail
+          echo "::warning::Claude primary agent path failed; writing deterministic Twitter fallback."
+          python3 scripts/deterministic_twitter_digest.py \
+            --input-dir .twitter-input/bird \
+            --out-dir "$OUTPUT_DIR" \
+            --summaries-dir research/summaries \
+            --date "$DATE" \
+            --hour "$HOUR" \
+            --timestamp "$TIMESTAMP" \
+            --title-suffix "$TITLE_SUFFIX" \
+            --summary-slug "$SUMMARY_SLUG" \
+            --headlines-file "$HEADLINES_FILE"
+          git add "$OUTPUT_DIR/" research/summaries/
+          git commit -m "Twitter deterministic fallback ${TIMESTAMP}" || echo "No deterministic Twitter changes"
 
       - name: Process tweets with DeepSeek v4 Flash via Fireworks (deepseek-claude-code tier)
         id: twitter-deepseek-agent
@@ -524,6 +555,19 @@ jobs:
             --summary-slug "$SUMMARY_SLUG"
           git add "$OUTPUT_DIR/" research/summaries/
           git commit -m "Twitter (Z.ai GLM-5.2) deterministic fallback ${TIMESTAMP}" || echo "No deterministic Twitter changes"
+
+      - name: Require Claude primary output
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.twitter-output-base.outputs.sha }}
+          expected-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
+          label: Twitter primary Claude workflow output
 
       - name: Require DeepSeek comparison output
         if: steps.backend.outputs.name == 'deepseek-claude-code'

@@ -16,6 +16,7 @@ class DeterministicTwitterDigestTest(unittest.TestCase):
             input_dir = root / "bird"
             out_dir = root / "research" / "twitter-deepseek"
             summaries_dir = root / "research" / "summaries"
+            headlines_file = summaries_dir / "2026-06-29-twitter-deepseek-10h-headlines.json"
             input_dir.mkdir()
             (input_dir / "search-ai.json").write_text(
                 json.dumps(
@@ -52,6 +53,8 @@ class DeterministicTwitterDigestTest(unittest.TestCase):
                     " (DeepSeek v4 Flash)",
                     "--summary-slug",
                     "twitter-deepseek",
+                    "--headlines-file",
+                    str(headlines_file),
                 ]
             )
 
@@ -62,6 +65,7 @@ class DeterministicTwitterDigestTest(unittest.TestCase):
             self.assertIn("@openai", digest)
             self.assertIn("https://x.com/openai/status/123", digest)
             self.assertIn("Twitter/X AI Pulse (DeepSeek v4 Flash)", summary)
+            self.assertEqual(json.loads(headlines_file.read_text(encoding="utf-8")), [])
 
 
 if __name__ == "__main__":
