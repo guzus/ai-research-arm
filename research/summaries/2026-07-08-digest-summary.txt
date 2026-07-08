@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-07-08 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] _No new posts in the 24h window._ Newest OpenAI item ("Australian Payments
+• [Hacker News] The revenge of the philosophy majors: 72 points, 99 comments - discuss
+• [Reddit] [TorchJD: Training with multiple losses in PyTorch [P]](https://www.reddit.com/r/MachineLearning/co…
+• [Expert Blogs] sqlite-utils 4.0, now with database schema migrations
+• [Bluesky] @emollick.bsky.social: "Even before the agentic revolution, prompting tricks stopped being very val…
+
+SOURCES: 7/8 lanes had data; missing: Twitter/X
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
