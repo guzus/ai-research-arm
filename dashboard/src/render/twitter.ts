@@ -71,6 +71,26 @@ function extractCycleSummary(body: string): string {
   return match ? match[1].trim() : '';
 }
 
+function isEmptyCyclePlaceholderMarkdown(md: string): boolean {
+  const text = stripMarkdown(md)
+    .replace(/(^|\s)[-–—]\s+/g, '$1')
+    .replace(/[•*]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/[.。]+$/, '')
+    .toLowerCase();
+  if (!text) return true;
+  return /^(?:none|no(?:\s+new)?(?:\s+corroborated)?(?:\s+top)?(?:\s+stories?|updates?|items?|posts?|signal|signals?|content|developments?))(?:\s+(?:this|in\s+this)\s+(?:cycle|window|period|run))?$/.test(text);
+}
+
+function stripEmptyCyclePlaceholderLines(md: string): string {
+  return md
+    .split('\n')
+    .filter((line) => !isEmptyCyclePlaceholderMarkdown(line))
+    .join('\n')
+    .trim();
+}
+
 function extractSectionText(body: string, label: string): string {
   const re = new RegExp('\\*\\*' + label + '\\*\\*:\\s*([\\s\\S]*?)(?=\\n\\*\\*(?:Previously|Evidence|Counter / contradicting|Verification|Watch)\\*\\*:|\\n####\\s+\\d+\\.|$)', 'i');
   const match = body.match(re);
@@ -472,14 +492,14 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
     const title = section.title || options.currentDateTitle;
     const timeInfo = options.parseUtcTime(section.title, options.currentDateStr);
     const cycleAnchor = 'cycle-' + section.title.replace(/[:\s]/g, '').toLowerCase();
-    const cycleSummary = extractCycleSummary(section.body);
+    const cycleSummary = stripEmptyCyclePlaceholderLines(extractCycleSummary(section.body));
     const stories = parseTwitterStories(section.body);
     const displayTime = timeInfo
       ? '<span class="twitter-cycle-time">' + escapeHtml(timeInfo.utc) + '</span><span class="local-time">' + escapeHtml(timeInfo.local) + '</span>'
       : '<span class="twitter-cycle-time">' + escapeHtml(title) + '</span>';
     const leadText = cycleSummary
       ? cleanPublicLeadText(stripMarkdown(cycleSummary))
-      : truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 620);
+      : truncateText(cleanPublicLeadText(stripMarkdown(stripEmptyCyclePlaceholderLines(section.body))), 620);
     mindshareCycles.push({
       anchor: cycleAnchor,
       body: section.body,
@@ -494,10 +514,12 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
       detail: summarizeTwitterTimeline(leadText, stories, section.body),
     });
 
-    const fallbackBody = section.body
+    const fallbackBody = stripEmptyCyclePlaceholderLines(section.body
       .replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '')
-      .replace(/###\s+[^\n]*[Ss]keptic[^\n]*\n[\s\S]*?(?=\n#{2,3}\s|$)/i, '')
-      .trim();
+      .replace(/###\s+[^\n]*[Ss]keptic[^\n]*\n[\s\S]*?(?=\n#{2,3}\s|$)/i, ''));
+    const fallbackHtml = fallbackBody && !isEmptyCyclePlaceholderMarkdown(fallbackBody)
+      ? '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + options.twitterMarkdownToHtml(fallbackBody) + '</div>'
+      : '';
     const structuredStoryCards = renderStructuredTwitterStories(section.body, options.searchTerm);
     const storyCards = structuredStoryCards || stories.map((story) => {
       const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
@@ -546,7 +568,7 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
         '      <p class="twitter-brief-text">' + highlightPlainText(leadText, options.searchTerm) + '</p>',
         '    </div>',
         '  </div>',
-        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + options.twitterMarkdownToHtml(fallbackBody) + '</div>',
+        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : fallbackHtml,
         skepticHtml,
         '</section>',
       ].join('\n'),
