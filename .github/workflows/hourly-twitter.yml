@@ -427,34 +427,87 @@ jobs:
           label: Twitter primary Claude processor
           prompt: ${{ steps.render.outputs.prompt }}
 
-      - name: Deterministic Twitter fallback (claude tier)
+      - name: Repair missing Twitter output with Claude (primary tier)
+        id: twitter-claude-repair
+        continue-on-error: true
         if: >-
           steps.backend.outputs.name == 'claude'
           && steps.twitter-claude-agent.outcome == 'failure'
           && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+        uses: ./.github/actions/agent-run
         env:
-          OUTPUT_DIR: ${{ steps.const.outputs.output_dir }}
-          SUMMARY_SLUG: ${{ steps.const.outputs.summary_slug }}
-          TITLE_SUFFIX: ${{ steps.const.outputs.title_suffix }}
-          DATE: ${{ steps.datetime.outputs.date }}
-          HOUR: ${{ steps.datetime.outputs.hour }}
-          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
-          HEADLINES_FILE: ${{ steps.const.outputs.headlines_file }}
-        run: |
-          set -euo pipefail
-          echo "::warning::Claude primary agent path failed; writing deterministic Twitter fallback."
-          python3 scripts/deterministic_twitter_digest.py \
-            --input-dir .twitter-input/bird \
-            --out-dir "$OUTPUT_DIR" \
-            --summaries-dir research/summaries \
-            --date "$DATE" \
-            --hour "$HOUR" \
-            --timestamp "$TIMESTAMP" \
-            --title-suffix "$TITLE_SUFFIX" \
-            --summary-slug "$SUMMARY_SLUG" \
-            --headlines-file "$HEADLINES_FILE"
-          git add "$OUTPUT_DIR/" research/summaries/
-          git commit -m "Twitter deterministic fallback ${TIMESTAMP}" || echo "No deterministic Twitter changes"
+          BIRDY_READ_ONLY: "1"
+          BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
+        with:
+          lane: twitter-primary-repair
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          claude-args: |
+            --model opus --max-turns 40 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*)"
+          expected-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
+          allowed-paths: |
+            research/twitter/
+            research/summaries/
+          label: Twitter primary Claude repair writer
+          prompt: |
+            The primary Claude Twitter/X monitor returned without writing
+            its required files. Repair that now using only local files.
+            Reason from first principles: for each candidate tweet, decide
+            whether the underlying event is actually AI-specific and
+            publication-worthy, not merely viral or from an AI-adjacent
+            account. Stress-test the premise that there is a story before
+            writing it.
+
+            CONTEXT
+              DATE: ${{ steps.datetime.outputs.date }}
+              HOUR: ${{ steps.datetime.outputs.hour }}
+              TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+              DAILY FILE: ${{ steps.const.outputs.digest_file }}
+              SUMMARY FILE: ${{ steps.const.outputs.summary_file }}
+              HEADLINES FILE: ${{ steps.const.outputs.headlines_file }}
+              RAW INPUT: .twitter-input/bird/all.json
+              PRIOR DAY: research/twitter/${{ steps.datetime.outputs.yesterday }}.md
+
+            HARD RULES
+              - This is still the production Claude lane. Do not write a
+                deterministic quick-hit dump.
+              - Use tool calls to read the raw input and write all three
+                output files. Do not merely respond in chat.
+              - The public brief is AI-only. Exclude personal life updates,
+                sports, generic politics, generic outrage, engagement-bait,
+                and unrelated viral tweets unless the item materially changes
+                the AI landscape.
+              - If the daily file already has a section for
+                `## ${{ steps.datetime.outputs.hour }}:00 UTC`, replace that
+                same-hour section instead of appending a duplicate.
+              - If there are fewer than three truly alert-worthy AI stories,
+                write `[]` to the headlines JSON. Do not pad.
+
+            OUTPUT CONTRACT
+              1. Write or update `${{ steps.const.outputs.digest_file }}`.
+                 If no main AI stories exist, use:
+                   ## ${{ steps.datetime.outputs.hour }}:00 UTC
+                   **Cycle summary**: Quiet period — no analyst-grade AI stories this window.
+                   ### Quick hits
+                   - No AI-specific quick hits cleared the publication bar this cycle.
+                   ### Skeptic's corner
+                   - None this cycle.
+                   ### Watch list (next 24h)
+                   - Next scheduled Twitter/X AI monitor run.
+                   ### Research notes
+                   - Source checks issued this cycle: local Twitter/X snapshot only.
+              2. Write `${{ steps.const.outputs.summary_file }}` as a concise
+                 Telegram summary. If quiet, say no major AI updates; do not
+                 list off-topic tweets.
+              3. Write `${{ steps.const.outputs.headlines_file }}` as a JSON
+                 array, usually `[]` for a quiet cycle.
+              4. Commit exactly those outputs:
+                   git add "${{ steps.const.outputs.digest_file }}" "${{ steps.const.outputs.summary_file }}" "${{ steps.const.outputs.headlines_file }}"
+                   git commit -m "Twitter Claude repair ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
 
       - name: Process tweets with DeepSeek v4 Flash via Fireworks (deepseek-claude-code tier)
         id: twitter-deepseek-agent
