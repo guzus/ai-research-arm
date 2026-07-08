@@ -302,10 +302,10 @@ gh workflow run generative-research.yml \
 The interesting engineering is less "call an LLM" and more "survive every way
 this can break":
 
-- **Deterministic fallbacks.** Every scheduled lane has a model-free composer
-  (`scripts/deterministic_*_digest.py`) that writes the day's artifact from
-  already-fetched data when the agent path fails. A provider outage never
-  means a missing daily file.
+- **Fail-closed publishing.** Scheduled editorial lanes must prove fresh
+  Claude-authored output. If the agent path writes nothing or produces
+  sub-floor content, the workflow goes red instead of publishing a
+  model-free fallback summary.
 - **Output contracts.** Agent lanes must *prove* their work:
   [`require-output`](.github/actions/require-output) asserts the expected
   artifacts changed, and [`require-diff-scope`](.github/actions/require-diff-scope)

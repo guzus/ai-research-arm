@@ -50,7 +50,7 @@
       "workflow": "hourly-rss.yml",
       "harness": "agent-run",
       "backend": "claude",
-      "notes": "2h RSS digest; deterministic_rss_digest.py backstops output."
+      "notes": "2h RSS digest. Fails closed when Claude produces no output; no automatic deterministic fallback."
     },
     "bluesky": {
       "workflow": "2h-bluesky.yml",
@@ -62,13 +62,13 @@
       "workflow": "4h-community.yml",
       "harness": "agent-run",
       "backend": "claude",
-      "notes": "HN + Reddit digests; deterministic_community_digest.py backstops output."
+      "notes": "HN + Reddit digests. Fails closed when Claude produces no output; no automatic deterministic fallback."
     },
     "arxiv": {
       "workflow": "daily-arxiv.yml",
       "harness": "agent-run",
       "backend": "claude",
-      "notes": "Daily arXiv sweep; deterministic_arxiv_digest.py backstops output."
+      "notes": "Daily arXiv sweep. Fails closed when Claude produces no output; no automatic deterministic fallback."
     },
     "digest-synthesis": {
       "workflow": "daily-digest.yml",
@@ -134,7 +134,7 @@
       "harness": "agent-run",
       "backend": "fireworks-deepseek-v4-flash",
       "strict": true,
-      "notes": "6h DeepSeek comparison tier. STRICT: comparison artifacts must be attributable to the labeled backend, so this lane never walks the fallback chain (fixes a pre-SSOT bug where a Fireworks outage silently produced native-Claude output labeled DeepSeek); deterministic_twitter_digest.py backstops output freshness with honest labeling."
+      "notes": "6h DeepSeek comparison tier. STRICT: comparison artifacts must be attributable to the labeled backend, so this lane never walks the fallback chain and has no automatic deterministic fallback."
     },
     "twitter-zai": {
       "workflow": "hourly-twitter.yml",
@@ -142,7 +142,7 @@
       "harness": "agent-run",
       "backend": "zai-glm-5p2",
       "strict": true,
-      "notes": "Manual-default Z.ai comparison tier. STRICT: comparison artifacts must be attributable to Z.ai, so this lane never walks the fallback chain; deterministic_twitter_digest.py backstops output freshness with honest labeling."
+      "notes": "Manual-default Z.ai comparison tier. STRICT: comparison artifacts must be attributable to Z.ai, so this lane never walks the fallback chain and has no automatic deterministic fallback."
     },
     "zai-canary": {
       "workflow": "zai-claude-code-canary.yml",
