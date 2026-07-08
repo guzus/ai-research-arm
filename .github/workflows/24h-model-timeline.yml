@@ -113,7 +113,7 @@ jobs:
       # surface to job.status (and so hooker-telemetry's `if: always()`
       # step still fires). Without the inspect step, this flag would
       # silently mask timeouts as success — see the inspect step.
-      - name: CRUD model tickets via Fireworks
+      - name: CRUD model tickets via Claude
         id: crud
         timeout-minutes: 90
         continue-on-error: true
@@ -131,7 +131,7 @@ jobs:
             --model opus --max-turns 60 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),Bash(curl:*),Task,TodoWrite"
           expected-paths: |
             research/models/
-          label: Model-ticket Fireworks CRUD
+          label: Model-ticket Claude CRUD
           prompt: |
             You maintain a persistent set of model-release tickets. Each
             ticket tracks one shipping artifact (a model release, a
@@ -145,14 +145,14 @@ jobs:
             emit.
 
             CONTEXT
-              TODAY:           $DATE_TODAY
-              YESTERDAY:       $DATE_YESTERDAY
-              TIMESTAMP:       $TIMESTAMP
+              TODAY:           ${{ steps.datetime.outputs.date }}
+              YESTERDAY:       ${{ steps.datetime.outputs.yesterday }}
+              TIMESTAMP:       ${{ steps.datetime.outputs.timestamp }}
               SCHEMA / CONTRACT:  docs/model-tickets.md
               TICKETS DIR:        research/models/tickets/
               RAW SIGNAL:         /tmp/bird/*.json
               VALIDATOR:          scripts/check_model_tickets.py
-              DAILY-DIFF TARGET:  research/models/$DATE_TODAY-timeline.md
+              DAILY-DIFF TARGET:  research/models/${{ steps.datetime.outputs.date }}-timeline.md
 
             STEP 0 — READ THE CONTRACT FIRST.
               `Read docs/model-tickets.md` in full. Internalize the 5-state
@@ -192,7 +192,7 @@ jobs:
                    create a successor ticket whose body links to the
                    closed one.
                 d) NO MATCH → CREATE: pick a slug per conventions, set
-                   created_at = updated_at = $DATE_TODAY, status per
+                   created_at = updated_at = ${{ steps.datetime.outputs.date }}, status per
                    the strongest evidence, verification honestly,
                    seed history with one entry "Created — <summary>".
 
@@ -203,7 +203,7 @@ jobs:
                   (no history entry in 15+ days) → `closed_reason: stale-rumor-unverified`
                 - contradicted by today's signal AND a successor exists
                   → `closed_reason: superseded-by:<slug>`
-              When closing: set status=closed, closed_at=$DATE_TODAY,
+              When closing: set status=closed, closed_at=${{ steps.datetime.outputs.date }},
               closed_reason=<...>, bump updated_at, append a final
               history entry describing the closure.
 
@@ -214,11 +214,11 @@ jobs:
               Do NOT proceed past this step with a failing validator.
 
             STEP 6 — EMIT THE DAILY-DIFF.
-              Write `research/models/$DATE_TODAY-timeline.md` summarizing
+              Write `research/models/${{ steps.datetime.outputs.date }}-timeline.md` summarizing
               what you just did. Format:
 
-                # Model Timeline — Diff for $DATE_TODAY
-                *Generated $TIMESTAMP*
+                # Model Timeline — Diff for ${{ steps.datetime.outputs.date }}
+                *Generated ${{ steps.datetime.outputs.timestamp }}*
 
                 ## 🆕 Created (<N>)
                 - `<slug>` — <company> — <status> — <one-line summary>
@@ -239,9 +239,14 @@ jobs:
               empty "Created (0)"). Order each section alphabetically by
               slug.
 
+              Always write the daily-diff file, even when no ticket changed.
+              In that case, include only the "No change today" section with
+              the unchanged-ticket count. The daily-diff file is required
+              workflow output; do not skip it.
+
             STEP 7 — COMMIT (Bash).
-              git add research/models/tickets/ "research/models/$DATE_TODAY-timeline.md"
-              git commit -m "Model tickets update $TIMESTAMP" || echo "No changes"
+              git add research/models/tickets/ "research/models/${{ steps.datetime.outputs.date }}-timeline.md"
+              git commit -m "Model tickets update ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
 
               Do NOT run `git push`. A later workflow step publishes.
 
@@ -267,16 +272,16 @@ jobs:
       # hooker-telemetry would report a green run. exit 1 here lets
       # later `if: always()` steps (telemetry) still fire while flipping
       # job.status to failure when it should be.
-      - name: Inspect Fireworks outcome
+      - name: Inspect Claude outcome
         if: always()
         env:
           OUTCOME: ${{ steps.crud.outcome }}
         run: |
           if [ "$OUTCOME" = "failure" ]; then
-            echo "::error::Model-ticket Fireworks CRUD step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
+            echo "::error::Model-ticket Claude CRUD step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
             exit 1
           fi
-          echo "Model-ticket Fireworks CRUD step succeeded."
+          echo "Model-ticket Claude CRUD step succeeded."
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the

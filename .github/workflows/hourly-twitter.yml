@@ -1,7 +1,7 @@
 name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi)
 
 # Unified Twitter/X pipeline that fans out across five backend tiers:
-#   - claude            (cron '7 */3 * * *', primary tier, model: GLM 5.2 via Fireworks,
+#   - claude            (cron '7 */3 * * *', primary tier, model routed by data/agent-backends.json,
 #                        output → research/twitter/)
 #   - deepseek-claude-code (cron '37 */6 * * *', model: deepseek-v4-flash via Fireworks, output → research/twitter-deepseek/)
 #   - zai-glm-5p2      (manual only,        model: glm-5.2 via Z.ai Coding Plan,
@@ -30,7 +30,7 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 #
 # Required secrets:
 #   CLAUDE_CODE_OAUTH_TOKEN              — required by claude-code-action wrapper
-#   FIREWORKS_API_KEY                    — primary GLM-5.2 tier and comparison tiers
+#   FIREWORKS_API_KEY                    — comparison tiers and fallback-capable agent-run lanes
 #   ZAI_API_KEY                          — preferred manual Z.ai GLM-5.2 Claude Code comparison tier
 #   BIRDY_ACCOUNTS                       — optional multi-account rotation JSON; each account is forced read-only
 #   BIRD_AUTH_TOKEN, BIRD_CT0            — fallback single-account cookies when BIRDY_ACCOUNTS is absent
@@ -400,7 +400,7 @@ jobs:
         id: twitter-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      - name: Process tweets with GLM-5.2 via Fireworks (primary tier)
+      - name: Process tweets with Claude (primary tier)
         if: >-
           steps.backend.outputs.name == 'claude'
           && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
@@ -422,7 +422,7 @@ jobs:
           allowed-paths: |
             research/twitter/
             research/summaries/
-          label: Twitter primary GLM-5.2 Fireworks processor
+          label: Twitter primary Claude processor
           prompt: ${{ steps.render.outputs.prompt }}
 
       - name: Process tweets with DeepSeek v4 Flash via Fireworks (deepseek-claude-code tier)
@@ -738,13 +738,13 @@ jobs:
           echo "count=$COUNT" >> "$GITHUB_OUTPUT"
           echo "Shortlisted $COUNT contested-band headline(s) for the judge."
 
-      # ── primary-tier agent dedupe gate (steps 2/4: Fireworks adjudicates) ──
-      # Final gate: the Fireworks-backed agent rules on each shortlisted headline vs its <=5
+      # ── primary-tier agent dedupe gate (steps 2/4: Claude adjudicates) ──
+      # Final gate: the Claude-backed agent rules on each shortlisted headline vs its <=5
       # nearest priors. Bias is hard toward KEEP — it may only turn a
       # would-be send into a suppress, on a HIGH-confidence duplicate.
       # continue-on-error so a model hiccup fails OPEN (no verdicts -> nothing
       # suppressed). Skipped when the shortlist is empty.
-      - name: Adjudicate near-duplicate headlines with Fireworks (primary tier)
+      - name: Adjudicate near-duplicate headlines with Claude (primary tier)
         id: judge_adjudicate
         if: >-
           steps.backend.outputs.name == 'claude'
@@ -759,7 +759,7 @@ jobs:
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --max-turns 12 --allowedTools "Read,Write"
-          label: Twitter headline Fireworks judge
+          label: Twitter headline Claude judge
           prompt: |
             You are the final duplicate gate for an AI-news headline alert
             feed. Reason from FIRST PRINCIPLES: judge whether two headlines
@@ -1364,7 +1364,7 @@ jobs:
             echo "Auto-research budget available — proceeding to topic selection."
           fi
 
-      - name: Auto-research topic selection (primary Fireworks tier)
+      - name: Auto-research topic selection (primary Claude tier)
         id: autoresearch_select
         if: >-
           steps.backend.outputs.name == 'claude'
@@ -1378,7 +1378,7 @@ jobs:
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --max-turns 10 --allowedTools "Read,Bash(ls:*),Bash(cat:*),Bash(jq:*),Bash(date:*),Write"
-          label: Twitter auto-research Fireworks selector
+          label: Twitter auto-research Claude selector
           prompt: |
             You select AT MOST ONE topic from today's Twitter AI Pulse to
             dispatch to the generative-research deep pipeline (4500–7000
