@@ -1,12 +1,9 @@
-Daily AI Digest - 2026-07-08 (deterministic fallback)
+AI Daily Digest - 2026-07-08
 
-TOP OF EACH LANE:
-• [Twitter/X] @karpathy: Joined Anthropic, citing the next few years at the LLM frontier as especially formative.…
-• [RSS / Official Announcements] _No new posts in the 24h window._ Newest OpenAI item ("Australian Payments
-• [Hacker News] The revenge of the philosophy majors: 72 points, 99 comments - discuss
-• [Reddit] [TorchJD: Training with multiple losses in PyTorch [P]](https://www.reddit.com/r/MachineLearning/co…
-• [Expert Blogs] [[AINews] Lilian Weng summarizes 35 papers on Harness Engineering for RSI](https://www.latent.space…
+Top story: OpenAI confirmed GPT-5.6 (Sol/Terra/Luna) launches publicly Thursday after a govt-forced delay; OpenAI claims Sol beats Claude Mythos 5 on coding at half the cost (unverified).
 
-SOURCES: 8/8 lanes had data
+Anthropic: Commerce Dept reportedly lifted export controls on Claude Fable 5/Mythos 5, global access said to return tomorrow (single-source); Karpathy says he joined Anthropic; Claude Cowork now on mobile/web (corroborated).
 
-Verbatim, unranked lane excerpts. Full digest on GitHub.
+Also: China weighing its own model export curbs; DeepSeek building its own chips; Microsoft cutting OpenAI/Anthropic use for its own models; Meta's Muse Image draws backlash; HN's top story is a GitHub AI agent data-leak exploit.
+
+Research: a unified-vision model, a 5B multiplayer world model, and an agent-failure early-warning method topped arXiv.
