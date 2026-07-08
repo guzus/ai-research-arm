@@ -58,7 +58,7 @@ jobs:
 
       - name: Get current date
         id: date
-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+        run: echo "date=$(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
 
       # Base SHA for the standalone output guard below — captured AFTER the
       # pull and BEFORE the synthesis agents, so the guard passes when EITHER
@@ -76,16 +76,18 @@ jobs:
       - name: Check for API keys
         id: check-keys
         run: |
-          if [ -n "${{ secrets.EXA_API_KEY }}" ]; then
-            echo "has_exa=true" >> $GITHUB_OUTPUT
-          else
-            echo "has_exa=false" >> $GITHUB_OUTPUT
-          fi
-          if [ -n "${{ secrets.PERPLEXITY_API_KEY }}" ]; then
-            echo "has_perplexity=true" >> $GITHUB_OUTPUT
-          else
-            echo "has_perplexity=false" >> $GITHUB_OUTPUT
-          fi
+          {
+            if [ -n "${{ secrets.EXA_API_KEY }}" ]; then
+              echo "has_exa=true"
+            else
+              echo "has_exa=false"
+            fi
+            if [ -n "${{ secrets.PERPLEXITY_API_KEY }}" ]; then
+              echo "has_perplexity=true"
+            else
+              echo "has_perplexity=false"
+            fi
+          } >> "$GITHUB_OUTPUT"
           # Surface the silent path switch: with neither key configured the
           # digest runs on the local-source prompt with NO external MCP
           # search. That is a materially thinner digest, so say it loudly
@@ -403,22 +405,29 @@ jobs:
           git add research/digest/ research/summaries/
           git commit -m "Daily digest ${DATE} (recovered uncommitted agent output)" || echo "No recovered digest changes"
 
+      - name: Check for fresh digest output
+        id: digest-output-diff
+        run: |
+          set -euo pipefail
+          if git diff --quiet "${{ steps.digest-output-base.outputs.sha }}..HEAD" -- research/digest/; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
       # Model-free floor: compose the digest verbatim from the day's
       # committed lane artifacts so the lane — and its workflow_run consumers
       # (wiki-ingest, front-page) — never silently skip a day. A fallback
       # digest counts as digest success on purpose. Also (re)writes the
       # Telegram summary so the notification/audio steps stay meaningful.
       #
-      # Gated on the FLOOR alone, not on agent outcome: a missing digest
-      # fails the floor, so every agent-failure case still triggers the
-      # fallback — but a healthy digest already committed for today (e.g. a
-      # manual re-dispatch after a good run) survives instead of being
-      # overwritten with degraded content. In that re-dispatch case nothing
-      # new is committed, so require-output below goes red and the failure
-      # alert fires — the honest outcome.
+      # Gated on the floor OR lack of a fresh digest commit. A pre-existing
+      # digest can pass the floor even when the agent wrote nothing; that is
+      # stale output, so regenerate deterministically instead of letting the
+      # final require-output guard fail after doing no useful work.
       - name: Deterministic digest fallback
         id: digest-fallback
-        if: steps.digest-floor.outputs.ok != 'true'
+        if: steps.digest-floor.outputs.ok != 'true' || steps.digest-output-diff.outputs.changed != 'true'
         run: |
           set -euo pipefail
           echo "::warning::Digest agent path failed or produced sub-floor output; composing deterministic digest from committed lane artifacts."
@@ -559,10 +568,10 @@ jobs:
 
           if ! command -v ffmpeg >/dev/null 2>&1; then
             echo "ffmpeg not found on runner — attempting install..."
-            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg || {
+            if ! { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg; }; then
               echo "Could not install ffmpeg — skipping audio generation"
               exit 0
-            }
+            fi
           fi
 
           if [ -f "$SPOKEN_FILE" ]; then
