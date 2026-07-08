@@ -171,10 +171,9 @@ flowchart LR
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
     gendef -.->|"backend=codex"| OAI
-    FW -. "provider outage → fallback #1" .-> ZAI
-    ZAI -. "provider outage → fallback #2" .-> ANT
+    FW -. "provider outage → fallback #1" .-> ANT
 ```
-_Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `zai-glm-5p2` → `claude`; regenerate with `uv run python scripts/build_backend_matrix.py`._
+_Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `claude`; regenerate with `uv run python scripts/build_backend_matrix.py`._
 <!-- END GENERATED BACKEND DIAGRAM -->
 
 ## Sources
