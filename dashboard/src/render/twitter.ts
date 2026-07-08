@@ -47,6 +47,9 @@ export type TwitterReportRenderOptions = {
   fallbackDate: string | null;
   currentDateStr: string;
   currentDateTitle: string;
+  shownDateTitle: string;
+  prevDate: string | null;
+  nextDate: string | null;
   searchTerm: string;
   parseUtcTime: (title: string, dateStr: string) => TimeInfo | null;
   clockIcon: (hours: number, minutes: number) => string;
@@ -423,9 +426,34 @@ export function sanitizePublicReportMarkdown(md: string): string {
   return out.join('\n').replace(/\n{4,}/g, '\n\n\n').trim();
 }
 
+function renderTwitterDateNav(options: TwitterReportRenderOptions): string {
+  const link = (date: string | null, label: string, cls: string): string => {
+    if (!date) {
+      return '<span class="twitter-date-link twitter-date-link--disabled ' + cls + '">' + label + '</span>';
+    }
+    return [
+      '<a class="twitter-date-link ' + cls + '" href="/twitter/' + escapeHtml(date) + '" aria-label="' + escapeHtml(label + ' Twitter summary: ' + date) + '">',
+      '  <span class="twitter-date-link-label">' + label + '</span>',
+      '  <span class="twitter-date-link-date">' + escapeHtml(date) + '</span>',
+      '</a>',
+    ].join('');
+  };
+  return [
+    '<nav class="twitter-date-nav" aria-label="Twitter summary dates">',
+    '  ' + link(options.prevDate, 'Prev day', 'twitter-date-link--prev'),
+    '  <div class="twitter-date-current">',
+    '    <div class="twitter-date-current-label">Twitter summaries</div>',
+    '    <div class="twitter-date-current-date">' + escapeHtml(options.shownDateTitle) + '</div>',
+    options.fallbackDate ? '    <div class="twitter-date-current-note">Showing fallback for ' + escapeHtml(options.currentDateStr) + '</div>' : '',
+    '  </div>',
+    '  ' + link(options.nextDate, 'Next day', 'twitter-date-link--next'),
+    '</nav>',
+  ].filter(Boolean).join('\n');
+}
+
 export function renderTwitterReportHtml(md: string, options: TwitterReportRenderOptions): string {
   const sections = splitSections(sanitizePublicReportMarkdown(md)).reverse();
-  const cards: string[] = [];
+  const cards: string[] = [renderTwitterDateNav(options)];
   const timelineItems: InfoTimelineItem[] = [];
   const mindshareCycles: TwitterMindshareCycle[] = [];
   if (options.fallbackDate) {

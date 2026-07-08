@@ -1579,6 +1579,29 @@ function findMostRecentAvailable(tab: DateTab, targetDateStr: string): string | 
   return best;
 }
 
+function offsetDateStr(dateStr: string, days: number): string {
+  const d = ymdToDate(dateStr);
+  d.setDate(d.getDate() + days);
+  return fmtDate(d);
+}
+
+function findAdjacentAvailable(tab: DateTab, targetDateStr: string, direction: -1 | 1): string | null {
+  const dates = manifestDates(tab);
+  if (!dates || dates.length === 0) {
+    return offsetDateStr(targetDateStr, direction);
+  }
+  if (direction < 0) {
+    for (let i = dates.length - 1; i >= 0; i--) {
+      if (dates[i] < targetDateStr) return dates[i];
+    }
+    return null;
+  }
+  for (const d of dates) {
+    if (d > targetDateStr) return d;
+  }
+  return null;
+}
+
 /** Race a promise against a timeout. Returns 'timeout' if exceeded. */
 function withTimeout<T>(p: Promise<T>, ms: number, controller: AbortController): Promise<T | 'timeout'> {
   return new Promise((resolve) => {
@@ -2426,10 +2449,15 @@ function renderWikiNotFound(slug: string): void {
 }
 
 function renderTwitterReport(md: string, fallbackDate: string | null = null): void {
+  const dateStr = fmtDate(currentDate);
+  const shownDate = fallbackDate || dateStr;
   setSafeContent(content, renderTwitterReportHtml(md, {
     fallbackDate,
-    currentDateStr: fmtDate(currentDate),
+    currentDateStr: dateStr,
     currentDateTitle: displayDate(currentDate),
+    shownDateTitle: displayDate(ymdToDate(shownDate)),
+    prevDate: findAdjacentAvailable('twitter', dateStr, -1),
+    nextDate: findAdjacentAvailable('twitter', dateStr, 1),
     searchTerm,
     parseUtcTime,
     clockIcon,
@@ -3484,6 +3512,10 @@ async function load(): Promise<void> {
         requestAnimationFrame(() => scrollToDigestSection(want));
       }
     } else {
+      if (!manifest) {
+        await loadManifest();
+        if (requestId !== loadRequestId) return;
+      }
       const result = await withTimeout(fetchTwitter(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
       if (requestId !== loadRequestId) return;
       if (result === 'timeout') {
@@ -3916,6 +3948,18 @@ content.addEventListener('click', (e) => {
     // Browser handles the rest: print stylesheet hides chrome,
     // user picks "Save as PDF" in the system dialog.
     window.print();
+    return;
+  }
+  const twitterDateLink = target.closest('.twitter-date-link') as HTMLAnchorElement | null;
+  if (twitterDateLink && activeTab === 'twitter') {
+    const href = twitterDateLink.getAttribute('href') || '';
+    const match = href.match(/^\/twitter\/(\d{4}-\d{2}-\d{2})$/);
+    if (match) {
+      e.preventDefault();
+      currentDate = ymdToDate(match[1]);
+      calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+      load();
+    }
     return;
   }
   // Ticket status filter pills (only meaningful on the models tab).
