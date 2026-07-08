@@ -1,10 +1,10 @@
 name: Setup Claude sandbox
-description: Install Linux dependencies required for Claude Code's fail-closed Bash sandbox.
+description: Configure Linux dependencies and CI-safe settings for Claude Code's Bash sandbox.
 
 runs:
   using: composite
   steps:
-    - name: Install sandbox dependencies
+    - name: Configure sandbox dependencies and settings
       if: runner.os == 'Linux'
       shell: bash
       run: |
@@ -22,5 +22,44 @@ runs:
           sudo apt-get install -y -qq $missing
         fi
 
+        # Ubuntu 24.04+ can block unprivileged user namespaces via AppArmor.
+        # Older kernels do not expose this sysctl, so guard the write.
+        if [ -f /proc/sys/kernel/apparmor_restrict_unprivileged_userns ] && command -v sudo >/dev/null 2>&1; then
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+        fi
+
+        # The self-hosted GitHub runner runs inside an additional container
+        # boundary. Claude's default Linux sandbox can fail there while
+        # mounting tmpfs paths such as /newroot/var/run. Nested mode keeps
+        # sandboxing enabled but uses the container-compatible implementation.
+        mkdir -p "$HOME/.claude"
+        python3 - <<'PY'
+        import json
+        import os
+        from pathlib import Path
+
+        settings_path = Path(os.environ["HOME"]) / ".claude" / "settings.json"
+        try:
+            settings = json.loads(settings_path.read_text()) if settings_path.exists() else {}
+        except json.JSONDecodeError as exc:
+            raise SystemExit(f"Invalid Claude settings JSON at {settings_path}: {exc}") from exc
+
+        sandbox = settings.setdefault("sandbox", {})
+        sandbox["enableWeakerNestedSandbox"] = True
+
+        tmp_path = settings_path.with_suffix(".json.tmp")
+        tmp_path.write_text(json.dumps(settings, indent=2, sort_keys=True) + "\n")
+        tmp_path.replace(settings_path)
+        PY
+
         echo "bubblewrap: $(bwrap --version)"
         echo "socat: $(socat -V 2>&1 | head -1)"
+        python3 - <<'PY'
+        import json
+        import os
+        from pathlib import Path
+
+        settings = json.loads((Path(os.environ["HOME"]) / ".claude" / "settings.json").read_text())
+        enabled = settings.get("sandbox", {}).get("enableWeakerNestedSandbox")
+        print(f"claude sandbox nested mode: {enabled}")
+        PY
