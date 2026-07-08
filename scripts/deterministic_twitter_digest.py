@@ -275,6 +275,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--timestamp", required=True)
     parser.add_argument("--title-suffix", default="")
     parser.add_argument("--summary-slug", required=True)
+    parser.add_argument("--headlines-file", type=Path)
     parser.add_argument("--limit", type=int, default=8)
     args = parser.parse_args(argv)
 
@@ -285,9 +286,13 @@ def main(argv: list[str] | None = None) -> int:
     header, digest = render_digest(args.date, args.hour, args.title_suffix, tweets)
     changed = append_if_missing(digest_path, header, digest)
     atomic_write(summary_path, render_summary(args.timestamp, args.title_suffix, tweets))
+    if args.headlines_file is not None:
+        atomic_write(args.headlines_file, "[]\n")
 
     print(f"wrote {digest_path} ({'changed' if changed else 'already had section'})")
     print(f"wrote {summary_path}")
+    if args.headlines_file is not None:
+        print(f"wrote {args.headlines_file}")
     return 0
 
 
