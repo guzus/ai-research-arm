@@ -49,76 +49,76 @@
     "rss": {
       "workflow": "hourly-rss.yml",
       "harness": "agent-run",
-      "backend": "fireworks-glm-5p2",
+      "backend": "claude",
       "notes": "2h RSS digest; deterministic_rss_digest.py backstops output."
     },
     "bluesky": {
       "workflow": "2h-bluesky.yml",
       "harness": "agent-run",
-      "backend": "fireworks-glm-5p2",
+      "backend": "claude",
       "notes": "Daily Bluesky expert-commentary section."
     },
     "community": {
       "workflow": "4h-community.yml",
       "harness": "agent-run",
-      "backend": "fireworks-glm-5p2",
+      "backend": "claude",
       "notes": "HN + Reddit digests; deterministic_community_digest.py backstops output."
     },
     "arxiv": {
       "workflow": "daily-arxiv.yml",
       "harness": "agent-run",
-      "backend": "fireworks-glm-5p2",
+      "backend": "claude",
       "notes": "Daily arXiv sweep; deterministic_arxiv_digest.py backstops output."
     },
     "digest-synthesis": {
       "workflow": "daily-digest.yml",
       "harness": "agent-run",
-      "backend": "fireworks-glm-5p2",
+      "backend": "claude",
       "notes": "Primary daily digest synthesis (MCP search path)."
     },
     "digest-synthesis-fallback": {
       "workflow": "daily-digest.yml",
       "harness": "agent-run",
-      "backend": "fireworks-glm-5p2",
+      "backend": "claude",
       "notes": "Local-source digest synthesis when MCP keys are absent."
     },
     "digest-audio-script": {
       "workflow": "daily-digest.yml",
       "harness": "agent-run",
-      "backend": "fireworks-glm-5p2",
+      "backend": "claude",
       "notes": "Rewrites the digest summary as the ARA spoken TTS script."
     },
     "model-timeline": {
       "workflow": "24h-model-timeline.yml",
       "harness": "agent-run",
-      "backend": "fireworks-glm-5p2",
+      "backend": "claude",
       "notes": "Model-release ticket CRUD agent."
     },
     "wiki-ingest": {
       "workflow": "wiki-ingest.yml",
       "harness": "agent-run",
-      "backend": "fireworks-glm-5p2",
+      "backend": "claude",
       "notes": "Digest -> LLM wiki page CRUD agent."
     },
     "twitter-primary": {
       "workflow": "hourly-twitter.yml",
       "tier": "claude",
       "harness": "agent-run",
-      "backend": "fireworks-glm-5p2",
+      "backend": "claude",
       "notes": "Primary 3h Twitter/X processor (tier slot named 'claude' for historical reasons)."
     },
     "twitter-judge": {
       "workflow": "hourly-twitter.yml",
       "tier": "claude",
       "harness": "agent-run",
-      "backend": "fireworks-deepseek-v4-flash",
+      "backend": "claude",
       "notes": "Headline-dedupe adjudication gate inside the primary tier (docs/headline-dedupe.md)."
     },
     "twitter-autoresearch": {
       "workflow": "hourly-twitter.yml",
       "tier": "claude",
       "harness": "agent-run",
-      "backend": "fireworks-glm-5p2",
+      "backend": "claude",
       "notes": "Auto-research topic selection inside the primary tier."
     },
     "twitter-deepseek": {
@@ -165,7 +165,7 @@
     "generative-research-default": {
       "workflow": "generative-research.yml",
       "harness": "dispatch-default",
-      "backend": "glm-5p2",
+      "backend": "claude",
       "notes": "Default backend when neither the dispatch input nor an issue-label form specifies one. Runtime-resolved by the workflow's backend-resolution step."
     },
     "generative-research-claude": {

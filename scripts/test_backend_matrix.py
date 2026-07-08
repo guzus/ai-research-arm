@@ -75,8 +75,9 @@ class RoutingInvariants(unittest.TestCase):
             tiers,
         )
 
-    def test_judge_lane_routes_to_deepseek(self):
-        self.assertEqual(self.lanes["twitter-judge"]["backend"], "fireworks-deepseek-v4-flash")
+    def test_primary_twitter_lanes_route_to_claude(self):
+        for lane in ("twitter-primary", "twitter-judge", "twitter-autoresearch"):
+            self.assertEqual(self.lanes[lane]["backend"], "claude", lane)
 
     def test_pi_mirror_matches_workflow(self):
         pi_models = {s.model for s in self.obs["hourly-twitter.yml"].pi}
@@ -108,7 +109,8 @@ class RoutingInvariants(unittest.TestCase):
         _, diagram2 = build_generated_blocks()
         self.assertEqual(diagram1, diagram2)
         self.assertIn("flowchart LR", diagram1)
-        self.assertIn("provider outage → fallback #1", diagram1)
+        self.assertIn("claude-sonnet-5", diagram1)
+        self.assertIn("fallback chain: `claude`", diagram1)
         self.assertIn("zai-canary", diagram1)
 
 

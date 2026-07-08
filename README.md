@@ -147,8 +147,7 @@ drift. Full per-lane matrix: [`docs/backend-matrix.md`](docs/backend-matrix.md).
 ```mermaid
 flowchart LR
     subgraph runtime["⚙️ Runtime-routed lanes — lane: → data/agent-backends.json"]
-        lanes0["twitter-judge<br/><i>1 lane</i>"]
-        lanes1["arxiv · bluesky · community<br/>digest-audio-script · digest-synthesis · digest-synthesis-fallback<br/>model-timeline · rss · twitter-autoresearch<br/>twitter-primary · wiki-ingest<br/><i>11 lanes</i>"]
+        lanes0["arxiv · bluesky · community<br/>digest-audio-script · digest-synthesis · digest-synthesis-fallback<br/>model-timeline · rss · twitter-autoresearch<br/>twitter-judge · twitter-primary · wiki-ingest<br/><i>12 lanes</i>"]
         strict0["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
         strict1["🔒 twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
         gendef["generative-research-default<br/><i>dispatch default</i>"]
@@ -163,15 +162,13 @@ flowchart LR
         ANT["🅰️ Anthropic<br/><i>native Claude</i>"]
         OAI["🤖 OpenAI Codex CLI<br/><i>ChatGPT auth</i>"]
     end
-    lanes0 -->|"deepseek-v4-flash"| FW
-    lanes1 -->|"glm-5p2"| FW
+    lanes0 -->|"claude-sonnet-5"| ANT
     strict0 -->|"deepseek-v4-flash"| FW
     strict1 -->|"glm-5.2"| ZAI
-    gendef -->|"glm-5p2"| FW
+    gendef -->|"claude-sonnet-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
     gendef -.->|"backend=codex"| OAI
-    FW -. "provider outage → fallback #1" .-> ANT
 ```
 _Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `claude`; regenerate with `uv run python scripts/build_backend_matrix.py`._
 <!-- END GENERATED BACKEND DIAGRAM -->
