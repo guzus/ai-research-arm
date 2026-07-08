@@ -416,7 +416,7 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
+            --model opus --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
             ${{ steps.const.outputs.digest_file }}
             ${{ steps.const.outputs.summary_file }}
@@ -444,7 +444,7 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
-            --model opus --max-turns 40 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*)"
+            --model opus --max-turns 40 --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
             ${{ steps.const.outputs.digest_file }}
             ${{ steps.const.outputs.summary_file }}
@@ -477,6 +477,12 @@ jobs:
                 deterministic quick-hit dump.
               - Use tool calls to read the raw input and write all three
                 output files. Do not merely respond in chat.
+              - If any tool call is denied, retry with an allowed tool
+                immediately. The allowed local parse/write path includes
+                Read, Write, Edit, jq, python3, cat, and git.
+              - Before your final response, run `git status --short` and
+                confirm the commit changes all three expected output files.
+                If it does not, continue repairing instead of stopping.
               - The public brief is AI-only. Exclude personal life updates,
                 sports, generic politics, generic outrage, engagement-bait,
                 and unrelated viral tweets unless the item materially changes
