@@ -50,16 +50,14 @@ jobs:
           EOF
 
       # Base SHA for the standalone output guard below — captured BEFORE the
-      # agent so the guard passes when EITHER the agent or the deterministic
-      # fallback committed under research/arxiv/ (mirrors hourly-rss.yml).
+      # agent so the guard proves Claude committed under research/arxiv/.
       - name: Capture arXiv output base
         id: arxiv-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      # continue-on-error so a failed agent (provider outage, MCP server
-      # unavailable, nothing committed — the composite's internal
-      # expected-paths guard fails the step in that case) hands off to the
-      # deterministic fallback instead of killing the job.
+      # continue-on-error lets the final require-output step report the
+      # missing Claude artifact clearly instead of hiding the root cause in
+      # the composite action.
       - name: Fetch arXiv AI Papers
         id: arxiv-agent
         continue-on-error: true
@@ -172,40 +170,9 @@ jobs:
             git add research/arxiv/${{ steps.date.outputs.date }}-papers.md research/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt
             git commit -m "arXiv papers ${{ steps.date.outputs.date }}"
 
-      # Model-free floor: when the agent path failed (or committed nothing —
-      # same outcome, via the composite's internal guard), query the arXiv
-      # Atom API directly and commit an uncurated per-category listing so the
-      # lane never goes silently dark. Mirrors the hourly-rss.yml pattern.
-      # Two in-step guards keep a curated listing from being overwritten with
-      # the uncurated fallback: a base..HEAD diff (agent committed mid-run,
-      # then a later composite step failed) and a HEAD-file check (today's
-      # listing already landed in a PREVIOUS run — e.g. a manual re-dispatch
-      # on a completed day). In the re-dispatch case nothing new is
-      # committed, so require-output below goes red — the honest outcome.
-      - name: Deterministic arXiv fallback
-        if: steps.arxiv-agent.outcome == 'failure'
-        env:
-          BASE_SHA: ${{ steps.arxiv-output-base.outputs.sha }}
-          DATE: ${{ steps.date.outputs.date }}
-        run: |
-          set -euo pipefail
-          if ! git diff --quiet "${BASE_SHA}..HEAD" -- research/arxiv/; then
-            echo "Agent already committed under research/arxiv/ since ${BASE_SHA} — skipping deterministic fallback."
-            exit 0
-          fi
-          if git cat-file -e "HEAD:research/arxiv/${DATE}-papers.md" 2>/dev/null; then
-            echo "research/arxiv/${DATE}-papers.md already exists in HEAD (previous run) — skipping deterministic fallback."
-            exit 0
-          fi
-          echo "::warning::arXiv agent path failed; writing deterministic arXiv fallback from the arXiv Atom API."
-          python3 scripts/deterministic_arxiv_digest.py \
-            --out-dir research/arxiv \
-            --date "${{ steps.date.outputs.date }}"
-          git add research/arxiv/
-          git commit -m "arXiv deterministic fallback ${{ steps.date.outputs.date }}" || echo "No deterministic arXiv changes"
-
-      # Final hard gate: SOMETHING (agent or fallback) must have committed
-      # under research/arxiv/ since the pre-agent base SHA.
+      # Final hard gate: Claude must have committed under research/arxiv/
+      # since the pre-agent base SHA. A missing output is better than
+      # publishing an uncurated fallback listing as editorial content.
       - name: Require arXiv output
         uses: ./.github/actions/require-output
         with:

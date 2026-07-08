@@ -257,7 +257,11 @@ def observe_workflow(wf_path: Path) -> Observation:
 
             if run:
                 obs.resolver_lanes.update(RESOLVER_CALL_RE.findall(run))
-                scripts = sorted(set(DETERMINISTIC_RE.findall(run)))
+                # Manual emergency fallback is not an automatic lane backstop.
+                # The matrix's Fallback column documents what happens in the
+                # scheduled/default path, so opt-in workflow_dispatch fallbacks
+                # must not be rendered as "then deterministic_*.py".
+                scripts = [] if "allow_deterministic_fallback" in cond else sorted(set(DETERMINISTIC_RE.findall(run)))
                 for script in scripts:
                     if tier:
                         obs.det_by_tier.setdefault(tier, script)

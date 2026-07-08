@@ -238,20 +238,6 @@ jobs:
             git add research/community/
             git commit -m "Community digest ${{ steps.datetime.outputs.timestamp }}"
 
-      - name: Deterministic community fallback
-        if: steps.community-agent.outcome == 'failure'
-        run: |
-          set -euo pipefail
-          echo "::warning::Community agent path failed; writing deterministic fallback from fetched HN/Reddit data."
-          python3 scripts/deterministic_community_digest.py \
-            --hn-json data/hn/frontpage.json \
-            --reddit-dir data/reddit \
-            --out-dir research/community \
-            --date "${{ steps.datetime.outputs.date }}" \
-            --timestamp "${{ steps.datetime.outputs.timestamp }}"
-          git add research/community/
-          git commit -m "Community deterministic fallback ${{ steps.datetime.outputs.timestamp }}" || echo "No deterministic community changes"
-
       - name: Require community output
         uses: ./.github/actions/require-output
         with:

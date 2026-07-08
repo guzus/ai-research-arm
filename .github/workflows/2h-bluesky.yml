@@ -121,10 +121,8 @@ jobs:
         id: bluesky-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      # continue-on-error so a hard agent failure (provider outage, turn-1
-      # API error) still reaches the deterministic fallback below. The agent
-      # writing nothing while exiting green (the 2026-07-01 failure mode) is
-      # caught by the fallback's own file check either way.
+      # continue-on-error lets the append step emit a clear missing-output
+      # error when Claude fails or exits green without writing the section.
       - name: Process Bluesky Feed with GLM-5.2 via Fireworks
         id: bluesky_agent
         continue-on-error: true
@@ -234,27 +232,6 @@ jobs:
 
             Do NOT run git. Writing `.tmp/bluesky-section.md` is your only
             output; the workflow appends and commits it deterministically.
-
-      # Model-free floor: when the agent produced no section (hard failure OR
-      # exited green without writing the file — the 2026-07-01 failure mode),
-      # compose an engagement-ranked section from the staged per-account
-      # JSONs so the cycle is never silently dropped. The append step below
-      # stays the final backstop and still fails the run if this file is
-      # missing after both paths.
-      - name: Deterministic Bluesky fallback
-        env:
-          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
-        run: |
-          set -euo pipefail
-          if [ -s .tmp/bluesky-section.md ]; then
-            echo "Agent produced .tmp/bluesky-section.md — no fallback needed"
-            exit 0
-          fi
-          echo "::warning::Bluesky agent path produced no section; composing deterministic engagement-ranked fallback from data/bluesky/*.json."
-          python3 scripts/deterministic_bluesky_digest.py \
-            --input-dir data/bluesky \
-            --out .tmp/bluesky-section.md \
-            --timestamp "$TIMESTAMP"
 
       # Append the agent's section onto the daily file and commit. The post
       # step validates that the agent produced a section, removes any post
