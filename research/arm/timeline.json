@@ -1,87 +1,9 @@
 {
-  "generatedAt": "2026-07-08T21:48:31.515Z",
-  "windowStart": "2026-07-07T09:00:00.000Z",
-  "windowEnd": "2026-07-10T10:00:00.000Z",
+  "generatedAt": "2026-07-08T23:45:22.650Z",
+  "windowStart": "2026-07-07T11:00:00.000Z",
+  "windowEnd": "2026-07-10T12:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-d786b1daa058",
-      "kind": "completed",
-      "lane": "arXiv",
-      "title": "arXiv papers",
-      "status": "completed",
-      "start": "2026-07-07T10:16:00.000Z",
-      "end": "2026-07-07T10:25:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "d786b1daa058",
-      "url": "https://github.com/guzus/ai-research-arm/commit/d786b1daa058fdd4824f132da48dc9c741e8ed68"
-    },
-    {
-      "id": "commit-f493b5e6eeb6",
-      "kind": "completed",
-      "lane": "Blogs",
-      "title": "AI expert blog watch",
-      "status": "completed",
-      "start": "2026-07-07T10:24:00.000Z",
-      "end": "2026-07-07T10:26:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "f493b5e6eeb6",
-      "url": "https://github.com/guzus/ai-research-arm/commit/f493b5e6eeb6f7657dfe3a71884d61b3a28bbf79"
-    },
-    {
-      "id": "commit-30b803284553",
-      "kind": "completed",
-      "lane": "RSS",
-      "title": "RSS official announcements",
-      "status": "completed",
-      "start": "2026-07-07T10:32:00.000Z",
-      "end": "2026-07-07T10:41:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "30b803284553",
-      "url": "https://github.com/guzus/ai-research-arm/commit/30b803284553599403d17b03b9dfd325d5d73fa1"
-    },
-    {
-      "id": "commit-c231ba3114f7",
-      "kind": "completed",
-      "lane": "Twitter/X",
-      "title": "Twitter/X DeepSeek brief",
-      "status": "completed",
-      "start": "2026-07-07T10:33:00.000Z",
-      "end": "2026-07-07T10:42:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "deepseek-v4-flash",
-      "commit": "c231ba3114f7",
-      "url": "https://github.com/guzus/ai-research-arm/commit/c231ba3114f7557fbe569525d94b1296c2c96671"
-    },
-    {
-      "id": "commit-a6c62b7e98a1",
-      "kind": "completed",
-      "lane": "Community",
-      "title": "HN + Reddit digest",
-      "status": "completed",
-      "start": "2026-07-07T11:14:00.000Z",
-      "end": "2026-07-07T11:23:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "a6c62b7e98a1",
-      "url": "https://github.com/guzus/ai-research-arm/commit/a6c62b7e98a17a0c2e4c256ba05eadcc6c52e3c5"
-    },
-    {
-      "id": "commit-7ad731e96fdd",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-07-07 11:31 UTC (#246)",
-      "status": "completed",
-      "start": "2026-07-07T11:31:00.000Z",
-      "end": "2026-07-07T11:32:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "7ad731e96fdd",
-      "url": "https://github.com/guzus/ai-research-arm/commit/7ad731e96fddfad33a7f8521341b103b22738588"
-    },
     {
       "id": "commit-45f10e6ca331",
       "kind": "completed",
@@ -655,34 +577,17 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/75a877b713f3b71f20f65cef8e28b49382fe5b85"
     },
     {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-07-08T22-30-00-000Z",
-      "kind": "scheduled",
-      "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-07-08T22:30:00.000Z",
-      "end": "2026-07-08T22:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-07-08T22-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-07-08T22:45:00.000Z",
-      "end": "2026-07-08T23:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-daily-youtube-yml-20-23-------2026-07-08T23-20-00-000Z",
-      "kind": "scheduled",
-      "lane": "YouTube",
-      "title": "Daily YouTube Signal",
-      "status": "scheduled",
-      "start": "2026-07-08T23:20:00.000Z",
-      "end": "2026-07-08T23:45:00.000Z",
-      "source": "cron 20 23 * * *"
+      "id": "commit-05358fb73e4a",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-07-08 21:48 UTC (#313)",
+      "status": "completed",
+      "start": "2026-07-08T21:48:00.000Z",
+      "end": "2026-07-08T21:49:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "05358fb73e4a",
+      "url": "https://github.com/guzus/ai-research-arm/commit/05358fb73e4a45b380a1c413944e49a3eb2bf1d3"
     },
     {
       "id": "scheduled-daily-digest-yml-0-0-------2026-07-09T00-00-00-000Z",
@@ -1523,6 +1428,36 @@
       "start": "2026-07-10T09:07:00.000Z",
       "end": "2026-07-10T10:07:00.000Z",
       "source": "cron 7 */3 * * *"
+    },
+    {
+      "id": "scheduled-2h-bluesky-yml-11-10-------2026-07-10T10-11-00-000Z",
+      "kind": "scheduled",
+      "lane": "Bluesky",
+      "title": "Bluesky AI Researcher Commentary (Daily)",
+      "status": "scheduled",
+      "start": "2026-07-10T10:11:00.000Z",
+      "end": "2026-07-10T10:36:00.000Z",
+      "source": "cron 11 10 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-07-10T10-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-07-10T10:30:00.000Z",
+      "end": "2026-07-10T10:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-07-10T10-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-07-10T10:45:00.000Z",
+      "end": "2026-07-10T11:15:00.000Z",
+      "source": "cron 45 */2 * * *"
     }
   ]
 }
