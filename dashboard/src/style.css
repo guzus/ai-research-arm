@@ -1670,6 +1670,87 @@ body.tab-agents .section-nav {
   margin: 0 auto;
 }
 
+.twitter-date-nav {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(220px, 1.3fr) minmax(150px, 1fr);
+  align-items: stretch;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+
+.twitter-date-current,
+.twitter-date-link {
+  min-height: 58px;
+  border: 1px solid var(--border-light);
+  background: var(--bg);
+}
+
+.twitter-date-current {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 14px;
+  text-align: center;
+}
+
+.twitter-date-current-label,
+.twitter-date-link-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.twitter-date-current-date {
+  margin-top: 3px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.twitter-date-current-note {
+  margin-top: 3px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.twitter-date-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 9px 13px;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease;
+}
+
+.twitter-date-link:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 7%, var(--bg));
+  transform: translateY(-1px);
+}
+
+.twitter-date-link--next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.twitter-date-link-date {
+  margin-top: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.twitter-date-link--disabled {
+  color: var(--text-tertiary);
+  background: var(--bg-secondary);
+  pointer-events: none;
+}
+
 .twitter-mindshare {
   max-width: 100%;
   margin: 0 0 28px;
@@ -2589,6 +2670,24 @@ body.has-toc .section-nav { display: none; }
   .twitter-mindshare-head span {
     display: block;
     margin-top: 4px;
+  }
+  .twitter-date-nav {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .twitter-date-current {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    min-height: 52px;
+  }
+  .twitter-date-link {
+    min-height: 50px;
+  }
+  .twitter-date-current-date {
+    font-size: 0.94rem;
+  }
+  .twitter-date-link-date {
+    font-size: 0.78rem;
   }
   .twitter-mindshare-map {
     grid-template-columns: repeat(2, minmax(0, 1fr));
