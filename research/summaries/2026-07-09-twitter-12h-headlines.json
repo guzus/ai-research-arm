@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "headline": "OPENAI SAYS GPT-5.6 SOL/TERRA/LUNA WILL LAUNCH PUBLICLY THURSDAY",
+    "url": "https://x.com/OpenAI/status/2074704958419792299",
+    "source": "@OpenAI",
+    "summary": "OpenAI says GPT-5.6 Sol, Terra, and Luna will launch publicly this Thursday, with preview access already expanding globally. Sam Altman amplified the Sol launch separately, turning the prior July 7-9 watch item into a primary-source launch item."
+  },
+  {
+    "headline": "OPENAI ROLLS OUT GPT-LIVE VOICE MODELS IN CHATGPT",
+    "url": "https://x.com/OpenAI/status/2074907025537224840",
+    "source": "@OpenAI",
+    "summary": "OpenAI introduced GPT-Live as a new generation of voice models for natural human-AI interaction, rolling out in ChatGPT starting today. Sam Altman framed it as the first voice experience that could shift him from typing to talking with AI."
+  },
+  {
+    "headline": "MUSK SAYS GROK 4.5 HAS 2X+ INFERENCE-SPEED HEADROOM",
+    "url": "https://x.com/elonmusk/status/2074969374843154500",
+    "source": "@elonmusk",
+    "summary": "Elon Musk said Grok 4.5 is not yet using xAI's internally developed C/C++ inference stack mapped to GB300 hardware, and that doubling current speed or better is probably achievable."
+  }
+]
