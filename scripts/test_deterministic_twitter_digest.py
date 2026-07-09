@@ -201,6 +201,214 @@ class DeterministicTwitterDigestTest(unittest.TestCase):
             self.assertNotIn("2056753169888334312", digest)
             self.assertNotIn("joined Anthropic", summary)
 
+    def test_promotes_fresh_launch_posts_to_top_stories(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            input_dir = root / "bird"
+            out_dir = root / "research" / "twitter"
+            summaries_dir = root / "research" / "summaries"
+            headlines_file = summaries_dir / "2026-07-09-twitter-12h-headlines.json"
+            input_dir.mkdir()
+            (input_dir / "all.json").write_text(
+                json.dumps(
+                    {
+                        "accounts": {
+                            "OpenAI": [
+                                {
+                                    "id": "2074704958419792299",
+                                    "author": {"username": "OpenAI"},
+                                    "text": "GPT-5.6 Sol, along with Terra and Luna, will launch publicly this Thursday. We are expanding preview access globally now.",
+                                    "createdAt": "Thu Jul 09 11:15:00 +0000 2026",
+                                    "likeCount": 44949,
+                                    "retweetCount": 6540,
+                                    "replyCount": 2290,
+                                },
+                                {
+                                    "id": "2074907025537224840",
+                                    "author": {"username": "OpenAI"},
+                                    "text": "Introducing GPT-Live, a new generation of voice models for natural human-AI interaction. Rolling out in ChatGPT starting today.",
+                                    "createdAt": "Thu Jul 09 11:45:00 +0000 2026",
+                                    "likeCount": 17791,
+                                    "retweetCount": 1579,
+                                    "replyCount": 895,
+                                },
+                            ],
+                            "sama": [
+                                {
+                                    "id": "2074709023807664454",
+                                    "author": {"username": "sama"},
+                                    "text": "GPT-5.6 sol launches thursday! happy building",
+                                    "createdAt": "Thu Jul 09 11:17:00 +0000 2026",
+                                    "likeCount": 29513,
+                                    "retweetCount": 1860,
+                                    "replyCount": 1796,
+                                },
+                                {
+                                    "id": "2074909079450050629",
+                                    "author": {"username": "sama"},
+                                    "text": "GPT-live (next-generation voice) launches today in ChatGPT. it feels magical and real.",
+                                    "createdAt": "Thu Jul 09 11:48:00 +0000 2026",
+                                    "likeCount": 8894,
+                                    "retweetCount": 426,
+                                    "replyCount": 804,
+                                },
+                            ],
+                            "elonmusk": [
+                                {
+                                    "id": "2074912099554201969",
+                                    "author": {"username": "elonmusk"},
+                                    "text": "We will be releasing a new @CommunityNotes feature that sends you an X Chat message if a post you interacted with is corrected",
+                                    "createdAt": "Thu Jul 09 11:49:00 +0000 2026",
+                                    "likeCount": 13152,
+                                    "retweetCount": 1690,
+                                    "replyCount": 2802,
+                                }
+                            ],
+                            "deedydas": [
+                                {
+                                    "id": "2074773187037134892",
+                                    "author": {"username": "deedydas"},
+                                    "text": "The Argentina come back against Egypt is one of the best matches in football history. I analyzed 50,000 games with Fable.",
+                                    "createdAt": "Thu Jul 09 10:02:00 +0000 2026",
+                                    "likeCount": 8941,
+                                    "retweetCount": 1441,
+                                    "replyCount": 252,
+                                }
+                            ],
+                            "karpathy": [
+                                {
+                                    "id": "2056753169888334312",
+                                    "author": {"username": "karpathy"},
+                                    "text": "Personal update: I've joined Anthropic.",
+                                    "createdAt": "Wed May 20 11:00:00 +0000 2026",
+                                    "likeCount": 150161,
+                                    "retweetCount": 11096,
+                                    "replyCount": 7974,
+                                }
+                            ],
+                        },
+                        "searches": {},
+                        "news": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            rc = main(
+                [
+                    "--input-dir",
+                    str(input_dir),
+                    "--out-dir",
+                    str(out_dir),
+                    "--summaries-dir",
+                    str(summaries_dir),
+                    "--date",
+                    "2026-07-09",
+                    "--hour",
+                    "12",
+                    "--timestamp",
+                    "2026-07-09 12:11 UTC",
+                    "--summary-slug",
+                    "twitter",
+                    "--headlines-file",
+                    str(headlines_file),
+                ]
+            )
+
+            self.assertEqual(rc, 0)
+            digest = (out_dir / "2026-07-09.md").read_text(encoding="utf-8")
+            summary = (summaries_dir / "2026-07-09-twitter-12h-summary.txt").read_text(encoding="utf-8")
+            headlines = json.loads(headlines_file.read_text(encoding="utf-8"))
+            self.assertIn("### Top stories", digest)
+            self.assertIn('<article class="twitter-story" data-rank="1">', digest)
+            self.assertIn("OpenAI gives GPT-5.6", digest)
+            self.assertIn("OpenAI rolls out GPT-Live", digest)
+            self.assertIn("TOP STORIES:", summary)
+            self.assertGreaterEqual(len(headlines), 2)
+            self.assertIn("GPT-5.6", headlines[0]["headline"])
+            self.assertNotIn("CommunityNotes", digest)
+            self.assertNotIn("football", digest)
+            self.assertNotIn("@karpathy", digest)
+
+    def test_replaces_existing_same_hour_fallback_section(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            input_dir = root / "bird"
+            out_dir = root / "research" / "twitter"
+            summaries_dir = root / "research" / "summaries"
+            headlines_file = summaries_dir / "2026-07-09-twitter-12h-headlines.json"
+            input_dir.mkdir()
+            out_dir.mkdir(parents=True)
+            (out_dir / "2026-07-09.md").write_text(
+                "# Twitter/X AI Pulse - 2026-07-09\n\n"
+                "## 12:00 UTC\n\n"
+                "**Cycle summary**: Quiet period - no analyst-grade main stories selected.\n\n"
+                "### Quick hits\n"
+                "- @OpenAI: raw dump only\n",
+                encoding="utf-8",
+            )
+            (input_dir / "all.json").write_text(
+                json.dumps(
+                    {
+                        "accounts": {
+                            "OpenAI": [
+                                {
+                                    "id": "2074704958419792299",
+                                    "author": {"username": "OpenAI"},
+                                    "text": "GPT-5.6 Sol, along with Terra and Luna, will launch publicly this Thursday.",
+                                    "createdAt": "Thu Jul 09 11:15:00 +0000 2026",
+                                    "likeCount": 44949,
+                                    "retweetCount": 6540,
+                                    "replyCount": 2290,
+                                }
+                            ],
+                            "sama": [
+                                {
+                                    "id": "2074709023807664454",
+                                    "author": {"username": "sama"},
+                                    "text": "GPT-5.6 sol launches thursday! happy building",
+                                    "createdAt": "Thu Jul 09 11:17:00 +0000 2026",
+                                    "likeCount": 29513,
+                                    "retweetCount": 1860,
+                                    "replyCount": 1796,
+                                }
+                            ],
+                        },
+                        "searches": {},
+                        "news": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            rc = main(
+                [
+                    "--input-dir",
+                    str(input_dir),
+                    "--out-dir",
+                    str(out_dir),
+                    "--summaries-dir",
+                    str(summaries_dir),
+                    "--date",
+                    "2026-07-09",
+                    "--hour",
+                    "12",
+                    "--timestamp",
+                    "2026-07-09 12:11 UTC",
+                    "--summary-slug",
+                    "twitter",
+                    "--headlines-file",
+                    str(headlines_file),
+                ]
+            )
+
+            self.assertEqual(rc, 0)
+            digest = (out_dir / "2026-07-09.md").read_text(encoding="utf-8")
+            self.assertIn("### Top stories", digest)
+            self.assertIn("OpenAI gives GPT-5.6", digest)
+            self.assertNotIn("raw dump only", digest)
+            self.assertNotIn("no analyst-grade main stories", digest)
+
 
 if __name__ == "__main__":
     unittest.main()
