@@ -24,6 +24,22 @@ from typing import Any
 MAX_TEXT = 220
 DEFAULT_MAX_AGE_HOURS = 36
 FUTURE_SKEW = dt.timedelta(minutes=15)
+STATUS_URL_RE = re.compile(r"https?://(?:www\.)?(?:x|twitter)\.com/[^\s)\"<>]+/status/(\d+)")
+SECTION_RE = re.compile(r"(?ms)^## (?P<hour>\d{2}:00 UTC)\n.*?(?=^## \d{2}:00 UTC\n|\Z)")
+STORY_MARKERS = {
+    "gpt56": (
+        "OpenAI gives GPT-5.6 Sol/Terra/Luna",
+        "GPT-5.6 Sol/Terra/Luna a public launch",
+    ),
+    "gptlive": (
+        "OpenAI rolls out GPT-Live",
+        "GPT-Live voice models in ChatGPT",
+    ),
+    "grok": (
+        "Musk says Grok 4.5",
+        "Grok 4.5 still has major inference-speed headroom",
+    ),
+}
 
 
 @dataclasses.dataclass(frozen=True)
@@ -61,6 +77,35 @@ def clean_text(value: Any) -> str:
     text = str(value or "")
     text = re.sub(r"\s+", " ", text).strip()
     return text
+
+
+def canonical_tweet_url_key(url: str) -> str:
+    match = STATUS_URL_RE.search(clean_text(url))
+    if match:
+        return match.group(1)
+    return clean_text(url).rstrip("/")
+
+
+def without_current_section(text: str, header: str) -> str:
+    current = header.removeprefix("## ")
+
+    def keep_or_drop(match: re.Match[str]) -> str:
+        return "" if match.group("hour") == current else match.group(0)
+
+    return SECTION_RE.sub(keep_or_drop, text)
+
+
+def published_tweet_url_keys(text: str) -> set[str]:
+    return {canonical_tweet_url_key(match.group(0)) for match in STATUS_URL_RE.finditer(text)}
+
+
+def published_story_keys(text: str) -> set[str]:
+    lowered = norm(text)
+    return {
+        key
+        for key, markers in STORY_MARKERS.items()
+        if any(norm(marker) in lowered for marker in markers)
+    }
 
 
 def as_int(value: Any) -> int:
@@ -405,12 +450,24 @@ def find_group(tweets: list[Tweet], key: str) -> list[Tweet]:
     return []
 
 
-def build_stories(tweets: list[Tweet]) -> list[Story]:
+def unseen_tweets(tweets: list[Tweet], seen_url_keys: set[str]) -> list[Tweet]:
+    return [tweet for tweet in tweets if canonical_tweet_url_key(tweet.url) not in seen_url_keys]
+
+
+def build_stories(
+    tweets: list[Tweet],
+    seen_url_keys: set[str] | None = None,
+    seen_story_keys: set[str] | None = None,
+) -> list[Story]:
+    seen_url_keys = seen_url_keys or set()
+    seen_story_keys = seen_story_keys or set()
     usable = filtered_tweets(tweets)
     stories: list[Story] = []
 
     gpt56 = find_group(usable, "gpt56")
-    if gpt56:
+    if gpt56 and "gpt56" not in seen_story_keys:
+        gpt56 = unseen_tweets(gpt56, seen_url_keys)
+    if gpt56 and "gpt56" not in seen_story_keys:
         gpt56 = sorted(gpt56, key=lambda item: (-item.score, item.author))[:3]
         stories.append(
             Story(
@@ -441,7 +498,9 @@ def build_stories(tweets: list[Tweet]) -> list[Story]:
         )
 
     gptlive = find_group(usable, "gptlive")
-    if gptlive:
+    if gptlive and "gptlive" not in seen_story_keys:
+        gptlive = unseen_tweets(gptlive, seen_url_keys)
+    if gptlive and "gptlive" not in seen_story_keys:
         gptlive = sorted(gptlive, key=lambda item: (-item.score, item.author))[:3]
         stories.append(
             Story(
@@ -472,7 +531,9 @@ def build_stories(tweets: list[Tweet]) -> list[Story]:
         )
 
     grok = [tweet for tweet in find_group(usable, "grok") if not is_retweet(tweet)]
-    if grok and len(stories) < 3:
+    if grok and "grok" not in seen_story_keys:
+        grok = unseen_tweets(grok, seen_url_keys)
+    if grok and "grok" not in seen_story_keys and len(stories) < 3:
         grok = sorted(grok, key=lambda item: (-item.score, item.author))[:2]
         stories.append(
             Story(
@@ -504,6 +565,11 @@ def build_stories(tweets: list[Tweet]) -> list[Story]:
     return stories
 
 
+def has_carried_forward_candidates(tweets: list[Tweet], seen_story_keys: set[str]) -> bool:
+    usable = filtered_tweets(tweets)
+    return any(find_group(usable, key) for key in seen_story_keys)
+
+
 def render_story(story: Story, rank: int) -> list[str]:
     sources = "\n      ".join(primary_link(tweet) for tweet in story.tweets)
     first = story.tweets[0]
@@ -530,12 +596,34 @@ def render_story(story: Story, rank: int) -> list[str]:
     ]
 
 
-def render_digest(date: str, hour: str, title_suffix: str, tweets: list[Tweet]) -> tuple[str, str, list[Story]]:
+def render_digest(
+    date: str,
+    hour: str,
+    title_suffix: str,
+    tweets: list[Tweet],
+    seen_url_keys: set[str] | None = None,
+    seen_story_keys: set[str] | None = None,
+) -> tuple[str, str, list[Story], bool]:
+    seen_url_keys = seen_url_keys or set()
+    seen_story_keys = seen_story_keys or set()
     h1 = f"# Twitter/X AI Pulse{title_suffix} - {date}"
     header = f"## {hour}:00 UTC"
-    stories = build_stories(tweets)
+    stories = build_stories(tweets, seen_url_keys, seen_story_keys)
     story_urls = {tweet.url for story in stories for tweet in story.tweets}
-    quick_hits = [tweet for tweet in filtered_tweets(tweets) if tweet.url not in story_urls and not is_retweet(tweet)]
+    carried_forward = not stories and has_carried_forward_candidates(tweets, seen_story_keys)
+    carried_story_url_keys = {
+        canonical_tweet_url_key(tweet.url)
+        for key in seen_story_keys
+        for tweet in find_group(filtered_tweets(tweets), key)
+    }
+    quick_hits = [
+        tweet
+        for tweet in filtered_tweets(tweets)
+        if tweet.url not in story_urls
+        and not is_retweet(tweet)
+        and canonical_tweet_url_key(tweet.url) not in seen_url_keys
+        and canonical_tweet_url_key(tweet.url) not in carried_story_url_keys
+    ]
 
     lines = [
         h1,
@@ -558,9 +646,14 @@ def render_digest(date: str, hour: str, title_suffix: str, tweets: list[Tweet]) 
             lines.extend(render_story(story, index))
             lines.append("")
     else:
+        summary = (
+            "**Cycle summary**: Quiet follow-up period - no new main stories beyond earlier same-day Twitter/X items."
+            if carried_forward
+            else "**Cycle summary**: Quiet period - no main stories cleared the publication bar from the fresh Twitter/X snapshot."
+        )
         lines.extend(
             [
-                "**Cycle summary**: Quiet period - no main stories cleared the publication bar from the fresh Twitter/X snapshot.",
+                summary,
                 "",
             ]
         )
@@ -571,6 +664,8 @@ def render_digest(date: str, hour: str, title_suffix: str, tweets: list[Tweet]) 
             lines.append(f"- @{tweet.author}: {trim_sentence(tweet.text)} [{engagement(tweet)}]({tweet.url})")
     elif stories:
         lines.append("- No additional AI-specific quick hits cleared the publication bar.")
+    elif carried_forward:
+        lines.append("- No new AI-specific quick hits cleared the publication bar beyond earlier same-day items.")
     else:
         lines.append("- No notable fresh AI tweets survived parsing.")
 
@@ -588,7 +683,10 @@ def render_digest(date: str, hour: str, title_suffix: str, tweets: list[Tweet]) 
             "Grok 4.5 speedup is an executive roadmap claim until xAI ships the GB300-tuned inference stack and users can measure it."
         )
     if not skeptic:
-        skeptic.append("None this cycle.")
+        if carried_forward:
+            skeptic.append("Earlier same-day story claims remain in watch mode; this cycle only saw repeat or follow-up signals.")
+        else:
+            skeptic.append("None this cycle.")
 
     watch = []
     if any(story.key == "gpt56" for story in stories):
@@ -612,10 +710,18 @@ def render_digest(date: str, hour: str, title_suffix: str, tweets: list[Tweet]) 
             "- Source checks issued this cycle: fresh pre-fetched account, search, and news snapshots; stale rows outside the configured freshness window were excluded before ranking.",
         ]
     )
-    return header, "\n".join(lines), stories
+    if carried_forward:
+        lines.append("- Earlier same-day story URLs and story families were excluded before ranking to avoid duplicate publication.")
+    return header, "\n".join(lines), stories, carried_forward
 
 
-def render_summary(timestamp: str, title_suffix: str, tweets: list[Tweet], stories: list[Story]) -> str:
+def render_summary(
+    timestamp: str,
+    title_suffix: str,
+    tweets: list[Tweet],
+    stories: list[Story],
+    carried_forward: bool = False,
+) -> str:
     if stories:
         bullets = "\n".join(f"- {story.title}: {story.lead}" for story in stories[:3])
         return (
@@ -623,6 +729,13 @@ def render_summary(timestamp: str, title_suffix: str, tweets: list[Tweet], stori
             "CYCLE: Fresh primary-source AI product movement cleared the publication bar.\n\n"
             f"TOP STORIES:\n{bullets}\n\n"
             "WATCH: public rollout details, independent evals, pricing/rate limits, and real-user voice latency.\n\n"
+            "Full update on GitHub.\n"
+        )
+    if carried_forward:
+        return (
+            f"Twitter/X AI Pulse{title_suffix} - {timestamp}\n\n"
+            "CYCLE: Quiet follow-up period; no new main stories beyond earlier same-day Twitter/X items.\n\n"
+            "WATCH: carry forward public rollout details, independent evals, pricing/rate limits, and real-user voice latency.\n\n"
             "Full update on GitHub.\n"
         )
     usable = filtered_tweets(tweets)
@@ -677,9 +790,22 @@ def main(argv: list[str] | None = None) -> int:
     digest_path = args.out_dir / f"{args.date}.md"
     summary_path = args.summaries_dir / f"{args.date}-{args.summary_slug}-{args.hour}h-summary.txt"
 
-    header, digest, stories = render_digest(args.date, args.hour, args.title_suffix, tweets)
+    existing_digest = digest_path.read_text(encoding="utf-8") if digest_path.exists() else ""
+    current_header = f"## {args.hour}:00 UTC"
+    prior_digest = without_current_section(existing_digest, current_header)
+    seen_url_keys = published_tweet_url_keys(prior_digest)
+    seen_story_keys = published_story_keys(prior_digest)
+
+    header, digest, stories, carried_forward = render_digest(
+        args.date,
+        args.hour,
+        args.title_suffix,
+        tweets,
+        seen_url_keys,
+        seen_story_keys,
+    )
     changed = upsert_section(digest_path, header, digest)
-    atomic_write(summary_path, render_summary(args.timestamp, args.title_suffix, tweets, stories))
+    atomic_write(summary_path, render_summary(args.timestamp, args.title_suffix, tweets, stories, carried_forward))
     if args.headlines_file is not None:
         atomic_write(args.headlines_file, render_headlines(stories))
 
