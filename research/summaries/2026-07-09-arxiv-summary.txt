@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-09
+
+TOP 5 PAPERS:
+• SciReasoner - multimodal foundation model for proteins/molecules/crystals, SOTA on 67/86 benchmarks
+• Transformer Linearization - analysis-driven fix for quadratic attention, scales to 32B params
+• Institutional Red-Teaming - deployment rule choice swings multi-agent fatality rates by 22-58pp
+• Recursive Self-Improvement - 1,250-paper survey mapping RSI to verification hierarchy
+• Agon - cross-model competitive RL roughly doubles GRPO pass@1 on hard math problems
+
+CATEGORIES: LM/NLP 5, CV/Multimodal 3, Agents & Reasoning 5, Safety & Alignment 3, Other 6
+
+Full report on GitHub.
