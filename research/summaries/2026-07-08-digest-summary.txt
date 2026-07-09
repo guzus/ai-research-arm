@@ -2,7 +2,7 @@ AI Daily Digest - 2026-07-08
 
 Top story: OpenAI confirmed GPT-5.6 (Sol/Terra/Luna) launches publicly Thursday after a govt-forced delay; OpenAI claims Sol beats Claude Mythos 5 on coding at half the cost (unverified).
 
-Anthropic: Commerce Dept reportedly lifted export controls on Claude Fable 5/Mythos 5, global access said to return tomorrow (single-source); Karpathy says he joined Anthropic; Claude Cowork now on mobile/web (corroborated).
+Anthropic: Commerce Dept reportedly lifted export controls on Claude Fable 5/Mythos 5, global access said to return tomorrow (single-source); Claude Cowork now on mobile/web (corroborated).
 
 Also: China weighing its own model export curbs; DeepSeek building its own chips; Microsoft cutting OpenAI/Anthropic use for its own models; Meta's Muse Image draws backlash; HN's top story is a GitHub AI agent data-leak exploit.
 

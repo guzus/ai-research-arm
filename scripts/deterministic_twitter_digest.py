@@ -21,6 +21,8 @@ from typing import Any
 
 
 MAX_TEXT = 220
+DEFAULT_MAX_AGE_HOURS = 36
+FUTURE_SKEW = dt.timedelta(minutes=15)
 
 
 @dataclasses.dataclass(frozen=True)
@@ -69,6 +71,16 @@ def parse_datetime(value: Any) -> dt.datetime | None:
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=dt.timezone.utc)
     return parsed.astimezone(dt.timezone.utc)
+
+
+def parse_timestamp(value: str) -> dt.datetime | None:
+    text = clean_text(value)
+    for fmt in ("%Y-%m-%d %H:%M UTC", "%Y-%m-%d %H:%M:%S UTC"):
+        try:
+            return dt.datetime.strptime(text, fmt).replace(tzinfo=dt.timezone.utc)
+        except ValueError:
+            pass
+    return parse_datetime(text)
 
 
 def nested(row: dict[str, Any], *path: str) -> Any:
@@ -174,12 +186,25 @@ def iter_all_rows(path: Path) -> list[tuple[str, dict[str, Any]]]:
     return rows
 
 
-def add_tweet(tweets: dict[str, Tweet], row: dict[str, Any], source: str) -> None:
+def is_fresh(created_at: dt.datetime | None, end_time: dt.datetime, max_age: dt.timedelta) -> bool:
+    if created_at is None:
+        return False
+    return end_time - max_age <= created_at <= end_time + FUTURE_SKEW
+
+
+def add_tweet(
+    tweets: dict[str, Tweet],
+    row: dict[str, Any],
+    source: str,
+    end_time: dt.datetime,
+    max_age: dt.timedelta,
+) -> None:
     author = author_handle(row)
     tid = tweet_id(row)
     text = tweet_text(row)
     url = tweet_url(row, author, tid)
-    if not text or not url:
+    created_at = parse_datetime(row.get("createdAt") or nested(row, "legacy", "created_at"))
+    if not text or not url or not is_fresh(created_at, end_time, max_age):
         return
     key = url or tid or text[:120]
     tweet = Tweet(
@@ -191,21 +216,22 @@ def add_tweet(tweets: dict[str, Tweet], row: dict[str, Any], source: str) -> Non
         likes=as_int(row.get("likeCount") or nested(row, "legacy", "favorite_count")),
         retweets=as_int(row.get("retweetCount") or nested(row, "legacy", "retweet_count")),
         replies=as_int(row.get("replyCount") or nested(row, "legacy", "reply_count")),
-        created_at=parse_datetime(row.get("createdAt") or nested(row, "legacy", "created_at")),
+        created_at=created_at,
     )
     existing = tweets.get(key)
     if existing is None or tweet.score > existing.score:
         tweets[key] = tweet
 
 
-def collect_tweets(input_dir: Path, limit: int) -> list[Tweet]:
+def collect_tweets(input_dir: Path, limit: int, end_time: dt.datetime, max_age_hours: int) -> list[Tweet]:
     tweets: dict[str, Tweet] = {}
+    max_age = dt.timedelta(hours=max_age_hours)
 
     # The production Claude lane fetches an aggregate all.json. Prefer it when
     # present so fallback recovery uses the same raw snapshot the agent prompt
     # referenced; otherwise use the comparison lane's per-source JSON files.
     for source, row in iter_all_rows(input_dir / "all.json"):
-        add_tweet(tweets, row, source)
+        add_tweet(tweets, row, source, end_time, max_age)
 
     if tweets:
         return rank_tweets(tweets, limit)
@@ -215,7 +241,7 @@ def collect_tweets(input_dir: Path, limit: int) -> list[Tweet]:
             continue
         source = path.stem
         for row in iter_rows(path):
-            add_tweet(tweets, row, source)
+            add_tweet(tweets, row, source, end_time, max_age)
 
     return rank_tweets(tweets, limit)
 
@@ -321,9 +347,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--summary-slug", required=True)
     parser.add_argument("--headlines-file", type=Path)
     parser.add_argument("--limit", type=int, default=8)
+    parser.add_argument("--max-age-hours", type=int, default=DEFAULT_MAX_AGE_HOURS)
     args = parser.parse_args(argv)
 
-    tweets = collect_tweets(args.input_dir, args.limit)
+    end_time = parse_timestamp(args.timestamp)
+    if end_time is None:
+        raise SystemExit(f"Could not parse --timestamp as UTC time: {args.timestamp!r}")
+
+    tweets = collect_tweets(args.input_dir, args.limit, end_time, args.max_age_hours)
     digest_path = args.out_dir / f"{args.date}.md"
     summary_path = args.summaries_dir / f"{args.date}-{args.summary_slug}-{args.hour}h-summary.txt"
 
