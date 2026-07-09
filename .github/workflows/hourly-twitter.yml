@@ -981,6 +981,16 @@ jobs:
             && echo "Judge-suppression alert sent ($COUNT)."
 
       # ── Push the markdown digest + summary (all tiers, not on dry-run) ──
+      - name: Clean transient probe files
+        if: >-
+          steps.backend.outputs.skip != 'true'
+          && !(github.event_name == 'workflow_dispatch' && steps.backend.outputs.name == 'claude' && inputs.dry_run == true)
+        run: |
+          rm -f \
+            .probe_test_delete_me.txt \
+            .tmp-sandbox-probe.txt \
+            research/summaries/_probe.txt
+
       # Note on push semantics (codex [P2] fix): a `git push` exit-non-zero
       # is treated as a HARD FAILURE here. Previously this step swallowed
       # push errors (auth, non-fast-forward, network) and let downstream
@@ -1200,8 +1210,7 @@ jobs:
                 fi
               done
               if [ "$PUSHED" != "true" ]; then
-                echo "Failed to push delivered-alert history after retries"
-                exit 1
+                echo "::warning::Failed to push delivered-alert history after retries; alerts were already sent, continuing"
               fi
             else
               echo "No delivered alert history changes"
