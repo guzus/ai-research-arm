@@ -638,5 +638,23 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "lighter-latency-engineering-claim-audit",
+    "file": "2026-07-09T110925--lighter-latency-engineering-claim-audit.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Lighter's microsecond story is really a systems-boundary story",
+    "model": "gpt-5-codex",
+    "created_at": "2026-07-09T11:09:25Z",
+    "source": "local",
+    "prompt": "Seed Twitter/X URL: https://x.com/Lighter_xyz/status/2074905536122789917 — Read the tweet/article and thread, infer the underlying research question, treat the post as a seed primary source, then persist a generative-research article using independently checked sources where possible.",
+    "tags": [
+      "twitter-seed",
+      "lighter",
+      "perp-dex",
+      "latency",
+      "zk-rollup"
+    ]
   }
 ]
