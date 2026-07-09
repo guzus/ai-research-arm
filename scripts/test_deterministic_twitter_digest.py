@@ -409,6 +409,90 @@ class DeterministicTwitterDigestTest(unittest.TestCase):
             self.assertNotIn("raw dump only", digest)
             self.assertNotIn("no analyst-grade main stories", digest)
 
+    def test_suppresses_prior_same_day_story_families(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            input_dir = root / "bird"
+            out_dir = root / "research" / "twitter"
+            summaries_dir = root / "research" / "summaries"
+            headlines_file = summaries_dir / "2026-07-09-twitter-13h-headlines.json"
+            input_dir.mkdir()
+            out_dir.mkdir(parents=True)
+            (out_dir / "2026-07-09.md").write_text(
+                "# Twitter/X AI Pulse - 2026-07-09\n\n"
+                "## 12:00 UTC\n\n"
+                "**Cycle summary**: Fresh primary-source AI product movement cleared the bar this window: "
+                "OpenAI gives GPT-5.6 Sol/Terra/Luna a public launch window; "
+                "OpenAI rolls out GPT-Live voice models in ChatGPT.\n\n"
+                "### Top stories\n\n"
+                '<a class="twitter-source-chip" href="https://x.com/OpenAI/status/2074704958419792299">@OpenAI</a>\n'
+                '<a class="twitter-source-chip" href="https://x.com/OpenAI/status/2074907025537224840">@OpenAI</a>\n',
+                encoding="utf-8",
+            )
+            (input_dir / "all.json").write_text(
+                json.dumps(
+                    {
+                        "accounts": {
+                            "OpenAI": [
+                                {
+                                    "id": "2074704958419792299",
+                                    "author": {"username": "OpenAI"},
+                                    "text": "GPT-5.6 Sol, along with Terra and Luna, will launch publicly this Thursday.",
+                                    "createdAt": "Thu Jul 09 12:15:00 +0000 2026",
+                                    "likeCount": 45189,
+                                    "retweetCount": 6571,
+                                    "replyCount": 2308,
+                                },
+                                {
+                                    "id": "2074907025537224840",
+                                    "author": {"username": "OpenAI"},
+                                    "text": "Introducing GPT-Live, a new generation of voice models for natural human-AI interaction. Rolling out in ChatGPT starting today.",
+                                    "createdAt": "Thu Jul 09 12:45:00 +0000 2026",
+                                    "likeCount": 18295,
+                                    "retweetCount": 1631,
+                                    "replyCount": 926,
+                                },
+                            ]
+                        },
+                        "searches": {},
+                        "news": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            rc = main(
+                [
+                    "--input-dir",
+                    str(input_dir),
+                    "--out-dir",
+                    str(out_dir),
+                    "--summaries-dir",
+                    str(summaries_dir),
+                    "--date",
+                    "2026-07-09",
+                    "--hour",
+                    "13",
+                    "--timestamp",
+                    "2026-07-09 13:08 UTC",
+                    "--summary-slug",
+                    "twitter",
+                    "--headlines-file",
+                    str(headlines_file),
+                ]
+            )
+
+            self.assertEqual(rc, 0)
+            digest = (out_dir / "2026-07-09.md").read_text(encoding="utf-8")
+            summary = (summaries_dir / "2026-07-09-twitter-13h-summary.txt").read_text(encoding="utf-8")
+            thirteen = digest.split("## 13:00 UTC", 1)[1]
+            self.assertIn("Quiet follow-up period", thirteen)
+            self.assertNotIn("### Top stories", thirteen)
+            self.assertNotIn("OpenAI gives GPT-5.6", thirteen)
+            self.assertNotIn("OpenAI rolls out GPT-Live", thirteen)
+            self.assertIn("no new main stories beyond earlier same-day", summary)
+            self.assertEqual(json.loads(headlines_file.read_text(encoding="utf-8")), [])
+
 
 if __name__ == "__main__":
     unittest.main()
