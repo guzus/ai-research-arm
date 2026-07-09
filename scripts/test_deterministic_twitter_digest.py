@@ -129,6 +129,78 @@ class DeterministicTwitterDigestTest(unittest.TestCase):
             self.assertIn("Twitter/X AI Pulse - 2026-07-09 07:14 UTC", summary)
             self.assertEqual(json.loads(headlines_file.read_text(encoding="utf-8")), [])
 
+    def test_excludes_stale_high_engagement_rows_from_fallback(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            input_dir = root / "bird"
+            out_dir = root / "research" / "twitter"
+            summaries_dir = root / "research" / "summaries"
+            headlines_file = summaries_dir / "2026-07-09-twitter-11h-headlines.json"
+            input_dir.mkdir()
+            (input_dir / "all.json").write_text(
+                json.dumps(
+                    {
+                        "accounts": {
+                            "karpathy": [
+                                {
+                                    "id": "2056753169888334312",
+                                    "author": {"username": "karpathy"},
+                                    "text": "Personal update: I've joined Anthropic.",
+                                    "createdAt": "Wed May 20 11:00:00 +0000 2026",
+                                    "likeCount": 150161,
+                                    "retweetCount": 11096,
+                                    "replyCount": 7974,
+                                }
+                            ],
+                            "OpenAI": [
+                                {
+                                    "id": "999",
+                                    "author": {"username": "openai"},
+                                    "text": "Fresh AI systems note for the current monitoring window.",
+                                    "createdAt": "Thu Jul 09 11:05:00 +0000 2026",
+                                    "likeCount": 7,
+                                    "retweetCount": 1,
+                                    "replyCount": 0,
+                                }
+                            ],
+                        },
+                        "searches": {},
+                        "news": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            rc = main(
+                [
+                    "--input-dir",
+                    str(input_dir),
+                    "--out-dir",
+                    str(out_dir),
+                    "--summaries-dir",
+                    str(summaries_dir),
+                    "--date",
+                    "2026-07-09",
+                    "--hour",
+                    "11",
+                    "--timestamp",
+                    "2026-07-09 11:36 UTC",
+                    "--summary-slug",
+                    "twitter",
+                    "--headlines-file",
+                    str(headlines_file),
+                ]
+            )
+
+            self.assertEqual(rc, 0)
+            digest = (out_dir / "2026-07-09.md").read_text(encoding="utf-8")
+            summary = (summaries_dir / "2026-07-09-twitter-11h-summary.txt").read_text(encoding="utf-8")
+            self.assertIn("@openai", digest)
+            self.assertIn("https://x.com/openai/status/999", digest)
+            self.assertNotIn("@karpathy", digest)
+            self.assertNotIn("2056753169888334312", digest)
+            self.assertNotIn("joined Anthropic", summary)
+
 
 if __name__ == "__main__":
     unittest.main()
