@@ -515,6 +515,55 @@ jobs:
                    git add "${{ steps.const.outputs.digest_file }}" "${{ steps.const.outputs.summary_file }}" "${{ steps.const.outputs.headlines_file }}"
                    git commit -m "Twitter Claude repair ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
 
+      - name: Deterministic Twitter fallback (Claude primary tier)
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && steps.twitter-claude-agent.outcome == 'failure'
+          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+        env:
+          BASE_SHA: ${{ steps.twitter-output-base.outputs.sha }}
+          DIGEST_FILE: ${{ steps.const.outputs.digest_file }}
+          SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
+          HEADLINES_FILE: ${{ steps.const.outputs.headlines_file }}
+          OUTPUT_DIR: ${{ steps.const.outputs.output_dir }}
+          SUMMARY_SLUG: ${{ steps.const.outputs.summary_slug }}
+          TITLE_SUFFIX: ${{ steps.const.outputs.title_suffix }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+        run: |
+          set -euo pipefail
+
+          missing=0
+          for path in "$DIGEST_FILE" "$SUMMARY_FILE" "$HEADLINES_FILE"; do
+            if git diff --quiet "${BASE_SHA}..HEAD" -- "$path"; then
+              echo "fallback-needed: $path has no committed change since $BASE_SHA"
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -eq 0 ]; then
+            echo "Claude repair already produced all required outputs; skipping deterministic fallback."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          uv run python scripts/deterministic_twitter_digest.py \
+            --input-dir .twitter-input/bird \
+            --out-dir "$OUTPUT_DIR" \
+            --summaries-dir research/summaries \
+            --date "$DATE" \
+            --hour "$HOUR" \
+            --timestamp "$TIMESTAMP" \
+            --title-suffix "$TITLE_SUFFIX" \
+            --summary-slug "$SUMMARY_SLUG" \
+            --headlines-file "$HEADLINES_FILE"
+
+          git add "$DIGEST_FILE" "$SUMMARY_FILE" "$HEADLINES_FILE"
+          git commit -m "Twitter deterministic fallback $TIMESTAMP" || echo "No deterministic fallback changes to commit"
+
       - name: Process tweets with DeepSeek v4 Flash via Fireworks (deepseek-claude-code tier)
         id: twitter-deepseek-agent
         continue-on-error: true

@@ -58,6 +58,7 @@ DETERMINISTIC_RE = re.compile(r"(deterministic_[a-z_]+\.py)")
 # ever happens, tighten to the actual `codex ... exec` invocation shape.
 CODEX_EXEC_RE = re.compile(r"\bcodex\b[^\n]*(?:\n[^\n]*)*?\bexec\b")
 RESOLVER_CALL_RE = re.compile(r"resolve_backend_lane\.py\s+([a-z0-9\-]+)")
+STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure'")
 
 # Backends generative-research.yml can actually execute (its params step
 # validates against this same set at runtime).
@@ -83,6 +84,7 @@ class Profile:
 class AgentRunStep:
     workflow: str
     lane: str
+    step_id: str
     raw_backend: str
     step_name: str
     tier: str
@@ -120,6 +122,7 @@ class Observation:
     codex: bool = False
     codex_token: str = ""
     resolver_lanes: set[str] = field(default_factory=set)
+    det_by_lane: dict[str, str] = field(default_factory=dict)
     det_by_tier: dict[str, str] = field(default_factory=dict)
     det_job_wide: list[str] = field(default_factory=list)
     has_dispatch_fireworks_fallback: bool = False
@@ -242,6 +245,7 @@ def observe_workflow(wf_path: Path) -> Observation:
     on_block = wf.get("on") or wf.get(True) or {}
     dispatch_inputs = ((on_block.get("workflow_dispatch") or {}).get("inputs") or {})
     obs.has_dispatch_fireworks_fallback = "fireworks_fallback" in dispatch_inputs
+    step_id_to_lane: dict[str, str] = {}
 
     for job in (wf.get("jobs") or {}).values():
         for step in job.get("steps", []) or []:
@@ -263,16 +267,31 @@ def observe_workflow(wf_path: Path) -> Observation:
                 # must not be rendered as "then deterministic_*.py".
                 scripts = [] if "allow_deterministic_fallback" in cond else sorted(set(DETERMINISTIC_RE.findall(run)))
                 for script in scripts:
-                    if tier:
+                    lane = next(
+                        (
+                            step_id_to_lane[step_id]
+                            for step_id in STEP_OUTCOME_RE.findall(cond)
+                            if step_id in step_id_to_lane
+                        ),
+                        "",
+                    )
+                    if lane:
+                        obs.det_by_lane.setdefault(lane, script)
+                    elif tier:
                         obs.det_by_tier.setdefault(tier, script)
                     elif script not in obs.det_job_wide:
                         obs.det_job_wide.append(script)
 
             if uses.startswith("./.github/actions/agent-run"):
                 secrets = {k: first_secret(with_block.get(k)) for k in REQUIRED_AGENT_RUN_SECRETS}
+                step_id = str(step.get("id", "")).strip()
+                lane = str(with_block.get("lane", "")).strip()
+                if step_id and lane:
+                    step_id_to_lane[step_id] = lane
                 obs.agent_run.append(AgentRunStep(
                     workflow=wf_path.name,
-                    lane=str(with_block.get("lane", "")).strip(),
+                    lane=lane,
+                    step_id=step_id,
                     raw_backend=str(with_block.get("backend", "")).strip(),
                     step_name=step_name,
                     tier=tier,
@@ -465,8 +484,10 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
                fallback_default: str, chain: list[str]) -> list[list[str]]:
     rows: list[list[str]] = []
 
-    def det_suffix(obs: Observation, tier: str) -> str:
-        script = obs.det_by_tier.get(tier) if tier else None
+    def det_suffix(obs: Observation, lane_key: str, tier: str) -> str:
+        script = obs.det_by_lane.get(lane_key)
+        if script is None and tier:
+            script = obs.det_by_tier.get(tier)
         if script is None and obs.det_job_wide:
             script = obs.det_job_wide[0]
         return f"; then `{script}`" if script else ""
@@ -509,7 +530,7 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             else:
                 fallback = render_chain(profile.normalized if profile else backend)
             tier = step.tier if step else ""
-            fallback += det_suffix(obs, tier)
+            fallback += det_suffix(obs, key, tier)
             lane_label = key + (f" (tier:{tier})" if tier else "") + pinned
             rows.append([lane_label, f"`{wf_name}`", "Claude Code · agent-run (runtime SSOT)",
                          provider, model, f"`{token}`", fallback])
