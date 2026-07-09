@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic fallback writer for the Twitter comparison lanes.
+"""Deterministic fallback writer for scheduled Twitter/X lanes.
 
 The model lane is still the preferred analyst. This script only preserves the
 scheduled output contract when the agent path returns without committing the
@@ -148,35 +148,79 @@ def iter_rows(path: Path) -> list[dict[str, Any]]:
     return []
 
 
+def iter_all_rows(path: Path) -> list[tuple[str, dict[str, Any]]]:
+    """Return tweet-like rows from birdy's aggregate all.json snapshot."""
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8") or "{}")
+    except (OSError, json.JSONDecodeError):
+        return []
+    if not isinstance(payload, dict):
+        return []
+
+    rows: list[tuple[str, dict[str, Any]]] = []
+    for group in ("accounts", "searches"):
+        values = payload.get(group)
+        if not isinstance(values, dict):
+            continue
+        for name, items in values.items():
+            if not isinstance(items, list):
+                continue
+            source = f"{group[:-1]}-{clean_text(name) or 'unknown'}"
+            rows.extend((source, row) for row in items if isinstance(row, dict))
+
+    news = payload.get("news")
+    if isinstance(news, list):
+        rows.extend(("news", row) for row in news if isinstance(row, dict))
+    return rows
+
+
+def add_tweet(tweets: dict[str, Tweet], row: dict[str, Any], source: str) -> None:
+    author = author_handle(row)
+    tid = tweet_id(row)
+    text = tweet_text(row)
+    url = tweet_url(row, author, tid)
+    if not text or not url:
+        return
+    key = url or tid or text[:120]
+    tweet = Tweet(
+        key=key,
+        author=author,
+        text=text,
+        url=url,
+        source=source,
+        likes=as_int(row.get("likeCount") or nested(row, "legacy", "favorite_count")),
+        retweets=as_int(row.get("retweetCount") or nested(row, "legacy", "retweet_count")),
+        replies=as_int(row.get("replyCount") or nested(row, "legacy", "reply_count")),
+        created_at=parse_datetime(row.get("createdAt") or nested(row, "legacy", "created_at")),
+    )
+    existing = tweets.get(key)
+    if existing is None or tweet.score > existing.score:
+        tweets[key] = tweet
+
+
 def collect_tweets(input_dir: Path, limit: int) -> list[Tweet]:
     tweets: dict[str, Tweet] = {}
+
+    # The production Claude lane fetches an aggregate all.json. Prefer it when
+    # present so fallback recovery uses the same raw snapshot the agent prompt
+    # referenced; otherwise use the comparison lane's per-source JSON files.
+    for source, row in iter_all_rows(input_dir / "all.json"):
+        add_tweet(tweets, row, source)
+
+    if tweets:
+        return rank_tweets(tweets, limit)
+
     for path in sorted(input_dir.glob("*.json")):
         if path.name in {"all.json", "manifest.json"}:
             continue
         source = path.stem
         for row in iter_rows(path):
-            author = author_handle(row)
-            tid = tweet_id(row)
-            text = tweet_text(row)
-            url = tweet_url(row, author, tid)
-            if not text or not url:
-                continue
-            key = url or tid or text[:120]
-            tweet = Tweet(
-                key=key,
-                author=author,
-                text=text,
-                url=url,
-                source=source,
-                likes=as_int(row.get("likeCount") or nested(row, "legacy", "favorite_count")),
-                retweets=as_int(row.get("retweetCount") or nested(row, "legacy", "retweet_count")),
-                replies=as_int(row.get("replyCount") or nested(row, "legacy", "reply_count")),
-                created_at=parse_datetime(row.get("createdAt") or nested(row, "legacy", "created_at")),
-            )
-            existing = tweets.get(key)
-            if existing is None or tweet.score > existing.score:
-                tweets[key] = tweet
+            add_tweet(tweets, row, source)
 
+    return rank_tweets(tweets, limit)
+
+
+def rank_tweets(tweets: dict[str, Tweet], limit: int) -> list[Tweet]:
     ranked = sorted(
         tweets.values(),
         key=lambda item: (
@@ -240,7 +284,7 @@ def render_digest(date: str, hour: str, title_suffix: str, tweets: list[Tweet]) 
             "- None this cycle.",
             "",
             "### Watch list (next 24h)",
-            "- Next scheduled Twitter/X comparison cycle.",
+            "- Next scheduled Twitter/X AI monitor run.",
             "",
             "### Research notes",
             "- Source checks issued this cycle: deterministic scan of pre-fetched account, search, and news snapshots.",
@@ -256,7 +300,7 @@ def render_summary(timestamp: str, title_suffix: str, tweets: list[Tweet]) -> st
             f"Twitter/X AI Pulse{title_suffix} - {timestamp}\n\n"
             "CYCLE: Quiet period; deterministic quick-hit scan found no analyst-grade main story.\n\n"
             f"QUICK HITS:\n{bullets}\n\n"
-            "WATCH: Next scheduled Twitter/X comparison cycle.\n\n"
+            "WATCH: Next scheduled Twitter/X AI monitor run.\n\n"
             "Full update on GitHub.\n"
         )
     return (

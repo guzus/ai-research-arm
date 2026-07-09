@@ -79,6 +79,14 @@ class RoutingInvariants(unittest.TestCase):
         for lane in ("twitter-primary", "twitter-judge", "twitter-autoresearch"):
             self.assertEqual(self.lanes[lane]["backend"], "claude", lane)
 
+    def test_twitter_deterministic_fallback_is_primary_lane_only(self):
+        hourly = self.obs["hourly-twitter.yml"]
+        self.assertEqual(
+            hourly.det_by_lane,
+            {"twitter-primary": "deterministic_twitter_digest.py"},
+        )
+        self.assertEqual(hourly.det_by_tier, {})
+
     def test_pi_mirror_matches_workflow(self):
         pi_models = {s.model for s in self.obs["hourly-twitter.yml"].pi}
         self.assertEqual(

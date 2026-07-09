@@ -67,6 +67,68 @@ class DeterministicTwitterDigestTest(unittest.TestCase):
             self.assertIn("Twitter/X AI Pulse (DeepSeek v4 Flash)", summary)
             self.assertEqual(json.loads(headlines_file.read_text(encoding="utf-8")), [])
 
+    def test_reads_aggregate_all_json_for_primary_lane(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            input_dir = root / "bird"
+            out_dir = root / "research" / "twitter"
+            summaries_dir = root / "research" / "summaries"
+            headlines_file = summaries_dir / "2026-07-09-twitter-07h-headlines.json"
+            input_dir.mkdir()
+            (input_dir / "all.json").write_text(
+                json.dumps(
+                    {
+                        "accounts": {
+                            "OpenAI": [
+                                {
+                                    "id": "456",
+                                    "author": {"username": "openai"},
+                                    "text": "OpenAI publishes a new AI safety systems note.",
+                                    "createdAt": "Thu Jul 09 07:02:00 +0000 2026",
+                                    "likeCount": 10,
+                                    "retweetCount": 2,
+                                    "replyCount": 1,
+                                }
+                            ]
+                        },
+                        "searches": {},
+                        "news": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            rc = main(
+                [
+                    "--input-dir",
+                    str(input_dir),
+                    "--out-dir",
+                    str(out_dir),
+                    "--summaries-dir",
+                    str(summaries_dir),
+                    "--date",
+                    "2026-07-09",
+                    "--hour",
+                    "07",
+                    "--timestamp",
+                    "2026-07-09 07:14 UTC",
+                    "--summary-slug",
+                    "twitter",
+                    "--headlines-file",
+                    str(headlines_file),
+                ]
+            )
+
+            self.assertEqual(rc, 0)
+            digest = (out_dir / "2026-07-09.md").read_text(encoding="utf-8")
+            summary = (summaries_dir / "2026-07-09-twitter-07h-summary.txt").read_text(encoding="utf-8")
+            self.assertIn("## 07:00 UTC", digest)
+            self.assertIn("@openai", digest)
+            self.assertIn("https://x.com/openai/status/456", digest)
+            self.assertIn("Next scheduled Twitter/X AI monitor run", digest)
+            self.assertIn("Twitter/X AI Pulse - 2026-07-09 07:14 UTC", summary)
+            self.assertEqual(json.loads(headlines_file.read_text(encoding="utf-8")), [])
+
 
 if __name__ == "__main__":
     unittest.main()
