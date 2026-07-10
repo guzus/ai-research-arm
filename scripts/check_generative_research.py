@@ -982,6 +982,66 @@ def _strip_cite_markers(s: str) -> str:
     return s
 
 
+# Typographic folding for the verifier-findings audit: the verifier
+# ledger and the rendered article routinely disagree on quote glyphs,
+# ellipsis style, and dashes. Fold both sides to a common shape before
+# substring probing (see audit_verifier_findings).
+_TYPOGRAPHY_FOLD_TRANS = str.maketrans({
+    "\u2018": "'", "\u2019": "'", "\u201a": "'", "\u201b": "'",
+    "\u2032": "'",
+    "\u201c": '"', "\u201d": '"', "\u201e": '"', "\u201f": '"',
+    "\u2033": '"',
+    "\u2026": "...",
+    "\u2012": "-", "\u2013": "-", "\u2014": "-", "\u2015": "-",
+    "\u00a0": " ",
+})
+
+
+def _fold_typography(s: str) -> str:
+    """Fold curly quotes, Unicode ellipsis, dashes, and NBSP to ASCII
+    equivalents so ledger text and body text compare on equal
+    footing."""
+    return s.translate(_TYPOGRAPHY_FOLD_TRANS)
+
+
+_AUDIT_SEGMENT_MIN_WORDS = 5
+_AUDIT_SHINGLE_WORDS = 8
+
+
+def _claim_probes(norm_text: str) -> list[str]:
+    """Build the substring probe set for one verifier claim.
+
+    Input is the claim text already cite-stripped and normalized
+    (typography-folded, quote-blind, lowercased, whitespace-collapsed
+    -- see _norm inside audit_verifier_findings). Probes:
+
+      * the first ~80 chars (legacy prefix probe -- cheap, exact);
+      * each segment of >= 5 words after splitting on ellipses,
+        colons, and semicolons (the verifier elides quotes with `...`
+        and prefixes attribution with `X said:` / `X poses:`, so
+        segments are the verbatim runs);
+      * every 8-word shingle inside a segment, so verbatim survival is
+        caught even when the ledger adds framing that shifts every
+        longer probe.
+
+    Windows never cross a split boundary: an elision or attribution
+    colon is exactly where body text legitimately diverges from
+    ledger text.
+    """
+    probes: list[str] = []
+    if norm_text:
+        probes.append(norm_text[:80])
+    for raw_segment in re.split(r"\.\.\.|[:;]", norm_text):
+        segment = raw_segment.strip(" \'\"")
+        words = segment.split()
+        if len(words) >= _AUDIT_SEGMENT_MIN_WORDS:
+            probes.append(segment)
+        if len(words) >= _AUDIT_SHINGLE_WORDS:
+            for i in range(len(words) - _AUDIT_SHINGLE_WORDS + 1):
+                probes.append(" ".join(words[i : i + _AUDIT_SHINGLE_WORDS]))
+    return list(dict.fromkeys(p for p in probes if p))
+
+
 def audit_verifier_findings(
     findings_path: Path, body_html: str
 ) -> tuple[int, list[dict]]:
@@ -1001,12 +1061,17 @@ def audit_verifier_findings(
 
     Heuristic: strip citation markers (both DSL `[^N]` and the rendered
     `<sup><a class="ara-cite">N</a></sup>` form) from BOTH the claim
-    text and the body before normalizing. The verifier reads DSL; the
-    compiled HTML we audit uses the rendered form. Without stripping
-    on both sides, any cited claim looks "removed" because the marker
-    shapes never match. The first ~80 chars of the normalized text is
-    the probe. If the probe appears in the body text AND is not inside
-    a `<mark>…</mark>` region, the claim survived without being
+    text and the body; decode HTML entities (html.unescape, applied
+    after tag-stripping); fold typographic variants (curly quotes,
+    Unicode ellipsis, dashes — see _fold_typography); drop quote
+    characters; normalize whitespace/case. The verifier reads DSL and
+    adds its own framing (attribution prefixes, `...` elisions); the
+    compiled HTML we audit uses the rendered form. Each claim then
+    yields a probe SET (see _claim_probes): the ~80-char prefix, every
+    ellipsis/colon/semicolon-separated segment of >= 5 words, and
+    every 8-word shingle. If ANY probe occurs in the body text more
+    times than
+    inside `<mark>…</mark>` regions, the claim survived without being
     demoted → fail.
 
     Limitations (call out in PR + reviewer-facing docs):
@@ -1016,9 +1081,13 @@ def audit_verifier_findings(
         fail. Acceptable — pushes the agent toward marking the whole
         sentence.
       * Paraphrase-on-revision: if the agent rewrites the claim text
-        on revision, the probe won't match anywhere → treated as
+        on revision, no probe will match anywhere → treated as
         "removed" → pass. Acceptable — paraphrase to a supported
         variant is a valid bounded-revision outcome.
+      * Shingle floor: short verbatim runs (< 5 words, or 5-7 words
+        not isolated by an ellipsis/colon/semicolon boundary) can
+        still ghost through. Acceptable — below that, substring
+        matching cannot tell survival from coincidence.
 
     Returns (unsupported_total, surviving) where `surviving` is a list
     of dicts {id, probe, citation} for every unsupported claim that
@@ -1026,6 +1095,7 @@ def audit_verifier_findings(
 
     Raises ValueError if the findings JSON is malformed.
     """
+    import html as _html
     import json as _json
 
     try:
@@ -1068,6 +1138,16 @@ def audit_verifier_findings(
     )
 
     def _norm(s: str) -> str:
+        # Quote-blind on top of typographic folding: the ledger may
+        # single-quote what the body double-quotes. Apostrophes are
+        # removed (no space) so "CFR\u2019s" == "CFR's" == "cfrs";
+        # double quotes become spaces so adjacent words never fuse.
+        # Entities first: ~10% of committed articles carry
+        # typographic entities (&mdash;, &rsquo;, &hellip;) in visible
+        # body text; unescaping after tag-stripping keeps &lt;/&gt;
+        # harmless while putting entity-encoded bodies on the same
+        # footing as literal-Unicode ones.
+        s = _fold_typography(_html.unescape(s)).replace('"', " ").replace("'", "")
         return re.sub(r"\s+", " ", s).strip().lower()
 
     body_norm = _norm(text_no_tags)
@@ -1098,28 +1178,44 @@ def audit_verifier_findings(
         # like "Nvidia hit 75% margin [^12]" doesn't fail to match a
         # body whose corresponding sentence has already had the cite
         # stripped from the HTML side.
-        probe = _norm(_strip_cite_markers(text))[:80]
-        if not probe:
+        #
+        # Probe SET, not a single prefix. The old logic probed only
+        # `_norm(text)[:80]`; any framing the verifier added around a
+        # quote (attribution prefix, `?...` elision, curly quotes)
+        # shifted the prefix and the claim ghosted through as
+        # "removed" — a real unsupported quote shipped exactly that
+        # way on 2026-07-04 (anthropic-vs-the-pentagon, claim c23).
+        # Verbatim survival of any ellipsis segment or 8-word shingle
+        # now fails; genuine paraphrase (no 8-word run in common)
+        # still passes, preserving the paraphrase-on-revision escape
+        # documented above.
+        norm_text = _norm(_strip_cite_markers(text))
+        hit = None
+        for probe in _claim_probes(norm_text):
+            # Count distinct occurrences instead of using `probe in
+            # mark`: if the claim appears N times in the body and only
+            # K < N are wrapped in <mark>, a membership test would
+            # falsely treat the claim as demoted because the probe
+            # exists somewhere in the mark blob. Strict version: an
+            # unmarked occurrence survives if total body occurrences
+            # exceed the mark-region occurrences.
+            body_occurrences = body_norm.count(probe)
+            mark_occurrences = mark_norm.count(probe)
+            if body_occurrences > mark_occurrences:
+                hit = (probe, body_occurrences, mark_occurrences)
+                break
+        if hit is None:
             continue
-        # Count distinct occurrences instead of using `probe in mark`:
-        # if the claim appears N times in the body and only K < N are
-        # wrapped in <mark>, the prior `probe not in mark_norm` test
-        # would falsely treat the claim as demoted because the probe
-        # exists somewhere in the mark blob. Strict version: an
-        # unmarked occurrence survives if total body occurrences
-        # exceeds the mark-region occurrences.
-        body_occurrences = body_norm.count(probe)
-        mark_occurrences = mark_norm.count(probe)
-        if body_occurrences > mark_occurrences:
-            surviving.append(
-                {
-                    "id": claim.get("id"),
-                    "probe": probe,
-                    "citation": claim.get("citation"),
-                    "body_occurrences": body_occurrences,
-                    "mark_occurrences": mark_occurrences,
-                }
-            )
+        probe, body_occurrences, mark_occurrences = hit
+        surviving.append(
+            {
+                "id": claim.get("id"),
+                "probe": probe,
+                "citation": claim.get("citation"),
+                "body_occurrences": body_occurrences,
+                "mark_occurrences": mark_occurrences,
+            }
+        )
 
     return unsupported_total, surviving
 
