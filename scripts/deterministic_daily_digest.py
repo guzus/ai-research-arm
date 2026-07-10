@@ -58,7 +58,7 @@ class LaneSource:
 LANES: tuple[LaneSource, ...] = (
     # The twitter lane's .md is an HTML-article render; the plain-text
     # Telegram summaries are the extractable artifact. Several exist per day
-    # (one per 3h cycle) — the lexically-last (latest hour) wins. The
+    # (one per 3h cycle) — the latest non-empty cycle wins. The
     # [0-9][0-9]h class pins the PRIMARY lane's `<date>-twitter-<HH>h-` files
     # and excludes the comparison lanes (`-twitter-deepseek-<HH>h-` etc.).
     LaneSource(
@@ -174,23 +174,27 @@ def extract_lane(research_dir: Path, lane: LaneSource, dates: list[str], cap: in
         matches = sorted(p for p in glob.glob(pattern) if os.path.isfile(p))
         if not matches:
             continue
-        artifact = Path(matches[-1])  # lexically last = latest cycle of that date
-        relative = artifact.relative_to(research_dir).as_posix()
-        try:
-            text = artifact.read_text(encoding="utf-8")
-        except OSError as exc:
-            empty_artifacts.append(f"{relative} (unreadable: {exc})")
-            continue
-        lines: list[str] = []
-        for mode in lane.modes:
-            if len(lines) >= cap:
-                break
-            for line in EXTRACTORS[mode](text, cap - len(lines)):
-                if line not in lines:
-                    lines.append(line)
-        if lines:
-            return LaneExtract(lane, relative, tuple(lines), "")
-        empty_artifacts.append(relative)
+        # Several sub-daily artifacts can exist for one date. Walk newest to
+        # oldest so a machine-only/empty no_update summary does not shadow an
+        # earlier same-day cycle that contains the actual public signal.
+        for match in reversed(matches):
+            artifact = Path(match)
+            relative = artifact.relative_to(research_dir).as_posix()
+            try:
+                text = artifact.read_text(encoding="utf-8")
+            except OSError as exc:
+                empty_artifacts.append(f"{relative} (unreadable: {exc})")
+                continue
+            lines: list[str] = []
+            for mode in lane.modes:
+                if len(lines) >= cap:
+                    break
+                for line in EXTRACTORS[mode](text, cap - len(lines)):
+                    if line not in lines:
+                        lines.append(line)
+            if lines:
+                return LaneExtract(lane, relative, tuple(lines), "")
+            empty_artifacts.append(relative)
     if empty_artifacts:
         return LaneExtract(
             lane, None, (),

@@ -81,7 +81,8 @@ and opens a PR with methodology fixes.
 | `fetch_ai_blogs.py` | Per-feed AI-blog fetcher used by `daily-ai-blogs.yml`; boundary-handles bad feeds so one failure doesn't crash the run. |
 | `deterministic_rss_digest.py` | Model-free fallback for `hourly-rss.yml`; parses fetched RSS/Atom files and appends a timestamped `research/rss/YYYY-MM-DD.md` section when the agent path fails. |
 | `deterministic_community_digest.py` | Model-free fallback for `4h-community.yml`; parses pre-fetched HN JSON and Reddit RSS into `research/community/*-hn.md` and `*-reddit.md` when the agent path fails. |
-| `deterministic_twitter_digest.py` | Model-free fallback for `hourly-twitter.yml` Twitter tiers; composes the report + Telegram summary from the pre-fetched bird data when the agent path fails, including the primary Claude lane's last-resort recovery from `.twitter-input/bird/all.json`. |
+| `deterministic_twitter_digest.py` | Model-free fallback for `hourly-twitter.yml` Twitter tiers; publishes a report only when fresh stories or concrete Quick hits survive filtering, otherwise records a run-ID/attempt-scoped machine heartbeat under `research/<twitter-lane>/status/`. It also writes the per-run summary/headline artifacts from pre-fetched Birdy data, including primary-lane recovery from `.twitter-input/bird/all.json`. |
+| `validate_twitter_public_output.py` | Enforces the Twitter signal-only contract after every backend: this run's heartbeat identity, exact public-item count, concrete story/Quick-hit presence, normalized same-hour headings, empty no-update reader artifacts, and no operational/no-news filler. |
 | `deterministic_arxiv_digest.py` | Model-free fallback for `daily-arxiv.yml`; queries the arXiv Atom API directly and writes an uncurated per-category `research/arxiv/<date>-papers.md` when the agent path fails (zero-paper windows still write an honest empty note). |
 | `deterministic_daily_digest.py` | Model-free fallback for `daily-digest.yml`; composes `research/digest/<date>-digest.md` (+ Telegram summary) verbatim from the day's committed lane artifacts when the agent fails or its output falls below the content floor. Never invents content; missing lanes are noted explicitly. |
 | `deterministic_bluesky_digest.py` | Model-free fallback for `2h-bluesky.yml`; composes the per-run `.tmp/bluesky-section.md` (engagement-ranked, ≤8 bullets / ≤3 per author, 48h window) from the staged `data/bluesky/*.json` when the agent writes no section. |
@@ -310,7 +311,7 @@ research/
 ├── rss/                       # hourly-rss.yml
 ├── blogs/                     # daily-ai-blogs.yml
 ├── summaries/                 # hourly-twitter.yml (Telegram digest + headline-alert state)
-├── twitter/                   # hourly-twitter.yml
+├── twitter/                   # hourly-twitter.yml (signal-only daily Markdown + status/ run heartbeats)
 ├── youtube/                   # daily-youtube.yml (tuber read-only signal lane)
 ├── twitter-deepseek/          # hourly-twitter.yml backend=deepseek-claude-code
 ├── twitter-deepseek-pi/       # hourly-twitter.yml backend=deepseek-pi

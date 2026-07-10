@@ -178,9 +178,9 @@ jobs:
         id: datetime
         run: |
           {
-            echo "date=$(date +'%Y-%m-%d')"
-            echo "hour=$(date +'%H')"
-            echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')"
+            echo "date=$(date -u +'%Y-%m-%d')"
+            echo "hour=$(date -u +'%H')"
+            echo "timestamp=$(date -u +'%Y-%m-%d %H:%M:%S UTC')"
             echo "yesterday=$(date -u -d 'yesterday' +'%Y-%m-%d')"
           } >> "$GITHUB_OUTPUT"
 
@@ -322,6 +322,7 @@ jobs:
             echo "harness_label=${HARNESS_LABEL}"
             echo "features=${FEATURES}"
             echo "digest_file=${OUTPUT_DIR}/${DATE}.md"
+            echo "status_file=${OUTPUT_DIR}/status/${DATE}-${HOUR}h.json"
             echo "headlines_file=research/summaries/${DATE}-${SUMMARY_SLUG}-${HOUR}h-headlines.json"
             echo "summary_file=research/summaries/${DATE}-${SUMMARY_SLUG}-${HOUR}h-summary.txt"
           } >> "$GITHUB_OUTPUT"
@@ -334,7 +335,7 @@ jobs:
           OUTPUT_DIR: ${{ steps.const.outputs.output_dir }}
         run: |
           set -euo pipefail
-          mkdir -p "$OUTPUT_DIR" research/summaries
+          mkdir -p "$OUTPUT_DIR/status" research/summaries
 
       # ── Shared fetch (Birdy multi-fetch + optional helpers) ────────
       - name: Fetch twitter snapshot
@@ -391,6 +392,8 @@ jobs:
           date: ${{ steps.datetime.outputs.date }}
           hour: ${{ steps.datetime.outputs.hour }}
           timestamp: ${{ steps.datetime.outputs.timestamp }}
+          run_id: ${{ github.run_id }}
+          run_attempt: ${{ github.run_attempt }}
           yesterday: ${{ steps.datetime.outputs.yesterday }}
 
       # ── LLM step (one per backend) ─────────────────────────────────
@@ -418,9 +421,7 @@ jobs:
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
-            ${{ steps.const.outputs.digest_file }}
-            ${{ steps.const.outputs.summary_file }}
-            ${{ steps.const.outputs.headlines_file }}
+            ${{ steps.const.outputs.status_file }}
           allowed-paths: |
             research/twitter/
             research/summaries/
@@ -446,9 +447,7 @@ jobs:
           claude-args: |
             --model opus --max-turns 40 --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
-            ${{ steps.const.outputs.digest_file }}
-            ${{ steps.const.outputs.summary_file }}
-            ${{ steps.const.outputs.headlines_file }}
+            ${{ steps.const.outputs.status_file }}
           allowed-paths: |
             research/twitter/
             research/summaries/
@@ -467,6 +466,7 @@ jobs:
               HOUR: ${{ steps.datetime.outputs.hour }}
               TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
               DAILY FILE: ${{ steps.const.outputs.digest_file }}
+              STATUS FILE: ${{ steps.const.outputs.status_file }}
               SUMMARY FILE: ${{ steps.const.outputs.summary_file }}
               HEADLINES FILE: ${{ steps.const.outputs.headlines_file }}
               RAW INPUT: .twitter-input/bird/all.json
@@ -475,54 +475,64 @@ jobs:
             HARD RULES
               - This is still the production Claude lane. Do not write a
                 deterministic quick-hit dump.
-              - Use tool calls to read the raw input and write all three
-                output files. Do not merely respond in chat.
+              - Use tool calls to read the raw input and write the required
+                run artifacts. Do not merely respond in chat.
               - If any tool call is denied, retry with an allowed tool
                 immediately. The allowed local parse/write path includes
                 Read, Write, Edit, jq, python3, cat, and git.
               - Before your final response, run `git status --short` and
-                confirm the commit changes all three expected output files.
-                If it does not, continue repairing instead of stopping.
+                confirm the commit changes the status heartbeat for this run.
+                Summary/headline/digest files may be byte-identical on a
+                same-hour rerun; verify their existence and contract instead.
+                If the contract is incomplete, continue repairing.
               - The public brief is AI-only. Exclude personal life updates,
                 sports, generic politics, generic outrage, engagement-bait,
                 and unrelated viral tweets unless the item materially changes
                 the AI landscape.
-              - If the daily file already has a section for
+              - If publishing and the daily file already has a section for
                 `## ${{ steps.datetime.outputs.hour }}:00 UTC`, replace that
-                same-hour section instead of appending a duplicate.
+                same-hour section instead of appending a duplicate. If there
+                is no publishable item, remove any same-hour filler section.
               - If there are fewer than three truly alert-worthy AI stories,
                 write `[]` to the headlines JSON. Do not pad.
+              - Public output is signal-only. When Quick hits exist, make the
+                Cycle summary name those concrete developments. Never publish
+                scan status, editorial-threshold language, or absence-of-news
+                narration in the digest.
+              - Generic AI hype (for example, "AI agents are the future" or
+                "our AI changes everything") is not a Quick hit. Require a
+                checkable release, price/funding change, research result,
+                benchmark, incident, policy action, or equivalent event.
 
             OUTPUT CONTRACT
-              1. Write or update `${{ steps.const.outputs.digest_file }}`.
-                 If no main AI stories exist, use:
-                   ## ${{ steps.datetime.outputs.hour }}:00 UTC
-                   **Cycle summary**: Quiet period — no analyst-grade AI stories this window.
-                   ### Quick hits
-                   - No AI-specific quick hits cleared the publication bar this cycle.
-                   ### Skeptic's corner
-                   - None this cycle.
-                   ### Watch list (next 24h)
-                   - Next scheduled Twitter/X AI monitor run.
-                   ### Research notes
-                   - Source checks issued this cycle: local Twitter/X snapshot only.
-              2. Write `${{ steps.const.outputs.summary_file }}` as a concise
-                 Telegram summary. If quiet, say no major AI updates; do not
-                 list off-topic tweets.
-              3. Write `${{ steps.const.outputs.headlines_file }}` as a JSON
-                 array, usually `[]` for a quiet cycle.
-              4. Commit exactly those outputs:
-                   git add "${{ steps.const.outputs.digest_file }}" "${{ steps.const.outputs.summary_file }}" "${{ steps.const.outputs.headlines_file }}"
+              1. If at least one concrete Top Story or Quick hit exists, write
+                 or update `${{ steps.const.outputs.digest_file }}` with a
+                 content-derived Cycle summary. Otherwise leave the daily file
+                 without a same-hour section.
+              2. Write `${{ steps.const.outputs.summary_file }}` as a concise,
+                 concrete Telegram summary. When nothing is publishable, create
+                 this as an empty file so no notification is emitted.
+              3. Write `${{ steps.const.outputs.headlines_file }}` as a valid
+                 JSON array; use `[]` when there are no alert-worthy stories.
+              4. Always write `${{ steps.const.outputs.status_file }}` as:
+                   {"schema_version":1,"date":"${{ steps.datetime.outputs.date }}","hour":"${{ steps.datetime.outputs.hour }}:00 UTC","generated_at":"${{ steps.datetime.outputs.timestamp }}","run_id":"${{ github.run_id }}","run_attempt":${{ github.run_attempt }},"status":"published","public_items":N}
+                 Use `status: "no_update"` and `public_items: 0` only when the
+                 public same-hour section is absent. Count `public_items` as
+                 Top Story `twitter-story` cards plus linked bullets under
+                 `### Quick hits`; it must equal the rendered count.
+              5. Commit exactly those outputs:
+                   git add "${{ steps.const.outputs.output_dir }}/" "${{ steps.const.outputs.summary_file }}" "${{ steps.const.outputs.headlines_file }}"
                    git commit -m "Twitter Claude repair ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
 
-      - name: Deterministic Twitter fallback (Claude primary tier)
+      - name: Validate or recover Claude primary output
         if: >-
           steps.backend.outputs.name == 'claude'
-          && steps.twitter-claude-agent.outcome == 'failure'
+          && (steps.twitter-claude-agent.outcome == 'success' || steps.twitter-claude-agent.outcome == 'failure')
           && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         env:
           BASE_SHA: ${{ steps.twitter-output-base.outputs.sha }}
           DIGEST_FILE: ${{ steps.const.outputs.digest_file }}
+          STATUS_FILE: ${{ steps.const.outputs.status_file }}
           SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
           HEADLINES_FILE: ${{ steps.const.outputs.headlines_file }}
           OUTPUT_DIR: ${{ steps.const.outputs.output_dir }}
@@ -531,16 +541,88 @@ jobs:
           DATE: ${{ steps.datetime.outputs.date }}
           HOUR: ${{ steps.datetime.outputs.hour }}
           TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
         run: |
           set -euo pipefail
 
           missing=0
-          for path in "$DIGEST_FILE" "$SUMMARY_FILE" "$HEADLINES_FILE"; do
-            if git diff --quiet "${BASE_SHA}..HEAD" -- "$path"; then
-              echo "fallback-needed: $path has no committed change since $BASE_SHA"
+          if git diff --quiet "${BASE_SHA}..HEAD" -- "$STATUS_FILE"; then
+            echo "fallback-needed: $STATUS_FILE has no committed change since $BASE_SHA"
+            missing=1
+          fi
+          if [ ! -f "$SUMMARY_FILE" ]; then
+            echo "fallback-needed: summary file is missing"
+            missing=1
+          fi
+          if [ ! -f "$HEADLINES_FILE" ] || ! jq -e 'type == "array"' "$HEADLINES_FILE" >/dev/null; then
+            echo "fallback-needed: headline output is missing or invalid"
+            missing=1
+          fi
+
+          if [ -f "$STATUS_FILE" ]; then
+            if ! jq -e \
+              --arg date "$DATE" \
+              --arg hour "${HOUR}:00 UTC" \
+              --arg generated_at "$TIMESTAMP" \
+              --arg run_id "$RUN_ID" \
+              --argjson run_attempt "$RUN_ATTEMPT" '
+              .schema_version == 1
+              and .date == $date
+              and .hour == $hour
+              and .generated_at == $generated_at
+              and .run_id == $run_id
+              and .run_attempt == $run_attempt
+              and (.status == "published" or .status == "no_update")
+              and (.public_items | type == "number" and . >= 0)
+            ' "$STATUS_FILE" >/dev/null; then
+              echo "fallback-needed: malformed cycle status"
               missing=1
             fi
-          done
+            status=$(jq -r '.status // "invalid"' "$STATUS_FILE" 2>/dev/null || echo invalid)
+            if [ "$status" = "published" ] && ! jq -e '.public_items > 0' "$STATUS_FILE" >/dev/null; then
+              echo "fallback-needed: published status has no public items"
+              missing=1
+            elif [ "$status" = "published" ] && { [ ! -f "$DIGEST_FILE" ] \
+              || ! rg -q "^## ${HOUR}:00 UTC$" "$DIGEST_FILE"; }; then
+              echo "fallback-needed: published status has no public same-hour section"
+              missing=1
+            elif [ "$status" = "published" ] && [ ! -s "$SUMMARY_FILE" ]; then
+              echo "fallback-needed: published status has no concrete summary"
+              missing=1
+            elif [ "$status" = "no_update" ] && ! jq -e '.public_items == 0' "$STATUS_FILE" >/dev/null; then
+              echo "fallback-needed: no_update status reports public items"
+              missing=1
+            elif [ "$status" = "no_update" ] && [ -f "$DIGEST_FILE" ] \
+              && rg -q "^## ${HOUR}:00 UTC$" "$DIGEST_FILE"; then
+              echo "fallback-needed: no_update status still has a public same-hour section"
+              missing=1
+            elif [ "$status" = "no_update" ] && [ -s "$SUMMARY_FILE" ]; then
+              echo "fallback-needed: no_update status has a reader summary"
+              missing=1
+            elif [ "$status" = "no_update" ] && ! jq -e 'length == 0' "$HEADLINES_FILE" >/dev/null; then
+              echo "fallback-needed: no_update status has headline alerts"
+              missing=1
+            elif [ "$status" != "published" ] && [ "$status" != "no_update" ]; then
+              echo "fallback-needed: invalid cycle status '$status'"
+              missing=1
+            fi
+          fi
+
+          if [ "$missing" -eq 0 ] && ! uv run python scripts/validate_twitter_public_output.py \
+            --backend claude \
+            --status-file "$STATUS_FILE" \
+            --digest-file "$DIGEST_FILE" \
+            --summary-file "$SUMMARY_FILE" \
+            --headlines-file "$HEADLINES_FILE" \
+            --date "$DATE" \
+            --hour "$HOUR" \
+            --generated-at "$TIMESTAMP" \
+            --run-id "$RUN_ID" \
+            --run-attempt "$RUN_ATTEMPT"; then
+            echo "fallback-needed: agent output violates the signal-only public contract"
+            missing=1
+          fi
 
           if [ "$missing" -eq 0 ]; then
             echo "Claude repair already produced all required outputs; skipping deterministic fallback."
@@ -557,11 +639,14 @@ jobs:
             --date "$DATE" \
             --hour "$HOUR" \
             --timestamp "$TIMESTAMP" \
+            --run-id "$RUN_ID" \
+            --run-attempt "$RUN_ATTEMPT" \
             --title-suffix "$TITLE_SUFFIX" \
             --summary-slug "$SUMMARY_SLUG" \
+            --status-file "$STATUS_FILE" \
             --headlines-file "$HEADLINES_FILE"
 
-          git add "$DIGEST_FILE" "$SUMMARY_FILE" "$HEADLINES_FILE"
+          git add "$OUTPUT_DIR/" "$SUMMARY_FILE" "$HEADLINES_FILE"
           git commit -m "Twitter deterministic fallback $TIMESTAMP" || echo "No deterministic fallback changes to commit"
 
       - name: Process tweets with DeepSeek v4 Flash via Fireworks (deepseek-claude-code tier)
@@ -580,8 +665,7 @@ jobs:
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
-            ${{ steps.const.outputs.digest_file }}
-            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.status_file }}
           allowed-paths: |
             research/twitter-deepseek/
             research/summaries/
@@ -604,59 +688,12 @@ jobs:
           claude-args: |
             --model opus --max-turns 30 --allowedTools "Read,Write,Edit,Bash(pwd:*),Bash(ls:*),Bash(rg:*),Bash(find:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
           expected-paths: |
-            ${{ steps.const.outputs.digest_file }}
-            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.status_file }}
           allowed-paths: |
             research/twitter-zai/
             research/summaries/
           label: Twitter Z.ai GLM-5.2 comparison processor
           prompt: ${{ steps.render.outputs.prompt }}
-
-      - name: Require Claude primary output
-        if: >-
-          steps.backend.outputs.name == 'claude'
-          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
-        uses: ./.github/actions/require-output
-        with:
-          base-sha: ${{ steps.twitter-output-base.outputs.sha }}
-          expected-paths: |
-            ${{ steps.const.outputs.digest_file }}
-            ${{ steps.const.outputs.summary_file }}
-          label: Twitter primary Claude workflow output
-
-      - name: Require Claude headline file
-        if: >-
-          steps.backend.outputs.name == 'claude'
-          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
-        env:
-          HEADLINES_FILE: ${{ steps.const.outputs.headlines_file }}
-        run: |
-          set -euo pipefail
-          if [ ! -f "$HEADLINES_FILE" ]; then
-            echo "::error::Missing Claude headline output: $HEADLINES_FILE"
-            exit 1
-          fi
-          jq -e 'type == "array"' "$HEADLINES_FILE" >/dev/null
-
-      - name: Require DeepSeek comparison output
-        if: steps.backend.outputs.name == 'deepseek-claude-code'
-        uses: ./.github/actions/require-output
-        with:
-          base-sha: ${{ steps.twitter-output-base.outputs.sha }}
-          expected-paths: |
-            ${{ steps.const.outputs.digest_file }}
-            ${{ steps.const.outputs.summary_file }}
-          label: Twitter DeepSeek comparison workflow output
-
-      - name: Require Z.ai comparison output
-        if: steps.backend.outputs.name == 'zai-glm-5p2'
-        uses: ./.github/actions/require-output
-        with:
-          base-sha: ${{ steps.twitter-output-base.outputs.sha }}
-          expected-paths: |
-            ${{ steps.const.outputs.digest_file }}
-            ${{ steps.const.outputs.summary_file }}
-          label: Twitter Z.ai GLM-5.2 comparison workflow output
 
       - name: Process tweets with pi + DeepSeek v4 Flash via Fireworks (deepseek-pi tier)
         if: steps.backend.outputs.name == 'deepseek-pi'
@@ -679,6 +716,60 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
           bird-ct0: ${{ secrets.BIRD_CT0 }}
+
+      - name: Require Twitter producer diff scope
+        if: >-
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
+          && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+        uses: ./.github/actions/require-diff-scope
+        with:
+          base-sha: ${{ steps.twitter-output-base.outputs.sha }}
+          allowed-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
+          label: Twitter ${{ steps.backend.outputs.name }} producer
+
+      - name: Require Twitter run heartbeat
+        if: >-
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
+          && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.twitter-output-base.outputs.sha }}
+          expected-paths: |
+            ${{ steps.const.outputs.status_file }}
+          label: Twitter ${{ steps.backend.outputs.name }} run heartbeat
+
+      - name: Validate Twitter signal-only public output
+        if: >-
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
+          && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+        env:
+          BACKEND: ${{ steps.backend.outputs.name }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          DIGEST_FILE: ${{ steps.const.outputs.digest_file }}
+          STATUS_FILE: ${{ steps.const.outputs.status_file }}
+          SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
+          HEADLINES_FILE: ${{ steps.const.outputs.headlines_file }}
+        run: |
+          set -euo pipefail
+          uv run python scripts/validate_twitter_public_output.py \
+            --backend "$BACKEND" \
+            --status-file "$STATUS_FILE" \
+            --digest-file "$DIGEST_FILE" \
+            --summary-file "$SUMMARY_FILE" \
+            --headlines-file "$HEADLINES_FILE" \
+            --date "$DATE" \
+            --hour "$HOUR" \
+            --generated-at "$TIMESTAMP" \
+            --run-id "$RUN_ID" \
+            --run-attempt "$RUN_ATTEMPT"
 
       - name: Summarize Birdy follow-up telemetry
         if: always() && steps.backend.outputs.skip != 'true'
@@ -1267,6 +1358,7 @@ jobs:
           success()
           && steps.push.outputs.pushed == 'true'
           && steps.backend.outputs.name == 'deepseek-claude-code'
+          && steps.summary.outputs.content != ''
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -1311,6 +1403,7 @@ jobs:
           success()
           && steps.push.outputs.pushed == 'true'
           && steps.backend.outputs.name == 'zai-glm-5p2'
+          && steps.summary.outputs.content != ''
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -1357,6 +1450,7 @@ jobs:
           success()
           && steps.push.outputs.pushed == 'true'
           && steps.backend.outputs.name == 'deepseek-pi'
+          && steps.summary.outputs.content != ''
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -1402,6 +1496,7 @@ jobs:
           success()
           && steps.push.outputs.pushed == 'true'
           && steps.backend.outputs.name == 'fireworks-pi'
+          && steps.summary.outputs.content != ''
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}

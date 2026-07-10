@@ -25,7 +25,9 @@ MAX_TEXT = 220
 DEFAULT_MAX_AGE_HOURS = 36
 FUTURE_SKEW = dt.timedelta(minutes=15)
 STATUS_URL_RE = re.compile(r"https?://(?:www\.)?(?:x|twitter)\.com/[^\s)\"<>]+/status/(\d+)")
-SECTION_RE = re.compile(r"(?ms)^## (?P<hour>\d{2}:00 UTC)\n.*?(?=^## \d{2}:00 UTC\n|\Z)")
+SECTION_RE = re.compile(
+    r"(?ms)^##[ \t]+(?P<hour>\d{2}:00 UTC)[ \t]*\r?\n.*?(?=^##[ \t]+.*(?:\r?\n|\Z)|\Z)"
+)
 STORY_MARKERS = {
     "gpt56": (
         "OpenAI gives GPT-5.6 Sol/Terra/Luna",
@@ -347,14 +349,79 @@ STRONG_AI_TERMS = (
     "mistral",
     "glm",
     "xai",
-    "model",
     "inference",
+    "artificial intelligence",
     "ai ",
     "ai-",
-    "agent",
+    "llm",
+    "language model",
+    "ai model",
+    "model api",
+    "ai agent",
+    "agentic",
+    "coding agent",
     "benchmark",
     "eval",
     "voice model",
+)
+
+EVENT_TERMS = (
+    "acquir",
+    "announce",
+    "available now",
+    "became available",
+    "disclos",
+    "discover",
+    "found that",
+    "we find",
+    "introduc",
+    "launch",
+    "open sourced",
+    "open source",
+    "open-source",
+    "patch",
+    "public preview",
+    "pricing is now",
+    "publish",
+    "rais",
+    "release",
+    "reset",
+    "retract",
+    "roll out",
+    "rolling out",
+    "ship",
+    "unveil",
+)
+
+NAMED_AI_PRODUCT_TERMS = (
+    "chatgpt",
+    "claude",
+    "deepseek",
+    "gemini",
+    "gpt-",
+    "gpt ",
+    "grok",
+    "llama",
+    "muse spark",
+    "mistral",
+    "qwen",
+)
+
+CHECKABLE_OBJECT_TERMS = (
+    "api pricing",
+    "benchmark score",
+    "funding round",
+    "price cut",
+    "pricing is now",
+    "rate limit",
+    "research paper",
+    "system card",
+    "vulnerability",
+)
+
+SPECIFIC_DETAIL_RE = re.compile(
+    r"(?:\b\d+(?:\.\d+)+\b|\b\d+(?:\.\d+)?\s?(?:%|x|ms|seconds?|tokens?|parameters?|million|billion|trillion)\b|\$\s?\d)",
+    re.IGNORECASE,
 )
 
 OFF_TOPIC_TERMS = (
@@ -366,19 +433,52 @@ OFF_TOPIC_TERMS = (
     "post you interacted",
 )
 
+PROMO_SPAM_TERMS = (
+    "airdrop",
+    "crypto presale",
+    "buy now",
+    "coming soon",
+    "follow us",
+    "get yours",
+    "hoodie",
+    "join our community",
+    "join the community",
+    "join the movement",
+    "limited offer",
+    "limited time",
+    "memecoin",
+    "pre-sale",
+    "presale",
+    "sign up now",
+    "token sale",
+    "web3 presale",
+    "whitelist now",
+)
+
 
 def is_ai_relevant(tweet: Tweet) -> bool:
-    text = f"{tweet.author} {tweet.source} {tweet.text}"
-    if has_any(text, ("gpt-live", "gpt live", "gpt-5.6", "chatgpt", "openai", "sama", "grok")):
-        return True
-    return has_any(text, STRONG_AI_TERMS)
+    # Search bucket names and account handles are routing metadata, not proof
+    # that an individual post is news. Require AI-product substance, an event
+    # verb/result, and a named product, checkable object, or numeric detail.
+    text = tweet.text
+    named_ai_product = has_any(text, NAMED_AI_PRODUCT_TERMS)
+    topical = named_ai_product or has_any(text, STRONG_AI_TERMS)
+    event = has_any(text, EVENT_TERMS)
+    specific = (
+        named_ai_product
+        or has_any(text, CHECKABLE_OBJECT_TERMS)
+        or SPECIFIC_DETAIL_RE.search(clean_text(text)) is not None
+    )
+    return topical and event and specific
 
 
 def is_offtopic(tweet: Tweet) -> bool:
-    text = f"{tweet.author} {tweet.text}"
+    text = tweet.text
+    if has_any(text, PROMO_SPAM_TERMS):
+        return True
     if not has_any(text, OFF_TOPIC_TERMS):
         return False
-    if has_any(text, ("openai", "chatgpt", "gpt-", "claude", "grok", "gemini", "deepseek")):
+    if has_any(text, NAMED_AI_PRODUCT_TERMS):
         return False
     return True
 
@@ -387,7 +487,9 @@ def filtered_tweets(tweets: list[Tweet]) -> list[Tweet]:
     return [
         tweet
         for tweet in tweets
-        if is_ai_relevant(tweet) and not is_offtopic(tweet) and not (is_retweet(tweet) and tweet.score == 0)
+        if is_ai_relevant(tweet)
+        and not is_offtopic(tweet)
+        and not (is_retweet(tweet) and tweet.score == 0)
     ]
 
 
@@ -403,19 +505,39 @@ def upsert_section(path: Path, header: str, section: str) -> bool:
     section_start = section.find(header)
     section_only = section[section_start:] if section_start >= 0 else section
     section_text = section_only.rstrip() + "\n"
-    if header in existing:
-        pattern = re.compile(rf"(?ms)^## {re.escape(header.removeprefix('## '))}\n.*?(?=^## \d{{2}}:00 UTC\n|\Z)")
-        next_text, count = pattern.subn(section_text.rstrip() + "\n", existing.rstrip() + "\n", count=1)
-        if count:
-            path.parent.mkdir(parents=True, exist_ok=True)
-            if next_text != existing:
-                atomic_write(path, next_text)
-                return True
-            return False
+    current = header.removeprefix("## ")
+    replaced = False
+
+    def replace_current(match: re.Match[str]) -> str:
+        nonlocal replaced
+        if not replaced and match.group("hour") == current:
+            replaced = True
+            return section_text
+        return match.group(0)
+
+    next_text = SECTION_RE.sub(replace_current, existing)
+    if replaced:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        if next_text != existing:
+            atomic_write(path, next_text)
+            return True
+        return False
     body = existing.rstrip()
     next_text = f"{body}\n\n{section_only}" if body else section
     path.parent.mkdir(parents=True, exist_ok=True)
     atomic_write(path, next_text.rstrip() + "\n")
+    return True
+
+
+def remove_section(path: Path, header: str) -> bool:
+    """Remove a same-hour public section while preserving the rest of the day."""
+    if not path.exists():
+        return False
+    existing = path.read_text(encoding="utf-8")
+    next_text = without_current_section(existing, header).rstrip() + "\n"
+    if next_text == existing:
+        return False
+    atomic_write(path, next_text)
     return True
 
 
@@ -565,11 +687,6 @@ def build_stories(
     return stories
 
 
-def has_carried_forward_candidates(tweets: list[Tweet], seen_story_keys: set[str]) -> bool:
-    usable = filtered_tweets(tweets)
-    return any(find_group(usable, key) for key in seen_story_keys)
-
-
 def render_story(story: Story, rank: int) -> list[str]:
     sources = "\n      ".join(primary_link(tweet) for tweet in story.tweets)
     first = story.tweets[0]
@@ -603,27 +720,26 @@ def render_digest(
     tweets: list[Tweet],
     seen_url_keys: set[str] | None = None,
     seen_story_keys: set[str] | None = None,
-) -> tuple[str, str, list[Story], bool]:
+) -> tuple[str, str | None, list[Story], list[Tweet]]:
     seen_url_keys = seen_url_keys or set()
     seen_story_keys = seen_story_keys or set()
     h1 = f"# Twitter/X AI Pulse{title_suffix} - {date}"
     header = f"## {hour}:00 UTC"
     stories = build_stories(tweets, seen_url_keys, seen_story_keys)
     story_urls = {tweet.url for story in stories for tweet in story.tweets}
-    carried_forward = not stories and has_carried_forward_candidates(tweets, seen_story_keys)
-    carried_story_url_keys = {
-        canonical_tweet_url_key(tweet.url)
-        for key in seen_story_keys
-        for tweet in find_group(filtered_tweets(tweets), key)
-    }
     quick_hits = [
         tweet
         for tweet in filtered_tweets(tweets)
         if tweet.url not in story_urls
         and not is_retweet(tweet)
         and canonical_tweet_url_key(tweet.url) not in seen_url_keys
-        and canonical_tweet_url_key(tweet.url) not in carried_story_url_keys
-    ]
+    ][:5]
+
+    # A scheduled scan is operational state, not reader content. If every
+    # candidate was already published (or nothing survived filtering), leave
+    # the public daily digest alone and let the status heartbeat record success.
+    if not stories and not quick_hits:
+        return header, None, stories, quick_hits
 
     lines = [
         h1,
@@ -636,7 +752,7 @@ def render_digest(
         labels = "; ".join(story.title for story in stories[:2])
         lines.extend(
             [
-                f"**Cycle summary**: Fresh primary-source AI product movement cleared the bar this window: {labels}. The digest treats high-signal launch posts as stories, while keeping benchmark and rollout claims provisional until independent evidence lands.",
+                f"**Cycle summary**: {labels}. Performance, pricing, and rollout claims remain provisional until independent evidence lands.",
                 "",
                 "### Top stories",
                 "",
@@ -646,28 +762,21 @@ def render_digest(
             lines.extend(render_story(story, index))
             lines.append("")
     else:
-        summary = (
-            "**Cycle summary**: Quiet follow-up period - no new main stories beyond earlier same-day Twitter/X items."
-            if carried_forward
-            else "**Cycle summary**: Quiet period - no main stories cleared the publication bar from the fresh Twitter/X snapshot."
+        concrete = "; ".join(
+            f"@{tweet.author}: {trim_sentence(tweet.text, 120)}"
+            for tweet in quick_hits[:2]
         )
         lines.extend(
             [
-                summary,
+                f"**Cycle summary**: {concrete}",
                 "",
             ]
         )
 
-    lines.append("### Quick hits")
     if quick_hits:
+        lines.append("### Quick hits")
         for tweet in quick_hits[:5]:
             lines.append(f"- @{tweet.author}: {trim_sentence(tweet.text)} [{engagement(tweet)}]({tweet.url})")
-    elif stories:
-        lines.append("- No additional AI-specific quick hits cleared the publication bar.")
-    elif carried_forward:
-        lines.append("- No new AI-specific quick hits cleared the publication bar beyond earlier same-day items.")
-    else:
-        lines.append("- No notable fresh AI tweets survived parsing.")
 
     skeptic = []
     if any(story.key == "gpt56" for story in stories):
@@ -682,12 +791,6 @@ def render_digest(
         skeptic.append(
             "Grok 4.5 speedup is an executive roadmap claim until xAI ships the GB300-tuned inference stack and users can measure it."
         )
-    if not skeptic:
-        if carried_forward:
-            skeptic.append("Earlier same-day story claims remain in watch mode; this cycle only saw repeat or follow-up signals.")
-        else:
-            skeptic.append("None this cycle.")
-
     watch = []
     if any(story.key == "gpt56" for story in stories):
         watch.append("Whether GPT-5.6 Sol/Terra/Luna become broadly accessible on Thursday, and under what plan/API limits.")
@@ -695,63 +798,67 @@ def render_digest(
         watch.append("Whether GPT-Live shows low-latency, interruptible, reliable voice behavior in real ChatGPT user reports.")
     if any(story.key == "grok" for story in stories):
         watch.append("Whether xAI publishes Grok 4.5 availability and inference-stack release details.")
-    watch.append("Next scheduled Twitter/X AI monitor run.")
-
-    lines.extend(
-        [
-            "",
-            "### Skeptic's corner",
-            *(f"- {item}" for item in skeptic),
-            "",
-            "### Watch list (next 24h)",
-            *(f"- {item}" for item in watch),
-            "",
-            "### Research notes",
-            "- Source checks issued this cycle: fresh pre-fetched account, search, and news snapshots; stale rows outside the configured freshness window were excluded before ranking.",
-        ]
-    )
-    if carried_forward:
-        lines.append("- Earlier same-day story URLs and story families were excluded before ranking to avoid duplicate publication.")
-    return header, "\n".join(lines), stories, carried_forward
+    if skeptic:
+        lines.extend(["", "### Skeptic's corner", *(f"- {item}" for item in skeptic)])
+    if watch:
+        lines.extend(["", "### Watch list (next 24h)", *(f"- {item}" for item in watch)])
+    return header, "\n".join(lines), stories, quick_hits
 
 
 def render_summary(
     timestamp: str,
     title_suffix: str,
-    tweets: list[Tweet],
     stories: list[Story],
-    carried_forward: bool = False,
+    quick_hits: list[Tweet],
 ) -> str:
     if stories:
         bullets = "\n".join(f"- {story.title}: {story.lead}" for story in stories[:3])
+        concrete = "; ".join(story.title for story in stories[:2])
         return (
             f"Twitter/X AI Pulse{title_suffix} - {timestamp}\n\n"
-            "CYCLE: Fresh primary-source AI product movement cleared the publication bar.\n\n"
+            f"CYCLE: {concrete}\n\n"
             f"TOP STORIES:\n{bullets}\n\n"
             "WATCH: public rollout details, independent evals, pricing/rate limits, and real-user voice latency.\n\n"
             "Full update on GitHub.\n"
         )
-    if carried_forward:
-        return (
-            f"Twitter/X AI Pulse{title_suffix} - {timestamp}\n\n"
-            "CYCLE: Quiet follow-up period; no new main stories beyond earlier same-day Twitter/X items.\n\n"
-            "WATCH: carry forward public rollout details, independent evals, pricing/rate limits, and real-user voice latency.\n\n"
-            "Full update on GitHub.\n"
+    if quick_hits:
+        bullets = "\n".join(f"- @{tweet.author}: {trim_sentence(tweet.text, 110)}" for tweet in quick_hits[:3])
+        concrete = "; ".join(
+            f"@{tweet.author}: {trim_sentence(tweet.text, 90)}"
+            for tweet in quick_hits[:2]
         )
-    usable = filtered_tweets(tweets)
-    if usable:
-        bullets = "\n".join(f"- @{tweet.author}: {trim_sentence(tweet.text, 110)}" for tweet in usable[:3])
         return (
             f"Twitter/X AI Pulse{title_suffix} - {timestamp}\n\n"
-            "CYCLE: Quiet period; no story cleared the main-story bar.\n\n"
+            f"CYCLE: {concrete}\n\n"
             f"QUICK HITS:\n{bullets}\n\n"
-            "WATCH: Next scheduled Twitter/X AI monitor run.\n\n"
             "Full update on GitHub.\n"
         )
-    return (
-        f"Twitter/X AI Pulse{title_suffix} - {timestamp}\n\n"
-        "Quiet period - no major AI updates on Twitter/X.\n"
-    )
+    return ""
+
+
+def render_status(
+    date: str,
+    hour: str,
+    timestamp: str,
+    run_id: str,
+    run_attempt: int,
+    published: bool,
+    public_items: int,
+) -> str:
+    return json.dumps(
+        {
+            "schema_version": 1,
+            "date": date,
+            "hour": f"{hour}:00 UTC",
+            "generated_at": timestamp,
+            "run_id": run_id,
+            "run_attempt": run_attempt,
+            "status": "published" if published else "no_update",
+            "public_items": public_items,
+        },
+        indent=2,
+        ensure_ascii=False,
+    ) + "\n"
 
 
 def render_headlines(stories: list[Story]) -> str:
@@ -775,9 +882,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--date", required=True)
     parser.add_argument("--hour", required=True)
     parser.add_argument("--timestamp", required=True)
+    parser.add_argument("--run-id", default="local")
+    parser.add_argument("--run-attempt", type=int, default=1)
     parser.add_argument("--title-suffix", default="")
     parser.add_argument("--summary-slug", required=True)
     parser.add_argument("--headlines-file", type=Path)
+    parser.add_argument("--status-file", type=Path)
     parser.add_argument("--limit", type=int, default=20)
     parser.add_argument("--max-age-hours", type=int, default=DEFAULT_MAX_AGE_HOURS)
     args = parser.parse_args(argv)
@@ -789,6 +899,7 @@ def main(argv: list[str] | None = None) -> int:
     tweets = collect_tweets(args.input_dir, args.limit, end_time, args.max_age_hours)
     digest_path = args.out_dir / f"{args.date}.md"
     summary_path = args.summaries_dir / f"{args.date}-{args.summary_slug}-{args.hour}h-summary.txt"
+    status_path = args.status_file or args.out_dir / "status" / f"{args.date}-{args.hour}h.json"
 
     existing_digest = digest_path.read_text(encoding="utf-8") if digest_path.exists() else ""
     current_header = f"## {args.hour}:00 UTC"
@@ -796,7 +907,7 @@ def main(argv: list[str] | None = None) -> int:
     seen_url_keys = published_tweet_url_keys(prior_digest)
     seen_story_keys = published_story_keys(prior_digest)
 
-    header, digest, stories, carried_forward = render_digest(
+    header, digest, stories, quick_hits = render_digest(
         args.date,
         args.hour,
         args.title_suffix,
@@ -804,13 +915,31 @@ def main(argv: list[str] | None = None) -> int:
         seen_url_keys,
         seen_story_keys,
     )
-    changed = upsert_section(digest_path, header, digest)
-    atomic_write(summary_path, render_summary(args.timestamp, args.title_suffix, tweets, stories, carried_forward))
+    if digest is None:
+        changed = remove_section(digest_path, header)
+    else:
+        changed = upsert_section(digest_path, header, digest)
+    published = digest is not None
+    atomic_write(summary_path, render_summary(args.timestamp, args.title_suffix, stories, quick_hits))
+    atomic_write(
+        status_path,
+        render_status(
+            args.date,
+            args.hour,
+            args.timestamp,
+            args.run_id,
+            args.run_attempt,
+            published,
+            len(stories) + len(quick_hits),
+        ),
+    )
     if args.headlines_file is not None:
         atomic_write(args.headlines_file, render_headlines(stories))
 
-    print(f"wrote {digest_path} ({'changed' if changed else 'already had section'})")
+    digest_result = "changed" if changed else ("published" if published else "no public update")
+    print(f"processed {digest_path} ({digest_result})")
     print(f"wrote {summary_path}")
+    print(f"wrote {status_path}")
     if args.headlines_file is not None:
         print(f"wrote {args.headlines_file}")
     return 0

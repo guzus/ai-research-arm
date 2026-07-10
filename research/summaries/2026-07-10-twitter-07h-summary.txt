@@ -1,7 +1,11 @@
 Twitter/X AI Pulse - 2026-07-10 07:41 UTC
 
-CYCLE: Quiet follow-up period; no new main stories beyond earlier same-day Twitter/X items.
+CYCLE: Meta introduced Muse Spark 1.1 and previewed the Meta Model API; Sam Altman highlighted GPT-5.6 Sol's lower cost per task.
 
-WATCH: carry forward public rollout details, independent evals, pricing/rate limits, and real-user voice latency.
+QUICK HITS:
+- @AIatMeta: Muse Spark 1.1 and the Meta Model API public preview.
+- @sama: GPT-5.6 Sol cost-per-task gains.
+
+WATCH: Meta API access/pricing and independent Muse Spark 1.1 and GPT-5.6 results.
 
 Full update on GitHub.
