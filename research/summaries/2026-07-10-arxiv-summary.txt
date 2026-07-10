@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-10
+
+TOP 5 PAPERS:
+• LingBot-VA 2.0 - video-action pretraining + sparse MoE foundation model for generalizable robot control
+• Super Weights in LLMs - training only "important" weights fails; 0.16%-param LoRA still wins
+• Switch-Reasoner - RL teaches MLLMs when to reason vs. answer directly, cutting inference cost
+• Proactive Memory Agent - selective memory injection curbs "behavioral state decay" in long-horizon agents
+• UniClawBench - 400-task bilingual benchmark for proactive agents in live Docker containers
+
+CATEGORIES: LM/NLP 8, CV & Multimodal 12, Agents & Reasoning 8, Safety & Alignment 5, Other 6
+
+Full report on GitHub.
