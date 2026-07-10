@@ -3,9 +3,8 @@
   "date": "2026-07-10",
   "hour": "14:00 UTC",
   "generated_at": "2026-07-10 14:47:52 UTC",
-  "run_id": "unknown",
+  "run_id": "29101179352",
   "run_attempt": 1,
   "status": "no_update",
-  "public_items": 0,
-  "error": "agent_tooling_failure: Bash and Read tools were non-functional for this entire run (Bash: bwrap could not mount tmpfs on /newroot/var/run; Read: permission denied on files inside the allowed working directory, including a freshly-written scratch file). Unable to read .twitter-input/bird/all.json or prior digest context, so no analysis was performed. Deterministic fallback should take over."
+  "public_items": 0
 }
