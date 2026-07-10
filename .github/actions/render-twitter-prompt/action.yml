@@ -53,6 +53,12 @@ inputs:
   timestamp:
     description: Full timestamp string for the digest header.
     required: true
+  run_id:
+    description: GitHub Actions run ID for the per-attempt status heartbeat.
+    required: true
+  run_attempt:
+    description: GitHub Actions run attempt for the per-attempt status heartbeat.
+    required: true
   yesterday:
     description: YYYY-MM-DD for yesterday (used for prior-context Read).
     required: true
@@ -94,6 +100,8 @@ runs:
         DATE: ${{ inputs.date }}
         HOUR: ${{ inputs.hour }}
         TIMESTAMP: ${{ inputs.timestamp }}
+        RUN_ID: ${{ inputs.run_id }}
+        RUN_ATTEMPT: ${{ inputs.run_attempt }}
         YESTERDAY: ${{ inputs.yesterday }}
         COMMIT_PREFIX: ${{ inputs.commit_prefix }}
       run: |
@@ -115,36 +123,35 @@ runs:
         date = os.environ["DATE"]
         hour = os.environ["HOUR"]
         ts = os.environ["TIMESTAMP"]
+        run_id = os.environ["RUN_ID"]
+        run_attempt = os.environ["RUN_ATTEMPT"]
         yesterday = os.environ["YESTERDAY"]
         template_path = os.environ["TEMPLATE_PATH"]
         output_path = os.environ["OUTPUT_PATH"]
         birdy_input_dir = ".twitter-input/bird"
+        status_file = f"{output_dir}/status/{date}-{hour}h.json"
 
         # cycle window phrase: "~3-hour" for claude, "6-hour" for the others.
         cycle_window = "~3-hour" if cycle_hours == 3 else f"{cycle_hours}-hour"
 
-        # outputs_overview — claude writes three files (markdown + summary +
-        # headlines.json); other tiers write two (markdown + summary).
+        # outputs_overview — every tier writes status + summary; claude also
+        # writes headlines.json. The public digest is conditional on signal.
         if "headlines" in features:
             outputs_overview = (
-                "YOU WILL WRITE THREE OUTPUT FILES (all three are mandatory — do NOT skip the third):\n"
-                f"1. {output_dir}/{date}.md (daily markdown digest, append section)\n"
-                f"2. research/summaries/{date}-{summary_slug}-{hour}h-summary.txt (Telegram-friendly text rollup)\n"
-                f"3. research/summaries/{date}-{summary_slug}-{hour}h-headlines.json (structured headline alerts — REQUIRED for downstream Telegram blast)\n"
-                "\n"
-                "All three exist in every cycle, including quiet ones. For a quiet cycle the\n"
-                "JSON file is `[]` (empty array) but the file is still created.\n"
+                "YOU WILL WRITE THREE REQUIRED RUN ARTIFACTS, plus a public digest section only when signal exists:\n"
+                f"1. {status_file} (machine status; always write)\n"
+                f"2. research/summaries/{date}-{summary_slug}-{hour}h-summary.txt (concrete rollup, or empty for no_update)\n"
+                f"3. research/summaries/{date}-{summary_slug}-{hour}h-headlines.json (structured headline alerts; `[]` for no_update)\n"
+                f"4. {output_dir}/{date}.md (update only when at least one concrete story or Quick hit is publishable)\n"
                 "\n"
                 f"OUTPUT (markdown digest): {output_dir}/{date}.md"
             )
         else:
             outputs_overview = (
-                "YOU WILL WRITE TWO OUTPUT FILES (both are mandatory):\n"
-                f"1. {output_dir}/{date}.md (daily markdown digest, append section)\n"
-                f"2. research/summaries/{date}-{summary_slug}-{hour}h-summary.txt (Telegram-friendly text rollup)\n"
-                "\n"
-                "Both files exist in every cycle, including quiet ones. Do not commit until\n"
-                "both files have been created or updated.\n"
+                "YOU WILL WRITE TWO REQUIRED RUN ARTIFACTS, plus a public digest section only when signal exists:\n"
+                f"1. {status_file} (machine status; always write)\n"
+                f"2. research/summaries/{date}-{summary_slug}-{hour}h-summary.txt (concrete rollup, or empty for no_update)\n"
+                f"3. {output_dir}/{date}.md (update only when at least one concrete story or Quick hit is publishable)\n"
                 "\n"
                 f"OUTPUT (markdown digest): {output_dir}/{date}.md"
             )
@@ -248,18 +255,20 @@ runs:
         # final_step — what to verify and how to commit.
         if "headlines" in features:
             final_step = (
-                "STEP 4 — Verify ALL THREE files exist before committing. If headlines.json\n"
-                "is missing, go back and create it (even if just `[]`). Then commit:\n"
+                "STEP 4 — Verify status, summary, and headlines files exist before committing.\n"
+                "When status is `published`, also verify the same-hour digest section exists.\n"
+                "When status is `no_update`, verify that public section is absent and headlines\n"
+                "is `[]`. Then commit:\n"
                 f"git add {output_dir}/ research/summaries/\n"
                 f"git commit -m \"{commit_prefix} {ts}\" || echo \"No changes\"\n"
                 "\n"
-                "CRITICAL: A run without headlines.json blocks the downstream Telegram alert\n"
-                "blast. ALWAYS write the JSON file, even if it's `[]`."
+                "CRITICAL: ALWAYS write status and headlines, even for `no_update`."
             )
         else:
             final_step = (
-                "STEP 3 — Verify BOTH files exist before committing. If the Telegram\n"
-                "summary is missing, go back and create it. Then commit:\n"
+                "STEP 3 — Verify status and summary files exist before committing. When status\n"
+                "is `published`, also verify the digest section exists; for `no_update`, verify\n"
+                "the public same-hour section is absent. Then commit:\n"
                 f"git add {output_dir}/ research/summaries/\n"
                 f"git commit -m \"{commit_prefix} {ts}\" || echo \"No changes\""
             )
@@ -269,6 +278,8 @@ runs:
             "{{harness_label}}":     harness_label,
             "{{cycle_window}}":      cycle_window,
             "{{timestamp}}":         ts,
+            "{{run_id}}":           run_id,
+            "{{run_attempt}}":      run_attempt,
             "{{outputs_overview}}":  outputs_overview,
             "{{output_dir}}":        output_dir,
             "{{date}}":              date,
@@ -282,6 +293,7 @@ runs:
             "{{title_suffix}}":      title_suffix,
             "{{hour}}":              hour,
             "{{summary_slug}}":      summary_slug,
+            "{{status_file}}":       status_file,
             "{{headlines_section}}": headlines_section,
             "{{final_step}}":        final_step,
         }

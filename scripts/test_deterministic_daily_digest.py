@@ -180,6 +180,29 @@ class ComposeTest(unittest.TestCase):
             self.assertEqual(extract.artifact, "blogs/2026-07-01.md")
             self.assertEqual(extract.lines, ("- [Yesterday's post](https://blog/x)",))
 
+    def test_empty_latest_twitter_summary_uses_earlier_same_day_signal(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            research = Path(tmp) / "research"
+            summaries = research / "summaries"
+            summaries.mkdir(parents=True)
+            (summaries / "2026-07-02-twitter-05h-summary.txt").write_text(
+                "QUICK HITS:\n- @AIatMeta: Muse Spark 1.1 and Meta Model API preview.\n",
+                encoding="utf-8",
+            )
+            (summaries / "2026-07-02-twitter-07h-summary.txt").write_text(
+                "",
+                encoding="utf-8",
+            )
+
+            lane = next(l for l in digest.LANES if l.key == "twitter")
+            extract = digest.extract_lane(research, lane, ["2026-07-02", "2026-07-01"], cap=8)
+
+            self.assertEqual(extract.artifact, "summaries/2026-07-02-twitter-05h-summary.txt")
+            self.assertEqual(
+                extract.lines,
+                ("- @AIatMeta: Muse Spark 1.1 and Meta Model API preview.",),
+            )
+
     def test_strip_markdown_flattens_links_and_bold(self):
         self.assertEqual(
             digest.strip_markdown("- **[Venice AI](https://tc)** raised money"),

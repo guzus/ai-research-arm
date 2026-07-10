@@ -14,8 +14,8 @@ PRIOR CONTEXT (read these BEFORE writing — multi-day arcs are first-class):
 - Today's file so far: {{output_dir}}/{{date}}.md
   (may already contain earlier cycles from today. If a section for
   `## {{hour}}:00 UTC` already exists because this is a rerun, replace that
-  same-hour section instead of appending a duplicate. Otherwise append a new
-  section at the end.)
+  same-hour section when publishing, or remove it when the final run status is
+  `no_update`. Otherwise append a new public section only when signal exists.)
 - Yesterday's full digest: {{output_dir}}/{{yesterday}}.md
   (may not exist on the first day; if Read fails, skip)
 {{cross_harness_note}}
@@ -25,7 +25,7 @@ PRIOR CONTEXT (read these BEFORE writing — multi-day arcs are first-class):
 TOOLS YOU CAN USE:
 {{tools_section}}
 HARD CAPS: {{bird_budget}} {{follow_up_tools}} follow-up calls + {{curl_budget}} curl fetches per run.
-Use them when verification matters; quiet cycles should use fewer.
+Use them when verification matters; thin snapshots should use fewer.
 
 INSTRUCTIONS:
 0. Reason from first principles. Stress-test the premise that each candidate
@@ -61,24 +61,35 @@ INSTRUCTIONS:
    bury it in Quick hits with an "if confirmed" hedge.
 7. Put every other notable item into Quick hits, one line each.
 8. Flag loud-but-shaky claims in Skeptic's corner.
-9. End with a concrete Watch list and Research notes.
+9. End with a concrete Watch list when there is a specific next signal to track.
 10. Public-output hygiene: never make internal collection failures,
    auth/cookie problems, {{follow_up_tools}} errors, HTTP 403s, Cloudflare
    challenge pages, stack traces, or raw tool stderr/stdout into a Top Story,
-   Quick hit, Skeptic's corner item, Watch item, or public Research note.
+   Quick hit, Skeptic's corner item, or Watch item.
    Treat those as private pipeline diagnostics. If a source cannot be
    re-verified, simply downgrade or omit the affected claim; do not expose
    the tooling failure or command output to readers.
+11. PUBLICATION IS SIGNAL-ONLY. Pipeline/editorial status is not reader copy.
+   - When at least one Top Story or concrete Quick hit is publishable, write
+     the same-hour section and make `Cycle summary` name the actual
+     developments. A Quick-hit-only cycle is valid and must lead with those
+     items rather than with their rank or the absence of a larger story.
+   - When nothing concrete is publishable, do not create a public same-hour
+     section. On a rerun, remove any existing same-hour filler section and
+     leave the rest of the daily Markdown unchanged. Record the successful
+     scan only in the mandatory status JSON below.
+   - Never use the public brief to announce that a scan was uneventful, that
+     items failed an editorial threshold, or that earlier items were not
+     republished.
 
-FORMAT: Append to the daily file (create if doesn't exist).
-If the file already exists and already has a section for `## {{hour}}:00 UTC`,
-replace that same-hour section. Otherwise append the new section at the end.
-If it doesn't exist, start with:
+FORMAT WHEN PUBLISHING: Append to the daily file (create if it doesn't exist).
+If a section for `## {{hour}}:00 UTC` already exists, replace that same-hour
+section. Otherwise append the new section at the end. Start a new file with:
 `# Twitter/X AI Pulse{{title_suffix}} — {{date}}`
 
 ## {{hour}}:00 UTC
 
-**Cycle summary**: [1-2 sentences naming the dominant theme. If quiet, say so.]
+**Cycle summary**: [1-2 sentences naming the concrete developments in this cycle.]
 
 ### Top stories
 
@@ -119,27 +130,28 @@ shape for the next story.
 
 ### 🚩 Skeptic's corner
 - [Loud claim that did not corroborate, with reason and URL.]
-- [Or "None this cycle"]
+- Omit this heading entirely when there is no concrete claim to challenge.
 
 ### Watch list (next 24h)
 - [Dated, concrete signal]
 
-### Research notes
-- Source checks issued this cycle: [list source names / URLs briefly; do not
-  include raw tool names, auth failures, HTTP errors, stderr, or command output]
-- [If none: "No follow-ups needed — pre-fetched snapshot was sufficient"]
-
-If no main stories exist, write:
+When the cycle has concrete Quick hits but no Top Story, write:
 ## {{hour}}:00 UTC
-**Cycle summary**: Quiet period — no main stories this window.
+**Cycle summary**: [Name the 1-2 most useful Quick-hit developments directly.]
 ### Quick hits
-- No AI-specific quick hits cleared the publication bar this cycle.
+- [Concrete AI item with @handle + URL.]
 
 CONSTRAINTS:
 - Be specific. "Big funding round" → "$200M Series C, $2B post-money, led by X."
+- A Quick hit must describe a concrete event: a release, pricing or funding
+  change, research result, benchmark, security incident, policy action, or
+  similarly checkable development. Generic claims such as "AI agents are the
+  future" or "our AI changes everything" are not news and must be dropped.
 - Do not recycle hype phrasing. Synthesize.
 - High engagement is not proof.
 - Link primary sources when cited.
+- Do not publish monitoring status, source-check logs, a `Research notes`
+  section, or any wording whose only message is that nothing new was found.
 - A short honest brief beats a padded one.
 
 STEP 2 — WRITE TELEGRAM SUMMARY:
@@ -162,12 +174,27 @@ WATCH: [1 concrete signal for next 24h]
 Full update on GitHub.
 ```
 
-If no significant updates were found, write:
-```
-Twitter/X AI Pulse{{title_suffix}} - {{timestamp}}
+If nothing concrete is publishable, create the summary file as an empty file so
+no reader notification is emitted.
 
-Quiet period — no major AI updates on Twitter/X.
+RUN STATUS — ALWAYS WRITE `{{status_file}}` as JSON:
+```json
+{
+  "schema_version": 1,
+  "date": "{{date}}",
+  "hour": "{{hour}}:00 UTC",
+  "generated_at": "{{timestamp}}",
+  "run_id": "{{run_id}}",
+  "run_attempt": {{run_attempt}},
+  "status": "published",
+  "public_items": 3
+}
 ```
+Use `status: "published"` only when the same-hour public digest section exists;
+set `status: "no_update"` and `public_items: 0` when it does not. The status
+file is the machine heartbeat and must be written in every run. Count
+`public_items` as Top Story `<article class="twitter-story">` cards plus linked
+bullets under `### Quick hits`; the count must equal what is actually rendered.
 
 {{headlines_section}}
 
