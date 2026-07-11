@@ -11,7 +11,7 @@
         "/root",
         "/proc",
         "/sys",
-        "/var/run",
+        "/run",
         "/etc/ssh",
         "/etc/ssl/private"
       ],
@@ -68,6 +68,7 @@
       "Read(//root/**)",
       "Read(//proc/**)",
       "Read(//sys/**)",
+      "Read(//run/**)",
       "Read(//var/run/**)",
       "Read(//etc/ssh/**)",
       "Read(//etc/ssl/private/**)"

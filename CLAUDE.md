@@ -14,7 +14,7 @@ touching workflows, research output, or the dashboard.
 ## Project Overview
 
 `ai-research-arm` (ARA) is an automated AI-news intelligence pipeline.
-GitHub Actions on a self-hosted Linux runner aggregate signal from
+GitHub Actions on the self-hosted `gunux` Linux runner aggregate signal from
 Twitter/X, RSS, Bluesky, Hacker News, Reddit, and arXiv; synthesize it
 into daily digests, model-release timelines, and long-form generative
 articles; and publish everything to a Vite/TS SPA at
@@ -108,14 +108,13 @@ pipeline code; don't assume the dashboard or any lane depends on them.
 
 ## GitHub Actions Workflows
 
-Almost every workflow runs on **`runs-on: [self-hosted, Linux]`** — an
-autoscaled fleet of ephemeral Cloud Run workers (the `runner-autoscaler`
-service in `../runner`; see Load-bearing rule 5). A fresh
-`cloud-run-worker-*` instance spins up per job, so "self-hosted" no longer
-means one serial slot — jobs run in parallel, and each worker carries the
-pipeline's baked-in state (Birdy read-only CLI/daemon, recent
-`research/` checkout, pre-installed tooling). Aggregation,
-synthesis, output, and the Claude agent lanes all run here.
+Almost every workflow runs on **`runs-on: [self-hosted, Linux]`** on the
+native Ubuntu host `gunux`, with one systemd-managed runner for this repo.
+The old Cloud Run worker pools are paused rollback infrastructure, not the
+production path. The runner's home directory is persistent across jobs, so
+user-level tool configuration can survive from one run to the next. The host
+carries the Birdy read-only CLI/daemon, recent `research/` checkout, and
+pre-installed tooling used by aggregation, synthesis, output, and agent lanes.
 
 GitHub-hosted runners are used for jobs that must not execute
 repository-controlled code on the self-hosted fleet:
@@ -123,14 +122,14 @@ repository-controlled code on the self-hosted fleet:
   build scripts, package scripts, Python tests, and workflow/action files,
   so CI must not execute that code on the self-hosted runner host.
 - Watchdog jobs also run on `ubuntu-latest` because they must survive a
-  self-hosted/Cloud Run outage — a watchdog that runs on the runners it is
+  self-hosted outage — a watchdog that runs on the runners it is
   watching is useless:
 - `liveness-check.yml` runs one job on EACH tier (its `ubuntu` job + its
   `self-hosted` job). No single runner survives both failure modes — a
   GitHub-hosted billing/spending-limit block vs. a self-hosted outage — so
   whichever tier is alive emits the hooker/Telegram staleness alert.
-- `auto-rerun-on-runner-loss.yml` re-runs jobs whose ephemeral worker
-  vanished mid-run (Load-bearing rule 11).
+- `auto-rerun-on-runner-loss.yml` re-runs jobs whose runner process
+  vanished mid-run (Load-bearing rule 11; primarily a rollback-fleet guard).
 
 The per-workflow `ubuntu-latest` vs. `self-hosted` lists that used to live
 here are gone on purpose: the answer is now "read the workflow's actual
@@ -401,25 +400,21 @@ output or break the pipeline. Read them before editing.
    telemetry success.
 
 5. **Runner choice is load-bearing — default to self-hosted.** The
-   self-hosted tier is an autoscaled Cloud Run worker fleet
-   (`runner-autoscaler` in `../runner`): a fresh ephemeral
-   `cloud-run-worker-*` registers per job, runs it, then deregisters, so
-   jobs run in PARALLEL (no single serial slot) and each carries baked-in
-   state — Birdy read-only CLI + warm Birdy daemon (`hourly-twitter*`,
-   `24h-model-timeline`), recent `research/` checkout for prior-output context
-   (`daily-digest`, `ci.yml` dashboard job), pre-installed pnpm/Oracle
-   tooling. Digest audio lives in S3 (uploaded by `daily-digest` via the
-   `S3_*` secrets; the committed `research/audio/*.mp3` files are 0-byte
-   stubs), while `daily-front-page` renders via resvg and COMMITS the
-   PNG alongside the interactive `.ara.md`/`.html` edition. Use
-   `[self-hosted, Linux]` for anything touching that state,
-   which is nearly everything. Reserve `ubuntu-latest` for the two
-   watchdogs that must outlive a self-hosted outage (`liveness-check.yml`,
-   `auto-rerun-on-runner-loss.yml`). The tradeoff of ephemeral workers: an
-   instance can vanish mid-job (preemption / maintenance / OOM), failing
-   the run with no error in the log — rule 11 auto-recovers that. Before
-   moving a job to `ubuntu-latest`, verify it needs neither the warm state
-   nor bird/birdy — getting this wrong silently breaks the pipeline.
+   production self-hosted tier is the native Ubuntu host `gunux`, with one
+   persistent systemd runner per repository (see
+   `../runner/docs/CLOUD-RUN-SUNSET.md`). It carries the Birdy read-only CLI +
+   warm daemon (`hourly-twitter*`, `24h-model-timeline`), recent `research/`
+   checkout context, and pre-installed tooling. Its persistent home also
+   means actions must overwrite stale user-level settings explicitly and
+   must not assume a fresh container. Digest audio lives in S3 (uploaded by
+   `daily-digest` via the `S3_*` secrets; the committed
+   `research/audio/*.mp3` files are 0-byte stubs), while `daily-front-page`
+   renders via resvg and commits the PNG alongside the interactive edition.
+   Use `[self-hosted, Linux]` for anything touching that state, which is
+   nearly everything. Reserve `ubuntu-latest` for watchdogs and CI jobs that
+   must survive or avoid the self-hosted tier. The paused Cloud Run fleet is
+   rollback infrastructure only; if it is deliberately restored, re-validate
+   sandbox, Docker, state, and concurrency assumptions before routing jobs.
 
 6. **X/Twitter CLI calls must be graceful and read-only.** Use Birdy for
    Twitter workflows, pass `--json --plain`, and pipe to a fallback

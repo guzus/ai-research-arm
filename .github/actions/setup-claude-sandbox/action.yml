@@ -9,17 +9,17 @@ runs:
       shell: bash
       run: |
         set -euo pipefail
-        missing=""
-        command -v bwrap >/dev/null 2>&1 || missing="$missing bubblewrap"
-        command -v socat >/dev/null 2>&1 || missing="$missing socat"
+        missing=()
+        command -v bwrap >/dev/null 2>&1 || missing+=(bubblewrap)
+        command -v socat >/dev/null 2>&1 || missing+=(socat)
 
-        if [ -n "$missing" ]; then
+        if [ "${#missing[@]}" -gt 0 ]; then
           if ! command -v apt-get >/dev/null 2>&1; then
-            echo "::error::Claude sandbox dependencies missing:$missing, and apt-get is unavailable."
+            echo "::error::Claude sandbox dependencies missing: ${missing[*]}, and apt-get is unavailable."
             exit 1
           fi
           sudo apt-get update -qq
-          sudo apt-get install -y -qq $missing
+          sudo apt-get install -y -qq "${missing[@]}"
         fi
 
         # Ubuntu 24.04+ can block unprivileged user namespaces via AppArmor.
@@ -28,10 +28,9 @@ runs:
           sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
         fi
 
-        # The self-hosted GitHub runner runs inside an additional container
-        # boundary. Claude's default Linux sandbox can fail there while
-        # mounting tmpfs paths such as /newroot/var/run. Nested mode keeps
-        # sandboxing enabled but uses the container-compatible implementation.
+        # The production gunux runner is a native host with working user, PID,
+        # mount, and network namespaces. Keep strong isolation explicit so a
+        # stale user-level setting from an earlier run cannot weaken it.
         mkdir -p "$HOME/.claude"
         python3 - <<'PY'
         import json
@@ -45,12 +44,24 @@ runs:
             raise SystemExit(f"Invalid Claude settings JSON at {settings_path}: {exc}") from exc
 
         sandbox = settings.setdefault("sandbox", {})
-        sandbox["enableWeakerNestedSandbox"] = True
+        sandbox["enableWeakerNestedSandbox"] = False
 
         tmp_path = settings_path.with_suffix(".json.tmp")
         tmp_path.write_text(json.dumps(settings, indent=2, sort_keys=True) + "\n")
         tmp_path.replace(settings_path)
         PY
+
+        # Exercise the mount shape that failed in production. /var/run is a
+        # symlink to /run on Ubuntu and is not a valid bwrap tmpfs target; the
+        # project policy masks the canonical /run directory instead.
+        bwrap \
+          --ro-bind / / \
+          --dev /dev \
+          --unshare-net \
+          --unshare-pid \
+          --proc /proc \
+          --tmpfs /run \
+          -- /bin/true
 
         echo "bubblewrap: $(bwrap --version)"
         echo "socat: $(socat -V 2>&1 | head -1)"
@@ -61,5 +72,5 @@ runs:
 
         settings = json.loads((Path(os.environ["HOME"]) / ".claude" / "settings.json").read_text())
         enabled = settings.get("sandbox", {}).get("enableWeakerNestedSandbox")
-        print(f"claude sandbox nested mode: {enabled}")
+        print(f"claude sandbox weaker nested mode: {enabled}")
         PY
