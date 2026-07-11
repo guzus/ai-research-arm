@@ -3,9 +3,8 @@
   "date": "2026-07-11",
   "hour": "03:00 UTC",
   "generated_at": "2026-07-11 03:35:26 UTC",
-  "run_id": "unknown",
+  "run_id": "29138233662",
   "run_attempt": 1,
-  "status": "error",
-  "public_items": 0,
-  "error": "sandbox/tooling failure: Bash bwrap could not mount tmpfs, and Read was denied for the entire project directory, so raw input (.twitter-input/bird/all.json) and prior-day context could not be read. No analysis was performed; nothing was committed."
+  "status": "published",
+  "public_items": 2
 }
