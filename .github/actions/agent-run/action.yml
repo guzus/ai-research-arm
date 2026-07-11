@@ -257,6 +257,7 @@ runs:
         EXPECTED_PATHS: ${{ inputs.expected-paths }}
         ALLOWED_PATHS: ${{ inputs.allowed-paths }}
         LABEL: ${{ inputs.label }}
+        PRE_SHA: ${{ steps.pre.outputs.sha }}
       run: |
         set -euo pipefail
 
@@ -275,6 +276,44 @@ runs:
 
         if [ "${#pathspecs[@]}" -eq 0 ]; then
           exit 0
+        fi
+
+        # Research outputs are public artifacts, never hidden scratch files.
+        # Reject diagnostic probes before staging so a failed sandbox check
+        # cannot satisfy the output contract or be auto-merged as lane data.
+        hidden_outputs=()
+        add_hidden_output() {
+          local candidate="$1"
+          local existing
+          for existing in "${hidden_outputs[@]}"; do
+            [ "$existing" = "$candidate" ] && return
+          done
+          hidden_outputs+=("$candidate")
+        }
+        inspect_output_path() {
+          local candidate="$1"
+          local component
+          local components=()
+          IFS='/' read -r -a components <<< "$candidate"
+          for component in "${components[@]}"; do
+            if [[ "$component" == .* ]]; then
+              add_hidden_output "$candidate"
+              return
+            fi
+          done
+        }
+        while IFS= read -r -d '' candidate; do
+          inspect_output_path "$candidate"
+        done < <(
+          {
+            git ls-files --others --modified --exclude-standard -z -- "${pathspecs[@]}"
+            git diff --name-only -z "${PRE_SHA}..HEAD" -- "${pathspecs[@]}"
+          }
+        )
+        if [ "${#hidden_outputs[@]}" -gt 0 ]; then
+          echo "::error::${LABEL} produced hidden diagnostic file(s); refusing to commit them:"
+          printf '  - %s\n' "${hidden_outputs[@]}"
+          exit 1
         fi
 
         git add -- "${pathspecs[@]}"

@@ -162,7 +162,9 @@ jobs:
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(ls:*),Bash(cat:*)"
           expected-paths: |
-            research/rss/
+            research/rss/${{ steps.datetime.outputs.date }}.md
+          allowed-paths: |
+            research/rss/${{ steps.datetime.outputs.date }}.md
           label: RSS GLM-5.2 Fireworks processor
           prompt: |
             You are an RSS feed processor for AI news. Extract NEW articles from official sources.
@@ -304,8 +306,17 @@ jobs:
         with:
           base-sha: ${{ steps.rss-output-base.outputs.sha }}
           expected-paths: |
-            research/rss/
+            research/rss/${{ steps.datetime.outputs.date }}.md
           label: RSS workflow output
+
+      # `continue-on-error` above lets the final output guard explain missing
+      # artifacts. Do not let it hide an agent-run scope/policy failure when
+      # the agent also happened to commit the expected dated file.
+      - name: Propagate RSS agent contract failure
+        if: always() && steps.rss-agent.outcome != 'success'
+        run: |
+          echo "::error::RSS agent action failed its sandbox or output contract."
+          exit 1
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the
