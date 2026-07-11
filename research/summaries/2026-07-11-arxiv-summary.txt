@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-11 (latest batch: 2026-07-09, weekend gap)
+
+TOP 5 PAPERS:
+• OpenCoF - video generation as step-by-step reasoning via Chain-of-Frame
+• Super Weights in LLMs - critical params don't improve from isolated training
+• When the Judge Changes - LLM-as-judge swaps break eval reliability
+• UniClawBench - 400-task live-container benchmark for proactive agents
+• Illusion of Equivalency - quantized LLMs diverge behaviorally despite flat benchmarks
+
+CATEGORIES: NLP/LLM 7, CV/Multimodal 9, Agents/Reasoning 5, Safety/Alignment 4, Other 4
+
+Full report on GitHub.
