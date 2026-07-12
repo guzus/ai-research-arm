@@ -1,74 +1,9 @@
 {
-  "generatedAt": "2026-07-12T21:33:19.368Z",
-  "windowStart": "2026-07-11T09:00:00.000Z",
-  "windowEnd": "2026-07-14T10:00:00.000Z",
+  "generatedAt": "2026-07-12T23:36:33.410Z",
+  "windowStart": "2026-07-11T11:00:00.000Z",
+  "windowEnd": "2026-07-14T12:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-e221fbc25955",
-      "kind": "completed",
-      "lane": "RSS",
-      "title": "RSS official announcements",
-      "status": "completed",
-      "start": "2026-07-11T09:52:00.000Z",
-      "end": "2026-07-11T10:01:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "e221fbc25955",
-      "url": "https://github.com/guzus/ai-research-arm/commit/e221fbc25955d8f9e427ffb3079689ccc24c1fb9"
-    },
-    {
-      "id": "commit-87b9c2c31be3",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-07-11 10:05 UTC (#384)",
-      "status": "completed",
-      "start": "2026-07-11T10:05:00.000Z",
-      "end": "2026-07-11T10:06:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "87b9c2c31be3",
-      "url": "https://github.com/guzus/ai-research-arm/commit/87b9c2c31be37551ab7b74d9b4e8f9dcb67e1b28"
-    },
-    {
-      "id": "commit-e50ce64a5598",
-      "kind": "completed",
-      "lane": "Twitter/X",
-      "title": "Twitter/X brief",
-      "status": "completed",
-      "start": "2026-07-11T10:17:00.000Z",
-      "end": "2026-07-11T10:26:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "deepseek-v4-flash",
-      "commit": "e50ce64a5598",
-      "url": "https://github.com/guzus/ai-research-arm/commit/e50ce64a55987a2c234963ba8c6a85a991559990"
-    },
-    {
-      "id": "commit-b0a68c7e7c3a",
-      "kind": "completed",
-      "lane": "RSS",
-      "title": "RSS official announcements",
-      "status": "completed",
-      "start": "2026-07-11T11:24:00.000Z",
-      "end": "2026-07-11T11:33:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "b0a68c7e7c3a",
-      "url": "https://github.com/guzus/ai-research-arm/commit/b0a68c7e7c3a832c2da1d0d11e99e866a61d6061"
-    },
-    {
-      "id": "commit-11d53ddc1b43",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-07-11 11:35 UTC (#387)",
-      "status": "completed",
-      "start": "2026-07-11T11:35:00.000Z",
-      "end": "2026-07-11T11:36:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "11d53ddc1b43",
-      "url": "https://github.com/guzus/ai-research-arm/commit/11d53ddc1b4394a0bd83ac18bee088d3c10d0298"
-    },
     {
       "id": "commit-fc2509795c9b",
       "kind": "completed",
@@ -746,34 +681,43 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/baf65f5510a8a8f9ad0be770166d5968d9c8ef01"
     },
     {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-07-12T22-30-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-d250721d7144",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-07-12 21:33 UTC (#451)",
+      "status": "completed",
+      "start": "2026-07-12T21:33:00.000Z",
+      "end": "2026-07-12T21:34:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "d250721d7144",
+      "url": "https://github.com/guzus/ai-research-arm/commit/d250721d7144dc664baa313a737c295f3f9273bb"
+    },
+    {
+      "id": "commit-21fba5060ee5",
+      "kind": "completed",
+      "lane": "Twitter/X",
+      "title": "Twitter/X brief",
+      "status": "completed",
+      "start": "2026-07-12T22:02:00.000Z",
+      "end": "2026-07-12T22:11:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "deepseek-v4-flash",
+      "commit": "21fba5060ee5",
+      "url": "https://github.com/guzus/ai-research-arm/commit/21fba5060ee5d63aff0d4910d77d8e4cadf83c0a"
+    },
+    {
+      "id": "commit-551c628496cd",
+      "kind": "completed",
       "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-07-12T22:30:00.000Z",
-      "end": "2026-07-12T22:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-07-12T22-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-07-12T22:45:00.000Z",
-      "end": "2026-07-12T23:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-daily-youtube-yml-20-23-------2026-07-12T23-20-00-000Z",
-      "kind": "scheduled",
-      "lane": "YouTube",
-      "title": "Daily YouTube Signal",
-      "status": "scheduled",
-      "start": "2026-07-12T23:20:00.000Z",
-      "end": "2026-07-12T23:45:00.000Z",
-      "source": "cron 20 23 * * *"
+      "title": "RSS official announcements",
+      "status": "completed",
+      "start": "2026-07-12T23:18:00.000Z",
+      "end": "2026-07-12T23:27:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "551c628496cd",
+      "url": "https://github.com/guzus/ai-research-arm/commit/551c628496cd4b3bced7fce9643b238ff9361976"
     },
     {
       "id": "scheduled-daily-digest-yml-0-0-------2026-07-13T00-00-00-000Z",
@@ -1634,6 +1578,36 @@
       "start": "2026-07-14T09:07:00.000Z",
       "end": "2026-07-14T10:07:00.000Z",
       "source": "cron 7 */3 * * *"
+    },
+    {
+      "id": "scheduled-2h-bluesky-yml-11-10-------2026-07-14T10-11-00-000Z",
+      "kind": "scheduled",
+      "lane": "Bluesky",
+      "title": "Bluesky AI Researcher Commentary (Daily)",
+      "status": "scheduled",
+      "start": "2026-07-14T10:11:00.000Z",
+      "end": "2026-07-14T10:36:00.000Z",
+      "source": "cron 11 10 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-07-14T10-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-07-14T10:30:00.000Z",
+      "end": "2026-07-14T10:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-07-14T10-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-07-14T10:45:00.000Z",
+      "end": "2026-07-14T11:15:00.000Z",
+      "source": "cron 45 */2 * * *"
     }
   ]
 }
