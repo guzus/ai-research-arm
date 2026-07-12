@@ -3,7 +3,7 @@ slug: openai-gpt-5-6
 title: OpenAI GPT-5.6 (Sol / Terra / Luna) — government-gated frontier preview
 company: OpenAI
 model: GPT-5.6
-status: confirmed
+status: released
 status_note: |
   GPT-5.6 is the most-watched unreleased OpenAI model, expected **alongside the
   ChatGPT "super app" overhaul** ([[openai-chatgpt-superapp-2026-06]]). Signal is
@@ -124,7 +124,18 @@ status_note: |
   "have to wait until tuesday" (July 7). The July 7-9 launch window itself
   remains single-leaker-sourced (no OpenAI on-record date). Status stays
   `confirmed`; verification stays `confirmed`.
-expected: "GPT-5.6 family (Sol flagship / Terra balanced / Luna fast) shipped in a US-government-approved limited preview ~2026-06-26 (official OpenAI blog); Sol new SOTA on Terminal-Bench 2.1, max + ultra (subagent) modes; pricing Sol $5/$30, Terra $2.50/$15, Luna $1/$6, 30-min min cache. GA 'in the coming weeks' — Polymarket ~90% public release by 2026-07-31"
+
+  **2026-07-12 — status → released; GA confirmed.** OpenAI's own account
+  posted "GPT-5.6 is a major step forward for health intelligence... GPT-5.6
+  Luna outperforms GPT-5.5..." and separately confirmed "Yesterday, we made
+  GPT-5.6 Sol Ultra generally available" (2026-07-10). Sam Altman added that
+  GPT-5.6 is "now the preferred model in Microsoft 365 Copilot"
+  (2026-07-10), and dozens of independent users report hitting rate limits
+  on it — crossing from a gated ~20-org preview to broad general
+  availability. Status advances `confirmed` → `released`; verification
+  stays `confirmed` (official @OpenAI + @sama primary, multi-source
+  corroboration).
+expected: "GA confirmed 2026-07-10: OpenAI's own account announced GPT-5.6 Sol Ultra generally available, and @sama says GPT-5.6 is now the preferred model in Microsoft 365 Copilot. Family is Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol set SOTA on Terminal-Bench 2.1 with max + ultra (subagent) modes; pricing Sol $5/$30, Terra $2.50/$15, Luna $1/$6 per MTok"
 labels:
   - openai
   - frontier-model
@@ -138,10 +149,11 @@ sources:
   - "@haider1"
   - "@theinformation"
   - "@OpenAI"
+  - "@sama"
   - https://openai.com/index/previewing-gpt-5-6-sol/
   - https://simonwillison.net/2026/Jun/26/openai/
 created_at: 2026-06-09
-updated_at: 2026-07-04
+updated_at: 2026-07-12
 closed_at: null
 closed_reason: null
 history:
@@ -169,6 +181,8 @@ history:
     change: "Firsthand reconfirmation, no new state change. @altryne relayed a firsthand conversation with OpenAI's @dkundel at an AI conference reconfirming Sol/Terra/Luna, Ultra mode, the Codex app, and a 'token bank' concept; pricing figures already on this ticket recirculated via secondary relay (@amohan120) with no new numbers. Still ~20-org gated, no GA date. Status stays confirmed; verification stays confirmed."
   - ts: 2026-07-04
     change: "Tier names go primary-source. A GPG-signed commit merged 2026-06-26 into OpenAI's public Codex GitHub repo (independently verified via GitHub's API) adds openai.gpt-5.6-sol/-terra/-luna to the Bedrock model catalog — first primary-source confirmation of the tier names (a catalog entry, not a launch announcement; predates the rumor window by a week). A live Codex-app UI popup screenshot (@DevAdventur3s) shows the tier selector in-product; @kimmonismus adds the first insider-adjacent 'Tuesday' (July 7) nod. Launch date itself stays single-leaker-sourced. Status stays confirmed; verification stays confirmed."
+  - ts: 2026-07-12
+    change: "Status → released. @OpenAI's own account confirmed GA: 'Yesterday, we made GPT-5.6 Sol Ultra generally available' (2026-07-10), plus a health-intelligence post citing GPT-5.6 Luna outperforming GPT-5.5. @sama separately said GPT-5.6 is now the preferred model in Microsoft 365 Copilot. Multiple independent users report hitting rate limits on it, consistent with broad rollout beyond the ~20-org gated preview. Status advances confirmed → released; verification stays confirmed (official primary + broad corroboration)."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely

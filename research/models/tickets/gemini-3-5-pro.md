@@ -38,6 +38,20 @@ status_note: |
   context size) as noise pending an on-record Google/DeepMind statement.
   Status stays confirmed (I/O commitment only); verification stays
   confirmed.
+
+  **2026-07-12:** A Japanese-language post explicitly traces the circulating
+  "2M context, July 17" figures back to leak-articles citing each other, not
+  Google's official blog, and notes Google's own Vertex AI model catalog
+  does not currently list a "Gemini 3.5 Pro" entry (only 3.1 Pro / 3 Pro
+  Image / 2.5 Pro) — a direct rebuttal of this week's rumor cluster. A
+  same-day account nonetheless restates "2M token context window... Delayed
+  from June — limited enterprise preview now" as if factual. Confirms the
+  07-04/07-05 unverified flag was warranted: no primary Google source has
+  surfaced, and the console-catalog check is a new, independent data point
+  against the retrain/date/context cluster. Status stays confirmed (I/O
+  commitment only); verification stays confirmed; the retrain/date/
+  context-size cluster stays unverified and should not be promoted into
+  status_note as fact without a primary Google statement.
 labels:
   - google-io
   - pro-tier
@@ -47,8 +61,10 @@ verification: confirmed
 sources:
   - "@GoogleDeepMind"
   - "@demishassabis"
+  - "@yuichisatoeco"
+  - "@TeksCreate"
 created_at: 2026-05-20
-updated_at: 2026-07-05
+updated_at: 2026-07-12
 closed_at: null
 closed_reason: null
 history:
@@ -64,6 +80,8 @@ history:
     change: "Single-leaker claim: Google DeepMind scrapped reusing the 2.5 Pro base and reset Gemini 3.5 Pro to a full pretrain, pushing the target to a new July 17 date (previously unreported); a follow-on Nano Banana Pro said to be in progress on the new base. Single-source (@synthwavedd, near-verbatim @whoisanku relay is not independent); a cited Polymarket market gives ~48% odds on July 17 — a pricing signal, not corroboration. No Google/DeepMind on-record statement. Status stays confirmed; verification stays confirmed; the retrain/July 17 claim itself flagged unverified."
   - ts: 2026-07-05
     change: "Date rumor fragments further: contradictory claims now circulate in the same window (July 17 vs. a competing July 22 figure vs. a reply denying the model exists at all), plus a separate zero-engagement claim of a 2M-token context window (vs. Claude's 1M), no Google confirmation. Unconfirmed across twelve consecutive digest cycles now with internal contradiction on both date and spec. Status stays confirmed (I/O commitment only); verification stays confirmed; the retrain/date/context-size cluster stays unverified."
+  - ts: 2026-07-12
+    change: "Rumor cluster directly rebutted: a Japanese-language post traces the '2M context / July 17' figures to leak-articles citing each other (not Google's blog), and notes Google's own Vertex AI catalog doesn't list a 'Gemini 3.5 Pro' entry (only 3.1 Pro / 3 Pro Image / 2.5 Pro) — while a same-day account still restates the 2M/July-17 claim as fact. Confirms the unverified flag; no primary Google source has surfaced. Status stays confirmed; verification stays confirmed; retrain/date/context cluster stays unverified."
 ---
 
 At Google I/O 2026, Google revealed the **Gemini 3.5** family. The first

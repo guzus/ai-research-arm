@@ -3,7 +3,7 @@ slug: xiaomi-mimo-code-2026-06
 title: Xiaomi open-sources MiMo Code — coding-focused open-weight LLM
 company: Xiaomi
 model: MiMo Code
-status: released
+status: closed
 status_note: |
   **Xiaomi open-sourced MiMo Code** (surfaced 2026-06-11/12), a **coding-focused
   open-weight LLM**, drawing community debate versus **Qwen** and **DeepSeek**
@@ -22,12 +22,14 @@ verification: partial
 sources:
   - "@HackerNews"
 created_at: 2026-06-12
-updated_at: 2026-06-12
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-12
+closed_at: 2026-07-12
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-12
     change: "Created — Xiaomi open-sourced MiMo Code, a coding-focused open-weight LLM (surfaced 2026-06-11/12, 357 pts on HN), with community debate vs Qwen/DeepSeek coding models. Separate code-specialized line from the general-purpose MiMo v2.5 Pro ([[xiaomi-mimo-v2-5-pro]]). Status released (open weights out); no captured repo/model-card URL in-window → verification partial"
+  - ts: 2026-07-12
+    change: "Closed — released-and-aged. Open weights shipped 2026-06-12; now 30 days past release with no fresh signal since creation and no successor MiMo Code version. Settled into normal coverage. History preserved."
 ---
 
 **Xiaomi open-sourced MiMo Code**, a **coding-focused open-weight LLM**, which
