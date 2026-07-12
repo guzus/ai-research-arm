@@ -32,6 +32,10 @@ DEFAULT_TUBER_API_BASE = "https://tuber-api.guzus.xyz"
 USER_AGENT = "ai-research-arm/1.0 (https://github.com/guzus/ai-research-arm)"
 TIMEOUT_SECONDS = 25
 FORBIDDEN_GENERATION_PATH_PARTS = ("/summarize", "/acp/jobs")
+# Exit code for "every checked source failed and nothing was collected".
+# Distinct from 2 (argument validation) so the workflow/telemetry can tell
+# a total tuber-api outage apart from a bad invocation.
+EXIT_TOTAL_FETCH_FAILURE = 3
 
 PRIORITY_WEIGHT = {"P0": 100, "P1": 70, "P2": 40}
 KIND_WEIGHT = {"channel": 24, "search": 10, "trending": 0}
@@ -700,7 +704,30 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     sources = load_sources(args.registry)
+    out_path = args.out_dir / f"{target_date.isoformat()}.md"
     candidates, fetch_errors = collect_candidates(sources, base_url=args.tuber_api_base)
+
+    # Total signal loss must fail loudly instead of committing a fresh-dated
+    # empty artifact. The freshness watchdog (scripts/check_lane_freshness.py)
+    # is git-recency based, so an empty file dated today looks healthy and
+    # hides a tuber-api outage (2026-07-12: all 10 sources returned HTTP 502
+    # and the lane still went green). collect_candidates checks EVERY registry
+    # source regardless of include_in_digest, and each checked source yields
+    # at most one fetch error, so "all checked sources failed" is exactly
+    # len(fetch_errors) == len(sources). Partial failure (any source
+    # succeeded, or any candidate collected) keeps the current write path.
+    if sources and not candidates and len(fetch_errors) == len(sources):
+        print(
+            f"ERROR: total tuber-api fetch failure: all {len(sources)} checked source(s) "
+            f"failed against {args.tuber_api_base} and 0 candidates were collected; "
+            f"refusing to write {out_path} so the outage stays visible to the "
+            "freshness watchdog instead of resetting its git-recency clock",
+            file=sys.stderr,
+        )
+        for source, error in fetch_errors:
+            print(f"ERROR:   {source.name}: {error}", file=sys.stderr)
+        return EXIT_TOTAL_FETCH_FAILURE
+
     enrich_errors = enrich_candidates(
         candidates,
         base_url=args.tuber_api_base,
@@ -718,7 +745,6 @@ def main(argv: list[str] | None = None) -> int:
         enrich_errors=enrich_errors,
         base_url=args.tuber_api_base,
     )
-    out_path = args.out_dir / f"{target_date.isoformat()}.md"
     write_atomic(out_path, markdown)
     print(
         f"Wrote {out_path} with {len(selected)} selected video(s), "
