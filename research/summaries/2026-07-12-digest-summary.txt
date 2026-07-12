@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-07-12
+
+TOP STORIES:
+• Apple sues OpenAI over alleged trade-secret theft tied to OpenAI's hardware device plans
+• GPT-5.6 Sol Ultra reportedly solves 50-yr-old math problem using 64 subagents; now GA, tops CritPt benchmark
+• Ben Bernanke joins Anthropic's Long-Term Benefit Trust; secondary market implies ~$1.2T valuation
+• SK Hynix raises $26.5B in largest-ever US listing by a foreign company
+
+KEY NUMBERS:
+• GPT-5.6 Sol: 32.3% on CritPt (vs Opus 4.8: 20.9%)
+• Training-data/RL-env market: ~$8.5B revenue, ~$100B valuation across 50+ startups
+• Model tickets: 8 created, 7 updated, 2 closed today
+
+TRENDING: Reverse-engineered look at what xAI's Grok Build CLI sends home (HN #1, 262 pts)
+
+Full digest on GitHub.
