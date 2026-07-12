@@ -89,6 +89,19 @@ class CheckPolymarketTest(unittest.TestCase):
         self.assertFalse(report.ok())
         self.assertTrue(any("market_id" in msg for msg in self.polymarket_failures(report)))
 
+    def test_unquoted_numeric_token_id_fails(self):
+        # token_id is the load-bearing precision field: unquoted, YAML parses
+        # the ~78-digit id as a number (and JS parsers lose precision), so the
+        # validator must reject non-string values outright.
+        block = VALID_MAPPING.replace(
+            'token_id: "48566046548914168443252668519852295704538578584318207505303160546351275413281"',
+            "token_id: 48566046548914168443252668519852295704538578584318207505303160546351275413281",
+        )
+        self.assertNotEqual(block, VALID_MAPPING)  # guard: replacement matched
+        report = self.check(make_ticket(block))
+        self.assertFalse(report.ok())
+        self.assertTrue(any("token_id" in msg for msg in self.polymarket_failures(report)))
+
     def test_more_than_three_mappings_fails(self):
         entry_lines = "\n".join(VALID_MAPPING.splitlines()[1:])  # the "- event_slug: ..." mapping lines
         block = "polymarket:\n" + (entry_lines + "\n") * 4

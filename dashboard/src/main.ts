@@ -31,6 +31,23 @@ import {
   scrollToHashIfPresent,
 } from './ara-enhance';
 
+// Sanitizer-level guarantee: any sanitized anchor keeping target="_blank"
+// MUST carry rel="noopener noreferrer". Sanitized content is adversarial /
+// model-authored (digest/twitter/wiki/ticket markdown flows raw HTML
+// anchors through marked verbatim), and DOMPurify keeps `target` (it's in
+// setSafeContent's ADD_ATTR) without adding any rel — a bare target="_blank"
+// from model output would be a reverse-tabnabbing vector. App-emitted links
+// already set rel="noopener" by hand; they harmlessly gain noreferrer here.
+// Registered ONCE at module init; keys on `target`, so the sandboxed
+// standalone-doc iframe path (no target attr) is untouched. Covers every
+// sanitize call site: setSafeContent, setSafeWikiContent, and the bare
+// ticket-body sanitize.
+DOMPurify.addHook('afterSanitizeAttributes', (node) => {
+  if (node instanceof Element && node.getAttribute('target') === '_blank') {
+    node.setAttribute('rel', 'noopener noreferrer');
+  }
+});
+
 const DATA_BASE: string = import.meta.env.BASE_URL + 'research';
 
 // Audio files live in S3 (s3.guzus.xyz), not in research/audio/. The mp3s in
@@ -2777,8 +2794,11 @@ async function pollOddsMidpoints(): Promise<void> {
     const mid = Number((data as { mid?: unknown } | null)?.mid);
     if (!Number.isFinite(mid) || mid < 0 || mid > 1) return; // closed/error bodies land here
     polymarketMidpointPrices.set(tokenId, mid);
+    // CSS.escape: token ids are digit strings in practice, but the validator
+    // only requires a non-empty string — a hostile-but-legal value must not
+    // throw a selector SyntaxError inside the poll loop.
     for (const chip of content.querySelectorAll<HTMLElement>(
-      `.ticket-odds-chip[data-odds-token="${tokenId}"]`,
+      `.ticket-odds-chip[data-odds-token="${CSS.escape(tokenId)}"]`,
     )) {
       applyOddsToChip(chip, mid, false);
     }
