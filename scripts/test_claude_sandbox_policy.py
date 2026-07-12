@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -37,9 +38,69 @@ class ClaudeSandboxPolicyTests(unittest.TestCase):
         permissions = self.settings["permissions"]["deny"]
 
         self.assertIn("Read(//run/**)", permissions)
-        # Keep the lexical alias denied for the Read tool even though bwrap
-        # must only receive the canonical /run mount destination.
-        self.assertIn("Read(//var/run/**)", permissions)
+        # Claude merges Read(...) denies into the Bash sandbox's denyRead
+        # paths. Keeping the lexical alias here therefore recreates the broken
+        # `bwrap --tmpfs /var/run` mount even when sandbox.filesystem.denyRead
+        # correctly uses /run.
+        aliases = [
+            rule
+            for rule in permissions
+            if rule.startswith(("Read(//var/run", "Edit(//var/run"))
+        ]
+        self.assertEqual([], aliases)
+
+        if sys.platform.startswith("linux"):
+            noncanonical_paths = []
+            for rule in permissions:
+                match = re.fullmatch(r"(?:Read|Edit)\(//(.+?)(?:/\*\*)?\)", rule)
+                if not match:
+                    continue
+                path = Path("/" + match.group(1))
+                if path.exists() and path.absolute() != path.resolve():
+                    noncanonical_paths.append((rule, str(path.resolve())))
+            self.assertEqual(
+                [],
+                noncanonical_paths,
+                "absolute Read/Edit denies merged into bwrap must be canonical",
+            )
+
+    def test_read_tool_can_access_workspace_under_home(self) -> None:
+        permissions = self.settings["permissions"]["deny"]
+
+        # GitHub checks out the repository below /home/guzus. Permission deny
+        # rules take precedence, so Read(~/**) blocks the workspace even though
+        # sandbox.filesystem.allowRead contains "." (that carve-out applies to
+        # sandboxed subprocesses, not to the independent Read tool).
+        self.assertNotIn("Read(~/**)", permissions)
+
+        # Preserve direct-tool protection for the credential directories the
+        # Bash sandbox masks instead of denying the runner's whole home tree.
+        for path in (".aws", ".config/gh", ".docker", ".ssh", ".claude"):
+            self.assertIn(f"Read(~/{path}/**)", permissions)
+        self.assertIn("Read(~/.claude.json)", permissions)
+
+    def test_git_remote_token_is_not_readable_via_file_tool(self) -> None:
+        permissions = self.settings["permissions"]["deny"]
+        allow_read = self.settings["sandbox"]["filesystem"]["allowRead"]
+
+        # claude-code-action temporarily stores its GitHub credential in the
+        # checkout's remote URL. Deny direct Read access, while the exact
+        # sandbox allowRead carve-out keeps permitted Bash(git:*) operations
+        # able to read the repository config.
+        self.assertIn("Read(./.git/config)", permissions)
+        self.assertIn(".git/config", allow_read)
+
+    def test_sandbox_masks_agent_credentials(self) -> None:
+        credentials = self.settings["sandbox"]["credentials"]
+        denied_files = {
+            item["path"] for item in credentials["files"] if item["mode"] == "deny"
+        }
+        denied_env = {
+            item["name"] for item in credentials["envVars"] if item["mode"] == "deny"
+        }
+
+        self.assertTrue({"~/.claude", "~/.claude.json"} <= denied_files)
+        self.assertTrue({"GITHUB_TOKEN", "GH_TOKEN"} <= denied_env)
 
     def test_research_tree_has_no_committed_diagnostic_dotfiles(self) -> None:
         allowed = {".gitignore", ".gitkeep"}

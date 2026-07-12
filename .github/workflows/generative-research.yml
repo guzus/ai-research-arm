@@ -3643,6 +3643,29 @@ jobs:
           echo "Codex outcome: ${{ steps.gen-codex.outcome }}"
           exit 1
 
+      # claude-code-action reports success when the model session completes,
+      # even if every tool call failed and the writer produced no commit. Keep
+      # the workflow contract tied to the article artifact, not session exit.
+      - name: Fail Claude run without article
+        if: always() && steps.effective.outputs.backend == 'claude' && steps.outfile.outputs.has_file != 'true'
+        env:
+          EXECUTION_FILE_1: ${{ steps.gen-claude.outputs.execution_file }}
+          EXECUTION_FILE_2: ${{ steps.gen-claude-retry.outputs.execution_file }}
+          OUTCOME_1: ${{ steps.gen-claude.outcome }}
+          OUTCOME_2: ${{ steps.gen-claude-retry.outcome }}
+        run: |
+          echo "::error::Claude backend did not produce an article."
+          echo "Attempt 1 outcome: ${OUTCOME_1:-skipped}"
+          echo "Retry 1 outcome: ${OUTCOME_2:-skipped}"
+          for execution_file in "$EXECUTION_FILE_2" "$EXECUTION_FILE_1"; do
+            if [ -n "${execution_file:-}" ] && [ -f "$execution_file" ]; then
+              uv run python scripts/summarize_claude_execution.py "$execution_file" \
+                --github-annotation error
+              break
+            fi
+          done
+          exit 1
+
       # Only fires when the EFFECTIVE backend was a Fireworks profile —
       # i.e. preflight passed but the Fireworks agent produced nothing.
       # A run that already fell back to Claude follows the Claude lane's
