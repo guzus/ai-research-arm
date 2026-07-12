@@ -4,10 +4,11 @@ title: OpenAI GPT-5.6
 type: entity
 aliases: ["GPT-5.6", "GPT 5.6", "GPT-5.6 Pro", "GPT-5.6 Mini", "GPT-5.6 Sol", "GPT-5.6 Terra", "GPT-5.6 Luna", "Sol", "Terra", "Luna"]
 tags: [model-release, openai, gpt, frontier-model, government-gated, preview]
-description: OpenAI frontier family shipped 2026-06-26 as a US-government-gated limited preview — Sol (flagship) / Terra (balanced) / Luna (fast/cheap), with new "max" and "ultra" (subagent-spawning) reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
+description: OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%, reportedly solving a 50-year-old math problem with 64 subagents.
 created_at: 2026-06-20
-timestamp: 2026-07-05T00:00:00Z
+timestamp: 2026-07-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
@@ -78,6 +79,22 @@ gated external preview); GA is "in the coming weeks."
   sightings reinforce the rumored **July 7 ("Tuesday")** launch date — still
   unconfirmed as an official date; no OpenAI statement or system card has
   landed (ARA digest 2026-07-05).
+
+- **Sol Ultra goes GA; a 50-year-old math proof and CritPt benchmark lead
+  (2026-07-12).** OpenAI's own account confirmed **GPT-5.6 Sol Ultra went
+  generally available on 2026-07-10**, and Sam Altman said GPT-5.6 is now
+  "the preferred model in Microsoft 365 Copilot" — dozens of independent
+  users report hitting rate limits, consistent with broad rollout beyond
+  the earlier ~20-org gated preview. Sol Ultra reportedly used **64
+  subagents** to produce a novel proof for a 50-year-old open math problem
+  in under an hour, and now **leads the CritPt physics-reasoning benchmark
+  at 32.3%** — ahead of GPT-5.5 Pro (30.6%) and GPT-5.6 Terra (30.0%), with
+  Gemini 3 Pro Deep Think at 25.7% and Claude Opus 4.8 at 20.9%, giving
+  OpenAI all top-5 spots. Separately, **GPT-5.6 Luna** reportedly hit
+  "model at capacity" errors for some users shortly after rollout — early
+  capacity-scaling friction, not independently confirmed. *The CritPt
+  ranking traces to a single secondary-source tweet, not a verified
+  leaderboard* (ARA digest 2026-07-12).
 
 ## Open questions
 

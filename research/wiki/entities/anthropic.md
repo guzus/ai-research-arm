@@ -4,10 +4,12 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); appointed Ben Bernanke to its Long-Term Benefit Trust the same cycle.
 created_at: 2026-05-24
-timestamp: 2026-07-05T00:00:00Z
+timestamp: 2026-07-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
+  - {title: "ARA model ticket — Anthropic Bernanke LTBT appointment", path: research/models/tickets/anthropic-bernanke-ltbt-2026-07.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
@@ -569,6 +571,18 @@ Four developments through May 2026 put Anthropic at the center of the field:
   reverse-engineering, not confirmed fact — the underlying [[alibaba|Alibaba]]
   ban and the mechanism-level timeline recorded above stand independently of
   this embellishment. See [[alibaba]] (ARA digest 2026-07-05).
+
+- **Ben Bernanke joins the Long-Term Benefit Trust; valuation chatter tops
+  $1T (2026-07-12).** Anthropic's own account confirmed its **Long-Term
+  Benefit Trust** — the independent governance body overseeing the
+  company's mission-alignment structure — has appointed former Federal
+  Reserve Chair **Dr. Ben Bernanke** as its newest member, a governance move
+  alongside the [[john-jumper]] and [[jelani-nelson]] talent hires. Separately,
+  secondary-market chatter now puts Anthropic's **implied valuation at
+  ~$1.2T**, above [[openai]]'s reported ~$908B and above the official
+  $965B Series H print — a second, independent account consistent with the
+  first, but neither is a primary financial-press source; treat as
+  directionally credible, not confirmed (ARA digest 2026-07-12).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

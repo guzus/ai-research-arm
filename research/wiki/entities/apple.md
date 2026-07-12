@@ -4,10 +4,12 @@ title: Apple
 type: entity
 aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC]
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
-description: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08).
+description: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft.
 created_at: 2026-06-08
-timestamp: 2026-06-10T00:00:00Z
+timestamp: 2026-07-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
+  - {title: "ARA model ticket — Apple v. OpenAI lawsuit", path: research/models/tickets/apple-openai-lawsuit-2026-07.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA model ticket — Apple WWDC 2026 Siri", path: research/models/tickets/apple-wwdc-2026-siri.md}
@@ -76,6 +78,20 @@ architecture is single-/multi-source reporting and the 2026-06-08 keynote (which
 lands after the digest's generation time) will confirm or contradict the
 distilled-Gemini + cloud-routing detail. Treat every figure above as reported,
 not announced.
+
+- **Apple sues OpenAI over alleged hardware trade-secret theft (2026-07-12).**
+  Apple filed suit against **[[openai]]** alleging a systematic campaign to
+  steal trade secrets to build out OpenAI's rumored hardware device (a
+  camera-equipped smart speaker), naming former Apple employee **Chang Liu**
+  and OpenAI's Chief Hardware Officer **Tang Tan** as central figures. Two
+  independent high-authority sources (Andrew Curran citing Bloomberg; The
+  Information) report matching specifics; OpenAI publicly disputed the
+  claim. Apple may seek restrictions on disputed designs, manufacturing, and
+  suppliers, and OpenAI's device launch could now slip to no earlier than
+  February 2027 pending the dispute — a major-platform-vs-frontier-lab legal
+  action that puts Apple on the offensive against a company it also
+  distributes through the reported "Extensions" layer above (ARA digest
+  2026-07-12).
 
 ## Open questions
 

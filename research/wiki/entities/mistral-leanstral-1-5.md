@@ -42,3 +42,9 @@ previously-unknown bugs** while scanning 57 open-source repositories.
 - **Adoption.** Does Leanstral 1.5 see uptake inside formal-methods research
   groups or safety-critical software teams, or does it stay a benchmark
   curiosity?
+
+## Related
+
+- [[mistral-robostral-navigate]] — Mistral's first embodied-navigation
+  model (2026-07-08), a distinct product line from this formal-verification
+  release.
