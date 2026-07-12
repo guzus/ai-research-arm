@@ -4,10 +4,12 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M) — and by Grok 4.5, a from-scratch 1.5T "V9" model in private beta at SpaceX/Tesla claiming Opus-level performance.
+description: Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T "V9" model that ended its private beta and shipped free to all X accounts on 2026-07-10.
 created_at: 2026-06-08
-timestamp: 2026-06-29T00:00:00Z
+timestamp: 2026-07-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
+  - {title: "ARA model ticket — Grok V9-Medium / Grok 4.5", path: research/models/tickets/grok-v9-medium.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-08", path: research/digest/2026-06-08-digest.md}
   - {title: "ARA model ticket — Grok V9-Medium", path: research/models/tickets/grok-v9-medium.md}
@@ -62,6 +64,17 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   [[gpt-5-6|GPT-5.6 Sol]] and [[claude-fable-5|Claude Mythos 5]] are
   government-gated — would expose an asymmetry in the de facto US frontier-model
   licensing regime (ARA digest 2026-06-29).
+
+- **Grok 4.5 ends its private beta, ships free to all X accounts
+  (2026-07-12).** xAI shipped **Grok 4.5** (the same 1.5T "V9" foundation
+  tracked above) free to all X accounts via the Grok Build surface,
+  ending the private-beta gate at SpaceX/Tesla. Elon Musk posted a
+  "Grok 4.5 Review" (2026-07-11); testingcatalog independently confirmed
+  availability to free X accounts (2026-07-10), corroborated by WesRoth
+  and a ~44K-post trending topic. This is the first public availability
+  for the V9 foundation — clearing the bar this ticket had been tracking
+  as `confirmed` (private beta only) since 2026-06-28 (ARA digest
+  2026-07-12).
 
 ## Open questions
 

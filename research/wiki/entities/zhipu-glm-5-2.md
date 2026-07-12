@@ -155,6 +155,14 @@ max/high "thinking" modes.
   debunked on 2026-06-29 above; treat with the same skepticism until a
   neutral third party replicates it (ARA digest 2026-07-05).
 
+- **Reportedly surpassed on MCP-Atlas by Tencent Hy3 (2026-07-12).**
+  [[tencent-hunyuan-hy3]], Tencent Hunyuan's 295B open-weight MoE (Apache
+  2.0), is reported as the new open-weights SOTA on the **MCP-Atlas**
+  benchmark, ahead of GLM-5.2 — another data point in the crowded, fast-
+  moving China open-weight leaderboard race. Three independent secondary
+  sources agree on the claim; no official Tencent primary yet captured
+  (ARA digest 2026-07-12).
+
 ## Open questions
 
 - **Weights actually landing.** The decisive transition is public MIT weights

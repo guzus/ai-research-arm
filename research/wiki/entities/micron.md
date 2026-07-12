@@ -6,18 +6,25 @@ aliases: [Micron, "Micron Technology", MU, "@MicronTech"]
 tags: [memory, hbm, dram, ai-infrastructure, supply-chain, anthropic]
 description: US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round.
 created_at: 2026-06-23
-timestamp: 2026-06-23T00:00:00Z
+timestamp: 2026-07-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "Micron and Anthropic announce strategic agreement", url: "https://investors.micron.com/news-releases/news-release-details/micron-and-anthropic-announce-strategic-agreement-scale-next", date: 2026-06-23}
   - {title: "Anthropic and Micron want to co-design AI memory architecture (The Decoder)", url: "https://the-decoder.com/anthropic-and-micron-want-to-co-design-ai-memory-architecture/", date: 2026-06-23}
 ---
 
 Micron Technology is a US-based memory manufacturer — high-bandwidth memory (HBM),
-DRAM, and SSDs — and one of the three global HBM suppliers (with SK Hynix and
+DRAM, and SSDs — and one of the three global HBM suppliers (with [[sk-hynix|SK Hynix]] and
 Samsung) whose capacity gates frontier-AI training and inference. It entered the
 wiki on **2026-06-23** as the counterparty to the first named Anthropic Series H
 participant data point.
+
+**Update (2026-07-12).** [[sk-hynix|SK Hynix]] — the other major HBM
+supplier feeding Nvidia's AI accelerators — raised **$26.5B via a Nasdaq
+listing**, the largest US share sale ever by a foreign company, a fresh
+data point on the HBM/memory capacity crunch this page and [[ai-capex]]
+both track (ARA digest 2026-07-12).
 
 ## Why it matters
 

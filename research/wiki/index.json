@@ -156,6 +156,7 @@
         "openrouter",
         "prometheus",
         "remote-labor-index",
+        "sk-hynix",
         "spacex",
         "xai"
       ],
@@ -254,11 +255,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
-      "description": "AI safety company and frontier lab behind the Claude model family; shipped its first public Mythos-class model (Fable 5 / Mythos 5) on 2026-06-09 and closed a $65B Series H at $965B post-money on 2026-05-28 — first time eclipsing OpenAI on private valuation — with an October 2026 IPO target; in late June accused Alibaba of the largest documented adversarial distillation attack on Claude.",
+      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); appointed Ben Bernanke to its Long-Term Benefit Trust the same cycle.",
+      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); appointed Ben Bernanke to its Long-Term Benefit Trust the same cycle.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-05",
-      "timestamp": "2026-07-05T00:00:00Z",
+      "updated_at": "2026-07-12",
+      "timestamp": "2026-07-12T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -349,11 +350,11 @@
         "siri",
         "wwdc"
       ],
-      "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08).",
-      "description": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08).",
+      "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft.",
+      "description": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-06-10",
-      "timestamp": "2026-06-10T00:00:00Z",
+      "updated_at": "2026-07-12",
+      "timestamp": "2026-07-12T00:00:00Z",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -823,6 +824,7 @@
         "open-weights",
         "prometheus",
         "spacex",
+        "tencent-hunyuan-hy3",
         "zhipu-glm-5-2"
       ]
     },
@@ -1029,6 +1031,7 @@
       "inbound": [
         "ai-capex",
         "artificial-general-engineer",
+        "mistral-robostral-navigate",
         "prometheus"
       ]
     },
@@ -1156,11 +1159,11 @@
         "government-gated",
         "preview"
       ],
-      "summary": "OpenAI frontier family shipped 2026-06-26 as a US-government-gated limited preview — Sol (flagship) / Terra (balanced) / Luna (fast/cheap), with new \"max\" and \"ultra\" (subagent-spawning) reasoning modes and a Terminal-Bench 2.1 SOTA; GA \"in the coming weeks.\"",
-      "description": "OpenAI frontier family shipped 2026-06-26 as a US-government-gated limited preview — Sol (flagship) / Terra (balanced) / Luna (fast/cheap), with new \"max\" and \"ultra\" (subagent-spawning) reasoning modes and a Terminal-Bench 2.1 SOTA; GA \"in the coming weeks.\"",
+      "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%, reportedly solving a 50-year-old math problem with 64 subagents.",
+      "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%, reportedly solving a 50-year-old math problem with 64 subagents.",
       "created_at": "2026-06-20",
-      "updated_at": "2026-07-05",
-      "timestamp": "2026-07-05T00:00:00Z",
+      "updated_at": "2026-07-12",
+      "timestamp": "2026-07-12T00:00:00Z",
       "file": "entities/gpt-5-6.md",
       "aliases": [
         "GPT-5.6",
@@ -1413,8 +1416,8 @@
       "summary": "US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round.",
       "description": "US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round.",
       "created_at": "2026-06-23",
-      "updated_at": "2026-06-23",
-      "timestamp": "2026-06-23T00:00:00Z",
+      "updated_at": "2026-07-12",
+      "timestamp": "2026-07-12T00:00:00Z",
       "file": "entities/micron.md",
       "aliases": [
         "Micron",
@@ -1428,10 +1431,12 @@
         "broadcom",
         "claude-fable-5",
         "openai",
-        "sakana-ai"
+        "sakana-ai",
+        "sk-hynix"
       ],
       "inbound": [
-        "anthropic"
+        "anthropic",
+        "sk-hynix"
       ]
     },
     {
@@ -1546,6 +1551,7 @@
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openrouter",
+        "tencent-hunyuan-hy3",
         "zhipu-glm-5-2"
       ]
     },
@@ -1571,9 +1577,42 @@
         "Leanstral"
       ],
       "outbound": [
+        "mistral-robostral-navigate",
         "open-weights"
       ],
-      "inbound": []
+      "inbound": [
+        "mistral-robostral-navigate"
+      ]
+    },
+    {
+      "slug": "mistral-robostral-navigate",
+      "title": "Mistral Robostral Navigate",
+      "type": "entity",
+      "tags": [
+        "robotics",
+        "mistral",
+        "embodied-ai",
+        "model-release"
+      ],
+      "summary": "Mistral AI's first embodied-navigation model — an 8B-parameter model that guides robots to autonomously perform natural-language-specified tasks, announced 2026-07-08.",
+      "description": "Mistral AI's first embodied-navigation model — an 8B-parameter model that guides robots to autonomously perform natural-language-specified tasks, announced 2026-07-08.",
+      "created_at": "2026-07-12",
+      "updated_at": "2026-07-12",
+      "timestamp": "2026-07-12T00:00:00Z",
+      "file": "entities/mistral-robostral-navigate.md",
+      "aliases": [
+        "Robostral Navigate",
+        "Robostral"
+      ],
+      "outbound": [
+        "figure-ai",
+        "mistral-leanstral-1-5",
+        "tencent-hunyuan-hy3"
+      ],
+      "inbound": [
+        "mistral-leanstral-1-5",
+        "tencent-hunyuan-hy3"
+      ]
     },
     {
       "slug": "moonshot-kimi-k2-7-code",
@@ -1807,6 +1846,7 @@
         "meta",
         "microsoft",
         "open-weights",
+        "sk-hynix",
         "xiaomi-mimo-v2-5-pro"
       ],
       "images": [
@@ -1885,6 +1925,7 @@
         "nano-banana-2-lite",
         "openrouter",
         "sakana-ai",
+        "tencent-hunyuan-hy3",
         "xiaomi-mimo-v2-5-pro",
         "zhipu-glm-5-2"
       ]
@@ -1899,11 +1940,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
-      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first \"super app\" (\"chat is dead\").",
+      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) as GPT-5.6 Sol Ultra leads the CritPt physics benchmark.",
+      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) as GPT-5.6 Sol Ultra leads the CritPt physics benchmark.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-07-04",
-      "timestamp": "2026-07-04T00:00:00Z",
+      "updated_at": "2026-07-12",
+      "timestamp": "2026-07-12T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -2143,6 +2184,37 @@
       ]
     },
     {
+      "slug": "sk-hynix",
+      "title": "SK Hynix",
+      "type": "entity",
+      "tags": [
+        "hbm",
+        "memory",
+        "semiconductors",
+        "ipo",
+        "ai-infrastructure"
+      ],
+      "summary": "South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company.",
+      "description": "South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company.",
+      "created_at": "2026-07-12",
+      "updated_at": "2026-07-12",
+      "timestamp": "2026-07-12T00:00:00Z",
+      "file": "entities/sk-hynix.md",
+      "aliases": [
+        "SK hynix",
+        "SK Hynix Inc.",
+        "SKHynix"
+      ],
+      "outbound": [
+        "ai-capex",
+        "micron",
+        "nvidia"
+      ],
+      "inbound": [
+        "micron"
+      ]
+    },
+    {
       "slug": "sk-telecom",
       "title": "SK Telecom",
       "type": "entity",
@@ -2234,6 +2306,39 @@
       ]
     },
     {
+      "slug": "tencent-hunyuan-hy3",
+      "title": "Tencent Hunyuan Hy3",
+      "type": "entity",
+      "tags": [
+        "open-weight",
+        "china",
+        "tencent",
+        "model-release"
+      ],
+      "summary": "Tencent Hunyuan's 295B-parameter open-weight MoE model under Apache 2.0, reported new open SOTA on the MCP-Atlas benchmark, released 2026-07-06.",
+      "description": "Tencent Hunyuan's 295B-parameter open-weight MoE model under Apache 2.0, reported new open SOTA on the MCP-Atlas benchmark, released 2026-07-06.",
+      "created_at": "2026-07-12",
+      "updated_at": "2026-07-12",
+      "timestamp": "2026-07-12T00:00:00Z",
+      "file": "entities/tencent-hunyuan-hy3.md",
+      "aliases": [
+        "Hunyuan Hy3",
+        "Hy3",
+        "Tencent Hy3"
+      ],
+      "outbound": [
+        "deepseek",
+        "minimax-m3",
+        "mistral-robostral-navigate",
+        "open-weights",
+        "zhipu-glm-5-2"
+      ],
+      "inbound": [
+        "mistral-robostral-navigate",
+        "zhipu-glm-5-2"
+      ]
+    },
+    {
       "slug": "xai",
       "title": "xAI",
       "type": "entity",
@@ -2244,11 +2349,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M) — and by Grok 4.5, a from-scratch 1.5T \"V9\" model in private beta at SpaceX/Tesla claiming Opus-level performance.",
-      "description": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month (Anthropic ~$1.25B, Google ~$920M) — and by Grok 4.5, a from-scratch 1.5T \"V9\" model in private beta at SpaceX/Tesla claiming Opus-level performance.",
+      "summary": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T \"V9\" model that ended its private beta and shipped free to all X accounts on 2026-07-10.",
+      "description": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T \"V9\" model that ended its private beta and shipped free to all X accounts on 2026-07-10.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-06-29",
-      "timestamp": "2026-06-29T00:00:00Z",
+      "updated_at": "2026-07-12",
+      "timestamp": "2026-07-12T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -2341,6 +2446,7 @@
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openrouter",
+        "tencent-hunyuan-hy3",
         "xiaomi-mimo-v2-5-pro"
       ],
       "inbound": [
@@ -2351,7 +2457,8 @@
         "meituan-longcat-2",
         "moonshot-kimi-k2-7-code",
         "open-weights",
-        "openrouter"
+        "openrouter",
+        "tencent-hunyuan-hy3"
       ]
     }
   ],
@@ -2497,6 +2604,8 @@
     "grok": "xai",
     "helix": "figure-ai",
     "helix-02": "figure-ai",
+    "hunyuan hy3": "tencent-hunyuan-hy3",
+    "hy3": "tencent-hunyuan-hy3",
     "industrial ai": "artificial-general-engineer",
     "jelani nelson": "jelani-nelson",
     "jelani-nelson": "jelani-nelson",
@@ -2548,6 +2657,7 @@
     "minimax m3": "minimax-m3",
     "minimax-m3": "minimax-m3",
     "mistral-leanstral-1-5": "mistral-leanstral-1-5",
+    "mistral-robostral-navigate": "mistral-robostral-navigate",
     "moonshot ai kimi k2.7 code": "moonshot-kimi-k2-7-code",
     "moonshot kimi k2.7 code": "moonshot-kimi-k2-7-code",
     "moonshot-kimi-k2-7-code": "moonshot-kimi-k2-7-code",
@@ -2593,6 +2703,8 @@
     "remote labor index": "remote-labor-index",
     "remote-labor-index": "remote-labor-index",
     "rli": "remote-labor-index",
+    "robostral": "mistral-robostral-navigate",
+    "robostral navigate": "mistral-robostral-navigate",
     "sacramento ai policy": "california-ai-regulation",
     "sakana": "sakana-ai",
     "sakana ai": "sakana-ai",
@@ -2604,10 +2716,14 @@
     "scale rli": "remote-labor-index",
     "shazeer": "noam-shazeer",
     "siri": "apple",
+    "sk hynix": "sk-hynix",
+    "sk hynix inc.": "sk-hynix",
     "sk telecom": "sk-telecom",
     "sk telecom co.": "sk-telecom",
     "sk telecom co., ltd.": "sk-telecom",
+    "sk-hynix": "sk-hynix",
     "sk-telecom": "sk-telecom",
+    "skhynix": "sk-hynix",
     "skt": "sk-telecom",
     "sohu": "etched",
     "sol": "gpt-5-6",
@@ -2618,6 +2734,8 @@
     "spark agent": "gemini-spark",
     "spcx": "spacex",
     "starlink": "spacex",
+    "tencent hy3": "tencent-hunyuan-hy3",
+    "tencent-hunyuan-hy3": "tencent-hunyuan-hy3",
     "terra": "gpt-5-6",
     "trump ai executive order": "federal-ai-policy",
     "x.ai": "xai",
@@ -2633,6 +2751,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-07-12",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-12 digest (Apple sues OpenAI over alleged hardware trade-secret theft; GPT-5.6 Sol Ultra goes GA and leads the CritPt physics benchmark at 32.3% after reportedly solving a 50-year-old math problem with 64 subagents; Ben Bernanke joins Anthropic's Long-Term Benefit Trust as secondary-market chatter puts its valuation at ~$1.2T; SK Hynix raises $26.5B in the largest US foreign share sale on record; Tencent Hunyuan Hy3 and Mistral Robostral Navigate ship as same-day open-weight/embodied releases; Grok 4.5 ends its private beta and ships free to all X accounts). Created 3 (sk-hynix entity — HBM supplier, $26.5B Nasdaq IPO; tencent-hunyuan-hy3 entity — 295B open-weight MoE under Apache 2.0, reported MCP-Atlas SOTA; mistral-robostral-navigate entity — Mistral's first embodied-navigation model), updated 5 (openai — Apple lawsuit + Sol Ultra GA/CritPt benchmark lead; apple — sues OpenAI over hardware trade secrets; anthropic — Bernanke joins LTBT + ~$1.2T secondary-market valuation chatter; gpt-5-6 — Sol Ultra GA, 64-subagent math proof, CritPt 32.3% lead, Luna capacity errors; xai — Grok 4.5 ends private beta, ships free to all X accounts)."
+    },
     {
       "date": "2026-07-05",
       "op": "ingest",
@@ -2727,11 +2850,6 @@
       "date": "2026-06-12",
       "op": "ingest",
       "summary": "Ingested 2026-06-12 digest. Created 2 (prometheus entity — Bezos $12B Series B at ~$41B, industrial AI's first megaround; artificial-general-engineer concept — AI-for-manufacturing thesis). Updated 6 (spacex — SPCX Nasdaq debut live at $135/~$1.77T; openai — Ona acquisition for Codex runtime + API price-cut war vs Anthropic + BBVA 100k seats; anthropic — invisible-guardrails reversal/apology + price-war pressure; claude-fable-5 — covert-throttle safeguard reversed + Endor \"mid-tier coding\"/Willison \"relentlessly proactive\"; agentic-ai-security — DeepMind $10M multi-agent fund + Fable guardrails reversal + German AI-Overviews liability + autonomous-drone lethality + Claw Patrol firewall; ai-capex — Prometheus industrial-AI megaround + SpaceX debut + OpenAI-Anthropic price war)."
-    },
-    {
-      "date": "2026-06-10",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-10 digest (Claude Fable 5 / Mythos 5 launch day). Created 1 entity (claude-fable-5 — first public Mythos-class model: safeguarded GA Fable 5 reroutes high-risk queries to Opus 4.8, restricted unsafeguarded Mythos 5; ~2× Opus pricing, June 22 trial cliff, 88.4% misalignment-exploit eval). Updated 7 (anthropic — Fable 5 ship resolves the Mythos arc + Google ~$35B TPU-lease guarantee + $47B run-rate + intl AI-watchdog call; claude-opus-4-8 — now the Fable 5 safeguard-reroute floor, successor-sequencing resolved; agentic-ai-security — Mythos 5 88.4% exploit eval + guardrail overreach + Microsoft AI-dev supply-chain hack; gemini-3-5-flash — Gemini 3.5 Live Translate same-day counter-programming; openai — silence on Fable 5 day, GPT-5.6 watch + ~$1.5T IPO filing + Aria superapp + AI-watchdog; ai-capex — Google $35B Broadcom/TPU lease-guarantee stack + semis rotation continued; apple — AFM 3 / CoreAI on-device stack + Siri AI pulled from EU after DMA exemption denial)."
     }
   ]
 }

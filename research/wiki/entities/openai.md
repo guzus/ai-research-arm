@@ -4,10 +4,12 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); ChatGPT crossed 600M MAU as OpenAI pivots to an agent-first "super app" ("chat is dead").
+description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) as GPT-5.6 Sol Ultra leads the CritPt physics benchmark.
 created_at: 2026-05-30
-timestamp: 2026-07-04T00:00:00Z
+timestamp: 2026-07-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
+  - {title: "ARA model ticket — Apple v. OpenAI lawsuit", path: research/models/tickets/apple-openai-lawsuit-2026-07.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
@@ -379,6 +381,26 @@ materially reshape how the lab is positioned heading into its IPO window:
   **no on-record confirmation or denial** from OpenAI or the White House; the
   proposal remains preliminary/non-binding and would likely need Congressional
   action. See [[federal-ai-policy]] (ARA digest 2026-07-04).
+
+- **Apple sues OpenAI over alleged hardware trade-secret theft (2026-07-12).**
+  [[apple]] filed suit alleging a systematic campaign to steal trade secrets
+  to build OpenAI's rumored hardware device, naming former Apple employee
+  **Chang Liu** and OpenAI's **Chief Hardware Officer Tang Tan**. Two
+  independent high-authority sources (Andrew Curran citing Bloomberg; The
+  Information) report matching specifics; OpenAI publicly disputed the claim
+  ("no interest in other companies' trade secrets"). The device's launch
+  could now slip to no earlier than February 2027 pending the dispute — the
+  most significant legal action yet tied directly to OpenAI's hardware
+  roadmap (ARA digest 2026-07-12).
+- **GPT-5.6 Sol Ultra: a 50-year-old math proof and a physics-benchmark lead
+  (2026-07-12).** Building on the 2026-07-10 GA announced above,
+  **[[gpt-5-6|GPT-5.6 Sol Ultra]]** reportedly used **64 subagents** to
+  produce a novel proof for a 50-year-old open math problem in under an
+  hour, and now **leads the CritPt physics-reasoning benchmark at 32.3%**
+  — ahead of GPT-5.5 Pro (30.6%) and GPT-5.6 Terra (30.0%), with Gemini 3
+  Pro Deep Think at 25.7% and Claude Opus 4.8 at 20.9%, giving OpenAI all
+  top-5 spots. *Reported via a single secondary-source tweet chain, not an
+  independently verified leaderboard* (ARA digest 2026-07-12).
 
 ## Open questions
 
