@@ -12,7 +12,16 @@ status_note: |
   the fate of Manus's team/tech in-window are not detailed. Reads as another
   data point in cross-border AI-deal friction (cf. the China outbound-deal
   rules tracked on [[china-outbound-deal-rules-2026-06]]).
-expected: "Unwind in progress; mechanism, timeline, and disposition of Manus assets TBD"
+
+  **2026-07-12:** First reported disposition of the unwound stake. WesRoth
+  relays that **Tencent is reportedly in talks to become the largest
+  shareholder** in Manus after the Beijing-ordered unwind, alongside original
+  investors **ZhenFund** and **HSG**, discussing buying Manus back from Meta.
+  Single account, "reportedly" framing, specific named investors suggest it
+  relays a primary report not directly captured here; no second independent
+  source found in-window. Status stays `confirmed` (the unwind itself remains
+  fact); `verification` stays `partial`.
+expected: "Unwind in progress; 2026-07-12: Tencent + original investors (ZhenFund, HSG) reportedly in talks to buy Manus back from Meta and become its largest shareholder — single-source, unconfirmed disposition"
 labels:
   - regulatory
   - m-and-a
@@ -22,13 +31,16 @@ labels:
 verification: partial
 sources:
   - https://techcrunch.com/2026/06/13/meta-reportedly-moves-to-unwind-2b-manus-deal-after-beijings-demand/
+  - "@WesRoth"
 created_at: 2026-06-14
-updated_at: 2026-06-14
+updated_at: 2026-07-12
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-14
     change: "Created — Meta reportedly moves to unwind its ~$2B Manus acquisition after Beijing ordered the deal reversed (TechCrunch, 2026-06-14). A geopolitical M&A reversal: Chinese authorities demanded the transaction be undone and Meta has begun dismantling it; terms/mechanism/asset disposition undisclosed in-window. Single-outlet but specific and from a tier-1 tech outlet → status confirmed (the unwind is reported as fact), verification partial (no primary Meta/Manus/regulator statement captured). Connects to the cross-border AI-deal-friction theme on [[china-outbound-deal-rules-2026-06]]"
+  - ts: 2026-07-12
+    change: "First reported disposition: Tencent reportedly in talks to become Manus's largest shareholder, alongside original investors ZhenFund and HSG, discussing buying it back from Meta (@WesRoth, 'reportedly,' single account with specific named investors). No second independent source found. Status stays confirmed; verification stays partial."
 ---
 
 **Meta has reportedly begun unwinding its ~$2 billion acquisition of

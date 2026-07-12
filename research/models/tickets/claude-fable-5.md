@@ -128,7 +128,18 @@ status_note: |
   confirms adopting the specific 0-4 delineations rather than just the
   general collaborative effort already announced July 1. Status stays
   `released`; verification stays `confirmed`.
-expected: "BACK ONLINE GLOBALLY (2026-07-02): export controls lifted, Fable 5 restored worldwide as a general re-release, metered (≤50% of weekly usage limits through July 7, then usage credits; @ClaudeDevs reset all rate limits on relaunch); tightened cyber + bio/chem classifiers, small fraction of routine coding still routed to Opus 4.8; tops Scale AI + CAIS Remote Labor Index at 16.10% (ahead of Opus 4.8 / Codex GPT-5.5). Next watch: July 7 shift from the 50%-of-weekly cap to usage credits (day-one cap-exhaustion complaints), and whether Anthropic loosens the bio/chem classifier false positives as promised. Prior — partial restoration surfacing: Fable 5 listed Active in AWS Bedrock (anthropic.claude-fable-5) with bundled weekly Claude Code usage; US ID verification via Persona live 2026-07-08 + use-case review + Anthropic approval; both US and global model IDs present. Anthropic status page still shows the 2026-06-13 suspension as active (see [[anthropic-fable-mythos-export-control-2026-06]]). Was free for Pro/Max/Team through 2026-06-22, credit-metered thereafter"
+  **2026-07-12 — metered-credits cliff reportedly arrived.** Two independent
+  user reports say Anthropic pulled Fable 5 off standard subscriptions today
+  (July 12), moving it to usage-credits-only at $10/$50 per MTok. No official
+  @AnthropicAI/@claudeai post confirms this specific action in-window, but
+  it lines up exactly with @alexalbert__'s July 7 tweet extending "access to
+  Claude Fable 5 on all paid plans through July 12" — i.e. today is the
+  stated boundary of that extension, corroborating the mechanism even
+  without a fresh official "pulled" announcement. Status stays `released`;
+  verification stays `confirmed` (official extension-boundary tweet is
+  primary; today's "pulled" specifics are user-reported, not yet
+  officially restated).
+expected: "2026-07-12: metered-credits cliff reportedly arrived — Fable 5 pulled off standard subscriptions, usage-credits-only at $10/$50 per MTok, matching the July 7 extension's stated 'through July 12' boundary; not yet independently confirmed by an official Anthropic post. Prior — BACK ONLINE GLOBALLY (2026-07-02): export controls lifted, Fable 5 restored worldwide as a general re-release, metered (≤50% of weekly usage limits through July 7, then usage credits; @ClaudeDevs reset all rate limits on relaunch); tightened cyber + bio/chem classifiers, small fraction of routine coding still routed to Opus 4.8; tops Scale AI + CAIS Remote Labor Index at 16.10% (ahead of Opus 4.8 / Codex GPT-5.5). Anthropic status page still shows the 2026-06-13 suspension as active (see [[anthropic-fable-mythos-export-control-2026-06]])"
 labels:
   - frontier-model
   - released
@@ -157,8 +168,10 @@ sources:
   - "@Hesamation"
   - "@EpochAIResearch"
   - "@trq212"
+  - "@johnseach"
+  - "@yancya"
 created_at: 2026-06-10
-updated_at: 2026-07-04
+updated_at: 2026-07-12
 closed_at: null
 closed_reason: null
 history:
@@ -182,6 +195,8 @@ history:
     change: "Guardrail cost quantified + subscription-return reaffirmed. BridgeMind's BridgeBench re-test of the July 1 build found the new classifiers over-triggering the Opus 4.8 fallback hard enough to crater debugging 86.2→25.9, refactoring 73.6→38.4, and worsen hallucination 75.9→61.7 (single-benchmark-org, no independent replication, but directionally consistent with Anthropic's own relaunch disclosure and widespread anecdotal complaints). Epoch AI reports June 2026 CVE disclosures hit ~1,500 (3.5x prior record, set before Mythos Preview shipped) — read by some as retroactive justification for the classifiers, though Epoch hedges on causation. Anthropic team member @trq212 reaffirmed Fable 5 will return to Pro/Max/Team subscriptions 'as soon as capacity allows,' addressing a dropped-commitment concern; not yet matched by an official @AnthropicAI/@claudeai statement. Status stays released; verification stays confirmed."
   - ts: 2026-07-04
     change: "Anthropic published a 'first draft' jailbreak severity framework blog post — a 0-4 severity scale developed with Amazon, Microsoft, and Google, expanding on the July 1 restoration post's vaguer 'consensus framework' language ('a CVSS for jailbreaks' per @Ruben_Luetke). Independently fetched the Anthropic blog URL to confirm; the page itself labels it a first draft, and no Amazon/Microsoft/Google statement confirms adopting these specific delineations. Status stays released; verification stays confirmed."
+  - ts: 2026-07-12
+    change: "Metered-credits cliff reportedly arrived. Two independent user reports (@johnseach, @yancya) say Fable 5 was pulled off standard subscriptions today and moved to usage-credits-only at $10/$50 per MTok. Matches the July 7 @alexalbert__ tweet's stated extension boundary ('through July 12') exactly, corroborating the mechanism though no fresh official 'pulled' post was captured in-window. Status stays released; verification stays confirmed."
 ---
 
 **Claude Fable 5** is the public-facing resolution of the long-running

@@ -23,13 +23,25 @@ status_note: |
   update" is coming soon with big coding/agentic gains; Business Insider
   (secondary) names it "Watermelon" and claims GPT-5.5-parity on internal
   benchmarks with ~10x Muse Spark's training compute — unconfirmed by Meta.
-expected: "Muse Spark developer API expected 'later this month' (late June 2026, repeatedly slipped); Hatch launch + up-to-$199.99/mo pricing still TBD/unconfirmed. 2026-07-03: next Muse Spark update ('Watermelon' per BI) coming soon per Wang; GPT-5.5-parity claim unconfirmed"
+
+  **2026-07-09/10:** The "next update" landed as **Muse Spark 1.1** with
+  wider (but still gated) external access. Meta's own account posted
+  (2026-07-09) "We gave a few leaders early access to Muse Spark 1.1, here's
+  what they had to say" — an official primary confirming the version name
+  and an early-access (not general) release. Separately, testingcatalog
+  reports "Grok 4.5 and Muse Spark 1.1 are now available on the AI/ML
+  platform for testing" (2026-07-10) — a broader third-party testing surface
+  than partner-only early access, but still gated, not public GA. A named
+  official version + independent testing-platform corroboration advances
+  `verification` partial → confirmed; still gated access keeps `status` at
+  `in-testing` rather than `released`.
+expected: "Muse Spark 1.1 confirmed (2026-07-09 @AIatMeta): early access given to select partners, also listed on a third-party AI/ML testing platform (testingcatalog, 2026-07-10) — still gated, not general availability. Hatch launch + up-to-$199.99/mo pricing still TBD/unconfirmed."
 labels:
   - consumer-agent
   - pricing
   - rumor
   - muse-spark
-verification: partial
+verification: confirmed
 sources:
   - "@theinformation"
   - https://x.com/JGidel4/status/2062360036190376378
@@ -37,8 +49,10 @@ sources:
   - https://the-decoder.com/metas-hatch-ai-agent-could-cost-up-to-200-a-month-and-marks-its-first-paid-ai-product/
   - "@alexandr_wang"
   - "@kimmonismus"
+  - "@AIatMeta"
+  - "@testingcatalog"
 created_at: 2026-06-04
-updated_at: 2026-07-03
+updated_at: 2026-07-12
 closed_at: null
 closed_reason: null
 history:
@@ -50,6 +64,8 @@ history:
     change: "The Decoder (2026-06-06) published a full writeup framing **Hatch** as **Meta's first paid AI product** at **up to $200/mo**: users describe what they need in plain language and Hatch builds working tools, schedules appointments, or sends emails. Second independent outlet on the Hatch consumer-agent angle (beyond The Information), reinforcing the pricing band; still no Meta primary on a launch date and the Muse Spark backend is unconfirmed. Status stays in-testing / partial"
   - ts: 2026-07-03
     change: "Next Muse Spark update confirmed coming, codename + benchmark claim still secondary. Meta Superintelligence Labs chief Alexandr Wang tweeted (01:01 UTC Jul 3, primary, 2,116 likes): 'Our next Muse Spark update is coming soon. Big improvements in coding and agentic capabilities.' Separately, Business Insider reporting (relayed by @kimmonismus) names the update 'Watermelon,' claims it already matches GPT-5.5 on internal benchmarks, and says it trains with ~10x the compute of Muse Spark (internal codename Avocado) — this specific codename/benchmark claim is BI-secondary, not in Wang's own tweet, and not independently verified. A real primary confirms an update is coming; the Watermelon specifics stay unconfirmed. Status stays in-testing; verification stays partial."
+  - ts: 2026-07-12
+    change: "Muse Spark 1.1 landed as gated early access, not GA. @AIatMeta (2026-07-09, official): 'We gave a few leaders early access to Muse Spark 1.1, here's what they had to say.' testingcatalog (2026-07-10) separately reports it's 'now available on the AI/ML platform for testing' alongside Grok 4.5 — a broader gated-testing surface, still not public. Official version name + independent testing-platform corroboration → verification partial → confirmed. Status stays in-testing (early-access/gated, not released)."
 ---
 
 **The Information** (relayed on 2026-06-04, 02:25 UTC) reports that Meta is
