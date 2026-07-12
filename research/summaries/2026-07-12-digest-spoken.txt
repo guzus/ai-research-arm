@@ -1,0 +1,10 @@
+Speaker 1: Sunday, July twelfth, twenty twenty-six.
+Speaker 2: [high_energy] Apple is suing OpenAI, alleging trade secret theft tied to OpenAI's hardware device plans, and it just landed in court filings this weekend.
+Speaker 1: On the model front, GPT five point six Sol Ultra is now generally available, and it reportedly cracked a fifty year old math problem using sixty four subagents working in parallel.
+Speaker 2: That's the first time we've seen a model take the top spot on the CritPt benchmark, [emphasis] thirty two point three percent [/emphasis], compared to Opus four point eight's twenty point nine percent.
+Speaker 1: Some quick numbers from the AI economy: the training data and RL environment market is now pulling in about [emphasis] eight point five billion dollars [/emphasis] in revenue, with valuations across more than fifty startups reaching roughly one hundred billion dollars.
+Speaker 2: Worth noting that Ben Bernanke has joined Anthropic's Long Term Benefit Trust, and secondary market trades now imply a valuation near [emphasis] one point two trillion dollars [/emphasis] for the company.
+Speaker 1: [dramatic_pause] And in hardware, SK Hynix just raised twenty six point five billion dollars, the largest ever US listing by a foreign company.
+Speaker 2: On the trending side, Hacker News is buzzing about a reverse engineered look at what xAI's Grok Build CLI actually sends home, sitting at the top spot with over two hundred sixty upvotes.
+Speaker 1: Behind the scenes, the model tracker logged eight new tickets, seven updates, and two closures today.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
