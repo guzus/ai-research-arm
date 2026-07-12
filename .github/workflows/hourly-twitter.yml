@@ -525,6 +525,7 @@ jobs:
                    git commit -m "Twitter Claude repair ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
 
       - name: Validate or recover Claude primary output
+        id: recover_claude
         if: >-
           steps.backend.outputs.name == 'claude'
           && (steps.twitter-claude-agent.outcome == 'success' || steps.twitter-claude-agent.outcome == 'failure')
@@ -580,7 +581,10 @@ jobs:
               missing=1
             fi
             status=$(jq -r '.status // "invalid"' "$STATUS_FILE" 2>/dev/null || echo invalid)
-            if [ "$status" = "published" ] && ! jq -e '.public_items > 0' "$STATUS_FILE" >/dev/null; then
+            if jq -e '.recovery == true' "$STATUS_FILE" >/dev/null; then
+              echo "fallback-needed: recovery status is reserved for the deterministic recovery path"
+              missing=1
+            elif [ "$status" = "published" ] && ! jq -e '.public_items > 0' "$STATUS_FILE" >/dev/null; then
               echo "fallback-needed: published status has no public items"
               missing=1
             elif [ "$status" = "published" ] && { [ ! -f "$DIGEST_FILE" ] \
@@ -625,12 +629,21 @@ jobs:
           fi
 
           if [ "$missing" -eq 0 ]; then
+            echo "recovered=false" >> "$GITHUB_OUTPUT"
             echo "Claude repair already produced all required outputs; skipping deterministic fallback."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Recovery is fail-closed: discard every public-digest mutation from
+          # the failed analyst attempt, including unexpected-hour edits.
+          if git cat-file -e "${BASE_SHA}:${DIGEST_FILE}" 2>/dev/null; then
+            git restore --source="$BASE_SHA" -- "$DIGEST_FILE"
+          else
+            rm -f "$DIGEST_FILE"
+          fi
 
           uv run python scripts/deterministic_twitter_digest.py \
             --input-dir .twitter-input/bird \
@@ -648,6 +661,7 @@ jobs:
 
           git add "$OUTPUT_DIR/" "$SUMMARY_FILE" "$HEADLINES_FILE"
           git commit -m "Twitter deterministic fallback $TIMESTAMP" || echo "No deterministic fallback changes to commit"
+          echo "recovered=true" >> "$GITHUB_OUTPUT"
 
       - name: Process tweets with DeepSeek v4 Flash via Fireworks (deepseek-claude-code tier)
         id: twitter-deepseek-agent
@@ -1114,6 +1128,18 @@ jobs:
           branch: ${{ github.ref_name }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           noop-pushed: 'false'
+
+      # Persist the recovery heartbeat before failing the job. This makes the
+      # scheduled attempt observable without misreporting analyst failure as a
+      # successful "no news" cycle; success()-gated notifications stay skipped.
+      - name: Fail recovered Claude cycle
+        if: >-
+          success()
+          && steps.backend.outputs.name == 'claude'
+          && steps.recover_claude.outputs.recovered == 'true'
+        run: |
+          echo "::error::Twitter analyst output was invalid or missing; recovery heartbeat was published."
+          exit 1
 
       # ── Vercel deploy hook (claude tier only) ──────────────────────
       # Vercel's GitHub App webhook should fire on bot pushes too, but
