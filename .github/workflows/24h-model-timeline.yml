@@ -269,6 +269,11 @@ jobs:
               - The body is markdown narrative; keep it concise (the
                 history field is the audit trail). 3–10 short paragraphs
                 is typical.
+              - Optional `polymarket:` frontmatter: maintain mappings per
+                the "Polymarket market mappings" section of
+                docs/model-tickets.md — add one only when a clearly-matching
+                ACTIVE market exists, keep mappings after markets resolve,
+                and NEVER invent IDs (only IDs read from the Polymarket API).
               - Do not write outside research/models/tickets/ and the
                 single daily-diff file in research/models/.
 

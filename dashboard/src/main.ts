@@ -183,6 +183,17 @@ type FocusReaderData = {
 type TicketStatus = 'rumored' | 'in-testing' | 'confirmed' | 'released' | 'closed';
 type TicketVerification = 'confirmed' | 'partial' | 'unverified';
 type TicketHistoryEntry = { ts: string; change: string };
+// Optional Polymarket market binding — the ticket tracks a real-world
+// event; the market is the crowd's live probability for it. Contract in
+// docs/model-tickets.md ("Polymarket market mappings"); prebuild.mjs
+// shape-checks entries before they reach index.json.
+type TicketPolymarketMapping = {
+  event_slug: string;
+  market_id: string;
+  token_id: string;
+  question: string;
+  outcome?: string | null;
+};
 type Ticket = {
   slug: string;
   title: string;
@@ -199,6 +210,7 @@ type Ticket = {
   closed_at: string | null;
   closed_reason: string | null;
   history: TicketHistoryEntry[];
+  polymarket?: TicketPolymarketMapping[] | null;
   body: string;
 };
 type TicketIndex = { tickets: Ticket[] };
@@ -883,7 +895,10 @@ function setSafeContent(
   // audio players), so they stay in the default allowlist; they are NOT
   // iframe-only.
   const addTags = ['mark', 'article', 'figure', 'figcaption', 'audio', 'nav', 'section', 'details', 'summary'];
-  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
+  // `target` is NOT in DOMPurify's default allowlist; every external link
+  // this app emits pairs target="_blank" with rel="noopener", so allowing
+  // it restores the intended new-tab behavior (ticket odds chips, sources).
+  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-spark', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -2487,6 +2502,354 @@ function loadTickets(): Promise<Ticket[] | null> {
   return ticketsPromise;
 }
 
+// ── Polymarket odds (models tab) ─────────────────────
+// Ticket cards with `polymarket` mappings show live market odds: one chip
+// per mapping (probability from the gamma event snapshot, then a 60s CLOB
+// midpoint poll while the tab is visible) plus a price-history sparkline
+// for the primary (first) mapping. Everything degrades gracefully: any
+// fetch failure leaves an em-dash chip titled "odds unavailable" and the
+// tab renders fully with Polymarket unreachable.
+//
+// API notes (verified against the live services):
+// - GET gamma-api.polymarket.com/events?slug=<event_slug> → [event]; each
+//   markets[] item carries stringified-JSON `outcomes`/`outcomePrices`/
+//   `clobTokenIds` arrays (index-aligned; prices are "0".."1" strings).
+// - GET clob.polymarket.com/midpoint?token_id=<t> → {"mid":"0.455"}. On
+//   closed markets it 200s with an error body — never poll closed markets;
+//   render their final price from the gamma outcomePrices instead.
+// - GET clob.polymarket.com/prices-history?market=<TOKEN_ID>&interval=max
+//   &fidelity=180 → {"history":[{t,p},...]} (param is named `market` but
+//   takes the CLOB token id; works on resolved tokens too).
+// - Both hosts send ACAO:* — use plain fetch with NO credentials option
+//   (credentials would make the browser reject the CORS response).
+// - Trust market-level active/closed, not event-level (observed drift).
+const POLYMARKET_GAMMA_BASE = 'https://gamma-api.polymarket.com';
+const POLYMARKET_CLOB_BASE = 'https://clob.polymarket.com';
+const ODDS_POLL_INTERVAL_MS = 60_000;
+const ODDS_FETCH_TIMEOUT_MS = 10_000;
+
+type PolymarketMarketState = {
+  closed: boolean;
+  // token id → last gamma price (0..1). Index-aligned parse of
+  // clobTokenIds ↔ outcomePrices, so it works for Yes or No tokens.
+  prices: Map<string, number>;
+};
+type PolymarketEventSnapshot = { markets: Map<string, PolymarketMarketState> };
+type OddsHistoryPoint = { t: number; p: number };
+
+// Session caches: one gamma snapshot per event slug, one history series per
+// token. A resolved-null (failed) fetch is evicted so a later models-tab
+// render may retry once — never more than one in-flight request per key.
+const polymarketEventPromises = new Map<string, Promise<PolymarketEventSnapshot | null>>();
+const polymarketHistoryPromises = new Map<string, Promise<OddsHistoryPoint[] | null>>();
+// Latest CLOB midpoint per token — overrides the (session-old) gamma price
+// on re-renders so filter/tab churn doesn't flash stale numbers.
+const polymarketMidpointPrices = new Map<string, number>();
+let oddsPollTimer: number | null = null;
+let oddsPollTokens = new Set<string>();
+
+async function fetchPolymarketJson(url: string): Promise<unknown | null> {
+  // Plain fetch, no credentials option (see API notes above).
+  const controller = new AbortController();
+  const timer = window.setTimeout(() => controller.abort(), ODDS_FETCH_TIMEOUT_MS);
+  try {
+    const resp = await fetch(url, { signal: controller.signal });
+    if (!resp.ok) return null;
+    return (await resp.json()) as unknown;
+  } catch {
+    return null;
+  } finally {
+    window.clearTimeout(timer);
+  }
+}
+
+// gamma stringifies nested arrays ("[\"Yes\",\"No\"]") — parse defensively.
+function parseStringifiedArray(raw: unknown): unknown[] | null {
+  if (Array.isArray(raw)) return raw;
+  if (typeof raw !== 'string') return null;
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    return Array.isArray(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function loadPolymarketEvent(eventSlug: string): Promise<PolymarketEventSnapshot | null> {
+  const cached = polymarketEventPromises.get(eventSlug);
+  if (cached) return cached;
+  const promise = (async (): Promise<PolymarketEventSnapshot | null> => {
+    const data = await fetchPolymarketJson(
+      `${POLYMARKET_GAMMA_BASE}/events?slug=${encodeURIComponent(eventSlug)}`,
+    );
+    if (!Array.isArray(data) || !data.length) return null;
+    const event = data[0] as { markets?: unknown };
+    if (!event || !Array.isArray(event.markets)) return null;
+    const markets = new Map<string, PolymarketMarketState>();
+    for (const raw of event.markets as Array<Record<string, unknown>>) {
+      if (!raw || typeof raw !== 'object') continue;
+      const id = raw.id == null ? '' : String(raw.id);
+      if (!id) continue;
+      const tokens = parseStringifiedArray(raw.clobTokenIds);
+      const priceStrs = parseStringifiedArray(raw.outcomePrices);
+      const prices = new Map<string, number>();
+      if (tokens && priceStrs) {
+        for (let i = 0; i < tokens.length && i < priceStrs.length; i++) {
+          const token = typeof tokens[i] === 'string' ? (tokens[i] as string) : '';
+          const price = Number(priceStrs[i]);
+          if (token && Number.isFinite(price) && price >= 0 && price <= 1) prices.set(token, price);
+        }
+      }
+      markets.set(id, { closed: raw.closed === true, prices });
+    }
+    return markets.size ? { markets } : null;
+  })().then((snapshot) => {
+    // Evict failures so a later visit can retry; keep successes for the session.
+    if (snapshot === null) polymarketEventPromises.delete(eventSlug);
+    return snapshot;
+  });
+  polymarketEventPromises.set(eventSlug, promise);
+  return promise;
+}
+
+function loadPolymarketHistory(tokenId: string): Promise<OddsHistoryPoint[] | null> {
+  const cached = polymarketHistoryPromises.get(tokenId);
+  if (cached) return cached;
+  const promise = (async (): Promise<OddsHistoryPoint[] | null> => {
+    const data = await fetchPolymarketJson(
+      `${POLYMARKET_CLOB_BASE}/prices-history?market=${encodeURIComponent(tokenId)}&interval=max&fidelity=180`,
+    );
+    const history = (data as { history?: unknown } | null)?.history;
+    if (!Array.isArray(history)) return null;
+    const points: OddsHistoryPoint[] = [];
+    for (const entry of history as Array<Record<string, unknown>>) {
+      const t = Number(entry?.t);
+      const p = Number(entry?.p);
+      if (Number.isFinite(t) && Number.isFinite(p) && p >= 0 && p <= 1) points.push({ t, p });
+    }
+    return points.length >= 2 ? points : null;
+  })().then((points) => {
+    if (points === null) polymarketHistoryPromises.delete(tokenId);
+    return points;
+  });
+  polymarketHistoryPromises.set(tokenId, promise);
+  return promise;
+}
+
+// Belt-and-braces over prebuild's sanitizer: only well-shaped mappings, max 3.
+function ticketPolymarketMappings(ticket: Ticket): TicketPolymarketMapping[] {
+  if (!Array.isArray(ticket.polymarket)) return [];
+  return ticket.polymarket
+    .filter((m): m is TicketPolymarketMapping =>
+      !!m && typeof m === 'object' &&
+      typeof m.event_slug === 'string' && m.event_slug.trim() !== '' &&
+      typeof m.market_id === 'string' && m.market_id.trim() !== '' &&
+      typeof m.token_id === 'string' && m.token_id.trim() !== '' &&
+      typeof m.question === 'string' && m.question.trim() !== '')
+    .slice(0, 3);
+}
+
+function fmtOddsPct(price: number): string {
+  const pct = price * 100;
+  if (pct > 0 && pct < 1) return '<1%';
+  if (pct > 99 && pct < 100) return '>99%';
+  return `${Math.round(pct)}%`;
+}
+
+// Static chip skeleton (em-dash placeholder); hydrateTicketOdds fills prices
+// in after the grid paints. Chips are links to the Polymarket event page.
+function ticketOddsSectionHtml(ticket: Ticket): string {
+  const mappings = ticketPolymarketMappings(ticket);
+  if (!mappings.length) return '';
+  const chips = mappings.map((m, i) => {
+    const label = (m.outcome && m.outcome.trim()) || m.question;
+    const spark = i === 0
+      ? `<span class="ticket-odds-spark-slot" data-odds-spark="${escapeHtml(m.token_id)}" aria-hidden="true"></span>`
+      : '';
+    return `<a class="ticket-odds-chip" href="https://polymarket.com/event/${encodeURIComponent(m.event_slug)}"
+      target="_blank" rel="noopener noreferrer"
+      data-odds-event="${escapeHtml(m.event_slug)}" data-odds-market="${escapeHtml(m.market_id)}" data-odds-token="${escapeHtml(m.token_id)}"
+      title="Polymarket: ${escapeHtml(m.question)}"
+      aria-label="Polymarket odds: ${escapeHtml(m.question)}">
+      <span class="ticket-odds-pct">—</span>
+      <span class="ticket-odds-label">${escapeHtml(label)}</span>
+    </a>${spark}`;
+  }).join('');
+  return `<div class="ticket-odds">${chips}</div>`;
+}
+
+function applyOddsToChip(chip: HTMLElement, price: number, closed: boolean): void {
+  const pctEl = chip.querySelector<HTMLElement>('.ticket-odds-pct');
+  if (!pctEl) return;
+  chip.classList.remove('is-unavailable');
+  if (closed) {
+    const yes = price >= 0.5;
+    chip.classList.add('is-resolved', yes ? 'is-resolved-yes' : 'is-resolved-no');
+    pctEl.textContent = `${yes ? '✓' : '✗'} ${Math.round(price * 100)}%`;
+    chip.title = `${chip.title.replace(/ — .*$/, '')} — resolved ${yes ? 'Yes' : 'No'}`;
+  } else {
+    pctEl.textContent = fmtOddsPct(price);
+  }
+}
+
+function markChipUnavailable(chip: HTMLElement): void {
+  const pctEl = chip.querySelector<HTMLElement>('.ticket-odds-pct');
+  if (pctEl) pctEl.textContent = '—';
+  chip.classList.add('is-unavailable');
+  chip.title = 'odds unavailable';
+}
+
+// Tiny inline SVG sparkline (~120x28) of the primary market's price history.
+// Built via DOM APIs (no sanitizer round-trip, no libraries); stroke uses
+// currentColor so the CSS theme decides the color in light and dark mode.
+function buildOddsSparkline(points: OddsHistoryPoint[]): SVGSVGElement {
+  const W = 120;
+  const H = 28;
+  const PAD = 2.5;
+  // Downsample long series but always keep the final point.
+  let series = points;
+  if (series.length > 80) {
+    const stride = Math.ceil(series.length / 80);
+    const sampled = series.filter((_, i) => i % stride === 0);
+    if (sampled[sampled.length - 1] !== series[series.length - 1]) sampled.push(series[series.length - 1]);
+    series = sampled;
+  }
+  const t0 = series[0].t;
+  const t1 = series[series.length - 1].t;
+  const tSpan = Math.max(1, t1 - t0);
+  let pMin = Math.min(...series.map((pt) => pt.p));
+  let pMax = Math.max(...series.map((pt) => pt.p));
+  if (pMax - pMin < 0.05) {
+    // Flat series: pad the band so the line doesn't hug an edge.
+    const mid = (pMax + pMin) / 2;
+    pMin = Math.max(0, mid - 0.025);
+    pMax = Math.min(1, mid + 0.025);
+  }
+  const pSpan = Math.max(1e-6, pMax - pMin);
+  const x = (t: number) => PAD + ((t - t0) / tSpan) * (W - 2 * PAD);
+  const y = (p: number) => H - PAD - ((p - pMin) / pSpan) * (H - 2 * PAD);
+  const d = series
+    .map((pt, i) => `${i === 0 ? 'M' : 'L'}${x(pt.t).toFixed(1)} ${y(pt.p).toFixed(1)}`)
+    .join(' ');
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(SVG_NS, 'svg');
+  svg.setAttribute('class', 'ticket-odds-spark');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('preserveAspectRatio', 'none');
+  svg.setAttribute('role', 'img');
+  svg.setAttribute('aria-label', 'Odds history');
+  const path = document.createElementNS(SVG_NS, 'path');
+  path.setAttribute('d', d);
+  path.setAttribute('fill', 'none');
+  path.setAttribute('stroke', 'currentColor');
+  path.setAttribute('stroke-width', '1.5');
+  path.setAttribute('stroke-linejoin', 'round');
+  path.setAttribute('stroke-linecap', 'round');
+  svg.appendChild(path);
+  const last = series[series.length - 1];
+  const dot = document.createElementNS(SVG_NS, 'circle');
+  dot.setAttribute('cx', x(last.t).toFixed(1));
+  dot.setAttribute('cy', y(last.p).toFixed(1));
+  dot.setAttribute('r', '1.8');
+  dot.setAttribute('fill', 'currentColor');
+  svg.appendChild(dot);
+  return svg;
+}
+
+function stopTicketOddsPolling(): void {
+  if (oddsPollTimer !== null) {
+    window.clearInterval(oddsPollTimer);
+    oddsPollTimer = null;
+  }
+  oddsPollTokens = new Set();
+}
+
+async function pollOddsMidpoints(): Promise<void> {
+  if (activeTab !== 'models') {
+    stopTicketOddsPolling();
+    return;
+  }
+  if (document.hidden || oddsPollTokens.size === 0) return;
+  await Promise.all(Array.from(oddsPollTokens).map(async (tokenId) => {
+    const data = await fetchPolymarketJson(
+      `${POLYMARKET_CLOB_BASE}/midpoint?token_id=${encodeURIComponent(tokenId)}`,
+    );
+    const mid = Number((data as { mid?: unknown } | null)?.mid);
+    if (!Number.isFinite(mid) || mid < 0 || mid > 1) return; // closed/error bodies land here
+    polymarketMidpointPrices.set(tokenId, mid);
+    for (const chip of content.querySelectorAll<HTMLElement>(
+      `.ticket-odds-chip[data-odds-token="${tokenId}"]`,
+    )) {
+      applyOddsToChip(chip, mid, false);
+    }
+  }));
+}
+
+function startTicketOddsPolling(openTokens: Set<string>): void {
+  oddsPollTokens = openTokens;
+  if (openTokens.size === 0) {
+    stopTicketOddsPolling();
+    return;
+  }
+  if (oddsPollTimer === null) {
+    oddsPollTimer = window.setInterval(() => { void pollOddsMidpoints(); }, ODDS_POLL_INTERVAL_MS);
+  }
+}
+
+// Fill the odds chips (and the primary sparkline) after the grid paints.
+// One gamma snapshot per event slug and one history fetch per token per
+// session; stale/detached elements are skipped via isConnected checks.
+async function hydrateTicketOdds(): Promise<void> {
+  const chips = Array.from(content.querySelectorAll<HTMLElement>('.ticket-odds-chip'));
+  if (!chips.length) {
+    stopTicketOddsPolling();
+    return;
+  }
+  const bySlug = new Map<string, HTMLElement[]>();
+  for (const chip of chips) {
+    const slug = chip.dataset.oddsEvent || '';
+    if (!slug) continue;
+    const group = bySlug.get(slug);
+    if (group) group.push(chip);
+    else bySlug.set(slug, [chip]);
+  }
+  const openTokens = new Set<string>();
+  await Promise.all(Array.from(bySlug.entries()).map(async ([slug, group]) => {
+    const snapshot = await loadPolymarketEvent(slug);
+    for (const chip of group) {
+      if (!chip.isConnected) continue;
+      const marketId = chip.dataset.oddsMarket || '';
+      const tokenId = chip.dataset.oddsToken || '';
+      const market = snapshot?.markets.get(marketId);
+      const gammaPrice = market?.prices.get(tokenId);
+      if (!market || gammaPrice === undefined) {
+        markChipUnavailable(chip);
+        continue;
+      }
+      if (market.closed) {
+        applyOddsToChip(chip, gammaPrice, true);
+      } else {
+        // Prefer a fresher midpoint from a previous poll over the
+        // session-cached gamma snapshot price.
+        applyOddsToChip(chip, polymarketMidpointPrices.get(tokenId) ?? gammaPrice, false);
+        openTokens.add(tokenId);
+      }
+    }
+  }));
+  if (activeTab !== 'models') return; // user navigated away mid-hydration
+  startTicketOddsPolling(openTokens);
+  // Sparklines for primary mappings — lazy, one history fetch per token.
+  await Promise.all(
+    Array.from(content.querySelectorAll<HTMLElement>('.ticket-odds-spark-slot')).map(async (slot) => {
+      const tokenId = slot.dataset.oddsSpark || '';
+      if (!tokenId) return;
+      const points = await loadPolymarketHistory(tokenId);
+      if (!points || !slot.isConnected) return; // no history → keep the slot empty
+      slot.replaceChildren(buildOddsSparkline(points));
+    }),
+  );
+}
+
 function ticketStatusPill(status: TicketStatus): string {
   // Color via class so dark/light mode and contrast stay consistent.
   const labels: Record<TicketStatus, string> = {
@@ -2503,12 +2866,14 @@ function ticketStatusPill(status: TicketStatus): string {
 // (note, expected, model, verification, sources, history) lives in the modal
 // that opens on click, so the board stays short and scannable.
 function ticketCard(ticket: Ticket): string {
-  // Bird's-eye board = company + title only; labels/details live in the modal.
+  // Bird's-eye board = company + title (+ live Polymarket odds chips when
+  // the ticket has market mappings); labels/details live in the modal.
   return `<article class="ticket-card ticket-card-${ticket.status}" data-slug="${escapeHtml(ticket.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(ticket.title)}">
     <div class="ticket-card-top">
       <span class="ticket-company">${escapeHtml(ticket.company)}</span>
     </div>
     <h3 class="ticket-title">${escapeHtml(ticket.title)}</h3>
+    ${ticketOddsSectionHtml(ticket)}
   </article>`;
 }
 
@@ -2646,6 +3011,7 @@ document.addEventListener('keydown', (e) => {
 
 function renderTickets(tickets: Ticket[] | null): void {
   if (!tickets || tickets.length === 0) {
+    stopTicketOddsPolling();
     setSafeContent(
       content,
       `<div class="content-card"><div class="content-card-body">
@@ -2701,6 +3067,10 @@ function renderTickets(tickets: Ticket[] | null): void {
   const emptyNote = filtered.length === 0
     ? `<div class="ticket-board-empty">No tickets match the current filters.</div>`
     : '';
+  // Disclaimer shown whenever any loaded ticket carries market mappings.
+  const oddsNote = tickets.some((t) => ticketPolymarketMappings(t).length > 0)
+    ? `<p class="tickets-odds-note">Odds: Polymarket midpoints, informational only — not investment advice.</p>`
+    : '';
   setSafeContent(
     content,
     `<div class="tickets-view">
@@ -2712,8 +3082,12 @@ function renderTickets(tickets: Ticket[] | null): void {
         ${board}
       </div>
       ${emptyNote}
+      ${oddsNote}
     </div>`,
   );
+  // Hydrate odds lazily so the grid paints first; failures leave em-dash
+  // chips and never block or break the tab.
+  window.setTimeout(() => { void hydrateTicketOdds(); }, 0);
 }
 
  function frontPageBodyHtml(frontPage: FrontPageAsset): string {
@@ -3324,6 +3698,8 @@ async function load(): Promise<void> {
   const controller = new AbortController();
   activeLoadController = controller;
   stopResearchAudio();
+  // Polymarket midpoint polling only runs while the models tab is shown.
+  if (activeTab !== 'models') stopTicketOddsPolling();
 
   // Hide the floating TOC unconditionally; renderResearchDoc shows it
   // again when it has enough sections to be useful.

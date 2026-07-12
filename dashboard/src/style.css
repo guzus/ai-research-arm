@@ -4356,6 +4356,82 @@ body.modal-open { overflow: hidden; }
   font-weight: 500;
 }
 
+/* ── Polymarket odds on ticket cards ──────────────────
+ * One chip per market mapping (max 3, wraps on narrow cards / mobile) plus
+ * an inline sparkline for the primary mapping. Hydrated lazily after the
+ * grid paints; an unreachable Polymarket leaves em-dash chips only. */
+.ticket-odds {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.ticket-odds-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 100%;
+  padding: 2px 8px;
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.5;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
+}
+.ticket-odds-chip:hover {
+  border-color: var(--accent-warm);
+  background: var(--bg-hover);
+  color: var(--accent-warm);
+}
+.ticket-odds-pct {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+.ticket-odds-chip:hover .ticket-odds-pct { color: var(--accent-warm); }
+.ticket-odds-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  color: var(--text-tertiary);
+}
+/* Resolved markets: final ✓/✗ + 0/100% from the gamma snapshot. */
+.ticket-odds-chip.is-resolved-yes .ticket-odds-pct { color: #166534; }
+.ticket-odds-chip.is-resolved-no  .ticket-odds-pct { color: #b91c1c; }
+.ticket-odds-chip.is-unavailable { opacity: 0.65; }
+.ticket-odds-spark-slot {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+.ticket-odds-spark {
+  width: 120px;
+  height: 28px;
+  display: block;
+  color: var(--accent-warm);
+  opacity: 0.9;
+}
+.tickets-odds-note {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+@media (prefers-color-scheme: dark) {
+  .ticket-odds-chip.is-resolved-yes .ticket-odds-pct { color: #86efac; }
+  .ticket-odds-chip.is-resolved-no  .ticket-odds-pct { color: #fca5a5; }
+}
+@media (max-width: 640px) {
+  /* Stacked mobile columns are full-width — let the label breathe but keep
+   * chips wrapping instead of forcing horizontal overflow. */
+  .ticket-odds-label { max-width: 40vw; }
+  .ticket-odds-spark { width: 96px; height: 24px; }
+}
+
 .ticket-verification {
   font-size: 10.5px;
   padding: 2px 6px;

@@ -63,8 +63,14 @@ sources:
   - "@demishassabis"
   - "@yuichisatoeco"
   - "@TeksCreate"
+polymarket:
+  - event_slug: new-gemini-reasoning-flagship-released-by
+    market_id: "2744113"
+    token_id: "25761338113444612714107266818739035748862800597161579847841911944183859450941"
+    question: "New Gemini reasoning flagship released by Jul 31, 2026?"
+    outcome: "Jul 31 2026"
 created_at: 2026-05-20
-updated_at: 2026-07-12
+updated_at: 2026-07-13
 closed_at: null
 closed_reason: null
 history:
@@ -82,6 +88,8 @@ history:
     change: "Date rumor fragments further: contradictory claims now circulate in the same window (July 17 vs. a competing July 22 figure vs. a reply denying the model exists at all), plus a separate zero-engagement claim of a 2M-token context window (vs. Claude's 1M), no Google confirmation. Unconfirmed across twelve consecutive digest cycles now with internal contradiction on both date and spec. Status stays confirmed (I/O commitment only); verification stays confirmed; the retrain/date/context-size cluster stays unverified."
   - ts: 2026-07-12
     change: "Rumor cluster directly rebutted: a Japanese-language post traces the '2M context / July 17' figures to leak-articles citing each other (not Google's blog), and notes Google's own Vertex AI catalog doesn't list a 'Gemini 3.5 Pro' entry (only 3.1 Pro / 3 Pro Image / 2.5 Pro) — while a same-day account still restates the 2M/July-17 claim as fact. Confirms the unverified flag; no primary Google source has surfaced. Status stays confirmed; verification stays confirmed; retrain/date/context cluster stays unverified."
+  - ts: 2026-07-13
+    change: "Linked Polymarket odds (metadata-only, no status change): 'Will a new Gemini flagship be released by July 31, 2026?' (event new-gemini-reasoning-flagship-released-by, market 2744113, ~79% Yes at link time). IDs read from the gamma API; the market's resolution text requires a next-generation reasoning-focused Gemini flagship, which is exactly what this ticket tracks."
 ---
 
 At Google I/O 2026, Google revealed the **Gemini 3.5** family. The first

@@ -175,6 +175,49 @@ function collectDates(dir, re) {
   return Array.from(dates).sort();
 }
 
+// Lenient shape-check for the optional `polymarket:` frontmatter (see
+// docs/model-tickets.md). scripts/check_model_tickets.py is the strict
+// gate; here a malformed mapping is dropped with a warning so one bad
+// autonomous-agent write can never fail the deploy. Returns a clean
+// array of mappings, or null when nothing usable remains.
+function sanitizeTicketPolymarket(raw, ticketName) {
+  if (raw == null) return null;
+  if (!Array.isArray(raw)) {
+    console.warn(`prebuild: WARNING — tickets/${ticketName}: polymarket is not a list; dropping it`);
+    return null;
+  }
+  const clean = [];
+  for (const entry of raw) {
+    if (!entry || typeof entry !== 'object' || Array.isArray(entry)) {
+      console.warn(`prebuild: WARNING — tickets/${ticketName}: polymarket mapping is not an object; dropping mapping`);
+      continue;
+    }
+    const str = (v) => (typeof v === 'string' && v.trim() ? v.trim() : null);
+    const event_slug = str(entry.event_slug);
+    const question = str(entry.question);
+    // market_id is small enough to coerce from an accidental YAML number;
+    // token_id is ~78 digits and unrecoverable once parsed as a number.
+    const market_id = str(entry.market_id) ??
+      (typeof entry.market_id === 'number' && Number.isSafeInteger(entry.market_id)
+        ? String(entry.market_id)
+        : null);
+    const token_id = str(entry.token_id);
+    if (!event_slug || !market_id || !token_id || !question) {
+      console.warn(`prebuild: WARNING — tickets/${ticketName}: polymarket mapping missing/invalid required field; dropping mapping`);
+      continue;
+    }
+    const mapping = { event_slug, market_id, token_id, question };
+    const outcome = str(entry.outcome);
+    if (outcome) mapping.outcome = outcome;
+    clean.push(mapping);
+  }
+  if (clean.length > 3) {
+    console.warn(`prebuild: WARNING — tickets/${ticketName}: polymarket has ${clean.length} mappings; keeping the first 3`);
+    clean.length = 3;
+  }
+  return clean.length ? clean : null;
+}
+
 function buildTicketsIndex() {
   // Parse every research/models/tickets/<slug>.md, split frontmatter
   // and body, and emit a single tickets/index.json that the dashboard
@@ -228,6 +271,11 @@ function buildTicketsIndex() {
     if (Array.isArray(fm.history)) {
       fm.history = fm.history.map((h) => ({ ...h, ts: isoDate(h.ts) }));
     }
+    // Optional Polymarket odds mappings — pass through only well-shaped
+    // entries so the dashboard never sees a malformed mapping.
+    const polymarket = sanitizeTicketPolymarket(fm.polymarket, name);
+    if (polymarket) fm.polymarket = polymarket;
+    else delete fm.polymarket;
     tickets.push({ ...fm, body });
   }
 

@@ -33,13 +33,21 @@ sources:
   - "@KateClarkTweets"
   - "@cdriebusch"
   - "@SpirosMargaris"
+polymarket:
+  - event_slug: anthropic-ipo-by
+    market_id: "2413330"
+    token_id: "48566046548914168443252668519852295704538578584318207505303160546351275413281"
+    question: "Anthropic IPO by Dec 31, 2026?"
+    outcome: "Dec 31 2026"
 created_at: 2026-06-02
-updated_at: 2026-06-02
+updated_at: 2026-07-13
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-02
     change: "Created — Anthropic confidentially filed S-1 with the SEC 2026-06-01, ahead of OpenAI in the public-markets race. Revenue run-rate ~$47B (May 2026) vs ~$10B the prior year; valuation $965B post-Series-H. WSJ broke the story (@KateClarkTweets, @cdriebusch), corroborated by The Register, US News, Fox Business, Spokesman, Ground News in-window. Status: confirmed; verification: confirmed (multiple primary press outlets + Anthropic on-record acknowledgment per US News framing 'the company said on Monday'). Public S-1 follow-on expected ~1 month after the confidential filing; the IPO follows on from there. Distinct from but downstream of [[anthropic-series-h-2026-05]] (the $65B Series H provided the post-money baseline) and [[anthropic-spacex-colossus-2026-05]] (the SpaceX Colossus compute lease that was disclosed in connection with the S-1 prep)"
+  - ts: 2026-07-13
+    change: "Linked Polymarket odds (metadata-only, no status change): 'Will Anthropic IPO by December 31, 2026?' (event anthropic-ipo-by, market 2413330, ~66% Yes at link time) — the market prices this ticket's central open question, the IPO completing in 2026 after the 2026-06-01 confidential S-1. IDs read from the gamma API."
 ---
 
 Anthropic **confidentially filed an S-1 registration statement with
