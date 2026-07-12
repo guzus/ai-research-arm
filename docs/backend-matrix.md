@@ -80,9 +80,9 @@ Reading notes:
 | claude-interactive | `claude.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | community | `4h-community.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
 | daily-improve | `daily-improve.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| digest-audio-script | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
-| digest-synthesis | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
-| digest-synthesis-fallback | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
+| digest-audio-script | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted); then `deterministic_daily_digest.py` |
+| digest-synthesis | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted); then `deterministic_daily_digest.py` |
+| digest-synthesis-fallback | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted); then `deterministic_daily_digest.py` |
 | generative-research-claude (+1 retry step) | `generative-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | generative-research-default | `generative-research.yml` | dispatch default (runtime SSOT) | (per chosen backend) | default: `claude` | (per chosen backend) | workflow-level `fireworks_fallback` input (default `claude`) |
 | model-timeline | `24h-model-timeline.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |

@@ -4,16 +4,11 @@ on:
   schedule:
     # Run daily at 00:00 UTC
     - cron: '0 0 * * *'
+  # No inputs: the deterministic fallback below is always-on (it fires
+  # whenever the agent leaves today's digest missing or sub-floor, on
+  # schedule and dispatch alike), so the old emergency-only
+  # allow_deterministic_fallback opt-in is gone.
   workflow_dispatch:
-    inputs:
-      allow_deterministic_fallback:
-        description: "Emergency only: publish a model-free deterministic digest if Claude produces no usable digest."
-        required: false
-        default: "false"
-        type: choice
-        options:
-          - "false"
-          - "true"
 
 concurrency:
   group: daily-digest
@@ -71,7 +66,7 @@ jobs:
 
       # Base SHA for the standalone output guard below — captured AFTER the
       # pull and BEFORE the synthesis agents, so the guard proves a fresh
-      # digest commit came from Claude or an explicitly allowed emergency
+      # digest commit came from the agent path or the deterministic
       # fallback.
       - name: Capture digest output base
         id: digest-output-base
@@ -154,9 +149,11 @@ jobs:
       # continue-on-error on both synthesis paths: a failed agent (provider
       # outage, turn-1 API error, nothing committed — the composite's internal
       # expected-paths guard fails the step in that case) hands off to the
-      # content-floor check and final output guard below. Scheduled runs fail
-      # closed rather than publishing a model-free digest; deterministic
-      # fallback is manual emergency-only.
+      # content-floor check, the ALWAYS-ON deterministic fallback, and the
+      # final output guard below. The fallback keeps a rescued run green on
+      # purpose (wiki-ingest + front-page trigger on workflow_run SUCCESS)
+      # and its Telegram alert step announces every actual rescue, so a
+      # model-free digest never ships silently.
       - name: Synthesize Daily Digest (with MCP tools)
         id: digest-agent-mcp
         if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
@@ -169,7 +166,7 @@ jobs:
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --mcp-config /tmp/mcp-config.json
-            --allowedTools "Glob,Read,Write,Edit,Bash(git:*),mcp__exa__*,mcp__perplexity__*"
+            --allowedTools "Glob,Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(rg:*),Bash(printf:*),Bash(touch:*),mcp__exa__*,mcp__perplexity__*"
           expected-paths: |
             research/digest/
             research/summaries/
@@ -265,6 +262,20 @@ jobs:
             git add research/digest/${{ steps.date.outputs.date }}-digest.md research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
+            HARD RULES
+            - Use tool calls to write the files. Do NOT merely respond in
+              chat — a digest that exists only in your reply is a failed run.
+            - If a tool call is denied, retry with an allowed tool
+              immediately. The allowed local read/parse path includes Read,
+              Glob, cat, ls, head, jq, python3, and rg.
+            - Before finishing, run `git status --short` and confirm
+              research/digest/${{ steps.date.outputs.date }}-digest.md is
+              committed. If it is not committed, commit it before your final
+              response.
+            - Commit ONLY today's digest and summary files — never
+              `git add research/` (the LFS clean filter would rewrite
+              historical media into pointers).
+
       - name: Synthesize Daily Digest (local-source fallback)
         id: digest-agent-local
         if: steps.check-keys.outputs.has_exa != 'true' && steps.check-keys.outputs.has_perplexity != 'true'
@@ -276,7 +287,7 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
-            --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*)"
+            --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
             research/digest/
             research/summaries/
@@ -372,12 +383,26 @@ jobs:
             git add research/digest/${{ steps.date.outputs.date }}-digest.md research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
+            HARD RULES
+            - Use tool calls to write the files. Do NOT merely respond in
+              chat — a digest that exists only in your reply is a failed run.
+            - If a tool call is denied, retry with an allowed tool
+              immediately. The allowed local read/parse path includes Read,
+              Glob, cat, ls, head, jq, python3, and rg.
+            - Before finishing, run `git status --short` and confirm
+              research/digest/${{ steps.date.outputs.date }}-digest.md is
+              committed. If it is not committed, commit it before your final
+              response.
+            - Commit ONLY today's digest and summary files — never
+              `git add research/` (the LFS clean filter would rewrite
+              historical media into pointers).
+
       # Content floor on the AGENT's digest. Catches both "agent failed /
       # committed nothing" (file missing) and "agent committed a template
       # shell" (sub-floor bytes/sections, unexpanded placeholders) — the
-      # latter previously stayed green. The verdict routes recovery and, only
-      # on explicitly opted-in manual runs, the emergency deterministic
-      # fallback; it never fails the job itself.
+      # latter previously stayed green. The verdict routes recovery and the
+      # always-on deterministic fallback below; it never fails the job
+      # itself.
       - name: Check digest content floor
         id: digest-floor
         run: |
@@ -424,27 +449,77 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # Emergency-only model-free fallback. Scheduled runs must fail closed if
-      # Claude produces no fresh, floor-passing digest: publishing an unranked
-      # lane dump is worse than a red run. A human may still dispatch with
-      # allow_deterministic_fallback=true to keep downstream consumers alive
-      # during a known Claude outage.
-      - name: Emergency deterministic digest fallback
+      # ALWAYS-ON model-free fallback (mirrors the twitter lane's recovery
+      # chain). A red digest run starves the workflow_run dependents
+      # (wiki-ingest and front-page trigger only on SUCCESS) — gating this
+      # step behind a manual opt-in (PR #302) cost four straight scheduled
+      # runs 07-09..07-12 while the agent path was broken. It now fires
+      # whenever the agent left today's digest missing or sub-floor, on
+      # schedule and dispatch alike; the alert step below announces every
+      # actual rescue on Telegram, so a model-free digest can never ship
+      # silently (the concern #302 addressed by staying red). Overwrite
+      # protection lives inside: when the floor PASSED (a good digest is
+      # already committed and this run merely added nothing new — e.g. a
+      # re-dispatch or worker-loss re-run on an already-published day) it
+      # declines to compose rather than replace agent prose with the
+      # mechanical dump, and the require-output gate below still calls that
+      # run honestly red.
+      - name: Deterministic digest fallback
         id: digest-fallback
-        if: ${{ (steps.digest-floor.outputs.ok != 'true' || steps.digest-output-diff.outputs.changed != 'true') && github.event_name == 'workflow_dispatch' && inputs.allow_deterministic_fallback == 'true' }}
+        if: ${{ steps.digest-floor.outputs.ok != 'true' || steps.digest-output-diff.outputs.changed != 'true' }}
+        env:
+          DATE: ${{ steps.date.outputs.date }}
+          FLOOR_OK: ${{ steps.digest-floor.outputs.ok }}
         run: |
           set -euo pipefail
-          echo "::warning::Manual emergency fallback enabled: digest agent path failed or produced stale/sub-floor output; composing deterministic digest from committed lane artifacts."
+          DIGEST_FILE="research/digest/${DATE}-digest.md"
+          SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
+          if [ "$FLOOR_OK" = "true" ]; then
+            # Floor passed → today's digest content is fine and already
+            # committed (the recovery step above commits floor-passing tree
+            # output); we are only here because no FRESH commit landed since
+            # the base SHA. Never clobber agent prose with the dump.
+            echo "::notice::Floor-passing digest for ${DATE} is already committed — declining deterministic overwrite; the require-output gate decides the run verdict."
+            echo "used=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "::warning::Digest agent produced no usable digest for ${DATE} (missing or sub-floor) — composing deterministic model-free digest from committed lane artifacts."
           python3 scripts/deterministic_daily_digest.py \
             --research-dir research \
-            --date "${{ steps.date.outputs.date }}" \
-            --out "research/digest/${{ steps.date.outputs.date }}-digest.md" \
-            --summary-out "research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt"
-          git add "research/digest/${{ steps.date.outputs.date }}-digest.md" "research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt"
-          git commit -m "Daily digest emergency deterministic fallback ${{ steps.date.outputs.date }}" || echo "No deterministic digest changes"
+            --date "$DATE" \
+            --out "$DIGEST_FILE" \
+            --summary-out "$SUMMARY_FILE"
+          git add "$DIGEST_FILE" "$SUMMARY_FILE"
+          git commit -m "Daily digest deterministic fallback ${DATE}" || echo "No deterministic digest changes"
+          echo "used=true" >> "$GITHUB_OUTPUT"
 
-      # Final hard gate: Claude (or an explicitly allowed emergency fallback)
-      # must have committed the digest since the pre-agent base SHA.
+      # Loud pairing for the always-on fallback: a fallback-rescued run stays
+      # GREEN on purpose (the workflow_run dependents must fire), which makes
+      # it silent by default — silence is how the broken agent path hid for
+      # six days (07-02 → 07-08). Announce every actual rescue. Alerts must
+      # never fail the job (Load-bearing rule 4 style).
+      - name: Alert deterministic fallback publication via Telegram
+        if: steps.digest-fallback.outcome == 'success' && steps.digest-fallback.outputs.used == 'true'
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DATE: ${{ steps.date.outputs.date }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "Telegram credentials missing — skipping fallback-used alert"
+            exit 0
+          fi
+          TEXT="⚠️ Daily digest ${DATE} published via DETERMINISTIC fallback (model-free) — the digest agent produced no usable digest. wiki-ingest/front-page will run on fallback content. Investigate the agent path: ${RUN_URL}"
+          curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${TEXT}" \
+            -d "disable_web_page_preview=true" >/dev/null \
+            || echo "Telegram fallback-used alert send failed"
+
+      # Final hard gate: the agent path (or the deterministic fallback) must
+      # have committed the digest since the pre-agent base SHA.
       # research/digest/ only — a summary-only commit must not count.
       - name: Require digest output
         uses: ./.github/actions/require-output
@@ -464,7 +539,7 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*)"
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
             research/summaries/
           label: Digest spoken-script Claude rewrite
@@ -888,7 +963,7 @@ jobs:
         uses: ./.github/actions/hooker-telemetry
         with:
           status: ${{ job.status }}
-          text: "search-providers exa=${{ steps.check-keys.outputs.has_exa }} perplexity=${{ steps.check-keys.outputs.has_perplexity }}; digest-floor ok=${{ steps.digest-floor.outputs.ok }}; deterministic-fallback=${{ steps.digest-fallback.outcome }}"
+          text: "search-providers exa=${{ steps.check-keys.outputs.has_exa }} perplexity=${{ steps.check-keys.outputs.has_perplexity }}; digest-floor ok=${{ steps.digest-floor.outputs.ok }}; deterministic-fallback=${{ steps.digest-fallback.outcome }} used=${{ steps.digest-fallback.outputs.used || 'false' }}"
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
