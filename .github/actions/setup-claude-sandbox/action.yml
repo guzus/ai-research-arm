@@ -51,9 +51,10 @@ runs:
         tmp_path.replace(settings_path)
         PY
 
-        # Exercise the mount shape that failed in production. /var/run is a
-        # symlink to /run on Ubuntu and is not a valid bwrap tmpfs target; the
-        # project policy masks the canonical /run directory instead.
+        # Exercise the canonical mount shape used by the effective policy.
+        # Claude merges Read(...) permission denies into the Bash sandbox, so
+        # scripts/test_claude_sandbox_policy.py also rejects a lexical
+        # /var/run alias before this preflight can give a false-positive pass.
         bwrap \
           --ro-bind / / \
           --dev /dev \

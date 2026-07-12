@@ -16,7 +16,8 @@
         "/etc/ssl/private"
       ],
       "allowRead": [
-        "."
+        ".",
+        ".git/config"
       ]
     },
     "credentials": {
@@ -35,6 +36,14 @@
         },
         {
           "path": "~/.ssh",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.claude",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.claude.json",
           "mode": "deny"
         }
       ],
@@ -58,18 +67,31 @@
         {
           "name": "ZAI_API_KEY",
           "mode": "deny"
+        },
+        {
+          "name": "GITHUB_TOKEN",
+          "mode": "deny"
+        },
+        {
+          "name": "GH_TOKEN",
+          "mode": "deny"
         }
       ]
     }
   },
   "permissions": {
     "deny": [
-      "Read(~/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.config/gh/**)",
+      "Read(~/.docker/**)",
+      "Read(~/.ssh/**)",
+      "Read(~/.claude/**)",
+      "Read(~/.claude.json)",
+      "Read(./.git/config)",
       "Read(//root/**)",
       "Read(//proc/**)",
       "Read(//sys/**)",
       "Read(//run/**)",
-      "Read(//var/run/**)",
       "Read(//etc/ssh/**)",
       "Read(//etc/ssl/private/**)"
     ]
