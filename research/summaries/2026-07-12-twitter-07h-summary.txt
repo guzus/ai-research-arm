@@ -1,0 +1,10 @@
+Twitter/X AI Pulse - 2026-07-12 07:31:16 UTC
+
+CYCLE: Quiet window; one checkable benchmark note
+
+QUICK HIT:
+• GPT-5.6 Sol now leads CritPt physics-reasoning benchmark (32.3%), ahead of GPT-5.5 Pro (30.6%) and GPT-5.6 Terra (30.0%) - per @WesRoth ⚠
+
+WATCH: Whether independent CritPt/Artificial Analysis tracking corroborates the Sol > Pro > Terra ordering.
+
+Full update on GitHub.
