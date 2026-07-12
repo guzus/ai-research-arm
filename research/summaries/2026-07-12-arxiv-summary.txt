@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-12
+
+TOP 5 PAPERS:
+• OpenCoF - video generation as reasoning: "Chain-of-Frame" models reason via generated frames, not text
+• Slow Thinking Theory - first-principles theory deriving reasoning behavior from active perception
+• LLM-as-Judge Audit - judge upgrades give inconsistent eval results; position/verbosity bias persists
+• Token-Flow Firewall - runtime semantic firewall cuts agent attack success to 12.5%, 97.4% benign pass
+• LingBot-VA 2.0 - native video-action pretraining for generalizable robot control
+
+CATEGORIES: cs.AI 30 | cs.LG 30 | cs.CL 30 | cs.CV 30 | cs.NE 30 (screened; heavy cross-listing overlap)
+
+Full report on GitHub.
