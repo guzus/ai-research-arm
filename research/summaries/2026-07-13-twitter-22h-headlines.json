@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "CLAUDE ARTIFACTS GO MULTIPLAYER AND PUBLICLY SHAREABLE; CLAUDE TAG NOW BUILDS THEM FROM SLACK",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2076789349145092230",
+    "category": "infra"
+  },
+  {
+    "headline": "GOOGLE ANTIGRAVITY ADDS 'AGENT TEAMS' MODE VIA NEW /TEAMWORK-PREVIEW COMMAND",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2076753626542801093",
+    "category": "infra"
+  },
+  {
+    "headline": "GOOGLE PITCHES TPUS TO NVIDIA'S OWN CLOUD CUSTOMERS; NVIDIA COUNTERS WITH FINANCING GUARANTEES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2076766138164252928",
+    "category": "business"
+  },
+  {
+    "headline": "ATOMIC CHAT'S DFLASH HITS 3.4X SPECULATIVE-DECODING SPEEDUP FOR LOCAL QWEN MODELS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2076778070870995321",
+    "category": "opensource"
+  },
+  {
+    "headline": "NEW BENCHMARK LONG-HORIZON-TERMINAL-BENCH TESTS AGENTS ON DENSE-REWARD TERMINAL TASKS",
+    "source": "@_akhaliq",
+    "url": "https://x.com/_akhaliq/status/2076742840172925164",
+    "category": "research"
+  }
+]
