@@ -1,74 +1,9 @@
 {
-  "generatedAt": "2026-07-13T18:29:20.664Z",
-  "windowStart": "2026-07-12T06:00:00.000Z",
-  "windowEnd": "2026-07-15T07:00:00.000Z",
+  "generatedAt": "2026-07-13T20:16:41.614Z",
+  "windowStart": "2026-07-12T08:00:00.000Z",
+  "windowEnd": "2026-07-15T09:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-79703dff6c8c",
-      "kind": "completed",
-      "lane": "RSS",
-      "title": "RSS official announcements",
-      "status": "completed",
-      "start": "2026-07-12T06:21:00.000Z",
-      "end": "2026-07-12T06:30:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "79703dff6c8c",
-      "url": "https://github.com/guzus/ai-research-arm/commit/79703dff6c8c1ada4d4dabf22df8966e6701ba4d"
-    },
-    {
-      "id": "commit-f3e344f1330d",
-      "kind": "completed",
-      "lane": "Community",
-      "title": "HN + Reddit digest",
-      "status": "completed",
-      "start": "2026-07-12T06:41:00.000Z",
-      "end": "2026-07-12T06:50:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "f3e344f1330d",
-      "url": "https://github.com/guzus/ai-research-arm/commit/f3e344f1330d60a1f673ff90ae56e9f72f2858c8"
-    },
-    {
-      "id": "commit-bbb7c1a50605",
-      "kind": "completed",
-      "lane": "RSS",
-      "title": "RSS official announcements",
-      "status": "completed",
-      "start": "2026-07-12T07:00:00.000Z",
-      "end": "2026-07-12T07:09:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "bbb7c1a50605",
-      "url": "https://github.com/guzus/ai-research-arm/commit/bbb7c1a506054c2e8bfea8c3bf3416ada14c3f65"
-    },
-    {
-      "id": "commit-088185b1ba79",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-07-12 07:16 UTC (#410)",
-      "status": "completed",
-      "start": "2026-07-12T07:16:00.000Z",
-      "end": "2026-07-12T07:18:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "088185b1ba79",
-      "url": "https://github.com/guzus/ai-research-arm/commit/088185b1ba790cb14ddad6a9734d53ed6a08998f"
-    },
-    {
-      "id": "commit-ca14b437b737",
-      "kind": "completed",
-      "lane": "Twitter/X",
-      "title": "Twitter/X brief",
-      "status": "completed",
-      "start": "2026-07-12T07:28:00.000Z",
-      "end": "2026-07-12T07:37:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "deepseek-v4-flash",
-      "commit": "ca14b437b737",
-      "url": "https://github.com/guzus/ai-research-arm/commit/ca14b437b7372a2056ed9ca0d42a3a3d8a19d1ae"
-    },
     {
       "id": "commit-111dd3f0a5fd",
       "kind": "completed",
@@ -824,34 +759,69 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/c8ababe525124bc221f3351aaf37e4386c63cb20"
     },
     {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-07-13T18-30-00-000Z",
-      "kind": "scheduled",
-      "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-07-13T18:30:00.000Z",
-      "end": "2026-07-13T18:45:00.000Z",
-      "source": "cron 30 */2 * * *"
+      "id": "commit-8d38c468d22d",
+      "kind": "completed",
+      "lane": "Generative",
+      "title": "CXMT prices the biggest IPO of 2026 this week — on the best quarter the DRAM cycle ever paid for",
+      "status": "completed",
+      "start": "2026-07-13T17:32:00.000Z",
+      "end": "2026-07-13T18:23:00.000Z",
+      "source": "guzus",
+      "model": "research agent",
+      "commit": "8d38c468d22d",
+      "url": "https://github.com/guzus/ai-research-arm/commit/8d38c468d22d4115767280b98000b79f668c0a8c"
     },
     {
-      "id": "scheduled-hourly-twitter-yml-37---6-------2026-07-13T18-37-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-1509fa70c049",
+      "kind": "completed",
       "lane": "Twitter/X",
-      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi)",
-      "status": "scheduled",
-      "start": "2026-07-13T18:37:00.000Z",
-      "end": "2026-07-13T19:37:00.000Z",
-      "source": "cron 37 */6 * * *"
+      "title": "Twitter/X brief",
+      "status": "completed",
+      "start": "2026-07-13T18:20:00.000Z",
+      "end": "2026-07-13T18:29:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "deepseek-v4-flash",
+      "commit": "1509fa70c049",
+      "url": "https://github.com/guzus/ai-research-arm/commit/1509fa70c04918e27429bb5d6ebfbabddbd47122"
     },
     {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-07-13T18-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-07-13T18:45:00.000Z",
-      "end": "2026-07-13T19:15:00.000Z",
-      "source": "cron 45 */2 * * *"
+      "id": "commit-f9f97e6312a5",
+      "kind": "completed",
+      "lane": "Community",
+      "title": "HN + Reddit digest",
+      "status": "completed",
+      "start": "2026-07-13T18:24:00.000Z",
+      "end": "2026-07-13T18:33:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "f9f97e6312a5",
+      "url": "https://github.com/guzus/ai-research-arm/commit/f9f97e6312a5e066c4a4ffa766745441f7a14f0f"
+    },
+    {
+      "id": "commit-2fb86577465a",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-07-13 18:29 UTC (#492)",
+      "status": "completed",
+      "start": "2026-07-13T18:29:00.000Z",
+      "end": "2026-07-13T18:30:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "2fb86577465a",
+      "url": "https://github.com/guzus/ai-research-arm/commit/2fb86577465a7b1c6bc23ea462ebe9abad2b15fa"
+    },
+    {
+      "id": "commit-88f78fea4d54",
+      "kind": "completed",
+      "lane": "RSS",
+      "title": "RSS official announcements",
+      "status": "completed",
+      "start": "2026-07-13T18:29:00.000Z",
+      "end": "2026-07-13T18:38:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "88f78fea4d54",
+      "url": "https://github.com/guzus/ai-research-arm/commit/88f78fea4d547c5cfb296c058dd32a841191ecf1"
     },
     {
       "id": "scheduled-4h-community-yml-19---4-------2026-07-13T20-19-00-000Z",
@@ -1722,6 +1692,36 @@
       "start": "2026-07-15T06:29:00.000Z",
       "end": "2026-07-15T07:14:00.000Z",
       "source": "cron 29 6 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-07-15T06-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-07-15T06:30:00.000Z",
+      "end": "2026-07-15T06:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-37---6-------2026-07-15T06-37-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi)",
+      "status": "scheduled",
+      "start": "2026-07-15T06:37:00.000Z",
+      "end": "2026-07-15T07:37:00.000Z",
+      "source": "cron 37 */6 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-07-15T06-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-07-15T06:45:00.000Z",
+      "end": "2026-07-15T07:15:00.000Z",
+      "source": "cron 45 */2 * * *"
     }
   ]
 }
