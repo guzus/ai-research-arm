@@ -62,7 +62,7 @@ STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure
 
 # Backends generative-research.yml can actually execute (its params step
 # validates against this same set at runtime).
-GEN_RESEARCH_BACKENDS = {"claude", "codex", "deepseek-v4-flash", "glm-5p2"}
+GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "codex", "deepseek-v4-flash", "glm-5p2"}
 
 REQUIRED_AGENT_RUN_SECRETS = {
     "claude-code-oauth-token": "CLAUDE_CODE_OAUTH_TOKEN",
@@ -126,6 +126,7 @@ class Observation:
     det_by_tier: dict[str, str] = field(default_factory=dict)
     det_job_wide: list[str] = field(default_factory=list)
     has_dispatch_fireworks_fallback: bool = False
+    has_fable_dispatch: bool = False
 
 
 def fail(msg: str) -> None:
@@ -245,6 +246,8 @@ def observe_workflow(wf_path: Path) -> Observation:
     on_block = wf.get("on") or wf.get(True) or {}
     dispatch_inputs = ((on_block.get("workflow_dispatch") or {}).get("inputs") or {})
     obs.has_dispatch_fireworks_fallback = "fireworks_fallback" in dispatch_inputs
+    backend_options = ((dispatch_inputs.get("backend") or {}).get("options") or [])
+    obs.has_fable_dispatch = "fable-5" in backend_options
     step_id_to_lane: dict[str, str] = {}
 
     for job in (wf.get("jobs") or {}).values():
@@ -319,11 +322,26 @@ def observe_workflow(wf_path: Path) -> Observation:
                     rerouted = "zai"
                 arg_model = native_model_from_args(with_block)
                 env_pin = ""
-                if arg_model in {"opus", "sonnet", "haiku"}:
+                if "${{" in arg_model:
+                    # A workflow may resolve the literal Claude model at
+                    # runtime. Keep the static default contract explicit so
+                    # the generated matrix can still prove the normal lane
+                    # did not change while documenting opt-in selectors
+                    # separately.
+                    env_pin = str(env.get("BACKEND_MATRIX_DEFAULT_MODEL", ""))
+                    arg_model = ""
+                elif arg_model in {"opus", "sonnet", "haiku"}:
                     pin = str(env.get(f"ANTHROPIC_DEFAULT_{arg_model.upper()}_MODEL")
                               or env.get("ANTHROPIC_MODEL") or "")
                     if pin and "${{" not in pin:
                         env_pin = pin
+                    elif pin and "${{" in pin:
+                        # generative-research has an explicit premium Fable
+                        # dispatch path, while its normal native lane remains
+                        # Sonnet. The runtime resolver drives both API pin and
+                        # writer metadata; this literal records the unchanged
+                        # default for the static mirror check.
+                        env_pin = str(env.get("BACKEND_MATRIX_DEFAULT_MODEL", ""))
                 eff = EFFECTIVE_IF_RE.search(cond)
                 lane_hint = eff.group(1) if eff else ("fireworks" if "fireworks_active" in cond else "")
                 obs.native.append(NativeStep(
@@ -583,6 +601,11 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             rows.append(["(dispatch path) backend=codex", f"`{wf_name}`", "Codex CLI",
                          "OpenAI (ChatGPT subscription auth)", "codex CLI default",
                          f"`{obs.codex_token}`", "—"])
+        if obs.has_fable_dispatch:
+            rows.append(["(dispatch path) backend=fable-5", f"`{wf_name}`",
+                         "Claude Code · claude-code-action (explicit premium selector)",
+                         "Anthropic (native)", "`claude-fable-5`",
+                         "`CLAUDE_CODE_OAUTH_TOKEN`", "hard fail (no model-action retry)"])
 
     return rows
 
