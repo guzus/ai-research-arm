@@ -353,8 +353,8 @@
       "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft.",
       "description": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-12",
-      "timestamp": "2026-07-12T00:00:00Z",
+      "updated_at": "2026-07-13",
+      "timestamp": "2026-07-13T00:00:00Z",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -501,8 +501,8 @@
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.",
       "description": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-07-03",
-      "timestamp": "2026-07-03T00:00:00Z",
+      "updated_at": "2026-07-13",
+      "timestamp": "2026-07-13T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -520,6 +520,7 @@
         "claude-opus-4-8",
         "federal-ai-policy",
         "gemini-3-5-flash",
+        "gpt-5-6",
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openai",
@@ -566,8 +567,8 @@
       "summary": "Anthropic's 2026-05-28 frontier flagship, succeeding Opus 4.7 at flat pricing with a +4.9pp agentic-coding lift, +137 knowledge-work Elo, and a Fast Mode that runs ~2.5× faster and 3× cheaper.",
       "description": "Anthropic's 2026-05-28 frontier flagship, succeeding Opus 4.7 at flat pricing with a +4.9pp agentic-coding lift, +137 knowledge-work Elo, and a Fast Mode that runs ~2.5× faster and 3× cheaper.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-06-10",
-      "timestamp": "2026-06-10T00:00:00Z",
+      "updated_at": "2026-07-13",
+      "timestamp": "2026-07-13T00:00:00Z",
       "file": "entities/claude-opus-4-8.md",
       "aliases": [
         "Claude Opus 4.8",
@@ -578,6 +579,7 @@
         "agent-lifespan-engineering",
         "anthropic",
         "claude-fable-5",
+        "claude-sonnet-5",
         "dynamic-workflows"
       ],
       "inbound": [
@@ -662,6 +664,7 @@
       ],
       "inbound": [
         "anthropic",
+        "claude-opus-4-8",
         "claude-science",
         "federal-ai-policy",
         "open-weights"
@@ -823,6 +826,7 @@
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "prometheus",
+        "soofi-s-30b-a3b",
         "spacex",
         "tencent-hunyuan-hy3",
         "zhipu-glm-5-2"
@@ -993,7 +997,8 @@
         "noam-shazeer",
         "open-weights",
         "openai",
-        "sk-telecom"
+        "sk-telecom",
+        "soofi-s-30b-a3b"
       ]
     },
     {
@@ -1162,8 +1167,8 @@
       "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%, reportedly solving a 50-year-old math problem with 64 subagents.",
       "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%, reportedly solving a 50-year-old math problem with 64 subagents.",
       "created_at": "2026-06-20",
-      "updated_at": "2026-07-12",
-      "timestamp": "2026-07-12T00:00:00Z",
+      "updated_at": "2026-07-13",
+      "timestamp": "2026-07-13T00:00:00Z",
       "file": "entities/gpt-5-6.md",
       "aliases": [
         "GPT-5.6",
@@ -1186,6 +1191,7 @@
         "zhipu-glm-5-2"
       ],
       "inbound": [
+        "claude-fable-5",
         "federal-ai-policy",
         "openai",
         "xai"
@@ -1651,6 +1657,7 @@
         "claude-fable-5",
         "open-weights",
         "openrouter",
+        "soofi-s-30b-a3b",
         "zhipu-glm-5-2"
       ]
     },
@@ -1880,8 +1887,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-07-01",
-      "timestamp": "2026-07-01T00:00:00Z",
+      "updated_at": "2026-07-13",
+      "timestamp": "2026-07-13T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -1908,6 +1915,7 @@
         "openai",
         "openrouter",
         "sakana-ai",
+        "soofi-s-30b-a3b",
         "xiaomi-mimo-v2-5-pro",
         "zhipu-glm-5-2"
       ],
@@ -1925,6 +1933,7 @@
         "nano-banana-2-lite",
         "openrouter",
         "sakana-ai",
+        "soofi-s-30b-a3b",
         "tencent-hunyuan-hy3",
         "xiaomi-mimo-v2-5-pro",
         "zhipu-glm-5-2"
@@ -1943,8 +1952,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) as GPT-5.6 Sol Ultra leads the CritPt physics benchmark.",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) as GPT-5.6 Sol Ultra leads the CritPt physics benchmark.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-07-12",
-      "timestamp": "2026-07-12T00:00:00Z",
+      "updated_at": "2026-07-13",
+      "timestamp": "2026-07-13T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -2249,6 +2258,39 @@
       ]
     },
     {
+      "slug": "soofi-s-30b-a3b",
+      "title": "Soofi S 30B-A3B",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "open-weights",
+        "sovereign-ai",
+        "germany",
+        "mixture-of-experts"
+      ],
+      "summary": "Deutsche Telekom-backed sovereign open German/English MoE foundation model trained on ~27T tokens, claimed strongest fully-open model on combined English+German benchmarks.",
+      "description": "Deutsche Telekom-backed sovereign open German/English MoE foundation model trained on ~27T tokens, claimed strongest fully-open model on combined English+German benchmarks.",
+      "created_at": "2026-07-13",
+      "updated_at": "2026-07-13",
+      "timestamp": "2026-07-13T00:00:00Z",
+      "file": "entities/soofi-s-30b-a3b.md",
+      "aliases": [
+        "Soofi S",
+        "Soofi S 30B-A3B",
+        "Soofi"
+      ],
+      "outbound": [
+        "deepseek",
+        "federal-ai-policy",
+        "moonshot-kimi-k2-7-code",
+        "open-weights",
+        "zhipu-glm-5-2"
+      ],
+      "inbound": [
+        "open-weights"
+      ]
+    },
+    {
       "slug": "spacex",
       "title": "SpaceX",
       "type": "entity",
@@ -2458,6 +2500,7 @@
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openrouter",
+        "soofi-s-30b-a3b",
         "tencent-hunyuan-hy3"
       ]
     }
@@ -2728,6 +2771,10 @@
     "sohu": "etched",
     "sol": "gpt-5-6",
     "sonnet 5": "claude-sonnet-5",
+    "soofi": "soofi-s-30b-a3b",
+    "soofi s": "soofi-s-30b-a3b",
+    "soofi s 30b-a3b": "soofi-s-30b-a3b",
+    "soofi-s-30b-a3b": "soofi-s-30b-a3b",
     "space exploration technologies": "spacex",
     "spacex": "spacex",
     "spacexai": "cursor",
@@ -2751,6 +2798,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-07-13",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-13 digest (OpenAI's third Codex/ChatGPT Work capacity intervention in 48 hours undercuts its own inference-cost claims; Anthropic officially confirms Fable 5 access + 50%-higher Claude Code rate limits extended through July 19 and ships a built-in Claude Code browser; OpenAI escalates its on-record rebuttal to Apple's trade-secrets suit as S&P Global cuts Oracle's credit rating over OpenAI exposure; Nathan Lambert flags White House discussions of a possible open-weight-models executive order the same day Deutsche Telekom-backed Soofi S 30B-A3B ships as a sovereign open German/English model; Claude Opus 4.8 takes new SOTA on the GSO benchmark). Created 1 (soofi-s-30b-a3b entity — Deutsche Telekom-backed sovereign open German/English MoE model, ~27T tokens), updated 6 (gpt-5-6 — third capacity intervention in 48h; claude-fable-5 — rate-limit extension through July 19 confirmed + Claude Code built-in browser; apple — OpenAI's on-record rebuttal escalation; openai — capacity intervention + rebuttal + S&P Oracle credit-risk citation; open-weights — possible open-weight-models executive order + Soofi S ship; claude-opus-4-8 — new SOTA on GSO benchmark)."
+    },
     {
       "date": "2026-07-12",
       "op": "ingest",
@@ -2845,11 +2897,6 @@
       "date": "2026-06-14",
       "op": "ingest",
       "summary": "Ingested 2026-06-14 digest (Fable 5 export-ban saga goes on-record). Created 2 (amazon entity — Jassy→Bessent jailbreak briefing triggered the export crackdown on Anthropic's own largest investee + Cerebras/AWS; open-weights theme — GLM 5.2 MIT / Kimi K2.7-Code 12x-cheaper / \"Open source AI must win\" 1480pts / r/LocalLLaMA torrent-network backlash surging on the shutdown). Updated 6 (anthropic — Sacks on-record \"Dario refused\" account vs Anthropic \"misunderstanding\" blog, Amazon trigger, both models dark 36h+, IDC 19% penetration, model-substitution notification walk-back; claude-fable-5 — both models offline for all customers, 88% FrontierMath, torrent hoax, open-weights backlash; openai — ~42-state NY-led AG subpoena June 12 + GPT-Realtime-2 + IDC ahead of Anthropic; federal-ai-policy — on-record export standoff narrowed to Anthropic-specific per The Information + 42-state subpoena + regulatory clock + Census DP ban; agentic-ai-security — capability-misuse drove first govt model shutdown + SABER 54% + domain-finetuning safety degradation; spacex — IPO completed ~$161 close/$75B/$1.75T largest US IPO on record + Mistral/EngineAI IPO-summer frame)."
-    },
-    {
-      "date": "2026-06-12",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-12 digest. Created 2 (prometheus entity — Bezos $12B Series B at ~$41B, industrial AI's first megaround; artificial-general-engineer concept — AI-for-manufacturing thesis). Updated 6 (spacex — SPCX Nasdaq debut live at $135/~$1.77T; openai — Ona acquisition for Codex runtime + API price-cut war vs Anthropic + BBVA 100k seats; anthropic — invisible-guardrails reversal/apology + price-war pressure; claude-fable-5 — covert-throttle safeguard reversed + Endor \"mid-tier coding\"/Willison \"relentlessly proactive\"; agentic-ai-security — DeepMind $10M multi-agent fund + Fable guardrails reversal + German AI-Overviews liability + autonomous-drone lethality + Claw Patrol firewall; ai-capex — Prometheus industrial-AI megaround + SpaceX debut + OpenAI-Anthropic price war)."
     }
   ]
 }

@@ -50,6 +50,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[salesforce]] — Enterprise-CRM giant betting on agentic AI (Agentforce); bought AI customer-service platform Fin for $3.6B (2026-06-15), the day's largest confirmed AI M&A.
 - [[sk-hynix]] — South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company.
 - [[sk-telecom]] — South Korea's largest carrier and ~$100M Anthropic investor; named 2026-06-21 as the Project Glasswing partner whose Mythos 5 access helped trigger the Fable 5 export suspension.
+- [[soofi-s-30b-a3b]] — Deutsche Telekom-backed sovereign open German/English MoE model (~27T tokens); claimed strongest fully-open model on combined EN+DE benchmarks, released 2026-07-13.
 - [[spacex]] — Record IPO (Nasdaq: SPCX, debuted 2026-06-12 at $135/share, ~$1.77T valuation) anchoring the 2026 AI-financing issuance wave.
 - [[tencent-hunyuan-hy3]] — Tencent Hunyuan's 295B open-weight MoE model under Apache 2.0, reported new open SOTA on the MCP-Atlas benchmark, released 2026-07-06.
 - [[xai]] — Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business renting Colossus capacity to rival labs at $2B+/month, and by Grok 4.5 — a from-scratch 1.5T "V9" model in private beta at SpaceX/Tesla claiming Opus-level performance.
