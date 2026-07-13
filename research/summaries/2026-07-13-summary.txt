@@ -1,10 +1,15 @@
 AI News - 2026-07-13
 
-No qualifying breaking stories in the last 24-48 hours beyond what was already covered in yesterday's report (Apple v. OpenAI lawsuit, OpenAI safety-org reshuffle, SK Hynix's $26.5B ADR listing).
+TOP STORIES:
+• TCS plans up to 8,900 AI "forward-deployed engineer" hires, weighs AI acquisitions (Reuters, July 13)
+• No other qualifying breaking stories beyond yesterday's report (Apple v. OpenAI lawsuit, OpenAI safety-org reshuffle, SK Hynix's $26.5B ADR listing)
+
+KEY NUMBERS:
+• TCS FDE build-out: 5,900-8,900 people (1-1.5% of headcount)
 
 CONTEXT (not new, outside 24-48h window but widely discussed):
 • Alibaba banned Claude Code internally over alleged backdoor code (effective July 10)
-• Anthropic signed a $19B TeraWulf data-center lease (July 6)
-• SambaNova closed a $1B Series F at an $11B valuation (July 8)
+• Meta's $13B Alberta data center + Iris AI chip production timeline (July 8-9)
+• Fed's new AI/Productivity task force co-led by Marc Andreessen (July 9)
 
 Full report on GitHub.
