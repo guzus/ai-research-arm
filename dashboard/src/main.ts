@@ -3533,6 +3533,158 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
   );
 }
 
+// ── Related Research ("playlist") ─────────────────────────
+// A short, ordered reading path appended to the bottom of every generative
+// article. Relatedness mirrors scripts/prior_context.py EXACTLY so the
+// dashboard's notion of "related" matches the pipeline's: tokenize
+// title+prompt+tags, score each candidate by tagOverlap×3 + titleOverlap×2 +
+// promptOverlap×1, drop sub-threshold (<2) matches, then pad with most-recent
+// so the playlist is never a dead end. Pure client-side over the in-memory
+// manifest.generative — no Python/prebuild/pipeline change; a newly published
+// article automatically joins the playlists of everything it relates to on the
+// next deploy.
+
+// Stopwords + tokenizer ported verbatim from scripts/prior_context.py so the
+// two relatedness implementations can't silently drift.
+const RELATED_STOPWORDS = new Set(
+  (
+    'a an the of in on at by for to with from as is are was were be been being ' +
+    'and or but not no nor so if then than that this these those it its ' +
+    'about into over after before between through across against during without ' +
+    'within above below up down out under again further once ' +
+    'i you he she they we us them me him her his our their your my mine ours yours theirs ' +
+    'what which who whom whose how why where when ' +
+    'report brief overview update analysis essay article'
+  ).split(/\s+/),
+);
+
+function relatedTokenize(text: string): Set<string> {
+  const out = new Set<string>();
+  const matches = (text || '').match(/[A-Za-z][A-Za-z0-9-]{1,}/g) || [];
+  for (const raw of matches) {
+    const t = raw.toLowerCase();
+    if (t.length > 2 && !RELATED_STOPWORDS.has(t)) out.add(t);
+  }
+  return out;
+}
+
+function relatedOverlap(topic: Set<string>, candidate: Set<string>): number {
+  let n = 0;
+  candidate.forEach((t) => {
+    if (topic.has(t)) n += 1;
+  });
+  return n;
+}
+
+type RelatedResearch = { row: GenResearchRow; score: number; sharedTags: string[] };
+
+function relatedResearchRows(
+  current: GenResearchRow,
+  all: GenResearchRow[],
+  limit = 5,
+): RelatedResearch[] {
+  // The current article is the "topic"; score every other row the way
+  // prior_context.score_row() scores a row against a topic's tokens.
+  const topicTokens = relatedTokenize(
+    [current.title, current.prompt, (current.tags || []).join(' ')].join(' '),
+  );
+  const currentTags = new Set((current.tags || []).map((t) => t.toLowerCase()));
+  const scored: RelatedResearch[] = [];
+  for (const row of all) {
+    if (!row || row.slug === current.slug || row.file === current.file) continue;
+    const score =
+      3 * relatedOverlap(topicTokens, relatedTokenize((row.tags || []).join(' '))) +
+      2 * relatedOverlap(topicTokens, relatedTokenize(row.title || '')) +
+      1 * relatedOverlap(topicTokens, relatedTokenize(row.prompt || ''));
+    if (score >= 2) {
+      const sharedTags = (row.tags || []).filter((t) => currentTags.has(t.toLowerCase()));
+      scored.push({ row, score, sharedTags });
+    }
+  }
+  // Highest score first; tie-break newest-first for stable, fresh ordering.
+  scored.sort(
+    (a, b) => b.score - a.score || (b.row.created_at || '').localeCompare(a.row.created_at || ''),
+  );
+  if (scored.length >= limit) return scored.slice(0, limit);
+  // Pad with most-recent OTHER articles so even an outlier ends on a
+  // continuation, not a dead end (the playlist always has a next track).
+  const taken = new Set(scored.map((s) => s.row.slug));
+  taken.add(current.slug);
+  const recent = all
+    .filter((r) => r && !taken.has(r.slug))
+    .slice()
+    .sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''));
+  for (const r of recent) {
+    if (scored.length >= limit) break;
+    scored.push({ row: r, score: 0, sharedTags: [] });
+  }
+  return scored.slice(0, limit);
+}
+
+function renderRelatedResearchHtml(current: GenResearchRow, related: RelatedResearch[]): string {
+  if (!related.length) return '';
+  // Name the playlist after the dominant shared tag so it reads as a themed
+  // reading path, not a loose link dump. Fall back to the article's own first
+  // tag, then to a generic label.
+  const tagFreq = new Map<string, number>();
+  related.forEach((r) => r.sharedTags.forEach((t) => tagFreq.set(t, (tagFreq.get(t) || 0) + 1)));
+  let playlistTag = '';
+  let best = 0;
+  tagFreq.forEach((n, t) => {
+    if (n > best) {
+      best = n;
+      playlistTag = t;
+    }
+  });
+  if (!playlistTag && (current.tags || []).length) playlistTag = current.tags[0];
+  const eyebrow = playlistTag ? 'Playlist · ' + escapeHtml(playlistTag) : 'Playlist';
+
+  const cards = related
+    .map((r, i) => {
+      const created = new Date(r.row.created_at);
+      const when = isNaN(created.getTime()) ? '' : timeAgo(created);
+      const chips = r.sharedTags
+        .slice(0, 3)
+        .map((t) => '<span class="gen-related-tag">' + escapeHtml(t) + '</span>')
+        .join('');
+      return [
+        // data-slug is picked up by the existing content click + keydown
+        // handlers (activeTab==='research' branch) for instant SPA nav.
+        '<li class="gen-related-card" data-slug="' +
+          escapeHtml(r.row.slug) +
+          '" tabindex="0" role="link" aria-label="' +
+          escapeHtml(r.row.title) +
+          '">',
+        '  <span class="gen-related-num" aria-hidden="true">' + (i + 1) + '</span>',
+        '  <span class="gen-related-body">',
+        '    <span class="gen-related-title">' + escapeHtml(r.row.title) + '</span>',
+        '    <span class="gen-related-meta">',
+        '      <span class="gen-related-model">' + escapeHtml(r.row.model) + '</span>',
+        when ? '      <span class="gen-related-time">' + escapeHtml(when) + '</span>' : '',
+        chips,
+        '    </span>',
+        '  </span>',
+        '  <span class="gen-related-go" aria-hidden="true">→</span>',
+        '</li>',
+      ]
+        .filter(Boolean)
+        .join('\n');
+    })
+    .join('\n');
+
+  return [
+    '<section class="gen-related" aria-label="Related research">',
+    '  <div class="gen-related-head">',
+    '    <span class="gen-related-eyebrow">' + eyebrow + '</span>',
+    '    <h2 class="gen-related-heading">Related Research</h2>',
+    '  </div>',
+    '  <ol class="gen-related-list">',
+    cards,
+    '  </ol>',
+    '</section>',
+  ].join('\n');
+}
+
 function renderResearchDoc(row: GenResearchRow, body: string): void {
   // The article body is inserted verbatim and search matches are highlighted
   // AFTER render by walking the DOM's text nodes (see highlightSearchMatches),
@@ -3541,6 +3693,14 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
   const docHtml = body;
   const created = new Date(row.created_at);
   const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
+  // Related Research "playlist" — trusted, escapeHtml'd dashboard chrome
+  // appended BELOW the article body (outside article.ara-doc, so
+  // enhanceAraArticle/TOC and search-highlight never walk it). Reads the
+  // already-loaded module-level manifest.
+  const relatedHtml = renderRelatedResearchHtml(
+    row,
+    relatedResearchRows(row, manifest?.generative ?? [], 5),
+  );
 
   setSafeContent(
     content,
@@ -3560,6 +3720,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
       '  <div class="content-card-body">',
       docHtml,
       '  </div>',
+      relatedHtml,
       '</div>',
     ].join('\n'),
   );
