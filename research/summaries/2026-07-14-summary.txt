@@ -1,0 +1,13 @@
+AI News - 2026-07-14
+
+TOP STORIES:
+• Meta commits $50B+ to Louisiana Hyperion data center, expanding to 5 gigawatts of AI training capacity
+• Anthropic extends free Claude Fable 5 access again, through July 19, countering OpenAI's GPT-5.6 launch
+• Gemini 3.5 Pro's July 17 GA target remains unconfirmed by Google as of July 13
+
+KEY NUMBERS:
+• $50B+: Meta's total Louisiana Hyperion data center investment (up from $10B at inception)
+• 5 GW: Target IT capacity for the Hyperion campus by ~2032
+• 2nd: Number of times Anthropic has extended free Fable 5 access in one week
+
+Full report on GitHub.
