@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.
 created_at: 2026-06-10
-timestamp: 2026-07-03T00:00:00Z
+timestamp: 2026-07-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
@@ -275,6 +276,19 @@ every feed on launch day.
   argument some (e.g. @kimmonismus) read as retroactive justification for the
   tightened classifiers; Epoch itself hedges on causation. See
   [[agentic-ai-security]] and [[federal-ai-policy]] (ARA digest 2026-07-03).
+
+- **Third rate-limit extension confirmed; Claude Code ships a built-in browser
+  (2026-07-13).** [[anthropic]] officially confirmed **Fable 5 access and a
+  50%-higher Claude Code rate limit extended through July 19** via its
+  **@claudeai** account, multi-source corroborated (@mark_k, @testingcatalog)
+  — converting three cycles of user speculation into a sourced announcement.
+  Skeptics note this is the **third such extension** and may reflect
+  competitive pressure from [[gpt-5-6|GPT-5.6]]'s usage-cap turmoil (see
+  [[gpt-5-6]]) rather than confidence in Fable 5's underlying capacity.
+  Separately, **Claude Code shipped a built-in browser** letting the agent
+  read, click, and type on external websites — extending the tool-use surface
+  well past the file-and-terminal sandbox (The Decoder) (ARA digest
+  2026-07-13).
 
 ## Open questions
 

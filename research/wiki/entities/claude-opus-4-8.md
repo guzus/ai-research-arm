@@ -6,8 +6,9 @@ aliases: ["Claude Opus 4.8", "Opus 4.8", "claude-opus-4-8"]
 tags: [model-release, anthropic, claude, frontier-model, alignment]
 description: Anthropic's 2026-05-28 frontier flagship, succeeding Opus 4.7 at flat pricing with a +4.9pp agentic-coding lift, +137 knowledge-work Elo, and a Fast Mode that runs ~2.5× faster and 3× cheaper.
 created_at: 2026-05-29
-timestamp: 2026-06-10T00:00:00Z
+timestamp: 2026-07-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
@@ -50,6 +51,13 @@ Anthropic of the year. GA across **claude.ai, Anthropic API, Bedrock, Vertex AI*
   **benign queries** at ~2× token burn. Pricing-wise Fable 5 lists at **~2× Opus
   4.8 ($10/$50 per M)**, making Opus 4.8 the cheaper, always-safeguarded workhorse
   beneath the new flagship (ARA digest 2026-06-10).
+
+- **New SOTA on the GSO benchmark (2026-07-13).** Per two independent
+  accounts, Opus 4.8 takes new SOTA on the **GSO** benchmark, ahead of
+  **GPT-5.5-xhigh (4th)** and **[[claude-sonnet-5|Claude Sonnet 5]] (5th)** —
+  a rare case of an older Claude flagship still leading a fresh leaderboard
+  more than six weeks after [[claude-fable-5|Fable 5/Mythos 5]] shipped as
+  the nominal successor line (ARA digest 2026-07-13).
 
 ## Open questions
 - **Successor sequencing — resolved.** Opus 4.8 was a **single-cycle bridge**:

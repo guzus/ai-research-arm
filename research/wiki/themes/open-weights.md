@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
 created_at: 2026-06-14
-timestamp: 2026-07-01T00:00:00Z
+timestamp: 2026-07-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-21", path: research/digest/2026-06-21-digest.md}
@@ -188,6 +189,18 @@ fragile and local weights look like insurance.
   dominant local-LLM argument of the day, and **Zluda 6** (run unmodified CUDA
   on non-Nvidia GPUs) echoed the same vendor-lock-in theme (ARA digest
   2026-07-01).
+
+- **"6 months to live for open models" — a possible executive order surfaces
+  as a sovereign open model ships (2026-07-13).** Nathan Lambert
+  (Interconnects) flagged **White House discussions of a possible executive
+  order on open-weight models** as "the most serious test to date of open
+  source AI's viability" — a policy threat distinct from the existing
+  30-day pre-release-review regime (see [[federal-ai-policy]]), aimed at the
+  open-weights wave itself rather than frontier-lab gating. The same day,
+  **[[soofi-s-30b-a3b|Soofi S 30B-A3B]]** — a Deutsche Telekom-backed,
+  sovereign German/English open MoE model — shipped with weights, data, and
+  training code under permissive licenses, underscoring what a chilling EO
+  would put at risk (ARA digest 2026-07-13).
 
 ## Open questions
 

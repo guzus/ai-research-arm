@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) as GPT-5.6 Sol Ultra leads the CritPt physics benchmark.
 created_at: 2026-05-30
-timestamp: 2026-07-12T00:00:00Z
+timestamp: 2026-07-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA model ticket — Apple v. OpenAI lawsuit", path: research/models/tickets/apple-openai-lawsuit-2026-07.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
@@ -401,6 +402,19 @@ materially reshape how the lab is positioned heading into its IPO window:
   Pro Deep Think at 25.7% and Claude Opus 4.8 at 20.9%, giving OpenAI all
   top-5 spots. *Reported via a single secondary-source tweet chain, not an
   independently verified leaderboard* (ARA digest 2026-07-12).
+- **Third capacity intervention in 48 hours; on-record rebuttal to Apple;
+  S&P cuts Oracle's rating over OpenAI credit risk (2026-07-13).** Codex/ChatGPT
+  Work lead @thsottiaux announced OpenAI is **temporarily removing the 5-hour
+  usage cap** and **banking a reset for 500K users** — the **third capacity
+  move in 48 hours**, read by at least one close OpenAI-watcher as PR
+  management of a real capacity/cost problem rather than a fix, and
+  undercutting OpenAI's own "halved inference cost" claims (see [[gpt-5-6]]).
+  OpenAI's Director of Strategic Communications also posted a **fuller
+  on-record rebuttal** to [[apple]]'s trade-secrets suit, its most visible
+  pushback since the July 12 filing. Separately, **S&P Global cut Oracle's
+  credit rating**, explicitly naming **OpenAI a "key credit risk"** for
+  Oracle — the financing-risk read tying directly into the broader
+  [[ai-capex]] debt/leverage narrative (ARA digest 2026-07-13).
 
 ## Open questions
 

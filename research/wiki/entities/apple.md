@@ -6,8 +6,9 @@ aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Comput
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
 description: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft.
 created_at: 2026-06-08
-timestamp: 2026-07-12T00:00:00Z
+timestamp: 2026-07-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA model ticket — Apple v. OpenAI lawsuit", path: research/models/tickets/apple-openai-lawsuit-2026-07.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
@@ -92,6 +93,14 @@ not announced.
   action that puts Apple on the offensive against a company it also
   distributes through the reported "Extensions" layer above (ARA digest
   2026-07-12).
+- **OpenAI escalates its on-record rebuttal (2026-07-13).** [[openai]]'s
+  Director of Strategic Communications posted a **fuller on-record rebuttal**
+  to Apple's trade-secrets suit — the company's most visible pushback yet,
+  following Bloomberg's earlier report that OpenAI has "no interest in other
+  companies' trade secrets." The same cycle, **S&P Global cut Oracle's credit
+  rating**, naming OpenAI a "key credit risk" for Oracle — a financing-risk
+  data point adjacent to the lawsuit rather than part of it, but landing in
+  the same news cycle as the dispute hardens (ARA digest 2026-07-13).
 
 ## Open questions
 

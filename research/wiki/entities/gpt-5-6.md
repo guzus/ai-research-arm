@@ -6,8 +6,9 @@ aliases: ["GPT-5.6", "GPT 5.6", "GPT-5.6 Pro", "GPT-5.6 Mini", "GPT-5.6 Sol", "G
 tags: [model-release, openai, gpt, frontier-model, government-gated, preview]
 description: OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%, reportedly solving a 50-year-old math problem with 64 subagents.
 created_at: 2026-06-20
-timestamp: 2026-07-12T00:00:00Z
+timestamp: 2026-07-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
@@ -95,6 +96,17 @@ gated external preview); GA is "in the coming weeks."
   capacity-scaling friction, not independently confirmed. *The CritPt
   ranking traces to a single secondary-source tweet, not a verified
   leaderboard* (ARA digest 2026-07-12).
+
+- **Third capacity intervention in 48 hours — the usage-cap backlash escalates
+  (2026-07-13).** Codex/ChatGPT Work lead **@thsottiaux** announced [[openai]]
+  is **temporarily removing the 5-hour usage cap** and **banking a reset for
+  500K users**, the **third capacity move in 48 hours** following two prior
+  resets since Friday. At least one close OpenAI-watcher reads the pattern as
+  **PR management of a real capacity/cost problem** rather than a genuine fix
+  — undercutting OpenAI's own "halved inference cost" claims from the GPT-5.6
+  GA window and landing the same cycle [[anthropic]] extended
+  [[claude-fable-5|Claude Code's]] own rate-limit boost through July 19 (ARA
+  digest 2026-07-13).
 
 ## Open questions
 
