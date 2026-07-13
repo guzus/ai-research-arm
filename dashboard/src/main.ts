@@ -914,8 +914,8 @@ function setSafeContent(
   const addTags = ['mark', 'article', 'figure', 'figcaption', 'audio', 'nav', 'section', 'details', 'summary'];
   // `target` is NOT in DOMPurify's default allowlist; every external link
   // this app emits pairs target="_blank" with rel="noopener", so allowing
-  // it restores the intended new-tab behavior (ticket odds chips, sources).
-  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-spark', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
+  // it restores the intended new-tab behavior (ticket sources, tweet links).
+  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-question', 'data-odds-outcome', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'aria-haspopup', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -2521,11 +2521,15 @@ function loadTickets(): Promise<Ticket[] | null> {
 
 // ── Polymarket odds (models tab) ─────────────────────
 // Ticket cards with `polymarket` mappings show live market odds: one chip
-// per mapping (probability from the gamma event snapshot, then a 60s CLOB
-// midpoint poll while the tab is visible) plus a price-history sparkline
-// for the primary (first) mapping. Everything degrades gracefully: any
-// fetch failure leaves an em-dash chip titled "odds unavailable" and the
-// tab renders fully with Polymarket unreachable.
+// per mapping, name-first — the market question plus its probability
+// (gamma event snapshot, then a 60s CLOB midpoint poll while the tab is
+// visible). The chip is a button: the price-history chart and the
+// Polymarket link are detail-on-demand in the modal it opens, and history
+// is fetched lazily on first modal open per token. Everything degrades
+// gracefully: any fetch failure leaves an em-dash chip titled "odds
+// unavailable", the modal still opens (question + "chart unavailable" +
+// the API-free Polymarket link), and the tab renders fully with
+// Polymarket unreachable.
 //
 // API notes (verified against the live services):
 // - GET gamma-api.polymarket.com/events?slug=<event_slug> → [event]; each
@@ -2674,23 +2678,24 @@ function fmtOddsPct(price: number): string {
 }
 
 // Static chip skeleton (em-dash placeholder); hydrateTicketOdds fills prices
-// in after the grid paints. Chips are links to the Polymarket event page.
+// in after the grid paints. The market NAME is what tells a user which event
+// is priced, so the chip shows the question (CSS-ellipsized; full text in
+// title) + the probability. It's a button — clicking opens the odds modal
+// (chart + Polymarket link), an in-app action rather than an external link.
 function ticketOddsSectionHtml(ticket: Ticket): string {
   const mappings = ticketPolymarketMappings(ticket);
   if (!mappings.length) return '';
-  const chips = mappings.map((m, i) => {
-    const label = (m.outcome && m.outcome.trim()) || m.question;
-    const spark = i === 0
-      ? `<span class="ticket-odds-spark-slot" data-odds-spark="${escapeHtml(m.token_id)}" aria-hidden="true"></span>`
-      : '';
-    return `<a class="ticket-odds-chip" href="https://polymarket.com/event/${encodeURIComponent(m.event_slug)}"
-      target="_blank" rel="noopener noreferrer"
+  const chips = mappings.map((m) => {
+    const outcome = (m.outcome && m.outcome.trim()) || '';
+    return `<button class="ticket-odds-chip" type="button"
       data-odds-event="${escapeHtml(m.event_slug)}" data-odds-market="${escapeHtml(m.market_id)}" data-odds-token="${escapeHtml(m.token_id)}"
-      title="Polymarket: ${escapeHtml(m.question)}"
-      aria-label="Polymarket odds: ${escapeHtml(m.question)}">
+      data-odds-question="${escapeHtml(m.question)}" data-odds-outcome="${escapeHtml(outcome)}"
+      title="${escapeHtml(m.question)}"
+      aria-haspopup="dialog"
+      aria-label="Polymarket odds: ${escapeHtml(m.question)} — open market details">
+      <span class="ticket-odds-label">${escapeHtml(m.question)}</span>
       <span class="ticket-odds-pct">—</span>
-      <span class="ticket-odds-label">${escapeHtml(label)}</span>
-    </a>${spark}`;
+    </button>`;
   }).join('');
   return `<div class="ticket-odds">${chips}</div>`;
 }
@@ -2699,13 +2704,17 @@ function applyOddsToChip(chip: HTMLElement, price: number, closed: boolean): voi
   const pctEl = chip.querySelector<HTMLElement>('.ticket-odds-pct');
   if (!pctEl) return;
   chip.classList.remove('is-unavailable');
+  // Compose the title from the stored question (never regex the live title —
+  // questions can legally contain " — ") so repeated applies stay stable.
+  const question = chip.dataset.oddsQuestion || '';
   if (closed) {
     const yes = price >= 0.5;
     chip.classList.add('is-resolved', yes ? 'is-resolved-yes' : 'is-resolved-no');
     pctEl.textContent = `${yes ? '✓' : '✗'} ${Math.round(price * 100)}%`;
-    chip.title = `${chip.title.replace(/ — .*$/, '')} — resolved ${yes ? 'Yes' : 'No'}`;
+    chip.title = `${question} — resolved ${yes ? 'Yes' : 'No'}`;
   } else {
     pctEl.textContent = fmtOddsPct(price);
+    chip.title = question; // restore after a transient unavailable pass
   }
 }
 
@@ -2716,17 +2725,28 @@ function markChipUnavailable(chip: HTMLElement): void {
   chip.title = 'odds unavailable';
 }
 
-// Tiny inline SVG sparkline (~120x28) of the primary market's price history.
-// Built via DOM APIs (no sanitizer round-trip, no libraries); stroke uses
-// currentColor so the CSS theme decides the color in light and dark mode.
-function buildOddsSparkline(points: OddsHistoryPoint[]): SVGSVGElement {
-  const W = 120;
-  const H = 28;
-  const PAD = 2.5;
+function fmtOddsChartDate(unixSec: number): string {
+  return new Date(unixSec * 1000).toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+  });
+}
+
+// Price-history line chart for the odds modal (~panel width x 180px).
+// Built via DOM APIs (no sanitizer round-trip, no chart libraries); stroke
+// and labels use currentColor so the CSS theme decides the color in light
+// and dark mode. `width` is the measured container width so text renders at
+// natural pixel size (no preserveAspectRatio="none" glyph distortion).
+function buildOddsModalChart(points: OddsHistoryPoint[], width: number): SVGSVGElement {
+  const W = Math.max(280, Math.min(900, Math.round(width)));
+  const H = 180;
+  const PAD_L = 12;
+  const PAD_R = 64; // gutter for the latest-% label
+  const PAD_T = 18;
+  const PAD_B = 32; // room for the start/end date labels
   // Downsample long series but always keep the final point.
   let series = points;
-  if (series.length > 80) {
-    const stride = Math.ceil(series.length / 80);
+  if (series.length > 320) {
+    const stride = Math.ceil(series.length / 320);
     const sampled = series.filter((_, i) => i % stride === 0);
     if (sampled[sampled.length - 1] !== series[series.length - 1]) sampled.push(series[series.length - 1]);
     series = sampled;
@@ -2734,8 +2754,10 @@ function buildOddsSparkline(points: OddsHistoryPoint[]): SVGSVGElement {
   const t0 = series[0].t;
   const t1 = series[series.length - 1].t;
   const tSpan = Math.max(1, t1 - t0);
-  let pMin = Math.min(...series.map((pt) => pt.p));
-  let pMax = Math.max(...series.map((pt) => pt.p));
+  const actualMin = Math.min(...series.map((pt) => pt.p));
+  const actualMax = Math.max(...series.map((pt) => pt.p));
+  let pMin = actualMin;
+  let pMax = actualMax;
   if (pMax - pMin < 0.05) {
     // Flat series: pad the band so the line doesn't hug an edge.
     const mid = (pMax + pMin) / 2;
@@ -2743,33 +2765,71 @@ function buildOddsSparkline(points: OddsHistoryPoint[]): SVGSVGElement {
     pMax = Math.min(1, mid + 0.025);
   }
   const pSpan = Math.max(1e-6, pMax - pMin);
-  const x = (t: number) => PAD + ((t - t0) / tSpan) * (W - 2 * PAD);
-  const y = (p: number) => H - PAD - ((p - pMin) / pSpan) * (H - 2 * PAD);
+  const x = (t: number) => PAD_L + ((t - t0) / tSpan) * (W - PAD_L - PAD_R);
+  const y = (p: number) => H - PAD_B - ((p - pMin) / pSpan) * (H - PAD_T - PAD_B);
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(SVG_NS, 'svg');
+  svg.setAttribute('class', 'ticket-odds-modal-chart-svg');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('role', 'img');
+  svg.setAttribute('aria-label',
+    `Price history from ${fmtOddsChartDate(t0)} to ${fmtOddsChartDate(t1)}, ` +
+    `between ${fmtOddsPct(actualMin)} and ${fmtOddsPct(actualMax)}, latest ${fmtOddsPct(series[series.length - 1].p)}`);
+  const text = (tx: number, ty: number, content: string, opts: { anchor?: string; bold?: boolean; dim?: boolean } = {}) => {
+    const el = document.createElementNS(SVG_NS, 'text');
+    el.setAttribute('x', tx.toFixed(1));
+    el.setAttribute('y', ty.toFixed(1));
+    el.setAttribute('font-size', opts.bold ? '12' : '11');
+    el.setAttribute('fill', 'currentColor');
+    if (opts.anchor) el.setAttribute('text-anchor', opts.anchor);
+    if (opts.bold) el.setAttribute('font-weight', '700');
+    el.setAttribute('opacity', opts.dim ? '0.6' : opts.bold ? '1' : '0.75');
+    svg.appendChild(el);
+    el.textContent = content;
+    return el;
+  };
+  // Dashed gridlines + labels at the series min/max (actual values, placed at
+  // their true y positions so the labels stay honest even on padded bands).
+  const yMaxPos = y(actualMax); // max price → top
+  const yMinPos = y(actualMin); // min price → bottom
+  for (const gy of yMinPos - yMaxPos > 2 ? [yMaxPos, yMinPos] : [yMaxPos]) {
+    const line = document.createElementNS(SVG_NS, 'line');
+    line.setAttribute('x1', String(PAD_L));
+    line.setAttribute('x2', String(W - PAD_R));
+    line.setAttribute('y1', gy.toFixed(1));
+    line.setAttribute('y2', gy.toFixed(1));
+    line.setAttribute('stroke', 'currentColor');
+    line.setAttribute('stroke-dasharray', '3 4');
+    line.setAttribute('opacity', '0.18');
+    svg.appendChild(line);
+  }
+  text(PAD_L + 2, yMaxPos - 5, fmtOddsPct(actualMax));
+  if (yMinPos - yMaxPos >= 26) text(PAD_L + 2, yMinPos + 13, fmtOddsPct(actualMin)); // skip when it would collide
+  // The line itself.
   const d = series
     .map((pt, i) => `${i === 0 ? 'M' : 'L'}${x(pt.t).toFixed(1)} ${y(pt.p).toFixed(1)}`)
     .join(' ');
-  const SVG_NS = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(SVG_NS, 'svg');
-  svg.setAttribute('class', 'ticket-odds-spark');
-  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  svg.setAttribute('preserveAspectRatio', 'none');
-  svg.setAttribute('role', 'img');
-  svg.setAttribute('aria-label', 'Odds history');
   const path = document.createElementNS(SVG_NS, 'path');
   path.setAttribute('d', d);
   path.setAttribute('fill', 'none');
   path.setAttribute('stroke', 'currentColor');
-  path.setAttribute('stroke-width', '1.5');
+  path.setAttribute('stroke-width', '2');
   path.setAttribute('stroke-linejoin', 'round');
   path.setAttribute('stroke-linecap', 'round');
   svg.appendChild(path);
+  // Endpoint dot + latest-% label in the right gutter.
   const last = series[series.length - 1];
   const dot = document.createElementNS(SVG_NS, 'circle');
   dot.setAttribute('cx', x(last.t).toFixed(1));
   dot.setAttribute('cy', y(last.p).toFixed(1));
-  dot.setAttribute('r', '1.8');
+  dot.setAttribute('r', '3');
   dot.setAttribute('fill', 'currentColor');
   svg.appendChild(dot);
+  const yLatest = Math.max(PAD_T + 10, Math.min(H - PAD_B - 2, y(last.p) + 4));
+  text(x(last.t) + 8, yLatest, fmtOddsPct(last.p), { bold: true });
+  // Start/end date labels along the bottom (clear of the min-% label).
+  text(PAD_L, H - 6, fmtOddsChartDate(t0), { dim: true });
+  text(W - 12, H - 6, fmtOddsChartDate(t1), { anchor: 'end', dim: true });
   return svg;
 }
 
@@ -2802,6 +2862,11 @@ async function pollOddsMidpoints(): Promise<void> {
     )) {
       applyOddsToChip(chip, mid, false);
     }
+    // Same update path feeds the modal: only open markets are ever polled,
+    // so an open modal on this token gets the fresh live %.
+    if (tokenId === oddsModalToken && ticketOddsModalEl && !ticketOddsModalEl.hidden) {
+      setOddsModalStatus({ price: mid, closed: false }, ticketOddsModalEl.dataset.oddsOutcome || '');
+    }
   }));
 }
 
@@ -2816,9 +2881,10 @@ function startTicketOddsPolling(openTokens: Set<string>): void {
   }
 }
 
-// Fill the odds chips (and the primary sparkline) after the grid paints.
-// One gamma snapshot per event slug and one history fetch per token per
-// session; stale/detached elements are skipped via isConnected checks.
+// Fill the odds chips after the grid paints. One gamma snapshot per event
+// slug per session; stale/detached elements are skipped via isConnected
+// checks. Price HISTORY is not touched here — it's fetched lazily on first
+// modal open per token (openTicketOddsModal), keeping card render cheap.
 async function hydrateTicketOdds(): Promise<void> {
   const chips = Array.from(content.querySelectorAll<HTMLElement>('.ticket-odds-chip'));
   if (!chips.length) {
@@ -2858,16 +2924,202 @@ async function hydrateTicketOdds(): Promise<void> {
   }));
   if (activeTab !== 'models') return; // user navigated away mid-hydration
   startTicketOddsPolling(openTokens);
-  // Sparklines for primary mappings — lazy, one history fetch per token.
-  await Promise.all(
-    Array.from(content.querySelectorAll<HTMLElement>('.ticket-odds-spark-slot')).map(async (slot) => {
-      const tokenId = slot.dataset.oddsSpark || '';
-      if (!tokenId) return;
-      const points = await loadPolymarketHistory(tokenId);
-      if (!points || !slot.isConnected) return; // no history → keep the slot empty
-      slot.replaceChildren(buildOddsSparkline(points));
-    }),
-  );
+}
+
+// ── Polymarket odds modal ─────────────────────
+// Detail-on-demand for a chip: full market question, outcome + live/resolved
+// status, the price-history chart, and a prominent Polymarket link. DOM,
+// open/close, focus, and Esc behavior mirror the ara-figure lightbox
+// (ensureAraFigureModal in ara-enhance.ts): backdrop button + close button
+// share a data-close attribute, `hidden` toggles visibility, a body class
+// locks scroll, focus moves to the close button and returns to the chip.
+let ticketOddsModalEl: HTMLDivElement | null = null;
+let oddsModalLastFocus: HTMLElement | null = null;
+// Token the open modal is showing (poll pushes live % onto it) and a
+// generation counter so async status/history fills from a previous open
+// never paint over a newer one (the modal element is reused).
+let oddsModalToken: string | null = null;
+let oddsModalGeneration = 0;
+
+function ensureTicketOddsModal(): HTMLDivElement {
+  if (ticketOddsModalEl) return ticketOddsModalEl;
+  const modal = document.createElement('div');
+  modal.id = 'ticketOddsModal';
+  modal.className = 'ticket-odds-modal';
+  modal.hidden = true;
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-labelledby', 'ticketOddsModalTitle');
+
+  const backdrop = document.createElement('button');
+  backdrop.className = 'ticket-odds-modal-backdrop';
+  backdrop.type = 'button';
+  backdrop.dataset.oddsModalClose = '1';
+  backdrop.setAttribute('aria-label', 'Close market details');
+
+  const panel = document.createElement('div');
+  panel.className = 'ticket-odds-modal-panel';
+  panel.setAttribute('role', 'document');
+
+  const close = document.createElement('button');
+  close.className = 'ticket-odds-modal-close';
+  close.type = 'button';
+  close.dataset.oddsModalClose = '1';
+  close.setAttribute('aria-label', 'Close market details');
+  close.textContent = '×';
+
+  const title = document.createElement('h3');
+  title.className = 'ticket-odds-modal-title';
+  title.id = 'ticketOddsModalTitle';
+
+  const status = document.createElement('div');
+  status.className = 'ticket-odds-modal-status';
+  const pct = document.createElement('span');
+  pct.className = 'ticket-odds-modal-pct';
+  const meta = document.createElement('span');
+  meta.className = 'ticket-odds-modal-meta';
+  status.appendChild(pct);
+  status.appendChild(meta);
+
+  const chart = document.createElement('div');
+  chart.className = 'ticket-odds-modal-chart';
+
+  // The link needs no API — it must keep working with Polymarket fully down.
+  const link = document.createElement('a');
+  link.className = 'ticket-odds-modal-link';
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.textContent = 'Open on Polymarket ↗';
+
+  const note = document.createElement('p');
+  note.className = 'ticket-odds-modal-note';
+  note.textContent = 'Polymarket midpoints, informational only — not investment advice.';
+
+  panel.appendChild(close);
+  panel.appendChild(title);
+  panel.appendChild(status);
+  panel.appendChild(chart);
+  panel.appendChild(link);
+  panel.appendChild(note);
+  modal.appendChild(backdrop);
+  modal.appendChild(panel);
+  modal.addEventListener('click', (event) => {
+    if (event.target instanceof Element && event.target.closest('[data-odds-modal-close]')) {
+      closeTicketOddsModal();
+    }
+  });
+  document.body.appendChild(modal);
+  ticketOddsModalEl = modal;
+  return modal;
+}
+
+type OddsModalPriceState = { price: number; closed: boolean } | 'pending' | 'unavailable';
+
+function setOddsModalStatus(state: OddsModalPriceState, outcome: string): void {
+  const modal = ticketOddsModalEl;
+  if (!modal) return;
+  const status = modal.querySelector<HTMLElement>('.ticket-odds-modal-status');
+  const pctEl = modal.querySelector<HTMLElement>('.ticket-odds-modal-pct');
+  const metaEl = modal.querySelector<HTMLElement>('.ticket-odds-modal-meta');
+  if (!status || !pctEl || !metaEl) return;
+  status.classList.remove('is-resolved-yes', 'is-resolved-no', 'is-unavailable');
+  const prefix = outcome ? `${outcome} · ` : '';
+  if (state === 'pending') {
+    pctEl.textContent = '—';
+    metaEl.textContent = `${prefix}loading odds…`;
+  } else if (state === 'unavailable') {
+    status.classList.add('is-unavailable');
+    pctEl.textContent = '—';
+    metaEl.textContent = `${prefix}odds unavailable`;
+  } else if (state.closed) {
+    const yes = state.price >= 0.5;
+    status.classList.add(yes ? 'is-resolved-yes' : 'is-resolved-no');
+    pctEl.textContent = `${yes ? '✓' : '✗'} ${Math.round(state.price * 100)}%`;
+    metaEl.textContent = `${prefix}resolved ${yes ? 'Yes' : 'No'}`;
+  } else {
+    pctEl.textContent = fmtOddsPct(state.price);
+    metaEl.textContent = `${prefix}live odds · updates every minute`;
+  }
+}
+
+function renderOddsModalChart(points: OddsHistoryPoint[] | null): void {
+  const chart = ticketOddsModalEl?.querySelector<HTMLElement>('.ticket-odds-modal-chart');
+  if (!chart) return;
+  if (!points) {
+    const empty = document.createElement('span');
+    empty.className = 'ticket-odds-modal-chart-empty';
+    empty.textContent = 'chart unavailable';
+    chart.replaceChildren(empty);
+    return;
+  }
+  chart.replaceChildren(buildOddsModalChart(points, chart.clientWidth || 600));
+}
+
+function openTicketOddsModal(chip: HTMLElement): void {
+  const eventSlug = chip.dataset.oddsEvent || '';
+  const marketId = chip.dataset.oddsMarket || '';
+  const tokenId = chip.dataset.oddsToken || '';
+  const question = chip.dataset.oddsQuestion || 'Polymarket market';
+  const outcome = (chip.dataset.oddsOutcome || '').trim();
+  if (!eventSlug || !tokenId) return;
+  const modal = ensureTicketOddsModal();
+  const title = modal.querySelector<HTMLElement>('.ticket-odds-modal-title');
+  const link = modal.querySelector<HTMLAnchorElement>('.ticket-odds-modal-link');
+  const close = modal.querySelector<HTMLButtonElement>('.ticket-odds-modal-close');
+  const chart = modal.querySelector<HTMLElement>('.ticket-odds-modal-chart');
+  if (!title || !link || !close || !chart) return;
+  title.textContent = question;
+  link.href = `https://polymarket.com/event/${encodeURIComponent(eventSlug)}`;
+  modal.dataset.oddsOutcome = outcome; // poll re-reads it for live updates
+  setOddsModalStatus('pending', outcome);
+  const loading = document.createElement('span');
+  loading.className = 'ticket-odds-modal-chart-empty';
+  loading.textContent = 'loading chart…';
+  chart.replaceChildren(loading);
+  oddsModalLastFocus = chip;
+  oddsModalToken = tokenId;
+  const generation = ++oddsModalGeneration;
+  modal.hidden = false;
+  document.body.classList.add('ticket-odds-modal-open');
+  close.focus();
+  // Status from the session-cached gamma snapshot (fresh midpoints win for
+  // open markets). Usually resolved already; also covers a modal opened
+  // before chip hydration finished.
+  void (async () => {
+    const snapshot = await loadPolymarketEvent(eventSlug);
+    if (generation !== oddsModalGeneration) return; // closed/reopened since
+    const market = snapshot?.markets.get(marketId);
+    const gammaPrice = market?.prices.get(tokenId);
+    if (!market || gammaPrice === undefined) {
+      setOddsModalStatus('unavailable', outcome);
+      return;
+    }
+    if (market.closed) {
+      setOddsModalStatus({ price: gammaPrice, closed: true }, outcome);
+    } else {
+      setOddsModalStatus({ price: polymarketMidpointPrices.get(tokenId) ?? gammaPrice, closed: false }, outcome);
+    }
+  })();
+  // History is fetched lazily HERE — first open per token hits the network,
+  // later opens hit the session cache; a failed fetch was evicted so the
+  // next open retries. Failure keeps the status + link fully functional.
+  void (async () => {
+    const points = await loadPolymarketHistory(tokenId);
+    if (generation !== oddsModalGeneration) return;
+    renderOddsModalChart(points);
+  })();
+}
+
+function closeTicketOddsModal(): void {
+  const modal = ticketOddsModalEl;
+  if (!modal || modal.hidden) return;
+  modal.hidden = true;
+  document.body.classList.remove('ticket-odds-modal-open');
+  oddsModalToken = null;
+  oddsModalGeneration++; // invalidate in-flight status/history fills
+  const focusTarget = oddsModalLastFocus;
+  oddsModalLastFocus = null;
+  if (focusTarget && focusTarget.isConnected) focusTarget.focus();
 }
 
 function ticketStatusPill(status: TicketStatus): string {
@@ -3022,7 +3274,11 @@ document.addEventListener('keydown', (e) => {
     return;
   }
   if ((e.key === 'Enter' || e.key === ' ') && document.body.classList.contains('tab-models')) {
-    const card = (document.activeElement as HTMLElement | null)?.closest?.('.ticket-card') as HTMLElement | null;
+    const active = document.activeElement as HTMLElement | null;
+    // Interactive elements inside the card (odds chips, links) handle their
+    // own activation — don't ALSO open the ticket modal over them.
+    if (active?.closest?.('a, button')) return;
+    const card = active?.closest?.('.ticket-card') as HTMLElement | null;
     const slug = card?.dataset.slug;
     const ticket = slug && ticketsCache ? ticketsCache.find((t) => t.slug === slug) : null;
     if (ticket) { e.preventDefault(); openTicketModal(ticket); }
@@ -4396,6 +4652,20 @@ content.addEventListener('click', (e) => {
     }
     return;
   }
+  // Odds chips are buttons that open the market-detail modal. Must run
+  // before the [data-slug] card branch below (which ignores a/button
+  // clicks, so the chip would otherwise be swallowed silently). Gated on
+  // the models tab like the sibling branches: real chips only render
+  // there, so a `.ticket-odds-chip` fabricated inside sanitized
+  // model-authored content on any other tab stays inert — safety rests on
+  // reachability, not on the modal's sinks being harmless. Keyboard needs
+  // no separate gate: chips are native buttons, so Enter/Space activation
+  // arrives here as this same click event.
+  const oddsChip = target.closest('.ticket-odds-chip') as HTMLElement | null;
+  if (oddsChip && activeTab === 'models') {
+    openTicketOddsModal(oddsChip);
+    return;
+  }
   const row = target.closest('[data-slug]') as HTMLElement | null;
   if (row && activeTab === 'research') {
     const slug = row.dataset.slug;
@@ -4474,6 +4744,7 @@ document.getElementById('refreshBtn')!.addEventListener('click', () => {
 // Keyboard shortcuts
 document.addEventListener('keydown', (e: KeyboardEvent) => {
   if (e.key === 'Escape') {
+    closeTicketOddsModal();
     closeAraFigureModal();
     return;
   }
