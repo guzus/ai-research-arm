@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-judge-verdict",
+  "date": "2026-07-13",
+  "run_id": "29290242462",
+  "run_attempt": 1,
+  "judge_model": "claude-opus-4-8",
+  "position_swap": true,
+  "staging_key_ok": true,
+  "blinding": {
+    "run_key": "29290242462-1",
+    "pass1": {
+      "A": "claude",
+      "B": "zai-glm-5p2"
+    },
+    "pass2": {
+      "A": "zai-glm-5p2",
+      "B": "claude"
+    }
+  },
+  "passes": [
+    {
+      "pass": 1,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "claude",
+        "B": "zai-glm-5p2"
+      },
+      "raw_preferred_letter": "B",
+      "preferred_leg": "zai-glm-5p2",
+      "scores_by_leg": {
+        "claude": {
+          "coverage": 6.0,
+          "faithfulness": 9.0,
+          "headline_quality": 6.0,
+          "skepticism": 9.0,
+          "format": 6.0,
+          "overall": 7.0
+        },
+        "zai-glm-5p2": {
+          "coverage": 8.0,
+          "faithfulness": 8.0,
+          "headline_quality": 8.0,
+          "skepticism": 8.0,
+          "format": 8.0,
+          "overall": 8.0
+        }
+      },
+      "rationale_by_leg": {
+        "claude": "Exceptionally faithful and skeptical on the GPT-5.6 Sol usage-burn saga: it captures the 'no nerfing' pushback and, crucially, Theo's own walkback of the flat-2x-billing claim (snapshot line 35075) \u2014 the single best-executed story in either brief. It also nails the SWE-Atlas hype as Polymarket/Musk self-amplification. But it misses the cycle's biggest breaking item (Musk ordering the SpaceXAI data wipe, ~8.6K likes), the heavily-covered Muse Spark 1.1 release, and the Anthropic 300K-values study. The 12:00 section is orphaned \u2014 absent from both the Telegram summary and headline alerts \u2014 and public_items=5 undercounts the shown items.",
+        "zai-glm-5p2": "Broader, fresher coverage of the actual 22:00 signal: leads with the SpaceXAI data-wipe (verified, highest-engagement item) and covers Artifacts, the Anthropic values study, Muse Spark, Antigravity, and the open-weight gateway share. Faithful throughout with sharp caveats (ZDR walkback, self-reported Muse Spark, unresolved causality, unconfirmed talent move). Format is internally consistent \u2014 Telegram, headlines, and public_items=9 all match. Minor nit: 'roughly 5.9K likes' for Musk's post vs 8,638 in the snapshot, and it skips the GPT-5.6 saga entirely."
+      }
+    },
+    {
+      "pass": 2,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "zai-glm-5p2",
+        "B": "claude"
+      },
+      "raw_preferred_letter": "A",
+      "preferred_leg": "zai-glm-5p2",
+      "scores_by_leg": {
+        "zai-glm-5p2": {
+          "coverage": 8.0,
+          "faithfulness": 8.0,
+          "headline_quality": 8.0,
+          "skepticism": 8.0,
+          "format": 9.0,
+          "overall": 8.0
+        },
+        "claude": {
+          "coverage": 6.0,
+          "faithfulness": 9.0,
+          "headline_quality": 6.0,
+          "skepticism": 9.0,
+          "format": 6.0,
+          "overall": 7.0
+        }
+      },
+      "rationale_by_leg": {
+        "zai-glm-5p2": "Broad, fresh coverage of the actual 22:00 window: leads with the day's biggest item (Musk/SpaceXAI data wipe, 8,638 likes), plus the fresh Claude Artifacts launch, Anthropic values study, Muse Spark, Antigravity, DFlash, open-weight gateway share. All spot-checks trace exactly to snapshot, including the secondary '#3 Debate Benchmark behind Fable 5 & Opus 4.7' detail and Anthropic warmth/rigor axis. Per-story verify tags, counter-hypotheses, and a skeptic's corner on the unconfirmed talent-move. Single clean same-hour section; headlines map 1:1 to stories; status count (9) matches. Knock: omits the Codex-nerf saga.",
+        "claude": "Superb depth and source hygiene on its two stories \u2014 the Codex 'nerf' counter-analysis (Theo's self-walkback, Sottiaux's dispute) and two well-reasoned skeptic items are best-in-class, all faithful. But it ships a full stale '12:00 UTC' section (all 01:00-09:00 tweets) inside a 22:00 run, and its fresh-cycle coverage is thin: it omits the day's single biggest story (SpaceXAI data wipe), Meta's Muse Spark, and the Anthropic values study. Its own #1 story (Codex nerf) is absent from the headline alerts, and public_items=5 doesn't match visible content."
+      }
+    }
+  ],
+  "per_leg": {
+    "claude": {
+      "overall_avg": 7.0,
+      "criteria_avg": {
+        "coverage": 6.0,
+        "faithfulness": 9.0,
+        "format": 6.0,
+        "headline_quality": 6.0,
+        "skepticism": 9.0
+      },
+      "passes_scored": 2
+    },
+    "zai-glm-5p2": {
+      "overall_avg": 8.0,
+      "criteria_avg": {
+        "coverage": 8.0,
+        "faithfulness": 8.0,
+        "format": 8.5,
+        "headline_quality": 8.0,
+        "skepticism": 8.0
+      },
+      "passes_scored": 2
+    }
+  },
+  "passes_parsed": 2,
+  "final_preference": "zai-glm-5p2"
+}
