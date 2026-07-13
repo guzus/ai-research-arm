@@ -71,6 +71,12 @@ outputs:
   model-id:
     description: Provider model id of the EFFECTIVE backend (empty on the native path — see native-model resolution).
     value: ${{ steps.select.outputs.model-id }}
+  native-model:
+    description: Resolved native Claude model (what the `--model opus` alias serves on the native path — the native-model input, else the SSOT's global fallback.native_model).
+    value: ${{ steps.select.outputs.native-model }}
+  execution-file:
+    description: Path to the Claude Code execution transcript JSON reported by whichever provider step ran (empty when the run step failed before reporting one). Callers that need it after a later agent-run call in the same job must copy it immediately — the underlying action reuses the same RUNNER_TEMP path.
+    value: ${{ steps.run-claude.outputs.execution_file || steps.run-claude-bots.outputs.execution_file || steps.run-fireworks.outputs.execution_file || steps.run-fireworks-bots.outputs.execution_file || steps.run-zai.outputs.execution_file || steps.run-zai-bots.outputs.execution_file }}
   changed:
     description: "true when expected-paths were provided and changed"
     value: ${{ steps.guard.outputs.changed }}
@@ -136,6 +142,7 @@ runs:
     # profile model. Haiku alias is left alone so cheap subagent calls
     # stay cheap.
     - name: Run agent with Claude
+      id: run-claude
       if: steps.select.outputs.provider == 'claude' && inputs.allowed-bots == ''
       uses: anthropics/claude-code-action@v1
       env:
@@ -149,6 +156,7 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Claude
+      id: run-claude-bots
       if: steps.select.outputs.provider == 'claude' && inputs.allowed-bots != ''
       uses: anthropics/claude-code-action@v1
       env:
@@ -163,6 +171,7 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Fireworks
+      id: run-fireworks
       if: steps.select.outputs.provider == 'fireworks' && inputs.allowed-bots == ''
       uses: anthropics/claude-code-action@v1
       env:
@@ -183,6 +192,7 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Fireworks
+      id: run-fireworks-bots
       if: steps.select.outputs.provider == 'fireworks' && inputs.allowed-bots != ''
       uses: anthropics/claude-code-action@v1
       env:
@@ -204,6 +214,7 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Z.ai
+      id: run-zai
       if: steps.select.outputs.provider == 'zai' && inputs.allowed-bots == ''
       uses: anthropics/claude-code-action@v1
       env:
@@ -225,6 +236,7 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Z.ai
+      id: run-zai-bots
       if: steps.select.outputs.provider == 'zai' && inputs.allowed-bots != ''
       uses: anthropics/claude-code-action@v1
       env:
