@@ -1,0 +1,304 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "CXMT (listing entity Changxin Technology Group, ticker 688825) launched its STAR Market IPO issuance on 2026-07-09 with subscription set for 2026-07-16, targeting RMB 29.5B — the largest A-share IPO of 2026",
+      "type": "event",
+      "source_urls": ["https://technode.com/2026/07/10/cxmt-sets-july-16-subscription-date-for-star-market-ipo/", "http://file.finance.sina.com.cn/211.154.219.97:9494/MRGG/CNSESH_STOCK/2026/2026-7/2026-07-09/12437279.PDF"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-07-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "As of 2026-07-14 no final offer price exists: preliminary inquiry ran 2026-07-13 and the pricing announcement is scheduled for 2026-07-15",
+      "type": "event",
+      "source_urls": ["https://www.stcn.com/article/detail/4008542.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-14",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c3",
+      "claim": "The deal structure implies an issue-price valuation floor of roughly RMB 295B (6.688B shares = 10% of post-issue capital raising RMB 29.5B, ~RMB 4.41/share), with a 15% greenshoe to CICC",
+      "type": "metric",
+      "source_urls": ["https://paper.cnstock.com/html/2026-07/09/content_2240864.htm", "https://www.stcn.com/article/detail/4010092.html"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-09",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c4",
+      "claim": "CXMT moved from SSE acceptance (2025-12-30) to listing-committee approval (2026-05-27) to CSRC registration (2026-06-12) in under six months, the first project under the STAR pre-review pilot",
+      "type": "event",
+      "source_urls": ["https://www.news.cn/finance/20260528/b04e4b2b8c8b4e6692fb6d9273337362/c.html", "https://www.caixinglobal.com/2026-05-28/changxin-clears-key-hurdle-for-record-star-market-ipo-102448359.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Updated prospectus (May 2026): revenue RMB 8.29B (2022), 9.09B (2023), 24.18B (2024), 61.80B (2025, +155.6% YoY); main-business gross margin -2.19% (2023), 5.00% (2024), 41.02% (2025)",
+      "type": "metric",
+      "source_urls": ["https://www.cls.cn/detail/2373552", "https://caifuhao.eastmoney.com/news/20251231094436798614880"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-05-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Net income attributable to parent: RMB -8.33B (2022), -16.34B (2023), -7.14B (2024), +1.875B (2025, first full-year profit); accumulated deficit ~RMB 36.65B at end-2025",
+      "type": "metric",
+      "source_urls": ["https://finance.sina.com.cn/roll/2026-05-18/doc-inhyhyqp2848301.shtml", "https://www.21jingji.com/article/20260520/herald/479c3a328776ac189032079a93ae5c9b.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-05-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Q1 2026: revenue RMB 50.8B (+719.13% YoY), consolidated net profit RMB 33.01B, attributable RMB 24.76B (+1,688.3%); H1 2026 guidance: revenue RMB 110-120B, attributable profit RMB 50-57B",
+      "type": "metric",
+      "source_urls": ["https://wallstreetcn.com/articles/3772456", "https://finance.biggo.com/news/408fa9f2-0d3c-48e7-a43e-2e4c1ece2035"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-05-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "CXMT parent directly owns only 30.68% of the Xinqiao fab entity and 31.72% of the Beijing fab entity while consolidating both via acting-in-concert voting agreements; FY2025 minority leakage was ~74% of consolidated net profit, falling to ~25% in Q1 2026",
+      "type": "market-structure",
+      "source_urls": ["https://m.techflowpost.com/article/32431", "https://static.sse.com.cn/stock/disclosure/announcement/c/202605/002170_20260517_MGLN.pdf"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-07-09",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c9",
+      "claim": "Omdia puts CXMT's global DRAM revenue share at 7.67% in 4Q 2025 and ~7.6% in Q1 2026 (vs ~3% a year earlier), making it the #4 DRAM maker; Counterpoint has ~8% for Q1 2026",
+      "type": "metric",
+      "source_urls": ["https://finance.biggo.com/news/408fa9f2-0d3c-48e7-a43e-2e4c1ece2035", "https://en.sedaily.com/finance/2026/07/11/worlds-no-4-dram-maker-chinas-cxmt-chases-samsung-sk-with"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-11",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "SemiAnalysis: CXMT wafer capacity ~265k wspm end-2025 rising to ~350k end-2026 (vs Micron ~385k) and ~420k (~17% of global DRAM capacity) end-2027; bit-shipment share only 9% (2025) to 12% (2027) due to the node gap",
+      "type": "forecast",
+      "source_urls": ["https://newsletter.semianalysis.com/p/chinas-cxmt-is-set-to-challenge-dram", "https://en.sedaily.com/international/2026/07/09/chinas-cxmt-nears-ipo-but-threat-to-samsung-sk-hynix-may-be"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-23",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c11",
+      "claim": "Prospectus capacity utilization: 87.06% (2023), 92.46% (2024), 95.73% (2025) — effectively full, so 2026 growth requires new tool move-ins",
+      "type": "metric",
+      "source_urls": ["https://finance.sina.cn/stock/jdts/2026-07-11/detail-inihktzh3533110.d.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-11",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "DDR4 8Gb (1Gx8 3200) spot rose from ~$1.75 (mid-May 2025) to $38.50 session average (2026-07-13), roughly 20x, and had not rolled over as of 2026-07-13",
+      "type": "metric",
+      "source_urls": ["https://www.trendforce.com/price/dram/dram_spot", "https://www.trendforce.com/news/2025/12/31/insights-memory-spot-price-update-ddr4-spot-prices-climb-as-samsung-holds-eol-line"],
+      "source_tiers": ["market-data", "secondary"],
+      "as_of": "2026-07-13",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c13",
+      "claim": "DRAM contract-price growth is decelerating: conventional DRAM +90-95% QoQ in 1Q26, +58-63% forecast in 2Q26, server DRAM +13-18% in 3Q26 (TrendForce)",
+      "type": "metric",
+      "source_urls": ["https://www.trendforce.com/presscenter/news/20260709-13140.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-09",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c14",
+      "claim": "HBM's share of top-3 DRAM wafer input: ~18% (end-2025) → ~22% (end-2026) → ~30% (end-2027), the structural crowd-out behind the conventional DRAM shortage (TrendForce)",
+      "type": "metric",
+      "source_urls": ["https://www.trendforce.com/presscenter/news/20260602-13074.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "TechInsights teardown: CXMT's 16Gb DDR5 is on the G4 node at ~16nm (D1z-class), 66.99 mm2 die, ~40% larger than Samsung's equivalent; SemiAnalysis estimates cost-per-bit >30% above the Big 3 with G4 yield below the 85-90% mature standard",
+      "type": "technical",
+      "source_urls": ["https://www.digitimes.com/news/a20250213VL204/dram-cxmt-16nm-production-development.html", "https://newsletter.semianalysis.com/p/chinas-cxmt-is-set-to-challenge-dram"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-23",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c16",
+      "claim": "CXMT LPDDR5X (8533/9600 Mbps) entered mass production in May 2025; CXMT parts are reportedly in >30% of Chinese Android-brand phones ex-Huawei and LPDDR is 66.43% of 2025 revenue",
+      "type": "metric",
+      "source_urls": ["https://www.trendforce.com/news/2025/10/29/news-cxmt-confirms-lpddr5x-mass-production-began-in-may-high-speed-variant-under-customer-trials/", "https://phone.cnmo.com/news/812889.html", "https://en.sedaily.com/international/2026/07/09/chinas-cxmt-nears-ipo-but-threat-to-samsung-sk-hynix-may-be"],
+      "source_tiers": ["secondary", "secondary", "secondary"],
+      "as_of": "2026-07-08",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c17",
+      "claim": "CXMT HBM as of mid-2026: small-scale HBM2 production, HBM3 samples only (delivered to Huawei and partners ~Aug 2025), ~5k wspm HBM capacity end-2025 (<2% of total), HBM3 mass production slipped to 2027, HBM3E targeted 2027; the IPO prospectus contains no HBM capacity-expansion funding line",
+      "type": "technical",
+      "source_urls": ["https://en.sedaily.com/international/2026/07/09/chinas-cxmt-nears-ipo-but-threat-to-samsung-sk-hynix-may-be", "https://www.digitimes.com/news/a20260421PD230/cxmt-hbm3-dram-production-2026.html", "https://www.digitimes.com/news/a20251023PD208/cxmt-hbm3-2026-dram-huawei.html"],
+      "source_tiers": ["secondary", "secondary", "secondary"],
+      "as_of": "2026-07-09",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c18",
+      "claim": "SemiAnalysis (Sept 2025): CXMT could make only ~2M HBM stacks in 2026, sufficient for ~250-300k Ascend 910C packages, vs Huawei's ~13M stockpiled foreign stacks",
+      "type": "forecast",
+      "source_urls": ["https://newsletter.semianalysis.com/p/huawei-ascend-production-ramp"],
+      "source_tiers": ["opinion"],
+      "as_of": "2025-09-08",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "CXMT is NOT on the BIS Entity List as of July 2026; Reuters reported (2026-06-16) an interagency committee approved its addition but Commerce has withheld publication, with no Entity List additions since October 2025",
+      "type": "regulatory",
+      "source_urls": ["https://finance.yahoo.com/news/exclusive-us-holds-off-blacklisting-000212827.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-16",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "Apple approached US Commerce (~late May 2026) seeking assurances to source CXMT DRAM and has begun technical validation of CXMT chips for China-market devices; no commercial commitment",
+      "type": "event",
+      "source_urls": ["https://fortune.com/2026/06/27/apple-us-approval-chips-blacklisted-cxmt-price-hikes-mac-memory-shortage/", "https://www.macrumors.com/2026/07/08/apple-begins-testing-controversial-chinese-memory/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-08",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c21",
+      "claim": "CXMT signed a multi-year server-DRAM supply agreement with Tencent worth more than RMB 20B (~$2.94B) per Reuters (2026-06-29), and has begun taking DDR5 server orders from Tencent and ByteDance",
+      "type": "event",
+      "source_urls": ["https://finance.yahoo.com/technology/articles/exclusive-chinas-cxmt-wins-3-070237888.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-29",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c22",
+      "claim": "Prospectus: server DRAM rose from 8.39% (2024) to 26.51% (2025) of revenue; top-5 customer concentration 68.08% (2025); revenue outside Greater China only ~2.79%",
+      "type": "metric",
+      "source_urls": ["https://en.sedaily.com/international/2026/07/09/chinas-cxmt-nears-ipo-but-threat-to-samsung-sk-hynix-may-be", "https://static.sse.com.cn/stock/disclosure/announcement/c/202605/002170_20260517_MGLN.pdf"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-07-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "Valuation ladder: June 2025 private round at RMB 158.4B (Alibaba Cloud RMB 6.1B for 3.85%); IPO floor ~RMB 295B; media/broker post-listing scenarios RMB 1.2-4T (Wang Jiyue: 2-3T at ~20x annualized peak earnings)",
+      "type": "comparison",
+      "source_urls": ["https://www.163.com/dy/article/L1H2H7VH05199NPP.html", "https://www.stcn.com/article/detail/3930867.html", "https://finance.sina.com.cn/roll/2026-07-09/doc-inihhkuk3970052.shtml"],
+      "source_tiers": ["secondary", "opinion", "opinion"],
+      "as_of": "2026-07-11",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "The strategic placement is 50.00% of the deal (3.344B shares) — with sponsor co-investment, a 377-employee plan (36-month lock), and unnamed national-level funds; chairman Zhu Yiming pledged a 10-year lock-up and 768M shares for employee incentives",
+      "type": "market-structure",
+      "source_urls": ["https://www.stcn.com/article/detail/4008206.html", "https://finance.biggo.com/news/408fa9f2-0d3c-48e7-a43e-2e4c1ece2035"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "At pre-supercycle prices CXMT lost money at the gross line: 2024 gross margin -4.03% ex-reversals, with product-level gross margins once -108.76% (DDR4) and -121.62% (LPDDR4X); prospectus itself warns H1 2026 growth is at risk of being unsustainable",
+      "type": "metric",
+      "source_urls": ["https://finance.biggo.com/news/jl1OPJ4BtCxy99G56JXj", "https://finance.ifeng.com/c/8uYGipBA01L"],
+      "source_tiers": ["secondary", "opinion"],
+      "as_of": "2026-07-06",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c26",
+      "claim": "Bernstein forecasts DRAM prices +43.2% in 2027 then -52.9% in 2028 ($2.23 to $1.05/Gb) as the 2027-29 fab wave (Samsung P4/P5, SK Hynix M15X/Yongin, Micron ID1/ID2, CXMT Shanghai) lands",
+      "type": "forecast",
+      "source_urls": ["https://www.notebookcheck.net/DRAM-crisis-Analysts-expect-drastic-price-drop-in-2028.1337992.0.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-08",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c27",
+      "claim": "Seoul prosecutors indicted 10 people (2025-12-26) for leaking Samsung 10nm-class DRAM technology to CXMT; a former Samsung researcher was sentenced to 7 years on 2026-04-22",
+      "type": "event",
+      "source_urls": ["https://finance.yahoo.com/news/south-korea-charges-10-over-082944853.html", "https://www.digitimes.com/news/a20260423VL219/samsung-cxmt-dram-technology-legal.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-04-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "ASML's China share of net system sales fell from 41% (2024) to 33% (2025) to 19% (Q1 2026), evidence the Chinese DUV stockpiling wave has passed and CXMT runs on its installed base",
+      "type": "metric",
+      "source_urls": ["https://marketwise.com/investing/asml-earnings-china-export-restrictions-ai-chip-demand/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-04-20",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "Micron CBO Sumit Sadana (FQ3 2026 call, 2026-06-24) said CXMT/YMTC have grown in capability and market share but the overwhelming majority of their output is sold within China; CEO Mehrotra expects tight conditions to persist beyond calendar 2027",
+      "type": "quote",
+      "source_urls": ["https://www.investing.com/news/transcripts/earnings-call-transcript-micron-tops-q3-2026-estimates-shares-jump-131-93CH-4759237", "https://www.techspot.com/news/112894-micron-ceo-expects-memory-shortages-stretch-beyond-2027.html"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-06-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "Consumer demand is already cracking: 3Q26 conventional DRAM contract growth slowed to +13-18% QoQ, DDR4 spot logged its first ~5% decline in about a year, phone OEMs cut memory content and volume targets, and IDC sees 2026 PC units -11.3%",
+      "type": "metric",
+      "source_urls": ["https://www.tomshardware.com/pc-components/ram/memory-price-surge-begins-to-cool-as-consumers-hit-affordability-limit-ai-demand-still-keeps-dram-and-nand-prices-climbing-through-q3-2026"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-09",
+      "confidence": "medium",
+      "risk": "volatile"
+    }
+  ]
+}
