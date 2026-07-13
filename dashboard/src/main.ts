@@ -3453,6 +3453,11 @@ function setDocTitle(articleTitle: string | null): void {
     : DEFAULT_DOC_TITLE;
 }
 
+/** Operational backend-routing metadata is searchable, but not article subject matter. */
+function isResearchDisplayTag(tag: string): boolean {
+  return tag !== 'fireworks-fallback' && !tag.startsWith('requested-');
+}
+
 function renderResearchIndex(rows: GenResearchRow[]): void {
   setDocTitle(null);
   if (rows.length === 0) {
@@ -3481,6 +3486,7 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
     // Surface first three tags inline; the chip on the right indicates fragment vs standalone.
     const tagHtml = (row.tags || [])
+      .filter(isResearchDisplayTag)
       .slice(0, 3)
       .map((t) => '<span class="gen-research-tag">' + escapeHtml(t) + '</span>')
       .join('');
@@ -4351,7 +4357,7 @@ async function buildSearchCorpus(): Promise<SearchHit[]> {
       slug: p.slug, hay: (p.title + ' ' + (p.aliases || []).join(' ') + ' ' + (p.summary || '') + ' ' + (p.tags || []).join(' ')).toLowerCase() });
   }
   if (m) for (const r of (m.generative || [])) {
-    hits.push({ type: 'research', title: r.title, subtitle: (r.tags || []).slice(0, 4).join(', '),
+    hits.push({ type: 'research', title: r.title, subtitle: (r.tags || []).filter(isResearchDisplayTag).slice(0, 4).join(', '),
       slug: r.slug, hay: (r.title + ' ' + (r.tags || []).join(' ') + ' ' + (r.prompt || '')).toLowerCase() });
   }
   if (tickets) for (const t of tickets) {
