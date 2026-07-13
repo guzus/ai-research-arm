@@ -4654,9 +4654,15 @@ content.addEventListener('click', (e) => {
   }
   // Odds chips are buttons that open the market-detail modal. Must run
   // before the [data-slug] card branch below (which ignores a/button
-  // clicks, so the chip would otherwise be swallowed silently).
+  // clicks, so the chip would otherwise be swallowed silently). Gated on
+  // the models tab like the sibling branches: real chips only render
+  // there, so a `.ticket-odds-chip` fabricated inside sanitized
+  // model-authored content on any other tab stays inert — safety rests on
+  // reachability, not on the modal's sinks being harmless. Keyboard needs
+  // no separate gate: chips are native buttons, so Enter/Space activation
+  // arrives here as this same click event.
   const oddsChip = target.closest('.ticket-odds-chip') as HTMLElement | null;
-  if (oddsChip) {
+  if (oddsChip && activeTab === 'models') {
     openTicketOddsModal(oddsChip);
     return;
   }
