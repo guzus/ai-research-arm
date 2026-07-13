@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-07-13 15:07:04 UTC
+
+CYCLE: Apple v. OpenAI suit gains specificity, Codex/GPT-5.6 saga persists past OpenAI's fix, 200+ researchers sign AI economic-impact statement
+
+TOP STORIES:
+• Apple v. OpenAI trade-secrets suit: 400+ recruited ex-employees, IPO risk cited [✓]
+• GPT-5.6/Codex degradation persists after OpenAI's claimed fix; usage-reset stopgap shipped [✓]
+• 200+ researchers/economists incl. Bengio, Jeff Dean sign AI economic-impact statement [⚠]
+
+WATCH: Whether Codex's context window returns to 372k tokens now that self-serve usage resets are live.
+
+Full update on GitHub.
