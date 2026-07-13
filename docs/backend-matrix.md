@@ -105,6 +105,7 @@ Reading notes:
 | zai-canary · PINNED | `zai-claude-code-canary.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
 | (dispatch path) backend=fireworks (+2 retry steps) | `generative-research.yml` | Claude Code · claude-code-action (env-rerouted) | Fireworks (Anthropic-compatible endpoint) | dynamic: per fireworks profile step | `FIREWORKS_API_KEY` | workflow-level `fireworks_fallback` input (default `claude`) |
 | (dispatch path) backend=codex | `generative-research.yml` | Codex CLI | OpenAI (ChatGPT subscription auth) | codex CLI default | `CODEX_AUTH_JSON` | — |
+| (dispatch path) backend=fable-5 | `generative-research.yml` | Claude Code · claude-code-action (explicit premium selector) | Anthropic (native) | `claude-fable-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (no model-action retry) |
 
 ### Workflows with no model lane (deterministic / infra)
 
@@ -116,7 +117,7 @@ Reading notes:
 - `daily-youtube.yml`
 - `liveness-check.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude`; native path serves `claude-sonnet-5`. 30 SSOT lanes (+2 dispatch execution paths) across 24 workflows; 7 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude`; native path serves `claude-sonnet-5`. 30 SSOT lanes (+3 dispatch execution paths) across 24 workflows; 7 workflows run no model._
 
 <!-- END GENERATED BACKEND MATRIX -->
 
