@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-07-13
+
+TOP STORIES:
+• OpenAI removes Codex's 5-hr cap (3rd capacity fix in 48h), undercutting its "halved inference cost" claim
+• Anthropic confirms Fable 5 + Claude Code limits extended through July 19; Code ships a built-in browser
+• Apple v. OpenAI escalates: comms chief rebuts suit; S&P cuts Oracle's rating on OpenAI risk
+• White House weighing exec order on open-weight models ("6 months to live"); Soofi S 30B-A3B ships sovereign German model
+
+KEY NUMBERS:
+• Claude Opus 4.8 = new GSO benchmark SOTA
+• 22 professors left academia for OpenAI/Anthropic/Google/Meta this year
+• Mixed-model CoT monitors cut harmful-action approvals to 6% vs 45%
+
+TRENDING: HN scrutiny of coding-agent telemetry (Grok CLI teardown, token overhead)
+
+Full digest on GitHub.
