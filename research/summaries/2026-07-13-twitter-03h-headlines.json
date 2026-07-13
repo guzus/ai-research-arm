@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "OPENAI DENIES 'NERFING' GPT-5.6 SOL AFTER USERS CITE REVERTED REASONING-EFFORT CHANGE",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2076507528842682669",
+    "category": "breaking"
+  },
+  {
+    "headline": "THEO: STACKED CODEX BUGS — 2X BILLING PAST 272K TOKENS, NESTED ULTRA SUBAGENTS — DROVE GPT-5.6 SOL USAGE BURN",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2076512403668488299",
+    "category": "infra"
+  },
+  {
+    "headline": "CHATGPT WORK ADDS BUILT-IN CLOUD AND DESKTOP BROWSER FOR MULTI-STEP TASKS",
+    "source": "@jxnlco",
+    "url": "https://x.com/jxnlco/status/2076511362604540372",
+    "category": "model"
+  },
+  {
+    "headline": "CHATGPT SITES ENTERS PUBLIC BETA — TURNS PROMPTS INTO SHAREABLE APPS AND DASHBOARDS",
+    "source": "@jxnlco",
+    "url": "https://x.com/jxnlco/status/2076511474600857950",
+    "category": "model"
+  },
+  {
+    "headline": "PRIMEINTELLECT SHIPS VERIFIERS V1, AN OVERHAULED ENVIRONMENT STACK FOR AGENTIC RL AND EVALS",
+    "source": "@PrimeIntellect",
+    "url": "https://x.com/scaling01/status/2076448156053569862",
+    "category": "opensource"
+  }
+]
