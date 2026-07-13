@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "ANTHROPIC: CLAUDE'S EXPRESSED VALUES SHIFT BY MODEL AND LANGUAGE, 300K+ CONVOS ANALYZED",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2076719540785012872",
+    "category": "research"
+  },
+  {
+    "headline": "GROK BUILD PRIVACY ROW: SPACEXAI CLARIFIES DATA-RETENTION POLICY AFTER REPO/SECRETS-UPLOAD CLAIM",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2076704557648789540",
+    "category": "business"
+  },
+  {
+    "headline": "PERPLEXITY INTEGRATES GROK 4.5 INTO PERPLEXITY COMPUTER, CITES ZDR AND BEST EVALS",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2076699450177892354",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI: AI TO HIT INTERN-RESEARCHER LEVEL BY SEPTEMBER, FULL RESEARCHER BY MARCH 2028",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2076698316260139156",
+    "category": "research"
+  },
+  {
+    "headline": "VERCEL: OPEN-WEIGHT MODELS NOW 29% OF AI GATEWAY TOKEN VOLUME, UP FROM 11% IN APRIL",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2076713720731042174",
+    "category": "infra"
+  },
+  {
+    "headline": "META'S MUSE SPARK 1.1 CLAIMS SOTA ON RADIOLOGY BENCHMARK, NEARS HUMAN-EXPERT LEVEL",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2076696459005837410",
+    "category": "model"
+  }
+]
