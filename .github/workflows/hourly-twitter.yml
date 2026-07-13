@@ -699,8 +699,12 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          # Parity with the primary claude tier (kept honest for manual
+          # cross-model comparisons and the twitter-model-ab eval): same
+          # allowedTools list as the "Process tweets with Claude" step above
+          # and the same 40-turn budget the eval legs get.
           claude-args: |
-            --model opus --max-turns 30 --allowedTools "Read,Write,Edit,Bash(pwd:*),Bash(ls:*),Bash(rg:*),Bash(find:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
+            --model opus --max-turns 40 --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
             ${{ steps.const.outputs.status_file }}
           allowed-paths: |

@@ -1,0 +1,864 @@
+name: Twitter Model A/B Eval
+
+# Head-to-head model evaluation on the REAL Twitter-summary workload:
+#   leg "claude"      → lane twitter-ab-claude (native Claude, claude-sonnet-5)
+#   leg "zai-glm-5p2" → lane twitter-ab-zai    (GLM-5.2 via Z.ai Coding Plan)
+#
+# Cardinal rule: PARITY. Both legs get the SAME byte-identical input
+# snapshot, the SAME rendered prompt (differing only in the leg output
+# directory — enforced by the prompt parity guard below), the SAME
+# allowedTools / --max-turns, and NO repair or deterministic fallback.
+# Each leg runs on a detached HEAD from the same base commit so leg B can
+# never see leg A's output; only research/eval/twitter-ab/<date>/<leg>/ is
+# harvested back. A blinded claude-opus-4-8 judge (non-contestant) scores
+# the anonymized briefs twice with A/B positions swapped.
+#
+# Design doc + how to read the reports: docs/twitter-model-ab.md
+# Output: research/eval/twitter-ab/<date>/{<leg>/..., metrics.json,
+#         judge-verdict.json} + research/eval/twitter-ab/<date>-report.md
+#
+# Required secrets: CLAUDE_CODE_OAUTH_TOKEN, ZAI_API_KEY (leg B),
+#   FIREWORKS_API_KEY (agent-run call-site contract only — the strict lanes
+#   never route to Fireworks), BIRD_AUTH_TOKEN/BIRD_CT0/BIRDY_ACCOUNTS,
+#   HOOKER_URL/HOOKER_TOKEN (telemetry, optional).
+
+on:
+  schedule:
+    # Daily eval cycle at 21:40 UTC — offset from the production twitter
+    # crons (:07 / :37) so Birdy is not hit by two fetch bursts at once.
+    # REMOVE this schedule trigger when the eval week ends;
+    # workflow_dispatch stays for on-demand comparisons.
+    - cron: '40 21 * * *'
+  workflow_dispatch:
+    inputs:
+      legs:
+        description: Comma-separated legs to run (claude,zai-glm-5p2).
+        required: false
+        default: claude,zai-glm-5p2
+        type: string
+      judge:
+        description: Run the blinded Opus judge when both legs produce a digest.
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+concurrency:
+  group: twitter-model-ab
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  ab-eval:
+    runs-on: [self-hosted, Linux]
+    # Worst case sums to ~72-75 min (25+25 leg caps + 7+7 judge caps +
+    # ~8-11 min fetch/setup/metrics/commit) — 90 leaves real headroom so
+    # an overrun cannot die before commit/push and waste both legs' spend.
+    timeout-minutes: 90
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      # ── Run parameters ──────────────────────────────────────────────
+      # No `git pull` after checkout: a fresh fetch-depth-0 checkout at job
+      # start is already current, persist-credentials:false means a manual
+      # pull could not authenticate anyway, and safe-push rebases onto the
+      # live branch at publish time.
+      - name: Resolve run parameters
+        id: params
+        env:
+          # inputs.* are user-controlled on dispatch — env-injected, never
+          # interpolated into the script body.
+          INPUT_LEGS: ${{ inputs.legs }}
+          INPUT_JUDGE: ${{ inputs.judge }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          LEGS="${INPUT_LEGS:-claude,zai-glm-5p2}"
+          JUDGE="${INPUT_JUDGE:-true}"
+          RUN_CLAUDE=false
+          RUN_ZAI=false
+          IFS=',' read -ra TOKENS <<< "$LEGS"
+          for token in "${TOKENS[@]}"; do
+            token="$(echo "$token" | tr -d '[:space:]')"
+            case "$token" in
+              claude) RUN_CLAUDE=true ;;
+              zai-glm-5p2) RUN_ZAI=true ;;
+              "") ;;
+              *) echo "::error::Unknown leg '$token' (allowed: claude, zai-glm-5p2)"; exit 1 ;;
+            esac
+          done
+          if [ "$RUN_CLAUDE" != "true" ] && [ "$RUN_ZAI" != "true" ]; then
+            echo "::error::No known leg selected in '$LEGS'"; exit 1
+          fi
+          case "$JUDGE" in true|false) ;; *) JUDGE=true ;; esac
+          DATE=$(date -u +'%Y-%m-%d')
+          HOUR=$(date -u +'%H')
+          # Keyed by run_id AND run_attempt, and wiped before use: the
+          # self-hosted host is persistent, so a manual re-run (attempt 2)
+          # must never inherit attempt 1's judge verdicts — a stale
+          # verdict de-blinded with a fresh random letter map would flip
+          # legs silently. finalize also cross-checks a staging key.
+          STATE="/tmp/twitter-ab-${RUN_ID}-${RUN_ATTEMPT}"
+          rm -rf "$STATE"
+          mkdir -p "$STATE"
+          {
+            echo "date=${DATE}"
+            echo "hour=${HOUR}"
+            echo "timestamp=$(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            echo "run_claude=${RUN_CLAUDE}"
+            echo "run_zai=${RUN_ZAI}"
+            echo "judge=${JUDGE}"
+            echo "eval_root=research/eval/twitter-ab"
+            echo "date_dir=research/eval/twitter-ab/${DATE}"
+            echo "state_dir=${STATE}"
+          } >> "$GITHUB_OUTPUT"
+          echo "legs: claude=${RUN_CLAUDE} zai-glm-5p2=${RUN_ZAI}; judge=${JUDGE}; state=${STATE}"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install Python dependencies
+        run: uv sync --frozen
+
+      # ── ONE input snapshot, shared by both legs ─────────────────────
+      # Same fetch composite + parameters as the production claude tier
+      # (concurrency 8, no pre-filter, aggregated all.json), staged into
+      # .ab-input/bird/ — the immutable reference copy for this run.
+      - name: Fetch twitter snapshot (shared)
+        uses: ./.github/actions/twitter-fetch
+        with:
+          bird_auth_token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird_ct0: ${{ secrets.BIRD_CT0 }}
+          birdy_accounts: ${{ secrets.BIRDY_ACCOUNTS }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          concurrency: '8'
+          pre_filter: 'false'
+          aggregate: 'true'
+          free_disk: 'true'
+          workspace_output_dir: .ab-input/bird
+
+      # Empty snapshot ⇒ neutral no-input exit: comparing models on an empty
+      # input measures nothing, so no leg runs and the job ends green with
+      # "no-input" telemetry instead of a fake comparison.
+      - name: Gate on non-empty input and hash the snapshot
+        id: gate
+        run: |
+          set -euo pipefail
+          ALL=.ab-input/bird/all.json
+          TOTAL=0
+          if [ -f "$ALL" ]; then
+            TOTAL=$(jq -r '.meta.total_tweets // 0' "$ALL" 2>/dev/null || echo 0)
+          fi
+          if [ "$TOTAL" -lt 1 ]; then
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Empty twitter snapshot (total_tweets=${TOTAL}) — skipping the A/B legs."
+            exit 0
+          fi
+          SNAPSHOT_SHA=$(sha256sum "$ALL" | cut -d' ' -f1)
+          MANIFEST_SHA=$(find .ab-input/bird -maxdepth 1 -type f -name '*.json' -print0 \
+            | sort -z | xargs -0 sha256sum | sha256sum | cut -d' ' -f1)
+          FILE_COUNT=$(find .ab-input/bird -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')
+          {
+            echo "proceed=true"
+            echo "snapshot_sha=${SNAPSHOT_SHA}"
+            echo "manifest_sha=${MANIFEST_SHA}"
+            echo "file_count=${FILE_COUNT}"
+          } >> "$GITHUB_OUTPUT"
+          echo "snapshot: total_tweets=${TOTAL} files=${FILE_COUNT} all.json sha256=${SNAPSHOT_SHA}"
+
+      - name: Capture base SHA and git identity
+        id: base
+        if: steps.gate.outputs.proceed == 'true'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # ── Birdy daemon (read-only follow-up queries for BOTH legs) ────
+      # Started once, shared sequentially — same daemon posture as the
+      # production claude tier. Follow-up birdy-fast/curl calls are LIVE and
+      # therefore not identical across legs; that variance is bounded by the
+      # shared per-leg budgets and documented in docs/twitter-model-ab.md.
+      - name: Start birdy daemon
+        if: steps.gate.outputs.proceed == 'true'
+        uses: ./.github/actions/birdy-daemon
+        with:
+          bird_auth_token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird_ct0: ${{ secrets.BIRD_CT0 }}
+          birdy_accounts: ${{ secrets.BIRDY_ACCOUNTS }}
+
+      # ── Render the (shared) prompt once per leg ─────────────────────
+      # Identical inputs except output_dir/summaries_dir. `backend: claude`
+      # selects the TEMPLATE SHAPE the production claude tier gets (the
+      # consolidated all.json input section + 3-artifact headline contract);
+      # actual model routing is the agent-run `lane:`, never this input.
+      # harness_label/title_suffix are deliberately model-neutral and
+      # IDENTICAL across legs so neither model learns what it is.
+      - name: Render prompt (leg claude)
+        id: render_claude
+        if: steps.gate.outputs.proceed == 'true' && steps.params.outputs.run_claude == 'true'
+        uses: ./.github/actions/render-twitter-prompt
+        with:
+          backend: claude
+          output_path: ${{ steps.params.outputs.state_dir }}/prompt-claude.md
+          output_dir: ${{ steps.params.outputs.date_dir }}/claude
+          summaries_dir: ${{ steps.params.outputs.date_dir }}/claude
+          summary_slug: twitter-ab
+          title_suffix: ' (A/B eval)'
+          cycle_hours: '3'
+          commit_prefix: Twitter A/B eval update
+          bird_budget: '20'
+          curl_budget: '4'
+          harness_label: an automated Twitter/X AI monitor under evaluation
+          features: headlines
+          date: ${{ steps.params.outputs.date }}
+          hour: ${{ steps.params.outputs.hour }}
+          timestamp: ${{ steps.params.outputs.timestamp }}
+          run_id: ${{ github.run_id }}
+          run_attempt: ${{ github.run_attempt }}
+          yesterday: unused-0000-00-00
+
+      - name: Render prompt (leg zai-glm-5p2)
+        id: render_zai
+        if: steps.gate.outputs.proceed == 'true' && steps.params.outputs.run_zai == 'true'
+        uses: ./.github/actions/render-twitter-prompt
+        with:
+          backend: claude
+          output_path: ${{ steps.params.outputs.state_dir }}/prompt-zai-glm-5p2.md
+          output_dir: ${{ steps.params.outputs.date_dir }}/zai-glm-5p2
+          summaries_dir: ${{ steps.params.outputs.date_dir }}/zai-glm-5p2
+          summary_slug: twitter-ab
+          title_suffix: ' (A/B eval)'
+          cycle_hours: '3'
+          commit_prefix: Twitter A/B eval update
+          bird_budget: '20'
+          curl_budget: '4'
+          harness_label: an automated Twitter/X AI monitor under evaluation
+          features: headlines
+          date: ${{ steps.params.outputs.date }}
+          hour: ${{ steps.params.outputs.hour }}
+          timestamp: ${{ steps.params.outputs.timestamp }}
+          run_id: ${{ github.run_id }}
+          run_attempt: ${{ github.run_attempt }}
+          yesterday: unused-0000-00-00
+
+      # ── Prompt parity guard ─────────────────────────────────────────
+      # HARD gate: after substituting each leg's output directory with a
+      # placeholder, the two rendered prompts must be byte-identical. Any
+      # difference means config drift between the legs — the eval is invalid
+      # and the run fails before spending model tokens.
+      - name: Prompt parity guard
+        id: parity
+        if: steps.gate.outputs.proceed == 'true'
+        env:
+          STATE: ${{ steps.params.outputs.state_dir }}
+          DATE_DIR: ${{ steps.params.outputs.date_dir }}
+          RUN_CLAUDE: ${{ steps.params.outputs.run_claude }}
+          RUN_ZAI: ${{ steps.params.outputs.run_zai }}
+        run: |
+          set -euo pipefail
+          normalize() { sed "s|${DATE_DIR}/$2|LEG_DIR|g" "$STATE/prompt-$1.md" > "$STATE/normalized-$1.md"; }
+          NORM_SHA=""
+          if [ "$RUN_CLAUDE" = "true" ]; then
+            normalize claude claude
+            NORM_SHA=$(sha256sum "$STATE/normalized-claude.md" | cut -d' ' -f1)
+          fi
+          if [ "$RUN_ZAI" = "true" ]; then
+            normalize zai-glm-5p2 zai-glm-5p2
+            ZAI_SHA=$(sha256sum "$STATE/normalized-zai-glm-5p2.md" | cut -d' ' -f1)
+            if [ -n "$NORM_SHA" ] && [ "$NORM_SHA" != "$ZAI_SHA" ]; then
+              echo "::error::PARITY VIOLATION: rendered prompts differ beyond the leg directory."
+              diff "$STATE/normalized-claude.md" "$STATE/normalized-zai-glm-5p2.md" | head -40 || true
+              exit 1
+            fi
+            NORM_SHA="$ZAI_SHA"
+          fi
+          echo "normalized_sha=${NORM_SHA}" >> "$GITHUB_OUTPUT"
+          echo "Prompt parity OK (normalized sha256=${NORM_SHA})"
+
+      # ════════════════════════ LEG: claude ═══════════════════════════
+      # Detach at the shared base SHA (identical repo state for every leg),
+      # wipe transient state, and stage a FRESH copy of the snapshot at the
+      # exact path the rendered prompt expects (.twitter-input/bird/).
+      - name: Stage leg (claude)
+        id: stage_claude
+        if: steps.gate.outputs.proceed == 'true' && steps.params.outputs.run_claude == 'true'
+        env:
+          BASE_SHA: ${{ steps.base.outputs.sha }}
+          SNAPSHOT_SHA: ${{ steps.gate.outputs.snapshot_sha }}
+          FILE_COUNT: ${{ steps.gate.outputs.file_count }}
+          STATE: ${{ steps.params.outputs.state_dir }}
+        run: |
+          set -euo pipefail
+          git checkout -f --detach "$BASE_SHA"
+          rm -rf .twitter-input
+          git clean -fd -e .ab-input
+          mkdir -p .twitter-input
+          cp -a .ab-input/bird .twitter-input/bird
+          COPY_SHA=$(sha256sum .twitter-input/bird/all.json | cut -d' ' -f1)
+          COPY_COUNT=$(find .twitter-input/bird -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')
+          if [ "$COPY_SHA" != "$SNAPSHOT_SHA" ] || [ "$COPY_COUNT" != "$FILE_COUNT" ]; then
+            echo "::error::Leg staging integrity failure (sha ${COPY_SHA} vs ${SNAPSHOT_SHA}, files ${COPY_COUNT} vs ${FILE_COUNT})"
+            exit 1
+          fi
+          {
+            echo "t0=$(date -u +%s)"
+            echo "input_sha_pre=${COPY_SHA}"
+            echo "prompt_sha=$(sha256sum "$STATE/prompt-claude.md" | cut -d' ' -f1)"
+          } >> "$GITHUB_OUTPUT"
+
+      # Same composite, same tools, same turn budget as leg B. NO repair
+      # step, NO deterministic fallback — a failed leg scores as failed.
+      # Per-leg wall cap (IDENTICAL for both legs — parity): without it a
+      # single hung provider call could eat the whole 75-minute job and
+      # take the other leg's results down with it.
+      - name: Process tweets (leg claude — production Claude)
+        id: leg_claude
+        continue-on-error: true
+        timeout-minutes: 25
+        if: steps.stage_claude.outcome == 'success'
+        uses: ./.github/actions/agent-run
+        env:
+          BIRDY_READ_ONLY: "1"
+          BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
+        with:
+          lane: twitter-ab-claude
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          claude-args: |
+            --model opus --max-turns 40 --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
+          expected-paths: |
+            ${{ steps.params.outputs.date_dir }}/claude/status/${{ steps.params.outputs.date }}-${{ steps.params.outputs.hour }}h.json
+          allowed-paths: |
+            ${{ steps.params.outputs.date_dir }}/claude/
+          label: Twitter A/B leg claude
+          prompt: ${{ steps.render_claude.outputs.prompt }}
+
+      - name: Record leg result (claude)
+        id: record_claude
+        if: ${{ !cancelled() && steps.stage_claude.outcome == 'success' }}
+        env:
+          STATE: ${{ steps.params.outputs.state_dir }}
+          DATE_DIR: ${{ steps.params.outputs.date_dir }}
+          BASE_SHA: ${{ steps.base.outputs.sha }}
+          T0: ${{ steps.stage_claude.outputs.t0 }}
+          INPUT_SHA_PRE: ${{ steps.stage_claude.outputs.input_sha_pre }}
+          PROMPT_SHA: ${{ steps.stage_claude.outputs.prompt_sha }}
+          OUTCOME: ${{ steps.leg_claude.outcome }}
+          REQUESTED: ${{ steps.leg_claude.outputs.backend }}
+          EFFECTIVE: ${{ steps.leg_claude.outputs.effective-backend }}
+          USED_FALLBACK: ${{ steps.leg_claude.outputs.used-fallback }}
+          MODEL_ID: ${{ steps.leg_claude.outputs.model-id }}
+          NATIVE_MODEL: ${{ steps.leg_claude.outputs.native-model }}
+          EXEC_FILE: ${{ steps.leg_claude.outputs.execution-file }}
+        run: |
+          set -euo pipefail
+          T1=$(date -u +%s)
+          POST_SHA=$(git rev-parse HEAD)
+          INPUT_SHA_POST=$(sha256sum .twitter-input/bird/all.json 2>/dev/null | cut -d' ' -f1 || echo missing)
+          EXEC_COPY=""
+          if [ -n "$EXEC_FILE" ] && [ -f "$EXEC_FILE" ]; then
+            EXEC_COPY="$STATE/claude-execution.json"
+            cp "$EXEC_FILE" "$EXEC_COPY"
+          fi
+          cp .twitter-input/birdy-tool-log.jsonl "$STATE/claude-birdy-tool-log.jsonl" 2>/dev/null || true
+          jq -n \
+            --arg leg "claude" \
+            --arg lane "twitter-ab-claude" \
+            --arg expected_provider "claude" \
+            --arg expected_model "claude-sonnet-5" \
+            --arg outcome "$OUTCOME" \
+            --arg requested "$REQUESTED" \
+            --arg effective "$EFFECTIVE" \
+            --arg used_fallback "$USED_FALLBACK" \
+            --arg model_id "$MODEL_ID" \
+            --arg native_model "$NATIVE_MODEL" \
+            --arg execution_file "$EXEC_COPY" \
+            --arg leg_dir "$DATE_DIR/claude" \
+            --arg input_sha_pre "$INPUT_SHA_PRE" \
+            --arg input_sha_post "$INPUT_SHA_POST" \
+            --arg prompt_sha "$PROMPT_SHA" \
+            --arg base_sha "$BASE_SHA" \
+            --arg post_sha "$POST_SHA" \
+            --argjson started "${T0:-0}" \
+            --argjson finished "$T1" \
+            '{leg: $leg, lane: $lane, expected_provider: $expected_provider,
+              expected_model: $expected_model, outcome: $outcome,
+              requested_backend: $requested, effective_backend: $effective,
+              used_fallback: $used_fallback, model_id: $model_id,
+              native_model: $native_model, execution_file: $execution_file,
+              leg_dir: $leg_dir, input_sha_pre: $input_sha_pre,
+              input_sha_post: $input_sha_post, prompt_sha256: $prompt_sha,
+              base_sha: $base_sha, post_sha: $post_sha,
+              started_at_epoch: $started, finished_at_epoch: $finished}' \
+            > "$STATE/leg-claude.json"
+          echo "leg claude recorded: outcome=$OUTCOME effective=$EFFECTIVE post=$POST_SHA"
+
+      # ═══════════════════════ LEG: zai-glm-5p2 ═══════════════════════
+      # Identical staging from the SAME base SHA — leg A's commits live only
+      # on its detached line, so this leg sees the identical repo state.
+      - name: Stage leg (zai-glm-5p2)
+        id: stage_zai
+        if: ${{ !cancelled() && steps.gate.outputs.proceed == 'true' && steps.params.outputs.run_zai == 'true' && steps.base.outcome == 'success' && steps.parity.outcome == 'success' }}
+        env:
+          BASE_SHA: ${{ steps.base.outputs.sha }}
+          SNAPSHOT_SHA: ${{ steps.gate.outputs.snapshot_sha }}
+          FILE_COUNT: ${{ steps.gate.outputs.file_count }}
+          STATE: ${{ steps.params.outputs.state_dir }}
+        run: |
+          set -euo pipefail
+          git checkout -f --detach "$BASE_SHA"
+          rm -rf .twitter-input
+          git clean -fd -e .ab-input
+          mkdir -p .twitter-input
+          cp -a .ab-input/bird .twitter-input/bird
+          COPY_SHA=$(sha256sum .twitter-input/bird/all.json | cut -d' ' -f1)
+          COPY_COUNT=$(find .twitter-input/bird -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')
+          if [ "$COPY_SHA" != "$SNAPSHOT_SHA" ] || [ "$COPY_COUNT" != "$FILE_COUNT" ]; then
+            echo "::error::Leg staging integrity failure (sha ${COPY_SHA} vs ${SNAPSHOT_SHA}, files ${COPY_COUNT} vs ${FILE_COUNT})"
+            exit 1
+          fi
+          {
+            echo "t0=$(date -u +%s)"
+            echo "input_sha_pre=${COPY_SHA}"
+            echo "prompt_sha=$(sha256sum "$STATE/prompt-zai-glm-5p2.md" | cut -d' ' -f1)"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Process tweets (leg zai-glm-5p2 — GLM-5.2 via Z.ai)
+        id: leg_zai
+        continue-on-error: true
+        timeout-minutes: 25
+        if: ${{ !cancelled() && steps.stage_zai.outcome == 'success' }}
+        uses: ./.github/actions/agent-run
+        env:
+          BIRDY_READ_ONLY: "1"
+          BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
+        with:
+          lane: twitter-ab-zai
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          claude-args: |
+            --model opus --max-turns 40 --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
+          expected-paths: |
+            ${{ steps.params.outputs.date_dir }}/zai-glm-5p2/status/${{ steps.params.outputs.date }}-${{ steps.params.outputs.hour }}h.json
+          allowed-paths: |
+            ${{ steps.params.outputs.date_dir }}/zai-glm-5p2/
+          label: Twitter A/B leg zai-glm-5p2
+          prompt: ${{ steps.render_zai.outputs.prompt }}
+
+      - name: Record leg result (zai-glm-5p2)
+        id: record_zai
+        if: ${{ !cancelled() && steps.stage_zai.outcome == 'success' }}
+        env:
+          STATE: ${{ steps.params.outputs.state_dir }}
+          DATE_DIR: ${{ steps.params.outputs.date_dir }}
+          BASE_SHA: ${{ steps.base.outputs.sha }}
+          T0: ${{ steps.stage_zai.outputs.t0 }}
+          INPUT_SHA_PRE: ${{ steps.stage_zai.outputs.input_sha_pre }}
+          PROMPT_SHA: ${{ steps.stage_zai.outputs.prompt_sha }}
+          OUTCOME: ${{ steps.leg_zai.outcome }}
+          REQUESTED: ${{ steps.leg_zai.outputs.backend }}
+          EFFECTIVE: ${{ steps.leg_zai.outputs.effective-backend }}
+          USED_FALLBACK: ${{ steps.leg_zai.outputs.used-fallback }}
+          MODEL_ID: ${{ steps.leg_zai.outputs.model-id }}
+          NATIVE_MODEL: ${{ steps.leg_zai.outputs.native-model }}
+          EXEC_FILE: ${{ steps.leg_zai.outputs.execution-file }}
+        run: |
+          set -euo pipefail
+          T1=$(date -u +%s)
+          POST_SHA=$(git rev-parse HEAD)
+          INPUT_SHA_POST=$(sha256sum .twitter-input/bird/all.json 2>/dev/null | cut -d' ' -f1 || echo missing)
+          EXEC_COPY=""
+          if [ -n "$EXEC_FILE" ] && [ -f "$EXEC_FILE" ]; then
+            EXEC_COPY="$STATE/zai-glm-5p2-execution.json"
+            cp "$EXEC_FILE" "$EXEC_COPY"
+          fi
+          cp .twitter-input/birdy-tool-log.jsonl "$STATE/zai-glm-5p2-birdy-tool-log.jsonl" 2>/dev/null || true
+          jq -n \
+            --arg leg "zai-glm-5p2" \
+            --arg lane "twitter-ab-zai" \
+            --arg expected_provider "zai" \
+            --arg expected_model "glm-5.2" \
+            --arg outcome "$OUTCOME" \
+            --arg requested "$REQUESTED" \
+            --arg effective "$EFFECTIVE" \
+            --arg used_fallback "$USED_FALLBACK" \
+            --arg model_id "$MODEL_ID" \
+            --arg native_model "$NATIVE_MODEL" \
+            --arg execution_file "$EXEC_COPY" \
+            --arg leg_dir "$DATE_DIR/zai-glm-5p2" \
+            --arg input_sha_pre "$INPUT_SHA_PRE" \
+            --arg input_sha_post "$INPUT_SHA_POST" \
+            --arg prompt_sha "$PROMPT_SHA" \
+            --arg base_sha "$BASE_SHA" \
+            --arg post_sha "$POST_SHA" \
+            --argjson started "${T0:-0}" \
+            --argjson finished "$T1" \
+            '{leg: $leg, lane: $lane, expected_provider: $expected_provider,
+              expected_model: $expected_model, outcome: $outcome,
+              requested_backend: $requested, effective_backend: $effective,
+              used_fallback: $used_fallback, model_id: $model_id,
+              native_model: $native_model, execution_file: $execution_file,
+              leg_dir: $leg_dir, input_sha_pre: $input_sha_pre,
+              input_sha_post: $input_sha_post, prompt_sha256: $prompt_sha,
+              base_sha: $base_sha, post_sha: $post_sha,
+              started_at_epoch: $started, finished_at_epoch: $finished}' \
+            > "$STATE/leg-zai-glm-5p2.json"
+          echo "leg zai-glm-5p2 recorded: outcome=$OUTCOME effective=$EFFECTIVE post=$POST_SHA"
+
+      # ── Harvest: back to the branch, restore ONLY the leg dirs ──────
+      # Leg commits live on detached lines. Restoring each leg's own
+      # directory from its post-run SHA means an out-of-scope commit from a
+      # continue-on-error leg is structurally discarded — it can never reach
+      # the branch that safe-push publishes.
+      - name: Harvest leg outputs onto the branch
+        id: harvest
+        # parity.outcome gate: a prompt-parity abort must not flow through
+        # the !cancelled() chain into a "clean, no legs ran" report.
+        if: ${{ !cancelled() && steps.gate.outputs.proceed == 'true' && steps.base.outcome == 'success' && steps.parity.outcome == 'success' }}
+        env:
+          STATE: ${{ steps.params.outputs.state_dir }}
+          DATE_DIR: ${{ steps.params.outputs.date_dir }}
+          REF_NAME: ${{ github.ref_name }}
+          BASE_SHA: ${{ steps.base.outputs.sha }}
+        run: |
+          set -euo pipefail
+          git checkout -f "$REF_NAME"
+          rm -rf .twitter-input
+          git clean -fd -e .ab-input
+          for leg in claude zai-glm-5p2; do
+            META="$STATE/leg-${leg}.json"
+            [ -f "$META" ] || continue
+            POST=$(jq -r '.post_sha // empty' "$META")
+            if [ -z "$POST" ] || [ "$POST" = "$BASE_SHA" ]; then
+              echo "leg ${leg}: no commits to harvest"
+              continue
+            fi
+            if git cat-file -e "${POST}:${DATE_DIR}/${leg}" 2>/dev/null; then
+              git restore --source="$POST" -- "${DATE_DIR}/${leg}/"
+              echo "leg ${leg}: harvested ${DATE_DIR}/${leg}/ from ${POST}"
+            else
+              echo "leg ${leg}: ${POST} contains no ${DATE_DIR}/${leg} — nothing to harvest"
+            fi
+          done
+          git status --short "$DATE_DIR" || true
+
+      # ── Mechanical metrics + blinded judge staging ──────────────────
+      - name: Compute metrics and stage blinded judge inputs
+        id: metrics
+        if: ${{ !cancelled() && steps.harvest.outcome == 'success' && steps.parity.outcome == 'success' }}
+        env:
+          STATE: ${{ steps.params.outputs.state_dir }}
+          DATE: ${{ steps.params.outputs.date }}
+          HOUR: ${{ steps.params.outputs.hour }}
+          TIMESTAMP: ${{ steps.params.outputs.timestamp }}
+          DATE_DIR: ${{ steps.params.outputs.date_dir }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          SNAPSHOT_SHA: ${{ steps.gate.outputs.snapshot_sha }}
+          MANIFEST_SHA: ${{ steps.gate.outputs.manifest_sha }}
+          NORMALIZED_PROMPT_SHA: ${{ steps.parity.outputs.normalized_sha }}
+          JUDGE: ${{ steps.params.outputs.judge }}
+        run: |
+          set -euo pipefail
+          # metrics.json carries the letter→leg blinding map, so it stays in
+          # the run-scoped $STATE until AFTER both judge passes — never in
+          # the workspace next to the judge's staged inputs. It reaches
+          # $DATE_DIR at finalize (judge path) or at the report step.
+          ARGS=(collect
+            --date "$DATE" --hour "$HOUR" --timestamp "$TIMESTAMP"
+            --run-id "$RUN_ID" --run-attempt "$RUN_ATTEMPT"
+            --snapshot-sha "$SNAPSHOT_SHA" --manifest-sha "$MANIFEST_SHA"
+            --input-json .ab-input/bird/all.json
+            --normalized-prompt-sha "$NORMALIZED_PROMPT_SHA"
+            --out "$STATE/metrics.json")
+          for leg in claude zai-glm-5p2; do
+            [ -f "$STATE/leg-${leg}.json" ] && ARGS+=(--leg-meta "$STATE/leg-${leg}.json")
+          done
+          if [ "$JUDGE" = "true" ]; then
+            ARGS+=(--judge-dir "$STATE/judge")
+          fi
+          uv run python scripts/twitter_ab_metrics.py "${ARGS[@]}"
+          if [ "$JUDGE" = "true" ] && [ -f "$STATE/judge/pass1/A.md" ] && [ -f "$STATE/judge/pass1/B.md" ]; then
+            echo "judge_ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "judge_ready=false" >> "$GITHUB_OUTPUT"
+            echo "Judge not staged (disabled, or a leg produced no digest)."
+          fi
+
+      # ── Blinded judge, pass 1 ───────────────────────────────────────
+      # True non-contestant judge: the lane is native Claude and the
+      # native-model override remaps the `--model opus` alias to
+      # claude-opus-4-8 (NOT the claude-sonnet-5 the claude leg ran on).
+      # Read-only toolset plus one Write for the verdict.
+      - name: Judge briefs (pass 1)
+        id: judge1
+        continue-on-error: true
+        timeout-minutes: 7
+        if: steps.metrics.outputs.judge_ready == 'true'
+        uses: ./.github/actions/agent-run
+        with:
+          lane: twitter-ab-judge
+          native-model: claude-opus-4-8
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          claude-args: |
+            --model opus --max-turns 16 --allowedTools "Read,Write"
+          label: Twitter A/B blinded judge pass 1
+          prompt: |
+            You are the BLINDED judge for a two-system A/B evaluation of an
+            AI-news Twitter/X analyst task. Two anonymized briefs, "A" and
+            "B", were produced from the SAME input snapshot under identical
+            instructions. Reason from first principles and judge ONLY what
+            is on the page against the shared input. Do NOT try to identify
+            which system wrote which brief. A fixed list of model/provider
+            names was replaced with "[redacted]" in BOTH briefs for
+            blinding — never reward or penalize [redacted] tokens.
+
+            Step 1 — Read both briefs with the Read tool:
+              ${{ steps.params.outputs.state_dir }}/judge/pass1/A.md
+              ${{ steps.params.outputs.state_dir }}/judge/pass1/B.md
+
+            Step 2 — Spot-check at least 3 concrete claims per brief against
+            the shared input snapshot (pretty-printed JSON; it is large, so
+            Read selectively with offset/limit — do not read it end to end):
+              ${{ steps.params.outputs.state_dir }}/judge/snapshot.json
+
+            Step 3 — Score each brief with INTEGERS 1-10 on:
+              - coverage: are the major stories present in the snapshot
+                represented, with the right emphasis? Missing a top story
+                costs more than missing a minor one.
+              - faithfulness: no hallucination. Names, numbers, quotes, and
+                URLs trace back to the snapshot (or are explicitly flagged
+                unverified). Fabricated or distorted claims are the worst
+                failure — score them harshly.
+              - headline_quality: are the headline alerts the genuinely
+                alert-worthy items, punchy, specific, non-padded?
+              - skepticism: source hygiene — verification statuses that
+                match the evidence, real counter-hypotheses, no laundering
+                of single-source hype into fact.
+              - format: contract compliance — same-hour section shape,
+                story cards with title/lead/source chips, signal-only copy
+                (no operational or no-news filler), summary/headlines
+                consistent with the digest.
+            Also give an "overall" 1-10 (holistic; not necessarily the mean).
+
+            Step 4 — With the Write tool, write EXACTLY this file:
+              ${{ steps.params.outputs.state_dir }}/judge/verdict-1.json
+            Content = ONLY this JSON object, nothing else:
+            {
+              "scores": {
+                "A": {"coverage": N, "faithfulness": N, "headline_quality": N, "skepticism": N, "format": N, "overall": N},
+                "B": {"coverage": N, "faithfulness": N, "headline_quality": N, "skepticism": N, "format": N, "overall": N}
+              },
+              "rationale": {"A": "<=120 words", "B": "<=120 words"},
+              "preferred": "A" | "B" | "tie"
+            }
+            "preferred" is the brief you would ship to readers; use "tie"
+            only when they are genuinely indistinguishable in value. Then stop.
+
+      # ── Blinded judge, pass 2 (positions swapped) ───────────────────
+      # Same rubric, fresh context; the A/B contents are swapped to cancel
+      # position bias. The prompt must NOT reveal that this is a swap.
+      - name: Judge briefs (pass 2)
+        id: judge2
+        continue-on-error: true
+        timeout-minutes: 7
+        if: steps.metrics.outputs.judge_ready == 'true'
+        uses: ./.github/actions/agent-run
+        with:
+          lane: twitter-ab-judge-swapped
+          native-model: claude-opus-4-8
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          claude-args: |
+            --model opus --max-turns 16 --allowedTools "Read,Write"
+          label: Twitter A/B blinded judge pass 2
+          prompt: |
+            You are the BLINDED judge for a two-system A/B evaluation of an
+            AI-news Twitter/X analyst task. Two anonymized briefs, "A" and
+            "B", were produced from the SAME input snapshot under identical
+            instructions. Reason from first principles and judge ONLY what
+            is on the page against the shared input. Do NOT try to identify
+            which system wrote which brief. A fixed list of model/provider
+            names was replaced with "[redacted]" in BOTH briefs for
+            blinding — never reward or penalize [redacted] tokens.
+
+            Step 1 — Read both briefs with the Read tool:
+              ${{ steps.params.outputs.state_dir }}/judge/pass2/A.md
+              ${{ steps.params.outputs.state_dir }}/judge/pass2/B.md
+
+            Step 2 — Spot-check at least 3 concrete claims per brief against
+            the shared input snapshot (pretty-printed JSON; it is large, so
+            Read selectively with offset/limit — do not read it end to end):
+              ${{ steps.params.outputs.state_dir }}/judge/snapshot.json
+
+            Step 3 — Score each brief with INTEGERS 1-10 on:
+              - coverage: are the major stories present in the snapshot
+                represented, with the right emphasis? Missing a top story
+                costs more than missing a minor one.
+              - faithfulness: no hallucination. Names, numbers, quotes, and
+                URLs trace back to the snapshot (or are explicitly flagged
+                unverified). Fabricated or distorted claims are the worst
+                failure — score them harshly.
+              - headline_quality: are the headline alerts the genuinely
+                alert-worthy items, punchy, specific, non-padded?
+              - skepticism: source hygiene — verification statuses that
+                match the evidence, real counter-hypotheses, no laundering
+                of single-source hype into fact.
+              - format: contract compliance — same-hour section shape,
+                story cards with title/lead/source chips, signal-only copy
+                (no operational or no-news filler), summary/headlines
+                consistent with the digest.
+            Also give an "overall" 1-10 (holistic; not necessarily the mean).
+
+            Step 4 — With the Write tool, write EXACTLY this file:
+              ${{ steps.params.outputs.state_dir }}/judge/verdict-2.json
+            Content = ONLY this JSON object, nothing else:
+            {
+              "scores": {
+                "A": {"coverage": N, "faithfulness": N, "headline_quality": N, "skepticism": N, "format": N, "overall": N},
+                "B": {"coverage": N, "faithfulness": N, "headline_quality": N, "skepticism": N, "format": N, "overall": N}
+              },
+              "rationale": {"A": "<=120 words", "B": "<=120 words"},
+              "preferred": "A" | "B" | "tie"
+            }
+            "preferred" is the brief you would ship to readers; use "tie"
+            only when they are genuinely indistinguishable in value. Then stop.
+
+      # De-blind letter→leg (mapping lives in metrics.json, which the judge
+      # never reads) and commit the per-leg verdict. Fail-open: missing or
+      # garbled verdicts produce passes_parsed<2 instead of a crash.
+      - name: De-blind judge verdicts
+        if: ${{ !cancelled() && steps.metrics.outputs.judge_ready == 'true' }}
+        env:
+          STATE: ${{ steps.params.outputs.state_dir }}
+          DATE_DIR: ${{ steps.params.outputs.date_dir }}
+        run: |
+          set -euo pipefail
+          # Reads the state-dir metrics (with blinding map + staging key),
+          # cross-checks the judge dir's staging key against it (stale or
+          # foreign verdicts are ignored, never de-blinded with a fresh
+          # map), and only NOW materializes metrics.json into the date dir.
+          uv run python scripts/twitter_ab_metrics.py finalize \
+            --metrics "$STATE/metrics.json" \
+            --judge-dir "$STATE/judge" \
+            --judge-model claude-opus-4-8 \
+            --out-verdict "$DATE_DIR/judge-verdict.json" \
+            --out-metrics "$DATE_DIR/metrics.json"
+
+      # ── Report ──────────────────────────────────────────────────────
+      - name: Render report
+        id: report
+        if: ${{ !cancelled() && steps.metrics.outcome == 'success' && steps.parity.outcome == 'success' }}
+        env:
+          STATE: ${{ steps.params.outputs.state_dir }}
+          DATE_DIR: ${{ steps.params.outputs.date_dir }}
+          EVAL_ROOT: ${{ steps.params.outputs.eval_root }}
+          DATE: ${{ steps.params.outputs.date }}
+        run: |
+          set -euo pipefail
+          # Judge path: finalize already materialized the date-dir metrics
+          # (with the judge section). Non-judge path, or finalize failure:
+          # materialize the collect-stage metrics now — the judge passes
+          # (if any) are over, so the blinding map is safe to publish.
+          if [ ! -f "$DATE_DIR/metrics.json" ]; then
+            mkdir -p "$DATE_DIR"
+            cp "$STATE/metrics.json" "$DATE_DIR/metrics.json"
+          fi
+          uv run python scripts/twitter_ab_report.py \
+            --metrics "$DATE_DIR/metrics.json" \
+            --out "$EVAL_ROOT/${DATE}-report.md" \
+            --summary-out "$STATE/summary-line.txt"
+          {
+            echo "summary=$(head -c 400 "$STATE/summary-line.txt" | tr -d '\n')"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Commit eval artifacts
+        id: commit
+        if: ${{ !cancelled() && steps.report.outcome == 'success' }}
+        env:
+          TIMESTAMP: ${{ steps.params.outputs.timestamp }}
+        run: |
+          set -euo pipefail
+          git add research/eval/
+          git commit -m "Twitter model A/B eval ${TIMESTAMP}" || echo "No eval changes to commit"
+
+      # Publish through the repo-standard safe-push: main is PR-only, so a
+      # rejected direct push falls back to an automation/safe-push/* branch
+      # + auto-squash-merged PR (Load-bearing rule 13).
+      - name: Push changes
+        if: ${{ !cancelled() && steps.commit.outcome == 'success' }}
+        uses: ./.github/actions/safe-push
+        with:
+          branch: ${{ github.ref_name }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          noop-pushed: 'false'
+
+      # ── Stop birdy daemon (always, if started) ──────────────────────
+      - name: Stop birdy daemon
+        if: always() && steps.gate.outputs.proceed == 'true'
+        run: |
+          if [ -z "${BIRDY_DAEMON_PID_PATH:-}" ]; then
+            echo "No birdy daemon state exported; nothing to stop."
+            exit 0
+          fi
+          PID_PATH="$BIRDY_DAEMON_PID_PATH"
+          LOG_PATH="${BIRDY_DAEMON_LOG_PATH:-}"
+          if [ -f "$PID_PATH" ]; then
+            PID=$(cat "$PID_PATH")
+            if kill -0 "$PID" 2>/dev/null; then
+              echo "Stopping daemon PID $PID..."
+              kill -TERM "$PID" 2>/dev/null || true
+              for attempt in 1 2; do
+                sleep 1
+                kill -0 "$PID" 2>/dev/null || break
+                echo "Waiting for daemon shutdown, attempt ${attempt}/2"
+              done
+              kill -KILL "$PID" 2>/dev/null || true
+            fi
+            rm -f "$PID_PATH"
+          fi
+          if [ -n "$LOG_PATH" ] && [ -f "$LOG_PATH" ]; then
+            echo "--- daemon log (last 20 lines) ---"
+            tail -20 "$LOG_PATH"
+          fi
+
+      # ── Hooker telemetry (always, non-blocking) ─────────────────────
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+          title: 'Twitter Model A/B Eval'
+          text: >-
+            ${{ steps.report.outputs.summary
+                || (steps.gate.outputs.proceed == 'false' && 'no-input — empty twitter snapshot, legs skipped')
+                || 'eval run ended before the report step' }}
+          tags: twitter-model-ab
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

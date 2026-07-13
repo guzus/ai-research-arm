@@ -148,8 +148,9 @@ drift. Full per-lane matrix: [`docs/backend-matrix.md`](docs/backend-matrix.md).
 flowchart LR
     subgraph runtime["⚙️ Runtime-routed lanes — lane: → data/agent-backends.json"]
         lanes0["arxiv · bluesky · community<br/>digest-audio-script · digest-synthesis · digest-synthesis-fallback<br/>model-timeline · rss · twitter-autoresearch<br/>twitter-judge · twitter-primary · twitter-primary-repair<br/>wiki-ingest<br/><i>13 lanes</i>"]
-        strict0["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
-        strict1["🔒 twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
+        strict0["🔒 twitter-ab-claude · twitter-ab-judge · twitter-ab-judge-swapped<br/><i>strict — never falls back</i>"]
+        strict1["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
+        strict2["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
         gendef["generative-research-default<br/><i>dispatch default</i>"]
     end
     subgraph mirrors["🪞 CI-enforced mirrors — literal in workflow, equality-gated"]
@@ -163,8 +164,9 @@ flowchart LR
         OAI["🤖 OpenAI Codex CLI<br/><i>ChatGPT auth</i>"]
     end
     lanes0 -->|"claude-sonnet-5"| ANT
-    strict0 -->|"deepseek-v4-flash"| FW
-    strict1 -->|"glm-5.2"| ZAI
+    strict0 -->|"claude-sonnet-5"| ANT
+    strict1 -->|"deepseek-v4-flash"| FW
+    strict2 -->|"glm-5.2"| ZAI
     gendef -->|"claude-sonnet-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
