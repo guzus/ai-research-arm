@@ -345,7 +345,17 @@ def collect_leg(
         flags.append("backend-mismatch")
     if expected_model and served_model != expected_model:
         flags.append("model-mismatch")
-    if agent["observed_models"] and expected_model and expected_model not in agent["observed_models"]:
+    # Substring, case-insensitive: transcripts may report dated provider ids
+    # (e.g. "claude-sonnet-5-YYYYMMDD"); an exact-membership check would flag
+    # every run CONTAMINATED and discredit the eval week.
+    if (
+        agent["observed_models"]
+        and expected_model
+        and not any(
+            expected_model.lower() in str(observed).lower()
+            for observed in agent["observed_models"]
+        )
+    ):
         flags.append("expected-model-not-observed")
     if not matches_snapshot:
         flags.append("input-mismatch")
@@ -456,9 +466,16 @@ def build_judge_document(leg: str, legs: dict[str, Any], date: str, hour: str) -
 
 def stage_judge_inputs(
     legs: dict[str, Any], judge_dir: Path, *, date: str, hour: str,
-    input_json: Path | None, seed: int | None,
+    input_json: Path | None, seed: int | None, run_key: str = "",
 ) -> tuple[dict[str, Any] | None, str | None]:
-    """Write blinded pass1/pass2 inputs. Returns (blinding, skip_reason)."""
+    """Write blinded pass1/pass2 inputs. Returns (blinding, skip_reason).
+
+    The staging is bound to this run via `run_key`: any pre-existing
+    verdict files in the judge dir are purged, and a `staging-key.txt`
+    marker is written so `finalize` can refuse to de-blind verdicts that
+    were produced against a DIFFERENT staging (a stale verdict de-blinded
+    with a fresh random letter map would flip legs silently).
+    """
     leg_names = list(legs)
     if len(leg_names) != 2:
         return None, f"judge requires exactly 2 legs, got {len(leg_names)}"
@@ -476,6 +493,15 @@ def stage_judge_inputs(
         ordered.reverse()
     pass1 = dict(zip(LETTERS, ordered))
     pass2 = dict(zip(LETTERS, reversed(ordered)))
+
+    # Purge any leftover verdicts BEFORE staging: a verdict present after
+    # this point must postdate (and therefore match) this staging.
+    for stale in (judge_dir / "verdict-1.json", judge_dir / "verdict-2.json"):
+        try:
+            stale.unlink()
+        except FileNotFoundError:
+            pass
+    atomic_write_text(judge_dir / "staging-key.txt", f"{run_key}\n")
 
     scrub_hits: dict[str, int] = {}
     for pass_name, mapping in (("pass1", pass1), ("pass2", pass2)):
@@ -502,6 +528,7 @@ def stage_judge_inputs(
             snapshot_staged = False
 
     blinding = {
+        "run_key": run_key,
         "pass1": pass1,
         "pass2": pass2,
         "scrub_hits": scrub_hits,
@@ -556,6 +583,7 @@ def cmd_collect(args: argparse.Namespace) -> int:
             hour=args.hour,
             input_json=input_json,
             seed=args.blind_seed,
+            run_key=f"{args.run_id}-{args.run_attempt}",
         )
 
     reasons = sorted(
@@ -587,6 +615,7 @@ def cmd_collect(args: argparse.Namespace) -> int:
                 "API_TIMEOUT_MS=3000000 on the Z.ai route (provider-latency accommodation)",
                 "CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000 on the Z.ai route",
                 "CLAUDE_CODE_EFFORT_LEVEL=max on the non-native routes (pre-existing agent-run provider env)",
+                "CLAUDE_CODE_SUBAGENT_MODEL pinned on the Z.ai route (moot — the eval toolset has no Task tool)",
             ],
         },
         "legs": legs,
@@ -691,11 +720,33 @@ def cmd_finalize(args: argparse.Namespace) -> int:
 
     blinding = metrics.get("blinding") or {}
     judge_dir = Path(args.judge_dir)
+
+    # Staging-key cross-check (stale-verdict guard): the judge dir must be
+    # the one THIS metrics file's blinding was staged into. A verdict from a
+    # different run/attempt de-blinded with this run's random letter map has
+    # 50% odds of flipping legs — refuse to parse rather than guess.
+    staging_error: str | None = None
+    expected_key = str(blinding.get("run_key") or "")
+    if blinding and expected_key:
+        key_file = judge_dir / "staging-key.txt"
+        try:
+            observed_key = key_file.read_text(encoding="utf-8").strip()
+        except OSError:
+            observed_key = ""
+        if observed_key != expected_key:
+            staging_error = (
+                f"judge dir staging key {observed_key!r} != metrics run key "
+                f"{expected_key!r} — stale or foreign judge dir; verdicts ignored"
+            )
+
     passes: list[dict[str, Any]] = []
     for pass_number, (verdict_name, mapping_key) in enumerate(
         (("verdict-1.json", "pass1"), ("verdict-2.json", "pass2")), start=1
     ):
         mapping = blinding.get(mapping_key)
+        if staging_error is not None:
+            passes.append({"pass": pass_number, "parsed": False, "reason": staging_error})
+            continue
         verdict = parse_verdict(judge_dir / verdict_name)
         if verdict is None or not isinstance(mapping, dict):
             passes.append(
@@ -709,6 +760,8 @@ def cmd_finalize(args: argparse.Namespace) -> int:
             )
             continue
         passes.append(deblind_pass(verdict, mapping, pass_number))
+    if staging_error is not None:
+        print(f"::warning::{staging_error}")
 
     parsed = [p for p in passes if p.get("parsed")]
     leg_names = list((metrics.get("legs") or {}).keys())
@@ -755,7 +808,9 @@ def cmd_finalize(args: argparse.Namespace) -> int:
         "run_attempt": metrics.get("run_attempt"),
         "judge_model": args.judge_model,
         "position_swap": True,
+        "staging_key_ok": staging_error is None,
         "blinding": {
+            "run_key": blinding.get("run_key"),
             "pass1": blinding.get("pass1"),
             "pass2": blinding.get("pass2"),
         },
@@ -769,11 +824,18 @@ def cmd_finalize(args: argparse.Namespace) -> int:
     metrics["judge"] = {
         "judge_model": args.judge_model,
         "passes_parsed": len(parsed),
+        "staging_key_ok": staging_error is None,
         "per_leg": per_leg,
         "final_preference": final_preference,
         "verdict_file": str(args.out_verdict),
     }
-    atomic_write_json(metrics_path, metrics)
+    # --out-metrics lets the workflow keep the blinding map out of the
+    # workspace until after the judge passes: collect writes metrics into
+    # the run-scoped state dir, and only finalize materializes it here.
+    out_metrics = Path(args.out_metrics) if args.out_metrics else metrics_path
+    atomic_write_json(out_metrics, metrics)
+    if out_metrics != metrics_path:
+        atomic_write_json(metrics_path, metrics)  # keep the state copy current too
     print(
         f"judge verdict written: {args.out_verdict} "
         f"(passes_parsed={len(parsed)}, final_preference={final_preference})"
@@ -813,6 +875,9 @@ def build_parser() -> argparse.ArgumentParser:
     finalize.add_argument("--judge-dir", required=True)
     finalize.add_argument("--judge-model", default="claude-opus-4-8")
     finalize.add_argument("--out-verdict", required=True)
+    finalize.add_argument("--out-metrics", default="",
+                          help="materialize the finalized metrics here (e.g. the "
+                               "committed date dir); default = rewrite --metrics in place")
     finalize.set_defaults(func=cmd_finalize)
     return parser
 

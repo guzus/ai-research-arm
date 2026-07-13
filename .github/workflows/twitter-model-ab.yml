@@ -57,7 +57,10 @@ permissions:
 jobs:
   ab-eval:
     runs-on: [self-hosted, Linux]
-    timeout-minutes: 75
+    # Worst case sums to ~72-75 min (25+25 leg caps + 7+7 judge caps +
+    # ~8-11 min fetch/setup/metrics/commit) — 90 leaves real headroom so
+    # an overrun cannot die before commit/push and waste both legs' spend.
+    timeout-minutes: 90
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -78,6 +81,7 @@ jobs:
           INPUT_LEGS: ${{ inputs.legs }}
           INPUT_JUDGE: ${{ inputs.judge }}
           RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
         run: |
           set -euo pipefail
           LEGS="${INPUT_LEGS:-claude,zai-glm-5p2}"
@@ -100,7 +104,13 @@ jobs:
           case "$JUDGE" in true|false) ;; *) JUDGE=true ;; esac
           DATE=$(date -u +'%Y-%m-%d')
           HOUR=$(date -u +'%H')
-          STATE="/tmp/twitter-ab-${RUN_ID}"
+          # Keyed by run_id AND run_attempt, and wiped before use: the
+          # self-hosted host is persistent, so a manual re-run (attempt 2)
+          # must never inherit attempt 1's judge verdicts — a stale
+          # verdict de-blinded with a fresh random letter map would flip
+          # legs silently. finalize also cross-checks a staging key.
+          STATE="/tmp/twitter-ab-${RUN_ID}-${RUN_ATTEMPT}"
+          rm -rf "$STATE"
           mkdir -p "$STATE"
           {
             echo "date=${DATE}"
@@ -524,7 +534,9 @@ jobs:
       # the branch that safe-push publishes.
       - name: Harvest leg outputs onto the branch
         id: harvest
-        if: ${{ !cancelled() && steps.gate.outputs.proceed == 'true' && steps.base.outcome == 'success' }}
+        # parity.outcome gate: a prompt-parity abort must not flow through
+        # the !cancelled() chain into a "clean, no legs ran" report.
+        if: ${{ !cancelled() && steps.gate.outputs.proceed == 'true' && steps.base.outcome == 'success' && steps.parity.outcome == 'success' }}
         env:
           STATE: ${{ steps.params.outputs.state_dir }}
           DATE_DIR: ${{ steps.params.outputs.date_dir }}
@@ -555,7 +567,7 @@ jobs:
       # ── Mechanical metrics + blinded judge staging ──────────────────
       - name: Compute metrics and stage blinded judge inputs
         id: metrics
-        if: ${{ !cancelled() && steps.harvest.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.harvest.outcome == 'success' && steps.parity.outcome == 'success' }}
         env:
           STATE: ${{ steps.params.outputs.state_dir }}
           DATE: ${{ steps.params.outputs.date }}
@@ -570,13 +582,17 @@ jobs:
           JUDGE: ${{ steps.params.outputs.judge }}
         run: |
           set -euo pipefail
+          # metrics.json carries the letter→leg blinding map, so it stays in
+          # the run-scoped $STATE until AFTER both judge passes — never in
+          # the workspace next to the judge's staged inputs. It reaches
+          # $DATE_DIR at finalize (judge path) or at the report step.
           ARGS=(collect
             --date "$DATE" --hour "$HOUR" --timestamp "$TIMESTAMP"
             --run-id "$RUN_ID" --run-attempt "$RUN_ATTEMPT"
             --snapshot-sha "$SNAPSHOT_SHA" --manifest-sha "$MANIFEST_SHA"
             --input-json .ab-input/bird/all.json
             --normalized-prompt-sha "$NORMALIZED_PROMPT_SHA"
-            --out "$DATE_DIR/metrics.json")
+            --out "$STATE/metrics.json")
           for leg in claude zai-glm-5p2; do
             [ -f "$STATE/leg-${leg}.json" ] && ARGS+=(--leg-meta "$STATE/leg-${leg}.json")
           done
@@ -743,16 +759,21 @@ jobs:
           DATE_DIR: ${{ steps.params.outputs.date_dir }}
         run: |
           set -euo pipefail
+          # Reads the state-dir metrics (with blinding map + staging key),
+          # cross-checks the judge dir's staging key against it (stale or
+          # foreign verdicts are ignored, never de-blinded with a fresh
+          # map), and only NOW materializes metrics.json into the date dir.
           uv run python scripts/twitter_ab_metrics.py finalize \
-            --metrics "$DATE_DIR/metrics.json" \
+            --metrics "$STATE/metrics.json" \
             --judge-dir "$STATE/judge" \
             --judge-model claude-opus-4-8 \
-            --out-verdict "$DATE_DIR/judge-verdict.json"
+            --out-verdict "$DATE_DIR/judge-verdict.json" \
+            --out-metrics "$DATE_DIR/metrics.json"
 
       # ── Report ──────────────────────────────────────────────────────
       - name: Render report
         id: report
-        if: ${{ !cancelled() && steps.metrics.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.metrics.outcome == 'success' && steps.parity.outcome == 'success' }}
         env:
           STATE: ${{ steps.params.outputs.state_dir }}
           DATE_DIR: ${{ steps.params.outputs.date_dir }}
@@ -760,6 +781,14 @@ jobs:
           DATE: ${{ steps.params.outputs.date }}
         run: |
           set -euo pipefail
+          # Judge path: finalize already materialized the date-dir metrics
+          # (with the judge section). Non-judge path, or finalize failure:
+          # materialize the collect-stage metrics now — the judge passes
+          # (if any) are over, so the blinding map is safe to publish.
+          if [ ! -f "$DATE_DIR/metrics.json" ]; then
+            mkdir -p "$DATE_DIR"
+            cp "$STATE/metrics.json" "$DATE_DIR/metrics.json"
+          fi
           uv run python scripts/twitter_ab_report.py \
             --metrics "$DATE_DIR/metrics.json" \
             --out "$EVAL_ROOT/${DATE}-report.md" \

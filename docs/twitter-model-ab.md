@@ -84,9 +84,20 @@ invalidates the eval. The workflow enforces it structurally:
   (and `judge` input is not `false`).
 - `scripts/twitter_ab_metrics.py collect` stages
   `pass1/{A,B}.md` + `pass2/{A,B}.md` (pass 2 = positions swapped) under
-  the run-scoped `/tmp/twitter-ab-<run_id>/judge/` dir. The leg→letter
-  assignment is **randomized per run** and recorded ONLY in
-  `metrics.json` — never in any judge-visible file.
+  the run-scoped `/tmp/twitter-ab-<run_id>-<run_attempt>/judge/` dir
+  (wiped at job start — a re-run can never inherit a prior attempt's
+  state). The leg→letter assignment is **randomized per run** and
+  recorded only in `metrics.json`, which itself stays in that run-scoped
+  state dir — outside the workspace — until AFTER both judge passes; it
+  is materialized into the committed date dir at finalize. None of the
+  files the judge is directed to read contain the mapping (an unconfined
+  Read could still hunt for it — see the trust-model limitation below).
+- **Staleness guard:** staging purges any leftover `verdict-*.json` and
+  writes a `staging-key.txt` (`<run_id>-<run_attempt>`), which is also
+  recorded as `blinding.run_key` in metrics. `finalize` refuses to
+  de-blind verdicts whose judge dir carries a different staging key — a
+  stale verdict de-blinded with a fresh random letter map would have
+  50% odds of silently flipping the legs.
 - A fixed list of model/provider/lane strings (`claude`, `anthropic`,
   `sonnet`, `glm`, `z.ai`, `zhipu`, lane names, model ids, …) is scrubbed
   to `[redacted]` from both copies. URLs and `@handles` are preserved:
@@ -109,10 +120,10 @@ invalidates the eval. The workflow enforces it structurally:
   the final preference is the two passes' agreement — disagreement yields
   `split` (treat as no-decision). A judge that always prefers the
   first-listed brief therefore cannot produce a winner.
-- `scripts/twitter_ab_metrics.py finalize` de-blinds letter→leg, writes
-  the committed `judge-verdict.json`, and merges per-leg averages into
-  `metrics.json`. Missing/garbled verdicts fail open
-  (`passes_parsed < 2`), never crash the run.
+- `scripts/twitter_ab_metrics.py finalize` cross-checks the staging key,
+  de-blinds letter→leg, writes the committed `judge-verdict.json`, and
+  merges per-leg averages into `metrics.json`. Missing/garbled/stale
+  verdicts fail open (`passes_parsed < 2`), never crash the run.
 
 ## Contamination guards
 
@@ -122,7 +133,7 @@ invalidates the eval. The workflow enforces it structurally:
 |---|---|---|
 | `backend-mismatch` | agent-run's effective backend ≠ requested, or the fallback chain was walked | CONTAMINATED |
 | `model-mismatch` | served model (native-model / model-id echo) ≠ the leg's expected model | CONTAMINATED |
-| `expected-model-not-observed` | the transcript's `modelUsage` never shows the expected model | CONTAMINATED |
+| `expected-model-not-observed` | no `modelUsage` key in the transcript contains the expected model id (substring, case-insensitive — providers may report dated ids like `claude-sonnet-5-YYYYMMDD`) | CONTAMINATED |
 | `input-mismatch` / `input-mutated` | staged copy ≠ snapshot hash, or the copy changed during the leg | CONTAMINATED |
 | `sandbox-suspect` | `permission_denials > 0` on any leg | run marked **sandbox-suspect** (tool friction may have depressed a leg independently of model quality); not full contamination |
 
@@ -183,6 +194,9 @@ These are provider-route accommodations baked into the shared
 - `CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000` on the Z.ai route.
 - `CLAUDE_CODE_EFFORT_LEVEL=max` on the non-native routes (Fireworks/Z.ai)
   — pre-existing agent-run env not set on the native path.
+- `CLAUDE_CODE_SUBAGENT_MODEL` pinned on the Z.ai route — moot in
+  practice: the eval toolset includes no Task tool, so no subagent calls
+  can occur on either leg.
 
 ## Known limitations
 
@@ -195,8 +209,10 @@ These are provider-route accommodations baked into the shared
   budgets absorbed leg A's ≤20 calls. Bounded, and constant across runs.
 - **Judge trust model:** blinding defends against label bias, not an
   adversarial judge — the Read tool could technically open other files.
-  Same trust model as the production headline judge; the mapping is kept
-  out of every staged judge file regardless.
+  Same trust model as the production headline judge. Mitigations, not
+  guarantees: the mapping never appears in the files the judge is
+  directed to read, and the metrics file that carries it stays outside
+  the workspace (run-scoped `/tmp` state) until both passes finish.
 - **Stylistic fingerprints** can't be scrubbed; a judge may recognize a
   model's voice. Position-swap + rubric anchoring reduce, not eliminate,
   this.

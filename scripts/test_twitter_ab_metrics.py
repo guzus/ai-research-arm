@@ -390,6 +390,43 @@ class CollectTest(unittest.TestCase):
                           metrics["legs"]["zai-glm-5p2"]["flags"])
             self.assertTrue(metrics["contamination"]["contaminated"])
 
+    def test_dated_observed_model_id_is_not_flagged(self):
+        # Providers may report dated ids in modelUsage (claude-sonnet-5-YYYYMMDD);
+        # the guard is substring/case-insensitive so that must NOT contaminate.
+        with tempfile.TemporaryDirectory() as tmp_str:
+            tmp = Path(tmp_str)
+            leg_a = Fixture(tmp, "claude", "claude", "claude-sonnet-5")
+            leg_a.write_artifacts(
+                execution_kwargs={"models": ("Claude-Sonnet-5-20260115",)}
+            )
+            metrics = run_collect(tmp, [leg_a.write_meta()])
+            self.assertNotIn("expected-model-not-observed",
+                             metrics["legs"]["claude"]["flags"])
+            self.assertFalse(metrics["contamination"]["contaminated"])
+
+    def test_collect_purges_stale_verdicts_and_writes_staging_key(self):
+        with tempfile.TemporaryDirectory() as tmp_str:
+            tmp = Path(tmp_str)
+            leg_a = Fixture(tmp, "claude", "claude", "claude-sonnet-5")
+            leg_a.write_artifacts()
+            leg_b = Fixture(tmp, "zai-glm-5p2", "zai", "glm-5.2")
+            leg_b.write_artifacts()
+            judge_dir = tmp / "judge"
+            judge_dir.mkdir()
+            # Leftover verdict from a previous attempt in a reused judge dir.
+            (judge_dir / "verdict-1.json").write_text(
+                json.dumps(FinalizeTest._verdict("A"))
+            )
+            metrics = run_collect(
+                tmp, [leg_a.write_meta(), leg_b.write_meta()], judge_dir=judge_dir
+            )
+            self.assertFalse((judge_dir / "verdict-1.json").exists())
+            self.assertEqual(
+                (judge_dir / "staging-key.txt").read_text().strip(),
+                f"{RUN_ID}-{RUN_ATTEMPT}",
+            )
+            self.assertEqual(metrics["blinding"]["run_key"], f"{RUN_ID}-{RUN_ATTEMPT}")
+
 
 class FinalizeTest(unittest.TestCase):
     def _staged(self, tmp: Path, seed=7):
@@ -458,6 +495,47 @@ class FinalizeTest(unittest.TestCase):
             (tmp / "judge" / "verdict-2.json").write_text(json.dumps(self._verdict("A")))
             verdict, _ = self._finalize(tmp)
             self.assertEqual(verdict["final_preference"], "split")
+
+    def test_stale_judge_dir_verdicts_are_rejected(self):
+        # A verdict produced against a DIFFERENT staging (e.g. run attempt 1
+        # surviving into attempt 2) must never be de-blinded with this run's
+        # fresh letter map — 50% odds of flipping legs. finalize cross-checks
+        # the staging key and refuses to parse.
+        with tempfile.TemporaryDirectory() as tmp_str:
+            tmp = Path(tmp_str)
+            self._staged(tmp)
+            (tmp / "judge" / "verdict-1.json").write_text(json.dumps(self._verdict("A")))
+            (tmp / "judge" / "verdict-2.json").write_text(json.dumps(self._verdict("B")))
+            # Simulate a stale/foreign judge dir: staging key from another attempt.
+            (tmp / "judge" / "staging-key.txt").write_text("999999-1\n")
+            verdict, updated = self._finalize(tmp)
+            self.assertEqual(verdict["passes_parsed"], 0)
+            self.assertEqual(verdict["final_preference"], "none")
+            self.assertFalse(verdict["staging_key_ok"])
+            for p in verdict["passes"]:
+                self.assertFalse(p["parsed"])
+                self.assertIn("stale or foreign judge dir", p["reason"])
+            self.assertFalse(updated["judge"]["staging_key_ok"])
+
+    def test_finalize_out_metrics_materializes_copy(self):
+        with tempfile.TemporaryDirectory() as tmp_str:
+            tmp = Path(tmp_str)
+            self._staged(tmp)
+            (tmp / "judge" / "verdict-1.json").write_text(json.dumps(self._verdict("tie")))
+            out_metrics = tmp / "published" / "metrics.json"
+            argv = [
+                "finalize",
+                "--metrics", str(tmp / "metrics.json"),
+                "--judge-dir", str(tmp / "judge"),
+                "--out-verdict", str(tmp / "judge-verdict.json"),
+                "--out-metrics", str(out_metrics),
+            ]
+            with redirect_stdout(StringIO()):
+                self.assertEqual(ab.main(argv), 0)
+            published = json.loads(out_metrics.read_text())
+            state_copy = json.loads((tmp / "metrics.json").read_text())
+            self.assertEqual(published["judge"]["final_preference"], "tie")
+            self.assertEqual(published["judge"], state_copy["judge"])
 
     def test_missing_verdicts_fail_open(self):
         with tempfile.TemporaryDirectory() as tmp_str:
