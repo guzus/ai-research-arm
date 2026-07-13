@@ -847,5 +847,17 @@
       "fireworks-fallback",
       "requested-deepseek-v4-flash"
     ]
+  },
+  {
+    "slug": "cxmt",
+    "file": "2026-07-13T181948--cxmt.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "CXMT prices the biggest IPO of 2026 this week — on the best quarter the DRAM cycle ever paid for",
+    "model": "claude-fable-5",
+    "created_at": "2026-07-13T18:19:48Z",
+    "source": "workflow_dispatch",
+    "prompt": "CXMT",
+    "tags": []
   }
 ]
