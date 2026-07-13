@@ -4357,30 +4357,39 @@ body.modal-open { overflow: hidden; }
 }
 
 /* ── Polymarket odds on ticket cards ──────────────────
- * One chip per market mapping (max 3, wraps on narrow cards / mobile) plus
- * an inline sparkline for the primary mapping. Hydrated lazily after the
- * grid paints; an unreachable Polymarket leaves em-dash chips only. */
+ * One chip per market mapping (max 3), name-first: the market question
+ * (ellipsized, full text in title) + live probability. Chips are BUTTONS —
+ * the price-history chart + Polymarket link live in the modal they open.
+ * Full-width rows so questions get maximum room and the %s align into a
+ * scannable column; ellipsis + min-width:0 means no horizontal overflow on
+ * any viewport. Hydrated lazily after the grid paints; an unreachable
+ * Polymarket leaves em-dash chips only. */
 .ticket-odds {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 5px;
   min-width: 0;
 }
 .ticket-odds-chip {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 5px;
-  max-width: 100%;
-  padding: 2px 8px;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  padding: 3px 9px;
   border: 1px solid var(--border-light);
-  border-radius: 999px;
+  border-radius: 8px;
   background: var(--bg-secondary);
   color: var(--text-secondary);
+  font-family: inherit;
   font-size: 11px;
   line-height: 1.5;
+  text-align: left;
   text-decoration: none;
-  white-space: nowrap;
+  cursor: pointer;
+  appearance: none;
   transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
 }
 .ticket-odds-chip:hover {
@@ -4388,34 +4397,31 @@ body.modal-open { overflow: hidden; }
   background: var(--bg-hover);
   color: var(--accent-warm);
 }
+.ticket-odds-chip:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 1px;
+}
+.ticket-odds-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-tertiary);
+}
+.ticket-odds-chip:hover .ticket-odds-label { color: var(--accent-warm); }
 .ticket-odds-pct {
+  flex: 0 0 auto;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
   color: var(--text);
 }
 .ticket-odds-chip:hover .ticket-odds-pct { color: var(--accent-warm); }
-.ticket-odds-label {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 150px;
-  color: var(--text-tertiary);
-}
 /* Resolved markets: final ✓/✗ + 0/100% from the gamma snapshot. */
 .ticket-odds-chip.is-resolved-yes .ticket-odds-pct { color: #166534; }
 .ticket-odds-chip.is-resolved-no  .ticket-odds-pct { color: #b91c1c; }
 .ticket-odds-chip.is-unavailable { opacity: 0.65; }
-.ticket-odds-spark-slot {
-  display: inline-flex;
-  align-items: center;
-  flex: 0 0 auto;
-}
-.ticket-odds-spark {
-  width: 120px;
-  height: 28px;
-  display: block;
-  color: var(--accent-warm);
-  opacity: 0.9;
-}
 .tickets-odds-note {
   margin-top: 10px;
   font-size: 11px;
@@ -4425,11 +4431,137 @@ body.modal-open { overflow: hidden; }
   .ticket-odds-chip.is-resolved-yes .ticket-odds-pct { color: #86efac; }
   .ticket-odds-chip.is-resolved-no  .ticket-odds-pct { color: #fca5a5; }
 }
+
+/* ── Polymarket odds modal ────────────────────────────
+ * Detail-on-demand for a chip: full question, outcome + status, the larger
+ * price-history chart, and the Polymarket link. Chrome mirrors .ticket-modal
+ * (same card surface/vars); open/close behavior mirrors .ara-figure-modal
+ * (hidden toggle, backdrop button, body scroll lock). Sits ABOVE the ticket
+ * modal layer (1300) but below the figure lightbox (4000). */
+.ticket-odds-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+  overflow-y: auto;
+}
+.ticket-odds-modal[hidden] { display: none; }
+.ticket-odds-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(8, 12, 20, 0.55);
+  cursor: pointer;
+}
+.ticket-odds-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(640px, 100%);
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.ticket-odds-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+.ticket-odds-modal-close:hover { background: var(--bg-hover); color: var(--text); }
+.ticket-odds-modal-close:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 2px;
+}
+.ticket-odds-modal-title {
+  margin: 0;
+  padding-right: 44px; /* clear the close button */
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--text);
+  overflow-wrap: break-word;
+}
+.ticket-odds-modal-status {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ticket-odds-modal-pct {
+  font-size: 22px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+.ticket-odds-modal-status.is-resolved-yes .ticket-odds-modal-pct { color: #166534; }
+.ticket-odds-modal-status.is-resolved-no  .ticket-odds-modal-pct { color: #b91c1c; }
+.ticket-odds-modal-status.is-unavailable  .ticket-odds-modal-pct { color: var(--text-tertiary); }
+.ticket-odds-modal-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.ticket-odds-modal-chart {
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  color: var(--accent-warm); /* chart stroke + labels via currentColor */
+}
+.ticket-odds-modal-chart-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.ticket-odds-modal-chart-empty {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+.ticket-odds-modal-link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--accent-warm);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 120ms ease;
+}
+.ticket-odds-modal-link:hover { opacity: 0.88; text-decoration: none; }
+.ticket-odds-modal-note {
+  margin: 0;
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+body.ticket-odds-modal-open { overflow: hidden; }
+@media (prefers-color-scheme: dark) {
+  .ticket-odds-modal-status.is-resolved-yes .ticket-odds-modal-pct { color: #86efac; }
+  .ticket-odds-modal-status.is-resolved-no  .ticket-odds-modal-pct { color: #fca5a5; }
+}
 @media (max-width: 640px) {
-  /* Stacked mobile columns are full-width — let the label breathe but keep
-   * chips wrapping instead of forcing horizontal overflow. */
-  .ticket-odds-label { max-width: 40vw; }
-  .ticket-odds-spark { width: 96px; height: 24px; }
+  /* Near-full-width sheet on phones; keep the chart + link usable. */
+  .ticket-odds-modal { padding: 12px 8px; }
+  .ticket-odds-modal-panel { padding: 18px 16px; border-radius: 12px; }
+  .ticket-odds-modal-title { font-size: 15px; }
 }
 
 .ticket-verification {
