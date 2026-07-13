@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Its headline finding is a hedge, not a declaration: \"We are not there yet, and recursive self-improvement is not inevitable.\"",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Anthropic's flagship science product, Claude Science, launched eleven days later on June 30, 2026; MIT Technology Review's and STAT News's dedicated launch coverage credit Alexander Tarashansky and Eric Kauderer-Abrams as the people who built and lead it — neither mentions Jumper.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "On the one clean, apples-to-apples measure we found — academic poaching in H1 2026, where at least 22 professors left universities for frontier labs — Anthropic (5) trails OpenAI and Meta (6 each) and ties Google DeepMind (5).",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

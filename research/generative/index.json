@@ -859,5 +859,19 @@
     "source": "workflow_dispatch",
     "prompt": "CXMT",
     "tags": []
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-guilleflorvs-s",
+    "file": "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The Anthropic Flywheel — What Eight Hires in Ten Weeks Actually Reveal",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-13T20:11:49Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/guilleflorvs/status/2076708631408464202\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
