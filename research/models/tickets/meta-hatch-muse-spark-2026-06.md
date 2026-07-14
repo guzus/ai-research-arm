@@ -35,6 +35,15 @@ status_note: |
   official version + independent testing-platform corroboration advances
   `verification` partial → confirmed; still gated access keeps `status` at
   `in-testing` rather than `released`.
+
+  **2026-07-14:** Alexandr Wang (Meta Superintelligence Labs chief) claims
+  Muse Spark 1.1 tops HealthBench Professional and ranks near the top of a
+  Debate Benchmark, beating Opus/Gemini/GPT-5.6 on the cited evals —
+  self-reported by the team that built the model, with no independent
+  benchmark reproduction. Layered on top of, but not itself new
+  corroboration of, the already-`confirmed` verification (official version
+  name + third-party testing-platform listing). Status stays `in-testing`;
+  verification stays `confirmed`.
 expected: "Muse Spark 1.1 confirmed (2026-07-09 @AIatMeta): early access given to select partners, also listed on a third-party AI/ML testing platform (testingcatalog, 2026-07-10) — still gated, not general availability. Hatch launch + up-to-$199.99/mo pricing still TBD/unconfirmed."
 labels:
   - consumer-agent
@@ -52,7 +61,7 @@ sources:
   - "@AIatMeta"
   - "@testingcatalog"
 created_at: 2026-06-04
-updated_at: 2026-07-12
+updated_at: 2026-07-14
 closed_at: null
 closed_reason: null
 history:
@@ -66,6 +75,8 @@ history:
     change: "Next Muse Spark update confirmed coming, codename + benchmark claim still secondary. Meta Superintelligence Labs chief Alexandr Wang tweeted (01:01 UTC Jul 3, primary, 2,116 likes): 'Our next Muse Spark update is coming soon. Big improvements in coding and agentic capabilities.' Separately, Business Insider reporting (relayed by @kimmonismus) names the update 'Watermelon,' claims it already matches GPT-5.5 on internal benchmarks, and says it trains with ~10x the compute of Muse Spark (internal codename Avocado) — this specific codename/benchmark claim is BI-secondary, not in Wang's own tweet, and not independently verified. A real primary confirms an update is coming; the Watermelon specifics stay unconfirmed. Status stays in-testing; verification stays partial."
   - ts: 2026-07-12
     change: "Muse Spark 1.1 landed as gated early access, not GA. @AIatMeta (2026-07-09, official): 'We gave a few leaders early access to Muse Spark 1.1, here's what they had to say.' testingcatalog (2026-07-10) separately reports it's 'now available on the AI/ML platform for testing' alongside Grok 4.5 — a broader gated-testing surface, still not public. Official version name + independent testing-platform corroboration → verification partial → confirmed. Status stays in-testing (early-access/gated, not released)."
+  - ts: 2026-07-14
+    change: "Alexandr Wang claims Muse Spark 1.1 tops HealthBench Professional and ranks near the top of a Debate Benchmark, beating Opus/Gemini/GPT-5.6 on cited evals — self-reported by the team that built it, no independent reproduction. Status stays in-testing; verification stays confirmed."
 ---
 
 **The Information** (relayed on 2026-06-04, 02:25 UTC) reports that Meta is
