@@ -6,8 +6,9 @@ aliases: ["GPT-5.6", "GPT 5.6", "GPT-5.6 Pro", "GPT-5.6 Mini", "GPT-5.6 Sol", "G
 tags: [model-release, openai, gpt, frontier-model, government-gated, preview]
 description: OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%, reportedly solving a 50-year-old math problem with 64 subagents.
 created_at: 2026-06-20
-timestamp: 2026-07-13T00:00:00Z
+timestamp: 2026-07-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
@@ -107,6 +108,16 @@ gated external preview); GA is "in the coming weeks."
   GA window and landing the same cycle [[anthropic]] extended
   [[claude-fable-5|Claude Code's]] own rate-limit boost through July 19 (ARA
   digest 2026-07-13).
+
+- **Rollout continues; "ChatGPT Work" and a 2.2x-latency production case
+  study (2026-07-14).** The **Sol / Terra / Luna** family and **"ChatGPT
+  Work"** (powered by Codex + GPT-5.6) continued rolling out — official
+  OpenAI YouTube uploads this cycle included a 35-minute livestream intro
+  plus short product spots. A production case study surfaced on Hacker News
+  reporting that migrating an agent workload to GPT-5.6 yielded **2.2x
+  faster latency and 27% lower cost** — an independent-ish (practitioner
+  self-report) data point on the capacity/cost claims that have driven the
+  repeated usage-cap interventions tracked above (ARA digest 2026-07-14).
 
 ## Open questions
 

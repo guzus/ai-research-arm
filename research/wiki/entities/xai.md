@@ -6,8 +6,9 @@ aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
 description: Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T "V9" model that ended its private beta and shipped free to all X accounts on 2026-07-10.
 created_at: 2026-06-08
-timestamp: 2026-07-12T00:00:00Z
+timestamp: 2026-07-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA model ticket — Grok V9-Medium / Grok 4.5", path: research/models/tickets/grok-v9-medium.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
@@ -75,6 +76,21 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   for the V9 foundation — clearing the bar this ticket had been tracking
   as `confirmed` (private beta only) since 2026-06-28 (ARA digest
   2026-07-12).
+
+- **Grok Build CLI allegedly exfiltrates local repos and secrets; xAI
+  responds with a ZDR clarification, not a denial (2026-07-14).** A major
+  Hacker News thread alleged **Grok Build CLI uploads entire local
+  repositories — including unredacted `.env` secrets — to xAI-controlled
+  cloud storage**, a fresh capability-misuse/supply-chain data point on top
+  of the earlier Claude-training-data controversy (see
+  [[agentic-ai-security]]). xAI responded with a **zero-data-retention
+  (ZDR) clarification** rather than a denial of the underlying collection
+  behavior — leaving the exfiltration claim itself unaddressed. The same
+  day, **Perplexity cited that ZDR guarantee** when announcing a same-day
+  **Grok 4.5 integration**, treating the clarification as sufficient
+  reassurance for a partner integration even as the community reaction
+  produced **Clawk**, a Show HN disposable-Linux-VM sandbox for coding
+  agents built directly in response (ARA digest 2026-07-14).
 
 ## Open questions
 

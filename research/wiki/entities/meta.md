@@ -4,12 +4,14 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and frontier-model builder (Llama); on 2026-06-16 launched "AI Mode" on Facebook, and in early July 2026 was reported building "Meta Compute" to sell surplus AI capacity — the first hyperscaler framed as having compute to sell.
+description: Social-platform hyperscaler and frontier-model builder (Llama); its Louisiana Hyperion data-center investment crossed $50B (2026-07-14), and in early July 2026 it was reported building "Meta Compute" to sell surplus AI capacity — the first hyperscaler framed as having compute to sell.
 created_at: 2026-06-16
-timestamp: 2026-07-02T00:00:00Z
+timestamp: 2026-07-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
+  - {title: "ARA model ticket — Meta Hatch / Muse Spark", path: research/models/tickets/meta-hatch-muse-spark-2026-06.md}
 ---
 
 Meta is the social-platform hyperscaler behind Facebook, Instagram and WhatsApp,
@@ -60,3 +62,24 @@ Meta is also **capping its own internal AI token spend** as costs neared billion
 demand-side cost-discipline signal that rhymes with the broader "tokenmaxxing" pushback
 (Palantir's Karp, Sonnet 5's token bloat) running through the [[ai-capex]] ROI debate
 (ARA digest 2026-07-02).
+
+## Hyperion crosses $50B; Muse Spark 1.1 benchmark claims (2026-07-14)
+
+Meta's **Richland Parish, Louisiana** facility — home to **Hyperion**, its
+largest AI training cluster — will grow to **~10M square feet and 5 gigawatts**
+of IT capacity. The project's estimated cost has climbed from **$10B at
+inception**, to **$27B** when Meta and Blue Owl Capital formed a build-out
+joint venture in October, to **over $50B now**; an initial 2 GW phase targets
+2030, with the full 5 GW by **~2032**. Louisiana granted a **20-year
+sales-tax exemption** for data centers built before 2029 to help secure the
+project, and Meta says it has awarded **$1.6B+ in contracts to local
+businesses** since construction began in December 2024. Hyperion is a
+distinct, parallel buildout from Meta's separately reported **$13B Alberta,
+Canada** data center, and sits alongside the pre-committed [[coreweave|CoreWeave]]
+(~$35B) and [[nebius|Nebius]] (~$27B) capacity Meta has locked in even as it
+weighs reselling surplus via **Meta Compute** — see [[ai-capex]].
+
+Separately, Meta's Chief AI Officer claimed **Muse Spark 1.1** is SOTA on a
+radiology-handover benchmark and ranks **#3 on a debate benchmark** behind
+[[claude-fable-5|Fable 5]] and [[claude-opus-4-8|Claude Opus 4.7]] — both
+self-reported figures, unverified independently (ARA digest 2026-07-14).

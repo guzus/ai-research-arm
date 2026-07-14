@@ -6,8 +6,9 @@ aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Comput
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
 description: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft.
 created_at: 2026-06-08
-timestamp: 2026-07-13T00:00:00Z
+timestamp: 2026-07-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA model ticket — Apple v. OpenAI lawsuit", path: research/models/tickets/apple-openai-lawsuit-2026-07.md}
@@ -101,6 +102,14 @@ not announced.
   rating**, naming OpenAI a "key credit risk" for Oracle — a financing-risk
   data point adjacent to the lawsuit rather than part of it, but landing in
   the same news cycle as the dispute hardens (ARA digest 2026-07-13).
+
+- **Lawsuit coverage continues; SpeechAnalyzer benchmark tops HN
+  (2026-07-14).** Apple's trade-secrets suit against [[openai]] (and the
+  former Apple engineer at its center) continued generating wide tech-press
+  coverage. Separately, a new **Apple SpeechAnalyzer API benchmark**
+  (compared against Whisper) became Hacker News' top story by mid-morning
+  UTC — a rare on-device-AI capability story surfacing the same cycle as the
+  litigation (ARA digest 2026-07-14).
 
 ## Open questions
 
