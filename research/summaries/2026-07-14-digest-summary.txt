@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-07-14
+
+TOP STORIES:
+• Meta's Louisiana Hyperion data center investment crosses $50B, expanding to 5 gigawatts
+• Anthropic extends free Claude Fable 5 access again, through July 19, amid GPT-5.6 competition
+• HN erupts over Grok Build CLI allegedly uploading repos/secrets to xAI; SpaceXAI clarifies retention policy
+
+KEY NUMBERS:
+• $50B+: Meta's total Hyperion data center investment (up from $10B at inception)
+• 29%: Share of Vercel AI Gateway token volume now from open-weight models (up from 11% in April)
+• 633 comments: Peak size of HN's top AI thread today
+
+TRENDING: Anthropic messaging scrutiny + Grok Build data-exfiltration/sandboxing concerns on Hacker News
+
+Full digest on GitHub.
