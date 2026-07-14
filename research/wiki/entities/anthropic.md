@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); appointed Ben Bernanke to its Long-Term Benefit Trust the same cycle.
 created_at: 2026-05-24
-timestamp: 2026-07-12T00:00:00Z
+timestamp: 2026-07-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA model ticket — Anthropic Bernanke LTBT appointment", path: research/models/tickets/anthropic-bernanke-ltbt-2026-07.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
@@ -583,6 +584,25 @@ Four developments through May 2026 put Anthropic at the center of the field:
   $965B Series H print — a second, independent account consistent with the
   first, but neither is a primary financial-press source; treat as
   directionally credible, not confirmed (ARA digest 2026-07-12).
+
+- **A second Fable 5 rate-limit extension in one week; Artifacts go
+  multiplayer; messaging under public fire on HN (2026-07-14).** Anthropic
+  **extended [[claude-fable-5|Fable 5]]'s free access and boosted Claude Code
+  rate limits a second time in one week**, through Sunday **July 19** — paid
+  subscribers can spend up to **50% of weekly limits** on Fable 5 during the
+  extension, reverting to prepaid usage credits ($10/M input, $50/M output)
+  on **July 20**. The back-to-back extensions land directly after
+  [[gpt-5-6|OpenAI's GPT-5.6]] rollout continued dominating the model-release
+  cycle. Separately, Anthropic shipped **Claude Artifacts as multiplayer and
+  publicly shareable** on Team/Enterprise plans, and **Claude Tag** (the Slack
+  integration) can now **generate a working artifact directly from a Slack
+  thread** — both extending the [[dynamic-workflows]] collaboration-surface
+  push. The day's most-discussed AI story on Hacker News was **not** a
+  product launch: Zig creator **Andrew Kelley** publicly criticized
+  Anthropic's messaging/positioning ("Zig Creator Calls Spade a Spade,
+  Anthropic Blows Smoke," 1,254 pts / 633 comments at peak) — a sustained
+  community-credibility strand distinct from, but compounding, the Cobi Gantz
+  degrade-then-launch accusation from June (ARA digest 2026-07-14).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

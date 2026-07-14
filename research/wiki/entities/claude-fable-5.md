@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.
 created_at: 2026-06-10
-timestamp: 2026-07-13T00:00:00Z
+timestamp: 2026-07-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
@@ -289,6 +290,17 @@ every feed on launch day.
   read, click, and type on external websites — extending the tool-use surface
   well past the file-and-terminal sandbox (The Decoder) (ARA digest
   2026-07-13).
+
+- **Second free-access extension in one week (2026-07-14).** [[anthropic]]
+  extended Fable 5's free access and boosted Claude Code rate limits **again**,
+  through **Sunday July 19** — the second extension inside a single week,
+  coming directly after [[gpt-5-6|GPT-5.6]]'s continued rollout. Paid
+  subscribers can spend up to **50% of weekly limits** on Fable 5 during the
+  extension; usage **reverts to prepaid credits ($10/M input, $50/M output)**
+  starting **July 20**. Read alongside the repeated OpenAI capacity
+  interventions (see [[gpt-5-6]]), the two labs are now trading rate-limit
+  concessions in near-real-time rather than settling into stable usage caps
+  (ARA digest 2026-07-14).
 
 ## Open questions
 

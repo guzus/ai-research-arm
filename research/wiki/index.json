@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-07-03",
-      "timestamp": "2026-07-03T00:00:00Z",
+      "updated_at": "2026-07-14",
+      "timestamp": "2026-07-14T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -67,7 +67,8 @@
         "dynamic-workflows",
         "federal-ai-policy",
         "liquid-ai",
-        "openai"
+        "openai",
+        "xai"
       ],
       "inbound": [
         "amazon",
@@ -79,7 +80,8 @@
         "federal-ai-policy",
         "liquid-ai",
         "openai",
-        "sakana-ai"
+        "sakana-ai",
+        "xai"
       ]
     },
     {
@@ -258,8 +260,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); appointed Ben Bernanke to its Long-Term Benefit Trust the same cycle.",
       "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); appointed Ben Bernanke to its Long-Term Benefit Trust the same cycle.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-12",
-      "timestamp": "2026-07-12T00:00:00Z",
+      "updated_at": "2026-07-14",
+      "timestamp": "2026-07-14T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -283,6 +285,7 @@
         "federal-ai-policy",
         "gemini-3-5-flash",
         "gemini-spark",
+        "gpt-5-6",
         "jelani-nelson",
         "john-jumper",
         "micron",
@@ -353,8 +356,8 @@
       "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft.",
       "description": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-13",
-      "timestamp": "2026-07-13T00:00:00Z",
+      "updated_at": "2026-07-14",
+      "timestamp": "2026-07-14T00:00:00Z",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -501,8 +504,8 @@
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.",
       "description": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-07-13",
-      "timestamp": "2026-07-13T00:00:00Z",
+      "updated_at": "2026-07-14",
+      "timestamp": "2026-07-14T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -542,6 +545,7 @@
         "gemini-3-5-flash",
         "gpt-5-6",
         "john-jumper",
+        "meta",
         "micron",
         "moonshot-kimi-k2-7-code",
         "open-weights",
@@ -589,6 +593,7 @@
         "claude-fable-5",
         "claude-sonnet-5",
         "dynamic-workflows",
+        "meta",
         "microsoft",
         "nvidia",
         "open-weights",
@@ -1167,8 +1172,8 @@
       "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%, reportedly solving a 50-year-old math problem with 64 subagents.",
       "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%, reportedly solving a 50-year-old math problem with 64 subagents.",
       "created_at": "2026-06-20",
-      "updated_at": "2026-07-13",
-      "timestamp": "2026-07-13T00:00:00Z",
+      "updated_at": "2026-07-14",
+      "timestamp": "2026-07-14T00:00:00Z",
       "file": "entities/gpt-5-6.md",
       "aliases": [
         "GPT-5.6",
@@ -1191,6 +1196,7 @@
         "zhipu-glm-5-2"
       ],
       "inbound": [
+        "anthropic",
         "claude-fable-5",
         "federal-ai-policy",
         "openai",
@@ -1376,11 +1382,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and frontier-model builder (Llama); on 2026-06-16 launched \"AI Mode\" on Facebook, and in early July 2026 was reported building \"Meta Compute\" to sell surplus AI capacity — the first hyperscaler framed as having compute to sell.",
-      "description": "Social-platform hyperscaler and frontier-model builder (Llama); on 2026-06-16 launched \"AI Mode\" on Facebook, and in early July 2026 was reported building \"Meta Compute\" to sell surplus AI capacity — the first hyperscaler framed as having compute to sell.",
+      "summary": "Social-platform hyperscaler and frontier-model builder (Llama); its Louisiana Hyperion data-center investment crossed $50B (2026-07-14), and in early July 2026 it was reported building \"Meta Compute\" to sell surplus AI capacity — the first hyperscaler framed as having compute to sell.",
+      "description": "Social-platform hyperscaler and frontier-model builder (Llama); its Louisiana Hyperion data-center investment crossed $50B (2026-07-14), and in early July 2026 it was reported building \"Meta Compute\" to sell surplus AI capacity — the first hyperscaler framed as having compute to sell.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-07-02",
-      "timestamp": "2026-07-02T00:00:00Z",
+      "updated_at": "2026-07-14",
+      "timestamp": "2026-07-14T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -1392,6 +1398,8 @@
       ],
       "outbound": [
         "ai-capex",
+        "claude-fable-5",
+        "claude-opus-4-8",
         "coreweave",
         "gemini-spark",
         "nebius",
@@ -1887,8 +1895,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-07-13",
-      "timestamp": "2026-07-13T00:00:00Z",
+      "updated_at": "2026-07-14",
+      "timestamp": "2026-07-14T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -2394,8 +2402,8 @@
       "summary": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T \"V9\" model that ended its private beta and shipped free to all X accounts on 2026-07-10.",
       "description": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T \"V9\" model that ended its private beta and shipped free to all X accounts on 2026-07-10.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-12",
-      "timestamp": "2026-07-12T00:00:00Z",
+      "updated_at": "2026-07-14",
+      "timestamp": "2026-07-14T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -2406,6 +2414,7 @@
         "Colossus 1"
       ],
       "outbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
         "claude-fable-5",
@@ -2416,6 +2425,7 @@
         "spacex"
       ],
       "inbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
         "cursor",
@@ -2799,6 +2809,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-07-14",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-14 digest (Meta's Louisiana Hyperion data-center investment crosses $50B, expanding to 5GW by ~2032; Anthropic extends Fable 5 free access/rate limits a second time in one week through July 19 and ships multiplayer/shareable Claude Artifacts + Claude Tag Slack-thread artifacts, even as HN's top AI story is community criticism of Anthropic's messaging; a Hacker News thread alleges xAI's Grok Build CLI exfiltrates local repos/secrets to xAI cloud storage, met with a ZDR clarification rather than a denial and a same-day Clawk sandboxing response; GPT-5.6's Sol/Terra/Luna rollout continues with \"ChatGPT Work\" and a 2.2x-latency/27%-cost production case study; Apple's OpenAI trade-secrets suit keeps generating coverage alongside a new SpeechAnalyzer benchmark; Vercel's AI Gateway index puts open-weight models at 29% of token volume, up from 11% in April). Created 0, updated 8 (anthropic — second Fable 5 extension + Artifacts multiplayer/Claude Tag + HN messaging-criticism story; claude-fable-5 — second free-access extension through July 19 detail; meta — Hyperion crosses $50B/5GW by ~2032 + Muse Spark 1.1 benchmark claims; xai — Grok Build CLI exfiltration allegation + ZDR response + Perplexity Grok 4.5 integration; gpt-5-6 — continued rollout + ChatGPT Work + production case study; apple — lawsuit coverage continues + SpeechAnalyzer benchmark; open-weights — Vercel AI Gateway 29% open-weight token-share data point; agentic-ai-security — Grok Build CLI exfiltration allegation + Clawk sandbox response)."
+    },
+    {
       "date": "2026-07-13",
       "op": "ingest",
       "summary": "Ingested 2026-07-13 digest (OpenAI's third Codex/ChatGPT Work capacity intervention in 48 hours undercuts its own inference-cost claims; Anthropic officially confirms Fable 5 access + 50%-higher Claude Code rate limits extended through July 19 and ships a built-in Claude Code browser; OpenAI escalates its on-record rebuttal to Apple's trade-secrets suit as S&P Global cuts Oracle's credit rating over OpenAI exposure; Nathan Lambert flags White House discussions of a possible open-weight-models executive order the same day Deutsche Telekom-backed Soofi S 30B-A3B ships as a sovereign open German/English model; Claude Opus 4.8 takes new SOTA on the GSO benchmark). Created 1 (soofi-s-30b-a3b entity — Deutsche Telekom-backed sovereign open German/English MoE model, ~27T tokens), updated 6 (gpt-5-6 — third capacity intervention in 48h; claude-fable-5 — rate-limit extension through July 19 confirmed + Claude Code built-in browser; apple — OpenAI's on-record rebuttal escalation; openai — capacity intervention + rebuttal + S&P Oracle credit-risk citation; open-weights — possible open-weight-models executive order + Soofi S ship; claude-opus-4-8 — new SOTA on GSO benchmark)."
@@ -2892,11 +2907,6 @@
       "date": "2026-06-15",
       "op": "ingest",
       "summary": "Ingested 2026-06-15 digest (Fable 5 export saga: China-access twist + first de-escalation). Created 0, updated 8 (anthropic — Semafor China-access dimension, senior staff flew to DC for direct talks, ~$50B ARR per The Information, own-servers pivot w/ Google lease backstop; federal-ai-policy — multi-actor blame war/Sacks on-record/~90-min ultimatum dispute, China-access rationale, EU \"not discriminatory\"/Canada 2008-risk pushback, Florida civil-suit reframe + KPMG pulled report; claude-fable-5 — still dark June 15, China-weight-security twist, Kimi K2.7 #2 ErdosBench/GLM-5.2 1M filling the vacuum; open-weights — Kimi K2.7-Code/GLM-5.2/MiniMax-M3-on-HF pouring into the Fable gap; agentic-ai-security — \"Verifier Tax\" safety↔success paper + coding-agents-find-file-miss-lines study; amazon — June 9→11→12 trigger timeline + Community Note caveat; openai — 42-state subpoena reframe/IPO-filing backdrop + Florida campus-shooter clarification; spacex — xAI folded in, new Anthropic/Google DC deals, Musk >$1T net worth)."
-    },
-    {
-      "date": "2026-06-14",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-14 digest (Fable 5 export-ban saga goes on-record). Created 2 (amazon entity — Jassy→Bessent jailbreak briefing triggered the export crackdown on Anthropic's own largest investee + Cerebras/AWS; open-weights theme — GLM 5.2 MIT / Kimi K2.7-Code 12x-cheaper / \"Open source AI must win\" 1480pts / r/LocalLLaMA torrent-network backlash surging on the shutdown). Updated 6 (anthropic — Sacks on-record \"Dario refused\" account vs Anthropic \"misunderstanding\" blog, Amazon trigger, both models dark 36h+, IDC 19% penetration, model-substitution notification walk-back; claude-fable-5 — both models offline for all customers, 88% FrontierMath, torrent hoax, open-weights backlash; openai — ~42-state NY-led AG subpoena June 12 + GPT-Realtime-2 + IDC ahead of Anthropic; federal-ai-policy — on-record export standoff narrowed to Anthropic-specific per The Information + 42-state subpoena + regulatory clock + Census DP ban; agentic-ai-security — capability-misuse drove first govt model shutdown + SABER 54% + domain-finetuning safety degradation; spacex — IPO completed ~$161 close/$75B/$1.75T largest US IPO on record + Mistral/EngineAI IPO-summer frame)."
     }
   ]
 }

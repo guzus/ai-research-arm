@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 description: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.
 created_at: 2026-05-29
-timestamp: 2026-07-03T00:00:00Z
+timestamp: 2026-07-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
@@ -192,6 +193,20 @@ the cycle:
   supply-chain axis (old techniques still working against agent tooling) are
   advancing in parallel, not in sequence. See [[claude-fable-5]] and
   [[federal-ai-policy]] (ARA digest 2026-07-03).
+
+- **A coding-agent CLI allegedly exfiltrates local secrets; the community
+  ships a sandbox response within hours (2026-07-14).** A major Hacker News
+  thread alleged **[[xai|xAI]]'s Grok Build CLI uploads entire local
+  repositories — including unredacted `.env` secrets — to xAI-controlled
+  cloud storage**, a fresh capability-misuse/supply-chain vector distinct
+  from the OpenClaw/vLLM class of failures this theme has tracked since
+  May. xAI's response — a zero-data-retention (ZDR) clarification — did not
+  deny the underlying collection behavior, leaving the exfiltration claim
+  itself unaddressed even as **Perplexity cited the same ZDR guarantee** to
+  justify a same-day Grok 4.5 integration. The community's own answer landed
+  fast: **Clawk**, a Show HN disposable-Linux-VM sandbox for coding agents,
+  shipped directly in response — the same "wrap the agent, don't trust it"
+  pattern as **Claw Patrol** (2026-06-12) (ARA digest 2026-07-14).
 
 ## Open questions
 - **Does [[dynamic-workflows]] make this worse?** Hundreds of parallel
