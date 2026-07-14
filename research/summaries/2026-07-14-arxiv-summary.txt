@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-14
+
+TOP 5 PAPERS:
+• Metacognition in LLMs — comprehensive survey of how models assess their own uncertainty/competence
+• Xiaomi-Robotics-U0 — 38B-param world foundation model unifying scene generation + embodied robot control
+• Inside the Unfair Judge — mechanistic account of LLM-as-judge bias as detectable activation geometry
+• Extending LLM Context via Associative Recurrent Memory — constant-memory long context, ~30% FLOPs cut
+• MM-ToolSandBox — 500+ tool benchmark shows visual precision, not planning, bottlenecks visual agents
+
+CATEGORIES: LM/NLP 8 · Vision/Multimodal 6 · Agents/Reasoning 5 · Safety/Alignment 4 · Other 5
+
+Full report on GitHub.
