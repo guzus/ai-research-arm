@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC PUBLISHES NEW AGENTIC MISALIGNMENT RESEARCH — FOUR NEW WAYS AI AGENTS MISBEHAVE IN SIMULATIONS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2077452646303006927",
+    "category": "research"
+  },
+  {
+    "headline": "THINKING MACHINES LAB SHIPS INKLING — 975B-PARAMETER OPEN-WEIGHT MULTIMODAL MODEL, 1M-TOKEN CONTEXT",
+    "source": "@soumithchintala",
+    "url": "https://x.com/soumithchintala/status/2077457110728884327",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI'S GPT-RED CUTS PROMPT-INJECTION FAILURES 6X IN GPT-5.6 SOL VIA ADVERSARIAL TRAINING",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2077446718728425686",
+    "category": "model"
+  },
+  {
+    "headline": "SPACEXAI OPEN-SOURCES GROK BUILD CODING-AGENT CLI, RESETS USAGE LIMITS FOR ALL USERS",
+    "source": "@SpaceXAI",
+    "url": "https://x.com/SpaceXAI/status/2077494535387828644",
+    "category": "opensource"
+  },
+  {
+    "headline": "KIMI.AI OFFICIALLY TEASES KIMI K3",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2077523332883231016",
+    "category": "model"
+  }
+]
