@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-07-15
+
+TOP STORIES:
+• China's AI companion law takes effect, forcing Doubao (345M MAU) and Qwen to shut down agent features
+• Bloomberg: Apple's OpenAI lawsuit is real - trade-secret theft tied to OpenAI's screenless AI speaker device
+• Hassabis proposes US "Frontier AI Standards Body"; Altman calls it "a thoughtful proposal"
+• xAI's Grok Build confirmed uploading full user codebases to Google Cloud before being disabled
+• Chai Discovery raises $400M Series C at $3.8B valuation for AI molecular design
+
+KEY NUMBERS:
+• 345M MAU affected by Doubao's agent shutdown
+• $400M Series C, $3.8B valuation for Chai Discovery (nearly 3x Dec. valuation)
+• GPT-5.6 Sol usage limits reset for a reported 5th time; 8M active Codex/ChatGPT Work users
+• Nous Research reportedly raising $75M+ at $1.5B valuation
+
+TRENDING: "How to stop Claude from saying load-bearing" (344 pts/414 comments) and AI cognitive-offloading debate top HN
+
+Full digest on GitHub.
