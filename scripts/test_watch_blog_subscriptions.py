@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for the durable RSS-to-Hooker blog subscription watcher."""
+"""Tests for the durable RSS-to-Telegram blog subscription watcher."""
 
 from __future__ import annotations
 
@@ -21,8 +21,6 @@ SOURCE = watcher.SubscriptionSource(
     name="이것 또한 지나가리라",
     url="https://blog.naver.com/tosoha1",
     feed_url="https://rss.blog.naver.com/tosoha1.xml",
-    hooker_topic="ara-research",
-    priority=3,
 )
 NOW = dt.datetime(2026, 7, 15, 12, tzinfo=dt.timezone.utc)
 
@@ -86,7 +84,7 @@ class RegistryTest(unittest.TestCase):
                             "name": "이것 또한 지나가리라",
                             "url": "https://blog.naver.com/tosoha1",
                             "feed_url": "https://rss.blog.naver.com/tosoha1.xml",
-                            "subscription": {"hooker_topic": "ara-research", "priority": 3},
+                            "subscription": {"delivery": "telegram"},
                         },
                     ]
                 ),
@@ -97,7 +95,7 @@ class RegistryTest(unittest.TestCase):
 
         self.assertEqual(sources, [SOURCE])
 
-    def test_hooker_topic_contract_matches_server(self):
+    def test_unknown_delivery_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "blogs.json"
             path.write_text(
@@ -108,14 +106,14 @@ class RegistryTest(unittest.TestCase):
                             "name": "이것 또한 지나가리라",
                             "url": "https://blog.naver.com/tosoha1",
                             "feed_url": "https://rss.blog.naver.com/tosoha1.xml",
-                            "subscription": {"hooker_topic": "bad.topic"},
+                            "subscription": {"delivery": "hooker"},
                         }
                     ]
                 ),
                 encoding="utf-8",
             )
 
-            with self.assertRaisesRegex(watcher.SubscriptionError, "invalid Hooker topic"):
+            with self.assertRaisesRegex(watcher.SubscriptionError, "delivery must be 'telegram'"):
                 watcher.load_sources(path)
 
 
@@ -209,12 +207,10 @@ class PollAndAckTest(unittest.TestCase):
 
             self.assertEqual([item["guid"] for item in result["notifications"]], [NEW[0], NEWER[0]])
             self.assertEqual(state.read_text(encoding="utf-8"), before)
-            self.assertEqual(
-                result["notifications"][0]["idempotency_key"],
-                watcher.notification_for(SOURCE, watcher.parse_rss(SOURCE, rss(NEW))[0])[
-                    "idempotency_key"
-                ],
-            )
+            notification = result["notifications"][0]
+            self.assertEqual(set(notification["payload"]), {"text", "reply_markup"})
+            self.assertNotIn("topic", notification)
+            self.assertNotIn("idempotency_key", notification)
 
             acknowledged = watcher.ack_pending(state_path=state, pending_path=pending, now=NOW)
 
@@ -310,6 +306,51 @@ class PollAndAckTest(unittest.TestCase):
                     fetcher=lambda _: rss(OLD),
                     now=NOW,
                 )
+
+
+class TelegramDeliveryResponseTest(unittest.TestCase):
+    def write_response(self, directory: str, value: object) -> Path:
+        path = Path(directory) / "telegram.json"
+        path.write_text(json.dumps(value), encoding="utf-8")
+        return path
+
+    def test_ok_message_for_expected_chat_proves_delivery(self):
+        with tempfile.TemporaryDirectory() as directory:
+            response = self.write_response(
+                directory,
+                {"ok": True, "result": {"message_id": 42, "chat": {"id": -100123}}},
+            )
+
+            message_id = watcher.verify_telegram_delivery(response, "-100123")
+
+        self.assertEqual(message_id, 42)
+
+    def test_http_200_style_ok_false_does_not_prove_delivery(self):
+        with tempfile.TemporaryDirectory() as directory:
+            response = self.write_response(directory, {"ok": False, "description": "rejected"})
+
+            with self.assertRaisesRegex(watcher.SubscriptionError, "ok=true"):
+                watcher.verify_telegram_delivery(response, "-100123")
+
+    def test_wrong_destination_does_not_prove_delivery(self):
+        with tempfile.TemporaryDirectory() as directory:
+            response = self.write_response(
+                directory,
+                {"ok": True, "result": {"message_id": 42, "chat": {"id": -100999}}},
+            )
+
+            with self.assertRaisesRegex(watcher.SubscriptionError, "chat id"):
+                watcher.verify_telegram_delivery(response, "-100123")
+
+    def test_missing_message_id_does_not_prove_delivery(self):
+        with tempfile.TemporaryDirectory() as directory:
+            response = self.write_response(
+                directory,
+                {"ok": True, "result": {"chat": {"id": -100123}}},
+            )
+
+            with self.assertRaisesRegex(watcher.SubscriptionError, "message_id"):
+                watcher.verify_telegram_delivery(response, "-100123")
 
 
 if __name__ == "__main__":

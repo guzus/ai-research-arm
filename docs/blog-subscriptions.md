@@ -1,9 +1,9 @@
 # Blog Subscriptions
 
 `blog-subscriptions.yml` turns explicitly subscribed entries in
-`data/sources/ai_blogs.json` into Hooker notifications. It currently watches
-the Naver blog `tosoha1` every two hours and publishes to the existing
-`ara-research` topic.
+`data/sources/ai_blogs.json` into direct Telegram notifications. It currently
+watches the Naver blog `tosoha1` every two hours. Hooker remains the lane's
+non-blocking workflow telemetry sink, not its delivery-success gate.
 
 ## Configuration contract
 
@@ -11,14 +11,12 @@ A normal AI-blog registry entry becomes a subscription when it has:
 
 ```json
 "subscription": {
-  "hooker_topic": "ara-research",
-  "priority": 3
+  "delivery": "telegram"
 }
 ```
 
-`hooker_topic` must match Hooker's exact `^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$`
-contract. `priority` is an integer from 0 through 5. `HOOKER_URL` and
-`HOOKER_TOKEN` are required; the workflow hard-fails before polling when
+`delivery` must currently be `telegram`. `TELEGRAM_BOT_TOKEN` and
+`TELEGRAM_CHAT_ID` are required; the workflow hard-fails before polling when
 either secret is absent.
 
 The Naver feed does not return `ETag` or `Last-Modified`, and its channel-level
@@ -27,7 +25,7 @@ watcher therefore deduplicates on each item's `<guid>`; URL-shaped GUIDs are
 canonicalized to remove tracking parameters. If a feed omits `<guid>`, the
 canonical post link is the fallback identity. Channel metadata is never used.
 Both GUID URLs and post links must stay on the source's configured host/path,
-so an upstream feed cannot turn the Hooker button into an arbitrary URL.
+so an upstream feed cannot turn the Telegram button into an arbitrary URL.
 
 ## State and delivery contract
 
@@ -46,21 +44,32 @@ Committed state lives at
 }
 ```
 
-- A source absent from state is seeded with every normalized item identity
-  currently in its feed.
-  That first poll sends no notifications, so adding a 50-item feed does not
-  flood Hooker with history.
+- The repository includes the observed 50-item `tosoha1` baseline so a post
+  published between merge and the first scheduled run is still detected.
+  Independently, a source absent from state is seeded with every normalized
+  item identity currently in its feed. That bootstrap poll sends no
+  notifications, so a newly configured historical feed does not flood the
+  destination.
 - Existing malformed state is a hard failure. It is never silently reset,
   because resetting would either replay history or lose delivery knowledge.
-- Unseen posts are sent oldest first. Each request uses a stable
-  `blog-subscription-<source>-<guid-hash>` Hooker idempotency key.
-- A GUID is added to state immediately after Hooker accepts that item. If a
-  later item fails, the workflow still commits and pushes the accepted subset,
-  then reports a failed job; only unaccepted GUIDs retry.
-- State commits must land on `main` (`safe-push` output `pushed=true`). A
-  delivery whose state push fails is safe to retry because its idempotency key
-  is derived from the normalized item identity.
+- Unseen posts are sent oldest first through Telegram `sendMessage`.
+- A response proves delivery only when the HTTP request succeeds and its JSON
+  has `ok=true`, a positive `result.message_id`, and the configured
+  `result.chat.id`. A generic HTTP 2xx response is insufficient.
+- A GUID is added to state immediately after that proof. If a later item
+  fails, the workflow still commits and pushes the accepted subset, then
+  reports a failed job; only unaccepted GUIDs retry.
+- There is deliberately no blind transport retry. If Telegram accepted a
+  message but its response was lost, the GUID remains unseen and a later run
+  may duplicate the alert. A visible duplicate is preferable to silently
+  losing a subscribed post.
+- State commits must land on `main` (`safe-push` output `pushed=true`).
 - A poll with no seed and no accepted posts creates no commit or push.
+
+Hooker topic publish is intentionally not used for subscription delivery:
+Hooker stores an idempotency key before route delivery, so a failed delivery
+can later return an idempotency hit with HTTP 200 and `delivered=0`. That does
+not prove delivery and cannot safely advance this ledger.
 
 The state file is written atomically. Workflow concurrency never cancels an
 in-progress run, and the runner-loss watchdog covers this workflow. Hooker
@@ -78,5 +87,5 @@ python3 scripts/watch_blog_subscriptions.py poll \
   --pending /tmp/blog-subscriptions-pending.json
 ```
 
-The local poll command only fetches and writes local files. Hooker delivery is
+The local poll command only fetches and writes local files. Telegram delivery is
 performed by the workflow, not by the Python script.

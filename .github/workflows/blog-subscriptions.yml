@@ -10,7 +10,7 @@ on:
 
 concurrency:
   group: blog-subscriptions
-  # Never cancel a run between Hooker acceptance and its state commit.
+  # Never cancel a run between Telegram acceptance and its state commit.
   cancel-in-progress: false
 
 jobs:
@@ -43,15 +43,15 @@ jobs:
           fi
 
       # Delivery is the purpose of this lane, not optional telemetry. Refuse
-      # to seed or advance state if Hooker is not configured.
-      - name: Require Hooker delivery credentials
+      # to seed or advance state if Telegram is not configured.
+      - name: Require Telegram delivery credentials
         env:
-          HOOKER_URL: ${{ secrets.HOOKER_URL }}
-          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           set -euo pipefail
-          if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
-            echo "::error::HOOKER_URL and HOOKER_TOKEN are required for blog subscriptions"
+          if [ -z "${TELEGRAM_BOT_TOKEN:-}" ] || [ -z "${TELEGRAM_CHAT_ID:-}" ]; then
+            echo "::error::TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are required for blog subscriptions"
             exit 1
           fi
 
@@ -68,50 +68,55 @@ jobs:
           echo "new_count=$(jq '.notifications | length' "$PENDING_FILE")" >> "$GITHUB_OUTPUT"
           echo "seeded_count=$(jq '.seeded_sources | length' "$PENDING_FILE")" >> "$GITHUB_OUTPUT"
 
-      # Acknowledge each post immediately after Hooker accepts it. If a later
-      # post fails, the persist/push steps still land the accepted subset;
-      # only failed GUIDs remain pending on the next run.
-      - name: Publish new posts through Hooker
+      # Acknowledge only after Telegram returns HTTP 200, ok=true, a valid
+      # message_id, and the configured destination chat. There is no blind
+      # transport retry: an ambiguous lost response remains unacknowledged and
+      # may duplicate next run, which is safer than silently losing a post.
+      - name: Publish new posts through Telegram
         id: deliver
         if: steps.poll.outputs.new_count != '0'
         continue-on-error: true
         env:
-          HOOKER_URL: ${{ secrets.HOOKER_URL }}
-          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           set -euo pipefail
           failures=0
           while IFS= read -r notification; do
-            topic=$(jq -r '.topic' <<< "$notification")
-            key=$(jq -r '.idempotency_key' <<< "$notification")
             source_id=$(jq -r '.source_id' <<< "$notification")
             guid=$(jq -r '.guid' <<< "$notification")
-            jq '.payload' <<< "$notification" > "${RUNNER_TEMP}/blog-subscription-payload.json"
+            jq --arg chat_id "$TELEGRAM_CHAT_ID" \
+              '.payload + {chat_id: $chat_id}' \
+              <<< "$notification" > "${RUNNER_TEMP}/blog-subscription-payload.json"
 
             if curl -sS --fail-with-body \
-              --retry 3 --retry-all-errors --retry-delay 2 \
-              -X POST "${HOOKER_URL%/}/publish/${topic}" \
-              -H "Authorization: Bearer ${HOOKER_TOKEN}" \
-              -H "Idempotency-Key: ${key}" \
+              -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
               -H "Content-Type: application/json" \
               --data-binary "@${RUNNER_TEMP}/blog-subscription-payload.json" \
               -o "${RUNNER_TEMP}/blog-subscription-response.json"; then
-              if ! python3 scripts/watch_blog_subscriptions.py ack \
-                --state "$STATE_FILE" \
-                --pending "$PENDING_FILE" \
-                --source-id "$source_id" \
-                --guid "$guid"; then
-                echo "::error::Hooker accepted ${guid}, but local acknowledgement failed"
+              if python3 scripts/watch_blog_subscriptions.py verify-delivery \
+                --response "${RUNNER_TEMP}/blog-subscription-response.json" \
+                --chat-id "$TELEGRAM_CHAT_ID"; then
+                if ! python3 scripts/watch_blog_subscriptions.py ack \
+                  --state "$STATE_FILE" \
+                  --pending "$PENDING_FILE" \
+                  --source-id "$source_id" \
+                  --guid "$guid"; then
+                  echo "::error::Telegram delivered ${guid}, but local acknowledgement failed"
+                  failures=$((failures + 1))
+                fi
+              else
+                echo "::error::Telegram returned an unproven success response for ${guid}"
                 failures=$((failures + 1))
               fi
             else
-              echo "::error::Hooker delivery failed for ${guid}"
+              echo "::error::Telegram delivery failed or had an ambiguous transport result for ${guid}"
               failures=$((failures + 1))
             fi
           done < <(jq -c '.notifications[]' "$PENDING_FILE")
 
           if [ "$failures" -ne 0 ]; then
-            echo "::error::${failures} blog notification(s) were not acknowledged"
+            echo "::error::${failures} blog notification(s) lack proven Telegram delivery"
             exit 1
           fi
 

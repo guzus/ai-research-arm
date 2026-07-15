@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-"""Poll configured RSS blog subscriptions and build Hooker notifications.
+"""Poll configured RSS blog subscriptions and build Telegram notifications.
 
 The command is deliberately two-phase:
 
 * ``poll`` fetches feeds and writes pending notifications without marking them
   seen. A source absent from the state file is seeded with its current GUIDs
   and produces no notifications.
-* ``ack`` records a pending GUID immediately after Hooker accepts that item.
+* ``verify-delivery`` validates Telegram's structured success response.
+* ``ack`` records a pending GUID only after that verification succeeds.
 
-Hooker receives a stable per-GUID idempotency key, so a delivery followed by a
-failed state commit is safe to retry.
+Ambiguous network failures are deliberately not acknowledged. A later poll may
+send a duplicate, but it cannot silently lose a post.
 """
 
 from __future__ import annotations
@@ -18,7 +19,6 @@ import argparse
 import dataclasses
 import datetime as dt
 import email.utils
-import hashlib
 import html
 import json
 import os
@@ -42,8 +42,6 @@ TIMEOUT_SECONDS = 25
 MAX_FEED_BYTES = 5_000_000
 STATE_VERSION = 1
 PENDING_VERSION = 1
-# Keep this identical to Hooker's server-side topic contract.
-TOPIC_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$")
 
 
 class SubscriptionError(ValueError):
@@ -56,8 +54,6 @@ class SubscriptionSource:
     name: str
     url: str
     feed_url: str
-    hooker_topic: str
-    priority: int
 
 
 @dataclasses.dataclass(frozen=True)
@@ -199,20 +195,15 @@ def load_sources(path: Path) -> list[SubscriptionSource]:
             raise SubscriptionError("subscribed source has an invalid id")
         if source_id in seen_ids:
             raise SubscriptionError(f"duplicate subscribed source id: {source_id}")
-        topic = subscription.get("hooker_topic")
-        if not isinstance(topic, str) or not TOPIC_RE.fullmatch(topic):
-            raise SubscriptionError(f"{source_id}: invalid Hooker topic {topic!r}")
-        priority = subscription.get("priority", 3)
-        if isinstance(priority, bool) or not isinstance(priority, int) or not 0 <= priority <= 5:
-            raise SubscriptionError(f"{source_id}: priority must be an integer from 0 to 5")
+        delivery = subscription.get("delivery")
+        if delivery != "telegram":
+            raise SubscriptionError(f"{source_id}: subscription delivery must be 'telegram'")
         try:
             source = SubscriptionSource(
                 id=source_id,
                 name=str(row["name"]),
                 url=str(row["url"]),
                 feed_url=str(row["feed_url"]),
-                hooker_topic=topic,
-                priority=priority,
             )
         except KeyError as exc:
             raise SubscriptionError(f"{source_id}: missing registry field {exc.args[0]}") from exc
@@ -315,27 +306,41 @@ def notification_for(source: SubscriptionSource, item: FeedItem) -> dict[str, An
         date_label = item.published_at.astimezone(dt.timezone(dt.timedelta(hours=9))).strftime(
             "%Y-%m-%d %H:%M KST"
         )
-    text_parts = [item.title]
+    text_parts = [f"새 글 · {source.name}", "", item.title]
     if date_label:
         text_parts.extend(["", date_label])
     text_parts.extend(["", item.url])
-    guid_hash = hashlib.sha256(item.guid.encode("utf-8")).hexdigest()[:32]
     return {
         "source_id": source.id,
         "guid": item.guid,
         "published_at": timestamp(item.published_at) if item.published_at else None,
-        "topic": source.hooker_topic,
-        "idempotency_key": f"blog-subscription-{source.id}-{guid_hash}",
         "payload": {
-            "title": f"새 글 · {source.name}",
             "text": "\n".join(text_parts),
-            "priority": source.priority,
-            "tags": ["blog-subscription", source.id],
             "reply_markup": {
                 "inline_keyboard": [[{"text": "블로그에서 읽기", "url": item.url}]]
             },
         },
     }
+
+
+def verify_telegram_delivery(response_path: Path, expected_chat_id: str) -> int:
+    """Return Telegram's message id only for a proven sendMessage success."""
+    try:
+        response = json.loads(response_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise SubscriptionError(f"cannot read Telegram response {response_path}: {exc}") from exc
+    if not isinstance(response, dict) or response.get("ok") is not True:
+        raise SubscriptionError("Telegram response does not contain ok=true")
+    result = response.get("result")
+    if not isinstance(result, dict):
+        raise SubscriptionError("Telegram response is missing result")
+    message_id = result.get("message_id")
+    if isinstance(message_id, bool) or not isinstance(message_id, int) or message_id <= 0:
+        raise SubscriptionError("Telegram response has no valid message_id")
+    chat = result.get("chat")
+    if not isinstance(chat, dict) or str(chat.get("id")) != str(expected_chat_id):
+        raise SubscriptionError("Telegram response chat id does not match the configured destination")
+    return message_id
 
 
 def poll_subscriptions(
@@ -457,6 +462,11 @@ def build_parser() -> argparse.ArgumentParser:
     ack.add_argument("--pending", type=Path, default=DEFAULT_PENDING)
     ack.add_argument("--source-id", help="Acknowledge one pending item from this source")
     ack.add_argument("--guid", help="Acknowledge one pending item with this exact GUID")
+    verify = subparsers.add_parser(
+        "verify-delivery", help="Verify a Telegram sendMessage response before acknowledgement"
+    )
+    verify.add_argument("--response", type=Path, required=True)
+    verify.add_argument("--chat-id", required=True)
     return parser
 
 
@@ -474,7 +484,7 @@ def main(argv: list[str] | None = None) -> int:
                 f"Polled {len(sources)} subscription(s): "
                 f"seeded={len(pending['seeded_sources'])}, new={len(pending['notifications'])}"
             )
-        else:
+        elif args.command == "ack":
             acknowledged = ack_pending(
                 state_path=args.state,
                 pending_path=args.pending,
@@ -482,6 +492,9 @@ def main(argv: list[str] | None = None) -> int:
                 guid=args.guid,
             )
             print(f"Acknowledged {acknowledged} delivered blog post(s)")
+        else:
+            message_id = verify_telegram_delivery(args.response, args.chat_id)
+            print(f"Verified Telegram message {message_id}")
     except (SubscriptionError, OSError, TimeoutError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1

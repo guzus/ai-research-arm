@@ -273,10 +273,9 @@
     "cadence": "weekly",
     "tags": ["korea", "investment", "semiconductors", "memory", "ai-infrastructure"],
     "include_in_digest": false,
-    "notes": "Korean investment analysis focused on semiconductors, memory cycles, and AI infrastructure. Hooker subscription alerts on every new post.",
+    "notes": "Korean investment analysis focused on semiconductors, memory cycles, and AI infrastructure. Telegram subscription alerts on every new post.",
     "subscription": {
-      "hooker_topic": "ara-research",
-      "priority": 3
+      "delivery": "telegram"
     }
   }
 ]
