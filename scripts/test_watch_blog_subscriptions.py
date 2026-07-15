@@ -16,11 +16,18 @@ sys.path.insert(0, os.path.dirname(__file__))
 import watch_blog_subscriptions as watcher  # noqa: E402
 
 
+ROOT = Path(__file__).resolve().parents[1]
 SOURCE = watcher.SubscriptionSource(
     id="tosoha1",
     name="이것 또한 지나가리라",
     url="https://blog.naver.com/tosoha1",
     feed_url="https://rss.blog.naver.com/tosoha1.xml",
+)
+RANTO_SOURCE = watcher.SubscriptionSource(
+    id="ranto28",
+    name="메르의 블로그",
+    url="https://blog.naver.com/ranto28",
+    feed_url="https://rss.blog.naver.com/ranto28.xml",
 )
 NOW = dt.datetime(2026, 7, 15, 12, tzinfo=dt.timezone.utc)
 
@@ -64,6 +71,12 @@ NEW = (
     "https://blog.naver.com/tosoha1/2?fromRss=true&amp;trackingCode=rss",
     "Wed, 15 Jul 2026 17:30:00 +0900",
 )
+RANTO_OLD = (
+    "https://blog.naver.com/ranto28/10",
+    "메르의 기존 글",
+    "https://blog.naver.com/ranto28/10?fromRss=true&amp;trackingCode=rss",
+    "Wed, 15 Jul 2026 07:20:52 +0900",
+)
 
 
 class RegistryTest(unittest.TestCase):
@@ -86,6 +99,13 @@ class RegistryTest(unittest.TestCase):
                             "feed_url": "https://rss.blog.naver.com/tosoha1.xml",
                             "subscription": {"delivery": "telegram"},
                         },
+                        {
+                            "id": "ranto28",
+                            "name": "메르의 블로그",
+                            "url": "https://blog.naver.com/ranto28",
+                            "feed_url": "https://rss.blog.naver.com/ranto28.xml",
+                            "subscription": {"delivery": "telegram"},
+                        },
                     ]
                 ),
                 encoding="utf-8",
@@ -93,7 +113,24 @@ class RegistryTest(unittest.TestCase):
 
             sources = watcher.load_sources(path)
 
-        self.assertEqual(sources, [SOURCE])
+        self.assertEqual(sources, [RANTO_SOURCE, SOURCE])
+
+    def test_every_committed_subscription_has_a_nonempty_matching_baseline(self):
+        sources = watcher.load_sources(ROOT / "data/sources/ai_blogs.json")
+        state = watcher.load_state(
+            ROOT / "research/summaries/blog-subscriptions.json",
+            allow_missing=False,
+        )
+
+        for source in sources:
+            source_state = state["sources"].get(source.id)
+            self.assertIsNotNone(source_state, f"{source.id} has no committed baseline")
+            guids = source_state["seen_guids"]
+            self.assertTrue(guids, f"{source.id} has an empty committed baseline")
+            self.assertTrue(
+                all(guid.startswith(f"{source.url}/") for guid in guids),
+                f"{source.id} baseline contains a GUID outside its configured blog path",
+            )
 
     def test_unknown_delivery_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -178,6 +215,33 @@ class PollAndAckTest(unittest.TestCase):
                 saved["sources"]["tosoha1"]["seen_guids"],
                 sorted([OLD[0], NEW[0], NEWER[0]]),
             )
+
+    def test_new_source_seeds_without_disturbing_existing_source(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state = Path(directory) / "state.json"
+            pending = Path(directory) / "pending.json"
+            existing = {
+                "seen_guids": [OLD[0]],
+                "updated_at": "2026-07-14T00:00:00Z",
+            }
+            watcher.write_json_atomic(
+                state,
+                {"version": 1, "sources": {"tosoha1": existing}},
+            )
+
+            result = watcher.poll_subscriptions(
+                sources=[SOURCE, RANTO_SOURCE],
+                state_path=state,
+                pending_path=pending,
+                fetcher=lambda url: rss(OLD) if url == SOURCE.feed_url else rss(RANTO_OLD),
+                now=NOW,
+            )
+
+            self.assertEqual(result["seeded_sources"], ["ranto28"])
+            self.assertEqual(result["notifications"], [])
+            saved = json.loads(state.read_text(encoding="utf-8"))
+            self.assertEqual(saved["sources"]["tosoha1"], existing)
+            self.assertEqual(saved["sources"]["ranto28"]["seen_guids"], [RANTO_OLD[0]])
 
     def test_unseen_posts_are_oldest_first_and_state_changes_only_after_ack(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -356,11 +420,20 @@ class TelegramDeliveryResponseTest(unittest.TestCase):
 class WorkflowContractTest(unittest.TestCase):
     def test_telegram_request_timeout_leaves_time_to_persist_partial_success(self):
         workflow = (
-            Path(__file__).resolve().parents[1] / ".github/workflows/blog-subscriptions.yml"
+            ROOT / ".github/workflows/blog-subscriptions.yml"
         ).read_text(encoding="utf-8")
 
-        self.assertIn("timeout-minutes: 10", workflow)
+        self.assertIn("name: Naver Blog Subscriptions", workflow)
+        self.assertIn("timeout-minutes: 20", workflow)
         self.assertIn("--connect-timeout 3 --max-time 8", workflow)
+
+    def test_runner_loss_watchdog_uses_generalized_workflow_name(self):
+        watchdog = (ROOT / ".github/workflows/auto-rerun-on-runner-loss.yml").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn('- "Naver Blog Subscriptions"', watchdog)
+        self.assertNotIn("Naver Blog Subscription (tosoha1)", watchdog)
 
 
 if __name__ == "__main__":

@@ -2,8 +2,8 @@
 
 `blog-subscriptions.yml` turns explicitly subscribed entries in
 `data/sources/ai_blogs.json` into direct Telegram notifications. It currently
-watches the Naver blog `tosoha1` every two hours. Hooker remains the lane's
-non-blocking workflow telemetry sink, not its delivery-success gate.
+watches the Naver blogs `tosoha1` and `ranto28` every two hours. Hooker remains
+the lane's non-blocking workflow telemetry sink, not its delivery-success gate.
 
 ## Configuration contract
 
@@ -36,6 +36,10 @@ Committed state lives at
 {
   "version": 1,
   "sources": {
+    "ranto28": {
+      "seen_guids": ["https://blog.naver.com/ranto28/224347004537"],
+      "updated_at": "2026-07-15T13:00:00Z"
+    },
     "tosoha1": {
       "seen_guids": ["https://blog.naver.com/tosoha1/224346445662"],
       "updated_at": "2026-07-15T12:00:00Z"
@@ -44,8 +48,9 @@ Committed state lives at
 }
 ```
 
-- The repository includes the observed 50-item `tosoha1` baseline so a post
-  published between merge and the first scheduled run is still detected.
+- The repository includes the observed 50-item baselines for `tosoha1` and
+  `ranto28`, so a post published between merge and the first scheduled run is
+  still detected.
   Independently, a source absent from state is seeded with every normalized
   item identity currently in its feed. That bootstrap poll sends no
   notifications, so a newly configured historical feed does not flood the
@@ -66,7 +71,8 @@ Committed state lives at
 - Each Telegram request has a three-second connect timeout and an eight-second
   total timeout. This keeps a stalled item inside the delivery loop's failure
   path so earlier successful acknowledgements can still be persisted before
-  the ten-minute job deadline.
+  the twenty-minute job deadline, including a worst-case catch-up across both
+  current 50-item feeds.
 - State commits must land on `main` (`safe-push` output `pushed=true`).
 - A poll with no seed and no accepted posts creates no commit or push.
 
