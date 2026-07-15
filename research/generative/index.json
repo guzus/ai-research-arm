@@ -887,5 +887,19 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-kubimensah-sta",
+    "file": "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Whose Blockspace Is It, Anyway?",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-15T22:31:40Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/kubimensah/status/2077388130676584829\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
