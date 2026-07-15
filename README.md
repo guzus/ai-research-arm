@@ -183,7 +183,7 @@ _Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallb
 | **RSS feeds** | Direct XML fetch (OpenAI, Anthropic, DeepMind, TechCrunch, …) | Every 2 hours |
 | **Hacker News** | MCP server | Every 4 hours |
 | **Reddit** | RSS feeds (r/MachineLearning, r/LocalLLaMA, r/artificial) | Every 4 hours |
-| **Expert blogs** | Curated KOL/researcher/operator feed registry | Every 6 hours |
+| **Expert blogs** | Curated KOL/researcher/operator feed registry; selected feeds also emit GUID-deduplicated Telegram alerts | Every 6 hours (subscriptions every 2 hours) |
 | **Bluesky** | Public API | Daily |
 | **arXiv** | MCP + RSS | Daily |
 | **YouTube** | tuber API discovery + read-only summaries/transcripts | Daily |
@@ -208,6 +208,7 @@ interesting ones:
 | `hourly-rss.yml` | every 2h | `research/rss/` |
 | `4h-community.yml` | every 4h | `research/community/` (HN + Reddit) |
 | `daily-ai-blogs.yml` | every 6h | `research/blogs/` |
+| `blog-subscriptions.yml` | every 2h | Telegram alerts + `research/summaries/blog-subscriptions.json` GUID state |
 | `2h-bluesky.yml` | daily | `research/bluesky/` |
 | `daily-arxiv.yml` | daily | `research/arxiv/` |
 | `daily-youtube.yml` | daily | `research/youtube/` |
@@ -381,7 +382,7 @@ annotated list. None are needed for the
 | `BIRDY_ACCOUNTS` | optional | multi-account rotation JSON; every account forced read-only |
 | `GEMINI_API_KEY` | digest/article audio | price-performant TTS |
 | `EXA_API_KEY` / `PERPLEXITY_API_KEY` | optional | neural + cited web search via MCP |
-| `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` | headline alerts | delivery channel |
+| `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` | blog alerts, digests, liveness escalation | delivery channel |
 
 <details>
 <summary>Output directory layout</summary>
@@ -398,7 +399,7 @@ research/
 ├── issues/         # on-demand issue research
 ├── models/tickets/ # persistent model-release tickets
 ├── rss/            # raw-signal digests
-├── summaries/      # Telegram digests + headline-alert ledger
+├── summaries/      # Telegram digests + alert/subscription ledgers
 ├── twitter/        # 3-hourly reports
 ├── wiki/           # the compounding knowledge base
 └── youtube/        # tuber signal lane

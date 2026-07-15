@@ -111,13 +111,14 @@ Reading notes:
 
 - `arm-timeline.yml`
 - `auto-rerun-on-runner-loss.yml`
+- `blog-subscriptions.yml`
 - `ci.yml`
 - `daily-ai-blogs.yml`
 - `daily-front-page.yml`
 - `daily-youtube.yml`
 - `liveness-check.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude`; native path serves `claude-sonnet-5`. 30 SSOT lanes (+3 dispatch execution paths) across 24 workflows; 7 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude`; native path serves `claude-sonnet-5`. 30 SSOT lanes (+3 dispatch execution paths) across 25 workflows; 8 workflows run no model._
 
 <!-- END GENERATED BACKEND MATRIX -->
 

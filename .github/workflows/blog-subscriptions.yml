@@ -1,0 +1,180 @@
+name: Naver Blog Subscription (tosoha1)
+
+on:
+  schedule:
+    # Naver does not expose validators (ETag/Last-Modified) for this feed.
+    # A two-hour poll bounds notification delay without spinning up a worker
+    # for a low-frequency blog every few minutes.
+    - cron: '47 */2 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: blog-subscriptions
+  # Never cancel a run between Telegram acceptance and its state commit.
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      STATE_FILE: research/summaries/blog-subscriptions.json
+      PENDING_FILE: /tmp/blog-subscriptions-${{ github.run_id }}-${{ github.run_attempt }}.json
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      # Manual dispatch can target any ref. Refuse before polling or delivery;
+      # safe-push would reject a feature ref only after a notification escaped.
+      - name: Require default branch
+        env:
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          if [ "$REF_NAME" != "main" ]; then
+            echo "::error::Blog subscriptions may run only from main (got ${REF_NAME})"
+            exit 1
+          fi
+
+      # Delivery is the purpose of this lane, not optional telemetry. Refuse
+      # to seed or advance state if Telegram is not configured.
+      - name: Require Telegram delivery credentials
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          set -euo pipefail
+          if [ -z "${TELEGRAM_BOT_TOKEN:-}" ] || [ -z "${TELEGRAM_CHAT_ID:-}" ]; then
+            echo "::error::TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are required for blog subscriptions"
+            exit 1
+          fi
+
+      # Missing per-source state is an intentional seed operation: record all
+      # current item GUIDs and emit zero notifications for historical posts.
+      - name: Poll configured blog subscriptions
+        id: poll
+        run: |
+          set -euo pipefail
+          python3 scripts/watch_blog_subscriptions.py poll \
+            --registry data/sources/ai_blogs.json \
+            --state "$STATE_FILE" \
+            --pending "$PENDING_FILE"
+          echo "new_count=$(jq '.notifications | length' "$PENDING_FILE")" >> "$GITHUB_OUTPUT"
+          echo "seeded_count=$(jq '.seeded_sources | length' "$PENDING_FILE")" >> "$GITHUB_OUTPUT"
+
+      # Acknowledge only after Telegram returns HTTP 200, ok=true, a valid
+      # message_id, and the configured destination chat. There is no blind
+      # transport retry: an ambiguous lost response remains unacknowledged and
+      # may duplicate next run, which is safer than silently losing a post.
+      - name: Publish new posts through Telegram
+        id: deliver
+        if: steps.poll.outputs.new_count != '0'
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          set -euo pipefail
+          failures=0
+          while IFS= read -r notification; do
+            source_id=$(jq -r '.source_id' <<< "$notification")
+            guid=$(jq -r '.guid' <<< "$notification")
+            jq --arg chat_id "$TELEGRAM_CHAT_ID" \
+              '.payload + {chat_id: $chat_id}' \
+              <<< "$notification" > "${RUNNER_TEMP}/blog-subscription-payload.json"
+
+            if curl -sS --fail-with-body \
+              --connect-timeout 3 --max-time 8 \
+              -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              -H "Content-Type: application/json" \
+              --data-binary "@${RUNNER_TEMP}/blog-subscription-payload.json" \
+              -o "${RUNNER_TEMP}/blog-subscription-response.json"; then
+              if python3 scripts/watch_blog_subscriptions.py verify-delivery \
+                --response "${RUNNER_TEMP}/blog-subscription-response.json" \
+                --chat-id "$TELEGRAM_CHAT_ID"; then
+                if ! python3 scripts/watch_blog_subscriptions.py ack \
+                  --state "$STATE_FILE" \
+                  --pending "$PENDING_FILE" \
+                  --source-id "$source_id" \
+                  --guid "$guid"; then
+                  echo "::error::Telegram delivered ${guid}, but local acknowledgement failed"
+                  failures=$((failures + 1))
+                fi
+              else
+                echo "::error::Telegram returned an unproven success response for ${guid}"
+                failures=$((failures + 1))
+              fi
+            else
+              echo "::error::Telegram delivery failed or had an ambiguous transport result for ${guid}"
+              failures=$((failures + 1))
+            fi
+          done < <(jq -c '.notifications[]' "$PENDING_FILE")
+
+          if [ "$failures" -ne 0 ]; then
+            echo "::error::${failures} blog notification(s) lack proven Telegram delivery"
+            exit 1
+          fi
+
+      # First-run seeds and accepted delivery GUIDs are the only state
+      # changes. A no-change poll creates no commit and performs no push.
+      - name: Commit subscription state changes
+        id: persist
+        if: always() && steps.poll.outcome == 'success'
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain -- "$STATE_FILE")" ]; then
+            echo "No subscription state changes"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git add "$STATE_FILE"
+          git commit -m "Update blog subscription state $(date -u +'%Y-%m-%d %H:%M UTC')"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Push subscription state
+        id: push
+        if: always() && steps.persist.outputs.changed == 'true'
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Require subscription state to land on main
+        if: always() && steps.persist.outputs.changed == 'true'
+        env:
+          PUSHED: ${{ steps.push.outputs.pushed }}
+          PUBLICATION_MODE: ${{ steps.push.outputs.publication-mode }}
+        run: |
+          set -euo pipefail
+          if [ "$PUSHED" != "true" ]; then
+            echo "::error::Subscription state did not land on main (mode=${PUBLICATION_MODE:-unknown})"
+            exit 1
+          fi
+
+      # `continue-on-error` above exists only to persist partial successes.
+      # Restore a red job after that durability path has completed.
+      - name: Surface notification delivery failures
+        if: always()
+        env:
+          DELIVERY_OUTCOME: ${{ steps.deliver.outcome }}
+        run: |
+          set -euo pipefail
+          if [ "$DELIVERY_OUTCOME" = "failure" ]; then
+            echo "::error::One or more blog notifications failed; failed GUIDs remain pending"
+            exit 1
+          fi
+
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+          tags: blog-subscription,tosoha1
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

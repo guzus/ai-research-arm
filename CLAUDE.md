@@ -47,6 +47,7 @@ and opens a PR with methodology fixes.
 | [`docs/wiki-schema.md`](docs/wiki-schema.md) | Canonical schema + page conventions for the LLM Wiki (`research/wiki/`). Read at runtime by the ingest agent in `wiki-ingest.yml` and enforced by `scripts/check_wiki.py`. |
 | [`docs/hooker-telemetry.md`](docs/hooker-telemetry.md) | Non-blocking telemetry route via `https://hooker.guzus.xyz` topic `ara-telemetry`. |
 | [`docs/headline-dedupe.md`](docs/headline-dedupe.md) | Dedup contract + Mermaid flow for the Twitter headline-alert ledger (`research/summaries/twitter-announced-history.json`): the deterministic layered `duplicate_reason` check (`scripts/dedupe_headline_alerts.py`) **plus** the agent-in-the-loop Haiku gate (`scripts/headline_judge.py`) that adjudicates the contested sub-floor band. Used by `hourly-twitter.yml`. |
+| [`docs/blog-subscriptions.md`](docs/blog-subscriptions.md) | GUID-based RSS subscription, first-run seeding, proven Telegram delivery, partial-delivery acknowledgement, and durable state contract for `blog-subscriptions.yml`. |
 | [`docs/archive/`](docs/archive/) | Historical improvement logs and superseded docs. |
 | `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`; Railway auto-deploys on every push to `main` (next row). |
 | [`Dockerfile`](Dockerfile) + [`Caddyfile`](Caddyfile) + [`railway.json`](railway.json) | The Railway deploy stack serving **ara.guzus.xyz** (behind Cloudflare — responses carry `x-railway-edge`). The root `Dockerfile` builds the dashboard with bun (`oven/bun:1-alpine`, plus `nodejs` for the pre/postbuild node scripts) and serves `dashboard/dist` with Caddy; `railway.json` pins the DOCKERFILE builder + `/` healthcheck. the legacy `dashboard/vercel.json` Vercel config was removed during open-sourcing; Vercel no longer serves the domain (Load-bearing rule 3). |
@@ -79,6 +80,7 @@ and opens a PR with methodology fixes.
 | `resolve_backend_lane.py` | Stdlib-only field resolver for `data/agent-backends.json` — generative-research calls it on the runner for its SSOT default backend. Unknown lane = hard failure (never a silent default). |
 | `select_backend.py` | Stdlib-only runtime backend selector used by `.github/actions/agent-run`: resolves the lane, probes the requested provider, and walks the ordered `fallback.chain` — first available candidate wins; strict lanes/`fireworks-fallback: none` never fall back. |
 | `fetch_ai_blogs.py` | Per-feed AI-blog fetcher used by `daily-ai-blogs.yml`; boundary-handles bad feeds so one failure doesn't crash the run. |
+| `watch_blog_subscriptions.py` | RSS subscription watcher used by `blog-subscriptions.yml`; seeds historical GUIDs without alerting, verifies Telegram responses, and acknowledges each proven delivery atomically. |
 | `deterministic_rss_digest.py` | Model-free fallback for `hourly-rss.yml`; parses fetched RSS/Atom files and appends a timestamped `research/rss/YYYY-MM-DD.md` section when the agent path fails. |
 | `deterministic_community_digest.py` | Model-free fallback for `4h-community.yml`; parses pre-fetched HN JSON and Reddit RSS into `research/community/*-hn.md` and `*-reddit.md` when the agent path fails. |
 | `deterministic_twitter_digest.py` | Fail-closed operational fallback for the primary `hourly-twitter.yml` lane. The workflow first restores the public digest exactly to its pre-agent Git baseline; the script never reads Birdy data or authors news, and only writes a run-ID/attempt-scoped `no_update` recovery heartbeat plus empty summary/headline artifacts. The heartbeat is pushed for observability, then the workflow fails loudly and skips notifications. |
@@ -196,6 +198,7 @@ failure for pi lanes; do not fall back to host-level `pi --tools ... bash`.
 |---|---|---|
 | `hourly-rss.yml` | `:30` every 2h | `research/rss/` |
 | `daily-ai-blogs.yml` | `:13` every 6h | `research/blogs/` |
+| `blog-subscriptions.yml` | `:47` every 2h | Telegram notifications for configured blog subscriptions + GUID state in `research/summaries/blog-subscriptions.json` |
 | `daily-youtube.yml` | daily `23:20` for the next `00:00` digest | `research/youtube/` (tuber discovery + read-only summary/transcript evidence) |
 | `hourly-twitter.yml` | every 3h `:07`; primary lane uses Fireworks through `.github/actions/agent-run`; comparison lanes via matrix/manual dispatch | `research/twitter/` + `research/summaries/` + Telegram headline alerts; comparison outputs under `research/twitter-deepseek/`, `research/twitter-deepseek-pi/`, and `research/twitter-fireworks-pi/` |
 | `twitter-account-explorer.yml` | weekly Tuesday `01:47` UTC + manual dispatch | Opens reviewed PRs for `data/sources/twitter_accounts.json` changes when high-signal account evidence exists |
@@ -310,7 +313,7 @@ research/
 │   └── <date>-timeline.md      # derived daily diff (created/updated/closed counts)
 ├── rss/                       # hourly-rss.yml
 ├── blogs/                     # daily-ai-blogs.yml
-├── summaries/                 # hourly-twitter.yml (Telegram digest + headline-alert state)
+├── summaries/                 # Telegram digest, headline-alert, and blog-subscription state
 ├── twitter/                   # hourly-twitter.yml (signal-only daily Markdown + status/ run heartbeats)
 ├── youtube/                   # daily-youtube.yml (tuber read-only signal lane)
 ├── twitter-deepseek/          # hourly-twitter.yml backend=deepseek-claude-code
@@ -342,7 +345,7 @@ Secrets are configured in GitHub Actions. None are committed.
 | `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `S3_ENDPOINT_URL`, `S3_BUCKET` | `daily-digest` (audio upload) | Optional; generated digest mp3s upload to S3 while the working tree keeps 0-byte stubs. Missing = upload skipped. |
 | `HOOKER_TOKEN` | Telemetry composite action | Optional; without it, telemetry steps no-op. |
 | `HOOKER_URL` | Hooker telemetry composite + most workflows (the hooker endpoint, distinct from `HOOKER_TOKEN`) | The `https://hooker.guzus.xyz`-style base URL the telemetry/alert steps POST to. Referenced widely across workflows/actions. |
-| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `hourly-twitter*` | For headline alert delivery. |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `blog-subscriptions.yml`, `daily-digest.yml`, `liveness-check.yml` | For subscribed-blog alerts, digest delivery, and liveness escalation. |
 | `VERCEL_DEPLOY_HOOK` | `24h-model-timeline`, `wiki-ingest`, `hourly-twitter` (claude tier) | **Secret removed from the repo** (verified absent 2026-07-02); the referencing steps are permanent no-ops kept as legacy scaffolding and safe to delete in a future cleanup. Vercel does NOT serve ara.guzus.xyz — prod deploys are Railway, git-push driven (Load-bearing rule 3). |
 | `GITHUB_TOKEN` | All workflows | Auto-provided. |
 
