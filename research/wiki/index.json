@@ -136,6 +136,7 @@
         "artificial-general-engineer",
         "broadcom",
         "california-ai-regulation",
+        "chai-discovery",
         "claude-sonnet-5",
         "cognition-ai",
         "coreweave",
@@ -190,11 +191,11 @@
         "export-control",
         "hyperscaler-china"
       ],
-      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; banned Claude Code internally as \"high-risk software\" effective 2026-07-10 amid a US DoD PLA-linked designation it is suing to overturn.",
-      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; banned Claude Code internally as \"high-risk software\" effective 2026-07-10 amid a US DoD PLA-linked designation it is suing to overturn.",
+      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; banned Claude Code internally as \"high-risk software\" effective 2026-07-10 amid a US DoD PLA-linked designation it is suing to overturn; shut down Qwen's personalized AI-companion features on 2026-07-15 under China's new companion-agent regulation.",
+      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; banned Claude Code internally as \"high-risk software\" effective 2026-07-10 amid a US DoD PLA-linked designation it is suing to overturn; shut down Qwen's personalized AI-companion features on 2026-07-15 under China's new companion-agent regulation.",
       "created_at": "2026-07-05",
-      "updated_at": "2026-07-05",
-      "timestamp": "2026-07-05T00:00:00Z",
+      "updated_at": "2026-07-15",
+      "timestamp": "2026-07-15T00:00:00Z",
       "file": "entities/alibaba.md",
       "aliases": [
         "Alibaba Group",
@@ -203,10 +204,12 @@
         "Alibaba Group Holding"
       ],
       "outbound": [
-        "anthropic"
+        "anthropic",
+        "china-ai-regulation"
       ],
       "inbound": [
-        "anthropic"
+        "anthropic",
+        "china-ai-regulation"
       ]
     },
     {
@@ -257,11 +260,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); appointed Ben Bernanke to its Long-Term Benefit Trust the same cycle.",
-      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); appointed Ben Bernanke to its Long-Term Benefit Trust the same cycle.",
+      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); launched Claude for Teachers, free Opus 4.6 access for verified US K-12 educators, on 2026-07-15.",
+      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); launched Claude for Teachers, free Opus 4.6 access for verified US K-12 educators, on 2026-07-15.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-14",
-      "timestamp": "2026-07-14T00:00:00Z",
+      "updated_at": "2026-07-15",
+      "timestamp": "2026-07-15T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -311,6 +314,7 @@
         "apple",
         "broadcom",
         "california-ai-regulation",
+        "chai-discovery",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-science",
@@ -353,11 +357,11 @@
         "siri",
         "wwdc"
       ],
-      "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft.",
-      "description": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft.",
+      "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft tied to OpenAI's rumored \"GPT-Live\" speaker.",
+      "description": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft tied to OpenAI's rumored \"GPT-Live\" speaker.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-14",
-      "timestamp": "2026-07-14T00:00:00Z",
+      "updated_at": "2026-07-15",
+      "timestamp": "2026-07-15T00:00:00Z",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -485,8 +489,72 @@
       "inbound": [
         "ai-capex",
         "anthropic",
+        "china-ai-regulation",
         "federal-ai-policy",
         "openai"
+      ]
+    },
+    {
+      "slug": "chai-discovery",
+      "title": "Chai Discovery",
+      "type": "entity",
+      "tags": [
+        "biotech",
+        "ai-drug-discovery",
+        "funding",
+        "foundation-models"
+      ],
+      "summary": "AI-drug-discovery startup that raised a $400M Series C at a $3.8B valuation (2026-07-15) — nearly 3x its December valuation — for AI-designed molecules already used by Eli Lilly, Novartis, and Pfizer.",
+      "description": "AI-drug-discovery startup that raised a $400M Series C at a $3.8B valuation (2026-07-15) — nearly 3x its December valuation — for AI-designed molecules already used by Eli Lilly, Novartis, and Pfizer.",
+      "created_at": "2026-07-15",
+      "updated_at": "2026-07-15",
+      "timestamp": "2026-07-15T00:00:00Z",
+      "file": "entities/chai-discovery.md",
+      "aliases": [
+        "Chai Discovery",
+        "Chai-1",
+        "Chai Bio"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "openai"
+      ],
+      "inbound": []
+    },
+    {
+      "slug": "china-ai-regulation",
+      "title": "China AI Regulation",
+      "type": "theme",
+      "tags": [
+        "policy",
+        "regulation",
+        "china",
+        "ai-governance",
+        "companion-ai"
+      ],
+      "summary": "The 2026 storyline of Beijing regulating consumer AI products directly — opening with the \"Interim Measures for the Administration of AI Anthropomorphic Interactive Services,\" which took effect 2026-07-15 and forced Doubao and Qwen to shut down personalized AI-companion features.",
+      "description": "The 2026 storyline of Beijing regulating consumer AI products directly — opening with the \"Interim Measures for the Administration of AI Anthropomorphic Interactive Services,\" which took effect 2026-07-15 and forced Doubao and Qwen to shut down personalized AI-companion features.",
+      "created_at": "2026-07-15",
+      "updated_at": "2026-07-15",
+      "timestamp": "2026-07-15T00:00:00Z",
+      "file": "themes/china-ai-regulation.md",
+      "aliases": [
+        "China AI regulation",
+        "China AI policy",
+        "Chinese AI regulation",
+        "AI companion law",
+        "Interim Measures for the Administration of AI Anthropomorphic Interactive Services"
+      ],
+      "outbound": [
+        "alibaba",
+        "california-ai-regulation",
+        "federal-ai-policy",
+        "moonshot-kimi-k2-7-code",
+        "tencent-hunyuan-hy3"
+      ],
+      "inbound": [
+        "alibaba"
       ]
     },
     {
@@ -991,6 +1059,7 @@
         "anthropic",
         "apple",
         "california-ai-regulation",
+        "china-ai-regulation",
         "claude-fable-5",
         "claude-science",
         "claude-sonnet-5",
@@ -1169,11 +1238,11 @@
         "government-gated",
         "preview"
       ],
-      "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%, reportedly solving a 50-year-old math problem with 64 subagents.",
-      "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%, reportedly solving a 50-year-old math problem with 64 subagents.",
+      "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%; usage limits reset a reported 5th time by 2026-07-15 (past 8M active users) alongside acknowledged file-deletion incidents.",
+      "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%; usage limits reset a reported 5th time by 2026-07-15 (past 8M active users) alongside acknowledged file-deletion incidents.",
       "created_at": "2026-06-20",
-      "updated_at": "2026-07-14",
-      "timestamp": "2026-07-14T00:00:00Z",
+      "updated_at": "2026-07-15",
+      "timestamp": "2026-07-15T00:00:00Z",
       "file": "entities/gpt-5-6.md",
       "aliases": [
         "GPT-5.6",
@@ -1662,6 +1731,7 @@
         "zhipu-glm-5-2"
       ],
       "inbound": [
+        "china-ai-regulation",
         "claude-fable-5",
         "open-weights",
         "openrouter",
@@ -1711,11 +1781,11 @@
         "ai-infrastructure",
         "nvidia-partner"
       ],
-      "summary": "Amsterdam-based AI cloud (\"neocloud\") provider spun out of Yandex, scaling GPU capacity for AI training and inference.",
-      "description": "Amsterdam-based AI cloud (\"neocloud\") provider spun out of Yandex, scaling GPU capacity for AI training and inference.",
+      "summary": "Amsterdam-based AI cloud (\"neocloud\") provider spun out of Yandex, scaling GPU capacity for AI training and inference; signed a $1B+ Nvidia GB300 compute deal with Reflection AI through 2029 (2026-07-15), though its stock fell ~5% on the news.",
+      "description": "Amsterdam-based AI cloud (\"neocloud\") provider spun out of Yandex, scaling GPU capacity for AI training and inference; signed a $1B+ Nvidia GB300 compute deal with Reflection AI through 2029 (2026-07-15), though its stock fell ~5% on the news.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-05-24",
-      "timestamp": "2026-05-24T00:00:00Z",
+      "updated_at": "2026-07-15",
+      "timestamp": "2026-07-15T00:00:00Z",
       "file": "entities/nebius.md",
       "aliases": [
         "Nebius",
@@ -1725,7 +1795,8 @@
       "outbound": [
         "ai-capex",
         "coreweave",
-        "neocloud"
+        "neocloud",
+        "spacex"
       ],
       "inbound": [
         "ai-capex",
@@ -1957,11 +2028,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) as GPT-5.6 Sol Ultra leads the CritPt physics benchmark.",
-      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) as GPT-5.6 Sol Ultra leads the CritPt physics benchmark.",
+      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) tied to its rumored screen-free \"GPT-Live\" hardware speaker, which OpenAI calls meritless (2026-07-15).",
+      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) tied to its rumored screen-free \"GPT-Live\" hardware speaker, which OpenAI calls meritless (2026-07-15).",
       "created_at": "2026-05-30",
-      "updated_at": "2026-07-13",
-      "timestamp": "2026-07-13T00:00:00Z",
+      "updated_at": "2026-07-15",
+      "timestamp": "2026-07-15T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -1992,6 +2063,7 @@
         "apple",
         "broadcom",
         "california-ai-regulation",
+        "chai-discovery",
         "claude-fable-5",
         "cursor",
         "deepseek",
@@ -2335,6 +2407,7 @@
         "anthropic",
         "cursor",
         "deepseek",
+        "nebius",
         "openai",
         "xai"
       ],
@@ -2384,6 +2457,7 @@
         "zhipu-glm-5-2"
       ],
       "inbound": [
+        "china-ai-regulation",
         "mistral-robostral-navigate",
         "zhipu-glm-5-2"
       ]
@@ -2399,11 +2473,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T \"V9\" model that ended its private beta and shipped free to all X accounts on 2026-07-10.",
-      "description": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T \"V9\" model that ended its private beta and shipped free to all X accounts on 2026-07-10.",
+      "summary": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T \"V9\" model that ended its private beta and shipped free to all X accounts on 2026-07-10; Grok Build's codebase-upload-to-Google-Cloud behavior was confirmed by security researchers (2026-07-15).",
+      "description": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T \"V9\" model that ended its private beta and shipped free to all X accounts on 2026-07-10; Grok Build's codebase-upload-to-Google-Cloud behavior was confirmed by security researchers (2026-07-15).",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-14",
-      "timestamp": "2026-07-14T00:00:00Z",
+      "updated_at": "2026-07-15",
+      "timestamp": "2026-07-15T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -2544,6 +2618,7 @@
     "agingbench": "agent-lifespan-engineering",
     "ai capex": "ai-capex",
     "ai capex supercycle": "ai-capex",
+    "ai companion law": "china-ai-regulation",
     "ai infrastructure buildout": "ai-capex",
     "ai mode": "meta",
     "ai supply-chain security": "agentic-ai-security",
@@ -2578,6 +2653,14 @@
     "california ai regulation": "california-ai-regulation",
     "california transparency in frontier ai act": "california-ai-regulation",
     "california-ai-regulation": "california-ai-regulation",
+    "chai bio": "chai-discovery",
+    "chai discovery": "chai-discovery",
+    "chai-1": "chai-discovery",
+    "chai-discovery": "chai-discovery",
+    "china ai policy": "china-ai-regulation",
+    "china ai regulation": "china-ai-regulation",
+    "china-ai-regulation": "china-ai-regulation",
+    "chinese ai regulation": "china-ai-regulation",
     "claude code dynamic workflows": "dynamic-workflows",
     "claude fable 5": "claude-fable-5",
     "claude mythos 5": "claude-fable-5",
@@ -2660,6 +2743,7 @@
     "hunyuan hy3": "tencent-hunyuan-hy3",
     "hy3": "tencent-hunyuan-hy3",
     "industrial ai": "artificial-general-engineer",
+    "interim measures for the administration of ai anthropomorphic interactive services": "china-ai-regulation",
     "jelani nelson": "jelani-nelson",
     "jelani-nelson": "jelani-nelson",
     "jensen huang": "nvidia",
@@ -2809,6 +2893,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-07-15",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-15 digest (China's AI-companion-agent law takes effect, forcing Doubao and Qwen offline; Bloomberg reporting fills in Apple v. OpenAI as OpenAI's disputed hardware device — a screen-free \"GPT-Live\" speaker built with Jony Ive's LoveFrom — with OpenAI calling the suit meritless; xAI's Grok Build codebase-upload behavior is confirmed by The Verge/The Register/Cereblab; Anthropic launches Claude for Teachers with free Opus 4.6 for verified US K-12 educators; Chai Discovery raises a $400M Series C at $3.8B; Nebius signs a $1B+ Reflection AI compute deal but falls ~5% on the news; OpenAI resets Codex/ChatGPT Work usage limits a 5th time past 8M active users amid acknowledged file-deletion reports). Created 2 (china-ai-regulation theme — Beijing's AI-companion-agent law and the Doubao/Qwen shutdowns; chai-discovery entity — $400M Series C at $3.8B, molecules deployed with Eli Lilly/Novartis/Pfizer), updated 6 (anthropic — Claude for Teachers launch; openai — GPT-Live device detail + meritless rebuttal + 5th usage-limit reset; apple — GPT-Live device detail on the OpenAI suit; xai — Grok Build codebase-upload behavior confirmed by security press; gpt-5-6 — 5th usage-limit reset + acknowledged file-deletion reports; nebius — $1B+ Reflection AI GB300 compute deal; alibaba — Qwen AI-companion shutdown under the new China regulation)."
+    },
+    {
       "date": "2026-07-14",
       "op": "ingest",
       "summary": "Ingested 2026-07-14 digest (Meta's Louisiana Hyperion data-center investment crosses $50B, expanding to 5GW by ~2032; Anthropic extends Fable 5 free access/rate limits a second time in one week through July 19 and ships multiplayer/shareable Claude Artifacts + Claude Tag Slack-thread artifacts, even as HN's top AI story is community criticism of Anthropic's messaging; a Hacker News thread alleges xAI's Grok Build CLI exfiltrates local repos/secrets to xAI cloud storage, met with a ZDR clarification rather than a denial and a same-day Clawk sandboxing response; GPT-5.6's Sol/Terra/Luna rollout continues with \"ChatGPT Work\" and a 2.2x-latency/27%-cost production case study; Apple's OpenAI trade-secrets suit keeps generating coverage alongside a new SpeechAnalyzer benchmark; Vercel's AI Gateway index puts open-weight models at 29% of token volume, up from 11% in April). Created 0, updated 8 (anthropic — second Fable 5 extension + Artifacts multiplayer/Claude Tag + HN messaging-criticism story; claude-fable-5 — second free-access extension through July 19 detail; meta — Hyperion crosses $50B/5GW by ~2032 + Muse Spark 1.1 benchmark claims; xai — Grok Build CLI exfiltration allegation + ZDR response + Perplexity Grok 4.5 integration; gpt-5-6 — continued rollout + ChatGPT Work + production case study; apple — lawsuit coverage continues + SpeechAnalyzer benchmark; open-weights — Vercel AI Gateway 29% open-weight token-share data point; agentic-ai-security — Grok Build CLI exfiltration allegation + Clawk sandbox response)."
@@ -2902,11 +2991,6 @@
       "date": "2026-06-16",
       "op": "ingest",
       "summary": "Ingested 2026-06-16 digest (export standoff goes conditional; Salesforce/Fin M&A). Created 3 (salesforce entity — $3.6B Fin/Intercom acquisition for Agentforce, Apex specialist model beating frontier on resolution; sakana-ai entity — Marlin autonomous \"Ultra Deep Research\" agent on AB-MCTS, non-US deep-research entrant; meta entity — \"AI Mode\" on Facebook, distribution bet to catch up in the assistant race). Updated 4 (anthropic — first restoration timeline (\"hardened in a few weeks\"), June 13 Lutnick/Cairncross/Tom Brown call, $35B Broadcom chip order, Claude Max class-action, ~$14B staff share sales, cybersecurity-vets protest; claude-fable-5 — 4th day dark, conditional/time-boxed restoration; federal-ai-policy — conditional export timeline, June 2 EO read as de facto licensing, cybersecurity-vets TechCrunch protest, OpenAI pre-coordinating to avoid Anthropic's fate; open-weights — \"Open weights are not enough\" transparency caveat, proof-of-training debate, OpenRouter Fusion API)."
-    },
-    {
-      "date": "2026-06-15",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-15 digest (Fable 5 export saga: China-access twist + first de-escalation). Created 0, updated 8 (anthropic — Semafor China-access dimension, senior staff flew to DC for direct talks, ~$50B ARR per The Information, own-servers pivot w/ Google lease backstop; federal-ai-policy — multi-actor blame war/Sacks on-record/~90-min ultimatum dispute, China-access rationale, EU \"not discriminatory\"/Canada 2008-risk pushback, Florida civil-suit reframe + KPMG pulled report; claude-fable-5 — still dark June 15, China-weight-security twist, Kimi K2.7 #2 ErdosBench/GLM-5.2 1M filling the vacuum; open-weights — Kimi K2.7-Code/GLM-5.2/MiniMax-M3-on-HF pouring into the Fable gap; agentic-ai-security — \"Verifier Tax\" safety↔success paper + coding-agents-find-file-miss-lines study; amazon — June 9→11→12 trigger timeline + Community Note caveat; openai — 42-state subpoena reframe/IPO-filing backdrop + Florida campus-shooter clarification; spacex — xAI folded in, new Anthropic/Google DC deals, Musk >$1T net worth)."
     }
   ]
 }
