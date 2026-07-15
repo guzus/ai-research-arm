@@ -90,6 +90,7 @@ jobs:
               <<< "$notification" > "${RUNNER_TEMP}/blog-subscription-payload.json"
 
             if curl -sS --fail-with-body \
+              --connect-timeout 3 --max-time 8 \
               -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
               -H "Content-Type: application/json" \
               --data-binary "@${RUNNER_TEMP}/blog-subscription-payload.json" \

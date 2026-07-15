@@ -63,6 +63,10 @@ Committed state lives at
   message but its response was lost, the GUID remains unseen and a later run
   may duplicate the alert. A visible duplicate is preferable to silently
   losing a subscribed post.
+- Each Telegram request has a three-second connect timeout and an eight-second
+  total timeout. This keeps a stalled item inside the delivery loop's failure
+  path so earlier successful acknowledgements can still be persisted before
+  the ten-minute job deadline.
 - State commits must land on `main` (`safe-push` output `pushed=true`).
 - A poll with no seed and no accepted posts creates no commit or push.
 

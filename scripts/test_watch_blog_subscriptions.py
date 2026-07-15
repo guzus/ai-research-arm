@@ -353,5 +353,15 @@ class TelegramDeliveryResponseTest(unittest.TestCase):
                 watcher.verify_telegram_delivery(response, "-100123")
 
 
+class WorkflowContractTest(unittest.TestCase):
+    def test_telegram_request_timeout_leaves_time_to_persist_partial_success(self):
+        workflow = (
+            Path(__file__).resolve().parents[1] / ".github/workflows/blog-subscriptions.yml"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("timeout-minutes: 10", workflow)
+        self.assertIn("--connect-timeout 3 --max-time 8", workflow)
+
+
 if __name__ == "__main__":
     unittest.main()
