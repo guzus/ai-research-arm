@@ -345,7 +345,7 @@ Secrets are configured in GitHub Actions. None are committed.
 | `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `S3_ENDPOINT_URL`, `S3_BUCKET` | `daily-digest` (audio upload) | Optional; generated digest mp3s upload to S3 while the working tree keeps 0-byte stubs. Missing = upload skipped. |
 | `HOOKER_TOKEN` | Telemetry composite action | Optional; without it, telemetry steps no-op. |
 | `HOOKER_URL` | Hooker telemetry composite + most workflows (the hooker endpoint, distinct from `HOOKER_TOKEN`) | The `https://hooker.guzus.xyz`-style base URL the telemetry/alert steps POST to. Referenced widely across workflows/actions. |
-| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `hourly-twitter*`, `blog-subscriptions.yml` | For headline and subscribed-blog alert delivery. |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `blog-subscriptions.yml`, `daily-digest.yml`, `liveness-check.yml` | For subscribed-blog alerts, digest delivery, and liveness escalation. |
 | `VERCEL_DEPLOY_HOOK` | `24h-model-timeline`, `wiki-ingest`, `hourly-twitter` (claude tier) | **Secret removed from the repo** (verified absent 2026-07-02); the referencing steps are permanent no-ops kept as legacy scaffolding and safe to delete in a future cleanup. Vercel does NOT serve ara.guzus.xyz — prod deploys are Railway, git-push driven (Load-bearing rule 3). |
 | `GITHUB_TOKEN` | All workflows | Auto-provided. |
 

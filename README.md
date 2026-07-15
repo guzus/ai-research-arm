@@ -382,7 +382,7 @@ annotated list. None are needed for the
 | `BIRDY_ACCOUNTS` | optional | multi-account rotation JSON; every account forced read-only |
 | `GEMINI_API_KEY` | digest/article audio | price-performant TTS |
 | `EXA_API_KEY` / `PERPLEXITY_API_KEY` | optional | neural + cited web search via MCP |
-| `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` | headline alerts | delivery channel |
+| `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` | blog alerts, digests, liveness escalation | delivery channel |
 
 <details>
 <summary>Output directory layout</summary>
