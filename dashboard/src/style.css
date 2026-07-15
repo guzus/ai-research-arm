@@ -4682,6 +4682,58 @@ body.ticket-odds-modal-open { overflow: hidden; }
 .ticket-detail-panel .ticket-body {
   max-width: 760px;
 }
+.ticket-forecast-actions {
+  padding: 12px 14px;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+}
+.ticket-forecast-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.ticket-forecast-heading .ticket-history-title { margin: 0; }
+.ticket-share-button {
+  flex: 0 0 auto;
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+.ticket-share-button:hover { background: var(--bg-hover); }
+.ticket-share-button:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 2px;
+}
+.ticket-forecast-links {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 18px;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.ticket-forecast-links a { color: var(--accent-warm); }
+.ticket-share-status {
+  display: block;
+  min-height: 1.3em;
+  margin-top: 7px;
+  color: var(--text-tertiary);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px) {
+  .ticket-forecast-heading { align-items: flex-start; }
+}
 .ticket-body {
   font-size: 14px;
   line-height: 1.55;
@@ -5372,4 +5424,15 @@ body.ticket-odds-modal-open { overflow: hidden; }
   .focus-surface-tabs {
     justify-content: flex-start;
   }
+}
+.runtime-page-heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

@@ -10,6 +10,7 @@
     "predev": "node scripts/prebuild.mjs",
     "prebuild": "node scripts/prebuild.mjs",
     "dev": "vite",
+    "test": "node --test scripts/*.test.mjs",
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit && vite build",
     "postbuild": "node scripts/postbuild-seo.mjs",
