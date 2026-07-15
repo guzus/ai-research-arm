@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); appointed Ben Bernanke to its Long-Term Benefit Trust the same cycle.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); launched Claude for Teachers, free Opus 4.6 access for verified US K-12 educators, on 2026-07-15.
 created_at: 2026-05-24
-timestamp: 2026-07-14T00:00:00Z
+timestamp: 2026-07-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA model ticket — Anthropic Bernanke LTBT appointment", path: research/models/tickets/anthropic-bernanke-ltbt-2026-07.md}
@@ -603,6 +604,17 @@ Four developments through May 2026 put Anthropic at the center of the field:
   Anthropic Blows Smoke," 1,254 pts / 633 comments at peak) — a sustained
   community-credibility strand distinct from, but compounding, the Cobi Gantz
   degrade-then-launch accusation from June (ARA digest 2026-07-14).
+
+- **Claude for Teachers launches — free Opus 4.6 for verified US K-12
+  educators (2026-07-15).** Anthropic shipped **Claude for Teachers**,
+  giving verified US K-12 educators free access to the **$20/mo Claude
+  Opus 4.6** tier, plus education-specific connectors and a
+  **FERPA-oriented data addendum**. It is Anthropic's most concrete
+  education-market distribution play to date, landing the same cycle
+  [[xai|xAI's Grok Build]] privacy dispute (unauthorized codebase
+  uploads to Google Cloud) revived scrutiny of AI-tool data handling in
+  sensitive/institutional settings — a contrast Anthropic's FERPA
+  framing implicitly plays against (ARA digest 2026-07-15).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 
