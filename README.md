@@ -183,7 +183,7 @@ _Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallb
 | **RSS feeds** | Direct XML fetch (OpenAI, Anthropic, DeepMind, TechCrunch, …) | Every 2 hours |
 | **Hacker News** | MCP server | Every 4 hours |
 | **Reddit** | RSS feeds (r/MachineLearning, r/LocalLLaMA, r/artificial) | Every 4 hours |
-| **Expert blogs** | Curated KOL/researcher/operator feed registry | Every 6 hours |
+| **Expert blogs** | Curated KOL/researcher/operator feed registry; selected feeds also emit GUID-deduplicated Hooker alerts | Every 6 hours (subscriptions every 2 hours) |
 | **Bluesky** | Public API | Daily |
 | **arXiv** | MCP + RSS | Daily |
 | **YouTube** | tuber API discovery + read-only summaries/transcripts | Daily |
@@ -208,6 +208,7 @@ interesting ones:
 | `hourly-rss.yml` | every 2h | `research/rss/` |
 | `4h-community.yml` | every 4h | `research/community/` (HN + Reddit) |
 | `daily-ai-blogs.yml` | every 6h | `research/blogs/` |
+| `blog-subscriptions.yml` | every 2h | Hooker alerts + `research/summaries/blog-subscriptions.json` GUID state |
 | `2h-bluesky.yml` | daily | `research/bluesky/` |
 | `daily-arxiv.yml` | daily | `research/arxiv/` |
 | `daily-youtube.yml` | daily | `research/youtube/` |
