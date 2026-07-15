@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "THINKING MACHINES SHIPS INKLING — 975B-PARAM OPEN-WEIGHTS MODEL, FIRST FROM MIRA MURATI'S LAB",
+    "source": "@soumithchintala",
+    "url": "https://x.com/soumithchintala/status/2077457110728884327",
+    "category": "model"
+  },
+  {
+    "headline": "CAIXIN: CHINA CLEARS APPLE INTELLIGENCE FOR LAUNCH VIA ALIBABA PARTNERSHIP",
+    "source": "@caixin",
+    "url": "https://x.com/caixin/status/2077470486242484581",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI LAUNCHES GPT-RED, AUTOMATED RED-TEAMER FOR PROMPT-INJECTION VULNERABILITIES",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2077446718728425686",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC PUBLISHES NEW AGENTIC MISALIGNMENT RESEARCH, FOUR NEW MISBEHAVIOR MODES FOUND",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2077452646303006927",
+    "category": "research"
+  },
+  {
+    "headline": "AWS EC2 AND BEDROCK CHIEF DAVE BROWN LEAVING AFTER 19 YEARS AT AMAZON",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2077440926868197414",
+    "category": "business"
+  }
+]
