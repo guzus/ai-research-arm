@@ -1,74 +1,9 @@
 {
-  "generatedAt": "2026-07-15T14:27:08.063Z",
-  "windowStart": "2026-07-14T02:00:00.000Z",
-  "windowEnd": "2026-07-17T03:00:00.000Z",
+  "generatedAt": "2026-07-15T16:08:45.708Z",
+  "windowStart": "2026-07-14T04:00:00.000Z",
+  "windowEnd": "2026-07-17T05:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-f4dacfec0d78",
-      "kind": "completed",
-      "lane": "Twitter/X",
-      "title": "Twitter/X brief",
-      "status": "completed",
-      "start": "2026-07-14T03:23:00.000Z",
-      "end": "2026-07-14T03:32:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "deepseek-v4-flash",
-      "commit": "f4dacfec0d78",
-      "url": "https://github.com/guzus/ai-research-arm/commit/f4dacfec0d784cf11de49b975da70721d23a61d4"
-    },
-    {
-      "id": "commit-aadad0c876f5",
-      "kind": "completed",
-      "lane": "Community",
-      "title": "HN + Reddit digest",
-      "status": "completed",
-      "start": "2026-07-14T03:31:00.000Z",
-      "end": "2026-07-14T03:40:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "aadad0c876f5",
-      "url": "https://github.com/guzus/ai-research-arm/commit/aadad0c876f58502ad3b9ec4c7e614ae3d8bd47f"
-    },
-    {
-      "id": "commit-fed976b38c25",
-      "kind": "completed",
-      "lane": "Blogs",
-      "title": "AI expert blog watch",
-      "status": "completed",
-      "start": "2026-07-14T03:32:00.000Z",
-      "end": "2026-07-14T03:33:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "fed976b38c25",
-      "url": "https://github.com/guzus/ai-research-arm/commit/fed976b38c2584d0d77935af99e0a5cddf7264ed"
-    },
-    {
-      "id": "commit-426204767fa2",
-      "kind": "completed",
-      "lane": "RSS",
-      "title": "RSS official announcements",
-      "status": "completed",
-      "start": "2026-07-14T03:38:00.000Z",
-      "end": "2026-07-14T03:47:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "426204767fa2",
-      "url": "https://github.com/guzus/ai-research-arm/commit/426204767fa2e1340f2744d7cf4717635ffa646a"
-    },
-    {
-      "id": "commit-26f6d1eb9029",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-07-14 03:48 UTC (#516)",
-      "status": "completed",
-      "start": "2026-07-14T03:48:00.000Z",
-      "end": "2026-07-14T03:49:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "26f6d1eb9029",
-      "url": "https://github.com/guzus/ai-research-arm/commit/26f6d1eb90297c7c3e2bf13d32af86f29dd7a307"
-    },
     {
       "id": "commit-bebb85b3f07f",
       "kind": "completed",
@@ -863,44 +798,30 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/0f758015e1bea3a7350d42d9e824c55018de04b6"
     },
     {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-07-15T14-30-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-cfcb0a728487",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-07-15 14:27 UTC (#586)",
+      "status": "completed",
+      "start": "2026-07-15T14:27:00.000Z",
+      "end": "2026-07-15T14:28:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "cfcb0a728487",
+      "url": "https://github.com/guzus/ai-research-arm/commit/cfcb0a728487e8c1bb2ba4135f5cd703c0a22bd8"
+    },
+    {
+      "id": "commit-0e7e90b35288",
+      "kind": "completed",
       "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-07-15T14:30:00.000Z",
-      "end": "2026-07-15T14:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-07-15T14-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-07-15T14:45:00.000Z",
-      "end": "2026-07-15T15:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-07-15T14-47-00-000Z",
-      "kind": "scheduled",
-      "lane": "Blogs",
-      "title": "Naver Blog Subscription (tosoha1)",
-      "status": "scheduled",
-      "start": "2026-07-15T14:47:00.000Z",
-      "end": "2026-07-15T15:17:00.000Z",
-      "source": "cron 47 */2 * * *"
-    },
-    {
-      "id": "scheduled-hourly-twitter-yml-7---3-------2026-07-15T15-07-00-000Z",
-      "kind": "scheduled",
-      "lane": "Twitter/X",
-      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi)",
-      "status": "scheduled",
-      "start": "2026-07-15T15:07:00.000Z",
-      "end": "2026-07-15T16:07:00.000Z",
-      "source": "cron 7 */3 * * *"
+      "title": "RSS official announcements",
+      "status": "completed",
+      "start": "2026-07-15T15:55:00.000Z",
+      "end": "2026-07-15T16:04:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "0e7e90b35288",
+      "url": "https://github.com/guzus/ai-research-arm/commit/0e7e90b3528867853ab402ae85cc87ed7134eac5"
     },
     {
       "id": "scheduled-4h-community-yml-19---4-------2026-07-15T16-19-00-000Z",
@@ -1911,6 +1832,46 @@
       "start": "2026-07-17T00:47:00.000Z",
       "end": "2026-07-17T01:17:00.000Z",
       "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-07-17T02-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-07-17T02:30:00.000Z",
+      "end": "2026-07-17T02:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-07-17T02-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-07-17T02:45:00.000Z",
+      "end": "2026-07-17T03:15:00.000Z",
+      "source": "cron 45 */2 * * *"
+    },
+    {
+      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-07-17T02-47-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Naver Blog Subscription (tosoha1)",
+      "status": "scheduled",
+      "start": "2026-07-17T02:47:00.000Z",
+      "end": "2026-07-17T03:17:00.000Z",
+      "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-7---3-------2026-07-17T03-07-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi)",
+      "status": "scheduled",
+      "start": "2026-07-17T03:07:00.000Z",
+      "end": "2026-07-17T04:07:00.000Z",
+      "source": "cron 7 */3 * * *"
     }
   ]
 }
