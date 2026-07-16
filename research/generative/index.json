@@ -901,5 +901,17 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend",
+    "file": "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Kimi K3: Moonshot's 2.8T-parameter model, its LMArena Frontend Code #1, and what the win actually proves",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-16T22:51:20Z",
+    "source": "workflow_dispatch",
+    "prompt": "Kimi K3: Moonshot's 2.8T-parameter model, its LMArena Frontend Code #1, and what the win actually proves",
+    "tags": []
   }
 ]
