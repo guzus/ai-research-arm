@@ -246,6 +246,8 @@ let currentDate = new Date();
 let searchTerm = '';
 let activeTab: Tab = 'today';
 let selectedSlug: string | null = null;
+let researchIndexPage = 1;
+let wikiIndexPage = 1;
 let activeLanguage: ResearchLanguage = loadStoredLanguage();
 let calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 const availabilityCache = new Map<string, Set<string>>();
@@ -340,16 +342,35 @@ function routeFromState(): string {
     return '/agents';
   }
   if (activeTab === 'research') {
-    return selectedSlug ? '/research/' + selectedSlug : '/research';
+    return selectedSlug ? '/research/' + selectedSlug : paginationRoute('/research', researchIndexPage);
   }
   if (activeTab === 'wiki') {
-    return selectedSlug ? '/wiki/' + selectedSlug : '/wiki';
+    return selectedSlug ? '/wiki/' + selectedSlug : paginationRoute('/wiki', wikiIndexPage);
   }
   if (activeTab === 'models' && selectedSlug) {
     return '/models/forecast/' + selectedSlug;
   }
   if (activeTab === 'models') return '/models';
   return '/' + activeTab + '/' + fmtDate(currentDate);
+}
+
+function paginationRoute(path: string, page: number): string {
+  return page > 1 ? path + '?page=' + page : path;
+}
+
+function pageFromSearch(): number {
+  const raw = new URLSearchParams(location.search).get('page');
+  if (!raw || !/^\d+$/.test(raw)) return 1;
+  const page = Number(raw);
+  return Number.isSafeInteger(page) && page > 0 ? page : 1;
+}
+
+function canonicalizeIndexPage(): void {
+  const target = routeFromState();
+  if (location.pathname + location.search === target) return;
+  history.replaceState(history.state, '', target);
+  lastAppliedPathname = target;
+  applyRuntimeSeo(target);
 }
 
 // Tracks whether the SPA has rendered at least once. The first call
@@ -542,7 +563,7 @@ function applyRuntimeSeo(target: string): void {
 // real route change from a hash-only navigation (anchor click between
 // sections in the same article). Maintained from both updateRoute and
 // the popstate handler.
-let lastAppliedPathname = location.pathname;
+let lastAppliedPathname = location.pathname + location.search;
 
 // gtag is loaded by the <script> in index.html. Type as optional so the
 // dashboard still works when GA is blocked (adblockers, privacy modes).
@@ -581,7 +602,7 @@ function updateRoute(): void {
   pendingRouteState = null;
   if (shouldSyncSeo) applyRuntimeSeo(target);
   routeInitialized = true;
-  lastAppliedPathname = location.pathname;
+  lastAppliedPathname = location.pathname + location.search;
   homeRouteRequested = false;
 }
 
@@ -648,6 +669,7 @@ function parseRoute(path: string): boolean {
   if (researchMatch) {
     activeTab = 'research';
     selectedSlug = researchMatch[1] || null;
+    researchIndexPage = selectedSlug ? 1 : pageFromSearch();
     syncTabUi();
     return true;
   }
@@ -658,6 +680,7 @@ function parseRoute(path: string): boolean {
   if (wikiMatch) {
     activeTab = 'wiki';
     selectedSlug = wikiMatch[1] || null;
+    wikiIndexPage = selectedSlug ? 1 : pageFromSearch();
     syncTabUi();
     return true;
   }
@@ -973,7 +996,7 @@ function buildCalendarHtml(): string {
     : ' aria-label="Open ' + selectedLabel + ' day view"';
   const headerIndicator = isDayView ? (open ? '&#9650;' : '&#9660;') : '&rsaquo;';
   let html = '<button class="cal-header" type="button" data-cal-toggle' + headerAttrs + '>';
-  html += '<span class="cal-header-label">' + selectedLabel + '<span class="cal-chevron">' + headerIndicator + '</span></span>';
+  html += '<span class="cal-header-label"><span class="cal-selected-date">' + selectedLabel + '</span><span class="cal-chevron">' + headerIndicator + '</span></span>';
   html += '</button>';
 
   // Month nav + day grid live in a popover so the pill keeps a fixed size.
@@ -2466,6 +2489,7 @@ function setSafeWikiContent(el: HTMLElement, rawHtml: string): void {
 }
 
 const WIKI_TYPE_ORDER: WikiType[] = ['entity', 'concept', 'theme'];
+const WIKI_PAGE_SIZE = 12;
 const WIKI_TYPE_LABEL: Record<string, string> = {
   entity: 'Entities',
   concept: 'Concepts',
@@ -2547,6 +2571,32 @@ function wikiInternalLink(slug: string, text?: string): string {
   );
 }
 
+function paginationHtml(page: number, totalItems: number, pageSize: number, label: string): string {
+  const pageCount = Math.max(1, Math.ceil(totalItems / pageSize));
+  if (pageCount <= 1) return '';
+  const safePage = Math.min(Math.max(1, page), pageCount);
+  const first = (safePage - 1) * pageSize + 1;
+  const last = Math.min(safePage * pageSize, totalItems);
+  const pageLink = (target: number, text: string, className: string): string => {
+    const disabled = target < 1 || target > pageCount;
+    if (disabled) {
+      return '<span class="index-pagination-link ' + className + ' is-disabled" aria-disabled="true">' + text + '</span>';
+    }
+    const href = paginationRoute(activeTab === 'wiki' ? '/wiki' : '/research', target);
+    return '<a class="index-pagination-link ' + className + '" href="' + href + '" data-index-page="' + target + '">' + text + '</a>';
+  };
+  return [
+    '<nav class="index-pagination" aria-label="' + escapeHtml(label) + ' pagination">',
+    '  <div class="index-pagination-summary">' + first + '\u2013' + last + ' of ' + totalItems + '</div>',
+    '  <div class="index-pagination-controls">',
+    pageLink(safePage - 1, '&larr;<span> Previous</span>', 'index-pagination-prev'),
+    '    <span class="index-pagination-status" aria-current="page">' + safePage + ' / ' + pageCount + '</span>',
+    pageLink(safePage + 1, '<span>Next </span>&rarr;', 'index-pagination-next'),
+    '  </div>',
+    '</nav>',
+  ].join('\n');
+}
+
 // LIST view: catalog grouped by type + a recent-changes panel + a count.
 function renderWikiIndex(index: WikiIndex): void {
   setDocTitle(null);
@@ -2578,9 +2628,27 @@ function renderWikiIndex(index: WikiIndex): void {
       })
     : pages;
 
-  // Group by type, with the known types first then any unknown types.
+  // Sort before slicing so pagination stays deterministic when the committed
+  // index order changes. Known types retain the catalog's semantic order.
+  const typeRank = (type: string): number => {
+    const rank = WIKI_TYPE_ORDER.indexOf(type as WikiType);
+    return rank === -1 ? WIKI_TYPE_ORDER.length : rank;
+  };
+  visible.sort((a, b) =>
+    typeRank(String(a.type)) - typeRank(String(b.type)) ||
+    String(a.type).localeCompare(String(b.type)) ||
+    a.title.localeCompare(b.title) ||
+    a.slug.localeCompare(b.slug),
+  );
+  const pageCount = Math.max(1, Math.ceil(visible.length / WIKI_PAGE_SIZE));
+  const requestedPage = wikiIndexPage;
+  wikiIndexPage = Math.min(wikiIndexPage, pageCount);
+  if (wikiIndexPage !== requestedPage) canonicalizeIndexPage();
+  const pageRows = visible.slice((wikiIndexPage - 1) * WIKI_PAGE_SIZE, wikiIndexPage * WIKI_PAGE_SIZE);
+
+  // Group the current page by type, with the known types first then any unknown types.
   const groups = new Map<string, WikiPage[]>();
-  for (const p of visible) {
+  for (const p of pageRows) {
     const key = String(p.type || 'other');
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key)!.push(p);
@@ -2634,6 +2702,7 @@ function renderWikiIndex(index: WikiIndex): void {
       '  <div class="wiki-index-main">',
       emptyNote,
       sections.join('\n'),
+      paginationHtml(wikiIndexPage, visible.length, WIKI_PAGE_SIZE, 'Wiki pages'),
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -3653,7 +3722,7 @@ function closeTicketModal(): void {
       return;
     }
     history.replaceState(null, '', routeFromState());
-    lastAppliedPathname = location.pathname;
+    lastAppliedPathname = location.pathname + location.search;
     trackPageView();
   }
   restoreTicketModalFocus();
@@ -3888,6 +3957,8 @@ function isResearchDisplayTag(tag: string): boolean {
   return tag !== 'fireworks-fallback' && !tag.startsWith('requested-');
 }
 
+const RESEARCH_PAGE_SIZE = 12;
+
 function renderResearchIndex(rows: GenResearchRow[]): void {
   setDocTitle(null);
   if (rows.length === 0) {
@@ -3895,8 +3966,10 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     return;
   }
   const term = searchTerm.toLowerCase();
-  // Newest first. The writer appends ascending, so reverse.
-  const reversed = rows.slice().reverse();
+  // Newest first with a slug tie-breaker, independent of manifest insertion order.
+  const reversed = rows.slice().sort((a, b) =>
+    b.created_at.localeCompare(a.created_at) || a.slug.localeCompare(b.slug),
+  );
   const visible = term
     ? reversed.filter((r) => {
         const hay = (r.title + ' ' + r.prompt + ' ' + (r.tags || []).join(' ')).toLowerCase();
@@ -3904,8 +3977,16 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
       })
     : reversed;
 
+  const pageCount = Math.max(1, Math.ceil(visible.length / RESEARCH_PAGE_SIZE));
+  const requestedPage = researchIndexPage;
+  researchIndexPage = Math.min(researchIndexPage, pageCount);
+  if (researchIndexPage !== requestedPage) canonicalizeIndexPage();
+  const pageRows = visible.slice(
+    (researchIndexPage - 1) * RESEARCH_PAGE_SIZE,
+    researchIndexPage * RESEARCH_PAGE_SIZE,
+  );
   const items: string[] = [];
-  for (const row of visible) {
+  for (const row of pageRows) {
     let title = escapeHtml(row.title);
     if (searchTerm) {
       const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -3957,6 +4038,7 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
       items.join('\n'),
       '    </ul>',
       empty,
+      paginationHtml(researchIndexPage, visible.length, RESEARCH_PAGE_SIZE, 'Research articles'),
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -4991,6 +5073,18 @@ languageSwitch?.addEventListener('click', (e) => {
 // Retry button + research index navigation (event delegation on content)
 content.addEventListener('click', (e) => {
   const target = e.target as HTMLElement;
+  const paginationLink = target.closest('[data-index-page]') as HTMLAnchorElement | null;
+  if (paginationLink && !selectedSlug && (activeTab === 'research' || activeTab === 'wiki')) {
+    const page = Number(paginationLink.dataset.indexPage);
+    if (Number.isSafeInteger(page) && page > 0) {
+      e.preventDefault();
+      if (activeTab === 'research') researchIndexPage = page;
+      else wikiIndexPage = page;
+      load();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    return;
+  }
   if (target.closest('[data-ara-figure-close]')) {
     closeAraFigureModal();
     return;
@@ -5264,6 +5358,8 @@ document.querySelectorAll<HTMLAnchorElement>('.tab').forEach((btn) => {
     const tab = btn.dataset.tab as Tab;
     if (tab === activeTab) return;
     activeTab = tab;
+    if (tab === 'research') researchIndexPage = 1;
+    if (tab === 'wiki') wikiIndexPage = 1;
     latestAliasRequested = tab === 'twitter' ? 'twitter' : null;
     selectedSlug = null;
     syncTabUi();
@@ -5305,7 +5401,7 @@ load();
 // Hash-only changes (anchor click within an article) just scroll; route
 // changes re-fetch via load() and fire a SPA page_view to GA.
 window.addEventListener('popstate', () => {
-  const newPathname = location.pathname;
+  const newPathname = location.pathname + location.search;
   if (newPathname === lastAppliedPathname) {
     // Same article, different anchor — just scroll to the new fragment.
     scrollToHashIfPresent();

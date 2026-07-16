@@ -464,7 +464,6 @@ function renderTwitterDateNav(options: TwitterReportRenderOptions): string {
     '  <div class="twitter-date-current">',
     '    <div class="twitter-date-current-label">Twitter summaries</div>',
     '    <div class="twitter-date-current-date">' + escapeHtml(options.shownDateTitle) + '</div>',
-    options.fallbackDate ? '    <div class="twitter-date-current-note">Showing fallback for ' + escapeHtml(options.currentDateStr) + '</div>' : '',
     '  </div>',
     '  ' + link(options.nextDate, 'Next day', 'twitter-date-link--next'),
     '</nav>',
@@ -476,16 +475,6 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
   const cards: string[] = [renderTwitterDateNav(options)];
   const timelineItems: InfoTimelineItem[] = [];
   const mindshareCycles: TwitterMindshareCycle[] = [];
-  if (options.fallbackDate) {
-    cards.push(
-      '<div class="frontpage-fallback-note">No Twitter report for ' +
-        escapeHtml(options.currentDateStr) +
-        '. Showing ' +
-        escapeHtml(options.fallbackDate) +
-        ' instead.</div>',
-    );
-  }
-
   for (const section of sections) {
     if (!section.title && (!section.body || /^#\s+.+$/.test(section.body.trim()))) continue;
 

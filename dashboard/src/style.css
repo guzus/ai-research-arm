@@ -1300,10 +1300,23 @@ body.tab-agents .section-nav {
 }
 
 .cal-header-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
   font-size: var(--nav-font-size);
   font-weight: 600;
   color: var(--text);
   user-select: none;
+}
+
+.cal-selected-date {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .cal-header-nav {
@@ -1452,6 +1465,20 @@ body.tab-agents .section-nav {
 @media (prefers-color-scheme: dark) {
   .calendar.open .cal-pop {
     box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55), var(--shadow-sm);
+  }
+}
+
+/* These rules intentionally follow the base calendar declarations. The mobile
+ * navbar's dark date masthead must win the cascade on every active tab, not
+ * only Today (whose body selector happened to be more specific). */
+@media (max-width: 640px) {
+  .calendar .cal-header,
+  .calendar .cal-header-label,
+  .calendar .cal-selected-date,
+  .calendar .cal-chevron {
+    color: #ffffff;
+    opacity: 1;
+    -webkit-text-fill-color: #ffffff;
   }
 }
 
@@ -3315,6 +3342,82 @@ body.tab-frontpage .section-nav {
 .gen-research-empty {
   padding: 24px 0 8px;
   text-align: center;
+}
+
+/* Shared archive pagination for Research and Wiki. Anchors preserve browser
+ * history and remain useful without JavaScript; the SPA intercepts them only
+ * to avoid a full reload. */
+.index-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-light);
+  color: var(--text-tertiary);
+  font-size: 0.78rem;
+}
+
+.index-pagination-controls {
+  display: grid;
+  grid-template-columns: minmax(86px, 1fr) auto minmax(86px, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.index-pagination-link,
+.index-pagination-status {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.index-pagination-link:hover {
+  color: var(--text);
+  border-color: var(--text-tertiary);
+  background: var(--bg-hover);
+}
+
+.index-pagination-link:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 2px;
+}
+
+.index-pagination-link.is-disabled {
+  opacity: 0.38;
+}
+
+.index-pagination-status {
+  border-color: transparent;
+  padding-inline: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+  .index-pagination {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .index-pagination-summary {
+    text-align: center;
+  }
+
+  .index-pagination-controls {
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .index-pagination-link {
+    min-height: 44px;
+  }
 }
 
 /* Single doc view */
