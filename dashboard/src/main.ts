@@ -678,6 +678,9 @@ function applyRoute(): boolean {
 }
 
 function syncTabUi(): void {
+  // The picker itself belongs to the day view. Other tabs keep the date pill
+  // as a shortcut back to that date, so never leave its popover hanging open.
+  if (activeTab !== 'today') calendarEl.classList.remove('open');
   document.querySelectorAll('.tab').forEach((b) => {
     const tabButton = b as HTMLElement;
     const isActive = tabButton.dataset.tab === activeTab;
@@ -952,6 +955,11 @@ function buildCalendarHtml(): string {
   const selectedStr = fmtDate(currentDate);
 
   const monthLabel = calendarMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  const selectedLabel = currentDate.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
 
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -959,8 +967,13 @@ function buildCalendarHtml(): string {
 
   const dows = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   const open = calendarEl.classList.contains('open');
-  let html = '<button class="cal-header" type="button" data-cal-toggle aria-expanded="' + open + '" aria-controls="calendar-popover" aria-label="Choose a date">';
-  html += '<span class="cal-header-label">' + monthLabel + '<span class="cal-chevron">' + (open ? '&#9650;' : '&#9660;') + '</span></span>';
+  const isDayView = activeTab === 'today';
+  const headerAttrs = isDayView
+    ? ' aria-expanded="' + open + '" aria-controls="calendar-popover" aria-label="Choose a date"'
+    : ' aria-label="Open ' + selectedLabel + ' day view"';
+  const headerIndicator = isDayView ? (open ? '&#9650;' : '&#9660;') : '&rsaquo;';
+  let html = '<button class="cal-header" type="button" data-cal-toggle' + headerAttrs + '>';
+  html += '<span class="cal-header-label">' + selectedLabel + '<span class="cal-chevron">' + headerIndicator + '</span></span>';
   html += '</button>';
 
   // Month nav + day grid live in a popover so the pill keeps a fixed size.
@@ -1061,8 +1074,20 @@ function handleCalendarClick(e: Event): void {
   // Toggle fold/unfold when clicking the header (but not nav buttons)
   const toggleEl = target.closest('[data-cal-toggle]') as HTMLElement | null;
   if (toggleEl && !target.closest('[data-cal-nav]') && !target.closest('[data-cal-today]')) {
-    // The pill is a date picker: clicking it opens the calendar from any tab;
-    // picking a day (cal-day handler) then opens that day's digest/newspaper.
+    // Outside the day view, the date pill is a shortcut back to the same date.
+    // Once there, clicking it opens the picker for choosing another day.
+    if (activeTab !== 'today') {
+      latestAliasRequested = null;
+      activeTab = 'today';
+      selectedSlug = null;
+      calendarEl.classList.remove('open');
+      syncTabUi();
+      calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+      probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+      load();
+      return;
+    }
+
     const opened = calendarEl.classList.toggle('open');
     renderCalendar(opened ? '.cal-day.selected, [data-cal-today]' : undefined);
     return;

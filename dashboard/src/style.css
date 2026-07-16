@@ -536,7 +536,7 @@ body.has-digest-player .app {
   border-radius: 999px;
   box-shadow: var(--shadow-sm);
   padding: 7px 14px;
-  inline-size: 154px;
+  inline-size: 184px;
 }
 body.tab-today .calendar {
   background: var(--accent);
