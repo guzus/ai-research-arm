@@ -13,6 +13,12 @@ status_note: |
   The Information) report matching specifics (named defendants, dates,
   allegations). OpenAI publicly responded disputing the claim ("No
   interest in other companies' trade secrets...").
+
+  **2026-07-16:** The Information's own account now puts the
+  recruited-headcount figure at **400+ former Apple employees** (up from
+  the original count), and separately reports **Apple is scouting
+  AI-chip-company acquisitions** to build its own server silicon — a
+  related but distinct pivot worth noting but not a new ticket.
 expected: "Litigation ongoing; no ruling or settlement yet"
 labels:
   - legal
@@ -24,13 +30,16 @@ sources:
   - "@AndrewCurran_"
   - "@theinformation"
   - "@rohanpaul_ai"
+  - https://x.com/theinformation/status/2077400322192863512
 created_at: 2026-07-12
-updated_at: 2026-07-12
+updated_at: 2026-07-16
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-07-12
     change: "Created — Apple sued OpenAI alleging systematic trade-secret theft to build OpenAI's hardware business, naming former Apple engineer Chang Liu and OpenAI Chief Hardware Officer Tang Tan. @AndrewCurran_ (citing Bloomberg) and @theinformation independently report matching specifics; OpenAI responded on-record disputing the claim (relayed via @rohanpaul_ai). Multi-source, high-authority outlets → status confirmed, verification confirmed."
+  - ts: 2026-07-16
+    change: "The Information now puts the recruited-headcount figure at 400+ former Apple employees (up from the original count), and separately reports Apple is scouting AI-chip-company acquisitions to build its own server silicon — a related but distinct pivot noted here, not spun into a new ticket. Status and verification unchanged (confirmed/confirmed)."
 ---
 
 **Apple has sued OpenAI**, alleging a systematic campaign to steal trade

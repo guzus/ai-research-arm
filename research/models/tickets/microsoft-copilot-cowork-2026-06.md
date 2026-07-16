@@ -3,7 +3,7 @@ slug: microsoft-copilot-cowork-2026-06
 title: Microsoft Copilot Cowork GA (multi-model, usage-based) — reportedly evaluating DeepSeek V4
 company: Microsoft
 model: null
-status: released
+status: closed
 status_note: |
   **Satya Nadella** announced (2026-06-16, own account) that **Copilot Cowork is
   generally available worldwide with multi-model support and usage-based
@@ -27,12 +27,14 @@ sources:
   - "@kimmonismus"
   - "@AndrewCurran_"
 created_at: 2026-06-18
-updated_at: 2026-06-18
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-16
+closed_at: 2026-07-16
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-18
     change: "Created — Satya Nadella announced (2026-06-16) Copilot Cowork GA worldwide with multi-model support and usage-based pricing (~$0.01/task); Axios reports Microsoft is evaluating a Microsoft-hosted fine-tuned DeepSeek V4 as a cheaper Cowork engine vs. OpenAI/Anthropic. Cowork GA confirmed (Satya's own account) → status released; the DeepSeek-V4 evaluation is reported (Axios via relays), not deployed → verification partial. 'Microsoft body blow to OpenAI' framings overstate Axios — it is evaluation, not a switch."
+  - ts: 2026-07-16
+    change: "Closed — ≥4 weeks past release with no unresolved transition triggers; settled into normal coverage. closed_reason: released-and-aged."
 ---
 
 On **2026-06-16**, **Satya Nadella** posted that **Copilot Cowork is now

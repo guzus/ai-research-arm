@@ -3,20 +3,24 @@ slug: openai-codex-hardware-2026-06
 title: OpenAI teases its first Codex hardware — a Work Louder macro pad, reveal July 15
 company: OpenAI
 model: null
-status: confirmed
+status: released
 status_note: |
   Teased **2026-06-30** (The Verge via Techmeme; OpenAI's own teaser video):
-  OpenAI is launching a **Codex-focused physical device** built with
-  mechanical-keyboard maker **Work Louder** on **July 15** — "your favorite
-  Codex shortcuts are getting an upgrade." The silhouette matches Work Louder's
-  **Creator Micro 2** (13 mechanical switches, joystick, touch sensor): a macro
-  pad for binding Codex actions ("refactor this," "write tests") to physical
-  keys. Explicitly **NOT** the Jony Ive AI device. Reported by The Verge
-  (@emroth08), carried by Techmeme and multiple relays, all citing OpenAI's own
-  teaser → status `confirmed` (official teaser), verification `confirmed` (named
-  outlet + OpenAI teaser); the **actual spec, price, and platform ambitions are
-  unknown until July 15**, so this is a teased-not-shipped product.
-expected: "July 15, 2026 reveal — actual hardware spec, price, and whether it's a one-off dev toy or a 'Codex-as-platform' surface (custom shortcut packs, team profiles)"
+  OpenAI launched a **Codex-focused physical device** built with
+  mechanical-keyboard maker **Work Louder**, with the reveal happening
+  on schedule on **2026-07-15**. The silhouette matched Work Louder's
+  **Creator Micro 2** (13 mechanical switches, joystick, touch sensor): a
+  macro pad for binding Codex actions ("refactor this," "write tests") to
+  physical keys. Explicitly **NOT** the Jony Ive AI device.
+
+  **Reveal (2026-07-15):** the product is named **Codex Micro**, priced
+  **$230**, live now on the **OpenAI Supply** site (product id
+  `kbd-1.0-codex-micro`), built with Work Louder as teased — **6 RGB
+  agent-status keys, a reasoning-level dial, Bluetooth/USB-C**. Reported
+  by **@testingcatalog** and **@kimmonismus**, independently corroborated
+  by **@rohanpaul_ai** on 2026-07-16 → status `released`, verification
+  `confirmed`.
+expected: null
 labels:
   - hardware
   - openai
@@ -26,13 +30,19 @@ verification: confirmed
 sources:
   - "@Techmeme"
   - https://x.com/Techmeme/status/2071768358182334546
+  - "@testingcatalog"
+  - https://x.com/testingcatalog/status/2077426702582792549
+  - "@kimmonismus"
+  - "@rohanpaul_ai"
 created_at: 2026-06-30
-updated_at: 2026-06-30
+updated_at: 2026-07-16
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-30
     change: "Created — OpenAI teased its first Codex hardware (2026-06-30, The Verge via Techmeme + OpenAI teaser video): a physical device built with keyboard maker Work Louder, reveal July 15, 'your favorite Codex shortcuts are getting an upgrade.' Silhouette matches Work Louder's Creator Micro 2 (13 switches, joystick, touch sensor) — a macro pad for binding Codex actions to physical keys; explicitly not the Jony Ive device. Status confirmed (official teaser, The Verge/Techmeme); verification confirmed; spec/price/ambitions unknown until July 15 (teased, not shipped). Links to the Codex platform lane ([[openai-codex-platform-2026-05]])."
+  - ts: 2026-07-16
+    change: "Reveal happened on schedule 2026-07-15: the product is Codex Micro, $230, live on the OpenAI Supply site (product id kbd-1.0-codex-micro), built with Work Louder — 6 RGB agent-status keys, a reasoning-level dial, Bluetooth/USB-C. Reported by @testingcatalog and @kimmonismus, independently corroborated by @rohanpaul_ai on 2026-07-16 → status advances confirmed → released; expected set to null (nothing pending, it shipped)."
 ---
 
 On **2026-06-30**, OpenAI teased its **first Codex hardware** — a physical
