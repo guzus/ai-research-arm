@@ -36,6 +36,7 @@
   --font: var(--font-serif);
   --font-mono: var(--font-serif);
   --nav-font-size: 0.82rem;
+  --sticky-nav-height: 46px;
   --reading-font-family: var(--font-serif);
   --reading-font-size: 1rem;
   --reading-line-height: 1.85;
@@ -113,7 +114,7 @@ body.has-digest-player .app {
  * GitHub link should sit close enough to feel like one block. */
 .header {
   max-width: var(--page-max);
-  margin: 0 auto 32px;
+  margin: 0 auto 24px;
 }
 
 /* Card chrome doesn't follow the viewport on ultra-wide displays.
@@ -175,11 +176,11 @@ body.has-digest-player .app {
   }
 }
 
-/* When the floating TOC is visible (set by JS in renderResearchTOC),
- * push the app contents right so they don't sit under the TOC. */
+/* When the floating TOC is visible (set by JS in renderResearchTOC), shift
+ * only article content so route changes never move the masthead or nav. */
 @media (min-width: 1280px) {
-  body.has-toc .app {
-    padding-left: max(280px, var(--page-gutter));
+  body.has-toc #content {
+    margin-left: max(0px, calc(280px - var(--page-gutter)));
   }
 }
 
@@ -200,14 +201,14 @@ body.has-digest-player .app {
 
 /* ── Header ────────────────────────────────────────── */
 .header {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .header-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   gap: 16px;
 }
 
@@ -312,6 +313,28 @@ body.has-digest-player .app {
 .header-link-label { display: inline; }
 
 /* ── Tabs ─────────────────────────────────────────── */
+.nav-shell {
+  position: sticky;
+  z-index: 1200;
+  top: 0;
+  max-width: var(--page-max);
+  margin: 0 auto 32px;
+  padding-top: 8px;
+  background: var(--bg-secondary);
+}
+
+/* Search belongs to the shared nav, but must not make that sticky rail taller
+ * when it opens. Float it directly below the rail instead. */
+.nav-shell .search-overlay {
+  position: absolute;
+  z-index: 1400;
+  top: 100%;
+  left: 0;
+  width: min(560px, 100%);
+  max-width: none;
+  margin-bottom: 0;
+}
+
 .tabs {
   display: flex;
   align-items: center;
@@ -355,7 +378,7 @@ body.has-digest-player .app {
   font-size: var(--nav-font-size);
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
 .tab:hover {
@@ -375,6 +398,8 @@ body.has-digest-player .app {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+  max-width: var(--page-max);
+  margin: -32px auto 32px;
 }
 
 .icon-btn {
@@ -511,6 +536,7 @@ body.has-digest-player .app {
   border-radius: 999px;
   box-shadow: var(--shadow-sm);
   padding: 7px 14px;
+  inline-size: 184px;
 }
 body.tab-today .calendar {
   background: var(--accent);
@@ -522,6 +548,10 @@ body.tab-today .cal-chevron { color: var(--on-accent); opacity: 0.75; }
 /* On phones, the nav becomes a newspaper-style control grid: date masthead,
  * two rows of section buttons, then a full-width search row. */
 @media (max-width: 640px) {
+  .nav-shell {
+    position: static;
+  }
+
   .tabs {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -548,6 +578,7 @@ body.tab-today .cal-chevron { color: var(--on-accent); opacity: 0.75; }
     grid-column: 1 / -1;
     justify-content: stretch;
     width: 100%;
+    inline-size: 100%;
     padding: 10px 14px;
     background: #171717;
     border-bottom: 1px solid var(--border);
@@ -624,7 +655,6 @@ body:not(.tab-research) .request-btn { display: none; }
 /* The controls row now holds only Request research → hide it off /research. */
 body:not(.tab-research) .controls { display: none; }
 
-body.tab-agents .calendar,
 body.tab-agents .section-nav {
   display: none;
 }
@@ -1233,6 +1263,10 @@ body.tab-agents .section-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
   cursor: pointer;
 }
 
@@ -1251,12 +1285,12 @@ body.tab-agents .section-nav {
   display: block;
   position: fixed;          /* fixed so it escapes the .tabs overflow-x clip */
   z-index: 1100;
-  width: 280px;
-  padding: 12px;
+  width: min(320px, calc(100vw - 24px));
+  padding: 14px;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow-lg);
+  border-radius: 16px;
+  box-shadow: 0 18px 48px rgba(14, 22, 36, 0.16), var(--shadow-sm);
 }
 
 .cal-chevron {
@@ -1266,32 +1300,54 @@ body.tab-agents .section-nav {
 }
 
 .cal-header-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
   font-size: var(--nav-font-size);
   font-weight: 600;
   color: var(--text);
   user-select: none;
 }
 
+.cal-selected-date {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .cal-header-nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
   align-items: center;
-  justify-content: space-between;
-  gap: 4px;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.cal-pop-title {
+  min-width: 0;
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .cal-nav-btn {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: none;
   border: 1px solid var(--border);
-  border-radius: 7px;
+  border-radius: 10px;
   cursor: pointer;
   color: var(--text-secondary);
-  font-size: 0.78rem;
+  font-size: 1.1rem;
   font-weight: 600;
   transition: all 0.12s;
 }
@@ -1303,16 +1359,18 @@ body.tab-agents .section-nav {
 }
 
 .cal-today-btn {
-  height: 28px;
-  padding: 0 10px;
-  background: none;
+  width: 100%;
+  height: 36px;
+  margin-top: 10px;
+  padding: 0 14px;
+  background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-radius: 7px;
+  border-radius: 10px;
   cursor: pointer;
   color: var(--text-secondary);
   font-family: var(--font);
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: 0.76rem;
+  font-weight: 650;
   transition: all 0.12s;
 }
 
@@ -1327,18 +1385,29 @@ body.tab-agents .section-nav {
   font-size: 0.68rem;
   font-weight: 600;
   color: var(--text-tertiary);
-  padding: 4px 0;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   user-select: none;
 }
 
 .cal-day {
   position: relative;
-  text-align: center;
-  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 550;
+  line-height: 1;
   color: var(--text);
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.1s;
   user-select: none;
@@ -1353,33 +1422,64 @@ body.tab-agents .section-nav {
   opacity: 0.45;
 }
 
+.cal-header:focus-visible,
+.cal-nav-btn:focus-visible,
+.cal-today-btn:focus-visible,
+.cal-day:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 2px;
+}
+
 .cal-day.today {
-  box-shadow: inset 0 0 0 1.5px var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent-warm);
+  font-weight: 700;
 }
 
 .cal-day.selected {
   background: var(--accent);
   color: var(--on-accent);
+  font-weight: 700;
+  box-shadow: 0 3px 10px var(--accent-warm-shadow);
 }
 
 .cal-day.selected.today {
-  box-shadow: none;
+  box-shadow: 0 3px 10px var(--accent-warm-shadow);
 }
 
 .cal-day.has-data::after {
   content: '';
   position: absolute;
-  bottom: 2px;
+  bottom: 4px;
   left: 50%;
   transform: translateX(-50%);
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   background: var(--accent-warm);
 }
 
 .cal-day.selected.has-data::after {
   background: rgba(255, 255, 255, 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  .calendar.open .cal-pop {
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55), var(--shadow-sm);
+  }
+}
+
+/* These rules intentionally follow the base calendar declarations. The mobile
+ * navbar's dark date masthead must win the cascade on every active tab, not
+ * only Today (whose body selector happened to be more specific). */
+@media (max-width: 640px) {
+  .calendar .cal-header,
+  .calendar .cal-header-label,
+  .calendar .cal-selected-date,
+  .calendar .cal-chevron {
+    color: #ffffff;
+    opacity: 1;
+    -webkit-text-fill-color: #ffffff;
+  }
 }
 
 /* ── Main Content Card ─────────────────────────────── */
@@ -2559,7 +2659,7 @@ body.has-toc .section-nav { display: none; }
   .header-link-label { display: none; }
   .controls { gap: 6px; }
   .search-box { flex-basis: 100%; }
-  .search-overlay {
+  .nav-shell .search-overlay {
     position: fixed;
     z-index: 1400;
     top: 58px;
@@ -3082,11 +3182,11 @@ body.has-toc .section-nav { display: none; }
 
 .today-layout-frontpage {
   position: sticky;
-  top: 16px;
+  top: calc(var(--sticky-nav-height) + 16px);
   /* Bound the newspaper to the viewport and give it its own scroll, so a
    * tall edition scrolls independently of the digest (which scrolls with
    * the page on the right). */
-  max-height: calc(100vh - 32px);
+  max-height: calc(100vh - var(--sticky-nav-height) - 32px);
   overflow-y: auto;
 }
 
@@ -3242,6 +3342,82 @@ body.tab-frontpage .section-nav {
 .gen-research-empty {
   padding: 24px 0 8px;
   text-align: center;
+}
+
+/* Shared archive pagination for Research and Wiki. Anchors preserve browser
+ * history and remain useful without JavaScript; the SPA intercepts them only
+ * to avoid a full reload. */
+.index-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-light);
+  color: var(--text-tertiary);
+  font-size: 0.78rem;
+}
+
+.index-pagination-controls {
+  display: grid;
+  grid-template-columns: minmax(86px, 1fr) auto minmax(86px, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.index-pagination-link,
+.index-pagination-status {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.index-pagination-link:hover {
+  color: var(--text);
+  border-color: var(--text-tertiary);
+  background: var(--bg-hover);
+}
+
+.index-pagination-link:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 2px;
+}
+
+.index-pagination-link.is-disabled {
+  opacity: 0.38;
+}
+
+.index-pagination-status {
+  border-color: transparent;
+  padding-inline: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+  .index-pagination {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .index-pagination-summary {
+    text-align: center;
+  }
+
+  .index-pagination-controls {
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .index-pagination-link {
+    min-height: 44px;
+  }
 }
 
 /* Single doc view */
@@ -3950,6 +4126,7 @@ body.tab-frontpage .section-nav {
 
   /* Hide all app chrome */
   .header,
+  .nav-shell,
   .tabs,
   .calendar,
   .controls,
@@ -4818,6 +4995,7 @@ body.ticket-odds-modal-open { overflow: hidden; }
 
 .tab-focus-reader .app { padding: 0; }
 .tab-focus-reader .header,
+.tab-focus-reader .nav-shell,
 .tab-focus-reader .site-footer,
 .tab-focus-reader .section-nav,
 .tab-focus-reader .shortcut-guide,
