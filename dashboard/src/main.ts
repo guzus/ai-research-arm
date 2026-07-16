@@ -883,26 +883,20 @@ function findResearchRow(slug: string): GenResearchRow | null {
 
 // ── Calendar ──────────────────────────────────────────
 function dataUrlForDate(dateStr: string): string {
-  if (activeTab === 'today') {
-    return `${DATA_BASE}/digest/${dateStr}-digest.md`;
-  }
-  if (activeTab === 'models') {
-    return `${DATA_BASE}/models/${dateStr}-timeline.md`;
-  }
-  if (activeTab === 'frontpage') {
-    return `${DATA_BASE}/front-page/${dateStr}-front-page.png`;
-  }
-  return `${DATA_BASE}/twitter/${dateStr}.md`;
+  // Picking a date always opens the day view, regardless of the current tab.
+  // Availability therefore describes the destination (digest), not whichever
+  // route happened to be active when the calendar opened.
+  return `${DATA_BASE}/digest/${dateStr}-digest.md`;
 }
 
 function cacheKey(year: number, month: number): string {
-  return `${activeTab}-${year}-${String(month + 1).padStart(2, '0')}`;
+  return `today-${year}-${String(month + 1).padStart(2, '0')}`;
 }
 
-function probeAvailability(year: number, month: number): void {
+function probeAvailability(year: number, month: number, focusSelector?: string): void {
   const key = cacheKey(year, month);
   if (availabilityCache.has(key)) {
-    renderCalendar();
+    renderCalendar(focusSelector);
     return;
   }
 
@@ -911,20 +905,20 @@ function probeAvailability(year: number, month: number): void {
     if (!availabilityCache.has(key)) {
       availabilityCache.set(key, new Set<string>());
     }
-    renderCalendar();
+    renderCalendar(focusSelector);
     return;
   }
 
   // No manifest yet — wait for it, then render. Avoids the 404 storm entirely.
   const available = new Set<string>();
   availabilityCache.set(key, available);
-  renderCalendar();
+  renderCalendar(focusSelector);
 
   loadManifest().then((m) => {
     if (m) {
       // Hydrate already filled the cache; just re-render if still relevant.
       if (calendarMonth.getFullYear() === year && calendarMonth.getMonth() === month) {
-        renderCalendar();
+        renderCalendar(focusSelector);
       }
       return;
     }
@@ -942,7 +936,7 @@ function probeAvailability(year: number, month: number): void {
     }
     Promise.all(promises).then(() => {
       if (calendarMonth.getFullYear() === year && calendarMonth.getMonth() === month) {
-        renderCalendar();
+        renderCalendar(focusSelector);
       }
     });
   });
@@ -965,16 +959,16 @@ function buildCalendarHtml(): string {
 
   const dows = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   const open = calendarEl.classList.contains('open');
-  let html = '<div class="cal-header" data-cal-toggle>';
+  let html = '<button class="cal-header" type="button" data-cal-toggle aria-expanded="' + open + '" aria-controls="calendar-popover" aria-label="Choose a date">';
   html += '<span class="cal-header-label">' + monthLabel + '<span class="cal-chevron">' + (open ? '&#9650;' : '&#9660;') + '</span></span>';
-  html += '</div>';
+  html += '</button>';
 
   // Month nav + day grid live in a popover so the pill keeps a fixed size.
-  html += '<div class="cal-pop">';
+  html += '<div class="cal-pop" id="calendar-popover" role="group" aria-label="' + monthLabel + ' calendar">';
   html += '<div class="cal-header-nav">';
-  html += '<button class="cal-nav-btn" data-cal-nav="-1">&lsaquo;</button>';
-  html += '<button class="cal-today-btn" data-cal-today>Today</button>';
-  html += '<button class="cal-nav-btn" data-cal-nav="1">&rsaquo;</button>';
+  html += '<button class="cal-nav-btn" type="button" data-cal-nav="-1" aria-label="Previous month">&lsaquo;</button>';
+  html += '<span class="cal-pop-title" aria-live="polite">' + monthLabel + '</span>';
+  html += '<button class="cal-nav-btn" type="button" data-cal-nav="1" aria-label="Next month">&rsaquo;</button>';
   html += '</div>';
 
   html += '<div class="cal-grid">';
@@ -987,7 +981,8 @@ function buildCalendarHtml(): string {
     const pm = month === 0 ? 11 : month - 1;
     const py = month === 0 ? year - 1 : year;
     const dateStr = `${py}-${String(pm + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    html += '<div class="cal-day other-month" data-date="' + dateStr + '">' + d + '</div>';
+    const dateLabel = new Date(py, pm, d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    html += '<button class="cal-day other-month" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '">' + d + '</button>';
   }
 
   for (let d = 1; d <= daysInMonth; d++) {
@@ -996,7 +991,10 @@ function buildCalendarHtml(): string {
     if (dateStr === todayStr) cls += ' today';
     if (dateStr === selectedStr) cls += ' selected';
     if (available.has(dateStr)) cls += ' has-data';
-    html += '<div class="' + cls + '" data-date="' + dateStr + '">' + d + '</div>';
+    const dateLabel = new Date(year, month, d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const ariaCurrent = dateStr === todayStr ? ' aria-current="date"' : '';
+    const ariaSelected = dateStr === selectedStr ? ' aria-pressed="true"' : '';
+    html += '<button class="' + cls + '" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '"' + ariaCurrent + ariaSelected + '>' + d + '</button>';
   }
 
   const totalCells = firstDay + daysInMonth;
@@ -1005,10 +1003,12 @@ function buildCalendarHtml(): string {
     const nm = month === 11 ? 0 : month + 1;
     const ny = month === 11 ? year + 1 : year;
     const dateStr = `${ny}-${String(nm + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    html += '<div class="cal-day other-month" data-date="' + dateStr + '">' + d + '</div>';
+    const dateLabel = new Date(ny, nm, d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    html += '<button class="cal-day other-month" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '">' + d + '</button>';
   }
 
   html += '</div>';
+  html += '<button class="cal-today-btn" type="button" data-cal-today>Go to today</button>';
   html += '</div>';
   return html;
 }
@@ -1021,12 +1021,15 @@ function positionCalPop(): void {
   if (!pop || !header) return;
   const r = header.getBoundingClientRect();
   pop.style.top = (r.bottom + 8) + 'px';
-  pop.style.left = Math.max(8, Math.min(r.left, window.innerWidth - 296)) + 'px';
+  pop.style.left = Math.max(8, Math.min(r.left, window.innerWidth - pop.offsetWidth - 8)) + 'px';
 }
 
-function renderCalendar(): void {
+function renderCalendar(focusSelector?: string): void {
   setSafeCalendar(calendarEl, buildCalendarHtml());
   if (calendarEl.classList.contains('open')) positionCalPop();
+  if (focusSelector) {
+    calendarEl.querySelector<HTMLElement>(focusSelector)?.focus();
+  }
 }
 
 // Close the picker on scroll so a fixed popover never lags behind its anchor
@@ -1043,7 +1046,11 @@ function setSafeCalendar(el: HTMLElement, rawHtml: string): void {
   while (el.firstChild) el.removeChild(el.firstChild);
   const clean = DOMPurify.sanitize(rawHtml, {
     USE_PROFILES: { html: true },
-    ADD_ATTR: ['data-date', 'data-cal-nav', 'data-cal-today', 'data-cal-toggle'],
+    ADD_ATTR: [
+      'data-date', 'data-cal-nav', 'data-cal-today', 'data-cal-toggle',
+      'aria-controls', 'aria-current', 'aria-expanded', 'aria-label',
+      'aria-live', 'aria-pressed',
+    ],
   });
   el.insertAdjacentHTML('beforeend', clean);
 }
@@ -1056,8 +1063,8 @@ function handleCalendarClick(e: Event): void {
   if (toggleEl && !target.closest('[data-cal-nav]') && !target.closest('[data-cal-today]')) {
     // The pill is a date picker: clicking it opens the calendar from any tab;
     // picking a day (cal-day handler) then opens that day's digest/newspaper.
-    calendarEl.classList.toggle('open');
-    renderCalendar();
+    const opened = calendarEl.classList.toggle('open');
+    renderCalendar(opened ? '.cal-day.selected, [data-cal-today]' : undefined);
     return;
   }
 
@@ -1065,7 +1072,11 @@ function handleCalendarClick(e: Event): void {
   if (navBtn) {
     const dir = parseInt(navBtn.dataset.calNav!, 10);
     calendarMonth.setMonth(calendarMonth.getMonth() + dir);
-    probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+    probeAvailability(
+      calendarMonth.getFullYear(),
+      calendarMonth.getMonth(),
+      `[data-cal-nav="${dir}"]`,
+    );
     return;
   }
 
@@ -1074,6 +1085,7 @@ function handleCalendarClick(e: Event): void {
     const now = new Date();
     currentDate = now;
     activeTab = 'today';
+    calendarEl.classList.remove('open');
     syncTabUi();
     calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
@@ -5171,6 +5183,11 @@ document.getElementById('refreshBtn')!.addEventListener('click', () => {
 // Keyboard shortcuts
 document.addEventListener('keydown', (e: KeyboardEvent) => {
   if (e.key === 'Escape') {
+    if (calendarEl.classList.contains('open')) {
+      calendarEl.classList.remove('open');
+      renderCalendar();
+      calendarEl.querySelector<HTMLButtonElement>('[data-cal-toggle]')?.focus();
+    }
     closeTicketOddsModal();
     closeAraFigureModal();
     return;
