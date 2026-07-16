@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-16
+
+TOP 5 PAPERS:
+• TRACE - turn-level RL credit assignment lifts Qwen3-4B 7.2->35.6 on BrowseComp-Plus
+• VideoRAE - frozen video foundation models as autoencoders for AR+diffusion generation, 5x faster
+• Transforming Rank - explains why Pre-Norm beats Post-Norm via gradient rank collapse
+• Do Agent Optimizers Compound? - self-improving agent loops only help with regression control
+• Deep Interaction - direct CoT step editing cuts tokens ~40%, +25% correction success
+
+CATEGORIES: LM/NLP 6, CV/Multimodal 7, Agents/Reasoning 5, Safety/Alignment 6, Other 4
+
+Full report on GitHub.
