@@ -1,0 +1,19 @@
+Daily AI Digest - 2026-07-16
+
+TOP STORIES:
+• Pentagon confirms Grok AI directed 2,000+ munitions in Iran strikes — first official confirmation of chatbot use in combat
+• Thinking Machines ships Inkling, a 975B open-weights multimodal model — Mira Murati's lab enters the open-weight frontier
+• xAI open-sources Grok Build's CLI/harness amid dispute over data exfiltration claims
+• 26 Meta employees sue over alleged AI-driven layoffs targeting disabled/on-leave staff
+• xAI sues a Grok user over alleged CSAM deepfakes
+
+KEY NUMBERS:
+• 2,000 — munitions Grok reportedly helped direct at Iran targets
+• $700M — Neko Health Series C (~$7B valuation)
+• $32M — Monumental (bricklaying robotics) Series B
+• 975B/41B — Inkling's total/active parameter count
+• 26 — Meta employees suing over AI-driven layoffs
+
+TRENDING: Thinking Machines' Inkling launch and OpenAI's Codex Micro hardware dominate Hacker News
+
+Full digest on GitHub.
