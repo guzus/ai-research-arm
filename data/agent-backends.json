@@ -153,6 +153,42 @@
       "strict": true,
       "notes": "Z.ai provider diagnostics. PINNED to zai and STRICT (never walks the fallback chain): this lane exists to test Z.ai — a Z.ai outage must fail this run, not re-route it."
     },
+    "twitter-ab-claude": {
+      "workflow": "twitter-model-ab.yml",
+      "harness": "agent-run",
+      "backend": "claude",
+      "pinned": true,
+      "pinned_provider": "claude",
+      "strict": true,
+      "notes": "A/B eval leg A: production native Claude (serves fallback.native_model). PINNED+STRICT: eval artifacts must be attributable to exactly this backend — any re-route contaminates the comparison (docs/twitter-model-ab.md)."
+    },
+    "twitter-ab-zai": {
+      "workflow": "twitter-model-ab.yml",
+      "harness": "agent-run",
+      "backend": "zai-glm-5p2",
+      "pinned": true,
+      "pinned_provider": "zai",
+      "strict": true,
+      "notes": "A/B eval leg B: GLM-5.2 via Z.ai Coding Plan. PINNED+STRICT: a Z.ai outage must FAIL this leg, never fall back to Claude — a silent fallback would make the eval Claude-vs-Claude (docs/twitter-model-ab.md)."
+    },
+    "twitter-ab-judge": {
+      "workflow": "twitter-model-ab.yml",
+      "harness": "agent-run",
+      "backend": "claude",
+      "pinned": true,
+      "pinned_provider": "claude",
+      "strict": true,
+      "notes": "A/B eval blinded judge, pass 1. Native Claude with the workflow's native-model override to claude-opus-4-8 so the judge is a true non-contestant Opus, not the sonnet default either leg runs on."
+    },
+    "twitter-ab-judge-swapped": {
+      "workflow": "twitter-model-ab.yml",
+      "harness": "agent-run",
+      "backend": "claude",
+      "pinned": true,
+      "pinned_provider": "claude",
+      "strict": true,
+      "notes": "A/B eval blinded judge, pass 2 with A/B contents position-swapped (position-bias control). Same claude-opus-4-8 native-model override as twitter-ab-judge."
+    },
     "twitter-deepseek-pi": {
       "workflow": "hourly-twitter.yml",
       "tier": "deepseek-pi",

@@ -135,6 +135,21 @@ status_note: |
   availability. Status advances `confirmed` → `released`; verification
   stays `confirmed` (official @OpenAI + @sama primary, multi-source
   corroboration).
+
+  **2026-07-14 — post-GA quality regression + compensation.** Multiple
+  independent accounts (@theo, @kimmonismus, testingcatalog, @jxnlco
+  relaying @thsottiaux) report OpenAI quietly reduced GPT-5.6's
+  reasoning-effort budget ("juice values") and discussed a context-window
+  rollback (372k→272k) days after GA, then compensated with "banked
+  resets" to ChatGPT Work/Codex usage limits for an estimated 500k–7M
+  affected users. @theo's own thread partially walks back the precise
+  mechanism ("point 1 is not correct, it just compounds after
+  compactions"), so the exact technical detail stays contested even though
+  multiple sources agree something regressed and OpenAI compensated users.
+  No official OpenAI post addressing the regression itself. Status stays
+  `released`; verification stays `confirmed` (the regression-and-
+  compensation event is well-corroborated across independent accounts,
+  even as its precise mechanics remain unsettled).
 expected: "GA confirmed 2026-07-10: OpenAI's own account announced GPT-5.6 Sol Ultra generally available, and @sama says GPT-5.6 is now the preferred model in Microsoft 365 Copilot. Family is Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol set SOTA on Terminal-Bench 2.1 with max + ultra (subagent) modes; pricing Sol $5/$30, Terra $2.50/$15, Luna $1/$6 per MTok"
 labels:
   - openai
@@ -153,7 +168,7 @@ sources:
   - https://openai.com/index/previewing-gpt-5-6-sol/
   - https://simonwillison.net/2026/Jun/26/openai/
 created_at: 2026-06-09
-updated_at: 2026-07-12
+updated_at: 2026-07-14
 closed_at: null
 closed_reason: null
 history:
@@ -183,6 +198,8 @@ history:
     change: "Tier names go primary-source. A GPG-signed commit merged 2026-06-26 into OpenAI's public Codex GitHub repo (independently verified via GitHub's API) adds openai.gpt-5.6-sol/-terra/-luna to the Bedrock model catalog — first primary-source confirmation of the tier names (a catalog entry, not a launch announcement; predates the rumor window by a week). A live Codex-app UI popup screenshot (@DevAdventur3s) shows the tier selector in-product; @kimmonismus adds the first insider-adjacent 'Tuesday' (July 7) nod. Launch date itself stays single-leaker-sourced. Status stays confirmed; verification stays confirmed."
   - ts: 2026-07-12
     change: "Status → released. @OpenAI's own account confirmed GA: 'Yesterday, we made GPT-5.6 Sol Ultra generally available' (2026-07-10), plus a health-intelligence post citing GPT-5.6 Luna outperforming GPT-5.5. @sama separately said GPT-5.6 is now the preferred model in Microsoft 365 Copilot. Multiple independent users report hitting rate limits on it, consistent with broad rollout beyond the ~20-org gated preview. Status advances confirmed → released; verification stays confirmed (official primary + broad corroboration)."
+  - ts: 2026-07-14
+    change: "Post-GA quality regression reported. @theo, @kimmonismus, testingcatalog, and @jxnlco (relaying @thsottiaux) say OpenAI quietly reduced GPT-5.6's reasoning-effort budget and discussed a context-window rollback (372k→272k), then compensated with 'banked resets' to ChatGPT Work/Codex usage limits for an estimated 500k-7M users. @theo partially walked back the precise mechanism in his own thread, so the exact technical cause is contested even though the regression-and-compensation event itself is well-corroborated. No official OpenAI statement on the regression. Status stays released; verification stays confirmed."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely

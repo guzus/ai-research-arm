@@ -1,0 +1,10 @@
+Speaker 1: Thursday, July sixteenth, twenty twenty-six.
+Speaker 2: [high_energy] The Pentagon just confirmed that Grok directed over [emphasis] two thousand munitions [/emphasis] during strikes in Iran, the first official confirmation of a chatbot being used in live combat.
+Speaker 1: That's a genuine first for military AI, and it's going to draw scrutiny fast.
+Speaker 2: Meanwhile Thinking Machines shipped Inkling, a nine hundred seventy-five billion parameter open-weights multimodal model with forty-one billion active parameters, so Mira Murati's lab is now in the open-weight frontier fight.
+Speaker 1: On the corporate front, xAI open-sourced Grok Build's CLI and harness, right in the middle of a dispute over data exfiltration claims.
+Speaker 2: Worth noting that's not the only legal heat xAI is facing, they're also suing a Grok user over alleged CSAM deepfakes.
+Speaker 1: Some quick numbers, Neko Health closed a seven hundred million dollar Series C near a seven billion dollar valuation, and bricklaying robotics startup Monumental raised thirty-two million in its Series B.
+Speaker 2: [dramatic_pause] And twenty-six Meta employees are now suing over alleged AI-driven layoffs that targeted disabled and on-leave staff.
+Speaker 1: On Hacker News, Inkling's launch and OpenAI's Codex Micro hardware are dominating the conversation.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.

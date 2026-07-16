@@ -262,5 +262,35 @@
     "tags": ["visual-explainers", "transformers", "embeddings", "education"],
     "include_in_digest": false,
     "notes": "Excellent educational archive; low current publishing velocity."
+  },
+  {
+    "id": "ranto28",
+    "name": "메르의 블로그",
+    "url": "https://blog.naver.com/ranto28",
+    "feed_url": "https://rss.blog.naver.com/ranto28.xml",
+    "type": "expert_blog",
+    "priority": "P2",
+    "cadence": "daily",
+    "tags": ["korea", "markets", "macroeconomics", "semiconductors", "geopolitics", "ai-industry"],
+    "include_in_digest": false,
+    "notes": "Korean market, macroeconomic, industrial, and geopolitical analysis. Telegram subscription alerts on every new post.",
+    "subscription": {
+      "delivery": "telegram"
+    }
+  },
+  {
+    "id": "tosoha1",
+    "name": "이것 또한 지나가리라",
+    "url": "https://blog.naver.com/tosoha1",
+    "feed_url": "https://rss.blog.naver.com/tosoha1.xml",
+    "type": "expert_blog",
+    "priority": "P2",
+    "cadence": "weekly",
+    "tags": ["korea", "investment", "semiconductors", "memory", "ai-infrastructure"],
+    "include_in_digest": false,
+    "notes": "Korean investment analysis focused on semiconductors, memory cycles, and AI infrastructure. Telegram subscription alerts on every new post.",
+    "subscription": {
+      "delivery": "telegram"
+    }
   }
 ]

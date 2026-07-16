@@ -23,6 +23,13 @@ inputs:
   output_dir:
     description: Markdown digest directory (e.g. research/twitter).
     required: true
+  summaries_dir:
+    description: >
+      Directory for the Telegram summary + headlines artifacts. Defaults to
+      the production research/summaries; the twitter-model-ab eval overrides
+      it so each leg writes ONLY inside its own leg directory.
+    required: false
+    default: research/summaries
   summary_slug:
     description: Filename slug for summary/headlines files (e.g. twitter).
     required: true
@@ -90,6 +97,7 @@ runs:
         TEMPLATE_PATH: ${{ inputs.template_path }}
         OUTPUT_PATH: ${{ inputs.output_path }}
         OUTPUT_DIR: ${{ inputs.output_dir }}
+        SUMMARIES_DIR: ${{ inputs.summaries_dir }}
         SUMMARY_SLUG: ${{ inputs.summary_slug }}
         TITLE_SUFFIX: ${{ inputs.title_suffix }}
         CYCLE_HOURS: ${{ inputs.cycle_hours }}
@@ -114,6 +122,7 @@ runs:
         features = set(f.strip() for f in os.environ["FEATURES"].split(",") if f.strip())
         cycle_hours = int(os.environ["CYCLE_HOURS"])
         output_dir = os.environ["OUTPUT_DIR"]
+        summaries_dir = os.environ.get("SUMMARIES_DIR") or "research/summaries"
         summary_slug = os.environ["SUMMARY_SLUG"]
         title_suffix = os.environ["TITLE_SUFFIX"]
         harness_label = os.environ["HARNESS_LABEL"]
@@ -140,8 +149,8 @@ runs:
             outputs_overview = (
                 "YOU WILL WRITE THREE REQUIRED RUN ARTIFACTS, plus a public digest section only when signal exists:\n"
                 f"1. {status_file} (machine status; always write)\n"
-                f"2. research/summaries/{date}-{summary_slug}-{hour}h-summary.txt (concrete rollup, or empty for no_update)\n"
-                f"3. research/summaries/{date}-{summary_slug}-{hour}h-headlines.json (structured headline alerts; `[]` for no_update)\n"
+                f"2. {summaries_dir}/{date}-{summary_slug}-{hour}h-summary.txt (concrete rollup, or empty for no_update)\n"
+                f"3. {summaries_dir}/{date}-{summary_slug}-{hour}h-headlines.json (structured headline alerts; `[]` for no_update)\n"
                 f"4. {output_dir}/{date}.md (update only when at least one concrete story or Quick hit is publishable)\n"
                 "\n"
                 f"OUTPUT (markdown digest): {output_dir}/{date}.md"
@@ -150,7 +159,7 @@ runs:
             outputs_overview = (
                 "YOU WILL WRITE TWO REQUIRED RUN ARTIFACTS, plus a public digest section only when signal exists:\n"
                 f"1. {status_file} (machine status; always write)\n"
-                f"2. research/summaries/{date}-{summary_slug}-{hour}h-summary.txt (concrete rollup, or empty for no_update)\n"
+                f"2. {summaries_dir}/{date}-{summary_slug}-{hour}h-summary.txt (concrete rollup, or empty for no_update)\n"
                 f"3. {output_dir}/{date}.md (update only when at least one concrete story or Quick hit is publishable)\n"
                 "\n"
                 f"OUTPUT (markdown digest): {output_dir}/{date}.md"
@@ -210,7 +219,7 @@ runs:
             headlines_section = (
                 "STEP 3 — WRITE STRUCTURED HEADLINE ALERTS:\n"
                 "Use the Write tool to also create:\n"
-                f"research/summaries/{date}-{summary_slug}-{hour}h-headlines.json\n"
+                f"{summaries_dir}/{date}-{summary_slug}-{hour}h-headlines.json\n"
                 "\n"
                 "This file is a JSON array of the TOP 3-7 alert-worthy stories from this cycle —\n"
                 "the items most worth pushing to Telegram as Bloomberg-style \"Market News Feed\"\n"
@@ -259,7 +268,7 @@ runs:
                 "When status is `published`, also verify the same-hour digest section exists.\n"
                 "When status is `no_update`, verify that public section is absent and headlines\n"
                 "is `[]`. Then commit:\n"
-                f"git add {output_dir}/ research/summaries/\n"
+                f"git add {output_dir}/ {summaries_dir}/\n"
                 f"git commit -m \"{commit_prefix} {ts}\" || echo \"No changes\"\n"
                 "\n"
                 "CRITICAL: ALWAYS write status and headlines, even for `no_update`."
@@ -269,7 +278,7 @@ runs:
                 "STEP 3 — Verify status and summary files exist before committing. When status\n"
                 "is `published`, also verify the digest section exists; for `no_update`, verify\n"
                 "the public same-hour section is absent. Then commit:\n"
-                f"git add {output_dir}/ research/summaries/\n"
+                f"git add {output_dir}/ {summaries_dir}/\n"
                 f"git commit -m \"{commit_prefix} {ts}\" || echo \"No changes\""
             )
 
@@ -282,6 +291,7 @@ runs:
             "{{run_attempt}}":      run_attempt,
             "{{outputs_overview}}":  outputs_overview,
             "{{output_dir}}":        output_dir,
+            "{{summaries_dir}}":     summaries_dir,
             "{{date}}":              date,
             "{{yesterday}}":         yesterday,
             "{{cross_harness_note}}": cross_harness_note,

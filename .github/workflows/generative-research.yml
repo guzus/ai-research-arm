@@ -12,6 +12,7 @@ name: Generative Research
 # Backends, mutually exclusive at runtime:
 #   * glm-5p2  — preferred default: GLM 5.2 through Fireworks' Anthropic-compatible endpoint.
 #   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-sonnet-5).
+#   * fable-5  — explicit, premium native Anthropic path (model claude-fable-5).
 #   * codex    — Codex CLI signed in with ChatGPT-managed auth.json.
 #   * deepseek — comparison/fallback route through Fireworks'
 #                Anthropic-compatible endpoint via ANTHROPIC_BASE_URL /
@@ -62,6 +63,7 @@ on:
           - deepseek-v4-flash
           - codex
           - claude
+          - fable-5
           - deepseek
       fireworks_fallback:
         description: 'If a Fireworks backend fails preflight: claude = fall back to native Claude (default), none = fail the run (strict backend comparison)'
@@ -249,12 +251,13 @@ jobs:
               case "$CANDIDATE" in
                 default) CANDIDATE="$DEFAULT_BACKEND" ;;
                 claude-opus-4-8|claude-sonnet-5) CANDIDATE="claude" ;;
+                claude-fable-5|fable-5) CANDIDATE="fable-5" ;;
                 codex|openai-codex) CANDIDATE="codex" ;;
                 deepseek) CANDIDATE="deepseek-v4-flash" ;;
                 glm-5.2|glm5.2|glm52|glm-5p2) CANDIDATE="glm-5p2" ;;
               esac
               if [ -n "${CANDIDATE:-}" ]; then
-                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
+                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
                   echo "unsupported backend/model: $CANDIDATE" >&2
                   exit 1
                 fi
@@ -290,8 +293,9 @@ jobs:
             deepseek) BACKEND="deepseek-v4-flash" ;;
             glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
             claude-opus-4-8|claude-sonnet-5) BACKEND="claude" ;;
+            claude-fable-5|fable-5) BACKEND="fable-5" ;;
           esac
-          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
+          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
           fi
@@ -420,6 +424,25 @@ jobs:
           echo "Effective backend:  $backend (used_fallback=$used_fallback, fireworks_active=$fireworks_active)"
           if [ "$failed" = "true" ]; then
             exit 1
+          fi
+
+      # Keep native Claude model routing explicit and fail closed. Both the
+      # Claude Code alias pin and writer metadata consume this single output,
+      # so an opt-in Fable run cannot silently execute or publish as Sonnet.
+      - name: Resolve native Claude model
+        id: native-model
+        env:
+          EFFECTIVE_BACKEND: ${{ steps.effective.outputs.backend }}
+        run: |
+          set -euo pipefail
+          case "$EFFECTIVE_BACKEND" in
+            claude) model="claude-sonnet-5" ;;
+            fable-5) model="claude-fable-5" ;;
+            *) model="" ;;
+          esac
+          echo "model=$model" >> "$GITHUB_OUTPUT"
+          if [ -n "$model" ]; then
+            echo "Resolved native Claude model: $model"
           fi
 
       # Verify the writer's required output directory exists. The writer
@@ -591,9 +614,12 @@ jobs:
 
       # ---- Claude backend ---------------------------------------------------
       # OAuth-authenticated against native Anthropic. The writer records
-      # --model claude-sonnet-5 (the actual served model). Pinning
-      # ANTHROPIC_DEFAULT_OPUS_MODEL keeps the CLI's --model opus alias from
-      # drifting under this workflow. This lane is gated on the EFFECTIVE
+      # --model from the native-model resolver (the actual served model).
+      # Normal Claude runs remain claude-sonnet-5; explicit fable-5 runs use
+      # claude-fable-5. Pinning
+      # The resolved model is passed literally to Claude Code and also pins
+      # every alias/subagent slot so no nested agent can drift. This lane is
+      # gated on the EFFECTIVE
       # backend, so it also serves runs that requested a Fireworks profile
       # but fell back here when preflight found Fireworks unavailable.
       # Hard wall-clock cap on the model step. The runner already lost
@@ -604,7 +630,7 @@ jobs:
         uses: ./.github/actions/setup-claude-sandbox
 
       - name: Run Generative Research (Claude, attempt 1)
-        if: steps.effective.outputs.backend == 'claude'
+        if: contains(fromJSON('["claude","fable-5"]'), steps.effective.outputs.backend)
         id: gen-claude
         continue-on-error: true
         timeout-minutes: 90
@@ -620,12 +646,19 @@ jobs:
           GEN_SLUG: ${{ steps.params.outputs.slug }}
           GEN_SOURCE: ${{ steps.params.outputs.source }}
           GEN_DRAFT: ${{ steps.draft.outputs.path }}
+          GEN_MODEL: ${{ steps.native-model.outputs.model }}
           # birdy auth — bird and bird-fast read these cookies to call
           # X/Twitter as a primary source. Same secrets used by the
           # hourly-twitter workflow.
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
-          ANTHROPIC_DEFAULT_OPUS_MODEL: claude-sonnet-5
+          # BACKEND_MATRIX_DEFAULT_MODEL documents the unchanged default for
+          # the static routing checker; the runtime pin is resolved above.
+          BACKEND_MATRIX_DEFAULT_MODEL: claude-sonnet-5
+          ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.native-model.outputs.model }}
+          ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.native-model.outputs.model }}
+          ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.native-model.outputs.model }}
+          CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.native-model.outputs.model }}
         with: &claude_with
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # The hourly Twitter lane auto-dispatches this workflow with
@@ -638,7 +671,7 @@ jobs:
           # The agent reads topic/prompt/tags from .gen-input/*.txt files
           # instead — same defense as research-issue.yml after PR #42.
           claude_args: |
-            --model opus --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
+            --model ${{ steps.native-model.outputs.model }} --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
             You are a deep-research analyst writing a COMPREHENSIVE,
             analyst-grade HTML article on the topic supplied by the user.
@@ -1678,7 +1711,7 @@ jobs:
                     --tags "$(cat .gen-input/tags.txt)" \
                     --source "$GEN_SOURCE" \
                     --prompt "$(cat .gen-input/prompt.txt)" \
-                    --model claude-sonnet-5 \
+                    --model "$GEN_MODEL" \
                     --cite-density-min 10 --refs-min 20 \
                     --qsanity \
                     --html-body "$GEN_DRAFT"
@@ -1690,7 +1723,7 @@ jobs:
                     --tags "$(cat .gen-input/tags.txt)" \
                     --source "$GEN_SOURCE" \
                     --prompt "$(cat .gen-input/prompt.txt)" \
-                    --model claude-sonnet-5 \
+                    --model "$GEN_MODEL" \
                     --cite-density-min 10 --refs-min 20 \
                     --qsanity \
                     --html-body "$GEN_DRAFT"
@@ -1708,7 +1741,10 @@ jobs:
       # one more attempt under RECOVERY MODE. The second attempt sees the
       # partial $GEN_DRAFT on disk (the runner's _work/_temp survives across
       # steps within the same job) and finishes the draft instead of
-      # restarting research from scratch.
+      # restarting research from scratch. This recovery retry is deliberately
+      # limited to normal Claude: premium fable-5 dispatches get exactly one
+      # model-action attempt and fail the artifact gate instead of spending on
+      # a second session.
       - name: Inspect Claude attempt 1
         if: steps.effective.outputs.backend == 'claude'
         id: claude-attempt-1
@@ -3156,6 +3192,32 @@ jobs:
           echo "has_file=true" >> "$GITHUB_OUTPUT"
           echo "Generated: research/generative/$FILENAME"
 
+      # Fable is a premium, explicit selector, so provenance must be exact.
+      # Do not rely only on the agent following its writer command: verify the
+      # committed index row against the same resolver output that pinned the
+      # served model, and roll back before any push if they differ.
+      - name: Verify Fable model provenance
+        if: steps.effective.outputs.backend == 'fable-5' && steps.outfile.outputs.has_file == 'true'
+        env:
+          FILE: ${{ steps.outfile.outputs.file }}
+          EXPECTED_MODEL: ${{ steps.native-model.outputs.model }}
+          PRE_SHA: ${{ steps.pre.outputs.sha }}
+        run: |
+          set -euo pipefail
+          actual_model=$(jq -r --arg file "$FILE" \
+            '[.[] | select(.file == $file) | .model] | last // ""' \
+            research/generative/index.json)
+          if [ "$actual_model" != "$EXPECTED_MODEL" ]; then
+            echo "::error::Fable provenance mismatch: expected model '$EXPECTED_MODEL', index records '${actual_model:-missing}'."
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative || true
+            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+            rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
+            rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
+            exit 1
+          fi
+          echo "Verified Fable model provenance: $actual_model"
+
       # Deterministic post-write quality gate. The agent runs the same
       # gate during its compile-check loop, and the writer re-runs it
       # at commit time — this third pass is the workflow-level seatbelt
@@ -3647,7 +3709,7 @@ jobs:
       # even if every tool call failed and the writer produced no commit. Keep
       # the workflow contract tied to the article artifact, not session exit.
       - name: Fail Claude run without article
-        if: always() && steps.effective.outputs.backend == 'claude' && steps.outfile.outputs.has_file != 'true'
+        if: always() && contains(fromJSON('["claude","fable-5"]'), steps.effective.outputs.backend) && steps.outfile.outputs.has_file != 'true'
         env:
           EXECUTION_FILE_1: ${{ steps.gen-claude.outputs.execution_file }}
           EXECUTION_FILE_2: ${{ steps.gen-claude-retry.outputs.execution_file }}

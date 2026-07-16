@@ -327,6 +327,12 @@ const languageSwitch = document.getElementById('languageSwitch');
 // are disambiguated from routes by the file extension; Vercel rewrites only
 // extensionless paths to /index.html.
 function routeFromState(): string {
+  if (homeRouteRequested && activeTab === 'today') {
+    return '/';
+  }
+  if (latestAliasRequested === activeTab) {
+    return `/${activeTab}`;
+  }
   if (activeTab === 'focusReader') {
     return '/design/focus-reader';
   }
@@ -339,6 +345,10 @@ function routeFromState(): string {
   if (activeTab === 'wiki') {
     return selectedSlug ? '/wiki/' + selectedSlug : '/wiki';
   }
+  if (activeTab === 'models' && selectedSlug) {
+    return '/models/forecast/' + selectedSlug;
+  }
+  if (activeTab === 'models') return '/models';
   return '/' + activeTab + '/' + fmtDate(currentDate);
 }
 
@@ -348,6 +358,185 @@ function routeFromState(): string {
 // of the stack). Every subsequent call is a user navigation and gets
 // pushState so browser back/forward walks through the visited views.
 let routeInitialized = false;
+// Set by parsing `/` so initial hydration and Back/Forward can render the
+// latest Today view without rewriting the self-canonical homepage URL. It is
+// consumed by the next updateRoute call; subsequent user navigation gets the
+// normal dated route.
+let homeRouteRequested = false;
+type LatestAliasTab = 'today' | 'twitter' | 'frontpage';
+let latestAliasRequested: LatestAliasTab | null = null;
+
+// The public canonical must remain stable across local previews, alternate
+// hostnames, and future CDN aliases. Share actions use this origin rather than
+// location.origin so a QA session never leaks a localhost/preview URL.
+const PUBLIC_SITE_ORIGIN = 'https://ara.guzus.xyz';
+let pendingRouteState: Record<string, unknown> | null = null;
+
+type RuntimeSeoState = {
+  canonicalPath: string;
+  description: string;
+  documentTitle: string;
+  heading: string;
+  indexable: boolean;
+  type: 'article' | 'website';
+};
+
+const runtimePageHeading = document.createElement('h1');
+runtimePageHeading.className = 'runtime-page-heading';
+
+function latestAliasDate(tab: LatestAliasTab, fallback: string): string {
+  const dates = manifest?.[tab];
+  if (!Array.isArray(dates) || dates.length === 0) return fallback;
+  const sorted = dates.filter(isIsoCalendarDate).slice().sort();
+  return sorted[sorted.length - 1] || fallback;
+}
+
+function runtimeSeoState(target: string): RuntimeSeoState {
+  const fallbackDate = fmtDate(currentDate);
+  const isLatestAlias = latestAliasRequested === activeTab;
+  const date = isLatestAlias
+    ? latestAliasDate(latestAliasRequested as LatestAliasTab, fallbackDate)
+    : fallbackDate;
+  if (target === '/') {
+    return {
+      canonicalPath: '/',
+      description: 'Independent AI intelligence: daily news synthesis, model forecasts, prediction-market context, long-form research, and a maintained LLM wiki.',
+      documentTitle: 'ara -- AI research arm',
+      heading: 'AI news, model forecasts, and research',
+      indexable: true,
+      type: 'website',
+    };
+  }
+  if (activeTab === 'today') {
+    return {
+      canonicalPath: `/today/${date}`,
+      description: `The ara daily AI digest for ${date}, covering model releases, research, funding, policy, and community signal.`,
+      documentTitle: `AI Daily Digest -- ${date} -- ara`,
+      heading: `AI Daily Digest -- ${date}`,
+      indexable: !isLatestAlias,
+      type: 'article',
+    };
+  }
+  if (activeTab === 'twitter') {
+    return {
+      canonicalPath: `/twitter/${date}`,
+      description: `Source-attributed AI signals from Twitter/X for ${date}.`,
+      documentTitle: `Twitter/X AI signal report -- ${date} -- ara`,
+      heading: `Twitter/X AI signal report -- ${date}`,
+      indexable: !isLatestAlias,
+      type: 'article',
+    };
+  }
+  if (activeTab === 'frontpage') {
+    return {
+      canonicalPath: `/today/${date}`,
+      description: `The ara daily AI newspaper front page for ${date}, generated from the canonical daily digest.`,
+      documentTitle: `Daily AI newspaper -- ${date} -- ara`,
+      heading: `Daily AI newspaper -- ${date}`,
+      indexable: false,
+      type: 'article',
+    };
+  }
+  if (activeTab === 'models') {
+    const detail = Boolean(selectedSlug);
+    return {
+      canonicalPath: target,
+      description: detail
+        ? 'A verified AI model forecast with committed prediction-market context and supporting evidence.'
+        : 'Verified AI model forecasts, release timelines, and prediction-market context.',
+      documentTitle: detail ? 'AI model forecast -- ara' : 'AI model forecasts and prediction markets -- ara',
+      heading: detail ? 'AI model forecast' : 'AI model forecasts and prediction markets',
+      indexable: true,
+      type: detail ? 'article' : 'website',
+    };
+  }
+  if (activeTab === 'research') {
+    const detail = Boolean(selectedSlug);
+    return {
+      canonicalPath: target,
+      description: detail
+        ? 'Source-cited, long-form AI research from ara.'
+        : 'Source-cited, long-form research on AI models, companies, infrastructure, policy, and emerging technical claims.',
+      documentTitle: detail ? 'AI research -- ara' : 'AI research archive -- ara',
+      heading: detail ? 'AI research' : 'AI research archive',
+      indexable: true,
+      type: detail ? 'article' : 'website',
+    };
+  }
+  if (activeTab === 'wiki') {
+    const detail = Boolean(selectedSlug);
+    return {
+      canonicalPath: target,
+      description: detail
+        ? 'A maintained ara knowledge-base entry about AI models, labs, infrastructure, policy, or markets.'
+        : 'A maintained knowledge base of AI labs, models, infrastructure concepts, policy themes, and market participants.',
+      documentTitle: 'LLM and AI wiki -- ara',
+      heading: detail ? 'LLM and AI wiki entry' : 'LLM and AI wiki',
+      indexable: true,
+      type: detail ? 'article' : 'website',
+    };
+  }
+  if (activeTab === 'agents') {
+    return {
+      canonicalPath: '/agents',
+      description: 'Live operational timeline for the autonomous agents and scheduled workflows that maintain ara.',
+      documentTitle: 'ara agent operations -- ara',
+      heading: 'ara agent operations',
+      indexable: false,
+      type: 'website',
+    };
+  }
+  return {
+    canonicalPath: '/design/focus-reader',
+    description: 'An internal design preview for ara reading experiences.',
+    documentTitle: 'Focus reader design preview -- ara',
+    heading: 'Focus reader design preview',
+    indexable: false,
+    type: 'website',
+  };
+}
+
+function setMetaContent(selector: string, value: string): void {
+  document.head.querySelector<HTMLMetaElement>(selector)?.setAttribute('content', value);
+}
+
+function setRuntimeIndexable(indexable: boolean): void {
+  setMetaContent(
+    'meta[name="robots"]',
+    indexable ? 'index,follow,max-image-preview:large,max-snippet:-1' : 'noindex,follow',
+  );
+}
+
+function syncRuntimePageHeading(): void {
+  if (content.querySelector('h1')) {
+    runtimePageHeading.remove();
+    return;
+  }
+  if (!runtimePageHeading.isConnected) content.before(runtimePageHeading);
+}
+
+function setRuntimePageHeading(value: string): void {
+  runtimePageHeading.textContent = value;
+  syncRuntimePageHeading();
+}
+
+new MutationObserver(syncRuntimePageHeading).observe(content, { childList: true, subtree: true });
+
+function applyRuntimeSeo(target: string): void {
+  const seo = runtimeSeoState(target);
+  const canonicalUrl = new URL(seo.canonicalPath, PUBLIC_SITE_ORIGIN).href;
+  document.title = seo.documentTitle;
+  document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute('href', canonicalUrl);
+  setMetaContent('meta[name="description"]', seo.description);
+  setRuntimeIndexable(seo.indexable);
+  setMetaContent('meta[property="og:type"]', seo.type);
+  setMetaContent('meta[property="og:title"]', seo.heading);
+  setMetaContent('meta[property="og:description"]', seo.description);
+  setMetaContent('meta[property="og:url"]', canonicalUrl);
+  setMetaContent('meta[name="twitter:title"]', seo.heading);
+  setMetaContent('meta[name="twitter:description"]', seo.description);
+  setRuntimePageHeading(seo.heading);
+}
 
 // Tracks the last pathname we routed to. Lets popstate distinguish a
 // real route change from a hash-only navigation (anchor click between
@@ -380,22 +569,45 @@ function trackPageView(): void {
 function updateRoute(): void {
   const target = routeFromState();
   const current = location.pathname + location.search;
+  const shouldSyncSeo = routeInitialized || current !== target;
   if (current !== target) {
     if (routeInitialized) {
-      history.pushState(null, '', target);
+      history.pushState(pendingRouteState, '', target);
       trackPageView();
     } else {
       history.replaceState(null, '', target);
     }
   }
+  pendingRouteState = null;
+  if (shouldSyncSeo) applyRuntimeSeo(target);
   routeInitialized = true;
   lastAppliedPathname = location.pathname;
+  homeRouteRequested = false;
+}
+
+function isIsoCalendarDate(value: string): boolean {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!match) return false;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  return date.getUTCFullYear() === year &&
+    date.getUTCMonth() === month - 1 &&
+    date.getUTCDate() === day;
 }
 
 function parseRoute(path: string): boolean {
   // Strip the trailing slash but keep the leading one
   const clean = path.replace(/\/+$/, '') || '/';
-  if (clean === '/') return false;
+  latestAliasRequested = null;
+  if (clean === '/') {
+    activeTab = 'today';
+    selectedSlug = null;
+    homeRouteRequested = true;
+    syncTabUi();
+    return true;
+  }
   const trimmed = clean.replace(/^\/+/, '');
   if (trimmed === 'design/focus-reader') {
     activeTab = 'focusReader';
@@ -409,10 +621,21 @@ function parseRoute(path: string): boolean {
     syncTabUi();
     return true;
   }
+  const forecastMatch = trimmed.match(/^models\/forecast\/([a-z0-9][a-z0-9._-]*[a-z0-9]|[a-z0-9])$/);
+  if (forecastMatch) {
+    activeTab = 'models';
+    selectedSlug = forecastMatch[1];
+    syncTabUi();
+    return true;
+  }
   const dateMatch = trimmed.match(/^(today|twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
   if (dateMatch) {
+    if (dateMatch[2] && !isIsoCalendarDate(dateMatch[2])) return false;
     activeTab = dateMatch[1] as Tab;
     selectedSlug = null;
+    if (!dateMatch[2] && activeTab !== 'models') {
+      latestAliasRequested = activeTab as LatestAliasTab;
+    }
     if (dateMatch[2]) {
       const parts = dateMatch[2].split('-');
       currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
@@ -579,6 +802,7 @@ function displayDate(d: Date): string {
 }
 
 function shiftDate(days: number): void {
+  latestAliasRequested = null;
   currentDate.setDate(currentDate.getDate() + days);
   const newMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
   if (newMonth.getTime() !== calendarMonth.getTime()) {
@@ -859,6 +1083,7 @@ function handleCalendarClick(e: Event): void {
   }
 
   if (target.closest('[data-cal-today]')) {
+    latestAliasRequested = null;
     const now = new Date();
     currentDate = now;
     activeTab = 'today';
@@ -871,6 +1096,7 @@ function handleCalendarClick(e: Event): void {
 
   const dayEl = target.closest('.cal-day') as HTMLElement | null;
   if (dayEl && dayEl.dataset.date) {
+    latestAliasRequested = null;
     const parts = dayEl.dataset.date.split('-');
     currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
     activeTab = 'today';                 // picking a date opens that day's view
@@ -915,7 +1141,7 @@ function setSafeContent(
   // `target` is NOT in DOMPurify's default allowlist; every external link
   // this app emits pairs target="_blank" with rel="noopener", so allowing
   // it restores the intended new-tab behavior (ticket sources, tweet links).
-  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-question', 'data-odds-outcome', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'aria-haspopup', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
+  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-ticket-share', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-question', 'data-odds-outcome', 'aria-label', 'aria-describedby', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'aria-haspopup', 'aria-live', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -1169,6 +1395,7 @@ function navigateToDigestAudioDate(): void {
   if (!digestAudioState.date) return;
   const date = dateFromString(digestAudioState.date);
   if (!date) return;
+  latestAliasRequested = null;
   currentDate = date;
   activeTab = 'today';
   selectedSlug = null;
@@ -1677,6 +1904,7 @@ function showLoading(): void {
       '</div>',
     ].join('\n'),
   );
+  setRuntimePageHeading(runtimeSeoState(routeFromState()).heading);
 }
 
 function showEmpty(dateStr: string): void {
@@ -2297,7 +2525,7 @@ function wikiInternalLink(slug: string, text?: string): string {
 
 // LIST view: catalog grouped by type + a recent-changes panel + a count.
 function renderWikiIndex(index: WikiIndex): void {
-  setDocTitle('Wiki');
+  setDocTitle(null);
   const pages = index.pages.slice();
   if (pages.length === 0) {
     setSafeWikiContent(
@@ -2463,7 +2691,7 @@ function renderWikiPage(page: WikiPage, body: string): void {
 }
 
 function renderWikiNotFound(slug: string): void {
-  setDocTitle('Wiki');
+  setDocTitle(null);
   // All trusted dashboard chrome (including the back <button>) — use the
   // standard sanitizer so the button + data-wiki-back survive. No LLM body here.
   setSafeContent(
@@ -2497,6 +2725,9 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
     renderSourceChips,
     renderHandleChips,
   }));
+  if (latestAliasRequested !== 'twitter') {
+    setRuntimeIndexable(stripMarkdown(md).split(/\s+/).filter(Boolean).length >= 300);
+  }
   void hydrateTweetCards(content);
   void wikifyContent(content);
 }
@@ -2668,6 +2899,103 @@ function ticketPolymarketMappings(ticket: Ticket): TicketPolymarketMapping[] {
       typeof m.token_id === 'string' && m.token_id.trim() !== '' &&
       typeof m.question === 'string' && m.question.trim() !== '')
     .slice(0, 3);
+}
+
+function isShareableForecastTicket(ticket: Ticket): boolean {
+  // SEO postbuild uses the same threshold: a market mapping plus the ticket's
+  // strongest evidence state. Partial/unverified tickets remain board-only.
+  return ticket.verification === 'confirmed' && ticketPolymarketMappings(ticket).length > 0;
+}
+
+function forecastPath(ticket: Ticket): string {
+  return `/models/forecast/${encodeURIComponent(ticket.slug)}`;
+}
+
+function forecastUrl(ticket: Ticket): string {
+  return new URL(forecastPath(ticket), PUBLIC_SITE_ORIGIN).href;
+}
+
+function ticketForecastActionsHtml(ticket: Ticket): string {
+  if (!isShareableForecastTicket(ticket)) return '';
+  const statusId = `ticket-share-status-${ticket.slug}`;
+  const markets = ticketPolymarketMappings(ticket).map(mapping => {
+    const href = `https://polymarket.com/event/${encodeURIComponent(mapping.event_slug)}`;
+    const outcome = mapping.outcome?.trim() ? ` · ${escapeHtml(mapping.outcome.trim())}` : '';
+    return `<li><a href="${href}" target="_blank" rel="noopener noreferrer">${escapeHtml(mapping.question)}${outcome} ↗</a></li>`;
+  }).join('');
+  return `<div class="ticket-forecast-actions">
+    <div class="ticket-forecast-heading">
+      <h4 class="ticket-history-title">Linked forecasts</h4>
+      <button class="ticket-share-button" type="button" data-ticket-share="${escapeHtml(ticket.slug)}" aria-describedby="${escapeHtml(statusId)}">Share forecast</button>
+    </div>
+    <ul class="ticket-forecast-links">${markets}</ul>
+    <span class="ticket-share-status" id="${escapeHtml(statusId)}" role="status" aria-live="polite"></span>
+  </div>`;
+}
+
+function copyTextFallback(text: string): boolean {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  let copied = false;
+  try {
+    copied = document.execCommand('copy');
+  } catch {
+    copied = false;
+  }
+  textarea.remove();
+  return copied;
+}
+
+function trackForecastShare(ticket: Ticket, method: 'native' | 'clipboard'): void {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', 'share', {
+    method,
+    content_type: 'model_forecast',
+    item_id: ticket.slug,
+    content_id: forecastUrl(ticket),
+  });
+}
+
+async function shareTicketForecast(ticket: Ticket, button: HTMLButtonElement): Promise<void> {
+  const status = button.closest('.ticket-forecast-actions')?.querySelector<HTMLElement>('.ticket-share-status');
+  const shareData = {
+    title: `${ticket.title} forecast — ara`,
+    text: `Verified model forecast with linked prediction-market context: ${ticket.title}`,
+    url: forecastUrl(ticket),
+  };
+  if (typeof navigator.share === 'function') {
+    try {
+      await navigator.share(shareData);
+      if (status) status.textContent = 'Shared.';
+      trackForecastShare(ticket, 'native');
+      return;
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') {
+        if (status) status.textContent = '';
+        return;
+      }
+      // A platform can expose navigator.share but reject a payload. Fall
+      // through to copy so the control still works in partial implementations.
+    }
+  }
+  let copied = false;
+  try {
+    await navigator.clipboard.writeText(shareData.url);
+    copied = true;
+  } catch {
+    copied = copyTextFallback(shareData.url);
+  }
+  if (copied) {
+    if (status) status.textContent = 'Forecast link copied.';
+    trackForecastShare(ticket, 'clipboard');
+  } else if (status) {
+    status.textContent = `Copy this link: ${shareData.url}`;
+  }
 }
 
 function fmtOddsPct(price: number): string {
@@ -3181,9 +3509,10 @@ function ticketExpandedPanel(ticket: Ticket | null): string {
   return `<section class="ticket-detail-panel" aria-label="${escapeHtml(ticket.title)} details">
     <div class="ticket-detail-header">
       ${ticketStatusPill(ticket.status)}
-      <h3>${escapeHtml(ticket.title)}</h3>
+      <h3 id="ticket-dialog-title-${escapeHtml(ticket.slug)}">${escapeHtml(ticket.title)}</h3>
     </div>
     <div class="ticket-expanded">
+      ${ticketForecastActionsHtml(ticket)}
       <dl class="ara-kv">${kvRows}</dl>
       <div class="ticket-body md-content">${DOMPurify.sanitize(renderReportMarkdown(ticket.body))}</div>
       <div class="ticket-history">
@@ -3245,12 +3574,37 @@ function companyKey(company: string): string {
 // Ticket detail modal — clicking a card opens a larger overlay with the full
 // ticket (metadata grid, body, history timeline, sources).
 let ticketModalEl: HTMLElement | null = null;
+let ticketModalReturnFocusSlug: string | null = null;
+
+function rememberTicketModalOrigin(ticket: Ticket): void {
+  ticketModalReturnFocusSlug = ticket.slug;
+}
+
+function restoreTicketModalFocus(): void {
+  if (!ticketModalReturnFocusSlug || selectedSlug) return;
+  const slug = ticketModalReturnFocusSlug;
+  const card = Array.from(content.querySelectorAll<HTMLElement>('.ticket-card'))
+    .find(candidate => candidate.dataset.slug === slug);
+  if (!card) return;
+  ticketModalReturnFocusSlug = null;
+  card.focus();
+}
+
 function openTicketModal(ticket: Ticket): void {
   if (!ticketModalEl) {
     ticketModalEl = document.createElement('div');
     ticketModalEl.className = 'ticket-modal';
+    ticketModalEl.setAttribute('role', 'dialog');
+    ticketModalEl.setAttribute('aria-modal', 'true');
     ticketModalEl.addEventListener('click', (e) => {
       const tgt = e.target as HTMLElement;
+      const shareButton = tgt.closest('[data-ticket-share]') as HTMLButtonElement | null;
+      if (shareButton) {
+        const slug = shareButton.dataset.ticketShare;
+        const shareTicket = slug && ticketsCache ? ticketsCache.find((candidate) => candidate.slug === slug) : null;
+        if (shareTicket && isShareableForecastTicket(shareTicket)) void shareTicketForecast(shareTicket, shareButton);
+        return;
+      }
       if (tgt === ticketModalEl || tgt.closest('.ticket-modal-close')) closeTicketModal();
     });
     document.body.appendChild(ticketModalEl);
@@ -3260,16 +3614,48 @@ function openTicketModal(ticket: Ticket): void {
     '<div class="ticket-modal-card"><button class="ticket-modal-close" type="button" aria-label="Close">✕</button>' +
       ticketExpandedPanel(ticket) + '</div>',
   );
+  ticketModalEl.setAttribute('aria-labelledby', `ticket-dialog-title-${ticket.slug}`);
   ticketModalEl.style.display = 'flex';
   document.body.classList.add('modal-open');
+  ticketModalEl.querySelector<HTMLButtonElement>('.ticket-modal-close')?.focus();
 }
 function closeTicketModal(): void {
   if (ticketModalEl) ticketModalEl.style.display = 'none';
   document.body.classList.remove('modal-open');
+  if (activeTab === 'models' && selectedSlug) {
+    selectedSlug = null;
+    if (history.state?.araForecastFromBoard === true) {
+      history.back();
+      return;
+    }
+    history.replaceState(null, '', routeFromState());
+    lastAppliedPathname = location.pathname;
+    trackPageView();
+  }
+  restoreTicketModalFocus();
 }
 document.addEventListener('keydown', (e) => {
-  if (!ticketModalEl) return;
-  if (e.key === 'Escape' && ticketModalEl.style.display === 'flex') {
+  if (e.key === 'Tab' && ticketModalEl?.style.display === 'flex') {
+    const focusable = Array.from(ticketModalEl.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    )).filter(element => !element.hasAttribute('hidden'));
+    if (focusable.length === 0) {
+      e.preventDefault();
+      return;
+    }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+    if (e.shiftKey && (active === first || !ticketModalEl.contains(active))) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && active === last) {
+      e.preventDefault();
+      first.focus();
+    }
+    return;
+  }
+  if (e.key === 'Escape' && ticketModalEl?.style.display === 'flex') {
     closeTicketModal();
     return;
   }
@@ -3281,7 +3667,17 @@ document.addEventListener('keydown', (e) => {
     const card = active?.closest?.('.ticket-card') as HTMLElement | null;
     const slug = card?.dataset.slug;
     const ticket = slug && ticketsCache ? ticketsCache.find((t) => t.slug === slug) : null;
-    if (ticket) { e.preventDefault(); openTicketModal(ticket); }
+    if (ticket) {
+      e.preventDefault();
+      rememberTicketModalOrigin(ticket);
+      if (isShareableForecastTicket(ticket)) {
+        pendingRouteState = { araForecastFromBoard: true };
+        selectedSlug = ticket.slug;
+        load();
+      } else {
+        openTicketModal(ticket);
+      }
+    }
   }
 });
 
@@ -3364,6 +3760,9 @@ function renderTickets(tickets: Ticket[] | null): void {
   // Hydrate odds lazily so the grid paints first; failures leave em-dash
   // chips and never block or break the tab.
   window.setTimeout(() => { void hydrateTicketOdds(); }, 0);
+  if (!selectedSlug && ticketModalReturnFocusSlug) {
+    window.requestAnimationFrame(restoreTicketModalFocus);
+  }
 }
 
  function frontPageBodyHtml(frontPage: FrontPageAsset): string {
@@ -3442,15 +3841,27 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
 
 // ── Generative research ───────────────────────────────
 
-// Default <title> from index.html, used to reset when leaving an article.
-const DEFAULT_DOC_TITLE = document.title;
-
 /** Update the browser title so the print dialog suggests a useful PDF
  * filename (browsers default to <title>). Reset on back-to-index. */
 function setDocTitle(articleTitle: string | null): void {
-  document.title = articleTitle
-    ? `${articleTitle} — ara`
-    : DEFAULT_DOC_TITLE;
+  const seo = runtimeSeoState(routeFromState());
+  const pageTitle = articleTitle || seo.heading;
+  document.title = articleTitle ? `${articleTitle} — ara` : seo.documentTitle;
+  setMetaContent('meta[property="og:title"]', pageTitle);
+  setMetaContent('meta[name="twitter:title"]', pageTitle);
+  setRuntimePageHeading(pageTitle);
+}
+
+function isIndexableResearchRow(row: GenResearchRow): boolean {
+  const tags = new Set((row.tags || []).map(tag => String(tag).trim().toLowerCase()));
+  if (tags.has('fixture') || tags.has('test')) return false;
+  if (row.slug === 'components') return false;
+  return !(tags.has('system') && tags.has('reference'));
+}
+
+/** Operational backend-routing metadata is searchable, but not article subject matter. */
+function isResearchDisplayTag(tag: string): boolean {
+  return tag !== 'fireworks-fallback' && !tag.startsWith('requested-');
 }
 
 function renderResearchIndex(rows: GenResearchRow[]): void {
@@ -3481,6 +3892,7 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
     // Surface first three tags inline; the chip on the right indicates fragment vs standalone.
     const tagHtml = (row.tags || [])
+      .filter(isResearchDisplayTag)
       .slice(0, 3)
       .map((t) => '<span class="gen-research-tag">' + escapeHtml(t) + '</span>')
       .join('');
@@ -3559,6 +3971,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
   );
 
   setDocTitle(row.title);
+  setRuntimeIndexable(isIndexableResearchRow(row));
   updateResearchAudioUi();
 
   // After DOM is in place, apply data-pct viz fills, wrap tables in a
@@ -3974,6 +4387,12 @@ async function load(): Promise<void> {
   const controller = new AbortController();
   activeLoadController = controller;
   stopResearchAudio();
+  // A direct forecast route owns the ticket modal. Navigating away via
+  // back/forward must dismiss it without rewriting the destination route.
+  if (ticketModalEl && (activeTab !== 'models' || !selectedSlug)) {
+    ticketModalEl.style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
   // Polymarket midpoint polling only runs while the models tab is shown.
   if (activeTab !== 'models') stopTicketOddsPolling();
 
@@ -4001,6 +4420,7 @@ async function load(): Promise<void> {
       await loadManifest();
       if (requestId !== loadRequestId) return;
     }
+    if (latestAliasRequested) applyRuntimeSeo(routeFromState());
     if (activeTab === 'focusReader') {
       const result = await withTimeout(loadFocusReaderData(controller.signal), LOAD_TIMEOUT_MS, controller);
       if (requestId !== loadRequestId) return;
@@ -4116,6 +4536,13 @@ async function load(): Promise<void> {
         showError('Loading timed out', 'Network may be slow. Click to retry.');
       } else {
         renderTickets(ticketsResult);
+        const routedTicket = selectedSlug && Array.isArray(ticketsResult)
+          ? ticketsResult.find(ticket => ticket.slug === selectedSlug)
+          : null;
+        if (routedTicket && isShareableForecastTicket(routedTicket)) {
+          setDocTitle(`${routedTicket.title} forecast`);
+          openTicketModal(routedTicket);
+        }
       }
     } else if (activeTab === 'today') {
       // Fetch digest + front page in parallel — the front page goes
@@ -4289,13 +4716,15 @@ document.getElementById('shortcutToggle')!.addEventListener('click', () => {
 function goHome(): void {
   activeTab = 'today';
   selectedSlug = null;
+  latestAliasRequested = null;
+  homeRouteRequested = true;
   syncTabUi();
   load();
 }
 const brandHome = document.getElementById('brandHome');
-brandHome?.addEventListener('click', goHome);
-brandHome?.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); }
+brandHome?.addEventListener('click', (event) => {
+  event.preventDefault();
+  goHome();
 });
 
 const searchToggle = document.getElementById('searchToggle');
@@ -4351,7 +4780,7 @@ async function buildSearchCorpus(): Promise<SearchHit[]> {
       slug: p.slug, hay: (p.title + ' ' + (p.aliases || []).join(' ') + ' ' + (p.summary || '') + ' ' + (p.tags || []).join(' ')).toLowerCase() });
   }
   if (m) for (const r of (m.generative || [])) {
-    hits.push({ type: 'research', title: r.title, subtitle: (r.tags || []).slice(0, 4).join(', '),
+    hits.push({ type: 'research', title: r.title, subtitle: (r.tags || []).filter(isResearchDisplayTag).slice(0, 4).join(', '),
       slug: r.slug, hay: (r.title + ' ' + (r.tags || []).join(' ') + ' ' + (r.prompt || '')).toLowerCase() });
   }
   if (tickets) for (const t of tickets) {
@@ -4427,13 +4856,14 @@ function moveSearchSel(d: number): void {
 
 function activateSearchHit(h: SearchHit): void {
   closeSearch();
+  latestAliasRequested = null;
   if (h.type === 'model') {
     activeTab = 'models';
-    selectedSlug = null;
+    const t = ticketsCache ? ticketsCache.find((x) => x.slug === h.slug) : null;
+    selectedSlug = t && isShareableForecastTicket(t) ? t.slug : null;
     syncTabUi();
     load();
-    const t = ticketsCache ? ticketsCache.find((x) => x.slug === h.slug) : null;
-    if (t) window.setTimeout(() => openTicketModal(t), 60);
+    if (t && !isShareableForecastTicket(t)) window.setTimeout(() => openTicketModal(t), 60);
     return;
   }
   if (h.type === 'digest') {
@@ -4608,6 +5038,7 @@ content.addEventListener('click', (e) => {
     const match = href.match(/^\/twitter\/(\d{4}-\d{2}-\d{2})$/);
     if (match) {
       e.preventDefault();
+      latestAliasRequested = null;
       currentDate = ymdToDate(match[1]);
       calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
       load();
@@ -4680,7 +5111,16 @@ content.addEventListener('click', (e) => {
     if (target.closest('a, button')) return;
     const slug = row.dataset.slug;
     const ticket = slug && ticketsCache ? ticketsCache.find((t) => t.slug === slug) : null;
-    if (ticket) openTicketModal(ticket);
+    if (ticket) {
+      rememberTicketModalOrigin(ticket);
+      if (isShareableForecastTicket(ticket)) {
+        pendingRouteState = { araForecastFromBoard: true };
+        selectedSlug = ticket.slug;
+        load();
+      } else {
+        openTicketModal(ticket);
+      }
+    }
   }
 });
 
@@ -4766,6 +5206,7 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
       break;
     case 't':
     case 'T': {
+      latestAliasRequested = null;
       const now = new Date();
       currentDate = now;
       calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -4788,11 +5229,13 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
 });
 
 // ── Tab navigation ────────────────────────────────────
-document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
-  btn.addEventListener('click', () => {
+document.querySelectorAll<HTMLAnchorElement>('.tab').forEach((btn) => {
+  btn.addEventListener('click', (event) => {
+    event.preventDefault();
     const tab = btn.dataset.tab as Tab;
     if (tab === activeTab) return;
     activeTab = tab;
+    latestAliasRequested = tab === 'twitter' ? 'twitter' : null;
     selectedSlug = null;
     syncTabUi();
     document.body.classList.toggle('tab-research', activeTab === 'research');

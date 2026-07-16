@@ -847,5 +847,59 @@
       "fireworks-fallback",
       "requested-deepseek-v4-flash"
     ]
+  },
+  {
+    "slug": "cxmt",
+    "file": "2026-07-13T181948--cxmt.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "CXMT prices the biggest IPO of 2026 this week — on the best quarter the DRAM cycle ever paid for",
+    "model": "claude-fable-5",
+    "created_at": "2026-07-13T18:19:48Z",
+    "source": "workflow_dispatch",
+    "prompt": "CXMT",
+    "tags": []
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-guilleflorvs-s",
+    "file": "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The Anthropic Flywheel — What Eight Hires in Ten Weeks Actually Reveal",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-13T20:11:49Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/guilleflorvs/status/2076708631408464202\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-lukas-m-ziegle",
+    "file": "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The 'Self-Repairing' Robots Everyone Just Rediscovered Are a Year Old — and Human-Operated",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-14T06:31:34Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/lukas_m_ziegler/status/2076697414283428213\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-kubimensah-sta",
+    "file": "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Whose Blockspace Is It, Anyway?",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-15T22:31:40Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/kubimensah/status/2077388130676584829\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
 created_at: 2026-06-14
-timestamp: 2026-07-13T00:00:00Z
+timestamp: 2026-07-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
@@ -201,6 +202,19 @@ fragile and local weights look like insurance.
   sovereign German/English open MoE model — shipped with weights, data, and
   training code under permissive licenses, underscoring what a chilling EO
   would put at risk (ARA digest 2026-07-13).
+
+- **Gateway data confirms the share shift; the distillation-ban fight keeps
+  compounding (2026-07-14).** Vercel's **July 2026 AI Gateway Production
+  Index** reported **open-weight models now account for 29% of gateway
+  token volume**, up from **11% in April**, as price-per-token flattens
+  across tens of trillions of routed tokens — a concrete usage-share data
+  point behind the broker/router shift this theme already tracked (GLM-5.2 +
+  DeepSeek topping OpenRouter, Coinbase's switch). It lands the same cycle
+  Nathan Lambert's **"6 months to live"** warning (flagged 2026-07-13) became
+  the day's Quote of the Day, reiterating the White House-EO threat and
+  framing the fight as needing **(a)** a win on the distillation-ban issue and
+  **(b)** a builder coalition — see [[federal-ai-policy]] (ARA digest
+  2026-07-14).
 
 ## Open questions
 

@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "XAI OPEN-SOURCES GROK BUILD CODING AGENT ON GITHUB, RESETS ALL USAGE LIMITS",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2077495635687723408",
+    "category": "opensource"
+  },
+  {
+    "headline": "THINKING MACHINES' INKLING GETS DAY-0 FP4 INFERENCE SUPPORT ON NVIDIA AND AMD VIA PYTORCH TOKENSPEED",
+    "source": "@PyTorch",
+    "url": "https://x.com/PyTorch/status/2077521005380317483",
+    "category": "infra"
+  },
+  {
+    "headline": "CLAUDE CODE ARTIFACTS CAN NOW CALL VIEWERS' OWN MCP CONNECTORS FOR LIVE DATA",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2077489907350856038",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI REPORTEDLY SHIPS FIRST HARDWARE: $230 \"CODEX MICRO\" DESKTOP WORKFLOW CONTROLLER",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2077475497014067282",
+    "category": "business"
+  }
+]

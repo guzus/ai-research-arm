@@ -4,10 +4,11 @@ title: Alibaba
 type: entity
 aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; banned Claude Code internally as "high-risk software" effective 2026-07-10 amid a US DoD PLA-linked designation it is suing to overturn.
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; banned Claude Code internally as "high-risk software" effective 2026-07-10 amid a US DoD PLA-linked designation it is suing to overturn; shut down Qwen's personalized AI-companion features on 2026-07-15 under China's new companion-agent regulation.
 created_at: 2026-07-05
-timestamp: 2026-07-05T00:00:00Z
+timestamp: 2026-07-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
@@ -63,6 +64,14 @@ friction point distinct from Qwen's own model-release cadence.
   code allegedly capable of fingerprinting Chinese users was found inside
   Alibaba's own tooling — a new evasion data point layered on top of the
   distillation accusation.
+- **Qwen's AI-companion features shut down under new China regulation
+  (2026-07-15).** China's "Interim Measures for the Administration of AI
+  Anthropomorphic Interactive Services" took effect today, and Alibaba
+  shut down **Qwen's** personalized AI-companion agent features to
+  comply — with **no announced grace period** and user data **permanently
+  deleted**, a harsher compliance path than ByteDance's Doubao (which
+  keeps read-only access through October 15). See
+  [[china-ai-regulation]].
 - **Backdrop.** The US Defense Department designated Alibaba a **PLA-linked
   firm** (which Alibaba is suing to overturn), and a bipartisan
   **Hagerty-Kim amendment** is pending to blacklist/sanction firms found to

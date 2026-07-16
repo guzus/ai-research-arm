@@ -105,6 +105,21 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn("generative-research-default",
                       self.obs["generative-research.yml"].resolver_lanes)
 
+    def test_gen_research_fable_is_explicit_and_fail_closed(self):
+        workflow = (REPO_ROOT / ".github" / "workflows" /
+                    "generative-research.yml").read_text(encoding="utf-8")
+        self.assertIn('- fable-5', workflow)
+        self.assertIn('fable-5) model="claude-fable-5"', workflow)
+        self.assertIn('ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.native-model.outputs.model }}', workflow)
+        self.assertIn('CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.native-model.outputs.model }}', workflow)
+        self.assertIn('--model ${{ steps.native-model.outputs.model }}', workflow)
+        self.assertIn('--model "$GEN_MODEL"', workflow)
+        self.assertIn("if: steps.effective.outputs.backend == 'claude'\n        id: claude-attempt-1", workflow)
+        self.assertIn("Verify Fable model provenance", workflow)
+        self.assertIn("actual_model=$(jq -r", workflow)
+        self.assertTrue(self.obs["generative-research.yml"].has_fable_dispatch)
+        self.assertEqual(self.lanes["generative-research-default"]["backend"], "claude")
+
     def test_comparison_tiers_are_strict(self):
         # Comparison artifacts must be attributable to their labeled backend:
         # a silent chain re-route would corrupt the comparison (round-3 F1).

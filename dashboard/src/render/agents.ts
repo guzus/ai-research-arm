@@ -139,13 +139,8 @@ export function renderAgentsStudioHtml(): string {
     '  <div class="content-card agents-lite-card">',
     '    <div class="content-card-header agents-lite-header">',
     '      <div>',
-    '        <div class="content-card-title">Agent workers</div>',
-    '        <p>Real completed and scheduled pipeline work, shown by UTC start and end time.</p>',
-    '      </div>',
-    '      <div class="agents-lite-metrics" id="armMetrics">',
-    '        <div class="agents-lite-metric"><span>completed</span><strong>--</strong></div>',
-    '        <div class="agents-lite-metric"><span>scheduled</span><strong>--</strong></div>',
-    '        <div class="agents-lite-metric"><span>window</span><strong>--</strong></div>',
+    '        <div class="content-card-title">ai-research-arm runs on automated GitHub Actions.</div>',
+    '        <p>Below is the recent and upcoming run schedule. Read how it works in this <a href="https://guzus.substack.com/p/open-sourcing-ai-research-arm-ara" target="_blank" rel="noopener noreferrer">blog post</a>.</p>',
     '      </div>',
     '    </div>',
     '    <div class="content-card-body agents-lite-body" id="armTimeline">',
@@ -158,7 +153,6 @@ export function renderAgentsStudioHtml(): string {
 
 export function hydrateAgentsTimeline(root: ParentNode, timeline: ArmTimeline | null): void {
   const mount = root.querySelector<HTMLElement>('#armTimeline');
-  const metrics = root.querySelector<HTMLElement>('#armMetrics');
   if (!mount) return;
   mount.replaceChildren();
 
@@ -190,26 +184,9 @@ export function hydrateAgentsTimeline(root: ParentNode, timeline: ArmTimeline | 
     return;
   }
 
-  const completed = items.filter((item) => item.kind === 'completed').length;
-  const scheduled = items.filter((item) => item.kind === 'scheduled').length;
-  if (metrics) {
-    metrics.replaceChildren();
-    for (const [label, value] of [
-      ['completed', String(completed)],
-      ['scheduled', String(scheduled)],
-      ['window', formatDuration(windowStartMs, windowEndMs)],
-    ]) {
-      const card = document.createElement('div');
-      card.className = 'agents-lite-metric';
-      card.appendChild(makeText('span', '', label));
-      card.appendChild(makeText('strong', '', value));
-      metrics.appendChild(card);
-    }
-  }
-
   const header = document.createElement('div');
   header.className = 'agents-work-summary';
-  header.appendChild(makeText('div', 'agents-work-summary-title', 'UTC work ledger'));
+  header.appendChild(makeText('div', 'agents-work-summary-title', 'GitHub Actions'));
   header.appendChild(makeText('div', 'agents-work-summary-meta', formatUtcDateTime(windowStartMs) + ' - ' + formatUtcDateTime(windowEndMs)));
   mount.appendChild(header);
 

@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) as GPT-5.6 Sol Ultra leads the CritPt physics benchmark.
+description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) tied to its rumored screen-free "GPT-Live" hardware speaker, which OpenAI calls meritless (2026-07-15).
 created_at: 2026-05-30
-timestamp: 2026-07-13T00:00:00Z
+timestamp: 2026-07-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA model ticket — Apple v. OpenAI lawsuit", path: research/models/tickets/apple-openai-lawsuit-2026-07.md}
@@ -415,6 +416,22 @@ materially reshape how the lab is positioned heading into its IPO window:
   credit rating**, explicitly naming **OpenAI a "key credit risk"** for
   Oracle — the financing-risk read tying directly into the broader
   [[ai-capex]] debt/leverage narrative (ARA digest 2026-07-13).
+- **The hardware device comes into focus as "GPT-Live"; usage limits reset
+  a 5th time (2026-07-15).** Bloomberg reporting (Mark Gurman), relayed
+  widely, filled in the device at the center of [[apple]]'s trade-secrets
+  suit: a battery-powered, **screen-free smart speaker** running
+  **"GPT-Live,"** designed by **Jony Ive's LoveFrom** team following
+  OpenAI's **$6.5B io Products acquisition**, targeted for a **2027 ship
+  "unless Apple's lawsuit delays it."** OpenAI has publicly called the
+  suit **"meritless."** No court filing has been directly linked in any
+  monitored source, so case specifics remain unverified beyond the
+  relayed reporting. Separately, OpenAI **reset Codex/ChatGPT Work usage
+  limits for a reported 5th time** since [[gpt-5-6|GPT-5.6]]'s launch
+  (crossing **8M active users**), and social reports — acknowledged by
+  OpenAI as a previously-disclosed issue — describe the model **deleting
+  files/data without warning** in some sessions, extending the
+  capacity/reliability strain tracked since July 13 (ARA digest
+  2026-07-15).
 
 ## Open questions
 

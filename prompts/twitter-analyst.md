@@ -156,7 +156,7 @@ CONSTRAINTS:
 
 STEP 2 — WRITE TELEGRAM SUMMARY:
 After writing the main brief, also write a SHORT summary for Telegram notification.
-Use the Write tool to create: research/summaries/{{date}}-{{summary_slug}}-{{hour}}h-summary.txt
+Use the Write tool to create: {{summaries_dir}}/{{date}}-{{summary_slug}}-{{hour}}h-summary.txt
 
 Format (plain text, max 800 chars):
 ```

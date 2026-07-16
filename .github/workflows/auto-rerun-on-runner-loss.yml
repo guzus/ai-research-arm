@@ -23,6 +23,7 @@ on:
       - "RSS Official Announcements (Every 2 Hours)"
       - "Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / fireworks-pi)"
       - "Daily AI Expert Blogs"
+      - "Naver Blog Subscriptions"
       - "Bluesky AI Researcher Feed (Twice Daily)"
       - "Community AI Digest (HN + Reddit)"
       - "Daily arXiv AI Research"
