@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-07-16 08:29:25 UTC
+
+CYCLE: Anthropic and OpenAI both reset usage limits within hours of each other; researchers push back on Inkling's benchmark claims.
+
+TOP STORIES:
+• Anthropic resets Claude's 5h AND weekly limits for all users, same window OpenAI resets Codex after hitting 9M users [✓]
+• Independent testers (Mollick, JJitsev) say Thinking Machines' Inkling underperforms launch-day claims, lags GLM 5.2 [⚠]
+
+WATCH: Whether Kimi K3 actually ships today, still unshipped as of this snapshot.
+
+Full update on GitHub.
