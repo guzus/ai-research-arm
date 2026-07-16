@@ -1,8 +1,8 @@
-name: Naver Blog Subscription (tosoha1)
+name: Naver Blog Subscriptions
 
 on:
   schedule:
-    # Naver does not expose validators (ETag/Last-Modified) for this feed.
+    # Naver does not expose validators (ETag/Last-Modified) for these feeds.
     # A two-hour poll bounds notification delay without spinning up a worker
     # for a low-frequency blog every few minutes.
     - cron: '47 */2 * * *'
@@ -16,7 +16,9 @@ concurrency:
 jobs:
   notify:
     runs-on: [self-hosted, Linux]
-    timeout-minutes: 10
+    # Two Naver feeds expose up to 50 items each. At the bounded eight-second
+    # send timeout, 20 minutes leaves room to persist a full catch-up batch.
+    timeout-minutes: 20
     permissions:
       contents: write
       pull-requests: write
@@ -174,7 +176,7 @@ jobs:
         uses: ./.github/actions/hooker-telemetry
         with:
           status: ${{ job.status }}
-          tags: blog-subscription,tosoha1
+          tags: blog-subscriptions,naver
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
