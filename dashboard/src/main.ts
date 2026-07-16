@@ -683,19 +683,6 @@ function syncTabUi(): void {
     const isActive = tabButton.dataset.tab === activeTab;
     tabButton.classList.toggle('active', isActive);
   });
-  const activeTabButton = document.querySelector<HTMLElement>('.tab.active');
-  if (activeTabButton) {
-    const activeButton = activeTabButton;
-    const revealActiveTab = () => {
-      const tabs = document.getElementById('tabs');
-      if (!tabs) return;
-      const target =
-        activeButton.offsetLeft - (tabs.clientWidth - activeButton.offsetWidth) / 2;
-      tabs.scrollLeft = Math.max(0, target);
-    };
-    requestAnimationFrame(revealActiveTab);
-    window.setTimeout(revealActiveTab, 120);
-  }
   document.body.classList.toggle('tab-today', activeTab === 'today');
   document.body.classList.toggle('tab-research', activeTab === 'research');
   document.body.classList.toggle('tab-frontpage', activeTab === 'frontpage');
@@ -1042,8 +1029,8 @@ function renderCalendar(): void {
   if (calendarEl.classList.contains('open')) positionCalPop();
 }
 
-// Close the picker on scroll — the pill isn't sticky, so a fixed popover would
-// otherwise detach from it.
+// Close the picker on scroll so a fixed popover never lags behind its anchor
+// while the sticky navigation changes position.
 window.addEventListener('scroll', () => {
   if (calendarEl.classList.contains('open')) {
     calendarEl.classList.remove('open');

@@ -36,6 +36,7 @@
   --font: var(--font-serif);
   --font-mono: var(--font-serif);
   --nav-font-size: 0.82rem;
+  --sticky-nav-height: 46px;
   --reading-font-family: var(--font-serif);
   --reading-font-size: 1rem;
   --reading-line-height: 1.85;
@@ -113,7 +114,7 @@ body.has-digest-player .app {
  * GitHub link should sit close enough to feel like one block. */
 .header {
   max-width: var(--page-max);
-  margin: 0 auto 32px;
+  margin: 0 auto 24px;
 }
 
 /* Card chrome doesn't follow the viewport on ultra-wide displays.
@@ -175,11 +176,11 @@ body.has-digest-player .app {
   }
 }
 
-/* When the floating TOC is visible (set by JS in renderResearchTOC),
- * push the app contents right so they don't sit under the TOC. */
+/* When the floating TOC is visible (set by JS in renderResearchTOC), shift
+ * only article content so route changes never move the masthead or nav. */
 @media (min-width: 1280px) {
-  body.has-toc .app {
-    padding-left: max(280px, var(--page-gutter));
+  body.has-toc #content {
+    margin-left: max(0px, calc(280px - var(--page-gutter)));
   }
 }
 
@@ -200,14 +201,14 @@ body.has-digest-player .app {
 
 /* ── Header ────────────────────────────────────────── */
 .header {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .header-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   gap: 16px;
 }
 
@@ -312,6 +313,28 @@ body.has-digest-player .app {
 .header-link-label { display: inline; }
 
 /* ── Tabs ─────────────────────────────────────────── */
+.nav-shell {
+  position: sticky;
+  z-index: 1200;
+  top: 0;
+  max-width: var(--page-max);
+  margin: 0 auto 32px;
+  padding-top: 8px;
+  background: var(--bg-secondary);
+}
+
+/* Search belongs to the shared nav, but must not make that sticky rail taller
+ * when it opens. Float it directly below the rail instead. */
+.nav-shell .search-overlay {
+  position: absolute;
+  z-index: 1400;
+  top: 100%;
+  left: 0;
+  width: min(560px, 100%);
+  max-width: none;
+  margin-bottom: 0;
+}
+
 .tabs {
   display: flex;
   align-items: center;
@@ -355,7 +378,7 @@ body.has-digest-player .app {
   font-size: var(--nav-font-size);
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
 .tab:hover {
@@ -375,6 +398,8 @@ body.has-digest-player .app {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+  max-width: var(--page-max);
+  margin: -32px auto 32px;
 }
 
 .icon-btn {
@@ -511,6 +536,7 @@ body.has-digest-player .app {
   border-radius: 999px;
   box-shadow: var(--shadow-sm);
   padding: 7px 14px;
+  inline-size: 154px;
 }
 body.tab-today .calendar {
   background: var(--accent);
@@ -522,6 +548,10 @@ body.tab-today .cal-chevron { color: var(--on-accent); opacity: 0.75; }
 /* On phones, the nav becomes a newspaper-style control grid: date masthead,
  * two rows of section buttons, then a full-width search row. */
 @media (max-width: 640px) {
+  .nav-shell {
+    position: static;
+  }
+
   .tabs {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -548,6 +578,7 @@ body.tab-today .cal-chevron { color: var(--on-accent); opacity: 0.75; }
     grid-column: 1 / -1;
     justify-content: stretch;
     width: 100%;
+    inline-size: 100%;
     padding: 10px 14px;
     background: #171717;
     border-bottom: 1px solid var(--border);
@@ -624,7 +655,6 @@ body:not(.tab-research) .request-btn { display: none; }
 /* The controls row now holds only Request research → hide it off /research. */
 body:not(.tab-research) .controls { display: none; }
 
-body.tab-agents .calendar,
 body.tab-agents .section-nav {
   display: none;
 }
@@ -2559,7 +2589,7 @@ body.has-toc .section-nav { display: none; }
   .header-link-label { display: none; }
   .controls { gap: 6px; }
   .search-box { flex-basis: 100%; }
-  .search-overlay {
+  .nav-shell .search-overlay {
     position: fixed;
     z-index: 1400;
     top: 58px;
@@ -3082,11 +3112,11 @@ body.has-toc .section-nav { display: none; }
 
 .today-layout-frontpage {
   position: sticky;
-  top: 16px;
+  top: calc(var(--sticky-nav-height) + 16px);
   /* Bound the newspaper to the viewport and give it its own scroll, so a
    * tall edition scrolls independently of the digest (which scrolls with
    * the page on the right). */
-  max-height: calc(100vh - 32px);
+  max-height: calc(100vh - var(--sticky-nav-height) - 32px);
   overflow-y: auto;
 }
 
@@ -3950,6 +3980,7 @@ body.tab-frontpage .section-nav {
 
   /* Hide all app chrome */
   .header,
+  .nav-shell,
   .tabs,
   .calendar,
   .controls,
@@ -4818,6 +4849,7 @@ body.ticket-odds-modal-open { overflow: hidden; }
 
 .tab-focus-reader .app { padding: 0; }
 .tab-focus-reader .header,
+.tab-focus-reader .nav-shell,
 .tab-focus-reader .site-footer,
 .tab-focus-reader .section-nav,
 .tab-focus-reader .shortcut-guide,
