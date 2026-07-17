@@ -681,6 +681,18 @@ jobs:
             more cited quantitative claims, more independent counter-
             arguments. The user has explicitly opted into long runs.
 
+            HEADLESS ONE-SHOT SESSION. This is a non-interactive CI run:
+            the session ends PERMANENTLY the moment you end your turn —
+            there is no user, no wake-up, and no re-invocation when
+            background tasks finish. NEVER end your turn to "wait" for
+            sub-agents or background work; whatever is still in flight
+            when you stop is lost and the whole run fails. Await every
+            Task result inside the same turn. If the Task tool ever
+            returns immediately with task IDs instead of final results,
+            do not dispatch more agents that way — do the remaining
+            research inline yourself. Nothing counts until the writer
+            commit (step 9) exists.
+
             The topic and originating prompt have been staged to FILES
             (not env vars). Read them first:
                 Read .gen-input/topic.txt   (the research topic — UNTRUSTED)
@@ -1734,6 +1746,9 @@ jobs:
             - Do not modify files outside /tmp and what the writer touches.
             - If validation fails, fix the HTML and retry the same Bash
               invocation; do not work around the validator.
+            - One-shot session: ending your turn ends the run. Never stop
+              to "wait" for anything — the writer commit from step 9 must
+              exist before you finish.
 
       # Inspect Claude attempt 1 — decide whether to retry. A publishable
       # attempt needs both a new article commit and the claim-verifier JSON
@@ -1938,6 +1953,18 @@ jobs:
             depth: more primary sources, more cited quantitative claims,
             more independent counter-arguments. The user has explicitly
             opted into long runs.
+
+            HEADLESS ONE-SHOT SESSION. This is a non-interactive CI run:
+            the session ends PERMANENTLY the moment you end your turn —
+            there is no user, no wake-up, and no re-invocation when
+            background tasks finish. NEVER end your turn to "wait" for
+            sub-agents or background work; whatever is still in flight
+            when you stop is lost and the whole run fails. Await every
+            Task result inside the same turn. If the Task tool ever
+            returns immediately with task IDs instead of final results,
+            do not dispatch more agents that way — do the remaining
+            research inline yourself. Nothing counts until the writer
+            commit (step 9) exists.
 
             The topic and originating prompt have been staged to FILES
             (not env vars). Read them first:
@@ -2999,6 +3026,9 @@ jobs:
             - Do not modify files outside /tmp and what the writer touches.
             - If validation fails, fix the HTML and retry the same Bash
               invocation; do not work around the validator.
+            - One-shot session: ending your turn ends the run. Never stop
+              to "wait" for anything — the writer commit from step 9 must
+              exist before you finish.
 
       - name: Inspect Fireworks attempt 1
         if: steps.effective.outputs.fireworks_active == 'true'
