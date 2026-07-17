@@ -1,0 +1,10 @@
+Speaker 1: Friday, July seventeenth, twenty twenty-six.
+Speaker 2: [high_energy] Kimi K three just dropped an absolute bomb on Hacker News, a two point eight trillion parameter model that's reportedly closing the gap with Claude Opus four point eight, and it's set to go open-weight by July twenty-seventh.
+Speaker 1: That thread pulled in seven hundred seventy-four points and four hundred sixty-three comments, the biggest of the day by far.
+Speaker 2: Thinking Machines Lab isn't sitting still either, they just shipped Inkling, their first open-weight model, nine hundred seventy-five billion total parameters with forty-one billion active, and it's Apache two point oh licensed.
+Speaker 1: On the geopolitics front, Xi Jinping is keynoting the World AI Conference in Shanghai this week, running July seventeenth through the twentieth, and he's pushing hard for a Shanghai-headquartered AI Cooperation Organization.
+Speaker 2: Meanwhile in Europe, regulators aren't backing off, the EU is forcing Google to open up Android and Search to rivals under the Digital Markets Act, and Germany just put AI Overviews under media law.
+Speaker 1: Some quick numbers before we go. [emphasis] Fora, the AI travel agency, raised a sixty million dollar Series D at a one billion dollar valuation [/emphasis], with over three billion dollars in lifetime bookings.
+Speaker 2: Energy IPOs are on fire too, [emphasis] twelve point six billion dollars raised in the first half of twenty twenty-six [/emphasis], the fastest pace this century.
+Speaker 1: [dramatic_pause] And a sobering one, fifty-four percent of enterprises now report a confirmed AI agent security incident.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
