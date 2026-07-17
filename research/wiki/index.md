@@ -27,6 +27,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-3-5-flash]] — Google's fast, low-cost frontier model shipped at I/O 2026.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; encoder-free 12B variant runs on 16 GB RAM, 150M+ cumulative downloads.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
+- [[google]] — Hyperscaler behind Gemini; ordered by the EU to open Android and Search to rivals under the DMA (2026-07-17), the same day it rebranded NotebookLM into Gemini Notebook.
 - [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 - [[jelani-nelson]] — Theoretical computer scientist and chair of UC Berkeley's EECS department who joined Anthropic as a Member of Technical Staff (on leave) on 2026-07-02.
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
@@ -40,6 +41,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[mistral-leanstral-1-5]] — Mistral's open-source (Apache 2.0) Lean 4 formal-verification model; saturates miniF2F, SOTA on FATE-H/FATE-X, found 5 unknown bugs across 57 scanned repos.
 - [[mistral-robostral-navigate]] — Mistral's first embodied-navigation model (8B params), guiding robots via natural-language task instructions; announced 2026-07-08.
 - [[moonshot-kimi-k2-7-code]] — Moonshot AI open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while filling the Fable 5 vacuum.
+- [[moonshot-kimi-k3]] — Moonshot AI's 2.8T-parameter flagship reportedly closing the gap with Opus 4.8; dominated Hacker News on 2026-07-17, open weights promised by 2026-07-27.
 - [[nano-banana-2-lite]] — Google's fastest/cheapest image model (gemini-3.1-flash-lite-image, ~4s/~$0.034), shipped 2026-06-30 with Gemini Omni Flash bringing text-prompt video gen/editing to the API.
 - [[nebius]] — Amsterdam-based neocloud spun out of Yandex.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
@@ -54,6 +56,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[soofi-s-30b-a3b]] — Deutsche Telekom-backed sovereign open German/English MoE model (~27T tokens); claimed strongest fully-open model on combined EN+DE benchmarks, released 2026-07-13.
 - [[spacex]] — Record IPO (Nasdaq: SPCX, debuted 2026-06-12 at $135/share, ~$1.77T valuation) anchoring the 2026 AI-financing issuance wave.
 - [[tencent-hunyuan-hy3]] — Tencent Hunyuan's 295B open-weight MoE model under Apache 2.0, reported new open SOTA on the MCP-Atlas benchmark, released 2026-07-06.
+- [[thinking-machines]] — Mira Murati's AI lab; shipped Inkling on 2026-07-15, its first public model release, a 975B-parameter open-weights multimodal MoE.
 - [[xai]] — Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business renting Colossus capacity to rival labs at $2B+/month, and by Grok 4.5 — a from-scratch 1.5T "V9" model in private beta at SpaceX/Tesla claiming Opus-level performance.
 - [[xiaomi-mimo-v2-5-pro]] — Xiaomi MiMo UltraSpeed model tied to the 1,000+ tok/s on 1T MoE claim using a standard 8-GPU server; high-signal but still partially verified.
 - [[zhipu-glm-5-2]] — Zhipu / Z.ai's 1M-context GLM-5.2, deployed in the GLM Coding Plan with MIT open weights promised; marquee Chinese open-weight release.

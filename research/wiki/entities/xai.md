@@ -4,10 +4,11 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T "V9" model that ended its private beta and shipped free to all X accounts on 2026-07-10; Grok Build's codebase-upload-to-Google-Cloud behavior was confirmed by security researchers (2026-07-15).
+description: Elon Musk's frontier lab behind Grok; now suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability, on top of Grok Build's codebase-upload-to-Google-Cloud behavior confirmed by security researchers (2026-07-15).
 created_at: 2026-06-08
-timestamp: 2026-07-15T00:00:00Z
+timestamp: 2026-07-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
@@ -103,6 +104,16 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   moves the story from a single Hacker News allegation to press-confirmed
   fact, escalating the privacy dispute [[openai|Sam Altman]] had
   amplified as "concerning" two cycles earlier (ARA digest 2026-07-15).
+
+- **xAI sues users over Grok-generated CSAM instead of fixing the
+  underlying issue (2026-07-17).** Following reporting that xAI can no
+  longer deny **Grok generates CSAM**, the company is now **suing users
+  over the outputs** rather than addressing the underlying generation
+  capability — a legal-offense response to a safety failure, in contrast
+  to the ZDR-clarification pattern xAI used for the Grok Build data
+  exfiltration story two cycles earlier. This is the most severe entry yet
+  in xAI's accumulating capability-misuse/safety-response track record (ARA
+  digest 2026-07-17).
 
 ## Open questions
 
