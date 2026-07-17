@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-07-17 08:24:18 UTC
+
+CYCLE: Quiet cycle — no fresh Top Story, only incremental data points on already-tracked threads.
+
+QUICK HITS:
+• Kimi K3 (2.8T) needs a GB300 NVL72/B300/MI355X system, won't fit a single DGX B200 even at FP4 — @SemiAnalysis_
+• Kioxia's market value has halved from its June peak as the chip selloff deepens — @jukan05
+• Zhipu AI reportedly hit $1B ARR per Chinese local media (single-sourced) — @jukan05
+
+SKEPTIC'S CORNER: Independent LiveBench places Kimi K3 behind GPT-5.4-xhigh, the first crack in yesterday's LMArena-led "Kimi K3 caught up" narrative — @scaling01
+
+WATCH: Independent LiveBench/Artificial Analysis runs to reconcile with Kimi K3's LMArena win.
+
+Full update on GitHub.
