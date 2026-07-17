@@ -925,5 +925,19 @@
     "source": "workflow_dispatch",
     "prompt": "Moonshot AI (the company behind Kimi K3)",
     "tags": []
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-thestalwart-st",
+    "file": "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The Moonshot Moment That Wasn't (Quite): What Actually Happened When Kimi K3 Met Wall Street",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-17T18:44:27Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/TheStalwart/status/2078168665766109224\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
