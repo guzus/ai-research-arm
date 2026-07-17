@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "MOONSHOT KIMI K3 CREDITED WITH FRONT-END CODING LEAD OVER ALL U.S. FRONTIER MODELS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2078215908225355949",
+    "category": "model"
+  },
+  {
+    "headline": "THE INFORMATION: MOONSHOT JUST BEAT CLAUDE FABLE 5 IN CODING",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2078219571475914905",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI GPT-5.6 SOL CLAIMS CYBERSECURITY SOTA, SHIPS CODEX SECURITY PLUGIN",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2078243667081617826",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC FABLE 30-MIN OUTAGE PROMPTS OVERCHARGE REFUNDS PLUS BONUS CREDIT",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2078211065868091768",
+    "category": "breaking"
+  },
+  {
+    "headline": "MICROSOFT RESHAPES 10,000-PERSON SECURITY GROUP AROUND AI, CUTS EXECUTIVES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2078215681523212611",
+    "category": "business"
+  },
+  {
+    "headline": "KIMI K3 IS ~2.8T PARAMETERS, TOO BIG FOR A SINGLE DGX B200 AT FP4",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2077966560447074689",
+    "category": "infra"
+  }
+]
