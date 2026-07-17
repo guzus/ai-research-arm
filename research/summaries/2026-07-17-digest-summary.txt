@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-07-17
+
+TOP STORIES:
+• Xi Jinping keynotes World AI Conference in Shanghai (Jul 17-20), pushes Shanghai-HQ'd AI Cooperation Organization
+• Kimi K3 (2.8T params) dominates Hacker News, reportedly closing gap with Claude Opus 4.8; open weights by Jul 27
+• Thinking Machines Lab ships Inkling, its first open-weight model (975B/41B MoE, Apache 2.0)
+• EU forces Google to open Android/Search to rivals under DMA; Germany puts AI Overviews under media law
+
+KEY NUMBERS:
+• Fora (AI travel agency): $60M Series D, $1B valuation, $3B+ lifetime bookings
+• Inkling: 975B total / 41B active parameters
+• Energy IPOs: $12.6B raised in H1 2026, fastest pace this century
+• 54% of enterprises report a confirmed AI agent security incident (VentureBeat Pulse)
+
+TRENDING: Kimi K3 launch (774 pts/463 comments on HN, largest thread of the day)
+
+Full digest on GitHub.
