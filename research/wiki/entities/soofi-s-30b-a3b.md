@@ -6,8 +6,9 @@ aliases: ["Soofi S", "Soofi S 30B-A3B", "Soofi"]
 tags: [model-release, open-weights, sovereign-ai, germany, mixture-of-experts]
 description: Deutsche Telekom-backed sovereign open German/English MoE foundation model trained on ~27T tokens, claimed strongest fully-open model on combined English+German benchmarks.
 created_at: 2026-07-13
-timestamp: 2026-07-13T00:00:00Z
+timestamp: 2026-07-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
 ---
 
@@ -51,3 +52,11 @@ than a weights-only drop.
   only US-based labs and distribution channels?
 - **Follow-on releases.** Is Soofi S a one-off sovereign-AI demonstration or
   the first in a planned model family from the same lab?
+
+## Sustained Hacker News traction (2026-07-17)
+
+Soofi S resurfaced as a notable Hacker News entrant (97 points) four days
+after its 2026-07-13 release, discussed as a non-US/China open-model
+contender the same cycle [[moonshot-kimi-k3|Kimi K3]] dominated the
+front page — early evidence the release is sustaining community interest
+past its launch-day cycle rather than fading immediately.

@@ -4,10 +4,11 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and frontier-model builder (Llama); its Louisiana Hyperion data-center investment crossed $50B (2026-07-14), and in early July 2026 it was reported building "Meta Compute" to sell surplus AI capacity — the first hyperscaler framed as having compute to sell.
+description: Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.
 created_at: 2026-06-16
-timestamp: 2026-07-14T00:00:00Z
+timestamp: 2026-07-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
@@ -83,3 +84,15 @@ Separately, Meta's Chief AI Officer claimed **Muse Spark 1.1** is SOTA on a
 radiology-handover benchmark and ranks **#3 on a debate benchmark** behind
 [[claude-fable-5|Fable 5]] and [[claude-opus-4-8|Claude Opus 4.7]] — both
 self-reported figures, unverified independently (ARA digest 2026-07-14).
+
+## Parental alerts for teen suicide/self-harm conversations (2026-07-17)
+
+Meta began **alerting parents when teens discuss suicide or self-harm with
+Meta AI**, live in the **US, UK, Australia, and Canada** — Meta's most
+direct **AI-safety product response** yet, arriving amid mounting
+regulatory and legal pressure on AI companion/chat products generally (see
+[[china-ai-regulation]] for a parallel regulatory response, in China's case
+targeting AI-companion anti-addiction mechanisms rather than crisis
+alerting specifically). The feature is a concrete product mitigation rather
+than a policy statement, distinguishing it from Meta's other 2026 AI-safety
+posture, which has mostly been reactive commentary.

@@ -334,6 +334,7 @@
         "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
+        "moonshot-kimi-k3",
         "noam-shazeer",
         "nvidia",
         "open-weights",
@@ -343,6 +344,7 @@
         "salesforce",
         "sk-telecom",
         "spacex",
+        "thinking-machines",
         "xai"
       ]
     },
@@ -531,20 +533,23 @@
         "regulation",
         "china",
         "ai-governance",
-        "companion-ai"
+        "companion-ai",
+        "ai-diplomacy"
       ],
-      "summary": "The 2026 storyline of Beijing regulating consumer AI products directly — opening with the \"Interim Measures for the Administration of AI Anthropomorphic Interactive Services,\" which took effect 2026-07-15 and forced Doubao and Qwen to shut down personalized AI-companion features.",
-      "description": "The 2026 storyline of Beijing regulating consumer AI products directly — opening with the \"Interim Measures for the Administration of AI Anthropomorphic Interactive Services,\" which took effect 2026-07-15 and forced Doubao and Qwen to shut down personalized AI-companion features.",
+      "summary": "The 2026 storyline of Beijing regulating AI on two axes — domestically (the AI companion law that forced Doubao and Qwen offline) and internationally (Xi Jinping's 2026-07-17 World AI Conference keynote pushing a Shanghai-headquartered World AI Cooperation Organization).",
+      "description": "The 2026 storyline of Beijing regulating AI on two axes — domestically (the AI companion law that forced Doubao and Qwen offline) and internationally (Xi Jinping's 2026-07-17 World AI Conference keynote pushing a Shanghai-headquartered World AI Cooperation Organization).",
       "created_at": "2026-07-15",
-      "updated_at": "2026-07-15",
-      "timestamp": "2026-07-15T00:00:00Z",
+      "updated_at": "2026-07-17",
+      "timestamp": "2026-07-17T00:00:00Z",
       "file": "themes/china-ai-regulation.md",
       "aliases": [
         "China AI regulation",
         "China AI policy",
         "Chinese AI regulation",
         "AI companion law",
-        "Interim Measures for the Administration of AI Anthropomorphic Interactive Services"
+        "Interim Measures for the Administration of AI Anthropomorphic Interactive Services",
+        "World AI Conference",
+        "World AI Cooperation Organization"
       ],
       "outbound": [
         "alibaba",
@@ -554,7 +559,8 @@
         "tencent-hunyuan-hy3"
       ],
       "inbound": [
-        "alibaba"
+        "alibaba",
+        "meta"
       ]
     },
     {
@@ -663,6 +669,7 @@
         "dynamic-workflows",
         "meta",
         "microsoft",
+        "moonshot-kimi-k3",
         "nvidia",
         "open-weights",
         "remote-labor-index",
@@ -902,6 +909,7 @@
         "soofi-s-30b-a3b",
         "spacex",
         "tencent-hunyuan-hy3",
+        "thinking-machines",
         "zhipu-glm-5-2"
       ]
     },
@@ -1148,6 +1156,7 @@
         "claude-fable-5",
         "gemini-spark",
         "gemma-4",
+        "google",
         "nano-banana-2-lite",
         "noam-shazeer"
       ]
@@ -1181,6 +1190,7 @@
       ],
       "inbound": [
         "anthropic",
+        "google",
         "meta",
         "openai"
       ]
@@ -1219,12 +1229,47 @@
       ],
       "inbound": [
         "deepseek",
+        "google",
         "minimax-m3",
         "nano-banana-2-lite",
         "nvidia",
         "open-weights",
         "zhipu-glm-5-2"
       ]
+    },
+    {
+      "slug": "google",
+      "title": "Google",
+      "type": "entity",
+      "tags": [
+        "hyperscaler",
+        "frontier-lab",
+        "antitrust",
+        "consumer-ai",
+        "gemini"
+      ],
+      "summary": "Hyperscaler and frontier-model builder behind Gemini; ordered by the EU under the DMA to open Android and Search to rivals (2026-07-17), the same day it rebranded NotebookLM into the Gemini product family.",
+      "description": "Hyperscaler and frontier-model builder behind Gemini; ordered by the EU under the DMA to open Android and Search to rivals (2026-07-17), the same day it rebranded NotebookLM into the Gemini product family.",
+      "created_at": "2026-07-17",
+      "updated_at": "2026-07-17",
+      "timestamp": "2026-07-17T00:00:00Z",
+      "file": "entities/google.md",
+      "aliases": [
+        "Google",
+        "Alphabet",
+        "Google DeepMind",
+        "NotebookLM",
+        "Gemini Notebook",
+        "Google AI Mode"
+      ],
+      "outbound": [
+        "gemini-3-5-flash",
+        "gemini-spark",
+        "gemma-4",
+        "meta",
+        "nano-banana-2-lite"
+      ],
+      "inbound": []
     },
     {
       "slug": "gpt-5-6",
@@ -1451,11 +1496,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and frontier-model builder (Llama); its Louisiana Hyperion data-center investment crossed $50B (2026-07-14), and in early July 2026 it was reported building \"Meta Compute\" to sell surplus AI capacity — the first hyperscaler framed as having compute to sell.",
-      "description": "Social-platform hyperscaler and frontier-model builder (Llama); its Louisiana Hyperion data-center investment crossed $50B (2026-07-14), and in early July 2026 it was reported building \"Meta Compute\" to sell surplus AI capacity — the first hyperscaler framed as having compute to sell.",
+      "summary": "Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.",
+      "description": "Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-07-14",
-      "timestamp": "2026-07-14T00:00:00Z",
+      "updated_at": "2026-07-17",
+      "timestamp": "2026-07-17T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -1467,6 +1512,7 @@
       ],
       "outbound": [
         "ai-capex",
+        "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
         "coreweave",
@@ -1480,6 +1526,7 @@
       "inbound": [
         "ai-capex",
         "claude-sonnet-5",
+        "google",
         "open-weights",
         "openai"
       ]
@@ -1733,10 +1780,47 @@
       "inbound": [
         "china-ai-regulation",
         "claude-fable-5",
+        "moonshot-kimi-k3",
         "open-weights",
         "openrouter",
         "soofi-s-30b-a3b",
         "zhipu-glm-5-2"
+      ]
+    },
+    {
+      "slug": "moonshot-kimi-k3",
+      "title": "Moonshot AI Kimi K3",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "open-weights",
+        "china",
+        "coding",
+        "moonshot",
+        "frontier-model"
+      ],
+      "summary": "Moonshot AI's 2.8T-parameter flagship, reportedly closing the gap with Anthropic's Opus 4.8; dominated Hacker News (420→774 points) on 2026-07-17, with open weights promised by 2026-07-27.",
+      "description": "Moonshot AI's 2.8T-parameter flagship, reportedly closing the gap with Anthropic's Opus 4.8; dominated Hacker News (420→774 points) on 2026-07-17, with open weights promised by 2026-07-27.",
+      "created_at": "2026-07-17",
+      "updated_at": "2026-07-17",
+      "timestamp": "2026-07-17T00:00:00Z",
+      "file": "entities/moonshot-kimi-k3.md",
+      "aliases": [
+        "Kimi K3",
+        "Kivine",
+        "Moonshot Kimi K3",
+        "Moonshot AI Kimi K3"
+      ],
+      "outbound": [
+        "anthropic",
+        "claude-opus-4-8",
+        "moonshot-kimi-k2-7-code",
+        "open-weights"
+      ],
+      "inbound": [
+        "open-weights",
+        "soofi-s-30b-a3b",
+        "thinking-machines"
       ]
     },
     {
@@ -1768,7 +1852,8 @@
         "open-weights"
       ],
       "inbound": [
-        "gemini-3-5-flash"
+        "gemini-3-5-flash",
+        "google"
       ]
     },
     {
@@ -1966,8 +2051,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-07-14",
-      "timestamp": "2026-07-14T00:00:00Z",
+      "updated_at": "2026-07-17",
+      "timestamp": "2026-07-17T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -1990,11 +2075,13 @@
         "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
+        "moonshot-kimi-k3",
         "nvidia",
         "openai",
         "openrouter",
         "sakana-ai",
         "soofi-s-30b-a3b",
+        "thinking-machines",
         "xiaomi-mimo-v2-5-pro",
         "zhipu-glm-5-2"
       ],
@@ -2009,11 +2096,13 @@
         "microsoft",
         "mistral-leanstral-1-5",
         "moonshot-kimi-k2-7-code",
+        "moonshot-kimi-k3",
         "nano-banana-2-lite",
         "openrouter",
         "sakana-ai",
         "soofi-s-30b-a3b",
         "tencent-hunyuan-hy3",
+        "thinking-machines",
         "xiaomi-mimo-v2-5-pro",
         "zhipu-glm-5-2"
       ]
@@ -2084,6 +2173,7 @@
         "sakana-ai",
         "salesforce",
         "spacex",
+        "thinking-machines",
         "xai"
       ]
     },
@@ -2351,8 +2441,8 @@
       "summary": "Deutsche Telekom-backed sovereign open German/English MoE foundation model trained on ~27T tokens, claimed strongest fully-open model on combined English+German benchmarks.",
       "description": "Deutsche Telekom-backed sovereign open German/English MoE foundation model trained on ~27T tokens, claimed strongest fully-open model on combined English+German benchmarks.",
       "created_at": "2026-07-13",
-      "updated_at": "2026-07-13",
-      "timestamp": "2026-07-13T00:00:00Z",
+      "updated_at": "2026-07-17",
+      "timestamp": "2026-07-17T00:00:00Z",
       "file": "entities/soofi-s-30b-a3b.md",
       "aliases": [
         "Soofi S",
@@ -2363,6 +2453,7 @@
         "deepseek",
         "federal-ai-policy",
         "moonshot-kimi-k2-7-code",
+        "moonshot-kimi-k3",
         "open-weights",
         "zhipu-glm-5-2"
       ],
@@ -2463,6 +2554,41 @@
       ]
     },
     {
+      "slug": "thinking-machines",
+      "title": "Thinking Machines Lab",
+      "type": "entity",
+      "tags": [
+        "frontier-lab",
+        "open-weights",
+        "multimodal",
+        "mira-murati"
+      ],
+      "summary": "Mira Murati's AI lab; shipped Inkling on 2026-07-15, its first public model release — a 975B-parameter (41B active) open-weights multimodal MoE positioned against both Chinese open labs and closed US frontier players.",
+      "description": "Mira Murati's AI lab; shipped Inkling on 2026-07-15, its first public model release — a 975B-parameter (41B active) open-weights multimodal MoE positioned against both Chinese open labs and closed US frontier players.",
+      "created_at": "2026-07-17",
+      "updated_at": "2026-07-17",
+      "timestamp": "2026-07-17T00:00:00Z",
+      "file": "entities/thinking-machines.md",
+      "aliases": [
+        "Thinking Machines",
+        "Thinking Machines Lab",
+        "Inkling",
+        "Tinker",
+        "Mira Murati"
+      ],
+      "outbound": [
+        "anthropic",
+        "deepseek",
+        "moonshot-kimi-k3",
+        "open-weights",
+        "openai",
+        "zhipu-glm-5-2"
+      ],
+      "inbound": [
+        "open-weights"
+      ]
+    },
+    {
       "slug": "xai",
       "title": "xAI",
       "type": "entity",
@@ -2473,11 +2599,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T \"V9\" model that ended its private beta and shipped free to all X accounts on 2026-07-10; Grok Build's codebase-upload-to-Google-Cloud behavior was confirmed by security researchers (2026-07-15).",
-      "description": "Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business — renting Colossus capacity to rival labs at $2B+/month — and by Grok 4.5, the from-scratch 1.5T \"V9\" model that ended its private beta and shipped free to all X accounts on 2026-07-10; Grok Build's codebase-upload-to-Google-Cloud behavior was confirmed by security researchers (2026-07-15).",
+      "summary": "Elon Musk's frontier lab behind Grok; now suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability, on top of Grok Build's codebase-upload-to-Google-Cloud behavior confirmed by security researchers (2026-07-15).",
+      "description": "Elon Musk's frontier lab behind Grok; now suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability, on top of Grok Build's codebase-upload-to-Google-Cloud behavior confirmed by security researchers (2026-07-15).",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-15",
-      "timestamp": "2026-07-15T00:00:00Z",
+      "updated_at": "2026-07-17",
+      "timestamp": "2026-07-17T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -2585,7 +2711,8 @@
         "open-weights",
         "openrouter",
         "soofi-s-30b-a3b",
-        "tencent-hunyuan-hy3"
+        "tencent-hunyuan-hy3",
+        "thinking-machines"
       ]
     }
   ],
@@ -2628,6 +2755,7 @@
     "alibaba cloud": "alibaba",
     "alibaba group": "alibaba",
     "alibaba group holding": "alibaba",
+    "alphabet": "google",
     "amazon": "amazon",
     "amazon web services": "amazon",
     "amazon.com": "amazon",
@@ -2713,6 +2841,7 @@
     "gemini 3.2 flash": "gemini-3-5-flash",
     "gemini 3.5 flash": "gemini-3-5-flash",
     "gemini 3.5 live translate": "gemini-3-5-flash",
+    "gemini notebook": "google",
     "gemini omni flash": "nano-banana-2-lite",
     "gemini spark": "gemini-spark",
     "gemini-3-1-flash-lite-image": "nano-banana-2-lite",
@@ -2726,6 +2855,9 @@
     "gemma-4": "gemma-4",
     "glm 5.2": "zhipu-glm-5-2",
     "glm-5.2": "zhipu-glm-5-2",
+    "google": "google",
+    "google ai mode": "google",
+    "google deepmind": "google",
     "google gemini spark": "gemini-spark",
     "gpt 5.6": "gpt-5-6",
     "gpt-5-6": "gpt-5-6",
@@ -2743,6 +2875,7 @@
     "hunyuan hy3": "tencent-hunyuan-hy3",
     "hy3": "tencent-hunyuan-hy3",
     "industrial ai": "artificial-general-engineer",
+    "inkling": "thinking-machines",
     "interim measures for the administration of ai anthropomorphic interactive services": "china-ai-regulation",
     "jelani nelson": "jelani-nelson",
     "jelani-nelson": "jelani-nelson",
@@ -2752,6 +2885,8 @@
     "jumper": "john-jumper",
     "kimi k2.7 code": "moonshot-kimi-k2-7-code",
     "kimi k2.7-code": "moonshot-kimi-k2-7-code",
+    "kimi k3": "moonshot-kimi-k3",
+    "kivine": "moonshot-kimi-k3",
     "leanstral": "mistral-leanstral-1-5",
     "leanstral 1.5": "mistral-leanstral-1-5",
     "lfm": "liquid-ai",
@@ -2793,11 +2928,15 @@
     "minimax": "minimax-m3",
     "minimax m3": "minimax-m3",
     "minimax-m3": "minimax-m3",
+    "mira murati": "thinking-machines",
     "mistral-leanstral-1-5": "mistral-leanstral-1-5",
     "mistral-robostral-navigate": "mistral-robostral-navigate",
     "moonshot ai kimi k2.7 code": "moonshot-kimi-k2-7-code",
+    "moonshot ai kimi k3": "moonshot-kimi-k3",
     "moonshot kimi k2.7 code": "moonshot-kimi-k2-7-code",
+    "moonshot kimi k3": "moonshot-kimi-k3",
     "moonshot-kimi-k2-7-code": "moonshot-kimi-k2-7-code",
+    "moonshot-kimi-k3": "moonshot-kimi-k3",
     "msft": "microsoft",
     "mu": "micron",
     "mythos 5": "claude-fable-5",
@@ -2815,6 +2954,7 @@
     "neocloud": "neocloud",
     "noam shazeer": "noam-shazeer",
     "noam-shazeer": "noam-shazeer",
+    "notebooklm": "google",
     "nvda": "nvidia",
     "nvidia": "nvidia",
     "open source ai": "open-weights",
@@ -2878,7 +3018,13 @@
     "tencent hy3": "tencent-hunyuan-hy3",
     "tencent-hunyuan-hy3": "tencent-hunyuan-hy3",
     "terra": "gpt-5-6",
+    "thinking machines": "thinking-machines",
+    "thinking machines lab": "thinking-machines",
+    "thinking-machines": "thinking-machines",
+    "tinker": "thinking-machines",
     "trump ai executive order": "federal-ai-policy",
+    "world ai conference": "china-ai-regulation",
+    "world ai cooperation organization": "china-ai-regulation",
     "x.ai": "xai",
     "xai": "xai",
     "xiaomi mimo": "xiaomi-mimo-v2-5-pro",
@@ -2892,6 +3038,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-07-17",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-17 digest (Xi Jinping keynotes the World AI Conference in Shanghai, pushing a Shanghai-headquartered World AI Cooperation Organization; Moonshot's Kimi K3 (2.8T params) dominates Hacker News, open weights promised by July 27; Thinking Machines ships Inkling, its first public model, a 975B-param open-weights multimodal MoE; the EU forces Google to open Android/Search under the DMA the same day Google rebrands NotebookLM into Gemini Notebook; xAI sues users over Grok-generated CSAM instead of fixing the underlying issue; Meta begins alerting parents when teens discuss suicide/self-harm with Meta AI). Created 3 (moonshot-kimi-k3 entity — Moonshot's 2.8T flagship, reportedly closing the gap with Opus 4.8; thinking-machines entity — Mira Murati's lab and its Inkling release; google entity — first standalone page for Google, anchored by the DMA ruling + NotebookLM rebrand), updated 5 (china-ai-regulation — broadened to cover Xi Jinping's World AI Conference keynote and the World AI Cooperation Organization push; xai — sues users over Grok CSAM outputs; meta — parental alerts for teen suicide/self-harm conversations; soofi-s-30b-a3b — sustained HN traction four days post-release; entities cross-linked to moonshot-kimi-k2-7-code, open-weights, ai-capex, federal-ai-policy)."
+    },
     {
       "date": "2026-07-15",
       "op": "ingest",
@@ -2986,11 +3137,6 @@
       "date": "2026-06-17",
       "op": "ingest",
       "summary": "Backfilled and flourished the LLM wiki after OKF migration. Created 4 entities (broadcom — custom ASIC and private-credit hinge for Anthropic/OpenAI compute financing; zhipu-glm-5-2 — 1M-context GLM Coding Plan flagship with MIT weights promised; moonshot-kimi-k2-7-code — low-price open coding model filling the Fable 5 vacuum; xiaomi-mimo-v2-5-pro — 1T MoE / 1,000+ tok/s efficiency claim). Updated surrounding graph pages (open-weights, openrouter, ai-capex, anthropic, nvidia, claude-fable-5, sakana-ai, salesforce) with reciprocal links and richer context."
-    },
-    {
-      "date": "2026-06-16",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-16 digest (export standoff goes conditional; Salesforce/Fin M&A). Created 3 (salesforce entity — $3.6B Fin/Intercom acquisition for Agentforce, Apex specialist model beating frontier on resolution; sakana-ai entity — Marlin autonomous \"Ultra Deep Research\" agent on AB-MCTS, non-US deep-research entrant; meta entity — \"AI Mode\" on Facebook, distribution bet to catch up in the assistant race). Updated 4 (anthropic — first restoration timeline (\"hardened in a few weeks\"), June 13 Lutnick/Cairncross/Tom Brown call, $35B Broadcom chip order, Claude Max class-action, ~$14B staff share sales, cybersecurity-vets protest; claude-fable-5 — 4th day dark, conditional/time-boxed restoration; federal-ai-policy — conditional export timeline, June 2 EO read as de facto licensing, cybersecurity-vets TechCrunch protest, OpenAI pre-coordinating to avoid Anthropic's fate; open-weights — \"Open weights are not enough\" transparency caveat, proof-of-training debate, OpenRouter Fusion API)."
     }
   ]
 }
