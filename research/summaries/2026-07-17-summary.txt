@@ -1,14 +1,16 @@
 AI News - 2026-07-17
 
 TOP STORIES:
-• Xi Jinping delivers first-ever keynote at World AI Conference in Shanghai (opens today, runs to July 20), pushing China's proposed AI Cooperation Organization
-• Mira Murati's Thinking Machines Lab ships Inkling, its first open-weight model (975B params, Apache 2.0)
-• Meta now alerts parents when teens discuss suicide/self-harm with Meta AI (live in US, UK, Australia, Canada)
-• AI-powered travel startup Fora raises $60M Series D, hits $1B unicorn valuation
+• Moonshot AI ships Kimi K3, now the largest open-source AI model (2.8T params, 1M context)
+• 29 countries sign agreement in Shanghai founding the World AI Cooperation Organization (WAICO), ahead of Xi Jinping's first-ever WAIC keynote
+• Mira Murati's Thinking Machines Lab ships Inkling, its first open-weight model (975B params)
+• Meta now alerts parents when teens discuss suicide/self-harm with Meta AI
+• Indian AI coding startup Emergent hits unicorn status with $130M Series C ($1.5B valuation)
 
 KEY NUMBERS:
-• Inkling: 975B total / 41B active parameters (MoE)
-• Fora: $60M raised, $1B valuation, $3B+ lifetime bookings
-• World AI Conference: July 17-20, Shanghai
+• Kimi K3: 2.8T params, 1M-token context, GDPval-AA v2 score 1,687
+• Emergent: $130M raised, $1.5B valuation, $120M ARR
+• Oak: $60M seed for AI-agent identity security
+• Fora: $60M raised, $1B valuation
 
 Full report on GitHub.
