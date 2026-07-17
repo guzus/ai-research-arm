@@ -1,0 +1,454 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Nvidia lost $588.8B in market cap and fell ~17% on January 27, 2025 after DeepSeek R1's release — the largest single-day market-cap loss in stock-market history at the time.",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2025/01/27/how-the-buzz-around-chinese-ai-model-deepseek-sparked-a-massive-nasdaq-sell-off.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-01-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Nasdaq fell 3.1% and S&P 500 fell 1.5% on Jan 27, 2025, while the Dow rose 0.7% — the DeepSeek shock was concentrated in tech/AI, not a broad-market crash.",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2025/01/27/how-the-buzz-around-chinese-ai-model-deepseek-sparked-a-massive-nasdaq-sell-off.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-01-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Satya Nadella posted 'Jevons paradox strikes again! As AI gets more efficient and accessible, we will see its use skyrocket' on X the day after DeepSeek R1's release.",
+      "type": "quote",
+      "source_urls": ["https://x.com/satyanadella/status/1883753899255046301", "https://fortune.com/2025/01/27/microsoft-ceo-satya-nadella-deepseek-optimism-jevons-paradox/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2025-01-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "SemiAnalysis estimated DeepSeek had spent well over $500M on GPUs and roughly $1.6B on server capex, contradicting the popularized '$5.6M training cost' figure that fueled DeepSeek-shock coverage.",
+      "type": "metric",
+      "source_urls": ["https://www.tomshardware.com/tech-industry/artificial-intelligence/deepseek-might-not-be-as-disruptive-as-claimed-firm-reportedly-has-50-000-nvidia-gpus-and-spent-usd1-6-billion-on-buildouts"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-01-31",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c5",
+      "claim": "Nvidia did not recover to its pre-DeepSeek-shock high (~$153, Jan 7 2025) until roughly 5.5 months later, around mid-July 2025, coinciding with the reversal of the H20 China export ban rather than a clean, immediate 'Jevons rescue.'",
+      "type": "event",
+      "source_urls": ["https://www.cnbc.com/2025/01/28/nvidia-is-rebounding-after-biggest-market-cap-loss-in-history-but-its-a-fragile-bounce.html", "https://www.ainvest.com/news/nvidia-h20-resurgence-pivot-china-ai-trade-catalyst-market-recovery-2507/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2025-07",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c6",
+      "claim": "The ARC Prize's own leaderboard shows the cost to reach a comparable ARC-AGI-1 score fell from $4,500/task (o3 High, 88%) to $11.64/task (GPT-5.2 Pro X-High, 90.5%), a ~390x improvement — the primary source of the widely-recirculated 'cost collapse' statistic, which is specific to one benchmark, not general AI inference cost.",
+      "type": "metric",
+      "source_urls": ["https://x.com/arcprize/status/1999182732845547795"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c7",
+      "claim": "A 2026 arxiv survey argues the 390x ARC-AGI efficiency figure reflects reduced test-time sampling/parallelism engineering rather than a genuine algorithmic efficiency leap.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2603.13372v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c8",
+      "claim": "Jevons Paradox requires price-elastic demand for the resource in question; standard economic explainers contrast elastic goods (where the paradox can occur) against inelastic goods (where it cannot), and applying it to AI inference is not automatic.",
+      "type": "definition",
+      "source_urls": ["https://www.economicshelp.org/blog/220917/economics/jevons-paradox-definition-and-explanation/"],
+      "source_tiers": ["secondary"],
+      "as_of": "",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Anthropic's own internal analysis found that each 1% increase in API price is associated with only a 0.29% reduction in usage — a real but 'meaningful, not dominant' elasticity, not the extreme elasticity a strong Jevons story would require.",
+      "type": "metric",
+      "source_urls": ["https://valueaddvc.com/blog/anthropics-business-model-how-the-ai-safety-company-makes-money"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c10",
+      "claim": "Moonshot AI released Kimi K3 on July 16, 2026: a 2.8-trillion-parameter model with a 1-million-token context window, priced at $3/$15 per million input/output tokens; full open weights were targeted for July 27, 2026, and as of launch the model was proprietary API-access only, not yet open-sourced.",
+      "type": "event",
+      "source_urls": ["https://artificialanalysis.ai/models/kimi-k3"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "On Artificial Analysis's Intelligence Index, Kimi K3 ranked #4 of 189 tested configurations (Index score 57.1), comparable to Claude Opus 4.8, behind Claude Fable 5 (59.9) and GPT-5.6 Sol (58.9); on Arena's general Text leaderboard its ranking was materially lower (roughly #6-9) and marked preliminary.",
+      "type": "comparison",
+      "source_urls": ["https://artificialanalysis.ai/models/kimi-k3"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-17",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "Marvell fell 8.71% and Intel fell 5.84% on July 16, 2026 (closing data), while AMD fell 5.33% the same day.",
+      "type": "metric",
+      "source_urls": ["https://stockanalysis.com/stocks/mrvl/history/", "https://stockanalysis.com/stocks/intc/history/", "https://stockanalysis.com/stocks/amd/history/"],
+      "source_tiers": ["market-data", "market-data", "market-data"],
+      "as_of": "2026-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "Nvidia fell 2.40% on July 16, 2026 and a further 1.04% on July 17, 2026 (cumulative ~3.4% two-day decline) — a real decline, but far smaller than the 'Nvidia barely moved' framing that circulated based on intraday snapshots.",
+      "type": "metric",
+      "source_urls": ["https://stockanalysis.com/stocks/nvda/history/"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-07-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "The Philadelphia Semiconductor Index (SOX) fell 4.29% on July 16, 2026 and was essentially flat (-0.01%) on July 17, 2026 — a combined ~4.3% two-session decline, not the ~10% figure that circulated in some recirculated commentary.",
+      "type": "metric",
+      "source_urls": ["https://www.investing.com/indices/phlx-semiconductor-historical-data"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-07-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "The widely-cited '$1 trillion in chipmaker value lost' and 'PHLX -10% over two sessions' figures originate from an unrelated Broadcom-earnings-driven selloff on June 5, 2026, six weeks before Kimi K3, and were being recirculated as if describing the July 16-17 event.",
+      "type": "event",
+      "source_urls": ["https://finance.yahoo.com/markets/stocks/articles/chip-selloff-erases-over-1-195406803.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-05",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c16",
+      "claim": "Widely-cited claims that Alibaba rose ~5-9% amid the Kimi K3 selloff are misattributed: Alibaba's real multi-day surge (roughly +11-17%) occurred around July 8, 2026, driven by a DOJ settlement, a Pentagon litigation stay, and Nvidia H200 China cloud-access approval — a distinct catalyst more than a week before Kimi K3. Alibaba was flat-to-down (-0.17% to -1.66%) on the actual July 16-17 selloff dates.",
+      "type": "event",
+      "source_urls": ["https://www.tradingkey.com/analysis/stocks/us-stocks/262022410-alibaba-baba-stock-forecast-july-2026-doj-settlement-cloud-h200-tradingkey", "https://stockanalysis.com/stocks/baba/history/"],
+      "source_tiers": ["secondary", "market-data"],
+      "as_of": "2026-07-17",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c17",
+      "claim": "Nvidia's fiscal-2026 guidance has, for multiple consecutive quarters through mid-2026, assumed $0 of China data-center compute revenue — China exposure is already de-risked out of Wall Street's forward numbers, unlike January 2025 when China revenue was still a live unknown.",
+      "type": "metric",
+      "source_urls": ["https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2027"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Nvidia's forward P/E fell to roughly 23.2x by July 2026, down from roughly 40x a year earlier (July 2025) — even as its market cap roughly doubled, meaning valuation multiples compressed as earnings growth outpaced price appreciation.",
+      "type": "metric",
+      "source_urls": ["https://www.fool.com/investing/2026/07/11/nvidias-forward-pe-has-actually-fallen-as-its-stoc/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-11",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "Nvidia crossed a $4 trillion market cap for the first time in July 2025, a full year before the Kimi K3 shock — by mid-July 2026 it traded near $5.1-5.15T before falling to roughly $4.86T intraday during the selloff.",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2025/07/09/nvidia-4-trillion.html", "https://247wallst.com/investing/2026/07/17/amd-falls-5-intel-drops-4-nvidia-slides-3-before-recovering-as-rotation-hits-semiconductor-stocks/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-17",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "S&P Global downgraded Oracle from BBB to BBB- (one notch above speculative grade) on July 9, 2026, citing AI-capex leverage and OpenAI revenue concentration risk — one week before the Kimi K3 shock, evidencing pre-existing financing-structure concern.",
+      "type": "event",
+      "source_urls": ["https://mlq.ai/news/sp-downgrades-oracle-to-bbb-one-notch-above-junk-citing-openai-concentration-risk/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-09",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c21",
+      "claim": "Michael Burry disclosed a short position against Nvidia and warned publicly about aggressive GPU-depreciation-schedule accounting risk on July 13, 2026, three days before the Kimi K3 release.",
+      "type": "event",
+      "source_urls": ["https://www.thestreet.com/investing/michael-burrys-newest-short-reveals-what-really-worries-him-about-ai"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-13",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c22",
+      "claim": "Market estimates put the scale of circular AI financing arrangements (Nvidia-OpenAI-Oracle-Microsoft-AMD-CoreWeave and related deals) at over $800B, with OpenAI's own disclosed infrastructure commitments totaling roughly $1.15T across seven vendors (Broadcom $350B, Oracle $300B, Microsoft $250B, Nvidia $100B, AMD $90B, AWS $38B, CoreWeave $22B) — a pre-existing concern well before Kimi K3.",
+      "type": "metric",
+      "source_urls": ["https://www.calcalistech.com/ctechnews/article/z4lxiqbtw"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c23",
+      "claim": "Goldman Sachs' prime-brokerage data showed hedge funds net-sold semiconductor/hardware single-name stocks for four consecutive weeks through July 3, 2026, while continuing to buy broad index/ETF products — direct positioning evidence of rotation within the AI trade predating the Kimi K3 print.",
+      "type": "metric",
+      "source_urls": ["https://www.investing.com/news/stock-market-news/hedge-funds-dumped-chip-stocks-for-a-fourth-week-as-ai-shares-sold-off-4776190"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-06",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "In the week ending July 10, 2026 — days before Kimi K3 — semiconductor ETFs were among the top inflow recipients in the entire US ETF market (SOXX alone pulled in $5.3B), showing investors were still buying the chip-sector dip immediately ahead of the shock.",
+      "type": "metric",
+      "source_urls": ["https://www.etf.com/sections/weekly-etf-flows/investors-buy-semiconductor-dip-40-billion-flows-week"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-07-10",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c25",
+      "claim": "OpenRouter data shows Chinese-origin models exceeded 30% of US-company token usage every week since February 8, 2026, peaking near 46%, versus an 11% trailing-12-month average and just 4.5% in H1 2025 — a large, real usage-share shift.",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2026/07/07/chinese-ai-models-costs-us-openai-anthropic.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-07",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c26",
+      "claim": "OpenRouter's platform-wide token throughput scaled from roughly 5 trillion tokens/week in April 2025 to over 20 trillion tokens/week in April 2026 — the aggregate 'pie' roughly quadrupled even as its composition shifted toward Chinese open-weight models, partially supporting a Jevons-consistent reading at the platform level.",
+      "type": "metric",
+      "source_urls": ["https://www.resultsense.com/news/2026-07-07-chinese-ai-models-us-adoption-surge/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-07",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c27",
+      "claim": "The actual OpenRouter-listed providers serving popular Chinese open-weight models (Kimi, DeepSeek, GLM) — GMI Cloud, Together AI, Fireworks AI, DeepInfra, Parasail — run predominantly on Nvidia H100/H200 GPU cloud infrastructure, not Huawei Ascend or alternative silicon, meaning rising Chinese-model usage share does not straightforwardly translate into lost Nvidia demand.",
+      "type": "technical",
+      "source_urls": ["https://www.gmicloud.ai/en/blog/which-gpu-clouds-support-kimi-k2-and-the-latest-open-source-llms"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c28",
+      "claim": "An AI startup (Lindy) moved 100% of its production traffic from Anthropic's Claude to DeepSeek citing multi-million-dollar savings — a documented case of direct vendor substitution rather than incremental new demand.",
+      "type": "event",
+      "source_urls": ["https://www.cnbc.com/2026/07/07/chinese-ai-models-costs-us-openai-anthropic.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-07",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c29",
+      "claim": "Kimi K2 (July 2025) and Kimi K2.5 (January 2026) produced no comparable US chip-stock selloff — analysts explicitly predicted K2 would trigger only a 'much slower style DeepSeek Moment' given it lacked R1's virality drivers, and Nvidia crossed its first $4T market cap in the same week as K2's release rather than selling off.",
+      "type": "comparison",
+      "source_urls": ["https://www.interconnects.ai/p/kimi-k2-and-when-deepseek-moments", "https://www.washingtonpost.com/technology/2025/07/10/nvidia-4-trillion-market-cap/"],
+      "source_tiers": ["opinion", "secondary"],
+      "as_of": "2025-07",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c30",
+      "claim": "Z.ai's GLM-5.2 open-source release in mid-2026 triggered a large positive rally in Zhipu's own Hong Kong-listed shares (+32.8% close, intraday +48%) rather than a US semiconductor selloff — the inverse reaction pattern of a US chip-stock shock.",
+      "type": "event",
+      "source_urls": ["https://www.scmp.com/tech/tech-trends/article/3357115/zhipu-ais-stock-rockets-after-chinese-firm-makes-glm-52-open-source"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "TSMC reported Q2 2026 revenue growth of 33.7% YoY (USD) on July 16, 2026 — the same calendar day as the Kimi K3 announcement — and raised FY2026 capex guidance to $60-64B; CFO Wendell Huang explicitly declined to give a specific multi-year forward capex figure when pressed by an analyst.",
+      "type": "metric",
+      "source_urls": ["https://pr.tsmc.com/english/news/3326", "https://www.investing.com/news/transcripts/earnings-call-transcript-tsmc-lifts-2026-outlook-as-ai-demand-stays-hot-in-q2-2026-93CH-4794777"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "TSMC's 'CoWoS packaging sold out through 2026' language originates from CEO C.C. Wei's June 4, 2026 shareholder meeting remarks — six weeks before the Kimi K3 shock — describing a pre-existing capacity backlog, not a post-shock demand confirmation.",
+      "type": "quote",
+      "source_urls": ["https://www.techtimes.com/articles/320142/20260711/tsmc-q2-earnings-july-16-three-cowos-signals-that-test-ais-spending-ceiling.htm"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-04",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c33",
+      "claim": "None of the big-four US hyperscalers (Alphabet, Microsoft, Meta, Amazon) had reported Q2 2026 earnings as of July 17-18, 2026 — their scheduled report dates (Alphabet July 22; Microsoft/Meta July 29; Amazon July 30) all fall after the Kimi K3 shock, meaning the ~$725B combined 2026 capex guidance cited as evidence of intact AI demand is entirely pre-shock (set at Q1 2026 earnings in late April).",
+      "type": "event",
+      "source_urls": ["https://www.ig.com/uk/trading-strategies/big-tech-q2-2026-earnings---the-ai-capex-question-and-what-uk-in-260716"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c34",
+      "claim": "Combined FY2026 capex guidance across Microsoft, Alphabet, Amazon and Meta stood at roughly $725B (up ~77% from ~$410B in FY2025), all set at Q1 2026 earnings in late April — the baseline against which any post-Kimi-K3 revision in the July 22-30 reporting window should be judged.",
+      "type": "forecast",
+      "source_urls": ["https://www.ig.com/uk/trading-strategies/big-tech-q2-2026-earnings---the-ai-capex-question-and-what-uk-in-260716"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-04-29",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c35",
+      "claim": "Nvidia CEO Jensen Huang stated that compute required for agentic AI workloads has increased roughly 1,000% compared to earlier generative-AI-era compute needs, attributing this to agents reading, reasoning, and generating far more tokens per task than simple chat completions.",
+      "type": "quote",
+      "source_urls": ["https://fortune.com/2026/05/06/jensen-huang-servicenow-bill-mcdermott-agentic-ai-robos/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-06",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c36",
+      "claim": "A March 2026 Gartner analysis found agentic AI tasks require 5-30x more tokens than a standard chatbot interaction, with complex multi-agent systems consuming 200,000 to 1,000,000+ tokens per task and agentic coding workflows averaging 1-3.5 million tokens per task including retries.",
+      "type": "metric",
+      "source_urls": ["https://iternal.ai/token-usage-guide"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-03",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c37",
+      "claim": "OpenRouter's own State of AI data shows programming's share of token usage rose from roughly 11% at the start of 2025 to over 50% by year-end 2025, with agentic/agent-driven workflows generating more than half of all output tokens on the platform.",
+      "type": "metric",
+      "source_urls": ["https://openrouter.ai/state-of-ai"],
+      "source_tiers": ["primary"],
+      "as_of": "2026",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c38",
+      "claim": "Anthropic CEO Dario Amodei said the company had planned for 10x usage/revenue growth in Q1 2026 but actual annualized growth was roughly 80x, attributing the compute shortage directly to this surge, driven substantially by coding/agentic use.",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2026/05/06/anthropic-ceo-dario-amodei-says-company-crew-80-fold-in-first-quarter.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-06",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c39",
+      "claim": "H100 GPU cloud hourly rental rates fell roughly 64-75% from $8-10/hr in Q4 2024 to $2-3/hr by early 2026, as more than 300 new GPU cloud entrants added supply — a real-time, sentiment-independent demand proxy that, unlike stock prices, points to oversupply of older-generation compute even as next-generation Blackwell/B200 capacity remained reservation-only and scarce.",
+      "type": "metric",
+      "source_urls": ["https://intuitionlabs.ai/articles/h100-rental-prices-cloud-comparison"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-early",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c40",
+      "claim": "Epoch AI's supply-chain analysis found the top four AI chip designers consumed roughly 90% of global CoWoS advanced-packaging capacity and HBM memory supply in 2025 while accounting for only about 12% of advanced logic-die (3nm-class) production — evidence that packaging and memory, not raw chip fabrication, were the binding 2025 supply constraint, independent of any AI-usage elasticity question.",
+      "type": "technical",
+      "source_urls": ["https://epoch.ai/data-insights/ai-chip-supply-chain-constraints"],
+      "source_tiers": ["academic"],
+      "as_of": "2026",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c41",
+      "claim": "SK Hynix and Micron reported their entire 2026 HBM production already sold out, per Counterpoint Research data — a second, independent supply bottleneck (alongside grid power) that limits how much incremental AI demand can convert into shippable chip revenue regardless of Chinese-model competitive dynamics.",
+      "type": "metric",
+      "source_urls": ["https://enkiai.com/ai-market-intelligence/ai-supply-chain-crisis-2026-the-new-hbm-bottleneck/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c42",
+      "claim": "The Federal Reserve held its policy rate at 3.50-3.75% at its June 17, 2026 meeting (the rate prevailing during the Kimi K3 shock) — 75 basis points lower than the 4.25-4.50% rate in effect during the January 2025 DeepSeek shock — indicating a nominally looser monetary backdrop this time, even though the June 2026 dot plot had turned more hawkish.",
+      "type": "metric",
+      "source_urls": ["https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617a.htm", "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250129a.htm"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-06-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c43",
+      "claim": "The VIX spiked 45% intraday to 21.56 on January 27, 2025 (a panic-grade move), versus rising only to roughly 18.0 (about +13%) on July 17, 2026 — a materially calmer volatility reaction to the Kimi K3 shock than to the original DeepSeek shock.",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2025/01/26/stock-market-news-for-jan-26-2025.html", "https://www.detroitnews.com/story/business/2026/07/17/us-stocks-wall-street/90954328007/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-17",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c44",
+      "claim": "Nvidia's next earnings report (Q2 FY2027) is scheduled for August 26, 2026, with pre-shock guidance of $91.0B revenue (±2%) — the first hard, forward-looking data point on whether AI chip demand held up after Kimi K3.",
+      "type": "forecast",
+      "source_urls": ["https://calendarial.com/nvidia-fiscal-q2-earnings/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c45",
+      "claim": "No fresh public 'Jevons Paradox' restatement from Satya Nadella, nor any Kimi K3-specific statement from Jensen Huang, was found in the July 16-18, 2026 window, despite financial media explicitly drawing the same DeepSeek-moment analogy that originally produced Nadella's January 2025 framing.",
+      "type": "other",
+      "source_urls": ["https://cryptobriefing.com/moonshot-kimi-k3-ai-semiconductor-stocks-selloff/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-18",
+      "confidence": "low",
+      "risk": "single-source"
+    }
+  ]
+}
