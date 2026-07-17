@@ -399,7 +399,9 @@ body.has-digest-player .app {
   gap: 10px;
   flex-wrap: wrap;
   max-width: var(--page-max);
-  margin: -32px auto 32px;
+  /* The nav-shell above leaves 32px; reclaim most of it but keep 12px of
+   * air so the row doesn't sit flush against the tab pills. */
+  margin: -20px auto 32px;
 }
 
 .icon-btn {
