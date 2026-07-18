@@ -1,0 +1,254 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Cerebras's internal knowledge base handles over 15,000 employee/agent questions per day, roughly three months after launch.",
+      "type": "metric",
+      "source_urls": ["https://www.cerebras.ai/blog/how-we-built-our-knowledge-base", "https://x.com/cerebras/status/2077822555159945507"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-17",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c2",
+      "claim": "The system stores embeddings, summaries, and metadata from all sources (Slack, code, custom DBs) in a single Postgres table.",
+      "type": "technical",
+      "source_urls": ["https://www.cerebras.ai/blog/how-we-built-our-knowledge-base"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-17",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c3",
+      "claim": "Cerebras uses Reciprocal Rank Fusion (RRF) with k=60 to combine retriever outputs, citing Cormack, Clarke & Büttcher's 2009 SIGIR paper.",
+      "type": "technical",
+      "source_urls": ["https://www.cerebras.ai/blog/how-we-built-our-knowledge-base", "https://dblp.org/rec/conf/sigir/CormackCB09.html"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "k=60 is the constant recommended in the original RRF paper and sits in a flat MAP-performance plateau across k in [10,100], not a sharply-tuned optimum.",
+      "type": "technical",
+      "source_urls": ["https://opensearch.org/blog/introducing-reciprocal-rank-fusion-hybrid-search/", "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-07-19",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "A peer-reviewed critique (Bruch et al., ACM TOIS) shows a tuned convex combination of normalized scores can beat RRF in-domain; RRF's real advantage is zero-shot robustness rather than a proven accuracy ceiling.",
+      "type": "technical",
+      "source_urls": ["https://dl.acm.org/doi/full/10.1145/3596512"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-19",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c6",
+      "claim": "arXiv:1603.09320 (Malkov & Yashunin, HNSW) is the algorithm underlying Postgres pgvector's HNSW index, and is widely adopted across vector databases (Milvus, Qdrant, Chroma, ClickHouse, Redis, Lucene).",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/1603.09320", "https://github.com/pgvector/pgvector"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Anthropic's Contextual Retrieval (Sept 2024) reports a 35% failure-rate reduction from contextual embeddings alone, 49% combined with contextual BM25, and 67% with an added reranking step — Cerebras's LLM-distillation-before-embedding approach mirrors this technique.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/news/contextual-retrieval"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-09-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "Anthropic's Nov 2025 'Code Execution with MCP' post is distinct from the original Nov 2024 MCP launch, proposing code-generated wrapper calls over MCP servers to cut a 150,000-token workflow to ~2,000 tokens.",
+      "type": "technical",
+      "source_urls": ["https://www.anthropic.com/engineering/code-execution-with-mcp"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-11-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Anthropic donated MCP governance to the newly formed Agentic AI Foundation under the Linux Foundation in December 2025, with AWS, Anthropic, Block, Bloomberg, Cloudflare, Google, Microsoft, and OpenAI as Platinum members.",
+      "type": "event",
+      "source_urls": ["https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-12-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "MCP SDK monthly downloads reportedly grew from ~100,000 in Nov 2024 to ~97 million by March 2026; a Stacklok 2026 survey found 41% of surveyed software organizations in limited-or-broad MCP production use (superseding an earlier, unsourced 78% figure).",
+      "type": "metric",
+      "source_urls": ["https://andrew.ooo/answers/mcp-model-context-protocol-enterprise-adoption-july-2026/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c11",
+      "claim": "arXiv:2501.05366 (Li et al., Search-o1) proposes agentic RAG plus a 'Reason-in-Documents' distillation module for large reasoning models; Cerebras cites it for its planner-emits-tools/executor-fans-out-in-parallel pattern.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2501.05366", "https://www.cerebras.ai/blog/how-we-built-our-knowledge-base"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-01-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "arXiv:2307.03172 (Liu et al., 'Lost in the Middle') finds accuracy on multi-document QA drops sharply (roughly 75% to ~55%) when the answer sits mid-context versus at the start or end; Cerebras cites it to justify capping reranked results to 10.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2307.03172", "https://cs.stanford.edu/~nfliu/papers/lost-in-the-middle.arxiv2023.pdf"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2023-11-20",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "The specific 'top 10' cutoff Cerebras uses is not itself derived from any experiment in the Lost in the Middle paper — the citation is directionally consistent with the paper's spirit (fewer, higher-precision documents) but not empirically licensed by it.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2307.03172", "https://www.cerebras.ai/blog/how-we-built-our-knowledge-base"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-17",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c14",
+      "claim": "CocoIndex is a real, actively-maintained open-source project (10.9k GitHub stars, Apache-2.0, Rust core) that Cerebras credits for delta-only, per-commit re-embedding of code changes.",
+      "type": "technical",
+      "source_urls": ["https://github.com/cocoindex-io/cocoindex", "https://www.cerebras.ai/blog/how-we-built-our-knowledge-base"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "CocoIndex's first public launch (Show HN) was April 24, 2025, making it roughly 15 months old at the time Cerebras disclosed production use, and it is reportedly run by a single-founder, unfunded team (per Tracxn).",
+      "type": "event",
+      "source_urls": ["https://news.ycombinator.com/item?id=43772582", "https://tracxn.com/d/companies/cocoindex/__3uzEhPrOAu9NdwACSSElc-Mw0dsZE4HPDnvFE0co8kg"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-19",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c16",
+      "claim": "Cerebras's own post describes building a custom regex-boundary code splitter rather than using CocoIndex's advertised Tree-sitter/AST chunking feature — the 'language-aware chunking' claim is Cerebras-built logic layered on CocoIndex's sync engine, not an out-of-the-box CocoIndex capability.",
+      "type": "technical",
+      "source_urls": ["https://www.cerebras.ai/blog/how-we-built-our-knowledge-base"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-17",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "Independent 2025-2026 benchmarks show pgvector's HNSW index closing much of the historical latency/recall gap with dedicated vector databases at moderate scale (under ~1-5M vectors), while Qdrant tends to keep an edge at larger scale and filtered search; pgvectorscale reports 471 QPS at 99% recall on 50M vectors.",
+      "type": "technical",
+      "source_urls": ["https://www.kalviumlabs.ai/blog/vector-databases-compared-pgvector-pinecone-qdrant-weaviate/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c18",
+      "claim": "Glean raised a $150M Series F in June 2025 at a $7.2B valuation; its ARR reportedly grew from ~$100M (~15 months earlier) to $208M (end of 2025) to roughly $300M by May 2026, with no new round reported through mid-2026 despite the growth.",
+      "type": "metric",
+      "source_urls": ["https://www.glean.com/blog/glean-series-f-announcement", "https://www.cnbc.com/2025/06/10/glean-gen-ai-search-startup-raises-150-million-at-7-billion-value.html", "https://valueaddvc.com/blog/glean-valuation-revenue-2026-300m-arr-enterprise-ai-search"],
+      "source_tiers": ["primary", "secondary", "secondary"],
+      "as_of": "2026-05",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "A Forrester Total Economic Impact study commissioned by Glean found up to 110 hours/employee/year in productivity gains from search improvements and 36 hours saved per new hire during onboarding; Glean's Super.com case study reports 1,000+ hours saved per month company-wide.",
+      "type": "metric",
+      "source_urls": ["https://tei.forrester.com/go/Glean/workAIplatform/", "https://www.glean.com/blog/how-super-supercharged-through-glean"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c20",
+      "claim": "Onyx (formerly Danswer) is an MIT-licensed, self-hosted open-source alternative positioned as the leading Glean alternative, with a managed cloud tier at $20/user/month.",
+      "type": "market-structure",
+      "source_urls": ["https://github.com/onyx-dot-app/onyx"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-19",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "Independent market-size estimates for enterprise search diverge substantially by research firm: Grand View Research put 2022 at $4.21B growing to $8.85B by 2030 (8.9% CAGR); IMARC put 2025 at $6.7B growing to $14.5B by 2034 (8.77% CAGR); Gartner separately projects enterprise AI search/assistants embedded in 60% of enterprise applications by 2028, up from 20%.",
+      "type": "market-structure",
+      "source_urls": ["https://www.grandviewresearch.com/industry-analysis/enterprise-search-market", "https://www.imarcgroup.com/enterprise-search-market", "https://www.gosearch.ai/blog/gartner-market-guide-enterprise-ai-search-2026/"],
+      "source_tiers": ["secondary", "secondary", "secondary"],
+      "as_of": "2026",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c22",
+      "claim": "Slack's own engineering team (via Salesforce Engineering blog) describes a tiered AI processing model — batch overnight recap generation plus a concurrency-slot system for real-time search/summarization — as its solution to the same batch-vs-real-time cost problem Cerebras describes for Slack ingestion.",
+      "type": "technical",
+      "source_urls": ["https://engineering.salesforce.com/how-slack-ai-processes-billions-of-messages-to-reduce-information-overload-with-ai-powered-search-and-summarization/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "Cerebras (CBRS) IPO'd May 14, 2026 at $185/share, closed its debut day at $311.07 (~$95B market cap at peak), fell to a post-IPO low of $160.81 on June 26, 2026 after a margin-forecast 'misunderstood' comment from CEO Andrew Feldman, and traded around $170.65 (~$48B market cap) as of July 17, 2026.",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2026/05/14/cerebras-cbrs-stock-trade-nasdaq-ipo.html", "https://www.hiive.com/securities/cerebras-systems-stock"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-17",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "By mid-2026, industry discourse is split between 'RAG is dead' (superseded by long-context models) and a consensus middle ground that naive chunk-and-embed RAG is declining while sophisticated agentic retrieval is growing at close to 50% CAGR; Anthropic's own Claude Code favors generous context plus lexical search over classic RAG pipelines.",
+      "type": "comparison",
+      "source_urls": ["https://byteiota.com/rag-vs-long-context-2026-retrieval-debate/"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c25",
+      "claim": "No dedicated Hacker News discussion thread for Cerebras's 'How We Built Our Knowledge Base' post could be found as of this research pass; reaction so far is limited to X/Twitter engagement (thousands of likes/bookmarks, no substantive independent technical critique surfaced).",
+      "type": "event",
+      "source_urls": ["https://x.com/DBredvick/status/2078150905078206789"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-19",
+      "confidence": "medium",
+      "risk": "single-source"
+    }
+  ]
+}

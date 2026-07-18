@@ -1,0 +1,202 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Employees ask our internal knowledge base more than 15,000 questions every day",
+      "verdict": "supported",
+      "citation": "https://www.cerebras.ai/blog/how-we-built-our-knowledge-base"
+    },
+    {
+      "id": "c2",
+      "text": "One Postgres table holds embeddings, LLM-generated summaries, and metadata from every source",
+      "verdict": "supported",
+      "citation": "https://www.cerebras.ai/blog/how-we-built-our-knowledge-base"
+    },
+    {
+      "id": "c3",
+      "text": "The RRF formula traces to Cormack, Clarke, and Büttcher's 2009 SIGIR paper, and k=60 is genuinely that paper's own recommended constant",
+      "verdict": "supported",
+      "citation": "https://dblp.org/rec/conf/sigir/CormackCB09.html"
+    },
+    {
+      "id": "c4",
+      "text": "Both Elasticsearch and OpenSearch ship RRF with k=60 as their own default",
+      "verdict": "supported",
+      "citation": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion"
+    },
+    {
+      "id": "c5",
+      "text": "A peer-reviewed 2022 critique in ACM TOIS shows a tuned convex combination of normalized scores can beat RRF within a single domain",
+      "verdict": "weak",
+      "citation": "https://dl.acm.org/doi/full/10.1145/3596512"
+    },
+    {
+      "id": "c6",
+      "text": "The HNSW citation (arXiv:1603.09320, Malkov and Yashunin) checks out exactly, and the algorithm is indeed the one underlying pgvector's HNSW index",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/1603.09320"
+    },
+    {
+      "id": "c7",
+      "text": "Contextual embeddings alone cut top-20-chunk retrieval failures 35%, stacking contextual BM25 gets to 49%, and adding a final reranking pass gets to 67%",
+      "verdict": "supported",
+      "citation": "https://www.anthropic.com/news/contextual-retrieval"
+    },
+    {
+      "id": "c8",
+      "text": "Li et al.'s Search-o1 (arXiv:2501.05366) genuinely proposes an agentic RAG loop plus a document-distillation module for reasoning models",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2501.05366"
+    },
+    {
+      "id": "c9",
+      "text": "accuracy on 20-document multi-document QA falls from roughly 75% when the answer sits first, to around 55% when it's buried in the middle, before recovering to about 72% when it's last",
+      "verdict": "weak",
+      "citation": "https://cs.stanford.edu/~nfliu/papers/lost-in-the-middle.arxiv2023.pdf"
+    },
+    {
+      "id": "c10",
+      "text": "nothing in Liu et al.'s experiments tests or recommends keep the top 10",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2307.03172"
+    },
+    {
+      "id": "c11",
+      "text": "CocoIndex is real — an Apache-2.0, Rust-core project with 10.9k GitHub stars, 833 forks, and 211 releases",
+      "verdict": "supported",
+      "citation": "https://github.com/cocoindex-io/cocoindex"
+    },
+    {
+      "id": "c12",
+      "text": "CocoIndex's own enterprise marketing page lists no named customers or case studies",
+      "verdict": "supported",
+      "citation": "https://cocoindex.io/enterprise/"
+    },
+    {
+      "id": "c13",
+      "text": "the flashiest specific claim language-aware chunking turns out to be a custom regex-boundary splitter the company built itself, not the Tree-sitter/AST-based chunker CocoIndex advertises",
+      "verdict": "supported",
+      "citation": "https://www.cerebras.ai/blog/how-we-built-our-knowledge-base"
+    },
+    {
+      "id": "c14",
+      "text": "A vendor benchmark from Tiger Data reported 471.57 QPS at 99% recall on 50 million 768-dimension vectors, versus 41.47 QPS for Qdrant",
+      "verdict": "supported",
+      "citation": "https://www.tigerdata.com/blog/pgvector-vs-qdrant"
+    },
+    {
+      "id": "c15",
+      "text": "Confident AI and Firecrawl reportedly moved workloads from Pinecone to Postgres/pgvector, citing roughly $250/month versus $675/month at 10 million vectors",
+      "verdict": "weak",
+      "citation": "https://medium.com/data-science-collective/vector-databases-are-dying-heres-the-production-evidence-8c17b54687e2"
+    },
+    {
+      "id": "c16",
+      "text": "MCP SDK was reportedly seeing roughly 97 million monthly downloads, up from about 100,000 in its first month",
+      "verdict": "weak",
+      "citation": "https://andrew.ooo/answers/mcp-model-context-protocol-enterprise-adoption-july-2026/"
+    },
+    {
+      "id": "c17",
+      "text": "in December 2025 Anthropic donated protocol governance to a new Agentic AI Foundation under the Linux Foundation, with AWS, Anthropic, Block, Bloomberg, Cloudflare, Google, Microsoft, and OpenAI all seated as Platinum members",
+      "verdict": "supported",
+      "citation": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"
+    },
+    {
+      "id": "c18",
+      "text": "Early versions of Claude Code used RAG + a local vector db, but we found pretty quickly that agentic search generally works better",
+      "verdict": "supported",
+      "citation": "https://x.com/bcherny/status/2017824286489383315"
+    },
+    {
+      "id": "c19",
+      "text": "intent to adopt hybrid retrieval architectures roughly tripled from 10.3% to 33.3% between January and March 2026",
+      "verdict": "weak",
+      "citation": "https://venturebeat.com/data/context-architecture-is-replacing-rag-as-agentic-ai-pushes-enterprise-retrieval-to-its-limits"
+    },
+    {
+      "id": "c20",
+      "text": "Glean priced a $150M Series F at a $7.2B valuation in June 2025 — up from $4.6B nine months earlier",
+      "verdict": "supported",
+      "citation": "https://www.glean.com/press/glean-raises-150m-series-f-at-7-2b-valuation-to-accelerate-enterprise-ai-agent-innovation-globally"
+    },
+    {
+      "id": "c21",
+      "text": "ARR crossing $200M by December 2025 and roughly $300M by May 2026, tripling in fifteen months",
+      "verdict": "supported",
+      "citation": "https://techcrunch.com/2026/05/28/gleans-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-point/"
+    },
+    {
+      "id": "c22",
+      "text": "the most detailed public description of Glean's retrieval stack traces back through several layers of secondary blog synthesis to a single April 2023 podcast conversation",
+      "verdict": "supported",
+      "citation": "https://www.latent.space/p/deedy-das"
+    },
+    {
+      "id": "c23",
+      "text": "reported initial contract values run $100K–$500K annually for organizations above roughly 500 employees, with Fortune 500 deals clearing $5M",
+      "verdict": "weak",
+      "citation": "https://sacra.com/c/glean/"
+    },
+    {
+      "id": "c24",
+      "text": "vendor-partner enterprise AI deployments succeed roughly twice as often as in-house builds (67% versus 33%), drawn from an MIT GenAI Divide study",
+      "verdict": "weak",
+      "citation": "https://www.glean.com/perspectives/should-i-build-or-buy-an-enterprise-ai-assistant-for-my-business"
+    },
+    {
+      "id": "c25",
+      "text": "Onyx reports usage at Ramp (115,000 queries/month), Thales (1,400 monthly active users across 82,000 employees), and an air-gapped deployment at UC San Diego",
+      "verdict": "weak",
+      "citation": "https://onyx.app/insights/enterprise-rag-platforms-2026"
+    },
+    {
+      "id": "c26",
+      "text": "Cerebras priced its IPO at $185 a share on May 14, 2026, opened at $385, and closed its debut day at $311",
+      "verdict": "supported",
+      "citation": "https://techcrunch.com/2026/05/14/cerebras-raises-5-5b-kicking-off-2026s-ipo-season-with-a-bang/"
+    },
+    {
+      "id": "c27",
+      "text": "a post-IPO low of $160.81 on June 26, after CEO Andrew Feldman said the company's margin forecast had been misunderstood",
+      "verdict": "weak",
+      "citation": "https://www.benzinga.com/Opinion/26/07/60510850/cerebras-systems-shares-climb-5-percent-after-key-trading-signal"
+    },
+    {
+      "id": "c28",
+      "text": "GAAP revenue of $193.4 million, up 94% year over year, against a GAAP operating loss of $15.0 million and gross margin near 45%",
+      "verdict": "supported",
+      "citation": "https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-announces-strong-first-quarter-2026-results"
+    },
+    {
+      "id": "c29",
+      "text": "86% of 2025 revenue came from two UAE-linked entities, G42 (24%) and Mohamed bin Zayed University of AI (62%)",
+      "verdict": "weak",
+      "citation": "https://www.agbi.com/tech/2026/04/cerebras-refiles-for-ipo-but-uae-ties-remain/"
+    },
+    {
+      "id": "c30",
+      "text": "SambaNova landed a $1B Series F at an $11B valuation on July 8, 2026, alongside a marquee win naming SambaNova as JPMorgan Chase's on-prem inference provider",
+      "verdict": "supported",
+      "citation": "https://techcrunch.com/2026/07/08/sambanova-draws-1b-at-11b-valuation-in-series-f-first-close/"
+    },
+    {
+      "id": "c31",
+      "text": "third-party workforce tracking shows growth from roughly 358 employees in January 2024 to about 1,016 by December 2025",
+      "verdict": "weak",
+      "citation": "https://www.reveliolabs.com/companies/cerebras-systems/employees/"
+    },
+    {
+      "id": "c32",
+      "text": "an open Developer Experience Engineer role explicitly described in its own listing as the company's engine for visibility and growth",
+      "verdict": "weak",
+      "citation": "https://jobs.eclipse.capital/companies/cerebras-2/jobs/62003195-developer-experience-engineer"
+    },
+    {
+      "id": "c33",
+      "text": "no dedicated Hacker News discussion thread for How We Built Our Knowledge Base could be found",
+      "verdict": "supported",
+      "citation": "https://x.com/DBredvick/status/2078150905078206789"
+    }
+  ]
+}
