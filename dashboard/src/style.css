@@ -323,18 +323,6 @@ body.has-digest-player .app {
   background: var(--bg-secondary);
 }
 
-/* Search belongs to the shared nav, but must not make that sticky rail taller
- * when it opens. Float it directly below the rail instead. */
-.nav-shell .search-overlay {
-  position: absolute;
-  z-index: 1400;
-  top: 100%;
-  left: 0;
-  width: min(560px, 100%);
-  max-width: none;
-  margin-bottom: 0;
-}
-
 .tabs {
   display: flex;
   align-items: center;
@@ -466,14 +454,13 @@ body.has-digest-player .app {
 }
 
 .search-box {
-  flex: 1;
-  min-width: 160px;
+  flex: none;
   position: relative;
 }
 
 .search-icon {
   position: absolute;
-  left: 10px;
+  left: 16px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--text-tertiary);
@@ -482,20 +469,15 @@ body.has-digest-player .app {
 
 .search-input {
   width: 100%;
-  background: var(--bg);
-  border: 1px solid var(--border);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
   color: var(--text);
-  padding: 9px 58px 9px 36px;
-  border-radius: 10px;
+  padding: 15px 88px 15px 46px;
+  border-radius: 0;
   font-family: var(--font);
-  font-size: 0.9rem;
+  font-size: 1rem;
   outline: none;
-  transition: all 0.15s;
-}
-
-.search-input:focus {
-  border-color: var(--accent-warm);
-  box-shadow: 0 0 0 3px var(--accent-warm-shadow);
 }
 
 .search-input::placeholder { color: var(--text-tertiary); }
@@ -506,14 +488,13 @@ body.has-digest-player .app {
 
 .search-count {
   position: absolute;
-  right: 38px;
+  right: 48px;
   top: 50%;
   transform: translateY(-50%);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--text-tertiary);
   pointer-events: none;
-  background: var(--bg);
   padding: 0 4px;
 }
 
@@ -957,12 +938,47 @@ body.tab-agents .section-nav {
   }
 }
 
-/* Search overlay — revealed by the magnifier button next to the wordmark. */
-.search-overlay { margin-bottom: 12px; max-width: 560px; }
+/* ── Search modal ─────────────────────────────────────
+ * Command-palette dialog (Mintlify/GitBook style): a fixed, centered panel
+ * over a dimmed, blurred backdrop — never an inline dropdown overlapping the
+ * nav rail or the content behind it. Opened by ⌘K / ⌘F / "/" / magnifier. */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12vh 16px 24px;
+}
 .search-overlay[hidden] { display: none; }
+
+.search-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 15, 30, 0.42);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+body.search-open { overflow: hidden; }
+
+.search-modal {
+  position: relative;
+  width: min(640px, 100%);
+  max-height: min(72vh, 620px);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 24px 70px rgba(5, 15, 30, 0.35);
+  overflow: hidden;
+}
+
 .search-clear {
   position: absolute;
-  right: 6px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   width: 26px;
@@ -979,18 +995,41 @@ body.tab-agents .section-nav {
 .search-clear:hover { background: var(--bg-hover); color: var(--text); }
 .search-clear[hidden] { display: none; }
 
-/* Global search results (command-palette style). */
+/* Result list scrolls inside the panel; the input row and footer stay put. */
 .search-results {
-  margin-top: 6px;
-  max-height: 380px;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow-lg);
-  padding: 6px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 8px;
 }
 .search-results[hidden] { display: none; }
+
+.search-footer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 9px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  background: var(--bg-secondary);
+}
+.search-footer span { display: inline-flex; align-items: center; gap: 5px; }
+.search-footer kbd {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  line-height: 1;
+  padding: 3px 5px;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--text-secondary);
+}
 .search-result {
   display: flex;
   align-items: center;
@@ -2660,27 +2699,12 @@ body.has-toc .section-nav { display: none; }
   .brand { flex: 1; min-width: 0; }
   .header-link-label { display: none; }
   .controls { gap: 6px; }
-  .search-box { flex-basis: 100%; }
-  .nav-shell .search-overlay {
-    position: fixed;
-    z-index: 1400;
-    top: 58px;
-    left: var(--page-gutter);
-    right: var(--page-gutter);
-    width: auto;
-    max-width: none;
-    margin-bottom: 0;
-  }
-  .search-overlay .search-box,
-  .search-results {
-    width: 100%;
-  }
+  .search-overlay { padding: 7vh var(--page-gutter) 16px; }
+  .search-modal { max-height: min(78vh, calc(100dvh - 7vh - 16px)); }
   .search-input {
+    /* 16px floor keeps iOS Safari from auto-zooming the focused input. */
     font-size: 16px;
     line-height: 1.25;
-  }
-  .search-results {
-    max-height: min(420px, calc(100vh - 110px));
   }
   .content-card-body { padding: var(--card-pad-y) var(--card-pad-x); }
   .content-card-header { padding: 12px var(--card-pad-x); }
