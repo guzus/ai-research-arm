@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Glean's ARR crossing $200M by December 2025 and roughly $300M by May 2026, tripling in fifteen months.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Cerebras (CBRS) traded around $170.65 as of July 17, 2026, roughly a 50% market-cap decline from its debut-day peak of $386.34.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "No dedicated Hacker News discussion thread for Cerebras's knowledge-base post could be found, and reaction so far is limited to X/Twitter engagement with no substantive independent technical critique yet surfaced.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

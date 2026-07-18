@@ -939,5 +939,19 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-cerebras-statu",
+    "file": "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Cerebras opens its company brain — and reveals the build-vs-buy war eating enterprise AI search",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-18T18:25:28Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/cerebras/status/2077822555159945507. Start by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
