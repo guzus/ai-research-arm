@@ -146,6 +146,7 @@
         "etched",
         "federal-ai-policy",
         "figure-ai",
+        "fireworks-ai",
         "gemini-3-5-flash",
         "gemma-4",
         "meta",
@@ -260,11 +261,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); launched Claude for Teachers, free Opus 4.6 access for verified US K-12 educators, on 2026-07-15.",
-      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); launched Claude for Teachers, free Opus 4.6 access for verified US K-12 educators, on 2026-07-15.",
+      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); Microsoft CEO Satya Nadella publicly called Anthropic's Fable \"editorially controlled\" (2026-07-18) despite Microsoft's $5B stake.",
+      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); Microsoft CEO Satya Nadella publicly called Anthropic's Fable \"editorially controlled\" (2026-07-18) despite Microsoft's $5B stake.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-15",
-      "timestamp": "2026-07-15T00:00:00Z",
+      "updated_at": "2026-07-18",
+      "timestamp": "2026-07-18T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -291,6 +292,7 @@
         "gpt-5-6",
         "jelani-nelson",
         "john-jumper",
+        "meta",
         "micron",
         "microsoft",
         "neocloud",
@@ -325,6 +327,7 @@
         "dynamic-workflows",
         "federal-ai-policy",
         "figure-ai",
+        "fireworks-ai",
         "gemini-3-5-flash",
         "gemini-spark",
         "gpt-5-6",
@@ -359,11 +362,11 @@
         "siri",
         "wwdc"
       ],
-      "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft tied to OpenAI's rumored \"GPT-Live\" speaker.",
-      "description": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft tied to OpenAI's rumored \"GPT-Live\" speaker.",
+      "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026; sued OpenAI (2026-07-12) over alleged hardware trade-secret theft, escalating to legal letters against dozens of OpenAI employees (2026-07-18).",
+      "description": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026; sued OpenAI (2026-07-12) over alleged hardware trade-secret theft, escalating to legal letters against dozens of OpenAI employees (2026-07-18).",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-15",
-      "timestamp": "2026-07-15T00:00:00Z",
+      "updated_at": "2026-07-18",
+      "timestamp": "2026-07-18T00:00:00Z",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -621,6 +624,7 @@
         "john-jumper",
         "meta",
         "micron",
+        "microsoft",
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openai",
@@ -814,6 +818,7 @@
       "inbound": [
         "ai-capex",
         "dell",
+        "fireworks-ai",
         "meta",
         "nebius",
         "neocloud",
@@ -1123,6 +1128,38 @@
       ]
     },
     {
+      "slug": "fireworks-ai",
+      "title": "Fireworks AI",
+      "type": "entity",
+      "tags": [
+        "funding",
+        "inference-infra",
+        "series-d",
+        "ai-capex"
+      ],
+      "summary": "AI inference-infrastructure company that raised a $1.505B Series D at a $17.5B valuation (2026-07-18), citing 40T+ tokens/day served — one of the largest inference-infra rounds of the cycle.",
+      "description": "AI inference-infrastructure company that raised a $1.505B Series D at a $17.5B valuation (2026-07-18), citing 40T+ tokens/day served — one of the largest inference-infra rounds of the cycle.",
+      "created_at": "2026-07-18",
+      "updated_at": "2026-07-18",
+      "timestamp": "2026-07-18T00:00:00Z",
+      "file": "entities/fireworks-ai.md",
+      "aliases": [
+        "Fireworks",
+        "Fireworks.ai",
+        "Fireworks AI Inc."
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "coreweave",
+        "nebius",
+        "nvidia",
+        "openai",
+        "openrouter"
+      ],
+      "inbound": []
+    },
+    {
       "slug": "gemini-3-5-flash",
       "title": "Gemini 3.5 Flash",
       "type": "entity",
@@ -1251,8 +1288,8 @@
       "summary": "Hyperscaler and frontier-model builder behind Gemini; ordered by the EU under the DMA to open Android and Search to rivals (2026-07-17), the same day it rebranded NotebookLM into the Gemini product family.",
       "description": "Hyperscaler and frontier-model builder behind Gemini; ordered by the EU under the DMA to open Android and Search to rivals (2026-07-17), the same day it rebranded NotebookLM into the Gemini product family.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-17",
-      "timestamp": "2026-07-17T00:00:00Z",
+      "updated_at": "2026-07-18",
+      "timestamp": "2026-07-18T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -1283,11 +1320,11 @@
         "government-gated",
         "preview"
       ],
-      "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%; usage limits reset a reported 5th time by 2026-07-15 (past 8M active users) alongside acknowledged file-deletion incidents.",
-      "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%; usage limits reset a reported 5th time by 2026-07-15 (past 8M active users) alongside acknowledged file-deletion incidents.",
+      "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); the full family is now GA, powering the new \"ChatGPT Work\" product, but unprotected \"Full Access Mode\" reportedly deleted users' home directories in several cases.",
+      "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); the full family is now GA, powering the new \"ChatGPT Work\" product, but unprotected \"Full Access Mode\" reportedly deleted users' home directories in several cases.",
       "created_at": "2026-06-20",
-      "updated_at": "2026-07-15",
-      "timestamp": "2026-07-15T00:00:00Z",
+      "updated_at": "2026-07-18",
+      "timestamp": "2026-07-18T00:00:00Z",
       "file": "entities/gpt-5-6.md",
       "aliases": [
         "GPT-5.6",
@@ -1525,6 +1562,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "anthropic",
         "claude-sonnet-5",
         "google",
         "open-weights",
@@ -1581,11 +1619,11 @@
         "foundation-models",
         "custom-silicon"
       ],
-      "summary": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.",
-      "description": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.",
+      "summary": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable \"editorially controlled\" (2026-07-18) despite Microsoft's $5B stake in Anthropic.",
+      "description": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable \"editorially controlled\" (2026-07-18) despite Microsoft's $5B stake in Anthropic.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-07-04",
-      "timestamp": "2026-07-04T00:00:00Z",
+      "updated_at": "2026-07-18",
+      "timestamp": "2026-07-18T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -1602,6 +1640,7 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "claude-fable-5",
         "claude-opus-4-8",
         "deepseek",
         "minimax-m3",
@@ -1799,17 +1838,18 @@
         "moonshot",
         "frontier-model"
       ],
-      "summary": "Moonshot AI's 2.8T-parameter flagship, reportedly closing the gap with Anthropic's Opus 4.8; dominated Hacker News (420→774 points) on 2026-07-17, with open weights promised by 2026-07-27.",
-      "description": "Moonshot AI's 2.8T-parameter flagship, reportedly closing the gap with Anthropic's Opus 4.8; dominated Hacker News (420→774 points) on 2026-07-17, with open weights promised by 2026-07-27.",
+      "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"), reportedly closing the gap with Anthropic's Opus 4.8; dominated Hacker News two cycles running (~2,000 points) through 2026-07-18, with open weights promised by 2026-07-27.",
+      "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"), reportedly closing the gap with Anthropic's Opus 4.8; dominated Hacker News two cycles running (~2,000 points) through 2026-07-18, with open weights promised by 2026-07-27.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-17",
-      "timestamp": "2026-07-17T00:00:00Z",
+      "updated_at": "2026-07-18",
+      "timestamp": "2026-07-18T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
         "Kivine",
         "Moonshot Kimi K3",
-        "Moonshot AI Kimi K3"
+        "Moonshot AI Kimi K3",
+        "Open Frontier Intelligence"
       ],
       "outbound": [
         "anthropic",
@@ -1886,6 +1926,7 @@
       "inbound": [
         "ai-capex",
         "coreweave",
+        "fireworks-ai",
         "meta",
         "neocloud",
         "nvidia"
@@ -2013,6 +2054,7 @@
         "apple",
         "broadcom",
         "etched",
+        "fireworks-ai",
         "gemma-4",
         "meta",
         "microsoft",
@@ -2117,11 +2159,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) tied to its rumored screen-free \"GPT-Live\" hardware speaker, which OpenAI calls meritless (2026-07-15).",
-      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) tied to its rumored screen-free \"GPT-Live\" hardware speaker, which OpenAI calls meritless (2026-07-15).",
+      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
+      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-07-15",
-      "timestamp": "2026-07-15T00:00:00Z",
+      "updated_at": "2026-07-18",
+      "timestamp": "2026-07-18T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -2158,6 +2200,7 @@
         "deepseek",
         "federal-ai-policy",
         "figure-ai",
+        "fireworks-ai",
         "gpt-5-6",
         "jelani-nelson",
         "john-jumper",
@@ -2213,6 +2256,7 @@
       "inbound": [
         "ai-capex",
         "deepseek",
+        "fireworks-ai",
         "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
@@ -2835,6 +2879,10 @@
     "figure ai": "figure-ai",
     "figure robotics": "figure-ai",
     "figure-ai": "figure-ai",
+    "fireworks": "fireworks-ai",
+    "fireworks ai inc.": "fireworks-ai",
+    "fireworks-ai": "fireworks-ai",
+    "fireworks.ai": "fireworks-ai",
     "fugu": "sakana-ai",
     "fugu ultra": "sakana-ai",
     "fusion api": "openrouter",
@@ -2957,6 +3005,7 @@
     "notebooklm": "google",
     "nvda": "nvidia",
     "nvidia": "nvidia",
+    "open frontier intelligence": "moonshot-kimi-k3",
     "open source ai": "open-weights",
     "open weights": "open-weights",
     "open weights wave": "open-weights",
@@ -3038,6 +3087,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-07-18",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-18 digest (Satya Nadella publicly calls Anthropic's Fable \"editorially controlled\" despite Microsoft's $5B stake; Fireworks AI raises a $1.505B Series D at $17.5B; Kimi K3 — now branded \"Open Frontier Intelligence\" — holds Hacker News' top slot a second straight cycle at ~2,000 points; GPT-5.6 family goes GA powering the new \"ChatGPT Work,\" but an unprotected \"Full Access Mode\" reportedly deleted users' home directories; Apple escalates its OpenAI dispute with legal letters to dozens of employees; Google's rebranded Gemini Notebook adds cloud code execution and discloses 30M+ users/600K+ orgs). Created 1 (fireworks-ai entity — $1.505B Series D at $17.5B valuation, 40T+ tokens/day), updated 7 (moonshot-kimi-k3 — \"Open Frontier Intelligence\" branding, second HN cycle at ~2,000 pts, Willison pelican benchmark, system-prompt-refusal quote; gpt-5-6 — GA + ChatGPT Work + Full Access Mode file-deletion incident; openai — Apple legal letters escalation + ChatGPT Work + file-deletion incident; anthropic — Nadella \"editorially controlled\" jab + Meta compute-deal talks; microsoft — Nadella's public Fable comment; apple — legal letters to dozens of OpenAI employees; google — Gemini Notebook cloud code execution + 30M+ users/600K+ orgs disclosed)."
+    },
     {
       "date": "2026-07-17",
       "op": "ingest",
@@ -3132,11 +3186,6 @@
       "date": "2026-06-17",
       "op": "ingest",
       "summary": "Ingested 2026-06-17 digest (separate from the morning OKF-backfill pass). Created 1 (cursor — SpaceX's $60B all-stock acquisition of Anysphere + captive \"SpaceXAI\" model). Updated 8 (spacex — $60B Cursor buy + SpaceXAI model + briefly passing Amazon at ~$2.6-2.7T; anthropic — full BIS \"Is Informed\" Lutnick letter public (EAR §744.22(b), worldwide foreign-person license, deemed-export wall) + SDK token-billing pause + Ramp adoption-boost signal; federal-ai-policy — documented Lutnick letter + UK Starmer carveout denied/\"completely illogical\" + Carney overreliance warning + G7 Évian three-CEO first + DOJ xAI gas turbines + Pentagon genAI; claude-fable-5 — order documented, still dark June 17, deemed-export staff wall; zhipu-glm-5-2 — GLM-5.2 shipped under MIT (1M ctx, two effort levels, day-0 vLLM/Notion/Baseten, 46.2% DeepSWE); open-weights — GLM-5.2 MIT ship + Microsoft evaluating fine-tuned DeepSeek V4 for Copilot Cowork + FeynRL \"open weights are not enough\" + local-models HN; openai — leaked 2025 financials ($13.07B rev vs $19.18B R&D) + GPT-5.6 \"meaningful leap\" June signal + Codex CDP/computer-use/Chronicle + Deployment Simulation framework; ai-capex — SpaceX $60B Cursor all-stock buy + ~$2.6-2.7T valuation + leaked OpenAI cost side ($13.07B rev vs $19.18B R&D))."
-    },
-    {
-      "date": "2026-06-17",
-      "op": "ingest",
-      "summary": "Backfilled and flourished the LLM wiki after OKF migration. Created 4 entities (broadcom — custom ASIC and private-credit hinge for Anthropic/OpenAI compute financing; zhipu-glm-5-2 — 1M-context GLM Coding Plan flagship with MIT weights promised; moonshot-kimi-k2-7-code — low-price open coding model filling the Fable 5 vacuum; xiaomi-mimo-v2-5-pro — 1T MoE / 1,000+ tok/s efficiency claim). Updated surrounding graph pages (open-weights, openrouter, ai-capex, anthropic, nvidia, claude-fable-5, sakana-ai, salesforce) with reciprocal links and richer context."
     }
   ]
 }

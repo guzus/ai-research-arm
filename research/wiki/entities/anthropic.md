@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); launched Claude for Teachers, free Opus 4.6 access for verified US K-12 educators, on 2026-07-15.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); Microsoft CEO Satya Nadella publicly called Anthropic's Fable "editorially controlled" (2026-07-18) despite Microsoft's $5B stake.
 created_at: 2026-05-24
-timestamp: 2026-07-15T00:00:00Z
+timestamp: 2026-07-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
@@ -615,6 +616,19 @@ Four developments through May 2026 put Anthropic at the center of the field:
   uploads to Google Cloud) revived scrutiny of AI-tool data handling in
   sensitive/institutional settings — a contrast Anthropic's FERPA
   framing implicitly plays against (ARA digest 2026-07-15).
+
+- **Nadella publicly calls Fable "editorially controlled"; Meta compute-deal
+  talks surface (2026-07-18).** [[microsoft|Microsoft]] CEO **Satya Nadella**
+  publicly characterized Anthropic's **[[claude-fable-5|Fable]]** model as
+  "editorially controlled" — an unusually public jab at a company Microsoft
+  holds a **$5B stake** in, and a notable moment of investor-portfolio
+  friction (see [[microsoft]]). Separately, The Decoder reports **[[meta|Meta]]
+  is in talks to rent out spare data-center capacity**, with Anthropic as a
+  potential first big customer of Zuckerberg's excess-compute plan — if it
+  materializes, a striking business arrangement between two rivals that
+  would make Meta a compute supplier to a company it competes with on
+  models. *Both items are single-cycle reporting; the compute deal remains
+  talks, not a signed agreement* (ARA digest 2026-07-18).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

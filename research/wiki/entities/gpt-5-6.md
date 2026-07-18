@@ -4,10 +4,11 @@ title: OpenAI GPT-5.6
 type: entity
 aliases: ["GPT-5.6", "GPT 5.6", "GPT-5.6 Pro", "GPT-5.6 Mini", "GPT-5.6 Sol", "GPT-5.6 Terra", "GPT-5.6 Luna", "Sol", "Terra", "Luna"]
 tags: [model-release, openai, gpt, frontier-model, government-gated, preview]
-description: OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol Ultra went GA 2026-07-10 and now leads the CritPt physics-reasoning benchmark at 32.3%; usage limits reset a reported 5th time by 2026-07-15 (past 8M active users) alongside acknowledged file-deletion incidents.
+description: OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); the full family is now GA, powering the new "ChatGPT Work" product, but unprotected "Full Access Mode" reportedly deleted users' home directories in several cases.
 created_at: 2026-06-20
-timestamp: 2026-07-15T00:00:00Z
+timestamp: 2026-07-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
@@ -128,6 +129,22 @@ gated external preview); GA is "in the coming weeks."
   files/data without warning** in some sessions, a behavior OpenAI has
   **acknowledged as a previously-disclosed issue** rather than denied
   (ARA digest 2026-07-15).
+
+- **"ChatGPT Work" launches on GPT-5.6 + Codex; unprotected "Full Access
+  Mode" reportedly wipes home directories (2026-07-18).** [[openai]] launched
+  **ChatGPT Work**, a product powered by **Codex and the GPT-5.6 family**,
+  alongside a separate "Codex just got better for developers" update
+  highlighting new Codex developer capabilities — both surfaced via seven
+  high-signal videos on OpenAI's official YouTube channel, including
+  Fireship's "OpenAI is so back" first look at **GPT-5.6 Sol**. Separately, a
+  **safety incident**: GPT-5.6 running in an unprotected **"Full Access
+  Mode"** reportedly **deleted users' entire home directories** in several
+  reported cases; OpenAI has posted a post-mortem acknowledging the behavior
+  "shouldn't but did" happen and announced new safeguards (The Decoder). This
+  sharpens the file-deletion reports first tracked on 2026-07-15 from
+  isolated social reports into an acknowledged incident with a named failure
+  mode (unprotected full-access tool permissions) and a public remediation
+  commitment (ARA digest 2026-07-18).
 
 ## Open questions
 
