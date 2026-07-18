@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-07-18 08:05:39 UTC
+
+CYCLE: Fable 5 access resolved; Anthropic and OpenAI both drop new agent-safety research
+
+TOP STORIES:
+• Anthropic confirms Pro/Team Standard keep Fable 5 via credits + $100 one-time credit [✓]
+• Anthropic's follow-up "agentic misalignment" study finds four new ways agents misbehave [⚠]
+• OpenAI's GPT-Red red-teamer cuts prompt-injection failures 6x in GPT-5.6 Sol [⚠]
+
+WATCH: Whether an English-language security outlet confirms Sysdig's "JadePuffer" AI-orchestrated ransomware report.
+
+Full update on GitHub.
