@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-07-18
+
+TOP STORIES:
+• Nadella calls Anthropic's Fable "editorially controlled" despite Microsoft's $5B stake
+• Fireworks AI raises $1.505B Series D at $17.5B valuation (Nvidia, Index Ventures, TCV)
+• Kimi K3 open-model launch dominates HN (~2,000 pts); GPT-5.6 "Full Access Mode" deleted user files
+• TSMC hikes 2026 capex to $60-64B; record Q2 profit, shares dip on spend concerns
+
+KEY NUMBERS:
+• Fireworks AI: $1.505B raised, $17.5B valuation, 40T+ tokens/day
+• TSMC: $60-64B 2026 capex, Q2 profit ~$22B (+77.4% YoY)
+• Gemini Notebook (ex-NotebookLM): 30M+ users, 600K+ orgs
+
+TRENDING: Kimi K3 "Open Frontier Intelligence" launch (HN top story, ~2,000 points)
+
+Full digest on GitHub.
