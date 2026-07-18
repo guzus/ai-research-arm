@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-18 22:29:00 UTC
+
+CYCLE: Kimi K3 posts a narrow ECI lead over Opus 4.6/GPT-5.3-Codex but floors at 39% on hard math; Anthropic locks Fable 5 to top tiers and lifts Claude Code limits 50%.
+
+TOP STORIES:
+• Kimi K3 edges Opus 4.6 + GPT-5.3-Codex on preliminary ECI (155.53) but scores only 39% on FrontierMath Tier 4 — 7 pts below 7-month-old US models [⚠]
+• Anthropic keeps Fable 5 on Max/Team Premium past July 19 and raises Claude Code limits 50% through Aug 19 [✓]
+• K3's KDA Attention cuts inference networking bandwidth up to 10x, per SemiAnalysis [⚠]
+
+WATCH: Independent FrontierMath / hard-reasoning eval of K3 after weights drop July 27.
+
+Full update on GitHub.
