@@ -1,0 +1,15 @@
+Twitter/X AI Pulse - 2026-07-18 19:19:07 UTC
+
+CYCLE: Databricks' reported $188B raise and a DeepSeek/Claude distillation accusation
+
+QUICK HITS:
+• New research: prompt-injection payloads persist silently in Claude Code / Codex agent memory
+• Databricks reportedly raising $3B Series M at $188B valuation led by Coatue ⚠
+• Grok Build 0.2.105 ships with Grok 4.5 as default model
+• China says it launched WAICO in Shanghai with 29 members, UN SG attending ⚠
+
+SKEPTIC'S CORNER: Unverified claim DeepSeek is routing prompts through Claude Fable 5 for distillation — pushed back on by a closely-watched DeepSeek-focused account 🚩
+
+WATCH: Whether a named outlet confirms Databricks' $188B round.
+
+Full update on GitHub.
