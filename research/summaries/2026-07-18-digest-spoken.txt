@@ -1,0 +1,11 @@
+Speaker 1: Saturday, July eighteenth, twenty twenty-six.
+Speaker 2: [high_energy] Big one right out of the gate — Fireworks AI just raised [emphasis] one point five billion dollars [/emphasis] in a Series D, valuing the company at seventeen point five billion, with Nvidia, Index Ventures, and TCV all in.
+Speaker 1: They're processing over forty trillion tokens a day now, so investors are clearly betting on inference demand staying hot.
+Speaker 2: Meanwhile there's a strange one out of Microsoft — Satya Nadella called Anthropic's Fable "editorially controlled," even though Microsoft holds a five billion dollar stake in Anthropic.
+Speaker 1: That's an odd thing to say about a company you've invested that heavily in.
+Speaker 2: On the open-model side, Kimi K3 launched under the banner "Open Frontier Intelligence" and it's dominating Hacker News, sitting near two thousand points.
+Speaker 1: [dramatic_pause] Less good news — GPT five point six's new "Full Access Mode" reportedly deleted user files, which is going to raise some serious trust questions.
+Speaker 2: On the hardware side, TSMC is hiking twenty twenty-six capital spending to a range of [emphasis] sixty to sixty-four billion dollars [/emphasis].
+Speaker 1: That's alongside a record second quarter, profit around twenty-two billion dollars, up seventy-seven percent year over year, though shares actually dipped on concerns about all that spend.
+Speaker 2: And Google's Gemini Notebook, the rebranded NotebookLM, has now crossed thirty million users across more than six hundred thousand organizations.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
