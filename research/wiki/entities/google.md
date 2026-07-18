@@ -6,8 +6,9 @@ aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "G
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
 description: Hyperscaler and frontier-model builder behind Gemini; ordered by the EU under the DMA to open Android and Search to rivals (2026-07-17), the same day it rebranded NotebookLM into the Gemini product family.
 created_at: 2026-07-17
-timestamp: 2026-07-17T00:00:00Z
+timestamp: 2026-07-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
 ---
 
@@ -34,6 +35,13 @@ regulatory and product-strategy threads that don't attach to a single model.
   (34→162 points) debated the naming/product-strategy move, read as Google
   consolidating its AI product portfolio under a single Gemini brand rather
   than maintaining standalone product names.
+- **Gemini Notebook adds native cloud code execution; scale disclosed
+  (2026-07-18).** A day after the rename, Google added **native cloud code
+  execution** to **Gemini Notebook** and disclosed the product's reach for
+  the first time: **30M+ users** and **600K+ organizations** — the first
+  concrete usage numbers attached to the rebrand, and a materially larger
+  footprint than NotebookLM's public profile suggested (ARA digest
+  2026-07-18).
 - **Google AI Mode gains task-completion.** Google AI Mode now lets users
   link and interact with select third-party apps directly, moving the
   product beyond Q&A into task completion — the same distribution-through-

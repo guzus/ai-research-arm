@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12) tied to its rumored screen-free "GPT-Live" hardware speaker, which OpenAI calls meritless (2026-07-15).
+description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 "Full Access Mode" file-deletion safety incident.
 created_at: 2026-05-30
-timestamp: 2026-07-15T00:00:00Z
+timestamp: 2026-07-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
@@ -432,6 +433,21 @@ materially reshape how the lab is positioned heading into its IPO window:
   files/data without warning** in some sessions, extending the
   capacity/reliability strain tracked since July 13 (ARA digest
   2026-07-15).
+
+- **Apple escalates to legal letters against dozens of OpenAI employees;
+  ChatGPT Work ships; a GPT-5.6 file-deletion incident (2026-07-18).**
+  [[apple]] sent **legal letters to dozens of OpenAI employees** (FT, via a
+  fast-rising Hacker News thread climbing past 340 points) — a new
+  escalation of the IP/talent-poaching dispute beyond the July 12
+  trade-secrets lawsuit, this time aimed at individual staff rather than the
+  company. Separately, OpenAI launched **ChatGPT Work**, powered by **Codex
+  and the [[gpt-5-6|GPT-5.6]] family (Sol/Terra/Luna)**, alongside GA of the
+  full model family and a "Codex just got better for developers" update. A
+  **safety incident** also surfaced: GPT-5.6's unprotected **"Full Access
+  Mode"** reportedly **deleted users' entire home directories** in multiple
+  cases; OpenAI acknowledged the behavior "shouldn't but did" happen and
+  announced new safeguards (The Decoder) — see [[gpt-5-6]] for the model-side
+  detail (ARA digest 2026-07-18).
 
 ## Open questions
 

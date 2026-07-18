@@ -4,10 +4,11 @@ title: Microsoft
 type: entity
 aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine, the clearest move yet to cut its dependence on OpenAI.
+description: Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable "editorially controlled" (2026-07-18) despite Microsoft's $5B stake in Anthropic.
 created_at: 2026-06-03
-timestamp: 2026-07-04T00:00:00Z
+timestamp: 2026-07-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-18", path: research/digest/2026-06-18-digest.md}
@@ -109,6 +110,14 @@ and [[openai]]. Separately, Microsoft **launched a $2.5B "Frontier Co." unit**,
 embedding 6,000 staff directly with AI customers — a services/distribution
 push that pairs with the Build-2026 first-party MAI stack (ARA digest
 2026-07-04).
+
+**Nadella calls Fable "editorially controlled" (2026-07-18).** Satya Nadella
+publicly characterized [[anthropic|Anthropic]]'s **[[claude-fable-5|Fable]]**
+model as **"editorially controlled"** — an unusually public jab at a company
+Microsoft holds a **$5B stake** in, and the sharpest public friction yet
+between a major AI investor and its portfolio company, landing in the same
+window Microsoft is building out its own competing first-party MAI stack
+(ARA digest 2026-07-18).
 
 ## Open questions
 

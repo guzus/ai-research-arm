@@ -4,10 +4,11 @@ title: Apple
 type: entity
 aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC]
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
-description: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (keynote 2026-06-08); sued OpenAI (2026-07-12) over alleged hardware trade-secret theft tied to OpenAI's rumored "GPT-Live" speaker.
+description: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026; sued OpenAI (2026-07-12) over alleged hardware trade-secret theft, escalating to legal letters against dozens of OpenAI employees (2026-07-18).
 created_at: 2026-06-08
-timestamp: 2026-07-15T00:00:00Z
+timestamp: 2026-07-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
@@ -122,6 +123,14 @@ not announced.
   has since publicly called the suit **meritless**. No court filing has
   been directly linked in any monitored source, so specific case details
   remain unverified beyond the relayed reporting (ARA digest 2026-07-15).
+
+- **Escalates to legal letters against dozens of OpenAI employees
+  (2026-07-18).** Apple sent **legal letters to dozens of [[openai]]
+  employees** (FT, via a fast-rising Hacker News thread climbing past 340
+  points) — escalating the trade-secrets dispute from a company-vs-company
+  lawsuit (2026-07-12) to direct legal action against individual OpenAI
+  staff, sharpening the IP/talent-poaching framing of the fight over
+  OpenAI's rumored "GPT-Live" hardware device (ARA digest 2026-07-18).
 
 ## Open questions
 
