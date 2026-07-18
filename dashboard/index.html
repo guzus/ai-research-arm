@@ -56,21 +56,10 @@
           <a class="tab" data-tab="research" href="/research">Research</a>
           <a class="tab" data-tab="wiki" href="/wiki">Wiki</a>
           <a class="tab" data-tab="agents" href="/agents">Arm</a>
-          <button class="brand-search" id="searchToggle" type="button" aria-label="Search" title="Search (⌘F or /)">
+          <button class="brand-search" id="searchToggle" type="button" aria-label="Search" title="Search (⌘K or /)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
           </button>
         </nav>
-        <div class="search-overlay" id="searchOverlay" hidden>
-          <div class="search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search this view…" autocomplete="off" spellcheck="false">
-            <span class="search-count" id="searchCount" aria-live="polite"></span>
-            <button class="search-clear" id="searchClear" type="button" aria-label="Clear search" hidden>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-            </button>
-          </div>
-          <div class="search-results" id="searchResults" role="listbox" hidden></div>
-        </div>
       </div>
       <div class="controls">
           <a
@@ -98,6 +87,28 @@
         </a>
       </footer>
     </div>
+    <!-- Global search — a centered command-palette dialog over a dimmed
+         backdrop (Mintlify/GitBook style), so it never overlaps the nav rail
+         or the content behind it. Opened by ⌘K / ⌘F / "/" or the magnifier. -->
+    <div class="search-overlay" id="searchOverlay" hidden>
+      <div class="search-backdrop" id="searchBackdrop"></div>
+      <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+        <div class="search-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" class="search-input" id="searchInput" placeholder="Search articles, wiki, models, digests…" autocomplete="off" spellcheck="false">
+          <span class="search-count" id="searchCount" aria-live="polite"></span>
+          <button class="search-clear" id="searchClear" type="button" aria-label="Clear search" hidden>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div class="search-results" id="searchResults" role="listbox" hidden></div>
+        <div class="search-footer">
+          <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+          <span><kbd>↵</kbd> open</span>
+          <span><kbd>esc</kbd> close</span>
+        </div>
+      </div>
+    </div>
     <aside class="ara-toc" id="researchToc" hidden aria-label="Article contents">
       <h2 class="ara-toc-title">Contents</h2>
       <ol class="ara-toc-list" id="researchTocList"></ol>
@@ -120,7 +131,7 @@
         <div class="shortcut-row"><kbd>↑</kbd><kbd>↓</kbd><span>Navigate sections</span></div>
         <div class="shortcut-row"><kbd>[</kbd><kbd>]</kbd><span>Previous / next day</span></div>
         <div class="shortcut-row"><kbd>T</kbd><span>Jump to today</span></div>
-        <div class="shortcut-row"><kbd>/</kbd><span>Focus search</span></div>
+        <div class="shortcut-row"><kbd>⌘K</kbd><kbd>/</kbd><span>Open search</span></div>
         <div class="shortcut-row"><kbd>R</kbd><span>Refresh</span></div>
         <div class="shortcut-row"><kbd>?</kbd><span>Toggle this guide</span></div>
       </div>

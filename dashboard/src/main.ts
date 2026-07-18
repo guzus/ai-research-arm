@@ -5006,14 +5006,20 @@ function syncSearchClear(): void {
   if (searchClear) (searchClear as HTMLElement).hidden = searchInput.value.length === 0;
 }
 function openSearch(): void {
+  closeAraFigureModal(); // the figure lightbox stacks above the search modal
   if (searchOverlay) searchOverlay.hidden = false;
+  document.body.classList.add('search-open'); // scroll-lock behind the modal
   syncSearchClear();
   searchInput.focus();
   searchInput.select();
+  // Re-run a kept query so reopening never shows Enter-able hits from a
+  // hidden, stale result list.
+  if (searchInput.value.trim()) void runGlobalSearch(searchInput.value);
 }
 function closeSearch(): void {
   if (searchOverlay) searchOverlay.hidden = true;
   if (searchResultsEl) searchResultsEl.hidden = true;
+  document.body.classList.remove('search-open');
 }
 function clearSearch(): void {
   searchInput.value = '';
@@ -5033,24 +5039,24 @@ searchResultsEl?.addEventListener('click', (e) => {
   if (searchHits[i]) activateSearchHit(searchHits[i]);
 });
 searchInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') { closeSearch(); searchInput.blur(); }
+  if (e.key === 'Escape') { closeSearch(); searchInput.blur(); (searchToggle as HTMLElement | null)?.focus(); }
   else if (e.key === 'ArrowDown') { e.preventDefault(); moveSearchSel(1); }
   else if (e.key === 'ArrowUp') { e.preventDefault(); moveSearchSel(-1); }
   else if (e.key === 'Enter') { e.preventDefault(); if (searchHits[searchSel]) activateSearchHit(searchHits[searchSel]); }
 });
-// ⌘F / Ctrl+F opens search from anywhere (overrides native find); click outside
-// the panel closes it.
+// ⌘K (the Mintlify/GitBook convention) and ⌘F / Ctrl+F open the search modal
+// from anywhere (⌘F deliberately overrides native find); clicking the dimmed
+// backdrop closes it.
 document.addEventListener('keydown', (e) => {
-  if ((e.metaKey || e.ctrlKey) && (e.key === 'f' || e.key === 'F')) {
+  if ((e.metaKey || e.ctrlKey) && ['f', 'F', 'k', 'K'].includes(e.key)) {
     e.preventDefault();
     openSearch();
   }
 });
-document.addEventListener('mousedown', (e) => {
-  if (!searchOverlay || searchOverlay.hidden) return;
-  const t = e.target as Node;
-  if (!searchOverlay.contains(t) && !(searchToggle && searchToggle.contains(t))) closeSearch();
-});
+// 'click', not 'mousedown': hiding the overlay on mousedown would let the
+// paired click land on whatever the backdrop was covering (e.g. the magnifier
+// toggle, whose handler would instantly reopen the modal).
+document.getElementById('searchBackdrop')?.addEventListener('click', closeSearch);
 
 searchInput.addEventListener('input', () => {
   syncSearchClear();

@@ -22,8 +22,8 @@
     "vite": "^8.1.4"
   },
   "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "dompurify": "^3.4.12",
-    "marked": "^18.0.6",
-    "playwright-core": "^1.61.1"
+    "marked": "^18.0.6"
   }
 }

@@ -21,22 +21,24 @@
 // dist/robots.txt (allow all + sitemap pointer), dist/feed.xml, and
 // dist/llms.txt for AI-answer engines.
 //
-// Social share image: the most recent research/front-page/<date>-front-page.png
-// (the purpose-built daily newspaper graphic) is reused as the default og:image
-// / twitter:image. The image is referenced by its public URL, so it resolves on
-// the deployed site even when the build environment skipped LFS hydration
-// (Vercel hydrates LFS for the production deploy).
+// Social share images:
+//   - Per-article: a deterministic 1200x630 typographic card rendered at build
+//     time by scripts/social-card.mjs (resvg, no Chromium/network/S3 — the
+//     replaced Playwright screenshot pipeline needed all three and silently
+//     degraded when any was missing). Written to
+//     dist/research/generative/<stem>.social.png, same URL contract as before.
+//   - Everything else: the committed brand illustration in public/brand/
+//     (1280x640) with the wordmark composited in white at build time — a
+//     valid 2:1 card on every route.
 //
 // Standalone-kind generative entries (iframe articles) are skipped -- they are
 // already self-contained HTML and need a different SEO path.
 
-import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, createReadStream } from 'node:fs';
-import { createHash, createHmac } from 'node:crypto';
-import { createServer } from 'node:http';
-import { join, dirname, resolve, extname } from 'node:path';
+import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
+import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { marked } from 'marked';
-import { chromium } from 'playwright-core';
+import { renderSiteDefaultCardPng, renderSocialCardPng } from './social-card.mjs';
 import { forecastSeoRecord, mappedForecastTickets } from './forecast-seo.mjs';
 import {
   datedPagePolicy,
@@ -78,18 +80,6 @@ const SITE_LINKS = {
   github: 'https://github.com/guzus/ai-research-arm',
   author: 'https://x.com/uncanny_guzus',
 };
-const SOCIAL_PREVIEW_CONCURRENCY = Math.max(
-  1,
-  Math.min(6, Number(process.env.SOCIAL_PREVIEW_CONCURRENCY || 4) || 4),
-);
-const SOCIAL_PREVIEW_BASE_URL = (
-  process.env.SOCIAL_PREVIEW_BASE_URL ||
-  process.env.AUDIO_BASE_URL ||
-  'https://s3.guzus.xyz/obj-ai-research-arm'
-).replace(/\/+$/, '');
-const SOCIAL_PREVIEW_PREFIX = (process.env.SOCIAL_PREVIEW_PREFIX || 'social-preview')
-  .replace(/^\/+|\/+$/g, '');
-
 // Markers that delimit the default SEO block in index.html. postbuild replaces
 // the whole block (markers included) per page; if the markers are absent we
 // fall back to replacing just <title>...</title> so older shells still work.
@@ -185,10 +175,26 @@ function sanitizeFragment(html) {
     .replace(/javascript:/gi, '');
 }
 
-// Most recent research/front-page/<date>-front-page.png, referenced by its
-// public URL so it resolves on the deployed site regardless of whether this
-// build hydrated LFS. Returns an absolute URL string or null.
-function findShareImageUrl() {
+// Site-wide default share image: the committed 2:1 brand illustration with
+// the wordmark composited in white at build time, written to dist/brand/.
+// Falls back to the raw brand asset if compositing fails, then to the newest
+// front-page newspaper PNG for forks that stripped the brand asset entirely.
+// Returns an absolute URL string or null.
+const brandSourcePath = join(dashboardDir, 'public', 'brand', 'github-social-preview.png');
+
+async function findShareImageUrl() {
+  if (existsSync(brandSourcePath)) {
+    try {
+      const png = await renderSiteDefaultCardPng(readFileSync(brandSourcePath), 'ai-research-arm');
+      const outDir = join(dist, 'brand');
+      mkdirSync(outDir, { recursive: true });
+      writeFileSync(join(outDir, 'site-social-card.png'), png);
+      return `${SITE_ORIGIN}/brand/site-social-card.png`;
+    } catch (e) {
+      console.warn(`postbuild-seo: site share-card compositing failed (${e.message}); using raw brand image`);
+      return `${SITE_ORIGIN}/brand/github-social-preview.png`;
+    }
+  }
   if (!existsSync(frontPageDir)) return null;
   const re = /^(\d{4}-\d{2}-\d{2})-front-page\.png$/;
   let best = null;
@@ -314,195 +320,19 @@ function articleShareImage(row, fallbackShareImageUrl, fallbackAlt, generatedIma
   return articleArtifactImage(row, fallbackAlt) || generatedImages.get(row.slug) || fallbackShareImageUrl;
 }
 
-function contentTypeForPath(path) {
-  const ext = extname(path).toLowerCase();
-  if (ext === '.html') return 'text/html; charset=utf-8';
-  if (ext === '.js') return 'text/javascript; charset=utf-8';
-  if (ext === '.css') return 'text/css; charset=utf-8';
-  if (ext === '.json') return 'application/json; charset=utf-8';
-  if (ext === '.png') return 'image/png';
-  if (ext === '.jpg' || ext === '.jpeg') return 'image/jpeg';
-  if (ext === '.webp') return 'image/webp';
-  if (ext === '.gif') return 'image/gif';
-  if (ext === '.svg') return 'image/svg+xml; charset=utf-8';
-  return 'application/octet-stream';
-}
-
-function startStaticServer(root) {
-  const rootDir = resolve(root);
-  const server = createServer((req, res) => {
-    try {
-      const rawPath = new URL(req.url || '/', 'http://127.0.0.1').pathname;
-      const decoded = decodeURIComponent(rawPath);
-      let filePath = resolve(rootDir, `.${decoded}`);
-      if (!filePath.startsWith(rootDir)) {
-        res.writeHead(403);
-        res.end('forbidden');
-        return;
-      }
-      if (!existsSync(filePath)) {
-        const indexPath = resolve(filePath, 'index.html');
-        if (indexPath.startsWith(rootDir) && existsSync(indexPath)) filePath = indexPath;
-      } else if (statSync(filePath).isDirectory()) {
-        filePath = resolve(filePath, 'index.html');
-      }
-      if (!filePath.startsWith(rootDir) || !existsSync(filePath) || !statSync(filePath).isFile()) {
-        res.writeHead(404);
-        res.end('not found');
-        return;
-      }
-      res.writeHead(200, { 'content-type': contentTypeForPath(filePath) });
-      createReadStream(filePath).pipe(res);
-    } catch (e) {
-      res.writeHead(500);
-      res.end(String(e?.message || e));
-    }
-  });
-
-  return new Promise((resolveServer, reject) => {
-    server.once('error', reject);
-    server.listen(0, '127.0.0.1', () => {
-      const address = server.address();
-      resolveServer({
-        origin: `http://127.0.0.1:${address.port}`,
-        close: () => new Promise(resolveClose => server.close(resolveClose)),
-      });
-    });
-  });
-}
-
-function browserExecutablePath() {
-  const candidates = [
-    process.env.SOCIAL_PREVIEW_BROWSER,
-    '/usr/bin/chromium-browser',
-    '/usr/bin/chromium',
-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser',
-  ].filter(Boolean);
-  return candidates.find(path => existsSync(path)) || null;
-}
-
-function hashHex(value) {
-  return createHash('sha256').update(value).digest('hex');
-}
-
-function hmac(key, value, encoding) {
-  return createHmac('sha256', key).update(value).digest(encoding);
-}
-
-function s3Config() {
-  const endpoint = process.env.S3_ENDPOINT_URL;
-  const bucket = process.env.S3_BUCKET;
-  const accessKey = process.env.S3_ACCESS_KEY_ID || process.env.AWS_ACCESS_KEY_ID;
-  const secretKey = process.env.S3_SECRET_ACCESS_KEY || process.env.AWS_SECRET_ACCESS_KEY;
-  if (!endpoint || !bucket || !accessKey || !secretKey) return null;
-  return {
-    endpoint: endpoint.replace(/\/+$/, ''),
-    bucket,
-    accessKey,
-    secretKey,
-    region: process.env.S3_REGION || process.env.AWS_REGION || 'us-east-1',
-  };
-}
-
-function encodeS3Key(key) {
-  return key.split('/').map(part => encodeURIComponent(part)).join('/');
-}
-
-function socialPreviewKey(stem) {
-  return `${SOCIAL_PREVIEW_PREFIX}/${stem}.social.png`;
-}
-
-function socialPreviewPublicUrl(key) {
-  return `${SOCIAL_PREVIEW_BASE_URL}/${key.split('/').map(encodeURIComponent).join('/')}`;
-}
-
-async function publicObjectExists(url) {
-  try {
-    const res = await fetch(url, { method: 'HEAD' });
-    return res.ok;
-  } catch {
-    return false;
-  }
-}
-
-async function putS3Object(key, body, contentType) {
-  const cfg = s3Config();
-  if (!cfg) return false;
-
-  const now = new Date();
-  const amzDate = now.toISOString().replace(/[:-]|\.\d{3}/g, '');
-  const dateStamp = amzDate.slice(0, 8);
-  const payloadHash = hashHex(body);
-  const objectPath = `/${cfg.bucket}/${encodeS3Key(key)}`;
-  const url = new URL(`${cfg.endpoint}${objectPath}`);
-  const canonicalHeaders =
-    `host:${url.host}\n` +
-    `x-amz-content-sha256:${payloadHash}\n` +
-    `x-amz-date:${amzDate}\n`;
-  const signedHeaders = 'host;x-amz-content-sha256;x-amz-date';
-  const canonicalRequest = [
-    'PUT',
-    url.pathname,
-    '',
-    canonicalHeaders,
-    signedHeaders,
-    payloadHash,
-  ].join('\n');
-  const credentialScope = `${dateStamp}/${cfg.region}/s3/aws4_request`;
-  const stringToSign = [
-    'AWS4-HMAC-SHA256',
-    amzDate,
-    credentialScope,
-    hashHex(canonicalRequest),
-  ].join('\n');
-  const kDate = hmac(`AWS4${cfg.secretKey}`, dateStamp);
-  const kRegion = hmac(kDate, cfg.region);
-  const kService = hmac(kRegion, 's3');
-  const kSigning = hmac(kService, 'aws4_request');
-  const signature = hmac(kSigning, stringToSign, 'hex');
-  const authorization =
-    `AWS4-HMAC-SHA256 Credential=${cfg.accessKey}/${credentialScope}, ` +
-    `SignedHeaders=${signedHeaders}, Signature=${signature}`;
-
-  const res = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      authorization,
-      'cache-control': 'public, max-age=31536000, immutable',
-      'content-type': contentType,
-      'x-amz-content-sha256': payloadHash,
-      'x-amz-date': amzDate,
-    },
-    body,
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    throw new Error(`S3 upload failed ${res.status} ${res.statusText}${text ? `: ${text.slice(0, 300)}` : ''}`);
-  }
-  return true;
-}
-
-function generatedArticleImageMeta(row) {
+// Deterministic per-article social card, written to
+// dist/research/generative/<stem>.social.png — the same URL contract as the
+// retired Chromium-screenshot pipeline, so links crawled against old deploys
+// pick up the new card on their next re-crawl without a URL change.
+function articleSocialCardMeta(row, alt) {
   const file = typeof row?.file === 'string' ? row.file : '';
   if (!file.endsWith('.html')) return null;
   const stem = file.slice(0, -'.html'.length);
-  const key = socialPreviewKey(stem);
   return {
-    key,
-    publicUrl: socialPreviewPublicUrl(key),
-    fileName: `${stem}.social.png`,
     outputPath: join(distGenerativeDir, `${stem}.social.png`),
     image: {
-      url: socialPreviewPublicUrl(key),
-      alt: row.title || row.slug,
-      width: 1200,
-      height: 630,
-      type: 'image/png',
-    },
-    localImage: {
       url: `/research/generative/${stem}.social.png`,
-      alt: row.title || row.slug,
+      alt,
       width: 1200,
       height: 630,
       type: 'image/png',
@@ -510,110 +340,27 @@ function generatedArticleImageMeta(row) {
   };
 }
 
-async function renderArticleSocialScreenshots(rows) {
-  const executablePath = browserExecutablePath();
-  if (!executablePath) {
-    console.warn('postbuild-seo: no Chromium executable found; article screenshot previews fall back to front-page image');
-    return new Map();
-  }
+const CARD_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function cardDateLabel(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ''));
+  if (!m) return '';
+  return `${CARD_MONTHS[Number(m[2]) - 1]} ${Number(m[3])}, ${m[1]}`;
+}
 
-  const generated = new Map();
-  const candidates = [];
-  await Promise.all(rows.map(async row => {
-    if (
-      row?.kind === 'standalone' ||
-      !row?.slug ||
-      !row?.file ||
-      articleArtifactImage(row, row.title || row.slug) ||
-      !existsSync(join(dist, 'research', row.slug, 'index.html'))
-    ) {
-      return;
-    }
-    const meta = generatedArticleImageMeta(row);
-    if (!meta) return;
-    if (await publicObjectExists(meta.publicUrl)) {
-      generated.set(row.slug, meta.image);
-      return;
-    }
-    candidates.push(row);
-  }));
-  if (!candidates.length) return generated;
-
-  mkdirSync(distGenerativeDir, { recursive: true });
-  if (!s3Config()) {
-    console.warn(
-      'postbuild-seo: S3 credentials missing; generated social previews will be local dist artifacts only',
-    );
-  }
-  const server = await startStaticServer(dist);
-  const browser = await chromium.launch({
-    executablePath,
-    headless: true,
-    args: ['--no-sandbox', '--disable-dev-shm-usage'],
+// Card chrome is deliberately spare — date, title, deck, model attribution,
+// domain — so shared links read canonical rather than decorated.
+async function generateArticleSocialCard(row, title, description) {
+  const meta = articleSocialCardMeta(row, title);
+  if (!meta) return null;
+  const png = await renderSocialCardPng({
+    eyebrow: cardDateLabel(row.created_at),
+    title,
+    description,
+    attribution: row.model ? `Research by ${row.model}` : '',
   });
-  try {
-    let next = 0;
-    async function renderNext() {
-      const page = await browser.newPage({
-        viewport: { width: 1200, height: 630 },
-        deviceScaleFactor: 1,
-      });
-      try {
-        while (next < candidates.length) {
-          const row = candidates[next++];
-          await renderOne(page, row);
-        }
-      } finally {
-        await page.close();
-      }
-    }
-
-    async function renderOne(page, row) {
-      const meta = generatedArticleImageMeta(row);
-      if (!meta) return;
-      const url = `${server.origin}/research/${encodeURIComponent(row.slug)}`;
-      try {
-        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-        await page.addStyleTag({
-          content: `
-            body { background: #0f172a !important; }
-            .topbar, .tabs, .search-overlay, .ara-toc, .gen-research-doc-meta,
-            .content-card-header, .gen-research-audio { display: none !important; }
-            #content { padding-top: 24px !important; }
-            .content-card.gen-research-doc { margin-top: 0 !important; }
-            html, body, #app { min-height: 1400px !important; }
-          `,
-        });
-        const card = page.locator('.content-card.gen-research-doc').first();
-        await card.waitFor({ state: 'visible', timeout: 10000 });
-        await page.waitForTimeout(700);
-        const box = await card.boundingBox();
-        const clipY = Math.max(0, Math.floor((box?.y || 0) - 24));
-        await page.evaluate(y => window.scrollTo(0, y), clipY);
-        await page.waitForTimeout(100);
-        await page.screenshot({
-          path: meta.outputPath,
-          fullPage: false,
-        });
-        const png = readFileSync(meta.outputPath);
-        const uploaded = await putS3Object(meta.key, png, 'image/png');
-        generated.set(row.slug, uploaded ? meta.image : meta.localImage);
-      } catch (e) {
-        console.warn(`postbuild-seo: screenshot preview failed for ${row.slug}: ${e.message}`);
-      }
-    }
-
-    await Promise.all(
-      Array.from(
-        { length: Math.min(SOCIAL_PREVIEW_CONCURRENCY, candidates.length) },
-        () => renderNext(),
-      ),
-    );
-  } finally {
-    await browser.close();
-    await server.close();
-  }
-  return generated;
+  mkdirSync(distGenerativeDir, { recursive: true });
+  writeFileSync(meta.outputPath, png);
+  return meta.image;
 }
 
 // Replace the marked SEO block with metaBlock. Fallback: if the markers are
@@ -802,7 +549,7 @@ function buildHomePage(template, shareImageUrl) {
     `<meta property="og:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta property="og:description" content="${htmlEscapeAttr(desc)}" />`,
     `<meta property="og:url" content="${url}" />`,
-    ...imageMetaTags(shareImageUrl, 'ara daily AI newspaper front page'),
+    ...imageMetaTags(shareImageUrl, 'ara — AI research arm'),
     `<meta name="twitter:card" content="${shareImageUrl ? 'summary_large_image' : 'summary'}" />`,
     `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
@@ -1671,7 +1418,7 @@ if (!existsSync(indexHtmlPath)) {
 }
 
 const template = readFileSync(indexHtmlPath, 'utf8');
-const shareImageUrl = findShareImageUrl();
+const shareImageUrl = await findShareImageUrl();
 
 const entries = existsSync(indexJsonPath)
   ? JSON.parse(readFileSync(indexJsonPath, 'utf8'))
@@ -1680,9 +1427,14 @@ if (!existsSync(indexJsonPath)) {
   console.warn(`postbuild-seo: ${indexJsonPath} not found -- no article pages`);
 }
 
-// 1) Generative article pages.
+// 1) Generative article pages. Every non-standalone article gets a
+//    deterministic typographic social card unless it ships its own artifact
+//    image (articleArtifactImage precedence is unchanged).
 let written = 0;
 let skipped = 0;
+let cardAttempts = 0;
+let cardsGenerated = 0;
+const generatedArticleImages = new Map();
 const articleRows = [];
 for (const row of entries) {
   if (row.kind === 'standalone') {
@@ -1696,7 +1448,21 @@ for (const row of entries) {
   }
   const articleHtml = readFileSync(articlePath, 'utf8');
   const indexable = isIndexableResearchEntry(row);
-  const page = buildArticlePage(template, row, articleHtml, shareImageUrl, new Map(), indexable);
+  const { title: extractedTitle, desc: extractedDesc } = extractMeta(articleHtml);
+  const cardTitle = extractedTitle || row.title || row.slug;
+  if (!articleArtifactImage(row, cardTitle)) {
+    cardAttempts++;
+    try {
+      const image = await generateArticleSocialCard(row, cardTitle, extractedDesc);
+      if (image) {
+        generatedArticleImages.set(row.slug, image);
+        cardsGenerated++;
+      }
+    } catch (e) {
+      console.warn(`postbuild-seo: social card failed for ${row.slug}: ${e.message}`);
+    }
+  }
+  const page = buildArticlePage(template, row, articleHtml, shareImageUrl, generatedArticleImages, indexable);
   const outDir = join(dist, 'research', row.slug);
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, 'index.html'), page);
@@ -1704,12 +1470,17 @@ for (const row of entries) {
   written++;
 }
 
-const generatedArticleImages = await renderArticleSocialScreenshots(entries);
-if (generatedArticleImages.size) {
-  for (const { row, articleHtml, outDir, indexable } of articleRows) {
-    const page = buildArticlePage(template, row, articleHtml, shareImageUrl, generatedArticleImages, indexable);
-    writeFileSync(join(outDir, 'index.html'), page);
-  }
+// Per-card failures are tolerable (that article falls back to the site share
+// image), but EVERY card failing means the environment is broken — resvg
+// binding didn't load, fonts missing — and shipping a green build with zero
+// cards would hide it indefinitely (CI never runs the Dockerfile; see
+// CLAUDE.md load-bearing rule 3). Fail the build instead.
+if (cardAttempts > 0 && cardsGenerated === 0) {
+  console.error(
+    `postbuild-seo: all ${cardAttempts} social-card renders failed — ` +
+    'resvg/native-binding or system-font breakage; refusing to ship a build with no article cards',
+  );
+  process.exit(1);
 }
 
 // 2) Dated editorial reports. Each real artifact receives one self-canonical
@@ -1939,7 +1710,7 @@ writeFileSync(join(dist, 'feed.xml'), buildFeed(publishedEntries, shareImageUrl)
 writeFileSync(join(dist, 'llms.txt'), buildLlmsTxt(publishedEntries, wikiPages, forecastTickets));
 
 console.log(
-  `postbuild-seo: ${written} article pages (${skipped} skipped), ` +
+  `postbuild-seo: ${written} article pages (${skipped} skipped, ${cardsGenerated} social cards), ` +
   `${digests.length} digests, ${twitterReports.length} Twitter reports ` +
   `(${twitterReports.filter(report => report.wordCount >= 300).length} indexable), ` +
   `${frontPages.length} newspaper pages, ${wikiWritten} wiki pages, ` +
