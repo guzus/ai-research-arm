@@ -1,0 +1,10 @@
+Twitter/X AI Pulse - 2026-07-19 19:21:10 UTC
+
+CYCLE: Qwen3.8-Max's first independent benchmark claim, and AWS's GPU crunch opens a lane for smaller clouds
+
+TOP STORIES:
+• Qwen3.8-Max gets first independent benchmark claim ("outperforms all Opus models"), but a Qwen-watcher predicts the preview underdelivers ⚠
+
+WATCH: Whether a second independent tester reproduces the "beats Opus" claim, or Alibaba publishes an official Qwen3.8-Max benchmark table.
+
+Full update on GitHub.
