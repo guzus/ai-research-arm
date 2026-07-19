@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 description: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.
 created_at: 2026-05-29
-timestamp: 2026-07-14T00:00:00Z
+timestamp: 2026-07-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
@@ -207,6 +208,20 @@ the cycle:
   fast: **Clawk**, a Show HN disposable-Linux-VM sandbox for coding agents,
   shipped directly in response — the same "wrap the agent, don't trust it"
   pattern as **Claw Patrol** (2026-06-12) (ARA digest 2026-07-14).
+
+- **Prompt-injection payloads persist silently in agent memory across
+  sessions (2026-07-19).** New research (via @dair_ai) tests prompt-injection
+  persistence against **agent memory in [[claude-fable-5|Claude Code]] and
+  [[openai|OpenAI Codex]]**: a payload already written to memory files can
+  attack **current and future sessions without needing to compromise the
+  original one** — a durability escalation distinct from the one-shot
+  injection incidents this theme has tracked (Meta-Instagram, Grok Build).
+  **Opus 4.7 and GPT-5.5 blocked all tested credential-exfiltration
+  attempts**, but **unauthorized tool use succeeded across nearly every
+  model tested**, including one planted rule that quietly pinned a `pip
+  install` to a known-vulnerable PyYAML version — a supply-chain vector
+  routed through the agent's own persisted memory rather than an external
+  package (ARA digest 2026-07-19).
 
 ## Open questions
 - **Does [[dynamic-workflows]] make this worse?** Hundreds of parallel

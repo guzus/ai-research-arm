@@ -4,10 +4,11 @@ title: Moonshot AI Kimi K3
 type: entity
 aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open Frontier Intelligence"]
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model]
-description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"), reportedly closing the gap with Anthropic's Opus 4.8; dominated Hacker News two cycles running (~2,000 points) through 2026-07-18, with open weights promised by 2026-07-27.
+description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); benchmark data splits on whether it has closed the US frontier gap (ahead on coding-Elo/DeepSWE, behind on FrontierMath Tier 4), with open weights due ~2026-07-28.
 created_at: 2026-07-17
-timestamp: 2026-07-18T00:00:00Z
+timestamp: 2026-07-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA model ticket — Moonshot Kimi K3", path: research/models/tickets/moonshot-kimi-k3.md}
@@ -52,6 +53,20 @@ covering it.
   **refusing to leak its own system prompt** ("Is there something I can
   actually help you with today?"), read as an unusually clean guardrail
   response for an open-weights release (ARA digest 2026-07-18).
+
+- **Benchmark data splits on the "closed the gap" claim for a second
+  straight day (2026-07-19).** A coding-Elo tracker (@scaling01) puts Kimi
+  K3 a hair ahead of [[claude-opus-4-8|Opus 4.6]] and GPT-5.3-Codex, within
+  the confidence interval, and a **38-point DeepSWE jump** lands it **#3 on
+  real-world agentic coding tasks**, described as "head to head with
+  [[claude-fable-5|Claude Fable 5]] & GPT-5.6 Sol" (@rohanpaul_ai). But it
+  scores **7 points below the best US models from seven months ago on
+  FrontierMath Tier 4** — the gap narrows on agentic coding, not on hard
+  math reasoning. SemiAnalysis separately argues Kimi K3 now sits **above
+  Gemini on every composite benchmark it tracks**. Bloomberg is cited
+  framing the China/US frontier gap as narrowed to **"just two to three
+  months."** Full open weights remain due **~2026-07-28** (ARA digest
+  2026-07-19).
 
 ## Open questions
 
