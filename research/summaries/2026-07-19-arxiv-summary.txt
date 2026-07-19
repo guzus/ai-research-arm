@@ -1,0 +1,14 @@
+arXiv Papers - 2026-07-19
+
+Note: arXiv still frozen on the 07-16 batch. Today covers 32 papers from that batch not yet in the 07-17/07-18 digests.
+
+TOP 5 PAPERS:
+• MM-IssueLoc: coding agents struggle to use screenshots for bug localization (33.9% Acc@10)
+• Plover: making GUI-agent plans visible/editable shows most "autonomous" failures are repairable
+• SciVis MLLM benchmark: no model is uniformly literate; quant. estimation is a weak point
+• CRISP: target-free medical segmentation fix for domain shift, up to 7% HD95 gain, no new labels
+• Face-recognition study: training-set size, not architecture, drives privacy leakage risk
+
+CATEGORIES: NLP 4, CV/Multimodal 13, Agents 2, Safety 2, Other 7 (32 total)
+
+Full report on GitHub.
