@@ -1935,19 +1935,34 @@ jobs:
           if [ -n "${OPENCODE_API_KEY:-}" ]; then
             route="opencode-go"
             model="opencode-go/kimi-k3"
-            # The Go endpoint is OpenAI-compatible but otherwise an
-            # undocumented surface (models.dev provider.toml caveat), so the
-            # probe is one tiny billable completion (~a cent at most) and we
-            # surface the response body on failure for fast diagnosis.
-            if ! curl -fsS --max-time 60 --retry 2 --retry-delay 5 --retry-all-errors \
-                -H "Authorization: Bearer $OPENCODE_API_KEY" \
-                -H "Content-Type: application/json" \
-                --data '{"model":"kimi-k3","max_tokens":16,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}' \
-                https://opencode.ai/zen/go/v1/chat/completions >/dev/null; then
-              echo "::error::OpenCode Go preflight failed (auth, plan limits, or endpoint change). Check the Go subscription + usage limits at https://opencode.ai/auth, or unset OPENCODE_API_KEY to route via MOONSHOT_API_KEY instead."
-              exit 1
-            fi
-            echo "OpenCode Go preflight OK."
+            # The Go endpoint is OpenAI-compatible (raw model id is bare
+            # "kimi-k3" — verified against GET /zen/go/v1/models) but
+            # otherwise an undocumented surface (models.dev provider.toml
+            # caveat). Probe with one tiny billable completion and be
+            # AUTH-FATAL ONLY: 401/402/403 are definitive (bad key, no
+            # active Go subscription, or exhausted usage) and fail the run;
+            # any other status is a warning and the opencode harness itself
+            # stays the authoritative check — it speaks the exact SDK
+            # dialect production uses and fails fast on a truly dead route.
+            body_file="${RUNNER_TEMP:-/tmp}/opencode-go-preflight-body.txt"
+            status=$(curl -sS --max-time 60 --retry 2 --retry-delay 5 \
+              -o "$body_file" -w '%{http_code}' \
+              -H "Authorization: Bearer $OPENCODE_API_KEY" \
+              -H "Content-Type: application/json" \
+              --data '{"model":"kimi-k3","max_tokens":128,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}' \
+              https://opencode.ai/zen/go/v1/chat/completions || echo "000")
+            case "$status" in
+              2*)
+                echo "OpenCode Go preflight OK (HTTP $status)."
+                ;;
+              401|402|403)
+                echo "::error::OpenCode Go preflight failed with HTTP $status — the key is invalid, the account has no active Go subscription, or Go usage limits are exhausted. Check the plan + limits at https://opencode.ai/auth (or unset OPENCODE_API_KEY to route via MOONSHOT_API_KEY). Response: $(head -c 500 "$body_file" 2>/dev/null || true)"
+                exit 1
+                ;;
+              *)
+                echo "::warning::OpenCode Go raw preflight returned HTTP $status (undocumented raw surface — not blocking; the opencode harness is the authoritative check). Response: $(head -c 500 "$body_file" 2>/dev/null || true)"
+                ;;
+            esac
           elif [ -n "${MOONSHOT_API_KEY:-}" ]; then
             route="moonshot"
             model="moonshotai/kimi-k3"

@@ -248,12 +248,14 @@ gh workflow run opencode-kimi-canary.yml
 ```
 
 The canary resolves the same Go-first route as the production lane, then
-runs two probes: a stdlib-only raw API check (one tiny `kimi-k3`
-completion against the resolved endpoint — the authoritative
-auth+billing test; the Moonshot route also does a free `GET /v1/models`
-auth check first), followed by a tool-denied headless `opencode run`
-using the exact production argv, proving env-var login through the real
-harness.
+runs two probes: a stdlib-only raw API check (a models listing plus one
+tiny `kimi-k3` completion against the resolved endpoint), followed by a
+tool-denied headless `opencode run` using the exact production argv. On
+the Go route the raw probe is **auth-fatal only** — 401/402/403 (bad
+key, no active Go subscription, exhausted caps) fail the run, while any
+other status merely warns, because the raw `/zen/go/v1` surface is
+undocumented and the opencode harness stage is the authoritative check.
+The documented Moonshot route stays strict on every probe failure.
 
 Dispatch a research run:
 
@@ -283,10 +285,12 @@ Lane mechanics, mirroring the Codex path:
   methodology artifacts, same validation gates, and the writer owns the
   commit with `--model kimi-k3` metadata.
 - The workflow preflights the resolved route's API (missing secrets, a
-  dead key, or an exhausted Go cap fails in seconds, before install/agent)
-  and fails closed — an explicit `opencode-kimi-k3` request never falls
-  back to Claude, matching the comparison-lane strictness of
-  `fireworks_fallback=none`.
+  dead key, no active Go subscription, or an exhausted Go cap fails in
+  seconds, before install/agent) and fails closed — an explicit
+  `opencode-kimi-k3` request never falls back to Claude, matching the
+  comparison-lane strictness of `fireworks_fallback=none`. Non-auth
+  statuses from the undocumented Go raw endpoint only warn; the opencode
+  run itself is the authoritative check on that route.
 - opencode has no Claude-style server WebSearch; the prompt steers research
   through `scripts/research_search.py`, `scripts/source_cache.py`,
   `curl`/`pdftotext`, `bird`, and opencode's webfetch tool.
