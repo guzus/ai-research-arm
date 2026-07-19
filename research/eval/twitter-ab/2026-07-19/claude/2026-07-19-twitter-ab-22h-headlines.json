@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "MOONSHOT AI HALTS NEW KIMI K3 SUBSCRIPTIONS AS DEMAND OUTSTRIPS COMPUTE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2078934957435797713",
+    "category": "breaking"
+  },
+  {
+    "headline": "ALIBABA'S QWEN3.8 LAUNCHES OPEN-WEIGHT AT 2.4 TRILLION PARAMETERS",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2078830594297880736",
+    "category": "model"
+  },
+  {
+    "headline": "NVIDIA GPU SHORTAGE FORCES CLOUD RATIONING; NEBIUS SELLS OUT AFTER PRICE HIKES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2078925348020932667",
+    "category": "infra"
+  },
+  {
+    "headline": "KIMI K3 NEARLY DOUBLES CLAUDE FABLE 5 ON AUTONOMOUS LEGAL-WORK BENCHMARK, 26.7% VS 14.2%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2078657023370232135",
+    "category": "research"
+  },
+  {
+    "headline": "SERVER DRAM SPOT PRICES UP 146% AS AI SOVEREIGN BUYERS ENTER MARKET",
+    "source": "@SemiconductorsX",
+    "url": "https://x.com/SemiconductorsX/status/2078761819930534227",
+    "category": "infra"
+  }
+]
