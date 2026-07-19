@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-07-19
+
+TOP STORIES:
+• Anthropic in early talks to lease up to $10B in AI compute from Meta over 2 years
+• Kimi K3 benchmark data splits: ahead on coding-Elo/DeepSWE, behind on FrontierMath Tier 4; Bloomberg cites China/US gap narrowed to 2-3 months
+• AGIBOT unveils A3 Ultra humanoid + 3 other products at WAIC 2026, ~39% of global humanoid robot market
+• OpenAI launches ChatGPT Work (powered by Codex + GPT-5.6) and Codex Micro
+• Anthropic reportedly in bank credit-line talks ahead of planned IPO; OpenRouter reportedly exploring a sale
+
+KEY NUMBERS:
+• Anthropic-Meta compute talks: up to $10B over 2 years
+• Databricks reportedly raising $3B Series M at $188B valuation
+• OpenEvidence considering $200M raise at ~$20B valuation
+• AGIBOT A3 Ultra: 1.74m, 60kg, 51 DoF, 8hr runtime
+
+TRENDING: Kimi K3 vs. US frontier benchmarks + "What AI did to stackoverflow" (HN, 379 comments)
+
+Full digest on GitHub.
