@@ -1,0 +1,202 @@
+name: OpenCode Kimi Canary
+
+# Diagnostics lane for the opencode + Kimi K3 backend used by
+# generative-research.yml (backend=opencode-kimi-k3). Auth is resolved in
+# the same preference order as the production lane:
+#
+#   1. OPENCODE_API_KEY — OpenCode Go subscription (opencode.ai/auth),
+#      provider `opencode-go`, model `opencode-go/kimi-k3`, raw endpoint
+#      https://opencode.ai/zen/go/v1 (OpenAI-compatible).
+#   2. MOONSHOT_API_KEY — Moonshot platform pay-per-token, provider
+#      `moonshotai`, model `moonshotai/kimi-k3`.
+#
+# Two probes, cheap to expensive, so a dead key/plan fails in seconds
+# instead of mid-research:
+#
+#   1. Raw API probe — stdlib-only one-shot kimi-k3 completion against the
+#      resolved route, proving the secret authenticates AND the account can
+#      actually bill kimi-k3 usage (Go usage caps / Moonshot balance are
+#      the realistic failure modes; on Moonshot, new-user vouchers cannot
+#      pay for kimi-k3).
+#   2. opencode harness probe — the pinned opencode CLI runs one headless
+#      `opencode run` turn with the EXACT production argv (`-m <route
+#      model>` + `--auto` + OPENCODE_CONFIG file injection) authenticated
+#      purely by the env var — no interactive `opencode auth login`, no
+#      auth.json — with all tool permissions denied so the canary cannot
+#      touch the repository (deny survives --auto, which only auto-approves
+#      what is not explicitly denied).
+#
+# STRICT like zai-claude-code-canary.yml: this lane exists to test the
+# opencode/Kimi path — an outage must fail this run, never re-route.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: opencode-kimi-canary
+  cancel-in-progress: false
+
+jobs:
+  canary:
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 15
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Probe raw Kimi K3 API on the resolved route
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.error
+          import urllib.request
+
+          go_key = os.environ.get("OPENCODE_API_KEY", "")
+          moonshot_key = os.environ.get("MOONSHOT_API_KEY", "")
+
+          if go_key:
+              route = "opencode-go"
+              key = go_key
+              completions_url = "https://opencode.ai/zen/go/v1/chat/completions"
+              models_url = ""  # Go endpoint surface is undocumented; skip listing
+              billing_hint = "Go plan usage limits ($12/5h, $30/week, $60/month) at https://opencode.ai/auth"
+          elif moonshot_key:
+              route = "moonshot"
+              key = moonshot_key
+              completions_url = "https://api.moonshot.ai/v1/chat/completions"
+              models_url = "https://api.moonshot.ai/v1/models"
+              billing_hint = "account balance (vouchers cannot bill kimi-k3) at https://platform.kimi.ai/console/api-keys"
+          else:
+              print("::error::No Kimi auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription — preferred) or MOONSHOT_API_KEY with: gh secret set <NAME>")
+              sys.exit(1)
+
+          print(f"Resolved route: {route}")
+          headers = {
+              "Authorization": f"Bearer {key}",
+              "Content-Type": "application/json",
+          }
+
+          # Optional auth-only probe where the route documents a listing
+          # endpoint (bills nothing on Moonshot).
+          if models_url:
+              req = urllib.request.Request(models_url, headers=headers)
+              try:
+                  with urllib.request.urlopen(req, timeout=60) as resp:
+                      models = json.loads(resp.read().decode())
+              except urllib.error.HTTPError as exc:
+                  safe_body = exc.read().decode(errors="replace")[:500]
+                  print(f"::error::{route} auth probe failed with HTTP {exc.code}: {safe_body}")
+                  sys.exit(1)
+              except (urllib.error.URLError, OSError) as exc:
+                  print(f"::error::{route} auth probe failed before an HTTP response (DNS/connect/timeout): {exc}")
+                  sys.exit(1)
+              model_ids = sorted(
+                  m.get("id", "") for m in models.get("data", []) if m.get("id")
+              )
+              print(f"{route} auth OK; visible models:", json.dumps(model_ids))
+              if "kimi-k3" not in model_ids:
+                  print("::warning::kimi-k3 not present in the models listing — continuing to the completion probe, which is authoritative.")
+
+          # Authoritative probe: one tiny kimi-k3 completion (entitlement +
+          # billing). Costs at most a cent on either route.
+          payload = {
+              "model": "kimi-k3",
+              "max_tokens": 128,
+              "messages": [
+                  {"role": "user", "content": "Reply with exactly: ok"}
+              ],
+          }
+          req = urllib.request.Request(
+              completions_url,
+              data=json.dumps(payload).encode(),
+              headers=headers,
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=120) as resp:
+                  body = json.loads(resp.read().decode())
+          except urllib.error.HTTPError as exc:
+              safe_body = exc.read().decode(errors="replace")[:500]
+              print(f"::error::kimi-k3 completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
+              sys.exit(1)
+          except (urllib.error.URLError, OSError) as exc:
+              print(f"::error::kimi-k3 completion probe on {route} failed before an HTTP response (DNS/connect/timeout): {exc}")
+              sys.exit(1)
+          choices = body.get("choices", [])
+          if not choices:
+              print(f"::error::kimi-k3 completion probe on {route} returned no choices")
+              print(json.dumps({k: body.get(k) for k in ("id", "model", "usage", "error")}))
+              sys.exit(1)
+          print(
+              f"kimi-k3 completion probe OK on {route}:",
+              json.dumps(
+                  {
+                      "model": body.get("model"),
+                      "finish_reason": choices[0].get("finish_reason"),
+                      "usage": body.get("usage"),
+                  },
+                  sort_keys=True,
+              ),
+          )
+          PY
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Install opencode CLI
+        run: |
+          npm install -g opencode-ai@1.18.3
+          opencode --version
+
+      # Headless env-var login through the real harness, using the EXACT
+      # invocation shape of the production backend step in
+      # generative-research.yml — same route-resolved `-m` model, same
+      # `--auto` flag, same OPENCODE_CONFIG file-path injection, same env
+      # vars — so a green canary actually certifies the argv the 90-minute
+      # lane will use. The only intended difference is the config file: the
+      # canary one denies edit/bash/webfetch, so this canary can only
+      # produce text. The provider model declarations keep kimi-k3
+      # resolvable even if the models.dev registry cache on the runner
+      # predates it.
+      - name: Run opencode file-free canary
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+          OPENCODE_DISABLE_AUTOUPDATE: '1'
+          OPENCODE_CONFIG: ${{ github.workspace }}/.github/opencode/opencode-canary.json
+        run: |
+          set -euo pipefail
+          # Same auth preference order as the production preflight.
+          if [ -n "${OPENCODE_API_KEY:-}" ]; then
+            model="opencode-go/kimi-k3"
+          elif [ -n "${MOONSHOT_API_KEY:-}" ]; then
+            model="moonshotai/kimi-k3"
+          else
+            echo "::error::No Kimi auth configured (OPENCODE_API_KEY or MOONSHOT_API_KEY)."
+            exit 1
+          fi
+          echo "Canary model: $model"
+          out="${RUNNER_TEMP:-/tmp}/opencode-kimi-canary.out"
+          opencode run \
+            -m "$model" \
+            --auto \
+            "Reply with exactly this token and nothing else: OPENCODE-KIMI-CANARY-OK" \
+            | tee "$out"
+          if ! grep -q "OPENCODE-KIMI-CANARY-OK" "$out"; then
+            echo "::error::opencode run completed but the canary token is missing from its output — env-var auth or model routing through opencode is broken even though the raw API probe passed."
+            exit 1
+          fi
+          echo "opencode headless env-var auth canary OK."

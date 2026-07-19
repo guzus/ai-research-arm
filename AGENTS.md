@@ -77,6 +77,19 @@ short pointer plus the few genuinely agent-specific notes.
   `openai-api-key` unless the intent is API billing instead of the
   ChatGPT/Codex subscription.
 
+- **OpenCode + Kimi K3 generative-research runs** use the opencode CLI
+  (pinned `opencode-ai@1.18.3`) driving `kimi-k3` with plain env-var
+  auth — a single secret is the whole login; there is no `opencode auth
+  login` step and no auth-file seeding. The workflow resolves the route
+  Go-first: `OPENCODE_API_KEY` (OpenCode Go subscription — sign in at
+  https://opencode.ai/auth, subscribe, copy the key; K3 bills at full
+  $3/$15 value against the $12/5h / $30/wk / $60/mo caps), else
+  `MOONSHOT_API_KEY` (pay-per-token from
+  https://platform.kimi.ai/console/api-keys; needs a real balance).
+  Store one with `gh secret set <NAME>`, then validate cheaply with
+  `opencode-kimi-canary.yml` before dispatching
+  `generative-research.yml backend=opencode-kimi-k3`.
+
 - **bird CLI** invocations must always pass `--json --plain` and fall
   back gracefully (`|| echo "[]"`); the X/Twitter cookies expire and a
   workflow must continue with empty data rather than crash.
