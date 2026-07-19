@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 "Full Access Mode" file-deletion safety incident.
 created_at: 2026-05-30
-timestamp: 2026-07-18T00:00:00Z
+timestamp: 2026-07-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
@@ -448,6 +449,13 @@ materially reshape how the lab is positioned heading into its IPO window:
   cases; OpenAI acknowledged the behavior "shouldn't but did" happen and
   announced new safeguards (The Decoder) — see [[gpt-5-6]] for the model-side
   detail (ARA digest 2026-07-18).
+
+- **Codex Micro surfaces alongside continued ChatGPT Work rollout
+  (2026-07-19).** OpenAI's official YouTube channel surfaced a new
+  **Codex Micro** model and a further **"Codex just got better for
+  developers"** update — additional developer-facing Codex capabilities
+  landing the same week as [[gpt-5-6|ChatGPT Work]]'s launch, continuing the
+  Codex-as-platform push tracked since June (ARA digest 2026-07-19).
 
 ## Open questions
 

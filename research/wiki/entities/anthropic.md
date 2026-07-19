@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); Microsoft CEO Satya Nadella publicly called Anthropic's Fable "editorially controlled" (2026-07-18) despite Microsoft's $5B stake.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth "a few billions" ahead of a planned IPO (2026-07-19).
 created_at: 2026-05-24
-timestamp: 2026-07-18T00:00:00Z
+timestamp: 2026-07-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
@@ -629,6 +630,24 @@ Four developments through May 2026 put Anthropic at the center of the field:
   would make Meta a compute supplier to a company it competes with on
   models. *Both items are single-cycle reporting; the compute deal remains
   talks, not a signed agreement* (ARA digest 2026-07-18).
+
+- **The Meta compute talks harden with a number; bank credit-line talks
+  surface ahead of the IPO (2026-07-19).** The 2026-07-18 Meta talks
+  sharpened into specifics: Anthropic and [[meta]] are in **early talks**
+  for Anthropic to lease **up to $10B in AI computing capacity from Meta**,
+  paid in **monthly increments over two years** with **early-exit options
+  for either side** — smaller than Anthropic's **$45B [[spacex]] Colossus**
+  lease but a striking sign that even a $965B-valued lab remains
+  compute-constrained ahead of its planned IPO. It lands the same window
+  **Zuckerberg has floated Meta entering the cloud-computing business**
+  outright to monetize its **~$145B 2026 AI capex**, which would make Meta
+  a compute *landlord* to a direct model-layer competitor — the same
+  compute-landlord dynamic [[xai]] already runs with Anthropic and Google.
+  Separately, per *The Information*, Anthropic is in **talks with banks for
+  a credit line worth "a few billions of dollars"** ahead of its planned
+  2026 IPO — the first concrete sign of pre-IPO balance-sheet activity
+  beyond earlier IPO-planning chatter (CNBC, Bloomberg, CNN) (ARA digest
+  2026-07-19).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

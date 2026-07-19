@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-07-14",
-      "timestamp": "2026-07-14T00:00:00Z",
+      "updated_at": "2026-07-19",
+      "timestamp": "2026-07-19T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -82,6 +82,35 @@
         "openai",
         "sakana-ai",
         "xai"
+      ]
+    },
+    {
+      "slug": "agibot",
+      "title": "AGIBOT",
+      "type": "entity",
+      "tags": [
+        "humanoid-robotics",
+        "embodied-ai",
+        "china",
+        "waic"
+      ],
+      "summary": "Chinese humanoid-robotics maker that unveiled four new embodied-AI products at WAIC 2026, led by the A3 Ultra humanoid, claiming ~39% of the global humanoid-robot market.",
+      "description": "Chinese humanoid-robotics maker that unveiled four new embodied-AI products at WAIC 2026, led by the A3 Ultra humanoid, claiming ~39% of the global humanoid-robot market.",
+      "created_at": "2026-07-19",
+      "updated_at": "2026-07-19",
+      "timestamp": "2026-07-19T00:00:00Z",
+      "file": "entities/agibot.md",
+      "aliases": [
+        "Zhiyuan Robotics",
+        "AgiBot"
+      ],
+      "outbound": [
+        "china-ai-regulation",
+        "figure-ai",
+        "mistral-robostral-navigate"
+      ],
+      "inbound": [
+        "figure-ai"
       ]
     },
     {
@@ -261,11 +290,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); Microsoft CEO Satya Nadella publicly called Anthropic's Fable \"editorially controlled\" (2026-07-18) despite Microsoft's $5B stake.",
-      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, with secondary-market chatter now putting its implied valuation at ~$1.2T (2026-07-12); Microsoft CEO Satya Nadella publicly called Anthropic's Fable \"editorially controlled\" (2026-07-18) despite Microsoft's $5B stake.",
+      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
+      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-18",
-      "timestamp": "2026-07-18T00:00:00Z",
+      "updated_at": "2026-07-19",
+      "timestamp": "2026-07-19T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -562,6 +591,7 @@
         "tencent-hunyuan-hy3"
       ],
       "inbound": [
+        "agibot",
         "alibaba",
         "meta"
       ]
@@ -626,6 +656,7 @@
         "micron",
         "microsoft",
         "moonshot-kimi-k2-7-code",
+        "moonshot-kimi-k3",
         "open-weights",
         "openai",
         "remote-labor-index",
@@ -1101,8 +1132,8 @@
       "summary": "US humanoid-robotics company whose Helix-02 in-house VLA ran a 200-hour fully autonomous package-sort shift (249,560 packages, zero hardware failures, zero teleop) on its Figure 03 fleet at Sunnyvale on 2026-05-30, ~10× the previous public envelope on MTBI.",
       "description": "US humanoid-robotics company whose Helix-02 in-house VLA ran a 200-hour fully autonomous package-sort shift (249,560 packages, zero hardware failures, zero teleop) on its Figure 03 fleet at Sunnyvale on 2026-05-30, ~10× the previous public envelope on MTBI.",
       "created_at": "2026-06-01",
-      "updated_at": "2026-06-01",
-      "timestamp": "2026-06-01T00:00:00Z",
+      "updated_at": "2026-07-19",
+      "timestamp": "2026-07-19T00:00:00Z",
       "file": "entities/figure-ai.md",
       "aliases": [
         "Figure",
@@ -1116,11 +1147,13 @@
         "Brett Adcock"
       ],
       "outbound": [
+        "agibot",
         "ai-capex",
         "anthropic",
         "openai"
       ],
       "inbound": [
+        "agibot",
         "ai-capex",
         "artificial-general-engineer",
         "mistral-robostral-navigate",
@@ -1779,6 +1812,7 @@
         "tencent-hunyuan-hy3"
       ],
       "inbound": [
+        "agibot",
         "mistral-leanstral-1-5",
         "tencent-hunyuan-hy3"
       ]
@@ -1838,11 +1872,11 @@
         "moonshot",
         "frontier-model"
       ],
-      "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"), reportedly closing the gap with Anthropic's Opus 4.8; dominated Hacker News two cycles running (~2,000 points) through 2026-07-18, with open weights promised by 2026-07-27.",
-      "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"), reportedly closing the gap with Anthropic's Opus 4.8; dominated Hacker News two cycles running (~2,000 points) through 2026-07-18, with open weights promised by 2026-07-27.",
+      "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); benchmark data splits on whether it has closed the US frontier gap (ahead on coding-Elo/DeepSWE, behind on FrontierMath Tier 4), with open weights due ~2026-07-28.",
+      "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); benchmark data splits on whether it has closed the US frontier gap (ahead on coding-Elo/DeepSWE, behind on FrontierMath Tier 4), with open weights due ~2026-07-28.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-18",
-      "timestamp": "2026-07-18T00:00:00Z",
+      "updated_at": "2026-07-19",
+      "timestamp": "2026-07-19T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -1853,6 +1887,7 @@
       ],
       "outbound": [
         "anthropic",
+        "claude-fable-5",
         "claude-opus-4-8",
         "moonshot-kimi-k2-7-code",
         "open-weights"
@@ -2162,8 +2197,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-07-18",
-      "timestamp": "2026-07-18T00:00:00Z",
+      "updated_at": "2026-07-19",
+      "timestamp": "2026-07-19T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -2643,11 +2678,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; now suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability, on top of Grok Build's codebase-upload-to-Google-Cloud behavior confirmed by security researchers (2026-07-15).",
-      "description": "Elon Musk's frontier lab behind Grok; now suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability, on top of Grok Build's codebase-upload-to-Google-Cloud behavior confirmed by security researchers (2026-07-15).",
+      "summary": "Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.",
+      "description": "Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-17",
-      "timestamp": "2026-07-17T00:00:00Z",
+      "updated_at": "2026-07-19",
+      "timestamp": "2026-07-19T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -2786,6 +2821,7 @@
     "agentic ai security": "agentic-ai-security",
     "agentic supply-chain": "agentic-ai-security",
     "agentic-ai-security": "agentic-ai-security",
+    "agibot": "agibot",
     "agingbench": "agent-lifespan-engineering",
     "ai capex": "ai-capex",
     "ai capex supercycle": "ai-capex",
@@ -3084,9 +3120,15 @@
     "zhipu glm 5.2": "zhipu-glm-5-2",
     "zhipu glm-5.2": "zhipu-glm-5-2",
     "zhipu-glm-5-2": "zhipu-glm-5-2",
+    "zhiyuan robotics": "agibot",
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-07-19",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-19 digest (Anthropic and Meta are in early talks for a $10B two-year compute lease as Anthropic separately opens bank credit-line talks ahead of its IPO; Kimi K3 benchmark data splits for a second day — ahead on coding-Elo/DeepSWE, behind on FrontierMath Tier 4; AGIBOT unveils four embodied-AI products including the A3 Ultra humanoid at WAIC 2026; xAI ships Grok Build 0.2.105 with Grok 4.5 as the new default model; new @dair_ai research finds prompt-injection payloads can persist silently in Claude Code/Codex agent memory across sessions). Created 1 (agibot entity — Chinese humanoid-robotics maker, WAIC 2026 showcase led by the A3 Ultra), updated 5 (anthropic — Meta $10B compute-lease specifics + bank credit-line talks; moonshot-kimi-k3 — today's split benchmark data + SemiAnalysis Gemini comparison; xai — Grok Build 0.2.105 + Grok 4.5 default model; openai — Codex Micro surfaces; agentic-ai-security — persistent prompt-injection-in-agent-memory research)."
+    },
     {
       "date": "2026-07-18",
       "op": "ingest",
@@ -3181,11 +3223,6 @@
       "date": "2026-06-17",
       "op": "ingest",
       "summary": "Backfilled image metadata for 3 high-traffic wiki pages (nvidia, spacex, ai-capex), adding two topic-specific Wikimedia Commons visuals to each so the new multi-image wiki contract has real corpus coverage."
-    },
-    {
-      "date": "2026-06-17",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-17 digest (separate from the morning OKF-backfill pass). Created 1 (cursor — SpaceX's $60B all-stock acquisition of Anysphere + captive \"SpaceXAI\" model). Updated 8 (spacex — $60B Cursor buy + SpaceXAI model + briefly passing Amazon at ~$2.6-2.7T; anthropic — full BIS \"Is Informed\" Lutnick letter public (EAR §744.22(b), worldwide foreign-person license, deemed-export wall) + SDK token-billing pause + Ramp adoption-boost signal; federal-ai-policy — documented Lutnick letter + UK Starmer carveout denied/\"completely illogical\" + Carney overreliance warning + G7 Évian three-CEO first + DOJ xAI gas turbines + Pentagon genAI; claude-fable-5 — order documented, still dark June 17, deemed-export staff wall; zhipu-glm-5-2 — GLM-5.2 shipped under MIT (1M ctx, two effort levels, day-0 vLLM/Notion/Baseten, 46.2% DeepSWE); open-weights — GLM-5.2 MIT ship + Microsoft evaluating fine-tuned DeepSeek V4 for Copilot Cowork + FeynRL \"open weights are not enough\" + local-models HN; openai — leaked 2025 financials ($13.07B rev vs $19.18B R&D) + GPT-5.6 \"meaningful leap\" June signal + Codex CDP/computer-use/Chronicle + Deployment Simulation framework; ai-capex — SpaceX $60B Cursor all-stock buy + ~$2.6-2.7T valuation + leaked OpenAI cost side ($13.07B rev vs $19.18B R&D))."
     }
   ]
 }

@@ -7,6 +7,7 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Entities
 
+- [[agibot]] — Chinese humanoid-robotics maker; unveiled four embodied-AI products at WAIC 2026, led by the A3 Ultra humanoid.
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen) accused by Anthropic of the largest documented Claude-distillation campaign; banned Claude Code internally as "high-risk software" effective 2026-07-10.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; per WSJ/Axios, CEO Andy Jassy's Treasury briefing triggered the June 2026 Fable 5 / Mythos 5 export crackdown.
 - [[anthropic]] — AI safety lab behind the Claude family; closed a $65B Series H at $965B post-money on 2026-05-29.

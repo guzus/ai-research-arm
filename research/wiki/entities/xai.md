@@ -4,10 +4,11 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; now suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability, on top of Grok Build's codebase-upload-to-Google-Cloud behavior confirmed by security researchers (2026-07-15).
+description: Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.
 created_at: 2026-06-08
-timestamp: 2026-07-17T00:00:00Z
+timestamp: 2026-07-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
@@ -114,6 +115,14 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   exfiltration story two cycles earlier. This is the most severe entry yet
   in xAI's accumulating capability-misuse/safety-response track record (ARA
   digest 2026-07-17).
+
+- **Grok Build 0.2.105 makes Grok 4.5 the default model (2026-07-19).**
+  xAI shipped **Grok Build 0.2.105**, making **Grok 4.5** (the 1.5T "V9"
+  foundation tracked above) the CLI's **new default model**, adding a
+  **selectable reasoning-effort control**, a **`/summarize` command**, and
+  **improved long-session compaction** (@mark_k) — an incremental
+  developer-tooling update to the agentic-coding surface rather than a new
+  foundation model (ARA digest 2026-07-19).
 
 ## Open questions
 
