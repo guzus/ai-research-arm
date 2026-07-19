@@ -1,0 +1,12 @@
+Speaker 1: Sunday, July nineteenth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic's in early talks to lease up to [emphasis] ten billion dollars [/emphasis] in AI compute from Meta over the next two years, a massive infrastructure play between two companies that don't usually share a table.
+Speaker 1: Meanwhile Kimi K3's benchmark data is splitting the room. It's ahead on coding-Elo and DeepSWE, but behind on FrontierMath Tier four.
+Speaker 2: Bloomberg's now saying the China-US model gap has narrowed to just two to three months. [dramatic_pause] That's tighter than almost anyone expected.
+Speaker 1: On the hardware side, AGIBOT unveiled its A3 Ultra humanoid plus three other products at WAIC twenty twenty-six, and the company now claims about thirty-nine percent of the global humanoid robot market.
+Speaker 2: The A3 Ultra itself is wild, one point seven four meters tall, sixty kilograms, fifty-one degrees of freedom, and an eight hour runtime.
+Speaker 1: Some quick numbers on the funding front. Databricks is reportedly raising [emphasis] three billion dollars [/emphasis] in a Series M at a one hundred eighty-eight billion dollar valuation.
+Speaker 2: And OpenEvidence is said to be considering a two hundred million dollar raise at around a twenty billion dollar valuation.
+Speaker 1: On the product side, OpenAI launched ChatGPT Work, powered by Codex and GPT five point six, alongside a new Codex Micro.
+Speaker 2: There's also word that Anthropic is in bank credit line talks ahead of a planned IPO, while OpenRouter is reportedly exploring a sale.
+Speaker 1: Trending today, Kimi K3 versus the US frontier models, and a Hacker News thread on what AI did to Stack Overflow, pulling in three hundred seventy-nine comments.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
