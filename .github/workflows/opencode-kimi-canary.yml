@@ -69,8 +69,8 @@ jobs:
               route = "opencode-go"
               key = go_key
               completions_url = "https://opencode.ai/zen/go/v1/chat/completions"
-              models_url = ""  # Go endpoint surface is undocumented; skip listing
-              billing_hint = "Go plan usage limits ($12/5h, $30/week, $60/month) at https://opencode.ai/auth"
+              models_url = "https://opencode.ai/zen/go/v1/models"
+              billing_hint = "Go plan subscription/usage limits ($12/5h, $30/week, $60/month) at https://opencode.ai/auth"
           elif moonshot_key:
               route = "moonshot"
               key = moonshot_key
@@ -87,8 +87,18 @@ jobs:
               "Content-Type": "application/json",
           }
 
-          # Optional auth-only probe where the route documents a listing
-          # endpoint (bills nothing on Moonshot).
+          # Failure policy differs by route. Moonshot's API is a documented
+          # surface, so any probe failure there is definitive → fatal. The
+          # Go raw endpoint is undocumented (models.dev provider.toml
+          # caveat) — verified facts: GET /zen/go/v1/models is live and
+          # lists bare ids like "kimi-k3" — so on the Go route only
+          # 401/402/403 (bad key / no active Go subscription / exhausted
+          # usage) are fatal; anything else prints a warning and defers to
+          # the harness stage below, which speaks the exact SDK dialect
+          # production uses and is the authoritative gate.
+          go_route = route == "opencode-go"
+
+          # Informational listing probe (free; the Go listing is public).
           if models_url:
               req = urllib.request.Request(models_url, headers=headers)
               try:
@@ -96,20 +106,25 @@ jobs:
                       models = json.loads(resp.read().decode())
               except urllib.error.HTTPError as exc:
                   safe_body = exc.read().decode(errors="replace")[:500]
-                  print(f"::error::{route} auth probe failed with HTTP {exc.code}: {safe_body}")
-                  sys.exit(1)
+                  if go_route:
+                      print(f"::warning::{route} models listing returned HTTP {exc.code}: {safe_body}")
+                      models = {}
+                  else:
+                      print(f"::error::{route} auth probe failed with HTTP {exc.code}: {safe_body}")
+                      sys.exit(1)
               except (urllib.error.URLError, OSError) as exc:
-                  print(f"::error::{route} auth probe failed before an HTTP response (DNS/connect/timeout): {exc}")
+                  print(f"::error::{route} models probe failed before an HTTP response (DNS/connect/timeout): {exc}")
                   sys.exit(1)
               model_ids = sorted(
                   m.get("id", "") for m in models.get("data", []) if m.get("id")
               )
-              print(f"{route} auth OK; visible models:", json.dumps(model_ids))
-              if "kimi-k3" not in model_ids:
-                  print("::warning::kimi-k3 not present in the models listing — continuing to the completion probe, which is authoritative.")
+              if model_ids:
+                  print(f"{route} models listing OK; visible models:", json.dumps(model_ids))
+                  if "kimi-k3" not in model_ids:
+                      print("::warning::kimi-k3 not present in the models listing — continuing to the completion probe.")
 
-          # Authoritative probe: one tiny kimi-k3 completion (entitlement +
-          # billing). Costs at most a cent on either route.
+          # Completion probe: one tiny kimi-k3 completion (entitlement +
+          # billing; costs at most a cent on either route).
           payload = {
               "model": "kimi-k3",
               "max_tokens": 128,
@@ -128,27 +143,39 @@ jobs:
                   body = json.loads(resp.read().decode())
           except urllib.error.HTTPError as exc:
               safe_body = exc.read().decode(errors="replace")[:500]
-              print(f"::error::kimi-k3 completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
-              sys.exit(1)
+              if exc.code in (401, 402, 403):
+                  print(f"::error::kimi-k3 completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
+                  sys.exit(1)
+              if go_route:
+                  print(f"::warning::kimi-k3 completion probe on {route} returned HTTP {exc.code} (undocumented raw surface — not blocking; the harness stage below is authoritative): {safe_body}")
+                  body = {}
+              else:
+                  print(f"::error::kimi-k3 completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
+                  sys.exit(1)
           except (urllib.error.URLError, OSError) as exc:
               print(f"::error::kimi-k3 completion probe on {route} failed before an HTTP response (DNS/connect/timeout): {exc}")
               sys.exit(1)
           choices = body.get("choices", [])
-          if not choices:
-              print(f"::error::kimi-k3 completion probe on {route} returned no choices")
-              print(json.dumps({k: body.get(k) for k in ("id", "model", "usage", "error")}))
-              sys.exit(1)
-          print(
-              f"kimi-k3 completion probe OK on {route}:",
-              json.dumps(
-                  {
-                      "model": body.get("model"),
-                      "finish_reason": choices[0].get("finish_reason"),
-                      "usage": body.get("usage"),
-                  },
-                  sort_keys=True,
-              ),
-          )
+          if choices:
+              print(
+                  f"kimi-k3 completion probe OK on {route}:",
+                  json.dumps(
+                      {
+                          "model": body.get("model"),
+                          "finish_reason": choices[0].get("finish_reason"),
+                          "usage": body.get("usage"),
+                      },
+                      sort_keys=True,
+                  ),
+              )
+          elif body:
+              if go_route:
+                  print(f"::warning::kimi-k3 completion probe on {route} returned no choices (deferring to the harness stage)")
+                  print(json.dumps({k: body.get(k) for k in ("id", "model", "usage", "error")}))
+              else:
+                  print(f"::error::kimi-k3 completion probe on {route} returned no choices")
+                  print(json.dumps({k: body.get(k) for k in ("id", "model", "usage", "error")}))
+                  sys.exit(1)
           PY
 
       - name: Setup Node.js
