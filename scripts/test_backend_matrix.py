@@ -120,6 +120,39 @@ class RoutingInvariants(unittest.TestCase):
         self.assertTrue(self.obs["generative-research.yml"].has_fable_dispatch)
         self.assertEqual(self.lanes["generative-research-default"]["backend"], "claude")
 
+    def test_gen_research_opencode_kimi_is_explicit_and_fail_closed(self):
+        workflow = (REPO_ROOT / ".github" / "workflows" /
+                    "generative-research.yml").read_text(encoding="utf-8")
+        # Dispatch option, both case-normalizations, and the runtime allowlist.
+        self.assertIn("- opencode-kimi-k3", workflow)
+        self.assertIn('opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) CANDIDATE="opencode-kimi-k3"', workflow)
+        self.assertIn('opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) BACKEND="opencode-kimi-k3"', workflow)
+        self.assertIn('[ "$BACKEND" != "opencode-kimi-k3" ]', workflow)
+        # Version-pinned install, deterministic binary, env-var auth (no
+        # auth.json seeding) with OpenCode Go preferred over Moonshot,
+        # fail-closed route preflight, and the output guard.
+        self.assertIn("npm install -g opencode-ai@", workflow)
+        self.assertIn("OPENCODE_DISABLE_AUTOUPDATE", workflow)
+        self.assertIn("OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}", workflow)
+        self.assertIn("MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}", workflow)
+        self.assertIn('model="opencode-go/kimi-k3"', workflow)
+        self.assertIn('model="moonshotai/kimi-k3"', workflow)
+        self.assertIn("Resolve and preflight OpenCode Kimi route", workflow)
+        self.assertIn("Fail OpenCode run without article", workflow)
+        # The scanner must see both opencode call sites (research + canary),
+        # which drive the matrix rows and the README diagram edge.
+        self.assertTrue(self.obs["generative-research.yml"].opencode)
+        self.assertEqual(self.obs["generative-research.yml"].opencode_token,
+                         "OPENCODE_API_KEY")
+        self.assertTrue(self.obs["opencode-kimi-canary.yml"].opencode)
+        # Writer metadata records the served model, and the backend is in the
+        # generative-research set the matrix renders from.
+        prompt = (REPO_ROOT / ".github" / "opencode" / "prompts" /
+                  "generative-research.md").read_text(encoding="utf-8")
+        self.assertIn("--model kimi-k3", prompt)
+        from build_backend_matrix import GEN_RESEARCH_BACKENDS
+        self.assertIn("opencode-kimi-k3", GEN_RESEARCH_BACKENDS)
+
     def test_comparison_tiers_are_strict(self):
         # Comparison artifacts must be attributable to their labeled backend:
         # a silent chain re-route would corrupt the comparison (round-3 F1).

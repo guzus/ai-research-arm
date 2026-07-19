@@ -14,6 +14,8 @@ name: Generative Research
 #   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-sonnet-5).
 #   * fable-5  — explicit, premium native Anthropic path (model claude-fable-5).
 #   * codex    — Codex CLI signed in with ChatGPT-managed auth.json.
+#   * opencode-kimi-k3 — opencode CLI running Moonshot Kimi K3, authenticated
+#                by the plain MOONSHOT_API_KEY env var (no auth.json seeding).
 #   * deepseek — comparison/fallback route through Fireworks'
 #                Anthropic-compatible endpoint via ANTHROPIC_BASE_URL /
 #                ANTHROPIC_AUTH_TOKEN.
@@ -62,6 +64,7 @@ on:
           - glm-5p2
           - deepseek-v4-flash
           - codex
+          - opencode-kimi-k3
           - claude
           - fable-5
           - deepseek
@@ -253,11 +256,12 @@ jobs:
                 claude-opus-4-8|claude-sonnet-5) CANDIDATE="claude" ;;
                 claude-fable-5|fable-5) CANDIDATE="fable-5" ;;
                 codex|openai-codex) CANDIDATE="codex" ;;
+                opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) CANDIDATE="opencode-kimi-k3" ;;
                 deepseek) CANDIDATE="deepseek-v4-flash" ;;
                 glm-5.2|glm5.2|glm52|glm-5p2) CANDIDATE="glm-5p2" ;;
               esac
               if [ -n "${CANDIDATE:-}" ]; then
-                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
+                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-kimi-k3" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
                   echo "unsupported backend/model: $CANDIDATE" >&2
                   exit 1
                 fi
@@ -290,12 +294,13 @@ jobs:
           case "$BACKEND" in
             default) BACKEND="$DEFAULT_BACKEND" ;;
             codex|openai-codex) BACKEND="codex" ;;
+            opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) BACKEND="opencode-kimi-k3" ;;
             deepseek) BACKEND="deepseek-v4-flash" ;;
             glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
             claude-opus-4-8|claude-sonnet-5) BACKEND="claude" ;;
             claude-fable-5|fable-5) BACKEND="fable-5" ;;
           esac
-          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
+          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-kimi-k3" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
           fi
@@ -1886,6 +1891,123 @@ jobs:
             -c 'shell_environment_policy.ignore_default_excludes=true' \
             -c 'shell_environment_policy.include_only=["PATH","HOME","PWD","GITHUB_WORKSPACE","RUNNER_TEMP","TMPDIR","GEN_DRAFT","GEN_SLUG","GEN_SOURCE","AUTH_TOKEN","CT0","SSL_CERT_FILE","EDGAR_CONTACT_EMAIL","SOURCE_CACHE_MAX_BYTES","SOURCE_CACHE_MAX_TOTAL_BYTES","SOURCE_CACHE_TIMEOUT"]' \
             < .github/codex/prompts/generative-research.md
+
+      # ---- OpenCode + Kimi K3 backend ---------------------------------------
+      # opencode CLI (github.com/anomalyco/opencode) driving Kimi K3. Two
+      # auth routes, resolved in preference order by the preflight below —
+      # both are plain env-var API keys (no interactive `opencode auth
+      # login`, no auth.json seeding):
+      #   1. OPENCODE_API_KEY — OpenCode Go subscription ($10/mo) via the
+      #      built-in `opencode-go` provider, model `opencode-go/kimi-k3`
+      #      (models.dev pins env=OPENCODE_API_KEY, api=opencode.ai/zen/go/v1).
+      #      NOTE: K3 bills usage at full $3/$15 value against the Go caps
+      #      ($12/5h, $30/week, $60/month), so one deep research run is a
+      #      real fraction of the weekly allowance.
+      #   2. MOONSHOT_API_KEY — Moonshot platform pay-per-token via the
+      #      `moonshotai` provider, model `moonshotai/kimi-k3`.
+      # The install is version-pinned (Moonshot's opencode guide requires
+      # >= 1.18.3 for kimi-k3) and OPENCODE_DISABLE_AUTOUPDATE keeps the
+      # pinned binary deterministic on the persistent self-hosted runner.
+      # Headless permission grants + model declarations live in the
+      # committed .github/opencode/opencode.json, injected via
+      # OPENCODE_CONFIG; the -m flag below overrides its default model.
+      #
+      # SECURITY NOTE: unlike codex (shell_environment_policy.include_only),
+      # opencode has no subprocess env allowlist, so the agent's bash tool
+      # inherits this step's env INCLUDING the provider key(s). Containment
+      # matches the codex lane's residual surface: the prompt's env-exfil
+      # prohibitions, Actions log masking, and keys scoped to model billing
+      # only. Keep this step's env to the minimum set.
+      - name: Resolve and preflight OpenCode Kimi route
+        if: steps.effective.outputs.backend == 'opencode-kimi-k3'
+        id: opencode-route
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+        run: |
+          set -euo pipefail
+          # One cheap authenticated call before the 90-minute agent run —
+          # an auth/billing-dead key must fail fast here, not mid-research.
+          # This backend is an explicit comparison choice, so there is no
+          # Claude fallback — mirroring the codex lane's semantics. The two
+          # quick curl retries only absorb transient blips (429/5xx/network);
+          # a genuinely dead key still fails within ~a minute.
+          if [ -n "${OPENCODE_API_KEY:-}" ]; then
+            route="opencode-go"
+            model="opencode-go/kimi-k3"
+            # The Go endpoint is OpenAI-compatible but otherwise an
+            # undocumented surface (models.dev provider.toml caveat), so the
+            # probe is one tiny billable completion (~a cent at most) and we
+            # surface the response body on failure for fast diagnosis.
+            if ! curl -fsS --max-time 60 --retry 2 --retry-delay 5 --retry-all-errors \
+                -H "Authorization: Bearer $OPENCODE_API_KEY" \
+                -H "Content-Type: application/json" \
+                --data '{"model":"kimi-k3","max_tokens":16,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}' \
+                https://opencode.ai/zen/go/v1/chat/completions >/dev/null; then
+              echo "::error::OpenCode Go preflight failed (auth, plan limits, or endpoint change). Check the Go subscription + usage limits at https://opencode.ai/auth, or unset OPENCODE_API_KEY to route via MOONSHOT_API_KEY instead."
+              exit 1
+            fi
+            echo "OpenCode Go preflight OK."
+          elif [ -n "${MOONSHOT_API_KEY:-}" ]; then
+            route="moonshot"
+            model="moonshotai/kimi-k3"
+            if ! curl -fsS --max-time 30 --retry 2 --retry-delay 5 --retry-all-errors \
+                -H "Authorization: Bearer $MOONSHOT_API_KEY" \
+                https://api.moonshot.ai/v1/models >/dev/null; then
+              echo "::error::Moonshot API preflight failed (auth or availability). Verify MOONSHOT_API_KEY and account balance at https://platform.kimi.ai/console/api-keys"
+              exit 1
+            fi
+            echo "Moonshot API preflight OK."
+          else
+            echo "::error::No Kimi auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription key from https://opencode.ai/auth — preferred) or MOONSHOT_API_KEY (pay-per-token key from https://platform.kimi.ai/console/api-keys) with: gh secret set <NAME>"
+            exit 1
+          fi
+          {
+            echo "route=$route"
+            echo "model=$model"
+          } >> "$GITHUB_OUTPUT"
+          echo "Resolved opencode route: $route ($model)"
+
+      - name: Install opencode CLI
+        if: steps.effective.outputs.backend == 'opencode-kimi-k3'
+        run: |
+          npm install -g opencode-ai@1.18.3
+          opencode --version
+
+      # This backend uses the same staged-input files, writer-owned commit,
+      # and verifier/methodology artifact contract as the Claude/Codex/
+      # Fireworks paths. The prompt is passed as the positional message arg;
+      # --auto approves any permission not explicitly denied so a headless
+      # run can never hang on an interactive permission ask.
+      - name: Run Generative Research (OpenCode Kimi K3)
+        if: steps.effective.outputs.backend == 'opencode-kimi-k3'
+        id: gen-opencode
+        continue-on-error: true
+        timeout-minutes: 90
+        env:
+          # Security: GEN_TOPIC / GEN_PROMPT / GEN_TAGS are NOT in this env
+          # block. The agent reads them from $GITHUB_WORKSPACE/.gen-input/
+          # so untrusted issue/dispatch text is not injected into env.
+          GEN_SLUG: ${{ steps.params.outputs.slug }}
+          GEN_SOURCE: ${{ steps.params.outputs.source }}
+          GEN_DRAFT: ${{ steps.draft.outputs.path }}
+          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
+          CT0: ${{ secrets.BIRD_CT0 }}
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+          OPENCODE_MODEL_REF: ${{ steps.opencode-route.outputs.model }}
+          OPENCODE_DISABLE_AUTOUPDATE: '1'
+          OPENCODE_CONFIG: ${{ github.workspace }}/.github/opencode/opencode.json
+        run: |
+          set -euo pipefail
+          # Plain assignment so a missing prompt file fails the step here;
+          # an inline "$(cat ...)" argument would swallow the cat failure
+          # under set -e and hand opencode an empty prompt.
+          GEN_OPENCODE_PROMPT="$(cat .github/opencode/prompts/generative-research.md)"
+          opencode run \
+            -m "$OPENCODE_MODEL_REF" \
+            --auto \
+            "$GEN_OPENCODE_PROMPT"
 
       # ---- Fireworks backends ----------------------------------------------
       # claude-code-action redirected to Fireworks' Anthropic-compatible
@@ -3567,6 +3689,7 @@ jobs:
           CLAUDE_OUTCOME: ${{ steps.gen-claude.outcome }}
           CLAUDE_RETRY_1_OUTCOME: ${{ steps.gen-claude-retry.outcome }}
           CODEX_OUTCOME: ${{ steps.gen-codex.outcome }}
+          OPENCODE_OUTCOME: ${{ steps.gen-opencode.outcome }}
           DEEPSEEK_ATTEMPT_1_OUTCOME: ${{ steps.gen-deepseek.outcome }}
           DEEPSEEK_RETRY_1_OUTCOME: ${{ steps.gen-deepseek-retry.outcome }}
           DEEPSEEK_RETRY_2_OUTCOME: ${{ steps.gen-deepseek-retry-2.outcome }}
@@ -3655,6 +3778,7 @@ jobs:
                   "claude": env("CLAUDE_OUTCOME"),
                   "claude_retry_1": env("CLAUDE_RETRY_1_OUTCOME"),
                   "codex": env("CODEX_OUTCOME"),
+                  "opencode": env("OPENCODE_OUTCOME"),
                   "deepseek_attempt_1": env("DEEPSEEK_ATTEMPT_1_OUTCOME"),
                   "deepseek_retry_1": env("DEEPSEEK_RETRY_1_OUTCOME"),
                   "deepseek_retry_2": env("DEEPSEEK_RETRY_2_OUTCOME"),
@@ -3733,6 +3857,13 @@ jobs:
         run: |
           echo "::error::Codex backend did not produce an article."
           echo "Codex outcome: ${{ steps.gen-codex.outcome }}"
+          exit 1
+
+      - name: Fail OpenCode run without article
+        if: always() && steps.effective.outputs.backend == 'opencode-kimi-k3' && steps.outfile.outputs.has_file != 'true'
+        run: |
+          echo "::error::OpenCode Kimi K3 backend did not produce an article."
+          echo "OpenCode outcome: ${{ steps.gen-opencode.outcome }}"
           exit 1
 
       # claude-code-action reports success when the model session completes,

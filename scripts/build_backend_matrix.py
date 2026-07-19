@@ -57,12 +57,18 @@ DETERMINISTIC_RE = re.compile(r"(deterministic_[a-z_]+\.py)")
 # in an unrelated codex-mentioning step would create a phantom lane — if that
 # ever happens, tighten to the actual `codex ... exec` invocation shape.
 CODEX_EXEC_RE = re.compile(r"\bcodex\b[^\n]*(?:\n[^\n]*)*?\bexec\b")
+# Anchored to the actual invocation shape (line-start `opencode run`), unlike
+# the looser codex regex: a spanning match already phantom-hit the telemetry
+# step's `"opencode": env(...)` python + a later "GitHub run" label, which
+# would have kept the matrix row alive after a partial backend removal.
+OPENCODE_RUN_RE = re.compile(r"^\s*opencode run\b", re.M)
 RESOLVER_CALL_RE = re.compile(r"resolve_backend_lane\.py\s+([a-z0-9\-]+)")
 STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure'")
 
 # Backends generative-research.yml can actually execute (its params step
 # validates against this same set at runtime).
-GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "codex", "deepseek-v4-flash", "glm-5p2"}
+GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "codex", "opencode-kimi-k3",
+                         "deepseek-v4-flash", "glm-5p2"}
 
 REQUIRED_AGENT_RUN_SECRETS = {
     "claude-code-oauth-token": "CLAUDE_CODE_OAUTH_TOKEN",
@@ -121,6 +127,8 @@ class Observation:
     native: list[NativeStep] = field(default_factory=list)
     codex: bool = False
     codex_token: str = ""
+    opencode: bool = False
+    opencode_token: str = ""
     resolver_lanes: set[str] = field(default_factory=set)
     det_by_lane: dict[str, str] = field(default_factory=dict)
     det_by_tier: dict[str, str] = field(default_factory=dict)
@@ -358,6 +366,18 @@ def observe_workflow(wf_path: Path) -> Observation:
                 obs.codex = True
                 wf_text = wf_path.read_text(encoding="utf-8")
                 obs.codex_token = "CODEX_AUTH_JSON" if "CODEX_AUTH_JSON" in wf_text else "(unknown)"
+
+            elif run and OPENCODE_RUN_RE.search(run):
+                obs.opencode = True
+                wf_text = wf_path.read_text(encoding="utf-8")
+                # Same preference order the workflow's route resolver uses:
+                # OpenCode Go subscription key first, Moonshot pay-per-token second.
+                if "OPENCODE_API_KEY" in wf_text:
+                    obs.opencode_token = "OPENCODE_API_KEY"
+                elif "MOONSHOT_API_KEY" in wf_text:
+                    obs.opencode_token = "MOONSHOT_API_KEY"
+                else:
+                    obs.opencode_token = "(unknown)"
 
     return obs
 
@@ -601,6 +621,16 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             rows.append(["(dispatch path) backend=codex", f"`{wf_name}`", "Codex CLI",
                          "OpenAI (ChatGPT subscription auth)", "codex CLI default",
                          f"`{obs.codex_token}`", "—"])
+        if obs.opencode:
+            if wf_name == "generative-research.yml":
+                rows.append(["(dispatch path) backend=opencode-kimi-k3", f"`{wf_name}`",
+                             "opencode CLI", "OpenCode Go → Moonshot (env-resolved)", "`kimi-k3`",
+                             f"`{obs.opencode_token}`",
+                             "hard fail (strict comparison backend)"])
+            else:
+                rows.append(["(canary) opencode + kimi-k3", f"`{wf_name}`",
+                             "opencode CLI", "OpenCode Go → Moonshot (env-resolved)", "`kimi-k3`",
+                             f"`{obs.opencode_token}`", "hard fail (diagnostics lane)"])
         if obs.has_fable_dispatch:
             rows.append(["(dispatch path) backend=fable-5", f"`{wf_name}`",
                          "Claude Code · claude-code-action (explicit premium selector)",
@@ -624,7 +654,7 @@ def _wrap(items: list[str], per_line: int = 3) -> str:
 
 def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
                          chain: list[str], native_fallback: str,
-                         has_codex: bool) -> str:
+                         has_codex: bool, has_opencode: bool) -> str:
     """Mermaid routing diagram for the README, derived from the SSOT. Lanes
     are grouped per backend (strict lanes separately) so a re-route in the
     JSON changes the picture on the next regeneration."""
@@ -679,6 +709,8 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
         out.append(f'        {node}["{label}"]')
     if has_codex:
         out.append('        OAI["🤖 OpenAI Codex CLI<br/><i>ChatGPT auth</i>"]')
+    if has_opencode:
+        out.append('        MSH["🌙 Moonshot Kimi K3<br/><i>opencode CLI</i>"]')
     out.append("    end")
 
     for node, backend in edges:
@@ -689,6 +721,8 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
     out.append(f'    native -->|"{" · ".join(sorted(m for m in native_models if m))}"| ANT')
     if gen_default and has_codex:
         out.append('    gendef -.->|"backend=codex"| OAI')
+    if gen_default and has_opencode:
+        out.append('    gendef -.->|"backend=opencode-kimi-k3"| MSH')
 
     # ordered chain arrows between providers: primary-heaviest provider first,
     # then each chain hop
@@ -735,7 +769,8 @@ def build_generated_blocks() -> tuple[str, str]:
     no_model = [p.name for p in workflow_files()
                 if p.name not in lane_workflows
                 and not any([observations[p.name].agent_run, observations[p.name].pi,
-                             observations[p.name].native, observations[p.name].codex])]
+                             observations[p.name].native, observations[p.name].codex,
+                             observations[p.name].opencode])]
 
     lines = [BEGIN_MARKER, ""]
     lines.append("### Lanes")
@@ -759,7 +794,9 @@ def build_generated_blocks() -> tuple[str, str]:
     lines.append(END_MARKER)
 
     has_codex = any(o.codex for o in observations.values())
-    diagram = build_readme_diagram(lanes, profiles, chain, native_fallback, has_codex)
+    has_opencode = any(o.opencode for o in observations.values())
+    diagram = build_readme_diagram(lanes, profiles, chain, native_fallback,
+                                   has_codex, has_opencode)
     diagram_block = "\n".join([
         BEGIN_DIAGRAM,
         "```mermaid",

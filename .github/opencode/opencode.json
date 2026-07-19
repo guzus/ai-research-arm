@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode-go/kimi-k3",
+  "provider": {
+    "opencode-go": {
+      "models": {
+        "kimi-k3": {}
+      }
+    },
+    "moonshotai": {
+      "models": {
+        "kimi-k3": {}
+      }
+    }
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "webfetch": "allow"
+  }
+}

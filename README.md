@@ -162,6 +162,7 @@ flowchart LR
         ZAI["⚡ Z.ai"]
         ANT["🅰️ Anthropic<br/><i>native Claude</i>"]
         OAI["🤖 OpenAI Codex CLI<br/><i>ChatGPT auth</i>"]
+        MSH["🌙 Moonshot Kimi K3<br/><i>opencode CLI</i>"]
     end
     lanes0 -->|"claude-sonnet-5"| ANT
     strict0 -->|"claude-sonnet-5"| ANT
@@ -171,6 +172,7 @@ flowchart LR
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
     gendef -.->|"backend=codex"| OAI
+    gendef -.->|"backend=opencode-kimi-k3"| MSH
 ```
 _Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `claude`; regenerate with `uv run python scripts/build_backend_matrix.py`._
 <!-- END GENERATED BACKEND DIAGRAM -->
@@ -288,8 +290,8 @@ report to `research/issues/`, and posts the findings back on the issue.
 sources, writes in the [ARA DSL](ARA_DSL.md) (a validated component language
 — see [Component catalog](COMPONENTS.md)), and publishes through a single
 writer path that re-validates everything before commit. Defaults to GLM 5.2
-via Fireworks; `backend=claude|codex|deepseek-v4-flash` selects other
-providers ([details](docs/generative-research-backends.md)).
+via Fireworks; `backend=claude|codex|opencode-kimi-k3|deepseek-v4-flash`
+selects other providers ([details](docs/generative-research-backends.md)).
 
 **3. Tweet → verified article.** Give it just a tweet URL — it reads the
 thread, infers the underlying research question, then verifies the claims
@@ -342,10 +344,13 @@ is included for transparency rather than turnkey reuse.
   unit tests run offline.
 
 **Needs your own credentials (drop-in):**
-- **Claude / Codex / Fireworks / Z.ai backends** — set
-  `CLAUDE_CODE_OAUTH_TOKEN`, `CODEX_AUTH_JSON`, `FIREWORKS_API_KEY`, or
-  `ZAI_API_KEY` for the synthesis/generative lanes you want to run on your
-  fork. The Codex lane uses ChatGPT-managed auth, not OpenAI API billing.
+- **Claude / Codex / OpenCode-Kimi / Fireworks / Z.ai backends** — set
+  `CLAUDE_CODE_OAUTH_TOKEN`, `CODEX_AUTH_JSON`, `OPENCODE_API_KEY` (or
+  `MOONSHOT_API_KEY`), `FIREWORKS_API_KEY`, or `ZAI_API_KEY` for the
+  synthesis/generative lanes you want to run on your fork. The Codex lane
+  uses ChatGPT-managed auth, not OpenAI API billing; the OpenCode lane
+  authenticates the opencode CLI with a plain env-var key — OpenCode Go
+  subscription preferred, Moonshot pay-per-token as fallback.
 - **Twitter/X lanes** — supply your own `BIRD_AUTH_TOKEN` / `BIRD_CT0` cookies
   (they expire often; lanes degrade to empty data without them).
 - **Exa / Perplexity** search enrichment and **Gemini** TTS are optional.
@@ -378,6 +383,8 @@ annotated list. None are needed for the
 | `FIREWORKS_API_KEY` | default scheduled lanes (GLM 5.2, DeepSeek, Kimi) | Anthropic-compatible Fireworks endpoint |
 | `ZAI_API_KEY` | Z.ai GLM 5.2 lanes | Z.ai Coding Plan, Anthropic-compatible route |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
+| `OPENCODE_API_KEY` | `generative-research backend=opencode-kimi-k3` | OpenCode Go subscription key; preferred Kimi K3 route through the opencode CLI via plain env-var auth |
+| `MOONSHOT_API_KEY` | `generative-research backend=opencode-kimi-k3` (fallback route) | Moonshot platform key; pay-per-token Kimi K3 when `OPENCODE_API_KEY` is unset |
 | `BIRD_AUTH_TOKEN` / `BIRD_CT0` | Twitter/X lanes | X cookies (read-only use; expire often) |
 | `BIRDY_ACCOUNTS` | optional | multi-account rotation JSON; every account forced read-only |
 | `GEMINI_API_KEY` | digest/article audio | price-performant TTS |

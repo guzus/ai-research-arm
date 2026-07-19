@@ -12,6 +12,7 @@ research pipeline:
 | `claude` | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit native Anthropic Claude Code path and default fallback when a Fireworks backend is unavailable. The workflow pins `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-sonnet-5`, so the Claude Code `opus` alias resolves to Sonnet 5 for this lane. |
 | `fable-5` | `claude-fable-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit premium native Anthropic path for deliberate one-off runs. It is never the default or a fallback target, and it gets one model-action attempt rather than Claude's automatic recovery retry. The workflow passes the literal model ID to Claude Code and resolves every alias/subagent pin plus article metadata from `claude-fable-5`, preventing a Fable-labeled article from silently running on Sonnet. |
 | `codex` | Codex CLI default model for ChatGPT auth | `CODEX_AUTH_JSON` seeded into file-backed `auth.json` | Optional Codex backend using ChatGPT-managed Codex auth rather than OpenAI API billing. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
+| `opencode-kimi-k3` | `kimi-k3` (1M context) via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription, preferred) or `MOONSHOT_API_KEY` (pay-per-token), read directly from env by opencode's built-in `opencode-go` / `moonshotai` providers | Optional comparison backend on a third harness (opencode, pinned `opencode-ai@1.18.3`). No interactive login and no auth-file seeding — the env var IS the auth; the workflow resolves the route Go-first. Strict: preflight failure on the resolved route fails the run (no Claude fallback). Same staged inputs, methodology artifacts, and writer contract; article metadata records `kimi-k3`. Validate the secret first with `opencode-kimi-canary.yml`. |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 
 ## Local Oracle / GPT-5.5 Pro
@@ -192,6 +193,117 @@ topic/prompt/tags live in `.gen-input/*.txt`; workflow-owned metadata is in env;
 and Codex subprocesses receive only the allowlisted env vars needed by the repo
 tools. The writer script owns the commit.
 
+## OpenCode + Kimi K3
+
+The `opencode-kimi-k3` backend runs the [opencode CLI](https://opencode.ai)
+(github.com/anomalyco/opencode) against Kimi K3. Kimi K3 shipped
+2026-07-16: 1M-token context, tool calling, priced $3.00/Mtok input
+($0.30 cache-hit) and $15.00/Mtok output. It is NOT on Fireworks or the
+pay-as-you-go OpenCode Zen catalog until the promised open-weight release
+(~2026-07-27) — but it IS included in the **OpenCode Go** subscription,
+which is this lane's preferred route. Revisit Fireworks routing after the
+weights land.
+
+**Two auth routes, resolved Go-first by the workflow preflight.** Both are
+plain env-var API keys — opencode documents environment variables as a
+full substitute for interactive `opencode auth login` / `/connect` (which
+write `~/.local/share/opencode/auth.json`); nothing is seeded to disk in
+CI. Do not wire a key through a custom `provider.*.options.apiKey:
+"{env:...}"` block — that substitution path is broken upstream
+(anomalyco/opencode#19946); the built-in providers' native env pickup is
+the supported path.
+
+1. **OpenCode Go (preferred)** — `OPENCODE_API_KEY`, provider
+   `opencode-go`, model `opencode-go/kimi-k3` (models.dev pins
+   `env = ["OPENCODE_API_KEY"]`, `api = https://opencode.ai/zen/go/v1`).
+   Go is opencode's $10/month plan ($5 first month) and its catalog
+   includes Kimi K3. Usage is dollar-value capped — **$12/5h, $30/week,
+   $60/month — and K3 bills at its full $3/$15 rate** (the registry labels
+   it "Kimi K3 (2x usage)"), so one deep research run consumes a real
+   fraction of the weekly allowance. The console's "Use balance" toggle
+   lets Go fall back to Zen pay-as-you-go credits instead of blocking when
+   a cap is hit.
+2. **Moonshot direct (fallback)** — `MOONSHOT_API_KEY`, provider
+   `moonshotai`, model `moonshotai/kimi-k3`, billed per-token against the
+   platform balance (new-user vouchers cannot bill kimi-k3). One platform
+   key works for both Moonshot's OpenAI-compatible and Anthropic-compatible
+   endpoints.
+
+Seed the secret once (either one; Go wins when both exist):
+
+```bash
+# OpenCode Go: sign in at https://opencode.ai/auth, subscribe to Go,
+# copy the API key from the console.
+gh secret set OPENCODE_API_KEY
+
+# Or Moonshot pay-per-token: create a key at
+# https://platform.kimi.ai/console/api-keys (needs a real balance).
+gh secret set MOONSHOT_API_KEY
+```
+
+Then prove the key + harness before spending a 90-minute research run:
+
+```bash
+gh workflow run opencode-kimi-canary.yml
+```
+
+The canary resolves the same Go-first route as the production lane, then
+runs two probes: a stdlib-only raw API check (one tiny `kimi-k3`
+completion against the resolved endpoint — the authoritative
+auth+billing test; the Moonshot route also does a free `GET /v1/models`
+auth check first), followed by a tool-denied headless `opencode run`
+using the exact production argv, proving env-var login through the real
+harness.
+
+Dispatch a research run:
+
+```bash
+gh workflow run generative-research.yml \
+  --ref main \
+  -f topic="$TOPIC" \
+  -f slug="qa-kimi-k3-power-bottlenecks" \
+  -f backend=opencode-kimi-k3 \
+  -f tags="qa,comparison,kimi-k3"
+```
+
+Lane mechanics, mirroring the Codex path:
+
+- Version pinned: `npm install -g opencode-ai@1.18.3` (Moonshot's opencode
+  guide requires >= 1.18.3 for kimi-k3) with `OPENCODE_DISABLE_AUTOUPDATE=1`
+  so the persistent self-hosted runner cannot drift.
+- Config at [`.github/opencode/opencode.json`](../.github/opencode/opencode.json)
+  (injected via `OPENCODE_CONFIG`): grants headless
+  `edit`/`bash`/`webfetch` permissions and declares `kimi-k3` under both
+  `provider.opencode-go.models` and `provider.moonshotai.models` so model
+  resolution survives a stale models.dev registry cache on the runner; the
+  route-resolved `-m` flag picks the provider at run time. The run also
+  passes `--auto` so a headless session can never hang on a permission ask.
+- Prompt at [`.github/opencode/prompts/generative-research.md`](../.github/opencode/prompts/generative-research.md):
+  same data boundary (untrusted inputs in `.gen-input/*.txt`), same
+  methodology artifacts, same validation gates, and the writer owns the
+  commit with `--model kimi-k3` metadata.
+- The workflow preflights the resolved route's API (missing secrets, a
+  dead key, or an exhausted Go cap fails in seconds, before install/agent)
+  and fails closed — an explicit `opencode-kimi-k3` request never falls
+  back to Claude, matching the comparison-lane strictness of
+  `fireworks_fallback=none`.
+- opencode has no Claude-style server WebSearch; the prompt steers research
+  through `scripts/research_search.py`, `scripts/source_cache.py`,
+  `curl`/`pdftotext`, `bird`, and opencode's webfetch tool.
+- Security tradeoff vs. Codex: opencode has no
+  `shell_environment_policy.include_only` equivalent, so agent subshells
+  inherit the step env including `MOONSHOT_API_KEY`. Containment is the
+  prompt's env-exfil prohibitions, Actions log masking, and the key being
+  scoped to Moonshot billing only.
+
+**No-new-harness alternative (not wired up):** Moonshot also runs an
+official Anthropic-compatible endpoint that works with the existing Claude
+Code harness pattern — `ANTHROPIC_BASE_URL=https://api.moonshot.ai/anthropic`,
+`ANTHROPIC_AUTH_TOKEN=$MOONSHOT_API_KEY`, model `kimi-k3[1m]` (the `[1m]`
+alias is endpoint-valid here, unlike Z.ai's rejection of `glm-5.2[1m]`).
+If a Kimi lane is ever wanted without the opencode harness, that is the
+Z.ai-style route to take.
+
 ## Fireworks Backends
 
 The Fireworks paths route through Fireworks' Anthropic-compatible endpoint
@@ -268,6 +380,12 @@ gh workflow run generative-research.yml \
   -f slug="qa-codex-power-bottlenecks" \
   -f backend=codex \
   -f tags="qa,comparison,codex"
+
+gh workflow run generative-research.yml \
+  -f topic="$TOPIC" \
+  -f slug="qa-kimi-k3-power-bottlenecks" \
+  -f backend=opencode-kimi-k3 \
+  -f tags="qa,comparison,kimi-k3"
 
 gh workflow run generative-research.yml \
   -f topic="$TOPIC" \
