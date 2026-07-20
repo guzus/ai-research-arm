@@ -4138,6 +4138,45 @@ a.wiki-history-summary:hover { text-decoration: underline; }
   .wiki-history-summary { grid-column: 1 / -1; }
 }
 
+/* ── History right rail (wide viewports) ─────────────────
+ * With enough width the page splits into two columns: body +
+ * backlinks/related left, History as a sticky right rail with
+ * its own scroll (same sticky pattern as the front-page pane).
+ * Below the breakpoint the rail stacks after the main column,
+ * which is the pre-rail layout unchanged. */
+@media (min-width: 1200px) {
+  .wiki-page-card {
+    max-width: min(var(--page-max), 1160px);
+    /* .content-card clips (overflow: hidden), which kills position: sticky
+     * for the rail — opt out like .wiki-index-card does. */
+    overflow: visible;
+  }
+  .wiki-page-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 0 44px;
+    align-items: start;
+  }
+  .wiki-page-rail {
+    position: sticky;
+    top: calc(var(--sticky-nav-height) + 16px);
+    max-height: calc(100vh - var(--sticky-nav-height) - 32px);
+    overflow-y: auto;
+  }
+  .wiki-page-rail .wiki-history {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  /* The ~300px rail gets the same stacked rows as narrow screens. */
+  .wiki-page-rail .wiki-history-item {
+    grid-template-columns: 5.75rem 1fr;
+    row-gap: 2px;
+  }
+  .wiki-page-rail .wiki-history-op { grid-column: 2; }
+  .wiki-page-rail .wiki-history-summary { grid-column: 1 / -1; }
+}
+
 /* ── Wikilinks (in-body and in lists) ─────────────────── */
 .wikilink {
   color: var(--accent-warm);
