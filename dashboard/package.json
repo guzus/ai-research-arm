@@ -19,7 +19,7 @@
   "devDependencies": {
     "js-yaml": "^5.2.1",
     "typescript": "^7.0.2",
-    "vite": "^8.1.4"
+    "vite": "^8.1.5"
   },
   "dependencies": {
     "@resvg/resvg-js": "^2.6.2",
