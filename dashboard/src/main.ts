@@ -16,12 +16,14 @@ import { hydrateAgentsTimeline, renderAgentsStudioHtml } from './render/agents';
 import type { ArmTimeline } from './render/agents';
 import { renderTodayHtml } from './render/today';
 import {
+  buildTwitterCycleContent,
+  extractTwitterCycleBody,
   parseTwitterStories,
   renderTwitterReportHtml,
   sanitizePublicReportMarkdown,
   storyCurrentLead,
 } from './render/twitter';
-import type { TwitterStory } from './render/twitter';
+import type { TwitterReportRenderOptions, TwitterStory } from './render/twitter';
 import {
   closeAraFigureModal,
   enhanceAraArticle,
@@ -2970,10 +2972,60 @@ function renderWikiNotFound(slug: string): void {
   );
 }
 
-function renderTwitterReport(md: string, fallbackDate: string | null = null): void {
+// ── Twitter A/B side-by-side (comparison lanes) ─────────────────────────────
+// twitter-ab.json (prebuild-generated) maps date → hour → comparison-lane
+// slugs where a same-hour cycle exists in both the primary digest and the
+// lane. It only gates the quiet A/B chip; everything below is lazy — nothing
+// is fetched until a reader clicks the chip.
+type TwitterAbIndex = Record<string, Record<string, string[]>>;
+let twitterAbIndexCache: TwitterAbIndex | undefined;
+let currentTwitterMd = '';
+let currentTwitterMdDate = '';
+const twitterAbMdCache = new Map<string, string | null>();
+
+const TWITTER_AB_LANE_META: Record<string, { label: string; model: string; harness: string }> = {
+  'twitter-opencode-kimi': { label: 'Kimi K3', model: 'kimi-k3 · OpenCode Go / Moonshot', harness: 'opencode CLI' },
+  'twitter-zai': { label: 'GLM-5.2', model: 'glm-5.2 · Z.ai', harness: 'Claude Code' },
+  'twitter-deepseek': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · Fireworks', harness: 'Claude Code' },
+  'twitter-deepseek-pi': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · Fireworks', harness: 'pi (container)' },
+  'twitter-fireworks-pi': { label: 'Kimi K2.7', model: 'kimi-k2p7 · Fireworks', harness: 'pi (container)' },
+};
+// The primary tier's model is resolved at run time by agent-run
+// (Fireworks GLM → Z.ai → native Claude), so label the chain, not one model.
+const TWITTER_AB_PRIMARY_META = {
+  label: 'Primary lane',
+  model: 'agent-run chain: GLM-5.2 → Z.ai → claude-sonnet-5',
+  harness: 'Claude Code',
+};
+
+async function ensureTwitterAbIndex(signal?: AbortSignal): Promise<TwitterAbIndex> {
+  if (twitterAbIndexCache) return twitterAbIndexCache;
+  try {
+    const resp = await fetch(`${DATA_BASE}/twitter-ab.json`, { signal });
+    twitterAbIndexCache = resp.ok ? ((await resp.json()) as TwitterAbIndex) : {};
+  } catch {
+    twitterAbIndexCache = {}; // no chips; the news view is unaffected
+  }
+  return twitterAbIndexCache;
+}
+
+async function fetchTwitterAbLaneMd(lane: string, dateStr: string, signal?: AbortSignal): Promise<string | null> {
+  const key = `${lane}:${dateStr}`;
+  if (twitterAbMdCache.has(key)) return twitterAbMdCache.get(key) ?? null;
+  let md: string | null = null;
+  try {
+    const resp = await fetch(`${DATA_BASE}/${lane}/${dateStr}.md`, { signal });
+    if (resp.ok) md = await resp.text();
+  } catch {
+    md = null;
+  }
+  twitterAbMdCache.set(key, md);
+  return md;
+}
+
+function buildTwitterRenderOptions(fallbackDate: string | null, shownDate: string): TwitterReportRenderOptions {
   const dateStr = fmtDate(currentDate);
-  const shownDate = fallbackDate || dateStr;
-  setSafeContent(content, renderTwitterReportHtml(md, {
+  return {
     fallbackDate,
     currentDateStr: dateStr,
     currentDateTitle: displayDate(currentDate),
@@ -2986,12 +3038,163 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
     twitterMarkdownToHtml,
     renderSourceChips,
     renderHandleChips,
-  }));
+    abHours: twitterAbIndexCache?.[shownDate],
+  };
+}
+
+function renderTwitterReport(md: string, fallbackDate: string | null = null): void {
+  const dateStr = fmtDate(currentDate);
+  const shownDate = fallbackDate || dateStr;
+  currentTwitterMd = md;
+  currentTwitterMdDate = shownDate;
+  setSafeContent(content, renderTwitterReportHtml(md, buildTwitterRenderOptions(fallbackDate, shownDate)));
   if (latestAliasRequested !== 'twitter') {
     setRuntimeIndexable(stripMarkdown(md).split(/\s+/).filter(Boolean).length >= 300);
   }
   void hydrateTweetCards(content);
   void wikifyContent(content);
+}
+
+function formatAbDuration(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = Math.round(seconds % 60);
+  return m > 0 ? `${m}m ${String(s).padStart(2, '0')}s` : `${s}s`;
+}
+
+type TwitterAbRuntime = { seconds: number | null; runUrl: string };
+
+// Agent-step runtime for a lane's cycle: status heartbeat → run_id → public
+// Actions jobs API (unauthenticated, 60 req/hr — hence the sessionStorage
+// cache; completed runs are immutable so entries never need to expire).
+// Every failure returns null and the meta strip simply shows no runtime.
+async function fetchTwitterAbRuntime(laneDir: string, dateStr: string, hour: string): Promise<TwitterAbRuntime | null> {
+  const cacheKey = `ara-ab-rt:${laneDir}:${dateStr}-${hour}`;
+  try {
+    const raw = sessionStorage.getItem(cacheKey);
+    if (raw) return JSON.parse(raw) as TwitterAbRuntime;
+  } catch {
+    /* unparseable — refetch */
+  }
+  try {
+    const statusResp = await fetch(`${DATA_BASE}/${laneDir}/status/${dateStr}-${hour}h.json`);
+    if (!statusResp.ok) return null;
+    const status = (await statusResp.json()) as { run_id?: string | number };
+    const runId = String(status.run_id ?? '');
+    if (!/^\d+$/.test(runId)) return null;
+    const runUrl = `https://github.com/${WIKI_REPO}/actions/runs/${runId}`;
+    let seconds: number | null = null;
+    const jobsResp = await fetch(
+      `https://api.github.com/repos/${WIKI_REPO}/actions/runs/${runId}/jobs?per_page=50`,
+      { headers: { Accept: 'application/vnd.github+json' } },
+    );
+    if (jobsResp.ok) {
+      const data = (await jobsResp.json()) as {
+        jobs?: Array<{ steps?: Array<{ name?: string; conclusion?: string; started_at?: string; completed_at?: string }> }>;
+      };
+      // Matrix legs echo the step as skipped/instant; the real agent step is
+      // the longest successful "Process tweets with …" across all jobs.
+      for (const job of data.jobs || []) {
+        for (const step of job.steps || []) {
+          if (step.conclusion !== 'success' || !/^Process tweets with /.test(step.name || '')) continue;
+          if (!step.started_at || !step.completed_at) continue;
+          const d = (Date.parse(step.completed_at) - Date.parse(step.started_at)) / 1000;
+          if (Number.isFinite(d) && d > (seconds ?? 1)) seconds = d;
+        }
+      }
+    }
+    const out: TwitterAbRuntime = { seconds, runUrl };
+    try {
+      sessionStorage.setItem(cacheKey, JSON.stringify(out));
+    } catch {
+      /* storage full — still return */
+    }
+    return out;
+  } catch {
+    return null;
+  }
+}
+
+async function hydrateTwitterAbRuntimes(panel: HTMLElement, dateStr: string): Promise<void> {
+  const metas = Array.from(panel.querySelectorAll<HTMLElement>('.twitter-ab-meta'));
+  await Promise.all(metas.map(async (el) => {
+    const laneDir = el.dataset.abRt || '';
+    const hour = el.dataset.abHour || '';
+    if (!laneDir || !hour) return;
+    const rt = await fetchTwitterAbRuntime(laneDir, dateStr, hour);
+    const slot = el.querySelector<HTMLElement>('[data-ab-runtime]');
+    if (!rt || !slot || !panel.isConnected) return;
+    const label = rt.seconds != null ? 'agent ' + formatAbDuration(rt.seconds) : 'run';
+    setSafeContent(slot, '<a href="' + escapeHtml(rt.runUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>');
+    slot.hidden = false;
+  }));
+}
+
+function twitterAbPaneHtml(
+  laneDir: string,
+  meta: { label: string; model: string; harness: string },
+  body: string,
+  options: TwitterReportRenderOptions,
+  hour: string,
+): string {
+  return [
+    '<div class="twitter-ab-pane">',
+    '  <div class="twitter-ab-meta" data-ab-rt="' + escapeHtml(laneDir) + '" data-ab-hour="' + escapeHtml(hour) + '">',
+    '    <span class="twitter-ab-lane">' + escapeHtml(meta.label) + '</span>',
+    '    <span class="twitter-ab-model">' + escapeHtml(meta.model) + ' · ' + escapeHtml(meta.harness) + '</span>',
+    '    <span class="twitter-ab-runtime" data-ab-runtime hidden></span>',
+    '  </div>',
+    buildTwitterCycleContent(body, options).contentHtml,
+    '</div>',
+  ].join('\n');
+}
+
+async function buildTwitterAbPanel(panel: HTMLElement, hour: string, lanes: string[], activeLane: string): Promise<void> {
+  setSafeContent(panel, '<p class="twitter-ab-note">Loading comparison…</p>');
+  const dateStr = currentTwitterMdDate;
+  const laneMd = await fetchTwitterAbLaneMd(activeLane, dateStr);
+  const primaryBody = extractTwitterCycleBody(currentTwitterMd, hour);
+  const laneBody = laneMd ? extractTwitterCycleBody(laneMd, hour) : null;
+  if (!primaryBody || !laneBody || !panel.isConnected) {
+    setSafeContent(panel, '<p class="twitter-ab-note">Comparison data unavailable for this cycle.</p>');
+    return;
+  }
+  const options = buildTwitterRenderOptions(null, dateStr);
+  const meta = TWITTER_AB_LANE_META[activeLane] || { label: activeLane, model: activeLane, harness: '' };
+  const laneTabs = lanes.length > 1
+    ? '<div class="twitter-ab-lanes" role="tablist">' + lanes.map((l) => {
+        const m = TWITTER_AB_LANE_META[l];
+        return '<button type="button" class="twitter-ab-lane-tab' + (l === activeLane ? ' is-active' : '') + '" data-ab-pick="' + escapeHtml(l) + '">' + escapeHtml(m?.label || l) + '</button>';
+      }).join('') + '</div>'
+    : '';
+  setSafeContent(panel, [
+    laneTabs,
+    '<div class="twitter-ab-grid">',
+    twitterAbPaneHtml('twitter', TWITTER_AB_PRIMARY_META, primaryBody, options, hour),
+    twitterAbPaneHtml(activeLane, meta, laneBody, options, hour),
+    '</div>',
+  ].filter(Boolean).join('\n'));
+  panel.dataset.loaded = activeLane;
+  void hydrateTweetCards(panel);
+  void hydrateTwitterAbRuntimes(panel, dateStr);
+}
+
+async function toggleTwitterAbPanel(chip: HTMLButtonElement): Promise<void> {
+  const card = chip.closest('.twitter-cycle-card') as HTMLElement | null;
+  const panel = card?.querySelector('.twitter-ab-panel') as HTMLElement | null;
+  if (!card || !panel) return;
+  if (chip.getAttribute('aria-expanded') === 'true') {
+    chip.setAttribute('aria-expanded', 'false');
+    panel.hidden = true;
+    card.classList.remove('twitter-cycle-card--ab');
+    return;
+  }
+  chip.setAttribute('aria-expanded', 'true');
+  card.classList.add('twitter-cycle-card--ab');
+  panel.hidden = false;
+  const lanes = (chip.dataset.abLanes || '').split(',').filter(Boolean);
+  if (!panel.dataset.loaded && lanes.length) {
+    await buildTwitterAbPanel(panel, chip.dataset.abHour || '', lanes, lanes[0]);
+  }
 }
 
 function loadTickets(): Promise<Ticket[] | null> {
@@ -4870,7 +5073,10 @@ async function load(): Promise<void> {
         await loadManifest();
         if (requestId !== loadRequestId) return;
       }
-      const result = await withTimeout(fetchTwitter(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
+      const [result] = await Promise.all([
+        withTimeout(fetchTwitter(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller),
+        ensureTwitterAbIndex(controller.signal),
+      ]);
       if (requestId !== loadRequestId) return;
       if (result === 'timeout') {
         showError('Loading timed out', 'Network may be slow. Click to retry.');
@@ -5262,6 +5468,22 @@ content.addEventListener('click', (e) => {
   }
   if (target.closest('[data-ara-figure-close]')) {
     closeAraFigureModal();
+    return;
+  }
+  const abChip = target.closest('.twitter-ab-chip') as HTMLButtonElement | null;
+  if (abChip) {
+    void toggleTwitterAbPanel(abChip);
+    return;
+  }
+  const abPick = target.closest('[data-ab-pick]') as HTMLButtonElement | null;
+  if (abPick) {
+    const panel = abPick.closest('.twitter-ab-panel') as HTMLElement | null;
+    const chip = panel?.closest('.twitter-cycle-card')?.querySelector('.twitter-ab-chip') as HTMLButtonElement | null;
+    const lane = abPick.dataset.abPick || '';
+    const lanes = (chip?.dataset.abLanes || '').split(',').filter(Boolean);
+    if (panel && chip && lane && panel.dataset.loaded !== lane) {
+      void buildTwitterAbPanel(panel, chip.dataset.abHour || '', lanes, lane);
+    }
     return;
   }
   const figureImg = target.closest('.ara-doc .ara-figure img') as HTMLImageElement | null;

@@ -56,6 +56,10 @@ export type TwitterReportRenderOptions = {
   twitterMarkdownToHtml: (md: string) => string;
   renderSourceChips: (urls: string[], limit?: number) => string;
   renderHandleChips: (handles: string[], limit?: number) => string;
+  // Hours ("16") that have a same-hour comparison-lane cycle (from
+  // twitter-ab.json), mapped to the lane slugs. Drives the A/B chip only —
+  // absent/empty means the report renders exactly as before.
+  abHours?: Record<string, string[]>;
 };
 
 function highlightPlainText(text: string, searchTerm: string): string {
@@ -470,6 +474,86 @@ function renderTwitterDateNav(options: TwitterReportRenderOptions): string {
   ].filter(Boolean).join('\n');
 }
 
+// Everything inside one cycle card below the header: lead brief + story
+// grid (or fallback body) + skeptic callout. Shared by the main report loop
+// and the A/B side-by-side panes so both render identically.
+export type TwitterCycleContent = {
+  leadText: string;
+  stories: TwitterStory[];
+  contentHtml: string;
+};
+
+export function buildTwitterCycleContent(sectionBody: string, options: TwitterReportRenderOptions): TwitterCycleContent {
+  const cycleSummary = stripEmptyCyclePlaceholderLines(extractCycleSummary(sectionBody));
+  const stories = parseTwitterStories(sectionBody);
+  const leadText = cycleSummary
+    ? cleanPublicLeadText(stripMarkdown(cycleSummary))
+    : truncateText(cleanPublicLeadText(stripMarkdown(stripEmptyCyclePlaceholderLines(sectionBody))), 620);
+
+  const fallbackBody = stripEmptyCyclePlaceholderLines(sectionBody
+    .replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '')
+    .replace(/###\s+[^\n]*[Ss]keptic[^\n]*\n[\s\S]*?(?=\n#{2,3}\s|$)/i, ''));
+  const fallbackHtml = fallbackBody && !isEmptyCyclePlaceholderMarkdown(fallbackBody)
+    ? '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + options.twitterMarkdownToHtml(fallbackBody) + '</div>'
+    : '';
+  const structuredStoryCards = renderStructuredTwitterStories(sectionBody, options.searchTerm);
+  const storyCards = structuredStoryCards || stories.map((story) => {
+    const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
+    const watch = truncateText(stripMarkdown(extractSectionText(story.body, 'Watch')), 210);
+    const storyIntro = stripMarkdown(storyCurrentLead(story.body))
+      .replace(/^[\s\-—–]+/, '')
+      .replace(/^the originating\b/i, 'Originating');
+    const storySummary = isSourceMethodLead(storyIntro) ? '' : truncateText(cleanPublicLeadText(storyIntro), 360);
+    const storyLinks = options.renderSourceChips(story.links, 6);
+    const storyHandles = options.renderHandleChips(story.handles, 8);
+    return [
+      '<article class="twitter-story-card">',
+      '  <div class="twitter-story-rank">' + escapeHtml(story.rank) + '</div>',
+      '  <div class="twitter-story-main">',
+      '    <h3 class="twitter-story-title">' + highlightPlainText(story.title, options.searchTerm) + '</h3>',
+      storySummary ? '    <p class="twitter-story-summary">' + highlightPlainText(storySummary, options.searchTerm) + '</p>' : '',
+      '    <details class="twitter-story-details">',
+      '      <summary>Full analysis</summary>',
+      storyLinks || storyHandles ? '      <div class="twitter-story-chips">' + storyLinks + storyHandles + '</div>' : '',
+      verification || watch
+        ? '      <div class="twitter-story-signals">' +
+            (verification ? '<div><span>Verify</span>' + highlightPlainText(verification, options.searchTerm) + '</div>' : '') +
+            (watch ? '<div><span>Watch</span>' + highlightPlainText(watch, options.searchTerm) + '</div>' : '') +
+          '</div>'
+        : '',
+      '      <div class="md-content twitter-story-body">' + options.twitterMarkdownToHtml(story.body) + '</div>',
+      '    </details>',
+      '  </div>',
+      '</article>',
+    ].filter(Boolean).join('\n');
+  }).join('\n');
+
+  const skepticBody = extractSkepticCorner(sectionBody);
+  const skepticHtml = skepticBody
+    ? '<div class="ara-callout ara-callout--danger">' + options.twitterMarkdownToHtml(skepticBody) + '</div>'
+    : '';
+
+  const contentHtml = [
+    '  <div class="twitter-wire-brief">',
+    '    <div>',
+    '      <p class="twitter-brief-text">' + highlightPlainText(leadText, options.searchTerm) + '</p>',
+    '    </div>',
+    '  </div>',
+    storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : fallbackHtml,
+    skepticHtml,
+  ].filter(Boolean).join('\n');
+
+  return { leadText, stories, contentHtml };
+}
+
+/** Body of the `## <hour>:00 UTC` cycle in a raw report, or null. */
+export function extractTwitterCycleBody(md: string, hour: string): string | null {
+  for (const section of splitSections(sanitizePublicReportMarkdown(md))) {
+    if (section.title === hour + ':00 UTC') return section.body;
+  }
+  return null;
+}
+
 export function renderTwitterReportHtml(md: string, options: TwitterReportRenderOptions): string {
   const sections = splitSections(sanitizePublicReportMarkdown(md)).reverse();
   const cards: string[] = [renderTwitterDateNav(options)];
@@ -481,14 +565,10 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
     const title = section.title || options.currentDateTitle;
     const timeInfo = options.parseUtcTime(section.title, options.currentDateStr);
     const cycleAnchor = 'cycle-' + section.title.replace(/[:\s]/g, '').toLowerCase();
-    const cycleSummary = stripEmptyCyclePlaceholderLines(extractCycleSummary(section.body));
-    const stories = parseTwitterStories(section.body);
+    const { leadText, stories, contentHtml } = buildTwitterCycleContent(section.body, options);
     const displayTime = timeInfo
       ? '<span class="twitter-cycle-time">' + escapeHtml(timeInfo.utc) + '</span><span class="local-time">' + escapeHtml(timeInfo.local) + '</span>'
       : '<span class="twitter-cycle-time">' + escapeHtml(title) + '</span>';
-    const leadText = cycleSummary
-      ? cleanPublicLeadText(stripMarkdown(cycleSummary))
-      : truncateText(cleanPublicLeadText(stripMarkdown(stripEmptyCyclePlaceholderLines(section.body))), 620);
     mindshareCycles.push({
       anchor: cycleAnchor,
       body: section.body,
@@ -503,47 +583,16 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
       detail: summarizeTwitterTimeline(leadText, stories, section.body),
     });
 
-    const fallbackBody = stripEmptyCyclePlaceholderLines(section.body
-      .replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '')
-      .replace(/###\s+[^\n]*[Ss]keptic[^\n]*\n[\s\S]*?(?=\n#{2,3}\s|$)/i, ''));
-    const fallbackHtml = fallbackBody && !isEmptyCyclePlaceholderMarkdown(fallbackBody)
-      ? '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + options.twitterMarkdownToHtml(fallbackBody) + '</div>'
-      : '';
-    const structuredStoryCards = renderStructuredTwitterStories(section.body, options.searchTerm);
-    const storyCards = structuredStoryCards || stories.map((story) => {
-      const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
-      const watch = truncateText(stripMarkdown(extractSectionText(story.body, 'Watch')), 210);
-      const storyIntro = stripMarkdown(storyCurrentLead(story.body))
-        .replace(/^[\s\-—–]+/, '')
-        .replace(/^the originating\b/i, 'Originating');
-      const storySummary = isSourceMethodLead(storyIntro) ? '' : truncateText(cleanPublicLeadText(storyIntro), 360);
-      const storyLinks = options.renderSourceChips(story.links, 6);
-      const storyHandles = options.renderHandleChips(story.handles, 8);
-      return [
-        '<article class="twitter-story-card">',
-        '  <div class="twitter-story-rank">' + escapeHtml(story.rank) + '</div>',
-        '  <div class="twitter-story-main">',
-        '    <h3 class="twitter-story-title">' + highlightPlainText(story.title, options.searchTerm) + '</h3>',
-        storySummary ? '    <p class="twitter-story-summary">' + highlightPlainText(storySummary, options.searchTerm) + '</p>' : '',
-        '    <details class="twitter-story-details">',
-        '      <summary>Full analysis</summary>',
-        storyLinks || storyHandles ? '      <div class="twitter-story-chips">' + storyLinks + storyHandles + '</div>' : '',
-        verification || watch
-          ? '      <div class="twitter-story-signals">' +
-              (verification ? '<div><span>Verify</span>' + highlightPlainText(verification, options.searchTerm) + '</div>' : '') +
-              (watch ? '<div><span>Watch</span>' + highlightPlainText(watch, options.searchTerm) + '</div>' : '') +
-            '</div>'
-          : '',
-        '      <div class="md-content twitter-story-body">' + options.twitterMarkdownToHtml(story.body) + '</div>',
-        '    </details>',
-        '  </div>',
-        '</article>',
-      ].filter(Boolean).join('\n');
-    }).join('\n');
-
-    const skepticBody = extractSkepticCorner(section.body);
-    const skepticHtml = skepticBody
-      ? '<div class="ara-callout ara-callout--danger">' + options.twitterMarkdownToHtml(skepticBody) + '</div>'
+    // Quiet A/B affordance: only cycles with a same-hour comparison run get
+    // the chip; everyone else sees the header exactly as before. The panel
+    // div stays empty until the chip is clicked (filled by main.ts).
+    const hourMatch = /^(\d{2}):00 UTC$/.exec(section.title || '');
+    const abLanes = hourMatch ? options.abHours?.[hourMatch[1]] : undefined;
+    const abChip = abLanes?.length
+      ? '<button class="twitter-ab-chip" type="button" aria-expanded="false" ' +
+        'title="Compare this cycle side-by-side with another model" ' +
+        'data-ab-hour="' + escapeHtml(hourMatch![1]) + '" ' +
+        'data-ab-lanes="' + escapeHtml(abLanes.join(',')) + '">A/B</button>'
       : '';
 
     cards.push(
@@ -551,16 +600,14 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
         '<section id="' + cycleAnchor + '" class="content-card twitter-cycle-card">',
         '  <div class="twitter-cycle-header">',
         '    <div class="twitter-cycle-kicker">' + (timeInfo ? options.clockIcon(timeInfo.localHours, timeInfo.localMinutes) : '') + displayTime + '</div>',
+        abChip ? '    ' + abChip : '',
         '  </div>',
-        '  <div class="twitter-wire-brief">',
-        '    <div>',
-        '      <p class="twitter-brief-text">' + highlightPlainText(leadText, options.searchTerm) + '</p>',
-        '    </div>',
+        abChip ? '  <div class="twitter-ab-panel" hidden></div>' : '',
+        '  <div class="twitter-cycle-default">',
+        contentHtml,
         '  </div>',
-        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : fallbackHtml,
-        skepticHtml,
         '</section>',
-      ].join('\n'),
+      ].filter(Boolean).join('\n'),
     );
   }
 
