@@ -129,3 +129,13 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
 - **Strategic-investor logic.** CATL (a battery maker) as a lead outside
   investor is unusual; the bet reads as energy/compute-adjacent rather than
   product-strategic.
+
+## Changelog
+
+- [2026-06-04] created | first-ever external round ~$7.4B at up to $59B, Tencent+CATL, commercialization pivot + Tencent Cloud 97.5% V4 price cut
+- [2026-06-05] updated | "the filing would make it real" financing-discipline critique
+- [2026-06-17] updated | Make ARA wiki OKF-native
+- [2026-06-18] updated | first external round CLOSED ~$7.4B/$50B+, Liang ~$2.8B biggest check, Tencent ~$1.4B/CATL ~$700M, no investor votes/founder-controlled LP, US declines entity-list blacklist
+- [2026-06-19] updated | introduces Vision/goes multimodal
+- [2026-06-29] updated | round largest in Chinese AI history, Liang ~$3B/Tencent ~$1.5B/CATL ~$740M, state fund sole voting investor w/ no lock-up, others 5-yr lock-up, double-every-department-toward-AGI, @deepseek_ai silent since May 22
+- [2026-06-30] updated | Wiki ingest 2026-06-30

@@ -63,3 +63,9 @@ Review calls it Anthropic's "newest flagship product" (ARA digest 2026-07-01).
 - **How much runs on which model?** The launch pairs with
   [[claude-sonnet-5|Sonnet 5]]; the model tier powering the 60+ tools and
   on-demand compute is not detailed in-window.
+
+## Changelog
+
+- [2026-07-01] created | agentic research workbench w/ Novartis/BMS/Genentech
+- [2026-07-04] updated | Jonah Cool hire + secondary press
+- [2026-07-05] updated | broadening trade press, still no official disease/partner/timeline detail

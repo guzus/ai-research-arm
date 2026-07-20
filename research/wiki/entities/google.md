@@ -60,3 +60,9 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
 - **How does Germany's AI-Overviews-as-media-law ruling interact with the
   EU-level DMA action** — two different legal theories converging on the
   same company in the same window.
+
+## Changelog
+
+- [2026-07-17] created | first standalone page for Google, anchored by the DMA ruling + NotebookLM rebrand), updated 5 (china-ai-regulation — broadened to cover Xi Jinping's World AI Conference keynote and the World AI Cooperation Organization…
+- [2026-07-18] updated | Gemini Notebook cloud code execution + 30M+ users/600K+ orgs disclosed
+- [2026-07-20] updated | Wiki ingest 2026-07-20

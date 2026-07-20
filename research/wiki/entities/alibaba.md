@@ -107,3 +107,9 @@ friction point distinct from Qwen's own model-release cadence.
   "outperforms all Opus models" claim is one tester's self-reported result;
   watch for an official Qwen benchmark table and independent evals once the
   open-weight release lands.
+
+## Changelog
+
+- [2026-07-05] created | distillation accusation, mechanism-level ban timeline, viral-thread debunk
+- [2026-07-15] updated | Qwen AI-companion shutdown under the new China regulation
+- [2026-07-20] updated | Qwen3.8-Max confirmed launch

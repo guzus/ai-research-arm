@@ -39,3 +39,7 @@ the Gemini API for the first time** (ARA digest 2026-07-01).
   presentation-grade.
 - **Omni Flash video maturity.** First-to-API is a milestone; output quality,
   length limits, and pricing under real load are untested in-window.
+
+## Changelog
+
+- [2026-07-01] created | Google's fastest/cheapest image model + Omni Flash API video gen), updated 3 (anthropic — Sonnet 5 + Claude Science launches, Amazon $1B FDE org + repricing tension, Fable re-release absent

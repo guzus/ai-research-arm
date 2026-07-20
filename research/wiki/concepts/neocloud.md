@@ -44,3 +44,8 @@ demand-side mirror of the same take-or-pay logic.
   rental price?
 - **Power, not just chips.** Increasingly the binding constraint is megawatts, not
   GPUs. Who controls owned power versus leases it?
+
+## Changelog
+
+- [2026-05-24] created | Add LLM Wiki lane: compounding knowledge base + dashboard tab
+- [2026-06-17] updated | Make ARA wiki OKF-native

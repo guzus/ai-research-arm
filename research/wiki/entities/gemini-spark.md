@@ -56,3 +56,8 @@ surface it.
   + Cowork + Scout 24/7 Agent) is the explicit consumer-agent rival
   staged for June 2. Does the agent-store / extension model out-compete
   Spark's Skills surface on developer mindshare?
+
+## Changelog
+
+- [2026-06-01] created | first GA paid frontier-lab persistent consumer agent on Google Cloud VMs
+- [2026-06-17] updated | Make ARA wiki OKF-native

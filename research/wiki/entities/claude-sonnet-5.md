@@ -59,3 +59,8 @@ beneath Anthropic's frontier line (ARA digest 2026-07-01).
   whether Sonnet 5 is a genuine capability step or a safety-descoped repackaging
   shipped while [[claude-fable-5|Fable 5]]'s general re-release stayed
   conspicuously absent.
+
+## Changelog
+
+- [2026-07-01] created | 2026-06-30 default on Free/Pro, $2/$10 intro, 1M context, split day-2 benchmarks + deliberately lower cyber
+- [2026-07-02] updated | price-to-performance reception cools on ~40% more tokens/task

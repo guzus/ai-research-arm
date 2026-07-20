@@ -42,3 +42,7 @@ university (not a resignation).
 - **What does a theory-first hire signal about Anthropic's research direction?**
   MTS placements are broad; where Nelson's algorithmic expertise lands
   (efficiency, training, evals) is unresolved.
+
+## Changelog
+
+- [2026-07-02] created | sitting UC Berkeley EECS chair → Anthropic MTS on leave), updated 7 (claude-fable-5 — global re-release metered + reclassified + tops RLI

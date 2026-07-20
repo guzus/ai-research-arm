@@ -111,3 +111,10 @@ covering it.
 - **Distinct from Kimi K2.7 Code.** This page tracks the K3 flagship
   specifically — do not conflate with [[moonshot-kimi-k2-7-code]], a
   separate, smaller coding-focused release.
+
+## Changelog
+
+- [2026-07-17] created | Moonshot's 2.8T flagship, reportedly closing the gap with Opus 4.8
+- [2026-07-18] updated | "Open Frontier Intelligence" branding, second HN cycle at ~2,000 pts, Willison pelican benchmark, system-prompt-refusal quote
+- [2026-07-19] updated | today's split benchmark data + SemiAnalysis Gemini comparison
+- [2026-07-20] updated | IPO valuation, subscription pause, ECI gap dispute

@@ -74,3 +74,12 @@ like [[anthropic]] (Claude Haiku) and OpenAI.
   demand strains [[neocloud]] and hyperscaler capacity?
 - **Default-model leverage.** As the new default for AI Mode in Search, how much
   does forced distribution inflate "adoption" versus genuine preference?
+
+## Changelog
+
+- [2026-05-24] created | Add LLM Wiki lane: compounding knowledge base + dashboard tab
+- [2026-06-10] updated | Gemini 3.5 Live Translate same-day counter-programming
+- [2026-06-17] updated | Make ARA wiki OKF-native
+- [2026-07-01] updated | Wiki ingest 2026-07-01
+- [2026-07-04] updated | Gemini 3.5 Pro full-retrain rumor
+- [2026-07-20] updated | cross-linked to the new gemini-3-5-pro page, resolving the prior open question

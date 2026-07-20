@@ -228,6 +228,13 @@ jobs:
                    the correct subdir (entities/ vs concepts/ vs themes/)
                    with a slug per the schema conventions, full frontmatter,
                    and `[[links]]` to related pages that already exist.
+              NEVER write or edit a page's `## Changelog` section. It is a
+              GENERATED artifact: a later workflow step regenerates every
+              page's changelog from this repo's git history. Leave any
+              existing section exactly as you found it, and do not add one to
+              a page you create. What DOES feed those entries is your log.md
+              line (STEP 4) — naming a page there gives its changelog a good
+              summary, so name every page you touched.
               Maintain bidirectional linking where the schema calls for it.
               Keep page bodies concise and factual.
 
@@ -325,6 +332,29 @@ jobs:
             exit 1
           fi
           echo "No wiki page deletions."
+
+      # Materialize each page's `## Changelog` from git history. This runs
+      # AFTER the agent's commit on purpose: the entries are derived from the
+      # commits that touched each page, so today's change only becomes
+      # derivable once today's commit exists. The generator is a fixpoint
+      # (commits that touch only changelog sections are ignored), so this
+      # second commit never feeds itself on the next run.
+      #
+      # The checkout above uses fetch-depth: 0, which this step REQUIRES — on
+      # a shallow clone `git log -- <page>` would see one commit and truncate
+      # every page's history. The generator hard-fails rather than corrupt the
+      # corpus, and `--check` proves the committed sections match git before
+      # we publish.
+      - name: Regenerate per-page changelogs from git history
+        run: |
+          uv run python scripts/build_wiki_changelogs.py
+          uv run python scripts/build_wiki_changelogs.py --check
+          uv run python scripts/check_wiki.py
+          uv run python scripts/build_wiki_index.py
+          git add research/wiki/
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -m "Wiki changelogs ${{ steps.datetime.outputs.date }}" || echo "No changelog changes"
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the rebase

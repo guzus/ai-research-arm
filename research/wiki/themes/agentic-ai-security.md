@@ -236,3 +236,18 @@ the cycle:
   thing competently) is a distinct vector that has not yet had its canonical
   2026 incident. When it does, does it crystallize a separate theme or fold
   into this one?
+
+## Changelog
+
+- [2026-05-29] created | Wiki ingest 2026-05-29
+- [2026-06-03] updated | Mythos 10k-bug disclosure catalyzing federal EO
+- [2026-06-08] updated | Meta-Instagram chatbot hijack + OpenAI Lockdown Mode
+- [2026-06-10] updated | Mythos 5 88.4% exploit eval + guardrail overreach + Microsoft AI-dev supply-chain hack
+- [2026-06-12] updated | DeepMind $10M multi-agent fund + Fable guardrails reversal + German AI-Overviews liability + autonomous-drone lethality + Claw Patrol firewall
+- [2026-06-14] updated | capability-misuse drove first govt model shutdown + SABER 54% + domain-finetuning safety degradation
+- [2026-06-15] updated | "Verifier Tax" safety↔success paper + coding-agents-find-file-miss-lines study
+- [2026-06-17] updated | Make ARA wiki OKF-native
+- [2026-06-23] updated | Daybreak gated-defender vs too-powerful-to-ship split + Five Eyes offensive-cyber warning
+- [2026-07-03] updated | Epoch AI CVE spike + GuardFall 10/11 open-source coding-agent shell-injection finding
+- [2026-07-14] updated | Grok Build CLI exfiltration allegation + Clawk sandbox response
+- [2026-07-19] updated | persistent prompt-injection-in-agent-memory research

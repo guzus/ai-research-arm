@@ -34,6 +34,10 @@ sources:
 ---
 
 Body for {slug}. {body}
+
+## Changelog
+
+- [2026-05-24] created | page created
 """
 
 SUBDIR = {"entity": "entities", "concept": "concepts", "theme": "themes"}
@@ -144,6 +148,10 @@ images:
 ---
 
 Body with no wikilinks; just prose to exercise flow-style frontmatter parsing.
+
+## Changelog
+
+- [2026-05-24] created | page created
 """,
                 encoding="utf-8",
             )
@@ -389,6 +397,137 @@ class CorpusFailureTest(unittest.TestCase):
             report = run_validate(root)
             # [[not-a-real-page]] is inside a fence → must NOT be flagged.
             self.assertTrue(report.ok(), msg=[f.__dict__ for f in report.failures])
+
+
+# --- check_wiki: per-page changelog ------------------------------------------
+
+
+CHANGELOG_PAGE = """---
+slug: alpha
+title: Alpha
+type: entity
+description: A one-line description.
+created_at: 2026-05-24
+timestamp: {timestamp}
+---
+
+Body for alpha.
+
+{tail}"""
+
+
+class ChangelogTest(unittest.TestCase):
+    """The per-page `## Changelog` SHAPE contract.
+
+    Presence is deliberately NOT checked: the section is generated from git
+    history by build_wiki_changelogs.py, so a page legitimately has none
+    between the ingest agent creating it and the post-commit regeneration.
+    """
+
+    def _report(self, tail: str, *, timestamp: str = "2026-05-24T00:00:00Z") -> check_wiki.Report:
+        with tempfile.TemporaryDirectory() as td:
+            root = make_wiki(Path(td))
+            (root / "entities" / "alpha.md").write_text(
+                CHANGELOG_PAGE.format(timestamp=timestamp, tail=tail),
+                encoding="utf-8",
+            )
+            write_index(root, entities=["alpha"])
+            write_log(root)
+            return run_validate(root)
+
+    def test_valid_changelog_passes(self):
+        report = self._report(
+            "## Changelog\n\n"
+            "- [2026-05-24] created | page created\n"
+            "- [2026-05-24] updated | same-day refinement\n"
+        )
+        self.assertTrue(report.ok(), msg=[f.__dict__ for f in report.failures])
+
+    def test_missing_changelog_is_allowed(self):
+        # A freshly-created page has no changelog until the generator runs.
+        report = self._report("")
+        self.assertTrue(report.ok(), msg=[f.__dict__ for f in report.failures])
+
+    def test_content_after_changelog_fails(self):
+        report = self._report(
+            "## Changelog\n\n- [2026-05-24] created | page created\n\n## Notes\n\nTrailing prose.\n"
+        )
+        self.assertIn("changelog", fail_fields(report))
+        self.assertTrue(any("final section" in f.msg for f in report.failures))
+
+    def test_duplicate_changelog_sections_fail(self):
+        report = self._report(
+            "## Changelog\n\n- [2026-05-24] created | one\n\n"
+            "## Changelog\n\n- [2026-05-24] created | two\n"
+        )
+        self.assertIn("changelog", fail_fields(report))
+        self.assertTrue(any("exactly one" in f.msg for f in report.failures))
+
+    def test_empty_changelog_fails(self):
+        report = self._report("## Changelog\n")
+        self.assertIn("changelog", fail_fields(report))
+        self.assertTrue(any("at least a" in f.msg for f in report.failures))
+
+    def test_first_entry_must_be_created(self):
+        report = self._report("## Changelog\n\n- [2026-05-24] updated | no created entry\n")
+        self.assertIn("changelog", fail_fields(report))
+        self.assertTrue(any("first entry must be" in f.msg for f in report.failures))
+
+    def test_second_created_entry_fails(self):
+        report = self._report(
+            "## Changelog\n\n"
+            "- [2026-05-24] created | page created\n"
+            "- [2026-05-24] created | created again\n"
+        )
+        self.assertIn("changelog", fail_fields(report))
+        self.assertTrue(any("only the first entry may be 'created'" in f.msg for f in report.failures))
+
+    def test_unknown_op_fails(self):
+        report = self._report(
+            "## Changelog\n\n"
+            "- [2026-05-24] created | page created\n"
+            "- [2026-05-24] tweaked | not a canonical op\n"
+        )
+        self.assertIn("changelog", fail_fields(report))
+        self.assertTrue(any("must be one of" in f.msg and "'tweaked'" in f.msg for f in report.failures))
+
+    def test_out_of_order_dates_fail(self):
+        report = self._report(
+            "## Changelog\n\n"
+            "- [2026-05-24] created | page created\n"
+            "- [2026-05-26] updated | later\n"
+            "- [2026-05-25] updated | earlier after later\n"
+        )
+        self.assertIn("changelog", fail_fields(report))
+        self.assertTrue(any("out of order" in f.msg for f in report.failures))
+
+    def test_empty_summary_fails(self):
+        report = self._report("## Changelog\n\n- [2026-05-24] created |   \n")
+        self.assertIn("changelog", fail_fields(report))
+
+    def test_entry_dates_are_independent_of_timestamp(self):
+        # Entries are derived from commit dates, so they may sit on either
+        # side of the frontmatter timestamp; the validator does not couple them.
+        report = self._report(
+            "## Changelog\n\n"
+            "- [2026-05-24] created | page created\n"
+            "- [2026-06-05] updated | later than timestamp\n",
+            timestamp="2026-06-01T00:00:00Z",
+        )
+        self.assertTrue(report.ok(), msg=[f.__dict__ for f in report.failures])
+
+    def test_fenced_changelog_heading_does_not_count(self):
+        report = self._report(
+            "```\n## Changelog\n- [2026-01-01] created | fenced example, not real\n```\n\n"
+            "## Changelog\n\n- [2026-05-24] created | page created\n"
+        )
+        self.assertTrue(report.ok(), msg=[f.__dict__ for f in report.failures])
+
+    def test_wikilink_in_summary_participates_in_link_validation(self):
+        report = self._report(
+            "## Changelog\n\n- [2026-05-24] created | page created, see [[ghost]]\n"
+        )
+        self.assertIn("links", fail_fields(report))
 
 
 # --- check_wiki: index.md / log.md ------------------------------------------

@@ -49,3 +49,7 @@ for. It is the cleanest cold-water counterweight to launch-week model hype.
   the freelance-marketplace projects it samples?
 - **How fast does the failure rate fall?** The <3% → 16% jump in a year is the
   variable that most directly bears on AI's near-term labor-market impact.
+
+## Changelog
+
+- [2026-07-02] created | Scale×CAIS end-to-end paid-freelance automation benchmark, leader ~16% / fails ~84%

@@ -143,3 +143,14 @@ not announced.
 - **Who wins the "Extensions" default?** Being the user-selectable backend for
   Apple Intelligence is a distribution prize [[openai]], Google, and
   [[anthropic]] will all fight over.
+
+## Changelog
+
+- [2026-06-08] created | WWDC 2026 Siri rebuild on custom Gemini + "Extensions" layer + NVIDIA confidential-compute routing
+- [2026-06-10] updated | AFM 3 / CoreAI on-device stack + Siri AI pulled from EU after DMA exemption denial
+- [2026-06-17] updated | Make ARA wiki OKF-native
+- [2026-07-12] updated | sues OpenAI over hardware trade secrets
+- [2026-07-13] updated | OpenAI's on-record rebuttal escalation
+- [2026-07-14] updated | lawsuit coverage continues + SpeechAnalyzer benchmark
+- [2026-07-15] updated | GPT-Live device detail on the OpenAI suit
+- [2026-07-18] updated | legal letters to dozens of OpenAI employees

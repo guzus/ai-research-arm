@@ -60,3 +60,8 @@ after its 2026-07-13 release, discussed as a non-US/China open-model
 contender the same cycle [[moonshot-kimi-k3|Kimi K3]] dominated the
 front page — early evidence the release is sustaining community interest
 past its launch-day cycle rather than fading immediately.
+
+## Changelog
+
+- [2026-07-13] created | Deutsche Telekom-backed sovereign open German/English MoE model, ~27T tokens), updated 6 (gpt-5-6 — third capacity intervention in 48h
+- [2026-07-17] updated | sustained HN traction four days post-release; entities cross-linked to moonshot-kimi-k2-7-code, open-weights, ai-capex, federal-ai-policy

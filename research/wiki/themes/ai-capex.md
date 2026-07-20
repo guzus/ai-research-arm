@@ -312,3 +312,22 @@ package cleared its chamber-of-origin crossover.
 - **The "beats but closes lower" tell.** Why does the market keep selling the
   single best supply-side data point (NVIDIA earnings)? Priced-in growth, or
   early doubt about the supercycle?
+
+## Changelog
+
+- [2026-05-24] created | Add LLM Wiki lane: compounding knowledge base + dashboard tab
+- [2026-05-29] updated | frontier-lab capital paragraph
+- [2026-05-30] updated | valuation flip + May 28 vertical-agent funding cluster + Ohio data-center tax pushback
+- [2026-06-01] updated | Dell print + SoftBank €75B France commitment + OpenRouter router-layer round
+- [2026-06-03] updated | Marvell +29.7%/Alphabet $80B/Berkshire $10B/HPE + three-front mega-IPO calendar
+- [2026-06-04] updated | ~$340B issuance wave SpaceX/Alphabet/DeepSeek + Ray Dalio bubble + Suno/NewLimit + ROI reality-check Uber $1,500 cap/7.8%/DDR5
+- [2026-06-05] updated | SpaceX hard filing + Broadcom −12.6%/$320B gut-check + Alphabet ~$85B + TSMC ceiling + Meta tent DCs + $50.7B DC construction
+- [2026-06-08] updated | $2B+/mo compute-landlord economics + Helion $15.5B + Meta Hatch $200/mo
+- [2026-06-10] updated | Google $35B Broadcom/TPU lease-guarantee stack + semis rotation continued
+- [2026-06-12] updated | Prometheus industrial-AI megaround + SpaceX debut + OpenAI-Anthropic price war
+- [2026-06-17] updated | SpaceX $60B Cursor all-stock buy + ~$2.6-2.7T valuation + leaked OpenAI cost side ($13.07B rev vs $19.18B R&D)
+- [2026-06-17] updated | SpaceX $60B Cursor all-stock buy + ~$2.6-2.7T valuation + leaked OpenAI cost side ($13.07B rev vs $19.18B R&D)
+- [2026-06-17] updated | SpaceX $60B Cursor all-stock buy + ~$2.6-2.7T valuation + leaked OpenAI cost side ($13.07B rev vs $19.18B R&D)
+- [2026-06-17] updated | SpaceX $60B Cursor all-stock buy + ~$2.6-2.7T valuation + leaked OpenAI cost side ($13.07B rev vs $19.18B R&D)
+- [2026-07-02] updated | Meta Compute ceiling signal + neocloud/semis selloff + ownership question
+- [2026-07-20] updated | worst semi week since April 2025 + Apple/Nvidia market-cap swap

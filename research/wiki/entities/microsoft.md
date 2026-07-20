@@ -130,3 +130,13 @@ window Microsoft is building out its own competing first-party MAI stack
 - **Multi-stack equilibrium.** Now that both Microsoft and OpenAI have
   alternative stacks, does the partnership stabilize as a hedge or decay toward
   open competition?
+
+## Changelog
+
+- [2026-06-03] created | Build 2026 MAI stack/Project Polaris/MAIA 200, OpenAI multi-stack divorce
+- [2026-06-04] updated | MAI-Code-1-Flash reaching GitHub Copilot/VS Code production off-OpenAI
+- [2026-06-17] updated | Make ARA wiki OKF-native
+- [2026-06-18] updated | Copilot Cowork GA worldwide multi-model ~$0.01/task + DeepSeek V4 substitutability tell
+- [2026-06-30] updated | Wiki ingest 2026-06-30
+- [2026-07-04] updated | Copilot merge + Frontier Co
+- [2026-07-18] updated | Nadella's public Fable comment

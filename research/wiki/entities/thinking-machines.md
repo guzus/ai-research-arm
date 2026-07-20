@@ -48,3 +48,7 @@ account, corroborated within 15 minutes by @ns123abc and @kimmonismus.
 - **Official benchmarks.** No official Thinking Machines blog post or model
   card with published benchmarks has landed yet; watch for one that could
   firm up the quality claims either way.
+
+## Changelog
+
+- [2026-07-17] created | Mira Murati's lab and its Inkling release

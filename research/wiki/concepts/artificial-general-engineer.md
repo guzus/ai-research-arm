@@ -40,3 +40,8 @@ full product-development lifecycle.
   against real-world manufacturing constraints is a CAD copilot, not an engineer
   — the open question is how much of the concept→production loop AI actually
   closes.
+
+## Changelog
+
+- [2026-06-12] created | AI-for-manufacturing thesis
+- [2026-06-17] updated | Make ARA wiki OKF-native

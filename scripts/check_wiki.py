@@ -51,6 +51,11 @@ WIKILINK_RE = re.compile(r"\[\[([^\[\]]+?)\]\]")
 FENCE_RE = re.compile(r"^(\s*)(`{3,}|~{3,})")
 LOG_LINE_RE = re.compile(r"^## \[(\d{4}-\d{2}-\d{2})\] (\S+) \| (.+)$")
 INDEX_ITEM_RE = re.compile(r"^- \[\[([^\[\]|]+)\]\] — (.+)$")
+# Per-page changelog: same entry grammar as log.md, list-item shaped, with a
+# page-scoped op vocabulary (created/updated instead of the log.md ops).
+CHANGELOG_HEADING_RE = re.compile(r"^## Changelog\s*$")
+CHANGELOG_ENTRY_RE = re.compile(r"^- \[(\d{4}-\d{2}-\d{2})\] (\S+) \| (.+)$")
+CANONICAL_CHANGELOG_OPS = {"created", "updated"}
 
 
 @dataclass
@@ -361,6 +366,91 @@ def extract_wikilinks(body: str) -> list[str]:
     return targets
 
 
+def find_changelog_headings(body: str) -> list[int]:
+    """0-based indexes of unfenced '## Changelog' heading lines in `body`."""
+    out: list[int] = []
+    fence: str | None = None
+    fence_indent = ""
+    for i, line in enumerate(body.splitlines()):
+        m = FENCE_RE.match(line)
+        if fence is None:
+            if m:
+                fence = m.group(2)
+                fence_indent = m.group(1)
+                continue
+            if CHANGELOG_HEADING_RE.match(line):
+                out.append(i)
+        else:
+            if m and m.group(2)[0] == fence[0] and len(m.group(2)) >= len(fence) and m.group(1) == fence_indent and not line[m.end():].strip():
+                fence = None
+    return out
+
+
+def has_changelog(body: str) -> bool:
+    """True when the body already carries an unfenced '## Changelog' section."""
+    return bool(find_changelog_headings(body))
+
+
+def check_changelog(body: str, path: Path, report: Report) -> None:
+    """Validate a page's '## Changelog' section (docs/wiki-schema.md).
+
+    The section is a GENERATED artifact — `scripts/build_wiki_changelogs.py`
+    derives it from git history, so this validator checks *shape*, not
+    presence. A page legitimately has none between the ingest agent creating
+    it and the post-commit regeneration that materializes its history; the
+    workflow proves presence separately via `build_wiki_changelogs --check`.
+
+    Shape rules: exactly one section, and it is the LAST thing in the body —
+    after the heading, only blank lines and `- [YYYY-MM-DD] <op> | <summary>`
+    entries are allowed.
+    """
+    headings = find_changelog_headings(body)
+    if not headings:
+        return
+    if len(headings) > 1:
+        report.fail(path, "changelog", f"exactly one '## Changelog' section allowed, found {len(headings)}")
+        return
+
+    entries: list[tuple[date, str, str]] = []
+    for line in body.splitlines()[headings[0] + 1:]:
+        if not line.strip():
+            continue
+        m = CHANGELOG_ENTRY_RE.match(line)
+        if not m:
+            report.fail(
+                path,
+                "changelog",
+                "only '- [YYYY-MM-DD] <op> | <summary>' entries and blank lines may "
+                f"follow '## Changelog' (it must be the page's final section): {line!r}",
+            )
+            continue
+        ds, op, summary = m.group(1), m.group(2), m.group(3)
+        try:
+            d = date.fromisoformat(ds)
+        except ValueError:
+            report.fail(path, "changelog", f"bad entry date {ds!r}")
+            continue
+        entries.append((d, op, summary))
+
+    if not entries:
+        report.fail(path, "changelog", "'## Changelog' needs at least a '- [YYYY-MM-DD] created | <summary>' entry")
+        return
+
+    prev: date | None = None
+    for i, (d, op, summary) in enumerate(entries):
+        if op not in CANONICAL_CHANGELOG_OPS:
+            report.fail(path, "changelog", f"entry op {op!r} must be one of {sorted(CANONICAL_CHANGELOG_OPS)}")
+        if i == 0 and op != "created":
+            report.fail(path, "changelog", f"first entry must be the page's 'created' entry (got {op!r})")
+        if i > 0 and op == "created":
+            report.fail(path, "changelog", f"only the first entry may be 'created' (entry {i + 1} dated {d})")
+        if not summary.strip():
+            report.fail(path, "changelog", f"entry dated {d} has an empty summary")
+        if prev is not None and d < prev:
+            report.fail(path, "changelog", f"entry date {d} out of order (previous {prev}) — append newest at the bottom")
+        prev = d
+
+
 def load_page(path: Path, report: Report) -> Page | None:
     """Validate one page file's frontmatter + body. Returns a Page on success.
 
@@ -423,6 +513,8 @@ def load_page(path: Path, report: Report) -> Page | None:
 
     if not body.strip():
         report.fail(path, "body", "body must not be empty — write markdown under the frontmatter")
+    else:
+        check_changelog(body, path, report)
 
     links = extract_wikilinks(body)
 

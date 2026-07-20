@@ -51,3 +51,7 @@ flagged over suspected China ties.
   ID-verification policy) persist regardless?
 - **Fallout for the SKT–Anthropic relationship.** Does a ~$100M investor named in a
   national-security action retain its stake and partner status?
+
+## Changelog
+
+- [2026-06-21] created | South Korea's largest carrier / ~$100M Anthropic investor, named by WIRED as the Project Glasswing partner whose Mythos 5 access helped trigger the export suspension; denies China ties), updated 7 (anthropic — Jumper hi…

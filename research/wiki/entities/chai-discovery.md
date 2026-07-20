@@ -42,3 +42,7 @@ established pharmaceutical companies rather than still in pilot.
 - **Differentiation.** AI-drug-discovery has multiple well-funded
   entrants; what specifically keeps Eli Lilly, Novartis, and Pfizer on
   Chai Discovery's models rather than in-house or competing platforms?
+
+## Changelog
+
+- [2026-07-15] created | $400M Series C at $3.8B, molecules deployed with Eli Lilly/Novartis/Pfizer), updated 6 (anthropic — Claude for Teachers launch

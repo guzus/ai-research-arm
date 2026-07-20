@@ -45,3 +45,8 @@ coding into **AI-for-manufacturing**.
 - **Does industrial AI become its own funding lane?** A ~$41B mark this early
   tests whether AI-for-manufacturing pulls megaround appetite the way frontier
   labs and compute have, or stays a single-name bet.
+
+## Changelog
+
+- [2026-06-12] created | Bezos $12B Series B at ~$41B, industrial AI's first megaround
+- [2026-06-17] updated | Make ARA wiki OKF-native

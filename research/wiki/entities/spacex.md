@@ -119,3 +119,14 @@ frontier labs (the Anthropic–SpaceX "Colossus" datacenter arrangement).
   Starlink-backhaul ties to the frontier labs (the [[anthropic]] "Colossus"
   arrangement) blur the line between an aerospace IPO and an AI-infrastructure
   one.
+
+## Changelog
+
+- [2026-06-05] created | record IPO SPCX $135/$1.75T anchoring the issuance wave
+- [2026-06-08] updated | final IPO terms $135/~$75B/~$1.77T + compute-landlord angle
+- [2026-06-12] updated | SPCX Nasdaq debut live at $135/~$1.77T
+- [2026-06-14] updated | IPO completed ~$161 close/$75B/$1.75T largest US IPO on record + Mistral/EngineAI IPO-summer frame
+- [2026-06-15] updated | xAI folded in, new Anthropic/Google DC deals, Musk >$1T net worth
+- [2026-06-17] updated | $60B Cursor buy + SpaceXAI model + briefly passing Amazon at ~$2.6-2.7T
+- [2026-06-17] updated | $60B Cursor buy + SpaceXAI model + briefly passing Amazon at ~$2.6-2.7T
+- [2026-06-17] updated | $60B Cursor buy + SpaceXAI model + briefly passing Amazon at ~$2.6-2.7T

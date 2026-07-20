@@ -57,3 +57,9 @@ that NVIDIA's "demand has gone parabolic" Q1 FY27 print is meant to confirm
   commitments — a customer-concentration and counterparty-risk read that
   sharpens the "Customer concentration" open question above (ARA digest
   2026-07-15).
+
+## Changelog
+
+- [2026-05-24] created | Add LLM Wiki lane: compounding knowledge base + dashboard tab
+- [2026-06-17] updated | Make ARA wiki OKF-native
+- [2026-07-15] updated | $1B+ Reflection AI GB300 compute deal

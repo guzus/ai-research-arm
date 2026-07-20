@@ -62,3 +62,8 @@ rolling onto Hugging Face in-window.
 - **Local-run practicality.** GGUF quantizations make the model accessible, but
   useful local coding depends on latency, context length, tool calling, and
   editor integration, not just weights being public.
+
+## Changelog
+
+- [2026-06-17] created | low-price open coding model filling the Fable 5 vacuum
+- [2026-07-03] updated | GitHub Copilot GA, top HN story of the day

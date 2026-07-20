@@ -473,3 +473,30 @@ materially reshape how the lab is positioned heading into its IPO window:
   xAI / Anthropic) anchoring pre-deployment access since the US AI executive
   order was pulled hours before signing (May 21). The Frontier Governance
   Framework reads partly as a unilateral substitute for the pulled EO.
+
+## Changelog
+
+- [2026-05-30] created | first page despite frequent mentions, anchored by Frontier Governance Framework + Rosalind Biodefense + $852B valuation
+- [2026-06-01] updated | GPT-5.5 Instant readability upgrade + 5M Codex users milestone
+- [2026-06-03] updated | Codex platform/Sites/62-app marketplace/5M WAU + GPT-5.2-Codex + Bedrock GA + Florida AG suit
+- [2026-06-04] updated | Florida child-safety suit escalation + GPT-Rosalind life-sciences expansion + "It's time to fly" June 4 teaser + safety blueprint/Altman EO backing
+- [2026-06-05] updated | "Dreaming" memory ship 52.2→75.1% but no Codex×ChatGPT super app + cross-lab biosecurity letter
+- [2026-06-08] updated | "super app" pivot / "chat is dead" / 600M MAU / GPT-5.6 / govt equity-stake talks / Lockdown Mode
+- [2026-06-10] updated | silence on Fable 5 day, GPT-5.6 watch + ~$1.5T IPO filing + Aria superapp + AI-watchdog
+- [2026-06-12] updated | Ona acquisition for Codex runtime + API price-cut war vs Anthropic + BBVA 100k seats
+- [2026-06-14] updated | ~42-state NY-led AG subpoena June 12 + GPT-Realtime-2 + IDC ahead of Anthropic
+- [2026-06-15] updated | 42-state subpoena reframe/IPO-filing backdrop + Florida campus-shooter clarification
+- [2026-06-17] updated | leaked 2025 financials ($13.07B rev vs $19.18B R&D) + GPT-5.6 "meaningful leap" June signal + Codex CDP/computer-use/Chronicle + Deployment Simulation framework
+- [2026-06-17] updated | leaked 2025 financials ($13.07B rev vs $19.18B R&D) + GPT-5.6 "meaningful leap" June signal + Codex CDP/computer-use/Chronicle + Deployment Simulation framework
+- [2026-06-18] updated | GPT-5.4 validated Chan-Lam chemistry loop 16.6%→25.2% + API price cut + GPT-5.6 ~83% June 22-28
+- [2026-06-19] updated | Shazeer + Dean Ball hires, GPT-5.6 ≈June 25 stealth test, LifeSciBench, GPT-5.5 Instant health upgrade + AI chemist
+- [2026-06-20] updated | GPT-5.6 ~June 23 family + Shazeer Altman-confirmed + Dean Ball/Meta device-comms hire + first hardware device teased + Barret Zoph departs
+- [2026-06-23] updated | full GPT-5.5-Cyber/Codex Security/"Patch the Planet" Daybreak expansion as counter-posture to Mythos "too powerful to ship"
+- [2026-06-30] updated | Wiki ingest 2026-06-30
+- [2026-07-02] updated | 5% US-government equity-stake proposal ~$42.6B
+- [2026-07-04] updated | equity-stake backlash + early-2025 pitch date
+- [2026-07-12] updated | Apple lawsuit + Sol Ultra GA/CritPt benchmark lead
+- [2026-07-13] updated | capacity intervention + rebuttal + S&P Oracle credit-risk citation
+- [2026-07-15] updated | GPT-Live device detail + meritless rebuttal + 5th usage-limit reset
+- [2026-07-18] updated | Apple legal letters escalation + ChatGPT Work + file-deletion incident
+- [2026-07-19] updated | Codex Micro surfaces

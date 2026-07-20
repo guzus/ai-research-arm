@@ -426,3 +426,23 @@ footing for the first time in the cycle.
 - **Federal vs. [[california-ai-regulation|California]].** With both a narrow
   federal order and a ~30-bill California package live, does compliance
   fragment, or does one frame dominate for the frontier-lab IPO calendar?
+
+## Changelog
+
+- [2026-06-03] created | Trump June 2 EO 30-day pre-release access
+- [2026-06-04] updated | EO backing broadens to Altman + OpenAI safety blueprint
+- [2026-06-05] updated | Altman/Amodei/Hassabis synthetic-nucleic-acid letter + Monterey Park/O'Leary datacenter backlash + AI-litigation strain
+- [2026-06-08] updated | Krishnan exit + OpenAI govt equity stake + Anthropic pause proposal + carried compliance calendar
+- [2026-06-14] updated | on-record export standoff narrowed to Anthropic-specific per The Information + 42-state subpoena + regulatory clock + Census DP ban
+- [2026-06-15] updated | multi-actor blame war/Sacks on-record/~90-min ultimatum dispute, China-access rationale, EU "not discriminatory"/Canada 2008-risk pushback, Florida civil-suit reframe + KPMG pulled report
+- [2026-06-16] updated | conditional export timeline, June 2 EO read as de facto licensing, cybersecurity-vets TechCrunch protest, OpenAI pre-coordinating to avoid Anthropic's fate
+- [2026-06-17] updated | documented Lutnick letter + UK Starmer carveout denied/"completely illogical" + Carney overreliance warning + G7 Évian three-CEO first + DOJ xAI gas turbines + Pentagon genAI
+- [2026-06-17] updated | documented Lutnick letter + UK Starmer carveout denied/"completely illogical" + Carney overreliance warning + G7 Évian three-CEO first + DOJ xAI gas turbines + Pentagon genAI
+- [2026-06-18] updated | ~2h frontier-CEO lunch, G7 Évian sovereignty clause, UNIDIR Geneva #AISE26, US holds off DeepSeek blacklist, Pew 16%/63% poll
+- [2026-06-19] updated | jailbreak-benchmark mechanism, Dean Ball revolving door, Bernie Sanders $7T plan, FERC data-center fast lane, clock
+- [2026-06-21] updated | export action becomes access-control case, SK Telecom named, ID-verification restoration mechanism, EU deepfake gap, clock
+- [2026-06-29] updated | "de facto licensing regime with no rules" two new data points (Sol gated + Alibaba distillation letter) + Europe structurally excluded/Austria courtship
+- [2026-06-30] updated | Wiki ingest 2026-06-30
+- [2026-07-01] updated | Andreessen Pentagon Defense Policy Board, Sonnet 5 cyber de-scoping as controls-by-design, Taiwan Super Micro raid, LongCat/DSpark as export-control responses
+- [2026-07-03] updated | Pentagon supply-chain-risk designation as a new domestic-enforcement instrument
+- [2026-07-04] updated | equity-stake backlash + voluntary release standards + Pentagon detail

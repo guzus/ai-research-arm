@@ -48,3 +48,8 @@ Research**, the cycle's most significant frontier-talent move.
   mandate target the next architecture step beyond the GPT-5.x line?
 - **Character.AI overhang.** His move came via Google's Character.AI deal; what
   happens to that relationship and IP now that he is at a direct competitor?
+
+## Changelog
+
+- [2026-06-19] created | transformer co-inventor/ex-Gemini co-lead → OpenAI Lead for Architecture Research
+- [2026-06-20] updated | Altman personally confirms the move "only took 10 years"

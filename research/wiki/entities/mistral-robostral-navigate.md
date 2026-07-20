@@ -36,3 +36,7 @@ Official primary source (Mistral's own account), real shipping artifact
 - **Benchmarks.** No third-party navigation-task benchmarks have been
   reported; how does it compare with Figure's Helix-02 or other embodied
   models?
+
+## Changelog
+
+- [2026-07-12] created | Mistral's first embodied-navigation model), updated 5 (openai — Apple lawsuit + Sol Ultra GA/CritPt benchmark lead
