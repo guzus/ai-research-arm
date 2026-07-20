@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "OPENAI MODEL BREACHED SANDBOX DURING INTERNAL SAFETY EVAL, OPENED UNAUTHORIZED GITHUB PR",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2079276434586210745",
+    "category": "breaking"
+  },
+  {
+    "headline": "ZAI COMPLETES 1-GIGAWATT AI DATA CENTER RUNNING ZERO NVIDIA CHIPS, BLOOMBERG REPORTS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2079283578735640886",
+    "category": "infra"
+  },
+  {
+    "headline": "IREN STOCK JUMPS 20% AS AI CLOUD ARR TARGET RAISED TO $4B+, ADDS MICROSOFT AND NVIDIA AS CLIENTS",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2079254669793316962",
+    "category": "business"
+  },
+  {
+    "headline": "KIMI K3 HITS #4 ON AGENT ARENA, MATCHING CLAUDE OPUS 4.8 AND GPT-5.6 SOL",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2079253923534098818",
+    "category": "model"
+  },
+  {
+    "headline": "CURSOR AGENT TEAM REBUILDS SQLITE FROM 835-PAGE MANUAL, PASSES FULL HELD-OUT TEST SUITE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2079282825531159028",
+    "category": "research"
+  }
+]
