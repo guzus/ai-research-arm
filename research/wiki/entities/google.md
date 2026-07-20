@@ -6,17 +6,20 @@ aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "G
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
 description: Hyperscaler and frontier-model builder behind Gemini; ordered by the EU under the DMA to open Android and Search to rivals (2026-07-17), the same day it rebranded NotebookLM into the Gemini product family.
 created_at: 2026-07-17
-timestamp: 2026-07-18T00:00:00Z
+timestamp: 2026-07-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
 ---
 
 **Google** is the hyperscaler and frontier-model builder behind the
-**Gemini** family ([[gemini-3-5-flash]], [[gemini-spark]], [[gemma-4]],
-[[nano-banana-2-lite]]). While its individual model releases have been
-tracked on their own pages, this page covers Google as a company: the
-regulatory and product-strategy threads that don't attach to a single model.
+**Gemini** family ([[gemini-3-5-flash]], [[gemini-3-5-pro]], [[gemini-spark]],
+[[gemma-4]], [[nano-banana-2-lite]]). While its individual model releases
+have been tracked on their own pages, this page covers Google as a company:
+the regulatory and product-strategy threads that don't attach to a single
+model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
+~$200B of market cap — see [[ai-capex]].
 
 ## Why it matters
 

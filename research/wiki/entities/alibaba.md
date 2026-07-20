@@ -2,17 +2,19 @@
 slug: alibaba
 title: Alibaba
 type: entity
-aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding"]
+aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen3.8-Max", "Qwen3.8"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; banned Claude Code internally as "high-risk software" effective 2026-07-10 amid a US DoD PLA-linked designation it is suing to overturn; shut down Qwen's personalized AI-companion features on 2026-07-15 under China's new companion-agent regulation.
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon, even as it continues fighting a US DoD PLA-linked designation.
 created_at: 2026-07-05
-timestamp: 2026-07-15T00:00:00Z
+timestamp: 2026-07-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA model ticket — Anthropic/Alibaba distillation dispute", path: research/models/tickets/anthropic-alibaba-distillation-2026-06.md}
+  - {title: "ARA model ticket — Qwen3.7-Plus", path: research/models/tickets/alibaba-qwen-3-7-plus.md}
 ---
 
 Alibaba is the Chinese e-commerce and cloud conglomerate behind **Alibaba
@@ -79,6 +81,18 @@ friction point distinct from Qwen's own model-release cadence.
   February it documented similar distillation campaigns from DeepSeek,
   Moonshot AI, and MiniMax.
 
+- **Qwen3.8-Max moves from rumor to confirmed launch (2026-07-20).**
+  Alibaba's own account confirmed the **2.4 trillion-parameter** Qwen3.8-Max
+  is "going open-weight soon," with a Max-Preview build already live for
+  testing on Alibaba Cloud and Qwen Chat. It was the runaway top Hacker News
+  story of the day (673 points / 489 comments). An independent tester
+  (@aicodeking) claims it "outperforms all Opus models" — **self-reported,
+  single-source, pending an official benchmark table** — and Qwen-watchers
+  note Qwen's Max-Preview builds have a track record of underdelivering
+  relative to launch-week claims. Cross-reference [[open-weights]] for the
+  broader China open-weight release wave this same week (see also
+  [[moonshot-kimi-k3]]).
+
 ## Open questions
 
 - **Will Alibaba respond on the record?** Alibaba has declined to comment
@@ -89,3 +103,7 @@ friction point distinct from Qwen's own model-release cadence.
 - **Qoder adoption** — does Alibaba's internal push toward its own coding
   tool measurably dent Claude Code's China-market footprint, or does VPN/
   subsidiary circumvention keep usage flowing regardless of the formal ban?
+- **Does Qwen3.8-Max hold up against independent benchmarks?** The
+  "outperforms all Opus models" claim is one tester's self-reported result;
+  watch for an official Qwen benchmark table and independent evals once the
+  open-weight release lands.

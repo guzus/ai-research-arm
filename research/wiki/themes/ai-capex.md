@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-07-02T00:00:00Z
+timestamp: 2026-07-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
@@ -281,6 +282,20 @@ skepticism in one window:
   as costs neared billions, and Palantir's Alex Karp took his "labs oversold models /
   *tokenmaxxing*" critique to CNBC — the ROI-reality-check thread now questioning
   raw-token consumption itself (ARA digest 2026-07-02).
+
+- **Worst semiconductor week since April 2025, ahead of Alphabet earnings
+  (2026-07-20).** The **Philadelphia Semiconductor Index** posted its
+  **worst week since April 2025** (~10% down for the week, ~17% for the
+  month), the **Nasdaq 100 fell 4.1%** last week, and tech was the
+  worst-performing S&P 500 sector, as investors reassess AI capex pace
+  ahead of **[[google|Alphabet]]'s July 22 earnings**. The mood is
+  consistent with — and likely compounded by — **[[gemini-3-5-pro]]'s
+  reported schedule slip** (~$200B of Alphabet market cap wiped out
+  2026-07-16) and a separate data point that **Apple briefly overtook
+  [[nvidia|Nvidia]] as the world's most valuable company** this same
+  window. Read together: a capex-sentiment pullback with at least one
+  concrete fundamental trigger (Gemini 3.5 Pro), not pure multiple
+  compression (ARA digest 2026-07-20).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s
