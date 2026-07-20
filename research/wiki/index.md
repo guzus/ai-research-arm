@@ -8,7 +8,7 @@ Each page is one of three types — entity, concept, or theme. See
 ## Entities
 
 - [[agibot]] — Chinese humanoid-robotics maker; unveiled four embodied-AI products at WAIC 2026, led by the A3 Ultra humanoid.
-- [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen) accused by Anthropic of the largest documented Claude-distillation campaign; banned Claude Code internally as "high-risk software" effective 2026-07-10.
+- [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen) accused by Anthropic of the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; per WSJ/Axios, CEO Andy Jassy's Treasury briefing triggered the June 2026 Fable 5 / Mythos 5 export crackdown.
 - [[anthropic]] — AI safety lab behind the Claude family; closed a $65B Series H at $965B post-money on 2026-05-29.
 - [[apple]] — Consumer-hardware giant whose Siri rebuild — reportedly a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (June 8).
@@ -27,6 +27,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[figure-ai]] — US humanoid-robotics company whose Helix-02 VLA ran a 200-hour fully-autonomous 249,560-package shift on 2026-05-30, ~10× the prior public MTBI envelope.
 - [[fireworks-ai]] — AI inference-infrastructure company that raised a $1.505B Series D at a $17.5B valuation (2026-07-18), citing 40T+ tokens/day served.
 - [[gemini-3-5-flash]] — Google's fast, low-cost frontier model shipped at I/O 2026.
+- [[gemini-3-5-pro]] — Google's Pro-tier follow-on to Gemini 3.5 Flash; reported months behind schedule, wiping out ~$200B of Alphabet's market cap.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; encoder-free 12B variant runs on 16 GB RAM, 150M+ cumulative downloads.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
 - [[google]] — Hyperscaler behind Gemini; ordered by the EU to open Android and Search to rivals under the DMA (2026-07-17), the same day it rebranded NotebookLM into Gemini Notebook.
@@ -43,7 +44,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[mistral-leanstral-1-5]] — Mistral's open-source (Apache 2.0) Lean 4 formal-verification model; saturates miniF2F, SOTA on FATE-H/FATE-X, found 5 unknown bugs across 57 scanned repos.
 - [[mistral-robostral-navigate]] — Mistral's first embodied-navigation model (8B params), guiding robots via natural-language task instructions; announced 2026-07-08.
 - [[moonshot-kimi-k2-7-code]] — Moonshot AI open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while filling the Fable 5 vacuum.
-- [[moonshot-kimi-k3]] — Moonshot AI's 2.8T-parameter flagship reportedly closing the gap with Opus 4.8; dominated Hacker News on 2026-07-17, open weights promised by 2026-07-27.
+- [[moonshot-kimi-k3]] — Moonshot AI's 2.8T-parameter flagship; pending a $30B+ Hong Kong IPO, even as GPU strain forced a subscription pause and a contested ECI read now calls the US-China gap widening, not narrowing.
 - [[nano-banana-2-lite]] — Google's fastest/cheapest image model (gemini-3.1-flash-lite-image, ~4s/~$0.034), shipped 2026-06-30 with Gemini Omni Flash bringing text-prompt video gen/editing to the API.
 - [[nebius]] — Amsterdam-based neocloud spun out of Yandex.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
@@ -75,8 +76,8 @@ Each page is one of three types — entity, concept, or theme. See
 ## Themes
 
 - [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities at scale.
-- [[ai-capex]] — The historically large compute buildout and the bubble debate.
+- [[ai-capex]] — The historically large compute buildout and the bubble debate; Philadelphia Semiconductor Index posted its worst week since April 2025 ahead of Alphabet's July 22 earnings.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator on the consumer-facing axis; ~30-bill package cleared the May 29 crossover.
 - [[china-ai-regulation]] — Beijing regulating consumer AI products directly, opening with the AI-companion-agent law that took effect 2026-07-15 and forced Doubao and Qwen offline.
 - [[federal-ai-policy]] — US federal AI governance; Trump's June 2 EO mandates 30-day government pre-release access to frontier models for cybersecurity review.
-- [[open-weights]] — Open-weight models closing on the frontier amid a decentralization backlash, surging on the Fable 5 government shutdown ("APIs are rented, local weights are forever").
+- [[open-weights]] — Open-weight models closing on the frontier amid a decentralization backlash; now also a public "dumping" framing fight (LeCun/Casado vs. an unconfirmed Anthropic/OpenAI lobbying accusation).

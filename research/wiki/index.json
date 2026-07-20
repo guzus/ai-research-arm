@@ -126,8 +126,8 @@
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-02",
-      "timestamp": "2026-07-02T00:00:00Z",
+      "updated_at": "2026-07-20",
+      "timestamp": "2026-07-20T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -148,6 +148,8 @@
         "dell",
         "federal-ai-policy",
         "figure-ai",
+        "gemini-3-5-pro",
+        "google",
         "meta",
         "nebius",
         "neocloud",
@@ -177,7 +179,9 @@
         "figure-ai",
         "fireworks-ai",
         "gemini-3-5-flash",
+        "gemini-3-5-pro",
         "gemma-4",
+        "google",
         "meta",
         "micron",
         "microsoft",
@@ -221,25 +225,31 @@
         "export-control",
         "hyperscaler-china"
       ],
-      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; banned Claude Code internally as \"high-risk software\" effective 2026-07-10 amid a US DoD PLA-linked designation it is suing to overturn; shut down Qwen's personalized AI-companion features on 2026-07-15 under China's new companion-agent regulation.",
-      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; banned Claude Code internally as \"high-risk software\" effective 2026-07-10 amid a US DoD PLA-linked designation it is suing to overturn; shut down Qwen's personalized AI-companion features on 2026-07-15 under China's new companion-agent regulation.",
+      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon, even as it continues fighting a US DoD PLA-linked designation.",
+      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon, even as it continues fighting a US DoD PLA-linked designation.",
       "created_at": "2026-07-05",
-      "updated_at": "2026-07-15",
-      "timestamp": "2026-07-15T00:00:00Z",
+      "updated_at": "2026-07-20",
+      "timestamp": "2026-07-20T00:00:00Z",
       "file": "entities/alibaba.md",
       "aliases": [
         "Alibaba Group",
         "Alibaba Cloud",
         "BABA",
-        "Alibaba Group Holding"
+        "Alibaba Group Holding",
+        "Qwen3.8-Max",
+        "Qwen3.8"
       ],
       "outbound": [
         "anthropic",
-        "china-ai-regulation"
+        "china-ai-regulation",
+        "moonshot-kimi-k3",
+        "open-weights"
       ],
       "inbound": [
         "anthropic",
-        "china-ai-regulation"
+        "china-ai-regulation",
+        "moonshot-kimi-k3",
+        "open-weights"
       ]
     },
     {
@@ -1205,8 +1215,8 @@
       "summary": "Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots; gained a real-time speech-to-speech Live Translate variant (70+ languages) on 2026-06-09.",
       "description": "Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots; gained a real-time speech-to-speech Live Translate variant (70+ languages) on 2026-06-09.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-04",
-      "timestamp": "2026-07-04T00:00:00Z",
+      "updated_at": "2026-07-20",
+      "timestamp": "2026-07-20T00:00:00Z",
       "file": "entities/gemini-3-5-flash.md",
       "aliases": [
         "Gemini 3.5 Flash",
@@ -1217,6 +1227,7 @@
         "ai-capex",
         "anthropic",
         "claude-fable-5",
+        "gemini-3-5-pro",
         "nano-banana-2-lite",
         "neocloud"
       ],
@@ -1224,11 +1235,45 @@
         "anthropic",
         "apple",
         "claude-fable-5",
+        "gemini-3-5-pro",
         "gemini-spark",
         "gemma-4",
         "google",
         "nano-banana-2-lite",
         "noam-shazeer"
+      ]
+    },
+    {
+      "slug": "gemini-3-5-pro",
+      "title": "Gemini 3.5 Pro",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "google-deepmind",
+        "pro-tier",
+        "frontier-model",
+        "schedule-slip"
+      ],
+      "summary": "Google DeepMind's Pro-tier follow-on to Gemini 3.5 Flash, confirmed at I/O 2026 but reported months behind schedule after coding capability fell short of internal targets — wiping out ~$200B of Alphabet's market cap on the news.",
+      "description": "Google DeepMind's Pro-tier follow-on to Gemini 3.5 Flash, confirmed at I/O 2026 but reported months behind schedule after coding capability fell short of internal targets — wiping out ~$200B of Alphabet's market cap on the news.",
+      "created_at": "2026-07-20",
+      "updated_at": "2026-07-20",
+      "timestamp": "2026-07-20T00:00:00Z",
+      "file": "entities/gemini-3-5-pro.md",
+      "aliases": [
+        "Gemini 3.5 Pro",
+        "Gemini Pro 3.5"
+      ],
+      "outbound": [
+        "ai-capex",
+        "gemini-3-5-flash",
+        "google",
+        "moonshot-kimi-k3"
+      ],
+      "inbound": [
+        "ai-capex",
+        "gemini-3-5-flash",
+        "google"
       ]
     },
     {
@@ -1321,8 +1366,8 @@
       "summary": "Hyperscaler and frontier-model builder behind Gemini; ordered by the EU under the DMA to open Android and Search to rivals (2026-07-17), the same day it rebranded NotebookLM into the Gemini product family.",
       "description": "Hyperscaler and frontier-model builder behind Gemini; ordered by the EU under the DMA to open Android and Search to rivals (2026-07-17), the same day it rebranded NotebookLM into the Gemini product family.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-18",
-      "timestamp": "2026-07-18T00:00:00Z",
+      "updated_at": "2026-07-20",
+      "timestamp": "2026-07-20T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -1333,13 +1378,18 @@
         "Google AI Mode"
       ],
       "outbound": [
+        "ai-capex",
         "gemini-3-5-flash",
+        "gemini-3-5-pro",
         "gemini-spark",
         "gemma-4",
         "meta",
         "nano-banana-2-lite"
       ],
-      "inbound": []
+      "inbound": [
+        "ai-capex",
+        "gemini-3-5-pro"
+      ]
     },
     {
       "slug": "gpt-5-6",
@@ -1872,11 +1922,11 @@
         "moonshot",
         "frontier-model"
       ],
-      "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); benchmark data splits on whether it has closed the US frontier gap (ahead on coding-Elo/DeepSWE, behind on FrontierMath Tier 4), with open weights due ~2026-07-28.",
-      "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); benchmark data splits on whether it has closed the US frontier gap (ahead on coding-Elo/DeepSWE, behind on FrontierMath Tier 4), with open weights due ~2026-07-28.",
+      "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); pending a $30B+ Hong Kong IPO on breakout demand, even as GPU strain forced a new-subscriber pause and a contested ECI methodology now reads the US-China gap as widening, not narrowing.",
+      "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); pending a $30B+ Hong Kong IPO on breakout demand, even as GPU strain forced a new-subscriber pause and a contested ECI methodology now reads the US-China gap as widening, not narrowing.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-19",
-      "timestamp": "2026-07-19T00:00:00Z",
+      "updated_at": "2026-07-20",
+      "timestamp": "2026-07-20T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -1886,6 +1936,7 @@
         "Open Frontier Intelligence"
       ],
       "outbound": [
+        "alibaba",
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
@@ -1893,6 +1944,8 @@
         "open-weights"
       ],
       "inbound": [
+        "alibaba",
+        "gemini-3-5-pro",
         "open-weights",
         "soofi-s-30b-a3b",
         "thinking-machines"
@@ -2128,8 +2181,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-07-17",
-      "timestamp": "2026-07-17T00:00:00Z",
+      "updated_at": "2026-07-20",
+      "timestamp": "2026-07-20T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -2140,6 +2193,7 @@
         "local weights"
       ],
       "outbound": [
+        "alibaba",
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
@@ -2163,6 +2217,7 @@
         "zhipu-glm-5-2"
       ],
       "inbound": [
+        "alibaba",
         "anthropic",
         "claude-fable-5",
         "claude-sonnet-5",
@@ -2925,11 +2980,14 @@
     "gemini 3.2 flash": "gemini-3-5-flash",
     "gemini 3.5 flash": "gemini-3-5-flash",
     "gemini 3.5 live translate": "gemini-3-5-flash",
+    "gemini 3.5 pro": "gemini-3-5-pro",
     "gemini notebook": "google",
     "gemini omni flash": "nano-banana-2-lite",
+    "gemini pro 3.5": "gemini-3-5-pro",
     "gemini spark": "gemini-spark",
     "gemini-3-1-flash-lite-image": "nano-banana-2-lite",
     "gemini-3-5-flash": "gemini-3-5-flash",
+    "gemini-3-5-pro": "gemini-3-5-pro",
     "gemini-3.1-flash-lite-image": "nano-banana-2-lite",
     "gemini-spark": "gemini-spark",
     "gemma": "gemma-4",
@@ -3062,6 +3120,8 @@
     "prometheus": "prometheus",
     "prometheus ai": "prometheus",
     "promoting advanced ai innovation and security": "federal-ai-policy",
+    "qwen3.8": "alibaba",
+    "qwen3.8-max": "alibaba",
     "remote labor index": "remote-labor-index",
     "remote-labor-index": "remote-labor-index",
     "rli": "remote-labor-index",
@@ -3124,6 +3184,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-07-20",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-20 digest (Moonshot's Kimi K3 has a breakout week — Bloomberg-attributed $30B+ Hong Kong IPO chatter and a GPU-strain subscription pause, while a contested @scaling01 ECI methodology reads the US-China frontier gap as widening, not narrowing; Alibaba's Qwen3.8-Max moves from rumor to confirmed 2.4T-param open-weight launch; Google's Gemini 3.5 Pro is reported months behind schedule, wiping out ~$200B of Alphabet's market cap; a public \"dumping\" framing fight breaks out over open-weight releases, with an unconfirmed claim that Anthropic/OpenAI are lobbying for restrictions; AI market jitters deepen with the Philadelphia Semiconductor Index's worst week since April 2025 ahead of Alphabet's July 22 earnings). Created 1 (gemini-3-5-pro entity — dedicated tracking page for the Pro-tier schedule slip and its market-cap impact), updated 5 (moonshot-kimi-k3 — IPO valuation, subscription pause, ECI gap dispute; alibaba — Qwen3.8-Max confirmed launch; gemini-3-5-flash — cross-linked to the new gemini-3-5-pro page, resolving the prior open question; open-weights — the \"dumping\" framing fight and lobbying accusation; ai-capex — worst semi week since April 2025 + Apple/Nvidia market-cap swap). No update to anthropic — today's Breaking News item was a repeat of the already-tracked 2026-07-19 Meta compute-lease entry with no new detail."
+    },
     {
       "date": "2026-07-19",
       "op": "ingest",
@@ -3218,11 +3283,6 @@
       "date": "2026-06-18",
       "op": "ingest",
       "summary": "Ingested 2026-06-18 digest (DeepSeek megaround closes; open weight tops the intelligence index; embargo goes transatlantic). Created 0, updated 8 (deepseek — first external round CLOSED ~$7.4B/$50B+, Liang ~$2.8B biggest check, Tencent ~$1.4B/CATL ~$700M, no investor votes/founder-controlled LP, US declines entity-list blacklist; zhipu-glm-5-2 — #1 on Artificial Analysis Intelligence Index, ~1pt off Opus 4.8 on FrontierSWE, #1 HN 689pts, ZCode desktop agent, antirez ~512GB-RAM caveat; open-weights — the crossover milestone: open weight leads the intel index + Microsoft eval of DeepSeek V4; microsoft — Copilot Cowork GA worldwide multi-model ~$0.01/task + DeepSeek V4 substitutability tell; anthropic — G7 Macron bilateral, Lutnick \"that's the point\", 40+ CISO reversal letter, SDK token-billing reverted; federal-ai-policy — ~2h frontier-CEO lunch, G7 Évian sovereignty clause, UNIDIR Geneva #AISE26, US holds off DeepSeek blacklist, Pew 16%/63% poll; openai — GPT-5.4 validated Chan-Lam chemistry loop 16.6%→25.2% + API price cut + GPT-5.6 ~83% June 22-28; claude-fable-5 — still dark June 18, embargo goes diplomatic)."
-    },
-    {
-      "date": "2026-06-17",
-      "op": "ingest",
-      "summary": "Backfilled image metadata for 3 high-traffic wiki pages (nvidia, spacex, ai-capex), adding two topic-specific Wikimedia Commons visuals to each so the new multi-image wiki contract has real corpus coverage."
     }
   ]
 }
