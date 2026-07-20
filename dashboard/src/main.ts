@@ -2398,8 +2398,10 @@ async function loadWikiLogFragments(signal: AbortSignal): Promise<Map<string, st
 /** Pull `slug`'s own detail out of a run summary, if it names the page. */
 function wikiLogFragmentFor(slug: string, summaries: string[]): string | null {
   const esc = slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Fragment ends at the next `; slug —` sibling, at a group transition like
+  // `), updated 5 (`, at the closing `).`/`);` of the last group, or at EOL.
   const re = new RegExp(
-    `\\b${esc}\\b(?:\\s+(?:entity|concept|theme))?\\s*—\\s*(.+?)(?=;\\s*[a-z0-9][a-z0-9-]*(?:\\s+\\w+)?\\s*—|\\)\\s*[.;]|\\)\\s*$|$)`,
+    `\\b${esc}\\b(?:\\s+(?:entity|concept|theme))?\\s*—\\s*(.+?)(?=;\\s*[a-z0-9][a-z0-9-]*(?:\\s+\\w+)?\\s*—|\\)\\s*,\\s*\\w+\\s+\\d+\\s*\\(|\\)\\s*[.;]|\\)\\s*$|$)`,
   );
   for (const summary of summaries) {
     const m = summary.match(re);
