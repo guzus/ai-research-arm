@@ -55,9 +55,3 @@ framework CVE touches the same runtime path Liquid is shipping against.
 - **Compounding releases.** The 2.5 → 8B-A1B numbering implies a Liquid
   release ladder. How quickly does the lab iterate compared to dense
   open-weight peers?
-
-## Changelog
-
-- [2026-05-29] created | Wiki ingest 2026-05-29
-- [2026-05-30] updated | LFM2.5-8B-A1B 128K/38T/doubled-vocab detail
-- [2026-06-17] updated | Make ARA wiki OKF-native

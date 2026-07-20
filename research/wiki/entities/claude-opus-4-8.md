@@ -71,11 +71,3 @@ Anthropic of the year. GA across **claude.ai, Anthropic API, Bedrock, Vertex AI*
   reports that swapping **Sonnet 4.6 → Opus 4.7** in Claude Code CLI *dropped*
   PyTest pass rate by ~15%. Does Opus 4.8 reverse that, or does the same
   memory-policy dynamic re-bite?
-
-## Changelog
-
-- [2026-05-29] created | Wiki ingest 2026-05-29
-- [2026-05-30] updated | final benchmark deltas, Fast Mode 2.5×/3×, Simon Willison "modest but tangible"
-- [2026-06-10] updated | now the Fable 5 safeguard-reroute floor, successor-sequencing resolved
-- [2026-06-17] updated | Make ARA wiki OKF-native
-- [2026-07-13] updated | new SOTA on GSO benchmark

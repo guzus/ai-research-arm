@@ -58,9 +58,3 @@ tiers.
 - **Tier gating economics.** Enterprise / Team / Max only — does this stay a
   high-tier feature, or pressure downward as competitors (Devin / Goal Mode)
   expose comparable fan-out at lower tiers?
-
-## Changelog
-
-- [2026-05-29] created | Wiki ingest 2026-05-29
-- [2026-05-30] updated | JavaScript orchestrator + 1,000-subagent cap
-- [2026-06-17] updated | Make ARA wiki OKF-native

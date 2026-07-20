@@ -51,7 +51,3 @@ the delay itself is real and consequential.
   full-pretrain-reset leak.
 - **Does the delay affect the Nano Banana Pro follow-on** rumored to be
   built on the same base (see the model ticket)?
-
-## Changelog
-
-- [2026-07-20] created | dedicated tracking page for the Pro-tier schedule slip and its market-cap impact), updated 5 (moonshot-kimi-k3 — IPO valuation, subscription pause, ECI gap dispute

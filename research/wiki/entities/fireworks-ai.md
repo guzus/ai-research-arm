@@ -42,7 +42,3 @@ the [[ai-capex]] cycle.
 - **Competitive position.** How the round and valuation compare against
   other inference-serving platforms (e.g. [[openrouter]], which routes
   rather than serves inference directly) as the field consolidates.
-
-## Changelog
-
-- [2026-07-18] created | $1.505B Series D at $17.5B valuation, 40T+ tokens/day), updated 7 (moonshot-kimi-k3 — "Open Frontier Intelligence" branding, second HN cycle at ~2,000 pts, Willison pelican benchmark, system-prompt-refusal quote

@@ -52,7 +52,3 @@ hardware in June 2026.
 - **Midjourney Medical's regulatory path.** Clinical validation, FDA/
   regulatory clearance, AI's actual role in the scanner, pricing, and an
   availability timeline are all undisclosed as of the announcement.
-
-## Changelog
-
-- [2026-07-05] created | Hollywood discovery motion + Midjourney Medical scanner), updated 4 (anthropic — viral thread's fabricated "1,891-point" HN comment debunked

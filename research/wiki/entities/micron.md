@@ -53,8 +53,3 @@ both track (ARA digest 2026-07-12).
 - **Supply concentration.** Naming a single "primary" memory supplier trades
   diversification for co-design depth — a dependency worth watching against the
   HBM-allocation crunch the broader [[ai-capex]] cycle is straining.
-
-## Changelog
-
-- [2026-06-23] created | US memory maker, Anthropic's primary HBM/DRAM/SSD supplier + co-design pact + first named Series H participant, stock +5.5% to record), updated 7 (openai — full GPT-5.5-Cyber/Codex Security/"Patch the Planet" Daybreak e…
-- [2026-07-12] updated | Wiki ingest 2026-07-12

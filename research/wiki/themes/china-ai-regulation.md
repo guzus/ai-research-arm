@@ -81,8 +81,3 @@ to cover Beijing's push for an alternative international AI-governance body.
   power alongside existing bodies (UN AI initiatives, the US-led voluntary
   frontier-model frameworks)? Watch whether other governments commit to a
   Shanghai headquarters during the conference's July 17–20 run.
-
-## Changelog
-
-- [2026-07-15] created | Beijing's AI-companion-agent law and the Doubao/Qwen shutdowns
-- [2026-07-17] updated | broadened to cover Xi Jinping's World AI Conference keynote and the World AI Cooperation Organization push

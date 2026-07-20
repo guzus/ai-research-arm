@@ -39,7 +39,3 @@ specific, but no primary financial-press corroboration yet captured —
   expansion, or general balance-sheet strengthening?
 - **Primary-press corroboration.** Does Bloomberg/Reuters/WSJ confirm the
   $26.5B figure and the "largest foreign share sale" superlative?
-
-## Changelog
-
-- [2026-07-12] created | HBM supplier, $26.5B Nasdaq IPO

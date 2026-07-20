@@ -87,10 +87,3 @@ a California legislature carrying a **~30-bill AI package** through the
   tax-break suspension suggest political pressure on AI infrastructure is
   no longer contained to Sacramento. Does California's package include any
   power-cost or data-center provisions in the second chamber?
-
-## Changelog
-
-- [2026-05-30] created | May 29 crossover deadline + AB 1609/AB 1159/A 9317
-- [2026-06-03] updated | federal-regime open question partly resolved by the June 2 EO
-- [2026-06-17] updated | Make ARA wiki OKF-native
-- [2026-06-30] updated | Wiki ingest 2026-06-30

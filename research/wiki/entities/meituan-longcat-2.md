@@ -48,7 +48,3 @@ that had run anonymously on OpenRouter as **"Owl Alpha"** for ~two months,
 - **The silicon question.** Scrutiny confirming or refuting the all-domestic,
   no-Nvidia cluster composition is the load-bearing verification for the
   export-control-workaround narrative.
-
-## Changelog
-
-- [2026-07-01] created | 1.6T MoE "Owl Alpha", claimed all-domestic-cluster training

@@ -48,8 +48,3 @@ and lands a day after [[noam-shazeer]] left for [[openai]] (ARA digest
 - **What does the departure cost DeepMind?** Losing an AlphaFold principal during
   the Gemini 3.5 crunch is a second high-profile DeepMind exit in the cycle after
   [[noam-shazeer]].
-
-## Changelog
-
-- [2026-06-20] created | AlphaFold co-creator/2024 Nobel laureate DeepMind→Anthropic), updated 5 (anthropic — Trump "not now but a week ago maybe"/"part-owner competitor turned Anthropic in", John Jumper hire, Bengaluru office + Irina Ghose MD…
-- [2026-06-21] updated | move confirmed by named desks, "recharge" before starting, third DeepMind exit in three months, AI-for-science tell

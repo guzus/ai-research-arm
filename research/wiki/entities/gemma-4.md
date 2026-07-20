@@ -63,9 +63,3 @@ releases of the cycle and a flagship of the 2026 open-weights wave.
 - **Open vs. closed inside Google.** How Gemma's open-weight push interacts
   with the closed [[gemini-3-5-flash|Gemini]] API line is Google's standing
   open-weights strategic tension.
-
-## Changelog
-
-- [2026-06-04] created | Google DeepMind open-weights family, encoder-free 12B on 16 GB RAM, 150M+ downloads, Qwen3.5-9B quality debate
-- [2026-06-05] updated | runaway HN dev story + Nemotron open-weights bracketing
-- [2026-06-17] updated | Make ARA wiki OKF-native

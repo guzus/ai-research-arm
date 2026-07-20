@@ -270,21 +270,3 @@ fragile and local weights look like insurance.
   substantiated?** The 2026-07-20 David Sacks claim is single-source and
   unconfirmed by either lab; watch for on-record Anthropic/OpenAI statements
   or documented lobbying activity.
-
-## Changelog
-
-- [2026-06-14] created | GLM 5.2 MIT / Kimi K2.7-Code 12x-cheaper / "Open source AI must win" 1480pts / r/LocalLLaMA torrent-network backlash surging on the shutdown
-- [2026-06-15] updated | Kimi K2.7-Code/GLM-5.2/MiniMax-M3-on-HF pouring into the Fable gap
-- [2026-06-16] updated | "Open weights are not enough" transparency caveat, proof-of-training debate, OpenRouter Fusion API
-- [2026-06-17] updated | GLM-5.2 MIT ship + Microsoft evaluating fine-tuned DeepSeek V4 for Copilot Cowork + FeynRL "open weights are not enough" + local-models HN
-- [2026-06-17] updated | GLM-5.2 MIT ship + Microsoft evaluating fine-tuned DeepSeek V4 for Copilot Cowork + FeynRL "open weights are not enough" + local-models HN
-- [2026-06-17] updated | GLM-5.2 MIT ship + Microsoft evaluating fine-tuned DeepSeek V4 for Copilot Cowork + FeynRL "open weights are not enough" + local-models HN
-- [2026-06-18] updated | the crossover milestone: open weight leads the intel index + Microsoft eval of DeepSeek V4
-- [2026-06-19] updated | Willison endorsement + DeepSeek Vision multimodal
-- [2026-06-21] updated | "no moat" thesis gets leaderboard teeth + subscription defections
-- [2026-06-29] updated | Nemotron-3-Ultra/Command A+ Apache 2.0/ZAYA1/Poolside/Kimi-K2.7-Code pipeline + OpenRouter top-4-broker all Chinese + Coinbase halves spend, VibeThinker-3B
-- [2026-07-01] updated | LongCat-2.0 frontier-scale + no-Nvidia turn, DSpark, Qwen 3.6 local sweet spot, Zluda 6
-- [2026-07-13] updated | possible open-weight-models executive order + Soofi S ship
-- [2026-07-14] updated | Vercel AI Gateway 29% open-weight token-share data point
-- [2026-07-17] updated | Wiki ingest 2026-07-17
-- [2026-07-20] updated | the "dumping" framing fight and lobbying accusation

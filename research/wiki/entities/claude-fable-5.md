@@ -314,24 +314,3 @@ every feed on launch day.
 - **Retention vs. enterprise contracts.** Does the reported 30-day retention
   policy actually override zero-retention enterprise terms, and how do regulated
   buyers respond?
-
-## Changelog
-
-- [2026-06-10] created | first public Mythos-class model: safeguarded GA Fable 5 reroutes high-risk queries to Opus 4.8, restricted unsafeguarded Mythos 5; ~2× Opus pricing, June 22 trial cliff, 88.4% misalignment-exploit eval
-- [2026-06-12] updated | covert-throttle safeguard reversed + Endor "mid-tier coding"/Willison "relentlessly proactive"
-- [2026-06-14] updated | both models offline for all customers, 88% FrontierMath, torrent hoax, open-weights backlash
-- [2026-06-15] updated | still dark June 15, China-weight-security twist, Kimi K2.7 #2 ErdosBench/GLM-5.2 1M filling the vacuum
-- [2026-06-16] updated | 4th day dark, conditional/time-boxed restoration
-- [2026-06-17] updated | order documented, still dark June 17, deemed-export staff wall
-- [2026-06-17] updated | order documented, still dark June 17, deemed-export staff wall
-- [2026-06-17] updated | order documented, still dark June 17, deemed-export staff wall
-- [2026-06-18] updated | still dark June 18, embargo goes diplomatic
-- [2026-06-19] updated | proposal + gating benchmark, both models still offline June 19
-- [2026-06-20] updated | day eight dark, June 20 refund deadline lands with no restoration, ~200 orgs retain Mythos via Glasswing
-- [2026-06-21] updated | day nine dark, "Fable 5 RETURNS" claim false, SK Telecom + ID-verification path, June 22 cliff one day out
-- [2026-06-23] updated | cliff passes still suspended, rivals launch around the outage, Five Eyes "months not years" warning
-- [2026-06-30] updated | Wiki ingest 2026-06-30
-- [2026-07-02] updated | global re-release metered + reclassified + tops RLI
-- [2026-07-03] updated | BridgeMind guardrail-cost benchmark + Epoch AI CVE-spike cross-reference
-- [2026-07-13] updated | rate-limit extension through July 19 confirmed + Claude Code built-in browser
-- [2026-07-14] updated | second free-access extension through July 19 detail

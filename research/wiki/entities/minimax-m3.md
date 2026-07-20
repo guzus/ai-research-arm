@@ -51,9 +51,3 @@ layers like [[openrouter]].
 - **Deployment economics.** Open weights at this capability shift the
   build-vs-buy line for enterprises; how much agentic-coding volume migrates off
   closed APIs to self-hosted M3?
-
-## Changelog
-
-- [2026-06-03] created | open-weights 1M ctx 59% SWE-Bench Pro
-- [2026-06-04] updated | MiniMax Sparse Attention MSA 1M-context engine
-- [2026-06-17] updated | Make ARA wiki OKF-native

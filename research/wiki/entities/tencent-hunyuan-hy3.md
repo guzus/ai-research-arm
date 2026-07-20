@@ -41,7 +41,3 @@ source was captured — `verification: partial`.
 - **Benchmark durability.** Does the MCP-Atlas SOTA and the reported
   GPT-5.5-beating science result hold up under independent, contamination-
   aware evaluation?
-
-## Changelog
-
-- [2026-07-12] created | 295B open-weight MoE under Apache 2.0, reported MCP-Atlas SOTA

@@ -65,9 +65,3 @@ largest investee banned.
   calls the order a "misunderstanding" and argues the same vulnerability exists
   in public models like GPT-5.5 — putting Amazon's corroboration and the
   administration's response under scrutiny.
-
-## Changelog
-
-- [2026-06-14] created | Jassy→Bessent jailbreak briefing triggered the export crackdown on Anthropic's own largest investee + Cerebras/AWS
-- [2026-06-15] updated | June 9→11→12 trigger timeline + Community Note caveat
-- [2026-06-17] updated | Make ARA wiki OKF-native

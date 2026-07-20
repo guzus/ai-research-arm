@@ -51,8 +51,3 @@ client.
 - **GPU dependence.** A coding agent that runs Devin against full
   repositories sits hard against frontier-model API costs — does
   Cognition try to vertically integrate via its own inference stack?
-
-## Changelog
-
-- [2026-05-29] created | Wiki ingest 2026-05-29
-- [2026-06-17] updated | Make ARA wiki OKF-native

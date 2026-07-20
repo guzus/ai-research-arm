@@ -70,9 +70,3 @@ products at WAIC 2026 (2026-07-19) as part of a global export push.
   but the company is far smaller than [[anthropic]] / [[openai]] on training
   compute. Is supply-chain independence sustainable as VLA training-FLOPS
   requirements grow?
-
-## Changelog
-
-- [2026-06-01] created | 200h Helix-02 marathon, 249,560 packages, 0 hardware failures, 0 teleop
-- [2026-06-17] updated | Make ARA wiki OKF-native
-- [2026-07-19] updated | Wiki ingest 2026-07-19

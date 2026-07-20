@@ -49,7 +49,3 @@ in three research-level tasks still defeat frontier systems.
 - **Policy use.** Could a "fraction of research tasks autonomously solvable"
   number feed into the biosecurity / pre-release-review framing in
   [[federal-ai-policy]]?
-
-## Changelog
-
-- [2026-06-19] created | OpenAI 750-task life-science benchmark, best model 36.1%), updated 7 (openai — Shazeer + Dean Ball hires, GPT-5.6 ≈June 25 stealth test, LifeSciBench, GPT-5.5 Instant health upgrade + AI chemist

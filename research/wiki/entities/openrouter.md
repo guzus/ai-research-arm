@@ -69,9 +69,3 @@ OpenRouter monetizes from the demand side.
 - **Fusion quality.** Does blending improve answer quality enough to justify
   latency and attribution complexity, or is it mostly a way to sell model
   optionality when the underlying leaderboard is unstable?
-
-## Changelog
-
-- [2026-06-01] created | $113M Series B at $1.3B, 25T tokens/week
-- [2026-06-17] updated | Make ARA wiki OKF-native
-- [2026-06-17] updated | Backfill LLM wiki after OKF migration

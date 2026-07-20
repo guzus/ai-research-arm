@@ -51,7 +51,3 @@ the cycle's largest AI-coding M&A: a **$60B all-stock acquisition by
 - **Developer retention.** Does Cursor's user base stay through a SpaceX
   acquisition, or does the ownership change push developers toward rival
   agentic IDEs?
-
-## Changelog
-
-- [2026-06-17] created | SpaceX's $60B all-stock acquisition of Anysphere + captive "SpaceXAI" model

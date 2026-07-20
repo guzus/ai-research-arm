@@ -159,17 +159,3 @@ gated external preview); GA is "in the coming weeks."
 - **Family-at-once cadence.** Shipping Sol/Terra/Luna together (plus "ultra"
   subagent-spawning mode) is a break from staggered GPT-5.x rollouts — a signal
   about OpenAI's product discipline ahead of its IPO.
-
-## Changelog
-
-- [2026-06-20] created | OpenAI's anticipated frontier model, press-reported ~June 23 standard/Mini/Pro family, leaked ~1.5M-token context, unconfirmed
-- [2026-06-21] updated | Pachocki "meaningful improvement", Polymarket ~83% June 22-28, stealth GPT-5.6-Pro demos debunked as tier confusion
-- [2026-06-23] updated | window to ~Thursday June 25, surprise GPT-Bidi-1 bidirectional voice model, June 22-28 ~90-100%
-- [2026-06-29] updated | transforms from rumored to shipped: Sol/Terra/Luna government-gated limited preview, max/ultra reasoning, Terminal-Bench 2.1 SOTA, pricing, GA "coming weeks"/Polymarket ~90% by Jul 31
-- [2026-07-04] updated | July 7 single-leaker date
-- [2026-07-05] updated | tier names upgrade to primary-source confirmed, July 7 launch date still unconfirmed
-- [2026-07-12] updated | Sol Ultra GA, 64-subagent math proof, CritPt 32.3% lead, Luna capacity errors
-- [2026-07-13] updated | third capacity intervention in 48h
-- [2026-07-14] updated | continued rollout + ChatGPT Work + production case study
-- [2026-07-15] updated | 5th usage-limit reset + acknowledged file-deletion reports
-- [2026-07-18] updated | GA + ChatGPT Work + Full Access Mode file-deletion incident

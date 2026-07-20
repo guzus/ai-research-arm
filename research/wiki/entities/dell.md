@@ -61,8 +61,3 @@ side as well as the enterprise side.
 - **Margin durability.** Record EPS at +282% GAAP / +214% non-GAAP is
   the most favorable AI-OEM print to date. Does pricing power hold as
   Rubin economics compress NVIDIA's reseller margins?
-
-## Changelog
-
-- [2026-06-01] created | Q1 FY27 $16.1B AI servers +757% YoY, $24.4B orders, +32% stock
-- [2026-06-17] updated | Make ARA wiki OKF-native

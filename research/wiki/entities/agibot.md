@@ -46,7 +46,3 @@ to US humanoid players like [[figure-ai]].
 - **Export traction.** The showcase is framed as a "global export push" —
   watch for confirmed international deployments or orders beyond the WAIC
   demo floor.
-
-## Changelog
-
-- [2026-07-19] created | Chinese humanoid-robotics maker, WAIC 2026 showcase led by the A3 Ultra), updated 5 (anthropic — Meta $10B compute-lease specifics + bank credit-line talks

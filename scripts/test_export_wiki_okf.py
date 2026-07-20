@@ -43,11 +43,6 @@ Alpha links to [[beta]] and [[b-one|Beta by alias]].
 ```
 [[beta]] inside a fence stays literal.
 ```
-
-## Changelog
-
-- [2026-05-01] created | page created
-- [2026-05-02] updated | alpha refresh
 """
 
 BETA = """---
@@ -61,11 +56,6 @@ timestamp: 2026-05-03T00:00:00Z
 ---
 
 Beta links back to [[alpha]].
-
-## Changelog
-
-- [2026-05-01] created | page created
-- [2026-05-03] updated | beta refresh
 """
 
 INDEX = """# Wiki Index

@@ -174,17 +174,3 @@ max/high "thinking" modes.
 - **Router adoption.** If GLM-5.2 becomes a default open coding backend, does it
   show up in [[openrouter]] traffic mix and price discovery, or stay inside
   Z.ai's own product surface?
-
-## Changelog
-
-- [2026-06-17] created | 1M-context GLM Coding Plan flagship with MIT weights promised
-- [2026-06-17] updated | 1M-context GLM Coding Plan flagship with MIT weights promised
-- [2026-06-18] updated | #1 on Artificial Analysis Intelligence Index, ~1pt off Opus 4.8 on FrontierSWE, #1 HN 689pts, ZCode desktop agent, antirez ~512GB-RAM caveat
-- [2026-06-19] updated | Simon Willison "most powerful text-only open-weights LLM", tops AA open-weights board, Musk Q1 2027
-- [2026-06-20] updated | migration focal point, best open model "aside from Fable 5", "Opus 4.6/GPT-5.4 tier"
-- [2026-06-21] updated | #1 Design Arena web-design board beating frozen Fable 5, GPT-5.5 3x hallucination HN debate, @burkov defection, Terminal-Bench 63.5→81.0
-- [2026-06-23] updated | #3 overall/#1 open-weights GDPval-AA 1524 Elo, 2nd Game Dev Arena, #1 open-weights Intelligence Index 51, "DeepSeek moment for agents"
-- [2026-06-29] updated | "matches Mythos" cyber headline debunked as IDOR-vs-Claude-Code category error, stock +30% decoupled from benchmark
-- [2026-07-02] updated | ZCode 3.0 harness + #1 open-source / #2 global on LMArena Code
-- [2026-07-05] updated | wafer.ai AMD cost-per-token benchmark + unverified Mythos vulnerability-hunting parity claim
-- [2026-07-12] updated | Wiki ingest 2026-07-12

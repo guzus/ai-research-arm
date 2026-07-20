@@ -2357,6 +2357,164 @@ type WikiIndex = {
   recent_log: WikiLogEntry[];        // newest first
 };
 
+// --- Per-page history -------------------------------------------------------
+// A wiki page's history is its git history: nothing is baked into the markdown.
+// We read it live from the GitHub commits API for that one file, and recover a
+// human summary by pairing each commit's date with research/wiki/log.md, whose
+// run summaries already name the pages they touched
+// ("updated 8 (deepseek — first external round CLOSED ...; ...)").
+//
+// Unauthenticated GitHub API is 60 req/hour PER IP, so: one request per page
+// the reader actually opens, cached in sessionStorage, and every failure mode
+// degrades to a plain "history on GitHub" link rather than an error.
+const WIKI_REPO = 'guzus/ai-research-arm';
+const WIKI_HISTORY_TTL_MS = 60 * 60 * 1000;
+const WIKI_HISTORY_MAX = 40;
+
+type WikiCommit = { date: string; summary: string; url: string };
+
+let wikiLogFragmentsCache: Map<string, string[]> | null = null;
+
+/** Parse log.md into date → run summaries (mirrors check_wiki's LOG_LINE_RE). */
+async function loadWikiLogFragments(signal: AbortSignal): Promise<Map<string, string[]>> {
+  if (wikiLogFragmentsCache) return wikiLogFragmentsCache;
+  const byDate = new Map<string, string[]>();
+  try {
+    const resp = await fetch(`${DATA_BASE}/wiki/log.md`, { signal });
+    if (resp.ok) {
+      const text = await resp.text();
+      for (const line of text.split('\n')) {
+        const m = line.match(/^## \[(\d{4}-\d{2}-\d{2})\] \S+ \| (.+)$/);
+        if (m) byDate.set(m[1], [...(byDate.get(m[1]) || []), m[2]]);
+      }
+    }
+  } catch {
+    /* history still renders from commit subjects alone */
+  }
+  wikiLogFragmentsCache = byDate;
+  return byDate;
+}
+
+/** Pull `slug`'s own detail out of a run summary, if it names the page. */
+function wikiLogFragmentFor(slug: string, summaries: string[]): string | null {
+  const esc = slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(
+    `\\b${esc}\\b(?:\\s+(?:entity|concept|theme))?\\s*—\\s*(.+?)(?=;\\s*[a-z0-9][a-z0-9-]*(?:\\s+\\w+)?\\s*—|\\)\\s*[.;]|\\)\\s*$|$)`,
+  );
+  for (const summary of summaries) {
+    const m = summary.match(re);
+    if (m && m[1].trim()) {
+      const text = m[1].replace(/\[\[([^\[\]|]+)(?:\|([^\[\]]+))?\]\]/g, (_s, a, b) => b || a);
+      return text.replace(/\s+/g, ' ').replace(/[\s.;,]+$/, '');
+    }
+  }
+  return null;
+}
+
+/** Commits that touched this page, newest first. Null = unavailable. */
+async function fetchWikiHistory(page: WikiPage, signal: AbortSignal): Promise<WikiCommit[] | null> {
+  const cacheKey = `ara-wiki-history:${page.slug}`;
+  try {
+    const raw = sessionStorage.getItem(cacheKey);
+    if (raw) {
+      const cached = JSON.parse(raw) as { at: number; commits: WikiCommit[] };
+      if (Date.now() - cached.at < WIKI_HISTORY_TTL_MS) return cached.commits;
+    }
+  } catch {
+    /* unparseable/absent cache — refetch */
+  }
+
+  const path = `research/wiki/${page.file}`;
+  let commits: WikiCommit[];
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${WIKI_REPO}/commits?path=${encodeURIComponent(path)}&per_page=${WIKI_HISTORY_MAX}`,
+      { signal, headers: { Accept: 'application/vnd.github+json' } },
+    );
+    if (!resp.ok) return null;  // 403 = rate-limited; caller shows the GitHub link
+    const data = (await resp.json()) as Array<{
+      html_url?: string;
+      commit?: { message?: string; author?: { date?: string } };
+    }>;
+    if (!Array.isArray(data)) return null;
+    commits = data
+      .map((c) => ({
+        date: (c.commit?.author?.date || '').slice(0, 10),
+        // First line only (drop Co-authored-by trailers), minus the PR suffix
+        // that the publish-time squash merge appends.
+        summary: (c.commit?.message || '').split('\n')[0].replace(/\s*\(#\d+\)\s*$/, ''),
+        url: c.html_url || '',
+      }))
+      .filter((c) => c.date);
+  } catch {
+    return null;
+  }
+
+  try {
+    sessionStorage.setItem(cacheKey, JSON.stringify({ at: Date.now(), commits }));
+  } catch {
+    /* storage full or disabled — the fetch still succeeded */
+  }
+  return commits;
+}
+
+function wikiHistoryLinkHtml(page: WikiPage): string {
+  const href = `https://github.com/${WIKI_REPO}/commits/main/research/wiki/${page.file}`;
+  return (
+    '<a class="wiki-history-more" href="' + escapeHtml(href) +
+    '" target="_blank" rel="noopener noreferrer">Full history on GitHub &rsaquo;</a>'
+  );
+}
+
+/** Fill the history slot in place; called after the page scaffold renders. */
+async function hydrateWikiHistory(page: WikiPage, signal: AbortSignal): Promise<void> {
+  const host = content.querySelector('.wiki-history-body') as HTMLElement | null;
+  if (!host) return;
+  const [commits, fragments] = await Promise.all([
+    fetchWikiHistory(page, signal),
+    loadWikiLogFragments(signal),
+  ]);
+  if (signal.aborted || !content.contains(host)) return;
+
+  if (!commits || !commits.length) {
+    setSafeContent(host, '<p class="wiki-history-empty">' + wikiHistoryLinkHtml(page) + '</p>');
+    return;
+  }
+
+  // Resolve each commit to its display summary, then collapse consecutive
+  // entries that say the same thing on the same day. Several commits can land
+  // on one date (an ingest plus a follow-up), and they all match that date's
+  // single log.md fragment — rendering them as N identical rows reads like a
+  // bug. The oldest entry keeps its "created" label after collapsing.
+  const resolved = commits.map((c) => ({
+    ...c,
+    text: wikiLogFragmentFor(page.slug, fragments.get(c.date) || []) || c.summary,
+  }));
+  const collapsed = resolved.filter(
+    (c, i) => i === 0 || !(c.date === resolved[i - 1].date && c.text === resolved[i - 1].text),
+  );
+
+  const rows = collapsed.map((c, i) => {
+    const summary = c.text;
+    const label = i === collapsed.length - 1 ? 'created' : 'updated';
+    const text = escapeHtml(summary);
+    return (
+      '<li class="wiki-history-item">' +
+      '<time class="wiki-history-date" datetime="' + escapeHtml(c.date) + '">' + escapeHtml(c.date) + '</time>' +
+      '<span class="wiki-history-op wiki-history-op--' + label + '">' + label + '</span>' +
+      (c.url
+        ? '<a class="wiki-history-summary" href="' + escapeHtml(c.url) + '" target="_blank" rel="noopener noreferrer">' + text + '</a>'
+        : '<span class="wiki-history-summary">' + text + '</span>') +
+      '</li>'
+    );
+  });
+
+  setSafeContent(
+    host,
+    '<ul class="wiki-history-list">' + rows.join('\n') + '</ul>' + wikiHistoryLinkHtml(page),
+  );
+}
+
 // One-time fetch cache for the index, plus a derived slug→page Map so backlink
 // rendering is O(n) not O(n^2) (advisor note 5).
 let wikiIndexCache: WikiIndex | null = null;
@@ -2710,7 +2868,7 @@ function renderWikiIndex(index: WikiIndex): void {
 }
 
 // PAGE view: title + type chip + tags + rendered body + backlinks + related.
-function renderWikiPage(page: WikiPage, body: string): void {
+function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): void {
   setDocTitle(page.title);
   const bodyHtml = wikiMarkdownToHtml(stripWikiFrontmatter(body));
 
@@ -2772,6 +2930,13 @@ function renderWikiPage(page: WikiPage, body: string): void {
       '  <div class="wiki-page-body md-content"></div>',
       backlinksHtml,
       relatedHtml,
+      // History is this file's git history, read live from the GitHub API —
+      // never stored in the page. Filled by hydrateWikiHistory below; if that
+      // fails (offline, rate-limited) the slot degrades to a GitHub link.
+      '<section class="wiki-history">',
+      '  <h2 class="wiki-section-title">History</h2>',
+      '  <div class="wiki-history-body"><p class="wiki-history-empty">Loading history…</p></div>',
+      '</section>',
       '</div>',
     ].join('\n'),
   );
@@ -2781,6 +2946,8 @@ function renderWikiPage(page: WikiPage, body: string): void {
   // style), keeping only data-wiki-slug anchors/spans for click-routing.
   const bodyEl = content.querySelector('.wiki-page-body') as HTMLElement | null;
   if (bodyEl) setSafeWikiContent(bodyEl, bodyHtml);
+
+  void hydrateWikiHistory(page, signal ?? new AbortController().signal);
 }
 
 function renderWikiNotFound(slug: string): void {
@@ -4555,7 +4722,7 @@ async function load(): Promise<void> {
         } else {
           const cached = wikiBodyCache.get(selectedSlug);
           if (cached !== undefined) {
-            renderWikiPage(page, cached);
+            renderWikiPage(page, cached, controller.signal);
           } else {
             const body = await withTimeout(
               fetchMarkdownReport(`${DATA_BASE}/wiki/${page.file}`, controller.signal),
@@ -4567,7 +4734,7 @@ async function load(): Promise<void> {
               showError('Loading timed out', 'Network may be slow. Click to retry.');
             } else if (body) {
               wikiBodyCache.set(selectedSlug, body);
-              renderWikiPage(page, body);
+              renderWikiPage(page, body, controller.signal);
             } else {
               renderWikiNotFound(selectedSlug);
             }

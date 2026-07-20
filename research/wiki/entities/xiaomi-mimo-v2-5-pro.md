@@ -47,7 +47,3 @@ independent reproduction.
 - **Does Xiaomi stay in the open lane?** MiMo Code and MiMo-v2.5-Pro suggest
   sustained open-leaning releases. The strategic question is whether Xiaomi
   becomes a durable Chinese open-model supplier or a periodic community spike.
-
-## Changelog
-
-- [2026-06-17] created | 1T MoE / 1,000+ tok/s efficiency claim

@@ -86,8 +86,3 @@ the clearest named entities inside the [[ai-capex]] supercycle's move from
 - **Sentiment transmission.** Broadcom's June 5 reaction showed that custom
   AI-chip guidance can move the whole AI trade. Does AVGO become the capex
   cycle's second sentiment pin after NVDA?
-
-## Changelog
-
-- [2026-06-17] created | custom ASIC and private-credit hinge for Anthropic/OpenAI compute financing
-- [2026-06-29] updated | OpenAI Jalapeño first custom inference ASIC co-designed w/ Broadcom, 50% cost saving claim, 9-mo design, MS ~40% output

@@ -48,9 +48,3 @@ and an aggressive consolidator of agentic-AI capability.
 - **Does specialist-beats-generalist hold?** Fin's claim that a support-tuned model
   beats frontier labs on resolution rate, if it survives neutral evaluation, is a
   template for vertical AI M&A across enterprise SaaS.
-
-## Changelog
-
-- [2026-06-16] created | $3.6B Fin/Intercom acquisition for Agentforce, Apex specialist model beating frontier on resolution
-- [2026-06-17] updated | Make ARA wiki OKF-native
-- [2026-06-17] updated | Backfill LLM wiki after OKF migration

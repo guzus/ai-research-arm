@@ -42,7 +42,3 @@ TechCrunch, @kimmonismus).
 - **Architecture risk.** A transformer-only ASIC is a bet that the transformer
   stays the dominant architecture through the chip's useful life — a wager
   against the next architectural shift.
-
-## Changelog
-
-- [2026-07-01] created | transformer-ASIC startup out of stealth, $800M/$1B contracts/$5B

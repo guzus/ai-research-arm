@@ -69,10 +69,3 @@ the increasingly crowded "deep research" agent category.
 - **Can it prove work quality, not just work duration?** An eight-hour run sounds
   serious, but the buyer cares whether the final report is correct, cited, and
   decision-useful.
-
-## Changelog
-
-- [2026-06-16] created | Marlin autonomous "Ultra Deep Research" agent on AB-MCTS, non-US deep-research entrant
-- [2026-06-17] updated | Make ARA wiki OKF-native
-- [2026-06-17] updated | Backfill LLM wiki after OKF migration
-- [2026-06-23] updated | Fugu/Fugu Ultra orchestration router edges Opus 4.8 on SWE-Bench Pro but trails suspended Fable 5, orchestration-as-export-workaround

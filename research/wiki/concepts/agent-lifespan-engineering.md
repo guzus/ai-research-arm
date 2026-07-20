@@ -56,9 +56,3 @@ dominant variable** in that curve.
   agentic-coding lift translates to the deployed-agent setting — or whether
   memory policy continues to swamp the model delta — is the next AgingBench
   iteration to watch.
-
-## Changelog
-
-- [2026-05-29] created | Wiki ingest 2026-05-29
-- [2026-05-30] updated | Opus 4.8 regression-reversal question
-- [2026-06-17] updated | Make ARA wiki OKF-native

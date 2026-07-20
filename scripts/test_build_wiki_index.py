@@ -36,11 +36,6 @@ images:
     source_url: "https://example.com/alpha-media"
 ---
 Alpha links to [[beta]] and again via alias [[b-one|Beta]].
-
-## Changelog
-
-- [2026-05-01] created | page created
-- [2026-05-02] updated | alpha refresh
 """
 
 BETA = """---
@@ -57,11 +52,6 @@ Beta links back to [[alpha]].
 ```
 this [[fenced-link]] must be ignored
 ```
-
-## Changelog
-
-- [2026-05-01] created | page created
-- [2026-05-09] updated | dated ahead of both timestamp variants the drift-gate test uses
 """
 
 LOG = """# Wiki Log

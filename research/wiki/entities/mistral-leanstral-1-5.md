@@ -48,8 +48,3 @@ previously-unknown bugs** while scanning 57 open-source repositories.
 - [[mistral-robostral-navigate]] — Mistral's first embodied-navigation
   model (2026-07-08), a distinct product line from this formal-verification
   release.
-
-## Changelog
-
-- [2026-07-05] created | open-source Lean 4 formal-verification model, top HN story
-- [2026-07-12] updated | Wiki ingest 2026-07-12

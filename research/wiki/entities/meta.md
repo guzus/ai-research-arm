@@ -96,11 +96,3 @@ targeting AI-companion anti-addiction mechanisms rather than crisis
 alerting specifically). The feature is a concrete product mitigation rather
 than a policy statement, distinguishing it from Meta's other 2026 AI-safety
 posture, which has mostly been reactive commentary.
-
-## Changelog
-
-- [2026-06-16] created | "AI Mode" on Facebook, distribution bet to catch up in the assistant race
-- [2026-06-17] updated | Make ARA wiki OKF-native
-- [2026-07-02] updated | "Meta Compute" surplus-capacity cloud + internal token-spend cap
-- [2026-07-14] updated | Hyperion crosses $50B/5GW by ~2032 + Muse Spark 1.1 benchmark claims
-- [2026-07-17] updated | parental alerts for teen suicide/self-harm conversations

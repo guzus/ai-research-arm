@@ -47,8 +47,3 @@ as targeting "CoreWeave/Nebius" (ARA digest 2026-05-20).
 - **Read-through to peers.** How much of CoreWeave's debt-financed,
   concentration-heavy structure also describes [[nebius]] and other independent
   neoclouds?
-
-## Changelog
-
-- [2026-05-24] created | Add LLM Wiki lane: compounding knowledge base + dashboard tab
-- [2026-06-17] updated | Make ARA wiki OKF-native

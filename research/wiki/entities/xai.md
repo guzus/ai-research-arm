@@ -136,14 +136,3 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   GPT/Claude/Gemini frontier; Grok 4.5 (the 1.5T V9 in private beta) is the test
   of whether the compute advantage converts into model capability — but with
   no independent benchmarks yet, the Opus-level claim is unaudited.
-
-## Changelog
-
-- [2026-06-08] created | Elon's compute-landlord business renting Colossus to Anthropic ~$1.25B/mo + Google ~$920M/mo, Grok Build CLI
-- [2026-06-17] updated | Make ARA wiki OKF-native
-- [2026-06-29] updated | Grok 4.5 1.5T V9 private beta at SpaceX/Tesla, Opus-level claim unaudited, unrestricted-vs-gated asymmetry
-- [2026-07-12] updated | Grok 4.5 ends private beta, ships free to all X accounts
-- [2026-07-14] updated | Grok Build CLI exfiltration allegation + ZDR response + Perplexity Grok 4.5 integration
-- [2026-07-15] updated | Grok Build codebase-upload behavior confirmed by security press
-- [2026-07-17] updated | sues users over Grok CSAM outputs
-- [2026-07-19] updated | Grok Build 0.2.105 + Grok 4.5 default model

@@ -187,58 +187,6 @@ Rules:
   it touches. The lint mode surfaces orphans (no inbound links) and missing
   reciprocal links as advisories.
 
-## Per-page `## Changelog` section
-
-Every page body **ends** with a `## Changelog` section — the page-local
-complement to the wiki-wide `log.md`. `log.md` records each ingest *pass*; a
-page's changelog records what happened to *that page*, so a reader sees how it
-accreted without spelunking git history.
-
-```
-## Changelog
-
-- [2026-05-24] created | Add LLM Wiki lane: compounding knowledge base + dashboard tab
-- [2026-05-29] updated | Opus 4.8 ship + Series H close at $65B/$965B
-```
-
-**The section is GENERATED — never hand-write or hand-edit it.**
-`scripts/build_wiki_changelogs.py` derives it from two things the repo already
-records:
-
-- **git history** supplies the spine: one entry per commit that substantively
-  changed the page, dated by that commit's author date. This is why nobody
-  authors entries — the commits already are the changelog.
-- **`log.md`** supplies the prose: its run summaries already name the pages
-  they touched (`updated 8 (deepseek — first external round CLOSED ...; ...)`),
-  and the page's own fragment becomes its entry summary. Commits with no
-  matching fragment fall back to the commit subject, with any `(#123)` PR
-  suffix stripped.
-
-Two properties make regeneration safe to run every ingest:
-
-- **Fixpoint.** A commit counts only when the page's content *excluding the
-  changelog* changed, so the commit that writes a changelog is invisible to
-  the next run — re-running never grows the section.
-- **Squash-stable.** Entries key on author date and file content, never on a
-  commit hash or subject that the publish-time squash merge rewrites (see
-  CLAUDE.md load-bearing rule 13).
-
-The generator requires **full history** and refuses to run on a shallow clone
-(it would truncate every page to one entry); regenerating lanes must check out
-with `fetch-depth: 0`.
-
-Shape rules the validator enforces (it checks shape, not presence — a page
-legitimately has no section between the agent creating it and the post-commit
-regeneration):
-
-- At most **one** `## Changelog` heading, and it is the **last** section:
-  after the heading, only entry lines and blank lines. (A heading inside a
-  fenced code block does not count.)
-- Entry shape `- [YYYY-MM-DD] <op> | <summary>`, `op` ∈ `{created, updated}`,
-  summary a non-empty single line.
-- The **first entry is the page's `created` entry**, and only the first may
-  use `created`. Dates are **non-decreasing** top→bottom.
-
 ## `index.md` format
 
 `research/wiki/index.md` is the catalog. Shape:
@@ -316,9 +264,6 @@ On each daily run:
    - Add or refine `images` only when a visual directly clarifies the page topic
      or description; keep weak/decorative images out.
    - Add new cross-links (`[[...]]`) to other pages the update touches.
-   - Leave the `## Changelog` section alone — it is regenerated from git
-     history after the commit. Naming the page in the `log.md` entry (step 7)
-     is what gives its changelog a good summary line.
    - Bump `timestamp` to the ingested date as `YYYY-MM-DDT00:00:00Z`. **Do not** change `slug` or `created_at`.
 
 5. **If no match → CREATE a page.**
@@ -327,8 +272,7 @@ On each daily run:
      that its aliases don't collide with any existing slug or alias.
    - Set `created_at = today` and `timestamp = <today>T00:00:00Z`.
    - Write a non-empty body with at least the "why it matters" framing and
-     source citations, and cross-link it to related pages. Do not write a
-     `## Changelog` section — the post-commit regeneration adds it.
+     source citations, and cross-link it to related pages.
    - Optionally add `images` when there are high-quality visuals that directly
      depict the subject. Omit the field when no strong image is available.
    - Add it to `index.md` under the right section.
@@ -381,11 +325,6 @@ Hard-fail checks:
 - `type`: in the enum and matching the subdir.
 - Dates: ISO `YYYY-MM-DD` / ISO 8601 UTC timestamp; `timestamp >= created_at`.
 - Body: non-empty.
-- Changelog (shape only — the section is generated, so presence is not
-  checked here): at most one `## Changelog`, as the final section (only
-  entries and blank lines after it); entries match
-  `- [YYYY-MM-DD] created|updated | <summary>`; the first (and only the
-  first) entry is `created`; dates non-decreasing.
 - Wikilinks: every `[[target]]` (outside fenced code) resolves to a slug or
   alias.
 - `index.md` ↔ pages: every page listed once under the right section; every

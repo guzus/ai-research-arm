@@ -4048,7 +4048,8 @@ body.tab-frontpage .section-nav {
 
 /* Backlinks + related sections. */
 .wiki-backlinks,
-.wiki-related {
+.wiki-related,
+.wiki-history {
   max-width: 760px;
   margin-top: 28px;
   padding-top: 20px;
@@ -4080,6 +4081,62 @@ body.tab-frontpage .section-nav {
   transition: border-color 0.12s, background 0.12s;
 }
 .wiki-link-item:hover { border-color: var(--accent-warm); }
+
+/* ── Page history (live from the GitHub commits API) ───── */
+.wiki-history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+.wiki-history-item {
+  display: grid;
+  grid-template-columns: 5.75rem 4.5rem 1fr;
+  gap: 10px;
+  align-items: baseline;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.86rem;
+}
+.wiki-history-item:last-child { border-bottom: none; }
+.wiki-history-date {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+.wiki-history-op {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+}
+.wiki-history-op--created { color: var(--accent-warm); }
+.wiki-history-summary {
+  color: var(--text-primary);
+  text-decoration: none;
+  line-height: 1.5;
+}
+a.wiki-history-summary:hover { text-decoration: underline; }
+.wiki-history-empty {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+}
+.wiki-history-more {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.wiki-history-more:hover { color: var(--accent-warm); }
+
+/* Stack the columns on narrow screens so long summaries stay readable. */
+@media (max-width: 560px) {
+  .wiki-history-item {
+    grid-template-columns: 5.75rem 1fr;
+    row-gap: 2px;
+  }
+  .wiki-history-op { grid-column: 2; }
+  .wiki-history-summary { grid-column: 1 / -1; }
+}
 
 /* ── Wikilinks (in-body and in lists) ─────────────────── */
 .wikilink {

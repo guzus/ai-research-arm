@@ -86,11 +86,3 @@ its own **open-weights models** (the Nemotron line) on top of the silicon.
 - **The "beats but closes lower" tell.** Why does the market keep selling the
   single best supply-side data point? Priced-in growth, or early doubt about the
   supercycle's durability?
-
-## Changelog
-
-- [2026-06-05] created | Q1 FY27 demand pin + GTC Taipei + open-weights Nemotron-3-Ultra-550B
-- [2026-06-17] updated | Make ARA wiki OKF-native
-- [2026-06-17] updated | Backfill LLM wiki after OKF migration
-- [2026-06-17] updated | Add wiki multi-image support
-- [2026-06-30] updated | Wiki ingest 2026-06-30
