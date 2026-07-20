@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-20 22:33:39 UTC
+
+CYCLE: HuggingFace breach fuels open-vs-closed security debate as DC weighs Chinese model curbs
+
+TOP STORIES:
+• HuggingFace confirms autonomous AI-agent breach, leaned on Chinese open model for forensics [⚠]
+• Washington reportedly weighs restricting Chinese frontier AI models after Kimi K3 scare [⚠]
+• Bloomberg: China stands up 1-gigawatt AI data center with zero Nvidia chips [🚩]
+
+WATCH: Does any independent security researcher confirm HuggingFace's 17k-action breach claim, or does an official DC statement land on Chinese model curbs?
+
+Full update on GitHub.
