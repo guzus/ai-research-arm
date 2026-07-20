@@ -953,5 +953,22 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "databricks-mid-2026",
+    "file": "2026-07-20T050016--databricks-mid-2026.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Databricks in mid-2026: a $188B private mark, an 80% re-acceleration, and a moat built on open standards",
+    "model": "kimi-k3",
+    "created_at": "2026-07-20T05:00:16Z",
+    "source": "workflow_dispatch",
+    "prompt": "Databricks in mid-2026: IPO trajectory, AI-native product revenue mix, and the lakehouse moat against Snowflake and the hyperscalers",
+    "tags": [
+      "demo",
+      "kimi-k3",
+      "opencode-go",
+      "databricks"
+    ]
   }
 ]

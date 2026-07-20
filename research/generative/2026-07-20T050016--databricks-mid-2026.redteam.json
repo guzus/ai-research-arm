@@ -1,0 +1,19 @@
+{
+  "findings": [
+    {
+      "claim_id": "c14",
+      "claim_text": "CEO Ali Ghodsi has told investors Databricks could pursue an IPO as early as 2027, calling 2026 the 'worst year' to list given the crowded IPO calendar.",
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The July 2026 strategic round is reportedly roughly $3 billion in size, per WSJ reporting cited by TechCrunch; Databricks did not disclose the amount.",
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c24",
+      "claim_text": "Databricks' implied valuation multiple (~27x annualized revenue at $188B / $6.9B) is roughly 1.8x Snowflake's (~15x at ~$83B market cap / ~$5.6B annualized), for roughly 2.3x the growth rate.",
+      "no_contradiction_found": true
+    }
+  ]
+}
