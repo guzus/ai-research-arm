@@ -30,6 +30,19 @@ const skipLfsPointers = process.env.SKIP_LFS_POINTERS === '1';
 // committed — we only copy it here; we never rebuild it in JS.
 const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki', 'youtube', 'arm'];
 
+// Twitter comparison-lane dirs (hourly-twitter.yml backend tiers). Copied for
+// the A/B side-by-side view but deliberately NOT in COPY_DIRS/DATE_PATTERNS:
+// manifest keys feed the freshness rows, and these lanes run manually/rarely,
+// so listing them there would report them as permanently stale. The A/B view
+// discovers them through twitter-ab.json (built below) instead.
+const AB_COMPARISON_LANES = [
+  'twitter-opencode-kimi',
+  'twitter-zai',
+  'twitter-deepseek',
+  'twitter-deepseek-pi',
+  'twitter-fireworks-pi',
+];
+
 // Regex patterns for the date-keyed sources. The `generative` key is
 // special-cased below: it reads research/generative/index.json directly.
 const DATE_PATTERNS = {
@@ -163,6 +176,51 @@ function copyData() {
     const dest = join(publicResearch, sub);
     copyResearchDir(src, dest);
   }
+
+  for (const lane of AB_COMPARISON_LANES) {
+    const src = join(researchSrc, lane);
+    if (!existsSync(src)) continue;
+    copyResearchDir(src, join(publicResearch, lane));
+  }
+}
+
+// ── Twitter A/B index ───────────────────────────────────────
+// For each date where the PRIMARY twitter digest and at least one comparison
+// lane both carry the same `## HH:00 UTC` cycle, record {date → hour → lanes}.
+// The SPA loads this tiny JSON to decide where an A/B chip appears — the chip
+// is hour-accurate without the client fetching or parsing any comparison file.
+const CYCLE_HEADING_RE = /^## (\d{2}):00 UTC$/gm;
+
+function cycleHours(file) {
+  if (!existsSync(file)) return [];
+  const hours = [];
+  const text = readFileSync(file, 'utf8');
+  for (const m of text.matchAll(CYCLE_HEADING_RE)) hours.push(m[1]);
+  return hours;
+}
+
+function buildTwitterAbIndex() {
+  const index = {};
+  const primaryDir = join(researchSrc, 'twitter');
+  for (const lane of AB_COMPARISON_LANES) {
+    const laneDir = join(researchSrc, lane);
+    if (!existsSync(laneDir)) continue;
+    for (const name of readdirSync(laneDir)) {
+      const m = /^(\d{4}-\d{2}-\d{2})\.md$/.exec(name);
+      if (!m) continue;
+      const date = m[1];
+      const primaryHours = new Set(cycleHours(join(primaryDir, name)));
+      for (const hour of new Set(cycleHours(join(laneDir, name)))) {
+        if (!primaryHours.has(hour)) continue;
+        index[date] ??= {};
+        index[date][hour] ??= [];
+        if (!index[date][hour].includes(lane)) index[date][hour].push(lane);
+      }
+    }
+  }
+  writeFileSync(join(publicResearch, 'twitter-ab.json'), JSON.stringify(index));
+  const dates = Object.keys(index).length;
+  console.log(`prebuild: twitter-ab.json — ${dates} date(s) with same-hour comparison cycles`);
 }
 
 function collectDates(dir, re) {
@@ -788,6 +846,7 @@ function buildSearchIndex() {
 }
 
 copyData();
+buildTwitterAbIndex();
 buildArmTimeline();
 buildTicketsIndex();
 buildManifest();

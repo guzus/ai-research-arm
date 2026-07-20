@@ -2025,10 +2025,102 @@ body.search-open { overflow: hidden; }
   overflow: visible;
 }
 
+/* ── Twitter A/B side-by-side (comparison lanes) ─────────
+ * The chip is the ONLY thing news readers ever see, and only on cycles
+ * that have a same-hour comparison run. Everything else appears on click. */
+.twitter-ab-chip {
+  margin-left: auto;
+  font-family: var(--font);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s;
+}
+.twitter-ab-chip:hover,
+.twitter-ab-chip:focus-visible { color: var(--accent-warm); border-color: var(--accent-warm); }
+.twitter-ab-chip[aria-expanded="true"] {
+  color: var(--accent-warm);
+  border-color: var(--accent-warm);
+  background: color-mix(in srgb, var(--accent-warm) 8%, transparent);
+}
+
+/* Open state swaps the default single-lane content for the panel. */
+.twitter-cycle-card--ab .twitter-cycle-default { display: none; }
+.twitter-ab-panel { padding: 0 24px 20px; }
+.twitter-ab-note {
+  margin: 16px 0 0;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+}
+.twitter-ab-lanes { display: flex; gap: 6px; margin: 14px 0 0; }
+.twitter-ab-lane-tab {
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+.twitter-ab-lane-tab.is-active { color: var(--accent-warm); border-color: var(--accent-warm); }
+.twitter-ab-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 14px;
+}
+@media (min-width: 980px) {
+  .twitter-ab-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+.twitter-ab-pane {
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 4px 16px 14px;
+  min-width: 0;
+}
+.twitter-ab-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding: 12px 8px 10px;
+  border-bottom: 1px solid var(--border-light);
+}
+.twitter-ab-lane {
+  font-family: var(--font);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.twitter-ab-model {
+  font-family: var(--font);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+.twitter-ab-runtime {
+  margin-left: auto;
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+.twitter-ab-runtime a { color: var(--text-secondary); text-decoration: none; }
+.twitter-ab-runtime a:hover { color: var(--accent-warm); text-decoration: underline; }
+/* Panes are narrow columns — let inner story cards breathe less. */
+.twitter-ab-pane .twitter-story-grid { grid-template-columns: 1fr; }
+
 .twitter-cycle-header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  gap: 10px;
   padding: 16px 24px;
   border-bottom: 1px solid var(--border-light);
   background: color-mix(in srgb, var(--bg-secondary) 52%, var(--bg));
