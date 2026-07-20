@@ -70,6 +70,45 @@ class EvaluateTest(unittest.TestCase):
         self.assertEqual([s for s in statuses if s.alerting], [])
 
 
+class EvaluateFilesTest(unittest.TestCase):
+    def _evaluate_with(self, ages, present):
+        thresholds = {
+            "twitter-dedup-ledger": ("research/summaries/twitter-announced-history.json", 30),
+            "gone": ("research/nowhere.json", 30),
+        }
+
+        def age_fn(path, now_epoch, repo_root):
+            return ages.get(path)
+
+        def exists_fn(path, repo_root):
+            return path in present
+
+        return clf.evaluate_files(
+            thresholds,
+            now_epoch=0,
+            repo_root="/nonexistent",
+            age_fn=age_fn,
+            exists_fn=exists_fn,
+        )
+
+    def test_stale_file_flagged(self):
+        ledger = "research/summaries/twitter-announced-history.json"
+        statuses = self._evaluate_with(ages={ledger: 400.0}, present={ledger})
+        by_label = {s.lane: s for s in statuses}
+        self.assertEqual(by_label["twitter-dedup-ledger"].state, clf.STALE)
+        self.assertEqual(by_label["gone"].state, clf.MISSING)
+        self.assertEqual(
+            sorted(s.lane for s in statuses if s.alerting),
+            ["gone", "twitter-dedup-ledger"],
+        )
+
+    def test_fresh_file_not_flagged(self):
+        ledger = "research/summaries/twitter-announced-history.json"
+        statuses = self._evaluate_with(ages={ledger: 1.0}, present={ledger})
+        by_label = {s.lane: s for s in statuses}
+        self.assertEqual(by_label["twitter-dedup-ledger"].state, clf.FRESH)
+
+
 class IdempotencyKeyTest(unittest.TestCase):
     def setUp(self):
         self.now = datetime(2026, 5, 28, 6, 0, tzinfo=timezone.utc)
@@ -157,6 +196,40 @@ class GitIntegrationTest(unittest.TestCase):
         self._commit_lane("rss", "2026-05-28T05:00:00Z")
         now_epoch = int(datetime(2026, 5, 28, 6, 0, tzinfo=timezone.utc).timestamp())
         statuses = clf.evaluate({"bluesky": 30}, now_epoch, self.repo)
+        self.assertEqual(statuses[0].state, clf.MISSING)
+
+    def _commit_file(self, rel_path, iso_date):
+        full = os.path.join(self.repo, rel_path)
+        os.makedirs(os.path.dirname(full), exist_ok=True)
+        with open(full, "a", encoding="utf-8") as fh:
+            fh.write("x\n")
+        self._git("add", "-A")
+        self._git(
+            "commit", "-q", "-m", f"update {rel_path} {iso_date}",
+            env_extra={"GIT_AUTHOR_DATE": iso_date, "GIT_COMMITTER_DATE": iso_date},
+        )
+
+    def test_tracked_file_age_reflects_last_commit_time(self):
+        ledger = "research/summaries/twitter-announced-history.json"
+        self._commit_file(ledger, "2026-07-04T17:55:00Z")
+
+        now_epoch = int(datetime(2026, 7, 20, 0, 0, tzinfo=timezone.utc).timestamp())
+        age = clf.tracked_file_age_hours(ledger, now_epoch, self.repo)
+        self.assertIsNotNone(age)
+        self.assertGreater(age, 30)  # 16 days stale — must exceed the 30h threshold
+
+        statuses = clf.evaluate_files(
+            {"twitter-dedup-ledger": (ledger, clf.FILE_THRESHOLDS_HOURS["twitter-dedup-ledger"][1])},
+            now_epoch, self.repo,
+        )
+        self.assertEqual(statuses[0].state, clf.STALE)
+
+    def test_absent_tracked_file_is_missing(self):
+        now_epoch = int(datetime(2026, 7, 20, 0, 0, tzinfo=timezone.utc).timestamp())
+        statuses = clf.evaluate_files(
+            {"twitter-dedup-ledger": ("research/summaries/twitter-announced-history.json", 30)},
+            now_epoch, self.repo,
+        )
         self.assertEqual(statuses[0].state, clf.MISSING)
 
 

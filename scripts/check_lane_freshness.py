@@ -3,7 +3,11 @@
 
 Measures how long it has been since each scheduled research lane last
 produced output, and flags any lane that has gone stale relative to its
-expected cadence. Designed to make silent pipeline outages loud.
+expected cadence. Also tracks a small set of specific files (see
+FILE_THRESHOLDS_HOURS) whose own commit cadence can lag behind their
+parent lane's — a lane directory can look fresh from unrelated commits
+while one file inside it silently stops being written. Designed to make
+silent pipeline outages loud.
 
 Why git-commit recency (not file mtime, not filename dates):
   - mtime is rewritten to checkout-time by `actions/checkout`, so it is
@@ -61,6 +65,28 @@ LANE_THRESHOLDS_HOURS: dict[str, float] = {
     "wiki": 30,         # daily, after the digest (workflow_run)
 }
 
+# label -> (path relative to repo root, max tolerated age in hours).
+#
+# A lane's directory can look fresh from unrelated commits (status
+# heartbeats, summary files) while one specific file inside it silently
+# stops being written. That's exactly what happened to the Twitter
+# headline-dedup ledger: hourly-twitter.yml commits fresh status/summary
+# files into research/twitter/ and research/summaries/ every cycle, so
+# the "twitter" lane above always reads fresh, even while the ledger's
+# own raw `git push` step (a direct push to `main`, bypassing safe-push)
+# has been silently rejected by branch protection since 2026-07-06 and
+# hasn't landed a commit since 2026-07-04. Track such files by their own
+# commit recency, independent of their parent lane.
+#
+# Threshold: the ledger only commits when a cycle delivers >=1 new
+# headline (not every hourly-twitter run), so its cadence is looser than
+# the twitter lane's. The last 21 pre-outage commits (2026-07-01..07-04)
+# never gapped more than 7.6h; 30h gives ~4x headroom against a quiet
+# news cycle while still catching a stuck push within a day, not weeks.
+FILE_THRESHOLDS_HOURS: dict[str, tuple[str, float]] = {
+    "twitter-dedup-ledger": ("research/summaries/twitter-announced-history.json", 30),
+}
+
 FRESH = "fresh"
 STALE = "stale"
 MISSING = "missing"
@@ -116,6 +142,44 @@ def lane_age_hours(lane: str, now_epoch: int, repo_root: str) -> Optional[float]
     except ValueError:
         return None
     return (now_epoch - commit_epoch) / 3600.0
+
+
+def tracked_file_exists(path: str, repo_root: str) -> bool:
+    return os.path.isfile(os.path.join(repo_root, path))
+
+
+def tracked_file_age_hours(path: str, now_epoch: int, repo_root: str) -> Optional[float]:
+    """Hours since the last commit touching the given repo-relative file.
+
+    Same recency logic as lane_age_hours, but for a single file rather
+    than an entire research/<lane>/ directory.
+    """
+    last = _git(["log", "-1", "--format=%ct", "--", path], repo_root)
+    if not last:
+        return None
+    try:
+        commit_epoch = int(last)
+    except ValueError:
+        return None
+    return (now_epoch - commit_epoch) / 3600.0
+
+
+def evaluate_files(
+    thresholds: dict[str, tuple[str, float]],
+    now_epoch: int,
+    repo_root: str,
+    *,
+    age_fn: Callable[[str, int, str], Optional[float]] = tracked_file_age_hours,
+    exists_fn: Callable[[str, str], bool] = tracked_file_exists,
+) -> list[LaneStatus]:
+    """Evaluate every configured tracked file. age_fn/exists_fn are
+    injectable so the logic can be unit-tested without a real repository."""
+    results: list[LaneStatus] = []
+    for label, (path, threshold) in thresholds.items():
+        exists = exists_fn(path, repo_root)
+        age = age_fn(path, now_epoch, repo_root) if exists else None
+        results.append(LaneStatus(label, threshold, age, classify(age, threshold, exists)))
+    return results
 
 
 def classify(age_hours: Optional[float], threshold_hours: float, dir_exists: bool) -> str:
@@ -243,6 +307,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
 
     statuses = evaluate(LANE_THRESHOLDS_HOURS, now_epoch, repo_root)
+    statuses += evaluate_files(FILE_THRESHOLDS_HOURS, now_epoch, repo_root)
     stale_lanes = [s.lane for s in statuses if s.alerting]
     report = format_report(statuses)
     key = idempotency_key(stale_lanes, now_dt)
