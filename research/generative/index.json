@@ -970,5 +970,17 @@
       "opencode-go",
       "databricks"
     ]
+  },
+  {
+    "slug": "empirical-cost-of-building-an-opus-level-llm-time-compute-an",
+    "file": "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The price of the frontier: what an Opus-level LLM actually costs — time, compute, and capital, measured",
+    "model": "kimi-k3",
+    "created_at": "2026-07-20T18:37:59Z",
+    "source": "workflow_dispatch",
+    "prompt": "Empirical cost of building an Opus-level LLM: time, compute, and capital — evidence from frontier-lab reports, news, IR, and pitch decks",
+    "tags": []
   }
 ]

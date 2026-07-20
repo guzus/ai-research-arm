@@ -1,0 +1,172 @@
+{
+  "claims": [
+    {
+      "id": "v1",
+      "text": "Epoch AI estimates frontier final-run costs grew 2.4x/year since 2016 (amortized hardware+energy) and 2.6x/year at cloud-rental prices, roughly 2x the level.",
+      "verdict": "supported",
+      "citation": "Cottier et al., arXiv:2405.21015; Epoch AI summary (Jun 2024) states 2.4x/yr (90% CI 2.0-2.9x) amortized and ~2x-higher cloud method at similar growth."
+    },
+    {
+      "id": "v2",
+      "text": "GPT-4 final run ~$40M amortized / ~$78-79M cloud-rental; Gemini Ultra ~$30M amortized / $191M cloud-rental; Llama 3.1 405B ~$170M cloud-rental.",
+      "verdict": "supported",
+      "citation": "arXiv:2405.21015 (amortized figures, GPT-4 $40M, Gemini Ultra $30M); Stanford AI Index 2024 ($78M, $191M) and 2025 ch.1 ($79M GPT-4, $170M Llama 3.1-405B)."
+    },
+    {
+      "id": "v3",
+      "text": "Epoch projects the most expensive publicly announced run will cost ~$1B by early 2027.",
+      "verdict": "supported",
+      "citation": "Epoch AI blog summary of Cottier et al.: 'the largest models will cost over a billion dollars by 2027.'"
+    },
+    {
+      "id": "v4",
+      "text": "Epoch estimates Grok 4's final run at roughly $490M of compute (~246M H100-hours), excluding labor, experiments, inference.",
+      "verdict": "supported",
+      "citation": "Epoch AI data insight (Sep 12, 2025): 'Grok 4 training resources' — ~half a billion dollars, 246M H100-hours."
+    },
+    {
+      "id": "v5",
+      "text": "DeepSeek-V3: 2.788M H800 GPU-hours, $5.576M at $2/H800-hour, excluding prior research and ablation experiments (its own words).",
+      "verdict": "supported",
+      "citation": "DeepSeek-V3 technical report, arXiv:2412.19437 — cost table and explicit exclusion sentence."
+    },
+    {
+      "id": "v6",
+      "text": "SemiAnalysis estimates DeepSeek's true GPU investments exceed $500M (~50,000 Hopper GPUs; ~$1.6B server capex; ~$944M opex; 10,000 A100s bought pre-controls by High-Flyer).",
+      "verdict": "supported",
+      "citation": "SemiAnalysis, 'DeepSeek Debates' (Jan 31, 2025)."
+    },
+    {
+      "id": "v7",
+      "text": "Amodei: Claude 3.5 Sonnet cost 'a few $10M's to train'; capability gets ~4x cheaper per year; DeepSeek-V3 is 'on-trend at best.'",
+      "verdict": "supported",
+      "citation": "Dario Amodei, 'On DeepSeek and Export Controls' (Jan 2025) — verbatim phrases confirmed."
+    },
+    {
+      "id": "v8",
+      "text": "Amodei (In Good Company, mid-2024): current models cost ~$100M, models in training ~$1B, $10-100B possible by 2025-2027.",
+      "verdict": "supported",
+      "citation": "Tom's Hardware (Jul 7, 2024) transcript quotes: 'Right now, 100 million. There are models in training today that are more like a billion.'"
+    },
+    {
+      "id": "v9",
+      "text": "Altman at MIT (2024): asked if GPT-4 cost $100M to train — 'It's more than that.'",
+      "verdict": "supported",
+      "citation": "Wired (May 2024)."
+    },
+    {
+      "id": "v10",
+      "text": "Development-cost decomposition: hardware 47-67%, R&D staff 29-49% incl. equity, energy 2-6%; GPT-4 contributors 284 vs 25 for GPT-3; Gemini 941 contributors with 49% staff share.",
+      "verdict": "supported",
+      "citation": "Cottier et al. arXiv:2405.21015v2 and Epoch AI summary figures."
+    },
+    {
+      "id": "v11",
+      "text": "Llama 3 405B: 15.6T tokens, 3.8e25 FLOP, up to 16K H100s, 466 job interruptions in a 54-day snapshot (419 unexpected, ~78% hardware-related), >90% effective training time.",
+      "verdict": "supported",
+      "citation": "The Llama 3 Herd of Models, arXiv:2407.21783."
+    },
+    {
+      "id": "v12",
+      "text": "Meta offered $100M packages; Pang >$200M; Altman said Meta tried and failed with $100M signing bonuses.",
+      "verdict": "supported",
+      "citation": "WSJ (Jun 2025); Bloomberg (Jul 9, 2025); TechCrunch (Jun 17, 2025)."
+    },
+    {
+      "id": "v13",
+      "text": "OpenAI leaked audited financials: 2025 revenue $13.07B, R&D $19.18B, operating loss $20.92B; 2024: revenue $3.7B, R&D $7.81B, operating loss $8.78B.",
+      "verdict": "supported",
+      "citation": "Ars Technica (Jun 16, 2026) on leaked documents reviewed by the FT."
+    },
+    {
+      "id": "v14",
+      "text": "OpenAI targets ~$600B compute spend by 2030, >$280B 2030 revenue, raising >$100B at $730B pre-money; 2025 revenue $13.1B, burn $8B.",
+      "verdict": "supported",
+      "citation": "CNBC (Feb 20, 2026)."
+    },
+    {
+      "id": "v15",
+      "text": "Stargate $500B/4yr with $100B immediate (OpenAI, Jan 2025); Oracle $300B/~5yr (WSJ, Sep 2025); AWS $38B/7yr (Nov 2025).",
+      "verdict": "supported",
+      "citation": "OpenAI announcement; WSJ; OpenAI-AWS partnership page."
+    },
+    {
+      "id": "v16",
+      "text": "Anthropic raised $3.5B @ $61.5B (Mar 2025), $13B @ $183B (Sep 2025), ~$30B (Feb 2026), ~$65B (May 2026); run-rate revenue ~$1B (early 2025) to $47B (May 2026).",
+      "verdict": "supported",
+      "citation": "Anthropic Series E/F announcements; Simon Willison compilation of fundraise-announcement run-rates (May 29, 2026)."
+    },
+    {
+      "id": "v17",
+      "text": "Anthropic-Google: up to one million TPUs, 'tens of billions of dollars,' well over a gigawatt online in 2026.",
+      "verdict": "supported",
+      "citation": "Anthropic newsroom (Oct 23, 2025)."
+    },
+    {
+      "id": "v18",
+      "text": "Hyperscaler capex: Meta $72.22B FY2025, $115-135B FY2026 guide; Alphabet $91.45B 2025, $175-185B 2026 guide; Amazon $131.8B 2025, ~$200B 2026; Microsoft $80.1B first 9 months FY2026.",
+      "verdict": "supported",
+      "citation": "SEC EDGAR exhibits: Meta Q4-2025 8-K; Alphabet Q4-2025 exhibit; Amazon Q4-2025 exhibit (Jassy quote); Microsoft FY26-Q3 exhibit."
+    },
+    {
+      "id": "v19",
+      "text": "Anthropic's leaked 2023 deck: $5B target; Claude-Next 10x more capable; $1B spend over next 18 months; tens of thousands of GPUs; ~10^25 FLOP.",
+      "verdict": "supported",
+      "citation": "TechCrunch (Apr 6, 2023)."
+    },
+    {
+      "id": "v20",
+      "text": "Anthropic OSTP submission (Mar 2025): by 2027 a single frontier model will need ~5GW clusters; recommends 50GW national AI target.",
+      "verdict": "supported",
+      "citation": "Anthropic Response to OSTP RFI, March 2025 (primary PDF)."
+    },
+    {
+      "id": "v21",
+      "text": "Aschenbrenner cluster trajectory: ~$500M/10MW (2022) to $10s B/1GW (2026), $100s B/10GW (2028), $1T+/100GW (2030).",
+      "verdict": "supported",
+      "citation": "Situational Awareness, 'Racing to the Trillion-Dollar Cluster' (Jun 2024)."
+    },
+    {
+      "id": "v22",
+      "text": "Time-to-frontier: Anthropic ~3 years to Claude 3 Opus; Mistral ~10 months; DeepSeek ~19 months; xAI ~23 months to Grok-3.",
+      "verdict": "supported",
+      "citation": "Anthropic Claude 3 family post (Mar 4, 2024); mistral.ai Mistral Large (Feb 26, 2024) + Wikidata founding dates; SemiAnalysis (DeepSeek May 2023 spin-off) + arXiv:2412.19437 (Dec 27, 2024); Wikidata xAI (Mar 9, 2023) + TechCrunch Grok-3 (Feb 17, 2025)."
+    },
+    {
+      "id": "v23",
+      "text": "Colossus: 100,000 H100s built in 122 days; 19 days first rack to training; doubled to 200K.",
+      "verdict": "supported",
+      "citation": "NVIDIA press release via GlobeNewswire (Oct 28, 2024)."
+    },
+    {
+      "id": "v24",
+      "text": "Epoch scaling analysis: training compute ~4x/yr; 2e29 FLOP run feasible by 2030 needing ~6GW and hundreds of billions of dollars.",
+      "verdict": "supported",
+      "citation": "Epoch AI, 'Can AI Scaling Continue Through 2030?' (Aug 20, 2024)."
+    },
+    {
+      "id": "v25",
+      "text": "The Verge's 'hundreds of millions' for Llama 3.1 was press inference from chip costs; Zuckerberg said Llama 4 would need ~10x Llama 3's compute.",
+      "verdict": "supported",
+      "citation": "The Verge (Jul 23, 2024) — wording is Verge's inference, not a Zuckerberg quote; TechCrunch (Aug 1, 2024) for the 10x earnings-call statement."
+    },
+    {
+      "id": "v26",
+      "text": "Anthropic ~$110B raised across four rounds in fifteen months (3.5 + 13 + ~30 + ~65).",
+      "verdict": "supported",
+      "citation": "Anthropic Series E and F announcements; Willison compilation for Series G (~$30B, Feb 2026) and Series H (~$65B, May 2026) sizes; sum is arithmetic on those figures."
+    },
+    {
+      "id": "v27",
+      "text": "OpenAI's 2025 operating loss was ~160% of its revenue ($20.92B loss on $13.07B revenue).",
+      "verdict": "supported",
+      "citation": "Ars Technica leaked financials (Jun 16, 2026); ratio computed from the same figures."
+    },
+    {
+      "id": "v28",
+      "text": "NYT (Sep 2024): OpenAI ~$5B loss on $3.7B revenue in 2024, $11.6B projected 2025; The Information via The Decoder (Jul 2024): OpenAI ~$7B/yr training+inference; Anthropic >$2.7B 2024 spend, ~$2.5B compute, ~$800M annualized revenue by end-2024.",
+      "verdict": "supported",
+      "citation": "NYT (Sep 27, 2024); The Decoder (Jul 27, 2024) relaying The Information."
+    }
+  ]
+}
