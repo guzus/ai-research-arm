@@ -1,0 +1,11 @@
+Speaker 1: Monday, July twentieth, twenty twenty-six.
+Speaker 2: [high_energy] Moonshot AI just paused new Kimi K3 subscriptions over GPU capacity strain, right as it closes a funding round above [emphasis] thirty billion dollars [/emphasis] ahead of a Hong Kong IPO.
+Speaker 1: That's up from four billion in December, and ARR hit [emphasis] three hundred million dollars [/emphasis] in June, up from two hundred million in April.
+Speaker 2: Meanwhile Alibaba confirmed Qwen three point eight Max is launching open-weight at two point four trillion parameters, with one early tester claiming it beats Opus.
+Speaker 1: [dramatic_pause] Though Qwen Max previews have a history of underdelivering on claims like that.
+Speaker 2: An analyst known as scaling-zero-one puts Kimi K3 four to five months behind the US frontier, and calls that gap widening.
+Speaker 1: That sparked an open-weight dumping feud, LeCun and Casado on one side, Sacks on the other.
+Speaker 2: Some quick numbers: the Philly Semiconductor Index is down ten percent for the week, seventeen percent for the month.
+Speaker 1: And Kimi K3 is reportedly [emphasis] two point eight times [/emphasis] more cost-efficient than Claude Fable five on coding tasks, per dollar.
+Speaker 2: On Hacker News, Qwen three point eight tops the charts with six hundred seventy-three points, just ahead of "Claude Code uses Bun, written in Rust."
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
