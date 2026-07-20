@@ -251,11 +251,15 @@ The canary resolves the same Go-first route as the production lane, then
 runs two probes: a stdlib-only raw API check (a models listing plus one
 tiny `kimi-k3` completion against the resolved endpoint), followed by a
 tool-denied headless `opencode run` using the exact production argv. On
-the Go route the raw probe is **auth-fatal only** — 401/402/403 (bad
-key, no active Go subscription, exhausted caps) fail the run, while any
-other status merely warns, because the raw `/zen/go/v1` surface is
-undocumented and the opencode harness stage is the authoritative check.
-The documented Moonshot route stays strict on every probe failure.
+the Go route the raw probe is **auth-fatal only** — 401/402 (bad key /
+billing) fail the run, while any other status merely warns: the raw
+`/zen/go/v1` surface is undocumented, and Cloudflare's bot filter in
+front of opencode.ai answers 403 `error code: 1010` to client
+signatures it dislikes (observed live), so a Go 403 is ambiguous. The
+probes send an honest custom User-Agent to clear the common
+python/curl signature ban, and the opencode harness stage — the exact
+SDK client the gateway expects — is the authoritative check. The
+documented Moonshot route stays strict on every probe failure.
 
 Dispatch a research run:
 
@@ -284,13 +288,14 @@ Lane mechanics, mirroring the Codex path:
   same data boundary (untrusted inputs in `.gen-input/*.txt`), same
   methodology artifacts, same validation gates, and the writer owns the
   commit with `--model kimi-k3` metadata.
-- The workflow preflights the resolved route's API (missing secrets, a
-  dead key, no active Go subscription, or an exhausted Go cap fails in
-  seconds, before install/agent) and fails closed — an explicit
-  `opencode-kimi-k3` request never falls back to Claude, matching the
-  comparison-lane strictness of `fireworks_fallback=none`. Non-auth
-  statuses from the undocumented Go raw endpoint only warn; the opencode
-  run itself is the authoritative check on that route.
+- The workflow preflights the resolved route's API (missing secrets or a
+  definitively dead key — HTTP 401/402 — fails in seconds, before
+  install/agent) and fails closed — an explicit `opencode-kimi-k3`
+  request never falls back to Claude, matching the comparison-lane
+  strictness of `fireworks_fallback=none`. Other statuses from the
+  undocumented Go raw endpoint (including Cloudflare bot-filter 403s)
+  only warn; the opencode run itself is the authoritative check on that
+  route.
 - opencode has no Claude-style server WebSearch; the prompt steers research
   through `scripts/research_search.py`, `scripts/source_cache.py`,
   `curl`/`pdftotext`, `bird`, and opencode's webfetch tool.

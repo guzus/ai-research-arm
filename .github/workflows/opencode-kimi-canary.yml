@@ -85,6 +85,11 @@ jobs:
           headers = {
               "Authorization": f"Bearer {key}",
               "Content-Type": "application/json",
+              # opencode.ai sits behind Cloudflare, whose bot filter bans
+              # the default python-urllib signature with 403 "error code:
+              # 1010" (observed live, run 29699747370). An honest custom
+              # UA clears the UA-signature ban.
+              "User-Agent": "ai-research-arm-canary/1.0 (+https://github.com/guzus/ai-research-arm)",
           }
 
           # Failure policy differs by route. Moonshot's API is a documented
@@ -92,10 +97,11 @@ jobs:
           # Go raw endpoint is undocumented (models.dev provider.toml
           # caveat) — verified facts: GET /zen/go/v1/models is live and
           # lists bare ids like "kimi-k3" — so on the Go route only
-          # 401/402/403 (bad key / no active Go subscription / exhausted
-          # usage) are fatal; anything else prints a warning and defers to
-          # the harness stage below, which speaks the exact SDK dialect
-          # production uses and is the authoritative gate.
+          # 401/402 (bad key / billing) are fatal. 403 is deliberately
+          # NON-fatal there: Cloudflare's bot filter answers 403 "error
+          # code: 1010" to clients it dislikes (observed live), so a Go
+          # 403 is ambiguous and the harness stage below — the exact SDK
+          # client production uses — is the authoritative gate.
           go_route = route == "opencode-go"
 
           # Informational listing probe (free; the Go listing is public).
@@ -143,11 +149,17 @@ jobs:
                   body = json.loads(resp.read().decode())
           except urllib.error.HTTPError as exc:
               safe_body = exc.read().decode(errors="replace")[:500]
-              if exc.code in (401, 402, 403):
+              cf_hint = (
+                  " — body looks like a Cloudflare bot-filter block, NOT an auth verdict"
+                  if "error code: 10" in safe_body
+                  else ""
+              )
+              fatal_codes = (401, 402) if go_route else (401, 402, 403)
+              if exc.code in fatal_codes:
                   print(f"::error::kimi-k3 completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
                   sys.exit(1)
               if go_route:
-                  print(f"::warning::kimi-k3 completion probe on {route} returned HTTP {exc.code} (undocumented raw surface — not blocking; the harness stage below is authoritative): {safe_body}")
+                  print(f"::warning::kimi-k3 completion probe on {route} returned HTTP {exc.code}{cf_hint} (undocumented raw surface — not blocking; the harness stage below is authoritative): {safe_body}")
                   body = {}
               else:
                   print(f"::error::kimi-k3 completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
