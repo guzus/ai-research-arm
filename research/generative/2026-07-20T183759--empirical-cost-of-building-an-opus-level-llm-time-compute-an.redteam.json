@@ -1,0 +1,22 @@
+{
+  "findings": [
+    {
+      "claim_id": "c28",
+      "claim_text": "As of mid-2026 a single frontier final training run costs roughly $0.5-1B of compute (ARA synthesis band).",
+      "no_contradiction_found": true,
+      "note": "Adversarial check: the band is bounded below by Epoch's Grok 4 estimate (~$490M, Sep 2025, model-based) and above by Amodei's mid-2024 'models in training today that are more like a billion' remark plus Epoch's 2.4x/yr trend crossing $1B by early 2027. No published estimate places a 2025-26 frontier final run materially below $490M or above ~$1B; the residual risk is that Epoch's Grok 4 figure is a reconstruction rather than a disclosure, which the article flags explicitly ('model-based reconstructions, not audited disclosures'). Lab-side denials of the Grok 4 estimate were not found in the sources reviewed."
+    },
+    {
+      "claim_id": "c6",
+      "claim_text": "DeepSeek-V3's final training run consumed 2.788M H800 GPU-hours costing $5.576M at an assumed $2/H800-hour, excluding prior research and ablation experiments.",
+      "no_contradiction_found": true,
+      "note": "Adversarial check: SemiAnalysis ('DeepSeek Debates', Jan 2025) challenges the *interpretation* of the figure \u2014 arguing total company GPU spend exceeded $500M \u2014 but does not dispute the arithmetic of the 2.788M GPU-hour final run; Amodei's essay likewise attacks the inference, not the number. The article therefore presents the $5.576M strictly as a layer-1 (marginal final-run) figure with the report's own exclusion clause quoted verbatim, and pairs it with the SemiAnalysis total-spend estimate. No source contradicting the GPU-hour figure itself was found."
+    },
+    {
+      "claim_id": "c19",
+      "claim_text": "Anthropic's disclosed annualized revenue run rate reached $47B by May 2026 (from ~$1B at the start of 2025).",
+      "no_contradiction_found": true,
+      "note": "Adversarial check: the figure is self-reported inside fundraise announcements (Simon Willison compilation, May 29, 2026), not audited revenue; annualized run-rate can diverge materially from recognized revenue. The article states exactly this caveat ('self-reported and unaudited', 'the strongest form of self-report a private company can give', Exhibit 3 note). No major outlet was found reporting a lower figure for the May 2026 run-rate disclosure; the claim is phrased as 'disclosed run rate' rather than revenue to remain accurate even if audited revenue differs."
+    }
+  ]
+}
