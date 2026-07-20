@@ -46,6 +46,20 @@ research/*
 !research/youtube/**
 !research/arm
 !research/arm/**
+# Twitter comparison-lane dirs: prebuild's twitter-ab.json index and the A/B
+# side-by-side view read these. A research dir consumed by prebuild MUST be
+# whitelisted here too — CI never runs the Dockerfile, so a miss ships an
+# empty index to prod silently (same failure mode as the 2026-07 Arm tab).
+!research/twitter-opencode-kimi
+!research/twitter-opencode-kimi/**
+!research/twitter-zai
+!research/twitter-zai/**
+!research/twitter-deepseek
+!research/twitter-deepseek/**
+!research/twitter-deepseek-pi
+!research/twitter-deepseek-pi/**
+!research/twitter-fireworks-pi
+!research/twitter-fireworks-pi/**
 
 node_modules
 __pycache__
