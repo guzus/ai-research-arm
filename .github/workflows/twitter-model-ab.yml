@@ -126,7 +126,7 @@ jobs:
           echo "legs: claude=${RUN_CLAUDE} zai-glm-5p2=${RUN_ZAI}; judge=${JUDGE}; state=${STATE}"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: '22'
 
