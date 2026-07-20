@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (opencode + Kimi K3) - 2026-07-20 16:19:52 UTC
+
+CYCLE: AI disproves 87-year math conjecture; US moves to ban Chinese open models
+
+TOP STORIES:
+• Anthropic's Alpöge + Claude Fable 5 post hand-checkable counterexample to the 1939 Jacobian conjecture (Smale's 18th problem) ✓
+• Axios: Trump admin weighs EO + Entity List designations for de facto ban on Chinese open-weight models after Kimi K3 ✓
+• The Information: Google "Frozen v2" chip embeds Gemini architecture in silicon, 6-10x tokens/watt, ~2028 ⚠
+• CAISI director Chris Fall resigns after 3 months; NIST's Raman acting ✓
+
+WATCH: Whether the China-model EO gets signed; peer review of the Jacobian counterexample.
+
+Full update on GitHub.
