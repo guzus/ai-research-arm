@@ -3,11 +3,12 @@ AI News - 2026-07-20
 TOP STORIES:
 • Moonshot AI (Kimi) plans Hong Kong IPO within 6 months at ~$30B valuation, riding Kimi K3 momentum
 • Big Tech faces pressure to justify AI spending as earnings season opens (Alphabet reports July 22)
-• Philadelphia Semiconductor Index posted its worst week since April 2025 amid AI capex jitters
+• Anthropic restructures Claude Fable 5: free at 50% limits on Max/Team Premium, usage-credit pricing for Pro
+• Nonprofit Current AI secures $400M (France, Ford/MacArthur Foundations, DeepMind, Salesforce) for public AI infra
 
 KEY NUMBERS:
-• Moonshot valuation: ~$30B (up from $4.3B in Dec 2025); ARR $300M in June, up from $200M in April
+• Moonshot valuation: ~$30B (up from $4.3B in Dec 2025); ARR $300M in June
 • Philly Semiconductor Index: -10% for the week, -17% for the month
-• Nasdaq 100: -4.1% last week; S&P 500 tech: worst-performing sector (-1.6%)
+• Fable 5 usage credits: $10/M input, $50/M output tokens; Current AI: $400M committed, $2.5B 5-yr goal
 
 Full report on GitHub.
