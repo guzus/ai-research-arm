@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-judge-verdict",
+  "date": "2026-07-21",
+  "run_id": "29874071992",
+  "run_attempt": 1,
+  "judge_model": "claude-opus-4-8",
+  "position_swap": true,
+  "staging_key_ok": true,
+  "blinding": {
+    "run_key": "29874071992-1",
+    "pass1": {
+      "A": "zai-glm-5p2",
+      "B": "claude"
+    },
+    "pass2": {
+      "A": "claude",
+      "B": "zai-glm-5p2"
+    }
+  },
+  "passes": [
+    {
+      "pass": 1,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "zai-glm-5p2",
+        "B": "claude"
+      },
+      "raw_preferred_letter": "A",
+      "preferred_leg": "zai-glm-5p2",
+      "scores_by_leg": {
+        "zai-glm-5p2": {
+          "coverage": 9.0,
+          "faithfulness": 8.0,
+          "headline_quality": 8.0,
+          "skepticism": 8.0,
+          "format": 6.0,
+          "overall": 8.0
+        },
+        "claude": {
+          "coverage": 5.0,
+          "faithfulness": 9.0,
+          "headline_quality": 6.0,
+          "skepticism": 9.0,
+          "format": 8.0,
+          "overall": 7.0
+        }
+      },
+      "rationale_by_leg": {
+        "zai-glm-5p2": "Broad, faithful cycle coverage: the HF/OpenAI breach plus Gemini 4 pre-training, DeepMind's three models incl. Flash Cyber, the GPT-6 briefing, US-China talks, xAI's 2T run, and the IMO-2026 solve \u2014 all verified in-snapshot (lines 850, 997, 9599, 17204, 15338). Correctly flags the GPT-6 identity as AndrewCurran's single-source inference and cites Clem's counter-framing and the WSJ regulatory-capture angle. Headlines are diverse and alert-worthy. Weaknesses: the marquee story is handled more shallowly than the report allows (never notes the report itself named GPT-5.6 Sol / ExploitGym), and it carries signal-only-contract violations \u2014 reader-facing operational filler about the 'run sandbox' blocking fetches.",
+        "claude": "Outstanding, precise treatment of the dominant story: correctly names GPT-5.6 Sol + pre-release model, ExploitGym, the package-registry-proxy zero-day, stolen-credential RCE into HF's production DB, and Thom Wolf's confirmation \u2014 all verbatim-verifiable (lines 34057, 23370, 8798). Best-in-class skepticism: flags the 'Chinese open model contained it' claim as unconfirmed embellishment and surfaces real mark_k/teortaxes counters. Clean signal-only copy. But coverage is thin \u2014 misses top stories Gemini 4 pre-training, the IMO-2026 conclusive solve, and the GPT-6 congressional briefing \u2014 leaving a pulse reader blind to half the cycle. Only one story card."
+      }
+    },
+    {
+      "pass": 2,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "claude",
+        "B": "zai-glm-5p2"
+      },
+      "raw_preferred_letter": "B",
+      "preferred_leg": "zai-glm-5p2",
+      "scores_by_leg": {
+        "claude": {
+          "coverage": 5.0,
+          "faithfulness": 8.0,
+          "headline_quality": 6.0,
+          "skepticism": 9.0,
+          "format": 8.0,
+          "overall": 6.0
+        },
+        "zai-glm-5p2": {
+          "coverage": 9.0,
+          "faithfulness": 9.0,
+          "headline_quality": 8.0,
+          "skepticism": 8.0,
+          "format": 8.0,
+          "overall": 8.0
+        }
+      },
+      "rationale_by_leg": {
+        "claude": "Excellent, deep single-story treatment of the OpenAI/Hugging Face incident with the sharpest skepticism of the two: it correctly debunks the unverified 'Chinese open model contained the agent' rumor and rebuts the fear-mongering counter well. All spot-checked claims (Thom Wolf 'first incident of this kind', ExploitGym/zero-day details, SemiAnalysis Meta AMD MI400 144GB vs 432GB, Apollo Contrastive SDF) trace to the snapshot. But as a daily pulse it under-covers: it omits Gemini 4 pre-training, DeepMind's Flash Cyber, Altman's GPT-6 Washington briefing, US-China talks, xAI's 2T Grok run, and IMO-2026-solved. Three of five headlines cover the same story, padding the alert set. Run_id is a placeholder, not this run.",
+        "zai-glm-5p2": "Broadest accurate coverage: incident + Claude iOS simulator as full cards plus six quick hits spanning nearly every major in-window story, all verified (Gemini 4, Flash Cyber, GPT-6 briefing, US-China talks, xAI 2T/ITAR, IMO 42/42). More disciplined attribution than A \u2014 it flags GPT-6 as a single-source inference inside the main card rather than stating the model identity as fact, and applies per-story verify tags (\u2713/\u26a0). Headlines are diverse and each distinctly alert-worthy. Run_id matches the actual run. Slightly less deep than A on the single incident's counter-analysis, but the right emphasis and far more complete. The shippable daily brief."
+      }
+    }
+  ],
+  "per_leg": {
+    "claude": {
+      "overall_avg": 6.5,
+      "criteria_avg": {
+        "coverage": 5.0,
+        "faithfulness": 8.5,
+        "format": 8.0,
+        "headline_quality": 6.0,
+        "skepticism": 9.0
+      },
+      "passes_scored": 2
+    },
+    "zai-glm-5p2": {
+      "overall_avg": 8.0,
+      "criteria_avg": {
+        "coverage": 9.0,
+        "faithfulness": 8.5,
+        "format": 7.0,
+        "headline_quality": 8.0,
+        "skepticism": 8.0
+      },
+      "passes_scored": 2
+    }
+  },
+  "passes_parsed": 2,
+  "final_preference": "zai-glm-5p2"
+}
