@@ -33,12 +33,14 @@ sources:
   - "@ReutersTech"
   - "@ReutersBiz"
 created_at: 2026-06-01
-updated_at: 2026-06-01
+updated_at: 2026-07-21
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-01
     change: "Created — Reuters Tech (04:55 UTC) + Reuters Biz (04:53 UTC) ran the same wire item: 'China issued sweeping new rules tightening control of overseas deals that involve Chinese investors, technology, data and national security, a month after Beijing ordered Meta to unwind its acquisition of AI startup Manus.' Second step of a coherent post-Manus policy arc. Scope (whether the framework covers AI weight-release, talent migration, cross-border AI cap-table) is the open question pending the full State Council / MOFCOM text. Lands same cycle as [[nvidia-gtc-taipei-2026-06]], [[minimax-m3]] launch, and US tightening of AI chip exports (@GlobalAIWatcher in-cycle)"
+  - ts: 2026-07-21
+    change: "Scope firmed via a Bloomberg scoop (Zijing Wu, relayed by @AndrewCurran_, @rohanpaul_ai, and others): China is weighing tighter export controls specifically on (1) taking training data overseas, (2) release of open model weights, (3) advanced chip fab moved overseas, and (4) acquisition of AI startups. This directly answers the open scope question this ticket has carried since 2026-06-01 — confirms AI weight-release transactions and cross-border AI investment are explicitly in scope. Regulators reportedly asked Alibaba, ByteDance, and Zhipu how to keep frontier work domestic. Still Bloomberg-sourced via relay, not the full State Council/MOFCOM text itself — status stays confirmed, verification stays confirmed given Bloomberg's role as primary outlet."
 ---
 
 **The PRC's new outbound-deal review regime** went live in the wire

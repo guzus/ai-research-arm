@@ -3,7 +3,7 @@ slug: openai-gpt-5-5-cyber-2026-06
 title: OpenAI "Daybreak" — full GPT-5.5-Cyber release + Codex Security + Patch the Planet
 company: OpenAI
 model: GPT-5.5-Cyber
-status: released
+status: closed
 status_note: |
   On **2026-06-22** OpenAI expanded its **"Daybreak"** cyber program and
   shipped the **full GPT-5.5-Cyber** model — a permissive, cyber-tuned
@@ -33,12 +33,14 @@ sources:
   - https://openai.com/index/patch-the-planet
   - https://cyberscoop.com/openai-daybreak-gpt-5-5-anthropic-mythos-cybersecurity/
 created_at: 2026-06-23
-updated_at: 2026-06-23
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-21
+closed_at: 2026-07-21
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-23
     change: "Created — OpenAI 'Daybreak' expansion (2026-06-22): shipped the full GPT-5.5-Cyber model (permissive cyber-tuned GPT-5.5, 85.6% CyberGym vs 81.8–81.9% standard/early), a Codex Security plugin, a gated Cyber Partner Program, and 'Patch the Planet' (open-source mass remediation with Trail of Bits + HackerOne, 30+ projects). Altman frames it as strongest-cyber-AI-for-trusted-defenders-only — a counter-posture to Anthropic's Mythos export saga. Model + program ship primary-sourced (OpenAI index pages) → status released, verification confirmed. Caveat: the 'beats Mythos on CyberGym' line is OpenAI's own single-vendor chart, and the relayed CVE list traces to a non-official source."
+  - ts: 2026-07-21
+    change: "Closed — released and unchanged for exactly 4 weeks (shipped 2026-06-22/23, no further developments in this run's signal). Rolled into normal coverage per the closure sweep. closed_reason: released-and-aged."
 ---
 
 **OpenAI's "Daybreak"** cyber program got its full release on **2026-06-22**.
