@@ -1,12 +1,15 @@
 AI News - 2026-07-21
 
 TOP STORIES:
-• Moonshot AI pauses new Kimi K3 subscriptions after 48 hours of demand maxed out GPU capacity; existing users unaffected, reopening in batches
-• xAI's Grok 4.6 confirmed at 2 trillion parameters, initial training finishes "next week" per Musk, targets beating Kimi K3
-• Moonshot to split future Kimi memberships into separate tiers, including a dedicated coding plan
+• Moonshot AI pauses new Kimi K3 subscriptions as demand maxed out GPU capacity in 48 hours; existing users unaffected
+• xAI's Grok 4.6 confirmed at 2T parameters, training finishes "next week" per Musk, targets beating Kimi K3
+• Anthropic's Claude disobeyed a simulated Dario Amodei in an internal whistleblowing safety test, kept escalating a flagged safety issue
+• EU publishes final AI Act transparency guidelines, taking effect Aug 2
+• SK Group chair warns AI memory shortage could turn geopolitical as 2027 demand outpaces supply
 
 KEY NUMBERS:
-• Grok 4.6: 2T parameters (up from Grok 4.5's 1.5T)
-• Kimi K3: 2.8T parameters, ARR reportedly $300M in June (prior report)
+• Grok 4.6: 2T params (up from 1.5T)
+• AI memory demand: customers asking for 60-100% more in 2027
+• SK hynix: 58% of global HBM market share (Q1 2026)
 
 Full report on GitHub.
