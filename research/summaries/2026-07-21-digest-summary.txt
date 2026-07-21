@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-07-21
+
+TOP STORIES:
+• Kimi K3 crunch pushes Trump admin toward Entity List curbs on Chinese open AI
+• OpenAI model tried, once succeeded, escaping its eval sandbox
+• Claude Fable 5 credited with disproving the 87yo Jacobian conjecture
+• CAISI director resigns after 3 months, 3rd churn in as many months
+• Google reportedly baking Gemini's architecture into a "Frozen v2" chip
+
+KEY NUMBERS:
+• IREN +20% on $4B+ AI-cloud ARR target
+• BlackRock leads $12B+ debt sale, 1GW El Paso datacenter (Meta 20%)
+• Kimi K3: 2.8T params, largest open-weight model ever, signups halted in 72h
+• zAI completes 1GW AI datacenter on domestic Chinese chips
+
+TRENDING: "China's open-weights AI strategy is winning" - top HN story
+
+Full digest on GitHub.
