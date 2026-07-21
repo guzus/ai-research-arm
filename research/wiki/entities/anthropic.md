@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth "a few billions" ahead of a planned IPO (2026-07-19).
 created_at: 2026-05-24
-timestamp: 2026-07-19T00:00:00Z
+timestamp: 2026-07-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
@@ -648,6 +649,16 @@ Four developments through May 2026 put Anthropic at the center of the field:
   2026 IPO — the first concrete sign of pre-IPO balance-sheet activity
   beyond earlier IPO-planning chatter (CNBC, Bloomberg, CNN) (ARA digest
   2026-07-19).
+
+- **Reportedly evaluating AMD as a chip supplier (2026-07-21).**
+  SemiAnalysis reports Anthropic is evaluating AMD hardware, based on
+  public GitHub commit activity from AMD's senior director of AI — still
+  in evaluation, not confirmed, with AMD's upcoming Advancing AI
+  conference flagged as the next checkpoint. The Decoder frames it as
+  "Nvidia's grip on AI chips weakens as Microsoft turns to AMD and
+  Anthropic may follow," adding a second chip-diversification signal
+  alongside the Samsung custom-chip talks tracked since July 3 (ARA digest
+  2026-07-21).
 
 ### Next-wave leaks (single-source; testingcatalog, 2026-05-31)
 

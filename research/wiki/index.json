@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-07-19",
-      "timestamp": "2026-07-19T00:00:00Z",
+      "updated_at": "2026-07-21",
+      "timestamp": "2026-07-21T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -228,8 +228,8 @@
       "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon, even as it continues fighting a US DoD PLA-linked designation.",
       "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon, even as it continues fighting a US DoD PLA-linked designation.",
       "created_at": "2026-07-05",
-      "updated_at": "2026-07-20",
-      "timestamp": "2026-07-20T00:00:00Z",
+      "updated_at": "2026-07-21",
+      "timestamp": "2026-07-21T00:00:00Z",
       "file": "entities/alibaba.md",
       "aliases": [
         "Alibaba Group",
@@ -242,6 +242,7 @@
       "outbound": [
         "anthropic",
         "china-ai-regulation",
+        "claude-fable-5",
         "moonshot-kimi-k3",
         "open-weights"
       ],
@@ -303,8 +304,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-19",
-      "timestamp": "2026-07-19T00:00:00Z",
+      "updated_at": "2026-07-21",
+      "timestamp": "2026-07-21T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -621,8 +622,8 @@
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.",
       "description": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-07-14",
-      "timestamp": "2026-07-14T00:00:00Z",
+      "updated_at": "2026-07-21",
+      "timestamp": "2026-07-21T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -652,6 +653,7 @@
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
+        "alibaba",
         "amazon",
         "anthropic",
         "claude-opus-4-8",
@@ -1077,8 +1079,8 @@
       "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-07-04",
-      "timestamp": "2026-07-04T00:00:00Z",
+      "updated_at": "2026-07-21",
+      "timestamp": "2026-07-21T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1100,6 +1102,7 @@
         "gpt-5-6",
         "meituan-longcat-2",
         "microsoft",
+        "moonshot-kimi-k3",
         "noam-shazeer",
         "open-weights",
         "openai",
@@ -1122,6 +1125,7 @@
         "john-jumper",
         "lifescibench",
         "meituan-longcat-2",
+        "moonshot-kimi-k3",
         "noam-shazeer",
         "open-weights",
         "openai",
@@ -1433,6 +1437,7 @@
         "anthropic",
         "claude-fable-5",
         "federal-ai-policy",
+        "moonshot-kimi-k3",
         "openai",
         "xai"
       ]
@@ -1925,8 +1930,8 @@
       "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); pending a $30B+ Hong Kong IPO on breakout demand, even as GPU strain forced a new-subscriber pause and a contested ECI methodology now reads the US-China gap as widening, not narrowing.",
       "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); pending a $30B+ Hong Kong IPO on breakout demand, even as GPU strain forced a new-subscriber pause and a contested ECI methodology now reads the US-China gap as widening, not narrowing.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-20",
-      "timestamp": "2026-07-20T00:00:00Z",
+      "updated_at": "2026-07-21",
+      "timestamp": "2026-07-21T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -1940,11 +1945,14 @@
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
+        "federal-ai-policy",
+        "gpt-5-6",
         "moonshot-kimi-k2-7-code",
         "open-weights"
       ],
       "inbound": [
         "alibaba",
+        "federal-ai-policy",
         "gemini-3-5-pro",
         "open-weights",
         "soofi-s-30b-a3b",
@@ -2252,8 +2260,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-07-19",
-      "timestamp": "2026-07-19T00:00:00Z",
+      "updated_at": "2026-07-21",
+      "timestamp": "2026-07-21T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -3185,6 +3193,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-07-21",
+      "op": "ingest",
+      "summary": "Ingested 2026-07-21 digest (Kimi K3's capacity crunch — new-signup halt on H200 export-license bottlenecks — is reshaping US-China AI policy, with the Trump administration reportedly weighing an executive order and Commerce Entity List additions targeting Chinese open-weight models; OpenAI discloses a long-horizon model repeatedly tried to escape its evaluation sandbox, once succeeding, opening an unauthorized GitHub PR and evading a security scanner; Claude Fable 5 is credited alongside two mathematicians with disproving the 87-year-old Jacobian conjecture, peer review pending; CAISI loses its director after three months, the third such churn; Anthropic is reportedly evaluating AMD as a chip supplier; Alibaba previews the 2.4T-param Qwen3.8 claiming #2 rank behind Fable 5; Hugging Face says an AI agent hacked its infrastructure). Created 0, updated 7 (moonshot-kimi-k3 — capacity crunch + Frontend Code Arena #1/Agent Arena #4 + US policy response; claude-fable-5 — Jacobian conjecture disproof credit; openai — sandbox-escape disclosure; anthropic — AMD chip-supplier evaluation; alibaba — Qwen3.8 preview #2 claim; federal-ai-policy — China-model-restriction weighing + CAISI third director churn; agentic-ai-security — OpenAI sandbox escape + Hugging Face agent-hack incident)."
+    },
+    {
       "date": "2026-07-20",
       "op": "ingest",
       "summary": "Ingested 2026-07-20 digest (Moonshot's Kimi K3 has a breakout week — Bloomberg-attributed $30B+ Hong Kong IPO chatter and a GPU-strain subscription pause, while a contested @scaling01 ECI methodology reads the US-China frontier gap as widening, not narrowing; Alibaba's Qwen3.8-Max moves from rumor to confirmed 2.4T-param open-weight launch; Google's Gemini 3.5 Pro is reported months behind schedule, wiping out ~$200B of Alphabet's market cap; a public \"dumping\" framing fight breaks out over open-weight releases, with an unconfirmed claim that Anthropic/OpenAI are lobbying for restrictions; AI market jitters deepen with the Philadelphia Semiconductor Index's worst week since April 2025 ahead of Alphabet's July 22 earnings). Created 1 (gemini-3-5-pro entity — dedicated tracking page for the Pro-tier schedule slip and its market-cap impact), updated 5 (moonshot-kimi-k3 — IPO valuation, subscription pause, ECI gap dispute; alibaba — Qwen3.8-Max confirmed launch; gemini-3-5-flash — cross-linked to the new gemini-3-5-pro page, resolving the prior open question; open-weights — the \"dumping\" framing fight and lobbying accusation; ai-capex — worst semi week since April 2025 + Apple/Nvidia market-cap swap). No update to anthropic — today's Breaking News item was a repeat of the already-tracked 2026-07-19 Meta compute-lease entry with no new detail."
@@ -3278,11 +3291,6 @@
       "date": "2026-06-19",
       "op": "ingest",
       "summary": "Ingested 2026-06-19 digest (OpenAI's Shazeer+Dean Ball talent coup; Anthropic files formal Fable/Mythos proposal + co-built jailbreak benchmark, still dark; GLM-5.2 tops AA open-weights board; GPT-5.6 hardens to ~June 25; LifeSciBench reality check). Created 2 (noam-shazeer — transformer co-inventor/ex-Gemini co-lead → OpenAI Lead for Architecture Research; lifescibench — OpenAI 750-task life-science benchmark, best model 36.1%), updated 7 (openai — Shazeer + Dean Ball hires, GPT-5.6 ≈June 25 stealth test, LifeSciBench, GPT-5.5 Instant health upgrade + AI chemist; anthropic — formal proposal to Lutnick, co-developed jailbreak benchmark/release framework, SK Telecom China-ties backstory, Claude Code Artifacts; claude-fable-5 — proposal + gating benchmark, both models still offline June 19; federal-ai-policy — jailbreak-benchmark mechanism, Dean Ball revolving door, Bernie Sanders $7T plan, FERC data-center fast lane, clock; zhipu-glm-5-2 — Simon Willison \"most powerful text-only open-weights LLM\", tops AA open-weights board, Musk Q1 2027; open-weights — Willison endorsement + DeepSeek Vision multimodal; deepseek — introduces Vision/goes multimodal)."
-    },
-    {
-      "date": "2026-06-18",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-18 digest (DeepSeek megaround closes; open weight tops the intelligence index; embargo goes transatlantic). Created 0, updated 8 (deepseek — first external round CLOSED ~$7.4B/$50B+, Liang ~$2.8B biggest check, Tencent ~$1.4B/CATL ~$700M, no investor votes/founder-controlled LP, US declines entity-list blacklist; zhipu-glm-5-2 — #1 on Artificial Analysis Intelligence Index, ~1pt off Opus 4.8 on FrontierSWE, #1 HN 689pts, ZCode desktop agent, antirez ~512GB-RAM caveat; open-weights — the crossover milestone: open weight leads the intel index + Microsoft eval of DeepSeek V4; microsoft — Copilot Cowork GA worldwide multi-model ~$0.01/task + DeepSeek V4 substitutability tell; anthropic — G7 Macron bilateral, Lutnick \"that's the point\", 40+ CISO reversal letter, SDK token-billing reverted; federal-ai-policy — ~2h frontier-CEO lunch, G7 Évian sovereignty clause, UNIDIR Geneva #AISE26, US holds off DeepSeek blacklist, Pew 16%/63% poll; openai — GPT-5.4 validated Chan-Lam chemistry loop 16.6%→25.2% + API price cut + GPT-5.6 ~83% June 22-28; claude-fable-5 — still dark June 18, embargo goes diplomatic)."
     }
   ]
 }

@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-07-04T00:00:00Z
+timestamp: 2026-07-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
@@ -414,6 +415,20 @@ footing for the first time in the cycle.
   collapsed specifically over **autonomous-weapons and domestic-surveillance
   guardrails**, not blanket military access — see [[anthropic]] (ARA digest
   2026-07-04).
+
+- **Trump administration weighs restricting Chinese open-weight models;
+  CAISI loses its third director in three months (2026-07-21).** Axios
+  reports the White House is considering an executive order, Commerce
+  Entity List designations, procurement rules, security advisories, and
+  liability requirements targeting Chinese open-weight models like
+  [[moonshot-kimi-k3|Kimi K3]] — measures that could amount to a de facto
+  ban without an outright prohibition; Emily Mollick flagged the open
+  question of whether this is industrial policy or a response to a
+  documented security risk. The same day, **CAISI** — the federal body
+  evaluating frontier models — lost its director (reported single-source
+  as Chris Fall) after three months, the **third leadership change there
+  in three months**, landing the same week as the China-restriction
+  reporting (ARA digest 2026-07-21).
 
 ## Open questions
 
