@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-07-21 16:38:17 UTC
+
+CYCLE: Google GA's Gemini 3.6 Flash/3.5 Flash-Lite and confirms Gemini 4 pre-training has begun; Vercel data shows Chinese open models rapidly gaining inference-spend share
+
+TOP STORIES:
+• Google ships Gemini 3.6 Flash/3.5 Flash-Lite, confirms Gemini 4 pre-training underway [✓]
+• Vercel AI Gateway data: US labs' inference-spend share falls from 97% to 83% in under a month as Chinese open models surge [⚠]
+
+WATCH: Whether independent evals confirm or refute Gemini 3.6 Flash's contested efficiency claims in the next 24h.
+
+Full update on GitHub.
