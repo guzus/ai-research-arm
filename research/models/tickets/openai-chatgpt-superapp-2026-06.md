@@ -3,7 +3,7 @@ slug: openai-chatgpt-superapp-2026-06
 title: OpenAI plans biggest ChatGPT overhaul since launch — IPO-ready "super app"
 company: OpenAI
 model: null
-status: rumored
+status: confirmed
 status_note: |
   The **Financial Times** reports (Jun 6–7, 2026) that OpenAI is preparing the
   **largest redesign of ChatGPT since its 2022 debut**, folding coding tools
@@ -25,7 +25,7 @@ sources:
   - https://www.ft.com/
   - "@Polymarket"
 created_at: 2026-06-07
-updated_at: 2026-06-09
+updated_at: 2026-07-21
 closed_at: null
 closed_reason: null
 history:
@@ -35,6 +35,8 @@ history:
     change: "Detail + corroboration (still FT-origin). A Chinese-community AI digest (@dotey via @paramiao, 2026-06-08) relays the same FT report with a blunt internal-exec quote — **'Chat is dead'** — and a concrete integration list for the 'super app': **Codex, AI agents, image generation, and third-party apps (Canva, Booking)**. Business rationale restated: migrate users from low-margin free chat to higher-margin enterprise tools to tell a platformization story ahead of the IPO. Adds texture but no independent confirmation — still single-origin FT, no OpenAI on-record statement or ship date; status stays rumored / partial"
   - ts: 2026-06-09
     change: "More texture, same single-origin FT spine. The phased rollout is framed as landing 'in the coming weeks', pushing users toward Codex, agents, and partner apps (Canva, Booking.com); **ChatGPT crossed 600M MAU**. The expected **GPT-5.6** model accompaniment is now tracked on its own ticket [[openai-gpt-5-6]] (developers hitting `gpt-5.5` 404s in Codex are a weak rollout tell logged there). Still no OpenAI on-record confirmation, feature set, or ship date for the 'super app' itself; status stays rumored / partial"
+  - ts: 2026-07-21
+    change: "First concrete shipping evidence (@jxnlco, official OpenAI product account): 'Sites' — the site-creation/hosting building block previously flagged as part of the super-app direction — is now available for UK and EU users, implying prior availability elsewhere. This is a live, shipping feature rather than FT-reported roadmap intent → status advanced from rumored to confirmed; verification stays partial pending an OpenAI on-record statement tying 'Sites' explicitly to the broader 'super app' overhaul."
 ---
 
 The **Financial Times** reported (Jun 6–7, 2026) that OpenAI is preparing the

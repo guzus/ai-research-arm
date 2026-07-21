@@ -3,33 +3,42 @@ slug: moonshot-kimi-k3
 title: Moonshot AI's Kimi K3 spotted live-testing under codename "Kivine," not yet publicly shipped
 company: Moonshot AI
 model: Kimi K3
-status: in-testing
+status: released
 status_note: |
   Testingcatalog reported Kimi K3 "teased officially" as of **2026-07-15
   22:38 UTC**; separately, **@AndrewCurran_** reports it live-testing in
   a model arena under the stealth codename **"Kivine,"** with early
-  tester reports putting it close to parity with **Fable 5**. As of the
-  2026-07-16 08:00 UTC cycle, still **not publicly shipped** — continuing
-  a multi-day rumor thread. Distinct artifact from the older **Kimi K2.7
-  Code** model tracked at [[moonshot-kimi-k2-7-code]] — do not conflate.
-expected: "Ship date unknown; kimmonismus and dejavucoder both expected a release around 2026-07-15/16 but it had not shipped as of the 08:00 UTC 2026-07-16 cycle"
+  tester reports putting it close to parity with **Fable 5**. Distinct
+  artifact from the older **Kimi K2.7 Code** model tracked at
+  [[moonshot-kimi-k2-7-code]] — do not conflate.
+
+  **2026-07-21:** Now clearly public and live — Moonshot's own
+  @Kimi_Moonshot account announced pausing *new* subscriptions (existing
+  members unaffected) because demand pushed close to capacity limits over
+  the prior 48h, and said membership will split into separate "Kimi
+  Membership" and "Kimi Code Membership" plans. A subscription product
+  that has to pause new signups due to demand is by definition released
+  and in the hands of the public → advancing status to `released`.
+expected: "Shipped; membership plans splitting into 'Kimi Membership' and 'Kimi Code Membership'; new subscriptions temporarily paused for capacity"
 labels:
-  - rumored-release
   - china
   - coding
-verification: partial
+verification: confirmed
 sources:
   - "@testingcatalog"
   - https://x.com/testingcatalog/status/2077523332883231016
   - "@AndrewCurran_"
   - https://x.com/AndrewCurran_/status/2077433196556554306
+  - https://x.com/Kimi_Moonshot/status/2078855608565207130
 created_at: 2026-07-16
-updated_at: 2026-07-16
+updated_at: 2026-07-21
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-07-16
     change: "Created — Testingcatalog reported Kimi K3 'teased officially' (2026-07-15 22:38 UTC); @AndrewCurran_ separately reports it live-testing in a model arena under stealth codename 'Kivine,' with early tester reports near-parity with Fable 5. Not yet publicly shipped as of the 2026-07-16 08:00 UTC cycle, continuing a multi-day rumor thread → status in-testing, verification partial (arena sighting + tease, no primary Moonshot statement)."
+  - ts: 2026-07-21
+    change: "Official @Kimi_Moonshot account announced pausing new subscriptions (existing members unaffected) after demand pushed close to capacity limits over the prior 48h, and announced membership will split into separate 'Kimi Membership' and 'Kimi Code Membership' plans. Widely re-shared (@deedydas, @GavinSBaker, @quxiaoyin, @testingcatalog). A capacity-constrained, oversubscribed paid product is definitionally public and shipped → status advanced from in-testing to released; verification advanced to confirmed (official company account, primary source)."
 ---
 
 **Moonshot AI's** next flagship coding/reasoning model, **Kimi K3**, is

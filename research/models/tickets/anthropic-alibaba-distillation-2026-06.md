@@ -47,7 +47,7 @@ sources:
   - "@poezhao0605"
   - "@BiteyeHQ"
 created_at: 2026-06-26
-updated_at: 2026-07-05
+updated_at: 2026-07-21
 closed_at: null
 closed_reason: null
 history:
@@ -61,6 +61,8 @@ history:
     change: "Mechanism-level timeline converges — the ban and the distillation complaint are the same fight, seen from two sides. Per three independently-styled accounts (English/@sadik_0x, French/@_elmeb_, a Next-Web-sourced AI-summary account): March 2026, Anthropic ships an internal Claude Code 'experiment' to catch resellers/distillation; April 2, version 2.1.91 goes live silently checking users' proxy settings and system time zone against hidden lists naming Alibaba, Baidu, ByteDance (one account cites 147 total domains, also naming Moonshot AI); June 10, Anthropic's Senate letter (already on this ticket) alleges the ~25K-account/28.8M-exchange distillation campaign; June 30, Reddit user 'LegitMichel777' reverse-engineers Claude Code and finds the hidden checks, and the same day an Anthropic employee confirms on X it was 'an experiment we launched in March,' being pulled; July 1, Anthropic starts removing the flagged code; July 3, Reuters reports the July 10 ban. No independent security firm has validated either side's framing ('backdoor' vs. anti-fraud instrumentation) — both remain self-reported. Status stays confirmed; verification stays confirmed (Reuters + three independently-styled account convergence on the mechanism-level facts)."
   - ts: 2026-07-05
     change: "TechCrunch adds outlet corroboration of the ban itself (Alibaba classified Claude Code 'high-risk software,' effective July 10), now converging with the prior Reuters/Yicai/The Paper reporting. Separately, a viral thread (@AseemShrey) offered a granular Unicode-apostrophe steganography theory for the April proxy/timezone mechanism (4 rotating near-identical apostrophe characters encoding matches against a '147 Chinese-domain' list) — but a direct Hacker News Algolia API query found the thread's cited '1,891-point' top comment does not exist; the real HN submission of the underlying (real, already-tracked) Schmalbach blog post has 9 points and 4 comments. The granular Unicode mechanism and '147 domains' figure should be treated as one blogger's unverified reverse-engineering, not confirmed fact — the underlying 'hidden proxy/timezone check existed and was rolled back' fact remains Anthropic-confirmed per the 07-04 entry. Status stays confirmed; verification stays confirmed."
+  - ts: 2026-07-21
+    change: "Viral single-tweet claim (@mark_k): a user reports Opus 4.8 self-identified as 'Qwen' when asked who it was, reigniting distillation-in-the-other-direction speculation (Anthropic distilling from Qwen, rather than the reverse this ticket otherwise tracks). No reproduction, no Anthropic response, and self-identification claims from LLMs are notoriously unreliable (models frequently misstate their own identity) — treated as unverified color, not a fact. Core ticket facts (the Senate letter, the Alibaba ban, the mechanism timeline) are unchanged. Status stays confirmed; verification stays confirmed for the underlying documented facts, this specific claim remains unverified."
 ---
 
 Anthropic sent a **letter to multiple US senators and White House officials**

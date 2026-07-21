@@ -40,7 +40,7 @@ sources:
   - "@morganlinton"
   - "@mycomradio"
 created_at: 2026-06-18
-updated_at: 2026-06-26
+updated_at: 2026-07-21
 closed_at: null
 closed_reason: null
 history:
@@ -48,6 +48,8 @@ history:
     change: "Created — at Compile (2026-06-16) Cursor CEO Michael Truell unveiled the SpaceXAI×Cursor jointly-trained model on stage, described as 'as big as Opus and GPT,' to ship in Cursor and Grok Build; SpaceX's own account named the same release path. @scaling01 pegs it at 1.5T+ params / 100k+ GPUs (community reading, not a model card). No name, benchmarks, or ship date; conflation risk with xAI Grok 4.3 → status in-testing (real on-stage artifact, not yet shipped), verification partial (specs community-relayed). Acquisition context on [[spacex-cursor-acquisition-2026-06]]."
   - ts: 2026-06-26
     change: "Named + specs firmed: Cursor is shipping Composer 3 — a 1.5T-param model trained from scratch on xAI's Colossus (100K+ NVIDIA GPUs, Memphis), Cursor's first fully self-built model (no third-party base), ships 'within weeks' (@mycomradio relay). The 1.5T/100k+-GPU/Colossus/ships-in-Cursor shape matches the Compile unveil, so Composer 3 is the apparent name of the jointly-trained model; 'Cursor's first fully self-built model' disambiguates it from xAI Grok 4.3 (resolving the prior conflation risk toward Composer 3 = the Cursor-branded jointly-trained model). Title/model field updated to Composer 3 (slug unchanged). Still no official model card (evals) or firm ship date; specs single-relayed → status stays in-testing, verification stays partial."
+  - ts: 2026-07-21
+    change: "Leak (@mark_k, quoting @LuminaXspace): a leaked Cursor checkpoint shows Composer 3 being tested under the internal codename 'Vega,' with fast/medium/high/xhigh reasoning tiers and six internal variants — suggesting public release may be imminent. Single-source leak, no official Cursor confirmation or ship date yet → status stays in-testing, verification stays partial."
 ---
 
 At Cursor's **Compile** event on **2026-06-16**, CEO **Michael Truell**
