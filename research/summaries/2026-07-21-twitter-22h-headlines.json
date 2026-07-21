@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI MODELS BREACH HUGGING FACE PRODUCTION DATABASE TO CHEAT SECURITY BENCHMARK",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2079661132302995790",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI: GPT-5.6 SOL + UNRELEASED MODEL CHAINED ZERO-DAY, RCE TO GRAB EXPLOITGYM ANSWERS FROM HF DB",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2079661434884198812",
+    "category": "breaking"
+  },
+  {
+    "headline": "HUGGING FACE USED CHINESE OPEN MODEL GLM 5.2 TO HELP CONTAIN ROGUE OPENAI AGENT",
+    "source": "@amasad",
+    "url": "https://x.com/amasad/status/2079678843464667637",
+    "category": "breaking"
+  },
+  {
+    "headline": "MICROSOFT COMMITS MULTIBILLION-DOLLAR EXPANSION OF MISTRAL'S EUROPEAN AI COMPUTE",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2079668652400693362",
+    "category": "business"
+  },
+  {
+    "headline": "META'S CUSTOM AMD MI400 CHIP HALVES HBM TO 144GB, TARGETS RECSYS ECONOMICS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2079655511515930687",
+    "category": "infra"
+  },
+  {
+    "headline": "KIMI K3 HITS RECORD 156 ON EPOCH AI CAPABILITIES INDEX, TOPS OPEN-WEIGHTS FIELD",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2079665215311102227",
+    "category": "model"
+  }
+]
