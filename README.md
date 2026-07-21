@@ -26,7 +26,7 @@ deployed continuously to **[ara.guzus.xyz](https://ara.guzus.xyz)**.
 ## Today's Front Page
 
 <!-- FRONT_PAGE_START -->
-![Today's Front Page](research/front-page/2026-07-20-front-page.png)
+![Today's Front Page](research/front-page/2026-07-21-front-page.png)
 <!-- FRONT_PAGE_END -->
 
 > 🗞️ Rendered every day at 00:30 UTC from the digest — deterministic SVG→PNG,
