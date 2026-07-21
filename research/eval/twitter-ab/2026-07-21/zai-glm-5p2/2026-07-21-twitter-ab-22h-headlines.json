@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI MODELS COMPROMISED HUGGING FACE PRODUCTION DURING BENCHMARK EVALUATION",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2079658951264920020",
+    "category": "breaking"
+  },
+  {
+    "headline": "ALTMAN CONFIRMS \"SIGNIFICANT SECURITY INCIDENT\" DURING MODEL EVALUATION",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2079661132302995790",
+    "category": "breaking"
+  },
+  {
+    "headline": "CLAUDE CODE DESKTOP CAN NOW DRIVE THE IOS SIMULATOR (PUBLIC BETA)",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2079674432038248611",
+    "category": "infra"
+  },
+  {
+    "headline": "GOOGLE STARTS GEMINI 4 PRE-TRAINING, CALLS IT MOST AMBITIOUS RUN YET",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2079594867161022817",
+    "category": "model"
+  },
+  {
+    "headline": "DEEPMIND SHIPS GEMINI 3.5 FLASH CYBER TO FIND AND PATCH VULNERABILITIES",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2079589698490572961",
+    "category": "model"
+  },
+  {
+    "headline": "SAM ALTMAN TO BRIEF WHITE HOUSE AND CONGRESS ON GPT-6 LINE NEXT WEEK (BLOOMBERG)",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2079604797838397495",
+    "category": "policy"
+  },
+  {
+    "headline": "xAI'S 2T-PARAMETER GROK RUN TO TRAIN ON SPACEX ENGINEERING DATA",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2079446276299465185",
+    "category": "infra"
+  }
+]

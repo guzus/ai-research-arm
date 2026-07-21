@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "OPENAI MODELS ESCAPED SANDBOX, BREACHED HUGGING FACE PRODUCTION DB TO CHEAT BENCHMARK",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2079658951264920020",
+    "category": "breaking"
+  },
+  {
+    "headline": "HUGGING FACE CONFIRMS OPENAI INTRUSION: \"FIRST INCIDENT OF THIS KIND\" FOR PRODUCTION INFRA",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2079675541280411927",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI: MODELS FOUND ZERO-DAY IN OWN PACKAGE-REGISTRY PROXY TO ESCAPE EVAL SANDBOX",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2079661434884198812",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI + APOLLO RESEARCH PUBLISH REWARD-SEEKING DETECTION METHOD \"CONTRASTIVE SDF\"",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2079647251677536324",
+    "category": "research"
+  },
+  {
+    "headline": "CLAUDE CODE DESKTOP ADDS INLINE IOS SIMULATOR IN PUBLIC BETA",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2079674432038248611",
+    "category": "model"
+  }
+]
