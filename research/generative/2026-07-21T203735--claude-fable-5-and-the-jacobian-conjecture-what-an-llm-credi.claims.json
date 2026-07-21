@@ -1,0 +1,304 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "On July 20, 2026, Anthropic researcher Levent Alpöge posted on X that he used Claude Fable 5 to find a counterexample to the Jacobian conjecture, crediting Akhil Mathew for posing the question.",
+      "type": "event",
+      "source_urls": ["https://x.com/__alpoge__/status/2079028340955197566"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "The Jacobian conjecture states: for a polynomial map F over a characteristic-0 field with constant nonzero Jacobian determinant, F must have a polynomial inverse. Constant-nonzero-Jacobian is only necessary (via the inverse function theorem/chain rule); sufficiency is the open question.",
+      "type": "definition",
+      "source_urls": ["https://encyclopediaofmath.org/wiki/Jacobian_conjecture"],
+      "source_tiers": ["academic"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "The counterexample is an explicit polynomial map F: C^3 -> C^3 (degree 7) with Jacobian determinant identically -2, under which three distinct points collide to the same image, e.g. F(0,0,-1/4) = F(1,-3/2,13/2) = F(-1,3/2,13/2) = (-1/4,0,0).",
+      "type": "metric",
+      "source_urls": ["https://sbseminar.wordpress.com/2026/07/20/the-new-counterexample-to-the-jacobian-conjecture/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "The n=3 counterexample extends to every dimension n>=3 by adjoining identity coordinates; the classical n=2 (planar) Jacobian conjecture, the historically hardest case, remains open.",
+      "type": "market-structure",
+      "source_urls": ["https://sbseminar.wordpress.com/2026/07/20/the-new-counterexample-to-the-jacobian-conjecture/", "https://en.wikipedia.org/wiki/Jacobian_conjecture"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "As of July 22, 2026, the result has not undergone formal journal peer review and Alpöge has not posted an arXiv preprint of the Jacobian counterexample itself.",
+      "type": "event",
+      "source_urls": ["https://officechai.com/ai/how-the-math-community-has-reacted-to-fable-helping-disprove-the-jacobian-conjecture/", "https://github.com/google-deepmind/formal-conjectures/pull/4474"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-07-22",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c6",
+      "claim": "Mathematician David Speyer reproduced the polynomial map on his blog and verified the determinant and the 3-to-1 collision; other commenters (Will Sawin, a user 'W', Skooi) ran independent finite-field point-counts and separately-implemented exact verifiers, all agreeing with the original claim.",
+      "type": "event",
+      "source_urls": ["https://sbseminar.wordpress.com/2026/07/20/the-new-counterexample-to-the-jacobian-conjecture/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "A Lean formalization of the disproof was submitted as pull request #4474 to Google DeepMind's Formal Conjectures repository; as of the last check it remained open (not merged), with two approvals and active review.",
+      "type": "event",
+      "source_urls": ["https://github.com/google-deepmind/formal-conjectures/pull/4474"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-21",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c8",
+      "claim": "The Lean-formalized version uses a rescaled counterexample with Jacobian determinant 1 (not the original -2); reviewer Kevin Buzzard flagged this as a discrepancy in attribution, and contributor deancureton acknowledged the credit line 'isn't exactly correct.'",
+      "type": "technical",
+      "source_urls": ["https://github.com/google-deepmind/formal-conjectures/pull/4474"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-20",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "Levent Alpöge holds a Princeton PhD (2020) under Fields Medalist Manjul Bhargava, was a Junior Fellow at Harvard's Society of Fellows, won the 2015 Morgan Prize (top US undergraduate math award), and is now affiliated with Anthropic.",
+      "type": "other",
+      "source_urls": ["https://people.math.harvard.edu/~alpoge/papers/my%20thesis.pdf", "https://www.eurekalert.org/news-releases/773523", "https://alpo.ge/"],
+      "source_tiers": ["primary", "secondary", "primary"],
+      "as_of": "2026-07-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Anthropic's own official launch page for Claude Fable 5 (June 9, 2026) positions it around software engineering, agentic knowledge work, vision, and life-sciences tasks, and does not mention mathematics research or this result anywhere.",
+      "type": "other",
+      "source_urls": ["https://www.anthropic.com/news/claude-fable-5-mythos-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "Fable 5 and Mythos 5 were suspended for all foreign nationals on June 12, 2026 under a US export-control directive, and restored (Fable 5 globally, Mythos 5 only for vetted US organizations) on July 1, 2026.",
+      "type": "regulatory",
+      "source_urls": ["https://x.com/AnthropicAI/status/2065597531644743999", "https://www.anthropic.com/news/redeploying-fable-5"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "No official Anthropic corporate statement, blog post, or leadership comment addressing the Jacobian conjecture result has been found as of July 22, 2026, in contrast to the company's rapid, repeated public statements during the export-control episode.",
+      "type": "other",
+      "source_urls": ["https://officechai.com/ai/an-anthropic-researcher-says-fable-just-helped-him-disprove-the-85-year-old-jacobian-conjecture/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c13",
+      "claim": "A 2026 peer-reviewed paper in Comptes Rendus Mathematique (Rodriguez Diaz, Vol. 364, pp. 363-370, also arXiv:2512.23614) argues the two-variable Jacobian conjecture statement was first given by Ludwig Kraus in 1884, with an identifiable flaw in Kraus's own proof, predating the standard Keller-1939 attribution by 55 years.",
+      "type": "definition",
+      "source_urls": ["https://arxiv.org/abs/2512.23614", "https://comptes-rendus.academie-sciences.fr/mathematique/item/10.5802/crmath.831/"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2025-12-29",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c14",
+      "claim": "The conjecture is Problem 16 on Stephen Smale's 1998 list of mathematical problems for the 21st century.",
+      "type": "other",
+      "source_urls": ["https://www.worldscientific.com/doi/abs/10.1142/9789812792815_0045"],
+      "source_tiers": ["academic"],
+      "as_of": "1998",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Reduction theorems (Yagzhev 1980; Bass-Connell-Wright 1982; refined by Drozdowski/Druzkowski) show the general conjecture follows from a cubic-homogeneous special case, at the cost of increasing the ambient dimension; the new counterexample (degree 7, fixed n=3) does not sit inside that reduced form directly.",
+      "type": "technical",
+      "source_urls": ["https://projecteuclid.org/journals/bulletin-of-the-american-mathematical-society-new-series/volume-7/issue-2/The-Jacobian-conjecture--Reduction-of-degree-and-formal-expansion/bams/1183549636.pdf"],
+      "source_tiers": ["academic"],
+      "as_of": "1982",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "MathWorld states the conjecture has attracted 'at least five published incorrect proofs and many incorrect attempts,' including a 2004 claim by Carolyn Dean (initially endorsed by Mel Hochster, then retracted after a hole was found) and a 2009 flawed arXiv proof by Dang Vu Giang.",
+      "type": "other",
+      "source_urls": ["https://mathworld.wolfram.com/JacobianConjecture.html", "https://www.math.columbia.edu/~woit/wordpress/?p=105", "https://sbseminar.wordpress.com/2009/05/27/how-not-to-prove-the-jacobian-conjecture/"],
+      "source_tiers": ["academic", "secondary", "secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "Fields Medalist Timothy Gowers publicly called the result the first time he'd seen an LLM solve a well-known problem outside his own field, while stressing it is a counterexample, not a wholesale event for mathematics.",
+      "type": "quote",
+      "source_urls": ["https://officechai.com/ai/how-the-math-community-has-reacted-to-fable-helping-disprove-the-jacobian-conjecture/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "Columbia mathematician Andrew Blumberg was explicitly skeptical of the achievement's significance, saying 'this did not cause me to update my priors,' arguing a brute-force-checkable counterexample demonstrates less insight than a proof.",
+      "type": "quote",
+      "source_urls": ["https://officechai.com/ai/how-the-math-community-has-reacted-to-fable-helping-disprove-the-jacobian-conjecture/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "Bartosz Naskrecki cautioned the process was not a one-line prompt and required substantial human mathematical insight to direct, and said he was awaiting Alpoge's full technical writeup before drawing conclusions.",
+      "type": "quote",
+      "source_urls": ["https://officechai.com/ai/how-the-math-community-has-reacted-to-fable-helping-disprove-the-jacobian-conjecture/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c20",
+      "claim": "No published prompt, transcript, or tool-call log describing exactly how Fable 5 was used to construct the counterexample has been made public by Alpoge or Anthropic as of July 22, 2026.",
+      "type": "other",
+      "source_urls": ["https://x.com/__alpoge__/status/2079028340955197566"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-22",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c21",
+      "claim": "Google DeepMind's AlphaProof/AlphaGeometry 2 scored 28/42 (silver-medal-equivalent) at IMO 2024 using Lean formal proof-checking, requiring expert manual translation of problems into Lean and ~2-3 days of compute versus the human 4.5-hour limit.",
+      "type": "comparison",
+      "source_urls": ["https://www.nature.com/articles/s41586-025-09833-y"],
+      "source_tiers": ["academic"],
+      "as_of": "2024",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "Google DeepMind's Gemini Deep Think achieved gold-medal-standard IMO performance in 2025 (35/42, 5 of 6 problems) end-to-end in natural language within the standard contest time limit, without Lean formalization.",
+      "type": "comparison",
+      "source_urls": ["https://deepmind.google/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "In October 2025, an OpenAI VP's claim that GPT-5 had 'solved' 10 previously unsolved Erdos problems collapsed within days after the Erdos-problems curator showed the model had merely surfaced already-published solutions, not novel proofs.",
+      "type": "comparison",
+      "source_urls": ["https://techcrunch.com/2026/05/20/openai-claims-it-solved-an-80-year-old-math-problem-for-real-this-time/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "AlphaEvolve (2025) found a genuinely new algorithm for multiplying two 4x4 complex matrices in 48 scalar multiplications (beating Strassen's 56-year-old bound of 49) and improved a lower bound in sphere-packing (11-dimensional kissing number, 592 to 593), via autonomous evolutionary search over an automatically-verifiable objective; across its ~50-problem test set, about 75% of outcomes only matched known best solutions and about 20% improved on them.",
+      "type": "comparison",
+      "source_urls": ["https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/", "https://spectrum.ieee.org/deepmind-alphaevolve"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2025-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "Terence Tao judged an April 2026 GPT-5.4-Pro-assisted closure of Erdos Problem #1196 (open since 1968) as a genuine, Book-proof-quality contribution 'that goes well beyond the solution of this particular problem,' the strongest documented case before the Jacobian story of an LLM producing novel mathematical insight rather than fast execution of known technique.",
+      "type": "comparison",
+      "source_urls": ["https://www.buildfastwithai.com/blogs/gpt-5-4-solved-a-60-year-math-problem-what-happened"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-04",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c26",
+      "claim": "The claimed relevance of the result to Bitcoin (per CoinDesk, KuCoin, ForkLog coverage) rests on a capital-rotation narrative (AI progress draws speculative capital from crypto into AI/compute), not any technical link; the Jacobian conjecture concerns invertibility of polynomial maps and is unrelated to the elliptic-curve discrete-log hardness (secp256k1/ECDSA) underlying Bitcoin's cryptography, a different mathematical object that happens to share the name 'Jacobian.'",
+      "type": "causal",
+      "source_urls": ["https://www.coindesk.com/tech/2026/07/21/claude-s-fable-5-just-solved-an-87-year-old-math-problem-and-it-matters-for-bitcoin"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c27",
+      "claim": "Bitcoin rallied to roughly $66,000-66,500 (a ~5-week high, about +3% in 24 hours) on July 21, 2026, the day after the Jacobian announcement, a move financial press attributed to five consecutive days of spot-ETF inflows (over $700M) and Clarity Act legislative optimism, moving with the Nasdaq-100 rather than losing capital to AI narratives.",
+      "type": "market-structure",
+      "source_urls": ["https://www.coindesk.com/daybook-us/2026/07/21/bitcoin-rally-has-broad-based-support-as-institutions-whales-options-traders-pile-in"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c28",
+      "claim": "An OpenAI researcher (Aaron Lou) stated an internal, non-web-search version of an OpenAI reasoning model independently derived 'essentially the same' counterexample without seeing Alpoge's announcement first.",
+      "type": "other",
+      "source_urls": ["https://x.com/aaron_lou/status/2079218392452530249"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-21",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c29",
+      "claim": "Wikipedia's Jacobian conjecture article and Wolfram MathWorld were both updated within about 24 hours of the announcement to reflect the counterexample, before any formal peer review had occurred.",
+      "type": "event",
+      "source_urls": ["https://en.wikipedia.org/wiki/Jacobian_conjecture", "https://mathworld.wolfram.com/JacobianConjecture.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c30",
+      "claim": "A genuine, distinct arXiv preprint (2607.18186, Christopher D. Long, 'Small Counterexamples to the Gaussian Moments Conjecture') states it was directly prompted by Alpoge's announcement but explicitly used none of the Jacobian map's specific coordinates or terms.",
+      "type": "other",
+      "source_urls": ["https://arxiv.org/html/2607.18186"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-20",
+      "confidence": "high",
+      "risk": "stable"
+    }
+  ]
+}
