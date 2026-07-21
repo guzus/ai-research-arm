@@ -6,8 +6,9 @@ aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open 
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model]
 description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); pending a $30B+ Hong Kong IPO on breakout demand, even as GPU strain forced a new-subscriber pause and a contested ECI methodology now reads the US-China gap as widening, not narrowing.
 created_at: 2026-07-17
-timestamp: 2026-07-20T00:00:00Z
+timestamp: 2026-07-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
@@ -91,6 +92,21 @@ covering it.
   above) — and the methodology itself was immediately disputed by other
   commentators. Treat "is the gap narrowing or widening" as genuinely
   unresolved and methodology-dependent, not settled in either direction.
+
+- **Capacity crunch halts new signups; US policy response takes shape
+  (2026-07-21).** Moonshot suspended new Kimi K3 signups within 72 hours of
+  the July 16 launch, attributing the halt to H200 export-license
+  bottlenecks rather than raw demand shortfall, while splitting plans into
+  Kimi Membership and Kimi Code Membership and reportedly weighing a Hong
+  Kong IPO within six months. The model landed **#1 on Frontend Code
+  Arena** but still loses 8 of 14 tracked benchmarks to
+  [[claude-fable-5|Claude Fable 5]], and placed **#4 on the Agent Arena
+  leaderboard** alongside [[claude-opus-4-8|Opus 4.8]] and
+  [[gpt-5-6|GPT-5.6 Sol]]. The capacity story is now driving
+  [[federal-ai-policy|US federal policy]]: Axios reports the Trump
+  administration is weighing an executive order and Commerce Entity List
+  additions targeting Chinese open-weight models in response (ARA digest
+  2026-07-21).
 
 ## Open questions
 

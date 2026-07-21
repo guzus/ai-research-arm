@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.
 created_at: 2026-06-10
-timestamp: 2026-07-14T00:00:00Z
+timestamp: 2026-07-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
@@ -301,6 +302,15 @@ every feed on launch day.
   interventions (see [[gpt-5-6]]), the two labs are now trading rate-limit
   concessions in near-real-time rather than settling into stable usage caps
   (ARA digest 2026-07-14).
+
+- **Credited (with two mathematicians) disproving the 87-year-old Jacobian
+  conjecture (2026-07-21).** Claude Fable 5 is credited alongside two
+  mathematicians with disproving the long-standing **Jacobian conjecture**
+  via a hand-checkable counterexample, independently confirmed across
+  multiple mathematician accounts on social media — though **formal peer
+  review is still pending**. If it holds, this is the highest-profile
+  pure-mathematics result yet attributed in part to a Mythos-class model
+  (ARA digest 2026-07-21).
 
 ## Open questions
 

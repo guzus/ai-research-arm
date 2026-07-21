@@ -6,8 +6,9 @@ aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qw
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
 description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon, even as it continues fighting a US DoD PLA-linked designation.
 created_at: 2026-07-05
-timestamp: 2026-07-20T00:00:00Z
+timestamp: 2026-07-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
@@ -92,6 +93,14 @@ friction point distinct from Qwen's own model-release cadence.
   relative to launch-week claims. Cross-reference [[open-weights]] for the
   broader China open-weight release wave this same week (see also
   [[moonshot-kimi-k3]]).
+
+- **Qwen3.8 preview claims #2 rank behind Fable 5 (2026-07-21).** Alibaba
+  previewed the 2.4 trillion-parameter **Qwen3.8** (the model behind the
+  confirmed Qwen3.8-Max open-weight launch tracked above), claiming a **#2
+  overall rank** behind [[claude-fable-5|Claude Fable 5]] — self-reported,
+  with no benchmark table published yet, continuing the pattern of
+  Qwen3.8-Max preview builds underdelivering relative to launch-week
+  claims (ARA digest 2026-07-21).
 
 ## Open questions
 
