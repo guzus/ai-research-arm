@@ -1,0 +1,10 @@
+Twitter/X AI Pulse - 2026-07-22 11:16:19 UTC
+
+CYCLE: Quiet window — new open-source tokenizer, memory-demand analyst take, Kimi K3 benchmark fact-check
+
+QUICK HITS:
+• Gigatoken: new Rust tokenizer hits ~7GB/s on M4 Max, 500-1000x faster than HF/tiktoken in vendor test
+• BofA's Vivek Arya: open-weight AI multiplies HBM memory demand vs closed models concentrating it
+• Fact-check: Kimi K3 has no published SWE-bench Verified/Pro scores despite viral "beats Claude at coding" claims
+
+Full update on GitHub.
