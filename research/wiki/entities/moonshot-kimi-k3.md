@@ -2,12 +2,13 @@
 slug: moonshot-kimi-k3
 title: Moonshot AI Kimi K3
 type: entity
-aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open Frontier Intelligence"]
-tags: [model-release, open-weights, china, coding, moonshot, frontier-model]
+aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open Frontier Intelligence", "Kimi Work"]
+tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
 description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); pending a $30B+ Hong Kong IPO on breakout demand, even as GPU strain forced a new-subscriber pause and a contested ECI methodology now reads the US-China gap as widening, not narrowing.
 created_at: 2026-07-17
-timestamp: 2026-07-21T00:00:00Z
+timestamp: 2026-07-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
@@ -108,8 +109,19 @@ covering it.
   additions targeting Chinese open-weight models in response (ARA digest
   2026-07-21).
 
+- **"Kimi Work" agentic product launches, dominates Hacker News (2026-07-22).**
+  Moonshot launched **Kimi Work**, a new agentic "work" product built on the
+  K3 flagship, drawing the day's heaviest Hacker News discussion (656 pts /
+  266 comments) about Chinese labs' pace of agent-product shipping —
+  extending Moonshot's push from a model release into a shipped agentic
+  product, alongside Alibaba's [[alibaba|Qwen-Image-3.0]] and Google's
+  [[gemini-3-6-flash]] the same cycle (ARA digest 2026-07-22).
+
 ## Open questions
 
+- **Does Kimi Work differentiate from other agentic coding/work products?**
+  The launch drew heavy HN discussion but no independent comparison against
+  rival agentic products (e.g. OpenAI's ChatGPT Work) has landed yet.
 - **Does the 2.8T scale hold up under independent benchmarking once weights
   ship?** Community pelican-SVG and early local-benchmark reactions are
   informal; no neutral, contamination-aware eval has landed yet.

@@ -6,8 +6,9 @@ aliases: ["Gemini 3.5 Flash", "Gemini 3.2 Flash", "Gemini 3.5 Live Translate"]
 tags: [model-release, google-deepmind, flash-tier, agentic]
 description: Google's fast, low-cost frontier model shipped GA at Google I/O 2026, positioned for agents rather than chatbots; gained a real-time speech-to-speech Live Translate variant (70+ languages) on 2026-06-09.
 created_at: 2026-05-24
-timestamp: 2026-07-20T00:00:00Z
+timestamp: 2026-07-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
@@ -63,6 +64,9 @@ like [[anthropic]] (Claude Haiku) and OpenAI.
   generative media (ARA digest 2026-07-01).
 
 ## Open questions
+- **Succeeded by the next Flash generation (2026-07-21).** Google shipped
+  **[[gemini-3-6-flash|Gemini 3.6 Flash, 3.5 Flash-Lite, and Flash Cyber]]**
+  as the next Flash-tier cycle — see that page for the newer generation.
 - **Pro tier — now confirmed delayed, not just rumored (2026-07-16/20).** The
   July 17 full-pretrain-reset date this page tracked as a single-leaker
   rumor did not hold: reporting on 2026-07-16 confirms **[[gemini-3-5-pro|Gemini

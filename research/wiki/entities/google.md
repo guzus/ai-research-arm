@@ -6,15 +6,17 @@ aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "G
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
 description: Hyperscaler and frontier-model builder behind Gemini; ordered by the EU under the DMA to open Android and Search to rivals (2026-07-17), the same day it rebranded NotebookLM into the Gemini product family.
 created_at: 2026-07-17
-timestamp: 2026-07-20T00:00:00Z
+timestamp: 2026-07-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
 ---
 
 **Google** is the hyperscaler and frontier-model builder behind the
-**Gemini** family ([[gemini-3-5-flash]], [[gemini-3-5-pro]], [[gemini-spark]],
+**Gemini** family ([[gemini-3-5-flash]], [[gemini-3-6-flash]],
+[[gemini-3-5-pro]], [[gemini-spark]],
 [[gemma-4]], [[nano-banana-2-lite]]). While its individual model releases
 have been tracked on their own pages, this page covers Google as a company:
 the regulatory and product-strategy threads that don't attach to a single
@@ -49,6 +51,14 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   link and interact with select third-party apps directly, moving the
   product beyond Q&A into task completion — the same distribution-through-
   existing-surfaces strategy [[meta]] is running with AI Mode on Facebook.
+- **Three new Flash-tier models ship; Pro stays delayed, Gemini 4 already
+  training (2026-07-21).** Google shipped **[[gemini-3-6-flash|Gemini 3.6
+  Flash, 3.5 Flash-Lite, and Flash "Cyber"]]** together — a security-focused
+  variant pitched as a cheaper alternative to dedicated AI-security tools —
+  while [[gemini-3-5-pro|Gemini 3.5 Pro]] remains "in testing" and reporting
+  says Google is already training **Gemini 4**. The release was the top
+  Hacker News story of the day (524 pts / 420 comments) (ARA digest
+  2026-07-22).
 
 ## Open questions
 
