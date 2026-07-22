@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-22
+
+TOP 5 PAPERS:
+• ResearchArena - benchmark measuring AI agent sabotage & monitoring in automated R&D
+• Copy Less, Ground More (GEAR) - RL reward fixes long-context LLMs copying instead of reasoning, +4.6 pts
+• Authority Framing in CI/CD - shows multi-agent LLM pipelines can be tricked into laundering code injection
+• ExpertVerse - knowledge-intensive visual generation benchmark across 9 capabilities, 8 disciplines
+• AdaFlash - adaptive speculative decoding via distilled diffusion drafters speeds up LLM inference
+
+CATEGORIES: NLP (11) | Vision/Multimodal (10) | Agents/Reasoning (7) | Safety/Alignment (5) | Other (7)
+
+Full report on GitHub.
