@@ -9,7 +9,19 @@ status_note: |
   1M-token context, coding/agent focus — with open weights promised but
   not yet shipped. Multiple independent accounts corroborated the same
   specifics the same morning.
-expected: "Open weights promised, no date given"
+
+  **2026-07-22:** @TimesOfAI_ reports the full open-weight release
+  (including model weights and benchmark results) is "expected soon,"
+  consistent with the preview-then-weights pattern already noted here — no
+  new date given. A skeptical take (@Kozh_Crypto) flags that as of this
+  cycle there is still no benchmark table, model card, or license attached
+  to the preview, just a tweet and a preview endpoint, and notes the timing
+  (2 days after Moonshot's Kimi K3 open-weight ship) as competitive
+  positioning rather than a finished release. Status stays `in-testing`;
+  verification stays `confirmed` (the preview's existence isn't in
+  question; the skepticism is about the *strength* of the claims, which
+  the ticket already treats as preview-not-release).
+expected: "Open weights promised, expected 'soon' per 2026-07-22 signal, no firm date given"
 labels:
   - frontier-model
   - moe
@@ -19,13 +31,17 @@ sources:
   - https://x.com/Leoskie_L/status/2079484883382993389
   - "@jarvana_sv"
   - "@aiseomastery"
+  - "@TimesOfAI_"
+  - "@Kozh_Crypto"
 created_at: 2026-07-21
-updated_at: 2026-07-21
+updated_at: 2026-07-22
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-07-21
     change: Created — Alibaba released Qwen3.8-Max Preview (2.4T params, MoE, 1M context), with open weights promised but not yet released.
+  - ts: 2026-07-22
+    change: "Full open-weight release reported 'expected soon' (@TimesOfAI_), no firm date; skeptical read (@Kozh_Crypto) notes no benchmark table/model card/license yet, just a preview endpoint, 2 days after Kimi K3's open-weight ship. Status stays in-testing; verification stays confirmed."
 ---
 
 Alibaba released a preview of Qwen3.8-Max, described consistently across

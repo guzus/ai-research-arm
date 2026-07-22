@@ -19,7 +19,25 @@ status_note: |
   Membership" and "Kimi Code Membership" plans. A subscription product
   that has to pause new signups due to demand is by definition released
   and in the hands of the public → advancing status to `released`.
-expected: "Shipped; membership plans splitting into 'Kimi Membership' and 'Kimi Code Membership'; new subscriptions temporarily paused for capacity"
+
+  **2026-07-22:** Further corroboration and spec detail, no status change.
+  @ryqwzrbuilds relays Moonshot's own framing: Kimi K3 is a **2.8T-parameter**
+  open model, available through Moonshot's apps/API now, with **full weights
+  due 2026-07-27** — i.e. today's app/API availability is not yet the full
+  open-weights release. Epoch AI (via @rohanpaul_ai, @scaling01/@EpochAIResearch
+  RT) reports K3 scored **156 on the Epoch Capabilities Index (ECI)**, a new
+  open-weights record, placing it between **Claude Opus 4.6 and GPT-5.4** on
+  that index — @rohanpaul_ai separately notes it ranks 2nd in agentic
+  knowledge work on the AA-Briefcase benchmark, very near Fable 5, though at
+  ~$10.57/task (roughly 10x K2.6's cost, above Opus). @theinformation reports
+  **Microsoft is evaluating whether K3 could power Copilot features**
+  previously handled by OpenAI/Anthropic models — internal testing only, no
+  release date, region, or pricing announced (also relayed by
+  @Awesome_AI_News). A JPMorgan research note (via @AlphaWireNewsAi) frames
+  K3's launch as re-rating Zhipu AI's competitive narrative. Status stays
+  `released`; verification stays `confirmed` (Moonshot's own weights-date
+  framing + multiple independent benchmark/press relays).
+expected: "Shipped; membership plans splitting into 'Kimi Membership' and 'Kimi Code Membership'; new subscriptions temporarily paused for capacity; full open weights due 2026-07-27"
 labels:
   - china
   - coding
@@ -30,8 +48,12 @@ sources:
   - "@AndrewCurran_"
   - https://x.com/AndrewCurran_/status/2077433196556554306
   - https://x.com/Kimi_Moonshot/status/2078855608565207130
+  - "@ryqwzrbuilds"
+  - "@rohanpaul_ai"
+  - "@EpochAIResearch"
+  - "@theinformation"
 created_at: 2026-07-16
-updated_at: 2026-07-21
+updated_at: 2026-07-22
 closed_at: null
 closed_reason: null
 history:
@@ -39,6 +61,8 @@ history:
     change: "Created — Testingcatalog reported Kimi K3 'teased officially' (2026-07-15 22:38 UTC); @AndrewCurran_ separately reports it live-testing in a model arena under stealth codename 'Kivine,' with early tester reports near-parity with Fable 5. Not yet publicly shipped as of the 2026-07-16 08:00 UTC cycle, continuing a multi-day rumor thread → status in-testing, verification partial (arena sighting + tease, no primary Moonshot statement)."
   - ts: 2026-07-21
     change: "Official @Kimi_Moonshot account announced pausing new subscriptions (existing members unaffected) after demand pushed close to capacity limits over the prior 48h, and announced membership will split into separate 'Kimi Membership' and 'Kimi Code Membership' plans. Widely re-shared (@deedydas, @GavinSBaker, @quxiaoyin, @testingcatalog). A capacity-constrained, oversubscribed paid product is definitionally public and shipped → status advanced from in-testing to released; verification advanced to confirmed (official company account, primary source)."
+  - ts: 2026-07-22
+    change: "Corroboration + specs, no status change. Moonshot's own framing (relayed by @ryqwzrbuilds): 2.8T-parameter open model, apps/API live now, full weights due 2026-07-27. Epoch AI: 156 on the Epoch Capabilities Index, a new open-weights record, between Claude Opus 4.6 and GPT-5.4 (via @rohanpaul_ai/@EpochAIResearch RT); separately 2nd on the AA-Briefcase agentic benchmark, near Fable 5, at ~$10.57/task (~10x K2.6's cost, above Opus). @theinformation: Microsoft is evaluating K3 for Copilot features previously handled by OpenAI/Anthropic models (internal testing only, no release date/pricing). A JPMorgan note frames K3 as re-rating Zhipu AI's competitive narrative (@AlphaWireNewsAi). Status stays released; verification stays confirmed."
 ---
 
 **Moonshot AI's** next flagship coding/reasoning model, **Kimi K3**, is
