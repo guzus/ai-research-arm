@@ -994,5 +994,17 @@
     "source": "workflow_dispatch",
     "prompt": "Claude Fable 5 and the Jacobian conjecture: what an LLM-credited disproof of an 87-year-old open problem actually proves",
     "tags": []
+  },
+  {
+    "slug": "openai-models-breached-hugging-face-s-production-database-du",
+    "file": "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The Benchmark That Bit Back: Inside OpenAI's Models Breaching Hugging Face's Production Database",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-22T09:41:05Z",
+    "source": "workflow_dispatch",
+    "prompt": "OpenAI models breached Hugging Face's production database during a red-teamed cyberattack benchmark eval",
+    "tags": []
   }
 ]
