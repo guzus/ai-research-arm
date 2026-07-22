@@ -6,8 +6,9 @@ aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsof
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
 description: Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable "editorially controlled" (2026-07-18) despite Microsoft's $5B stake in Anthropic.
 created_at: 2026-06-03
-timestamp: 2026-07-18T00:00:00Z
+timestamp: 2026-07-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
@@ -118,6 +119,14 @@ Microsoft holds a **$5B stake** in, and the sharpest public friction yet
 between a major AI investor and its portfolio company, landing in the same
 window Microsoft is building out its own competing first-party MAI stack
 (ARA digest 2026-07-18).
+
+**Multi-billion-dollar Mistral infrastructure deal (2026-07-21).** Microsoft
+and French AI lab Mistral struck a multi-billion-dollar deal to build AI
+infrastructure across Europe — a distribution/compute tie-up distinct from
+Microsoft's first-party MAI model push, extending Microsoft's hedged,
+multi-partner posture (own models plus [[openai]], [[anthropic]] in Foundry,
+now Mistral compute) into the European market specifically (ARA digest
+2026-07-22).
 
 ## Open questions
 

@@ -6,8 +6,10 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth "a few billions" ahead of a planned IPO (2026-07-19).
 created_at: 2026-05-24
-timestamp: 2026-07-21T00:00:00Z
+timestamp: 2026-07-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
+  - {title: "ARA model ticket — Anthropic $1.5B author copyright settlement approved", path: research/models/tickets/anthropic-copyright-settlement-approved-2026-07.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
@@ -708,6 +710,15 @@ The October 2026 IPO target lands inside the
 [[california-ai-regulation|California regulatory window]]: the Transparency in
 Frontier AI Act + AB 1609 chatbot disclosure are the binding compliance shape
 of the listing.
+
+- **$1.5B author copyright settlement approved by a federal judge (2026-07-22).**
+  A federal judge granted **final approval** to Anthropic's **$1.5 billion**
+  settlement with authors who alleged their books were used without
+  permission to train Claude — described as the largest copyright
+  class-action settlement in US history. Only **350 authors opted out** of
+  the class action. Reporting indicates the ruling treats training on
+  copyrighted books as fair use, but storing millions of pirated copies is
+  not — the settlement covers the latter (ARA digest 2026-07-22).
 
 ## Open questions
 - **Gated frontier strategy.** Anthropic has signaled no public release of

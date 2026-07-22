@@ -6,8 +6,10 @@ aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qw
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
 description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon, even as it continues fighting a US DoD PLA-linked designation.
 created_at: 2026-07-05
-timestamp: 2026-07-21T00:00:00Z
+timestamp: 2026-07-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
+  - {title: "ARA model ticket — Qwen-Image-3.0 release", path: research/models/tickets/alibaba-qwen-image-3-2026-07.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
@@ -101,6 +103,15 @@ friction point distinct from Qwen's own model-release cadence.
   with no benchmark table published yet, continuing the pattern of
   Qwen3.8-Max preview builds underdelivering relative to launch-week
   claims (ARA digest 2026-07-21).
+
+- **Qwen-Image-3.0 and Qwen Audio 3.0 TTS Plus ship (2026-07-21/22).**
+  Alibaba released **Qwen-Image-3.0**, a new image-generation model
+  emphasizing knowledge-grounded detail — capable of rendering full
+  infographic grids and readable ten-pixel text in a single pass, and a top-10
+  Hacker News story two runs in a row (up to 514 pts). Separately, **Qwen
+  Audio 3.0 TTS Plus** is reported to top the competition in text-to-speech
+  rankings. Both are Alibaba's separate image/audio product lines, distinct
+  from the Qwen3.8-Max text model tracked above (ARA digest 2026-07-22).
 
 ## Open questions
 
