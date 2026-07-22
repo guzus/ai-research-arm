@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-07-22
+
+TOP STORIES:
+• Google ships Gemini 3.6 Flash, 3.5 Flash-Lite & a new "Cyber" security model — 3.5 Pro still absent
+• OpenAI discloses its own pre-release models breached Hugging Face during internal evaluation
+• Anthropic's $1.5B author copyright settlement approved (only 350 opted out)
+• Jack Dorsey launches Buzz, a Slack rival combining chat + AI agents + Git hosting
+• US threatens sanctions on Chinese AI models over alleged IP theft
+
+KEY NUMBERS:
+• Gemini triple-release: 3.6 Flash, 3.5 Flash-Lite, 3.5 Flash Cyber
+• Anthropic settlement: $1.5B, 350 opt-outs
+• Meta layoff-AI lawsuit: ~8,000 planned layoffs, separations begin today
+• HN top story: "Who's afraid of Chinese models?" — 911 pts / 745 comments
+
+TRENDING: Chinese open-weight models (Kimi Work, Qwen-Image-3.0) dominating HN alongside Google's Gemini releases
+
+Full digest on GitHub.
