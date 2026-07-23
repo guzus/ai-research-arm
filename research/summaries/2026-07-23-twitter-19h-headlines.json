@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "HUGGING FACE COFOUNDER CONFIRMS CLOSED MODEL ATTACKED, OPEN MODEL DEFENDED IN SANDBOX-ESCAPE INCIDENT",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2080343858022354975",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI COFOUNDER SCHULMAN PUBLICLY CALLS FOR FULL TRANSCRIPT OF HUGGING FACE HACK",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2080338214125187344",
+    "category": "policy"
+  },
+  {
+    "headline": "BLACK FOREST LABS OFFICIALLY LAUNCHES FLUX 3 — 20-SECOND MULTIMODAL VIDEO WITH AUDIO",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2080319815072555031",
+    "category": "model"
+  },
+  {
+    "headline": "GROK 4.5 ROLLOUT COMPLETE ACROSS X, WEB, IOS AND ANDROID",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2080373314938130719",
+    "category": "model"
+  },
+  {
+    "headline": "LEAKED WENFENG CALL: DEEPSEEK INFERENCE MARGINS ~85%, HUAWEI 950DT CLAIMED TO MATCH GB300 AT 1:4 RATE",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2080365478346735675",
+    "category": "business"
+  },
+  {
+    "headline": "AI CHIP STARTUP ETCHED RAISES $300M SERIES C AT $10.3B VALUATION",
+    "source": "@jxnlco",
+    "url": "https://x.com/jxnlco/status/2080316145559544066",
+    "category": "business"
+  },
+  {
+    "headline": "GOOGLE DEEPMIND LAUNCHES GEMINI 3.5 FLASH CYBER FOR GOVERNMENT VULNERABILITY-PATCHING PILOT",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2080321516814647630",
+    "category": "infra"
+  }
+]
