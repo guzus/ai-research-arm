@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-07-22T00:00:00Z
+timestamp: 2026-07-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
@@ -440,7 +441,11 @@ footing for the first time in the cycle.
   executive order, Entity List additions, procurement rules). Extends the
   administration's push to slow China's AI progress from reported internal
   deliberation to an on-record cabinet-level statement (ARA digest
-  2026-07-22).
+  2026-07-22). The specific technical allegation behind this — that
+  [[moonshot-kimi-k3|Kimi K3]] was distilled from [[anthropic|Anthropic]]'s
+  [[claude-fable-5|Fable]] model — surfaced as the most-argued Hacker News
+  AI thread of 2026-07-22, carried into the 2026-07-23 cycle; see
+  [[moonshot-kimi-k3]] (ARA digest 2026-07-23).
 
 ## Open questions
 

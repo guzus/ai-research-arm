@@ -6,8 +6,9 @@ aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open 
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
 description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); pending a $30B+ Hong Kong IPO on breakout demand, even as GPU strain forced a new-subscriber pause and a contested ECI methodology now reads the US-China gap as widening, not narrowing.
 created_at: 2026-07-17
-timestamp: 2026-07-22T00:00:00Z
+timestamp: 2026-07-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
@@ -116,6 +117,22 @@ covering it.
   extending Moonshot's push from a model release into a shipped agentic
   product, alongside Alibaba's [[alibaba|Qwen-Image-3.0]] and Google's
   [[gemini-3-6-flash]] the same cycle (ARA digest 2026-07-22).
+
+- **A distillation-from-Fable allegation names the specific claim behind
+  the Treasury sanctions warning (2026-07-22, carried 2026-07-23).** A
+  claim that Kimi K3 was "distilled from [[anthropic|Anthropic]]'s
+  [[claude-fable-5|Fable]]" model — sourced to a tweet — became the
+  most-argued Hacker News AI thread of the day (444 comments). White House
+  officials reportedly cited this specific distillation claim in accusing
+  Moonshot, which is the concrete allegation underlying **Treasury Secretary
+  Scott Bessent's on-record warning that the US could sanction Chinese
+  open-weight AI models** — already tracked on [[federal-ai-policy]] as of
+  2026-07-22 (that entry named Kimi K3 and Qwen over "alleged IP theft"
+  generically; this is the specific technical claim — distillation from
+  Fable — behind it). As with the earlier US-China capability-gap dispute,
+  the underlying distillation claim itself remains sourced to social media,
+  not a primary technical analysis; see [[federal-ai-policy]] (ARA digest
+  2026-07-23).
 
 ## Open questions
 
