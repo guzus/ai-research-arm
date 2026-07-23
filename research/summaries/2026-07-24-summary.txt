@@ -1,0 +1,16 @@
+AI News - 2026-07-24
+
+TOP STORIES:
+• Cognition (Devin) acquires Poke maker Interaction Company, merging coding + texting agents
+• Samsung in talks to invest ~€1B in Mistral at €20B valuation
+• OpenAI launches Presence, a managed enterprise voice/chat agent platform
+• Microsoft swaps its own MAI-Image-2.5-Pro into PowerPoint/Bing, replacing OpenAI's image models
+• Amazon cuts AGI-unit jobs despite ~$200B planned AI infra spend
+
+KEY NUMBERS:
+• Mistral valuation could reach €20B (~$22.8B), up from €11.7B 10 months ago
+• Poke has handled 100M+ messages in the last 3 months
+• Microsoft claims 84% lower GPU cost vs GPT-Image-2
+• GPT-5.5 drops from 82.7% to 43.3% on new chained-reasoning benchmark
+
+Full report on GitHub.
