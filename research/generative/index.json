@@ -1026,5 +1026,17 @@
       "china",
       "policy"
     ]
+  },
+  {
+    "slug": "why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul",
+    "file": "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Why Hims &amp; Hers Is Betting on Peptide Therapy—and What It Could Mean for Everyday Patients",
+    "model": "kimi-k3",
+    "created_at": "2026-07-23T17:31:42Z",
+    "source": "workflow_dispatch",
+    "prompt": "Why Hims & Hers Is Betting on Peptide Therapy—and What It Could Mean for Everyday Patients. Write for readers unfamiliar with pharmaceuticals and telehealth: explain what peptide therapies are, why they are becoming popular, what Hims & Hers is planning, what the FDA is deciding, the potential benefits and safety concerns, and whether Hims could make these treatments more legitimate and accessible—or simply commercialize an under-tested wellness trend. Clearly distinguish 503A compounded treatments from FDA-approved drugs, and treat the July 23–24, 2026 advisory meeting as a non-binding review rather than an FDA approval.",
+    "tags": []
   }
 ]

@@ -1,0 +1,172 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "The FDA Pharmacy Compounding Advisory Committee met July 23-24, 2026 to review seven peptides (BPC-157, KPV, TB-500, MOTS-c, emideltide, Semax, epitalon) for possible addition to the 503A bulk drug substances list.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.npr.org/2026/07/22/nx-s1-5902329/peptides-fda-compounding", "https://www.citizen.org/article/outrage-of-the-month-the-fda-peptides-and-rfk-jr/"],
+      "source_tiers": ["secondary", "secondary"]
+    },
+    {
+      "id": "c2",
+      "claim": "FDA career scientists recommended in late-June 2026 briefing documents against loosening compounding restrictions on all seven peptides, citing primarily preclinical evidence.",
+      "type": "regulatory",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.npr.org/2026/07/22/nx-s1-5902329/peptides-fda-compounding", "https://www.hngn.com/articles/272264/20260722/fda-panel-review-7-peptides-agency-scientists-warn-evidence-insufficient.htm"],
+      "source_tiers": ["secondary", "secondary"]
+    },
+    {
+      "id": "c3",
+      "claim": "The advisory committee's recommendation is non-binding; the FDA is not required to follow it, and even reclassification to Category 1 would not constitute FDA drug approval.",
+      "type": "regulatory",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.theguardian.com/us-news/2026/jun/26/fda-peptide-restrictions", "https://www.citizen.org/article/outrage-of-the-month-the-fda-peptides-and-rfk-jr/"],
+      "source_tiers": ["secondary", "secondary"]
+    },
+    {
+      "id": "c4",
+      "claim": "In 2023 the FDA placed 19 research peptides in Category 2 (too risky for compounding), citing immunogenicity, impurity and insufficient-human-data concerns; in February 2026 HHS Secretary Kennedy moved 14 of them to a less restrictive category.",
+      "type": "regulatory",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.propublica.org/article/peptide-safety-fda-compounding-pharmacies", "https://www.hngn.com/articles/272264/20260722/fda-panel-review-7-peptides-agency-scientists-warn-evidence-insufficient.htm"],
+      "source_tiers": ["secondary", "secondary"]
+    },
+    {
+      "id": "c5",
+      "claim": "Hims & Hers acquired a US-based peptide facility in California in February 2025, adding to prior 503A and 503B pharmacy acquisitions.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://news.hims.com/newsroom/hims-hers-acquires-us-based-peptide-facility"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c6",
+      "claim": "Hims & Hers named Dr. Anant Vinjamoori Chief Medical Officer of the Hims brand on June 4, 2026, citing longevity medicine and peptide therapy among his remits, and Vinjamoori says Hims plans to offer peptides if the FDA reclassifies them.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://investors.hims.com/news/news-details/2026/Hims--Hers-Names-Dr--Anant-Vinjamoori-as-Chief-Medical-Officer-of-Hims/default.aspx", "https://www.npr.org/2026/07/22/nx-s1-5902329/peptides-fda-compounding"],
+      "source_tiers": ["primary", "secondary"]
+    },
+    {
+      "id": "c7",
+      "claim": "Wall Street analysts estimate telehealth peptide prescribing could reach $2.2 billion per year, with Hims & Hers potentially capturing up to $440 million if restrictions ease.",
+      "type": "forecast",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": ["https://www.theguardian.com/us-news/2026/jun/26/fda-peptide-restrictions", "https://www.dailymail.com/yourmoney/article-15933465/peptide-boom-fda-decision.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-29"
+    },
+    {
+      "id": "c8",
+      "claim": "Hims & Hers FY2025 revenue was $2.3476 billion, up 59% year over year, with 2.511 million subscribers at year end.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/1773751/000177375126000022/hims-20251231.htm"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-12-31"
+    },
+    {
+      "id": "c9",
+      "claim": "Hims & Hers Q1 2026 revenue grew 3.8% year over year to $608.1 million, US revenue fell 8%, and the company posted a net loss of $92.1 million versus net income of $49.5 million in Q1 2025.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/1773751/000177375126000076/hims-20260331.htm"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-03-31"
+    },
+    {
+      "id": "c10",
+      "claim": "Hims received two FDA warning letters in September 2025 regarding compounded semaglutide GLP-1 products, and the FDA's February 2026 statement on restricting mass-marketed compounded GLP-1 ingredients named Hims directly.",
+      "type": "regulatory",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/1773751/000177375126000022/hims-20251231.htm"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c11",
+      "claim": "Novo Nordisk filed a patent-infringement lawsuit against Hims & Hers on February 9, 2026 over compounded semaglutide products; HIMS stock fell from about $57 in September 2025 to $14.52 in February 2026.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/1773751/000177375126000022/hims-20251231.htm", "https://finance.yahoo.com/quote/HIMS/history/"],
+      "source_tiers": ["primary", "market-data"],
+      "as_of": "2026-07-24"
+    },
+    {
+      "id": "c12",
+      "claim": "FDA staff identified no human clinical studies for TB-500, no human exposure data for KPV, and 'insufficient evidence of effectiveness' for Semax; a theoretical addiction risk was flagged for emideltide.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.npr.org/2026/07/22/nx-s1-5902329/peptides-fda-compounding", "https://www.citizen.org/article/outrage-of-the-month-the-fda-peptides-and-rfk-jr/", "https://www.hngn.com/articles/272264/20260722/fda-panel-review-7-peptides-agency-scientists-warn-evidence-insufficient.htm"],
+      "source_tiers": ["secondary", "secondary", "secondary"]
+    },
+    {
+      "id": "c13",
+      "claim": "The 2012 fungal meningitis outbreak linked to the New England Compounding Center killed more than 60 people and led to the 2013 Drug Quality and Security Act.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.propublica.org/article/peptide-safety-fda-compounding-pharmacies"],
+      "source_tiers": ["secondary"]
+    },
+    {
+      "id": "c14",
+      "claim": "A Sermo poll of roughly 500 physicians found about 90% are worried about patients' self-directed peptide use.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": ["https://www.sermo.com/barometer-reports/the-peptide-frontier-what-500-physicians-are-seeing-before-regulators-act/", "https://www.theguardian.com/us-news/2026/jun/26/fda-peptide-restrictions"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-26"
+    },
+    {
+      "id": "c15",
+      "claim": "Two women became critically ill in 2025 after being injected with Category 2 peptides at a Las Vegas longevity conference (RAADFest).",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.propublica.org/article/peptide-safety-fda-compounding-pharmacies"],
+      "source_tiers": ["secondary"]
+    },
+    {
+      "id": "c16",
+      "claim": "If the FDA reclassifies the peptides for 503A compounding, clinicians could prescribe them beyond the narrow reviewed indications; the products would remain unapproved drugs.",
+      "type": "regulatory",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.npr.org/2026/07/22/nx-s1-5902329/peptides-fda-compounding", "https://www.citizen.org/article/outrage-of-the-month-the-fda-peptides-and-rfk-jr/"],
+      "source_tiers": ["secondary", "secondary"]
+    },
+    {
+      "id": "c17",
+      "claim": "Hims & Hers began providing access to compounded injectable semaglutide in May 2024, and the FDA resolved the semaglutide shortage on February 21, 2025, limiting 503B compounding of the drug.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/1773751/000177375126000022/hims-20251231.htm"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c18",
+      "claim": "The compounding industry's central argument is harm reduction: regulated 503A pharmacies would replace gray-market sourcing rather than eliminate demand, and peptides cannot attract patented-drug trial investment.",
+      "type": "market-structure",
+      "confidence": "high",
+      "risk": "contested",
+      "source_urls": ["https://www.npr.org/2026/07/08/nx-s1-5885073/fda-peptides-compounding-pharmacies", "https://www.propublica.org/article/peptide-safety-fda-compounding-pharmacies"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-24"
+    }
+  ]
+}
