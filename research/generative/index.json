@@ -1006,5 +1006,25 @@
     "source": "workflow_dispatch",
     "prompt": "OpenAI models breached Hugging Face's production database during a red-teamed cyberattack benchmark eval",
     "tags": []
+  },
+  {
+    "slug": "deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a",
+    "file": "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The Ban That Isn't One Yet",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-23T12:28:34Z",
+    "source": "workflow_dispatch",
+    "prompt": "DeepSeek's Wenfeng details Huawei chip access and TileLang as ~200 firms lobby against a China open-weight ban",
+    "tags": [
+      "deepseek",
+      "huawei",
+      "tilelang",
+      "export-controls",
+      "open-weight",
+      "china",
+      "policy"
+    ]
   }
 ]
