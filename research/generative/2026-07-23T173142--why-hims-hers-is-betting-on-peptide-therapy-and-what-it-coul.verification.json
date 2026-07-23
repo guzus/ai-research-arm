@@ -1,0 +1,112 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The FDA Pharmacy Compounding Advisory Committee met July 23-24, 2026 to review seven peptides for the 503A bulk list.",
+      "verdict": "supported",
+      "citation": "https://www.npr.org/2026/07/22/nx-s1-5902329/peptides-fda-compounding"
+    },
+    {
+      "id": "c2",
+      "text": "FDA career scientists recommended against loosening restrictions on all seven peptides.",
+      "verdict": "supported",
+      "citation": "https://www.hngn.com/articles/272264/20260722/fda-panel-review-7-peptides-agency-scientists-warn-evidence-insufficient.htm"
+    },
+    {
+      "id": "c3",
+      "text": "The advisory review is non-binding and reclassification would not equal FDA drug approval.",
+      "verdict": "supported",
+      "citation": "https://www.theguardian.com/us-news/2026/jun/26/fda-peptide-restrictions"
+    },
+    {
+      "id": "c4",
+      "text": "The FDA placed 19 peptides in Category 2 in 2023; Kennedy moved 14 to a less restrictive category in February 2026.",
+      "verdict": "supported",
+      "citation": "https://www.propublica.org/article/peptide-safety-fda-compounding-pharmacies"
+    },
+    {
+      "id": "c5",
+      "text": "Hims & Hers acquired a US-based peptide facility in California in February 2025.",
+      "verdict": "supported",
+      "citation": "https://news.hims.com/newsroom/hims-hers-acquires-us-based-peptide-facility"
+    },
+    {
+      "id": "c6",
+      "text": "Hims named Dr. Anant Vinjamoori CMO of Hims in June 2026 with peptide therapy in his remit, and plans to offer peptides if reclassified.",
+      "verdict": "supported",
+      "citation": "https://investors.hims.com/news/news-details/2026/Hims--Hers-Names-Dr--Anant-Vinjamoori-as-Chief-Medical-Officer-of-Hims/default.aspx"
+    },
+    {
+      "id": "c7",
+      "text": "Analysts estimate a $2.2B telehealth peptide market with up to $440M for Hims; the article frames this explicitly as an analyst projection, not a measured market.",
+      "verdict": "supported",
+      "citation": "https://www.theguardian.com/us-news/2026/jun/26/fda-peptide-restrictions"
+    },
+    {
+      "id": "c8",
+      "text": "Hims FY2025 revenue was $2.3476B (+59%) with 2.511M subscribers.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1773751/000177375126000022/hims-20251231.htm"
+    },
+    {
+      "id": "c9",
+      "text": "Hims Q1 2026 revenue was $608.1M (+3.8% YoY) with a $92.1M net loss.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1773751/000177375126000076/hims-20260331.htm"
+    },
+    {
+      "id": "c10",
+      "text": "Hims received two FDA warning letters in September 2025 and was named in the February 2026 FDA statement on compounded GLP-1s.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1773751/000177375126000022/hims-20251231.htm"
+    },
+    {
+      "id": "c11",
+      "text": "Novo Nordisk sued Hims for patent infringement on February 9, 2026.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1773751/000177375126000022/hims-20251231.htm"
+    },
+    {
+      "id": "c12",
+      "text": "No human clinical studies were identified for TB-500; no human exposure data for KPV; 'insufficient evidence of effectiveness' for Semax.",
+      "verdict": "supported",
+      "citation": "https://www.npr.org/2026/07/22/nx-s1-5902329/peptides-fda-compounding"
+    },
+    {
+      "id": "c13",
+      "text": "The 2012 NECC fungal meningitis outbreak killed more than 60 people.",
+      "verdict": "supported",
+      "citation": "https://www.propublica.org/article/peptide-safety-fda-compounding-pharmacies"
+    },
+    {
+      "id": "c14",
+      "text": "One Sermo poll of roughly 500 physicians suggests about 90% worry about patients' self-directed peptide use, as characterized by the Guardian.",
+      "verdict": "supported",
+      "citation": "https://www.theguardian.com/us-news/2026/jun/26/fda-peptide-restrictions"
+    },
+    {
+      "id": "c15",
+      "text": "Two women became critically ill after peptide injections at a 2025 Las Vegas longevity conference.",
+      "verdict": "supported",
+      "citation": "https://www.propublica.org/article/peptide-safety-fda-compounding-pharmacies"
+    },
+    {
+      "id": "c16",
+      "text": "If reclassified, clinicians could prescribe the peptides beyond the reviewed indications while the products remain unapproved.",
+      "verdict": "supported",
+      "citation": "https://www.npr.org/2026/07/22/nx-s1-5902329/peptides-fda-compounding"
+    },
+    {
+      "id": "c17",
+      "text": "Hims began compounded injectable semaglutide in May 2024; the FDA resolved the shortage on February 21, 2025.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1773751/000177375126000022/hims-20251231.htm"
+    },
+    {
+      "id": "c18",
+      "text": "The industry case is harm reduction plus the patent-economics argument that these peptides will never get approval trials.",
+      "verdict": "supported",
+      "citation": "https://www.npr.org/2026/07/08/nx-s1-5885073/fda-peptides-compounding-pharmacies"
+    }
+  ]
+}

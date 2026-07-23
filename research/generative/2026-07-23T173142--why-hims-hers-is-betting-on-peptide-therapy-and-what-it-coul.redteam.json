@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c2",
+      "claim_text": "FDA career scientists recommended against loosening compounding restrictions on all seven peptides under review at the July 23-24, 2026 meeting.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "c7",
+      "claim_text": "Wall Street analysts estimate telehealth peptide prescribing could reach $2.2 billion per year, with Hims & Hers potentially capturing up to $440 million.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "c9",
+      "claim_text": "Hims & Hers Q1 2026 revenue grew just 3.8% year over year to $608.1 million while the company swung to a $92.1 million net loss.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    }
+  ]
+}
