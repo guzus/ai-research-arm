@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth "a few billions" ahead of a planned IPO (2026-07-19).
 created_at: 2026-05-24
-timestamp: 2026-07-22T00:00:00Z
+timestamp: 2026-07-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA model ticket — Anthropic $1.5B author copyright settlement approved", path: research/models/tickets/anthropic-copyright-settlement-approved-2026-07.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
@@ -719,6 +720,19 @@ of the listing.
   the class action. Reporting indicates the ruling treats training on
   copyrighted books as fair use, but storing millions of pirated copies is
   not — the settlement covers the latter (ARA digest 2026-07-22).
+
+- **AMD deal firms up from evaluation to a $5B, 2GW commitment (2026-07-23).**
+  The 2026-07-21 SemiAnalysis report that Anthropic was *evaluating* AMD
+  hardware hardened into a signed deal: **AMD will invest up to $5B in
+  Anthropic**, which will deploy **up to 2 gigawatts of AMD Instinct MI450
+  GPUs** via AMD's new **Helios** rack-scale system for training and running
+  Claude — a concrete second chip-supplier line alongside the Samsung
+  custom-chip talks (2026-07-03) and Nvidia/Google TPU capacity, and a
+  further hedge against the single-vendor Nvidia dependence flagged across
+  the [[ai-capex]] supercycle. Lands the same day as Alphabet's Q2 earnings
+  and Anthropic's own $1.5B settlement news, making 2026-07-23 a stacked
+  Anthropic-adjacent news day (The Verge, The Decoder; ARA digest
+  2026-07-23).
 
 ## Open questions
 - **Gated frontier strategy.** Anthropic has signaled no public release of

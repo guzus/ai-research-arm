@@ -4,10 +4,11 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler and frontier-model builder behind Gemini; ordered by the EU under the DMA to open Android and Search to rivals (2026-07-17), the same day it rebranded NotebookLM into the Gemini product family.
+description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.
 created_at: 2026-07-17
-timestamp: 2026-07-22T00:00:00Z
+timestamp: 2026-07-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
@@ -59,6 +60,16 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   says Google is already training **Gemini 4**. The release was the top
   Hacker News story of the day (524 pts / 420 comments) (ARA digest
   2026-07-22).
+- **Q2 2026 earnings beat, Cloud up 82% (2026-07-22).** Alphabet's Q2 2026
+  print landed as the hardest [[ai-capex]] data point of the week — the
+  earnings report the theme flagged on 2026-07-20 as the thing the market
+  was pricing ahead of: **revenue $119.8B (+24% YoY, vs. $116.93B
+  consensus)**, **Google Cloud revenue up 82% to $24.77B**, ad revenue
+  $81.63B, YouTube ad revenue $11.06B. CEO Sundar Pichai credited
+  AI-infrastructure/solutions demand for the cloud acceleration — early
+  evidence that Alphabet's **~$175-190B 2026 AI capex guidance** is
+  converting into cloud revenue rather than sitting as unmonetized buildout
+  (9to5Google, CNBC; ARA digest 2026-07-23).
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-07-20T00:00:00Z
+timestamp: 2026-07-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
@@ -296,6 +297,29 @@ skepticism in one window:
   window. Read together: a capex-sentiment pullback with at least one
   concrete fundamental trigger (Gemini 3.5 Pro), not pure multiple
   compression (ARA digest 2026-07-20).
+
+- **The pullback meets its first hard fundamental test — Alphabet beats, and
+  the buildout keeps stacking (2026-07-22/23).** [[google|Alphabet's]] Q2 2026
+  print answered the question the 2026-07-20 semiconductor selloff was
+  pricing ahead of: **revenue $119.8B (+24% YoY)**, **Google Cloud up 82% to
+  $24.77B** — the clearest evidence yet that a hyperscaler's AI capex guidance
+  ($175-190B for 2026) is converting into monetized cloud revenue rather than
+  sitting as unmonetized buildout. The same 24-hour window stacked three more
+  infrastructure commitments: **AMD will invest up to $5B in [[anthropic]]**,
+  which will deploy up to 2GW of AMD Instinct MI450 GPUs via AMD's new Helios
+  rack-scale system; **[[openai|OpenAI]]'s Project Camellia (Georgia)** secured
+  a **3.2GW power deal through 2032** with an $80M community pledge; and
+  reporting put **OpenAI's cumulative AI infrastructure spending at ~$750B
+  through 2030** — "equivalent to Sweden's GDP." On the demand-side friction
+  ledger: the **US Army reportedly exhausted a year's supply of "unlimited" AI
+  tokens**, prompting new use limits — a concrete government-procurement
+  capacity constraint — and **~200 utilities and data-center developers signed
+  a "rate payer protection pledge"** aiming to shield consumers from
+  AI-driven electricity cost increases, amid continued public pushback on
+  data-center siting. Read together: real revenue conversion (Alphabet) and
+  real capital deployment (AMD, OpenAI) landing the same day as concrete signs
+  of strain at the edges (Army token limits, utility rate-payer politics) (ARA
+  digest 2026-07-23).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s
