@@ -1,12 +1,16 @@
 AI News - 2026-07-23
 
 TOP STORIES:
+• AMD to invest up to $5B in Anthropic under multi-gigawatt AI chip supply deal
 • Alphabet Q2 2026 beats: revenue $119.8B, Google Cloud up 82% to $24.77B on AI demand
+• China's PsiBot nears $1.48B valuation in new embodied-AI funding round
+• Anthropic releases Claude Security plugin in beta for Claude Code
 • OpenAI launches ChatGPT for Small Business program, touts 10M ChatGPT Work/Codex users
-• Jack Dorsey's Block launches Buzz, open-source Slack/GitHub rival for human+AI agent teams
 
 KEY NUMBERS:
+• AMD-Anthropic deal: up to $5B investment, up to 2GW of MI450 GPUs starting H1 2027
 • Alphabet Q2 revenue: $119.8B (+24% YoY); Cloud: $24.77B (+82% YoY)
+• PsiBot: ~$100M new round at $1.48B valuation (~$300M raised total)
 • OpenAI: 10M combined ChatGPT Work + Codex users
 
 Full report on GitHub.
