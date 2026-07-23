@@ -33,13 +33,26 @@ sources:
   - https://x.com/investor1397/status/2068230147606475240
   - "@gaze_observer"
   - "@investor1397"
+polymarket:
+  - event_slug: jio-platforms-ipo-byptptpt-20260629175823569
+    market_id: "2734705"
+    token_id: "106288975322599844817998715240962735449402266747474973473213248062206417629461"
+    question: "Will Jio Platforms IPO by July 31, 2026?"
+    outcome: "Jul 31 2026"
+  - event_slug: jio-platforms-ipo-byptptpt-20260629175823569
+    market_id: "2734708"
+    token_id: "87218132281162226192564134544957766898701908105269167897566982880770950467378"
+    question: "Will Jio Platforms IPO by December 31, 2026?"
+    outcome: "Dec 31 2026"
 created_at: 2026-06-20
-updated_at: 2026-06-20
+updated_at: 2026-07-23
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-20
     change: "Created — at Reliance's 49th AGM (2026-06-19) Mukesh Ambani moved Reliance Intelligence to execution: first 120 MW of Jamnagar AI compute by end-2026 (NVIDIA GB300 first phase, ~75k H100-equiv; scalable to >200k H100-equiv; Kutch solar-powered), free Google AI Pro (Gemini) for hundreds of millions of Jio users, a Meta/Llama JV, and a 22-language AI app suite. Same day, Jio Platforms filed a DRHP for a potential India-record IPO (~₹40,000 cr fresh issue; ~$120-150B est. valuation). Sourced from detailed secondary AGM recaps (no captured Reliance primary handle in-window) → status confirmed (official AGM event, multi-account corroboration), verification partial. @gaze_observer 2068232851724947827, @investor1397 2068230147606475240."
+  - ts: 2026-07-23
+    change: "Linked Polymarket IPO timing odds (metadata-only, no status change): Jio Platforms IPO by July 31 (market 2734705, Gamma snapshot ~14% Yes) and December 31, 2026 (market 2734708, Gamma snapshot ~59% Yes) in event jio-platforms-ipo-byptptpt-20260629175823569. Both markets require Jio's first public stock sale on a recognized exchange, exactly matching this ticket's pending IPO leg; IDs read from the Gamma API."
 ---
 
 At **Reliance Industries' 49th AGM on 2026-06-19**, Mukesh Ambani declared

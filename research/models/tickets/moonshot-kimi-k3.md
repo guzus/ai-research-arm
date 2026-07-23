@@ -52,8 +52,14 @@ sources:
   - "@rohanpaul_ai"
   - "@EpochAIResearch"
   - "@theinformation"
+polymarket:
+  - event_slug: moonshot-publishes-kimi-k3-weights-by-july-27-20260717164254847
+    market_id: "2962189"
+    token_id: "75115059341633093064218172577665054472726102773501095008666040339558881159279"
+    question: "Moonshot publishes Kimi K3 weights by July 27?"
+    outcome: "Jul 27 2026"
 created_at: 2026-07-16
-updated_at: 2026-07-22
+updated_at: 2026-07-23
 closed_at: null
 closed_reason: null
 history:
@@ -63,6 +69,8 @@ history:
     change: "Official @Kimi_Moonshot account announced pausing new subscriptions (existing members unaffected) after demand pushed close to capacity limits over the prior 48h, and announced membership will split into separate 'Kimi Membership' and 'Kimi Code Membership' plans. Widely re-shared (@deedydas, @GavinSBaker, @quxiaoyin, @testingcatalog). A capacity-constrained, oversubscribed paid product is definitionally public and shipped → status advanced from in-testing to released; verification advanced to confirmed (official company account, primary source)."
   - ts: 2026-07-22
     change: "Corroboration + specs, no status change. Moonshot's own framing (relayed by @ryqwzrbuilds): 2.8T-parameter open model, apps/API live now, full weights due 2026-07-27. Epoch AI: 156 on the Epoch Capabilities Index, a new open-weights record, between Claude Opus 4.6 and GPT-5.4 (via @rohanpaul_ai/@EpochAIResearch RT); separately 2nd on the AA-Briefcase agentic benchmark, near Fable 5, at ~$10.57/task (~10x K2.6's cost, above Opus). @theinformation: Microsoft is evaluating K3 for Copilot features previously handled by OpenAI/Anthropic models (internal testing only, no release date/pricing). A JPMorgan note frames K3 as re-rating Zhipu AI's competitive narrative (@AlphaWireNewsAi). Status stays released; verification stays confirmed."
+  - ts: 2026-07-23
+    change: "Linked Polymarket odds (metadata-only, no status change): 'Moonshot publishes Kimi K3 weights by July 27?' (event moonshot-publishes-kimi-k3-weights-by-july-27-20260717164254847, market 2962189, Gamma snapshot ~92% Yes). Resolution requires complete official K3 weights to be publicly downloadable—API-only, partial, converted, or third-party weights do not count—exactly matching this ticket's remaining open-weights milestone; IDs read from the Gamma API."
 ---
 
 **Moonshot AI's** next flagship coding/reasoning model, **Kimi K3**, is
