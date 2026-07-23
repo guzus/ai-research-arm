@@ -3,8 +3,9 @@
   "date": "2026-07-23",
   "hour": "03:00 UTC",
   "generated_at": "2026-07-23 03:38:10 UTC",
-  "run_id": "manual-session",
+  "run_id": "29977483415",
   "run_attempt": 1,
-  "status": "published",
-  "public_items": 7
+  "status": "no_update",
+  "public_items": 0,
+  "recovery": true
 }
