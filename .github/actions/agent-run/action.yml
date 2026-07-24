@@ -113,6 +113,10 @@ runs:
         FALLBACK_POLICY: ${{ inputs.fireworks-fallback }}
         FIREWORKS_API_KEY: ${{ inputs.fireworks-api-key }}
         ZAI_API_KEY: ${{ inputs.zai-api-key }}
+        # The claude probe needs the OAuth token to tell "credential dead"
+        # (401/403 → walk the chain) from "credential fine". Without it the
+        # probe reports the native path down and every lane reroutes.
+        CLAUDE_CODE_OAUTH_TOKEN: ${{ inputs.claude-code-oauth-token }}
       run: |
         set -euo pipefail
         args=(--github-output "$GITHUB_OUTPUT" --fallback-policy "${FALLBACK_POLICY:-claude}")

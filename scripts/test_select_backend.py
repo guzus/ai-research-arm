@@ -5,8 +5,10 @@ network is touched; chain-walk ORDER is the load-bearing behavior."""
 import contextlib
 import io
 import json
+import os
 import tempfile
 import unittest
+import unittest.mock
 from pathlib import Path
 
 import select_backend
@@ -136,6 +138,95 @@ class SelectBackendTest(unittest.TestCase):
     def test_missing_lane_and_backend_is_config_error(self):
         code, out, _ = self.run_select()
         self.assertEqual(code, 2)
+
+
+class ProbeClaudeTest(unittest.TestCase):
+    """Regression tests for the 2026-07-24 fleet-wide outage.
+
+    probe_claude used to hardcode "always available", so an expired
+    CLAUDE_CODE_OAUTH_TOKEN killed every agent lane with no route out.
+    The replacement must be sharp in BOTH directions: down on a real
+    credential rejection, up on anything else.
+    """
+
+    def setUp(self):
+        self._orig = select_backend.request_oauth_preflight
+        self.addCleanup(lambda: setattr(
+            select_backend, "request_oauth_preflight", self._orig))
+        os.environ["CLAUDE_CODE_OAUTH_TOKEN"] = "sk-ant-oat01-test"
+        self.addCleanup(os.environ.pop, "CLAUDE_CODE_OAUTH_TOKEN", None)
+
+    def stub(self, status, body='{"error":{"message":"x"}}'):
+        select_backend.request_oauth_preflight = (
+            lambda token, model, s=status, b=body: (s, b))
+
+    def test_auth_rejection_marks_claude_down(self):
+        for status in (401, 403):
+            with self.subTest(status=status):
+                self.stub(status)
+                available, reason = select_backend.probe_claude("claude-sonnet-5")
+                self.assertFalse(available)
+                self.assertIn(str(status), reason)
+
+    def test_healthy_and_non_auth_failures_keep_claude_up(self):
+        # 429 is what a live subscription OAuth token actually answers a raw
+        # 1-token API ping with — it must never be read as "credential dead",
+        # or a healthy fleet reroutes itself off Claude wholesale.
+        for status in (200, 429, 400, 500, 529):
+            with self.subTest(status=status):
+                self.stub(status)
+                available, _ = select_backend.probe_claude("claude-sonnet-5")
+                self.assertTrue(available)
+
+    def test_network_fault_fails_open(self):
+        def boom(token, model):
+            raise OSError("connection reset")
+        select_backend.request_oauth_preflight = boom
+        available, reason = select_backend.probe_claude("claude-sonnet-5")
+        self.assertTrue(available, "a transient blip must not reroute the fleet")
+        self.assertIn("inconclusive", reason)
+
+    def test_missing_token_marks_claude_down(self):
+        os.environ.pop("CLAUDE_CODE_OAUTH_TOKEN", None)
+        available, reason = select_backend.probe_claude("claude-sonnet-5")
+        self.assertFalse(available)
+        self.assertIn("not configured", reason)
+
+    def test_preflight_never_sends_x_api_key(self):
+        """The header that would strand the fleet on the fallback backend.
+
+        api.anthropic.com answers a healthy OAuth token with
+        `401 invalid x-api-key` when x-api-key is present, so reusing the
+        Fireworks-style preflight here would report Claude permanently dead.
+        """
+        captured = {}
+
+        class FakeResponse:
+            status = 200
+
+            def read(self):
+                return b"{}"
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *exc):
+                return False
+
+        def fake_urlopen(request, timeout=None):
+            captured["headers"] = {k.lower(): v for k, v in request.header_items()}
+            return FakeResponse()
+
+        with unittest.mock.patch.object(
+                select_backend.urllib.request, "urlopen", fake_urlopen):
+            status, _ = select_backend.request_oauth_preflight("tok", "claude-sonnet-5")
+
+        self.assertEqual(status, 200)
+        self.assertNotIn("x-api-key", captured["headers"])
+        self.assertEqual(captured["headers"]["authorization"], "Bearer tok")
+        self.assertEqual(
+            captured["headers"]["anthropic-beta"],
+            select_backend.ANTHROPIC_OAUTH_BETA)
 
 
 if __name__ == "__main__":

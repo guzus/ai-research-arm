@@ -75,34 +75,34 @@ Reading notes:
 | Lane | Workflow | Harness | Provider | Model | Token secret | Fallback |
 |---|---|---|---|---|---|---|
 | ai-news-research (×2 step variants) | `ai-news-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| arxiv | `daily-arxiv.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
-| bluesky | `2h-bluesky.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
+| arxiv | `daily-arxiv.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
+| bluesky | `2h-bluesky.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | claude-code-review | `claude-code-review.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | claude-interactive | `claude.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| community | `4h-community.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
+| community | `4h-community.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | daily-improve | `daily-improve.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| digest-audio-script | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted); then `deterministic_daily_digest.py` |
-| digest-synthesis | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted); then `deterministic_daily_digest.py` |
-| digest-synthesis-fallback | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted); then `deterministic_daily_digest.py` |
+| digest-audio-script | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
+| digest-synthesis | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
+| digest-synthesis-fallback | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
 | generative-research-claude (+1 retry step) | `generative-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | generative-research-default | `generative-research.yml` | dispatch default (runtime SSOT) | (per chosen backend) | default: `claude` | (per chosen backend) | workflow-level `fireworks_fallback` input (default `claude`) |
-| model-timeline | `24h-model-timeline.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
+| model-timeline | `24h-model-timeline.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | research-issue (×2 step variants) | `research-issue.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| rss | `hourly-rss.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
+| rss | `hourly-rss.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | twitter-ab-claude · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
 | twitter-ab-judge · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
 | twitter-ab-judge-swapped · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
 | twitter-ab-zai · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
 | twitter-account-explorer | `twitter-account-explorer.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| twitter-autoresearch (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
+| twitter-autoresearch (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | twitter-deepseek (tier:deepseek-claude-code) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | DeepSeek V4 Flash via Fireworks | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | hard fail (strict — never walks the chain) |
 | twitter-deepseek-pi (tier:deepseek-pi) | `hourly-twitter.yml` | pi · run-pi-container (CI-enforced mirror) | fireworks (pi built-in) | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | — |
 | twitter-fireworks-pi (tier:fireworks-pi) | `hourly-twitter.yml` | pi · run-pi-container (CI-enforced mirror) | fireworks (pi built-in) | `accounts/fireworks/models/kimi-k2p7` | `FIREWORKS_API_KEY` | — |
-| twitter-judge (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
-| twitter-primary (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted); then `deterministic_twitter_digest.py` |
-| twitter-primary-repair (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
+| twitter-judge (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
+| twitter-primary (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_twitter_digest.py` |
+| twitter-primary-repair (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | twitter-zai (tier:zai-glm-5p2) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
-| wiki-ingest | `wiki-ingest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (chain exhausted) |
+| wiki-ingest | `wiki-ingest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | zai-canary · PINNED | `zai-claude-code-canary.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
 | (dispatch path) backend=fireworks (+2 retry steps) | `generative-research.yml` | Claude Code · claude-code-action (env-rerouted) | Fireworks (Anthropic-compatible endpoint) | dynamic: per fireworks profile step | `FIREWORKS_API_KEY` | workflow-level `fireworks_fallback` input (default `claude`) |
 | (dispatch path) backend=codex | `generative-research.yml` | Codex CLI | OpenAI (ChatGPT subscription auth) | codex CLI default | `CODEX_AUTH_JSON` | — |
@@ -121,7 +121,7 @@ Reading notes:
 - `daily-youtube.yml`
 - `liveness-check.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude`; native path serves `claude-sonnet-5`. 30 SSOT lanes (+5 dispatch execution paths) across 26 workflows; 8 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-sonnet-5`. 30 SSOT lanes (+5 dispatch execution paths) across 26 workflows; 8 workflows run no model._
 
 <!-- END GENERATED BACKEND MATRIX -->
 

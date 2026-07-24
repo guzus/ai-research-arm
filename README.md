@@ -173,8 +173,9 @@ flowchart LR
     native -->|"claude-sonnet-5"| ANT
     gendef -.->|"backend=codex"| OAI
     gendef -.->|"backend=opencode-kimi-k3"| MSH
+    ANT -. "provider outage → fallback #1" .-> ZAI
 ```
-_Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `claude`; regenerate with `uv run python scripts/build_backend_matrix.py`._
+_Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `claude` → `zai-glm-5p2`; regenerate with `uv run python scripts/build_backend_matrix.py`._
 <!-- END GENERATED BACKEND DIAGRAM -->
 
 ## Sources

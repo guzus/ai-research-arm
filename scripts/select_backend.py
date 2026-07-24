@@ -11,8 +11,17 @@ Candidate order: [requested backend] + fallback.chain, deduplicated (a
 zai-primary lane whose chain starts with the same zai backend skips it).
 Probes: fireworks → tiny /v1/messages preflight (reuses
 check_fireworks_backend); zai → same-shape probe against the Z.ai
-Anthropic-compatible endpoint; claude → always available (the OAuth token
-is a hard requirement of the action schema).
+Anthropic-compatible endpoint; claude → OAuth-token auth probe against
+api.anthropic.com that is UNAVAILABLE only on an explicit credential
+rejection (401/403) and available on anything else.
+
+Why the claude probe is auth-only (2026-07-24 incident): this probe used
+to hardcode "always available", so when CLAUDE_CODE_OAUTH_TOKEN expired
+every agent lane in the fleet died instantly (is_error, 1 turn, $0) with
+no route out — the chain could not move past a backend it always believed
+was up. It stays deliberately narrow in the other direction too: a 429,
+5xx, or network blip must NOT reroute a healthy fleet away from Claude,
+so only a real auth rejection counts as down.
 
 Strictness: `--fallback-policy none` or a lane with `"strict": true`
 disables the chain — the requested backend is the only candidate and its
@@ -29,6 +38,8 @@ import argparse
 import json
 import os
 import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -39,6 +50,40 @@ DEFAULT_FILE = REPO_ROOT / "data" / "agent-backends.json"
 
 FIREWORKS_ENDPOINT = "https://api.fireworks.ai/inference"
 ZAI_ENDPOINT = "https://api.z.ai/api/anthropic"
+ANTHROPIC_ENDPOINT = "https://api.anthropic.com"
+# Beta header the Claude Code OAuth flow sends; without it a Bearer OAuth
+# token is not guaranteed to be accepted on /v1/messages.
+ANTHROPIC_OAUTH_BETA = "oauth-2025-04-20"
+
+
+def request_oauth_preflight(token: str, model: str) -> tuple[int, str]:
+    """1-token ping that authenticates the way claude-code-action does.
+
+    Deliberately does NOT send x-api-key (see probe_claude).
+    """
+    payload = json.dumps(
+        {
+            "model": model,
+            "max_tokens": 1,
+            "messages": [{"role": "user", "content": "ping"}],
+        }
+    ).encode()
+    request = urllib.request.Request(
+        ANTHROPIC_ENDPOINT.rstrip("/") + "/v1/messages",
+        data=payload,
+        method="POST",
+        headers={
+            "anthropic-version": "2023-06-01",
+            "anthropic-beta": ANTHROPIC_OAUTH_BETA,
+            "authorization": f"Bearer {token}",
+            "content-type": "application/json",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            return response.status, response.read().decode("utf-8", errors="replace")
+    except urllib.error.HTTPError as error:
+        return error.code, error.read().decode("utf-8", errors="replace")
 
 
 def config_error(msg: str) -> int:
@@ -73,7 +118,32 @@ def probe_zai(model: str) -> tuple[bool, str]:
 
 
 def probe_claude(model: str) -> tuple[bool, str]:
-    return True, "native path (claude-code-action OAuth)"
+    """Report the native Claude OAuth path down ONLY on a credential rejection.
+
+    The Claude Code OAuth token authenticates with `authorization: Bearer`
+    plus the oauth beta header. It must NOT be sent as `x-api-key` — the
+    Anthropic API answers a perfectly healthy OAuth token with
+    `401 invalid x-api-key` when that header is present, which is exactly
+    how a naive reuse of request_preflight() would strand the whole fleet
+    on the fallback backend. Hence a dedicated request here.
+
+    A healthy token typically answers this 1-token ping with 200 or 429
+    (subscription tokens are rate-limited on raw API pings); both mean
+    "credential is alive". Only 401/403 mean the token itself is dead.
+    """
+    token = os.environ.get("CLAUDE_CODE_OAUTH_TOKEN", "").strip()
+    if not token:
+        return False, "CLAUDE_CODE_OAUTH_TOKEN is not configured"
+    try:
+        status, body = request_oauth_preflight(token, model or "claude-sonnet-5")
+    except Exception as exc:  # noqa: BLE001 - a probe must not crash selection
+        # Fail OPEN: a transient network fault is not evidence the
+        # credential is dead, and rerouting the fleet on a blip is worse
+        # than letting the agent step surface the real error.
+        return True, f"native path (OAuth probe inconclusive: {redact(str(exc))})"
+    if status in (401, 403):
+        return False, f"HTTP {status}: {extract_message(status, body)}"
+    return True, f"native path (claude-code-action OAuth; probe HTTP {status})"
 
 
 PROBES = {
