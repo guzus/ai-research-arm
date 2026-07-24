@@ -1,0 +1,9 @@
+Speaker 1: Saturday, July twenty-fifth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic just launched Claude Opus five, landing near Fable five performance at half the token price. It rocketed to number one on Hacker News with [emphasis] six hundred eighty points [/emphasis] and three hundred eighty six comments.
+Speaker 1: Black Forest Labs shipped Flux three today too, their new image model, paired with a video-action companion called Flux three X Mimic.
+Speaker 2: On the hardware side, Nvidia, Microsoft, and Meta are all pushing back against overregulating open-weight AI, right in the middle of the ongoing US-China policy debate.
+Speaker 1: Some quick numbers. A new optimizer called SkewAdam is cutting MoE memory use by [emphasis] ninety seven point four percent [/emphasis], dropping requirements from fifty point six gigabytes down to just one point two nine gigabytes.
+Speaker 2: [dramatic_pause] And a reality check on vision benchmarks, GPT five point five scored just ten point six percent on the new ActiveVision benchmark, compared to a ninety six point one percent human baseline.
+Speaker 1: In deal news, Cognition acquired the AI companion app Poke, and Midjourney picked up the astrology app Co-Star.
+Speaker 2: Worth noting, there's real skepticism trending around OpenAI's so-called rogue hacker agent story, right alongside all the Opus five and Flux three buzz.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
