@@ -1,0 +1,10 @@
+Daily AI Digest - 2026-07-25 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] Runway launches AI model router as generative media gets crowded - 2026-07-23 17:07 UTC
+• [Hacker News] AI Companies Are Trying to Hide a Staggering Amount of Debt: Futurism piece on AI labs/hyperscalers…
+• [Reddit] Prompt Injection in NeurIPS 2026? [D] — https://www.reddit.com/r/MachineLearning/comments/1v4j1uk/p…
+
+SOURCES: 3/8 lanes had data; missing: Twitter/X, Expert Blogs, Bluesky, arXiv Papers, YouTube
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
