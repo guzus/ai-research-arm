@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-24 22:40:03 UTC
+
+CYCLE: Anthropic's Opus 5 launch dominates, as an open-weights coalition led by NVIDIA+Microsoft presses Washington and Musk commits xAI to a fast Grok cadence.
+
+TOP STORIES:
+• Anthropic ships Claude Opus 5 — near-frontier Fable 5 intelligence at ~half the cost, new SOTA on agentic coding (Frontier-Bench 43.3%); multi-source confirmed, cost ratios vendor-reported [✓]
+• Open-weights coalition opens with Jensen Huang's first X post + Satya letter urging no open-weight limits; OpenAI, Anthropic, Google, xAI didn't sign [✓]
+• Musk pegs Grok 4.6 in ~2 weeks / 4.7 in ~4, claims Grok 4.5 + Opus 5 alone on Pareto frontier — single-source, dates falsifiable [⚠]
+
+WATCH: Independent Opus 5 benchmarks (LMArena, SWE-bench, Aider) in 24-48h test whether the coding/ARC-AGI lead holds outside Anthropic's harness.
+
+Full update on GitHub.
