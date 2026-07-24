@@ -25,7 +25,7 @@ Hacker News: AI Companies Are Trying to Hide a Staggering Amount of Debt: Futuri
 Reddit: Prompt Injection in NeurIPS 2026? D — https://www.reddit.com/r/MachineLearning/comments/1v4j1uk/promptinjectioninneurips2026d/
 :::
 
-:::figure(src="https://techcrunch.com/wp-content/uploads/2026/07/Runway-Media-Router.png?resize=1200,793", alt="Runway launches AI model router as generative media gets crowded", caption="RSS / Official Announcements: Runway launches AI model router as generative media gets crowded - 2026-07-23 17:07 UTC", source-url="https://techcrunch.com/2026/07/23/runway-bets-on-ai-model-routing-as-generative-media-gets-crowded/", variant=wide)
+:::figure(src="https://the-decoder.com/wp-content/uploads/2026/07/claude_opus_5_logo-scaled.webp", alt="Anthropic claims its new Claude Opus 5 delivers near-Fable 5 performance at half the token price", caption="Anthropic claims its new Claude Opus 5 delivers near-Fable 5 performance at half the token price", source-url="https://the-decoder.com/anthropic-claims-its-new-claude-opus-5-delivers-near-fable-5-performance-at-half-the-token-price/", variant=wide)
 :::
 
 :::briefs(id="briefs-breaking-policy", title="Breaking & Policy", columns=2)
