@@ -1,10 +1,16 @@
-Daily AI Digest - 2026-07-25 (deterministic fallback)
+Daily AI Digest - 2026-07-25
 
-TOP OF EACH LANE:
-• [RSS / Official Announcements] Runway launches AI model router as generative media gets crowded - 2026-07-23 17:07 UTC
-• [Hacker News] AI Companies Are Trying to Hide a Staggering Amount of Debt: Futurism piece on AI labs/hyperscalers…
-• [Reddit] Prompt Injection in NeurIPS 2026? [D] — https://www.reddit.com/r/MachineLearning/comments/1v4j1uk/p…
+TOP STORIES:
+• Anthropic launches Claude Opus 5 — near-Fable 5 perf at half the token price (#1 on HN, 680 pts)
+• Black Forest Labs ships Flux 3 image model + Flux 3 X Mimic video-action companion
+• Nvidia, Microsoft, Meta warn against overregulating open-weight AI amid US-China policy debate
+• Cognition acquires AI-companion app Poke; Midjourney acquires astrology app Co-Star
 
-SOURCES: 3/8 lanes had data; missing: Twitter/X, Expert Blogs, Bluesky, arXiv Papers, YouTube
+KEY NUMBERS:
+• Claude Opus 5: 680 pts / 386 comments on HN
+• SkewAdam optimizer: cuts MoE memory 97.4% (50.6GB to 1.29GB)
+• GPT-5.5 scores 10.6% on ActiveVision benchmark vs. 96.1% human baseline
 
-Verbatim, unranked lane excerpts. Full digest on GitHub.
+TRENDING: Claude Opus 5 and Flux 3 dominate HN; skepticism on OpenAI's "rogue hacker agent" story also trending.
+
+Full digest on GitHub.
