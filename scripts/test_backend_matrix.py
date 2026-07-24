@@ -48,10 +48,24 @@ class RoutingInvariants(unittest.TestCase):
         chain = self.fallback["chain"]
         self.assertIsInstance(chain, list)
         self.assertGreaterEqual(len(chain), 1)
-        # Terminal claude guarantees selection always succeeds when the
-        # OAuth token exists. Deliberate invariant — change it only if you
-        # accept lanes that can hard-fail with every provider down.
-        self.assertEqual(self.profiles[chain[-1]].provider, "claude")
+        # The chain LEADS with native Claude: it is the default backend and
+        # the model every lane prompt is tuned against.
+        self.assertEqual(self.profiles[chain[0]].provider, "claude")
+        # ...but it must not TERMINATE there. The old invariant pinned
+        # claude last, reasoning that "terminal claude guarantees selection
+        # always succeeds when the OAuth token exists". 2026-07-24 falsified
+        # the premise: the token existed and was dead, selection duly
+        # "succeeded" onto Claude, and every agent lane in the fleet failed
+        # instantly with no route out. Selection succeeding is worthless if
+        # the selected backend cannot serve. Require a second provider so a
+        # single dead credential cannot strand the whole fleet.
+        providers = [self.profiles[key].provider for key in chain]
+        self.assertGreaterEqual(
+            len(set(providers)), 2,
+            "fallback.chain must span >=2 providers so one dead credential "
+            f"cannot take down every agent lane; got {providers}",
+        )
+        self.assertEqual(len(chain), len(set(chain)), "chain has duplicates")
         self.assertTrue(self.fallback["native_model"])
 
     def test_every_agent_run_lane_backend_has_a_profile(self):

@@ -60,9 +60,34 @@ jobs:
       - name: Pull latest changes
         run: git pull origin main || true
 
+      # The digest is named for the day it was SCHEDULED for, in UTC — not
+      # for whatever the runner's wall clock reads when the job finally
+      # starts. Two bugs converged here on 2026-07-24: a runner outage held
+      # the 00:00Z run queued until 16:13Z, and this step called bare `date`
+      # (runner-local, KST=UTC+9) while every label in the pipeline says UTC.
+      # By start time local had rolled over, so the run published a
+      # 2026-07-25 digest and 2026-07-24 got no digest at all. Anchoring to
+      # the run's creation timestamp keeps a late run on its own day; `date
+      # -u` is the fallback if the API call fails. For an on-time run both
+      # agree, so this is a no-op on the happy path.
       - name: Get current date
         id: date
-        run: echo "date=$(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          CREATED="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            --jq .created_at 2>/dev/null || true)"
+          DATE=""
+          if [ -n "$CREATED" ]; then
+            DATE="$(date -u -d "$CREATED" +'%Y-%m-%d' 2>/dev/null || true)"
+          fi
+          if [ -z "$DATE" ]; then
+            DATE="$(date -u +'%Y-%m-%d')"
+            echo "::warning::Could not resolve run creation time; falling back to current UTC date ${DATE}."
+          fi
+          echo "Digest date: ${DATE} (run created: ${CREATED:-unknown}, wall clock: $(date -u +'%Y-%m-%dT%H:%M:%SZ') UTC)"
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
 
       # Base SHA for the standalone output guard below — captured AFTER the
       # pull and BEFORE the synthesis agents, so the guard proves a fresh

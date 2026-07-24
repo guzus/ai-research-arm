@@ -40,10 +40,11 @@
   "fallback": {
     "harness": "agent-run",
     "chain": [
-      "claude"
+      "claude",
+      "zai-glm-5p2"
     ],
     "native_model": "claude-sonnet-5",
-    "notes": "ORDERED fallback chain, globally applied to every non-strict agent-run lane. When the lane's requested provider probe fails, scripts/select_backend.py walks this chain in order (skipping the already-failed requested backend if it reappears) and runs the first candidate whose provider is available. The default outage fallback is the native Claude Code OAuth path, which is treated as available at selection time and serves `native_model`. This preserves committed output during Fireworks account/billing outages instead of selecting a superficially available provider that may exit without artifacts. Lanes with \"strict\": true (zai-canary) never walk the chain — unavailability fails the run. `native_model` is the model served whenever the native claude path runs (also what the --model opus alias resolves to)."
+    "notes": "ORDERED fallback chain, globally applied to every non-strict agent-run lane. When the lane's requested provider probe fails, scripts/select_backend.py walks this chain in order (skipping the already-failed requested backend if it reappears) and runs the first candidate whose provider is available. Native Claude leads the chain and serves `native_model`. Z.ai GLM-5.2 is the second link, added after the 2026-07-24 outage: the chain was [\"claude\"] only AND probe_claude() hardcoded \"always available\", so an expired CLAUDE_CODE_OAUTH_TOKEN took down every agent lane in the fleet at once with no route out (instant is_error, 1 turn, $0 cost) while ZAI_API_KEY sat configured and healthy. probe_claude() now reports down only on an explicit 401/403 credential rejection, so a rate limit, 5xx, or network blip still keeps the fleet on Claude. Lanes with \"strict\": true (zai-canary, the comparison tiers) never walk the chain — unavailability fails the run. `native_model` is the model served whenever the native claude path runs (also what the --model opus alias resolves to)."
   },
   "lanes": {
     "rss": {

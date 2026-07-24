@@ -78,7 +78,7 @@ and opens a PR with methodology fixes.
 | `build_wiki_index.py` | Rebuilds `research/wiki/index.json` from the wiki pages. **CI-load-bearing**: `ci.yml` runs `--check` (exit 1 if the committed index is stale or any page fails validation); `wiki-ingest.yml` regenerates it every run. |
 | `build_backend_matrix.py` | Cross-checks the routing SSOT (`data/agent-backends.json`) against `.github/workflows/*` (lane exists, all provider secrets passed, pi/native mirrors match) and regenerates the lane table in `docs/backend-matrix.md`. **CI-load-bearing**: `ci.yml` runs `--check`. |
 | `resolve_backend_lane.py` | Stdlib-only field resolver for `data/agent-backends.json` — generative-research calls it on the runner for its SSOT default backend. Unknown lane = hard failure (never a silent default). |
-| `select_backend.py` | Stdlib-only runtime backend selector used by `.github/actions/agent-run`: resolves the lane, probes the requested provider, and walks the ordered `fallback.chain` — first available candidate wins; strict lanes/`fireworks-fallback: none` never fall back. |
+| `select_backend.py` | Stdlib-only runtime backend selector used by `.github/actions/agent-run`: resolves the lane, probes the requested provider, and walks the ordered `fallback.chain` — first available candidate wins; strict lanes/`fireworks-fallback: none` never fall back. The claude probe is auth-only and has two traps — see Load-bearing rule 14. |
 | `fetch_ai_blogs.py` | Per-feed AI-blog fetcher used by `daily-ai-blogs.yml`; boundary-handles bad feeds so one failure doesn't crash the run. |
 | `watch_blog_subscriptions.py` | RSS subscription watcher used by `blog-subscriptions.yml`; seeds historical GUIDs without alerting, verifies Telegram responses, and acknowledges each proven delivery atomically. |
 | `deterministic_rss_digest.py` | Model-free fallback for `hourly-rss.yml`; parses fetched RSS/Atom files and appends a timestamped `research/rss/YYYY-MM-DD.md` section when the agent path fails. |
@@ -265,7 +265,7 @@ change run `uv run python scripts/build_backend_matrix.py` (CI runs
 | **Claude** | Explicit native-Claude workflows; `generative-research backend=claude`; Fireworks fallback path | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic. Default model **`claude-sonnet-5`** everywhere native Claude runs (the global `fallback.native_model` in `data/agent-backends.json`). Claude is a fallback or explicit comparison choice, not the preferred backend for generative content routing. |
 | **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Runs Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage follows the ChatGPT/Codex subscription entitlement rather than API billing. Publishes through the same writer/verifier contract and records `codex` metadata. |
 | **Kimi K3 (via opencode)** | `generative-research backend=opencode-kimi-k3`; `hourly-twitter.yml backend=opencode-kimi-k3` manual comparison lane; `opencode-kimi-canary.yml` diagnostics | `OPENCODE_API_KEY` (OpenCode Go, preferred) or `MOONSHOT_API_KEY` (fallback) | Runs the opencode CLI (pinned `opencode-ai@1.18.3`; Moonshot's opencode guide requires >= 1.18.3 for kimi-k3) against Kimi K3 (1M context, $3/$15 per Mtok, $0.30 cache-hit). The workflow resolves the route Go-first: `opencode-go/kimi-k3` on the OpenCode Go subscription ($10/mo; usage caps $12/5h, $30/wk, $60/mo with K3 billing at full $3/$15 value), else `moonshotai/kimi-k3` pay-per-token. Auth is the plain env-var key on both routes — no interactive `opencode auth login`, no auth.json seeding. Selector tokens: `opencode-kimi-k3`, `opencode`, `opencode-kimi`, `kimi-k3`, `kimi`. Strict: the resolved route is preflighted and fails fast (no Claude fallback) so a Kimi-labeled article can never be silently authored by another model. Kimi K3 is NOT on Fireworks or pay-as-you-go OpenCode Zen as of 2026-07-20 (open weights promised by ~Jul 27); revisit Fireworks routing after the weights land. Publishes through the same writer/verifier contract and records `kimi-k3` metadata. |
-| **GLM 5.2 (via Fireworks, preferred)** | Default `.github/actions/agent-run` backend; default `generative-research backend=glm-5p2`; primary scheduled RSS/Bluesky/Twitter/digest synthesis lanes | `FIREWORKS_API_KEY` | Uses the same Fireworks Anthropic-compatible env slots with model `accounts/fireworks/models/glm-5p2`. Selector token: `fireworks-glm-5p2`, `glm-5p2`, or `glm`. In scheduled `agent-run` lanes a Fireworks preflight failure walks the ordered `fallback.chain` in `data/agent-backends.json` (currently Z.ai GLM → native Claude); in `generative-research.yml` the workflow-level `fireworks_fallback` input still falls back to native Claude by default. |
+| **GLM 5.2 (via Fireworks, preferred)** | Default `.github/actions/agent-run` backend; default `generative-research backend=glm-5p2`; primary scheduled RSS/Bluesky/Twitter/digest synthesis lanes | `FIREWORKS_API_KEY` | Uses the same Fireworks Anthropic-compatible env slots with model `accounts/fireworks/models/glm-5p2`. Selector token: `fireworks-glm-5p2`, `glm-5p2`, or `glm`. In scheduled `agent-run` lanes a Fireworks preflight failure walks the ordered `fallback.chain` in `data/agent-backends.json` (currently native Claude → Z.ai GLM); in `generative-research.yml` the workflow-level `fireworks_fallback` input still falls back to native Claude by default. |
 | **GLM 5.2 (via Z.ai Coding Plan, preferred manual Twitter lane)** | `.github/actions/agent-run backend=zai-glm-5p2`; default manual `hourly-twitter.yml` backend; `zai-claude-code-canary.yml` for diagnostics | `ZAI_API_KEY` | Uses Z.ai's Anthropic-compatible Claude Code endpoint at `https://api.z.ai/api/anthropic` with model `glm-5.2` and `CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000`. The `glm-5.2[1m]` alias was rejected by this endpoint with `Unknown Model` in canary run `28751367808`, so keep this workflow on the endpoint-valid model id unless a later raw probe proves the alias is accepted. Selector token: `zai-glm-5p2`, `zai-glm-5.2`, `zai-glm52`, or `zai`. Strict lanes (`zai-canary`, the comparison tiers) fail closed when Z.ai is unavailable; non-strict lanes walk the SSOT `fallback.chain`. If the primary Twitter analyst produces no valid files, its deterministic recovery path restores the public digest baseline, persists a recovery heartbeat, and deliberately fails the job; it never synthesizes replacement news. |
 | **DeepSeek V4 Flash (via Fireworks)** | Explicit low-cost/comparison routes: `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek comparison lanes | `FIREWORKS_API_KEY` | Uses Fireworks' Anthropic-compatible endpoint at `https://api.fireworks.ai/inference` with model `accounts/fireworks/models/deepseek-v4-flash` (base URL omits `/v1`; the client appends `/v1/messages`). Overrides `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`/`ANTHROPIC_MODEL` so the Claude Code action transparently calls Fireworks. The direct DeepSeek API (`api.deepseek.com`) is retired (billing/credits). Selector token: `fireworks-deepseek-v4-flash`, `deepseek-v4-flash`, or `deepseek`. In `generative-research.yml`, a Fireworks preflight failure falls back to native Claude by default (`fireworks_fallback=none` opts back into hard failure); scheduled `agent-run` DeepSeek lanes are STRICT comparison tiers that never fall back. Generative-research retries up to 2x on socket drops before commit. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p7`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
@@ -336,7 +336,7 @@ Secrets are configured in GitHub Actions. None are committed.
 
 | Secret | Used by | Notes |
 |---|---|---|
-| `CLAUDE_CODE_OAUTH_TOKEN` | Native Claude workflows and `.github/actions/agent-run` | Required by `anthropics/claude-code-action@v1`; Fireworks-routed wrapper runs still pass it for action schema compatibility. |
+| `CLAUDE_CODE_OAUTH_TOKEN` | Native Claude workflows and `.github/actions/agent-run` | Required by `anthropics/claude-code-action@v1`; Fireworks-routed wrapper runs still pass it for action schema compatibility. **Expiry is a fleet-wide outage** — every production lane routes to `backend: claude`. Signature in the logs: `is_error: true`, `num_turns: 1`, `total_cost_usd: 0`, `duration_ms` under ~2000, `permission_denials_count: 0`, i.e. the agent dies before it does any work (`show_full_output` is off, so the provider error body is hidden — that shape IS the diagnosis). Re-mint with `claude setup-token` and `gh secret set CLAUDE_CODE_OAUTH_TOKEN`. To tell a dead credential from a broken runner/sandbox, dispatch `zai-claude-code-canary.yml`: it exercises the same Claude Code harness and bwrap sandbox over a different credential, so canary-green + lanes-red isolates the fault to the Claude token. Last expiry: 2026-07-24 (see Load-bearing rule 14). |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | Required for the Codex CLI ChatGPT-auth path. Store the file-backed `~/.codex/auth.json` produced by `codex login`; treat it like a password and use one auth file per serialized runner stream. |
 | `OPENCODE_API_KEY` | `generative-research backend=opencode-kimi-k3`; `opencode-kimi-canary.yml` | OpenCode Go subscription key (sign in at https://opencode.ai/auth, subscribe to Go, copy the key). Preferred Kimi K3 route; the opencode CLI reads it straight from env. Validate with the canary workflow before a full research run; watch the Go usage caps ($12/5h, $30/wk, $60/mo — K3 bills at full $3/$15 value). |
 | `MOONSHOT_API_KEY` | `generative-research backend=opencode-kimi-k3` (fallback route when `OPENCODE_API_KEY` is unset); `opencode-kimi-canary.yml` | Moonshot platform API key from https://platform.kimi.ai/console/api-keys (account needs real balance — new-user vouchers cannot bill kimi-k3). Pay-per-token alternative to the Go subscription. |
@@ -534,6 +534,36 @@ output or break the pipeline. Read them before editing.
     "Authorization"` (the 2026-07-06 outage: all lanes but hourly-twitter
     hard-failed at push because persisted credentials + injected header sent
     two Authorization headers).
+
+14. **No single credential may be able to take down the whole agent fleet.**
+    Every production lane in `data/agent-backends.json` routes to
+    `backend: claude`, so the global `fallback.chain` is the ONLY thing
+    standing between one dead credential and a total content outage. On
+    2026-07-24 it wasn't: the chain was `["claude"]` and `probe_claude()`
+    hardcoded "always available", so an expired `CLAUDE_CODE_OAUTH_TOKEN`
+    killed every lane at once (digest, RSS, community, twitter, bluesky,
+    arxiv, wiki) while `ZAI_API_KEY` sat configured and healthy — selection
+    "succeeded" onto a backend that could not serve. Three invariants now
+    keep that from recurring; preserve them if you edit the routing:
+    (a) **`fallback.chain` spans ≥2 providers** — CI-enforced by
+    `test_backend_matrix.test_global_fallback_chain_shape`. Claude leads
+    (it is what the prompts are tuned against); it must not also terminate.
+    (b) **`probe_claude()` is auth-only** — down on 401/403, up on
+    200/429/5xx/network fault. Both sides are empirically pinned: a dead
+    token answers `401 "OAuth access token is invalid."`, while a *live*
+    subscription token answers the same raw 1-token ping with **429**. So
+    treating non-200 as down would reroute a healthy fleet off Claude
+    permanently. It must send
+    `authorization: Bearer` + the oauth beta header and **never**
+    `x-api-key` (which makes the API reject a *good* OAuth token with
+    `401 invalid x-api-key`). `agent-run` must keep passing
+    `CLAUDE_CODE_OAUTH_TOKEN` into the select step or the probe reports
+    "not configured" and every lane reroutes.
+    (c) **Deterministic fallbacks are damage control, not the fix** — the
+    digest's model-free composer did fire and published, which is why the
+    site stayed up, but it publishes an uncurated verbatim dump under a
+    banner saying so. A green run on a fallback lane is not evidence the
+    agent path is healthy; check the fallback-used Telegram alert.
 
 ## Code Style
 
