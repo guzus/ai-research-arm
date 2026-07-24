@@ -38,61 +38,70 @@ and opens a PR with methodology fixes.
 
 | Path | What it is |
 |---|---|
-| [`ARA_DSL.md`](ARA_DSL.md) | Source format for generative-research articles. The compiler at `scripts/compile_ara.py` turns `.ara.md` into a validated `<article>` fragment. |
-| [`COMPONENTS.md`](COMPONENTS.md) | Human reference for the `ara-*` component vocabulary. The machine-readable contract the validator loads is [`ARA_CATALOG.json`](ARA_CATALOG.json); the two are kept in lockstep (CI-enforced — see "Component catalog" below). The CSS at `dashboard/src/components/ara-research.css` is the rendering source of truth and intentionally carries *more* `ara-*` classes than the article allowlist (runtime + front-page layers). |
-| [`ARA_CATALOG.json`](ARA_CATALOG.json) | Machine-readable ara-* component catalog the validator loads its class allowlist from. `scripts/ara_catalog.py` validates it stays in lockstep with COMPONENTS.md (CI-enforced; see "Component catalog" below). |
-| [`docs/generative-research-backends.md`](docs/generative-research-backends.md) | Backend matrix for the generative-research lane (Claude vs Codex vs Fireworks vs local Oracle), env mapping, comparison commands. |
-| [`docs/okf.md`](docs/okf.md) | Open Knowledge Format export contract for sharing `research/wiki/` as a portable Markdown/YAML knowledge bundle. |
-| [`docs/model-tickets.md`](docs/model-tickets.md) | Schema + lifecycle + dedup protocol for `research/models/tickets/*.md`. Read by the CRUD agent in `24h-model-timeline.yml` and enforced by `scripts/check_model_tickets.py`. |
-| [`docs/wiki-schema.md`](docs/wiki-schema.md) | Canonical schema + page conventions for the LLM Wiki (`research/wiki/`). Read at runtime by the ingest agent in `wiki-ingest.yml` and enforced by `scripts/check_wiki.py`. |
-| [`docs/hooker-telemetry.md`](docs/hooker-telemetry.md) | Non-blocking telemetry route via `https://hooker.guzus.xyz` topic `ara-telemetry`. |
-| [`docs/headline-dedupe.md`](docs/headline-dedupe.md) | Dedup contract + Mermaid flow for the Twitter headline-alert ledger (`research/summaries/twitter-announced-history.json`): the deterministic layered `duplicate_reason` check (`scripts/dedupe_headline_alerts.py`) **plus** the agent-in-the-loop Haiku gate (`scripts/headline_judge.py`) that adjudicates the contested sub-floor band. Used by `hourly-twitter.yml`. |
-| [`docs/blog-subscriptions.md`](docs/blog-subscriptions.md) | GUID-based RSS subscription, first-run seeding, proven Telegram delivery, partial-delivery acknowledgement, and durable state contract for `blog-subscriptions.yml`. |
-| [`docs/archive/`](docs/archive/) | Historical improvement logs and superseded docs. |
-| `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`; Railway auto-deploys on every push to `main` (next row). |
-| [`Dockerfile`](Dockerfile) + [`Caddyfile`](Caddyfile) + [`railway.json`](railway.json) | The Railway deploy stack serving **ara.guzus.xyz** (behind Cloudflare — responses carry `x-railway-edge`). The root `Dockerfile` builds the dashboard with bun (`oven/bun:1-alpine`, plus `nodejs` for the pre/postbuild node scripts) and serves `dashboard/dist` with Caddy; `railway.json` pins the DOCKERFILE builder + `/` healthcheck. the legacy `dashboard/vercel.json` Vercel config was removed during open-sourcing; Vercel no longer serves the domain (Load-bearing rule 3). |
-| `data/` | Static lookup data used by aggregation scripts. |
-| `research/` | All generated artifacts. Subdir map in "Output Locations" below. |
+| [`ARA_DSL.md`](ARA_DSL.md) | Source format for generative-research articles; `scripts/compile_ara.py` turns `.ara.md` into a validated `<article>` fragment. |
+| [`ARA_CATALOG.json`](ARA_CATALOG.json) + [`COMPONENTS.md`](COMPONENTS.md) | The `ara-*` class allowlist the validator loads, and its human reference. Kept in lockstep by CI — see "Component catalog" below. |
+| [`data/agent-backends.json`](data/agent-backends.json) | Routing SSOT: per-lane backend, profile table, ordered fallback chain. See Backends. |
+| `docs/*.md` | Per-lane contracts, read at runtime by the agents and enforced by the matching validator: `model-tickets`, `wiki-schema`, `okf`, `headline-dedupe`, `blog-subscriptions`, `twitter-account-curation`, `twitter-model-ab`, `generative-research-backends`, `backend-matrix` (generated), `hooker-telemetry`. [`docs/archive/`](docs/archive/) holds superseded docs + improvement logs. |
+| `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`. |
+| [`Dockerfile`](Dockerfile) + [`Caddyfile`](Caddyfile) + [`railway.json`](railway.json) | The Railway stack serving **ara.guzus.xyz** behind Cloudflare (responses carry `x-railway-edge`): bun build → Caddy serves `dashboard/dist`; `railway.json` pins the DOCKERFILE builder + `/` healthcheck. Vercel no longer serves the domain — rule 3. |
+| `data/`, `research/` | Static lookup data for aggregation scripts; all generated artifacts (subdir map in "Output Locations"). |
 
 ### Scripts (`scripts/`)
 
 | Script | Purpose |
 |---|---|
+**ARA DSL / generative research**
+
+| Script | Purpose |
+|---|---|
 | `compile_ara.py` | `.ara.md` → validated HTML fragment. |
-| `ara_catalog.py` | Loads + validates `ARA_CATALOG.json` (the validator's class allowlist) and checks it stays in lockstep with COMPONENTS.md. `uv run python scripts/ara_catalog.py` (exit 0 = in sync); CI runs the same check via `test_ara_dsl.py`. |
-| `check_generative_research.py` | Pre-commit validator. Tag/class allowlist + optional `--diversity-min`, `--callout-max`, `--strict-shape` design gates. Exit 0 = safe to commit. |
-| `write_generative_research.py` | Single publisher for `research/generative/`. Validates body, writes HTML + DSL source, updates `index.json`, commits. |
-| `run_generative_research_oracle.py` | Local runner: bundles ARA docs + recent research, calls `../oracle` (GPT-5.5 Pro), extracts `.ara.md`, runs the validator with `--diversity-min 3 --callout-max 5 --strict-shape`, then hands to the writer. |
-| `prior_context.py` | Find prior generative-research articles related to a new topic. |
-| `research_search.py` | Specialized search wrappers for primary-source research. |
-| `stock_prices.py` | Yahoo Finance time series → copy-paste lines for `:::line-chart`. |
-| `dedupe_headline_alerts.py` | Filter + record delivered Twitter headline alerts (used by `hourly-twitter.yml`). Layered deterministic dedup contract + Mermaid diagrams in [`docs/headline-dedupe.md`](docs/headline-dedupe.md). |
-| `headline_judge.py` | Agent-in-the-loop final dedup gate (used by `hourly-twitter.yml`). Two deterministic subcommands — `shortlist` (surface send-set survivors whose nearest prior sits in the contested `[0.35,0.50)` Jaccard band) and `apply` (drop only the Haiku judge's HIGH-confidence duplicates, fail-open, URL-keyed) — bracketing one Haiku adjudication step. Contract in [`docs/headline-dedupe.md`](docs/headline-dedupe.md). |
-| `curate_twitter_accounts.py` | Validates `data/sources/twitter_accounts.json`, builds the birdy fetch manifest, and writes/apply reviewable Twitter account add/remove proposals. |
-| `explore_twitter_accounts.py` | Scout script for `twitter-account-explorer.yml`; runs broad bird searches and emits candidate JSON for reviewed account curation. Scores from three bounded signals — trust-weighted mentions (a mention-graph candidate needs ≥1 *monitored* citer, not just any search-surfaced one), AI topicality (bonus for AI-vocabulary terms in the evidence), and bounded engagement — so viral off-topic/spam accounts don't outrank genuine AI sources. Contract: [`docs/twitter-account-curation.md`](docs/twitter-account-curation.md). |
-| `check_model_tickets.py` | Validator for `research/models/tickets/*.md` against the schema in `docs/model-tickets.md`. The CRUD agent in `24h-model-timeline.yml` runs it after every pass; CI runs it on every PR. |
-| `check_wiki.py` | Validator for `research/wiki/` pages against the schema in `docs/wiki-schema.md`. `uv run python scripts/check_wiki.py` (exit 0 = safe); `--lint` adds advisory checks. The ingest agent in `wiki-ingest.yml` runs it until exit 0; CI runs it on every PR. |
-| `wiki_search.py` | Search wrapper over `research/wiki/` (`uv run python scripts/wiki_search.py "<query>"`). The ingest agent runs it before writing any page so it UPDATEs an existing page instead of duplicating. |
-| `export_wiki_okf.py` | Export `research/wiki/` as a portable Open Knowledge Format bundle: validates the OKF-native wiki pages and rewrites `[[wikilinks]]` to standard Markdown links. |
-| `check_lane_freshness.py` | Freshness watchdog. Measures git-commit recency per research lane against per-lane cadence thresholds; exits 2 (and emits a hooker/Telegram alert from `liveness-check.yml`) when a lane is stale. Stdlib-only so it runs on both runner tiers. |
-| `build_wiki_index.py` | Rebuilds `research/wiki/index.json` from the wiki pages. **CI-load-bearing**: `ci.yml` runs `--check` (exit 1 if the committed index is stale or any page fails validation); `wiki-ingest.yml` regenerates it every run. |
-| `build_backend_matrix.py` | Cross-checks the routing SSOT (`data/agent-backends.json`) against `.github/workflows/*` (lane exists, all provider secrets passed, pi/native mirrors match) and regenerates the lane table in `docs/backend-matrix.md`. **CI-load-bearing**: `ci.yml` runs `--check`. |
-| `resolve_backend_lane.py` | Stdlib-only field resolver for `data/agent-backends.json` — generative-research calls it on the runner for its SSOT default backend. Unknown lane = hard failure (never a silent default). |
-| `select_backend.py` | Stdlib-only runtime backend selector used by `.github/actions/agent-run`: resolves the lane, probes the requested provider, and walks the ordered `fallback.chain` — first available candidate wins; strict lanes/`fireworks-fallback: none` never fall back. The claude probe is auth-only and has two traps — see Load-bearing rule 14. |
-| `fetch_ai_blogs.py` | Per-feed AI-blog fetcher used by `daily-ai-blogs.yml`; boundary-handles bad feeds so one failure doesn't crash the run. |
-| `watch_blog_subscriptions.py` | RSS subscription watcher used by `blog-subscriptions.yml`; seeds historical GUIDs without alerting, verifies Telegram responses, and acknowledges each proven delivery atomically. |
-| `deterministic_rss_digest.py` | Model-free fallback for `hourly-rss.yml`; parses fetched RSS/Atom files and appends a timestamped `research/rss/YYYY-MM-DD.md` section when the agent path fails. |
-| `deterministic_community_digest.py` | Model-free fallback for `4h-community.yml`; parses pre-fetched HN JSON and Reddit RSS into `research/community/*-hn.md` and `*-reddit.md` when the agent path fails. |
-| `deterministic_twitter_digest.py` | Fail-closed operational fallback for the primary `hourly-twitter.yml` lane. The workflow first restores the public digest exactly to its pre-agent Git baseline; the script never reads Birdy data or authors news, and only writes a run-ID/attempt-scoped `no_update` recovery heartbeat plus empty summary/headline artifacts. The heartbeat is pushed for observability, then the workflow fails loudly and skips notifications. |
-| `validate_twitter_public_output.py` | Enforces the Twitter signal-only contract after every backend: this run's heartbeat identity, exact public-item count, concrete story/Quick-hit presence, normalized same-hour headings, empty no-update reader artifacts, and no operational/no-news filler. |
-| `deterministic_arxiv_digest.py` | Model-free fallback for `daily-arxiv.yml`; queries the arXiv Atom API directly and writes an uncurated per-category `research/arxiv/<date>-papers.md` when the agent path fails (zero-paper windows still write an honest empty note). |
-| `deterministic_daily_digest.py` | Model-free fallback for `daily-digest.yml`; composes `research/digest/<date>-digest.md` (+ Telegram summary) verbatim from the day's committed lane artifacts when the agent fails or its output falls below the content floor. Never invents content; missing lanes are noted explicitly. |
-| `deterministic_bluesky_digest.py` | Model-free fallback for `2h-bluesky.yml`; composes the per-run `.tmp/bluesky-section.md` (engagement-ranked, ≤8 bullets / ≤3 per author, 48h window) from the staged `data/bluesky/*.json` when the agent writes no section. |
-| `check_digest_content.py` | Per-run hard content floor for the daily digest (`--min-bytes`, `--min-sections`, unexpanded-placeholder scan). `daily-digest.yml` runs it after the synthesis agent to decide whether the deterministic fallback composer takes over; complements the advisory `check_lane_content.py`. |
-| `fetch_youtube_signal.py` | tuber-backed YouTube lane used by `daily-youtube.yml`; read-only by default (discovery, existing summary previews, transcript probes) and never triggers paid summary generation. |
-| `source_cache.py` | Runtime primary-source fetch cache under `data/source-cache/` (gitignored), used by `generative-research.yml`. |
-| `render_front_page.mjs` | Deterministic newspaper renderer used by `daily-front-page.yml`: digest → SVG → PNG via `@resvg/resvg-js` (no Chromium/model dependency), plus the `.ara.md` source for the interactive edition. Layout is budget-aware — overflow is ellipsized/dropped, never painted over. |
-| `test_ara_dsl.py`, `test_dedupe_headline_alerts.py`, `test_headline_judge.py` | Pytest-style tests run in CI. (`test_ara_dsl.py` also asserts `ARA_CATALOG.json` ↔ `COMPONENTS.md` lockstep.) |
+| `ara_catalog.py` | Loads `ARA_CATALOG.json` (the validator's class allowlist) and asserts lockstep with COMPONENTS.md. CI-enforced via `test_ara_dsl.py`. |
+| `check_generative_research.py` | Pre-commit validator: tag/class allowlist + optional `--diversity-min`, `--callout-max`, `--strict-shape`. Exit 0 = safe to commit. |
+| `write_generative_research.py` | The **only** committer for `research/generative/`. Re-validates, writes HTML + `.ara.md`, updates `index.json`, commits. |
+| `run_generative_research_oracle.py` | Local runner via `../oracle` (GPT-5.5 Pro) → validator (`--diversity-min 3 --callout-max 5 --strict-shape`) → writer. |
+| `prior_context.py`, `research_search.py`, `stock_prices.py`, `source_cache.py` | Article-authoring helpers: find related prior articles; primary-source search wrappers; Yahoo Finance series for `:::line-chart`; runtime fetch cache under `data/source-cache/` (gitignored). |
+
+**Backend routing** (see also Load-bearing rule 14)
+
+| Script | Purpose |
+|---|---|
+| `select_backend.py` | Runtime backend selector for `.github/actions/agent-run`: resolves the lane, probes the provider, walks the ordered `fallback.chain` — first available wins; strict lanes never fall back. The claude probe is auth-only and has two traps — **read rule 14 before touching it**. |
+| `resolve_backend_lane.py` | Field resolver for `data/agent-backends.json`; generative-research uses it for its SSOT default. Unknown lane = hard failure, never a silent default. |
+| `build_backend_matrix.py` | Cross-checks the routing SSOT against `.github/workflows/*` (lane exists, all provider secrets passed, pi/native mirrors match) and regenerates `docs/backend-matrix.md`. **CI-load-bearing** (`--check`). |
+
+**Validators + watchdogs** — all CI-enforced; the agent lanes iterate until exit 0
+
+| Script | Purpose |
+|---|---|
+| `check_model_tickets.py` | `research/models/tickets/*.md` against `docs/model-tickets.md`. |
+| `check_wiki.py` / `build_wiki_index.py` / `wiki_search.py` | Wiki page schema (`docs/wiki-schema.md`; `--lint` adds advisory checks); `index.json` rebuild (`--check` fails on a stale index); search wrapper the ingest agent MUST run before writing, so it updates rather than duplicates. |
+| `check_digest_content.py` | Per-run hard content floor for the daily digest (`--min-bytes`, `--min-sections`, unexpanded-placeholder scan). Decides whether the deterministic composer takes over; complements the advisory `check_lane_content.py`. |
+| `validate_twitter_public_output.py` | Twitter signal-only contract after every backend: heartbeat identity, exact public-item count, concrete story/Quick-hit presence, normalized same-hour headings, no operational/no-news filler. |
+| `check_lane_freshness.py` | Per-lane git-commit recency vs. cadence thresholds; exit 2 → hooker/Telegram alert from `liveness-check.yml`. Stdlib-only so it runs on both runner tiers. |
+| `export_wiki_okf.py` | `research/wiki/` → portable OKF bundle; rewrites `[[wikilinks]]` to Markdown links. |
+
+**Deterministic (model-free) fallbacks** — each composes its lane's artifact from already-fetched data when the agent path fails. They never invent content; missing inputs are noted explicitly.
+
+| Script | Lane | Note |
+|---|---|---|
+| `deterministic_daily_digest.py` | `daily-digest.yml` | Verbatim top excerpts per committed lane artifact. Fires on agent failure **or** sub-floor output. |
+| `deterministic_rss_digest.py` | `hourly-rss.yml` | Appends a timestamped section to `research/rss/<date>.md`. |
+| `deterministic_community_digest.py` | `4h-community.yml` | Pre-fetched HN JSON + Reddit RSS → `*-hn.md`, `*-reddit.md`. |
+| `deterministic_arxiv_digest.py` | `daily-arxiv.yml` | Queries the arXiv Atom API; zero-paper windows still write an honest empty note. |
+| `deterministic_bluesky_digest.py` | `2h-bluesky.yml` | Engagement-ranked, ≤8 bullets / ≤3 per author, 48h window. |
+| `deterministic_twitter_digest.py` | `hourly-twitter.yml` | **Fail-closed, not a composer.** Restores the public digest to its pre-agent baseline and writes only a run-scoped `no_update` heartbeat — never reads Birdy, never authors news. The job then fails loudly and skips notifications. |
+
+**Aggregation + rendering**
+
+| Script | Purpose |
+|---|---|
+| `fetch_ai_blogs.py` | Per-feed AI-blog fetcher (`daily-ai-blogs.yml`); boundary-handles bad feeds so one failure doesn't crash the run. |
+| `watch_blog_subscriptions.py` | RSS subscription watcher (`blog-subscriptions.yml`); seeds historical GUIDs without alerting, verifies Telegram responses, acknowledges each proven delivery atomically. |
+| `fetch_youtube_signal.py` | tuber-backed YouTube lane; read-only by default — never triggers paid summary generation. |
+| `dedupe_headline_alerts.py`, `headline_judge.py` | Twitter headline-alert dedup: deterministic layered check, then an agent-in-the-loop Haiku gate adjudicating the contested `[0.35,0.50)` Jaccard band (`shortlist` → judge → `apply`, fail-open, URL-keyed). Contract: [`docs/headline-dedupe.md`](docs/headline-dedupe.md). |
+| `curate_twitter_accounts.py`, `explore_twitter_accounts.py` | Validate/curate `data/sources/twitter_accounts.json` + build the birdy fetch manifest; the scout scores candidates on trust-weighted mentions (needs ≥1 *monitored* citer), AI topicality, and bounded engagement, so viral off-topic accounts don't outrank genuine AI sources. Contract: [`docs/twitter-account-curation.md`](docs/twitter-account-curation.md). |
+| `render_front_page.mjs` | Newspaper render for `daily-front-page.yml`: digest → SVG → PNG via `@resvg/resvg-js` (no Chromium, no model). Budget-aware — overflow is ellipsized/dropped, never painted over. |
+| `test_*.py` | Pytest-style tests run in CI. |
 
 #### Experimental / manually-run scripts (NOT in the automated pipeline)
 
@@ -110,87 +119,62 @@ pipeline code; don't assume the dashboard or any lane depends on them.
 
 ## GitHub Actions Workflows
 
-Almost every workflow runs on **`runs-on: [self-hosted, Linux]`** on the
-native Ubuntu host `gunux`, with one systemd-managed runner for this repo.
-The old Cloud Run worker pools are paused rollback infrastructure, not the
-production path. The runner's home directory is persistent across jobs, so
-user-level tool configuration can survive from one run to the next. The host
-carries the Birdy read-only CLI/daemon, recent `research/` checkout, and
-pre-installed tooling used by aggregation, synthesis, output, and agent lanes.
+**Runner tiers.** Most production lanes run on `[self-hosted, Linux]` — the
+native Ubuntu host `gunux`, one systemd runner per repo. It carries the Birdy
+read-only CLI/daemon, a recent `research/` checkout, and pre-installed
+tooling; its home directory persists across jobs, so actions must overwrite
+stale user-level settings explicitly rather than assume a fresh container.
+(The old Cloud Run pools are paused rollback infrastructure, not the
+production path.)
 
-GitHub-hosted runners are used for jobs that must not execute
-repository-controlled code on the self-hosted fleet:
-- `ci.yml` runs on `ubuntu-latest`. Pull requests can change dashboard
-  build scripts, package scripts, Python tests, and workflow/action files,
-  so CI must not execute that code on the self-hosted runner host.
-- Watchdog jobs also run on `ubuntu-latest` because they must survive a
-  self-hosted outage — a watchdog that runs on the runners it is
-  watching is useless:
-- `liveness-check.yml` runs one job on EACH tier (its `ubuntu` job + its
-  `self-hosted` job). No single runner survives both failure modes — a
-  GitHub-hosted billing/spending-limit block vs. a self-hosted outage — so
-  whichever tier is alive emits the hooker/Telegram staleness alert.
-- `auto-rerun-on-runner-loss.yml` re-runs jobs whose runner process
-  vanished mid-run (Load-bearing rule 11; primarily a rollback-fleet guard).
+`ubuntu-latest` is reserved for two cases: **CI** (`ci.yml` — PRs can change
+build scripts, tests, and workflow files, which must not execute on the
+self-hosted host) and **watchdogs** (a watchdog running on the runners it
+watches is useless). `liveness-check.yml` runs a job on *each* tier, because
+no single tier survives both failure modes — a GitHub-hosted billing block
+vs. a self-hosted outage — so whichever is alive still alerts.
+`auto-rerun-on-runner-loss.yml` recovers jobs whose runner vanished mid-run
+(rule 11).
 
-The per-workflow `ubuntu-latest` vs. `self-hosted` lists that used to live
-here are gone on purpose: the answer is now "read the workflow's actual
-`runs-on:`; most production lanes are self-hosted, but CI and watchdogs are
-deliberately GitHub-hosted." **Always read the workflow's actual `runs-on:` —
-never trust a cached list** (the old list here drifted to 100% wrong once
-the autoscaler landed and the stateless lanes moved back to self-hosted).
+**Always read the workflow's actual `runs-on:` — never trust a cached list.**
+The per-workflow list that used to live here drifted to 100% wrong and was
+deleted on purpose.
 
-Scheduled content workflows should use `.github/actions/agent-run` instead
-of calling `anthropics/claude-code-action@v1` directly. The wrapper keeps the
-Claude-Code-compatible tool harness but routes the primary freshness lanes
-through Fireworks profiles when Fireworks preflight passes. If Fireworks is
-unavailable (for example billing/spend-limit suspension), the wrapper falls
-back to native Claude by default so scheduled freshness does not hard-stop.
-It also enforces output and commit-scope contracts for agent lanes:
-`.github/actions/require-output` proves every expected output pathspec changed,
-while `.github/actions/require-diff-scope` proves the committed diff since
-the pre-agent SHA is limited to the declared allowed pathspecs. Use
-`expected-paths` for the exact artifact files that must exist when their names
-are known, and `allowed-paths` for the full set of paths the agent may commit
-(for example, a primary digest directory plus `research/summaries/`). The RSS,
-HN/Reddit community, arXiv,
-daily-digest, and Bluesky workflows (plus the twitter-deepseek comparison tier)
-add deterministic model-free fallbacks after the agent step, then run a final
-`.github/actions/require-output` guard — the digest additionally gates its
-agent output on a hard content floor (`scripts/check_digest_content.py`) before
-the fallback decision. For those lanes, a green run means a committed daily
-artifact exists; inspect the agent/fallback step logs before treating it as
-evidence that Fireworks or native Claude was healthy. PR/review/on-demand
-Claude workflows may still call the Claude action directly; when they do, pass
-the model via `claude_args` (e.g. `"--model claude-sonnet-5"`) — never as a
-separate `model:` input.
+**Agent lanes use `.github/actions/agent-run`,** not
+`anthropics/claude-code-action@v1` directly. It resolves the backend from the
+routing SSOT (see Backends), sets up the sandbox centrally, and enforces two
+commit contracts: `require-output` proves every expected pathspec changed
+(`expected-paths` = exact artifact files; `allowed-paths` = everything the
+agent may commit), and `require-diff-scope` proves the committed diff since
+the pre-agent SHA stays inside those paths. PR/review/on-demand Claude
+workflows may still call the action directly; when they do, pass the model
+through `claude_args` (`"--model claude-sonnet-5"`) — never as a separate
+`model:` input.
 
-Publishing generated commits uses `.github/actions/safe-push`. Direct pushes
-to protected branches may be rejected by repository rules requiring pull
-requests; in that case `safe-push` publishes the commit to a run-scoped
-`automation/safe-push/...` branch and attempts to open a PR. It emits
-`pushed=false` and `publication-mode=pull-request` (or `branch` if repository
-settings block Actions-created PRs), so downstream deploys and public
-notifications must continue to gate on `steps.push.outputs.pushed == 'true'`
-when they link to `main`.
+**A green run on a fallback lane is not evidence the agent path was
+healthy.** RSS, community, arXiv, digest and Bluesky (plus the
+twitter-deepseek tier) run a deterministic fallback after the agent step,
+then a final `require-output` guard; the digest additionally gates agent
+output on a hard content floor before deciding. Green means "an artifact was
+committed" — read the agent/fallback step logs, or the fallback-used Telegram
+alert, to learn which path produced it.
 
-Claude Code runs are protected by the checked-in `.claude/settings.json`
-sandbox policy. On Linux this requires `bubblewrap` and `socat`; workflows
-that call Claude directly must run `.github/actions/setup-claude-sandbox`
-before the Claude action, and scheduled lanes that use `.github/actions/agent-run`
-get that setup centrally. The policy sets `sandbox.failIfUnavailable: true`
-and `sandbox.allowUnsandboxedCommands: false`, so a missing sandbox fails
-the workflow instead of silently running Bash commands with host filesystem
-access. It also blocks reads of common host credential paths such as `~/.ssh`,
-`~/.aws`, `/proc`, and `/var/run`.
+**Publishing uses `.github/actions/safe-push`** — see rule 13 for the
+protected-branch fallback and what `pushed=true` actually means.
 
-Pi comparison lanes do not read Claude Code settings. When `hourly-twitter.yml`
-runs `deepseek-pi` or `fireworks-pi`, it must use
-`.github/actions/run-pi-container` instead of invoking `pi` on the host. That
-wrapper builds a small Node container with `pi`, `bird`, `git`, and `jq`, mounts
-only `$GITHUB_WORKSPACE`, `/tmp/bird` read-only, and the rendered prompt file,
-then runs pi with a container-local home directory. Missing Docker is a hard
-failure for pi lanes; do not fall back to host-level `pi --tools ... bash`.
+**Sandbox.** The checked-in `.claude/settings.json` sets
+`sandbox.failIfUnavailable: true` and `sandbox.allowUnsandboxedCommands:
+false`, so a missing sandbox fails the workflow instead of silently giving
+Bash host filesystem access; it also blocks reads of `~/.ssh`, `~/.aws`,
+`/proc`, `/var/run`. Linux needs `bubblewrap` + `socat`. Direct-Claude
+workflows must run `.github/actions/setup-claude-sandbox` first; agent-run
+lanes get it centrally.
+
+**Pi lanes don't read Claude Code settings,** so they get their isolation
+from `.github/actions/run-pi-container` instead: a small Node container with
+`pi`, `bird`, `git`, `jq`, mounting only `$GITHUB_WORKSPACE`, `/tmp/bird`
+read-only, and the prompt file. Missing Docker is a hard failure — never fall
+back to host-level `pi --tools ... bash`.
 
 ### Aggregation (raw signal → `research/<source>/`)
 
@@ -234,40 +218,36 @@ failure for pi lanes; do not fall back to host-level `pi --tools ... bash`.
 | `claude-code-review.yml` | PR opened/synced | Automated Claude code review |
 | `twitter-model-ab.yml` | daily `21:40` UTC (temporary — remove after the eval week) + manual dispatch | Same-input, parity-locked model A/B eval (claude-sonnet-5 vs GLM-5.2 via Z.ai) on the Twitter-summary workload with a blinded position-swapped Opus judge → `research/eval/twitter-ab/`. Contract: [`docs/twitter-model-ab.md`](docs/twitter-model-ab.md). |
 
-Model convention: scheduled content workflows pass `--model opus` to the
-Claude-Code-compatible CLI, but that alias is remapped by `agent-run`: to
-the Fireworks profile model (`fireworks-deepseek-v4-flash` or
-`fireworks-glm-5p2`) when preflight passes, to `zai-glm-5p2` for the
-Z.ai Coding Plan route, or to the action's `native-model` input
-(default **`claude-sonnet-5`**) on native-Claude runs and Fireworks
-fallbacks. Direct Claude workflows pin
-`--model claude-sonnet-5` through `claude_args`; defer to the workflow
-file rather than assuming one provider everywhere.
+**Model convention:** scheduled workflows pass `--model opus`, but
+`agent-run` remaps that alias to whatever the resolved backend serves —
+the Fireworks or Z.ai profile model, or `native-model` (default
+**`claude-sonnet-5`**) on the native path. Direct Claude workflows pin
+`--model claude-sonnet-5` via `claude_args`. Read the workflow file
+rather than assuming one provider everywhere.
 
 ## Backends
 
-The table below is the per-*backend* contract. **Per-lane routing, the
-backend profile table, and the ordered fallback chain are all defined in
-[`data/agent-backends.json`](data/agent-backends.json) — the single source
-of truth.** agent-run lanes resolve it at runtime via
-`scripts/select_backend.py`, which probes providers and walks
-`fallback.chain` in order when the requested one is down (edit the file to
-re-route or re-order fallbacks with no workflow change; every call site
-carries all provider secrets). pi and direct claude-code-action lanes are
-CI-enforced mirrors. Strict lanes (zai-canary) never fall back. The human
-view is the generated matrix in
-[`docs/backend-matrix.md`](docs/backend-matrix.md); after any routing
-change run `uv run python scripts/build_backend_matrix.py` (CI runs
-`--check`).
+**[`data/agent-backends.json`](data/agent-backends.json) is the single
+source of truth** for per-lane routing, the backend profile table, and the
+ordered fallback chain — edit it to re-route with no workflow change (every
+call site already carries all provider secrets). agent-run lanes resolve it
+at runtime via `scripts/select_backend.py`; pi and direct
+claude-code-action lanes are CI-enforced mirrors; strict lanes never fall
+back. Human view: [`docs/backend-matrix.md`](docs/backend-matrix.md) —
+regenerate with `uv run python scripts/build_backend_matrix.py` after any
+routing change (CI runs `--check`).
+
+The table below is the per-*backend* contract — the gotchas that aren't
+derivable from the SSOT.
 
 | Backend | When | Auth | Notes |
 |---|---|---|---|
-| **Claude** | Explicit native-Claude workflows; `generative-research backend=claude`; Fireworks fallback path | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic. Default model **`claude-sonnet-5`** everywhere native Claude runs (the global `fallback.native_model` in `data/agent-backends.json`). Claude is a fallback or explicit comparison choice, not the preferred backend for generative content routing. |
-| **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Runs Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage follows the ChatGPT/Codex subscription entitlement rather than API billing. Publishes through the same writer/verifier contract and records `codex` metadata. |
-| **Kimi K3 (via opencode)** | `generative-research backend=opencode-kimi-k3`; `hourly-twitter.yml backend=opencode-kimi-k3` manual comparison lane; `opencode-kimi-canary.yml` diagnostics | `OPENCODE_API_KEY` (OpenCode Go, preferred) or `MOONSHOT_API_KEY` (fallback) | Runs the opencode CLI (pinned `opencode-ai@1.18.3`; Moonshot's opencode guide requires >= 1.18.3 for kimi-k3) against Kimi K3 (1M context, $3/$15 per Mtok, $0.30 cache-hit). The workflow resolves the route Go-first: `opencode-go/kimi-k3` on the OpenCode Go subscription ($10/mo; usage caps $12/5h, $30/wk, $60/mo with K3 billing at full $3/$15 value), else `moonshotai/kimi-k3` pay-per-token. Auth is the plain env-var key on both routes — no interactive `opencode auth login`, no auth.json seeding. Selector tokens: `opencode-kimi-k3`, `opencode`, `opencode-kimi`, `kimi-k3`, `kimi`. Strict: the resolved route is preflighted and fails fast (no Claude fallback) so a Kimi-labeled article can never be silently authored by another model. Kimi K3 is NOT on Fireworks or pay-as-you-go OpenCode Zen as of 2026-07-20 (open weights promised by ~Jul 27); revisit Fireworks routing after the weights land. Publishes through the same writer/verifier contract and records `kimi-k3` metadata. |
-| **GLM 5.2 (via Fireworks, preferred)** | Default `.github/actions/agent-run` backend; default `generative-research backend=glm-5p2`; primary scheduled RSS/Bluesky/Twitter/digest synthesis lanes | `FIREWORKS_API_KEY` | Uses the same Fireworks Anthropic-compatible env slots with model `accounts/fireworks/models/glm-5p2`. Selector token: `fireworks-glm-5p2`, `glm-5p2`, or `glm`. In scheduled `agent-run` lanes a Fireworks preflight failure walks the ordered `fallback.chain` in `data/agent-backends.json` (currently native Claude → Z.ai GLM); in `generative-research.yml` the workflow-level `fireworks_fallback` input still falls back to native Claude by default. |
-| **GLM 5.2 (via Z.ai Coding Plan, preferred manual Twitter lane)** | `.github/actions/agent-run backend=zai-glm-5p2`; default manual `hourly-twitter.yml` backend; `zai-claude-code-canary.yml` for diagnostics | `ZAI_API_KEY` | Uses Z.ai's Anthropic-compatible Claude Code endpoint at `https://api.z.ai/api/anthropic` with model `glm-5.2` and `CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000`. The `glm-5.2[1m]` alias was rejected by this endpoint with `Unknown Model` in canary run `28751367808`, so keep this workflow on the endpoint-valid model id unless a later raw probe proves the alias is accepted. Selector token: `zai-glm-5p2`, `zai-glm-5.2`, `zai-glm52`, or `zai`. Strict lanes (`zai-canary`, the comparison tiers) fail closed when Z.ai is unavailable; non-strict lanes walk the SSOT `fallback.chain`. If the primary Twitter analyst produces no valid files, its deterministic recovery path restores the public digest baseline, persists a recovery heartbeat, and deliberately fails the job; it never synthesizes replacement news. |
-| **DeepSeek V4 Flash (via Fireworks)** | Explicit low-cost/comparison routes: `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek comparison lanes | `FIREWORKS_API_KEY` | Uses Fireworks' Anthropic-compatible endpoint at `https://api.fireworks.ai/inference` with model `accounts/fireworks/models/deepseek-v4-flash` (base URL omits `/v1`; the client appends `/v1/messages`). Overrides `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`/`ANTHROPIC_MODEL` so the Claude Code action transparently calls Fireworks. The direct DeepSeek API (`api.deepseek.com`) is retired (billing/credits). Selector token: `fireworks-deepseek-v4-flash`, `deepseek-v4-flash`, or `deepseek`. In `generative-research.yml`, a Fireworks preflight failure falls back to native Claude by default (`fireworks_fallback=none` opts back into hard failure); scheduled `agent-run` DeepSeek lanes are STRICT comparison tiers that never fall back. Generative-research retries up to 2x on socket drops before commit. |
+| **Claude** | Every production agent lane; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic, model **`claude-sonnet-5`** (the global `fallback.native_model`). Leads the fallback chain. Its token expiring is a fleet-wide outage — see rule 14 and the Authentication table. |
+| **GLM 5.2 (via Z.ai Coding Plan)** | Second link in the fallback chain; `agent-run backend=zai-glm-5p2`; default manual `hourly-twitter.yml` backend; `zai-claude-code-canary.yml` | `ZAI_API_KEY` | Anthropic-compatible Claude Code endpoint `https://api.z.ai/api/anthropic`, model `glm-5.2`, `CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000`. The `glm-5.2[1m]` alias was rejected as `Unknown Model` (canary run `28751367808`) — keep the endpoint-valid id unless a raw probe proves otherwise. Because it shares the harness and sandbox but not the credential, **the canary is the fastest way to tell a dead Claude token from a broken runner**. Selectors: `zai-glm-5p2`, `zai-glm-5.2`, `zai-glm52`, `zai`. |
+| **GLM 5.2 (via Fireworks)** | `generative-research backend=glm-5p2` | `FIREWORKS_API_KEY` | Model `accounts/fireworks/models/glm-5p2`. Selectors: `fireworks-glm-5p2`, `glm-5p2`, `glm`. In `generative-research.yml` the workflow-level `fireworks_fallback` input falls back to native Claude by default. |
+| **DeepSeek V4 Flash (via Fireworks)** | Low-cost/comparison: `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek tiers | `FIREWORKS_API_KEY` | Endpoint `https://api.fireworks.ai/inference` (base URL omits `/v1`; the client appends `/v1/messages`), model `accounts/fireworks/models/deepseek-v4-flash`. Overrides `ANTHROPIC_BASE_URL`/`AUTH_TOKEN`/`MODEL` so the Claude action transparently calls Fireworks. The direct DeepSeek API is retired (billing). Scheduled DeepSeek lanes are STRICT comparison tiers that never fall back. |
+| **Kimi K3 (via opencode)** | `generative-research`/`hourly-twitter` `backend=opencode-kimi-k3`; `opencode-kimi-canary.yml` | `OPENCODE_API_KEY` (Go, preferred) or `MOONSHOT_API_KEY` | opencode CLI pinned `opencode-ai@1.18.3` (>=1.18.3 required for kimi-k3) against Kimi K3 (1M ctx, $3/$15 per Mtok). Route resolves Go-first — `opencode-go/kimi-k3` on the $10/mo Go plan (caps $12/5h, $30/wk, $60/mo, K3 billed at full value), else `moonshotai/kimi-k3` pay-per-token. Plain env-var auth on both; no interactive login. **Strict — no Claude fallback**, so a Kimi-labeled article can never be silently authored by another model. Not on Fireworks or OpenCode Zen as of 2026-07-20. Selectors: `opencode-kimi-k3`, `opencode`, `opencode-kimi`, `kimi-k3`, `kimi`. |
+| **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage bills against the ChatGPT/Codex subscription, not the API. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p7`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
 | **Local Oracle (GPT-5.5 Pro)** | `scripts/run_generative_research_oracle.py` | Local `../oracle` checkout (browser engine by default) | Runs entirely on the developer machine; outputs go through the same `check_generative_research.py` → `write_generative_research.py` contract. Source metadata: `local-oracle`. |
 
@@ -276,24 +256,18 @@ Backend selection details, env-var mapping, and comparison commands:
 
 ### Twitter-Seeded Generative Research
 
-`generative-research.yml` accepts `twitter_url` as a standalone
-`workflow_dispatch` input. When set, `topic` is optional. The workflow
-stages the URL in `.gen-input/twitter_url.txt`; the agent must read the
-tweet/thread with `bird read` and `bird thread`, infer the underlying
-research question, treat the tweet as primary evidence only for what the
-author said, and verify the underlying claims against independent
-primary sources before writing the article.
-
-Command entry points:
+`generative-research.yml` takes `twitter_url` as a standalone
+`workflow_dispatch` input (`topic` then optional), staged at
+`.gen-input/twitter_url.txt`. The agent reads the thread with `bird read`
+/ `bird thread`, infers the underlying research question, and treats the
+tweet as primary evidence **only for what the author said** — every
+underlying claim must be verified against independent primary sources
+before the article is written.
 
 ```bash
 /gen-research-tweet https://x.com/<handle>/status/<id>
-```
-
-```bash
-gh workflow run generative-research.yml \
-  -f twitter_url="https://x.com/<handle>/status/<id>" \
-  -f backend=claude
+# or: gh workflow run generative-research.yml \
+#       -f twitter_url="https://x.com/<handle>/status/<id>" -f backend=claude
 ```
 
 ## Output Locations
@@ -336,22 +310,18 @@ Secrets are configured in GitHub Actions. None are committed.
 
 | Secret | Used by | Notes |
 |---|---|---|
-| `CLAUDE_CODE_OAUTH_TOKEN` | Native Claude workflows and `.github/actions/agent-run` | Required by `anthropics/claude-code-action@v1`; Fireworks-routed wrapper runs still pass it for action schema compatibility. **Expiry is a fleet-wide outage** — every production lane routes to `backend: claude`. Signature in the logs: `is_error: true`, `num_turns: 1`, `total_cost_usd: 0`, `duration_ms` under ~2000, `permission_denials_count: 0`, i.e. the agent dies before it does any work (`show_full_output` is off, so the provider error body is hidden — that shape IS the diagnosis). Re-mint with `claude setup-token` and `gh secret set CLAUDE_CODE_OAUTH_TOKEN`. To tell a dead credential from a broken runner/sandbox, dispatch `zai-claude-code-canary.yml`: it exercises the same Claude Code harness and bwrap sandbox over a different credential, so canary-green + lanes-red isolates the fault to the Claude token. Last expiry: 2026-07-24 (see Load-bearing rule 14). |
-| `CODEX_AUTH_JSON` | `generative-research backend=codex` | Required for the Codex CLI ChatGPT-auth path. Store the file-backed `~/.codex/auth.json` produced by `codex login`; treat it like a password and use one auth file per serialized runner stream. |
-| `OPENCODE_API_KEY` | `generative-research backend=opencode-kimi-k3`; `opencode-kimi-canary.yml` | OpenCode Go subscription key (sign in at https://opencode.ai/auth, subscribe to Go, copy the key). Preferred Kimi K3 route; the opencode CLI reads it straight from env. Validate with the canary workflow before a full research run; watch the Go usage caps ($12/5h, $30/wk, $60/mo — K3 bills at full $3/$15 value). |
-| `MOONSHOT_API_KEY` | `generative-research backend=opencode-kimi-k3` (fallback route when `OPENCODE_API_KEY` is unset); `opencode-kimi-canary.yml` | Moonshot platform API key from https://platform.kimi.ai/console/api-keys (account needs real balance — new-user vouchers cannot bill kimi-k3). Pay-per-token alternative to the Go subscription. |
-| `DEEPSEEK_API_KEY` | _Retired_ — DeepSeek lanes now route through Fireworks | No longer referenced by any workflow. |
-| `FIREWORKS_API_KEY` | Preferred scheduled content lanes through `.github/actions/agent-run`; `generative-research backend=glm-5p2`; explicit DeepSeek/Kimi comparison lanes | Required for the GLM-via-Fireworks, DeepSeek-V4-Flash, and Kimi lanes. |
-| `ZAI_API_KEY` | `.github/actions/agent-run` when `backend=zai-glm-5p2`; default manual `hourly-twitter.yml backend=zai-glm-5p2`; `zai-claude-code-canary.yml` | Z.ai Coding Plan API key for Claude Code's Anthropic-compatible route. |
-| `BIRD_AUTH_TOKEN`, `BIRD_CT0` | All bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies. |
-| `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional; enhance MCP search. **Currently unset in the repo** (verified absent 2026-07-02) — `daily-digest` detects the absence, emits a run warning, and uses its local-source synthesis path until they are restored. |
-| `GEMINI_API_KEY` | `daily-digest` (inline Gemini Flash TTS for digest audio); also the manual `generate_generative_article_audio.py` | Optional; without it, audio generation is skipped. |
-| `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `S3_ENDPOINT_URL`, `S3_BUCKET` | `daily-digest` (audio upload) | Optional; generated digest mp3s upload to S3 while the working tree keeps 0-byte stubs. Missing = upload skipped. |
-| `HOOKER_TOKEN` | Telemetry composite action | Optional; without it, telemetry steps no-op. |
-| `HOOKER_URL` | Hooker telemetry composite + most workflows (the hooker endpoint, distinct from `HOOKER_TOKEN`) | The `https://hooker.guzus.xyz`-style base URL the telemetry/alert steps POST to. Referenced widely across workflows/actions. |
-| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `blog-subscriptions.yml`, `daily-digest.yml`, `liveness-check.yml` | For subscribed-blog alerts, digest delivery, and liveness escalation. |
-| `VERCEL_DEPLOY_HOOK` | `24h-model-timeline`, `wiki-ingest`, `hourly-twitter` (claude tier) | **Secret removed from the repo** (verified absent 2026-07-02); the referencing steps are permanent no-ops kept as legacy scaffolding and safe to delete in a future cleanup. Vercel does NOT serve ara.guzus.xyz — prod deploys are Railway, git-push driven (Load-bearing rule 3). |
+| `CLAUDE_CODE_OAUTH_TOKEN` | Every agent lane + direct-Claude workflows | Required by `claude-code-action@v1` (non-Claude routes still pass it for schema compatibility). **Expiry is a fleet-wide outage** — every production lane routes to `backend: claude`. Log signature: `is_error: true`, `num_turns: 1`, `total_cost_usd: 0`, `duration_ms` < ~2000, zero permission denials — the agent dies before doing any work. `show_full_output` is off, so the provider error body is hidden: **that shape IS the diagnosis.** Re-mint with `claude setup-token` → `gh secret set CLAUDE_CODE_OAUTH_TOKEN`. Dispatch `zai-claude-code-canary.yml` to separate a dead credential (canary green, lanes red) from a broken runner/sandbox (both red). Last expiry 2026-07-24; see rule 14. |
+| `ZAI_API_KEY` | Fallback chain link 2; `agent-run backend=zai-glm-5p2`; `zai-claude-code-canary.yml` | Z.ai Coding Plan key. Now load-bearing for outage resilience, not just comparison. |
+| `FIREWORKS_API_KEY` | `generative-research backend=glm-5p2`; DeepSeek/Kimi comparison lanes | Covers the GLM-via-Fireworks and DeepSeek-V4-Flash routes. |
+| `OPENCODE_API_KEY` / `MOONSHOT_API_KEY` | `backend=opencode-kimi-k3`; `opencode-kimi-canary.yml` | Kimi K3 route, Go-first then pay-per-token. Go key: https://opencode.ai/auth (watch caps $12/5h, $30/wk, $60/mo). Moonshot key: https://platform.kimi.ai/console/api-keys — the account needs real balance, new-user vouchers cannot bill kimi-k3. Validate with the canary before a full run. |
+| `CODEX_AUTH_JSON` | `generative-research backend=codex` | The file-backed `~/.codex/auth.json` from `codex login`. Treat like a password; one auth file per serialized runner stream. |
+| `BIRD_AUTH_TOKEN`, `BIRD_CT0` | bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies; they expire — see rule 6. |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `blog-subscriptions`, `daily-digest`, `liveness-check` | Blog alerts, digest delivery, liveness escalation. |
+| `HOOKER_URL`, `HOOKER_TOKEN` | Telemetry composite + most workflows | Base URL and token for the hooker POSTs. Optional — without them telemetry steps no-op (rule 4). |
+| `S3_*` (4 vars), `GEMINI_API_KEY` | `daily-digest` audio | Optional. Gemini Flash TTS generates the mp3, S3 stores it; the committed `research/audio/*.mp3` are 0-byte stubs. Missing = that step skips. |
+| `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional MCP search. **Currently unset** (verified 2026-07-02) — `daily-digest` warns and uses local-source synthesis. |
 | `GITHUB_TOKEN` | All workflows | Auto-provided. |
+| `DEEPSEEK_API_KEY`, `VERCEL_DEPLOY_HOOK` | _Retired_ | Both removed from the repo (verified 2026-07-02). DeepSeek routes through Fireworks now; the `VERCEL_DEPLOY_HOOK` steps still in a few workflows are permanent no-ops — Vercel does NOT serve ara.guzus.xyz (rule 3). Safe to delete. |
 
 ## Load-bearing Rules
 
@@ -359,123 +329,92 @@ These are the conventions that, if broken, will silently corrupt
 output or break the pipeline. Read them before editing.
 
 1. **ARA DSL compile + validate is mandatory.** Every commit to
-   `research/generative/` must go through
-   `scripts/compile_ara.py` (`.ara.md` → HTML) and pass
-   `scripts/check_generative_research.py` (tag/class allowlist plus
-   optional `--diversity-min`, `--callout-max`, `--strict-shape`
-   design gates). `scripts/write_generative_research.py` is the
-   **only** committer for that directory — it re-validates at write
-   time and persists the `.ara.md` source verbatim alongside the
-   generated HTML (there is no decompile step; the source is the
-   committed `.ara.md`, not something regenerated from the HTML).
-   Workflows that bypass the writer will fail review.
+   `research/generative/` goes through `scripts/compile_ara.py` and must
+   pass `scripts/check_generative_research.py`.
+   `scripts/write_generative_research.py` is the **only** committer for
+   that directory — it re-validates at write time and persists the
+   `.ara.md` verbatim beside the HTML. There is no decompile step: the
+   source is the committed `.ara.md`, never something regenerated from
+   the HTML. Workflows that bypass the writer will fail review.
 
-2. **The validator is exact-match.** Class tokens must start with
-   `ara-` *and* be a base class in `ARA_CATALOG.json` (or be a valid
-   `--variant` suffix of a cataloged base class). The allowlist is
-   loaded from `ARA_CATALOG.json` (via `scripts/ara_catalog.py`), NOT
-   parsed from `COMPONENTS.md` — `COMPONENTS.md` is the human reference
-   kept in lockstep with the catalog (CI-enforced; see "Component
-   catalog"). Tags outside the allowlist (`<style>`, `<script>`,
+2. **The validator is exact-match.** Class tokens must start with `ara-`
+   *and* be a base class in `ARA_CATALOG.json` (or a valid `--variant`
+   suffix of one). The allowlist comes from the catalog, NOT from
+   `COMPONENTS.md`. Tags outside the allowlist (`<style>`, `<script>`,
    `<iframe>`, `<h1>`, inline `style=`, `on*=`, `javascript:` URLs) are
-   rejected. Reach for `:::raw` only when the DSL genuinely can't
-   express the shape; invented classes still fail.
+   rejected. Reach for `:::raw` only when the DSL genuinely can't express
+   the shape — invented classes still fail.
 
 3. **Dashboard deploys are git-push driven — Railway is the deployer.**
-   Railway watches `main` and rebuilds the Docker image on every push
-   (root `Dockerfile`: bun build → Caddy serve; `railway.json` pins
-   the builder + healthcheck). ara.guzus.xyz is served by that
-   container behind Cloudflare (responses carry `x-railway-edge`) —
-   NOT by Vercel, whose last recorded deploy failed 2026-05-25. Its
-   `dashboard/vercel.json` was removed during open-sourcing, and the
-   `VERCEL_DEPLOY_HOOK` secret has since been deleted from the repo —
-   the steps that still reference it in a few workflows are permanent
-   no-ops. There is still no workflow file for deploys.
+   Railway watches `main` and rebuilds the Docker image on every push;
+   there is no deploy workflow file. ara.guzus.xyz is served by that
+   container behind Cloudflare — NOT by Vercel, whose last recorded
+   deploy failed 2026-05-25 and whose config and secret are both gone
+   (the remaining `VERCEL_DEPLOY_HOOK` steps are permanent no-ops).
    `dashboard/scripts/prebuild.mjs` copies `research/<source>/` into
-   `public/research/` and emits `manifest.json` before Vite runs (the
-   Docker build runs the same `bun run build` lifecycle). Touching it
-   changes what the dashboard sees. Incident-learned corollary: the
-   Dockerfile's package manager MUST stay in lockstep with the
-   dashboard's (bun since #102) — a leftover `npm ci` froze prod at a
-   stale build for ~a day with CI green, because CI never runs the
-   Dockerfile. Deploy staleness is watched by
-   `scripts/check_deploy_health.py`, wired into `liveness-check.yml`.
+   `public/research/` before Vite runs, so touching it changes what the
+   dashboard sees. **Incident-learned corollary: the Dockerfile's package
+   manager MUST stay in lockstep with the dashboard's** (bun since #102)
+   — a leftover `npm ci` froze prod at a stale build for ~a day *with CI
+   green*, because CI never runs the Dockerfile. Staleness is now watched
+   by `scripts/check_deploy_health.py` via `liveness-check.yml`.
 
-4. **Hooker telemetry is non-blocking.** Every workflow's final step
-   posts to `https://hooker.guzus.xyz` via the local composite at
-   `.github/actions/hooker-telemetry`. It must never fail a job —
-   `continue-on-error: true` style. Don't add hard dependencies on
+4. **Hooker telemetry is non-blocking.** The final telemetry step must
+   never fail a job (`continue-on-error`). Don't add hard dependencies on
    telemetry success.
 
-5. **Runner choice is load-bearing — default to self-hosted.** The
-   production self-hosted tier is the native Ubuntu host `gunux`, with one
-   persistent systemd runner per repository (see
-   `../runner/docs/CLOUD-RUN-SUNSET.md`). It carries the Birdy read-only CLI +
-   warm daemon (`hourly-twitter*`, `24h-model-timeline`), recent `research/`
-   checkout context, and pre-installed tooling. Its persistent home also
-   means actions must overwrite stale user-level settings explicitly and
-   must not assume a fresh container. Digest audio lives in S3 (uploaded by
-   `daily-digest` via the `S3_*` secrets; the committed
-   `research/audio/*.mp3` files are 0-byte stubs), while `daily-front-page`
-   renders via resvg and commits the PNG alongside the interactive edition.
-   Use `[self-hosted, Linux]` for anything touching that state, which is
-   nearly everything. Reserve `ubuntu-latest` for watchdogs and CI jobs that
-   must survive or avoid the self-hosted tier. The paused Cloud Run fleet is
-   rollback infrastructure only; if it is deliberately restored, re-validate
-   sandbox, Docker, state, and concurrency assumptions before routing jobs.
+5. **Runner choice is load-bearing — default to self-hosted.** `gunux`
+   carries the Birdy CLI + warm daemon, recent `research/` checkout, and
+   pre-installed tooling (see `../runner/docs/CLOUD-RUN-SUNSET.md`). Its
+   persistent home means actions must overwrite stale user-level settings
+   explicitly and never assume a fresh container. Use `[self-hosted,
+   Linux]` for anything touching that state — nearly everything; reserve
+   `ubuntu-latest` for CI and watchdogs. The paused Cloud Run fleet is
+   rollback infrastructure only; if restored, re-validate sandbox,
+   Docker, state, and concurrency assumptions first.
 
-6. **X/Twitter CLI calls must be graceful and read-only.** Use Birdy for
-   Twitter workflows, pass `--json --plain`, and pipe to a fallback
-   (`|| echo "[]"`). The Twitter cookies expire; workflows must continue
-   (with empty data) rather than crash the run.
+6. **X/Twitter CLI calls must be graceful and read-only.** Use Birdy,
+   pass `--json --plain`, and pipe to a fallback (`|| echo "[]"`). The
+   cookies expire; workflows must continue with empty data rather than
+   crash.
 
-7. **Improvement logs belong in `docs/archive/`.** When
-   `daily-improve.yml` (or any agent) generates a new improvements
-   file, write it to `docs/archive/YYYY-MM-DD-improvements.md`, not
-   to repo root. (The workflow prompt now says this too — the old
-   "Create an IMPROVEMENTS.md" wording is gone. The improve loop runs
-   weekly on Mondays and auto-closes its own stale `improve/*` PRs.)
+7. **Improvement logs belong in `docs/archive/YYYY-MM-DD-improvements.md`,**
+   not repo root. The improve loop runs weekly on Mondays and auto-closes
+   its own stale `improve/*` PRs.
 
-8. **Atomic file writes.** Long-running aggregation scripts that
-   write into `research/` should write to a temp file in the same
-   directory and `os.replace()` into place, so a half-finished file
-   never reaches the dashboard prebuild (and thus the next deployed
-   Railway image).
+8. **Atomic file writes.** Scripts writing into `research/` must write to
+   a temp file in the same directory and `os.replace()` into place, so a
+   half-finished file never reaches the dashboard prebuild — and thus the
+   next deployed Railway image.
 
 9. **Model tickets are CRUD'd, not regenerated.**
-   `research/models/tickets/<slug>.md` is the persistent store for the
-   model-release timeline — one ticket per shipping artifact (release,
-   partnership, funding round, legal action). The `24h-model-timeline.yml`
-   CRUD agent reads the existing tickets + last 24h of signal and
-   chooses create/update/close per the protocol in
-   `docs/model-tickets.md`. Never regenerate the table by deleting and
-   re-writing tickets. Slugs are immutable; `history` is append-only;
-   closure preserves history. `scripts/check_model_tickets.py` enforces
-   the schema (5 canonical states: rumored → in-testing → confirmed →
-   released → closed). The legacy `<date>-timeline.md` files (frozen
-   format) remain on disk; new dates produce a *derived diff* summarizing
-   what the agent did.
+   `research/models/tickets/<slug>.md` is a persistent store — one ticket
+   per shipping artifact (release, partnership, funding round, legal
+   action). The `24h-model-timeline.yml` agent reads existing tickets +
+   the last 24h of signal and chooses create/update/close per
+   `docs/model-tickets.md`. **Never** regenerate by deleting and
+   re-writing. Slugs are immutable, `history` is append-only, closure
+   preserves history; `scripts/check_model_tickets.py` enforces the 5
+   canonical states (rumored → in-testing → confirmed → released →
+   closed). Legacy `<date>-timeline.md` files stay frozen on disk; new
+   dates produce a *derived diff* of what the agent did.
 
 10. **Wiki pages are CRUD'd, not regenerated.** `research/wiki/` is a
-    compounding knowledge base — one markdown page per entity, concept,
-    or theme, plus `index.md` (the page directory) and an append-only
-    `log.md` (one `## [YYYY-MM-DD] ingest | <summary>` entry per run).
-    The `wiki-ingest.yml` agent runs daily *after the digest*
-    (`workflow_run`), reads the schema doc, and for each subject runs
-    `scripts/wiki_search.py` to find an existing page and UPDATE it
-    (bump the OKF `timestamp`, refine `[[links]]`/`aliases`) rather than
-    duplicating — it creates a new page only when none exists. Update is
-    the default; creation is the exception. **Slugs are immutable** (a
-    rename updates the title + aliases, never the filename); pages are
-    never deleted; `log.md` is append-only. **The ingest reads the
-    CURATED synthesis — the daily digest + model tickets — NOT the raw
-    per-source firehose** (`twitter/`, `rss/`, `blogs/`, `community/`, `arxiv/`);
-    re-reading the raw sources defeats the curation the digest performs.
-    `docs/wiki-schema.md` and `scripts/check_wiki.py` are the contract
-    and **must stay in lockstep** — a schema change unreflected in the
-    validator (or vice versa) silently corrupts the lane. The agent
-    iterates `check_wiki.py` until exit 0 before committing; CI runs it
-    on every PR.
+    compounding knowledge base — one page per entity/concept/theme, plus
+    `index.md` and an append-only `log.md` (one
+    `## [YYYY-MM-DD] ingest | <summary>` per run). The `wiki-ingest.yml`
+    agent runs after the digest (`workflow_run`) and for each subject
+    runs `scripts/wiki_search.py` first, so it UPDATEs an existing page
+    (bump OKF `timestamp`, refine `[[links]]`/`aliases`) rather than
+    duplicating. **Update is the default; creation is the exception.**
+    Slugs are immutable (a rename updates title + aliases, never the
+    filename), pages are never deleted, `log.md` is append-only.
+    **The ingest reads the CURATED synthesis — the daily digest + model
+    tickets — NOT the raw per-source firehose**; re-reading the raw
+    sources defeats the curation the digest performs.
+    `docs/wiki-schema.md` and `scripts/check_wiki.py` **must stay in
+    lockstep** — a schema change unreflected in the validator silently
+    corrupts the lane.
 
 11. **Worker-death auto-rerun must stay loop-safe.**
     `.github/workflows/auto-rerun-on-runner-loss.yml` watches the
@@ -585,41 +524,23 @@ output or break the pipeline. Read them before editing.
 
 ## Component catalog
 
-The article-fragment class allowlist lives in **`ARA_CATALOG.json`**
-(currently 87 base `ara-*` classes). The validator
-(`scripts/check_generative_research.py` → `write_generative_research.py`
-→ `ara_catalog.load_catalog`/`catalog_classes`) loads its allowlist from
-that file, NOT from `COMPONENTS.md`. `COMPONENTS.md` is the human
-reference and documents the **same cataloged base classes**;
-`scripts/ara_catalog.py` (`validate_catalog_against_components`) asserts
-the two stay in perfect lockstep and CI enforces it via
-`test_ara_dsl.py`. To add a new primitive, add it to BOTH files in the
-same PR (and ship the matching CSS); a class present in one but not the
-other fails CI.
+The article-fragment class allowlist is **`ARA_CATALOG.json`** (87 base
+`ara-*` classes). The validator loads it from there, NOT from
+`COMPONENTS.md` — that file is the human reference, kept in perfect
+lockstep by `scripts/ara_catalog.py` and CI-enforced via `test_ara_dsl.py`.
+To add a primitive, edit BOTH files in the same PR and ship the matching
+CSS; a class in one but not the other fails CI.
 
-The CSS intentionally defines **more** `ara-*` classes than the article
-allowlist. The extra classes are NOT drift and are NOT a commit-time
-rejection risk — they belong to layers that live outside the
-article-fragment contract on purpose:
-
-- `dashboard/src/components/ara-research.css` defines more `ara-*`
-  classes than the catalog: the cataloged article primitives (`ara-doc`,
-  `ara-callout`, `ara-figure`, …) that DO appear in `.ara.md` and ARE the
-  allowlist, **plus** **runtime/interactive extras** — table-of-
-  contents, figure lightbox, chart tooltips/axes/series, generated chart
-  internals (e.g.
-  `ara-chart-series-*`, built at `main.ts` ~line 3311) — injected by
-  `dashboard/src/main.ts` at runtime. The runtime extras never appear in
-  `.ara.md` source, so they don't need to be in the allowlist.
-- **Front-page template classes** (`ara-paper-*`, styled in
-  `dashboard/src/style.css`) used by the daily-front-page newspaper
-  render, which is its own template, not an ARA article.
-
-So a higher CSS class count than `COMPONENTS.md`/`ARA_CATALOG.json` is
-expected. Only worry about an undocumented class if it appears in an
-*article fragment* — and then the fix is to add it to both
-`ARA_CATALOG.json` and `COMPONENTS.md`, not to the CSS (the CSS may
-already have it).
+**A higher CSS class count than the catalog is expected, not drift.** Two
+layers live outside the article-fragment contract on purpose:
+`dashboard/src/components/ara-research.css` also carries runtime extras
+injected by `main.ts` (table of contents, figure lightbox, chart
+tooltips/axes/generated `ara-chart-series-*`), and `style.css` carries the
+front-page template classes (`ara-paper-*`), which are a newspaper render,
+not an ARA article. Neither ever appears in `.ara.md`, so neither belongs
+in the allowlist. Only worry about an undocumented class if it shows up in
+an *article fragment* — and then fix the catalog + COMPONENTS.md, not the
+CSS, which likely already has it.
 
 ## Historical Docs
 
