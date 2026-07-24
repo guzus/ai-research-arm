@@ -2931,16 +2931,25 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
       wikiKvHtml(page),
       wikiTagsHtml(page.tags),
       '  </div>',
+      // Body + backlinks/related on the left; History in an <aside> rail that
+      // the CSS floats right on wide viewports and stacks after the main
+      // column otherwise. History is this file's git history, read live from
+      // the GitHub API — never stored in the page. Filled by
+      // hydrateWikiHistory below; if that fails (offline, rate-limited) the
+      // slot degrades to a GitHub link.
+      '<div class="wiki-page-columns">',
+      '<div class="wiki-page-main">',
       '  <div class="wiki-page-body md-content"></div>',
       backlinksHtml,
       relatedHtml,
-      // History is this file's git history, read live from the GitHub API —
-      // never stored in the page. Filled by hydrateWikiHistory below; if that
-      // fails (offline, rate-limited) the slot degrades to a GitHub link.
+      '</div>',
+      '<aside class="wiki-page-rail">',
       '<section class="wiki-history">',
       '  <h2 class="wiki-section-title">History</h2>',
       '  <div class="wiki-history-body"><p class="wiki-history-empty">Loading history…</p></div>',
       '</section>',
+      '</aside>',
+      '</div>',
       '</div>',
     ].join('\n'),
   );
