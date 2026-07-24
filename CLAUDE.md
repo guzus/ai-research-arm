@@ -78,7 +78,7 @@ and opens a PR with methodology fixes.
 | `build_wiki_index.py` | Rebuilds `research/wiki/index.json` from the wiki pages. **CI-load-bearing**: `ci.yml` runs `--check` (exit 1 if the committed index is stale or any page fails validation); `wiki-ingest.yml` regenerates it every run. |
 | `build_backend_matrix.py` | Cross-checks the routing SSOT (`data/agent-backends.json`) against `.github/workflows/*` (lane exists, all provider secrets passed, pi/native mirrors match) and regenerates the lane table in `docs/backend-matrix.md`. **CI-load-bearing**: `ci.yml` runs `--check`. |
 | `resolve_backend_lane.py` | Stdlib-only field resolver for `data/agent-backends.json` — generative-research calls it on the runner for its SSOT default backend. Unknown lane = hard failure (never a silent default). |
-| `select_backend.py` | Stdlib-only runtime backend selector used by `.github/actions/agent-run`: resolves the lane, probes the requested provider, and walks the ordered `fallback.chain` — first available candidate wins; strict lanes/`fireworks-fallback: none` never fall back. The **claude probe is auth-only**: it pings `api.anthropic.com` with the OAuth Bearer token and reports the native path down ONLY on 401/403, staying up on 200/429/5xx/network faults. Never send the OAuth token as `x-api-key` — the API answers a *healthy* OAuth token with `401 invalid x-api-key`, which would strand every lane on the fallback backend. |
+| `select_backend.py` | Stdlib-only runtime backend selector used by `.github/actions/agent-run`: resolves the lane, probes the requested provider, and walks the ordered `fallback.chain` — first available candidate wins; strict lanes/`fireworks-fallback: none` never fall back. The claude probe is auth-only and has two traps — see Load-bearing rule 14. |
 | `fetch_ai_blogs.py` | Per-feed AI-blog fetcher used by `daily-ai-blogs.yml`; boundary-handles bad feeds so one failure doesn't crash the run. |
 | `watch_blog_subscriptions.py` | RSS subscription watcher used by `blog-subscriptions.yml`; seeds historical GUIDs without alerting, verifies Telegram responses, and acknowledges each proven delivery atomically. |
 | `deterministic_rss_digest.py` | Model-free fallback for `hourly-rss.yml`; parses fetched RSS/Atom files and appends a timestamped `research/rss/YYYY-MM-DD.md` section when the agent path fails. |
@@ -549,9 +549,11 @@ output or break the pipeline. Read them before editing.
     `test_backend_matrix.test_global_fallback_chain_shape`. Claude leads
     (it is what the prompts are tuned against); it must not also terminate.
     (b) **`probe_claude()` is auth-only** — down on 401/403, up on
-    200/429/5xx/network fault. A live subscription token answers a raw
-    1-token API ping with **429**, so treating non-200 as down would
-    reroute a healthy fleet off Claude permanently. It must send
+    200/429/5xx/network fault. Both sides are empirically pinned: a dead
+    token answers `401 "OAuth access token is invalid."`, while a *live*
+    subscription token answers the same raw 1-token ping with **429**. So
+    treating non-200 as down would reroute a healthy fleet off Claude
+    permanently. It must send
     `authorization: Bearer` + the oauth beta header and **never**
     `x-api-key` (which makes the API reject a *good* OAuth token with
     `401 invalid x-api-key`). `agent-run` must keep passing
