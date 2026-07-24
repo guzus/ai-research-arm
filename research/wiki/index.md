@@ -23,7 +23,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[cursor]] — AI coding tool/IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close).
 - [[deepseek]] — Hangzhou Chinese frontier lab; closed its first-ever external round (~$7.4B at $50B+, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital with the state AI fund the only voting investor — pivoting to commercialization toward AGI.
 - [[dell]] — US enterprise-IT OEM; Q1 FY27 AI-Optimized Servers $16.1B (+757% YoY), $24.4B AI orders booked, FY27 AI-server outlook raised to $60B.
-- [[etched]] — AI-chip startup out of stealth 2026-06-30 ($800M raised, $1B+ contracts, $5B valuation); Sohu transformer-only inference ASIC ships summer 2026.
+- [[etched]] — AI-chip startup out of stealth 2026-06-30 ($800M raised, $1B+ contracts); valuation jumped $5B→$10.3B by 2026-07-23; Sohu transformer-only inference ASIC ships summer 2026.
 - [[figure-ai]] — US humanoid-robotics company whose Helix-02 VLA ran a 200-hour fully-autonomous 249,560-package shift on 2026-05-30, ~10× the prior public MTBI envelope.
 - [[fireworks-ai]] — AI inference-infrastructure company that raised a $1.505B Series D at a $17.5B valuation (2026-07-18), citing 40T+ tokens/day served.
 - [[gemini-3-5-flash]] — Google's fast, low-cost frontier model shipped at I/O 2026.

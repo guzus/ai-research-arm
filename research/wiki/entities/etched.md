@@ -4,12 +4,14 @@ title: Etched
 type: entity
 aliases: ["Etched", "Sohu"]
 tags: [ai-chips, inference, transformer-asic, hardware, funding]
-description: AI-chip startup that exited stealth on 2026-06-30 with $800M raised, $1B+ in signed contracts, and a $5B valuation — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).
+description: AI-chip startup that exited stealth on 2026-06-30 with $800M raised and a $5B valuation, then hit a $10.3B valuation from big-name investors by 2026-07-23 — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).
 created_at: 2026-07-01
-timestamp: 2026-07-01T00:00:00Z
+timestamp: 2026-07-25T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
+  - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "TechCrunch — Etched exits stealth", date: 2026-06-30}
+  - {title: "TechCrunch — AI chip startup Etched defies skeptics, hits $10.3B valuation from big-name investors", date: 2026-07-23}
 ---
 
 Etched is an AI-chip startup that **exited stealth on 2026-06-30** with
@@ -21,6 +23,11 @@ claims remain **vendor-sourced and unaudited** (ARA digest 2026-07-01,
 TechCrunch, @kimmonismus).
 
 ## Why it matters
+- **Valuation more than doubled within a month (2026-07-23).** TechCrunch
+  reports Etched "defies skeptics" and hit a **$10.3B valuation** from
+  big-name investors — up from the **$5B** stealth-exit mark just three
+  weeks earlier — a sharp re-rating before the first Sohu racks have
+  shipped or been independently benchmarked (ARA digest 2026-07-25).
 - **The specialization bet against [[nvidia]].** Sohu trades the flexibility of
   a GPU for throughput on one architecture. If transformers stay dominant, a
   transformer-only ASIC can undercut general-purpose accelerators on
