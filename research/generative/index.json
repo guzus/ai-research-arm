@@ -1050,5 +1050,17 @@
     "source": "workflow_dispatch",
     "prompt": "DeepSeek's Wenfeng details Huawei chip access and TileLang as ~200 firms lobby against a China open-weight ban",
     "tags": []
+  },
+  {
+    "slug": "claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal",
+    "file": "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Claude Opus 5's Launch: The Non-Monotonic Effort Anomaly and the Disputed Silent Fallback",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-25T15:00:15Z",
+    "source": "workflow_dispatch",
+    "prompt": "Claude Opus 5 launch: the non-monotonic effort-scaling anomaly and disputed silent fallback to Opus 4.8",
+    "tags": []
   }
 ]

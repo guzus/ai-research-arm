@@ -1,0 +1,254 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Claude Opus 5 launched July 24, 2026 at $5/Mtok input and $25/Mtok output, unchanged from Opus 4.8",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/news/claude-opus-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Opus 5 ships a five-level effort ladder (low/medium/high/xhigh/max, default high); thinking cannot be disabled at xhigh/max",
+      "type": "technical",
+      "source_urls": ["https://platform.claude.com/docs/en/build-with-claude/effort"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Anthropic's own effort-ladder data shows Frontier-Bench score peaking at xhigh (44.4%) and dipping slightly at max, making the top of the ladder non-monotonic",
+      "type": "metric",
+      "source_urls": ["https://platform.claude.com/docs/en/about-claude/models/whats-new-opus-5", "https://kingy.ai/blog/claude-opus-5-specs-benchmarks-pricing/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c4",
+      "claim": "Epoch AI scores Opus 5 at ECI 159 (90% CI 157-162) vs Fable 5 at 161; on SWE-ECI the two tie at 161",
+      "type": "comparison",
+      "source_urls": ["https://epoch.ai/models/claude-opus-5", "https://the-decoder.com/anthropics-claude-opus-5-costs-well-below-fable-5-while-matching-or-beating-it-across-most-benchmarks/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-25",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c5",
+      "claim": "Epoch AI's own methodology states absolute ECI values are not meaningful in isolation; roughly 5 ECI points equate to one doubling of METR's autonomous-task time horizon, making a 2-point gap far below that unit",
+      "type": "definition",
+      "source_urls": ["https://epoch.ai/eci"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "\"FrontierCode\" is Cognition's own 150-task/36-repo coding benchmark (50-task 'Diamond' hard subset), unrelated to Epoch's ECI; a Cognition team member conceded under Hacker News scrutiny that ~50+ runs per model would be needed for statistical confidence versus the ~5 actually run",
+      "type": "technical",
+      "source_urls": ["https://cognition.com/blog/frontier-code", "https://news.ycombinator.com/item?id=48451723"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-25",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c7",
+      "claim": "Independent benchmark CodeRabbit found Opus 5's effort dial behaves as a precision/recall trade rather than uniform improvement: x-high effort raised precision from 35.2% to 39.3% while recall fell from 61.1% to 55.2%",
+      "type": "metric",
+      "source_urls": ["https://www.coderabbit.ai/blog/opus-5-model-review"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "Anthropic Fellows Program research (arXiv:2507.14417) documents Claude reasoning models becoming more distracted by irrelevant context the longer they reason (\"inverse scaling in test-time compute\"), predating Opus 5",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2507.14417"],
+      "source_tiers": ["academic"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Non-monotonic effort/reasoning-budget scaling is documented across other frontier models, not unique to Opus 5: GPT-5 Thinking peaks at medium and declines at high on the FrontierCS benchmark; Gemini 2.5 Pro's lowest thinking-budget setting outscores all higher tiers on TaxCalcBench; a DeepSeek-R1-Distill model shows a full inverted-U on GSM-8K",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/pdf/2512.15699", "https://arxiv.org/pdf/2507.16126", "https://www.emergentmind.com/papers/2506.04210"],
+      "source_tiers": ["academic", "academic", "secondary"],
+      "as_of": "2026",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "Claude 3.7 Sonnet (a predecessor generation) already showed inverse reasoning-effort scaling on a biosecurity benchmark subtask while o3-mini scaled monotonically on the same suite, showing the pattern is neither new to Claude nor universal across vendors",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/pdf/2505.06108"],
+      "source_tiers": ["academic"],
+      "as_of": "2026",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "Anthropic's support documentation: the cyber-classifier fallback to Opus 4.8 triggers on exploit generation, binary-based vulnerability scanning, and penetration testing, and scans everything the model reads in-session (memory, connectors, web search, files), not just the latest message",
+      "type": "definition",
+      "source_urls": ["https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "There is no fallback model at all for biology/chemistry/life-sciences-flagged requests; Opus 5 applies safeguards similar to Opus 4.8, implying refusal rather than substitution",
+      "type": "definition",
+      "source_urls": ["https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "In consumer surfaces (Claude.ai, Claude Code, Cowork) a fallback is visible by default: the user sees a notice, the response is labeled with the model that answered, and the picker stays on Opus 4.8 for the rest of the conversation until manually switched back",
+      "type": "definition",
+      "source_urls": ["https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "Automatic fallback is opt-in for the raw API (developers must configure a beta header and a fallbacks parameter); by default an unconfigured API call that trips a classifier returns a plain HTTP 200 refusal, not a silent swap",
+      "type": "definition",
+      "source_urls": ["https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5", "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "When fallback is configured, the API response's top-level model field always names the model that actually answered, and usage.iterations records the handoff — Anthropic maintains a dedicated cookbook guide because developers were observed not checking this field, and a documented GitHub issue shows a third-party client (oh-my-pi) parsing none of the three available signals",
+      "type": "technical",
+      "source_urls": ["https://platform.claude.com/cookbook/fable-5-fallback-billing-guide", "https://github.com/can1357/oh-my-pi/issues/4177"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c16",
+      "claim": "On June 9, 2026, Anthropic's Fable 5 model card disclosed that safeguards limiting the model's usefulness for frontier-LLM-development requests would be invisible to users and would not fall back to a different model; within roughly a day of public backlash (dubbed \"secret sabotage\"), Anthropic reversed the secrecy so these refusals fall back openly with a stated reason, while the underlying restriction itself stayed in place",
+      "type": "event",
+      "source_urls": ["https://jonready.com/blog/posts/claude-fable5-is-allowed-to-sabotage-your-app-if-youre-a-competitor.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "Anthropic states it expects the cyber-classifiers to intervene approximately 85% less often for Opus 5 than they did for Fable 5, based on internal testing (\"we expect\"), not an external audit",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/news/claude-opus-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "Anthropic's automated behavioral audit scores Opus 5 at 2.3 on overall misaligned behavior (lower is better) versus 2.85 for Opus 4.8, 2.81 for Mythos 5, and 3.35 for Sonnet 5, and calls Opus 5 its \"most aligned model to date\" on this self-graded, internal metric",
+      "type": "comparison",
+      "source_urls": ["https://www.anthropic.com/news/claude-opus-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "No independent alignment/scheming evaluation of Opus 5 specifically (from Apollo Research, METR, or similar) had been published as of one day post-launch; the UK AI Security Institute's contribution to the system card covers offensive cyber-capability testing (8 of 10 attempts succeeded against a weak-security network range), not the self-graded alignment claims",
+      "type": "market-structure",
+      "source_urls": ["https://www.apolloresearch.ai/press/", "https://metr.org/blog/2026-03-12-sabotage-risk-report-opus-4-6-review/", "https://www-cdn.anthropic.com/c5fbac3f0b1280a933ebd26d3cb8bb9f5bdeaf48/Claude%20Opus%205%20System%20Card.pdf"],
+      "source_tiers": ["secondary", "primary", "primary"],
+      "as_of": "2026-07-25",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "Harvey (legal AI) cites 26% fewer tokens at Opus 4.8 max-reasoning parity, corroborated same-day on Harvey's own blog with an internal 11.7% all-pass score on its proprietary Legal Agent Benchmark; Fundamental Research Lab's 9pp-accuracy/60%-less-time claim and Zapier's AutomationBench \"topped leaderboard\" claim each appear only inside Anthropic's own launch post with no independent third-party corroboration found",
+      "type": "comparison",
+      "source_urls": ["https://www.anthropic.com/news/claude-opus-5", "https://www.harvey.ai/blog/opus-5-in-harvey", "https://zapier.com/benchmarks"],
+      "source_tiers": ["primary", "secondary", "primary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c21",
+      "claim": "Zapier's public AutomationBench leaderboard uses a private held-out evaluation set distinct from its open 600-task GitHub/arXiv release, and Opus 5's best overall pass rate on the public leaderboard was roughly 26% at launch — meaning \"topped the leaderboard\" describes leading a weak field, not high absolute task competence",
+      "type": "metric",
+      "source_urls": ["https://zapier.com/benchmarks"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c22",
+      "claim": "No binding regulation (EU AI Act, FINRA, SEC, NIST AI RMF, ABA/state bar ethics opinions) currently requires disclosure of mid-session AI model-version substitution; commentary frames FTC deception doctrine as the only theoretically applicable, untested framework",
+      "type": "regulatory",
+      "source_urls": ["https://artificialintelligenceact.eu/article/13/", "https://www.marktechpost.com/2026/07/23/you-didnt-get-the-ai-model-you-paid-for/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-25",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "Anthropic's disclosed annualized revenue run-rate reached roughly $47 billion by May 2026 (up from about $9 billion at end-2025), with a $965 billion primary Series H valuation and secondary-market marks as high as $1.2 trillion by July 2026",
+      "type": "metric",
+      "source_urls": ["https://venturebeat.com/technology/anthropic-says-it-hit-a-30-billion-revenue-run-rate-after-crazy-80x-growth", "https://www.cnbc.com/2026/05/28/anthropic-open-ai-startup-value.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-05-29",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "Anthropic shipped four distinct model tiers in under two months before Opus 5: Mythos 5 and Fable 5 (June 9, 2026) and Sonnet 5 (June 30, 2026), positioning Opus 5 explicitly as the cost-efficient \"daily driver\" rather than a capability-crown release, amid GLM-5.2 undercutting Claude Opus-tier output pricing by roughly 5-6x",
+      "type": "market-structure",
+      "source_urls": ["https://venturebeat.com/orchestration/anthropic-launches-claude-opus-5-a-cheaper-ai-model-for-coding-agents-and-enterprise-workflows", "https://codingfleet.com/blog/claude-opus-4-8-vs-glm-5-2/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c25",
+      "claim": "Google's Gemini CLI documents a silent internal-utility fallback chain, but this is health/availability-triggered routing for background calls, not content-classifier-triggered downgrade of the user-facing model; OpenAI's GPT-5.6 Sol offers an explicit opt-in retry-on-lower-capability-model path rather than an automatic silent swap; no public reporting confirms an OpenAI or Google mechanism directly analogous to Opus 5's classifier-triggered fallback",
+      "type": "comparison",
+      "source_urls": ["https://geminicli.com/docs/cli/model-routing/", "https://deploymentsafety.openai.com/gpt-5-6"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07",
+      "confidence": "medium",
+      "risk": "volatile"
+    }
+  ]
+}
