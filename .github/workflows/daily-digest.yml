@@ -219,10 +219,27 @@ jobs:
             # AI Daily Digest - ${{ steps.date.outputs.date }}
 
             ## Executive Summary
-            [3-5 bullet points of the day's most important developments]
+            [3-5 bullets. Each MUST begin with a bold headline of 4-10 words,
+            then a comma or colon, then 1-2 sentences of detail. Example:
+            "- **Anthropic launched Claude Opus 5**, positioned as near-flagship
+            performance at roughly half the token price (TechCrunch, The Verge)."
+
+            The bold span is lifted verbatim onto the front page as the masthead
+            headline, so write it AS a headline: a concrete subject and verb, no
+            subordinate clauses, no em-dash asides, no citations, never over 10
+            words. "**Anthropic launched Claude Opus 5**" — good.
+            "**Anthropic launched Claude Opus 5, positioned as delivering
+            performance close to flagship Fable 5 at roughly half the token
+            price — the dominant story of the cycle**" — far too long; that
+            detail belongs after the bold span, not inside it.
+
+            Put sourcing in parentheses at the END of the bullet.]
 
             ## Breaking News
-            [Major announcements from companies]
+            [Major announcements from companies. Same shape: each bullet opens
+            with a bold 4-10 word headline, then the detail. Keep each bullet to
+            2 sentences — these are rendered as short newspaper story cards, and
+            anything longer is truncated mid-thought.]
 
             ## Model Releases & Updates
             [New models, versions, capabilities]
@@ -340,10 +357,27 @@ jobs:
             # AI Daily Digest - ${{ steps.date.outputs.date }}
 
             ## Executive Summary
-            [3-5 bullet points of the day's most important developments]
+            [3-5 bullets. Each MUST begin with a bold headline of 4-10 words,
+            then a comma or colon, then 1-2 sentences of detail. Example:
+            "- **Anthropic launched Claude Opus 5**, positioned as near-flagship
+            performance at roughly half the token price (TechCrunch, The Verge)."
+
+            The bold span is lifted verbatim onto the front page as the masthead
+            headline, so write it AS a headline: a concrete subject and verb, no
+            subordinate clauses, no em-dash asides, no citations, never over 10
+            words. "**Anthropic launched Claude Opus 5**" — good.
+            "**Anthropic launched Claude Opus 5, positioned as delivering
+            performance close to flagship Fable 5 at roughly half the token
+            price — the dominant story of the cycle**" — far too long; that
+            detail belongs after the bold span, not inside it.
+
+            Put sourcing in parentheses at the END of the bullet.]
 
             ## Breaking News
-            [Major announcements from companies]
+            [Major announcements from companies. Same shape: each bullet opens
+            with a bold 4-10 word headline, then the detail. Keep each bullet to
+            2 sentences — these are rendered as short newspaper story cards, and
+            anything longer is truncated mid-thought.]
 
             ## Model Releases & Updates
             [New models, versions, capabilities]

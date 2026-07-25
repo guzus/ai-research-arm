@@ -428,15 +428,25 @@ function renderAraSource(images = []) {
   const leadBody = leadBodyItems.length
     ? leadBodyItems.join("\n\n")
     : "No executive-summary detail was available for this edition.";
-  const breakingItems = [...breaking, ...policy].slice(0, 6);
-  if (breakingItems.length === 0) {
-    breakingItems.push("No breaking or policy items were highlighted in this edition.");
+  // Every department contributes stories to one run, tagged with where it
+  // came from. Ordered so the day's hard news leads and the standing beats
+  // follow.
+  const storyCards = [
+    ...breaking.map((t) => ({ text: t, tag: "Breaking" })),
+    ...models.map((t) => ({ text: t, tag: "Models" })),
+    ...policy.map((t) => ({ text: t, tag: "Policy" })),
+    ...research.map((t) => ({ text: t, tag: "Research" })),
+    ...business.map((t) => ({ text: t, tag: "Capital" })),
+  ]
+    .map((card) => ({ headline: conciseStory(card.text), tag: card.tag }))
+    .filter((card) => card.headline)
+    .slice(0, 10);
+  if (storyCards.length === 0) {
+    storyCards.push({
+      headline: "No stories were highlighted in this edition.",
+      tag: "Newsroom",
+    });
   }
-  const storyItems = [
-    ["Models & Systems", models, "hot"],
-    ["Research Ledger", research, "research"],
-    ["Capital & Compute", business, "market"],
-  ];
   const source = [
     "---",
     "title: " + yamlValue("THE AGI AWARENESS POST"),
@@ -450,9 +460,8 @@ function renderAraSource(images = []) {
     "",
     ":::paper-index",
     "- label: " + yamlValue("Lead") + "\n  target: " + yamlValue("#lead-top-story"),
-    "- label: " + yamlValue("Breaking") + "\n  target: " + yamlValue("#briefs-breaking-policy"),
+    "- label: " + yamlValue("Stories") + "\n  target: " + yamlValue("#briefs-stories"),
     "- label: " + yamlValue("Signals") + "\n  target: " + yamlValue("#meter-signal-mix"),
-    "- label: " + yamlValue("Departments") + "\n  target: " + yamlValue("#deck-departments"),
     ":::",
     "",
     `:::lead(id="lead-top-story", label="Top Story", title=${directiveAttr(leadTitle)})`,
@@ -468,11 +477,15 @@ function renderAraSource(images = []) {
           ]
         : []
     ),
-    `:::briefs(id="briefs-breaking-policy", title="Breaking & Policy", columns=2)`,
-    yamlItems(breakingItems, (item, index) => {
-      const tag = index < breaking.length ? "Breaking" : "Policy";
-      return "- headline: " + yamlValue(item) + "\n  tag: " + yamlValue(tag);
-    }),
+    // One "Stories" run instead of a "Breaking & Policy" block followed by a
+    // separate "Departments" deck. The department is not a section of its own
+    // — it is what a story IS, so it rides along as the story's tag. Each
+    // headline is cut to its own bold lead-in (or first sentence), because a
+    // full digest paragraph set in a two-up card column reads as a wall and
+    // gets truncated mid-thought.
+    `:::briefs(id="briefs-stories", title="Stories", columns=2)`,
+    yamlItems(storyCards, (card) =>
+      "- headline: " + yamlValue(card.headline) + "\n  tag: " + yamlValue(card.tag)),
     ":::",
     "",
     `:::news-meter(id="meter-signal-mix", title="Signal Mix")`,
@@ -480,13 +493,6 @@ function renderAraSource(images = []) {
     "- label: " + yamlValue("Model releases") + "\n  value: " + Math.min(100, models.length * 25) + "\n  display: " + yamlValue(`${models.length} items`) + "\n  tone: watch",
     "- label: " + yamlValue("Research highlights") + "\n  value: " + Math.min(100, research.length * 20) + "\n  display: " + yamlValue(`${research.length} items`) + "\n  tone: research",
     "- label: " + yamlValue("Funding and compute") + "\n  value: " + Math.min(100, business.length * 25) + "\n  display: " + yamlValue(`${business.length} items`) + "\n  tone: market",
-    ":::",
-    "",
-    `:::story-deck(id="deck-departments", title="Departments")`,
-    yamlItems(storyItems, ([label, items, tone]) => {
-      const summary = items.slice(0, 3).join(" ");
-      return "- headline: " + yamlValue(label) + "\n  summary: " + yamlValue(summary || "No items reported in this section.") + "\n  meta: " + yamlValue(`${items.length} digest items`) + "\n  tone: " + tone;
-    }),
     ":::",
     "",
     `:::quote(label="Quote of the Day")`,
@@ -595,6 +601,57 @@ function boldLeadIn(raw) {
 const leadBoldSplit = executiveRecords[0]
   ? boldLeadIn(executiveRecords[0].raw)
   : null;
+
+// A story card is a headline, not a paragraph. Digest section bullets run to
+// several sentences; set in a two-up card column they read as a wall and get
+// truncated mid-thought. Cut to the bullet's own bold lead-in when it has one
+// (the digest prompt asks for a 4-10 word headline there), else its first
+// sentence, then hard-cap so a run-on sentence can't defeat both.
+const STORY_WORD_CAP = 14;
+// Deliberately low. A short clause cut ("Data center siting", "Soofi S") is a
+// legitimate headline once the card carries a department tag, and it beats the
+// same sentence hacked off at a word count and trailed by an ellipsis. The
+// character floor just blocks absurd two-letter fragments.
+const STORY_WORD_FLOOR = 2;
+const STORY_CHAR_FLOOR = 7;
+
+function wordCount(text) {
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
+// Digest bullets hang their detail off a clause boundary — "Cognition
+// acquires Poke, an AI-companion app — TechCrunch frames the deal as ...",
+// "Claude Opus 5 (Anthropic) — new flagship-tier model; ...". Cutting there
+// yields a real headline; cutting at a word count yields a fragment ending in
+// an ellipsis, which is what made these cards read as truncated walls. Try
+// the em dash first (it almost always separates title from gloss) and accept
+// the first cut that lands in headline territory.
+function clauseCut(text) {
+  for (const sep of [" — ", " – ", "; ", ": "]) {
+    const index = text.indexOf(sep);
+    if (index === -1) continue;
+    const head = text.slice(0, index).replace(/[\s,;:.—–-]+$/, "").trim();
+    const count = wordCount(head);
+    if (count >= STORY_WORD_FLOOR && count <= STORY_WORD_CAP
+        && head.length >= STORY_CHAR_FLOOR) return head;
+  }
+  return null;
+}
+
+function conciseStory(text) {
+  const cleaned = headlineText(stripMarkdown(text));
+  if (!cleaned) return "";
+  const bold = boldLeadIn(text);
+  let head = bold ? bold[0] : splitTrailingAttribution(splitFirstSentence(cleaned)[0])[0];
+  head = head.replace(/\.$/, "");
+  if (wordCount(head) > STORY_WORD_CAP) {
+    // Ellipsis is the last resort, not the first.
+    head = clauseCut(head)
+      || head.split(/\s+/).filter(Boolean).slice(0, STORY_WORD_CAP).join(" ")
+           .replace(/[\s,;:.—–-]+$/, "") + "…";
+  }
+  return head;
+}
 
 // The editorial split both renderers share: one headline-sized phrase, with
 // the remainder plus any peeled attribution opening the body.
