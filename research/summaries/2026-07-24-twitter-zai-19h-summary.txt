@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (GLM-5.2 · Z.ai) - 2026-07-24 19:10:00 UTC
+
+CYCLE: Opus 5 lands at half Fable-5 price; Jensen Huang's X debut pushes an open-weight letter the closed labs skipped.
+
+TOP STORIES:
+• Anthropic ships Claude Opus 5 — ~half Fable 5's cost, SOTA agentic coding (Frontier-Bench 43.3% vs 33.7%), but Fable 5 still smarter. Live as claude-opus-5. [✓]
+• Jensen Huang's first X post publishes a joint open-weight AI letter (NVIDIA, Microsoft, Meta, Mistral, HF, IBM, others); OpenAI & Anthropic did NOT sign. [✓]
+• Musk pledges to open-source all X code next month + 3rd-party audit — sweeping, single-source, track record poor. [🚩]
+
+WATCH: Independent Opus 5 evals (SWE-bench, LMArena) in next 24-72h; any policy response to the open-weight letter.
+
+Full update on GitHub.
