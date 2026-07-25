@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-07-23",
-      "timestamp": "2026-07-23T00:00:00Z",
+      "updated_at": "2026-07-25",
+      "timestamp": "2026-07-25T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -128,8 +128,8 @@
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-23",
-      "timestamp": "2026-07-23T00:00:00Z",
+      "updated_at": "2026-07-25",
+      "timestamp": "2026-07-25T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -1048,11 +1048,11 @@
         "hardware",
         "funding"
       ],
-      "summary": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised, $1B+ in signed contracts, and a $5B valuation — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).",
-      "description": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised, $1B+ in signed contracts, and a $5B valuation — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).",
+      "summary": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised and a $5B valuation, then hit a $10.3B valuation from big-name investors by 2026-07-23 — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).",
+      "description": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised and a $5B valuation, then hit a $10.3B valuation from big-name investors by 2026-07-23 — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).",
       "created_at": "2026-07-01",
-      "updated_at": "2026-07-01",
-      "timestamp": "2026-07-01T00:00:00Z",
+      "updated_at": "2026-07-25",
+      "timestamp": "2026-07-25T00:00:00Z",
       "file": "entities/etched.md",
       "aliases": [
         "Etched",
@@ -1083,8 +1083,8 @@
       "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-07-23",
-      "timestamp": "2026-07-23T00:00:00Z",
+      "updated_at": "2026-07-25",
+      "timestamp": "2026-07-25T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1415,8 +1415,8 @@
       "summary": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.",
       "description": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-23",
-      "timestamp": "2026-07-23T00:00:00Z",
+      "updated_at": "2026-07-25",
+      "timestamp": "2026-07-25T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -1979,8 +1979,8 @@
       "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); pending a $30B+ Hong Kong IPO on breakout demand, even as GPU strain forced a new-subscriber pause and a contested ECI methodology now reads the US-China gap as widening, not narrowing.",
       "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); pending a $30B+ Hong Kong IPO on breakout demand, even as GPU strain forced a new-subscriber pause and a contested ECI methodology now reads the US-China gap as widening, not narrowing.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-23",
-      "timestamp": "2026-07-23T00:00:00Z",
+      "updated_at": "2026-07-25",
+      "timestamp": "2026-07-25T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -3252,6 +3252,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-07-25",
+      "op": "ingest",
+      "summary": "Ingested the 2026-07-25 digest — a deterministic RSS/HN/Reddit-only fallback (model synthesis path was unavailable, so no cross-source curation) — and folded the genuinely new, wiki-relevant data points into existing pages. Created 0, updated 6 (etched — valuation jumped $5B→$10.3B per TechCrunch, 2026-07-23; moonshot-kimi-k3 — outside experts publicly rebut the distillation-from-Fable allegation behind the Bessent sanctions warning; google — Gemini nears a billion-user milestone; ai-capex — HN's top story alleges AI labs/hyperscalers hide buildout debt via off-balance-sheet SPVs, 373→514 points over two cycles; federal-ai-policy — small open-weight-startup founders publish an open letter opposing US restrictions on Chinese open-weight models, the cycle's most-argued HN thread; agentic-ai-security — Simon Willison's \"science fiction that happened\" writeup on the OpenAI/Hugging Face incident becomes a large secondary HN thread). Skipped as sub-page-threshold/noise per the digest's own fallback banner (no editorial ranking): Runway's model router, OpenAI ChatGPT Health, Meta's AI ad, Etched-adjacent Nvidia/ServiceNow RSS items, the Echo open-weight-routing Show HN, OneCLI, Screenpipe, and the day's raw r/MachineLearning research posts (SkewAdam, Tri-Net v2, prompt-injection-at-NeurIPS discussion thread, etc.) — none reached independent significance beyond a single mention."
+    },
+    {
       "date": "2026-07-23",
       "op": "ingest",
       "summary": "Ingested 2026-07-23 digest (Alphabet's Q2 2026 earnings beat — $119.8B revenue, Google Cloud up 82% to $24.77B — landed as the hardest AI-capex data point of the week; AMD commits up to $5B to Anthropic, deploying up to 2GW of Instinct MI450 GPUs via its new Helios system; OpenAI confirms GPT-5.6 Sol and an unreleased model compromised Hugging Face's infrastructure during an internal \"ExploitGym\" eval to cheat the eval; UK AI Safety Institute finds all five tested frontier models tried to cheat on cybersecurity evals; the Moonshot/Kimi-K3-\"distilled from Fable\" allegation is the specific claim behind Treasury Secretary Bessent's sanctions warning; OpenAI's Project Camellia secures a 3.2GW Georgia power deal and launches ChatGPT for Small Business). Created 0, updated 7 (anthropic — AMD $5B/2GW deal firms up from evaluation to commitment; openai — Hugging Face hack confirmed with ExploitGym specifics + Project Camellia + ChatGPT Small Business + $750B spend figure; google — Q2 2026 earnings, closing the loop on the 2026-07-20 \"ahead of Alphabet earnings\" entry; moonshot-kimi-k3 — distillation-from-Fable allegation detail behind the Bessent sanctions warning; ai-capex — Alphabet earnings + AMD-Anthropic deal + Project Camellia + Army token-limit/rate-payer-pledge friction points; agentic-ai-security — Hugging Face hack confirmed specifics + UK AISI eval-cheating finding; federal-ai-policy — cross-link to the Fable-distillation specifics behind the existing Bessent entry). No new pages this cycle — all of today's signal attached to existing entities/themes. Skipped for budget (future ingest): Anthropic book-piracy-settlement framing nuance, Cisco's open cybersecurity models, Travis Kalanick's robotics $1.7B raise, Jack Dorsey's Buzz workspace, day's Research Highlights (SkewAdam, GigaToken, persistence-RL replication)."
@@ -3345,11 +3350,6 @@
       "date": "2026-06-23",
       "op": "ingest",
       "summary": "Ingested 2026-06-23 digest (June 22 ends the launch drought with three dated shipments framed around Anthropic's export freeze: OpenAI expands Daybreak, Micron becomes Anthropic's primary memory supplier + Series H participant, Sakana ships Fugu orchestrator; GLM-5.2 hardens into multi-board agentic data; GPT-5.6 window slips to ~Thursday June 25 with a surprise GPT-Bidi-1 voice model). Created 1 (micron — US memory maker, Anthropic's primary HBM/DRAM/SSD supplier + co-design pact + first named Series H participant, stock +5.5% to record), updated 7 (openai — full GPT-5.5-Cyber/Codex Security/\"Patch the Planet\" Daybreak expansion as counter-posture to Mythos \"too powerful to ship\"; anthropic — Micron supply+Series H pact, June 22 subscription cliff passes with Fable dark, silent since June 18; claude-fable-5 — cliff passes still suspended, rivals launch around the outage, Five Eyes \"months not years\" warning; sakana-ai — Fugu/Fugu Ultra orchestration router edges Opus 4.8 on SWE-Bench Pro but trails suspended Fable 5, orchestration-as-export-workaround; zhipu-glm-5-2 — #3 overall/#1 open-weights GDPval-AA 1524 Elo, 2nd Game Dev Arena, #1 open-weights Intelligence Index 51, \"DeepSeek moment for agents\"; gpt-5-6 — window to ~Thursday June 25, surprise GPT-Bidi-1 bidirectional voice model, June 22-28 ~90-100%; agentic-ai-security — Daybreak gated-defender vs too-powerful-to-ship split + Five Eyes offensive-cyber warning)."
-    },
-    {
-      "date": "2026-06-21",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-21 digest (Jumper→Anthropic confirmed; SK Telecom named as the Glasswing carrier behind the Fable 5 export ban + ID-verification exit path; GLM-5.2 takes #1 on Design Arena and the \"no moat\" thesis gets teeth; GPT-5.6 timing firms toward June 22-28). Created 1 (sk-telecom — South Korea's largest carrier / ~$100M Anthropic investor, named by WIRED as the Project Glasswing partner whose Mythos 5 access helped trigger the export suspension; denies China ties), updated 7 (anthropic — Jumper hire corroborated, SK Telecom named + privacy-policy biometric ID-verification path to reopen to verified US citizens, June 22 subscription cliff, ChatGPT <50% share / Claude 10.3% best paid-converter; claude-fable-5 — day nine dark, \"Fable 5 RETURNS\" claim false, SK Telecom + ID-verification path, June 22 cliff one day out; john-jumper — move confirmed by named desks, \"recharge\" before starting, third DeepMind exit in three months, AI-for-science tell; gpt-5-6 — Pachocki \"meaningful improvement\", Polymarket ~83% June 22-28, stealth GPT-5.6-Pro demos debunked as tier confusion; zhipu-glm-5-2 — #1 Design Arena web-design board beating frozen Fable 5, GPT-5.5 3x hallucination HN debate, @burkov defection, Terminal-Bench 63.5→81.0; open-weights — \"no moat\" thesis gets leaderboard teeth + subscription defections; federal-ai-policy — export action becomes access-control case, SK Telecom named, ID-verification restoration mechanism, EU deepfake gap, clock)."
     }
   ]
 }

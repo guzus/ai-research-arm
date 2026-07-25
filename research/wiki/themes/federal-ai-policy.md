@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-07-23T00:00:00Z
+timestamp: 2026-07-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
@@ -446,6 +447,19 @@ footing for the first time in the cycle.
   [[claude-fable-5|Fable]] model — surfaced as the most-argued Hacker News
   AI thread of 2026-07-22, carried into the 2026-07-23 cycle; see
   [[moonshot-kimi-k3]] (ARA digest 2026-07-23).
+
+- **Small open-weight startups push back on the China restriction threat
+  (2026-07-24/25).** An open letter from small-model/open-weight startup
+  founders urged the US government not to shut off Chinese open-weight AI —
+  the most-argued Hacker News AI story of the cycle (325→557 comments) —
+  the first organized industry pushback this theme has tracked against the
+  restriction options Axios reported the administration weighing
+  (2026-07-21) and Treasury Secretary Bessent named on-record (2026-07-22).
+  It surfaces a split within the affected industry itself: US startups that
+  *build on* [[moonshot-kimi-k3|Kimi K3]]/[[alibaba|Qwen]]-class open
+  weights have a stake in keeping them available, distinct from the
+  frontier-lab duopoly-lobbying accusation [[open-weights]] already tracks
+  (ARA digest 2026-07-25).
 
 ## Open questions
 

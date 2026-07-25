@@ -6,8 +6,9 @@ aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open 
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
 description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); pending a $30B+ Hong Kong IPO on breakout demand, even as GPU strain forced a new-subscriber pause and a contested ECI methodology now reads the US-China gap as widening, not narrowing.
 created_at: 2026-07-17
-timestamp: 2026-07-23T00:00:00Z
+timestamp: 2026-07-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
@@ -133,6 +134,16 @@ covering it.
   the underlying distillation claim itself remains sourced to social media,
   not a primary technical analysis; see [[federal-ai-policy]] (ARA digest
   2026-07-23).
+
+- **Independent experts push back on the distillation-from-Fable claim
+  (2026-07-23, carried 2026-07-25).** TechCrunch reports experts saying
+  "exploiting Anthropic's Fable isn't how Kimi K3 got so good" — a direct
+  rebuttal to the single-source distillation allegation that had become
+  the most-argued Hacker News AI thread on 2026-07-22 and that White House
+  officials reportedly cited in the Bessent sanctions warning (see
+  [[federal-ai-policy]]). The technical claim behind a cabinet-level policy
+  threat is now being publicly contested by outside experts, not just
+  disputed by Moonshot itself (ARA digest 2026-07-25).
 
 ## Open questions
 

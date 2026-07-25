@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-07-23T00:00:00Z
+timestamp: 2026-07-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
@@ -320,6 +321,17 @@ skepticism in one window:
   real capital deployment (AMD, OpenAI) landing the same day as concrete signs
   of strain at the edges (Army token limits, utility rate-payer politics) (ARA
   digest 2026-07-23).
+
+- **"Hiding a staggering amount of debt" becomes the dominant HN capex
+  argument (2026-07-24/25).** A Futurism piece alleging AI labs and
+  hyperscalers are routing GPU/datacenter buildout debt through
+  **off-balance-sheet special-purpose vehicles (SPVs)** climbed to the
+  top Hacker News AI story across two consecutive crawl cycles (373→514
+  points), with 171+ comments arguing over whether the structure masks
+  systemic risk in the capex buildout — a financial-structure critique
+  distinct from the demand-durability debate this theme already tracks,
+  and the sharpest "circular financing" framing since the 2026-06-04
+  issuance-wave entry above (ARA digest 2026-07-25).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s

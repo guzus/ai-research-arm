@@ -6,8 +6,9 @@ aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "G
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
 description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.
 created_at: 2026-07-17
-timestamp: 2026-07-23T00:00:00Z
+timestamp: 2026-07-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
@@ -70,6 +71,12 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   evidence that Alphabet's **~$175-190B 2026 AI capex guidance** is
   converting into cloud revenue rather than sitting as unmonetized buildout
   (9to5Google, CNBC; ARA digest 2026-07-23).
+
+- **Gemini nears a billion-user milestone (2026-07-23).** TechCrunch reports
+  Gemini is closing in on another billion-user product for Google, days
+  after the Q2 2026 earnings beat — consumer-scale distribution reinforcing
+  the same AI-investment thesis the Cloud-revenue acceleration supports
+  (ARA digest 2026-07-25).
 
 ## Open questions
 
