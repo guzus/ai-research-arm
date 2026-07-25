@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-25
+
+TOP 5 PAPERS:
+• Emergent Misalignment Recruits a Pre-existing Persona Subspace - harmful fine-tuning activates an existing persona direction, not new behavior
+• Dark Room in the Reward Channel - dense per-step rewards collapse GRPO agent training into do-nothing policies
+• Windowed-MTP - sliding-window draft heads cut speculative-decoding overhead 28-44% at million-token context
+• Anti-Periodic Positional Encoding - Mobius RoPE lifts needle-in-haystack accuracy 63% to 90%
+• AREX - 24-author deep-research agent with a self-auditing improvement loop
+
+CATEGORIES: LLM/NLP 8, CV/Multimodal 5, Agents/Reasoning 4, Safety/Alignment 4, Other 4
+
+Full report on GitHub.
