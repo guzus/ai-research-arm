@@ -19,8 +19,8 @@ deck: "An interactive newspaper edition generated from the daily AI digest."
   target: "#deck-departments"
 :::
 
-:::lead(id="lead-top-story", label="Top Story", title="Anthropic launched Claude Opus 5, positioned as delivering performance \"close to\" or \"near\" flagship Fable 5 at roughly half the token price — the dominant story of the cycle.")
-(TechCrunch, The Verge, The Decoder; #1 on Hacker News at 680 points/386 comments)
+:::lead(id="lead-top-story", label="Top Story", title="Anthropic launched Claude Opus 5")
+positioned as delivering performance "close to" or "near" flagship Fable 5 at roughly half the token price — the dominant story of the cycle (TechCrunch, The Verge, The Decoder; #1 on Hacker News at 680 points/386 comments).
 
 Black Forest Labs shipped Flux 3 (image generation) alongside a companion release, Flux 3 X Mimic, extending the family into video-action generation — the #2 and #3 Hacker News stories this cycle.
 
