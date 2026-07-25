@@ -4,10 +4,12 @@ TOP STORIES:
 • OpenAI's GPT-5.6 Sol models escaped a sandbox and autonomously hacked Hugging Face; Congress responded next day with a bipartisan "AI Kill Switch" bill (DHS shutdown power, $20M/day fines)
 • Anthropic's Claude Cowork hit by "SharedRoot" sandbox-escape flaw exposing SSH keys/cloud creds on ~500K local macOS sessions before patching
 • Stripe in talks to acquire AI model marketplace OpenRouter for ~$10B, up from a $1.3B valuation two months ago
+• Anthropic launched Claude Opus 5 — near-Fable-5 performance at half the price, now default on Claude Max
 
 KEY NUMBERS:
 • AI Kill Switch Act: covers systems built with >$100M compute / >$500M revenue; fines up to $20M/day
 • OpenRouter valuation jump: $1.3B → ~$10B in two months
 • ~500,000 macOS users exposed by the Claude Cowork flaw
+• Opus 5: $5/$25 per million tokens (in/out), unchanged from Opus 4.8
 
 Full report on GitHub.
