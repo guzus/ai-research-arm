@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T15:02:20.476Z",
+  "generatedAt": "2026-07-25T15:46:43.184Z",
   "windowStart": "2026-07-24T03:00:00.000Z",
   "windowEnd": "2026-07-27T04:00:00.000Z",
   "timezone": "UTC",
@@ -577,6 +577,19 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/a36e120d63e7bb5b0bdcce5af5e9da9b105ccaee"
     },
     {
+      "id": "commit-cf7e80b0da6c",
+      "kind": "completed",
+      "lane": "Generative",
+      "title": "Claude Opus 5's Launch: The Non-Monotonic Effort Anomaly and the Disputed Silent Fallback (#1064",
+      "status": "completed",
+      "start": "2026-07-25T14:10:00.000Z",
+      "end": "2026-07-25T15:01:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "research agent",
+      "commit": "cf7e80b0da6c",
+      "url": "https://github.com/guzus/ai-research-arm/commit/cf7e80b0da6cf2c5a92c1d497ba4a97873feca4c"
+    },
+    {
       "id": "commit-769737856217",
       "kind": "completed",
       "lane": "Blogs",
@@ -590,14 +603,30 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/769737856217dbd7372114cda094e1873aa9d669"
     },
     {
-      "id": "scheduled-hourly-twitter-yml-7---3-------2026-07-25T15-07-00-000Z",
-      "kind": "scheduled",
-      "lane": "Twitter/X",
-      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-kimi-k3)",
-      "status": "scheduled",
-      "start": "2026-07-25T15:07:00.000Z",
-      "end": "2026-07-25T16:07:00.000Z",
-      "source": "cron 7 */3 * * *"
+      "id": "commit-3b2beccb87a6",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-07-25 15:02 UTC (#1065)",
+      "status": "completed",
+      "start": "2026-07-25T15:02:00.000Z",
+      "end": "2026-07-25T15:03:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "3b2beccb87a6",
+      "url": "https://github.com/guzus/ai-research-arm/commit/3b2beccb87a676cd75c12fa6c85f3c7ba0806282"
+    },
+    {
+      "id": "commit-4e1f4775d092",
+      "kind": "completed",
+      "lane": "RSS",
+      "title": "RSS official announcements",
+      "status": "completed",
+      "start": "2026-07-25T15:32:00.000Z",
+      "end": "2026-07-25T15:41:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "4e1f4775d092",
+      "url": "https://github.com/guzus/ai-research-arm/commit/4e1f4775d092d958a8630060256169b2bcd23dea"
     },
     {
       "id": "scheduled-4h-community-yml-19---4-------2026-07-25T16-19-00-000Z",
@@ -1648,6 +1677,16 @@
       "start": "2026-07-27T02:47:00.000Z",
       "end": "2026-07-27T03:17:00.000Z",
       "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-7---3-------2026-07-27T03-07-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-kimi-k3)",
+      "status": "scheduled",
+      "start": "2026-07-27T03:07:00.000Z",
+      "end": "2026-07-27T04:07:00.000Z",
+      "source": "cron 7 */3 * * *"
     }
   ]
 }
