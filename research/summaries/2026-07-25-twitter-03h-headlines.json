@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "ANTHROPIC SHIPS CLAUDE OPUS 5 AT HALF OF FABLE 5'S PRICE, CLAIMS SOTA AGENTIC CODING",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2080703245643829596",
+    "category": "model"
+  },
+  {
+    "headline": "OPUS 5 TESTERS REPORT SILENT FALLBACK TO OPUS 4.8 ON GUARDRAIL HITS, NO ANTHROPIC CONFIRMATION",
+    "source": "@steipete",
+    "url": "https://x.com/steipete/status/2080723224976142714",
+    "category": "model"
+  },
+  {
+    "headline": "NVIDIA, MICROSOFT, META LEAD 25+ COMPANY LETTER AGAINST OPEN-WEIGHT AI RESTRICTIONS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2080668162765520955",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI, ANTHROPIC, GOOGLE NAMED AS HOLDOUTS ON OPEN-WEIGHTS LETTER; ANTHROPIC PRESSED TO RESPOND",
+    "source": "@amasad",
+    "url": "https://x.com/amasad/status/2080850075358826871",
+    "category": "policy"
+  },
+  {
+    "headline": "DISPUTED: SINGLE SOURCE CLAIMS OPENAI QUIETLY SIGNED OPEN-WEIGHTS LETTER, UNCONFIRMED",
+    "source": "@charles_irl",
+    "url": "https://x.com/charles_irl/status/2080829087271268483",
+    "category": "policy"
+  },
+  {
+    "headline": "NVIDIA, SK GROUP TO UNVEIL $500B+ AI DATA CENTER AND MEMORY PARTNERSHIP",
+    "source": "@moneycontrolcom",
+    "url": "https://x.com/moneycontrolcom/status/2080858578496233871",
+    "category": "infra"
+  }
+]
