@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-07-25 03:32:27 UTC
+
+CYCLE: Opus 5 reliability quirks surface overnight; Anthropic pressured over open-weights letter
+
+TOP STORIES:
+• Anthropic ships Claude Opus 5 at half of Fable 5's price, but testers flag a non-monotonic effort curve and a disputed silent-downgrade-to-Opus-4.8 bug ⚠
+• NVIDIA/Microsoft/Meta-led open-weights letter names OpenAI, Anthropic, Google as holdouts; Anthropic under public pressure to respond, contested claim OpenAI quietly signed ⚠
+
+WATCH: Whether Anthropic responds to the open-weights letter pressure or signs it.
+
+Full update on GitHub.
