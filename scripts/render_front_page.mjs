@@ -423,7 +423,7 @@ function yamlItems(items, mapper) {
 function renderAraSource(images = []) {
   // Same editorial split as the PNG: the title holds one headline-sized
   // sentence, the rest of the lead bullet opens the body.
-  const [leadTitle, leadTitleRest] = splitFirstSentence(lead);
+  const [leadTitle, leadTitleRest] = splitLead(lead);
   const leadBodyItems = [leadTitleRest, ...leadDeck].filter(Boolean);
   const leadBody = leadBodyItems.length
     ? leadBodyItems.join("\n\n")
@@ -538,6 +538,50 @@ function splitFirstSentence(text) {
   return [text.trim(), ""];
 }
 
+// Where the digest cites its sourcing. A parenthetical is only treated as
+// attribution when it names an outlet or carries engagement figures, so
+// descriptive asides like "Flux 3 (image generation)" are left alone.
+const ATTRIBUTION_HINT_RE =
+  /\b(?:TechCrunch|The Verge|The Decoder|Ars Technica|Reuters|Bloomberg|Hacker News|HN|Reddit|Bluesky|arXiv|The Information|Wired|CNBC|Financial Times|WSJ|Guardian|Axios|Semafor|Business Insider|VentureBeat|Engadget|Nikkei|SCMP|TechMeme)\b|\b\d+\s*(?:points?|comments?|upvotes?)\b|#\d+\s+on\b/i;
+
+// A masthead headline names the story; who reported it and how it did on
+// Hacker News is body copy. The digest's lead bullet routinely ends with
+// "(TechCrunch, The Verge, The Decoder; #1 on Hacker News at 680 points/386
+// comments)" — and because that bullet is one long sentence,
+// splitFirstSentence() hands the whole thing to the headline, where it
+// rendered at 36-44px. Peel the attribution off and hand it to the body so
+// the sourcing survives; it is only moved, never dropped.
+function splitTrailingAttribution(title) {
+  let head = title;
+  const tail = [];
+  for (let i = 0; i < 3; i += 1) {
+    const match = head.match(/\s*\(([^()]*)\)\s*([.!?])?\s*$/);
+    if (!match || !ATTRIBUTION_HINT_RE.test(match[1])) break;
+    tail.unshift(`(${match[1].trim()})`);
+    head = `${head.slice(0, match.index).trimEnd()}${match[2] ?? ""}`;
+  }
+  if (!tail.length) return [title, ""];
+  // Never hand back an empty or stub headline — if the parenthetical WAS
+  // the sentence ("(TechCrunch, The Verge)."), keep the original rather
+  // than render a fragment. Guard on word count, not characters: a short
+  // real headline ("OpenAI ships GPT-6") must survive, and only a
+  // genuinely empty remainder should veto the split.
+  head = head.replace(/[\s,;:–—-]+$/, "").trim();
+  if (head.replace(/[^\w\s]/g, " ").split(/\s+/).filter(Boolean).length < 2) {
+    return [title, ""];
+  }
+  return [head, tail.join(" ")];
+}
+
+// The editorial split both renderers share: one headline-sized sentence,
+// with the remainder plus any peeled attribution opening the body.
+function splitLead(text) {
+  const [firstSentence, rest] = splitFirstSentence(text);
+  const [title, attribution] = splitTrailingAttribution(firstSentence);
+  const body = [attribution, rest].filter(Boolean).join(" ").trim();
+  return [title, body];
+}
+
 function svgText(x, y, lines, options = {}) {
   const {
     size = 24,
@@ -593,11 +637,11 @@ function renderSvg(images = []) {
   const imageTop = 690;
   const leadBottom = images[0] ? imageTop - 18 : 906;
   let y = 305;
-  const [headlineText, headlineRest] = splitFirstSentence(lead);
-  const headlineSize = headlineText.length > 130 ? 36 : 44;
+  const [headlineLead, headlineRest] = splitLead(lead);
+  const headlineSize = headlineLead.length > 130 ? 36 : 44;
   const headlineWrap = headlineSize === 36 ? 31 : 25;
   const headlineLineHeight = headlineSize === 36 ? 40 : 48;
-  const headlineLines = clampText(headlineText, headlineWrap, 5);
+  const headlineLines = clampText(headlineLead, headlineWrap, 5);
   parts.push(svgText(62, y, headlineLines, { size: headlineSize, weight: "700", lineHeight: headlineLineHeight }));
   y += headlineLines.length * headlineLineHeight + 24;
   const ledeItems = [headlineRest, ...leadDeck].filter(Boolean);
