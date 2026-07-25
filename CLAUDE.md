@@ -80,16 +80,27 @@ and opens a PR with methodology fixes.
 | `check_lane_freshness.py` | Per-lane git-commit recency vs. cadence thresholds; exit 2 → hooker/Telegram alert from `liveness-check.yml`. Stdlib-only so it runs on both runner tiers. |
 | `export_wiki_okf.py` | `research/wiki/` → portable OKF bundle; rewrites `[[wikilinks]]` to Markdown links. |
 
-**Deterministic (model-free) fallbacks** — each composes its lane's artifact from already-fetched data when the agent path fails. They never invent content; missing inputs are noted explicitly.
+**Deterministic (model-free) fallbacks.** Only TWO are wired into a
+workflow. The other four scripts exist and are tested but **no workflow
+calls them** — that is deliberate, not drift (PR #303): *"Fallback
+summaries are worse than no summary: they can look like editorial output
+while being unranked/model-free lane dumps. Production editorial lanes
+should fail closed."* Check the workflow before assuming a lane self-heals;
+`data/agent-backends.json` records the same fail-closed note per lane.
 
-| Script | Lane | Note |
+| Script | Lane | Wired? |
 |---|---|---|
-| `deterministic_daily_digest.py` | `daily-digest.yml` | Verbatim top excerpts per committed lane artifact. Fires on agent failure **or** sub-floor output. |
-| `deterministic_rss_digest.py` | `hourly-rss.yml` | Appends a timestamped section to `research/rss/<date>.md`. |
-| `deterministic_community_digest.py` | `4h-community.yml` | Pre-fetched HN JSON + Reddit RSS → `*-hn.md`, `*-reddit.md`. |
-| `deterministic_arxiv_digest.py` | `daily-arxiv.yml` | Queries the arXiv Atom API; zero-paper windows still write an honest empty note. |
-| `deterministic_bluesky_digest.py` | `2h-bluesky.yml` | Engagement-ranked, ≤8 bullets / ≤3 per author, 48h window. |
-| `deterministic_twitter_digest.py` | `hourly-twitter.yml` | **Fail-closed, not a composer.** Restores the public digest to its pre-agent baseline and writes only a run-scoped `no_update` heartbeat — never reads Birdy, never authors news. The job then fails loudly and skips notifications. |
+| `deterministic_daily_digest.py` | `daily-digest.yml` | **YES, always-on.** Verbatim top excerpts per committed lane artifact, under a banner saying so. Fires on agent failure **or** sub-floor output. The deliberate exception to #303: gating it behind an opt-in (#302) cost four straight scheduled runs 07-09..07-12, so a labelled dump beats a blank front page. |
+| `deterministic_twitter_digest.py` | `hourly-twitter.yml` | **YES — but fail-closed, not a composer.** Restores the public digest to its pre-agent baseline and writes only a run-scoped `no_update` heartbeat — never reads Birdy, never authors news. The job then fails loudly and skips notifications. |
+| `deterministic_rss_digest.py` | `hourly-rss.yml` | **NO** — lane fails closed. Script appends a timestamped section to `research/rss/<date>.md` if run by hand. |
+| `deterministic_community_digest.py` | `4h-community.yml` | **NO** — lane fails closed. Pre-fetched HN JSON + Reddit RSS → `*-hn.md`, `*-reddit.md`. |
+| `deterministic_arxiv_digest.py` | `daily-arxiv.yml` | **NO** — lane fails closed. Queries the arXiv Atom API; zero-paper windows still write an honest empty note. |
+| `deterministic_bluesky_digest.py` | `2h-bluesky.yml` | **NO** — lane fails closed. Engagement-ranked, ≤8 bullets / ≤3 per author, 48h window. |
+
+Consequence worth internalising: when the agent path breaks, the four
+fail-closed lanes go stale and `liveness-check.yml` alerts. That alert is
+the system working, not a second bug — fix the agent path, then re-dispatch
+the lanes to catch up (a daily lane won't self-heal until its next slot).
 
 **Aggregation + rendering**
 
@@ -151,13 +162,15 @@ workflows may still call the action directly; when they do, pass the model
 through `claude_args` (`"--model claude-sonnet-5"`) — never as a separate
 `model:` input.
 
-**A green run on a fallback lane is not evidence the agent path was
-healthy.** RSS, community, arXiv, digest and Bluesky (plus the
-twitter-deepseek tier) run a deterministic fallback after the agent step,
-then a final `require-output` guard; the digest additionally gates agent
-output on a hard content floor before deciding. Green means "an artifact was
-committed" — read the agent/fallback step logs, or the fallback-used Telegram
-alert, to learn which path produced it.
+**Most editorial lanes fail CLOSED — only the digest self-heals.** RSS,
+community, arXiv and Bluesky have no deterministic fallback wired: a broken
+agent path makes the run red and the lane goes stale until it is fixed and
+re-dispatched (deliberate, PR #303 — see the fallback table above). Only
+`daily-digest.yml` composes a model-free digest, and only after its agent
+output fails a hard content floor. So on the digest specifically, **a green
+run is not evidence the agent path was healthy** — green means "an artifact
+was committed". Read the agent/fallback step logs, or the fallback-used
+Telegram alert, to learn which path produced it.
 
 **Publishing uses `.github/actions/safe-push`** — see rule 13 for the
 protected-branch fallback and what `pushed=true` actually means.
@@ -498,11 +511,17 @@ output or break the pipeline. Read them before editing.
     `401 invalid x-api-key`). `agent-run` must keep passing
     `CLAUDE_CODE_OAUTH_TOKEN` into the select step or the probe reports
     "not configured" and every lane reroutes.
-    (c) **Deterministic fallbacks are damage control, not the fix** — the
-    digest's model-free composer did fire and published, which is why the
-    site stayed up, but it publishes an uncurated verbatim dump under a
-    banner saying so. A green run on a fallback lane is not evidence the
-    agent path is healthy; check the fallback-used Telegram alert.
+    (c) **Deterministic fallbacks are damage control, and only the digest
+    has one** — its model-free composer did fire and published, which is
+    why the site stayed up, but it publishes an uncurated verbatim dump
+    under a banner saying so, and a green digest run is therefore not
+    evidence the agent path is healthy (check the fallback-used Telegram
+    alert). Every other editorial lane fails closed by design (#303), so
+    the same outage silently froze arXiv and Bluesky until
+    `liveness-check.yml` alerted ~10h later. Expect that shape: one
+    credential failure = one banner-labelled digest + several stale lanes
+    that need a manual re-dispatch once the agent path is fixed, because a
+    daily lane will not retry until its next slot.
 
 ## Code Style
 
