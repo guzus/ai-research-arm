@@ -527,6 +527,18 @@ output or break the pipeline. Read them before editing.
 
 - **Workflow YAML:** comment each logical section; group secrets near
   the step that consumes them.
+- **Always `date -u`, never bare `date`.** The runner's clock is correct
+  but its timezone is KST (UTC+9), while every consumer reads these values
+  as UTC: commit messages and captions are formatted `'... %H:%M UTC'`, and
+  the dashboard parses `research/<lane>/<date>.md` names and `HH:MM UTC`
+  titles as UTC before converting to viewer-local (`dashboard/src/main.ts`
+  — "the pipeline's UTC write schedule"). A bare `date` therefore emits a
+  string that lies by 9h and, for runs landing between 15:00Z and 24:00Z,
+  names the artifact a day early. That window is why it hid for months —
+  and why a runner outage that pushed the 00:00Z digest to 16:13Z cost
+  `research/digest/2026-07-24-digest.md` outright. Enforced by
+  `scripts/test_workflow_time_convention.py`. (`date +%s` is exempt —
+  epoch seconds are timezone-independent.)
 - **Commit messages:** descriptive, dated. Examples:
   - `Twitter update 2026-05-17 09:43 UTC`
   - `Methodology improvements for 2026-02-01`

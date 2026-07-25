@@ -29,8 +29,8 @@ jobs:
         id: dates
         run: |
           {
-            echo "today=$(date +'%Y-%m-%d')"
-            echo "branch=twitter-account-explorer/$(date +'%Y-%m-%d')"
+            echo "today=$(date -u +'%Y-%m-%d')"
+            echo "branch=twitter-account-explorer/$(date -u +'%Y-%m-%d')"
           } >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
