@@ -135,7 +135,50 @@ const policy = policyRecords.map((item) => item.text);
 const quoteBlock = markdown.match(/## Quote of the Day\s+>\s*([\s\S]*?)(?=\n---|\n##\s+|$)/i)?.[1] ?? "";
 const quote = stripMarkdown(quoteBlock.replace(/^>\s?/gm, " "));
 
-const lead = executive[0] || paragraphs(markdown, 1)[0] || "Today's AI digest is ready.";
+// A headline names the story — not the pipe it arrived through, nor when a
+// feed stamped it. The deterministic fallback digest labels every Executive
+// Summary bullet with its source lane and keeps the source item's trailing
+// timestamp:
+//   - **RSS / Official Announcements:** [Runway launches ...](url) - 2026-07-23 17:07 UTC
+// Rendered verbatim that shipped as a TOP STORY reading "RSS / Official
+// Announcements: Runway launches ... - 2026-07-23 17:07 UTC".
+//
+// Both strips are deliberately narrow so they cannot eat real copy: the
+// prefix must be one of the fallback composer's OWN lane labels (keep in
+// lockstep with LANES in scripts/deterministic_daily_digest.py) — so a
+// genuine "OpenAI: ..." headline survives — and the suffix must be a full
+// ISO date, so "Fable 5" or "$19.2B" is untouched.
+const LANE_LABELS = [
+  "Twitter/X",
+  "RSS / Official Announcements",
+  "Hacker News",
+  "Reddit",
+  "Expert Blogs",
+  "Bluesky",
+  "arXiv Papers",
+  "YouTube",
+];
+const LANE_LABEL_RE = new RegExp(
+  `^\\s*(?:${LANE_LABELS.map((l) => l.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&")).join("|")})\\s*:\\s*`,
+  "i",
+);
+const TRAILING_STAMP_RE =
+  /[\s(]*[-–—]?\s*\d{4}-\d{2}-\d{2}(?:[ T]\d{2}:\d{2}(?::\d{2})?)?\s*(?:UTC|GMT|Z)?\s*\)?\s*$/i;
+
+function headlineText(text) {
+  let out = text;
+  // Lanes can nest ("Hacker News: Reddit: ..." never happens today, but the
+  // loop costs nothing and keeps one stray label from surviving).
+  for (let i = 0; i < 3 && LANE_LABEL_RE.test(out); i += 1) {
+    out = out.replace(LANE_LABEL_RE, "");
+  }
+  out = out.replace(TRAILING_STAMP_RE, "").replace(/[\s–—-]+$/, "").trim();
+  return out || text.trim();
+}
+
+const lead = headlineText(
+  executive[0] || paragraphs(markdown, 1)[0] || "Today's AI digest is ready.",
+);
 const leadDeck = executive.slice(1, 4);
 const issue = Math.floor((new Date(`${date}T00:00:00Z`) - new Date(`${date.slice(0, 4)}-01-01T00:00:00Z`)) / 86400000) + 1;
 

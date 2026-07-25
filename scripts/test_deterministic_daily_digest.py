@@ -287,6 +287,86 @@ class FrontPageRendererParityTest(unittest.TestCase):
                 break
         return out
 
+    # Port of headlineText() in scripts/render_front_page.mjs.
+    _JS_LANE_LABEL_RE = re.compile(
+        r"^\s*(?:"
+        + "|".join(
+            re.escape(lane.label)
+            for lane in digest.LANES
+        )
+        + r")\s*:\s*",
+        re.I,
+    )
+    _JS_TRAILING_STAMP_RE = re.compile(
+        r"[\s(]*[-–—]?\s*\d{4}-\d{2}-\d{2}"
+        r"(?:[ T]\d{2}:\d{2}(?::\d{2})?)?\s*(?:UTC|GMT|Z)?\s*\)?\s*$",
+        re.I,
+    )
+
+    @classmethod
+    def _js_headline_text(cls, text: str) -> str:
+        out = text
+        for _ in range(3):
+            if not cls._JS_LANE_LABEL_RE.search(out):
+                break
+            out = cls._JS_LANE_LABEL_RE.sub("", out)
+        out = cls._JS_TRAILING_STAMP_RE.sub("", out)
+        out = re.sub(r"[\s–—-]+$", "", out).strip()
+        return out or text.strip()
+
+    def test_headline_strips_lane_label_and_trailing_timestamp(self):
+        """The 2026-07-25 front page shipped a TOP STORY reading
+        'RSS / Official Announcements: Runway launches ... - 2026-07-23 17:07 UTC'.
+        A headline names the story, not the lane it arrived through nor when
+        the feed stamped it."""
+        self.assertEqual(
+            self._js_headline_text(
+                "RSS / Official Announcements: Runway launches AI model router "
+                "as generative media gets crowded - 2026-07-23 17:07 UTC"
+            ),
+            "Runway launches AI model router as generative media gets crowded",
+        )
+        for label in (lane.label for lane in digest.LANES):
+            with self.subTest(label=label):
+                self.assertEqual(
+                    self._js_headline_text(f"{label}: Something newsworthy happened"),
+                    "Something newsworthy happened",
+                )
+        # Date shapes the composer and its sources actually emit.
+        self.assertEqual(self._js_headline_text("A title 2026-07-23"), "A title")
+        self.assertEqual(self._js_headline_text("A title (2026-07-23)"), "A title")
+        self.assertEqual(self._js_headline_text("A title — 2026-07-23 09:00 UTC"), "A title")
+
+    def test_headline_cleanup_cannot_eat_real_copy(self):
+        """Both strips must stay narrow: a non-lane colon is ordinary headline
+        punctuation, and figures like $10.3B must survive."""
+        for untouched in (
+            "Anthropic launched Claude Opus 5, near flagship Fable 5 at half the token price",
+            "OpenAI: we are shipping a new voice mode",
+            "Etched hits $10.3B valuation from big-name investors",
+            "Black Forest Labs shipped Flux 3",
+        ):
+            with self.subTest(untouched=untouched):
+                self.assertEqual(self._js_headline_text(untouched), untouched)
+
+    def test_fallback_digest_lead_is_clean_end_to_end(self):
+        """Guards the whole chain on a genuinely composed fallback digest, not
+        just the regex in isolation."""
+        with tempfile.TemporaryDirectory() as tmp:
+            markdown = self._compose_fallback_digest(Path(tmp))
+            executive = self._js_section_records(
+                self._js_section(markdown, "Executive Summary"), 5
+            )
+            lead = self._js_headline_text(executive[0])
+
+            for lane in digest.LANES:
+                self.assertFalse(
+                    lead.lower().startswith(lane.label.lower() + ":"),
+                    f"lead still carries the {lane.label} lane label: {lead!r}",
+                )
+            self.assertNotRegex(lead, r"\d{4}-\d{2}-\d{2}\s*$")
+            self.assertTrue(lead)
+
     def _compose_fallback_digest(self, root: Path) -> str:
         research = root / "research"
         (research / "summaries").mkdir(parents=True)
