@@ -30,8 +30,8 @@ jobs:
       - name: Get current datetime
         id: datetime
         run: |
-          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-          echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+          echo "date=$(date -u +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "timestamp=$(date -u +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
 
       - name: Setup Node.js
         uses: actions/setup-node@v6

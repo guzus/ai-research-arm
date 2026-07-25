@@ -28,8 +28,8 @@ jobs:
         id: datetime
         run: |
           {
-            echo "date=$(date +'%Y-%m-%d')"
-            echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')"
+            echo "date=$(date -u +'%Y-%m-%d')"
+            echo "timestamp=$(date -u +'%Y-%m-%d %H:%M UTC')"
             echo "yesterday=$(date -u -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -u -v-1d +'%Y-%m-%d')"
           } >> "$GITHUB_OUTPUT"
 

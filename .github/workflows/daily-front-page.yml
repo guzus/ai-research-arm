@@ -80,7 +80,7 @@ jobs:
             fi
             echo "date=$INPUT_DATE" >> $GITHUB_OUTPUT
           else
-            echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+            echo "date=$(date -u +'%Y-%m-%d')" >> $GITHUB_OUTPUT
           fi
 
       # Skip if today's digest doesn't exist yet
