@@ -218,11 +218,17 @@ body.has-digest-player .app {
   gap: 10px;
   min-width: 0;
 }
+/* The wordmark is an <a>, and the only colour rule for it was scoped to
+ * `.tab-agents` — so on every other view it fell through to the user-agent
+ * link default and rendered as underlined #0000EE, which reads as an
+ * unstyled page rather than a brand mark. */
 .brand-title {
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   font-family: var(--font-mono);
+  color: var(--text);
+  text-decoration: none;
   cursor: pointer;
 }
 .brand-title:hover { color: var(--accent-warm); }
@@ -360,6 +366,9 @@ body.has-digest-player .app {
   background: var(--bg);
   border: 1px solid var(--border);
   color: var(--text-secondary);
+  /* The pill already carries the affordance; the inherited anchor underline
+   * on top of it just reads as unstyled markup. */
+  text-decoration: none;
   padding: 6px 18px;
   border-radius: 20px;
   font-family: var(--font);
@@ -554,6 +563,15 @@ body.tab-today .cal-chevron { color: var(--on-accent); opacity: 0.75; }
     border: 0;
     border-radius: 0;
     box-shadow: none;
+  }
+
+  /* With an odd number of sections the last one sat alone in a two-up row
+   * with dead space beside it, which reads as a broken table rather than a
+   * control grid. Let it span the full width instead. `:nth-of-type` counts
+   * only the <a> siblings — the calendar is a <div> and search a <button> —
+   * so this stays correct if a section is ever added or removed. */
+  .tabs a.tab:last-of-type:nth-of-type(odd) {
+    grid-column: 1 / -1;
   }
 
   .calendar,
@@ -3134,6 +3152,27 @@ body.has-toc .section-nav { display: none; }
   line-height: 1.45;
 }
 
+/* Paragraphs here inherited `margin: 0`, so the lead rendered as one
+ * undifferentiated wall — the standfirst ran straight into the next story
+ * with no more separation than a line wrap. Space them, and let the first
+ * one read as a standfirst: it is the sentence that carries the headline,
+ * and giving it the same weight as everything after flattens the hierarchy
+ * the masthead just established. */
+.ara-paper-collapsible > p {
+  margin: 0 0 0.75em;
+  break-inside: avoid-column;
+}
+
+.ara-paper-collapsible > p:last-child {
+  margin-bottom: 0;
+}
+
+.ara-paper-collapsible > p:first-child {
+  font-size: 1.06em;
+  line-height: 1.38;
+  color: var(--text);
+}
+
 .ara-paper-brief-grid,
 .ara-paper-story-list {
   display: grid;
@@ -3167,9 +3206,17 @@ body.has-toc .section-nav { display: none; }
   display: none;
 }
 
+/* `1fr` resolves to `minmax(auto, 1fr)`, and that `auto` minimum is
+ * min-content — so a single unbreakable token in the headline widens the
+ * whole column past its share and the brief overflows into its neighbour in
+ * the two-up grid. Digest text carries exactly such tokens: the 2026-07-25
+ * front page cited `research/models/tickets/anthropic-opus-5-leak-2026-07.md`
+ * and brief 01 measured 280px inside a 218px cell, printing on top of brief
+ * 02. `minmax(0, 1fr)` gives the column a zero floor so it can never exceed
+ * its track. */
 .ara-paper-brief summary {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 7px 10px;
   align-items: baseline;
 }
@@ -3189,10 +3236,14 @@ body.has-toc .section-nav { display: none; }
   text-transform: uppercase;
 }
 
+/* The grid floor above stops the column blowout; this makes the long token
+ * wrap inside the column instead of being clipped at its edge. `anywhere`
+ * (not `break-word`) so it still contributes zero to min-content. */
 .ara-paper-brief-headline {
   grid-column: 2;
   font-weight: 800;
   line-height: 1.18;
+  overflow-wrap: anywhere;
 }
 
 .ara-paper-brief p,
