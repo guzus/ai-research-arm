@@ -16,6 +16,20 @@ export type TodayRenderOptions = {
   frontPageCardHtml: string | null;
 };
 
+/** Drop the first top-level list item from a markdown block, keeping any of
+ * its wrapped continuation lines with it. Returns the input unchanged when
+ * there is no leading bullet, so a paragraph-style summary is never gutted. */
+function dropFirstBullet(md: string): string {
+  const lines = md.split('\n');
+  const start = lines.findIndex((l) => /^\s*[-*]\s+/.test(l));
+  if (start === -1) return md;
+  let end = start + 1;
+  while (end < lines.length && !/^\s*[-*]\s+/.test(lines[end]) && lines[end].trim()) {
+    end += 1;
+  }
+  return [...lines.slice(0, start), ...lines.slice(end)].join('\n').trim();
+}
+
 /** Render the daily digest. Treats Executive Summary specially as a TL;DR block.
  * When `frontPageCardHtml` is supplied the layout splits into two desktop
  * columns: front page on the left, digest cards on the right. */
@@ -55,6 +69,17 @@ export function renderTodayHtml(options: TodayRenderOptions): string {
     if (section.title && isModelReleaseDigestSection(section.title)) continue;
 
     const isSummary = /^(executive summary|tl;dr|tldr|summary)$/i.test(section.title.trim());
+
+    // The front page's headline and standfirst ARE the first Executive
+    // Summary bullet (render_front_page.mjs builds them from it), so with
+    // both columns on screen the reader met the same sentence twice — once
+    // at masthead size on the left, once as bullet one on the right. Drop it
+    // from the TL;DR when the front page is showing it; no information is
+    // lost, it just stops being said twice.
+    if (isSummary && options.frontPageCardHtml) {
+      section.body = dropFirstBullet(section.body);
+      if (!section.body.trim()) continue;
+    }
     const title = section.title || options.fallbackTitle;
     const anchorId = sectionAnchorId('today', isSummary ? 'tl-dr' : title, sectionIndex);
     sectionIndex += 1;

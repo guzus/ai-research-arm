@@ -573,9 +573,38 @@ function splitTrailingAttribution(title) {
   return [head, tail.join(" ")];
 }
 
-// The editorial split both renderers share: one headline-sized sentence,
-// with the remainder plus any peeled attribution opening the body.
+// The digest already marks where the headline ends: its Executive Summary
+// bullets open with a bold lead-in — "**Anthropic launched Claude Opus 5**,
+// positioned as delivering ..." — which is the headline, with the rest being
+// the standfirst. Using the whole first SENTENCE instead set a 27-word
+// analytical clause at masthead size, wrapping ten lines and pushing the
+// paper below the fold. Prefer the author's own emphasis; only fall back to
+// sentence-splitting for a bullet that has none (roughly one in five).
+function boldLeadIn(raw) {
+  const match = raw
+    .replace(/^\s*([-*]|\d+\.)\s+/, "")
+    .match(/^\*\*([^*]+)\*\*([\s\S]*)$/);
+  if (!match) return null;
+  const head = stripMarkdown(match[1]).replace(/[\s,:;.—–-]+$/, "").trim();
+  // A one-word bold run is emphasis, not a headline.
+  if (head.split(/\s+/).filter(Boolean).length < 2) return null;
+  const rest = stripMarkdown(match[2]).replace(/^[\s,:;—–-]+/, "").trim();
+  return [head, rest];
+}
+
+const leadBoldSplit = executiveRecords[0]
+  ? boldLeadIn(executiveRecords[0].raw)
+  : null;
+
+// The editorial split both renderers share: one headline-sized phrase, with
+// the remainder plus any peeled attribution opening the body.
 function splitLead(text) {
+  if (leadBoldSplit) {
+    const [head, rest] = leadBoldSplit;
+    // The citation rides at the end of `rest`, so it lands in the body for
+    // free — no attribution peeling needed on this path.
+    return [headlineText(head), rest];
+  }
   const [firstSentence, rest] = splitFirstSentence(text);
   const [title, attribution] = splitTrailingAttribution(firstSentence);
   const body = [attribution, rest].filter(Boolean).join(" ").trim();
