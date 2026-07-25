@@ -1,0 +1,234 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "A leaked, unofficial transcript of a ~3h44m investor meeting attributed to DeepSeek founder Liang Wenfeng was published by Tencent Tech in late July 2026; the underlying recording is dated to a May 20, 2026 meeting and DeepSeek has not confirmed its authenticity.",
+      "type": "event",
+      "source_urls": ["https://www.fredgao.com/p/deepseeks-liang-wenfeng-breaks-his", "https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-23",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c2",
+      "claim": "In the leaked transcript, the speaker attributed to Liang Wenfeng says Nvidia's CUDA moat is 'rapidly disintegrating,' that Huawei allocates DeepSeek roughly 16,000 cards of capacity where four Huawei cards equal one Nvidia card, and that broader ecosystem parity is expected 'within a year.'",
+      "type": "quote",
+      "source_urls": ["https://www.fredgao.com/p/deepseeks-liang-wenfeng-breaks-his"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-23",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c3",
+      "claim": "Moonshot AI's Kimi K3 API pricing is $3 per million input tokens and $15 per million output tokens, versus $0.95/$4 for its predecessor Kimi K2.6 — a 3.16x and 3.75x increase respectively, landing at the same headline price as Claude Sonnet 5.",
+      "type": "metric",
+      "source_urls": ["https://tokencost.app/blog/kimi-k3-pricing", "https://paddo.dev/blog/kimi-k3-discount-ends/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "On Artificial Analysis's AA-Omniscience benchmark, Kimi K3's accuracy rose from 33% to 46% versus K2.6, while its hallucination rate rose from 39% to 51%.",
+      "type": "metric",
+      "source_urls": ["https://kili-technology.com/blog/kimi-k3s-benchmarks-and-hallucinations----what-that-tells-us-about-ai-evaluation"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c5",
+      "claim": "Kimi K3's full open weights are scheduled for publication on HuggingFace on July 27, 2026 under a Modified MIT license; as of this writing (July 25) they had not yet been published.",
+      "type": "event",
+      "source_urls": ["https://www.techtimes.com/articles/321499/20260724/kimi-k3-open-weights-drop-july-27-near-frontier-coding-undisclosed-hallucination-risk.htm", "https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c6",
+      "claim": "On the Artificial Analysis Intelligence Index v4.1, Kimi K3 scored 57.1, versus GPT-5.6 Sol Max at 58.9 and Claude Fable 5 at 59.9.",
+      "type": "metric",
+      "source_urls": ["https://www.techtimes.com/articles/321499/20260724/kimi-k3-open-weights-drop-july-27-near-frontier-coding-undisclosed-hallucination-risk.htm"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c7",
+      "claim": "White House OSTP Director Michael Kratsios stated on X that Moonshot AI 'distilled Anthropic's Fable' via a 'sophisticated internal platform' and 'acquired GB300-equipped servers' with access to GB300s in Thailand.",
+      "type": "quote",
+      "source_urls": ["https://x.com/mkratsios47/status/2079933645888880708"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-23",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c8",
+      "claim": "Treasury Secretary Bessent's IP-theft/distillation review reportedly names four Chinese labs: Moonshot AI, DeepSeek, MiniMax, and Alibaba.",
+      "type": "event",
+      "source_urls": ["https://vibraniumlabs.ai/blog/chinese-ai-models-sanctioned-whats-actually-happening", "https://www.cnbc.com/2026/07/21/bessent-china-ai-sanctions.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-22",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "Moonshot AI's head of enterprise business, Huang Zhenxin, denied the distillation allegation and instead credited three named architecture innovations (Moon Clip, Kimi Delta Attention, Attention Residuals) for K3's gains.",
+      "type": "quote",
+      "source_urls": ["https://www.implicator.ai/moonshot-denies-distilling-fable-and-credits-k3-gains-to-its-own-architecture/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c10",
+      "claim": "Independent researchers (Braden Hancock, Laude Institute/Snorkel AI; Nathan Lambert, Allen Institute for AI) argued the 15-16 day window between Fable 5's July 1 public release and Kimi K3's July 16-17 launch was too short for large-scale distillation to explain K3's capability gains, and that frontier-adjacent capability gains typically require reinforcement learning rather than simple output-copying.",
+      "type": "causal",
+      "source_urls": ["https://techcrunch.com/2026/07/23/experts-say-exploiting-anthropics-fable-isnt-how-kimi-k3-got-so-good/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-23",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c11",
+      "claim": "Chinese embassy spokesperson Liu Chang called the U.S. distillation allegations 'entirely unfounded' / 'pure slander'; Foreign Ministry spokesperson Lin Jian said China 'opposes politicizing and instrumentalizing trade and tech issues.'",
+      "type": "quote",
+      "source_urls": ["https://thehill.com/policy/technology/5986143-china-defends-ai-development/", "https://cybernews.com/ai-news/us-accuses-china-moonshot-fable-distillation/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "On July 22, 2026, Nvidia CEO Jensen Huang told Axios 'These Chinese models are excellent,' that American firms should 'absolutely' be free to use them, that there is 'zero possibility' China displaces U.S. AI labs, and called distillation 'fundamental to intelligence.'",
+      "type": "quote",
+      "source_urls": ["https://www.chinatechnews.com/2026/07/23/126106-nvidias-jensen-huang-defends-chinese-ai-open-source-models-that-are-excellent-should-be-used", "https://mlq.ai/news/nvidias-jensen-huang-defends-chinese-ai-models-opposes-us-ban-push/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "On July 24, 2026, a 25-company coalition including Nvidia, Microsoft, Meta, Dell, IBM, Palantir, CrowdStrike, ServiceNow, Hugging Face, Mistral, a16z, and Y Combinator published an open letter, 'Open Weights and American AI Leadership,' opposing new restrictions on open-weight models; OpenAI, Anthropic, and Google did not sign.",
+      "type": "event",
+      "source_urls": ["https://www.benzinga.com/markets/tech/26/07/60673099/meta-microsoft-palantir-nvidia-and-21-others-sign-letter-backing-open-weight-ai-models", "https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidia-and-24-other-companies-sign-open-weights-letter-as-washington-weighs-chinese-ai-model-ban"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "Jensen Huang publicized the July 24 open letter in his first-ever post on X, writing that 'open models strengthen safety and cybersecurity, accelerate innovation and diffusion, and enable sovereignty.'",
+      "type": "quote",
+      "source_urls": ["https://www.benzinga.com/markets/tech/26/07/60673099/meta-microsoft-palantir-nvidia-and-21-others-sign-letter-backing-open-weight-ai-models"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "As of July 25, 2026, no public roster of the Little Tech Association's 'nearly 200' signatory companies has been published; the association's own website (littletech.org) names only a handful of members without a full list.",
+      "type": "event",
+      "source_urls": ["https://littletech.org/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-25",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c16",
+      "claim": "A White House spokesperson (Liz Huston) responded to the AI-ban debate with a general talking point ('The United States leads the world in AI innovation, and President Trump will keep it that way') without directly addressing the Little Tech Association letter; a separate unnamed official called ban-imminent speculation 'baseless.'",
+      "type": "quote",
+      "source_urls": ["https://northeasttimes.com/2026/07/24/silicon-valley-startups-fight-to-keep-chinese-ai-models-trump-wants-to-restrict/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "Reports (unattributed to a named primary source) put ByteDance's Huawei Ascend 950PR order at $5.6 billion, implying roughly 350,000 units at ~$16,000/unit, against Huawei's stated 2026 production target of 750,000 units; combined ByteDance/Alibaba/Tencent commitments are reported above 500,000 units.",
+      "type": "metric",
+      "source_urls": ["https://www.abhs.in/blog/huawei-ascend-950pr-bytedance-alibaba-cuda-compatible-nvidia-china-2026", "https://aitoolsbee.com/news/cuda-compatible-ai-chip-bytedance-5-6b-backs-huawei-950pr/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-04-27",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "The PHLX Semiconductor Index fell approximately 10% in the week of Kimi K3's July 16-17 launch, its steepest weekly drop since April 2025; global semiconductor stocks had shed roughly $3.3 trillion in market value since a June 22, 2026 peak by the worst trading day of that week.",
+      "type": "metric",
+      "source_urls": ["https://www.thestreet.com/technology/nvidia-micron-competitor-kimi-k3-ai-model-beijing-china", "http://www.china.org.cn/world/Off_the_Wire/2026-07/18/content_118605887.shtml"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-18",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "China's MOFCOM, consulting Alibaba, ByteDance, and Z.ai (formerly Zhipu), is reportedly weighing a tiered export-control regime for AI model weights: filing requirements for less-capable open models, security reviews for stronger ones, and a possible public-release ban for the most capable; a related proposal would restrict foreign acquisitions of Chinese AI/agentic-tech firms, informed by the unwound Meta-Manus deal.",
+      "type": "regulatory",
+      "source_urls": ["https://www.implicator.ai/china-considers-adding-ai-model-weights-and-chip-designs-to-export-list/", "https://en.ilsole24ore.com/art/china-is-considering-stricter-controls-on-exports-of-more-advanced-models-AJPV8pQ"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "The U.S. and China plan to hold their first official AI dialogue under the Trump administration in September 2026, ahead of Xi Jinping's planned September 24 U.S. visit; Bessent is expected to lead the U.S. delegation and to raise distillation concerns.",
+      "type": "event",
+      "source_urls": ["https://www.implicator.ai/china-considers-adding-ai-model-weights-and-chip-designs-to-export-list/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c21",
+      "claim": "H.R. 4142 (No Adversarial AI Act) remains referred to the House Committee on Oversight and Government Reform with no recorded markup, vote, or report as of the latest tracking; Senate companion S.2177 similarly remains in committee.",
+      "type": "regulatory",
+      "source_urls": ["https://www.congress.gov/bill/119th-congress/house-bill/4142/text", "https://www.congress.gov/bill/119th-congress/senate-bill/2177/all-info"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "OpenAI CEO Sam Altman said on X he was 'glad to see' support for open-weight models after the July 24 letter, writing 'i want the US to win in AI both in open source and proprietary models,' despite OpenAI not signing the letter.",
+      "type": "quote",
+      "source_urls": ["https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidia-and-24-other-companies-sign-open-weights-letter-as-washington-weighs-chinese-ai-model-ban"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c23",
+      "claim": "DeepSeek is reportedly in early discussions for a second funding round at a pre-money valuation near $71 billion (up 37% from the $52B post-money valuation of its June 2026 round), seeking at least 10 billion yuan (~$1.5B), and is preparing an A-share IPO filing in mainland China targeting a 2027 listing.",
+      "type": "event",
+      "source_urls": ["https://techstory.in/deepseek-weighs-second-fundraise-at-71-billion-valuation-and-eyes-ipo-as-early-as-2026/", "https://www.pymnts.com/news/artificial-intelligence/2026/deepseek-considers-new-funding-round-after-raising-7-billion/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "volatile"
+    }
+  ]
+}

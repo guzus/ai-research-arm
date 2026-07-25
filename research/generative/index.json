@@ -1038,5 +1038,17 @@
     "source": "workflow_dispatch",
     "prompt": "Why Hims & Hers Is Betting on Peptide Therapy—and What It Could Mean for Everyday Patients. Write for readers unfamiliar with pharmaceuticals and telehealth: explain what peptide therapies are, why they are becoming popular, what Hims & Hers is planning, what the FDA is deciding, the potential benefits and safety concerns, and whether Hims could make these treatments more legitimate and accessible—or simply commercialize an under-tested wellness trend. Clearly distinguish 503A compounded treatments from FDA-approved drugs, and treat the July 23–24, 2026 advisory meeting as a non-binding review rather than an FDA approval.",
     "tags": []
+  },
+  {
+    "slug": "deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2",
+    "file": "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Five Fights in 48 Hours",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-25T04:03:43Z",
+    "source": "workflow_dispatch",
+    "prompt": "DeepSeek's Wenfeng details Huawei chip access and TileLang as ~200 firms lobby against a China open-weight ban",
+    "tags": []
   }
 ]
