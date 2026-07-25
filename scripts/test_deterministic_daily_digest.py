@@ -337,6 +337,82 @@ class FrontPageRendererParityTest(unittest.TestCase):
         self.assertEqual(self._js_headline_text("A title (2026-07-23)"), "A title")
         self.assertEqual(self._js_headline_text("A title — 2026-07-23 09:00 UTC"), "A title")
 
+    # Port of splitTrailingAttribution() in scripts/render_front_page.mjs.
+    _JS_ATTRIBUTION_HINT_RE = re.compile(
+        r"\b(?:TechCrunch|The Verge|The Decoder|Ars Technica|Reuters|Bloomberg"
+        r"|Hacker News|HN|Reddit|Bluesky|arXiv|The Information|Wired|CNBC"
+        r"|Financial Times|WSJ|Guardian|Axios|Semafor|Business Insider"
+        r"|VentureBeat|Engadget|Nikkei|SCMP|TechMeme)\b"
+        r"|\b\d+\s*(?:points?|comments?|upvotes?)\b|#\d+\s+on\b",
+        re.I,
+    )
+
+    @classmethod
+    def _js_split_trailing_attribution(cls, title: str) -> tuple[str, str]:
+        head = title
+        tail: list[str] = []
+        for _ in range(3):
+            m = re.search(r"\s*\(([^()]*)\)\s*([.!?])?\s*$", head)
+            if not m or not cls._JS_ATTRIBUTION_HINT_RE.search(m.group(1)):
+                break
+            tail.insert(0, f"({m.group(1).strip()})")
+            head = head[: m.start()].rstrip() + (m.group(2) or "")
+        if not tail:
+            return title, ""
+        head = re.sub(r"[\s,;:–—-]+$", "", head).strip()
+        if len(re.sub(r"[^\w\s]", " ", head).split()) < 2:
+            return title, ""
+        return head, " ".join(tail)
+
+    def test_headline_moves_source_attribution_to_the_body(self):
+        """A masthead headline names the story; who reported it and how it did
+        on Hacker News is body copy. The 2026-07-25 front page rendered
+        '(TechCrunch, The Verge, The Decoder; #1 on Hacker News at 680
+        points/386 comments)' at headline size."""
+        head, body = self._js_split_trailing_attribution(
+            "Anthropic launched Claude Opus 5 at roughly half the token price "
+            "— the dominant story of the cycle (TechCrunch, The Verge, The "
+            "Decoder; #1 on Hacker News at 680 points/386 comments)."
+        )
+        self.assertEqual(
+            head,
+            "Anthropic launched Claude Opus 5 at roughly half the token price "
+            "— the dominant story of the cycle.",
+        )
+        # Moved, never dropped — the sourcing has to survive somewhere.
+        self.assertEqual(
+            body,
+            "(TechCrunch, The Verge, The Decoder; #1 on Hacker News at 680 "
+            "points/386 comments)",
+        )
+
+    def test_attribution_split_leaves_descriptive_parentheticals_alone(self):
+        """Only outlet names and engagement figures count as attribution — a
+        descriptive aside is part of the sentence."""
+        for untouched in (
+            "Black Forest Labs shipped Flux 3 (image generation) alongside Flux 3 X Mimic.",
+            "Cognition acquired the AI-companion app Poke (a bet on AI personality).",
+            # Metrics outside parentheses are prose, not a citation block.
+            "A Guardian piece drew 202 points/76 comments on HN.",
+        ):
+            with self.subTest(untouched=untouched):
+                self.assertEqual(
+                    self._js_split_trailing_attribution(untouched), (untouched, "")
+                )
+
+    def test_attribution_split_never_leaves_a_stub_headline(self):
+        """If the parenthetical WAS the sentence, keep the original rather than
+        render an empty masthead."""
+        self.assertEqual(
+            self._js_split_trailing_attribution("(TechCrunch, The Verge)."),
+            ("(TechCrunch, The Verge).", ""),
+        )
+        # ...but a genuinely short headline must still get cleaned.
+        self.assertEqual(
+            self._js_split_trailing_attribution("OpenAI ships GPT-6 (TechCrunch)."),
+            ("OpenAI ships GPT-6.", "(TechCrunch)"),
+        )
+
     def test_headline_cleanup_cannot_eat_real_copy(self):
         """Both strips must stay narrow: a non-lane colon is ordinary headline
         punctuation, and figures like $10.3B must survive."""
