@@ -1,0 +1,14 @@
+arXiv Papers - 2026-07-26
+
+Note: weekend gap, batch still Thu 07-23, deeper cut than yesterday.
+
+TOP 5 PAPERS:
+• SANA-Video 2.0 - hybrid linear+softmax attention gives 3.2x faster video diffusion at 720p (Song Han et al.)
+• OpenForgeRL - RL training harness for coding/computer-use agents, beats open baselines on ClawEval/OSWorld
+• Beyond Sycophancy - LLM judgment revision under pressure follows structured social-psych patterns, not blanket compliance
+• MIRROR - cross-view self-distillation boosts multimodal reasoning with no external teacher
+• Same Objective, Opposite Advice - multi-agent mediation vs direct prompting flips whether advice serves a dangerous goal
+
+CATEGORIES: LM/NLP 8, CV/Multimodal 13, Agents/Reasoning 5, Safety/Alignment 2, Other 7
+
+Full report on GitHub.
