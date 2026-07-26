@@ -16,6 +16,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
 - [[claude-fable-5]] — Anthropic's first public Mythos-class model (2026-06-09): one frontier model as two products — safeguarded GA Fable 5 (reroutes high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5; credited with disproving the 87-year-old Jacobian conjecture (2026-07-21, peer review pending).
 - [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; now also the safeguard-reroute target for Fable 5.
+- [[claude-opus-5]] — Anthropic's 2026-07-25 frontier flagship; pitched as near-Fable-5 performance at half the price, with a system card citing markedly improved prompt-injection resistance.
 - [[claude-science]] — Anthropic's agentic research workbench (2026-06-30); 60+ scientific tools, on-demand compute, in-lab execution, debuting with Novartis, BMS, and Genentech.
 - [[claude-sonnet-5]] — Anthropic's 2026-06-30 mid-tier default on Free/Pro ($2/$10 intro, 1M context); pitched as a cheap agentic default, with mixed day-2 benchmarks and deliberately reduced cyber capability.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY).

@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-07-25",
-      "timestamp": "2026-07-25T00:00:00Z",
+      "updated_at": "2026-07-26",
+      "timestamp": "2026-07-26T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -63,6 +63,7 @@
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-opus-5",
         "cognition-ai",
         "dynamic-workflows",
         "federal-ai-policy",
@@ -74,6 +75,7 @@
         "amazon",
         "anthropic",
         "claude-fable-5",
+        "claude-opus-5",
         "claude-sonnet-5",
         "cognition-ai",
         "dynamic-workflows",
@@ -128,8 +130,8 @@
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-25",
-      "timestamp": "2026-07-25T00:00:00Z",
+      "updated_at": "2026-07-26",
+      "timestamp": "2026-07-26T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -308,8 +310,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-23",
-      "timestamp": "2026-07-23T00:00:00Z",
+      "updated_at": "2026-07-26",
+      "timestamp": "2026-07-26T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -326,6 +328,7 @@
         "california-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-opus-5",
         "claude-science",
         "claude-sonnet-5",
         "cognition-ai",
@@ -363,6 +366,7 @@
         "chai-discovery",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-opus-5",
         "claude-science",
         "claude-sonnet-5",
         "cognition-ai",
@@ -661,6 +665,7 @@
         "amazon",
         "anthropic",
         "claude-opus-4-8",
+        "claude-opus-5",
         "claude-science",
         "claude-sonnet-5",
         "deepseek",
@@ -696,8 +701,8 @@
       "summary": "Anthropic's 2026-05-28 frontier flagship, succeeding Opus 4.7 at flat pricing with a +4.9pp agentic-coding lift, +137 knowledge-work Elo, and a Fast Mode that runs ~2.5× faster and 3× cheaper.",
       "description": "Anthropic's 2026-05-28 frontier flagship, succeeding Opus 4.7 at flat pricing with a +4.9pp agentic-coding lift, +137 knowledge-work Elo, and a Fast Mode that runs ~2.5× faster and 3× cheaper.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-07-13",
-      "timestamp": "2026-07-13T00:00:00Z",
+      "updated_at": "2026-07-26",
+      "timestamp": "2026-07-26T00:00:00Z",
       "file": "entities/claude-opus-4-8.md",
       "aliases": [
         "Claude Opus 4.8",
@@ -708,6 +713,7 @@
         "agent-lifespan-engineering",
         "anthropic",
         "claude-fable-5",
+        "claude-opus-5",
         "claude-sonnet-5",
         "dynamic-workflows"
       ],
@@ -716,6 +722,7 @@
         "agentic-ai-security",
         "anthropic",
         "claude-fable-5",
+        "claude-opus-5",
         "claude-sonnet-5",
         "dynamic-workflows",
         "meta",
@@ -726,6 +733,40 @@
         "remote-labor-index",
         "sakana-ai",
         "zhipu-glm-5-2"
+      ]
+    },
+    {
+      "slug": "claude-opus-5",
+      "title": "Claude Opus 5",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "anthropic",
+        "claude",
+        "frontier-model",
+        "security"
+      ],
+      "summary": "Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance.",
+      "description": "Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance.",
+      "created_at": "2026-07-26",
+      "updated_at": "2026-07-26",
+      "timestamp": "2026-07-26T00:00:00Z",
+      "file": "entities/claude-opus-5.md",
+      "aliases": [
+        "Claude Opus 5",
+        "Opus 5",
+        "claude-opus-5"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "claude-fable-5",
+        "claude-opus-4-8"
+      ],
+      "inbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "claude-opus-4-8"
       ]
     },
     {
@@ -2988,11 +3029,13 @@
     "claude fable 5": "claude-fable-5",
     "claude mythos 5": "claude-fable-5",
     "claude opus 4.8": "claude-opus-4-8",
+    "claude opus 5": "claude-opus-5",
     "claude science": "claude-science",
     "claude sonnet 5": "claude-sonnet-5",
     "claude-fable-5": "claude-fable-5",
     "claude-mythos-5": "claude-fable-5",
     "claude-opus-4-8": "claude-opus-4-8",
+    "claude-opus-5": "claude-opus-5",
     "claude-science": "claude-science",
     "claude-sonnet-5": "claude-sonnet-5",
     "cognition": "cognition-ai",
@@ -3179,6 +3222,7 @@
     "openrouter fusion": "openrouter",
     "openrouter.ai": "openrouter",
     "opus 4.8": "claude-opus-4-8",
+    "opus 5": "claude-opus-5",
     "owl alpha": "meituan-longcat-2",
     "parallel subagents": "dynamic-workflows",
     "pcc": "apple",
@@ -3251,6 +3295,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-07-26",
+      "op": "ingest",
+      "summary": "Ingested the 2026-07-26 digest — a thin cycle (RSS-only; no Twitter/HN/Reddit/arXiv/Bluesky artifacts had landed by digest time) dominated by continued Claude Opus 5 coverage. Created 1 (claude-opus-5 entity — Anthropic's 2026-07-25 frontier flagship, first wiki page for it since the digest that originally covered the launch was ingested from a stale fallback version without the story; pitched as near-Fable-5 performance at half the price, system card cites markedly improved prompt-injection resistance). Updated 4 (anthropic — Opus 5 launch + today's pricing/benchmark and prompt-injection follow-on coverage; claude-opus-4-8 — cross-linked to Opus 5 as the Opus line's continuation, open question on safeguard-reroute-floor succession; agentic-ai-security — further Decoder reporting on the OpenAI/Hugging Face incident's extent + Opus 5's prompt-injection defenses as a rare capability-side counterpoint; ai-capex — fallen-power-line TechCrunch story continuing the grid-strain thread tracked since 2026-07-23). Skipped: today's digest carried no other RSS items with independent wiki significance beyond the three stories above."
+    },
     {
       "date": "2026-07-25",
       "op": "ingest",
@@ -3345,11 +3394,6 @@
       "date": "2026-06-29",
       "op": "ingest",
       "summary": "Ingested 2026-06-29 digest (six-day gap Jun 24–29; Grok 4.5 from-scratch 1.5T V9 private beta claiming Opus-level; DeepSeek $7.4B close framed as largest in Chinese AI history, state fund sole voting investor; GPT-5.6 Sol/Terra/Luna shipped in US-government-gated preview + Jalapeño chip; Anthropic accuses Alibaba of largest documented Claude distillation attack; GLM-5.2 \"matches Mythos\" cyber headline debunked; Austria courts Anthropic to the EU; open-weights release bench deepens + broker/router layer tips Chinese with Coinbase cutting spend in half). Created 0, updated 8 (xai — Grok 4.5 1.5T V9 private beta at SpaceX/Tesla, Opus-level claim unaudited, unrestricted-vs-gated asymmetry; deepseek — round largest in Chinese AI history, Liang ~$3B/Tencent ~$1.5B/CATL ~$740M, state fund sole voting investor w/ no lock-up, others 5-yr lock-up, double-every-department-toward-AGI, @deepseek_ai silent since May 22; gpt-5-6 — transforms from rumored to shipped: Sol/Terra/Luna government-gated limited preview, max/ultra reasoning, Terminal-Bench 2.1 SOTA, pricing, GA \"coming weeks\"/Polymarket ~90% by Jul 31; anthropic — Alibaba distillation letter (25K accounts/28.8M exchanges) + Austria EU-relocation open letter; zhipu-glm-5-2 — \"matches Mythos\" cyber headline debunked as IDOR-vs-Claude-Code category error, stock +30% decoupled from benchmark; broadcom — OpenAI Jalapeño first custom inference ASIC co-designed w/ Broadcom, 50% cost saving claim, 9-mo design, MS ~40% output; open-weights — Nemotron-3-Ultra/Command A+ Apache 2.0/ZAYA1/Poolside/Kimi-K2.7-Code pipeline + OpenRouter top-4-broker all Chinese + Coinbase halves spend, VibeThinker-3B; federal-ai-policy — \"de facto licensing regime with no rules\" two new data points (Sol gated + Alibaba distillation letter) + Europe structurally excluded/Austria courtship)."
-    },
-    {
-      "date": "2026-06-23",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-23 digest (June 22 ends the launch drought with three dated shipments framed around Anthropic's export freeze: OpenAI expands Daybreak, Micron becomes Anthropic's primary memory supplier + Series H participant, Sakana ships Fugu orchestrator; GLM-5.2 hardens into multi-board agentic data; GPT-5.6 window slips to ~Thursday June 25 with a surprise GPT-Bidi-1 voice model). Created 1 (micron — US memory maker, Anthropic's primary HBM/DRAM/SSD supplier + co-design pact + first named Series H participant, stock +5.5% to record), updated 7 (openai — full GPT-5.5-Cyber/Codex Security/\"Patch the Planet\" Daybreak expansion as counter-posture to Mythos \"too powerful to ship\"; anthropic — Micron supply+Series H pact, June 22 subscription cliff passes with Fable dark, silent since June 18; claude-fable-5 — cliff passes still suspended, rivals launch around the outage, Five Eyes \"months not years\" warning; sakana-ai — Fugu/Fugu Ultra orchestration router edges Opus 4.8 on SWE-Bench Pro but trails suspended Fable 5, orchestration-as-export-workaround; zhipu-glm-5-2 — #3 overall/#1 open-weights GDPval-AA 1524 Elo, 2nd Game Dev Arena, #1 open-weights Intelligence Index 51, \"DeepSeek moment for agents\"; gpt-5-6 — window to ~Thursday June 25, surprise GPT-Bidi-1 bidirectional voice model, June 22-28 ~90-100%; agentic-ai-security — Daybreak gated-defender vs too-powerful-to-ship split + Five Eyes offensive-cyber warning)."
     }
   ]
 }

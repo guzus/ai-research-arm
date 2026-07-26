@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-07-25T00:00:00Z
+timestamp: 2026-07-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-26", path: research/digest/2026-07-26-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
@@ -332,6 +333,14 @@ skepticism in one window:
   distinct from the demand-durability debate this theme already tracks,
   and the sharpest "circular financing" framing since the 2026-06-04
   issuance-wave entry above (ARA digest 2026-07-25).
+
+- **A fallen power line spotlights grid reliability strain (2026-07-26).**
+  TechCrunch frames a single local incident — a fallen power line — as
+  symptomatic of a broader capacity/reliability problem as AI data-center
+  buildout strains local power grids, with utilities now working to
+  address it. A concrete, if thin, single-incident continuation of the
+  rate-payer-pledge / grid-strain thread tracked since 2026-07-23 (ARA
+  digest 2026-07-26).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s
