@@ -3,7 +3,7 @@ slug: gemini-3-5-flash-computer-use-2026-06
 title: Gemini 3.5 Flash gets Computer Use as a native built-in tool
 company: Google / DeepMind
 model: Gemini 3.5 Flash
-status: released
+status: closed
 status_note: |
   Google announced on 2026-06-26 (@Google official, ~76 likes) that **Computer
   Use is now a built-in tool in Gemini 3.5 Flash** — no longer a separate
@@ -36,12 +36,14 @@ sources:
   - "@_philschmid"
   - "@jimclydego"
 created_at: 2026-06-26
-updated_at: 2026-06-26
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-26
+closed_at: 2026-07-26
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-26
     change: "Created — Google announced (@Google official ~76 likes, 2026-06-26) that Computer Use is now a built-in tool in Gemini 3.5 Flash (not a separate model), supporting browser/mobile/desktop, available immediately via the Gemini API + Enterprise Agent Platform. Safety arch: adversarial training + Explicit User Confirmation + Enterprise Agents safeguards. @_philschmid published an Android-emulator quickstart; @jimclydego confirmed 'no longer a separate Gemini model.' Available today via API → status released; verification confirmed (official @Google + dev-advocate quickstart + independent relays). Distinct shipping event from the base 3.5 Flash GA (closed [[gemini-3-2-flash]]) — this ticket tracks the Computer Use capability addition. Context: lands same week as Anthropic's Claude Tag Slack agent; Google's bet is the cheap tier for mass-market agentic capability."
+  - ts: 2026-07-26
+    change: "Closed — released ≥4 weeks ago (2026-06-26), settled into normal coverage with no further signal in this window → closed_reason: released-and-aged."
 ---
 
 Google announced on 2026-06-26 that **Computer Use is now a built-in tool in
