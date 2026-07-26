@@ -5,6 +5,7 @@
   "generated_at": "2026-07-26 19:24:28 UTC",
   "run_id": "30216762002",
   "run_attempt": 1,
-  "status": "published",
-  "public_items": 3
+  "status": "no_update",
+  "public_items": 0,
+  "recovery": true
 }
