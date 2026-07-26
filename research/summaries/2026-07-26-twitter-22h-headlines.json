@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "DAVID SACKS BRANDS ANTHROPIC'S OPEN-SOURCE STANCE \"GASLIGHTING\" IN VIRAL QUOTE-TWEET",
+    "source": "@DavidSacks",
+    "url": "https://x.com/DavidSacks/status/2081470576653406328",
+    "category": "policy"
+  },
+  {
+    "headline": "THE INFORMATION: ANTHROPIC WEIGHING MOST RESTRICTIVE PRE-IPO EMPLOYEE STOCK-SALE POLICY IN SILICON VALLEY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2081477158845743601",
+    "category": "business"
+  },
+  {
+    "headline": "THE INFORMATION: ANTHROPIC'S CHINA-AI RESTRICTIONS CAMPAIGN HAS ISOLATED IT FROM REST OF SILICON VALLEY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2081484724329992485",
+    "category": "policy"
+  },
+  {
+    "headline": "MICRON/META WHITE PAPER: TRAINING SLOWS 38X WHEN SHUFFLE DATA SPILLS FROM DRAM TO SSD",
+    "source": "@GavinSBaker",
+    "url": "https://x.com/GavinSBaker/status/2081459531570090336",
+    "category": "infra"
+  }
+]
