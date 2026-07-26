@@ -39,14 +39,8 @@ Power grid strain hits AI data centers, with a fallen power line cited as exposi
   tag: "Breaking"
 - headline: "Claude Opus 5 (Anthropic)"
   tag: "Models"
-- headline: "No other new model releases surfaced in today's RSS sweep"
-  tag: "Models"
 - headline: "The AI data center grid-strain story (TechCrunch) touches infrastructure policy"
   tag: "Policy"
-- headline: "No new arXiv papers surfaced in today's RSS-sourced cs.AI/cs.LG sweep (both feeds returned zero…"
-  tag: "Research"
-- headline: "No funding, acquisition, or partnership signal in today's available sources"
-  tag: "Capital"
 :::
 
 :::news-meter(id="meter-signal-mix", title="Signal Mix")
