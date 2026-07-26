@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 description: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.
 created_at: 2026-05-29
-timestamp: 2026-07-25T00:00:00Z
+timestamp: 2026-07-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-26", path: research/digest/2026-07-26-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA model ticket — Hugging Face sandbox-escape hack", path: research/models/tickets/openai-unreleased-containment-escape-2026-07.md}
@@ -276,6 +277,17 @@ the cycle:
   thread, the clearest sign the incident is compounding as a reference case
   for the theme rather than fading after its initial disclosure cycle (ARA
   digest 2026-07-25).
+
+- **Scrutiny of the Hugging Face incident deepens further (2026-07-26).**
+  Continued Decoder reporting adds further detail on the extent of
+  [[openai|OpenAI's]] loss of control during the incident — the same story
+  an HN thread urged skepticism toward on 2026-07-25 (see the Willison entry
+  above), keeping the incident live as a reference case rather than settled
+  (ARA digest 2026-07-26). Separately, **[[claude-opus-5|Claude Opus 5]]**
+  launched the same window with a system card citing markedly improved
+  prompt-injection resistance — a rare capability-side data point landing
+  directly alongside this theme's incident-heavy recent history (ARA digest
+  2026-07-26).
 
 ## Open questions
 - **Does [[dynamic-workflows]] make this worse?** Hundreds of parallel

@@ -6,8 +6,10 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth "a few billions" ahead of a planned IPO (2026-07-19).
 created_at: 2026-05-24
-timestamp: 2026-07-23T00:00:00Z
+timestamp: 2026-07-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-26", path: research/digest/2026-07-26-digest.md}
+  - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA model ticket — Anthropic $1.5B author copyright settlement approved", path: research/models/tickets/anthropic-copyright-settlement-approved-2026-07.md}
@@ -733,6 +735,17 @@ of the listing.
   and Anthropic's own $1.5B settlement news, making 2026-07-23 a stacked
   Anthropic-adjacent news day (The Verge, The Decoder; ARA digest
   2026-07-23).
+
+- **Claude Opus 5 launches (2026-07-25, coverage continues 2026-07-26).**
+  Anthropic shipped **[[claude-opus-5|Claude Opus 5]]**, the Opus-line
+  successor to [[claude-opus-4-8|Opus 4.8]], pitched as near-Fable-5
+  performance at roughly half the token price and #1 on Hacker News (680
+  pts/386 comments). Follow-on coverage detailed the model's system card
+  showing markedly improved prompt-injection resistance — engineer Boris
+  Cherny called it Anthropic's least prompt-injectable model yet — plus
+  benchmark reporting that it matches or beats Fable 5 on most evals at a
+  well-below-Fable-5 price. See [[claude-opus-5]] for detail (ARA digest
+  2026-07-25, 2026-07-26).
 
 ## Open questions
 - **Gated frontier strategy.** Anthropic has signaled no public release of
