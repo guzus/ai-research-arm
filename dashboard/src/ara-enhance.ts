@@ -1728,7 +1728,15 @@ function renderResearchTOC(article: HTMLElement): void {
     if (h.classList.contains('ara-h3')) li.style.paddingLeft = '14px';
     const num = h.querySelector('.ara-h2-num');
     const restText = (h.textContent || '').replace(num?.textContent || '', '').trim();
-    a.textContent = restText;
+    // The label is its own span so the two-line clamp can sit on a box with no
+    // vertical padding. -webkit-line-clamp leaves the extra lines in the box
+    // and leans on overflow to hide them, and overflow clips at the PADDING
+    // edge — clamping the padded <a> directly let the top sliver of line three
+    // bleed through underneath.
+    const label = document.createElement('span');
+    label.className = 'ara-toc-label';
+    label.textContent = restText;
+    a.appendChild(label);
     // CSS clips overflow with ellipsis; surface the full title on hover.
     a.title = restText;
     a.dataset.target = h.id;

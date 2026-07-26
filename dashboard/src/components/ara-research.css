@@ -2311,7 +2311,7 @@ body.ara-figure-modal-open {
 
 .ara-toc-link {
   display: block;
-  padding: 5px 0 5px 14px;
+  padding: 6px 0 6px 14px;
   margin-left: -2px;
   border-left: 2px solid transparent;
   font-size: 0.82rem;
@@ -2320,12 +2320,26 @@ body.ara-figure-modal-open {
   line-height: 1.35;
   transition: color 0.15s, border-color 0.15s;
   cursor: pointer;
-  /* Long subheading titles like "Bloom Energy (BE) — 16.5% combined, the
-   * keystone" would otherwise wrap to 3 lines and dominate the rail. Clip
-   * with ellipsis; full text is restored via the title= tooltip set in JS. */
+}
+
+/* Two lines, not one. The rail does have to be bounded — an unclamped
+ * "Bloom Energy (BE) — 16.5% combined, the keystone" runs to three lines and
+ * dominates it — but clipping at ONE line cut almost every real section head
+ * mid-word, so the rail read as a column of fragments. Two lines hold ~60
+ * characters at this width, which is most heads whole, and anything longer
+ * breaks at a word and ellipses at the end of the second line. Full text
+ * stays on the title= tooltip set in renderResearchTOC.
+ *
+ * This lives on the label span, not the padded <a>: -webkit-line-clamp keeps
+ * the overflowing lines in the box and relies on overflow to hide them, and
+ * overflow clips at the padding edge — so a clamped <a> with vertical padding
+ * shows the top sliver of line three below the ellipsis. */
+.ara-toc-label {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: break-word;
 }
 
 .ara-toc-link:hover {
