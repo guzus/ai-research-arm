@@ -22,7 +22,12 @@ status_note: |
   separately claimed DeepSeek is "seeking a tenfold valuation increase"
   — this desk could not reconcile that figure with Bloomberg's 10-15%
   figure; treat "tenfold" as unverified rather than additive.
-expected: "IPO paperwork filing targeted this year or early 2027; STAR Market listing targeted as early as Q2 2027; second round target ~$71-74B, not yet closed"
+
+  **2026-07-26 update:** Per **@rohanpaul_ai**, the round has reportedly
+  been **paused before investors signed new agreements**, still
+  targeting the ~$74B figure. Single-relay coverage; treated as an
+  update to the round's status, not a contradiction of its existence.
+expected: "Round reportedly paused before investor agreements signed; IPO paperwork timeline and STAR Market listing target unchanged pending resumption"
 labels:
   - funding
   - china
@@ -34,13 +39,16 @@ sources:
   - "@AShmueil"
   - https://x.com/AShmueil/status/2077392771615187099
   - "@guo_lin99725"
+  - https://x.com/rohanpaul_ai/status/2081212716224778680
 created_at: 2026-07-16
-updated_at: 2026-07-16
+updated_at: 2026-07-26
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-07-16
     change: "Created — Bloomberg (via @haricinews, 2026-07-15 14:00 UTC) reports DeepSeek preparing a second, distinct funding round of up to $7.4B targeting overseas (Middle East) dollar capital, aiming to file IPO paperwork this year or early next year for a mainland China STAR Market listing by 2027. @AShmueil independently put the target valuation at ~$74B (up from ~$66.6B post-money in the first round, [[deepseek-funding-round-2026-05]]); @guo_lin99725 independently cited '50B yuan at 500B yuan valuation,' consistent in magnitude → status confirmed (multi-source convergence), verification partial (no DeepSeek primary). The Information's separate 'tenfold valuation increase' claim could not be reconciled with Bloomberg's ~10-15% figure — flagged as unreconciled, not added to the headline figure."
+  - ts: 2026-07-26
+    change: "@rohanpaul_ai reports the second round has been paused before investors signed new agreements, still targeting the ~$74B valuation reported 2026-07-16. Single-relay coverage in this window; status stays confirmed (underlying round is real, per the 2026-07-16 multi-source convergence) but status_note/expected updated to reflect the pause."
 ---
 
 **DeepSeek** is preparing a **second, distinct funding round** — up to
