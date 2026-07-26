@@ -1190,7 +1190,7 @@ function setSafeContent(
   // `target` is NOT in DOMPurify's default allowlist; every external link
   // this app emits pairs target="_blank" with rel="noopener", so allowing
   // it restores the intended new-tab behavior (ticket sources, tweet links).
-  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-ticket-share', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-question', 'data-odds-outcome', 'aria-label', 'aria-describedby', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'aria-haspopup', 'aria-live', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
+  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-jacket', 'data-ticket-share', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-question', 'data-odds-outcome', 'aria-label', 'aria-describedby', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'aria-haspopup', 'aria-live', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -4331,6 +4331,60 @@ function isResearchDisplayTag(tag: string): boolean {
 
 const RESEARCH_PAGE_SIZE = 12;
 
+/** Number of jacket palettes defined in style.css (`.press-shelf-row[data-jacket]`). */
+const RESEARCH_JACKET_COUNT = 20;
+
+/**
+ * Stable slug → jacket palette index. Deterministic (FNV-1a over the slug) so an
+ * article keeps the same jacket colour across reloads and deploys; the palette
+ * itself lives in CSS, so no inline styles have to survive DOMPurify.
+ */
+function researchJacket(slug: string): number {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < slug.length; i++) {
+    hash ^= slug.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return hash % RESEARCH_JACKET_COUNT;
+}
+
+/**
+ * Jackets for one rendered page, hashed per slug then de-duplicated: a raw hash
+ * repeats often enough that two neighbouring bands land on the same colour and
+ * read as one block. Collisions walk forward to the next free palette, which
+ * keeps every band on a page distinct whenever the page is no longer than the
+ * palette (12 rows, 20 jackets) and stays a pure function of the row order.
+ */
+function researchJacketsForPage(slugs: string[]): number[] {
+  const taken = new Set<number>();
+  return slugs.map((slug) => {
+    let jacket = researchJacket(slug);
+    for (let step = 0; step < RESEARCH_JACKET_COUNT && taken.has(jacket); step++) {
+      jacket = (jacket + 1) % RESEARCH_JACKET_COUNT;
+    }
+    taken.add(jacket);
+    return jacket;
+  });
+}
+
+/**
+ * A handful of index.json titles were written with HTML entities already baked
+ * in ("Hims &amp; Hers"), so escaping them again renders the raw `&amp;` to the
+ * reader. Decode the five entities `escapeHtml` produces before re-escaping;
+ * anything else is left alone.
+ */
+function decodeStoredEntities(text: string): string {
+  return text.replace(/&(amp|lt|gt|quot|#39);/g, (_m, name) => {
+    switch (name) {
+      case 'lt': return '<';
+      case 'gt': return '>';
+      case 'quot': return '"';
+      case '#39': return "'";
+      default: return '&';
+    }
+  });
+}
+
 function renderResearchIndex(rows: GenResearchRow[]): void {
   setDocTitle(null);
   if (rows.length === 0) {
@@ -4357,9 +4411,13 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     (researchIndexPage - 1) * RESEARCH_PAGE_SIZE,
     researchIndexPage * RESEARCH_PAGE_SIZE,
   );
+  // Stripe Press "shelf": one full-bleed jacket-coloured band per article, the
+  // title and its byline centred inside. The byline is the authoring model —
+  // the same slot a book list gives the author.
+  const jackets = researchJacketsForPage(pageRows.map((r) => r.slug));
   const items: string[] = [];
-  for (const row of pageRows) {
-    let title = escapeHtml(row.title);
+  pageRows.forEach((row, index) => {
+    let title = escapeHtml(decodeStoredEntities(row.title));
     if (searchTerm) {
       const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const re = new RegExp('(' + escaped + ')', 'gi');
@@ -4367,54 +4425,54 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     }
     const created = new Date(row.created_at);
     const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
-    // Surface first three tags inline; the chip on the right indicates fragment vs standalone.
-    const tagHtml = (row.tags || [])
-      .filter(isResearchDisplayTag)
-      .slice(0, 3)
-      .map((t) => '<span class="gen-research-tag">' + escapeHtml(t) + '</span>')
-      .join('');
-    const isStandalone = row.kind === 'standalone';
-    const kindLabel = isStandalone ? 'Standalone' : 'Article';
-    const kindClass = isStandalone ? 'gen-research-kind--standalone' : 'gen-research-kind--article';
-    const languageHtml = hasResearchLanguage(row, 'ko')
-      ? '      <span class="gen-research-tag" lang="ko">한국어</span>'
+    const koHtml = hasResearchLanguage(row, 'ko')
+      ? '      <span class="press-shelf-lang" lang="ko">한국어</span>'
       : '';
     items.push(
       [
-        '<li class="gen-research-item" data-slug="' + escapeHtml(row.slug) + '" tabindex="0">',
-        '  <div class="gen-research-item-main">',
-        '    <div class="gen-research-item-title">' + title + '</div>',
-        '    <div class="gen-research-item-meta">',
-        '      <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
-        rel ? '      <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
-        tagHtml ? '      <span class="gen-research-tags">' + tagHtml + '</span>' : '',
-        languageHtml,
-        '    </div>',
-        '  </div>',
-        '  <span class="gen-research-kind ' + kindClass + '">' + kindLabel + '</span>',
+        // role="link" (not the bare focusable <li> this replaced) so the band
+        // announces as navigation; the content keydown handler already
+        // activates [data-slug] rows on Enter.
+        '<li class="press-shelf-row" role="link" data-jacket="' + jackets[index] + '"' +
+          ' data-slug="' + escapeHtml(row.slug) + '" tabindex="0">',
+        '  <span class="press-shelf-text">',
+        '    <span class="press-shelf-title">' + title + '</span>',
+        '    <span class="press-shelf-byline">',
+        '      <span class="press-shelf-model">' + escapeHtml(row.model) + '</span>',
+        rel ? '      <span class="press-shelf-date">' + escapeHtml(rel) + '</span>' : '',
+        koHtml,
+        '    </span>',
+        '  </span>',
         '</li>',
-      ].join('\n'),
+      ].filter(Boolean).join('\n'),
     );
-  }
+  });
 
   const empty = visible.length === 0
-    ? '<div class="empty-state-text gen-research-empty">No articles match the search.</div>'
+    ? '<p class="press-shelf-empty">No articles match the search.</p>'
     : '';
 
   setSafeContent(
     content,
     [
-      '<div class="content-card">',
-      '  <div class="content-card-body">',
-      '    <ul class="gen-research-index">',
+      '<div class="press-shelf-page">',
+      '  <header class="press-masthead">',
+      '    <h1 class="press-masthead-name">ara Research</h1>',
+      '    <p class="press-masthead-tagline">Long-form reports, written by machines</p>',
+      '  </header>',
+      '  <ul class="press-shelf">',
       items.join('\n'),
-      '    </ul>',
+      '  </ul>',
       empty,
+      '  <div class="press-shelf-foot">',
       paginationHtml(researchIndexPage, visible.length, RESEARCH_PAGE_SIZE, 'Research articles'),
       '  </div>',
       '</div>',
     ].join('\n'),
   );
+  // Only the index wears the press ground; the article view keeps the reading
+  // chrome. Cleared centrally at the top of load().
+  document.body.classList.add('research-shelf');
 }
 
 function renderResearchDoc(row: GenResearchRow, body: string): void {
@@ -4877,6 +4935,10 @@ async function load(): Promise<void> {
   // Hide the floating TOC unconditionally; renderResearchDoc shows it
   // again when it has enough sections to be useful.
   hideResearchTOC();
+
+  // The press ground belongs to the research INDEX only. Clear it on every
+  // dispatch; renderResearchIndex re-adds it when it actually paints the shelf.
+  document.body.classList.remove('research-shelf');
 
   updateRoute();
   showLoading();

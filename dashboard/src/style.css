@@ -3397,85 +3397,276 @@ body.tab-frontpage .section-nav {
   display: none;
 }
 
-.gen-research-index {
-  list-style: none;
-  padding: 0;
+/* ── Research index: the press shelf ────────────────────
+ * Modelled on the press.stripe.com product list (its non-WebGL rendering,
+ * which is the layout underneath the 3D book carousel): the page drops to a
+ * warm near-black ground, the masthead is a serif name over an italic
+ * tagline, and every article becomes a full-bleed band painted in its own
+ * "jacket" palette with the title and byline centred inside.
+ *
+ * Two structural notes:
+ *  - The ground is a token REMAP on body.research-shelf, not a pile of
+ *    per-component overrides. Tabs, buttons, pagination and the footer all
+ *    read --bg/--border/--accent/--text-*, so they follow for free.
+ *  - Jacket colours live here, keyed by [data-jacket], because main.ts
+ *    renders through DOMPurify and inline style="" would not survive.
+ *    researchJacket() in main.ts picks the index; keep the two counts in
+ *    sync (RESEARCH_JACKET_COUNT = 20). */
+
+body.research-shelf {
+  --press-ground: #201819;
+  --press-ink: #f7f3ee;
+  --bg: #2c2321;              /* control surface (tab pills, inputs) */
+  --bg-secondary: #201819;    /* sticky .nav-shell backdrop == the ground */
+  --bg-hover: #3a2e2b;
+  --border: #4c3e39;
+  --border-light: #372b28;
+  --text: var(--press-ink);
+  --text-secondary: #cabcb2;
+  --text-tertiary: #9d8d84;
+  --accent: var(--press-ink); /* active pill: paper on ink */
+  --on-accent: var(--press-ground);
+  --accent-light: #e2cba8;
+  --accent-warm: #e2cba8;
+  --accent-warm-bg: #3a2e2b;
+  --mark-bg: #e2cba8;
+  --mark-fg: #201819;
+  background: var(--press-ground);
+  color: var(--press-ink);
+}
+
+/* The app frame keeps its gutter for the masthead and the pagination foot;
+ * only the bands break out of it (below). */
+body.research-shelf .app {
+  padding-bottom: 0;
+}
+
+/* The sticky tab rail is normally a --page-max-wide block sitting on the page
+ * ground. Over full-bleed jacket bands that leaves the bands scrolling past
+ * either side of it, so widen its backdrop to the viewport and re-centre the
+ * pills inside. */
+body.research-shelf .nav-shell {
+  max-width: none;
+  margin-inline: calc(var(--page-gutter) * -1);
+  padding-inline: var(--page-gutter);
+}
+
+body.research-shelf .tabs,
+body.research-shelf .controls {
+  max-width: var(--page-max);
+  margin-inline: auto;
+}
+
+.press-shelf-page {
+  /* Bands run edge to edge, so cancel .app's horizontal gutter here and
+   * re-apply the (larger, Stripe-matched) inset per child. */
+  margin-inline: calc(var(--page-gutter) * -1);
+}
+
+.press-masthead {
+  /* Tagline rhythm and tracking are lifted from
+   * .PressHomepageProductListHeader; the inset follows the app's own optical
+   * column (--page-max) so the name lines up under the "ai-research-arm"
+   * masthead instead of floating at its own margin. */
+  /* +2 gutters because .press-shelf-page has already cancelled .app's padding;
+   * this lands the name on the same optical edge as the app masthead. */
+  max-width: calc(var(--page-max) + 2 * var(--page-gutter));
+  margin: 0 auto clamp(26px, 7vh, 88px);
+  padding: calc(9px + 1vw) var(--page-gutter) 0;
+  letter-spacing: 0.32px;
+  line-height: 1.4;
+}
+
+.press-masthead-name,
+.press-masthead-tagline {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--press-ink);
+}
+
+.press-masthead-name {
+  margin: 0 0 6px;
+}
+
+.press-masthead-tagline {
   margin: 0;
+  font-style: italic;
+  line-height: 1.3;
 }
 
-.gen-research-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border-light);
-  cursor: pointer;
-  transition: background 0.1s;
-  margin: 0 -28px;
-  padding-left: 28px;
-  padding-right: 28px;
+.press-shelf {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.gen-research-item-main {
-  flex: 1;
-  min-width: 0;
-}
-
-.gen-research-kind {
-  flex-shrink: 0;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 999px;
-  white-space: nowrap;
-  margin-top: 2px;
-}
-
-.gen-research-kind--standalone {
-  background: var(--accent-warm);
-  color: var(--on-accent);
-}
-
-.gen-research-kind--article {
-  background: transparent;
-  color: var(--text-tertiary);
-  border: 1px solid var(--border);
-}
-
-.gen-research-item:last-child {
-  border-bottom: none;
-}
-
-.gen-research-item:hover {
-  background: var(--bg-hover);
-}
-
-.gen-research-item:focus-visible {
-  outline: 2px solid var(--accent-warm);
-  outline-offset: -2px;
-  background: var(--bg-hover);
-}
-
-.gen-research-item-title {
-  font-family: var(--font);
-  font-size: 1.02rem;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.35;
-  margin-bottom: 6px;
-}
-
-.gen-research-item-meta {
+.press-shelf-row {
+  /* Fallback jacket — every row gets a real pair from the table below. */
+  --jacket-bg: #2f2f2f;
+  --jacket-ink: #dbdbdb;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 0.78rem;
-  color: var(--text-tertiary);
+  justify-content: center;
+  min-height: clamp(146px, 26vh, 270px);
+  padding: 30px calc(42.5px + 1.75vw);
+  background: var(--jacket-bg);
+  color: var(--jacket-ink);
+  cursor: pointer;
+  outline: none;
+  transition: filter 0.25s ease;
 }
+
+.press-shelf-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px 50px;              /* 50px is Stripe's title→author gutter */
+  max-width: 74ch;
+  text-align: center;
+  letter-spacing: 0.32px;
+  line-height: 1.5;
+}
+
+.press-shelf-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.02rem, 0.92rem + 0.5vw, 1.34rem);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: from-font;
+}
+
+.press-shelf-byline {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-serif);
+  font-size: clamp(0.9rem, 0.85rem + 0.28vw, 1.06rem);
+  font-weight: 500;
+  font-style: italic;
+  /* Full jacket ink, like Stripe's author line — the italic and the missing
+   * underline carry the hierarchy. Dimming it here would push the two
+   * lowest-contrast jackets under AA for small text. */
+}
+
+.press-shelf-date::before {
+  content: "·";
+  margin-right: 10px;
+}
+
+.press-shelf-lang {
+  font-style: normal;
+  font-size: 0.76em;
+  letter-spacing: 0;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 1px 8px;
+  opacity: 0.85;
+}
+
+/* Search highlight inverts against whatever jacket it lands on, so it stays
+ * legible on all 20 palettes without a per-jacket rule. */
+.press-shelf-row mark {
+  background: currentColor;
+  color: var(--jacket-bg);
+  padding: 0 3px;
+}
+
+@media (hover: hover) {
+  .press-shelf-row:hover {
+    filter: brightness(1.09);
+  }
+
+  .press-shelf-row:hover .press-shelf-title {
+    text-decoration-thickness: 2px;
+  }
+}
+
+.press-shelf-row:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .press-shelf-row {
+    transition: none;
+  }
+}
+
+.press-shelf-empty {
+  padding: clamp(48px, 12vh, 120px) calc(42.5px + 1.75vw);
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.press-shelf-foot {
+  max-width: calc(var(--page-max) + 2 * var(--page-gutter));
+  margin-inline: auto;
+  padding: clamp(24px, 5vh, 56px) var(--page-gutter) clamp(28px, 6vh, 64px);
+}
+
+.press-shelf-foot .index-pagination {
+  margin-top: 0;
+  border-top-color: var(--border-light);
+}
+
+/* Long research titles need two lines more often than book titles do, so the
+ * byline drops below the title on narrow viewports instead of wrapping into
+ * an orphaned column. */
+@media (max-width: 699px) {
+  .press-shelf-text {
+    flex-direction: column;
+    /* Column flex makes align-items the HORIZONTAL axis, so `baseline` from
+     * the row layout would left-align the byline under a centred title. */
+    align-items: center;
+    gap: 12px;
+  }
+
+  .press-shelf-row {
+    min-height: clamp(130px, 22vh, 210px);
+    padding: 26px 22px;
+  }
+
+  .press-masthead,
+  .press-shelf-empty,
+  .press-shelf-foot {
+    padding-inline: 22px;
+  }
+}
+
+/* Jacket palettes — the 20 background/ink pairs press.stripe.com uses for its
+ * book covers, in shelf order. Assigned per article by researchJacket(slug),
+ * so an article keeps its colour across reloads and pagination.
+ *
+ * Two pairs are nudged off Stripe's exact values because our byline is small
+ * italic text where Stripe's is set larger: jacket 1's ground is darkened
+ * (#6e665b → #595249) and jacket 6's ink is darkened (#333032 → #2a2729).
+ * Both then clear 4.6:1. Every other pair is verbatim, and all 20 are ≥4.6:1
+ * — re-check with a contrast calculator before editing any of them. */
+.press-shelf-row[data-jacket="0"]  { --jacket-bg: #c1b676; --jacket-ink: #18185e; }
+.press-shelf-row[data-jacket="1"]  { --jacket-bg: #595249; --jacket-ink: #dfc78e; }
+.press-shelf-row[data-jacket="2"]  { --jacket-bg: #0d121f; --jacket-ink: #d0d1d4; }
+.press-shelf-row[data-jacket="3"]  { --jacket-bg: #e2e2e2; --jacket-ink: #504f4f; }
+.press-shelf-row[data-jacket="4"]  { --jacket-bg: #4d1a28; --jacket-ink: #ebadcb; }
+.press-shelf-row[data-jacket="5"]  { --jacket-bg: #143199; --jacket-ink: #dee6ff; }
+.press-shelf-row[data-jacket="6"]  { --jacket-bg: #93935f; --jacket-ink: #2a2729; }
+.press-shelf-row[data-jacket="7"]  { --jacket-bg: #96dced; --jacket-ink: #3d3d3d; }
+.press-shelf-row[data-jacket="8"]  { --jacket-bg: #442c25; --jacket-ink: #e48244; }
+.press-shelf-row[data-jacket="9"]  { --jacket-bg: #222222; --jacket-ink: #ff4445; }
+.press-shelf-row[data-jacket="10"] { --jacket-bg: #ffb55e; --jacket-ink: #0b1743; }
+.press-shelf-row[data-jacket="11"] { --jacket-bg: #303328; --jacket-ink: #f9c350; }
+.press-shelf-row[data-jacket="12"] { --jacket-bg: #2328a0; --jacket-ink: #ef9e40; }
+.press-shelf-row[data-jacket="13"] { --jacket-bg: #ff9e5a; --jacket-ink: #452121; }
+.press-shelf-row[data-jacket="14"] { --jacket-bg: #2f2f2f; --jacket-ink: #dbdbdb; }
+.press-shelf-row[data-jacket="15"] { --jacket-bg: #201e8e; --jacket-ink: #f366ff; }
+.press-shelf-row[data-jacket="16"] { --jacket-bg: #ffa6a6; --jacket-ink: #222222; }
+.press-shelf-row[data-jacket="17"] { --jacket-bg: #cad9e5; --jacket-ink: #222222; }
+.press-shelf-row[data-jacket="18"] { --jacket-bg: #353f54; --jacket-ink: #0aeb9a; }
+.press-shelf-row[data-jacket="19"] { --jacket-bg: #1d1a15; --jacket-ink: #e2cab0; }
 
 .gen-research-model {
   font-family: var(--font-mono);
@@ -3490,27 +3681,6 @@ body.tab-frontpage .section-nav {
 .gen-research-time {
   font-size: 0.78rem;
   color: var(--text-tertiary);
-}
-
-.gen-research-tags {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.gen-research-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  padding: 1px 6px;
-  border-radius: 4px;
-}
-
-.gen-research-empty {
-  padding: 24px 0 8px;
-  text-align: center;
 }
 
 /* Shared archive pagination for Research and Wiki. Anchors preserve browser
