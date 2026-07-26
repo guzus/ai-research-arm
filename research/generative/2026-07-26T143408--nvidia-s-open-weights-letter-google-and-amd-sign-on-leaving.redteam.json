@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "White House OSTP Director Michael Kratsios accuses Moonshot AI of 'large-scale, covert industrial distillation' of Anthropic's Fable model to build Kimi K3, distinguishing it from 'legitimate' small-scale distillation",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "NVIDIA itself holds a reported $10B equity stake in Anthropic",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Within 24 hours the list doubled to 50 names, adding OpenAI, Google and AMD. Two firms never showed up: Amazon, and its biggest AI holding, Anthropic.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

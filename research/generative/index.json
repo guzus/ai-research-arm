@@ -1062,5 +1062,17 @@
     "source": "workflow_dispatch",
     "prompt": "Claude Opus 5 launch: the non-monotonic effort-scaling anomaly and disputed silent fallback to Opus 4.8",
     "tags": []
+  },
+  {
+    "slug": "nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving",
+    "file": "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The Distillation Trap — Why Anthropic Won't Sign NVIDIA's Open-Weights Letter",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-26T14:34:08Z",
+    "source": "workflow_dispatch",
+    "prompt": "NVIDIA's open-weights letter: Google and AMD sign on, leaving Anthropic as the last major AI lab holdout",
+    "tags": []
   }
 ]
