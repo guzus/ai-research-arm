@@ -1190,7 +1190,7 @@ function setSafeContent(
   // `target` is NOT in DOMPurify's default allowlist; every external link
   // this app emits pairs target="_blank" with rel="noopener", so allowing
   // it restores the intended new-tab behavior (ticket sources, tweet links).
-  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-ticket-share', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-question', 'data-odds-outcome', 'aria-label', 'aria-describedby', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'aria-haspopup', 'aria-live', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
+  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-jacket', 'data-ticket-share', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-question', 'data-odds-outcome', 'aria-label', 'aria-describedby', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'aria-haspopup', 'aria-live', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -4331,6 +4331,235 @@ function isResearchDisplayTag(tag: string): boolean {
 
 const RESEARCH_PAGE_SIZE = 12;
 
+/** Number of jacket palettes defined in style.css (`.press-shelf-row[data-jacket]`). */
+const RESEARCH_JACKET_COUNT = 20;
+
+/**
+ * Stable slug → jacket palette index. Deterministic (FNV-1a over the slug) so an
+ * article keeps the same jacket colour across reloads and deploys; the palette
+ * itself lives in CSS, so no inline styles have to survive DOMPurify.
+ */
+function researchJacket(slug: string): number {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < slug.length; i++) {
+    hash ^= slug.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return hash % RESEARCH_JACKET_COUNT;
+}
+
+/**
+ * Jacket the index actually painted each cover with, so the article page can
+ * open in the SAME colour the reader just clicked. The per-page de-duplication
+ * below can move a book off its raw hash, so re-hashing on the article page
+ * would sometimes disagree with the shelf. Deep links (no shelf visit) fall
+ * back to the raw hash, which is the best available answer.
+ */
+const researchJacketBySlug = new Map<string, number>();
+
+/**
+ * Jackets for one rendered page, hashed per slug then de-duplicated: a raw hash
+ * repeats often enough that two neighbouring bands land on the same colour and
+ * read as one block. Collisions walk forward to the next free palette, which
+ * keeps every band on a page distinct whenever the page is no longer than the
+ * palette (12 rows, 20 jackets) and stays a pure function of the row order.
+ */
+function researchJacketsForPage(slugs: string[]): number[] {
+  const taken = new Set<number>();
+  return slugs.map((slug) => {
+    let jacket = researchJacket(slug);
+    for (let step = 0; step < RESEARCH_JACKET_COUNT && taken.has(jacket); step++) {
+      jacket = (jacket + 1) % RESEARCH_JACKET_COUNT;
+    }
+    taken.add(jacket);
+    return jacket;
+  });
+}
+
+/**
+ * A handful of index.json titles were written with HTML entities already baked
+ * in ("Hims &amp; Hers"), so escaping them again renders the raw `&amp;` to the
+ * reader. Decode the five entities `escapeHtml` produces before re-escaping;
+ * anything else is left alone.
+ */
+function decodeStoredEntities(text: string): string {
+  return text.replace(/&(amp|lt|gt|quot|#39);/g, (_m, name) => {
+    switch (name) {
+      case 'lt': return '<';
+      case 'gt': return '>';
+      case 'quot': return '"';
+      case '#39': return "'";
+      default: return '&';
+    }
+  });
+}
+
+/* Book-opening transition. Beats, in order (durations + delays live in the
+ * .press-open-* rules; these constants only drive the JS handoffs):
+ *   0ms    lift    — the book rises off the shelf to the middle of the screen,
+ *                    scrim dims the rest to 0.62 so the shelf stays faintly
+ *                    behind it. It scales from its SPINE, so the spread it is
+ *                    about to occupy is already centred.
+ *   240ms  open    — the front cover swings back around the spine, revealing
+ *                    the article's title page. The cover's shadow slides off
+ *                    the page as it goes, and the back of the cover is an
+ *                    endpaper, not a mirrored jacket.
+ *   560ms  deepen  — the scrim closes to 0.97 under the open book.
+ *   850ms  swap    — the article renders behind that near-opaque scrim.
+ *   ~900ms reveal  — the whole stage fades off, uncovering the article.
+ *
+ * There is deliberately NO full-screen veil. An earlier cut faded one in over
+ * everything and back out, which read as the page flashing white on every
+ * open. The scrim deepening instead hides the shelf→article ground swap
+ * without ever painting the viewport a flat colour.
+ *
+ * Nothing here is load-bearing: reduced-motion readers, an unmeasurable
+ * element, and a stalled fetch all land on the same article. */
+const BOOK_OPEN_NAVIGATE_AT_MS = 850;
+const BOOK_OPEN_SEQUENCE_MS = 900;
+const BOOK_OPEN_CLEAR_MS = 340;
+/** Never hold the reader on the open book if the article fetch stalls. */
+const BOOK_OPEN_MAX_HOLD_MS = 2400;
+
+/** Fraction of the viewport the opened spread is allowed to fill. */
+const BOOK_OPEN_FILL_H = 0.68;
+/* Generous, because width only binds on phones — desktop is always the
+ * height-limited case, so raising this buys presence on small screens for
+ * free. */
+const BOOK_OPEN_FILL_W = 0.94;
+
+/**
+ * Clone the clicked cover into a fixed overlay and play the sequence above.
+ * The overlay is built with direct DOM calls rather than setSafeContent, so
+ * the per-book geometry and jacket colours never meet DOMPurify.
+ */
+function openBookThen(book: HTMLElement, navigate: () => Promise<void>): void {
+  const rect = book.getBoundingClientRect();
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || rect.width < 1 || rect.height < 1) {
+    void navigate();
+    return;
+  }
+
+  const bookStyle = getComputedStyle(book);
+  const jacketBg = bookStyle.backgroundColor;
+  const jacketInk = bookStyle.color;
+  // Read the DESTINATION palette off :root. body still carries the shelf's
+  // token remap at this point, so reading from body would hand back the press
+  // ground and the title page would come up dark before the article paints.
+  const rootStyle = getComputedStyle(document.documentElement);
+  const readToken = (name: string, fallback: string): string =>
+    rootStyle.getPropertyValue(name).trim() || fallback;
+  const paper = readToken('--bg', '#ffffff');
+  const paperInk = readToken('--text', '#16181d');
+  const paperFaint = readToken('--text-tertiary', '#6b7280');
+
+  const text = (selector: string): string =>
+    (book.querySelector(selector)?.textContent || '').trim();
+
+  const stage = document.createElement('div');
+  stage.className = 'press-open-stage';
+
+  const scrim = document.createElement('div');
+  scrim.className = 'press-open-scrim';
+
+  const shell = document.createElement('div');
+  shell.className = 'press-open-book';
+  shell.style.left = `${rect.left}px`;
+  shell.style.top = `${rect.top}px`;
+  shell.style.width = `${rect.width}px`;
+  shell.style.height = `${rect.height}px`;
+
+  // The title page under the cover: the article's own eyebrow/title/byline, so
+  // the open book shows something worth looking at instead of a blank swatch.
+  const page = document.createElement('div');
+  page.className = 'press-open-page';
+  page.style.background = paper;
+  page.style.color = paperInk;
+  // Title-page type is sized off the cover width so it scales with the book
+  // rather than fighting the transform; the rules below are all in `em`.
+  page.style.fontSize = `${Math.round(rect.width * 0.085)}px`;
+
+  const eyebrow = document.createElement('span');
+  eyebrow.className = 'press-open-eyebrow';
+  eyebrow.style.color = jacketBg;
+  eyebrow.textContent = text('.press-book-model');
+
+  const pageTitle = document.createElement('span');
+  pageTitle.className = 'press-open-page-title';
+  pageTitle.textContent = text('.press-book-title');
+
+  const pageByline = document.createElement('span');
+  pageByline.className = 'press-open-page-byline';
+  pageByline.style.color = paperFaint;
+  pageByline.textContent = text('.press-book-date');
+
+  page.append(eyebrow, pageTitle, pageByline);
+
+  // Shadow the closed cover casts onto the page; slides away as it opens.
+  const pageShade = document.createElement('div');
+  pageShade.className = 'press-open-page-shade';
+  page.appendChild(pageShade);
+
+  // The cover, as a two-faced leaf hinged on the spine.
+  const leaf = document.createElement('div');
+  leaf.className = 'press-open-leaf';
+
+  const front = document.createElement('div');
+  front.className = 'press-open-face press-open-face--front';
+  front.style.background = jacketBg;
+  front.style.color = jacketInk;
+  const frontTitle = document.createElement('span');
+  frontTitle.className = 'press-book-title';
+  frontTitle.textContent = text('.press-book-title');
+  front.appendChild(frontTitle);
+
+  const back = document.createElement('div');
+  back.className = 'press-open-face press-open-face--back';
+  back.style.background = jacketBg;
+
+  leaf.append(front, back);
+
+  shell.append(page, leaf);
+  stage.append(scrim, shell);
+  document.body.appendChild(stage);
+  book.style.opacity = '0';
+
+  // Scale is bounded by BOTH axes: the opened spread is twice the cover's
+  // width (the leaf swings out to the left of the spine), so a height-only
+  // fit would run the open book off the sides of a phone.
+  const byHeight = (window.innerHeight * BOOK_OPEN_FILL_H) / rect.height;
+  const byWidth = (window.innerWidth * BOOK_OPEN_FILL_W) / (rect.width * 2);
+  const scale = Math.max(1.02, Math.min(2.4, byHeight, byWidth));
+  // .press-open-book scales from `left center`, so putting the spine on the
+  // viewport centre centres the spread that is about to open around it.
+  const dx = window.innerWidth / 2 - rect.left;
+  const dy = window.innerHeight / 2 - (rect.top + rect.height / 2);
+
+  // Force a style/layout flush so the browser resolves the stage's CLOSED
+  // style before the open state lands. Without it the whole subtree is new in
+  // the same frame, there is no "before" value to interpolate from, and every
+  // transition below jumps straight to its end value — which reads as an
+  // instant cut, not an animation. requestAnimationFrame is not enough here.
+  void stage.offsetHeight;
+
+  shell.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+  stage.classList.add('is-open');
+
+  const played = new Promise<void>((resolve) => window.setTimeout(resolve, BOOK_OPEN_SEQUENCE_MS));
+  const capped = new Promise<void>((resolve) => window.setTimeout(resolve, BOOK_OPEN_MAX_HOLD_MS));
+  const navigated = new Promise<void>((resolve) => {
+    window.setTimeout(() => navigate().then(resolve, resolve), BOOK_OPEN_NAVIGATE_AT_MS);
+  });
+
+  // Strike the set once the sequence has played AND the article has rendered
+  // underneath — or once the cap fires, whichever comes first.
+  void Promise.race([Promise.all([played, navigated]), capped]).then(() => {
+    stage.classList.add('is-clearing');
+    window.setTimeout(() => stage.remove(), BOOK_OPEN_CLEAR_MS);
+  });
+}
+
 function renderResearchIndex(rows: GenResearchRow[]): void {
   setDocTitle(null);
   if (rows.length === 0) {
@@ -4357,9 +4586,14 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     (researchIndexPage - 1) * RESEARCH_PAGE_SIZE,
     researchIndexPage * RESEARCH_PAGE_SIZE,
   );
+  // Stripe Press "shelf": a grid of book covers, each painted in its own
+  // jacket palette. The byline is the authoring model — the same slot a book
+  // cover gives the author.
+  const jackets = researchJacketsForPage(pageRows.map((r) => r.slug));
+  pageRows.forEach((r, i) => researchJacketBySlug.set(r.slug, jackets[i]));
   const items: string[] = [];
-  for (const row of pageRows) {
-    let title = escapeHtml(row.title);
+  pageRows.forEach((row, index) => {
+    let title = escapeHtml(decodeStoredEntities(row.title));
     if (searchTerm) {
       const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const re = new RegExp('(' + escaped + ')', 'gi');
@@ -4367,54 +4601,48 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     }
     const created = new Date(row.created_at);
     const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
-    // Surface first three tags inline; the chip on the right indicates fragment vs standalone.
-    const tagHtml = (row.tags || [])
-      .filter(isResearchDisplayTag)
-      .slice(0, 3)
-      .map((t) => '<span class="gen-research-tag">' + escapeHtml(t) + '</span>')
-      .join('');
-    const isStandalone = row.kind === 'standalone';
-    const kindLabel = isStandalone ? 'Standalone' : 'Article';
-    const kindClass = isStandalone ? 'gen-research-kind--standalone' : 'gen-research-kind--article';
-    const languageHtml = hasResearchLanguage(row, 'ko')
-      ? '      <span class="gen-research-tag" lang="ko">한국어</span>'
+    const koHtml = hasResearchLanguage(row, 'ko')
+      ? '    <span class="press-book-lang" lang="ko">한국어</span>'
       : '';
     items.push(
       [
-        '<li class="gen-research-item" data-slug="' + escapeHtml(row.slug) + '" tabindex="0">',
-        '  <div class="gen-research-item-main">',
-        '    <div class="gen-research-item-title">' + title + '</div>',
-        '    <div class="gen-research-item-meta">',
-        '      <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
-        rel ? '      <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
-        tagHtml ? '      <span class="gen-research-tags">' + tagHtml + '</span>' : '',
-        languageHtml,
-        '    </div>',
-        '  </div>',
-        '  <span class="gen-research-kind ' + kindClass + '">' + kindLabel + '</span>',
+        // role="link" (not the bare focusable <li> this replaced) so the cover
+        // announces as navigation; the content keydown handler already
+        // activates [data-slug] rows on Enter.
+        '<li class="press-book" role="link" data-jacket="' + jackets[index] + '"' +
+          ' data-slug="' + escapeHtml(row.slug) + '" tabindex="0">',
+        '  <span class="press-book-title">' + title + '</span>',
+        '  <span class="press-book-byline">',
+        '    <span class="press-book-model">' + escapeHtml(row.model) + '</span>',
+        rel ? '    <span class="press-book-date">' + escapeHtml(rel) + '</span>' : '',
+        koHtml,
+        '  </span>',
         '</li>',
-      ].join('\n'),
+      ].filter(Boolean).join('\n'),
     );
-  }
+  });
 
   const empty = visible.length === 0
-    ? '<div class="empty-state-text gen-research-empty">No articles match the search.</div>'
+    ? '<p class="press-shelf-empty">No articles match the search.</p>'
     : '';
 
   setSafeContent(
     content,
     [
-      '<div class="content-card">',
-      '  <div class="content-card-body">',
-      '    <ul class="gen-research-index">',
+      '<div class="press-shelf-page">',
+      '  <ul class="press-shelf">',
       items.join('\n'),
-      '    </ul>',
+      '  </ul>',
       empty,
+      '  <div class="press-shelf-foot">',
       paginationHtml(researchIndexPage, visible.length, RESEARCH_PAGE_SIZE, 'Research articles'),
       '  </div>',
       '</div>',
     ].join('\n'),
   );
+  // Only the index wears the press ground; the article view keeps the reading
+  // chrome. Cleared centrally at the top of load().
+  document.body.classList.add('research-shelf');
 }
 
 function renderResearchDoc(row: GenResearchRow, body: string): void {
@@ -4425,11 +4653,14 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
   const docHtml = body;
   const created = new Date(row.created_at);
   const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
+  // Same jacket the shelf painted this book with — the article reads as that
+  // cover opened, not as a generic page. See researchJacketBySlug.
+  const jacket = researchJacketBySlug.get(row.slug) ?? researchJacket(row.slug);
 
   setSafeContent(
     content,
     [
-      '<div class="content-card gen-research-doc">',
+      '<div class="content-card gen-research-doc" data-jacket="' + jacket + '">',
       '  <div class="content-card-header">',
       '    <div class="content-card-title">' + escapeHtml(row.title) + '</div>',
       '  </div>',
@@ -4877,6 +5108,10 @@ async function load(): Promise<void> {
   // Hide the floating TOC unconditionally; renderResearchDoc shows it
   // again when it has enough sections to be useful.
   hideResearchTOC();
+
+  // The press ground belongs to the research INDEX only. Clear it on every
+  // dispatch; renderResearchIndex re-adds it when it actually paints the shelf.
+  document.body.classList.remove('research-shelf');
 
   updateRoute();
   showLoading();
@@ -5616,8 +5851,13 @@ content.addEventListener('click', (e) => {
   if (row && activeTab === 'research') {
     const slug = row.dataset.slug;
     if (slug) {
-      selectedSlug = slug;
-      load();
+      const navigate = (): Promise<void> => {
+        selectedSlug = slug;
+        return load();
+      };
+      // Index covers open; anything else navigating by slug goes straight through.
+      if (row.classList.contains('press-book')) openBookThen(row, navigate);
+      else void navigate();
     }
     return;
   }
@@ -5684,8 +5924,12 @@ content.addEventListener('keydown', (e: KeyboardEvent) => {
     e.preventDefault();
     const slug = row.dataset.slug;
     if (slug) {
-      selectedSlug = slug;
-      load();
+      const navigate = (): Promise<void> => {
+        selectedSlug = slug;
+        return load();
+      };
+      if (row.classList.contains('press-book')) openBookThen(row, navigate);
+      else void navigate();
     }
   }
 });

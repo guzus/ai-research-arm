@@ -346,6 +346,34 @@ body.has-digest-player .app {
   flex-shrink: 0;
 }
 
+/* Search + Request research, pinned at the end of the tab rail. The gaps were
+ * always an even 6px; what read as uneven was HEIGHT — the search box shipped
+ * at 30px and the button at 34px against 36px pills, so both are pinned to the
+ * pill's metrics here (36px tall, 20px radius) to keep one rhythm across the
+ * whole rail. */
+.tabs-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.tabs .brand-search,
+.tabs .request-btn {
+  height: 36px;
+  min-height: 36px;
+  border-radius: 20px;
+  font-size: var(--nav-font-size);
+}
+
+.tabs .brand-search {
+  width: 36px;
+}
+
+.tabs .request-btn {
+  padding: 0 16px;
+}
+
 /* Narrow header cleanup: keep the masthead compact and hide long link labels. */
 @media (max-width: 640px) {
   .header-top {
@@ -633,11 +661,21 @@ body.tab-today .cal-chevron { color: var(--on-accent); opacity: 0.75; }
     box-shadow: inset 0 -3px 0 var(--text);
   }
 
-  .tabs .brand-search {
+  /* The actions wrapper is the grid item now, so it carries the full-width
+     span the search button used to; search stretches and Request research
+     keeps its pill at the trailing edge. */
+  .tabs-actions {
     grid-column: 1 / -1;
-    width: 100%;
-    height: 38px;
+    gap: 8px;
+    padding: 7px 10px;
+  }
+
+  .tabs .brand-search {
+    flex: 1;
+    width: auto;
+    height: 36px;
     border-top: 0;
+    border-radius: 20px;
     color: var(--text-tertiary);
   }
 }
@@ -3397,85 +3435,478 @@ body.tab-frontpage .section-nav {
   display: none;
 }
 
-.gen-research-index {
+/* ── Research index: the press shelf ────────────────────
+ * Modelled on the press.stripe.com product list (its non-WebGL rendering,
+ * which is the layout underneath the 3D book carousel): the page drops to a
+ * warm near-black ground, the masthead is a serif name over an italic
+ * tagline, and every article becomes a full-bleed band painted in its own
+ * "jacket" palette with the title and byline centred inside.
+ *
+ * Two structural notes:
+ *  - The ground is a token REMAP on body.research-shelf, not a pile of
+ *    per-component overrides. Tabs, buttons, pagination and the footer all
+ *    read --bg/--border/--accent/--text-*, so they follow for free.
+ *  - Jacket colours live here, keyed by [data-jacket], because main.ts
+ *    renders through DOMPurify and inline style="" would not survive.
+ *    researchJacket() in main.ts picks the index; keep the two counts in
+ *    sync (RESEARCH_JACKET_COUNT = 20). */
+
+body.research-shelf {
+  --press-ground: #201819;
+  --press-ink: #f7f3ee;
+  --bg: #2c2321;              /* control surface (tab pills, inputs) */
+  --bg-secondary: #201819;    /* sticky .nav-shell backdrop == the ground */
+  --bg-hover: #3a2e2b;
+  --border: #4c3e39;
+  --border-light: #372b28;
+  --text: var(--press-ink);
+  --text-secondary: #cabcb2;
+  --text-tertiary: #9d8d84;
+  --accent: var(--press-ink); /* active pill: paper on ink */
+  --on-accent: var(--press-ground);
+  --accent-light: #e2cba8;
+  --accent-warm: #e2cba8;
+  --accent-warm-bg: #3a2e2b;
+  --mark-bg: #e2cba8;
+  --mark-fg: #201819;
+  background: var(--press-ground);
+  color: var(--press-ink);
+}
+
+/* The app frame keeps its gutter for the masthead and the pagination foot;
+ * only the bands break out of it (below). */
+body.research-shelf .app {
+  padding-bottom: 0;
+}
+
+/* The sticky tab rail is normally a --page-max-wide block sitting on the page
+ * ground. Over full-bleed jacket bands that leaves the bands scrolling past
+ * either side of it, so widen its backdrop to the viewport and re-centre the
+ * pills inside. */
+body.research-shelf .nav-shell {
+  max-width: none;
+  margin-inline: calc(var(--page-gutter) * -1);
+  padding-inline: var(--page-gutter);
+}
+
+body.research-shelf .tabs,
+body.research-shelf .controls {
+  max-width: var(--page-max);
+  margin-inline: auto;
+}
+
+.press-shelf-page {
+  /* The press ground runs edge to edge, so cancel .app's horizontal gutter
+   * here; each child re-applies it against the app's optical column. */
+  margin-inline: calc(var(--page-gutter) * -1);
+  padding-top: clamp(14px, 3vh, 34px);
+}
+
+/* No masthead: the app's own "ai-research-arm" header sits directly above the
+ * shelf, so a second name/tagline block was just repeating it. The covers open
+ * the page. */
+
+/* The shelf proper: a grid of book covers on the press ground. Column counts
+ * are explicit rather than auto-fill so the covers stay substantial (a 6-up
+ * auto-fill row on a wide display shrinks them into stamps). */
+.press-shelf {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  max-width: calc(var(--page-max) + 2 * var(--page-gutter));
+  margin-inline: auto;
+  padding: 0 var(--page-gutter);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 3.4vw, 56px) clamp(20px, 2.6vw, 44px);
+  align-items: start;
 }
 
-.gen-research-item {
+@media (min-width: 620px) {
+  .press-shelf {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 940px) {
+  .press-shelf {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* One book. The jacket palette paints the cover; the ::before strip is the
+ * spine, which is what makes it read as an object instead of a colour swatch. */
+.press-book {
+  /* Fallback jacket — every book gets a real pair from the table below. */
+  --jacket-bg: #2f2f2f;
+  --jacket-ink: #dbdbdb;
+  --cover-pad: clamp(16px, 1.5vw, 24px);
+  position: relative;
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border-light);
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  aspect-ratio: 5 / 7;
+  padding: var(--cover-pad);
+  padding-left: calc(var(--cover-pad) + 12px);
+  overflow: hidden;
+  border-radius: 1px 4px 4px 1px;
+  background: var(--jacket-bg);
+  color: var(--jacket-ink);
   cursor: pointer;
-  transition: background 0.1s;
-  margin: 0 -28px;
-  padding-left: 28px;
-  padding-right: 28px;
+  outline: none;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.45),
+    0 14px 30px -10px rgba(0, 0, 0, 0.6);
+  transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.3, 1), box-shadow 0.28s ease;
 }
 
-.gen-research-item-main {
-  flex: 1;
-  min-width: 0;
+/* Spine: a darkened gradient down the leading edge plus the hinge highlight. */
+.press-book::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 12px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.36) 0%,
+    rgba(0, 0, 0, 0.1) 58%,
+    rgba(255, 255, 255, 0.07) 100%
+  );
+  pointer-events: none;
 }
 
-.gen-research-kind {
-  flex-shrink: 0;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
+.press-book-title {
+  font-family: var(--font-serif);
+  font-size: clamp(0.96rem, 0.84rem + 0.42vw, 1.22rem);
   font-weight: 600;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 999px;
-  white-space: nowrap;
-  margin-top: 2px;
+  line-height: 1.24;
+  letter-spacing: 0.2px;
+  text-wrap: balance;
+  /* Cover space is fixed by the aspect ratio, so a very long title truncates
+   * rather than overflowing the jacket. The full title is still the row's
+   * accessible name and is shown in full on the article page. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  overflow: hidden;
 }
 
-.gen-research-kind--standalone {
-  background: var(--accent-warm);
-  color: var(--on-accent);
-}
-
-.gen-research-kind--article {
-  background: transparent;
-  color: var(--text-tertiary);
-  border: 1px solid var(--border);
-}
-
-.gen-research-item:last-child {
-  border-bottom: none;
-}
-
-.gen-research-item:hover {
-  background: var(--bg-hover);
-}
-
-.gen-research-item:focus-visible {
-  outline: 2px solid var(--accent-warm);
-  outline-offset: -2px;
-  background: var(--bg-hover);
-}
-
-.gen-research-item-title {
-  font-family: var(--font);
-  font-size: 1.02rem;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.35;
-  margin-bottom: 6px;
-}
-
-.gen-research-item-meta {
+.press-book-byline {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
-  font-size: 0.78rem;
-  color: var(--text-tertiary);
+  align-items: baseline;
+  gap: 3px 8px;
+  padding-top: 11px;
+  border-top: 1px solid currentColor;
+  border-top-color: color-mix(in srgb, currentColor 42%, transparent);
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.35;
+  /* Full jacket ink, like Stripe's author line — the italic and the rule carry
+   * the hierarchy. Dimming it would push the two lowest-contrast jackets under
+   * AA for small text. */
 }
+
+.press-book-date::before {
+  content: "·";
+  margin-right: 8px;
+}
+
+.press-book-lang {
+  font-style: normal;
+  font-size: 0.86em;
+  letter-spacing: 0;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0 6px;
+}
+
+/* Search highlight inverts against whatever jacket it lands on, so it stays
+ * legible on all 20 palettes without a per-jacket rule. */
+.press-book mark {
+  background: currentColor;
+  color: var(--jacket-bg);
+  padding: 0 3px;
+}
+
+@media (hover: hover) {
+  .press-book:hover {
+    transform: translateY(-10px);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.45),
+      0 30px 54px -12px rgba(0, 0, 0, 0.66);
+  }
+}
+
+.press-book:focus-visible {
+  outline: 2px solid var(--press-ink);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .press-book {
+    transition: none;
+  }
+
+  .press-book:hover {
+    transform: none;
+  }
+}
+
+/* ── Book-opening transition ────────────────────────────
+ * Built by openBookThen() in main.ts, which adds .is-open on the next frame
+ * and .is-clearing at the end. The four beats — lift, open, settle, dissolve —
+ * are sequenced entirely by the transition delays below; main.ts only needs
+ * BOOK_OPEN_SEQUENCE_MS to match the last one finishing. Read the block
+ * comment above openBookThen() before retiming anything here. */
+.press-open-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  pointer-events: none;
+}
+
+/* Beats 1 + 3 — dim the shelf so the book is the only thing lit, then close
+ * down to near-opaque so the shelf→article ground swap behind it is invisible.
+ *
+ * This deepening is what replaced the old full-screen veil. The veil painted
+ * the whole viewport the destination colour and faded it back out, which read
+ * as the page flashing white on every open. Holding at 0.62 keeps the shelf
+ * faintly present while the book lifts off it; closing to 0.97 right before
+ * the swap hides the swap without ever showing a flat field of colour. */
+@keyframes pressScrimDeepen {
+  0%   { opacity: 0; }
+  28%  { opacity: 0.62; }   /* ~250ms — lift done, shelf still readable */
+  62%  { opacity: 0.62; }   /* ~560ms — held through the cover swing */
+  93%  { opacity: 0.97; }   /* ~840ms — closed, just before the swap at 850ms */
+  100% { opacity: 0.97; }
+}
+
+.press-open-scrim {
+  position: absolute;
+  inset: 0;
+  background: #141010;
+  opacity: 0;
+}
+
+.press-open-stage.is-open .press-open-scrim {
+  animation: pressScrimDeepen 900ms ease forwards;
+}
+
+/* Beat 5 — the whole set (scrim and open book together) fades off the already
+ * rendered article. Nothing is painted over the page to get here. */
+.press-open-stage.is-clearing {
+  opacity: 0;
+  transition: opacity 340ms ease;
+}
+
+/* Beat 1 — the book itself. Perspective lives HERE, not on the stage: the
+ * projection has to stay centred on the book, otherwise a cover opening from
+ * the edge of the shelf is projected from the middle of the screen and skews.
+ * It scales from `left center` so the spine stays put and the spread the leaf
+ * is about to occupy is already centred (see the dx/dy maths in main.ts). */
+.press-open-book {
+  position: absolute;
+  transform-origin: left center;
+  perspective: 1500px;
+  transition: transform 420ms cubic-bezier(0.22, 0.75, 0.28, 1);
+  will-change: transform;
+}
+
+/* The title page under the cover. */
+.press-open-page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.55em;
+  padding: 8% 9%;
+  overflow: hidden;
+  border-radius: 1px 3px 3px 1px;
+  box-shadow: 0 26px 70px -16px rgba(0, 0, 0, 0.66);
+  font-family: var(--font-serif);
+}
+
+.press-open-eyebrow {
+  font-size: 0.58em;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+.press-open-page-title {
+  font-size: 0.95em;
+  font-weight: 600;
+  line-height: 1.22;
+  text-wrap: balance;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
+}
+
+.press-open-page-byline {
+  font-size: 0.56em;
+  font-style: italic;
+}
+
+/* The gutter: the permanent crease shadow where the page meets the spine.
+ * Unlike the cast shadow below it does NOT fade — an open book always has it,
+ * and it is what stops the revealed page reading as a flat white card. */
+.press-open-page::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 9%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.05) 55%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Beat 2 — the shadow the closed cover casts on the page, sliding off to the
+ * right as the leaf lifts away. */
+.press-open-page-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.16) 45%, transparent 100%);
+  transform-origin: left center;
+  transition: opacity 460ms ease 250ms, transform 460ms ease 250ms;
+}
+
+.press-open-stage.is-open .press-open-page-shade {
+  opacity: 0;
+  transform: scaleX(0.2);
+}
+
+/* Beat 2 — the cover, hinged on the spine. */
+.press-open-leaf {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition: transform 620ms cubic-bezier(0.34, 0.62, 0.24, 1) 240ms;
+  will-change: transform;
+}
+
+.press-open-stage.is-open .press-open-leaf {
+  transform: rotateY(-166deg);
+}
+
+.press-open-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 1px 3px 3px 1px;
+  backface-visibility: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+.press-open-face--front {
+  padding: clamp(16px, 1.5vw, 24px);
+  padding-left: calc(clamp(16px, 1.5vw, 24px) + 12px);
+}
+
+/* The reverse of the cover is an endpaper, not a mirrored jacket: darkened
+ * board with the paper edge showing at the hinge. */
+.press-open-face--back {
+  transform: rotateY(180deg);
+  border-radius: 3px 1px 1px 3px;
+  filter: brightness(0.62) saturate(0.7);
+  box-shadow: inset -6px 0 12px -6px rgba(0, 0, 0, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* openBookThen() bails before building the stage, but keep the belt-and-
+   * braces rules in case a stage is ever left on screen. */
+  .press-open-stage,
+  .press-open-book,
+  .press-open-leaf,
+  .press-open-page-shade {
+    transition: none;
+  }
+
+  .press-open-stage.is-open .press-open-scrim {
+    animation: none;
+  }
+}
+
+.press-shelf-empty {
+  max-width: calc(var(--page-max) + 2 * var(--page-gutter));
+  margin-inline: auto;
+  padding: clamp(48px, 12vh, 120px) var(--page-gutter);
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.press-shelf-foot {
+  max-width: calc(var(--page-max) + 2 * var(--page-gutter));
+  margin-inline: auto;
+  padding: clamp(24px, 5vh, 56px) var(--page-gutter) clamp(28px, 6vh, 64px);
+}
+
+.press-shelf-foot .index-pagination {
+  margin-top: 0;
+  border-top-color: var(--border-light);
+}
+
+/* Two covers per row on phones leaves ~150px of cover width, so the title
+ * needs to drop a step and shed a couple of clamped lines. */
+@media (max-width: 619px) {
+  .press-book {
+    --cover-pad: 14px;
+  }
+
+  .press-book-title {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 6;
+  }
+
+  .press-book-byline {
+    font-size: 0.74rem;
+  }
+
+  .press-shelf,
+  .press-shelf-empty,
+  .press-shelf-foot {
+    padding-inline: 22px;
+  }
+}
+
+/* Jacket palettes — the 20 background/ink pairs press.stripe.com uses for its
+ * book covers, in shelf order. Assigned per article by researchJacket(slug),
+ * so an article keeps its colour across reloads and pagination.
+ *
+ * Selector is the bare attribute because two hosts wear a jacket: the shelf
+ * cover (.press-book) and the opened article (.gen-research-doc). Nothing else
+ * in the app emits data-jacket.
+ *
+ * Two pairs are nudged off Stripe's exact values because our byline is small
+ * italic text where Stripe's is set larger: jacket 1's ground is darkened
+ * (#6e665b → #595249) and jacket 6's ink is darkened (#333032 → #2a2729).
+ * Both then clear 4.6:1. Every other pair is verbatim, and all 20 are ≥4.6:1
+ * — re-check with a contrast calculator before editing any of them. */
+[data-jacket="0"]  { --jacket-bg: #c1b676; --jacket-ink: #18185e; }
+[data-jacket="1"]  { --jacket-bg: #595249; --jacket-ink: #dfc78e; }
+[data-jacket="2"]  { --jacket-bg: #0d121f; --jacket-ink: #d0d1d4; }
+[data-jacket="3"]  { --jacket-bg: #e2e2e2; --jacket-ink: #504f4f; }
+[data-jacket="4"]  { --jacket-bg: #4d1a28; --jacket-ink: #ebadcb; }
+[data-jacket="5"]  { --jacket-bg: #143199; --jacket-ink: #dee6ff; }
+[data-jacket="6"]  { --jacket-bg: #93935f; --jacket-ink: #2a2729; }
+[data-jacket="7"]  { --jacket-bg: #96dced; --jacket-ink: #3d3d3d; }
+[data-jacket="8"]  { --jacket-bg: #442c25; --jacket-ink: #e48244; }
+[data-jacket="9"]  { --jacket-bg: #222222; --jacket-ink: #ff4445; }
+[data-jacket="10"] { --jacket-bg: #ffb55e; --jacket-ink: #0b1743; }
+[data-jacket="11"] { --jacket-bg: #303328; --jacket-ink: #f9c350; }
+[data-jacket="12"] { --jacket-bg: #2328a0; --jacket-ink: #ef9e40; }
+[data-jacket="13"] { --jacket-bg: #ff9e5a; --jacket-ink: #452121; }
+[data-jacket="14"] { --jacket-bg: #2f2f2f; --jacket-ink: #dbdbdb; }
+[data-jacket="15"] { --jacket-bg: #201e8e; --jacket-ink: #f366ff; }
+[data-jacket="16"] { --jacket-bg: #ffa6a6; --jacket-ink: #222222; }
+[data-jacket="17"] { --jacket-bg: #cad9e5; --jacket-ink: #222222; }
+[data-jacket="18"] { --jacket-bg: #353f54; --jacket-ink: #0aeb9a; }
+[data-jacket="19"] { --jacket-bg: #1d1a15; --jacket-ink: #e2cab0; }
 
 .gen-research-model {
   font-family: var(--font-mono);
@@ -3490,27 +3921,6 @@ body.tab-frontpage .section-nav {
 .gen-research-time {
   font-size: 0.78rem;
   color: var(--text-tertiary);
-}
-
-.gen-research-tags {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.gen-research-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  padding: 1px 6px;
-  border-radius: 4px;
-}
-
-.gen-research-empty {
-  padding: 24px 0 8px;
-  text-align: center;
 }
 
 /* Shared archive pagination for Research and Wiki. Anchors preserve browser
@@ -3590,6 +4000,29 @@ body.tab-frontpage .section-nav {
 }
 
 /* Single doc view */
+/* ── Opened book: the article page ──────────────────────
+ * The article wears the same jacket the shelf cover did (data-jacket is set by
+ * renderResearchDoc from researchJacketBySlug), so clicking a book opens into
+ * that book. Two pieces carry it: a jacket-painted meta bar across the top of
+ * the card, and a spine rail down the leading edge. The article BODY is left
+ * alone — it is compiled ara-* markup with its own type system. */
+.gen-research-doc[data-jacket] {
+  position: relative;
+  overflow: hidden;
+  border-left: 12px solid var(--jacket-bg);
+}
+
+/* Hinge highlight against the spine, matching the shelf cover's ::before. */
+.gen-research-doc[data-jacket]::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.14);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .gen-research-doc-meta {
   display: flex;
   align-items: center;
@@ -3598,6 +4031,51 @@ body.tab-frontpage .section-nav {
   padding: 10px 28px 0;
   font-size: 0.78rem;
   color: var(--text-tertiary);
+}
+
+.gen-research-doc[data-jacket] > .gen-research-doc-meta {
+  padding: 13px 28px;
+  margin-bottom: 4px;
+  background: var(--jacket-bg);
+  color: var(--jacket-ink);
+}
+
+/* Inside the jacket bar every control reads in jacket ink — the default chips
+ * are painted from the app accent tokens, which would clash with 20 grounds. */
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-model,
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-time,
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-language-note {
+  color: var(--jacket-ink);
+  background: transparent;
+}
+
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-model {
+  font-style: italic;
+  padding-inline: 0;
+}
+
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-back,
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-pdf,
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-file-audio,
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-audio,
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-audio-stop {
+  color: var(--jacket-ink);
+  border-color: color-mix(in srgb, var(--jacket-ink) 45%, transparent);
+  background: transparent;
+}
+
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-back:hover,
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-pdf:hover,
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-file-audio:hover,
+.gen-research-doc[data-jacket] > .gen-research-doc-meta .gen-research-audio:hover {
+  color: var(--jacket-bg);
+  background: var(--jacket-ink);
+  border-color: var(--jacket-ink);
+}
+
+.gen-research-doc[data-jacket] > .gen-research-doc-meta :focus-visible {
+  outline: 2px solid var(--jacket-ink);
+  outline-offset: 2px;
 }
 
 .gen-research-language-note {
