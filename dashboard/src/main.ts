@@ -4349,6 +4349,24 @@ function researchJacket(slug: string): number {
 }
 
 /**
+ * Model family → imprint. Each lab gets its own typeface on its books, the way
+ * a publishing house has a house face, so the shelf reads as a shelf of
+ * imprints rather than one press with twenty jacket colours. Keyed on the
+ * FAMILY, not the version: claude-opus-4-7 and claude-sonnet-5 are the same
+ * house. The faces themselves are declared in style.css on [data-imprint].
+ * Anything unrecognised falls through to the house face.
+ */
+function researchImprint(model: string): string {
+  const m = model.toLowerCase();
+  if (m.includes('claude') || m.includes('opus') || m.includes('sonnet') || m.includes('fable')) return 'claude';
+  if (m.includes('deepseek')) return 'deepseek';
+  if (m.includes('kimi') || m.includes('moonshot')) return 'kimi';
+  if (m.includes('gpt') || m.includes('codex')) return 'codex';
+  if (m.includes('glm') || m.includes('zai')) return 'glm';
+  return 'house';
+}
+
+/**
  * Jacket the index actually painted each cover with, so the article page can
  * open in the SAME colour the reader just clicked. The per-page de-duplication
  * below can move a book off its raw hash, so re-hashing on the article page
@@ -4394,32 +4412,400 @@ function decodeStoredEntities(text: string): string {
   });
 }
 
-/* Book-opening transition. Beats, in order (durations + delays live in the
- * .press-open-* rules; these constants only drive the JS handoffs):
- *   0ms    lift    — the book rises off the shelf to the middle of the screen,
- *                    scrim dims the rest to 0.62 so the shelf stays faintly
- *                    behind it. It scales from its SPINE, so the spread it is
- *                    about to occupy is already centred.
- *   240ms  open    — the front cover swings back around the spine, revealing
- *                    the article's title page. The cover's shadow slides off
- *                    the page as it goes, and the back of the cover is an
- *                    endpaper, not a mirrored jacket.
- *   560ms  deepen  — the scrim closes to 0.97 under the open book.
- *   850ms  swap    — the article renders behind that near-opaque scrim.
- *   ~900ms reveal  — the whole stage fades off, uncovering the article.
+/* Scroll drift — "like the wind blew a bit".
  *
- * There is deliberately NO full-screen veil. An earlier cut faded one in over
- * everything and back out, which read as the page flashing white on every
- * open. The scrim deepening instead hides the shelf→article ground swap
- * without ever painting the viewport a flat colour.
+ * Each board's resting angle is nudged by a few degrees as the shelf moves,
+ * driven by where the book sits in the viewport rather than by a clock, so it
+ * only ever moves when the reader does and settles the instant they stop.
+ * PHASE spreads the books apart: keyed off the jacket index, so neighbours are
+ * at different points in the swing instead of tipping in lockstep. */
+const SHELF_DRIFT_DEG = 3.2;
+let shelfDriftFrame = 0;
+
+function driftShelfBoards(): void {
+  shelfDriftFrame = 0;
+  const books = document.querySelectorAll<HTMLElement>('.press-book');
+  if (!books.length) return;
+  const h = window.innerHeight || 1;
+  books.forEach((book) => {
+    const r = book.getBoundingClientRect();
+    // Skip anything off screen: no work, and no stale angle left behind
+    // because it is reset the moment it scrolls back into view.
+    if (r.bottom < -200 || r.top > h + 200) return;
+    // -1 at the top of the viewport, +1 at the bottom.
+    const pos = ((r.top + r.height / 2) / h) * 2 - 1;
+    const phase = (Number(book.dataset.jacket || 0) / RESEARCH_JACKET_COUNT) * Math.PI * 2;
+    const deg = Math.sin(pos * Math.PI + phase) * SHELF_DRIFT_DEG;
+    book.style.setProperty('--lay-drift', `${deg.toFixed(2)}deg`);
+  });
+}
+
+function scheduleShelfDrift(): void {
+  if (shelfDriftFrame) return;
+  shelfDriftFrame = requestAnimationFrame(driftShelfBoards);
+}
+
+/** Idempotent: renderResearchIndex calls it on every paint. */
+function watchShelfDrift(): void {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  window.removeEventListener('scroll', scheduleShelfDrift);
+  window.addEventListener('scroll', scheduleShelfDrift, { passive: true });
+  driftShelfBoards();
+}
+
+interface ShelfMeasure {
+  L0: number;   // spine width  — the hinge line's length
+  T0: number;   // spine height — the book's thickness
+  D0: number;   // board's untransformed depth
+  lay0: number; // the board's LIVE angle, hover and drift included
+  Hx0: number;  // hinge midpoint x
+  Hy0: number;  // hinge y (the spine plate's top edge)
+}
+
+interface BookStage {
+  stage: HTMLElement;
+  volume: HTMLElement;
+  body: HTMLElement;
+  spine: HTMLElement;
+  leaf: HTMLElement;
+  sheet: HTMLElement;
+  paper: HTMLElement;
+  fallback: HTMLElement;
+}
+
+/**
+ * Measure the book as it actually sits on the shelf, right now.
  *
- * Nothing here is load-bearing: reduced-motion readers, an unmeasurable
- * element, and a stalled fetch all land on the same article. */
-const BOOK_OPEN_NAVIGATE_AT_MS = 850;
-const BOOK_OPEN_SEQUENCE_MS = 900;
+ * Everything here is read from live layout rather than from the custom
+ * properties, and that is the point:
+ *  - `--depth`/`--spine-h` are unregistered, so getPropertyValue hands back the
+ *    literal `clamp(...)` token, not a length;
+ *  - the board's angle at click time is NOT `--lay`. You are hovering when you
+ *    click, so it is the hover angle, plus whatever `--lay-drift` the scroll
+ *    handler last wrote. Both are only visible in the computed matrix.
+ */
+function measureShelfBook(book: HTMLElement): ShelfMeasure | null {
+  const spine = book.querySelector<HTMLElement>('.press-book-spine');
+  const board = book.querySelector<HTMLElement>('.press-book-board');
+  if (!spine || !board) return null;
+  const rs = spine.getBoundingClientRect();
+  if (rs.width < 1 || rs.height < 1) return null;
+  const cs = getComputedStyle(board);
+  const D0 = parseFloat(cs.height);
+  if (!(D0 > 0)) return null;
+  // rotateX(θ) lands as matrix3d with m22 = cosθ, m23 = sinθ.
+  let lay0 = 79;
+  try {
+    const m = new DOMMatrix(cs.transform);
+    lay0 = (Math.atan2(m.m23, m.m22) * 180) / Math.PI;
+  } catch {
+    /* keep the fallback */
+  }
+  return {
+    L0: rs.width,
+    T0: rs.height,
+    D0,
+    lay0,
+    Hx0: rs.left + rs.width / 2,
+    Hy0: rs.top,
+  };
+}
+
+/** Where the risen cover ends up: portrait, centred, bounded by both axes. */
+function risenCover(): { L1: number; D1: number; Hx1: number; Hy1: number } {
+  const coverH = Math.min(
+    window.innerHeight * BOOK_OPEN_FILL_H,
+    (window.innerWidth * BOOK_OPEN_FILL_W * BOOK_COVER_RATIO) / 2,
+  );
+  const coverW = coverH / BOOK_COVER_RATIO;
+  // The body's L runs ALONG the hinge and D runs hinge→fore-edge. After the
+  // volume's +90deg roll, L reads as screen height and D as screen width — so
+  // the cover's height is L and its width is D.
+  return { L1: coverH, D1: coverW, Hx1: window.innerWidth / 2, Hy1: window.innerHeight / 2 };
+}
+
+/**
+ * The article card's on-screen paper, clipped to the viewport. The open book's
+ * page settles onto exactly this so the reader never sees the page and the
+ * article swap at different sizes. Height is capped at the fold because a full
+ * article card can be twenty thousand pixels tall and only its top is on screen.
+ */
+function articlePaperRect(): { left: number; top: number; width: number; height: number } | null {
+  const card = document.querySelector<HTMLElement>('.content-card.gen-research-doc');
+  if (!card) return null;
+  const r = card.getBoundingClientRect();
+  const top = Math.max(r.top, 0);
+  const height = Math.min(r.height, window.innerHeight - top);
+  if (r.width < 1 || height < 1) return null;
+  return { left: r.left, top, width: r.width, height };
+}
+
+/**
+ * Build the overlay both directions share.
+ *
+ * The thesis: the shelf book already IS the risen book. Its spine plate is the
+ * book's thickness and its `.press-book-board` is the front cover, hinged on the
+ * spine's top edge. So the clone does not REPAINT a portrait cover next to the
+ * shelf book — it re-hosts the shelf's own elements, reusing `.press-book-spine`,
+ * `.press-book-board-face` and the three type spans verbatim. That reuse is what
+ * buys pixel identity at t=0: the gradients, the shoulders, the drop shadow and
+ * the feTurbulence grain all reproduce because they are literally the same
+ * declarations, and the grain is a fixed-px tile so reproportioning crops it
+ * rather than stretching it.
+ *
+ * The frame is three nested boxes:
+ *   .press-open-volume  a ZERO-SIZE anchor pinned to the hinge. Carries the roll
+ *                       (rotate 0deg → 90deg) that turns the book from lying
+ *                       across the column to standing portrait.
+ *   .press-open-body    the board plane. left:-L/2 top:-D width:L height:D, so
+ *                       its bottom-centre is the volume's origin for ANY L,D —
+ *                       which is why the reproportion never moves the pivot.
+ *                       Carries the tip (rotateX lay0 → 0deg).
+ *   children            spine plate, boards, page and the hinged leaf, all in
+ *                       body-local space where +x runs along the hinge.
+ *
+ * Type lives in zero-size hinge-anchored boxes carrying a counter-roll, so it is
+ * upright from its first visible pixel and never reflows while L and D animate.
+ *
+ * Built with direct DOM calls rather than setSafeContent — the inline geometry
+ * could not survive DOMPurify. Jacket and imprint ride on the stage as data
+ * attributes; both palette tables are bare attribute selectors, so CSS resolves
+ * --jacket-bg/--jacket-ink/--imprint-face for everything inside.
+ */
+function buildBookStage(spec: {
+  jacket: number;
+  imprint: string;
+  title: string;
+  author: string;
+  date: string;
+  ground: string;
+}): BookStage {
+  const rootStyle = getComputedStyle(document.documentElement);
+  const readToken = (name: string, fallback: string): string =>
+    rootStyle.getPropertyValue(name).trim() || fallback;
+
+  const stage = document.createElement('div');
+  stage.className = 'press-open-stage';
+  stage.dataset.jacket = String(spec.jacket);
+  stage.dataset.imprint = spec.imprint;
+
+  const scrim = document.createElement('div');
+  scrim.className = 'press-open-scrim';
+
+  const ground = document.createElement('div');
+  ground.className = 'press-open-ground';
+  ground.style.background = spec.ground;
+
+  const volume = document.createElement('div');
+  volume.className = 'press-open-volume';
+
+  const body = document.createElement('div');
+  body.className = 'press-open-body';
+
+  // The spine plate — the shelf's own class, so the cloth, the shoulders, the
+  // head highlight, the grain and the drop shadow all come free.
+  const spine = document.createElement('div');
+  spine.className = 'press-open-spine press-book-spine';
+  const author = document.createElement('span');
+  author.className = 'press-book-author';
+  author.textContent = spec.author;
+  const spineTitle = document.createElement('span');
+  spineTitle.className = 'press-book-title';
+  spineTitle.textContent = spec.title;
+  const imprint = document.createElement('span');
+  imprint.className = 'press-book-imprint';
+  if (spec.date) {
+    const date = document.createElement('span');
+    date.className = 'press-book-date';
+    date.textContent = spec.date;
+    imprint.appendChild(date);
+  }
+  spine.append(author, spineTitle, imprint);
+
+  // Back board and text block, invisible at t=0 — the shelf shows no page.
+  const base = document.createElement('div');
+  base.className = 'press-open-base';
+  const block = document.createElement('div');
+  block.className = 'press-open-block';
+
+  const page = document.createElement('div');
+  page.className = 'press-open-page';
+  page.style.background = readToken('--bg', '#ffffff');
+  page.style.color = readToken('--text', '#16181d');
+
+  const pageShade = document.createElement('div');
+  pageShade.className = 'press-open-page-shade';
+
+  // Hinge-anchored, counter-rolled, fixed-px: upright from the first frame and
+  // never re-typeset while the body reproportions underneath it.
+  const cover = risenCover();
+  const pageW = cover.D1 - 18;   // page inset 7px each side in body-local x
+  const pageH = cover.L1 - 14;
+
+  const pageText = document.createElement('div');
+  pageText.className = 'press-open-pagetext';
+  const pageInner = document.createElement('div');
+  pageInner.className = 'press-open-inner';
+  // Fixed px, anchored at the hinge: the one point in body-local space that
+  // does not move when L and D animate. So the type is upright from its first
+  // visible pixel and never re-typesets while the body reproportions.
+  pageInner.style.left = '0px';
+  pageInner.style.top = `${-(cover.L1 / 2 - 7)}px`;
+  pageInner.style.width = `${pageW}px`;
+  pageInner.style.height = `${pageH}px`;
+  pageInner.style.padding = `${Math.round(pageH * 0.075)}px ${Math.round(pageW * 0.09)}px`;
+  pageInner.style.fontSize = `${Math.round(cover.D1 * 0.062)}px`;
+  const eyebrow = document.createElement('span');
+  eyebrow.className = 'press-open-eyebrow';
+  eyebrow.textContent = spec.author;
+  const pageTitle = document.createElement('span');
+  pageTitle.className = 'press-open-page-title';
+  pageTitle.textContent = spec.title;
+  const pageByline = document.createElement('span');
+  pageByline.className = 'press-open-page-byline';
+  pageByline.style.color = readToken('--text-tertiary', '#6b7280');
+  pageByline.textContent = spec.date;
+  pageInner.append(eyebrow, pageTitle, pageByline);
+
+  // The article's own first page, laid on the paper. It is authored at the
+  // article card's width and scaled down to the page, so the settle can take
+  // the scale to 1 as the page grows to the card — the type never reflows and
+  // the two are the same document at the same size by the time they meet.
+  // Until the fetch lands, the synthesised title page above stands in.
+  const paper = document.createElement('div');
+  paper.className = 'press-open-paper';
+  paper.style.left = '0px';
+  paper.style.top = `${-(cover.L1 / 2 - 7)}px`;
+  paper.style.width = `${pageW}px`;
+  paper.style.height = `${pageH}px`;
+  const sheet = document.createElement('div');
+  sheet.className = 'press-open-sheet';
+  sheet.style.width = `${BOOK_SHEET_W}px`;
+  sheet.style.transform = `scale(${pageW / BOOK_SHEET_W})`;
+  paper.appendChild(sheet);
+
+  pageText.append(pageInner, paper);
+  page.append(pageShade, pageText);
+
+  // The cover: the same board, now hinged so it can swing off the page.
+  const leaf = document.createElement('div');
+  leaf.className = 'press-open-leaf';
+  const front = document.createElement('div');
+  front.className = 'press-open-face press-open-face--front';
+  const leafSkin = document.createElement('div');
+  leafSkin.className = 'press-open-leafskin';
+  const boardFace = document.createElement('div');
+  boardFace.className = 'press-book-board-face';
+  leafSkin.appendChild(boardFace);
+  const coverText = document.createElement('div');
+  coverText.className = 'press-open-covertext';
+  const coverInner = document.createElement('div');
+  coverInner.className = 'press-open-inner press-open-inner--cover';
+  coverInner.style.left = '0px';
+  coverInner.style.top = `${-cover.L1 / 2}px`;
+  coverInner.style.width = `${cover.D1}px`;
+  coverInner.style.height = `${cover.L1}px`;
+  coverInner.style.padding = `${Math.round(cover.L1 * 0.05)}px ${Math.round(cover.D1 * 0.07)}px`;
+  const coverTitle = document.createElement('span');
+  coverTitle.className = 'press-open-cover-title';
+  coverTitle.textContent = spec.title;
+  coverInner.appendChild(coverTitle);
+  coverText.appendChild(coverInner);
+  front.append(leafSkin, coverText);
+  const back = document.createElement('div');
+  back.className = 'press-open-face press-open-face--back';
+  leaf.append(front, back);
+
+  body.append(spine, base, block, page, leaf);
+  volume.appendChild(body);
+  stage.append(scrim, ground, volume);
+  return { stage, volume, body, spine, leaf, sheet, paper, fallback: pageInner };
+}
+
+/** Pose the clone as the book lying on the shelf. */
+function poseLying(s: BookStage, m: ShelfMeasure): void {
+  s.stage.style.perspectiveOrigin = `${m.Hx0}px ${m.Hy0}px`;
+  s.volume.style.left = `${m.Hx0}px`;
+  s.volume.style.top = `${m.Hy0}px`;
+  s.volume.style.transform = 'rotate(0deg)';
+  s.body.style.left = `${-m.L0 / 2}px`;
+  s.body.style.top = `${-m.D0}px`;
+  s.body.style.width = `${m.L0}px`;
+  s.body.style.height = `${m.D0}px`;
+  s.body.style.transform = `rotateX(${m.lay0}deg)`;
+  s.spine.style.height = `${m.T0}px`;
+  // The plate turns away by exactly as much as the board turns toward us, so at
+  // rest the two are complementary and the plate faces the reader square-on.
+  s.spine.style.transform = `rotateX(${-m.lay0}deg) translateZ(0.5px)`;
+  // The leaf is deliberately NOT posed here. On the open path its angle comes
+  // from the .is-open rule, and an inline transform would silently outrank it —
+  // the cover would never swing. The close path sets it explicitly instead.
+}
+
+/** Pose the clone as the book standing upright, cover shut, at the centre. */
+function poseStanding(s: BookStage, cover: ReturnType<typeof risenCover>): void {
+  s.stage.style.perspectiveOrigin = `${cover.Hx1}px ${cover.Hy1}px`;
+  s.volume.style.left = `${cover.Hx1}px`;
+  s.volume.style.top = `${cover.Hy1}px`;
+  s.volume.style.transform = 'rotate(90deg)';
+  s.body.style.left = `${-cover.L1 / 2}px`;
+  s.body.style.top = `${-cover.D1}px`;
+  s.body.style.width = `${cover.L1}px`;
+  s.body.style.height = `${cover.D1}px`;
+  s.body.style.transform = 'rotateX(0deg)';
+  // A constant, not lay0: the standing plate is the article's 12px jacket rail.
+  s.spine.style.transform = `rotateX(${-BOOK_SPINE_STANDING_DEG}deg) translateZ(0.5px)`;
+}
+
+/** Pose the body onto a screen-space rect, in the rolled frame. */
+function poseOnRect(
+  s: BookStage,
+  rect: { left: number; top: number; width: number; height: number },
+): void {
+  // Rolled 90deg, body-local +x is screen-vertical: L is the rect's height and
+  // D its width, hinged on the rect's left edge at its vertical midpoint.
+  const hx = rect.left;
+  const hy = rect.top + rect.height / 2;
+  s.stage.style.perspectiveOrigin = `${hx}px ${hy}px`;
+  s.volume.style.left = `${hx}px`;
+  s.volume.style.top = `${hy}px`;
+  s.volume.style.transform = 'rotate(90deg)';
+  s.body.style.left = `${-rect.height / 2}px`;
+  s.body.style.top = `${-rect.width}px`;
+  s.body.style.width = `${rect.height}px`;
+  s.body.style.height = `${rect.width}px`;
+  s.body.style.transform = 'rotateX(0deg)';
+}
+
+/* Opening a book. The rise and the cover-swing are one gesture, not a queue:
+ *   0ms    tip     — the board opens out from its 31px sliver toward the reader,
+ *                    everything still square to the shelf. This is the frame
+ *                    budget in which the reader confirms it is the book they
+ *                    clicked, so nothing else moves in it.
+ *   90ms   roll    — the volume turns 90deg about the hinge, taking the book
+ *                    from lying across the column to standing portrait. The
+ *                    hinge itself travels only ~43px; the pivot barely moves,
+ *                    which is the structural reason this reads as continuous.
+ *   120ms  wash    — the screen takes the book's own jacket colour.
+ *   400ms  swing   — the cover starts falling open while the book is still ~22deg
+ *                    off upright, so the two beats interlock.
+ *   560ms  ground  — the destination's ground arrives under the wash.
+ *   740ms  swap    — the article renders behind it, invisibly.
+ *   ~820ms settle  — the page grows onto the article card's exact paper.
+ *
+ * The clone is pixel-identical to the shelf book at t=0 — it re-hosts the
+ * shelf's own elements rather than repainting a portrait cover — so there is no
+ * swap to see. See buildBookStage().
+ *
+ * Nothing here is load-bearing: reduced motion, an unmeasurable book, a missing
+ * article card and a stalled fetch all still land on the article.
+ */
+const BOOK_OPEN_NAVIGATE_AT_MS = 740;
+const BOOK_OPEN_SEQUENCE_MS = 820;
+const BOOK_OPEN_SETTLE_MS = 480;
 const BOOK_OPEN_CLEAR_MS = 340;
 /** Never hold the reader on the open book if the article fetch stalls. */
-const BOOK_OPEN_MAX_HOLD_MS = 2400;
+const BOOK_OPEN_MAX_HOLD_MS = 2600;
 
 /** Fraction of the viewport the opened spread is allowed to fill. */
 const BOOK_OPEN_FILL_H = 0.68;
@@ -4427,138 +4813,249 @@ const BOOK_OPEN_FILL_H = 0.68;
  * height-limited case, so raising this buys presence on small screens for
  * free. */
 const BOOK_OPEN_FILL_W = 0.94;
+/** Cover proportions of the risen book (height / width) — a trade hardback. */
+const BOOK_COVER_RATIO = 7 / 5;
+/* The standing spine plate's angle. A constant rather than the measured lay,
+ * because its job at the end is to project the 12px jacket rail that
+ * .gen-research-doc[data-jacket] wears down the article card's edge. */
+const BOOK_SPINE_STANDING_DEG = 82;
+/* The width the article's first page is laid out at inside the book: the
+ * article's OWN column on a full-width desktop card (card 1102 less the 12px
+ * jacket rail and 2x32 body padding). Authoring at the column width means the
+ * settle only ever changes the sheet's scale and offset — never its width — so
+ * the type never re-wraps on the way to meeting the real article. */
+const BOOK_SHEET_W = 1026;
+/* The sheet's origin already coincides with the page's content origin, so the
+ * page's inset and the card's jacket rail need no correction on x — subtracting
+ * them landed the sheet exactly 19px (7 + 12) left of the article. Only y keeps
+ * a small residual, from the page box being bottom-anchored in the body while
+ * the card is top-anchored. Measured, not derived. */
+const BOOK_SHEET_Y_TRIM = 6;
 
-/**
- * Clone the clicked cover into a fixed overlay and play the sequence above.
- * The overlay is built with direct DOM calls rather than setSafeContent, so
- * the per-book geometry and jacket colours never meet DOMPurify.
- */
+/** The shelf's ground is a BODY-scoped remap, so :root would hand back the article's. */
+function pressGround(): string {
+  return getComputedStyle(document.body).getPropertyValue('--press-ground').trim() || '#201819';
+}
+
+function articleGround(): string {
+  return (
+    getComputedStyle(document.documentElement).getPropertyValue('--bg-secondary').trim() || '#f4f5f8'
+  );
+}
+
 function openBookThen(book: HTMLElement, navigate: () => Promise<void>): void {
-  const rect = book.getBoundingClientRect();
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || rect.width < 1 || rect.height < 1) {
+  const m = measureShelfBook(book);
+  if (!m || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     void navigate();
     return;
   }
 
-  const bookStyle = getComputedStyle(book);
-  const jacketBg = bookStyle.backgroundColor;
-  const jacketInk = bookStyle.color;
-  // Read the DESTINATION palette off :root. body still carries the shelf's
-  // token remap at this point, so reading from body would hand back the press
-  // ground and the title page would come up dark before the article paints.
-  const rootStyle = getComputedStyle(document.documentElement);
-  const readToken = (name: string, fallback: string): string =>
-    rootStyle.getPropertyValue(name).trim() || fallback;
-  const paper = readToken('--bg', '#ffffff');
-  const paperInk = readToken('--text', '#16181d');
-  const paperFaint = readToken('--text-tertiary', '#6b7280');
+  const s = buildBookStage({
+    jacket: Number(book.dataset.jacket || 0),
+    imprint: book.dataset.imprint || 'house',
+    title: (book.querySelector('.press-book-title')?.textContent || '').trim(),
+    author: (book.querySelector('.press-book-author')?.textContent || '').trim(),
+    date: (book.querySelector('.press-book-date')?.textContent || '').trim(),
+    ground: articleGround(),
+  });
 
-  const text = (selector: string): string =>
-    (book.querySelector(selector)?.textContent || '').trim();
-
-  const stage = document.createElement('div');
-  stage.className = 'press-open-stage';
-
-  const scrim = document.createElement('div');
-  scrim.className = 'press-open-scrim';
-
-  const shell = document.createElement('div');
-  shell.className = 'press-open-book';
-  shell.style.left = `${rect.left}px`;
-  shell.style.top = `${rect.top}px`;
-  shell.style.width = `${rect.width}px`;
-  shell.style.height = `${rect.height}px`;
-
-  // The title page under the cover: the article's own eyebrow/title/byline, so
-  // the open book shows something worth looking at instead of a blank swatch.
-  const page = document.createElement('div');
-  page.className = 'press-open-page';
-  page.style.background = paper;
-  page.style.color = paperInk;
-  // Title-page type is sized off the cover width so it scales with the book
-  // rather than fighting the transform; the rules below are all in `em`.
-  page.style.fontSize = `${Math.round(rect.width * 0.085)}px`;
-
-  const eyebrow = document.createElement('span');
-  eyebrow.className = 'press-open-eyebrow';
-  eyebrow.style.color = jacketBg;
-  eyebrow.textContent = text('.press-book-model');
-
-  const pageTitle = document.createElement('span');
-  pageTitle.className = 'press-open-page-title';
-  pageTitle.textContent = text('.press-book-title');
-
-  const pageByline = document.createElement('span');
-  pageByline.className = 'press-open-page-byline';
-  pageByline.style.color = paperFaint;
-  pageByline.textContent = text('.press-book-date');
-
-  page.append(eyebrow, pageTitle, pageByline);
-
-  // Shadow the closed cover casts onto the page; slides away as it opens.
-  const pageShade = document.createElement('div');
-  pageShade.className = 'press-open-page-shade';
-  page.appendChild(pageShade);
-
-  // The cover, as a two-faced leaf hinged on the spine.
-  const leaf = document.createElement('div');
-  leaf.className = 'press-open-leaf';
-
-  const front = document.createElement('div');
-  front.className = 'press-open-face press-open-face--front';
-  front.style.background = jacketBg;
-  front.style.color = jacketInk;
-  const frontTitle = document.createElement('span');
-  frontTitle.className = 'press-book-title';
-  frontTitle.textContent = text('.press-book-title');
-  front.appendChild(frontTitle);
-
-  const back = document.createElement('div');
-  back.className = 'press-open-face press-open-face--back';
-  back.style.background = jacketBg;
-
-  leaf.append(front, back);
-
-  shell.append(page, leaf);
-  stage.append(scrim, shell);
-  document.body.appendChild(stage);
+  // The lying pose has to be part of the resolved BASE style, so it is set on
+  // the detached tree and flushed before the standing pose lands. Setting it
+  // after insertion instead makes it a transition TARGET, and the move to the
+  // standing pose then interpolates from a value the book had barely begun
+  // travelling toward — the rise silently does nothing. rAF will not
+  // substitute: it runs before style recalc, so both states collapse into one.
+  poseLying(s, m);
+  document.body.appendChild(s.stage);
   book.style.opacity = '0';
+  const restoreSource = (): void => { book.style.opacity = ''; };
+  void s.stage.offsetHeight;
 
-  // Scale is bounded by BOTH axes: the opened spread is twice the cover's
-  // width (the leaf swings out to the left of the spine), so a height-only
-  // fit would run the open book off the sides of a phone.
-  const byHeight = (window.innerHeight * BOOK_OPEN_FILL_H) / rect.height;
-  const byWidth = (window.innerWidth * BOOK_OPEN_FILL_W) / (rect.width * 2);
-  const scale = Math.max(1.02, Math.min(2.4, byHeight, byWidth));
-  // .press-open-book scales from `left center`, so putting the spine on the
-  // viewport centre centres the spread that is about to open around it.
-  const dx = window.innerWidth / 2 - rect.left;
-  const dy = window.innerHeight / 2 - (rect.top + rect.height / 2);
+  poseStanding(s, risenCover());
+  s.stage.classList.add('is-open');
 
-  // Force a style/layout flush so the browser resolves the stage's CLOSED
-  // style before the open state lands. Without it the whole subtree is new in
-  // the same frame, there is no "before" value to interpolate from, and every
-  // transition below jumps straight to its end value — which reads as an
-  // instant cut, not an animation. requestAnimationFrame is not enough here.
-  void stage.offsetHeight;
-
-  shell.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
-  stage.classList.add('is-open');
+  // Fetch the article NOW, in parallel with the rise, so the page the cover
+  // reveals is the real first page rather than a stand-in. Purely additive: if
+  // it is slow, fails, or the row is a standalone iframe doc, the synthesised
+  // title page is already there and stays.
+  const row = findResearchRow(book.dataset.slug || '');
+  if (row && row.kind !== 'standalone') {
+    const variant = researchVariant(row, activeLanguage);
+    const cached =
+      researchDocCache && researchDocCache.slug === row.slug &&
+      researchDocCache.language === activeLanguage
+        ? researchDocCache.body
+        : null;
+    const arrive = (html: string | null): void => {
+      if (!html || !s.stage.isConnected) return;
+      setSafeContent(s.sheet, html);
+      // Strip ids so this copy cannot win a getElementById race against the
+      // real article, whose TOC resolves heading ids after it renders.
+      s.sheet.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
+      s.fallback.style.display = 'none';
+      s.sheet.parentElement?.classList.add('has-sheet');
+    };
+    if (cached) arrive(cached);
+    else void fetchResearchDoc(variant, new AbortController().signal).then(arrive, () => {});
+  }
 
   const played = new Promise<void>((resolve) => window.setTimeout(resolve, BOOK_OPEN_SEQUENCE_MS));
   const capped = new Promise<void>((resolve) => window.setTimeout(resolve, BOOK_OPEN_MAX_HOLD_MS));
   const navigated = new Promise<void>((resolve) => {
-    window.setTimeout(() => navigate().then(resolve, resolve), BOOK_OPEN_NAVIGATE_AT_MS);
+    window.setTimeout(() => {
+      void navigate().then(() => {
+        // The page grows onto the article card's own paper — same edges, same
+        // place — while the cover and boards fade off it, so the stage lifts
+        // with nothing left to see change.
+        const rect = articlePaperRect();
+        if (rect) {
+          poseOnRect(s, rect);
+          // The hinge-anchored boxes are fixed px at the COVER's size, so they
+          // have to grow with the page or the article stays laid out for a
+          // 419px page while the paper underneath becomes 1102px.
+          s.paper.style.top = `${-rect.height / 2}px`;
+          s.paper.style.width = `${rect.width}px`;
+          s.paper.style.height = `${rect.height}px`;
+          // The sheet reaches 1:1 with the article exactly as the page reaches
+          // the card's rect, so the two are the same document at the same size
+          // when the stage lifts.
+          // Where the article sits INSIDE the card, measured off the real one
+          // rather than derived through the rotated frame. The page's own inset
+          // and the jacket rail already move the sheet's origin, so only the
+          // remainder is applied here. Measuring the CLONE instead would read a
+          // mid-transition value — the paper box is still travelling when any
+          // post-hoc correction could run, which is how an earlier cut landed
+          // the sheet 451px out.
+          const realArt = document.querySelector<HTMLElement>('#content article.ara-doc');
+          if (realArt) {
+            const ra = realArt.getBoundingClientRect();
+            s.sheet.style.transform = `scale(${ra.width / BOOK_SHEET_W})`;
+            s.sheet.style.left = `${ra.left - rect.left}px`;
+            s.sheet.style.top = `${ra.top - rect.top - BOOK_SHEET_Y_TRIM}px`;
+          } else {
+            s.sheet.style.transform = `scale(${rect.width / BOOK_SHEET_W})`;
+          }
+          s.stage.classList.add('is-settling');
+        }
+        resolve();
+      }, resolve);
+    }, BOOK_OPEN_NAVIGATE_AT_MS);
   });
 
-  // Strike the set once the sequence has played AND the article has rendered
-  // underneath — or once the cap fires, whichever comes first.
   void Promise.race([Promise.all([played, navigated]), capped]).then(() => {
-    stage.classList.add('is-clearing');
-    window.setTimeout(() => stage.remove(), BOOK_OPEN_CLEAR_MS);
+    window.setTimeout(() => {
+      s.stage.classList.add('is-clearing');
+      window.setTimeout(() => {
+        s.stage.remove();
+        restoreSource();
+      }, BOOK_OPEN_CLEAR_MS);
+    }, BOOK_OPEN_SETTLE_MS);
   });
 }
+
+/* Closing the book — the same gesture backwards. The page draws back off the
+ * article's paper into a standing cover, the cover shuts, then the volume rolls
+ * and tips back down into its slot on the shelf as the wash clears. */
+const BOOK_CLOSE_VEIL_MS = 280;
+const BOOK_CLOSE_DRAW_AT_MS = 40;
+const BOOK_CLOSE_DRAW_MS = 440;
+const BOOK_CLOSE_MAX_HOLD_MS = 2800;
+/** Backstop only; teardown is gated on the body's own transitionend. */
+const BOOK_CLOSE_FALLBACK_MS = 1500;
+
+function closeBookThen(row: GenResearchRow, navigate: () => Promise<void>): void {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    void navigate();
+    return;
+  }
+
+  const created = new Date(row.created_at);
+  const cover = risenCover();
+  const s = buildBookStage({
+    jacket: researchJacketBySlug.get(row.slug) ?? researchJacket(row.slug),
+    imprint: researchImprint(row.model),
+    title: decodeStoredEntities(row.title),
+    author: row.model,
+    date: isNaN(created.getTime()) ? '' : timeAgo(created),
+    // The destination here is the SHELF, whose ground is a body-scoped remap.
+    ground: pressGround(),
+  });
+  s.stage.classList.add('press-open-stage--reverse');
+  s.leaf.style.transform = 'rotateX(-166deg)';   // open; shut inline on is-closing
+
+  // Start ON the article's own paper so the reader's page draws back into a
+  // book, rather than a book cutting in over it.
+  const paper = articlePaperRect();
+  if (paper) {
+    poseOnRect(s, paper);
+    s.stage.classList.add('is-settling');
+  } else {
+    poseStanding(s, cover);
+  }
+
+  document.body.appendChild(s.stage);
+  void s.stage.offsetHeight;
+  s.stage.classList.add('is-veiling');
+  if (paper) {
+    window.setTimeout(() => {
+      poseStanding(s, cover);
+      s.stage.classList.remove('is-settling');
+    }, BOOK_CLOSE_DRAW_AT_MS);
+  }
+
+  let restore: (() => void) | null = null;
+  let torn = false;
+  const teardown = (): void => {
+    if (torn) return;
+    torn = true;
+    s.stage.remove();
+    if (restore) restore();
+  };
+
+  window.setTimeout(() => {
+    void navigate().then(() => {
+      const target = document.querySelector<HTMLElement>(
+        `.press-book[data-slug="${CSS.escape(row.slug)}"]`,
+      );
+      const m = target ? measureShelfBook(target) : null;
+      if (target && m) {
+        // Assigned BEFORE anything can tear the stage down, or the cap can fire
+        // with it still null and leave a permanently blank slot on the shelf.
+        target.style.opacity = '0';
+        restore = () => { target.style.opacity = ''; };
+        poseLying(s, m);
+      } else {
+        // Not on this page of the shelf (deep link, or the reader paged on).
+        // Lie the book down in the middle of the shelf and dissolve: an honest
+        // ending through the same code path rather than a one-frame vanish.
+        const shelf = document.querySelector<HTMLElement>('.press-shelf');
+        const w = shelf ? shelf.getBoundingClientRect().width : window.innerWidth * 0.8;
+        poseLying(s, {
+          L0: w,
+          T0: 86,
+          D0: 176,
+          lay0: 79,
+          Hx0: window.innerWidth / 2,
+          Hy0: window.innerHeight * 0.62,
+        });
+        s.stage.classList.add('is-clearing');
+      }
+      s.leaf.style.transform = 'rotateX(0deg)';
+      s.stage.classList.add('is-closing');
+      // Gate on the motion actually finishing rather than on a constant that
+      // mirrors a CSS duration with nothing enforcing agreement.
+      s.body.addEventListener(
+        'transitionend',
+        (e) => { if ((e as TransitionEvent).propertyName === 'transform') teardown(); },
+        { once: true },
+      );
+      window.setTimeout(teardown, BOOK_CLOSE_FALLBACK_MS);
+    }, () => { window.setTimeout(teardown, BOOK_CLOSE_FALLBACK_MS); });
+  }, BOOK_CLOSE_VEIL_MS + BOOK_CLOSE_DRAW_MS);
+
+  window.setTimeout(teardown, BOOK_CLOSE_MAX_HOLD_MS);
+}
+
 
 function renderResearchIndex(rows: GenResearchRow[]): void {
   setDocTitle(null);
@@ -4606,16 +5103,34 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
       : '';
     items.push(
       [
-        // role="link" (not the bare focusable <li> this replaced) so the cover
+        // role="link" (not the bare focusable <li> this replaced) so the book
         // announces as navigation; the content keydown handler already
-        // activates [data-slug] rows on Enter.
+        // activates [data-slug] rows on Enter. The spine truncates long titles,
+        // so title= carries the whole thing.
         '<li class="press-book" role="link" data-jacket="' + jackets[index] + '"' +
-          ' data-slug="' + escapeHtml(row.slug) + '" tabindex="0">',
-        '  <span class="press-book-title">' + title + '</span>',
-        '  <span class="press-book-byline">',
-        '    <span class="press-book-model">' + escapeHtml(row.model) + '</span>',
-        rel ? '    <span class="press-book-date">' + escapeHtml(rel) + '</span>' : '',
+          ' data-imprint="' + researchImprint(row.model) + '"' +
+          ' data-slug="' + escapeHtml(row.slug) + '" tabindex="0"' +
+          ' title="' + escapeHtml(decodeStoredEntities(row.title)) + '">',
+        // The board is nested INSIDE the spine so it can hinge off the spine's
+        // top edge (bottom: 100%) rather than a fixed offset — which is what
+        // lets the spine grow when a long title wraps and keeps the board
+        // sitting on it. Perspective moves onto the spine to match.
+        '  <span class="press-book-spine">',
+        // The front board, laid back into the screen. Bare cloth: the grain and
+        // lighting on .press-book-board-face are what keep it reading as a
+        // surface. It carried a foreshortened copy of the title for a while,
+        // before the texture landed, and that job is now the grain's.
+        '    <span class="press-book-board">',
+        '      <span class="press-book-board-face"></span>',
+        '    </span>',
+        // Author left, title centred, date right — the same three slots
+        // press.stripe.com prints on a spine.
+        '    <span class="press-book-author">' + escapeHtml(row.model) + '</span>',
+        '    <span class="press-book-title">' + title + '</span>',
+        '    <span class="press-book-imprint">',
+        rel ? '      <span class="press-book-date">' + escapeHtml(rel) + '</span>' : '',
         koHtml,
+        '    </span>',
         '  </span>',
         '</li>',
       ].filter(Boolean).join('\n'),
@@ -4643,6 +5158,7 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
   // Only the index wears the press ground; the article view keeps the reading
   // chrome. Cleared centrally at the top of load().
   document.body.classList.add('research-shelf');
+  watchShelfDrift();
 }
 
 function renderResearchDoc(row: GenResearchRow, body: string): void {
@@ -5753,8 +6269,16 @@ content.addEventListener('click', (e) => {
   }
   const back = target.closest('[data-research-back]') as HTMLElement | null;
   if (back) {
-    selectedSlug = null;
-    load();
+    // Play the open in reverse when we know which book we're in. The browser's
+    // own Back button is left alone: popstate fires after the URL has already
+    // changed, so there is no clean moment to hold the article on screen.
+    const openRow = selectedSlug ? findResearchRow(selectedSlug) : null;
+    const navigate = (): Promise<void> => {
+      selectedSlug = null;
+      return load();
+    };
+    if (openRow) closeBookThen(openRow, navigate);
+    else void navigate();
     return;
   }
   if (target.closest('[data-research-file-audio-toggle]')) {
