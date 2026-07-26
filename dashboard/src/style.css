@@ -3654,68 +3654,174 @@ body.research-shelf .controls {
 }
 
 /* ── Book-opening transition ────────────────────────────
- * Built by openBookThen() in main.ts: the clicked cover is cloned into this
- * overlay, swung open around its spine, and grown toward the middle of the
- * viewport while a veil (painted the DESTINATION ground) fades in for the
- * article to render behind. Durations here must stay in step with the
- * BOOK_OPEN_* constants in main.ts. */
+ * Built by openBookThen() in main.ts, which adds .is-open on the next frame
+ * and .is-clearing at the end. The four beats — lift, open, settle, dissolve —
+ * are sequenced entirely by the transition delays below; main.ts only needs
+ * BOOK_OPEN_SEQUENCE_MS to match the last one finishing. Read the block
+ * comment above openBookThen() before retiming anything here. */
 .press-open-stage {
   position: fixed;
   inset: 0;
   z-index: 4000;
-  perspective: 1600px;
   pointer-events: none;
 }
 
+/* Beat 1 — dim the shelf so the book is the only thing lit. */
+.press-open-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 8, 8, 0.62);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.press-open-stage.is-open .press-open-scrim {
+  opacity: 1;
+}
+
+/* Beat 1 — the book itself. Perspective lives HERE, not on the stage: the
+ * projection has to stay centred on the book, otherwise a cover opening from
+ * the edge of the shelf is projected from the middle of the screen and skews.
+ * It scales from `left center` so the spine stays put and the spread the leaf
+ * is about to occupy is already centred (see the dx/dy maths in main.ts). */
 .press-open-book {
   position: absolute;
-  transform-style: preserve-3d;
-  transition: transform 620ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+  perspective: 1500px;
+  transition: transform 420ms cubic-bezier(0.22, 0.75, 0.28, 1);
   will-change: transform;
 }
 
-/* The page revealed under the swinging cover. */
+/* The title page under the cover. */
 .press-open-page {
   position: absolute;
   inset: 0;
-  border-radius: 1px 4px 4px 1px;
-  box-shadow: 0 24px 64px -14px rgba(0, 0, 0, 0.62);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.55em;
+  padding: 8% 9%;
+  overflow: hidden;
+  border-radius: 1px 3px 3px 1px;
+  box-shadow: 0 26px 70px -16px rgba(0, 0, 0, 0.66);
+  font-family: var(--font-serif);
 }
 
-.press-open-cover {
+.press-open-eyebrow {
+  font-size: 0.58em;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+.press-open-page-title {
+  font-size: 0.95em;
+  font-weight: 600;
+  line-height: 1.22;
+  text-wrap: balance;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
+}
+
+.press-open-page-byline {
+  font-size: 0.56em;
+  font-style: italic;
+}
+
+/* The gutter: the permanent crease shadow where the page meets the spine.
+ * Unlike the cast shadow below it does NOT fade — an open book always has it,
+ * and it is what stops the revealed page reading as a flat white card. */
+.press-open-page::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 9%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.05) 55%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Beat 2 — the shadow the closed cover casts on the page, sliding off to the
+ * right as the leaf lifts away. */
+.press-open-page-shade {
   position: absolute;
   inset: 0;
-  padding: clamp(16px, 1.5vw, 24px);
-  padding-left: calc(clamp(16px, 1.5vw, 24px) + 12px);
-  overflow: hidden;
-  border-radius: 1px 4px 4px 1px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.16) 45%, transparent 100%);
   transform-origin: left center;
+  transition: opacity 460ms ease 250ms, transform 460ms ease 250ms;
+}
+
+.press-open-stage.is-open .press-open-page-shade {
+  opacity: 0;
+  transform: scaleX(0.2);
+}
+
+/* Beat 2 — the cover, hinged on the spine. */
+.press-open-leaf {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
   transform: rotateY(0deg);
-  transition: transform 620ms cubic-bezier(0.4, 0, 0.2, 1);
-  backface-visibility: hidden;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  transition: transform 620ms cubic-bezier(0.34, 0.62, 0.24, 1) 240ms;
   will-change: transform;
 }
 
+.press-open-stage.is-open .press-open-leaf {
+  transform: rotateY(-166deg);
+}
+
+.press-open-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 1px 3px 3px 1px;
+  backface-visibility: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+.press-open-face--front {
+  padding: clamp(16px, 1.5vw, 24px);
+  padding-left: calc(clamp(16px, 1.5vw, 24px) + 12px);
+}
+
+/* The reverse of the cover is an endpaper, not a mirrored jacket: darkened
+ * board with the paper edge showing at the hinge. */
+.press-open-face--back {
+  transform: rotateY(180deg);
+  border-radius: 3px 1px 1px 3px;
+  filter: brightness(0.62) saturate(0.7);
+  box-shadow: inset -6px 0 12px -6px rgba(0, 0, 0, 0.55);
+}
+
+/* Beat 4 — the page swells into the ground the article renders on. */
 .press-open-veil {
   position: absolute;
   inset: 0;
   opacity: 0;
-  /* Held back until the swing is most of the way through, so the reader sees
-   * the book open before the page takes over. */
-  transition: opacity 260ms ease 330ms;
+  transition: opacity 260ms ease 860ms;
+}
+
+.press-open-stage.is-open .press-open-veil {
+  opacity: 1;
 }
 
 .press-open-stage.is-clearing .press-open-veil {
   opacity: 0;
-  transition: opacity 280ms ease;
+  transition: opacity 260ms ease;
+}
+
+.press-open-stage.is-clearing .press-open-scrim {
+  opacity: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
   /* openBookThen() bails before building the stage, but keep the belt-and-
    * braces rule in case a stage is ever left on screen. */
+  .press-open-scrim,
   .press-open-book,
-  .press-open-cover,
+  .press-open-leaf,
+  .press-open-page-shade,
   .press-open-veil {
     transition: none;
   }

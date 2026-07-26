@@ -4394,21 +4394,36 @@ function decodeStoredEntities(text: string): string {
   });
 }
 
-const BOOK_OPEN_SWING_MS = 620;
-const BOOK_OPEN_NAVIGATE_AT_MS = 240;
-const BOOK_OPEN_CLEAR_MS = 280;
+/* Book-opening transition. Beats, in order (durations + delays live in the
+ * .press-open-* rules; these constants only drive the JS handoffs):
+ *   0ms    lift    — the book rises off the shelf to the middle of the screen,
+ *                    scrim dims the rest. It scales from its SPINE, so the
+ *                    spread it is about to occupy is already centred.
+ *   240ms  open    — the front cover swings back around the spine, revealing
+ *                    the article's title page. The cover's shadow slides off
+ *                    the page as it goes, and the back of the cover is an
+ *                    endpaper, not a mirrored jacket.
+ *   700ms  settle  — the title page holds, fully open and readable.
+ *   860ms  dissolve— the page swells into the veil the article renders behind.
+ * Nothing here is load-bearing: reduced-motion readers, an unmeasurable
+ * element, and a stalled fetch all land on the same article. */
+const BOOK_OPEN_NAVIGATE_AT_MS = 420;
+const BOOK_OPEN_SEQUENCE_MS = 1120;
+const BOOK_OPEN_CLEAR_MS = 260;
 /** Never trap the reader behind the veil if the article fetch stalls. */
-const BOOK_OPEN_MAX_HOLD_MS = 1600;
+const BOOK_OPEN_MAX_HOLD_MS = 2200;
+
+/** Fraction of the viewport the opened spread is allowed to fill. */
+const BOOK_OPEN_FILL_H = 0.68;
+/* Generous, because width only binds on phones — desktop is always the
+ * height-limited case, so raising this buys presence on small screens for
+ * free. */
+const BOOK_OPEN_FILL_W = 0.94;
 
 /**
- * Book-opening transition. Clones the clicked cover into a fixed overlay,
- * swings it open around its spine while the book grows toward the middle of
- * the viewport, and hands off to a veil the article renders behind.
- *
- * Purely decorative and fully fail-open: reduced-motion readers, an
- * unmeasurable element, or a stalled fetch all end up at the same article.
- * The overlay is built with direct DOM calls, not setSafeContent, so the
- * per-book inline transforms never meet DOMPurify.
+ * Clone the clicked cover into a fixed overlay and play the sequence above.
+ * The overlay is built with direct DOM calls rather than setSafeContent, so
+ * the per-book geometry and jacket colours never meet DOMPurify.
  */
 function openBookThen(book: HTMLElement, navigate: () => Promise<void>): void {
   const rect = book.getBoundingClientRect();
@@ -4419,14 +4434,27 @@ function openBookThen(book: HTMLElement, navigate: () => Promise<void>): void {
   }
 
   const bookStyle = getComputedStyle(book);
-  // Read the DESTINATION ground off :root — body still carries the shelf's
-  // token remap at this point, so reading from body would give the press
-  // ground and the veil would flash dark before the article paints.
-  const destination =
-    getComputedStyle(document.documentElement).getPropertyValue('--bg-secondary').trim() || '#f4f5f8';
+  const jacketBg = bookStyle.backgroundColor;
+  const jacketInk = bookStyle.color;
+  // Read the DESTINATION palette off :root. body still carries the shelf's
+  // token remap at this point, so reading from body would hand back the press
+  // ground and the title page would come up dark before the article paints.
+  const rootStyle = getComputedStyle(document.documentElement);
+  const readToken = (name: string, fallback: string): string =>
+    rootStyle.getPropertyValue(name).trim() || fallback;
+  const paper = readToken('--bg', '#ffffff');
+  const paperInk = readToken('--text', '#16181d');
+  const paperFaint = readToken('--text-tertiary', '#6b7280');
+  const ground = readToken('--bg-secondary', '#f4f5f8');
+
+  const text = (selector: string): string =>
+    (book.querySelector(selector)?.textContent || '').trim();
 
   const stage = document.createElement('div');
   stage.className = 'press-open-stage';
+
+  const scrim = document.createElement('div');
+  scrim.className = 'press-open-scrim';
 
   const shell = document.createElement('div');
   shell.className = 'press-open-book';
@@ -4435,50 +4463,95 @@ function openBookThen(book: HTMLElement, navigate: () => Promise<void>): void {
   shell.style.width = `${rect.width}px`;
   shell.style.height = `${rect.height}px`;
 
+  // The title page under the cover: the article's own eyebrow/title/byline, so
+  // the open book shows something worth looking at instead of a blank swatch.
   const page = document.createElement('div');
   page.className = 'press-open-page';
-  page.style.background = destination;
+  page.style.background = paper;
+  page.style.color = paperInk;
+  // Title-page type is sized off the cover width so it scales with the book
+  // rather than fighting the transform; the rules below are all in `em`.
+  page.style.fontSize = `${Math.round(rect.width * 0.085)}px`;
 
-  const cover = document.createElement('div');
-  cover.className = 'press-open-cover';
-  cover.style.background = bookStyle.backgroundColor;
-  cover.style.color = bookStyle.color;
-  const title = book.querySelector('.press-book-title');
-  if (title) {
-    const coverTitle = document.createElement('span');
-    coverTitle.className = 'press-book-title';
-    coverTitle.textContent = title.textContent || '';
-    cover.appendChild(coverTitle);
-  }
+  const eyebrow = document.createElement('span');
+  eyebrow.className = 'press-open-eyebrow';
+  eyebrow.style.color = jacketBg;
+  eyebrow.textContent = text('.press-book-model');
+
+  const pageTitle = document.createElement('span');
+  pageTitle.className = 'press-open-page-title';
+  pageTitle.textContent = text('.press-book-title');
+
+  const pageByline = document.createElement('span');
+  pageByline.className = 'press-open-page-byline';
+  pageByline.style.color = paperFaint;
+  pageByline.textContent = text('.press-book-date');
+
+  page.append(eyebrow, pageTitle, pageByline);
+
+  // Shadow the closed cover casts onto the page; slides away as it opens.
+  const pageShade = document.createElement('div');
+  pageShade.className = 'press-open-page-shade';
+  page.appendChild(pageShade);
+
+  // The cover, as a two-faced leaf hinged on the spine.
+  const leaf = document.createElement('div');
+  leaf.className = 'press-open-leaf';
+
+  const front = document.createElement('div');
+  front.className = 'press-open-face press-open-face--front';
+  front.style.background = jacketBg;
+  front.style.color = jacketInk;
+  const frontTitle = document.createElement('span');
+  frontTitle.className = 'press-book-title';
+  frontTitle.textContent = text('.press-book-title');
+  front.appendChild(frontTitle);
+
+  const back = document.createElement('div');
+  back.className = 'press-open-face press-open-face--back';
+  back.style.background = jacketBg;
+
+  leaf.append(front, back);
 
   const veil = document.createElement('div');
   veil.className = 'press-open-veil';
-  veil.style.background = destination;
+  veil.style.background = ground;
 
-  shell.append(page, cover);
-  stage.append(shell, veil);
+  shell.append(page, leaf);
+  stage.append(scrim, shell, veil);
   document.body.appendChild(stage);
   book.style.opacity = '0';
 
-  const scale = Math.min(2.2, Math.max(1.1, (window.innerHeight * 0.7) / rect.height));
-  const dx = window.innerWidth / 2 - (rect.left + rect.width / 2);
+  // Scale is bounded by BOTH axes: the opened spread is twice the cover's
+  // width (the leaf swings out to the left of the spine), so a height-only
+  // fit would run the open book off the sides of a phone.
+  const byHeight = (window.innerHeight * BOOK_OPEN_FILL_H) / rect.height;
+  const byWidth = (window.innerWidth * BOOK_OPEN_FILL_W) / (rect.width * 2);
+  const scale = Math.max(1.02, Math.min(2.4, byHeight, byWidth));
+  // .press-open-book scales from `left center`, so putting the spine on the
+  // viewport centre centres the spread that is about to open around it.
+  const dx = window.innerWidth / 2 - rect.left;
   const dy = window.innerHeight / 2 - (rect.top + rect.height / 2);
 
-  requestAnimationFrame(() => {
-    shell.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
-    cover.style.transform = 'rotateY(-158deg)';
-    veil.style.opacity = '1';
-  });
+  // Force a style/layout flush so the browser resolves the stage's CLOSED
+  // style before the open state lands. Without it the whole subtree is new in
+  // the same frame, there is no "before" value to interpolate from, and every
+  // transition below jumps straight to its end value — which reads as an
+  // instant cut, not an animation. requestAnimationFrame is not enough here.
+  void stage.offsetHeight;
 
-  const swung = new Promise<void>((resolve) => window.setTimeout(resolve, BOOK_OPEN_SWING_MS));
+  shell.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+  stage.classList.add('is-open');
+
+  const played = new Promise<void>((resolve) => window.setTimeout(resolve, BOOK_OPEN_SEQUENCE_MS));
   const capped = new Promise<void>((resolve) => window.setTimeout(resolve, BOOK_OPEN_MAX_HOLD_MS));
   const navigated = new Promise<void>((resolve) => {
     window.setTimeout(() => navigate().then(resolve, resolve), BOOK_OPEN_NAVIGATE_AT_MS);
   });
 
-  // Lift the veil once the swing has finished AND the article has rendered —
+  // Strike the set once the sequence has played AND the article has rendered —
   // or once the cap fires, whichever comes first.
-  void Promise.race([Promise.all([swung, navigated]), capped]).then(() => {
+  void Promise.race([Promise.all([played, navigated]), capped]).then(() => {
     stage.classList.add('is-clearing');
     window.setTimeout(() => stage.remove(), BOOK_OPEN_CLEAR_MS);
   });
