@@ -438,6 +438,7 @@ function renderAraSource(images = []) {
     ...research.map((t) => ({ text: t, tag: "Research" })),
     ...business.map((t) => ({ text: t, tag: "Capital" })),
   ]
+    .filter((card) => !isAbsenceNotice(stripMarkdown(card.text)))
     .map((card) => ({ headline: conciseStory(card.text), tag: card.tag }))
     .filter((card) => card.headline)
     .slice(0, 10);
@@ -636,6 +637,21 @@ function clauseCut(text) {
         && head.length >= STORY_CHAR_FLOOR) return head;
   }
   return null;
+}
+
+// When a lane lands nothing, the digest says so in prose — "No new arXiv
+// papers surfaced in today's sweep". That is honest inside the digest, but as
+// a front-page card it is filler: the 2026-07-26 edition ran three of eight
+// cards on absence notices, and they were the only truncated ones. A paper
+// prints the stories it has and stays quiet about the ones it doesn't.
+//
+// Anchored on a leading "No" as a whole word plus an absence verb, so a real
+// headline is safe: "No-code AI tools surge" fails \bNo\s, and "Nokia ships"
+// fails both.
+const ABSENCE_RE = /^No\s+(?=[\s\S]*\b(surfaced|reported|identified|landed|available|signal|in today's|this cycle)\b)/i;
+
+function isAbsenceNotice(text) {
+  return ABSENCE_RE.test(text.trim());
 }
 
 function conciseStory(text) {
