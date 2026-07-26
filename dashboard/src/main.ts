@@ -4397,21 +4397,29 @@ function decodeStoredEntities(text: string): string {
 /* Book-opening transition. Beats, in order (durations + delays live in the
  * .press-open-* rules; these constants only drive the JS handoffs):
  *   0ms    lift    — the book rises off the shelf to the middle of the screen,
- *                    scrim dims the rest. It scales from its SPINE, so the
- *                    spread it is about to occupy is already centred.
+ *                    scrim dims the rest to 0.62 so the shelf stays faintly
+ *                    behind it. It scales from its SPINE, so the spread it is
+ *                    about to occupy is already centred.
  *   240ms  open    — the front cover swings back around the spine, revealing
  *                    the article's title page. The cover's shadow slides off
  *                    the page as it goes, and the back of the cover is an
  *                    endpaper, not a mirrored jacket.
- *   700ms  settle  — the title page holds, fully open and readable.
- *   860ms  dissolve— the page swells into the veil the article renders behind.
+ *   560ms  deepen  — the scrim closes to 0.97 under the open book.
+ *   850ms  swap    — the article renders behind that near-opaque scrim.
+ *   ~900ms reveal  — the whole stage fades off, uncovering the article.
+ *
+ * There is deliberately NO full-screen veil. An earlier cut faded one in over
+ * everything and back out, which read as the page flashing white on every
+ * open. The scrim deepening instead hides the shelf→article ground swap
+ * without ever painting the viewport a flat colour.
+ *
  * Nothing here is load-bearing: reduced-motion readers, an unmeasurable
  * element, and a stalled fetch all land on the same article. */
-const BOOK_OPEN_NAVIGATE_AT_MS = 420;
-const BOOK_OPEN_SEQUENCE_MS = 1120;
-const BOOK_OPEN_CLEAR_MS = 260;
-/** Never trap the reader behind the veil if the article fetch stalls. */
-const BOOK_OPEN_MAX_HOLD_MS = 2200;
+const BOOK_OPEN_NAVIGATE_AT_MS = 850;
+const BOOK_OPEN_SEQUENCE_MS = 900;
+const BOOK_OPEN_CLEAR_MS = 340;
+/** Never hold the reader on the open book if the article fetch stalls. */
+const BOOK_OPEN_MAX_HOLD_MS = 2400;
 
 /** Fraction of the viewport the opened spread is allowed to fill. */
 const BOOK_OPEN_FILL_H = 0.68;
@@ -4445,7 +4453,6 @@ function openBookThen(book: HTMLElement, navigate: () => Promise<void>): void {
   const paper = readToken('--bg', '#ffffff');
   const paperInk = readToken('--text', '#16181d');
   const paperFaint = readToken('--text-tertiary', '#6b7280');
-  const ground = readToken('--bg-secondary', '#f4f5f8');
 
   const text = (selector: string): string =>
     (book.querySelector(selector)?.textContent || '').trim();
@@ -4513,12 +4520,8 @@ function openBookThen(book: HTMLElement, navigate: () => Promise<void>): void {
 
   leaf.append(front, back);
 
-  const veil = document.createElement('div');
-  veil.className = 'press-open-veil';
-  veil.style.background = ground;
-
   shell.append(page, leaf);
-  stage.append(scrim, shell, veil);
+  stage.append(scrim, shell);
   document.body.appendChild(stage);
   book.style.opacity = '0';
 
@@ -4549,8 +4552,8 @@ function openBookThen(book: HTMLElement, navigate: () => Promise<void>): void {
     window.setTimeout(() => navigate().then(resolve, resolve), BOOK_OPEN_NAVIGATE_AT_MS);
   });
 
-  // Strike the set once the sequence has played AND the article has rendered —
-  // or once the cap fires, whichever comes first.
+  // Strike the set once the sequence has played AND the article has rendered
+  // underneath — or once the cap fires, whichever comes first.
   void Promise.race([Promise.all([played, navigated]), capped]).then(() => {
     stage.classList.add('is-clearing');
     window.setTimeout(() => stage.remove(), BOOK_OPEN_CLEAR_MS);

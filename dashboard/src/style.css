@@ -3666,17 +3666,38 @@ body.research-shelf .controls {
   pointer-events: none;
 }
 
-/* Beat 1 — dim the shelf so the book is the only thing lit. */
+/* Beats 1 + 3 — dim the shelf so the book is the only thing lit, then close
+ * down to near-opaque so the shelf→article ground swap behind it is invisible.
+ *
+ * This deepening is what replaced the old full-screen veil. The veil painted
+ * the whole viewport the destination colour and faded it back out, which read
+ * as the page flashing white on every open. Holding at 0.62 keeps the shelf
+ * faintly present while the book lifts off it; closing to 0.97 right before
+ * the swap hides the swap without ever showing a flat field of colour. */
+@keyframes pressScrimDeepen {
+  0%   { opacity: 0; }
+  28%  { opacity: 0.62; }   /* ~250ms — lift done, shelf still readable */
+  62%  { opacity: 0.62; }   /* ~560ms — held through the cover swing */
+  93%  { opacity: 0.97; }   /* ~840ms — closed, just before the swap at 850ms */
+  100% { opacity: 0.97; }
+}
+
 .press-open-scrim {
   position: absolute;
   inset: 0;
-  background: rgba(12, 8, 8, 0.62);
+  background: #141010;
   opacity: 0;
-  transition: opacity 300ms ease;
 }
 
 .press-open-stage.is-open .press-open-scrim {
-  opacity: 1;
+  animation: pressScrimDeepen 900ms ease forwards;
+}
+
+/* Beat 5 — the whole set (scrim and open book together) fades off the already
+ * rendered article. Nothing is painted over the page to get here. */
+.press-open-stage.is-clearing {
+  opacity: 0;
+  transition: opacity 340ms ease;
 }
 
 /* Beat 1 — the book itself. Perspective lives HERE, not on the stage: the
@@ -3794,36 +3815,18 @@ body.research-shelf .controls {
   box-shadow: inset -6px 0 12px -6px rgba(0, 0, 0, 0.55);
 }
 
-/* Beat 4 — the page swells into the ground the article renders on. */
-.press-open-veil {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 260ms ease 860ms;
-}
-
-.press-open-stage.is-open .press-open-veil {
-  opacity: 1;
-}
-
-.press-open-stage.is-clearing .press-open-veil {
-  opacity: 0;
-  transition: opacity 260ms ease;
-}
-
-.press-open-stage.is-clearing .press-open-scrim {
-  opacity: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
   /* openBookThen() bails before building the stage, but keep the belt-and-
-   * braces rule in case a stage is ever left on screen. */
-  .press-open-scrim,
+   * braces rules in case a stage is ever left on screen. */
+  .press-open-stage,
   .press-open-book,
   .press-open-leaf,
-  .press-open-page-shade,
-  .press-open-veil {
+  .press-open-page-shade {
     transition: none;
+  }
+
+  .press-open-stage.is-open .press-open-scrim {
+    animation: none;
   }
 }
 
