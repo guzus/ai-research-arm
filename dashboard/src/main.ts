@@ -4349,6 +4349,15 @@ function researchJacket(slug: string): number {
 }
 
 /**
+ * Jacket the index actually painted each cover with, so the article page can
+ * open in the SAME colour the reader just clicked. The per-page de-duplication
+ * below can move a book off its raw hash, so re-hashing on the article page
+ * would sometimes disagree with the shelf. Deep links (no shelf visit) fall
+ * back to the raw hash, which is the best available answer.
+ */
+const researchJacketBySlug = new Map<string, number>();
+
+/**
  * Jackets for one rendered page, hashed per slug then de-duplicated: a raw hash
  * repeats often enough that two neighbouring bands land on the same colour and
  * read as one block. Collisions walk forward to the next free palette, which
@@ -4385,6 +4394,96 @@ function decodeStoredEntities(text: string): string {
   });
 }
 
+const BOOK_OPEN_SWING_MS = 620;
+const BOOK_OPEN_NAVIGATE_AT_MS = 240;
+const BOOK_OPEN_CLEAR_MS = 280;
+/** Never trap the reader behind the veil if the article fetch stalls. */
+const BOOK_OPEN_MAX_HOLD_MS = 1600;
+
+/**
+ * Book-opening transition. Clones the clicked cover into a fixed overlay,
+ * swings it open around its spine while the book grows toward the middle of
+ * the viewport, and hands off to a veil the article renders behind.
+ *
+ * Purely decorative and fully fail-open: reduced-motion readers, an
+ * unmeasurable element, or a stalled fetch all end up at the same article.
+ * The overlay is built with direct DOM calls, not setSafeContent, so the
+ * per-book inline transforms never meet DOMPurify.
+ */
+function openBookThen(book: HTMLElement, navigate: () => Promise<void>): void {
+  const rect = book.getBoundingClientRect();
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || rect.width < 1 || rect.height < 1) {
+    void navigate();
+    return;
+  }
+
+  const bookStyle = getComputedStyle(book);
+  // Read the DESTINATION ground off :root — body still carries the shelf's
+  // token remap at this point, so reading from body would give the press
+  // ground and the veil would flash dark before the article paints.
+  const destination =
+    getComputedStyle(document.documentElement).getPropertyValue('--bg-secondary').trim() || '#f4f5f8';
+
+  const stage = document.createElement('div');
+  stage.className = 'press-open-stage';
+
+  const shell = document.createElement('div');
+  shell.className = 'press-open-book';
+  shell.style.left = `${rect.left}px`;
+  shell.style.top = `${rect.top}px`;
+  shell.style.width = `${rect.width}px`;
+  shell.style.height = `${rect.height}px`;
+
+  const page = document.createElement('div');
+  page.className = 'press-open-page';
+  page.style.background = destination;
+
+  const cover = document.createElement('div');
+  cover.className = 'press-open-cover';
+  cover.style.background = bookStyle.backgroundColor;
+  cover.style.color = bookStyle.color;
+  const title = book.querySelector('.press-book-title');
+  if (title) {
+    const coverTitle = document.createElement('span');
+    coverTitle.className = 'press-book-title';
+    coverTitle.textContent = title.textContent || '';
+    cover.appendChild(coverTitle);
+  }
+
+  const veil = document.createElement('div');
+  veil.className = 'press-open-veil';
+  veil.style.background = destination;
+
+  shell.append(page, cover);
+  stage.append(shell, veil);
+  document.body.appendChild(stage);
+  book.style.opacity = '0';
+
+  const scale = Math.min(2.2, Math.max(1.1, (window.innerHeight * 0.7) / rect.height));
+  const dx = window.innerWidth / 2 - (rect.left + rect.width / 2);
+  const dy = window.innerHeight / 2 - (rect.top + rect.height / 2);
+
+  requestAnimationFrame(() => {
+    shell.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+    cover.style.transform = 'rotateY(-158deg)';
+    veil.style.opacity = '1';
+  });
+
+  const swung = new Promise<void>((resolve) => window.setTimeout(resolve, BOOK_OPEN_SWING_MS));
+  const capped = new Promise<void>((resolve) => window.setTimeout(resolve, BOOK_OPEN_MAX_HOLD_MS));
+  const navigated = new Promise<void>((resolve) => {
+    window.setTimeout(() => navigate().then(resolve, resolve), BOOK_OPEN_NAVIGATE_AT_MS);
+  });
+
+  // Lift the veil once the swing has finished AND the article has rendered —
+  // or once the cap fires, whichever comes first.
+  void Promise.race([Promise.all([swung, navigated]), capped]).then(() => {
+    stage.classList.add('is-clearing');
+    window.setTimeout(() => stage.remove(), BOOK_OPEN_CLEAR_MS);
+  });
+}
+
 function renderResearchIndex(rows: GenResearchRow[]): void {
   setDocTitle(null);
   if (rows.length === 0) {
@@ -4411,10 +4510,11 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     (researchIndexPage - 1) * RESEARCH_PAGE_SIZE,
     researchIndexPage * RESEARCH_PAGE_SIZE,
   );
-  // Stripe Press "shelf": one full-bleed jacket-coloured band per article, the
-  // title and its byline centred inside. The byline is the authoring model —
-  // the same slot a book list gives the author.
+  // Stripe Press "shelf": a grid of book covers, each painted in its own
+  // jacket palette. The byline is the authoring model — the same slot a book
+  // cover gives the author.
   const jackets = researchJacketsForPage(pageRows.map((r) => r.slug));
+  pageRows.forEach((r, i) => researchJacketBySlug.set(r.slug, jackets[i]));
   const items: string[] = [];
   pageRows.forEach((row, index) => {
     let title = escapeHtml(decodeStoredEntities(row.title));
@@ -4426,22 +4526,20 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     const created = new Date(row.created_at);
     const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
     const koHtml = hasResearchLanguage(row, 'ko')
-      ? '      <span class="press-shelf-lang" lang="ko">한국어</span>'
+      ? '    <span class="press-book-lang" lang="ko">한국어</span>'
       : '';
     items.push(
       [
-        // role="link" (not the bare focusable <li> this replaced) so the band
+        // role="link" (not the bare focusable <li> this replaced) so the cover
         // announces as navigation; the content keydown handler already
         // activates [data-slug] rows on Enter.
-        '<li class="press-shelf-row" role="link" data-jacket="' + jackets[index] + '"' +
+        '<li class="press-book" role="link" data-jacket="' + jackets[index] + '"' +
           ' data-slug="' + escapeHtml(row.slug) + '" tabindex="0">',
-        '  <span class="press-shelf-text">',
-        '    <span class="press-shelf-title">' + title + '</span>',
-        '    <span class="press-shelf-byline">',
-        '      <span class="press-shelf-model">' + escapeHtml(row.model) + '</span>',
-        rel ? '      <span class="press-shelf-date">' + escapeHtml(rel) + '</span>' : '',
+        '  <span class="press-book-title">' + title + '</span>',
+        '  <span class="press-book-byline">',
+        '    <span class="press-book-model">' + escapeHtml(row.model) + '</span>',
+        rel ? '    <span class="press-book-date">' + escapeHtml(rel) + '</span>' : '',
         koHtml,
-        '    </span>',
         '  </span>',
         '</li>',
       ].filter(Boolean).join('\n'),
@@ -4456,10 +4554,6 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     content,
     [
       '<div class="press-shelf-page">',
-      '  <header class="press-masthead">',
-      '    <h1 class="press-masthead-name">ara Research</h1>',
-      '    <p class="press-masthead-tagline">Long-form reports, written by machines</p>',
-      '  </header>',
       '  <ul class="press-shelf">',
       items.join('\n'),
       '  </ul>',
@@ -4483,11 +4577,14 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
   const docHtml = body;
   const created = new Date(row.created_at);
   const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
+  // Same jacket the shelf painted this book with — the article reads as that
+  // cover opened, not as a generic page. See researchJacketBySlug.
+  const jacket = researchJacketBySlug.get(row.slug) ?? researchJacket(row.slug);
 
   setSafeContent(
     content,
     [
-      '<div class="content-card gen-research-doc">',
+      '<div class="content-card gen-research-doc" data-jacket="' + jacket + '">',
       '  <div class="content-card-header">',
       '    <div class="content-card-title">' + escapeHtml(row.title) + '</div>',
       '  </div>',
@@ -5678,8 +5775,13 @@ content.addEventListener('click', (e) => {
   if (row && activeTab === 'research') {
     const slug = row.dataset.slug;
     if (slug) {
-      selectedSlug = slug;
-      load();
+      const navigate = (): Promise<void> => {
+        selectedSlug = slug;
+        return load();
+      };
+      // Index covers open; anything else navigating by slug goes straight through.
+      if (row.classList.contains('press-book')) openBookThen(row, navigate);
+      else void navigate();
     }
     return;
   }
@@ -5746,8 +5848,12 @@ content.addEventListener('keydown', (e: KeyboardEvent) => {
     e.preventDefault();
     const slug = row.dataset.slug;
     if (slug) {
-      selectedSlug = slug;
-      load();
+      const navigate = (): Promise<void> => {
+        selectedSlug = slug;
+        return load();
+      };
+      if (row.classList.contains('press-book')) openBookThen(row, navigate);
+      else void navigate();
     }
   }
 });

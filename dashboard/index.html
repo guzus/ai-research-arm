@@ -56,23 +56,32 @@
           <a class="tab" data-tab="research" href="/research">Research</a>
           <a class="tab" data-tab="wiki" href="/wiki">Wiki</a>
           <a class="tab" data-tab="agents" href="/agents">Arm</a>
-          <button class="brand-search" id="searchToggle" type="button" aria-label="Search" title="Search (⌘K or /)">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          </button>
+          <!-- Search + Request research ride at the end of the tab rail. They
+               live in their own wrapper so they are not <a>/<div> siblings of
+               the sections: the phone grid below keys its full-width span off
+               `.tabs a.tab:last-of-type`, which another bare <a> here would
+               silently break. -->
+          <div class="tabs-actions">
+            <button class="brand-search" id="searchToggle" type="button" aria-label="Search" title="Search (⌘K or /)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+            <a
+              class="request-btn"
+              href="https://github.com/guzus/ai-research-arm/issues/new?labels=gen-research&title=%5BResearch%5D%20&body=%23%23%20Research%20request%0A%0ATopic%3A%20%0A%0AContext%3A%20%0A%0ATags%3A%20%0A%0Abackend%3A%20claude"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Submit a research request on GitHub"
+              title="Submit a research request on GitHub"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              <span>Request research</span>
+            </a>
+          </div>
         </nav>
       </div>
+      <!-- The refresh button is chrome-cut (display:none) but keeps its node:
+           the R shortcut and the click handler both resolve #refreshBtn. -->
       <div class="controls">
-          <a
-            class="request-btn"
-            href="https://github.com/guzus/ai-research-arm/issues/new?labels=gen-research&title=%5BResearch%5D%20&body=%23%23%20Research%20request%0A%0ATopic%3A%20%0A%0AContext%3A%20%0A%0ATags%3A%20%0A%0Abackend%3A%20claude"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Submit a research request on GitHub"
-            title="Submit a research request on GitHub"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-            <span>Request research</span>
-          </a>
           <button class="icon-btn refresh-btn" id="refreshBtn" title="Refresh (R)" aria-label="Refresh">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
           </button>
