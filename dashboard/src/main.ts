@@ -1190,7 +1190,12 @@ function setSafeContent(
   // `target` is NOT in DOMPurify's default allowlist; every external link
   // this app emits pairs target="_blank" with rel="noopener", so allowing
   // it restores the intended new-tab behavior (ticket sources, tweet links).
-  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-jacket', 'data-ticket-share', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-question', 'data-odds-outcome', 'aria-label', 'aria-describedby', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'aria-haspopup', 'aria-live', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
+  // `data-imprint` sits beside `data-jacket` on every shelf book and picks its
+  // typeface. Both survive today only because DOMPurify's ALLOW_DATA_ATTR
+  // defaults to true — but jacket is listed here and imprint was not, so
+  // tightening that default would silently drop every book's imprint face with
+  // nothing failing. Listed explicitly for the same reason jacket is.
+  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-jacket', 'data-imprint', 'data-ticket-share', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-question', 'data-odds-outcome', 'aria-label', 'aria-describedby', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'aria-haspopup', 'aria-live', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
