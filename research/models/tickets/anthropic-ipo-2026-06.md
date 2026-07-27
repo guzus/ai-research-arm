@@ -40,7 +40,7 @@ polymarket:
     question: "Anthropic IPO by Dec 31, 2026?"
     outcome: "Dec 31 2026"
 created_at: 2026-06-02
-updated_at: 2026-07-13
+updated_at: 2026-07-27
 closed_at: null
 closed_reason: null
 history:
@@ -48,6 +48,8 @@ history:
     change: "Created — Anthropic confidentially filed S-1 with the SEC 2026-06-01, ahead of OpenAI in the public-markets race. Revenue run-rate ~$47B (May 2026) vs ~$10B the prior year; valuation $965B post-Series-H. WSJ broke the story (@KateClarkTweets, @cdriebusch), corroborated by The Register, US News, Fox Business, Spokesman, Ground News in-window. Status: confirmed; verification: confirmed (multiple primary press outlets + Anthropic on-record acknowledgment per US News framing 'the company said on Monday'). Public S-1 follow-on expected ~1 month after the confidential filing; the IPO follows on from there. Distinct from but downstream of [[anthropic-series-h-2026-05]] (the $65B Series H provided the post-money baseline) and [[anthropic-spacex-colossus-2026-05]] (the SpaceX Colossus compute lease that was disclosed in connection with the S-1 prep)"
   - ts: 2026-07-13
     change: "Linked Polymarket odds (metadata-only, no status change): 'Will Anthropic IPO by December 31, 2026?' (event anthropic-ipo-by, market 2413330, ~66% Yes at link time) — the market prices this ticket's central open question, the IPO completing in 2026 after the 2026-06-01 confidential S-1. IDs read from the gamma API."
+  - ts: 2026-07-27
+    change: "IPO-prep detail (The Information, Jul 25-26, two posts): Anthropic is exploring 'one of the most restrictive employee stock-sale policies in Silicon Valley' ahead of its IPO. Named outlet, not yet an Anthropic on-record confirmation of the specific policy terms. Status stays confirmed; verification stays confirmed (consistent with the company's own confidential-S1 disclosure track), noting the stock-sale-policy specifics themselves are secondary-sourced."
 ---
 
 Anthropic **confidentially filed an S-1 registration statement with
@@ -87,6 +89,12 @@ prep for the S-1.
   on standard process.
 - Each lifecycle step UPDATES this ticket (history entry, refresh
   status_note, sources).
+
+**2026-07-27 update.** The Information (Jul 25-26) reports Anthropic is
+exploring one of the most restrictive employee stock-sale policies in
+Silicon Valley as it prepares for the IPO — no dollar terms, lockup length,
+or comparison-company specifics captured yet, and no Anthropic on-record
+confirmation of the policy details.
 
 **Transition triggers:**
 
