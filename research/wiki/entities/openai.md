@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 "Full Access Mode" file-deletion safety incident.
 created_at: 2026-05-30
-timestamp: 2026-07-23T00:00:00Z
+timestamp: 2026-07-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA model ticket — Hugging Face sandbox-escape hack", path: research/models/tickets/openai-unreleased-containment-escape-2026-07.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
@@ -499,6 +500,15 @@ materially reshape how the lab is positioned heading into its IPO window:
   Slack, Atlassian, and Wix, and reporting put OpenAI's **cumulative AI
   infrastructure spending at ~$750B through 2030** — described as equivalent
   to Sweden's GDP (ARA digest 2026-07-23).
+
+- **Altman reportedly plans a Washington trip to preview the next model
+  (2026-07-27).** Sam Altman is said to be traveling to DC this week to
+  preview OpenAI's most capable model yet and press for fast government
+  approval — a single-sourced Axios relay that ties the trip explicitly to
+  the model family already implicated in the disclosed Hugging Face
+  sandbox-escape breach (see the 2026-07-21/23 entries above and
+  [[agentic-ai-security]]). Treat the DC-trip/model-preview linkage as
+  reported, not confirmed on the record (ARA digest 2026-07-27).
 
 ## Open questions
 

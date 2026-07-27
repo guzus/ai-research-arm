@@ -310,8 +310,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-26",
-      "timestamp": "2026-07-26T00:00:00Z",
+      "updated_at": "2026-07-27",
+      "timestamp": "2026-07-27T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -749,8 +749,8 @@
       "summary": "Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance.",
       "description": "Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance.",
       "created_at": "2026-07-26",
-      "updated_at": "2026-07-26",
-      "timestamp": "2026-07-26T00:00:00Z",
+      "updated_at": "2026-07-27",
+      "timestamp": "2026-07-27T00:00:00Z",
       "file": "entities/claude-opus-5.md",
       "aliases": [
         "Claude Opus 5",
@@ -761,7 +761,8 @@
         "agentic-ai-security",
         "anthropic",
         "claude-fable-5",
-        "claude-opus-4-8"
+        "claude-opus-4-8",
+        "gpt-5-6"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -927,8 +928,8 @@
       "summary": "AI coding tool / IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close); the two had been jointly training a from-scratch \"SpaceXAI\" model.",
       "description": "AI coding tool / IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close); the two had been jointly training a from-scratch \"SpaceXAI\" model.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-07-27",
+      "timestamp": "2026-07-27T00:00:00Z",
       "file": "entities/cursor.md",
       "aliases": [
         "Cursor",
@@ -964,8 +965,8 @@
       "summary": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.",
       "description": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-06-30",
-      "timestamp": "2026-06-30T00:00:00Z",
+      "updated_at": "2026-07-27",
+      "timestamp": "2026-07-27T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -1525,6 +1526,7 @@
       "inbound": [
         "anthropic",
         "claude-fable-5",
+        "claude-opus-5",
         "federal-ai-policy",
         "moonshot-kimi-k3",
         "openai",
@@ -2049,7 +2051,8 @@
         "gemini-3-6-flash",
         "open-weights",
         "soofi-s-30b-a3b",
-        "thinking-machines"
+        "thinking-machines",
+        "xai"
       ]
     },
     {
@@ -2282,8 +2285,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-07-20",
-      "timestamp": "2026-07-20T00:00:00Z",
+      "updated_at": "2026-07-27",
+      "timestamp": "2026-07-27T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -2353,8 +2356,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-07-23",
-      "timestamp": "2026-07-23T00:00:00Z",
+      "updated_at": "2026-07-27",
+      "timestamp": "2026-07-27T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -2537,8 +2540,8 @@
       "summary": "Tokyo-based AI lab whose multi-model-orchestration thesis ships as Marlin (an autonomous \"Ultra Deep Research\" agent) and Sakana Fugu (an LLM-as-router that calls a swappable pool of frontier models) — a non-US entrant pitching orchestration as a workaround to the Fable 5 export freeze.",
       "description": "Tokyo-based AI lab whose multi-model-orchestration thesis ships as Marlin (an autonomous \"Ultra Deep Research\" agent) and Sakana Fugu (an LLM-as-router that calls a swappable pool of frontier models) — a non-US entrant pitching orchestration as a workaround to the Fable 5 export freeze.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-06-23",
-      "timestamp": "2026-06-23T00:00:00Z",
+      "updated_at": "2026-07-27",
+      "timestamp": "2026-07-27T00:00:00Z",
       "file": "entities/sakana-ai.md",
       "aliases": [
         "Sakana AI",
@@ -2547,7 +2550,8 @@
         "Sakana Marlin",
         "Sakana Fugu",
         "Fugu",
-        "Fugu Ultra"
+        "Fugu Ultra",
+        "Fugu-Ultra v1.1"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2837,8 +2841,8 @@
       "summary": "Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.",
       "description": "Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-19",
-      "timestamp": "2026-07-19T00:00:00Z",
+      "updated_at": "2026-07-27",
+      "timestamp": "2026-07-27T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -2846,7 +2850,8 @@
         "@xai",
         "Grok",
         "Colossus",
-        "Colossus 1"
+        "Colossus 1",
+        "Grok 4.6"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2856,6 +2861,7 @@
         "cursor",
         "dynamic-workflows",
         "gpt-5-6",
+        "moonshot-kimi-k3",
         "openai",
         "spacex"
       ],
@@ -3080,6 +3086,7 @@
     "flash cyber": "gemini-3-6-flash",
     "fugu": "sakana-ai",
     "fugu ultra": "sakana-ai",
+    "fugu-ultra v1.1": "sakana-ai",
     "fusion api": "openrouter",
     "gemini 3.2 flash": "gemini-3-5-flash",
     "gemini 3.5 flash": "gemini-3-5-flash",
@@ -3121,6 +3128,7 @@
     "gpu-as-a-service": "neocloud",
     "gpuaas": "neocloud",
     "grok": "xai",
+    "grok 4.6": "xai",
     "helix": "figure-ai",
     "helix-02": "figure-ai",
     "hunyuan hy3": "tencent-hunyuan-hy3",
@@ -3296,6 +3304,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-07-27",
+      "op": "ingest",
+      "summary": "Ingested the 2026-07-27 digest (Anthropic isolated as the sole holdout on a cross-industry \"Open Weights and American AI Leadership\" letter after Google/AMD signed, drawing a \"gaslighting\" jab from David Sacks; DeepSeek pauses its second funding round after a leaked transcript has Liang Wenfeng acknowledging a real US compute/capability gap; Opus 5 tops a new intelligence benchmark; Altman reportedly plans a DC trip tied to the still-unresolved Hugging Face hack; Grok 4.6 (~2T) and a Cursor agent-swarm SQLite rebuild round out the cycle). Created 0, updated 8 (anthropic — sole open-weights-letter holdout + Sacks \"gaslighting\" + restrictive pre-IPO stock-sale policy weighed; open-weights theme — the letter as the \"dumping\"-fight's concrete escalation, near-total industry alignment minus Anthropic; claude-opus-5 — tops a new intelligence benchmark per The Decoder, surpassing Fable 5/GPT-5.6 Sol; deepseek — second funding round (~$74B target) detailed and paused after the leaked compute-gap admission; xai — Grok 4.6 (~2T, vs 1.5T Grok 4.5) named with a ~2-week timeline, expected to surpass Kimi K3; openai — Altman's reported DC trip to preview the next model, tied to the Hugging Face breach; cursor — agent swarm rebuilds SQLite in Rust from docs alone, 100% test-suite pass; sakana-ai — Claude Code-compatible interface for Fugu-Ultra v1.1). Skipped for budget (future ingest): individual arXiv Research Highlights (SANA-Video 2.0, OpenForgeRL, Beyond Sycophancy, Same Dangerous Objective), CXMT going public, the Debian AI-disclosure governance resolution, Etched's reconfirmed $10.3B valuation (already on the etched page)."
+    },
+    {
       "date": "2026-07-26",
       "op": "ingest",
       "summary": "Ingested the 2026-07-26 digest — a thin cycle (RSS-only; no Twitter/HN/Reddit/arXiv/Bluesky artifacts had landed by digest time) dominated by continued Claude Opus 5 coverage. Created 1 (claude-opus-5 entity — Anthropic's 2026-07-25 frontier flagship, first wiki page for it since the digest that originally covered the launch was ingested from a stale fallback version without the story; pitched as near-Fable-5 performance at half the price, system card cites markedly improved prompt-injection resistance). Updated 4 (anthropic — Opus 5 launch + today's pricing/benchmark and prompt-injection follow-on coverage; claude-opus-4-8 — cross-linked to Opus 5 as the Opus line's continuation, open question on safeguard-reroute-floor succession; agentic-ai-security — further Decoder reporting on the OpenAI/Hugging Face incident's extent + Opus 5's prompt-injection defenses as a rare capability-side counterpoint; ai-capex — fallen-power-line TechCrunch story continuing the grid-strain thread tracked since 2026-07-23). Skipped: today's digest carried no other RSS items with independent wiki significance beyond the three stories above."
@@ -3389,11 +3402,6 @@
       "date": "2026-06-30",
       "op": "ingest",
       "summary": "Ingested 2026-06-30 digest (June 29 Anthropic distribution day: Claude Opus 4.8/Haiku 4.5 GA in Microsoft Foundry on Azure + first-ever Anthropic deployment on NVIDIA GB300 NVL72; export gate reverses — Lutnick June 26 letter clears Mythos 5 for ~100 critical-infra orgs, Fable 5 reported returning but unconfirmed pending Pentagon/NSA; California signs Claude for all state agencies at ~50% discount; Anthropic→Amazon repricing to tokens; DeepSeek V4 dated mid-July GA with first major LLM API surge pricing; OpenAI weighs IPO delay to 2027 + Booz Allen). Created 0, updated 8 (anthropic, microsoft, nvidia, claude-fable-5, federal-ai-policy, california-ai-regulation, deepseek, openai)."
-    },
-    {
-      "date": "2026-06-29",
-      "op": "ingest",
-      "summary": "Ingested 2026-06-29 digest (six-day gap Jun 24–29; Grok 4.5 from-scratch 1.5T V9 private beta claiming Opus-level; DeepSeek $7.4B close framed as largest in Chinese AI history, state fund sole voting investor; GPT-5.6 Sol/Terra/Luna shipped in US-government-gated preview + Jalapeño chip; Anthropic accuses Alibaba of largest documented Claude distillation attack; GLM-5.2 \"matches Mythos\" cyber headline debunked; Austria courts Anthropic to the EU; open-weights release bench deepens + broker/router layer tips Chinese with Coinbase cutting spend in half). Created 0, updated 8 (xai — Grok 4.5 1.5T V9 private beta at SpaceX/Tesla, Opus-level claim unaudited, unrestricted-vs-gated asymmetry; deepseek — round largest in Chinese AI history, Liang ~$3B/Tencent ~$1.5B/CATL ~$740M, state fund sole voting investor w/ no lock-up, others 5-yr lock-up, double-every-department-toward-AGI, @deepseek_ai silent since May 22; gpt-5-6 — transforms from rumored to shipped: Sol/Terra/Luna government-gated limited preview, max/ultra reasoning, Terminal-Bench 2.1 SOTA, pricing, GA \"coming weeks\"/Polymarket ~90% by Jul 31; anthropic — Alibaba distillation letter (25K accounts/28.8M exchanges) + Austria EU-relocation open letter; zhipu-glm-5-2 — \"matches Mythos\" cyber headline debunked as IDOR-vs-Claude-Code category error, stock +30% decoupled from benchmark; broadcom — OpenAI Jalapeño first custom inference ASIC co-designed w/ Broadcom, 50% cost saving claim, 9-mo design, MS ~40% output; open-weights — Nemotron-3-Ultra/Command A+ Apache 2.0/ZAYA1/Poolside/Kimi-K2.7-Code pipeline + OpenRouter top-4-broker all Chinese + Coinbase halves spend, VibeThinker-3B; federal-ai-policy — \"de facto licensing regime with no rules\" two new data points (Sol gated + Alibaba distillation letter) + Europe structurally excluded/Austria courtship)."
     }
   ]
 }

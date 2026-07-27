@@ -6,8 +6,9 @@ aliases: ["Claude Opus 5", "Opus 5", "claude-opus-5"]
 tags: [model-release, anthropic, claude, frontier-model, security]
 description: Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance.
 created_at: 2026-07-26
-timestamp: 2026-07-26T00:00:00Z
+timestamp: 2026-07-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA daily digest 2026-07-26", path: research/digest/2026-07-26-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA model ticket — Claude Opus 5 leak", path: research/models/tickets/anthropic-opus-5-leak-2026-07.md}
@@ -47,6 +48,12 @@ CRUD lag between the ticket lane and the digest, not a factual dispute.
 - **HN reception.** 680 points / 386 comments made it the dominant AI story
   of the 2026-07-25 cycle, ahead of Black Forest Labs' Flux 3 and Flux 3 X
   Mimic releases (ARA digest 2026-07-25).
+- **Tops a new intelligence benchmark (2026-07-27).** The Decoder reports
+  Opus 5 topping a benchmark "designed to measure real intelligence,"
+  surpassing both [[claude-fable-5|Fable 5]] and [[gpt-5-6|GPT-5.6 Sol]] —
+  an independent-outlet-relayed leaderboard claim distinct from the
+  vendor/press "matches or beats Fable 5" framing already tracked above
+  (ARA digest 2026-07-27).
 
 ## Open questions
 - **Does the model-ticket tracker reconcile?** The ticket lane still shows

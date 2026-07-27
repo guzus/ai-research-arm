@@ -6,8 +6,10 @@ aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 P
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
 description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.
 created_at: 2026-06-04
-timestamp: 2026-06-30T00:00:00Z
+timestamp: 2026-07-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
+  - {title: "ARA model ticket — DeepSeek second funding round", path: research/models/tickets/deepseek-second-round-2026-07.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
@@ -116,6 +118,24 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   DeepSeek's **"DSpark" speculative decoding** beats DFlash and EAGLE-3 on AMD MI300X
   (avg ~127 tok/s vs 111/81; +20% acceptance length). *(Watch the official pricing
   page for exact windows/rates.)* See [[open-weights]] (ARA digest 2026-06-30).
+
+- **A second funding round, then a pause after a leaked compute-gap admission
+  (2026-07-16 → 2026-07-27).** Weeks after the June round closed, Bloomberg
+  reported DeepSeek preparing a **second, distinct round of up to $7.4B**,
+  targeting overseas (Middle East) dollar capital and a **~$71-74B
+  valuation**, as part of a push toward a mainland China **STAR Market IPO**
+  by 2027 — up from the ~$66.6B post-money valuation of the first round.
+  *The Information's* separate "tenfold valuation increase" claim could not
+  be reconciled with this figure and is treated as an unverified outlier.
+  On **2026-07-26/27**, a **leaked investor-meeting transcript** had founder
+  **Liang Wenfeng** reportedly acknowledging DeepSeek **still relies heavily
+  on Nvidia chips** and that **China trails the US in capability** — an
+  unusually candid admission from the lab whose open-weights releases have
+  anchored the "China is closing the gap" narrative on [[open-weights]]. The
+  round has reportedly been **paused before investors signed new
+  agreements**, with investors unsettled by the leak. See the
+  [DeepSeek second-round ticket](../../models/tickets/deepseek-second-round-2026-07.md)
+  (ARA digest 2026-07-27).
 
 ## Open questions
 

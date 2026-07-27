@@ -6,8 +6,10 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth "a few billions" ahead of a planned IPO (2026-07-19).
 created_at: 2026-05-24
-timestamp: 2026-07-26T00:00:00Z
+timestamp: 2026-07-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
+  - {title: "ARA model ticket — industry open-weights letter", path: research/models/tickets/industry-open-weights-letter-2026-07.md}
   - {title: "ARA daily digest 2026-07-26", path: research/digest/2026-07-26-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
@@ -746,6 +748,26 @@ of the listing.
   benchmark reporting that it matches or beats Fable 5 on most evals at a
   well-below-Fable-5 price. See [[claude-opus-5]] for detail (ARA digest
   2026-07-25, 2026-07-26).
+
+- **Sole holdout on the industry open-weights letter; "gaslighting" jab from
+  David Sacks (2026-07-26/27).** A cross-industry coalition letter,
+  **"Open Weights and American AI Leadership"** — NVIDIA, Microsoft, Google,
+  Meta, [[openai]], Mistral, Cohere, Hugging Face, GitHub, IBM, Nebius,
+  Palantir, CrowdStrike, Dell, and (confirmed 2026-07-25 evening) AMD —
+  left Anthropic the **only major US lab not to sign**, hardening the
+  "Silicon Valley vs. Anthropic" framing this desk has tracked on
+  [[open-weights]] since the 2026-07-20 "dumping" fight. White House AI
+  czar **David Sacks** called the position **"gaslighting"** in the
+  cycle's highest-engagement AI post (4,212 likes): "The entire tech
+  industry (save for Anthropic) has come out in favor of open source
+  AI... They won't stop until they kneecap open source." The same window,
+  *The Information* reported Anthropic is **weighing one of Silicon
+  Valley's most restrictive pre-IPO employee stock-sale policies** and
+  that its **China-AI-restrictions lobbying campaign has isolated it from
+  the rest of the industry** — unconfirmed terms, but a second data point
+  reinforcing the isolation frame. See the
+  [industry open-weights letter ticket](../../models/tickets/industry-open-weights-letter-2026-07.md)
+  and [[open-weights]] (ARA digest 2026-07-27).
 
 ## Open questions
 - **Gated frontier strategy.** Anthropic has signaled no public release of
