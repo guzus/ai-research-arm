@@ -346,9 +346,11 @@ class TotalFetchFailureGuardTest(unittest.TestCase):
     / Fetch errors: 10") with exit 0. The git-recency freshness watchdog
     (scripts/check_lane_freshness.py) can never catch that shape because the
     file exists and is dated today. main() must instead exit
-    EXIT_TOTAL_FETCH_FAILURE (3) and write nothing when EVERY checked source
-    produced a fetch error and zero candidates were collected, while partial
-    failures keep the current always-write behavior.
+    EXIT_TOTAL_FETCH_FAILURE (3) and write nothing whenever at least one
+    source produced a fetch error and zero candidates were collected overall,
+    while a genuinely empty news day (zero candidates, zero errors) or a
+    partial failure that still collected something keeps the current
+    always-write behavior.
     """
 
     API_BASE = "https://tuber-api.test.invalid"
@@ -401,6 +403,29 @@ class TotalFetchFailureGuardTest(unittest.TestCase):
             self.assertIn("Down Channel", err)
             self.assertIn("Up Search", err)
             self.assertIn("URLError", err)
+
+    @staticmethod
+    def some_sources_error_rest_return_empty(source, *, base_url, fetch_json_fn=None):
+        if source.id == "down-channel":
+            raise urllib.error.URLError("tuber-api unreachable (HTTP 500)")
+        return []  # "up-search" call succeeds but the payload has no videos.
+
+    def test_zero_candidates_with_partial_errors_exits_3(self):
+        """2026-07-23..07-27 incident: 8 of 10 sources 500'd but the other 2
+        ("trending" kind) didn't raise -- they just returned empty payloads --
+        so the old len(fetch_errors) == len(sources) guard never tripped and
+        the lane wrote an empty-content shell as a "successful" partial
+        failure for five straight days. Any source erroring plus zero total
+        candidates must fail loudly, not just every source erroring.
+        """
+        with tempfile.TemporaryDirectory() as td:
+            rc, out, err, out_path = self.run_main(td, self.some_sources_error_rest_return_empty)
+
+            self.assertEqual(rc, youtube.EXIT_TOTAL_FETCH_FAILURE)
+            self.assertFalse(out_path.exists())
+            self.assertNotIn("Wrote", out)
+            self.assertIn("ERROR:", err)
+            self.assertIn("1 of 2", err)
 
     def test_partial_failure_still_writes_daily_file(self):
         def one_source_up(source, *, base_url, fetch_json_fn=None):

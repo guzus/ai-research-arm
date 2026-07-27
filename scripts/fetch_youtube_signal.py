@@ -32,9 +32,9 @@ DEFAULT_TUBER_API_BASE = "https://tuber-api.guzus.xyz"
 USER_AGENT = "ai-research-arm/1.0 (https://github.com/guzus/ai-research-arm)"
 TIMEOUT_SECONDS = 25
 FORBIDDEN_GENERATION_PATH_PARTS = ("/summarize", "/acp/jobs")
-# Exit code for "every checked source failed and nothing was collected".
+# Exit code for "zero candidates were collected across every checked source".
 # Distinct from 2 (argument validation) so the workflow/telemetry can tell
-# a total tuber-api outage apart from a bad invocation.
+# a signal-loss outage apart from a bad invocation.
 EXIT_TOTAL_FETCH_FAILURE = 3
 
 PRIORITY_WEIGHT = {"P0": 100, "P1": 70, "P2": 40}
@@ -711,17 +711,22 @@ def main(argv: list[str] | None = None) -> int:
     # empty artifact. The freshness watchdog (scripts/check_lane_freshness.py)
     # is git-recency based, so an empty file dated today looks healthy and
     # hides a tuber-api outage (2026-07-12: all 10 sources returned HTTP 502
-    # and the lane still went green). collect_candidates checks EVERY registry
-    # source regardless of include_in_digest, and each checked source yields
-    # at most one fetch error, so "all checked sources failed" is exactly
-    # len(fetch_errors) == len(sources). Partial failure (any source
-    # succeeded, or any candidate collected) keeps the current write path.
-    if sources and not candidates and len(fetch_errors) == len(sources):
+    # and the lane still went green).
+    #
+    # The original guard required len(fetch_errors) == len(sources) ("every
+    # source raised"), but 2026-07-23..07-27 showed that's too narrow: 8 of
+    # 10 sources 500'd while the 2 "trending" sources didn't raise yet still
+    # returned zero usable videos, so the strict all-failed check never
+    # tripped and the lane wrote an empty-content shell as a "successful"
+    # partial failure for five straight days. What actually matters for the
+    # digest is candidate count, not whether every call raised an exception,
+    # so key the guard on "no candidates at all" whenever any source failed.
+    if sources and not candidates and fetch_errors:
         print(
-            f"ERROR: total tuber-api fetch failure: all {len(sources)} checked source(s) "
-            f"failed against {args.tuber_api_base} and 0 candidates were collected; "
-            f"refusing to write {out_path} so the outage stays visible to the "
-            "freshness watchdog instead of resetting its git-recency clock",
+            f"ERROR: zero-candidate fetch failure: {len(fetch_errors)} of {len(sources)} "
+            f"checked source(s) failed against {args.tuber_api_base} and 0 candidates were "
+            f"collected overall; refusing to write {out_path} so the outage stays visible to "
+            "the freshness watchdog instead of resetting its git-recency clock",
             file=sys.stderr,
         )
         for source, error in fetch_errors:
