@@ -1,0 +1,13 @@
+AI News - 2026-07-27
+
+TOP STORIES:
+• Nvidia in talks to backstop $250B of OpenAI's Ohio data-center lease, plus up to $350B in chip financing (WSJ/Bloomberg)
+• Moonshot AI's Kimi K3 (2.8T params) open weights confirmed live on Hugging Face at 00:00 UTC - largest open-weight model ever
+• No major new funding, regulatory, or research-paper stories cleared the recency/sourcing bar today
+
+KEY NUMBERS:
+• $250B - Nvidia's proposed financing guarantee for OpenAI's 10GW Ohio data center
+• $350B - additional Nvidia chip financing under discussion for the same site
+• 2.8T params / ~594GB-1.4TB - Kimi K3 open-weight download (MXFP4 quantized)
+
+Full report on GitHub.
