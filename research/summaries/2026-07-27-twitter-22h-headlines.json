@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC BREAKS SILENCE — AMODEI REJECTS OPEN-WEIGHTS BAN, PUSHES CHIP CONTROLS AND MANDATORY SAFETY TESTS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2081864750296658008",
+    "category": "policy"
+  },
+  {
+    "headline": "TRUMP ADMIN NEARS VOLUNTARY FRAMEWORK — FRONTIER LABS TO GIVE FEDS 30-DAY EARLY MODEL ACCESS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2081848287108489278",
+    "category": "policy"
+  },
+  {
+    "headline": "KIMI K3 WEIGHTS GO LIVE ON HUGGING FACE — 2.8T-PARAMETER MODEL NOW LARGEST OPEN RELEASE TO DATE",
+    "source": "@TheCrawlHub",
+    "url": "https://x.com/TheCrawlHub/status/2081857871856226534",
+    "category": "opensource"
+  },
+  {
+    "headline": "AMD'S OPENAI/META WARRANT DEALS AMOUNT TO UP TO 105% EFFECTIVE COMPUTE DISCOUNT — SEMIANALYSIS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2081847226364506233",
+    "category": "business"
+  },
+  {
+    "headline": "GROK 4.5 RATED BEST PRICE-PERFORMANCE CYBERSECURITY MODEL, 10X CHEAPER THAN SOL — VALS.AI",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2081852481517318560",
+    "category": "model"
+  }
+]
