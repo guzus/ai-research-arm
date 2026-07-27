@@ -3,7 +3,7 @@ slug: sina-vibethinker-3b-2026-06
 title: VibeThinker-3B — 3B open model matching frontier math/coding via post-training
 company: Sina Weibo
 model: VibeThinker-3B
-status: released
+status: closed
 status_note: |
   **VibeThinker-3B** (Sina Weibo) is a **3B-parameter** open model reported to
   match **DeepSeek V3.2 / Kimi K2.5** on math and coding while being **up to
@@ -28,12 +28,14 @@ verification: partial
 sources:
   - https://the-decoder.com/sinas-open-model-vibethinker-3b-aims-to-show-reasoning-compresses-well-but-factual-knowledge-doesnt
 created_at: 2026-06-29
-updated_at: 2026-06-29
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-27
+closed_at: 2026-07-27
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-29
     change: "Created — VibeThinker-3B (Sina Weibo), a 3B open model reported to match DeepSeek V3.2 / Kimi K2.5 on math and coding while up to 333× smaller, via a multi-stage post-training recipe. Hypothesis it illustrates: logical reasoning compresses well into a small model, factual knowledge doesn't. Surfaced via the 2026-06-29 digest (The Decoder). Open model usable now → status released; single secondary outlet without a captured primary model card or neutral benchmark reproduction → verification partial."
+  - ts: 2026-07-27
+    change: "Closed — released-and-aged. VibeThinker-3B has been an available open model since 2026-06-29; now ≥4 weeks past release with no fresh corroboration, primary model card, or successor variant surfaced. Rolled into normal coverage. History preserved."
 ---
 
 **VibeThinker-3B**, from **Sina Weibo**, is a **3-billion-parameter** open

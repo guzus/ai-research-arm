@@ -37,7 +37,19 @@ status_note: |
   K3's launch as re-rating Zhipu AI's competitive narrative. Status stays
   `released`; verification stays `confirmed` (Moonshot's own weights-date
   framing + multiple independent benchmark/press relays).
-expected: "Shipped; membership plans splitting into 'Kimi Membership' and 'Kimi Code Membership'; new subscriptions temporarily paused for capacity; full open weights due 2026-07-27"
+
+  **2026-07-27 — full open-weights drop, as scheduled.** The full weights
+  release Moonshot flagged for today materialized: a **2.8T-parameter MoE**
+  model (16 of 896 experts active per token), **1M-token context**, native
+  vision, released under a **Modified MIT license**, ~594GB of native
+  weights, with vLLM day-0 support in prep (@johnseach, detailed technical
+  post). Light independent corroboration: @_A_Radwan_ ("1300+ camped on the
+  countdown") and a Chinese-platform weekly roundup already listing K3 live
+  on its Web Chat. No official @Kimi_Moonshot capture of the weights drop
+  itself in this window — entirely third-party, though detailed and
+  internally consistent. Status stays `released` (already released via
+  app/API since 07-21); verification stays `confirmed`.
+expected: null
 labels:
   - china
   - coding
@@ -53,7 +65,7 @@ sources:
   - "@EpochAIResearch"
   - "@theinformation"
 created_at: 2026-07-16
-updated_at: 2026-07-22
+updated_at: 2026-07-27
 closed_at: null
 closed_reason: null
 history:
@@ -63,6 +75,8 @@ history:
     change: "Official @Kimi_Moonshot account announced pausing new subscriptions (existing members unaffected) after demand pushed close to capacity limits over the prior 48h, and announced membership will split into separate 'Kimi Membership' and 'Kimi Code Membership' plans. Widely re-shared (@deedydas, @GavinSBaker, @quxiaoyin, @testingcatalog). A capacity-constrained, oversubscribed paid product is definitionally public and shipped → status advanced from in-testing to released; verification advanced to confirmed (official company account, primary source)."
   - ts: 2026-07-22
     change: "Corroboration + specs, no status change. Moonshot's own framing (relayed by @ryqwzrbuilds): 2.8T-parameter open model, apps/API live now, full weights due 2026-07-27. Epoch AI: 156 on the Epoch Capabilities Index, a new open-weights record, between Claude Opus 4.6 and GPT-5.4 (via @rohanpaul_ai/@EpochAIResearch RT); separately 2nd on the AA-Briefcase agentic benchmark, near Fable 5, at ~$10.57/task (~10x K2.6's cost, above Opus). @theinformation: Microsoft is evaluating K3 for Copilot features previously handled by OpenAI/Anthropic models (internal testing only, no release date/pricing). A JPMorgan note frames K3 as re-rating Zhipu AI's competitive narrative (@AlphaWireNewsAi). Status stays released; verification stays confirmed."
+  - ts: 2026-07-27
+    change: "Full open-weights drop, as scheduled. 2.8T-param MoE (16/896 experts active), 1M context, native vision, Modified MIT license, ~594GB native weights, vLLM day-0 support in prep (@johnseach). Light independent corroboration (@_A_Radwan_, a CN-platform weekly roundup listing K3 live). No official @Kimi_Moonshot capture of the weights drop itself in this window — entirely third-party, though detailed and internally consistent. Status stays released; verification stays confirmed."
 ---
 
 **Moonshot AI's** next flagship coding/reasoning model, **Kimi K3**, is

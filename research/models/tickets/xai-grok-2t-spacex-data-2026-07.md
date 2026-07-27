@@ -21,7 +21,15 @@ status_note: |
   Still no artifact (preview, console listing, leak) — this remains a
   primary-source timeline disclosure, not evidence of an existing build,
   so status stays `rumored` pending a real artifact.
-expected: "Grok 4.6 (2T) expected ~2 weeks from 2026-07-25 per Elon Musk, via @testingcatalog"
+
+  **2026-07-27 update:** @testingcatalog also relays (2026-07-25, same
+  window as the Grok 4.6 timing) a follow-on claim that a further model,
+  **Grok 4.7**, is expected "in 4 weeks" — sourced to the same relayed
+  Elon Musk comment rather than a direct Musk tweet captured this cycle.
+  Weaker sourcing tier than the Grok 4.6 timing itself (no independent
+  corroboration yet, unlike @kimmonismus's independent Grok 4.6 listing).
+  Still no artifact for either model. Status stays `rumored`.
+expected: "Grok 4.6 (2T) expected ~2 weeks from 2026-07-25 (~2026-08-08) per Elon Musk via @testingcatalog, corroborated by @kimmonismus; a further Grok 4.7 expected ~4 weeks out (~2026-08-22), single-sourced"
 labels:
   - frontier-model
   - training-data
@@ -31,7 +39,7 @@ sources:
   - https://x.com/testingcatalog/status/2081148852695093410
   - "@kimmonismus"
 created_at: 2026-07-21
-updated_at: 2026-07-26
+updated_at: 2026-07-27
 closed_at: null
 closed_reason: null
 history:
@@ -39,6 +47,8 @@ history:
     change: Created — Elon Musk confirmed SpaceX engineering data (excluding ITAR-restricted material) will be added to supplemental training for xAI's next 2T-parameter Grok model.
   - ts: 2026-07-26
     change: "The 2T model now has a working name (Grok 4.6) and a rough timeline — '~2 weeks' per Elon Musk via @testingcatalog, corroborated independently by @kimmonismus. 2T vs 1.5T on Grok 4.5, expected to surpass Kimi. No artifact yet → status stays rumored; model field updated to 'Grok 4.6 (2T, next-gen)', expected/status_note updated with the timeline."
+  - ts: 2026-07-27
+    change: "A further model, Grok 4.7, reported 'in 4 weeks' per the same @testingcatalog relay of an Elon Musk comment. Weaker/single-sourced vs. the independently-corroborated Grok 4.6 timing. No artifact for either model. Status stays rumored."
 ---
 
 Elon Musk announced directly that SpaceX's proprietary engineering-data
