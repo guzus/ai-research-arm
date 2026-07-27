@@ -74,8 +74,14 @@ sources:
   - "@Sharity"
   - "@rohanpaul_ai"
   - "@_StockMlKTNewz"
+polymarket:
+  - event_slug: which-companies-will-the-us-take-a-stake-in
+    market_id: "1323318"
+    token_id: "105746726493182224982615892012481143192604366292256699612958741853324716128080"
+    question: "Will the US federal government take a stake in OpenAI?"
+    outcome: "Dec 31 2026"
 created_at: 2026-06-07
-updated_at: 2026-07-04
+updated_at: 2026-07-23
 closed_at: null
 closed_reason: null
 history:
@@ -89,6 +95,8 @@ history:
     change: "Polymarket odds data point (~73% implied) on the government taking a stake (@_StockMlKTNewz); TechCrunch/Ars Technica reiterate Altman's ~5% donation proposal. Continuing thread, no new fact confirmation. Status stays confirmed; verification stays partial."
   - ts: 2026-07-04
     change: "Viral backlash (Digg: 1M+ views, 79.5% negative across 472 comments) plus the first on-record presidential reaction: in a CNBC interview, Trump declined to confirm or deny the 5% stake, instead citing the government's ~10% Intel stake ('$60 or $70B' paper gain in 8 months) as the operating precedent and calling it 'very American' — reproduced verbatim across 4+ independent accounts, so on-record but non-committal. CNBC follow-up: the concept has circulated over a year, Altman first pitched it to Trump in early 2025. Ars Technica-sourced relay: the 5% figure is 'far below' Sanders' ask. Status stays confirmed; verification stays partial (no OpenAI/WH confirmation of terms)."
+  - ts: 2026-07-23
+    change: "Linked Polymarket odds (metadata-only, no status change): 'Will the US federal government take a stake in OpenAI?' (event which-companies-will-the-us-take-a-stake-in, market 1323318, Gamma snapshot ~27% Yes). The market's resolution criteria require direct federal equity or a binding acquisition agreement, exactly matching this ticket's unresolved question; IDs read from the Gamma API."
 ---
 
 Per **NOTUS, TechCrunch, and The Decoder** (2026-06-06), the **Trump
