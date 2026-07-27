@@ -1,0 +1,10 @@
+Twitter/X AI Pulse - 2026-07-27 10:16:47 UTC
+
+CYCLE: Kimi K3 reportedly goes fully open-weight; Meta pledges an open harness
+
+TOP STORIES:
+• Moonshot AI reported to be open-sourcing Kimi K3, a 2.8T-param model — largest open-weight release to date [⚠]
+
+WATCH: Official Moonshot/Hugging Face confirmation of the Kimi K3 weights, and any benchmark reports once (if) they're live.
+
+Full update on GitHub.
