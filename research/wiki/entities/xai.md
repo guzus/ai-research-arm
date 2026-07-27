@@ -2,12 +2,14 @@
 slug: xai
 title: xAI
 type: entity
-aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1"]
+aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
 description: Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.
 created_at: 2026-06-08
-timestamp: 2026-07-19T00:00:00Z
+timestamp: 2026-07-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
+  - {title: "ARA model ticket — xAI Grok 4.6 (2T) SpaceX data", path: research/models/tickets/xai-grok-2t-spacex-data-2026-07.md}
   - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
@@ -123,6 +125,20 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   **improved long-session compaction** (@mark_k) — an incremental
   developer-tooling update to the agentic-coding surface rather than a new
   foundation model (ARA digest 2026-07-19).
+
+- **Grok 4.6 — the next from-scratch model gets a name and a timeline
+  (2026-07-21 → 2026-07-26).** Elon Musk confirmed SpaceX's proprietary
+  engineering-data corpus (excluding ITAR-restricted material) will be
+  folded into supplemental training for xAI's next ~**2-trillion-parameter**
+  model — roughly **2x Grok 4.5's 1.5T** ("V9"). By 2026-07-26 the model had
+  a working name, **Grok 4.6**, and a rough timeline — **"already in 2
+  weeks"** per Musk, expected to **surpass [[moonshot-kimi-k3|Kimi K3]]** on
+  benchmarks (@testingcatalog, corroborated by @kimmonismus). Still a
+  training-plan/timeline disclosure with **no artifact** (preview, console
+  listing, leak) as of this writing — status stays rumored in the lifecycle
+  sense even though the source (the CEO) is primary. See the
+  [Grok 4.6 ticket](../../models/tickets/xai-grok-2t-spacex-data-2026-07.md)
+  (ARA digest 2026-07-27).
 
 ## Open questions
 

@@ -6,8 +6,10 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
 created_at: 2026-06-14
-timestamp: 2026-07-20T00:00:00Z
+timestamp: 2026-07-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
+  - {title: "ARA model ticket — industry open-weights letter", path: research/models/tickets/industry-open-weights-letter-2026-07.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
@@ -251,6 +253,26 @@ fragile and local weights look like insurance.
   restricting open release — reads as notably more measured than the
   "dumping" framing being argued against, underscoring that the anti-
   dumping camp is not monolithic (ARA digest 2026-07-20).
+
+- **Near-total industry alignment on an open-weights letter — Anthropic the
+  sole holdout (2026-07-25/27).** The "dumping"-framing fight (above) escalated
+  into a concrete artifact: a cross-industry letter, **"Open Weights and
+  American AI Leadership,"** was signed by NVIDIA (Jensen Huang), Microsoft
+  (Satya Nadella), Google (Sundar Pichai, Demis Hassabis), Meta, [[openai]],
+  Mistral, Cohere, Hugging Face, GitHub, IBM, Nebius, Palantir, CrowdStrike,
+  Dell, and AMD (confirmed 2026-07-25 evening) — a rare instance of
+  primary-source, near-total alignment across normally-competing labs and
+  infrastructure vendors. **[[anthropic|Anthropic]] is the sole notable
+  non-signatory**, hardening the "Silicon Valley vs. Anthropic" framing this
+  theme has tracked since Yann LeCun/Martin Casado's anti-"dumping" pushback
+  (2026-07-20). White House AI czar **David Sacks** called Anthropic's
+  position "gaslighting," and *The Information* separately reported Anthropic
+  is weighing a highly restrictive pre-IPO employee stock-sale policy while
+  its own China-AI-restrictions lobbying has isolated it from peers. This is
+  commentary/framing, not an official Anthropic statement declining to sign.
+  See the
+  [industry open-weights letter ticket](../../models/tickets/industry-open-weights-letter-2026-07.md)
+  (ARA digest 2026-07-27).
 
 ## Open questions
 

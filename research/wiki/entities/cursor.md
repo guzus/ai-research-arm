@@ -6,8 +6,9 @@ aliases: [Cursor, Anysphere, "@cursor_ai", "Cursor AI", "SpaceXAI"]
 tags: [ai-coding, ide, acquisition, agentic-coding, capital-markets]
 description: AI coding tool / IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close); the two had been jointly training a from-scratch "SpaceXAI" model.
 created_at: 2026-06-17
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-07-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
 ---
 
@@ -39,6 +40,16 @@ the cycle's largest AI-coding M&A: a **$60B all-stock acquisition by
   the all-stock structure turns the freshly-public equity into M&A
   currency, a fresh data point in the [[ai-capex]] capital-formation
   story. See [[spacex]].
+
+- **Agent swarm rebuilds SQLite in Rust from documentation alone
+  (2026-07-27).** Cursor's upgraded **agent swarm** — which separates
+  planning agents from worker agents — rebuilt SQLite in Rust using only
+  its documentation and scored **100% on the test suite in every
+  configuration tested**, where the predecessor single-agent setup choked
+  (The Decoder). A concrete capability data point for the
+  planner/worker-split approach to long-horizon coding tasks, distinct
+  from the [[xai|SpaceXAI]] captive-model thread tracked above (ARA digest
+  2026-07-27).
 
 ## Open questions
 
