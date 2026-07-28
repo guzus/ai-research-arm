@@ -42,8 +42,11 @@ sources:
   - https://x.com/profpicsou/status/2081296924351566120
   - "@rohanpaul_ai"
   - https://x.com/rohanpaul_ai/status/2081117992428159010
+  - https://x.com/rohanpaul_ai/status/2081925443251491028
+  - "@AnthropicAI"
+  - https://x.com/AnthropicAI/status/2081864750296658008
 created_at: 2026-07-26
-updated_at: 2026-07-27
+updated_at: 2026-07-28
 closed_at: null
 closed_reason: null
 history:
@@ -51,6 +54,8 @@ history:
     change: "Created — cross-industry 'Open Weights and American AI Leadership' letter, signed by NVIDIA, Microsoft, Google, Meta, OpenAI (added 2026-07-24/25), Mistral, Cohere, Hugging Face, GitHub, IBM, Nebius, Palantir, CrowdStrike, Dell, and AMD, among others. Multiple primary-source CEO/exec posts (Jensen Huang, Satya Nadella, Sundar Pichai, Demis Hassabis) plus independent tracking of signatories being added over 2026-07-25 → status confirmed (direct company-account and exec confirmation), verification confirmed. Anthropic is the widely-noted non-signatory, framed by multiple commentators as 'Silicon Valley vs. Anthropic.'"
   - ts: 2026-07-27
     change: "Signatory growth: SpaceXAI (@AndrewCurran_) and Vercel (@rauchg) signed; a translated CN relay (@KHeresy) puts the total at 50+ companies, roughly doubling in a day. 'Silicon Valley vs. Anthropic' framing hardened — The Information (Jul 26): Anthropic's China-restriction campaign 'has left it increasingly isolated from much of Silicon Valley.' No Anthropic statement captured. Status stays confirmed; verification stays confirmed."
+  - ts: 2026-07-28
+    change: "Amazon signed — notable given Amazon holds ~19% economic interest / $13B invested in Anthropic, which still has not signed. Separately, Anthropic broke its silence with an official three-point counter-policy statement (blog + Dario Amodei quotes): it says it is NOT advocating a ban on open-weights as a category, and instead wants (1) powerful chips kept out of authoritarian hands, (2) industrial-scale distillation stopped, and (3) safety testing required for all sufficiently capable models, open and closed. Status stays confirmed; verification stays confirmed."
 ---
 
 A cross-industry coalition published an open letter, **"Open Weights and
