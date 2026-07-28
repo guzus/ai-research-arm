@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth "a few billions" ahead of a planned IPO (2026-07-19).
 created_at: 2026-05-24
-timestamp: 2026-07-27T00:00:00Z
+timestamp: 2026-07-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA model ticket — industry open-weights letter", path: research/models/tickets/industry-open-weights-letter-2026-07.md}
   - {title: "ARA daily digest 2026-07-26", path: research/digest/2026-07-26-digest.md}
@@ -768,6 +769,24 @@ of the listing.
   reinforcing the isolation frame. See the
   [industry open-weights letter ticket](../../models/tickets/industry-open-weights-letter-2026-07.md)
   and [[open-weights]] (ARA digest 2026-07-27).
+
+- **Amodei breaks silence on the open-weights standoff — rejects a ban, sets
+  three conditions instead (2026-07-28).** CEO **Dario Amodei** published a
+  policy post directly answering the days-old "sole holdout" / "gaslighting"
+  pressure from David Sacks and the [industry open-weights letter](../../models/tickets/industry-open-weights-letter-2026-07.md):
+  Anthropic **never called for banning open-weight models** and considers
+  those without dangerous capabilities a **public good**, but wants **(1)**
+  chip-export controls kept in place, **(2)** anti-distillation rules
+  (legal/commercial frameworks deterring industrial-scale distillation like
+  the [[alibaba|Alibaba]] accusation), and **(3)** mandatory pre-release
+  safety testing globally for "sufficiently capable" models, open or closed —
+  exempting smaller startups and academic work. The post reframes Anthropic's
+  position from "anti-open-weights" to "pro-open-weights-with-guardrails,"
+  landing the same cycle as reports the Trump administration is nearing a
+  framework giving federal agencies 30-day early access to frontier models.
+  Lands directly against [[moonshot-kimi-k3|Kimi K3]]'s full open-weight
+  release the same day. See [[open-weights]] and [[federal-ai-policy]] (ARA
+  daily digest 2026-07-28).
 
 ## Open questions
 - **Gated frontier strategy.** Anthropic has signaled no public release of

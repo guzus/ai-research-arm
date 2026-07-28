@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
 created_at: 2026-06-14
-timestamp: 2026-07-27T00:00:00Z
+timestamp: 2026-07-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA model ticket — industry open-weights letter", path: research/models/tickets/industry-open-weights-letter-2026-07.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
@@ -273,6 +274,22 @@ fragile and local weights look like insurance.
   See the
   [industry open-weights letter ticket](../../models/tickets/industry-open-weights-letter-2026-07.md)
   (ARA digest 2026-07-27).
+
+- **Amodei answers the "gaslighting" pressure — and Kimi K3 goes fully open
+  the same day (2026-07-28).** [[anthropic|Anthropic]] CEO **Dario Amodei**
+  published a policy post directly responding to the sole-holdout framing:
+  Anthropic **never called for banning open-weight models** and considers
+  those without dangerous capabilities a public good, but wants chip-export
+  controls, anti-distillation rules, and mandatory pre-release safety
+  testing for "sufficiently capable" models, open or closed. This reframes
+  Anthropic's position from flat refusal to conditional support — a material
+  shift in the "Silicon Valley vs. Anthropic" framing tracked since
+  2026-07-20. The same day, **[[moonshot-kimi-k3|Kimi K3]] went fully
+  open-weight** on Hugging Face (2.8T params, Modified MIT license),
+  dominating Hacker News — the sharpest concrete instance yet of the
+  China-as-open-weights-default question below, landing directly against
+  Amodei's chip-export-control ask. See [[anthropic]] and
+  [[moonshot-kimi-k3]] (ARA daily digest 2026-07-28).
 
 ## Open questions
 
