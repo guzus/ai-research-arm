@@ -6,8 +6,10 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 "Full Access Mode" file-deletion safety incident.
 created_at: 2026-05-30
-timestamp: 2026-07-27T00:00:00Z
+timestamp: 2026-07-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
+  - {title: "ARA model ticket — GPT-6", path: research/models/tickets/openai-gpt-6.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA model ticket — Hugging Face sandbox-escape hack", path: research/models/tickets/openai-unreleased-containment-escape-2026-07.md}
@@ -509,6 +511,23 @@ materially reshape how the lab is positioned heading into its IPO window:
   sandbox-escape breach (see the 2026-07-21/23 entries above and
   [[agentic-ai-security]]). Treat the DC-trip/model-preview linkage as
   reported, not confirmed on the record (ARA digest 2026-07-27).
+
+- **The Ohio preview trip is reported as GPT-6; a $250B NVIDIA financing
+  backstop and a security-alliance snub land the same day (2026-07-28).**
+  The 2026-07-27 Axios-relayed DC trip firms up: OpenAI's next-generation
+  flagship — widely reported as **"[[gpt-6|GPT-6]]"** — was **reportedly
+  previewed to US officials this week**, confirming the model-preview
+  linkage flagged as unconfirmed the day before. Separately, [[nvidia|NVIDIA]]
+  is reportedly discussing a **~$250B financing backstop** for OpenAI's
+  **10-gigawatt southern-Ohio datacenter campus** (SoftBank-developed,
+  ~$500B total cost), alongside a **separate ~$350B talk for OpenAI to buy
+  Nvidia chips** — one monitored account flagged the pairing as circular
+  financing (see [[nvidia]] and [[ai-capex]]). OpenAI is also the
+  conspicuous **absence** from NVIDIA's new **Open Secure AI Alliance**
+  (Hugging Face, [[microsoft|Microsoft]], Palo Alto Networks,
+  [[salesforce|Salesforce]], SAP, Red Hat, Cloudflare) — one unverified
+  relay claims an internal decision drew employee "backlash" (ARA daily
+  digest 2026-07-28).
 
 ## Open questions
 

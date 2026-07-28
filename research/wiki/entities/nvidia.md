@@ -4,10 +4,11 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: The dominant AI accelerator supplier; its GPUs underwrite the AI-capex buildout, and on 2026-06-05 it released the open-weights Nemotron-3-Ultra-550B that dominated developer mindshare alongside Gemma 4.
+description: The dominant AI accelerator supplier; backing Ilya Sutskever's Safe Superintelligence (~$5B, reported 2026-07-28) and reportedly discussing a ~$250B OpenAI Ohio-datacenter financing backstop, on top of the open-weights Nemotron line.
 created_at: 2026-06-05
-timestamp: 2026-06-30T00:00:00Z
+timestamp: 2026-07-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-05-21", path: research/digest/2026-05-21-digest.md}
@@ -74,6 +75,23 @@ its own **open-weights models** (the Nemotron line) on top of the silicon.
   reinforcing the silicon's position at the center of the [[ai-capex]] buildout. *(The
   "first-ever on NVIDIA" superlative was initially single-sourced.)* (ARA digest
   2026-06-30).
+
+- **A trio of capital/alliance moves stack in one day (2026-07-28).** NVIDIA
+  is reportedly discussing a **~$250B financing backstop** for [[openai|OpenAI]]'s
+  **10-gigawatt southern-Ohio datacenter campus** (SoftBank-developed, ~$500B
+  total cost), alongside a **separate ~$350B talk for OpenAI to buy Nvidia
+  chips** — an arrangement one monitored account flagged as circular
+  financing (see [[openai]] and [[ai-capex]]). Separately, NVIDIA committed a
+  reported **~$5B to [[safe-superintelligence|Ilya Sutskever's Safe Superintelligence]]**
+  against SSI's **$32B post-money valuation**, hours
+  after the two companies confirmed a compute partnership — its first
+  substantial disclosed SSI backing since the 2024 founding, framed as
+  milestone-contingent rather than a straight cash payment. And NVIDIA's new
+  **Open Secure AI Alliance** — Hugging Face, [[microsoft|Microsoft]], Palo
+  Alto Networks, [[salesforce|Salesforce]], SAP, Red Hat, Cloudflare — shipped
+  AI-security tooling with **OpenAI conspicuously absent** from the published
+  member list; one unverified relay claims an internal decision drew employee
+  "backlash" (ARA daily digest 2026-07-28).
 
 ## Open questions
 
