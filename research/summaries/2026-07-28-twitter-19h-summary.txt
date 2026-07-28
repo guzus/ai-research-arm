@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-07-28 19:47:42 UTC
+
+CYCLE: OpenAI/Anthropic push binding AI review rules + pacing letter; Anthropic cryptanalysis research
+
+TOP STORIES:
+• OpenAI, Anthropic want Aug. 1 review framework to bind Meta/xAI too; chief scientists sign "pace AI development" letter [✓]
+• Anthropic: Claude Mythos Preview found weaknesses in HAWK sig scheme + reduced-round AES, ships CryptanalysisBench [⚠]
+
+WATCH: Whether Aug. 1 frontier-model definition explicitly covers Meta and xAI, and whether more lab leaders sign the pacing letter.
+
+Full update on GitHub.
