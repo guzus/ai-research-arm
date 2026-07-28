@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-07-28
+
+TOP STORIES:
+• Anthropic breaks silence on open weights fight, wants chip controls + safety testing
+• Moonshot fully open-sources Kimi K3 (2.8T MoE), dominates Hacker News all day
+• Nvidia backs Ilya Sutskever's SSI with ~$5B, pledges 10x compute scale-up
+• Nvidia in talks for $250B OpenAI Ohio datacenter financing
+
+KEY NUMBERS:
+• CXMT Shanghai IPO: +470%, ~$487B valuation
+• Kimi K3 HN thread: 80 -> 1,252+ points in one day
+• MAI-Cyber-1-Flash: 96% on CyberGym, ~50% cheaper
+
+TRENDING: Kimi K3 open-weight release (Hacker News #1 all day)
+
+Note: no fresh 2026-07-28 source data had landed by digest time; synthesized from 2026-07-27's full cycle. YouTube fetches all failed (HTTP 500).
+
+Full digest on GitHub.
