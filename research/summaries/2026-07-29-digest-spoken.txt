@@ -1,0 +1,11 @@
+Speaker 1: Wednesday, July twenty-ninth, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI just backed a letter asking the industry to slow down AI development, and one thousand, one hundred thirty-two signatories put their names on it.
+Speaker 1: It's called "Pacing the Frontier," and having OpenAI itself sign on is the real headline here, not just another open letter.
+Speaker 2: Over in Taiwan, that Nvidia smuggling investigation just turned criminal. A court approved detention on forgery charges.
+Speaker 1: Some quick numbers out of Korea: the KOSPI dropped ten point seven percent, with Samsung and SK Hynix each down more than twelve percent.
+Speaker 2: [emphasis] Roughly six hundred billion dollars [/emphasis] has been wiped off SK Hynix's value in just a month.
+Speaker 1: On the security front, Hugging Face detailed what they're calling the first autonomous agent cyberattack, staged inside a Modal Labs sandbox.
+Speaker 2: [dramatic_pause] And in model news, Kimi K3 is now the number one open-weight model, with an Intelligence Index of [emphasis] fifty-seven [/emphasis], and it's topping LMArena's full-stack coding leaderboard too.
+Speaker 1: Claude also had a moment this week, a sixty-hour, roughly one hundred thousand dollar cryptanalysis run that found real weaknesses in HAWK and AES.
+Speaker 2: Worth noting that Kimi K3's architecture is dominating Hacker News discussion right now, now that the open-weights mega-thread has rolled off the front page.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
