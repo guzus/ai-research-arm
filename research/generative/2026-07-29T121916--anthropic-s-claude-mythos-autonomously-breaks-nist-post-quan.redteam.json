@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The HAWK figure (2^64 to 2^38) only applies to the deliberately weak, non-deployed 'challenge' parameter HAWK-256, not the NIST-submitted HAWK-512/1024 parameters.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The AES speedup is on a 7-of-10-round reduced variant requiring 2^105 chosen plaintexts, explicitly not a break of full deployed AES-128.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The process required significant human intervention (encouragement after the model's initial reluctance, ~1 month of human verification), making 'autonomous' a contested characterization.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

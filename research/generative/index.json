@@ -1086,5 +1086,26 @@
     "source": "workflow_dispatch",
     "prompt": "NVIDIA's $5B cash bet on Ilya Sutskever's Safe Superintelligence, a lab with zero shipped public models since 2023",
     "tags": []
+  },
+  {
+    "slug": "anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan",
+    "file": "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Claude Mythos vs. HAWK — What Actually Broke",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-29T12:19:16Z",
+    "source": "workflow_dispatch",
+    "prompt": "Anthropic's Claude Mythos autonomously breaks NIST post-quantum finalist HAWK and speeds up AES attack 800x",
+    "tags": [
+      "anthropic",
+      "claude-mythos",
+      "cryptography",
+      "post-quantum",
+      "hawk",
+      "aes",
+      "nist",
+      "cybersecurity"
+    ]
   }
 ]
