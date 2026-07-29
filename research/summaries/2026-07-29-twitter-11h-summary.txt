@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-07-29 11:31:21 UTC
+
+CYCLE: Anthropic's Mythos cryptanalysis, Moonshot funding details, and an OpenAI-vs-Anthropic revenue claim
+
+TOP STORIES:
+• Anthropic's Mythos model autonomously broke a NIST post-quantum signature finalist (HAWK) and sped up an AES attack 800x [✓]
+• Moonshot AI's rumored $3.5B raise at $35B valuation gets specific ARR figures, still unconfirmed by primary source [⚠]
+• ChatGPT nears 1B weekly users; relayed Information report claims Anthropic has overtaken OpenAI on revenue [⚠]
+
+WATCH: Whether NIST's post-quantum working group or independent cryptographers respond to Anthropic's HAWK/AES cryptanalysis findings.
+
+Full update on GitHub.

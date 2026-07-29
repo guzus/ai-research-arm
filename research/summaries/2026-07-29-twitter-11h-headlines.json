@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC'S MYTHOS AI CRACKS NIST POST-QUANTUM SIGNATURE FINALIST HAWK, CUTS KEY-COST FROM 2^64 TO 2^38",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2082153297670992134",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC'S MYTHOS SPEEDS UP AES-128 ATTACK 800X WITH NOVEL \"MOBIUS BRIDGE\" TECHNIQUE",
+    "source": "@Machinelearrn",
+    "url": "https://x.com/Machinelearrn/status/2082422758995009796",
+    "category": "research"
+  },
+  {
+    "headline": "MOONSHOT AI REPORTEDLY RAISES $3.5B AT $35B VALUATION, TARGETED ONLY $2B",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2082403533555483004",
+    "category": "business"
+  },
+  {
+    "headline": "REPORT: ANTHROPIC HAS OVERTAKEN OPENAI IN REVENUE AS CHATGPT NEARS 1B WEEKLY USERS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2082425151170224181",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI OPEN-SOURCES CODEX SECURITY, AN APACHE-2.0 VULNERABILITY-SCANNING CLI AND SDK",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2082263717916586117",
+    "category": "opensource"
+  }
+]
