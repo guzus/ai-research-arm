@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-29
+
+TOP 5 PAPERS:
+• MODUS - one decoder-only model generates any modality from any input combo
+• Wonder - real-time, camera-controllable video world model for interactive exploration
+• Falling Behind Drives Unsafe AI Race Behavior - competition pressure causally drives unsafe dev choices
+• HANDBOOK.md - agentic long-doc instruction following; frontier models pass only 36.2%
+• RSIBench-Data - first benchmark testing LLM agents' recursive self-improvement via data-strategy revision
+
+CATEGORIES: NLP (7), CV/Multimodal (6), Agents & Reasoning (7), Safety & Alignment (6), Other (7)
+
+Full report on GitHub.
