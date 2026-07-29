@@ -1,6 +1,6 @@
 ---
 slug: moonshot-funding-2026-06
-title: Moonshot AI targets ~$30B valuation
+title: Moonshot AI targets ~$30B valuation, later reported to hit $35B
 company: Moonshot AI
 model: null
 status: rumored
@@ -10,7 +10,16 @@ status_note: |
   curated-cycle mention with no closed terms, lead investor, or on-record
   confirmation → rumored / partial. Part of the broader Chinese-lab funding
   wave alongside DeepSeek's first external round ([[deepseek-funding-round-2026-05]]).
-expected: "TBD — valuation target only; no disclosed lead, instrument, or close date"
+
+  **2026-07-29:** A single low-credibility account (@TheCryptoJonny, no
+  named outlet) claims Moonshot "surpasses funding goal to hit
+  $35,000,000,000 valuation" — up from the ~$30B target. No closed terms,
+  lead investor, or corroboration from a named financial-press outlet or
+  Moonshot itself. Weaker sourcing than the original $30B target (which at
+  least traced to The Information/business-press curated mentions) →
+  logged as an unconfirmed valuation bump, status stays `rumored`,
+  verification stays `partial` pending better sourcing.
+expected: "TBD — valuation target only (reported as high as $35B per one low-cred account); no disclosed lead, instrument, or close date"
 labels:
   - moonshot
   - funding
@@ -21,12 +30,14 @@ sources:
   - "@TheInformation"
   - "@business"
 created_at: 2026-06-09
-updated_at: 2026-06-09
+updated_at: 2026-07-29
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-09
     change: "Created — Moonshot AI (Kimi) reportedly targeting a ~$30B valuation, ~6× its late-2025 worth. Single curated-cycle mention, no closed terms / lead / on-record confirmation → status rumored, verification partial. Sits in the Chinese-lab funding wave with [[deepseek-funding-round-2026-05]]"
+  - ts: 2026-07-29
+    change: "Unconfirmed valuation bump: a single low-credibility account (@TheCryptoJonny) claims Moonshot 'surpasses funding goal to hit $35,000,000,000 valuation,' up from the ~$30B target tracked since June. No closed terms, no named financial-press source, no Moonshot statement. Status stays rumored; verification stays partial pending stronger sourcing."
 ---
 
 **Moonshot AI** — the Chinese lab behind the **Kimi** models — is reportedly

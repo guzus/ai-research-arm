@@ -47,7 +47,7 @@ status_note: |
   this week ([[openai-gpt-6]]), which may be an instance of exactly this
   mechanism. Status stays `confirmed`; verification stays `confirmed` for
   the underlying order.
-expected: "AI cybersecurity clearinghouse stand-up within 30 days (~by early July 2026, Treasury-coordinated); 'covered frontier model' criteria + trusted-partner list TBD. First named application 2026-06-26: voluntary review used to ask OpenAI to stagger GPT-5.6 ([[openai-gpt-5-6]]) with customer-by-customer approval; Meta is the lone holdout on the voluntary model-review agreements (OpenAI/Anthropic/Google/xAI/Microsoft signed)"
+expected: "AI cybersecurity clearinghouse stand-up within 30 days (~by early July 2026, Treasury-coordinated); 'covered frontier model' criteria + trusted-partner list TBD, with smaller companies voicing concern the threshold will be written around only the top three labs. First named application 2026-06-26: voluntary review used to ask OpenAI to stagger GPT-5.6 ([[openai-gpt-5-6]]) with customer-by-customer approval; OpenAI and Anthropic are reportedly aligned on wanting the same threshold applied to Meta and xAI"
 labels:
   - regulation
   - executive-order
@@ -65,7 +65,7 @@ sources:
   - "@theinformation"
   - "@AndrewCurran_"
 created_at: 2026-06-03
-updated_at: 2026-07-28
+updated_at: 2026-07-29
 closed_at: null
 closed_reason: null
 history:
@@ -79,6 +79,8 @@ history:
     change: "Escalation signal (Axios, relayed by @AndrewCurran_, @rohanpaul_ai, @ns123abc, @vertonbiz): the administration is reportedly considering a dedicated executive order and Commerce Entity List additions specifically to restrict Chinese open-weight AI models (Kimi K3, DeepSeek named) within the US, with Kimi K3's release described as having 'reignited' the debate. This is a distinct, harder-edged action than the voluntary frontier-model-review framework this ticket otherwise tracks, but multiple relays frame it as flowing from the same executive-order apparatus — logged here as the China-facing escalation of the EO thread pending a named/signed order. Status stays confirmed (existing EO unchanged); verification stays confirmed for the original order, though this specific escalation is itself only secondary-sourced."
   - ts: 2026-07-28
     change: "The Information reports the voluntary pre-release review framework nearing completion with firmer mechanics: up to 30 days pre-release federal access, NSA + CAISI named as reviewing bodies, OpenAI/Anthropic/Google already negotiating and have seen a draft. Cross-link OpenAI's Washington preview this week ([[openai-gpt-6]]) as a possible instance of this mechanism. Status stays confirmed; verification stays confirmed for the underlying order."
+  - ts: 2026-07-29
+    change: "Scope-of-review debate + rival alignment. The Information (@leomschwartz, Jul 28 21:54 UTC): 'There are still concerns from smaller companies that they might be frozen out of this process. That it will only be written with the top three companies in mind' — i.e. the 'covered frontier model' threshold may be calibrated to capture only OpenAI/Anthropic/Google-scale labs. Separately, The Information reports OpenAI and Anthropic — 'archrivals' elsewhere — are 'aligning on two policy goals: broader government reviews of advanced models and tighter scrutiny of Chinese open-source AI,' explicitly wanting the same capability threshold imposed on Meta and xAI rather than just themselves (WesRoth analysis piece, consistent with the 06-26 entry's 'Meta is the lone holdout' finding). Status stays confirmed; verification stays confirmed."
 ---
 
 On **2026-06-02**, President Trump signed an executive order creating a

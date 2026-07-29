@@ -3,7 +3,7 @@ slug: google-nano-banana-2-lite-2026-06
 title: Google Nano Banana 2 Lite — cheap at-scale image model
 company: Google / DeepMind
 model: gemini-3.1-flash-lite-image (Nano Banana 2 Lite)
-status: released
+status: closed
 status_note: |
   **Shipped 2026-06-30** as a live model on **Google AI Studio** and as the
   Flash Lite option in the Gemini app (@testingcatalog 15:38 UTC, ~80 likes):
@@ -25,12 +25,14 @@ sources:
   - "@testingcatalog"
   - https://x.com/i/status/2071981784846258503
 created_at: 2026-07-01
-updated_at: 2026-07-01
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-29
+closed_at: 2026-07-29
+closed_reason: released-and-aged
 history:
   - ts: 2026-07-01
     change: "Created — Google shipped Nano Banana 2 Lite (`gemini-3.1-flash-lite-image`) on 2026-06-30, surfaced live on Google AI Studio with published pricing and selectable as the Flash Lite option in the Gemini app (@testingcatalog 15:38 UTC). ~4s images at ~$0.034 each ($0.25 input / $0.0336 output); Google's smallest/cheapest image model, built for at-scale usage. Status released (live and usable on Google's own surfaces), verification confirmed — but no official Google/DeepMind blog post or independent capability benchmarks yet; 'cost-effective'/'at-scale' framing is Google's. Distinct SKU below the full Nano Banana 2 / Pro line, which closed released-and-aged ([[google-nano-banana-2-2026-05]])."
+  - ts: 2026-07-29
+    change: "Closed — released-and-aged. 28 days since the 2026-06-30 launch with no further developments (no official Google post or independent benchmarks ever surfaced). Settled into normal coverage."
 ---
 
 **Nano Banana 2 Lite** (`gemini-3.1-flash-lite-image`) is Google's cheapest,

@@ -29,12 +29,14 @@ sources:
   - "@mustafasuleyman"
   - https://x.com/mustafasuleyman/status/2081781833100820681
 created_at: 2026-07-28
-updated_at: 2026-07-28
+updated_at: 2026-07-29
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-07-28
     change: "Created — Microsoft AI shipped MAI-Cyber-1-Flash, its first cybersecurity model, going to market through Project Perception (@satyanadella, official). @mustafasuleyman details 96% on CyberGym, 12pts above Anthropic's Mythos, at ~half the cost. Two matching official-account primary sources → status released, verification confirmed."
+  - ts: 2026-07-29
+    change: "Naming detail: the launch also introduced **MDASH**, a multi-agent security harness shipping alongside MAI-Cyber-1-Flash (per @testingcatalog, corroborating the 07-28 Nadella/Suleyman posts). The Information's Microsoft reporter (@aaronpholmes) frames it plainly as a cheaper Mythos competitor: 'powered by its own cybersecurity models, as well as a mix of other models from Anthropic and OpenAI... cheaper to use and easier for companies to get access to than to Mythos.' Status stays released; verification stays confirmed."
 ---
 
 **Microsoft AI** shipped **MAI-Cyber-1-Flash**, its first in-house
