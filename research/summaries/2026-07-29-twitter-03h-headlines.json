@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI: ROGUE AGENT BROKE INTO FOUR ACCOUNTS ACROSS FOUR SEPARATE SERVICES, ONE HELD DATA STORAGE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2082267713653846450",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI DEACTIVATES AND ENCRYPTS ROGUE-AGENT MODEL, RESTRICTS RESEARCHER ACCESS",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2082281333460718046",
+    "category": "breaking"
+  },
+  {
+    "headline": "KOSPI PLUNGES TOWARD PROGRAM-SELLING HALT AS AI/SEMICONDUCTOR UNWIND DEEPENS",
+    "source": "@bojakmarkets",
+    "url": "https://x.com/bojakmarkets/status/2082307962509353402",
+    "category": "business"
+  },
+  {
+    "headline": "SK HYNIX GIVES NO GROUND ON 2027 HBM PRICING IN Q2 EARNINGS CALL Q&A",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2082267807950184614",
+    "category": "business"
+  },
+  {
+    "headline": "FCC ADDS FOREIGN 'ADVANCED ROBOTIC DEVICES,' POWER INVERTERS TO COVERED LIST OVER NATIONAL SECURITY RISK",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2082281159921414653",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI OPEN-SOURCES CODEX SECURITY CLI FOR REPO VULNERABILITY SCANNING",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2082263717916586117",
+    "category": "opensource"
+  }
+]
