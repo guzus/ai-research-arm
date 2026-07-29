@@ -6,8 +6,9 @@ aliases: ["SK hynix", "SK Hynix Inc.", "SKHynix"]
 tags: [hbm, memory, semiconductors, ipo, ai-infrastructure]
 description: South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company.
 created_at: 2026-07-12
-timestamp: 2026-07-12T00:00:00Z
+timestamp: 2026-07-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA model ticket — SK Hynix Nasdaq IPO", path: research/models/tickets/sk-hynix-nasdaq-ipo-2026-07.md}
 ---
@@ -32,6 +33,15 @@ how memory capacity is becoming a capex-supercycle chokepoint — see
 Single-account sourcing (@WesRoth) in the ingest window, detailed and
 specific, but no primary financial-press corroboration yet captured —
 `verification: partial`.
+
+- **KOSPI selloff erases a month of gains (2026-07-29).** SK Hynix fell
+  **more than 12%** as the KOSPI posted its worst session since March
+  (down as much as 10.7%, Korea's eighth circuit-breaker halt of the
+  year), **erasing nearly $600B of SK Hynix value in a month**, as
+  investors weighed China's advancing domestic chip tooling against
+  doubts about AI-capex durability — a sharp reversal from the bullish
+  Nasdaq-listing narrative that opened this page. See [[ai-capex]] (ARA
+  daily digest 2026-07-29).
 
 ## Open questions
 

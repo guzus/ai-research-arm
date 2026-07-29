@@ -6,8 +6,9 @@ aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open 
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
 description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps "possibly pointing to distillation."
 created_at: 2026-07-17
-timestamp: 2026-07-28T00:00:00Z
+timestamp: 2026-07-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
@@ -166,6 +167,22 @@ covering it.
   same cycle as [[anthropic|Anthropic]] CEO Dario Amodei's open-weights
   policy post — see [[anthropic]] and [[open-weights]] (ARA daily digest
   2026-07-28).
+
+- **Post-release momentum: open-sourced kernel, #1 on two leaderboards, and
+  the licensing fine print (2026-07-29).** Moonshot open-sourced
+  **FlashKDA**, an inference kernel giving **1.72–2.22x prefill speedup on
+  H20s**, and **AgentENV**, a training environment for agentic workloads —
+  both released as follow-on tooling rather than model-card claims,
+  strengthening the "full open release" read from 2026-07-27/28. Kimi K3
+  took **#1 on Artificial Analysis's open-weight Intelligence Index (57,
+  ahead of [[zhipu-glm-5-2|GLM-5.2]]'s 51)** and **#1 on LMArena's
+  full-stack coding leaderboard**, ahead of [[gpt-5-6|GPT-5.6 Sol]] and
+  [[claude-fable-5|Claude Fable 5]] — the first clean #1 rankings (vs. the
+  earlier "closing the gap" framings) since weights shipped. The fine
+  print: Moonshot's license **requires a separate agreement once a hosting
+  provider's group revenue tops $20M over 12 months**, a commercial-use
+  gate that complicates the "fully open" framing for larger downstream
+  hosts (ARA daily digest 2026-07-29).
 
 ## Open questions
 

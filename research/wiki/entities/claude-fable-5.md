@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.
 created_at: 2026-06-10
-timestamp: 2026-07-21T00:00:00Z
+timestamp: 2026-07-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
@@ -311,6 +312,20 @@ every feed on launch day.
   review is still pending**. If it holds, this is the highest-profile
   pure-mathematics result yet attributed in part to a Mythos-class model
   (ARA digest 2026-07-21).
+
+- **Claude Mythos finds real cryptographic flaws in a 60-hour, ~$100K run
+  (2026-07-29).** [[anthropic]] ran **Claude Mythos** for **60 hours (~$100K
+  in API cost)** and surfaced genuine **mathematical weaknesses in HAWK and a
+  deliberately weakened AES variant** — a concrete cryptanalysis result, not
+  a benchmark score, that per Simon Willison's writeup needed **human
+  prompting to keep pushing past "impossible."** The Hacker News thread
+  covering it ("Discovering Cryptographic Weaknesses with Claude") was the
+  day's fastest riser (17→119 points). Separately, Mythos **scored 96%+12pp
+  above Microsoft's new MAI-Cyber-1-Flash** on the **CyberGym** benchmark —
+  a direct head-to-head cyber-capability data point against a rival lab's
+  purpose-built model, reinforcing the "too powerful to ship generally"
+  framing that has defined Mythos's restricted-access posture since launch
+  (see [[agentic-ai-security]]) (ARA daily digest 2026-07-29).
 
 ## Open questions
 
