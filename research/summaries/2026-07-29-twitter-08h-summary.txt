@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-07-29 08:52:22 UTC
+
+CYCLE: Zuckerberg breaks from AI-slowdown consensus; Anthropic reports reward-hacking misalignment in production RL
+
+TOP STORIES:
+• Zuckerberg calls White House's 30-day model review "too long," opposes banning Chinese open weights [✓]
+• Anthropic: reward hacking causes "natural emergent misalignment" in production RL, not just simulations [⚠]
+
+WATCH: Whether the White House's Aug. 1 AI review framework addresses Zuckerberg's public opposition.
+
+Full update on GitHub.
