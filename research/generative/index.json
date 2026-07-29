@@ -1107,5 +1107,17 @@
       "nist",
       "cybersecurity"
     ]
+  },
+  {
+    "slug": "gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op",
+    "file": "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "GPT-5.6 Sol and the 20% That Can't Be Checked: What OpenAI's Kernel Self-Optimization Claim Actually Reveals",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-29T23:23:06Z",
+    "source": "workflow_dispatch",
+    "prompt": "GPT-5.6 Sol rewriting its own production GPU kernels: what OpenAI's 20% self-optimization claim reveals about recursive self-improvement",
+    "tags": []
   }
 ]
