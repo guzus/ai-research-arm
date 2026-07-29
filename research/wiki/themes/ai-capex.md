@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-07-26T00:00:00Z
+timestamp: 2026-07-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-26", path: research/digest/2026-07-26-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
@@ -341,6 +342,22 @@ skepticism in one window:
   address it. A concrete, if thin, single-incident continuation of the
   rate-payer-pledge / grid-strain thread tracked since 2026-07-23 (ARA
   digest 2026-07-26).
+
+- **Korean chip stocks crater on AI-capex durability doubts (2026-07-29).**
+  The **KOSPI fell as much as 10.7%**, its worst session of the year, with
+  **[[sk-hynix|SK Hynix]] and Samsung both off more than 12%**, triggering
+  Korea's **eighth circuit-breaker halt of the year**, as investors
+  questioned whether AI-infrastructure spending is durable — the sharpest
+  single-day capex-sentiment move on the memory/HBM side of the supply
+  chain this theme has tracked, landing alongside The Verge's "AI's finally
+  expensive enough to make Wall Street nervous" framing and the same-week
+  **Meta/BlackRock off-balance-sheet financing** structure for the $14B El
+  Paso data-center campus (Meta owns only 20%, with BlackRock-managed funds
+  putting up $4.9B cash and $12.5B from debt) — a fresh data point for the
+  "hiding a staggering amount of debt" SPV critique tracked since
+  2026-07-24/25. **[[nvidia|NVIDIA]]** shares fell nearly 5% on renewed
+  "circular financing" scrutiny of its reported $250B OpenAI Ohio-campus
+  backstop the same window (ARA daily digest 2026-07-29).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s

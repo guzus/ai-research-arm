@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-07-25T00:00:00Z
+timestamp: 2026-07-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
@@ -460,6 +461,28 @@ footing for the first time in the cycle.
   weights have a stake in keeping them available, distinct from the
   frontier-lab duopoly-lobbying accusation [[open-weights]] already tracks
   (ARA digest 2026-07-25).
+
+- **OpenAI backs a 1,132-signatory letter urging Washington to build tools
+  to deliberately pace frontier AI (2026-07-29).** [[openai|OpenAI's]] own
+  account publicly backed the **"Pacing the Frontier"** letter — now signed
+  by staff from OpenAI, [[anthropic]], Google, Meta, Thinking Machines,
+  Microsoft, and Mistral — requesting the US government "support an
+  international effort to develop the technical and governance tools
+  needed to deliberately pace the frontier of automated AI development."
+  This is a materially different ask from the [[open-weights]]-coalition
+  letter this theme has separately tracked (`industry-open-weights-letter-2026-07`,
+  which argues *for* keeping open weights available) — here labs are
+  asking government to build mechanisms to *slow* development itself, and
+  the framing echoes Sam Altman's own same-day podcast comments about
+  pacing "to give society enough time to harden." Separately, the **White
+  House's voluntary pre-release review framework** — giving federal
+  agencies up to 30 days' early access to frontier models — is reportedly
+  close to finalized, with OpenAI, Anthropic, and Google already
+  submitting edits, targeting around **Aug. 1** (the same deadline this
+  theme has tracked since the June 2 EO). Do not conflate the pacing
+  letter with the open-weights letter — different signatories, different
+  ask, same industry-coalition-to-Washington pattern (ARA daily digest
+  2026-07-29).
 
 ## Open questions
 

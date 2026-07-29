@@ -6,8 +6,10 @@ aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "N
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: The dominant AI accelerator supplier; backing Ilya Sutskever's Safe Superintelligence (~$5B, reported 2026-07-28) and reportedly discussing a ~$250B OpenAI Ohio-datacenter financing backstop, on top of the open-weights Nemotron line.
 created_at: 2026-06-05
-timestamp: 2026-07-28T00:00:00Z
+timestamp: 2026-07-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
+  - {title: "ARA model ticket — NVIDIA Taiwan smuggling probe", path: research/models/tickets/nvidia-taiwan-smuggling-probe-2026-07.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
@@ -92,6 +94,17 @@ its own **open-weights models** (the Nemotron line) on top of the silicon.
   AI-security tooling with **OpenAI conspicuously absent** from the published
   member list; one unverified relay claims an internal decision drew employee
   "backlash" (ARA daily digest 2026-07-28).
+
+- **Taiwan chip-smuggling probe turns criminal (2026-07-29).** A Taiwanese
+  court approved continued detention of the NVIDIA employee held since
+  2026-07-28, citing suspected **document forgery and breach of trust**, and
+  linked the case to a **broader network** that already includes a detained
+  Super Micro-connected distributor and a data-center operator — widening
+  what began as a single-employee detention (see the model ticket
+  `nvidia-taiwan-smuggling-probe-2026-07`) into a multi-party criminal
+  investigation into chips reaching China around export controls. First
+  time Taiwan's government has taken direct action against an NVIDIA
+  employee (ARA daily digest 2026-07-29).
 
 ## Open questions
 
