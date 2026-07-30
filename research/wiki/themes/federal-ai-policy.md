@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-07-29T00:00:00Z
+timestamp: 2026-07-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
@@ -483,6 +484,22 @@ footing for the first time in the cycle.
   letter with the open-weights letter — different signatories, different
   ask, same industry-coalition-to-Washington pattern (ARA daily digest
   2026-07-29).
+
+- **Zuckerberg publicly breaks from the pacing coalition one day after it
+  formed (2026-07-30).** Barely 24 hours after the 2026-07-29
+  "Pacing the Frontier" letter, [[meta|Meta CEO Mark Zuckerberg]] publicly
+  rejected its premise in WSJ remarks: the reported **30-day pre-release
+  review** is "too long," and speed regulation would **"lock in Anthropic
+  and OpenAI's lead forever"** — while reiterating opposition to banning
+  Chinese open-weight models, even after Meta signed the separate
+  Nvidia-led "Open Weights and American AI Leadership" letter. The same
+  day, The Information reported [[openai]] and [[anthropic]] are
+  converging on the opposite ask — broader government reviews **and**
+  tighter scrutiny of Chinese open-source AI — turning what had read as a
+  broad multi-lab consensus into a **visible three-way split**: Meta
+  opposing both review-speed and China-model restrictions, OpenAI/Anthropic
+  wanting more of both. See [[meta]] and [[open-weights]] (ARA daily
+  digest 2026-07-30).
 
 ## Open questions
 

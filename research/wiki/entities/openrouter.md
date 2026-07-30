@@ -6,8 +6,9 @@ aliases: ["OpenRouter", "openrouter.ai", "@OpenRouterAI", "OpenRouter Fusion", "
 tags: [llm-router, inference, infrastructure, capital-markets]
 description: LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 and later surfaced Fusion API, a model-fusion endpoint blending outputs across providers.
 created_at: 2026-06-01
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-07-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "OpenRouter Series B announcement", date: 2026-05-30}
@@ -37,6 +38,16 @@ funding signal of the cycle:
   product response to [[open-weights]] fragmentation as [[zhipu-glm-5-2]],
   [[moonshot-kimi-k2-7-code]], [[minimax-m3]], and other models compete on
   price, context, and specialty.
+
+- **Stripe reportedly discussed a ~$10B acquisition (2026-07-30).** The
+  Information (exclusive) reports **Stripe has discussed paying nearly
+  $10B for OpenRouter** — roughly **70x** the routing startup's recent
+  annualized revenue, and a massive step up from its **$1.3B** May 2026
+  Series B post-money valuation. If it happens, it would be one of the
+  largest acquisitions yet in the AI-infrastructure layer and a bet by a
+  payments company on owning the developer-facing routing chokepoint
+  between applications and the frontier-model market this page tracks.
+  Nothing is confirmed by either company (ARA daily digest 2026-07-30).
 
 **Why the round matters.** OpenRouter sits between the application
 layer and the inference layer, capturing routing economics across
