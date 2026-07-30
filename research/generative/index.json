@@ -1119,5 +1119,17 @@
     "source": "workflow_dispatch",
     "prompt": "GPT-5.6 Sol rewriting its own production GPU kernels: what OpenAI's 20% self-optimization claim reveals about recursive self-improvement",
     "tags": []
+  },
+  {
+    "slug": "gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2",
+    "file": "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Five Labs, One Pattern: What the Race to Automate GPU Kernels Reveals About AI Self-Improvement",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-07-30T16:20:31Z",
+    "source": "workflow_dispatch",
+    "prompt": "GPT-5.6 Sol rewriting its own production GPU kernels: what OpenAI's 20% self-optimization claim reveals about recursive self-improvement",
+    "tags": []
   }
 ]
