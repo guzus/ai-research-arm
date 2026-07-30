@@ -6,8 +6,9 @@ aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
 description: Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.
 created_at: 2026-06-08
-timestamp: 2026-07-28T00:00:00Z
+timestamp: 2026-07-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA model ticket — xAI Grok 4.6 (2T) SpaceX data", path: research/models/tickets/xai-grok-2t-spacex-data-2026-07.md}
@@ -147,6 +148,19 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   from-scratch monthly-cadence claim (tracked since 2026-06-29) one model
   further out. Still no shipped artifact for either (ARA daily digest
   2026-07-28).
+
+- **Grok 4.5 lands in GitHub Copilot and Cursor's India plan; Grok 4.6
+  preview date firms up (2026-07-30).** **Grok 4.5** went live in
+  **GitHub Copilot's** model picker and **Cursor's** India-only "Start"
+  plan — third-party distribution surfaces beyond xAI's own Grok Build
+  CLI, extending the model's reach tracked since its 2026-07-12 free
+  public release. Musk also previewed a **Grok 4.6** release around
+  **~Aug 7** and a further **Grok 4.7** roadmap beyond it, tightening the
+  "already in 2 weeks" timeline first floated 2026-07-26. Separately,
+  **Grok Voice Think Fast 2.0** reportedly topped the **Artificial
+  Analysis Speech-to-Speech Quality Index at 82.9%**, cutting
+  time-to-first-audio from 1.25s to 0.70s at 60% fewer reasoning tokens,
+  priced **$0.08/minute** (ARA daily digest 2026-07-30).
 
 ## Open questions
 

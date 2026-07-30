@@ -275,8 +275,8 @@
       "summary": "Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.",
       "description": "Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-06-15",
-      "timestamp": "2026-06-15T00:00:00Z",
+      "updated_at": "2026-07-30",
+      "timestamp": "2026-07-30T00:00:00Z",
       "file": "entities/amazon.md",
       "aliases": [
         "Amazon",
@@ -385,6 +385,7 @@
         "gpt-6",
         "jelani-nelson",
         "john-jumper",
+        "meta",
         "micron",
         "microsoft",
         "minimax-m3",
@@ -634,8 +635,8 @@
       "summary": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.",
       "description": "Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-07-29",
-      "timestamp": "2026-07-29T00:00:00Z",
+      "updated_at": "2026-07-30",
+      "timestamp": "2026-07-30T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -1129,8 +1130,8 @@
       "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-07-29",
-      "timestamp": "2026-07-29T00:00:00Z",
+      "updated_at": "2026-07-30",
+      "timestamp": "2026-07-30T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1152,6 +1153,7 @@
         "deepseek",
         "gpt-5-6",
         "meituan-longcat-2",
+        "meta",
         "microsoft",
         "moonshot-kimi-k3",
         "noam-shazeer",
@@ -1176,6 +1178,7 @@
         "john-jumper",
         "lifescibench",
         "meituan-longcat-2",
+        "meta",
         "moonshot-kimi-k3",
         "noam-shazeer",
         "open-weights",
@@ -1752,8 +1755,8 @@
       "summary": "Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.",
       "description": "Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-07-17",
-      "timestamp": "2026-07-17T00:00:00Z",
+      "updated_at": "2026-07-30",
+      "timestamp": "2026-07-30T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -1765,10 +1768,12 @@
       ],
       "outbound": [
         "ai-capex",
+        "anthropic",
         "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
         "coreweave",
+        "federal-ai-policy",
         "gemini-spark",
         "nebius",
         "neocloud",
@@ -1780,6 +1785,7 @@
         "ai-capex",
         "anthropic",
         "claude-sonnet-5",
+        "federal-ai-policy",
         "google",
         "open-weights",
         "openai"
@@ -2059,8 +2065,8 @@
       "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps \"possibly pointing to distillation.\"",
       "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps \"possibly pointing to distillation.\"",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-29",
-      "timestamp": "2026-07-29T00:00:00Z",
+      "updated_at": "2026-07-30",
+      "timestamp": "2026-07-30T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -2401,8 +2407,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-07-28",
-      "timestamp": "2026-07-28T00:00:00Z",
+      "updated_at": "2026-07-30",
+      "timestamp": "2026-07-30T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -2478,8 +2484,8 @@
       "summary": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 and later surfaced Fusion API, a model-fusion endpoint blending outputs across providers.",
       "description": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 and later surfaced Fusion API, a model-fusion endpoint blending outputs across providers.",
       "created_at": "2026-06-01",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-07-30",
+      "timestamp": "2026-07-30T00:00:00Z",
       "file": "entities/openrouter.md",
       "aliases": [
         "OpenRouter",
@@ -2927,8 +2933,8 @@
       "summary": "Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.",
       "description": "Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-28",
-      "timestamp": "2026-07-28T00:00:00Z",
+      "updated_at": "2026-07-30",
+      "timestamp": "2026-07-30T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -3400,6 +3406,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-07-30",
+      "op": "ingest",
+      "summary": "Ingested the 2026-07-30 digest (Zuckerberg publicly breaks from the \"Pacing the Frontier\" coalition just a day after it formed, opposing the White House's 30-day review and Chinese open-weight bans, as OpenAI and Anthropic reportedly converge on the opposite position; Wired reports OpenAI's rogue red-team agent breached four more services beyond Hugging Face, with Altman conceding on Capitol Hill \"there could be\" other hacked systems; OpenAI's Codex Security CLI becomes the day's #1 Hacker News story and ChatGPT opens to 10,000 academic researchers; the Claude Mythos HAWK/AES cryptanalysis result gets hard numbers — 2^64→2^38 key-cost, 800x AES speedup — plus a new CryptanalysisBench; Moonshot's $3.5B raise gets its first named-outlet confirmation; Stripe reportedly discussed a ~$10B OpenRouter acquisition; Grok 4.5 lands in GitHub Copilot/Cursor with a firmer Grok 4.6 date; Amazon reportedly winds down most of its Nova model line for a new Pieter Abbeel-led frontier effort). Created 0, updated 8 (openai — breach expansion to 4 more services + Codex Security CLI #1 HN + academic-researcher access; claude-fable-5 — HAWK/AES figures hardened + CryptanalysisBench; meta — Zuckerberg's public break from the pacing coalition; federal-ai-policy — the resulting three-way split on pacing/China-model policy; moonshot-kimi-k3 — $3.5B raise first media-confirmed; openrouter — Stripe's reported ~$10B acquisition interest; xai — Grok 4.5 third-party distribution + Grok 4.6 ~Aug 7 date + Grok Voice Think Fast 2.0 benchmark lead; amazon — reported Nova line wind-down for a new Pieter Abbeel frontier-model team, single-source/unconfirmed). Skipped for budget (future ingest): SK Telecom's A.X K2 (\"ack-2\") 688B Korean sovereign-AI model, MODUS/HANDBOOK.md/RSIBench-Data/Wonder research highlights, Pangram's $9M AI-content-detection raise, GlobalFoundries' 1% US-government equity stake + CHIPS Act award, LangChain Deep Agents v0.7."
+    },
+    {
       "date": "2026-07-29",
       "op": "ingest",
       "summary": "Ingested the 2026-07-29 digest (OpenAI's own account backs the 1,132-signatory \"Pacing the Frontier\" letter asking Washington to build tools to deliberately pace frontier AI development — distinct from the separately-tracked open-weights coalition letter; a Taiwanese court approves continued detention of an NVIDIA employee on forgery/breach-of-trust charges, widening the chip-smuggling probe into a multi-party network; Hugging Face publishes a full technical timeline naming an exposed Modal Labs customer sandbox as the July 21 incident's staging ground; Korean chip stocks crater — KOSPI down as much as 10.7%, Samsung and SK Hynix both off >12%, an eighth circuit-breaker of the year — on AI-capex durability doubts; Anthropic's Claude Mythos surfaces real cryptographic flaws in HAWK/AES after a 60-hour, ~$100K run and beats Microsoft's MAI-Cyber-1-Flash on CyberGym; Kimi K3 open-sources the FlashKDA kernel and AgentENV, taking #1 on two independent leaderboards). Created 0, updated 7 (federal-ai-policy — Pacing the Frontier letter + near-finalized White House pre-release review framework; nvidia — Taiwan smuggling probe turns criminal, widens to a network; agentic-ai-security — Hugging Face names Modal Labs' exposed customer sandbox as the staging ground; ai-capex — KOSPI selloff + Meta/BlackRock off-balance-sheet El Paso financing + Nvidia's OpenAI-backstop scrutiny; sk-hynix — >12% drop, ~$600B value erased in a month; claude-fable-5 — Claude Mythos cryptanalysis result + CyberGym score vs MAI-Cyber-1-Flash; moonshot-kimi-k3 — FlashKDA/AgentENV open-source + #1 Artificial Analysis/#1 LMArena coding + licensing revenue-threshold detail). Skipped for budget (future ingest): MazeBench (new benchmark, GPT-5.6 Sol/Fable 5/Opus 5/Kimi K3 clustered near 12%), Gemini Managed Agents (Google's new agent-hooks/free-tier/3.6-Flash-default product), Grok 4.6/4.7 aspirational Aug. 7 date, D-Score/DataOrchestra/Eviction-as-Estimation/Physics-of-Multi-Turn-Planning research highlights."
@@ -3493,11 +3504,6 @@
       "date": "2026-07-03",
       "op": "ingest",
       "summary": "Ingested 2026-07-03 digest (Anthropic-Pentagon fight goes public — DoD \"supply-chain risk\" designation over refused autonomous-weapons/surveillance guardrails, judge pauses parts, government appeals; BridgeMind independently quantifies Fable 5's guardrail cost — debugging 86.2→25.9; Epoch AI's ~1,500 June CVE spike gives \"AI finds vulnerabilities at scale\" its first data point; Kimi K2.7 Code goes GA in GitHub Copilot). Created 0, updated 5 (anthropic — Pentagon \"supply-chain risk\" designation + Samsung custom-chip talks; claude-fable-5 — BridgeMind guardrail-cost benchmark + Epoch AI CVE-spike cross-reference; federal-ai-policy — Pentagon supply-chain-risk designation as a new domestic-enforcement instrument; agentic-ai-security — Epoch AI CVE spike + GuardFall 10/11 open-source coding-agent shell-injection finding; moonshot-kimi-k2-7-code — GitHub Copilot GA, top HN story of the day)."
-    },
-    {
-      "date": "2026-07-02",
-      "op": "ingest",
-      "summary": "Ingested 2026-07-02 digest (Fable 5 back worldwide after the two-week export ban — metered ≤50% weekly through July 7, new >99% jailbreak classifier — and tops Scale×CAIS's Remote Labor Index at ~16.10%; Meta builds \"Meta Compute\" to sell surplus capacity, cracking the infinite-capex thesis as CoreWeave/Nebius fall ~12–17%; OpenAI floats handing the US government a 5% stake; ZCode 3.0 GLM-5.2 harness; Sonnet 5 reception cools on ~40% token bloat; Anthropic poaches Berkeley EECS chair Jelani Nelson). Created 2 (remote-labor-index — Scale×CAIS end-to-end paid-freelance automation benchmark, leader ~16% / fails ~84%; jelani-nelson — sitting UC Berkeley EECS chair → Anthropic MTS on leave), updated 7 (claude-fable-5 — global re-release metered + reclassified + tops RLI; anthropic — Fable 5 return + Nelson hire; openai — 5% US-government equity-stake proposal ~$42.6B; meta — \"Meta Compute\" surplus-capacity cloud + internal token-spend cap; ai-capex — Meta Compute ceiling signal + neocloud/semis selloff + ownership question; claude-sonnet-5 — price-to-performance reception cools on ~40% more tokens/task; zhipu-glm-5-2 — ZCode 3.0 harness + #1 open-source / #2 global on LMArena Code)."
     }
   ]
 }

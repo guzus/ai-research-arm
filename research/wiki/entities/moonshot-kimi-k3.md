@@ -6,8 +6,9 @@ aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open 
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
 description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps "possibly pointing to distillation."
 created_at: 2026-07-17
-timestamp: 2026-07-29T00:00:00Z
+timestamp: 2026-07-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
@@ -183,6 +184,17 @@ covering it.
   provider's group revenue tops $20M over 12 months**, a commercial-use
   gate that complicates the "fully open" framing for larger downstream
   hosts (ARA daily digest 2026-07-29).
+
+- **The $3.5B raise gets its first named-outlet confirmation (2026-07-30).**
+  Indian outlet **ET Tech** became the first named media source to
+  corroborate Moonshot's raise, after a day of screenshot-only claims:
+  **$3.5B closed against a $2B target**, a **$35B valuation**, and
+  **$300M June ARR** (up from $200M in April, consistent with the
+  2026-07-20 figures above) — plus talks for a **follow-on round at $50B
+  pre-money** and a planned **Hong Kong IPO**. Moonshot itself has still
+  not commented on the record. This is the clearest confirmation yet of
+  the funding trajectory this page has tracked since the 2026-07-20
+  "$30B+ IPO nears" entry (ARA daily digest 2026-07-30).
 
 ## Open questions
 
