@@ -1,0 +1,10 @@
+Twitter/X AI Pulse - 2026-07-30 22:16:07 UTC
+
+CYCLE: Anthropic confirms two Claude network incidents; cryptographers give first outside read on HAWK/AES cryptanalysis
+
+TOP STORIES:
+• Anthropic: two network failures cut Claude serving capacity over 24h, stabilizing but not fully clear [⚠]
+
+WATCH: Whether Anthropic posts a formal resolution/postmortem for the Claude network incidents.
+
+Full update on GitHub.
