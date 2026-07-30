@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-07-30T16:21:37.543Z",
-  "windowStart": "2026-07-29T04:00:00.000Z",
-  "windowEnd": "2026-08-01T05:00:00.000Z",
+  "generatedAt": "2026-07-30T18:03:16.476Z",
+  "windowStart": "2026-07-29T06:00:00.000Z",
+  "windowEnd": "2026-08-01T07:00:00.000Z",
   "timezone": "UTC",
   "items": [
     {
@@ -694,44 +694,69 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/b5c4b3cdc542cecaba976488916e9a3377e13c35"
     },
     {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-07-30T16-30-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-70721798f785",
+      "kind": "completed",
+      "lane": "Generative",
+      "title": "Five Labs, One Pattern: What the Race to Automate GPU Kernels Reveals About AI Self-Improvement ",
+      "status": "completed",
+      "start": "2026-07-30T15:31:00.000Z",
+      "end": "2026-07-30T16:22:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "research agent",
+      "commit": "70721798f785",
+      "url": "https://github.com/guzus/ai-research-arm/commit/70721798f7857cb756bfcba2d4be7569bc44e119"
+    },
+    {
+      "id": "commit-f520e3feeaa6",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-07-30 16:21 UTC (#1310)",
+      "status": "completed",
+      "start": "2026-07-30T16:21:00.000Z",
+      "end": "2026-07-30T16:23:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "f520e3feeaa6",
+      "url": "https://github.com/guzus/ai-research-arm/commit/f520e3feeaa64ae8e271fd9ece2870bd5013a2df"
+    },
+    {
+      "id": "commit-4095ce5fdd6d",
+      "kind": "completed",
+      "lane": "Twitter/X",
+      "title": "Twitter/X brief",
+      "status": "completed",
+      "start": "2026-07-30T16:42:00.000Z",
+      "end": "2026-07-30T16:51:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "deepseek-v4-flash",
+      "commit": "4095ce5fdd6d",
+      "url": "https://github.com/guzus/ai-research-arm/commit/4095ce5fdd6d900e377df6898500074c68c00b64"
+    },
+    {
+      "id": "commit-e5525dc1fe7d",
+      "kind": "completed",
+      "lane": "Community",
+      "title": "HN + Reddit digest",
+      "status": "completed",
+      "start": "2026-07-30T17:50:00.000Z",
+      "end": "2026-07-30T17:55:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "e5525dc1fe7d",
+      "url": "https://github.com/guzus/ai-research-arm/commit/e5525dc1fe7df410cac3ebf7a627ed99bc1e5296"
+    },
+    {
+      "id": "commit-379d1c709c58",
+      "kind": "completed",
       "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-07-30T16:30:00.000Z",
-      "end": "2026-07-30T16:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-07-30T16-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-07-30T16:45:00.000Z",
-      "end": "2026-07-30T17:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-07-30T16-47-00-000Z",
-      "kind": "scheduled",
-      "lane": "Blogs",
-      "title": "Naver Blog Subscriptions",
-      "status": "scheduled",
-      "start": "2026-07-30T16:47:00.000Z",
-      "end": "2026-07-30T17:17:00.000Z",
-      "source": "cron 47 */2 * * *"
-    },
-    {
-      "id": "scheduled-liveness-check-yml-0---6-------2026-07-30T18-00-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Pipeline Liveness Check",
-      "status": "scheduled",
-      "start": "2026-07-30T18:00:00.000Z",
-      "end": "2026-07-30T18:20:00.000Z",
-      "source": "cron 0 */6 * * *"
+      "title": "RSS official announcements",
+      "status": "completed",
+      "start": "2026-07-30T17:55:00.000Z",
+      "end": "2026-07-30T18:00:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "379d1c709c58",
+      "url": "https://github.com/guzus/ai-research-arm/commit/379d1c709c58ca296d6f7f49affdc55ee82e4491"
     },
     {
       "id": "scheduled-hourly-twitter-yml-7---3-------2026-07-30T18-07-00-000Z",
@@ -1742,6 +1767,46 @@
       "start": "2026-08-01T04:19:00.000Z",
       "end": "2026-08-01T05:19:00.000Z",
       "source": "cron 19 */4 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-08-01T04-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-08-01T04:30:00.000Z",
+      "end": "2026-08-01T04:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-08-01T04-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-08-01T04:45:00.000Z",
+      "end": "2026-08-01T05:15:00.000Z",
+      "source": "cron 45 */2 * * *"
+    },
+    {
+      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-08-01T04-47-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Naver Blog Subscriptions",
+      "status": "scheduled",
+      "start": "2026-08-01T04:47:00.000Z",
+      "end": "2026-08-01T05:17:00.000Z",
+      "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-liveness-check-yml-0---6-------2026-08-01T06-00-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Pipeline Liveness Check",
+      "status": "scheduled",
+      "start": "2026-08-01T06:00:00.000Z",
+      "end": "2026-08-01T06:20:00.000Z",
+      "source": "cron 0 */6 * * *"
     }
   ]
 }
