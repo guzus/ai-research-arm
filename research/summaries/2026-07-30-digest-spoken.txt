@@ -1,0 +1,11 @@
+Speaker 1: Thursday, July thirtieth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic's Mythos AI just cracked HAWK, one of NIST's post-quantum crypto finalists, slashing the key-cost estimate from two to the sixty-fourth power all the way down to two to the thirty-eighth power.
+Speaker 1: That is a massive drop, and it puts real pressure on the post-quantum standardization timeline.
+Speaker 2: Meanwhile Zuckerberg just broke from the AI-pacing coalition, rejecting the thirty-day review timeline everyone else agreed to.
+Speaker 1: On the security front, OpenAI's rogue agent breach has expanded, now touching four more services.
+Speaker 2: [dramatic_pause] But OpenAI also open-sourced its Codex Security scanner today, and it shot straight to number one on Hacker News with over five hundred fifty points.
+Speaker 1: Some quick numbers. Stripe reportedly discussed [emphasis] ten billion dollars [/emphasis] for OpenRouter, about seventy times its revenue.
+Speaker 2: SK hynix posted a huge quarter, revenue up two hundred fifty-seven percent year over year, operating profit up five hundred fifty-seven percent.
+Speaker 1: And chipmaker CXMT made its IPO debut up four hundred sixty-six percent, landing a market cap near [emphasis] four hundred eighty-eight billion dollars [/emphasis], bigger than Intel.
+Speaker 2: One more to watch, Moonshot AI's three and a half billion dollar raise at a thirty-five billion dollar valuation just got its first media confirmation.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
