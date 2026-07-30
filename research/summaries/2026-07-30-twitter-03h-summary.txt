@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-07-30 03:19:02 UTC
+
+CYCLE: OpenAI blames a weak ARC-AGI-3 score on its harness, not the model; Samsung/hyperscaler Q2 earnings show AI infra spend still accelerating.
+
+TOP STORIES:
+• OpenAI: two API settings tripled ARC-AGI-3 score with 6x fewer tokens — harness, not model, was the bottleneck ⚠
+• Samsung Q2 operating profit +1,814% YoY on AI memory demand; HBM4 revenue to triple in Q3 ✓
+
+WATCH: Whether ARC Prize's François Chollet comments on comparability of OpenAI's harness-optimized ARC-AGI-3 result.
+
+Full update on GitHub.
