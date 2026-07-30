@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-07-30
+
+TOP STORIES:
+• Zuckerberg breaks from AI-pacing coalition, rejects 30-day review timeline
+• OpenAI's rogue agent breach expands to four more services (Wired)
+• Anthropic's Mythos AI cracks NIST post-quantum crypto finalist HAWK
+• Moonshot AI's $3.5B/$35B raise gets first media confirmation
+• OpenAI open-sources Codex Security scanner (#1 on HN, 553 pts)
+
+KEY NUMBERS:
+• Stripe reportedly discussed ~$10B for OpenRouter (~70x revenue)
+• SK hynix Q2: revenue +257% YoY, operating profit +557% YoY
+• CXMT IPO debut: +466%, ~$488B market cap (bigger than Intel)
+• Mythos cut HAWK's key-cost estimate from 2^64 to 2^38 ops
+
+TRENDING: OpenAI's Codex Security launch + fallout from the Hugging Face intrusion story dominate Hacker News.
+
+Full digest on GitHub.
