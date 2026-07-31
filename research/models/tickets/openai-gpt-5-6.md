@@ -150,6 +150,16 @@ status_note: |
   `released`; verification stays `confirmed` (the regression-and-
   compensation event is well-corroborated across independent accounts,
   even as its precise mechanics remain unsettled).
+
+  **2026-07-30 — API pricing cuts (Luna -80%, Terra -20%) + Sol Fast mode.**
+  @OpenAI's own account: "Starting today, we are reducing prices for GPT-5.6
+  Luna by 80% and GPT-5.6 Terra by 20%, and offering a faster option for
+  GPT-5.6 Sol in the API." @sama/@gdb give exact figures: Luna to
+  $0.20/$1.20 per Mtok, Terra to $2/$12 per Mtok; a new "Fast" mode for Sol
+  runs ~2.5x speed at ~2x price. Independently corroborated by
+  @kimmonismus, @scaling01, @testingcatalog, @AndrewCurran_. Official
+  primary + broad corroboration → status stays `released`; verification
+  stays `confirmed`.
 expected: "GA confirmed 2026-07-10: OpenAI's own account announced GPT-5.6 Sol Ultra generally available, and @sama says GPT-5.6 is now the preferred model in Microsoft 365 Copilot. Family is Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol set SOTA on Terminal-Bench 2.1 with max + ultra (subagent) modes; pricing Sol $5/$30, Terra $2.50/$15, Luna $1/$6 per MTok"
 labels:
   - openai
@@ -168,7 +178,7 @@ sources:
   - https://openai.com/index/previewing-gpt-5-6-sol/
   - https://simonwillison.net/2026/Jun/26/openai/
 created_at: 2026-06-09
-updated_at: 2026-07-14
+updated_at: 2026-07-31
 closed_at: null
 closed_reason: null
 history:
@@ -200,6 +210,8 @@ history:
     change: "Status → released. @OpenAI's own account confirmed GA: 'Yesterday, we made GPT-5.6 Sol Ultra generally available' (2026-07-10), plus a health-intelligence post citing GPT-5.6 Luna outperforming GPT-5.5. @sama separately said GPT-5.6 is now the preferred model in Microsoft 365 Copilot. Multiple independent users report hitting rate limits on it, consistent with broad rollout beyond the ~20-org gated preview. Status advances confirmed → released; verification stays confirmed (official primary + broad corroboration)."
   - ts: 2026-07-14
     change: "Post-GA quality regression reported. @theo, @kimmonismus, testingcatalog, and @jxnlco (relaying @thsottiaux) say OpenAI quietly reduced GPT-5.6's reasoning-effort budget and discussed a context-window rollback (372k→272k), then compensated with 'banked resets' to ChatGPT Work/Codex usage limits for an estimated 500k-7M users. @theo partially walked back the precise mechanism in his own thread, so the exact technical cause is contested even though the regression-and-compensation event itself is well-corroborated. No official OpenAI statement on the regression. Status stays released; verification stays confirmed."
+  - ts: 2026-07-31
+    change: "API pricing cuts: GPT-5.6 Luna -80% (to $0.20/$1.20 per Mtok), Terra -20% (to $2/$12 per Mtok), plus a new ~2.5x-speed/~2x-price 'Fast' mode for Sol. Official @OpenAI account, exact figures via @sama/@gdb; corroborated by @kimmonismus, @scaling01, @testingcatalog, @AndrewCurran_. Status stays released; verification stays confirmed."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely

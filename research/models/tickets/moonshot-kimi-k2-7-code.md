@@ -3,7 +3,7 @@ slug: moonshot-kimi-k2-7-code
 title: Moonshot Kimi K2.7 Code — open coding model
 company: Moonshot AI
 model: Kimi K2.7 Code
-status: released
+status: closed
 status_note: |
   **Moonshot AI** launched **Kimi K2.7 Code**, an **open** coding model that,
   per The Decoder (2026-06-13), **undercuts GPT-5.5 and Claude by up to ~12× on
@@ -30,14 +30,16 @@ sources:
   - https://the-decoder.com/moonshots-open-model-kimi-k2-7-code-undercuts-gpt-5-5-and-claude-by-up-to-12x-on-price-per-token/
   - https://www.reddit.com/r/LocalLLaMA/comments/1u4m7i6/unsloth_kimik27codegguf/
 created_at: 2026-06-14
-updated_at: 2026-07-03
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-31
+closed_at: 2026-07-31
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-14
     change: "Created — Moonshot AI launched Kimi K2.7 Code, an open coding model that undercuts GPT-5.5 and Claude by up to ~12x on price per token while staying competitive (The Decoder, 2026-06-13); open weights shipping (Unsloth K2.7-Code-GGUF uploading to Hugging Face). Real, available artifact → status released; corroborated by The Decoder + community GGUF uploads but no captured primary Moonshot URL/model card → verification partial. Distinct artifact from Moonshot's funding round ([[moonshot-funding-2026-06]]); sits in the Chinese open-weights surge with [[zhipu-glm-5-2]], [[minimax-m3]], [[alibaba-qwen-3-7-plus]]"
   - ts: 2026-07-03
     change: "GA inside GitHub Copilot — top HN story today (342 points), read as a non-US open model winning mainstream IDE distribution. A public, directly-verifiable product listing → verification partial → confirmed. Status stays released."
+  - ts: 2026-07-31
+    change: "Closed — released-and-aged. 47 days past the 2026-06-14 release (≥4 weeks), no fresh signal since the 2026-07-03 GitHub Copilot GA update, no successor (K2.x Code) announced. Per this ticket's own transition trigger."
 ---
 
 **Kimi K2.7 Code**, from **Moonshot AI**, is an **open coding model** that
