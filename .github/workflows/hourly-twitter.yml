@@ -594,6 +594,38 @@ jobs:
               and (.public_items | type == "number" and . >= 0)
             ' "$STATUS_FILE" >/dev/null; then
               echo "fallback-needed: malformed cycle status"
+              # Name the offending field(s). The bare message above cost a
+              # real investigation: every identity value LOOKS right in a log
+              # dump, so "malformed" alone gives an operator nothing to act
+              # on — and the recovery path then discards the file, so the
+              # evidence is gone by the time anyone looks. Type mismatches
+              # are the ones you cannot see by eye (an unquoted numeric
+              # run_id renders identically to a quoted one), which is why
+              # this prints tojson on both sides.
+              # Capture rather than pipe: `jq | sed` reports sed's exit
+              # status, so a `|| echo "not valid JSON"` on the pipeline
+              # would never fire on a malformed file.
+              if status_diag=$(jq -r \
+                --arg date "$DATE" \
+                --arg hour "${HOUR}:00 UTC" \
+                --arg generated_at "$TIMESTAMP" \
+                --arg run_id "$RUN_ID" \
+                --argjson run_attempt "$RUN_ATTEMPT" '
+                [ (if .schema_version != 1 then "schema_version: want 1, got \(.schema_version|tojson)" else empty end),
+                  (if .date != $date then "date: want \($date|tojson), got \(.date|tojson)" else empty end),
+                  (if .hour != $hour then "hour: want \($hour|tojson), got \(.hour|tojson)" else empty end),
+                  (if .generated_at != $generated_at then "generated_at: want \($generated_at|tojson), got \(.generated_at|tojson)" else empty end),
+                  (if .run_id != $run_id then "run_id: want \($run_id|tojson), got \(.run_id|tojson)" else empty end),
+                  (if .run_attempt != $run_attempt then "run_attempt: want \($run_attempt|tojson), got \(.run_attempt|tojson)" else empty end),
+                  (if (.status != "published" and .status != "no_update") then "status: want published|no_update, got \(.status|tojson)" else empty end),
+                  (if (.public_items|type) != "number" or .public_items < 0 then "public_items: want number >= 0, got \(.public_items|tojson)" else empty end)
+                ] | .[]' "$STATUS_FILE" 2>/dev/null); then
+                [ -n "$status_diag" ] && printf '%s\n' "$status_diag" | sed 's/^/  mismatch: /'
+              else
+                echo "  mismatch: file is not valid JSON"
+              fi
+              echo "  agent-written status file (discarded by recovery below):"
+              sed 's/^/    /' "$STATUS_FILE" | head -20
               missing=1
             fi
             status=$(jq -r '.status // "invalid"' "$STATUS_FILE" 2>/dev/null || echo invalid)
