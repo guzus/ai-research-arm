@@ -85,7 +85,7 @@ Reading notes:
 | digest-synthesis | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
 | digest-synthesis-fallback | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
 | generative-research-claude (+1 retry step) | `generative-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| generative-research-default | `generative-research.yml` | dispatch default (runtime SSOT) | (per chosen backend) | default: `claude` | (per chosen backend) | workflow-level `fireworks_fallback` input (default `claude`) |
+| generative-research-default | `generative-research.yml` | dispatch default (runtime SSOT) | (per chosen backend) | default: `opus-5` | (per chosen backend) | workflow-level `fireworks_fallback` input (default `claude`) |
 | model-timeline | `24h-model-timeline.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | research-issue (×2 step variants) | `research-issue.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | rss | `hourly-rss.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |

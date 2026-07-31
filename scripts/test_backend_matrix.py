@@ -138,7 +138,8 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn("Verify pinned model provenance", workflow)
         self.assertIn("actual_model=$(jq -r", workflow)
         self.assertTrue(self.obs["generative-research.yml"].has_fable_dispatch)
-        self.assertEqual(self.lanes["generative-research-default"]["backend"], "claude")
+        # Fable is never reachable without asking for it by name.
+        self.assertNotEqual(self.lanes["generative-research-default"]["backend"], "fable-5")
 
     def test_gen_research_opus_5_is_explicit_and_provenance_checked(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
@@ -160,6 +161,17 @@ class RoutingInvariants(unittest.TestCase):
         self.assertTrue(self.obs["generative-research.yml"].has_opus_dispatch)
         from build_backend_matrix import GEN_RESEARCH_BACKENDS
         self.assertIn("opus-5", GEN_RESEARCH_BACKENDS)
+        # opus-5 is the SSOT default: manual dispatch with no backend input,
+        # gen-research issues, and hourly-twitter's auto-research all inherit
+        # it. The workflow must keep resolving that default at runtime rather
+        # than hard-coding a backend of its own.
+        self.assertEqual(self.lanes["generative-research-default"]["backend"], "opus-5")
+        self.assertIn("generative-research-default",
+                      self.obs["generative-research.yml"].resolver_lanes)
+        # The Fireworks-unavailable fallback is deliberately NOT the default:
+        # a fallback target should be the cheap reliable path.
+        self.assertIn('backend="claude"', (REPO_ROOT / ".github" / "workflows" /
+                      "generative-research.yml").read_text(encoding="utf-8"))
 
     def test_gen_research_opencode_kimi_is_explicit_and_fail_closed(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
