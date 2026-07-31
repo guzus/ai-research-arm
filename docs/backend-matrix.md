@@ -108,6 +108,7 @@ Reading notes:
 | (dispatch path) backend=codex | `generative-research.yml` | Codex CLI | OpenAI (ChatGPT subscription auth) | codex CLI default | `CODEX_AUTH_JSON` | — |
 | (dispatch path) backend=opencode-kimi-k3 | `generative-research.yml` | opencode CLI | OpenCode Go → Moonshot (env-resolved) | `kimi-k3` | `OPENCODE_API_KEY` | hard fail (strict comparison backend) |
 | (dispatch path) backend=fable-5 | `generative-research.yml` | Claude Code · claude-code-action (explicit premium selector) | Anthropic (native) | `claude-fable-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (no model-action retry) |
+| (dispatch path) backend=opus-5 | `generative-research.yml` | Claude Code · claude-code-action (explicit model selector) | Anthropic (native) | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (one recovery retry, same as `claude`) |
 | (canary) opencode + kimi-k3 | `opencode-kimi-canary.yml` | opencode CLI | OpenCode Go → Moonshot (env-resolved) | `kimi-k3` | `OPENCODE_API_KEY` | hard fail (diagnostics lane) |
 
 ### Workflows with no model lane (deterministic / infra)
@@ -121,7 +122,7 @@ Reading notes:
 - `daily-youtube.yml`
 - `liveness-check.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-sonnet-5`. 30 SSOT lanes (+5 dispatch execution paths) across 26 workflows; 8 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-sonnet-5`. 30 SSOT lanes (+6 dispatch execution paths) across 26 workflows; 8 workflows run no model._
 
 <!-- END GENERATED BACKEND MATRIX -->
 
