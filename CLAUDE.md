@@ -229,14 +229,19 @@ back to host-level `pi --tools ... bash`.
 | `ci.yml` | push/PR on workflows/dashboard/scripts | actionlint + dashboard build + Python tests on GitHub-hosted runners |
 | `claude.yml` | `@claude` mention in issue/PR/review | Interactive Claude-Code agent |
 | `claude-code-review.yml` | PR opened/synced | Automated Claude code review |
-| `twitter-model-ab.yml` | daily `21:40` UTC (temporary — remove after the eval week) + manual dispatch | Same-input, parity-locked model A/B eval (claude-sonnet-5 vs GLM-5.2 via Z.ai) on the Twitter-summary workload with a blinded position-swapped Opus judge → `research/eval/twitter-ab/`. Contract: [`docs/twitter-model-ab.md`](docs/twitter-model-ab.md). |
+| `twitter-model-ab.yml` | daily `21:40` UTC (temporary — remove after the eval week) + manual dispatch | Same-input, parity-locked model A/B eval (leg A = the production `fallback.native_model`, `claude-opus-5` since 2026-08-01, vs GLM-5.2 via Z.ai) on the Twitter-summary workload with a blinded position-swapped Opus judge → `research/eval/twitter-ab/`. Contract: [`docs/twitter-model-ab.md`](docs/twitter-model-ab.md). |
 
 **Model convention:** scheduled workflows pass `--model opus`, but
 `agent-run` remaps that alias to whatever the resolved backend serves —
 the Fireworks or Z.ai profile model, or `native-model` (default
-**`claude-sonnet-5`**) on the native path. Direct Claude workflows pin
-`--model claude-sonnet-5` via `claude_args`. Read the workflow file
-rather than assuming one provider everywhere.
+**`claude-opus-5`** since 2026-08-01 — was `claude-sonnet-5`) on the
+native path. Direct Claude workflows are NOT covered by that default:
+the mirror lanes (`claude.yml`, `claude-code-review.yml`,
+`ai-news-research.yml`, `daily-improve.yml`, `research-issue.yml`,
+`twitter-account-explorer.yml`) still pin `--model claude-sonnet-5`
+literally via `claude_args`, and the README diagram's `native` node is
+where that split is visible. Read the workflow file rather than assuming
+one provider everywhere.
 
 ## Backends
 
@@ -255,7 +260,7 @@ derivable from the SSOT.
 
 | Backend | When | Auth | Notes |
 |---|---|---|---|
-| **Claude** | Every production agent lane; `generative-research backend=claude` (no longer that lane's default — see Opus 5 below — but still its Fireworks-unavailable fallback) | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic, model **`claude-sonnet-5`** (the global `fallback.native_model`). Leads the fallback chain. Its token expiring is a fleet-wide outage — see rule 14 and the Authentication table. |
+| **Claude** | Every production agent lane; `generative-research backend=claude` (no longer that lane's default — see Opus 5 below — but still its Fireworks-unavailable fallback) | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic, model **`claude-opus-5`** (the global `fallback.native_model`, raised from `claude-sonnet-5` on 2026-08-01 — same OAuth credential and subscription billing, so the flip is a quality/quota trade, not a new secret). Leads the fallback chain. Its token expiring is a fleet-wide outage — see rule 14 and the Authentication table. |
 | **GLM 5.2 (via Z.ai Coding Plan)** | Second link in the fallback chain; `agent-run backend=zai-glm-5p2`; default manual `hourly-twitter.yml` backend; `zai-claude-code-canary.yml` | `ZAI_API_KEY` | Anthropic-compatible Claude Code endpoint `https://api.z.ai/api/anthropic`, model `glm-5.2`, `CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000`. The `glm-5.2[1m]` alias was rejected as `Unknown Model` (canary run `28751367808`) — keep the endpoint-valid id unless a raw probe proves otherwise. Because it shares the harness and sandbox but not the credential, **the canary is the fastest way to tell a dead Claude token from a broken runner**. Selectors: `zai-glm-5p2`, `zai-glm-5.2`, `zai-glm52`, `zai`. |
 | **GLM 5.2 (via Fireworks)** | `generative-research backend=glm-5p2` | `FIREWORKS_API_KEY` | Model `accounts/fireworks/models/glm-5p2`. Selectors: `fireworks-glm-5p2`, `glm-5p2`, `glm`. In `generative-research.yml` the workflow-level `fireworks_fallback` input falls back to native Claude by default. |
 | **DeepSeek V4 Flash (via Fireworks)** | Low-cost/comparison: `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek tiers | `FIREWORKS_API_KEY` | Endpoint `https://api.fireworks.ai/inference` (base URL omits `/v1`; the client appends `/v1/messages`), model `accounts/fireworks/models/deepseek-v4-flash`. Overrides `ANTHROPIC_BASE_URL`/`AUTH_TOKEN`/`MODEL` so the Claude action transparently calls Fireworks. The direct DeepSeek API is retired (billing). Scheduled DeepSeek lanes are STRICT comparison tiers that never fall back. |

@@ -164,8 +164,8 @@ flowchart LR
         OAI["🤖 OpenAI Codex CLI<br/><i>ChatGPT auth</i>"]
         MSH["🌙 Moonshot Kimi K3<br/><i>opencode CLI</i>"]
     end
-    lanes0 -->|"claude-sonnet-5"| ANT
-    strict0 -->|"claude-sonnet-5"| ANT
+    lanes0 -->|"claude-opus-5"| ANT
+    strict0 -->|"claude-opus-5"| ANT
     strict1 -->|"deepseek-v4-flash"| FW
     strict2 -->|"glm-5.2"| ZAI
     gendef -->|"claude-opus-5"| ANT
