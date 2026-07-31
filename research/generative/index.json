@@ -1131,5 +1131,24 @@
     "source": "workflow_dispatch",
     "prompt": "GPT-5.6 Sol rewriting its own production GPU kernels: what OpenAI's 20% self-optimization claim reveals about recursive self-improvement",
     "tags": []
+  },
+  {
+    "slug": "situational-awareness-lp-collapse",
+    "file": "2026-07-31T051841--situational-awareness-lp-collapse.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The margin call that could not reach the Anthropic stake",
+    "model": "claude-opus-5",
+    "created_at": "2026-07-31T05:18:41Z",
+    "source": "workflow_dispatch",
+    "prompt": "The collapse of Situational Awareness LP: what a $20B forced AI-trade unwind proves, and what it doesn't\n\nOn 30 July 2026, Situational Awareness LP — the AI-focused hedge fund founded by former OpenAI researcher Leopold Aschenbrenner and named after his June 2024 essay \"Situational Awareness: The Decade Ahead\" — sold its entire public equity book (longs AND shorts) to Citadel in a single pre-open block after margin calls from Goldman Sachs, JPMorgan and Bank of America. Write a comprehensive, analyst-grade investigation covering three linked questions:\n\n1. MECHANISM. Reconstruct the unwind from primary sources: the ~4x gross leverage, the crowded \"long AI hardware / short software\" expression, the July drawdown in the concentrated longs (SK Hynix, CoreWeave, Nebius, Micron, Bloom Energy, bitcoin miners — reportedly -35% to -47% on the month) and the simultaneous adverse move in the software shorts (e.g. Adobe), why the hedges were the wrong hedges, the prime-broker margin sequence, and Citadel's role as the block bid. Situate it in July's broader positioning stress (the record UBS AI-capex-vs-AI-disruption basket spread, AI-infrastructure-borrower CDS widening, Meta Compute, four straight weeks of hedge-fund semiconductor selling, Goldman's read on systematic-manager drawdowns). Is \"Archegos\" the right analogy, or a lazy one? Argue it.\n\n2. THESIS VS. EXPRESSION. Score the underlying Situational Awareness thesis two years on, separately from the portfolio that expressed it. Aschenbrenner argued compute scaling made AGI by ~2027 strikingly plausible and that this forces a vast buildout of chips, memory, data centers and power. Test those forecasts against actual 2024-2026 evidence: frontier model capability trajectories, realized hyperscaler capex, data-center and grid interconnect data, memory/HBM supply, and power constraints. Where was he right, where wrong, and where merely early? Then make the sharp distinction explicit: a correct secular thesis expressed at 4x leverage in liquid, crowded, high-beta proxies is a different bet with a different failure mode. Which one actually broke?\n\n3. THE PRIVATE-MARK ASYMMETRY. The public book was liquidated while the roughly $5B Anthropic stake was untouched — because a private mark cannot be margin-called. Use this as a lens on how AI valuations are actually held: what it means that public AI proxies absorbed all the price discovery while private AI marks did not move, what that implies for reported AUM and returns across AI-exposed funds, and whether the surviving private stake makes the fund's remaining \"AI exposure\" more or less honest than the book it lost.\n\nEVIDENCE DISCIPLINE — this is important. Published figures conflict and the article must adjudicate rather than average them. Reported start-of-July AUM ranges from about $45B (CNBC, Fast Company) to $20-24B (SpotGamma, MLQ); reported performance ranges from about +439% net through June 2026 to \"up 2,000% in 2025\" to a \"1,000%-plus run\"; post-sale AUM is reported near $10B and seed capital near $225M at a late-2024 launch. Trace each number to its earliest and most authoritative source, state which reporting is first-hand versus recycled, distinguish gross notional from net AUM from equity, and clearly label anything that remains unverified or single-sourced. Do not present anonymously-sourced figures as settled fact.",
+    "tags": [
+      "ai-markets",
+      "hedge-funds",
+      "aschenbrenner",
+      "agi-timelines",
+      "anthropic",
+      "leverage"
+    ]
   }
 ]
