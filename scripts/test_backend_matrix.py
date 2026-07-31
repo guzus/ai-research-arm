@@ -128,11 +128,38 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.native-model.outputs.model }}', workflow)
         self.assertIn('--model ${{ steps.native-model.outputs.model }}', workflow)
         self.assertIn('--model "$GEN_MODEL"', workflow)
-        self.assertIn("if: steps.effective.outputs.backend == 'claude'\n        id: claude-attempt-1", workflow)
-        self.assertIn("Verify Fable model provenance", workflow)
+        # Fable gets exactly one model-action attempt: the recovery retry is
+        # gated on the subscription-billed lanes only, and fable-5 is not one.
+        retry_gate = ("if: contains(fromJSON('[\"claude\",\"opus-5\"]'), "
+                      "steps.effective.outputs.backend)\n        id: claude-attempt-1")
+        self.assertIn(retry_gate, workflow)
+        self.assertNotIn("fable-5\"]'), steps.effective.outputs.backend)\n        id: claude-attempt-1",
+                         workflow)
+        self.assertIn("Verify pinned model provenance", workflow)
         self.assertIn("actual_model=$(jq -r", workflow)
         self.assertTrue(self.obs["generative-research.yml"].has_fable_dispatch)
         self.assertEqual(self.lanes["generative-research-default"]["backend"], "claude")
+
+    def test_gen_research_opus_5_is_explicit_and_provenance_checked(self):
+        workflow = (REPO_ROOT / ".github" / "workflows" /
+                    "generative-research.yml").read_text(encoding="utf-8")
+        # Dispatch option, both case-normalizations, and the runtime allowlist.
+        self.assertIn('- opus-5', workflow)
+        self.assertIn('claude-opus-5|opus-5|opus5) CANDIDATE="opus-5"', workflow)
+        self.assertIn('claude-opus-5|opus-5|opus5) BACKEND="opus-5"', workflow)
+        self.assertIn('[ "$BACKEND" != "opus-5" ]', workflow)
+        # Served model is pinned from the single resolver output, so an
+        # opus-5-labelled article can never be authored by Sonnet.
+        self.assertIn('opus-5) model="claude-opus-5"', workflow)
+        # Runs on the shared native-Claude model step, and its committed
+        # index row is provenance-verified before the push.
+        self.assertIn('contains(fromJSON(\'["claude","fable-5","opus-5"]\'), '
+                      'steps.effective.outputs.backend)', workflow)
+        self.assertIn('contains(fromJSON(\'["fable-5","opus-5"]\'), '
+                      'steps.effective.outputs.backend)', workflow)
+        self.assertTrue(self.obs["generative-research.yml"].has_opus_dispatch)
+        from build_backend_matrix import GEN_RESEARCH_BACKENDS
+        self.assertIn("opus-5", GEN_RESEARCH_BACKENDS)
 
     def test_gen_research_opencode_kimi_is_explicit_and_fail_closed(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
