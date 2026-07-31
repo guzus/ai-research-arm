@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-07-31 19:46:36 UTC
+
+CYCLE: Google yanks an image generator a day after shipping it; DeepSeek's open weights survive first contact; hyperscaler capex tops $720B.
+
+TOP STORIES:
+• Google disables Google Earth's Nano Banana 2 image generator ~1 day after launch, after a researcher faked bomb craters on real satellite imagery [⚠]
+• DeepSeek V4-Flash-0731 runs locally in 4-bit on 168GB RAM hours after release; an outside security harness puts it level with Grok 4.5 at ~10x lower cost [⚠]
+• Amazon, Microsoft, Alphabet, Meta guide 2026 AI capex to ~$720-745B, up ~$25B on the week, all citing compute shortage [⚠]
+
+WATCH: Whether Google states on the record what it restricted in Google Earth, or relaunches with narrower guardrails.
+
+Full update on GitHub.
