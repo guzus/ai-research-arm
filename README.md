@@ -168,7 +168,7 @@ flowchart LR
     strict0 -->|"claude-sonnet-5"| ANT
     strict1 -->|"deepseek-v4-flash"| FW
     strict2 -->|"glm-5.2"| ZAI
-    gendef -->|"claude-sonnet-5"| ANT
+    gendef -->|"claude-opus-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
     gendef -.->|"backend=codex"| OAI

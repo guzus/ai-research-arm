@@ -8,6 +8,16 @@
       "aliases": [],
       "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it). Always considered available."
     },
+    "claude-opus-5": {
+      "provider": "claude",
+      "model": "claude-opus-5",
+      "display_name": "Claude Opus 5",
+      "aliases": [
+        "opus-5",
+        "opus5"
+      ],
+      "notes": "Native Anthropic on an explicitly pinned model, unlike the `claude` profile which serves fallback.native_model. Currently consumed only by the dispatch-default lane generative-research-default (generative-research.yml resolves the served model in its own native-model step). No agent-run lane routes here, and it is deliberately absent from fallback.chain: a fallback should be the cheap reliable path."
+    },
     "fireworks-glm-5p2": {
       "provider": "fireworks",
       "model": "accounts/fireworks/models/glm-5p2",
@@ -209,8 +219,8 @@
     "generative-research-default": {
       "workflow": "generative-research.yml",
       "harness": "dispatch-default",
-      "backend": "claude",
-      "notes": "Default backend when neither the dispatch input nor an issue-label form specifies one. Runtime-resolved by the workflow's backend-resolution step."
+      "backend": "opus-5",
+      "notes": "Default backend when neither the dispatch input nor an issue-label form specifies one. Runtime-resolved by the workflow's backend-resolution step. Moved claude -> opus-5 on 2026-07-31: long-form research is the one lane where the model's reasoning IS the product, and opus-5 bills against the same OAuth subscription as claude, so the upgrade costs no extra credential or provider. Consumers that inherit this default: manual dispatch with no backend input, gen-research-labelled issues, and hourly-twitter.yml's auto-research dispatch (throttled to <=2 per rolling 24h). This is NOT the Fireworks-unavailable fallback target - that stays hard-coded to claude in the workflow's effective-backend step, because a fallback should be the cheap reliable path."
     },
     "generative-research-claude": {
       "workflow": "generative-research.yml",
