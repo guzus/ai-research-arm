@@ -158,8 +158,12 @@ news that merely shares vocabulary. Calibration on the real ledger shows that
 band is ~half true duplicates that leaked and ~half genuinely-distinct items:
 "MICRON CROSSES $900B" vs "SK HYNIX CROSSES $900B" (same metric, different
 subject), appended-fact follow-ups, running-counter progressions. Separating
-those is a *semantic* judgment, so a Claude **Haiku** step adjudicates exactly
-that band — and only that band — as a final gate on the send path.
+those is a *semantic* judgment, so one agent-run model step adjudicates exactly
+that band — and only that band — as a final gate on the send path. It runs on
+SSOT lane `twitter-judge` with `--model opus`, which `agent-run` remaps to the
+global `fallback.native_model` (`claude-opus-5` since 2026-08-01) — NOT Haiku,
+which this doc claimed until 2026-08-01. Read `data/agent-backends.json` for
+the current model rather than trusting a literal here.
 
 It lives in `scripts/headline_judge.py` (two deterministic, unit-tested
 subcommands) bracketing one model step in `hourly-twitter.yml`:
@@ -168,7 +172,7 @@ subcommands) bracketing one model step in `hourly-twitter.yml`:
 flowchart LR
     FILTER["deterministic filter<br/>→ to-send.json"]:::proc --> SHORT["shortlist<br/>survivors in [0.35,0.50)<br/>+ ≤5 nearest priors"]:::proc
     SHORT -->|empty| BLAST
-    SHORT -->|"doubtful.json"| JUDGE{{"Haiku judge<br/>same event?"}}:::model
+    SHORT -->|"doubtful.json"| JUDGE{{"agent-run judge<br/>lane: twitter-judge<br/>same event?"}}:::model
     JUDGE -->|"verdicts.json"| APPLY["apply<br/>drop duplicate+high only"]:::proc
     APPLY --> ALERT["Telegram alert<br/>on every suppression"]:::io
     APPLY --> BLAST["Hooker blast"]:::io

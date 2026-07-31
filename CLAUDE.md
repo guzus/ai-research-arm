@@ -78,7 +78,11 @@ and opens a PR with methodology fixes.
 | `check_digest_content.py` | Per-run hard content floor for the daily digest (`--min-bytes`, `--min-sections`, unexpanded-placeholder scan). Decides whether the deterministic composer takes over; complements the advisory `check_lane_content.py`. |
 | `validate_twitter_public_output.py` | Twitter signal-only contract after every backend: heartbeat identity, exact public-item count, concrete story/Quick-hit presence, normalized same-hour headings, no operational/no-news filler. |
 | `check_lane_freshness.py` | Per-lane git-commit recency vs. cadence thresholds; exit 2 → hooker/Telegram alert from `liveness-check.yml`. Stdlib-only so it runs on both runner tiers. |
-| `export_wiki_okf.py` | `research/wiki/` → portable OKF bundle; rewrites `[[wikilinks]]` to Markdown links. |
+
+`export_wiki_okf.py` (`research/wiki/` → portable OKF bundle; rewrites
+`[[wikilinks]]` to Markdown links) used to be listed above, but it is NOT
+CI-enforced and no workflow calls it — `grep -rn okf .github/workflows/`
+returns nothing. It is a manual export; see the experimental table below.
 
 **Deterministic (model-free) fallbacks.** Only TWO are wired into a
 workflow. The other four scripts exist and are tested but **no workflow
@@ -123,6 +127,7 @@ pipeline code; don't assume the dashboard or any lane depends on them.
 | Script | Purpose |
 |---|---|
 | `generate_generative_article_audio.py` | Backfill TTS audio for a generative article (Gemini Flash TTS / Vertex). Run manually; needs `GEMINI_API_KEY`. |
+| `export_wiki_okf.py` | `research/wiki/` → portable OKF bundle; rewrites `[[wikilinks]]` to Markdown links. Tested, but no workflow calls it and the bundle is not published anywhere. |
 | `collect_viral_tweets.py`, `analyze_viral_tweets.py` | Viral-tweet collection + analysis. Write `research/twitter-viral/`. |
 | `analyze_overperformance.py`, `enrich_overperformance.py`, `experiment_overperf_cv.py` | Tweet-overperformance analysis / enrichment / cross-validation experiments. |
 | `enrich_bookmarks.py` | Enrich a bookmark export with engagement/features. |
@@ -197,7 +202,7 @@ back to host-level `pi --tools ... bash`.
 | `daily-ai-blogs.yml` | `:13` every 6h | `research/blogs/` |
 | `blog-subscriptions.yml` | `:47` every 2h | Telegram notifications for configured blog subscriptions + GUID state in `research/summaries/blog-subscriptions.json` |
 | `daily-youtube.yml` | daily `23:20` for the next `00:00` digest | `research/youtube/` (tuber discovery + read-only summary/transcript evidence) |
-| `hourly-twitter.yml` | every 3h `:07`; primary lane uses Fireworks through `.github/actions/agent-run`; comparison lanes via matrix/manual dispatch | `research/twitter/` + `research/summaries/` + Telegram headline alerts; comparison outputs under `research/twitter-deepseek/`, `research/twitter-deepseek-pi/`, `research/twitter-fireworks-pi/`, and `research/twitter-opencode-kimi/` |
+| `hourly-twitter.yml` | every 3h `:07`; primary lane routes to `backend: claude` through `.github/actions/agent-run` (verify against `data/agent-backends.json` lane `twitter-primary` — not this table); comparison lanes via matrix/manual dispatch | `research/twitter/` + `research/summaries/` + Telegram headline alerts; comparison outputs under `research/twitter-deepseek/`, `research/twitter-deepseek-pi/`, `research/twitter-fireworks-pi/`, and `research/twitter-opencode-kimi/` |
 | `twitter-account-explorer.yml` | weekly Tuesday `01:47` UTC + manual dispatch | Opens reviewed PRs for `data/sources/twitter_accounts.json` changes when high-signal account evidence exists |
 | `2h-bluesky.yml` | daily `10:11` | `research/bluesky/` (supplemental expert commentary, capped output) |
 | `4h-community.yml` | every 4h `:19` | `research/community/*-hn.md`, `*-reddit.md` |
@@ -372,7 +377,20 @@ output or break the pipeline. Read them before editing.
    (the remaining `VERCEL_DEPLOY_HOOK` steps are permanent no-ops).
    `dashboard/scripts/prebuild.mjs` copies `research/<source>/` into
    `public/research/` before Vite runs, so touching it changes what the
-   dashboard sees. **Incident-learned corollary: the Dockerfile's package
+   dashboard sees.
+   **Cloudflare is NOT a transparent pass-through — it rewrites and
+   blocks.** Verified 2026-08-01: the live `/robots.txt` is not the file
+   `dashboard/scripts/postbuild-seo.mjs:1191` builds — Cloudflare prepends
+   a Managed block (`Content-Signal: ai-train=no`, `Disallow: /` for
+   ClaudeBot/GPTBot/CCBot/Google-Extended/Bytespider) — and the edge
+   returns **HTTP 403 by user-agent** to ClaudeBot, GPTBot and CCBot, the
+   exact crawlers that file explicitly `Allow: /`. PerplexityBot,
+   Googlebot and normal browsers get 200. This is a zone-level setting, so
+   it is invisible from the repo and cannot be fixed by editing
+   `postbuild-seo.mjs`. `scripts/check_deploy_health.py` sends one fixed
+   UA at one URL and is structurally blind to it — do not treat a green
+   deploy-health check as evidence the site is reachable.
+   **Incident-learned corollary: the Dockerfile's package
    manager MUST stay in lockstep with the dashboard's** (bun since #102)
    — a leftover `npm ci` froze prod at a stale build for ~a day *with CI
    green*, because CI never runs the Dockerfile. Staleness is now watched
