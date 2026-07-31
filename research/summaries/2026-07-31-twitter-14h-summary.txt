@@ -1,0 +1,10 @@
+Twitter/X AI Pulse - 2026-07-31 14:29:29 UTC
+
+CYCLE: DeepSeek open-sources V4-Flash-0731 weights hours after API launch
+
+TOP STORIES:
+• DeepSeek publishes V4-Flash-0731 weights + technical report under MIT license, resolving this morning's open-weights watch item [✓]
+
+WATCH: Whether independent labs reproduce V4-Flash-0731's benchmark scores on the now-public weights.
+
+Full update on GitHub.
