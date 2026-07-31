@@ -3,7 +3,9 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 # Unified Twitter/X pipeline that fans out across six backend tiers:
 #   - claude            (cron '7 */3 * * *', primary tier, model routed by data/agent-backends.json,
 #                        output → research/twitter/)
-#   - deepseek-claude-code (cron '37 */6 * * *', model: deepseek-v4-flash via Fireworks, output → research/twitter-deepseek/)
+#   - deepseek-claude-code (manual only since 2026-08-01 — cron dropped while the
+#                        Fireworks account is suspended; see `on.schedule`,
+#                        model: deepseek-v4-flash via Fireworks, output → research/twitter-deepseek/)
 #   - zai-glm-5p2      (manual only,        model: glm-5.2 via Z.ai Coding Plan,
 #                        output → research/twitter-zai/)
 #   - deepseek-pi       (manual only,        model: deepseek-v4-flash via Fireworks + pi harness,
@@ -41,10 +43,13 @@ on:
   schedule:
     # claude tier: every 3 hours at minute 7.
     - cron: '7 */3 * * *'
-    # deepseek-claude-code tier: every 6 hours at minute 37. Offset 30min from
-    # the nearest claude run so neither hits Birdy at the same time.
-    # Slots are 00:37, 06:37, 12:37, 18:37 UTC.
-    - cron: '37 */6 * * *'
+    # The deepseek-claude-code tier used to run here on '37 */6 * * *'.
+    # Dropped 2026-08-01: the Fireworks account is suspended (every probe
+    # returns HTTP 412), the lane is strict so it never falls back, and it
+    # had therefore hard-failed 4x/day since ~2026-07-05 — ~110 red runs
+    # that made this workflow's failure rate useless as a signal. It stays
+    # available via workflow_dispatch; restore this cron once billing is
+    # settled at https://fireworks.ai/account/billing.
   workflow_dispatch:
     inputs:
       backend:
@@ -107,14 +112,16 @@ jobs:
           # (only github/needs/vars/inputs are evaluated before the
           # matrix is expanded), so the filtering must run from inside a
           # step where steps.if can read matrix.event / matrix.schedule.
-          # Wasted-job cost: each cron trigger creates 3 jobs and 2 of
-          # them exit at step 1.
+          # Wasted-job cost: each cron trigger creates 2 jobs and 1 of
+          # them exits at step 1.
           - backend: claude
             event: schedule
             schedule: '7 */3 * * *'
-          - backend: deepseek-claude-code
-            event: schedule
-            schedule: '37 */6 * * *'
+          # The deepseek-claude-code scheduled entry was removed alongside
+          # its cron (see `on.schedule`). Leaving it here without a
+          # matching cron would spawn a job on every claude tick that only
+          # ever exits at step 1. It remains reachable via the dispatch
+          # entry below, whose `backend` input still offers it.
           # workflow_dispatch path — single entry, runtime-resolved.
           - backend: dispatch
             event: workflow_dispatch
