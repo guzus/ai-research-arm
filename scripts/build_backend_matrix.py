@@ -559,7 +559,18 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             backend = str(lane.get("backend", ""))
             profile = profiles.get(backend)
             provider = profile.display_name if profile else backend
-            model = f"`{profile.model_id}`" if profile and profile.model_id else f"`{native_fallback}`"
+            # A workflow-level `native-model:` input overrides what the native
+            # Claude path serves for that step ONLY (the judge lanes pin
+            # claude-opus-4-8 so the judge is not a contestant). It is captured
+            # at parse time; rendering it is what keeps this column honest —
+            # without it the row silently reports the global fallback.native_model.
+            override = step.native_model_override if step else ""
+            if profile and profile.model_id:
+                model = f"`{profile.model_id}`"
+            elif override:
+                model = f"`{override}` (workflow `native-model` override)"
+            else:
+                model = f"`{native_fallback}`"
             token = TOKEN_BY_PROVIDER.get(profile.provider if profile else "", "?")
             setting = (step.fireworks_fallback if step and step.fireworks_fallback
                        else fallback_default)

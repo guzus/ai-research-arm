@@ -212,6 +212,27 @@ class RoutingInvariants(unittest.TestCase):
         for lane in ("twitter-zai", "twitter-deepseek", "zai-canary"):
             self.assertTrue(self.lanes[lane].get("strict"), lane)
 
+    def test_native_model_override_is_rendered_in_the_matrix(self):
+        # A workflow `native-model:` input silently beats fallback.native_model
+        # for that step. If the Model column renders the global default anyway,
+        # the row is a lie that reads as plausible — the A/B judge lanes pin
+        # claude-opus-4-8 precisely so the judge is NOT a contestant, and the
+        # matrix claiming they run the fleet default hides an invalidated eval.
+        from build_backend_matrix import build_generated_blocks
+        matrix, _ = build_generated_blocks()
+        judge_rows = [ln for ln in matrix.splitlines()
+                      if ln.startswith("| twitter-ab-judge")]
+        self.assertEqual(2, len(judge_rows), matrix)
+        for row in judge_rows:
+            self.assertIn("claude-opus-4-8", row)
+            self.assertIn("native-model` override", row)
+        # The contestant leg has no override and must track the global default.
+        leg_a = [ln for ln in matrix.splitlines()
+                 if ln.startswith("| twitter-ab-claude")]
+        self.assertEqual(1, len(leg_a), matrix)
+        self.assertIn(self.fallback["native_model"], leg_a[0])
+        self.assertNotIn("override", leg_a[0])
+
     def test_readme_diagram_generated_and_deterministic(self):
         from build_backend_matrix import build_generated_blocks
         _, diagram1 = build_generated_blocks()

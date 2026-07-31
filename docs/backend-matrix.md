@@ -90,8 +90,8 @@ Reading notes:
 | research-issue (×2 step variants) | `research-issue.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | rss | `hourly-rss.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | twitter-ab-claude · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
-| twitter-ab-judge · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
-| twitter-ab-judge-swapped · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
+| twitter-ab-judge · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-4-8` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
+| twitter-ab-judge-swapped · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-4-8` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
 | twitter-ab-zai · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
 | twitter-account-explorer | `twitter-account-explorer.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | twitter-autoresearch (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
