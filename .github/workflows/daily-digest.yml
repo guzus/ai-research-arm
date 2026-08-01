@@ -203,7 +203,13 @@ jobs:
 
             STEP 1: Find and read today's source files
             Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
-            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, blogs/, youtube/, and any others.
+            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, blogs/, youtube/, earnings/, and any others.
+            earnings/ is event-cadence, one file per issuer earnings event named
+            <filing-date>-<TICKER>-<FYxxQx>.md. Use ONLY files whose filing date is
+            within the last 2 days; if there are none, omit the earnings coverage
+            entirely. Issuers report in ~3-week bursts each quarter, so older files
+            sitting in that directory are NOT current news - never surface them as
+            such. Quote only what those files already quote.
             Read all relevant files you find.
 
             STEP 2: Use MCP search tools to fill gaps
@@ -272,6 +278,7 @@ jobs:
             - RSS: [count] articles
             - Expert Blogs: [count] posts
             - YouTube: [count] videos
+            - Earnings: [count] issuer earnings reports
             - MCP Search: [results from Exa/Perplexity tools]
 
             *Generated at ${{ steps.date.outputs.date }} 00:00 UTC*
@@ -341,7 +348,13 @@ jobs:
 
             STEP 1: Find and read today's source files
             Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
-            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, blogs/, youtube/, perplexity/, and any others.
+            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, blogs/, youtube/, earnings/, perplexity/, and any others.
+            earnings/ is event-cadence, one file per issuer earnings event named
+            <filing-date>-<TICKER>-<FYxxQx>.md. Use ONLY files whose filing date is
+            within the last 2 days; if there are none, omit the earnings coverage
+            entirely. Issuers report in ~3-week bursts each quarter, so older files
+            sitting in that directory are NOT current news - never surface them as
+            such. Quote only what those files already quote.
             Read all relevant files you find.
 
             STEP 2: Identify gaps from local sources
@@ -410,6 +423,7 @@ jobs:
             - RSS: [count] articles
             - Expert Blogs: [count] posts
             - YouTube: [count] videos
+            - Earnings: [count] issuer earnings reports
             - MCP Search: [results from Exa/Perplexity tools]
 
             *Generated at ${{ steps.date.outputs.date }} 00:00 UTC*
