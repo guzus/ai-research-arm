@@ -20221,5 +20221,185 @@
     "source": "@ashugarg",
     "source_file": "research/summaries/2026-07-31-twitter-14h-headlines.json",
     "url": "https://x.com/ashugarg/status/2083192206454636872"
+  },
+  {
+    "backfilled": true,
+    "category": "breaking",
+    "delivered_at": "2026-07-31 19:00 UTC",
+    "headline": "GOOGLE PULLS GOOGLE EARTH AI IMAGE GENERATOR ONE DAY AFTER LAUNCH OVER FAKED SATELLITE BOMB CRATERS",
+    "source": "@zubiqo",
+    "source_file": "research/summaries/2026-07-31-twitter-19h-headlines.json",
+    "url": "https://x.com/zubiqo/status/2083277367653679294"
+  },
+  {
+    "backfilled": true,
+    "category": "business",
+    "delivered_at": "2026-07-31 19:00 UTC",
+    "headline": "HYPERSCALER 2026 AI CAPEX GUIDANCE HITS 720-745 BILLION DOLLARS \u2014 AMAZON 220B, MICROSOFT 175B, GOOGLE 205B, META 145B",
+    "source": "@aleabitoreddit",
+    "source_file": "research/summaries/2026-07-31-twitter-19h-headlines.json",
+    "url": "https://x.com/aleabitoreddit/status/2083270545320386734"
+  },
+  {
+    "backfilled": true,
+    "category": "model",
+    "delivered_at": "2026-07-31 19:00 UTC",
+    "headline": "DEEPSEEK V4-FLASH-0731 MATCHES GROK 4.5 ON VULNERABILITY DETECTION AT 10X LOWER COST \u2014 INDEPENDENT HARNESS",
+    "source": "@Zaddyzaddy",
+    "source_file": "research/summaries/2026-07-31-twitter-19h-headlines.json",
+    "url": "https://x.com/Zaddyzaddy/status/2083273536387563702"
+  },
+  {
+    "backfilled": true,
+    "category": "opensource",
+    "delivered_at": "2026-07-31 19:00 UTC",
+    "headline": "DEEPSEEK V4-FLASH RUNS LOCALLY IN LOSSLESS 4-BIT ON 168GB RAM, 3-BIT ON 110GB \u2014 HOURS AFTER WEIGHT DROP",
+    "source": "@_akhaliq",
+    "source_file": "research/summaries/2026-07-31-twitter-19h-headlines.json",
+    "url": "https://x.com/_akhaliq/status/2083252616528539787"
+  },
+  {
+    "backfilled": true,
+    "category": "business",
+    "delivered_at": "2026-07-31 19:00 UTC",
+    "headline": "THE INFORMATION: NVIDIA-BACKED REFLECTION AI HAS SHIPPED NO MODEL A YEAR AFTER 800 MILLION DOLLAR BET",
+    "source": "@theinformation",
+    "source_file": "research/summaries/2026-07-31-twitter-19h-headlines.json",
+    "url": "https://x.com/theinformation/status/2083266487318397361"
+  },
+  {
+    "backfilled": true,
+    "category": "policy",
+    "delivered_at": "2026-07-31 19:00 UTC",
+    "headline": "HUGGING FACE CEO ON BREACH WEEK: ATTACKED BY SECRET PROPRIETARY MODELS, DEFENDED WITH AN OPEN ONE",
+    "source": "@HuggingFace",
+    "source_file": "research/summaries/2026-07-31-twitter-19h-headlines.json",
+    "url": "https://x.com/HuggingFace/status/2083204318581207448"
+  },
+  {
+    "backfilled": true,
+    "category": "policy",
+    "delivered_at": "2026-07-31 19:00 UTC",
+    "headline": "EU OPENS BIDDING ON SEVEN AI GIGAFACTORIES \u2014 10B EUROS PUBLIC AGAINST 30B TOTAL, AWARDS JULY 2027",
+    "source": "@WesRoth",
+    "source_file": "research/summaries/2026-07-31-twitter-19h-headlines.json",
+    "url": "https://x.com/WesRoth/status/2083190955331477865"
+  },
+  {
+    "backfilled": true,
+    "category": "business",
+    "delivered_at": "2026-07-31 22:00 UTC",
+    "headline": "GOOGLE FOLDS AI STUDIO INTO GEMINI APP \u2014 NO STANDALONE MOBILE CLIENT, APPS TO EMERGE FROM CONVERSATION",
+    "source": "@testingcatalog",
+    "source_file": "research/summaries/2026-07-31-twitter-22h-headlines.json",
+    "url": "https://x.com/testingcatalog/status/2083295051728236693"
+  },
+  {
+    "backfilled": true,
+    "category": "policy",
+    "delivered_at": "2026-07-31 22:00 UTC",
+    "headline": "WITNESS SAYS GOOGLE 'BRIEFLY' TURNED GOOGLE EARTH INTO A FAKE-IMAGERY GENERATOR \u2014 FIRST EXPERT CONFIRMATION OF PULLBACK",
+    "source": "@SamGregory",
+    "source_file": "research/summaries/2026-07-31-twitter-22h-headlines.json",
+    "url": "https://x.com/SamGregory/status/2083314779699945977"
+  },
+  {
+    "backfilled": true,
+    "category": "infra",
+    "delivered_at": "2026-07-31 22:00 UTC",
+    "headline": "BLOOMBERG: ALIBABA COMPUTE DEAL FOR ~20,000 NVIDIA CHIPS HELPS POWER MOONSHOT'S KIMI K3",
+    "source": "@BloombergTV",
+    "source_file": "research/summaries/2026-07-31-twitter-22h-headlines.json",
+    "url": "https://x.com/BloombergTV/status/2083313776137314378"
+  },
+  {
+    "backfilled": true,
+    "category": "model",
+    "delivered_at": "2026-07-31 22:00 UTC",
+    "headline": "KIMI K3 REPORTED AT 60.4% ON ARC-AGI-2 \u2014 UNVERIFIED, VS INKLING'S VERIFIED 36.5%",
+    "source": "@scaling01",
+    "source_file": "research/summaries/2026-07-31-twitter-22h-headlines.json",
+    "url": "https://x.com/scaling01/status/2083290471212761434"
+  },
+  {
+    "backfilled": true,
+    "category": "business",
+    "delivered_at": "2026-07-31 22:00 UTC",
+    "headline": "THE INFORMATION: OPENAI HIRING HUNDREDS OF FORMER APPLE EMPLOYEES FOR NEW HARDWARE DEVICE FAMILY",
+    "source": "@theinformation",
+    "source_file": "research/summaries/2026-07-31-twitter-22h-headlines.json",
+    "url": "https://x.com/theinformation/status/2083274133584957454"
+  },
+  {
+    "backfilled": true,
+    "category": "business",
+    "delivered_at": "2026-07-31 22:00 UTC",
+    "headline": "ASCHENBRENNER'S SITUATIONAL AWARENESS SELLS $16B PUBLIC-EQUITY BOOK TO CITADEL, KEEPS ~$10B INCLUDING ANTHROPIC STAKE",
+    "source": "@WesRoth",
+    "source_file": "research/summaries/2026-07-31-twitter-22h-headlines.json",
+    "url": "https://x.com/WesRoth/status/2083115454441062429"
+  },
+  {
+    "backfilled": true,
+    "category": "breaking",
+    "delivered_at": "2026-08-01 03:00 UTC",
+    "headline": "LEAK: OPENAI PREPARING NEW MODEL FAMILY CODENAMED \"ASTRA\" \u2014 PITCHED ON RUNNING MULTIPLE AGENTS",
+    "source": "@scaling01",
+    "source_file": "research/summaries/2026-08-01-twitter-03h-headlines.json",
+    "url": "https://x.com/scaling01/status/2083341678719426615"
+  },
+  {
+    "backfilled": true,
+    "category": "policy",
+    "delivered_at": "2026-08-01 03:00 UTC",
+    "headline": "CURRAN: \"ASTRA\" IS THE SAME UNRELEASED MODEL ALTMAN IS PREVIEWING TO CONGRESS AND THE TRUMP ADMINISTRATION",
+    "source": "@AndrewCurran_",
+    "source_file": "research/summaries/2026-08-01-twitter-03h-headlines.json",
+    "url": "https://x.com/AndrewCurran_/status/2083342854609674546"
+  },
+  {
+    "backfilled": true,
+    "category": "breaking",
+    "delivered_at": "2026-08-01 03:00 UTC",
+    "headline": "ARENA CEO: BOTH OPENAI AND ANTHROPIC MODELS ARE IN \"ESCAPE FROM PRISON\" SCENARIOS \u2014 SANDBOX STORY WIDENS",
+    "source": "@theinformation",
+    "source_file": "research/summaries/2026-08-01-twitter-03h-headlines.json",
+    "url": "https://x.com/theinformation/status/2083319438573543717"
+  },
+  {
+    "backfilled": true,
+    "category": "model",
+    "delivered_at": "2026-08-01 03:00 UTC",
+    "headline": "LMARENA: DEEPSEEK V4-FLASH-HIGH RESHAPES FRONTEND CODE ARENA PARETO FRONTIER",
+    "source": "@AndrewCurran_",
+    "source_file": "research/summaries/2026-08-01-twitter-03h-headlines.json",
+    "url": "https://x.com/AndrewCurran_/status/2083348873238675823"
+  },
+  {
+    "backfilled": true,
+    "category": "opensource",
+    "delivered_at": "2026-08-01 03:00 UTC",
+    "headline": "META'S SOUMITH CHINTALA PUBLISHES OPEN-WEIGHTS PLAN AS 230+ ORGS SIGN OPEN WEIGHTS LETTER",
+    "source": "@soumithchintala",
+    "source_file": "research/summaries/2026-08-01-twitter-03h-headlines.json",
+    "url": "https://x.com/soumithchintala/status/2083341698994688298"
+  },
+  {
+    "backfilled": true,
+    "category": "infra",
+    "delivered_at": "2026-08-01 03:00 UTC",
+    "headline": "KOREA DRAM EXPORT UNIT PRICE HITS ALL-TIME HIGH AS AI MEMORY SQUEEZE SHOWS UP IN TRADE DATA",
+    "source": "@jukan05",
+    "source_file": "research/summaries/2026-08-01-twitter-03h-headlines.json",
+    "url": "https://x.com/jukan05/status/2083368297534537801"
+  },
+  {
+    "backfilled": true,
+    "category": "infra",
+    "delivered_at": "2026-08-01 03:00 UTC",
+    "headline": "PERPLEXITY REMOTE MCP SERVER GOES LIVE FOR CLAUDE CODE, CURSOR AND VS CODE",
+    "source": "@AravSrinivas",
+    "source_file": "research/summaries/2026-08-01-twitter-03h-headlines.json",
+    "url": "https://x.com/AravSrinivas/status/2083346800375980531"
   }
 ]

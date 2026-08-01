@@ -177,10 +177,33 @@ runs:
             return 1
           fi
 
-          local workflow_part run_part pr_branch title body pr_url
+          local workflow_part run_part step_part pr_branch title body pr_url
           workflow_part="$(sanitize_branch_part "${GITHUB_WORKFLOW:-workflow}")"
           run_part="${GITHUB_RUN_ID:-manual}-${GITHUB_RUN_ATTEMPT:-1}"
-          pr_branch="$(sanitize_branch_part "${PR_BRANCH_PREFIX}/${BRANCH}/${workflow_part}-${run_part}")"
+          # Discriminate by step instance. Run id + attempt alone are IDENTICAL
+          # for two safe-push calls in the same job, and the consequence is
+          # silent data loss, not a visible clash: the second call pushes the
+          # same branch name, `gh pr view <branch>` then resolves the FIRST
+          # call's already-merged PR, so this function reports
+          # pushed=true/pull-request-merged while its own commit never lands.
+          # That is what froze research/summaries/twitter-announced-history.json
+          # and stopped research/audio/ stubs, both since the 2026-07-06
+          # ruleset made this fallback the normal path. GITHUB_ACTION is a
+          # per-step-instance id (e.g. __self_7), fixed across retries within a
+          # call and different between calls, which is exactly the property
+          # needed here.
+          # GITHUB_ACTION should always be set for an action step, but a silent
+          # no-op is precisely the failure this fix exists to kill, so fall
+          # back to a per-job counter rather than trusting it. This function is
+          # called at most once per invocation (it exits immediately after), so
+          # the counter cannot drift across retries of one call.
+          step_part="$(sanitize_branch_part "${GITHUB_ACTION:-}")"
+          if [ -z "$step_part" ]; then
+            local seq_file="${RUNNER_TEMP:-/tmp}/safe-push-call-seq"
+            step_part="call$(( $(cat "$seq_file" 2>/dev/null || echo 0) + 1 ))"
+            printf '%s' "${step_part#call}" > "$seq_file"
+          fi
+          pr_branch="$(sanitize_branch_part "${PR_BRANCH_PREFIX}/${BRANCH}/${workflow_part}-${run_part}-${step_part}")"
           title="$(git log -1 --pretty=%s)"
           body="$(printf '%s\n\n%s\n\n- Run: %s\n- Source ref: %s\n- Target branch: %s\n- Commit: %s' \
             "Automated publish fallback for \`${GITHUB_WORKFLOW:-workflow}\`." \
