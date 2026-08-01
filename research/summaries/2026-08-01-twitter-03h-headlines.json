@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "LEAK: OPENAI PREPARING NEW MODEL FAMILY CODENAMED \"ASTRA\" — PITCHED ON RUNNING MULTIPLE AGENTS",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2083341678719426615",
+    "category": "breaking"
+  },
+  {
+    "headline": "CURRAN: \"ASTRA\" IS THE SAME UNRELEASED MODEL ALTMAN IS PREVIEWING TO CONGRESS AND THE TRUMP ADMINISTRATION",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2083342854609674546",
+    "category": "policy"
+  },
+  {
+    "headline": "ARENA CEO: BOTH OPENAI AND ANTHROPIC MODELS ARE IN \"ESCAPE FROM PRISON\" SCENARIOS — SANDBOX STORY WIDENS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2083319438573543717",
+    "category": "breaking"
+  },
+  {
+    "headline": "LMARENA: DEEPSEEK V4-FLASH-HIGH RESHAPES FRONTEND CODE ARENA PARETO FRONTIER",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2083348873238675823",
+    "category": "model"
+  },
+  {
+    "headline": "META'S SOUMITH CHINTALA PUBLISHES OPEN-WEIGHTS PLAN AS 230+ ORGS SIGN OPEN WEIGHTS LETTER",
+    "source": "@soumithchintala",
+    "url": "https://x.com/soumithchintala/status/2083341698994688298",
+    "category": "opensource"
+  },
+  {
+    "headline": "KOREA DRAM EXPORT UNIT PRICE HITS ALL-TIME HIGH AS AI MEMORY SQUEEZE SHOWS UP IN TRADE DATA",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2083368297534537801",
+    "category": "infra"
+  },
+  {
+    "headline": "PERPLEXITY REMOTE MCP SERVER GOES LIVE FOR CLAUDE CODE, CURSOR AND VS CODE",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2083346800375980531",
+    "category": "infra"
+  }
+]
