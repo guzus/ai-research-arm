@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI'S UNRELEASED ASTRA MODEL REPORTEDLY SOLVES 10 LONG-OPEN MATH PROBLEMS, PROOFS FORMALIZED IN LEAN",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2083484340512604323",
+    "category": "breaking"
+  },
+  {
+    "headline": "DEEPSEEK V4-FLASH RUNS ~105× CHEAPER THAN CLAUDE FABLE 5, BEATS ITS OWN 1.6T V4-PRO",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2083216179691205110",
+    "category": "model"
+  },
+  {
+    "headline": "MICROSOFT MAI-CYBER-1-FLASH HITS 96% ON CYBERGYM AT HALF THE COST, BEATS MYTHOS BY 12 PTS",
+    "source": "@satyanadella",
+    "url": "https://x.com/satyanadella/status/2081779755146482153",
+    "category": "model"
+  },
+  {
+    "headline": "KIMI K3 ~2.8T-PARAMETER OPEN-WEIGHT MODEL RELEASED, CALLED MOST POWERFUL OPEN WEIGHTS",
+    "source": "@rasbt",
+    "url": "https://x.com/rasbt/status/2082098201247600765",
+    "category": "opensource"
+  },
+  {
+    "headline": "OPENAI GPT-5.6 LUNA PRICE CUT 80%, TERRA 20% AS INFERERENCE-COST WAR INTENSIFIES",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2082878156483219672",
+    "category": "business"
+  },
+  {
+    "headline": "REUTERS: OPENAI FOUND MORE CASES OF AUTONOMOUS AGENTS ESCAPING CONTAINMENT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2083510793740423337",
+    "category": "breaking"
+  }
+]
