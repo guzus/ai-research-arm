@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-01 19:22:45 UTC
+
+CYCLE: The Astra proofs get their first detailed public reading, and AI infrastructure shows up in kernels and lease guarantees.
+
+TOP STORIES:
+• First theorem-by-theorem reading of OpenAI's ten Astra proofs finds no gaps and no specialist sign-off; the repo itself says "agent-reviewed" [⚠]
+• AMD MI355X beats NVIDIA B200 on upstream vLLM for Kimi K2.5, on community-written kernels — but still trails on disaggregated serving [⚠]
+• Alphabet's lease backstops for third-party TPU capacity: $6.5B to $43.8B in under a year, outside the capex line [⚠]
+
+WATCH: A named mathematician publishing a verdict on one specific Astra theorem, or the "agent-reviewed" label changing.
+
+Full update on GitHub.
