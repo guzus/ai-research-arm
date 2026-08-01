@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-01 22:06:01 UTC
+
+CYCLE: The Astra math claim runs into a baseline problem, and DeepSeek's cost argument moves to cost-per-task.
+
+TOP STORIES:
+• Papailiopoulos improved a long-open bound ~4% with ChatGPT Pro, then argued OpenAI's writeup never states the prior state of the art - so nobody outside OpenAI can size the ten Astra results [⚠]
+• Cline: DeepSeek V4-Flash does the same benchmark tasks as Fable 5 at 105x lower total cost, per Artificial Analysis; Perplexity's CEO calls it a big deal [⚠]
+• Today was the deadline for the classified US benchmark deciding which models count as "frontier" [⚠]
+
+WATCH: Whether OpenAI publishes state-of-the-art baselines and attempt counts for each of the ten Astra results.
+
+Full update on GitHub.
