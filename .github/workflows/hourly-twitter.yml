@@ -1466,6 +1466,9 @@ jobs:
         env:
           PUSHED: ${{ steps.push_history.outputs.pushed }}
           MODE: ${{ steps.push_history.outputs.publication-mode }}
+          HISTORY_FILE: research/summaries/twitter-announced-history.json
+          ANNOUNCED_AT: ${{ steps.datetime.outputs.timestamp }}
+          TARGET_BRANCH: ${{ github.ref_name }}
         run: |
           set -euo pipefail
           echo "publication-mode=$MODE pushed=$PUSHED"
@@ -1476,6 +1479,22 @@ jobs:
                  "Land the open automation/safe-push PR, or re-run this lane."
             exit 1
           fi
+          # Confirm by CONTENT, not by the flag. pushed=true was not enough:
+          # when two safe-push calls in one job generated the same fallback
+          # branch, the second adopted the first's already-merged PR and
+          # reported pushed=true/pull-request-merged while its commit never
+          # landed. This guard is what turns that class of failure from
+          # invisible into red.
+          git fetch -q origin "$TARGET_BRANCH"
+          if ! git show "origin/${TARGET_BRANCH}:${HISTORY_FILE}" \
+               | jq -e --arg ts "$ANNOUNCED_AT" 'any(.[]; .delivered_at == $ts)' >/dev/null; then
+            echo "::error::safe-push reported success (mode=$MODE) but" \
+                 "origin/${TARGET_BRANCH}:${HISTORY_FILE} has no record stamped" \
+                 "'${ANNOUNCED_AT}'. The ledger did NOT land — dedupe will" \
+                 "re-alert already-shipped headlines. Do not trust pushed=true here."
+            exit 1
+          fi
+          echo "Ledger verified on origin/${TARGET_BRANCH}: records stamped ${ANNOUNCED_AT} are present."
 
       # ── Comparison-tier Telegram notification ──────────────────────
       - name: Read summary for Telegram (comparison tiers)
