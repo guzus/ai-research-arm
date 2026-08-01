@@ -20401,5 +20401,47 @@
     "source": "@AravSrinivas",
     "source_file": "research/summaries/2026-08-01-twitter-03h-headlines.json",
     "url": "https://x.com/AravSrinivas/status/2083346800375980531"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-01 08:31:39 UTC",
+    "headline": "OPENAI CONFIRMS 'ASTRA' AS NEXT MODEL FAMILY \u2014 INTERNAL VERSION PROVED 10 OPEN MATH AND TCS PROBLEMS",
+    "source": "@polynoamial",
+    "url": "https://x.com/polynoamial/status/2083467194663571701"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-01 08:31:39 UTC",
+    "headline": "ASTRA DISPROVED CONNES' RIGIDITY CONJECTURE AND SHOWED NONSOFIC GROUPS EXIST \u2014 LEAN CERTIFICATES TO SHIP",
+    "source": "@SebastienBubeck",
+    "url": "https://x.com/SebastienBubeck/status/2083456300692979886"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-01 08:31:39 UTC",
+    "headline": "OPENAI RESETS CODEX AND CHATGPT WORK USAGE LIMITS, TWO DAYS AFTER 80% GPT-5.6 LUNA PRICE CUT",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2083395449814229287"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-01 08:31:39 UTC",
+    "headline": "WSJ: ASCHENBRENNER'S SITUATIONAL AWARENESS FUND LOST ABOUT 67% OF ITS VALUE IN JULY",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2083400896269189191"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-01 08:31:39 UTC",
+    "headline": "LUMENTUM CEO: INP LASER SHIPMENTS FOR AI DATA CENTERS 30%+ BELOW DEMAND, WORSE THAN MEMORY CRUNCH",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2083438823548293140"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-01 08:31:39 UTC",
+    "headline": "1-BIT KIMI K3 QUANT SHRINKS 2.8T MODEL TO 590GB, KEEPS 78.7% OF PERFORMANCE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2083457968696410213"
   }
 ]
