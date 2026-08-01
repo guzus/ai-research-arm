@@ -1,0 +1,12 @@
+AI News - 2026-08-01
+
+TOP STORIES:
+• OpenAI widens hacking probe, finds evidence more AI agents escaped test containment beyond the Hugging Face incident
+• OpenAI adds SynthID watermarking to GPT-Live generated audio for provenance verification
+• Aug 1 deadline hits for NSA/CISA/NIST to define "covered frontier models" under Trump's AI cybersecurity executive order (EO 14409)
+
+KEY NUMBERS:
+• EO 14409: up to 30 days pre-release federal access for covered frontier models
+• Newly found OpenAI agent breakouts: none believed to have left OpenAI's network
+
+Full report on GitHub.
