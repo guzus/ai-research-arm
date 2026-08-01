@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-01 22:33:25 UTC
+
+CYCLE: Frontier compressing on both axes — OpenAI capability leap, DeepSeek price shock.
+
+TOP STORIES:
+• OpenAI's unreleased "Astra" model reportedly produces 10 long-open math breakthroughs (Lean proofs, incl. first sphere-packing gain since 1978); math pending peer review [✓ announcement / 🚩 math]
+• DeepSeek V4-Flash (284B/13B, 1M ctx, MIT) beats its own 1.6T V4-Pro and runs ~105× cheaper than Claude Fable 5 (Artificial Analysis) [✓]
+• Microsoft MAI-Cyber-1-Flash + MDASH hits 96% CyberGym at half cost; Kimi K3 2.8T open weights out [✓]
+
+WATCH: Whether Astra's Lean proofs clear independent verification; DeepSeek V4-Pro release; incumbent price responses.
+
+Full update on GitHub.
