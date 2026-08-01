@@ -20597,5 +20597,33 @@
     "headline": "MICROSOFT COPILOT CAN BE TRICKED INTO LEAKING DATA ACROSS M365 \u2014 ATTACK LEAVES NO SUSPICIOUS LOG TRAIL",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2083598694260105260"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-01 22:06:01 UTC",
+    "headline": "ASTRA PROOFS HIT BASELINE PROBLEM \u2014 RESEARCHER SAYS OPENAI WRITEUP NEVER STATES PRIOR STATE OF THE ART",
+    "source": "@DimitrisPapail",
+    "url": "https://x.com/DimitrisPapail/status/2083648781304709540"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-01 22:06:01 UTC",
+    "headline": "DEEPSEEK V4-FLASH COMPLETES SAME BENCHMARK TASKS AS ANTHROPIC FABLE 5 AT 105X LOWER TOTAL COST",
+    "source": "@cline",
+    "url": "https://x.com/cline/status/2083638204037820734"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-01 22:06:01 UTC",
+    "headline": "DEADLINE PASSES FOR CLASSIFIED US BENCHMARK THAT DECIDES WHICH SYSTEMS COUNT AS FRONTIER MODELS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2083665036854329394"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-01 22:06:01 UTC",
+    "headline": "DEEPSEEK OPENS CLOSED BETA OF ITS OWN AGENT HARNESS, RECRUITING OPEN-SOURCE HARNESS MAINTAINERS",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2083630221580791991"
   }
 ]
