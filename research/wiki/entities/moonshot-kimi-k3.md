@@ -6,8 +6,9 @@ aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open 
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
 description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps "possibly pointing to distillation."
 created_at: 2026-07-17
-timestamp: 2026-07-30T00:00:00Z
+timestamp: 2026-08-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
@@ -195,6 +196,24 @@ covering it.
   not commented on the record. This is the clearest confirmation yet of
   the funding trajectory this page has tracked since the 2026-07-20
   "$30B+ IPO nears" entry (ARA daily digest 2026-07-30).
+
+- **An unverified 60.4% ARC-AGI-2 claim, and the compute behind K3 gets named
+  (2026-08-01).** A tracker posted a **60.4% ARC-AGI-2** score for K3, which
+  would clear [[thinking-machines|Inkling's]] verified 36.5% by a wide margin.
+  Treat as **reported, not verified**: there is **no ARC Prize row and no
+  cost-per-task figure**, and a comparable July 30 claim about
+  [[gpt-5-6|GPT-5.6 Sol]] collapsed from "SoTA" to a verified 7.8% once
+  checked. Separately, **Bloomberg traced Moonshot's training compute to an
+  [[alibaba]] arrangement involving roughly 20,000 Nvidia H200s** — the first
+  named mechanism behind the capacity powering K3, and the concrete answer to
+  the GPU-strain question below, for a company that raised **$3.5B at a $35B
+  valuation on 2026-07-30**. On the deployment side a **1-bit quantization**
+  shrank the 2.8T-parameter model to **590 GB (−62%)** with a claimed 78.7%
+  quality retention and full 1M context, and a "Run Kimi K3 using 29 GB of RAM
+  at 0.50 tok/s" write-up climbed the HN front page — the local-inference tail
+  of the [[open-weights]] release still compounding a week on, now alongside
+  [[deepseek-v4-flash|DeepSeek's MIT-licensed V4-Flash]] (ARA daily digest
+  2026-08-01).
 
 ## Open questions
 

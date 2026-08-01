@@ -6,8 +6,10 @@ aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 P
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
 description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.
 created_at: 2026-06-04
-timestamp: 2026-07-27T00:00:00Z
+timestamp: 2026-08-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
+  - {title: "ARA model ticket — DeepSeek V4 GA + surge pricing", path: research/models/tickets/deepseek-v4-ga-surge-pricing-2026-06.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA model ticket — DeepSeek second funding round", path: research/models/tickets/deepseek-second-round-2026-07.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
@@ -136,6 +138,25 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   agreements**, with investors unsettled by the leak. See the
   [DeepSeek second-round ticket](../../models/tickets/deepseek-second-round-2026-07.md)
   (ARA digest 2026-07-27).
+
+- **V4-Flash GA, then the weights — the surge-pricing arc lands as an MIT
+  release (2026-07-31, digested 2026-08-01).** The mid-July GA promised in
+  June arrived a fortnight late and in two steps on the same day: the
+  **[[deepseek-v4-flash|V4-Flash-0731]] official API went live in public
+  beta** at **$0.28 input / $0.87 output per Mtok** with heavily upgraded
+  agent capability, native Responses-API support and Codex adaptation — and
+  **hours later DeepSeek released the weights on Hugging Face under MIT**
+  with a technical report. Artificial Analysis scored it **50 on its
+  intelligence index, one point behind [[gpt-5-6|GPT-5.6 Luna]] at roughly
+  60% lower cost per task**; it held the top Hacker News AI slot across
+  three consecutive front-page snapshots, peaking at 652 points. Two things
+  are worth separating from the launch noise: the conflicting
+  ~$0.14/$0.28 vs $0.28/$0.87 rate-card relays from July 31 resolve to the
+  higher pair in the digest, and the **June surge-pricing scheme is not
+  evidenced as live** on this GA. Strategically the release re-anchors
+  [[open-weights]] — the cheapest near-frontier model of the cycle is now
+  downloadable, days after [[moonshot-kimi-k3|Kimi K3]] made the same move
+  at 2.8T parameters (ARA digest 2026-08-01).
 
 ## Open questions
 

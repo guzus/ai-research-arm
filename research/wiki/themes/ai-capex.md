@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-07-29T00:00:00Z
+timestamp: 2026-08-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-26", path: research/digest/2026-07-26-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
@@ -358,6 +359,39 @@ skepticism in one window:
   2026-07-24/25. **[[nvidia|NVIDIA]]** shares fell nearly 5% on renewed
   "circular financing" scrutiny of its reported $250B OpenAI Ohio-campus
   backstop the same window (ARA daily digest 2026-07-29).
+
+- **All four US hyperscalers raise 2026 guidance in one week — ~$720–745B
+  combined (2026-08-01).** Q2 earnings week closed with a **collective ~$25B
+  raise**: **[[amazon]] $220B** (up from $200B, explicitly citing memory
+  costs), **[[microsoft]] ~$175B**, **[[google|Alphabet]] $195–205B**, and
+  **[[meta]] $130–145B**. The uniform message on every call was that
+  **compute demand exceeds the capacity they can build** — the supply-side
+  constraint, not a demand-side one. Two readings matter for this theme: the
+  guidance is now high enough that the "is demand real" question is being
+  answered by capacity shortfall rather than by backlog contracts, and
+  Amazon naming **memory costs** as the driver of its raise points at HBM/DRAM
+  ([[micron]], [[sk-hynix]]) as the binding input rather than accelerators
+  alone. For scale, the EU's simultaneous gigafactory programme totals roughly
+  **€30B — about a twentieth of one year of US hyperscaler compute spend**
+  (Q2 earnings calls via X, TechCrunch; ARA daily digest 2026-08-01).
+- **A leveraged AI fund blows up — the first visible casualty of the financing
+  layer (2026-08-01).** **Leopold Aschenbrenner's Situational Awareness**, up
+  **439% through June** and grown to roughly **$20B**, **sold most of its $16B
+  public-equity portfolio to Citadel** after leverage magnified a July
+  drawdown, retaining about **$10B** including its [[anthropic]] stake. WSJ put
+  the July decline at **67%**. This is the supercycle's cost-of-capital
+  question arriving on the *investor* side rather than the operator side: the
+  most concentrated public bet on the AI trade unwound not because the thesis
+  broke but because leverage did (ARA daily digest 2026-08-01).
+- **Consolidation in the AI-compute middle layer (2026-08-01).** **Nscale
+  acquired Anyscale for ~$1.65B** (per an Anyscale investor, confirmed by
+  TechCrunch) the same day *The Information* reported Nscale is preparing a
+  possible **IPO as soon as this fall at a floated $25B valuation** — the
+  [[neocloud]] layer buying its way up the stack into the orchestration
+  software its customers run. Separately, Bloomberg traced **[[moonshot-kimi-k3|Moonshot's]]
+  compute to an [[alibaba]] arrangement involving roughly 20,000 Nvidia
+  H200s**, a rare named mechanism behind a Chinese lab's training capacity
+  (ARA daily digest 2026-08-01).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s
