@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-08-01
+
+TOP STORIES:
+• DeepSeek open-sources V4-Flash-0731 under MIT license hours after its API launch
+• Anthropic discloses three real-world breaches from its own cybersecurity evals
+• Google pulls Google Earth's AI image generator one day after launch
+
+KEY NUMBERS:
+• V4-Flash: $0.28/$0.87 per Mtok, index 50 (~60% cheaper than GPT-5.6 Luna)
+• Hyperscaler 2026 AI capex guidance: ~$720-745B (Amazon raised to $220B)
+• Anthropic reviewed 141,006 eval runs; 3 orgs breached, 2 hadn't noticed
+
+TRENDING: DeepSeek V4-Flash topped Hacker News all day (652 pts); r/MachineLearning is consumed by LLM-written peer reviews.
+
+Full digest on GitHub.
