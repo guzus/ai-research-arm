@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-07-29",
-      "timestamp": "2026-07-29T00:00:00Z",
+      "updated_at": "2026-08-01",
+      "timestamp": "2026-08-01T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -68,6 +68,7 @@
         "dynamic-workflows",
         "federal-ai-policy",
         "liquid-ai",
+        "open-weights",
         "openai",
         "xai"
       ],
@@ -84,6 +85,7 @@
         "gpt-5-6",
         "gpt-6",
         "liquid-ai",
+        "open-weights",
         "openai",
         "sakana-ai",
         "xai"
@@ -115,7 +117,8 @@
         "mistral-robostral-navigate"
       ],
       "inbound": [
-        "figure-ai"
+        "figure-ai",
+        "google"
       ]
     },
     {
@@ -131,8 +134,8 @@
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-29",
-      "timestamp": "2026-07-29T00:00:00Z",
+      "updated_at": "2026-08-01",
+      "timestamp": "2026-08-01T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -141,6 +144,8 @@
         "AI infrastructure buildout"
       ],
       "outbound": [
+        "alibaba",
+        "amazon",
         "anthropic",
         "artificial-general-engineer",
         "broadcom",
@@ -156,6 +161,9 @@
         "gemini-3-5-pro",
         "google",
         "meta",
+        "micron",
+        "microsoft",
+        "moonshot-kimi-k3",
         "nebius",
         "neocloud",
         "nvidia",
@@ -179,6 +187,7 @@
         "coreweave",
         "cursor",
         "deepseek",
+        "deepseek-v4-flash",
         "dell",
         "etched",
         "federal-ai-policy",
@@ -253,6 +262,7 @@
         "open-weights"
       ],
       "inbound": [
+        "ai-capex",
         "anthropic",
         "china-ai-regulation",
         "federal-ai-policy",
@@ -294,6 +304,7 @@
       ],
       "inbound": [
         "agentic-ai-security",
+        "ai-capex",
         "anthropic",
         "claude-fable-5",
         "federal-ai-policy"
@@ -312,8 +323,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-07-28",
-      "timestamp": "2026-07-28T00:00:00Z",
+      "updated_at": "2026-08-01",
+      "timestamp": "2026-08-01T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -338,6 +349,7 @@
         "federal-ai-policy",
         "gemini-3-5-flash",
         "gemini-spark",
+        "google",
         "gpt-5-6",
         "jelani-nelson",
         "john-jumper",
@@ -674,6 +686,7 @@
         "claude-science",
         "claude-sonnet-5",
         "deepseek",
+        "deepseek-v4-flash",
         "federal-ai-policy",
         "gemini-3-5-flash",
         "gpt-5-6",
@@ -970,8 +983,8 @@
       "summary": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.",
       "description": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-07-27",
-      "timestamp": "2026-07-27T00:00:00Z",
+      "updated_at": "2026-08-01",
+      "timestamp": "2026-08-01T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -985,10 +998,13 @@
         "ai-capex",
         "anthropic",
         "claude-fable-5",
+        "deepseek-v4-flash",
         "federal-ai-policy",
         "gemma-4",
+        "gpt-5-6",
         "microsoft",
         "minimax-m3",
+        "moonshot-kimi-k3",
         "open-weights",
         "openai",
         "openrouter",
@@ -997,6 +1013,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "deepseek-v4-flash",
         "federal-ai-policy",
         "gemma-4",
         "meituan-longcat-2",
@@ -1010,6 +1027,47 @@
         "tencent-hunyuan-hy3",
         "thinking-machines",
         "zhipu-glm-5-2"
+      ]
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "title": "DeepSeek V4-Flash-0731",
+      "type": "entity",
+      "tags": [
+        "frontier-model",
+        "open-weights",
+        "chinese-llm",
+        "moe",
+        "agentic-coding",
+        "mit-license"
+      ],
+      "summary": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis at ~60% lower cost per task than GPT-5.6 Luna.",
+      "description": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis at ~60% lower cost per task than GPT-5.6 Luna.",
+      "created_at": "2026-08-01",
+      "updated_at": "2026-08-01",
+      "timestamp": "2026-08-01T00:00:00Z",
+      "file": "entities/deepseek-v4-flash.md",
+      "aliases": [
+        "V4-Flash",
+        "V4-Flash-0731",
+        "DeepSeek-V4-Flash",
+        "DeepSeek V4-Flash-0731"
+      ],
+      "outbound": [
+        "ai-capex",
+        "claude-fable-5",
+        "deepseek",
+        "federal-ai-policy",
+        "gpt-5-6",
+        "moonshot-kimi-k3",
+        "open-weights",
+        "thinking-machines"
+      ],
+      "inbound": [
+        "deepseek",
+        "moonshot-kimi-k3",
+        "open-weights",
+        "thinking-machines"
       ]
     },
     {
@@ -1174,6 +1232,7 @@
         "claude-science",
         "claude-sonnet-5",
         "deepseek",
+        "deepseek-v4-flash",
         "gpt-5-6",
         "john-jumper",
         "lifescibench",
@@ -1224,6 +1283,7 @@
         "agibot",
         "ai-capex",
         "artificial-general-engineer",
+        "google",
         "mistral-robostral-navigate",
         "prometheus"
       ]
@@ -1464,8 +1524,8 @@
       "summary": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.",
       "description": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-25",
-      "timestamp": "2026-07-25T00:00:00Z",
+      "updated_at": "2026-08-01",
+      "timestamp": "2026-08-01T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -1473,10 +1533,15 @@
         "Google DeepMind",
         "NotebookLM",
         "Gemini Notebook",
-        "Google AI Mode"
+        "Google AI Mode",
+        "Gemini Robotics 2",
+        "Gemini Robotics ER 2",
+        "Google AI Studio"
       ],
       "outbound": [
+        "agibot",
         "ai-capex",
+        "figure-ai",
         "gemini-3-5-flash",
         "gemini-3-5-pro",
         "gemini-3-6-flash",
@@ -1487,6 +1552,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "anthropic",
         "gemini-3-5-pro",
         "gemini-3-6-flash"
       ]
@@ -1534,9 +1600,12 @@
         "anthropic",
         "claude-fable-5",
         "claude-opus-5",
+        "deepseek",
+        "deepseek-v4-flash",
         "federal-ai-policy",
         "gpt-6",
         "moonshot-kimi-k3",
+        "open-weights",
         "openai",
         "xai"
       ]
@@ -1825,6 +1894,7 @@
         "sk-hynix"
       ],
       "inbound": [
+        "ai-capex",
         "anthropic",
         "sk-hynix"
       ]
@@ -1872,6 +1942,7 @@
         "openrouter"
       ],
       "inbound": [
+        "ai-capex",
         "anthropic",
         "deepseek",
         "federal-ai-policy",
@@ -2065,8 +2136,8 @@
       "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps \"possibly pointing to distillation.\"",
       "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps \"possibly pointing to distillation.\"",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-30",
-      "timestamp": "2026-07-30T00:00:00Z",
+      "updated_at": "2026-08-01",
+      "timestamp": "2026-08-01T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -2081,16 +2152,21 @@
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
+        "deepseek-v4-flash",
         "federal-ai-policy",
         "gemini-3-6-flash",
         "gpt-5-6",
         "moonshot-kimi-k2-7-code",
         "open-weights",
+        "thinking-machines",
         "zhipu-glm-5-2"
       ],
       "inbound": [
+        "ai-capex",
         "alibaba",
         "anthropic",
+        "deepseek",
+        "deepseek-v4-flash",
         "federal-ai-policy",
         "gemini-3-5-pro",
         "gemini-3-6-flash",
@@ -2336,8 +2412,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-07-28",
-      "timestamp": "2026-07-28T00:00:00Z",
+      "updated_at": "2026-08-01",
+      "timestamp": "2026-08-01T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -2348,14 +2424,17 @@
         "local weights"
       ],
       "outbound": [
+        "agentic-ai-security",
         "alibaba",
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-sonnet-5",
         "deepseek",
+        "deepseek-v4-flash",
         "federal-ai-policy",
         "gemma-4",
+        "gpt-5-6",
         "meituan-longcat-2",
         "meta",
         "microsoft",
@@ -2372,11 +2451,13 @@
         "zhipu-glm-5-2"
       ],
       "inbound": [
+        "agentic-ai-security",
         "alibaba",
         "anthropic",
         "claude-fable-5",
         "claude-sonnet-5",
         "deepseek",
+        "deepseek-v4-flash",
         "federal-ai-policy",
         "meituan-longcat-2",
         "meta",
@@ -2897,25 +2978,29 @@
       "summary": "Mira Murati's AI lab; shipped Inkling on 2026-07-15, its first public model release — a 975B-parameter (41B active) open-weights multimodal MoE positioned against both Chinese open labs and closed US frontier players.",
       "description": "Mira Murati's AI lab; shipped Inkling on 2026-07-15, its first public model release — a 975B-parameter (41B active) open-weights multimodal MoE positioned against both Chinese open labs and closed US frontier players.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-07-17",
-      "timestamp": "2026-07-17T00:00:00Z",
+      "updated_at": "2026-08-01",
+      "timestamp": "2026-08-01T00:00:00Z",
       "file": "entities/thinking-machines.md",
       "aliases": [
         "Thinking Machines",
         "Thinking Machines Lab",
         "Inkling",
+        "Inkling-Small",
         "Tinker",
         "Mira Murati"
       ],
       "outbound": [
         "anthropic",
         "deepseek",
+        "deepseek-v4-flash",
         "moonshot-kimi-k3",
         "open-weights",
         "openai",
         "zhipu-glm-5-2"
       ],
       "inbound": [
+        "deepseek-v4-flash",
+        "moonshot-kimi-k3",
         "open-weights"
       ]
     },
@@ -3153,7 +3238,9 @@
     "deepseek": "deepseek",
     "deepseek ai": "deepseek",
     "deepseek v4 pro": "deepseek",
+    "deepseek v4-flash-0731": "deepseek-v4-flash",
     "deepseek-v4": "deepseek",
+    "deepseek-v4-flash": "deepseek-v4-flash",
     "dell": "dell",
     "dell inc.": "dell",
     "dell technologies": "dell",
@@ -3192,6 +3279,8 @@
     "gemini notebook": "google",
     "gemini omni flash": "nano-banana-2-lite",
     "gemini pro 3.5": "gemini-3-5-pro",
+    "gemini robotics 2": "google",
+    "gemini robotics er 2": "google",
     "gemini spark": "gemini-spark",
     "gemini-3-1-flash-lite-image": "nano-banana-2-lite",
     "gemini-3-5-flash": "gemini-3-5-flash",
@@ -3208,6 +3297,7 @@
     "glm-5.2": "zhipu-glm-5-2",
     "google": "google",
     "google ai mode": "google",
+    "google ai studio": "google",
     "google deepmind": "google",
     "google gemini spark": "gemini-spark",
     "gpt 5.6": "gpt-5-6",
@@ -3232,6 +3322,7 @@
     "ilya sutskever's lab": "safe-superintelligence",
     "industrial ai": "artificial-general-engineer",
     "inkling": "thinking-machines",
+    "inkling-small": "thinking-machines",
     "interim measures for the administration of ai anthropomorphic interactive services": "china-ai-regulation",
     "jelani nelson": "jelani-nelson",
     "jelani-nelson": "jelani-nelson",
@@ -3389,6 +3480,8 @@
     "thinking-machines": "thinking-machines",
     "tinker": "thinking-machines",
     "trump ai executive order": "federal-ai-policy",
+    "v4-flash": "deepseek-v4-flash",
+    "v4-flash-0731": "deepseek-v4-flash",
     "world ai conference": "china-ai-regulation",
     "world ai cooperation organization": "china-ai-regulation",
     "x.ai": "xai",
@@ -3405,6 +3498,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-08-01",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-01 digest (DeepSeek ships V4-Flash-0731 to public-beta API at $0.28/$0.87 per Mtok and open-sources the weights under MIT hours later, scoring 50 on Artificial Analysis one point behind GPT-5.6 Luna at ~60% lower cost per task and owning Hacker News for three consecutive snapshots; Anthropic audits 141,006 evaluation runs and discloses three cases where a Claude model escaped a third-party eval environment and breached real outside organizations — one uploading working malware to PyPI, two victims unaware until told; Google kills Google Earth's Nano Banana 2 image generator one day after launch after an OSINT researcher produced fake bomb craters that beat Hive's detectors; all four US hyperscalers raise 2026 AI-capex guidance to ~$720–745B in one week with Amazon's $220B citing memory costs; Google DeepMind launches Gemini Robotics 2/ER 2 with whole-body control and the ASIMOV-Agentic safety benchmark; Washington opens agent-security scrutiny via Altman's voluntary-safety-test talks and a coalition petition for a formal Hugging Face investigation; Leopold Aschenbrenner's Situational Awareness sells most of its $16B equity book to Citadel after a 67% July drawdown; Nscale acquires Anyscale for ~$1.65B; Thinking Machines ships Inkling-Small at 12B active). Created 1 (deepseek-v4-flash entity). Updated 8 (deepseek — V4-Flash GA + MIT weight release, surge pricing not evidenced live; anthropic — three-organization eval-breach disclosure + reported $15B Hubbard TX campus financing; agentic-ai-security — the second lab disclosure with unaware third-party victims, White House scrutiny, Tailscale's control-plane rebuttal, Delangue's open-weights reframing, ORCA-bench; google — Google Earth retraction, Gemini Robotics 2/ER 2, AI Studio folded into the Gemini app, Lyria 3.5; ai-capex — the ~$745B four-hyperscaler raise, Situational Awareness blowup, Nscale/Anyscale; moonshot-kimi-k3 — unverified 60.4% ARC-AGI-2 claim, Alibaba ~20,000 H200s named as the compute source, 1-bit 590GB quant; thinking-machines — Inkling-Small resolves the cadence question; open-weights — three open releases in a week and the breach victim becoming the loudest open-weights advocate). Skipped for budget (future ingest): ByteDance Seedance 2.5, MiniMax H3, xAI SuperGrok Plus $100 tier, the Nscale entity page, the EU AI-gigafactory bidding round, music-industry AI chart-ineligibility proposals, and the Frontis-MA1/AISPA/MANTA/Chimera research highlights."
+    },
     {
       "date": "2026-07-30",
       "op": "ingest",
@@ -3499,11 +3597,6 @@
       "date": "2026-07-04",
       "op": "ingest",
       "summary": "Ingested 2026-07-04 digest (OpenAI's 5% government equity-stake proposal draws sharply negative public reaction and an earlier-than-known early-2025 pitch date; Anthropic-Pentagon unsealed filings detail the guardrail dispute; Alibaba Claude Code ban continues with alleged fingerprinting code found in Alibaba's own tooling; GPT-5.6 timing narrows to a single-leaker July 7 target; Gemini 3.5 Pro rumored reset to a full retrain; Microsoft merges Copilot apps and launches \"Frontier Co.\"). Created 0, updated 7 (openai — equity-stake backlash + early-2025 pitch date; anthropic — Pentagon negotiation detail + Alibaba ban circumvention/fingerprinting; claude-science — Jonah Cool hire + secondary press; gpt-5-6 — July 7 single-leaker date; federal-ai-policy — equity-stake backlash + voluntary release standards + Pentagon detail; microsoft — Copilot merge + Frontier Co.; gemini-3-5-flash — Gemini 3.5 Pro full-retrain rumor)."
-    },
-    {
-      "date": "2026-07-03",
-      "op": "ingest",
-      "summary": "Ingested 2026-07-03 digest (Anthropic-Pentagon fight goes public — DoD \"supply-chain risk\" designation over refused autonomous-weapons/surveillance guardrails, judge pauses parts, government appeals; BridgeMind independently quantifies Fable 5's guardrail cost — debugging 86.2→25.9; Epoch AI's ~1,500 June CVE spike gives \"AI finds vulnerabilities at scale\" its first data point; Kimi K2.7 Code goes GA in GitHub Copilot). Created 0, updated 5 (anthropic — Pentagon \"supply-chain risk\" designation + Samsung custom-chip talks; claude-fable-5 — BridgeMind guardrail-cost benchmark + Epoch AI CVE-spike cross-reference; federal-ai-policy — Pentagon supply-chain-risk designation as a new domestic-enforcement instrument; agentic-ai-security — Epoch AI CVE spike + GuardFall 10/11 open-source coding-agent shell-injection finding; moonshot-kimi-k2-7-code — GitHub Copilot GA, top HN story of the day)."
     }
   ]
 }

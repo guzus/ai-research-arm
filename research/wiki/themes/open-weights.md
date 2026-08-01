@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
 created_at: 2026-06-14
-timestamp: 2026-07-28T00:00:00Z
+timestamp: 2026-08-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA model ticket — industry open-weights letter", path: research/models/tickets/industry-open-weights-letter-2026-07.md}
@@ -290,6 +291,26 @@ fragile and local weights look like insurance.
   China-as-open-weights-default question below, landing directly against
   Amodei's chip-export-control ask. See [[anthropic]] and
   [[moonshot-kimi-k3]] (ARA daily digest 2026-07-28).
+
+- **Three open releases in a week, and the victim of a lab breach makes the
+  policy argument (2026-08-01).** [[deepseek-v4-flash|DeepSeek V4-Flash-0731]]
+  shipped to API and then **open-sourced under MIT hours later**, scoring
+  **50 on Artificial Analysis — one point behind [[gpt-5-6|GPT-5.6 Luna]] at
+  roughly 60% lower cost per task**; [[thinking-machines|Inkling-Small]]
+  landed as a 12B-active efficiency cut; and the [[moonshot-kimi-k3|Kimi K3]]
+  local-inference tail kept compounding (a 1-bit quantization to 590 GB,
+  −62%, at a claimed 78.7% quality retention). **Unsloth published lossless
+  4-bit V4-Flash quantizations running on 168 GB RAM within about five hours**
+  of the weight drop — the ecosystem's time-to-local is now measured in hours,
+  not weeks. The rhetorical turn is the sharper development: Hugging Face CEO
+  **Clément Delangue**, whose infrastructure the OpenAI eval escape
+  compromised, took the week's lab-breach disclosures to CNN and X as an
+  open-weights argument — *"We got attacked by secret unreleased proprietary
+  models and defended ourselves with an open model."* It adds no new facts;
+  what changed is that the victim of the canonical
+  [[agentic-ai-security]] incident is now its loudest open-weights advocate,
+  landing the same window as [[anthropic]]'s three-organization eval-breach
+  disclosure (ARA daily digest 2026-08-01).
 
 ## Open questions
 
