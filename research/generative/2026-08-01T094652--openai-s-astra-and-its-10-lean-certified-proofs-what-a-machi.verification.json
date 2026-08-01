@@ -1,0 +1,268 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "OpenAI's release note contains one sentence that travelled further than any other: \"The total number of tokens needed to find solutions to these problems would cost roughly $2,000 at Sol API rates.\"",
+      "verdict": "supported",
+      "citation": "https://openai.com/index/ten-advances-in-mathematics/"
+    },
+    {
+      "id": "c2",
+      "text": "Second, OpenAI's page is internally inconsistent about who formalized what — it says the model \"formalized each argument in a Lean certificate,\" and also that \"we helped prepare the manuscripts and formalize the proofs in Lean, and we take responsibility for their correctness.\"",
+      "verdict": "supported",
+      "citation": "https://openai.com/index/ten-advances-in-mathematics/"
+    },
+    {
+      "id": "c3",
+      "text": "| Sphere packing | KL exponent `0.59905576`, 1978 [^45] | `√(e/2π)` = `0.6044787` [^13] | Real, but 0.9% of the exponent |",
+      "verdict": "unsupported",
+      "citation": "https://cdn.openai.com/pdf/ten-proofs-oai.pdf"
+    },
+    {
+      "id": "c4",
+      "text": "Astra pins the exact decay rate of the Cohn–Elkies linear program at `√(e/2π)`, which OpenAI fairly calls the first improvement to the general exponent in 48 years.",
+      "verdict": "weak",
+      "citation": "https://cdn.openai.com/pdf/ten-proofs-oai.pdf"
+    },
+    {
+      "id": "c5",
+      "text": "But the improvement is 0.9% of the exponent: a factor of `2^(0.0054d)`, roughly 43× at d = 1000, against an upper/lower gap that remains exponential — the best lower bound is order `d^2·2^(-d)` (Klartag 2025), leaving about `2^(0.3956d)` unaccounted.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2504.05042"
+    },
+    {
+      "id": "c6",
+      "text": "Yet the manuscript quantifies the gap at a single point, the kissing number, where level 2 of the hierarchy gives exponent 0.39661 against the classical optimized 0.400944 — 1.08%.",
+      "verdict": "supported",
+      "citation": "https://cdn.openai.com/pdf/ten-proofs-oai.pdf"
+    },
+    {
+      "id": "c7",
+      "text": "Astra's superexponential lower bound has base `k^(1/3)/(6e^38·log k)`, which forces `R(3;k)^(1/k)` to diverge, answering the $100 question negatively and pinning `log R` to `Θ(k log k)`.",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/openai/ten-proofs/main/ComparatorChallenges/I_MulticolorTriangleRamsey.lean"
+    },
+    {
+      "id": "c8",
+      "text": "It is also numerically inert: with `e^38` ≈ 3.19×10^16 in the denominator, the new base does not overtake 3.2806 until k is of order 10^59.",
+      "verdict": "weak",
+      "citation": null
+    },
+    {
+      "id": "c9",
+      "text": "The README concedes that \"many definition hole challenges can be gamed without additional oversight,\" and that such solutions \"**must** always be checked with an additional (potentially human) verifier.\"",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/leanprover/comparator/master/README.md"
+    },
+    {
+      "id": "c10",
+      "text": "This is the protocol working as designed, not fraud: the README specifies that `Challenge.lean` \"contains at least a theorem named `todo1` that has a `sorry`,\" and the separate solution module supplies the real proof.",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/leanprover/comparator/master/README.md"
+    },
+    {
+      "id": "c11",
+      "text": "Comparator's guarantee is itself conditional — three guarantees resting on six stated assumptions, including that nothing escaped the sandbox and that the kernels are correct.",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/leanprover/comparator/master/README.md"
+    },
+    {
+      "id": "c12",
+      "text": "No human error or misleading presentation of the theorem statement in the trusted challenge file.",
+      "verdict": "supported",
+      "citation": "https://lean-lang.org/doc/reference/latest/ValidatingProofs/"
+    },
+    {
+      "id": "c13",
+      "text": "First, a Lean development can type-check while proving nothing about the object it claims to be about: on 3 June 2026 a LeanMarathon run formalizing OpenAI's own unit-distance disproof modelled a number field as a dummy record, yielding a development that \"type-checks and passes CI, but proves nothing real.\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2606.05400v1"
+    },
+    {
+      "id": "c14",
+      "text": "The library holds roughly 283,758 theorems from 772 contributors, and its own roadmap names the review backlog \"the primary constraint on Mathlib's growth\" — about 300 open pull requests against a median wait around two weeks, as of the 2026 roadmap snapshot.",
+      "verdict": "supported",
+      "citation": "https://leanprover-community.github.io/mathlib_stats.html"
+    },
+    {
+      "id": "c15",
+      "text": "The Leiden Declaration — 3,340 verified signatories as of its 2 June 2026 publication, endorsed by the International Mathematical Union — separately warns that evaluation suffers when findings arrive through \"informal channels such as press releases or blog posts, often without any research paper,\" and tells policymakers \"Don't believe the hype,\" citing \"a strong commercial incentive on the part of the technology industry to overstate the capabilities of their products.\"",
+      "verdict": "weak",
+      "citation": "https://leidendeclaration.ai/"
+    },
+    {
+      "id": "c16",
+      "text": "Kevin Buzzard checked a 1,076-line AI-generated Lean counterexample in \"under 5 minutes in total.\"",
+      "verdict": "supported",
+      "citation": "https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled/"
+    },
+    {
+      "id": "c17",
+      "text": "He could do that only because the statement used \"only concepts in mathlib,\" so `HopfAlgebra` \"can be trusted to mean what mathematicians think of as Hopf algebras.\"",
+      "verdict": "supported",
+      "citation": "https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled/"
+    },
+    {
+      "id": "c18",
+      "text": "DeepMind published its denominator: AlphaProof Nexus autonomously resolved 9 of 353 open Erdős problems — a hit rate near 2.5% — at \"the per-problem cost of a few hundred dollars.\"",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/abs/2605.22763"
+    },
+    {
+      "id": "c19",
+      "text": "When DeepMind's AlphaProof Nexus resolved 9 of 353 Erdős problems, the striking finding buried in its own paper was that a naive generate-and-verify baseline matched the same nine — the scaffolding bought efficiency, not capability.",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/abs/2605.22763"
+    },
+    {
+      "id": "c20",
+      "text": "An independent First Proof consortium ran four harnesses over the same ten problems and recorded totals from $117 to $4,799 — a spread of roughly 40× on identical work, as of its published run in June 2026.",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/html/2606.18119v1"
+    },
+    {
+      "id": "c21",
+      "text": "Terence Tao cited the same dataset in his ICM 2026 lecture as costs ranging from 10 to 1,000 USD per problem.",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/html/2606.18119v1"
+    },
+    {
+      "id": "c22",
+      "text": "Hales's Kepler proof took about seven years from submission to acceptance and its referee panel formally gave up, certifying only 99% confidence; Flyspeck — launched *because* of that refereeing failure — then took eleven and a half years to formalise it.",
+      "verdict": "supported",
+      "citation": "https://www.cambridge.org/core/journals/forum-of-mathematics-pi/article/formal-proof-of-the-kepler-conjecture/78FBD5E1A3D1BCCB8E0D5B0C463C9FBC"
+    },
+    {
+      "id": "c23",
+      "text": "The part everyone forgets is the coda: once the machine certificate existed, Forum of Mathematics, Pi refereed the formal proof for roughly three more years anyway.",
+      "verdict": "supported",
+      "citation": "https://www.cambridge.org/core/journals/forum-of-mathematics-pi/article/formal-proof-of-the-kepler-conjecture/78FBD5E1A3D1BCCB8E0D5B0C463C9FBC"
+    },
+    {
+      "id": "c24",
+      "text": "- {date: \"1976\", headline: \"Four Colour Theorem\", body: \"Appel and Haken's computer-assisted proof is accepted but distrusted; roughly 1,200 CPU-hours and 1,482 configurations that no human checked by hand.\"}",
+      "verdict": "weak",
+      "citation": "https://www.ams.org/notices/200811/tx081101382p.pdf"
+    },
+    {
+      "id": "c25",
+      "text": "The earlier precedent runs the same way — Appel–Haken 1976 was accepted but distrusted for 29 years until Gonthier's Coq formalization removed the trust dependency, and even then the trust base shifted to the Coq kernel rather than vanishing.",
+      "verdict": "supported",
+      "citation": "https://www.ams.org/notices/200811/tx081101382p.pdf"
+    },
+    {
+      "id": "c26",
+      "text": "Worth recording: erdosproblems.com still listed 183, 146 and 180 as OPEN with no AI attribution, last edited 2026-04-10 and 2026-01-18.",
+      "verdict": "supported",
+      "citation": "https://www.erdosproblems.com/183"
+    },
+    {
+      "id": "c27",
+      "text": "arXiv forbids listing generative AI as an author and requires each human signatory to \"individually take full responsibility for all its contents, irrespective of how the contents were generated\"; COPE's position, adopted by the AMS, is that \"AI tools cannot meet the requirements for authorship as they cannot take responsibility for the submitted work.\"",
+      "verdict": "weak",
+      "citation": "https://publicationethics.org/guidance/cope-position/authorship-and-ai-tools"
+    },
+    {
+      "id": "c28",
+      "text": "Against Kalorkoti's `Ω(n^3)` from 1985 that is a real `n/log n` gain after 40 years — but in the variable count `N = n^2` it is exactly `N^2/log N`, the known ceiling of the Nechiporuk–Kalorkoti technique.",
+      "verdict": "weak",
+      "citation": "https://link.springer.com/chapter/10.1007/BFb0012780"
+    },
+    {
+      "id": "c29",
+      "text": "Quantum parallel repetition may be the cleanest of the ten: exponential decay was known only for anchored or free games, and Bavarian–Vidick–Yuen amplify a *transformed* game, not the original, so a general two-player exponential theorem closes a well-posed decade-old problem outright.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/1604.04340"
+    },
+    {
+      "id": "c30",
+      "text": "CVP is unjudgeable as stated: moving from `n^(c/log log n)` — sub-polynomial, slower than `n^ε` for every positive ε — to a polynomial factor is a category jump, but the announcement names neither exponent nor hardness assumption, and Aharonov–Regev put `√n`-approximation in NP ∩ coNP, capping any NP-hardness below exponent ½.",
+      "verdict": "supported",
+      "citation": "https://cims.nyu.edu/~regev/papers/cvpconp.pdf"
+    },
+    {
+      "id": "c31",
+      "text": "The surrounding hygiene is thin: the repository was created the same day with a single commit, Issues disabled and no CI workflow [^2], and the 62-page \"reasoning walkthroughs\" companion is itself model-written.",
+      "verdict": "unsupported",
+      "citation": "https://cdn.openai.com/pdf/ten-proofs-oai.pdf"
+    },
+    {
+      "id": "c32",
+      "text": "Tao's Erdős-problems database carries a status label — ==open (Lean)== — meaning \"there is a verifiable formal solution to the problem, but no human digestion of the solution has yet occurred.\"",
+      "verdict": "unsupported",
+      "citation": "https://mathstodon.xyz/@tao"
+    },
+    {
+      "id": "c33",
+      "text": "The rigidity disproof kills a roughly 45-year-old conjecture, with property (T) for the constructed group resting on a machine-generated sum-of-squares certificate spanning hundreds of files: kernel-checkable, humanly unauditable.",
+      "verdict": "unsupported",
+      "citation": "https://raw.githubusercontent.com/openai/ten-proofs/main/ConnesRigidity/Main.lean"
+    },
+    {
+      "id": "c34",
+      "text": "The gap is closed elsewhere — `propertyTGroupFactorCounterexample` separately supplies `lambda_icc` and `lambda_propertyT` — but that witness is a `def`, and it does not appear in the JSON's `theorem_names`, so it sits outside the independently verified perimeter.",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/openai/ten-proofs/main/ConnesRigidity/Main.lean"
+    },
+    {
+      "id": "c35",
+      "text": "`ConnesRigidityAssertion` quantifies over all Γ and Λ but imposes ICC and Kazhdan property (T) on Γ only, while *concluding* that Λ is ICC.",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/openai/ten-proofs/main/ComparatorChallenges/E_ConnesRigidity.lean"
+    },
+    {
+      "id": "c36",
+      "text": "What is measurable is who looked: OpenAI's own `formalization.yaml` records the review status as `agent-reviewed` — reviewed by a model, not by mathematicians.",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/openai/ten-proofs/main/formalization.yaml"
+    },
+    {
+      "id": "c37",
+      "text": "note that the manifest lists twelve main results, not ten, splitting binary from spherical codes and compactness from two-degenerate graphs",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/openai/ten-proofs/main/formalization.yaml"
+    },
+    {
+      "id": "c38",
+      "text": "Sébastien Bubeck announced it as \"10 such Astra proofs, complete with lean certificates and CoT walkthroughs for each of them.\"",
+      "verdict": "supported",
+      "citation": "https://x.com/SebastienBubeck/status/2083456300692979886"
+    },
+    {
+      "id": "c39",
+      "text": "Within an hour of publication the top objection in the first Hacker News thread was not mathematical at all but \"the lack of transparency around the total experiment and construction,\" with one commenter likening the $2,000 figure to p-hacking.",
+      "verdict": "supported",
+      "citation": "https://news.ycombinator.com/item?id=49132058"
+    },
+    {
+      "id": "c40",
+      "text": "The US Bureau of Labor Statistics puts the median mathematician wage at $121,680 as of May 2024, but that occupation code covers applied mathematicians in defence, finance and government; academic pure mathematicians are counted under postsecondary teachers, so it is the wrong population.",
+      "verdict": "weak",
+      "citation": "https://www.bls.gov/ooh/math/mathematicians-and-statisticians.htm"
+    },
+    {
+      "id": "c41",
+      "text": "OpenAI's published Sol rates are $5.00 per million input tokens and $30.00 per million output tokens as of 1 August 2026; $2,000 buys 66.7M output tokens at the top rate, or 400M input tokens at the bottom, and a reasoning-heavy proof search is output-dominated — so the realistic band is roughly 67–100M tokens for all ten results.",
+      "verdict": "supported",
+      "citation": "https://platform.openai.com/docs/pricing"
+    },
+    {
+      "id": "c42",
+      "text": "The specialist literature treated non-sofic existence as fully open as recently as April 2026 — \"Since it is not known whether non-sofic groups exist at all, the class of minimal non-sofic groups may be empty\" — and Astra's Lean target is stronger than Gromov's bare question, asserting a *finitely presented* example.",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/pdf/2604.19174"
+    },
+    {
+      "id": "c43",
+      "text": "The `ComparatorChallenges` files in `openai/ten-proofs` contain `sorry` — four of them in `A_SpherePacking.lean` alone.",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/openai/ten-proofs/main/ComparatorChallenges/A_SpherePacking.lean"
+    },
+    {
+      "id": "c44",
+      "text": "- {term: Certificates, def: \"Lean 4.32.0, mathlib pinned\"}",
+      "verdict": "supported",
+      "citation": "https://github.com/openai/ten-proofs"
+    }
+  ]
+}
