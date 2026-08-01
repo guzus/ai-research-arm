@@ -7,6 +7,11 @@ tags: [oem, server-vendor, enterprise-ai, capital-markets]
 description: US enterprise-IT OEM; Q1 FY27 (reported 2026-05-29) printed $43.8B revenue (+88% YoY) with AI-Optimized Servers at $16.1B (+757% YoY), $24.4B AI orders booked, FY27 AI-server outlook raised to $60B; stock +32% on the print, the best single day in company history.
 created_at: 2026-06-01
 timestamp: 2026-06-01T00:00:00Z
+market:
+  ticker: DELL
+  exchange: NYSE
+  symbol: NYSE:DELL
+  provider: yahoo
 sources:
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "Dell Q1 FY27 results", date: 2026-05-29}

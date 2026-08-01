@@ -229,6 +229,7 @@ back to host-level `pi --tools ... bash`.
 
 | Workflow | Trigger | Purpose |
 |---|---|---|
+| `market-quotes.yml` | every 3h `:53` | Deterministic refresh of `research/market/quotes.json` from Yahoo for every wiki entity carrying `market` frontmatter — the price row in the wiki hover card and on the entity page. Symbols come from `research/wiki/index.json`, so adding `market:` to a page is the only step needed to quote a new company. Fail-soft per symbol (carries the prior value forward marked `stale`), fail-loud if every symbol fails. Needs the optional `stock` extra — Yahoo's bare urllib path 429s. |
 | `arm-timeline.yml` | every 2h `:45` | Deterministic refresh of `research/arm/timeline.json` so the dashboard's Arm tab renders in prod (the Docker build context has no `.git`/`.github`, so prebuild falls back to this committed file; unrefreshed it ages out of the ±36h window). |
 | `daily-improve.yml` | weekly, Monday `00:17` UTC | Opens improve/YYYY-MM-DD PR with methodology fixes; each run auto-closes prior unmerged `improve/*` PRs. See "Load-bearing rules" for where the IMPROVEMENTS file belongs. |
 | `ci.yml` | push/PR on workflows/dashboard/scripts | actionlint + dashboard build + Python tests on GitHub-hosted runners |
@@ -307,6 +308,7 @@ research/
 ├── front-page/                # daily-front-page.yml (committed PNG + interactive .ara.md/.html edition)
 ├── generative/                # generative-research.yml + Oracle runner (HTML + .ara.md + index.json)
 ├── issues/                    # research-issue.yml
+├── market/                    # market-quotes.yml (quotes.json — live prices for wiki entities carrying `market`)
 ├── models/                    # 24h-model-timeline.yml
 │   ├── tickets/                # persistent set, one .md per shipping artifact
 │   └── <date>-timeline.md      # derived daily diff (created/updated/closed counts)

@@ -329,6 +329,94 @@ class FrontmatterFailureTest(unittest.TestCase):
         self.assertIn("images", fail_fields(report))
 
 
+    # --- market (public-market identity) ------------------------------------
+    #
+    # Strictness matters more here than anywhere else in the schema: a wrong
+    # ticker renders a confident, WRONG share price on a page about something
+    # else. Each case below is a way that could happen.
+
+    def _market_page(self, market_yaml: str, type_: str = "entity", subdir: str = "entities"):
+        def build(root):
+            p = root / subdir / "alpha.md"
+            p.write_text(
+                f"---\nslug: alpha\ntitle: Alpha\ntype: {type_}\ndescription: x\n"
+                "created_at: 2026-05-24\ntimestamp: 2026-05-24\n"
+                f"{market_yaml}---\n\nBody.\n",
+                encoding="utf-8",
+            )
+            kwargs = {"entities": ["alpha"]} if subdir == "entities" \
+                else {"concepts": ["alpha"]} if subdir == "concepts" \
+                else {"themes": ["alpha"]}
+            write_index(root, **kwargs)
+
+        return self._one_page_report(build)
+
+    def test_valid_market_on_public_company_passes(self):
+        report = self._market_page(
+            "market:\n  ticker: NVDA\n  exchange: NASDAQ\n  symbol: NASDAQ:NVDA\n"
+            "  provider: yahoo\n  tradingview_symbol: NASDAQ:NVDA\n"
+        )
+        self.assertTrue(report.ok(), fail_fields(report))
+
+    def test_private_company_without_market_passes(self):
+        # The common case: no market key at all. Must not be required.
+        report = self._market_page("")
+        self.assertTrue(report.ok(), fail_fields(report))
+
+    def test_market_symbol_disagreeing_with_ticker_exchange_fails(self):
+        # The dangerous hand-edit: someone updates ticker but not symbol.
+        report = self._market_page(
+            "market:\n  ticker: AMD\n  exchange: NASDAQ\n  symbol: NASDAQ:NVDA\n"
+        )
+        self.assertFalse(report.ok())
+        self.assertIn("market", fail_fields(report))
+
+    def test_market_malformed_symbol_fails(self):
+        report = self._market_page(
+            "market:\n  ticker: NVDA\n  exchange: NASDAQ\n  symbol: nvda\n"
+        )
+        self.assertFalse(report.ok())
+        self.assertIn("market", fail_fields(report))
+
+    def test_market_missing_required_key_fails(self):
+        report = self._market_page("market:\n  ticker: NVDA\n")
+        self.assertFalse(report.ok())
+        self.assertIn("market", fail_fields(report))
+
+    def test_market_unknown_key_fails(self):
+        report = self._market_page(
+            "market:\n  ticker: NVDA\n  exchange: NASDAQ\n  symbol: NASDAQ:NVDA\n  price: 900\n"
+        )
+        self.assertFalse(report.ok())
+        self.assertIn("market", fail_fields(report))
+
+    def test_market_unknown_provider_fails(self):
+        report = self._market_page(
+            "market:\n  ticker: NVDA\n  exchange: NASDAQ\n  symbol: NASDAQ:NVDA\n  provider: bloomberg\n"
+        )
+        self.assertFalse(report.ok())
+        self.assertIn("market", fail_fields(report))
+
+    def test_market_on_concept_fails(self):
+        report = self._market_page(
+            "market:\n  ticker: NVDA\n  exchange: NASDAQ\n  symbol: NASDAQ:NVDA\n",
+            type_="concept",
+            subdir="concepts",
+        )
+        self.assertFalse(report.ok())
+        self.assertIn("market", fail_fields(report))
+
+    def test_market_on_theme_fails(self):
+        report = self._market_page(
+            "market:\n  ticker: NVDA\n  exchange: NASDAQ\n  symbol: NASDAQ:NVDA\n",
+            type_="theme",
+            subdir="themes",
+        )
+        self.assertFalse(report.ok())
+        self.assertIn("market", fail_fields(report))
+
+
+
 # --- check_wiki: corpus-level failure modes ---------------------------------
 
 

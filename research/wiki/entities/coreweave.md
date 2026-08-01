@@ -7,6 +7,11 @@ tags: [neocloud, gpu-cloud, ai-infrastructure, take-or-pay]
 description: NASDAQ-listed GPU-as-a-service neocloud with a ~$99B contracted backlog, ~$25B debt, and revenue concentrated in Microsoft, OpenAI, and Meta.
 created_at: 2026-05-24
 timestamp: 2026-05-24T00:00:00Z
+market:
+  ticker: CRWV
+  exchange: NASDAQ
+  symbol: NASDAQ:CRWV
+  provider: yahoo
 sources:
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}

@@ -7,6 +7,11 @@ tags: [neocloud, gpu-cloud, ai-infrastructure, nvidia-partner]
 description: Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex, scaling GPU capacity for AI training and inference; signed a $1B+ Nvidia GB300 compute deal with Reflection AI through 2029 (2026-07-15), though its stock fell ~5% on the news.
 created_at: 2026-05-24
 timestamp: 2026-07-15T00:00:00Z
+market:
+  ticker: NBIS
+  exchange: NASDAQ
+  symbol: NASDAQ:NBIS
+  provider: yahoo
 sources:
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}

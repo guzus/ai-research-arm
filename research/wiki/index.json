@@ -269,7 +269,13 @@
         "gemini-3-6-flash",
         "moonshot-kimi-k3",
         "open-weights"
-      ]
+      ],
+      "market": {
+        "ticker": "BABA",
+        "exchange": "NYSE",
+        "symbol": "NYSE:BABA",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "amazon",
@@ -308,7 +314,13 @@
         "anthropic",
         "claude-fable-5",
         "federal-ai-policy"
-      ]
+      ],
+      "market": {
+        "ticker": "AMZN",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:AMZN",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "anthropic",
@@ -452,7 +464,13 @@
       ],
       "inbound": [
         "openai"
-      ]
+      ],
+      "market": {
+        "ticker": "AAPL",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:AAPL",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "artificial-general-engineer",
@@ -522,7 +540,13 @@
         "gpt-5-6",
         "micron",
         "nvidia"
-      ]
+      ],
+      "market": {
+        "ticker": "AVGO",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:AVGO",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "california-ai-regulation",
@@ -930,7 +954,13 @@
         "nebius",
         "neocloud",
         "nvidia"
-      ]
+      ],
+      "market": {
+        "ticker": "CRWV",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:CRWV",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "cursor",
@@ -1100,7 +1130,13 @@
       ],
       "inbound": [
         "ai-capex"
-      ]
+      ],
+      "market": {
+        "ticker": "DELL",
+        "exchange": "NYSE",
+        "symbol": "NYSE:DELL",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "dynamic-workflows",
@@ -1555,7 +1591,13 @@
         "anthropic",
         "gemini-3-5-pro",
         "gemini-3-6-flash"
-      ]
+      ],
+      "market": {
+        "ticker": "GOOGL",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:GOOGL",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "gpt-5-6",
@@ -1858,7 +1900,13 @@
         "google",
         "open-weights",
         "openai"
-      ]
+      ],
+      "market": {
+        "ticker": "META",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:META",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "micron",
@@ -1897,7 +1945,13 @@
         "ai-capex",
         "anthropic",
         "sk-hynix"
-      ]
+      ],
+      "market": {
+        "ticker": "MU",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:MU",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "microsoft",
@@ -1950,7 +2004,13 @@
         "nvidia",
         "open-weights",
         "openai"
-      ]
+      ],
+      "market": {
+        "ticker": "MSFT",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:MSFT",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "midjourney",
@@ -2243,7 +2303,13 @@
         "meta",
         "neocloud",
         "nvidia"
-      ]
+      ],
+      "market": {
+        "ticker": "NBIS",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:NBIS",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "neocloud",
@@ -2396,7 +2462,13 @@
           "credit": "Charbax / Wikimedia Commons (CC BY 3.0)",
           "source_url": "https://commons.wikimedia.org/wiki/File:Nvidia_DGX_Station,_world%27s_most_powerful_desktop,_a_Supercomputer_at_the_office.webm"
         }
-      ]
+      ],
+      "market": {
+        "ticker": "NVDA",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:NVDA",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "open-weights",
@@ -2771,7 +2843,13 @@
         "anthropic",
         "nvidia",
         "openai"
-      ]
+      ],
+      "market": {
+        "ticker": "CRM",
+        "exchange": "NYSE",
+        "symbol": "NYSE:CRM",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "sk-hynix",

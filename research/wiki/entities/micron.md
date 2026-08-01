@@ -7,6 +7,11 @@ tags: [memory, hbm, dram, ai-infrastructure, supply-chain, anthropic]
 description: US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round.
 created_at: 2026-06-23
 timestamp: 2026-07-12T00:00:00Z
+market:
+  ticker: MU
+  exchange: NASDAQ
+  symbol: NASDAQ:MU
+  provider: yahoo
 sources:
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}

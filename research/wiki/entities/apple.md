@@ -7,6 +7,11 @@ tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
 description: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026; sued OpenAI (2026-07-12) over alleged hardware trade-secret theft, escalating to legal letters against dozens of OpenAI employees (2026-07-18).
 created_at: 2026-06-08
 timestamp: 2026-07-18T00:00:00Z
+market:
+  ticker: AAPL
+  exchange: NASDAQ
+  symbol: NASDAQ:AAPL
+  provider: yahoo
 sources:
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}

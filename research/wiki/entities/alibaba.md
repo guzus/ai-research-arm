@@ -7,6 +7,11 @@ tags: [china, distillation, litigation, export-control, hyperscaler-china]
 description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon, even as it continues fighting a US DoD PLA-linked designation.
 created_at: 2026-07-05
 timestamp: 2026-07-22T00:00:00Z
+market:
+  ticker: BABA
+  exchange: NYSE
+  symbol: NYSE:BABA
+  provider: yahoo
 sources:
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA model ticket — Qwen-Image-3.0 release", path: research/models/tickets/alibaba-qwen-image-3-2026-07.md}

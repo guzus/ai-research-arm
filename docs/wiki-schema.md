@@ -98,6 +98,7 @@ Field reference:
 | `timestamp` | yes | datetime | OKF last-meaningful-change timestamp; use ISO 8601 UTC (`YYYY-MM-DDT00:00:00Z` for date-granular updates); must be `>= created_at`. |
 | `sources` | no | list[map] | Each item is a mapping with `title` (req) and optional `url` (http(s)), `path` (repo-relative), `date` (ISO). No other keys. |
 | `images` | no | list[map] | Visual depictions for the page topic/description. Each item has `url` (req), `alt` (req), and optional `caption`, `credit`, `source_url`. No other keys. |
+| `market` | no | map | **`type: entity` only.** Public-market identity for a listed company. Keys: `ticker` (req), `exchange` (req), `symbol` (req), optional `provider`, `tradingview_symbol`. No other keys. See below. |
 
 Both flow style (`aliases: [a, b]`, `sources: - {title: ...}`) and block style
 parse identically under `yaml.safe_load`; either is accepted.
@@ -124,6 +125,41 @@ Image item schema:
 Images are presentation metadata, not evidence. Keep factual citations in
 `sources` and the body. If an image is generated or illustrative, say that in
 the `caption` or `credit` rather than implying it is documentary evidence.
+
+### `market`
+
+`market` binds an entity page to a **publicly traded security** so the dashboard
+can show a live quote in the wiki hover card. It is optional, valid only on
+`type: entity`, and must be omitted entirely for private companies, products,
+models, people, and every non-company entity.
+
+```yaml
+market:
+  ticker: NVDA
+  exchange: NASDAQ
+  symbol: NASDAQ:NVDA
+  provider: yahoo            # optional
+  tradingview_symbol: NASDAQ:NVDA   # optional
+```
+
+| Key | Req? | Type | Notes |
+|---|---|---|---|
+| `ticker` | yes | string | Uppercase symbol, 1–6 chars, optionally suffixed (`BRK.B`, `005930.KS`). No exchange prefix. |
+| `exchange` | yes | string | Uppercase venue code, e.g. `NASDAQ`, `NYSE`, `KRX`, `HKEX`. |
+| `symbol` | yes | string | `EXCHANGE:TICKER`. Must equal `<exchange>:<ticker>` exactly — the validator cross-checks it, so the three fields cannot silently disagree. |
+| `provider` | no | enum | Quote source. `yahoo` is the only supported value today. |
+| `tradingview_symbol` | no | string | `EXCHANGE:TICKER` for a TradingView handoff, when it differs from `symbol`. |
+
+**Never infer a ticker from `aliases`.** Aliases are resolver/search terms and
+routinely include product names, people, handles, and private-company names that
+collide with real tickers — inferring would produce confident, wrong quotes on
+pages that have nothing to do with a listed security. The binding must be this
+explicit machine field or nothing.
+
+Quote values themselves are never stored on the page: they are volatile runtime
+data fetched separately into `research/market/quotes.json`. A page carries
+identity only, so a stale or failed quote degrades to the ordinary wiki hover
+rather than blocking navigation or content rendering.
 
 After the closing `---`, the body is free-form markdown and **must be
 non-empty**. Use it for the narrative, "why it matters", open questions, and

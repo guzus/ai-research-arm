@@ -7,6 +7,11 @@ tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-sili
 description: Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable "editorially controlled" (2026-07-18) despite Microsoft's $5B stake in Anthropic.
 created_at: 2026-06-03
 timestamp: 2026-07-22T00:00:00Z
+market:
+  ticker: MSFT
+  exchange: NASDAQ
+  symbol: NASDAQ:MSFT
+  provider: yahoo
 sources:
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}

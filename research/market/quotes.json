@@ -1,0 +1,161 @@
+{
+  "generated_at": "2026-08-01T12:05:37Z",
+  "quotes": {
+    "NASDAQ:AAPL": {
+      "asOf": "2026-07-31T20:00:01Z",
+      "change": -24.52,
+      "changePercent": -7.3539,
+      "currency": "USD",
+      "marketState": null,
+      "price": 308.91,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:AAPL",
+      "ticker": "AAPL"
+    },
+    "NASDAQ:AMZN": {
+      "asOf": "2026-07-31T20:00:01Z",
+      "change": 36.08,
+      "changePercent": 15.3206,
+      "currency": "USD",
+      "marketState": null,
+      "price": 271.58,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:AMZN",
+      "ticker": "AMZN"
+    },
+    "NASDAQ:AVGO": {
+      "asOf": "2026-07-31T20:00:01Z",
+      "change": 1.44,
+      "changePercent": 0.3713,
+      "currency": "USD",
+      "marketState": null,
+      "price": 389.28,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:AVGO",
+      "ticker": "AVGO"
+    },
+    "NASDAQ:CRWV": {
+      "asOf": "2026-07-31T20:00:01Z",
+      "change": -2.13,
+      "changePercent": -2.8823,
+      "currency": "USD",
+      "marketState": null,
+      "price": 71.77,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:CRWV",
+      "ticker": "CRWV"
+    },
+    "NASDAQ:GOOGL": {
+      "asOf": "2026-07-31T20:00:01Z",
+      "change": 22.47,
+      "changePercent": 6.7344,
+      "currency": "USD",
+      "marketState": null,
+      "price": 356.13,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:GOOGL",
+      "ticker": "GOOGL"
+    },
+    "NASDAQ:META": {
+      "asOf": "2026-07-31T20:00:01Z",
+      "change": 17.68,
+      "changePercent": 3.28,
+      "currency": "USD",
+      "marketState": null,
+      "price": 556.71,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:META",
+      "ticker": "META"
+    },
+    "NASDAQ:MSFT": {
+      "asOf": "2026-07-31T20:00:01Z",
+      "change": 13.62,
+      "changePercent": 3.0193,
+      "currency": "USD",
+      "marketState": null,
+      "price": 464.72,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:MSFT",
+      "ticker": "MSFT"
+    },
+    "NASDAQ:MU": {
+      "asOf": "2026-07-31T20:00:00Z",
+      "change": -51.63,
+      "changePercent": -5.9029,
+      "currency": "USD",
+      "marketState": null,
+      "price": 823.03,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:MU",
+      "ticker": "MU"
+    },
+    "NASDAQ:NBIS": {
+      "asOf": "2026-07-31T20:00:01Z",
+      "change": 1.98,
+      "changePercent": 1.0508,
+      "currency": "USD",
+      "marketState": null,
+      "price": 190.41,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:NBIS",
+      "ticker": "NBIS"
+    },
+    "NASDAQ:NVDA": {
+      "asOf": "2026-07-31T20:00:01Z",
+      "change": 5.71,
+      "changePercent": 2.9276,
+      "currency": "USD",
+      "marketState": null,
+      "price": 200.75,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:NVDA",
+      "ticker": "NVDA"
+    },
+    "NYSE:BABA": {
+      "asOf": "2026-07-31T20:02:27Z",
+      "change": 5.93,
+      "changePercent": 5.098,
+      "currency": "USD",
+      "marketState": null,
+      "price": 122.25,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NYSE:BABA",
+      "ticker": "BABA"
+    },
+    "NYSE:CRM": {
+      "asOf": "2026-07-31T20:00:03Z",
+      "change": 3.31,
+      "changePercent": 1.8317,
+      "currency": "USD",
+      "marketState": null,
+      "price": 184.02,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NYSE:CRM",
+      "ticker": "CRM"
+    },
+    "NYSE:DELL": {
+      "asOf": "2026-07-31T20:04:12Z",
+      "change": 0.56,
+      "changePercent": 0.1383,
+      "currency": "USD",
+      "marketState": null,
+      "price": 405.37,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NYSE:DELL",
+      "ticker": "DELL"
+    }
+  }
+}

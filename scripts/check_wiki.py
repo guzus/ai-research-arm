@@ -42,6 +42,19 @@ URL_RE = re.compile(r"^https?://\S+$")
 IMAGE_URL_RE = re.compile(r"^(https?://\S+|/(?!/)\S+)$")
 IMAGE_SVG_RE = re.compile(r"\.svg(?:$|[?#])", re.IGNORECASE)
 IMAGE_FIELDS = {"url", "alt", "caption", "credit", "source_url"}
+# ORDERED, and normalize_market must iterate this tuple rather than the set
+# below: index.json preserves insertion order, so iterating a set makes the
+# emitted key order vary with PYTHONHASHSEED and the committed index flaps
+# between runs. build_wiki_index.py --check catches it, but only after the
+# damage is committed.
+MARKET_KEYS = ("ticker", "exchange", "symbol", "provider", "tradingview_symbol")
+MARKET_FIELDS = set(MARKET_KEYS)
+MARKET_REQUIRED = ("ticker", "exchange", "symbol")
+# Ticker allows a dotted suffix (BRK.B) and a numeric+venue form (005930.KS).
+MARKET_TICKER_RE = re.compile(r"^[A-Z0-9]{1,6}(\.[A-Z]{1,3})?$")
+MARKET_EXCHANGE_RE = re.compile(r"^[A-Z]{2,10}$")
+MARKET_SYMBOL_RE = re.compile(r"^[A-Z]{2,10}:[A-Z0-9]{1,6}(\.[A-Z]{1,3})?$")
+MARKET_PROVIDERS = {"yahoo"}
 # [[slug]] or [[slug|Display Label]]. The target is everything up to an
 # optional '|'. We capture the raw target and strip/validate it afterwards.
 WIKILINK_RE = re.compile(r"\[\[([^\[\]]+?)\]\]")
@@ -314,6 +327,86 @@ def _check_images(val: Any, path: Path, report: Report) -> None:
                 report.fail(path, "images", f"item {i} source_url must be http(s)://... ({source_url!r})")
 
 
+def normalize_market(value: Any) -> dict[str, str]:
+    """Return normalized market metadata for validated-ish frontmatter.
+
+    Same contract as normalize_images: the validator is the authority on
+    failures, so this is deliberately forgiving and simply drops anything
+    incomplete. Returns {} when there is no usable identity, which is what
+    keeps `market` out of index.json for the overwhelming majority of pages.
+    """
+    if not isinstance(value, dict):
+        return {}
+    out: dict[str, str] = {}
+    for key in MARKET_KEYS:  # ordered tuple, NOT the set — see MARKET_KEYS
+        val = value.get(key)
+        if isinstance(val, str) and val.strip():
+            out[key] = val.strip()
+    if not all(k in out for k in MARKET_REQUIRED):
+        return {}
+    return out
+
+
+def _check_market(val: Any, type_: Any, path: Path, report: Report) -> None:
+    """Optional public-market identity. Entity-only, strict, never inferred.
+
+    Strictness is the point: a wrong ticker renders a confident, wrong price
+    on a page about something else entirely. Every field is exact-matched, and
+    `symbol` is cross-checked against ticker+exchange so the three cannot
+    silently disagree after a hand edit.
+    """
+    if not isinstance(val, dict):
+        report.fail(path, "market", "must be a mapping")
+        return
+    if not val:
+        report.fail(path, "market", "must be omitted entirely rather than an empty mapping")
+        return
+    if type_ != "entity":
+        report.fail(
+            path,
+            "market",
+            f"is only valid on type: entity (got {type_!r}) — concepts and themes are not securities",
+        )
+        return
+
+    extra = set(val) - MARKET_FIELDS
+    if extra:
+        report.fail(path, "market", f"has unknown keys {sorted(extra)} (allowed: {sorted(MARKET_FIELDS)})")
+
+    for key in MARKET_REQUIRED:
+        if key not in val or val[key] is None:
+            report.fail(path, "market", f"missing required key {key!r}")
+
+    ticker = _single_line_str(val.get("ticker"), path, "market", report, required=True)
+    exchange = _single_line_str(val.get("exchange"), path, "market", report, required=True)
+    symbol = _single_line_str(val.get("symbol"), path, "market", report, required=True)
+
+    if ticker and not MARKET_TICKER_RE.match(ticker):
+        report.fail(path, "market", f"ticker must be uppercase 1-6 chars with an optional .SUFFIX ({ticker!r})")
+    if exchange and not MARKET_EXCHANGE_RE.match(exchange):
+        report.fail(path, "market", f"exchange must be an uppercase venue code, 2-10 chars ({exchange!r})")
+    if symbol and not MARKET_SYMBOL_RE.match(symbol):
+        report.fail(path, "market", f"symbol must be EXCHANGE:TICKER ({symbol!r})")
+    if ticker and exchange and symbol and symbol != f"{exchange}:{ticker}":
+        report.fail(
+            path,
+            "market",
+            f"symbol {symbol!r} must equal '{exchange}:{ticker}' — ticker/exchange/symbol disagree",
+        )
+
+    provider = val.get("provider")
+    if provider is not None:
+        provider_s = _single_line_str(provider, path, "market", report, required=False)
+        if provider_s and provider_s not in MARKET_PROVIDERS:
+            report.fail(path, "market", f"provider must be one of {sorted(MARKET_PROVIDERS)} ({provider_s!r})")
+
+    tv = val.get("tradingview_symbol")
+    if tv is not None:
+        tv_s = _single_line_str(tv, path, "market", report, required=False)
+        if tv_s and not MARKET_SYMBOL_RE.match(tv_s):
+            report.fail(path, "market", f"tradingview_symbol must be EXCHANGE:TICKER ({tv_s!r})")
+
+
 def extract_wikilinks(body: str) -> list[str]:
     """Return raw link targets from [[...]] in `body`, skipping fenced code.
 
@@ -420,6 +513,8 @@ def load_page(path: Path, report: Report) -> Page | None:
         _check_sources(data["sources"], path, report)
     if "images" in data and data["images"] is not None:
         _check_images(data["images"], path, report)
+    if "market" in data and data["market"] is not None:
+        _check_market(data["market"], type_, path, report)
 
     if not body.strip():
         report.fail(path, "body", "body must not be empty — write markdown under the frontmatter")

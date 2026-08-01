@@ -7,6 +7,11 @@ tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: The dominant AI accelerator supplier; backing Ilya Sutskever's Safe Superintelligence (~$5B, reported 2026-07-28) and reportedly discussing a ~$250B OpenAI Ohio-datacenter financing backstop, on top of the open-weights Nemotron line.
 created_at: 2026-06-05
 timestamp: 2026-07-29T00:00:00Z
+market:
+  ticker: NVDA
+  exchange: NASDAQ
+  symbol: NASDAQ:NVDA
+  provider: yahoo
 sources:
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA model ticket — NVIDIA Taiwan smuggling probe", path: research/models/tickets/nvidia-taiwan-smuggling-probe-2026-07.md}

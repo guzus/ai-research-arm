@@ -7,6 +7,11 @@ tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
 description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.
 created_at: 2026-07-17
 timestamp: 2026-08-01T00:00:00Z
+market:
+  ticker: GOOGL
+  exchange: NASDAQ
+  symbol: NASDAQ:GOOGL
+  provider: yahoo
 sources:
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA model ticket — Gemini Robotics 2", path: research/models/tickets/google-gemini-robotics-2-2026-07.md}
