@@ -1,0 +1,136 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The gross notional was $43,785 million at June 30, 2026, against $16,940 million at December 31, 2025.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm"
+    },
+    {
+      "id": "c2",
+      "text": "They are derivatives, they are marked, and the mark is on the balance sheet — $815 million of credit derivative liabilities at June 30, 2026, with no offsetting asset balance.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm"
+    },
+    {
+      "id": "c3",
+      "text": "At December 31, 2024 the notional was zero.",
+      "verdict": "supported",
+      "citation": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q3/GOOG-10-Q-Q3-2025.pdf"
+    },
+    {
+      "id": "c4",
+      "text": "At September 30, 2025 it was $6,529 million, and the same filing put maximum exposure to loss on the related unconsolidated VIEs at \"$6.5 billion,\" with the fair value of the credit derivatives described as \"not material.\"",
+      "verdict": "supported",
+      "citation": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q3/GOOG-10-Q-Q3-2025.pdf"
+    },
+    {
+      "id": "c5",
+      "text": "That same Q1 filing disclosed as a subsequent event that in April 2026 the company entered further data center backstops \"with notional amounts totaling approximately $15.3 billion.\"",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000048/goog-20260331.htm"
+    },
+    {
+      "id": "c6",
+      "text": "$28.4 billion at March plus roughly $15.3 billion signed in April is approximately $43.7 billion — essentially the entire Q2 balance.",
+      "verdict": "supported",
+      "citation": "https://ccir.io/research/big-tech-hidden-debt"
+    },
+    {
+      "id": "c7",
+      "text": "Alphabet classifies these credit and equity derivatives within Level 3 of the fair value hierarchy, valued with probability-weighted expected return models using unobservable inputs including counterparty credit default rates and the risk-free rate.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm"
+    },
+    {
+      "id": "c8",
+      "text": "Alphabet discloses that as of June 30, 2026, \"expected future fixed or guaranteed commitments\" under contracts with terms greater than one year were $707.0 billion, \"the significant majority of which related to long-term supply agreements,\"",
+      "verdict": "supported",
+      "citation": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/GOOG-10-Q-Q2-2026.pdf"
+    },
+    {
+      "id": "c9",
+      "text": "Bloomberg's widely repeated **$811 billion** is the broader purchase-commitments-and-other-contractual-obligations total, of which about $200.7 billion falls due within one year.",
+      "verdict": "supported",
+      "citation": "https://www.bloomberg.com/news/articles/2026-07-23/alphabet-s-future-spending-commitments-soar-to-811-billion"
+    },
+    {
+      "id": "c10",
+      "text": "The other components: $85.2 billion of leases primarily related to data centers that had not yet commenced, scheduled to begin between 2026 and 2031 with non-cancelable terms of one to 26 years",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm"
+    },
+    {
+      "id": "c11",
+      "text": "And unconsolidated VIE future funding commitments of $21.9 billion against $1.1 billion at year-end 2025, including $20.0 billion of future capital funding to a private company contingent on operational and financial milestones through 2030, structured as an equity derivative.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm"
+    },
+    {
+      "id": "c12",
+      "text": "Alphabet guided 2026 capital expenditure to $195–205 billion on the July 22, 2026 call, its third raise of the year from an opening $175–185 billion",
+      "verdict": "supported",
+      "citation": "https://mlq.ai/news/alphabet-raises-2026-capex-guidance-to-195-205b-cloud-revenue-surges-82/"
+    },
+    {
+      "id": "c13",
+      "text": "Q2 capex was $44.9 billion against $39.1 billion of operating cash flow, producing free cash flow of negative $5.9 billion — Alphabet's first negative quarter since 2004.",
+      "verdict": "supported",
+      "citation": "https://www.tomshardware.com/tech-industry/big-tech/alphabet-goes-cash-flow-negative-for-the-first-time-as-ai-capex-doubles-to-44-9-billion-in-a-single-quarter"
+    },
+    {
+      "id": "c14",
+      "text": "Moody's calculated that the five largest US hyperscalers held $969 billion of total undiscounted future lease commitments at end-2025, of which $662 billion related to leases not yet commenced — equal to 113% of the group's most recent adjusted debt.",
+      "verdict": "supported",
+      "citation": "https://fortune.com/2026/02/25/hyperscaler-risk-off-balance-sheet-662-billion-data-center-commitments-meta-amazon-microsoft-oracle-alphabet/"
+    },
+    {
+      "id": "c15",
+      "text": "Microsoft disclosed $329.1 billion of uncommenced leases for the quarter ended June 30, 2026, up from $196.6 billion in the prior period",
+      "verdict": "supported",
+      "citation": "https://btw.media/en/microsoft-329-1bn-uncommenced-datacentre-leases"
+    },
+    {
+      "id": "c16",
+      "text": "Upon a default under the backstops, Alphabet \"retain[s] the right to assume the underlying leases for internal use or to sublease to third parties,\"",
+      "verdict": "supported",
+      "citation": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/GOOG-10-Q-Q2-2026.pdf"
+    },
+    {
+      "id": "c17",
+      "text": "It closed the quarter with $242.5 billion of cash, cash equivalents and marketable securities.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm"
+    },
+    {
+      "id": "c18",
+      "text": "Microsoft has used investment-grade guarantee wrappers on neocloud deals including roughly $33 billion of agreements with CoreWeave and Nebius.",
+      "verdict": "unsupported",
+      "citation": "https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-inks-usd33-billion-in-deals-with-neoclouds-like-nebius-coreweave-nebius-deal-alone-secures-100-000-nvidia-gb300-chips-for-internal-use"
+    },
+    {
+      "id": "c19",
+      "text": "Reporting puts the backstopped footprint at roughly 2.4 GW across about ten projects, none yet operational.",
+      "verdict": "weak",
+      "citation": "https://thenextweb.com/news/google-44-billion-data-centre-lease-guarantees-tpu-anthropic"
+    },
+    {
+      "id": "c20",
+      "text": "the company funded the buildout with $51.8 billion of new senior notes plus a large June equity and equity-linked raise.",
+      "verdict": "weak",
+      "citation": "https://www.davispolk.com/experience/alphabet-90-billion-equity-and-equity-linked-offerings"
+    },
+    {
+      "id": "c21",
+      "text": "Alphabet also received equity warrants in several backstopped counterparties, reportedly a pro forma stake near 14% of TeraWulf and about 5.4% of Cipher, though the Hut 8 structure came without warrants.",
+      "verdict": "supported",
+      "citation": "https://www.barchart.com/story/news/3595044/google-piles-on-off-balance-sheet-risk-to-fuel-its-ai-chip-push"
+    },
+    {
+      "id": "c22",
+      "text": "Google's backstops underpin roughly $35 billion of debt for Anthropic chip capacity, led by Apollo Global Management with Blackstone and a syndicate of banks.",
+      "verdict": "supported",
+      "citation": "https://www.bloomberg.com/news/articles/2026-06-09/google-s-backstops-underpin-35-billion-chip-deal-for-anthropic"
+    }
+  ]
+}
