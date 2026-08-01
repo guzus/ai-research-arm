@@ -2297,6 +2297,100 @@ function ensureWikiHover(): void {
   });
   window.addEventListener('scroll', hideWikiHover, true);
 }
+// ── Market quotes for the wiki hover ──────────────────
+//
+// research/market/quotes.json is refreshed by market-quotes.yml and keyed by
+// the wiki's `market.symbol`. Loaded LAZILY: the first hover over a page that
+// actually carries `market` triggers it, so a reader who never hovers a listed
+// company never pays for the request. One load per session, and a failure
+// resolves to an empty map so the hover silently falls back to type/title/
+// summary rather than throwing.
+let marketQuotes: Map<string, MarketQuote> | null = null;
+let marketQuotesPromise: Promise<Map<string, MarketQuote>> | null = null;
+
+function loadMarketQuotes(): Promise<Map<string, MarketQuote>> {
+  if (marketQuotes) return Promise.resolve(marketQuotes);
+  if (!marketQuotesPromise) {
+    marketQuotesPromise = fetch(`${DATA_BASE}/market/quotes.json`, { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        const map = new Map<string, MarketQuote>();
+        const quotes = data && typeof data === 'object' ? (data as any).quotes : null;
+        if (quotes && typeof quotes === 'object') {
+          for (const [symbol, q] of Object.entries(quotes as Record<string, any>)) {
+            if (q && typeof q.price === 'number') map.set(symbol, q as MarketQuote);
+          }
+        }
+        marketQuotes = map;
+        return map;
+      })
+      .catch(() => {
+        marketQuotes = new Map();
+        return marketQuotes;
+      });
+  }
+  return marketQuotesPromise;
+}
+
+function formatQuoteAsOf(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  // The pipeline writes UTC; readers think in their own timezone.
+  return d.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+
+function marketRowHtml(market: WikiMarket, quote: MarketQuote | undefined): string {
+  const label = escapeHtml(market.symbol);
+  if (!quote) {
+    // Known-listed but unquoted: name the security rather than render an empty
+    // shell or, worse, a fake 0.00. The row still occupies its reserved height,
+    // so filling it in later cannot shift the card.
+    return (
+      '<span class="wiki-hover-market wiki-hover-market--empty">' +
+      '<span class="wiki-hover-market-symbol">' + label + '</span>' +
+      '<span class="wiki-hover-market-note">quote unavailable</span>' +
+      '</span>'
+    );
+  }
+  const hasChange = typeof quote.change === 'number' && typeof quote.changePercent === 'number';
+  const dir = !hasChange ? 'flat' : (quote.change as number) > 0 ? 'up' : (quote.change as number) < 0 ? 'down' : 'flat';
+  const sign = hasChange && (quote.change as number) > 0 ? '+' : '';
+  const price = quote.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const changeBit = hasChange
+    ? '<span class="wiki-hover-market-change">' +
+      escapeHtml(sign + (quote.change as number).toFixed(2)) +
+      ' (' + escapeHtml(sign + (quote.changePercent as number).toFixed(2)) + '%)' +
+      '</span>'
+    : '';
+  const asOf = formatQuoteAsOf(quote.asOf);
+  const meta = [
+    quote.stale ? 'stale' : '',
+    asOf ? `as of ${asOf}` : '',
+    quote.source,
+  ].filter(Boolean).join(' · ');
+  return (
+    '<span class="wiki-hover-market wiki-hover-market--' + dir + (quote.stale ? ' is-stale' : '') + '">' +
+    '<span class="wiki-hover-market-symbol">' + label + '</span>' +
+    '<span class="wiki-hover-market-price">' + escapeHtml(price) + ' ' + escapeHtml(quote.currency) + '</span>' +
+    changeBit +
+    '<span class="wiki-hover-market-note">' + escapeHtml(meta) + '</span>' +
+    '</span>'
+  );
+}
+
+// Which slug the hover is currently showing. An async quote fill must not
+// repaint a card the pointer has already left or moved on from.
+let wikiHoverSlug: string | null = null;
+
+function wikiHoverHtml(page: WikiPage, quote: MarketQuote | undefined): string {
+  return (
+    '<span class="wiki-hover-type">' + escapeHtml(String(page.type)) + '</span>' +
+    '<span class="wiki-hover-title">' + escapeHtml(page.title) + '</span>' +
+    '<span class="wiki-hover-summary">' + escapeHtml(page.summary || '') + '</span>' +
+    (page.market ? marketRowHtml(page.market, quote) : '')
+  );
+}
+
 function showWikiHover(el: HTMLElement): void {
   const slug = el.getAttribute('data-wiki-slug');
   const page = slug ? wikiPageMap.get(slug) : null;
@@ -2306,12 +2400,19 @@ function showWikiHover(el: HTMLElement): void {
     wikiHoverEl.className = 'wiki-hover';
     document.body.appendChild(wikiHoverEl);
   }
-  setSafeContent(
-    wikiHoverEl,
-    '<span class="wiki-hover-type">' + escapeHtml(String(page.type)) + '</span>' +
-    '<span class="wiki-hover-title">' + escapeHtml(page.title) + '</span>' +
-    '<span class="wiki-hover-summary">' + escapeHtml(page.summary || '') + '</span>',
-  );
+  wikiHoverSlug = page.slug;
+  setSafeContent(wikiHoverEl, wikiHoverHtml(page, marketQuotes?.get(page.market?.symbol || '')));
+
+  // Only listed entities trigger the quote load, and only when it isn't
+  // already resolved — the acceptance criterion is that a page without
+  // `market` causes no quote fetch at all.
+  if (page.market && !marketQuotes) {
+    void loadMarketQuotes().then((map) => {
+      if (wikiHoverSlug !== page.slug || !wikiHoverEl) return;
+      if (wikiHoverEl.style.display === 'none') return;
+      setSafeContent(wikiHoverEl, wikiHoverHtml(page, map.get(page.market!.symbol)));
+    });
+  }
   const r = el.getBoundingClientRect();
   const left = Math.max(12, Math.min(r.left, window.innerWidth - 320 - 12));
   wikiHoverEl.style.display = 'block';
@@ -2320,6 +2421,7 @@ function showWikiHover(el: HTMLElement): void {
 }
 function hideWikiHover(): void {
   if (wikiHoverEl) wikiHoverEl.style.display = 'none';
+  wikiHoverSlug = null;
 }
 
 // ── Wiki (LLM Wiki) ───────────────────────────────────
@@ -2341,6 +2443,17 @@ type WikiImage = {
   source_url?: string;
 };
 
+// Public-market IDENTITY only — never a price. Present on entity pages that
+// check_wiki.py validated as listed securities; absent everywhere else, which
+// is what keeps private companies from rendering an empty stock shell.
+type WikiMarket = {
+  ticker: string;
+  exchange: string;
+  symbol: string;          // "EXCHANGE:TICKER" — the join key into quotes.json
+  provider?: string;
+  tradingview_symbol?: string;
+};
+
 type WikiPage = {
   slug: string;
   title: string;
@@ -2352,8 +2465,23 @@ type WikiPage = {
   file: string;            // relative to research/wiki/, e.g. "entities/nebius.md"
   aliases: string[];
   images?: WikiImage[];
+  market?: WikiMarket;
   outbound: string[];      // slugs
   inbound: string[];       // slugs
+};
+
+// research/market/quotes.json, refreshed by market-quotes.yml.
+type MarketQuote = {
+  symbol: string;
+  ticker: string;
+  price: number;
+  change: number | null;
+  changePercent: number | null;
+  currency: string;
+  marketState: string | null;
+  asOf: string;
+  source: string;
+  stale: boolean;
 };
 
 type WikiLogEntry = { date: string; op: string; summary: string };
@@ -2724,8 +2852,48 @@ function wikiKvHtml(page: WikiPage): string {
     page.updated_at ? '<dt>Updated</dt><dd>' + escapeHtml(page.updated_at) + '</dd>' : '',
     page.created_at ? '<dt>Created</dt><dd>' + escapeHtml(page.created_at) + '</dd>' : '',
     '<dt>Links</dt><dd>' + (page.inbound || []).length + ' in · ' + (page.outbound || []).length + ' out</dd>',
+    // Listed entities repeat the quote here, not only in the hover card.
+    // A hover does not exist on touch: tapping a .wiki-mention navigates to
+    // this page, so without this row the market data would be desktop-only.
+    page.market
+      ? '<dt>Market</dt><dd class="wiki-kv-market" data-market-symbol="' +
+        escapeHtml(page.market.symbol) + '">' + escapeHtml(page.market.symbol) + '</dd>'
+      : '',
   ].filter(Boolean).join('');
   return '<dl class="ara-kv">' + rows + '</dl>';
+}
+
+/** Fill any rendered `Market` cells with a quote once quotes.json resolves.
+ * Separate from render so the page paints immediately and a slow or failed
+ * quote leaves the symbol visible rather than an empty cell. */
+function hydrateWikiKvMarket(root: ParentNode = document): void {
+  const cells = [...root.querySelectorAll<HTMLElement>('.wiki-kv-market[data-market-symbol]')];
+  if (!cells.length) return;
+  void loadMarketQuotes().then((map) => {
+    for (const cell of cells) {
+      const symbol = cell.getAttribute('data-market-symbol') || '';
+      const q = map.get(symbol);
+      if (!q) continue;
+      const hasChange = typeof q.change === 'number' && typeof q.changePercent === 'number';
+      const sign = hasChange && (q.change as number) > 0 ? '+' : '';
+      const dir = !hasChange ? 'flat' : (q.change as number) > 0 ? 'up' : (q.change as number) < 0 ? 'down' : 'flat';
+      const price = q.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const change = hasChange
+        ? ' <span class="wiki-kv-market-change wiki-kv-market-change--' + dir + '">' +
+          escapeHtml(sign + (q.change as number).toFixed(2)) + ' (' +
+          escapeHtml(sign + (q.changePercent as number).toFixed(2)) + '%)</span>'
+        : '';
+      const asOf = formatQuoteAsOf(q.asOf);
+      setSafeContent(
+        cell,
+        escapeHtml(symbol) + ' · <strong>' + escapeHtml(price) + ' ' + escapeHtml(q.currency) + '</strong>' +
+        change +
+        '<span class="wiki-kv-market-note">' +
+        escapeHtml([q.stale ? 'stale' : '', asOf ? 'as of ' + asOf : '', q.source].filter(Boolean).join(' · ')) +
+        '</span>',
+      );
+    }
+  });
 }
 
 /** Internal link to another wiki page (used in lists/backlinks). Always an
@@ -2966,6 +3134,7 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
   if (bodyEl) setSafeWikiContent(bodyEl, bodyHtml);
 
   void hydrateWikiHistory(page, signal ?? new AbortController().signal);
+  hydrateWikiKvMarket();
 }
 
 function renderWikiNotFound(slug: string): void {

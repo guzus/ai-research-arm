@@ -22,7 +22,7 @@ index.json shape:
     {
       "pages": [
         {slug, title, type, tags, summary, created_at, updated_at,
-         file, aliases, images?, outbound, inbound}
+         file, aliases, images?, market?, outbound, inbound}
       ],
       "resolver": { "<name-or-alias lowercased>": "<slug>" },
       "recent_log": [ {date, op, summary} ]   # newest first
@@ -73,6 +73,7 @@ def _page_extra_fields(path: Path) -> dict[str, Any]:
         "created_at": _isoformat(data.get("created_at")),
         "timestamp": _isoformat(data.get("timestamp") or data.get("updated_at")),
         "images": cw.normalize_images(data.get("images")),
+        "market": cw.normalize_market(data.get("market")),
     }
 
 
@@ -135,6 +136,11 @@ def build_index(wiki_dir: Path) -> dict[str, Any]:
         }
         if extra["images"]:
             doc["images"] = extra["images"]
+        # Identity only — never a quote. Live prices are volatile runtime data
+        # fetched into research/market/quotes.json; folding them in here would
+        # make the committed index non-deterministic and instantly stale.
+        if extra["market"]:
+            doc["market"] = extra["market"]
         page_docs.append(doc)
 
     return {

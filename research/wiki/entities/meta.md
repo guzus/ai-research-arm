@@ -7,6 +7,11 @@ tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
 description: Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.
 created_at: 2026-06-16
 timestamp: 2026-07-30T00:00:00Z
+market:
+  ticker: META
+  exchange: NASDAQ
+  symbol: NASDAQ:META
+  provider: yahoo
 sources:
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}

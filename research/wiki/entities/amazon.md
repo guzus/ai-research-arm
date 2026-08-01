@@ -7,6 +7,11 @@ tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
 description: Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.
 created_at: 2026-06-14
 timestamp: 2026-07-30T00:00:00Z
+market:
+  ticker: AMZN
+  exchange: NASDAQ
+  symbol: NASDAQ:AMZN
+  provider: yahoo
 sources:
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA model ticket — Amazon Nova frontier reorg", path: research/models/tickets/amazon-nova-frontier-reorg-2026-07.md}

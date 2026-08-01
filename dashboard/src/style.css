@@ -1356,6 +1356,92 @@ body.search-open { overflow: hidden; }
   color: var(--text-secondary);
 }
 
+/* ── Market quote row in the wiki hover ────────────────
+ * Only rendered for entity pages whose frontmatter carries a validated
+ * `market` block, so a private company never gets an empty stock shell.
+ * min-height reserves the row before the async quote resolves: the card is
+ * positioned against the mention, so growing after paint would visibly shift
+ * it under the pointer.
+ *
+ * Up/down reuses the slope-chart pair (--ara-slope-up/down) rather than the
+ * change-bubble's royal/navy: a share price is the one place readers
+ * genuinely expect the red/green convention, and the slope chart already
+ * establishes it for quantitative series in this system. */
+:root {
+  --ara-slope-up: #1b6d3a;
+  --ara-slope-down: #b3251f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Lifted for contrast on the dark ground; the light hexes read muddy. */
+    --ara-slope-up: #4ade80;
+    --ara-slope-down: #f87171;
+  }
+}
+
+.wiki-hover-market {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  min-height: 34px;
+  margin-top: 9px;
+  padding-top: 9px;
+  border-top: 1px solid var(--border-light);
+  font-variant-numeric: tabular-nums;
+}
+.wiki-hover-market-symbol {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-tertiary);
+  width: 100%;
+}
+.wiki-hover-market-price {
+  font-size: 0.9rem;
+  font-weight: 650;
+  color: var(--text);
+}
+.wiki-hover-market-change {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.wiki-hover-market--up .wiki-hover-market-change { color: var(--ara-slope-up); }
+.wiki-hover-market--down .wiki-hover-market-change { color: var(--ara-slope-down); }
+.wiki-hover-market--flat .wiki-hover-market-change { color: var(--text-secondary); }
+.wiki-hover-market-note {
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+  width: 100%;
+}
+/* A stale or missing quote stays legible but visibly de-emphasised — the
+ * reader should never mistake a carried-forward price for a live one. */
+.wiki-hover-market.is-stale .wiki-hover-market-price,
+.wiki-hover-market.is-stale .wiki-hover-market-change {
+  opacity: 0.62;
+}
+.wiki-hover-market--empty .wiki-hover-market-note {
+  font-style: italic;
+}
+
+/* Page-level quote (the touch path — no hover exists on a phone). */
+.wiki-kv-market {
+  font-variant-numeric: tabular-nums;
+}
+.wiki-kv-market-change {
+  font-weight: 600;
+  margin-left: 2px;
+}
+.wiki-kv-market-change--up { color: var(--ara-slope-up); }
+.wiki-kv-market-change--down { color: var(--ara-slope-down); }
+.wiki-kv-market-change--flat { color: var(--text-secondary); }
+.wiki-kv-market-note {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+}
+
 .cal-header {
   display: flex;
   align-items: center;
