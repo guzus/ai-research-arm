@@ -1,0 +1,384 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Alphabet's gross notional of credit derivatives — backstops of third-party data center payment obligations — was $43,785 million as of June 30, 2026, versus $16,940 million as of December 31, 2025.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm",
+        "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/GOOG-10-Q-Q2-2026.pdf",
+        "https://www.barchart.com/story/news/3595044/google-piles-on-off-balance-sheet-risk-to-fuel-its-ai-chip-push"
+      ],
+      "source_tiers": ["primary", "primary", "secondary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Against that $43,785 million notional Alphabet carried a credit derivative liability of $815 million at June 30, 2026, up from $69 million at December 31, 2025 — recognition of roughly 1.9% of notional.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm",
+        "https://www.barchart.com/story/news/3595044/google-piles-on-off-balance-sheet-risk-to-fuel-its-ai-chip-push"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Alphabet accounts for the data center backstops as credit derivatives carried at fair value, not as unrecognized guarantees, so the exposure is on the balance sheet at a mark rather than fully off it.",
+      "type": "technical",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm",
+        "https://ccir.io/research/big-tech-hidden-debt"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "The credit derivative notional was $0 at December 31, 2024 and $6,529 million at September 30, 2025, its first material appearance.",
+      "type": "metric",
+      "source_urls": [
+        "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q3/GOOG-10-Q-Q3-2025.pdf"
+      ],
+      "source_tiers": ["primary"],
+      "as_of": "2025-09-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "The notional was $28,436 million at March 31, 2026, and Alphabet disclosed as a subsequent event that in April 2026 it entered further data center backstops with notional amounts totaling approximately $15.3 billion.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000048/goog-20260331.htm",
+        "https://ccir.io/research/big-tech-hidden-debt"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-03-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Upon a default under the backstops Alphabet retains the right to assume the underlying leases for internal use or to sublease them, and may extinguish the obligation with a termination payment that can be partially offset by equity or cash receipts from counterparties not reflected in notional.",
+      "type": "technical",
+      "source_urls": [
+        "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/GOOG-10-Q-Q2-2026.pdf",
+        "https://ccir.io/research/big-tech-hidden-debt"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Alphabet had entered leases, primarily data centers, that had not yet commenced with future lease payments of $85.2 billion as of June 30, 2026, commencing between 2026 and 2031 with non-cancelable terms between one and 26 years.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm"
+      ],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "Alphabet's expected future fixed or guaranteed commitments under contracts with terms greater than one year were $707.0 billion as of June 30, 2026, the significant majority related to long-term supply agreements.",
+      "type": "metric",
+      "source_urls": [
+        "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/GOOG-10-Q-Q2-2026.pdf"
+      ],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "Bloomberg reported Alphabet's total purchase commitments and other contractual obligations at $811 billion as of end-June 2026, with about $200.7 billion due within one year — a different and broader line item than the $707.0 billion greater-than-one-year fixed-or-guaranteed figure.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.bloomberg.com/news/articles/2026-07-23/alphabet-s-future-spending-commitments-soar-to-811-billion",
+        "https://www.digitimes.com/news/a20260724PD232/alphabet-infrastructure-anthropic-inventory-2026.html"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-30",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c10",
+      "claim": "Alphabet's maximum potential future payments under separate financial guarantees supporting counterparty procurement of long-lead-time power and energy equipment were $7.6 billion at June 30, 2026, with fair value not material.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm"
+      ],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "Alphabet's unconsolidated VIE future funding commitments were $21.9 billion at June 30, 2026 versus $1.1 billion at December 31, 2025, including $20.0 billion of future capital funding to a private company contingent on milestones through 2030, treated as an equity derivative.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm"
+      ],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Alphabet raised full-year 2026 capital expenditure guidance to $195-205 billion, its third raise of the year, after starting at $175-185 billion.",
+      "type": "forecast",
+      "source_urls": [
+        "https://mlq.ai/news/alphabet-raises-2026-capex-guidance-to-195-205b-cloud-revenue-surges-82/",
+        "https://www.cnbc.com/2026/07/22/google-earnings-q2-goog-live-updates.html"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-22",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c13",
+      "claim": "Alphabet's Q2 2026 free cash flow was negative $5.9 billion — operating cash flow of $39.069 billion against capex of $44.924 billion — its first negative quarter since 2004.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.tomshardware.com/tech-industry/big-tech/alphabet-goes-cash-flow-negative-for-the-first-time-as-ai-capex-doubles-to-44-9-billion-in-a-single-quarter",
+        "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf"
+      ],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "Alphabet's long-term debt rose to $98,165 million at June 30, 2026 from $46,547 million at December 31, 2025, after issuing $20.0 billion of US dollar and $31.8 billion of foreign-currency senior unsecured notes.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000071/goog-20260630.htm"
+      ],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Moody's found the five largest US hyperscalers held $969 billion of total undiscounted future lease commitments at end-2025, of which $662 billion related to leases not yet commenced — equal to 113% of the group's most recent adjusted debt.",
+      "type": "metric",
+      "source_urls": [
+        "https://fortune.com/2026/02/25/hyperscaler-risk-off-balance-sheet-662-billion-data-center-commitments-meta-amazon-microsoft-oracle-alphabet/",
+        "https://www.bisnow.com/national/news/data-center-capital-markets/tech-giants-hiding-662b-data-center-leasing-possibly-far-more-133408"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2025-12-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "Moody's analyst David Gonzales said hyperscalers have not avoided a liability through structuring; the obligations are 'yet to be on the balance sheet' because the services have not been received.",
+      "type": "quote",
+      "source_urls": [
+        "https://fortune.com/2026/02/25/hyperscaler-risk-off-balance-sheet-662-billion-data-center-commitments-meta-amazon-microsoft-oracle-alphabet/"
+      ],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-02-25",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "Under ASC 842 a renewal option enters the lease liability only if exercise is 'reasonably certain', a threshold generally read as above roughly 70%, letting hyperscalers keep renewal periods and residual value guarantees unrecognized given four-to-six-year AI equipment lives.",
+      "type": "technical",
+      "source_urls": [
+        "https://fortune.com/2026/02/25/hyperscaler-risk-off-balance-sheet-662-billion-data-center-commitments-meta-amazon-microsoft-oracle-alphabet/",
+        "https://allwork.space/2026/03/moodys-signals-rethink-of-cre-risk-exposure-as-off-book-ai-data-center-leases-top-662b/"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-02-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Microsoft disclosed $329.1 billion of leases not yet commenced for the quarter ended June 30, 2026, up from $196.6 billion in the prior period; Meta disclosed $279 billion, up 53% from $183 billion.",
+      "type": "comparison",
+      "source_urls": [
+        "https://btw.media/en/microsoft-329-1bn-uncommenced-datacentre-leases",
+        "https://www.bloomberg.com/news/articles/2026-07-29/microsoft-reports-over-130-billion-in-new-data-center-leases",
+        "https://cryptobriefing.com/meta-279b-ai-data-center-leases/"
+      ],
+      "source_tiers": ["secondary", "secondary", "secondary"],
+      "as_of": "2026-06-30",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "Meta disclosed data center leases starting in 2029 with an initial commitment near $12.3 billion plus a residual value guarantee with an aggregate threshold near $28 billion, judged not probable and therefore not recorded as a liability.",
+      "type": "comparison",
+      "source_urls": [
+        "https://fortune.com/2026/02/25/hyperscaler-risk-off-balance-sheet-662-billion-data-center-commitments-meta-amazon-microsoft-oracle-alphabet/"
+      ],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-02-25",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c20",
+      "claim": "S&P's October opinion permitted Meta to move the cost of its Hyperion data center off balance sheet by raising $27.3 billion of debt through Beignet Investor, an SPV jointly owned with Blue Owl Capital, putting S&P at odds with Moody's on the treatment.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://www.ifre.com/bonds/2390941/moodys-opinion-threatens-to-derail-off-balance-sheet-data-centre-deals"
+      ],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-10-31",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c21",
+      "claim": "The backstop structure has Fluidstack lease and develop data centers filled with Google TPUs and rent that capacity to Anthropic, with Google guaranteeing the leases so lenders finance at lower rates.",
+      "type": "causal",
+      "source_urls": [
+        "https://thenextweb.com/news/google-44-billion-data-centre-lease-guarantees-tpu-anthropic",
+        "https://www.barchart.com/story/news/3595044/google-piles-on-off-balance-sheet-risk-to-fuel-its-ai-chip-push"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "Hut 8 signed a 15-year, 245MW triple-net lease with Fluidstack at River Bend valued at about $7 billion, rising to $17.7 billion if options are exercised, with Google backstopping roughly $7 billion of lease payments plus about $1 billion of minimum power bills.",
+      "type": "event",
+      "source_urls": [
+        "https://www.datacenterdynamics.com/en/news/hut-8-signs-245mw-capacity-deal-with-fluidstack-as-part-of-multi-gigawatt-partnership-with-anthropic/",
+        "https://cryptobriefing.com/bitcoin-mining-partnership-hut8-google-fluidstack/"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-30",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "Google received equity warrants in several backstopped counterparties, including a pro forma stake near 14% of TeraWulf and about 5.4% of Cipher, while the Hut 8 structure reportedly came without warrants.",
+      "type": "market-structure",
+      "source_urls": [
+        "https://www.barchart.com/story/news/3595044/google-piles-on-off-balance-sheet-risk-to-fuel-its-ai-chip-push"
+      ],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-01",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c24",
+      "claim": "Google's backstops underpin roughly $35 billion of debt financing for Anthropic chip capacity led by Apollo Global Management with Blackstone and a bank syndicate.",
+      "type": "event",
+      "source_urls": [
+        "https://www.bloomberg.com/news/articles/2026-06-09/google-s-backstops-underpin-35-billion-chip-deal-for-anthropic",
+        "https://sherwood.news/tech/report-google-is-backstopping-anthropics-35-billion-data-center-deal/"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-09",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "CCIR reconstructed roughly $1.67 trillion of disclosed-but-unrecognized hyperscaler commitments, splitting about $821 billion of uncommenced leases from about $848 billion of purchase and other contractual commitments, and put Alphabet's total at $408 billion against $467.6 billion of contracted revenue backlog.",
+      "type": "metric",
+      "source_urls": [
+        "https://ccir.io/research/big-tech-hidden-debt"
+      ],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c26",
+      "claim": "Alphabet's credit and equity derivatives are classified within Level 3 of the fair value hierarchy, valued with probability-weighted expected return models using unobservable inputs including counterparty credit default rates.",
+      "type": "technical",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+        "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q1/GOOG-10-Q-Q1-2026.pdf"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-12-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "As of December 31, 2025 Alphabet's backstops comprised financial guarantees with maximum potential future payments of $5.7 billion and credit derivatives of $16.9 billion.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm"
+      ],
+      "source_tiers": ["primary"],
+      "as_of": "2025-12-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "Google Cloud revenue reached $24.8 billion in Q2 2026, up 82%, with backlog rising more than $50 billion sequentially to about $514 billion.",
+      "type": "metric",
+      "source_urls": [
+        "https://mlq.ai/news/alphabet-raises-2026-capex-guidance-to-195-205b-cloud-revenue-surges-82/",
+        "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf"
+      ],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-06-30",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c29",
+      "claim": "Moody's warned in July 2026 that unprecedented AI spending threatens the credit quality of Amazon, Meta and Alphabet, and said it could make non-standard adjustments to adjusted debt to reflect lease-related obligations.",
+      "type": "forecast",
+      "source_urls": [
+        "https://www.cnbc.com/2026/07/24/moodys-ai-spending-credit-quality-amazon-meta-alphabet.html",
+        "https://www.ifre.com/bonds/2390941/moodys-opinion-threatens-to-derail-off-balance-sheet-data-centre-deals"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c30",
+      "claim": "Critics frame the structure as circular or vendor financing analogous to late-1990s telecom equipment vendor loans, with Nvidia separately reported in talks to backstop as much as $250 billion for OpenAI compute leases.",
+      "type": "comparison",
+      "source_urls": [
+        "https://thenextweb.com/news/google-nvidia-playbook-tpu-circular-financing-anthropic",
+        "https://www.bloomberg.com/news/articles/2026-07-27/nvidia-s-750-billion-deals-revive-fear-of-ai-circular-financing"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-27",
+      "confidence": "medium",
+      "risk": "contested"
+    }
+  ]
+}
