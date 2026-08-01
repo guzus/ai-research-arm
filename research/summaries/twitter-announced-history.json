@@ -20443,5 +20443,47 @@
     "headline": "1-BIT KIMI K3 QUANT SHRINKS 2.8T MODEL TO 590GB, KEEPS 78.7% OF PERFORMANCE",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2083457968696410213"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-01 10:46:27 UTC",
+    "headline": "OPENAI SHIPS ASTRA PROOFS \u2014 249-PAGE MANUSCRIPT, LEAN CERTIFICATES, TEN RESULTS INCLUDING CONNES RIGIDITY DISPROOF",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2083484340512604323"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-01 10:46:27 UTC",
+    "headline": "ASTRA'S TEN OPEN-PROBLEM SOLUTIONS COST ROUGHLY $2,000 IN TOKENS AT GPT-5.6 SOL RATES \u2014 ABOUT $200 PER RESULT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2083495692992139601"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-01 10:46:27 UTC",
+    "headline": "BLOOMBERG: DEEPSEEK BUILDING FIRST SELF-OWNED 1GW CAMPUS IN INNER MONGOLIA, PART LIVE BY LATE 2027",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2083486042741788818"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-01 10:46:27 UTC",
+    "headline": "THE INFORMATION: OPENAI HAS NOT DECIDED WHETHER ASTRA SHIPS AS GPT-6 OR GPT-5.7",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2083472959218340231"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-01 10:46:27 UTC",
+    "headline": "AI AGENTS GIVEN 6 DAYS AND $3K WROTE TWO RESEARCH PAPERS \u2014 DOMAIN EXPERTS REJECTED BOTH, HALF THE BUDGET UNSPENT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2083500486750060851"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-01 10:46:27 UTC",
+    "headline": "GOOGLE ROLLS OUT GEMINI SPARK BACKGROUND AGENT TO AI PRO SUBSCRIBERS OUTSIDE THE US",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2083466466892906939"
   }
 ]
