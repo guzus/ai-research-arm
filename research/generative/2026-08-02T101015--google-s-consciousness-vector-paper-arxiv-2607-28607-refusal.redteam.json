@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The mind-attribution direction — extracted from IDAQ items, the \"does the average robot have feelings\" instrument — swings ten degrees further into opposition with safety, Δ𝒮 = −0.173, t = −7.49, p<.001. The Theory-of-Mind direction, built from social-reasoning tasks, does not move at all: 86° before, 86° after, Δ𝒮 = +0.001, t = 0.06, p = .956.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "It describes the ablation as jailbreaking the model \"to simulate behaviour in the absence of safety fine-tuning,\" and validates the edit on JailbreakBench, reporting that \"across all models, baseline ASR of 2–8% increases to 77–100% through activation ablation.\"",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "There is **no random-direction baseline** anywhere in the paper — three independent full-text sweeps return zero occurrences.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

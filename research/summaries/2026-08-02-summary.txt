@@ -1,0 +1,14 @@
+AI News - 2026-08-02
+
+TOP STORIES:
+• EU AI Act GPAI enforcement + California SB 942 both go live today, giving regulators real fine power for the first time
+• Unit 42 exposes a fully autonomous DeepSeek+Hermes Agent attack campaign that hit 460+ systems via one Telegram command
+• LG ships K-EXAONE 2.0, a 750B-param open-weight MoE model, Korea's largest open AI model yet
+• Google scraps standalone AI Studio app despite 800K preorders, folds it into Gemini
+• Munich court rules Suno infringed GEMA copyrights; US misses EO 14409's Aug 1 frontier-model deadline
+
+KEY NUMBERS:
+• EU AI Act fines: up to EUR15M or 3% of global turnover
+• DeepSeek campaign: 460+ targets, 0 confirmed compromises
+
+Full report on GitHub.

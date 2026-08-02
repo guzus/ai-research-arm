@@ -1,0 +1,14 @@
+arXiv Papers - 2026-08-02
+
+TOP 5 PAPERS:
+• Memory Decoder at Scale - 6.9B parametric memory + Pythia-410M beats Pythia-12B with 39% fewer params
+• SpatialCLI - Qwen3-VL-8B 29.3%->84.6% with spatial tools, keeps 73.8% after tools removed
+• Coordination Mode in Multi-Agent Coding - topology alone swings scores >30 pts at fixed model
+• Albilich - 10/10 RealMath plus a counterexample to Kourovka Notebook Problem 21.142
+• Joint Scaling Laws + Batch Size Schedules - dynamic-batch laws beat static-batch baselines
+
+CATEGORIES (77 papers): LMs/NLP 16, CV/Multimodal 14, Agents/Reasoning 22, Safety 10, Other 15
+
+Sunday - no new arXiv cycle; curated from the uncovered lower band of the 2026-07-30 batch.
+
+Full report on GitHub.
