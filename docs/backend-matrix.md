@@ -118,6 +118,7 @@ Reading notes:
 - `blog-subscriptions.yml`
 - `ci.yml`
 - `daily-ai-blogs.yml`
+- `daily-earnings.yml`
 - `daily-front-page.yml`
 - `daily-youtube.yml`
 - `gpu-spot.yml`

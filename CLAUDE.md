@@ -114,6 +114,7 @@ the lanes to catch up (a daily lane won't self-heal until its next slot).
 | `fetch_ai_blogs.py` | Per-feed AI-blog fetcher (`daily-ai-blogs.yml`); boundary-handles bad feeds so one failure doesn't crash the run. |
 | `watch_blog_subscriptions.py` | RSS subscription watcher (`blog-subscriptions.yml`); seeds historical GUIDs without alerting, verifies Telegram responses, acknowledges each proven delivery atomically. |
 | `fetch_youtube_signal.py` | tuber-backed YouTube lane; read-only by default — never triggers paid summary generation. |
+| `fetch_earnings_signal.py` | SEC-EDGAR-backed earnings lane (`daily-earnings.yml`). Tier 1 = the issuer's own 8-K Item 2.02 / 6-K filing and its EX-99 exhibits; Tier 2 = a LINK to the issuer's first-party call transcript, best-effort and never fatal. Needs no API key, but SEC fair access requires a contact **address** in the User-Agent (a URL gets HTTP 403) — override with the `SEC_CONTACT_EMAIL` repo variable. Quote caps (6 quotes / 60 words) are enforced in code, not prose: that is the licensing position. Inverts the youtube empty-result rule — see the note under Aggregation. |
 | `dedupe_headline_alerts.py`, `headline_judge.py` | Twitter headline-alert dedup: deterministic layered check, then an agent-in-the-loop Haiku gate adjudicating the contested `[0.35,0.50)` Jaccard band (`shortlist` → judge → `apply`, fail-open, URL-keyed). Contract: [`docs/headline-dedupe.md`](docs/headline-dedupe.md). |
 | `curate_twitter_accounts.py`, `explore_twitter_accounts.py` | Validate/curate `data/sources/twitter_accounts.json` + build the birdy fetch manifest; the scout scores candidates on trust-weighted mentions (needs ≥1 *monitored* citer), AI topicality, and bounded engagement, so viral off-topic accounts don't outrank genuine AI sources. Contract: [`docs/twitter-account-curation.md`](docs/twitter-account-curation.md). |
 | `fetch_gpu_spot.py` | Deterministic Vast.ai GPU spot-rental price lane (`gpu-spot.yml`); model-free. Prices are normalized to **USD per GPU-hour** (`dph_total / num_gpus`) — the whole point, since an 8×H100 box at $2/GPU sorts *after* a 1×H100 at $3/GPU. The endpoint caps at 64 offers with no pagination, so a capped model is re-queried across **every** `num_gpus` 1–16 plus a `{"gte": 17}` tail sweep; `truncated` means "computed over an incomplete sample" and is set when any query caps *or* coverage isn't provably exhaustive. Fail-soft per model (carries the prior value forward marked `stale`), fail-loud if every model fails; a stale value is NEVER appended to `history`. |
@@ -209,6 +210,22 @@ back to host-level `pi --tools ... bash`.
 | `2h-bluesky.yml` | daily `10:11` | `research/bluesky/` (supplemental expert commentary, capped output) |
 | `4h-community.yml` | every 4h `:19` | `research/community/*-hn.md`, `*-reddit.md` |
 | `daily-arxiv.yml` | daily `06:13` | `research/arxiv/` |
+| `daily-earnings.yml` | weekdays `23:35` (before the `00:00` digest) | `research/earnings/<filing-date>-<TICKER>-<FYxxQx>.md` + `index.json` (SEC EDGAR earnings filings for the AI-exposed issuers in `data/sources/earnings_issuers.json`, plus first-party transcript LINKS) |
+
+**The earnings lane is event-cadence, and that is why it is deliberately
+absent from four places.** It produces output on roughly 40 reporting days a
+year and nothing on the other ~325, so: (a) it is NOT in
+`check_lane_freshness.py` or `check_lane_content.py` — both exclude
+no-fixed-cadence lanes on purpose, and registering it would page STALE for the
+~10 quiet weeks between earnings seasons; (b) it is NOT in
+`deterministic_daily_digest.py` — `extract_lane` returns the FIRST artifact
+that yields lines, so with per-event filenames a day where three issuers report
+would excerpt one and silently drop two (the agent digest reads the directory
+instead, which is why the prompt lists `earnings/`); (c) it is NOT in
+`prebuild.mjs` COPY_DIRS / `.dockerignore` / `check_deploy_health.py` — like
+rss, community and blogs it is a raw lane the dashboard does not render, and
+marking it deploy-relevant while it is outside the Docker context would fire
+false `deploy-stale` alerts. Do not "fix" any of these omissions.
 
 ### Synthesis (digests + analysis from aggregated data)
 
@@ -331,6 +348,7 @@ research/
 │                              # deliberately NOT copied to the dashboard)
 ├── community/                 # 4h-community.yml (-hn.md, -reddit.md)
 ├── digest/                    # daily-digest.yml
+├── earnings/                  # daily-earnings.yml (one .md per issuer earnings EVENT, not per day, + index.json)
 ├── front-page/                # daily-front-page.yml (committed PNG + interactive .ara.md/.html edition)
 ├── generative/                # generative-research.yml + Oracle runner (HTML + .ara.md + index.json)
 ├── issues/                    # research-issue.yml

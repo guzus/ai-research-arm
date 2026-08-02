@@ -491,6 +491,7 @@ function scheduledDurationMinutes(name, file) {
   if (key.includes('blog')) return 30;
   if (key.includes('arxiv')) return 30;
   if (key.includes('youtube')) return 25;
+  if (key.includes('earnings')) return 15;
   if (key.includes('bluesky')) return 25;
   if (key.includes('wiki')) return 30;
   if (key.includes('liveness')) return 20;
@@ -505,6 +506,7 @@ function scheduledLane(name, file) {
   if (key.includes('blog')) return 'Blogs';
   if (key.includes('arxiv')) return 'arXiv';
   if (key.includes('youtube')) return 'YouTube';
+  if (key.includes('earnings')) return 'Earnings';
   if (key.includes('bluesky')) return 'Bluesky';
   if (key.includes('model')) return 'Models';
   if (key.includes('wiki')) return 'Wiki';
