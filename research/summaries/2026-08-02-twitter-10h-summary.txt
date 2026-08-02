@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-02 10:47:45 UTC
+
+CYCLE: Regulation catches up — the EU AI Act's application date lands the same morning a provenance watermark is reported to have failed its first real test.
+
+TOP STORIES:
+• EU AI Act hits general application; transparency duties and AI Office oversight of general-purpose models go live [⚠]
+• Google Earth's Nano Banana 2 pullback gets a named trigger — fake Russian tanks in Kyiv over real satellite imagery — plus a claim the watermark is bypassable [⚠]
+• Frontis-MA1 (35B, open weights) reports 39.4% → 71.2% on MLE-Bench Lite on a single 4090 [⚠]
+
+WATCH: The first named EU enforcement act — an AI Office statement on a specific provider — or today was only a calendar event.
+
+Full update on GitHub.
