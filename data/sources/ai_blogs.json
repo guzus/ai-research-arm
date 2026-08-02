@@ -292,5 +292,20 @@
     "subscription": {
       "delivery": "telegram"
     }
+  },
+  {
+    "id": "dhgusdnd44",
+    "name": "happy (dhgusdnd44)",
+    "url": "https://blog.naver.com/dhgusdnd44",
+    "feed_url": "https://rss.blog.naver.com/dhgusdnd44.xml",
+    "type": "expert_blog",
+    "priority": "P2",
+    "cadence": "weekly",
+    "tags": ["korea", "investment", "semiconductors", "ai-industry", "energy", "macro-data"],
+    "include_in_digest": false,
+    "notes": "Korean investment blog: recurring '흥미로운 데이터' macro/AI data series plus semiconductor, power, and materials deep dives. Telegram subscription alerts on every new post.",
+    "subscription": {
+      "delivery": "telegram"
+    }
   }
 ]
