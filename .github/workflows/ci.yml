@@ -130,6 +130,15 @@ jobs:
       - name: Check wiki index is in sync
         run: uv run python scripts/build_wiki_index.py --check
 
+      # research/claims/index.json is the cross-article claim store — a
+      # generated, committed artifact derived from every
+      # research/generative/*.claims.json ledger (docs/claim-store.md). This
+      # gate fails when a new article shipped its ledger without the index
+      # being rebuilt, which would silently hide those claims from reuse and
+      # from the back-catalogue disagreement check.
+      - name: Check claim index is in sync
+        run: uv run python scripts/build_claim_index.py --check
+
       # data/agent-backends.json is the routing SSOT. This gate cross-checks
       # it against the workflows (every agent-run call site routes via lane:
       # with all provider secrets; pi/native mirrors match the file) and

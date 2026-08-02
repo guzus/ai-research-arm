@@ -41,7 +41,7 @@ and opens a PR with methodology fixes.
 | [`ARA_DSL.md`](ARA_DSL.md) | Source format for generative-research articles; `scripts/compile_ara.py` turns `.ara.md` into a validated `<article>` fragment. |
 | [`ARA_CATALOG.json`](ARA_CATALOG.json) + [`COMPONENTS.md`](COMPONENTS.md) | The `ara-*` class allowlist the validator loads, and its human reference. Kept in lockstep by CI — see "Component catalog" below. |
 | [`data/agent-backends.json`](data/agent-backends.json) | Routing SSOT: per-lane backend, profile table, ordered fallback chain. See Backends. |
-| `docs/*.md` | Per-lane contracts, read at runtime by the agents and enforced by the matching validator: `model-tickets`, `wiki-schema`, `okf`, `headline-dedupe`, `blog-subscriptions`, `twitter-account-curation`, `twitter-model-ab`, `generative-research-backends`, `backend-matrix` (generated), `hooker-telemetry`. [`docs/archive/`](docs/archive/) holds superseded docs + improvement logs. |
+| `docs/*.md` | Per-lane contracts, read at runtime by the agents and enforced by the matching validator: `model-tickets`, `wiki-schema`, `okf`, `headline-dedupe`, `blog-subscriptions`, `twitter-account-curation`, `twitter-model-ab`, `generative-research-backends`, `backend-matrix` (generated), `claim-store`, `hooker-telemetry`. [`docs/archive/`](docs/archive/) holds superseded docs + improvement logs. |
 | `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`. |
 | [`Dockerfile`](Dockerfile) + [`Caddyfile`](Caddyfile) + [`railway.json`](railway.json) | The Railway stack serving **ara.guzus.xyz** behind Cloudflare (responses carry `x-railway-edge`): bun build → Caddy serves `dashboard/dist`; `railway.json` pins the DOCKERFILE builder + `/` healthcheck. Vercel no longer serves the domain — rule 3. |
 | `data/`, `research/` | Static lookup data for aggregation scripts; all generated artifacts (subdir map in "Output Locations"). |
@@ -60,6 +60,7 @@ and opens a PR with methodology fixes.
 | `write_generative_research.py` | The **only** committer for `research/generative/`. Re-validates, writes HTML + `.ara.md`, updates `index.json`, commits. |
 | `run_generative_research_oracle.py` | Local runner via `../oracle` (GPT-5.5 Pro) → validator (`--diversity-min 3 --callout-max 5 --strict-shape`) → writer. |
 | `prior_context.py`, `research_search.py`, `stock_prices.py`, `source_cache.py` | Article-authoring helpers: find related prior articles; primary-source search wrappers; Yahoo Finance series for `:::line-chart`; runtime fetch cache under `data/source-cache/` (gitignored). |
+| `build_claim_index.py` / `claim_search.py` | **Cross-article claim store** — the repo's compounding claim memory. The builder walks every `research/generative/*.claims.json` ledger into `research/claims/index.json` (`--check` is a CI drift gate); the search side is what the agent runs *before* researching, so it reuses a verified fact instead of re-deriving it. `prior_context` finds related **articles**; this finds related **facts**. Two contracts are load-bearing: `reusable: false` (with a `reuse_block` reason) means **re-verify live — the store is not a source**, and `--candidates` emits contradiction *candidates for adjudication*, never verdicts. Contract: [`docs/claim-store.md`](docs/claim-store.md). |
 
 **Backend routing** (see also Load-bearing rule 14)
 
@@ -325,6 +326,9 @@ research/
 ├── arm/                       # arm-timeline.yml (dashboard Arm-tab timeline source; prod fallback for prebuild)
 ├── audio/                     # digest audio; mp3s live on S3 (since May 2026) — committed files are 0-byte stubs
 ├── bluesky/                   # 2h-bluesky.yml
+├── claims/                    # build_claim_index.py (index.json — cross-article claim store,
+│                              # generated from research/generative/*.claims.json; agent-facing,
+│                              # deliberately NOT copied to the dashboard)
 ├── community/                 # 4h-community.yml (-hn.md, -reddit.md)
 ├── digest/                    # daily-digest.yml
 ├── front-page/                # daily-front-page.yml (committed PNG + interactive .ara.md/.html edition)
