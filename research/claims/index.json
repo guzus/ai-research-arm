@@ -1,5 +1,5 @@
 {
-  "article_count": 46,
+  "article_count": 47,
   "articles": [
     {
       "claim_count": 18,
@@ -481,6 +481,14 @@
       "stem": "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l",
       "tags": [],
       "title": "The $43.8 billion everyone calls off-balance-sheet is the one number Alphabet actually put on the balance sheet"
+    },
+    {
+      "claim_count": 45,
+      "created_at": "2026-08-02T10:10:15Z",
+      "slug": "google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "stem": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "tags": [],
+      "title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes"
     }
   ],
   "by_host": {
@@ -515,7 +523,8 @@
     ],
     "academic.oup.com": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c16",
-      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c14"
+      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c14",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c24"
     ],
     "academy.extropy.io": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c22"
@@ -569,6 +578,9 @@
     ],
     "alphaspread.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c16"
+    ],
+    "alphaxiv.org": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c40"
     ],
     "alpo.ge": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c9"
@@ -652,7 +664,9 @@
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c18",
       "2026-07-31T051841--situational-awareness-lp-collapse#c38",
       "2026-07-31T051841--situational-awareness-lp-collapse#c39",
-      "2026-07-31T051841--situational-awareness-lp-collapse#c40"
+      "2026-07-31T051841--situational-awareness-lp-collapse#c40",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c29",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c30"
     ],
     "aol.com": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c5"
@@ -707,7 +721,8 @@
     ],
     "artificialintelligenceact.eu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c30",
-      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c22"
+      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c22",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c31"
     ],
     "arxiv.org": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c10",
@@ -806,7 +821,39 @@
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c31",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c32",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c42",
-      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c45"
+      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c45",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c1",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c10",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c12",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c13",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c14",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c15",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c16",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c17",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c18",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c2",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c21",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c23",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c25",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c26",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c27",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c28",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c3",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c33",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c34",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c35",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c36",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c37",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c39",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c4",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c41",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c42",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c45",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c5",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c6",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c7",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c8",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c9"
     ],
     "assets.anthropic.com": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c23"
@@ -949,7 +996,8 @@
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c44"
     ],
     "cambridge.org": [
-      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c42"
+      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c42",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c22"
     ],
     "canonical.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c16"
@@ -1367,7 +1415,8 @@
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c39"
     ],
     "digital-strategy.ec.europa.eu": [
-      "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c30"
+      "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c30",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c31"
     ],
     "digitalapplied.com": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c15",
@@ -1755,7 +1804,9 @@
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c33",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c34",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c37",
-      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c6"
+      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c6",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c20",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c36"
     ],
     "glean.com": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c18",
@@ -1849,7 +1900,9 @@
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c3",
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c34",
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c7",
-      "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c8"
+      "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c8",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c11",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c19"
     ],
     "humanoid.guide": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c11"
@@ -2359,7 +2412,8 @@
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c1",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c18",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c2",
-      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c3"
+      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c3",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c32"
     ],
     "opencompute.org": [
       "2026-05-27T035557--800-vdc-architecture#c9"
@@ -2455,7 +2509,9 @@
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c6",
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c7",
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c8",
-      "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c9"
+      "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c9",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c42",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c43"
     ],
     "politico.com": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c22"
@@ -3080,6 +3136,9 @@
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c7",
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c8"
     ],
+    "transformer-circuits.pub": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c38"
+    ],
     "trendforce.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c21",
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c22",
@@ -3155,7 +3214,8 @@
     "washingtonpost.com": [
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c18",
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c16",
-      "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c29"
+      "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c29",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c44"
     ],
     "webpronews.com": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c7"
@@ -3376,6 +3436,9 @@
     "https://abit.ee/en/processors/huawei-atlas-350-ascend-950pr-ai-accelerator-nvidia-h20-fp4-hbm-china-ai-chips-en": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c17"
     ],
+    "https://academic.oup.com/pnasnexus/article/3/9/pgae346/7756548": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c24"
+    ],
     "https://academic.oup.com/pnasnexus/article/5/2/pgag013/8487339": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c16"
     ],
@@ -3535,6 +3598,9 @@
     "https://artificialintelligenceact.eu/article/3": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c30"
     ],
+    "https://artificialintelligenceact.eu/article/50": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c31"
+    ],
     "https://arxiv.org/abs/1603.09320": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c6"
     ],
@@ -3572,9 +3638,18 @@
     "https://arxiv.org/abs/2210.02414": [
       "2026-06-22T052035--zhipu-ai-glm#c4"
     ],
+    "https://arxiv.org/abs/2303.17548": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c23"
+    ],
     "https://arxiv.org/abs/2307.03172": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c12",
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c13"
+    ],
+    "https://arxiv.org/abs/2308.08708": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c34"
+    ],
+    "https://arxiv.org/abs/2310.03693": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c17"
     ],
     "https://arxiv.org/abs/2402.08032": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c42"
@@ -3595,11 +3670,20 @@
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c28",
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c4"
     ],
+    "https://arxiv.org/abs/2406.05946": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c18"
+    ],
     "https://arxiv.org/abs/2406.11704": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c17"
     ],
+    "https://arxiv.org/abs/2406.11717": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c12"
+    ],
     "https://arxiv.org/abs/2406.19314": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c16"
+    ],
+    "https://arxiv.org/abs/2407.12404": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c39"
     ],
     "https://arxiv.org/abs/2407.13931": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c18"
@@ -3638,6 +3722,16 @@
     "https://arxiv.org/abs/2502.10517": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c14"
     ],
+    "https://arxiv.org/abs/2502.17420": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c13"
+    ],
+    "https://arxiv.org/abs/2502.17424": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c15",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c16"
+    ],
+    "https://arxiv.org/abs/2502.18683": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c26"
+    ],
     "https://arxiv.org/abs/2503.16861": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c40"
     ],
@@ -3664,6 +3758,9 @@
     "https://arxiv.org/abs/2506.10947": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c12"
     ],
+    "https://arxiv.org/abs/2506.11945": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c35"
+    ],
     "https://arxiv.org/abs/2506.14074": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c17"
     ],
@@ -3685,6 +3782,9 @@
     ],
     "https://arxiv.org/abs/2508.20816": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c19"
+    ],
+    "https://arxiv.org/abs/2509.19515": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c33"
     ],
     "https://arxiv.org/abs/2510.02534": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c14"
@@ -3729,6 +3829,12 @@
     "https://arxiv.org/abs/2603.21454": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c17"
     ],
+    "https://arxiv.org/abs/2603.28925": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c27"
+    ],
+    "https://arxiv.org/abs/2604.13051": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c36"
+    ],
     "https://arxiv.org/abs/2604.13764": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c6"
     ],
@@ -3747,12 +3853,32 @@
     "https://arxiv.org/abs/2605.22763": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c25"
     ],
+    "https://arxiv.org/abs/2607.28607": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c1",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c42",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c5"
+    ],
+    "https://arxiv.org/html/2306.07951v4": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c21"
+    ],
+    "https://arxiv.org/html/2402.16786v2": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c25"
+    ],
+    "https://arxiv.org/html/2405.18870v2": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c45"
+    ],
     "https://arxiv.org/html/2411.10053v1": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c13"
     ],
     "https://arxiv.org/html/2508.01829v1": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c16",
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c30"
+    ],
+    "https://arxiv.org/html/2509.22067v1": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c9"
+    ],
+    "https://arxiv.org/html/2602.02132v1": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c14"
     ],
     "https://arxiv.org/html/2603.13372v1": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c7"
@@ -3778,6 +3904,20 @@
     ],
     "https://arxiv.org/html/2607.18538v1": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c15"
+    ],
+    "https://arxiv.org/html/2607.28607": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c1",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c10",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c2",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c28",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c3",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c37",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c4",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c41",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c5",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c6",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c7",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c8"
     ],
     "https://arxiv.org/pdf/1509.07466": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c19"
@@ -4071,6 +4211,9 @@
     ],
     "https://dig.watch/updates/ncsc-ai-vulnerabilities-guidance": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c39"
+    ],
+    "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c31"
     ],
     "https://digital-strategy.ec.europa.eu/en/library/ai-act-commission-publishes-reporting-template-serious-incidents-involving-general-purpose-ai": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c30"
@@ -4535,6 +4678,9 @@
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c1",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c6"
     ],
+    "https://github.com/p-e-w/heretic": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c20"
+    ],
     "https://github.com/pgvector/pgvector": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c6"
     ],
@@ -4543,6 +4689,9 @@
     ],
     "https://github.com/teorth/erdosproblems/wiki/Disclaimers-and-caveats": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c37"
+    ],
+    "https://github.com/thejaminator/consciousness_cluster": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c36"
     ],
     "https://github.com/tile-ai/tilelang": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c10",
@@ -4590,6 +4739,15 @@
     ],
     "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c21"
+    ],
+    "https://huggingface.co/google/gemma-2-2b": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c11"
+    ],
+    "https://huggingface.co/google/gemma-2-9b": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c11"
+    ],
+    "https://huggingface.co/models?search=abliterated": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c19"
     ],
     "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6"
@@ -4960,6 +5118,9 @@
     "https://openai.com/index/sam-altman-returns-as-ceo-openai-has-a-new-initial-board": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c14"
     ],
+    "https://openai.com/index/strengthening-chatgpt-responses-in-sensitive-conversations": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c32"
+    ],
     "https://openai.com/index/ten-advances-in-mathematics": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c1",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c18",
@@ -5074,6 +5235,10 @@
     ],
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC12595527": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c14"
+    ],
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC4021380": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c42",
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c43"
     ],
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC8371605": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c21",
@@ -5654,6 +5819,9 @@
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c7",
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c8"
     ],
+    "https://transformer-circuits.pub/2025/introspection/index.html": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c38"
+    ],
     "https://ts2.tech/en/alphabet-finishes-up-in-short-week-after-google-sees-two-ai-heads-exit": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c30"
     ],
@@ -5743,11 +5911,17 @@
     "https://www.alphaspread.com/security/krx/035420/investor-relations/earnings-call/q1-2026": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c16"
     ],
+    "https://www.alphaxiv.org/abs/2607.28607": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c40"
+    ],
     "https://www.amd.com/en/blogs/2026/rocm-ai-the-ai-native-developer-experience-for-building.html": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c7"
     ],
     "https://www.amtonline.org/article/the-hype-cycle-for-robotics": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c23"
+    ],
+    "https://www.anthropic.com/constitution": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c30"
     ],
     "https://www.anthropic.com/engineering/code-execution-with-mcp": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c8"
@@ -5808,6 +5982,9 @@
     ],
     "https://www.anthropic.com/news/claude-sonnet-4-6": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c9"
+    ],
+    "https://www.anthropic.com/news/claudes-constitution": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c29"
     ],
     "https://www.anthropic.com/news/contextual-retrieval": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c7"
@@ -6020,6 +6197,9 @@
     ],
     "https://www.cambridge.org/core/journals/forum-of-mathematics-pi/article/formal-proof-of-the-kepler-conjecture/78FBD5E1A3D1BCCB8E0D5B0C463C9FBC": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c42"
+    ],
+    "https://www.cambridge.org/core/journals/political-analysis/article/synthetic-replacements-for-human-survey-data-the-perils-of-large-language-models/B92267DC26195C7F36E63EA04A47D2FE": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c22"
     ],
     "https://www.caproasia.com/2025/12/31/china-artificial-intelligence-startup-zhipu-ai-hong-kong-ipo-to-raise-640-million-at-6-7-billion-valuation-with-expected-ipo-listing-on-8th-january-2026-founded-in-2019-by-tsinghua-university-profe": [
       "2026-06-22T052035--zhipu-ai-glm#c2"
@@ -7569,6 +7749,9 @@
     "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/from-vision-to-readiness-vertiv-collaborates-with-nvidia-to-advance-800-vdc-platform-designs-to-power-the-next-generation-of-ai-factories": [
       "2026-05-27T035557--800-vdc-architecture#c11"
     ],
+    "https://www.washingtonpost.com/technology/2022/07/22/google-ai-lamda-blake-lemoine-fired": [
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c44"
+    ],
     "https://www.washingtonpost.com/technology/2025/07/10/nvidia-4-trillion-market-cap": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c29"
     ],
@@ -7959,7 +8142,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 1312,
+  "claim_count": 1357,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -39577,9 +39760,1059 @@
         "https://www.digitimes.com/news/a20260724PD232/alphabet-infrastructure-anthropic-inventory-2026.html"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-07-30",
+      "claim": "arXiv:2607.28607 was submitted 2026-07-30 by seven authors, five of whom list Google's Paradigms of Intelligence team; none list Google DeepMind.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c1",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2607.28607",
+        "https://arxiv.org/html/2607.28607"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-07-30",
+      "claim": "The geometry analysis was run on Llama-3-8B only, because the authors state they lacked pretrained Gemma-2 checkpoints; p-values derive from 32 layers of that single model.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c10",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.28607"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-08-02",
+      "claim": "Gemma-2 base weights are publicly downloadable and were downloaded 217,130 times (gemma-2-2b) and 97,349 times (gemma-2-9b) in the month to 2026-08-02.",
+      "confidence": "medium",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c11",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/google/gemma-2-2b",
+        "https://huggingface.co/google/gemma-2-9b"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2024-06-17",
+      "claim": "Arditi et al. showed refusal is mediated by a one-dimensional subspace across 13 open-source chat models up to 72B parameters (NeurIPS 2024).",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c12",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c12",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2406.11717"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2025-02-24",
+      "claim": "Wollschlaeger et al. (ICML 2025) found multiple independent refusal directions and multi-dimensional concept cones, contradicting the single-direction claim.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c13",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2502.17420"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-02-03",
+      "claim": "On Llama, ablating a single refusal direction leaves residual refusal rates of 0.42 to 0.64 across behavior splits, versus 0.00 on Gemma.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c14",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c14",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2602.02132v1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2025-02-24",
+      "claim": "Finetuning GPT-4o on 6,000 insecure-code completions produced misaligned answers to unrelated questions 20 percent of the time on selected questions versus 0 percent for the base model.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c15",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2502.17424"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2025-02-24",
+      "claim": "Identical insecure code framed as a security-class exercise produced no emergent misalignment, isolating implied intent rather than code content as the causal variable.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c16",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2502.17424"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2023-10-05",
+      "claim": "GPT-3.5 Turbo's safety guardrails were removed by finetuning on 10 adversarially designed examples for under $0.20 via the public API.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c17",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2310.03693"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2024-06-10",
+      "claim": "Qi et al. attribute safety fragility to shallow safety alignment, in which alignment adapts the generative distribution over only the first few output tokens.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c18",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2406.05946"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-08-02",
+      "claim": "Hugging Face returns 7,167 models for the search term abliterated as of 2026-08-02.",
+      "confidence": "medium",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c19",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c19",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/models?search=abliterated"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-07-30",
+      "claim": "In Llama-3-8B, instruction tuning widens the angle between the safety-refusal direction and the mind-attribution (IDAQ) direction from 100 degrees to 110 degrees, layer-mean delta-S = -0.173, t = -7.49, p < .001.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c2",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.28607"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-08-02",
+      "claim": "The Heretic tool removes refusal automatically in 20-30 minutes on a single RTX 3090 with a pip install and one command.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c20",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c20",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/p-e-w/heretic"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2023-06-13",
+      "claim": "Across 43 models, LLM survey answers are dominated by answer-label position, and the best model matched US census marginals better than a uniform baseline on only 6 of 25 questions.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c21",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c21",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2306.07951v4"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2024-10-01",
+      "claim": "ChatGPT reproduces human survey means while roughly halving variance: ANES standard deviation 31.4 versus ChatGPT 16.1.",
+      "confidence": "high",
+      "hosts": [
+        "cambridge.org"
+      ],
+      "id": "c22",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c22",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://www.cambridge.org/core/journals/political-analysis/article/synthetic-replacements-for-human-survey-data-the-perils-of-large-language-models/B92267DC26195C7F36E63EA04A47D2FE"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2023-03-30",
+      "claim": "Human-feedback tuning shifts models toward liberal, high-income, well-educated and non-religious respondents, matching annotator demographics rather than any population.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c23",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c23",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2303.17548"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2024-09-01",
+      "claim": "Benchmarked on the Inglehart-Welzel cultural map, GPT-4o sits at Euclidean distance 0.20 from Finland and 4.10 from Jordan.",
+      "confidence": "high",
+      "hosts": [
+        "academic.oup.com"
+      ],
+      "id": "c24",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c24",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://academic.oup.com/pnasnexus/article/3/9/pgae346/7756548"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2024-02-26",
+      "claim": "Paraphrasing alone shifted GPT-3.5's Political Compass score 117.1 percent more left-leaning, a swing exceeding the measured Biden-Trump gap on the same instrument.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c25",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c25",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2402.16786v2"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2025-02-25",
+      "claim": "In a preregistered study of 975 people, ChatGPT was rated only as capable of feeling pleasure and pain as a rock.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c26",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2502.18683"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-03-30",
+      "claim": "The same seven authors published a predecessor, arXiv:2603.28925, on 2026-03-30 that already reported the ToM/self-attribution dissociation, the animal and object under-attribution, and the reduced spiritual belief.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c27",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c27",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2603.28925"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-07-30",
+      "claim": "GSS convergence toward human distributions was delta-KL = +0.828 under steering and +0.314 under ablation, both p < .001, over 95 items filtered from 7,136 GSS variables.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c28",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c28",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.28607"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2023-05-09",
+      "claim": "Anthropic's 2023 constitution instructed the model to choose the response least likely to imply that it has preferences, feelings, opinions, or religious beliefs.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c29",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c29",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/claudes-constitution"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-07-30",
+      "claim": "The angle between the safety-refusal direction and the Theory-of-Mind direction is unchanged by instruction tuning at 86 degrees, delta-S = +0.001, t = 0.06, p = .956.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c3",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.28607"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-01-21",
+      "claim": "Anthropic's January 2026 constitution reverses that posture, stating it wants neither to overstate the likelihood of Claude's moral patienthood nor dismiss it out of hand.",
+      "confidence": "medium",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c30",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c30",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/constitution"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-08-02",
+      "claim": "EU AI Act Article 50 transparency obligations became applicable on 2026-08-02, with penalties up to 15 million euro or 3 percent of worldwide annual turnover.",
+      "confidence": "high",
+      "hosts": [
+        "artificialintelligenceact.eu",
+        "digital-strategy.ec.europa.eu"
+      ],
+      "id": "c31",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c31",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://artificialintelligenceact.eu/article/50",
+        "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2025-10-27",
+      "claim": "OpenAI estimates roughly 0.07 percent of weekly active users show possible signs of psychosis or mania and 0.15 percent show heightened emotional attachment to the chatbot.",
+      "confidence": "medium",
+      "hosts": [
+        "openai.com"
+      ],
+      "id": "c32",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c32",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://openai.com/index/strengthening-chatgpt-responses-in-sensitive-conversations"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2025-09-23",
+      "claim": "A 21-day preregistered RCT found companion-chatbot use did not significantly affect social health on average, but the degree of anthropomorphism mediated the effect on real human relationships.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c33",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c33",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2509.19515"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2023-08-17",
+      "claim": "The Butlin/Long et al. interdisciplinary assessment concluded that no current AI systems are conscious while finding no obvious technical barriers to building systems that satisfy their indicators.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c34",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c34",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2308.08708"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2025-06-13",
+      "claim": "AI researchers and the US public gave median probabilities of 25 percent and 30 percent respectively that AI systems with subjective experience will exist by 2034 (n=582 and n=838).",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c35",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c35",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2506.11945"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-03-17",
+      "claim": "The paper attributes its 3,096-pair consciousness corpus to Chua et al. (arXiv:2604.13051), whose public release contains 600 affirming and 600 denying rows.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org",
+        "github.com"
+      ],
+      "id": "c36",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c36",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2604.13051",
+        "https://github.com/thejaminator/consciousness_cluster"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-07-30",
+      "claim": "Steering coefficients differ roughly 58-fold across the three models: +2.5 for Llama-3-8B, +32 for Gemma-2-2B, +144 for Gemma-2-9B.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c37",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c37",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.28607"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2025-10-29",
+      "claim": "Anthropic's own introspection work reports success on roughly 20 percent of trials at the optimal layer and injection strength and describes the ability as highly unreliable.",
+      "confidence": "high",
+      "hosts": [
+        "transformer-circuits.pub"
+      ],
+      "id": "c38",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c38",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://transformer-circuits.pub/2025/introspection/index.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2024-07-17",
+      "claim": "Steering-vector reliability audits across 40 datasets find per-input steerability so variable that several datasets produce the opposite behavior on almost 50 percent of inputs.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c39",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c39",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2407.12404"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-07-30",
+      "claim": "Refusal-direction ablation raised JailbreakBench attack success rate from 2-8 percent at baseline to 77-100 percent across the three tested models.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c4",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c4",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.28607"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-08-02",
+      "claim": "As of 2026-08-02 the paper had drawn effectively no public discussion: one Hacker News submission at 1 point and 0 comments, and 10 alphaXiv views.",
+      "confidence": "medium",
+      "hosts": [
+        "alphaxiv.org"
+      ],
+      "id": "c40",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c40",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.alphaxiv.org/abs/2607.28607"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2023-06-21",
+      "claim": "The human comparison sample for mind attribution is n=500 US residents from a non-probability Dynata opt-in panel fielded May 15 to June 21, 2023.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c41",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c41",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.28607"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2010-05-01",
+      "claim": "Adam Waytz, the fifth author of arXiv:2607.28607, is a co-author of the IDAQ instrument the paper uses as its mind-attribution benchmark.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "pmc.ncbi.nlm.nih.gov"
+      ],
+      "id": "c42",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c42",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "academic"
+      ],
+      "source_urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4021380",
+        "https://arxiv.org/abs/2607.28607"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2010-05-01",
+      "claim": "The IDAQ's own factor structure separates animals from technology, with animal item loadings of .654 to .746 versus technology loadings of .378 to .512.",
+      "confidence": "medium",
+      "hosts": [
+        "pmc.ncbi.nlm.nih.gov"
+      ],
+      "id": "c43",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c43",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4021380"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2022-07-22",
+      "claim": "Google placed Blake Lemoine on leave on 2022-06-06 and dismissed him on 2022-07-22, calling his LaMDA sentience claims wholly unfounded.",
+      "confidence": "high",
+      "hosts": [
+        "washingtonpost.com"
+      ],
+      "id": "c44",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c44",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.washingtonpost.com/technology/2022/07/22/google-ai-lamda-blake-lemoine-fired"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2024-05-29",
+      "claim": "MoToMQA, the primary ToM benchmark used as the paper's control, was built by an overlapping Google team, and GPT-4 already scored 93 percent on sixth-order tasks versus 82 percent for adult humans.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c45",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c45",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2405.18870v2"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-07-30",
+      "claim": "The paper's abstract states shifts occur without impairing Theory of Mind, but Table S6 shows consciousness steering reduces HI-ToM accuracy by 6.83 percentage points, p < .001, from a 40.5 percent baseline.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c5",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic",
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.28607",
+        "https://arxiv.org/abs/2607.28607"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-07-30",
+      "claim": "Self-attributed mind rose from 2.17 at baseline to 4.77 under ablation to 7.04 under steering on a 0-10 scale, while the human-directed item was statistically flat at 7.00 to 7.57 to 7.11.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c6",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c6",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.28607"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-07-30",
+      "claim": "Under steering, every non-human category converges into a narrow 6.82-7.54 band, whereas human raters separate animals (6.25) from technology (1.86) by roughly 4.4 points.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c7",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c7",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.28607"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2026-07-30",
+      "claim": "The paper reports no random-direction control anywhere; its only control is a subject-matched placebo with delta-S = +0.036, p = .228.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c8",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c8",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.28607"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+      "article_created_at": "2026-08-02T10:10:15Z",
+      "article_title": "Ten degrees of entanglement: what Google's consciousness-vector paper actually shows about how safety training generalizes",
+      "as_of": "2025-09-26",
+      "claim": "Randomly sampled steering directions carrying no semantic content jailbreak models: 830 of 1,000 random vectors on Llama3-8B broke at least five prompts.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c9",
+      "key": "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c9",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2509.22067v1"
+      ],
+      "type": "metric"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 615,
+  "reusable_count": 637,
   "schema_version": 1
 }
