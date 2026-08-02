@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-02 22:34:17 UTC
+
+CYCLE: AI-security incidents spike — Claude Code reportedly reproduced a real crypto-wallet exploit in ~8 min, plus a Copilot M365 leak; Anthropic IPO prep and a GPT-5.6/Astra math result round out the window.
+
+TOP STORIES:
+• Claude Code reproduces real crypto-wallet exploit in ~8 min, fronting a wave of AI-cyber incidents (Copilot M365 leak, HF red-team claim) [⚠]
+• The Information: Anthropic prepping IPO with unusual rigid employee stock-trading lockup [⚠]
+• Dan Shipper: public GPT-5.6 nearly recreates frontier "Astra" math result — narrow public-vs-frontier gap [⚠]
+
+WATCH: First-party write-up confirming the wallet-vuln class & whether it was public before Claude's run.
+
+Full update on GitHub.

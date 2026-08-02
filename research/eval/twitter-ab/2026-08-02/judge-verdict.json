@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-judge-verdict",
+  "date": "2026-08-02",
+  "run_id": "30770379995",
+  "run_attempt": 1,
+  "judge_model": "claude-opus-4-8",
+  "position_swap": true,
+  "staging_key_ok": true,
+  "blinding": {
+    "run_key": "30770379995-1",
+    "pass1": {
+      "A": "claude",
+      "B": "zai-glm-5p2"
+    },
+    "pass2": {
+      "A": "zai-glm-5p2",
+      "B": "claude"
+    }
+  },
+  "passes": [
+    {
+      "pass": 1,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "claude",
+        "B": "zai-glm-5p2"
+      },
+      "raw_preferred_letter": "A",
+      "preferred_leg": "claude",
+      "scores_by_leg": {
+        "claude": {
+          "coverage": 9.0,
+          "faithfulness": 9.0,
+          "headline_quality": 8.0,
+          "skepticism": 9.0,
+          "format": 9.0,
+          "overall": 9.0
+        },
+        "zai-glm-5p2": {
+          "coverage": 8.0,
+          "faithfulness": 9.0,
+          "headline_quality": 7.0,
+          "skepticism": 8.0,
+          "format": 9.0,
+          "overall": 8.0
+        }
+      },
+      "rationale_by_leg": {
+        "claude": "Leads with and fully develops the biggest research story (shipped model reproducing 5/10 Astra math results, named researcher, specific results, Marcus dissent) plus the EU AI Act going live that day. Every checked claim traces to the snapshot, including the BitBox Sol Ultra quote and 105x-cost figure. Skepticism is a cut above: the 0.0004%-bricking-vs-exploited-vuln distinction and hindsight-vs-capability counter are correct and non-obvious. Tight, alert-worthy headlines. Only real miss: the Anthropic IPO scoop.",
+        "zai-glm-5p2": "Strong, coherent AI-security cluster and a genuine scoop A lacks (Anthropic IPO stock-lockup). All claims verified, including the teortaxes and BitGo-challenge details, with appropriate low-cred flagging. But it relegates the math story to #3 covering only Shipper's n=1 and omits the Fable-reproduced-5-of-10 lead, drops the EU AI Act entirely, and pads its headline list with two incremental items (DeepSeek Pareto, Vercel agent). Skepticism is good but thinner (one skeptic-corner item)."
+      }
+    },
+    {
+      "pass": 2,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "zai-glm-5p2",
+        "B": "claude"
+      },
+      "raw_preferred_letter": "B",
+      "preferred_leg": "claude",
+      "scores_by_leg": {
+        "zai-glm-5p2": {
+          "coverage": 7.0,
+          "faithfulness": 8.0,
+          "headline_quality": 7.0,
+          "skepticism": 7.0,
+          "format": 8.0,
+          "overall": 7.0
+        },
+        "claude": {
+          "coverage": 8.0,
+          "faithfulness": 9.0,
+          "headline_quality": 8.0,
+          "skepticism": 9.0,
+          "format": 8.0,
+          "overall": 8.0
+        }
+      },
+      "rationale_by_leg": {
+        "zai-glm-5p2": "Well-structured, signal-only, faithful. Verified: 8-min wallet finding (Curran), Anthropic IPO rigid-lockup (line 34533), Shipper GPT-5.6 Erdos test. Its distinct win is covering the Anthropic IPO, which B omits. But it under-weights the window's biggest thread: it leads with the wallet story and relegates Astra-replication to #3, entirely missing the stronger Alpoge/Fable 'reproduced 5 of 10' datapoint. Its wallet counter ('may just be reading prior public detail') is undercut by the snapshot's GLM-pre-exploit rebuttal it never incorporates, and it bundles weaker unverified secondary claims (BitGo 100-BTC, HF red-team) into the lead. All flagged unverified, so no hallucination.",
+        "claude": "Strongest overall. Leads with the correctly-identified top story (shipped Fable reproduced 5 of 10 Astra results per Alpoge, line 23762; Shipper's hint-guided GPT-5.6). Exceptionally precise and all specifics trace: 105x-vs-Fable-5 attributed to Artificial Analysis (1554), FlexBase 1.2GW/500MW ETA 2028/29 (18791), GPT-6/5.7 undecided + ~$2000 Sol (34328), Flapping Airplanes $5B (38290), 456 likes. Superior skepticism: correct Coldcard device, first-party BitBox test with safety-filter refusal as the durable finding, correct 0.0004%-is-bricking deflation, and the only genuine multi-source (EU AI Act) graded checkmark. One real gap: omits the Anthropic IPO."
+      }
+    }
+  ],
+  "per_leg": {
+    "claude": {
+      "overall_avg": 8.5,
+      "criteria_avg": {
+        "coverage": 8.5,
+        "faithfulness": 9.0,
+        "format": 8.5,
+        "headline_quality": 8.0,
+        "skepticism": 9.0
+      },
+      "passes_scored": 2
+    },
+    "zai-glm-5p2": {
+      "overall_avg": 7.5,
+      "criteria_avg": {
+        "coverage": 7.5,
+        "faithfulness": 8.5,
+        "format": 8.5,
+        "headline_quality": 7.0,
+        "skepticism": 7.5
+      },
+      "passes_scored": 2
+    }
+  },
+  "passes_parsed": 2,
+  "final_preference": "claude"
+}
