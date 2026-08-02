@@ -1,0 +1,13 @@
+Speaker 1: Sunday, August second, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI has named its next model family Astra, and it arrived with ten new mathematics and theoretical computer science results, every one of them shipped with Lean certificates.
+Speaker 1: The catch is verification. No specialist has checked any of those proofs yet, and OpenAI's own repository labels the whole package agent-reviewed.
+Speaker 2: The economics are the part people cannot stop talking about. All ten results cost roughly [emphasis] two thousand dollars [/emphasis] of inference in total, about two hundred dollars apiece, and the manuscript runs two hundred forty-nine pages.
+Speaker 1: Some quick numbers on the cost curve elsewhere. DeepSeek V four Flash is completing benchmark tasks at [emphasis] one hundred five times [/emphasis] lower cost than Anthropic's Fable five, according to Artificial Analysis by way of Cline.
+Speaker 2: It scores fifty on Artificial Analysis at fourteen cents in and twenty-seven cents out per million tokens. Worth noting that the price gap is now larger than the quality gap.
+Speaker 1: On the policy front, OpenAI and Anthropic are both lobbying Washington to extend frontier-model reviews to Meta and SpaceXAI.
+Speaker 2: That is two leading labs asking regulators to widen the net to include their competitors. Read that however you like.
+Speaker 1: In the money column, Alphabet's TPU lease backstops went from six point five billion dollars to [emphasis] forty-three point eight billion dollars [/emphasis] in under a year.
+Speaker 2: And Aschenbrenner's Situational Awareness fund closed July down sixty-seven percent. [dramatic_pause] Conviction is expensive this summer.
+Speaker 1: Trending on Hacker News, the number one story is Cursor removing per-request cost data from its usage page and its CSV export.
+Speaker 2: Developers noticed immediately, which is the only real lesson there.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
