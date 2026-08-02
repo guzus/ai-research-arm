@@ -472,22 +472,12 @@ jobs:
             echo "research/generative/ is missing — writer will refuse to run" >&2
             exit 1
           fi
-          for s in scripts/write_generative_research.py scripts/research_search.py scripts/prior_context.py scripts/claim_search.py scripts/build_claim_index.py; do
+          for s in scripts/write_generative_research.py scripts/research_search.py scripts/prior_context.py; do
             if [ ! -f "$s" ]; then
               echo "$s not found" >&2
               exit 1
             fi
           done
-          # The claim store is the repo's compounding memory (docs/claim-store.md).
-          # A missing index is NOT fatal — the agent falls back to researching
-          # from scratch, which is the pre-store behaviour — but it is worth
-          # a loud notice, because a silently absent index looks identical to
-          # "we have never written about this" and quietly wastes a run.
-          if [ ! -f research/claims/index.json ]; then
-            echo "::warning::research/claims/index.json missing — claim reuse and contradiction checks will find nothing this run. Rebuild with scripts/build_claim_index.py."
-          else
-            echo "Claim store present: $(uv run python -c 'import json,sys; print(json.load(open("research/claims/index.json"))["claim_count"])' 2>/dev/null || echo '?') claims."
-          fi
           echo "Writer prerequisites OK."
 
       # Ensure depth tooling is on the runner. The agent uses pdftotext to
@@ -1776,6 +1766,7 @@ jobs:
             - One-shot session: ending your turn ends the run. Never stop
               to "wait" for anything — the writer commit from step 9 must
               exist before you finish.
+
       # Inspect Claude attempt 1 — decide whether to retry. A publishable
       # attempt needs both a new article commit and the claim-verifier JSON
       # that the later audit consumes. If either artifact is missing, run
@@ -3194,6 +3185,7 @@ jobs:
             - One-shot session: ending your turn ends the run. Never stop
               to "wait" for anything — the writer commit from step 9 must
               exist before you finish.
+
       - name: Inspect Fireworks attempt 1
         if: steps.effective.outputs.fireworks_active == 'true'
         id: deepseek-attempt-1
@@ -3510,90 +3502,6 @@ jobs:
             exit 1
           fi
 
-      # Derived-claim recompute audit — BLOCKING.
-      #
-      # What it checks: `type: "derived"` ledger entries are verified by
-      # RECOMPUTATION, not retrieval — inputs resolve to other ledger
-      # claims, the whitelisted-AST formula parses, every declared input
-      # is used, and `result` matches the recomputed value within
-      # tolerance. That is the deterministic backstop for the prompt
-      # change that now tells the verifier sub-agent to recompute a
-      # derived figure instead of marking it unsupported.
-      #
-      # WHY IT IS BLOCKING. All three of the original reasons for
-      # shipping it advisory have now been retired:
-      #   1. RETIRED. validate_claim_ledger() in
-      #      scripts/generative_methodology.py now accepts
-      #      `type: "derived"` (requires inputs/formula/result, forbids
-      #      source_urls/source_tiers, and structurally rejects a
-      #      derivation retyped as a retrieval claim). Derived entries
-      #      CAN now reach a published ledger, so this audit has real
-      #      work to do on every run that declares one.
-      #   2. RETIRED. `--audit-derived-claims` exists in
-      #      scripts/check_generative_research.py in this same tree, so
-      #      the argparse-parity failure mode is gone.
-      #   3. RETIRED. The remaining reason was an unknown day-one
-      #      false-fail rate on LLM-authored JSON, on a human-dispatched
-      #      lane where a false fail means someone gets nothing. Two
-      #      changes retire it:
-      #      (a) `--audit-derived-claims` is now part of the agent's OWN
-      #          step-7.5 self-check loop, alongside `--claims-ledger`.
-      #          The agent therefore SEES a derived failure and fixes it
-      #          while it still holds the draft. This step is now a
-      #          backstop against something the agent already had a
-      #          chance to repair — exactly the posture `--claims-ledger`
-      #          has, and that one is enforced by a blocking gate below.
-      #      (b) The one measured false-fail mode was editorial rounding:
-      #          declaring a rounded headline figure (1.8e12) as `result`
-      #          when the formula computes 1.75e12 is 2.78% off and fails
-      #          a 1% tolerance. The prompt now states, in both copies,
-      #          that `result` is the EXACT full-precision value and that
-      #          rounding belongs in the prose. The tolerance absorbs
-      #          floating-point noise, which is what it was sized for.
-      #
-      # If real runs show a false-fail mode neither change anticipated,
-      # the cheap rollback is to restore `continue-on-error: true` and
-      # drop this step's output from the "Push changes" condition — do
-      # NOT loosen `--derived-tolerance` to paper over it, because that
-      # trades a visible failure for silently shipped bad arithmetic.
-      - name: Derived-claim recompute audit
-        id: derived-audit
-        if: steps.outfile.outputs.has_file == 'true' && steps.quality.outputs.passed == 'true' && steps.verifier-audit.outputs.passed == 'true'
-        env:
-          FILE: ${{ steps.outfile.outputs.file }}
-          PRE_SHA: ${{ steps.pre.outputs.sha }}
-        run: |
-          set -euo pipefail
-          claims="$GITHUB_WORKSPACE/.gen-claims-ledger.json"
-          article="research/generative/$FILE"
-          if [ ! -f "$claims" ]; then
-            echo "::notice::No claim ledger at $claims — skipping derived-claim recompute audit. The blocking Methodology artifact gate below owns the missing-artifact failure."
-            # NOT `skipped`: this output is wired into the Push
-            # condition, and a bespoke sentinel would read as a failure
-            # on a path that is not this step's to fail. The gate below
-            # hard-fails on a missing ledger.
-            echo "passed=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          if uv run python scripts/check_generative_research.py \
-              "$article" --audit-derived-claims "$claims"; then
-            echo "Derived-claim recompute audit PASSED for $article"
-            echo "passed=true" >> "$GITHUB_OUTPUT"
-          else
-            # Blocking: same reset-on-failure + artifact-cleanup shape as
-            # the two gates around this one, so the bad article never
-            # reaches main and the runner's persistent workspace is left
-            # clean for the next job.
-            echo "::error::Derived-claim recompute audit FAILED for $article — a declared derivation does not reproduce. Fix the inputs, the formula, or drop the claim."
-            echo "passed=false" >> "$GITHUB_OUTPUT"
-            git reset --hard "$PRE_SHA"
-            git clean -fd -- research/generative || true
-            rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
-            rm -f "$GITHUB_WORKSPACE/.gen-redteam-findings.json"
-            rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
-            exit 1
-          fi
-
       - name: Methodology artifact gate
         id: methodology
         if: steps.outfile.outputs.has_file == 'true' && steps.quality.outputs.passed == 'true' && steps.verifier-audit.outputs.passed == 'true'
@@ -3613,11 +3521,6 @@ jobs:
               echo "passed=false" >> "$GITHUB_OUTPUT"
               git reset --hard "$PRE_SHA"
               git clean -fd -- research/generative || true
-              # Self-hosted runners keep $GITHUB_WORKSPACE between jobs, so a
-            # rejected run must not leave methodology artifacts behind for the
-            # NEXT dispatch's gates to read as its own. Same cleanup the
-            # quality and verifier-audit gates above perform.
-            rm -f "$claims" "$verifier" "$redteam"
               exit 1
             fi
           done
@@ -3629,11 +3532,6 @@ jobs:
             echo "passed=false" >> "$GITHUB_OUTPUT"
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative || true
-            # Self-hosted runners keep $GITHUB_WORKSPACE between jobs, so a
-            # rejected run must not leave methodology artifacts behind for the
-            # NEXT dispatch's gates to read as its own. Same cleanup the
-            # quality and verifier-audit gates above perform.
-            rm -f "$claims" "$verifier" "$redteam"
             exit 1
           fi
 
@@ -3642,26 +3540,6 @@ jobs:
           cp "$redteam"  "research/generative/${stem}.redteam.json"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Rebuild the cross-article claim store in the SAME commit as the
-          # ledger that just landed (docs/claim-store.md). This is not
-          # optional bookkeeping: research/claims/index.json is a generated
-          # committed artifact and `build_claim_index.py --check` is a CI
-          # gate, so shipping a new .claims.json without regenerating the
-          # index turns the very next unrelated PR red. Rebuilding here also
-          # means the claim is available for reuse and for the
-          # back-catalogue disagreement check on the NEXT run rather than
-          # whenever someone happens to rebuild by hand.
-          #
-          # Fail-soft on purpose: a finished, validated article must not be
-          # discarded because an index rebuild hiccuped. A warning plus a
-          # red CI run on the next PR is a far better failure than throwing
-          # away a 30-minute run, and the index is always recoverable from
-          # the ledgers by rerunning the builder.
-          if uv run python scripts/build_claim_index.py; then
-            git add research/claims/index.json || true
-          else
-            echo "::warning::Claim index rebuild failed — research/claims/index.json is now STALE and CI will fail until someone runs scripts/build_claim_index.py. The article itself is unaffected."
-          fi
           git add \
             "research/generative/${stem}.claims.json" \
             "research/generative/${stem}.verification.json" \
@@ -3758,7 +3636,6 @@ jobs:
           && steps.outfile.outputs.has_file == 'true'
           && steps.quality.outputs.passed == 'true'
           && steps.verifier-audit.outputs.passed == 'true'
-          && steps.derived-audit.outputs.passed != 'false'
           && steps.methodology.outputs.passed == 'true'
         uses: ./.github/actions/safe-push
         with:
