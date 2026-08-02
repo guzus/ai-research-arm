@@ -3,14 +3,19 @@
 **Read at runtime by the generative-research agent.** This is step 6.5 of the
 agent's procedure; the workflow prompt points here instead of inlining it.
 
-It lives in a file for a load-bearing reason. The `prompt:` input to
-`anthropics/claude-code-action@v1` has a size ceiling: on 2026-08-02 the prompt
-grew past ~64 KB and the action stopped invoking the agent entirely — the step
-"succeeded" in ~2 seconds, wrote no execution file, and produced no article,
-while `show_full_output: false` hid the cause. A 53-minute run on `main` and a
-2-second no-op on the branch differed only in prompt length. Reference material
-therefore belongs in `docs/` — which is the pattern CLAUDE.md already documents
-for every other per-lane contract — not inlined in the prompt.
+Why a file: the `prompt:` input to `anthropics/claude-code-action@v1` has a
+size ceiling. Cross it and the action stops invoking the agent WITHOUT
+failing — the step reports success, runs ~2-3 seconds, writes no execution
+file, and produces no article, with `show_full_output: false` hiding the
+cause. Measured 2026-08-02 with the model, credential, runner and every
+other step input held identical, varying only prompt length:
+
+    52,741 chars -> Claude step ran 3,171 s, article published
+    83,978 chars -> Claude step ran ~3 s, no execution file
+
+Reference material therefore belongs in `docs/` — the pattern CLAUDE.md
+already documents for per-lane contracts — while the prompt keeps only
+imperatives.
 
 **Keep this file and the prompt in lockstep.** The prompt must keep naming this
 path and the step number; this file owns the detail.

@@ -4,12 +4,18 @@
 The workflow prompt points here instead of inlining it.
 
 Why a file: the `prompt:` input to `anthropics/claude-code-action@v1` has a
-size ceiling. On 2026-08-02 the prompt crossed it and the action silently
-stopped invoking the agent — the step "succeeded" in ~2 seconds, wrote no
-execution file and produced no article, with `show_full_output: false` hiding
-the cause. A 53-minute run on `main` and a 2-second no-op on the branch
-differed only in prompt length. Reference material belongs in `docs/`, the
-pattern CLAUDE.md already documents for per-lane contracts.
+size ceiling. Cross it and the action stops invoking the agent WITHOUT
+failing — the step reports success, runs ~2-3 seconds, writes no execution
+file, and produces no article, with `show_full_output: false` hiding the
+cause. Measured 2026-08-02 with model, credential, runner and every other
+step input held identical, varying only prompt length:
+
+    52,741 chars -> Claude step ran 3,171 s, article published
+    83,978 chars -> Claude step ran ~3 s, no execution file
+
+Reference material therefore belongs in `docs/` — the pattern CLAUDE.md
+already documents for per-lane contracts — while the prompt keeps only
+imperatives.
 
 ## Toolbelt
 
