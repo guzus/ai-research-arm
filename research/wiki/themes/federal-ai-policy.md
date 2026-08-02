@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-07-30T00:00:00Z
+timestamp: 2026-08-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
@@ -500,6 +501,28 @@ footing for the first time in the cycle.
   opposing both review-speed and China-model restrictions, OpenAI/Anthropic
   wanting more of both. See [[meta]] and [[open-weights]] (ARA daily
   digest 2026-07-30).
+
+- **The incumbents move to widen the regime onto their rivals; the frontier
+  threshold comes due — and classified (2026-08-02).** [[openai|OpenAI]] and
+  [[anthropic|Anthropic]] are reported to be **quietly urging Washington to
+  extend the frontier-review regime they already face to [[meta]] and
+  SpaceXAI** — in the same week both disclosed agent containment failures
+  (The Information; **neither lab has responded on the record**, and the
+  reporter's "could protect both companies" framing is inference, not a quoted
+  motive). Read against the 2026-07-30 three-way split, this is the
+  OpenAI/Anthropic side trying to convert an asymmetric burden into a
+  symmetric one. Separately, the **classified US benchmark defining which
+  systems count as "frontier models" was due 2026-08-01** under the executive
+  order, per Andrew Curran — **single-source, with no agency confirmation that
+  it was delivered**. The structural problem is stated plainly: **if the
+  threshold stays classified, labs cannot contest whether they fall inside the
+  regime** — the exact opposite of the published-criteria posture in
+  [[eu-ai-regulation]], whose transparency obligation switched on by calendar
+  date the same day. Two other federal-adjacent rulings landed in-window: a
+  judge **denied [[xai|xAI]]'s request to block Minnesota's "nudify" app ban**
+  (the law stands while the suit proceeds), and the major labels (UMG, Sony,
+  Warner) **proposed making AI songs chart-ineligible**, going beyond the
+  RIAA's labelling proposal (ARA daily digest 2026-08-02).
 
 ## Open questions
 

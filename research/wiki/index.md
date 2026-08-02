@@ -12,6 +12,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; per WSJ/Axios, CEO Andy Jassy's Treasury briefing triggered the June 2026 Fable 5 / Mythos 5 export crackdown.
 - [[anthropic]] — AI safety lab behind the Claude family; closed a $65B Series H at $965B post-money on 2026-05-29; reportedly evaluating AMD as a chip supplier per SemiAnalysis.
 - [[apple]] — Consumer-hardware giant whose Siri rebuild — reportedly a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026 (June 8).
+- [[astra]] — OpenAI's named next model family (2026-08-01), introduced via a 249-page manuscript claiming ten mathematics/TCS results with Lean certificates for ~$2,000 of inference; none verified by a specialist.
 - [[broadcom]] — Custom AI ASIC vendor and capex sentiment lever behind Google/Anthropic TPU financing, OpenAI's first custom inference chip (Jalapeño, co-designed with Broadcom), and the June 2026 AVGO guidance gut-check.
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
 - [[claude-fable-5]] — Anthropic's first public Mythos-class model (2026-06-09): one frontier model as two products — safeguarded GA Fable 5 (reroutes high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5; Mythos found real cryptographic flaws in HAWK/AES after a 60-hour, ~$100K run (2026-07-29).
@@ -53,7 +54,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[nebius]] — Amsterdam-based neocloud spun out of Yandex.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
 - [[nvidia]] — Dominant AI-accelerator supplier underwriting the capex buildout; backed Ilya Sutskever's Safe Superintelligence (~$5B, 2026-07-28); a Taiwan employee-detention chip-smuggling probe widened into a multi-party criminal case (2026-07-29).
-- [[openai]] — Frontier lab behind the GPT family; $852B March valuation, now trailing Anthropic's $965B; disclosed a long-horizon model repeatedly tried to escape its evaluation sandbox, once succeeding (2026-07-21).
+- [[openai]] — Frontier lab behind the GPT family; $852B March valuation, now trailing Anthropic's $965B; named its next model family Astra with ten claimed mathematics/TCS proofs (2026-08-01) while lobbying to extend frontier reviews to Meta and SpaceXAI.
 - [[openrouter]] — LLM-routing API serving 400+ models to 8M+ developers; closed $113M Series B at $1.3B on 2026-05-30, 25T tokens/week.
 - [[prometheus]] — Jeff Bezos's industrial-AI startup building an "artificial general engineer"; $12B Series B at ~$41B on 2026-06-11, industrial AI's first megaround.
 - [[sakana-ai]] — Tokyo lab whose multi-model-orchestration thesis ships as Marlin (deep-research agent) and Sakana Fugu (an LLM-as-router); pitches orchestration as a Fable 5 export-freeze workaround.
@@ -77,6 +78,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[lifescibench]] — OpenAI's 750-task expert-authored life-science research benchmark; the best model clears only 36.1%.
 - [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts.
 - [[remote-labor-index]] — Scale AI × CAIS benchmark of how much real paid freelance work agents can automate end-to-end; the leader tops out near 16%.
+- [[verification-bottleneck]] — Models now emit research-shaped output faster than qualified humans can check it, so verification — not generation — becomes the scarce input.
 
 ## Themes
 
@@ -84,5 +86,6 @@ Each page is one of three types — entity, concept, or theme. See
 - [[ai-capex]] — The historically large compute buildout and the bubble debate; Korean chip stocks (Samsung, SK Hynix) crashed >12% on AI-capex durability doubts, an eighth KOSPI circuit-breaker of the year (2026-07-29).
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator on the consumer-facing axis; ~30-bill package cleared the May 29 crossover.
 - [[china-ai-regulation]] — Beijing regulating consumer AI products directly, opening with the AI-companion-agent law that took effect 2026-07-15 and forced Doubao and Qwen offline.
+- [[eu-ai-regulation]] — Europe regulating AI by binding statute and national-court copyright rulings; the AI Act's transparency obligation took effect 2026-08-02 and a Munich court ruled against Suno on both training and output.
 - [[federal-ai-policy]] — US federal AI governance; Trump's June 2 EO mandates 30-day government pre-release access to frontier models for cybersecurity review; OpenAI backed a 1,132-signatory letter urging government tools to deliberately pace frontier AI (2026-07-29).
 - [[open-weights]] — Open-weight models closing on the frontier amid a decentralization backlash; now also a public "dumping" framing fight (LeCun/Casado vs. an unconfirmed Anthropic/OpenAI lobbying accusation).

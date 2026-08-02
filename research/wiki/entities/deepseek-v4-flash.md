@@ -4,10 +4,11 @@ title: DeepSeek V4-Flash-0731
 type: entity
 aliases: ["V4-Flash", "V4-Flash-0731", "DeepSeek-V4-Flash", "DeepSeek V4-Flash-0731"]
 tags: [frontier-model, open-weights, chinese-llm, moe, agentic-coding, mit-license]
-description: DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis at ~60% lower cost per task than GPT-5.6 Luna.
+description: DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.
 created_at: 2026-08-01
-timestamp: 2026-08-01T00:00:00Z
+timestamp: 2026-08-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA model ticket — DeepSeek V4 GA + surge pricing", path: research/models/tickets/deepseek-v4-ga-surge-pricing-2026-06.md}
 ---
@@ -47,6 +48,37 @@ on Hugging Face hours later, with a technical report.
   surge pricing** (peak ~2× off-peak). The launch as digested carries the flat
   $0.28/$0.87 pair and no evidence the peak/off-peak scheme went live; treat
   surge pricing as announced-but-unconfirmed for this model.
+
+## Day-two outside evidence (2026-08-02)
+
+- **The 105× cost-per-task claim.** Cline relayed an **Artificial Analysis
+  cost-per-task comparison putting V4-Flash 105× cheaper than
+  [[claude-fable-5|Anthropic's Fable 5]]** on the same workload — a far larger
+  spread than the ~60% figure from launch day, because it measures **cost per
+  completed task**, not per token. Relayed via @cline / @AravSrinivas, not
+  published by Anthropic or DeepSeek.
+- **It kept clearing independent tests.** **50 on the Artificial Analysis
+  Intelligence Index at $0.14/$0.27 per Mtok**; **LMArena Pareto-frontier
+  placement** in the Frontend Code Arena; **first place on Lech Mazur's
+  940-puzzle Extended NYT Connections benchmark (89.6 vs
+  [[gemini-3-6-flash|Gemini 3.6 Flash]] 89.0)**; and **parity with
+  [[gpt-5-6|GPT-5.6 Sol]] and [[moonshot-kimi-k3|Kimi K3]]** in Aikido
+  Security's pentest evaluation.
+- **The caveat that travelled with every result: reasoning effort.** The strong
+  numbers depend on running at **high** effort. Simon Willison got *"a
+  disappointing pelican"* at default mode — meaning the headline
+  price/performance and the default-mode experience are **not the same
+  product**, and cost comparisons that assume high effort understate real spend.
+- **A published quirk in its own inference path.** *Numerical State in Sparse
+  MoE Inference* ([arXiv:2607.28097](https://arxiv.org/abs/2607.28097)) shows
+  **mathematically equivalent expert aggregations produce divergent
+  continuations in DeepSeek-V4-Flash** — a reproducibility hazard for anyone
+  benchmarking it across serving stacks, and an instance of the
+  [[verification-bottleneck]].
+- **Open discrepancy to resolve.** Launch-day sourcing described the model as
+  **284B total / 13B active**; the 2026-08-02 digest describes the open-weights
+  release as **304B (MIT, 167GB)**. Both figures are carried here as digested;
+  neither has been reconciled against the technical report in-window.
 
 ## Context
 

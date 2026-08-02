@@ -75,6 +75,7 @@
       "inbound": [
         "amazon",
         "anthropic",
+        "astra",
         "claude-fable-5",
         "claude-opus-5",
         "claude-sonnet-5",
@@ -134,8 +135,8 @@
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-01",
-      "timestamp": "2026-08-01T00:00:00Z",
+      "updated_at": "2026-08-02",
+      "timestamp": "2026-08-02T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -505,6 +506,45 @@
       ]
     },
     {
+      "slug": "astra",
+      "title": "Astra (OpenAI)",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "openai",
+        "frontier-model",
+        "mathematics",
+        "lean",
+        "agentic"
+      ],
+      "summary": "OpenAI's named \"next major model family,\" introduced 2026-08-01 via a 249-page manuscript claiming ten mathematics and theoretical-computer-science results with Lean certificates for roughly $2,000 of inference — none yet verified by a specialist.",
+      "description": "OpenAI's named \"next major model family,\" introduced 2026-08-01 via a 249-page manuscript claiming ten mathematics and theoretical-computer-science results with Lean certificates for roughly $2,000 of inference — none yet verified by a specialist.",
+      "created_at": "2026-08-02",
+      "updated_at": "2026-08-02",
+      "timestamp": "2026-08-02T00:00:00Z",
+      "file": "entities/astra.md",
+      "aliases": [
+        "Astra",
+        "OpenAI Astra",
+        "ten-proofs",
+        "openai/ten-proofs"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "deepseek-v4-flash",
+        "gpt-6",
+        "mistral-leanstral-1-5",
+        "openai",
+        "verification-bottleneck"
+      ],
+      "inbound": [
+        "gpt-6",
+        "mistral-leanstral-1-5",
+        "openai",
+        "verification-bottleneck"
+      ]
+    },
+    {
       "slug": "broadcom",
       "title": "Broadcom",
       "type": "entity",
@@ -584,6 +624,7 @@
         "ai-capex",
         "anthropic",
         "china-ai-regulation",
+        "eu-ai-regulation",
         "federal-ai-policy",
         "openai"
       ]
@@ -646,6 +687,7 @@
       "outbound": [
         "alibaba",
         "california-ai-regulation",
+        "eu-ai-regulation",
         "federal-ai-policy",
         "moonshot-kimi-k2-7-code",
         "tencent-hunyuan-hy3"
@@ -653,6 +695,7 @@
       "inbound": [
         "agibot",
         "alibaba",
+        "eu-ai-regulation",
         "meta"
       ]
     },
@@ -841,7 +884,8 @@
         "lifescibench"
       ],
       "inbound": [
-        "anthropic"
+        "anthropic",
+        "verification-bottleneck"
       ]
     },
     {
@@ -1013,8 +1057,8 @@
       "summary": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.",
       "description": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-08-01",
-      "timestamp": "2026-08-01T00:00:00Z",
+      "updated_at": "2026-08-02",
+      "timestamp": "2026-08-02T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -1071,11 +1115,11 @@
         "agentic-coding",
         "mit-license"
       ],
-      "summary": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis at ~60% lower cost per task than GPT-5.6 Luna.",
-      "description": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis at ~60% lower cost per task than GPT-5.6 Luna.",
+      "summary": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.",
+      "description": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.",
       "created_at": "2026-08-01",
-      "updated_at": "2026-08-01",
-      "timestamp": "2026-08-01T00:00:00Z",
+      "updated_at": "2026-08-02",
+      "timestamp": "2026-08-02T00:00:00Z",
       "file": "entities/deepseek-v4-flash.md",
       "aliases": [
         "V4-Flash",
@@ -1088,16 +1132,21 @@
         "claude-fable-5",
         "deepseek",
         "federal-ai-policy",
+        "gemini-3-6-flash",
         "gpt-5-6",
         "moonshot-kimi-k3",
         "open-weights",
-        "thinking-machines"
+        "thinking-machines",
+        "verification-bottleneck"
       ],
       "inbound": [
+        "astra",
         "deepseek",
+        "eu-ai-regulation",
         "moonshot-kimi-k3",
         "open-weights",
-        "thinking-machines"
+        "thinking-machines",
+        "verification-bottleneck"
       ]
     },
     {
@@ -1210,6 +1259,44 @@
       ]
     },
     {
+      "slug": "eu-ai-regulation",
+      "title": "European AI regulation",
+      "type": "theme",
+      "tags": [
+        "regulation",
+        "eu",
+        "ai-act",
+        "copyright",
+        "transparency"
+      ],
+      "summary": "The 2026 storyline of Europe regulating AI through binding statute rather than agency discretion — the AI Act's obligations switching on by calendar date, and national courts applying EU copyright law to model training and output.",
+      "description": "The 2026 storyline of Europe regulating AI through binding statute rather than agency discretion — the AI Act's obligations switching on by calendar date, and national courts applying EU copyright law to model training and output.",
+      "created_at": "2026-08-02",
+      "updated_at": "2026-08-02",
+      "timestamp": "2026-08-02T00:00:00Z",
+      "file": "themes/eu-ai-regulation.md",
+      "aliases": [
+        "EU AI Act",
+        "EU AI regulation",
+        "European AI Act",
+        "AI Act"
+      ],
+      "outbound": [
+        "california-ai-regulation",
+        "china-ai-regulation",
+        "deepseek-v4-flash",
+        "federal-ai-policy",
+        "google",
+        "midjourney",
+        "open-weights",
+        "openai"
+      ],
+      "inbound": [
+        "china-ai-regulation",
+        "federal-ai-policy"
+      ]
+    },
+    {
       "slug": "federal-ai-policy",
       "title": "Federal AI Policy",
       "type": "theme",
@@ -1224,8 +1311,8 @@
       "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-07-30",
-      "timestamp": "2026-07-30T00:00:00Z",
+      "updated_at": "2026-08-02",
+      "timestamp": "2026-08-02T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1245,6 +1332,7 @@
         "claude-fable-5",
         "claude-sonnet-5",
         "deepseek",
+        "eu-ai-regulation",
         "gpt-5-6",
         "meituan-longcat-2",
         "meta",
@@ -1269,6 +1357,7 @@
         "claude-sonnet-5",
         "deepseek",
         "deepseek-v4-flash",
+        "eu-ai-regulation",
         "gpt-5-6",
         "john-jumper",
         "lifescibench",
@@ -1465,6 +1554,7 @@
         "moonshot-kimi-k3"
       ],
       "inbound": [
+        "deepseek-v4-flash",
         "gemini-3-5-flash",
         "google",
         "moonshot-kimi-k3"
@@ -1589,6 +1679,7 @@
       "inbound": [
         "ai-capex",
         "anthropic",
+        "eu-ai-regulation",
         "gemini-3-5-pro",
         "gemini-3-6-flash"
       ],
@@ -1662,11 +1753,11 @@
         "frontier-model",
         "rumored"
       ],
-      "summary": "OpenAI's anticipated next flagship model generation beyond GPT-5.6; reportedly previewed to US officials the week of 2026-07-27, but not yet officially named or specified by OpenAI.",
-      "description": "OpenAI's anticipated next flagship model generation beyond GPT-5.6; reportedly previewed to US officials the week of 2026-07-27, but not yet officially named or specified by OpenAI.",
+      "summary": "OpenAI's anticipated next flagship model generation beyond GPT-5.6; the family was named Astra on 2026-08-01, with OpenAI reportedly still undecided whether it ships as GPT-6 or GPT-5.7.",
+      "description": "OpenAI's anticipated next flagship model generation beyond GPT-5.6; the family was named Astra on 2026-08-01, with OpenAI reportedly still undecided whether it ships as GPT-6 or GPT-5.7.",
       "created_at": "2026-07-28",
-      "updated_at": "2026-07-28",
-      "timestamp": "2026-07-28T00:00:00Z",
+      "updated_at": "2026-08-02",
+      "timestamp": "2026-08-02T00:00:00Z",
       "file": "entities/gpt-6.md",
       "aliases": [
         "GPT-6",
@@ -1676,11 +1767,13 @@
       "outbound": [
         "agentic-ai-security",
         "anthropic",
+        "astra",
         "gpt-5-6",
         "nvidia",
         "openai"
       ],
       "inbound": [
+        "astra",
         "openai"
       ]
     },
@@ -1778,12 +1871,14 @@
       "outbound": [
         "agent-lifespan-engineering",
         "federal-ai-policy",
-        "openai"
+        "openai",
+        "verification-bottleneck"
       ],
       "inbound": [
         "claude-science",
         "john-jumper",
-        "openai"
+        "openai",
+        "verification-bottleneck"
       ]
     },
     {
@@ -2033,7 +2128,9 @@
         "Midjourney Medical"
       ],
       "outbound": [],
-      "inbound": []
+      "inbound": [
+        "eu-ai-regulation"
+      ]
     },
     {
       "slug": "minimax-m3",
@@ -2099,11 +2196,16 @@
         "Leanstral"
       ],
       "outbound": [
+        "astra",
         "mistral-robostral-navigate",
-        "open-weights"
+        "open-weights",
+        "openai",
+        "verification-bottleneck"
       ],
       "inbound": [
-        "mistral-robostral-navigate"
+        "astra",
+        "mistral-robostral-navigate",
+        "verification-bottleneck"
       ]
     },
     {
@@ -2530,6 +2632,7 @@
         "claude-sonnet-5",
         "deepseek",
         "deepseek-v4-flash",
+        "eu-ai-regulation",
         "federal-ai-policy",
         "meituan-longcat-2",
         "meta",
@@ -2557,11 +2660,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
-      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 \"Full Access Mode\" file-deletion safety incident.",
+      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.",
+      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-07-30",
-      "timestamp": "2026-07-30T00:00:00Z",
+      "updated_at": "2026-08-02",
+      "timestamp": "2026-08-02T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -2574,6 +2677,7 @@
         "ai-capex",
         "anthropic",
         "apple",
+        "astra",
         "california-ai-regulation",
         "claude-fable-5",
         "federal-ai-policy",
@@ -2586,19 +2690,22 @@
         "noam-shazeer",
         "nvidia",
         "salesforce",
-        "spacex"
+        "spacex",
+        "verification-bottleneck"
       ],
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
         "apple",
+        "astra",
         "broadcom",
         "california-ai-regulation",
         "chai-discovery",
         "claude-fable-5",
         "cursor",
         "deepseek",
+        "eu-ai-regulation",
         "federal-ai-policy",
         "figure-ai",
         "fireworks-ai",
@@ -2610,6 +2717,7 @@
         "meta",
         "micron",
         "microsoft",
+        "mistral-leanstral-1-5",
         "moonshot-kimi-k2-7-code",
         "noam-shazeer",
         "nvidia",
@@ -2621,6 +2729,7 @@
         "salesforce",
         "spacex",
         "thinking-machines",
+        "verification-bottleneck",
         "xai"
       ]
     },
@@ -2732,7 +2841,8 @@
       ],
       "inbound": [
         "anthropic",
-        "claude-fable-5"
+        "claude-fable-5",
+        "verification-bottleneck"
       ]
     },
     {
@@ -3083,6 +3193,45 @@
       ]
     },
     {
+      "slug": "verification-bottleneck",
+      "title": "The verification bottleneck",
+      "type": "concept",
+      "tags": [
+        "evaluation",
+        "ai-for-science",
+        "epistemics",
+        "benchmarks",
+        "agentic"
+      ],
+      "summary": "The 2026 constraint that models now generate research-shaped output faster than qualified humans can check it, so the scarce resource shifts from producing results to establishing which ones are correct and which matter.",
+      "description": "The 2026 constraint that models now generate research-shaped output faster than qualified humans can check it, so the scarce resource shifts from producing results to establishing which ones are correct and which matter.",
+      "created_at": "2026-08-02",
+      "updated_at": "2026-08-02",
+      "timestamp": "2026-08-02T00:00:00Z",
+      "file": "concepts/verification-bottleneck.md",
+      "aliases": [
+        "verification bottleneck",
+        "agent-reviewed",
+        "evaluation validity gap"
+      ],
+      "outbound": [
+        "astra",
+        "claude-science",
+        "deepseek-v4-flash",
+        "lifescibench",
+        "mistral-leanstral-1-5",
+        "openai",
+        "remote-labor-index"
+      ],
+      "inbound": [
+        "astra",
+        "deepseek-v4-flash",
+        "lifescibench",
+        "mistral-leanstral-1-5",
+        "openai"
+      ]
+    },
+    {
       "slug": "xai",
       "title": "xAI",
       "type": "entity",
@@ -3235,12 +3384,14 @@
     "agent lifespan engineering": "agent-lifespan-engineering",
     "agent security": "agentic-ai-security",
     "agent-lifespan-engineering": "agent-lifespan-engineering",
+    "agent-reviewed": "verification-bottleneck",
     "agentforce": "salesforce",
     "agentic ai security": "agentic-ai-security",
     "agentic supply-chain": "agentic-ai-security",
     "agentic-ai-security": "agentic-ai-security",
     "agibot": "agibot",
     "agingbench": "agent-lifespan-engineering",
+    "ai act": "eu-ai-regulation",
     "ai capex": "ai-capex",
     "ai capex supercycle": "ai-capex",
     "ai companion law": "china-ai-regulation",
@@ -3266,6 +3417,7 @@
     "apple intelligence": "apple",
     "artificial general engineer": "artificial-general-engineer",
     "artificial-general-engineer": "artificial-general-engineer",
+    "astra": "astra",
     "avgo": "broadcom",
     "aws": "amazon",
     "baba": "alibaba",
@@ -3326,6 +3478,11 @@
     "dynamic workflows": "dynamic-workflows",
     "dynamic-workflows": "dynamic-workflows",
     "etched": "etched",
+    "eu ai act": "eu-ai-regulation",
+    "eu ai regulation": "eu-ai-regulation",
+    "eu-ai-regulation": "eu-ai-regulation",
+    "european ai act": "eu-ai-regulation",
+    "evaluation validity gap": "verification-bottleneck",
     "fable 5": "claude-fable-5",
     "facebook": "meta",
     "federal ai executive order": "federal-ai-policy",
@@ -3490,9 +3647,11 @@
     "open-source ai": "open-weights",
     "open-weights": "open-weights",
     "openai": "openai",
+    "openai astra": "astra",
     "openai inc.": "openai",
     "openai opco": "openai",
     "openai's next flagship": "gpt-6",
+    "openai/ten-proofs": "astra",
     "openrouter": "openrouter",
     "openrouter fusion": "openrouter",
     "openrouter.ai": "openrouter",
@@ -3550,6 +3709,7 @@
     "spcx": "spacex",
     "ssi": "safe-superintelligence",
     "starlink": "spacex",
+    "ten-proofs": "astra",
     "tencent hy3": "tencent-hunyuan-hy3",
     "tencent-hunyuan-hy3": "tencent-hunyuan-hy3",
     "terra": "gpt-5-6",
@@ -3560,6 +3720,8 @@
     "trump ai executive order": "federal-ai-policy",
     "v4-flash": "deepseek-v4-flash",
     "v4-flash-0731": "deepseek-v4-flash",
+    "verification bottleneck": "verification-bottleneck",
+    "verification-bottleneck": "verification-bottleneck",
     "world ai conference": "china-ai-regulation",
     "world ai cooperation organization": "china-ai-regulation",
     "x.ai": "xai",
@@ -3576,6 +3738,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-08-02",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-02 digest (OpenAI names its next major model family Astra and publishes a 249-page manuscript claiming ten mathematics/TCS results — a disproof of Connes's rigidity conjecture, a non-sofic group construction, the first improved general sphere-packing exponent since 1978, three Erdős problems — formalized in Lean for ~$200 per result, with no specialist verification fourteen hours later and OpenAI's own repo labelling the package \"agent-reviewed\"; DeepSeek V4-Flash is relayed as 105× cheaper per task than Fable 5 and takes first place on the 940-puzzle Extended NYT Connections benchmark, with every strong result depending on high reasoning effort; Bloomberg reports DeepSeek building its first self-owned 1GW campus in Inner Mongolia; the EU AI Act's transparency obligation takes effect today and a Munich court rules against Suno on both training and output, rejecting Germany's TDM exception and US fair use; OpenAI and Anthropic are reported urging Washington to extend frontier reviews to Meta and SpaceXAI while the classified \"frontier model\" threshold came due 2026-08-01 unconfirmed; Aschenbrenner's LP letter calls the Situational Awareness unwind \"essentially similar to a bank run\" and Alphabet's third-party-TPU lease backstops reach $43.8B outside guided capex). Created 3 (astra entity, verification-bottleneck concept, eu-ai-regulation theme). Updated 6 (openai — Astra + ten proofs + rival-review lobbying + July 30 price-cut receipts; gpt-6 — the Astra naming narrows to a GPT-6/GPT-5.7 coin flip; deepseek-v4-flash — 105× cost claim, Connections/LMArena/Aikido results, the high-effort caveat, MoE numerical-state reproducibility hazard, 284B-vs-304B discrepancy flagged; deepseek — the 1GW Inner Mongolia campus; federal-ai-policy — incumbents widening the regime onto rivals, classified threshold due, xAI/Minnesota and label chart-ineligibility rulings; ai-capex — the LP letter, Alphabet's $43.8B contingent exposure, CyrusOne IPO, Reflection AI's $800M-no-model, the indium-phosphide bottleneck). Skipped for budget (future ingest): the Anthropic three-company eval-breach detail (PyPI malware infecting 15 systems), Gemini Robotics 2, Inkling Small, Seedance 2.5, Grok Imagine/SuperGrok Plus, the Nscale entity page, Google's Earth AI retraction detail, `qm`/Flint/smevals/Stateless MCP tooling, the Copilot prompt-injection worm, and the Tycho/Echoverse/CoMem research highlights."
+    },
     {
       "date": "2026-08-01",
       "op": "ingest",
@@ -3670,11 +3837,6 @@
       "date": "2026-07-05",
       "op": "ingest",
       "summary": "Ingested 2026-07-05 digest (Alibaba confirms the internal Claude Code ban effective July 10, \"high-risk software,\" while a viral Unicode-steganography thread's central credibility marker — a claimed 1,891-point HN comment — is directly falsified; Mistral's open-source Leanstral 1.5 saturates miniF2F and tops HN; GPT-5.6's Sol/Terra/Luna tier names confirmed via a primary-source GitHub commit; Midjourney seeks discovery into Disney/Universal/Warner Bros.' own AI-training practices; Claude Science trade-press coverage keeps broadening with no primary specifics; GLM-5.2 draws a wafer.ai cost-per-token benchmark and another unverified \"matches Mythos\" claim). Created 3 (alibaba entity — distillation accusation, mechanism-level ban timeline, viral-thread debunk; mistral-leanstral-1-5 entity — open-source Lean 4 formal-verification model, top HN story; midjourney entity — Hollywood discovery motion + Midjourney Medical scanner), updated 4 (anthropic — viral thread's fabricated \"1,891-point\" HN comment debunked; claude-science — broadening trade press, still no official disease/partner/timeline detail; gpt-5-6 — tier names upgrade to primary-source confirmed, July 7 launch date still unconfirmed; zhipu-glm-5-2 — wafer.ai AMD cost-per-token benchmark + unverified Mythos vulnerability-hunting parity claim)."
-    },
-    {
-      "date": "2026-07-04",
-      "op": "ingest",
-      "summary": "Ingested 2026-07-04 digest (OpenAI's 5% government equity-stake proposal draws sharply negative public reaction and an earlier-than-known early-2025 pitch date; Anthropic-Pentagon unsealed filings detail the guardrail dispute; Alibaba Claude Code ban continues with alleged fingerprinting code found in Alibaba's own tooling; GPT-5.6 timing narrows to a single-leaker July 7 target; Gemini 3.5 Pro rumored reset to a full retrain; Microsoft merges Copilot apps and launches \"Frontier Co.\"). Created 0, updated 7 (openai — equity-stake backlash + early-2025 pitch date; anthropic — Pentagon negotiation detail + Alibaba ban circumvention/fingerprinting; claude-science — Jonah Cool hire + secondary press; gpt-5-6 — July 7 single-leaker date; federal-ai-policy — equity-stake backlash + voluntary release standards + Pentagon detail; microsoft — Copilot merge + Frontier Co.; gemini-3-5-flash — Gemini 3.5 Pro full-retrain rumor)."
     }
   ]
 }
