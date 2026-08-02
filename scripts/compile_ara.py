@@ -828,6 +828,88 @@ def emit_statement(attrs: dict, body: str, line_no: int) -> str:
     return "".join(out)
 
 
+# ---------------------------------------------------------------------
+# Analyst position — the article contract's ONE slot for an explicit
+# non-consensus call. Everything inside is the author's judgment rather
+# than a retrieved fact, so the block always renders a fixed disclosure
+# label. There is deliberately no attribute to change or suppress that
+# label: the whole point of the component is that a reader and a
+# downstream validator can both tell a conviction call apart from a
+# cited claim at a glance.
+# ---------------------------------------------------------------------
+
+POSITION_CONFIDENCE = ("high", "medium", "low")
+POSITION_DEFAULT_CONFIDENCE = "medium"
+POSITION_REQUIRED_KEYS = ("stance", "consensus", "resolves")
+# Exact disclosure string. Other pipeline stages match on it verbatim —
+# change it here and you change a cross-component contract.
+POSITION_LABEL_TEXT = "Analyst position - not a sourced claim"
+POSITION_ROW_KEYS = (("consensus", "Consensus"), ("resolves", "Resolves"))
+
+
+def _position_field(body: dict, key: str, line_no: int) -> str:
+    """Read one required :::position body field.
+
+    Absent, null and blank all raise the SAME error naming the key — an
+    empty `stance:` is a missing stance, not an empty one, and the author
+    (usually a model) needs to be told which key to write."""
+    value = body.get(key)
+    text = "" if value is None else str(value).strip()
+    if not text:
+        raise AraSyntaxError(
+            f":::position: missing required field {key!r} "
+            f"(required: {', '.join(POSITION_REQUIRED_KEYS)})",
+            line=line_no,
+        )
+    return text
+
+
+def emit_position(attrs: dict, body: Any, line_no: int) -> str:
+    """Labeled analyst position.
+
+    Body is YAML (same family as :::kv / :::stats) with three required
+    keys — stance, consensus, resolves. Optional attrs: confidence
+    (high|medium|low, default medium) and horizon (free text).
+
+    Values containing a colon must be quoted, as with every other
+    YAML-bodied directive."""
+    if not isinstance(body, dict):
+        raise AraSyntaxError(
+            ":::position body must be a YAML mapping with "
+            + " / ".join(f"{k}:" for k in POSITION_REQUIRED_KEYS)
+            + " keys",
+            line=line_no,
+        )
+    confidence = str(_opt(attrs, "confidence", POSITION_DEFAULT_CONFIDENCE)).strip().lower()
+    if confidence not in POSITION_CONFIDENCE:
+        raise AraSyntaxError(
+            f"position confidence must be {'|'.join(POSITION_CONFIDENCE)}, got {confidence!r}",
+            line=line_no,
+        )
+    # Read every required field BEFORE emitting, so a half-built block can
+    # never reach the output on the second missing key.
+    stance = _position_field(body, "stance", line_no)
+    rows = [(label, _position_field(body, key, line_no)) for key, label in POSITION_ROW_KEYS]
+
+    out = [f'<div class="ara-position ara-position--{confidence}">']
+    out.append(f'<span class="ara-position-label">{html.escape(POSITION_LABEL_TEXT)}</span>')
+    out.append(f'<p class="ara-position-stance">{parse_inline(stance)}</p>')
+    for label, value in rows:
+        out.append('<div class="ara-position-row">')
+        out.append(f'<span class="ara-position-key">{label}</span>')
+        out.append(f'<span class="ara-position-val">{parse_inline(value)}</span>')
+        out.append("</div>")
+    # Confidence is echoed as TEXT as well as a class, so the signal
+    # survives print, PDF export, and any reader who can't see the accent.
+    meta = [f"Confidence: {confidence}"]
+    horizon = _opt(attrs, "horizon")
+    if horizon is not None and str(horizon).strip():
+        meta.append(f"Horizon: {parse_inline(str(horizon).strip())}")
+    out.append(f'<p class="ara-position-meta">{" · ".join(meta)}</p>')
+    out.append("</div>")
+    return "".join(out)
+
+
 def _emit_footnote(attrs: dict, body: str, css_class: str, default_label: str) -> str:
     """Shared shape for :::note and :::source — a small gray sans line
     with an optional uppercase label prefix. `label=` overrides the
@@ -1575,6 +1657,7 @@ DIRECTIVES: dict[str, tuple[Callable, str]] = {
     "callout":     (emit_callout,     "markdown"),
     "quote":       (emit_quote,       "markdown"),
     "statement":   (emit_statement,   "markdown"),
+    "position":    (emit_position,    "yaml"),
     "note":        (emit_note,        "markdown"),
     "source":      (emit_source,      "markdown"),
     "exhibit":     (emit_exhibit,     "markdown"),
@@ -1749,8 +1832,55 @@ def validate_block_contract(blocks: list[tuple[int, str, list[str]]]) -> None:
         raise AraSyntaxError("article can only contain one :::references block", line=first)
 
 
+_CLASS_ATTR_RE = re.compile(r'class="([^"]*)"')
+# Text-only element, captured with a backreference so the tag matches its
+# own closer. The compiler's label span is exactly this shape.
+_TEXT_ELEMENT_RE = re.compile(
+    r'<(?P<tag>[a-z][a-z0-9]*)\s[^>]*class="(?P<cls>[^"]*)"[^>]*>(?P<text>[^<]*)</(?P=tag)>',
+    re.IGNORECASE,
+)
+
+
+def validate_position_labels(article_html: str) -> None:
+    """Every ara-position block must carry the exact disclosure label.
+
+    :::position always emits it, but :::raw hands author HTML straight to
+    the class allowlist — which by itself would let an article claim the
+    analyst-position styling while dropping the one string that tells a
+    reader (and a downstream validator) the block is judgment, not a
+    sourced claim. Checking here closes that hole for BOTH paths.
+
+    Scoped: articles that never use the class return immediately, so this
+    is a no-op for every article that predates the component.
+
+    Token-split, never a substring/`\\b` test — `ara-position-label`
+    contains `ara-position`, and a word-boundary regex would count the
+    label element as a block."""
+    blocks = sum(
+        1
+        for m in _CLASS_ATTR_RE.finditer(article_html)
+        if "ara-position" in m.group(1).split()
+    )
+    if not blocks:
+        return
+    labels = sum(
+        1
+        for m in _TEXT_ELEMENT_RE.finditer(article_html)
+        if "ara-position-label" in m.group("cls").split()
+        and m.group("text").strip() == POSITION_LABEL_TEXT
+    )
+    if labels != blocks:
+        raise AraSyntaxError(
+            f"{blocks} ara-position block(s) but {labels} carrying the required "
+            f'label "{POSITION_LABEL_TEXT}". Every analyst-position block must '
+            "render that exact disclosure — author it with :::position rather "
+            "than hand-written HTML."
+        )
+
+
 def validate_article_contract(article_html: str) -> None:
     """Enforce article-level invariants that span multiple blocks."""
+    validate_position_labels(article_html)
     cited = HTML_CITE_RE.findall(article_html)
     refs = HTML_REF_RE.findall(article_html)
     if not refs:
