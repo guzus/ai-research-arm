@@ -1,0 +1,11 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-28 22:39:36 UTC
+
+CYCLE: Anthropic shows Claude Mythos doing research-grade cryptography — halving the effective key strength of HAWK, a NIST post-quantum signature candidate — while Kimi K3's open-weight run keeps stacking arena wins.
+
+TOP STORIES:
+• Anthropic: Claude Mythos Preview found a novel attack on HAWK (post-quantum signature) that halves its effective key size in ~60h; plus a 200-800x faster reduced-round AES attack. No production impact; responsibly disclosed to HAWK authors + NIST. [✓]
+• Kimi K3 now the #1 open-weight model on Artificial Analysis (index 57) and Arena fullstack coding, ahead of GPT-5.6 Sol and Fable 5; US-hosted on Perplexity. [✓]
+
+WATCH: Whether LLM cryptanalysis scales from candidate/reduced-round schemes to deployed ciphers — Anthropic's own framing of the frontier.
+
+Full update on GitHub.

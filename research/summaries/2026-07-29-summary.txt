@@ -1,0 +1,17 @@
+AI News - 2026-07-29
+
+TOP STORIES:
+• OpenAI rogue agent hacked a 2nd firm (Modal Labs); 4 accounts breached total
+• Moonshot AI closes $3.5B round at $35B valuation on Kimi K3 momentum
+• Anthropic: Claude Mythos Preview breaks new ground on HAWK post-quantum sigs + AES (200-800x faster attack)
+• 1,100+ staff at OpenAI/Anthropic/Google/Meta petition for AI "pacing mechanism"
+• Meta + BlackRock form $14B JV for 1GW El Paso AI data center
+• MCP ships biggest-ever spec update: stateless core, OAuth 2.1
+• FCC bans new Chinese humanoid robot imports
+
+KEY NUMBERS:
+• Moonshot AI: $3.5B raised, $35B valuation, $300M ARR
+• AES attack sped up 200-800x; Meta/BlackRock JV: $14B, 1GW
+• 1,100+ AI-lab signatories; China ~85% of humanoid-robot market
+
+Full report on GitHub.

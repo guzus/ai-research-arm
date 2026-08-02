@@ -9,9 +9,17 @@ name: Generative Research
 #   3. workflow_dispatch with only twitter_url — read that tweet/thread first,
 #      infer the research question, then expand into a full article.
 #
-# Backends, mutually exclusive at runtime:
-#   * glm-5p2  — preferred default: GLM 5.2 through Fireworks' Anthropic-compatible endpoint.
+# Backends, mutually exclusive at runtime. The DEFAULT is not named here —
+# it lives in data/agent-backends.json (lane generative-research-default) and
+# is resolved at runtime, so re-routing the default needs no workflow change:
+#   * opus-5   — CURRENT DEFAULT. Native Anthropic on claude-opus-5. Same OAuth
+#                credential and billing surface as `claude`, so it keeps the
+#                recovery retry; unlike `claude` its provenance is verified
+#                against the committed index row before the push.
+#   * glm-5p2  — GLM 5.2 through Fireworks' Anthropic-compatible endpoint.
 #   * claude   — anthropics/claude-code-action@v1 with OAuth (model claude-sonnet-5).
+#                Also the hard-coded target when a requested Fireworks backend
+#                fails preflight — a fallback stays on the cheap reliable path.
 #   * fable-5  — explicit, premium native Anthropic path (model claude-fable-5).
 #   * codex    — Codex CLI signed in with ChatGPT-managed auth.json.
 #   * opencode-kimi-k3 — opencode CLI running Moonshot Kimi K3, authenticated
@@ -67,6 +75,7 @@ on:
           - opencode-kimi-k3
           - claude
           - fable-5
+          - opus-5
           - deepseek
       fireworks_fallback:
         description: 'If a Fireworks backend fails preflight: claude = fall back to native Claude (default), none = fail the run (strict backend comparison)'
@@ -153,7 +162,7 @@ jobs:
           echo "timestamp=$(date -u +'%Y-%m-%d-%H%M%S')" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: '22'
 
@@ -255,13 +264,14 @@ jobs:
                 default) CANDIDATE="$DEFAULT_BACKEND" ;;
                 claude-opus-4-8|claude-sonnet-5) CANDIDATE="claude" ;;
                 claude-fable-5|fable-5) CANDIDATE="fable-5" ;;
+                claude-opus-5|opus-5|opus5) CANDIDATE="opus-5" ;;
                 codex|openai-codex) CANDIDATE="codex" ;;
                 opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) CANDIDATE="opencode-kimi-k3" ;;
                 deepseek) CANDIDATE="deepseek-v4-flash" ;;
                 glm-5.2|glm5.2|glm52|glm-5p2) CANDIDATE="glm-5p2" ;;
               esac
               if [ -n "${CANDIDATE:-}" ]; then
-                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-kimi-k3" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
+                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "opus-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-kimi-k3" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
                   echo "unsupported backend/model: $CANDIDATE" >&2
                   exit 1
                 fi
@@ -299,8 +309,9 @@ jobs:
             glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
             claude-opus-4-8|claude-sonnet-5) BACKEND="claude" ;;
             claude-fable-5|fable-5) BACKEND="fable-5" ;;
+            claude-opus-5|opus-5|opus5) BACKEND="opus-5" ;;
           esac
-          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-kimi-k3" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
+          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "opus-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-kimi-k3" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
           fi
@@ -443,6 +454,7 @@ jobs:
           case "$EFFECTIVE_BACKEND" in
             claude) model="claude-sonnet-5" ;;
             fable-5) model="claude-fable-5" ;;
+            opus-5) model="claude-opus-5" ;;
             *) model="" ;;
           esac
           echo "model=$model" >> "$GITHUB_OUTPUT"
@@ -621,7 +633,7 @@ jobs:
       # OAuth-authenticated against native Anthropic. The writer records
       # --model from the native-model resolver (the actual served model).
       # Normal Claude runs remain claude-sonnet-5; explicit fable-5 runs use
-      # claude-fable-5. Pinning
+      # claude-fable-5 and explicit opus-5 runs use claude-opus-5. Pinning
       # The resolved model is passed literally to Claude Code and also pins
       # every alias/subagent slot so no nested agent can drift. This lane is
       # gated on the EFFECTIVE
@@ -635,7 +647,7 @@ jobs:
         uses: ./.github/actions/setup-claude-sandbox
 
       - name: Run Generative Research (Claude, attempt 1)
-        if: contains(fromJSON('["claude","fable-5"]'), steps.effective.outputs.backend)
+        if: contains(fromJSON('["claude","fable-5","opus-5"]'), steps.effective.outputs.backend)
         id: gen-claude
         continue-on-error: true
         timeout-minutes: 90
@@ -1761,12 +1773,14 @@ jobs:
       # one more attempt under RECOVERY MODE. The second attempt sees the
       # partial $GEN_DRAFT on disk (the runner's _work/_temp survives across
       # steps within the same job) and finishes the draft instead of
-      # restarting research from scratch. This recovery retry is deliberately
-      # limited to normal Claude: premium fable-5 dispatches get exactly one
-      # model-action attempt and fail the artifact gate instead of spending on
-      # a second session.
+      # restarting research from scratch. This recovery retry covers the two
+      # lanes that bill against the same OAuth subscription as the default
+      # (claude, opus-5) — for them a second session costs no more than the
+      # first would have. Premium fable-5 dispatches are deliberately excluded:
+      # they get exactly one model-action attempt and fail the artifact gate
+      # instead of spending on a second session.
       - name: Inspect Claude attempt 1
-        if: steps.effective.outputs.backend == 'claude'
+        if: contains(fromJSON('["claude","opus-5"]'), steps.effective.outputs.backend)
         id: claude-attempt-1
         env:
           PRE_SHA: ${{ steps.pre.outputs.sha }}
@@ -3364,12 +3378,14 @@ jobs:
           echo "has_file=true" >> "$GITHUB_OUTPUT"
           echo "Generated: research/generative/$FILENAME"
 
-      # Fable is a premium, explicit selector, so provenance must be exact.
-      # Do not rely only on the agent following its writer command: verify the
-      # committed index row against the same resolver output that pinned the
-      # served model, and roll back before any push if they differ.
-      - name: Verify Fable model provenance
-        if: steps.effective.outputs.backend == 'fable-5' && steps.outfile.outputs.has_file == 'true'
+      # fable-5 and opus-5 are explicit, opt-in model selectors, so provenance
+      # must be exact — the whole point of choosing one is knowing which model
+      # wrote the article. Do not rely only on the agent following its writer
+      # command: verify the committed index row against the same resolver
+      # output that pinned the served model, and roll back before any push if
+      # they differ.
+      - name: Verify pinned model provenance
+        if: contains(fromJSON('["fable-5","opus-5"]'), steps.effective.outputs.backend) && steps.outfile.outputs.has_file == 'true'
         env:
           FILE: ${{ steps.outfile.outputs.file }}
           EXPECTED_MODEL: ${{ steps.native-model.outputs.model }}
@@ -3380,7 +3396,7 @@ jobs:
             '[.[] | select(.file == $file) | .model] | last // ""' \
             research/generative/index.json)
           if [ "$actual_model" != "$EXPECTED_MODEL" ]; then
-            echo "::error::Fable provenance mismatch: expected model '$EXPECTED_MODEL', index records '${actual_model:-missing}'."
+            echo "::error::Model provenance mismatch: expected model '$EXPECTED_MODEL', index records '${actual_model:-missing}'."
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative || true
             rm -f "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
@@ -3388,7 +3404,7 @@ jobs:
             rm -f "$GITHUB_WORKSPACE/.gen-claims-ledger.json"
             exit 1
           fi
-          echo "Verified Fable model provenance: $actual_model"
+          echo "Verified pinned model provenance: $actual_model"
 
       # Deterministic post-write quality gate. The agent runs the same
       # gate during its compile-check loop, and the writer re-runs it
@@ -3890,7 +3906,7 @@ jobs:
       # even if every tool call failed and the writer produced no commit. Keep
       # the workflow contract tied to the article artifact, not session exit.
       - name: Fail Claude run without article
-        if: always() && contains(fromJSON('["claude","fable-5"]'), steps.effective.outputs.backend) && steps.outfile.outputs.has_file != 'true'
+        if: always() && contains(fromJSON('["claude","fable-5","opus-5"]'), steps.effective.outputs.backend) && steps.outfile.outputs.has_file != 'true'
         env:
           EXECUTION_FILE_1: ${{ steps.gen-claude.outputs.execution_file }}
           EXECUTION_FILE_2: ${{ steps.gen-claude-retry.outputs.execution_file }}

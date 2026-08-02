@@ -18,7 +18,8 @@ AI diplomacy positioning China as an alternative pole to US-led AI
 governance. Both are distinct from the US [[federal-ai-policy]] and
 [[california-ai-regulation]] storylines, which center on frontier-model
 access and export control rather than consumer-product design mandates or
-international-governance diplomacy. The opening entry was China's first
+international-governance diplomacy — and from [[eu-ai-regulation]], where
+obligations attach by statutory calendar rather than agency discretion. The opening entry was China's first
 dedicated crackdown on **AI companion agents**; the theme has since expanded
 to cover Beijing's push for an alternative international AI-governance body.
 

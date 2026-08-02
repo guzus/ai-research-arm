@@ -3,7 +3,7 @@ slug: zhipu-glm-5-2
 title: Zhipu GLM 5.2 — open-weight frontier model
 company: Zhipu AI
 model: GLM 5.2
-status: released
+status: closed
 status_note: |
   **GLM 5.2** (Zhipu AI / Z.ai) is **out** — deployed in the **GLM Coding
   Plan** now, with **API access and MIT-licensed open weights "in a week."**
@@ -151,9 +151,9 @@ sources:
   - "@janekm"
   - https://semgrep.dev/blog/2026/we-have-mythos-at-home-glm-52-beats-claude-in-our-cyber-benchmarks/
 created_at: 2026-06-14
-updated_at: 2026-07-05
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-31
+closed_at: 2026-07-31
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-14
     change: "Created — Zhipu AI shipped GLM 5.2: deployed in the GLM Coding Plan now, with API + MIT open weights promised within a week. Reported 1M context, max/high thinking modes; early one-shot coding benchmarks rank it above Qwen 3.6 27B. Dominant open-weights story this cycle (HN ~468 pts, top of r/LocalLLaMA). Usable in the coding plan now → status released; widely corroborated across HN/r/LocalLLaMA but no captured primary Zhipu blog/model card and weights not yet public → verification partial. Sits with open-weight peers [[minimax-m3]], [[alibaba-qwen-3-7-plus]], [[gemma-4]]"
@@ -175,6 +175,8 @@ history:
     change: "Cyber-benchmark claim corrected. A viral weekend headline that GLM-5.2 'matches Claude Mythos' on security bug detection was debunked as a category error: the real Semgrep result is ~39% F1 on the narrow Semgrep IDOR benchmark at $0.17/task, beating Claude Code's ~32% — prompt-only vulnerability detection, NOT Mythos-class autonomous exploit-chain capability, not the same harness, and vs Opus rather than Mythos (@janekm: 'terrible methodology'). Zhipu's stock nonetheless jumped ~30% on the HK exchange on the headline. A separate Chinese effort, 360 Security's 'Tulongfeng' (3,432 vulnerabilities flagged per founder Zhou Hongyi), is the more direct Mythos analog — unverified. Status stays released, verification stays confirmed. Sources: Semgrep blog, @kimmonismus, @janekm."
   - ts: 2026-07-05
     change: "'Matches Mythos' claim recirculated with refined numbers: a July 4 Semgrep post (@vectronode) puts GLM-5.2 at 39% F1 on IDOR-detection vs Claude Code (not Mythos) at 37.4%, with Semgrep's own multimodal harness beating both at 62%. Refines rather than changes the 06-29 correction. Status stays released, verification stays confirmed."
+  - ts: 2026-07-31
+    change: "Closed — released-and-aged. 47 days past the 2026-06-14 release (≥4 weeks), no fresh signal since 2026-07-05, no successor (GLM 5.x) announced. Per this ticket's own transition trigger."
 ---
 
 **GLM 5.2**, from **Zhipu AI (Z.ai)**, is the cycle's dominant open-weights

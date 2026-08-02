@@ -2,12 +2,19 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode"]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
 description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.
 created_at: 2026-07-17
-timestamp: 2026-07-25T00:00:00Z
+timestamp: 2026-08-01T00:00:00Z
+market:
+  ticker: GOOGL
+  exchange: NASDAQ
+  symbol: NASDAQ:GOOGL
+  provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
+  - {title: "ARA model ticket — Gemini Robotics 2", path: research/models/tickets/google-gemini-robotics-2-2026-07.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
@@ -78,7 +85,50 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   the same AI-investment thesis the Cloud-revenue acceleration supports
   (ARA digest 2026-07-25).
 
+- **Google pulls Google Earth's AI image generator one day after launch
+  (2026-07-31, digested 2026-08-01).** A [[nano-banana-2-lite|Nano Banana 2]]-powered
+  feature let anyone superimpose generated imagery onto **authentic satellite
+  data** in Google Earth. Within about 24 hours, OSINT researcher **Henk van
+  Ess** had produced **synthetic bomb craters and a fake refugee camp that
+  passed Hive's AI detectors**, and Google disabled the feature — with no
+  on-record statement inside the window. This is the sharpest product-level
+  demonstration yet that **provenance tooling fails where the base layer is
+  itself authoritative**: the danger was not the generated pixels but their
+  fusion with a trusted geospatial reference. It also marks an unusually fast
+  Google retraction, one day from ship to kill (TechCrunch, The Verge, Ars
+  Technica; ARA daily digest 2026-08-01).
+- **Gemini Robotics 2 and ER 2 — whole-body control, and a new safety
+  benchmark (2026-07-31).** Google DeepMind launched **Gemini Robotics 2**,
+  pitched as "one brain for any robot" and the **first DeepMind robotics model
+  with whole-body rather than upper-body-only control**, spanning tabletop
+  arms through humanoids, with advanced dexterity and multi-robot teamwork.
+  The companion **Gemini Robotics ER 2** (`gemini-robotics-er-2-preview`,
+  built on [[gemini-3-5-flash]]) adds a higher-level embodied-reasoning layer,
+  reported at **91.3% moment-finding accuracy at 4x faster execution**. Google
+  also introduced **"ASIMOV-Agentic,"** an embodied/agentic safety benchmark.
+  It was the morning's biggest Hacker News thread (594 points, 480+ comments).
+  The `-preview` model ID points at gated partner access rather than open
+  availability. Lands against the Chinese humanoid push ([[agibot]]) and
+  [[figure-ai]]'s in-house VLA. See the
+  [Gemini Robotics 2 ticket](../../models/tickets/google-gemini-robotics-2-2026-07.md)
+  (ARA daily digest 2026-08-01).
+- **AI Studio's app-building folds into the Gemini app; Lyria 3.5 ships
+  (2026-08-01).** Google said it **dropped plans for a standalone AI Studio
+  mobile client** so that apps "emerge naturally, in the course of your
+  everyday conversations with Gemini" — three unaffiliated product trackers
+  reported it independently, though whether the AI Studio *developer* console
+  is affected is not evidenced. Separately **Lyria 3.5** shipped and was
+  integrated into Google Flow Music. The consolidation is the same pattern as
+  the NotebookLM→Gemini Notebook rename flagged below: surfaces collapsing
+  into the Gemini app as the single consumer entry point (ARA daily digest
+  2026-08-01).
+
 ## Open questions
+
+- **Does "generate onto authoritative data" survive as a product category?**
+  The Google Earth feature was killed in a day because detectors could not
+  distinguish generated edits fused with real satellite imagery. Is there a
+  provenance design that makes this shippable, or is the category closed?
 
 - **Does the DMA ruling meaningfully change AI competitive dynamics**, or is
   the AI-data-access dimension symbolic alongside the core Android/Search

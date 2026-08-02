@@ -78,7 +78,11 @@ and opens a PR with methodology fixes.
 | `check_digest_content.py` | Per-run hard content floor for the daily digest (`--min-bytes`, `--min-sections`, unexpanded-placeholder scan). Decides whether the deterministic composer takes over; complements the advisory `check_lane_content.py`. |
 | `validate_twitter_public_output.py` | Twitter signal-only contract after every backend: heartbeat identity, exact public-item count, concrete story/Quick-hit presence, normalized same-hour headings, no operational/no-news filler. |
 | `check_lane_freshness.py` | Per-lane git-commit recency vs. cadence thresholds; exit 2 → hooker/Telegram alert from `liveness-check.yml`. Stdlib-only so it runs on both runner tiers. |
-| `export_wiki_okf.py` | `research/wiki/` → portable OKF bundle; rewrites `[[wikilinks]]` to Markdown links. |
+
+`export_wiki_okf.py` (`research/wiki/` → portable OKF bundle; rewrites
+`[[wikilinks]]` to Markdown links) used to be listed above, but it is NOT
+CI-enforced and no workflow calls it — `grep -rn okf .github/workflows/`
+returns nothing. It is a manual export; see the experimental table below.
 
 **Deterministic (model-free) fallbacks.** Only TWO are wired into a
 workflow. The other four scripts exist and are tested but **no workflow
@@ -124,6 +128,7 @@ pipeline code; don't assume the dashboard or any lane depends on them.
 | Script | Purpose |
 |---|---|
 | `generate_generative_article_audio.py` | Backfill TTS audio for a generative article (Gemini Flash TTS / Vertex). Run manually; needs `GEMINI_API_KEY`. |
+| `export_wiki_okf.py` | `research/wiki/` → portable OKF bundle; rewrites `[[wikilinks]]` to Markdown links. Tested, but no workflow calls it and the bundle is not published anywhere. |
 | `collect_viral_tweets.py`, `analyze_viral_tweets.py` | Viral-tweet collection + analysis. Write `research/twitter-viral/`. |
 | `analyze_overperformance.py`, `enrich_overperformance.py`, `experiment_overperf_cv.py` | Tweet-overperformance analysis / enrichment / cross-validation experiments. |
 | `enrich_bookmarks.py` | Enrich a bookmark export with engagement/features. |
@@ -198,7 +203,7 @@ back to host-level `pi --tools ... bash`.
 | `daily-ai-blogs.yml` | `:13` every 6h | `research/blogs/` |
 | `blog-subscriptions.yml` | `:47` every 2h | Telegram notifications for configured blog subscriptions + GUID state in `research/summaries/blog-subscriptions.json` |
 | `daily-youtube.yml` | daily `23:20` for the next `00:00` digest | `research/youtube/` (tuber discovery + read-only summary/transcript evidence) |
-| `hourly-twitter.yml` | every 3h `:07`; primary lane uses Fireworks through `.github/actions/agent-run`; comparison lanes via matrix/manual dispatch | `research/twitter/` + `research/summaries/` + Telegram headline alerts; comparison outputs under `research/twitter-deepseek/`, `research/twitter-deepseek-pi/`, `research/twitter-fireworks-pi/`, and `research/twitter-opencode-kimi/` |
+| `hourly-twitter.yml` | every 3h `:07`; primary lane routes to `backend: claude` through `.github/actions/agent-run` (verify against `data/agent-backends.json` lane `twitter-primary` — not this table); comparison lanes via matrix/manual dispatch | `research/twitter/` + `research/summaries/` + Telegram headline alerts; comparison outputs under `research/twitter-deepseek/`, `research/twitter-deepseek-pi/`, `research/twitter-fireworks-pi/`, and `research/twitter-opencode-kimi/` |
 | `twitter-account-explorer.yml` | weekly Tuesday `01:47` UTC + manual dispatch | Opens reviewed PRs for `data/sources/twitter_accounts.json` changes when high-signal account evidence exists |
 | `2h-bluesky.yml` | daily `10:11` | `research/bluesky/` (supplemental expert commentary, capped output) |
 | `4h-community.yml` | every 4h `:19` | `research/community/*-hn.md`, `*-reddit.md` |
@@ -241,19 +246,25 @@ false `deploy-stale` alerts. Do not "fix" any of these omissions.
 
 | Workflow | Trigger | Purpose |
 |---|---|---|
+| `market-quotes.yml` | every 3h `:53` | Deterministic refresh of `research/market/quotes.json` from Yahoo for every wiki entity carrying `market` frontmatter — the price row in the wiki hover card and on the entity page. Symbols come from `research/wiki/index.json`, so adding `market:` to a page is the only step needed to quote a new company. Fail-soft per symbol (carries the prior value forward marked `stale`), fail-loud if every symbol fails. Needs the optional `stock` extra — Yahoo's bare urllib path 429s. |
 | `arm-timeline.yml` | every 2h `:45` | Deterministic refresh of `research/arm/timeline.json` so the dashboard's Arm tab renders in prod (the Docker build context has no `.git`/`.github`, so prebuild falls back to this committed file; unrefreshed it ages out of the ±36h window). |
 | `daily-improve.yml` | weekly, Monday `00:17` UTC | Opens improve/YYYY-MM-DD PR with methodology fixes; each run auto-closes prior unmerged `improve/*` PRs. See "Load-bearing rules" for where the IMPROVEMENTS file belongs. |
 | `ci.yml` | push/PR on workflows/dashboard/scripts | actionlint + dashboard build + Python tests on GitHub-hosted runners |
 | `claude.yml` | `@claude` mention in issue/PR/review | Interactive Claude-Code agent |
 | `claude-code-review.yml` | PR opened/synced | Automated Claude code review |
-| `twitter-model-ab.yml` | daily `21:40` UTC (temporary — remove after the eval week) + manual dispatch | Same-input, parity-locked model A/B eval (claude-sonnet-5 vs GLM-5.2 via Z.ai) on the Twitter-summary workload with a blinded position-swapped Opus judge → `research/eval/twitter-ab/`. Contract: [`docs/twitter-model-ab.md`](docs/twitter-model-ab.md). |
+| `twitter-model-ab.yml` | daily `21:40` UTC (temporary — remove after the eval week) + manual dispatch | Same-input, parity-locked model A/B eval (leg A = the production `fallback.native_model`, `claude-opus-5` since 2026-08-01, vs GLM-5.2 via Z.ai) on the Twitter-summary workload with a blinded position-swapped Opus judge → `research/eval/twitter-ab/`. Contract: [`docs/twitter-model-ab.md`](docs/twitter-model-ab.md). |
 
 **Model convention:** scheduled workflows pass `--model opus`, but
 `agent-run` remaps that alias to whatever the resolved backend serves —
 the Fireworks or Z.ai profile model, or `native-model` (default
-**`claude-sonnet-5`**) on the native path. Direct Claude workflows pin
-`--model claude-sonnet-5` via `claude_args`. Read the workflow file
-rather than assuming one provider everywhere.
+**`claude-opus-5`** since 2026-08-01 — was `claude-sonnet-5`) on the
+native path. Direct Claude workflows are NOT covered by that default:
+the mirror lanes (`claude.yml`, `claude-code-review.yml`,
+`ai-news-research.yml`, `daily-improve.yml`, `research-issue.yml`,
+`twitter-account-explorer.yml`) still pin `--model claude-sonnet-5`
+literally via `claude_args`, and the README diagram's `native` node is
+where that split is visible. Read the workflow file rather than assuming
+one provider everywhere.
 
 ## Backends
 
@@ -272,11 +283,12 @@ derivable from the SSOT.
 
 | Backend | When | Auth | Notes |
 |---|---|---|---|
-| **Claude** | Every production agent lane; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic, model **`claude-sonnet-5`** (the global `fallback.native_model`). Leads the fallback chain. Its token expiring is a fleet-wide outage — see rule 14 and the Authentication table. |
+| **Claude** | Every production agent lane; `generative-research backend=claude` (no longer that lane's default — see Opus 5 below — but still its Fireworks-unavailable fallback) | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic, model **`claude-opus-5`** (the global `fallback.native_model`, raised from `claude-sonnet-5` on 2026-08-01 — same OAuth credential and subscription billing, so the flip is a quality/quota trade, not a new secret). Leads the fallback chain. Its token expiring is a fleet-wide outage — see rule 14 and the Authentication table. |
 | **GLM 5.2 (via Z.ai Coding Plan)** | Second link in the fallback chain; `agent-run backend=zai-glm-5p2`; default manual `hourly-twitter.yml` backend; `zai-claude-code-canary.yml` | `ZAI_API_KEY` | Anthropic-compatible Claude Code endpoint `https://api.z.ai/api/anthropic`, model `glm-5.2`, `CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000`. The `glm-5.2[1m]` alias was rejected as `Unknown Model` (canary run `28751367808`) — keep the endpoint-valid id unless a raw probe proves otherwise. Because it shares the harness and sandbox but not the credential, **the canary is the fastest way to tell a dead Claude token from a broken runner**. Selectors: `zai-glm-5p2`, `zai-glm-5.2`, `zai-glm52`, `zai`. |
 | **GLM 5.2 (via Fireworks)** | `generative-research backend=glm-5p2` | `FIREWORKS_API_KEY` | Model `accounts/fireworks/models/glm-5p2`. Selectors: `fireworks-glm-5p2`, `glm-5p2`, `glm`. In `generative-research.yml` the workflow-level `fireworks_fallback` input falls back to native Claude by default. |
 | **DeepSeek V4 Flash (via Fireworks)** | Low-cost/comparison: `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek tiers | `FIREWORKS_API_KEY` | Endpoint `https://api.fireworks.ai/inference` (base URL omits `/v1`; the client appends `/v1/messages`), model `accounts/fireworks/models/deepseek-v4-flash`. Overrides `ANTHROPIC_BASE_URL`/`AUTH_TOKEN`/`MODEL` so the Claude action transparently calls Fireworks. The direct DeepSeek API is retired (billing). Scheduled DeepSeek lanes are STRICT comparison tiers that never fall back. |
 | **Kimi K3 (via opencode)** | `generative-research`/`hourly-twitter` `backend=opencode-kimi-k3`; `opencode-kimi-canary.yml` | `OPENCODE_API_KEY` (Go, preferred) or `MOONSHOT_API_KEY` | opencode CLI pinned `opencode-ai@1.18.3` (>=1.18.3 required for kimi-k3) against Kimi K3 (1M ctx, $3/$15 per Mtok). Route resolves Go-first — `opencode-go/kimi-k3` on the $10/mo Go plan (caps $12/5h, $30/wk, $60/mo, K3 billed at full value), else `moonshotai/kimi-k3` pay-per-token. Plain env-var auth on both; no interactive login. **Strict — no Claude fallback**, so a Kimi-labeled article can never be silently authored by another model. Not on Fireworks or OpenCode Zen as of 2026-07-20. Selectors: `opencode-kimi-k3`, `opencode`, `opencode-kimi`, `kimi-k3`, `kimi`. |
+| **Opus 5 (native)** | **The `generative-research` default** (SSOT lane `generative-research-default`, since 2026-07-31) — no-`backend` dispatches, `gen-research` issues, and `hourly-twitter.yml` auto-research; also explicit `backend=opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic on **`claude-opus-5`**. Not the Fireworks-unavailable fallback target — that stays `claude`, hard-coded in the workflow's effective-backend step. Same OAuth credential and subscription billing as `claude`, so it keeps the single recovery retry that `fable-5` does not get. The resolved model pins `--model`, every `ANTHROPIC_DEFAULT_*` alias, and `CLAUDE_CODE_SUBAGENT_MODEL`; a pre-push gate then verifies the committed `index.json` row reads `claude-opus-5` and hard-rolls-back on mismatch. Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
 | **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage bills against the ChatGPT/Codex subscription, not the API. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p7`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
 | **Local Oracle (GPT-5.5 Pro)** | `scripts/run_generative_research_oracle.py` | Local `../oracle` checkout (browser engine by default) | Runs entirely on the developer machine; outputs go through the same `check_generative_research.py` → `write_generative_research.py` contract. Source metadata: `local-oracle`. |
@@ -314,6 +326,7 @@ research/
 ├── front-page/                # daily-front-page.yml (committed PNG + interactive .ara.md/.html edition)
 ├── generative/                # generative-research.yml + Oracle runner (HTML + .ara.md + index.json)
 ├── issues/                    # research-issue.yml
+├── market/                    # market-quotes.yml (quotes.json — live prices for wiki entities carrying `market`)
 ├── models/                    # 24h-model-timeline.yml
 │   ├── tickets/                # persistent set, one .md per shipping artifact
 │   └── <date>-timeline.md      # derived daily diff (created/updated/closed counts)
@@ -343,7 +356,7 @@ Secrets are configured in GitHub Actions. None are committed.
 |---|---|---|
 | `CLAUDE_CODE_OAUTH_TOKEN` | Every agent lane + direct-Claude workflows | Required by `claude-code-action@v1` (non-Claude routes still pass it for schema compatibility). **Expiry is a fleet-wide outage** — every production lane routes to `backend: claude`. Log signature: `is_error: true`, `num_turns: 1`, `total_cost_usd: 0`, `duration_ms` < ~2000, zero permission denials — the agent dies before doing any work. `show_full_output` is off, so the provider error body is hidden: **that shape IS the diagnosis.** Re-mint with `claude setup-token` → `gh secret set CLAUDE_CODE_OAUTH_TOKEN`. Dispatch `zai-claude-code-canary.yml` to separate a dead credential (canary green, lanes red) from a broken runner/sandbox (both red). Last expiry 2026-07-24; see rule 14. |
 | `ZAI_API_KEY` | Fallback chain link 2; `agent-run backend=zai-glm-5p2`; `zai-claude-code-canary.yml` | Z.ai Coding Plan key. Now load-bearing for outage resilience, not just comparison. |
-| `FIREWORKS_API_KEY` | `generative-research backend=glm-5p2`; DeepSeek/Kimi comparison lanes | Covers the GLM-via-Fireworks and DeepSeek-V4-Flash routes. |
+| `FIREWORKS_API_KEY` | `generative-research backend=glm-5p2`; DeepSeek/Kimi comparison lanes | Covers the GLM-via-Fireworks and DeepSeek-V4-Flash routes. **The account is SUSPENDED as of 2026-08-01** — every probe returns `HTTP 412: Account getclarito-5mege6wpl is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices` (run `30641250660`). `twitter-deepseek` is strict, so it never falls back: its `37 */6 * * *` cron hard-failed 4×/day from ~2026-07-05, and `research/twitter-deepseek/` has been stale since then. **That cron was dropped 2026-08-01** — the lane is dispatch-only until billing is settled at https://fireworks.ai/account/billing, then restore the cron in `hourly-twitter.yml`. Historical note for anyone reading old runs: those ~110 red runs were NOT a primary-lane problem, so check the job name before diagnosing a failure rate. |
 | `OPENCODE_API_KEY` / `MOONSHOT_API_KEY` | `backend=opencode-kimi-k3`; `opencode-kimi-canary.yml` | Kimi K3 route, Go-first then pay-per-token. Go key: https://opencode.ai/auth (watch caps $12/5h, $30/wk, $60/mo). Moonshot key: https://platform.kimi.ai/console/api-keys — the account needs real balance, new-user vouchers cannot bill kimi-k3. Validate with the canary before a full run. |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | The file-backed `~/.codex/auth.json` from `codex login`. Treat like a password; one auth file per serialized runner stream. |
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies; they expire — see rule 6. |
@@ -384,7 +397,20 @@ output or break the pipeline. Read them before editing.
    (the remaining `VERCEL_DEPLOY_HOOK` steps are permanent no-ops).
    `dashboard/scripts/prebuild.mjs` copies `research/<source>/` into
    `public/research/` before Vite runs, so touching it changes what the
-   dashboard sees. **Incident-learned corollary: the Dockerfile's package
+   dashboard sees.
+   **Cloudflare is NOT a transparent pass-through — it rewrites and
+   blocks.** Verified 2026-08-01: the live `/robots.txt` is not the file
+   `dashboard/scripts/postbuild-seo.mjs:1191` builds — Cloudflare prepends
+   a Managed block (`Content-Signal: ai-train=no`, `Disallow: /` for
+   ClaudeBot/GPTBot/CCBot/Google-Extended/Bytespider) — and the edge
+   returns **HTTP 403 by user-agent** to ClaudeBot, GPTBot and CCBot, the
+   exact crawlers that file explicitly `Allow: /`. PerplexityBot,
+   Googlebot and normal browsers get 200. This is a zone-level setting, so
+   it is invisible from the repo and cannot be fixed by editing
+   `postbuild-seo.mjs`. `scripts/check_deploy_health.py` sends one fixed
+   UA at one URL and is structurally blind to it — do not treat a green
+   deploy-health check as evidence the site is reachable.
+   **Incident-learned corollary: the Dockerfile's package
    manager MUST stay in lockstep with the dashboard's** (bun since #102)
    — a leftover `npm ci` froze prod at a stale build for ~a day *with CI
    green*, because CI never runs the Dockerfile. Staleness is now watched

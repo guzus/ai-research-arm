@@ -2,12 +2,14 @@
 slug: thinking-machines
 title: Thinking Machines Lab
 type: entity
-aliases: ["Thinking Machines", "Thinking Machines Lab", Inkling, Tinker, "Mira Murati"]
+aliases: ["Thinking Machines", "Thinking Machines Lab", Inkling, "Inkling-Small", Tinker, "Mira Murati"]
 tags: [frontier-lab, open-weights, multimodal, mira-murati]
 description: Mira Murati's AI lab; shipped Inkling on 2026-07-15, its first public model release — a 975B-parameter (41B active) open-weights multimodal MoE positioned against both Chinese open labs and closed US frontier players.
 created_at: 2026-07-17
-timestamp: 2026-07-17T00:00:00Z
+timestamp: 2026-08-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
+  - {title: "ARA model ticket — Thinking Machines Inkling-Small", path: research/models/tickets/thinking-machines-inkling-small-2026-07.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA model ticket — Thinking Machines Inkling", path: research/models/tickets/thinking-machines-inkling.md}
 ---
@@ -36,6 +38,20 @@ account, corroborated within 15 minutes by @ns123abc and @kimmonismus.
   versions, accelerated hosting) within a day. Treat the launch specs as
   confirmed and the quality claims as contested pending further independent
   evals.
+
+- **Inkling-Small answers the cadence question (2026-07-31, digested
+  2026-08-01).** Thinking Machines shipped **Inkling-Small**, an open-weights
+  reasoning model **cut from 41B to 12B active parameters**, benchmarked
+  around **#88 overall and #21 among open models on Text Arena (1431
+  points)**. That resolves the "one-off or a cadence" question below in favour
+  of a cadence — a second open-weights release inside three weeks — and moves
+  the lab down-market rather than up, competing on efficiency against the
+  Chinese open labs ([[deepseek-v4-flash]], [[moonshot-kimi-k3]]) shipping in
+  the same window rather than on raw scale. Its **verified 36.5% ARC-AGI-2**
+  score is also now the reference line against which an unverified 60.4% Kimi
+  K3 claim is being measured. See [[open-weights]] and the
+  [Inkling-Small ticket](../../models/tickets/thinking-machines-inkling-small-2026-07.md)
+  (ARA daily digest 2026-08-01).
 
 ## Open questions
 

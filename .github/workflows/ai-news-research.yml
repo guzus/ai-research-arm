@@ -40,7 +40,7 @@ jobs:
           echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -v-1d +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: '22'
 

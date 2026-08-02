@@ -155,6 +155,14 @@ function compactText(s) {
 
 // SERPs typically truncate descriptions around 155-160 chars. Aim for ~190
 // and gracefully clip on a word boundary so OG / Twitter cards stay clean.
+// Public-facing one-line summary for an index.json row. Prefers the article's
+// own deck/lede (captured into articleDescriptions while the pages are built)
+// and falls back to the title — deliberately NEVER to row.prompt, which is the
+// internal dispatch brief and reads as leaked tooling to any human or crawler.
+function articleSummary(row) {
+  return articleDescriptions.get(row.slug) || row.title || row.slug;
+}
+
 function truncateDescription(s, max = 190) {
   if (s.length <= max) return s;
   const clipped = s.slice(0, max);
@@ -1288,7 +1296,7 @@ function buildLlmsTxt(entries, wikiPages, forecastTickets) {
       const tags = Array.isArray(article.tags) && article.tags.length
         ? ` Tags: ${article.tags.map(markdownLine).join(', ')}.`
         : '';
-      const desc = markdownLine(article.prompt || title);
+      const desc = markdownLine(articleSummary(article));
       lines.push(`- [${title}](${SITE_ORIGIN}/research/${article.slug}): ${desc}${tags}`);
     }
     lines.push('');
@@ -1367,7 +1375,7 @@ function buildFeed(entries, shareImageUrl) {
       link: `${SITE_ORIGIN}/research/${e.slug}`,
       guid: `${SITE_ORIGIN}/research/${e.slug}`,
       date: e.created_at,
-      description: truncateDescription(decodeEntities(stripTags(e.prompt || e.title || e.slug))),
+      description: truncateDescription(decodeEntities(stripTags(articleSummary(e)))),
     }));
   items.push(...articleItems);
 
@@ -1435,6 +1443,14 @@ let skipped = 0;
 let cardAttempts = 0;
 let cardsGenerated = 0;
 const generatedArticleImages = new Map();
+// slug -> the article's own deck/lede, already truncated by extractMeta. The
+// article PAGES have always used this for their meta description and JSON-LD;
+// llms.txt, feed.xml and the /research hub used row.prompt instead, which is
+// the internal dispatch brief the workflow was launched with — up to 3.6KB of
+// "Argue it." and "EVIDENCE DISCIPLINE" addressed to the authoring agent, not
+// to a reader. Capturing it here lets those three consumers use the same
+// summary the article page already shows.
+const articleDescriptions = new Map();
 const articleRows = [];
 for (const row of entries) {
   if (row.kind === 'standalone') {
@@ -1449,6 +1465,7 @@ for (const row of entries) {
   const articleHtml = readFileSync(articlePath, 'utf8');
   const indexable = isIndexableResearchEntry(row);
   const { title: extractedTitle, desc: extractedDesc } = extractMeta(articleHtml);
+  if (extractedDesc) articleDescriptions.set(row.slug, extractedDesc);
   const cardTitle = extractedTitle || row.title || row.slug;
   if (!articleArtifactImage(row, cardTitle)) {
     cardAttempts++;
@@ -1600,7 +1617,7 @@ const researchItems = publishedEntries
     route: `/research/${row.slug}`,
     title: row.title || row.slug,
     meta: row.created_at ? String(row.created_at).slice(0, 10) : '',
-    description: row.prompt || row.title || row.slug,
+    description: articleSummary(row),
   }));
 const researchHubDir = join(dist, 'research');
 mkdirSync(researchHubDir, { recursive: true });

@@ -3,7 +3,7 @@ slug: claude-sonnet-5
 title: Anthropic Claude Sonnet 5 — official release
 company: Anthropic
 model: Claude Sonnet 5
-status: released
+status: closed
 status_note: |
   **Officially launched 2026-06-30 18:00 UTC** (@claudeai, ~13.7K likes:
   "Introducing Claude Sonnet 5, our most agentic Sonnet yet"). Model id
@@ -48,14 +48,16 @@ sources:
   - https://x.com/claudeai/status/2072017450611142835
   - https://x.com/claudeai/status/2072017457057853480
 created_at: 2026-06-22
-updated_at: 2026-07-01
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-29
+closed_at: 2026-07-29
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-22
     change: "Created — a 'claude-sonnet-5' model slug surfaced on an Anthropic partner provider (@synthwavedd 2026-06-21, ~1.2K likes), read as the first breadcrumb of Anthropic's next mid-tier Claude release while Fable 5/Mythos 5 stay export-frozen. Picked up by credible watchers (Andrew Curran: a new Sonnet is 'due'; @kimmonismus: likely a 'GPT-5.6 and Sonnet 5' week) but no Anthropic post, date, or specs; the '1M context / Fennec codename' details trace to amplifier accounts, and @fanofaliens notes the slug may have appeared in Vertex AI logs months ago (so possibly stale). Status rumored, verification unverified (single-source, freshness disputed)."
   - ts: 2026-07-01
     change: "Major update — SHIPPED. Anthropic officially launched Claude Sonnet 5 (id claude-sonnet-5) on 2026-06-30 18:00 UTC (@claudeai ~13.7K likes) with a published system card: now the default on Free/Pro and available to Max/Team/Enterprise, live across all Claude apps + the Platform. Intro pricing $2/$10 per MTok (→ $3/$15 September), 1M context, 128K output, Jan-2026 cutoff; framed as close-to-Opus-4.8 agentic/coding at Sonnet price. Perplexity added it same hour; GitLab Duo shipped it across all tiers (+93.8% claim). Status rumored → released; verification unverified → confirmed (official primary + system card). Day-2 independent benchmarks are mixed (edges Opus 4.8 on GDPval-AA v2 1,618, trails elsewhere, deliberately lower on CyberGym vuln-discovery vs Sonnet 4.6); Simon Willison flags a new tokenizer adding ~30% tokens (effective price rise) and dropped temperature/top_p/top_k. The leaked $2/$10 promo + Jan-2026 cutoff from the prior rumor cycle are now the shipped numbers. No Fable 5 general re-release accompanied it ([[claude-fable-5]])."
+  - ts: 2026-07-29
+    change: "Closed — released-and-aged. 28 days since the 2026-06-30 launch (no update since 2026-07-01) with no successor model and no further developments. Settled into normal coverage."
 ---
 
 **Claude Sonnet 5** shipped on **2026-06-30 (18:00 UTC)** — resolving the

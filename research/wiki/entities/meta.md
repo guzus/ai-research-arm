@@ -6,8 +6,14 @@ aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
 description: Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.
 created_at: 2026-06-16
-timestamp: 2026-07-17T00:00:00Z
+timestamp: 2026-07-30T00:00:00Z
+market:
+  ticker: META
+  exchange: NASDAQ
+  symbol: NASDAQ:META
+  provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
@@ -96,3 +102,22 @@ targeting AI-companion anti-addiction mechanisms rather than crisis
 alerting specifically). The feature is a concrete product mitigation rather
 than a policy statement, distinguishing it from Meta's other 2026 AI-safety
 posture, which has mostly been reactive commentary.
+
+## Zuckerberg publicly breaks from the "pace the frontier" coalition (2026-07-30)
+
+In WSJ remarks amplified widely across X, CEO **Mark Zuckerberg** called the
+White House's reported **30-day pre-release frontier-model review** "too
+long," and warned that regulation slowing release speed would **"lock in
+Anthropic and OpenAI's lead forever."** He also reiterated opposition to
+**banning Chinese open-weight models** — even after Meta itself had signed
+the Nvidia-led **"Open Weights and American AI Leadership"** letter. This
+puts Meta at odds with [[openai]], [[anthropic]], Google and even some of
+Meta's own employees, who days earlier signed a separate **"Pacing the
+Frontier"** letter urging international coordination to slow automated AI
+research (see [[federal-ai-policy]]). The same day, The Information reported
+[[openai]] and [[anthropic]] are converging on the opposite position —
+broader government reviews and tighter scrutiny of Chinese open-source AI —
+sharpening a genuine strategic split among frontier labs on pacing and
+open-weight policy, not just rhetoric. Quote of the Day: *"Optimism should
+empirically be the default... regulation on speed could lock in Anthropic
+and OpenAI's leads forever."* — Zuckerberg (ARA daily digest 2026-07-30).

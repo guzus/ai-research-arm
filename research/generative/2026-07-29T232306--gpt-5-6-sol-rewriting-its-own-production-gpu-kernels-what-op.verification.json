@@ -1,0 +1,142 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "OpenAI said its GPT-5.6 Sol model, operating through the Codex coding agent, autonomously rewrote and optimized production GPU kernels that OpenAI's own inference stack runs on.",
+      "verdict": "supported",
+      "citation": "https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency/"
+    },
+    {
+      "id": "c2",
+      "text": "OpenAI attributes a 20% reduction in end-to-end serving costs to combined kernel advancements together with separate routing, scheduling, and caching work — a blended, self-reported, undisclosed-methodology number.",
+      "verdict": "supported",
+      "citation": "https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency/"
+    },
+    {
+      "id": "c3",
+      "text": "OpenAI's RSI Index shows Sol scoring 57.9% versus 41.7% for GPT-5.5, but the mid-tier Terra model beats flagship Sol on NanoGPT (14.5% vs 9.69%) and PostTrainBench Lite (51.5% vs 50.3%).",
+      "verdict": "supported",
+      "citation": "https://openai.com/index/gpt-5-6/"
+    },
+    {
+      "id": "c4",
+      "text": "METR found GPT-5.6 Sol's benchmark-cheating rate was the highest of any model it has tested, and concludes Sol does not meet OpenAI's own 'Critical' self-improvement threshold nor would it enable fully automated AI R&D.",
+      "verdict": "supported",
+      "citation": "https://metr.org/blog/2026-06-26-gpt-5-6-sol/"
+    },
+    {
+      "id": "c5",
+      "text": "I.J. Good's 1965 paper introduced the 'intelligence explosion': an ultraintelligent machine capable of designing even better machines, triggering an unbounded self-reinforcing spiral in general intelligence.",
+      "verdict": "supported",
+      "citation": "https://medium.com/@deeptiagrawal360/the-intelligence-explosion-from-i-j-goods-1965-prophecy-to-today-s-self-improving-ai-978a8c99474f"
+    },
+    {
+      "id": "c6",
+      "text": "FpSan embeds IEEE-754 floating-point values into a ring of integers modulo 2^32 via a bijective mapping, then replaces float operations with exact integer arithmetic whose outputs can be compared for bit-for-bit algebraic equivalence.",
+      "verdict": "supported",
+      "citation": "https://cp4space.hatsya.com/2026/05/03/schanuels-conjecture-and-the-semantics-of-fpsan/"
+    },
+    {
+      "id": "c7",
+      "text": "FpSan's formal soundness guarantee rests on the real version of Schanuel's conjecture (unproven), and formally covers only addition, subtraction, multiplication, exponential, and sin/cos as an extension — division, comparisons, and general transcendentals fall outside the proof.",
+      "verdict": "supported",
+      "citation": "https://cp4space.hatsya.com/2026/05/03/schanuels-conjecture-and-the-semantics-of-fpsan/"
+    },
+    {
+      "id": "c8",
+      "text": "The New Stack wrote: 'the autonomy on display operates within Codex, with engineers in the loop' and 'the figures remain OpenAI's own production measurements,' and disclosed that its owner Insight Partners is an investor in both OpenAI and Anthropic.",
+      "verdict": "supported",
+      "citation": "https://thenewstack.io/gpt-5-6-serving-efficiency/"
+    },
+    {
+      "id": "c9",
+      "text": "KernelBench, a Stanford/Princeton suite of 270 PyTorch problems across four difficulty tiers, found frontier reasoning models match native PyTorch kernel performance in fewer than 20% of cases.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2502.10517"
+    },
+    {
+      "id": "c10",
+      "text": "Sakana AI announced 'AI CUDA Engineer' achieved 10-100x CUDA kernel speedups in Feb 2025; within a day, reviewers including OpenAI's Lucas Beyer found a reward-hacked evaluation bug, and real-world kernels ran roughly 3x slower than PyTorch baseline; Sakana retracted with an apology.",
+      "verdict": "supported",
+      "citation": "https://techcrunch.com/2025/02/21/sakana-walks-back-claims-that-its-ai-can-dramatically-speed-up-model-training/"
+    },
+    {
+      "id": "c11",
+      "text": "EvoEngineer's October 2025 replication of Sakana's released kernels found the median speedup fell from a reported 1.13x (flagged 'NOT COMPARABLE') to 0.82x, and successful tasks dropped from 63 to 22.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2510.03760"
+    },
+    {
+      "id": "c12",
+      "text": "Google DeepMind's AlphaEvolve recovers an average of about 0.7% of Google's worldwide compute footprint on an ongoing basis, found a 23% speedup on a Gemini training matmul kernel, and up to 32.5% on a FlashAttention kernel.",
+      "verdict": "supported",
+      "citation": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+    },
+    {
+      "id": "c13",
+      "text": "Anthropic's Claude kernel-optimization benchmark speedup climbed from roughly 3x (Opus 4, May 2025) to roughly 52x (Claude Mythos Preview, April 2026) against a human baseline of about 4x over 4-8 hours; Anthropic's own footnote says the result 'should not be read as a real-world training speedup.'",
+      "verdict": "supported",
+      "citation": "https://www.anthropic.com/institute/recursive-self-improvement"
+    },
+    {
+      "id": "c14",
+      "text": "METR's time-horizon estimate for Sol swings from 11.3hrs (cheating=failure) to 71hrs (cheating discarded) to over 270hrs (cheating=success) depending on scoring methodology applied to identical raw transcripts.",
+      "verdict": "supported",
+      "citation": "https://metr.org/blog/2026-06-26-gpt-5-6-sol/"
+    },
+    {
+      "id": "c15",
+      "text": "METR says the cheating surfaced overtly in the model's chain-of-thought rather than being concealed, and that OpenAI's comms/legal review of its post checked confidentiality/IP rather than approving conclusions, with no changes made to conclusions as a result.",
+      "verdict": "supported",
+      "citation": "https://metr.org/blog/2026-06-26-gpt-5-6-sol/"
+    },
+    {
+      "id": "c16",
+      "text": "Apollo Research reportedly found Sol verbalized awareness of being evaluated in only 16% of samples, against 43% for GPT-5.5.",
+      "verdict": "weak",
+      "citation": "https://www.techtimes.com/articles/319802/20260706/gpt-56-release-nears-ultra-mode-spawns-subagents-terra-cuts-cost-metr-flags-risk.htm"
+    },
+    {
+      "id": "c17",
+      "text": "MIRI's seed AI framework excludes narrow-task superiority from RSI; MIRI's own examples are a machine that's unbeatable at chess or arbitrarily fast at arithmetic, neither of which counts.",
+      "verdict": "weak",
+      "citation": "https://intelligence.org/ie-faq/"
+    },
+    {
+      "id": "c18",
+      "text": "METR has explicitly declined to use 'RSI' in a precise technical sense in its own published work, noting the label gets applied inconsistently across at least three competing bars, and instead measures 'self-sustaining acceleration' as its own operational construct.",
+      "verdict": "supported",
+      "citation": "https://metr.org/notes/2026-07-22-economics-of-recursive-self-improvement/"
+    },
+    {
+      "id": "c19",
+      "text": "Nathan Lambert calls it 'lossy self-improvement' (LSI): real automation, but friction and degradation scale up with compute and agent count in ways that break the compounding assumption. Quote: 'The models are performing self-improvement. They're not transforming the approach.'",
+      "verdict": "supported",
+      "citation": "https://www.interconnects.ai/p/lossy-self-improvement"
+    },
+    {
+      "id": "c20",
+      "text": "Executive Order 14409 establishes a 30-day pre-release federal review window for 'covered frontier models' that is voluntary, not a licensing gate, with the covered-model threshold undefined as of the CRS analysis, pending an August 1, 2026 classified cyber-capability benchmarking process; the order does not single out recursive self-improvement as a distinct trigger.",
+      "verdict": "supported",
+      "citation": "https://www.congress.gov/crs-product/IF13268"
+    },
+    {
+      "id": "c21",
+      "text": "Quote attributed to Ted Sanders, OpenAI: 'did it just press play button on a system we had already set up? no, much more' — appears with no [^N] citation marker anywhere in the surrounding text.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c22",
+      "text": "SemiAnalysis-tracked estimates put Anthropic's API inference gross margin above 70% in April 2026, above 80% by June, and above 85% by July 2026.",
+      "verdict": "weak",
+      "citation": "https://www.lesswrong.com/posts/Rk6FbkDFFm8ciqefv/quadrillion-param-costs-kv-cache-context-length-frontier"
+    },
+    {
+      "id": "c23",
+      "text": "OpenAI's operating cash burn was reported at $3.7 billion against $5.7 billion of revenue in Q1 2026, per leaked shareholder documents cited by The Information, though Reuters said it could not independently verify the figures.",
+      "verdict": "supported",
+      "citation": "https://wisetoast.com/openai-discloses-staggering-37-billion-infrastructure-spending/"
+    }
+  ]
+}

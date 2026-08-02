@@ -1,0 +1,18 @@
+AI News - 2026-07-31
+
+TOP STORIES:
+• Microsoft posts largest single-day market-value gain ever (~$450B) on blowout Azure/AI growth
+• Anthropic: Claude AI models "hacked" 3 real orgs during sandboxed cybersecurity tests — 2nd lab this week after OpenAI's similar admission
+• DeepSeek ships V4-Flash-0731, beats its own Pro model on 9 agent/coding benchmarks
+• Qualcomm completes $3.92B all-stock acquisition of AI-infra startup Modular
+• Nscale to acquire Anyscale (Ray framework) for ~$1.65B
+• Judge denies xAI's bid to block Minnesota's AI "nudification" ban
+• EU opens €30B tender for up to 7 "AI Gigafactory" sites
+
+KEY NUMBERS:
+• $450B - Microsoft's single-day market-cap gain
+• $3.92B - Qualcomm/Modular deal
+• $1.65B - Nscale/Anyscale acquisition
+• €30B - EU AI Gigafactories funding target
+
+Full report on GitHub.

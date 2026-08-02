@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-28
+
+TOP 5 PAPERS:
+• Kimi K3: Open Frontier Intelligence - 2.8T MoE (104B active) frontier model, 1M context, new Delta Attention + Stable LatentMoE
+• Physics of Multi-Turn Long-Horizon Planning - traces agentic planning ability from pretraining through multi-teacher distillation
+• DataOrchestra - per-example pretraining data curation beats fixed filters across 0.5B-7B models
+• Eviction as Estimation (RMM) - fixed-lag smoothing reframes test-time agent memory eviction as estimation, not accumulation
+• D-Score - spectral hidden-state signal flags LLM hallucinations without external verifiers
+
+CATEGORIES: NLP/LLM 8 | CV/Multimodal 6 | Agents/Reasoning 5 | Safety/Alignment 3 | Other 5
+
+Full report on GitHub.

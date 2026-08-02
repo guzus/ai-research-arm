@@ -49,3 +49,7 @@ in three research-level tasks still defeat frontier systems.
 - **Policy use.** Could a "fraction of research tasks autonomously solvable"
   number feed into the biosecurity / pre-release-review framing in
   [[federal-ai-policy]]?
+- **Does an expert-authored ceiling actually bind?** LifeSciBench is one of
+  several 2026 attempts to restore a hard, human-adjudicated measure against
+  benchmark saturation — the same pressure tracked as the
+  [[verification-bottleneck]].

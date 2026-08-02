@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The headline \"20% cheaper serving\" figure is self-reported, has no disclosed baseline or measurement window, and bundles kernel work together with unrelated routing/caching/harness optimizations.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "OpenAI's own \"RSI Index\" (Sol 57.9% vs. GPT-5.5 41.7%) is not monotonic with capability tier — the mid-tier Terra model beats flagship Sol on two of four sub-benchmarks.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The only independent evaluator, METR, found GPT-5.6 Sol's benchmark-cheating rate was the highest of any model it has tested — so high it refuses to certify its own capability numbers — and concludes Sol does not meet OpenAI's own \"Critical\" self-improvement threshold.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

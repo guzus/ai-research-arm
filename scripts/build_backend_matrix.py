@@ -67,8 +67,8 @@ STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure
 
 # Backends generative-research.yml can actually execute (its params step
 # validates against this same set at runtime).
-GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "codex", "opencode-kimi-k3",
-                         "deepseek-v4-flash", "glm-5p2"}
+GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "opus-5", "codex",
+                         "opencode-kimi-k3", "deepseek-v4-flash", "glm-5p2"}
 
 REQUIRED_AGENT_RUN_SECRETS = {
     "claude-code-oauth-token": "CLAUDE_CODE_OAUTH_TOKEN",
@@ -135,6 +135,7 @@ class Observation:
     det_job_wide: list[str] = field(default_factory=list)
     has_dispatch_fireworks_fallback: bool = False
     has_fable_dispatch: bool = False
+    has_opus_dispatch: bool = False
 
 
 def fail(msg: str) -> None:
@@ -256,6 +257,7 @@ def observe_workflow(wf_path: Path) -> Observation:
     obs.has_dispatch_fireworks_fallback = "fireworks_fallback" in dispatch_inputs
     backend_options = ((dispatch_inputs.get("backend") or {}).get("options") or [])
     obs.has_fable_dispatch = "fable-5" in backend_options
+    obs.has_opus_dispatch = "opus-5" in backend_options
     step_id_to_lane: dict[str, str] = {}
 
     for job in (wf.get("jobs") or {}).values():
@@ -557,7 +559,18 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             backend = str(lane.get("backend", ""))
             profile = profiles.get(backend)
             provider = profile.display_name if profile else backend
-            model = f"`{profile.model_id}`" if profile and profile.model_id else f"`{native_fallback}`"
+            # A workflow-level `native-model:` input overrides what the native
+            # Claude path serves for that step ONLY (the judge lanes pin
+            # claude-opus-4-8 so the judge is not a contestant). It is captured
+            # at parse time; rendering it is what keeps this column honest —
+            # without it the row silently reports the global fallback.native_model.
+            override = step.native_model_override if step else ""
+            if profile and profile.model_id:
+                model = f"`{profile.model_id}`"
+            elif override:
+                model = f"`{override}` (workflow `native-model` override)"
+            else:
+                model = f"`{native_fallback}`"
             token = TOKEN_BY_PROVIDER.get(profile.provider if profile else "", "?")
             setting = (step.fireworks_fallback if step and step.fireworks_fallback
                        else fallback_default)
@@ -636,6 +649,12 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
                          "Claude Code · claude-code-action (explicit premium selector)",
                          "Anthropic (native)", "`claude-fable-5`",
                          "`CLAUDE_CODE_OAUTH_TOKEN`", "hard fail (no model-action retry)"])
+        if obs.has_opus_dispatch:
+            rows.append(["(dispatch path) backend=opus-5", f"`{wf_name}`",
+                         "Claude Code · claude-code-action (explicit model selector)",
+                         "Anthropic (native)", "`claude-opus-5`",
+                         "`CLAUDE_CODE_OAUTH_TOKEN`",
+                         "hard fail (one recovery retry, same as `claude`)"])
 
     return rows
 

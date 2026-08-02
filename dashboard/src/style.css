@@ -1356,6 +1356,92 @@ body.search-open { overflow: hidden; }
   color: var(--text-secondary);
 }
 
+/* ── Market quote row in the wiki hover ────────────────
+ * Only rendered for entity pages whose frontmatter carries a validated
+ * `market` block, so a private company never gets an empty stock shell.
+ * min-height reserves the row before the async quote resolves: the card is
+ * positioned against the mention, so growing after paint would visibly shift
+ * it under the pointer.
+ *
+ * Up/down reuses the slope-chart pair (--ara-slope-up/down) rather than the
+ * change-bubble's royal/navy: a share price is the one place readers
+ * genuinely expect the red/green convention, and the slope chart already
+ * establishes it for quantitative series in this system. */
+:root {
+  --ara-slope-up: #1b6d3a;
+  --ara-slope-down: #b3251f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Lifted for contrast on the dark ground; the light hexes read muddy. */
+    --ara-slope-up: #4ade80;
+    --ara-slope-down: #f87171;
+  }
+}
+
+.wiki-hover-market {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  min-height: 34px;
+  margin-top: 9px;
+  padding-top: 9px;
+  border-top: 1px solid var(--border-light);
+  font-variant-numeric: tabular-nums;
+}
+.wiki-hover-market-symbol {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-tertiary);
+  width: 100%;
+}
+.wiki-hover-market-price {
+  font-size: 0.9rem;
+  font-weight: 650;
+  color: var(--text);
+}
+.wiki-hover-market-change {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.wiki-hover-market--up .wiki-hover-market-change { color: var(--ara-slope-up); }
+.wiki-hover-market--down .wiki-hover-market-change { color: var(--ara-slope-down); }
+.wiki-hover-market--flat .wiki-hover-market-change { color: var(--text-secondary); }
+.wiki-hover-market-note {
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+  width: 100%;
+}
+/* A stale or missing quote stays legible but visibly de-emphasised — the
+ * reader should never mistake a carried-forward price for a live one. */
+.wiki-hover-market.is-stale .wiki-hover-market-price,
+.wiki-hover-market.is-stale .wiki-hover-market-change {
+  opacity: 0.62;
+}
+.wiki-hover-market--empty .wiki-hover-market-note {
+  font-style: italic;
+}
+
+/* Page-level quote (the touch path — no hover exists on a phone). */
+.wiki-kv-market {
+  font-variant-numeric: tabular-nums;
+}
+.wiki-kv-market-change {
+  font-weight: 600;
+  margin-left: 2px;
+}
+.wiki-kv-market-change--up { color: var(--ara-slope-up); }
+.wiki-kv-market-change--down { color: var(--ara-slope-down); }
+.wiki-kv-market-change--flat { color: var(--text-secondary); }
+.wiki-kv-market-note {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+}
+
 .cal-header {
   display: flex;
   align-items: center;
@@ -3487,6 +3573,9 @@ body.research-shelf .nav-shell {
   max-width: none;
   margin-inline: calc(var(--page-gutter) * -1);
   padding-inline: var(--page-gutter);
+  /* Books scroll under the sticky rail, so the backdrop needs air below the
+   * pills — without it a spine's title arrives flush against them. */
+  padding-bottom: 16px;
 }
 
 body.research-shelf .tabs,
@@ -3506,145 +3595,315 @@ body.research-shelf .controls {
  * shelf, so a second name/tagline block was just repeating it. The covers open
  * the page. */
 
-/* The shelf proper: a grid of book covers on the press ground. Column counts
- * are explicit rather than auto-fill so the covers stay substantial (a 6-up
- * auto-fill row on a wide display shrinks them into stamps). */
+/* The shelf proper: books lying flat, spine toward the reader, front board
+ * laid back into the screen — the press.stripe.com homepage view. One book per
+ * row, full width of the reading column, stacked with air between them.
+ *
+ * Geometry, all driven off two custom properties so a book stays coherent when
+ * either is retuned:
+ *   --spine-h  height of the spine plate, i.e. the book's thickness
+ *   --depth    the board's TRUE front-to-back size before foreshortening
+ * The board is rotateX'd by --lay, so it occupies roughly --depth * cos(--lay)
+ * of vertical space on screen; the row height below bakes that in. Perspective
+ * sits on each book rather than the list, so a book at the bottom of a long
+ * shelf is projected from its own centre instead of being sheared toward a
+ * shared vanishing point halfway up the page. */
 .press-shelf {
   list-style: none;
   max-width: calc(var(--page-max) + 2 * var(--page-gutter));
   margin-inline: auto;
   padding: 0 var(--page-gutter);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(28px, 3.4vw, 56px) clamp(20px, 2.6vw, 44px);
-  align-items: start;
-}
-
-@media (min-width: 620px) {
-  .press-shelf {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 940px) {
-  .press-shelf {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
-/* One book. The jacket palette paints the cover; the ::before strip is the
- * spine, which is what makes it read as an object instead of a colour swatch. */
-.press-book {
-  /* Fallback jacket — every book gets a real pair from the table below. */
-  --jacket-bg: #2f2f2f;
-  --jacket-ink: #dbdbdb;
-  --cover-pad: clamp(16px, 1.5vw, 24px);
-  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 16px;
-  aspect-ratio: 5 / 7;
-  padding: var(--cover-pad);
-  padding-left: calc(var(--cover-pad) + 12px);
-  overflow: hidden;
-  border-radius: 1px 4px 4px 1px;
-  background: var(--jacket-bg);
-  color: var(--jacket-ink);
+  /* Wide enough to absorb the hover tilt: tipping the board from 72deg to
+   * 62deg grows it ~46px UPWARD, which at the old gap ran it into the book
+   * above. The reference shelf is airy for the same reason. */
+  gap: clamp(46px, 7vh, 86px);
+}
+
+.press-book {
+  --jacket-bg: #2f2f2f;         /* fallback; the palette table sets the real pair */
+  --jacket-ink: #dbdbdb;
+  /* Reference proportions: the spine plate is the dominant face, about half
+   * again the visible depth of the board above it. Earlier values had that
+   * backwards (74px spine under a 90px board), which read as a thin pamphlet
+   * with a big lid rather than a bound volume. --spine-h is a FLOOR now, not a
+   * fixed height: a title that wraps to two or three lines makes its book
+   * physically thicker, which is both the honest layout and a nice tell. */
+  --spine-h: clamp(64px, 9.6vh, 106px);
+  --depth: clamp(114px, 19.5vh, 196px);
+  /* Steep: a book lying on a shelf shows you its spine and barely a sliver of
+   * the front board. At 72deg the board was 68px against a 108px spine and the
+   * cover competed with the face that actually carries the type. */
+  --lay: 79deg;
+  --lay-drift: 0deg;
+  position: relative;
+  /* Reserve the board's projected height above the spine, which is now a
+   * normal-flow box free to grow. */
+  padding-top: calc(var(--depth) * 0.21);
   cursor: pointer;
   outline: none;
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.45),
-    0 14px 30px -10px rgba(0, 0, 0, 0.6);
-  transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.3, 1), box-shadow 0.28s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0.03, 0.18, 1);
 }
 
-/* Spine: a darkened gradient down the leading edge plus the hinge highlight. */
-.press-book::before {
+/* The front board. Hinged along the spine's top edge (bottom: 100% against the
+ * spine, so it tracks a growing spine automatically) and laid back, so what the
+ * reader sees is the cover receding — wider at the near edge, narrower at the
+ * far one. */
+.press-book-board {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: var(--depth);
+  transform-origin: bottom center;
+  /* --lay-drift is nudged per book by the scroll handler in main.ts; see
+   * driftShelfBoards(). */
+  transform: rotateX(calc(var(--lay) + var(--lay-drift, 0deg)));
+  /* Short, because this transition also damps the scroll drift — at 0.4s the
+   * board smeared behind the scroll instead of breathing with it. Still long
+   * enough to read as a deliberate tilt on hover. */
+  transition: transform 0.34s cubic-bezier(0.4, 0.03, 0.18, 1);
+}
+
+/* Painted separately from the board so the lighting gradient does not get
+ * re-projected when the board angle changes on hover. */
+.press-book-board-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 3px 3px 0 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.4) 0px,
+      rgba(0, 0, 0, 0.18) 8px,
+      rgba(255, 255, 255, 0.06) 24px,
+      rgba(255, 255, 255, 0.03) 50%,
+      rgba(255, 255, 255, 0.06) calc(100% - 24px),
+      rgba(0, 0, 0, 0.18) calc(100% - 8px),
+      rgba(0, 0, 0, 0.4) 100%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.03) 34%, rgba(0, 0, 0, 0.26) 100%),
+    var(--jacket-bg);
+}
+
+/* Head edge: the sliver of paper block visible along the top of the board. */
+.press-book-board-face::after {
   content: "";
   position: absolute;
-  inset: 0 auto 0 0;
-  width: 12px;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.36) 0%,
-    rgba(0, 0, 0, 0.1) 58%,
-    rgba(255, 255, 255, 0.07) 100%
-  );
-  pointer-events: none;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0));
+  border-radius: 3px 3px 0 0;
 }
 
-.press-book-title {
+/* The spine plate — the face of the book pointing at the reader. In normal
+ * flow with a MINIMUM height, so a wrapped title grows the book instead of
+ * being clipped. It is also the perspective host and the board's containing
+ * block (the board hangs off its top edge). */
+.press-book-spine {
+  position: relative;
+  min-height: var(--spine-h);
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.4vw, 44px);
+  padding: 12px clamp(16px, 2.2vw, 38px);
+  /* A long lens. At 780px the far edge of a 262px-deep board converged to ~73%
+   * of the near edge and every book read as a hip roof; ~10% is what an actual
+   * photograph of a book at this angle gives you. */
+  perspective: 2400px;
+  perspective-origin: 50% 0%;
+  border-radius: 0 0 3px 3px;
+  /* Vertical falloff so the thickened plate reads as the rounded block of a
+   * bound spine rather than a flat colour bar, plus a horizontal falloff for
+   * the curve of the boards at each end. */
+  background-color: var(--jacket-bg);
+  background-image:
+    /* Shoulders: a hard dark edge at each end, then the rounded corner of the
+     * board catching light just inside it. This is what gives the block its
+     * thickness — a soft falloff alone read as a flat bar. */
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.46) 0px,
+      rgba(0, 0, 0, 0.26) 7px,
+      rgba(255, 255, 255, 0.08) 22px,
+      rgba(255, 255, 255, 0.045) 42%,
+      rgba(255, 255, 255, 0.045) 58%,
+      rgba(255, 255, 255, 0.08) calc(100% - 22px),
+      rgba(0, 0, 0, 0.26) calc(100% - 7px),
+      rgba(0, 0, 0, 0.46) 100%
+    ),
+    /* Head catching the light, foot falling into shade. */
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.3) 0px,
+      rgba(255, 255, 255, 0.11) 4px,
+      rgba(255, 255, 255, 0.015) 16%,
+      rgba(0, 0, 0, 0.05) 62%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+  color: var(--jacket-ink);
+  /* Stamped into the cloth rather than sitting on it. */
+  text-shadow:
+    0 -1px 0 rgba(0, 0, 0, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.14);
   font-family: var(--font-serif);
-  font-size: clamp(0.96rem, 0.84rem + 0.42vw, 1.22rem);
+  /* Top highlight is the hinge where the board meets the spine; the drop
+   * shadow is what sits the book on the ground rather than floating it. */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    inset 0 -14px 22px -20px rgba(0, 0, 0, 0.7),
+    0 22px 42px -18px rgba(0, 0, 0, 0.9);
+}
+
+/* Cloth grain. An inline feTurbulence rasterised by the browser and laid over
+ * the plate in `overlay`, so it darkens and lightens the jacket colour rather
+ * than greying it — the same tile works on all twenty palettes. This is the
+ * single thing that makes the material read as bound cloth instead of paint. */
+.press-book-spine::before,
+.press-book-board-face::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.9;
+  /* Pebbled binding leather: a coarse grain for the pebble and a fine one for
+   * the tooth, both run through feComponentTransfer to push their contrast up.
+   * Raw fractalNoise sits around mid-grey and reads as camera grain through
+   * `overlay`; the slope/intercept is what turns it into a material. An earlier
+   * pass layered a warp/weft grid on top, but the regularity read as printed
+   * fabric rather than a bound board. */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.6' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='1.5' intercept='-0.25'/%3E%3CfeFuncG type='linear' slope='1.5' intercept='-0.25'/%3E%3CfeFuncB type='linear' slope='1.5' intercept='-0.25'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23t)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='2' intercept='-0.5'/%3E%3CfeFuncG type='linear' slope='2' intercept='-0.5'/%3E%3CfeFuncB type='linear' slope='2' intercept='-0.5'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23p)'/%3E%3C/svg%3E");
+  background-size: 140px 140px, 200px 200px;
+}
+
+/* The board is further from the light, so its grain sits back a little. */
+.press-book-board-face::before {
+  opacity: 0.6;
+}
+
+.press-book-author,
+.press-book-imprint {
+  flex: 0 0 auto;
+  font-size: clamp(0.72rem, 0.64rem + 0.3vw, 0.9rem);
+  font-style: italic;
+  /* Tight: model ids are long, hyphenated, and read as one token, so the
+   * default tracking pulled them apart into loose strings of syllables. */
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+}
+
+.press-book-imprint {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+/* Titles wrap. The spine's min-height gives the plate its floor and the flow
+ * layout lets it grow, so a long title thickens the book rather than being
+ * guillotined at one line. Three lines is the ceiling — past that the plate
+ * stops looking like a spine — and the clamp sits on an element with no
+ * vertical padding of its own so it clips flush at the content edge. */
+.press-book-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: center;
+  font-size: clamp(0.92rem, 0.74rem + 0.72vw, 1.34rem);
   font-weight: 600;
+  letter-spacing: 0.01em;
   line-height: 1.24;
-  letter-spacing: 0.2px;
-  text-wrap: balance;
-  /* Cover space is fixed by the aspect ratio, so a very long title truncates
-   * rather than overflowing the jacket. The full title is still the row's
-   * accessible name and is shown in full on the article page. */
+  overflow-wrap: break-word;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 7;
+  -webkit-line-clamp: 3;
   overflow: hidden;
-}
-
-.press-book-byline {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 3px 8px;
-  padding-top: 11px;
-  border-top: 1px solid currentColor;
-  border-top-color: color-mix(in srgb, currentColor 42%, transparent);
-  font-family: var(--font-serif);
-  font-size: 0.8rem;
-  font-style: italic;
-  line-height: 1.35;
-  /* Full jacket ink, like Stripe's author line — the italic and the rule carry
-   * the hierarchy. Dimming it would push the two lowest-contrast jackets under
-   * AA for small text. */
-}
-
-.press-book-date::before {
-  content: "·";
-  margin-right: 8px;
 }
 
 .press-book-lang {
   font-style: normal;
   font-size: 0.86em;
-  letter-spacing: 0;
   border: 1px solid currentColor;
   border-radius: 999px;
   padding: 0 6px;
 }
 
+/* ── Imprint faces ──────────────────────────────────────
+ * Each model family gets its own typeface, so the shelf reads as a shelf of
+ * imprints rather than one press printing twenty jacket colours. Assigned by
+ * researchImprint() in main.ts, which keys on the FAMILY — every Claude
+ * version shares a house face. Faces are requested in index.html; anything
+ * unmapped lands on `house`. */
+.press-book { --imprint-face: 'Source Serif 4', Georgia, serif; }
+
+[data-imprint="claude"]  { --imprint-face: 'Source Serif 4', Georgia, serif; }
+[data-imprint="kimi"]    { --imprint-face: 'Playfair Display', Georgia, serif; }
+[data-imprint="deepseek"]{ --imprint-face: 'Space Grotesk', 'Inter', sans-serif; }
+[data-imprint="glm"]     { --imprint-face: 'Libre Baskerville', Georgia, serif; }
+[data-imprint="codex"]   { --imprint-face: 'JetBrains Mono', ui-monospace, monospace; }
+[data-imprint="house"]   { --imprint-face: 'Inter', system-ui, sans-serif; }
+
+.press-book-spine,
+.press-book-title,
+.press-book-author,
+.press-book-imprint {
+  font-family: var(--imprint-face);
+}
+
+/* The mono and geometric faces run larger and looser at the same nominal size
+ * than the serifs do, so they get pulled back to keep every spine's title
+ * sitting on the same optical weight. */
+[data-imprint="codex"] .press-book-title {
+  font-size: clamp(0.8rem, 0.62rem + 0.58vw, 1.08rem);
+  letter-spacing: -0.02em;
+}
+
+[data-imprint="deepseek"] .press-book-title,
+[data-imprint="house"] .press-book-title {
+  font-size: clamp(0.86rem, 0.68rem + 0.64vw, 1.2rem);
+  letter-spacing: -0.015em;
+}
+
+[data-imprint="kimi"] .press-book-title {
+  letter-spacing: 0;
+}
+
 /* Search highlight inverts against whatever jacket it lands on, so it stays
  * legible on all 20 palettes without a per-jacket rule. */
-.press-book mark {
+.press-book mark,
+.press-open-spine mark {
   background: currentColor;
   color: var(--jacket-bg);
   padding: 0 3px;
 }
 
+/* Hover tips the board toward the reader — the gesture of lifting a book to
+ * look at its cover — and floats the whole volume up off the shelf. */
 @media (hover: hover) {
   .press-book:hover {
-    transform: translateY(-10px);
-    box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.45),
-      0 30px 54px -12px rgba(0, 0, 0, 0.66);
+    transform: translateY(-6px);
+    /* Paint above the neighbour while the board is tipped up into its air. */
+    z-index: 2;
+  }
+
+  .press-book:hover .press-book-board {
+    transform: rotateX(63deg);
   }
 }
 
 .press-book:focus-visible {
   outline: 2px solid var(--press-ink);
-  outline-offset: 4px;
+  outline-offset: 6px;
+  border-radius: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .press-book {
+  .press-book,
+  .press-book-board {
     transition: none;
   }
 
@@ -3653,85 +3912,321 @@ body.research-shelf .controls {
   }
 }
 
-/* ── Book-opening transition ────────────────────────────
- * Built by openBookThen() in main.ts, which adds .is-open on the next frame
- * and .is-clearing at the end. The four beats — lift, open, settle, dissolve —
- * are sequenced entirely by the transition delays below; main.ts only needs
- * BOOK_OPEN_SEQUENCE_MS to match the last one finishing. Read the block
- * comment above openBookThen() before retiming anything here. */
+/* Phones cannot carry a 74deg board and a three-slot spine at once: the board
+ * collapses to a sliver and the title has no room between author and date. Lay
+ * the board flatter, drop the imprint, and let the spine run two-up. */
+@media (max-width: 719px) {
+  .press-book {
+    --spine-h: clamp(58px, 9.5vh, 84px);
+    --depth: clamp(76px, 12vh, 118px);
+    --lay: 77deg;
+  }
+
+  .press-book-spine {
+    gap: 12px;
+    padding: 0 14px;
+  }
+
+  .press-book-imprint {
+    display: none;
+  }
+
+  .press-book-title {
+    text-align: left;
+    font-size: 0.94rem;
+    /* A phone spine is a third the width, so the same title needs another
+     * line before it starts eliding. The plate grows to hold it. */
+    -webkit-line-clamp: 4;
+  }
+
+  .press-book-author {
+    order: 2;
+    font-size: 0.72rem;
+  }
+}
+
+/* ── Opening a book ─────────────────────────────────────
+ * Built by buildBookStage()/openBookThen() in main.ts. The clone re-hosts the
+ * SHELF's own elements — .press-book-spine, .press-book-board-face and the type
+ * spans are reused verbatim — so at t=0 it is pixel-identical to the book on the
+ * shelf and there is no swap to see. Read the block comment above
+ * buildBookStage() before retiming or restructuring anything here.
+ *
+ * Frame: .press-open-volume is a ZERO-SIZE anchor on the hinge carrying the roll
+ * (0deg → 90deg); .press-open-body is the board plane carrying the tip
+ * (lay → 0deg), sized left:-L/2 top:-D width:L height:D so its bottom-centre is
+ * the hinge for ANY L,D. Body-local +x runs along the hinge, which is why the
+ * gradients inside are rotated 90deg from their screen-space equivalents.
+ *
+ * C is the file's single shared curve. Plain opacity fades stay `ease`. */
 .press-open-stage {
+  --press-ease: cubic-bezier(0.4, 0.03, 0.18, 1);
   position: fixed;
   inset: 0;
   z-index: 4000;
-  pointer-events: none;
+  /* Not `none`: the shelf stays clickable for the ~740ms before navigate(), and
+   * a second click builds a second stage and strands the first book invisible.
+   * The stage is above everything and has no interactive children. */
+  pointer-events: auto;
+  /* Matches .press-book-spine's camera, so the clone's projection IS the
+   * shelf's. perspective-origin tracks the hinge, set inline. */
+  perspective: 2400px;
+  transition: perspective-origin 620ms var(--press-ease);
 }
 
-/* Beats 1 + 3 — dim the shelf so the book is the only thing lit, then close
- * down to near-opaque so the shelf→article ground swap behind it is invisible.
- *
- * This deepening is what replaced the old full-screen veil. The veil painted
- * the whole viewport the destination colour and faded it back out, which read
- * as the page flashing white on every open. Holding at 0.62 keeps the shelf
- * faintly present while the book lifts off it; closing to 0.97 right before
- * the swap hides the swap without ever showing a flat field of colour. */
-@keyframes pressScrimDeepen {
-  0%   { opacity: 0; }
-  28%  { opacity: 0.62; }   /* ~250ms — lift done, shelf still readable */
-  62%  { opacity: 0.62; }   /* ~560ms — held through the cover swing */
-  93%  { opacity: 0.97; }   /* ~840ms — closed, just before the swap at 850ms */
-  100% { opacity: 0.97; }
-}
-
+/* The screen takes the BOOK's colour, which is what press.stripe.com does on
+ * leave (its colorOverlay is painted --backgroundColor, the jacket, never
+ * black). Delayed, so the first 120ms of a pixel-identical clone is not stepped
+ * on by the shelf starting to dim in the same frame. */
 .press-open-scrim {
   position: absolute;
   inset: 0;
-  background: #141010;
+  background: var(--jacket-bg);
   opacity: 0;
+  transition: opacity 420ms var(--press-ease) 120ms;
 }
 
 .press-open-stage.is-open .press-open-scrim {
-  animation: pressScrimDeepen 900ms ease forwards;
+  opacity: 0.86;
 }
 
-/* Beat 5 — the whole set (scrim and open book together) fades off the already
- * rendered article. Nothing is painted over the page to get here. */
-.press-open-stage.is-clearing {
-  opacity: 0;
-  transition: opacity 340ms ease;
-}
-
-/* Beat 1 — the book itself. Perspective lives HERE, not on the stage: the
- * projection has to stay centred on the book, otherwise a cover opening from
- * the edge of the shelf is projected from the middle of the screen and skews.
- * It scales from `left center` so the spine stays put and the spread the leaf
- * is about to occupy is already centred (see the dx/dy maths in main.ts). */
-.press-open-book {
+/* Under the wash, the destination's own ground arrives — so by the time the
+ * article is swapped in there is nothing left to see change. */
+.press-open-ground {
   position: absolute;
-  transform-origin: left center;
-  perspective: 1500px;
-  transition: transform 420ms cubic-bezier(0.22, 0.75, 0.28, 1);
-  will-change: transform;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 380ms var(--press-ease) 560ms;
 }
 
-/* The title page under the cover. */
+.press-open-stage.is-open .press-open-ground {
+  opacity: 1;
+}
+
+/* The hinge anchor. Zero-size on purpose: it is a point, so nothing about it
+ * changes when the body reproportions around it. */
+.press-open-volume {
+  position: absolute;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  transform-style: preserve-3d;
+  transform: rotate(0deg);
+  transition:
+    transform 430ms var(--press-ease) 90ms,
+    left 620ms var(--press-ease),
+    top 620ms var(--press-ease);
+}
+
+/* The board plane. Its bottom-centre is the volume's origin at any size, so the
+ * pivot never moves while L and D animate. */
+.press-open-body {
+  position: absolute;
+  transform-origin: 50% 100%;
+  transform-style: preserve-3d;
+  transition:
+    transform 620ms var(--press-ease),
+    left 620ms var(--press-ease),
+    top 620ms var(--press-ease),
+    width 620ms var(--press-ease),
+    height 620ms var(--press-ease);
+}
+
+/* The spine plate. It does not vanish and is not cross-faded: it turns away by
+ * exactly as much as the board turns toward us, and lands edge-on as the jacket
+ * rail the article card wears down its left edge. */
+.press-open-spine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  transform-origin: 50% 0;
+  /* The shelf class brings its own 2400px camera; override so the projection
+   * chain stays single. The spans are flat and at z=0, so nothing is lost. */
+  perspective: none;
+  transition:
+    transform 620ms var(--press-ease),
+    box-shadow 280ms ease 340ms;
+}
+
+.press-open-stage.is-open .press-open-spine {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    inset 0 -14px 22px -20px rgba(0, 0, 0, 0.7),
+    0 22px 42px -18px rgba(0, 0, 0, 0);
+}
+
+/* The plate's type hands over to the cover's — same string, same face, same
+ * ink, 40ms of overlap — so the identity the reader tracks is never absent. */
+.press-open-spine > span {
+  transition: opacity 220ms ease 80ms;
+}
+
+.press-open-stage.is-open .press-open-spine > span {
+  opacity: 0;
+}
+
+/* Back board and text block: invisible at t=0, because the shelf shows no page.
+ * Transitions live on the BASE rule, not inside .is-settling — the close path
+ * REMOVES that class, and anything declared only there snaps in one frame. */
+.press-open-base,
+.press-open-block,
 .press-open-page {
   position: absolute;
   inset: 0;
+  opacity: 0;
+  transition: opacity 280ms ease 240ms;
+}
+
+.press-open-stage.is-open .press-open-base,
+.press-open-stage.is-open .press-open-block,
+.press-open-stage.is-open .press-open-page,
+.press-open-stage--reverse .press-open-base,
+.press-open-stage--reverse .press-open-block,
+.press-open-stage--reverse .press-open-page {
+  opacity: 1;
+}
+
+/* Boards overhang the text block, and the block overhangs the page — so the
+ * page is inset INSIDE the body rather than the boards being grown outside it.
+ * That keeps the leaf exactly the body's box, which is what t=0 identity needs. */
+.press-open-base {
+  border-radius: 3px 3px 1px 1px;
+  background: var(--jacket-bg);
+  box-shadow: 0 28px 72px -16px rgba(0, 0, 0, 0.72);
+  transition: opacity 280ms ease 240ms, box-shadow 380ms ease 240ms;
+}
+
+.press-open-stage:not(.is-open):not(.press-open-stage--reverse) .press-open-base {
+  box-shadow: 0 28px 72px -16px rgba(0, 0, 0, 0);
+}
+
+/* Striations run along body-local +y, i.e. hinge→fore-edge, which reads as
+ * screen-horizontal once the volume has rolled. */
+.press-open-block {
+  inset: 3px 3px 5px 3px;
+  border-radius: 2px 2px 1px 1px;
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.13) 0 1px, rgba(255, 255, 255, 0.5) 1px 2.5px),
+    #efeae1;
+}
+
+.press-open-page {
+  inset: 7px 7px 11px 7px;
+  border-radius: 2px 2px 1px 1px;
+  box-shadow: 0 26px 70px -16px rgba(0, 0, 0, 0.66);
+  overflow: hidden;
+}
+
+/* The gutter: the permanent crease where the page meets the spine. Body-local,
+ * so it runs along the hinge edge. */
+.press-open-page::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 9%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.05) 55%, transparent 100%);
+  pointer-events: none;
+}
+
+/* The shadow the shut cover casts on the page, sliding off as it opens. */
+.press-open-page-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.16) 45%, transparent 100%);
+  transform-origin: center bottom;
+  transition: opacity 460ms ease 440ms, transform 460ms ease 440ms;
+}
+
+.press-open-stage.is-open .press-open-page-shade {
+  opacity: 0;
+  transform: scaleY(0.2);
+}
+
+/* Hinge-anchored type. A zero-size box at the one point in body-local space
+ * that does not move when L and D change, carrying a counter-roll so the words
+ * are upright from their first visible pixel, and an inner box in fixed px so
+ * nothing re-typesets while the body reproportions underneath. */
+.press-open-pagetext,
+.press-open-covertext {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  transform: rotate(-90deg);
+  opacity: 0;
+}
+
+.press-open-pagetext {
+  transition: opacity 220ms ease 420ms;
+}
+
+.press-open-covertext {
+  transition: opacity 260ms ease 260ms;
+}
+
+.press-open-stage.is-open .press-open-pagetext,
+.press-open-stage.is-open .press-open-covertext,
+.press-open-stage--reverse .press-open-pagetext,
+.press-open-stage--reverse .press-open-covertext {
+  opacity: 1;
+}
+
+.press-open-inner {
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.55em;
-  padding: 8% 9%;
+  font-family: var(--imprint-face, var(--font-serif));
+}
+
+/* A cover sets its title at the head, not centred like a title page. */
+.press-open-inner--cover {
+  justify-content: flex-start;
+}
+
+/* The article's own first page, on the paper. Authored at BOOK_SHEET_W and
+ * scaled down to the page, so the settle takes the scale to 1 as the page grows
+ * onto the card and the same document meets itself at the same size. */
+.press-open-paper {
+  position: absolute;
   overflow: hidden;
-  border-radius: 1px 3px 3px 1px;
-  box-shadow: 0 26px 70px -16px rgba(0, 0, 0, 0.66);
-  font-family: var(--font-serif);
+  transition:
+    top 460ms var(--press-ease),
+    width 460ms var(--press-ease),
+    height 460ms var(--press-ease);
+}
+
+.press-open-sheet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  transition:
+    transform 460ms var(--press-ease),
+    left 460ms var(--press-ease),
+    top 460ms var(--press-ease);
+}
+
+/* The floating TOC and the doc's own chrome are the page's furniture, not the
+ * article — and the charts never render here, since nothing enhances this copy. */
+.press-open-sheet .ara-toc,
+.press-open-sheet .gen-research-doc-meta,
+.press-open-sheet .ara-chart,
+.press-open-sheet figure.ara-figure img {
+  display: none;
 }
 
 .press-open-eyebrow {
   font-size: 0.58em;
   font-style: italic;
   letter-spacing: 0.04em;
+  /* Tinted toward the jacket but mixed with the page ink, so the pale jackets
+   * (#e2e2e2, #cad9e5) do not vanish into white paper. */
+  color: color-mix(in srgb, var(--jacket-bg) 68%, currentColor);
 }
 
 .press-open-page-title {
@@ -3750,83 +4245,208 @@ body.research-shelf .controls {
   font-style: italic;
 }
 
-/* The gutter: the permanent crease shadow where the page meets the spine.
- * Unlike the cast shadow below it does NOT fade — an open book always has it,
- * and it is what stops the revealed page reading as a flat white card. */
-.press-open-page::after {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 9%;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.05) 55%, transparent 100%);
-  pointer-events: none;
-}
-
-/* Beat 2 — the shadow the closed cover casts on the page, sliding off to the
- * right as the leaf lifts away. */
-.press-open-page-shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.16) 45%, transparent 100%);
-  transform-origin: left center;
-  transition: opacity 460ms ease 250ms, transform 460ms ease 250ms;
-}
-
-.press-open-stage.is-open .press-open-page-shade {
-  opacity: 0;
-  transform: scaleX(0.2);
-}
-
-/* Beat 2 — the cover, hinged on the spine. */
+/* The cover, hinged on the same line as everything else. Delayed past the roll
+ * but strictly INSIDE the rise: at t=400 the book is still ~22deg off upright,
+ * so the cover starts falling open while the volume is visibly still turning.
+ * Sequential beats read as a queue; this is the overlap that stops that. */
 .press-open-leaf {
   position: absolute;
   inset: 0;
-  transform-origin: left center;
+  transform-origin: 50% 100%;
   transform-style: preserve-3d;
-  transform: rotateY(0deg);
-  transition: transform 620ms cubic-bezier(0.34, 0.62, 0.24, 1) 240ms;
-  will-change: transform;
+  transition: transform 700ms var(--press-ease) 400ms, opacity 320ms ease;
 }
 
 .press-open-stage.is-open .press-open-leaf {
-  transform: rotateY(-166deg);
+  transform: rotateX(-166deg);
 }
 
 .press-open-face {
   position: absolute;
   inset: 0;
-  overflow: hidden;
-  border-radius: 1px 3px 3px 1px;
   backface-visibility: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 }
 
-.press-open-face--front {
-  padding: clamp(16px, 1.5vw, 24px);
-  padding-left: calc(clamp(16px, 1.5vw, 24px) + 12px);
+/* No flat jacket fill: the cover's face is the shelf's own cloth, permanently,
+ * which is what carries the grain and the lighting into the risen book. */
+.press-open-leafskin {
+  position: absolute;
+  inset: 0;
 }
 
-/* The reverse of the cover is an endpaper, not a mirrored jacket: darkened
- * board with the paper edge showing at the hinge. */
+/* The reverse of the cover is an endpaper, not a mirrored jacket. */
 .press-open-face--back {
-  transform: rotateY(180deg);
-  border-radius: 3px 1px 1px 3px;
+  background: var(--jacket-bg);
+  transform: rotateX(180deg);
+  border-radius: 0 0 3px 3px;
   filter: brightness(0.62) saturate(0.7);
-  box-shadow: inset -6px 0 12px -6px rgba(0, 0, 0, 0.55);
+  box-shadow: inset 0 -6px 12px -6px rgba(0, 0, 0, 0.55);
+}
+
+/* Cover typography. Deliberately not .press-book-title — that is the SPINE's
+ * clamped centred block, which would misrender the cover. */
+.press-open-cover-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  overflow: hidden;
+  font-family: var(--imprint-face, var(--font-serif));
+  font-size: clamp(1rem, 0.86rem + 0.5vw, 1.28rem);
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: 0.2px;
+  color: var(--jacket-ink);
+  text-wrap: balance;
+}
+
+/* Search highlights must survive into the clone. */
+.press-open-stage mark {
+  background: currentColor;
+  color: var(--jacket-bg);
+  padding: 0 3px;
+}
+
+/* Settled: everything that belongs to the BOOK rather than the page gets out of
+ * the way, leaving a plain sheet sitting exactly on the article card. The stage
+ * then lifts off it with nothing to jump. */
+.press-open-stage.is-settling .press-open-leaf,
+.press-open-stage.is-settling .press-open-base,
+.press-open-stage.is-settling .press-open-block,
+.press-open-stage.is-settling .press-open-page-shade,
+.press-open-stage.is-settling .press-open-spine,
+.press-open-stage--reverse.is-settling .press-open-leaf,
+.press-open-stage--reverse.is-settling .press-open-base,
+.press-open-stage--reverse.is-settling .press-open-block,
+.press-open-stage--reverse.is-settling .press-open-spine {
+  opacity: 0;
+}
+
+.press-open-stage.is-settling .press-open-pagetext,
+.press-open-stage--reverse.is-settling .press-open-pagetext {
+  opacity: 0;
+}
+
+.press-open-stage.is-settling .press-open-page,
+.press-open-stage--reverse.is-settling .press-open-page {
+  inset: 0;
+  border-radius: var(--radius, 12px);
+  box-shadow: none;
+  /* The article card carries this rail (.gen-research-doc[data-jacket]); the
+   * page has to grow it or the settle lands 12px off and the sheet inside sits
+   * left of the real article. It is also where the spine plate has been
+   * heading the whole time. */
+  border-left: 12px solid var(--jacket-bg);
+  transition: opacity 280ms ease, inset 460ms var(--press-ease),
+    border-radius 420ms ease, box-shadow 420ms ease;
+}
+
+.press-open-stage.is-settling .press-open-page::after {
+  opacity: 0;
+}
+
+.press-open-stage.is-clearing {
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+/* ── Closing the book (the reverse) ─────────────────────
+ * The same frame, run backwards: the page draws back off the article's paper
+ * into a standing cover, the cover shuts, then the volume rolls and tips down
+ * into its slot on the shelf as the wash clears. Every transition it needs is
+ * declared on a base rule above, because this path REMOVES .is-settling. */
+.press-open-stage--reverse .press-open-scrim,
+.press-open-stage--reverse .press-open-ground {
+  opacity: 0;
+  transition: opacity 360ms var(--press-ease);
+}
+
+.press-open-stage--reverse.is-veiling .press-open-scrim {
+  opacity: 0.86;
+}
+
+.press-open-stage--reverse.is-veiling .press-open-ground {
+  opacity: 1;
+}
+
+.press-open-stage--reverse .press-open-page-shade {
+  opacity: 0;
+  transform: scaleY(0.2);
+  transition: opacity 460ms ease, transform 460ms ease;
+}
+
+/* Beat order on the way back is the reverse of the way out: the cover shuts
+ * FIRST, then the volume rolls and tips down into its slot. The base rules
+ * carry a 400ms leaf delay for the OPEN (where the swing must lag the rise), so
+ * the close has to invert it — and the descent's delay lives on .is-closing
+ * rather than the base rule, because the base rules are also what drive beat 1,
+ * the draw-back off the article's paper, which must not be delayed. */
+.press-open-stage--reverse .press-open-leaf {
+  transition: transform 620ms var(--press-ease), opacity 320ms ease;
+}
+
+.press-open-stage--reverse.is-closing .press-open-volume {
+  transition:
+    transform 520ms var(--press-ease) 360ms,
+    left 620ms var(--press-ease) 360ms,
+    top 620ms var(--press-ease) 360ms;
+}
+
+.press-open-stage--reverse.is-closing .press-open-body {
+  transition:
+    transform 620ms var(--press-ease) 360ms,
+    left 620ms var(--press-ease) 360ms,
+    top 620ms var(--press-ease) 360ms,
+    width 620ms var(--press-ease) 360ms,
+    height 620ms var(--press-ease) 360ms;
+}
+
+.press-open-stage--reverse.is-closing .press-open-spine {
+  transition: transform 620ms var(--press-ease) 360ms;
+}
+
+.press-open-stage--reverse.is-closing .press-open-leaf {
+  transform: rotateX(0deg);
+}
+
+.press-open-stage--reverse.is-closing .press-open-page-shade {
+  opacity: 1;
+  transform: none;
+}
+
+.press-open-stage--reverse.is-closing .press-open-spine > span {
+  opacity: 1;
+  transition: opacity 260ms ease 340ms;
+}
+
+.press-open-stage--reverse .press-open-spine > span {
+  opacity: 0;
+}
+
+/* The boards and page go out as the cover shuts over them. */
+.press-open-stage--reverse.is-closing .press-open-base,
+.press-open-stage--reverse.is-closing .press-open-block,
+.press-open-stage--reverse.is-closing .press-open-page,
+.press-open-stage--reverse.is-closing .press-open-pagetext,
+.press-open-stage--reverse.is-closing .press-open-covertext {
+  opacity: 0;
+  transition: opacity 260ms ease 300ms;
+}
+
+.press-open-stage--reverse.is-closing .press-open-scrim,
+.press-open-stage--reverse.is-closing .press-open-ground {
+  opacity: 0;
+  transition: opacity 520ms var(--press-ease) 400ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* openBookThen() bails before building the stage, but keep the belt-and-
-   * braces rules in case a stage is ever left on screen. */
+  /* openBookThen()/closeBookThen() bail before building the stage, but keep the
+   * belt-and-braces rules in case a stage is ever left on screen. */
   .press-open-stage,
-  .press-open-book,
-  .press-open-leaf,
-  .press-open-page-shade {
-    transition: none;
-  }
-
-  .press-open-stage.is-open .press-open-scrim {
-    animation: none;
+  .press-open-stage *,
+  .press-open-volume,
+  .press-open-body,
+  .press-open-leaf {
+    transition: none !important;
   }
 }
 
@@ -3854,19 +4474,6 @@ body.research-shelf .controls {
 /* Two covers per row on phones leaves ~150px of cover width, so the title
  * needs to drop a step and shed a couple of clamped lines. */
 @media (max-width: 619px) {
-  .press-book {
-    --cover-pad: 14px;
-  }
-
-  .press-book-title {
-    font-size: 0.9rem;
-    -webkit-line-clamp: 6;
-  }
-
-  .press-book-byline {
-    font-size: 0.74rem;
-  }
-
   .press-shelf,
   .press-shelf-empty,
   .press-shelf-foot {
@@ -4757,6 +5364,45 @@ a.wiki-history-summary:hover { text-decoration: underline; }
   }
   .wiki-history-op { grid-column: 2; }
   .wiki-history-summary { grid-column: 1 / -1; }
+}
+
+/* ── History right rail (wide viewports) ─────────────────
+ * With enough width the page splits into two columns: body +
+ * backlinks/related left, History as a sticky right rail with
+ * its own scroll (same sticky pattern as the front-page pane).
+ * Below the breakpoint the rail stacks after the main column,
+ * which is the pre-rail layout unchanged. */
+@media (min-width: 1200px) {
+  .wiki-page-card {
+    max-width: min(var(--page-max), 1160px);
+    /* .content-card clips (overflow: hidden), which kills position: sticky
+     * for the rail — opt out like .wiki-index-card does. */
+    overflow: visible;
+  }
+  .wiki-page-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 0 44px;
+    align-items: start;
+  }
+  .wiki-page-rail {
+    position: sticky;
+    top: calc(var(--sticky-nav-height) + 16px);
+    max-height: calc(100vh - var(--sticky-nav-height) - 32px);
+    overflow-y: auto;
+  }
+  .wiki-page-rail .wiki-history {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  /* The ~300px rail gets the same stacked rows as narrow screens. */
+  .wiki-page-rail .wiki-history-item {
+    grid-template-columns: 5.75rem 1fr;
+    row-gap: 2px;
+  }
+  .wiki-page-rail .wiki-history-op { grid-column: 2; }
+  .wiki-page-rail .wiki-history-summary { grid-column: 1 / -1; }
 }
 
 /* ── Wikilinks (in-body and in lists) ─────────────────── */

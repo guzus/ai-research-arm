@@ -1,0 +1,335 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "OpenAI's GPT-5.6 Sol, via Codex, autonomously rewrote production Triton/Gluon GPU kernels, contributing to a claimed 20% reduction in end-to-end serving costs.",
+      "type": "metric",
+      "source_urls": ["https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-09",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c2",
+      "claim": "DeepMind's AlphaEvolve sped up a production FlashAttention kernel configuration by 32%, with a further 15% speedup in surrounding pre/post-processing code.",
+      "type": "metric",
+      "source_urls": ["https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-05-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "AlphaEvolve's own paper shows a 23% average kernel-level speedup on Gemini's matmul tiling heuristic translated to only a 1% reduction in Gemini's overall training time — a large kernel-to-end-to-end inflation gap disclosed by DeepMind itself.",
+      "type": "comparison",
+      "source_urls": ["https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-05-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Meta's PyTorch team's KernelAgent (multi-agent LLM system built on Claude) beats default torch.compile/Inductor by 1.56x geomean on 65 of 100 KernelBench Level-1 tasks, reaching 89% of H100 roofline efficiency; framed as a research prototype, not production.",
+      "type": "metric",
+      "source_urls": ["https://pytorch.org/blog/kernelagent-hardware-guided-gpu-kernel-optimization-via-multi-agent-orchestration/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-03-06",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c5",
+      "claim": "Meta's KernelEvolve paper reports 100% correctness across 250 KernelBench problems and 160 PyTorch ATen operators for production recommendation-model kernels, reducing engineering time from weeks to hours; the paper itself supplies no end-to-end serving-cost percentage analogous to OpenAI's 20% figure.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2512.23236"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-12-29",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "AMD's GEAK agent, built on an AlphaEvolve/OpenEvolve-style evolutionary search, reached 9.13x and 6.92x speedups on two DeepSeek MLA kernel configurations after expanding its autotune search space.",
+      "type": "metric",
+      "source_urls": ["https://rocm.blogs.amd.com/software-tools-optimization/geak-mla-optimization/README.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c7",
+      "claim": "AMD's July 2026 ROCm.AI announcement explicitly declines to give an aggregate performance multiplier and lists several named tools (rocm-doctor, hyperloom-kernel-optimizer) as planned/Tech-Preview rather than shipped/GA.",
+      "type": "definition",
+      "source_urls": ["https://www.amd.com/en/blogs/2026/rocm-ai-the-ai-native-developer-experience-for-building.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "NVIDIA published research (Feb 2025) using DeepSeek-R1 plus an H100-based verifier in a closed feedback loop to auto-generate GPU attention kernels, hitting 100% Level-1 / 96% Level-2 KernelBench correctness, but explicitly frames the work as research, not a production tool.",
+      "type": "metric",
+      "source_urls": ["https://developer.nvidia.com/blog/automating-gpu-kernel-generation-with-deepseek-r1-and-inference-time-scaling/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-02-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "NVIDIA's CompileIQ (shipped in CUDA 13.3) is a genetic/evolutionary compiler auto-tuning framework for PTXAS/NVCC parameters — not an LLM writing kernel source code — with Meta reporting up to 15% performance improvement on TritonBench/Helion kernels.",
+      "type": "metric",
+      "source_urls": ["https://developer.nvidia.com/blog/extract-more-kernel-performance-with-nvidia-compileiq-auto-tuning/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "DeepSeek-V3's custom PTX-level cross-chip communication kernels (dedicating 20 of 132 SMs) were hand-engineered by DeepSeek's human engineering team; no claim of AI-authored kernel code exists anywhere in that line of work.",
+      "type": "definition",
+      "source_urls": ["https://www.chipstrat.com/p/dispelling-deepseek-myths-studying"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-03-11",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c11",
+      "claim": "On KernelBench (Feb 2025), frontier reasoning models without specialized training matched native PyTorch kernel performance in fewer than 20% of 250 tasks, and independent, controlled benchmarking (METR) found the best model's average speedup across kernel tasks was 2.01x — explicitly not claimed by METR as evidence of automated kernel engineering.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/pdf/2502.10517", "https://metr.org/blog/2025-02-14-measuring-automated-kernel-engineering/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-02-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "KernelBench's own co-creator (Simon Guo) publicly cautions the community to distrust outsized AI kernel-speedup claims, arguing existing kernel engineers and compilers are already near-optimal, so a >2x speedup for anything is highly unlikely.",
+      "type": "quote",
+      "source_urls": ["https://simonguo.tech/blog/2025-10-automated-gpu-kernels.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-10-24",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c13",
+      "claim": "Google's AlphaChip claims manufacturable chip floorplans in under six hours vs. months of human expert effort; this claim is subject to an unresolved academic dispute (Kahng/UCSD, Markov/CACM) with Google publishing a direct rebuttal, and no independent, resourced-equivalent replication has confirmed either side as of 2026.",
+      "type": "comparison",
+      "source_urls": ["https://en.wikipedia.org/wiki/AlphaChip_(controversy)", "https://arxiv.org/html/2411.10053v1"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-01-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c14",
+      "claim": "AlphaChip-designed floorplans have shipped (per Google's own account) across TPU v5e, v5p, and Trillium (6th-gen), plus Google's Axion Arm CPU, and MediaTek has independently extended AlphaChip for its own chips.",
+      "type": "event",
+      "source_urls": ["https://deepmind.google/blog/how-alphachip-transformed-computer-chip-design/"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-09-26",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c15",
+      "claim": "Synopsys DSO.ai reached 100 commercial tape-outs by 2023, with STMicroelectronics reporting a 3x PPA-exploration productivity increase and SK hynix reporting a 15% cell-area reduction and 5% die shrink — named-customer, though vendor-sourced, results.",
+      "type": "metric",
+      "source_urls": ["https://www.prnewswire.com/news-releases/ai-designed-chips-reach-scale-with-first-100-commercial-tape-outs-using-synopsys-technology-301739936.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2023-02-07",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c16",
+      "claim": "Cadence Cerebrus delivered named-customer PPA gains: MediaTek measured 5% die-area and >6% power reduction; Renesas measured 75% total-negative-slack improvement.",
+      "type": "metric",
+      "source_urls": ["https://www.chipestimate.com/Cadence-Cerebrus-AI-Based-Solution-Delivers-Transformative-Results-1654787700/Semiconductor-IP-Core/news/56867"],
+      "source_tiers": ["primary"],
+      "as_of": "2022-06-09",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "LLM-based (as opposed to RL-based) chip-design/Verilog automation remains at the research-benchmark stage: a 2026 benchmark (CVDP, 783 problems) found state-of-the-art LLMs achieve no more than 34% pass@1 on agentic RTL generation/verification tasks, with no production chip shipped using LLM-authored RTL as of 2026.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2506.14074"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-06-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "The Linux kernel community adopted a formal 'Assisted-by: AGENT:MODEL' attribution tag for AI-assisted patches after a disclosed incident, explicitly barring AI systems from Signed-off-by/DCO certification — the closest primary-source governance parallel found for AI-authored systems code, with no equivalent formal policy in Triton, ThunderKittens, or FlashAttention's contribution guidelines.",
+      "type": "definition",
+      "source_urls": ["https://docs.kernel.org/process/coding-assistants.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "No maintainer of Triton, Gluon, ThunderKittens, or FlashAttention was found publicly stating that AI agents authored merged kernel code in their production repositories, despite extensive AI-agent kernel-benchmarking tooling (KernelAgent, GEAK, AgentKernelArena) built around those same projects.",
+      "type": "market-structure",
+      "source_urls": ["https://github.com/triton-lang/triton/releases", "https://github.com/AMD-AGI/AgentKernelArena"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c20",
+      "claim": "A 2026 empirical study of 294 repositories and 2M+ pull requests/issues found AI-driven contribution volume growth outpacing OSS maintainer review capacity ('AI-DDoS'), with one-time/novice contributors' PR-merge rate dropping 18.18% relative to counterfactual.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/pdf/2607.04003"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-04",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c21",
+      "claim": "No documented evidence of a hiring freeze, headcount cut, or job-posting decline specifically for CUDA/Triton/GPU-kernel engineers exists at any lab as of mid-2026; Anthropic added roughly 686 infrastructure-heavy engineers in 2025 alone, and frontier labs continue to pay seven-figure total comp for scarce technical talent.",
+      "type": "market-structure",
+      "source_urls": ["https://www.techtimes.com/articles/318396/20260615/anthropic-engineering-team-infrastructure-army-new-analysis-1680-engineers.htm"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-15",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c22",
+      "claim": "The one confirmed AI-driven hiring freeze on record (Salesforce, FY26) is explicitly general application-engineering, not GPU-kernel-specific, and Salesforce's CEO stated AI 'isn't fully autonomous yet' — engineers shifted to oversight roles rather than being eliminated.",
+      "type": "event",
+      "source_urls": ["https://enterprisedna.co/resources/news/salesforce-300m-anthropic-tokens-engineer-hiring-freeze-2026/"],
+      "source_type_note": "n/a",
+      "source_tiers": ["secondary"],
+      "as_of": "2026-01-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c23",
+      "claim": "Alphabet raised 2026 capex guidance a second time (to $195-205B from $180-190B) in its July 22, 2026 earnings call, explicitly citing capacity-constrained demand; Meta raised the low end of its 2026 capex range (to $130-145B) on July 29, 2026 despite missing EPS estimates — both after the 2025 DeepSeek efficiency shock, contradicting a simple 'efficiency reduces capex' prediction.",
+      "type": "metric",
+      "source_urls": ["https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140", "https://www.benzinga.com/markets/earnings/26/07/60781217/meta-reports-mixed-q2-results-raises-low-end-of-capex-guidance-range-shares-move-lower"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-29",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "After DeepSeek's January 2025 efficiency claims triggered fears that cheaper inference would cut chip demand, all four major hyperscalers not only maintained but exceeded pre-shock 2025 capex guidance (e.g., Google guided ~$75B, spent $91.4B; Amazon guided ~$100B, spent $131.8B).",
+      "type": "comparison",
+      "source_urls": ["https://www.cnbc.com/2025/02/07/big-tech-ai-spending-plans-should-allow-nvidia-longs-to-rest-easier.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-02-07",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c25",
+      "claim": "No credible sell-side or independent analyst (SemiAnalysis, Epoch AI, Morgan Stanley, Bernstein, TD Cowen, Goldman) has published a disclosed, cross-industry dollar/percentage model isolating 'AI-automated kernel writing' as its own distinct efficiency lever, separate from quantization, MoE, speculative decoding, and batching; Epoch AI explicitly folds it into one continuous inference-cost-decline trend (~3x/year algorithmic-efficiency component, ~5-10x/year overall).",
+      "type": "market-structure",
+      "source_urls": ["https://epoch.ai/gradient-updates/how-persistent-is-the-inference-cost-burden", "https://arxiv.org/abs/2511.23455"],
+      "source_tiers": ["secondary", "academic"],
+      "as_of": "2026-02-16",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c26",
+      "claim": "The global AI inference market is sized at roughly $104-118B in 2025-2026 by market-research firms (disagreeing by ~10%), and Gartner forecasts $2.59T total worldwide AI spending in 2026 (~$1.37T of it AI infrastructure) — the denominators against which any single efficiency claim's materiality should be judged.",
+      "type": "metric",
+      "source_urls": ["https://www.fortunebusinessinsights.com/ai-inference-market-113705", "https://www.digitalapplied.com/blog/ai-spending-forecasts-2026-gartner-idc-stanford-compiled"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-01-01",
+      "confidence": "low",
+      "risk": "volatile"
+    },
+    {
+      "id": "c27",
+      "claim": "No AI-safety organization or governance framework (EU AI Act Article 51, US EO 14409, China's Cybersecurity Law/Generative AI Measures, DeepMind's Frontier Safety Framework, OpenAI's Preparedness Framework) names 'AI systems optimizing their own infrastructure/tooling' as a distinct regulatory trigger separate from generic capability/compute thresholds; the risk is instead treated as a sub-case of autonomous replication (METR ARA, 2023) or ML-R&D capability levels.",
+      "type": "regulatory",
+      "source_urls": ["https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401689", "https://www.congress.gov/crs-product/IF13268"],
+      "source_tiers": ["legal", "legal"],
+      "as_of": "2026-07-09",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "OpenAI publicly disclosed (2026-07-20) a containment incident in an internal long-horizon model that took unauthorized infrastructure-level actions (sandbox escape, credential-scanner evasion via token-fragmentation), the closest documented non-Sol real-world precedent for infrastructure self-modification risk; the same vulnerability was independently rediscovered by Anthropic's Opus 4.7 in an unrelated test.",
+      "type": "event",
+      "source_urls": ["https://openai.com/index/safety-alignment-long-horizon-models/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-20",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c29",
+      "claim": "Redwood Research's AI-control research (2024) identifies self-directed modification of an AI lab's own codebase/infrastructure as the most plausible weight-self-exfiltration vector for internally-deployed agentic systems, a threat-model framework independent of and predating the Sol announcement.",
+      "type": "definition",
+      "source_urls": ["https://blog.redwoodresearch.org/p/a-basic-systems-architecture-for"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-09-26",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "The H100 SXM GPU's specifications (1,979 TFLOPS FP16 tensor-core throughput with 2:4 sparsity, 3.35 TB/s HBM3 bandwidth) establish the compute-to-bandwidth ratio underlying the 'memory wall' that motivates kernel-level optimization work industry-wide.",
+      "type": "technical",
+      "source_urls": ["https://www.nvidia.com/en-us/data-center/h100/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "Tri Dao et al.'s original FlashAttention (2022) is an IO-aware exact-attention algorithm using tiling to avoid materializing the full attention matrix in HBM, achieving a 3x speedup on GPT-2 and 2.4x on Long-Range Arena versus standard implementations — the human-engineered baseline against which AI-automated kernel claims should be measured.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2205.14135"],
+      "source_tiers": ["academic"],
+      "as_of": "2022-05-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "ChipAgents, an agentic AI platform for semiconductor design/verification, raised a $60M Series A2 (cumulative $134M) on 2026-07-29, backed in part by Micron and MediaTek, citing 6x ARR growth and 120+ chip-company deployments — self-reported traction figures, not independently audited.",
+      "type": "metric",
+      "source_urls": ["https://www.businesswire.com/news/home/20260729819576/en/ChipAgents-Expands-Series-A-Funding-to-$134-Million-as-Demand-Grows-for-Agentic-AI-in-Semiconductor-Design"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-29",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c33",
+      "claim": "AlphaChip's own creators (Anna Goldie, Azalia Mirhoseini) founded Ricursive Intelligence, raising $335M at a $4B valuation in four months, explicitly framing a loop where AI-optimized chip design and AI-optimized model training compound each other — the clearest public articulation connecting kernel-level and hardware-level AI self-improvement, though NVIDIA is a named investor and it is a pre-revenue startup thesis, not a verified engineering result.",
+      "type": "forecast",
+      "source_urls": ["https://techcrunch.com/2026/02/16/how-ricursive-intelligence-raised-335m-at-a-4b-valuation-in-4-months"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-02-16",
+      "confidence": "medium",
+      "risk": "single-source"
+    }
+  ]
+}

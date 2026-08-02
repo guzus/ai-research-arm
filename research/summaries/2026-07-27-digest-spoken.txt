@@ -1,0 +1,11 @@
+Speaker 1: Monday, July twenty-seventh, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic is standing completely alone right now — Google and AMD both signed onto that open-weights letter, and Anthropic didn't, prompting David Sacks to call the move "gaslighting."
+Speaker 1: Meanwhile DeepSeek has hit pause on its second funding round, after leaked remarks from Liang Wenfeng about a compute gap started circulating.
+Speaker 2: That round was targeting roughly [emphasis] seventy four billion dollars [/emphasis] in valuation, so a pause there is a big deal for the whole sector.
+Speaker 1: On the model front, Opus five just topped a new intelligence benchmark, and its system card shows major gains on prompt-injection resistance.
+Speaker 2: There's also a single-source report that Altman is planning a Washington trip to preview OpenAI's next model, worth watching, though unconfirmed.
+Speaker 1: Some quick numbers, Etched reportedly raised [emphasis] three hundred million dollars [/emphasis] in a Series C at a ten point three billion dollar valuation.
+Speaker 2: And on the policy side, over three hundred U.S. communities have now banned or paused data centers since twenty twenty-three, with two hundred seventy five of those bans coming this year alone. [dramatic_pause] That's an accelerating trend.
+Speaker 1: On Hacker News, a piece on Claude five's context engineering blew up, pulling in four hundred twenty six points and three hundred twenty five comments.
+Speaker 2: The big story lines everyone's tracking today are Anthropic's isolation on open weights and Opus five's benchmark run, trending hard across Hacker News and X.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

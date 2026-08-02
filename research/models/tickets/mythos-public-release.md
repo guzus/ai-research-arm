@@ -39,6 +39,18 @@ status_note: |
   it will "continue to work with the government to **expand access to Mythos 5**."
   Gated stance otherwise unchanged; status stays `confirmed`, verification stays
   `confirmed`.
+
+  **2026-07-30 — new capability disclosure: cryptanalysis research.**
+  @AnthropicAI officially disclosed that **"Claude Mythos Preview" has helped
+  our researchers find weaknesses in cryptographic algorithms** (named
+  examples: HAWK, AES), alongside a new benchmark, **"CryptanalysisBench,"**
+  built with academic partners at ETH Zurich, Tel Aviv, and Haifa. This is a
+  primary-source capability reveal for the gated Mythos line — distinct from,
+  and not to be conflated with, an unrelated low-credibility "Mythos 5 too
+  dangerous to release" marketing/listicle claim circulating the same window
+  (single low-quality account, riffing on the real Mythos name, held as
+  noise). Gated-preview stance unchanged; status stays `confirmed`,
+  verification stays `confirmed`.
 expected: "Mythos 5 stays restricted (Glasswing + trusted-access program); no public-release schedule for the unrestricted model. Public capability now reaches users via Fable 5 ([[claude-fable-5]])."
 labels:
   - frontier-model
@@ -61,7 +73,7 @@ sources:
   - "@alexalbert__"
   - https://the-decoder.com/anthropics-mythos-model-is-reportedly-powering-nsa-offensive-cyber-ops-against-china-and-iran/
 created_at: 2026-04-12
-updated_at: 2026-07-02
+updated_at: 2026-07-31
 closed_at: null
 closed_reason: null
 history:
@@ -99,6 +111,8 @@ history:
     change: "Update — Mythos 5 SUSPENDED by US export control (2026-06-13). The same export-control directive that pulled the public Fable 5 also barred all foreign-national access to Mythos 5, forcing Anthropic to disable both worldwide; some Anthropic staff who built the models are reportedly locked out under the foreign-national bar. The regulatory action itself is tracked on the new legal-event ticket [[anthropic-fable-mythos-export-control-2026-06]]; this entry records the impact on the gated Mythos line. Gated-product stance otherwise unchanged; status stays confirmed, verification stays confirmed"
   - ts: 2026-07-02
     change: "Update — export-control suspension LIFTED (2026-06-30/07-01); Mythos 5 re-cleared, gated stance unchanged. Commerce lifted the June 12 export controls on both Mythos 5 and the public [[claude-fable-5]] (@AnthropicAI June 30 23:52 UTC, ~34.7K likes + Politico general-re-release framing; regulatory event on [[anthropic-fable-mythos-export-control-2026-06]]). Fable 5 returned to general availability (metered); Mythos 5 remains the gated defenders/governments product — the lift restores the pre-suspension status quo, NOT a public release of the unrestricted model. Anthropic says it will 'continue to work with the government to expand access to Mythos 5.' Gated stance unchanged; status stays confirmed, verification stays confirmed"
+  - ts: 2026-07-31
+    change: "New capability disclosure — @AnthropicAI officially says Claude Mythos Preview has helped researchers find weaknesses in cryptographic algorithms (HAWK, AES), alongside a new CryptanalysisBench benchmark built with ETH Zurich/Tel Aviv/Haifa academics. Primary-source capability reveal for the gated Mythos line; distinct from an unrelated low-credibility 'Mythos 5 too dangerous' marketing claim circulating the same window (noise, not tracked). Gated stance unchanged; status stays confirmed, verification stays confirmed."
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a

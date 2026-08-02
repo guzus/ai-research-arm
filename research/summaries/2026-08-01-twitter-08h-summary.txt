@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-01 08:31:39 UTC
+
+CYCLE: OpenAI confirms "Astra" and attaches a 10-proof math claim to it; separately resets Codex/ChatGPT Work quotas.
+
+TOP STORIES:
+• Bubeck and Noam Brown confirm Astra as OpenAI's next model family, say an internal version proved 10 open problems incl. a disproof of Connes' Rigidity Conjecture, with Lean certificates to ship [✓ on the claim, ⚠ on the results]
+• OpenAI resets Codex + ChatGPT Work usage limits fleet-wide, two days after the 80% GPT-5.6 Luna price cut [✓]
+• WSJ: Aschenbrenner's Situational Awareness fund lost ~67% of its value in July [⚠]
+
+WATCH: Whether the 10 Astra Lean certificates publish and typecheck, and whether a specialist confirms each statement was genuinely open.
+
+Full update on GitHub.

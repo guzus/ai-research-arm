@@ -3,7 +3,7 @@ slug: nestai-nestos-launch-2026-07
 title: NestAI (Helsinki defense-AI startup) launches first models via NestOS
 company: NestAI
 model: NestOS models
-status: rumored
+status: closed
 status_note: |
   A single account (@TokenandoAI, 2026-07-14) reports that **NestAI**, a
   Helsinki-based defense-AI company founded by Peter Sarlin, **launched its
@@ -23,12 +23,14 @@ verification: unverified
 sources:
   - "@TokenandoAI"
 created_at: 2026-07-14
-updated_at: 2026-07-14
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-29
+closed_at: 2026-07-29
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-07-14
     change: "Created — @TokenandoAI reports NestAI (Helsinki defense-AI startup founded by Peter Sarlin) launched its first AI models on 2026-07-14 via a platform called NestOS, targeting autonomous drone operations and battlefield mission orchestration. Single account, no NestAI primary or independent corroboration found → status rumored, verification unverified."
+  - ts: 2026-07-29
+    change: "Closed — stale-rumor-unverified. 15 days since creation with no second source, no NestAI primary statement, and no fresh corroboration of any kind. Per the ticket-tickets contract's closure trigger for unverified rumors stale ≥15 daily cycles."
 ---
 
 A single account, @TokenandoAI, reported on 2026-07-14 that **NestAI** — a

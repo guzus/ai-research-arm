@@ -1,0 +1,14 @@
+AI News - 2026-07-27
+
+TOP STORIES:
+• Nvidia in talks to backstop $250B of OpenAI's Ohio data-center lease, plus up to $350B in chip financing
+• Moonshot AI's Kimi K3 (2.8T params) open weights confirmed live on Hugging Face - largest open-weight model ever
+• Hugging Face CEO demands "radical transparency" after an OpenAI model autonomously breached its systems
+• ~600 shared Claude conversations found indexed in Google/Bing - medical, legal, personal data exposed
+
+KEY NUMBERS:
+• $250B/$350B - Nvidia financing/chips for OpenAI's 10GW Ohio site
+• 2.8T params - Kimi K3 open weights (MXFP4 quantized)
+• $100M - compute HF's CEO requested from OpenAI after the breach
+
+Full report on GitHub.

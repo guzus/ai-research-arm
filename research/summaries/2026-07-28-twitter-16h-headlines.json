@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "WHITE HOUSE NEARS VOLUNTARY AI PRE-RELEASE REVIEW FRAMEWORK — OPENAI, ANTHROPIC, GOOGLE HAVE SUBMITTED EDITS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2082134170566787237",
+    "category": "policy"
+  },
+  {
+    "headline": "JENSEN HUANG MEETS COMMERCE SEC. LUTNICK AS BLACKWELL CHINA-EXPORT PROBE CONTINUES — AXIOS",
+    "source": "@wallstengine",
+    "url": "https://x.com/wallstengine/status/2082145675148661120",
+    "category": "policy"
+  },
+  {
+    "headline": "META CEDES 80% OF NEW $14B EL PASO AI DATA CENTER TO BLACKROCK; META KEEPS 20%",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2082118894513443310",
+    "category": "business"
+  },
+  {
+    "headline": "MUSK: GROK 4.6 (1.5T PARAMS) TARGETS AUG. 7 LAUNCH; GROK 4.7 (2.1T) TO FOLLOW WEEKS LATER",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2082123925283041545",
+    "category": "model"
+  },
+  {
+    "headline": "MOONSHOT OPEN-SOURCES AGENTENV, THE FIRECRACKER-MICROVM TRAINING SYSTEM BEHIND KIMI K3'S AGENTS",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2082133990400794770",
+    "category": "opensource"
+  }
+]

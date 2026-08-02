@@ -1,7 +1,9 @@
 name: Twitter Model A/B Eval
 
 # Head-to-head model evaluation on the REAL Twitter-summary workload:
-#   leg "claude"      → lane twitter-ab-claude (native Claude, claude-sonnet-5)
+#   leg "claude"      → lane twitter-ab-claude (native Claude on whatever
+#                       fallback.native_model serves in production — claude-opus-5
+#                       since 2026-08-01, claude-sonnet-5 before it)
 #   leg "zai-glm-5p2" → lane twitter-ab-zai    (GLM-5.2 via Z.ai Coding Plan)
 #
 # Cardinal rule: PARITY. Both legs get the SAME byte-identical input
@@ -126,7 +128,7 @@ jobs:
           echo "legs: claude=${RUN_CLAUDE} zai-glm-5p2=${RUN_ZAI}; judge=${JUDGE}; state=${STATE}"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: '22'
 
@@ -382,11 +384,15 @@ jobs:
             cp "$EXEC_FILE" "$EXEC_COPY"
           fi
           cp .twitter-input/birdy-tool-log.jsonl "$STATE/claude-birdy-tool-log.jsonl" 2>/dev/null || true
+          # Leg A tracks the PRODUCTION native model, so the expectation is read
+          # from the routing SSOT rather than pinned here — a hardcoded id would
+          # mark every run contaminated the moment fallback.native_model moves.
+          EXPECTED_MODEL=$(python3 scripts/resolve_backend_lane.py --top fallback.native_model)
           jq -n \
             --arg leg "claude" \
             --arg lane "twitter-ab-claude" \
             --arg expected_provider "claude" \
-            --arg expected_model "claude-sonnet-5" \
+            --arg expected_model "$EXPECTED_MODEL" \
             --arg outcome "$OUTCOME" \
             --arg requested "$REQUESTED" \
             --arg effective "$EFFECTIVE" \

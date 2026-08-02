@@ -1,0 +1,10 @@
+Speaker 1: Tuesday, July twenty-eighth, twenty twenty-six.
+Speaker 2: [high_energy] Big story today, Anthropic just broke its silence on the open weights fight, pushing for chip controls paired with mandatory safety testing.
+Speaker 1: That's a notable shift, they're not just criticizing open models anymore, they're proposing the regulatory framework themselves.
+Speaker 2: Meanwhile Moonshot fully open-sourced Kimi K3, a two point eight trillion parameter mixture of experts model, and it dominated Hacker News all day.
+Speaker 1: [emphasis] The thread went from eighty points to over twelve hundred fifty points [/emphasis] in a single day, the fastest climb we've tracked in a while.
+Speaker 2: On the compute side, Nvidia is backing Ilya Sutskever's SSI with roughly [emphasis] five billion dollars [/emphasis], and pledging a ten times scale-up in compute.
+Speaker 1: They're also reportedly in talks for two hundred fifty billion dollars in financing for OpenAI's Ohio datacenter.
+Speaker 2: [dramatic_pause] And in China, CXMT's Shanghai IPO popped four hundred seventy percent, landing a valuation near four hundred eighty-seven billion dollars.
+Speaker 1: Worth flagging, Microsoft's MAI-Cyber-1-Flash hit ninety-six percent on CyberGym while running about fifty percent cheaper than comparable models.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.

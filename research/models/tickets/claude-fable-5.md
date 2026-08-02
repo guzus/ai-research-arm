@@ -3,7 +3,7 @@ slug: claude-fable-5
 title: Claude Fable 5 — public release of the Mythos-class model
 company: Anthropic
 model: Claude Fable 5
-status: released
+status: closed
 status_note: |
   **Publicly released 2026-06-09** (@claudeai 17:08 UTC: "Introducing Claude
   Fable 5: a Mythos-class model that we've made safe for general use. Its
@@ -171,9 +171,9 @@ sources:
   - "@johnseach"
   - "@yancya"
 created_at: 2026-06-10
-updated_at: 2026-07-12
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-31
+closed_at: 2026-07-31
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-10
     change: "Created — Anthropic publicly released **Claude Fable 5** on 2026-06-09 (@claudeai 17:08 UTC, ~90K likes / 12.8K RT): a Mythos-class model 'made safe for general use,' Anthropic's strongest generally-available model. Two-tier launch alongside the restricted **Mythos 5** (vetted defenders/govts, tracked on [[mythos-public-release]]). Fable 5 falls back to **Opus 4.8** on high-risk prompts (cyber/bio/chem/distillation), reportedly <5% of sessions. Pricing $10/$50 per MTok (≈½ the Mythos Preview's $25/$125); free for Pro/Max/Team until 2026-06-22, then credit-metered; new 30-day retention policy. Benchmarks: SOTA on Artificial Analysis (~65), SWE-bench Pro 80.3, Hex first-ever 90% on its analytics benchmark; Stripe used it to migrate a 50M-line Ruby codebase in ~a day. Spun out from [[mythos-public-release]] per that ticket's dedup note (a toned-down public variant with its own release plan = separate ticket). Status released, verification confirmed (official @claudeai/@AnthropicAI primary)"
@@ -197,6 +197,8 @@ history:
     change: "Anthropic published a 'first draft' jailbreak severity framework blog post — a 0-4 severity scale developed with Amazon, Microsoft, and Google, expanding on the July 1 restoration post's vaguer 'consensus framework' language ('a CVSS for jailbreaks' per @Ruben_Luetke). Independently fetched the Anthropic blog URL to confirm; the page itself labels it a first draft, and no Amazon/Microsoft/Google statement confirms adopting these specific delineations. Status stays released; verification stays confirmed."
   - ts: 2026-07-12
     change: "Metered-credits cliff reportedly arrived. Two independent user reports (@johnseach, @yancya) say Fable 5 was pulled off standard subscriptions today and moved to usage-credits-only at $10/$50 per MTok. Matches the July 7 @alexalbert__ tweet's stated extension boundary ('through July 12') exactly, corroborating the mechanism though no fresh official 'pulled' post was captured in-window. Status stays released; verification stays confirmed."
+  - ts: 2026-07-31
+    change: "Closed — released-and-aged. 52 days past the 2026-06-09 public release with no successor (no Fable 5.x / next-class public release announced) and no fresh signal since the 2026-07-12 metered-credits update, per this ticket's own transition trigger ('≥4 weeks past 2026-06-09 release with no successor → close with released-and-aged'). Mythos 5 (gated) continues on [[mythos-public-release]]."
 ---
 
 **Claude Fable 5** is the public-facing resolution of the long-running

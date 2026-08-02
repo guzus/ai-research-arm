@@ -26,7 +26,7 @@ deployed continuously to **[ara.guzus.xyz](https://ara.guzus.xyz)**.
 ## Today's Front Page
 
 <!-- FRONT_PAGE_START -->
-![Today's Front Page](research/front-page/2026-07-26-front-page.png)
+![Today's Front Page](research/front-page/2026-08-02-front-page.png)
 <!-- FRONT_PAGE_END -->
 
 > 🗞️ Rendered every day at 00:30 UTC from the digest — deterministic SVG→PNG,
@@ -164,11 +164,11 @@ flowchart LR
         OAI["🤖 OpenAI Codex CLI<br/><i>ChatGPT auth</i>"]
         MSH["🌙 Moonshot Kimi K3<br/><i>opencode CLI</i>"]
     end
-    lanes0 -->|"claude-sonnet-5"| ANT
-    strict0 -->|"claude-sonnet-5"| ANT
+    lanes0 -->|"claude-opus-5"| ANT
+    strict0 -->|"claude-opus-5"| ANT
     strict1 -->|"deepseek-v4-flash"| FW
     strict2 -->|"glm-5.2"| ZAI
-    gendef -->|"claude-sonnet-5"| ANT
+    gendef -->|"claude-opus-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
     gendef -.->|"backend=codex"| OAI

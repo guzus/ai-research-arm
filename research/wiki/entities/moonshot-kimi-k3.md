@@ -4,10 +4,14 @@ title: Moonshot AI Kimi K3
 type: entity
 aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open Frontier Intelligence", "Kimi Work"]
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
-description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); pending a $30B+ Hong Kong IPO on breakout demand, even as GPU strain forced a new-subscriber pause and a contested ECI methodology now reads the US-China gap as widening, not narrowing.
+description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps "possibly pointing to distillation."
 created_at: 2026-07-17
-timestamp: 2026-07-25T00:00:00Z
+timestamp: 2026-08-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
+  - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
+  - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
+  - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "ARA daily digest 2026-07-23", path: research/digest/2026-07-23-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
@@ -145,17 +149,85 @@ covering it.
   threat is now being publicly contested by outside experts, not just
   disputed by Moonshot itself (ARA digest 2026-07-25).
 
+- **Full open weights ship on schedule; independent tests flag possible
+  distillation (2026-07-27/28).** Moonshot **hit its committed date**,
+  releasing the complete Kimi K3 weights on Hugging Face — **2.8T total
+  parameters, 16-of-896 active experts, 1M-token context, native vision,
+  Kimi Delta Attention, ~594GB native MXFP4 weights**, under a **Modified
+  MIT license permitting commercial use**, plus parts of Moonshot's own
+  serving infrastructure. The Hacker News thread became the dominant story
+  of 2026-07-28, climbing from **80/19 points/comments at 07:53 UTC to
+  1,252/484 by 21:30 UTC**, with a companion "Kimi-K3 Technical Report
+  [pdf]" post separately cracking 298 points. The Decoder reports
+  **independent tests found gaps in cyber and math performance** versus
+  [[claude-fable-5|Claude Fable 5]] and [[gpt-5-6|GPT-5.6 Sol]], "possibly
+  pointing to distillation" — a fresh, evidence-based version of the
+  2026-07-22 distillation-from-Fable allegation that independent experts
+  had pushed back on days earlier. This also resolves the "does it hit the
+  July 27 date" open question below: it did, breaking the K2.7 Code
+  pattern of shipping without a primary model card in-window. Lands the
+  same cycle as [[anthropic|Anthropic]] CEO Dario Amodei's open-weights
+  policy post — see [[anthropic]] and [[open-weights]] (ARA daily digest
+  2026-07-28).
+
+- **Post-release momentum: open-sourced kernel, #1 on two leaderboards, and
+  the licensing fine print (2026-07-29).** Moonshot open-sourced
+  **FlashKDA**, an inference kernel giving **1.72–2.22x prefill speedup on
+  H20s**, and **AgentENV**, a training environment for agentic workloads —
+  both released as follow-on tooling rather than model-card claims,
+  strengthening the "full open release" read from 2026-07-27/28. Kimi K3
+  took **#1 on Artificial Analysis's open-weight Intelligence Index (57,
+  ahead of [[zhipu-glm-5-2|GLM-5.2]]'s 51)** and **#1 on LMArena's
+  full-stack coding leaderboard**, ahead of [[gpt-5-6|GPT-5.6 Sol]] and
+  [[claude-fable-5|Claude Fable 5]] — the first clean #1 rankings (vs. the
+  earlier "closing the gap" framings) since weights shipped. The fine
+  print: Moonshot's license **requires a separate agreement once a hosting
+  provider's group revenue tops $20M over 12 months**, a commercial-use
+  gate that complicates the "fully open" framing for larger downstream
+  hosts (ARA daily digest 2026-07-29).
+
+- **The $3.5B raise gets its first named-outlet confirmation (2026-07-30).**
+  Indian outlet **ET Tech** became the first named media source to
+  corroborate Moonshot's raise, after a day of screenshot-only claims:
+  **$3.5B closed against a $2B target**, a **$35B valuation**, and
+  **$300M June ARR** (up from $200M in April, consistent with the
+  2026-07-20 figures above) — plus talks for a **follow-on round at $50B
+  pre-money** and a planned **Hong Kong IPO**. Moonshot itself has still
+  not commented on the record. This is the clearest confirmation yet of
+  the funding trajectory this page has tracked since the 2026-07-20
+  "$30B+ IPO nears" entry (ARA daily digest 2026-07-30).
+
+- **An unverified 60.4% ARC-AGI-2 claim, and the compute behind K3 gets named
+  (2026-08-01).** A tracker posted a **60.4% ARC-AGI-2** score for K3, which
+  would clear [[thinking-machines|Inkling's]] verified 36.5% by a wide margin.
+  Treat as **reported, not verified**: there is **no ARC Prize row and no
+  cost-per-task figure**, and a comparable July 30 claim about
+  [[gpt-5-6|GPT-5.6 Sol]] collapsed from "SoTA" to a verified 7.8% once
+  checked. Separately, **Bloomberg traced Moonshot's training compute to an
+  [[alibaba]] arrangement involving roughly 20,000 Nvidia H200s** — the first
+  named mechanism behind the capacity powering K3, and the concrete answer to
+  the GPU-strain question below, for a company that raised **$3.5B at a $35B
+  valuation on 2026-07-30**. On the deployment side a **1-bit quantization**
+  shrank the 2.8T-parameter model to **590 GB (−62%)** with a claimed 78.7%
+  quality retention and full 1M context, and a "Run Kimi K3 using 29 GB of RAM
+  at 0.50 tok/s" write-up climbed the HN front page — the local-inference tail
+  of the [[open-weights]] release still compounding a week on, now alongside
+  [[deepseek-v4-flash|DeepSeek's MIT-licensed V4-Flash]] (ARA daily digest
+  2026-08-01).
+
 ## Open questions
 
 - **Does Kimi Work differentiate from other agentic coding/work products?**
   The launch drew heavy HN discussion but no independent comparison against
   rival agentic products (e.g. OpenAI's ChatGPT Work) has landed yet.
 - **Does the 2.8T scale hold up under independent benchmarking once weights
-  ship?** Community pelican-SVG and early local-benchmark reactions are
-  informal; no neutral, contamination-aware eval has landed yet.
-- **Does Moonshot hit the July 27 open-weights date?** Prior Kimi-family
-  releases (K2.7 Code) shipped without a primary model card in-window; watch
-  whether K3 breaks that pattern.
+  shipped?** Now that full weights are public (2026-07-27/28), expect a wave
+  of neutral, contamination-aware evals; The Decoder's early cyber/math gap
+  finding is the first data point.
+- **Is the distillation-from-Fable claim more credible now?** The
+  2026-07-28 cyber/math gap finding revives a claim independent experts had
+  pushed back on 2026-07-23/25 — worth tracking whether a rigorous technical
+  analysis (not social-media sourcing) lands either way.
 - **Is the US-China frontier gap narrowing or widening?** Competing framings
   (Bloomberg "two-to-three months" vs. @scaling01's ECI "4.4–5.3 months,
   widening") disagree on both the number and the direction — no neutral

@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The gross notional was $43,785 million at June 30, 2026, against $16,940 million at December 31, 2025.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "They are derivatives, they are marked, and the mark is on the balance sheet — $815 million of credit derivative liabilities at June 30, 2026, with no offsetting asset balance.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Alphabet discloses that as of June 30, 2026, \"expected future fixed or guaranteed commitments\" under contracts with terms greater than one year were $707.0 billion, \"the significant majority of which related to long-term supply agreements,\"",
+      "contradicting_url": "https://www.bloomberg.com/news/articles/2026-07-23/alphabet-s-future-spending-commitments-soar-to-811-billion",
+      "contradicting_quote": "Alphabet's Google had $811 billion in contracted future spending commitments at the end of June, up nearly $500 billion from just three months earlier.",
+      "severity": "medium",
+      "no_contradiction_found": false
+    }
+  ]
+}

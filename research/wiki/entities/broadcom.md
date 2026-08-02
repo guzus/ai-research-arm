@@ -7,6 +7,11 @@ tags: [ai-infrastructure, semiconductors, custom-asic, private-credit, ai-capex]
 description: Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI's first custom inference chip (Jalapeño, co-designed with Broadcom), and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.
 created_at: 2026-06-17
 timestamp: 2026-06-29T00:00:00Z
+market:
+  ticker: AVGO
+  exchange: NASDAQ
+  symbol: NASDAQ:AVGO
+  provider: yahoo
 sources:
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA model ticket — OpenAI Jalapeño chip", path: research/models/tickets/openai-jalapeno-chip-2026-06.md}

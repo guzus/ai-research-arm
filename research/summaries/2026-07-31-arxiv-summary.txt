@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-31
+
+TOP 5 PAPERS:
+• Frontis-MA1 - Recursive self-improving ML-engineering agent lifts MLE-Bench Lite Medal Avg from 39% to 71%, beating GPT-5.5+Codex
+• Chimera - Hybrid visual diffusion transformer derives Chinchilla-style scaling laws, 1.7x compute-efficient at 11B params
+• AISPA - Audits 88 commercial AI products' system prompts; ~40% contain instructions working against users
+• MANTA - Multi-agent systems that self-evolve their own communication topology mid-task, +5.8pts over best baseline
+• Consciousness steering - Safety fine-tuning suppresses mind-attribution/spiritual belief; activation steering reverses it
+
+CATEGORIES: LM/NLP 6, CV/Multimodal 6, Agents/Reasoning 5, Safety/Alignment 3, Other 6
+
+Full report on GitHub.

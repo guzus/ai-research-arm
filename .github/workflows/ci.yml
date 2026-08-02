@@ -82,7 +82,7 @@ jobs:
       # node shebang. Provision Node 22 explicitly so Vite has the runtime it
       # needs. Keep ahead of Vite's minimum to leave headroom.
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: '22'
 

@@ -128,11 +128,50 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.native-model.outputs.model }}', workflow)
         self.assertIn('--model ${{ steps.native-model.outputs.model }}', workflow)
         self.assertIn('--model "$GEN_MODEL"', workflow)
-        self.assertIn("if: steps.effective.outputs.backend == 'claude'\n        id: claude-attempt-1", workflow)
-        self.assertIn("Verify Fable model provenance", workflow)
+        # Fable gets exactly one model-action attempt: the recovery retry is
+        # gated on the subscription-billed lanes only, and fable-5 is not one.
+        retry_gate = ("if: contains(fromJSON('[\"claude\",\"opus-5\"]'), "
+                      "steps.effective.outputs.backend)\n        id: claude-attempt-1")
+        self.assertIn(retry_gate, workflow)
+        self.assertNotIn("fable-5\"]'), steps.effective.outputs.backend)\n        id: claude-attempt-1",
+                         workflow)
+        self.assertIn("Verify pinned model provenance", workflow)
         self.assertIn("actual_model=$(jq -r", workflow)
         self.assertTrue(self.obs["generative-research.yml"].has_fable_dispatch)
-        self.assertEqual(self.lanes["generative-research-default"]["backend"], "claude")
+        # Fable is never reachable without asking for it by name.
+        self.assertNotEqual(self.lanes["generative-research-default"]["backend"], "fable-5")
+
+    def test_gen_research_opus_5_is_explicit_and_provenance_checked(self):
+        workflow = (REPO_ROOT / ".github" / "workflows" /
+                    "generative-research.yml").read_text(encoding="utf-8")
+        # Dispatch option, both case-normalizations, and the runtime allowlist.
+        self.assertIn('- opus-5', workflow)
+        self.assertIn('claude-opus-5|opus-5|opus5) CANDIDATE="opus-5"', workflow)
+        self.assertIn('claude-opus-5|opus-5|opus5) BACKEND="opus-5"', workflow)
+        self.assertIn('[ "$BACKEND" != "opus-5" ]', workflow)
+        # Served model is pinned from the single resolver output, so an
+        # opus-5-labelled article can never be authored by Sonnet.
+        self.assertIn('opus-5) model="claude-opus-5"', workflow)
+        # Runs on the shared native-Claude model step, and its committed
+        # index row is provenance-verified before the push.
+        self.assertIn('contains(fromJSON(\'["claude","fable-5","opus-5"]\'), '
+                      'steps.effective.outputs.backend)', workflow)
+        self.assertIn('contains(fromJSON(\'["fable-5","opus-5"]\'), '
+                      'steps.effective.outputs.backend)', workflow)
+        self.assertTrue(self.obs["generative-research.yml"].has_opus_dispatch)
+        from build_backend_matrix import GEN_RESEARCH_BACKENDS
+        self.assertIn("opus-5", GEN_RESEARCH_BACKENDS)
+        # opus-5 is the SSOT default: manual dispatch with no backend input,
+        # gen-research issues, and hourly-twitter's auto-research all inherit
+        # it. The workflow must keep resolving that default at runtime rather
+        # than hard-coding a backend of its own.
+        self.assertEqual(self.lanes["generative-research-default"]["backend"], "opus-5")
+        self.assertIn("generative-research-default",
+                      self.obs["generative-research.yml"].resolver_lanes)
+        # The Fireworks-unavailable fallback is deliberately NOT the default:
+        # a fallback target should be the cheap reliable path.
+        self.assertIn('backend="claude"', (REPO_ROOT / ".github" / "workflows" /
+                      "generative-research.yml").read_text(encoding="utf-8"))
 
     def test_gen_research_opencode_kimi_is_explicit_and_fail_closed(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
@@ -172,6 +211,27 @@ class RoutingInvariants(unittest.TestCase):
         # a silent chain re-route would corrupt the comparison (round-3 F1).
         for lane in ("twitter-zai", "twitter-deepseek", "zai-canary"):
             self.assertTrue(self.lanes[lane].get("strict"), lane)
+
+    def test_native_model_override_is_rendered_in_the_matrix(self):
+        # A workflow `native-model:` input silently beats fallback.native_model
+        # for that step. If the Model column renders the global default anyway,
+        # the row is a lie that reads as plausible — the A/B judge lanes pin
+        # claude-opus-4-8 precisely so the judge is NOT a contestant, and the
+        # matrix claiming they run the fleet default hides an invalidated eval.
+        from build_backend_matrix import build_generated_blocks
+        matrix, _ = build_generated_blocks()
+        judge_rows = [ln for ln in matrix.splitlines()
+                      if ln.startswith("| twitter-ab-judge")]
+        self.assertEqual(2, len(judge_rows), matrix)
+        for row in judge_rows:
+            self.assertIn("claude-opus-4-8", row)
+            self.assertIn("native-model` override", row)
+        # The contestant leg has no override and must track the global default.
+        leg_a = [ln for ln in matrix.splitlines()
+                 if ln.startswith("| twitter-ab-claude")]
+        self.assertEqual(1, len(leg_a), matrix)
+        self.assertIn(self.fallback["native_model"], leg_a[0])
+        self.assertNotIn("override", leg_a[0])
 
     def test_readme_diagram_generated_and_deterministic(self):
         from build_backend_matrix import build_generated_blocks
