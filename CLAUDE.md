@@ -56,7 +56,7 @@ and opens a PR with methodology fixes.
 |---|---|
 | `compile_ara.py` | `.ara.md` → validated HTML fragment. |
 | `ara_catalog.py` | Loads `ARA_CATALOG.json` (the validator's class allowlist) and asserts lockstep with COMPONENTS.md. CI-enforced via `test_ara_dsl.py`. |
-| `check_generative_research.py` | Pre-commit validator: tag/class allowlist + optional `--diversity-min`, `--callout-max`, `--strict-shape`. Exit 0 = safe to commit. |
+| `check_generative_research.py` | Pre-commit validator: tag/class allowlist + optional `--diversity-min`, `--callout-max`, `--strict-shape`. Also `--audit-derived-claims <ledger>`, which RECOMPUTES every `type: "derived"` ledger entry (R1–R7: inputs resolve, whitelisted-AST formula parses, `result` reproduces within `--derived-tolerance`, no reference cycles, unsupported inputs taint). Wired ADVISORY in `generative-research.yml` — see Backends note below. Exit 0 = safe to commit. |
 | `write_generative_research.py` | The **only** committer for `research/generative/`. Re-validates, writes HTML + `.ara.md`, updates `index.json`, commits. |
 | `run_generative_research_oracle.py` | Local runner via `../oracle` (GPT-5.5 Pro) → validator (`--diversity-min 3 --callout-max 5 --strict-shape`) → writer. |
 | `prior_context.py`, `research_search.py`, `stock_prices.py`, `source_cache.py` | Article-authoring helpers: find related prior articles; primary-source search wrappers; Yahoo Finance series for `:::line-chart`; runtime fetch cache under `data/source-cache/` (gitignored). |
@@ -115,6 +115,7 @@ the lanes to catch up (a daily lane won't self-heal until its next slot).
 | `fetch_youtube_signal.py` | tuber-backed YouTube lane; read-only by default — never triggers paid summary generation. |
 | `dedupe_headline_alerts.py`, `headline_judge.py` | Twitter headline-alert dedup: deterministic layered check, then an agent-in-the-loop Haiku gate adjudicating the contested `[0.35,0.50)` Jaccard band (`shortlist` → judge → `apply`, fail-open, URL-keyed). Contract: [`docs/headline-dedupe.md`](docs/headline-dedupe.md). |
 | `curate_twitter_accounts.py`, `explore_twitter_accounts.py` | Validate/curate `data/sources/twitter_accounts.json` + build the birdy fetch manifest; the scout scores candidates on trust-weighted mentions (needs ≥1 *monitored* citer), AI topicality, and bounded engagement, so viral off-topic accounts don't outrank genuine AI sources. Contract: [`docs/twitter-account-curation.md`](docs/twitter-account-curation.md). |
+| `fetch_gpu_spot.py` | Deterministic Vast.ai GPU spot-rental price lane (`gpu-spot.yml`); model-free. Prices are normalized to **USD per GPU-hour** (`dph_total / num_gpus`) — the whole point, since an 8×H100 box at $2/GPU sorts *after* a 1×H100 at $3/GPU. The endpoint caps at 64 offers with no pagination, so a capped model is re-queried across **every** `num_gpus` 1–16 plus a `{"gte": 17}` tail sweep; `truncated` means "computed over an incomplete sample" and is set when any query caps *or* coverage isn't provably exhaustive. Fail-soft per model (carries the prior value forward marked `stale`), fail-loud if every model fails; a stale value is NEVER appended to `history`. |
 | `render_front_page.mjs` | Newspaper render for `daily-front-page.yml`: digest → SVG → PNG via `@resvg/resvg-js` (no Chromium, no model). Budget-aware — overflow is ellipsized/dropped, never painted over. |
 | `test_*.py` | Pytest-style tests run in CI. |
 
@@ -231,6 +232,7 @@ back to host-level `pi --tools ... bash`.
 |---|---|---|
 | `market-quotes.yml` | every 3h `:53` | Deterministic refresh of `research/market/quotes.json` from Yahoo for every wiki entity carrying `market` frontmatter — the price row in the wiki hover card and on the entity page. Symbols come from `research/wiki/index.json`, so adding `market:` to a page is the only step needed to quote a new company. Fail-soft per symbol (carries the prior value forward marked `stale`), fail-loud if every symbol fails. Needs the optional `stock` extra — Yahoo's bare urllib path 429s. |
 | `arm-timeline.yml` | every 2h `:45` | Deterministic refresh of `research/arm/timeline.json` so the dashboard's Arm tab renders in prod (the Docker build context has no `.git`/`.github`, so prebuild falls back to this committed file; unrefreshed it ages out of the ±36h window). |
+| `gpu-spot.yml` | every 6h `:37` | Deterministic refresh of `research/market/gpu-spot.json` — per-GPU-model spot rental prices from Vast.ai, in USD per GPU-hour, plus an append-only `history` series. Model-free and unauthenticated. `method_version` is stamped into every history record so a methodology change is never mistaken for a market move (bumped to 2 on 2026-08-02 for exhaustive `num_gpus` coverage + the `is_bid` filter). Nothing in the dashboard reads it yet. |
 | `daily-improve.yml` | weekly, Monday `00:17` UTC | Opens improve/YYYY-MM-DD PR with methodology fixes; each run auto-closes prior unmerged `improve/*` PRs. See "Load-bearing rules" for where the IMPROVEMENTS file belongs. |
 | `ci.yml` | push/PR on workflows/dashboard/scripts | actionlint + dashboard build + Python tests on GitHub-hosted runners |
 | `claude.yml` | `@claude` mention in issue/PR/review | Interactive Claude-Code agent |
@@ -309,6 +311,7 @@ research/
 ├── generative/                # generative-research.yml + Oracle runner (HTML + .ara.md + index.json)
 ├── issues/                    # research-issue.yml
 ├── market/                    # market-quotes.yml (quotes.json — live prices for wiki entities carrying `market`)
+│                              # gpu-spot.yml (gpu-spot.json — USD/GPU-hour spot rentals + append-only history)
 ├── models/                    # 24h-model-timeline.yml
 │   ├── tickets/                # persistent set, one .md per shipping artifact
 │   └── <date>-timeline.md      # derived daily diff (created/updated/closed counts)
@@ -362,6 +365,22 @@ output or break the pipeline. Read them before editing.
    `.ara.md` verbatim beside the HTML. There is no decompile step: the
    source is the committed `.ara.md`, never something regenerated from
    the HTML. Workflows that bypass the writer will fail review.
+   **A `derived` claim is supported by arithmetic, never by a URL.**
+   `scripts/generative_methodology.py` accepts `type: "derived"` in the
+   claim ledger and requires `inputs`/`formula`/`result`; it is the one
+   type that must NOT carry `source_urls`/`source_tiers`, because no page
+   states a number the author computed. The reverse is enforced
+   structurally: any entry carrying `inputs`/`formula`/`result` while
+   declaring a retrieval type is rejected, so retyping a derivation to
+   `metric` cannot launder a failed recompute into a cited claim. Keep
+   that pair in lockstep with `--audit-derived-claims` — relaxing either
+   half re-opens the fabricated-citation path.
+   **`:::position` text is exempt from the citation gates, and therefore
+   bounded.** `compile_ara.py` caps each position field; the validator
+   refuses to exempt an oversized block at all. Without the cap,
+   relocating uncited prose into a `:::position` block turns a failing
+   `--cite-density-min 10` into a passing one. `scripts/test_ara_dsl.py`
+   asserts the compile bound stays inside the validator's cap.
 
 2. **The validator is exact-match.** Class tokens must start with `ara-`
    *and* be a base class in `ARA_CATALOG.json` (or a valid `--variant`

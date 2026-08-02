@@ -81,8 +81,19 @@ that first query came back at the cap. Trusting the unpartitioned result only
 when it did NOT truncate is what makes this safe: the multi-GPU ordering trap
 (an 8xH100 at $2/GPU sorting after a 1xH100 at $3/GPU) cannot bite when no
 offers were dropped. Partitioned results are UNIONED with the unpartitioned
-ones and deduped by offer id, so `num_gpus` values outside NUM_GPU_BUCKETS
-(5, 7, 9, ...) are still represented rather than silently lost.
+ones and deduped by offer id.
+
+When partitioning fires, the bucket set is EXHAUSTIVE — every integer
+1..16 plus a `{"gte": 17}` tail sweep. It has to be. The earlier design used a
+sparse list of popular counts and leaned on the unpartitioned union to carry
+the rest, which is exactly backwards: the unpartitioned page is the one that
+truncated, and since dph_total ~= num_gpus x per-GPU price, ascending
+truncation discards the HIGH-num_gpus offers first. Measured live on
+2026-08-02, RTX 4090 had 11 rentable offers at counts 5/7/9/14 — the cheapest
+at $0.3081/GPU — of which the sparse design captured one, while still
+publishing `truncated: false`. `truncated` now means "the statistics are
+computed over an incomplete sample" and is set both when any query caps AND
+when the bucket specs cannot be proven to cover every num_gpus.
 
 OUTPUT CONTRACT (research/market/gpu-spot.json)
 -----------------------------------------------
@@ -156,11 +167,18 @@ fetch_market_quotes.py.
 
   - A model whose queries all fail carries its PREVIOUS snapshot entry forward
     marked `stale: true`, so a transient fault does not blank a row.
-  - A model that returns HTTP 200 with zero offers is NOT a failure. That is a
-    real observation of no supply, and it is recorded in `zero_offer_models`
+  - A model that returns HTTP 200 with an EMPTY body is NOT a failure. That is
+    a real observation of no supply, and it is recorded in `zero_offer_models`
     rather than being carried forward as a stale price. Distinguishing these
     two matters: a curated `gpu_name` list fails silently when the upstream
     renames a model, and the only way to notice is to see the zero.
+  - A model that returns offers of which EVERY ONE is rejected by the cleaning
+    filters is a FAILURE, not zero supply. Those two shapes shared a bucket
+    once, which meant a plausible upstream change (num_gpus serialized as a
+    string) published "the RTX 5090 rental market has no supply" on a green
+    run while ~300 machines were rentable. Zero supply now requires an
+    actually-empty response; anything else carries forward stale and counts in
+    `requests.failed`.
   - A carried-forward stale value is NEVER appended to `history`. Writing a
     stale number into a time series fabricates an observation that was never
     made. History records contain freshly-observed models only.
@@ -198,17 +216,47 @@ USER_AGENT = "ai-research-arm/gpu-spot (+https://ara.guzus.xyz)"
 
 # Bump whenever GPU_MODELS, NUM_GPU_BUCKETS, the sanity band, or the percentile
 # definition changes. Stamped into every history record — see module docstring.
-METHOD_VERSION = 1
+#
+# v2 (2026-08-02, before the first scheduled run): the sample basis changed
+# twice, both widening/narrowing what `min` is computed over, so records are
+# not comparable across the bump.
+#   * Bucket coverage went from a sparse hand-picked list to EVERY integer
+#     1..16 plus a `{"gte": 17}` catch-all. The sparse list silently lost
+#     whole num_gpus tiers on any model whose unpartitioned page hit the cap,
+#     and because dph_total ~= num_gpus x per-GPU price, ascending truncation
+#     drops HIGH-num_gpus offers first — exactly the ones the list omitted.
+#     Measured live on 2026-08-02: RTX 4090 had 11 rentable offers at
+#     out-of-bucket counts (5, 7, 9, 14) with a cheapest of $0.3081/GPU, and
+#     the committed v1 artifact captured one of them.
+#   * `is_bid` offers are now dropped, so `sample_basis` is enforced rather
+#     than merely asserted.
+METHOD_VERSION = 2
 
 # Empirically observed 2026-08-02: the endpoint returns at most 64 offers no
 # matter what `limit` asks for. A query returning exactly this many is assumed
 # truncated. Override with --cap if upstream changes it.
 DEFAULT_RESULT_CAP = 64
 
-# Only consulted for a model whose unpartitioned query hit the cap. Values
-# chosen from observed num_gpus in the live book; offers with a count outside
-# this list are still captured via the unpartitioned union (see docstring).
-NUM_GPU_BUCKETS = (1, 2, 3, 4, 6, 8, 10, 12, 16)
+# Only consulted for a model whose unpartitioned query hit the cap. EVERY
+# integer in 1..16, plus a `{"gte": NUM_GPU_TAIL_MIN}` catch-all, so the
+# partitioned union is EXHAUSTIVE rather than a sample of popular counts.
+#
+# The previous sparse list (1,2,3,4,6,8,10,12,16) leaned on "offers with a
+# count outside this list are still captured via the unpartitioned union" —
+# which is false precisely when partitioning fires. The unpartitioned page is
+# capped at 64 in ascending dph_total, and dph_total ~= num_gpus x per-GPU
+# price, so the offers it truncates away are the HIGH-num_gpus ones: the very
+# tiers the sparse list did not re-query. The result was a `min` that could be
+# 2x wrong while the artifact still published `truncated: false`, and `min` is
+# stamped into an append-only history series. Costs ~7 extra requests per
+# capped model (~98/run vs ~63); still far under the ~180 the adaptive design
+# exists to avoid.
+NUM_GPU_BUCKETS = tuple(range(1, 17))
+# Everything at or above this count is swept by one range query, so no offer
+# can fall outside the union. `{"gte": N}` was confirmed accepted by the
+# endpoint on 2026-08-02 (returned 0 rows for RTX 4090, i.e. the operator
+# parses rather than errors).
+NUM_GPU_TAIL_MIN = 17
 
 # Curated list, pinned to names EMPIRICALLY CONFIRMED to return offers on
 # 2026-08-02. The list is deliberately fixed rather than discovered per run: a
@@ -352,6 +400,18 @@ def clean_offers(
                 drops["duplicate_id"] = drops.get("duplicate_id", 0) + 1
                 continue
 
+        # `sample_basis` promises "rentable on-demand ask prices
+        # (rentable=true, is_bid=false); excludes interruptible bid offers".
+        # The query constrains only `rentable`, so without this the promise
+        # was documentation. Every live row carries `is_bid` and `min_bid`
+        # (checked 2026-08-02), so the endpoint plainly models both tiers: if
+        # it ever bundles bid offers into a rentable response, their much
+        # lower prices would blend into the ask series and drag `min` toward
+        # the bid floor. Mirrors the defensive gpu_name check below.
+        if offer.get("is_bid"):
+            drops["is_bid"] = drops.get("is_bid", 0) + 1
+            continue
+
         name = offer.get("gpu_name")
         if name != expected_gpu_name:
             # Defensive: the server filters on gpu_name, but a silent upstream
@@ -401,11 +461,16 @@ def clean_offers(
 # network boundary
 # --------------------------------------------------------------------------
 
-def build_query(gpu_name: str, num_gpus: int | None, cap: int) -> dict[str, Any]:
+def build_query(
+    gpu_name: str, num_gpus: int | dict[str, Any] | None, cap: int
+) -> dict[str, Any]:
     """Ascending dph_total is load-bearing, not cosmetic — see module docstring.
 
     Within a fixed num_gpus bucket it orders by per-GPU price exactly, so a
     truncated response drops only the expensive tail and `min` stays exact.
+
+    `num_gpus` is an int (exact bucket), a raw operator mapping such as
+    `{"gte": 17}` for the tail sweep, or None for the unpartitioned page.
     """
     query: dict[str, Any] = {
         "rentable": {"eq": True},
@@ -413,7 +478,9 @@ def build_query(gpu_name: str, num_gpus: int | None, cap: int) -> dict[str, Any]
         "limit": cap,
         "order": [["dph_total", "asc"]],
     }
-    if num_gpus is not None:
+    if isinstance(num_gpus, dict):
+        query["num_gpus"] = dict(num_gpus)
+    elif num_gpus is not None:
         query["num_gpus"] = {"eq": num_gpus}
     return query
 
@@ -464,18 +531,30 @@ def collect_model(
     cap: int = DEFAULT_RESULT_CAP,
     sleep: float = 0.0,
     buckets: Iterable[int] = NUM_GPU_BUCKETS,
+    tail_min: int | None = NUM_GPU_TAIL_MIN,
 ) -> dict[str, Any]:
     """Fetch one model's book, partitioning by num_gpus only if it truncated.
 
     Returns {samples, min, p25, median, mean, max, truncated, partitioned,
-    by_num_gpus} or {"samples": 0} when the model legitimately has no supply.
+    by_num_gpus, raw_seen} or {"samples": 0, "raw_seen": N} when nothing
+    survived. `raw_seen` lets the caller separate "the API returned an empty
+    book" (real zero supply) from "the API returned N offers and every one
+    failed a filter" (an upstream shape change masquerading as zero supply).
     Raises only when the model could not be observed at all — the caller
     decides fail-soft policy.
+
+    `truncated` means "the published statistics are computed over an
+    INCOMPLETE sample". It is set when any single query hit the cap, and also
+    when the bucket specs do not provably cover every possible num_gpus — so
+    `truncated: false` means what the docstring says rather than "the buckets
+    we happened to ask for did not cap".
     """
     drops: dict[str, int] = {}
     seen_ids: set[Any] = set()
+    raw_seen = 0
 
     raw = fetch(build_query(gpu_name, None, cap))
+    raw_seen += len(raw)
     if len(raw) > cap:
         # The cap moved; our truncation detector is now wrong in the unsafe
         # direction (we would call a truncated book complete). Say so loudly.
@@ -493,16 +572,33 @@ def collect_model(
         # so ascending dph_total is NOT ascending per-GPU price. Re-query per
         # bucket, where that equivalence does hold, and union the results.
         partitioned = True
-        for count in buckets:
+        bucket_list = sorted({int(c) for c in buckets})
+        specs: list[int | dict[str, Any]] = list(bucket_list)
+        if tail_min is not None:
+            specs.append({"gte": int(tail_min)})
+            # Exhaustive iff the exact buckets cover 1..tail_min-1 and the
+            # tail sweeps everything at or above tail_min.
+            exhaustive = set(bucket_list) >= set(range(1, int(tail_min)))
+        else:
+            exhaustive = False
+        if not exhaustive:
+            # Cannot prove the union covers every num_gpus, so the sample is
+            # incomplete by construction. Say so rather than publishing a
+            # confident `truncated: false` over a partial book.
+            truncated = True
+        for spec in specs:
             if sleep:
                 time.sleep(sleep)
-            bucket_raw = fetch(build_query(gpu_name, count, cap))
+            bucket_raw = fetch(build_query(gpu_name, spec, cap))
+            raw_seen += len(bucket_raw)
             if len(bucket_raw) >= cap:
+                # This bucket (or the tail sweep) capped too — its own
+                # expensive end is missing.
                 truncated = True
             kept.extend(clean_offers(bucket_raw, gpu_name, seen_ids, drops))
 
     if not kept:
-        return {"samples": 0, "dropped": drops}
+        return {"samples": 0, "raw_seen": raw_seen, "dropped": drops}
 
     by_num_gpus: dict[str, int] = {}
     for _price, count in kept:
@@ -514,6 +610,7 @@ def collect_model(
     stats["partitioned"] = partitioned
     stats["by_num_gpus"] = {k: by_num_gpus[k] for k in sorted(by_num_gpus, key=int)}
     stats["dropped"] = drops
+    stats["raw_seen"] = raw_seen
     return stats
 
 
@@ -745,6 +842,28 @@ def run(
             dropped_total[reason] = dropped_total.get(reason, 0) + count
 
         if stats["samples"] == 0:
+            if stats.get("raw_seen"):
+                # The API returned offers and EVERY one was rejected by the
+                # cleaning filters. That is not an observation of zero supply,
+                # it is an upstream shape change (e.g. num_gpus serialized as
+                # a string) wearing zero supply's clothes — and publishing it
+                # in `zero_offer_models` would assert that a live rental
+                # market has no machines. The module docstring claims the zero
+                # IS the detector for a renamed model, so the two must not
+                # share a bucket. Fail-soft per model, same as an exception.
+                failed += 1
+                failures.append(
+                    f"{name}: all {stats['raw_seen']} returned offer(s) were "
+                    f"rejected by the cleaning filters "
+                    f"({stats.get('dropped') or {}}) — treat as an upstream "
+                    f"schema change, NOT as zero supply"
+                )
+                stale_prev = prev_models.get(name)
+                if isinstance(stale_prev, dict):
+                    carried_entry = dict(stale_prev)
+                    carried_entry["stale"] = True
+                    carried[name] = carried_entry
+                continue
             # HTTP 200 with an empty book. A real observation of no supply —
             # NOT a failure, so it must not be carried forward as a price.
             zero_offer.append(name)

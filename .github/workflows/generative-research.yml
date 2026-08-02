@@ -1278,19 +1278,23 @@ jobs:
                from a hallucinated number, which is exactly the failure
                this contract exists to prevent.
 
-               COMPATIBILITY NOTE (read before you build a thesis on a
-               derived figure): the deterministic ledger validator in
-               this repo is being taught the `derived` type in a
-               separate change. If — and ONLY if — the step 7.5 compile
-               check actually prints a ledger error naming the derived
-               type or its missing `source_urls`/`source_tiers` (for
-               example `type 'derived' is invalid`), then the validator
-               on this runner predates the contract. In that case, drop
-               the `derived` entries from the ledger and express the
-               computation in PROSE with each INPUT carrying its own
-               `[^N]` cite, exactly as in the GOOD example above. Do
-               NOT pre-emptively skip derived claims on suspicion —
-               only after you have seen that error text.
+               LEDGER SHAPE for a derived entry (the deterministic
+               validator enforces every line of this):
+                 * `type: "derived"` is accepted. Required keys are
+                   `inputs`, `formula`, `result`, `unit` and a
+                   non-empty `assumptions` list.
+                 * It is the ONE type that must NOT carry `source_urls`
+                   or `source_tiers`. A computed number is supported by
+                   its inputs and formula; no page states it, so
+                   attaching source URLs credits the output to pages
+                   that never asserted it. That is a hard error.
+                 * The reverse is also a hard error: `inputs`,
+                   `formula` or `result` on an entry typed as anything
+                   else. Retyping a derived entry to `metric` to make a
+                   failing recompute go away is detected STRUCTURALLY,
+                   by the presence of those keys, not by the type
+                   string you wrote. Do not attempt that repair; fix
+                   the arithmetic or drop the claim.
 
             3. SPOT-CHECK. WebFetch or `curl+pdftotext` yourself on the
                5–8 most load-bearing primary sources to confirm the
@@ -1469,15 +1473,22 @@ jobs:
                          numeric literals and the declared input names,
                          or if an input is unused / a name is undeclared.
                          WHEN THERE IS NO LEDGER ENTRY for a computed
-                         figure — because the body states the math in
-                         prose instead — this protocol STILL APPLIES:
-                         take the inputs and the operation from the
-                         SENTENCE itself, check each input's own cite,
-                         and recompute from those. Do NOT fall back to
-                         searching for a page that asserts the output;
-                         no such page exists, and marking the figure
-                         `unsupported` for that reason is the exact
-                         failure this contract removes.
+                         figure, this relaxation does NOT apply, and you
+                         must NOT substitute your own hand-arithmetic
+                         for it. The relaxation is only as trustworthy
+                         as the deterministic backstop behind it, and
+                         that backstop — `--audit-derived-claims` —
+                         can only see `type: "derived"` LEDGER ENTRIES.
+                         A computed figure stated in prose with no
+                         ledger entry is therefore an AUTHORING DEFECT:
+                         mark it `unsupported`, and say in `note` that
+                         the fix is to add the derived ledger entry (or
+                         drop the figure) — not to hunt for a page
+                         asserting the output. LLM hand-arithmetic is
+                         precisely the step that cannot be trusted
+                         without a deterministic recheck, so it must
+                         never be the only thing standing between a
+                         wrong number and publication.
                       4. Check the PROSE shows the math — inputs and
                          operation stated, each input separately cited.
                          A computed figure asserted bare, or carrying a
@@ -3170,19 +3181,23 @@ jobs:
                from a hallucinated number, which is exactly the failure
                this contract exists to prevent.
 
-               COMPATIBILITY NOTE (read before you build a thesis on a
-               derived figure): the deterministic ledger validator in
-               this repo is being taught the `derived` type in a
-               separate change. If — and ONLY if — the step 7.5 compile
-               check actually prints a ledger error naming the derived
-               type or its missing `source_urls`/`source_tiers` (for
-               example `type 'derived' is invalid`), then the validator
-               on this runner predates the contract. In that case, drop
-               the `derived` entries from the ledger and express the
-               computation in PROSE with each INPUT carrying its own
-               `[^N]` cite, exactly as in the GOOD example above. Do
-               NOT pre-emptively skip derived claims on suspicion —
-               only after you have seen that error text.
+               LEDGER SHAPE for a derived entry (the deterministic
+               validator enforces every line of this):
+                 * `type: "derived"` is accepted. Required keys are
+                   `inputs`, `formula`, `result`, `unit` and a
+                   non-empty `assumptions` list.
+                 * It is the ONE type that must NOT carry `source_urls`
+                   or `source_tiers`. A computed number is supported by
+                   its inputs and formula; no page states it, so
+                   attaching source URLs credits the output to pages
+                   that never asserted it. That is a hard error.
+                 * The reverse is also a hard error: `inputs`,
+                   `formula` or `result` on an entry typed as anything
+                   else. Retyping a derived entry to `metric` to make a
+                   failing recompute go away is detected STRUCTURALLY,
+                   by the presence of those keys, not by the type
+                   string you wrote. Do not attempt that repair; fix
+                   the arithmetic or drop the claim.
 
             3. SPOT-CHECK. Use `uv run python scripts/source_cache.py get <url>`,
                `curl`, or `curl+pdftotext` yourself on the 5–8 most
@@ -3364,15 +3379,22 @@ jobs:
                          numeric literals and the declared input names,
                          or if an input is unused / a name is undeclared.
                          WHEN THERE IS NO LEDGER ENTRY for a computed
-                         figure — because the body states the math in
-                         prose instead — this protocol STILL APPLIES:
-                         take the inputs and the operation from the
-                         SENTENCE itself, check each input's own cite,
-                         and recompute from those. Do NOT fall back to
-                         searching for a page that asserts the output;
-                         no such page exists, and marking the figure
-                         `unsupported` for that reason is the exact
-                         failure this contract removes.
+                         figure, this relaxation does NOT apply, and you
+                         must NOT substitute your own hand-arithmetic
+                         for it. The relaxation is only as trustworthy
+                         as the deterministic backstop behind it, and
+                         that backstop — `--audit-derived-claims` —
+                         can only see `type: "derived"` LEDGER ENTRIES.
+                         A computed figure stated in prose with no
+                         ledger entry is therefore an AUTHORING DEFECT:
+                         mark it `unsupported`, and say in `note` that
+                         the fix is to add the derived ledger entry (or
+                         drop the figure) — not to hunt for a page
+                         asserting the output. LLM hand-arithmetic is
+                         precisely the step that cannot be trusted
+                         without a deterministic recheck, so it must
+                         never be the only thing standing between a
+                         wrong number and publication.
                       4. Check the PROSE shows the math — inputs and
                          operation stated, each input separately cited.
                          A computed figure asserted bare, or carrying a
@@ -4466,36 +4488,47 @@ jobs:
       # change that now tells the verifier sub-agent to recompute a
       # derived figure instead of marking it unsupported.
       #
-      # WHY ADVISORY AND NOT BLOCKING, for its first release — three
-      # mechanical reasons, all of which must stop being true before
-      # anyone promotes it:
-      #   1. It CANNOT fire yet. `validate_claim_ledger()` in
-      #      scripts/generative_methodology.py rejects `type: "derived"`
-      #      three ways (type not in ALLOWED_CLAIM_TYPES; source_urls
-      #      and source_tiers both required non-empty). That function
-      #      backs the BLOCKING "Methodology artifact gate" below, so
-      #      until it learns the derived type, zero derived claims can
-      #      reach a published ledger and a blocking recompute gate
-      #      would have nothing to protect.
-      #   2. `--audit-derived-claims` lands in
-      #      scripts/check_generative_research.py in a separate change.
-      #      If this workflow reaches a runner before that script does,
-      #      argparse exits 2 — a blocking step would brick every
-      #      dispatch of this lane on day one for a flag-parity reason
-      #      that has nothing to do with article quality.
-      #   3. The artifact it validates is LLM-authored JSON in a shape
-      #      no model has produced here before. Day-one false-fail rate
-      #      is unknown, and this lane is human-dispatched: a failure
+      # WHY ADVISORY AND NOT BLOCKING, for its first release.
+      #
+      # READ THIS FIRST — an earlier revision of this comment claimed
+      # the gate "CANNOT fire yet". That is NO LONGER TRUE and was
+      # already misleading when written. Two of the three original
+      # reasons have been retired:
+      #   1. RETIRED. validate_claim_ledger() in
+      #      scripts/generative_methodology.py now accepts
+      #      `type: "derived"` (requires inputs/formula/result, forbids
+      #      source_urls/source_tiers, and structurally rejects a
+      #      derivation retyped as a retrieval claim). Derived entries
+      #      CAN now reach a published ledger, so this audit has real
+      #      work to do on every run that declares one.
+      #   2. RETIRED. `--audit-derived-claims` exists in
+      #      scripts/check_generative_research.py in this same tree, so
+      #      the argparse-parity failure mode is gone.
+      #   3. STILL TRUE, and it is the only reason this stays advisory:
+      #      the artifact it validates is LLM-authored JSON in a shape
+      #      no model has produced here before. The day-one false-fail
+      #      rate is an empirical unknown that only production runs can
+      #      retire, and this lane is human-dispatched — a false fail
       #      means someone asked for an article and got nothing.
       #
-      # PROMOTE TO BLOCKING in the SAME change that teaches
-      # validate_claim_ledger() to accept `type: "derived"` — that is
-      # the moment the relaxation goes live (verifier recomputes instead
-      # of marking unsupported) and needs a deterministic backstop. To
-      # promote: drop continue-on-error, add the reset-on-failure +
-      # artifact-cleanup block used by the two gates around this one,
-      # and add `steps.derived-audit.outputs.passed == 'true'` to the
-      # "Push changes" condition.
+      # WHAT IS LIVE, stated plainly so nobody has to infer it: the
+      # step-6 verifier relaxation (recompute a derived figure instead
+      # of marking it unsupported for having no source URL) is ACTIVE,
+      # and this deterministic backstop for it is ADVISORY. Residual
+      # risk: a DECLARED derived entry whose arithmetic is wrong will
+      # warn here and still ship. It is bounded — the relaxation now
+      # applies ONLY to figures carrying a derived ledger entry, so a
+      # computed figure stated bare in prose is still marked
+      # `unsupported` and still blocked by the verifier-findings audit
+      # above — but it is real, and it is why promotion matters.
+      #
+      # PROMOTE TO BLOCKING once a handful of real runs show the
+      # false-fail rate is acceptable. To promote: drop
+      # continue-on-error, add the reset-on-failure + artifact-cleanup
+      # block used by the two gates around this one, and add
+      # `steps.derived-audit.outputs.passed != 'false'` to the "Push
+      # changes" condition (`!=` not `==`, so the missing-ledger path
+      # below does not read as a failure).
       #
       # Advisory means advisory: this step NEVER runs `git reset --hard`
       # and never deletes the methodology artifacts. Doing so would
@@ -4515,7 +4548,11 @@ jobs:
           article="research/generative/$FILE"
           if [ ! -f "$claims" ]; then
             echo "::notice::No claim ledger at $claims — skipping derived-claim recompute audit. The blocking Methodology artifact gate below owns the missing-artifact failure."
-            echo "passed=skipped" >> "$GITHUB_OUTPUT"
+            # NOT `skipped`: the promotion recipe above wires this
+            # output into the Push condition, and a bespoke sentinel
+            # would read as a failure on a path that is not this step's
+            # to fail. The gate below hard-fails on a missing ledger.
+            echo "passed=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           if uv run python scripts/check_generative_research.py \
@@ -4550,6 +4587,11 @@ jobs:
               echo "passed=false" >> "$GITHUB_OUTPUT"
               git reset --hard "$PRE_SHA"
               git clean -fd -- research/generative || true
+              # Self-hosted runners keep $GITHUB_WORKSPACE between jobs, so a
+            # rejected run must not leave methodology artifacts behind for the
+            # NEXT dispatch's gates to read as its own. Same cleanup the
+            # quality and verifier-audit gates above perform.
+            rm -f "$claims" "$verifier" "$redteam"
               exit 1
             fi
           done
@@ -4561,6 +4603,11 @@ jobs:
             echo "passed=false" >> "$GITHUB_OUTPUT"
             git reset --hard "$PRE_SHA"
             git clean -fd -- research/generative || true
+            # Self-hosted runners keep $GITHUB_WORKSPACE between jobs, so a
+            # rejected run must not leave methodology artifacts behind for the
+            # NEXT dispatch's gates to read as its own. Same cleanup the
+            # quality and verifier-audit gates above perform.
+            rm -f "$claims" "$verifier" "$redteam"
             exit 1
           fi
 

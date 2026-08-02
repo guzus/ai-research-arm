@@ -1248,6 +1248,52 @@ class DerivedClaimAuditTest(unittest.TestCase):
     def _audit(self, claims, **kwargs):
         return chk.audit_derived_claims(self._ledger(claims), **kwargs)
 
+    # -- identity: a derived entry must never be able to disappear -------
+    #
+    # Both of these were live one-key bypasses of the ENTIRE gate: the
+    # audit indexed the ledger by id and then built its work list from
+    # that index, so an entry with no id was never indexed and the
+    # second entry sharing an id was dropped by first-id-wins. The CLI
+    # reported "0 derived claim(s)" and exited 0 on a ledger whose
+    # arithmetic was off by five orders of magnitude. The rest of this
+    # class cannot catch them, because its helper hard-codes cid="d1".
+
+    def test_derived_entry_without_an_id_is_audited_not_skipped(self):
+        entry = _derived_claim(result=999_000_000_000_000)
+        del entry["id"]
+        total, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"), entry,
+        ])
+        self.assertEqual(total, 1, "an id-less derived entry must still be counted")
+        rules = {p["rule"] for p in problems}
+        self.assertIn("R1", rules, "the missing id must itself be a failure")
+        self.assertIn("R5", rules, "the wrong arithmetic must still be caught")
+        self.assertTrue(all(p["id"] for p in problems), "every problem needs a label")
+
+    def test_duplicate_id_cannot_hide_a_derived_entry(self):
+        total, problems = self._audit([
+            _retrieval_claim("d1"),  # shadows the derived entry below
+            _derived_claim(result=999_000_000_000_000),
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+        ])
+        self.assertEqual(total, 1)
+        rules = {p["rule"] for p in problems}
+        self.assertIn("R1", rules, "the duplicated id must itself be a failure")
+        self.assertIn("R5", rules, "the wrong arithmetic must still be caught")
+
+    def test_every_derived_entry_is_audited_when_ids_repeat(self):
+        """Two derived entries sharing an id: BOTH get recomputed."""
+        total, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(result=111),
+            _derived_claim(result=222),
+        ])
+        self.assertEqual(total, 2)
+        self.assertEqual(
+            len([p for p in problems if p["rule"] == "R5"]), 2,
+            "first-id-wins must not silence the second entry's arithmetic",
+        )
+
     def _rules(self, problems):
         return sorted({p["rule"] for p in problems})
 
@@ -1974,13 +2020,31 @@ class DerivedClaimCliTest(unittest.TestCase):
         must NOT short-circuit the ledger-schema gate the caller also
         asked for.
 
-        The ledger here is schema-invalid on purpose (a `derived` entry
-        is rejected by generative_methodology.validate_claim_ledger for
-        type/source_urls/source_tiers), which is precisely the blocker
-        this test must keep visible rather than hide behind an early
-        return."""
-        ledger = self._json_file({"claims": [
+        A `derived` entry is now LEGAL under
+        generative_methodology.validate_claim_ledger (it was rejected
+        three ways before that gate learned the type, which made this
+        whole feature inert end-to-end). So the schema failure is
+        injected independently — a retrieval claim with an invalid
+        `type` — proving the schema gate really ran rather than being
+        skipped by the derived audit's early return."""
+        good = self._json_file({"claims": [
             _retrieval_claim("c3"), _retrieval_claim("c7"), _derived_claim(),
+        ]})
+        rc = chk.main([
+            str(self.body_path),
+            "--audit-derived-claims", str(good),
+            "--claims-ledger", str(good),
+        ])
+        self.assertEqual(
+            rc, 0,
+            "a valid derived ledger must satisfy BOTH the recompute audit "
+            "and the ledger schema gate",
+        )
+
+        broken = dict(_retrieval_claim("c7"))
+        broken["type"] = "not-a-real-type"
+        ledger = self._json_file({"claims": [
+            _retrieval_claim("c3"), broken, _derived_claim(),
         ]})
         rc = chk.main([
             str(self.body_path),
@@ -1990,7 +2054,7 @@ class DerivedClaimCliTest(unittest.TestCase):
         self.assertEqual(
             rc, 1,
             "co-passed --claims-ledger must still run and fail on the "
-            "derived entry rather than being skipped",
+            "schema-invalid entry rather than being skipped",
         )
 
     def test_co_passed_valid_claims_ledger_composes(self):
@@ -2081,6 +2145,45 @@ class PositionBlockExemptionTest(unittest.TestCase):
     def test_no_position_class_is_identity(self):
         body = self._article("<p>Nvidia posted $30B in Q4 2026 revenue.</p>")
         self.assertIs(chk.strip_position_blocks(body), body)
+
+    def test_oversized_position_block_is_not_exempted(self):
+        """REGRESSION: the exemption removed an unbounded, author-controlled
+        region from cite_density()'s denominator, which made it a bypass of
+        the live production gate `--cite-density-min 10`. Relocating uncited
+        prose into a `:::position` block took a measured 7.94 (FAIL) to
+        166.67 (PASS) using only the sanctioned directive and allowlisted
+        classes. An oversized block is now exempted NOT AT ALL, so the
+        relocation buys nothing."""
+        prose = " ".join(
+            ["Nvidia reported material capacity growth this quarter."] * 200
+        )
+        cites = "".join(
+            f"<p>Cited sentence {i} about Nvidia Q4 2026."
+            f'<sup><a class="ara-cite" href="#ref-{i}">{i}</a></sup></p>'
+            for i in range(1, 11)
+        )
+        plain = self._article(f"<p>{prose}</p>{cites}")
+        laundered = self._article(
+            '<div class="ara-position ara-position--medium">'
+            '<span class="ara-position-label">'
+            "Analyst position - not a sourced claim</span>"
+            f'<p class="ara-position-stance">{prose}</p></div>{cites}'
+        )
+        plain_density = chk.cite_density(plain)[0]
+        laundered_density = chk.cite_density(laundered)[0]
+        self.assertLess(plain_density, 10.0)
+        self.assertLess(
+            laundered_density, 10.0,
+            "relocating uncited prose into a position block must not turn a "
+            "failing cite density into a passing one",
+        )
+        # The oversized block is left wholly in place.
+        self.assertIn("ara-position-stance", chk.strip_position_blocks(laundered))
+
+    def test_normal_sized_position_block_is_still_exempted(self):
+        """Control for the cap: the component must remain usable."""
+        stripped = chk.strip_position_blocks(self._article(POSITION_BLOCK))
+        self.assertNotIn("ara-position", stripped)
 
     def test_position_block_removed(self):
         body = self._article(f"<p>Before.</p>{POSITION_BLOCK}<p>After.</p>")

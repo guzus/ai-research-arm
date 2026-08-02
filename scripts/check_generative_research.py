@@ -420,6 +420,30 @@ def primary_share(body_html: str) -> tuple[float, int, int]:
 
 _POSITION_CLASS = "ara-position"
 
+# Hard bound on how much text one position block may remove from the
+# citation denominators.
+#
+# WHY THIS EXISTS: the exemption removes an author-controlled region from
+# cite_density()'s denominator. Unbounded, it is a bypass of the live
+# production gate `--cite-density-min 10`: relocate 1,200 words of
+# uncited prose into a `:::position` block and a 7.94 density (FAIL)
+# becomes 166.67 (PASS), using only the sanctioned DSL directive and
+# allowlisted classes. Measured before this cap was added.
+#
+# The cap is fail-CLOSED: an oversized block is not exempted AT ALL, so
+# every word of it stays in the denominator and the bypass yields
+# nothing. Partial stripping was rejected — it would leave a half-block
+# in the text and make the denominator depend on where the cut landed.
+#
+# The number is derived, not guessed: it is the largest block
+# emit_position() in compile_ara.py can produce given that module's
+# per-field word bound, plus headroom. scripts/test_ara_dsl.py asserts
+# that inequality empirically (compile bound <= this cap), so the two
+# modules cannot drift into a state where the compiler emits a block the
+# validator refuses to exempt — which would show up as a mysterious
+# density failure rather than a clear compile error.
+_POSITION_MAX_EXEMPT_WORDS = 260
+
 
 def _has_position_class(attrs: list[tuple[str, str | None]]) -> bool:
     """True when a start tag's class attribute carries the `ara-position`
@@ -520,7 +544,13 @@ def strip_position_blocks(body_html: str) -> str:
 
     Limitation: the end-tag span ends at the first `>` at or after the
     end tag's start offset. HTML end tags carry no attributes, so that is
-    exact for the compiled output this validator sees."""
+    exact for the compiled output this validator sees.
+
+    Bounded: a block whose visible text exceeds
+    `_POSITION_MAX_EXEMPT_WORDS` is left in place (see that constant).
+    An analyst position is a short labelled call, not a container an
+    author can pour arbitrary uncited prose into to shrink the
+    cite-density denominator."""
     if _POSITION_CLASS not in body_html:
         return body_html
     parser = _PositionBlockStripper(body_html)
@@ -536,6 +566,11 @@ def strip_position_blocks(body_html: str) -> str:
     for start, end in parser.spans:
         if start < prev or end < start:  # overlapping/degenerate — bail out
             return body_html
+        if _word_count(body_html[start:end]) > _POSITION_MAX_EXEMPT_WORDS:
+            # Oversized: exempt nothing. Leaving the span untouched keeps
+            # every one of its words in the denominator, which is what
+            # makes the relocation bypass worthless.
+            continue
         out.append(body_html[prev:start])
         out.append(" ")
         prev = end
@@ -1672,11 +1707,53 @@ def audit_derived_claims(
     def _is_derived(entry: dict) -> bool:
         return str(entry.get("type", "")).strip().lower() == _DERIVED_TYPE
 
-    derived_ids = [cid for cid, e in by_id.items() if _is_derived(e)]
     problems: list[dict] = []
 
     def _fail(cid: str, rule: str, message: str) -> None:
         problems.append({"id": cid, "rule": rule, "message": message})
+
+    # Enumerate derived entries from `claims` DIRECTLY, never from
+    # `by_id`. Indexing first-id-wins and then deriving the work list
+    # from the index made two entries invisible to every rule below:
+    #   * an entry with a missing/blank `id` was never indexed at all;
+    #   * the SECOND entry sharing an id was dropped by first-id-wins.
+    # In both cases the audit reported "0 derived claim(s)" and exited
+    # 0 on a ledger whose arithmetic was wrong — a one-key bypass of the
+    # whole gate. Every derived entry now gets a unique reportable
+    # label, is counted, and is audited; a missing or duplicated id is
+    # itself an R1 failure rather than a way to disappear.
+    derived_entries: list[tuple[str, dict]] = []
+    # Traversal keys for R7. Only an unambiguous id can be the TARGET of
+    # an `inputs[].ref`, so the graph is keyed by those; label-keyed
+    # entries can still be walk ORIGINS (see input_refs below).
+    derived_set: set[str] = {
+        cid for cid, e in by_id.items()
+        if _is_derived(e) and cid not in duplicate_ids
+    }
+    for pos, entry in enumerate(claims, start=1):
+        if not isinstance(entry, dict) or not _is_derived(entry):
+            continue
+        cid = str(entry.get("id", "")).strip()
+        if not cid:
+            label = f"claims[{pos}]"
+            _fail(
+                label, "R1",
+                "derived claim has a missing or blank id, so nothing can "
+                "reference it and it cannot be audited by id; give every "
+                "derived claim a unique id",
+            )
+        elif cid in duplicate_ids:
+            label = f"{cid}@claims[{pos}]"
+            _fail(
+                label, "R1",
+                f"derived claim id {cid!r} is used by more than one ledger "
+                f"entry; ids must be unique or a reference to it is "
+                f"ambiguous",
+            )
+        else:
+            label = cid
+        derived_entries.append((label, entry))
+    derived_ids = [label for label, _ in derived_entries]
 
     # A claim that carries derivation machinery but is not typed
     # `derived` would skip this audit entirely while still reading as
@@ -1702,8 +1779,7 @@ def audit_derived_claims(
 
     # Per-claim structural + arithmetic rules.
     input_refs: dict[str, list[str]] = {}
-    for cid in derived_ids:
-        entry = by_id[cid]
+    for cid, entry in derived_entries:
         env: dict[str, float] = {}
         refs: list[str] = []
 
@@ -1849,7 +1925,9 @@ def audit_derived_claims(
                         )
 
     # ---- R7: cycles, depth, transitive support --------------------------
-    derived_set = set(derived_ids)
+    # `derived_set` was built above from unambiguous ids only — it is the
+    # set of legal ref TARGETS. `derived_ids` holds the walk origins,
+    # which may be synthetic labels for id-less/duplicated entries.
     # Path-sensitive traversal re-explores shared sub-graphs, so a dense
     # derived-on-derived ledger is O(branching ** max_depth). The ledger
     # is LLM-authored, so bound the total work and fail closed if the
@@ -2243,13 +2321,41 @@ def main(argv: list[str] | None = None) -> int:
                 file=sys.stderr,
             )
             return 2
+        # R7's unsupported-input propagation needs the verifier's
+        # verdicts. Without them the rule silently no-ops, and a derived
+        # claim resting entirely on a REJECTED input passes with a clean
+        # "0 failed" line — a contract rule not running looked exactly
+        # like a contract rule passing. Two changes fix that: fall back
+        # to the sibling verifier artifact the workflow writes next to
+        # the ledger, and ALWAYS say on stderr which of the two happened.
         unsupported: set[str] = set()
+        verifier_source: str | None = None
         if args.audit_verifier_findings:
             verifier_path = Path(args.audit_verifier_findings)
             if verifier_path.exists():
                 # Lenient by design — a broken verifier artifact is the
                 # verifier audit's error to report, not this one's.
                 unsupported = unsupported_claim_ids(verifier_path)
+                verifier_source = str(verifier_path)
+        else:
+            sibling = ledger_path.parent / ".gen-verifier-findings.json"
+            if sibling.exists():
+                unsupported = unsupported_claim_ids(sibling)
+                verifier_source = f"{sibling} (auto-discovered sibling)"
+        if verifier_source is None:
+            print(
+                "check: R7 unsupported-input propagation NOT checked — no "
+                "verifier findings available (pass --audit-verifier-findings, "
+                "or place .gen-verifier-findings.json beside the ledger). A "
+                "derived claim resting on a rejected input will NOT be caught.",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                f"check: R7 unsupported-input propagation checked against "
+                f"{verifier_source} ({len(unsupported)} unsupported id(s)).",
+                file=sys.stderr,
+            )
         try:
             derived_total, problems = audit_derived_claims(
                 ledger_path,

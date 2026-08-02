@@ -41,24 +41,42 @@ def offer(
 class FakeAPI:
     """Fixture-backed stand-in for the marketplace endpoint.
 
-    `books` maps (gpu_name, num_gpus_or_None) -> list of raw offer dicts, so a
-    test can express "unpartitioned returns a capped page, bucket queries
-    return the real book" exactly as the live API behaves.
+    `books` maps (gpu_name, key) -> list of raw offer dicts, so a test can
+    express "unpartitioned returns a capped page, bucket queries return the
+    real book" exactly as the live API behaves. `key` is None for the
+    unpartitioned page, an int for an exact num_gpus bucket, and the tuple
+    ("gte", N) for the tail sweep.
+
+    Keying the tail sweep separately is load-bearing: `{"gte": 17}` has no
+    "eq" member, so a `.get("eq")` lookup would silently return None and
+    re-serve the UNPARTITIONED page as if it were the tail — making a test
+    pass on data the real endpoint would never return.
     """
 
-    def __init__(self, books: dict[tuple[str, int | None], list[dict[str, Any]]],
+    def __init__(self, books: dict[tuple[str, Any], list[dict[str, Any]]],
                  fail_for: set[str] | None = None) -> None:
         self.books = books
         self.fail_for = fail_for or set()
         self.calls: list[dict[str, Any]] = []
+
+    @staticmethod
+    def key_for(query: dict[str, Any]) -> Any:
+        spec = query.get("num_gpus")
+        if not spec:
+            return None
+        if "eq" in spec:
+            return spec["eq"]
+        for op in ("gte", "gt"):
+            if op in spec:
+                return (op, spec[op])
+        raise AssertionError(f"unsupported num_gpus spec in query: {spec!r}")
 
     def __call__(self, query: dict[str, Any]) -> list[Any]:
         self.calls.append(query)
         name = query["gpu_name"]["eq"]
         if name in self.fail_for:
             raise OSError(f"simulated network failure for {name}")
-        bucket = query.get("num_gpus", {}).get("eq") if "num_gpus" in query else None
-        return list(self.books.get((name, bucket), []))
+        return list(self.books.get((name, self.key_for(query)), []))
 
 
 # ---------------------------------------------------------------------------
@@ -121,6 +139,19 @@ class TestFiltering(unittest.TestCase):
         drops: dict[str, int] = {}
         kept = gs.clean_offers(offers, name, set(), drops)
         return kept, drops
+
+    def test_drops_interruptible_bid_offers(self):
+        """`sample_basis` promises ask-only; that must be enforced, not just
+        asserted. A bid offer's much lower price would drag `min` toward the
+        bid floor while the artifact still claimed it excluded them."""
+        kept, drops = self._drops([
+            offer(1, dph_total=2.0),                       # on-demand ask
+            offer(2, dph_total=2.0, is_bid=False),         # explicit ask
+            offer(3, dph_total=0.4, is_bid=True),          # interruptible bid
+        ])
+        self.assertEqual(len(kept), 2)
+        self.assertEqual(drops["is_bid"], 1)
+        self.assertNotIn(0.4, [price for price, _count in kept])
 
     def test_drops_nonpositive_and_missing_fields(self):
         kept, drops = self._drops([
@@ -263,22 +294,85 @@ class TestPartitioning(unittest.TestCase):
         self.assertTrue(stats["truncated"])
 
     def test_not_truncated_when_partitioning_resolves_under_cap(self):
+        """`truncated: false` requires EXHAUSTIVE coverage, not just no cap.
+
+        buckets=(1,) with tail_min=2 covers num_gpus 1 exactly plus everything
+        >= 2, so the union provably sees the whole book.
+        """
         api = FakeAPI({
             ("H100 SXM", None): [offer(i, num_gpus=1, dph_total=1.0) for i in range(4)],
             ("H100 SXM", 1): [offer(i, num_gpus=1, dph_total=1.0) for i in range(3)],
+            ("H100 SXM", ("gte", 2)): [],
         })
-        stats = gs.collect_model("H100 SXM", api, cap=4, buckets=(1,))
+        stats = gs.collect_model("H100 SXM", api, cap=4, buckets=(1,), tail_min=2)
         self.assertFalse(stats["truncated"])
 
-    def test_unpartitioned_union_preserves_gpu_counts_outside_bucket_list(self):
-        """num_gpus 5 is not a bucket; it must survive via the unioned first page."""
+    def test_truncated_when_bucket_coverage_is_not_exhaustive(self):
+        """A gap in the bucket specs is itself incompleteness.
+
+        buckets=(1,) with tail_min=3 never asks about num_gpus 2, so no answer
+        about the book can be complete — regardless of whether any single
+        query capped. Publishing `truncated: false` here would assert a
+        complete book over a sample with a hole in it.
+        """
         api = FakeAPI({
-            ("H100 SXM", None): [offer(1, num_gpus=5, dph_total=10.0),
-                                 offer(2, num_gpus=1, dph_total=2.0)],
-            ("H100 SXM", 1): [offer(2, num_gpus=1, dph_total=2.0)],
+            ("H100 SXM", None): [offer(i, num_gpus=1, dph_total=1.0) for i in range(4)],
+            ("H100 SXM", 1): [offer(i, num_gpus=1, dph_total=1.0) for i in range(3)],
+            ("H100 SXM", ("gte", 3)): [],
         })
-        stats = gs.collect_model("H100 SXM", api, cap=2, buckets=(1,))
+        stats = gs.collect_model("H100 SXM", api, cap=4, buckets=(1,), tail_min=3)
+        self.assertTrue(stats["truncated"])
+
+    def test_out_of_bucket_tier_beyond_the_cap_is_still_collected(self):
+        """REGRESSION: the out-of-bucket tier must survive when it is beyond
+        the cap, which is the only case where truncation matters.
+
+        The previous version of this test put the 5-GPU offer INSIDE the
+        capped page, so it survived by construction and the assertion passed
+        even while whole tiers were being lost. Here the 5-GPU offer sorts
+        BEYOND the cap in ascending dph_total and never appears on the
+        unpartitioned page — exactly the live shape, since
+        dph_total ~= num_gpus x per-GPU price makes ascending truncation drop
+        high-num_gpus offers first. The 5-GPU tier is also the CHEAPEST per
+        GPU ($10.0 / 5 = $2.00, vs $3.00 for 1x and $4.00 for 2x), so losing
+        it corrupts `min` — the field stamped into every history record.
+        """
+        ones = [offer(i, num_gpus=1, dph_total=3.0) for i in range(2)]
+        twos = [offer(50, num_gpus=2, dph_total=8.0)]
+        fives = [offer(99, num_gpus=5, dph_total=10.0)]
+        api = FakeAPI({
+            # Capped at 3 in ascending dph_total: 3.0, 3.0, 8.0. The 10.0
+            # five-GPU row is the truncated tail.
+            ("H100 SXM", None): ones + twos,
+            ("H100 SXM", 1): ones,
+            ("H100 SXM", 2): twos,
+            ("H100 SXM", ("gte", 3)): fives,
+        })
+        stats = gs.collect_model("H100 SXM", api, cap=3, buckets=(1, 2), tail_min=3)
         self.assertIn("5", stats["by_num_gpus"])
+        self.assertAlmostEqual(stats["min"], 2.0)
+        # Coverage is exhaustive and no individual query capped, so the
+        # completeness claim is honest here.
+        self.assertFalse(stats["truncated"])
+
+    def test_production_bucket_list_is_exhaustive(self):
+        """The shipped specs must leave no num_gpus unasked.
+
+        This is the invariant the sparse hand-picked list violated: every
+        integer below the tail must have its own bucket, or the union has a
+        hole that `truncated: false` would deny.
+        """
+        self.assertEqual(
+            set(gs.NUM_GPU_BUCKETS), set(range(1, gs.NUM_GPU_TAIL_MIN))
+        )
+
+    def test_tail_sweep_is_issued_as_a_range_query(self):
+        """The catch-all must be a range operator, not another `eq`."""
+        capped = [offer(i, num_gpus=1, dph_total=1.0) for i in range(3)]
+        api = FakeAPI({("H100 SXM", None): capped, ("H100 SXM", 1): capped})
+        gs.collect_model("H100 SXM", api, cap=3, buckets=(1,), tail_min=2)
+        specs = [q.get("num_gpus") for q in api.calls]
+        self.assertIn({"gte": 2}, specs)
 
     def test_truncated_flag_reaches_every_history_record(self):
         """A methodology-visible flag must live in history, not only the snapshot.
@@ -398,6 +492,41 @@ class TestFailureModes(unittest.TestCase):
         self.assertIn("H100 SXM", payload["snapshot"]["zero_offer_models"])
         self.assertNotIn("H100 SXM", payload["snapshot"]["models"])
         self.assertNotIn("H100 SXM", payload["history"][-1]["models"])
+
+    def test_all_offers_rejected_is_a_failure_not_zero_supply(self):
+        """An upstream schema change must not publish as "no supply".
+
+        `zero_offer_models` is documented as the detector for a renamed
+        model, so a model whose offers all fail the cleaning filters must NOT
+        land in the same bucket — that would assert a live rental market has
+        no machines, on a green run, with the only trace buried in
+        dropped.by_reason. Here num_gpus arrives as the STRING "1", a
+        plausible serialization change.
+        """
+        previous = self._previous()
+        api = FakeAPI({
+            ("H100 SXM", None): [offer(i, num_gpus="1", dph_total=1.0) for i in range(5)],
+            ("B200", None): [offer(9, gpu_name="B200", dph_total=6.0)],
+        })
+        payload, code = gs.run(["H100 SXM", "B200"], api, previous, LATER)
+
+        self.assertEqual(code, 0)  # B200 is fresh, so not a total failure
+        self.assertNotIn("H100 SXM", payload["snapshot"]["zero_offer_models"])
+        self.assertEqual(payload["snapshot"]["requests"]["failed"], 1)
+        # Fail-soft: the prior value is carried forward, marked stale, rather
+        # than the row silently disappearing.
+        self.assertTrue(payload["snapshot"]["models"]["H100 SXM"]["stale"])
+        # A stale carry must never be appended to the append-only series.
+        self.assertNotIn("H100 SXM", payload["history"][-1]["models"])
+
+    def test_genuinely_empty_book_is_still_zero_supply(self):
+        """Control for the test above: 0 offers in means zero supply out."""
+        api = FakeAPI({("H100 SXM", None): [],
+                       ("B200", None): [offer(9, gpu_name="B200", dph_total=6.0)]})
+        payload, code = gs.run(["H100 SXM", "B200"], api, {}, NOW)
+        self.assertEqual(code, 0)
+        self.assertIn("H100 SXM", payload["snapshot"]["zero_offer_models"])
+        self.assertEqual(payload["snapshot"]["requests"]["failed"], 0)
 
     def test_no_previous_data_means_failing_model_is_simply_absent(self):
         api = FakeAPI({("B200", None): [offer(1, gpu_name="B200", dph_total=5.0)]},

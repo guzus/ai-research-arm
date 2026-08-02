@@ -632,6 +632,96 @@ title: Reworded label
             "</div>"
         )
 
+    def test_raw_position_label_guard_is_quoting_agnostic(self):
+        """REGRESSION: the guard was a `class="([^"]*)"` regex, so it saw
+        only DOUBLE-quoted attributes. A `:::raw` block written with single
+        quotes — or none — took the analyst-position styling with no
+        disclosure and was reported "Safe to commit". One character defeated
+        it. The sibling validator is html.parser-based, so this one is too."""
+        for attr in ("class='ara-position'", "class=ara-position",
+                     'class="ara-position"'):
+            with self.subTest(attr=attr):
+                with self.assertRaisesRegex(
+                    compile_ara.AraSyntaxError, "carrying the required label"
+                ):
+                    compile_ara.validate_position_labels(
+                        f"<div {attr}><p>Trust me.</p></div>"
+                    )
+
+    def test_position_labels_must_be_inside_the_block_they_disclose(self):
+        """REGRESSION: the guard compared two global COUNTS, so labels were
+        fungible — two in one block and none in another passed, as did a
+        stray label parked in a different section. Containment, not
+        counting."""
+        label = (
+            '<span class="ara-position-label">'
+            f"{compile_ara.POSITION_LABEL_TEXT}</span>"
+        )
+        two_labels_one_block = (
+            f'<div class="ara-position">{label}{label}</div>'
+            '<div class="ara-position"><p>Unlabelled call.</p></div>'
+        )
+        remote_label = (
+            '<div class="ara-position"><p>Unlabelled call.</p></div>'
+            f'<p class="ara-note">{label}</p>'
+        )
+        for name, html_doc in (("fungible", two_labels_one_block),
+                               ("remote", remote_label)):
+            with self.subTest(case=name):
+                with self.assertRaisesRegex(
+                    compile_ara.AraSyntaxError, "carrying the required label"
+                ):
+                    compile_ara.validate_position_labels(html_doc)
+
+    def test_prose_mentioning_the_class_is_not_a_position_block(self):
+        """REGRESSION: the guard scanned TEXT nodes too, so an article that
+        merely documented the class in prose hard-failed with an error
+        telling the author to use a directive they never used. This repo
+        already ships a component-reference article that does exactly that."""
+        compile_ara.validate_position_labels(
+            '<p>The compiler emits class="ara-position ara-position--medium" '
+            "around the block, which the dashboard styles.</p>"
+        )
+
+    def test_position_fields_are_word_bounded(self):
+        """The citation gates EXEMPT position text from the cite-density
+        denominator, so an unbounded field is a way to hide uncited prose.
+        Bound it here, where the error names the field, rather than letting
+        it surface downstream as a mysterious density failure."""
+        long_stance = " ".join(["word"] * (compile_ara.POSITION_MAX_FIELD_WORDS + 1))
+        with self.assertRaisesRegex(compile_ara.AraSyntaxError, "over the"):
+            compile_ara.emit_position(
+                {},
+                {"stance": long_stance, "consensus": "Desks disagree.",
+                 "resolves": "A Q4 print."},
+                1,
+            )
+
+    def test_compile_bound_fits_inside_the_validator_exemption_cap(self):
+        """CROSS-MODULE SEAM. compile_ara.py bounds each position field;
+        check_generative_research.py refuses to exempt an oversized block.
+        If the compiler could emit a block the validator will not exempt,
+        an author would get a confusing cite-density failure on a
+        correctly-authored component. Asserted empirically — by building
+        the largest block the compiler permits and measuring it with the
+        validator's own word counter — not by a comment claiming the two
+        numbers line up."""
+        import check_generative_research as chk
+
+        filler = " ".join(["word"] * compile_ara.POSITION_MAX_FIELD_WORDS)
+        worst = compile_ara.emit_position(
+            {"confidence": "high",
+             "horizon": " ".join(["w"] * compile_ara.POSITION_MAX_HORIZON_WORDS)},
+            {k: filler for k in compile_ara.POSITION_REQUIRED_KEYS},
+            1,
+        )
+        self.assertLessEqual(
+            chk._word_count(worst), chk._POSITION_MAX_EXEMPT_WORDS,
+            "the largest compilable :::position block must still be exempt",
+        )
+        # ...and it must actually be stripped, not merely fit the number.
+        self.assertEqual("", chk.strip_position_blocks(worst).strip())
+
     def test_note_source_labels_can_be_omitted(self):
         html = compile_ok(
             """---
