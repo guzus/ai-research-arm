@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-02 16:09:33 UTC
+
+CYCLE: A viral Samsung profit chart fails an arithmetic check, and the EU AI Act milestone finally gets dates attached.
+
+TOP STORIES:
+• Nomura Samsung table circulating as "$1.25T of operating profit in 3 years" is ~10x above Samsung's record year - likely a decimal slip, do not repeat [🚩]
+• EU AI Act: Article 50 transparency and AI Office enforcement described as live today; high-risk obligations deferred to 2 Dec 2027 [⚠]
+
+ALSO: Microsoft testing unannounced "MAI-Realtime" voice model (17 languages, tool use); Karpathy published the LOTR three.js source, now forkable; Simile reported at $200M Series B / $2B.
+
+WATCH: Whether the Nomura note surfaces with legible units, or @jukan05 corrects the figures.
+
+Full update on GitHub.
