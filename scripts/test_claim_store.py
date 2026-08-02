@@ -203,9 +203,6 @@ class SearchTests(unittest.TestCase):
                     "risk": "stable",
                     "reusable": True,
                     "reuse_block": None,
-                    "numerics": bci.extract_numerics(
-                        "NVIDIA reported fiscal 2026 revenue of $215.9 billion, up 65%, with Data Center revenue up 68%."
-                    ),
                 },
                 {
                     "key": "art-b#c1",
@@ -222,7 +219,6 @@ class SearchTests(unittest.TestCase):
                     "risk": "volatile",
                     "reusable": False,
                     "reuse_block": "volatile",
-                    "numerics": [],
                 },
             ],
             "by_host": {"sec.gov": ["art-a#c1"], "example.com": ["art-b#c1"]},
@@ -291,6 +287,52 @@ class SearchTests(unittest.TestCase):
     def test_formatter_surfaces_the_reuse_verdict(self):
         self.assertIn("REUSABLE", cs._fmt(self.index["claims"][0]))
         self.assertIn("RE-VERIFY", cs._fmt(self.index["claims"][1]))
+
+
+class DerivableDataTests(unittest.TestCase):
+    """Figures are derivable from claim text and must not be committed.
+
+    Storing them cost ~0.5 MB of git and, worse, gave the numbers a second
+    home free to drift from the sentence they describe. These pin both
+    halves: the index stays clean, and search still works without them.
+    """
+
+    def test_index_records_do_not_carry_stored_figures(self):
+        import tempfile as _tf
+
+        with _tf.TemporaryDirectory() as td:
+            gen = Path(td)
+            (gen / "art-a.claims.json").write_text(
+                json.dumps({"claims": [_claim("c1", "Revenue was $215.9 billion, up 65%.")]}),
+                encoding="utf-8",
+            )
+            (record,) = bci.build_index(gen)["claims"]
+        self.assertNotIn("numerics", record, "figures are derivable; do not commit them")
+
+    def test_candidates_still_work_with_no_stored_figures(self):
+        index = {
+            "claims": [
+                {
+                    "key": "art-a#c1",
+                    "article": "art-a",
+                    "article_title": "T",
+                    "id": "c1",
+                    "claim": "Revenue was $215.9 billion, up 65%.",
+                    "type": "metric",
+                    "source_urls": [],
+                    "source_tiers": [],
+                    "hosts": [],
+                    "as_of": "2026-01-25",
+                    "confidence": "high",
+                    "risk": "stable",
+                    "reusable": True,
+                    "reuse_block": None,
+                }
+            ]
+        }
+        (cand,) = cs.find_candidates("Revenue was $189.0 billion, up 65%.", index)
+        self.assertEqual(cand["numeric_differences"][0]["unit"], "currency")
+        self.assertEqual(cs.find_candidates("Revenue was $215.9 billion, up 65%.", index), [])
 
 
 class CommittedIndexTests(unittest.TestCase):

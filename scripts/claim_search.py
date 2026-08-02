@@ -141,7 +141,10 @@ def find_candidates(query: str, index: dict[str, Any]) -> list[dict[str, Any]]:
         overlap = _jaccard(q_tokens, set(tokenize(claim.get("claim", ""))))
         if overlap < CANDIDATE_MIN_JACCARD:
             continue
-        diffs = _numeric_conflicts(q_nums, claim.get("numerics", []))
+        # Recomputed from the claim text rather than read from the index —
+        # figures are derivable, so storing them would only create a second
+        # copy free to drift from the sentence it describes.
+        diffs = _numeric_conflicts(q_nums, _numerics_of(claim.get("claim", "")))
         if not diffs:
             continue
         out.append(

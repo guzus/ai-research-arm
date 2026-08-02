@@ -99,8 +99,10 @@ If cross-ledger inputs are ever wanted, R2 needs an explicit extension and
     "claim", "type", "source_urls", "source_tiers", "hosts",
     "as_of", "confidence", "risk",
     "reusable": true,
-    "reuse_block": null,
-    "numerics": [{ "value", "unit", "raw" }]   // shortlisting aid only
+    "reuse_block": null
+    // NOTE: figures are NOT stored. They are a pure function of `claim`
+    // (extract_numerics) and claim_search recomputes them per query, so the
+    // index carries no derivable data with a second chance to drift.
   }],
   "by_host": { "sec.gov": ["<key>", ...] },
   "by_url":  { "https://…": ["<key>", ...] }

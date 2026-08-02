@@ -244,7 +244,13 @@ def build_index(generative_dir: Path) -> dict[str, Any]:
                     "risk": str(row.get("risk") or ""),
                     "reusable": reusable,
                     "reuse_block": block,
-                    "numerics": extract_numerics(text),
+                    # NOTE: figures are deliberately NOT stored. They are a
+                    # pure function of `claim` (extract_numerics), so
+                    # committing them would put ~0.5 MB of derivable data in
+                    # git and give it a second place to drift from the text
+                    # it describes. claim_search.py recomputes them per query
+                    # — a regex over a short string, thousands of times
+                    # cheaper than the round trip that fetched the claim.
                 }
             )
             for h in hosts:
