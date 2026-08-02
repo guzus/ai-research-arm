@@ -200,7 +200,7 @@ is strong. Contract: [`docs/twitter-account-curation.md`](docs/twitter-account-c
 
 ## Workflows
 
-All 23 workflows live in [`.github/workflows/`](.github/workflows/). The
+All 27 workflows live in [`.github/workflows/`](.github/workflows/). The
 interesting ones:
 
 **Aggregate** — raw signal in, markdown out
@@ -215,6 +215,7 @@ interesting ones:
 | `2h-bluesky.yml` | daily | `research/bluesky/` |
 | `daily-arxiv.yml` | daily | `research/arxiv/` |
 | `daily-youtube.yml` | daily | `research/youtube/` |
+| `daily-earnings.yml` | weekdays, before the digest | `research/earnings/` (SEC EDGAR earnings filings for AI-exposed issuers; one file per event, nothing on a quiet day) |
 | `twitter-account-explorer.yml` | weekly | reviewed PRs against the account manifest |
 
 **Synthesize** — read everything, write the record
@@ -402,6 +403,7 @@ research/
 ├── bluesky/        # supplemental commentary
 ├── community/      # HN + Reddit digests
 ├── digest/         # the daily synthesis (+ audio stubs; mp3s on S3)
+├── earnings/       # AI-issuer earnings events from SEC EDGAR (per event, not per day)
 ├── front-page/     # newspaper PNG + interactive edition
 ├── generative/     # long-form articles (.html + .ara.md + index.json)
 ├── issues/         # on-demand issue research
@@ -422,7 +424,7 @@ research/
 | [`CLAUDE.md`](CLAUDE.md) | The operator's manual — load-bearing rules, lane contracts, failure modes |
 | [`ARA_DSL.md`](ARA_DSL.md) + [`ARA_CATALOG.json`](ARA_CATALOG.json) + [`COMPONENTS.md`](COMPONENTS.md) | The article component language: source format, machine catalog, human reference — kept in lockstep by CI |
 | [`data/agent-backends.json`](data/agent-backends.json) | Single source of truth for model routing + fallback chains |
-| [`scripts/`](scripts/) | 75 stdlib-first Python tools: validators, deterministic fallbacks, dedup gates, renderers |
+| [`scripts/`](scripts/) | 87 stdlib-first Python tools: validators, deterministic fallbacks, dedup gates, renderers |
 | [`docs/`](docs/) | Contracts and deep dives: [backend matrix](docs/backend-matrix.md), [model tickets](docs/model-tickets.md), [wiki schema](docs/wiki-schema.md), [headline dedup](docs/headline-dedupe.md), [AI industry map](docs/ai-industry-map.md), [OKF export](docs/okf.md) |
 | [`dashboard/`](dashboard/) | Vite + Bun + TypeScript SPA behind ara.guzus.xyz |
 | [`prompts/`](prompts/) | Agent prompts for the scheduled lanes |
