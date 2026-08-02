@@ -4,10 +4,12 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); sued by Apple over trade-secret theft (2026-07-12), and now the target of Apple legal letters to dozens of its employees (2026-07-18), amid a GPT-5.6 "Full Access Mode" file-deletion safety incident.
+description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.
 created_at: 2026-05-30
-timestamp: 2026-07-30T00:00:00Z
+timestamp: 2026-08-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
+  - {title: "OpenAI — Ten advances in mathematics and theoretical computer science", url: "https://openai.com/index/ten-advances-in-mathematics", date: 2026-08-01}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA model ticket — Codex Security CLI", path: research/models/tickets/openai-codex-security-cli-2026-07.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
@@ -548,6 +550,29 @@ materially reshape how the lab is positioned heading into its IPO window:
   access now, scaling to 100,000 by 2027** — explicitly framed as a
   counter to AI benefits concentrating in a few labs (ARA digest
   2026-07-30).
+
+- **The next model family gets a name — [[astra|Astra]] — and ten unverified
+  proofs; frontier-review lobbying turns on rivals; the July 30 price cut gets
+  receipts (2026-08-02).** OpenAI put its **next major model family on the
+  record as [[astra|Astra]]**, pitched on running multiple agents on a problem
+  for hours or days, and published a **249-page manuscript claiming ten
+  mathematics and TCS results** — including a disproof of Connes's rigidity
+  conjecture and the first improved general sphere-packing exponent since 1978
+  — **formalized in Lean for roughly $200 per result**. Fourteen hours later
+  **no specialist had verified any of them** and OpenAI's own `openai/ten-proofs`
+  repository labels the package **"agent-reviewed"**; see
+  [[verification-bottleneck]]. Every confirmation came from **researcher
+  personal accounts, not the @OpenAI account**, and The Information reports
+  OpenAI has **not decided whether it ships as GPT-6 or GPT-5.7** ([[gpt-6]]).
+  Separately, OpenAI and [[anthropic]] are reported to be **quietly urging
+  Washington to extend the frontier-review regime they face to [[meta]] and
+  SpaceXAI** — in the same week both labs disclosed agent containment failures
+  (The Information; neither lab on the record — see [[federal-ai-policy]] and
+  [[agentic-ai-security]]). On pricing, the **July 30 cut** (Luna −80% to
+  $0.20/$1.20, Terra −20% to $2/$12) got its first like-for-like receipts:
+  **GPT-5.4 at extra-high effort scored 51, where Luna at max reasoning sits
+  today, at 12.5× the price** — and usage limits across Codex and ChatGPT Work
+  were **reset fleet-wide roughly a week early** (ARA digest 2026-08-02).
 
 ## Open questions
 

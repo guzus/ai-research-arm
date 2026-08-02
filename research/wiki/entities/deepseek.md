@@ -6,8 +6,9 @@ aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 P
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
 description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.
 created_at: 2026-06-04
-timestamp: 2026-08-01T00:00:00Z
+timestamp: 2026-08-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA model ticket — DeepSeek V4 GA + surge pricing", path: research/models/tickets/deepseek-v4-ga-surge-pricing-2026-06.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
@@ -157,6 +158,20 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   [[open-weights]] — the cheapest near-frontier model of the cycle is now
   downloadable, days after [[moonshot-kimi-k3|Kimi K3]] made the same move
   at 2.8T parameters (ARA digest 2026-08-01).
+
+- **Its first self-owned hyperscaler-scale site: a 1GW campus in Inner
+  Mongolia (2026-08-02).** Bloomberg reports DeepSeek is **building a
+  1-gigawatt datacenter campus in Inner Mongolia**, its **first
+  self-owned site at hyperscaler scale**, with part of the capacity
+  targeted for **late 2027 or early 2028**. That is a structural change in
+  posture: the lab that built its reputation on training-efficiency under
+  export controls is now buying its own power envelope, the same move the US
+  hyperscalers are making inside [[ai-capex]]. **Which accelerators fill the
+  racks is the part nobody will confirm** — the whole export-control question
+  sits in that gap (Bloomberg via @rohanpaul_ai; **single-source in window**).
+  Same cycle, [[deepseek-v4-flash|V4-Flash]] kept clearing outside tests and
+  was relayed as **105× cheaper per task than [[claude-fable-5|Fable 5]]**
+  (ARA digest 2026-08-02).
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-08-01T00:00:00Z
+timestamp: 2026-08-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-26", path: research/digest/2026-07-26-digest.md}
@@ -392,6 +393,29 @@ skepticism in one window:
   compute to an [[alibaba]] arrangement involving roughly 20,000 Nvidia
   H200s**, a rare named mechanism behind a Chinese lab's training capacity
   (ARA daily digest 2026-08-01).
+- **"Essentially similar to a bank run" — the LP letter, and $43.8B of
+  off-guidance Alphabet exposure (2026-08-02).** Aschenbrenner's letter to
+  limited partners describes the unwind as **"essentially similar to a bank
+  run"** and concedes *"we came closer to permanent capital impairment than is
+  acceptable to us"* — the operator's own account of the July drawdown (WSJ, FT
+  via @rohanpaul_ai). A **competing 75% figure** is also circulating and the
+  fund has **confirmed nothing on the record**. The structurally larger number
+  in the same cycle: **[[google|Alphabet's]] lease backstops for third-party
+  TPU capacity reached $43.8 billion, up from $6.5 billion in under a year** —
+  **contingent exposure sitting outside** a guided 2026 capex line of
+  **$195–205 billion** (The Information, single-source). That is the same
+  off-balance-sheet pattern this theme tracked with Meta/BlackRock's El Paso
+  financing, now at a hyperscaler's TPU fleet. Also in-window: **CyrusOne** is
+  laying groundwork for an IPO four years after a $15B take-private (with
+  **Nscale** still pointed at a fall listing); **[[nvidia|Nvidia]] backed
+  Reflection AI with $800M** to become a US open-source leader and **nearly a
+  year later it has released no model**; and the physical bottleneck moved off
+  memory — **Lumentum's CEO says the indium-phosphide laser gap is more severe
+  than the memory crunch, with five InP fabs shipping 30%+ below demand**,
+  while Korea's DRAM export unit price hit an all-time high in July and
+  **TSMC's advanced-packaging constraints are capping customers' AI chip
+  growth**. On the demand side, [[deepseek]] is building its **first
+  self-owned 1GW campus** in Inner Mongolia (ARA daily digest 2026-08-02).
 
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s

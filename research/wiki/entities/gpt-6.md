@@ -4,10 +4,11 @@ title: GPT-6
 type: entity
 aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship"]
 tags: [model-release, openai, frontier-model, rumored]
-description: OpenAI's anticipated next flagship model generation beyond GPT-5.6; reportedly previewed to US officials the week of 2026-07-27, but not yet officially named or specified by OpenAI.
+description: OpenAI's anticipated next flagship model generation beyond GPT-5.6; the family was named Astra on 2026-08-01, with OpenAI reportedly still undecided whether it ships as GPT-6 or GPT-5.7.
 created_at: 2026-07-28
-timestamp: 2026-07-28T00:00:00Z
+timestamp: 2026-08-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA model ticket — GPT-6", path: research/models/tickets/openai-gpt-6.md}
   - {title: "ARA model ticket — Hugging Face sandbox-escape hack", path: research/models/tickets/openai-unreleased-containment-escape-2026-07.md}
@@ -40,10 +41,21 @@ not officially used that name as of 2026-07-28.
   post — all signs of OpenAI and its ecosystem moving to lock in capital and
   government relationships ahead of a next-generation model release.
 
+## The Astra naming (2026-08-02)
+
+On **2026-08-01** OpenAI named the family **[[astra|Astra]]** and introduced it
+with a 249-page manuscript of ten claimed mathematics/TCS results. Per The
+Information, OpenAI has **not decided whether that family ships as GPT-6 or
+GPT-5.7** — so "GPT-6" is now one of two candidate product labels for a family
+that already has a research name, rather than a pure commentator inference.
+This page remains the naming/versioning thread; [[astra]] carries the model
+substance.
+
 ## Open questions
 
-- **Is "GPT-6" the actual name OpenAI will use?** The name is inference
-  from commentators, not an OpenAI on-record confirmation.
+- **Is "GPT-6" the actual name OpenAI will use?** Still open — now narrowed to
+  a GPT-6 / GPT-5.7 coin-flip reported by The Information, with no OpenAI
+  on-record confirmation either way.
 - **What capabilities does the Washington preview reveal?** No specifics
   (benchmarks, release timing, safety framework) have surfaced publicly.
 - **Is this the same model implicated in the Hugging Face sandbox escape?**
