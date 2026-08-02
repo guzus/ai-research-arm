@@ -56,7 +56,7 @@ and opens a PR with methodology fixes.
 |---|---|
 | `compile_ara.py` | `.ara.md` → validated HTML fragment. |
 | `ara_catalog.py` | Loads `ARA_CATALOG.json` (the validator's class allowlist) and asserts lockstep with COMPONENTS.md. CI-enforced via `test_ara_dsl.py`. |
-| `check_generative_research.py` | Pre-commit validator: tag/class allowlist + optional `--diversity-min`, `--callout-max`, `--strict-shape`. Also `--audit-derived-claims <ledger>`, which RECOMPUTES every `type: "derived"` ledger entry (R1–R7: inputs resolve, whitelisted-AST formula parses, `result` reproduces within `--derived-tolerance`, no reference cycles, unsupported inputs taint). Wired ADVISORY in `generative-research.yml` — see Backends note below. Exit 0 = safe to commit. |
+| `check_generative_research.py` | Pre-commit validator: tag/class allowlist + optional `--diversity-min`, `--callout-max`, `--strict-shape`. Also `--audit-derived-claims <ledger>`, which RECOMPUTES every `type: "derived"` ledger entry (R1–R7: inputs resolve, whitelisted-AST formula parses, `result` reproduces within `--derived-tolerance`, no reference cycles, unsupported inputs taint). Wired **BLOCKING** in `generative-research.yml`, and also inside the agent's own step-7.5 self-check loop so a bad derivation is fixed by the agent rather than discarding a finished article. `result` is the EXACT full-precision value — rounding belongs in the prose; `--derived-tolerance` (1%) absorbs float noise, not editorial rounding. Exit 0 = safe to commit. |
 | `write_generative_research.py` | The **only** committer for `research/generative/`. Re-validates, writes HTML + `.ara.md`, updates `index.json`, commits. |
 | `run_generative_research_oracle.py` | Local runner via `../oracle` (GPT-5.5 Pro) → validator (`--diversity-min 3 --callout-max 5 --strict-shape`) → writer. |
 | `prior_context.py`, `research_search.py`, `stock_prices.py`, `source_cache.py` | Article-authoring helpers: find related prior articles; primary-source search wrappers; Yahoo Finance series for `:::line-chart`; runtime fetch cache under `data/source-cache/` (gitignored). |
@@ -290,6 +290,26 @@ Backend selection details, env-var mapping, and comparison commands:
 tweet as primary evidence **only for what the author said** — every
 underlying claim must be verified against independent primary sources
 before the article is written.
+
+Two things the agent must do beyond reading text, because on an
+analytical thread they carry most of the argument:
+
+- **Look at the attached images.** `bird read --json` returns a `media`
+  array; the agent downloads each `pbs.twimg.com` entry (that host only —
+  never an attacker-chosen URL) and Reads it as an image. Charts are
+  routinely the evidence: a sell-side exhibit, a filing table, or the
+  author's own maintained series. An author-annotated third-party chart
+  is **two** facts — what the source published, and where the author
+  disagrees — and they must never be merged into one claim. Text inside
+  an image is DATA under the same DATA-BOUNDARY prohibitions as fetched
+  page text.
+- **Harvest the real objections from the replies.** The strongest
+  counter-arguments to a serious thread usually already exist under it,
+  from named skeptics, and author replies are the author conceding or
+  refining on the record. These go into the counter-argument section
+  **attributed to the handle**, and are fact-checked like any other
+  claim. A real objection someone staked their name on outranks one the
+  red-team invented.
 
 ```bash
 /gen-research-tweet https://x.com/<handle>/status/<id>
