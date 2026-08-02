@@ -2,8 +2,9 @@
 
 `blog-subscriptions.yml` turns explicitly subscribed entries in
 `data/sources/ai_blogs.json` into direct Telegram notifications. It currently
-watches the Naver blogs `tosoha1` and `ranto28` every two hours. Hooker remains
-the lane's non-blocking workflow telemetry sink, not its delivery-success gate.
+watches the Naver blogs `tosoha1`, `ranto28`, and `dhgusdnd44` every two
+hours. Hooker remains the lane's non-blocking workflow telemetry sink, not its
+delivery-success gate.
 
 ## Configuration contract
 
@@ -48,9 +49,9 @@ Committed state lives at
 }
 ```
 
-- The repository includes the observed 50-item baselines for `tosoha1` and
-  `ranto28`, so a post published between merge and the first scheduled run is
-  still detected.
+- The repository includes the observed 50-item baselines for `tosoha1`,
+  `ranto28`, and `dhgusdnd44`, so a post published between merge and the first
+  scheduled run is still detected.
   Independently, a source absent from state is seeded with every normalized
   item identity currently in its feed. That bootstrap poll sends no
   notifications, so a newly configured historical feed does not flood the
