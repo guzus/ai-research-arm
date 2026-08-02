@@ -333,6 +333,395 @@ Paragraph two of the dense prose.
         self.assertIn('class="ara-bubble ara-bubble--down">-8%</span>', html)
         self.assertIn('class="ara-cols"', html)
 
+    # ── :::position (labeled analyst position) ─────────────────────────
+    # The component's entire value is that a conviction call is
+    # DISTINGUISHABLE from a cited claim, so the tests pin the exact class
+    # names other streams code against, the exact disclosure text, and the
+    # fact that neither can be dropped.
+
+    POSITION_SRC = """---
+title: Position test
+---
+
+## 01. The call
+
+:::position(confidence=medium, horizon=2026-Q4)
+stance: Hyperscaler credit spreads compress rather than widen through Q4 2026.
+consensus: Sell-side models a Q3 operating-cash-flow deceleration.
+resolves: Q3 2026 hyperscaler 10-Q filings - combined OCF growth vs. the 31% Q1 2026 print.
+:::
+"""
+
+    def test_position_emits_every_contract_class(self):
+        html = compile_ok(self.POSITION_SRC)
+        # Exact class strings. Catalog/COMPONENTS lockstep would happily
+        # pass a consistent typo in BOTH files; only this catches it.
+        for rendered in (
+            'class="ara-position ara-position--medium"',
+            'class="ara-position-label"',
+            'class="ara-position-stance"',
+            'class="ara-position-row"',
+            'class="ara-position-key"',
+            'class="ara-position-val"',
+            'class="ara-position-meta"',
+        ):
+            with self.subTest(rendered=rendered):
+                self.assertIn(rendered, html)
+        self.assertIn(
+            '<span class="ara-position-label">Analyst position - not a sourced claim</span>',
+            html,
+        )
+        self.assertIn(
+            "Hyperscaler credit spreads compress rather than widen through Q4 2026.", html
+        )
+        self.assertIn('<span class="ara-position-key">Consensus</span>', html)
+        self.assertIn('<span class="ara-position-key">Resolves</span>', html)
+        # Two rows: consensus + resolves.
+        self.assertEqual(html.count('class="ara-position-row"'), 2)
+        # Confidence and horizon echoed as TEXT, not only as a class.
+        self.assertIn(
+            '<p class="ara-position-meta">Confidence: medium · Horizon: 2026-Q4</p>', html
+        )
+
+    def test_position_confidence_variants_map_to_classes(self):
+        for attr, expected in (
+            ("(confidence=high)", "ara-position ara-position--high"),
+            ("(confidence=medium)", "ara-position ara-position--medium"),
+            ("(confidence=low)", "ara-position ara-position--low"),
+            ("", "ara-position ara-position--medium"),  # default is medium
+        ):
+            with self.subTest(attrs=attr or "<none>"):
+                html = compile_ok(
+                    f"""---
+title: Position variants
+---
+
+## 01. Call
+
+:::position{attr}
+stance: A call.
+consensus: The other view.
+resolves: A dated observable.
+:::
+"""
+                )
+                self.assertIn(f'<div class="{expected}">', html)
+
+    def test_position_rejects_unknown_confidence(self):
+        with self.assertRaisesRegex(
+            compile_ara.AraSyntaxError, "confidence must be high\\|medium\\|low"
+        ):
+            compile_ok(
+                """---
+title: Bad confidence
+---
+
+## 01. Call
+
+:::position(confidence=certain)
+stance: A call.
+consensus: The other view.
+resolves: A dated observable.
+:::
+"""
+            )
+
+    def test_position_missing_required_key_names_it(self):
+        keys = {
+            "stance": "stance: A call.",
+            "consensus": "consensus: The other view.",
+            "resolves": "resolves: A dated observable.",
+        }
+        for missing in keys:
+            with self.subTest(missing=missing):
+                body = "\n".join(v for k, v in keys.items() if k != missing)
+                with self.assertRaisesRegex(
+                    compile_ara.AraSyntaxError, f"missing required field '{missing}'"
+                ):
+                    compile_ok(
+                        f"""---
+title: Missing key
+---
+
+## 01. Call
+
+:::position
+{body}
+:::
+"""
+                    )
+
+    def test_position_blank_required_key_is_treated_as_missing(self):
+        # A present-but-empty `stance:` is a missing stance, and must raise
+        # the SAME key-naming error rather than emitting a hollow block.
+        with self.assertRaisesRegex(
+            compile_ara.AraSyntaxError, "missing required field 'stance'"
+        ):
+            compile_ok(
+                """---
+title: Blank key
+---
+
+## 01. Call
+
+:::position
+stance: ""
+consensus: The other view.
+resolves: A dated observable.
+:::
+"""
+            )
+
+    def test_position_empty_body_names_all_required_keys(self):
+        with self.assertRaisesRegex(
+            compile_ara.AraSyntaxError,
+            "must be a YAML mapping with stance: / consensus: / resolves: keys",
+        ):
+            compile_ok(
+                """---
+title: Empty position
+---
+
+## 01. Call
+
+:::position
+:::
+"""
+            )
+
+    def test_position_horizon_is_optional(self):
+        html = compile_ok(
+            """---
+title: No horizon
+---
+
+## 01. Call
+
+:::position(confidence=low)
+stance: A tentative call.
+consensus: The other view.
+resolves: A dated observable.
+:::
+"""
+        )
+        self.assertIn('<p class="ara-position-meta">Confidence: low</p>', html)
+        self.assertNotIn("Horizon", html)
+
+    def test_position_escapes_injected_markup(self):
+        # The body is LLM-authored. Injected tags must land as text.
+        html = compile_ok(
+            """---
+title: Escaping
+---
+
+## 01. Call
+
+:::position
+stance: '<script>alert("x")</script> & <b>bold</b>'
+consensus: 'Tags <em>here</em> too & ampersands'
+resolves: '</div><span class="ara-doc">breakout</span>'
+:::
+"""
+        )
+        self.assertNotIn("<script", html)
+        self.assertNotIn("<b>bold</b>", html)
+        self.assertNotIn("<em>here</em>", html)
+        self.assertIn('&lt;script&gt;alert("x")&lt;/script&gt;', html)
+        self.assertIn("&amp;", html)
+        self.assertIn("&lt;/div&gt;", html)
+        # The closing-tag payload must not have escaped its own row.
+        self.assertEqual(html.count('class="ara-position-row"'), 2)
+        # compile_source runs validate_body internally, so reaching this
+        # line already proves the tag/class/attribute allowlist held. Assert
+        # it explicitly anyway — this is the property that matters.
+        writer.validate_body(html, writer.KIND_FRAGMENT)
+
+    def test_position_event_handler_payload_fails_closed(self):
+        # Escaped text still trips the writer's ` on\\w+=` denylist. That is
+        # defense in depth doing its job: fail the build, don't publish.
+        with self.assertRaisesRegex(compile_ara.AraSyntaxError, "HTML validation failed"):
+            compile_ok(
+                """---
+title: Handler payload
+---
+
+## 01. Call
+
+:::position
+stance: '<img src=x onerror=alert(1)>'
+consensus: The other view.
+resolves: A dated observable.
+:::
+"""
+            )
+
+    def test_position_passes_writer_fragment_validator(self):
+        writer.validate_body(compile_ok(self.POSITION_SRC), writer.KIND_FRAGMENT)
+
+    def test_catalog_documents_position_component(self):
+        # Lockstep must actively cover the new component, not just be green
+        # because neither file mentions it.
+        catalog_classes = ara_catalog.catalog_classes(ara_catalog.load_catalog())
+        md_classes = ara_catalog.components_md_classes()
+        for cls in (
+            "ara-position",
+            "ara-position-label",
+            "ara-position-stance",
+            "ara-position-row",
+            "ara-position-key",
+            "ara-position-val",
+            "ara-position-meta",
+        ):
+            with self.subTest(cls=cls):
+                self.assertIn(cls, catalog_classes)
+                self.assertIn(cls, md_classes)
+        # Variants are documented in prose, never as first-column rows —
+        # COMPONENT_ROW_RE would match them while catalog_classes skips
+        # `--` classes, which is a guaranteed lockstep failure.
+        self.assertNotIn("ara-position--high", md_classes)
+        self.assertEqual([], ara_catalog.validate_catalog_against_components())
+
+    def test_raw_position_block_without_the_label_is_rejected(self):
+        # :::raw hands author HTML straight to the class allowlist, which
+        # alone would let an article take the analyst-position styling while
+        # dropping the disclosure. The article-level guard closes that.
+        with self.assertRaisesRegex(
+            compile_ara.AraSyntaxError, "carrying the required label"
+        ):
+            compile_ok(
+                """---
+title: Raw position
+---
+
+## 01. Call
+
+:::raw
+<div class="ara-position ara-position--high"><p class="ara-position-stance">Trust me.</p></div>
+:::
+"""
+            )
+
+    def test_raw_position_block_with_a_reworded_label_is_rejected(self):
+        with self.assertRaisesRegex(
+            compile_ara.AraSyntaxError, "carrying the required label"
+        ):
+            compile_ok(
+                """---
+title: Reworded label
+---
+
+## 01. Call
+
+:::raw
+<div class="ara-position"><span class="ara-position-label">Analyst view</span></div>
+:::
+"""
+            )
+
+    def test_position_label_guard_is_a_no_op_without_the_class(self):
+        # Scoping check: the guard must not fire on any article that does
+        # not use ara-position — i.e. every article written before it.
+        compile_ara.validate_position_labels(
+            '<article class="ara-doc"><p>No position here.</p></article>'
+        )
+        # And it must not miscount the label element as a block (the
+        # `ara-position-label` / `\\bara-position\\b` substring trap).
+        compile_ara.validate_position_labels(
+            '<div class="ara-position ara-position--low">'
+            '<span class="ara-position-label">Analyst position - not a sourced claim</span>'
+            "</div>"
+        )
+
+    def test_raw_position_label_guard_is_quoting_agnostic(self):
+        """REGRESSION: the guard was a `class="([^"]*)"` regex, so it saw
+        only DOUBLE-quoted attributes. A `:::raw` block written with single
+        quotes — or none — took the analyst-position styling with no
+        disclosure and was reported "Safe to commit". One character defeated
+        it. The sibling validator is html.parser-based, so this one is too."""
+        for attr in ("class='ara-position'", "class=ara-position",
+                     'class="ara-position"'):
+            with self.subTest(attr=attr):
+                with self.assertRaisesRegex(
+                    compile_ara.AraSyntaxError, "carrying the required label"
+                ):
+                    compile_ara.validate_position_labels(
+                        f"<div {attr}><p>Trust me.</p></div>"
+                    )
+
+    def test_position_labels_must_be_inside_the_block_they_disclose(self):
+        """REGRESSION: the guard compared two global COUNTS, so labels were
+        fungible — two in one block and none in another passed, as did a
+        stray label parked in a different section. Containment, not
+        counting."""
+        label = (
+            '<span class="ara-position-label">'
+            f"{compile_ara.POSITION_LABEL_TEXT}</span>"
+        )
+        two_labels_one_block = (
+            f'<div class="ara-position">{label}{label}</div>'
+            '<div class="ara-position"><p>Unlabelled call.</p></div>'
+        )
+        remote_label = (
+            '<div class="ara-position"><p>Unlabelled call.</p></div>'
+            f'<p class="ara-note">{label}</p>'
+        )
+        for name, html_doc in (("fungible", two_labels_one_block),
+                               ("remote", remote_label)):
+            with self.subTest(case=name):
+                with self.assertRaisesRegex(
+                    compile_ara.AraSyntaxError, "carrying the required label"
+                ):
+                    compile_ara.validate_position_labels(html_doc)
+
+    def test_prose_mentioning_the_class_is_not_a_position_block(self):
+        """REGRESSION: the guard scanned TEXT nodes too, so an article that
+        merely documented the class in prose hard-failed with an error
+        telling the author to use a directive they never used. This repo
+        already ships a component-reference article that does exactly that."""
+        compile_ara.validate_position_labels(
+            '<p>The compiler emits class="ara-position ara-position--medium" '
+            "around the block, which the dashboard styles.</p>"
+        )
+
+    def test_position_fields_are_word_bounded(self):
+        """The citation gates EXEMPT position text from the cite-density
+        denominator, so an unbounded field is a way to hide uncited prose.
+        Bound it here, where the error names the field, rather than letting
+        it surface downstream as a mysterious density failure."""
+        long_stance = " ".join(["word"] * (compile_ara.POSITION_MAX_FIELD_WORDS + 1))
+        with self.assertRaisesRegex(compile_ara.AraSyntaxError, "over the"):
+            compile_ara.emit_position(
+                {},
+                {"stance": long_stance, "consensus": "Desks disagree.",
+                 "resolves": "A Q4 print."},
+                1,
+            )
+
+    def test_compile_bound_fits_inside_the_validator_exemption_cap(self):
+        """CROSS-MODULE SEAM. compile_ara.py bounds each position field;
+        check_generative_research.py refuses to exempt an oversized block.
+        If the compiler could emit a block the validator will not exempt,
+        an author would get a confusing cite-density failure on a
+        correctly-authored component. Asserted empirically — by building
+        the largest block the compiler permits and measuring it with the
+        validator's own word counter — not by a comment claiming the two
+        numbers line up."""
+        import check_generative_research as chk
+
+        filler = " ".join(["word"] * compile_ara.POSITION_MAX_FIELD_WORDS)
+        worst = compile_ara.emit_position(
+            {"confidence": "high",
+             "horizon": " ".join(["w"] * compile_ara.POSITION_MAX_HORIZON_WORDS)},
+            {k: filler for k in compile_ara.POSITION_REQUIRED_KEYS},
+            1,
+        )
+        self.assertLessEqual(
+            chk._word_count(worst), chk._POSITION_MAX_EXEMPT_WORDS,
+            "the largest compilable :::position block must still be exempt",
+        )
+        # ...and it must actually be stripped, not merely fit the number.
+        self.assertEqual("", chk.strip_position_blocks(worst).strip())
+
     def test_note_source_labels_can_be_omitted(self):
         html = compile_ok(
             """---

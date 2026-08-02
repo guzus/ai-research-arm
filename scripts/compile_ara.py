@@ -48,6 +48,7 @@ import json
 import math
 import re
 import sys
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Callable
 from urllib.parse import urlparse
@@ -828,6 +829,114 @@ def emit_statement(attrs: dict, body: str, line_no: int) -> str:
     return "".join(out)
 
 
+# ---------------------------------------------------------------------
+# Analyst position — the article contract's ONE slot for an explicit
+# non-consensus call. Everything inside is the author's judgment rather
+# than a retrieved fact, so the block always renders a fixed disclosure
+# label. There is deliberately no attribute to change or suppress that
+# label: the whole point of the component is that a reader and a
+# downstream validator can both tell a conviction call apart from a
+# cited claim at a glance.
+# ---------------------------------------------------------------------
+
+POSITION_CONFIDENCE = ("high", "medium", "low")
+POSITION_DEFAULT_CONFIDENCE = "medium"
+POSITION_REQUIRED_KEYS = ("stance", "consensus", "resolves")
+# Exact disclosure string. Other pipeline stages match on it verbatim —
+# change it here and you change a cross-component contract.
+POSITION_LABEL_TEXT = "Analyst position - not a sourced claim"
+POSITION_ROW_KEYS = (("consensus", "Consensus"), ("resolves", "Resolves"))
+# Per-field word bound. A position block is a short labelled call; the
+# downstream citation gates EXEMPT its text from the cite-density
+# denominator, so an unbounded field is a way to hide uncited prose from
+# check_generative_research.py. That validator refuses to exempt an
+# oversized block (_POSITION_MAX_EXEMPT_WORDS), which would surface to an
+# author as a confusing density failure — so bound it HERE instead, where
+# the error names the field. test_ara_dsl.py asserts the worst-case block
+# this bound permits still fits inside the validator's cap.
+POSITION_MAX_FIELD_WORDS = 50
+POSITION_MAX_HORIZON_WORDS = 12
+
+
+def _position_field(body: dict, key: str, line_no: int) -> str:
+    """Read one required :::position body field.
+
+    Absent, null and blank all raise the SAME error naming the key — an
+    empty `stance:` is a missing stance, not an empty one, and the author
+    (usually a model) needs to be told which key to write."""
+    value = body.get(key)
+    text = "" if value is None else str(value).strip()
+    if not text:
+        raise AraSyntaxError(
+            f":::position: missing required field {key!r} "
+            f"(required: {', '.join(POSITION_REQUIRED_KEYS)})",
+            line=line_no,
+        )
+    words = len(text.split())
+    if words > POSITION_MAX_FIELD_WORDS:
+        raise AraSyntaxError(
+            f":::position: field {key!r} is {words} words, over the "
+            f"{POSITION_MAX_FIELD_WORDS}-word limit. A position is a short "
+            f"labelled call, and its text is exempt from the citation "
+            f"gates — move the supporting argument into cited prose.",
+            line=line_no,
+        )
+    return text
+
+
+def emit_position(attrs: dict, body: Any, line_no: int) -> str:
+    """Labeled analyst position.
+
+    Body is YAML (same family as :::kv / :::stats) with three required
+    keys — stance, consensus, resolves. Optional attrs: confidence
+    (high|medium|low, default medium) and horizon (free text).
+
+    Values containing a colon must be quoted, as with every other
+    YAML-bodied directive."""
+    if not isinstance(body, dict):
+        raise AraSyntaxError(
+            ":::position body must be a YAML mapping with "
+            + " / ".join(f"{k}:" for k in POSITION_REQUIRED_KEYS)
+            + " keys",
+            line=line_no,
+        )
+    confidence = str(_opt(attrs, "confidence", POSITION_DEFAULT_CONFIDENCE)).strip().lower()
+    if confidence not in POSITION_CONFIDENCE:
+        raise AraSyntaxError(
+            f"position confidence must be {'|'.join(POSITION_CONFIDENCE)}, got {confidence!r}",
+            line=line_no,
+        )
+    # Read every required field BEFORE emitting, so a half-built block can
+    # never reach the output on the second missing key.
+    stance = _position_field(body, "stance", line_no)
+    rows = [(label, _position_field(body, key, line_no)) for key, label in POSITION_ROW_KEYS]
+
+    out = [f'<div class="ara-position ara-position--{confidence}">']
+    out.append(f'<span class="ara-position-label">{html.escape(POSITION_LABEL_TEXT)}</span>')
+    out.append(f'<p class="ara-position-stance">{parse_inline(stance)}</p>')
+    for label, value in rows:
+        out.append('<div class="ara-position-row">')
+        out.append(f'<span class="ara-position-key">{label}</span>')
+        out.append(f'<span class="ara-position-val">{parse_inline(value)}</span>')
+        out.append("</div>")
+    # Confidence is echoed as TEXT as well as a class, so the signal
+    # survives print, PDF export, and any reader who can't see the accent.
+    meta = [f"Confidence: {confidence}"]
+    horizon = _opt(attrs, "horizon")
+    if horizon is not None and str(horizon).strip():
+        horizon_text = str(horizon).strip()
+        if len(horizon_text.split()) > POSITION_MAX_HORIZON_WORDS:
+            raise AraSyntaxError(
+                f":::position: horizon is {len(horizon_text.split())} words, "
+                f"over the {POSITION_MAX_HORIZON_WORDS}-word limit",
+                line=line_no,
+            )
+        meta.append(f"Horizon: {parse_inline(horizon_text)}")
+    out.append(f'<p class="ara-position-meta">{" · ".join(meta)}</p>')
+    out.append("</div>")
+    return "".join(out)
+
+
 def _emit_footnote(attrs: dict, body: str, css_class: str, default_label: str) -> str:
     """Shared shape for :::note and :::source — a small gray sans line
     with an optional uppercase label prefix. `label=` overrides the
@@ -1575,6 +1684,7 @@ DIRECTIVES: dict[str, tuple[Callable, str]] = {
     "callout":     (emit_callout,     "markdown"),
     "quote":       (emit_quote,       "markdown"),
     "statement":   (emit_statement,   "markdown"),
+    "position":    (emit_position,    "yaml"),
     "note":        (emit_note,        "markdown"),
     "source":      (emit_source,      "markdown"),
     "exhibit":     (emit_exhibit,     "markdown"),
@@ -1749,8 +1859,166 @@ def validate_block_contract(blocks: list[tuple[int, str, list[str]]]) -> None:
         raise AraSyntaxError("article can only contain one :::references block", line=first)
 
 
+_POSITION_ROOT_CLASS = "ara-position"
+_POSITION_LABEL_CLASS = "ara-position-label"
+# HTML void elements — they never have an end tag, so they must not be
+# pushed on the open-element stack.
+_VOID_TAGS = frozenset({
+    "area", "base", "br", "col", "embed", "hr", "img", "input",
+    "link", "meta", "param", "source", "track", "wbr",
+})
+
+
+def _class_tokens(attrs: list[tuple[str, str | None]]) -> set[str]:
+    """Whitespace-split class tokens from a parser's normalised attrs."""
+    out: set[str] = set()
+    for key, val in attrs:
+        if key.lower() == "class" and val:
+            out.update(val.split())
+    return out
+
+
+class _PositionLabelParser(HTMLParser):
+    """Verifies, per block, that every `ara-position` element CONTAINS an
+    `ara-position-label` descendant reading exactly POSITION_LABEL_TEXT.
+
+    Replaces a regex pair that had three independent defects, all
+    demonstrated against the shipped code before this rewrite:
+
+      1. `class="([^"]*)"` matched only DOUBLE-quoted attributes, so a
+         `:::raw` block written `class='ara-position'` — or unquoted —
+         took the analyst-position styling with no disclosure label and
+         was reported "Safe to commit". One character defeated the guard.
+      2. It compared two global COUNTS, so labels were fungible: two
+         labels in block A and none in block B passed, as did a stray
+         label parked in a different section entirely. Counting is the
+         wrong primitive for a containment invariant.
+      3. It scanned the whole rendered document including TEXT nodes, so
+         an article that merely mentioned `class="ara-position"` in prose
+         was counted as a block and hard-failed the compile with an error
+         telling the author to use a directive they never used. (This
+         repo already ships a component-reference article that documents
+         `ara-*` classes in prose.)
+
+    A parser fixes all three at once: attributes are normalised by the
+    parser regardless of quoting style, containment is tracked with an
+    element stack, and `handle_data` text can never be mistaken for an
+    attribute."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        # Stack of open elements: (tag, role) with role in
+        # {None, "block", "label"}.
+        self._open: list[tuple[str, str | None]] = []
+        # One entry per block root, in document order: True once a
+        # correctly-worded label has been seen inside it.
+        self._block_labelled: list[bool] = []
+        # Index into _block_labelled for each currently-open block.
+        self._block_stack: list[int] = []
+        self._label_chars: list[str] | None = None
+
+    @property
+    def blocks(self) -> int:
+        return len(self._block_labelled)
+
+    @property
+    def unlabelled(self) -> int:
+        return sum(1 for ok in self._block_labelled if not ok)
+
+    def _role(self, attrs: list[tuple[str, str | None]]) -> str | None:
+        tokens = _class_tokens(attrs)
+        for tok in tokens:
+            if tok == _POSITION_ROOT_CLASS or tok.startswith(_POSITION_ROOT_CLASS + "--"):
+                return "block"
+        if _POSITION_LABEL_CLASS in tokens:
+            return "label"
+        return None
+
+    def handle_starttag(self, tag, attrs):
+        role = self._role(attrs)
+        if tag in _VOID_TAGS:
+            # A void root (`<br class="ara-position">`) can never contain
+            # a label, so it is a block that is unlabelled by definition.
+            if role == "block":
+                self._block_labelled.append(False)
+            return
+        if role == "block":
+            self._block_labelled.append(False)
+            self._block_stack.append(len(self._block_labelled) - 1)
+        elif role == "label" and self._block_stack:
+            self._label_chars = []
+        self._open.append((tag, role))
+
+    def handle_startendtag(self, tag, attrs):
+        role = self._role(attrs)
+        if role == "block":
+            # Opens and closes at once — no descendant, so no label.
+            self._block_labelled.append(False)
+
+    def handle_data(self, data):
+        if self._label_chars is not None:
+            self._label_chars.append(data)
+
+    def handle_endtag(self, tag):
+        # Pop to the nearest matching open tag, discarding unclosed
+        # inner elements rather than desynchronising the stack.
+        for i in range(len(self._open) - 1, -1, -1):
+            if self._open[i][0] != tag:
+                continue
+            for _, role in reversed(self._open[i:]):
+                if role == "block" and self._block_stack:
+                    self._block_stack.pop()
+                elif role == "label" and self._label_chars is not None:
+                    text = "".join(self._label_chars).strip()
+                    if text == POSITION_LABEL_TEXT and self._block_stack:
+                        self._block_labelled[self._block_stack[-1]] = True
+                    self._label_chars = None
+            del self._open[i:]
+            return
+
+
+def validate_position_labels(article_html: str) -> None:
+    """Every ara-position block must carry the exact disclosure label.
+
+    :::position always emits it, but :::raw hands author HTML straight to
+    the class allowlist — which by itself would let an article claim the
+    analyst-position styling while dropping the one string that tells a
+    reader (and a downstream validator) the block is judgment, not a
+    sourced claim. Checking here closes that hole for BOTH paths.
+
+    Scoped: articles that never use the class return immediately, so this
+    is a no-op for every article that predates the component.
+
+    Token-split, never a substring/`\\b` test — `ara-position-label`
+    contains `ara-position`, and a word-boundary regex would count the
+    label element as a block.
+
+    Containment, never counting: the label must live INSIDE the block it
+    discloses. See _PositionLabelParser for the three regex defects this
+    replaced."""
+    if _POSITION_ROOT_CLASS not in article_html:
+        return
+    parser = _PositionLabelParser()
+    try:
+        parser.feed(article_html)
+        parser.close()
+    except Exception as e:  # noqa: BLE001 — boundary: malformed HTML
+        raise AraSyntaxError(
+            f"could not parse the article to verify ara-position labels: {e}"
+        ) from e
+    blocks, unlabelled = parser.blocks, parser.unlabelled
+    if unlabelled:
+        raise AraSyntaxError(
+            f"{blocks} ara-position block(s) but {blocks - unlabelled} carrying "
+            f'the required label "{POSITION_LABEL_TEXT}" inside the block. '
+            "Every analyst-position block must render that exact disclosure — "
+            "author it with :::position rather than hand-written HTML."
+        )
+
+
 def validate_article_contract(article_html: str) -> None:
     """Enforce article-level invariants that span multiple blocks."""
+    validate_position_labels(article_html)
     cited = HTML_CITE_RE.findall(article_html)
     refs = HTML_REF_RE.findall(article_html)
     if not refs:

@@ -14,7 +14,17 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-ALLOWED_CLAIM_TYPES = frozenset({
+# `derived` is the ONE claim type whose support is arithmetic rather than
+# retrieval, so it is the one type exempt from the source_urls/source_tiers
+# requirement. Its support is proven instead by
+# check_generative_research.py --audit-derived-claims, which recomputes
+# `formula` over `inputs` and compares against `result`.
+DERIVED_CLAIM_TYPE = "derived"
+# Keys that only a derivation carries. Their presence is what makes an
+# entry structurally derived, independent of the `type` string an author
+# wrote — see the relabel check in validate_claim_ledger().
+DERIVATION_KEYS = ("inputs", "formula", "result")
+RETRIEVAL_CLAIM_TYPES = frozenset({
     "metric",
     "event",
     "quote",
@@ -27,6 +37,7 @@ ALLOWED_CLAIM_TYPES = frozenset({
     "technical",
     "other",
 })
+ALLOWED_CLAIM_TYPES = RETRIEVAL_CLAIM_TYPES | {DERIVED_CLAIM_TYPE}
 ALLOWED_SOURCE_TIERS = frozenset({
     "primary",
     "secondary",
@@ -78,6 +89,9 @@ def validate_claim_ledger(path: Path) -> list[str]:
         source_urls = claim.get("source_urls")
         source_tiers = claim.get("source_tiers")
 
+        is_derived = ctype == DERIVED_CLAIM_TYPE
+        present_derivation = [k for k in DERIVATION_KEYS if k in claim]
+
         if not cid:
             errors.append(f"{prefix} missing id")
         elif cid in seen_ids:
@@ -90,6 +104,22 @@ def validate_claim_ledger(path: Path) -> list[str]:
             errors.append(
                 f"{prefix} type {ctype!r} is invalid; allowed: {sorted(ALLOWED_CLAIM_TYPES)}"
             )
+        # STRUCTURAL relabel guard. A derived entry that fails the
+        # recompute audit can be "repaired" in one token by retyping it
+        # `metric` and pasting the INPUT claims' URLs into source_urls —
+        # which asserts that those pages state a computed output they do
+        # not state, i.e. the fabricated citation this contract exists to
+        # prevent. Detect the derivation by its SHAPE, never by the type
+        # string the author chose. (Verified 2026-08-02: zero of the 1,312
+        # claims across the 46 committed *.claims.json snapshots carry any
+        # of these keys, so this cannot invalidate existing output.)
+        elif present_derivation and not is_derived:
+            errors.append(
+                f"{prefix} carries derivation key(s) {present_derivation} but "
+                f"declares retrieval type {ctype!r}; an entry that computes a "
+                f"number must be typed {DERIVED_CLAIM_TYPE!r} so it is "
+                f"recomputed rather than credited to a source URL"
+            )
         if confidence not in ALLOWED_CONFIDENCE:
             errors.append(
                 f"{prefix} confidence {confidence!r} is invalid; allowed: {sorted(ALLOWED_CONFIDENCE)}"
@@ -98,7 +128,25 @@ def validate_claim_ledger(path: Path) -> list[str]:
             errors.append(
                 f"{prefix} risk {risk!r} is invalid; allowed: {sorted(ALLOWED_RISK)}"
             )
-        if not isinstance(source_urls, list) or not source_urls:
+        if is_derived:
+            # A derived claim's support is its `inputs`, not a URL. Requiring
+            # source_urls here would force the author to invent one; ALLOWING
+            # a non-empty one would let a computed output be credited to pages
+            # that never state it. So: forbidden, not optional.
+            missing_derivation = [k for k in DERIVATION_KEYS if k not in claim]
+            if missing_derivation:
+                errors.append(
+                    f"{prefix} type {DERIVED_CLAIM_TYPE!r} requires "
+                    f"{list(DERIVATION_KEYS)}; missing: {missing_derivation}"
+                )
+            for field, value in (("source_urls", source_urls), ("source_tiers", source_tiers)):
+                if value not in (None, [], ()):
+                    errors.append(
+                        f"{prefix} type {DERIVED_CLAIM_TYPE!r} must not carry "
+                        f"{field}; a computed number is supported by its inputs "
+                        f"and formula, and no source page states it"
+                    )
+        elif not isinstance(source_urls, list) or not source_urls:
             errors.append(f"{prefix} source_urls must be a non-empty array")
         else:
             bad_urls = [
@@ -107,7 +155,9 @@ def validate_claim_ledger(path: Path) -> list[str]:
             ]
             if bad_urls:
                 errors.append(f"{prefix} source_urls contains non-http URL(s): {bad_urls[:3]!r}")
-        if not isinstance(source_tiers, list) or not source_tiers:
+        if is_derived:
+            pass  # handled together with source_urls above
+        elif not isinstance(source_tiers, list) or not source_tiers:
             errors.append(f"{prefix} source_tiers must be a non-empty array")
         else:
             bad_tiers = [t for t in source_tiers if t not in ALLOWED_SOURCE_TIERS]

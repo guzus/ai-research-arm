@@ -68,6 +68,15 @@
       "example": ":::statement(attr=\"ARA Research\")"
     },
     {
+      "id": "position",
+      "category": "content",
+      "intent": "Labeled analyst position — an explicit non-consensus call, marked as the author's judgment rather than a sourced claim.",
+      "classes": ["ara-position", "ara-position-label", "ara-position-stance", "ara-position-row", "ara-position-key", "ara-position-val", "ara-position-meta"],
+      "variants": ["ara-position--high", "ara-position--medium", "ara-position--low"],
+      "default_when": "Use at most once or twice per article, for the call the evidence supports but the consensus has not yet made. Body requires stance / consensus / resolves. The fixed label 'Analyst position - not a sourced claim' is always rendered and cannot be overridden or suppressed — that label is the point of the component.",
+      "example": ":::position(confidence=medium, horizon=2026-Q4)\\nstance: \"Our call: hyperscaler credit spreads compress rather than widen through Q4 2026.\"\\nconsensus: Sell-side models a Q3 operating-cash-flow deceleration and assumes the capex funding gap is debt-financed.\\nresolves: Q3 2026 hyperscaler 10-Q filings - combined OCF growth vs. the 31% Q1 2026 print.\\n:::  (quote any value containing a colon — the body is YAML)"
+    },
+    {
       "id": "footnotes",
       "category": "content",
       "intent": "Small gray sans Note / Source lines beneath an exhibit, or standalone in prose.",
