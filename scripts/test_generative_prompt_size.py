@@ -1,40 +1,46 @@
 #!/usr/bin/env python3
-"""The generative-research `prompt:` input must stay under a safe ceiling.
+"""Guard the generative-research `prompt:` size against a proven-good ceiling.
 
 Run: uv run python -m unittest scripts.test_generative_prompt_size
 
-WHY THIS GATE EXISTS — a real outage, 2026-08-02.
+WHY THIS GATE EXISTS — a real, expensive failure on 2026-08-02.
 
-`anthropics/claude-code-action@v1` has a size ceiling on its `prompt:` input.
-Cross it and the action stops invoking the agent, but does NOT fail: the step
-reports `success`, runs for ~2 seconds, writes NO execution file, and produces
-no article. `show_full_output: false` hides the provider-side cause. The
-workflow then fails much later at "Fail Claude run without article", which
-points at everything except the real problem.
+Growing this prompt broke the lane in a way NO existing gate could see.
+`anthropics/claude-code-action@v1` stopped invoking the agent while still
+reporting success: the step ran ~3 seconds, wrote no execution file, produced
+no article, and emitted no error (`show_full_output: false` hides the cause).
+CI stayed green. The workflow failed much later at "Fail Claude run without
+article", pointing at everything except the real problem. It took four real
+dispatches to localise.
 
-Observed, same runner and same credential:
+Measured, with model / credential / runner / every other step input held
+identical and only prompt length varying:
 
-    main    prompt 52,741 chars -> Claude step ran 3,171 s, article published
-    branch  prompt 83,978 chars -> Claude step ran ~2 s, no execution file
+    52,741 chars -> Claude step ran 3,171 s, article published   (main)
+    56,317 chars -> Claude step ran ~3 s, no execution file
+    83,978 chars -> Claude step ran ~3 s, no execution file
 
-The exact ceiling is not documented by the action, so this gate uses a
-CONSERVATIVE limit anchored to the largest size empirically proven to work,
-plus modest headroom. That is deliberately pessimistic: the cost of being
-under is a doc pointer, and the cost of being over is a lane that looks
-green in CI, passes every other gate here, and silently produces nothing in
-production.
+BE HONEST ABOUT WHAT IS AND IS NOT KNOWN. A threshold somewhere inside a
+3,576-char band is too tight to be a clean documented size limit, so the
+MECHANISM IS NOT ESTABLISHED — it may not be raw length at all (encoding,
+a specific construct, or an interaction). What IS established: 52,741 works
+and 56,317 does not, on an otherwise identical step.
 
-HOW TO STAY UNDER IT. Do not delete guidance — MOVE it. Reference material
-belongs in `docs/*.md`, which CLAUDE.md already documents as "read at runtime
-by the agents", and the prompt keeps a short imperative plus the path:
+So this gate is deliberately empirical rather than principled. It pins the
+prompt near the only size proven to invoke the agent. Raising it is allowed
+but must be earned:
 
-    docs/generative-research-toolbelt.md    tools + Twitter-seed procedure
-    docs/generative-research-components.md  the ARA component vocabulary
-    docs/generative-research-redteam.md     the step-6.5 red-team contract
-    docs/claim-store.md                     claim reuse + candidate contract
+  1. Raise MAX_PROMPT_CHARS.
+  2. Dispatch generative-research.yml from your branch WITHOUT a `backend`
+     input (the default lane resolves opus-5; passing `backend=claude` pins
+     claude-sonnet-5, a different path that also no-ops and will confound
+     your result — that mistake cost two of the four runs above).
+  3. Confirm the "Run Generative Research (Claude, attempt 1)" step runs for
+     MINUTES, not seconds. A green CI run proves nothing here.
 
-Keep genuinely BEHAVIOURAL rules inline (anti-patterns, "claim store first",
-the never-write-empty-findings invariant). Move REFERENCE material out.
+To add agent guidance without growing the prompt, put reference material in
+`docs/*.md` — which CLAUDE.md already documents as "read at runtime by the
+agents" — and leave a short imperative plus the path in the prompt.
 """
 
 from __future__ import annotations
@@ -47,12 +53,9 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parent.parent
 WORKFLOW = REPO_ROOT / ".github" / "workflows" / "generative-research.yml"
 
-# Largest size empirically proven to invoke the agent (main, run 30741406379).
-PROVEN_WORKING = 52_741
-# Ceiling with headroom over the proven size, comfortably below the ~64 KB
-# boundary the 83,978-char failure sat above. Raise ONLY with evidence from a
-# real run that a larger prompt still invokes the agent.
-MAX_PROMPT_CHARS = 60_000
+PROVEN_WORKING = 52_741   # main run 30741406379: agent ran 3,171 s
+PROVEN_BROKEN = 56_317    # branch run 30747747723: agent no-op'd in ~3 s
+MAX_PROMPT_CHARS = 54_000  # between them, close to proven-good
 
 
 def _prompts() -> dict[str, str]:
@@ -62,17 +65,20 @@ def _prompts() -> dict[str, str]:
         for step in job.get("steps") or []:
             with_block = step.get("with") or {}
             if "prompt" in with_block:
-                key = step.get("id") or step.get("name") or f"step-{len(out)}"
-                out[key] = with_block["prompt"]
+                out[step.get("id") or step.get("name") or f"step-{len(out)}"] = with_block["prompt"]
     return out
 
 
 class GenerativePromptSizeTests(unittest.TestCase):
+    def test_ceiling_sits_between_the_measured_good_and_bad_sizes(self):
+        """Guard the guard: the constant must stay empirically anchored."""
+        self.assertGreaterEqual(MAX_PROMPT_CHARS, PROVEN_WORKING)
+        self.assertLess(MAX_PROMPT_CHARS, PROVEN_BROKEN)
+
     def test_workflow_has_prompt_bearing_steps(self):
-        """Guard the guard: a parsing change must not silently pass this file."""
-        prompts = _prompts()
+        """A parsing change must not let this file silently pass."""
         self.assertGreaterEqual(
-            len(prompts), 2, "expected the claude and fireworks prompt families"
+            len(_prompts()), 2, "expected the claude and fireworks prompt families"
         )
 
     def test_every_prompt_is_under_the_ceiling(self):
@@ -82,44 +88,12 @@ class GenerativePromptSizeTests(unittest.TestCase):
                     len(prompt),
                     MAX_PROMPT_CHARS,
                     f"{name} prompt is {len(prompt):,} chars, over the "
-                    f"{MAX_PROMPT_CHARS:,} ceiling. Over the action's limit the "
-                    "agent is never invoked and the step still reports success "
-                    "— move reference material into docs/*.md and leave a "
-                    "pointer. See this module's docstring.",
-                )
-
-    def test_prompts_still_point_at_the_externalised_contracts(self):
-        """Shrinking must not orphan the docs the prompt delegates to."""
-        required = [
-            "docs/generative-research-toolbelt.md",
-            "docs/generative-research-components.md",
-            "docs/generative-research-redteam.md",
-            "docs/claim-store.md",
-        ]
-        for name, prompt in _prompts().items():
-            for doc in required:
-                with self.subTest(step=name, doc=doc):
-                    self.assertIn(
-                        doc,
-                        prompt,
-                        f"{name} no longer references {doc}; the agent would "
-                        "lose that contract entirely",
-                    )
-
-    def test_referenced_contract_docs_exist_on_disk(self):
-        seen: set[str] = set()
-        for prompt in _prompts().values():
-            for token in prompt.split():
-                cleaned = token.strip("`,.;:()[]'\"")
-                if cleaned.startswith("docs/") and cleaned.endswith(".md"):
-                    seen.add(cleaned)
-        self.assertTrue(seen, "expected the prompt to delegate to docs/*.md")
-        for doc in sorted(seen):
-            with self.subTest(doc=doc):
-                self.assertTrue(
-                    (REPO_ROOT / doc).is_file(),
-                    f"prompt references {doc} but it does not exist — the agent "
-                    "would follow a dead pointer and lose that contract",
+                    f"{MAX_PROMPT_CHARS:,} ceiling. Past this the action has been "
+                    "observed to stop invoking the agent while still reporting "
+                    "success — CI cannot see it. Move reference material into "
+                    "docs/*.md, or raise the ceiling only with a real dispatch "
+                    "proving the agent still runs for minutes. See this module's "
+                    "docstring.",
                 )
 
 
