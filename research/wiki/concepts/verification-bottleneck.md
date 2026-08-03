@@ -6,8 +6,9 @@ aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap"
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
 description: The 2026 constraint that models now generate research-shaped output faster than qualified humans can check it, so the scarce resource shifts from producing results to establishing which ones are correct and which matter.
 created_at: 2026-08-02
-timestamp: 2026-08-02T00:00:00Z
+timestamp: 2026-08-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "Scaling VLMs Is Not Enough to Mitigate Bias", url: "https://arxiv.org/abs/2607.28211", date: 2026-07-30}
   - {title: "Fidelity Is Not Safety", url: "https://arxiv.org/abs/2607.28196", date: 2026-07-30}
@@ -53,6 +54,25 @@ not scale with inference spend.
   restore a hard ceiling ([[lifescibench]], [[remote-labor-index]]), and
   agentic-research tooling sold on trusted output ([[claude-science]]) are all
   responses to the same constraint.
+
+- **The first rebuttal arrived faster than the first verification, and is itself
+  unverifiable (2026-08-03).** Two days after [[astra]], an [[anthropic]]
+  researcher was reported to have run GA [[claude-fable-5|Claude Fable 5]] on the
+  same ten problems and reproduced **five**, only one by the same argument — a
+  claim that, if true, changes what Astra demonstrated. But it shipped with **no
+  transcripts, no proofs and no lab statement**, i.e. *less* checkable than the
+  Lean-certified package it contests, and still **no specialist has adjudicated
+  either side**. The bottleneck's characteristic failure mode is now visible in
+  both directions: the counter-claim inherits the same unverifiability as the
+  claim, and the dispute resolves on **relay credibility rather than
+  evidence** (ARA daily digest 2026-08-03).
+- **Community evaluation drifts toward the eyeball test.** On the same cycle,
+  **two of Hacker News's five top AI items were informal SVG "vibes" benchmarks**
+  — [[claude-opus-5|Karpathy's pelican]] successor and a "frog with a Habsburg
+  jaw" prompt — while HN carried *zero* method-level AI posts across five runs.
+  When rigorous verification is unaffordable, the evaluation that survives is a
+  person looking at a picture, which is the bottleneck expressing itself as
+  taste (ARA daily digest 2026-08-03).
 
 ## Open questions
 

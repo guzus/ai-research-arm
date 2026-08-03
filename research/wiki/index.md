@@ -60,6 +60,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[sakana-ai]] — Tokyo lab whose multi-model-orchestration thesis ships as Marlin (deep-research agent) and Sakana Fugu (an LLM-as-router); pitches orchestration as a Fable 5 export-freeze workaround.
 - [[safe-superintelligence]] — Ilya Sutskever's stealth AI-safety lab; NVIDIA reportedly invested ~$5B (2026-07-28) at a $32B post-money valuation alongside a compute partnership.
 - [[salesforce]] — Enterprise-CRM giant betting on agentic AI (Agentforce); bought AI customer-service platform Fin for $3.6B (2026-06-15), the day's largest confirmed AI M&A.
+- [[seedance-2-5]] — ByteDance Seed's video-generation model, live on Dreamina from 2026-07-31 with native 30-second single-shot generation and up to 50 multimodal references; led the Hacker News AI slate for four consecutive runs.
 - [[sk-hynix]] — South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, then fell >12% in the 2026-07-29 KOSPI selloff, erasing nearly $600B of value in a month.
 - [[sk-telecom]] — South Korea's largest carrier and ~$100M Anthropic investor; named 2026-06-21 as the Project Glasswing partner whose Mythos 5 access helped trigger the Fable 5 export suspension.
 - [[soofi-s-30b-a3b]] — Deutsche Telekom-backed sovereign open German/English MoE model (~27T tokens); claimed strongest fully-open model on combined EN+DE benchmarks, released 2026-07-13.

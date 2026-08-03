@@ -6,8 +6,9 @@ aliases: ["V4-Flash", "V4-Flash-0731", "DeepSeek-V4-Flash", "DeepSeek V4-Flash-0
 tags: [frontier-model, open-weights, chinese-llm, moe, agentic-coding, mit-license]
 description: DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.
 created_at: 2026-08-01
-timestamp: 2026-08-02T00:00:00Z
+timestamp: 2026-08-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA model ticket — DeepSeek V4 GA + surge pricing", path: research/models/tickets/deepseek-v4-ga-surge-pricing-2026-06.md}
@@ -79,6 +80,31 @@ on Hugging Face hours later, with a technical report.
   **284B total / 13B active**; the 2026-08-02 digest describes the open-weights
   release as **304B (MIT, 167GB)**. Both figures are carried here as digested;
   neither has been reconciled against the technical report in-window.
+
+## Day-three: the 304B figure firms, and the reception splits (2026-08-03)
+
+- **The open-source release is described as 304B with GGUF quantization for
+  local deployment**, restating the higher of the two parameter counts this page
+  carries. The **284B-vs-304B discrepancy is still unreconciled** against the
+  technical report; both remain digested-as-relayed.
+- **The same tracker praised and panned it in one cycle.** A skeptical tester
+  called V4-Flash *"14 times cheaper, 50% faster and vastly better than
+  V4-Pro"* while also finding it *"mostly burns tokens on nonsense"* and losing
+  to Luna on **time-to-completion**. That is not incoherence — it is what a
+  cheap-but-verbose model looks like when you price by token versus by finished
+  task, and it sits directly on top of the high-reasoning-effort caveat above.
+- **Correction: there was no "preview subsidy."** A same-day correction
+  establishes that **SiliconFlow's prices are distinct from DeepSeek's own** and
+  are **worse on cached input** — so the earlier read that launch pricing was a
+  temporary promotional rate does not hold. Third-party host pricing must not be
+  attributed to [[deepseek]].
+- **Serving economics move off NVIDIA on the neighbouring model.** A wafer.ai
+  writeup claims **AMD MI355X beats [[nvidia|NVIDIA]] B300 on
+  performance-per-dollar** for [[moonshot-kimi-k3|Kimi K3]] inference — an
+  open-weight *serving-cost* argument rather than a capability one, which is the
+  axis V4-Flash competes on. It drew 92 HN comments and aged off unresolved,
+  with the one venue that actually benchmarks open-weight inference on owned
+  hardware (r/LocalLLaMA) offline for the entire argument. See [[ai-capex]].
 
 ## Context
 
