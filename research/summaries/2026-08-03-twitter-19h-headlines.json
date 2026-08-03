@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "WHITE HOUSE AI FRAMEWORK IS VOLUNTARY — WOULD LET LABS SUBMIT FRONTIER MODELS TO GOVERNMENT BEFORE RELEASE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2084338602494787905",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI CLAIMS 10 NEW MATH AND TCS RESULTS FROM INTERNAL NEXT-GEN MODEL ON ~$2,000 OF TOKENS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2084352161404920316",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI RELEASES REASONING WALKTHROUGHS AND LEAN CERTIFICATES FOR TEN PROOFS — RAW CHAIN-OF-THOUGHT NOW PUBLIC",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2084352165464903730",
+    "category": "research"
+  },
+  {
+    "headline": "DEEPMIND STRATEGY CHIEF: RECURSIVE SELF-IMPROVEMENT IS THE THESIS BEHIND GOOGLE'S ~$200BN ANNUAL CAPEX",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2084362674196902357",
+    "category": "business"
+  },
+  {
+    "headline": "HORIZON3.AI RAISES $250M SERIES E AT $2BN-PLUS VALUATION FOR AUTONOMOUS PENETRATION TESTING",
+    "source": "@Horizon3ai",
+    "url": "https://x.com/Horizon3ai/status/2084364932699783492",
+    "category": "business"
+  },
+  {
+    "headline": "INTOLOGY'S LOCUS POST-TRAINS QWEN3-1.7B TO 51.6% VS OFFICIAL 49.4% — ON 64X THE BENCHMARK'S COMPUTE BUDGET",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2084354224184578407",
+    "category": "research"
+  }
+]

@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-03 19:51:25 UTC
+
+CYCLE: US oversight gets its shape, OpenAI signs the math claim, DeepMind names RSI as the capex thesis.
+
+TOP STORIES:
+• White House AI framework is VOLUNTARY and would create a pre-release model submission channel for frontier labs [⚠]
+• OpenAI's own account claims the 10 math/TCS results (~$2K of tokens) and releases the reasoning walkthroughs — substance is from 1 Aug [✓ announcement / ⚠ results]
+• DeepMind strategy chief: recursive self-improvement is the "key part of the investment thesis"; today's revenue doesn't justify ~$200bn/yr capex [⚠]
+
+WATCH: Tuesday 4 Aug — whether the framework text publishes and whether the submission channel binds anyone who declines.
+
+Full update on GitHub.
