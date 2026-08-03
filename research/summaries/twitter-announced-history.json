@@ -20772,5 +20772,54 @@
     "headline": "EU AI ACT LIVE: RELEASING AN OPEN-WEIGHT MODEL IS EXEMPT, DEPLOYING ONE IS NOT",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2083982135774577116"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-03 03:47:48 UTC",
+    "headline": "ALIBABA SHIPS QWEN3.8-MAX \u2014 2.4T PARAMS, 95B ACTIVE, WEIGHTS PROMISED ON HUGGING FACE NEXT WEEK",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2084102878399193413"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-03 03:47:48 UTC",
+    "headline": "QWEN3.8-MAX PRICED AT $2/$6 PER MILLION TOKENS AGAINST FABLE 5'S $10/$50",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2084101963818365432"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-03 03:47:48 UTC",
+    "headline": "QWEN BENCHMARK TABLE OMITS OPUS 5 AND KIMI-K3; FIRST OUTSIDE TEST CALLS IT 'NOT KIMI K3 LEVEL'",
+    "source": "@emollick",
+    "url": "https://x.com/emollick/status/2084124237053219289"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-03 03:47:48 UTC",
+    "headline": "MINIMAX H3 HITS HUGGING FACE \u2014 15-SECOND 2K VIDEO WITH NATIVE STEREO AUDIO IN ONE CONTEXT",
+    "source": "@huggingface",
+    "url": "https://x.com/huggingface/status/2084105170531778679"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-03 03:47:48 UTC",
+    "headline": "MINIMAX H3 TERMS READ AS EXCLUDING EU, UK, SOUTH KOREA AND USA \u2014 TESTERS QUESTION 'OPEN WEIGHTS' CLAIM",
+    "source": "@c0nsumption_",
+    "url": "https://x.com/c0nsumption_/status/2084123806927352162"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-03 03:47:48 UTC",
+    "headline": "DEEPSEEK V4-FLASH API IN PUBLIC BETA \u2014 1M CONTEXT, WEB SEARCH, $0.14 IN / $0.28 OUT PER MILLION TOKENS",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2084096917269524504"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-03 03:47:48 UTC",
+    "headline": "SAKANA AI OPENS NAMAZU API \u2014 JAPANESE-SPECIALIZED LLM WITH AGENTIC TOOLS FOR ENTERPRISE",
+    "source": "@hardmaru",
+    "url": "https://x.com/hardmaru/status/2084086850118193323"
   }
 ]
