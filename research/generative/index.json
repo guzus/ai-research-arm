@@ -1186,5 +1186,17 @@
     "source": "workflow_dispatch",
     "prompt": "Google's consciousness-vector paper (arXiv 2607.28607): refusal-direction ablation and how narrowly safety training generalizes",
     "tags": []
+  },
+  {
+    "slug": "qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max",
+    "file": "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Qwen3.8-Max: the three claims and what survives an audit",
+    "model": "claude-opus-5",
+    "created_at": "2026-08-03T21:24:25Z",
+    "source": "workflow_dispatch",
+    "prompt": "Qwen3.8-Max: Alibaba's 2.4T/95B flagship at $2/$6, the first Max-tier open-weight promise, and the unverified 16-day autonomy claim",
+    "tags": []
   }
 ]
