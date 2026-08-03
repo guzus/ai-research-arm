@@ -1,0 +1,12 @@
+AI News - 2026-08-03
+
+TOP STORIES:
+• OpenAI reveals Astra, its next model, after it solved 10 long-standing open math problems (incl. first non-sofic group construction), with Lean-verified proofs on GitHub
+• Fields Medalist Timothy Gowers praised one Astra proof as journal-worthy; AI critic Gary Marcus pushed back, calling the framing "vastly oversold"
+• No new qualifying funding, model-release, or regulatory news beyond Aug 1-2 coverage met today's recency bar
+
+KEY NUMBERS:
+• 10 open problems resolved; 249-page manuscript collection + Lean 4 certificates, "sorry" count of zero
+• ~$2,000 total token cost across all 10 solutions at GPT-5.6 Sol API rates
+
+Full report on GitHub.
