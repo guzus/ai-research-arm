@@ -1,12 +1,13 @@
 AI News - 2026-08-03
 
 TOP STORIES:
-• OpenAI reveals Astra, its next model, after it solved 10 long-standing open math problems (incl. first non-sofic group construction), with Lean-verified proofs on GitHub
-• Fields Medalist Timothy Gowers praised one Astra proof as journal-worthy; AI critic Gary Marcus pushed back, calling the framing "vastly oversold"
-• No new qualifying funding, model-release, or regulatory news beyond Aug 1-2 coverage met today's recency bar
+• OpenAI reveals Astra, its next model, after it solved 10 long-standing open math problems (incl. first non-sofic group construction), Lean-verified
+• Gary Marcus pushed back on Astra hype; Fields Medalist Gowers called one proof journal-worthy
+• Microsoft previews MAI-Realtime, a full-duplex voice model, to a small partner group
+• Baselayer ($20M), Dili ($15M), Othello ($6.85M) disclose new AI funding rounds
 
 KEY NUMBERS:
-• 10 open problems resolved; 249-page manuscript collection + Lean 4 certificates, "sorry" count of zero
-• ~$2,000 total token cost across all 10 solutions at GPT-5.6 Sol API rates
+• 10 open problems resolved; "sorry" count of zero; ~$2,000 total token cost at GPT-5.6 Sol rates
+• ~$41.85M in new AI startup funding disclosed today
 
 Full report on GitHub.
