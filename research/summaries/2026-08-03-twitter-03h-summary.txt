@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-03 03:47:48 UTC
+
+CYCLE: China's open-weight labs ship two flagships in one night.
+
+TOP STORIES:
+• Alibaba ships Qwen3.8-Max: 2.4T params / 95B active, $2/$6 per Mtok vs Fable 5's $10/$50, weights promised on HF next week [✓]
+• Qwen's own benchmark table omits Opus 5 and Kimi-K3; first independent tests call it "solid, not Kimi K3 level" [✓]
+• MiniMax H3 lands on HF — 15s 2K video with native audio — but testers read its terms as excluding the EU, UK, Korea and USA [⚠]
+• DeepSeek V4-Flash API in public beta: 1M context, web search, $0.14/$0.28 per Mtok [✓]
+
+WATCH: Whether Qwen3.8-Max weights actually reach Hugging Face next week, and under what license.
+
+Full update on GitHub.

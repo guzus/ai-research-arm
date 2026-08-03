@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ALIBABA SHIPS QWEN3.8-MAX — 2.4T PARAMS, 95B ACTIVE, WEIGHTS PROMISED ON HUGGING FACE NEXT WEEK",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2084102878399193413",
+    "category": "model"
+  },
+  {
+    "headline": "QWEN3.8-MAX PRICED AT $2/$6 PER MILLION TOKENS AGAINST FABLE 5'S $10/$50",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2084101963818365432",
+    "category": "business"
+  },
+  {
+    "headline": "QWEN BENCHMARK TABLE OMITS OPUS 5 AND KIMI-K3; FIRST OUTSIDE TEST CALLS IT 'NOT KIMI K3 LEVEL'",
+    "source": "@emollick",
+    "url": "https://x.com/emollick/status/2084124237053219289",
+    "category": "research"
+  },
+  {
+    "headline": "MINIMAX H3 HITS HUGGING FACE — 15-SECOND 2K VIDEO WITH NATIVE STEREO AUDIO IN ONE CONTEXT",
+    "source": "@huggingface",
+    "url": "https://x.com/huggingface/status/2084105170531778679",
+    "category": "opensource"
+  },
+  {
+    "headline": "MINIMAX H3 TERMS READ AS EXCLUDING EU, UK, SOUTH KOREA AND USA — TESTERS QUESTION 'OPEN WEIGHTS' CLAIM",
+    "source": "@c0nsumption_",
+    "url": "https://x.com/c0nsumption_/status/2084123806927352162",
+    "category": "opensource"
+  },
+  {
+    "headline": "DEEPSEEK V4-FLASH API IN PUBLIC BETA — 1M CONTEXT, WEB SEARCH, $0.14 IN / $0.28 OUT PER MILLION TOKENS",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2084096917269524504",
+    "category": "model"
+  },
+  {
+    "headline": "SAKANA AI OPENS NAMAZU API — JAPANESE-SPECIALIZED LLM WITH AGENTIC TOOLS FOR ENTERPRISE",
+    "source": "@hardmaru",
+    "url": "https://x.com/hardmaru/status/2084086850118193323",
+    "category": "model"
+  }
+]
