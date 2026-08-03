@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-03 22:37:01 UTC
+
+CYCLE: OpenAI signs its name to the Astra math results as a rival reproduction claim lands; Washington's frontier framework is finished.
+
+TOP STORIES:
+• OpenAI publishes 10 open-problem math results (~$2K tokens) + Lean certificates; Anthropic mathematician reportedly hit 5/10 with Fable 5 in 24h [⚠]
+• White House completes voluntary pre-release frontier-model review framework; OpenAI/Anthropic/Google/Meta meet Tuesday, hacking benchmark final [✓]
+• First independent composite puts Qwen3.8-Max at 66.1, #2 open-weight but #10 of 43 overall - below the "beat Fable 5" framing [⚠]
+
+WATCH: Aug 4 White House meeting - does "covered frontier model" get a written definition?
+
+Full update on GitHub.

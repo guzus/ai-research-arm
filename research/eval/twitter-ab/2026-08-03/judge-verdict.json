@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-judge-verdict",
+  "date": "2026-08-03",
+  "run_id": "30859310338",
+  "run_attempt": 1,
+  "judge_model": "claude-opus-4-8",
+  "position_swap": true,
+  "staging_key_ok": true,
+  "blinding": {
+    "run_key": "30859310338-1",
+    "pass1": {
+      "A": "claude",
+      "B": "zai-glm-5p2"
+    },
+    "pass2": {
+      "A": "zai-glm-5p2",
+      "B": "claude"
+    }
+  },
+  "passes": [
+    {
+      "pass": 1,
+      "parsed": false,
+      "reason": "verdict missing/unparseable"
+    },
+    {
+      "pass": 2,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "zai-glm-5p2",
+        "B": "claude"
+      },
+      "raw_preferred_letter": "B",
+      "preferred_leg": "claude",
+      "scores_by_leg": {
+        "zai-glm-5p2": {
+          "coverage": 7.0,
+          "faithfulness": 8.0,
+          "headline_quality": 7.0,
+          "skepticism": 7.0,
+          "format": 9.0,
+          "overall": 7.0
+        },
+        "claude": {
+          "coverage": 9.0,
+          "faithfulness": 9.0,
+          "headline_quality": 8.0,
+          "skepticism": 9.0,
+          "format": 8.0,
+          "overall": 9.0
+        }
+      },
+      "rationale_by_leg": {
+        "zai-glm-5p2": "Clean, uniform format and mostly faithful. WH framework, GPT-Live and the reproduction angle are all well-grounded (weak-plate quote, danshipper unit-distance, White House trio all verified). But emphasis is off: it buries OpenAI's own tonight formalization + Lean-cert release into background, misses the independent Vals eval (#10/43) that contradicts the Qwen hype entirely, and pads with a Jul-28 Kimi-on-Perplexity item dressed as current signal. Asserts 'Astra, OpenAI's next model family' as fact though the snapshot's own fact-check says OpenAI never named it. Source chip Alibaba_Qwen points to a jeremyphoward URL.",
+        "claude": "Stronger editorial read: leads with the genuinely-new OpenAI institutional signature + $2,000/Lean-cert artifacts (verbatim-exact), pairs it with the cross-lab reproduction correctly flagged single-source, and surfaces the independent Vals composite (66.1, #2 open-weight, #10/43) that A omits. Broader, all-fresh coverage (MiniMax H3, Moondream, SemiAnalysis, Locus) and markedly better source hygiene: debunks the cyber-singularity causal chain and the 'surpassed Fable 5' hype with grounded evidence. Minor: story 3 lacks a Context block; a couple Locus figures are chart-sourced but flagged directional."
+      }
+    }
+  ],
+  "per_leg": {
+    "claude": {
+      "overall_avg": 9.0,
+      "criteria_avg": {
+        "coverage": 9.0,
+        "faithfulness": 9.0,
+        "format": 8.0,
+        "headline_quality": 8.0,
+        "skepticism": 9.0
+      },
+      "passes_scored": 1
+    },
+    "zai-glm-5p2": {
+      "overall_avg": 7.0,
+      "criteria_avg": {
+        "coverage": 7.0,
+        "faithfulness": 8.0,
+        "format": 9.0,
+        "headline_quality": 7.0,
+        "skepticism": 7.0
+      },
+      "passes_scored": 1
+    }
+  },
+  "passes_parsed": 1,
+  "final_preference": "claude"
+}

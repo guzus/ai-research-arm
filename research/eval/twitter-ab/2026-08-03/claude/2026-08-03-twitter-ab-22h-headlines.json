@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI RELEASES LEAN CERTIFICATES FOR 10 OPEN MATH PROBLEMS SOLVED BY INTERNAL ASTRA MODEL FOR ~$2,000 IN TOKENS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2084352161404920316",
+    "category": "research"
+  },
+  {
+    "headline": "WHITE HOUSE FINALIZES VOLUNTARY FRONTIER-MODEL REVIEW FRAMEWORK — OPENAI, GOOGLE, ANTHROPIC SUMMONED TUESDAY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2084338602494787905",
+    "category": "policy"
+  },
+  {
+    "headline": "ANTHROPIC MATHEMATICIAN SAYS CLAUDE FABLE 5 REPRODUCED 5 OF OPENAI'S 10 MATH RESULTS WITHIN 24 HOURS",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2084353614240448515",
+    "category": "research"
+  },
+  {
+    "headline": "VALS INDEX PUTS QWEN3.8-MAX AT 66.1 — #2 OPEN WEIGHT BUT ONLY #10 OF 43 MODELS OVERALL",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2084392585745879150",
+    "category": "model"
+  },
+  {
+    "headline": "US CYBERSECURITY TESTS AND HACKING BENCHMARK FINALIZED; META, ANTHROPIC, OPENAI, GOOGLE TO REVIEW AT WHITE HOUSE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2084405669894201807",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI REBUILDS GPT-LIVE VOICE STACK FOR FULL DUPLEX — SESSION STARTUP CUT FROM SIX ROUND TRIPS TO ONE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2084378415818579975",
+    "category": "infra"
+  },
+  {
+    "headline": "MINIMAX OPENS H3 WEIGHTS — 33B OMNI-TRANSFORMER, 15 SECONDS OF 2K VIDEO WITH NATIVE STEREO AUDIO",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2084325789625954407",
+    "category": "opensource"
+  }
+]
