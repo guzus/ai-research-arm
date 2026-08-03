@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-03 22:14:35 UTC
+
+CYCLE: OpenAI opens up the GPT-Live voice stack; DeepSeek's cheap open checkpoint becomes locally runnable.
+
+TOP STORIES:
+• OpenAI publishes GPT-Live architecture — full-duplex voice, session startup cut from six network round trips to one (build write-up, not a launch) [⚠]
+• DeepSeek V4-Flash 0731 ships 14 quants (128GB-class hardware); Artificial Analysis CEO puts Kimi K3 4th overall, V4-Flash just below [⚠]
+• Ahead of Tuesday's White House meeting, the framework's open question is what counts as a "covered frontier model" [⚠]
+
+WATCH: Tue 4 Aug — whether any published framework text defines the covered set, and whether the trigger is lab-reported capability or a countable compute threshold.
+
+Full update on GitHub.
