@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-03 15:11:02 UTC
+
+CYCLE: Open weights hit consumer GPUs, cheap models beat expensive ones, Washington finishes a framework.
+
+TOP STORIES:
+• MiniMax H3 generates video+audio on a single RTX 5090, but 2K regen, context orchestration and sparse attention stay server-side [✓]
+• DeepSeek V4-Flash 0731 scores 50 on Artificial Analysis — 6 pts above DeepSeek's own V4 Pro, same 284B/13B size [✓]
+• SemiAnalysis: AMD's run to $500-600 cut Meta/OpenAI GPU capital cost to ~$1.60/$1.75 per GPU-hr, from ~$2.15/$2.50 [⚠]
+• White House shows OpenAI, Google and Anthropic staff a completed AI oversight framework Tuesday [⚠]
+
+WATCH: Tuesday 4 Aug — whether the White House meeting produces a published framework or executive order.
+
+Full update on GitHub.
