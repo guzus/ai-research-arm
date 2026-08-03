@@ -6,8 +6,9 @@ aliases: ["EU AI Act", "EU AI regulation", "European AI Act", "AI Act"]
 tags: [regulation, eu, ai-act, copyright, transparency]
 description: The 2026 storyline of Europe regulating AI through binding statute rather than agency discretion — the AI Act's obligations switching on by calendar date, and national courts applying EU copyright law to model training and output.
 created_at: 2026-08-02
-timestamp: 2026-08-02T00:00:00Z
+timestamp: 2026-08-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
 ---
@@ -47,15 +48,41 @@ training and output.
   publishes its criteria and its dates. Predictability, not stringency, is the
   structural difference.
 
+- **Enforcement powers, not just duties, switched on (2026-08-03).** The
+  2 August general application date carried more than labelling: the **AI Office
+  and national authorities gained investigatory and penalty powers**, with fines
+  up to **€15M or 3% of global turnover**. Article 50 in force means chatbots must
+  disclose they are AI and synthetic media/deepfakes must be labelled — a duty
+  that attaches immediately to video generators shipping into Europe, e.g.
+  ByteDance's [[seedance-2-5]], whose staged rollout includes EU markets.
+  **Deferred:** standalone high-risk obligations to **2 December 2027** and
+  embedded systems to **August 2028**, via the **Digital Omnibus** — whether that
+  deferral is adopted law or still a proposal is the load-bearing open question
+  under the whole timeline. **[[openai]], [[anthropic]], [[google]], [[meta]],
+  [[microsoft]] and Mistral have all signed the transparency Code of Practice
+  voluntarily**, which is the pre-compliance dynamic above showing up as
+  signatures (ARA daily digest 2026-08-03).
+- **The open-weights boundary was stated plainly.** **Releasing** an open-weight
+  model is exempt; **deploying** one is not. That resolves the question this page
+  had open: the duty attaches at the deployer, so an MIT-licensed
+  [[deepseek-v4-flash]] download is outside the Act until someone puts it in
+  front of users — at which point the deployer, not the lab, carries Article 50.
+  See [[open-weights]] (ARA daily digest 2026-08-03).
+- **Developer salience finally broke (2026-08-03).** After **seven consecutive
+  runs** with zero Hacker News front-page coverage of the obligation, *"EU rules
+  on AI models become enforceable. What's going to change?"* landed at 19:40Z
+  with **1.10 comments per point** — the only AI item above 1.0 that day, i.e.
+  being argued about faster than it was upvoted. Contested attention, not
+  consensus.
+
 ## Open questions
 
-- **Enforcement, not text.** The transparency duty is live; no enforcement
-  action, guidance note, or compliance survey has surfaced in the monitored
-  window. *(The 2026-08-02 digest flags that Hacker News carried no coverage of
-  the effective date across three consecutive runs — near-zero developer
-  salience on day one.)*
-- **Does the Suno reasoning survive appeal?** The ruling is not final, and the
-  "reproducibly stored" finding is the load-bearing part.
-- **How does the Act interact with [[open-weights]] releases?** MIT-licensed
-  frontier-adjacent weights ([[deepseek-v4-flash]]) have no deployer to attach
-  a labelling duty to once downloaded.
+- **Is the Digital Omnibus deferral adopted law or still a proposal?** The
+  December 2027 / August 2028 dates for high-risk and embedded systems hang on
+  it; until that is settled the back half of the Act's calendar is unstable.
+- **Enforcement, not text.** The powers are live; no enforcement action,
+  guidance note, or compliance survey has surfaced in the monitored window.
+- **Does the Suno reasoning survive appeal?** The Munich ruling ordered
+  **revenue disclosure with damages to follow**, and **Suno disagrees and is
+  weighing an appeal**. It is one of Europe's first binding rulings against an AI
+  music generator; the "reproducibly stored" finding is the load-bearing part.

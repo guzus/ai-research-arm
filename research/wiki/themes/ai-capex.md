@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-08-02T00:00:00Z
+timestamp: 2026-08-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
@@ -417,6 +418,43 @@ skepticism in one window:
   growth**. On the demand side, [[deepseek]] is building its **first
   self-owned 1GW campus** in Inner Mongolia (ARA daily digest 2026-08-02).
 
+- **The earnings beat was mostly mark-to-market, not cash (2026-08-03).** The
+  quarter that appeared to validate the buildout largely revalued stakes in it.
+  **[[amazon|Amazon]] booked $62.6bn total with $53.4bn non-operating**, chiefly
+  from **revaluing its [[anthropic]] stake**; **[[google|Alphabet]]'s** beat
+  followed **$98bn of unrealized investment gains**; **[[microsoft]] booked
+  $3.2bn more on Anthropic**. **FactSet is cited attributing 76% of last week's
+  rise in expected S&P 500 earnings to Amazon alone**, and **stripping Amazon and
+  Alphabet out drops the S&P 500 surprise from 31.4% to 9.2%.** Operating
+  performance was conceded strong on the same numbers (**AWS +37%, Amazon
+  operating income +43%, Alphabet +30%**) — but **Amazon's trailing-twelve-month
+  free cash flow went the other way**, which is the tell: the accounting gain and
+  the cash generation point in opposite directions, and only one of them funds
+  capex. This is the theme's circularity question surfacing inside the income
+  statement rather than in vendor financing. **Single-source (@the_vc_intern
+  citing FactSet), unverified against filings — the 10-Q line items settle it**
+  (ARA daily digest 2026-08-03).
+- **The infrastructure IPO window opens on a sold-off comp set (2026-08-03).**
+  **Nscale is preparing an IPO as soon as this fall**, with bankers floating a
+  **$25bn valuation** (The Information) — explicitly framed as a test of public
+  appetite for AI infrastructure **after a sharp sell-off in comparables**. It
+  bought **Anyscale for $1.65bn on 31 July**, and **CyrusOne** is laying
+  groundwork for a listing four years after KKR and BlackRock took it private at
+  **$15bn**. Two private-to-public conversions inside one storyline is how this
+  cycle finds out what the buildout is actually worth to non-strategic capital.
+- **A disclosure question attaches to the loudest supply-side analyst.**
+  SemiAnalysis's **Dylan Patel is reported to be raising a ~$400M venture fund**
+  (@jukan05, single-source screenshot, no filing). If real at any size, every
+  future SemiAnalysis call on memory pricing, TPU capacity or foundry allocation
+  carries a position question it did not carry last week — relevant because this
+  theme has repeatedly leaned on SemiAnalysis reads.
+- **Numbers hygiene: the viral Samsung forecast is wrong.** A Nomura table
+  circulated to 800+ likes implying **~$1.25tn of Samsung operating profit over
+  three years**; Samsung's all-time record annual operating profit is roughly
+  **KRW 59tn**, so the posted KRW 391/635/774tn would be **6.6× to 13×** that.
+  The economical explanation is a **one-place decimal slip**. Do not repeat the
+  figure.
+
 **Policy overlay.** [[california-ai-regulation]] is now the operative US
 regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s
 Frontier Governance Framework (2026-05-29) explicitly maps onto the
@@ -432,3 +470,6 @@ package cleared its chamber-of-origin crossover.
 - **The "beats but closes lower" tell.** Why does the market keep selling the
   single best supply-side data point (NVIDIA earnings)? Priced-in growth, or
   early doubt about the supercycle?
+- **How much of the reported AI earnings is cash?** If mark-to-market gains on
+  private-lab stakes carry the beat, the hyperscalers' apparent capacity to fund
+  capex from operations is overstated. The 10-Qs, not the relays, resolve it.

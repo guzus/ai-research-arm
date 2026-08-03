@@ -4,10 +4,11 @@ title: Claude Opus 5
 type: entity
 aliases: ["Claude Opus 5", "Opus 5", "claude-opus-5"]
 tags: [model-release, anthropic, claude, frontier-model, security]
-description: Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance.
+description: Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance; the model Karpathy retired his own pelican benchmark over on 2026-08-02.
 created_at: 2026-07-26
-timestamp: 2026-07-27T00:00:00Z
+timestamp: 2026-08-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA daily digest 2026-07-26", path: research/digest/2026-07-26-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
@@ -54,6 +55,31 @@ CRUD lag between the ticket lane and the digest, not a factual dispute.
   an independent-outlet-relayed leaderboard claim distinct from the
   vendor/press "matches or beats Fable 5" framing already tracked above
   (ARA digest 2026-07-27).
+
+- **Karpathy retired his own pelican benchmark over an Opus 5 run
+  (2026-08-03).** **Andrej Karpathy** replaced the "pelican riding a bicycle"
+  SVG test — for two years the informal frontier eyeball benchmark — after a
+  **two-hour, ~$10, 1M-token Opus 5 run** emitted **5,500 lines of procedural
+  three.js** rendering the opening of *The Lord of the Rings*. The item was
+  **#1 on Hacker News at 278 points / 218 comments**, the largest single-run
+  move of the day. His framing is the durable part: *"No one in their right mind
+  would ever spend the time to write something this custom but LLMs have all the
+  stamina and patience in the world, so it's an example where we go from 'no one
+  would ever do this' to 'sure, why not, it's ~free.'"* — capability reframed as
+  **stamina at near-zero marginal cost**, not raw intelligence.
+- **…and the same post named the gap.** Karpathy: *"the domain of worlds/games
+  exposes a weakness in LLMs: they can't easily audit their work because they
+  aren't able to efficiently and natively perceive videos or play games within
+  them… An example of raw capability (multimodal, gameplay) that I think is
+  still quite lacking."* A model that can build a world it cannot watch is a
+  producer without a verifier — the [[verification-bottleneck]] restated as a
+  modality limit (ARA daily digest 2026-08-03).
+- **Prompt-to-game capability documented (2026-08-03).** The Decoder reports
+  Opus 5 generating **complete 3D games from a single prompt** — an FPS, a kart
+  racer, a Minecraft clone — with geometry, textures, physics and sometimes
+  music emitted **as code**, run in-browser using **no external assets**. Side by
+  side against [[gpt-5-6|GPT-5.6 Sol]] and [[moonshot-kimi-k3|Kimi K3]], Opus 5
+  is described as noticeably more detailed (ARA daily digest 2026-08-03).
 
 ## Open questions
 - **Does the model-ticket tracker reconcile?** The ticket lane still shows
