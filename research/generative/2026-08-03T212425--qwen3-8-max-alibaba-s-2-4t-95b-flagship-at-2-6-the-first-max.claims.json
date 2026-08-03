@@ -1,0 +1,304 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Qwen3.8-Max is a 2.4-trillion-parameter mixture-of-experts model activating 95 billion parameters per token.",
+      "type": "metric",
+      "source_urls": ["https://qwen.ai/blog?id=qwen3.8", "https://www.qwencloud.com/models/qwen3.8-max"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Qwen3.8-Max lists at $2.00 per 1M input tokens and $6.00 per 1M output tokens, with implicit cache reads at $0.25 per 1M.",
+      "type": "metric",
+      "source_urls": ["https://www.qwencloud.com/models/qwen3.8-max", "https://artificialanalysis.ai/models/qwen3-8-max"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c3",
+      "claim": "The $2/$6 rate is a single flat tier covering the entire 1M-token context, with no long-context step-up.",
+      "type": "market-structure",
+      "source_urls": ["https://www.qwencloud.com/models/qwen3.8-max", "https://www.alibabacloud.com/help/en/model-studio/model-pricing"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-04",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c4",
+      "claim": "Alibaba's launch table reports Terminal-Bench 2.1 scores of 86.6 for Qwen3.8-Max against 84.6 for Claude Opus 4.8 and Claude Fable 5, and 88.8 for GPT-5.6 Sol.",
+      "type": "comparison",
+      "source_urls": ["https://qwen.ai/blog?id=qwen3.8", "https://apidog.com/blog/qwen-3-8-benchmarks/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c5",
+      "claim": "Qwen evaluated its own model on Terminal-Bench 2.1 using the Claude Code harness at avg@10 with a 5-hour timeout and max_tokens=131,072.",
+      "type": "technical",
+      "source_urls": ["https://qwen.ai/blog?id=qwen3.8"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "On WideSearch, Qwen states it used the Claude Code harness for external models and the Qwen-Agent harness for its own model.",
+      "type": "technical",
+      "source_urls": ["https://qwen.ai/blog?id=qwen3.8"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Harness choice alone swings terminal-agent benchmark scores by far more than Qwen's claimed margin, with GPT-5.5 measured at 82.7 under Codex CLI versus 53.5 under Terminus-2.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/pdf/2605.22535"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-05-31",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "In a blind, matched-scaffold independent evaluation on a single architecture task, Kimi K3 scored 83/100 against Qwen3.8-Max-Preview's 80/100.",
+      "type": "comparison",
+      "source_urls": ["https://trilogyai.substack.com/p/qwen-38-max-benchmark-how-it-compares"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-19",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c9",
+      "claim": "Alibaba's own launch blog states both '10+ Days of Autonomous Coding' and 'approximately 16 days of fully autonomous AI operation' for the same run.",
+      "type": "event",
+      "source_urls": ["https://qwen.ai/blog?id=qwen3.8"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "The artifact offered as proof of the autonomy claim is the repository qwen-code-dev-bot/oh-my-cli, created 2026-07-13T11:43:52Z, Apache-2.0 licensed and written in TypeScript.",
+      "type": "event",
+      "source_urls": ["https://api.github.com/repos/qwen-code-dev-bot/oh-my-cli"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "The repository's contributor list records 463 contributions from the bot account and 13 from a human account, qqqys.",
+      "type": "metric",
+      "source_urls": ["https://api.github.com/repos/qwen-code-dev-bot/oh-my-cli/contributors"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "A human commit (59eca7c, 2026-07-23) inside the claimed autonomy window modified the agent's coordinator prompt and community policy, adding 71 lines and deleting 9 across three files.",
+      "type": "event",
+      "source_urls": ["https://api.github.com/repos/qwen-code-dev-bot/oh-my-cli/commits/59eca7c"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "No agent-authored work commit in the repository is cryptographically signed; the GitHub API reports verification reason 'unsigned'.",
+      "type": "technical",
+      "source_urls": ["https://api.github.com/repos/qwen-code-dev-bot/oh-my-cli/commits/59eca7c"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "METR states that its time-horizon metric measures the length of human task a model can complete at 50% success, not how long a model can work independently, and its best measured 50% horizon is about 17 hours.",
+      "type": "definition",
+      "source_urls": ["https://metr.org/notes/2026-01-22-time-horizon-limitations/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Alibaba published effort metrics for its paper-reproduction demo — about five days, roughly 125 compute hours, 7,600 lines of code and 33 rounds of GPU training — but published no effort metric for the 16-day coding run.",
+      "type": "comparison",
+      "source_urls": ["https://qwen.ai/blog?id=qwen3.8", "https://the-decoder.com/alibabas-open-weight-qwen3-8-max-takes-on-long-horizon-ai-tasks-with-2-4-trillion-parameters/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "As of 2026-08-04 no Qwen3.8 repository exists in the Hugging Face Qwen organization; the most recently modified repository dates from 2026-07-22.",
+      "type": "event",
+      "source_urls": ["https://huggingface.co/api/models?author=Qwen&sort=lastModified&direction=-1&limit=30"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c17",
+      "claim": "Every Max-tier Qwen flagship since Qwen3-Max-Preview in September 2025 has shipped closed-weight, with no Max-class checkpoint ever released.",
+      "type": "market-structure",
+      "source_urls": ["https://www.digitalapplied.com/blog/qwen-closed-flagship-pivot-open-weight-retreat-2026", "https://huggingface.co/api/models?author=Qwen&sort=lastModified&direction=-1&limit=30"],
+      "source_tiers": ["opinion", "primary"],
+      "as_of": "2026-08-04",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c18",
+      "claim": "No license has been named for the promised Qwen3.8 open weights in any first-party English or Chinese channel.",
+      "type": "event",
+      "source_urls": ["https://qwen.ai/blog?id=qwen3.8", "https://m.sohu.com/a/1058127944_258768"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-04",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "Artificial Analysis measures Qwen3.8-Max at Intelligence Index 53, 46.5 output tokens per second, and $2,159.51 to run its Intelligence Index on 150M output tokens, labelling the model 'very verbose'.",
+      "type": "metric",
+      "source_urls": ["https://artificialanalysis.ai/models/qwen3-8-max"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "DeepSeek disclosed a 545% cost-profit ratio on V3/R1 inference, based on $87,072 of daily cost at an assumed $2 per H800 GPU-hour against $562,027 of theoretical daily revenue.",
+      "type": "metric",
+      "source_urls": ["https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-03-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "LMSYS measured a serving cost of $0.20 per 1M output tokens for DeepSeek V3 on 96 H100 GPUs using wide expert parallelism, about one-fifth DeepSeek's own API price.",
+      "type": "metric",
+      "source_urls": ["https://lmsys.org/blog/2025-05-05-large-scale-ep/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-05-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "Decode cost for a sparse MoE tracks total parameters through memory bandwidth rather than active parameters, so an eight-way-sparse MoE serves roughly like a dense model of half its total size.",
+      "type": "technical",
+      "source_urls": ["https://epoch.ai/gradient-updates/moe-vs-dense-models-inference"],
+      "source_tiers": ["opinion"],
+      "as_of": "2024-12-20",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "Alibaba's US-listed shares closed up 4.14% at $127.31 on 2026-08-03, while the Hong Kong line closed about 7% higher at HK$125.20.",
+      "type": "metric",
+      "source_urls": ["https://stockanalysis.com/stocks/baba/", "https://www.scmp.com/tech/article/3362738/alibabas-ai-model-qwen38-max-made-widely-accessible-ahead-open-weights-release"],
+      "source_tiers": ["market-data", "secondary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "Alibaba's FY2026 capital expenditure reached RMB 126.06 billion and full-year free cash flow swung to an outflow of RMB 46.6 billion.",
+      "type": "metric",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/0001577552/000110465926060224/tm2614494d1_ex99-1.htm"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "Alibaba Cloud Intelligence revenue was RMB 41.626 billion in the quarter ended 2026-03-31, up 38% year over year, with AI-related products at roughly 30% of external cloud revenue.",
+      "type": "metric",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/0001577552/000110465926060224/tm2614494d1_ex99-1.htm"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "No enacted US federal law or regulation restricts downloading, hosting, or using Chinese open-weight models as of 2026-08-04; the No Adversarial AI Act remains in committee with one recorded action since 2025-06-25.",
+      "type": "regulatory",
+      "source_urls": ["https://www.congress.gov/bill/119th-congress/senate-bill/2177/all-info"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c27",
+      "claim": "Alibaba was designated on the DoD Section 1260H Chinese Military Companies list published 2026-06-10, and the FY2024 NDAA Section 805 bar on DoD contracting with listed entities took effect 2026-06-30.",
+      "type": "regulatory",
+      "source_urls": ["https://www.federalregister.gov/documents/2026/06/10/2026-11571/notice-of-availability-of-designation-of-chinese-military-companies", "https://governmentcontractsnavigator.com/2026/07/22/dow-updates-section-1260h-list-expanding-compliance-obligations-for-government-contractors/"],
+      "source_tiers": ["legal", "secondary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "Alibaba Cloud Model Studio's default inference scope is 'Global', which explicitly includes nodes inside China unless a model name carries the -us suffix.",
+      "type": "technical",
+      "source_urls": ["https://www.alibabacloud.com/help/en/model-studio/regions/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c29",
+      "claim": "The domestic Chinese price for Qwen3.8-Max is RMB 12 per 1M input and RMB 36 per 1M output tokens, identical to the rate Qwen3.7-Max carried.",
+      "type": "metric",
+      "source_urls": ["https://udn.com/news/story/7333/9667541", "https://www.stcn.com/article/detail/3921732.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-03",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c30",
+      "claim": "Qwen's own published harness configuration for Qwen3.8-Max declares an effective context window of 95 percent of the nominal 1M-token limit.",
+      "type": "technical",
+      "source_urls": ["https://qwen.ai/blog?id=qwen3.8"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    }
+  ]
+}
