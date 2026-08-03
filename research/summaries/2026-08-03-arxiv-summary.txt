@@ -1,0 +1,14 @@
+arXiv Papers - 2026-08-03
+
+TOP 5 PAPERS:
+• TokTier - exact stateful tokenization; up to 64% of TTFT is tokenization, 437x faster than HF, cuts vLLM TTFT 16-34%
+• Scaling Properties of Text Conditioning - scaling laws for the conditioner, not the generator, in visual generation
+• TraceViT - trace-supervised looped visual reasoner hits 67.8% pass@2 on ARC-AGI-1
+• Sycophancy Undermines Epistemic Vigilance - VLMs defer to partners over visual evidence; steering reduces it
+• WCM - LeJEPA world critic for vision-language-action RL, SOTA across 149 tasks
+
+CATEGORIES: NLP/LLM 8, Vision/Multimodal 10, Agents/Reasoning 8, Safety 5, Other 7 (~90 abstracts screened)
+
+Note: no arXiv submissions indexed Aug 1-3 (weekend); curated from the newest batch, 2026-07-31.
+
+Full report on GitHub.
