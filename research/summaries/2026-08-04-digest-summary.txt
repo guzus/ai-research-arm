@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-08-04
+
+TOP STORIES:
+• Alibaba shipped Qwen3.8-Max, a 2.4T/95B MoE at $2/$6 per Mtok — weights promised on Hugging Face next week
+• White House finished a VOLUNTARY AI oversight framework with a pre-release model submission channel; labs review it today
+• MiniMax H3 video weights run on one consumer GPU, but 2K output and orchestration stayed server-side
+
+KEY NUMBERS:
+• Qwen3.8-Max: 2.4T params / 95B active, 1M context, 960 pts on HN
+• Palantir FY26Q2: revenue $1.935B (+93% YoY), GAAP net income $1.062B
+• DeepSeek V4-Flash 0731: 50 on Artificial Analysis index at $0.14/$0.28 per Mtok
+
+TRENDING: "SQLite Critical CVEs or LLM Slop?" — 3 to 683 points in six hours, the day's top HN AI story
+
+Full digest on GitHub.
