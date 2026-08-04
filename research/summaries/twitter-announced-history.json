@@ -21122,5 +21122,47 @@
     "headline": "DATABRICKS SHIPS OMNIGENT, OPEN-SOURCE AGENT META-HARNESS SPANNING CODEX, CLAUDE, CURSOR AND PI",
     "source": "@databricks",
     "url": "https://x.com/databricks/status/2084649668365914298"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-04 17:13:31 UTC",
+    "headline": "SSI FIRST MODEL SAID TO SHIP IN AUGUST \u2014 SOURCED TO INVESTOR PODCAST, NOT TO SUTSKEVER OR SSI",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2084678159358996883"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-04 17:13:31 UTC",
+    "headline": "MISTRAL OPEN-WEIGHTS SHIELDSTRAL \u2014 3B MULTIMODAL MODERATION MODEL RUNS ON ONE 16GB GPU",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2084684735725379637"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-04 17:13:31 UTC",
+    "headline": "NOT DIAMOND CODE CLAIMS 20-65% AGENT COST CUT ROUTING PER STEP INSIDE CLAUDE CODE",
+    "source": "@tomas_hk",
+    "url": "https://x.com/tomas_hk/status/2084669945150062619"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-04 17:13:31 UTC",
+    "headline": "SEMIANALYSIS: FABLE 5 AVERAGES 1.00 TOOL CALLS PER RESPONSE VS 0.79 FOR OPUS 5 ACROSS 2.27M TRACES",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2084684858282954907"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-04 17:13:31 UTC",
+    "headline": "ANT GROUP OPEN-WEIGHTS LING-3.0-FLASH \u2014 124B MOE BUILT ON KIMI DELTA ATTENTION AND MLA",
+    "source": "@AntLingAGI",
+    "url": "https://x.com/AntLingAGI/status/2084656533489754475"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-04 17:13:31 UTC",
+    "headline": "TEMPUS PRISM2 PATHOLOGY FOUNDATION MODEL PUBLISHED IN NATURE \u2014 2.3M SLIDES, 700K SPECIMENS",
+    "source": "@TempusAI",
+    "url": "https://x.com/TempusAI/status/2084687872884351231"
   }
 ]
