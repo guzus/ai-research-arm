@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "SPACEX AND NVIDIA REPORTED TO CO-DESIGN STARMIND AI-1 — RUBIN GPUS AND VERA CPUS AT 250 KW PER SATELLITE",
+    "source": "@KobeissiLetter",
+    "url": "https://x.com/KobeissiLetter/status/2084727346968363234",
+    "category": "infra"
+  },
+  {
+    "headline": "ANTHROPIC $10B COMPUTE DEAL NAMES SECOND COUNTERPARTY — LISTED BITCOIN MINER BITDEER ALONGSIDE VOLTA INFRA",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2084706980946395230",
+    "category": "business"
+  },
+  {
+    "headline": "TECHCRUNCH CARRIES ANTHROPIC-VOLTA $10B CLOUD DEAL — STILL REPORTED, NO PRINCIPAL ON THE RECORD",
+    "source": "@TechCrunch",
+    "url": "https://x.com/TechCrunch/status/2084728355119624696",
+    "category": "business"
+  },
+  {
+    "headline": "BLACK FOREST LABS SHIPS FLUX 3 VIDEO TO ALL USERS — 20-SECOND 1080P WITH NATIVE AUDIO, CREDIT-GATED NOT OPEN WEIGHTS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2084702844070814138",
+    "category": "model"
+  },
+  {
+    "headline": "MINIMAX H3 RUNS ON APPLE SILICON AT 115GB AND 45 MINUTES PER CLIP — FIRST STATED COST FOR LOCAL VIDEO GENERATION",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2084719238569435469",
+    "category": "opensource"
+  },
+  {
+    "headline": "NVIDIA LAUNCHES ALPAMAYO 2 SUPER — FRONTIER OPEN REASONING MODEL FOR AUTONOMOUS VEHICLES",
+    "source": "@JensenHuang",
+    "url": "https://x.com/JonathanRoss321/status/2084703060761485542",
+    "category": "model"
+  },
+  {
+    "headline": "MISTRAL SHIELDSTRAL SHIPS APACHE 2.0 — 3B MULTIMODAL SAFETY CLASSIFIER MATCHING MODELS 7X ITS SIZE ON TEXT",
+    "source": "@Conor_D_Dart",
+    "url": "https://x.com/Conor_D_Dart/status/2084728385763512632",
+    "category": "opensource"
+  }
+]
