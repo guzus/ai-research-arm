@@ -6,8 +6,9 @@ aliases: ["V4-Flash", "V4-Flash-0731", "DeepSeek-V4-Flash", "DeepSeek V4-Flash-0
 tags: [frontier-model, open-weights, chinese-llm, moe, agentic-coding, mit-license]
 description: DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.
 created_at: 2026-08-01
-timestamp: 2026-08-03T00:00:00Z
+timestamp: 2026-08-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
@@ -105,6 +106,35 @@ on Hugging Face hours later, with a technical report.
   axis V4-Flash competes on. It drew 92 HN comments and aged off unresolved,
   with the one venue that actually benchmarks open-weight inference on owned
   hardware (r/LocalLLaMA) offline for the entire argument. See [[ai-capex]].
+
+## Day-four: the parameter question resolves, agentic gains isolate (2026-08-04)
+
+- **No parameter change — it is a re-post-train.** The 2026-08-04 digest states
+  the model is **284B/13B, re-post-trained**, with the gains coming from
+  post-training rather than a new base. That is the first statement that
+  reconciles the 284B-vs-304B split above in favour of 284B, and it reframes
+  the whole release: what shipped is a training-recipe result, not a scale one.
+- **Independent scoring firmed up, and it is higher than day one.** Artificial
+  Analysis now puts it at **50 on the intelligence index — up 10 points, and
+  six above DeepSeek's own larger V4 Pro**. WeirdML scored it **57.1% / 63.0%
+  at high / max effort** — again the high-reasoning-effort caveat is doing
+  work. A cheap fast-tier model beating the lab's own larger flagship is the
+  uncomfortable result for tiered pricing generally.
+- **The gains concentrate in agentic work.** **GDPval-AA v2 moved 1189 → 1559
+  Elo** and **Terminal-Bench 2.1 rose 17 points to 79%**. Note 79% is *below*
+  the vendor-cited 82.7 this page already flags as unreproduced — the
+  independent number landing under the vendor number is the ordinary outcome,
+  and worth recording as such.
+- **API-beta surface is broader than a chat endpoint.** The beta opened with
+  1M context, **tool calling, built-in web search and OpenAI Responses API
+  support** — packaged for agent frameworks, not for chat.
+- **A second price pair is now in circulation: $0.14/$0.28 per Mtok**, against
+  the $0.28/$0.87 recorded at launch on this page. Both are digested-as-relayed
+  and **unreconciled**; given the same-day SiliconFlow correction above, do not
+  assume either figure is DeepSeek's own list price without a primary source.
+- **Fourteen community quants shipped by end of day**, the smallest usable one
+  aimed at **128GB machines** — the practical local-inference ceiling for this
+  model. See [[open-weights]].
 
 ## Context
 

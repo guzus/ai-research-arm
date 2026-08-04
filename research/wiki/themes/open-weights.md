@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
 created_at: 2026-06-14
-timestamp: 2026-08-01T00:00:00Z
+timestamp: 2026-08-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
@@ -312,8 +313,46 @@ fragile and local weights look like insurance.
   landing the same window as [[anthropic]]'s three-organization eval-breach
   disclosure (ARA daily digest 2026-08-01).
 
+- **Two "open" releases in one day, and neither is fully open yet
+  (2026-08-04).** The wave's newest data points both qualify the word:
+  - **[[qwen-3-8-max|Qwen3.8-Max]] promises what would be the first Max-class
+    Qwen ever released open-weight** — 2.4T total / 95B active, plus a 27B
+    sibling, "on Hugging Face next week" — but shipped as a **$2/$6 per Mtok
+    API first, with the weights unpublished** at this ingest. The open release
+    is the load-bearing claim of the launch and is currently a commitment.
+  - **[[minimax-h3|MiniMax H3]] shipped weights, but withheld the parts that
+    make the demos.** 2K regeneration, context orchestration and sparse
+    attention stayed on MiniMax's servers, and resolution from the weights is
+    768p-class against the 2K advertised. First testers also report an
+    **"Excluded Territories"** clause naming the EU, UK, South Korea and the
+    US — unconfirmed against a published license, and if real, a *geofenced*
+    open release.
+  Together these mark a shift worth naming: the competitive question is moving
+  from *whether* a lab open-sources to **which components it keeps**, and the
+  gap between the ranked system and the downloadable one is where the claim
+  now hides. Against that, H3 running end-to-end on a **single RTX 5090** (and
+  in 170 seconds on a 5070Ti at INT8) is the wave's real advance this cycle —
+  video generation crossing onto consumer hardware — and the day's most
+  persistent Hacker News cluster was the run-it-yourself trio (*H3 Day-0 in
+  ComfyUI* 224 pts, *AirLLM 70B on a single 4GB GPU* 169, Cloudflare's
+  *running Kimi and GLM at scale* 81). **[[deepseek-v4-flash|V4-Flash]]** added
+  fourteen community quants in a day, smallest usable one at 128GB.
+- **The wave finally gets a standing measurement source.** Nathan Lambert
+  launched the **Interconnects Artifacts Hub + Adoption Dashboard** — two free
+  open-ecosystem data products covering **792 models at launch**, joining
+  Hugging Face trending models, OpenRouter inference tokens (see
+  [[openrouter]]) and Artificial Analysis scores, with **downloads and
+  derivative counts broken out by geography and organization**. Most claims on
+  this page have rested on release announcements and HN salience; a persistent
+  adoption series is the first thing that could settle the "China as the
+  open-weights default" question below with numbers instead of impressions
+  (ARA daily digest 2026-08-04).
+
 ## Open questions
 
+- **Does "open-weight" survive component-withholding?** If the ranked artifact
+  and the released artifact routinely differ (H3), the label stops carrying
+  information — and no current benchmark distinguishes them.
 - **Does decentralization survive contact with capability?** Open weights are
   closing the gap on coding/agentic tasks; do they close it on the frontier
   cyber/bio capabilities that got [[claude-fable-5|Fable 5]] banned, and what

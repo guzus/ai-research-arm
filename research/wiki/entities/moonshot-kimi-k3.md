@@ -6,8 +6,9 @@ aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open 
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
 description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps "possibly pointing to distillation."
 created_at: 2026-07-17
-timestamp: 2026-08-01T00:00:00Z
+timestamp: 2026-08-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
@@ -214,6 +215,20 @@ covering it.
   of the [[open-weights]] release still compounding a week on, now alongside
   [[deepseek-v4-flash|DeepSeek's MIT-licensed V4-Flash]] (ARA daily digest
   2026-08-01).
+
+- **K3 becomes the model a rival's benchmark table omits (2026-08-04).**
+  [[alibaba]]'s [[qwen-3-8-max|Qwen3.8-Max]] launch claimed 51/54 wins over
+  [[claude-opus-4-8|Opus 4.8]] and 46/54 over [[gpt-5-6|GPT-5.6-Sol]] but
+  **excluded K3 and [[claude-opus-5|Opus 5]] entirely** — and the first
+  independent touch of Qwen3.8-Max (@emollick's shader test) landed on *"solid,
+  but not Kimi K3 level."* Being the omission in a competitor's own table, and
+  the reference point testers reach for, is a stronger read on K3's standing
+  than any of its own launch numbers. Separately, Moonshot AI is reported to be
+  **filing a Hong Kong IPO targeting ~$3B as early as this month** — after a
+  $3.5B+ Series F at $35B and a Series G pulled forward at $50B pre-money —
+  single-source, no visible filing, no company response, and the report carries
+  its own strongest objection (a $3B IPO is hard to square with $3.5B just
+  taken privately). See [[ai-capex]] (ARA daily digest 2026-08-04).
 
 ## Open questions
 
