@@ -1,0 +1,13 @@
+Speaker 1: Tuesday, August fourth, twenty twenty-six.
+Speaker 2: [high_energy] Alibaba shipped Qwen three point eight Max, and the headline number is [emphasis] two point four trillion parameters [/emphasis], with ninety-five billion of them active.
+Speaker 1: Two dollars in, six dollars out per million tokens, on a one million token context window.
+Speaker 2: And the weights are promised on Hugging Face next week, which is the part everyone will be watching.
+Speaker 1: On the policy front, the White House finished a voluntary AI oversight framework.
+Speaker 2: Voluntary is doing a lot of work in that sentence, but there is a pre-release model submission channel, and the labs are reviewing it today.
+Speaker 1: Also shipping, MiniMax H three video weights now run on a single consumer GPU.
+Speaker 2: With a catch, the two K output and the orchestration both stayed server-side, so it is local, but only halfway.
+Speaker 1: Some quick numbers. Palantir posted fiscal twenty-six second quarter revenue of [emphasis] one point nine three five billion dollars [/emphasis], up ninety-three percent year over year, with GAAP net income of one point zero six two billion.
+Speaker 2: And at the cheap end, DeepSeek V four Flash scored fifty on the Artificial Analysis index at fourteen cents in, twenty-eight cents out per million tokens.
+Speaker 1: Trending today, a post asking whether a batch of critical SQLite vulnerabilities were real, [dramatic_pause] or just model slop.
+Speaker 2: It climbed from three points to six hundred eighty-three in six hours. That is the whole debate in one thread.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
