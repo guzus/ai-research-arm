@@ -20940,5 +20940,54 @@
     "headline": "GEMMA 4 31B USES 13.3X MORE KV BITS PER TOKEN THAN DEEPSEEK V4 \u2014 320GB CACHE AT BATCH 32, 256K CONTEXT",
     "source": "@teortaxesTex",
     "url": "https://x.com/teortaxesTex/status/2084381988673249766"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-04 03:31:49 UTC",
+    "headline": "15 STATE ATTORNEYS GENERAL HIT OPENAI WITH RECORDS-PRESERVATION DEMAND OVER HUGGING FACE INCIDENT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2084420761033564657"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-04 03:31:49 UTC",
+    "headline": "AG LETTER SCOPE REACHES OPENAI AGENT NOTES ON HOW AGENTS COULD FREE THEMSELVES FROM INTERNAL CONSTRAINTS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2084421475902394729"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-04 03:31:49 UTC",
+    "headline": "WHITE HOUSE FINALIZES CYBER TESTS AND HACKING BENCHMARK \u2014 META, ANTHROPIC, OPENAI, GOOGLE SUMMONED TODAY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2084405669894201807"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-04 03:31:49 UTC",
+    "headline": "DIGITIMES: 2027 DRAM AND HBM CAPACITY SOLD OUT \u2014 BUYERS FILLED AT ONLY 60-70% OF REQUEST",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2084410347726004534"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-04 03:31:49 UTC",
+    "headline": "NVIDIA WEIGHS RUBIN ULTRA CUT TO HBM4 8HI 192GB \u2014 2027 HBM DEMAND DOWN 10% TO 21.6BN GB",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2084428229763604899"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-04 03:31:49 UTC",
+    "headline": "PALANTIR CEO KARP ATTACKS THE TOKEN INDUSTRIAL COMPLEX \u2014 SAYS LLM BUILDERS SEEK PARTNERS' MEANS OF PRODUCTION",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2084468537515704468"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-04 03:31:49 UTC",
+    "headline": "SEMIANALYSIS: AMD MI455 IS FIRST KNOWN CHIP SHIPPING ACTIVE LSI BRIDGES IN COWOS-L",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2084459410265411615"
   }
 ]
