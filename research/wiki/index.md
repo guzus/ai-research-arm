@@ -45,6 +45,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[micron]] — US memory maker (HBM/DRAM/SSD) that became Anthropic's primary memory supplier and a named Series H participant on 2026-06-23.
 - [[microsoft]] — Hyperscaler turned frontier-model builder; shipped the MAI stack and made Project Polaris GitHub Copilot's default at Build 2026.
 - [[midjourney]] — Investor-free, community-funded AI image lab now seeking discovery into Disney/Universal/Warner Bros.' internal AI-training practices while diversifying into hardware (Midjourney Medical scanner).
+- [[minimax-h3]] — MiniMax's 33B unified text/image/video/audio model (2026-08-04); first open model reported to top a video-generation ranking, runs on a single RTX 5090, but withholds 2K regeneration and sparse attention server-side.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
 - [[mistral-leanstral-1-5]] — Mistral's open-source (Apache 2.0) Lean 4 formal-verification model; saturates miniF2F, SOTA on FATE-H/FATE-X, found 5 unknown bugs across 57 scanned repos.
 - [[mistral-robostral-navigate]] — Mistral's first embodied-navigation model (8B params), guiding robots via natural-language task instructions; announced 2026-07-08.
@@ -56,7 +57,9 @@ Each page is one of three types — entity, concept, or theme. See
 - [[nvidia]] — Dominant AI-accelerator supplier underwriting the capex buildout; backed Ilya Sutskever's Safe Superintelligence (~$5B, 2026-07-28); a Taiwan employee-detention chip-smuggling probe widened into a multi-party criminal case (2026-07-29).
 - [[openai]] — Frontier lab behind the GPT family; $852B March valuation, now trailing Anthropic's $965B; named its next model family Astra with ten claimed mathematics/TCS proofs (2026-08-01) while lobbying to extend frontier reviews to Meta and SpaceXAI.
 - [[openrouter]] — LLM-routing API serving 400+ models to 8M+ developers; closed $113M Series B at $1.3B on 2026-05-30, 25T tokens/week.
+- [[palantir]] — US enterprise/government data-analytics company; FY26Q2 revenue $1.935B (+93% YoY) on AI demand, with a CEO arguing enterprises cannot trust frontier labs directly.
 - [[prometheus]] — Jeff Bezos's industrial-AI startup building an "artificial general engineer"; $12B Series B at ~$41B on 2026-06-11, industrial AI's first megaround.
+- [[qwen-3-8-max]] — Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok with open weights promised the following week — which would be the first Max-class Qwen ever released open.
 - [[sakana-ai]] — Tokyo lab whose multi-model-orchestration thesis ships as Marlin (deep-research agent) and Sakana Fugu (an LLM-as-router); pitches orchestration as a Fable 5 export-freeze workaround.
 - [[safe-superintelligence]] — Ilya Sutskever's stealth AI-safety lab; NVIDIA reportedly invested ~$5B (2026-07-28) at a $32B post-money valuation alongside a compute partnership.
 - [[salesforce]] — Enterprise-CRM giant betting on agentic AI (Agentforce); bought AI customer-service platform Fin for $3.6B (2026-06-15), the day's largest confirmed AI M&A.

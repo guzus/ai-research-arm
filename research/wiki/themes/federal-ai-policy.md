@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-08-02T00:00:00Z
+timestamp: 2026-08-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
@@ -524,8 +525,48 @@ footing for the first time in the cycle.
   Warner) **proposed making AI songs chart-ineligible**, going beyond the
   RIAA's labelling proposal (ARA daily digest 2026-08-02).
 
+- **A completed *voluntary* framework goes in front of the labs (2026-08-04).**
+  The White House is reported to have **finished an AI oversight framework** and
+  to be showing the completed text to **[[openai|OpenAI]], [[google|Google]]
+  and [[anthropic|Anthropic]] staff at the White House on Tuesday 4 August**,
+  with Trump reported to meet the companies separately. Its mechanism is named
+  as **a channel for labs to submit frontier models to the government before
+  release** — closer in shape to the US/UK safety-institute access agreements
+  than to a rulemaking. Three things matter about this and one caveat governs
+  all of them:
+  - **"Voluntary" is a different instrument from the June 2 executive order**
+    this page tracks. The EO mandates 30-day pre-release access; a voluntary
+    submission channel asks. Whether the new framework supersedes, layers on,
+    or quietly replaces the mandatory regime is not established by the
+    reporting.
+  - **The covered-model trigger is the unresolved design question.** One
+    proposed trigger circulating is **"a step change in capabilities internally
+    at a company"** — a condition **visible to the lab first and to a regulator
+    only if the lab says so**. That is the same self-report problem as the
+    classified threshold above, arrived at from the opposite direction:
+    classified criteria the labs cannot see, versus a criterion only the labs
+    can see.
+  - **The transatlantic designs are diverging within a fortnight.**
+    [[eu-ai-regulation|EU AI Act]] transparency duties took effect 2026-08-02
+    as enforceable obligations with penalties; if the US instrument publishes
+    as voluntary submission, the two largest jurisdictions will have moved in
+    two weeks toward **enforceable obligation versus opt-in review**.
+  - **Caveat: this is one newsroom's reporting (The Information), single-source,
+    with no published framework text and no lab or White House statement on the
+    record** (ARA daily digest 2026-08-04).
+- **Two smaller federal data points in the same cycle.** US AI protectionism is
+  reported to be **extending to humanoid robotics** (MIT Technology Review) —
+  a nascent industry caught by policy aimed at AI, and the policy-side pair to
+  the day's [[alibaba]] coverage. And **Congress's paid AI spend is dominated
+  by ChatGPT** per House spending records — a *procurement* measurement, so
+  free-tier and personal-account use of any vendor is invisible to it and the
+  figure should not be read as a usage share (ARA daily digest 2026-08-04).
+
 ## Open questions
 
+- **Is the new voluntary framework additive to the June 2 executive order, or a
+  softening of it?** Both cannot be the operative pre-release regime; the
+  reporting does not say which governs.
 - **Does 30-day access become the global template?** The EU AI Act GPAI
   obligations (August 2) and other regimes could converge on or diverge from the
   US pre-release-access shape.

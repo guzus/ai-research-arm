@@ -137,8 +137,8 @@
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-03",
-      "timestamp": "2026-08-03T00:00:00Z",
+      "updated_at": "2026-08-04",
+      "timestamp": "2026-08-04T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -172,6 +172,7 @@
         "nvidia",
         "openai",
         "openrouter",
+        "palantir",
         "prometheus",
         "sk-hynix",
         "spacex",
@@ -204,11 +205,13 @@
         "micron",
         "microsoft",
         "minimax-m3",
+        "moonshot-kimi-k3",
         "nebius",
         "neocloud",
         "nvidia",
         "openai",
         "openrouter",
+        "palantir",
         "prometheus",
         "remote-labor-index",
         "sk-hynix",
@@ -243,26 +246,30 @@
         "export-control",
         "hyperscaler-china"
       ],
-      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon, even as it continues fighting a US DoD PLA-linked designation.",
-      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon, even as it continues fighting a US DoD PLA-linked designation.",
+      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 with open weights promised, even as it continues fighting a US DoD PLA-linked designation.",
+      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 with open weights promised, even as it continues fighting a US DoD PLA-linked designation.",
       "created_at": "2026-07-05",
-      "updated_at": "2026-07-22",
-      "timestamp": "2026-07-22T00:00:00Z",
+      "updated_at": "2026-08-04",
+      "timestamp": "2026-08-04T00:00:00Z",
       "file": "entities/alibaba.md",
       "aliases": [
         "Alibaba Group",
         "Alibaba Cloud",
         "BABA",
         "Alibaba Group Holding",
-        "Qwen3.8-Max",
-        "Qwen3.8"
+        "Qwen",
+        "Qoder"
       ],
       "outbound": [
         "anthropic",
         "china-ai-regulation",
         "claude-fable-5",
+        "claude-opus-4-8",
+        "claude-opus-5",
+        "gpt-5-6",
         "moonshot-kimi-k3",
-        "open-weights"
+        "open-weights",
+        "qwen-3-8-max"
       ],
       "inbound": [
         "ai-capex",
@@ -272,6 +279,7 @@
         "gemini-3-6-flash",
         "moonshot-kimi-k3",
         "open-weights",
+        "qwen-3-8-max",
         "seedance-2-5"
       ],
       "market": {
@@ -426,6 +434,7 @@
         "open-weights",
         "openai",
         "openrouter",
+        "palantir",
         "prometheus",
         "salesforce",
         "sk-telecom",
@@ -784,6 +793,7 @@
         "moonshot-kimi-k3",
         "open-weights",
         "openai",
+        "qwen-3-8-max",
         "remote-labor-index",
         "sakana-ai",
         "sk-telecom",
@@ -825,6 +835,7 @@
       "inbound": [
         "agent-lifespan-engineering",
         "agentic-ai-security",
+        "alibaba",
         "anthropic",
         "claude-fable-5",
         "claude-opus-5",
@@ -835,6 +846,7 @@
         "moonshot-kimi-k3",
         "nvidia",
         "open-weights",
+        "qwen-3-8-max",
         "remote-labor-index",
         "sakana-ai",
         "zhipu-glm-5-2"
@@ -873,8 +885,11 @@
       ],
       "inbound": [
         "agentic-ai-security",
+        "alibaba",
         "anthropic",
         "claude-opus-4-8",
+        "moonshot-kimi-k3",
+        "qwen-3-8-max",
         "verification-bottleneck"
       ]
     },
@@ -1142,8 +1157,8 @@
       "summary": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.",
       "description": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.",
       "created_at": "2026-08-01",
-      "updated_at": "2026-08-03",
-      "timestamp": "2026-08-03T00:00:00Z",
+      "updated_at": "2026-08-04",
+      "timestamp": "2026-08-04T00:00:00Z",
       "file": "entities/deepseek-v4-flash.md",
       "aliases": [
         "V4-Flash",
@@ -1170,6 +1185,7 @@
         "eu-ai-regulation",
         "moonshot-kimi-k3",
         "open-weights",
+        "qwen-3-8-max",
         "thinking-machines",
         "verification-bottleneck"
       ]
@@ -1324,6 +1340,7 @@
         "california-ai-regulation",
         "china-ai-regulation",
         "federal-ai-policy",
+        "minimax-h3",
         "seedance-2-5"
       ]
     },
@@ -1342,8 +1359,8 @@
       "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-08-02",
-      "timestamp": "2026-08-02T00:00:00Z",
+      "updated_at": "2026-08-04",
+      "timestamp": "2026-08-04T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1364,6 +1381,7 @@
         "claude-sonnet-5",
         "deepseek",
         "eu-ai-regulation",
+        "google",
         "gpt-5-6",
         "meituan-longcat-2",
         "meta",
@@ -1398,6 +1416,7 @@
         "noam-shazeer",
         "open-weights",
         "openai",
+        "palantir",
         "sk-telecom",
         "soofi-s-30b-a3b"
       ]
@@ -1712,6 +1731,7 @@
         "anthropic",
         "california-ai-regulation",
         "eu-ai-regulation",
+        "federal-ai-policy",
         "gemini-3-5-pro",
         "gemini-3-6-flash",
         "seedance-2-5"
@@ -1763,6 +1783,7 @@
         "zhipu-glm-5-2"
       ],
       "inbound": [
+        "alibaba",
         "anthropic",
         "claude-fable-5",
         "claude-opus-5",
@@ -1773,6 +1794,7 @@
         "moonshot-kimi-k3",
         "open-weights",
         "openai",
+        "qwen-3-8-max",
         "xai"
       ]
     },
@@ -2168,6 +2190,39 @@
       ]
     },
     {
+      "slug": "minimax-h3",
+      "title": "MiniMax H3",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "model",
+        "video-generation",
+        "multimodal",
+        "chinese-llm",
+        "local-inference"
+      ],
+      "summary": "MiniMax's 33B unified text/image/video/audio model, released 2026-08-04 — the first open model reported to top a video-generation ranking, and runnable end-to-end on a single consumer GPU.",
+      "description": "MiniMax's 33B unified text/image/video/audio model, released 2026-08-04 — the first open model reported to top a video-generation ranking, and runnable end-to-end on a single consumer GPU.",
+      "created_at": "2026-08-04",
+      "updated_at": "2026-08-04",
+      "timestamp": "2026-08-04T00:00:00Z",
+      "file": "entities/minimax-h3.md",
+      "aliases": [
+        "MiniMax H3",
+        "MiniMax-H3",
+        "H3"
+      ],
+      "outbound": [
+        "eu-ai-regulation",
+        "minimax-m3",
+        "open-weights"
+      ],
+      "inbound": [
+        "minimax-m3",
+        "open-weights"
+      ]
+    },
+    {
       "slug": "minimax-m3",
       "title": "MiniMax M3",
       "type": "entity",
@@ -2181,8 +2236,8 @@
       "summary": "MiniMax's open-weights model with 1M context and 59% SWE-Bench Pro — the strongest open-weights agentic-coding model of the cycle.",
       "description": "MiniMax's open-weights model with 1M context and 59% SWE-Bench Pro — the strongest open-weights agentic-coding model of the cycle.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-06-04",
-      "timestamp": "2026-06-04T00:00:00Z",
+      "updated_at": "2026-08-04",
+      "timestamp": "2026-08-04T00:00:00Z",
       "file": "entities/minimax-m3.md",
       "aliases": [
         "MiniMax M3",
@@ -2196,12 +2251,14 @@
         "deepseek",
         "gemma-4",
         "microsoft",
+        "minimax-h3",
         "openrouter"
       ],
       "inbound": [
         "deepseek",
         "gemma-4",
         "microsoft",
+        "minimax-h3",
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openrouter",
@@ -2333,8 +2390,8 @@
       "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps \"possibly pointing to distillation.\"",
       "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps \"possibly pointing to distillation.\"",
       "created_at": "2026-07-17",
-      "updated_at": "2026-08-01",
-      "timestamp": "2026-08-01T00:00:00Z",
+      "updated_at": "2026-08-04",
+      "timestamp": "2026-08-04T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -2345,16 +2402,19 @@
         "Kimi Work"
       ],
       "outbound": [
+        "ai-capex",
         "alibaba",
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-opus-5",
         "deepseek-v4-flash",
         "federal-ai-policy",
         "gemini-3-6-flash",
         "gpt-5-6",
         "moonshot-kimi-k2-7-code",
         "open-weights",
+        "qwen-3-8-max",
         "thinking-machines",
         "zhipu-glm-5-2"
       ],
@@ -2369,6 +2429,7 @@
         "gemini-3-5-pro",
         "gemini-3-6-flash",
         "open-weights",
+        "qwen-3-8-max",
         "soofi-s-30b-a3b",
         "thinking-machines",
         "xai"
@@ -2623,8 +2684,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-08-01",
-      "timestamp": "2026-08-01T00:00:00Z",
+      "updated_at": "2026-08-04",
+      "timestamp": "2026-08-04T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -2649,12 +2710,14 @@
         "meituan-longcat-2",
         "meta",
         "microsoft",
+        "minimax-h3",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
         "nvidia",
         "openai",
         "openrouter",
+        "qwen-3-8-max",
         "sakana-ai",
         "soofi-s-30b-a3b",
         "thinking-machines",
@@ -2674,11 +2737,13 @@
         "meituan-longcat-2",
         "meta",
         "microsoft",
+        "minimax-h3",
         "mistral-leanstral-1-5",
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
         "nano-banana-2-lite",
         "openrouter",
+        "qwen-3-8-max",
         "sakana-ai",
         "soofi-s-30b-a3b",
         "tencent-hunyuan-hy3",
@@ -2760,6 +2825,7 @@
         "nvidia",
         "open-weights",
         "openrouter",
+        "palantir",
         "prometheus",
         "safe-superintelligence",
         "sakana-ai",
@@ -2816,6 +2882,45 @@
       ]
     },
     {
+      "slug": "palantir",
+      "title": "Palantir Technologies",
+      "type": "entity",
+      "tags": [
+        "enterprise-ai",
+        "government",
+        "earnings",
+        "public-company",
+        "ai-sovereignty"
+      ],
+      "summary": "US enterprise/government data-analytics company that reported 93% YoY revenue growth on AI demand in FY26Q2, and whose CEO uses the results to argue enterprises cannot trust frontier labs directly.",
+      "description": "US enterprise/government data-analytics company that reported 93% YoY revenue growth on AI demand in FY26Q2, and whose CEO uses the results to argue enterprises cannot trust frontier labs directly.",
+      "created_at": "2026-08-04",
+      "updated_at": "2026-08-04",
+      "timestamp": "2026-08-04T00:00:00Z",
+      "file": "entities/palantir.md",
+      "aliases": [
+        "Palantir",
+        "PLTR",
+        "Palantir Technologies Inc.",
+        "Alex Karp"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "federal-ai-policy",
+        "openai"
+      ],
+      "inbound": [
+        "ai-capex"
+      ],
+      "market": {
+        "ticker": "PLTR",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:PLTR",
+        "provider": "yahoo"
+      }
+    },
+    {
       "slug": "prometheus",
       "title": "Prometheus",
       "type": "entity",
@@ -2848,6 +2953,46 @@
       "inbound": [
         "ai-capex",
         "artificial-general-engineer"
+      ]
+    },
+    {
+      "slug": "qwen-3-8-max",
+      "title": "Qwen3.8-Max",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "model",
+        "moe",
+        "chinese-llm",
+        "long-context",
+        "alibaba"
+      ],
+      "summary": "Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok with open weights promised the following week — which would be the first Max-class Qwen ever released open.",
+      "description": "Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok with open weights promised the following week — which would be the first Max-class Qwen ever released open.",
+      "created_at": "2026-08-04",
+      "updated_at": "2026-08-04",
+      "timestamp": "2026-08-04T00:00:00Z",
+      "file": "entities/qwen-3-8-max.md",
+      "aliases": [
+        "Qwen3.8-Max",
+        "Qwen3.8",
+        "Qwen 3.8 Max",
+        "Qwen3.8 Max"
+      ],
+      "outbound": [
+        "alibaba",
+        "claude-fable-5",
+        "claude-opus-4-8",
+        "claude-opus-5",
+        "deepseek-v4-flash",
+        "gpt-5-6",
+        "moonshot-kimi-k3",
+        "open-weights"
+      ],
+      "inbound": [
+        "alibaba",
+        "moonshot-kimi-k3",
+        "open-weights"
       ]
     },
     {
@@ -3486,6 +3631,7 @@
     "ai supply-chain security": "agentic-ai-security",
     "ai-capex": "ai-capex",
     "ai-for-manufacturing": "artificial-general-engineer",
+    "alex karp": "palantir",
     "alibaba": "alibaba",
     "alibaba cloud": "alibaba",
     "alibaba group": "alibaba",
@@ -3640,6 +3786,7 @@
     "gpuaas": "neocloud",
     "grok": "xai",
     "grok 4.6": "xai",
+    "h3": "minimax-h3",
     "helix": "figure-ai",
     "helix-02": "figure-ai",
     "hunyuan hy3": "tencent-hunyuan-hy3",
@@ -3700,7 +3847,9 @@
     "mimo v2.5 pro ultraspeed": "xiaomi-mimo-v2-5-pro",
     "mimo-v2.5-pro-ultraspeed": "xiaomi-mimo-v2-5-pro",
     "minimax": "minimax-m3",
+    "minimax h3": "minimax-h3",
     "minimax m3": "minimax-m3",
+    "minimax-h3": "minimax-h3",
     "minimax-m3": "minimax-m3",
     "mira murati": "thinking-machines",
     "mistral-leanstral-1-5": "mistral-leanstral-1-5",
@@ -3749,15 +3898,23 @@
     "opus 4.8": "claude-opus-4-8",
     "opus 5": "claude-opus-5",
     "owl alpha": "meituan-longcat-2",
+    "palantir": "palantir",
+    "palantir technologies inc.": "palantir",
     "parallel subagents": "dynamic-workflows",
     "pcc": "apple",
+    "pltr": "palantir",
     "private cloud compute": "apple",
     "project polaris": "microsoft",
     "prometheus": "prometheus",
     "prometheus ai": "prometheus",
     "promoting advanced ai innovation and security": "federal-ai-policy",
-    "qwen3.8": "alibaba",
-    "qwen3.8-max": "alibaba",
+    "qoder": "alibaba",
+    "qwen": "alibaba",
+    "qwen 3.8 max": "qwen-3-8-max",
+    "qwen-3-8-max": "qwen-3-8-max",
+    "qwen3.8": "qwen-3-8-max",
+    "qwen3.8 max": "qwen-3-8-max",
+    "qwen3.8-max": "qwen-3-8-max",
     "remote labor index": "remote-labor-index",
     "remote-labor-index": "remote-labor-index",
     "rli": "remote-labor-index",
@@ -3833,6 +3990,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-08-04",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-04 digest (Alibaba launched Qwen3.8-Max — 2.4T total / 95B active MoE, 1M context, $2/$6 per Mtok — with Max plus a 27B sibling promised on Hugging Face \"next week,\" which would be the first Max-class Qwen ever released open-weight and was still unpublished at ingest; its 51/54-over-Opus-4.8 table is Alibaba's own and omits Kimi K3 and Opus 5 entirely, first independent touches were muted, and the 16-day/265-commit unattended-coding pitch reappeared as \"10+ days\" with no released log; MiniMax H3 shipped a 33B unified text/image/video/audio model that runs end-to-end on a single RTX 5090 and in 170s on a 5070Ti at INT8, reported first open model to top a video ranking — but withheld 2K regeneration, context orchestration and sparse attention server-side at 768p-from-weights, with an unconfirmed \"Excluded Territories\" clause naming the EU/UK/South Korea/US; the White House finished a VOLUNTARY pre-release model-submission framework shown to OpenAI/Google/Anthropic staff today, single-source, with the covered-model trigger proposed as \"a step change in capabilities internally at a company\" — visible to the lab first and to a regulator only if the lab says so; Palantir posted $1.935B FY26Q2 revenue +93% YoY with $1.062B GAAP net income and a CEO calling the AI industry \"Marxist\"; DeepSeek V4-Flash is confirmed a re-post-train at 284B/13B with no parameter change, scoring 50 on Artificial Analysis six points above DeepSeek's own larger V4 Pro; SemiAnalysis put the Meta/OpenAI AMD warrant math at ~$1.60/~$1.75 per GPU-hour, with \"effectively zero at $600–700\" resting on dilution and an assumed full 6 GW deployment). Created 3 (qwen-3-8-max entity, minimax-h3 entity, palantir entity with NASDAQ:PLTR market binding). Updated 5 (alibaba — Qwen3.8-Max ships, and the \"Qwen3.8-Max\"/\"Qwen3.8\" aliases moved off the maker page onto the new model page to keep maker and model canonically distinct; deepseek-v4-flash — the 284B-vs-304B split resolves toward 284B re-post-train, AA 50 / WeirdML 57.1-63.0% / GDPval-AA 1189→1559 Elo / Terminal-Bench 79% landing under the unreproduced vendor 82.7, a second unreconciled $0.14/$0.28 price pair, 14 community quants; federal-ai-policy — the completed voluntary framework as a different instrument from the June 2 mandatory EO, the self-report problem in the \"step change\" trigger, US-voluntary vs EU-enforceable diverging inside a fortnight, plus humanoid-robotics protectionism and the procurement-not-usage caveat on Congress's ChatGPT spend; open-weights — two same-day releases that both qualify the word, the shift from \"whether a lab open-sources\" to \"which components it keeps,\" and the Interconnects Artifacts Hub/Adoption Dashboard as the wave's first standing 792-model measurement series; ai-capex — AMD warrant math as an accounting sentence, Palantir as a booked-revenue demand print, Moonshot's reported ~$3B HKEX filing carrying its own strongest objection, Samsung 100% H2 utilization / CXMT second Beijing fab / Korean RTX-50 prices +30%, and AI capital structure reaching HN for the first time; minimax-m3 got a successor note pointing to H3). Skipped for budget (future ingest): the EU AI Act transparency-duty pairing detail, Moonshot AI as its own company entity page, ByteDance Seedance 2.5's US-excluded rollout, GPT-Live's full-duplex architecture disclosure, Sakana Namazu, the Qwen computer-use agent and Athena, Horizon3.ai's $250M Series E, Interpol's Africa cybercrime figures, the Ukrainian-drone terminal-guidance deal, the SQLite hallucinated-CVE story, and the TokTier/TraceViT/sycophancy/ARB research highlights."
+    },
     {
       "date": "2026-08-03",
       "op": "ingest",
@@ -3927,11 +4089,6 @@
       "date": "2026-07-13",
       "op": "ingest",
       "summary": "Ingested 2026-07-13 digest (OpenAI's third Codex/ChatGPT Work capacity intervention in 48 hours undercuts its own inference-cost claims; Anthropic officially confirms Fable 5 access + 50%-higher Claude Code rate limits extended through July 19 and ships a built-in Claude Code browser; OpenAI escalates its on-record rebuttal to Apple's trade-secrets suit as S&P Global cuts Oracle's credit rating over OpenAI exposure; Nathan Lambert flags White House discussions of a possible open-weight-models executive order the same day Deutsche Telekom-backed Soofi S 30B-A3B ships as a sovereign open German/English model; Claude Opus 4.8 takes new SOTA on the GSO benchmark). Created 1 (soofi-s-30b-a3b entity — Deutsche Telekom-backed sovereign open German/English MoE model, ~27T tokens), updated 6 (gpt-5-6 — third capacity intervention in 48h; claude-fable-5 — rate-limit extension through July 19 confirmed + Claude Code built-in browser; apple — OpenAI's on-record rebuttal escalation; openai — capacity intervention + rebuttal + S&P Oracle credit-risk citation; open-weights — possible open-weight-models executive order + Soofi S ship; claude-opus-4-8 — new SOTA on GSO benchmark)."
-    },
-    {
-      "date": "2026-07-12",
-      "op": "ingest",
-      "summary": "Ingested 2026-07-12 digest (Apple sues OpenAI over alleged hardware trade-secret theft; GPT-5.6 Sol Ultra goes GA and leads the CritPt physics benchmark at 32.3% after reportedly solving a 50-year-old math problem with 64 subagents; Ben Bernanke joins Anthropic's Long-Term Benefit Trust as secondary-market chatter puts its valuation at ~$1.2T; SK Hynix raises $26.5B in the largest US foreign share sale on record; Tencent Hunyuan Hy3 and Mistral Robostral Navigate ship as same-day open-weight/embodied releases; Grok 4.5 ends its private beta and ships free to all X accounts). Created 3 (sk-hynix entity — HBM supplier, $26.5B Nasdaq IPO; tencent-hunyuan-hy3 entity — 295B open-weight MoE under Apache 2.0, reported MCP-Atlas SOTA; mistral-robostral-navigate entity — Mistral's first embodied-navigation model), updated 5 (openai — Apple lawsuit + Sol Ultra GA/CritPt benchmark lead; apple — sues OpenAI over hardware trade secrets; anthropic — Bernanke joins LTBT + ~$1.2T secondary-market valuation chatter; gpt-5-6 — Sol Ultra GA, 64-subagent math proof, CritPt 32.3% lead, Luna capacity errors; xai — Grok 4.5 ends private beta, ships free to all X accounts)."
     }
   ]
 }

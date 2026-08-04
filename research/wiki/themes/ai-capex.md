@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-08-03T00:00:00Z
+timestamp: 2026-08-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
@@ -460,6 +461,40 @@ regulatory frame for the supercycle's frontier-lab IPO window — [[openai]]'s
 Frontier Governance Framework (2026-05-29) explicitly maps onto the
 California Transparency in Frontier AI Act, on the same day the California
 package cleared its chamber-of-origin crossover.
+
+- **The AMD warrant math: "effectively zero" GPU cost is an accounting
+  sentence (2026-08-04).** SemiAnalysis worked through the [[meta|Meta]] and
+  [[openai|OpenAI]] AMD deals, whose warrants vest against **both** deployed
+  Instinct capacity (up to **6 GW**) and share-price hurdles **stepping to
+  $600**. With AMD in the $500–600 range, it puts the two buyers' capital cost
+  of ownership at **~$1.60 and ~$1.75 per GPU-hour**, down from ~$2.15 and
+  ~$2.50. The framing worth keeping: **"effectively zero at $600–700" does not
+  mean the cost vanished** — it moves onto AMD's other shareholders via
+  dilution, and it assumes **full 6 GW deployment**, which is modelled, not
+  disclosed. This is the compute-cost mirror of the mark-to-market earnings
+  point above: the headline number is real and the economics sit somewhere the
+  headline does not point.
+- **Demand side gets a clean public print.** [[palantir|Palantir]] reported
+  **$1.935B FY26Q2 revenue, +93% YoY**, with $1.062B GAAP net income at a 55%
+  margin — enterprise/government AI revenue *booked*, as opposed to the
+  hyperscaler spend that dominates this page. Its CEO used the quarter to argue
+  enterprises cannot trust frontier labs directly, which is vendor positioning
+  but also a testable claim about where AI budget lands.
+- **Chinese lab capital markets and the supply chain.** Moonshot AI (see
+  [[moonshot-kimi-k3]]) is reported to be **filing a Hong Kong IPO targeting
+  ~$3B as early as this month**, after a $3.5B+ Series F at **$35B** and a Series G
+  pulled forward at **$50B pre-money** — single-source, no visible filing, no
+  company response, and the report carries its own strongest objection: a $3B
+  IPO is hard to square with a company that just took $3.5B privately.
+  Supply-side in the same cycle: **Samsung's foundry targeting 100% H2
+  utilization** (from ~70–80%) on HBM base dies, **CXMT weighing a second
+  Beijing DRAM fab** on top of builds that would push capacity past 600,000
+  wafers/month, and **Korean retail RTX 50-series prices up to 30% higher this
+  month** — the consumer-visible end of the memory squeeze. **AI capital
+  structure also reached Hacker News for the first time**, via *AI's debt binge
+  can't last, hidden borrowing reaches $1.65T* (Fortune, 59 pts) — small
+  numbers, but the first time the board treated the financing question as a
+  story (ARA daily digest 2026-08-04).
 
 ## Open questions
 - **Demand durability.** Is committed [[neocloud]] backlog genuine end-demand, or

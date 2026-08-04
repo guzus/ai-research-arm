@@ -2,17 +2,18 @@
 slug: alibaba
 title: Alibaba
 type: entity
-aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen3.8-Max", "Qwen3.8"]
+aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; confirmed the 2.4T-param Qwen3.8-Max is going open-weight soon, even as it continues fighting a US DoD PLA-linked designation.
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 with open weights promised, even as it continues fighting a US DoD PLA-linked designation.
 created_at: 2026-07-05
-timestamp: 2026-07-22T00:00:00Z
+timestamp: 2026-08-04T00:00:00Z
 market:
   ticker: BABA
   exchange: NYSE
   symbol: NYSE:BABA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA model ticket — Qwen-Image-3.0 release", path: research/models/tickets/alibaba-qwen-image-3-2026-07.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
@@ -117,6 +118,19 @@ friction point distinct from Qwen's own model-release cadence.
   Audio 3.0 TTS Plus** is reported to top the competition in text-to-speech
   rankings. Both are Alibaba's separate image/audio product lines, distinct
   from the Qwen3.8-Max text model tracked above (ARA digest 2026-07-22).
+
+- **Qwen3.8-Max launches, weights still promised (2026-08-04).** Alibaba
+  shipped **[[qwen-3-8-max|Qwen3.8-Max]]** — 2.4T total / 95B active MoE, 1M
+  context, **$2/$6 per Mtok** — and said Max plus a **27B sibling** reach
+  Hugging Face **next week**, which would be the first Max-class Qwen ever
+  released open-weight. That release is the load-bearing claim and was still
+  unpublished at this ingest. Alibaba's own comparison table claims 51/54 wins
+  over [[claude-opus-4-8|Opus 4.8]] and 46/54 over [[gpt-5-6|GPT-5.6-Sol]] but
+  drops to 37/49 against [[claude-fable-5|Fable 5]] and omits
+  [[moonshot-kimi-k3|Kimi K3]] and [[claude-opus-5|Opus 5]] entirely; first
+  independent touches were more muted. It led the Hacker News AI slate in five
+  consecutive windows (115 → 960 points). Model-level detail lives on
+  [[qwen-3-8-max]] (ARA digest 2026-08-04).
 
 ## Open questions
 
