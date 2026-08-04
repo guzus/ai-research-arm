@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "**OpenAI did not \"file\" anything.** The post-departure messages appeared on a corporate blog on 3 August 2026.[^1] As of the public docket on 4 August, no defendant had filed an answer, a motion to dismiss, or an opposition; oppositions are due 17 August.[^2]",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Roffman's forensic declaration states that \"the deprovisioning scripts that ran in January 2026 did not properly deprovision (revoke) Mr. Liu's access,\" attributing the finding to a 16 July 2026 interview with an Apple IS&T manager.[^5] It states that browser sign-ins by Liu to Apple repositories \"would have been blocked as of January 24, 2026\" — two days after his last day.[^5]",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "In *InteliClear v. ETC Global Holdings* it held that \"Confidentiality provisions constitute reasonable steps to maintain secrecy\" and that such efforts \"constitute reasonable measures that are adequate to preclude judgment as a matter of law.\"[^8]",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

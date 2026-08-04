@@ -1,0 +1,280 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "As of docket entry 54 on 4 August, no defendant had filed an answer, a motion to dismiss, or an opposition; oppositions are due 17 August.",
+      "verdict": "weak",
+      "citation": "https://www.courtlistener.com/docket/73602437/apple-inc-v-liu/"
+    },
+    {
+      "id": "c2",
+      "text": "The docket in Apple Inc. v. Liu, No. 5:26-cv-07078 (N.D. Cal.), tells the rest: through entry 54 on 4 August, every substantive filing is Apple's.",
+      "verdict": "weak",
+      "citation": "https://www.courtlistener.com/docket/73602437/apple-inc-v-liu/"
+    },
+    {
+      "id": "c3",
+      "text": "Press timestamps put it at 23:05 Pacific on 3 August 2026, one day after Apple's preliminary-injunction motion.",
+      "verdict": "unsupported",
+      "citation": "https://9to5mac.com/2026/08/03/openai-rebuts-apple-trade-secrets-allegations-in-new-response-and-evidence/"
+    },
+    {
+      "id": "c4",
+      "text": "Oppositions to the injunction are due 17 August, replies 24 August, hearing 1 October before Judge Edward J. Davila.",
+      "verdict": "supported",
+      "citation": "https://www.courtlistener.com/docket/73602437/apple-inc-v-liu/"
+    },
+    {
+      "id": "c5",
+      "text": "First, the venue. OpenAI published a page on its own domain, unsigned and carrying no publication date on its face.",
+      "verdict": "supported",
+      "citation": "https://openai.com/index/apple-is-getting-this-wrong/"
+    },
+    {
+      "id": "c6",
+      "text": "OpenAI's own page carries bracketed markers reading \"[Redacted — Apple Information]\" and one \"[Redacted — Apple schematic],\" and the images are clipboard-pasted PNGs on a content-delivery network rather than native exports with metadata.",
+      "verdict": "weak",
+      "citation": "https://openai.com/index/apple-is-getting-this-wrong/"
+    },
+    {
+      "id": "c7",
+      "text": "Exhibit one is 57 timestamped iMessages between Chang Liu and Apple colleagues running 22 January to 14 February 2026.",
+      "verdict": "weak",
+      "citation": "https://openai.com/index/apple-is-getting-this-wrong/"
+    },
+    {
+      "id": "c8",
+      "text": "Exhibit two is a February email chain among Apple's outside counsel Gabriel Gross, OpenAI General Counsel Che Chang, and Apple in-house lawyers",
+      "verdict": "supported",
+      "citation": "https://openai.com/index/apple-is-getting-this-wrong/"
+    },
+    {
+      "id": "c9",
+      "text": "Notably, Tang Tan — OpenAI's Chief Hardware Officer and the highest-profile defendant — is defended in two sentences of prose with no documentary exhibit at all.",
+      "verdict": "weak",
+      "citation": "https://openai.com/index/apple-is-getting-this-wrong/"
+    },
+    {
+      "id": "c10",
+      "text": "an Apple employee kept a machine signed into Liu's iCloud session for days past his 22 January last day, and colleagues solicited his help locating files afterwards.",
+      "verdict": "supported",
+      "citation": "https://openai.com/index/apple-is-getting-this-wrong/"
+    },
+    {
+      "id": "c11",
+      "text": "Filed 10 July 2026, it pleads six counts — four Defend Trade Secrets Act misappropriation claims, one each against Liu, Tan, the OpenAI entities and io Products, plus two breach-of-Intellectual-Property-Agreement counts against the individuals.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c12",
+      "text": "Conspicuously absent: any California Uniform Trade Secrets Act count, any § 17200 unfair-competition count, and any Computer Fraud and Abuse Act count.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c13",
+      "text": "Apple's secrecy-measures allegations run through paragraphs 42 to 52: contractual, physical and digital controls, an annual \"Business Conduct\" course, locked buildings, cameras and guards, supplier confidentiality and chain-of-custody protocols.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c14",
+      "text": "Apple disables and prohibits access to its network storage upon an employee's departure.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c15",
+      "text": "Ten paragraphs later, the complaint concedes that Liu \"still could access the Apple's network repository after leaving Apple, the result of a then-unknown authentication vulnerability,\" and footnote 1 adds: \"Upon discovery, Apple quickly fixed this bug.\"",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c16",
+      "text": "Paragraph 5 concedes that Liu \"failed to return an Apple-issued work laptop that he had previously authenticated to Apple's network.\"",
+      "verdict": "weak",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c17",
+      "text": "Paragraph 56 concedes that a non-employee used a current employee's Apple-issued, network-authenticated computer.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c18",
+      "text": "And paragraphs 11 and 73 allege that the artefact Tan circulated was Apple's own internal offboarding procedure document, marked \"Need to Know\"",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c19",
+      "text": "Paragraph 46 pleads that a return obligation existed and that Liu \"was unresponsive to Apple's outreach.\"",
+      "verdict": "weak",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c20",
+      "text": "Paragraph 52 pleads that when Apple \"learns of a bug or vulnerability in its security measures, it investigates and takes steps to fix the issue\" — a prophylactic that reads as though it were drafted with paragraph 57 in view.",
+      "verdict": "weak",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c21",
+      "text": "the complaint alleges an OpenAI recruiter told a hire he \"won't sign anything at the exit interview,\" and that Tan warned recruits \"Apple will probably walk you out.\"",
+      "verdict": "weak",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.38.0.pdf"
+    },
+    {
+      "id": "c22",
+      "text": "And paragraph 145 — pleading breach by \"failing to return an Apple-issued work device\" — concedes that the offboarding process did not verify return.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c23",
+      "text": "Roffman's forensic declaration states that \"the deprovisioning scripts that ran in January 2026 did not properly deprovision (revoke) Mr. Liu's access,\" attributing the finding to a 16 July 2026 interview with an Apple IS&T manager.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.45.0.pdf"
+    },
+    {
+      "id": "c24",
+      "text": "It states that browser sign-ins by Liu to Apple repositories \"would have been blocked as of January 24, 2026\" — two days after his last day.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.45.0.pdf"
+    },
+    {
+      "id": "c25",
+      "text": "Apple alleges Liu \"performed over 240 downloads from this third-party cloud storage, including downloads of at least thirty-seven unique Apple files,\" with over 470 \"Content Access\" events, across five sessions on 8 and 10 February, 7 and 11 March, and 27 April 2026 — almost all late at night Pacific time.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.45.0.pdf"
+    },
+    {
+      "id": "c26",
+      "text": "From Liu's 22 January departure to that final 27 April session is 95 days. The first download came 17 days after he left.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.45.0.pdf"
+    },
+    {
+      "id": "c27",
+      "text": "Three timestamps are still missing from the entire injunction record: the date Apple discovered the access, the date it patched, and any date on which Apple demanded the laptop back.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.45.0.pdf"
+    },
+    {
+      "id": "c28",
+      "text": "Across nine supporting declarations, no Apple information-security witness declares.",
+      "verdict": "supported",
+      "citation": "https://www.courtlistener.com/docket/73602437/apple-inc-v-liu/"
+    },
+    {
+      "id": "c29",
+      "text": "Apple's hardware-engineering declarant covers digital measures without mentioning the bug; its human-resources declarant covers offboarding without mentioning deprovisioning.",
+      "verdict": "weak",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.46.0.pdf"
+    },
+    {
+      "id": "c30",
+      "text": "The deprovisioning failure rests entirely on attorney-arranged interviews of an unnamed IS&T manager, cited as 16 July by the forensic declarant and 23 July by Apple's expert.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.46.0.pdf"
+    },
+    {
+      "id": "c31",
+      "text": "it is my opinion that Apple has taken reasonable measures to protect the secrecy of the information it has claimed as trade secrets in this action.",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.46.0.pdf"
+    },
+    {
+      "id": "c32",
+      "text": "One of them is from James Pooley — author of the leading trade-secrets treatise, former Deputy Director General of the World Intellectual Property Organization, and the expert whose testimony informed the DTSA itself.",
+      "verdict": "weak",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.46.0.pdf"
+    },
+    {
+      "id": "c33",
+      "text": "a three-factor balancing test — \"the value of the information; the risk of loss or contamination; and the cost of various measures that could reduce or eliminate the risk\" — and the disclaimer that \"Reasonableness does not demand perfection and depends on circumstances.\"",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.46.0.pdf"
+    },
+    {
+      "id": "c34",
+      "text": "He touches the vulnerability once, at paragraph 39, purely as remediation: \"If issues arise with security for file-sharing platforms, Apple takes action to resolve those issues and ensure they do not repeat.\"",
+      "verdict": "weak",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.46.0.pdf"
+    },
+    {
+      "id": "c35",
+      "text": "Pooley never benchmarks Apple against hardware- or semiconductor-industry custom, stating instead that his framework \"applies across all industries\" — which invites a challenge to the fit of the opinion.",
+      "verdict": "weak",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.46.0.pdf"
+    },
+    {
+      "id": "c36",
+      "text": "It never uses the word \"deprovisioning.\"",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.38.0.pdf"
+    },
+    {
+      "id": "c37",
+      "text": "It recasts a failure of Apple's revocation pipeline as an affirmative act by Liu — \"a previously unknown authentication bug\" that he \"exploited\" — and answers the reasonableness attack with speed rather than explanation: \"Apple acted immediately and reasonably, investigating the issue and correcting it.\"",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.38.0.pdf"
+    },
+    {
+      "id": "c38",
+      "text": "Apple's brief steers around it explicitly — \"Apple does not seek to restrain employee mobility or prevent Defendants from competing\" — but its first requested order, barring \"accessing, acquiring, using, or disclosing\" Apple information \"in any manner including commercial activities,\" is the seam a defence brief will call a de facto restraint",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.38.0.pdf"
+    },
+    {
+      "id": "c39",
+      "text": "Apple moved for an injunction on day 24 and for expedited discovery on day 25,",
+      "verdict": "supported",
+      "citation": "https://www.courtlistener.com/docket/73602437/apple-inc-v-liu/"
+    },
+    {
+      "id": "c40",
+      "text": "Read alongside the complaint's own \"tip of the iceberg\" language and its allegation that defendants may already have deleted data,",
+      "verdict": "supported",
+      "citation": "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"
+    },
+    {
+      "id": "c41",
+      "text": "An owner that waited five months between its February pre-suit letter and its July complaint, then another 24 days to move for relief, has a harder time arguing that the next 60 days are intolerable.",
+      "verdict": "weak",
+      "citation": "https://openai.com/index/apple-is-getting-this-wrong/"
+    },
+    {
+      "id": "c42",
+      "text": "no published decision has ever killed a claim on failure to revoke credentials alone.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c43",
+      "text": "the element they attack is one that, in the Ninth Circuit, no defendant has ever won as a matter of law.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c44",
+      "text": "but Google LLC v. Point Financial shows the live mechanism: an injunction granted on tortious interference and denied on the DTSA and CUTSA counts because no trade secret had been identified.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c45",
+      "text": "The closest analogue found is an Illinois appellate decision where a still-employed lawyer agreed to keep forwarding material to a departed colleague and the trade-secret claim failed",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c46",
+      "text": "Red-team pass: 3 of 3 top claims survived an adversarial search for contradicting evidence.",
+      "verdict": "unsupported",
+      "citation": null
+    }
+  ]
+}
