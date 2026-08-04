@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 5,
+  "count": 6,
   "events": [
+    {
+      "file": "2026-08-03-PLTR-FY26Q2.md",
+      "date": "2026-08-03",
+      "ticker": "PLTR",
+      "period": "FY26Q2",
+      "issuer": "Palantir Technologies Inc.",
+      "form": "8-K",
+      "accession": "0001321655-26-000039",
+      "transcript": false
+    },
     {
       "file": "2026-07-30-AMZN-FY26Q2.md",
       "date": "2026-07-30",
