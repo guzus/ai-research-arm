@@ -20989,5 +20989,47 @@
     "headline": "SEMIANALYSIS: AMD MI455 IS FIRST KNOWN CHIP SHIPPING ACTIVE LSI BRIDGES IN COWOS-L",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2084459410265411615"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-04 08:51:44 UTC",
+    "headline": "OPENAI FILES APPLE'S OWN EMAILS \u2014 STAFF ASKED DEPARTED ENGINEER FOR INTERNAL FILES WEEKS AFTER EXIT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2084540108254949441"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-04 08:51:44 UTC",
+    "headline": "TRENDFORCE: NVIDIA REVIEWING RUBIN ULTRA HBM SINCE Q3 \u2014 NO FINAL SPEC, I/O SPEED RANKED ABOVE GPU VOLUME",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2084536701532451009"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-04 08:51:44 UTC",
+    "headline": "NIKKEI: HP, ASUS, ACER BEGIN BUYING CXMT DRAM \u2014 AND CHINESE MEMORY IS NOT PRICED BELOW SAMSUNG",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2084507923062096050"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-04 08:51:44 UTC",
+    "headline": "AIRTABLE SOLD TO BENDING SPOONS FOR $1.285B AT 2.7X ARR \u2014 DOWN FROM $11.7B PEAK ON $1.4B RAISED",
+    "source": "@deedydas",
+    "url": "https://x.com/deedydas/status/2084556888671478237"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-04 08:51:44 UTC",
+    "headline": "COUNTERPOINT Q2: SK HYNIX DRAM SHARE JUST 1PT AHEAD OF MICRON AS HBM3E PRICES FELL IN RENEGOTIATION",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2084505776161431829"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-04 08:51:44 UTC",
+    "headline": "QWEN3.8-MAX ENTERS FRONTEND CODE ARENA AT 1,668 \u2014 ONE POINT OFF CLAUDE OPUS 5 HIGH AT 76% LOWER OUTPUT PRICE",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2084474413987283251"
   }
 ]
