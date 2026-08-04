@@ -1,0 +1,14 @@
+AI News - 2026-08-04
+
+TOP STORIES:
+• Alibaba launches Qwen3.8-Max, a 2.4T-parameter open-weight model aimed at OpenAI and Anthropic; weights due next week
+• Palantir posts $1.935B Q2 revenue (+93% YoY); CEO Alex Karp calls the AI industry "Marxist"
+• White House reviews completed voluntary AI testing framework with OpenAI, Anthropic, Google
+• Horizon3.ai raises $250M Series E at $2B+ valuation for autonomous AI penetration testing
+
+KEY NUMBERS:
+• Qwen3.8-Max: 2.4T total / ~95B active params, 1M context, $2/$6 per Mtok
+• Palantir: $1.935B revenue (+93% YoY), ~$1.07B net income
+• Horizon3.ai: $250M raised, $2B+ valuation (up from $650M a year ago)
+
+Full report on GitHub.
