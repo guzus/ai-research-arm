@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-04 08:51:44 UTC
+
+CYCLE: OpenAI counter-files with Apple's own emails; memory scarcity reshapes both NVIDIA's roadmap and the PC supply chain.
+
+TOP STORIES:
+• OpenAI answers Apple's trade-secret suit with emails showing Apple staff still asking a departed engineer for internal files [✓]
+• TrendForce confirms NVIDIA is re-evaluating Rubin Ultra's HBM, but says I/O speed - not more GPUs - is the goal [✓]
+• Nikkei: HP, ASUS and Acer begin buying CXMT DRAM - at no price discount to Samsung [⚠]
+• Airtable sells to Bending Spoons for $1.285B, ~10x below its $11.7B peak mark [✓]
+
+WATCH: Whether HBM4e clears qualification on schedule - TrendForce makes it the determinant of Rubin Ultra's final memory spec.
+
+Full update on GitHub.
