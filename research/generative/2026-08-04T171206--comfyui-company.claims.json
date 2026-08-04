@@ -1,0 +1,559 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Comfy Org announced a $30 million financing at a $500 million valuation on 2026-04-24, led by Craft, bringing total funding to $47 million.",
+      "type": "metric",
+      "source_urls": [
+        "https://blog.comfy.org/p/comfyui-raises-30m-to-scale-open",
+        "https://techcrunch.com/2026/04/24/comfyui-hits-500m-valuation-as-creators-seek-more-control-over-ai-generated-media/"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-04-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Comfy Org's own blog states total funding of $47 million while its same-day GlobeNewswire press release states $48 million.",
+      "type": "comparison",
+      "source_urls": [
+        "https://blog.comfy.org/p/comfyui-raises-30m-to-scale-open",
+        "https://www.globenewswire.com/news-release/2026/04/24/3281014/0/en/comfyui-raises-30m-at-500m-valuation-to-scale-open-source-ai-for-creative-production.html"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-04-24",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c3",
+      "claim": "Comfy Org disclosed $17 million in funding on 2025-09-16 from Pace Capital, Chemistry, Abstract Ventures and others, which reconciles with the later $47 million cumulative total.",
+      "type": "event",
+      "source_urls": ["https://blog.comfy.org/p/comfy-raises-17m-funding"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-09-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Comfy Org has never disclosed revenue, ARR, or a paying-customer count in any first-party document, and Sacra's April 2026 equity research on the company contains no revenue estimate.",
+      "type": "market-structure",
+      "source_urls": [
+        "https://blog.comfy.org/p/comfyui-raises-30m-to-scale-open",
+        "https://sacra.com/c/comfyui/"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c5",
+      "claim": "The ComfyUI repository's first commit is the root commit 220afe3, the repo was created on GitHub on 2023-01-17, and the creator states he began coding on 2023-01-01 and released on 2023-01-16.",
+      "type": "event",
+      "source_urls": [
+        "https://api.github.com/repos/Comfy-Org/ComfyUI",
+        "https://www.latent.space/p/comfyui"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2023-01-17",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c6",
+      "claim": "Comfy Org's funding announcement identifies the pseudonymous ComfyUI creator comfyanonymous as Yannik Marek and describes him as cofounder, not CEO; Yoland Yan is co-founder and CEO.",
+      "type": "definition",
+      "source_urls": [
+        "https://blog.comfy.org/p/comfyui-raises-30m-to-scale-open",
+        "https://www.vp-land.com/p/comfyui-s-ceo-on-control-adoption-and-why-the-tool-won-t-be-acquired"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-04-24",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "The commercial entity is Comfy Organization, Inc., a Delaware corporation headquartered at 201 Spear Street, San Francisco, legally distinct from the GPL-3.0 open-source project.",
+      "type": "regulatory",
+      "source_urls": ["https://www.comfy.org/terms-of-service"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-05-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "ComfyUI core, ComfyUI-Manager, comfy-cli, the frontend and Desktop are all licensed GPL-3.0, while Comfy Cloud, the credits service and registry hosting are proprietary.",
+      "type": "technical",
+      "source_urls": ["https://api.github.com/repos/Comfy-Org/ComfyUI"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "As of 2026-08-05 the ComfyUI repository has 123,602 stars and 14,603 forks and was last pushed 2026-08-04.",
+      "type": "metric",
+      "source_urls": ["https://api.github.com/repos/Comfy-Org/ComfyUI"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "AUTOMATIC1111's stable-diffusion-webui has 164,387 GitHub stars, more than ComfyUI, but its master branch has received no commit since 2024-07-27.",
+      "type": "comparison",
+      "source_urls": [
+        "https://api.github.com/repos/AUTOMATIC1111/stable-diffusion-webui",
+        "https://github.com/AUTOMATIC1111/stable-diffusion-webui/commits/master"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "Comfy Org claims 4 million users, 60,000+ community-built nodes and 150,000+ daily downloads, none of which is independently verifiable and none of which carries a stated measurement method.",
+      "type": "metric",
+      "source_urls": ["https://blog.comfy.org/p/comfyui-raises-30m-to-scale-open"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-04-24",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c12",
+      "claim": "Comfy Org's own press release subheadline says 50K daily downloads while its body says 150,000+ daily downloads, a threefold internal contradiction in one document.",
+      "type": "comparison",
+      "source_urls": [
+        "https://www.globenewswire.com/news-release/2026/04/24/3281014/0/en/comfyui-raises-30m-at-500m-valuation-to-scale-open-source-ai-for-creative-production.html"
+      ],
+      "source_tiers": ["primary"],
+      "as_of": "2026-04-24",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c13",
+      "claim": "The official Comfy Registry API reports 4,993 published node packs as of 2026-08-05, against the company's advertised 60,000+ nodes, because the two figures count different objects.",
+      "type": "metric",
+      "source_urls": ["https://api.comfy.org/nodes"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c14",
+      "claim": "Comfy Cloud publishes tiers at $20, $35, $100 and $700 per month with 4,200 / 7,400 / 21,100 / 147,700 monthly credits respectively, billing only active GPU time.",
+      "type": "metric",
+      "source_urls": ["https://comfy.org/cloud/pricing/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c15",
+      "claim": "Comfy Org's Partner Node credit prices reproduce the underlying model providers' public list prices, implying no visible markup on API calls.",
+      "type": "market-structure",
+      "source_urls": ["https://docs.comfy.org/tutorials/partner-nodes/pricing"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c16",
+      "claim": "Comfy Org's Enterprise offering advertises bring-your-own API keys so customers use their existing model-provider contracts, which removes API-node take rate on the highest-volume accounts.",
+      "type": "market-structure",
+      "source_urls": ["https://comfy.org/cloud/enterprise/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "Comfy Org's enterprise page displays eleven company logos including Apple, Netflix and Ubisoft with no accompanying text asserting any customer, partner or payment relationship.",
+      "type": "market-structure",
+      "source_urls": ["https://comfy.org/cloud/enterprise/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Netflix job postings for its Inkubator unit name ComfyUI in both qualifications and responsibilities, the strongest independent evidence behind any logo on the wall.",
+      "type": "event",
+      "source_urls": [
+        "https://explore.jobs.netflix.net/careers/job/790314754913-technical-director-inkubator-los-angeles-california-united-states-of-america"
+      ],
+      "source_tiers": ["primary"],
+      "as_of": "2026-03-09",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "Ubisoft La Forge published ComfyUI custom nodes for its CHORD material-estimation model under a research-only, commercial-use-prohibited license, and its own blog says results are not production-ready.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://github.com/ubisoft/ComfyUI-Chord",
+        "https://www.ubisoft.com/en-us/studio/laforge/news/1i3YOvQX2iArLlScBPqBZs/generative-base-material-an-opensource-prototype-for-pbr-material-estimation-debuting-at-siggraph-asia-2025"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-12-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "Black Forest Labs' FLUX.1 launch post advertised day-1 ComfyUI integration, the earliest first-party model-lab endorsement of ComfyUI as a launch surface.",
+      "type": "event",
+      "source_urls": ["https://bfl.ai/blog/24-08-01-bfl"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "Alibaba's Qwen-Image repository credits Diffusers with support since day 0 and logs ComfyUI native support as a separate later changelog entry.",
+      "type": "comparison",
+      "source_urls": ["https://github.com/QwenLM/Qwen-Image"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-08-05",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "For MiniMax H3, Comfy Org itself pruned roughly 40% of model parameters into a lookup table, cutting memory from 123.6 GB to 42.5 GB, rather than receiving an optimized build from the lab.",
+      "type": "technical",
+      "source_urls": ["https://blog.comfy.org/p/minimax-h3-day-0-support-in-comfyui"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "ComfyUI added a Contributor License Agreement on 2026-07-06 whose PR-comment template names enabling a future relicense under a more permissive license as its most important benefit.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://raw.githubusercontent.com/Comfy-Org/ComfyUI/master/.github/workflows/cla.yml",
+        "https://raw.githubusercontent.com/Comfy-Org/comfy-cla/main/comfyui_icla.md"
+      ],
+      "source_tiers": ["primary", "legal"],
+      "as_of": "2026-07-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "142 contributors signed the ComfyUI CLA between 2026-06-22 and 2026-08-04, a small fraction of the project's historical contributor base.",
+      "type": "metric",
+      "source_urls": ["https://raw.githubusercontent.com/Comfy-Org/comfy-cla/main/signatures/cla.json"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-04",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c25",
+      "claim": "Comfy Org launched Comfy MCP on 2026-06-29, stating that everything is now in natural language with no nodes and no node graphs if the user does not want them.",
+      "type": "event",
+      "source_urls": ["https://blog.comfy.org/p/comfy-mcp-turn-your-agent-into-a"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "Comfy Org launched App Mode on 2026-03-10, in which the node graph disappears and is replaced by a purpose-built interface requiring no node-graph experience.",
+      "type": "event",
+      "source_urls": ["https://blog.comfy.org/p/from-workflow-to-app-introducing"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-03-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "A malicious ComfyUI custom node, ComfyUI_LLMVISION, exfiltrated browser credentials via trojanized OpenAI and Anthropic Python wheels declared in requirements.txt, so the node's own source code was clean.",
+      "type": "technical",
+      "source_urls": [
+        "https://www.sentinelone.com/labs/nullbulge-threat-actor-masquerades-as-hacktivist-group-rebelling-against-ai/"
+      ],
+      "source_tiers": ["primary"],
+      "as_of": "2024-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "Comfy Org's January 2025 security update lists custom wheels, binaries and git Python dependencies as open questions its registry scanning does not resolve, which is the exact vector the LLMVISION attack used.",
+      "type": "technical",
+      "source_urls": ["https://blog.comfy.org/p/comfyui-2025-jan-security-update"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-01-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "Censys reported in April 2026 that a botnet was mass-exploiting over 1,000 internet-exposed ComfyUI instances by abusing legitimate custom nodes whose advertised feature is executing arbitrary Python.",
+      "type": "event",
+      "source_urls": ["https://censys.com/blog/comfyui-servers-cryptomining-proxy-botnet/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-04-06",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c30",
+      "claim": "CVE-2025-67303 allowed unauthenticated remote code execution against default ComfyUI-Manager installations and was fixed only in Manager v3.38 plus core v0.3.76.",
+      "type": "technical",
+      "source_urls": ["https://xlab.tencent.com/en/2026/01/06/xlab-26-001/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01-06",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "The US Department of Justice announced on 2025-05-01 that Ryan Mitchell Kramer agreed to plead guilty to two counts over a program purporting to create AI-generated art that gave him access to victims' computers.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://www.justice.gov/usao-cdca/pr/santa-clarita-man-agrees-plead-guilty-hacking-disney-employees-computer-downloading"
+      ],
+      "source_tiers": ["legal"],
+      "as_of": "2025-05-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "GitLab, the closest public open-core benchmark, trades at roughly 6.1x trailing revenue with a $6.14B market cap on $1.00B TTM revenue.",
+      "type": "metric",
+      "source_urls": ["https://stockanalysis.com/stocks/gtlb/"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c33",
+      "claim": "IBM acquired HashiCorp at a $6.4B enterprise value against $583.1M of fiscal-2024 revenue, roughly an 11x revenue multiple for the canonical open-core exit.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1720671/000162828024008867/hcp-q4fy24xex991.htm",
+        "https://newsroom.ibm.com/2024-04-24-IBM-to-Acquire-HashiCorp-Inc-Creating-a-Comprehensive-End-to-End-Hybrid-Cloud-Platform"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2024-04-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c34",
+      "claim": "Hugging Face has not repriced since its $4.5B August 2023 Series D and reportedly declined a $500M Nvidia investment at a $7B valuation in late 2025.",
+      "type": "event",
+      "source_urls": [
+        "https://oodaloop.com/briefs/technology/why-ai-start-up-hugging-face-turned-down-a-500mn-nvidia-deal/"
+      ],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-12-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c35",
+      "claim": "Docker, the closest structural comparable as a local-first open-core developer tool, was last valued at $2.1B in March 2022 and has not repriced in over four years.",
+      "type": "metric",
+      "source_urls": ["https://sacra.com/c/docker/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-04",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c36",
+      "claim": "Adobe trades at roughly 4.0x trailing revenue with its market cap down about 32%, while Figma trades at roughly 12.2x with its market cap down about 76%.",
+      "type": "metric",
+      "source_urls": [
+        "https://stockanalysis.com/stocks/adbe/",
+        "https://stockanalysis.com/stocks/fig/"
+      ],
+      "source_tiers": ["market-data", "market-data"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c37",
+      "claim": "Alibaba Cloud publishes official one-click ComfyUI deployment on both Function Compute and PAI-EAS, monetizing ComfyUI compute directly with no revenue accruing to Comfy Org.",
+      "type": "market-structure",
+      "source_urls": ["https://help.aliyun.com/zh/functioncompute/fc/quick-start-comfyui"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c38",
+      "claim": "LiblibAI raised a $130M Series B in October 2025 co-led by Sequoia China and CMC Capital on a reported 25 million registered users, running ComfyUI as its hosted online workflow engine.",
+      "type": "event",
+      "source_urls": ["https://finance.sina.com.cn/stock/t/2025-10-23/doc-infuvrat2626622.shtml"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-10-23",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c39",
+      "claim": "Replicate executes arbitrary ComfyUI workflows submitted as raw API-format JSON, demonstrating that the workflow serialization format itself confers no defensibility.",
+      "type": "technical",
+      "source_urls": ["https://replicate.com/docs/guides/extend/comfyui"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c40",
+      "claim": "Comfy Org's Terms of Service cap total liability at the greater of $1,000 or six months of fees, and require the customer to defend and indemnify Comfy Organization, Inc.",
+      "type": "regulatory",
+      "source_urls": ["https://www.comfy.org/terms-of-service"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-05-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c41",
+      "claim": "The FLUX.1 [dev] license version 1.1.1 permits commercial use of outputs in section 2(d) while conditioning the entire grant on receiving no direct or indirect payment in section 1(c).",
+      "type": "regulatory",
+      "source_urls": [
+        "https://raw.githubusercontent.com/black-forest-labs/flux/main/model_licenses/LICENSE-FLUX1-dev"
+      ],
+      "source_tiers": ["legal"],
+      "as_of": "2025-06-26",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c42",
+      "claim": "Comfy Cloud markets that every one of its 900+ pre-installed models is cleared for commercial use with no license ambiguity, a representation absent from the governing Terms of Service.",
+      "type": "market-structure",
+      "source_urls": ["https://comfy.org/cloud", "https://www.comfy.org/terms-of-service"],
+      "source_tiers": ["primary", "legal"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c43",
+      "claim": "EU AI Act Article 50 transparency obligations apply from 2026-08-02, and deployers cannot discharge their disclosure duty by relying on a provider's machine-readable marking.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act"
+      ],
+      "source_tiers": ["legal"],
+      "as_of": "2026-08-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c44",
+      "claim": "Google's published third-party licensing policy places GPL v3 in the restricted category, barring it from products delivered to outside customers, evidencing real enterprise procurement friction.",
+      "type": "regulatory",
+      "source_urls": ["https://opensource.google/documentation/reference/thirdparty/licenses"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c45",
+      "claim": "Comfy Org's careers page lists thirteen open San Francisco roles including two enterprise sales seats, a Head of Finance and a Lead of Strategic Finance.",
+      "type": "market-structure",
+      "source_urls": ["https://comfy.org/careers/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c46",
+      "claim": "No revenue share, payout or bounty exists for Comfy Registry node-pack authors, and Comfy Cloud preinstalls community node packs on a paid GPU service with no compensation to their authors.",
+      "type": "market-structure",
+      "source_urls": [
+        "https://docs.comfy.org/registry/standards",
+        "https://comfy.org/cloud/supported-nodes/"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c47",
+      "claim": "Comfy Org CEO Yoland Yan told TechCrunch that prompt-only tools get 60 to 80 percent of the way there and that changing the remaining 20 percent means pulling a slot machine.",
+      "type": "quote",
+      "source_urls": [
+        "https://techcrunch.com/2026/04/24/comfyui-hits-500m-valuation-as-creators-seek-more-control-over-ai-generated-media/"
+      ],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-04-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c48",
+      "claim": "ComfyUI's creator described the founding design goal as making a powerful interface that is deliberately not easy to use, against the prevailing trend toward simplified UIs.",
+      "type": "quote",
+      "source_urls": ["https://www.latent.space/p/comfyui"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-01-04",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c49",
+      "claim": "ComfyUI's execution engine implements structural-signature-keyed result caching with multiple eviction policies and claims to run large models on GPUs with as little as 1GB of VRAM through offloading.",
+      "type": "technical",
+      "source_urls": [
+        "https://raw.githubusercontent.com/comfyanonymous/ComfyUI/master/comfy_execution/caching.py",
+        "https://raw.githubusercontent.com/comfyanonymous/ComfyUI/master/README.md"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c50",
+      "claim": "Figma acquired the node-based AI media canvas Weavy on 2025-10-30 and relaunched it as Figma Weave, and TechCrunch names Weavy as a ComfyUI rival.",
+      "type": "event",
+      "source_urls": [
+        "https://www.figma.com/blog/welcome-weavy-to-figma/",
+        "https://techcrunch.com/2026/04/24/comfyui-hits-500m-valuation-as-creators-seek-more-control-over-ai-generated-media/"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2025-10-30",
+      "confidence": "high",
+      "risk": "stable"
+    }
+  ]
+}

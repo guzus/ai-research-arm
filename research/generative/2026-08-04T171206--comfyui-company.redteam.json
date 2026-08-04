@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Comfy Org announced $30 million at a $500 million valuation on 2026-04-24, led by Craft, bringing total funding to $47 million — and has NEVER disclosed revenue, ARR, or a paying-customer count in any first-party document.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The Comfy Registry API reports 4,993 published node packs as of 2026-08-05, roughly one-twelfth of the company's advertised \"60,000+ nodes\" — and the company's own same-day press release contradicts its own blog on both total funding ($48M vs $47M) and daily downloads (\"50K\" subheadline vs \"150,000+\" body).",
+      "contradicting_url": "https://api.comfy.org/nodes",
+      "contradicting_quote": "\"total\": 4995",
+      "severity": "low",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "ComfyUI added a Contributor License Agreement on 2026-07-06 whose PR-comment template names enabling a future relicense under a more permissive license as the most important benefit — and Partner Node credit prices reproduce the underlying providers' public list prices, so Comfy Org's visible take rate on API calls is approximately zero.",
+      "contradicting_url": "https://sacra.com/c/comfyui/",
+      "contradicting_quote": "This creates a usage-based revenue stream where ComfyUI takes a margin on API calls",
+      "severity": "medium",
+      "no_contradiction_found": false
+    }
+  ]
+}
