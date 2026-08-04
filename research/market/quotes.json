@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03T22:57:53Z",
+  "generated_at": "2026-08-04T03:56:12Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-08-03T20:00:01Z",
@@ -120,6 +120,18 @@
       "stale": false,
       "symbol": "NASDAQ:NVDA",
       "ticker": "NVDA"
+    },
+    "NASDAQ:PLTR": {
+      "asOf": "2026-08-03T20:00:00Z",
+      "change": 2.59,
+      "changePercent": 2.1047,
+      "currency": "USD",
+      "marketState": null,
+      "price": 125.65,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:PLTR",
+      "ticker": "PLTR"
     },
     "NYSE:BABA": {
       "asOf": "2026-08-03T20:03:39Z",
