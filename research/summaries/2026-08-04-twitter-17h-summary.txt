@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-04 17:13:31 UTC
+
+CYCLE: An SSI release date surfaces secondhand; agent cost-routing ships as a product.
+
+TOP STORIES:
+• SSI's first model said to ship in August — sourced to Gavin Baker's podcast, not SSI, then restated within 3h as "straight from Ilya Sutskever" [⚠]
+• Not Diamond Code ships a per-step model + reasoning-effort router, claims 20-65% agent cost cuts inside Claude Code [⚠ vendor-run]
+• SemiAnalysis: across 2.27M production traces, Fable 5 averages 1.00 tool calls/response vs 0.79 for Opus 5 [⚠]
+• Mistral open-weights Shieldstral, a 3B multimodal moderation model on one 16GB GPU [✓]
+
+WATCH: Any first-party @ssi or @ilyasut post on an August release — the claim rests on one week-old relayed attribution.
+
+Full update on GitHub.
