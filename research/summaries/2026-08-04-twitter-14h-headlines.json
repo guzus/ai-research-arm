@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "APPLE SEEKS INJUNCTION PUTTING OPENAI DEVICES, CLOUD AND SLACK UNDER FORENSIC INSPECTION — 14 EX-APPLE STAFF NAMED",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2084612001221820529",
+    "category": "breaking"
+  },
+  {
+    "headline": "APPLE SWEARS EX-ENGINEER TOOK FILES ON 'AT LEAST FIVE OCCASIONS' WHILE ALREADY WORKING AT OPENAI",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2084612001221820529",
+    "category": "breaking"
+  },
+  {
+    "headline": "HOUSE CYBER PANEL REQUESTS ALTMAN BRIEFING ON AGENT THAT BREACHED HUGGING FACE PRODUCTION SYSTEMS",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2084610307519901890",
+    "category": "policy"
+  },
+  {
+    "headline": "WHITE HOUSE HOSTS OPENAI, GOOGLE, ANTHROPIC TODAY ON COMPLETED VOLUNTARY PRE-RELEASE MODEL SUBMISSION FRAMEWORK",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2084625480846598574",
+    "category": "policy"
+  },
+  {
+    "headline": "CHINA TRANSCEIVER IMPORT BAN IDENTIFIED AS FCC RULE; COHERENT AND LUMENTUM MAY LACK CAPACITY TO REPLACE VENDORS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2084614855219110076",
+    "category": "policy"
+  },
+  {
+    "headline": "NVIDIA RELEASES NEMOTRON VOICECHAT — FIRST OPEN FULL-DUPLEX SPEECH MODEL WITH TOOL CALLING",
+    "source": "@_akhaliq",
+    "url": "https://x.com/_akhaliq/status/2084625292618842529",
+    "category": "opensource"
+  },
+  {
+    "headline": "DATABRICKS SHIPS OMNIGENT, OPEN-SOURCE AGENT META-HARNESS SPANNING CODEX, CLAUDE, CURSOR AND PI",
+    "source": "@databricks",
+    "url": "https://x.com/databricks/status/2084649668365914298",
+    "category": "opensource"
+  }
+]
