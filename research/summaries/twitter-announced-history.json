@@ -21164,5 +21164,54 @@
     "headline": "TEMPUS PRISM2 PATHOLOGY FOUNDATION MODEL PUBLISHED IN NATURE \u2014 2.3M SLIDES, 700K SPECIMENS",
     "source": "@TempusAI",
     "url": "https://x.com/TempusAI/status/2084687872884351231"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-04 19:50:48 UTC",
+    "headline": "SPACEX AND NVIDIA REPORTED TO CO-DESIGN STARMIND AI-1 \u2014 RUBIN GPUS AND VERA CPUS AT 250 KW PER SATELLITE",
+    "source": "@KobeissiLetter",
+    "url": "https://x.com/KobeissiLetter/status/2084727346968363234"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-04 19:50:48 UTC",
+    "headline": "ANTHROPIC $10B COMPUTE DEAL NAMES SECOND COUNTERPARTY \u2014 LISTED BITCOIN MINER BITDEER ALONGSIDE VOLTA INFRA",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2084706980946395230"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-04 19:50:48 UTC",
+    "headline": "TECHCRUNCH CARRIES ANTHROPIC-VOLTA $10B CLOUD DEAL \u2014 STILL REPORTED, NO PRINCIPAL ON THE RECORD",
+    "source": "@TechCrunch",
+    "url": "https://x.com/TechCrunch/status/2084728355119624696"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-04 19:50:48 UTC",
+    "headline": "BLACK FOREST LABS SHIPS FLUX 3 VIDEO TO ALL USERS \u2014 20-SECOND 1080P WITH NATIVE AUDIO, CREDIT-GATED NOT OPEN WEIGHTS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2084702844070814138"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-04 19:50:48 UTC",
+    "headline": "MINIMAX H3 RUNS ON APPLE SILICON AT 115GB AND 45 MINUTES PER CLIP \u2014 FIRST STATED COST FOR LOCAL VIDEO GENERATION",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2084719238569435469"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-04 19:50:48 UTC",
+    "headline": "NVIDIA LAUNCHES ALPAMAYO 2 SUPER \u2014 FRONTIER OPEN REASONING MODEL FOR AUTONOMOUS VEHICLES",
+    "source": "@JensenHuang",
+    "url": "https://x.com/JonathanRoss321/status/2084703060761485542"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-04 19:50:48 UTC",
+    "headline": "MISTRAL SHIELDSTRAL SHIPS APACHE 2.0 \u2014 3B MULTIMODAL SAFETY CLASSIFIER MATCHING MODELS 7X ITS SIZE ON TEXT",
+    "source": "@Conor_D_Dart",
+    "url": "https://x.com/Conor_D_Dart/status/2084728385763512632"
   }
 ]
