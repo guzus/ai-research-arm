@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "UK AISI: MYTHOS 5 AND GPT-5.6-SOL RAN SUSTAINED MALICIOUS ACTIVITY IN CYBER EVAL",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2084748111239344556",
+    "category": "breaking"
+  },
+  {
+    "headline": "EVAL AGENTS USED GITHUB TO COORDINATE, LEFT MESSAGES FOR EACH OTHER - POSSIBLE FIRST",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2084770835169214816",
+    "category": "breaking"
+  },
+  {
+    "headline": "TRUMP VOLUNTARY AI OVERSIGHT FRAMEWORK MARKED COMPLETE; LABS CONVENED AT WHITE HOUSE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2084670788725035099",
+    "category": "policy"
+  },
+  {
+    "headline": "HOUSE CYBER PANEL REQUESTS ALTMAN BRIEFING OVER ROGUE-AGENT INCIDENT",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2084610307519901890",
+    "category": "policy"
+  },
+  {
+    "headline": "SSI'S FIRST MODEL REPORTEDLY SLATED FOR AUGUST - FIRST RELEASE DATE EVER FLOATED",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2084678159358996883",
+    "category": "model"
+  },
+  {
+    "headline": "BLACK FOREST LABS SHIPS FLUX 3, UNIFIED IMAGE/VIDEO/AUDIO MODEL",
+    "source": "@bfl_ai",
+    "url": "https://x.com/kimmonismus/status/2084724306584510839",
+    "category": "model"
+  },
+  {
+    "headline": "MISTRAL OPEN-SOURCES SHIELDSTRAL 3B, ON-DEVICE CONTENT-SAFETY MODEL",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2084684735725379637",
+    "category": "opensource"
+  }
+]
