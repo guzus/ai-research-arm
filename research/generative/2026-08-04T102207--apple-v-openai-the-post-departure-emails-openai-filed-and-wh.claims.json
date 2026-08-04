@@ -1,0 +1,404 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "OpenAI's response to Apple's trade-secret suit was published as a corporate blog post at openai.com/index/apple-is-getting-this-wrong/, not filed on the court docket.",
+      "type": "event",
+      "source_urls": ["https://openai.com/index/apple-is-getting-this-wrong/", "https://www.courtlistener.com/docket/73602437/apple-inc-v-liu/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "As of docket entry 54 on 2026-08-04, no defendant in Apple Inc. v. Liu had filed an answer, motion to dismiss, or opposition; oppositions to the preliminary-injunction motion are due 2026-08-17.",
+      "type": "event",
+      "source_urls": ["https://www.courtlistener.com/docket/73602437/apple-inc-v-liu/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c3",
+      "claim": "The case is captioned Apple Inc. v. Liu, No. 5:26-cv-07078 (N.D. Cal.), filed 2026-07-10, reassigned 2026-07-23 to District Judge Edward J. Davila, with discovery referred to Magistrate Judge Nathanael M. Cousins.",
+      "type": "regulatory",
+      "source_urls": ["https://www.courtlistener.com/docket/73602437/apple-inc-v-liu/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Apple's complaint pleads six counts: four DTSA misappropriation counts (one each against Liu, Tan, the OpenAI entities and io Products) plus two breach-of-Intellectual-Property-Agreement counts. It pleads no CUTSA count, no UCL count, and no CFAA count.",
+      "type": "regulatory",
+      "source_urls": ["https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Apple's complaint at paragraph 47 alleges that Apple 'disables and prohibits access to its network storage upon an employee's departure.'",
+      "type": "quote",
+      "source_urls": ["https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Apple's complaint at paragraph 57 and footnote 1 concedes that Chang Liu could still access Apple's network repository weeks after departure because of a 'then-unknown authentication vulnerability,' which Apple 'quickly fixed' upon discovery.",
+      "type": "quote",
+      "source_urls": ["https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Chang Liu's last day at Apple was 2026-01-22, a date both Apple's complaint and OpenAI's published response agree on.",
+      "type": "event",
+      "source_urls": ["https://openai.com/index/apple-is-getting-this-wrong/", "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-01-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "The Roffman declaration states that 'the deprovisioning scripts that ran in January 2026 did not properly deprovision (revoke) Mr. Liu's access.'",
+      "type": "quote",
+      "source_urls": ["https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.45.0.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "The Roffman declaration states that browser logins to Apple repositories by Liu 'would have been blocked as of January 24, 2026' — two days after his departure — while third-party cloud repository access remained live.",
+      "type": "metric",
+      "source_urls": ["https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.45.0.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Apple's forensic declaration alleges Liu performed over 240 downloads of at least 37 unique Apple files from third-party cloud storage across five sessions dated 2026-02-08, 02-10, 03-07, 03-11 and 04-27.",
+      "type": "metric",
+      "source_urls": ["https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.45.0.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c11",
+      "claim": "Apple's residual cloud-repository access for Liu therefore spanned 2026-01-22 to at least 2026-04-27, a window of 95 days, versus 2 days for the AppleConnect browser block.",
+      "type": "comparison",
+      "source_urls": ["https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.45.0.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c12",
+      "claim": "DTSA 18 U.S.C. § 1839(3)(A) requires that 'the owner thereof has taken reasonable measures to keep such information secret' as part of the definition of a trade secret.",
+      "type": "regulatory",
+      "source_urls": ["https://www.law.cornell.edu/uscode/text/18/1839"],
+      "source_tiers": ["legal"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "In Rockwell Graphic Systems v. DEV Industries, 925 F.2d 174 (7th Cir. 1991), Judge Posner wrote that 'perfect security is not optimum security' and that 'only in an extreme case can what is a reasonable precaution be determined on a motion for summary judgment.'",
+      "type": "quote",
+      "source_urls": ["https://law.resource.org/pub/us/case/reporter/F2/925/925.F2d.174.90-1499.html"],
+      "source_tiers": ["legal"],
+      "as_of": "1991-02-11",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "In Learning Curve Toys v. PlayWood Toys, 342 F.3d 714 (7th Cir. 2003), the court held the reasonableness standard 'does not require perfection' and that sufficiency of secrecy measures 'ordinarily is a question of fact for the jury.'",
+      "type": "quote",
+      "source_urls": ["https://law.resource.org/pub/us/case/reporter/F3/342/342.F3d.714.02-1916.html"],
+      "source_tiers": ["legal"],
+      "as_of": "2003-08-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "In InteliClear, LLC v. ETC Global Holdings, 978 F.3d 653 (9th Cir. 2020), the Ninth Circuit held that 'Confidentiality provisions constitute reasonable steps to maintain secrecy' and that such efforts are 'adequate to preclude judgment as a matter of law.'",
+      "type": "quote",
+      "source_urls": ["https://cdn.ca9.uscourts.gov/datastore/opinions/2020/10/15/19-55862.pdf"],
+      "source_tiers": ["legal"],
+      "as_of": "2020-10-15",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "Yellowfin Yachts v. Barker Boatworks, 898 F.3d 1279 (11th Cir. 2018), affirmed summary judgment against a trade-secret owner that 'effectively abandoned all oversight,' having encouraged personal-device storage and never requested return or deletion at departure.",
+      "type": "quote",
+      "source_urls": ["https://static.case.law/f3d/898/html/1279-01.html"],
+      "source_tiers": ["legal"],
+      "as_of": "2018-08-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "In E.I. duPont deNemours v. Christopher, 431 F.2d 1012 (5th Cir. 1970), the court held that 'Reasonable precautions against predatory eyes we may require, but an impenetrable fortress is an unreasonable requirement.'",
+      "type": "quote",
+      "source_urls": ["https://law.justia.com/cases/federal/appellate-courts/F2/431/1012/140093/"],
+      "source_tiers": ["legal"],
+      "as_of": "1970-07-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Restatement (Third) of Unfair Competition § 43 comment c makes reasonableness relational to the defendant's method, weighing 'the foreseeability of the conduct through which the secret was acquired' and the cost of precautions against that acquisition.",
+      "type": "definition",
+      "source_urls": ["https://www.wipo.int/edocs/lexdocs/laws/en/us/us216en.pdf"],
+      "source_tiers": ["legal"],
+      "as_of": "1995",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "Apple retained James Pooley, former WIPO Deputy Director General, whose declaration (Dkt. 46) offers a single opinion confined to the reasonable-measures element and states that 'Reasonableness does not demand perfection.'",
+      "type": "event",
+      "source_urls": ["https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.46.0.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "Apple moved for a preliminary injunction on 2026-08-03, 24 days after filing, supported by nine declarations; the hearing is set for 2026-10-01 before Judge Davila.",
+      "type": "event",
+      "source_urls": ["https://www.courtlistener.com/docket/73602437/apple-inc-v-liu/", "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.38.0.pdf"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c21",
+      "claim": "Apple's preliminary-injunction brief expressly disclaims restraining employment, stating 'Apple does not seek to restrain employee mobility or prevent Defendants from competing.'",
+      "type": "quote",
+      "source_urls": ["https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.38.0.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "DTSA 18 U.S.C. § 1836(b)(3)(A)(i) forbids an injunction that would 'prevent a person from entering into an employment relationship' and requires conditions to rest on evidence of threatened misappropriation 'and not merely on the information the person knows.'",
+      "type": "regulatory",
+      "source_urls": ["https://www.law.cornell.edu/uscode/text/18/1836"],
+      "source_tiers": ["legal"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "In Quintara Biosciences v. Ruifeng Biztech, 149 F.4th 1081 (9th Cir. 2025), the Ninth Circuit held that Cal. Code Civ. Proc. § 2019.210's particularity rule 'does not control a federal trade-secret claim,' expressly reserving whether it binds federal courts on CUTSA claims.",
+      "type": "quote",
+      "source_urls": ["https://cdn.ca9.uscourts.gov/datastore/opinions/2025/08/12/23-16093.pdf"],
+      "source_tiers": ["legal"],
+      "as_of": "2025-08-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "In Hooked Media Group v. Apple Inc. (Cal. Ct. App. 2020), Apple won as defendant on the holding that 'no legal wrong is committed when a company solicits and hires away its competitor's employees.'",
+      "type": "quote",
+      "source_urls": ["https://law.justia.com/cases/california/court-of-appeal/2020/h044395.html"],
+      "source_tiers": ["legal"],
+      "as_of": "2020-09-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "Apple v. Rivos, the structurally closest prior case, ran 22.7 months from filing on 2022-04-29 to a stipulated dismissal on 2024-03-19, with each side bearing its own costs and no adjudicated injunction or damages.",
+      "type": "event",
+      "source_urls": ["https://www.courtlistener.com/docket/63277771/apple-inc-v-rivos-inc/", "https://fingfx.thomsonreuters.com/gfx/legaldocs/znpnkxmnavl/APPLE%20RIVOS%20LAWSUIT%20settlement.pdf"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2024-03-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "Across 2023-2025, 65% of federal trade-secret cases ended in likely settlement, 15% in a claimant win, 4% in a defendant win and 15% procedurally; in 2025, only 36 of 1,323 terminations (2.7%) reached trial.",
+      "type": "metric",
+      "source_urls": ["https://foleyhoag.com/news-and-insights/publications/alerts-and-updates/2026/may/the-dtsa-turns-ten-what-a-decade-of-litigation-tells-us/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "Federal trade-secret filings hit an all-time high of 1,552 in 2025, up roughly 20% over 2024, with complaints referencing artificial intelligence rising from 42 in 2024 to 105 in 2025.",
+      "type": "metric",
+      "source_urls": ["https://media.crai.com/wp-content/uploads/2026/02/24150746/Trade-Secret-Lit-Watch-Feb-2026.pdf", "https://www.lexisnexis.com/community/pressroom/b/news/posts/lex-machina-2026-trade-secret-litigation-report-federal-trade-secret-filings-hit-an-all-time-high-in-2025"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-02-24",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "A YouGov-fielded survey of 213 senior IT professionals found 49% of enterprises lost at least 5% of technology assets to departures, 27% lost more than 10%, and 42% experienced unauthorized post-departure SaaS or cloud access.",
+      "type": "metric",
+      "source_urls": ["https://salestechstar.com/sales-engagement/oomnitza-survey-reveals-over-a-quarter-of-enterprises-lose-more-than-10-of-their-technology-assets-when-offboarding-workers/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2022-11-16",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c29",
+      "claim": "A 2017 OneLogin survey of 500 US IT decision-makers found 25% take more than a week to deprovision a departing employee and 48% were aware of former employees with live corporate access.",
+      "type": "metric",
+      "source_urls": ["https://www.prweb.com/releases/new_research_from_onelogin_finds_more_than_half_of_ex_employees_still_have_access_to_corporate_applications/prweb14502632.htm"],
+      "source_tiers": ["secondary"],
+      "as_of": "2017-07-13",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c30",
+      "claim": "A 2023 Nudge Security survey of 375 US IT professionals found 70% had experienced the impacts of ineffective offboarding, while 79% nonetheless felt confident in their offboarding process.",
+      "type": "metric",
+      "source_urls": ["https://www.nudgesecurity.com/post/employee-offboarding-by-the-numbers"],
+      "source_tiers": ["secondary"],
+      "as_of": "2023-06-14",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c31",
+      "claim": "Peer-reviewed qualitative research presented at USENIX SOUPS 2025, based on 15 practitioner interviews, found offboarding routinely decoupled from the actual termination date, with accounts remaining active afterward.",
+      "type": "technical",
+      "source_urls": ["https://www.usenix.org/system/files/soups2025-detsika.pdf"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-08-12",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "The 2026 Ponemon/DTEX Cost of Insider Risks report found insider incidents take an average of 67 days to contain, down from 86 days in 2023, at an average annual cost of $19.5 million per affected organization.",
+      "type": "metric",
+      "source_urls": ["https://ponemon.dtex.ai/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-02-24",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c33",
+      "claim": "Apple's complaint alleges that over four hundred former Apple employees now work at OpenAI.",
+      "type": "metric",
+      "source_urls": ["https://9to5mac.com/2026/07/13/apple-lawsuit-reveals-how-many-former-employees-now-work-at-openai/", "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-07-10",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c34",
+      "claim": "OpenAI closed its acquisition of Jony Ive's hardware startup io Products on 2025-07-09 for approximately $6.5 billion in an all-stock transaction.",
+      "type": "metric",
+      "source_urls": ["https://www.bloomberg.com/news/articles/2025-07-09/openai-closes-6-5-billion-deal-to-buy-jony-ive-s-device-startup"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-07-09",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c35",
+      "claim": "Polymarket's implied probability of an OpenAI IPO by 2026-12-31 fell from 23.5% to 18.5% across the day Apple filed suit, and sat flat at 17.5% across 2026-08-02 through 2026-08-04 spanning OpenAI's public rebuttal.",
+      "type": "forecast",
+      "source_urls": ["https://gamma-api.polymarket.com/events?slug=openai-ipo-by"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-04",
+      "confidence": "low",
+      "risk": "volatile"
+    },
+    {
+      "id": "c36",
+      "claim": "Apple sent litigation-preservation letters to roughly 40 former employees now at OpenAI who are not named defendants, reported on 2026-07-17.",
+      "type": "event",
+      "source_urls": ["https://www.macrumors.com/2026/07/17/apple-sends-legal-letters-openai/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-17",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c37",
+      "claim": "OpenAI's published response states that residual file access is 'a common issue with Apple which is caused by them failing to properly manage system access when people leave.'",
+      "type": "quote",
+      "source_urls": ["https://openai.com/index/apple-is-getting-this-wrong/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c38",
+      "claim": "OpenAI's published exhibits are iMessages between Chang Liu and Apple employees dated 2026-01-22 to 2026-02-14, plus a February email chain involving Apple outside counsel Gabriel Gross and OpenAI General Counsel Che Chang — not correspondence from Apple's IT or security organization.",
+      "type": "event",
+      "source_urls": ["https://openai.com/index/apple-is-getting-this-wrong/", "https://9to5mac.com/2026/08/03/openai-rebuts-apple-trade-secrets-allegations-in-new-response-and-evidence/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c39",
+      "claim": "Apple's FY2025 research and development expense was $34.55 billion on total net sales of $416.16 billion, for the fiscal year ended 2025-09-27.",
+      "type": "metric",
+      "source_urls": ["https://stockanalysis.com/stocks/aapl/financials/income-statement/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-09-27",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c40",
+      "claim": "Waymo v. Uber, the canonical big-tech trade-secret case, settled on day five of trial on 2018-02-09 for 0.34% of Uber equity, roughly $245 million in stock, with no admission of misappropriation.",
+      "type": "event",
+      "source_urls": ["https://www.uber.com/it/en/newsroom/uber-waymo-settlement"],
+      "source_tiers": ["primary"],
+      "as_of": "2018-02-09",
+      "confidence": "high",
+      "risk": "stable"
+    }
+  ]
+}
