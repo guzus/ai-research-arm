@@ -3997,7 +3997,6 @@ jobs:
           TG_REQUESTED_BACKEND: ${{ steps.params.outputs.backend }}
           TG_USED_FALLBACK: ${{ steps.effective.outputs.used_fallback }}
           TG_FILE: ${{ steps.outfile.outputs.file }}
-          TG_REPO: ${{ github.repository }}
           GH_RUN_ID: ${{ github.run_id }}
           GH_RUN_ATTEMPT: ${{ github.run_attempt }}
         run: |
@@ -4006,7 +4005,22 @@ jobs:
             echo "Hooker credentials missing — skipping notification"
             exit 0
           fi
-          ARTICLE_URL="https://github.com/${TG_REPO}/blob/main/research/generative/${TG_FILE}"
+          SITE_ORIGIN="${ARA_SITE_ORIGIN:-https://ara.guzus.xyz}"
+          ARTICLE_SLUG=$(jq -r --arg file "$TG_FILE" '
+            map(select(.file == $file)) | last | .slug // empty
+          ' research/generative/index.json)
+          if [ -z "$ARTICLE_SLUG" ]; then
+            stem="${TG_FILE%.html}"
+            if [[ "$stem" == *--* ]]; then
+              ARTICLE_SLUG="${stem#*--}"
+            fi
+          fi
+          if [ -n "$ARTICLE_SLUG" ]; then
+            ARTICLE_URL="${SITE_ORIGIN%/}/research/${ARTICLE_SLUG}"
+          else
+            echo "::warning::Could not resolve article slug for ${TG_FILE}; linking to research index"
+            ARTICLE_URL="${SITE_ORIGIN%/}/research"
+          fi
           BODY=$(printf '📝 Topic: %s\n🤖 Backend: %s' "${TG_TOPIC}" "${TG_BACKEND}")
           if [ "${TG_USED_FALLBACK:-false}" = "true" ]; then
             BODY=$(printf '%s (requested %s; fireworks-fallback)' "$BODY" "${TG_REQUESTED_BACKEND}")
@@ -4021,7 +4035,7 @@ jobs:
               priority: 3,
               tags: ["ara", "generative-research"],
               parse_mode: "HTML",
-              reply_markup: { inline_keyboard: [[{ text: "View on GitHub", url: $url }]] }
+              reply_markup: { inline_keyboard: [[{ text: "Read on ARA", url: $url }]] }
             }')
           curl -fsS --max-time 30 -X POST "${HOOKER_URL%/}/publish/ara-research" \
             -H "Authorization: Bearer ${HOOKER_TOKEN}" \
