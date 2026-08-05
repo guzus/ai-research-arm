@@ -6,13 +6,14 @@ aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Comput
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
 description: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026; sued OpenAI (2026-07-12) over alleged hardware trade-secret theft, escalating to legal letters against dozens of OpenAI employees (2026-07-18).
 created_at: 2026-06-08
-timestamp: 2026-07-18T00:00:00Z
+timestamp: 2026-08-05T00:00:00Z
 market:
   ticker: AAPL
   exchange: NASDAQ
   symbol: NASDAQ:AAPL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
@@ -136,6 +137,28 @@ not announced.
   lawsuit (2026-07-12) to direct legal action against individual OpenAI
   staff, sharpening the IP/talent-poaching framing of the fight over
   OpenAI's rumored "GPT-Live" hardware device (ARA digest 2026-07-18).
+
+- **Moves for a preliminary injunction and forensic inspection of OpenAI —
+  and gets its own emails filed against it (2026-08-05).** Apple escalated
+  again, filing a **28-page memorandum, nine sworn declarations and a request
+  for expedited discovery**, seeking a **preliminary injunction and forensic
+  inspection of [[openai]]'s systems**. The motion names **fourteen former
+  Apple employees now at OpenAI**, including a **24-year Apple VP who is now
+  OpenAI's Chief Hardware Officer**, and alleges engineer **Chang Liu**
+  exploited an authentication bug to take files on "at least five separate
+  occasions" *while already at OpenAI*. Hearing noticed for **1 October before
+  Judge Edward J. Davila**.
+
+  The same day — hours earlier — OpenAI filed a reply attaching **Apple's own
+  post-departure emails to Liu**, appearing to show Apple staff asking him to
+  locate internal files weeks after he left ("Even if you don't work here
+  anymore," the digest's Quote of the Day), and asserting that Apple's outside
+  counsel claimed a phone call that never happened and then apologised. That
+  exhibit is the structurally important one: Apple pleaded this as a **secrecy**
+  case, and secrecy claims are weakened by evidence the plaintiff did not treat
+  the material as secret. It is not a defence to misappropriation — sloppy
+  offboarding never is — but it is now a burden Apple carries regardless of
+  outcome (ARA daily digest 2026-08-05).
 
 ## Open questions
 

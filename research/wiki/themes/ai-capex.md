@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-08-04T00:00:00Z
+timestamp: 2026-08-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
@@ -496,7 +497,60 @@ package cleared its chamber-of-origin crossover.
   numbers, but the first time the board treated the financing question as a
   story (ARA daily digest 2026-08-04).
 
+- **The constraint moves from chips to power and memory (2026-08-05).** Two
+  independent bottlenecks hardened in the same cycle, and neither is silicon
+  supply.
+
+  **Power/permitting.** Texas Governor **Greg Abbott directed the PUCT and
+  ERCOT to audit data centers before granting grid interconnection** — the
+  state that marketed itself as the AI "epicenter" gating the buildout it
+  courted. Three outlets framed it differently (outright halt, audit
+  requirement, or both), so take the mechanism from the state's own order.
+  Separately, **states are moving to strip the data-center sales-tax breaks**
+  they used to attract these facilities, at a cost The Information puts at
+  **several billion dollars per gigawatt** of AI computing. Together they mean
+  the marginal gigawatt is getting slower and more expensive to site in the US
+  — a cost line that shows up years after the capex is committed.
+
+  **Memory.** DigiTimes reports **2027 DRAM and HBM capacity fully booked with
+  buyers filled at only 60–70% of request**; TrendForce independently confirms
+  **[[nvidia]] has been re-evaluating Rubin Ultra's HBM configuration since
+  early Q3 2026 with no final spec chosen**, projecting **2027 HBM bit
+  shipments up 50–60% and still short of demand**. The sharpest tell is
+  Nikkei's: **HP, ASUS and Acer have begun buying CXMT DRAM at no discount to
+  Samsung** — price parity for a Chinese second source is only rational when
+  the incumbents simply cannot supply. See [[micron]] and [[sk-hynix]]; the
+  same scarcity shows up as [[amd]] doubling capex partly "to secure HBM
+  supply."
+- **Two AI-capex quarters, two beat-and-fade tapes (2026-08-05).**
+  **[[amd]]** printed record revenue of **$11.5B (+50% YoY)** with **Data
+  Center $6.7B (+107%)** at 58% of the company, capex **$389M → $808M** — and
+  **fell ~9% after hours** having risen 7% in session. **[[spacex]]** printed
+  **$7.8B (+92%)** with **~$15.8B of its $18.4B capex (~86%) in AI
+  infrastructure** and guidance to **>2 GW of compute by year-end, ~10 GW next
+  year** — up 9.4% in session, **down ~5% after hours**. The published
+  objection to SpaceX generalises to the whole theme: with **$23.5B of
+  first-half capex barely in service**, a positive adjusted-EBITDA AI segment
+  is arithmetically true and economically uninformative until depreciation
+  lands. This is the "beats but closes lower" tell below, now printing on two
+  more names in one day (ARA daily digest 2026-08-05).
+- **A $10B compute contract signed by a months-old counterparty
+  (2026-08-05).** [[anthropic]]'s reported **~$10B agreement with
+  [[volta-infra|Volta Infra]]** — a [[neocloud]] founded by ex-Brookfield
+  executives, renting colocation from listed miner **Bitdeer**, with contracted
+  obligations reportedly backed by a **$1.3B letter of credit** — is the
+  cleanest current specimen of how this cycle finances compute: operating risk
+  in a thin new entity, credit support borrowed from whoever is
+  investment-grade. [[google]] is separately reported to be structuring
+  Anthropic chip and data-center risk **off its own balance sheet** with
+  [[broadcom]], Apollo, Blackstone and Morgan Stanley (dollar figure not
+  recoverable from the source). Neither has a first-party confirmation (ARA
+  daily digest 2026-08-05).
+
 ## Open questions
+- **Does the permitting/power gate bind before the demand question resolves?**
+  Texas gating interconnection and states stripping tax breaks both raise the
+  cost of the *next* gigawatt regardless of whether demand is real.
 - **Demand durability.** Is committed [[neocloud]] backlog genuine end-demand, or
   circular contracting among a handful of capital-rich counterparties?
 - **Cost of capital.** As rates and concentration risk bite, does cheap debt stay

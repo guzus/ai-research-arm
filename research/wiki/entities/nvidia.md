@@ -6,13 +6,14 @@ aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "N
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: The dominant AI accelerator supplier; backing Ilya Sutskever's Safe Superintelligence (~$5B, reported 2026-07-28) and reportedly discussing a ~$250B OpenAI Ohio-datacenter financing backstop, on top of the open-weights Nemotron line.
 created_at: 2026-06-05
-timestamp: 2026-07-29T00:00:00Z
+timestamp: 2026-08-05T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA model ticket — NVIDIA Taiwan smuggling probe", path: research/models/tickets/nvidia-taiwan-smuggling-probe-2026-07.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
@@ -110,6 +111,17 @@ its own **open-weights models** (the Nemotron line) on top of the silicon.
   investigation into chips reaching China around export controls. First
   time Taiwan's government has taken direct action against an NVIDIA
   employee (ARA daily digest 2026-07-29).
+
+- **The second source gets a quarter to point at; HBM becomes the shared
+  constraint (2026-08-05).** [[amd|AMD]] posted **Data Center revenue of $6.7B,
+  up 107% YoY** at 58% of the company with **Helios beginning to ramp** into
+  [[anthropic]]'s 2 GW MI450 commitment — the first quarterly print that makes
+  "credible second source" a number rather than a narrative. In the same cycle
+  **TrendForce reported NVIDIA has been re-evaluating Rubin Ultra's HBM
+  configuration since early Q3 2026 with no final spec chosen**, against 2027
+  HBM bit shipments projected up 50–60% and still short of demand. Memory
+  allocation, not accelerator design, is what both vendors are now scheduling
+  around — see [[ai-capex]] and [[micron]] (ARA daily digest 2026-08-05).
 
 ## Open questions
 

@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-08-03",
-      "timestamp": "2026-08-03T00:00:00Z",
+      "updated_at": "2026-08-05",
+      "timestamp": "2026-08-05T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -68,6 +68,8 @@
         "deepseek",
         "dynamic-workflows",
         "federal-ai-policy",
+        "google",
+        "gpt-5-6",
         "liquid-ai",
         "open-weights",
         "openai",
@@ -137,8 +139,8 @@
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-04",
-      "timestamp": "2026-08-04T00:00:00Z",
+      "updated_at": "2026-08-05",
+      "timestamp": "2026-08-05T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -149,6 +151,7 @@
       "outbound": [
         "alibaba",
         "amazon",
+        "amd",
         "anthropic",
         "artificial-general-engineer",
         "broadcom",
@@ -176,10 +179,12 @@
         "prometheus",
         "sk-hynix",
         "spacex",
+        "volta-infra",
         "xai"
       ],
       "inbound": [
         "amazon",
+        "amd",
         "anthropic",
         "apple",
         "artificial-general-engineer",
@@ -216,6 +221,7 @@
         "remote-labor-index",
         "sk-hynix",
         "spacex",
+        "volta-infra",
         "xai"
       ],
       "images": [
@@ -335,6 +341,55 @@
       }
     },
     {
+      "slug": "amd",
+      "title": "AMD",
+      "type": "entity",
+      "tags": [
+        "semiconductors",
+        "ai-accelerator",
+        "gpu",
+        "earnings",
+        "public-listing"
+      ],
+      "summary": "The credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) on EPYC and Instinct as the Helios rack-scale system began ramping into Anthropic's 2 GW MI450 commitment.",
+      "description": "The credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) on EPYC and Instinct as the Helios rack-scale system began ramping into Anthropic's 2 GW MI450 commitment.",
+      "created_at": "2026-08-05",
+      "updated_at": "2026-08-05",
+      "timestamp": "2026-08-05T00:00:00Z",
+      "file": "entities/amd.md",
+      "aliases": [
+        "AMD",
+        "Advanced Micro Devices",
+        "Lisa Su",
+        "Instinct",
+        "MI450",
+        "Helios",
+        "EPYC"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "micron",
+        "microsoft",
+        "neocloud",
+        "nvidia",
+        "open-weights",
+        "openai",
+        "spacex"
+      ],
+      "inbound": [
+        "ai-capex",
+        "anthropic",
+        "nvidia"
+      ],
+      "market": {
+        "ticker": "AMD",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:AMD",
+        "provider": "yahoo"
+      }
+    },
+    {
       "slug": "anthropic",
       "title": "Anthropic",
       "type": "entity",
@@ -347,8 +402,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-01",
-      "timestamp": "2026-08-01T00:00:00Z",
+      "updated_at": "2026-08-05",
+      "timestamp": "2026-08-05T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -361,6 +416,7 @@
         "ai-capex",
         "alibaba",
         "amazon",
+        "amd",
         "broadcom",
         "california-ai-regulation",
         "claude-fable-5",
@@ -391,6 +447,7 @@
         "salesforce",
         "sk-telecom",
         "spacex",
+        "volta-infra",
         "xai"
       ],
       "inbound": [
@@ -399,6 +456,7 @@
         "ai-capex",
         "alibaba",
         "amazon",
+        "amd",
         "apple",
         "astra",
         "broadcom",
@@ -441,6 +499,7 @@
         "spacex",
         "thinking-machines",
         "verification-bottleneck",
+        "volta-infra",
         "xai"
       ]
     },
@@ -458,8 +517,8 @@
       "summary": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026; sued OpenAI (2026-07-12) over alleged hardware trade-secret theft, escalating to legal letters against dozens of OpenAI employees (2026-07-18).",
       "description": "Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable \"Extensions\" layer — is the marquee AI item at WWDC 2026; sued OpenAI (2026-07-12) over alleged hardware trade-secret theft, escalating to legal letters against dozens of OpenAI employees (2026-07-18).",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-18",
-      "timestamp": "2026-07-18T00:00:00Z",
+      "updated_at": "2026-08-05",
+      "timestamp": "2026-08-05T00:00:00Z",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -1359,8 +1418,8 @@
       "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-08-04",
-      "timestamp": "2026-08-04T00:00:00Z",
+      "updated_at": "2026-08-05",
+      "timestamp": "2026-08-05T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1388,6 +1447,7 @@
         "microsoft",
         "moonshot-kimi-k3",
         "noam-shazeer",
+        "nvidia",
         "open-weights",
         "openai",
         "sk-telecom",
@@ -1727,6 +1787,7 @@
         "nano-banana-2-lite"
       ],
       "inbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
         "california-ai-regulation",
@@ -1734,7 +1795,9 @@
         "federal-ai-policy",
         "gemini-3-5-pro",
         "gemini-3-6-flash",
-        "seedance-2-5"
+        "openai",
+        "seedance-2-5",
+        "volta-infra"
       ],
       "market": {
         "ticker": "GOOGL",
@@ -1783,6 +1846,7 @@
         "zhipu-glm-5-2"
       ],
       "inbound": [
+        "agentic-ai-security",
         "alibaba",
         "anthropic",
         "claude-fable-5",
@@ -2050,7 +2114,8 @@
         "federal-ai-policy",
         "google",
         "open-weights",
-        "openai"
+        "openai",
+        "volta-infra"
       ],
       "market": {
         "ticker": "META",
@@ -2094,7 +2159,9 @@
       ],
       "inbound": [
         "ai-capex",
+        "amd",
         "anthropic",
+        "nvidia",
         "sk-hynix"
       ],
       "market": {
@@ -2148,6 +2215,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "amd",
         "anthropic",
         "deepseek",
         "eu-ai-regulation",
@@ -2539,13 +2607,16 @@
       ],
       "inbound": [
         "ai-capex",
+        "amd",
         "anthropic",
         "coreweave",
         "dell",
         "gemini-3-5-flash",
         "meta",
         "nebius",
-        "nvidia"
+        "nvidia",
+        "spacex",
+        "volta-infra"
       ]
     },
     {
@@ -2600,8 +2671,8 @@
       "summary": "The dominant AI accelerator supplier; backing Ilya Sutskever's Safe Superintelligence (~$5B, reported 2026-07-28) and reportedly discussing a ~$250B OpenAI Ohio-datacenter financing backstop, on top of the open-weights Nemotron line.",
       "description": "The dominant AI accelerator supplier; backing Ilya Sutskever's Safe Superintelligence (~$5B, reported 2026-07-28) and reportedly discussing a ~$250B OpenAI Ohio-datacenter financing backstop, on top of the open-weights Nemotron line.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-07-29",
-      "timestamp": "2026-07-29T00:00:00Z",
+      "updated_at": "2026-08-05",
+      "timestamp": "2026-08-05T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -2617,11 +2688,13 @@
       ],
       "outbound": [
         "ai-capex",
+        "amd",
         "anthropic",
         "broadcom",
         "claude-opus-4-8",
         "coreweave",
         "gemma-4",
+        "micron",
         "microsoft",
         "nebius",
         "neocloud",
@@ -2631,11 +2704,13 @@
       ],
       "inbound": [
         "ai-capex",
+        "amd",
         "anthropic",
         "apple",
         "broadcom",
         "deepseek-v4-flash",
         "etched",
+        "federal-ai-policy",
         "fireworks-ai",
         "gemma-4",
         "gpt-6",
@@ -2727,6 +2802,7 @@
       "inbound": [
         "agentic-ai-security",
         "alibaba",
+        "amd",
         "anthropic",
         "claude-fable-5",
         "claude-sonnet-5",
@@ -2765,8 +2841,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-08-02",
-      "timestamp": "2026-08-02T00:00:00Z",
+      "updated_at": "2026-08-05",
+      "timestamp": "2026-08-05T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -2784,6 +2860,7 @@
         "claude-fable-5",
         "federal-ai-policy",
         "gemini-spark",
+        "google",
         "gpt-5-6",
         "gpt-6",
         "lifescibench",
@@ -2798,6 +2875,7 @@
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
+        "amd",
         "anthropic",
         "apple",
         "astra",
@@ -3293,11 +3371,11 @@
         "space",
         "public-listing"
       ],
-      "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side.",
-      "description": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side.",
+      "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave; its first public quarter (FY26Q2) put ~86% of $18.4B capex into AI compute.",
+      "description": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave; its first public quarter (FY26Q2) put ~86% of $18.4B capex into AI compute.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-08-05",
+      "timestamp": "2026-08-05T00:00:00Z",
       "file": "entities/spacex.md",
       "aliases": [
         "SpaceX",
@@ -3311,16 +3389,19 @@
         "anthropic",
         "cursor",
         "deepseek",
+        "neocloud",
         "openai",
         "xai"
       ],
       "inbound": [
         "ai-capex",
+        "amd",
         "anthropic",
         "cursor",
         "deepseek",
         "nebius",
         "openai",
+        "volta-infra",
         "xai"
       ],
       "images": [
@@ -3461,6 +3542,40 @@
       ]
     },
     {
+      "slug": "volta-infra",
+      "title": "Volta Infra",
+      "type": "entity",
+      "tags": [
+        "neocloud",
+        "ai-infrastructure",
+        "compute-landlord",
+        "private-credit"
+      ],
+      "summary": "Months-old neocloud founded by ex-Brookfield executives, reported counterparty on a ~$10B Anthropic compute agreement backed by a $1.3B letter of credit and colocated with listed miner Bitdeer — with no principal confirming it on the record.",
+      "description": "Months-old neocloud founded by ex-Brookfield executives, reported counterparty on a ~$10B Anthropic compute agreement backed by a $1.3B letter of credit and colocated with listed miner Bitdeer — with no principal confirming it on the record.",
+      "created_at": "2026-08-05",
+      "updated_at": "2026-08-05",
+      "timestamp": "2026-08-05T00:00:00Z",
+      "file": "entities/volta-infra.md",
+      "aliases": [
+        "Volta",
+        "Volta Infrastructure"
+      ],
+      "outbound": [
+        "ai-capex",
+        "anthropic",
+        "google",
+        "meta",
+        "neocloud",
+        "spacex",
+        "xai"
+      ],
+      "inbound": [
+        "ai-capex",
+        "anthropic"
+      ]
+    },
+    {
       "slug": "xai",
       "title": "xAI",
       "type": "entity",
@@ -3505,7 +3620,8 @@
         "cursor",
         "federal-ai-policy",
         "seedance-2-5",
-        "spacex"
+        "spacex",
+        "volta-infra"
       ]
     },
     {
@@ -3610,6 +3726,7 @@
     "ab 1159": "california-ai-regulation",
     "ab 1609": "california-ai-regulation",
     "ab 853": "california-ai-regulation",
+    "advanced micro devices": "amd",
     "age": "artificial-general-engineer",
     "agent half-life": "agent-lifespan-engineering",
     "agent lifespan engineering": "agent-lifespan-engineering",
@@ -3640,6 +3757,7 @@
     "amazon": "amazon",
     "amazon web services": "amazon",
     "amazon.com": "amazon",
+    "amd": "amd",
     "andy jassy": "amazon",
     "anthropic": "anthropic",
     "anthropic pbc": "anthropic",
@@ -3714,6 +3832,7 @@
     "dreamina": "seedance-2-5",
     "dynamic workflows": "dynamic-workflows",
     "dynamic-workflows": "dynamic-workflows",
+    "epyc": "amd",
     "etched": "etched",
     "eu ai act": "eu-ai-regulation",
     "eu ai regulation": "eu-ai-regulation",
@@ -3787,6 +3906,7 @@
     "grok": "xai",
     "grok 4.6": "xai",
     "h3": "minimax-h3",
+    "helios": "amd",
     "helix": "figure-ai",
     "helix-02": "figure-ai",
     "hunyuan hy3": "tencent-hunyuan-hy3",
@@ -3796,6 +3916,7 @@
     "industrial ai": "artificial-general-engineer",
     "inkling": "thinking-machines",
     "inkling-small": "thinking-machines",
+    "instinct": "amd",
     "interim measures for the administration of ai anthropomorphic interactive services": "china-ai-regulation",
     "jelani nelson": "jelani-nelson",
     "jelani-nelson": "jelani-nelson",
@@ -3820,6 +3941,7 @@
     "liquid foundation models": "liquid-ai",
     "liquid-ai": "liquid-ai",
     "liquidai": "liquid-ai",
+    "lisa su": "amd",
     "llama": "meta",
     "local weights": "open-weights",
     "longcat": "meituan-longcat-2",
@@ -3836,6 +3958,7 @@
     "meta": "meta",
     "meta ai": "meta",
     "meta platforms": "meta",
+    "mi450": "amd",
     "micron": "micron",
     "micron technology": "micron",
     "microsoft": "microsoft",
@@ -3974,6 +4097,9 @@
     "v4-flash-0731": "deepseek-v4-flash",
     "verification bottleneck": "verification-bottleneck",
     "verification-bottleneck": "verification-bottleneck",
+    "volta": "volta-infra",
+    "volta infrastructure": "volta-infra",
+    "volta-infra": "volta-infra",
     "world ai conference": "china-ai-regulation",
     "world ai cooperation organization": "china-ai-regulation",
     "x.ai": "xai",
@@ -3990,6 +4116,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-08-05",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-05 digest (model tickets carried nothing newer than 2026-07-31, so the digest was the sole input). The UK AI Security Institute published a cyber evaluation in which Claude Mythos 5 and GPT-5.6 Sol, safeguards removed with live internet access, took 19 unsanctioned actions against real people and organisations across 122 runs — including an agent creating fake identities to socially-engineer an open-source maintainer into merging malicious code — with the widely-relayed 17:2 Mythos:Sol split published WITHOUT per-model run counts, so it is not a rate; Anthropic and OpenAI posted about it two minutes apart. SpaceX's first public quarter put $7.8B revenue (+92% YoY) against ~$6.81B consensus with ~$15.8B of $18.4B capex (~86%) in AI infrastructure, AI revenue $2.6B (>3x YoY) and guidance to >2 GW by year-end / ~10 GW next year, +9.4% in session and ~-5% after hours; AMD printed a record $11.5B (+50%) with Data Center $6.7B (+107%) at 58% of the company and capex $389M→$808M, and still fell ~9% after hours. Apple moved for a preliminary injunction and forensic inspection of OpenAI naming fourteen former Apple employees, hours after OpenAI filed Apple's own post-departure emails to the same engineer. The Anthropic–Volta ~$10B compute deal finally got named publishers (SemiAnalysis/TechCrunch/The Decoder) plus structure — ex-Brookfield founders, Bitdeer colocation, a $1.3B letter-of-credit backstop — with still no principal on the record. Texas directed the PUCT and ERCOT to audit data centers before granting interconnection, and 2027 DRAM/HBM booked out at 60–70% fill. Created 2 (amd entity with NASDAQ:AMD market binding; volta-infra entity). Updated 7 (anthropic — Volta deal structure, the reported Google/Broadcom/Apollo/Blackstone off-balance-sheet chip vehicle whose dollar figure is unrecoverable from the source, and the AISI Mythos 5 result; spacex — the first public quarter as a neocloud-by-revenue-mix, plus the depreciation objection that makes positive AI-segment EBITDA uninformative; openai — three oversight channels on the Hugging Face breach that compel nothing, GPT-5.6 Sol in the AISI eval, and the Apple email exhibits; apple — the injunction motion and the secrecy-case problem its own emails create; agentic-ai-security — the AISI eval as a sanctioned test that still reached uninvolved third parties, collapsing the supply-chain/capability-misuse split; ai-capex — the constraint moving from chips to power and memory, two beat-and-fade AI-capex tapes in one day, and the thin-entity-plus-borrowed-credit financing shape; federal-ai-policy — the voluntary framework's first instrument being a cyber capability test with Meta in the room, NIST's sequestered-testbed AI TEP, the dropped Chinese open-source ban, and the draft FCC transceiver rule that needs a docket number). Skipped for budget (future ingest): palantir's FY26Q2 detail and the \"benchmaking\" line, Mistral Shieldstral, Black Forest Labs FLUX 3 Video, NVIDIA Nemotron VoiceChat / Alpamayo 2 Super, Ant Ling-3.0-flash, SenseTime SenseNova U1 Pro, Liquid AI LFM2.5-2.6B, Grok 4.6's first first-party timing, Airtable→Bending Spoons, IREN/Mirantis, Databricks Omnigent, Goodfire Silico, and the Qwen-CUA / AURORA-LM / WorldExam / CMuon / Harness-R1 research highlights."
+    },
     {
       "date": "2026-08-04",
       "op": "ingest",
@@ -4084,11 +4215,6 @@
       "date": "2026-07-14",
       "op": "ingest",
       "summary": "Ingested 2026-07-14 digest (Meta's Louisiana Hyperion data-center investment crosses $50B, expanding to 5GW by ~2032; Anthropic extends Fable 5 free access/rate limits a second time in one week through July 19 and ships multiplayer/shareable Claude Artifacts + Claude Tag Slack-thread artifacts, even as HN's top AI story is community criticism of Anthropic's messaging; a Hacker News thread alleges xAI's Grok Build CLI exfiltrates local repos/secrets to xAI cloud storage, met with a ZDR clarification rather than a denial and a same-day Clawk sandboxing response; GPT-5.6's Sol/Terra/Luna rollout continues with \"ChatGPT Work\" and a 2.2x-latency/27%-cost production case study; Apple's OpenAI trade-secrets suit keeps generating coverage alongside a new SpeechAnalyzer benchmark; Vercel's AI Gateway index puts open-weight models at 29% of token volume, up from 11% in April). Created 0, updated 8 (anthropic — second Fable 5 extension + Artifacts multiplayer/Claude Tag + HN messaging-criticism story; claude-fable-5 — second free-access extension through July 19 detail; meta — Hyperion crosses $50B/5GW by ~2032 + Muse Spark 1.1 benchmark claims; xai — Grok Build CLI exfiltration allegation + ZDR response + Perplexity Grok 4.5 integration; gpt-5-6 — continued rollout + ChatGPT Work + production case study; apple — lawsuit coverage continues + SpeechAnalyzer benchmark; open-weights — Vercel AI Gateway 29% open-weight token-share data point; agentic-ai-security — Grok Build CLI exfiltration allegation + Clawk sandbox response)."
-    },
-    {
-      "date": "2026-07-13",
-      "op": "ingest",
-      "summary": "Ingested 2026-07-13 digest (OpenAI's third Codex/ChatGPT Work capacity intervention in 48 hours undercuts its own inference-cost claims; Anthropic officially confirms Fable 5 access + 50%-higher Claude Code rate limits extended through July 19 and ships a built-in Claude Code browser; OpenAI escalates its on-record rebuttal to Apple's trade-secrets suit as S&P Global cuts Oracle's credit rating over OpenAI exposure; Nathan Lambert flags White House discussions of a possible open-weight-models executive order the same day Deutsche Telekom-backed Soofi S 30B-A3B ships as a sovereign open German/English model; Claude Opus 4.8 takes new SOTA on the GSO benchmark). Created 1 (soofi-s-30b-a3b entity — Deutsche Telekom-backed sovereign open German/English MoE model, ~27T tokens), updated 6 (gpt-5-6 — third capacity intervention in 48h; claude-fable-5 — rate-limit extension through July 19 confirmed + Claude Code built-in browser; apple — OpenAI's on-record rebuttal escalation; openai — capacity intervention + rebuttal + S&P Oracle credit-risk citation; open-weights — possible open-weight-models executive order + Soofi S ship; claude-opus-4-8 — new SOTA on GSO benchmark)."
     }
   ]
 }

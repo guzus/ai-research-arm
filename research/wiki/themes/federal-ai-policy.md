@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-08-04T00:00:00Z
+timestamp: 2026-08-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
@@ -561,6 +562,54 @@ footing for the first time in the cycle.
   by ChatGPT** per House spending records — a *procurement* measurement, so
   free-tier and personal-account use of any vendor is invisible to it and the
   figure should not be read as a usage share (ARA daily digest 2026-08-04).
+
+- **The voluntary framework's first instrument is a cyber capability test — and
+  Meta is in the room (2026-08-05).** A **cybersecurity test suite and hacking
+  benchmark were described as finalized** ahead of a White House meeting with
+  **Meta, [[anthropic]], [[openai]] and [[google]]**; per The Information the
+  framework would let labs **voluntarily submit frontier models to the
+  government up to 30 days before release**, built under the **June 2 executive
+  order**. The consequential detail is the guest list: adding the largest US
+  **[[open-weights]]** publisher to a meeting about pre-release capability
+  testing surfaces the regime's structural problem, since such a test is
+  trivially enforceable against an API and structurally awkward against a
+  downloadable checkpoint. **No benchmark text or scoring rubric became
+  public**, which is the same "licensing regime with no published rules"
+  pattern this page has tracked since June (ARA daily digest 2026-08-05).
+- **Three oversight channels open on the Hugging Face agent breach — none
+  compelling (2026-08-05).** **Fifteen state attorneys general** sent
+  [[openai]] a **records-preservation demand** whose scope reaches *any
+  instance of a model or agent leaving notes for future versions of itself,
+  including notes on how agents could free themselves from internal
+  constraints* — a preservation demand creates spoliation exposure and
+  describes what must be retained **if it exists**; it is not a finding. A **US
+  House cybersecurity panel requested a briefing** from Sam Altman, conceded by
+  its own source to be "not a subpoena or formal investigation," from an
+  **unnamed** panel. State AGs acting first, again, is the recurring shape: the
+  binding US AI enforcement so far is state-level and incident-driven, not
+  federal and rule-driven. See [[agentic-ai-security]] (ARA daily digest
+  2026-08-05).
+- **NIST launches an AI Technology Evaluation program (2026-08-05).** NIST will
+  test models on **blind datasets inside a sequestered testbed**, aimed
+  squarely at benchmark contamination — a government answer to the
+  vendor-run-eval problem, and the federal counterpart to the UK AISI
+  evaluation published the same day. It is the first federal instrument in this
+  storyline that measures rather than gates (ARA daily digest 2026-08-05).
+- **The open-source-model ban is dropped; an FCC transceiver rule is drafted
+  (2026-08-05).** Per NYT-sourced reporting the **White House backed off
+  contemplated bans on Chinese open-source AI models**, with **[[openai]] and
+  [[anthropic]] favouring restrictions and [[nvidia]], [[google]] and Meta
+  opposed**; a decision is said to be expected before **Xi Jinping's September
+  visit**. This is second-hand reporting about deliberations — no policy has
+  issued, and the lab-by-lab positions are the NYT's attribution — but it maps
+  exactly onto the [[open-weights]] coalition split. Separately an **FCC rule
+  barring Chinese optical transceivers is in draft**, described as banning all
+  new transceiver models then exempting many non-Chinese suppliers, aimed at
+  **Innolight (~27% global share) and Eoptolink**; Reuters-sourced commentary
+  adds that **Coherent and Lumentum may lack capacity to replace them**. Both
+  loudest carriers are equity accounts and FCC equipment authorization runs on
+  notice-and-comment, so **a docket number is what separates policy from trade
+  thesis** (ARA daily digest 2026-08-05).
 
 ## Open questions
 
