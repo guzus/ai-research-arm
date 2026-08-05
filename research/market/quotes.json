@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T22:56:25Z",
+  "generated_at": "2026-08-05T03:50:39Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-08-04T20:00:01Z",
@@ -12,6 +12,18 @@
       "stale": false,
       "symbol": "NASDAQ:AAPL",
       "ticker": "AAPL"
+    },
+    "NASDAQ:AMD": {
+      "asOf": "2026-08-04T20:00:01Z",
+      "change": 33.94,
+      "changePercent": 7.0031,
+      "currency": "USD",
+      "marketState": null,
+      "price": 518.58,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:AMD",
+      "ticker": "AMD"
     },
     "NASDAQ:AMZN": {
       "asOf": "2026-08-04T20:00:01Z",
