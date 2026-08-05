@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 6,
+  "count": 7,
   "events": [
+    {
+      "file": "2026-08-04-AMD-FY26Q2.md",
+      "date": "2026-08-04",
+      "ticker": "AMD",
+      "period": "FY26Q2",
+      "issuer": "Advanced Micro Devices, Inc.",
+      "form": "8-K",
+      "accession": "0000002488-26-000121",
+      "transcript": false
+    },
     {
       "file": "2026-08-03-PLTR-FY26Q2.md",
       "date": "2026-08-03",
