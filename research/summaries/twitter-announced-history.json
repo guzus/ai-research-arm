@@ -21262,5 +21262,54 @@
     "headline": "AMD BEATS AT $11.54B AND GUIDES Q3 TO $13B \u2014 FALLS 9% AFTER HOURS AS CAPEX DOUBLES TO $808M ON HELIOS RACKS",
     "source": "@OneTradeWex",
     "url": "https://x.com/OneTradeWex/status/2084766179093279041"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-05 03:26:20 UTC",
+    "headline": "WHITE HOUSE AI FRAMEWORK GIVES GOVERNMENT 30-DAY PRE-RELEASE REVIEW OF FRONTIER MODELS \u2014 OPEN WEIGHTS FULLY EXEMPT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2084822510059847961"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-05 03:26:20 UTC",
+    "headline": "WSJ AND BLOOMBERG SPLIT ON AI CARVE-OUT \u2014 WSJ SAYS US OPEN MODELS ONLY, BLOOMBERG SAYS CHINESE OPEN WEIGHTS EXEMPT TOO",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2084836912049885563"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-05 03:26:20 UTC",
+    "headline": "REUTERS: ANTHROPIC SIGNS $10B COMPUTE DEAL WITH VOLTA \u2014 CLOUD STARTUP VALUED AT $2.4B AND ONLY MONTHS OLD",
+    "source": "@DeeprunNews",
+    "url": "https://x.com/DeeprunNews/status/2084839629816267082"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-05 03:26:20 UTC",
+    "headline": "SEMIANALYSIS TRACKS 15GW+ OF AI DATACENTER CAPACITY WITH NO BACKUP GENERATORS \u2014 MICROSOFT, ANTHROPIC, META, XAI NAMED",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2084811554961121348"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-05 03:26:20 UTC",
+    "headline": "REUTERS: SAMSUNG AND SK HYNIX SPENT TWO YEARS TESTING CHINESE AMEC ETCHERS FOR CHINA FABS AS EXPORT-CONTROL HEDGE",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2084827925833302106"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-05 03:26:20 UTC",
+    "headline": "TSMC SHIFTS CHIP-ON-WAFER PACKAGING VOLUME TO ASE AND OSATS AS COWOS BOTTLENECK PERSISTS",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2084808259618455956"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-05 03:26:20 UTC",
+    "headline": "COUNTERPOINT: CHINESE TRANSCEIVER IMPORT BAN RISKS DELAYING 800G/1.6T CLUSTER TURN-UP BY MULTIPLE QUARTERS",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2084839619255013478"
   }
 ]
