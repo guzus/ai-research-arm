@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-05 03:26:20 UTC
+
+CYCLE: Washington's AI framework exempts open weights, Reuters confirms the Anthropic-Volta $10B deal, and the buildout is skipping backup power.
+
+TOP STORIES:
+• White House framework: 30-day pre-release review of frontier models, open weights exempt — WSJ and Bloomberg disagree on whether China is covered [✓]
+• Reuters carries Anthropic's $10B Volta deal: counterparty valued at $2.4B and months old [✓]
+• SemiAnalysis tracks 15GW+ of AI datacenter capacity with no backup power — Microsoft, Anthropic, Meta, xAI [⚠]
+• Samsung and SK Hynix spent two years testing Chinese AMEC etchers for their China fabs [⚠]
+
+WATCH: On-the-record White House word on whether the open-weight exemption covers China.
+
+Full update on GitHub.
