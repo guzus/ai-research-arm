@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-05 08:48:04 UTC
+
+CYCLE: Memory pricing power flips to the sellers, and the vendor-financing machinery behind AI compute gets its first detailed description.
+
+TOP STORIES:
+• CXMT refused Apple a mobile-DRAM price cut and quoted at or above Samsung/SK Hynix — the cheap-Chinese-memory workaround is gone [⚠]
+• SpaceX's AI unit grew ~250% selling compute to Anthropic, Google and Reflection AI; $15.83B of one quarter's capex went into data centers [✓]
+• A Samsung Securities note describes a ~$200B SPV structure financing 4.5GW of Google TPUs leased to Anthropic, with a $30B Broadcom residual guarantee [⚠]
+
+WATCH: Whether Broadcom's next filing discloses a residual-value guarantee matching the reported $30B.
+
+Full update on GitHub.
