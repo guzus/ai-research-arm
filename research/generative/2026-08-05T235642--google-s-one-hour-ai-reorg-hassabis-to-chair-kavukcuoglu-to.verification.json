@@ -1,0 +1,316 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Google's own memo says that \"moving forward, Demis will become the Chair of GDM and Chief Scientist of Alphabet, while continuing to lead Isomorphic Labs,\" and that Koray Kavukcuoglu — \"the current Chief Technology Officer of GDM and our Chief AI Architect\" — \"will step up as SVP of Google DeepMind, reporting to me.\"",
+      "verdict": "supported",
+      "citation": "https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/"
+    },
+    {
+      "id": "c2",
+      "text": "The phrase \"CEO of Google DeepMind\" appears nowhere in the announcement.",
+      "verdict": "supported",
+      "citation": "https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/"
+    },
+    {
+      "id": "c3",
+      "text": "Google published a single blog post at 16:00:00 UTC on 2026-08-05, and that one post carried both Sundar Pichai's and Demis Hassabis's employee memos.",
+      "verdict": "supported",
+      "citation": "https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/"
+    },
+    {
+      "id": "c4",
+      "text": "Axios filed at 16:00:19 UTC — nineteen seconds after Google's post went live.",
+      "verdict": "supported",
+      "citation": "https://www.axios.com/2026/08/05/google-deepmind-demis-hassabis-ai"
+    },
+    {
+      "id": "c5",
+      "text": "Reuters followed at 16:02:27 and CNBC at 16:03:12 — the latter stamped \"Wed, Aug 5 2026 12:03 PM EDT.\"",
+      "verdict": "weak",
+      "citation": "https://www.cnbc.com/2026/08/05/google-chief-scientist-jeff-dean-leaving-company-after-27-years.html"
+    },
+    {
+      "id": "c6",
+      "text": "Dean announced Discovery Loop — his own new company, the thing he is leaving to do — at 16:06:02, some four minutes after the wires had already reported it.",
+      "verdict": "supported",
+      "citation": "https://x.com/JeffDean/status/2085034604172603724"
+    },
+    {
+      "id": "c7",
+      "text": "Hassabis posted at 16:04 UTC.",
+      "verdict": "weak",
+      "citation": "https://x.com/demishassabis/status/2085034334914769203"
+    },
+    {
+      "id": "c8",
+      "text": "| 18:05 | The Information | +2h 05m |",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c9",
+      "text": "Alphabet opened at $383.34 on 2026-08-05, $5.69 **above** the prior session's $377.65 close, printed its high at $384.48, then reversed to a $356.77 low and a $362.43 close — −4.03% on 46,358,293 shares.",
+      "verdict": "supported",
+      "citation": "https://stockanalysis.com/stocks/googl/history/"
+    },
+    {
+      "id": "c10",
+      "text": "High-to-low is $27.71, or −7.21%, so the intraday information shock was nearly twice the number the wires carried.",
+      "verdict": "supported",
+      "citation": "https://stockanalysis.com/stocks/googl/history/"
+    },
+    {
+      "id": "c11",
+      "text": "At roughly 12.23 billion shares outstanding, the $15.22 close-to-close decline implies about $186 billion of market capitalisation, taking Alphabet from roughly $4.619 trillion to roughly $4.433 trillion as of the 2026-08-05 close.",
+      "verdict": "supported",
+      "citation": "https://stockanalysis.com/stocks/googl/statistics/"
+    },
+    {
+      "id": "c12",
+      "text": "Across those fifteen sessions the mean *absolute* daily move was about 2.77%, making −4.03% roughly 1.45x normal, and 5 of the 15 (33%) moved at least 4% in absolute terms.",
+      "verdict": "weak",
+      "citation": "https://stockanalysis.com/stocks/googl/history/"
+    },
+    {
+      "id": "c13",
+      "text": "- {label: \"Volume\", value: \"46.36M\", note: \"vs ~32.6M average — elevated, not extreme\"}",
+      "verdict": "weak",
+      "citation": null
+    },
+    {
+      "id": "c14",
+      "text": "As of the 2026-08-05 close, GOOGL was still up about 15.9% year to date in 2026 and only about 11.3% below its 52-week high of $408.61 (52-week low $193.67; one-year return about +85.8%), with $362.43 above its 50-day moving average of $357.82 and far above the 200-day at $328.10; the day cost roughly 4.9 percentage points of YTD return.",
+      "verdict": "weak",
+      "citation": "https://stockanalysis.com/stocks/googl/statistics/"
+    },
+    {
+      "id": "c15",
+      "text": "Alphabet filed no Form 8-K: its most recent 8-K of any kind as of 2026-08-06 was 2026-07-22 (Items 2.02/9.01, Q2 earnings), its most recent Item 5.02 was 2026-06-05, and it filed five Item 5.02 8-Ks in H1 2026 — the registrant demonstrably files when its officer perimeter changes.",
+      "verdict": "weak",
+      "citation": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=8-K&dateb=&owner=include&count=40"
+    },
+    {
+      "id": "c16",
+      "text": "The reason is that none of the three is an executive officer of Alphabet Inc.; the 2026 proxy lists exactly five, and Item 5.02 reaches only principal and named executive officers.",
+      "verdict": "supported",
+      "citation": "https://www.stocktitan.net/sec-filings/GOOG/def-14a-alphabet-inc-definitive-proxy-statement-5428f485f4af.html"
+    },
+    {
+      "id": "c17",
+      "text": "UK Companies House shows Hassabis resigned as a director of DeepMind Technologies Limited (07386350) on 2014-01-24 and is not a current officer, the only 2026 officer change on that register being a corporate-secretary swap.",
+      "verdict": "supported",
+      "citation": "https://find-and-update.company-information.service.gov.uk/company/07386350/officers"
+    },
+    {
+      "id": "c18",
+      "text": "From `gemini-3.1-pro-preview` on 19 February 2026 to reorg day is 167 days with no successor at the tier that sets the frontier.",
+      "verdict": "supported",
+      "citation": "https://ai.google.dev/gemini-api/docs/changelog"
+    },
+    {
+      "id": "c19",
+      "text": "Google's own 21 July position states both: \"Gemini 3.5 Pro is currently testing with partners and we plan to make it broadly available as soon as it's ready,\" and \"We have started our most ambitious pre-training run yet, for Gemini 4.\"",
+      "verdict": "supported",
+      "citation": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/"
+    },
+    {
+      "id": "c20",
+      "text": "and fourteen consecutive rungs have already resolved No, with deadlines of 5, 12, 19, 26 and 30 June and 3, 10, 17, 24, 27, 28, 29, 30 and 31 July, on combined volume near $286,000.",
+      "verdict": "supported",
+      "citation": "https://gamma-api.polymarket.com/events?slug=next-google-gemini-pro-model-released-byptptpt"
+    },
+    {
+      "id": "c21",
+      "text": "Implied probability of release by deadline: 5.7,24.5,47.5,70.0",
+      "verdict": "weak",
+      "citation": "https://gamma-api.polymarket.com/events?slug=next-google-gemini-pro-model-released-byptptpt"
+    },
+    {
+      "id": "c22",
+      "text": "Working backwards from the recorded one-day moves — the 14 August contract −48.0 points, 21 August −30.0, 31 August −15.3 — those rungs stood near 72.5%, 77.5% and 85.3% twenty-four hours earlier, and intraday ticks put the 14 August contract at 0.815 around 16:00 UTC, minutes before the announcement, falling to 0.235 by roughly 22:50 UTC.",
+      "verdict": "supported",
+      "citation": "https://clob.polymarket.com/prices-history?market=57710947326527517142791816702921024824946830323262226496916404734255533257132&interval=1w&fidelity=60"
+    },
+    {
+      "id": "c23",
+      "text": "AlphaEvolve, run on 50-plus open mathematical problems, \"rediscovered state-of-the-art solutions\" in roughly 75% of cases and \"improved the previously best known solutions\" in 20%",
+      "verdict": "supported",
+      "citation": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+    },
+    {
+      "id": "c24",
+      "text": "Then the number that should govern every forecast here: AlphaEvolve \"sped up this vital kernel in Gemini's architecture by 23%, leading to a 1% reduction in Gemini's training time.\"",
+      "verdict": "supported",
+      "citation": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+    },
+    {
+      "id": "c25",
+      "text": "and a Borg heuristic \"now in production for over a year\" that \"continuously recovers, on average, 0.7% of Google's worldwide compute resources.\"",
+      "verdict": "supported",
+      "citation": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+    },
+    {
+      "id": "c26",
+      "text": "Mathematicians raised prior art — Winograd got 48 over any commutative ring in 1967, Waksman 46 with division by 2 in 1970 — AlphaEvolve itself divides by 2 where Strassen's 1969 algorithm does not, and DeepMind hand-picked the problems and seeded runs with human ideas.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c27",
+      "text": "METR's RE-Bench is 7 open-ended ML research-engineering environments with data from 71 eight-hour attempts by 61 human experts: \"the best AI agents achieve a score 4x higher than human experts\" at a 2-hour budget, yet humans have better returns to time, edging ahead at 8 hours and reaching \"2x the score of the top AI agent when both are given 32 total hours.\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2411.15114"
+    },
+    {
+      "id": "c28",
+      "text": "On PaperBench — 20 ICML 2024 papers replicated from scratch against 8,316 gradable rubric leaves — the best tested agent reached 21.0% as of April 2025, and OpenAI reported that \"models do not yet outperform the human baseline\" of ML PhDs",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2504.01848"
+    },
+    {
+      "id": "c29",
+      "text": "On MLE-bench, medal rates rose from 16.9% (o1-preview with AIDE, 2024) to a claimed 56.44% state of the art under 24-hour budgets by January 2026, roughly 3.3x in fifteen months",
+      "verdict": "unsupported",
+      "citation": "https://github.com/openai/mle-bench"
+    },
+    {
+      "id": "c30",
+      "text": "The fundamentals the desk was working from are the Q2 2026 report of 2026-07-22: revenues $119,796M, up 24% year over year; Google Cloud $24,768M against $13,624M, up 82%; Cloud operating income $8,814M versus $2,826M; capital expenditure $44,924M in the quarter.",
+      "verdict": "supported",
+      "citation": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf"
+    },
+    {
+      "id": "c31",
+      "text": "Pichai's accompanying remarks put the Gemini app at 950 million monthly active users, model APIs at roughly 22 billion tokens per minute against 16 billion a quarter earlier, and nearly 90% of the Fortune 100 on Gemini Enterprise.",
+      "verdict": "supported",
+      "citation": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q2-2026/"
+    },
+    {
+      "id": "c32",
+      "text": "Delaware's statute requires only a stated public benefit, a director balancing duty and a biennial stockholder statement it need not publish; it caps no profits, mandates no audit, benefit director or monitor, gives the Attorney General no cause of action, gates enforcement standing at holders of 2% of shares — the large investors themselves — and in § 365(b) disclaims any director \"duty to any person on account of any interest\" outside the corporation.",
+      "verdict": "supported",
+      "citation": "https://delcode.delaware.gov/title8/c001/sc15/index.html"
+    },
+    {
+      "id": "c33",
+      "text": "The 2026 HSR size-of-transaction threshold is $133.9 million, effective 2026-02-17, and is triggered only by acquisitions of voting securities, non-corporate interests or assets, so a minority position in an undisclosed private round is almost certainly not notifiable;",
+      "verdict": "weak",
+      "citation": "https://www.ftc.gov/news-events/news/press-releases/2026/01/ftc-announces-2026-update-jurisdictional-fee-thresholds-premerger-notification-filings"
+    },
+    {
+      "id": "c34",
+      "text": "it is simply not mentioned, and Google's own author-page bylines now read \"Chair, Google DeepMind and Chief Scientist, Alphabet\" and \"SVP, Google DeepMind and Chief AI Architect, Google\" — no CEO string on either.",
+      "verdict": "weak",
+      "citation": "https://blog.google/authors/jeff-dean/"
+    },
+    {
+      "id": "c35",
+      "text": "but in June 2025 he held the mandate with no line authority, still reporting to Hassabis as GDM's CTO.",
+      "verdict": "unsupported",
+      "citation": "https://www.cnbc.com/2025/06/11/google-kavukcuoglu-chief-ai-architect.html"
+    },
+    {
+      "id": "c36",
+      "text": "Every GOOGL price-target revision on record is dated 2026-07-23/24 and capex-driven — D.A. Davidson's Gil Luria to $350 from $375, J.P. Morgan's Doug Anmuth to $420 from $460, UBS to $379 from $400, BMO up to $465 from $455, Barclays holding $425 — leaving consensus at 73 ratings, Buy, average target $428.85, zero Sells.",
+      "verdict": "unsupported",
+      "citation": "https://finance.yahoo.com/technology/ai/articles/google-shakes-up-ai-leadership-as-deepmind-chief-shifts-role-160227886.html"
+    },
+    {
+      "id": "c37",
+      "text": "On cause, Bloomberg reported on 16 July, citing people familiar plus ten current and former employees, that the flagship was months behind specifically on coding, and that a late-June attempt to refresh the training data to improve coding produced disappointing results;",
+      "verdict": "weak",
+      "citation": "https://9to5google.com/2026/07/16/gemini-3-5-pro-delays/"
+    },
+    {
+      "id": "c38",
+      "text": "Bloomberg's better-sourced account of the same delay attributes it to capability shortfalls, review-layer bureaucracy and compute constraints, not morale, which arguably contradicts Axios outright.",
+      "verdict": "weak",
+      "citation": "https://9to5google.com/2026/07/16/gemini-3-5-pro-delays/"
+    },
+    {
+      "id": "c39",
+      "text": "| Bill Gates | Chief Software Architect, Jan 2000 | Left day-to-day work 2008 | ~8.5 years[^58] |",
+      "verdict": "unsupported",
+      "citation": "https://blogs.microsoft.com/blog/2024/03/19/mustafa-suleyman-deepmind-and-inflection-co-founder-joins-microsoft-to-lead-copilot/"
+    },
+    {
+      "id": "c40",
+      "text": "The compute term is the load-bearing blank: *Wired* reported \"an arrangement to provide compute power for the first year\" while the deal's own counsel describes a \"long-term cloud and compute partner,\" and whether that compute is a discount, a prepaid credit or contributed for equity goes unreported — exactly the line between a customer contract and an undisclosed component of the round.",
+      "verdict": "weak",
+      "citation": "https://www.wsgr.com/en/insights/wilson-sonsini-advises-discovery-loop-on-launch-and-initial-funding.html"
+    },
+    {
+      "id": "c41",
+      "text": "Counsel calls this an \"initial funding round,\" never a \"seed\" — and a six-investor round with a lead-and-co-lead structure, a board seat and a strategic corporate participant is a Series A wearing a seed label.",
+      "verdict": "weak",
+      "citation": "https://www.wsgr.com/en/insights/wilson-sonsini-advises-discovery-loop-on-launch-and-initial-funding.html"
+    },
+    {
+      "id": "c42",
+      "text": "Dean told *Wired* \"I think I'm the CEO ... Everyone pointed at me\"; the site assigns no titles at all.",
+      "verdict": "supported",
+      "citation": "https://www.wired.com/story/jeff-dean-google-discovery-loop-startup/"
+    },
+    {
+      "id": "c43",
+      "text": "First four rows as characterised in the February 2026 senators' letter asking DOJ and the FTC to treat six named talent-and-licence deals as de facto mergers under the HSR anti-avoidance rule.",
+      "verdict": "weak",
+      "citation": "https://www.warren.senate.gov/imo/media/doc/final_-_warren_wyden_blumenthal_letter_to_the_department_of_justice_and_the_federal_trade_commission_on_big_tech_reverse_acqui-hires.pdf"
+    },
+    {
+      "id": "c44",
+      "text": "But the agencies' March 2026 Request for Information — citing unreported transactions with \"the practical effect of eliminating a market participant,\" and \"licensing agreements, acquihires, reverse acquihires\" — aims at deals leaving a target non-viable; on its own terms it does not describe a new entrant.",
+      "verdict": "weak",
+      "citation": "https://www.ftc.gov/system/files/ftc_gov/pdf/2026.03.25-HSR-RFI.pdf"
+    },
+    {
+      "id": "c45",
+      "text": "On the widest available token-volume proxy, Google sits at about 15.7% of open-market inference tokens as of 2026-08-05 — statistically level with OpenAI's 15.6% and ahead of Anthropic's 9.8%, though that source excludes the direct enterprise contracts where all three earn most of their revenue.",
+      "verdict": "weak",
+      "citation": "https://dirac.run/labs-market-share"
+    },
+    {
+      "id": "c46",
+      "text": "but that top ten spans about 23 Elo against ±4–10 confidence intervals, so it is statistically one cluster, Arena scores blind preference rather than capability, and one vendor submitting many checkpoints inflates its apparent depth.",
+      "verdict": "weak",
+      "citation": "https://lmarena.ai/leaderboard/text"
+    },
+    {
+      "id": "c47",
+      "text": "the Gemini 3.1 Pro card reports 77.1% on ARC-AGI-2 against 68.8% and 52.9% for the then-current Anthropic and OpenAI flagships, and 94.3% on GPQA Diamond, but it lost SWE-Bench Verified at 80.6%, exactly the axis Bloomberg says held 3.5 Pro back.",
+      "verdict": "supported",
+      "citation": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
+    },
+    {
+      "id": "c48",
+      "text": "On enterprise LLM API spend, Menlo Ventures' survey of 495 US decision-makers put Google third at 21% behind Anthropic's 40% and OpenAI's 27% — while also making it the fastest-gaining of the three, up from 7% in 2023",
+      "verdict": "supported",
+      "citation": "https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/"
+    },
+    {
+      "id": "c49",
+      "text": "and on 2026-07-29 the FT reported the AlphaFold team had been broken up, with nearly a quarter of the original papers' full-time Google DeepMind authors having left.",
+      "verdict": "supported",
+      "citation": "https://the-decoder.com/deepmind-dismantles-its-alphafold-team-as-key-authors-leave-for-anthropic/"
+    },
+    {
+      "id": "c50",
+      "text": "A July 2026 survey classifying 1,250 arXiv papers from 2024–2026 finds open-ended recursive self-improvement \"remains bounded by grounding requirements, collapse dynamics, and compute constraints,\" with self-improvement strength tracking an evaluator-signal hierarchy from formal verification down to intrinsic self-assessment.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2607.07663"
+    },
+    {
+      "id": "c51",
+      "text": "Reviewing Edison Scientific's Kosmos — 30,000 academic and biotech users at $200 per run, expert review finding 80% of its statements supported overall but only 58% of the system's own synthesis",
+      "verdict": "supported",
+      "citation": "https://www.alzforum.org/news/research-news/introducing-kosmos-ai-scientist-makes-discoveries-overnight"
+    },
+    {
+      "id": "c52",
+      "text": "Reports on 2026-08-05 put Google in talks for a hire-and-licence deal with the AI-coding startup Mechanize valued above $1.5 billion.",
+      "verdict": "supported",
+      "citation": "https://www.pymnts.com/google/2026/google-eyes-1-5-billion-mechanize-deal-to-enhance-ai-coding/"
+    }
+  ]
+}
