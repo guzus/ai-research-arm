@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "More damaging to the novelty claim, GlobalWafers itself told the Taipei Times in December 2021 that its agreements had lengthened from five years in 2007 to \"eight years now,\" alongside a backlog above NT$100 billion.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Siltronic's chief executive Michael Heckmeier gave the sharpest counter-signal of the three, on 30 July: \"What we see today in spot pricing, it's still below LTA level, and it's clearly below reinvest level.\"",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "In 2025 area shipments rose 5.8% to 12,973 million square inches while wafer revenue fell 1.2% to $11.4 billion.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
