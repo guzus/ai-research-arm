@@ -1,0 +1,31 @@
+{
+  "name": "ara-promo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Remotion promo video for ara — AI research arm (ara.guzus.xyz)",
+  "license": "MIT",
+  "scripts": {
+    "assets": "node scripts/prepare-assets.mjs",
+    "dev": "npm run assets && remotion studio",
+    "render": "npm run assets && remotion render Promo out/ara-promo.mp4 --codec=h264 --crf=18",
+    "render:vertical": "npm run assets && remotion render PromoVertical out/ara-promo-vertical.mp4 --codec=h264 --crf=18",
+    "render:square": "npm run assets && remotion render PromoSquare out/ara-promo-square.mp4 --codec=h264 --crf=18",
+    "poster": "npm run assets && remotion still Promo out/poster.png --frame=470",
+    "gif": "npm run assets && remotion render Promo out/ara-promo.gif --codec=gif --width=960 --every-nth-frame=2",
+    "typecheck": "tsc --noEmit",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@remotion/google-fonts": "^4.0.0",
+    "@remotion/transitions": "^4.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.7.0"
+  }
+}
