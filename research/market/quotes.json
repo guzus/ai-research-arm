@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T20:18:24Z",
+  "generated_at": "2026-08-06T00:23:15Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-08-05T20:00:01Z",
@@ -170,12 +170,12 @@
       "ticker": "CRM"
     },
     "NYSE:DELL": {
-      "asOf": "2026-08-05T20:00:00Z",
-      "change": -4.47,
-      "changePercent": -0.9566,
+      "asOf": "2026-08-05T20:04:32Z",
+      "change": -4.57,
+      "changePercent": -0.978,
       "currency": "USD",
       "marketState": null,
-      "price": 462.8,
+      "price": 462.7,
       "source": "yahoo",
       "stale": false,
       "symbol": "NYSE:DELL",
