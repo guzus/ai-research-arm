@@ -6,13 +6,14 @@ aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
 description: Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.
 created_at: 2026-06-16
-timestamp: 2026-07-30T00:00:00Z
+timestamp: 2026-08-06T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
@@ -121,3 +122,20 @@ sharpening a genuine strategic split among frontier labs on pacing and
 open-weight policy, not just rhetoric. Quote of the Day: *"Optimism should
 empirically be the default... regulation on speed could lock in Anthropic
 and OpenAI's leads forever."* — Zuckerberg (ARA daily digest 2026-07-30).
+
+## Muse Code ships — Meta enters agentic coding (2026-08-06)
+
+Meta Superintelligence Labs launched **[[muse-code]]**, its first coding
+agent, in beta on a new **Muse Spark 1.2** model at **$1.25/$4.25 per million
+tokens**, with a **cheaper tier for developers who let Meta train on their
+code**. It is Meta's **third model release in under a month**. Independent
+readings within three hours placed it behind [[claude-opus-5|Claude Opus 5]]
+on both benchmarks Meta launched against, and Opus 5 is absent from Meta's own
+comparison set — details and figures on the [[muse-code]] page. Two things
+this changes for Meta specifically: it now competes directly in the agentic
+coding market rather than supplying weights to it, and the training-data
+discount tier is the first time Meta has priced customer *code* as
+consideration. Nothing published says whether Muse Spark 1.2 is open-weight,
+which would be a departure from Meta's [[open-weights]] positioning. Coverage
+reached this pipeline via TechCrunch and @AIatMeta only — **Meta has no feed
+in ARA's source list** (ARA daily digest 2026-08-06).

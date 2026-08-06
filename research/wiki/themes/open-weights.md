@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
 created_at: 2026-06-14
-timestamp: 2026-08-04T00:00:00Z
+timestamp: 2026-08-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
@@ -347,6 +348,20 @@ fragile and local weights look like insurance.
   adoption series is the first thing that could settle the "China as the
   open-weights default" question below with numbers instead of impressions
   (ARA daily digest 2026-08-04).
+- **The safety layer opens, and US policy carves the wave out entirely
+  (2026-08-06).** [[mistral-shieldstral|Shieldstral]] is a **3B open-weights
+  multimodal moderation model** — the classifier layer providers normally keep
+  closed and API-only — which moves content filtering onto the self-hoster's
+  side of the line and was the clearest shipping artifact on HN for three
+  consecutive snapshots (peak 461 points). It lands the same day the finished
+  White House framework was reported to apply **only to closed-source
+  products, exempting open weights entirely** (see [[federal-ai-policy]]), so
+  the open stack now has both the capability *and* the safeguards outside the
+  regime built to review them. Counter-pressure from the other direction:
+  [[meta]]'s [[muse-code|Muse Code / Muse Spark 1.2]] shipped as a **priced
+  API product with no open-weight release stated** — the main Western
+  counterweight named below is now closed at its most commercially exposed
+  model (ARA daily digest 2026-08-06).
 
 ## Open questions
 

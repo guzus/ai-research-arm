@@ -6,13 +6,14 @@ aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "G
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
 description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.
 created_at: 2026-07-17
-timestamp: 2026-08-01T00:00:00Z
+timestamp: 2026-08-06T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA model ticket — Gemini Robotics 2", path: research/models/tickets/google-gemini-robotics-2-2026-07.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
@@ -122,6 +123,35 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   the NotebookLM→Gemini Notebook rename flagged below: surfaces collapsing
   into the Gemini app as the single consumer entry point (ARA daily digest
   2026-08-01).
+- **The AI leadership layer is rewired inside one hour, and Jeff Dean leaves
+  after 27 years (2026-08-06).** **Demis Hassabis** moved from CEO of Google
+  DeepMind to **Chair of GDM and Alphabet Chief Scientist**, with CTO **Koray
+  Kavukcuoglu** taking operational control of GDM and reporting to **Sundar
+  Pichai**. Minutes later **Jeff Dean** announced his departure — he joined at
+  25 employees and left at 190,000+ — taking **Sanjay Ghemawat**, **Oriol
+  Vinyals** and **Quoc Le** with him to found [[discovery-loop]], with Google
+  itself a founding investor and Cloud partner. Read structurally, the two
+  announcements are one event: the research founder-figures step out of the
+  operating line while a CTO-turned-operator reports directly to the CEO, and
+  the departing researchers stay commercially attached to Google rather than
+  to a rival. What is *not* evidenced is any change to Gemini's roadmap or to
+  the [[ai-capex]] guidance (The Verge, The Decoder, TechCrunch, @JeffDean,
+  ARA daily digest 2026-08-06).
+- **Google Assistant is retired starting 2026-09-04 (2026-08-06).** Assistant
+  is being withdrawn from phones, tablets and Wear OS as **Gemini** takes over
+  across Android. Unlike most consolidation reporting this is a *dated,
+  first-party commitment*, which makes it the hardest available evidence for
+  the surface-collapse pattern already noted above (AI Studio → Gemini app,
+  NotebookLM → Gemini Notebook): the pre-LLM assistant brand is being ended on
+  a calendar, not deprecated quietly (The Verge, Ars Technica, The Decoder).
+- **Google reported in talks to buy Mechanize for ~$1.5B (2026-08-06).**
+  Mechanize hand-builds **reinforcement-learning environments for coding
+  agents** at roughly **$8k per task**; the reported price is a **~3× step-up
+  in three months**. Treat as weak: the report is **single-sourced**
+  (@deedydas), names no outlet, and neither company has confirmed. If it
+  holds, the interesting part is not the price but what is being bought —
+  hand-authored RL environments as a scarce input, i.e. training data for
+  agents priced like consulting rather than like scraped corpus.
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
 description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.
 created_at: 2026-06-03
-timestamp: 2026-08-05T00:00:00Z
+timestamp: 2026-08-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
@@ -610,6 +611,29 @@ footing for the first time in the cycle.
   loudest carriers are equity accounts and FCC equipment authorization runs on
   notice-and-comment, so **a docket number is what separates policy from trade
   thesis** (ARA daily digest 2026-08-05).
+- **The finished White House framework exempts open weights entirely
+  (2026-08-06).** The completed framework gives federal reviewers access to
+  frontier models **up to 30 days before public release** and **applies only to
+  closed-source products** — open weights are carved out. **WSJ and Bloomberg
+  contradict each other on whether Chinese open-weight models fall inside that
+  carve-out**, which is not a detail: it *is* the policy question, since the
+  security rationale for pre-release review is strongest exactly where the
+  weights are downloadable. The Verge's assessment: *"Trump's AI testing plan
+  is limited and vague."* Read against this theme's running thread, the
+  open-weights carve-out resolves the ambiguity noted on 2026-08-04 in the
+  permissive direction, and inverts the [[eu-ai-regulation|EU]] boundary, where
+  the release/deploy line — not the licence — governs. It also means the regime
+  binds [[openai]], [[anthropic]] and [[google]] while leaving the
+  [[open-weights]] wave, including [[meta]]'s own releases, outside it (WSJ,
+  Bloomberg, The Verge, ARA daily digest 2026-08-06).
+- **An appeals court lets Perplexity's shopping agent back on Amazon
+  (2026-08-06).** A US appeals court reversed the block on Perplexity's agentic
+  commerce integration with [[amazon]] — **the first appellate signal on
+  whether platforms can exclude third-party buying agents**. Courts, not the
+  executive framework, are where agent *access* rights are being set, and the
+  ruling lands against a set of agentic-commerce launches whose new attack
+  surface is unmeasured (see [[agentic-ai-security]]) (The Decoder, ARA daily
+  digest 2026-08-06).
 
 ## Open questions
 

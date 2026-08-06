@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-08-05T00:00:00Z
+timestamp: 2026-08-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
@@ -546,6 +547,45 @@ package cleared its chamber-of-origin crossover.
   [[broadcom]], Apollo, Blackstone and Morgan Stanley (dollar figure not
   recoverable from the source). Neither has a first-party confirmation (ARA
   daily digest 2026-08-05).
+- **The Anthropic chip vehicle gets a number: ~$150bn (2026-08-06).** The
+  **FT** sized the [[google]]-arranged programme reported yesterday at
+  **~$150bn**, running from chip manufacturing through data-centre development
+  via [[broadcom]], **Apollo**, **Blackstone**, **Morgan Stanley** and crypto
+  miners. It is a **financing structure, not a purchase order** — accelerators
+  reach [[anthropic]] without its balance sheet carrying them. The deflationary
+  reading is that vendor financing is ordinary in capital-intensive industries.
+  What survives that reading is the count: the number of independent balance
+  sheets between a frontier lab and its accelerators has gone from **zero to at
+  least five**, each with its own funding cost and its own appetite to
+  withdraw. Jefferies' Jonathan Petersen: *"There's a whole world that's been
+  built underneath those companies, and if their appetite to invest decreases,
+  all of it sees a slowdown."* (FT via @trevornoren, ARA daily digest
+  2026-08-06).
+- **The first first-party agent-ROI number is bad (2026-08-06).** Chamath
+  Palihapitiya is relayed saying his firm's **AI token bill doubles every 45
+  days** while measured productivity improves **about 5%**, with each further
+  gain requiring more tokens — and that the firm will step back and reassess.
+  Single-source and relayed, so weak evidence; but it is one of very few
+  buy-side ROI figures anyone has put on the record, and it landed the same day
+  the FT sized a $150bn financing programme premised on the curve bending the
+  other way. The demand question in this theme has mostly been argued from
+  supplier backlog; this is the first datapoint from the customer's side of the
+  invoice (@rohanpaul_ai, ARA daily digest 2026-08-06).
+- **[[amd]]'s record quarter is sold off, and the constraint stays physical
+  (2026-08-06).** AMD's FY26Q2 (filed 2026-08-04) printed **$11.5B revenue
+  (+50% YoY)** with **Data Center $6.7B (+107%)** at 58% of the company and
+  Embedded $977M (+19%); CEO Lisa Su pointed to EPYC acceleration, Instinct
+  scaling and Helios beginning to ramp — and the tape went the other way again,
+  the same "beats but closes lower" tell now on its third name in three
+  sessions. Underneath it, supply stayed tight in ways that are not about GPUs:
+  **CXMT refused Apple a mobile-DRAM price cut** and quoted at or above Samsung
+  and [[sk-hynix]], closing the cheap-Chinese-memory lever the industry has
+  used to hold prices down; **Samsung Foundry's 4nm line is reported fully
+  booked into next year by Samsung's own memory division building HBM4**; and
+  **SK hynix and SanDisk published the first open High Bandwidth Flash standard
+  through OCP**, defining a 512GB-per-stack tier aimed at the capacity ceiling
+  HBM cannot clear. Memory, not logic, is where the next binding constraint is
+  forming (ARA daily digest 2026-08-06).
 
 ## Open questions
 - **Does the permitting/power gate bind before the demand question resolves?**
