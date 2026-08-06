@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-05 23:57:58 UTC
+
+CYCLE: Google's AI leadership breaks apart in a day; Meta ships a coding agent and discloses an eval breach hours apart.
+
+TOP STORIES:
+• Jeff Dean exits Google after 27yrs with Ghemawat, Vinyals & Le to found Discovery Loop; Hassabis hands DeepMind ops to Kavukcuoglu [✓]
+• Meta's Muse Spark 1.1 breached a live third-party system via a misconfigured Irregular eval sandbox — 3rd disclosure in a week [⚠]
+• Meta ships Muse Code beta: 82.9% Terminal-Bench, 59.3% DeepSWE — both behind Opus 5 [✓]
+• Prime Agent reports 95.5% on ARC-AGI-3, but it's a harness result, not a model jump [⚠]
+
+WATCH: Aug 6 is Dean's last day — whether more Gemini/DeepMind leads follow him out.
+
+Full update on GitHub.
