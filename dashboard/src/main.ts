@@ -664,6 +664,11 @@ function parseRoute(path: string): boolean {
   if (trimmed === 'pricing') {
     activeTab = 'pricing';
     selectedSlug = null;
+    // Reset the benchmark selection on every entry to the route. It is session
+    // state with no URL segment, so leaving it set means navigating away and
+    // back shows an alternate benchmark while routeFromState() and the SEO
+    // description both still describe the primary one.
+    pricingBenchmark = null;
     syncTabUi();
     return true;
   }
@@ -927,11 +932,14 @@ async function loadModelPricing(signal?: AbortSignal): Promise<ModelPricing | nu
 }
 
 function paintPricing(data: ModelPricing): void {
-  setSafeContent(content, renderPricing(data, pricingBenchmark ?? undefined));
-  hydratePricing(content, data, (benchmark) => {
-    pricingBenchmark = benchmark;
+  // The SAME benchmark value drives both calls. Letting hydrate re-derive it
+  // from the DOM is what produced tooltips keyed to the wrong model array.
+  const benchmark = pricingBenchmark ?? undefined;
+  setSafeContent(content, renderPricing(data, benchmark));
+  hydratePricing(content, data, (next) => {
+    pricingBenchmark = next;
     paintPricing(data);
-  });
+  }, benchmark);
 }
 
 function hydrateAvailabilityFromManifest(m: Manifest): void {

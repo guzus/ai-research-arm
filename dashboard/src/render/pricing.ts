@@ -415,15 +415,22 @@ export function hydratePricing(
   root: ParentNode,
   data: ModelPricing,
   onBenchmarkChange: (benchmark: string) => void,
+  benchmark?: string,
 ): void {
   const chart = root.querySelector<HTMLElement>('#pricingChart');
   const tip = root.querySelector<HTMLElement>('#pricingTooltip');
-  const active = chart?.querySelector('.pricing-chip.is-active');
-  const activeName = (active as HTMLElement | null)?.dataset.benchmark;
-  const benchmark = activeName || data.benchmark;
-  const models: AlternatePoint[] = benchmark === data.benchmark
+  // The active benchmark is passed in, NOT re-read from the DOM. An earlier
+  // version queried '.pricing-chip.is-active' inside #pricingChart — but the
+  // chips render as a SIBLING of that container, so the lookup always returned
+  // null and silently fell back to the primary benchmark. The SVG would then
+  // show an alternate while this array held the primary, and every `data-i`
+  // index resolved to the wrong model: correct-looking dots, wrong tooltips.
+  // Deriving it from the same value that drove the render removes the class of
+  // bug entirely.
+  const active = benchmark || data.benchmark;
+  const models: AlternatePoint[] = active === data.benchmark
     ? data.snapshot.models
-    : (data.snapshot.alternates?.[benchmark] ?? []);
+    : (data.snapshot.alternates?.[active] ?? []);
 
   if (chart && tip) {
     const show = (target: Element) => {

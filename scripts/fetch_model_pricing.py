@@ -137,6 +137,25 @@ OUTPUT CONTRACT (research/market/model-pricing.json)
                     "frontier_price_at": {"0.5": 0.27, "0.6": 0.9, ...}} ]
     }
 
+ARTIFACT SIZE BOUND
+-------------------
+This file is committed to git AND copied into the deployed image by
+`prebuild.mjs` (research/market/ is in its COPY_DIRS), and the lane runs 4x a
+day, so every byte is rewritten ~1,460 times a year. Measured at ~152 KB:
+
+    models      ~76 rows, full detail          ~34 KB
+    alternates  ~258 rows across 5 benchmarks  ~41 KB   (score-only; prices
+                                                         are NOT duplicated)
+    unscored    ~231 rows, 5 fields            ~30 KB
+    history     1 line per run                 ~0.2 KB/record
+
+`history` is the only part that grows, at ~0.2 KB per record, so
+`--history-max 720` (~6 months at this cadence) bounds it near 145 KB and the
+whole artifact stays under ~300 KB indefinitely once the series fills. Raising the cadence or the
+alternate count means lowering `--history-max` to hold that. The bound is
+stated here for the same reason `fetch_gpu_spot.py` states its ~1 MB one: a
+file this shape grows silently, and git keeps every revision.
+
 FAILURE POLICY
 --------------
 Price source unreachable      -> FAIL LOUD (exit 1). Previous artifact is
@@ -313,7 +332,6 @@ def build_price_index(models: Iterable[dict[str, Any]]) -> dict[str, dict[str, A
             {
                 "openrouter_id": model.get("id"),
                 "name": strip_variant(name.split(":", 1)[-1].strip()),
-                "raw_name": name,
                 "price_variant": variant_of(name),
                 "vendor": (model.get("id") or "/").split("/", 1)[0],
                 "input_usd_per_mtok": round(prompt * 1e6, 6),
@@ -474,8 +492,19 @@ def join_models(
         )
         plotted.append(row)
 
+    # Priced but unscored models are a LOOKUP list ("what does model X cost"),
+    # not chart input — nothing plots them, because a point needs both axes.
+    # Carrying the full price record here cost 71 KB of a 208 KB artifact that
+    # is committed to git and copied into the deployed image four times a day,
+    # so only the fields that answer the lookup are kept.
     unscored = [
-        {**price, "key": key}
+        {
+            "key": key,
+            "name": price["name"],
+            "vendor": price["vendor"],
+            "input_usd_per_mtok": price["input_usd_per_mtok"],
+            "output_usd_per_mtok": price["output_usd_per_mtok"],
+        }
         for key, price in prices.items()
         if key not in matched_price_keys
     ]
