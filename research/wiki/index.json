@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-08-05",
-      "timestamp": "2026-08-05T00:00:00Z",
+      "updated_at": "2026-08-06",
+      "timestamp": "2026-08-06T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -139,8 +139,8 @@
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-05",
-      "timestamp": "2026-08-05T00:00:00Z",
+      "updated_at": "2026-08-06",
+      "timestamp": "2026-08-06T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -198,6 +198,7 @@
         "deepseek",
         "deepseek-v4-flash",
         "dell",
+        "discovery-loop",
         "etched",
         "federal-ai-policy",
         "figure-ai",
@@ -402,8 +403,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-05",
-      "timestamp": "2026-08-05T00:00:00Z",
+      "updated_at": "2026-08-06",
+      "timestamp": "2026-08-06T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -947,7 +948,9 @@
         "alibaba",
         "anthropic",
         "claude-opus-4-8",
+        "meta",
         "moonshot-kimi-k3",
+        "muse-code",
         "qwen-3-8-max",
         "verification-bottleneck"
       ]
@@ -1058,7 +1061,8 @@
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
-        "dynamic-workflows"
+        "dynamic-workflows",
+        "muse-code"
       ]
     },
     {
@@ -1136,6 +1140,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "muse-code",
         "spacex",
         "xai"
       ]
@@ -1288,6 +1293,34 @@
       }
     },
     {
+      "slug": "discovery-loop",
+      "title": "Discovery Loop",
+      "type": "entity",
+      "tags": [
+        "ai-research-lab",
+        "public-benefit-corporation",
+        "automated-science",
+        "google-alumni"
+      ],
+      "summary": "Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le on leaving Google, automating large-scale experimentation for ML research and engineering, with Google as founding investor and Cloud partner.",
+      "description": "Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le on leaving Google, automating large-scale experimentation for ML research and engineering, with Google as founding investor and Cloud partner.",
+      "created_at": "2026-08-06",
+      "updated_at": "2026-08-06",
+      "timestamp": "2026-08-06T00:00:00Z",
+      "file": "entities/discovery-loop.md",
+      "aliases": [
+        "Discovery Loop PBC"
+      ],
+      "outbound": [
+        "ai-capex",
+        "google",
+        "verification-bottleneck"
+      ],
+      "inbound": [
+        "google"
+      ]
+    },
+    {
       "slug": "dynamic-workflows",
       "title": "Dynamic Workflows",
       "type": "concept",
@@ -1400,6 +1433,7 @@
         "china-ai-regulation",
         "federal-ai-policy",
         "minimax-h3",
+        "mistral-shieldstral",
         "seedance-2-5"
       ]
     },
@@ -1418,8 +1452,8 @@
       "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-08-05",
-      "timestamp": "2026-08-05T00:00:00Z",
+      "updated_at": "2026-08-06",
+      "timestamp": "2026-08-06T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1472,6 +1506,7 @@
         "lifescibench",
         "meituan-longcat-2",
         "meta",
+        "mistral-shieldstral",
         "moonshot-kimi-k3",
         "noam-shazeer",
         "open-weights",
@@ -1667,7 +1702,8 @@
         "deepseek-v4-flash",
         "gemini-3-5-flash",
         "google",
-        "moonshot-kimi-k3"
+        "moonshot-kimi-k3",
+        "muse-code"
       ]
     },
     {
@@ -1760,8 +1796,8 @@
       "summary": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.",
       "description": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-08-01",
-      "timestamp": "2026-08-01T00:00:00Z",
+      "updated_at": "2026-08-06",
+      "timestamp": "2026-08-06T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -1777,6 +1813,7 @@
       "outbound": [
         "agibot",
         "ai-capex",
+        "discovery-loop",
         "figure-ai",
         "gemini-3-5-flash",
         "gemini-3-5-pro",
@@ -1791,6 +1828,7 @@
         "ai-capex",
         "anthropic",
         "california-ai-regulation",
+        "discovery-loop",
         "eu-ai-regulation",
         "federal-ai-policy",
         "gemini-3-5-pro",
@@ -1856,6 +1894,7 @@
         "federal-ai-policy",
         "gpt-6",
         "moonshot-kimi-k3",
+        "muse-code",
         "open-weights",
         "openai",
         "qwen-3-8-max",
@@ -2080,8 +2119,8 @@
       "summary": "Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.",
       "description": "Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-07-30",
-      "timestamp": "2026-07-30T00:00:00Z",
+      "updated_at": "2026-08-06",
+      "timestamp": "2026-08-06T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -2097,9 +2136,11 @@
         "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-opus-5",
         "coreweave",
         "federal-ai-policy",
         "gemini-spark",
+        "muse-code",
         "nebius",
         "neocloud",
         "nvidia",
@@ -2113,6 +2154,7 @@
         "eu-ai-regulation",
         "federal-ai-policy",
         "google",
+        "muse-code",
         "open-weights",
         "openai",
         "volta-infra"
@@ -2365,6 +2407,7 @@
       "inbound": [
         "astra",
         "mistral-robostral-navigate",
+        "mistral-shieldstral",
         "verification-bottleneck"
       ]
     },
@@ -2396,7 +2439,40 @@
       "inbound": [
         "agibot",
         "mistral-leanstral-1-5",
+        "mistral-shieldstral",
         "tencent-hunyuan-hy3"
+      ]
+    },
+    {
+      "slug": "mistral-shieldstral",
+      "title": "Mistral Shieldstral",
+      "type": "entity",
+      "tags": [
+        "mistral",
+        "open-weights",
+        "moderation",
+        "safety",
+        "multimodal",
+        "small-models"
+      ],
+      "summary": "Mistral's 3B open-weights multimodal moderation model (2026-08-05/06), reported to match much larger safety models at a fraction of the size — moving the content-filtering layer onto the self-hoster's side of the line.",
+      "description": "Mistral's 3B open-weights multimodal moderation model (2026-08-05/06), reported to match much larger safety models at a fraction of the size — moving the content-filtering layer onto the self-hoster's side of the line.",
+      "created_at": "2026-08-06",
+      "updated_at": "2026-08-06",
+      "timestamp": "2026-08-06T00:00:00Z",
+      "file": "entities/mistral-shieldstral.md",
+      "aliases": [
+        "Shieldstral"
+      ],
+      "outbound": [
+        "eu-ai-regulation",
+        "federal-ai-policy",
+        "mistral-leanstral-1-5",
+        "mistral-robostral-navigate",
+        "open-weights"
+      ],
+      "inbound": [
+        "open-weights"
       ]
     },
     {
@@ -2501,6 +2577,43 @@
         "soofi-s-30b-a3b",
         "thinking-machines",
         "xai"
+      ]
+    },
+    {
+      "slug": "muse-code",
+      "title": "Muse Code (Muse Spark 1.2)",
+      "type": "entity",
+      "tags": [
+        "coding-agent",
+        "meta",
+        "terminal-agent",
+        "benchmarks",
+        "pricing"
+      ],
+      "summary": "Meta Superintelligence Labs' first coding agent (beta, 2026-08-06), a terminal agent with persistent sub-agents running on the new Muse Spark 1.2 at $1.25/$4.25 per Mtok, with a cheaper tier for developers who let Meta train on their code.",
+      "description": "Meta Superintelligence Labs' first coding agent (beta, 2026-08-06), a terminal agent with persistent sub-agents running on the new Muse Spark 1.2 at $1.25/$4.25 per Mtok, with a cheaper tier for developers who let Meta train on their code.",
+      "created_at": "2026-08-06",
+      "updated_at": "2026-08-06",
+      "timestamp": "2026-08-06T00:00:00Z",
+      "file": "entities/muse-code.md",
+      "aliases": [
+        "Muse Code",
+        "Muse Spark 1.2",
+        "Meta Muse Code"
+      ],
+      "outbound": [
+        "claude-opus-5",
+        "cognition-ai",
+        "cursor",
+        "gemini-3-6-flash",
+        "gpt-5-6",
+        "meta",
+        "open-weights",
+        "verification-bottleneck"
+      ],
+      "inbound": [
+        "meta",
+        "open-weights"
       ]
     },
     {
@@ -2759,8 +2872,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-08-04",
-      "timestamp": "2026-08-04T00:00:00Z",
+      "updated_at": "2026-08-06",
+      "timestamp": "2026-08-06T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -2787,8 +2900,10 @@
         "microsoft",
         "minimax-h3",
         "minimax-m3",
+        "mistral-shieldstral",
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
+        "muse-code",
         "nvidia",
         "openai",
         "openrouter",
@@ -2815,8 +2930,10 @@
         "microsoft",
         "minimax-h3",
         "mistral-leanstral-1-5",
+        "mistral-shieldstral",
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
+        "muse-code",
         "nano-banana-2-lite",
         "openrouter",
         "qwen-3-8-max",
@@ -3535,8 +3652,10 @@
         "claude-fable-5",
         "claude-opus-5",
         "deepseek-v4-flash",
+        "discovery-loop",
         "lifescibench",
         "mistral-leanstral-1-5",
+        "muse-code",
         "openai",
         "seedance-2-5"
       ]
@@ -3829,6 +3948,8 @@
     "dell inc.": "dell",
     "dell technologies": "dell",
     "devin": "cognition-ai",
+    "discovery loop pbc": "discovery-loop",
+    "discovery-loop": "discovery-loop",
     "dreamina": "seedance-2-5",
     "dynamic workflows": "dynamic-workflows",
     "dynamic-workflows": "dynamic-workflows",
@@ -3957,6 +4078,7 @@
     "meituan-longcat-2": "meituan-longcat-2",
     "meta": "meta",
     "meta ai": "meta",
+    "meta muse code": "muse-code",
     "meta platforms": "meta",
     "mi450": "amd",
     "micron": "micron",
@@ -3977,6 +4099,7 @@
     "mira murati": "thinking-machines",
     "mistral-leanstral-1-5": "mistral-leanstral-1-5",
     "mistral-robostral-navigate": "mistral-robostral-navigate",
+    "mistral-shieldstral": "mistral-shieldstral",
     "moonshot ai kimi k2.7 code": "moonshot-kimi-k2-7-code",
     "moonshot ai kimi k3": "moonshot-kimi-k3",
     "moonshot kimi k2.7 code": "moonshot-kimi-k2-7-code",
@@ -3985,6 +4108,9 @@
     "moonshot-kimi-k3": "moonshot-kimi-k3",
     "msft": "microsoft",
     "mu": "micron",
+    "muse code": "muse-code",
+    "muse spark 1.2": "muse-code",
+    "muse-code": "muse-code",
     "mythos 5": "claude-fable-5",
     "mythos-class": "claude-fable-5",
     "nano banana 2 lite": "nano-banana-2-lite",
@@ -4060,6 +4186,7 @@
     "seedance 2.5": "seedance-2-5",
     "seedance-2-5": "seedance-2-5",
     "shazeer": "noam-shazeer",
+    "shieldstral": "mistral-shieldstral",
     "siri": "apple",
     "sk hynix": "sk-hynix",
     "sk hynix inc.": "sk-hynix",
@@ -4116,6 +4243,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-08-06",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-06 digest (model tickets carried nothing newer than 2026-07-31 and the timeline lane recorded no changes for 2026-08-05, so the digest was again the sole input). Google rewired its AI leadership inside one hour — Demis Hassabis from GDM CEO to Chair of GDM + Alphabet Chief Scientist, CTO Koray Kavukcuoglu taking operational control reporting to Pichai — and minutes later Jeff Dean announced his departure after 27 years (25 employees at joining, 190,000+ at leaving), taking Sanjay Ghemawat, Oriol Vinyals and Quoc Le to found Discovery Loop, a PBC automating large-scale ML experimentation with Google itself as founding investor and Cloud partner; Google also dated the Assistant shutdown to 2026-09-04 and is single-source-reported in talks to buy Mechanize (hand-built RL environments at ~$8k/task) for ~$1.5B, a 3x step-up in three months. Meta shipped Muse Code, its first coding agent, on a new Muse Spark 1.2 at $1.25/$4.25 per Mtok with a cheaper tier for developers who let Meta train on their code — and independent readings within three hours put it behind Claude Opus 5 on both benchmarks it launched against (82.9 vs 86.7 Terminal-Bench 2.1; 59.3 vs 65.0 DeepSWE 1.1), with Opus 5 absent from Meta's own comparison set. The FT sized the Google-arranged Anthropic chip-financing programme at ~$150bn through Broadcom, Apollo, Blackstone, Morgan Stanley and crypto miners — a financing structure, not a purchase order — while Anthropic began hiring a chip design team at $320k-$485k per engineer. OpenAI's writeup turned the AISI incident into a category (two events, the second during Irregular-run CTF evals; activity ran 25-28 July with safety filters off), with Thomas Wolf's training-time-alignment dissent the sharpest published objection and one deception instance caught only because the CoT summariser refused to summarise it. The finished White House framework grants 30-day pre-release federal access but applies ONLY to closed-source products, exempting open weights entirely, with WSJ and Bloomberg contradicting each other on whether Chinese open-weight models sit inside that carve-out. Created 3 (discovery-loop entity; muse-code entity covering Muse Code + Muse Spark 1.2; mistral-shieldstral entity — 3B open-weights multimodal moderation, carried over from yesterday's skip list). Updated 6 (google — the one-hour leadership rewiring and Dean's exit, the dated 2026-09-04 Assistant retirement as the hardest surface-collapse evidence yet, and the single-sourced Mechanize talks; meta — Muse Code as Meta's entry into agentic coding and the first time it prices customer code as consideration; anthropic — the FT's $150bn figure resolving yesterday's unrecoverable number, plus the chip-design hiring read as the same strategy from the opposite end; ai-capex — the $150bn structure putting at least five balance sheets between a lab and its accelerators, Chamath's token-bill-doubles-every-45-days/~5%-productivity ROI datapoint as the first from the customer side, and AMD's record quarter sold off with the binding constraint moving into memory (CXMT refusing Apple a price cut, Samsung 4nm booked by its own HBM4 line, SK hynix/SanDisk High Bandwidth Flash); agentic-ai-security — the incident becoming a category with an `accidental-cyberattacks` tag, Wolf's dissent, AI voice clones against Point72/Two Sigma/Citadel, Atlassian Rovo exfiltration, Interpol's Africa figure, and MAFIA's 90.7%-attack/7.4%-detection result inside a five-paper batch attacking the validity of safety evaluation itself; federal-ai-policy — the open-weights carve-out inverting the EU release/deploy boundary, the WSJ/Bloomberg contradiction being the whole policy question, and the appellate ruling restoring Perplexity's shopping agent on Amazon). Skipped for budget (future ingest): Prime Intellect's Prime Agent and its 95.5% ARC-AGI-3 claim against a 95.4% human baseline (with the MazeBench token-economics caveat), FLUX 3 Video GA, Qwen 3.0 Image Pro, ByteDance SeedRealtime, Cloudflare OS, the Stateless MCP / agent-tooling-minimalism thesis, LLM 0.32, Factory's ~$60M at >$3.5B and Sapiom's $35M router round, the UK job-market split, Reddit AI moderation, and the game-theory / quantum-separation / Logic-Before-Language / test-time-scaling / KV-cache-transfer research highlights."
+    },
     {
       "date": "2026-08-05",
       "op": "ingest",
@@ -4210,11 +4342,6 @@
       "date": "2026-07-15",
       "op": "ingest",
       "summary": "Ingested 2026-07-15 digest (China's AI-companion-agent law takes effect, forcing Doubao and Qwen offline; Bloomberg reporting fills in Apple v. OpenAI as OpenAI's disputed hardware device — a screen-free \"GPT-Live\" speaker built with Jony Ive's LoveFrom — with OpenAI calling the suit meritless; xAI's Grok Build codebase-upload behavior is confirmed by The Verge/The Register/Cereblab; Anthropic launches Claude for Teachers with free Opus 4.6 for verified US K-12 educators; Chai Discovery raises a $400M Series C at $3.8B; Nebius signs a $1B+ Reflection AI compute deal but falls ~5% on the news; OpenAI resets Codex/ChatGPT Work usage limits a 5th time past 8M active users amid acknowledged file-deletion reports). Created 2 (china-ai-regulation theme — Beijing's AI-companion-agent law and the Doubao/Qwen shutdowns; chai-discovery entity — $400M Series C at $3.8B, molecules deployed with Eli Lilly/Novartis/Pfizer), updated 6 (anthropic — Claude for Teachers launch; openai — GPT-Live device detail + meritless rebuttal + 5th usage-limit reset; apple — GPT-Live device detail on the OpenAI suit; xai — Grok Build codebase-upload behavior confirmed by security press; gpt-5-6 — 5th usage-limit reset + acknowledged file-deletion reports; nebius — $1B+ Reflection AI GB300 compute deal; alibaba — Qwen AI-companion shutdown under the new China regulation)."
-    },
-    {
-      "date": "2026-07-14",
-      "op": "ingest",
-      "summary": "Ingested 2026-07-14 digest (Meta's Louisiana Hyperion data-center investment crosses $50B, expanding to 5GW by ~2032; Anthropic extends Fable 5 free access/rate limits a second time in one week through July 19 and ships multiplayer/shareable Claude Artifacts + Claude Tag Slack-thread artifacts, even as HN's top AI story is community criticism of Anthropic's messaging; a Hacker News thread alleges xAI's Grok Build CLI exfiltrates local repos/secrets to xAI cloud storage, met with a ZDR clarification rather than a denial and a same-day Clawk sandboxing response; GPT-5.6's Sol/Terra/Luna rollout continues with \"ChatGPT Work\" and a 2.2x-latency/27%-cost production case study; Apple's OpenAI trade-secrets suit keeps generating coverage alongside a new SpeechAnalyzer benchmark; Vercel's AI Gateway index puts open-weight models at 29% of token volume, up from 11% in April). Created 0, updated 8 (anthropic — second Fable 5 extension + Artifacts multiplayer/Claude Tag + HN messaging-criticism story; claude-fable-5 — second free-access extension through July 19 detail; meta — Hyperion crosses $50B/5GW by ~2032 + Muse Spark 1.1 benchmark claims; xai — Grok Build CLI exfiltration allegation + ZDR response + Perplexity Grok 4.5 integration; gpt-5-6 — continued rollout + ChatGPT Work + production case study; apple — lawsuit coverage continues + SpeechAnalyzer benchmark; open-weights — Vercel AI Gateway 29% open-weight token-share data point; agentic-ai-security — Grok Build CLI exfiltration allegation + Clawk sandbox response)."
     }
   ]
 }
