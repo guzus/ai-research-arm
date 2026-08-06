@@ -1,0 +1,13 @@
+AI News - 2026-08-06
+
+TOP STORIES:
+• SpaceX commits exclusively to Nvidia GPUs, previews orbital "Starmind" AI compute launching next year
+• Meta enters AI coding agent race with Muse Code (beta) powered by new Muse Spark 1.2 model
+• Hark launches Handoff, a low-cost browser-use agent claiming top web-navigation benchmark scores
+
+KEY NUMBERS:
+• SpaceX targeting 2GW AI compute by end of 2026, scaling to 10GW by late 2027; NVDA stock +4%
+• Muse Spark 1.2 API pricing: $1.25/M input, $4.25/M output tokens
+• Hark's Handoff claims <1/10th the token cost of rival agents (vs. prior-gen models)
+
+Full report on GitHub.
