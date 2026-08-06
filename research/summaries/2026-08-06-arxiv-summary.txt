@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-06
+
+TOP 5 PAPERS:
+• Argus - self-evolving agentic runtime (Manager/Planner/Engineer + verification-gated evolution), 78% on SWE-Bench Pro
+• Towards Physics of Multimodal Pretraining - maps knowledge flow, modality synergy conditions, and early-unification gains
+• Reasoning Core - procedural generators emit verifiable reasoning problems across math, logic, planning, code
+• Gradient Immunity - null-space safety gate that resists malicious downstream fine-tuning of open weights
+• ABSeeker - answer-backtracked dense credit assignment for search agents, 55.3% on BrowseComp
+
+CATEGORIES: LM/NLP 12, Vision/Multimodal 12, Agents 11, Safety 8, Other 11 (~180 screened)
+
+Full report on GitHub.
