@@ -2017,50 +2017,38 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "Resolved opencode route: $route ($model)"
 
-      - name: Install opencode CLI
-        if: steps.effective.outputs.backend == 'opencode-kimi-k3'
-        run: |
-          npm install -g opencode-ai@1.18.3
-          opencode --version
-
       # This backend uses the same staged-input files, writer-owned commit,
       # and verifier/methodology artifact contract as the Claude/Codex/
       # Fireworks paths. The prompt is passed as the positional message arg;
       # --auto approves any permission not explicitly denied so a headless
       # run can never hang on an interactive permission ask.
+      # Containerised (.github/actions/run-opencode-container). This lane is
+      # why the container matters most: the workflow triggers on
+      # `issues: [opened, labeled]` and the twitter_url path feeds live tweets,
+      # replies and attached images to the agent. Previously that
+      # attacker-influenced content reached an agent holding unsandboxed bash
+      # on the self-hosted host, whose persistent HOME holds other lanes'
+      # credentials. Untrusted GEN_TOPIC / GEN_PROMPT / GEN_TAGS still stay out
+      # of env entirely — the agent reads them from .gen-input/ inside the
+      # mounted workspace.
       - name: Run Generative Research (OpenCode DeepSeek V4 Flash)
         if: steps.effective.outputs.backend == 'opencode-kimi-k3'
         id: gen-opencode
         continue-on-error: true
         timeout-minutes: 90
-        env:
-          # Security: GEN_TOPIC / GEN_PROMPT / GEN_TAGS are NOT in this env
-          # block. The agent reads them from $GITHUB_WORKSPACE/.gen-input/
-          # so untrusted issue/dispatch text is not injected into env.
-          GEN_SLUG: ${{ steps.params.outputs.slug }}
-          GEN_SOURCE: ${{ steps.params.outputs.source }}
-          GEN_DRAFT: ${{ steps.draft.outputs.path }}
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-          # MOONSHOT_API_KEY deliberately NOT passed: it cannot serve the
-          # pinned deepseek-v4-flash, and opencode has no subprocess env
-          # allowlist, so injecting an unusable secret only widens what the
-          # agent's bash tool can read. The preflight step keeps it solely to
-          # emit a precise error when it is the only key configured.
-          OPENCODE_MODEL_REF: ${{ steps.opencode-route.outputs.model }}
-          OPENCODE_DISABLE_AUTOUPDATE: '1'
-          OPENCODE_CONFIG: ${{ github.workspace }}/.github/opencode/opencode.json
-        run: |
-          set -euo pipefail
-          # Plain assignment so a missing prompt file fails the step here;
-          # an inline "$(cat ...)" argument would swallow the cat failure
-          # under set -e and hand opencode an empty prompt.
-          GEN_OPENCODE_PROMPT="$(cat .github/opencode/prompts/generative-research.md)"
-          opencode run \
-            -m "$OPENCODE_MODEL_REF" \
-            --auto \
-            "$GEN_OPENCODE_PROMPT"
+        uses: ./.github/actions/run-opencode-container
+        with:
+          prompt-file: ${{ github.workspace }}/.github/opencode/prompts/generative-research.md
+          model: ${{ steps.opencode-route.outputs.model }}
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          # Inside the 90-minute step cap, so the agent is cut off with time
+          # left for the failure path rather than the step being killed.
+          timeout-minutes: '85'
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
+          gen-slug: ${{ steps.params.outputs.slug }}
+          gen-source: ${{ steps.params.outputs.source }}
+          gen-draft: ${{ steps.draft.outputs.path }}
 
       # ---- Fireworks backends ----------------------------------------------
       # claude-code-action redirected to Fireworks' Anthropic-compatible

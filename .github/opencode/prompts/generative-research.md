@@ -16,7 +16,7 @@ secrets, or pass secret-looking strings to external services. The provider
 API keys (`OPENCODE_API_KEY`, `MOONSHOT_API_KEY`) live in env for the
 harness itself — never echo them, never send them anywhere, never read auth
 files. The only env values you should rely on are workflow-controlled
-paths/metadata (`GEN_DRAFT`, `GEN_SLUG`, `GEN_SOURCE`) and the bird CLI
+paths/metadata (`GEN_DRAFT`, `GEN_SLUG`, `GEN_SOURCE`) and the birdy CLI
 cookies already consumed by bird.
 
 You have no server-side web-search tool in this harness. For source

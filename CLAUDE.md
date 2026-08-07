@@ -191,11 +191,27 @@ Bash host filesystem access; it also blocks reads of `~/.ssh`, `~/.aws`,
 workflows must run `.github/actions/setup-claude-sandbox` first; agent-run
 lanes get it centrally.
 
-**Pi lanes don't read Claude Code settings,** so they get their isolation
-from `.github/actions/run-pi-container` instead: a small Node container with
-`pi`, `birdy`, `git`, `jq`, mounting only `$GITHUB_WORKSPACE`, `/tmp/bird`
-read-only, and the prompt file. Missing Docker is a hard failure — never fall
-back to host-level `pi --tools ... bash`.
+**Pi and opencode lanes don't read Claude Code settings,** so they get their
+isolation from a container instead. `.github/actions/run-pi-container`: a small
+Node container with `pi`, `birdy`, `git`, `jq`, mounting only
+`$GITHUB_WORKSPACE`, `/tmp/bird` read-only, and the prompt file.
+`.github/actions/run-opencode-container`: the same shape for opencode, plus
+`uv` and `pdftotext` because the research prompt shells out to
+`uv run python scripts/...` 17 times. Both run `--cap-drop ALL`,
+`--security-opt no-new-privileges`, `--pids-limit`, non-root, with `HOME` under
+`/tmp` so the agent never sees the runner's real home. **Missing Docker is a
+hard failure** — never fall back to host-level `pi --tools ... bash` or
+`opencode run`.
+
+Until 2026-08-08 opencode had NEITHER: it ran bare on the host with
+`edit`/`bash`/`webfetch` all `allow` plus `--auto`, which auto-approves
+anything not explicitly denied. That mattered because `generative-research.yml`
+triggers on `issues: [opened, labeled]` and its `twitter_url` path feeds live
+tweets, replies and images to the agent — attacker-influenced content reaching
+unsandboxed bash on a runner whose persistent HOME holds every other lane's
+credentials. `scripts/test_backend_matrix.py::test_opencode_never_runs_unsandboxed`
+now fails the build if any workflow calls `opencode run` outside the container,
+or if the container loses its hardening flags.
 
 ### Aggregation (raw signal → `research/<source>/`)
 

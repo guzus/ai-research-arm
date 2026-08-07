@@ -184,13 +184,13 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) CANDIDATE="opencode-kimi-k3"', workflow)
         self.assertIn('opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) BACKEND="opencode-kimi-k3"', workflow)
         self.assertIn('[ "$BACKEND" != "opencode-kimi-k3" ]', workflow)
-        # Version-pinned install, deterministic binary, env-var auth (no
-        # auth.json seeding), fail-closed route preflight, output guard.
-        self.assertIn("npm install -g opencode-ai@", workflow)
-        self.assertIn("OPENCODE_DISABLE_AUTOUPDATE", workflow)
-        self.assertIn("OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}", workflow)
+        # Fail-closed route preflight and the output guard stay in the
+        # workflow; the version-pinned install and the env-var auth moved into
+        # the container action and are asserted there (see the containment
+        # test below), because that is now the only place opencode runs.
         self.assertIn("Resolve and preflight OpenCode route", workflow)
         self.assertIn("Fail OpenCode run without article", workflow)
+        self.assertIn("uses: ./.github/actions/run-opencode-container", workflow)
         # MOONSHOT_API_KEY may appear exactly once — the preflight step, purely
         # to emit a precise error when it is the only key configured. It must
         # NOT reach the agent step: opencode has no subprocess env allowlist,
@@ -238,6 +238,7 @@ class RoutingInvariants(unittest.TestCase):
             found = set()
             for job in (doc.get("jobs") or {}).values():
                 for step in job.get("steps") or []:
+                    # (a) shell assignments, e.g. the gen-research preflight
                     for line in (step.get("run") or "").splitlines():
                         if line.lstrip().startswith("#"):
                             continue
@@ -248,6 +249,14 @@ class RoutingInvariants(unittest.TestCase):
                         found.update(re.findall(
                             r'\bmodel="((?:opencode-go|opencode|moonshotai)/[^"]+)"',
                             line))
+                    # (b) the `model:` input to the container action. Skip
+                    # ${{ }} expressions: those indirect to a preflight
+                    # literal already counted by (a), and treating the
+                    # expression text as an id would always mismatch.
+                    if "run-opencode-container" in str(step.get("uses") or ""):
+                        model = str((step.get("with") or {}).get("model") or "")
+                        if model and "${{" not in model:
+                            found.add(model)
             seen[name] = found
         union = set().union(*seen.values())
         self.assertEqual(
@@ -322,6 +331,51 @@ class RoutingInvariants(unittest.TestCase):
             for other in others:
                 self.assertNotIn(other, line.lower(),
                                  f"{field} names {other} but the tier serves {family}")
+
+    def test_opencode_never_runs_unsandboxed(self):
+        # opencode was the only agent harness with no containment: it ran bare
+        # on the self-hosted host with edit/bash/webfetch all "allow" plus
+        # --auto, while generative-research.yml triggers on `issues:` and feeds
+        # the agent live tweets. Every invocation must now go through the
+        # container action, and that action must keep its teeth.
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        # EXECUTABLE shell only. The action's header comment explains the very
+        # flags asserted below, so a whole-file substring check passes on the
+        # prose while the real flag is gone — verified: deleting
+        # `--cap-drop ALL` from the docker invocation left the file-wide
+        # assertion green. Strip comments and assert on what actually runs.
+        action = "\n".join(
+            line for line in
+            "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"]).splitlines()
+            if not line.lstrip().startswith("#"))
+        for name in self.OPENCODE_WORKFLOWS:
+            doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
+                                 .read_text(encoding="utf-8"))
+            for job in (doc.get("jobs") or {}).values():
+                for step in job.get("steps") or []:
+                    for line in (step.get("run") or "").splitlines():
+                        code = line.split("#", 1)[0]
+                        self.assertNotRegex(
+                            code, r"(^|[;&|]|\s)opencode\s+run\b",
+                            f"{name}: `opencode run` outside the container "
+                            f"action reintroduces the unsandboxed posture")
+        # Container hardening, mirroring run-pi-container.
+        for flag in ("--cap-drop ALL", "--security-opt no-new-privileges",
+                     "--pids-limit", '--user "$(id -u):$(id -g)"',
+                     "HOME=/tmp/opencode-home"):
+            self.assertIn(flag, action, f"container lost {flag}")
+        # A missing Docker daemon must FAIL, never silently degrade to a host
+        # run — that is the exact posture this action removes.
+        self.assertIn("Docker is required for sandboxed opencode runs", action)
+        # Pinned install lives here now.
+        self.assertIn("opencode-ai@1.18.3", action)
+        self.assertIn("OPENCODE_DISABLE_AUTOUPDATE=1", action)
+        # The runner's real home holds other lanes' credentials; the agent gets
+        # the workspace and the prompt, nothing else by default.
+        self.assertNotIn('--volume "$HOME', action)
+        self.assertNotIn("--privileged", action)
 
     def test_comparison_tiers_are_strict(self):
         # Comparison artifacts must be attributable to their labeled backend:

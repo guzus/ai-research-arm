@@ -204,11 +204,6 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install opencode CLI
-        run: |
-          npm install -g opencode-ai@1.18.3
-          opencode --version
-
       # Headless env-var login through the real harness, using the EXACT
       # invocation shape of the production backend step in
       # generative-research.yml — same route-resolved `-m` model, same
@@ -219,28 +214,34 @@ jobs:
       # produce text. The provider model declarations keep the pinned
       # model resolvable even if the models.dev registry cache on the
       # runner predates it.
-      - name: Run opencode file-free canary
+      - name: Check opencode auth
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-          OPENCODE_DISABLE_AUTOUPDATE: '1'
-          OPENCODE_CONFIG: ${{ github.workspace }}/.github/opencode/opencode-canary.json
         run: |
           set -euo pipefail
-          # Same route resolution as the production preflight: Go-only while
-          # the temporary DeepSeek swap is active.
-          if [ -n "${OPENCODE_API_KEY:-}" ]; then
-            model="opencode-go/deepseek-v4-flash"
-          else
+          if [ -z "${OPENCODE_API_KEY:-}" ]; then
             echo "::error::No opencode auth configured (OPENCODE_API_KEY). Moonshot cannot serve deepseek-v4-flash."
             exit 1
           fi
-          echo "Canary model: $model"
+
+      # Containerised, matching production. A canary that certifies a
+      # DIFFERENT environment than the real lane runs in is worth little — the
+      # same reasoning that pins it to production's model id. Tools stay denied
+      # by opencode-canary.json, so containment here is belt AND braces.
+      - name: Run opencode file-free canary
+        uses: ./.github/actions/run-opencode-container
+        with:
+          prompt-text: 'Reply with exactly this token and nothing else: OPENCODE-KIMI-CANARY-OK'
+          model: opencode-go/deepseek-v4-flash
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          opencode-config: .github/opencode/opencode-canary.json
+          timeout-minutes: '10'
+          output-file: ${{ runner.temp }}/opencode-kimi-canary.out
+
+      - name: Assert canary token
+        run: |
+          set -euo pipefail
           out="${RUNNER_TEMP:-/tmp}/opencode-kimi-canary.out"
-          opencode run \
-            -m "$model" \
-            --auto \
-            "Reply with exactly this token and nothing else: OPENCODE-KIMI-CANARY-OK" \
-            | tee "$out"
           if ! grep -q "OPENCODE-KIMI-CANARY-OK" "$out"; then
             echo "::error::opencode run completed but the canary token is missing from its output — env-var auth or model routing through opencode is broken even though the raw API probe passed."
             exit 1
