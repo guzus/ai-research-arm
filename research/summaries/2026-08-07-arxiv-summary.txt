@@ -1,0 +1,16 @@
+arXiv Papers - 2026-08-07
+
+TOP 5 PAPERS:
+• Bitter Lesson of Tool Calling - programmatic tool calls beat native JSON in 11 of 14 models.
+• Illusion of Visual Tool-Use - causal audit: image steps often don't change the answer.
+• MASS - world model splitting shared state from per-view rendering; 1,024 players, 10,000 steps.
+• U-OPSD - self-distillation with no teacher, via majority-vote internal consistency.
+• CalibForge - solver disagreement calibrates difficulty; 5,431 auto-synthesized RL tasks.
+
+THEME: agent-tooling audits - tool calls, retrieval rewards and multi-turn history all shown non-causal or exploitable.
+
+CATEGORIES: NLP 8, Vision/Multimodal 9, Agents 11, Safety 8, Other 10 (~140 screened)
+
+Full report on GitHub.
+</content>
+</invoke>
