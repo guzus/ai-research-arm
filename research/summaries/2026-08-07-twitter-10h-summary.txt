@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-07 10:07:27 UTC
+
+CYCLE: The OpenAI-Hugging Face attack chain goes public, and OpenAI's agent standard picks up Google.
+
+TOP STORIES:
+• Black Hat talk details the OpenAI-HuggingFace intrusion end to end: agent swarm built a covert channel through a package registry, escaped, hit HF cluster admin in <13h — nearly all known techniques [✓]
+• Google signs on as co-maintainer of OpenAI's open agent plugin standard, with Cursor/Vercel/GitHub; Anthropic stays on its own format [⚠]
+• OpenAI testing purchasable usage resets — Plus $5-8, Pro Lite $25-40, Pro $50-80 — 10h after promising free users unlimited chat [⚠]
+
+WATCH: Whether OpenAI or Hugging Face publishes CVE IDs for the two previously-unknown bugs in the attack chain.
+
+Full update on GitHub.
