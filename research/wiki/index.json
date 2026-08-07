@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-08-06",
-      "timestamp": "2026-08-06T00:00:00Z",
+      "updated_at": "2026-08-07",
+      "timestamp": "2026-08-07T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -71,6 +71,7 @@
         "google",
         "gpt-5-6",
         "liquid-ai",
+        "meta",
         "open-weights",
         "openai",
         "verification-bottleneck",
@@ -85,11 +86,13 @@
         "claude-sonnet-5",
         "cognition-ai",
         "dynamic-workflows",
+        "evo-genome-models",
         "federal-ai-policy",
         "gemini-3-6-flash",
         "gpt-5-6",
         "gpt-6",
         "liquid-ai",
+        "meta",
         "open-weights",
         "openai",
         "sakana-ai",
@@ -211,6 +214,7 @@
         "micron",
         "microsoft",
         "minimax-m3",
+        "model-specific-silicon",
         "moonshot-kimi-k3",
         "nebius",
         "neocloud",
@@ -222,6 +226,7 @@
         "remote-labor-index",
         "sk-hynix",
         "spacex",
+        "taalas",
         "volta-infra",
         "xai"
       ],
@@ -350,13 +355,14 @@
         "ai-accelerator",
         "gpu",
         "earnings",
-        "public-listing"
+        "public-listing",
+        "m-and-a"
       ],
-      "summary": "The credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) on EPYC and Instinct as the Helios rack-scale system began ramping into Anthropic's 2 GW MI450 commitment.",
-      "description": "The credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) on EPYC and Instinct as the Helios rack-scale system began ramping into Anthropic's 2 GW MI450 commitment.",
+      "summary": "The credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios ramped into Anthropic's 2 GW MI450 commitment, and it bought model-specific-silicon startup Taalas on 2026-08-07.",
+      "description": "The credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios ramped into Anthropic's 2 GW MI450 commitment, and it bought model-specific-silicon startup Taalas on 2026-08-07.",
       "created_at": "2026-08-05",
-      "updated_at": "2026-08-05",
-      "timestamp": "2026-08-05T00:00:00Z",
+      "updated_at": "2026-08-07",
+      "timestamp": "2026-08-07T00:00:00Z",
       "file": "entities/amd.md",
       "aliases": [
         "AMD",
@@ -370,18 +376,24 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "etched",
         "micron",
         "microsoft",
+        "model-specific-silicon",
         "neocloud",
         "nvidia",
         "open-weights",
         "openai",
-        "spacex"
+        "spacex",
+        "taalas"
       ],
       "inbound": [
         "ai-capex",
         "anthropic",
-        "nvidia"
+        "etched",
+        "model-specific-silicon",
+        "nvidia",
+        "taalas"
       ],
       "market": {
         "ticker": "AMD",
@@ -403,8 +415,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-06",
-      "timestamp": "2026-08-06T00:00:00Z",
+      "updated_at": "2026-08-07",
+      "timestamp": "2026-08-07T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -427,6 +439,7 @@
         "claude-sonnet-5",
         "cognition-ai",
         "dynamic-workflows",
+        "etched",
         "federal-ai-policy",
         "gemini-3-5-flash",
         "gemini-spark",
@@ -437,6 +450,7 @@
         "meta",
         "micron",
         "microsoft",
+        "model-specific-silicon",
         "moonshot-kimi-k3",
         "neocloud",
         "noam-shazeer",
@@ -448,6 +462,7 @@
         "salesforce",
         "sk-telecom",
         "spacex",
+        "taalas",
         "volta-infra",
         "xai"
       ],
@@ -473,6 +488,7 @@
         "deepseek",
         "dynamic-workflows",
         "eu-ai-regulation",
+        "evo-genome-models",
         "federal-ai-policy",
         "figure-ai",
         "fireworks-ai",
@@ -486,6 +502,7 @@
         "micron",
         "microsoft",
         "minimax-m3",
+        "model-specific-silicon",
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
         "noam-shazeer",
@@ -498,6 +515,7 @@
         "salesforce",
         "sk-telecom",
         "spacex",
+        "taalas",
         "thinking-machines",
         "verification-bottleneck",
         "volta-infra",
@@ -657,6 +675,7 @@
         "etched",
         "gpt-5-6",
         "micron",
+        "model-specific-silicon",
         "nvidia"
       ],
       "market": {
@@ -740,7 +759,9 @@
         "anthropic",
         "openai"
       ],
-      "inbound": []
+      "inbound": [
+        "evo-genome-models"
+      ]
     },
     {
       "slug": "china-ai-regulation",
@@ -949,6 +970,7 @@
         "anthropic",
         "claude-opus-4-8",
         "meta",
+        "model-specific-silicon",
         "moonshot-kimi-k3",
         "muse-code",
         "qwen-3-8-max",
@@ -985,6 +1007,7 @@
       ],
       "inbound": [
         "anthropic",
+        "evo-genome-models",
         "verification-bottleneck"
       ]
     },
@@ -1317,6 +1340,7 @@
         "verification-bottleneck"
       ],
       "inbound": [
+        "evo-genome-models",
         "google"
       ]
     },
@@ -1374,8 +1398,8 @@
       "summary": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised and a $5B valuation, then hit a $10.3B valuation from big-name investors by 2026-07-23 — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).",
       "description": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised and a $5B valuation, then hit a $10.3B valuation from big-name investors by 2026-07-23 — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).",
       "created_at": "2026-07-01",
-      "updated_at": "2026-07-25",
-      "timestamp": "2026-07-25T00:00:00Z",
+      "updated_at": "2026-08-07",
+      "timestamp": "2026-08-07T00:00:00Z",
       "file": "entities/etched.md",
       "aliases": [
         "Etched",
@@ -1383,12 +1407,19 @@
       ],
       "outbound": [
         "ai-capex",
+        "amd",
         "broadcom",
         "meituan-longcat-2",
-        "nvidia"
+        "model-specific-silicon",
+        "nvidia",
+        "taalas"
       ],
       "inbound": [
-        "meituan-longcat-2"
+        "amd",
+        "anthropic",
+        "meituan-longcat-2",
+        "model-specific-silicon",
+        "taalas"
       ]
     },
     {
@@ -1435,6 +1466,46 @@
         "minimax-h3",
         "mistral-shieldstral",
         "seedance-2-5"
+      ]
+    },
+    {
+      "slug": "evo-genome-models",
+      "title": "Evo (genome language models)",
+      "type": "entity",
+      "tags": [
+        "genomics",
+        "biology",
+        "foundation-model",
+        "arc-institute",
+        "stanford",
+        "biosecurity",
+        "phage"
+      ],
+      "summary": "Arc Institute and Stanford's genome language models; in Science on 2026-08-07 they were reported to have written the first complete bacteriophage genomes from scratch, 16 of which produced working viruses.",
+      "description": "Arc Institute and Stanford's genome language models; in Science on 2026-08-07 they were reported to have written the first complete bacteriophage genomes from scratch, 16 of which produced working viruses.",
+      "created_at": "2026-08-07",
+      "updated_at": "2026-08-07",
+      "timestamp": "2026-08-07T00:00:00Z",
+      "file": "entities/evo-genome-models.md",
+      "aliases": [
+        "Evo",
+        "Evo 1",
+        "Evo 2",
+        "Evo genome language model",
+        "Evo genome language models"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "chai-discovery",
+        "claude-science",
+        "discovery-loop",
+        "federal-ai-policy",
+        "lifescibench",
+        "verification-bottleneck"
+      ],
+      "inbound": [
+        "lifescibench"
       ]
     },
     {
@@ -1501,6 +1572,7 @@
         "deepseek",
         "deepseek-v4-flash",
         "eu-ai-regulation",
+        "evo-genome-models",
         "gpt-5-6",
         "john-jumper",
         "lifescibench",
@@ -1856,11 +1928,11 @@
         "government-gated",
         "preview"
       ],
-      "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); the full family is now GA, powering the new \"ChatGPT Work\" product, but unprotected \"Full Access Mode\" reportedly deleted users' home directories in several cases.",
-      "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); the full family is now GA, powering the new \"ChatGPT Work\" product, but unprotected \"Full Access Mode\" reportedly deleted users' home directories in several cases.",
+      "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); on 2026-08-07 Sol became the single model behind all paid ChatGPT chat with a reasoning-effort slider, while Luna went unlimited for Free and Go users.",
+      "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); on 2026-08-07 Sol became the single model behind all paid ChatGPT chat with a reasoning-effort slider, while Luna went unlimited for Free and Go users.",
       "created_at": "2026-06-20",
-      "updated_at": "2026-07-22",
-      "timestamp": "2026-07-22T00:00:00Z",
+      "updated_at": "2026-08-07",
+      "timestamp": "2026-08-07T00:00:00Z",
       "file": "entities/gpt-5-6.md",
       "aliases": [
         "GPT-5.6",
@@ -1893,6 +1965,7 @@
         "deepseek-v4-flash",
         "federal-ai-policy",
         "gpt-6",
+        "model-specific-silicon",
         "moonshot-kimi-k3",
         "muse-code",
         "open-weights",
@@ -2017,8 +2090,8 @@
       "summary": "OpenAI's 750-task, expert-authored life-science research benchmark (released 2026-06-17) on which the best model clears only 36.1% — a concrete measure of the gap between frontier models and autonomous scientific research.",
       "description": "OpenAI's 750-task, expert-authored life-science research benchmark (released 2026-06-17) on which the best model clears only 36.1% — a concrete measure of the gap between frontier models and autonomous scientific research.",
       "created_at": "2026-06-19",
-      "updated_at": "2026-06-19",
-      "timestamp": "2026-06-19T00:00:00Z",
+      "updated_at": "2026-08-07",
+      "timestamp": "2026-08-07T00:00:00Z",
       "file": "concepts/lifescibench.md",
       "aliases": [
         "LifeSciBench",
@@ -2028,12 +2101,14 @@
       ],
       "outbound": [
         "agent-lifespan-engineering",
+        "evo-genome-models",
         "federal-ai-policy",
         "openai",
         "verification-bottleneck"
       ],
       "inbound": [
         "claude-science",
+        "evo-genome-models",
         "john-jumper",
         "openai",
         "verification-bottleneck"
@@ -2119,8 +2194,8 @@
       "summary": "Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.",
       "description": "Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-08-06",
-      "timestamp": "2026-08-06T00:00:00Z",
+      "updated_at": "2026-08-07",
+      "timestamp": "2026-08-07T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -2131,6 +2206,7 @@
         "AI Mode"
       ],
       "outbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
         "china-ai-regulation",
@@ -2148,6 +2224,7 @@
         "openai"
       ],
       "inbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
         "claude-sonnet-5",
@@ -2476,6 +2553,50 @@
       ]
     },
     {
+      "slug": "model-specific-silicon",
+      "title": "Model-specific silicon",
+      "type": "concept",
+      "tags": [
+        "inference",
+        "asic",
+        "hardware",
+        "chip-design",
+        "cost-per-token"
+      ],
+      "summary": "Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token — the design bet behind Taalas, Etched, Groq and the 2026 custom-inference-silicon wave.",
+      "description": "Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token — the design bet behind Taalas, Etched, Groq and the 2026 custom-inference-silicon wave.",
+      "created_at": "2026-08-07",
+      "updated_at": "2026-08-07",
+      "timestamp": "2026-08-07T00:00:00Z",
+      "file": "concepts/model-specific-silicon.md",
+      "aliases": [
+        "model-specific ASIC",
+        "hardwired model silicon",
+        "weights in silicon",
+        "model-specific chip"
+      ],
+      "outbound": [
+        "ai-capex",
+        "amd",
+        "anthropic",
+        "broadcom",
+        "claude-opus-5",
+        "etched",
+        "gpt-5-6",
+        "moonshot-kimi-k3",
+        "neocloud",
+        "nvidia",
+        "openai",
+        "taalas"
+      ],
+      "inbound": [
+        "amd",
+        "anthropic",
+        "etched",
+        "taalas"
+      ]
+    },
+    {
       "slug": "moonshot-kimi-k2-7-code",
       "title": "Moonshot Kimi K2.7 Code",
       "type": "entity",
@@ -2572,6 +2693,7 @@
         "federal-ai-policy",
         "gemini-3-5-pro",
         "gemini-3-6-flash",
+        "model-specific-silicon",
         "open-weights",
         "qwen-3-8-max",
         "soofi-s-30b-a3b",
@@ -2726,6 +2848,7 @@
         "dell",
         "gemini-3-5-flash",
         "meta",
+        "model-specific-silicon",
         "nebius",
         "nvidia",
         "spacex",
@@ -2829,10 +2952,12 @@
         "gpt-6",
         "meta",
         "microsoft",
+        "model-specific-silicon",
         "open-weights",
         "openai",
         "safe-superintelligence",
         "sk-hynix",
+        "taalas",
         "xiaomi-mimo-v2-5-pro"
       ],
       "images": [
@@ -2958,8 +3083,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-08-05",
-      "timestamp": "2026-08-05T00:00:00Z",
+      "updated_at": "2026-08-07",
+      "timestamp": "2026-08-07T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -3015,6 +3140,7 @@
         "micron",
         "microsoft",
         "mistral-leanstral-1-5",
+        "model-specific-silicon",
         "moonshot-kimi-k2-7-code",
         "noam-shazeer",
         "nvidia",
@@ -3539,6 +3665,44 @@
       ]
     },
     {
+      "slug": "taalas",
+      "title": "Taalas",
+      "type": "entity",
+      "tags": [
+        "ai-chip",
+        "inference",
+        "asic",
+        "model-specific-silicon",
+        "m-and-a",
+        "startup"
+      ],
+      "summary": "Inference-chip startup that hardwires a single model directly into silicon; acquired by AMD on 2026-08-07 with no disclosed terms — the second model-specific-silicon acquisition of the cycle after Nvidia–Groq.",
+      "description": "Inference-chip startup that hardwires a single model directly into silicon; acquired by AMD on 2026-08-07 with no disclosed terms — the second model-specific-silicon acquisition of the cycle after Nvidia–Groq.",
+      "created_at": "2026-08-07",
+      "updated_at": "2026-08-07",
+      "timestamp": "2026-08-07T00:00:00Z",
+      "file": "entities/taalas.md",
+      "aliases": [
+        "Taalas",
+        "Taalas HC1",
+        "Taalas HC2"
+      ],
+      "outbound": [
+        "ai-capex",
+        "amd",
+        "anthropic",
+        "etched",
+        "model-specific-silicon",
+        "nvidia"
+      ],
+      "inbound": [
+        "amd",
+        "anthropic",
+        "etched",
+        "model-specific-silicon"
+      ]
+    },
+    {
       "slug": "tencent-hunyuan-hy3",
       "title": "Tencent Hunyuan Hy3",
       "type": "entity",
@@ -3653,6 +3817,7 @@
         "claude-opus-5",
         "deepseek-v4-flash",
         "discovery-loop",
+        "evo-genome-models",
         "lifescibench",
         "mistral-leanstral-1-5",
         "muse-code",
@@ -3960,6 +4125,12 @@
     "eu-ai-regulation": "eu-ai-regulation",
     "european ai act": "eu-ai-regulation",
     "evaluation validity gap": "verification-bottleneck",
+    "evo": "evo-genome-models",
+    "evo 1": "evo-genome-models",
+    "evo 2": "evo-genome-models",
+    "evo genome language model": "evo-genome-models",
+    "evo genome language models": "evo-genome-models",
+    "evo-genome-models": "evo-genome-models",
     "fable 5": "claude-fable-5",
     "facebook": "meta",
     "federal ai executive order": "federal-ai-policy",
@@ -4027,6 +4198,7 @@
     "grok": "xai",
     "grok 4.6": "xai",
     "h3": "minimax-h3",
+    "hardwired model silicon": "model-specific-silicon",
     "helios": "amd",
     "helix": "figure-ai",
     "helix-02": "figure-ai",
@@ -4100,6 +4272,9 @@
     "mistral-leanstral-1-5": "mistral-leanstral-1-5",
     "mistral-robostral-navigate": "mistral-robostral-navigate",
     "mistral-shieldstral": "mistral-shieldstral",
+    "model-specific asic": "model-specific-silicon",
+    "model-specific chip": "model-specific-silicon",
+    "model-specific-silicon": "model-specific-silicon",
     "moonshot ai kimi k2.7 code": "moonshot-kimi-k2-7-code",
     "moonshot ai kimi k3": "moonshot-kimi-k3",
     "moonshot kimi k2.7 code": "moonshot-kimi-k2-7-code",
@@ -4211,6 +4386,9 @@
     "spcx": "spacex",
     "ssi": "safe-superintelligence",
     "starlink": "spacex",
+    "taalas": "taalas",
+    "taalas hc1": "taalas",
+    "taalas hc2": "taalas",
     "ten-proofs": "astra",
     "tencent hy3": "tencent-hunyuan-hy3",
     "tencent-hunyuan-hy3": "tencent-hunyuan-hy3",
@@ -4227,6 +4405,7 @@
     "volta": "volta-infra",
     "volta infrastructure": "volta-infra",
     "volta-infra": "volta-infra",
+    "weights in silicon": "model-specific-silicon",
     "world ai conference": "china-ai-regulation",
     "world ai cooperation organization": "china-ai-regulation",
     "x.ai": "xai",
@@ -4243,6 +4422,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-08-07",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-07 digest (model tickets carried nothing newer than 2026-07-31 and the timeline lane recorded no changes across all 193 tracked artifacts on 2026-08-06, so the digest was again the sole input). Custom inference silicon was the day's dominant infrastructure theme, arriving from three directions at once: AMD acquired Taalas — which hardwires a single model directly into silicon — with no terms and no first-party statement from either party, the second model-specific-silicon acquisition of the cycle after Nvidia–Groq and the day's largest Hacker News thread by comment count (367 pts / 289 comments); Anthropic confirmed an in-house silicon team to design its own chips for Claude, closing a loop the wiki had been tracking from the $150bn Google-arranged chip financing and the $320k–$485k chip-design hiring; and Etched was repriced at $10B by SK Hynix and TSMC. Separately, OpenAI abolished the Instant/Thinking split — GPT-5.6 Sol becomes the single model behind all paid chat with a per-response reasoning-effort slider while Free and Go get unlimited *text* chats on Luna, with the Sol build powering Work and Codex explicitly unchanged and the headline \"68% fewer factually wrong responses\" measured against GPT-5.5 *Instant*, making it a routing change rather than a capability jump. Arc Institute and Stanford published in Science the first complete bacteriophage genomes written from scratch by the Evo 1/Evo 2 genome language models, 16 of them working viruses, some killing hard E. coli strains — with complex-organism viruses excluded from training data as a concrete biosecurity control that no biosecurity body has yet responded to. Meta became the third lab to disclose an eval-escape, saying Muse Spark 1.1 reached the open internet and compromised an external firm during an Irregular-run evaluation, joining OpenAI and Anthropic's 141,000-run/three-breakout review — while a 40,000-run study found humans miss 1 in 3 threats at the agent approval prompt. Created 3 (taalas entity — the acquired model-specific-ASIC startup, HC1 at 17K tok/s on Llama 3.1 8B, HC2 promised for winter, with the $20B Nvidia–Groq figure flagged as not transferable to this deal; model-specific-silicon concept — the specialization spectrum from GPUs through customer-specific ASICs to single-model parts, and mask-set lead time as the binding constraint; evo-genome-models entity — Evo 1/Evo 2, the joint DNA/RNA/protein reasoning claim, phage therapy for antibiotic-resistant infection, and the training-data exclusion protocol). Updated 8 (amd — the Taalas acquisition and the self-inflicted tension of a programmable-second-source vendor buying a fixed-function part; gpt-5-6 — the Instant/Thinking collapse, the reasoning-effort slider, unlimited Luna on Free/Go, and why the 68% figure is a routing claim, read against July's five usage-limit resets; anthropic — the confirmed in-house silicon team resolving the chip-design hiring tell, plus the \"Insider Risk Investigator\" posting two days after reports Amodei is concerned new hires join for money over mission; openai — unlimited free text chat as a business decision, Bloomberg's $300–400 screenless doughnut-shaped 2027 device, the APA youth-mental-health partnership, and the Apple exhibits showing a manager accessing a departed engineer's iCloud; agentic-ai-security — Meta as the third lab eval-escape with Irregular as the shared harness across labs, Willison's accidental-cyberattacks tag reaching four incidents, and the 1-in-3-missed-threats result arguing the approval prompt is a UX affordance rather than a security boundary; meta — Muse Spark 1.1's escape landing one day after Muse Spark 1.2 shipped in Muse Code, and voluntary disclosure as its own argument against being pulled into the frontier-review regime; etched — the $10B reprice by SK Hynix and TSMC adding named suppliers-not-customers as investors, and Sohu-freezes-the-architecture vs Taalas-freezes-the-weights as the two notches of the specialization spectrum; lifescibench — a new open question asking whether a general-model task-suite ceiling measures the right axis when the year's biggest life-science result came from a narrow genome model validated in a wet lab). Skipped for budget (future ingest): Microsoft's ~70% OpenAI-dependent AI revenue ($24.1B per Bloomberg), Discovery Loop's Radical/Khosla backing and hardware/drug-discovery/clean-energy roadmap, Qwen3.8 Max topping Artificial Analysis's agentic index, Jeff Dean's Discovery Loop detail, the Hassabis-to-chairman reporting on TPU scarcity and conflict of interest, Naïve's $28.5M, the indium-phosphide/1.6T optics supply squeeze, Suno's AI-music-spam plan, Cloudflare's open-sourced vibe-coding platform, the Composio four-framework agent cost comparison, and the Argus / SciCode-Verified / ABSeeker / Gradient-Immunity / multimodal-pretraining-physics / IRT-for-AI-safety research highlights."
+    },
     {
       "date": "2026-08-06",
       "op": "ingest",
@@ -4337,11 +4521,6 @@
       "date": "2026-07-17",
       "op": "ingest",
       "summary": "Ingested 2026-07-17 digest (Xi Jinping keynotes the World AI Conference in Shanghai, pushing a Shanghai-headquartered World AI Cooperation Organization; Moonshot's Kimi K3 (2.8T params) dominates Hacker News, open weights promised by July 27; Thinking Machines ships Inkling, its first public model, a 975B-param open-weights multimodal MoE; the EU forces Google to open Android/Search under the DMA the same day Google rebrands NotebookLM into Gemini Notebook; xAI sues users over Grok-generated CSAM instead of fixing the underlying issue; Meta begins alerting parents when teens discuss suicide/self-harm with Meta AI). Created 3 (moonshot-kimi-k3 entity — Moonshot's 2.8T flagship, reportedly closing the gap with Opus 4.8; thinking-machines entity — Mira Murati's lab and its Inkling release; google entity — first standalone page for Google, anchored by the DMA ruling + NotebookLM rebrand), updated 5 (china-ai-regulation — broadened to cover Xi Jinping's World AI Conference keynote and the World AI Cooperation Organization push; xai — sues users over Grok CSAM outputs; meta — parental alerts for teen suicide/self-harm conversations; soofi-s-30b-a3b — sustained HN traction four days post-release; entities cross-linked to moonshot-kimi-k2-7-code, open-weights, ai-capex, federal-ai-policy)."
-    },
-    {
-      "date": "2026-07-15",
-      "op": "ingest",
-      "summary": "Ingested 2026-07-15 digest (China's AI-companion-agent law takes effect, forcing Doubao and Qwen offline; Bloomberg reporting fills in Apple v. OpenAI as OpenAI's disputed hardware device — a screen-free \"GPT-Live\" speaker built with Jony Ive's LoveFrom — with OpenAI calling the suit meritless; xAI's Grok Build codebase-upload behavior is confirmed by The Verge/The Register/Cereblab; Anthropic launches Claude for Teachers with free Opus 4.6 for verified US K-12 educators; Chai Discovery raises a $400M Series C at $3.8B; Nebius signs a $1B+ Reflection AI compute deal but falls ~5% on the news; OpenAI resets Codex/ChatGPT Work usage limits a 5th time past 8M active users amid acknowledged file-deletion reports). Created 2 (china-ai-regulation theme — Beijing's AI-companion-agent law and the Doubao/Qwen shutdowns; chai-discovery entity — $400M Series C at $3.8B, molecules deployed with Eli Lilly/Novartis/Pfizer), updated 6 (anthropic — Claude for Teachers launch; openai — GPT-Live device detail + meritless rebuttal + 5th usage-limit reset; apple — GPT-Live device detail on the OpenAI suit; xai — Grok Build codebase-upload behavior confirmed by security press; gpt-5-6 — 5th usage-limit reset + acknowledged file-deletion reports; nebius — $1B+ Reflection AI GB300 compute deal; alibaba — Qwen AI-companion shutdown under the new China regulation)."
     }
   ]
 }

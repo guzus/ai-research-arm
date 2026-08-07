@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.
 created_at: 2026-05-30
-timestamp: 2026-08-05T00:00:00Z
+timestamp: 2026-08-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "OpenAI — Ten advances in mathematics and theoretical computer science", url: "https://openai.com/index/ten-advances-in-mathematics", date: 2026-08-01}
@@ -608,6 +609,36 @@ materially reshape how the lab is positioned heading into its IPO window:
   Apple's motion names **fourteen former Apple employees now at OpenAI**,
   including OpenAI's Chief Hardware Officer; hearing **1 October** before Judge
   Edward J. Davila. See [[apple]] (ARA daily digest 2026-08-05).
+
+- **Free ChatGPT gets unlimited text chats; the Instant/Thinking split is gone
+  (2026-08-07).** [[gpt-5-6|GPT-5.6 Sol]] becomes the single model behind every
+  paid chat with a per-response reasoning-effort slider, while **Free and Go
+  tiers get unlimited text chats on Luna** plus a "Think" button. The **Sol
+  build powering ChatGPT Work and Codex is explicitly unchanged** — a consumer
+  release, not a developer one. The full detail, including why the headline
+  **68% fewer factually wrong responses** is measured against GPT-5.5 *Instant*
+  and therefore reads as a routing change, is on [[gpt-5-6]]. What belongs on
+  this page is the business decision: after five usage-limit resets in July,
+  OpenAI chose to give away unmetered inference on its weakest model rather than
+  meter it (OpenAI, The Verge, TechCrunch, The Decoder; ARA daily digest
+  2026-08-07).
+- **Bloomberg details the first consumer device (2026-08-07).** A **screenless,
+  doughnut-shaped speaker roughly the size of a hockey puck**, with camera,
+  microphones, lights and **self-moving parts**, in a **$300–400** price band and
+  **slated for 2027** — roughly 18 months out and **unconfirmed by OpenAI**
+  (Bloomberg/Gurman, The Verge, TechCrunch). The hardware ambition is the
+  through-line connecting the [[apple]] trade-secrets litigation below to the
+  Jalapeño custom-silicon work: OpenAI is building down the stack on both ends.
+- **OpenAI × American Psychological Association.** A partnership on
+  evidence-based guidance, resources and safeguards for **youth mental health**.
+  Positioning rather than product — but it is the same regulatory surface
+  [[meta]]'s parental-alert feature was built for.
+- **The Apple case: OpenAI's defence surfaces (2026-08-07).** Newly filed court
+  exhibits show OpenAI arguing that **[[apple]]'s own security and offboarding
+  practices undercut its trade-secrets claims** — including **a manager
+  accessing a departed engineer's iCloud account**. This is the same inversion
+  tracked on 2026-08-05: a secrecy case in which the plaintiff's internal
+  handling of departing staff keeps becoming the evidence.
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: OpenAI GPT-5.6
 type: entity
 aliases: ["GPT-5.6", "GPT 5.6", "GPT-5.6 Pro", "GPT-5.6 Mini", "GPT-5.6 Sol", "GPT-5.6 Terra", "GPT-5.6 Luna", "Sol", "Terra", "Luna"]
 tags: [model-release, openai, gpt, frontier-model, government-gated, preview]
-description: OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); the full family is now GA, powering the new "ChatGPT Work" product, but unprotected "Full Access Mode" reportedly deleted users' home directories in several cases.
+description: OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); on 2026-08-07 Sol became the single model behind all paid ChatGPT chat with a reasoning-effort slider, while Luna went unlimited for Free and Go users.
 created_at: 2026-06-20
-timestamp: 2026-07-22T00:00:00Z
+timestamp: 2026-08-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
@@ -159,8 +160,38 @@ gated external preview); GA is "in the coming weeks."
   evaluation, not just when deliberately red-teamed (ARA digest
   2026-07-22).
 
+- **The Instant/Thinking split is abolished: Sol becomes the only paid model,
+  Luna goes unlimited on Free (2026-08-07).** [[openai]] collapsed the
+  Instant-versus-Thinking selector in ChatGPT. **Sol is now the single model
+  behind every paid chat**, with a **per-response reasoning-effort slider** for
+  Plus and Pro; **Free and Go tiers get unlimited text chats on Luna** plus a
+  "Think" button. Two qualifications are load-bearing. First, the **Sol build
+  powering ChatGPT Work and Codex is explicitly unchanged** — this is a
+  consumer-surface release, not a developer one. Second, the one quantified
+  claim, **68% fewer factually wrong responses, is measured against GPT-5.5
+  *Instant*** — the previous non-reasoning tier — so it reads as a routing
+  change (everyone now gets a reasoning model by default) rather than a
+  capability jump in Sol itself. The Decoder's skeptical read is that
+  "unlimited" is scoped to **text** chats on OpenAI's **weakest** model, leaving
+  image, voice and tool-heavy usage unaddressed; on Hacker News (147 pts / 108
+  comments) commenters converged on **free-tier distribution** as the
+  consequential part. First-party framing and the critical read genuinely
+  disagree about what free users gained (OpenAI, The Verge, TechCrunch, The
+  Decoder; ARA daily digest 2026-08-07). Read against the capacity
+  interventions tracked above — five usage-limit resets between July 13 and
+  July 15 — giving away unmetered inference is the notable move, and it is what
+  makes Luna's tier placement, not Sol's slider, the thing to watch.
+
 ## Open questions
 
+- **Can OpenAI afford unlimited free text chat?** The family's history on this
+  page is a sequence of capacity interventions under load. Unlimited Luna is
+  the opposite direction; watch whether the cap returns, or whether "text only"
+  quietly narrows further.
+- **Does the reasoning-effort slider survive contact with users?** Collapsing
+  model choice into an effort dial moves a routing decision onto the user. The
+  68%-fewer-errors number says nothing about whether people pick the right
+  setting.
 - **Does the Hugging Face incident change eval-pipeline practice
   industry-wide?** OpenAI and Hugging Face framed this as a joint
   postmortem; watch whether other labs publish similar eval-sandboxing

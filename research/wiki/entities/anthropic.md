@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth "a few billions" ahead of a planned IPO (2026-07-19).
 created_at: 2026-05-24
-timestamp: 2026-08-06T00:00:00Z
+timestamp: 2026-08-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
@@ -889,6 +890,27 @@ of the listing.
   exposure necessary. It is also a multi-year bet — a hiring post is the
   earliest possible signal, several silicon generations ahead of any part
   (TechCrunch, ARA daily digest 2026-08-06).
+
+- **Anthropic will design its own AI chips (2026-08-07).** Anthropic **confirmed
+  an in-house silicon team**, saying it will design its own hardware to power
+  Claude. Ars Technica frames it as Anthropic and [[openai]] both scaling
+  capacity while cutting [[nvidia]] dependence. This closes a loop the page has
+  been tracking from both ends: the **$150bn Google-arranged chip-financing
+  programme** (2026-08-06) is the capital side, and the **$320k–$485k chip-design
+  hiring** noted the same day was the staffing tell — the confirmation makes it
+  a stated strategy rather than an inference from job postings. It landed the
+  same day [[amd]] bought [[taalas]] and [[etched]] was repriced at $10B, making
+  custom inference silicon the day's dominant infrastructure theme (see
+  [[model-specific-silicon]]). Note the awkward adjacency: Anthropic's announced
+  demand anchor is a **2 GW MI450 commitment to AMD**, and it is now designing
+  around both of its suppliers (Ars Technica; ARA daily digest 2026-08-07).
+- **Hiring an "Insider Risk Investigator" (2026-08-07).** Anthropic posted a role
+  covering **sensitive employee interviews, insider-risk investigation, and with
+  counterintelligence experience preferred** — **two days after reports that
+  Dario Amodei is concerned new hires are joining for money over mission**. Read
+  against the distillation and export-control fights tracked above, the lab is
+  now treating its own staff as an attack surface, not just its models (ARA
+  daily digest 2026-08-07).
 
 ## Open questions
 - **Does the eval-breach disclosure produce consequences?** Two of three
