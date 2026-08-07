@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-07 01:55:00 UTC
+
+CYCLE: Open-weight economics get a price tag, and cheap frontier agents get a benchmark.
+
+TOP STORIES:
+• Reuters: Alibaba to take a revenue share from major enterprise users of Qwen3.8-Max next week - days before opening that model's weights on Aug 12 [⚠]
+• Meta's Muse Spark 1.2 hits Artificial Analysis's Pareto frontier at $0.40/task, ~1/5 the cost of Opus 4.8 at similar intelligence [⚠]
+• Musk says Terafab will be 50x the Pentagon; the same unveiling's 10M+ sq ft figure is ~1.5x Pentagon floor area [⚠]
+• Bloomberg: OpenAI's first device is a screenless $300-400 doughnut speaker, 2027 [⚠]
+
+WATCH: Aug 12 Qwen3.8-Max weight drop - the license text, not the benchmarks.
+
+Full update on GitHub.
