@@ -3166,13 +3166,45 @@ let currentTwitterMd = '';
 let currentTwitterMdDate = '';
 const twitterAbMdCache = new Map<string, string | null>();
 
-const TWITTER_AB_LANE_META: Record<string, { label: string; model: string; harness: string }> = {
-  'twitter-opencode-kimi': { label: 'Kimi K3', model: 'kimi-k3 · OpenCode Go / Moonshot', harness: 'opencode CLI' },
+type TwitterAbLaneMeta = { label: string; model: string; harness: string };
+
+const TWITTER_AB_LANE_META: Record<string, TwitterAbLaneMeta> = {
+  // The lane key keeps its historical "-kimi" name so the temporary
+  // 2026-08-07 DeepSeek swap stays a label-only change (renaming it would move
+  // the research dir, the .dockerignore allowlist and the prebuild COPY_DIRS).
+  // The displayed model must always name what actually authored the artifact.
+  'twitter-opencode-kimi': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · OpenCode Go', harness: 'opencode CLI' },
   'twitter-zai': { label: 'GLM-5.2', model: 'glm-5.2 · Z.ai', harness: 'Claude Code' },
   'twitter-deepseek': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · Fireworks', harness: 'Claude Code' },
   'twitter-deepseek-pi': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · Fireworks', harness: 'pi (container)' },
   'twitter-fireworks-pi': { label: 'Kimi K2.7', model: 'kimi-k2p7 · Fireworks', harness: 'pi (container)' },
 };
+
+// REVERT (temporary 2026-08-07 DeepSeek swap): step 7 of
+// docs/generative-research-backends.md § "Reverting this swap" — this file is
+// invisible from the workflow REVERT comments, so it is the one most likely to
+// be missed.
+//
+// A lane outlives the model it runs, so the map above is only the CURRENT
+// answer. Reports already on disk were written by whatever ran that day, and
+// re-labelling them is the same defect as mislabelling a new one — just
+// pointed backwards. Each entry applies to reports dated STRICTLY BEFORE
+// `before` (ISO YYYY-MM-DD, lexicographically comparable), newest bound last.
+const TWITTER_AB_LANE_META_HISTORY: Record<string, Array<{ before: string } & TwitterAbLaneMeta>> = {
+  'twitter-opencode-kimi': [
+    // Ran Kimi K3 until the 2026-08-07 swap to DeepSeek V4 Flash.
+    { before: '2026-08-07', label: 'Kimi K3', model: 'kimi-k3 · OpenCode Go / Moonshot', harness: 'opencode CLI' },
+  ],
+};
+
+function twitterAbLaneMeta(lane: string, dateStr: string): TwitterAbLaneMeta | undefined {
+  for (const era of TWITTER_AB_LANE_META_HISTORY[lane] || []) {
+    if (dateStr && dateStr < era.before) {
+      return { label: era.label, model: era.model, harness: era.harness };
+    }
+  }
+  return TWITTER_AB_LANE_META[lane];
+}
 // The primary tier's model is resolved at run time by agent-run
 // (Fireworks GLM → Z.ai → native Claude), so label the chain, not one model.
 const TWITTER_AB_PRIMARY_META = {
@@ -3342,10 +3374,10 @@ async function buildTwitterAbPanel(panel: HTMLElement, hour: string, lanes: stri
     return;
   }
   const options = buildTwitterRenderOptions(null, dateStr);
-  const meta = TWITTER_AB_LANE_META[activeLane] || { label: activeLane, model: activeLane, harness: '' };
+  const meta = twitterAbLaneMeta(activeLane, dateStr) || { label: activeLane, model: activeLane, harness: '' };
   const laneTabs = lanes.length > 1
     ? '<div class="twitter-ab-lanes" role="tablist">' + lanes.map((l) => {
-        const m = TWITTER_AB_LANE_META[l];
+        const m = twitterAbLaneMeta(l, dateStr);
         return '<button type="button" class="twitter-ab-lane-tab' + (l === activeLane ? ' is-active' : '') + '" data-ab-pick="' + escapeHtml(l) + '">' + escapeHtml(m?.label || l) + '</button>';
       }).join('') + '</div>'
     : '';

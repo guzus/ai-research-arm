@@ -3,6 +3,7 @@
   "provider": {
     "opencode-go": {
       "models": {
+        "deepseek-v4-flash": {},
         "kimi-k3": {}
       }
     },

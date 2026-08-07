@@ -8,10 +8,13 @@ loosen the parser. (Doc-freshness itself is the separate `--check` CI step.)
 
 import copy
 import json
+import re
 import subprocess
 import sys
 import unittest
 from pathlib import Path
+
+import yaml
 
 from build_backend_matrix import (
     LANES_FILE,
@@ -182,29 +185,143 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) BACKEND="opencode-kimi-k3"', workflow)
         self.assertIn('[ "$BACKEND" != "opencode-kimi-k3" ]', workflow)
         # Version-pinned install, deterministic binary, env-var auth (no
-        # auth.json seeding) with OpenCode Go preferred over Moonshot,
-        # fail-closed route preflight, and the output guard.
+        # auth.json seeding), fail-closed route preflight, output guard.
         self.assertIn("npm install -g opencode-ai@", workflow)
         self.assertIn("OPENCODE_DISABLE_AUTOUPDATE", workflow)
         self.assertIn("OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}", workflow)
-        self.assertIn("MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}", workflow)
-        self.assertIn('model="opencode-go/kimi-k3"', workflow)
-        self.assertIn('model="moonshotai/kimi-k3"', workflow)
-        self.assertIn("Resolve and preflight OpenCode Kimi route", workflow)
+        self.assertIn("Resolve and preflight OpenCode route", workflow)
         self.assertIn("Fail OpenCode run without article", workflow)
+        # MOONSHOT_API_KEY may appear exactly once — the preflight step, purely
+        # to emit a precise error when it is the only key configured. It must
+        # NOT reach the agent step: opencode has no subprocess env allowlist,
+        # so the agent's bash tool inherits every secret in that step's env.
+        self.assertEqual(
+            1, workflow.count("MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}"),
+            "MOONSHOT_API_KEY must be scoped to the preflight step only")
+        # ATTRIBUTION COUPLING: the model every opencode workflow resolves and
+        # the model the writer stamps into index.json must be the same string,
+        # so a half-done swap cannot ship articles credited to the wrong model.
+        model_id = self.assert_single_opencode_model()
+        prompt = (REPO_ROOT / ".github" / "opencode" / "prompts" /
+                  "generative-research.md").read_text(encoding="utf-8")
+        # BOTH writer call sites (slug / no-slug), not just one: assertIn would
+        # be satisfied by a single updated invocation.
+        self.assertEqual([model_id, model_id], re.findall(r"--model (\S+)", prompt))
         # The scanner must see both opencode call sites (research + canary),
         # which drive the matrix rows and the README diagram edge.
         self.assertTrue(self.obs["generative-research.yml"].opencode)
         self.assertEqual(self.obs["generative-research.yml"].opencode_token,
                          "OPENCODE_API_KEY")
         self.assertTrue(self.obs["opencode-kimi-canary.yml"].opencode)
-        # Writer metadata records the served model, and the backend is in the
-        # generative-research set the matrix renders from.
-        prompt = (REPO_ROOT / ".github" / "opencode" / "prompts" /
-                  "generative-research.md").read_text(encoding="utf-8")
-        self.assertIn("--model kimi-k3", prompt)
         from build_backend_matrix import GEN_RESEARCH_BACKENDS
         self.assertIn("opencode-kimi-k3", GEN_RESEARCH_BACKENDS)
+
+    # Every workflow that can run the opencode harness. hourly-twitter is the
+    # one most easily forgotten in a model swap — it resolves its own model in
+    # its own step rather than sharing gen-research's preflight.
+    OPENCODE_WORKFLOWS = ("generative-research.yml", "hourly-twitter.yml",
+                          "opencode-kimi-canary.yml")
+
+    def assert_single_opencode_model(self) -> str:
+        """Exactly one opencode-go model id across every opencode workflow.
+
+        Parses `run:` shell and skips comment lines. A whole-file substring
+        scan cannot tell live routing from a REVERT marker that quotes the old
+        assignment — it already false-positived on one — which pressures the
+        next maintainer to write vaguer comments to stay green. Set equality
+        (not "no moonshot") is strictly stronger: any second route fails.
+        """
+        seen: dict[str, set] = {}
+        for name in self.OPENCODE_WORKFLOWS:
+            doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
+                                 .read_text(encoding="utf-8"))
+            found = set()
+            for job in (doc.get("jobs") or {}).values():
+                for step in job.get("steps") or []:
+                    for line in (step.get("run") or "").splitlines():
+                        if line.lstrip().startswith("#"):
+                            continue
+                        # Scoped to the opencode PROVIDERS, not every model=
+                        # assignment (gen-research also pins claude-* ids for
+                        # other backends). Still catches a resurrected
+                        # moonshotai/ route, which is the thing to forbid.
+                        found.update(re.findall(
+                            r'\bmodel="((?:opencode-go|opencode|moonshotai)/[^"]+)"',
+                            line))
+            seen[name] = found
+        union = set().union(*seen.values())
+        self.assertEqual(
+            1, len(union),
+            f"opencode workflows must route to exactly one model; found {seen}")
+        model_ref = union.pop()
+        self.assertTrue(model_ref.startswith("opencode-go/"),
+                        f"unexpected opencode provider in {model_ref}")
+        for name, found in seen.items():
+            self.assertEqual({model_ref}, found,
+                             f"{name} does not route to {model_ref}")
+        return model_ref.split("/", 1)[1]
+
+    def test_opencode_canary_probes_the_model_production_runs(self):
+        # A canary that probes a different model than production runs is worse
+        # than no canary: it goes green on an entitlement the real lane never
+        # uses. Pin them to the same id (2026-08-07 DeepSeek swap).
+        model_id = self.assert_single_opencode_model()
+        canary = (REPO_ROOT / ".github" / "workflows" /
+                  "opencode-kimi-canary.yml").read_text(encoding="utf-8")
+        gen = (REPO_ROOT / ".github" / "workflows" /
+               "generative-research.yml").read_text(encoding="utf-8")
+        # The RAW API probes bill the bare id; they must match the harness id
+        # or the cheap preflight certifies an entitlement the run never uses.
+        self.assertIn(f'"model": "{model_id}"', canary)
+        self.assertIn(f'{{"model":"{model_id}"', gen)
+        # The declared provider models must cover the pinned id, or resolution
+        # breaks on a runner whose models.dev cache predates it.
+        for name in ("opencode.json", "opencode-canary.json"):
+            cfg = json.loads((REPO_ROOT / ".github" / "opencode" / name)
+                             .read_text(encoding="utf-8"))
+            self.assertIn(model_id, cfg["provider"]["opencode-go"]["models"], name)
+            # opencode REJECTS unknown top-level keys ("Unrecognized key:
+            # $comment"), which breaks config injection for the whole lane.
+            # Keep revert notes in the workflows and docs, never in here.
+            self.assertLessEqual(set(cfg) - {"$schema", "model", "provider",
+                                             "permission", "agent", "mcp"}, set(),
+                                 f"{name}: unknown top-level key rejected by opencode")
+        default_model = json.loads(
+            (REPO_ROOT / ".github" / "opencode" / "opencode.json")
+            .read_text(encoding="utf-8"))["model"]
+        self.assertEqual(f"opencode-go/{model_id}", default_model)
+
+    def test_opencode_twitter_tier_labels_name_the_served_model(self):
+        # The tier's selector token and output dir keep historical Kimi names
+        # for a cheap revert, so the human-facing labels are the ONLY thing
+        # telling a reader who wrote the artifact. They must name the served
+        # model — a committed report headed "Kimi K3" that DeepSeek wrote is
+        # the exact failure this strict, no-fallback tier exists to prevent.
+        model_id = self.assert_single_opencode_model()
+        workflow = (REPO_ROOT / ".github" / "workflows" /
+                    "hourly-twitter.yml").read_text(encoding="utf-8")
+        # Pick the tier-CONFIG case arm by content: the workflow has an earlier
+        # `...|opencode-kimi-k3) ;;` validation arm that carries no labels.
+        arms = [chunk.split(";;", 1)[0]
+                for chunk in workflow.split("opencode-kimi-k3)")[1:]]
+        arm = next(a for a in arms if "OUTPUT_DIR=" in a)
+        # Symmetric, so this test survives the revert it documents: assert the
+        # served family IS named and every OTHER known family is not. Hard-
+        # coding "must not say kimi" would red-light the very revert the
+        # REVERT markers describe.
+        family = model_id.split("-")[0].lower()          # e.g. "deepseek"
+        others = {"deepseek", "kimi", "glm", "claude", "gpt", "qwen"} - {family}
+        targets = [(f, next(ln for ln in arm.splitlines() if f"{f}=" in ln))
+                   for f in ("TITLE_SUFFIX", "COMMIT_PREFIX", "HARNESS_LABEL")]
+        # ...and the Telegram notification title for the same tier.
+        targets.append(("notification title",
+                        next(ln for ln in workflow.splitlines()
+                             if "Twitter/X AI Pulse — opencode" in ln)))
+        for field, line in targets:
+            self.assertIn(family, line.lower(), f"{field} must name {family}")
+            for other in others:
+                self.assertNotIn(other, line.lower(),
+                                 f"{field} names {other} but the tier serves {family}")
 
     def test_comparison_tiers_are_strict(self):
         # Comparison artifacts must be attributable to their labeled backend:
