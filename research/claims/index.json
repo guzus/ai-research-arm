@@ -1,5 +1,5 @@
 {
-  "article_count": 51,
+  "article_count": 52,
   "articles": [
     {
       "claim_count": 18,
@@ -521,6 +521,14 @@
       "stem": "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to",
       "tags": [],
       "title": "Six minutes, not one hour: what Google actually changed in its AI reorg"
+    },
+    {
+      "claim_count": 45,
+      "created_at": "2026-08-06T12:54:46Z",
+      "slug": "globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "stem": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "tags": [],
+      "title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new"
     }
   ],
   "by_host": {
@@ -1160,6 +1168,9 @@
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c12",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c29"
     ],
+    "chinatimes.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c6"
+    ],
     "chipestimate.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c16"
     ],
@@ -1383,6 +1394,9 @@
     ],
     "csoonline.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c11"
+    ],
+    "ctee.com.tw": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c44"
     ],
     "cursor.com": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c1",
@@ -1832,6 +1846,9 @@
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c34",
       "2026-08-04T171206--comfyui-company#c38"
     ],
+    "finance.yahoo.co.jp": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c13"
+    ],
     "finance.yahoo.com": [
       "2026-05-27T035557--800-vdc-architecture#c18",
       "2026-05-27T035557--800-vdc-architecture#c19",
@@ -1862,7 +1879,9 @@
       "2026-07-31T051841--situational-awareness-lp-collapse#c3",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c5",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c6",
-      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c7"
+      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c7",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c28",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c43"
     ],
     "find-and-update.company-information.service.gov.uk": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c16"
@@ -1996,7 +2015,8 @@
       "2026-05-25T053654--ai-adoption-in-bio-industry#c4",
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c26",
       "2026-08-04T171206--comfyui-company#c12",
-      "2026-08-04T171206--comfyui-company#c2"
+      "2026-08-04T171206--comfyui-company#c2",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c4"
     ],
     "gmicloud.ai": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c27"
@@ -2014,7 +2034,8 @@
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c27"
     ],
     "govinfo.gov": [
-      "2026-06-22T052035--zhipu-ai-glm#c11"
+      "2026-06-22T052035--zhipu-ai-glm#c11",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c31"
     ],
     "grandviewresearch.com": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c21"
@@ -2161,7 +2182,11 @@
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c1",
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c23",
       "2026-07-31T051841--situational-awareness-lp-collapse#c15",
-      "2026-07-31T051841--situational-awareness-lp-collapse#c32"
+      "2026-07-31T051841--situational-awareness-lp-collapse#c32",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c12",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c6",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c7",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c8"
     ],
     "investor.atmeta.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C12",
@@ -2175,6 +2200,11 @@
     ],
     "investors.hims.com": [
       "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul#c6"
+    ],
+    "investors.micron.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c19",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c22",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c38"
     ],
     "investors.snowflake.com": [
       "2026-07-20T050016--databricks-mid-2026#c20",
@@ -2194,6 +2224,9 @@
     "ir.theice.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C5"
     ],
+    "irs.gov": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30"
+    ],
     "ismscopilot.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c30"
     ],
@@ -2210,6 +2243,9 @@
     ],
     "jacr.org": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c14"
+    ],
+    "japanir.jp": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c14"
     ],
     "jingletree.com": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c25"
@@ -2230,6 +2266,9 @@
     "justsecurity.org": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c1",
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c8"
+    ],
+    "kabuyoho.jp": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c13"
     ],
     "kalviumlabs.ai": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c17"
@@ -2289,7 +2328,8 @@
     ],
     "law.cornell.edu": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c12",
-      "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c22"
+      "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c22",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30"
     ],
     "law.justia.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c17",
@@ -2345,6 +2385,10 @@
     ],
     "m.bjnews.com.cn": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c25"
+    ],
+    "m.investing.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c11",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c9"
     ],
     "m.sohu.com": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c18"
@@ -2454,6 +2498,9 @@
     "modlabupenn.org": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c17"
     ],
+    "money.finance.sina.com.cn": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c34"
+    ],
     "morganstanley.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c18"
     ],
@@ -2507,6 +2554,9 @@
     "news.cn": [
       "2026-07-13T181948--cxmt#c4"
     ],
+    "news.cnyes.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c36"
+    ],
     "news.cornell.edu": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c14"
     ],
@@ -2556,9 +2606,13 @@
     "nextplatform.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c13"
     ],
+    "nikkei.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c32"
+    ],
     "nist.gov": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c42",
-      "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c4"
+      "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c4",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c27"
     ],
     "nobelprize.org": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c3"
@@ -2706,11 +2760,18 @@
     "papers.ssrn.com": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c48"
     ],
+    "pdf.dfcfw.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c35"
+    ],
     "pearlcohen.com": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c9"
     ],
     "people.math.harvard.edu": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c9"
+    ],
+    "ph.investing.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c45",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c5"
     ],
     "phone.cnmo.com": [
       "2026-07-13T181948--cxmt#c16"
@@ -2772,7 +2833,8 @@
       "2026-05-27T035557--800-vdc-architecture#c33"
     ],
     "pr.tsmc.com": [
-      "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c31"
+      "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c31",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c23"
     ],
     "privateequityinternational.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c44"
@@ -2942,11 +3004,18 @@
       "2026-08-04T171206--comfyui-company#c4",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c42"
     ],
+    "saga-s.co.jp": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c32"
+    ],
     "salestechstar.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c28"
     ],
     "sans.org": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c27"
+    ],
+    "sas-globalwafers.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c25",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c29"
     ],
     "sbseminar.wordpress.com": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c16",
@@ -3033,6 +3102,10 @@
     "semgrep.dev": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c18"
     ],
+    "semi.org": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c15",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c16"
+    ],
     "semianalysis.com": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c25",
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c7"
@@ -3062,6 +3135,9 @@
     ],
     "siliconangle.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c15"
+    ],
+    "siltronic.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c10"
     ],
     "simonguo.tech": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c12"
@@ -3116,7 +3192,8 @@
     ],
     "static.sse.com.cn": [
       "2026-07-13T181948--cxmt#c22",
-      "2026-07-13T181948--cxmt#c8"
+      "2026-07-13T181948--cxmt#c8",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c33"
     ],
     "statnews.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c4"
@@ -3182,6 +3259,13 @@
     ],
     "support.sonatype.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c35"
+    ],
+    "taipeitimes.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c2",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c25",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c26",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c3",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c37"
     ],
     "tech.slashdot.org": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c11"
@@ -3370,7 +3454,8 @@
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c6"
     ],
     "thelec.net": [
-      "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c16"
+      "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c16",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c42"
     ],
     "thelowdown.momentum.asia": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c1"
@@ -3465,7 +3550,10 @@
       "2026-07-13T181948--cxmt#c14",
       "2026-07-13T181948--cxmt#c16",
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c16",
-      "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c19"
+      "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c19",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c20",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c40",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c41"
     ],
     "trilogyai.substack.com": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c8"
@@ -3476,6 +3564,9 @@
     "ts2.tech": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c30",
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c20"
+    ],
+    "tw.stock.yahoo.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c36"
     ],
     "uber.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c40"
@@ -3488,6 +3579,9 @@
     ],
     "udn.com": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c29"
+    ],
+    "uk.investing.com": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c1"
     ],
     "uktechnews.co.uk": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c24"
@@ -3760,6 +3854,12 @@
     ],
     "http://mengqianzhang.me/papers/batch.pdf": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c15"
+    ],
+    "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=688126&id=12466657": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c34"
+    ],
+    "http://pdf.dfcfw.com/pdf/H2_AN202509241749809284_1.pdf": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c35"
     ],
     "http://www.china.org.cn/world/Off_the_Wire/2026-07/18/content_118605887.shtml": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c18"
@@ -4979,6 +5079,9 @@
     "https://finance.sina.com.cn/tech/roll/2026-06-25/doc-inierayw5701544.shtml": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c34"
     ],
+    "https://finance.yahoo.co.jp/news/detail/8d2059fbfd2c1eb16ead9b3528f6af7f45f97be1": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c13"
+    ],
     "https://finance.yahoo.com/markets/stocks/articles/asia-stock-picking-hedge-funds-082032839.html": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c17"
     ],
@@ -5002,6 +5105,12 @@
     ],
     "https://finance.yahoo.com/news/exclusive-us-holds-off-blacklisting-000212827.html": [
       "2026-07-13T181948--cxmt#c19"
+    ],
+    "https://finance.yahoo.com/news/globalwafers-opens-us-factory-plans-031532082.html": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c43"
+    ],
+    "https://finance.yahoo.com/news/globalwafers-received-200-million-chips-103105553.html": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c28"
     ],
     "https://finance.yahoo.com/news/google-backed-ai-drug-discovery-195423147.html": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c19"
@@ -5345,6 +5454,15 @@
     "https://investors.hims.com/news/news-details/2026/Hims--Hers-Names-Dr--Anant-Vinjamoori-as-Chief-Medical-Officer-of-Hims/default.aspx": [
       "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul#c6"
     ],
+    "https://investors.micron.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c19"
+    ],
+    "https://investors.micron.com/static-files/631b1a32-5537-46ae-8f40-82e42fc79dfe": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c38"
+    ],
+    "https://investors.micron.com/static-files/e089f8c0-065d-47b8-9d02-bfa863cdb357": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c22"
+    ],
     "https://investors.snowflake.com/news/news-details/2026/Snowflake-Reports-Financial-Results-for-the-First-Quarter-of-Fiscal-2027/default.aspx": [
       "2026-07-20T050016--databricks-mid-2026#c20",
       "2026-07-20T050016--databricks-mid-2026#c21",
@@ -5367,11 +5485,17 @@
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c35",
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c36"
     ],
+    "https://japanir.jp/company/company-3436/ir/3436-20260512-01_wp_financial_summary": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c14"
+    ],
     "https://jingletree.com/startup-founders-urge-trump-not-to-shut-off-chinese-open-weight-ai-237211.html": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c25"
     ],
     "https://jonready.com/blog/posts/claude-fable5-is-allowed-to-sabotage-your-app-if-youre-a-competitor.html": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c16"
+    ],
+    "https://kabuyoho.jp/sp/report?bcode=3436": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c13"
     ],
     "https://keg.cs.tsinghua.edu.cn/jietang": [
       "2026-06-22T052035--zhipu-ai-glm#c1"
@@ -5433,6 +5557,10 @@
     ],
     "https://m.bjnews.com.cn/detail/1733626668168427.html": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c25"
+    ],
+    "https://m.investing.com/news/transcripts/earnings-call-transcript-siltronic-posts-q2-2026-sales-gain-as-demand-improves-93CH-4822904": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c11",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c9"
     ],
     "https://m.sohu.com/a/1058127944_258768": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c18"
@@ -5540,6 +5668,9 @@
     ],
     "https://news.cgtn.com/news/2026-01-09/4-key-takeaways-Zhipu-becomes-first-Chinese-AI-firm-to-go-public-1JN0K7CEJaw/p.html": [
       "2026-06-22T052035--zhipu-ai-glm#c27"
+    ],
+    "https://news.cnyes.com/news/id/6555421": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c36"
     ],
     "https://news.cornell.edu/stories/2005/05/researchers-build-robot-can-reproduce": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c14"
@@ -5774,6 +5905,10 @@
     "https://people.math.harvard.edu/~alpoge/papers/my%20thesis.pdf": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c9"
     ],
+    "https://ph.investing.com/news/company-news/globalwafers-q2-2026-slides-ai-demand-drives-growth-amid-margin-pressure-93CH-2527748": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c45",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c5"
+    ],
     "https://phone.cnmo.com/news/812889.html": [
       "2026-07-13T181948--cxmt#c16"
     ],
@@ -5845,6 +5980,9 @@
     ],
     "https://postquantum.com/security-pqc/us-pqc-regulatory-framework-2026": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c19"
+    ],
+    "https://pr.tsmc.com/english/news/3302": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c23"
     ],
     "https://pr.tsmc.com/english/news/3326": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c31"
@@ -6105,6 +6243,9 @@
     ],
     "https://static.case.law/f3d/898/html/1279-01.html": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c16"
+    ],
+    "https://static.sse.com.cn/stock/disclosure/announcement/c/202508/002043_20250804_NH02.pdf": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c33"
     ],
     "https://static.sse.com.cn/stock/disclosure/announcement/c/202605/002170_20260517_MGLN.pdf": [
       "2026-07-13T181948--cxmt#c22",
@@ -6529,8 +6670,14 @@
     "https://ts2.tech/en/meta-platforms-nasdaqmeta-cloud-report-sends-shares-higher-weighs-on-coreweave-nasdaqcrwv-nebius-nasdaqnbis": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c20"
     ],
+    "https://tw.stock.yahoo.com/quote/6488.TWO": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c36"
+    ],
     "https://udn.com/news/story/7333/9667541": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c29"
+    ],
+    "https://uk.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4807263": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c1"
     ],
     "https://uktechnews.co.uk/2026/05/29/check-point-deploys-ai-agents-to-prove-real-world-exploitability-as-cyberattacks-reach-unprecedented-speed": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c24"
@@ -6970,6 +7117,9 @@
     "https://www.chinatechnews.com/2026/07/23/126106-nvidias-jensen-huang-defends-chinese-ai-open-source-models-that-are-excellent-should-be-used": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c12"
     ],
+    "https://www.chinatimes.com/realtimenews/20260805001068-260410": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c6"
+    ],
     "https://www.chipestimate.com/Cadence-Cerebrus-AI-Based-Solution-Delivers-Transformative-Results-1654787700/Semiconductor-IP-Core/news/56867": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c16"
     ],
@@ -7282,6 +7432,9 @@
     ],
     "https://www.csoonline.com/article/4181094/hugging-face-transformers-rce-flaw-enables-stealthy-compromise-via-ai-model-configs.html": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c11"
+    ],
+    "https://www.ctee.com.tw/news/20260626700235-439901": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c44"
     ],
     "https://www.dailymail.com/yourmoney/article-15933465/peptide-boom-fda-decision.html": [
       "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul#c7"
@@ -7630,6 +7783,9 @@
       "2026-08-04T171206--comfyui-company#c12",
       "2026-08-04T171206--comfyui-company#c2"
     ],
+    "https://www.globenewswire.com/news-release/2026/07/09/3324795/14450/en/Micron-Announces-Up-to-3-Billion-Strategic-Investment-to-Strengthen-U-S-Semiconductor-Ecosystem.html": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c4"
+    ],
     "https://www.gmicloud.ai/en/blog/which-gpu-clouds-support-kimi-k2-and-the-latest-open-source-llms": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c27"
     ],
@@ -7641,6 +7797,9 @@
     ],
     "https://www.govconwire.com/articles/teresa-carlson-anthropic-public-sector-global-head": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c12"
+    ],
+    "https://www.govinfo.gov/content/pkg/FR-2024-10-23/html/2024-23857.htm": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c31"
     ],
     "https://www.govinfo.gov/content/pkg/FR-2025-01-16/html/2025-00704.htm": [
       "2026-06-22T052035--zhipu-ai-glm#c11"
@@ -7765,8 +7924,16 @@
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c23",
       "2026-07-31T051841--situational-awareness-lp-collapse#c32"
     ],
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4833281": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c6",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c7",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c8"
+    ],
     "https://www.investing.com/news/transcripts/earnings-call-transcript-micron-tops-q3-2026-estimates-shares-jump-131-93CH-4759237": [
       "2026-07-13T181948--cxmt#c29"
+    ],
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-sumco-misses-q1-2026-expectations-stock-dips-93CH-4698631": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c12"
     ],
     "https://www.investing.com/news/transcripts/earnings-call-transcript-tsmc-lifts-2026-outlook-as-ai-demand-stays-hot-in-q2-2026-93CH-4794777": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c31"
@@ -7776,6 +7943,9 @@
     ],
     "https://www.iosco.org/library/pubdocs/pdf/ioscopd754.pdf": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c3"
+    ],
+    "https://www.irs.gov/credits-deductions/advanced-manufacturing-investment-credit": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30"
     ],
     "https://www.ismscopilot.com/blog/eu-ai-act-robustness-testing-requirements-explained": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c30"
@@ -7864,6 +8034,9 @@
     ],
     "https://www.law.cornell.edu/uscode/text/18/1839": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c12"
+    ],
+    "https://www.law.cornell.edu/uscode/text/26/48D": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30"
     ],
     "https://www.lawfaremedia.org/article/pentagon's-anthropic-designation-won't-survive-first-contact-with-legal-system": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c1",
@@ -8000,6 +8173,15 @@
     ],
     "https://www.nextplatform.com/ai/2026/06/02/nvidia-extends-its-grip-on-the-ai-datacenter-outwards/5250344": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c13"
+    ],
+    "https://www.nikkei.com/article/DGXZQOUC3018E0Q6A330C2000000": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c32"
+    ],
+    "https://www.nist.gov/chips/globalwafers-missouri-st-peters": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c27"
+    ],
+    "https://www.nist.gov/chips/globalwafers-texas-sherman": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c27"
     ],
     "https://www.nist.gov/news-events/news/2025/09/caisi-evaluation-deepseek-ai-models-finds-shortcomings-and-risks": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c42"
@@ -8139,8 +8321,17 @@
     "https://www.reuters.com/legal/transactional/databricks-valued-188-billion-after-coatue-led-investment-wsj-reports-2026-07-17": [
       "2026-07-20T050016--databricks-mid-2026#c1"
     ],
+    "https://www.saga-s.co.jp/articles/-/1678191": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c32"
+    ],
     "https://www.sans.org/webcasts/inside-2026-cyber-workforce-key-trends-talent-gaps-strategic-shifts-ai-revolution": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c27"
+    ],
+    "https://www.sas-globalwafers.com/en/gwc_news_en_20250516": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c25"
+    ],
+    "https://www.sas-globalwafers.com/en/gwc_news_en_20260505": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c29"
     ],
     "https://www.science.org/doi/10.1126/sciadv.adu6897": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c9"
@@ -8314,6 +8505,12 @@
     "https://www.semafor.com/article/06/23/2026/deepmind-chief-demis-hassabis-says-googles-still-winning-ai-talent": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c46"
     ],
+    "https://www.semi.org/en/semi-press-release/semi-reports-2025-annual-worldwide-silicon-wafer-shipments-and-revenue-results": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c16"
+    ],
+    "https://www.semi.org/en/semi-press-release/semi-reports-worldwide-silicon-wafer-shipments-increase-7.4-percent-year-on-year-in-q2-2026": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c15"
+    ],
     "https://www.sentinelone.com/labs/nullbulge-threat-actor-masquerades-as-hacktivist-group-rebelling-against-ai": [
       "2026-08-04T171206--comfyui-company#c27"
     ],
@@ -8328,6 +8525,9 @@
     ],
     "https://www.signalfire.com/blog/signalfire-state-of-talent-report-2025": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c20"
+    ],
+    "https://www.siltronic.com/fileadmin/investorrelations/2026/Q2/20260730_Press_release_Wafer_demand_supports_2026_sales_outlook.pdf": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c10"
     ],
     "https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2026": [
       "2026-07-20T050016--databricks-mid-2026#c22"
@@ -8367,6 +8567,20 @@
     ],
     "https://www.stocktitan.net/sec-filings/VCX/n-csr-fundrise-innovation-fund-llc-sec-filing-61cad3265338.html": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c45"
+    ],
+    "https://www.taipeitimes.com/News/biz/archives/2021/12/16/2003769652": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c2",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c3"
+    ],
+    "https://www.taipeitimes.com/News/biz/archives/2023/11/09/2003808889": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c3"
+    ],
+    "https://www.taipeitimes.com/News/biz/archives/2026/07/11/2003860549": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c25",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c26"
+    ],
+    "https://www.taipeitimes.com/News/biz/archives/2026/08/06/2003862000": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c37"
     ],
     "https://www.techflowpost.com/en-US/article/31730": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20"
@@ -8455,6 +8669,9 @@
     "https://www.thelec.net/news/articleView.html?idxno=10822": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c16"
     ],
+    "https://www.thelec.net/news/articleView.html?idxno=12743": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c42"
+    ],
     "https://www.thepickool.com/naver-fy2025-revenue-hits-krw-12-04-trillion-on-ad-growth": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c15"
     ],
@@ -8518,6 +8735,9 @@
     "https://www.tradingkey.com/analysis/stocks/us-stocks/262022410-alibaba-baba-stock-forecast-july-2026-doj-settlement-cloud-h200-tradingkey": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c16"
     ],
+    "https://www.trendforce.com/news/2023/08/14/news-silicon-wafer-long-term-contracts-unstable-major-foundry-seeks-price-cut-from-japanese-suppliers": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c40"
+    ],
     "https://www.trendforce.com/news/2025/10/29/news-cxmt-confirms-lpddr5x-mass-production-began-in-may-high-speed-variant-under-customer-trials": [
       "2026-07-13T181948--cxmt#c16"
     ],
@@ -8537,7 +8757,11 @@
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c22"
     ],
     "https://www.trendforce.com/presscenter/news/20260602-13074.html": [
-      "2026-07-13T181948--cxmt#c14"
+      "2026-07-13T181948--cxmt#c14",
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c20"
+    ],
+    "https://www.trendforce.com/presscenter/news/20260703-13134.html": [
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c41"
     ],
     "https://www.trendforce.com/presscenter/news/20260709-13140.html": [
       "2026-07-13T181948--cxmt#c13"
@@ -9007,7 +9231,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 1532,
+  "claim_count": 1577,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -45803,9 +46027,1036 @@
         "https://stockanalysis.com/stocks/googl/history"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-08-04",
+      "claim": "On the 2026-08-04 Q2 call Doris Hsu said last cycle's silicon-wafer LTAs were mostly around three years with the longest running five to eight years, and that this cycle's are 'a bit longer' than that.",
+      "confidence": "high",
+      "hosts": [
+        "uk.investing.com"
+      ],
+      "id": "c1",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://uk.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4807263"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-30",
+      "claim": "Siltronic reported Q2 2026 sales of EUR 321.6 million, EBITDA of EUR 69.4 million, EBIT of minus EUR 51.9 million and a net loss of EUR 63.2 million, with H1 depreciation of EUR 238.8 million against EUR 126.1 million a year earlier.",
+      "confidence": "high",
+      "hosts": [
+        "siltronic.com"
+      ],
+      "id": "c10",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.siltronic.com/fileadmin/investorrelations/2026/Q2/20260730_Press_release_Wafer_demand_supports_2026_sales_outlook.pdf"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-30",
+      "claim": "Siltronic says roughly two-thirds of its sales sit under long-term agreements, mostly 300mm, with durations far above three years and some running to 2030, and it declined to disclose the portion expiring in 2027 and 2028.",
+      "confidence": "high",
+      "hosts": [
+        "m.investing.com"
+      ],
+      "id": "c11",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://m.investing.com/news/transcripts/earnings-call-transcript-siltronic-posts-q2-2026-sales-gain-as-demand-improves-93CH-4822904"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-05-19",
+      "claim": "SUMCO's CFO said in May 2026 that because customers have not fully taken the volume stipulated in their LTAs, the endpoint of those LTAs is being extended, and that LTA periods are generally getting longer.",
+      "confidence": "high",
+      "hosts": [
+        "investing.com"
+      ],
+      "id": "c12",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.investing.com/news/transcripts/earnings-call-transcript-sumco-misses-q1-2026-expectations-stock-dips-93CH-4698631"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-08-06",
+      "claim": "SUMCO reported an H1 FY2026 operating loss of 6.36 billion yen on net sales of 215.0 billion yen, better than its guided operating loss of 7.7 billion yen, and did not issue full-year FY2026 guidance.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.co.jp",
+        "kabuyoho.jp"
+      ],
+      "id": "c13",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.co.jp/news/detail/8d2059fbfd2c1eb16ead9b3528f6af7f45f97be1",
+        "https://kabuyoho.jp/sp/report?bcode=3436"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-05-12",
+      "claim": "SUMCO's Q1 FY2026 disclosure states that 300mm wafer shipments decreased on customer inventory adjustments while long-term contract prices were maintained.",
+      "confidence": "medium",
+      "hosts": [
+        "japanir.jp"
+      ],
+      "id": "c14",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://japanir.jp/company/company-3436/ir/3436-20260512-01_wp_financial_summary"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-29",
+      "claim": "SEMI reported worldwide silicon area shipments of 3,573 million square inches in Q2 2026, up 7.4% year on year and 9.1% quarter on quarter, decelerating from 13.1% year-on-year growth in Q1 2026.",
+      "confidence": "high",
+      "hosts": [
+        "semi.org"
+      ],
+      "id": "c15",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.semi.org/en/semi-press-release/semi-reports-worldwide-silicon-wafer-shipments-increase-7.4-percent-year-on-year-in-q2-2026"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-02-10",
+      "claim": "SEMI reported that 2025 worldwide silicon wafer area shipments rose 5.8% to 12,973 million square inches while wafer revenue fell 1.2% to $11.4 billion.",
+      "confidence": "high",
+      "hosts": [
+        "semi.org"
+      ],
+      "id": "c16",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.semi.org/en/semi-press-release/semi-reports-2025-annual-worldwide-silicon-wafer-shipments-and-revenue-results"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-02-10",
+      "claim": "Dividing SEMI's reported annual wafer revenue by its reported annual area shipments gives a blended revenue-per-square-inch that fell from $0.976 in 2023 to $0.879 in 2025, the lowest level since 2018.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "c17",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-29",
+      "claim": "Total worldwide silicon area shipped in Q2 2026, expressed in 300mm-wafer equivalents across all diameters, is about 10.9 million wafers per month, which is below the circulating claim of roughly 11 million wafers per month of 300mm demand alone.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "c18",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2024-03-20",
+      "claim": "Micron's CEO stated that industrywide HBM3E consumes approximately three times the wafer supply as DDR5 to produce a given number of bits, and that the HBM4 trade ratio is expected to be higher still.",
+      "confidence": "high",
+      "hosts": [
+        "investors.micron.com"
+      ],
+      "id": "c19",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://investors.micron.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2021-12-16",
+      "claim": "GlobalWafers publicly described its long-term agreements as having stretched to eight years in December 2021, so an eight-year wafer LTA is not a 2026 innovation.",
+      "confidence": "high",
+      "hosts": [
+        "taipeitimes.com"
+      ],
+      "id": "c2",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.taipeitimes.com/News/biz/archives/2021/12/16/2003769652"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-06-02",
+      "claim": "TrendForce projects HBM will take 18%, 22% and 30% of total DRAM wafer input at the end of 2025, 2026 and 2027 while supplying 8%, 9% and 13% of DRAM bit supply over the same period.",
+      "confidence": "medium",
+      "hosts": [
+        "trendforce.com"
+      ],
+      "id": "c20",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c20",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.trendforce.com/presscenter/news/20260602-13074.html"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-06-02",
+      "claim": "Dividing HBM's share of DRAM wafer input by its share of DRAM bit supply implies HBM consumes about 2.3 times its proportionate wafer allocation in 2027.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "c21",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c21",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-03-18",
+      "claim": "Micron states that declining bits-per-wafer growth from node migrations is one of the constraints on DRAM bit supply, alongside cleanroom constraints, construction lead times and a higher HBM trade ratio.",
+      "confidence": "high",
+      "hosts": [
+        "investors.micron.com"
+      ],
+      "id": "c22",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c22",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://investors.micron.com/static-files/e089f8c0-065d-47b8-9d02-bfa863cdb357"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-04-22",
+      "claim": "TSMC said in April 2026 it is producing 5.5-reticle CoWoS and planning a 14-reticle version capable of integrating roughly ten large compute dies and 20 HBM stacks.",
+      "confidence": "high",
+      "hosts": [
+        "pr.tsmc.com"
+      ],
+      "id": "c23",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c23",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://pr.tsmc.com/english/news/3302"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-04-22",
+      "claim": "A 5.5-reticle CoWoS interposer of about 4,719 square millimetres yields roughly five gross units per 300mm wafer, versus about 65 gross dies per wafer for an 800 square millimetre compute die.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "c24",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c24",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-11",
+      "claim": "GlobalWafers' Sherman, Texas plant broke ground in December 2022, held its grand opening in May 2025, and reported qualification completed with multiple customers in Q2 2026 — roughly 42 months from groundbreaking.",
+      "confidence": "high",
+      "hosts": [
+        "sas-globalwafers.com",
+        "taipeitimes.com"
+      ],
+      "id": "c25",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c25",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.sas-globalwafers.com/en/gwc_news_en_20250516",
+        "https://www.taipeitimes.com/News/biz/archives/2026/07/11/2003860549"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-11",
+      "claim": "Reporting on the Sherman plant attributes its continuing losses to a slower-than-expected product qualification process, a longer learning curve, heavy depreciation and low utilization.",
+      "confidence": "medium",
+      "hosts": [
+        "taipeitimes.com"
+      ],
+      "id": "c26",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.taipeitimes.com/News/biz/archives/2026/07/11/2003860549"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2024-12-18",
+      "claim": "CHIPS for America awarded GlobalWafers up to $406 million — $380 million for Sherman, Texas, $20 million for St. Peters, Missouri and $6 million in workforce funding — disbursed against construction, technology, production and commercial milestones.",
+      "confidence": "high",
+      "hosts": [
+        "nist.gov"
+      ],
+      "id": "c27",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c27",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.nist.gov/chips/globalwafers-texas-sherman",
+        "https://www.nist.gov/chips/globalwafers-missouri-st-peters"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2025-08-08",
+      "claim": "GlobalWafers' parent disclosed that the company received just over $200 million of CHIPS Act funding in June 2025, roughly half the $406 million award, and no second tranche has been publicly documented since.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com"
+      ],
+      "id": "c28",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c28",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/news/globalwafers-received-200-million-chips-103105553.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-05-05",
+      "claim": "GlobalWafers said approximately $317.8 million had been received as of Q1 2026 under the Advanced Manufacturing Investment Credit and other incentive programmes, separate from and additional to the earlier CHIPS Act payment.",
+      "confidence": "high",
+      "hosts": [
+        "sas-globalwafers.com"
+      ],
+      "id": "c29",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c29",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sas-globalwafers.com/en/gwc_news_en_20260505"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2023-11-09",
+      "claim": "In December 2021 Doris Hsu said GlobalWafers saw no signs of demand slowing in 2023 or 2024; by November 2023 the company reported small-diameter utilization of 60-65% and sequentially falling revenue.",
+      "confidence": "high",
+      "hosts": [
+        "taipeitimes.com"
+      ],
+      "id": "c3",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.taipeitimes.com/News/biz/archives/2021/12/16/2003769652",
+        "https://www.taipeitimes.com/News/biz/archives/2023/11/09/2003808889"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-27",
+      "claim": "The Advanced Manufacturing Investment Credit under 26 USC 48D does not apply to property whose construction begins after 31 December 2026, and the credit rate was raised from 25% to 35% for property placed in service after 31 December 2025.",
+      "confidence": "high",
+      "hosts": [
+        "irs.gov",
+        "law.cornell.edu"
+      ],
+      "id": "c30",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.law.cornell.edu/uscode/text/26/48D",
+        "https://www.irs.gov/credits-deductions/advanced-manufacturing-investment-credit"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2024-10-23",
+      "claim": "Treasury's final 48D regulations define semiconductor wafer production to include growing single-crystal ingots and boules, slicing, etching, polishing, bonding, cleaning, epitaxial deposition and metrology, while excluding precursor materials such as polysilicon.",
+      "confidence": "high",
+      "hosts": [
+        "govinfo.gov"
+      ],
+      "id": "c31",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c31",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.govinfo.gov/content/pkg/FR-2024-10-23/html/2024-23857.htm"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-03-30",
+      "claim": "SUMCO cut its state-backed 300mm expansion in March 2026, reducing the project cost from 225.0 billion yen to 58.0 billion yen and the maximum METI subsidy from 75.0 billion yen to 19.3 billion yen, deferring the Yoshinogari plant in favour of upgrading existing lines.",
+      "confidence": "high",
+      "hosts": [
+        "nikkei.com",
+        "saga-s.co.jp"
+      ],
+      "id": "c32",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c32",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.nikkei.com/article/DGXZQOUC3018E0Q6A330C2000000",
+        "https://www.saga-s.co.jp/articles/-/1678191"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2025-08-04",
+      "claim": "ESWIN, mainland China's largest 300mm wafer maker, disclosed in an SSE filing that its products are not yet used on the world's most advanced process nodes and that its epitaxial wafers reach mass production only at 28nm and above.",
+      "confidence": "high",
+      "hosts": [
+        "static.sse.com.cn"
+      ],
+      "id": "c33",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c33",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://static.sse.com.cn/stock/disclosure/announcement/c/202508/002043_20250804_NH02.pdf"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-04-17",
+      "claim": "National Silicon Industry Group grew 300mm wafer volume 27.01% in 2025 to 6.42 million wafers while its 300mm average selling price fell 8.83% and the segment ran a gross margin of minus 14.99%.",
+      "confidence": "medium",
+      "hosts": [
+        "money.finance.sina.com.cn"
+      ],
+      "id": "c34",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c34",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=688126&id=12466657"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2025-09-24",
+      "claim": "ESWIN's IPO prospectus carries a risk factor stating that if planned domestic and overseas capacity ramps on schedule, global 12-inch silicon wafers may enter a phase of oversupply in 2026.",
+      "confidence": "high",
+      "hosts": [
+        "pdf.dfcfw.com"
+      ],
+      "id": "c35",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c35",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "http://pdf.dfcfw.com/pdf/H2_AN202509241749809284_1.pdf"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-08-06",
+      "claim": "GlobalWafers shares closed limit-up at NT$1,485 on 2026-07-13 after the Micron announcement and closed at NT$872 on 2026-08-06, a decline of about 41% from that peak.",
+      "confidence": "medium",
+      "hosts": [
+        "news.cnyes.com",
+        "tw.stock.yahoo.com"
+      ],
+      "id": "c36",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c36",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://tw.stock.yahoo.com/quote/6488.TWO",
+        "https://news.cnyes.com/news/id/6555421"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-08-06",
+      "claim": "A fire at GlobalWafers' Novara, Italy site on 2026-07-20 damaged part of the 8-inch back-end area, left the separate 12-inch line unaffected, and led Hsu to guide 2026 revenue to flat or slightly higher than 2025 instead of much higher.",
+      "confidence": "high",
+      "hosts": [
+        "taipeitimes.com"
+      ],
+      "id": "c37",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c37",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.taipeitimes.com/News/biz/archives/2026/08/06/2003862000"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-06-24",
+      "claim": "Micron disclosed 16 take-or-pay strategic customer agreements carrying roughly $100 billion of cumulative minimum revenue and about $22 billion of customer commitments, of which roughly $18 billion is cash deposits classified as financing cash flows.",
+      "confidence": "high",
+      "hosts": [
+        "investors.micron.com"
+      ],
+      "id": "c38",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c38",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://investors.micron.com/static-files/631b1a32-5537-46ae-8f40-82e42fc79dfe"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-09",
+      "claim": "Micron's $500 million commitment to GlobalWafers is under 3% of the roughly $18 billion of customer cash deposits Micron itself holds under its take-or-pay agreements.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "c39",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c39",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-09",
+      "claim": "Micron announced up to $3 billion of US supply-chain investment including $500 million of strategic financing to GlobalWafers' Sherman, Texas plant plus a planned 10-year supply agreement, explicitly subject to definitive agreements and closing conditions.",
+      "confidence": "high",
+      "hosts": [
+        "globenewswire.com"
+      ],
+      "id": "c4",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.globenewswire.com/news-release/2026/07/09/3324795/14450/en/Micron-Announces-Up-to-3-Billion-Strategic-Investment-to-Strengthen-U-S-Semiconductor-Ecosystem.html"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2023-08-14",
+      "claim": "TrendForce describes the standard duration for silicon wafer long-term contracts as ranging from three to eight years, specifying annual supply and demand quantities, with escalating prices year by year in past booms.",
+      "confidence": "high",
+      "hosts": [
+        "trendforce.com"
+      ],
+      "id": "c40",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c40",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.trendforce.com/news/2023/08/14/news-silicon-wafer-long-term-contracts-unstable-major-foundry-seeks-price-cut-from-japanese-suppliers"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-03",
+      "claim": "TrendForce reports conventional DRAM contract prices rising 93-98% quarter on quarter in 1Q26, 58-63% in 2Q26 and a forecast 13-18% in 3Q26 — a sharp deceleration in rate of change while levels remain at record highs.",
+      "confidence": "medium",
+      "hosts": [
+        "trendforce.com"
+      ],
+      "id": "c41",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c41",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.trendforce.com/presscenter/news/20260703-13134.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-31",
+      "claim": "Doosan agreed on 2026-07-31 to acquire 70.61% of SK Siltron from SK Inc. for 2.3 trillion won, with closing targeted for 2027-01-31.",
+      "confidence": "high",
+      "hosts": [
+        "thelec.net"
+      ],
+      "id": "c42",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c42",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.thelec.net/news/articleView.html?idxno=12743"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2025-05-15",
+      "claim": "Hsu stated at the Sherman opening in May 2025 that further expansion required reasonable pricing, prepayments and government support in addition to profitability and long-term customer contracts.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com"
+      ],
+      "id": "c43",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c43",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/news/globalwafers-opens-us-factory-plans-031532082.html"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-06-26",
+      "claim": "Taiwan's Commercial Times reported on 2026-06-26 that 12-inch wafer pricing was still under negotiation, with the increase customers would accept falling short of suppliers' expectations.",
+      "confidence": "medium",
+      "hosts": [
+        "ctee.com.tw"
+      ],
+      "id": "c44",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c44",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.ctee.com.tw/news/20260626700235-439901"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-08-04",
+      "claim": "GlobalWafers said its 12-inch, 8-inch, 6-inch and GaN-on-silicon lines were fully loaded in Q2 2026, with slides qualifying this as fully utilized excluding new ramping capacity.",
+      "confidence": "high",
+      "hosts": [
+        "ph.investing.com"
+      ],
+      "id": "c45",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c45",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://ph.investing.com/news/company-news/globalwafers-q2-2026-slides-ai-demand-drives-growth-amid-margin-pressure-93CH-2527748"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-08-04",
+      "claim": "As of the 2026-08-04 Q2 call GlobalWafers had not yet received the Micron funds, and its customer prepayment balance stood at NT$20.8 billion, down from NT$23.5 billion in Q1 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "ph.investing.com"
+      ],
+      "id": "c5",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://ph.investing.com/news/company-news/globalwafers-q2-2026-slides-ai-demand-drives-growth-amid-margin-pressure-93CH-2527748"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-08-04",
+      "claim": "GlobalWafers Q2 2026 revenue was NT$15.21 billion, up 8.8% quarter on quarter and down 5.0% year on year, with gross margin of 20.6% against 25.8% a year earlier.",
+      "confidence": "high",
+      "hosts": [
+        "chinatimes.com",
+        "investing.com"
+      ],
+      "id": "c6",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.chinatimes.com/realtimenews/20260805001068-260410",
+        "https://www.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4833281"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-08-04",
+      "claim": "GlobalWafers H1 2026 revenue fell 7.6% year on year and gross margin fell 5.5 percentage points, which management attributed to prices agreed during the weak 2025 market plus qualification, ramp and Texas depreciation costs.",
+      "confidence": "high",
+      "hosts": [
+        "investing.com"
+      ],
+      "id": "c7",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4833281"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-08-04",
+      "claim": "Hsu distinguishes non-LTA/spot wafer prices, which she expects to rise through H2 2026 into Q1 2027, from LTA prices, which GlobalWafers honours per contract unless special adjustment terms apply.",
+      "confidence": "high",
+      "hosts": [
+        "investing.com"
+      ],
+      "id": "c8",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4833281"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+      "article_created_at": "2026-08-06T12:54:46Z",
+      "article_title": "The shortage that hasn't reached the invoice — GlobalWafers, 300mm silicon, and the eight-year contract that wasn't new",
+      "as_of": "2026-07-30",
+      "claim": "Siltronic CEO Michael Heckmeier said on 2026-07-30 that spot wafer pricing is still below LTA level and clearly below reinvestment level, and that there appears to be somewhat more wafer supply than demand.",
+      "confidence": "high",
+      "hosts": [
+        "m.investing.com"
+      ],
+      "id": "c9",
+      "key": "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c9",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://m.investing.com/news/transcripts/earnings-call-transcript-siltronic-posts-q2-2026-sales-gain-as-demand-improves-93CH-4822904"
+      ],
+      "type": "quote"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 733,
+  "reusable_count": 769,
   "schema_version": 1
 }
