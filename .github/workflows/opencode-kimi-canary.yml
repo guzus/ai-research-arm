@@ -1,23 +1,28 @@
-name: OpenCode Kimi Canary
+name: OpenCode Canary
 
-# Diagnostics lane for the opencode + Kimi K3 backend used by
-# generative-research.yml (backend=opencode-kimi-k3). Auth is resolved in
-# the same preference order as the production lane:
+# Diagnostics lane for the opencode backend used by
+# generative-research.yml and hourly-twitter.yml (backend=opencode-kimi-k3).
 #
-#   1. OPENCODE_API_KEY — OpenCode Go subscription (opencode.ai/auth),
-#      provider `opencode-go`, model `opencode-go/kimi-k3`, raw endpoint
-#      https://opencode.ai/zen/go/v1 (OpenAI-compatible).
-#   2. MOONSHOT_API_KEY — Moonshot platform pay-per-token, provider
-#      `moonshotai`, model `moonshotai/kimi-k3`.
+#   OPENCODE_API_KEY — OpenCode Go subscription (opencode.ai/auth),
+#   provider `opencode-go`, model `opencode-go/deepseek-v4-flash`, raw
+#   endpoint https://opencode.ai/zen/go/v1 (OpenAI-compatible).
+#
+# REVERT (temporary 2026-08-07 DeepSeek swap): this lane probed `kimi-k3`,
+# with a MOONSHOT_API_KEY pay-per-token second route. The production backend
+# is pinned to `opencode-go/deepseek-v4-flash` to spare Claude Max quota, and
+# Moonshot serves Kimi ONLY — so the Moonshot route is gone here too. A canary
+# that probes a different model than production runs is worse than no canary.
+# FULL REVERT CHECKLIST (authoritative; this lane must move in lockstep with
+# the production workflows or the canary certifies the wrong entitlement):
+#   docs/generative-research-backends.md § "Reverting this swap".
 #
 # Two probes, cheap to expensive, so a dead key/plan fails in seconds
 # instead of mid-research:
 #
-#   1. Raw API probe — stdlib-only one-shot kimi-k3 completion against the
-#      resolved route, proving the secret authenticates AND the account can
-#      actually bill kimi-k3 usage (Go usage caps / Moonshot balance are
-#      the realistic failure modes; on Moonshot, new-user vouchers cannot
-#      pay for kimi-k3).
+#   1. Raw API probe — stdlib-only one-shot deepseek-v4-flash completion
+#      against the Go route, proving the secret authenticates AND the account
+#      can actually bill usage (Go usage caps are the realistic failure
+#      mode).
 #   2. opencode harness probe — the pinned opencode CLI runs one headless
 #      `opencode run` turn with the EXACT production argv (`-m <route
 #      model>` + `--auto` + OPENCODE_CONFIG file injection) authenticated
@@ -27,7 +32,7 @@ name: OpenCode Kimi Canary
 #      what is not explicitly denied).
 #
 # STRICT like zai-claude-code-canary.yml: this lane exists to test the
-# opencode/Kimi path — an outage must fail this run, never re-route.
+# opencode path — an outage must fail this run, never re-route.
 
 on:
   workflow_dispatch:
@@ -49,7 +54,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Probe raw Kimi K3 API on the resolved route
+      - name: Probe raw DeepSeek V4 Flash API on the OpenCode Go route
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
@@ -72,13 +77,10 @@ jobs:
               models_url = "https://opencode.ai/zen/go/v1/models"
               billing_hint = "Go plan subscription/usage limits ($12/5h, $30/week, $60/month) at https://opencode.ai/auth"
           elif moonshot_key:
-              route = "moonshot"
-              key = moonshot_key
-              completions_url = "https://api.moonshot.ai/v1/chat/completions"
-              models_url = "https://api.moonshot.ai/v1/models"
-              billing_hint = "account balance (vouchers cannot bill kimi-k3) at https://platform.kimi.ai/console/api-keys"
+              print("::error::MOONSHOT_API_KEY is set but OPENCODE_API_KEY is not. Moonshot serves Kimi only and cannot serve deepseek-v4-flash, which the production opencode backend is temporarily pinned to. Set OPENCODE_API_KEY (https://opencode.ai/auth), or revert the temporary DeepSeek swap.")
+              sys.exit(1)
           else:
-              print("::error::No Kimi auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription — preferred) or MOONSHOT_API_KEY with: gh secret set <NAME>")
+              print("::error::No opencode auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription) with: gh secret set OPENCODE_API_KEY")
               sys.exit(1)
 
           print(f"Resolved route: {route}")
@@ -96,12 +98,19 @@ jobs:
           # surface, so any probe failure there is definitive → fatal. The
           # Go raw endpoint is undocumented (models.dev provider.toml
           # caveat) — verified facts: GET /zen/go/v1/models is live and
-          # lists bare ids like "kimi-k3" — so on the Go route only
+          # lists bare ids like "deepseek-v4-flash" — so on the Go route only
           # 401/402 (bad key / billing) are fatal. 403 is deliberately
           # NON-fatal there: Cloudflare's bot filter answers 403 "error
           # code: 1010" to clients it dislikes (observed live), so a Go
           # 403 is ambiguous and the harness stage below — the exact SDK
           # client production uses — is the authoritative gate.
+          # NOTE: while the temporary DeepSeek swap is active `route` can only
+          # ever be "opencode-go" (the Moonshot branch exits above), so
+          # go_route is always True and the non-Go arms below are DEAD CODE.
+          # They are kept, not deleted, because restoring the Moonshot route is
+          # step 6 of the revert checklist in
+          # docs/generative-research-backends.md — deleting them would turn a
+          # one-line revert into a rewrite.
           go_route = route == "opencode-go"
 
           # Informational listing probe (free; the Go listing is public).
@@ -126,13 +135,13 @@ jobs:
               )
               if model_ids:
                   print(f"{route} models listing OK; visible models:", json.dumps(model_ids))
-                  if "kimi-k3" not in model_ids:
-                      print("::warning::kimi-k3 not present in the models listing — continuing to the completion probe.")
+                  if "deepseek-v4-flash" not in model_ids:
+                      print("::warning::deepseek-v4-flash not present in the models listing — continuing to the completion probe.")
 
-          # Completion probe: one tiny kimi-k3 completion (entitlement +
-          # billing; costs at most a cent on either route).
+          # Completion probe: one tiny deepseek-v4-flash completion
+          # (entitlement + billing; costs a fraction of a cent).
           payload = {
-              "model": "kimi-k3",
+              "model": "deepseek-v4-flash",
               "max_tokens": 128,
               "messages": [
                   {"role": "user", "content": "Reply with exactly: ok"}
@@ -156,21 +165,21 @@ jobs:
               )
               fatal_codes = (401, 402) if go_route else (401, 402, 403)
               if exc.code in fatal_codes:
-                  print(f"::error::kimi-k3 completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
+                  print(f"::error::deepseek-v4-flash completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
                   sys.exit(1)
               if go_route:
-                  print(f"::warning::kimi-k3 completion probe on {route} returned HTTP {exc.code}{cf_hint} (undocumented raw surface — not blocking; the harness stage below is authoritative): {safe_body}")
+                  print(f"::warning::deepseek-v4-flash completion probe on {route} returned HTTP {exc.code}{cf_hint} (undocumented raw surface — not blocking; the harness stage below is authoritative): {safe_body}")
                   body = {}
               else:
-                  print(f"::error::kimi-k3 completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
+                  print(f"::error::deepseek-v4-flash completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
                   sys.exit(1)
           except (urllib.error.URLError, OSError) as exc:
-              print(f"::error::kimi-k3 completion probe on {route} failed before an HTTP response (DNS/connect/timeout): {exc}")
+              print(f"::error::deepseek-v4-flash completion probe on {route} failed before an HTTP response (DNS/connect/timeout): {exc}")
               sys.exit(1)
           choices = body.get("choices", [])
           if choices:
               print(
-                  f"kimi-k3 completion probe OK on {route}:",
+                  f"deepseek-v4-flash completion probe OK on {route}:",
                   json.dumps(
                       {
                           "model": body.get("model"),
@@ -182,10 +191,10 @@ jobs:
               )
           elif body:
               if go_route:
-                  print(f"::warning::kimi-k3 completion probe on {route} returned no choices (deferring to the harness stage)")
+                  print(f"::warning::deepseek-v4-flash completion probe on {route} returned no choices (deferring to the harness stage)")
                   print(json.dumps({k: body.get(k) for k in ("id", "model", "usage", "error")}))
               else:
-                  print(f"::error::kimi-k3 completion probe on {route} returned no choices")
+                  print(f"::error::deepseek-v4-flash completion probe on {route} returned no choices")
                   print(json.dumps({k: body.get(k) for k in ("id", "model", "usage", "error")}))
                   sys.exit(1)
           PY
@@ -207,24 +216,22 @@ jobs:
       # vars — so a green canary actually certifies the argv the 90-minute
       # lane will use. The only intended difference is the config file: the
       # canary one denies edit/bash/webfetch, so this canary can only
-      # produce text. The provider model declarations keep kimi-k3
-      # resolvable even if the models.dev registry cache on the runner
-      # predates it.
+      # produce text. The provider model declarations keep the pinned
+      # model resolvable even if the models.dev registry cache on the
+      # runner predates it.
       - name: Run opencode file-free canary
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
           OPENCODE_DISABLE_AUTOUPDATE: '1'
           OPENCODE_CONFIG: ${{ github.workspace }}/.github/opencode/opencode-canary.json
         run: |
           set -euo pipefail
-          # Same auth preference order as the production preflight.
+          # Same route resolution as the production preflight: Go-only while
+          # the temporary DeepSeek swap is active.
           if [ -n "${OPENCODE_API_KEY:-}" ]; then
-            model="opencode-go/kimi-k3"
-          elif [ -n "${MOONSHOT_API_KEY:-}" ]; then
-            model="moonshotai/kimi-k3"
+            model="opencode-go/deepseek-v4-flash"
           else
-            echo "::error::No Kimi auth configured (OPENCODE_API_KEY or MOONSHOT_API_KEY)."
+            echo "::error::No opencode auth configured (OPENCODE_API_KEY). Moonshot cannot serve deepseek-v4-flash."
             exit 1
           fi
           echo "Canary model: $model"

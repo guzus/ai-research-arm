@@ -22,8 +22,11 @@ name: Generative Research
 #                fails preflight — a fallback stays on the cheap reliable path.
 #   * fable-5  — explicit, premium native Anthropic path (model claude-fable-5).
 #   * codex    — Codex CLI signed in with ChatGPT-managed auth.json.
-#   * opencode-kimi-k3 — opencode CLI running Moonshot Kimi K3, authenticated
-#                by the plain MOONSHOT_API_KEY env var (no auth.json seeding).
+#   * opencode-kimi-k3 — opencode CLI running DeepSeek V4 Flash (TEMPORARY
+#                2026-08-07 swap off Kimi K3 to spare Claude Max quota),
+#                authenticated by the plain OPENCODE_API_KEY env var (no
+#                auth.json seeding). The Moonshot route is gone, not
+#                repointed — Moonshot serves Kimi only.
 #   * deepseek — comparison/fallback route through Fireworks'
 #                Anthropic-compatible endpoint via ANTHROPIC_BASE_URL /
 #                ANTHROPIC_AUTH_TOKEN.
@@ -1906,21 +1909,34 @@ jobs:
             -c 'shell_environment_policy.include_only=["PATH","HOME","PWD","GITHUB_WORKSPACE","RUNNER_TEMP","TMPDIR","GEN_DRAFT","GEN_SLUG","GEN_SOURCE","AUTH_TOKEN","CT0","SSL_CERT_FILE","EDGAR_CONTACT_EMAIL","SOURCE_CACHE_MAX_BYTES","SOURCE_CACHE_MAX_TOTAL_BYTES","SOURCE_CACHE_TIMEOUT"]' \
             < .github/codex/prompts/generative-research.md
 
-      # ---- OpenCode + Kimi K3 backend ---------------------------------------
-      # opencode CLI (github.com/anomalyco/opencode) driving Kimi K3. Two
-      # auth routes, resolved in preference order by the preflight below —
-      # both are plain env-var API keys (no interactive `opencode auth
-      # login`, no auth.json seeding):
-      #   1. OPENCODE_API_KEY — OpenCode Go subscription ($10/mo) via the
-      #      built-in `opencode-go` provider, model `opencode-go/kimi-k3`
-      #      (models.dev pins env=OPENCODE_API_KEY, api=opencode.ai/zen/go/v1).
-      #      NOTE: K3 bills usage at full $3/$15 value against the Go caps
-      #      ($12/5h, $30/week, $60/month), so one deep research run is a
-      #      real fraction of the weekly allowance.
-      #   2. MOONSHOT_API_KEY — Moonshot platform pay-per-token via the
-      #      `moonshotai` provider, model `moonshotai/kimi-k3`.
-      # The install is version-pinned (Moonshot's opencode guide requires
-      # >= 1.18.3 for kimi-k3) and OPENCODE_DISABLE_AUTOUPDATE keeps the
+      # ---- OpenCode backend -------------------------------------------------
+      # opencode CLI (github.com/anomalyco/opencode) on the OpenCode Go
+      # subscription ($10/mo), authenticated by a plain env-var API key — no
+      # interactive `opencode auth login`, no auth.json seeding.
+      #   OPENCODE_API_KEY — built-in `opencode-go` provider, model
+      #   `opencode-go/deepseek-v4-flash` (models.dev pins
+      #   env=OPENCODE_API_KEY, api=opencode.ai/zen/go/v1).
+      #
+      # REVERT (temporary 2026-08-07 DeepSeek swap): this backend ran
+      # `opencode-go/kimi-k3`, with `moonshotai/kimi-k3` as a second
+      # pay-per-token route. It is pinned to `opencode-go/deepseek-v4-flash`
+      # (the 2026-07-31 release — on this provider the bare id IS that build;
+      # only Fireworks needs a -0731 suffix) to take load off the Claude Max
+      # subscription quota. Two consequences, both deliberate:
+      #   * The Moonshot route is GONE, not repointed — Moonshot serves Kimi
+      #     only. The preflight hard-fails there rather than silently authoring
+      #     with a model the article metadata does not name.
+      #   * Billing improves sharply: K3 billed at full $3/$15 value against the
+      #     Go caps ($12/5h, $30/week, $60/month), so one deep run ate a real
+      #     fraction of the weekly allowance. deepseek-v4-flash is $0.07/$0.14
+      #     per Mtok, ~40x cheaper on input.
+      # FULL REVERT CHECKLIST (the only authoritative one — it covers files
+      # this comment cannot see, including dashboard/src/main.ts and putting
+      # MOONSHOT_API_KEY back into the agent step env):
+      #   docs/generative-research-backends.md § "Reverting this swap".
+      #
+      # The install is version-pinned at 1.18.3 (verified to resolve
+      # opencode-go/deepseek-v4-flash) and OPENCODE_DISABLE_AUTOUPDATE keeps the
       # pinned binary deterministic on the persistent self-hosted runner.
       # Headless permission grants + model declarations live in the
       # committed .github/opencode/opencode.json, injected via
@@ -1932,7 +1948,7 @@ jobs:
       # matches the codex lane's residual surface: the prompt's env-exfil
       # prohibitions, Actions log masking, and keys scoped to model billing
       # only. Keep this step's env to the minimum set.
-      - name: Resolve and preflight OpenCode Kimi route
+      - name: Resolve and preflight OpenCode route
         if: steps.effective.outputs.backend == 'opencode-kimi-k3'
         id: opencode-route
         env:
@@ -1948,9 +1964,9 @@ jobs:
           # a genuinely dead key still fails within ~a minute.
           if [ -n "${OPENCODE_API_KEY:-}" ]; then
             route="opencode-go"
-            model="opencode-go/kimi-k3"
+            model="opencode-go/deepseek-v4-flash"
             # The Go endpoint is OpenAI-compatible (raw model id is bare
-            # "kimi-k3" — verified against GET /zen/go/v1/models) but
+            # "deepseek-v4-flash" — the models.dev id for this provider) but
             # otherwise an undocumented surface (models.dev provider.toml
             # caveat). Probe with one tiny billable completion and be
             # AUTH-FATAL ONLY: 401/402 are definitive (bad key / billing)
@@ -1968,14 +1984,14 @@ jobs:
               -A "ai-research-arm-preflight/1.0 (+https://github.com/guzus/ai-research-arm)" \
               -H "Authorization: Bearer $OPENCODE_API_KEY" \
               -H "Content-Type: application/json" \
-              --data '{"model":"kimi-k3","max_tokens":128,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}' \
+              --data '{"model":"deepseek-v4-flash","max_tokens":128,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}' \
               https://opencode.ai/zen/go/v1/chat/completions || echo "000")
             case "$status" in
               2*)
                 echo "OpenCode Go preflight OK (HTTP $status)."
                 ;;
               401|402)
-                echo "::error::OpenCode Go preflight failed with HTTP $status — the key is invalid or cannot bill Go usage. Check the plan + limits at https://opencode.ai/auth (or unset OPENCODE_API_KEY to route via MOONSHOT_API_KEY). Response: $(head -c 500 "$body_file" 2>/dev/null || true)"
+                echo "::error::OpenCode Go preflight failed with HTTP $status — the key is invalid or cannot bill Go usage. Check the plan + limits at https://opencode.ai/auth (the Moonshot route is unavailable while this backend is pinned to DeepSeek). Response: $(head -c 500 "$body_file" 2>/dev/null || true)"
                 exit 1
                 ;;
               *)
@@ -1983,17 +1999,16 @@ jobs:
                 ;;
             esac
           elif [ -n "${MOONSHOT_API_KEY:-}" ]; then
-            route="moonshot"
-            model="moonshotai/kimi-k3"
-            if ! curl -fsS --max-time 30 --retry 2 --retry-delay 5 --retry-all-errors \
-                -H "Authorization: Bearer $MOONSHOT_API_KEY" \
-                https://api.moonshot.ai/v1/models >/dev/null; then
-              echo "::error::Moonshot API preflight failed (auth or availability). Verify MOONSHOT_API_KEY and account balance at https://platform.kimi.ai/console/api-keys"
-              exit 1
-            fi
-            echo "Moonshot API preflight OK."
+            # REVERT (temporary 2026-08-07 DeepSeek swap): this branch resolved
+            # route=moonshot on the `moonshotai/kimi-k3` id. Moonshot serves Kimi
+            # ONLY and cannot serve deepseek-v4-flash. This backend is strict —
+            # it must never silently author with a model other than the one its
+            # article metadata records — so an OPENCODE_API_KEY-less run now
+            # fails here instead of quietly producing a Kimi article.
+            echo "::error::MOONSHOT_API_KEY is set but OPENCODE_API_KEY is not. The Moonshot provider serves Kimi only and cannot serve deepseek-v4-flash, which this backend is temporarily pinned to. Set OPENCODE_API_KEY (https://opencode.ai/auth), or revert the temporary DeepSeek swap to restore the moonshotai/kimi-k3 route."
+            exit 1
           else
-            echo "::error::No Kimi auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription key from https://opencode.ai/auth — preferred) or MOONSHOT_API_KEY (pay-per-token key from https://platform.kimi.ai/console/api-keys) with: gh secret set <NAME>"
+            echo "::error::No opencode auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription key from https://opencode.ai/auth) with: gh secret set OPENCODE_API_KEY"
             exit 1
           fi
           {
@@ -2013,7 +2028,7 @@ jobs:
       # Fireworks paths. The prompt is passed as the positional message arg;
       # --auto approves any permission not explicitly denied so a headless
       # run can never hang on an interactive permission ask.
-      - name: Run Generative Research (OpenCode Kimi K3)
+      - name: Run Generative Research (OpenCode DeepSeek V4 Flash)
         if: steps.effective.outputs.backend == 'opencode-kimi-k3'
         id: gen-opencode
         continue-on-error: true
@@ -2028,7 +2043,11 @@ jobs:
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+          # MOONSHOT_API_KEY deliberately NOT passed: it cannot serve the
+          # pinned deepseek-v4-flash, and opencode has no subprocess env
+          # allowlist, so injecting an unusable secret only widens what the
+          # agent's bash tool can read. The preflight step keeps it solely to
+          # emit a precise error when it is the only key configured.
           OPENCODE_MODEL_REF: ${{ steps.opencode-route.outputs.model }}
           OPENCODE_DISABLE_AUTOUPDATE: '1'
           OPENCODE_CONFIG: ${{ github.workspace }}/.github/opencode/opencode.json
@@ -3898,7 +3917,7 @@ jobs:
       - name: Fail OpenCode run without article
         if: always() && steps.effective.outputs.backend == 'opencode-kimi-k3' && steps.outfile.outputs.has_file != 'true'
         run: |
-          echo "::error::OpenCode Kimi K3 backend did not produce an article."
+          echo "::error::OpenCode DeepSeek V4 Flash backend did not produce an article."
           echo "OpenCode outcome: ${{ steps.gen-opencode.outcome }}"
           exit 1
 
@@ -4021,7 +4040,21 @@ jobs:
             echo "::warning::Could not resolve article slug for ${TG_FILE}; linking to research index"
             ARTICLE_URL="${SITE_ORIGIN%/}/research"
           fi
-          BODY=$(printf '📝 Topic: %s\n🤖 Backend: %s' "${TG_TOPIC}" "${TG_BACKEND}")
+          # Announce the MODEL, not just the backend selector. Selector tokens
+          # are frozen for cheap reverts and outlive the model they route to
+          # (`opencode-kimi-k3` has served DeepSeek since 2026-08-07), so a
+          # selector-only line tells a reader the wrong author. The committed
+          # index row is written by the writer script from the model that
+          # actually ran, so it cannot drift from a workflow literal.
+          TG_MODEL=$(jq -r --arg f "${TG_FILE}" \
+            'map(select(.file == $f)) | .[0].model // empty' \
+            research/generative/index.json 2>/dev/null || echo "")
+          if [ -n "$TG_MODEL" ]; then
+            BODY=$(printf '📝 Topic: %s\n🤖 Model: %s (backend %s)' \
+              "${TG_TOPIC}" "${TG_MODEL}" "${TG_BACKEND}")
+          else
+            BODY=$(printf '📝 Topic: %s\n🤖 Backend: %s' "${TG_TOPIC}" "${TG_BACKEND}")
+          fi
           if [ "${TG_USED_FALLBACK:-false}" = "true" ]; then
             BODY=$(printf '%s (requested %s; fireworks-fallback)' "$BODY" "${TG_REQUESTED_BACKEND}")
           fi

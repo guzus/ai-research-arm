@@ -46,6 +46,46 @@ END_MARKER = "<!-- END GENERATED BACKEND MATRIX -->"
 BEGIN_DIAGRAM = "<!-- BEGIN GENERATED BACKEND DIAGRAM (scripts/build_backend_matrix.py — do not edit by hand) -->"
 END_DIAGRAM = "<!-- END GENERATED BACKEND DIAGRAM -->"
 
+# The opencode lane's SELECTOR token is frozen at its historical name so a
+# model swap stays a cheap revert, but the model it actually serves is read
+# out of the workflow. Hard-coding the model here once produced a green
+# `--check` over a table that named the wrong author for every artifact in
+# the lane (generator and doc agreed with each other, both stale).
+OPENCODE_SELECTOR = "opencode-kimi-k3"
+OPENCODE_PROVIDER_LABEL = "OpenCode Go"
+OPENCODE_MODEL_RE = re.compile(r'model="opencode-go/([A-Za-z0-9._-]+)"')
+
+
+def opencode_model_id(workflow_name: str) -> str:
+    """The model id an opencode workflow actually passes to `opencode run -m`.
+
+    Reads the shell of every `run:` step so a REVERT comment quoting the old
+    assignment can never be mistaken for live routing. Raises rather than
+    guessing: a silent default here would reintroduce the stale-literal bug.
+    """
+    doc = yaml.safe_load((WORKFLOWS_DIR / workflow_name).read_text(encoding="utf-8"))
+    found = set()
+    for job in (doc.get("jobs") or {}).values():
+        for step in job.get("steps") or []:
+            for line in (step.get("run") or "").splitlines():
+                if line.lstrip().startswith("#"):
+                    continue
+                found.update(OPENCODE_MODEL_RE.findall(line))
+    if len(found) != 1:
+        raise SystemExit(
+            f"{workflow_name}: expected exactly one opencode-go model id in "
+            f"executable shell, found {sorted(found)}. The matrix cannot name "
+            f"an author it cannot resolve."
+        )
+    return found.pop()
+
+
+def opencode_display_name(model_id: str) -> str:
+    """Human label for the diagram node, derived from the served model id."""
+    words = {"v4": "V4", "k3": "K3", "k2": "K2", "deepseek": "DeepSeek", "glm": "GLM"}
+    return " ".join(words.get(p, p.capitalize()) for p in model_id.split("-"))
+
+
 SECRET_RE = re.compile(r"secrets\.([A-Z0-9_]+)")
 # Both tier regexes take only the FIRST tier of a compound `||` condition; a
 # step gated on two tiers would be attributed to one (none exist today).
@@ -635,14 +675,21 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
                          "OpenAI (ChatGPT subscription auth)", "codex CLI default",
                          f"`{obs.codex_token}`", "—"])
         if obs.opencode:
+            # The model and provider are read from the workflow, not hard-coded:
+            # this table is the human view of routing, and a stale literal here
+            # is a CI-blessed lie about which model authored an artifact. The
+            # selector token keeps its historical `-kimi-k3` name across the
+            # temporary 2026-08-07 DeepSeek swap; the Model column must not.
             if wf_name == "generative-research.yml":
-                rows.append(["(dispatch path) backend=opencode-kimi-k3", f"`{wf_name}`",
-                             "opencode CLI", "OpenCode Go → Moonshot (env-resolved)", "`kimi-k3`",
+                rows.append([f"(dispatch path) backend={OPENCODE_SELECTOR}", f"`{wf_name}`",
+                             "opencode CLI", OPENCODE_PROVIDER_LABEL,
+                             f"`{opencode_model_id(wf_name)}`",
                              f"`{obs.opencode_token}`",
                              "hard fail (strict comparison backend)"])
             else:
-                rows.append(["(canary) opencode + kimi-k3", f"`{wf_name}`",
-                             "opencode CLI", "OpenCode Go → Moonshot (env-resolved)", "`kimi-k3`",
+                rows.append([f"(canary) opencode + {opencode_model_id(wf_name)}", f"`{wf_name}`",
+                             "opencode CLI", OPENCODE_PROVIDER_LABEL,
+                             f"`{opencode_model_id(wf_name)}`",
                              f"`{obs.opencode_token}`", "hard fail (diagnostics lane)"])
         if obs.has_fable_dispatch:
             rows.append(["(dispatch path) backend=fable-5", f"`{wf_name}`",
@@ -729,7 +776,9 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
     if has_codex:
         out.append('        OAI["🤖 OpenAI Codex CLI<br/><i>ChatGPT auth</i>"]')
     if has_opencode:
-        out.append('        MSH["🌙 Moonshot Kimi K3<br/><i>opencode CLI</i>"]')
+        _oc_model = opencode_model_id("generative-research.yml")
+        out.append(f'        MSH["🚀 OpenCode Go {opencode_display_name(_oc_model)}'
+                   '<br/><i>opencode CLI</i>"]')
     out.append("    end")
 
     for node, backend in edges:
@@ -741,7 +790,7 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
     if gen_default and has_codex:
         out.append('    gendef -.->|"backend=codex"| OAI')
     if gen_default and has_opencode:
-        out.append('    gendef -.->|"backend=opencode-kimi-k3"| MSH')
+        out.append(f'    gendef -.->|"backend={OPENCODE_SELECTOR}"| MSH')
 
     # ordered chain arrows between providers: primary-heaviest provider first,
     # then each chain hop

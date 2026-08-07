@@ -12,6 +12,11 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 #                        output → research/twitter-deepseek-pi/)
 #   - fireworks-pi      (manual only,        model: Kimi K2.6 via Fireworks + pi,
 #                        output → research/twitter-fireworks-pi/)
+#   - opencode-kimi-k3  (manual only,        model: deepseek-v4-flash via OpenCode Go
+#                        + opencode harness — TEMPORARY 2026-08-07 swap off
+#                        kimi-k3 to spare Claude Max quota; the selector token and
+#                        output dir keep their historical Kimi names, the model
+#                        labels do not. Output → research/twitter-opencode-kimi/)
 #
 # Routing rules:
 #   - schedule trigger → backend resolved from github.event.schedule by the
@@ -315,18 +320,25 @@ jobs:
               FEATURES="telegram"
               ;;
             opencode-kimi-k3)
+              # REVERT (temporary 2026-08-07 DeepSeek swap): the tier SELECTOR
+              # and OUTPUT_DIR deliberately keep their historical names so the
+              # swap stays a one-file-per-workflow revert, but every
+              # model-IDENTIFYING label below names the model actually running.
+              # Never let these drift back to "Kimi K3" while the opencode
+              # default is DeepSeek — a mislabeled artifact is the exact
+              # failure the strict, no-fallback design exists to prevent.
               OUTPUT_DIR="research/twitter-opencode-kimi"
               SUMMARY_SLUG="twitter-opencode-kimi"
-              TITLE_SUFFIX=" (opencode + Kimi K3)"
+              TITLE_SUFFIX=" (opencode + DeepSeek V4 Flash)"
               CYCLE_HOURS=6
-              COMMIT_PREFIX="Twitter (opencode+Kimi K3) update"
+              COMMIT_PREFIX="Twitter (opencode+DeepSeek V4 Flash) update"
               FETCH_CONCURRENCY=6
               PRE_FILTER=false
               AGGREGATE=false
               ENABLE_DAEMON=true
               BIRD_BUDGET=5
               CURL_BUDGET=3
-              HARNESS_LABEL="on Kimi K3 under the opencode agent harness"
+              HARNESS_LABEL="on DeepSeek V4 Flash under the opencode agent harness"
               FEATURES="telegram"
               ;;
           esac
@@ -793,17 +805,30 @@ jobs:
       # opencode tier runs on the host like opencode-kimi-canary.yml (no
       # claude-code-action, no pi container): pinned CLI, checked-in
       # OPENCODE_CONFIG, env-var auth only — no `opencode auth login`, no
-      # auth.json. Auth preference order matches the canary: OpenCode Go
-      # subscription first, Moonshot pay-per-token second. STRICT comparison
-      # tier: if the resolved Kimi route fails, this step fails — never
-      # re-route to another model, so the artifacts stay attributable to
-      # Kimi K3. The Birdy daemon (started above) enforces read-only X access
-      # for opencode's coarse bash tool, same as the pi tiers.
-      - name: Process tweets with opencode + Kimi K3 (opencode-kimi-k3 tier)
+      # auth.json. STRICT comparison tier: if the resolved route fails, this
+      # step fails — never re-route to another model, so the artifacts stay
+      # attributable to the model named in TITLE_SUFFIX/COMMIT_PREFIX above.
+      # The Birdy daemon (started above) enforces read-only X access for
+      # opencode's coarse bash tool, same as the pi tiers.
+      #
+      # REVERT (temporary 2026-08-07 DeepSeek swap): this tier ran
+      # opencode-go/kimi-k3 with a moonshotai/kimi-k3 second route. It now runs
+      # opencode-go/deepseek-v4-flash (the 2026-07-31 release — on this
+      # provider the bare id IS that build; only Fireworks needs a -0731
+      # suffix) to take load off the Claude Max subscription quota. Moonshot
+      # serves Kimi ONLY and cannot serve DeepSeek, so that route is now a hard
+      # failure rather than a silent swap to a different model.
+      # FULL REVERT CHECKLIST (authoritative; covers the deleted Moonshot
+      # branch, the step env, the four labels above, and the dashboard):
+      #   docs/generative-research-backends.md § "Reverting this swap".
+      - name: Process tweets with opencode + DeepSeek V4 Flash (opencode-kimi-k3 tier)
         if: steps.backend.outputs.name == 'opencode-kimi-k3'
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+          # MOONSHOT_API_KEY deliberately NOT passed: it cannot serve the
+          # pinned deepseek-v4-flash, and opencode has no subprocess env
+          # allowlist, so injecting an unusable secret only widens what the
+          # agent's bash tool can read.
           OPENCODE_DISABLE_AUTOUPDATE: '1'
           OPENCODE_CONFIG: ${{ github.workspace }}/.github/opencode/opencode.json
           BIRDY_READ_ONLY: "1"
@@ -811,13 +836,11 @@ jobs:
           PROMPT_FILE: ${{ steps.render.outputs.rendered_path }}
         run: |
           set -euo pipefail
-          # Same auth preference order as the canary; strict fail-fast.
+          # Strict fail-fast. Go route only while the DeepSeek swap is active.
           if [ -n "${OPENCODE_API_KEY:-}" ]; then
-            model="opencode-go/kimi-k3"
-          elif [ -n "${MOONSHOT_API_KEY:-}" ]; then
-            model="moonshotai/kimi-k3"
+            model="opencode-go/deepseek-v4-flash"
           else
-            echo "::error::No Kimi auth configured (OPENCODE_API_KEY or MOONSHOT_API_KEY)."
+            echo "::error::No opencode auth configured. Set OPENCODE_API_KEY (https://opencode.ai/auth). MOONSHOT_API_KEY is NOT a route while this tier is pinned to deepseek-v4-flash — Moonshot serves Kimi only, and this tier is strict: it will not silently author with a model other than the one its labels claim."
             exit 1
           fi
           echo "opencode model: $model"
@@ -1730,7 +1753,7 @@ jobs:
             | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
           REPORT_URL="https://github.com/${REPO}/blob/main/research/twitter-opencode-kimi/${DATE}.md"
           jq -n \
-            --arg title "🐦🌙 Twitter/X AI Pulse — opencode + Kimi K3" \
+            --arg title "🐦🌙 Twitter/X AI Pulse — opencode + DeepSeek V4 Flash" \
             --arg text "$SAFE" \
             --arg btn "Full Update on GitHub" \
             --arg url "$REPORT_URL" \
