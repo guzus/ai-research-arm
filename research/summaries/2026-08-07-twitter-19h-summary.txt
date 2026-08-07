@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-07 19:09:51 UTC
+
+CYCLE: A safety framework finally binds a shipping model, while Anthropic removes the human from the loop.
+
+TOP STORIES:
+• OpenAI declares Astra its first "critical" cyber model under the Preparedness Framework — pausing internal activity, adding isolated testing, restricted network access and weight encryption [✓]
+• Anthropic makes classifier-reviewed auto mode the Claude Code default on Aug 14, citing 89% of dangerous commands caught vs 14% for manual approval [✓ announcement, ⚠ figures]
+• Harvey in talks for $500M+ at a $15.5B valuation on $350M annualized revenue, up 80%+ from $190M in January [✓]
+
+WATCH: Whether OpenAI publishes the Astra evaluation behind the "critical" threshold, or only the control list.
+
+Full update on GitHub.
