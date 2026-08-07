@@ -21920,5 +21920,47 @@
     "headline": "GROK BUILD 1.0 CONFIRMED RUNNING GROK 4.5 BY DEFAULT \u2014 RELEASE IS STABILITY ONLY, NO NEW MODEL",
     "source": "@Synapse_Brief",
     "url": "https://x.com/Synapse_Brief/status/2085613500311695496"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-07 19:09:51 UTC",
+    "headline": "OPENAI NAMES ASTRA FIRST 'CRITICAL' CYBER MODEL UNDER PREPAREDNESS FRAMEWORK \u2014 INTERNAL ACTIVITIES PAUSED",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2085801349866729975"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-07 19:09:51 UTC",
+    "headline": "ANTHROPIC: HUMAN APPROVAL CAUGHT 14% OF DANGEROUS COMMANDS, CLASSIFIER 89% \u2014 AUTO MODE DEFAULT AUG 14",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2085794862608318627"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-07 19:09:51 UTC",
+    "headline": "HARVEY IN TALKS TO RAISE $500M AT $15.5B POST \u2014 REVENUE $350M ANNUALIZED, UP 80% SINCE JANUARY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2085803248783352030"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-07 19:09:51 UTC",
+    "headline": "NVIDIA WEIGHS CUTTING HBM CONTENT IN RUBIN ULTRA AS MEMORY SHORTAGE REACHES FLAGSHIP GPU",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2085757967459139924"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-07 19:09:51 UTC",
+    "headline": "OKLO REACTOR REACHES CRITICALITY UNDER A YEAR AFTER GROUNDBREAKING \u2014 FIRST HARD SMR DATAPOINT FOR DATACENTERS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2085765236876046500"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-07 19:09:51 UTC",
+    "headline": "DEEPSEEK RESUMES TALKS FOR $8B RAISE AT $74B VALUATION \u2014 UP 43% FROM FIRST ROUND WEEKS AGO",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2085682364491948125"
   }
 ]
