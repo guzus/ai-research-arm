@@ -691,7 +691,7 @@ jobs:
           # The agent reads topic/prompt/tags from .gen-input/*.txt files
           # instead — same defense as research-issue.yml after PR #42.
           claude_args: |
-            --model ${{ steps.native-model.outputs.model }} --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
+            --model ${{ steps.native-model.outputs.model }} --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(curl:*),Bash(pdftotext:*),Bash(birdy:*),Bash(birdy-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
             You are a deep-research analyst writing a COMPREHENSIVE,
             analyst-grade HTML article on the topic supplied by the user.
@@ -805,8 +805,8 @@ jobs:
                 to bypass on a known-stale URL. `info <url>` prints
                 cached metadata; `stats` shows hit rate, size, top
                 domains.
-              - `bird search "<query>" --json --plain | jq ...` and
-                `bird user-tweets <handle> --json --plain | jq ...` —
+              - `birdy search "<query>" --json --plain | jq ...` and
+                `birdy user-tweets <handle> --json --plain | jq ...` —
                 X/Twitter as a primary source via the bird CLI. A tweet
                 from a NAMED PRINCIPAL (founder, official corporate
                 account, lead engineer of the named project) counts as
@@ -848,9 +848,9 @@ jobs:
                  non-empty, this run was intentionally dispatched from
                  ONLY a Twitter/X link or from a Twitter/X link plus a
                  short framing note. Before the ambiguity check:
-                   a. Read the URL with `bird read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
+                   a. Read the URL with `birdy read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
                    b. Read the thread/conversation with
-                      `bird thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
+                      `birdy thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
                    c. Extract: author handle/name, posted date, quoted
                       tweet if present, named entities, concrete claims,
                       links/media mentioned in the tweet, and the
@@ -1090,8 +1090,8 @@ jobs:
                                    primaries for the specific question
                AND tell them they CAN use
                `curl + pdftotext` for PDF sources,
-               AND tell them they CAN use `bird search "<query>" --json --plain`
-               or `bird user-tweets <handle> --json --plain` to pull
+               AND tell them they CAN use `birdy search "<query>" --json --plain`
+               or `birdy user-tweets <handle> --json --plain` to pull
                X/Twitter primary sources (a tweet from a named principal
                counts as PRIMARY; AUTH_TOKEN / CT0 cookies are already in
                env),
@@ -2117,7 +2117,7 @@ jobs:
           # var the action injects. The agent reads topic/prompt/tags from
           # .gen-input/*.txt instead.
           claude_args: |
-            --model opus --max-turns 120 --allowedTools "Glob,Grep,Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(grep:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),Task,TodoWrite"
+            --model opus --max-turns 120 --allowedTools "Glob,Grep,Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(grep:*),Bash(curl:*),Bash(pdftotext:*),Bash(birdy:*),Bash(birdy-fast:*),Bash(jq:*),Task,TodoWrite"
           show_full_output: ${{ inputs.debug_full_output == 'true' }}
           prompt: |
             You are a deep-research analyst running on the selected Fireworks backend,
@@ -2236,8 +2236,8 @@ jobs:
                 to bypass on a known-stale URL. `info <url>` prints
                 cached metadata; `stats` shows hit rate, size, top
                 domains.
-              - `bird search "<query>" --json --plain | jq ...` and
-                `bird user-tweets <handle> --json --plain | jq ...` —
+              - `birdy search "<query>" --json --plain | jq ...` and
+                `birdy user-tweets <handle> --json --plain | jq ...` —
                 X/Twitter as a primary source via the bird CLI. A tweet
                 from a NAMED PRINCIPAL (founder, official corporate
                 account, lead engineer of the named project) counts as
@@ -2279,9 +2279,9 @@ jobs:
                  non-empty, this run was intentionally dispatched from
                  ONLY a Twitter/X link or from a Twitter/X link plus a
                  short framing note. Before the ambiguity check:
-                   a. Read the URL with `bird read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
+                   a. Read the URL with `birdy read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
                    b. Read the thread/conversation with
-                      `bird thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
+                      `birdy thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
                    c. Extract: author handle/name, posted date, quoted
                       tweet if present, named entities, concrete claims,
                       links/media mentioned in the tweet, and the
@@ -2521,8 +2521,8 @@ jobs:
                                    primaries for the specific question
                AND tell them they CAN use
                `curl + pdftotext` for PDF sources,
-               AND tell them they CAN use `bird search "<query>" --json --plain`
-               or `bird user-tweets <handle> --json --plain` to pull
+               AND tell them they CAN use `birdy search "<query>" --json --plain`
+               or `birdy user-tweets <handle> --json --plain` to pull
                X/Twitter primary sources (a tweet from a named principal
                counts as PRIMARY; AUTH_TOKEN / CT0 cookies are already in
                env),
