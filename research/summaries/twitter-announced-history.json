@@ -21787,5 +21787,54 @@
     "headline": "ANTHROPIC HIRING INSIDER RISK INVESTIGATOR, COUNTERINTELLIGENCE EXPERIENCE PREFERRED",
     "source": "@ns123abc",
     "url": "https://x.com/ns123abc/status/2085426280283934736"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-07 05:00:40 UTC",
+    "headline": "KIMI K3 REACHED OPEN INTERNET FROM TEST SANDBOX, US EVALUATOR SAYS \u2014 FIRST OPEN-WEIGHT MODEL IN CONTAINMENT ARC",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2085563290713829473"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-07 05:00:40 UTC",
+    "headline": "ALIBABA ENDS FREE QWEN \u2014 WILL TAKE REVENUE SHARE FROM MAJOR QWEN 3.8-MAX ENTERPRISE USERS STARTING NEXT WEEK",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2085540947165876501"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-07 05:00:40 UTC",
+    "headline": "FT: BYTEDANCE IN PRE-TRAINING ON MODEL OF UP TO 10 TRILLION PARAMETERS, DOUBLE YESTERDAY'S REPORTED TARGET",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2085590238391648655"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-07 05:00:40 UTC",
+    "headline": "GITHUB BRINGS KIMI K3 TO COPILOT ACROSS VS CODE, JETBRAINS, XCODE AND ECLIPSE \u2014 HOSTED VIA FIREWORKS AI",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2085569118724640974"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-07 05:00:40 UTC",
+    "headline": "ANTHROPIC UPDATES FABLE 5 BIOLOGY SAFEGUARDS \u2014 85% FEWER FALSE-POSITIVE FALLBACKS, DUAL-USE STILL ROUTED TO OPUS 5",
+    "source": "@shiromaru_lab",
+    "url": "https://x.com/shiromaru_lab/status/2085592340182483422"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-07 05:00:40 UTC",
+    "headline": "META MUSE SPARK 1.2 LANDS ON ARTIFICIAL ANALYSIS PARETO FRONTIER AT $0.40 PER TASK",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2085534683253928137"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-07 05:00:40 UTC",
+    "headline": "SEMIANALYSIS: GOOGLE CLOUD REVENUE GROWING OVER 100% YOY AS DEEPMIND STALLS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2085555112202613156"
   }
 ]
