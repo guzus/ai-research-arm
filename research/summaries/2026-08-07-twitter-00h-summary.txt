@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-07 00:11:02 UTC
+
+CYCLE: OpenAI restructures ChatGPT tiers; AI writes working viral genomes; AMD buys an inference-ASIC startup.
+
+TOP STORIES:
+• OpenAI ends the Instant/Thinking split — Sol powers all paid chat, Free/Go get unlimited Luna + a Think button [✓]
+• Arc Institute/Stanford publish AI-designed complete viral genomes in Science — 16 working bacteriophages from Evo [✓]
+• AMD acquires Taalas, betting on model-specific ASICs weeks after Nvidia-Groq; no terms disclosed [⚠]
+• Bloomberg: OpenAI's first device is a screenless $300-400 doughnut speaker — but a 2027 product [✓]
+
+WATCH: Whether unlimited GPT-5.6 Luna actually lands for free users today, and what rate limits hide behind "unlimited."
+
+Full update on GitHub.
