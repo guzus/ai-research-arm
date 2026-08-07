@@ -193,7 +193,7 @@ lanes get it centrally.
 
 **Pi lanes don't read Claude Code settings,** so they get their isolation
 from `.github/actions/run-pi-container` instead: a small Node container with
-`pi`, `bird`, `git`, `jq`, mounting only `$GITHUB_WORKSPACE`, `/tmp/bird`
+`pi`, `birdy`, `git`, `jq`, mounting only `$GITHUB_WORKSPACE`, `/tmp/bird`
 read-only, and the prompt file. Missing Docker is a hard failure — never fall
 back to host-level `pi --tools ... bash`.
 
@@ -303,8 +303,8 @@ Backend selection details, env-var mapping, and comparison commands:
 
 `generative-research.yml` takes `twitter_url` as a standalone
 `workflow_dispatch` input (`topic` then optional), staged at
-`.gen-input/twitter_url.txt`. The agent reads the thread with `bird read`
-/ `bird thread`, infers the underlying research question, and treats the
+`.gen-input/twitter_url.txt`. The agent reads the thread with `birdy read`
+/ `birdy thread`, infers the underlying research question, and treats the
 tweet as primary evidence **only for what the author said** — every
 underlying claim must be verified against independent primary sources
 before the article is written.
@@ -312,7 +312,7 @@ before the article is written.
 Two things the agent must do beyond reading text, because on an
 analytical thread they carry most of the argument:
 
-- **Look at the attached images.** `bird read --json` returns a `media`
+- **Look at the attached images.** `birdy read --json` returns a `media`
   array; the agent downloads each `pbs.twimg.com` entry (that host only —
   never an attacker-chosen URL) and Reads it as an image. Charts are
   routinely the evidence: a sell-side exhibit, a filing table, or the
@@ -387,7 +387,7 @@ Secrets are configured in GitHub Actions. None are committed.
 | `FIREWORKS_API_KEY` | `generative-research backend=glm-5p2`; DeepSeek/Kimi comparison lanes | Covers the GLM-via-Fireworks and DeepSeek-V4-Flash routes. **The account is SUSPENDED as of 2026-08-01** — every probe returns `HTTP 412: Account getclarito-5mege6wpl is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices` (run `30641250660`). `twitter-deepseek` is strict, so it never falls back: its `37 */6 * * *` cron hard-failed 4×/day from ~2026-07-05, and `research/twitter-deepseek/` has been stale since then. **That cron was dropped 2026-08-01** — the lane is dispatch-only until billing is settled at https://fireworks.ai/account/billing, then restore the cron in `hourly-twitter.yml`. Historical note for anyone reading old runs: those ~110 red runs were NOT a primary-lane problem, so check the job name before diagnosing a failure rate. |
 | `OPENCODE_API_KEY` | `backend=opencode-kimi-k3`; `opencode-kimi-canary.yml` | OpenCode Go route, serving `deepseek-v4-flash` since the temporary 2026-08-07 swap. Go key: https://opencode.ai/auth (watch caps $12/5h, $30/wk, $60/mo). `MOONSHOT_API_KEY` is no longer read by any route — Moonshot cannot serve DeepSeek — and a Moonshot-only environment now fails preflight instead of silently authoring with Kimi. Validate with the canary before a full run. |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | The file-backed `~/.codex/auth.json` from `codex login`. Treat like a password; one auth file per serialized runner stream. |
-| `BIRD_AUTH_TOKEN`, `BIRD_CT0` | bird-CLI workflows (`hourly-twitter*`, `24h-model-timeline`) | X/Twitter cookies; they expire — see rule 6. |
+| `BIRD_AUTH_TOKEN`, `BIRD_CT0` | birdy workflows (`hourly-twitter*`, `24h-model-timeline`, `twitter-account-explorer`, `generative-research`) | X/Twitter cookies; they expire — see rule 6. The env-var names keep the `BIRD_` prefix because that is what birdy reads. |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `blog-subscriptions`, `daily-digest`, `liveness-check` | Blog alerts, digest delivery, liveness escalation. |
 | `HOOKER_URL`, `HOOKER_TOKEN` | Telemetry composite + most workflows | Base URL and token for the hooker POSTs. Optional — without them telemetry steps no-op (rule 4). |
 | `S3_*` (4 vars), `GEMINI_API_KEY` | `daily-digest` audio | Optional. Gemini Flash TTS generates the mp3, S3 stores it; the committed `research/audio/*.mp3` are 0-byte stubs. Missing = that step skips. |
@@ -474,10 +474,21 @@ output or break the pipeline. Read them before editing.
    rollback infrastructure only; if restored, re-validate sandbox,
    Docker, state, and concurrency assumptions first.
 
-6. **X/Twitter CLI calls must be graceful and read-only.** Use Birdy,
+6. **X/Twitter CLI calls must be graceful and read-only.** Use **birdy**,
    pass `--json --plain`, and pipe to a fallback (`|| echo "[]"`). The
    cookies expire; workflows must continue with empty data rather than
    crash.
+   **The Node `bird` CLI is retired (2026-08-08) — do not reintroduce it.**
+   birdy has served all 24 commands natively in Go since v1.0.0, so the
+   release is one static binary with no Node runtime, and npm reports
+   `@steipete/bird` as "no longer supported". Every lane installs birdy
+   through [`.github/actions/install-birdy`](.github/actions/install-birdy);
+   the pi container installs a pinned binary in its own image. Two traps this
+   removal closed: `npm install -g` on the persistent runner HOME leaked a
+   global `bird` onto PATH for workflows that never installed it (so they
+   looked self-sufficient and were not), and birdy falls back to `bird` when
+   its native path fails — with bird absent that surfaces as
+   `bird CLI not found` where the real cause is usually a rate limit.
 
 7. **Improvement logs belong in `docs/archive/YYYY-MM-DD-improvements.md`,**
    not repo root. The improve loop runs weekly on Mondays and auto-closes

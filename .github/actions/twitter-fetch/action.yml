@@ -17,8 +17,12 @@ inputs:
     description: BIRD_CT0 secret value (for birdy stateless auth).
     required: true
   github_token:
-    description: GITHUB_TOKEN (used only to follow GitHub release redirects).
-    required: true
+    description: >-
+      Unused since the birdy install moved to .github/actions/install-birdy
+      (the birdy repo is public, so the release download needs no auth). Kept
+      so existing callers keep working; drop it and its call sites together.
+    required: false
+    default: ""
   birdy_accounts:
     description: >
       Optional BIRDY_ACCOUNTS JSON for multi-account rotation. Every account is
@@ -75,61 +79,12 @@ runs:
         echo "Disk after:"
         df -h / 2>&1 | tail -2
 
-    - name: Install birdy from GitHub release
-      shell: bash
-      env:
-        GH_TOKEN: ${{ inputs.github_token }}
-      run: |
-        # Download pre-built birdy binary from the latest release — avoids
-        # needing Go toolchain (~150MB) on the self-hosted runner. The
-        # v0.9.0+ release includes the `multi-fetch` command.
-        set -e
-
-        OS=$(uname -s | tr '[:upper:]' '[:lower:]')
-        ARCH=$(uname -m)
-        case "$ARCH" in
-          x86_64|amd64) ARCH=amd64 ;;
-          arm64|aarch64) ARCH=arm64 ;;
-        esac
-        ASSET="birdy_${OS}_${ARCH}.tar.gz"
-
-        TMPDIR=$(mktemp -d)
-        trap 'rm -rf "$TMPDIR"' EXIT
-
-        # Public repo, no auth needed. Install the whole release layout: through
-        # v0.11.0 birdy shipped a bundled Node `bird/` runtime that it located
-        # next to its own binary, so the layout — not just the binary — mattered.
-        curl -fsSL "https://github.com/guzus/birdy/releases/latest/download/${ASSET}" -o "$TMPDIR/$ASSET"
-        tar -xzf "$TMPDIR/$ASSET" -C "$TMPDIR"
-
-        BIN="$TMPDIR/birdy"
-        [ -f "$BIN" ] || BIN="$TMPDIR/birdy_${OS}_${ARCH}"
-        if [ ! -f "$BIN" ]; then
-          echo "Could not find birdy binary in release tarball"
-          ls "$TMPDIR" >&2
-          exit 1
-        fi
-
-        INSTALL_DIR="$HOME/.local/birdy"
-        rm -rf "$INSTALL_DIR"
-        mkdir -p "$INSTALL_DIR"
-        # birdy v1.0.0 (2026-08-07) completed the native-Go rewrite and DROPPED
-        # the bundled runtime: v0.11.0 shipped `bird/dist/...`, v1.x ships only
-        # LICENSE + README + birdy. This `cp` was unconditional, so the major
-        # bump hard-failed every scheduled Twitter run within ~an hour of the
-        # release with `cp: cannot stat '<tmp>/bird': No such file or directory`
-        # — the lane tracks `releases/latest`, so an upstream release reshapes
-        # this step with no commit here. Copy the runtime only if it exists, so
-        # both layouts install; drop this branch once no pinned/rollback release
-        # predates v1.0.0.
-        if [ -d "$TMPDIR/bird" ]; then
-          cp -R "$TMPDIR"/bird "$INSTALL_DIR"/
-        fi
-        install -m 755 "$BIN" "$INSTALL_DIR/birdy"
-        echo "$INSTALL_DIR" >> "$GITHUB_PATH"
-        export PATH="$INSTALL_DIR:$PATH"
-
-        birdy version 2>&1 | head -3 || echo "(birdy installed)"
+    # Shared installer (.github/actions/install-birdy) so every lane obtains
+    # birdy the same way. It replaced the inline copy that also copied a
+    # bundled Node `bird/` runtime out of the tarball — birdy v1.0.0 dropped
+    # that runtime and serves all commands natively, so the copy is gone.
+    - name: Install birdy
+      uses: ./.github/actions/install-birdy
 
     - name: Fetch tweets, searches, and news via birdy multi-fetch
       shell: bash

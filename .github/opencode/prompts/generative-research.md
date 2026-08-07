@@ -28,8 +28,8 @@ then fetch specific URLs with `scripts/source_cache.py`, `curl` +
 If `.gen-input/twitter_url.txt` is non-empty, begin by reading the seed with:
 
 ```bash
-bird read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"
-bird thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"
+birdy read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"
+birdy thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"
 ```
 
 Use X/Twitter only as primary evidence for what the author/account said. Do not

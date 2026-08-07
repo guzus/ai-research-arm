@@ -46,9 +46,10 @@ jobs:
       - name: Install Python dependencies
         run: uv sync --frozen
 
-      - name: Install bird CLI
-        # pinned 2026-05-17; bump manually (Dependabot can't track inline npm -g installs)
-        run: npm install -g @steipete/bird@0.8.0
+      # Was `npm install -g @steipete/bird@0.8.0` (npm: "no longer supported").
+      # birdy serves every command natively in Go since v1.0.0.
+      - name: Install birdy
+        uses: ./.github/actions/install-birdy
 
       - name: Fetch tweets from company accounts
         env:
@@ -62,7 +63,7 @@ jobs:
 
           for handle in $companies; do
             echo "Fetching @${handle}..."
-            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+            birdy user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
           done
 
       - name: Fetch tweets from key execs
@@ -75,7 +76,7 @@ jobs:
 
           for handle in $execs; do
             echo "Fetching @${handle}..."
-            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+            birdy user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
           done
 
       - name: Search for model release tweets
@@ -84,16 +85,16 @@ jobs:
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
           # Model release announcements
-          bird search "new model release OR model launch OR new AI model OR foundation model release" -n 50 --json --plain > /tmp/bird/search-model-release.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-release.json
+          birdy search "new model release OR model launch OR new AI model OR foundation model release" -n 50 --json --plain > /tmp/bird/search-model-release.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-release.json
 
           # Specific model names
-          bird search "GPT-5 OR GPT-4.5 OR Claude 4 OR Gemini 2.5 OR Llama 4 OR Grok 3" -n 40 --json --plain > /tmp/bird/search-model-names.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-names.json
+          birdy search "GPT-5 OR GPT-4.5 OR Claude 4 OR Gemini 2.5 OR Llama 4 OR Grok 3" -n 40 --json --plain > /tmp/bird/search-model-names.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-names.json
 
           # Roadmaps and timelines
-          bird search "model roadmap OR upcoming model OR model release date OR model announcement" -n 30 --json --plain > /tmp/bird/search-roadmap.json 2>/dev/null || echo "[]" > /tmp/bird/search-roadmap.json
+          birdy search "model roadmap OR upcoming model OR model release date OR model announcement" -n 30 --json --plain > /tmp/bird/search-roadmap.json 2>/dev/null || echo "[]" > /tmp/bird/search-roadmap.json
 
           # Benchmarks and SOTA
-          bird search "AI model benchmark OR SOTA OR state of the art new model" -n 20 --json --plain > /tmp/bird/search-benchmark.json 2>/dev/null || echo "[]" > /tmp/bird/search-benchmark.json
+          birdy search "AI model benchmark OR SOTA OR state of the art new model" -n 20 --json --plain > /tmp/bird/search-benchmark.json 2>/dev/null || echo "[]" > /tmp/bird/search-benchmark.json
 
       # CRUD agent — maintains the persistent set of tickets at
       # research/models/tickets/<slug>.md instead of regenerating a

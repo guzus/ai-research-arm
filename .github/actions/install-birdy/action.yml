@@ -1,0 +1,89 @@
+name: Install birdy
+description: >-
+  Install the birdy X/Twitter CLI from its GitHub release and put it on PATH.
+  Single source of truth for how every lane obtains birdy.
+
+# birdy has served all 24 commands natively in Go since v1.0.0 (2026-08-07);
+# the release is one binary with no Node runtime. This action replaced three
+# separate `npm install -g @steipete/bird@0.8.0` sites — npm already flags that
+# package "no longer supported", and running two X clients side by side meant
+# two auth paths, two rate-limit accountings, and two output shapes to keep in
+# sync. birdy is also the only one of the two that rotates accounts.
+#
+# Pre-built binary rather than `go install`: the self-hosted runner would
+# otherwise need a ~150MB Go toolchain.
+
+inputs:
+  version:
+    description: >-
+      Release tag to install (e.g. v1.1.0), or "latest". Defaults to latest,
+      which is how every caller behaved before this action existed. NOTE: with
+      "latest", an upstream release changes these lanes with no commit here —
+      that is exactly how v1.0.0 dropping the bundled runtime broke the Twitter
+      lane on 2026-08-07. Pin a tag when a lane must not move on its own.
+    required: false
+    default: latest
+
+outputs:
+  version:
+    description: The birdy version actually installed, as reported by `birdy version`.
+    value: ${{ steps.install.outputs.version }}
+
+runs:
+  using: composite
+  steps:
+    - name: Install birdy from GitHub release
+      id: install
+      shell: bash
+      env:
+        BIRDY_VERSION: ${{ inputs.version }}
+      run: |
+        set -euo pipefail
+
+        OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+        ARCH=$(uname -m)
+        case "$ARCH" in
+          x86_64|amd64) ARCH=amd64 ;;
+          arm64|aarch64) ARCH=arm64 ;;
+        esac
+        ASSET="birdy_${OS}_${ARCH}.tar.gz"
+
+        if [ "${BIRDY_VERSION}" = "latest" ]; then
+          URL="https://github.com/guzus/birdy/releases/latest/download/${ASSET}"
+        else
+          URL="https://github.com/guzus/birdy/releases/download/${BIRDY_VERSION}/${ASSET}"
+        fi
+
+        TMPDIR=$(mktemp -d)
+        trap 'rm -rf "$TMPDIR"' EXIT
+
+        # Public repo, no auth needed.
+        curl -fsSL "$URL" -o "$TMPDIR/$ASSET"
+        tar -xzf "$TMPDIR/$ASSET" -C "$TMPDIR"
+
+        BIN="$TMPDIR/birdy"
+        [ -f "$BIN" ] || BIN="$TMPDIR/birdy_${OS}_${ARCH}"
+        if [ ! -f "$BIN" ]; then
+          echo "::error::No birdy binary in ${ASSET}. Release layout changed?"
+          ls -R "$TMPDIR" >&2
+          exit 1
+        fi
+
+        # The runner's HOME persists between jobs, so wipe rather than merge:
+        # a stale layout left behind by an older release must not shadow this
+        # install.
+        INSTALL_DIR="$HOME/.local/birdy"
+        rm -rf "$INSTALL_DIR"
+        mkdir -p "$INSTALL_DIR"
+        install -m 755 "$BIN" "$INSTALL_DIR/birdy"
+        echo "$INSTALL_DIR" >> "$GITHUB_PATH"
+        export PATH="$INSTALL_DIR:$PATH"
+
+        # Fail loudly here rather than let every downstream `|| echo "[]"`
+        # silently turn a broken install into an empty, plausible-looking lane.
+        if ! VERSION=$(birdy version 2>&1 | head -1); then
+          echo "::error::birdy installed but not runnable: $VERSION"
+          exit 1
+        fi
+        echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+        echo "Installed $VERSION"
