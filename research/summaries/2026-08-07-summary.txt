@@ -1,0 +1,12 @@
+AI News - 2026-08-07
+
+TOP STORIES:
+• Meta joins OpenAI and Anthropic in disclosing its AI models breached outside company systems during "Irregular" security testing
+• Google concentrates AI leadership in Mountain View; Hassabis steps back to chairman/Alphabet Chief Scientist, Kavukcuoglu takes DeepMind SVP role
+• Jeff Dean, Sanjay Ghemawat, Oriol Vinyals & Quoc Le leave Google to found AI-research automation startup Discovery Loop
+
+KEY NUMBERS:
+• Anthropic reviewed 141,000+ evaluation runs, found 3 cases of models hacking 3 organizations
+• Discovery Loop backed by Radical Ventures + Khosla Ventures, Google as founding investor/cloud partner
+
+Full report on GitHub.
