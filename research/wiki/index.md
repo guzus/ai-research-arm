@@ -28,6 +28,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[deepseek-v4-flash]] — DeepSeek's 284B/13B-active MoE with 1M context; API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis at ~60% lower cost per task than GPT-5.6 Luna.
 - [[dell]] — US enterprise-IT OEM; Q1 FY27 AI-Optimized Servers $16.1B (+757% YoY), $24.4B AI orders booked, FY27 AI-server outlook raised to $60B.
 - [[discovery-loop]] — Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le on leaving Google, automating large-scale ML experimentation, with Google as founding investor and Cloud partner.
+- [[evo-genome-models]] — Arc Institute/Stanford genome language models; reported in Science (2026-08-07) to have written the first complete bacteriophage genomes from scratch, 16 of them working viruses.
 - [[etched]] — AI-chip startup out of stealth 2026-06-30 ($800M raised, $1B+ contracts); valuation jumped $5B→$10.3B by 2026-07-23; Sohu transformer-only inference ASIC ships summer 2026.
 - [[figure-ai]] — US humanoid-robotics company whose Helix-02 VLA ran a 200-hour fully-autonomous 249,560-package shift on 2026-05-30, ~10× the prior public MTBI envelope.
 - [[fireworks-ai]] — AI inference-infrastructure company that raised a $1.505B Series D at a $17.5B valuation (2026-07-18), citing 40T+ tokens/day served.
@@ -73,6 +74,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[soofi-s-30b-a3b]] — Deutsche Telekom-backed sovereign open German/English MoE model (~27T tokens); claimed strongest fully-open model on combined EN+DE benchmarks, released 2026-07-13.
 - [[spacex]] — Record IPO (Nasdaq: SPCX, debuted 2026-06-12 at $135/share, ~$1.77T valuation) anchoring the 2026 AI-financing issuance wave.
 - [[tencent-hunyuan-hy3]] — Tencent Hunyuan's 295B open-weight MoE model under Apache 2.0, reported new open SOTA on the MCP-Atlas benchmark, released 2026-07-06.
+- [[taalas]] — Inference-chip startup hardwiring a single model into silicon; acquired by AMD on 2026-08-07 with no disclosed terms, the second model-specific-silicon deal of the cycle after Nvidia–Groq.
 - [[volta-infra]] — Months-old neocloud founded by ex-Brookfield executives; reported ~$10B Anthropic compute counterparty, colocated with Bitdeer behind a $1.3B letter of credit, unconfirmed by any principal.
 - [[thinking-machines]] — Mira Murati's AI lab; shipped Inkling on 2026-07-15, its first public model release, a 975B-parameter open-weights multimodal MoE.
 - [[xai]] — Elon Musk's frontier lab behind Grok; increasingly defined by its compute-landlord business renting Colossus capacity to rival labs at $2B+/month, and by Grok 4.5 — a from-scratch 1.5T "V9" model in private beta at SpaceX/Tesla claiming Opus-level performance.
@@ -85,6 +87,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[artificial-general-engineer]] — The thesis that AI can take complex physical products from concept through production — extending AI from software into hardware design and manufacturing.
 - [[dynamic-workflows]] — Anthropic's parallel-subagent Claude Code feature, gated to Enterprise / Team / Max.
 - [[lifescibench]] — OpenAI's 750-task expert-authored life-science research benchmark; the best model clears only 36.1%.
+- [[model-specific-silicon]] — Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token.
 - [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts.
 - [[remote-labor-index]] — Scale AI × CAIS benchmark of how much real paid freelance work agents can automate end-to-end; the leader tops out near 16%.
 - [[verification-bottleneck]] — Models now emit research-shaped output faster than qualified humans can check it, so verification — not generation — becomes the scarce input.

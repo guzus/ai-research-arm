@@ -6,8 +6,9 @@ aliases: ["Etched", "Sohu"]
 tags: [ai-chips, inference, transformer-asic, hardware, funding]
 description: AI-chip startup that exited stealth on 2026-06-30 with $800M raised and a $5B valuation, then hit a $10.3B valuation from big-name investors by 2026-07-23 — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).
 created_at: 2026-07-01
-timestamp: 2026-07-25T00:00:00Z
+timestamp: 2026-08-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA daily digest 2026-07-25", path: research/digest/2026-07-25-digest.md}
   - {title: "TechCrunch — Etched exits stealth", date: 2026-06-30}
@@ -41,6 +42,18 @@ TechCrunch, @kimmonismus).
   [[meituan-longcat-2|LongCat-2.0]]'s no-Nvidia training claim and DeepSeek's
   DSpark speedups — different levers (custom silicon vs. software/model
   efficiency) all pushing on the cost of running large models.
+
+- **Repriced at $10B by SK Hynix and TSMC — the same day AMD bought a rival
+  (2026-08-07).** The digest records Etched **repriced at $10B by SK Hynix and
+  TSMC**, which adds named strategic investors to the $10.3B mark already
+  recorded above rather than a new number. What makes it worth noting is the
+  timing: **the market marked [[model-specific-silicon]] up at the exact moment
+  [[amd]] acquired [[taalas]]**, the second such acquisition after Nvidia–Groq.
+  Etched sits one notch less specialized than Taalas — Sohu freezes the
+  *transformer architecture*, Taalas freezes *one model's weights* — so an
+  incumbent GPU vendor validating the far end of that spectrum is a read-through
+  to Etched's own bet (ARA daily digest 2026-08-07). Note the investor identity:
+  a memory maker and a foundry, i.e. suppliers, not customers.
 
 ## Open questions
 - **Do the performance claims survive independent testing?** Everything public
