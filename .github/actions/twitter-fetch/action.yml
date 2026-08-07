@@ -96,8 +96,9 @@ runs:
         TMPDIR=$(mktemp -d)
         trap 'rm -rf "$TMPDIR"' EXIT
 
-        # Public repo, no auth needed. Install the whole release layout because
-        # birdy locates the bundled bird runtime next to the birdy binary.
+        # Public repo, no auth needed. Install the whole release layout: through
+        # v0.11.0 birdy shipped a bundled Node `bird/` runtime that it located
+        # next to its own binary, so the layout — not just the binary — mattered.
         curl -fsSL "https://github.com/guzus/birdy/releases/latest/download/${ASSET}" -o "$TMPDIR/$ASSET"
         tar -xzf "$TMPDIR/$ASSET" -C "$TMPDIR"
 
@@ -112,7 +113,18 @@ runs:
         INSTALL_DIR="$HOME/.local/birdy"
         rm -rf "$INSTALL_DIR"
         mkdir -p "$INSTALL_DIR"
-        cp -R "$TMPDIR"/bird "$INSTALL_DIR"/
+        # birdy v1.0.0 (2026-08-07) completed the native-Go rewrite and DROPPED
+        # the bundled runtime: v0.11.0 shipped `bird/dist/...`, v1.x ships only
+        # LICENSE + README + birdy. This `cp` was unconditional, so the major
+        # bump hard-failed every scheduled Twitter run within ~an hour of the
+        # release with `cp: cannot stat '<tmp>/bird': No such file or directory`
+        # — the lane tracks `releases/latest`, so an upstream release reshapes
+        # this step with no commit here. Copy the runtime only if it exists, so
+        # both layouts install; drop this branch once no pinned/rollback release
+        # predates v1.0.0.
+        if [ -d "$TMPDIR/bird" ]; then
+          cp -R "$TMPDIR"/bird "$INSTALL_DIR"/
+        fi
         install -m 755 "$BIN" "$INSTALL_DIR/birdy"
         echo "$INSTALL_DIR" >> "$GITHUB_PATH"
         export PATH="$INSTALL_DIR:$PATH"
