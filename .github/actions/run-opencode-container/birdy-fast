@@ -1,0 +1,50 @@
+#!/bin/sh
+set -eu
+
+# The host's birdy-fast talks to a localhost daemon, which is deliberately not
+# reachable from this container. Preserve the prompt-facing command contract by
+# routing to the pinned in-image birdy binary. Log command names only: arguments
+# may contain private URLs, cookies, or user-provided search text.
+export BIRDY_READ_ONLY=1
+LOG_PATH="${BIRDY_TOOL_LOG_PATH:-/workspace/.twitter-input/birdy-tool-log.jsonl}"
+
+command_name=""
+skip_next=0
+for arg in "$@"; do
+  if [ "$skip_next" = "1" ]; then
+    skip_next=0
+    continue
+  fi
+  case "$arg" in
+    --auth-token|--ct0|--chrome-profile|--chrome-profile-dir|--firefox-profile|--cookie-timeout|--cookie-source|--media|--alt|--timeout|--quote-depth|-n|--count)
+      skip_next=1
+      ;;
+    --*=*|-*)
+      ;;
+    *)
+      command_name=$(printf '%s' "$arg" | tr '[:upper:]' '[:lower:]')
+      break
+      ;;
+  esac
+done
+
+log_event() {
+  blocked="$1"
+  mkdir -p -- "$(dirname -- "$LOG_PATH")" 2>/dev/null || true
+  jq -cn \
+    --arg command "${command_name:-unknown}" \
+    --argjson blocked "$blocked" \
+    '{ts:(now|floor),tool:"birdy-fast",command:$command,blocked:$blocked,redacted:true}' \
+    >> "$LOG_PATH" 2>/dev/null || true
+}
+
+case "$command_name" in
+  tweet|post|reply|follow|unfollow|unbookmark)
+    log_event true
+    echo "birdy-fast: mutating command '$command_name' is disabled in read-only workflow mode" >&2
+    exit 2
+    ;;
+esac
+
+log_event false
+exec birdy "$@"

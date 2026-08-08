@@ -842,6 +842,12 @@ jobs:
         if: steps.backend.outputs.name == 'opencode-kimi-k3'
         uses: ./.github/actions/run-opencode-container
         with:
+          mode: twitter
+          allowed-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
           prompt-file: ${{ steps.render.outputs.rendered_path }}
           model: opencode-go/deepseek-v4-flash
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}

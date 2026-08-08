@@ -157,6 +157,11 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          # checkout@v7 stores the token material under RUNNER_TEMP (which the
+          # opencode container never mounts), but its git config still carries
+          # a credential include. Remove that wiring as least privilege;
+          # safe-push injects its own token at publish time.
+          persist-credentials: false
 
       - name: Get current date
         id: date
@@ -2038,6 +2043,7 @@ jobs:
         timeout-minutes: 90
         uses: ./.github/actions/run-opencode-container
         with:
+          mode: generative
           prompt-file: ${{ github.workspace }}/.github/opencode/prompts/generative-research.md
           model: ${{ steps.opencode-route.outputs.model }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}

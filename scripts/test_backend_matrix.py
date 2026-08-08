@@ -8,9 +8,11 @@ loosen the parser. (Doc-freshness itself is the separate `--check` CI step.)
 
 import copy
 import json
+import os
 import re
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -350,17 +352,34 @@ class RoutingInvariants(unittest.TestCase):
             line for line in
             "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"]).splitlines()
             if not line.lstrip().startswith("#"))
-        for name in self.OPENCODE_WORKFLOWS:
-            doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
-                                 .read_text(encoding="utf-8"))
+        workflow_paths = sorted((REPO_ROOT / ".github" / "workflows").glob("*.yml"))
+        workflow_paths += sorted((REPO_ROOT / ".github" / "workflows").glob("*.yaml"))
+        for workflow_path in workflow_paths:
+            name = workflow_path.name
+            doc = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
             for job in (doc.get("jobs") or {}).values():
-                for step in job.get("steps") or []:
+                steps = job.get("steps") or []
+                for step in steps:
                     for line in (step.get("run") or "").splitlines():
                         code = line.split("#", 1)[0]
                         self.assertNotRegex(
                             code, r"(^|[;&|]|\s)opencode\s+run\b",
                             f"{name}: `opencode run` outside the container "
                             f"action reintroduces the unsandboxed posture")
+                if any("run-opencode-container" in str(step.get("uses") or "")
+                       for step in steps):
+                    checkouts = [step for step in steps
+                                 if str(step.get("uses") or "").startswith(
+                                     "actions/checkout@")]
+                    self.assertTrue(
+                        checkouts,
+                        f"{name}: opencode job must check out the contained workspace")
+                    for checkout in checkouts:
+                        self.assertIs(
+                            False,
+                            (checkout.get("with") or {}).get("persist-credentials"),
+                            f"{name}: opencode checkout must remove credential "
+                            "wiring as least privilege")
         # Container hardening, mirroring run-pi-container.
         for flag in ("--cap-drop ALL", "--security-opt no-new-privileges",
                      "--pids-limit", '--user "$(id -u):$(id -g)"',
@@ -369,13 +388,239 @@ class RoutingInvariants(unittest.TestCase):
         # A missing Docker daemon must FAIL, never silently degrade to a host
         # run — that is the exact posture this action removes.
         self.assertIn("Docker is required for sandboxed opencode runs", action)
+        # The runner and its Docker daemon persist across jobs. The per-run
+        # build context, inline prompt, and image must be removed even when the
+        # agent fails or times out; EXIT preserves the original exit status.
+        self.assertIn("trap cleanup EXIT", action)
+        self.assertIn('docker image rm -f "$image"', action)
+        self.assertIn('rm -rf -- "$build_dir"', action)
+        self.assertIn('rm -rf -- "$isolated_workspace"', action)
+        self.assertIn('rm -f -- "$staged_prompt"', action)
         # Pinned install lives here now.
         self.assertIn("opencode-ai@1.18.3", action)
         self.assertIn("OPENCODE_DISABLE_AUTOUPDATE=1", action)
+        self.assertIn('cp "$GITHUB_ACTION_PATH/birdy-fast"', action)
+        self.assertIn("--env GITHUB_WORKSPACE=/workspace", action)
+        self.assertIn("git clone --quiet --no-hardlinks", action)
+        self.assertIn('--volume "$isolated_workspace:/workspace"', action)
+        self.assertNotIn('--volume "$GITHUB_WORKSPACE:/workspace"', action)
+        self.assertIn("git bundle create .opencode-export.bundle", action)
+        self.assertIn('fetch --no-tags "$bundle_file" HEAD', action)
+        self.assertNotIn('fetch --no-tags "$isolated_workspace"', action)
+        self.assertIn('tree_mode" != "100644', action)
+        self.assertIn("tree_type\" != \"blob", action)
+        for name, expected_mode in {
+                "generative-research.yml": "generative",
+                "hourly-twitter.yml": "twitter",
+                "opencode-kimi-canary.yml": "canary",
+        }.items():
+            doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
+                                 .read_text(encoding="utf-8"))
+            calls = [step for job in (doc.get("jobs") or {}).values()
+                     for step in (job.get("steps") or [])
+                     if "run-opencode-container" in str(step.get("uses") or "")]
+            self.assertTrue(calls, name)
+            self.assertTrue(all((step.get("with") or {}).get("mode") == expected_mode
+                                for step in calls), name)
         # The runner's real home holds other lanes' credentials; the agent gets
         # the workspace and the prompt, nothing else by default.
         self.assertNotIn('--volume "$HOME', action)
         self.assertNotIn("--privileged", action)
+
+    def test_container_birdy_fast_wrapper_executes_read_only_and_logs_redacted(self):
+        wrapper = (REPO_ROOT / ".github" / "actions" /
+                   "run-opencode-container" / "birdy-fast")
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            fake_birdy = tmp_path / "birdy"
+            observed = tmp_path / "observed.txt"
+            tool_log = tmp_path / "tool-log.jsonl"
+            fake_birdy.write_text(
+                '#!/bin/sh\n'
+                'printf "%s\\n" "$BIRDY_READ_ONLY" > "$FAKE_BIRDY_OUT"\n'
+                'printf "%s\\n" "$@" >> "$FAKE_BIRDY_OUT"\n',
+                encoding="utf-8")
+            fake_birdy.chmod(0o755)
+            env = {
+                "PATH": f"{tmp_path}:/usr/bin:/bin",
+                "FAKE_BIRDY_OUT": str(observed),
+                "BIRDY_TOOL_LOG_PATH": str(tool_log),
+            }
+
+            result = subprocess.run(
+                [str(wrapper), "search", "private query", "--json", "--plain"],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertEqual(
+                ["1", "search", "private query", "--json", "--plain"],
+                observed.read_text(encoding="utf-8").splitlines())
+            event = json.loads(tool_log.read_text(encoding="utf-8").splitlines()[0])
+            self.assertEqual("birdy-fast", event["tool"])
+            self.assertEqual("search", event["command"])
+            self.assertIs(event["blocked"], False)
+            self.assertIs(event["redacted"], True)
+            self.assertNotIn("private query", tool_log.read_text(encoding="utf-8"))
+
+            observed.unlink()
+            blocked = subprocess.run(
+                [str(wrapper), "reply", "tweet-id", "secret text"],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertEqual(2, blocked.returncode)
+            self.assertFalse(observed.exists(), "blocked command reached birdy")
+            blocked_event = json.loads(
+                tool_log.read_text(encoding="utf-8").splitlines()[-1])
+            self.assertEqual("reply", blocked_event["command"])
+            self.assertIs(blocked_event["blocked"], True)
+            self.assertNotIn("secret text", tool_log.read_text(encoding="utf-8"))
+
+    def test_trusted_import_guard_rejects_forbidden_committed_path(self):
+        """Execute the real inline guard against an adversarial static bundle."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        guard = shell.split("# TRUSTED_IMPORT_GUARD_BEGIN", 1)[1].split(
+            "# TRUSTED_IMPORT_GUARD_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            original = tmp_path / "original"
+            isolated = tmp_path / "isolated"
+            original.mkdir()
+
+            def git(repo: Path, *args: str) -> subprocess.CompletedProcess:
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=True)
+
+            git(original, "init", "-b", "main")
+            git(original, "config", "user.name", "Guard Test")
+            git(original, "config", "user.email", "guard@example.invalid")
+            (original / "research" / "generative").mkdir(parents=True)
+            (original / "scripts").mkdir()
+            (original / "research" / "generative" / "index.json").write_text(
+                "[]\n", encoding="utf-8")
+            (original / "scripts" / "validator.py").write_text(
+                "TRUSTED = True\n", encoding="utf-8")
+            git(original, "add", ".")
+            git(original, "commit", "-m", "base")
+            pre_sha = git(original, "rev-parse", "HEAD").stdout.strip()
+
+            subprocess.run(
+                ["git", "clone", "--quiet", "--no-hardlinks",
+                 str(original), str(isolated)], check=True)
+            git(isolated, "config", "user.name", "Attacker")
+            git(isolated, "config", "user.email", "attacker@example.invalid")
+            (isolated / "scripts" / "validator.py").write_text(
+                "TRUSTED = False\n", encoding="utf-8")
+            git(isolated, "add", "scripts/validator.py")
+            git(isolated, "commit", "-m", "poison validator")
+            post_sha = git(isolated, "rev-parse", "HEAD").stdout.strip()
+            git(isolated, "bundle", "create", ".opencode-export.bundle",
+                "HEAD", f"^{pre_sha}")
+            (isolated / ".opencode-post-sha").write_text(
+                post_sha + "\n", encoding="utf-8")
+
+            env = os.environ.copy()
+            env.update({
+                "GITHUB_WORKSPACE": str(original),
+                "isolated_workspace": str(isolated),
+                "pre_sha": pre_sha,
+                "RUN_MODE": "generative",
+                "ALLOWED_PATHS": "",
+                "BIRDY_TOOL_LOG_REL": "",
+                "agent_status": "0",
+            })
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + guard],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertNotEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertIn("forbidden path/status", result.stdout + result.stderr)
+            self.assertEqual(pre_sha, git(original, "rev-parse", "HEAD").stdout.strip())
+            self.assertEqual("TRUSTED = True\n",
+                             (original / "scripts" / "validator.py").read_text(
+                                 encoding="utf-8"))
+            self.assertEqual("", git(original, "status", "--porcelain").stdout)
+
+    def test_trusted_import_guard_imports_exact_generative_bundle_and_data(self):
+        """A valid writer commit crosses the bundle boundary and nothing else."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        guard = shell.split("# TRUSTED_IMPORT_GUARD_BEGIN", 1)[1].split(
+            "# TRUSTED_IMPORT_GUARD_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            original = tmp_path / "original"
+            isolated = tmp_path / "isolated"
+            original.mkdir()
+
+            def git(repo: Path, *args: str) -> subprocess.CompletedProcess:
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=True)
+
+            git(original, "init", "-b", "main")
+            git(original, "config", "user.name", "Guard Test")
+            git(original, "config", "user.email", "guard@example.invalid")
+            gen_dir = original / "research" / "generative"
+            gen_dir.mkdir(parents=True)
+            (gen_dir / "index.json").write_text("[]\n", encoding="utf-8")
+            git(original, "add", ".")
+            git(original, "commit", "-m", "base")
+            pre_sha = git(original, "rev-parse", "HEAD").stdout.strip()
+
+            subprocess.run(
+                ["git", "clone", "--quiet", "--no-hardlinks",
+                 str(original), str(isolated)], check=True)
+            git(isolated, "config", "user.name", "Writer")
+            git(isolated, "config", "user.email", "writer@example.invalid")
+            isolated_gen = isolated / "research" / "generative"
+            html_name = "2026-08-08T000000--valid.html"
+            ara_name = "2026-08-08T000000--valid.ara.md"
+            (isolated_gen / "index.json").write_text(
+                '[{"slug":"valid","file":"' + html_name + '"}]\n',
+                encoding="utf-8")
+            (isolated_gen / html_name).write_text(
+                '<article class="ara-article"></article>\n', encoding="utf-8")
+            (isolated_gen / ara_name).write_text(
+                '---\ntitle: Valid\n---\n\n## Valid\n', encoding="utf-8")
+            git(isolated, "add", "research/generative")
+            git(isolated, "commit", "-m", "valid writer output")
+            post_sha = git(isolated, "rev-parse", "HEAD").stdout.strip()
+            git(isolated, "bundle", "create", ".opencode-export.bundle",
+                "HEAD", f"^{pre_sha}")
+            (isolated / ".opencode-post-sha").write_text(
+                post_sha + "\n", encoding="utf-8")
+            methodology = {
+                ".gen-verifier-findings.json": '{"findings":[]}\n',
+                ".gen-redteam-findings.json": '{"findings":[]}\n',
+                ".gen-claims-ledger.json": '{"claims":[]}\n',
+            }
+            for name, content in methodology.items():
+                (isolated / name).write_text(content, encoding="utf-8")
+
+            env = os.environ.copy()
+            env.update({
+                "GITHUB_WORKSPACE": str(original),
+                "isolated_workspace": str(isolated),
+                "pre_sha": pre_sha,
+                "RUN_MODE": "generative",
+                "ALLOWED_PATHS": "",
+                "BIRDY_TOOL_LOG_REL": "",
+                "agent_status": "0",
+            })
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + guard],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertEqual(post_sha, git(original, "rev-parse", "HEAD").stdout.strip())
+            self.assertTrue((original / "research" / "generative" / html_name).is_file())
+            self.assertTrue((original / "research" / "generative" / ara_name).is_file())
+            for name, content in methodology.items():
+                self.assertEqual(content, (original / name).read_text(encoding="utf-8"))
 
     def test_comparison_tiers_are_strict(self):
         # Comparison artifacts must be attributable to their labeled backend:

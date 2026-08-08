@@ -231,6 +231,7 @@ jobs:
       - name: Run opencode file-free canary
         uses: ./.github/actions/run-opencode-container
         with:
+          mode: canary
           prompt-text: 'Reply with exactly this token and nothing else: OPENCODE-KIMI-CANARY-OK'
           model: opencode-go/deepseek-v4-flash
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}

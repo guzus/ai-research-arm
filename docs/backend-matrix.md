@@ -125,8 +125,9 @@ Reading notes:
 - `gpu-spot.yml`
 - `liveness-check.yml`
 - `market-quotes.yml`
+- `model-pricing.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-opus-5`. 30 SSOT lanes (+7 dispatch execution paths) across 29 workflows; 11 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-opus-5`. 30 SSOT lanes (+7 dispatch execution paths) across 30 workflows; 12 workflows run no model._
 
 <!-- END GENERATED BACKEND MATRIX -->
 

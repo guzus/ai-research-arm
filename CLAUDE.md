@@ -196,13 +196,21 @@ lanes get it centrally.
 isolation from a container instead. `.github/actions/run-pi-container`: a small
 Node container with `pi`, `birdy`, `git`, `jq`, mounting only
 `$GITHUB_WORKSPACE`, `/tmp/bird` read-only, and the prompt file.
-`.github/actions/run-opencode-container`: the same shape for opencode, plus
-`uv` and `pdftotext` because the research prompt shells out to
-`uv run python scripts/...` 17 times. Both run `--cap-drop ALL`,
+`.github/actions/run-opencode-container`: the same tool image shape for
+opencode, plus `uv` and `pdftotext` because the research prompt shells out to
+`uv run python scripts/...` 17 times. Unlike pi, opencode never gets the real
+checkout writable: the host creates a no-hardlink disposable clone, the
+container writes/commits only there, and a trusted host tail imports at most one
+static bundle after exact path/status/mode/size validation. Only the three named
+generative-methodology JSON files or the redacted Birdy tool log cross back as
+untrusted data. Both containers run `--cap-drop ALL`,
 `--security-opt no-new-privileges`, `--pids-limit`, non-root, with `HOME` under
 `/tmp` so the agent never sees the runner's real home. **Missing Docker is a
 hard failure** — never fall back to host-level `pi --tools ... bash` or
-`opencode run`.
+`opencode run`. This boundary protects runner/checkout integrity; the opencode
+process still directly receives its billing key and, on research/Twitter lanes,
+the X cookies while retaining network access, so it is not a secret-exfiltration
+boundary for those credentials.
 
 Until 2026-08-08 opencode had NEITHER: it ran bare on the host with
 `edit`/`bash`/`webfetch` all `allow` plus `--auto`, which auto-approves
