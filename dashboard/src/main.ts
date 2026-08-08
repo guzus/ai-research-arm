@@ -14,6 +14,8 @@ import {
 } from './render/shared';
 import { hydrateAgentsTimeline, renderAgentsStudioHtml } from './render/agents';
 import type { ArmTimeline } from './render/agents';
+import { hydratePricing, renderPricing } from './render/pricing';
+import type { ModelPricing } from './render/pricing';
 import { renderTodayHtml } from './render/today';
 import {
   buildTwitterCycleContent,
@@ -130,10 +132,10 @@ function timeAgo(date: Date): string {
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader' | 'agents';
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader' | 'agents' | 'pricing';
 // Tabs that route by date (calendar-driven). research + wiki are slug-driven
 // (or index views) and are excluded — mirror the research precedent.
-type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader' | 'agents'>;
+type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader' | 'agents' | 'pricing'>;
 type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
@@ -343,6 +345,9 @@ function routeFromState(): string {
   if (activeTab === 'agents') {
     return '/agents';
   }
+  if (activeTab === 'pricing') {
+    return '/pricing';
+  }
   if (activeTab === 'research') {
     return selectedSlug ? '/research/' + selectedSlug : paginationRoute('/research', researchIndexPage);
   }
@@ -499,6 +504,18 @@ function runtimeSeoState(target: string): RuntimeSeoState {
       type: detail ? 'article' : 'website',
     };
   }
+  if (activeTab === 'pricing') {
+    return {
+      canonicalPath: '/pricing',
+      description:
+        'Every frontier LLM plotted by output price against benchmark score, with the Pareto frontier — '
+        + 'the models where nothing else is both cheaper and at least as capable.',
+      documentTitle: 'LLM price vs. capability -- ara',
+      heading: 'LLM price vs. capability',
+      indexable: true,
+      type: 'website',
+    };
+  }
   if (activeTab === 'agents') {
     return {
       canonicalPath: '/agents',
@@ -644,6 +661,17 @@ function parseRoute(path: string): boolean {
     syncTabUi();
     return true;
   }
+  if (trimmed === 'pricing') {
+    activeTab = 'pricing';
+    selectedSlug = null;
+    // Reset the benchmark selection on every entry to the route. It is session
+    // state with no URL segment, so leaving it set means navigating away and
+    // back shows an alternate benchmark while routeFromState() and the SEO
+    // description both still describe the primary one.
+    pricingBenchmark = null;
+    syncTabUi();
+    return true;
+  }
   const forecastMatch = trimmed.match(/^models\/forecast\/([a-z0-9][a-z0-9._-]*[a-z0-9]|[a-z0-9])$/);
   if (forecastMatch) {
     activeTab = 'models';
@@ -722,6 +750,7 @@ function syncTabUi(): void {
   document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
   document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
   document.body.classList.toggle('tab-agents', activeTab === 'agents');
+  document.body.classList.toggle('tab-pricing', activeTab === 'pricing');
 }
 
 // ── Helpers ───────────────────────────────────────────
@@ -875,6 +904,42 @@ async function loadArmTimeline(signal?: AbortSignal): Promise<ArmTimeline | null
     }
   })();
   return armTimelinePromise;
+}
+
+// research/market/model-pricing.json — refreshed by model-pricing.yml. Cached
+// for the session like the Arm timeline; the artifact only moves every 6h.
+let modelPricingPromise: Promise<ModelPricing | null> | null = null;
+// Which benchmark the chart is currently plotting. Session state only: the
+// price axis is identical across benchmarks, so a reload landing on the
+// primary is not a loss of context worth a URL segment.
+let pricingBenchmark: string | null = null;
+
+async function loadModelPricing(signal?: AbortSignal): Promise<ModelPricing | null> {
+  if (modelPricingPromise) return modelPricingPromise;
+  modelPricingPromise = (async () => {
+    try {
+      const resp = await fetch(`${DATA_BASE}/market/model-pricing.json`, { cache: 'no-cache', signal });
+      if (!resp.ok) return null;
+      const data = await resp.json();
+      if (!data?.snapshot || !Array.isArray(data.snapshot.models)) return null;
+      return data as ModelPricing;
+    } catch {
+      if (signal?.aborted) modelPricingPromise = null;
+      return null;
+    }
+  })();
+  return modelPricingPromise;
+}
+
+function paintPricing(data: ModelPricing): void {
+  // The SAME benchmark value drives both calls. Letting hydrate re-derive it
+  // from the DOM is what produced tooltips keyed to the wrong model array.
+  const benchmark = pricingBenchmark ?? undefined;
+  setSafeContent(content, renderPricing(data, benchmark));
+  hydratePricing(content, data, (next) => {
+    pricingBenchmark = next;
+    paintPricing(data);
+  }, benchmark);
 }
 
 function hydrateAvailabilityFromManifest(m: Manifest): void {
@@ -1942,6 +2007,8 @@ function showLoading(): void {
     ? 'Loading focus reader\u2026'
     : activeTab === 'agents'
     ? 'Loading Arm\u2026'
+    : activeTab === 'pricing'
+    ? 'Loading price vs. capability\u2026'
     : activeTab === 'research'
     ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
     : activeTab === 'wiki'
@@ -1972,6 +2039,8 @@ function showEmpty(dateStr: string): void {
     ? 'No focus reader data available'
     : activeTab === 'agents'
     ? 'Arm view unavailable'
+    : activeTab === 'pricing'
+    ? 'Price vs. capability data unavailable'
     : activeTab === 'research'
     ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
     : 'No Twitter report for ' + escapeHtml(dateStr);
@@ -5848,6 +5917,22 @@ async function load(): Promise<void> {
   showLoading();
 
   try {
+    if (activeTab === 'pricing') {
+      const pricing = await withTimeout(loadModelPricing(controller.signal), LOAD_TIMEOUT_MS, controller);
+      if (requestId !== loadRequestId || activeTab !== 'pricing') return;
+      if (pricing === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (pricing) {
+        paintPricing(pricing);
+      } else {
+        showEmpty(dateStr);
+      }
+      renderCalendar();
+      currentSection = 0;
+      updateNavCounter();
+      updateSearchCount();
+      return;
+    }
     if (activeTab === 'agents') {
       renderAgentsStudio();
       loadArmTimeline(controller.signal).then((timeline) => {
@@ -6748,10 +6833,11 @@ document.querySelectorAll<HTMLAnchorElement>('.tab').forEach((btn) => {
     document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
     document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
     document.body.classList.toggle('tab-agents', activeTab === 'agents');
+    document.body.classList.toggle('tab-pricing', activeTab === 'pricing');
     // Re-probe availability for current month with new tab (date tabs only).
     // The models/wiki tabs don't use date routing, so skip probing there too —
     // it'd just paint dots on a calendar that's hidden anyway.
-    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader' && activeTab !== 'agents') {
+    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader' && activeTab !== 'agents' && activeTab !== 'pricing') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -6772,7 +6858,8 @@ document.body.classList.toggle('tab-models', currentTab === 'models');
 document.body.classList.toggle('tab-wiki', currentTab === 'wiki');
 document.body.classList.toggle('tab-focus-reader', currentTab === 'focusReader');
 document.body.classList.toggle('tab-agents', currentTab === 'agents');
-if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader' && currentTab !== 'agents') {
+document.body.classList.toggle('tab-pricing', currentTab === 'pricing');
+if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader' && currentTab !== 'agents' && currentTab !== 'pricing') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();
