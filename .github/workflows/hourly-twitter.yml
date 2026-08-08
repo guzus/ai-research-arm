@@ -185,6 +185,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
           repo_name="${GITHUB_REPOSITORY##*/}"
           runner_root=$(realpath -- "$RUNNER_WORKSPACE")
           workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
@@ -216,9 +221,13 @@ jobs:
       - name: Checkout repository
         if: steps.backend.outputs.skip != 'true'
         uses: actions/checkout@v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           fetch-depth: 0
           persist-credentials: false
+          set-safe-directory: false
 
       - name: Get current datetime
         if: steps.backend.outputs.skip != 'true'

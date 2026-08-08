@@ -158,6 +158,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
           repo_name="${GITHUB_REPOSITORY##*/}"
           runner_root=$(realpath -- "$RUNNER_WORKSPACE")
           workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
@@ -188,6 +193,9 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           fetch-depth: 0
           # checkout@v7 stores the token material under RUNNER_TEMP (which the
@@ -195,6 +203,7 @@ jobs:
           # a credential include. Remove that wiring as least privilege;
           # safe-push injects its own token at publish time.
           persist-credentials: false
+          set-safe-directory: false
 
       - name: Get current date
         id: date

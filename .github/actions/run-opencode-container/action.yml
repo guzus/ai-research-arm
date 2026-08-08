@@ -266,10 +266,27 @@ runs:
           echo "::error::opencode config not found: $OPENCODE_CONFIG_REL"
           exit 1
         fi
-        if [ "$MOUNT_BIRD_SNAPSHOT" = "true" ] && [ ! -d /tmp/bird ]; then
-          echo "::error::Twitter fetch directory /tmp/bird is missing."
-          exit 1
+        # TRUSTED_BIRD_MOUNT_GUARD_BEGIN
+        if [ "$MOUNT_BIRD_SNAPSHOT" = "true" ]; then
+          bird_root=/tmp/bird
+          canonical_bird_parent=$(realpath -- "$(dirname -- "$bird_root")")
+          if [ ! -d "$bird_root" ] || [ -L "$bird_root" ] \
+            || [ "$(realpath -- "$bird_root")" \
+              != "$canonical_bird_parent/$(basename -- "$bird_root")" ]; then
+            echo "::error::Twitter fetch directory /tmp/bird is missing, linked, or noncanonical."
+            exit 1
+          fi
+          if ! unsafe_bird_entry=$(find "$bird_root" -mindepth 1 \
+            \! -type d \! -type f -print -quit); then
+            echo "::error::Could not audit the Twitter snapshot before mounting it."
+            exit 1
+          fi
+          if [ -n "$unsafe_bird_entry" ]; then
+            echo "::error::Twitter snapshot contains a linked or special entry: $unsafe_bird_entry"
+            exit 1
+          fi
         fi
+        # TRUSTED_BIRD_MOUNT_GUARD_END
 
         build_dir="${RUNNER_TEMP:-/tmp}/opencode-container-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
         rm -rf "$build_dir"

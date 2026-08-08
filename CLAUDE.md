@@ -202,8 +202,12 @@ opencode, plus `uv` and `pdftotext` because the research prompt shells out to
 checkout writable. Before `actions/checkout` can run Git against persistent
 state, each opencode caller uses an inline, non-Git guard to atomically move the
 exact canonical job workspace to a same-filesystem quarantine, recreate it
-empty, and remove only that quarantine. The host then creates a no-hardlink
-disposable clone; the container writes/commits only there, and a trusted host
+empty, and remove only that quarantine. The guard and checkout also disable
+system/global Git config and checkout's global safe-directory mutation.
+Twitter fetches replace the persistent `/tmp/bird` entry with a fresh mode-700
+canonical directory; the opencode mount rejects symlinks and special entries.
+The host then creates a no-hardlink disposable clone; the container
+writes/commits only there, and a trusted host
 tail imports at most one static bundle after exact path/status/mode/size
 validation. Before its first Git command, the action replaces persistent
 checkout Git config/control metadata with a minimal trusted configuration. It

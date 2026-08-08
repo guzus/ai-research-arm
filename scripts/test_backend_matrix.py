@@ -10,6 +10,8 @@ import copy
 import json
 import os
 import re
+import shlex
+import stat
 import subprocess
 import sys
 import tempfile
@@ -294,6 +296,15 @@ class RoutingInvariants(unittest.TestCase):
                 self.assertTrue(
                     all((step.get("with") or {}).get("persist-credentials")
                         is False for step in checkouts), name)
+                for checkout in checkouts:
+                    self.assertEqual(
+                        {"GIT_CONFIG_NOSYSTEM": "1",
+                         "GIT_CONFIG_GLOBAL": "/dev/null"},
+                        checkout.get("env") or {}, name)
+                    self.assertIs(
+                        False,
+                        (checkout.get("with") or {}).get("set-safe-directory"),
+                        name)
 
     def test_opencode_callers_quarantine_stale_workspace_before_checkout(self):
         """The exact pre-checkout shell removes stale Git and untracked state."""
@@ -328,6 +339,20 @@ class RoutingInvariants(unittest.TestCase):
             workspace = runner_workspace / "repository"
             workspace.mkdir(parents=True)
 
+            source = tmp_path / "source"
+            source.mkdir()
+            subprocess.run(["git", "-C", str(source), "init", "-b", "main"],
+                           check=True, capture_output=True)
+            subprocess.run(["git", "-C", str(source), "config", "user.name",
+                            "Source"], check=True)
+            subprocess.run(["git", "-C", str(source), "config", "user.email",
+                            "source@example.invalid"], check=True)
+            (source / "clean.txt").write_text("clean\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(source), "add", "clean.txt"],
+                           check=True)
+            subprocess.run(["git", "-C", str(source), "commit", "-m", "source"],
+                           check=True, capture_output=True)
+
             def git(*args: str, check: bool = True) -> subprocess.CompletedProcess:
                 return subprocess.run(
                     ["git", "-C", str(workspace), *args], text=True,
@@ -356,6 +381,44 @@ class RoutingInvariants(unittest.TestCase):
             self.assertIn("smudge", marker.read_text(encoding="utf-8"))
             marker.unlink()
 
+            # A persistent global init.templateDir is outside the quarantined
+            # workspace. Calibrate that a checkout-shaped init/fetch/checkout
+            # really does copy and execute its post-checkout hook without the
+            # Git config restrictions added below.
+            template = tmp_path / "evil-template"
+            (template / "hooks").mkdir(parents=True)
+            template_hook = template / "hooks" / "post-checkout"
+            template_hook.write_text(
+                "#!/bin/sh\n"
+                f"printf 'global-template\\n' >> '{marker}'\n",
+                encoding="utf-8")
+            template_hook.chmod(0o755)
+            global_config = tmp_path / "persistent-global-config"
+            global_config.write_text(
+                "[init]\n"
+                f"\ttemplateDir = {template}\n",
+                encoding="utf-8")
+            unsafe_checkout = tmp_path / "unsafe-checkout"
+            unsafe_checkout.mkdir()
+            unsafe_env = os.environ.copy()
+            unsafe_env.update({
+                "GIT_CONFIG_NOSYSTEM": "1",
+                "GIT_CONFIG_GLOBAL": str(global_config),
+            })
+            for command in (
+                    ["git", "-C", str(unsafe_checkout), "init"],
+                    ["git", "-C", str(unsafe_checkout), "remote", "add",
+                     "origin", str(source)],
+                    ["git", "-C", str(unsafe_checkout), "fetch", "origin",
+                     "main"],
+                    ["git", "-C", str(unsafe_checkout), "checkout", "--detach",
+                     "FETCH_HEAD"]):
+                subprocess.run(command, env=unsafe_env, check=True,
+                               capture_output=True)
+            self.assertIn(
+                "global-template", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+
             poison = workspace / "untracked-validator"
             poison.write_text("#!/bin/sh\nexit 99\n", encoding="utf-8")
             poison.chmod(0o755)
@@ -363,11 +426,14 @@ class RoutingInvariants(unittest.TestCase):
             (workspace / ".venv" / "sitecustomize.py").write_text(
                 "raise SystemExit('stale prior job')\n", encoding="utf-8")
 
+            github_env = tmp_path / "github-env"
             env = os.environ.copy()
             env.update({
                 "RUNNER_WORKSPACE": str(runner_workspace),
                 "GITHUB_WORKSPACE": str(workspace),
                 "GITHUB_REPOSITORY": "example/repository",
+                "GITHUB_ENV": str(github_env),
+                "GIT_CONFIG_GLOBAL": str(global_config),
             })
             result = subprocess.run(
                 ["bash", "-c", guard], cwd=workspace, env=env,
@@ -378,18 +444,33 @@ class RoutingInvariants(unittest.TestCase):
             self.assertEqual([], list(workspace.iterdir()))
             self.assertEqual([], list(runner_workspace.glob(
                 ".opencode-precheckout.*")))
+            restrictions = {
+                line.split("=", 1)[0]: line.split("=", 1)[1]
+                for line in github_env.read_text(encoding="utf-8").splitlines()
+            }
+            self.assertEqual(
+                {"GIT_CONFIG_NOSYSTEM": "1",
+                 "GIT_CONFIG_GLOBAL": "/dev/null",
+                 "GIT_NO_REPLACE_OBJECTS": "1"},
+                restrictions)
 
-            # A checkout-like init/reset now starts from a genuinely empty
-            # worktree and cannot reach the prior job's filters or untracked
-            # executable state.
-            git("init", "-b", "main")
-            git("config", "user.name", "Current Job")
-            git("config", "user.email", "current@example.invalid")
-            (workspace / "clean.txt").write_text("clean\n", encoding="utf-8")
-            git("add", "clean.txt")
-            git("commit", "-m", "clean checkout")
-            git("reset", "--hard", "HEAD")
+            # A checkout-shaped init/fetch/checkout inherits the restrictions
+            # written to GITHUB_ENV and cannot reach either the old local
+            # metadata or the persistent global template hook.
+            checkout_env = env.copy()
+            checkout_env.update(restrictions)
+            for command in (
+                    ["git", "-C", str(workspace), "init"],
+                    ["git", "-C", str(workspace), "remote", "add", "origin",
+                     str(source)],
+                    ["git", "-C", str(workspace), "fetch", "origin", "main"],
+                    ["git", "-C", str(workspace), "checkout", "--detach",
+                     "FETCH_HEAD"]):
+                subprocess.run(command, env=checkout_env, check=True,
+                               capture_output=True)
             self.assertFalse(marker.exists())
+            self.assertFalse(
+                (workspace / ".git" / "hooks" / "post-checkout").exists())
 
             # A mismatched basename fails closed and preserves that unrelated
             # sibling instead of widening the recursive-removal target.
@@ -570,6 +651,96 @@ class RoutingInvariants(unittest.TestCase):
         # the workspace and the prompt, nothing else by default.
         self.assertNotIn('--volume "$HOME', action)
         self.assertNotIn("--privileged", action)
+
+    def test_bird_snapshot_replaces_symlink_root_and_rejects_linked_entries(self):
+        """The fetched snapshot is fresh, and only its safe tree is mounted."""
+        fetch_path = (REPO_ROOT / ".github" / "actions" /
+                      "twitter-fetch" / "action.yml")
+        fetch_doc = yaml.safe_load(fetch_path.read_text(encoding="utf-8"))
+        fetch_shell = next(
+            step.get("run") or "" for step in fetch_doc["runs"]["steps"]
+            if step.get("name") ==
+            "Fetch tweets, searches, and news via birdy multi-fetch")
+        setup = fetch_shell.split(
+            "# TRUSTED_BIRD_SNAPSHOT_SETUP_BEGIN", 1)[1].split(
+                "# TRUSTED_BIRD_SNAPSHOT_SETUP_END", 1)[0]
+        self.assertLess(
+            fetch_shell.index("# TRUSTED_BIRD_SNAPSHOT_SETUP_END"),
+            fetch_shell.index("birdy multi-fetch"))
+
+        container_path = (REPO_ROOT / ".github" / "actions" /
+                          "run-opencode-container" / "action.yml")
+        container_doc = yaml.safe_load(
+            container_path.read_text(encoding="utf-8"))
+        container_shell = "\n".join(
+            step.get("run") or "" for step in container_doc["runs"]["steps"])
+        mount_guard = container_shell.split(
+            "# TRUSTED_BIRD_MOUNT_GUARD_BEGIN", 1)[1].split(
+                "# TRUSTED_BIRD_MOUNT_GUARD_END", 1)[0]
+        self.assertLess(
+            container_shell.index("# TRUSTED_BIRD_MOUNT_GUARD_END"),
+            container_shell.index(
+                'extra_args+=(--volume "/tmp/bird:/tmp/bird:ro")'))
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            bird_root = tmp_path / "bird"
+            outside = tmp_path / "outside"
+            outside.mkdir()
+            sentinel = outside / "sentinel.json"
+            sentinel.write_text('{"keep":true}\n', encoding="utf-8")
+            os.symlink(outside, bird_root, target_is_directory=True)
+
+            def for_test(shell: str) -> str:
+                self.assertEqual(1, shell.count("bird_root=/tmp/bird"))
+                return shell.replace(
+                    "bird_root=/tmp/bird",
+                    f"bird_root={shlex.quote(str(bird_root))}", 1)
+
+            # Before the fetch owns a new root, the exact mount guard fails.
+            # Because the full action uses `set -e`, Docker argument assembly
+            # and the mount that follows this guard are unreachable.
+            rejected_root = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" +
+                 for_test(mount_guard)],
+                env={**os.environ, "MOUNT_BIRD_SNAPSHOT": "true"},
+                text=True, capture_output=True, check=False)
+            self.assertNotEqual(0, rejected_root.returncode)
+            self.assertEqual(
+                '{"keep":true}\n', sentinel.read_text(encoding="utf-8"))
+
+            created = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + for_test(setup)],
+                text=True, capture_output=True, check=False)
+            self.assertEqual(0, created.returncode,
+                             created.stdout + created.stderr)
+            self.assertTrue(bird_root.is_dir())
+            self.assertFalse(bird_root.is_symlink())
+            self.assertEqual(
+                0o700, stat.S_IMODE(bird_root.stat().st_mode))
+            self.assertEqual(
+                '{"keep":true}\n', sentinel.read_text(encoding="utf-8"))
+
+            # A nested symlink is data to neither Birdy nor the agent. Reject
+            # it just like a device/socket before constructing the bind mount.
+            os.symlink(sentinel, bird_root / "linked.json")
+            rejected_entry = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" +
+                 for_test(mount_guard)],
+                env={**os.environ, "MOUNT_BIRD_SNAPSHOT": "true"},
+                text=True, capture_output=True, check=False)
+            self.assertNotEqual(0, rejected_entry.returncode)
+            self.assertIn("linked or special entry",
+                          rejected_entry.stdout + rejected_entry.stderr)
+            (bird_root / "linked.json").unlink()
+            (bird_root / "safe.json").write_text("[]\n", encoding="utf-8")
+            accepted = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" +
+                 for_test(mount_guard)],
+                env={**os.environ, "MOUNT_BIRD_SNAPSHOT": "true"},
+                text=True, capture_output=True, check=False)
+            self.assertEqual(0, accepted.returncode,
+                             accepted.stdout + accepted.stderr)
 
     def test_container_birdy_fast_wrapper_executes_read_only_and_logs_redacted(self):
         wrapper = (REPO_ROOT / ".github" / "actions" /

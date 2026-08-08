@@ -95,7 +95,31 @@ runs:
         FETCH_CONCURRENCY: ${{ inputs.concurrency }}
       run: |
         set -euo pipefail
-        mkdir -p /tmp/bird
+
+        # TRUSTED_BIRD_SNAPSHOT_SETUP_BEGIN
+        # /tmp persists on this self-hosted runner. Own a new snapshot for
+        # this job before Birdy writes anything: mkdir -p would follow a stale
+        # /tmp/bird symlink and could overwrite an unrelated host directory.
+        bird_root=/tmp/bird
+        canonical_bird_parent=$(realpath -- "$(dirname -- "$bird_root")")
+        if [ -L "$bird_root" ]; then
+          rm -f -- "$bird_root"
+        elif [ -d "$bird_root" ]; then
+          rm -rf -- "$bird_root"
+        elif [ -e "$bird_root" ]; then
+          rm -f -- "$bird_root"
+        fi
+        umask 077
+        mkdir -- "$bird_root"
+        chmod 700 "$bird_root"
+        if [ ! -d "$bird_root" ] || [ -L "$bird_root" ] \
+          || [ "$(realpath -- "$bird_root")" \
+            != "$canonical_bird_parent/$(basename -- "$bird_root")" ]; then
+          echo "::error::Could not create a canonical, non-linked Birdy snapshot directory."
+          exit 1
+        fi
+        # TRUSTED_BIRD_SNAPSHOT_SETUP_END
+
         export BIRDY_READ_ONLY=1
         BIRDY_ACCOUNTS="$(python3 scripts/birdy_ci_accounts.py)"
         export BIRDY_ACCOUNTS
