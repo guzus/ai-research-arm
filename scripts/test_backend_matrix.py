@@ -401,7 +401,8 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn("OPENCODE_DISABLE_AUTOUPDATE=1", action)
         self.assertIn('cp "$GITHUB_ACTION_PATH/birdy-fast"', action)
         self.assertIn("--env GITHUB_WORKSPACE=/workspace", action)
-        self.assertIn("git clone --quiet --no-hardlinks", action)
+        self.assertIn("clone --quiet --no-hardlinks", action)
+        self.assertIn("--no-checkout --template=\"$empty_git_template\"", action)
         self.assertIn('--volume "$isolated_workspace:/workspace"', action)
         self.assertNotIn('--volume "$GITHUB_WORKSPACE:/workspace"', action)
         self.assertIn("git bundle create .opencode-export.bundle", action)
@@ -438,7 +439,10 @@ class RoutingInvariants(unittest.TestCase):
             fake_birdy.write_text(
                 '#!/bin/sh\n'
                 'printf "%s\\n" "$BIRDY_READ_ONLY" > "$FAKE_BIRDY_OUT"\n'
-                'printf "%s\\n" "$@" >> "$FAKE_BIRDY_OUT"\n',
+                'printf "%s\\n" "$@" >> "$FAKE_BIRDY_OUT"\n'
+                'printf "fake stdout\\n"\n'
+                'printf "fake stderr\\n" >&2\n'
+                'exit "${FAKE_BIRDY_EXIT:-0}"\n',
                 encoding="utf-8")
             fake_birdy.chmod(0o755)
             env = {
@@ -448,20 +452,48 @@ class RoutingInvariants(unittest.TestCase):
             }
 
             result = subprocess.run(
-                [str(wrapper), "search", "private query", "--json", "--plain"],
+                [str(wrapper), "--account", "account-name", "--strategy",
+                 "least-used", "--vpn-server", "vpn.example", "search",
+                 "private query", "--json", "--plain"],
                 text=True, capture_output=True, env=env, check=False)
             self.assertEqual(0, result.returncode, result.stderr)
+            self.assertEqual("fake stdout\n", result.stdout)
+            self.assertEqual("fake stderr\n", result.stderr)
             self.assertEqual(
-                ["1", "search", "private query", "--json", "--plain"],
+                ["1", "--account", "account-name", "--strategy", "least-used",
+                 "--vpn-server", "vpn.example", "search", "private query",
+                 "--json", "--plain"],
                 observed.read_text(encoding="utf-8").splitlines())
             event = json.loads(tool_log.read_text(encoding="utf-8").splitlines()[0])
             self.assertEqual("birdy-fast", event["tool"])
             self.assertEqual("search", event["command"])
             self.assertIs(event["blocked"], False)
+            self.assertIs(event["ok"], True)
+            self.assertEqual(0, event["exit_code"])
+            self.assertIsInstance(event["duration_ms"], int)
+            self.assertGreaterEqual(event["duration_ms"], 0)
+            self.assertIs(event["cached"], False)
             self.assertIs(event["redacted"], True)
             self.assertNotIn("private query", tool_log.read_text(encoding="utf-8"))
 
             observed.unlink()
+            env["FAKE_BIRDY_EXIT"] = "7"
+            failed = subprocess.run(
+                [str(wrapper), "--account", "search", "read", "tweet-id"],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertEqual(7, failed.returncode)
+            self.assertEqual("fake stdout\n", failed.stdout)
+            self.assertEqual("fake stderr\n", failed.stderr)
+            failed_event = json.loads(
+                tool_log.read_text(encoding="utf-8").splitlines()[-1])
+            self.assertEqual("read", failed_event["command"])
+            self.assertIs(failed_event["ok"], False)
+            self.assertEqual(7, failed_event["exit_code"])
+            self.assertIsInstance(failed_event["duration_ms"], int)
+            self.assertIs(failed_event["cached"], False)
+
+            observed.unlink()
+            env.pop("FAKE_BIRDY_EXIT")
             blocked = subprocess.run(
                 [str(wrapper), "reply", "tweet-id", "secret text"],
                 text=True, capture_output=True, env=env, check=False)
@@ -471,7 +503,103 @@ class RoutingInvariants(unittest.TestCase):
                 tool_log.read_text(encoding="utf-8").splitlines()[-1])
             self.assertEqual("reply", blocked_event["command"])
             self.assertIs(blocked_event["blocked"], True)
+            self.assertIs(blocked_event["ok"], False)
+            self.assertEqual(2, blocked_event["exit_code"])
+            self.assertEqual(0, blocked_event["duration_ms"])
+            self.assertIs(blocked_event["cached"], False)
             self.assertNotIn("secret text", tool_log.read_text(encoding="utf-8"))
+
+    def test_trusted_clone_setup_ignores_host_git_execution_config(self):
+        """Persistent runner Git config cannot execute before container entry."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        setup = shell.split("# TRUSTED_CLONE_SETUP_BEGIN", 1)[1].split(
+            "# TRUSTED_CLONE_SETUP_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            original = tmp_path / "original"
+            original.mkdir()
+
+            def git(repo: Path, *args: str) -> subprocess.CompletedProcess:
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=True)
+
+            git(original, "init", "-b", "main")
+            git(original, "config", "user.name", "Clone Guard Test")
+            git(original, "config", "user.email", "guard@example.invalid")
+            (original / "tracked.txt").write_text("trusted\n", encoding="utf-8")
+            git(original, "add", "tracked.txt")
+            git(original, "commit", "-m", "base")
+
+            marker = tmp_path / "host-git-executed"
+            fsmonitor = tmp_path / "malicious-fsmonitor"
+            fsmonitor.write_text(
+                "#!/bin/sh\n"
+                f"printf 'fsmonitor\\n' >> '{marker}'\n"
+                "printf 'test-token\\000'\n"
+                "exit 0\n", encoding="utf-8")
+            fsmonitor.chmod(0o755)
+            git(original, "config", "core.fsmonitor", str(fsmonitor))
+
+            template = tmp_path / "malicious-template"
+            hooks = template / "hooks"
+            hooks.mkdir(parents=True)
+            post_checkout = hooks / "post-checkout"
+            post_checkout.write_text(
+                "#!/bin/sh\n"
+                f"printf 'template-hook\\n' >> '{marker}'\n",
+                encoding="utf-8")
+            post_checkout.chmod(0o755)
+            global_config = tmp_path / "malicious-global-config"
+            subprocess.run(
+                ["git", "config", "-f", str(global_config),
+                 "init.templateDir", str(template)], check=True)
+
+            # Prove both fixtures really execute under an unsanitized command,
+            # so this is behavioral coverage rather than a marker that could
+            # never be reached on the test host.
+            subprocess.run(
+                ["git", "-C", str(original), "diff", "--quiet"],
+                check=False)
+            self.assertTrue(marker.exists(), "fsmonitor fixture did not execute")
+            marker.unlink()
+            raw_clone_env = os.environ.copy()
+            raw_clone_env["GIT_CONFIG_GLOBAL"] = str(global_config)
+            subprocess.run(
+                ["git", "clone", "--quiet", str(original),
+                 str(tmp_path / "unsafe-clone")],
+                env=raw_clone_env, check=True)
+            self.assertTrue(marker.exists(), "template hook fixture did not execute")
+            marker.unlink()
+
+            build_dir = tmp_path / "build"
+            empty_template = build_dir / "empty-git-template"
+            empty_template.mkdir(parents=True)
+            env = os.environ.copy()
+            env.update({
+                "GITHUB_WORKSPACE": str(original),
+                "RUNNER_TEMP": str(tmp_path),
+                "GITHUB_RUN_ID": "hostsetup",
+                "GITHUB_RUN_ATTEMPT": "1",
+                "RUN_MODE": "canary",
+                "build_dir": str(build_dir),
+                "empty_git_template": str(empty_template),
+                "GIT_CONFIG_GLOBAL": str(global_config),
+            })
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + setup],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertFalse(marker.exists(), result.stdout + result.stderr)
+            isolated = tmp_path / "opencode-workspace-hostsetup-1"
+            self.assertFalse((isolated / ".git" / "hooks" /
+                              "post-checkout").exists())
+            self.assertFalse((isolated / "tracked.txt").exists(),
+                             "host clone unexpectedly materialized a checkout")
 
     def test_trusted_import_guard_rejects_forbidden_committed_path(self):
         """Execute the real inline guard against an adversarial static bundle."""
@@ -542,6 +670,66 @@ class RoutingInvariants(unittest.TestCase):
                                  encoding="utf-8"))
             self.assertEqual("", git(original, "status", "--porcelain").stdout)
 
+    def test_trusted_import_guard_rejects_artifact_parent_symlink(self):
+        """A regular final file cannot escape through a linked parent."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        guard = shell.split("# TRUSTED_IMPORT_GUARD_BEGIN", 1)[1].split(
+            "# TRUSTED_IMPORT_GUARD_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            original = tmp_path / "original"
+            isolated = tmp_path / "isolated"
+            outside = tmp_path / "outside-host-dir"
+            original.mkdir()
+            outside.mkdir()
+
+            def git(repo: Path, *args: str) -> subprocess.CompletedProcess:
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=True)
+
+            git(original, "init", "-b", "main")
+            git(original, "config", "user.name", "Artifact Guard Test")
+            git(original, "config", "user.email", "guard@example.invalid")
+            (original / "tracked.txt").write_text("trusted\n", encoding="utf-8")
+            git(original, "add", "tracked.txt")
+            git(original, "commit", "-m", "base")
+            pre_sha = git(original, "rev-parse", "HEAD").stdout.strip()
+            (original / ".twitter-input").mkdir()
+
+            subprocess.run(
+                ["git", "clone", "--quiet", "--no-hardlinks",
+                 str(original), str(isolated)], check=True)
+            (isolated / ".opencode-post-sha").write_text(
+                pre_sha + "\n", encoding="utf-8")
+            (outside / "birdy-tool-log.jsonl").write_text(
+                '{"tool":"birdy-fast"}\n', encoding="utf-8")
+            os.symlink(outside, isolated / ".twitter-input",
+                       target_is_directory=True)
+
+            env = os.environ.copy()
+            env.update({
+                "GITHUB_WORKSPACE": str(original),
+                "isolated_workspace": str(isolated),
+                "pre_sha": pre_sha,
+                "RUN_MODE": "twitter",
+                "ALLOWED_PATHS": "research/twitter/test.md",
+                "BIRDY_TOOL_LOG_REL": ".twitter-input/birdy-tool-log.jsonl",
+                "agent_status": "0",
+            })
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + guard],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertNotEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertIn("escapes the isolated workspace or crosses a symlink",
+                          result.stdout + result.stderr)
+            self.assertFalse(
+                (original / ".twitter-input" / "birdy-tool-log.jsonl").exists())
+
     def test_trusted_import_guard_imports_exact_generative_bundle_and_data(self):
         """A valid writer commit crosses the bundle boundary and nothing else."""
         action_path = (REPO_ROOT / ".github" / "actions" /
@@ -602,6 +790,25 @@ class RoutingInvariants(unittest.TestCase):
             for name, content in methodology.items():
                 (isolated / name).write_text(content, encoding="utf-8")
 
+            marker = tmp_path / "host-reset-executed"
+            fsmonitor = tmp_path / "malicious-fsmonitor"
+            fsmonitor.write_text(
+                "#!/bin/sh\n"
+                f"printf 'fsmonitor\\n' >> '{marker}'\n"
+                "printf 'test-token\\000'\n"
+                "exit 0\n", encoding="utf-8")
+            fsmonitor.chmod(0o755)
+            hooks = tmp_path / "malicious-hooks"
+            hooks.mkdir()
+            post_checkout = hooks / "post-checkout"
+            post_checkout.write_text(
+                "#!/bin/sh\n"
+                f"printf 'hook\\n' >> '{marker}'\n",
+                encoding="utf-8")
+            post_checkout.chmod(0o755)
+            git(original, "config", "core.fsmonitor", str(fsmonitor))
+            git(original, "config", "core.hooksPath", str(hooks))
+
             env = os.environ.copy()
             env.update({
                 "GITHUB_WORKSPACE": str(original),
@@ -616,6 +823,7 @@ class RoutingInvariants(unittest.TestCase):
                 ["bash", "-c", "set -euo pipefail\n" + guard],
                 text=True, capture_output=True, env=env, check=False)
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertFalse(marker.exists(), result.stdout + result.stderr)
             self.assertEqual(post_sha, git(original, "rev-parse", "HEAD").stdout.strip())
             self.assertTrue((original / "research" / "generative" / html_name).is_file())
             self.assertTrue((original / "research" / "generative" / ara_name).is_file())
