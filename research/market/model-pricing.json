@@ -30,11 +30,12 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-08-08T15:50:21Z",
+  "generated_at": "2026-08-08T21:49:46Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
-    {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T15:50:21Z"}
+    {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T15:50:21Z"},
+    {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":85,"ts":"2026-08-08T21:49:46Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -380,7 +381,7 @@
         {
           "key": "glm5.2",
           "name": "GLM 5.2",
-          "output_usd_per_mtok": 0.6468,
+          "output_usd_per_mtok": 0.572,
           "pareto": false,
           "score": 0.21,
           "stderr": 0.040936018074033236,
@@ -2188,7 +2189,7 @@
         {
           "key": "glm5.2",
           "name": "GLM 5.2",
-          "output_usd_per_mtok": 0.6468,
+          "output_usd_per_mtok": 0.572,
           "pareto": false,
           "score": 0.8638888888888889,
           "stderr": 0.04219779330510574,
@@ -2574,9 +2575,9 @@
         }
       ]
     },
-    "as_of": "2026-08-08T15:50:21Z",
+    "as_of": "2026-08-08T21:49:46Z",
     "counts": {
-      "pareto": 9,
+      "pareto": 8,
       "plotted": 85,
       "priced": 307,
       "scored": 150,
@@ -2812,14 +2813,14 @@
         "vendor": "qwen"
       },
       {
-        "blended_usd_per_mtok": 0.31605,
+        "blended_usd_per_mtok": 0.2795,
         "context_length": 1048576,
         "epoch_model": "GLM-5.2",
-        "input_usd_per_mtok": 0.2058,
+        "input_usd_per_mtok": 0.182,
         "key": "glm5.2",
         "name": "GLM 5.2",
         "openrouter_id": "z-ai/glm-5.2",
-        "output_usd_per_mtok": 0.6468,
+        "output_usd_per_mtok": 0.572,
         "pareto": true,
         "price_variant": null,
         "runs": 1,
@@ -2839,7 +2840,7 @@
         "name": "GPT-5.6 Luna",
         "openrouter_id": "openai/gpt-5.6-luna",
         "output_usd_per_mtok": 0.6,
-        "pareto": true,
+        "pareto": false,
         "price_variant": null,
         "runs": 3,
         "score": 0.9160353535353535,
@@ -4908,13 +4909,6 @@
         "vendor": "minimax"
       },
       {
-        "input_usd_per_mtok": 0.27,
-        "key": "minimaxm2.7",
-        "name": "MiniMax M2.7",
-        "output_usd_per_mtok": 1.08,
-        "vendor": "minimax"
-      },
-      {
         "input_usd_per_mtok": 0.09,
         "key": "qwen3next80ba3binstruct",
         "name": "Qwen3 Next 80B A3B Instruct",
@@ -4969,6 +4963,13 @@
         "name": "KAT-Coder-Pro V2",
         "output_usd_per_mtok": 1.2,
         "vendor": "kwaipilot"
+      },
+      {
+        "input_usd_per_mtok": 0.3,
+        "key": "minimaxm2.7",
+        "name": "MiniMax M2.7",
+        "output_usd_per_mtok": 1.2,
+        "vendor": "minimax"
       },
       {
         "input_usd_per_mtok": 0.3,
@@ -5622,7 +5623,7 @@
         "vendor": "amazon"
       },
       {
-        "input_usd_per_mtok": 2.5,
+        "input_usd_per_mtok": 2.8,
         "key": "moonshotaikimilatest",
         "name": "MoonshotAI Kimi Latest",
         "output_usd_per_mtok": 14.0,
