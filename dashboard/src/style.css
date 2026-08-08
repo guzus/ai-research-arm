@@ -6964,3 +6964,261 @@ body.ticket-odds-modal-open { overflow: hidden; }
   white-space: nowrap;
   border: 0;
 }
+
+/* ── Price vs. capability (tab-pricing) ────────────────
+   The chart is an inline SVG on a viewBox, so it scales with the card and
+   needs no JS resize handling. Colours come from the shared theme vars so the
+   view follows light/dark with the rest of the site; only the vendor dot fills
+   are literal, and those are set per-element from the render module. */
+.pricing-view {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter) 48px;
+}
+
+.pricing-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 18px 0 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pricing-title {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+}
+
+.pricing-sub {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+}
+
+/* Per-view freshness. Deliberately always rendered — a stale chart that looks
+   live is the failure mode this line exists to prevent. */
+.pricing-meta {
+  color: var(--text-tertiary);
+  font-size: 0.78rem;
+}
+
+.pricing-stale {
+  margin-left: 8px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: #b4530922;
+  color: #b45309;
+  font-weight: 600;
+}
+
+.pricing-headline {
+  margin: 16px 0 0;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.pricing-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 0 4px;
+}
+
+.pricing-chip {
+  padding: 5px 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.pricing-chip:hover { background: var(--bg-hover); }
+
+.pricing-chip.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.pricing-chart {
+  position: relative;
+  margin: 12px 0 4px;
+}
+
+.pricing-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.pricing-grid {
+  stroke: var(--border-light);
+  stroke-width: 1;
+}
+
+.pricing-axis-label {
+  fill: var(--text-tertiary);
+  font-size: 13px;
+}
+
+.pricing-axis-title {
+  fill: var(--text-secondary);
+  font-size: 14px;
+}
+
+.pricing-point-label {
+  fill: var(--text-secondary);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+.pricing-frontier {
+  fill: none;
+  stroke: var(--accent-warm);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+  opacity: 0.75;
+}
+
+.pricing-dot {
+  opacity: 0.62;
+  cursor: pointer;
+  transition: opacity 0.12s ease, r 0.12s ease;
+}
+
+.pricing-dot.is-pareto {
+  opacity: 1;
+  stroke: var(--bg);
+  stroke-width: 2;
+}
+
+.pricing-dot:hover,
+.pricing-dot:focus {
+  opacity: 1;
+  outline: none;
+}
+
+.pricing-tooltip {
+  position: absolute;
+  z-index: 5;
+  transform: translate(-50%, -100%);
+  max-width: 260px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  box-shadow: var(--shadow-lg);
+  color: var(--text);
+  font-size: 0.79rem;
+  line-height: 1.5;
+  pointer-events: none;
+}
+
+.pricing-tip-vendor { color: var(--text-tertiary); }
+
+.pricing-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 4px 0 22px;
+  padding: 0;
+  list-style: none;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+}
+
+.pricing-legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pricing-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.pricing-swatch--frontier {
+  width: 18px;
+  height: 0;
+  border-radius: 0;
+  border-top: 2px dashed var(--accent-warm);
+}
+
+.pricing-table-wrap { overflow-x: auto; }
+
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+.pricing-table caption {
+  padding-bottom: 8px;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+.pricing-table th,
+.pricing-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border-light);
+  text-align: left;
+}
+
+.pricing-table th { color: var(--text-secondary); font-weight: 600; }
+.pricing-table .pricing-num { text-align: right; font-variant-numeric: tabular-nums; }
+.pricing-table td .pricing-swatch { margin-right: 7px; }
+.pricing-err { color: var(--text-tertiary); }
+
+.pricing-foot {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--text-tertiary);
+  font-size: 0.76rem;
+  line-height: 1.65;
+}
+
+.pricing-foot p { margin: 0 0 6px; }
+.pricing-attribution { font-style: italic; }
+.pricing-empty { padding: 40px 0; color: var(--text-secondary); }
+
+/* The calendar rail is date-keyed; this view is not. Same hide as wiki/agents. */
+body.tab-pricing .calendar { display: none; }
+
+@media (max-width: 640px) {
+  /* A 1000x560 viewBox fitted to a 390px phone is ~218px tall — a scatter with
+     76 points is unreadable at that height. Give the SVG a floor and let the
+     chart pan horizontally inside its OWN container, so the page body never
+     scrolls sideways. The frontier table below carries the same numbers in a
+     layout that does fit, so panning is a bonus rather than the only path. */
+  .pricing-chart {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pricing-svg { min-width: 720px; }
+
+  /* Sized for the ~0.72 downscale that min-width implies at phone widths. */
+  .pricing-axis-label { font-size: 16px; }
+  .pricing-axis-title { font-size: 17px; }
+  .pricing-point-label { font-size: 15px; }
+  .pricing-head { padding-top: 12px; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .pricing-stale { background: #fbbf2422; color: #fbbf24; }
+}
