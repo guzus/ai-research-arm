@@ -282,10 +282,97 @@ runs:
         # git metadata, hooks, ignored files, and virtualenv state. The trusted
         # host shell below imports a commit only after validating its exact diff.
         # TRUSTED_CLONE_SETUP_BEGIN
+        workspace_root=$(realpath -- "$GITHUB_WORKSPACE")
+        git_dir="$workspace_root/.git"
+        if [ ! -d "$git_dir" ] || [ -L "$git_dir" ] \
+          || [ "$(realpath -- "$git_dir")" != "$workspace_root/.git" ]; then
+          echo "::error::Real checkout .git must be a canonical directory inside GITHUB_WORKSPACE."
+          exit 1
+        fi
+        # A linked-worktree commondir redirects config, refs, and objects before
+        # Git consults any -c override. These jobs use a normal checkout, so a
+        # persisted commondir is stale/hostile metadata, never required state.
+        rm -f -- "$git_dir/commondir"
+        for git_control_dir in "$git_dir/objects" "$git_dir/objects/info" \
+          "$git_dir/refs" "$git_dir/info"; do
+          if [ ! -d "$git_control_dir" ] || [ -L "$git_control_dir" ] \
+            || [ "$(realpath -- "$git_control_dir")" != "$git_control_dir" ]; then
+            echo "::error::Real checkout has a linked or malformed Git control directory: $git_control_dir"
+            exit 1
+          fi
+        done
+        for required_git_file in "$git_dir/HEAD" "$git_dir/index"; do
+          if [ ! -f "$required_git_file" ] || [ -L "$required_git_file" ] \
+            || [ "$(realpath -- "$required_git_file")" != "$required_git_file" ]; then
+            echo "::error::Real checkout has a linked or malformed Git control file: $required_git_file"
+            exit 1
+          fi
+        done
+        if [ -e "$git_dir/packed-refs" ] || [ -L "$git_dir/packed-refs" ]; then
+          if [ ! -f "$git_dir/packed-refs" ] || [ -L "$git_dir/packed-refs" ] \
+            || [ "$(realpath -- "$git_dir/packed-refs")" != "$git_dir/packed-refs" ]; then
+            echo "::error::Real checkout packed-refs is linked or malformed."
+            exit 1
+          fi
+        fi
+        if [[ ! "${GITHUB_SERVER_URL:-}" =~ ^https://[^/[:space:]]+(/[^[:space:]]*)?$ ]] \
+          || [[ ! "${GITHUB_REPOSITORY:-}" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]]; then
+          echo "::error::Trusted GitHub origin coordinates are malformed."
+          exit 1
+        fi
+        trusted_origin="${GITHUB_SERVER_URL%/}/${GITHUB_REPOSITORY}.git"
+
+        # This checkout persists across jobs. Replace executable local Git
+        # configuration before the FIRST Git command and remove every local
+        # metadata bridge that can redirect object lookup, attributes, hooks,
+        # or later safe-push transport. Callers use persist-credentials:false;
+        # safe-push supplies its own one-command authorization header.
+        trusted_config=$(mktemp "$git_dir/config.opencode.XXXXXX")
+        {
+          printf '%s\n' '[core]'
+          printf '%s\n' '  repositoryformatversion = 0'
+          printf '%s\n' '  filemode = true'
+          printf '%s\n' '  bare = false'
+          printf '%s\n' '  logallrefupdates = false'
+          printf '%s\n' '[user]'
+          printf '%s\n' '  name = github-actions[bot]'
+          printf '%s\n' '  email = 41898282+github-actions[bot]@users.noreply.github.com'
+          printf '%s\n' '[remote "origin"]'
+          printf '  url = %s\n' "$trusted_origin"
+          printf '%s\n' '  fetch = +refs/heads/*:refs/remotes/origin/*'
+        } > "$trusted_config"
+        chmod 600 "$trusted_config"
+        mv -f -- "$trusted_config" "$git_dir/config"
+        rm -f -- "$git_dir/config.worktree" "$git_dir/info/attributes" \
+          "$git_dir/info/grafts" "$git_dir/objects/info/alternates" \
+          "$git_dir/objects/info/http-alternates"
+        rm -rf -- "$git_dir/hooks" "$git_dir/logs" "$git_dir/refs/replace"
+        mkdir -p "$git_dir/hooks"
+        if ! bad_ref_path=$(find "$git_dir/refs" -mindepth 1 \
+          \! -type d \! -type f -print -quit) \
+          || ! bad_object_path=$(find "$git_dir/objects" -mindepth 1 \
+          \! -type d \! -type f -print -quit); then
+          echo "::error::Could not audit real checkout refs/objects control paths."
+          exit 1
+        fi
+        if [ -n "$bad_ref_path" ] || [ -n "$bad_object_path" ]; then
+          echo "::error::Real checkout refs/objects contain linked or special control paths."
+          exit 1
+        fi
+        if [ -n "${GITHUB_ENV:-}" ]; then
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+        fi
+
         host_git=(env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
           GIT_NO_REPLACE_OBJECTS=1 git -c core.fsmonitor=false \
           -c core.hooksPath=/dev/null -c core.attributesFile=/dev/null \
-          -c core.worktree="$GITHUB_WORKSPACE" -C "$GITHUB_WORKSPACE")
+          -c core.sparseCheckout=false -c core.sparseCheckoutCone=false \
+          -c index.sparse=false -c core.worktree="$workspace_root" \
+          -C "$workspace_root")
         if ! "${host_git[@]}" diff --no-ext-diff --quiet \
           || ! "${host_git[@]}" diff --no-ext-diff --cached --quiet; then
           echo "::error::Real checkout has tracked changes before the opencode run."
@@ -498,8 +585,11 @@ runs:
 
         # TRUSTED_IMPORT_GUARD_BEGIN
         # Import only a static bundle produced by the fixed container tail.
-        # Fetching from the attacker-controlled clone itself would invoke its
-        # upload-pack path, whose repository config can name executable hooks.
+        # Do not use `git fetch` even with the bundle's absolute path: fetch is
+        # transport-aware, so persisted url.*.insteadOf + core.sshCommand
+        # settings in the real repo could rewrite that path and execute a host
+        # helper. `git bundle unbundle` directly parses/indexes the local bundle
+        # and neither resolves a transport URL nor updates a ref.
         post_file="$isolated_workspace/.opencode-post-sha"
         bundle_file="$isolated_workspace/.opencode-export.bundle"
         if [ ! -f "$post_file" ] || [ -L "$post_file" ] \
@@ -516,7 +606,13 @@ runs:
         trusted_git=(env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
           GIT_NO_REPLACE_OBJECTS=1 git -c core.fsmonitor=false \
           -c core.hooksPath=/dev/null -c core.attributesFile=/dev/null \
+          -c core.sparseCheckout=false -c core.sparseCheckoutCone=false \
+          -c index.sparse=false \
           -c core.worktree="$GITHUB_WORKSPACE" -C "$GITHUB_WORKSPACE")
+        import_paths=()
+        import_statuses=()
+        import_oids=()
+        import_pre_oids=()
         if [ "$post_sha" != "$pre_sha" ]; then
           if [ ! -f "$bundle_file" ] || [ -L "$bundle_file" ] \
             || [ "$(wc -c < "$bundle_file")" -gt 20971520 ]; then
@@ -524,9 +620,20 @@ runs:
             exit 1
           fi
           "${trusted_git[@]}" bundle verify "$bundle_file"
-          "${trusted_git[@]}" fetch --no-tags "$bundle_file" HEAD
-          if [ "$("${trusted_git[@]}" rev-parse FETCH_HEAD)" != "$post_sha" ]; then
-            echo "::error::Static opencode bundle does not resolve to its declared post-SHA."
+          bundle_heads=$("${trusted_git[@]}" bundle unbundle "$bundle_file")
+          advertised_count=0
+          advertised_head=""
+          while read -r advertised_oid advertised_ref trailing; do
+            [ -z "$advertised_oid" ] && continue
+            advertised_count=$((advertised_count + 1))
+            if [ "$advertised_ref" != "HEAD" ] || [ -n "${trailing:-}" ]; then
+              echo "::error::Static opencode bundle advertises an unexpected ref."
+              exit 1
+            fi
+            advertised_head="$advertised_oid"
+          done <<< "$bundle_heads"
+          if [ "$advertised_count" != "1" ] || [ "$advertised_head" != "$post_sha" ]; then
+            echo "::error::Static opencode bundle HEAD does not match its declared post-SHA."
             exit 1
           fi
         elif [ -e "$bundle_file" ] || [ -L "$bundle_file" ]; then
@@ -572,6 +679,9 @@ runs:
               path_violation=1
               continue
             fi
+            import_paths+=("$path")
+            import_statuses+=("$status")
+            import_oids+=("$tree_oid")
             case "$RUN_MODE" in
               generative)
                 relative="${path#research/generative/}"
@@ -683,7 +793,151 @@ runs:
             echo "::error::Real checkout HEAD changed during isolated opencode run."
             exit 1
           fi
-          "${trusted_git[@]}" reset --hard "$post_sha"
+
+          # Never ask Git to populate the real worktree. Even with global
+          # attributes disabled, a persisted .git/info/attributes plus local
+          # filter.*.smudge/process command can make checkout/reset execute
+          # host code. Materialize only the already-validated regular blobs
+          # with cat-file, update the index without -u, then advance HEAD with
+          # an old-value compare-and-swap.
+          import_dir="$build_dir/trusted-import"
+          rm -rf -- "$import_dir"
+          mkdir -p "$import_dir"
+
+          install_blob() {
+            local source_blob="$1"
+            local destination_blob="$2"
+            local destination_dir staged_blob
+            destination_dir=$(dirname -- "$destination_blob")
+            staged_blob=$(mktemp "$destination_dir/.opencode-import.XXXXXX") || return 1
+            if ! install -m 644 "$source_blob" "$staged_blob"; then
+              rm -f -- "$staged_blob"
+              return 1
+            fi
+            if ! mv -f -- "$staged_blob" "$destination_blob"; then
+              rm -f -- "$staged_blob"
+              return 1
+            fi
+          }
+
+          import_count=${#import_paths[@]}
+          for ((import_i = 0; import_i < import_count; import_i++)); do
+            path=${import_paths[$import_i]}
+            status=${import_statuses[$import_i]}
+            tree_oid=${import_oids[$import_i]}
+            destination="$trusted_workspace/$path"
+            destination_parent=$(dirname -- "$destination")
+            if [ ! -d "$destination_parent" ] || [ -L "$destination_parent" ] \
+              || [ "$(realpath -- "$destination_parent")" != "$destination_parent" ]; then
+              echo "::error::opencode commit destination crosses a linked or missing directory: $path"
+              exit 1
+            fi
+            if [ "$status" = "A" ]; then
+              import_pre_oids[$import_i]=""
+              if [ -e "$destination" ] || [ -L "$destination" ]; then
+                echo "::error::opencode added path would overwrite real checkout data: $path"
+                exit 1
+              fi
+            elif [ "$status" = "M" ]; then
+              if [ ! -f "$destination" ] || [ -L "$destination" ] \
+                || [ "$(realpath -- "$destination")" != "$destination" ]; then
+                echo "::error::opencode modified path is not a canonical regular checkout file: $path"
+                exit 1
+              fi
+              pre_entry=$("${trusted_git[@]}" ls-tree "$pre_sha" -- "$path")
+              pre_header="${pre_entry%%$'\t'*}"
+              read -r pre_mode pre_type pre_oid <<< "$pre_header"
+              if [ "$pre_mode" != "100644" ] || [ "$pre_type" != "blob" ]; then
+                echo "::error::opencode modified path cannot be restored as a regular blob: $path"
+                exit 1
+              fi
+              import_pre_oids[$import_i]="$pre_oid"
+              "${trusted_git[@]}" cat-file blob "$pre_sha:$path" \
+                > "$import_dir/$import_i.pre"
+            else
+              echo "::error::opencode import received an unvalidated status: $status $path"
+              exit 1
+            fi
+            "${trusted_git[@]}" cat-file blob "$tree_oid" \
+              > "$import_dir/$import_i.post"
+          done
+
+          restore_pre_import() {
+            local restore_i restore_path restore_status restore_destination
+            local restore_failed=0
+            "${trusted_git[@]}" read-tree --reset --no-sparse-checkout "$pre_sha" \
+              || restore_failed=1
+            for ((restore_i = 0; restore_i < import_count; restore_i++)); do
+              restore_path=${import_paths[$restore_i]}
+              restore_status=${import_statuses[$restore_i]}
+              restore_destination="$trusted_workspace/$restore_path"
+              if [ "$restore_status" = "A" ]; then
+                rm -f -- "$restore_destination" || restore_failed=1
+              elif ! install_blob "$import_dir/$restore_i.pre" "$restore_destination"; then
+                restore_failed=1
+              fi
+            done
+            if [ "$("${trusted_git[@]}" rev-parse HEAD)" != "$pre_sha" ] \
+              || [ "$("${trusted_git[@]}" write-tree)" \
+                != "$("${trusted_git[@]}" rev-parse "$pre_sha^{tree}")" ]; then
+              restore_failed=1
+            fi
+            for ((restore_i = 0; restore_i < import_count; restore_i++)); do
+              restore_destination="$trusted_workspace/${import_paths[$restore_i]}"
+              if [ "${import_statuses[$restore_i]}" = "A" ]; then
+                if [ -e "$restore_destination" ] || [ -L "$restore_destination" ]; then
+                  restore_failed=1
+                fi
+              elif [ "$("${trusted_git[@]}" hash-object --no-filters -- \
+                "$restore_destination")" != "${import_pre_oids[$restore_i]}" ]; then
+                restore_failed=1
+              fi
+            done
+            return "$restore_failed"
+          }
+
+          apply_failed=0
+          for ((import_i = 0; import_i < import_count; import_i++)); do
+            destination="$trusted_workspace/${import_paths[$import_i]}"
+            if ! install_blob "$import_dir/$import_i.post" "$destination"; then
+              apply_failed=1
+              break
+            fi
+          done
+          if [ "$apply_failed" != "0" ] \
+            || ! "${trusted_git[@]}" read-tree --reset --no-sparse-checkout "$post_sha" \
+            || ! "${trusted_git[@]}" update-ref HEAD "$post_sha" "$pre_sha"; then
+            restore_pre_import \
+              || echo "::error::Failed to fully restore the pre-import checkout."
+            echo "::error::Failed to atomically import the validated opencode commit."
+            exit 1
+          fi
+
+          expected_tree=$("${trusted_git[@]}" rev-parse "$post_sha^{tree}")
+          actual_tree=$("${trusted_git[@]}" write-tree)
+          import_verified=true
+          if [ "$actual_tree" != "$expected_tree" ] \
+            || [ "$("${trusted_git[@]}" rev-parse HEAD)" != "$post_sha" ]; then
+            import_verified=false
+          fi
+          for ((import_i = 0; import_i < import_count; import_i++)); do
+            destination="$trusted_workspace/${import_paths[$import_i]}"
+            if [ "$("${trusted_git[@]}" hash-object --no-filters -- "$destination")" \
+              != "${import_oids[$import_i]}" ]; then
+              import_verified=false
+            fi
+          done
+          if [ "$import_verified" != "true" ]; then
+            rollback_failed=0
+            "${trusted_git[@]}" update-ref HEAD "$pre_sha" "$post_sha" \
+              || rollback_failed=1
+            restore_pre_import || rollback_failed=1
+            if [ "$rollback_failed" != "0" ]; then
+              echo "::error::Failed to fully restore the pre-import checkout."
+            fi
+            echo "::error::Validated opencode commit did not materialize exactly."
+            exit 1
+          fi
         fi
         for artifact in ${artifacts[@]+"${artifacts[@]}"}; do
           source_artifact="$isolated_workspace/$artifact"

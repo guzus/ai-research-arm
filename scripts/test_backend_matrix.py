@@ -272,6 +272,29 @@ class RoutingInvariants(unittest.TestCase):
                              f"{name} does not route to {model_ref}")
         return model_ref.split("/", 1)[1]
 
+    def test_all_opencode_callers_disable_checkout_credentials(self):
+        """Every known caller removes checkout auth before metadata cleanup."""
+        self.assertEqual(
+            {"generative-research.yml", "hourly-twitter.yml",
+             "opencode-kimi-canary.yml"},
+            set(self.OPENCODE_WORKFLOWS))
+        for name in self.OPENCODE_WORKFLOWS:
+            doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
+                                 .read_text(encoding="utf-8"))
+            containing_jobs = [job for job in (doc.get("jobs") or {}).values()
+                               if any("run-opencode-container" in
+                                      str(step.get("uses") or "")
+                                      for step in (job.get("steps") or []))]
+            self.assertTrue(containing_jobs, name)
+            for job in containing_jobs:
+                checkouts = [step for step in (job.get("steps") or [])
+                             if str(step.get("uses") or "").startswith(
+                                 "actions/checkout@")]
+                self.assertTrue(checkouts, name)
+                self.assertTrue(
+                    all((step.get("with") or {}).get("persist-credentials")
+                        is False for step in checkouts), name)
+
     def test_opencode_canary_probes_the_model_production_runs(self):
         # A canary that probes a different model than production runs is worse
         # than no canary: it goes green on an entitlement the real lane never
@@ -406,8 +429,18 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('--volume "$isolated_workspace:/workspace"', action)
         self.assertNotIn('--volume "$GITHUB_WORKSPACE:/workspace"', action)
         self.assertIn("git bundle create .opencode-export.bundle", action)
-        self.assertIn('fetch --no-tags "$bundle_file" HEAD', action)
+        self.assertIn('bundle unbundle "$bundle_file"', action)
+        self.assertNotIn('fetch --no-tags "$bundle_file"', action)
         self.assertNotIn('fetch --no-tags "$isolated_workspace"', action)
+        self.assertIn('mv -f -- "$trusted_config" "$git_dir/config"', action)
+        self.assertIn('"$git_dir/info/attributes"', action)
+        self.assertIn('rm -f -- "$git_dir/commondir"', action)
+        self.assertIn('"$git_dir/HEAD" "$git_dir/index"', action)
+        self.assertIn("logallrefupdates = false", action)
+        self.assertIn('cat-file blob "$tree_oid"', action)
+        self.assertIn('read-tree --reset --no-sparse-checkout "$post_sha"', action)
+        self.assertIn('update-ref HEAD "$post_sha" "$pre_sha"', action)
+        self.assertNotIn('"${trusted_git[@]}" reset --hard', action)
         self.assertIn('tree_mode" != "100644', action)
         self.assertIn("tree_type\" != \"blob", action)
         for name, expected_mode in {
@@ -532,8 +565,12 @@ class RoutingInvariants(unittest.TestCase):
             git(original, "config", "user.name", "Clone Guard Test")
             git(original, "config", "user.email", "guard@example.invalid")
             (original / "tracked.txt").write_text("trusted\n", encoding="utf-8")
-            git(original, "add", "tracked.txt")
+            (original / "tracked.html").write_text("<p>trusted</p>\n",
+                                                   encoding="utf-8")
+            git(original, "add", "tracked.txt", "tracked.html")
             git(original, "commit", "-m", "base")
+            bundle = tmp_path / "payload.bundle"
+            git(original, "bundle", "create", str(bundle), "--all")
 
             marker = tmp_path / "host-git-executed"
             fsmonitor = tmp_path / "malicious-fsmonitor"
@@ -544,6 +581,33 @@ class RoutingInvariants(unittest.TestCase):
                 "exit 0\n", encoding="utf-8")
             fsmonitor.chmod(0o755)
             git(original, "config", "core.fsmonitor", str(fsmonitor))
+
+            evil_smudge = tmp_path / "evil-smudge"
+            evil_smudge.write_text(
+                "#!/bin/sh\n"
+                f"printf 'smudge\\n' >> '{marker}'\n"
+                "cat\n", encoding="utf-8")
+            evil_smudge.chmod(0o755)
+            evil_process = tmp_path / "evil-process"
+            evil_process.write_text(
+                "#!/bin/sh\n"
+                f"printf 'process\\n' >> '{marker}'\n"
+                "exit 1\n", encoding="utf-8")
+            evil_process.chmod(0o755)
+            git(original, "config", "filter.evil.smudge", str(evil_smudge))
+            git(original, "config", "filter.evil.process", str(evil_process))
+            (original / ".git" / "info" / "attributes").write_text(
+                "*.html filter=evil\n", encoding="utf-8")
+
+            evil_ssh = tmp_path / "evil-ssh"
+            evil_ssh.write_text(
+                "#!/bin/sh\n"
+                f"printf 'ssh\\n' >> '{marker}'\n"
+                "exit 1\n", encoding="utf-8")
+            evil_ssh.chmod(0o755)
+            git(original, "config", "core.sshCommand", str(evil_ssh))
+            git(original, "config",
+                "url.ssh://attacker.invalid/.insteadOf", f"{tmp_path}/")
 
             template = tmp_path / "malicious-template"
             hooks = template / "hooks"
@@ -559,13 +623,34 @@ class RoutingInvariants(unittest.TestCase):
                 ["git", "config", "-f", str(global_config),
                  "init.templateDir", str(template)], check=True)
 
-            # Prove both fixtures really execute under an unsanitized command,
+            # Prove every fixture really executes under an unsanitized command,
             # so this is behavioral coverage rather than a marker that could
             # never be reached on the test host.
             subprocess.run(
                 ["git", "-C", str(original), "diff", "--quiet"],
-                check=False)
-            self.assertTrue(marker.exists(), "fsmonitor fixture did not execute")
+                check=False, capture_output=True)
+            self.assertIn("fsmonitor", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+            git(original, "config", "--unset", "core.fsmonitor")
+            (original / "tracked.html").unlink()
+            subprocess.run(
+                ["git", "-C", str(original), "checkout-index", "-f", "--",
+                 "tracked.html"], check=False, capture_output=True)
+            self.assertIn("process", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+            git(original, "config", "--unset", "filter.evil.process")
+            (original / "tracked.html").write_text("dirty\n", encoding="utf-8")
+            subprocess.run(
+                ["git", "-C", str(original), "reset", "--hard", "HEAD"],
+                check=True, capture_output=True)
+            self.assertIn("smudge", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+            git(original, "config", "filter.evil.process", str(evil_process))
+            git(original, "config", "core.fsmonitor", str(fsmonitor))
+            subprocess.run(
+                ["git", "-C", str(original), "fetch", str(bundle), "HEAD"],
+                check=False, capture_output=True)
+            self.assertIn("ssh", marker.read_text(encoding="utf-8"))
             marker.unlink()
             raw_clone_env = os.environ.copy()
             raw_clone_env["GIT_CONFIG_GLOBAL"] = str(global_config)
@@ -573,12 +658,34 @@ class RoutingInvariants(unittest.TestCase):
                 ["git", "clone", "--quiet", str(original),
                  str(tmp_path / "unsafe-clone")],
                 env=raw_clone_env, check=True)
-            self.assertTrue(marker.exists(), "template hook fixture did not execute")
+            self.assertIn("template-hook", marker.read_text(encoding="utf-8"))
             marker.unlink()
+
+            # Seed every durable local metadata bridge removed by the action.
+            local_hook = original / ".git" / "hooks" / "post-checkout"
+            local_hook.write_text(post_checkout.read_text(encoding="utf-8"),
+                                  encoding="utf-8")
+            local_hook.chmod(0o755)
+            (original / ".git" / "info" / "grafts").write_text(
+                "# malicious graft placeholder\n", encoding="utf-8")
+            external_objects = tmp_path / "external-objects"
+            external_objects.mkdir()
+            (original / ".git" / "objects" / "info" / "alternates").write_text(
+                str(external_objects) + "\n", encoding="utf-8")
+            (original / ".git" / "objects" / "info" /
+             "http-alternates").write_text(
+                 "https://attacker.invalid/objects\n", encoding="utf-8")
+            replace_dir = original / ".git" / "refs" / "replace"
+            replace_dir.mkdir()
+            external_common = tmp_path / "external-common"
+            external_common.mkdir()
+            (original / ".git" / "commondir").write_text(
+                str(external_common) + "\n", encoding="utf-8")
 
             build_dir = tmp_path / "build"
             empty_template = build_dir / "empty-git-template"
             empty_template.mkdir(parents=True)
+            github_env = tmp_path / "github-env"
             env = os.environ.copy()
             env.update({
                 "GITHUB_WORKSPACE": str(original),
@@ -589,6 +696,9 @@ class RoutingInvariants(unittest.TestCase):
                 "build_dir": str(build_dir),
                 "empty_git_template": str(empty_template),
                 "GIT_CONFIG_GLOBAL": str(global_config),
+                "GITHUB_SERVER_URL": "https://github.com",
+                "GITHUB_REPOSITORY": "example/repository",
+                "GITHUB_ENV": str(github_env),
             })
             result = subprocess.run(
                 ["bash", "-c", "set -euo pipefail\n" + setup],
@@ -600,6 +710,102 @@ class RoutingInvariants(unittest.TestCase):
                               "post-checkout").exists())
             self.assertFalse((isolated / "tracked.txt").exists(),
                              "host clone unexpectedly materialized a checkout")
+            local_config = (original / ".git" / "config").read_text(
+                encoding="utf-8")
+            for forbidden in ("fsmonitor", "sshcommand", "filter.evil",
+                              "insteadof", "hookspath"):
+                self.assertNotIn(forbidden, local_config.lower())
+            self.assertIn(
+                "url = https://github.com/example/repository.git", local_config)
+            self.assertIn("name = github-actions[bot]", local_config)
+            for removed in (
+                    original / ".git" / "info" / "attributes",
+                    original / ".git" / "info" / "grafts",
+                    original / ".git" / "objects" / "info" / "alternates",
+                    original / ".git" / "objects" / "info" / "http-alternates",
+                    original / ".git" / "refs" / "replace",
+                    original / ".git" / "hooks" / "post-checkout",
+                    original / ".git" / "logs",
+                    original / ".git" / "commondir"):
+                self.assertFalse(removed.exists(), str(removed))
+            self.assertEqual(
+                "+refs/heads/*:refs/remotes/origin/*",
+                git(original, "config", "--local", "--get",
+                    "remote.origin.fetch").stdout.strip())
+            self.assertEqual(
+                {"GIT_CONFIG_NOSYSTEM=1", "GIT_CONFIG_GLOBAL=/dev/null",
+                 "GIT_NO_REPLACE_OBJECTS=1"},
+                set(github_env.read_text(encoding="utf-8").splitlines()))
+
+            # Representative later Git operations inherit the sanitized
+            # checkout and cannot revive the removed execution paths.
+            (original / "tracked.html").write_text("dirty again\n",
+                                                   encoding="utf-8")
+            subprocess.run(
+                ["git", "-C", str(original), "diff", "--quiet"], check=False)
+            subprocess.run(
+                ["git", "-C", str(original), "reset", "--hard", "HEAD"],
+                check=True, capture_output=True)
+            subprocess.run(
+                ["git", "-C", str(original), "fetch", str(bundle), "HEAD"],
+                check=True, capture_output=True)
+            self.assertFalse(marker.exists(), "sanitized later Git executed a marker")
+
+    def test_trusted_clone_setup_rejects_linked_git_control_file(self):
+        """Index/HEAD plumbing must never follow a stale control-file link."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        setup = shell.split("# TRUSTED_CLONE_SETUP_BEGIN", 1)[1].split(
+            "# TRUSTED_CLONE_SETUP_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            original = tmp_path / "original"
+            original.mkdir()
+            subprocess.run(["git", "-C", str(original), "init", "-b", "main"],
+                           check=True, capture_output=True)
+            subprocess.run(
+                ["git", "-C", str(original), "config", "user.name", "Guard"],
+                check=True)
+            subprocess.run(
+                ["git", "-C", str(original), "config", "user.email",
+                 "guard@example.invalid"], check=True)
+            (original / "tracked.txt").write_text("trusted\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(original), "add", "tracked.txt"],
+                           check=True)
+            subprocess.run(["git", "-C", str(original), "commit", "-m", "base"],
+                           check=True, capture_output=True)
+
+            outside_index = tmp_path / "outside-index"
+            outside_index.write_text("sentinel\n", encoding="utf-8")
+            index = original / ".git" / "index"
+            index.unlink()
+            os.symlink(outside_index, index)
+            build_dir = tmp_path / "build"
+            empty_template = build_dir / "empty-git-template"
+            empty_template.mkdir(parents=True)
+            env = os.environ.copy()
+            env.update({
+                "GITHUB_WORKSPACE": str(original),
+                "RUNNER_TEMP": str(tmp_path),
+                "GITHUB_RUN_ID": "linked-index",
+                "GITHUB_RUN_ATTEMPT": "1",
+                "RUN_MODE": "canary",
+                "build_dir": str(build_dir),
+                "empty_git_template": str(empty_template),
+                "GITHUB_SERVER_URL": "https://github.com",
+                "GITHUB_REPOSITORY": "example/repository",
+            })
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + setup],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertNotEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertIn("linked or malformed Git control file",
+                          result.stdout + result.stderr)
+            self.assertEqual("sentinel\n",
+                             outside_index.read_text(encoding="utf-8"))
 
     def test_trusted_import_guard_rejects_forbidden_committed_path(self):
         """Execute the real inline guard against an adversarial static bundle."""
@@ -649,6 +855,8 @@ class RoutingInvariants(unittest.TestCase):
             (isolated / ".opencode-post-sha").write_text(
                 post_sha + "\n", encoding="utf-8")
 
+            build_dir = tmp_path / "build"
+            build_dir.mkdir()
             env = os.environ.copy()
             env.update({
                 "GITHUB_WORKSPACE": str(original),
@@ -658,6 +866,7 @@ class RoutingInvariants(unittest.TestCase):
                 "ALLOWED_PATHS": "",
                 "BIRDY_TOOL_LOG_REL": "",
                 "agent_status": "0",
+                "build_dir": str(build_dir),
             })
             result = subprocess.run(
                 ["bash", "-c", "set -euo pipefail\n" + guard],
@@ -711,6 +920,8 @@ class RoutingInvariants(unittest.TestCase):
             os.symlink(outside, isolated / ".twitter-input",
                        target_is_directory=True)
 
+            build_dir = tmp_path / "build"
+            build_dir.mkdir()
             env = os.environ.copy()
             env.update({
                 "GITHUB_WORKSPACE": str(original),
@@ -720,6 +931,7 @@ class RoutingInvariants(unittest.TestCase):
                 "ALLOWED_PATHS": "research/twitter/test.md",
                 "BIRDY_TOOL_LOG_REL": ".twitter-input/birdy-tool-log.jsonl",
                 "agent_status": "0",
+                "build_dir": str(build_dir),
             })
             result = subprocess.run(
                 ["bash", "-c", "set -euo pipefail\n" + guard],
@@ -809,6 +1021,46 @@ class RoutingInvariants(unittest.TestCase):
             git(original, "config", "core.fsmonitor", str(fsmonitor))
             git(original, "config", "core.hooksPath", str(hooks))
 
+            evil_filter = tmp_path / "evil-filter"
+            evil_filter.write_text(
+                "#!/bin/sh\n"
+                f"printf 'filter\\n' >> '{marker}'\n"
+                "cat\n", encoding="utf-8")
+            evil_filter.chmod(0o755)
+            evil_process = tmp_path / "evil-filter-process"
+            evil_process.write_text(
+                "#!/bin/sh\n"
+                f"printf 'filter-process\\n' >> '{marker}'\n"
+                "exit 1\n", encoding="utf-8")
+            evil_process.chmod(0o755)
+            git(original, "config", "filter.evil.smudge", str(evil_filter))
+            git(original, "config", "filter.evil.process", str(evil_process))
+            (original / ".git" / "info" / "attributes").write_text(
+                "*.html filter=evil\n", encoding="utf-8")
+
+            evil_ssh = tmp_path / "evil-ssh"
+            evil_ssh.write_text(
+                "#!/bin/sh\n"
+                f"printf 'ssh\\n' >> '{marker}'\n"
+                "exit 1\n", encoding="utf-8")
+            evil_ssh.chmod(0o755)
+            git(original, "config", "core.sshCommand", str(evil_ssh))
+            git(original, "config",
+                "url.ssh://attacker.invalid/.insteadOf", f"{tmp_path}/")
+
+            # Calibrate the exact transport exploit: an ordinary fetch of the
+            # absolute bundle path is rewritten to SSH and executes local
+            # core.sshCommand. The guard below must import the same bundle
+            # without touching that transport layer.
+            subprocess.run(
+                ["git", "-C", str(original), "fetch",
+                 str(isolated / ".opencode-export.bundle"), "HEAD"],
+                check=False, capture_output=True)
+            self.assertIn("ssh", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+
+            build_dir = tmp_path / "build"
+            build_dir.mkdir()
             env = os.environ.copy()
             env.update({
                 "GITHUB_WORKSPACE": str(original),
@@ -818,6 +1070,7 @@ class RoutingInvariants(unittest.TestCase):
                 "ALLOWED_PATHS": "",
                 "BIRDY_TOOL_LOG_REL": "",
                 "agent_status": "0",
+                "build_dir": str(build_dir),
             })
             result = subprocess.run(
                 ["bash", "-c", "set -euo pipefail\n" + guard],

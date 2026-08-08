@@ -201,9 +201,13 @@ opencode, plus `uv` and `pdftotext` because the research prompt shells out to
 `uv run python scripts/...` 17 times. Unlike pi, opencode never gets the real
 checkout writable: the host creates a no-hardlink disposable clone, the
 container writes/commits only there, and a trusted host tail imports at most one
-static bundle after exact path/status/mode/size validation. Only the three named
-generative-methodology JSON files or the redacted Birdy tool log cross back as
-untrusted data. Both containers run `--cap-drop ALL`,
+static bundle after exact path/status/mode/size validation. Before its first Git
+command, the action replaces persistent checkout Git config/control metadata
+with a minimal trusted configuration. It unbundles objects without a transport,
+materializes only validated blobs without checkout filters, then advances the
+index/ref with a compare-and-swap. Only the three named generative-methodology
+JSON files or the redacted Birdy tool log cross back as untrusted data. Both
+containers run `--cap-drop ALL`,
 `--security-opt no-new-privileges`, `--pids-limit`, non-root, with `HOME` under
 `/tmp` so the agent never sees the runner's real home. **Missing Docker is a
 hard failure** — never fall back to host-level `pi --tools ... bash` or
