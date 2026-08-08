@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-08-08 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Twitter/X] OpenAI declares Astra its first "critical" cyber model under the Preparedness Framework — pausing i…
+• [RSS / Official Announcements] Improving GPT‑5.6 Sol in ChatGPT—and expanding access to GPT-5.6 Luna for free users - 2026-08-06 1…
+• [Hacker News] AMD acquires Taalas to boost inference performance by etching models in
+• [Reddit] Imagenet-1k Classifier trained entirely on an Android [P] — link
+• [Expert Blogs] Moonlight & Mayhem (Raccoon Heist by Codex + GPT-5.6 Sol Ultra)
+
+SOURCES: 8/8 lanes had data
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
