@@ -54,6 +54,7 @@ END_DIAGRAM = "<!-- END GENERATED BACKEND DIAGRAM -->"
 OPENCODE_SELECTOR = "opencode-kimi-k3"
 OPENCODE_PROVIDER_LABEL = "OpenCode Go"
 OPENCODE_MODEL_RE = re.compile(r'model="opencode-go/([A-Za-z0-9._-]+)"')
+OPENCODE_ACTION_MODEL_RE = re.compile(r'^opencode-go/([A-Za-z0-9._-]+)$')
 
 
 def opencode_model_id(workflow_name: str) -> str:
@@ -71,6 +72,13 @@ def opencode_model_id(workflow_name: str) -> str:
                 if line.lstrip().startswith("#"):
                     continue
                 found.update(OPENCODE_MODEL_RE.findall(line))
+            # The container action takes the id as a `model:` input. A ${{ }}
+            # expression indirects to a preflight literal already collected
+            # above, so skip it rather than mistake the expression for an id.
+            if OPENCODE_ACTION in str(step.get("uses") or ""):
+                model = str((step.get("with") or {}).get("model") or "")
+                if model and "${{" not in model:
+                    found.update(OPENCODE_ACTION_MODEL_RE.findall(model))
     if len(found) != 1:
         raise SystemExit(
             f"{workflow_name}: expected exactly one opencode-go model id in "
@@ -102,6 +110,11 @@ CODEX_EXEC_RE = re.compile(r"\bcodex\b[^\n]*(?:\n[^\n]*)*?\bexec\b")
 # step's `"opencode": env(...)` python + a later "GitHub run" label, which
 # would have kept the matrix row alive after a partial backend removal.
 OPENCODE_RUN_RE = re.compile(r"^\s*opencode run\b", re.M)
+# opencode now runs ONLY inside .github/actions/run-opencode-container, so the
+# `opencode run` string no longer appears in any workflow's shell. Detect the
+# action usage too, or the matrix rows and the README diagram edge silently
+# vanish the moment a lane is containerised.
+OPENCODE_ACTION = "run-opencode-container"
 RESOLVER_CALL_RE = re.compile(r"resolve_backend_lane\.py\s+([a-z0-9\-]+)")
 STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure'")
 
@@ -409,7 +422,8 @@ def observe_workflow(wf_path: Path) -> Observation:
                 wf_text = wf_path.read_text(encoding="utf-8")
                 obs.codex_token = "CODEX_AUTH_JSON" if "CODEX_AUTH_JSON" in wf_text else "(unknown)"
 
-            elif run and OPENCODE_RUN_RE.search(run):
+            elif (run and OPENCODE_RUN_RE.search(run)) or \
+                    OPENCODE_ACTION in str(step.get("uses") or ""):
                 obs.opencode = True
                 wf_text = wf_path.read_text(encoding="utf-8")
                 # Same preference order the workflow's route resolver uses:
@@ -680,17 +694,23 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             # is a CI-blessed lie about which model authored an artifact. The
             # selector token keeps its historical `-kimi-k3` name across the
             # temporary 2026-08-07 DeepSeek swap; the Model column must not.
+            model_id = opencode_model_id(wf_name)
             if wf_name == "generative-research.yml":
-                rows.append([f"(dispatch path) backend={OPENCODE_SELECTOR}", f"`{wf_name}`",
-                             "opencode CLI", OPENCODE_PROVIDER_LABEL,
-                             f"`{opencode_model_id(wf_name)}`",
-                             f"`{obs.opencode_token}`",
-                             "hard fail (strict comparison backend)"])
+                label = f"(dispatch path) backend={OPENCODE_SELECTOR}"
+                note = "hard fail (strict comparison backend)"
+            elif "canary" in wf_name:
+                label = f"(canary) opencode + {model_id}"
+                note = "hard fail (diagnostics lane)"
             else:
-                rows.append([f"(canary) opencode + {opencode_model_id(wf_name)}", f"`{wf_name}`",
-                             "opencode CLI", OPENCODE_PROVIDER_LABEL,
-                             f"`{opencode_model_id(wf_name)}`",
-                             f"`{obs.opencode_token}`", "hard fail (diagnostics lane)"])
+                # e.g. hourly-twitter's opencode tier — a strict comparison
+                # tier, NOT a canary. Labelling it "(canary)" because it was
+                # the only other opencode caller would misdescribe a lane that
+                # publishes real artifacts.
+                label = f"(tier) backend={OPENCODE_SELECTOR}"
+                note = "hard fail (strict comparison tier)"
+            rows.append([label, f"`{wf_name}`", "opencode CLI (containerised)",
+                         OPENCODE_PROVIDER_LABEL, f"`{model_id}`",
+                         f"`{obs.opencode_token}`", note])
         if obs.has_fable_dispatch:
             rows.append(["(dispatch path) backend=fable-5", f"`{wf_name}`",
                          "Claude Code · claude-code-action (explicit premium selector)",

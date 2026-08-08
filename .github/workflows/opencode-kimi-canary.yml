@@ -49,10 +49,52 @@ jobs:
       contents: read
 
     steps:
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
       - name: Checkout repository
         uses: actions/checkout@v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           persist-credentials: false
+          set-safe-directory: false
 
       - name: Probe raw DeepSeek V4 Flash API on the OpenCode Go route
         env:
@@ -204,11 +246,6 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install opencode CLI
-        run: |
-          npm install -g opencode-ai@1.18.3
-          opencode --version
-
       # Headless env-var login through the real harness, using the EXACT
       # invocation shape of the production backend step in
       # generative-research.yml — same route-resolved `-m` model, same
@@ -219,28 +256,35 @@ jobs:
       # produce text. The provider model declarations keep the pinned
       # model resolvable even if the models.dev registry cache on the
       # runner predates it.
-      - name: Run opencode file-free canary
+      - name: Check opencode auth
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-          OPENCODE_DISABLE_AUTOUPDATE: '1'
-          OPENCODE_CONFIG: ${{ github.workspace }}/.github/opencode/opencode-canary.json
         run: |
           set -euo pipefail
-          # Same route resolution as the production preflight: Go-only while
-          # the temporary DeepSeek swap is active.
-          if [ -n "${OPENCODE_API_KEY:-}" ]; then
-            model="opencode-go/deepseek-v4-flash"
-          else
+          if [ -z "${OPENCODE_API_KEY:-}" ]; then
             echo "::error::No opencode auth configured (OPENCODE_API_KEY). Moonshot cannot serve deepseek-v4-flash."
             exit 1
           fi
-          echo "Canary model: $model"
+
+      # Containerised, matching production. A canary that certifies a
+      # DIFFERENT environment than the real lane runs in is worth little — the
+      # same reasoning that pins it to production's model id. Tools stay denied
+      # by opencode-canary.json, so containment here is belt AND braces.
+      - name: Run opencode file-free canary
+        uses: ./.github/actions/run-opencode-container
+        with:
+          mode: canary
+          prompt-text: 'Reply with exactly this token and nothing else: OPENCODE-KIMI-CANARY-OK'
+          model: opencode-go/deepseek-v4-flash
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          opencode-config: .github/opencode/opencode-canary.json
+          timeout-minutes: '10'
+          output-file: ${{ runner.temp }}/opencode-kimi-canary.out
+
+      - name: Assert canary token
+        run: |
+          set -euo pipefail
           out="${RUNNER_TEMP:-/tmp}/opencode-kimi-canary.out"
-          opencode run \
-            -m "$model" \
-            --auto \
-            "Reply with exactly this token and nothing else: OPENCODE-KIMI-CANARY-OK" \
-            | tee "$out"
           if ! grep -q "OPENCODE-KIMI-CANARY-OK" "$out"; then
             echo "::error::opencode run completed but the canary token is missing from its output — env-var auth or model routing through opencode is broken even though the raw API probe passed."
             exit 1

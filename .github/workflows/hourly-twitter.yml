@@ -179,12 +179,55 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "Resolved backend: ${BACKEND}"
 
+      - name: Quarantine stale self-hosted workspace
+        if: steps.backend.outputs.skip != 'true'
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
       - name: Checkout repository
         if: steps.backend.outputs.skip != 'true'
         uses: actions/checkout@v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           fetch-depth: 0
           persist-credentials: false
+          set-safe-directory: false
 
       - name: Get current datetime
         if: steps.backend.outputs.skip != 'true'
@@ -821,33 +864,41 @@ jobs:
       # FULL REVERT CHECKLIST (authoritative; covers the deleted Moonshot
       # branch, the step env, the four labels above, and the dashboard):
       #   docs/generative-research-backends.md § "Reverting this swap".
-      - name: Process tweets with opencode + DeepSeek V4 Flash (opencode-kimi-k3 tier)
+      # Strict fail-fast on auth BEFORE building the image: a dead key should
+      # cost seconds, not a container build.
+      - name: Check opencode auth (opencode-kimi-k3 tier)
         if: steps.backend.outputs.name == 'opencode-kimi-k3'
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-          # MOONSHOT_API_KEY deliberately NOT passed: it cannot serve the
-          # pinned deepseek-v4-flash, and opencode has no subprocess env
-          # allowlist, so injecting an unusable secret only widens what the
-          # agent's bash tool can read.
-          OPENCODE_DISABLE_AUTOUPDATE: '1'
-          OPENCODE_CONFIG: ${{ github.workspace }}/.github/opencode/opencode.json
-          BIRDY_READ_ONLY: "1"
-          BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
-          PROMPT_FILE: ${{ steps.render.outputs.rendered_path }}
         run: |
           set -euo pipefail
-          # Strict fail-fast. Go route only while the DeepSeek swap is active.
-          if [ -n "${OPENCODE_API_KEY:-}" ]; then
-            model="opencode-go/deepseek-v4-flash"
-          else
+          if [ -z "${OPENCODE_API_KEY:-}" ]; then
             echo "::error::No opencode auth configured. Set OPENCODE_API_KEY (https://opencode.ai/auth). MOONSHOT_API_KEY is NOT a route while this tier is pinned to deepseek-v4-flash — Moonshot serves Kimi only, and this tier is strict: it will not silently author with a model other than the one its labels claim."
             exit 1
           fi
-          echo "opencode model: $model"
-          npm install -g opencode-ai@1.18.3
-          opencode --version
-          # 45m budget inside the 60m job cap leaves room for guards + push.
-          timeout 45m opencode run -m "$model" --auto "$(cat "$PROMPT_FILE")"
+
+      # Containerised like the pi tiers above. Previously this ran `opencode
+      # run --auto` directly on the self-hosted host with edit/bash/webfetch
+      # all "allow" — the only agent harness in the repo with no sandbox.
+      # 45m budget inside the 60m job cap leaves room for guards + push.
+      - name: Process tweets with opencode + DeepSeek V4 Flash (opencode-kimi-k3 tier)
+        if: steps.backend.outputs.name == 'opencode-kimi-k3'
+        uses: ./.github/actions/run-opencode-container
+        with:
+          mode: twitter
+          allowed-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
+          prompt-file: ${{ steps.render.outputs.rendered_path }}
+          model: opencode-go/deepseek-v4-flash
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          timeout-minutes: '45'
+          mount-bird-snapshot: 'true'
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
+          birdy-tool-log-path: .twitter-input/birdy-tool-log.jsonl
 
       - name: Require Twitter producer diff scope
         if: >-

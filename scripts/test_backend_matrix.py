@@ -8,9 +8,13 @@ loosen the parser. (Doc-freshness itself is the separate `--check` CI step.)
 
 import copy
 import json
+import os
 import re
+import shlex
+import stat
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -184,13 +188,13 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) CANDIDATE="opencode-kimi-k3"', workflow)
         self.assertIn('opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) BACKEND="opencode-kimi-k3"', workflow)
         self.assertIn('[ "$BACKEND" != "opencode-kimi-k3" ]', workflow)
-        # Version-pinned install, deterministic binary, env-var auth (no
-        # auth.json seeding), fail-closed route preflight, output guard.
-        self.assertIn("npm install -g opencode-ai@", workflow)
-        self.assertIn("OPENCODE_DISABLE_AUTOUPDATE", workflow)
-        self.assertIn("OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}", workflow)
+        # Fail-closed route preflight and the output guard stay in the
+        # workflow; the version-pinned install and the env-var auth moved into
+        # the container action and are asserted there (see the containment
+        # test below), because that is now the only place opencode runs.
         self.assertIn("Resolve and preflight OpenCode route", workflow)
         self.assertIn("Fail OpenCode run without article", workflow)
+        self.assertIn("uses: ./.github/actions/run-opencode-container", workflow)
         # MOONSHOT_API_KEY may appear exactly once — the preflight step, purely
         # to emit a precise error when it is the only key configured. It must
         # NOT reach the agent step: opencode has no subprocess env allowlist,
@@ -238,6 +242,7 @@ class RoutingInvariants(unittest.TestCase):
             found = set()
             for job in (doc.get("jobs") or {}).values():
                 for step in job.get("steps") or []:
+                    # (a) shell assignments, e.g. the gen-research preflight
                     for line in (step.get("run") or "").splitlines():
                         if line.lstrip().startswith("#"):
                             continue
@@ -248,6 +253,14 @@ class RoutingInvariants(unittest.TestCase):
                         found.update(re.findall(
                             r'\bmodel="((?:opencode-go|opencode|moonshotai)/[^"]+)"',
                             line))
+                    # (b) the `model:` input to the container action. Skip
+                    # ${{ }} expressions: those indirect to a preflight
+                    # literal already counted by (a), and treating the
+                    # expression text as an id would always mismatch.
+                    if "run-opencode-container" in str(step.get("uses") or ""):
+                        model = str((step.get("with") or {}).get("model") or "")
+                        if model and "${{" not in model:
+                            found.add(model)
             seen[name] = found
         union = set().union(*seen.values())
         self.assertEqual(
@@ -260,6 +273,218 @@ class RoutingInvariants(unittest.TestCase):
             self.assertEqual({model_ref}, found,
                              f"{name} does not route to {model_ref}")
         return model_ref.split("/", 1)[1]
+
+    def test_all_opencode_callers_disable_checkout_credentials(self):
+        """Every known caller removes checkout auth before metadata cleanup."""
+        self.assertEqual(
+            {"generative-research.yml", "hourly-twitter.yml",
+             "opencode-kimi-canary.yml"},
+            set(self.OPENCODE_WORKFLOWS))
+        for name in self.OPENCODE_WORKFLOWS:
+            doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
+                                 .read_text(encoding="utf-8"))
+            containing_jobs = [job for job in (doc.get("jobs") or {}).values()
+                               if any("run-opencode-container" in
+                                      str(step.get("uses") or "")
+                                      for step in (job.get("steps") or []))]
+            self.assertTrue(containing_jobs, name)
+            for job in containing_jobs:
+                checkouts = [step for step in (job.get("steps") or [])
+                             if str(step.get("uses") or "").startswith(
+                                 "actions/checkout@")]
+                self.assertTrue(checkouts, name)
+                self.assertTrue(
+                    all((step.get("with") or {}).get("persist-credentials")
+                        is False for step in checkouts), name)
+                for checkout in checkouts:
+                    self.assertEqual(
+                        {"GIT_CONFIG_NOSYSTEM": "1",
+                         "GIT_CONFIG_GLOBAL": "/dev/null"},
+                        checkout.get("env") or {}, name)
+                    self.assertIs(
+                        False,
+                        (checkout.get("with") or {}).get("set-safe-directory"),
+                        name)
+
+    def test_opencode_callers_quarantine_stale_workspace_before_checkout(self):
+        """The exact pre-checkout shell removes stale Git and untracked state."""
+        guards = []
+        for name in self.OPENCODE_WORKFLOWS:
+            doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
+                                 .read_text(encoding="utf-8"))
+            containing_jobs = [job for job in (doc.get("jobs") or {}).values()
+                               if any("run-opencode-container" in
+                                      str(step.get("uses") or "")
+                                      for step in (job.get("steps") or []))]
+            self.assertEqual(1, len(containing_jobs), name)
+            steps = containing_jobs[0].get("steps") or []
+            quarantine_i = next(
+                i for i, step in enumerate(steps)
+                if step.get("id") == "quarantine_workspace")
+            checkout_i = next(
+                i for i, step in enumerate(steps)
+                if str(step.get("uses") or "").startswith("actions/checkout@"))
+            self.assertLess(quarantine_i, checkout_i, name)
+            quarantine = steps[quarantine_i]
+            self.assertNotIn("uses", quarantine, name)
+            self.assertEqual("bash", quarantine.get("shell"), name)
+            guards.append(quarantine.get("run") or "")
+        self.assertEqual(1, len(set(guards)), "pre-checkout guards diverged")
+        guard = guards[0]
+        self.assertNotRegex(guard, r"(^|\s)git(\s|$)")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            runner_workspace = tmp_path / "runner-workspace"
+            workspace = runner_workspace / "repository"
+            workspace.mkdir(parents=True)
+
+            source = tmp_path / "source"
+            source.mkdir()
+            subprocess.run(["git", "-C", str(source), "init", "-b", "main"],
+                           check=True, capture_output=True)
+            subprocess.run(["git", "-C", str(source), "config", "user.name",
+                            "Source"], check=True)
+            subprocess.run(["git", "-C", str(source), "config", "user.email",
+                            "source@example.invalid"], check=True)
+            (source / "clean.txt").write_text("clean\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(source), "add", "clean.txt"],
+                           check=True)
+            subprocess.run(["git", "-C", str(source), "commit", "-m", "source"],
+                           check=True, capture_output=True)
+
+            def git(*args: str, check: bool = True) -> subprocess.CompletedProcess:
+                return subprocess.run(
+                    ["git", "-C", str(workspace), *args], text=True,
+                    capture_output=True, check=check)
+
+            git("init", "-b", "main")
+            git("config", "user.name", "Prior Job")
+            git("config", "user.email", "prior@example.invalid")
+            (workspace / "tracked.html").write_text(
+                "<p>trusted</p>\n", encoding="utf-8")
+            git("add", "tracked.html")
+            git("commit", "-m", "base")
+
+            marker = tmp_path / "stale-git-executed"
+            evil_smudge = tmp_path / "evil-smudge"
+            evil_smudge.write_text(
+                "#!/bin/sh\n"
+                f"printf 'smudge\\n' >> '{marker}'\n"
+                "cat\n", encoding="utf-8")
+            evil_smudge.chmod(0o755)
+            git("config", "filter.evil.smudge", str(evil_smudge))
+            (workspace / ".git" / "info" / "attributes").write_text(
+                "*.html filter=evil\n", encoding="utf-8")
+            (workspace / "tracked.html").write_text("dirty\n", encoding="utf-8")
+            git("reset", "--hard", "HEAD")
+            self.assertIn("smudge", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+
+            # A persistent global init.templateDir is outside the quarantined
+            # workspace. Calibrate that a checkout-shaped init/fetch/checkout
+            # really does copy and execute its post-checkout hook without the
+            # Git config restrictions added below.
+            template = tmp_path / "evil-template"
+            (template / "hooks").mkdir(parents=True)
+            template_hook = template / "hooks" / "post-checkout"
+            template_hook.write_text(
+                "#!/bin/sh\n"
+                f"printf 'global-template\\n' >> '{marker}'\n",
+                encoding="utf-8")
+            template_hook.chmod(0o755)
+            global_config = tmp_path / "persistent-global-config"
+            global_config.write_text(
+                "[init]\n"
+                f"\ttemplateDir = {template}\n",
+                encoding="utf-8")
+            unsafe_checkout = tmp_path / "unsafe-checkout"
+            unsafe_checkout.mkdir()
+            unsafe_env = os.environ.copy()
+            unsafe_env.update({
+                "GIT_CONFIG_NOSYSTEM": "1",
+                "GIT_CONFIG_GLOBAL": str(global_config),
+            })
+            for command in (
+                    ["git", "-C", str(unsafe_checkout), "init"],
+                    ["git", "-C", str(unsafe_checkout), "remote", "add",
+                     "origin", str(source)],
+                    ["git", "-C", str(unsafe_checkout), "fetch", "origin",
+                     "main"],
+                    ["git", "-C", str(unsafe_checkout), "checkout", "--detach",
+                     "FETCH_HEAD"]):
+                subprocess.run(command, env=unsafe_env, check=True,
+                               capture_output=True)
+            self.assertIn(
+                "global-template", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+
+            poison = workspace / "untracked-validator"
+            poison.write_text("#!/bin/sh\nexit 99\n", encoding="utf-8")
+            poison.chmod(0o755)
+            (workspace / ".venv").mkdir()
+            (workspace / ".venv" / "sitecustomize.py").write_text(
+                "raise SystemExit('stale prior job')\n", encoding="utf-8")
+
+            github_env = tmp_path / "github-env"
+            env = os.environ.copy()
+            env.update({
+                "RUNNER_WORKSPACE": str(runner_workspace),
+                "GITHUB_WORKSPACE": str(workspace),
+                "GITHUB_REPOSITORY": "example/repository",
+                "GITHUB_ENV": str(github_env),
+                "GIT_CONFIG_GLOBAL": str(global_config),
+            })
+            result = subprocess.run(
+                ["bash", "-c", guard], cwd=workspace, env=env,
+                text=True, capture_output=True, check=False)
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertFalse(marker.exists(), result.stdout + result.stderr)
+            self.assertTrue(workspace.is_dir())
+            self.assertEqual([], list(workspace.iterdir()))
+            self.assertEqual([], list(runner_workspace.glob(
+                ".opencode-precheckout.*")))
+            restrictions = {
+                line.split("=", 1)[0]: line.split("=", 1)[1]
+                for line in github_env.read_text(encoding="utf-8").splitlines()
+            }
+            self.assertEqual(
+                {"GIT_CONFIG_NOSYSTEM": "1",
+                 "GIT_CONFIG_GLOBAL": "/dev/null",
+                 "GIT_NO_REPLACE_OBJECTS": "1"},
+                restrictions)
+
+            # A checkout-shaped init/fetch/checkout inherits the restrictions
+            # written to GITHUB_ENV and cannot reach either the old local
+            # metadata or the persistent global template hook.
+            checkout_env = env.copy()
+            checkout_env.update(restrictions)
+            for command in (
+                    ["git", "-C", str(workspace), "init"],
+                    ["git", "-C", str(workspace), "remote", "add", "origin",
+                     str(source)],
+                    ["git", "-C", str(workspace), "fetch", "origin", "main"],
+                    ["git", "-C", str(workspace), "checkout", "--detach",
+                     "FETCH_HEAD"]):
+                subprocess.run(command, env=checkout_env, check=True,
+                               capture_output=True)
+            self.assertFalse(marker.exists())
+            self.assertFalse(
+                (workspace / ".git" / "hooks" / "post-checkout").exists())
+
+            # A mismatched basename fails closed and preserves that unrelated
+            # sibling instead of widening the recursive-removal target.
+            unrelated = runner_workspace / "unrelated"
+            unrelated.mkdir()
+            (unrelated / "sentinel").write_text("keep\n", encoding="utf-8")
+            bad_env = env.copy()
+            bad_env["GITHUB_WORKSPACE"] = str(unrelated)
+            rejected = subprocess.run(
+                ["bash", "-c", guard], cwd=workspace, env=bad_env,
+                text=True, capture_output=True, check=False)
+            self.assertNotEqual(0, rejected.returncode)
+            self.assertEqual(
+                "keep\n", (unrelated / "sentinel").read_text(encoding="utf-8"))
 
     def test_opencode_canary_probes_the_model_production_runs(self):
         # A canary that probes a different model than production runs is worse
@@ -322,6 +547,822 @@ class RoutingInvariants(unittest.TestCase):
             for other in others:
                 self.assertNotIn(other, line.lower(),
                                  f"{field} names {other} but the tier serves {family}")
+
+    def test_opencode_never_runs_unsandboxed(self):
+        # opencode was the only agent harness with no containment: it ran bare
+        # on the self-hosted host with edit/bash/webfetch all "allow" plus
+        # --auto, while generative-research.yml triggers on `issues:` and feeds
+        # the agent live tweets. Every invocation must now go through the
+        # container action, and that action must keep its teeth.
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        # EXECUTABLE shell only. The action's header comment explains the very
+        # flags asserted below, so a whole-file substring check passes on the
+        # prose while the real flag is gone — verified: deleting
+        # `--cap-drop ALL` from the docker invocation left the file-wide
+        # assertion green. Strip comments and assert on what actually runs.
+        action = "\n".join(
+            line for line in
+            "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"]).splitlines()
+            if not line.lstrip().startswith("#"))
+        workflow_paths = sorted((REPO_ROOT / ".github" / "workflows").glob("*.yml"))
+        workflow_paths += sorted((REPO_ROOT / ".github" / "workflows").glob("*.yaml"))
+        for workflow_path in workflow_paths:
+            name = workflow_path.name
+            doc = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
+            for job in (doc.get("jobs") or {}).values():
+                steps = job.get("steps") or []
+                for step in steps:
+                    for line in (step.get("run") or "").splitlines():
+                        code = line.split("#", 1)[0]
+                        self.assertNotRegex(
+                            code, r"(^|[;&|]|\s)opencode\s+run\b",
+                            f"{name}: `opencode run` outside the container "
+                            f"action reintroduces the unsandboxed posture")
+                if any("run-opencode-container" in str(step.get("uses") or "")
+                       for step in steps):
+                    checkouts = [step for step in steps
+                                 if str(step.get("uses") or "").startswith(
+                                     "actions/checkout@")]
+                    self.assertTrue(
+                        checkouts,
+                        f"{name}: opencode job must check out the contained workspace")
+                    for checkout in checkouts:
+                        self.assertIs(
+                            False,
+                            (checkout.get("with") or {}).get("persist-credentials"),
+                            f"{name}: opencode checkout must remove credential "
+                            "wiring as least privilege")
+        # Container hardening, mirroring run-pi-container.
+        for flag in ("--cap-drop ALL", "--security-opt no-new-privileges",
+                     "--pids-limit", '--user "$(id -u):$(id -g)"',
+                     "HOME=/tmp/opencode-home"):
+            self.assertIn(flag, action, f"container lost {flag}")
+        # A missing Docker daemon must FAIL, never silently degrade to a host
+        # run — that is the exact posture this action removes.
+        self.assertIn("Docker is required for sandboxed opencode runs", action)
+        # The runner and its Docker daemon persist across jobs. The per-run
+        # build context, inline prompt, and image must be removed even when the
+        # agent fails or times out; EXIT preserves the original exit status.
+        self.assertIn("trap cleanup EXIT", action)
+        self.assertIn('docker image rm -f "$image"', action)
+        self.assertIn('rm -rf -- "$build_dir"', action)
+        self.assertIn('rm -rf -- "$isolated_workspace"', action)
+        self.assertIn('rm -f -- "$staged_prompt"', action)
+        # Pinned install lives here now.
+        self.assertIn("opencode-ai@1.18.3", action)
+        self.assertIn("OPENCODE_DISABLE_AUTOUPDATE=1", action)
+        self.assertIn('cp "$GITHUB_ACTION_PATH/birdy-fast"', action)
+        self.assertIn("--env GITHUB_WORKSPACE=/workspace", action)
+        self.assertIn("clone --quiet --no-hardlinks", action)
+        self.assertIn("--no-checkout --template=\"$empty_git_template\"", action)
+        self.assertIn('--volume "$isolated_workspace:/workspace"', action)
+        self.assertNotIn('--volume "$GITHUB_WORKSPACE:/workspace"', action)
+        self.assertIn("git bundle create .opencode-export.bundle", action)
+        self.assertIn('bundle unbundle "$bundle_file"', action)
+        self.assertNotIn('fetch --no-tags "$bundle_file"', action)
+        self.assertNotIn('fetch --no-tags "$isolated_workspace"', action)
+        self.assertIn('mv -f -- "$trusted_config" "$git_dir/config"', action)
+        self.assertIn('"$git_dir/info/attributes"', action)
+        self.assertIn('rm -f -- "$git_dir/commondir"', action)
+        self.assertIn('"$git_dir/HEAD" "$git_dir/index"', action)
+        self.assertIn("logallrefupdates = false", action)
+        self.assertIn('cat-file blob "$tree_oid"', action)
+        self.assertIn('read-tree --reset --no-sparse-checkout "$post_sha"', action)
+        self.assertIn('update-ref HEAD "$post_sha" "$pre_sha"', action)
+        self.assertNotIn('"${trusted_git[@]}" reset --hard', action)
+        self.assertIn('tree_mode" != "100644', action)
+        self.assertIn("tree_type\" != \"blob", action)
+        for name, expected_mode in {
+                "generative-research.yml": "generative",
+                "hourly-twitter.yml": "twitter",
+                "opencode-kimi-canary.yml": "canary",
+        }.items():
+            doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
+                                 .read_text(encoding="utf-8"))
+            calls = [step for job in (doc.get("jobs") or {}).values()
+                     for step in (job.get("steps") or [])
+                     if "run-opencode-container" in str(step.get("uses") or "")]
+            self.assertTrue(calls, name)
+            self.assertTrue(all((step.get("with") or {}).get("mode") == expected_mode
+                                for step in calls), name)
+        # The runner's real home holds other lanes' credentials; the agent gets
+        # the workspace and the prompt, nothing else by default.
+        self.assertNotIn('--volume "$HOME', action)
+        self.assertNotIn("--privileged", action)
+
+    def test_bird_snapshot_replaces_symlink_root_and_rejects_linked_entries(self):
+        """The fetched snapshot is fresh, and only its safe tree is mounted."""
+        fetch_path = (REPO_ROOT / ".github" / "actions" /
+                      "twitter-fetch" / "action.yml")
+        fetch_doc = yaml.safe_load(fetch_path.read_text(encoding="utf-8"))
+        fetch_shell = next(
+            step.get("run") or "" for step in fetch_doc["runs"]["steps"]
+            if step.get("name") ==
+            "Fetch tweets, searches, and news via birdy multi-fetch")
+        setup = fetch_shell.split(
+            "# TRUSTED_BIRD_SNAPSHOT_SETUP_BEGIN", 1)[1].split(
+                "# TRUSTED_BIRD_SNAPSHOT_SETUP_END", 1)[0]
+        self.assertLess(
+            fetch_shell.index("# TRUSTED_BIRD_SNAPSHOT_SETUP_END"),
+            fetch_shell.index("birdy multi-fetch"))
+
+        container_path = (REPO_ROOT / ".github" / "actions" /
+                          "run-opencode-container" / "action.yml")
+        container_doc = yaml.safe_load(
+            container_path.read_text(encoding="utf-8"))
+        container_shell = "\n".join(
+            step.get("run") or "" for step in container_doc["runs"]["steps"])
+        mount_guard = container_shell.split(
+            "# TRUSTED_BIRD_MOUNT_GUARD_BEGIN", 1)[1].split(
+                "# TRUSTED_BIRD_MOUNT_GUARD_END", 1)[0]
+        self.assertLess(
+            container_shell.index("# TRUSTED_BIRD_MOUNT_GUARD_END"),
+            container_shell.index(
+                'extra_args+=(--volume "/tmp/bird:/tmp/bird:ro")'))
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            bird_root = tmp_path / "bird"
+            outside = tmp_path / "outside"
+            outside.mkdir()
+            sentinel = outside / "sentinel.json"
+            sentinel.write_text('{"keep":true}\n', encoding="utf-8")
+            os.symlink(outside, bird_root, target_is_directory=True)
+
+            def for_test(shell: str) -> str:
+                self.assertEqual(1, shell.count("bird_root=/tmp/bird"))
+                return shell.replace(
+                    "bird_root=/tmp/bird",
+                    f"bird_root={shlex.quote(str(bird_root))}", 1)
+
+            # Before the fetch owns a new root, the exact mount guard fails.
+            # Because the full action uses `set -e`, Docker argument assembly
+            # and the mount that follows this guard are unreachable.
+            rejected_root = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" +
+                 for_test(mount_guard)],
+                env={**os.environ, "MOUNT_BIRD_SNAPSHOT": "true"},
+                text=True, capture_output=True, check=False)
+            self.assertNotEqual(0, rejected_root.returncode)
+            self.assertEqual(
+                '{"keep":true}\n', sentinel.read_text(encoding="utf-8"))
+
+            created = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + for_test(setup)],
+                text=True, capture_output=True, check=False)
+            self.assertEqual(0, created.returncode,
+                             created.stdout + created.stderr)
+            self.assertTrue(bird_root.is_dir())
+            self.assertFalse(bird_root.is_symlink())
+            self.assertEqual(
+                0o700, stat.S_IMODE(bird_root.stat().st_mode))
+            self.assertEqual(
+                '{"keep":true}\n', sentinel.read_text(encoding="utf-8"))
+
+            # A nested symlink is data to neither Birdy nor the agent. Reject
+            # it just like a device/socket before constructing the bind mount.
+            os.symlink(sentinel, bird_root / "linked.json")
+            rejected_entry = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" +
+                 for_test(mount_guard)],
+                env={**os.environ, "MOUNT_BIRD_SNAPSHOT": "true"},
+                text=True, capture_output=True, check=False)
+            self.assertNotEqual(0, rejected_entry.returncode)
+            self.assertIn("linked or special entry",
+                          rejected_entry.stdout + rejected_entry.stderr)
+            (bird_root / "linked.json").unlink()
+            (bird_root / "safe.json").write_text("[]\n", encoding="utf-8")
+            accepted = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" +
+                 for_test(mount_guard)],
+                env={**os.environ, "MOUNT_BIRD_SNAPSHOT": "true"},
+                text=True, capture_output=True, check=False)
+            self.assertEqual(0, accepted.returncode,
+                             accepted.stdout + accepted.stderr)
+
+    def test_container_birdy_fast_wrapper_executes_read_only_and_logs_redacted(self):
+        wrapper = (REPO_ROOT / ".github" / "actions" /
+                   "run-opencode-container" / "birdy-fast")
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            fake_birdy = tmp_path / "birdy"
+            observed = tmp_path / "observed.txt"
+            tool_log = tmp_path / "tool-log.jsonl"
+            fake_birdy.write_text(
+                '#!/bin/sh\n'
+                'printf "%s\\n" "$BIRDY_READ_ONLY" > "$FAKE_BIRDY_OUT"\n'
+                'printf "%s\\n" "$@" >> "$FAKE_BIRDY_OUT"\n'
+                'printf "fake stdout\\n"\n'
+                'printf "fake stderr\\n" >&2\n'
+                'exit "${FAKE_BIRDY_EXIT:-0}"\n',
+                encoding="utf-8")
+            fake_birdy.chmod(0o755)
+            env = {
+                "PATH": f"{tmp_path}:/usr/bin:/bin",
+                "FAKE_BIRDY_OUT": str(observed),
+                "BIRDY_TOOL_LOG_PATH": str(tool_log),
+            }
+
+            result = subprocess.run(
+                [str(wrapper), "--account", "account-name", "--strategy",
+                 "least-used", "--vpn-server", "vpn.example", "search",
+                 "private query", "--json", "--plain"],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertEqual("fake stdout\n", result.stdout)
+            self.assertEqual("fake stderr\n", result.stderr)
+            self.assertEqual(
+                ["1", "--account", "account-name", "--strategy", "least-used",
+                 "--vpn-server", "vpn.example", "search", "private query",
+                 "--json", "--plain"],
+                observed.read_text(encoding="utf-8").splitlines())
+            event = json.loads(tool_log.read_text(encoding="utf-8").splitlines()[0])
+            self.assertEqual("birdy-fast", event["tool"])
+            self.assertEqual("search", event["command"])
+            self.assertIs(event["blocked"], False)
+            self.assertIs(event["ok"], True)
+            self.assertEqual(0, event["exit_code"])
+            self.assertIsInstance(event["duration_ms"], int)
+            self.assertGreaterEqual(event["duration_ms"], 0)
+            self.assertIs(event["cached"], False)
+            self.assertIs(event["redacted"], True)
+            self.assertNotIn("private query", tool_log.read_text(encoding="utf-8"))
+
+            observed.unlink()
+            env["FAKE_BIRDY_EXIT"] = "7"
+            failed = subprocess.run(
+                [str(wrapper), "--account", "search", "read", "tweet-id"],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertEqual(7, failed.returncode)
+            self.assertEqual("fake stdout\n", failed.stdout)
+            self.assertEqual("fake stderr\n", failed.stderr)
+            failed_event = json.loads(
+                tool_log.read_text(encoding="utf-8").splitlines()[-1])
+            self.assertEqual("read", failed_event["command"])
+            self.assertIs(failed_event["ok"], False)
+            self.assertEqual(7, failed_event["exit_code"])
+            self.assertIsInstance(failed_event["duration_ms"], int)
+            self.assertIs(failed_event["cached"], False)
+
+            observed.unlink()
+            env.pop("FAKE_BIRDY_EXIT")
+            blocked = subprocess.run(
+                [str(wrapper), "reply", "tweet-id", "secret text"],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertEqual(2, blocked.returncode)
+            self.assertFalse(observed.exists(), "blocked command reached birdy")
+            blocked_event = json.loads(
+                tool_log.read_text(encoding="utf-8").splitlines()[-1])
+            self.assertEqual("reply", blocked_event["command"])
+            self.assertIs(blocked_event["blocked"], True)
+            self.assertIs(blocked_event["ok"], False)
+            self.assertEqual(2, blocked_event["exit_code"])
+            self.assertEqual(0, blocked_event["duration_ms"])
+            self.assertIs(blocked_event["cached"], False)
+            self.assertNotIn("secret text", tool_log.read_text(encoding="utf-8"))
+
+    def test_trusted_clone_setup_ignores_host_git_execution_config(self):
+        """Persistent runner Git config cannot execute before container entry."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        setup = shell.split("# TRUSTED_CLONE_SETUP_BEGIN", 1)[1].split(
+            "# TRUSTED_CLONE_SETUP_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            original = tmp_path / "original"
+            original.mkdir()
+
+            def git(repo: Path, *args: str) -> subprocess.CompletedProcess:
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=True)
+
+            git(original, "init", "-b", "main")
+            git(original, "config", "user.name", "Clone Guard Test")
+            git(original, "config", "user.email", "guard@example.invalid")
+            (original / "tracked.txt").write_text("trusted\n", encoding="utf-8")
+            (original / "tracked.html").write_text("<p>trusted</p>\n",
+                                                   encoding="utf-8")
+            git(original, "add", "tracked.txt", "tracked.html")
+            git(original, "commit", "-m", "base")
+            bundle = tmp_path / "payload.bundle"
+            git(original, "bundle", "create", str(bundle), "--all")
+
+            marker = tmp_path / "host-git-executed"
+            fsmonitor = tmp_path / "malicious-fsmonitor"
+            fsmonitor.write_text(
+                "#!/bin/sh\n"
+                f"printf 'fsmonitor\\n' >> '{marker}'\n"
+                "printf 'test-token\\000'\n"
+                "exit 0\n", encoding="utf-8")
+            fsmonitor.chmod(0o755)
+            git(original, "config", "core.fsmonitor", str(fsmonitor))
+
+            evil_smudge = tmp_path / "evil-smudge"
+            evil_smudge.write_text(
+                "#!/bin/sh\n"
+                f"printf 'smudge\\n' >> '{marker}'\n"
+                "cat\n", encoding="utf-8")
+            evil_smudge.chmod(0o755)
+            evil_process = tmp_path / "evil-process"
+            evil_process.write_text(
+                "#!/bin/sh\n"
+                f"printf 'process\\n' >> '{marker}'\n"
+                "exit 1\n", encoding="utf-8")
+            evil_process.chmod(0o755)
+            git(original, "config", "filter.evil.smudge", str(evil_smudge))
+            git(original, "config", "filter.evil.process", str(evil_process))
+            (original / ".git" / "info" / "attributes").write_text(
+                "*.html filter=evil\n", encoding="utf-8")
+
+            evil_ssh = tmp_path / "evil-ssh"
+            evil_ssh.write_text(
+                "#!/bin/sh\n"
+                f"printf 'ssh\\n' >> '{marker}'\n"
+                "exit 1\n", encoding="utf-8")
+            evil_ssh.chmod(0o755)
+            git(original, "config", "core.sshCommand", str(evil_ssh))
+            git(original, "config",
+                "url.ssh://attacker.invalid/.insteadOf", f"{tmp_path}/")
+
+            template = tmp_path / "malicious-template"
+            hooks = template / "hooks"
+            hooks.mkdir(parents=True)
+            post_checkout = hooks / "post-checkout"
+            post_checkout.write_text(
+                "#!/bin/sh\n"
+                f"printf 'template-hook\\n' >> '{marker}'\n",
+                encoding="utf-8")
+            post_checkout.chmod(0o755)
+            global_config = tmp_path / "malicious-global-config"
+            subprocess.run(
+                ["git", "config", "-f", str(global_config),
+                 "init.templateDir", str(template)], check=True)
+
+            # Prove every fixture really executes under an unsanitized command,
+            # so this is behavioral coverage rather than a marker that could
+            # never be reached on the test host.
+            subprocess.run(
+                ["git", "-C", str(original), "diff", "--quiet"],
+                check=False, capture_output=True)
+            self.assertIn("fsmonitor", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+            git(original, "config", "--unset", "core.fsmonitor")
+            (original / "tracked.html").unlink()
+            subprocess.run(
+                ["git", "-C", str(original), "checkout-index", "-f", "--",
+                 "tracked.html"], check=False, capture_output=True)
+            self.assertIn("process", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+            git(original, "config", "--unset", "filter.evil.process")
+            (original / "tracked.html").write_text("dirty\n", encoding="utf-8")
+            subprocess.run(
+                ["git", "-C", str(original), "reset", "--hard", "HEAD"],
+                check=True, capture_output=True)
+            self.assertIn("smudge", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+            git(original, "config", "filter.evil.process", str(evil_process))
+            git(original, "config", "core.fsmonitor", str(fsmonitor))
+            subprocess.run(
+                ["git", "-C", str(original), "fetch", str(bundle), "HEAD"],
+                check=False, capture_output=True)
+            self.assertIn("ssh", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+            raw_clone_env = os.environ.copy()
+            raw_clone_env["GIT_CONFIG_GLOBAL"] = str(global_config)
+            subprocess.run(
+                ["git", "clone", "--quiet", str(original),
+                 str(tmp_path / "unsafe-clone")],
+                env=raw_clone_env, check=True)
+            self.assertIn("template-hook", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+
+            # Seed every durable local metadata bridge removed by the action.
+            local_hook = original / ".git" / "hooks" / "post-checkout"
+            local_hook.write_text(post_checkout.read_text(encoding="utf-8"),
+                                  encoding="utf-8")
+            local_hook.chmod(0o755)
+            (original / ".git" / "info" / "grafts").write_text(
+                "# malicious graft placeholder\n", encoding="utf-8")
+            external_objects = tmp_path / "external-objects"
+            external_objects.mkdir()
+            (original / ".git" / "objects" / "info" / "alternates").write_text(
+                str(external_objects) + "\n", encoding="utf-8")
+            (original / ".git" / "objects" / "info" /
+             "http-alternates").write_text(
+                 "https://attacker.invalid/objects\n", encoding="utf-8")
+            replace_dir = original / ".git" / "refs" / "replace"
+            replace_dir.mkdir()
+            external_common = tmp_path / "external-common"
+            external_common.mkdir()
+            (original / ".git" / "commondir").write_text(
+                str(external_common) + "\n", encoding="utf-8")
+
+            build_dir = tmp_path / "build"
+            empty_template = build_dir / "empty-git-template"
+            empty_template.mkdir(parents=True)
+            github_env = tmp_path / "github-env"
+            env = os.environ.copy()
+            env.update({
+                "GITHUB_WORKSPACE": str(original),
+                "RUNNER_TEMP": str(tmp_path),
+                "GITHUB_RUN_ID": "hostsetup",
+                "GITHUB_RUN_ATTEMPT": "1",
+                "RUN_MODE": "canary",
+                "build_dir": str(build_dir),
+                "empty_git_template": str(empty_template),
+                "GIT_CONFIG_GLOBAL": str(global_config),
+                "GITHUB_SERVER_URL": "https://github.com",
+                "GITHUB_REPOSITORY": "example/repository",
+                "GITHUB_ENV": str(github_env),
+            })
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + setup],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertFalse(marker.exists(), result.stdout + result.stderr)
+            isolated = tmp_path / "opencode-workspace-hostsetup-1"
+            self.assertFalse((isolated / ".git" / "hooks" /
+                              "post-checkout").exists())
+            self.assertFalse((isolated / "tracked.txt").exists(),
+                             "host clone unexpectedly materialized a checkout")
+            local_config = (original / ".git" / "config").read_text(
+                encoding="utf-8")
+            for forbidden in ("fsmonitor", "sshcommand", "filter.evil",
+                              "insteadof", "hookspath"):
+                self.assertNotIn(forbidden, local_config.lower())
+            self.assertIn(
+                "url = https://github.com/example/repository.git", local_config)
+            self.assertIn("name = github-actions[bot]", local_config)
+            for removed in (
+                    original / ".git" / "info" / "attributes",
+                    original / ".git" / "info" / "grafts",
+                    original / ".git" / "objects" / "info" / "alternates",
+                    original / ".git" / "objects" / "info" / "http-alternates",
+                    original / ".git" / "refs" / "replace",
+                    original / ".git" / "hooks" / "post-checkout",
+                    original / ".git" / "logs",
+                    original / ".git" / "commondir"):
+                self.assertFalse(removed.exists(), str(removed))
+            self.assertEqual(
+                "+refs/heads/*:refs/remotes/origin/*",
+                git(original, "config", "--local", "--get",
+                    "remote.origin.fetch").stdout.strip())
+            self.assertEqual(
+                {"GIT_CONFIG_NOSYSTEM=1", "GIT_CONFIG_GLOBAL=/dev/null",
+                 "GIT_NO_REPLACE_OBJECTS=1"},
+                set(github_env.read_text(encoding="utf-8").splitlines()))
+
+            # Representative later Git operations inherit the sanitized
+            # checkout and cannot revive the removed execution paths.
+            (original / "tracked.html").write_text("dirty again\n",
+                                                   encoding="utf-8")
+            subprocess.run(
+                ["git", "-C", str(original), "diff", "--quiet"], check=False)
+            subprocess.run(
+                ["git", "-C", str(original), "reset", "--hard", "HEAD"],
+                check=True, capture_output=True)
+            subprocess.run(
+                ["git", "-C", str(original), "fetch", str(bundle), "HEAD"],
+                check=True, capture_output=True)
+            self.assertFalse(marker.exists(), "sanitized later Git executed a marker")
+
+    def test_trusted_clone_setup_rejects_linked_git_control_file(self):
+        """Index/HEAD plumbing must never follow a stale control-file link."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        setup = shell.split("# TRUSTED_CLONE_SETUP_BEGIN", 1)[1].split(
+            "# TRUSTED_CLONE_SETUP_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            original = tmp_path / "original"
+            original.mkdir()
+            subprocess.run(["git", "-C", str(original), "init", "-b", "main"],
+                           check=True, capture_output=True)
+            subprocess.run(
+                ["git", "-C", str(original), "config", "user.name", "Guard"],
+                check=True)
+            subprocess.run(
+                ["git", "-C", str(original), "config", "user.email",
+                 "guard@example.invalid"], check=True)
+            (original / "tracked.txt").write_text("trusted\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(original), "add", "tracked.txt"],
+                           check=True)
+            subprocess.run(["git", "-C", str(original), "commit", "-m", "base"],
+                           check=True, capture_output=True)
+
+            outside_index = tmp_path / "outside-index"
+            outside_index.write_text("sentinel\n", encoding="utf-8")
+            index = original / ".git" / "index"
+            index.unlink()
+            os.symlink(outside_index, index)
+            build_dir = tmp_path / "build"
+            empty_template = build_dir / "empty-git-template"
+            empty_template.mkdir(parents=True)
+            env = os.environ.copy()
+            env.update({
+                "GITHUB_WORKSPACE": str(original),
+                "RUNNER_TEMP": str(tmp_path),
+                "GITHUB_RUN_ID": "linked-index",
+                "GITHUB_RUN_ATTEMPT": "1",
+                "RUN_MODE": "canary",
+                "build_dir": str(build_dir),
+                "empty_git_template": str(empty_template),
+                "GITHUB_SERVER_URL": "https://github.com",
+                "GITHUB_REPOSITORY": "example/repository",
+            })
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + setup],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertNotEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertIn("linked or malformed Git control file",
+                          result.stdout + result.stderr)
+            self.assertEqual("sentinel\n",
+                             outside_index.read_text(encoding="utf-8"))
+
+    def test_trusted_import_guard_rejects_forbidden_committed_path(self):
+        """Execute the real inline guard against an adversarial static bundle."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        guard = shell.split("# TRUSTED_IMPORT_GUARD_BEGIN", 1)[1].split(
+            "# TRUSTED_IMPORT_GUARD_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            original = tmp_path / "original"
+            isolated = tmp_path / "isolated"
+            original.mkdir()
+
+            def git(repo: Path, *args: str) -> subprocess.CompletedProcess:
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=True)
+
+            git(original, "init", "-b", "main")
+            git(original, "config", "user.name", "Guard Test")
+            git(original, "config", "user.email", "guard@example.invalid")
+            (original / "research" / "generative").mkdir(parents=True)
+            (original / "scripts").mkdir()
+            (original / "research" / "generative" / "index.json").write_text(
+                "[]\n", encoding="utf-8")
+            (original / "scripts" / "validator.py").write_text(
+                "TRUSTED = True\n", encoding="utf-8")
+            git(original, "add", ".")
+            git(original, "commit", "-m", "base")
+            pre_sha = git(original, "rev-parse", "HEAD").stdout.strip()
+
+            subprocess.run(
+                ["git", "clone", "--quiet", "--no-hardlinks",
+                 str(original), str(isolated)], check=True)
+            git(isolated, "config", "user.name", "Attacker")
+            git(isolated, "config", "user.email", "attacker@example.invalid")
+            (isolated / "scripts" / "validator.py").write_text(
+                "TRUSTED = False\n", encoding="utf-8")
+            git(isolated, "add", "scripts/validator.py")
+            git(isolated, "commit", "-m", "poison validator")
+            post_sha = git(isolated, "rev-parse", "HEAD").stdout.strip()
+            git(isolated, "bundle", "create", ".opencode-export.bundle",
+                "HEAD", f"^{pre_sha}")
+            (isolated / ".opencode-post-sha").write_text(
+                post_sha + "\n", encoding="utf-8")
+
+            build_dir = tmp_path / "build"
+            build_dir.mkdir()
+            env = os.environ.copy()
+            env.update({
+                "GITHUB_WORKSPACE": str(original),
+                "isolated_workspace": str(isolated),
+                "pre_sha": pre_sha,
+                "RUN_MODE": "generative",
+                "ALLOWED_PATHS": "",
+                "BIRDY_TOOL_LOG_REL": "",
+                "agent_status": "0",
+                "build_dir": str(build_dir),
+            })
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + guard],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertNotEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertIn("forbidden path/status", result.stdout + result.stderr)
+            self.assertEqual(pre_sha, git(original, "rev-parse", "HEAD").stdout.strip())
+            self.assertEqual("TRUSTED = True\n",
+                             (original / "scripts" / "validator.py").read_text(
+                                 encoding="utf-8"))
+            self.assertEqual("", git(original, "status", "--porcelain").stdout)
+
+    def test_trusted_import_guard_rejects_artifact_parent_symlink(self):
+        """A regular final file cannot escape through a linked parent."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        guard = shell.split("# TRUSTED_IMPORT_GUARD_BEGIN", 1)[1].split(
+            "# TRUSTED_IMPORT_GUARD_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            original = tmp_path / "original"
+            isolated = tmp_path / "isolated"
+            outside = tmp_path / "outside-host-dir"
+            original.mkdir()
+            outside.mkdir()
+
+            def git(repo: Path, *args: str) -> subprocess.CompletedProcess:
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=True)
+
+            git(original, "init", "-b", "main")
+            git(original, "config", "user.name", "Artifact Guard Test")
+            git(original, "config", "user.email", "guard@example.invalid")
+            (original / "tracked.txt").write_text("trusted\n", encoding="utf-8")
+            git(original, "add", "tracked.txt")
+            git(original, "commit", "-m", "base")
+            pre_sha = git(original, "rev-parse", "HEAD").stdout.strip()
+            (original / ".twitter-input").mkdir()
+
+            subprocess.run(
+                ["git", "clone", "--quiet", "--no-hardlinks",
+                 str(original), str(isolated)], check=True)
+            (isolated / ".opencode-post-sha").write_text(
+                pre_sha + "\n", encoding="utf-8")
+            (outside / "birdy-tool-log.jsonl").write_text(
+                '{"tool":"birdy-fast"}\n', encoding="utf-8")
+            os.symlink(outside, isolated / ".twitter-input",
+                       target_is_directory=True)
+
+            build_dir = tmp_path / "build"
+            build_dir.mkdir()
+            env = os.environ.copy()
+            env.update({
+                "GITHUB_WORKSPACE": str(original),
+                "isolated_workspace": str(isolated),
+                "pre_sha": pre_sha,
+                "RUN_MODE": "twitter",
+                "ALLOWED_PATHS": "research/twitter/test.md",
+                "BIRDY_TOOL_LOG_REL": ".twitter-input/birdy-tool-log.jsonl",
+                "agent_status": "0",
+                "build_dir": str(build_dir),
+            })
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + guard],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertNotEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertIn("escapes the isolated workspace or crosses a symlink",
+                          result.stdout + result.stderr)
+            self.assertFalse(
+                (original / ".twitter-input" / "birdy-tool-log.jsonl").exists())
+
+    def test_trusted_import_guard_imports_exact_generative_bundle_and_data(self):
+        """A valid writer commit crosses the bundle boundary and nothing else."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        guard = shell.split("# TRUSTED_IMPORT_GUARD_BEGIN", 1)[1].split(
+            "# TRUSTED_IMPORT_GUARD_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            original = tmp_path / "original"
+            isolated = tmp_path / "isolated"
+            original.mkdir()
+
+            def git(repo: Path, *args: str) -> subprocess.CompletedProcess:
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=True)
+
+            git(original, "init", "-b", "main")
+            git(original, "config", "user.name", "Guard Test")
+            git(original, "config", "user.email", "guard@example.invalid")
+            gen_dir = original / "research" / "generative"
+            gen_dir.mkdir(parents=True)
+            (gen_dir / "index.json").write_text("[]\n", encoding="utf-8")
+            git(original, "add", ".")
+            git(original, "commit", "-m", "base")
+            pre_sha = git(original, "rev-parse", "HEAD").stdout.strip()
+
+            subprocess.run(
+                ["git", "clone", "--quiet", "--no-hardlinks",
+                 str(original), str(isolated)], check=True)
+            git(isolated, "config", "user.name", "Writer")
+            git(isolated, "config", "user.email", "writer@example.invalid")
+            isolated_gen = isolated / "research" / "generative"
+            html_name = "2026-08-08T000000--valid.html"
+            ara_name = "2026-08-08T000000--valid.ara.md"
+            (isolated_gen / "index.json").write_text(
+                '[{"slug":"valid","file":"' + html_name + '"}]\n',
+                encoding="utf-8")
+            (isolated_gen / html_name).write_text(
+                '<article class="ara-article"></article>\n', encoding="utf-8")
+            (isolated_gen / ara_name).write_text(
+                '---\ntitle: Valid\n---\n\n## Valid\n', encoding="utf-8")
+            git(isolated, "add", "research/generative")
+            git(isolated, "commit", "-m", "valid writer output")
+            post_sha = git(isolated, "rev-parse", "HEAD").stdout.strip()
+            git(isolated, "bundle", "create", ".opencode-export.bundle",
+                "HEAD", f"^{pre_sha}")
+            (isolated / ".opencode-post-sha").write_text(
+                post_sha + "\n", encoding="utf-8")
+            methodology = {
+                ".gen-verifier-findings.json": '{"findings":[]}\n',
+                ".gen-redteam-findings.json": '{"findings":[]}\n',
+                ".gen-claims-ledger.json": '{"claims":[]}\n',
+            }
+            for name, content in methodology.items():
+                (isolated / name).write_text(content, encoding="utf-8")
+
+            marker = tmp_path / "host-reset-executed"
+            fsmonitor = tmp_path / "malicious-fsmonitor"
+            fsmonitor.write_text(
+                "#!/bin/sh\n"
+                f"printf 'fsmonitor\\n' >> '{marker}'\n"
+                "printf 'test-token\\000'\n"
+                "exit 0\n", encoding="utf-8")
+            fsmonitor.chmod(0o755)
+            hooks = tmp_path / "malicious-hooks"
+            hooks.mkdir()
+            post_checkout = hooks / "post-checkout"
+            post_checkout.write_text(
+                "#!/bin/sh\n"
+                f"printf 'hook\\n' >> '{marker}'\n",
+                encoding="utf-8")
+            post_checkout.chmod(0o755)
+            git(original, "config", "core.fsmonitor", str(fsmonitor))
+            git(original, "config", "core.hooksPath", str(hooks))
+
+            evil_filter = tmp_path / "evil-filter"
+            evil_filter.write_text(
+                "#!/bin/sh\n"
+                f"printf 'filter\\n' >> '{marker}'\n"
+                "cat\n", encoding="utf-8")
+            evil_filter.chmod(0o755)
+            evil_process = tmp_path / "evil-filter-process"
+            evil_process.write_text(
+                "#!/bin/sh\n"
+                f"printf 'filter-process\\n' >> '{marker}'\n"
+                "exit 1\n", encoding="utf-8")
+            evil_process.chmod(0o755)
+            git(original, "config", "filter.evil.smudge", str(evil_filter))
+            git(original, "config", "filter.evil.process", str(evil_process))
+            (original / ".git" / "info" / "attributes").write_text(
+                "*.html filter=evil\n", encoding="utf-8")
+
+            evil_ssh = tmp_path / "evil-ssh"
+            evil_ssh.write_text(
+                "#!/bin/sh\n"
+                f"printf 'ssh\\n' >> '{marker}'\n"
+                "exit 1\n", encoding="utf-8")
+            evil_ssh.chmod(0o755)
+            git(original, "config", "core.sshCommand", str(evil_ssh))
+            git(original, "config",
+                "url.ssh://attacker.invalid/.insteadOf", f"{tmp_path}/")
+
+            # Calibrate the exact transport exploit: an ordinary fetch of the
+            # absolute bundle path is rewritten to SSH and executes local
+            # core.sshCommand. The guard below must import the same bundle
+            # without touching that transport layer.
+            subprocess.run(
+                ["git", "-C", str(original), "fetch",
+                 str(isolated / ".opencode-export.bundle"), "HEAD"],
+                check=False, capture_output=True)
+            self.assertIn("ssh", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+
+            build_dir = tmp_path / "build"
+            build_dir.mkdir()
+            env = os.environ.copy()
+            env.update({
+                "GITHUB_WORKSPACE": str(original),
+                "isolated_workspace": str(isolated),
+                "pre_sha": pre_sha,
+                "RUN_MODE": "generative",
+                "ALLOWED_PATHS": "",
+                "BIRDY_TOOL_LOG_REL": "",
+                "agent_status": "0",
+                "build_dir": str(build_dir),
+            })
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + guard],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertFalse(marker.exists(), result.stdout + result.stderr)
+            self.assertEqual(post_sha, git(original, "rev-parse", "HEAD").stdout.strip())
+            self.assertTrue((original / "research" / "generative" / html_name).is_file())
+            self.assertTrue((original / "research" / "generative" / ara_name).is_file())
+            for name, content in methodology.items():
+                self.assertEqual(content, (original / name).read_text(encoding="utf-8"))
 
     def test_comparison_tiers_are_strict(self):
         # Comparison artifacts must be attributable to their labeled backend:
