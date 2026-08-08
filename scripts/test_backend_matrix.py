@@ -295,6 +295,116 @@ class RoutingInvariants(unittest.TestCase):
                     all((step.get("with") or {}).get("persist-credentials")
                         is False for step in checkouts), name)
 
+    def test_opencode_callers_quarantine_stale_workspace_before_checkout(self):
+        """The exact pre-checkout shell removes stale Git and untracked state."""
+        guards = []
+        for name in self.OPENCODE_WORKFLOWS:
+            doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
+                                 .read_text(encoding="utf-8"))
+            containing_jobs = [job for job in (doc.get("jobs") or {}).values()
+                               if any("run-opencode-container" in
+                                      str(step.get("uses") or "")
+                                      for step in (job.get("steps") or []))]
+            self.assertEqual(1, len(containing_jobs), name)
+            steps = containing_jobs[0].get("steps") or []
+            quarantine_i = next(
+                i for i, step in enumerate(steps)
+                if step.get("id") == "quarantine_workspace")
+            checkout_i = next(
+                i for i, step in enumerate(steps)
+                if str(step.get("uses") or "").startswith("actions/checkout@"))
+            self.assertLess(quarantine_i, checkout_i, name)
+            quarantine = steps[quarantine_i]
+            self.assertNotIn("uses", quarantine, name)
+            self.assertEqual("bash", quarantine.get("shell"), name)
+            guards.append(quarantine.get("run") or "")
+        self.assertEqual(1, len(set(guards)), "pre-checkout guards diverged")
+        guard = guards[0]
+        self.assertNotRegex(guard, r"(^|\s)git(\s|$)")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            runner_workspace = tmp_path / "runner-workspace"
+            workspace = runner_workspace / "repository"
+            workspace.mkdir(parents=True)
+
+            def git(*args: str, check: bool = True) -> subprocess.CompletedProcess:
+                return subprocess.run(
+                    ["git", "-C", str(workspace), *args], text=True,
+                    capture_output=True, check=check)
+
+            git("init", "-b", "main")
+            git("config", "user.name", "Prior Job")
+            git("config", "user.email", "prior@example.invalid")
+            (workspace / "tracked.html").write_text(
+                "<p>trusted</p>\n", encoding="utf-8")
+            git("add", "tracked.html")
+            git("commit", "-m", "base")
+
+            marker = tmp_path / "stale-git-executed"
+            evil_smudge = tmp_path / "evil-smudge"
+            evil_smudge.write_text(
+                "#!/bin/sh\n"
+                f"printf 'smudge\\n' >> '{marker}'\n"
+                "cat\n", encoding="utf-8")
+            evil_smudge.chmod(0o755)
+            git("config", "filter.evil.smudge", str(evil_smudge))
+            (workspace / ".git" / "info" / "attributes").write_text(
+                "*.html filter=evil\n", encoding="utf-8")
+            (workspace / "tracked.html").write_text("dirty\n", encoding="utf-8")
+            git("reset", "--hard", "HEAD")
+            self.assertIn("smudge", marker.read_text(encoding="utf-8"))
+            marker.unlink()
+
+            poison = workspace / "untracked-validator"
+            poison.write_text("#!/bin/sh\nexit 99\n", encoding="utf-8")
+            poison.chmod(0o755)
+            (workspace / ".venv").mkdir()
+            (workspace / ".venv" / "sitecustomize.py").write_text(
+                "raise SystemExit('stale prior job')\n", encoding="utf-8")
+
+            env = os.environ.copy()
+            env.update({
+                "RUNNER_WORKSPACE": str(runner_workspace),
+                "GITHUB_WORKSPACE": str(workspace),
+                "GITHUB_REPOSITORY": "example/repository",
+            })
+            result = subprocess.run(
+                ["bash", "-c", guard], cwd=workspace, env=env,
+                text=True, capture_output=True, check=False)
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+            self.assertFalse(marker.exists(), result.stdout + result.stderr)
+            self.assertTrue(workspace.is_dir())
+            self.assertEqual([], list(workspace.iterdir()))
+            self.assertEqual([], list(runner_workspace.glob(
+                ".opencode-precheckout.*")))
+
+            # A checkout-like init/reset now starts from a genuinely empty
+            # worktree and cannot reach the prior job's filters or untracked
+            # executable state.
+            git("init", "-b", "main")
+            git("config", "user.name", "Current Job")
+            git("config", "user.email", "current@example.invalid")
+            (workspace / "clean.txt").write_text("clean\n", encoding="utf-8")
+            git("add", "clean.txt")
+            git("commit", "-m", "clean checkout")
+            git("reset", "--hard", "HEAD")
+            self.assertFalse(marker.exists())
+
+            # A mismatched basename fails closed and preserves that unrelated
+            # sibling instead of widening the recursive-removal target.
+            unrelated = runner_workspace / "unrelated"
+            unrelated.mkdir()
+            (unrelated / "sentinel").write_text("keep\n", encoding="utf-8")
+            bad_env = env.copy()
+            bad_env["GITHUB_WORKSPACE"] = str(unrelated)
+            rejected = subprocess.run(
+                ["bash", "-c", guard], cwd=workspace, env=bad_env,
+                text=True, capture_output=True, check=False)
+            self.assertNotEqual(0, rejected.returncode)
+            self.assertEqual(
+                "keep\n", (unrelated / "sentinel").read_text(encoding="utf-8"))
+
     def test_opencode_canary_probes_the_model_production_runs(self):
         # A canary that probes a different model than production runs is worse
         # than no canary: it goes green on an entitlement the real lane never
