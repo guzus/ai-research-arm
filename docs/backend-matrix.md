@@ -15,7 +15,7 @@ slots, endpoints, selector tokens) live in `CLAUDE.md` → "Backends" and
 | Claude Code · claude-code-action | The action invoked directly. Native Anthropic unless the step's `env` reroutes `ANTHROPIC_BASE_URL` (generative-research does this on its Fireworks paths). |
 | pi · run-pi-container | The pi coding-agent harness in a container with pi's own provider config. Twitter comparison tiers only. |
 | Codex CLI | `codex exec` with ChatGPT-managed file auth (subscription entitlement, not API billing). |
-| opencode CLI | `opencode run` **inside a Docker container** (`.github/actions/run-opencode-container`, mirroring `run-pi-container`: `--cap-drop ALL`, `no-new-privileges`, non-root, throwaway HOME, only the workspace + prompt mounted). Missing Docker is a hard failure — it never falls back to a host run. Authenticated by the plain `OPENCODE_API_KEY` env var against OpenCode Go. **TEMPORARY since 2026-08-07: serves `opencode-go/deepseek-v4-flash`** (was `opencode-go/kimi-k3`; swapped to spare Claude Max quota). The `MOONSHOT_API_KEY` second route is gone, not repointed — Moonshot serves Kimi only, so a Moonshot-only environment hard-fails at preflight rather than authoring under labels naming another model. Generative-research + hourly-twitter comparison backend, plus its `opencode-kimi-canary.yml` diagnostics lane. |
+| opencode CLI | `opencode run` **inside a Docker container** (`.github/actions/run-opencode-container`, mirroring `run-pi-container`: `--cap-drop ALL`, `no-new-privileges`, non-root, throwaway HOME, disposable clone). Missing Docker is a hard failure — it never falls back to a host run. Authenticated by `OPENCODE_API_KEY` against OpenCode Go and pinned to `opencode-go/deepseek-v4-flash`. It serves the five strict scheduled editorial lanes (RSS, community, arXiv, Bluesky, wiki), the generative-research/hourly-twitter comparison paths, and `opencode-kimi-canary.yml`. The five scheduled lanes share the Go-plan caps ($12/5h, $30/week, $60/month), so cap/key failure is a correlated-staleness risk. Moonshot is not a DeepSeek fallback. |
 | dispatch default | Not an agent itself: the SSOT-resolved default backend a dispatch/issue run uses when none is specified. |
 
 ## How routing consumption works
@@ -25,7 +25,7 @@ Two modes, chosen per harness:
 | Mode | Harnesses | Semantics |
 |---|---|---|
 | **Runtime SSOT** | `agent-run`, `dispatch-default` | The workflow step passes `lane: <key>`; the runner selects the backend from the file via `scripts/select_backend.py`. **Editing the file re-routes the lane with no workflow change.** Every agent-run call site passes all provider secrets (`CLAUDE_CODE_OAUTH_TOKEN`, `FIREWORKS_API_KEY`, `ZAI_API_KEY`) so a flip never needs a workflow edit; an unknown lane fails the run loudly. |
-| **CI-enforced mirror** | `pi`, `claude-code-action` | The model/provider stays literal in the workflow step (these workflows either run manual comparisons or don't check out before the agent step); `build_backend_matrix.py --check` fails CI until workflow and file agree. A flip is a two-line PR: edit the file, edit the step. |
+| **CI-enforced mirror** | `pi`, `opencode`, `claude-code-action` | The model/provider stays literal in the workflow step; `build_backend_matrix.py --check` fails CI until workflow and file agree. A flip requires editing both the SSOT lane and workflow step. |
 
 Fallback is an ORDERED CHAIN, SSOT-defined: the top-level `fallback.chain`
 lists backend selectors tried in order. At run time `scripts/select_backend.py`
@@ -60,7 +60,7 @@ Reading notes:
   or to the SSOT's global `fallback.native_model` on the native path.
 - **Fallback** shows the provider-selection chain (already excluding the
   lane's own backend); strict lanes show `hard fail` instead. Editorial lanes
-  are expected to fail closed when Claude produces no output. Manual emergency
+  are expected to fail closed when their configured agent produces no output. Manual emergency
   workflow-dispatch fallbacks are not shown as scheduled/default behavior.
 - `hourly-twitter.yml` tier names are dispatch/cron *slots*, not routing:
   the tier named `claude` hosts three lanes (`twitter-primary`,
@@ -75,11 +75,11 @@ Reading notes:
 | Lane | Workflow | Harness | Provider | Model | Token secret | Fallback |
 |---|---|---|---|---|---|---|
 | ai-news-research (×2 step variants) | `ai-news-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| arxiv | `daily-arxiv.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
-| bluesky | `2h-bluesky.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
+| arxiv | `daily-arxiv.yml` | opencode CLI · run-opencode-container (CI-enforced mirror) | DeepSeek V4 Flash via OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (strict — no provider fallback) |
+| bluesky | `2h-bluesky.yml` | opencode CLI · run-opencode-container (CI-enforced mirror) | DeepSeek V4 Flash via OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (strict — no provider fallback) |
 | claude-code-review | `claude-code-review.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | claude-interactive | `claude.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| community | `4h-community.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
+| community | `4h-community.yml` | opencode CLI · run-opencode-container (CI-enforced mirror) | DeepSeek V4 Flash via OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (strict — no provider fallback) |
 | daily-improve | `daily-improve.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | digest-audio-script | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
 | digest-synthesis | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
@@ -88,7 +88,7 @@ Reading notes:
 | generative-research-default | `generative-research.yml` | dispatch default (runtime SSOT) | (per chosen backend) | default: `opus-5` | (per chosen backend) | workflow-level `fireworks_fallback` input (default `claude`) |
 | model-timeline | `24h-model-timeline.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | research-issue (×2 step variants) | `research-issue.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| rss | `hourly-rss.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
+| rss | `hourly-rss.yml` | opencode CLI · run-opencode-container (CI-enforced mirror) | DeepSeek V4 Flash via OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (strict — no provider fallback) |
 | twitter-ab-claude · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
 | twitter-ab-judge · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-4-8` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
 | twitter-ab-judge-swapped · PINNED | `twitter-model-ab.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-4-8` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
@@ -102,7 +102,7 @@ Reading notes:
 | twitter-primary (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_twitter_digest.py` |
 | twitter-primary-repair (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | twitter-zai (tier:zai-glm-5p2) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
-| wiki-ingest | `wiki-ingest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
+| wiki-ingest | `wiki-ingest.yml` | opencode CLI · run-opencode-container (CI-enforced mirror) | DeepSeek V4 Flash via OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (strict — no provider fallback) |
 | zai-canary · PINNED | `zai-claude-code-canary.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
 | (dispatch path) backend=fireworks (+2 retry steps) | `generative-research.yml` | Claude Code · claude-code-action (env-rerouted) | Fireworks (Anthropic-compatible endpoint) | dynamic: per fireworks profile step | `FIREWORKS_API_KEY` | workflow-level `fireworks_fallback` input (default `claude`) |
 | (dispatch path) backend=codex | `generative-research.yml` | Codex CLI | OpenAI (ChatGPT subscription auth) | codex CLI default | `CODEX_AUTH_JSON` | — |

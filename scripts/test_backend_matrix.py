@@ -223,8 +223,16 @@ class RoutingInvariants(unittest.TestCase):
     # Every workflow that can run the opencode harness. hourly-twitter is the
     # one most easily forgotten in a model swap — it resolves its own model in
     # its own step rather than sharing gen-research's preflight.
-    OPENCODE_WORKFLOWS = ("generative-research.yml", "hourly-twitter.yml",
-                          "opencode-kimi-canary.yml")
+    OPENCODE_WORKFLOWS = (
+        "2h-bluesky.yml",
+        "4h-community.yml",
+        "daily-arxiv.yml",
+        "generative-research.yml",
+        "hourly-rss.yml",
+        "hourly-twitter.yml",
+        "opencode-kimi-canary.yml",
+        "wiki-ingest.yml",
+    )
 
     def assert_single_opencode_model(self) -> str:
         """Exactly one opencode-go model id across every opencode workflow.
@@ -277,8 +285,10 @@ class RoutingInvariants(unittest.TestCase):
     def test_all_opencode_callers_disable_checkout_credentials(self):
         """Every known caller removes checkout auth before metadata cleanup."""
         self.assertEqual(
-            {"generative-research.yml", "hourly-twitter.yml",
-             "opencode-kimi-canary.yml"},
+            {"2h-bluesky.yml", "4h-community.yml", "daily-arxiv.yml",
+             "generative-research.yml", "hourly-rss.yml",
+             "hourly-twitter.yml", "opencode-kimi-canary.yml",
+             "wiki-ingest.yml"},
             set(self.OPENCODE_WORKFLOWS))
         for name in self.OPENCODE_WORKFLOWS:
             doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
@@ -651,6 +661,36 @@ class RoutingInvariants(unittest.TestCase):
         # the workspace and the prompt, nothing else by default.
         self.assertNotIn('--volume "$HOME', action)
         self.assertNotIn("--privileged", action)
+
+    def test_editorial_mode_accepts_artifact_only_but_twitter_does_not(self):
+        """Bluesky returns a temp section; Twitter still requires commit paths."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        start = shell.index('case "$RUN_MODE" in')
+        end = shell.index('if [ -n "$PROMPT_FILE" ] && [ ! -f "$PROMPT_FILE" ]')
+        preflight = shell[start:end]
+        base_env = {
+            **os.environ,
+            "ALLOWED_PATHS": "",
+            "RETURN_ARTIFACTS": ".tmp/bluesky-section.md",
+            "OPENCODE_CONFIG_REL": ".github/opencode/opencode.json",
+            "BIRDY_TOOL_LOG_REL": "",
+        }
+        editorial = subprocess.run(
+            ["bash", "-c", "set -euo pipefail\n" + preflight],
+            env={**base_env, "RUN_MODE": "editorial"}, text=True,
+            capture_output=True, check=False)
+        self.assertEqual(0, editorial.returncode,
+                         editorial.stdout + editorial.stderr)
+        twitter = subprocess.run(
+            ["bash", "-c", "set -euo pipefail\n" + preflight],
+            env={**base_env, "RUN_MODE": "twitter"}, text=True,
+            capture_output=True, check=False)
+        self.assertNotEqual(0, twitter.returncode)
+        self.assertIn("twitter mode requires allowed-paths",
+                      twitter.stdout + twitter.stderr)
 
     def test_bird_snapshot_replaces_symlink_root_and_rejects_linked_entries(self):
         """The fetched snapshot is fresh, and only its safe tree is mounted."""
@@ -1088,6 +1128,51 @@ class RoutingInvariants(unittest.TestCase):
             self.assertEqual("sentinel\n",
                              outside_index.read_text(encoding="utf-8"))
 
+    def test_empty_template_clone_gets_trusted_git_info_before_container(self):
+        """The empty-template clone lacks .git/info; trusted setup creates it."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        setup = shell.split("# TRUSTED_ISOLATED_CONTROL_SETUP_BEGIN", 1)[1].split(
+            "# TRUSTED_ISOLATED_CONTROL_SETUP_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            origin = tmp_path / "origin"
+            isolated = tmp_path / "isolated"
+            empty_template = tmp_path / "empty-template"
+            origin.mkdir()
+            empty_template.mkdir()
+            subprocess.run(["git", "-C", str(origin), "init", "-b", "main"],
+                           check=True, capture_output=True)
+            subprocess.run(["git", "-C", str(origin), "config", "user.name", "Setup"],
+                           check=True)
+            subprocess.run(["git", "-C", str(origin), "config", "user.email",
+                            "setup@example.invalid"], check=True)
+            (origin / "tracked.txt").write_text("trusted\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(origin), "add", "tracked.txt"],
+                           check=True)
+            subprocess.run(["git", "-C", str(origin), "commit", "-m", "base"],
+                           check=True, capture_output=True)
+            subprocess.run(
+                ["git", "clone", "--quiet", "--no-hardlinks", "--no-checkout",
+                 f"--template={empty_template}", str(origin), str(isolated)],
+                check=True)
+            # Reproduce canary 31290819841 exactly: this clone shape never
+            # created .git/info, before OpenCode had a chance to touch it.
+            self.assertFalse((isolated / ".git" / "info").exists())
+            env = os.environ.copy()
+            env["isolated_workspace"] = str(isolated)
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + setup],
+                text=True, capture_output=True, env=env, check=False)
+            self.assertEqual(0, result.returncode,
+                             result.stdout + result.stderr)
+            self.assertTrue((isolated / ".git" / "info").is_dir())
+            self.assertFalse((isolated / ".git" / "info").is_symlink())
+            self.assertTrue((isolated / ".git" / "objects" / "info").is_dir())
+
     def test_trusted_import_guard_rejects_forbidden_committed_path(self):
         """Execute the real inline guard against an adversarial static bundle."""
         action_path = (REPO_ROOT / ".github" / "actions" /
@@ -1417,19 +1502,19 @@ class CrossCheckEnforcement(unittest.TestCase):
 
     def test_missing_secret_is_an_error(self):
         lanes, obs = self.mutated()
-        obs["hourly-rss.yml"].agent_run[0].secrets["zai-api-key"] = ""
+        obs["daily-digest.yml"].agent_run[0].secrets["zai-api-key"] = ""
         errors = cross_check(lanes, obs, self.profiles)
         self.assertTrue(any("zai-api-key" in e for e in errors), errors)
 
     def test_explicit_backend_in_workflow_is_an_error(self):
         lanes, obs = self.mutated()
-        obs["hourly-rss.yml"].agent_run[0].raw_backend = "fireworks-glm-5p2"
+        obs["daily-digest.yml"].agent_run[0].raw_backend = "fireworks-glm-5p2"
         errors = cross_check(lanes, obs, self.profiles)
         self.assertTrue(any("explicit backend" in e for e in errors), errors)
 
     def test_unknown_lane_is_an_error(self):
         lanes, obs = self.mutated()
-        obs["hourly-rss.yml"].agent_run[0].lane = "no-such-lane"
+        obs["daily-digest.yml"].agent_run[0].lane = "no-such-lane"
         errors = cross_check(lanes, obs, self.profiles)
         self.assertTrue(any("not defined" in e for e in errors), errors)
 
@@ -1451,6 +1536,12 @@ class CrossCheckEnforcement(unittest.TestCase):
         lanes["claude-code-review"]["model"] = "claude-opus-4-8"
         errors = cross_check(lanes, obs, self.profiles)
         self.assertTrue(any("claude-code-review" in e and "mirror" in e for e in errors), errors)
+
+    def test_opencode_mirror_divergence_is_an_error(self):
+        lanes, obs = self.mutated()
+        obs["hourly-rss.yml"].opencode_steps[0].model = "opencode-go/other"
+        errors = cross_check(lanes, obs, self.profiles)
+        self.assertTrue(any("workflow pins" in e and "rss" in e for e in errors), errors)
 
     def test_unsupported_gen_research_default_is_an_error(self):
         lanes, obs = self.mutated()
@@ -1484,9 +1575,17 @@ class CrossCheckEnforcement(unittest.TestCase):
 
     def test_duplicate_lane_across_steps_is_an_error(self):
         lanes, obs = self.mutated()
-        obs["hourly-rss.yml"].agent_run[0].lane = "bluesky"
+        obs["daily-digest.yml"].agent_run[1].lane = \
+            obs["daily-digest.yml"].agent_run[0].lane
         errors = cross_check(lanes, obs, self.profiles)
         self.assertTrue(any("2 agent-run steps" in e for e in errors), errors)
+
+    def test_duplicate_named_opencode_lane_across_steps_is_an_error(self):
+        lanes, obs = self.mutated()
+        duplicate = copy.deepcopy(obs["hourly-rss.yml"].opencode_steps[0])
+        obs["hourly-rss.yml"].opencode_steps.append(duplicate)
+        errors = cross_check(lanes, obs, self.profiles)
+        self.assertTrue(any("2 named opencode steps" in e for e in errors), errors)
 
     def test_lane_workflow_mismatch_is_an_error(self):
         lanes, obs = self.mutated()
@@ -1494,11 +1593,11 @@ class CrossCheckEnforcement(unittest.TestCase):
         errors = cross_check(lanes, obs, self.profiles)
         self.assertTrue(any("belongs to workflow" in e for e in errors), errors)
 
-    def test_wrong_harness_for_agent_run_lane_is_an_error(self):
+    def test_wrong_harness_for_opencode_lane_is_an_error(self):
         lanes, obs = self.mutated()
         lanes["rss"]["harness"] = "pi"
         errors = cross_check(lanes, obs, self.profiles)
-        self.assertTrue(any("expected agent-run" in e for e in errors), errors)
+        self.assertTrue(any("expected opencode" in e for e in errors), errors)
 
     def test_unknown_chain_entry_is_an_error(self):
         errors = check_fallback({"harness": "agent-run", "chain": ["nonsense"],

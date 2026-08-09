@@ -7,7 +7,8 @@ every lane runs. Consumption is two-mode:
 - harness=agent-run and harness=dispatch-default lanes are resolved AT
   RUNTIME on the runner (scripts/resolve_backend_lane.py), so editing the
   file re-routes them with no workflow change;
-- harness=pi and harness=claude-code-action lanes are CI-ENFORCED MIRRORS:
+- harness=pi, harness=opencode, and harness=claude-code-action lanes are
+  CI-ENFORCED MIRRORS:
   the model/provider stays literal in the workflow step and this script
   fails when workflow and file disagree.
 
@@ -163,6 +164,15 @@ class PiStep:
 
 
 @dataclass
+class OpencodeStep:
+    workflow: str
+    lane: str
+    model: str
+    token: str
+    step_name: str
+
+
+@dataclass
 class NativeStep:
     workflow: str
     step_name: str
@@ -177,6 +187,7 @@ class NativeStep:
 class Observation:
     agent_run: list[AgentRunStep] = field(default_factory=list)
     pi: list[PiStep] = field(default_factory=list)
+    opencode_steps: list[OpencodeStep] = field(default_factory=list)
     native: list[NativeStep] = field(default_factory=list)
     codex: bool = False
     codex_token: str = ""
@@ -434,6 +445,14 @@ def observe_workflow(wf_path: Path) -> Observation:
                     obs.opencode_token = "MOONSHOT_API_KEY"
                 else:
                     obs.opencode_token = "(unknown)"
+                if OPENCODE_ACTION in str(step.get("uses") or ""):
+                    obs.opencode_steps.append(OpencodeStep(
+                        workflow=wf_path.name,
+                        lane=str(with_block.get("lane", "")).strip(),
+                        model=str(with_block.get("model", "")).strip(),
+                        token=first_secret(with_block.get("opencode-api-key")),
+                        step_name=step_name,
+                    ))
 
     return obs
 
@@ -510,6 +529,47 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
                               f"{step.provider}/{step.model} but lane '{key}' says "
                               f"{lane.get('provider')}/{lane.get('model')} — update one (mirror contract)")
 
+        for step in obs.opencode_steps:
+            # Dispatch/comparison/canary calls are documented execution paths,
+            # not standalone SSOT lanes. Scheduled editorial callers name a
+            # lane explicitly so their literal model/token cannot drift.
+            if not step.lane:
+                continue
+            label = f"{wf_name} step '{step.step_name}'"
+            lane = lanes.get(step.lane)
+            if lane is None:
+                errors.append(f"{label}: opencode lane '{step.lane}' is not defined "
+                              "in data/agent-backends.json")
+                continue
+            seen_lanes.add(step.lane)
+            if lane.get("harness") != "opencode":
+                errors.append(f"{label}: lane '{step.lane}' has harness "
+                              f"'{lane.get('harness')}', expected opencode")
+            if lane.get("workflow") != wf_name:
+                errors.append(f"{label}: lane '{step.lane}' belongs to workflow "
+                              f"'{lane.get('workflow')}', not {wf_name}")
+            backend = str(lane.get("backend", ""))
+            profile = profiles.get(backend)
+            if profile is None:
+                errors.append(f"lane '{step.lane}': backend '{backend}' is not in the "
+                              "backends table in data/agent-backends.json")
+                continue
+            if profile.provider != "opencode":
+                errors.append(f"lane '{step.lane}': opencode harness cannot serve "
+                              f"provider '{profile.provider}'")
+            expected_model = f"opencode-go/{profile.model_id}"
+            if step.model != expected_model:
+                errors.append(f"{label}: workflow pins '{step.model}' but lane "
+                              f"'{step.lane}' resolves to '{expected_model}'")
+            if step.token != "OPENCODE_API_KEY":
+                errors.append(f"{label}: must pass opencode-api-key: "
+                              "secrets.OPENCODE_API_KEY")
+            if "strict" in lane and not isinstance(lane.get("strict"), bool):
+                errors.append(f"lane '{step.lane}': strict must be a boolean")
+            elif lane.get("strict") is not True:
+                errors.append(f"lane '{step.lane}': opencode editorial lanes must be "
+                              "strict (no silent model/provider fallback)")
+
         for step in obs.native:
             if step.rerouted_provider:
                 # generative-research's env-rerouted Fireworks path is a known
@@ -568,6 +628,19 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
     for lane_key, n in sorted(counts.items()):
         if n > 1:
             errors.append(f"lane '{lane_key}' is referenced by {n} agent-run steps — "
+                          "one lane per call site; add a distinct lane per step")
+
+    # Named opencode editorial callers are CI-enforced mirrors rather than
+    # runtime-routed agent-run calls, but the lane identity must be just as
+    # unambiguous for matrix attribution and outage diagnosis.
+    opencode_counts: dict[str, int] = {}
+    for obs in observations.values():
+        for step in obs.opencode_steps:
+            if step.lane:
+                opencode_counts[step.lane] = opencode_counts.get(step.lane, 0) + 1
+    for lane_key, n in sorted(opencode_counts.items()):
+        if n > 1:
+            errors.append(f"lane '{lane_key}' is referenced by {n} named opencode steps — "
                           "one lane per call site; add a distinct lane per step")
 
     return errors
@@ -646,6 +719,16 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
                          f"{lane.get('provider', '?')} (pi built-in)",
                          f"`{lane.get('model', '?')}`", "`FIREWORKS_API_KEY`", "—"])
 
+        elif harness == "opencode":
+            backend = str(lane.get("backend", ""))
+            profile = profiles.get(backend)
+            rows.append([key, f"`{wf_name}`",
+                         "opencode CLI · run-opencode-container (CI-enforced mirror)",
+                         profile.display_name if profile else backend,
+                         f"`{profile.model_id if profile else '?'}`",
+                         "`OPENCODE_API_KEY`",
+                         "hard fail (strict — no provider fallback)"])
+
         elif harness == "claude-code-action":
             native_steps = [s for s in obs.native if not s.rerouted_provider]
             variants = len([s for s in native_steps if not s.is_retry])
@@ -688,7 +771,7 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             rows.append(["(dispatch path) backend=codex", f"`{wf_name}`", "Codex CLI",
                          "OpenAI (ChatGPT subscription auth)", "codex CLI default",
                          f"`{obs.codex_token}`", "—"])
-        if obs.opencode:
+        if obs.opencode and any(not step.lane for step in obs.opencode_steps):
             # The model and provider are read from the workflow, not hard-coded:
             # this table is the human view of routing, and a stale literal here
             # is a CI-blessed lie about which model authored an artifact. The
@@ -750,6 +833,7 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
     native_models: set[str] = set()
     pi_lanes: list[str] = []
     pi_models: list[str] = []
+    opencode_lanes: list[str] = []
     gen_default: tuple[str, str] | None = None
     for key in sorted(lanes):
         lane = lanes[key]
@@ -764,6 +848,8 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
         elif harness == "pi":
             pi_lanes.append(key)
             pi_models.append(str(lane.get("model", "")).split("/")[-1])
+        elif harness == "opencode":
+            opencode_lanes.append(key)
         elif harness == "dispatch-default":
             gen_default = (key, profiles[str(lane["backend"])].normalized)
 
@@ -788,6 +874,7 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
     out.append('    subgraph mirrors["🪞 CI-enforced mirrors — literal in workflow, equality-gated"]')
     out.append(f'        pi["{_wrap(pi_lanes)}"]')
     out.append(f'        native["{_wrap(native_lanes)}"]')
+    out.append(f'        opencode["{_wrap(opencode_lanes)}"]')
     out.append("    end")
 
     out.append('    subgraph providers["🏭 Token providers"]')
@@ -807,6 +894,8 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
         out.append(f'    {node} -->|"{short}"| {PROVIDER_NODES[profile.provider][0]}')
     out.append(f'    pi -->|"{" · ".join(sorted(set(pi_models)))}"| FW')
     out.append(f'    native -->|"{" · ".join(sorted(m for m in native_models if m))}"| ANT')
+    if opencode_lanes and has_opencode:
+        out.append('    opencode -->|"deepseek-v4-flash"| MSH')
     if gen_default and has_codex:
         out.append('    gendef -.->|"backend=codex"| OAI')
     if gen_default and has_opencode:
