@@ -1173,6 +1173,430 @@ class RoutingInvariants(unittest.TestCase):
             self.assertFalse((isolated / ".git" / "info").is_symlink())
             self.assertTrue((isolated / ".git" / "objects" / "info").is_dir())
 
+    def test_container_tail_normalizes_two_commits_and_excludes_intermediate_objects(self):
+        """Only one final-tree commit crosses out of the disposable clone."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        normalize = shell.split("# TRUSTED_COMMIT_NORMALIZATION_BEGIN", 1)[1].split(
+            "# TRUSTED_COMMIT_NORMALIZATION_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            trusted = tmp_path / "trusted"
+            isolated = tmp_path / "isolated"
+            trusted.mkdir()
+
+            def git(repo: Path, *args: str, check: bool = True):
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=check)
+
+            git(trusted, "init", "-b", "main")
+            git(trusted, "config", "user.name", "Trusted")
+            git(trusted, "config", "user.email", "trusted@example.invalid")
+            (trusted / "base.txt").write_text("base\n", encoding="utf-8")
+            git(trusted, "add", "base.txt")
+            git(trusted, "commit", "-m", "base")
+            pre_sha = git(trusted, "rev-parse", "HEAD").stdout.strip()
+
+            subprocess.run(["git", "clone", "--quiet", "--no-hardlinks",
+                            str(trusted), str(isolated)], check=True)
+            git(isolated, "config", "user.name", "Agent")
+            git(isolated, "config", "user.email", "agent@example.invalid")
+            arxiv = isolated / "research" / "arxiv"
+            summaries = isolated / "research" / "summaries"
+            arxiv.mkdir(parents=True)
+            summaries.mkdir(parents=True)
+            report = arxiv / "2026-08-09-papers.md"
+            summary = summaries / "2026-08-09-arxiv-summary.txt"
+            report.write_text("final report\n", encoding="utf-8")
+            summary.write_text("overlong draft summary\n", encoding="utf-8")
+            intermediate_oid = git(
+                isolated, "hash-object", str(summary.relative_to(isolated))).stdout.strip()
+            git(isolated, "add", str(report.relative_to(isolated)),
+                str(summary.relative_to(isolated)))
+            git(isolated, "commit", "-m", "report plus summary")
+            first_agent_sha = git(isolated, "rev-parse", "HEAD").stdout.strip()
+
+            summary.write_text("trimmed summary\n", encoding="utf-8")
+            git(isolated, "add", str(summary.relative_to(isolated)))
+            git(isolated, "commit", "-m", "trim final output")
+            second_agent_sha = git(isolated, "rev-parse", "HEAD").stdout.strip()
+
+            env = {
+                **os.environ,
+                "PRE_SHA": pre_sha,
+                "GIT_AUTHOR_NAME": "Trusted Normalizer",
+                "GIT_AUTHOR_EMAIL": "normalizer@example.invalid",
+                "GIT_COMMITTER_NAME": "Trusted Normalizer",
+                "GIT_COMMITTER_EMAIL": "normalizer@example.invalid",
+                "RUN_MODE": "editorial",
+                "ALLOWED_PATHS": (
+                    "research/arxiv/2026-08-09-papers.md\n"
+                    "research/summaries/2026-08-09-arxiv-summary.txt"
+                ),
+            }
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + normalize],
+                cwd=isolated, env=env, text=True, capture_output=True,
+                check=False)
+            self.assertEqual(0, result.returncode,
+                             result.stdout + result.stderr)
+
+            post_sha = (isolated / ".opencode-post-sha").read_text(
+                encoding="utf-8").strip()
+            self.assertNotIn(post_sha, {first_agent_sha, second_agent_sha})
+            self.assertEqual("1", git(
+                isolated, "rev-list", "--count", f"{pre_sha}..{post_sha}"
+            ).stdout.strip())
+            self.assertEqual(pre_sha, git(
+                isolated, "rev-parse", f"{post_sha}^"
+            ).stdout.strip())
+            self.assertEqual("final report\n", git(
+                isolated, "show",
+                f"{post_sha}:research/arxiv/2026-08-09-papers.md"
+            ).stdout)
+            self.assertEqual("trimmed summary\n", git(
+                isolated, "show",
+                f"{post_sha}:research/summaries/2026-08-09-arxiv-summary.txt"
+            ).stdout)
+
+            # Unbundle into the trusted repository: the normalized final
+            # commit is present, while agent commits and their intermediate-
+            # only blob never crossed the static bundle boundary.
+            bundle = isolated / ".opencode-export.bundle"
+            git(trusted, "bundle", "verify", str(bundle))
+            git(trusted, "bundle", "unbundle", str(bundle))
+            self.assertEqual(0, git(
+                trusted, "cat-file", "-e", f"{post_sha}^{{commit}}",
+                check=False).returncode)
+            for isolated_oid in (first_agent_sha, second_agent_sha, intermediate_oid):
+                self.assertNotEqual(0, git(
+                    trusted, "cat-file", "-e", isolated_oid,
+                    check=False).returncode, isolated_oid)
+
+    def test_container_tail_normalizes_community_and_wiki_repairs(self):
+        """Exact-file and trailing-slash editorial allowlists both squash safely."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        normalize = shell.split("# TRUSTED_COMMIT_NORMALIZATION_BEGIN", 1)[1].split(
+            "# TRUSTED_COMMIT_NORMALIZATION_END", 1)[0]
+        cases = {
+            "community-exact": (
+                ["research/community/2026-08-09-hn.md",
+                 "research/community/2026-08-09-reddit.md"],
+                "research/community/2026-08-09-reddit.md",
+                ("research/community/2026-08-09-hn.md\n"
+                 "research/community/2026-08-09-reddit.md"),
+            ),
+            "wiki-prefix": (
+                ["research/wiki/entities/deepseek.md"],
+                "research/wiki/entities/deepseek.md",
+                "research/wiki/",
+            ),
+        }
+
+        for name, (paths, repair_path, allowed_paths) in cases.items():
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as tmp:
+                tmp_path = Path(tmp)
+                trusted = tmp_path / "trusted"
+                isolated = tmp_path / "isolated"
+                trusted.mkdir()
+
+                def git(repo: Path, *args: str):
+                    return subprocess.run(
+                        ["git", "-C", str(repo), *args], text=True,
+                        capture_output=True, check=True)
+
+                git(trusted, "init", "-b", "main")
+                git(trusted, "config", "user.name", "Trusted")
+                git(trusted, "config", "user.email", "trusted@example.invalid")
+                (trusted / "base.txt").write_text("base\n", encoding="utf-8")
+                git(trusted, "add", "base.txt")
+                git(trusted, "commit", "-m", "base")
+                pre_sha = git(trusted, "rev-parse", "HEAD").stdout.strip()
+                subprocess.run(["git", "clone", "--quiet", "--no-hardlinks",
+                                str(trusted), str(isolated)], check=True)
+                git(isolated, "config", "user.name", "Agent")
+                git(isolated, "config", "user.email", "agent@example.invalid")
+                for rel in paths:
+                    target = isolated / rel
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_text("draft\n", encoding="utf-8")
+                git(isolated, "add", *paths)
+                git(isolated, "commit", "-m", "initial editorial output")
+                (isolated / repair_path).write_text("repaired\n", encoding="utf-8")
+                git(isolated, "add", repair_path)
+                git(isolated, "commit", "-m", "repair editorial output")
+
+                env = {
+                    **os.environ,
+                    "PRE_SHA": pre_sha,
+                    "RUN_MODE": "editorial",
+                    "ALLOWED_PATHS": allowed_paths,
+                    "GIT_AUTHOR_NAME": "Trusted Normalizer",
+                    "GIT_AUTHOR_EMAIL": "normalizer@example.invalid",
+                    "GIT_COMMITTER_NAME": "Trusted Normalizer",
+                    "GIT_COMMITTER_EMAIL": "normalizer@example.invalid",
+                }
+                result = subprocess.run(
+                    ["bash", "-c", "set -euo pipefail\n" + normalize],
+                    cwd=isolated, env=env, text=True, capture_output=True,
+                    check=False)
+                self.assertEqual(0, result.returncode,
+                                 result.stdout + result.stderr)
+                post_sha = (isolated / ".opencode-post-sha").read_text(
+                    encoding="utf-8").strip()
+                self.assertEqual("1", git(
+                    isolated, "rev-list", "--count", f"{pre_sha}..{post_sha}"
+                ).stdout.strip())
+                self.assertEqual("repaired\n", git(
+                    isolated, "show", f"{post_sha}:{repair_path}"
+                ).stdout)
+
+    def test_container_tail_refuses_to_normalize_rewritten_history(self):
+        """Normalization cannot disguise an agent HEAD unrelated to PRE_SHA."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        normalize = shell.split("# TRUSTED_COMMIT_NORMALIZATION_BEGIN", 1)[1].split(
+            "# TRUSTED_COMMIT_NORMALIZATION_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp) / "isolated"
+            repo.mkdir()
+
+            def git(*args: str):
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=True)
+
+            git("init", "-b", "main")
+            git("config", "user.name", "Agent")
+            git("config", "user.email", "agent@example.invalid")
+            (repo / "base.txt").write_text("base\n", encoding="utf-8")
+            git("add", "base.txt")
+            git("commit", "-m", "base")
+            pre_sha = git("rev-parse", "HEAD").stdout.strip()
+            git("checkout", "--orphan", "rewritten")
+            git("rm", "-rf", ".")
+            (repo / "other.txt").write_text("unrelated\n", encoding="utf-8")
+            git("add", "other.txt")
+            git("commit", "-m", "unrelated root")
+
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + normalize],
+                cwd=repo, env={**os.environ, "PRE_SHA": pre_sha}, text=True,
+                capture_output=True, check=False)
+            self.assertNotEqual(0, result.returncode)
+            self.assertIn("does not descend from the pre-run HEAD",
+                          result.stdout + result.stderr)
+            self.assertFalse((repo / ".opencode-export.bundle").exists())
+
+    def test_container_tail_preserves_generative_and_canary_contracts(self):
+        """Generative repairs normalize, while canary commits remain forbidden."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        normalize = shell.split("# TRUSTED_COMMIT_NORMALIZATION_BEGIN", 1)[1].split(
+            "# TRUSTED_COMMIT_NORMALIZATION_END", 1)[0]
+
+        def initialized_repo(tmp_path: Path):
+            repo = tmp_path / "isolated"
+            repo.mkdir()
+
+            def git(*args: str):
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=True)
+
+            git("init", "-b", "main")
+            git("config", "user.name", "Agent")
+            git("config", "user.email", "agent@example.invalid")
+            index = repo / "research" / "generative" / "index.json"
+            index.parent.mkdir(parents=True)
+            index.write_text("[]\n", encoding="utf-8")
+            git("add", str(index.relative_to(repo)))
+            git("commit", "-m", "base")
+            return repo, git, git("rev-parse", "HEAD").stdout.strip()
+
+        trusted_identity = {
+            "GIT_AUTHOR_NAME": "Trusted Normalizer",
+            "GIT_AUTHOR_EMAIL": "normalizer@example.invalid",
+            "GIT_COMMITTER_NAME": "Trusted Normalizer",
+            "GIT_COMMITTER_EMAIL": "normalizer@example.invalid",
+        }
+        with self.subTest(mode="generative"), tempfile.TemporaryDirectory() as tmp:
+            repo, git, pre_sha = initialized_repo(Path(tmp))
+            generated = repo / "research" / "generative"
+            html = generated / "deepseek.html"
+            source = generated / "deepseek.ara.md"
+            index = generated / "index.json"
+            html.write_text("draft\n", encoding="utf-8")
+            source.write_text("source\n", encoding="utf-8")
+            index.write_text('["deepseek"]\n', encoding="utf-8")
+            git("add", str(index.relative_to(repo)), str(html.relative_to(repo)),
+                str(source.relative_to(repo)))
+            git("commit", "-m", "write generative output")
+            html.write_text("repaired\n", encoding="utf-8")
+            git("add", str(html.relative_to(repo)))
+            git("commit", "-m", "repair generated html")
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + normalize], cwd=repo,
+                env={**os.environ, **trusted_identity, "PRE_SHA": pre_sha,
+                     "RUN_MODE": "generative", "ALLOWED_PATHS": ""},
+                text=True, capture_output=True, check=False)
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+            post_sha = (repo / ".opencode-post-sha").read_text(
+                encoding="utf-8").strip()
+            self.assertEqual("1", git(
+                "rev-list", "--count", f"{pre_sha}..{post_sha}"
+            ).stdout.strip())
+            changed = git(
+                "diff", "--name-status", f"{pre_sha}..{post_sha}"
+            ).stdout.splitlines()
+            self.assertEqual(
+                ["A\tresearch/generative/deepseek.ara.md",
+                 "A\tresearch/generative/deepseek.html",
+                 "M\tresearch/generative/index.json"],
+                changed)
+
+        with self.subTest(mode="canary"), tempfile.TemporaryDirectory() as tmp:
+            repo, git, pre_sha = initialized_repo(Path(tmp))
+            git("commit", "--allow-empty", "-m", "unexpected canary commit")
+            result = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + normalize], cwd=repo,
+                env={**os.environ, **trusted_identity, "PRE_SHA": pre_sha,
+                     "RUN_MODE": "canary", "ALLOWED_PATHS": ""},
+                text=True, capture_output=True, check=False)
+            self.assertNotEqual(0, result.returncode)
+            self.assertIn("canary opencode run created a commit",
+                          result.stdout + result.stderr)
+            self.assertFalse((repo / ".opencode-export.bundle").exists())
+
+    def test_container_tail_rejects_hidden_forbidden_long_and_merge_chains(self):
+        """Squashing never conceals forbidden, unbounded, or merged history."""
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-opencode-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        shell = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        normalize = shell.split("# TRUSTED_COMMIT_NORMALIZATION_BEGIN", 1)[1].split(
+            "# TRUSTED_COMMIT_NORMALIZATION_END", 1)[0]
+
+        def initialized_repo(tmp_path: Path):
+            repo = tmp_path / "isolated"
+            repo.mkdir()
+
+            def git(*args: str, check: bool = True):
+                return subprocess.run(
+                    ["git", "-C", str(repo), *args], text=True,
+                    capture_output=True, check=check)
+
+            git("init", "-b", "main")
+            git("config", "user.name", "Agent")
+            git("config", "user.email", "agent@example.invalid")
+            (repo / "base.txt").write_text("base\n", encoding="utf-8")
+            git("add", "base.txt")
+            git("commit", "-m", "base")
+            return repo, git, git("rev-parse", "HEAD").stdout.strip()
+
+        def normalize_result(repo: Path, pre_sha: str, allowed: str):
+            return subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + normalize], cwd=repo,
+                env={
+                    **os.environ,
+                    "PRE_SHA": pre_sha,
+                    "RUN_MODE": "editorial",
+                    "ALLOWED_PATHS": allowed,
+                    "GIT_AUTHOR_NAME": "Trusted Normalizer",
+                    "GIT_AUTHOR_EMAIL": "normalizer@example.invalid",
+                    "GIT_COMMITTER_NAME": "Trusted Normalizer",
+                    "GIT_COMMITTER_EMAIL": "normalizer@example.invalid",
+                },
+                text=True, capture_output=True, check=False)
+
+        with self.subTest(case="hidden-forbidden"), tempfile.TemporaryDirectory() as tmp:
+            repo, git, pre_sha = initialized_repo(Path(tmp))
+            allowed = "research/arxiv/report.md"
+            (repo / allowed).parent.mkdir(parents=True)
+            (repo / allowed).write_text("draft\n", encoding="utf-8")
+            forbidden = repo / "scripts" / "poison.sh"
+            forbidden.parent.mkdir()
+            forbidden.write_text("echo poison\n", encoding="utf-8")
+            git("add", allowed, "scripts/poison.sh")
+            git("commit", "-m", "draft with hidden forbidden path")
+            (repo / allowed).write_text("final\n", encoding="utf-8")
+            forbidden.unlink()
+            git("add", allowed, "scripts/poison.sh")
+            git("commit", "-m", "hide forbidden path")
+            result = normalize_result(repo, pre_sha, allowed)
+            self.assertNotEqual(0, result.returncode)
+            self.assertIn("intermediate commit changed forbidden path/status",
+                          result.stdout + result.stderr)
+            self.assertFalse((repo / ".opencode-export.bundle").exists())
+
+        with self.subTest(case="hidden-executable-mode"), tempfile.TemporaryDirectory() as tmp:
+            repo, git, pre_sha = initialized_repo(Path(tmp))
+            allowed = "research/wiki/report.md"
+            target = repo / allowed
+            target.parent.mkdir(parents=True)
+            target.write_text("draft\n", encoding="utf-8")
+            target.chmod(0o755)
+            git("add", allowed)
+            git("commit", "-m", "write executable intermediate output")
+            target.chmod(0o644)
+            target.write_text("final\n", encoding="utf-8")
+            git("add", allowed)
+            git("commit", "-m", "repair output mode")
+            result = normalize_result(repo, pre_sha, allowed)
+            self.assertNotEqual(0, result.returncode)
+            self.assertIn("not a <=5 MiB regular non-executable blob",
+                          result.stdout + result.stderr)
+            self.assertFalse((repo / ".opencode-export.bundle").exists())
+
+        with self.subTest(case="chain-too-long"), tempfile.TemporaryDirectory() as tmp:
+            repo, git, pre_sha = initialized_repo(Path(tmp))
+            allowed = "research/wiki/log.md"
+            target = repo / allowed
+            target.parent.mkdir(parents=True)
+            for i in range(9):
+                target.write_text(f"revision {i}\n", encoding="utf-8")
+                git("add", allowed)
+                git("commit", "-m", f"revision {i}")
+            result = normalize_result(repo, pre_sha, allowed)
+            self.assertNotEqual(0, result.returncode)
+            self.assertIn("must contain 1-8 commits; got 9",
+                          result.stdout + result.stderr)
+            self.assertFalse((repo / ".opencode-export.bundle").exists())
+
+        with self.subTest(case="merge"), tempfile.TemporaryDirectory() as tmp:
+            repo, git, pre_sha = initialized_repo(Path(tmp))
+            side_path = "research/community/side.md"
+            main_path = "research/community/main.md"
+            git("checkout", "-b", "side")
+            (repo / side_path).parent.mkdir(parents=True)
+            (repo / side_path).write_text("side\n", encoding="utf-8")
+            git("add", side_path)
+            git("commit", "-m", "side output")
+            git("checkout", "main")
+            (repo / main_path).parent.mkdir(parents=True)
+            (repo / main_path).write_text("main\n", encoding="utf-8")
+            git("add", main_path)
+            git("commit", "-m", "main output")
+            git("merge", "--no-ff", "side", "-m", "merge agent outputs")
+            result = normalize_result(
+                repo, pre_sha, f"{side_path}\n{main_path}")
+            self.assertNotEqual(0, result.returncode)
+            self.assertIn("merge-free linear chain rooted at PRE_SHA",
+                          result.stdout + result.stderr)
+            self.assertFalse((repo / ".opencode-export.bundle").exists())
+
     def test_trusted_import_guard_rejects_forbidden_committed_path(self):
         """Execute the real inline guard against an adversarial static bundle."""
         action_path = (REPO_ROOT / ".github" / "actions" /
