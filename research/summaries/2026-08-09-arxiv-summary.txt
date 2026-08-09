@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-09
+
+TOP 5 PAPERS:
+• Hierarchical Latent Prediction (HiLP) - higher-level latent cuts compounding error in latent rollouts; longer-horizon reasoning, cheaper speculative decoding
+• Answer First, Reason Later - diffusion LLMs commit answers early, collapse to answer-only; frontier-gated commitment restores 0.528->0.852 on GSM8K
+• GAUGE - physics benchmark: no simulator or video world model is uniformly physically faithful
+• When Self-Evolution Backfires - skill contamination is structurally irreversible; pre-commit gating hits 72% pass@1 with 5x smaller pool
+• Hijacking Robots with a Piece of Paper - physical prompt injection in VLM robots succeeds 5-29% across frontier VLMs
+
+CATEGORIES: NLP 8 | CV 17 | Agents 14 | Safety 11 | Other 9
+
+Full report on GitHub.
