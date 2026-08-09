@@ -138,16 +138,17 @@ the site before Vite runs. There is no deploy workflow — publishing research
 
 Which model serves each lane — and where it falls back on a provider
 outage — is defined in one file:
-[`data/agent-backends.json`](data/agent-backends.json). Scheduled lanes
-resolve it at runtime (editing the file re-routes them with no workflow
-change); the diagram below is generated from it and CI-checked so it can't
-drift. Full per-lane matrix: [`docs/backend-matrix.md`](docs/backend-matrix.md).
+[`data/agent-backends.json`](data/agent-backends.json). `agent-run` lanes
+resolve it at runtime; container/native mirror lanes pin the same route in
+their workflow and CI checks equality. The diagram below is generated from
+the SSOT so it cannot drift. Full per-lane matrix:
+[`docs/backend-matrix.md`](docs/backend-matrix.md).
 
 <!-- BEGIN GENERATED BACKEND DIAGRAM (scripts/build_backend_matrix.py — do not edit by hand) -->
 ```mermaid
 flowchart LR
     subgraph runtime["⚙️ Runtime-routed lanes — lane: → data/agent-backends.json"]
-        lanes0["arxiv · bluesky · community<br/>digest-audio-script · digest-synthesis · digest-synthesis-fallback<br/>model-timeline · rss · twitter-autoresearch<br/>twitter-judge · twitter-primary · twitter-primary-repair<br/>wiki-ingest<br/><i>13 lanes</i>"]
+        lanes0["digest-audio-script · digest-synthesis · digest-synthesis-fallback<br/>model-timeline · twitter-autoresearch · twitter-judge<br/>twitter-primary · twitter-primary-repair<br/><i>8 lanes</i>"]
         strict0["🔒 twitter-ab-claude · twitter-ab-judge · twitter-ab-judge-swapped<br/><i>strict — never falls back</i>"]
         strict1["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
         strict2["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
@@ -156,6 +157,7 @@ flowchart LR
     subgraph mirrors["🪞 CI-enforced mirrors — literal in workflow, equality-gated"]
         pi["twitter-deepseek-pi · twitter-fireworks-pi"]
         native["ai-news-research · claude-code-review · claude-interactive<br/>daily-improve · generative-research-claude · research-issue<br/>twitter-account-explorer"]
+        opencode["arxiv · bluesky · community<br/>rss · wiki-ingest"]
     end
     subgraph providers["🏭 Token providers"]
         FW["🎆 Fireworks"]
@@ -171,6 +173,7 @@ flowchart LR
     gendef -->|"claude-opus-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
+    opencode -->|"deepseek-v4-flash"| MSH
     gendef -.->|"backend=codex"| OAI
     gendef -.->|"backend=opencode-kimi-k3"| MSH
     ANT -. "provider outage → fallback #1" .-> ZAI
@@ -384,7 +387,7 @@ annotated list. None are needed for the
 | `FIREWORKS_API_KEY` | default scheduled lanes (GLM 5.2, DeepSeek, Kimi) | Anthropic-compatible Fireworks endpoint |
 | `ZAI_API_KEY` | Z.ai GLM 5.2 lanes | Z.ai Coding Plan, Anthropic-compatible route |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
-| `OPENCODE_API_KEY` | `generative-research`/`hourly-twitter` `backend=opencode-kimi-k3` | OpenCode Go subscription key; the opencode CLI route via plain env-var auth. Serves `deepseek-v4-flash` since the temporary 2026-08-07 swap off `kimi-k3` |
+| `OPENCODE_API_KEY` | RSS, community, arXiv, Bluesky, wiki; `generative-research`/`hourly-twitter` `backend=opencode-kimi-k3` | OpenCode Go subscription key for containerized `deepseek-v4-flash`. The five scheduled lanes are strict and share the Go-plan caps ($12/5h, $30/week, $60/month). |
 | `BIRD_AUTH_TOKEN` / `BIRD_CT0` | Twitter/X lanes | X cookies (read-only use; expire often) |
 | `BIRDY_ACCOUNTS` | optional | multi-account rotation JSON; every account forced read-only |
 | `GEMINI_API_KEY` | digest/article audio | price-performant TTS |

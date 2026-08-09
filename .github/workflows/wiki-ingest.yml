@@ -34,6 +34,44 @@ jobs:
       id-token: write
 
     steps:
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
       # No `lfs: true`: the wiki lane reads + writes ONLY markdown
       # (research/wiki/**, the digest, the model tickets, the schema doc).
       # None of those match the LFS patterns in .gitattributes (png/jpg/gif/
@@ -45,21 +83,28 @@ jobs:
       # through push.
       - name: Checkout repository
         uses: actions/checkout@v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           fetch-depth: 0
+          persist-credentials: false
+          set-safe-directory: false
 
       - name: Get current datetime
         id: datetime
         run: |
-          echo "date=$(date -u +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-          echo "timestamp=$(date -u +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
-          echo "yesterday=$(date -u -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -u -v-1d +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          {
+            echo "date=$(date -u +'%Y-%m-%d')"
+            echo "timestamp=$(date -u +'%Y-%m-%d %H:%M UTC')"
+            echo "yesterday=$(date -u -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -u -v-1d +'%Y-%m-%d')"
+          } >> "$GITHUB_OUTPUT"
 
       # Snapshot HEAD before the agent runs so the deletion guard below can
       # diff exactly the agent's commit (robust whether or not it commits).
       - name: Record base commit
         id: basesha
-        run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Setup uv
         uses: astral-sh/setup-uv@v7
@@ -106,26 +151,20 @@ jobs:
       # to job.status (and so hooker-telemetry's `if: always()` step still
       # fires). Without the inspect step, this flag would silently mask
       # timeouts as success.
-      - name: Ingest digest into wiki via Claude
+      - name: Ingest digest into wiki with OpenCode + DeepSeek V4 Flash
         id: ingest
         timeout-minutes: 90
         continue-on-error: true
-        uses: ./.github/actions/agent-run
-        env:
-          DATE_TODAY: ${{ steps.datetime.outputs.date }}
-          DATE_YESTERDAY: ${{ steps.datetime.outputs.yesterday }}
-          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+        uses: ./.github/actions/run-opencode-container
         with:
+          mode: editorial
           lane: wiki-ingest
-          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
-          zai-api-key: ${{ secrets.ZAI_API_KEY }}
-          claude-args: |
-            --model opus --max-turns 80 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),Task,TodoWrite"
-          expected-paths: |
+          allowed-paths: |
             research/wiki/
-          label: Wiki Claude ingest
-          prompt: |
+          model: opencode-go/deepseek-v4-flash
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          timeout-minutes: '80'
+          prompt-text: |
             You maintain the LLM Wiki: a compounding, interlinked knowledge
             base of markdown pages at research/wiki/. One page per
             significant entity, concept, or theme. Each day you INGEST
@@ -292,22 +331,30 @@ jobs:
               - Write ONLY under research/wiki/. Do not touch the digest,
                 the tickets, the dashboard, or any other research subdir.
 
+      - name: Require wiki output
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.basesha.outputs.sha }}
+          expected-paths: |
+            research/wiki/
+          label: Wiki OpenCode ingest
+
       # Propagate the agent step's outcome to job.status. With
       # continue-on-error: true on the agent step, a timeout/error would
       # otherwise resolve to step.conclusion=success and hooker-telemetry
       # would report a green run. exit 1 here lets later `if: always()`
       # steps (telemetry) still fire while flipping job.status to failure
       # when it should be.
-      - name: Inspect Claude outcome
+      - name: Inspect OpenCode outcome
         if: always()
         env:
           OUTCOME: ${{ steps.ingest.outcome }}
         run: |
           if [ "$OUTCOME" = "failure" ]; then
-            echo "::error::Wiki Claude ingest step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
+            echo "::error::Wiki OpenCode ingest step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
             exit 1
           fi
-          echo "Wiki Claude ingest step succeeded."
+          echo "Wiki OpenCode ingest step succeeded."
 
       # Mechanically enforce the "never delete a page" invariant. The prompt
       # says it, but a prompt is not a guarantee. Diff exactly the agent's

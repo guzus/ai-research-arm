@@ -28,21 +28,19 @@ short pointer plus the few genuinely agent-specific notes.
   Reference: https://code.claude.com/docs/en/github-actions
   (action repo: https://github.com/anthropics/claude-code-action)
 
-- **GLM-5.2 is the preferred backend for agent-run content lanes.** Use
-  `fireworks-glm-5p2` / `glm-5p2` for default scheduled synthesis, CRUD, and
-  high-frequency summarization work. Keep `fireworks-deepseek-v4-flash` for
-  explicit low-cost or DeepSeek-labeled comparison lanes only. `agent-run`
+- **GLM-5.2 is the preferred fallback for Claude-harness content lanes.** RSS,
+  community, arXiv, Bluesky, and wiki are deliberate exceptions: they run the
+  containerized OpenCode CLI pinned to `opencode-go/deepseek-v4-flash`, with
+  `OPENCODE_API_KEY` as their single strict provider credential. `agent-run`
   probes the requested provider and walks the ordered `fallback.chain` from
   `data/agent-backends.json` when it is unavailable (currently Z.ai GLM →
   native Claude); lanes marked `"strict": true` and `fireworks-fallback:
   none` runs never fall back. Set `expected-paths` in `agent-run`, or call
   `.github/actions/require-output` after deterministic commit steps, so green
   no-op runs do not leave the freshness watchdog stale. RSS, HN/Reddit
-  community, arXiv, daily-digest, and Bluesky lanes (plus the twitter-deepseek
-  comparison tier) have deterministic model-free fallbacks; a green run there
-  means committed lane output exists, not necessarily that the model provider
-  was healthy. Check the agent/fallback step logs before drawing provider
-  conclusions.
+  community, arXiv, Bluesky, and wiki fail closed; only daily-digest has a
+  deterministic publishing fallback. Check the agent/fallback step logs before
+  drawing provider conclusions.
 
 - **Backend routing SSOT: `data/agent-backends.json`.** Every model lane,
   the backend profile table, and the ordered `fallback.chain` are defined
@@ -50,7 +48,7 @@ short pointer plus the few genuinely agent-specific notes.
   (workflow steps pass `lane:` and all provider secrets — editing the file
   re-routes or re-orders fallbacks with no workflow change; on provider
   outage the chain is walked in order and the first available candidate
-  runs); pi and direct claude-code-action lanes are CI-enforced mirrors;
+  runs); pi, opencode, and direct claude-code-action lanes are CI-enforced mirrors;
   strict lanes (zai-canary) never fall back. After any routing change run
   `uv run python scripts/build_backend_matrix.py` to regenerate
   `docs/backend-matrix.md` (CI runs `--check` and fails on drift, missing
@@ -77,16 +75,16 @@ short pointer plus the few genuinely agent-specific notes.
   `openai-api-key` unless the intent is API billing instead of the
   ChatGPT/Codex subscription.
 
-- **OpenCode + Kimi K3 generative-research runs** use the opencode CLI
-  (pinned `opencode-ai@1.18.3`) driving `kimi-k3` with plain env-var
+- **OpenCode + DeepSeek V4 Flash runs** use the opencode CLI
+  (pinned `opencode-ai@1.18.3`) driving `deepseek-v4-flash` with plain env-var
   auth — a single secret is the whole login; there is no `opencode auth
   login` step and no auth-file seeding. The workflow resolves the route
-  Go-first: `OPENCODE_API_KEY` (OpenCode Go subscription — sign in at
-  https://opencode.ai/auth, subscribe, copy the key; K3 bills at full
-  $3/$15 value against the $12/5h / $30/wk / $60/mo caps), else
-  `MOONSHOT_API_KEY` (pay-per-token from
-  https://platform.kimi.ai/console/api-keys; needs a real balance).
-  Store one with `gh secret set <NAME>`, then validate cheaply with
+  exclusively through `OPENCODE_API_KEY` (OpenCode Go subscription — sign in
+  at https://opencode.ai/auth, subscribe, copy the key). The Go plan caps are
+  $12/5h, $30/week, and $60/month; because RSS, community, arXiv, Bluesky, and
+  wiki share this one strict route, exhaustion can stale all five together.
+  Moonshot is not a DeepSeek provider and is not a fallback. Store the key with
+  `gh secret set OPENCODE_API_KEY`, then validate cheaply with
   `opencode-kimi-canary.yml` before dispatching
   `generative-research.yml backend=opencode-kimi-k3`.
 

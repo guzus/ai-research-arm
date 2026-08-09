@@ -141,7 +141,7 @@ jobs:
 
       # data/agent-backends.json is the routing SSOT. This gate cross-checks
       # it against the workflows (every agent-run call site routes via lane:
-      # with all provider secrets; pi/native mirrors match the file) and
+      # with all provider secrets; pi/opencode/native mirrors match the file) and
       # fails when docs/backend-matrix.md wasn't regenerated after a routing
       # change (build_backend_matrix.py).
       - name: Check backend routing SSOT and matrix

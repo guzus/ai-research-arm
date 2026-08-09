@@ -1,5 +1,5 @@
 {
-  "$comment": "SINGLE SOURCE OF TRUTH for per-lane agent backend routing. Two consumption modes: (1) harness=agent-run and harness=dispatch-default lanes are resolved AT RUNTIME on the runner (scripts/resolve_backend_lane.py) — editing this file re-routes those lanes with no workflow change; (2) harness=pi and harness=claude-code-action lanes are CI-ENFORCED MIRRORS — the model/provider stays literal in the workflow step and scripts/build_backend_matrix.py --check fails CI until workflow and this file agree. docs/backend-matrix.md is generated from this file. Backend selectors resolve to provider/model via the `backends` profile table below (endpoints live in scripts/select_backend.py); scripts/select_backend.py walks [lane backend] + fallback.chain in order and runs the first candidate whose provider probe passes.",
+  "$comment": "SINGLE SOURCE OF TRUTH for per-lane agent backend routing. Two consumption modes: (1) harness=agent-run and harness=dispatch-default lanes are resolved AT RUNTIME on the runner (scripts/resolve_backend_lane.py) — editing this file re-routes those lanes with no workflow change; (2) harness=pi, harness=opencode, and harness=claude-code-action lanes are CI-ENFORCED MIRRORS — the model/provider stays literal in the workflow step and scripts/build_backend_matrix.py --check fails CI until workflow and this file agree. docs/backend-matrix.md is generated from this file. Backend selectors resolve to provider/model via the `backends` profile table below (endpoints live in scripts/select_backend.py for agent-run profiles); scripts/select_backend.py walks [lane backend] + fallback.chain in order and runs the first candidate whose provider probe passes.",
   "backends": {
     "claude": {
       "provider": "claude",
@@ -36,6 +36,13 @@
         "deepseek"
       ]
     },
+    "opencode-deepseek-v4-flash": {
+      "provider": "opencode",
+      "model": "deepseek-v4-flash",
+      "display_name": "DeepSeek V4 Flash via OpenCode Go",
+      "aliases": [],
+      "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to opencode-go/deepseek-v4-flash. CI-enforced mirror; not selectable by agent-run."
+    },
     "zai-glm-5p2": {
       "provider": "zai",
       "model": "glm-5.2",
@@ -59,27 +66,31 @@
   "lanes": {
     "rss": {
       "workflow": "hourly-rss.yml",
-      "harness": "agent-run",
-      "backend": "claude",
-      "notes": "2h RSS digest. Fails closed when Claude produces no output; no automatic deterministic fallback."
+      "harness": "opencode",
+      "backend": "opencode-deepseek-v4-flash",
+      "strict": true,
+      "notes": "2h RSS digest via containerized OpenCode Go + DeepSeek V4 Flash. Fails closed when the agent produces no output; no automatic deterministic fallback."
     },
     "bluesky": {
       "workflow": "2h-bluesky.yml",
-      "harness": "agent-run",
-      "backend": "claude",
-      "notes": "Daily Bluesky expert-commentary section."
+      "harness": "opencode",
+      "backend": "opencode-deepseek-v4-flash",
+      "strict": true,
+      "notes": "Daily Bluesky expert-commentary section via containerized OpenCode Go + DeepSeek V4 Flash; trusted host code owns append/dedup/commit."
     },
     "community": {
       "workflow": "4h-community.yml",
-      "harness": "agent-run",
-      "backend": "claude",
-      "notes": "HN + Reddit digests. Fails closed when Claude produces no output; no automatic deterministic fallback."
+      "harness": "opencode",
+      "backend": "opencode-deepseek-v4-flash",
+      "strict": true,
+      "notes": "HN + Reddit digests via containerized OpenCode Go + DeepSeek V4 Flash. Fails closed when the agent produces no output; no automatic deterministic fallback."
     },
     "arxiv": {
       "workflow": "daily-arxiv.yml",
-      "harness": "agent-run",
-      "backend": "claude",
-      "notes": "Daily arXiv sweep. Fails closed when Claude produces no output; no automatic deterministic fallback."
+      "harness": "opencode",
+      "backend": "opencode-deepseek-v4-flash",
+      "strict": true,
+      "notes": "Daily arXiv sweep via containerized OpenCode Go + DeepSeek V4 Flash. Fails closed when the agent produces no output; no automatic deterministic fallback."
     },
     "digest-synthesis": {
       "workflow": "daily-digest.yml",
@@ -107,9 +118,10 @@
     },
     "wiki-ingest": {
       "workflow": "wiki-ingest.yml",
-      "harness": "agent-run",
-      "backend": "claude",
-      "notes": "Digest -> LLM wiki page CRUD agent."
+      "harness": "opencode",
+      "backend": "opencode-deepseek-v4-flash",
+      "strict": true,
+      "notes": "Digest -> LLM wiki page CRUD via containerized OpenCode Go + DeepSeek V4 Flash."
     },
     "twitter-primary": {
       "workflow": "hourly-twitter.yml",

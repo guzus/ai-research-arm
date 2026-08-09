@@ -33,12 +33,27 @@ description: >-
 
 inputs:
   mode:
-    description: Output contract to enforce after the isolated agent run (generative, twitter, or canary).
+    description: Output contract to enforce after the isolated agent run (generative, twitter, editorial, or canary).
     required: true
+  lane:
+    description: >-
+      Backend SSOT lane key for scheduled editorial callers. Dispatch/comparison
+      callers leave this empty; CI cross-checks named lanes against
+      data/agent-backends.json.
+    required: false
+    default: ''
   allowed-paths:
     description: >-
-      Exact newline-delimited commit paths allowed in twitter mode. Ignored in
-      generative/canary modes, whose contracts are built in.
+      Exact newline-delimited commit paths (or directory prefixes ending in /)
+      allowed in twitter/editorial mode. Ignored in generative/canary modes,
+      whose contracts are built in.
+    required: false
+    default: ''
+  return-artifacts:
+    description: >-
+      Exact newline-delimited uncommitted artifacts under .tmp/ to return from
+      an editorial run after regular-file/path/size validation. Used when a
+      trusted host step owns the final append and commit contract.
     required: false
     default: ''
   prompt-file:
@@ -133,6 +148,7 @@ runs:
       env:
         RUN_MODE: ${{ inputs.mode }}
         ALLOWED_PATHS: ${{ inputs.allowed-paths }}
+        RETURN_ARTIFACTS: ${{ inputs.return-artifacts }}
         PROMPT_FILE: ${{ inputs.prompt-file }}
         PROMPT_TEXT: ${{ inputs.prompt-text }}
         OUTPUT_FILE: ${{ inputs.output-file }}
@@ -196,14 +212,19 @@ runs:
           exit 1
         fi
         case "$RUN_MODE" in
-          generative|twitter|canary) ;;
+          generative|twitter|editorial|canary) ;;
           *)
-            echo "::error::mode must be one of: generative, twitter, canary (got '$RUN_MODE')."
+            echo "::error::mode must be one of: generative, twitter, editorial, canary (got '$RUN_MODE')."
             exit 1
             ;;
         esac
         if [ "$RUN_MODE" = "twitter" ] && [ -z "$ALLOWED_PATHS" ]; then
-          echo "::error::twitter mode requires exact allowed-paths."
+          echo "::error::twitter mode requires allowed-paths."
+          exit 1
+        fi
+        if [ "$RUN_MODE" = "editorial" ] && [ -z "$ALLOWED_PATHS" ] \
+          && [ -z "$RETURN_ARTIFACTS" ]; then
+          echo "::error::editorial mode requires allowed-paths and/or return-artifacts."
           exit 1
         fi
         case "$OPENCODE_CONFIG_REL" in
@@ -227,7 +248,8 @@ runs:
               ;;
           esac
         fi
-        if [ "$RUN_MODE" = "twitter" ]; then
+        if { [ "$RUN_MODE" = "twitter" ] || [ "$RUN_MODE" = "editorial" ]; } \
+          && [ -n "$ALLOWED_PATHS" ]; then
           allowed_count=0
           while IFS= read -r allowed_path; do
             [ -z "$allowed_path" ] && continue
@@ -235,21 +257,43 @@ runs:
             case "$allowed_path" in
               research/*) ;;
               *)
-                echo "::error::twitter allowed path must stay under research/: $allowed_path"
+                echo "::error::$RUN_MODE allowed path must stay under research/: $allowed_path"
                 exit 1
                 ;;
             esac
             case "$allowed_path" in
               */../*|../*|*/..|*.git/*)
-                echo "::error::twitter allowed path traverses a forbidden directory: $allowed_path"
+                echo "::error::$RUN_MODE allowed path traverses a forbidden directory: $allowed_path"
                 exit 1
                 ;;
             esac
           done <<< "$ALLOWED_PATHS"
           if [ "$allowed_count" -lt 1 ] || [ "$allowed_count" -gt 8 ]; then
-            echo "::error::twitter allowed-paths must contain 1-8 exact paths."
+            echo "::error::$RUN_MODE allowed-paths must contain 1-8 paths."
             exit 1
           fi
+        fi
+        return_artifact_count=0
+        while IFS= read -r artifact; do
+          [ -z "$artifact" ] && continue
+          return_artifact_count=$((return_artifact_count + 1))
+          case "$artifact" in
+            .tmp/*) ;;
+            *)
+              echo "::error::return-artifacts must stay under .tmp/: $artifact"
+              exit 1
+              ;;
+          esac
+          case "$artifact" in
+            */../*|../*|*/..|*/./*|*/.|*.git/*)
+              echo "::error::return artifact traverses a forbidden directory: $artifact"
+              exit 1
+              ;;
+          esac
+        done <<< "$RETURN_ARTIFACTS"
+        if [ "$return_artifact_count" -gt 8 ]; then
+          echo "::error::return-artifacts must contain at most 8 exact paths."
+          exit 1
         fi
         if [ -n "$PROMPT_FILE" ] && [ ! -f "$PROMPT_FILE" ]; then
           echo "::error::opencode prompt file not found: $PROMPT_FILE"
@@ -287,6 +331,37 @@ runs:
           fi
         fi
         # TRUSTED_BIRD_MOUNT_GUARD_END
+
+        # Scheduled editorial lanes stage freshly fetched, untrusted source
+        # data here. It is copied into the disposable clone, never committed or
+        # mounted from an arbitrary host path. Reject links/special entries so
+        # cp cannot cross outside the workspace.
+        # TRUSTED_AGENT_INPUT_GUARD_BEGIN
+        agent_input="$GITHUB_WORKSPACE/.agent-input"
+        if [ -e "$agent_input" ] || [ -L "$agent_input" ]; then
+          workspace_root_for_input=$(realpath -- "$GITHUB_WORKSPACE")
+          if [ ! -d "$agent_input" ] || [ -L "$agent_input" ] \
+            || [ "$(realpath -- "$agent_input")" != "$workspace_root_for_input/.agent-input" ]; then
+            echo "::error::.agent-input is missing, linked, or noncanonical."
+            exit 1
+          fi
+          if ! unsafe_agent_input=$(find "$agent_input" -mindepth 1 \
+            \! -type d \! -type f -print -quit); then
+            echo "::error::Could not audit .agent-input before copying it."
+            exit 1
+          fi
+          if [ -n "$unsafe_agent_input" ]; then
+            echo "::error::.agent-input contains a linked or special entry: $unsafe_agent_input"
+            exit 1
+          fi
+          agent_input_bytes=$(find "$agent_input" -type f -exec wc -c {} \; \
+            | awk '{sum += $1} END {print sum + 0}')
+          if [ "$agent_input_bytes" -gt 52428800 ]; then
+            echo "::error::.agent-input exceeds the 50 MiB lane-data cap."
+            exit 1
+          fi
+        fi
+        # TRUSTED_AGENT_INPUT_GUARD_END
 
         build_dir="${RUNNER_TEMP:-/tmp}/opencode-container-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
         rm -rf "$build_dir"
@@ -413,14 +488,43 @@ runs:
           echo "::error::Isolated opencode clone HEAD does not match the real checkout."
           exit 1
         fi
+        # `git clone --template=<empty> --no-checkout` does not create
+        # .git/info. The containment tail deliberately requires every Git
+        # control directory to remain canonical after the agent exits, so the
+        # trusted host must establish that invariant before the container runs.
+        # This was the canary 31290819841 false positive: the agent/provider
+        # succeeded, then the tail rejected a directory that never existed.
+        # TRUSTED_ISOLATED_CONTROL_SETUP_BEGIN
+        for isolated_control_dir in \
+          "$isolated_workspace/.git/info" \
+          "$isolated_workspace/.git/objects/info"; do
+          if [ -e "$isolated_control_dir" ] || [ -L "$isolated_control_dir" ]; then
+            if [ ! -d "$isolated_control_dir" ] || [ -L "$isolated_control_dir" ]; then
+              echo "::error::Isolated opencode clone has a linked or malformed Git control directory: $isolated_control_dir"
+              exit 1
+            fi
+          else
+            mkdir -- "$isolated_control_dir"
+          fi
+          isolated_control_parent=$(realpath -- "$(dirname -- "$isolated_control_dir")")
+          if [ "$(realpath -- "$isolated_control_dir")" \
+            != "$isolated_control_parent/$(basename -- "$isolated_control_dir")" ]; then
+            echo "::error::Isolated opencode Git control directory is noncanonical: $isolated_control_dir"
+            exit 1
+          fi
+        done
+        # TRUSTED_ISOLATED_CONTROL_SETUP_END
         if [ "$RUN_MODE" = "generative" ] && [ -d "$GITHUB_WORKSPACE/.gen-input" ]; then
           cp -a "$GITHUB_WORKSPACE/.gen-input" "$isolated_workspace/.gen-input"
         fi
         if [ "$RUN_MODE" = "twitter" ] && [ -d "$GITHUB_WORKSPACE/.twitter-input" ]; then
           cp -a "$GITHUB_WORKSPACE/.twitter-input" "$isolated_workspace/.twitter-input"
         fi
+        if [ -d "$GITHUB_WORKSPACE/.agent-input" ]; then
+          cp -a "$GITHUB_WORKSPACE/.agent-input" "$isolated_workspace/.agent-input"
+        fi
         # TRUSTED_CLONE_SETUP_END
-        # Everything the two opencode lanes shell out to:
+        # Everything the opencode lane families shell out to:
         #   generative-research -> uv run python (17 call sites), birdy, pdftotext, git, curl, jq
         #   hourly-twitter      -> birdy, jq
         # One image serves both. Agent/tool versions are pinned; the base image
@@ -601,6 +705,7 @@ runs:
         set -e
 
         # TRUSTED_IMPORT_GUARD_BEGIN
+        RETURN_ARTIFACTS="${RETURN_ARTIFACTS:-}"
         # Import only a static bundle produced by the fixed container tail.
         # Do not use `git fetch` even with the bundle's absolute path: fetch is
         # transport-aware, so persisted url.*.insteadOf + core.sshCommand
@@ -715,16 +820,19 @@ runs:
                   path_violation=1
                 fi
                 ;;
-              twitter)
+              twitter|editorial)
                 allowed=false
                 while IFS= read -r allowed_path; do
-                  if [ -n "$allowed_path" ] && [ "$path" = "$allowed_path" ]; then
+                  if [ -n "$allowed_path" ] \
+                    && { [ "$path" = "$allowed_path" ] \
+                      || { [[ "$allowed_path" = */ ]] \
+                        && [[ "$path" = "$allowed_path"* ]]; }; }; then
                     allowed=true
                     break
                   fi
                 done <<< "$ALLOWED_PATHS"
                 if [ "$allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
-                  echo "::error::twitter opencode commit changed forbidden path/status: $status $path"
+                  echo "::error::$RUN_MODE opencode commit changed forbidden path/status: $status $path"
                   path_violation=1
                 fi
                 ;;
@@ -755,6 +863,9 @@ runs:
         elif [ "$RUN_MODE" = "twitter" ] && [ -n "$BIRDY_TOOL_LOG_REL" ]; then
           artifacts+=("${BIRDY_TOOL_LOG_REL#/}")
         fi
+        while IFS= read -r artifact; do
+          [ -n "$artifact" ] && artifacts+=("$artifact")
+        done <<< "$RETURN_ARTIFACTS"
         # Both GNU and BSD realpath require the target to exist; avoid GNU's
         # non-portable -e spelling because local/self-hosted runners include macOS.
         isolated_root=$(realpath -- "$isolated_workspace")
@@ -804,6 +915,14 @@ runs:
             fi
           fi
         done
+        while IFS= read -r artifact; do
+          [ -z "$artifact" ] && continue
+          source_artifact="$isolated_workspace/$artifact"
+          if [ ! -f "$source_artifact" ] || [ -L "$source_artifact" ]; then
+            echo "::error::opencode did not produce required return artifact: $artifact"
+            exit 1
+          fi
+        done <<< "$RETURN_ARTIFACTS"
 
         if [ "$post_sha" != "$pre_sha" ]; then
           if [ "$("${trusted_git[@]}" rev-parse HEAD)" != "$pre_sha" ]; then
