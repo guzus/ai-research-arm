@@ -619,6 +619,8 @@ runs:
           --env "GIT_COMMITTER_EMAIL=$GIT_USER_EMAIL" \
           --env OPENCODE_MODEL_REF \
           --env AGENT_TIMEOUT_MINUTES \
+          --env RUN_MODE \
+          --env ALLOWED_PATHS \
           --env "PRE_SHA=$pre_sha" \
           ${extra_args[@]+"${extra_args[@]}"} \
           --volume "$isolated_workspace:/workspace" \
@@ -681,12 +683,121 @@ runs:
 
             export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
               GIT_NO_REPLACE_OBJECTS=1
-            post_sha=$(git rev-parse HEAD)
+            # Agents commonly commit a draft and then make a second repair
+            # commit after a validator/length check. Exporting that history
+            # directly would violate the trusted host one-direct-child
+            # import contract. Normalize the FINAL committed tree into one
+            # fixed-message child of PRE_SHA inside the disposable clone.
+            #
+            # This is not permission to accept arbitrary rewritten history:
+            # verify the agent HEAD still descends from PRE_SHA BEFORE
+            # normalization. `git bundle create HEAD ^PRE_SHA` then contains
+            # only the normalized commit and its final reachable blobs;
+            # intermediate-only objects never cross into the real checkout.
+            # TRUSTED_COMMIT_NORMALIZATION_BEGIN
+            agent_post_sha=$(git rev-parse HEAD)
+            post_sha="$agent_post_sha"
+            if [ "$agent_post_sha" != "$PRE_SHA" ]; then
+              if ! git merge-base --is-ancestor "$PRE_SHA" "$agent_post_sha"; then
+                echo "isolated opencode commit does not descend from the pre-run HEAD" >&2
+                exit 1
+              fi
+              if [ "$RUN_MODE" = "canary" ]; then
+                echo "canary opencode run created a commit" >&2
+                exit 1
+              fi
+
+              commit_count=$(git rev-list --count "$PRE_SHA..$agent_post_sha")
+              if [ "$commit_count" -lt 1 ] || [ "$commit_count" -gt 8 ]; then
+                echo "isolated opencode commit chain must contain 1-8 commits; got $commit_count" >&2
+                exit 1
+              fi
+
+              expected_parent="$PRE_SHA"
+              while IFS= read -r commit_oid; do
+                [ -z "$commit_oid" ] && continue
+                parent_line=$(git rev-list --parents -n 1 "$commit_oid")
+                read -r observed_commit observed_parent extra_parent <<< "$parent_line"
+                if [ "$observed_commit" != "$commit_oid" ] \
+                  || [ "$observed_parent" != "$expected_parent" ] \
+                  || [ -n "${extra_parent:-}" ]; then
+                  echo "isolated opencode history must be a merge-free linear chain rooted at PRE_SHA" >&2
+                  exit 1
+                fi
+
+                commit_path_count=0
+                while IFS= read -r -d "" status \
+                  && IFS= read -r -d "" path; do
+                  commit_path_count=$((commit_path_count + 1))
+                  if [ "$commit_path_count" -gt 512 ]; then
+                    echo "isolated opencode commit changes more than 512 paths" >&2
+                    exit 1
+                  fi
+
+                  path_allowed=false
+                  case "$RUN_MODE" in
+                    generative)
+                      relative="${path#research/generative/}"
+                      if [ "$path" = "research/generative/index.json" ] \
+                        || { [ "$relative" != "$path" ] \
+                          && [[ "$relative" != */* ]] \
+                          && { [[ "$relative" = *.html ]] \
+                            || [[ "$relative" = *.ara.md ]]; }; }; then
+                        path_allowed=true
+                      fi
+                      ;;
+                    twitter|editorial)
+                      while IFS= read -r allowed_path; do
+                        if [ -n "$allowed_path" ] \
+                          && { [ "$path" = "$allowed_path" ] \
+                            || { [[ "$allowed_path" = */ ]] \
+                              && [[ "$path" = "$allowed_path"* ]]; }; }; then
+                          path_allowed=true
+                          break
+                        fi
+                      done <<< "$ALLOWED_PATHS"
+                      ;;
+                    canary)
+                      echo "canary opencode run created a commit: $status $path" >&2
+                      exit 1
+                      ;;
+                    *)
+                      echo "unknown opencode run mode during commit normalization: $RUN_MODE" >&2
+                      exit 1
+                      ;;
+                  esac
+                  if [ "$path_allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
+                    echo "$RUN_MODE opencode intermediate commit changed forbidden path/status: $status $path" >&2
+                    exit 1
+                  fi
+
+                  tree_entry=$(git ls-tree "$commit_oid" -- "$path")
+                  read -r tree_mode tree_type tree_oid trailing <<< "$tree_entry"
+                  if [ "$tree_mode" != "100644" ] || [ "$tree_type" != "blob" ] \
+                    || [ "$(git cat-file -s "$tree_oid" 2>/dev/null || echo 99999999)" -gt 5242880 ]; then
+                    echo "opencode intermediate path is not a <=5 MiB regular non-executable blob: $path" >&2
+                    exit 1
+                  fi
+                done < <(git diff-tree --no-commit-id --name-status \
+                  --no-renames -r -z "$expected_parent" "$commit_oid")
+                expected_parent="$commit_oid"
+              done < <(git rev-list --reverse "$PRE_SHA..$agent_post_sha")
+              if [ "$expected_parent" != "$agent_post_sha" ]; then
+                echo "isolated opencode linear history validation did not reach agent HEAD" >&2
+                exit 1
+              fi
+
+              final_tree=$(git rev-parse "$agent_post_sha^{tree}")
+              post_sha=$(printf "%s\n" "Normalize isolated opencode output" \
+                | git commit-tree "$final_tree" -p "$PRE_SHA")
+              git update-ref HEAD "$post_sha" "$agent_post_sha"
+            fi
             rm -f -- .opencode-post-sha .opencode-export.bundle
             printf "%s\n" "$post_sha" > .opencode-post-sha
             if [ "$post_sha" != "$PRE_SHA" ]; then
               git bundle create .opencode-export.bundle HEAD "^$PRE_SHA"
             fi
+            # TRUSTED_COMMIT_NORMALIZATION_END
             exit "$agent_status"
           ')
 
