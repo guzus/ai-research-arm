@@ -1,0 +1,9 @@
+Daily AI Digest - 2026-08-09 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Expert Blogs] Now we have a timeline of the OpenAI accidental attack against Hugging Face
+• [YouTube] OpenAI's Model Got Too Dangerous So They Locked It Up!
+
+SOURCES: 2/8 lanes had data; missing: Twitter/X, RSS / Official Announcements, Hacker News, Reddit, Bluesky, arXiv Papers
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
