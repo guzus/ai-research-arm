@@ -6,8 +6,10 @@ aliases: ["V4-Flash", "V4-Flash-0731", "DeepSeek-V4-Flash", "DeepSeek V4-Flash-0
 tags: [frontier-model, open-weights, chinese-llm, moe, agentic-coding, mit-license]
 description: DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.
 created_at: 2026-08-01
-timestamp: 2026-08-04T00:00:00Z
+timestamp: 2026-08-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
+  - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
@@ -135,6 +137,12 @@ on Hugging Face hours later, with a technical report.
 - **Fourteen community quants shipped by end of day**, the smallest usable one
   aimed at **128GB machines** — the practical local-inference ceiling for this
   model. See [[open-weights]].
+- **Adoption momentum (2026-08-07/08).** **Cline** reported V4-Flash became its
+  **#1 most-used model**, with **+40% usage and 3× token growth** after the
+  0731 update, while **Ollama** rolled out deployment support — the
+  cost-per-task adoption story this page has tracked since day two showing up
+  as served-volume share in agent tooling (Latent.Space AINews; ARA daily
+  digest 2026-08-09).
 
 ## Context
 

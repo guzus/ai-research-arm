@@ -6,8 +6,10 @@ aliases: ["Qwen3.8-Max", "Qwen3.8", "Qwen 3.8 Max", "Qwen3.8 Max"]
 tags: [open-weights, model, moe, chinese-llm, long-context, alibaba]
 description: Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok with open weights promised the following week — which would be the first Max-class Qwen ever released open.
 created_at: 2026-08-04
-timestamp: 2026-08-04T00:00:00Z
+timestamp: 2026-08-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
+  - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
   - {title: "ARA daily digest 2026-07-20", path: research/digest/2026-07-20-digest.md}
@@ -50,6 +52,14 @@ self-reported #2 overall rank behind [[claude-fable-5|Claude Fable 5]].
 - **It owned Hacker News, then saturated.** It led the AI slice in **five
   consecutive windows**, climbing 115 → 464 → 653 → 861 → 960 points, with
   per-cycle gains decaying monotonically before it aged off the front page.
+- **The open-weights release gets a named platform and a date (2026-08-07/08).**
+  Alibaba staged a **ModelScope page** for `Qwen3.8-2.4T-A95B`, described as the
+  **first open-weight Qwen-Max-class model**, with release indicated for the
+  **following Wednesday** and `Qwen3.8-27B` to follow on separate pages. The
+  staging confirms the 2.4T-parameter / A95B≈95B-active read and hardens the
+  launch-day "open weights next week" commitment into a concrete artifact
+  target — though as of this ingest the weights remain unpublished
+  (r/LocalLLaMA via Latent.Space AINews; ARA daily digest 2026-08-09).
 
 ## Open questions
 
