@@ -11,12 +11,14 @@ short pointer plus the few genuinely agent-specific notes.
 
 ## Agent-specific notes
 
-- **Claude-harness scheduled workflows** use `.github/actions/agent-run` so
-  their provider route is modular and committed output is enforced centrally.
-  The strict OpenCode exception is RSS, community, arXiv, Bluesky, and wiki:
-  those five use `.github/actions/run-opencode-container`, share
-  `OPENCODE_API_KEY` plus the Go-plan caps ($12/5h, $30/week, $60/month), and
-  never fall back—one key/cap failure can stale all five together. Direct
+- **Scheduled model workflows** use the Claude-harness `.github/actions/agent-run`
+  directly or, for RSS, community, arXiv, Bluesky, and wiki, the trusted
+  `.github/actions/agent-dispatch`. Those five reference the shared
+  `research-editorial` route, so its backend profile can select a registered
+  isolated editorial adapter without workflow edits. The current—and only
+  registered compatible—adapter is strict OpenCode Go. Host-checkout
+  `agent-run` is deliberately capability-incompatible and rejected. While the
+  OpenCode profile is selected, one key/cap failure can stale all five together. Direct
   Claude workflows may still use
   `anthropics/claude-code-action@v1`; when they do, pass the model via
   `claude_args`, never as a separate `model:` input:
@@ -32,13 +34,14 @@ short pointer plus the few genuinely agent-specific notes.
   Reference: https://code.claude.com/docs/en/github-actions
   (action repo: https://github.com/anthropics/claude-code-action)
 
-- **GLM-5.2 is the preferred fallback for Claude-harness content lanes.** RSS,
-  community, arXiv, Bluesky, and wiki are deliberate exceptions: they run the
-  containerized OpenCode CLI pinned to `opencode-go/deepseek-v4-flash`, with
-  `OPENCODE_API_KEY` as their single strict provider credential. `agent-run`
+- **GLM-5.2 is the preferred fallback for Claude-harness content lanes.** The
+  five editorial lanes are routed as a group; their current strict profile runs
+  the containerized OpenCode CLI at `opencode-go/deepseek-v4-flash`. Known
+  credential slots are prewired for a future isolated adapter, but the current
+  host-checkout `agent-run` profiles cannot be selected by this route. `agent-run`
   probes the requested provider and walks the ordered `fallback.chain` from
-  `data/agent-backends.json` when it is unavailable (currently Z.ai GLM →
-  native Claude); lanes marked `"strict": true` and `fireworks-fallback:
+  `data/agent-backends.json` when it is unavailable (currently native Claude →
+  Z.ai GLM); lanes marked `"strict": true` and `fireworks-fallback:
   none` runs never fall back. Set `expected-paths` in `agent-run`, or call
   `.github/actions/require-output` after deterministic commit steps, so green
   no-op runs do not leave the freshness watchdog stale. RSS, HN/Reddit
@@ -48,7 +51,9 @@ short pointer plus the few genuinely agent-specific notes.
 
 - **Backend routing SSOT: `data/agent-backends.json`.** Every model lane,
   the backend profile table, and the ordered `fallback.chain` are defined
-  there. agent-run lanes select at runtime via `scripts/select_backend.py`
+  there. Runtime-dispatched lanes resolve lane → route → backend profile;
+  `.github/actions/agent-dispatch` selects the registered adapter while
+  `agent-run` lanes select at runtime via `scripts/select_backend.py`
   (workflow steps pass `lane:` and all provider secrets — editing the file
   re-routes or re-orders fallbacks with no workflow change; on provider
   outage the chain is walked in order and the first available candidate
@@ -57,6 +62,10 @@ short pointer plus the few genuinely agent-specific notes.
   `uv run python scripts/build_backend_matrix.py` to regenerate
   `docs/backend-matrix.md` (CI runs `--check` and fails on drift, missing
   secrets, orphan lanes, or mirror divergence).
+  To switch all five editorial lanes, edit only
+  `routes.research-editorial.backend` to a pre-registered compatible backend,
+  then run the generator. To split one lane, change only that lane's `route`
+  reference (define the new route/profile first when needed).
 
 - **Z.ai GLM-5.2** is available through `agent-run` as `zai-glm-5p2` using
   `ZAI_API_KEY` and Claude Code's Anthropic-compatible route. It is the
@@ -86,7 +95,7 @@ short pointer plus the few genuinely agent-specific notes.
   exclusively through `OPENCODE_API_KEY` (OpenCode Go subscription — sign in
   at https://opencode.ai/auth, subscribe, copy the key). The Go plan caps are
   $12/5h, $30/week, and $60/month; because RSS, community, arXiv, Bluesky, and
-  wiki share this one strict route, exhaustion can stale all five together.
+  wiki currently share this one strict route, exhaustion can stale all five together.
   Moonshot is not a DeepSeek provider and is not a fallback. Store the key with
   `gh secret set OPENCODE_API_KEY`, then validate cheaply with
   `opencode-kimi-canary.yml` before dispatching

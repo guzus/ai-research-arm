@@ -202,16 +202,20 @@ jobs:
         id: rss-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      - name: Process RSS feeds with OpenCode + DeepSeek V4 Flash
+      - name: Process RSS feeds with SSOT-routed agent
         id: rss-agent
         continue-on-error: true
-        uses: ./.github/actions/run-opencode-container
+        uses: ./.github/actions/agent-dispatch
         with:
           mode: editorial
           lane: rss
+          expected-paths: |
+            research/rss/${{ steps.datetime.outputs.date }}.md
           allowed-paths: |
             research/rss/${{ steps.datetime.outputs.date }}.md
-          model: opencode-go/deepseek-v4-flash
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           timeout-minutes: '12'
           prompt-text: |
@@ -363,7 +367,7 @@ jobs:
       - name: Propagate RSS agent contract failure
         if: always() && steps.rss-agent.outcome != 'success'
         run: |
-          echo "::error::RSS opencode action failed its containment or output contract."
+          echo "::error::RSS routed agent failed its containment or output contract."
           exit 1
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):

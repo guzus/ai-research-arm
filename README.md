@@ -151,31 +151,31 @@ flowchart LR
         lanes0["digest-audio-script · digest-synthesis · digest-synthesis-fallback<br/>model-timeline · twitter-autoresearch · twitter-judge<br/>twitter-primary · twitter-primary-repair<br/><i>8 lanes</i>"]
         strict0["🔒 twitter-ab-claude · twitter-ab-judge · twitter-ab-judge-swapped<br/><i>strict — never falls back</i>"]
         strict1["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
-        strict2["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
+        strict2["🔒 arxiv · bluesky · community<br/>rss · wiki-ingest<br/><i>strict — never falls back</i>"]
+        strict3["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
         gendef["generative-research-default<br/><i>dispatch default</i>"]
     end
     subgraph mirrors["🪞 CI-enforced mirrors — literal in workflow, equality-gated"]
         pi["twitter-deepseek-pi · twitter-fireworks-pi"]
         native["ai-news-research · claude-code-review · claude-interactive<br/>daily-improve · generative-research-claude · research-issue<br/>twitter-account-explorer"]
-        opencode["arxiv · bluesky · community<br/>rss · wiki-ingest"]
     end
     subgraph providers["🏭 Token providers"]
         FW["🎆 Fireworks"]
         ZAI["⚡ Z.ai"]
         ANT["🅰️ Anthropic<br/><i>native Claude</i>"]
+        OC["🚀 OpenCode Go<br/><i>opencode CLI</i>"]
         OAI["🤖 OpenAI Codex CLI<br/><i>ChatGPT auth</i>"]
-        MSH["🚀 OpenCode Go DeepSeek V4 Flash<br/><i>opencode CLI</i>"]
     end
     lanes0 -->|"claude-opus-5"| ANT
     strict0 -->|"claude-opus-5"| ANT
     strict1 -->|"deepseek-v4-flash"| FW
-    strict2 -->|"glm-5.2"| ZAI
+    strict2 -->|"deepseek-v4-flash"| OC
+    strict3 -->|"glm-5.2"| ZAI
     gendef -->|"claude-opus-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
-    opencode -->|"deepseek-v4-flash"| MSH
     gendef -.->|"backend=codex"| OAI
-    gendef -.->|"backend=opencode-kimi-k3"| MSH
+    gendef -.->|"backend=opencode-kimi-k3"| OC
     ANT -. "provider outage → fallback #1" .-> ZAI
 ```
 _Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `claude` → `zai-glm-5p2`; regenerate with `uv run python scripts/build_backend_matrix.py`._
@@ -383,11 +383,11 @@ annotated list. None are needed for the
 
 | Secret | Required for | Description |
 |--------|--------------|-------------|
-| `CLAUDE_CODE_OAUTH_TOKEN` | native-Claude lanes + fallback path | Claude Code auth |
-| `FIREWORKS_API_KEY` | opt-in generative-research and Twitter comparison lanes (GLM 5.2, DeepSeek, Kimi) | Anthropic-compatible Fireworks endpoint; not the default for the five OpenCode editorial lanes |
-| `ZAI_API_KEY` | Z.ai GLM 5.2 lanes | Z.ai Coding Plan, Anthropic-compatible route |
+| `CLAUDE_CODE_OAUTH_TOKEN` | native-Claude lanes, fallback path, reserved dispatcher plumbing | Claude Code auth; current host-checkout agent-run is incompatible with the editorial dispatcher |
+| `FIREWORKS_API_KEY` | Fireworks profiles, comparison lanes, reserved dispatcher plumbing | Anthropic-compatible Fireworks endpoint; prewired for a future isolated adapter, not selectable through agent-run today |
+| `ZAI_API_KEY` | Z.ai GLM 5.2 lanes, reserved dispatcher plumbing | Z.ai Coding Plan; prewired for a future isolated adapter |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
-| `OPENCODE_API_KEY` | RSS, community, arXiv, Bluesky, wiki; `generative-research`/`hourly-twitter` `backend=opencode-kimi-k3` | OpenCode Go subscription key for containerized `deepseek-v4-flash`. The five scheduled lanes are strict and share the Go-plan caps ($12/5h, $30/week, $60/month). |
+| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. The five editorial lanes use it while their shared route selects the current strict OpenCode profile; then they share its plan caps. |
 | `BIRD_AUTH_TOKEN` / `BIRD_CT0` | Twitter/X lanes | X cookies (read-only use; expire often) |
 | `BIRDY_ACCOUNTS` | optional | multi-account rotation JSON; every account forced read-only |
 | `GEMINI_API_KEY` | digest/article audio | price-performant TTS |
