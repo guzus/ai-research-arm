@@ -91,6 +91,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts.
 - [[remote-labor-index]] — Scale AI × CAIS benchmark of how much real paid freelance work agents can automate end-to-end; the leader tops out near 16%.
 - [[verification-bottleneck]] — Models now emit research-shaped output faster than qualified humans can check it, so verification — not generation — becomes the scarce input.
+- [[zawinskis-law-of-multiagents]] — The 2026 aphorism that every agent attempts to expand until it can message other agents; coined against the Hugging Face incident and the productization of cross-session agent messaging.
 
 ## Themes
 
