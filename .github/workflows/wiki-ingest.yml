@@ -23,6 +23,7 @@ concurrency:
 jobs:
   wiki-ingest:
     runs-on: [self-hosted, Linux]
+    timeout-minutes: 105
     # Only run when the digest succeeded, OR when a human dispatched us.
     # `workflow_run.conclusion` is empty on workflow_dispatch, so we must
     # explicitly allow that event or the manual fallback silently no-ops.
@@ -146,22 +147,26 @@ jobs:
       # The prompt now also bounds work per run and commits a valid PARTIAL
       # pass rather than racing the cap to zero with an empty tree.
       #
-      # continue-on-error keeps the runner alive past a Claude failure so
-      # the "Inspect Claude outcome" step below can decide what to surface
+      # continue-on-error keeps the runner alive past an agent failure so
+      # the outcome-inspection step below can decide what to surface
       # to job.status (and so hooker-telemetry's `if: always()` step still
       # fires). Without the inspect step, this flag would silently mask
       # timeouts as success.
-      - name: Ingest digest into wiki with OpenCode + DeepSeek V4 Flash
+      - name: Ingest digest into wiki with SSOT-routed agent
         id: ingest
         timeout-minutes: 90
         continue-on-error: true
-        uses: ./.github/actions/run-opencode-container
+        uses: ./.github/actions/agent-dispatch
         with:
           mode: editorial
           lane: wiki-ingest
+          expected-paths: |
+            research/wiki/
           allowed-paths: |
             research/wiki/
-          model: opencode-go/deepseek-v4-flash
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           timeout-minutes: '80'
           prompt-text: |
@@ -216,7 +221,7 @@ jobs:
               research/community/, research/arxiv/, or any other raw-source
               directory; the digest is the curated distillation of those and
               reading them again would re-introduce the noise the digest
-              exists to remove. Do not use WebSearch in this Claude-routed
+              exists to remove. Do not use WebSearch in this routed
               lane; if a claim is not supported by the digest or model tickets,
               leave it out or mark it as unresolved rather than expanding the
               research scope.
@@ -337,7 +342,7 @@ jobs:
           base-sha: ${{ steps.basesha.outputs.sha }}
           expected-paths: |
             research/wiki/
-          label: Wiki OpenCode ingest
+          label: Wiki routed ingest
 
       # Propagate the agent step's outcome to job.status. With
       # continue-on-error: true on the agent step, a timeout/error would
@@ -345,16 +350,16 @@ jobs:
       # would report a green run. exit 1 here lets later `if: always()`
       # steps (telemetry) still fire while flipping job.status to failure
       # when it should be.
-      - name: Inspect OpenCode outcome
+      - name: Inspect routed agent outcome
         if: always()
         env:
           OUTCOME: ${{ steps.ingest.outcome }}
         run: |
-          if [ "$OUTCOME" = "failure" ]; then
-            echo "::error::Wiki OpenCode ingest step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
+          if [ "$OUTCOME" != "success" ]; then
+            echo "::error::Wiki routed ingest step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
             exit 1
           fi
-          echo "Wiki OpenCode ingest step succeeded."
+          echo "Wiki routed ingest step succeeded."
 
       # Mechanically enforce the "never delete a page" invariant. The prompt
       # says it, but a prompt is not a guarantee. Diff exactly the agent's

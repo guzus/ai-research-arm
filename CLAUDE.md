@@ -160,10 +160,16 @@ vs. a self-hosted outage — so whichever is alive still alerts.
 The per-workflow list that used to live here drifted to 100% wrong and was
 deleted on purpose.
 
-**Claude-harness agent lanes use `.github/actions/agent-run`,** not
-`anthropics/claude-code-action@v1` directly. RSS, community, arXiv, Bluesky,
-and wiki instead use the strict containerized OpenCode + DeepSeek V4 Flash
-route recorded in the same routing SSOT. `agent-run` resolves its backend from
+**Scheduled agent lanes use `.github/actions/agent-run` or the trusted
+`.github/actions/agent-dispatch`,** not `anthropics/claude-code-action@v1`
+directly. RSS, community, arXiv, Bluesky, and wiki share the
+`research-editorial` route; its current backend is strict containerized
+OpenCode + DeepSeek V4 Flash, but a registered adapter/model switch is one
+route-profile edit. The adapter registry requires both `isolated_workspace`
+and `editorial_contract`; current host-checkout `agent-run` is explicitly
+incompatible and rejected. The selected OpenCode action uses a disposable
+checkout and imports only validated output.
+`agent-run` resolves its backend from
 the SSOT (see Backends), sets up the sandbox centrally, and enforces two
 commit contracts: `require-output` proves every expected pathspec changed
 (`expected-paths` = exact artifact files; `allowed-paths` = everything the
@@ -313,10 +319,13 @@ one provider everywhere.
 ## Backends
 
 **[`data/agent-backends.json`](data/agent-backends.json) is the single
-source of truth** for per-lane routing, the backend profile table, and the
-ordered fallback chain — edit it to re-route with no workflow change (every
-call site already carries all provider secrets). agent-run lanes resolve it
-at runtime via `scripts/select_backend.py`; pi and direct
+source of truth** for per-lane routing, route groups, the backend profile table,
+and the ordered fallback chain — edit it to re-route with no workflow change
+(every dispatched call site carries the known credential slots, reserved for
+future compatible adapters). The dispatcher resolves lane → route → backend →
+adapter and rejects adapters without the required isolation capabilities;
+agent-run lanes use
+`scripts/select_backend.py`; pi and direct
 claude-code-action lanes are CI-enforced mirrors; strict lanes never fall
 back. Human view: [`docs/backend-matrix.md`](docs/backend-matrix.md) —
 regenerate with `uv run python scripts/build_backend_matrix.py` after any
@@ -327,11 +336,11 @@ derivable from the SSOT.
 
 | Backend | When | Auth | Notes |
 |---|---|---|---|
-| **Claude** | Default for remaining `agent-run` production lanes; `generative-research backend=claude` (no longer that lane's default — see Opus 5 below — but still its Fireworks-unavailable fallback) | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic, model **`claude-opus-5`** (the global `fallback.native_model`, raised from `claude-sonnet-5` on 2026-08-01 — same OAuth credential and subscription billing, so the flip is a quality/quota trade, not a new secret). Leads the agent-run fallback chain. RSS/community/arXiv/Bluesky/wiki do not consume this route. |
+| **Claude** | Default for remaining `agent-run` production lanes; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic, model **`claude-opus-5`** through `fallback.native_model`. Leads the agent-run fallback chain. Host-checkout agent-run is not a compatible `research-editorial` adapter, so the five routed editorial lanes cannot select this profile today. |
 | **GLM 5.2 (via Z.ai Coding Plan)** | Second link in the fallback chain; `agent-run backend=zai-glm-5p2`; default manual `hourly-twitter.yml` backend; `zai-claude-code-canary.yml` | `ZAI_API_KEY` | Anthropic-compatible Claude Code endpoint `https://api.z.ai/api/anthropic`, model `glm-5.2`, `CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000`. The `glm-5.2[1m]` alias was rejected as `Unknown Model` (canary run `28751367808`) — keep the endpoint-valid id unless a raw probe proves otherwise. Because it shares the harness and sandbox but not the credential, **the canary is the fastest way to tell a dead Claude token from a broken runner**. Selectors: `zai-glm-5p2`, `zai-glm-5.2`, `zai-glm52`, `zai`. |
 | **GLM 5.2 (via Fireworks)** | `generative-research backend=glm-5p2` | `FIREWORKS_API_KEY` | Model `accounts/fireworks/models/glm-5p2`. Selectors: `fireworks-glm-5p2`, `glm-5p2`, `glm`. In `generative-research.yml` the workflow-level `fireworks_fallback` input falls back to native Claude by default. |
 | **DeepSeek V4 Flash (via Fireworks)** | Low-cost/comparison: `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek tiers | `FIREWORKS_API_KEY` | Endpoint `https://api.fireworks.ai/inference` (base URL omits `/v1`; the client appends `/v1/messages`), model `accounts/fireworks/models/deepseek-v4-flash`. Overrides `ANTHROPIC_BASE_URL`/`AUTH_TOKEN`/`MODEL` so the Claude action transparently calls Fireworks. The direct DeepSeek API is retired (billing). Scheduled DeepSeek lanes are STRICT comparison tiers that never fall back. |
-| **DeepSeek V4 Flash (via opencode)** | Scheduled RSS, community, arXiv, Bluesky, and wiki; plus `generative-research`/`hourly-twitter` `backend=opencode-kimi-k3` and `opencode-kimi-canary.yml` | `OPENCODE_API_KEY` (Go plan) | opencode CLI pinned `opencode-ai@1.18.3` against `opencode-go/deepseek-v4-flash` — the **2026-07-31** release. 1M ctx, $0.07/$0.14 per Mtok on the $10/mo Go plan (caps $12/5h, $30/wk, $60/mo). **Operational concentration:** the five strict scheduled lanes share this single key and never fall back, so key expiry or plan-cap exhaustion can stale all five together; the canary distinguishes provider/auth from runner containment. **The `MOONSHOT_API_KEY` route is GONE, not repointed**: Moonshot serves Kimi only. Historical selector tokens and filenames keep their Kimi names for a cheap comparison-lane revert; every model-identifying label must say DeepSeek. |
+| **DeepSeek V4 Flash (via opencode)** | Current `research-editorial` route for RSS, community, arXiv, Bluesky, and wiki; plus `generative-research`/`hourly-twitter` `backend=opencode-kimi-k3` and `opencode-kimi-canary.yml` | `OPENCODE_API_KEY` (Go plan) | opencode CLI pinned `opencode-ai@1.18.3` against `opencode-go/deepseek-v4-flash` — the **2026-07-31** release. 1M ctx, $0.07/$0.14 per Mtok on the $10/mo Go plan (caps $12/5h, $30/wk, $60/mo). The trusted action injects the selected SSOT `provider/model` into an ephemeral read-only config, so another model on the same registered adapter needs no static config edit. **Current operational concentration:** while the shared route points here, one key/cap failure can stale all five; the canary distinguishes provider/auth from runner containment. **The `MOONSHOT_API_KEY` route is GONE, not repointed**: Moonshot serves Kimi only. Historical selector tokens and filenames keep their Kimi names for a cheap comparison-lane revert; every model-identifying label must say DeepSeek. |
 | **Opus 5 (native)** | **The `generative-research` default** (SSOT lane `generative-research-default`, since 2026-07-31) — no-`backend` dispatches, `gen-research` issues, and `hourly-twitter.yml` auto-research; also explicit `backend=opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic on **`claude-opus-5`**. Not the Fireworks-unavailable fallback target — that stays `claude`, hard-coded in the workflow's effective-backend step. Same OAuth credential and subscription billing as `claude`, so it keeps the single recovery retry that `fable-5` does not get. The resolved model pins `--model`, every `ANTHROPIC_DEFAULT_*` alias, and `CLAUDE_CODE_SUBAGENT_MODEL`; a pre-push gate then verifies the committed `index.json` row reads `claude-opus-5` and hard-rolls-back on mismatch. Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
 | **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage bills against the ChatGPT/Codex subscription, not the API. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p7`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
@@ -425,10 +434,10 @@ Secrets are configured in GitHub Actions. None are committed.
 
 | Secret | Used by | Notes |
 |---|---|---|
-| `CLAUDE_CODE_OAUTH_TOKEN` | Claude-harness `agent-run` lanes + direct-Claude workflows | Required by `claude-code-action@v1`; agent-run call sites carry it alongside alternate-provider keys for runtime routing. Expiry can take down the Claude-harness failure domain, but RSS/community/arXiv/Bluesky/wiki use strict OpenCode Go instead. Log signature: `is_error: true`, `num_turns: 1`, `total_cost_usd: 0`, `duration_ms` < ~2000, zero permission denials — the agent dies before doing any work. Re-mint with `claude setup-token` → `gh secret set CLAUDE_CODE_OAUTH_TOKEN`. Dispatch `zai-claude-code-canary.yml` to separate a dead credential from a broken runner/sandbox. Last expiry 2026-07-24; see rule 14. |
+| `CLAUDE_CODE_OAUTH_TOKEN` | Claude-harness `agent-run` lanes, direct-Claude workflows, and a reserved dispatcher credential slot | Required by `claude-code-action@v1`; agent-run call sites carry it alongside alternate-provider keys for runtime routing. Expiry can take down the Claude-harness failure domain, but current host-checkout agent-run is rejected by `research-editorial` and never receives this reserved dispatcher slot. Log signature: `is_error: true`, `num_turns: 1`, `total_cost_usd: 0`, `duration_ms` < ~2000, zero permission denials — the agent dies before doing any work. Re-mint with `claude setup-token` → `gh secret set CLAUDE_CODE_OAUTH_TOKEN`; dispatch `zai-claude-code-canary.yml` to separate a dead credential from a broken runner/sandbox. Last expiry 2026-07-24; see rule 14. |
 | `ZAI_API_KEY` | Fallback chain link 2; `agent-run backend=zai-glm-5p2`; `zai-claude-code-canary.yml` | Z.ai Coding Plan key. Now load-bearing for outage resilience, not just comparison. |
-| `FIREWORKS_API_KEY` | `generative-research backend=glm-5p2`; DeepSeek/Kimi comparison lanes | Covers the GLM-via-Fireworks and DeepSeek-V4-Flash routes. **The account is SUSPENDED as of 2026-08-01** — every probe returns `HTTP 412: Account getclarito-5mege6wpl is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices` (run `30641250660`). `twitter-deepseek` is strict, so it never falls back: its `37 */6 * * *` cron hard-failed 4×/day from ~2026-07-05, and `research/twitter-deepseek/` has been stale since then. **That cron was dropped 2026-08-01** — the lane is dispatch-only until billing is settled at https://fireworks.ai/account/billing, then restore the cron in `hourly-twitter.yml`. Historical note for anyone reading old runs: those ~110 red runs were NOT a primary-lane problem, so check the job name before diagnosing a failure rate. |
-| `OPENCODE_API_KEY` | RSS, community, arXiv, Bluesky, wiki; `backend=opencode-kimi-k3`; `opencode-kimi-canary.yml` | OpenCode Go route serving `deepseek-v4-flash`. Go key: https://opencode.ai/auth; caps are $12/5h, $30/week, $60/month. The five scheduled lanes are strict and share this one credential, so monitor cap exhaustion as a correlated-staleness risk. `MOONSHOT_API_KEY` is not a DeepSeek route. Validate with the canary before a full backfill. |
+| `FIREWORKS_API_KEY` | Fireworks generative/comparison lanes and a reserved dispatcher credential slot | Covers GLM and DeepSeek Fireworks profiles. The prewired dispatcher slot is for a future isolated adapter; current agent-run profiles are not selectable by `research-editorial`. **The account is SUSPENDED as of 2026-08-01** — probes return `HTTP 412: Account getclarito-5mege6wpl is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices` (run `30641250660`). The strict `twitter-deepseek` cron had hard-failed 4×/day since ~2026-07-05 and was dropped 2026-08-01; it remains dispatch-only until billing is settled at https://fireworks.ai/account/billing. Check the job name before attributing those historical failures to a primary lane. |
+| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, and the dispatcher credential set | OpenCode Go key: https://opencode.ai/auth; caps are $12/5h, $30/week, $60/month. The five editorial lanes use it while `research-editorial` selects the current strict OpenCode profile, so monitor cap exhaustion as a correlated-staleness risk. `MOONSHOT_API_KEY` is not a DeepSeek route. Validate with `opencode-kimi-canary.yml` before a full backfill. |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | The file-backed `~/.codex/auth.json` from `codex login`. Treat like a password; one auth file per serialized runner stream. |
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | birdy workflows (`hourly-twitter*`, `24h-model-timeline`, `twitter-account-explorer`, `generative-research`) | X/Twitter cookies; they expire — see rule 6. The env-var names keep the `BIRD_` prefix because that is what birdy reads. |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `blog-subscriptions`, `daily-digest`, `liveness-check` | Blog alerts, digest delivery, liveness escalation. |
@@ -630,11 +639,11 @@ output or break the pipeline. Read them before editing.
     two Authorization headers).
 
 14. **No single credential may be able to take down the whole agent fleet.**
-    The remaining `agent-run` production lanes route to `backend: claude`, so
-    their global `fallback.chain` must span providers. RSS, community, arXiv,
-    Bluesky, and wiki deliberately form a separate strict OpenCode Go failure
-    domain: one `OPENCODE_API_KEY` or plan-cap failure can stale those five,
-    but it cannot also take down digest/Twitter/model-timeline. On
+    The remaining `agent-run` production lanes use a provider-spanning global
+    `fallback.chain`. RSS, community, arXiv, Bluesky, and wiki form one shared
+    route failure domain: under the current strict OpenCode profile one
+    `OPENCODE_API_KEY` or plan-cap failure can stale those five; changing the
+    route changes that blast radius. On
     2026-07-24 it wasn't: the chain was `["claude"]` and `probe_claude()`
     hardcoded "always available", so an expired `CLAUDE_CODE_OAUTH_TOKEN`
     killed every lane at once (then including digest, RSS, community, Twitter,

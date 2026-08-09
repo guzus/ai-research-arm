@@ -167,17 +167,19 @@ jobs:
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       # continue-on-error lets the append step emit a clear missing-output
-      # error when OpenCode fails or exits green without writing the section.
-      - name: Process Bluesky feed with OpenCode + DeepSeek V4 Flash
+      # error when the routed agent fails or exits green without writing the section.
+      - name: Process Bluesky feed with SSOT-routed agent
         id: bluesky_agent
         continue-on-error: true
-        uses: ./.github/actions/run-opencode-container
+        uses: ./.github/actions/agent-dispatch
         with:
           mode: editorial
           lane: bluesky
           return-artifacts: |
             .tmp/bluesky-section.md
-          model: opencode-go/deepseek-v4-flash
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           timeout-minutes: '12'
           prompt-text: |
@@ -294,7 +296,7 @@ jobs:
           FILTERED=".tmp/bluesky-section-deduped.md"
           export FILE SECTION FILTERED
           if [ ! -s "$SECTION" ]; then
-            echo "::error::OpenCode did not produce $SECTION; refusing to silently drop this cycle."
+            echo "::error::Routed agent did not produce $SECTION; refusing to silently drop this cycle."
             exit 1
           fi
           # Ensure the title header exists (the pre-step creates it, but be
@@ -405,12 +407,12 @@ jobs:
           base-sha: ${{ steps.bluesky-output-base.outputs.sha }}
           expected-paths: |
             research/bluesky/
-          label: Bluesky OpenCode curator
+          label: Bluesky routed curator
 
       - name: Propagate Bluesky agent contract failure
         if: always() && steps.bluesky_agent.outcome != 'success'
         run: |
-          echo "::error::Bluesky opencode action failed its containment or artifact contract."
+          echo "::error::Bluesky routed agent failed its containment or artifact contract."
           exit 1
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm).

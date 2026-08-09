@@ -75,7 +75,7 @@ jobs:
           echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -v-1d +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
 
       # Base SHA for the standalone output guard below — captured BEFORE the
-      # agent so the guard proves OpenCode committed under research/arxiv/.
+      # agent so the guard proves the routed agent committed under research/arxiv/.
       - name: Capture arXiv output base
         id: arxiv-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
@@ -83,17 +83,21 @@ jobs:
       # continue-on-error lets the final require-output step report the
       # missing artifact clearly instead of hiding the root cause in
       # the composite action.
-      - name: Fetch arXiv AI papers with OpenCode + DeepSeek V4 Flash
+      - name: Fetch arXiv AI papers with SSOT-routed agent
         id: arxiv-agent
         continue-on-error: true
-        uses: ./.github/actions/run-opencode-container
+        uses: ./.github/actions/agent-dispatch
         with:
           mode: editorial
           lane: arxiv
+          expected-paths: |
+            research/arxiv/${{ steps.date.outputs.date }}-papers.md
           allowed-paths: |
             research/arxiv/${{ steps.date.outputs.date }}-papers.md
             research/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt
-          model: opencode-go/deepseek-v4-flash
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           timeout-minutes: '25'
           prompt-text: |
@@ -184,7 +188,7 @@ jobs:
             git add research/arxiv/${{ steps.date.outputs.date }}-papers.md research/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt
             git commit -m "arXiv papers ${{ steps.date.outputs.date }}"
 
-      # Final hard gate: Claude must have committed under research/arxiv/
+      # Final hard gate: the routed agent must have committed under research/arxiv/
       # since the pre-agent base SHA. A missing output is better than
       # publishing an uncurated fallback listing as editorial content.
       - name: Require arXiv output
@@ -198,7 +202,7 @@ jobs:
       - name: Propagate arXiv agent contract failure
         if: always() && steps.arxiv-agent.outcome != 'success'
         run: |
-          echo "::error::arXiv opencode action failed its containment or output contract."
+          echo "::error::arXiv routed agent failed its containment or output contract."
           exit 1
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):

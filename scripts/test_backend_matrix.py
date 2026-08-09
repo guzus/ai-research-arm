@@ -10,11 +10,13 @@ import copy
 import json
 import os
 import re
+import signal
 import shlex
 import stat
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 from pathlib import Path
 
@@ -22,13 +24,19 @@ import yaml
 
 from build_backend_matrix import (
     LANES_FILE,
+    Profile,
+    build_readme_diagram,
+    build_rows,
     check_fallback,
     cross_check,
+    load_adapters,
     load_lanes,
     load_profiles,
+    load_routes,
     observe_workflow,
     workflow_files,
 )
+from resolve_agent_route import resolve_route
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RESOLVER = REPO_ROOT / "scripts" / "resolve_backend_lane.py"
@@ -43,12 +51,120 @@ class RoutingInvariants(unittest.TestCase):
     def setUpClass(cls):
         cls.lanes, cls.fallback = load_lanes()
         cls.profiles = load_profiles()
+        cls.adapters = load_adapters()
         cls.obs = observations()
 
     def test_cross_check_is_clean_on_repo_state(self):
         errors = check_fallback(self.fallback, self.profiles) \
             + cross_check(self.lanes, self.obs, self.profiles)
         self.assertEqual(errors, [])
+
+    def test_research_editorial_rejects_host_checkout_adapter(self):
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        config["routes"]["research-editorial"]["backend"] = "claude"
+        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest"):
+            with self.assertRaisesRegex(ValueError, "isolated_workspace"):
+                resolve_route(config, lane)
+
+    def test_synthetic_opencode_profile_needs_only_profile_and_route_data(self):
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        workflows_before = {
+            name: (REPO_ROOT / ".github/workflows" / name).read_bytes()
+            for name in ("hourly-rss.yml", "2h-bluesky.yml", "4h-community.yml",
+                         "daily-arxiv.yml", "wiki-ingest.yml")
+        }
+        config["backends"]["opencode-novel-flash"] = {
+            "adapter": "opencode", "provider": "opencode-go",
+            "model": "novel-flash",
+            "display_name": "Novel Flash via OpenCode",
+        }
+        config["routes"]["research-editorial"]["backend"] = "opencode-novel-flash"
+        profiles = copy.deepcopy(self.profiles)
+        profile = Profile("opencode-novel-flash", "opencode", "opencode-go",
+                          "novel-flash", "Novel Flash via OpenCode",
+                          ["opencode-novel-flash"])
+        profiles[profile.normalized] = profile
+        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest"):
+            selected = resolve_route(config, lane)
+            self.assertEqual("opencode", selected.adapter)
+            self.assertEqual("opencode-go/novel-flash", selected.model_ref)
+        self.assertEqual([], cross_check(
+            self.lanes, self.obs, profiles, config["routes"]
+        ))
+        rows = build_rows(
+            self.lanes, self.obs, profiles, self.fallback["native_model"],
+            "claude", self.fallback["chain"], config["routes"],
+        )
+        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest"):
+            row = next(row for row in rows if row[0].startswith(f"{lane} (route:"))
+            self.assertIn("novel-flash", row[4])
+        diagram = build_readme_diagram(
+            self.lanes, profiles, self.fallback["chain"],
+            self.fallback["native_model"], True, True, config["routes"],
+        )
+        group_node = next(line.split("[", 1)[0].strip() for line in diagram.splitlines()
+                          if "arxiv" in line and "bluesky" in line and "rss" in line)
+        self.assertIn(f'{group_node} -->|"novel-flash"| OC', diagram)
+        production_config = json.loads(
+            (REPO_ROOT / ".github/opencode/opencode.json").read_text()
+        )
+        self.assertNotIn("model", production_config)
+        self.assertNotIn("provider", production_config)
+        for name, content in workflows_before.items():
+            self.assertEqual(content, (REPO_ROOT / ".github/workflows" / name).read_bytes())
+
+    def test_route_contract_and_provider_credential_binding_fail_closed(self):
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        config["routes"]["research-editorial"]["contract"] = "other"
+        with self.assertRaisesRegex(ValueError, "contract"):
+            resolve_route(config, "rss")
+
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        config["adapters"]["opencode"]["provider_credentials"]["opencode-go"] = \
+            "claude-code-oauth-token"
+        with self.assertRaisesRegex(ValueError, "opencode-api-key"):
+            resolve_route(config, "rss")
+
+    def test_dispatched_lane_io_contracts_are_exact_and_route_neutral(self):
+        expected = {
+            "rss": ("research/rss/${{ steps.datetime.outputs.date }}.md",
+                    "research/rss/${{ steps.datetime.outputs.date }}.md", ""),
+            "community": ("research/community/${{ steps.datetime.outputs.date }}-hn.md\nresearch/community/${{ steps.datetime.outputs.date }}-reddit.md",
+                          "research/community/${{ steps.datetime.outputs.date }}-hn.md\nresearch/community/${{ steps.datetime.outputs.date }}-reddit.md", ""),
+            "arxiv": ("research/arxiv/${{ steps.date.outputs.date }}-papers.md",
+                      "research/arxiv/${{ steps.date.outputs.date }}-papers.md\nresearch/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt", ""),
+            "wiki-ingest": ("research/wiki/", "research/wiki/", ""),
+            "bluesky": ("", "", ".tmp/bluesky-section.md"),
+        }
+        seen = {}
+        for obs in self.obs.values():
+            for step in obs.dispatch_steps:
+                seen[step.lane] = (step.expected_paths, step.allowed_paths,
+                                   step.return_artifacts)
+        self.assertEqual(expected, seen)
+
+    def test_dispatcher_executes_only_compatible_isolated_child_and_scopes_secret(self):
+        action = yaml.safe_load(
+            (REPO_ROOT / ".github/actions/agent-dispatch/action.yml").read_text()
+        )
+        steps = action["runs"]["steps"]
+        local_children = [step for step in steps if "uses" in step]
+        self.assertEqual(1, len(local_children))
+        child = local_children[0]
+        self.assertEqual("./.github/actions/run-opencode-container", child["uses"])
+        self.assertEqual("${{ inputs.opencode-api-key }}",
+                         child["with"]["opencode-api-key"])
+        rendered_child = json.dumps(child, sort_keys=True)
+        for secret_input in ("claude-code-oauth-token", "fireworks-api-key",
+                             "zai-api-key"):
+            self.assertNotIn(secret_input, rendered_child)
+
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        adapter = config["adapters"]["opencode"]
+        self.assertIs(adapter["isolated_workspace"], True)
+        self.assertIs(adapter["editorial_contract"], True)
+        self.assertEqual({"opencode-go": "opencode-api-key"},
+                         adapter["provider_credentials"])
 
     def test_global_fallback_chain_shape(self):
         self.assertEqual(self.fallback["harness"], "agent-run")
@@ -244,7 +360,11 @@ class RoutingInvariants(unittest.TestCase):
         (not "no moonshot") is strictly stronger: any second route fails.
         """
         seen: dict[str, set] = {}
-        for name in self.OPENCODE_WORKFLOWS:
+        direct_workflows = (
+            "generative-research.yml", "hourly-twitter.yml",
+            "opencode-kimi-canary.yml",
+        )
+        for name in direct_workflows:
             doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
                                  .read_text(encoding="utf-8"))
             found = set()
@@ -294,8 +414,9 @@ class RoutingInvariants(unittest.TestCase):
             doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
                                  .read_text(encoding="utf-8"))
             containing_jobs = [job for job in (doc.get("jobs") or {}).values()
-                               if any("run-opencode-container" in
-                                      str(step.get("uses") or "")
+                               if any(str(step.get("uses") or "") in {
+                                      "./.github/actions/run-opencode-container",
+                                      "./.github/actions/agent-dispatch"}
                                       for step in (job.get("steps") or []))]
             self.assertTrue(containing_jobs, name)
             for job in containing_jobs:
@@ -323,8 +444,9 @@ class RoutingInvariants(unittest.TestCase):
             doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
                                  .read_text(encoding="utf-8"))
             containing_jobs = [job for job in (doc.get("jobs") or {}).values()
-                               if any("run-opencode-container" in
-                                      str(step.get("uses") or "")
+                               if any(str(step.get("uses") or "") in {
+                                      "./.github/actions/run-opencode-container",
+                                      "./.github/actions/agent-dispatch"}
                                       for step in (job.get("steps") or []))]
             self.assertEqual(1, len(containing_jobs), name)
             steps = containing_jobs[0].get("steps") or []
@@ -509,22 +631,22 @@ class RoutingInvariants(unittest.TestCase):
         # or the cheap preflight certifies an entitlement the run never uses.
         self.assertIn(f'"model": "{model_id}"', canary)
         self.assertIn(f'{{"model":"{model_id}"', gen)
-        # The declared provider models must cover the pinned id, or resolution
-        # breaks on a runner whose models.dev cache predates it.
+        # The production config deliberately carries no static model/default:
+        # every action call is authoritative through `opencode run -m`, so a
+        # newly registered SSOT profile does not require a config edit.
+        production = json.loads((REPO_ROOT / ".github" / "opencode" / "opencode.json")
+                                .read_text(encoding="utf-8"))
+        self.assertNotIn("model", production)
+        self.assertNotIn("provider", production)
         for name in ("opencode.json", "opencode-canary.json"):
             cfg = json.loads((REPO_ROOT / ".github" / "opencode" / name)
                              .read_text(encoding="utf-8"))
-            self.assertIn(model_id, cfg["provider"]["opencode-go"]["models"], name)
             # opencode REJECTS unknown top-level keys ("Unrecognized key:
             # $comment"), which breaks config injection for the whole lane.
             # Keep revert notes in the workflows and docs, never in here.
             self.assertLessEqual(set(cfg) - {"$schema", "model", "provider",
                                              "permission", "agent", "mcp"}, set(),
                                  f"{name}: unknown top-level key rejected by opencode")
-        default_model = json.loads(
-            (REPO_ROOT / ".github" / "opencode" / "opencode.json")
-            .read_text(encoding="utf-8"))["model"]
-        self.assertEqual(f"opencode-go/{model_id}", default_model)
 
     def test_opencode_twitter_tier_labels_name_the_served_model(self):
         # The tier's selector token and output dir keep historical Kimi names
@@ -623,6 +745,21 @@ class RoutingInvariants(unittest.TestCase):
         # Pinned install lives here now.
         self.assertIn("opencode-ai@1.18.3", action)
         self.assertIn("OPENCODE_DISABLE_AUTOUPDATE=1", action)
+        self.assertIn("model must be one canonical provider/model ref", action)
+        self.assertIn("scripts/build_opencode_config.py", action)
+        self.assertIn('--volume "$generated_opencode_config:/tmp/opencode.generated.json:ro"', action)
+        self.assertIn("--env OPENCODE_CONFIG=/tmp/opencode.generated.json", action)
+        self.assertIn('trap \'exit 143\' TERM', action)
+        self.assertIn('trap \'exit 130\' INT', action)
+        self.assertIn("trap '' TERM INT", action)
+        self.assertIn('--name "$container_name"', action)
+        self.assertIn('timeout 30s docker rm -f "$container_name"', action)
+        self.assertLess(action.index('docker rm -f "$container_name"'),
+                        action.index('docker image rm -f "$image"'),
+                        "cancellation cleanup must stop the secret-bearing container first")
+        self.assertLess(action.index("trap '' TERM INT"),
+                        action.index('docker rm -f "$container_name"'),
+                        "cleanup must ignore cancellation escalation before Docker removal")
         self.assertIn('cp "$GITHUB_ACTION_PATH/birdy-fast"', action)
         self.assertIn("--env GITHUB_WORKSPACE=/workspace", action)
         self.assertIn("clone --quiet --no-hardlinks", action)
@@ -662,6 +799,69 @@ class RoutingInvariants(unittest.TestCase):
         self.assertNotIn('--volume "$HOME', action)
         self.assertNotIn("--privileged", action)
 
+    def test_opencode_cleanup_survives_cancellation_escalation(self):
+        action_doc = yaml.safe_load(
+            (REPO_ROOT / ".github/actions/run-opencode-container/action.yml")
+            .read_text(encoding="utf-8")
+        )
+        run = action_doc["runs"]["steps"][0]["run"]
+        start = run.index("cleanup() {")
+        end = run.index("\ntrap cleanup EXIT", start)
+        cleanup_function = run[start:end]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bin_dir = root / "bin"
+            bin_dir.mkdir()
+            log = root / "docker.log"
+            docker = bin_dir / "docker"
+            docker.write_text(
+                "#!/bin/bash\n"
+                "set -eu\n"
+                "case \"$*\" in\n"
+                "  'container inspect ara-opencode-test') exit 0 ;;\n"
+                "  'rm -f ara-opencode-test')\n"
+                "    echo rm-start >> \"$DOCKER_TEST_LOG\"\n"
+                "    /bin/sleep 1\n"
+                "    echo rm-end >> \"$DOCKER_TEST_LOG\"\n"
+                "    exit 0 ;;\n"
+                "  *) exit 1 ;;\n"
+                "esac\n",
+                encoding="utf-8",
+            )
+            docker.chmod(0o755)
+            timeout = bin_dir / "timeout"
+            timeout.write_text(
+                "#!/bin/bash\n"
+                "set -eu\n"
+                "shift\n"
+                "exec \"$@\"\n",
+                encoding="utf-8",
+            )
+            timeout.chmod(0o755)
+            script = "\n".join([
+                "set -euo pipefail",
+                'container_name="ara-opencode-test"',
+                'image=""', 'build_dir=""', 'isolated_workspace=""',
+                'staged_prompt=""', cleanup_function,
+                "trap cleanup EXIT", "trap 'exit 143' TERM", "exit 143",
+            ])
+            env = os.environ.copy()
+            env["PATH"] = f"{bin_dir}:/usr/bin:/bin"
+            env["DOCKER_TEST_LOG"] = str(log)
+            proc = subprocess.Popen(["bash", "-c", script], env=env)
+            deadline = time.monotonic() + 5
+            while time.monotonic() < deadline:
+                if log.exists() and "rm-start" in log.read_text(encoding="utf-8"):
+                    break
+                time.sleep(0.02)
+            else:
+                proc.kill()
+                self.fail("cleanup never began Docker removal")
+            os.kill(proc.pid, signal.SIGTERM)
+            self.assertEqual(143, proc.wait(timeout=5))
+            self.assertIn("rm-end", log.read_text(encoding="utf-8"))
+
     def test_editorial_mode_accepts_artifact_only_but_twitter_does_not(self):
         """Bluesky returns a temp section; Twitter still requires commit paths."""
         action_path = (REPO_ROOT / ".github" / "actions" /
@@ -676,6 +876,7 @@ class RoutingInvariants(unittest.TestCase):
             "ALLOWED_PATHS": "",
             "RETURN_ARTIFACTS": ".tmp/bluesky-section.md",
             "OPENCODE_CONFIG_REL": ".github/opencode/opencode.json",
+            "OPENCODE_MODEL_REF": "opencode-go/deepseek-v4-flash",
             "BIRDY_TOOL_LOG_REL": "",
         }
         editorial = subprocess.run(
@@ -1936,6 +2137,17 @@ class CrossCheckEnforcement(unittest.TestCase):
         errors = cross_check(lanes, obs, self.profiles)
         self.assertTrue(any("explicit backend" in e for e in errors), errors)
 
+    def test_suffixed_dispatch_action_is_not_trusted(self):
+        source = REPO_ROOT / ".github/workflows/hourly-rss.yml"
+        with tempfile.TemporaryDirectory() as tmp:
+            mutated = Path(tmp) / "hourly-rss.yml"
+            mutated.write_text(source.read_text().replace(
+                "uses: ./.github/actions/agent-dispatch",
+                "uses: ./.github/actions/agent-dispatch-evil",
+            ))
+            observed = observe_workflow(mutated)
+        self.assertEqual([], observed.dispatch_steps)
+
     def test_unknown_lane_is_an_error(self):
         lanes, obs = self.mutated()
         obs["daily-digest.yml"].agent_run[0].lane = "no-such-lane"
@@ -1963,9 +2175,9 @@ class CrossCheckEnforcement(unittest.TestCase):
 
     def test_opencode_mirror_divergence_is_an_error(self):
         lanes, obs = self.mutated()
-        obs["hourly-rss.yml"].opencode_steps[0].model = "opencode-go/other"
+        obs["hourly-rss.yml"].dispatch_steps[0].lane = "community"
         errors = cross_check(lanes, obs, self.profiles)
-        self.assertTrue(any("workflow pins" in e and "rss" in e for e in errors), errors)
+        self.assertTrue(any("belongs to workflow" in e for e in errors), errors)
 
     def test_unsupported_gen_research_default_is_an_error(self):
         lanes, obs = self.mutated()
@@ -2006,10 +2218,10 @@ class CrossCheckEnforcement(unittest.TestCase):
 
     def test_duplicate_named_opencode_lane_across_steps_is_an_error(self):
         lanes, obs = self.mutated()
-        duplicate = copy.deepcopy(obs["hourly-rss.yml"].opencode_steps[0])
-        obs["hourly-rss.yml"].opencode_steps.append(duplicate)
+        duplicate = copy.deepcopy(obs["hourly-rss.yml"].dispatch_steps[0])
+        obs["hourly-rss.yml"].dispatch_steps.append(duplicate)
         errors = cross_check(lanes, obs, self.profiles)
-        self.assertTrue(any("2 named opencode steps" in e for e in errors), errors)
+        self.assertTrue(any("2 agent-dispatch steps" in e for e in errors), errors)
 
     def test_lane_workflow_mismatch_is_an_error(self):
         lanes, obs = self.mutated()
@@ -2019,9 +2231,9 @@ class CrossCheckEnforcement(unittest.TestCase):
 
     def test_wrong_harness_for_opencode_lane_is_an_error(self):
         lanes, obs = self.mutated()
-        lanes["rss"]["harness"] = "pi"
+        lanes["rss"]["route"] = "no-such-route"
         errors = cross_check(lanes, obs, self.profiles)
-        self.assertTrue(any("expected opencode" in e for e in errors), errors)
+        self.assertTrue(any("unknown route" in e for e in errors), errors)
 
     def test_unknown_chain_entry_is_an_error(self):
         errors = check_fallback({"harness": "agent-run", "chain": ["nonsense"],
@@ -2040,9 +2252,10 @@ class CrossCheckEnforcement(unittest.TestCase):
 
     def test_non_boolean_strict_is_an_error(self):
         lanes, obs = self.mutated()
-        lanes["rss"]["strict"] = "yes"
-        errors = cross_check(lanes, obs, self.profiles)
-        self.assertTrue(any("strict must be a boolean" in e for e in errors), errors)
+        routes = copy.deepcopy(json.loads(LANES_FILE.read_text())["routes"])
+        routes["research-editorial"]["fallback"] = True
+        errors = cross_check(lanes, obs, self.profiles, routes)
+        self.assertTrue(any("fallback must be" in e for e in errors), errors)
 
     def test_fallback_missing_native_model_is_an_error(self):
         errors = check_fallback({"harness": "agent-run", "chain": ["claude"]}, self.profiles)

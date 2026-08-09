@@ -158,17 +158,22 @@ jobs:
         id: community-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      - name: Process community data with OpenCode + DeepSeek V4 Flash
+      - name: Process community data with SSOT-routed agent
         id: community-agent
         continue-on-error: true
-        uses: ./.github/actions/run-opencode-container
+        uses: ./.github/actions/agent-dispatch
         with:
           mode: editorial
           lane: community
+          expected-paths: |
+            research/community/${{ steps.datetime.outputs.date }}-hn.md
+            research/community/${{ steps.datetime.outputs.date }}-reddit.md
           allowed-paths: |
             research/community/${{ steps.datetime.outputs.date }}-hn.md
             research/community/${{ steps.datetime.outputs.date }}-reddit.md
-          model: opencode-go/deepseek-v4-flash
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           timeout-minutes: '25'
           prompt-text: |
@@ -273,7 +278,7 @@ jobs:
       - name: Propagate community agent contract failure
         if: always() && steps.community-agent.outcome != 'success'
         run: |
-          echo "::error::Community opencode action failed its containment or output contract."
+          echo "::error::Community routed agent failed its containment or output contract."
           exit 1
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
