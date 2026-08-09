@@ -384,7 +384,7 @@ annotated list. None are needed for the
 | Secret | Required for | Description |
 |--------|--------------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | native-Claude lanes + fallback path | Claude Code auth |
-| `FIREWORKS_API_KEY` | default scheduled lanes (GLM 5.2, DeepSeek, Kimi) | Anthropic-compatible Fireworks endpoint |
+| `FIREWORKS_API_KEY` | opt-in generative-research and Twitter comparison lanes (GLM 5.2, DeepSeek, Kimi) | Anthropic-compatible Fireworks endpoint; not the default for the five OpenCode editorial lanes |
 | `ZAI_API_KEY` | Z.ai GLM 5.2 lanes | Z.ai Coding Plan, Anthropic-compatible route |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
 | `OPENCODE_API_KEY` | RSS, community, arXiv, Bluesky, wiki; `generative-research`/`hourly-twitter` `backend=opencode-kimi-k3` | OpenCode Go subscription key for containerized `deepseek-v4-flash`. The five scheduled lanes are strict and share the Go-plan caps ($12/5h, $30/week, $60/month). |

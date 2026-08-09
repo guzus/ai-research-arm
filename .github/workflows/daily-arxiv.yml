@@ -13,7 +13,7 @@ concurrency:
 jobs:
   arxiv-research:
     runs-on: [self-hosted, Linux]
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: write
       pull-requests: write

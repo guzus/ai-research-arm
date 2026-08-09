@@ -630,6 +630,19 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
             errors.append(f"lane '{lane_key}' is referenced by {n} agent-run steps — "
                           "one lane per call site; add a distinct lane per step")
 
+    # Named opencode editorial callers are CI-enforced mirrors rather than
+    # runtime-routed agent-run calls, but the lane identity must be just as
+    # unambiguous for matrix attribution and outage diagnosis.
+    opencode_counts: dict[str, int] = {}
+    for obs in observations.values():
+        for step in obs.opencode_steps:
+            if step.lane:
+                opencode_counts[step.lane] = opencode_counts.get(step.lane, 0) + 1
+    for lane_key, n in sorted(opencode_counts.items()):
+        if n > 1:
+            errors.append(f"lane '{lane_key}' is referenced by {n} named opencode steps — "
+                          "one lane per call site; add a distinct lane per step")
+
     return errors
 
 

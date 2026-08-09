@@ -11,9 +11,13 @@ short pointer plus the few genuinely agent-specific notes.
 
 ## Agent-specific notes
 
-- **Scheduled content workflows** use `.github/actions/agent-run` so the
-  provider route is modular and Fireworks-backed lanes can enforce committed
-  output. Direct Claude workflows may still use
+- **Claude-harness scheduled workflows** use `.github/actions/agent-run` so
+  their provider route is modular and committed output is enforced centrally.
+  The strict OpenCode exception is RSS, community, arXiv, Bluesky, and wiki:
+  those five use `.github/actions/run-opencode-container`, share
+  `OPENCODE_API_KEY` plus the Go-plan caps ($12/5h, $30/week, $60/month), and
+  never fall back—one key/cap failure can stale all five together. Direct
+  Claude workflows may still use
   `anthropics/claude-code-action@v1`; when they do, pass the model via
   `claude_args`, never as a separate `model:` input:
 

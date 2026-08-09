@@ -1580,6 +1580,13 @@ class CrossCheckEnforcement(unittest.TestCase):
         errors = cross_check(lanes, obs, self.profiles)
         self.assertTrue(any("2 agent-run steps" in e for e in errors), errors)
 
+    def test_duplicate_named_opencode_lane_across_steps_is_an_error(self):
+        lanes, obs = self.mutated()
+        duplicate = copy.deepcopy(obs["hourly-rss.yml"].opencode_steps[0])
+        obs["hourly-rss.yml"].opencode_steps.append(duplicate)
+        errors = cross_check(lanes, obs, self.profiles)
+        self.assertTrue(any("2 named opencode steps" in e for e in errors), errors)
+
     def test_lane_workflow_mismatch_is_an_error(self):
         lanes, obs = self.mutated()
         lanes["rss"]["workflow"] = "2h-bluesky.yml"
