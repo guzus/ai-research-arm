@@ -1,0 +1,14 @@
+AI News - 2026-08-10
+
+TOP STORIES:
+• OpenAI's in-development Astra model nears first-ever "Critical" cyber-risk threshold; dev paused
+• Anthropic makes Claude Code "auto mode" default for paid plans starting Aug 14
+• Moore Threads (China GPU maker) plans Hong Kong listing after 147% revenue jump
+• Google expands Gemini in Classroom to all ages, K-12 rollout begins
+
+KEY NUMBERS:
+• Moore Threads H1 revenue: 1.74B yuan (+147%), shares up 420% since debut
+• Auto mode caught 89% of dangerous commands vs 13.6% for manual review (1,053 users tested)
+• Hong Kong AI-chip IPO listings past $42B in 2026, a six-year high
+
+Full report on GitHub.
