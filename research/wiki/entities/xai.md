@@ -6,8 +6,9 @@ aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
 description: Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.
 created_at: 2026-06-08
-timestamp: 2026-07-30T00:00:00Z
+timestamp: 2026-08-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
@@ -161,6 +162,14 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   Analysis Speech-to-Speech Quality Index at 82.9%**, cutting
   time-to-first-audio from 1.25s to 0.70s at 60% fewer reasoning tokens,
   priced **$0.08/minute** (ARA daily digest 2026-07-30).
+- **Grok Image 2.0 — xAI's image model takes editing seriously (2026-08-09,
+  blog-sourced).** Coverage of a **Grok Image 2.0** release focused on
+  substantially improved **image editing** — positioning it against the
+  consumer image-editing front led by Google's [[nano-banana-2-lite|Nano
+  Banana]] and [[midjourney]] — a modest capability update to xAI's image
+  line rather than a new foundation model. Single-blog coverage in the
+  digest; no official xAI announcement or model card was captured (ARA daily
+  digest 2026-08-10).
 
 ## Open questions
 

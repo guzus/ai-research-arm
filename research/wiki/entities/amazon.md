@@ -6,13 +6,14 @@ aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy"]
 tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
 description: Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.
 created_at: 2026-06-14
-timestamp: 2026-07-30T00:00:00Z
+timestamp: 2026-08-10T00:00:00Z
 market:
   ticker: AMZN
   exchange: NASDAQ
   symbol: NASDAQ:AMZN
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA model ticket — Amazon Nova frontier reorg", path: research/models/tickets/amazon-nova-frontier-reorg-2026-07.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
@@ -76,6 +77,14 @@ largest investee banned.
   2026-07-30 it rests on a single account with no Amazon statement
   (status `rumored` on the linked model ticket) (ARA daily digest
   2026-07-30).
+- **A planned Amazon data center draws scrutiny as a potential record
+  climate polluter (2026-08-08).** TechCrunch and The Verge both reported
+  on a **planned Amazon data center whose on-site power plant could make
+  it the biggest climate polluter in the U.S.** — the sharpest single
+  instance yet of the [[ai-capex]] buildout's emissions externalities
+  landing on one hyperscaler's named project, feeding the same
+  rate-payer-pledge / permitting-gate thread tracked on [[ai-capex]]
+  (TechCrunch, The Verge; ARA daily digest 2026-08-10).
 
 ## Open questions
 

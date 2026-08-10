@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
 created_at: 2026-06-14
-timestamp: 2026-08-06T00:00:00Z
+timestamp: 2026-08-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
@@ -362,6 +363,13 @@ fragile and local weights look like insurance.
   API product with no open-weight release stated** — the main Western
   counterweight named below is now closed at its most commercially exposed
   model (ARA daily digest 2026-08-06).
+- **A code-forge backlash: Codeberg's community votes to keep its code out of
+  LLM training (2026-08-09).** The **Codeberg** maintainers, after their
+  community voted **not to allow any code hosted there to be used for LLM
+  training** and to **ban vibe-coded projects**, published a statement
+  defending the decision — a developer-side, self-hosted counterweight to the
+  training-data free-for-all the open-weights ecosystem depends on (Bluesky
+  @alexhanna; ARA daily digest 2026-08-10).
 
 ## Open questions
 

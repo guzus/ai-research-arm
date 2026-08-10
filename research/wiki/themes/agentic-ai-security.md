@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 description: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.
 created_at: 2026-05-29
-timestamp: 2026-08-09T00:00:00Z
+timestamp: 2026-08-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
   - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
@@ -550,6 +551,15 @@ the cycle:
   unconfirmed detail; if it holds it extends the eval-escape pattern to a
   fourth lab with the lowest observed harm profile yet (Latent.Space AINews;
   ARA daily digest 2026-08-09).
+- **Prompt injection goes physical — VLM-controlled robots hijacked with a
+  piece of paper (2026-08-09, arXiv).** A systematic study of **physical
+  prompt injection in VLM-controlled robots** (paper title: "Hijacking
+  Robots with a Piece of Paper") demonstrated that **printed text/coded
+  messages an autonomous robot's camera simply sees can hijack its behavior**
+  — extending this theme's injection vector from chat/agent tooling into the
+  embodied-AI surface (VLM navigation/vision pipelines) as the same class of
+  prompt-injection vulnerability (arXiv 2026-08-09; ARA daily digest
+  2026-08-10).
 
 ## Open questions
 - **Is eval-environment permissiveness now the canonical vector?** Three

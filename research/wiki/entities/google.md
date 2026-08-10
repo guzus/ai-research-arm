@@ -6,13 +6,14 @@ aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "G
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
 description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.
 created_at: 2026-07-17
-timestamp: 2026-08-06T00:00:00Z
+timestamp: 2026-08-10T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA model ticket — Gemini Robotics 2", path: research/models/tickets/google-gemini-robotics-2-2026-07.md}
@@ -152,6 +153,14 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   holds, the interesting part is not the price but what is being bought —
   hand-authored RL environments as a scarce input, i.e. training data for
   agents priced like consulting rather than like scraped corpus.
+- **DeepMind's hurricane model buys forecasters an extra day (2026-08-08).**
+  DeepMind's AI hurricane-forecasting model surprised weather scientists by
+  **extending useful warning lead time by roughly a day** on 2026-08-08
+  (Ars Technica) — a concrete validation of ML weather prediction in an
+  operational setting, and the strongest science-side DeepMind datapoint in
+  the wiki since the leadership rewire tracked above. Details (model name,
+  verification, agency adoption) are thin in the source; the lead-time gain
+  itself is the headline (Ars Technica; ARA daily digest 2026-08-10).
 
 ## Open questions
 
