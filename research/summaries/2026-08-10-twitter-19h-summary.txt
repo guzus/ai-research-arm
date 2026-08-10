@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-10 19:10:24 UTC
+
+CYCLE: A landmark-if-true math claim, a second congressional escalation in 3h, and $500B of AI infra debt.
+
+TOP STORIES:
+• Anthropic: unreleased Claude raised the Riemann critical-line bound 41.6% -> 67.2%, sole-authoring the paper ⚠
+• Sanders tells OpenAI/Anthropic/Meta to pause now, quoting their own written commitments, or "the Senate will" ⚠
+• OpenAI ships GPT-5.6-Cyber + Daybreak Red for vetted defenders; claims unknown Chrome V8 vulns found ✓
+• Nvidia said to be building a ~$500B AI-infra financing package with Apollo, Blackstone, BlackRock, KKR ⚠
+
+WATCH: Whether a named number theorist publicly checks the 67.2% bound.
+
+Full update on GitHub.
