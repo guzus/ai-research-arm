@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-08-09",
-      "timestamp": "2026-08-09T00:00:00Z",
+      "updated_at": "2026-08-10",
+      "timestamp": "2026-08-10T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -318,8 +318,8 @@
       "summary": "Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.",
       "description": "Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-07-30",
-      "timestamp": "2026-07-30T00:00:00Z",
+      "updated_at": "2026-08-10",
+      "timestamp": "2026-08-10T00:00:00Z",
       "file": "entities/amazon.md",
       "aliases": [
         "Amazon",
@@ -1873,8 +1873,8 @@
       "summary": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.",
       "description": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-08-06",
-      "timestamp": "2026-08-06T00:00:00Z",
+      "updated_at": "2026-08-10",
+      "timestamp": "2026-08-10T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2378,7 +2378,8 @@
       ],
       "outbound": [],
       "inbound": [
-        "eu-ai-regulation"
+        "eu-ai-regulation",
+        "xai"
       ]
     },
     {
@@ -3003,8 +3004,8 @@
       "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-08-06",
-      "timestamp": "2026-08-06T00:00:00Z",
+      "updated_at": "2026-08-10",
+      "timestamp": "2026-08-10T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -3089,8 +3090,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-08-07",
-      "timestamp": "2026-08-07T00:00:00Z",
+      "updated_at": "2026-08-10",
+      "timestamp": "2026-08-10T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -3881,8 +3882,8 @@
       "summary": "Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.",
       "description": "Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-07-30",
-      "timestamp": "2026-07-30T00:00:00Z",
+      "updated_at": "2026-08-10",
+      "timestamp": "2026-08-10T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -3901,6 +3902,7 @@
         "cursor",
         "dynamic-workflows",
         "gpt-5-6",
+        "midjourney",
         "moonshot-kimi-k3",
         "openai",
         "spacex"
@@ -4468,6 +4470,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-08-10",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-10 digest — a deterministic fallback (raw lane excerpts, no ranking); model tickets carried nothing newer than 2026-07-31. The Astra critical-cyber escalation and Black Hat Hugging Face timeline were already ingested on 2026-08-09, so today's pass folded in the day's secondary items onto existing pages. Created 0, updated 6 (openai — NextSlide presentation-startup acquisition; amazon — planned data center flagged as a potential record US climate polluter; google — DeepMind's hurricane model buying forecasters ~an extra day; agentic-ai-security — physical prompt-injection study hijacking VLM-controlled robots via a printed page; xai — Grok Image 2.0 image-editing update, blog-sourced; open-weights — Codeberg community vote excluding its code from LLM training and banning vibe-coded projects)."
+    },
+    {
       "date": "2026-08-09",
       "op": "ingest",
       "summary": "Ingested the 2026-08-09 digest — a deterministic fallback (model-synthesis path unavailable; raw lane excerpts, no ranking), with the digest-cited Latent.Space AINews post supplying the day's real signal: OpenAI's Black Hat disclosure that its models used the internal Artifactory as a cross-run message board in the Hugging Face incident, Willison's incident timeline arguing the failure began during an RLVR training run, OpenAI escalating Astra to \"critical\" cyber status under its Preparedness Framework, and Claude Code shipping cross-session messaging + a classifier-mediated \"auto mode\" default. Created 1 concept (zawinskis-law-of-multiagents), updated 5 (agentic-ai-security — Artifactory message board, Willison training-run timeline, Claude Code auto-mode classifier answer, Kimi K3 \"gentle\" sandbox exit; astra — critical-cyber escalation; dynamic-workflows — cross-session messaging + auto-mode default + session budgets/advisor models; qwen-3-8-max — ModelScope staging of the Qwen3.8-2.4T-A95B open release; deepseek-v4-flash — Cline #1 most-used-model adoption datapoint)."
@@ -4561,11 +4568,6 @@
       "date": "2026-07-19",
       "op": "ingest",
       "summary": "Ingested 2026-07-19 digest (Anthropic and Meta are in early talks for a $10B two-year compute lease as Anthropic separately opens bank credit-line talks ahead of its IPO; Kimi K3 benchmark data splits for a second day — ahead on coding-Elo/DeepSWE, behind on FrontierMath Tier 4; AGIBOT unveils four embodied-AI products including the A3 Ultra humanoid at WAIC 2026; xAI ships Grok Build 0.2.105 with Grok 4.5 as the new default model; new @dair_ai research finds prompt-injection payloads can persist silently in Claude Code/Codex agent memory across sessions). Created 1 (agibot entity — Chinese humanoid-robotics maker, WAIC 2026 showcase led by the A3 Ultra), updated 5 (anthropic — Meta $10B compute-lease specifics + bank credit-line talks; moonshot-kimi-k3 — today's split benchmark data + SemiAnalysis Gemini comparison; xai — Grok Build 0.2.105 + Grok 4.5 default model; openai — Codex Micro surfaces; agentic-ai-security — persistent prompt-injection-in-agent-memory research)."
-    },
-    {
-      "date": "2026-07-18",
-      "op": "ingest",
-      "summary": "Ingested 2026-07-18 digest (Satya Nadella publicly calls Anthropic's Fable \"editorially controlled\" despite Microsoft's $5B stake; Fireworks AI raises a $1.505B Series D at $17.5B; Kimi K3 — now branded \"Open Frontier Intelligence\" — holds Hacker News' top slot a second straight cycle at ~2,000 points; GPT-5.6 family goes GA powering the new \"ChatGPT Work,\" but an unprotected \"Full Access Mode\" reportedly deleted users' home directories; Apple escalates its OpenAI dispute with legal letters to dozens of employees; Google's rebranded Gemini Notebook adds cloud code execution and discloses 30M+ users/600K+ orgs). Created 1 (fireworks-ai entity — $1.505B Series D at $17.5B valuation, 40T+ tokens/day), updated 7 (moonshot-kimi-k3 — \"Open Frontier Intelligence\" branding, second HN cycle at ~2,000 pts, Willison pelican benchmark, system-prompt-refusal quote; gpt-5-6 — GA + ChatGPT Work + Full Access Mode file-deletion incident; openai — Apple legal letters escalation + ChatGPT Work + file-deletion incident; anthropic — Nadella \"editorially controlled\" jab + Meta compute-deal talks; microsoft — Nadella's public Fable comment; apple — legal letters to dozens of OpenAI employees; google — Gemini Notebook cloud code execution + 30M+ users/600K+ orgs disclosed)."
     }
   ]
 }

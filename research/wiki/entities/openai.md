@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.
 created_at: 2026-05-30
-timestamp: 2026-08-07T00:00:00Z
+timestamp: 2026-08-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
@@ -639,6 +640,11 @@ materially reshape how the lab is positioned heading into its IPO window:
   accessing a departed engineer's iCloud account**. This is the same inversion
   tracked on 2026-08-05: a secrecy case in which the plaintiff's internal
   handling of departing staff keeps becoming the evidence.
+- **Acquires NextSlide, a presentation startup (2026-08-08).** OpenAI acquired
+  **NextSlide** — a small presentation-making startup (TechCrunch, terms
+  undisclosed) — folding slide-creation capability into the ChatGPT product
+  surface, an incremental acquisition in the [[gpt-5-6|GPT-5.6]] consumer
+  window rather than a strategic platform move (ARA daily digest 2026-08-10).
 
 ## Open questions
 
