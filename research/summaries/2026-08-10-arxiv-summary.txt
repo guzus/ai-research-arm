@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-10
+
+TOP 5 PAPERS:
+• Skaling - new scaling law coupling model size & data via one interaction exponent; 1.5-3x better loss prediction, ~10x less compute for extrapolation
+• Diffusion LLMs as Targets & Adversaries - safety neurons are sparse/transferable; self-pruning raises attack success to 73-86% on LLaDA/Dream/Fast-dLLM
+• UniJEPA - unified JEPA merging image & video world modeling in one shared latent space with a single objective
+• SimWAM - driving world-action model that uses video generation as a pure training signal; discards video branch at inference
+• CoBa - compute-balanced routing for test-time scaling; matches weighted-voting proxy at 49.1% fewer params on MATH/AIME/AMC
+
+CATEGORIES: NLP 9 | CV/Multimodal 9 | Agents/Reasoning 9 | Safety 3 | Other 6
+
+Full report on GitHub.
