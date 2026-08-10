@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-10 10:33:38 UTC
+
+CYCLE: Meta reopens its weights; Google's promised Gemini 3.5 Pro reportedly killed.
+
+TOP STORIES:
+• Meta releases Muse Glimmer 30B under Apache 2.0 and commits to open weights for Muse Spark 1.2, the model it started charging $1.25/$4.25 per Mtok for four days ago [✓]
+• SemiAnalysis read: Gemini 3.5 Pro silently cancelled 11 weeks after its I/O commitment; OpenAI has fixed pre-training and is training a larger model, "Doug" [⚠]
+• Agibot passes Unitree in H1 humanoid shipments (8,400 vs 5,900 of 19,100 global units, 97% Chinese) days before Unitree's IPO [⚠]
+
+WATCH: Whether Muse Spark 1.2 weights actually land, and under which licence.
+
+Full update on GitHub.
