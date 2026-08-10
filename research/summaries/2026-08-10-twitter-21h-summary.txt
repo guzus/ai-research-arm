@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-10 21:53:28 UTC
+
+CYCLE: Anthropic ships text watermarking; the $500B Nvidia financing gets named counterparties; SpaceX lines up a second AI acquisition.
+
+TOP STORIES:
+• Anthropic embeds invisible watermarks in all Claude text plus provenance metadata in generated files - first token-level text watermark from a US frontier lab [⚠]
+• Nvidia-IREN AI-factory pact carries on-record quotes from Brookfield, BlackRock and Blackstone CEOs; FT reported to put it at a $500B debt raise [⚠]
+• SpaceX in advanced talks for Israeli inference startup Decart at $6-7B, days from also closing Cursor [⚠]
+
+WATCH: Whether Anthropic publishes the watermark scheme or a public detector - a signal nobody can query is compliance, not enforcement.
+
+Full update on GitHub.
