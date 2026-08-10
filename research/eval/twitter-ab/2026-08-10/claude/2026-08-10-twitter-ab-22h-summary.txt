@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-10 22:17:31 UTC
+
+CYCLE: AI capex financing gets securitized while Anthropic and OpenAI both ship frontier-capability news.
+
+TOP STORIES:
+• Nvidia reportedly arranging ~$500B AI infra debt package with Apollo/Blackstone/BlackRock/Goldman/KKR; Huang calls compute "an investable asset class"; NVDA -3% [WARN]
+• Unreleased Claude raised proven Riemann zeta zero bound 41.6% -> 67.2%, a mathematician directing and verifying [OK]
+• Reports say Claude output now carries invisible watermarks; "all text" scope unconfirmed [WARN]
+• OpenAI ships GPT-5.6-Cyber under Daybreak, claims unknown V8 vulns found [OK]
+
+WATCH: An Nvidia filing or named SPV confirming the $500B size - or its absence.
+
+Full update on GitHub.
