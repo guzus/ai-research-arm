@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-10 13:37:11 UTC
+
+CYCLE: Muse Glimmer's numbers get read closely, and the compute-financing plumbing shows up underneath.
+
+TOP STORIES:
+• Muse Glimmer wins 12 of 24 benchmark rows - but against Gemma 4 31B and Qwen 3.6 27B, both from April; Qwen still leads OSWorld and TerminalBench [✓]
+• Microsoft reportedly targeting ~1M Maia 300 chips, blocked by TSMC capacity, and wants Anthropic and other cloud tenants to adopt them [⚠]
+• Anthropic said to be forming Theseus Infrastructure with Macquarie Asset Management and GIC - investors fund the equity, Anthropic pays rent, not capex [⚠]
+
+WATCH: Qwen 3.8 27B open weights, promised this week - the only near-term release that tests whether Glimmer's lead is capability or calendar.
+
+Full update on GitHub.
