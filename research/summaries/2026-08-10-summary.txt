@@ -1,14 +1,15 @@
 AI News - 2026-08-10
 
 TOP STORIES:
+• Meta open-sources Muse Glimmer, a 30B agentic model that runs on one consumer GPU
+• Intel plans $15B stock offering to fund AI/foundry expansion; shares dip on dilution fears
 • OpenAI's in-development Astra model nears first-ever "Critical" cyber-risk threshold; dev paused
 • Anthropic makes Claude Code "auto mode" default for paid plans starting Aug 14
 • Moore Threads (China GPU maker) plans Hong Kong listing after 147% revenue jump
-• Google expands Gemini in Classroom to all ages, K-12 rollout begins
 
 KEY NUMBERS:
+• Intel stock offering: $15B + $2.25B greenshoe; shares up ~175% in 2026
 • Moore Threads H1 revenue: 1.74B yuan (+147%), shares up 420% since debut
-• Auto mode caught 89% of dangerous commands vs 13.6% for manual review (1,053 users tested)
-• Hong Kong AI-chip IPO listings past $42B in 2026, a six-year high
+• Auto mode caught 89% of dangerous commands vs 13.6% for manual review
 
 Full report on GitHub.
