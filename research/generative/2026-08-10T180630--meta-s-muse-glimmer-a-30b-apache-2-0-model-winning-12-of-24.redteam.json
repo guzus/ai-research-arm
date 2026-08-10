@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Qwen3.6-27B's eight are the ones that should worry anyone buying the \"local agent\" framing: OSWorld-Verified 75.6 to Glimmer's 65.9, TerminalBench 2.1 60.7 to 51.7, SWE-Bench Verified 77.2 to 76.0, GDPval-AA v2 1141 to 953, plus SkillsBench and three of the four multimodal rows.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Irregular, the evaluation firm named in that statement, went further, saying the event \"did not involve a sandbox escape or a sophisticated cyber action\" and that there were \"no current open issues.\"",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The model card rates **cyber** and **loss of control** as \"Moderate or lower risk (inferred)\" — Meta's own parenthetical — reasoning that \"Muse Glimmer is broadly weaker than Muse Spark 1.0, which received the same risk designation in these domains.\"",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
