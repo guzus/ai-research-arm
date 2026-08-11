@@ -1,0 +1,12 @@
+Speaker 1: Tuesday, August eleventh, twenty twenty-six.
+Speaker 2: [high_energy] Meta has open-weighted Muse Glimmer, a thirty billion parameter multimodal agent model, under Apache two point oh, and it runs on a single consumer GPU.
+Speaker 1: It leads on twelve of twenty-four benchmark rows at roughly seventeen gigabytes in four-bit, though the comparisons are against April-era Gemma and Qwen, so read that leaderboard carefully.
+Speaker 2: The community did not dwell on the caveats, nine hundred twenty points and five hundred twenty comments, straight to the top of the board.
+Speaker 1: On the research side, Anthropic says an unreleased Claude raised the proven Riemann critical-line bound from [emphasis] forty-one point six percent [/emphasis] to [emphasis] sixty-seven point two percent [/emphasis].
+Speaker 2: That is the first time we have seen a lab claim a move like that on a problem of that stature, [dramatic_pause] and it came from a model nobody outside the building has touched.
+Speaker 1: Some quick numbers, an unconfirmed [emphasis] five hundred billion dollar [/emphasis] Nvidia and Wall Street financing package is circulating, while Intel is raising fifteen billion dollars and lifting capital expenditure from eighteen billion to twenty billion dollars.
+Speaker 2: And TSMC posted July revenue of four hundred sixty-seven point six billion New Taiwan dollars, up forty-four point seven percent year over year. The supply chain is not slowing down.
+Speaker 1: On the policy front, House Democrats want AI chief executives testifying under oath, and Senator Sanders is calling for an outright pause.
+Speaker 2: Meanwhile OpenAI shipped GPT five point six Cyber, which is either very bad timing or very deliberate timing.
+Speaker 1: Worth noting on safety, the OpenClaw gym-booking agent exploit dominated the conversation all week.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
