@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-11 21:58:45 UTC
+
+CYCLE: The AI buildout's demand side printed hard numbers after the close, and the market barely paid.
+
+TOP STORIES:
+• CoreWeave ~$104B backlog (+246% Y/Y) on $2.58B Q2 revenue; Supermicro guides FY27 to $65-72B vs ~$52.4B consensus but moves only 5.3%; Lumentum revenue +109% Y/Y [✓]
+• Anthropic to ship a text-detection API for the Claude watermark, framed as EU AI Act work — but its code-provenance example is the case the technique handles worst [✓]
+• Musk: SpaceX has 1.4GW of AI compute now, targets ~10GW by end-2027 [⚠]
+• Google claims 1B monthly Gemini app users, nominal parity with ChatGPT [⚠]
+
+WATCH: Supermicro's FY2027 gross-margin guidance — profit or pass-through.
+
+Full update on GitHub.
