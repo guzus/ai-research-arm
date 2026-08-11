@@ -53,6 +53,13 @@ inputs:
     description: OpenCode Go key, passed only to the OpenCode adapter.
     required: false
     default: ''
+  opencode-config:
+    description: >-
+      Trusted workspace-relative OpenCode policy. Callers may narrow the
+      default tool surface for a specific lane; the selected model cannot
+      modify this read-only mount.
+    required: false
+    default: .github/opencode/opencode.json
 
 outputs:
   route:
@@ -126,5 +133,6 @@ runs:
         return-artifacts: ${{ inputs.return-artifacts }}
         model: ${{ steps.route.outputs.model_ref }}
         opencode-api-key: ${{ inputs.opencode-api-key }}
+        opencode-config: ${{ inputs.opencode-config }}
         timeout-minutes: ${{ inputs.timeout-minutes }}
         prompt-text: ${{ inputs.prompt-text }}

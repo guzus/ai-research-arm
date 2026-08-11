@@ -123,6 +123,10 @@ jobs:
           mode: editorial
           lane: generative-research-ko
           return-artifacts: ${{ steps.prepare.outputs.draft_path }}
+          # Translation needs two reads and one write. Explicit denies remain
+          # enforced under --auto, so prompt injection cannot gain shell,
+          # network, search, subagent, or broader repository access.
+          opencode-config: .github/opencode/translation.json
           timeout-minutes: '80'
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
@@ -133,8 +137,11 @@ jobs:
             professional Korean. This is translation, not new research.
 
             Read `.agent-input/translation.json` first. It gives the exact
-            `source_path`, `source_type`, and `draft_path`. Read the declared
-            source in full, then write exactly one file at `draft_path`.
+            staged `source_path`, `source_type`, and `draft_path`. Read the
+            declared source in full, then write exactly one file at
+            `draft_path`. Tool permissions allow only those two reads and that
+            one write; shell, web, search, subagents, and all other tools are
+            intentionally unavailable.
 
             Preserve factual meaning and the complete artifact contract:
             - Keep YAML frontmatter keys, heading levels, ARA directive names,

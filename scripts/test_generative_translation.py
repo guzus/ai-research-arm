@@ -115,6 +115,41 @@ class TranslationPreparationTest(unittest.TestCase):
                 with self.subTest(slug=slug), self.assertRaises(ValueError):
                     prepare.prepare(root, slug, force=False)
 
+    def test_stages_only_a_copy_and_model_visible_paths(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            gen, _ = seed_repo(root)
+            values = prepare.prepare(root, "alpha", force=False)
+            request = prepare.stage_agent_request(
+                root, values, ".agent-input/translation.json"
+            )
+
+            staged = root / request["source_path"]
+            canonical = gen / "2026-01-01T000000--alpha.ara.md"
+            self.assertEqual(".agent-input/source.ara.md", request["source_path"])
+            self.assertEqual(canonical.read_bytes(), staged.read_bytes())
+            self.assertEqual(
+                request,
+                json.loads((root / ".agent-input/translation.json").read_text()),
+            )
+            self.assertNotIn(values["source_path"], json.dumps(request))
+
+    def test_rejects_noncanonical_request_or_linked_input_directory(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            seed_repo(root)
+            values = prepare.prepare(root, "alpha", force=False)
+            with self.assertRaisesRegex(ValueError, "request file must be exactly"):
+                prepare.stage_agent_request(root, values, ".tmp/request.json")
+
+            outside = root / "outside"
+            outside.mkdir()
+            (root / ".agent-input").symlink_to(outside, target_is_directory=True)
+            with self.assertRaisesRegex(ValueError, "unsafe agent input directory"):
+                prepare.stage_agent_request(
+                    root, values, ".agent-input/translation.json"
+                )
+
 
 class TranslationParityTest(unittest.TestCase):
     def test_faithful_korean_translation_passes(self):

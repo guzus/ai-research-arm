@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "formatter": false,
+  "lsp": false,
+  "permission": {
+    "*": "deny",
+    "edit": {
+      "*": "deny",
+      ".tmp/generative-translation.ko.ara.md": "allow"
+    },
+    "read": {
+      "*": "deny",
+      ".agent-input/source.ara.md": "allow",
+      ".agent-input/translation.json": "allow"
+    }
+  }
+}
