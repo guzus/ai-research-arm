@@ -1,0 +1,137 @@
+#!/usr/bin/env python3
+"""Resolve one English generative article into a safe Korean backfill request.
+
+This is trusted preflight code for ``translate-generative-research.yml``.  It
+does not translate or mutate the research store.  It validates the user-owned
+slug, rejects accidental replacement, requires the canonical ARA source, and
+emits the exact source/draft/output contract consumed by later workflow steps.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import re
+import uuid
+from pathlib import Path
+
+
+SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,119}$")
+
+
+def _regular_file(path: Path, root: Path) -> bool:
+    return (
+        path.is_file()
+        and not path.is_symlink()
+        and path.resolve().parent == root.resolve()
+    )
+
+
+def prepare(repo: Path, slug: str, *, force: bool) -> dict[str, str]:
+    if not SLUG_RE.fullmatch(slug) or slug in {".", ".."}:
+        raise ValueError(f"invalid generative article slug: {slug!r}")
+
+    gen_dir = repo / "research" / "generative"
+    index_path = gen_dir / "index.json"
+    try:
+        rows = json.loads(index_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot read generative index: {exc}") from exc
+    if not isinstance(rows, list):
+        raise ValueError("generative index must be a JSON array")
+
+    matches = [
+        row for row in rows if isinstance(row, dict) and row.get("slug") == slug
+    ]
+    if len(matches) != 1:
+        raise ValueError(f"expected exactly one index row for {slug!r}, found {len(matches)}")
+    row = matches[0]
+    if (row.get("kind") or "fragment") != "fragment":
+        raise ValueError("Korean backfill currently supports fragment articles only")
+    if row.get("language") not in (None, "en"):
+        raise ValueError(f"translation source must be English, got {row.get('language')!r}")
+    translations = row.get("translations")
+    if translations is not None and not isinstance(translations, dict):
+        raise ValueError(f"index row for {slug!r} has malformed translations metadata")
+    if isinstance(translations, dict) and "ko" in translations and not force:
+        raise ValueError(
+            f"Korean translation already exists for {slug!r}; "
+            "dispatch with overwrite=true to replace it"
+        )
+
+    filename = row.get("file")
+    if (
+        not isinstance(filename, str)
+        or Path(filename).name != filename
+        or not filename.endswith(".html")
+    ):
+        raise ValueError(f"index row has unsafe or unsupported source file: {filename!r}")
+    html_path = gen_dir / filename
+    if not _regular_file(html_path, gen_dir):
+        raise ValueError(f"canonical HTML source is missing or unsafe: {html_path}")
+    ara_path = html_path.with_suffix(".ara.md")
+    if not _regular_file(ara_path, gen_dir):
+        raise ValueError(
+            "canonical ARA source is missing; legacy HTML-only articles are "
+            "not supported by the Korean backfill workflow"
+        )
+    source_path = ara_path
+    source_type = "ara"
+    draft_path = Path(".tmp/generative-translation.ko.ara.md")
+
+    title = row.get("title")
+    if not isinstance(title, str) or not title.strip():
+        raise ValueError(f"index row for {slug!r} has no title")
+    source_rel = source_path.relative_to(repo).as_posix()
+    source_sha256 = hashlib.sha256(source_path.read_bytes()).hexdigest()
+    return {
+        "slug": slug,
+        "title": title.strip(),
+        "source_path": source_rel,
+        "source_type": source_type,
+        "source_sha256": source_sha256,
+        "draft_path": draft_path.as_posix(),
+    }
+
+
+def _write_github_output(path: Path, values: dict[str, str]) -> None:
+    with path.open("a", encoding="utf-8") as out:
+        for key, value in values.items():
+            if "\n" not in value:
+                out.write(f"{key}={value}\n")
+                continue
+            marker = f"__ARA_TRANSLATION_{uuid.uuid4().hex}__"
+            out.write(f"{key}<<{marker}\n{value}\n{marker}\n")
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--repo-root", default=Path(__file__).resolve().parent.parent)
+    parser.add_argument("--slug", required=True)
+    parser.add_argument("--force", choices=("true", "false"), default="false")
+    parser.add_argument("--request-file", required=True)
+    parser.add_argument("--github-output")
+    args = parser.parse_args(argv)
+
+    repo = Path(args.repo_root).resolve()
+    values = prepare(repo, args.slug, force=args.force == "true")
+    request_path = repo / args.request_file
+    request_path.parent.mkdir(parents=True, exist_ok=True)
+    if request_path.is_symlink():
+        raise SystemExit(f"refusing linked request path: {request_path}")
+    request_path.write_text(json.dumps(values, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (repo / ".tmp").mkdir(exist_ok=True)
+    output_path = Path(args.github_output or os.environ.get("GITHUB_OUTPUT", ""))
+    if str(output_path):
+        _write_github_output(output_path, values)
+    print(
+        f"translation source: {values['source_path']} ({values['source_type']}); "
+        f"title: {values['title']}"
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

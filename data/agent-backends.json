@@ -92,6 +92,12 @@
       "backend": "opencode-deepseek-v4-flash",
       "fallback": "none",
       "notes": "Shared runtime route for RSS, Bluesky, community, arXiv, and wiki. One backend edit switches all five to a profile whose adapter registry declares both isolated_workspace and editorial_contract. Incompatible host-checkout adapters are rejected before execution; this route is fail-closed with no cross-adapter fallback."
+    },
+    "generative-translation": {
+      "contract": "research-editorial",
+      "backend": "opencode-deepseek-v4-flash",
+      "fallback": "none",
+      "notes": "Dedicated isolated route for Korean generative-research translation. It is separate from scheduled editorial traffic so translation quality/cost can be rerouted independently; publication stays host-owned and the route fails closed."
     }
   },
   "fallback": {
@@ -152,6 +158,11 @@
       "workflow": "wiki-ingest.yml",
       "route": "research-editorial",
       "notes": "Digest -> LLM wiki page CRUD through the shared research-editorial route; writes stay under the wiki prefix and page deletion remains forbidden by the workflow guard."
+    },
+    "generative-research-ko": {
+      "workflow": "translate-generative-research.yml",
+      "route": "generative-translation",
+      "notes": "Manual one-slug Korean backfill. The isolated adapter returns one uncommitted draft; trusted host validators and the canonical writer own the immutable artifact pair, index mutation, and review-first publication."
     },
     "twitter-primary": {
       "workflow": "hourly-twitter.yml",
