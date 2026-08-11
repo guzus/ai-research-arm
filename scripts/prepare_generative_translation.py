@@ -3,7 +3,7 @@
 
 This is trusted preflight code for ``translate-generative-research.yml``.  It
 does not translate or mutate the research store.  It validates the user-owned
-slug, rejects accidental replacement, prefers the canonical ARA source, and
+slug, rejects accidental replacement, requires the canonical ARA source, and
 emits the exact source/draft/output contract consumed by later workflow steps.
 """
 
@@ -72,14 +72,14 @@ def prepare(repo: Path, slug: str, *, force: bool) -> dict[str, str]:
     if not _regular_file(html_path, gen_dir):
         raise ValueError(f"canonical HTML source is missing or unsafe: {html_path}")
     ara_path = html_path.with_suffix(".ara.md")
-    if _regular_file(ara_path, gen_dir):
-        source_path = ara_path
-        source_type = "ara"
-        draft_path = Path(".tmp/generative-translation.ko.ara.md")
-    else:
-        source_path = html_path
-        source_type = "html"
-        draft_path = Path(".tmp/generative-translation.ko.html")
+    if not _regular_file(ara_path, gen_dir):
+        raise ValueError(
+            "canonical ARA source is missing; legacy HTML-only articles are "
+            "not supported by the Korean backfill workflow"
+        )
+    source_path = ara_path
+    source_type = "ara"
+    draft_path = Path(".tmp/generative-translation.ko.ara.md")
 
     title = row.get("title")
     if not isinstance(title, str) or not title.strip():

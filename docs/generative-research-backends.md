@@ -74,10 +74,12 @@ without claiming the translation is already discoverable in the interface.
 
 For model-assisted backfills, dispatch **Korean Generative Research Backfill**
 from the default branch with one existing `slug`. The workflow resolves the
-canonical `.ara.md` source (falling back to legacy HTML), sends only that
-public article to the dedicated isolated `generative-translation` route, and
-imports one uncommitted Korean draft. Trusted host steps then enforce URL,
-citation, numeric, and component-topology parity before calling the writer.
+canonical `.ara.md` source, sends only that public article to the dedicated
+isolated `generative-translation` route, and imports one uncommitted Korean
+draft. Trusted host steps then enforce URL, citation, numeric, and
+component-topology parity before calling the writer. The one legacy HTML-only
+article fails preflight in v1 because its structured component cardinality
+cannot be proven safely.
 
 ```bash
 gh workflow run translate-generative-research.yml \

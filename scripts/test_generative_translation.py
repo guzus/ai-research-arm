@@ -92,13 +92,12 @@ class TranslationPreparationTest(unittest.TestCase):
             self.assertEqual(values["source_sha256"], hashlib.sha256(source.read_bytes()).hexdigest())
             self.assertTrue(values["draft_path"].endswith(".ko.ara.md"))
 
-    def test_uses_html_for_legacy_article(self):
+    def test_rejects_legacy_html_only_article(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             seed_repo(root, ara=False)
-            values = prepare.prepare(root, "alpha", force=False)
-            self.assertEqual(values["source_type"], "html")
-            self.assertTrue(values["draft_path"].endswith(".ko.html"))
+            with self.assertRaisesRegex(ValueError, "legacy HTML-only"):
+                prepare.prepare(root, "alpha", force=False)
 
     def test_rejects_existing_translation_without_force(self):
         with tempfile.TemporaryDirectory() as td:
