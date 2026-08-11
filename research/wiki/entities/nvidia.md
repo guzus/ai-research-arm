@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: The dominant AI accelerator supplier; backing Ilya Sutskever's Safe Superintelligence (~$5B, reported 2026-07-28) and reportedly discussing a ~$250B OpenAI Ohio-datacenter financing backstop, on top of the open-weights Nemotron line.
+description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); backing Ilya Sutskever's Safe Superintelligence (~$5B) and the open-weights Nemotron line.
 created_at: 2026-06-05
-timestamp: 2026-08-05T00:00:00Z
+timestamp: 2026-08-11T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA model ticket — NVIDIA Taiwan smuggling probe", path: research/models/tickets/nvidia-taiwan-smuggling-probe-2026-07.md}
@@ -128,6 +129,23 @@ its own **open-weights models** (the Nemotron line) on top of the silicon.
 - **Does shipping open-weights models cannibalize or deepen the silicon moat?**
   Nemotron is datacenter-only and NVFP4-native — a model that runs best on
   NVIDIA hardware is a demand pull, not a giveaway.
+
+## Wall Street assembles ~$500B around NVIDIA — on debt (2026-08-10)
+
+A **~$500B AI-infrastructure financing package** is reported assembling around
+NVIDIA with **Apollo, Blackstone, BlackRock's Global Infrastructure Partners,
+Brookfield, Goldman Sachs and KKR** named — CNBC's relay sourced to one
+anonymous person, with a later FT-attributed relay specifying **debt rather than
+equity**, the material distinction (leverage against depreciating GPU assets).
+**Unconfirmed by any named participant.** The first named vehicle attached to the
+syndicate is the **Nvidia–IREN "DSX AI factories" partnership**, announced with
+quoted executives (Jensen Huang, Brookfield's Bruce Flatt, BlackRock's Larry
+Fink, Blackstone's Jon Gray); IREN nonetheless closed **down ~6.1%** on the
+session before the announcement landed. See [[ai-capex]] for how this extends the
+off-balance-sheet financing pattern this page has tracked since the OpenAI Ohio
+backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
+
+## Open questions
 - **The TSMC ceiling.** TSMC warned (2026-06-05) it **cannot meet AI-chip demand
   even with US expansion** — a hard supply constraint sitting directly upstream
   of NVIDIA's guides (see [[ai-capex]]).

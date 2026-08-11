@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.
+description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped GPT-5.6-Cyber to vetted defenders behind the Daybreak Red tier (2026-08-10) while facing sworn-testimony demands from Congress.
 created_at: 2026-05-30
-timestamp: 2026-08-10T00:00:00Z
+timestamp: 2026-08-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
@@ -346,6 +347,15 @@ materially reshape how the lab is positioned heading into its IPO window:
   much-relayed concrete CVE list (OpenSSH/GnuTLS/PHP/Chromium) traces to a
   non-official relay, not OpenAI's posts. See [[agentic-ai-security]] and
   [[federal-ai-policy]] (ARA digest 2026-06-23).
+- **GPT-5.6-Cyber ships behind "Daybreak Red" (2026-08-10).** The Daybreak
+  cyber program's next step: **[[gpt-5-6|GPT-5.6-Cyber]]**, a purpose-built
+  offensive-security model shipped to **vetted defenders** behind an
+  **approved-defender tier called Daybreak Red** — announced roughly an hour
+  after a senator accused OpenAI of violating federal law. OpenAI says it has
+  already found previously unknown vulnerabilities in widely deployed open
+  source including **Chrome's V8**, verifiable within weeks since V8
+  disclosures carry public credit (OpenAI, The Decoder; ARA daily digest
+  2026-08-11).
 - **Health + chemistry capability prints (2026-06-19).** OpenAI says a **GPT-5.5
   Instant health upgrade** cuts error rate in health statements ~**71%** and
   "beats doctor-written answers" on physician-informed evals; two Nature studies

@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
+description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10) and a broker/router shift routes production traffic to Chinese open models.
 created_at: 2026-06-14
-timestamp: 2026-08-10T00:00:00Z
+timestamp: 2026-08-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
@@ -370,6 +371,26 @@ fragile and local weights look like insurance.
   defending the decision — a developer-side, self-hosted counterweight to the
   training-data free-for-all the open-weights ecosystem depends on (Bluesky
   @alexhanna; ARA daily digest 2026-08-10).
+- **Meta returns to open weights — and commits to opening its priced model
+  (2026-08-10).** **[[muse-glimmer|Muse Glimmer]]** — a **30B dense multimodal
+  agent model under Apache 2.0**, day-0 in transformers/llama.cpp/vLLM/SGLang/
+  Ollama, ~17GB in 4-bit — is the best non-Chinese open-weights release in a
+  year (Ethan Mollick's calibrated read: not at the Chinese-open-model frontier,
+  well behind the closed frontier, but the strongest Western open ship of the
+  window; it wins 12 of 24 benchmark rows against April-generation
+  [[gemma-4|Gemma 4 31B]] and Qwen 3.6 27B). Two things matter for this theme:
+  first, Meta also committed to **open-weighting a version of Muse Spark 1.2** —
+  the proprietary model it began charging for in [[muse-code|Muse Code]] four
+  days earlier — a reversal of the component-withholding pattern this page
+  flagged on 2026-08-06 (the main Western counterweight to the Chinese open
+  wave had gone closed at its most commercially exposed model). Second, CEO
+  **Mark Zuckerberg's superintelligence manifesto** made the policy asks
+  explicit: share **intermediate training checkpoints with government**, leave
+  **distillation unrestricted**, and the argument that *"any policy that slows
+  American model releases — even by a month — could add significant risk to
+  American leadership."* Together they harden Meta as the loudest pro-open
+  US voice against the [[anthropic]]/[[openai]] convergence this theme has
+  tracked since the "dumping" framing fight (ARA daily digest 2026-08-11).
 
 ## Open questions
 

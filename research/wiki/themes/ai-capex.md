@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
+description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, and off-balance-sheet structures like Theseus Infrastructure — and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-08-06T00:00:00Z
+timestamp: 2026-08-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
@@ -586,6 +587,51 @@ package cleared its chamber-of-origin crossover.
   through OCP**, defining a 512GB-per-stack tier aimed at the capacity ceiling
   HBM cannot clear. Memory, not logic, is where the next binding constraint is
   forming (ARA daily digest 2026-08-06).
+
+- **Wall Street assembles a ~$500B Nvidia-anchored financing package — on debt
+  (2026-08-10).** A **~$500B AI-infrastructure financing package** is reported
+  assembling around [[nvidia]] with **Apollo, Blackstone, BlackRock's Global
+  Infrastructure Partners, Brookfield, Goldman Sachs and KKR** named. Two
+  caveats govern every reading: CNBC's relay traces to **one anonymous person**,
+  and the **material distinction is debt rather than equity** — a later
+  FT-attributed relay specifies **debt**, which is leverage against
+  depreciating GPU assets, a different bet from equity funding. **Unconfirmed by
+  any named participant.** The same window produced the first **named vehicle**
+  attached to the syndicate: the **Nvidia–IREN "DSX AI factories" partnership**,
+  with quoted executives (Jensen Huang, Brookfield's Bruce Flatt, BlackRock's
+  Larry Fink, Blackstone's Jon Gray) — IREN nonetheless closed **down ~6.1%** on
+  the session before the announcement landed. **Intel separately launched a
+  $15B underwritten common-stock offering** (two independent relays agree on
+  size and instrument; no prospectus linked), raising 2026 capex from **$18B to
+  $20B** with the stated driver being **AI-agent demand pushing CPU orders past
+  manufacturing capacity** — and because the share price roughly tripled this
+  year, the same cash costs materially less dilution (ARA daily digest
+  2026-08-11).
+- **Microsoft chases TSMC capacity for 300,000+ Maia 300 chips — and wants
+  Anthropic as anchor (2026-08-10).** Per The Information, [[microsoft]] is
+  chasing TSMC capacity for **over 300,000 Maia 300 chips**, ultimately wanting
+  more than a million as **Nadella pushes to cut Nvidia reliance** — and wants
+  [[anthropic]] as an anchor customer. The constraint is the one the custom-
+  silicon strategy was meant to escape: **custom AI chips queue for the same
+  leading-edge wafers as the GPUs they replace** (ARA daily digest 2026-08-11).
+- **Theseus Infrastructure — investors own the equity, Anthropic rents
+  (2026-08-10).** [[anthropic]], **Macquarie Asset Management** and **GIC** are
+  reported establishing **Theseus Infrastructure**, a build-to-suit datacenter
+  platform where the investors own the equity and Anthropic signs on as anchor
+  tenant paying **rent rather than capex**. Single relay, no counterparty
+  statement — and the structure **moves construction risk, not the obligation**,
+  the same off-balance-sheet shape this theme has tracked since the ~$150bn
+  Google-arranged chip vehicle (see [[anthropic]]) (ARA daily digest
+  2026-08-11).
+- **The supply-chain squeeze keeps broadening off the accelerator (2026-08-10).**
+  TSMC posted July revenue of **NT$467,580mn (+5.6% MoM, +44.7% YoY)**;
+  AI-server buyers are reportedly bidding **2–3× list to Yageo and Murata for
+  MLCCs** and signing multi-year passive-component contracts; TrendForce
+  estimates the **256GB iPhone 18 Pro costs ~38% more to build this quarter**
+  than the 2025 equivalent. **"The constraint has moved off the accelerator onto
+  everything around it"** — the buildout's cost is now showing up in passives,
+  handsets and grid politics rather than GPUs alone (ARA daily digest
+  2026-08-11).
 
 ## Open questions
 - **Does the permitting/power gate bind before the demand question resolves?**

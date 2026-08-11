@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth "a few billions" ahead of a planned IPO (2026-07-19).
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; began watermarking Claude text output and shipping the Theseus Infrastructure datacenter platform with Macquarie and GIC (2026-08-10).
 created_at: 2026-05-24
-timestamp: 2026-08-07T00:00:00Z
+timestamp: 2026-08-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
@@ -911,6 +912,36 @@ of the listing.
   against the distillation and export-control fights tracked above, the lab is
   now treating its own staff as an attack surface, not just its models (ARA
   daily digest 2026-08-07).
+
+## The Riemann-bound claim, text watermarking, and Theseus Infrastructure (2026-08-10/11)
+
+Three developments landed together on 2026-08-10:
+
+- **The Riemann bound claim (unverified).** Anthropic announced that an
+  **unreleased research model** raised the proven lower bound for the proportion
+  of **zeta zeros on the critical line from 41.6% to 67.2%**, in a **paper the
+  model solely authored**. No independent number theorist has checked it — the
+  strongest instance yet of the [[verification-bottleneck]] in science (ARA
+  daily digest 2026-08-11). Track against the [[claude-science]] workbench and
+  the [[john-jumper]] AI-for-science hiring.
+- **Text watermarking ships — the first by a US frontier lab.** Anthropic began
+  embedding **invisible token-level signals in all generated text** and
+  **provenance metadata in every file**, the first such shipment by a US
+  frontier lab. Researchers immediately noted a token-level watermark is
+  defeated by cheap rewriting, and **Anthropic has not published the scheme or a
+  detector**. Read against the [[eu-ai-regulation]] Article 50 transparency
+  obligation that took effect 2026-08-02 — flagged by at least one ML researcher
+  as the likely driver, though Anthropic stated no reason (ARA daily digest
+  2026-08-11).
+- **Theseus Infrastructure — a build-to-suit datacenter platform.** Anthropic,
+  **Macquarie Asset Management** and **GIC** are reported to be establishing
+  **Theseus Infrastructure**, a build-to-suit datacenter platform where the
+  investors own the equity and **Anthropic signs on as anchor tenant paying rent
+  rather than capex**. Single relay, no counterparty statement — and the
+  structure moves **construction risk, not the obligation** (ARA daily digest
+  2026-08-11). See [[ai-capex]] for how this sits in the off-balance-sheet
+  financing pattern this theme has tracked since the ~$150bn Google-arranged
+  chip vehicle.
 
 ## Open questions
 - **Does the eval-breach disclosure produce consequences?** Two of three
